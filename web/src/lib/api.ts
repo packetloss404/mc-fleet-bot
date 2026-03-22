@@ -1,10 +1,15 @@
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
 async function fetchJSON<T>(path: string, options?: RequestInit): Promise<T> {
-  const res = await fetch(`${API_BASE}${path}`, {
-    ...options,
-    headers: { 'Content-Type': 'application/json', ...options?.headers },
-  });
+  let res: Response;
+  try {
+    res = await fetch(`${API_BASE}${path}`, {
+      ...options,
+      headers: { 'Content-Type': 'application/json', ...options?.headers },
+    });
+  } catch {
+    throw new Error(`Cannot reach backend at ${API_BASE} — is the server running?`);
+  }
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
     throw new Error(body.error || `API error: ${res.status}`);
