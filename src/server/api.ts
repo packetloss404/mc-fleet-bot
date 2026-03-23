@@ -75,8 +75,32 @@ export function createAPIServer(botManager: BotManager): APIServerResult {
     });
   });
 
+<<<<<<< HEAD
   // Command center — dispatch service for bot commands
   const commandCenter = new CommandCenter(botManager, io);
+=======
+  // ── Control platform singletons (created once, wired to routes below) ──
+  const markerStore = new MarkerStore(io);
+  const squadManager = new SquadManager(io);
+  const roleManager = new RoleManager(io);
+  const commandCenter = new CommandCenter(botManager, io, markerStore);
+  const missionManager = new MissionManager(botManager, io);
+  const buildCoordinator = new BuildCoordinator(botManager, io, eventLog);
+  const chainCoordinator = new ChainCoordinator(botManager, io, eventLog);
+  missionManager.setBuildCoordinator(buildCoordinator);
+  missionManager.setChainCoordinator(chainCoordinator);
+
+  const commanderService = new CommanderService({
+    llmClient: botManager.getLLMClient?.() ?? null,
+    botManager, commandCenter, missionManager, markerStore,
+  });
+
+  // Wire role manager to command center for auto-override
+  if ('setRoleManager' in commandCenter) (commandCenter as any).setRoleManager(roleManager);
+
+  // Check override timeouts periodically
+  setInterval(() => roleManager.checkOverrideTimeouts?.(), 60000);
+>>>>>>> worktree-agent-ad58abab
 
   // ═══════════════════════════════════════
   //  EXISTING ENDPOINTS (unchanged logic)
@@ -87,6 +111,13 @@ export function createAPIServer(botManager: BotManager): APIServerResult {
     res.json({
       status: 'ok',
       botCount: botManager.getAllBots().length,
+      controlPlatform: {
+        commandCount: commandCenter.getCommands().length,
+        missionCount: missionManager.getMissions().length,
+        markerCount: markerStore.getMarkers().length,
+        squadCount: squadManager.getSquads().length,
+        roleCount: roleManager.getAssignments().length,
+      },
     });
   });
 
@@ -571,12 +602,15 @@ export function createAPIServer(botManager: BotManager): APIServerResult {
   //  CONTROL PLATFORM - MISSION ENDPOINTS
   // ═══════════════════════════════════════
 
+<<<<<<< HEAD
   const missionManager = new MissionManager(botManager, io);
   const buildCoordinator = new BuildCoordinator(botManager, io, eventLog);
   const chainCoordinator = new ChainCoordinator(botManager, io, eventLog);
   missionManager.setBuildCoordinator(buildCoordinator);
   missionManager.setChainCoordinator(chainCoordinator);
 
+=======
+>>>>>>> worktree-agent-ad58abab
   // Start mission (transitions queued → running and triggers executor)
   app.post('/api/missions/:id/start', async (req: Request, res: Response) => {
     try {
@@ -719,8 +753,11 @@ export function createAPIServer(botManager: BotManager): APIServerResult {
   //  CONTROL PLATFORM - WORLD PLANNING
   // ═══════════════════════════════════════
 
+<<<<<<< HEAD
   const markerStore = new MarkerStore(io);
 
+=======
+>>>>>>> worktree-agent-ad58abab
   app.get('/api/markers', (_req: Request, res: Response) => {
     res.json({ markers: markerStore.getMarkers() });
   });
@@ -785,8 +822,11 @@ export function createAPIServer(botManager: BotManager): APIServerResult {
   //  CONTROL PLATFORM - SQUAD ENDPOINTS
   // ═══════════════════════════════════════
 
+<<<<<<< HEAD
   const squadManager = new SquadManager(io);
 
+=======
+>>>>>>> worktree-agent-ad58abab
   app.get('/api/squads', (_req: Request, res: Response) => {
     res.json({ squads: squadManager.getSquads() });
   });
@@ -828,10 +868,15 @@ export function createAPIServer(botManager: BotManager): APIServerResult {
   //  CONTROL PLATFORM - ROLE ENDPOINTS
   // ═══════════════════════════════════════
 
+<<<<<<< HEAD
   const roleManager = new RoleManager(io);
 
   app.get('/api/roles', (_req: Request, res: Response) => {
     res.json({ assignments: roleManager.getAssignments() });
+=======
+  app.get('/api/roles', (_req: Request, res: Response) => {
+    res.json({ assignments: roleManager.getAssignments(), overrides: roleManager.getOverrides?.() ?? [] });
+>>>>>>> worktree-agent-ad58abab
   });
   app.post('/api/roles/assignments', (req: Request, res: Response) => {
     const { botName, role, autonomyLevel, homeMarkerId, allowedZoneIds, preferredMissionTypes } = req.body;
@@ -861,9 +906,12 @@ export function createAPIServer(botManager: BotManager): APIServerResult {
   });
 
   // Override endpoints
+<<<<<<< HEAD
   app.get('/api/roles', (_req: Request, res: Response) => {
     res.json({ assignments: roleManager.getAssignments(), overrides: roleManager.getOverrides?.() ?? [] });
   });
+=======
+>>>>>>> worktree-agent-ad58abab
   app.get('/api/bots/:name/override', (req: Request, res: Response) => {
     const override = roleManager.getOverride?.(req.params.name as string);
     res.json({ override: override || null });
@@ -873,21 +921,27 @@ export function createAPIServer(botManager: BotManager): APIServerResult {
     res.json({ success: true });
   });
 
+<<<<<<< HEAD
   // Wire role manager to command center for auto-override
   if ('setRoleManager' in commandCenter) (commandCenter as any).setRoleManager(roleManager);
 
   // Check override timeouts periodically
   setInterval(() => roleManager.checkOverrideTimeouts?.(), 60000);
 
+=======
+>>>>>>> worktree-agent-ad58abab
   // ═══════════════════════════════════════
   //  CONTROL PLATFORM - COMMANDER ENDPOINTS
   // ═══════════════════════════════════════
 
+<<<<<<< HEAD
   const commanderService = new CommanderService({
     llmClient: botManager.getLLMClient?.() ?? null,
     botManager, commandCenter, missionManager, markerStore,
   });
 
+=======
+>>>>>>> worktree-agent-ad58abab
   app.post('/api/commander/parse', async (req: Request, res: Response) => {
     const { input } = req.body;
     if (!input || typeof input !== 'string' || !input.trim()) {
