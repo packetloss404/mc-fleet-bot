@@ -53,11 +53,45 @@ possible-other-player structures with buffers: elevated spruce farm/library
 (x1665–1697 z138–172), mud-brick wheat hut (x1606–1619 z245–257), spruce shed
 (x1662–1671 z98–108).
 
+## Second pass (2026-07-02, follow-up session) — stragglers + temple south + x1665
+
+- **Temple arena south half discovered and razed.** The original scan/demolition box
+  ended at z370, but the Pokémon temple schematic is 100×70×134 @ (1700,63,320) →
+  its bbox ran to **z453**. ~4,100 artificial columns at x1692–1810 z368–458 survived
+  the first pass. Removed with the same per-tile above-grade air-fill (37 tiles, 0 guard
+  skips), foundation columns grass/sand-capped, 927 bare-dirt scar columns re-grassed,
+  26 trees replanted. Verified 0 artificial / 0 bare dirt across 10 812 columns.
+- **Straggler sweep.** Fresh full-town scan found 435 artificial columns (not ~370).
+  250 removed surgically (surface remains of the 4 sealed grand staircases, statue
+  debris, kiosk debris, stray farmland). The **plaza and well stair trenches were still
+  open sunken stairways** (only their underground arches had been sealed) — both
+  backfilled to grade and verified. Final state: the only artificial surface left
+  outside keep zones is deliberate leave-alones (below).
+- **x1665 flooded line RESOLVED.** Mapping showed the corridor's north mouth (z100–104)
+  opened into a surface pond bottom — that was the water source; the S4.5 statue-lateral
+  backfill had already cut the line at z116–119, making the flood a dead-end pocket.
+  The whole orphaned spur (x1663–1667, Y52–57, z103–176) was displacement-filled with
+  stone (removes water + rail in one op), a deeper water pocket under the old floor
+  (Y44–51) was stoned out, and the pond mouth sealed. A 3-cell stub alcove (z177–179)
+  remains on the west trunk's north wall. Water beyond the shell at x≤1661/x≥1669
+  Y44–51 is a natural cave aquifer — left. The orphan ladder shaft head at (1656,257)
+  was capped and grassed (underlying cavity at ~Y48–51 unexplored, left).
+
+## Deliberate leave-alones (unknown provenance / natural — do not "clean")
+
+- Brick/granite terrace on built-up dirt + pale-oak fence line + anvils at
+  **x1626–1636 z222–272** (adjoins the do-not-touch mud-brick wheat hut; same builder).
+- Dirt-path/moss/dripleaf pond garden with green glass panes at **x1861–1887 z261–287**.
+- Buried glazed/cyan terracotta at **x1787–1801 z102–114**.
+- Natural lava pool + obsidian at **x1808–1828 z221–242**.
+- Mossy-cobble fringes hugging the spruce-library and spruce-shed keep buffers
+  (natural-boulder look), and dead_bush/firefly_bush/dripleaf vegetation.
+
 ## Known residue / follow-ups
 
-- ~370 scattered surface stragglers remain (stone_brick_stairs, mossy_cobblestone, some
-  city-hall landscaping spill past its exclusion box) — cosmetic, 0.4% of columns.
-- S4.5 is a partial prune (see above); the x1665 flooded aisle was left, so that flooding
-  is not yet resolved.
+- West underground system partially remains: **west trunk along z180 (x1610–1699)** and
+  the **x1610 distributor** are still standing (orphaned — all served buildings are
+  demolished). Removal is safe now that the x1665 crossing is solid, but was out of
+  scope for the flooding fix.
 - Container-salvage residual risk: if anything was hand-stored in a town chest/barrel it
   was lost on demolition (see S1 rationale).
