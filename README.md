@@ -1,9 +1,9 @@
-# mc-fleet-ai
+# mc-fleet-bot
 
 Build your own AI-powered Minecraft bot — and stand up an entire autonomous bot fleet, town, and AI civilization — on **play.dyoburon.com**.
 
 > **Lineage:** originally created as **mc-server-bot** by Dylan ([dyoburon](https://github.com/dyoburon));
-> substantially rebuilt and continued as **mc-fleet-ai** by Ian Walmsley
+> substantially rebuilt and continued as **mc-fleet-bot** by Ian Walmsley
 > ([packetloss404](https://github.com/packetloss404)) since 2026 — Voyager subsystem fixes, the
 > autonomous town/rail buildout, mission & fleet management, cost guardrails, and the web dashboard.
 > Full commit history and authorship preserved.
