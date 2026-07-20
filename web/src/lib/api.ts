@@ -55,11 +55,20 @@ function handleUnauthorized(): void {
 }
 
 async function fetchJSON<T>(path: string, options?: RequestInit): Promise<T> {
-  const res = await fetchWithTimeout(`${API_BASE}${path}`, {
-    credentials: 'include',
-    ...options,
-    headers: { 'Content-Type': 'application/json', ...options?.headers },
-  });
+  let res: Response;
+  try {
+    res = await fetchWithTimeout(`${API_BASE}${path}`, {
+      credentials: 'include',
+      ...options,
+      headers: { 'Content-Type': 'application/json', ...options?.headers },
+    });
+  } catch (err) {
+    // Surface a clear operator-facing message instead of a bare fetch error.
+    if (err instanceof DOMException && err.name === 'AbortError') {
+      throw new Error(`Request to ${path} timed out — is the backend at ${API_BASE} responding?`);
+    }
+    throw new Error(`Cannot reach backend at ${API_BASE} — is the server running?`);
+  }
   if (res.status === 401) {
     handleUnauthorized();
     throw new Error('unauthorized');
