@@ -56,7 +56,8 @@ When prose polish and a confidence tag seem to disagree, trust the tag.
   a **long, narrow strip [VERIFIED site character]**, not spread to fill the square.
 - **Reserved no-build inside the envelope:** the four Raven Rock portal-approach corridors at the
   ±285 edges. All four sit within the Z08 greenbelt band — see **Z08-R** for the boxes, and note the
-  unresolved **N3 / entrance-drive collision** flagged there.
+  **N3 / entrance-drive collision, resolved 2026-07-24 (OQ-8)** by relocating N3 to the SW service
+  gate — see Z08-R.
 - **Site condition** *(corrected 2026-07-24 — the two premises below were previously stated the
   opposite way round, and both were false):*
   - **WorldEdit 7.4.0 and WorldGuard 7.0.16 ARE installed** on the target server. Dynmap/BlueMap
@@ -176,7 +177,7 @@ before the tunnels behind them are carved (**OQ-6**).
 
 | Portal | Coordinate | Reserved corridor (X, Z) | Notes |
 |---|---|---|---|
-| **N3** south | (0, 18, +285) | X ∈ [−15, +15], Z ∈ [+270, +300] | ⚠️ **collides with the built entrance drive** — see below |
+| **N3** south | **(−150, 18, +285)** | X ∈ [−165, −135], Z ∈ [+270, +300] | **relocated 2026-07-24 (OQ-8)** — now co-located with MSA's SW service gate; see below |
 | **N4** north | (0, 18, −285) | X ∈ [−15, +15], Z ∈ [−300, −270] | clear; ~35 blocks north of the street's z−235 end |
 | **N5** east | (+285, 18, −30) | X ∈ [+270, +300], Z ∈ [−45, −15] | clear; 70 blocks east of the RR-Z5 shaft head at x=200 |
 | **N6** west | (−290, 10, +5) | X ∈ [−300, −275], Z ∈ [−10, +20] | **tightest margin in the whole project** — only 10 blocks from the x=−300 envelope edge |
@@ -186,18 +187,30 @@ edge) is **[CREATIVE]** — it is sized to clear the 4-wide × 6-tall tunnel sec
 for a sculpted mouth, not derived from any source. Re-cut it once OQ-6's survey establishes the real
 terrain at each mouth.
 
-> ⚠️ **UNRESOLVED COLLISION — N3 south vs. the entrance drive.** The MSA entrance drive is built at
-> **x = 0, running z90 → z275**, and portal **N3 sits at x = 0, z = +285** — dead in line with it,
-> 10 blocks beyond its end. The reserved corridor above (z ∈ [+270, +300]) therefore **overlaps the
-> final ~5 blocks of the as-built drive (z270–275)**.
+> ✅ **RESOLVED 2026-07-24 (OQ-8) — N3 relocated to the SW service gate.**
 >
-> This is a genuine conflict between an as-built MSA feature and a reserved Raven Rock approach, and
-> it is **not** covered by the OQ-1 sign-off — OQ-1 only relocated the *shaft head*. Three ways out,
-> none yet chosen: **(a)** shorten the drive to end at z ≤ 269 and let the portal approach begin
-> there — arguably a feature, the drive terminating at the bunker mouth; **(b)** shift N3 east or
-> west along the z=+285 edge so the corridor clears x=0 entirely; **(c)** accept the overlap and let
-> the drive run *through* the portal approach as a shared surface. **Operator decision required
-> before either the drive is extended or the south tunnel is carved.**
+> **The conflict.** N3 was at **(0, 18, +285)**: 3 blocks off the frontage-road centerline (z ≈ +288)
+> and dead on the **x = 0 axial entrance spine**. Its reserved corridor therefore swallowed the
+> entrance-drive throat, the frontage crossing, and the billboard approach. The as-built overlap
+> looked small (the drive stops at z275, 25 blocks short of its designed z300 start) — but finishing
+> the drive as designed would have put the full 31-block corridor across MSA's front gate.
+>
+> **The decision.** Same trade as OQ-1, resolved the same way: the portal network is
+> `creative approximation`, MSA's axial arrival is anchored design (*"the single grand public
+> approach… so the anchor building terminates the view on arrival"*), so **the invented element moved.**
+>
+> **N3 → (−150, 18, +285)**, co-located with MSA's **SW service gate** (Z01, x ≈ −150, z = +300).
+> That gate is already back-of-house, screened by Z08 greenbelt planting, and by design *"never
+> crosses the entrance drive or the oval at grade"* — so the bunker's south portal now hides behind a
+> service entrance rather than the front door. The grand axial approach is completely freed.
+>
+> **Consequences.** `z` is unchanged, so every envelope-extent statement still holds. **T2 becomes a
+> dogleg**: north along x=−150 to a turn at (−150, y2, +190), then bearing east and descending into
+> **Cavern B's south wall at its west end (−45, −10, +130)** — Cavern B spans x[−45,+45], so it can no
+> longer be entered on the x=0 axis. Longer and non-axial, which is the point.
+>
+> ⚠️ **The two Raven Rock drawings still show N3 at (0, +285)** — `visuals/level-plans.svg` and
+> `visuals/section.svg` were not regenerated. Treat `planning/coordinates.yaml` as authoritative.
 
 ### Z09 — Event Lawn & Special Events
 - **Box:** X ∈ [+70, +160], Z ∈ [−15, +120] — the **east flank of the Guest Center.**

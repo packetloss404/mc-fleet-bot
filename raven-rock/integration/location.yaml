@@ -121,7 +121,7 @@ location:
 
     # -- The four tunnel portals (mouths in the rock face at the envelope edge) --
     north_vehicle_portal:     {x: 0,    y: 18,  z: -285}  # coordinates.yaml N4 (largest; vehicle/main entrance)
-    south_personnel_portal:   {x: 0,    y: 18,  z: 285}   # coordinates.yaml N3 (pedestrian, serves habitation)
+    south_personnel_portal:   {x: -150, y: 18,  z: 285}   # coordinates.yaml N3 (pedestrian; relocated 2026-07-24, OQ-8)
     east_portal:              {x: 285,  y: 18,  z: -30}   # coordinates.yaml N5
     west_utility_portal:      {x: -290, y: 10,  z: 5}     # coordinates.yaml N6 (utility run into the plant)
 

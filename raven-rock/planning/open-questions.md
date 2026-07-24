@@ -1,6 +1,6 @@
 # Raven Rock Mountain Complex (Site R) — Open Questions (Cross-Integration Review)
 
-## ✅ DECIDED 2026-07-24 (orchestrator sign-off, all six closed)
+## ✅ DECIDED 2026-07-24 (orchestrator sign-off — the original six, plus OQ-8 raised and closed the same day)
 
 | Item | Decision | Implementation status |
 |---|---|---|
@@ -10,6 +10,7 @@
 | **OQ-4** | **(a) HARD y41 guardrail** enforced in the build scripts / dig routines; refuse any block edit above y41, single whitelisted exception = the RR-Z5 shaft column (now x∈[193,207], z∈[−22,−8]). | Pending — must be wired before any carving starts. |
 | **OQ-5** | **(a) LINE-THEN-FLOOD** — liner complete + enclosure verified before any water source is placed. Acceptance check = `qa/qa-report.md` BU-10. | Pending — build sequencing. |
 | **OQ-6** | **(a) SURVEY AND SCULPT** the ±285 portal-mouth terrain before carving the tunnels behind it. | Pending — pre-carve step. |
+| **OQ-8** *(new)* | **RELOCATE portal N3** from **(0, 18, +285)** to **(−150, 18, +285)**, co-locating it with MSA's SW service gate. Raised while writing the OQ-1 portal reservation into MSA's plan: N3 sat 3 blocks off the frontage-road centerline and dead on MSA's **x=0 axial entrance spine**, so its no-build corridor swallowed the entrance-drive throat, the frontage crossing and the billboard approach. Same trade as OQ-1 — the portal network is `creative approximation`, MSA's axial arrival is anchored design, so the invented element moves. The SW gate is already back-of-house and screened by Z08 planting, so the portal hides behind a service entrance instead of the front door. | **Coordinates DONE 2026-07-24** across `coordinates.yaml` (N3 node + T2 route + Cavern B note), `integration/location.yaml`, `integration/map-marker.yaml`, `planning/site-plan.md` (§3 tunnel list + overhead diagram), `visuals/raven-rock-NOTES.md`, and MSA's `site-plan.md` Z08-R + `open-questions.md`. **T2 is now a dogleg** — north along x=−150 to a turn at (−150, y2, +190), then east into Cavern B's south wall at its **west end (−45, −10, +130)**, since Z2 spans x[−45,+45] and can no longer be entered axially. ⚠️ **`visuals/level-plans.svg` and `visuals/section.svg` still draw N3 at (0,+285)** — not regenerated. |
 
 *The original items are retained verbatim below as the rationale of record. Where a coordinate below conflicts
 with the decision table, **the table wins**. Specifically: OQ-1 relocated the RR-Z5 shaft head to

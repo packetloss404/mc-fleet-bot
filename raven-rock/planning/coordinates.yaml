@@ -110,7 +110,8 @@ zones:
     ceiling_y: 36
     purpose: >-
       Self-sufficient habitation zone (Quarters, Dining & Medical = RR-B3), enabling months of sealed
-      operation (REF-009, inference). South end meets the South Personnel Portal tunnel. Geometry creative.
+      operation (REF-009, inference). Its south wall receives the South Personnel Tunnel (T2), which since
+      the OQ-8 relocation enters at the wall's WEST end (x=-45) rather than on the x=0 axis. Geometry creative.
     confidence: creative approximation
 
   - id: RR-Z3
@@ -221,10 +222,16 @@ tunnels:
     confidence: creative approximation
   - id: T2
     name: South Personnel Tunnel
-    from: {x: 0, y: 18, z: 285}      # portal N3
-    to:   {x: 0, y: -10, z: 130}     # Cavern B south wall
-    profile: {width: 6, height: 7, curve: gentle}
+    from: {x: -150, y: 18, z: 285}   # portal N3 (relocated 2026-07-24, OQ-8)
+    via:  {x: -150, y: 2,  z: 190}   # south dogleg turn -- runs north along x=-150, then bears east
+    to:   {x: -45, y: -10, z: 130}   # Cavern B south wall, entering at its WEST end (Z2 spans x[-45,45])
+    profile: {width: 6, height: 7, curve: dogleg}
     confidence: creative approximation
+    note: >-
+      Was a straight run down the x=0 spine to Cavern B's south wall at (0,-10,130). N3's relocation
+      to x=-150 makes it a dogleg: north along x=-150 to the turn, then bearing east and descending
+      into the south wall at its west end. Longer than the original and no longer axial, which is
+      the point -- it keeps the personnel route clear of MSA's public approach.
   - id: T3
     name: East Tunnel
     from: {x: 285, y: 18, z: -30}    # portal N5
@@ -276,9 +283,19 @@ notable_locations:
     confidence: creative approximation
   - id: N3
     name: South Personnel Portal (mouth)
-    coordinate: {x: 0, y: 18, z: 285}
+    coordinate: {x: -150, y: 18, z: 285}
     zone: RR-Z4
     confidence: high-confidence inference   # "several portals" is attested (REF-007); this position is creative
+    note: >-
+      RELOCATED 2026-07-24 (OQ-8) from (0, 18, 285). The original position sat on MSA's grand axial
+      entrance -- 3 blocks off the frontage-road centerline (z~288) and dead on the x=0 approach
+      spine, so its reserved no-build corridor swallowed the entrance drive throat, the frontage
+      crossing and the billboard approach. Same trade as OQ-1: the portal network is creative
+      approximation, MSA's axial arrival is anchored design, so the invented element moved.
+      x=-150 co-locates the portal with MSA's existing SW service gate (Z01, x~-150, z=+300), which
+      is already back-of-house, screened by Z08 greenbelt planting, and by design never crosses the
+      entrance drive or the oval at grade -- so the bunker's south portal now hides behind a service
+      entrance instead of the front door. z is unchanged, so all envelope-extent statements still hold.
   - id: N4
     name: North Vehicle Portal (mouth)
     coordinate: {x: 0, y: 18, z: -285}

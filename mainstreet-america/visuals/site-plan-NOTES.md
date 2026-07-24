@@ -51,7 +51,7 @@ all are on the survey's "Not yet built" list:
 ## 3. Reserved / cross-build elements
 
 - **Four Raven Rock portal-approach corridors** at the ±285 envelope edges, hatched RESERVED NO-BUILD
-  (MSA OQ-7; Raven Rock OQ-1). Mouth coordinates from `raven-rock/planning/coordinates.yaml`: N3 (0, +285),
+  (MSA OQ-7; Raven Rock OQ-1). Mouth coordinates from `raven-rock/planning/coordinates.yaml`: N3 (−150, +285) — **relocated 2026-07-24, the drawings still show it at (0, +285)**,
   N4 (0, −285), N5 (+285, −30), **N6 (−290, +5)** — the drawing notes that the west mouth is at −290, not
   −285, contrary to the shorthand in the decision tables.
 - **RR-Z5 shaft head shown RELOCATED** to (200, 64, −15), footprint `x ∈ [193,207]`, `z ∈ [−22,−8]`, with a

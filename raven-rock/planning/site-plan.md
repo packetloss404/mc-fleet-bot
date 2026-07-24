@@ -168,8 +168,11 @@ grade to its cavern floor.
 1. **North Vehicle Tunnel (T1).** Portal **N4 at (0, y18, −285)** → gentle S-curve south → **North Blast
    Vestibule N1 at (0, y−6, −120)** (twin blast doors) → **Cavern A north wall (0, −45)** at y−12. The
    largest portal; the vehicle/main entrance. `[CREATIVE]`
-2. **South Personnel Tunnel (T2).** Portal **N3 at (0, y18, +285)** → curve north → **Cavern B south wall
-   (0, +130)** at y−10. Personnel/pedestrian entrance serving the habitation cavern. `[CREATIVE]`
+2. **South Personnel Tunnel (T2).** Portal **N3 at (−150, y18, +285)** → north along x=−150 → **dogleg
+   turn at (−150, y2, +190)** → bear east and descend → **Cavern B south wall at its WEST end
+   (−45, +130)** at y−10. Personnel/pedestrian entrance serving the habitation cavern. **N3 relocated
+   2026-07-24 (OQ-8) from (0, y18, +285)**, which sat on MSA's grand axial entrance; x=−150 puts it
+   behind MSA's SW service gate. The tunnel is no longer axial — that is the point. `[CREATIVE]`
 3. **East Tunnel (T3).** Portal **N5 at (+285, y18, −30)** → curve west → **East Blast Vestibule N2 at
    (+180, y0, −30)** → **Cavern A east wall (+75, −15)** at y−12. `[CREATIVE]`
 4. **West Utility Tunnel (T4).** Portal **N6 at (−290, y10, +5)** → curve east → **Cavern C west wall
@@ -245,7 +248,7 @@ Top = NORTH = −Z. Bottom = SOUTH = +Z. Left = WEST = −X. Right = EAST = +X.
    Z≈+130 |                      +---------------+----------------+           |
           |                              |                                    |
           |                       (T2 curves)                                 |
-   Z≈+285 |                     [N3] SOUTH PERSONNEL PORTAL (0,+285)          |
+   Z≈+285 |  [N3] SOUTH PERSONNEL PORTAL (−150,+285)                          |
    Z=+300 +-------------------------------------------------------------------+
                                    SOUTH ▼ (+Z)
 
