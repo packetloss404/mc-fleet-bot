@@ -5,7 +5,7 @@ api:
   host: "0.0.0.0"
 
 minecraft:
-  host: "play.dyoburon.com"
+  host: "10.80.13.14"
   port: 25565
   version: "1.21.11"
   auth: "offline"
@@ -13,9 +13,9 @@ minecraft:
   # hotbar dance; a vanilla/Paper server needs neither (loginFlow: "none",
   # selectClass: false). Changing minecraft.* requires a dyobot restart to
   # reconnect — the values are only read at connect time.
-  loginFlow: "dyoauth"        # "none" | "dyoauth"
+  loginFlow: "none"        # "none" | "dyoauth"
   loginPassword: "dyobot2026"
-  selectClass: true
+  selectClass: false
 
 bots:
   maxBots: 10
@@ -179,52 +179,25 @@ mining:
   # Axis-aligned protected boxes around known builds. mineBlock refuses to dig
   # any block inside these zones, so bots can't chew into roads / houses / the
   # town hall. Coordinates are generous bounding boxes around each build cluster.
-  protectedZones:
-    - name: "victorian-cluster"      # victorian palace + Sam's plaque + town hall + sam-cottage(1640)
-      minX: 1590
-      minY: 40
-      minZ: 150
-      maxX: 1670
-      maxY: 130
-      maxZ: 230
-    - name: "townhall-cluster-1200"  # birch houses / earlier town-hall attempts
-      minX: 1160
-      minY: 40
-      minZ: 460
-      maxX: 1240
-      maxY: 130
-      maxZ: 540
-    - name: "sam-cottage-829"
-      minX: 800
-      minY: 40
-      minZ: 215
-      maxX: 860
-      maxY: 120
-      maxZ: 270
-    - name: "north-outliers"         # birch house outliers around 958/-179
-      minX: 930
-      minY: 40
-      minZ: -210
-      maxX: 990
-      maxY: 130
-      maxZ: -150
-    - name: "50eleven-hq"            # packetloss404's island hut @ (1559,64,-392) + Eleven's expansion zone
-      minX: 1540
-      minY: 40
-      minZ: -412
-      maxX: 1578
-      maxY: 110
-      maxZ: -374
-      shelter: false                 # mining-protection only — do NOT pull the roaming fleet here at night
-                                     # (it was dragging all bots ~590 blocks NW every night; town shelters at victorian-cluster)
+  # Emptied 2026-07-24 on the repoint to the fresh server (10.80.13.14): every
+  # box described the old DyoCraft world, 800-1730 blocks from this world's
+  # spawn at (-9,76,-10). They were live-misbehaving — protected zones double as
+  # the night-shelter target (getNearestProtectedCenter, geofence.ts) so bots
+  # were being sent on ~875-block marches to sam-cottage-829, a town that does
+  # not exist here. Empty list = nothing protected, no shelter target; bots
+  # build their own hut at night. Repopulate as this world gets built.
+  protectedZones: []
   # Communal mine site: bots walk here before mining any routed block type, then
   # dig down/out AT the site instead of wherever they happen to be standing.
-  # Placed just east of the victorian cluster, outside its protected box.
-  mineSite:
-    x: 1720
-    y: 64
-    z: 194
-    radius: 24
+  # Unset since the repoint — the old site (1720,64,194) is ~1730 blocks from
+  # spawn, and routing there failed every ore task. With no mineSite configured
+  # the routing below is inert and bots mine ore wherever they find it. Set this
+  # once a communal mine exists in this world:
+  # mineSite:
+  #   x: 0
+  #   y: 64
+  #   z: 0
+  #   radius: 24
   # Raw block types that must be sourced at the communal mine, not in town.
   # NOTE: bulk building materials (stone, cobblestone, dirt, gravel, the andesite/
   # diorite/granite/tuff/deepslate family) were REMOVED from this list so build
@@ -256,20 +229,18 @@ mining:
 # generated code can't move it outside the radius (CodeExecutor.moveTo rejects
 # outward targets; exploreUntil is disabled for it). Keeps a caretaker bot on
 # its island/site. Adjust radius to the island size.
-leash:
-  - botName: Eleven      # 50ELEVEN HQ caretaker — must not leave the island
-    x: 1559
-    z: -392
-    radius: 64
-  - botName: Sam         # kept in the rail-hub forest (verified trees, surface y67)
-    x: 1663              # was wandering 1700+ blocks to the ocean and drowning;
-    z: 194               # this pins him to the wooded town so "mine oak log" works
-    radius: 96
+# Emptied 2026-07-24 on the repoint: the Eleven (1559,-392) and Sam (1663,194)
+# anchors were old-world coordinates. A leash is enforced from spawn onward, so
+# spawning either name would have stranded the bot permanently — it could never
+# walk to an anchor ~1600 blocks outside its own leash radius.
+leash: []
 
 # Safe fallback spot a stranded bot self-teleports to when stuck in liquid and
-# unable to complete tasks (VoyagerLoop.tryRescueIfStranded). Known-safe HQ land
-# (packetloss404's island hut, y=64). Point this at the town capital if preferred.
-rescueHome:
-  x: 1559
-  y: 65
-  z: -392
+# unable to complete tasks (VoyagerLoop.tryRescueIfStranded). Unset since the
+# 2026-07-24 repoint — the old value (1559,65,-392) was the DyoCraft island HQ,
+# ~1600 blocks from this world. With it absent, unleashed bots escalate a WARN
+# instead of auto-rescuing. Point it at this world's capital once one exists.
+# rescueHome:
+#   x: 0
+#   y: 64
+#   z: 0
