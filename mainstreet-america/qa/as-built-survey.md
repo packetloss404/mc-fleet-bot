@@ -95,3 +95,67 @@ coordinates.yaml → buildings.yaml → site-plan.md → integration/* repoint, 
 remains the largest outstanding doc task. Item 4 is now partly answered: the
 carriageway surface in the repaired span is `smooth_stone` **because this pass
 laid it**, which is not evidence about the original surface elsewhere.
+
+---
+
+# ADDENDUM 2 — 2026-07-24 23:0x UTC · definitive per-lot sweep (supersedes items 1–3 above)
+
+The findings numbered 1–3 in the original survey are **WRONG**, and this pass
+supersedes them. The error was methodological, so it is worth recording.
+
+## Why the earlier numbers were wrong
+
+The first sweep probed at **fixed heights** (y68, then the y64/65/66 "build
+plane"). MSA is **not** on a flat plane: surface heights across the site range
+**y59 → y98**. So a fixed-height probe lands above the rooftops in low ground,
+and buried in hillside in high ground. Probing y68 found almost nothing; probing
+y65/66 found even less — not because little is built, but because the probe
+height was wrong nearly everywhere.
+
+Some homes also sit under **~30 blocks of overburden** (lot z+55 west has its
+surface at **y98**), which the earlier pass read as "not built".
+
+**Correct method — surface classification.** For each column: binary-search the
+surface height, then test whether the surface block is natural (grass/dirt/stone/
+sand/gravel/water/logs/leaves…). A **non-natural surface block is a structure**,
+at whatever height it happens to sit. Height-independent, so it works over
+buried and exposed ground alike.
+
+## AS-BUILT (canonical — the world, per the OQ-1/2/5 decision)
+
+### 12 homes — COUNT CONFIRMED
+
+Every one of the 6 lot z-centres carries a structure on **both** sides:
+**6 lots × 2 sides = 12**.
+
+| lot z-centre | west footprint (x) | east footprint (x) |
+|---|---|---|
+| **+55** | −52 … −16 | +4 … +48 |
+| **+5** | −52 … −16 | +16 … +48 |
+| **−45** | −52 … −16 | +20 … +48 |
+| **−95** | −52 … −4 | +4 … +48 |
+| **−145** | −48 … −4 | +4 … +44 |
+| **−195** | −48 … −4 | +4 … +44 |
+
+- **West row centre ≈ x −34**, **east row centre ≈ x +32**.
+- This **refutes** the earlier "homes at x ≈ ±20–25" and the "~9 clusters" count.
+
+### Guest & Design Center
+
+- **x[−72, +72] → 145 wide**; **z[+90, +165] → 76 deep**; centroid ≈ **(0, 128)**.
+- Refutes the earlier "centroid (0,135), ~141 wide".
+- Matches the original build record (145 × 76 at (0,128)) exactly, so the
+  **build was correct and the first survey was not**.
+
+*(Along x=0 the classifier reports built columns z90→195; the span beyond z165 is
+the entrance drive's `smooth_stone`, not the Center. The x=±50 columns give the
+clean building bound.)*
+
+## Doc repoint status
+
+`DEF-003` (home count unconfirmed) is now **closeable: the count is 12**.
+
+Still to propagate into `planning/coordinates.yaml`, `planning/buildings.yaml`,
+`planning/site-plan.md` and the three `integration/*` files: the west/east row
+centres (**−34 / +32**, not ±85 GRID or ±116 OVAL) and the Guest Center centroid
+and size (**(0,128), 145×76**). That mechanical propagation is **not yet done**.
