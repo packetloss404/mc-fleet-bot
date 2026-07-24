@@ -88,7 +88,7 @@ location:
     site_center:            {x: 0,    y: 64, z: 0}      # world origin
     site_gateway:           {x: 0,    y: 64, z: 275}    # SOUTH entrance drive off frontage road
     parking_field_centroid: {x: 0,    y: 64, z: 188}    # coordinates.yaml N09
-    guest_center:           {x: 0,    y: 64, z: 75}     # Building 1 centroid (B01); 44,019 SF, 2 story (verified)
+    guest_center:           {x: 0,    y: 64, z: 128}    # B01 centroid, REPOINTED to as-built (145x76, x[-72,72] z[90,165]); was z75 GRID. 44,019 SF, 2 story (verified)
     guest_center_entrance:  {x: 0,    y: 64, z: 113}    # coordinates.yaml N03 (south face, faces parking)
     internal_street_south:  {x: 0,    y: 64, z: 25}     # coordinates.yaml N06 (start of the model-home street)
     culdesac_terminus:      {x: 0,    y: 64, z: -215}   # coordinates.yaml N07 (dead-end, verified street char.)

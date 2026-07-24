@@ -106,9 +106,12 @@ markerset:
       world: world
       x: 0
       y: 64
-      z: 25
+      # REPOINTED to the as-built street mid-point. The surveyed lots run
+      # z+55 -> z-195 (6 lots, both sides), so z-70 is the centre of that run;
+      # was z25, which sat off the north end of the street as actually built.
+      z: -70
       icon: house
-      label: "Showcase Homes — internal street (12 homes)"      # 12-home roster verified (REF-017)
+      label: "Showcase Homes — internal street (12 homes)"      # 12-home roster CONFIRMED as-built 2026-07-24
       confidence: verified
     - id: msa_cookingschool
       world: world
