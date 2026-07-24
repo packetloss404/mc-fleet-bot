@@ -149,38 +149,84 @@ shaft cut to y58, and a torch ring. Shaft verified open at y61.
 > in `routeToMineBlocks`). Worth doing if the fleet ends up working both ends of the map, but it is
 > not needed to occupy the town.
 
-## 4. Not yet decided
+## 4. Town Hall — BUILT 2026-07-24
 
-- **Town Hall footprint and style.** The hall centre is the town **capital** passed to
-  `POST /api/towns`, and `stylePreset` must be exactly `medieval-communal` or
-  `mid-century-civic` — anything else 400s.
-- **Who builds the hall.** Founding a town **starts the brain immediately**
-  (`createTown → startBrain`), so this is decided before the first 60-second tick: hand-build it
-  and found the town paused, or let the TownBrain design one. There is no supported way to tell
-  the brain "the hall already exists".
-- **The `protectedZones` box.** Once the hall footprint is fixed, this becomes the night muster
-  point. Draft, to be finalised against the real footprint:
+Operator chose **hand-build the hall, found the town paused**.
+
+**Hall: 25 × 13, `x[-97,-73]`, `z[-381,-369]`, floor y67.** Walls y68–73, gabled roof ridging at
+**y80**. Style **medieval-communal** — matched deliberately to the `stylePreset` the town was
+founded with, so anything the TownBrain later designs sits beside it coherently.
+
+- Stone-brick shell with spruce-log corner posts and wall plate; glass-pane windows on all four
+  elevations.
+- **Double spruce door on the SOUTH face**, facing the grove and the route down to MSA.
+- Interior: a 13 × 3 spruce council table down the centre, benches either side, and a **lectern on
+  a stone-slab dais at the north head** — the mayor's position. Hanging lanterns.
+- A bell over the door outside.
+- **41 × 41 plaza pad** levelled to y67 around it, stone-brick apron next to the hall, grass beyond.
+
+Built by `scripts/build_town_hall.py` over RCON — 91 commands, every `/fill` volume-checked and
+auto-split against the server cap. **6/6 post-build probes passed** (pad, floor, corner post,
+hollow interior, roof ridge, lectern).
+
+## 5. Town founded — PAUSED
+
+```
+id            town_mrzgshth_9d12c17d
+name          Ravensreach
+capital       (-85, 67, -375)          <- the hall
+styleSeed     medieval-communal
+mayorTitle    Mayor
+mayorPlayer   packetloss404
+paused        true
+```
+
+**`data/town.db` now holds its first rows ever** — `towns: 1`, `districts: 1` (the auto-created
+"Old Town" 64×64 around the capital), `events: 3`, `chronicle_entries: 1`. Every table had been
+empty since the schema was created.
+
+**Paused immediately after founding**, inside the first 60-second tick, because `createTown` calls
+`startBrain` straight away and there is no supported way to tell the brain "the hall already
+exists". While paused, `demandLoop`, `roleLoop`, `scheduleLoop`, `approvalLoop` and greetings are
+all frozen — residents genuinely idle. **It must be resumed for governance to run at all.**
+
+> The name **Ravensreach** was chosen here, not specified. Rename freely:
+> `PATCH /api/towns/town_mrzgshth_9d12c17d -d '{"name":"..."}'`.
+
+## 6. Still to do
+
+- **Enrol the five bots as residents.** Valid roles are `lumberjack | miner | farmer | blacksmith |
+  builder | guard | gatherer | idle` — `architect`, `surveyor`, `steward`, `scout` and `explorer`
+  are **not** valid and the route 400s. The founding tier target is `{lumberjack:1, farmer:1,
+  guard:1}`, and `roleLoop` reassigns anyone left `idle`. This is also the **anti-wandering
+  switch**: a resident with a non-idle role idles instead of running the roaming curriculum.
+- **The `protectedZones` muster box**, now that the footprint is real:
 
   ```yaml
   mining:
     protectedZones:
       - name: worker-town-hall
-        minX: -110
-        minY: 60
+        minX: -105
+        minY: 43          # NOT a typo -- see the offset note below
         minZ: -395
-        maxX: -60
+        maxX: -65
         maxY: 95
         maxZ: -355
         shelter: true
   ```
 
-  Note `getNearestProtectedCenter` returns the box **centre at `y = minY + 24`**, so `minY` is
-  chosen with that offset in mind. This **cannot be hot-patched** — `FIELD_TYPES.mining` only
-  types `minDigY`, and `validatePatch` silently drops keys it cannot express. It needs a
-  `config.yml` edit plus a restart, and `geofence.ts` memoises the whole `mining` section on
-  first read per worker thread.
+  `minY: 43` is deliberate. `getNearestProtectedCenter` returns the box centre at
+  **`y = minY + 24`**, so 43 puts the returned muster target at **y67** — the plaza surface. Set it
+  to 60 and bots would be sent to y84, well above the roof. The box also makes everything inside
+  undiggable, which protects the hall from being mined out.
 
-## 5. Sequencing note
+  **Cannot be hot-patched.** `FIELD_TYPES.mining` types only `minDigY`, so `validatePatch` silently
+  drops `protectedZones` (an array it cannot express) while still returning `ok:true`. Needs a
+  `config.yml` edit plus a restart, and `geofence.ts` memoises the whole `mining` section on first
+  read per worker thread.
+- **Resume the brain** once the above is in place.
+
+## 7. Sequencing note
 
 Reliable dusk homing needs **more than** this config. The night shelter goal is emitted at
 urgency 6 on a clear night and 7 when raining, but the override only fires at `urgency >= 7`.
