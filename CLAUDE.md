@@ -302,7 +302,7 @@ Events, highlights, chronicle:
 - `POST /api/towns/:id/chronicle/generate` - generate an entry (body: `{dayNumber?, force?}`)
 - `GET /api/towns/:id/journals` - resident journals
 
-Governance (mayor-only routes use the `pid` session cookie; see Auth migration notes):
+Governance (mayor-only routes require the signed `pid` session cookie from `POST /api/auth/login`):
 
 - `GET /api/towns/:id/decrees`, `GET /api/towns/:id/rules` - decree/rule reads
 - `POST /api/towns/:id/mayor/decree` - issue a decree (body: `{text}`, mayor-only)
@@ -344,13 +344,6 @@ Disasters and diplomacy:
 
 - `GET /` - redirects to `/dashboard/`
 - `GET /dashboard/*` - static dashboard files
-
-## Auth migration notes
-
-- `?legacyAuth=true` — when this query parameter is set on a Town Builder mayor-only API call, `requireMayor` falls back to reading the caller's identity from the body field `mayorPlayerName` instead of the signed `pid` session cookie. The fallback exists purely as a migration knob for external scripts written before the cookie-based session flow landed.
-- Sunset date: **2026-08-15** (see `LEGACY_AUTH_SUNSET_DATE` in `src/server/auth.ts`). After this date the legacy body-field path will be removed; callers must use the session cookie.
-- Migration path: callers should adopt the cookie-based session flow — `POST /api/auth/login` with `{ playerName, secret }` to mint a signed `pid` cookie, then drop the `?legacyAuth=true` query param and the `mayorPlayerName` body field from subsequent requests.
-- Every legacy-path invocation emits a `warn` log line so the frequency can be tracked in production logs ahead of the sunset cutover.
 
 ## Data
 

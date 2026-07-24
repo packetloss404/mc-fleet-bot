@@ -505,12 +505,10 @@ export function createAPIServer(
   /**
    * Phase 6-A mayor-only auth helper.
    *
-   * Followup #58 — the caller's identity is now sourced from the signed
-   * `pid` session cookie (POST /api/auth/login) instead of the
-   * honor-system body field `mayorPlayerName`. The legacy body-based
-   * path is still accepted when the request includes `?legacyAuth=true`,
-   * which exists purely to ease migration of any external scripts that
-   * haven't been updated to call /api/auth/login first.
+   * Followup #58 — the caller's identity is sourced from the signed
+   * `pid` session cookie (POST /api/auth/login). The legacy
+   * `?legacyAuth=true` + `mayorPlayerName` body-field fallback was
+   * removed 2026-07-24 after a clean week of production logs.
    *
    * Returns true when the caller is the mayor; otherwise sends a 403 with
    * a descriptive error and returns false. Routes should bail immediately

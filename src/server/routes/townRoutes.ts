@@ -16,7 +16,7 @@ import { townToDTO } from '../../town/TownManager';
 import { ScheduleManager } from '../../town/ScheduleManager';
 import { TOWN_ROLES, type TownRole } from '../../town/RoleManager';
 import { MAX_DECREE_TEXT_LENGTH } from '../../town/DecreeManager';
-import { getSessionPlayerName, isLegacyAuthRequested } from '../auth';
+import { getSessionPlayerName } from '../auth';
 import { asyncH, sanitizeErrorMessage } from './helpers';
 import { logger } from '../../util/logger';
 
@@ -41,16 +41,11 @@ export function registerTownRoutes(
       return false;
     }
 
-    // Prefer the session cookie. When absent, optionally fall back to the
-    // legacy body field (gated on the explicit migration flag).
-    const sessionName = getSessionPlayerName(req);
-    let claimed: string | null = sessionName;
-    if (!claimed && isLegacyAuthRequested(req)) {
-      const legacy = ((req.body ?? {}) as { mayorPlayerName?: unknown }).mayorPlayerName;
-      if (typeof legacy === 'string' && legacy.length > 0) {
-        claimed = legacy;
-      }
-    }
+    // Caller identity comes from the signed `pid` session cookie only
+    // (POST /api/auth/login). The legacy `?legacyAuth=true` + body-field
+    // `mayorPlayerName` fallback was removed 2026-07-24 after a clean
+    // week of production logs (originally sunset 2026-08-15).
+    const claimed = getSessionPlayerName(req);
 
     if (!claimed) {
       res.status(401).json({ error: 'Not signed in — POST /api/auth/login first' });
@@ -712,8 +707,8 @@ export function registerTownRoutes(
   // child town. Returns the proposal + execution result so the dashboard
   // can surface "Founded <name> 256 blocks <direction>."
   //
-  // Phase 6-A — gated behind requireMayor: body must include
-  // `mayorPlayerName` matching the town's config.mayor.playerName.
+  // Phase 6-A — gated behind requireMayor (session cookie must belong to
+  // the town's mayor).
   app.post('/api/towns/:id/expand', (req: Request, res: Response) => {
     const tm = botManager.getTownManager();
     const parent = tm.getTown(String(req.params.id));
@@ -802,7 +797,7 @@ export function registerTownRoutes(
   //       — outgoing edges from this town with state + trust + recent
   //         events. Used by the dashboard's diplomacy view.
   //  POST /api/towns/:id/relationships/:peerTownId
-  //       body: { state: 'allied'|'rival'|'neutral', mayorPlayerName, reason? }
+  //       body: { state: 'allied'|'rival'|'neutral', reason? }
   //       — admin override. Mayor-gated via requireMayor. Bypasses the
   //         sustain window and commits immediately.
   //  GET  /api/town-relationships
@@ -965,7 +960,7 @@ export function registerTownRoutes(
   //  - POST   /api/towns/:id/approvals/:approvalId/vote — cast a single
   //           bot's vote (body: { voterBotName, choice: 'yes'|'no' }).
   //  - POST   /api/towns/:id/approvals/:approvalId/decide — mayor-direct
-  //           decide (body: { mayorPlayerName, choice: 'approved'|'denied' }).
+  //           decide (mayor session cookie; body: { choice: 'approved'|'denied' }).
   //
   //  All three reach the brain's ApprovalManager via TownBrain.getApprovalManager().
   // ───────────────────────────────────────────────────────────────────
@@ -1032,8 +1027,8 @@ export function registerTownRoutes(
     res.json({ approval: approvalManager.getApproval(approvalId) });
   });
 
-  // Phase 8-followup #55 — mayor-gated by default. Body must include
-  // `mayorPlayerName` matching the town's mayor. Admin override: pass
+  // Phase 8-followup #55 — mayor-gated by default (session cookie must
+  // belong to the town's mayor). Admin override: pass
   // `?admin=true` on the query string to bypass the mayor check (intended
   // for break-glass / ops scripts). Without admin=true and without a valid
   // mayor signature, the request 403s through requireMayor.
@@ -1079,7 +1074,7 @@ export function registerTownRoutes(
   });
 
   // Phase 8-followup #56 — flip a town's `approvalMode` between 'mayor' and
-  // 'vote'. Mayor-gated via requireMayor. Body: { mode, mayorPlayerName }.
+  // 'vote'. Mayor-gated via requireMayor. Body: { mode }.
   // Returns the updated town DTO so the dashboard can refresh without an
   // extra GET. Records `approval:mode_changed` when the mode actually flips.
   app.post('/api/towns/:id/approval-mode', (req: Request, res: Response) => {
@@ -1131,7 +1126,7 @@ export function registerTownRoutes(
   //
   // POST /api/towns/:id/mayor/decree — the mayor types a free-form directive
   // and it gets dropped on the blackboard as a high-priority swarm task with
-  // source 'mayor_directive'. Body: { mayorPlayerName: string, text: string }.
+  // source 'mayor_directive'. Body: { text: string }.
   // Returns the queued BlackboardTask so the dashboard can surface it.
   app.post('/api/towns/:id/mayor/decree', (req: Request, res: Response) => {
     const tm = botManager.getTownManager();

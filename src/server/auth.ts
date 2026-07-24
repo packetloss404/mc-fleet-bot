@@ -4,20 +4,6 @@ import type { Config } from '../config';
 import { logger } from '../util/logger';
 
 /**
- * Followup #66 — Legacy auth fallback sunset.
- *
- * The Town's `requireMayor` (in `src/server/api.ts`) optionally accepts a
- * body-field `mayorPlayerName` when the URL carries `?legacyAuth=true`.
- * That fallback exists to give external scripts a migration window to adopt
- * the cookie-based session flow (POST /api/auth/login → signed `pid` cookie).
- *
- * After this date callers must use the session cookie; the legacy body-field
- * path will be removed entirely. Update CLAUDE.md ("Auth migration notes")
- * if this date changes.
- */
-export const LEGACY_AUTH_SUNSET_DATE = '2026-08-15';
-
-/**
  * Lightweight dashboard auth + plugin auth + player-identity session.
  *
  * Behavior:
@@ -397,55 +383,6 @@ function parsePidValue(value: string | undefined): string | null {
 export function getSessionPlayerName(req: Request): string | null {
   const raw = readCookie(req, PID_COOKIE_NAME);
   return parsePidValue(raw);
-}
-
-/**
- * Followup #66 — Legacy auth fallback detector.
- *
- * The Town's `requireMayor` helper (in `src/server/api.ts`) consults this
- * to decide whether to honor the legacy honor-system body field
- * `mayorPlayerName`. The fallback is gated on the URL query parameter
- * `?legacyAuth=true` and exists ONLY as a migration knob: any caller still
- * relying on it should switch to the session-cookie flow before the sunset
- * date (see `LEGACY_AUTH_SUNSET_DATE`).
- *
- * Behavior:
- *  - Returns true when the request carries `?legacyAuth=true`.
- *  - Emits a `warn` log line each time the legacy path is exercised, so
- *    production logs surface a clear "this is still happening" signal that
- *    we can grep for ahead of the sunset cutover.
- *
- * Migration path for callers: POST `/api/auth/login` with
- * `{ playerName, secret }` to mint a `pid` cookie, then drop the
- * `?legacyAuth=true` query param and the `mayorPlayerName` body field.
- */
-export function isLegacyAuthRequested(req: Request): boolean {
-  const requested = String((req.query as Record<string, unknown>)?.legacyAuth ?? '') === 'true';
-  if (!requested) return false;
-
-  // Followup #66 — past the sunset date the fallback is dead. Callers must
-  // switch to the cookie-based session flow. We still log so production
-  // can spot late-migrating callers.
-  const sunsetMs = Date.parse(LEGACY_AUTH_SUNSET_DATE);
-  if (Number.isFinite(sunsetMs) && Date.now() > sunsetMs) {
-    logger.warn(
-      {
-        path: req.originalUrl?.split('?')[0] ?? req.path,
-        sunsetDate: LEGACY_AUTH_SUNSET_DATE,
-      },
-      'auth: legacy ?legacyAuth=true REJECTED — sunset date has passed; caller must use /api/auth/login session cookie',
-    );
-    return false;
-  }
-
-  logger.warn(
-    {
-      path: req.originalUrl?.split('?')[0] ?? req.path,
-      sunsetDate: LEGACY_AUTH_SUNSET_DATE,
-    },
-    'auth: legacy ?legacyAuth=true fallback exercised — caller should migrate to /api/auth/login session cookie',
-  );
-  return true;
 }
 
 function buildPidCookie(req: Request, value: string, clear: boolean): string {
