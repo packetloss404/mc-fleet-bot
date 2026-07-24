@@ -142,6 +142,12 @@ const HAND_MINEABLE = new Set([
 // DependencyResolver
 // ---------------------------------------------------------------------------
 
+/**
+ * Wood/material variants that are valid but rarely what a bot should default
+ * to. Only applied as a tie-break when inventory is unknown.
+ */
+const EXOTIC_MATERIAL_RE = /^(bamboo|cherry_|crimson_|warped_|mangrove_|acacia_|jungle_|dark_oak_|birch_|spruce_|pale_oak_)/;
+
 export class DependencyResolver {
   private readonly data: any; // minecraft-data IndexedData
   private readonly version: string;
@@ -281,7 +287,7 @@ export class DependencyResolver {
     }
 
     // 4. Check if it has a crafting recipe
-    const parsed = this.findRecipe(item);
+    const parsed = this.findRecipe(item, inv);
     if (parsed) {
       const batchesNeeded = Math.ceil(remaining / parsed.resultCount);
       const children: DependencyNode[] = [];
@@ -355,18 +361,89 @@ export class DependencyResolver {
   }
 
   /**
+   * Rank recipe variants: prefer one the bot can actually make right now,
+   * then avoid compacting recipes, then prefer the simplest.
+   *
+   * Compacting (N of one material -> 1 of another, e.g. 9 nuggets -> 1 ingot,
+   * or the reverse) is almost never the route a bot should take to obtain a
+   * base material, and it recurses badly during dependency resolution.
+   */
+  private pickBestRecipe(recipes: any[], inventory?: Record<string, number>): any | null {
+    if (recipes.length === 0) return null;
+    if (recipes.length === 1) return recipes[0];
+
+    const score = (recipe: any): number => {
+      const counts = new Map<number, number>();
+      const add = (cell: any) => {
+        const id = this.extractId(cell);
+        if (id == null) return;
+        counts.set(id, (counts.get(id) ?? 0) + 1);
+      };
+      if (recipe.inShape) for (const row of recipe.inShape) for (const cell of row) add(cell);
+      else if (recipe.ingredients) for (const cell of recipe.ingredients) add(cell);
+      if (counts.size === 0) return -1000;
+
+      let s = 0;
+      // Penalise compacting: a single distinct ingredient used 4 or 9 times.
+      const total = [...counts.values()].reduce((a, b) => a + b, 0);
+      if (counts.size === 1 && (total === 4 || total === 9)) s -= 50;
+
+      if (inventory) {
+        let satisfied = 0;
+        for (const [id, need] of counts) {
+          const nm = this.data.items[id]?.name;
+          if (nm && (inventory[nm] ?? 0) >= need) satisfied += 1;
+        }
+        // Strongly prefer a variant the bot can craft from what it holds.
+        s += (satisfied / counts.size) * 100;
+      }
+      // Default-variant preference, used when we have no inventory to go on.
+      // minecraft-data's variant order is arbitrary, which yielded live
+      // nonsense like `stick = 2 bamboo` and `wooden_pickaxe = 3 cherry_planks`
+      // in an oak world — sending bots to source materials that aren't there.
+      // Oak is the overwhelmingly common default; exotic wood variants are
+      // only correct when the bot actually holds them (handled by the
+      // inventory term above, which outweighs this).
+      for (const id of counts.keys()) {
+        const nm = this.data.items[id]?.name ?? '';
+        if (nm.startsWith('oak_')) s += 5;
+        else if (EXOTIC_MATERIAL_RE.test(nm)) s -= 5;
+      }
+
+      // Tie-break toward the simplest recipe.
+      s -= counts.size;
+      return s;
+    };
+
+    let best = recipes[0];
+    let bestScore = score(best);
+    for (const r of recipes.slice(1)) {
+      const sc = score(r);
+      if (sc > bestScore) { best = r; bestScore = sc; }
+    }
+    return best;
+  }
+
+  /**
    * Find the best crafting recipe for an item from minecraft-data.
    * Returns null if no recipe exists.
    */
-  private findRecipe(itemName: string): ParsedRecipe | null {
+  private findRecipe(itemName: string, inventory?: Record<string, number>): ParsedRecipe | null {
     const itemInfo = this.data.itemsByName[itemName];
     if (!itemInfo) return null;
 
     const recipes: any[] | undefined = this.data.recipes[itemInfo.id];
     if (!recipes || recipes.length === 0) return null;
 
-    // Pick the first recipe (minecraft-data may list several variants)
-    const recipe = recipes[0];
+    // Choose among variants instead of blindly taking recipes[0].
+    //
+    // minecraft-data lists every variant: `wooden_pickaxe` has one per plank
+    // type, and `iron_ingot` includes the COMPACTING recipe (9 iron_nugget ->
+    // 1 ingot) alongside real ones. Taking [0] produced live nonsense like
+    // "wooden_pickaxe = 3 cherry_planks" for a bot holding oak, and
+    // "iron_ingot = 9 iron_nugget" when the bot should smelt ore — sending it
+    // to gather materials it had no reason to want.
+    const recipe = this.pickBestRecipe(recipes, inventory) ?? recipes[0];
     const ingredients: RecipeIngredient[] = [];
 
     if (recipe.inShape) {

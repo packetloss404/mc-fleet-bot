@@ -1,5 +1,33 @@
 import fs from 'fs';
 import path from 'path';
+import * as crypto from 'crypto';
+
+/**
+ * Build a UNIQUE temp path for an atomic write.
+ *
+ * A fixed `<file>.tmp` is not atomic when more than one writer targets the
+ * same file: each of the 5 bot worker threads holds its own StatsTracker,
+ * SocialMemory, PlanLibrary, SkillLibrary and qa-cache over the SAME paths, so
+ * two writers shared one temp file and tore each other's output mid-write.
+ * That is the source of the corrupt `qa_cache.json` and a contributor to the
+ * 47.9% orphan rate in `skills/`.
+ *
+ * pid + random suffix makes each writer's temp file private; the rename is
+ * still atomic, so the reader sees either the old file or a complete new one.
+ * (The same pattern is already used for schematic uploads.)
+ *
+ * NOTE: this makes each write self-consistent. It does NOT make concurrent
+ * read-modify-write sequences safe — last writer still wins on whole-file
+ * rewrites. Fixing lost updates needs a single writer or a real store.
+ */
+function tempPathFor(filePath: string): string {
+  return `${filePath}.${process.pid}.${crypto.randomBytes(6).toString('hex')}.tmp`;
+}
+
+/** Remove a temp file, ignoring errors — best-effort cleanup on a failed write. */
+function discard(tmpPath: string): void {
+  try { fs.unlinkSync(tmpPath); } catch { /* nothing to clean up */ }
+}
 
 /**
  * Write JSON data to a file atomically by first writing to a .tmp file
@@ -13,9 +41,14 @@ export function atomicWriteJsonSync(filePath: string, data: any): void {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
-  const tmpPath = filePath + '.tmp';
-  fs.writeFileSync(tmpPath, JSON.stringify(data, null, 2));
-  fs.renameSync(tmpPath, filePath);
+  const tmpPath = tempPathFor(filePath);
+  try {
+    fs.writeFileSync(tmpPath, JSON.stringify(data, null, 2));
+    fs.renameSync(tmpPath, filePath);
+  } catch (err) {
+    discard(tmpPath);
+    throw err;
+  }
 }
 
 /**
@@ -29,9 +62,14 @@ export async function atomicWriteJson(filePath: string, data: any): Promise<void
   if (!fs.existsSync(dir)) {
     await fs.promises.mkdir(dir, { recursive: true });
   }
-  const tmpPath = filePath + '.tmp';
-  await fs.promises.writeFile(tmpPath, JSON.stringify(data, null, 2));
-  await fs.promises.rename(tmpPath, filePath);
+  const tmpPath = tempPathFor(filePath);
+  try {
+    await fs.promises.writeFile(tmpPath, JSON.stringify(data, null, 2));
+    await fs.promises.rename(tmpPath, filePath);
+  } catch (err) {
+    discard(tmpPath);
+    throw err;
+  }
 }
 
 /**
@@ -44,9 +82,14 @@ export function atomicWriteTextSync(filePath: string, content: string): void {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
-  const tmpPath = filePath + '.tmp';
-  fs.writeFileSync(tmpPath, content);
-  fs.renameSync(tmpPath, filePath);
+  const tmpPath = tempPathFor(filePath);
+  try {
+    fs.writeFileSync(tmpPath, content);
+    fs.renameSync(tmpPath, filePath);
+  } catch (err) {
+    discard(tmpPath);
+    throw err;
+  }
 }
 
 /** Async sibling of {@link atomicWriteTextSync}. */
@@ -55,9 +98,14 @@ export async function atomicWriteText(filePath: string, content: string): Promis
   if (!fs.existsSync(dir)) {
     await fs.promises.mkdir(dir, { recursive: true });
   }
-  const tmpPath = filePath + '.tmp';
-  await fs.promises.writeFile(tmpPath, content);
-  await fs.promises.rename(tmpPath, filePath);
+  const tmpPath = tempPathFor(filePath);
+  try {
+    await fs.promises.writeFile(tmpPath, content);
+    await fs.promises.rename(tmpPath, filePath);
+  } catch (err) {
+    discard(tmpPath);
+    throw err;
+  }
 }
 
 /**
@@ -69,7 +117,12 @@ export function atomicWriteBufferSync(filePath: string, data: Buffer | Uint8Arra
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
-  const tmpPath = filePath + '.tmp';
-  fs.writeFileSync(tmpPath, data);
-  fs.renameSync(tmpPath, filePath);
+  const tmpPath = tempPathFor(filePath);
+  try {
+    fs.writeFileSync(tmpPath, data);
+    fs.renameSync(tmpPath, filePath);
+  } catch (err) {
+    discard(tmpPath);
+    throw err;
+  }
 }

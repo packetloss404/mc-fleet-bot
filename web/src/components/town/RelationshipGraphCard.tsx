@@ -410,12 +410,12 @@ function timeAgo(ts: number): string {
 }
 
 /**
- * Resolve the same API base the rest of the dashboard uses without
- * importing the private constant. Falls back to localhost so the SSR
- * type-check happy-path doesn't blow up if the env is unset.
+ * Resolve the same API base the rest of the dashboard uses. Defaults to the
+ * empty string — a same-origin relative base — so the browser hits the Next
+ * rewrite rather than a `localhost:3001` that only exists on the server.
  */
 function API_BASE_OR_FALLBACK(): string {
-  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+  return process.env.NEXT_PUBLIC_API_URL || '';
 }
 
 export default RelationshipGraphCard;

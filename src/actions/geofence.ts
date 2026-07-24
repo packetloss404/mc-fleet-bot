@@ -51,6 +51,8 @@ interface MiningGeofence {
   protectedZones: ProtectedZone[];
   mineSite: MineSite | null;
   routeToMineBlocks: Set<string>;
+  /** Y below which digging is refused outside the mine site. Null = no floor. */
+  minDigY: number | null;
 }
 
 let cached: MiningGeofence | null = null;
@@ -60,17 +62,49 @@ function load(): MiningGeofence {
   let protectedZones: ProtectedZone[] = [];
   let mineSite: MineSite | null = null;
   let routeToMineBlocks = new Set<string>();
+  let minDigY: number | null = null;
   try {
     const cfg = loadConfig() as any;
     const m = cfg.mining || {};
     if (Array.isArray(m.protectedZones)) protectedZones = m.protectedZones;
     if (m.mineSite && typeof m.mineSite.x === 'number') mineSite = m.mineSite;
     if (Array.isArray(m.routeToMineBlocks)) routeToMineBlocks = new Set(m.routeToMineBlocks);
+    if (typeof m.minDigY === 'number') minDigY = m.minDigY;
   } catch (err: any) {
     logger.warn(`[geofence] could not load mining config, geofence disabled: ${err?.message ?? err}`);
   }
-  cached = { protectedZones, mineSite, routeToMineBlocks };
+  cached = { protectedZones, mineSite, routeToMineBlocks, minDigY };
   return cached;
+}
+
+/**
+ * True if digging (x,y,z) would breach the dig-depth floor.
+ *
+ * Bots default to tunnelling straight down when a surface resource isn't
+ * immediately visible, then get entombed tens of blocks under the map — at
+ * which point every surface task ("mine 1 oak log") fails forever, because
+ * there are no trees at y14. The floor makes that structurally impossible.
+ *
+ * The communal mine site is exempt: deep extraction is legitimate, it just has
+ * to happen at ONE sanctioned place instead of wherever a bot is standing.
+ * Fail-open — no `minDigY` configured means no floor and prior behaviour.
+ */
+export function isBelowDigFloor(x: number, y: number, z: number): boolean {
+  const { minDigY, mineSite } = load();
+  if (minDigY === null) return false;
+  if (y >= minDigY) return false;
+  if (mineSite) {
+    const r = mineSite.radius ?? 24;
+    const dx = x - mineSite.x;
+    const dz = z - mineSite.z;
+    if (dx * dx + dz * dz <= r * r) return false; // sanctioned deep mine
+  }
+  return true;
+}
+
+/** The configured dig-depth floor, or null when unset. */
+export function getMinDigY(): number | null {
+  return load().minDigY;
 }
 
 /** True if the block at (x,y,z) lies inside any protected build zone. */

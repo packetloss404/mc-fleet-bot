@@ -1753,15 +1753,30 @@ export class VoyagerLoop {
         // Save the named function as a reusable skill
         const skillName = this.taskToSkillName(task);
         const quality = this.estimateSkillQuality(criticResult.reason, generated.functionCode);
-        if (quality >= 0.65) {
-          await this.skillLibrary.save(
+        if (useDirectSkill && bestSkill) {
+          // The task was solved by REUSING an existing skill — credit that
+          // skill and do not clone it.
+          //
+          // Saving here minted a fresh `_vN` on every success and credited the
+          // copy, while the skill that actually worked only ever absorbed
+          // failures (recorded below). A reused skill could therefore never be
+          // credited, which is what drove `_v35`-style duplicate families and,
+          // once the cap filled, a save/evict treadmill: 179 semantic families
+          // occupying 500 slots with 272 zero-success entries.
+          this.skillLibrary.recordOutcome(bestSkill.name, true);
+        } else if (quality >= 0.65) {
+          // Freshly generated code — store it, and credit the name the library
+          // ACTUALLY stored it under. Collisions are versioned to `_vN`;
+          // recording against the base name credited a different (older) skill
+          // and left the new one at zero successes forever.
+          const savedName = await this.skillLibrary.save(
             skillName,
             task.description,
             task.keywords,
             generated.functionCode,
             quality
           );
-          this.skillLibrary.recordOutcome(skillName, true);
+          if (savedName) this.skillLibrary.recordOutcome(savedName, true);
         }
         this.curriculumAgent.updateProgress(task, true);
         this.curriculumAgent.getBlockerMemory().clearTask(task);

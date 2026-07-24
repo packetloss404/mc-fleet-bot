@@ -1,4 +1,5 @@
 import { LLMClient, LLMResponse } from './LLMClient';
+import type { LLMCallOptions } from './TaskType';
 import { Semaphore } from '../util/Semaphore';
 
 type GeminiLikeContent = {
@@ -35,7 +36,7 @@ export class OpenAIClient implements LLMClient {
     this.semaphore = new Semaphore(opts.maxConcurrentRequests ?? 3);
   }
 
-  async chat(systemPrompt: string, contents: GeminiLikeContent[], maxTokens?: number): Promise<LLMResponse> {
+  async chat(systemPrompt: string, contents: GeminiLikeContent[], maxTokens?: number, options?: LLMCallOptions): Promise<LLMResponse> {
     await this.semaphore.acquire();
     try {
       const messages: Array<{ role: 'system' | 'user' | 'assistant'; content: string }> = [];
@@ -55,8 +56,13 @@ export class OpenAIClient implements LLMClient {
       // model id and branch — the legacy path (max_tokens + temperature) still serves
       // gpt-4* and OpenAI-compatible hosts (OpenRouter, Azure, llama.cpp) reached via
       // baseUrl. Verified June 2026 against OpenAI gpt-5.5 docs.
-      const isReasoningEra = /^(gpt-5|gpt-6|o[1-9])/i.test(this.model) || /codex/i.test(this.model);
-      const body: Record<string, any> = { model: this.model, messages };
+      // A route may override the model per call, so resolve it BEFORE the
+      // reasoning-era detection below — that branch decides max_completion_tokens
+      // vs max_tokens and whether temperature is sent, and getting it from the
+      // wrong model id is an HTTP 400.
+      const effectiveModel = options?.model ?? this.model;
+      const isReasoningEra = /^(gpt-5|gpt-6|o[1-9])/i.test(effectiveModel) || /codex/i.test(effectiveModel);
+      const body: Record<string, any> = { model: effectiveModel, messages };
       if (isReasoningEra) {
         body.max_completion_tokens = tokenLimit;
         // Deliberately omit temperature: reasoning models only accept the default.
@@ -93,8 +99,8 @@ export class OpenAIClient implements LLMClient {
     }
   }
 
-  async generate(systemPrompt: string, userMessage: string, maxTokens?: number): Promise<LLMResponse> {
-    return this.chat(systemPrompt, [{ role: 'user', parts: [{ text: userMessage }] }], maxTokens);
+  async generate(systemPrompt: string, userMessage: string, maxTokens?: number, options?: LLMCallOptions): Promise<LLMResponse> {
+    return this.chat(systemPrompt, [{ role: 'user', parts: [{ text: userMessage }] }], maxTokens, options);
   }
 
   /** OpenAI text-embedding-3-small / -large via /v1/embeddings. */
@@ -119,4 +125,10 @@ export class OpenAIClient implements LLMClient {
     const json: any = await resp.json();
     return (json.data || []).map((d: any) => d.embedding as number[]);
   }
+
+  /** Concrete model ID, for accurate TokenLedger cost attribution. */
+  getModelId(): string {
+    return this.model;
+  }
+
 }

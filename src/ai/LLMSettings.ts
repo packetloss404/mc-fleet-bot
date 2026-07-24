@@ -91,13 +91,20 @@ export class LLMSettings {
     }
   }
 
-  /** Get current settings (API keys are masked). */
-  getSettings(): LLMSettingsData & { providers: (ProviderConfig & { keyMasked: string })[] } {
+  /**
+   * Get current settings (API keys are masked).
+   *
+   * The raw `apiKey` is stripped, not just supplemented with `keyMasked`. This
+   * feeds `GET /api/llm/providers`, which is reachable by anything that can
+   * hit the API port — spreading `...p` here leaked every provider key in
+   * plaintext. Use `getRawSettings()` for internal callers that need the key.
+   */
+  getSettings(): Omit<LLMSettingsData, 'providers'> & { providers: (Omit<ProviderConfig, 'apiKey'> & { keyMasked: string })[] } {
     return {
       ...this.settings,
-      providers: this.settings.providers.map((p) => ({
-        ...p,
-        keyMasked: p.apiKey ? p.apiKey.slice(0, 6) + '...' + p.apiKey.slice(-4) : '(not set)',
+      providers: this.settings.providers.map(({ apiKey, ...rest }) => ({
+        ...rest,
+        keyMasked: apiKey ? apiKey.slice(0, 6) + '...' + apiKey.slice(-4) : '(not set)',
       })),
     };
   }
@@ -297,13 +304,25 @@ export class LLMSettings {
     return this.currentRouter;
   }
 
+  /**
+   * Register any provider that has an env key and isn't configured yet.
+   *
+   * This used to bail entirely when ANY provider existed, which made the env
+   * vars write-once: with gemini+anthropic already in llm-settings.json,
+   * adding MINIMAX_API_KEY or OPENAI_API_KEY to .env did nothing at all, with
+   * no error — the provider simply never appeared. Seeding per-provider makes
+   * dropping in a new key turn-key.
+   *
+   * Existing entries are never modified: a key or model edited through the
+   * dashboard wins over the environment.
+   */
   private seedFromEnv(): void {
-    // Only seed if no providers configured yet
-    if (this.settings.providers.length > 0) return;
+    const already = new Set(this.settings.providers.map((p) => p.name));
+    const seededBefore = this.settings.providers.length;
 
     const googleKey = process.env.GOOGLE_API_KEY;
     if (googleKey) {
-      this.settings.providers.push({
+      if (!already.has('gemini')) this.settings.providers.push({
         name: 'gemini',
         apiKey: googleKey,
         model: 'gemini-2.5-flash-preview-05-20',
@@ -314,7 +333,7 @@ export class LLMSettings {
 
     const anthropicKey = process.env.ANTHROPIC_API_KEY;
     if (anthropicKey) {
-      this.settings.providers.push({
+      if (!already.has('anthropic')) this.settings.providers.push({
         name: 'anthropic',
         apiKey: anthropicKey,
         model: 'claude-opus-4-8',
@@ -325,10 +344,10 @@ export class LLMSettings {
 
     const openaiKey = process.env.OPENAI_API_KEY;
     if (openaiKey) {
-      this.settings.providers.push({
+      if (!already.has('openai')) this.settings.providers.push({
         name: 'openai',
         apiKey: openaiKey,
-        model: 'gpt-5.5',
+        model: 'gpt-5.6-sol',
         maxConcurrentRequests: 3,
         enabled: true,
       });
@@ -336,7 +355,7 @@ export class LLMSettings {
 
     const voyageKey = process.env.VOYAGE_API_KEY;
     if (voyageKey) {
-      this.settings.providers.push({
+      if (!already.has('voyage')) this.settings.providers.push({
         name: 'voyage',
         apiKey: voyageKey,
         model: 'voyage-4-large',
@@ -347,7 +366,7 @@ export class LLMSettings {
 
     const minimaxKey = process.env.MINIMAX_API_KEY;
     if (minimaxKey) {
-      this.settings.providers.push({
+      if (!already.has('minimax')) this.settings.providers.push({
         name: 'minimax',
         apiKey: minimaxKey,
         model: 'MiniMax-M3',
@@ -358,7 +377,7 @@ export class LLMSettings {
 
     // Ollama: enabled when OLLAMA_BASE_URL is set (no API key needed for local).
     if (process.env.OLLAMA_BASE_URL) {
-      this.settings.providers.push({
+      if (!already.has('ollama')) this.settings.providers.push({
         name: 'ollama',
         apiKey: '',
         model: process.env.OLLAMA_CHAT_MODEL || 'llama3.2:3b',
@@ -367,8 +386,16 @@ export class LLMSettings {
       });
     }
 
-    if (this.settings.providers.length > 0) {
+    // Only (re)pick a default when there wasn't one — never steal the default
+    // away from a provider the operator selected.
+    if (this.settings.providers.length > 0 && !this.settings.defaultProvider) {
       this.settings.defaultProvider = this.settings.providers[0].name;
+    }
+    if (this.settings.providers.length !== seededBefore) {
+      logger.info(
+        { added: this.settings.providers.filter((p) => !already.has(p.name)).map((p) => p.name) },
+        'Seeded new LLM providers from environment',
+      );
       this.save();
     }
   }
@@ -377,7 +404,9 @@ export class LLMSettings {
     try {
       const dir = path.dirname(SETTINGS_PATH);
       if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-      const tmpPath = SETTINGS_PATH + '.tmp';
+      // Unique temp name: a fixed `.tmp` is not atomic under concurrent
+      // writers (see util/atomicWrite.ts for the same fix).
+      const tmpPath = `${SETTINGS_PATH}.${process.pid}.${Math.random().toString(16).slice(2)}.tmp`;
       // mode 0o600: this file holds plaintext provider API keys. Restrict to
       // owner read/write so other local users can't read the credentials.
       // writeFileSync sets the mode on create; rename preserves it.

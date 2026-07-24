@@ -33,7 +33,7 @@ export function persistConfig(config: Config, configPath?: string): void {
  * outside this set is rejected with 400 — we do not want operators editing
  * `api`, `minecraft`, `bots`, `llm`, `skills`, or `logging` over HTTP.
  */
-export const PATCHABLE_SECTIONS = ['behavior', 'affinity', 'instincts', 'voyager', 'minecraft'] as const;
+export const PATCHABLE_SECTIONS = ['behavior', 'affinity', 'instincts', 'voyager', 'minecraft', 'mining'] as const;
 export type PatchableSection = (typeof PATCHABLE_SECTIONS)[number];
 
 /**
@@ -79,6 +79,10 @@ export const RESTART_REQUIRED_FIELDS: Record<PatchableSection, ReadonlySet<strin
   minecraft: new Set([
     'host', 'port', 'version', 'auth', 'loginFlow', 'loginPassword', 'selectClass',
   ]),
+  // The mining geofence is read through a module-level cache in
+  // actions/geofence.ts (`load()` memoises into `cached`), so a live worker
+  // keeps the values it booted with until the cache is reset.
+  mining: new Set(['minDigY']),
 };
 
 /**
@@ -128,6 +132,12 @@ const FIELD_TYPES: Record<PatchableSection, Record<string, 'number' | 'boolean' 
     loginFlow: 'string',
     loginPassword: 'string',
     selectClass: 'boolean',
+  },
+  mining: {
+    // Dig-depth floor. mineSite/protectedZones/routeToMineBlocks are nested
+    // objects and arrays, which this flat type-guard map cannot express, so
+    // only the scalar is patchable over HTTP; the rest stay file-edited.
+    minDigY: 'number',
   },
 };
 

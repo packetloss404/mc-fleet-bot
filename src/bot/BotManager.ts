@@ -26,6 +26,9 @@ import { TownManager } from '../town/TownManager';
 import { RuleStore, TownRule } from '../town/RuleStore';
 import { ImpersonationMonitor, ImpersonationIncident, ImpersonationInput } from '../security/ImpersonationMonitor';
 
+/** How often to age out expired shared-world records (see BotManager constructor). */
+const SHARED_WORLD_PRUNE_INTERVAL_MS = 10 * 60 * 1000;
+
 interface SavedBot {
   name: string;
   personality: string;
@@ -54,6 +57,7 @@ export class BotManager {
   private cultureManager: CultureManager;
   private blackboardManager: BlackboardManager;
   private sharedWorldModel: SharedWorldModel;
+  private sharedWorldPruneTimer: ReturnType<typeof setInterval> | null = null;
   private swarmCoordinator: SwarmCoordinator;
   private dungeonMaster: DungeonMaster;
   private difficultyBalancer: DifficultyBalancer;
@@ -92,6 +96,20 @@ export class BotManager {
     this.cultureManager = new CultureManager(path.join(process.cwd(), 'data'));
     this.blackboardManager = new BlackboardManager(path.join(process.cwd(), 'data'));
     this.sharedWorldModel = new SharedWorldModel(path.join(process.cwd(), 'data', 'shared_world.json'));
+    // `pruneExpired()` is correct, complete, and had ZERO callers, so nothing
+    // ever aged out: shared_world.json reached 3 MB of which 1.87 MB (61%) was
+    // 11,108 threat records that had ALL already expired — and the whole file
+    // was being rewritten on a 2-second debounce. Run it on an interval, and
+    // once at boot so an existing bloated file is reclaimed immediately.
+    this.sharedWorldModel.pruneExpired();
+    this.sharedWorldPruneTimer = setInterval(() => {
+      try {
+        this.sharedWorldModel.pruneExpired();
+      } catch (err: any) {
+        logger.warn({ err: err?.message }, 'shared world prune failed');
+      }
+    }, SHARED_WORLD_PRUNE_INTERVAL_MS);
+    this.sharedWorldPruneTimer.unref?.();
     this.swarmCoordinator = new SwarmCoordinator(this.blackboardManager);
     this.dungeonMaster = new DungeonMaster();
     this.difficultyBalancer = new DifficultyBalancer();
@@ -680,7 +698,16 @@ export class BotManager {
         name: w.botName,
         personality: w.personality,
         mode: w.mode,
-        spawnLocation: w.getCachedStatus()?.position || w.spawnLocation || undefined,
+        // The CONFIGURED spawn only — never the live position.
+        //
+        // Persisting `getCachedStatus()?.position` here created a self-burying
+        // loop: a bot that wandered underground had that position saved as its
+        // spawn, BotInstance `/tp`d it back there on every spawn, it suffocated
+        // in the rock, respawned at the surface, and teleported itself under
+        // again. One server log carried 108 "suffocated in a wall" and 344
+        // self-issued /tp commands. Three of five bots were permanently
+        // entombed this way, with coordinates frozen in bots.json.
+        spawnLocation: w.spawnLocation || undefined,
       }));
 
       atomicWriteJsonSync(this.dataPath, { bots: data });

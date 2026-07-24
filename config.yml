@@ -2,7 +2,13 @@
 
 api:
   port: 3001
-  host: "0.0.0.0"
+  # Bound to loopback: every /api/* route is unauthenticated unless
+  # DASHBOARD_AUTH_SECRET is set, and the LLM provider routes expose provider
+  # config. Nothing off-host legitimately calls this API — the dashboard's
+  # browser bundle already targets http://localhost:3001 (NEXT_PUBLIC_API_URL
+  # is unset), so it was never reachable cross-host anyway. Use an SSH tunnel
+  # for remote access rather than reopening this to 0.0.0.0.
+  host: "127.0.0.1"
 
 minecraft:
   host: "10.80.13.14"
@@ -187,17 +193,31 @@ mining:
   # not exist here. Empty list = nothing protected, no shelter target; bots
   # build their own hut at night. Repopulate as this world gets built.
   protectedZones: []
+  # Dig-depth floor. Bots default to tunnelling straight down whenever a surface
+  # resource isn't immediately visible, then get entombed: on 2026-07-24 the
+  # fleet was found at y14/y35/y52/y61 with solid blocks overhead, and "Mine 1
+  # oak log" had been attempted 4,357 times at a 2% pass rate — there are no
+  # trees at y14. mineBlock now refuses any dig below this Y outside the mine
+  # site. 50 leaves ~14 blocks of headroom under the y64 surface for
+  # foundations, cellars and shallow coal/iron, while making runaway descent
+  # impossible. Unset this to restore the old (unbounded) behaviour.
+  minDigY: 50
   # Communal mine site: bots walk here before mining any routed block type, then
   # dig down/out AT the site instead of wherever they happen to be standing.
   # Unset since the repoint — the old site (1720,64,194) is ~1730 blocks from
   # spawn, and routing there failed every ore task. With no mineSite configured
   # the routing below is inert and bots mine ore wherever they find it. Set this
   # once a communal mine exists in this world:
-  # mineSite:
-  #   x: 0
-  #   y: 64
-  #   z: 0
-  #   radius: 24
+  # Set 2026-07-24 alongside minDigY: with a depth floor in force, deep
+  # extraction (diamonds, deepslate ores) needs ONE sanctioned place or ore
+  # tasks would fail everywhere. Sited east of the oak grove planted at
+  # x18-50/z42-54 so mining never eats the trees, and inside the y64 shelf the
+  # bots can actually path to. Digs inside this radius bypass the floor.
+  mineSite:
+    x: 80
+    y: 64
+    z: 42
+    radius: 20
   # Raw block types that must be sourced at the communal mine, not in town.
   # NOTE: bulk building materials (stone, cobblestone, dirt, gravel, the andesite/
   # diorite/granite/tuff/deepslate family) were REMOVED from this list so build

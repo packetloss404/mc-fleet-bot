@@ -1,3 +1,4 @@
+import { isBelowDigFloor, getMinDigY } from '../actions/geofence';
 import vm from 'vm';
 import { Bot } from 'mineflayer';
 import { goals } from 'mineflayer-pathfinder';
@@ -336,6 +337,24 @@ export class CodeExecutor {
                 `LEASHED: target (${Math.floor(x)},${Math.floor(z)}) is ${Math.round(targetDist)} blocks from home ` +
                 `(${this.leash.x},${this.leash.z}), outside the ${this.leash.radius}-block boundary. Stay near HQ — ` +
                 `only move to coordinates within ${this.leash.radius} blocks of home.`,
+              );
+            }
+          }
+        }
+        // Depth guard: refuse to path DOWN below the dig floor. The dig floor
+        // alone is not enough — a bot that can no longer TUNNEL down will
+        // happily walk back down the shafts it dug earlier, which is exactly
+        // what put Architect back at y13 minutes after being lifted out.
+        // Upward moves are always allowed so a stranded bot can climb out, and
+        // the communal mine site is exempt (isBelowDigFloor handles that).
+        {
+          const floorY = getMinDigY();
+          if (floorY !== null && isBelowDigFloor(Math.floor(x), Math.floor(y), Math.floor(z))) {
+            const cur = bot.entity.position;
+            if (y <= cur.y) {
+              throw new Error(
+                `TOO DEEP: target y=${Math.floor(y)} is below the dig-depth floor (y=${floorY}). ` +
+                `Do not go underground — work at the surface. Deep mining happens only at the communal mine site.`,
               );
             }
           }

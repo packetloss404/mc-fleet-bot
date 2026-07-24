@@ -61,7 +61,7 @@ export function BotTabOverview({ botName, personality }: Props) {
 
   useEffect(() => {
     let cancelled = false;
-    const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+    const base = process.env.NEXT_PUBLIC_API_URL || '';
     const loadLlm = () => {
       fetch(`${base}/api/llm/providers`, { credentials: 'include' })
         .then((r) => r.json())

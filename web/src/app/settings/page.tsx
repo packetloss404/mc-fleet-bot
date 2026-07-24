@@ -228,20 +228,26 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
 
   // Known model IDs per provider — surfaced in a datalist so users get a dropdown
   // but can still type any custom model ID (vendors release new ones constantly).
-  // Canonical model IDs verified against each vendor's API docs (April 2026).
+  // Canonical model IDs verified against each vendor's API docs (July 2026).
   // Lists are ordered current → legacy. Users can also type any custom ID.
   const MODEL_CATALOG: Record<string, string[]> = {
     gemini: [
-      'gemini-2.5-flash-preview-05-20',
+      // Gemini 3.5 launched at Google I/O 2026 (May 19). Note 3.5-flash is
+      // NOT priced like 2.5-flash — it is $1.50/$9.00, ~10x the old Flash rate.
+      'gemini-3.5-flash',
+      'gemini-3.5-pro',
+      'gemini-3.1-pro',
+      'gemini-2.5-flash',
       'gemini-2.5-pro',
       'gemini-2.0-flash',
     ],
     anthropic: [
       // Current
+      'claude-opus-5',
       'claude-fable-5',
+      'claude-sonnet-5',
       'claude-opus-4-8',
       'claude-opus-4-7',
-      'claude-sonnet-5',
       'claude-sonnet-4-6',
       'claude-haiku-4-5',
       // Legacy but still callable
@@ -251,7 +257,12 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
       'claude-opus-4-1',
     ],
     openai: [
-      // Frontier (gpt-5.5 — GA; size variants are still 5.4 tier)
+      // GPT-5.6 family (2026-07-09). Three variants; bare `gpt-5.6` aliases
+      // to Sol. All use breakpoint pricing above 272K input tokens.
+      'gpt-5.6-sol',
+      'gpt-5.6-terra',
+      'gpt-5.6-luna',
+      // Previous frontier
       'gpt-5.5',
       'gpt-5.5-pro',
       'gpt-5.3-codex',     // most capable agentic coding model
@@ -300,7 +311,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
 
   const fetchSettings = useCallback(async () => {
     try {
-      const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+      const base = process.env.NEXT_PUBLIC_API_URL || '';
       const [settingsRes, usageRes, enabledRes, budgetRes] = await Promise.all([
         fetch(`${base}/api/llm/providers`).then((r) => r.json()),
         fetch(`${base}/api/llm/usage`).then((r) => r.json()),
@@ -329,7 +340,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
     const newValue = !aiEnabled;
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/llm/enabled`,
+        `${process.env.NEXT_PUBLIC_API_URL || ''}/api/llm/enabled`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -353,7 +364,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
   const patchBudget = async (patch: Partial<typeof budget>, successMsg?: string) => {
     setSavingBudget(true);
     try {
-      const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+      const base = process.env.NEXT_PUBLIC_API_URL || '';
       const res = await fetch(`${base}/api/llm/budget`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -385,7 +396,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
   useEffect(() => { fetchSettings(); }, [fetchSettings]);
   // Refresh today's spend every 20s so the readout tracks live burn.
   useEffect(() => {
-    const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+    const base = process.env.NEXT_PUBLIC_API_URL || '';
     const id = setInterval(() => {
       fetch(`${base}/api/llm/budget`).then((r) => r.json()).then((d) => {
         if (d?.spendTodayUsd) setSpendToday(d.spendTodayUsd);
@@ -430,7 +441,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
     }
     setSaving(true);
     try {
-      const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+      const base = process.env.NEXT_PUBLIC_API_URL || '';
       const res = await fetch(`${base}/api/llm/providers`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -476,7 +487,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
 
   const removeProvider = async (name: string) => {
     try {
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/llm/providers/${name}`, { method: 'DELETE' });
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/llm/providers/${name}`, { method: 'DELETE' });
       await fetchSettings();
       showFeedback('success', `Removed ${name}`);
     } catch {
@@ -486,7 +497,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
 
   const toggleProvider = async (provider: Provider) => {
     try {
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/llm/providers`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/llm/providers`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...provider, enabled: !provider.enabled }),
@@ -500,7 +511,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
   const saveRoutes = async () => {
     setSaving(true);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/llm/routes`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/llm/routes`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ routes: editRoutes, defaultProvider: settings?.defaultProvider }),
@@ -522,7 +533,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
   const reloadRouter = async () => {
     setSaving(true);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/llm/reload`, { method: 'POST' });
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/llm/reload`, { method: 'POST' });
       const data = await res.json();
       if (data.success) {
         showFeedback('success', `Router reloaded with providers: ${data.providers.join(', ')}`);

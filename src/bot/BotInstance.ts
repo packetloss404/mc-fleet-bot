@@ -6,7 +6,7 @@ import { Vec3 } from 'vec3';
 import { BotState, BotMode } from './BotState';
 import { Config } from '../config';
 import { logger } from '../util/logger';
-import { isProtected } from '../actions/geofence';
+import { isProtected, isBelowDigFloor, getMinDigY } from '../actions/geofence';
 import { LLMClient } from '../ai/LLMClient';
 import { AffinityManager } from '../personality/AffinityManager';
 import { ConversationManager } from '../personality/ConversationManager';
@@ -89,6 +89,8 @@ export class BotInstance {
 
   private config: Config;
   private spawnLocation?: { x: number; y: number; z: number };
+  /** True once the one-time spawn teleport has run (see the spawn handler). */
+  private hasTeleportedToSpawn = false;
   private headTrackingInterval: NodeJS.Timeout | null = null;
   private wanderInterval: NodeJS.Timeout | null = null;
   private ambientChatTimeout: NodeJS.Timeout | null = null;
@@ -312,9 +314,63 @@ export class BotInstance {
             `dig blocked: (${Math.floor(p.x)},${Math.floor(p.y)},${Math.floor(p.z)}) is inside a protected build zone`,
           );
         }
+        // Depth floor, enforced HERE rather than only in mineBlock: this is the
+        // single choke point every dig passes through, including LLM-generated
+        // code calling bot.dig directly. Gating only mineBlock left generated
+        // code free to tunnel — which is how the fleet ended up at y13-y52 with
+        // solid blocks overhead, failing every surface task indefinitely.
+        if (p && isBelowDigFloor(Math.floor(p.x), Math.floor(p.y), Math.floor(p.z))) {
+          logger.warn(
+            { bot: this.name, x: Math.floor(p.x), y: Math.floor(p.y), z: Math.floor(p.z), minDigY: getMinDigY() },
+            'dig blocked: below the dig-depth floor',
+          );
+          throw new Error(
+            `dig blocked: y=${Math.floor(p.y)} is below the dig-depth floor (y=${getMinDigY()}). ` +
+            `Do not tunnel down — work at the surface, or go to the communal mine site to dig deep.`,
+          );
+        }
         return originalDig(block, ...rest);
       };
       b.__digGuarded = true;
+    });
+
+    // Pathfinder depth guard, wrapped at the same choke-point level as the dig
+    // guard above. Guarding CodeExecutor.moveTo alone was not enough: raw
+    // `bot.pathfinder.setGoal` is exposed to generated code (CodeExecutor
+    // ~line 646) and is also called directly by moveHelper/craft/attack, so a
+    // bot blocked from digging down simply pathed down instead — the moveTo
+    // guard fired 4 times while 349 digs were blocked and bots still reached
+    // y13. Wrapping setGoal covers every one of those callers at once.
+    //
+    // Downward goals below the floor are refused; UPWARD goals are always
+    // allowed so a bot already underground can climb out, and clearing the
+    // goal (null) must always pass.
+    this.bot.once('spawn', () => {
+      const b = this.bot as any;
+      if (!b?.pathfinder || typeof b.pathfinder.setGoal !== 'function' || b.__depthGuarded) return;
+      const originalSetGoal = b.pathfinder.setGoal.bind(b.pathfinder);
+      b.pathfinder.setGoal = (goal: any, dynamic?: boolean) => {
+        const floorY = getMinDigY();
+        const gy = goal?.y;
+        if (floorY !== null && goal && typeof gy === 'number') {
+          const self = this.bot as any;
+          const cur = self?.entity?.position;
+          const gx = typeof goal.x === 'number' ? goal.x : cur?.x ?? 0;
+          const gz = typeof goal.z === 'number' ? goal.z : cur?.z ?? 0;
+          if (isBelowDigFloor(Math.floor(gx), Math.floor(gy), Math.floor(gz)) && cur && gy <= cur.y) {
+            logger.warn(
+              { bot: this.name, goalY: Math.floor(gy), currentY: Math.floor(cur.y), minDigY: floorY },
+              'pathfinder goal blocked: below the dig-depth floor',
+            );
+            throw new Error(
+              `TOO DEEP: pathfinder goal y=${Math.floor(gy)} is below the dig-depth floor (y=${floorY}). ` +
+              `Stay at the surface; deep travel happens only at the communal mine site.`,
+            );
+          }
+        }
+        return originalSetGoal(goal, dynamic);
+      };
+      b.__depthGuarded = true;
     });
 
     // Forward player join/leave to the main thread. The gate skips the initial
@@ -381,9 +437,28 @@ export class BotInstance {
       // Auth with DyoAuth, then select class, before doing anything else
       this.handleAuth(() => {
         this.handleClassSelection(() => {
-          // Teleport to spawn location if specified
-          if (this.spawnLocation && this.bot) {
-            this.bot.chat(`/tp ${this.name} ${this.spawnLocation.x} ${this.spawnLocation.y} ${this.spawnLocation.z}`);
+          // Teleport to the configured spawn — ONCE per process, and never to
+          // a buried coordinate.
+          //
+          // This fired on EVERY spawn, including the respawn that follows a
+          // suffocation death. Combined with BotManager persisting the live
+          // position as `spawnLocation`, that was an infinite self-burying
+          // loop: tp into rock -> suffocate -> respawn at surface -> tp back.
+          // First-spawn-only breaks the cycle; the floor check refuses a spawn
+          // point that is already underground so a stale bots.json entry can't
+          // re-bury a bot on first join either.
+          if (this.spawnLocation && this.bot && !this.hasTeleportedToSpawn) {
+            const floorY = getMinDigY();
+            const buried = floorY !== null && this.spawnLocation.y < floorY;
+            if (buried) {
+              logger.warn(
+                { bot: this.name, spawnLocation: this.spawnLocation, minDigY: floorY },
+                'refusing to teleport to a spawn point below the dig floor — likely a stale buried position',
+              );
+            } else {
+              this.hasTeleportedToSpawn = true;
+              this.bot.chat(`/tp ${this.name} ${this.spawnLocation.x} ${this.spawnLocation.y} ${this.spawnLocation.z}`);
+            }
           }
 
           this.state = BotState.IDLE;
@@ -1269,7 +1344,11 @@ export class BotInstance {
 
       // Queue task in Voyager loop if extracted (check hostility first)
       if ((goalDescription || taskDescription) && this.voyagerLoop) {
-        if (this.affinityManager.isHostile(this.name, playerName)) {
+        // MUST be awaited: inside a worker `affinityManager` is an
+        // AffinityProxy whose isHostile() is async, and an unawaited Promise is
+        // always truthy — so EVERY chat-issued task was refused fleet-wide with
+        // "I don't feel like helping you right now."
+        if (await this.affinityManager.isHostile(this.name, playerName)) {
           logger.warn({ bot: this.name, player: playerName }, 'Refusing task from hostile player');
           this.sendLongChat(`I don't feel like helping you right now.`);
         } else if (goalDescription) {
@@ -1359,6 +1438,22 @@ export class BotInstance {
 
   private startVoyagerIfCodegen(): void {
     if (this.mode !== BotMode.CODEGEN || !this.bot || !this.config.voyager.enabled) return;
+
+    // Stop any previous loop FIRST. This runs on every spawn — including every
+    // respawn and reconnect — and used to leak the old loop: 1,422 loops were
+    // started against only 446 stopped, leaving ~26 concurrent loops for 5
+    // bots. Each carries its own CurriculumAgent, SkillLibrary, WorldMemory and
+    // StatsTracker, so the fleet was doing ~5x the LLM work it should AND five
+    // writers were racing each other on the same JSON files (~17 GB/day of
+    // rewrites, and the source of the skills/index.json orphan rate).
+    if (this.voyagerLoop) {
+      try {
+        this.voyagerLoop.stop();
+      } catch (err: any) {
+        logger.warn({ bot: this.name, err: err?.message }, 'failed stopping previous voyager loop');
+      }
+      this.voyagerLoop = null;
+    }
 
     this.voyagerLoop = new VoyagerLoop(
       this.bot,
