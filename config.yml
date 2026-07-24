@@ -192,7 +192,28 @@ mining:
   # were being sent on ~875-block marches to sam-cottage-829, a town that does
   # not exist here. Empty list = nothing protected, no shelter target; bots
   # build their own hut at night. Repopulate as this world gets built.
-  protectedZones: []
+  #
+  # REPOPULATED 2026-07-24: Worker Town ("Ravensreach") now exists north of the
+  # MSA/Raven Rock envelope, and its Town Hall is the fleet's muster point.
+  #
+  # NOTE ON minY — 43 is deliberate, not a typo. getNearestProtectedCenter
+  # (geofence.ts) returns the zone centre at y = minY + 24, and that value is
+  # handed to GoalGenerator as the night shelter target. The hall plaza is at
+  # y67, so minY must be 43 to aim bots at the ground. Setting minY to the
+  # "obvious" 60 would march them to y84 — well above the roof.
+  #
+  # The box also makes every block inside undiggable (enforced at the mineBlock
+  # filter, the bot.dig hook, and the build engine's /fill paths), which is what
+  # stops the hall being mined out from under itself.
+  protectedZones:
+    - name: ravensreach-town-hall
+      minX: -105
+      minY: 43
+      minZ: -395
+      maxX: -65
+      maxY: 95
+      maxZ: -355
+      shelter: true
   # Dig-depth floor. Bots default to tunnelling straight down whenever a surface
   # resource isn't immediately visible, then get entombed: on 2026-07-24 the
   # fleet was found at y14/y35/y52/y61 with solid blocks overhead, and "Mine 1

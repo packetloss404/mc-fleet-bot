@@ -359,7 +359,14 @@ export class GoalGenerator {
       goals.push({
         id: nextGoalId('safety'),
         priority: 'safety',
-        urgency: state.isRaining ? 7 : 6,
+        // Clear nights raised 6 -> 7 (2026-07-24). computeSurvivalGoal only
+        // promotes a goal to a task override at urgency >= 7, so at 6 this goal
+        // was generated and then silently discarded on every clear night: bots
+        // in the field simply stayed out. Only rainy nights ever brought them
+        // home. Raised HERE rather than lowering the override gate in
+        // VoyagerLoop, because lowering the gate would promote every other
+        // urgency-6 safety goal along with it.
+        urgency: state.isRaining ? 7 : 7,
         description: t
           ? `Night is falling — travel to town near (${t.x}, ${t.y}, ${t.z}) and wait there until morning. Do NOT place blocks or build a shelter; just go to town.`
           : 'Night is falling — find existing natural cover and wait until morning. Do NOT build a shelter.',
