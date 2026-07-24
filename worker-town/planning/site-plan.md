@@ -1,10 +1,12 @@
 # Worker Town — Site Selection
 
-**Status:** site chosen · grove + mine planted · **Town Hall built** · town founded ·
-5 residents enrolled · `protectedZones` applied · stray TownBrain build demolished ·
-**brain RUNNING** (§8). Remaining: housing and civic build-out; flip `mineSite` north
-once the fleet actually works up here (§3.1); delete the phantom `well` row once the
-LLM is back (§8). **Date:** 2026-07-24.
+**Status: BUILD-OUT COMPLETE.** Site chosen · grove + mine planted · Town Hall built ·
+town founded · 5 residents enrolled · `protectedZones` applied · stray TownBrain build
+demolished · **brain RUNNING** (§8) · **5 cottages + storehouse + plaza + paths built and
+registered with the brain** (§9).
+Remaining, both awaiting the LLM coming back: flip `mineSite` north once the fleet
+actually works up here (§3.1), and delete the phantom `well` row (§8).
+**Date:** 2026-07-24.
 
 The third build in this world, distinct from the other two:
 
