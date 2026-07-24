@@ -152,8 +152,14 @@ buildings:
   - id: B01
     name: Guest Center (Building 1)
     zone: 3
-    location_center: {x: 0, y: 64, z: 75}
-    footprint: {x_size: 75, z_size: 75}         # ground floor
+    # REPOINTED 2026-07-24 to the AS-BUILT geometry (OQ-1/2/5: the world is
+    # canonical, the docs follow). Surveyed by surface classification:
+    # x[-72,+72] x z[+90,+165] => 145 wide x 76 deep, centroid (0,128).
+    # Was the GRID-scheme (0,64,75) / 75x75, which is not what stands.
+    location_center: {x: 0, y: 64, z: 128}
+    footprint: {x_size: 145, z_size: 76}        # ground floor, as-built
+    as_built_bounds: {x_min: -72, x_max: 72, z_min: 90, z_max: 165}
+    geometry_confidence: as-built survey        # measured in-world, not planned
     verified_sqft: 44019
     stories: 2
     ground_floor_sqft: 22010                    # 22010/4 = 5502 blocks ~= 75x75 (5625)
@@ -177,7 +183,7 @@ buildings:
     name: The Alexandria
     style: Greek Revival
     zone: 5
-    location_center: {x: -85, y: 64, z: 5}
+    location_center: {x: -34, y: 64, z: 55}   # REPOINTED to as-built (west row, lot z+55); was (-85,5) GRID. Footprint x[-52,-16].
     footprint: {x_size: 24, z_size: 22}         # 6011sf / 3 stories / 4 = 501 blk
     verified_sqft: 6011
     stories: 3
@@ -188,7 +194,7 @@ buildings:
     name: The Cape Pointe
     style: Coastal Beach House
     zone: 5
-    location_center: {x: -85, y: 64, z: -35}
+    location_center: {x: -34, y: 64, z: 5}   # REPOINTED to as-built (west row, lot z+5); was (-85,-35) GRID. Footprint x[-52,-16].
     footprint: {x_size: 15, z_size: 15}         # 1815 / 2 / 4 = 227 blk
     verified_sqft: 1815
     stories: 2
@@ -199,7 +205,7 @@ buildings:
     name: The Ashby Manor
     style: Old World
     zone: 5
-    location_center: {x: -85, y: 64, z: -75}
+    location_center: {x: -34, y: 64, z: -45}   # REPOINTED to as-built (west row, lot z-45); was (-85,-75) GRID. Footprint x[-52,-16].
     footprint: {x_size: 23, z_size: 23}         # 4138 / 2 (stories unknown, assumed) / 4 = 517 blk
     verified_sqft: 4138
     stories: null
@@ -211,7 +217,7 @@ buildings:
     name: The Centennial
     style: Craftsman
     zone: 5
-    location_center: {x: -85, y: 64, z: -115}
+    location_center: {x: -34, y: 64, z: -95}   # REPOINTED to as-built (west row, lot z-95); was (-85,-115) GRID. Footprint x[-52,-16].
     footprint: {x_size: 19, z_size: 18}         # 2715 / 2 / 4 = 339 blk
     verified_sqft: 2715
     stories: 2
@@ -222,7 +228,7 @@ buildings:
     name: The Timbergrove
     style: Classic Stone & Siding
     zone: 5
-    location_center: {x: -85, y: 64, z: -160}
+    location_center: {x: -34, y: 64, z: -145}   # REPOINTED to as-built (west row, lot z-145); was (-85,-160) GRID. Footprint x[-52,-16].
     footprint: {x_size: 24, z_size: 24}         # 2321 / 1 / 4 = 580 blk
     verified_sqft: 2321
     stories: 1
@@ -233,7 +239,7 @@ buildings:
     name: The Wakefield
     style: Traditional Brick
     zone: 5
-    location_center: {x: -85, y: 64, z: -200}
+    location_center: {x: -34, y: 64, z: -195}   # REPOINTED to as-built (west row, lot z-195); was (-85,-200) GRID. Footprint x[-52,-16].
     footprint: {x_size: 26, z_size: 25}         # 2622 / 1 / 4 = 655 blk
     verified_sqft: 2622
     stories: 1
@@ -245,7 +251,7 @@ buildings:
     name: The Villa Lago
     style: Italian Mediterranean
     zone: 6
-    location_center: {x: 85, y: 64, z: 5}
+    location_center: {x: 32, y: 64, z: 55}   # REPOINTED to as-built (east row, lot z+55); was (85,5) GRID. Footprint x[+16,+48].
     footprint: {x_size: 28, z_size: 27}         # 5979 / 2 / 4 = 747 blk
     verified_sqft: 5979
     stories: 2
@@ -256,7 +262,7 @@ buildings:
     name: The Calais
     style: French Hill Country
     zone: 6
-    location_center: {x: 85, y: 64, z: -35}
+    location_center: {x: 32, y: 64, z: 5}   # REPOINTED to as-built (east row, lot z+5); was (85,-35) GRID. Footprint x[+16,+48].
     footprint: {x_size: 23, z_size: 23}         # 4101 / 2 / 4 = 513 blk
     verified_sqft: 4101
     stories: 2
@@ -267,7 +273,7 @@ buildings:
     name: The Casa Lana
     style: Spanish Courtyard
     zone: 6
-    location_center: {x: 85, y: 64, z: -75}
+    location_center: {x: 32, y: 64, z: -45}   # REPOINTED to as-built (east row, lot z-45); was (85,-75) GRID. Footprint x[+16,+48].
     footprint: {x_size: 29, z_size: 28}         # 3240 / 1 / 4 = 810 blk
     verified_sqft: 3240
     stories: 1
@@ -278,7 +284,7 @@ buildings:
     name: The Cross Creek
     style: Texas Hill Country
     zone: 6
-    location_center: {x: 85, y: 64, z: -115}
+    location_center: {x: 32, y: 64, z: -95}   # REPOINTED to as-built (east row, lot z-95); was (85,-115) GRID. Footprint x[+16,+48].
     footprint: {x_size: 29, z_size: 28}         # 3223 / 1 / 4 = 806 blk
     verified_sqft: 3223
     stories: 1
@@ -289,7 +295,7 @@ buildings:
     name: The Midtown
     style: Contemporary Townhome
     zone: 6
-    location_center: {x: 85, y: 64, z: -160}
+    location_center: {x: 32, y: 64, z: -145}   # REPOINTED to as-built (east row, lot z-145); was (85,-160) GRID. Footprint x[+16,+48].
     footprint: {x_size: 13, z_size: 12}         # 2417 / 4 / 4 = 151 blk (tall, narrow)
     verified_sqft: 2417
     stories: 4
@@ -300,7 +306,7 @@ buildings:
     name: The Valencia
     style: Southwestern Mediterranean
     zone: 6
-    location_center: {x: 85, y: 64, z: -200}
+    location_center: {x: 32, y: 64, z: -195}   # REPOINTED to as-built (east row, lot z-195); was (85,-200) GRID. Footprint x[+16,+48].
     footprint: {x_size: 22, z_size: 22}         # 1881 / 1 / 4 = 470 blk
     verified_sqft: 1881
     stories: 1

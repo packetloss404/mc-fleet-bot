@@ -130,8 +130,15 @@ defects:
       fine per-lot sweep is required to confirm all 12 homes are present and correctly styled. Escalate to
       blocker if the fine sweep confirms fewer than 12 (that would violate a VERIFIED fact).
     found_by: as-built RCON survey (qa/as-built-survey.md)
-    status: open
-    resolution: ""
+    status: resolved
+    resolution: >-
+      RESOLVED 2026-07-24 — all 12 present. The fine per-lot sweep ran and found a structure on BOTH
+      sides of every one of the 6 lot z-centres (+55, +5, -45, -95, -145, -195): 6 x 2 = 12. The ~9
+      figure was a METHOD artifact, not a shortfall. The coarse scan probed at fixed heights, but MSA
+      is not on a flat plane (surface heights run y59-y98) and some homes sit under ~30 blocks of
+      overburden, so a fixed-height probe missed them. Re-run by surface classification -- binary
+      search each column to its surface, then test whether that block is natural -- which is height
+      independent. West row centre x~-34, east x~+32. Detail in qa/as-built-survey.md ADDENDUM 2.
 
   - id: DEF-004
     building: SITE
