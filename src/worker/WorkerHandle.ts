@@ -14,6 +14,44 @@ import type { CultureManager } from '../social/CultureManager';
 import type { BotComms } from '../social/BotComms';
 import { logger } from '../util/logger';
 
+/**
+ * Per-worker V8 old-generation heap cap, in MB.
+ *
+ * Why this exists: `new Worker()` was previously constructed with NO
+ * `resourceLimits`, so every bot worker inherited the process-wide V8 default —
+ * a ~2 GB heap ceiling on this host. Five bots each believing they may grow to
+ * 2 GB oversubscribes a 7 GB box by more than 3x, and on 2026-07-24 three
+ * workers died inside two minutes with:
+ *
+ *     Worker terminated due to reaching memory limit: JS heap out of memory
+ *
+ * (Scout twice, Architect once.) Those crashes are also what makes the fleet
+ * *look* like it is leaking VoyagerLoops: each crash restarts the worker with a
+ * fresh BotInstance, so the teardown guard in `startVoyagerIfCodegen` sees a
+ * null loop and logs another "Voyager loop started" with no matching "stopped".
+ * The loops are not leaking — the threads are dying.
+ *
+ * Why 512: measured steady state is ~200 MB per worker (process RSS ~1.0 GB
+ * across five workers while the main thread's own heap is only ~37 MB, so
+ * essentially all of it is worker heap). 512 MB is ~2.5x that — generous room
+ * for the join-time spike when a bot loads chunks and its own copy of the
+ * minecraft-data registry, while keeping 5 x 512 MB + main well inside 7 GB.
+ *
+ * The honest caveat: a worker that genuinely needs more than 512 MB will now be
+ * killed *sooner* than before. That is the intended trade — an explicit,
+ * contained, restartable single-worker failure beats an unpredictable one that
+ * can drag the whole box toward swap. But note the crashing worker reached
+ * ~2 GB, a 10x spike over steady state, which looks like a runaway allocation
+ * rather than normal chunk loading — capping bounds the blast radius, it does
+ * not explain the spike. Finding that cause is separate follow-up work.
+ *
+ * Override with MC_WORKER_HEAP_MB when tuning or after adding RAM.
+ */
+const WORKER_HEAP_MB = Math.max(
+  128,
+  Number(process.env.MC_WORKER_HEAP_MB) || 512,
+);
+
 export interface WorkerBotData {
   botName: string;
   personality: string;
@@ -179,6 +217,9 @@ export class WorkerHandle {
         spawnLocation: this.spawnLocation,
         workerSlotIndex: this.workerSlotIndex,
       },
+      resourceLimits: {
+        maxOldGenerationSizeMb: WORKER_HEAP_MB,
+      },
     });
 
     this.ipc = new IPCChannel(this.worker);
@@ -186,7 +227,10 @@ export class WorkerHandle {
     this.setupIPC();
     this.setupWorkerEvents();
 
-    logger.info({ bot: this.botName }, 'Worker thread started');
+    logger.info(
+      { bot: this.botName, heapCapMb: WORKER_HEAP_MB },
+      'Worker thread started',
+    );
   }
 
   private setupIPC(): void {
