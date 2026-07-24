@@ -1,6 +1,7 @@
 # Worker Town — Site Selection
 
-**Status:** site chosen, nothing built. **Date:** 2026-07-24.
+**Status:** site chosen · grove + mine planted · **Town Hall built** · town founded and **PAUSED**.
+Remaining: enrol residents, apply `protectedZones`, resume the brain. **Date:** 2026-07-24.
 
 The third build in this world, distinct from the other two:
 
