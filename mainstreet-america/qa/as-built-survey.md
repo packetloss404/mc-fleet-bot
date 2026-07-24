@@ -47,3 +47,51 @@ porte-cochère, cul-de-sac terminus — and the **entire Raven Rock** undergroun
 ## Verification tooling (reusable)
 `/tmp/claude-1000/-opt-stacks-mc-fleet-bot/<session>/scratchpad/verify*.py` — paramiko SSH→RCON block
 probes. Pattern: open `direct-tcpip` to localhost:25575, auth, then `execute if block` sweeps.
+
+---
+
+# ADDENDUM — 2026-07-24 22:4x UTC · centreline burial survey and repair
+
+A second RCON pass, prompted by a fleet-wide audit that reported the southern
+third of the internal street as entombed.
+
+## Finding (CONFIRMED, then repaired)
+
+Sampling the street centreline (`x = 0`) every 5 blocks from `z +75` to `z −235`
+— 63 points — for clear headroom at `y66` and `y68`:
+
+| | count |
+|---|---|
+| clear | 47 |
+| **buried** | **16 (~25%)** |
+
+The buried span was **contiguous-ish from `z +75` down to `z −45`**:
+`75, 70, 65, 60, 55, 50, 30, 25, 20, 15, 10, −20, −25, −30, −40, −45`.
+
+That range is exactly where the **lot z-centres +55 and +5** sit, which is why
+those homes were reported as having no walkable frontage — the road in front of
+them was under fill. Cause is consistent with the site-clear `/fill` batches for
+that span never having executed: the homes and road surface were written at y64,
+but the overburden above them was never removed.
+
+## Repair applied
+
+- Cleared `x[−12,+12]`, `y65 → y99`, `z[−50,+80]` to air — the carriageway and
+  both verges. **Deliberately excludes the home shells at `x = ±34`**: a wider
+  clear would have deleted the buildings it was meant to give frontage to.
+- Re-laid the surface where it had been lost: `smooth_stone` carriageway
+  `x[−4,+4]`, `grass_block` verges `x[−12,−5]` and `x[+5,+12]`, `y64`,
+  `replace minecraft:air` so nothing already standing was overwritten.
+
+**Post-repair verification:** 0 of 27 re-sampled centreline points still buried;
+road surface present at 14/14 sampled points. 77 RCON commands.
+
+## Still open from the original survey
+
+Items 1–3 and 5 above are **unchanged** — the layout-scheme repoint, the Guest
+Center centroid divergence, the unconfirmed 12-home count, and the stale docs.
+This addendum repairs a physical defect; it does **not** perform the
+coordinates.yaml → buildings.yaml → site-plan.md → integration/* repoint, which
+remains the largest outstanding doc task. Item 4 is now partly answered: the
+carriageway surface in the repaired span is `smooth_stone` **because this pass
+laid it**, which is not evidence about the original surface elsewhere.
