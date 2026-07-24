@@ -2,7 +2,9 @@
 
 ## Project Overview
 
-mc-fleet-bot (formerly DyoBot / mc-server-bot) is a Voyager-style AI-powered Minecraft bot sidecar for the DyoCraft Minecraft server. It connects mineflayer bots to a Minecraft server and uses an LLM to autonomously plan and execute tasks through code generation, with personality and social relationship systems.
+mc-fleet-bot (formerly DyoBot / mc-server-bot) is a Voyager-style AI-powered Minecraft bot sidecar. It connects mineflayer bots to a Minecraft server and uses an LLM to autonomously plan and execute tasks through code generation, with personality and social relationship systems.
+
+The target server is whatever `minecraft.host` in `config.yml` points at — as of 2026-07-24 that is a stock Paper 1.21.11 server at `10.80.13.14`, not the historical DyoCraft box (`play.dyoburon.com`, since upgraded to Paper 26.2 / protocol 776, which no mineflayer release can speak). World-specific coordinates (`mining.protectedZones`, `mining.mineSite`, `leash`, `rescueHome`) were emptied in that move and describe nothing until this world gets built; repopulating them is per-world work, not a one-time setup.
 
 ## Build & Run
 
@@ -14,23 +16,25 @@ npm start
 
 Two systemd units run the stack, both enabled at boot, restart-on-failure with a 5s backoff:
 
-- `dyobot.service` — bot API on port **3001** (`/opt/mc-fleet-bot`, `node dist/index.js`, logs to `/var/log/dyobot.log`)
-- `dyobot-web.service` — Next.js dashboard on port **3000** (`/opt/mc-fleet-bot/web`, `npm start`, logs to `/var/log/dyobot-web.log`). Depends on `dyobot.service` and calls its API.
+- `mc-fleet-bot.service` — bot API on port **3001** (`/opt/stacks/mc-fleet-bot`, `node dist/index.js`, logs to `/var/log/mc-fleet-bot.log`)
+- `mc-fleet-web.service` — Next.js dashboard on port **3000** (`/opt/stacks/mc-fleet-bot/web`, `npm start`, logs to `/var/log/mc-fleet-web.log`). Depends on `mc-fleet-bot.service` and calls its API.
 
-The systemd unit names and log paths keep the legacy `dyobot` name — those are real host names that are staying.
+The units were renamed off the legacy `dyobot` name on 2026-07-24; nothing named `dyobot` runs on this host any more.
 
 ```bash
-sudo systemctl restart dyobot       # after npm run build (root)
-sudo systemctl restart dyobot-web   # after web build (cd web && npm run build)
-sudo systemctl status dyobot dyobot-web --no-pager
+sudo systemctl restart mc-fleet-bot       # after npm run build (root)
+sudo systemctl restart mc-fleet-web       # after web build (cd web && npm run build)
+sudo systemctl status mc-fleet-bot mc-fleet-web --no-pager
 ```
+
+`Restart=on-failure` means a **clean** exit is not respawned. Consequences: `POST /api/admin/restart` exits 0, so it stops the fleet rather than restarting it (see Admin Endpoints), and `kill <pid>` (SIGTERM) leaves the service down — systemd counts SIGTERM as a clean stop. Use `systemctl restart`, which needs root.
 
 Logs:
 
 ```bash
-tail -f /var/log/dyobot.log
-tail -f /var/log/dyobot-web.log
-grep -E "task proposed|Execution result|task evaluated" /var/log/dyobot.log
+tail -f /var/log/mc-fleet-bot.log
+tail -f /var/log/mc-fleet-web.log
+grep -E "task proposed|Execution result|task evaluated" /var/log/mc-fleet-bot.log
 ```
 
 Dashboard URL: `http://<host>:3000/`.
@@ -266,7 +270,7 @@ When `DASHBOARD_AUTH_SECRET` is set, all `/api/*` routes except `/api/auth/*`, `
 
 - `GET /api/admin/logs/stream` - live log stream
 - `GET /api/admin/backup` - download a data backup
-- `POST /api/admin/restart` - flush stores and restart
+- `POST /api/admin/restart` - flush stores, then `process.exit(0)`. **It does not restart under the current systemd units** — `Restart=on-failure` ignores a clean exit, so this is effectively a graceful *stop* and the fleet stays down until someone runs `systemctl start`. Treat it as a flush-and-halt button.
 - `POST /api/admin/heap-snapshot` - write a heap snapshot
 - `GET /api/admin/info` - process/runtime info
 

@@ -44,8 +44,17 @@ Guidance for coding agents working in `/opt/mc-fleet-bot`.
 - Build: `npm run build`
 - Dev run: `npm run dev`
 - Production run: `npm start`
-- Preferred production run with log capture: `node dist/index.js > /tmp/dyobot.log 2>&1 & disown`
-- Before restarting a server process, kill the old listener first: `lsof -ti:3001 | xargs kill -9 2>/dev/null; sleep 2`
+- **Do NOT hand-start a second instance.** The stack runs under systemd as
+  `mc-fleet-bot.service` (port 3001) and `mc-fleet-web.service` (port 3000).
+  Starting `node dist/index.js` while the service is up spawns a second fleet
+  using the same bot usernames — the duplicate login kicks the real bot, which
+  the impersonation monitor flags and puts into `QUARANTINED`, and it
+  deliberately does not reconnect (`src/bot/BotInstance.ts:527-540`).
+- Restart instead: `sudo systemctl restart mc-fleet-bot` (after `npm run build`).
+  Do not `kill` the listener without restarting it — `Restart=on-failure` treats
+  SIGTERM and a clean exit as an intentional stop and will leave the fleet down.
+  `POST /api/admin/restart` has the same problem: it exits 0, so it stops the
+  fleet rather than restarting it.
 
 ### Frontend (`web/`)
 
@@ -96,8 +105,8 @@ cd web && npm test
 
 - Bot API status: `curl -s http://127.0.0.1:3001/api/status`
 - List bots: `curl -s http://127.0.0.1:3001/api/bots`
-- Stream logs: `tail -f /tmp/dyobot.log`
-- Filter important backend log events: `grep -E "task proposed|Execution result|task evaluated" /tmp/dyobot.log`
+- Stream logs: `tail -f /var/log/mc-fleet-bot.log`
+- Filter important backend log events: `grep -E "task proposed|Execution result|task evaluated" /var/log/mc-fleet-bot.log`
 
 ## Control Platform Services (`src/control/`)
 
