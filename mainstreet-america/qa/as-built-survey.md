@@ -294,3 +294,35 @@ Also laid a forecourt lawn along the Center's south elevation.
 LED monument billboard (**position undecided** — `coordinates.yaml` says
 `(-260,64,280)`, `site-plan.md` says `≈(+95,+272)`), porte-cochère, cul-de-sac
 terminus treatment, detention pond.
+
+---
+
+# ADDENDUM 6 — 2026-07-24 · LED monument billboard
+
+**Operator decision:** use the **`site-plan.md` south-frontage position**, not
+`coordinates.yaml`'s SW-corner `(-260, 64, 280)`. The site-plan is the
+self-declared master and its rationale — offset toward the entrance throat so the
+sign reads from the approaching road (REF-013) — is the stronger one.
+
+**Built at `(95, 64, 272)`.** Panel faces **SOUTH (+Z)**, toward the frontage
+road. Smooth-stone apron, polished-andesite plinth `x[87,103] z[269,275]`, two
+blackstone supports, and an 17 × 11 display panel `y72→y82`: black-concrete
+bezel, sea-lantern emissive face, two contrasting legend bands standing in for
+*MainStreet America* / *Design Tech Homes*, a gray rear face so it isn't hollow
+from the site side, and a blackstone-slab cap. 8/8 probes.
+
+`coordinates.yaml` repointed to match; the GRID-era value is recorded inline.
+
+## Clearances — one caught and corrected
+
+- **Reserved N3/N4 portal corridors** (`x[-15,15]`): monument occupies
+  `x[85,105]` — **clear** by 70 blocks.
+- **Parking field**: the first build's apron ran to `z266` while the field ends
+  at `z268`, paving over a 3-row strip. The post-build clearance check flagged
+  it and the parking surface was **restored on `z266–268`**; the plinth and
+  panel (`z269+`) are untouched. Roughly 63 blk² — 0.26% of the field — so the
+  ~97,400 ft² area figure is unaffected.
+
+## MSA — still not built
+
+Porte-cochère, cul-de-sac terminus treatment, detention pond.

@@ -335,7 +335,12 @@ notable_locations:
 
   - id: N02
     name: LED Monument Billboard
-    coordinate: {x: -260, y: 64, z: 280}
+    coordinate: {x: 95, y: 64, z: 272}   # BUILT 2026-07-24. Operator chose the site-plan.md
+                                        # south-frontage position over this file's GRID-era
+                                        # (-260,64,280) SW-corner value. Offset toward the
+                                        # entrance throat so it reads from the approaching road.
+                                        # Panel faces SOUTH (+Z). Clear of the reserved N3/N4
+                                        # corridors (x[-15,15]).
     footprint: {x_size: 6, z_size: 3}
     zone: 1
     confidence: high-confidence inference       # "largest electronic billboard in Harris Co." (REF-013)
