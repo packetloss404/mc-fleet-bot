@@ -31,7 +31,7 @@ That's the single-bot story. The repo is also the full **fleet + civilization pl
 - **LLM-powered chat** — Natural, context-aware conversation
 
 ### Multi-provider LLM router
-- **7 provider clients** — Anthropic, Gemini, OpenAI, MiniMax, Ollama, and VoyageAI behind a single `ModelRouter`
+- **6 provider clients** — Anthropic, Gemini, OpenAI, MiniMax, Ollama, and VoyageAI behind a single `ModelRouter`
 - **Per-task-type routing** — Different models for codegen, chat, design, embeddings, etc.
 - **Production resilience** — Circuit breaker, retry/backoff, terminal-vs-retryable error classification, LRU embedding cache, and a `TokenLedger` that tracks cost per call
 
@@ -66,8 +66,8 @@ That's the single-bot story. The repo is also the full **fleet + civilization pl
 
 ```bash
 # Clone the repo
-git clone https://github.com/dyoburon/mc-server-bot.git
-cd mc-server-bot
+git clone https://github.com/packetloss404/mc-fleet-bot.git
+cd mc-fleet-bot
 
 # Install dependencies
 npm install
@@ -138,7 +138,7 @@ skills/           # Learned skills saved as JS modules (the library grows as bot
 data/             # Persistent bot state and memory (gitignored)
 ```
 
-Persistence is **Drizzle ORM over better-sqlite3**, with a schema kept deliberately Postgres-portable (text PKs, epoch-ms ints, JSON-as-text).
+The town subsystem (`src/town/`) persists via **Drizzle ORM over better-sqlite3** (`town.db`), with a schema kept deliberately Postgres-portable (text PKs, epoch-ms ints, JSON-as-text); everything else persists to JSON files under `data/`.
 
 ## Control Platform
 

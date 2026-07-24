@@ -75,7 +75,7 @@ function LoginForm() {
         <div className="max-w-md w-full rounded-2xl bg-zinc-900/80 border border-zinc-800 p-8 shadow-xl">
           <h1 className="text-2xl font-semibold mb-3">Auth disabled</h1>
           <p className="text-zinc-400 mb-6">
-            DyoBot is running without a dashboard secret. Set{' '}
+            The bot API is running without a dashboard secret. Set{' '}
             <code className="px-1 rounded bg-zinc-800 text-emerald-300">DASHBOARD_AUTH_SECRET</code>{' '}
             in <code className="px-1 rounded bg-zinc-800">.env</code> to require login.
           </p>
@@ -99,7 +99,7 @@ function LoginForm() {
         onSubmit={onSubmit}
         className="max-w-md w-full rounded-2xl bg-zinc-900/80 border border-zinc-800 p-8 shadow-xl"
       >
-        <h1 className="text-2xl font-semibold mb-2">DyoBot Dashboard</h1>
+        <h1 className="text-2xl font-semibold mb-2">MC Fleet Dashboard</h1>
         <p className="text-zinc-400 mb-6 text-sm">
           Sign in with your Minecraft player name to issue mayor decrees, or
           leave it blank to unlock dashboard-only access with the secret.

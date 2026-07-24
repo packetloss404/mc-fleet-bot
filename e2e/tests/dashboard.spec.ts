@@ -81,7 +81,7 @@ test.describe('Dashboard', () => {
     await page.goto('/');
 
     // Sidebar header
-    await expect(page.getByText('DyoCraft')).toBeVisible({ timeout: 10_000 });
+    await expect(page.getByText('MC Fleet')).toBeVisible({ timeout: 10_000 });
     await expect(page.getByText('Control Panel')).toBeVisible();
 
     // Navigation items

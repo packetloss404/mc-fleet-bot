@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DyoCraft Dashboard",
-  description: "Live monitoring dashboard for DyoCraft AI bots",
+  title: "MC Fleet Dashboard",
+  description: "Live monitoring dashboard for the MC Fleet AI bots",
 };
 
 export default function RootLayout({

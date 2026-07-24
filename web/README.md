@@ -26,7 +26,7 @@ Real-time web dashboard for monitoring and managing DyoCraft AI bots on a Minecr
 ## Prerequisites
 
 - Node.js 20+
-- [mc-server-bot](https://github.com/packetloss404/mc-server-bot) backend running on port 3001
+- [mc-fleet-bot](https://github.com/packetloss404/mc-fleet-bot) backend running on port 3001
 
 ## Setup
 
@@ -70,7 +70,7 @@ src/
 
 ## Compatibility
 
-This dashboard is built specifically for the DyoCraft ecosystem and requires the [mc-server-bot](https://github.com/packetloss404/mc-server-bot) backend. It is **not** a generic Minecraft server panel.
+This dashboard is built specifically for the DyoCraft ecosystem and requires the [mc-fleet-bot](https://github.com/packetloss404/mc-fleet-bot) backend. It is **not** a generic Minecraft server panel.
 
 DyoCraft-specific dependencies include:
 
@@ -80,7 +80,7 @@ DyoCraft-specific dependencies include:
 - **Affinity System** — Bot-player relationship scoring with tiered affinity levels
 - **Socket Events** — Listens for DyoCraft-specific events (`bot:position`, `bot:health`, `bot:state`, `bot:inventory`, `bot:spawn`, `player:position`, etc.)
 
-To use this with a different Minecraft server, that server would need to implement the same REST and WebSocket API that `mc-server-bot` exposes.
+To use this with a different Minecraft server, that server would need to implement the same REST and WebSocket API that `mc-fleet-bot` exposes.
 
 ## License
 

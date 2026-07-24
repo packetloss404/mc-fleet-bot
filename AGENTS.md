@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Guidance for coding agents working in `D:\projects\mc-server-bot`.
+Guidance for coding agents working in `/opt/mc-fleet-bot`.
 
 ## Repository Shape
 
@@ -19,7 +19,7 @@ Guidance for coding agents working in `D:\projects\mc-server-bot`.
 - `src/supplychain/` supply chain templates and coordination.
 - `src/security/` impersonation detection.
 - `src/worker/` per-bot worker threads, IPC channel, and cross-thread proxies.
-- `src/ai/` LLM client abstraction (Anthropic, Gemini) and prompt logic.
+- `src/ai/` LLM client abstraction (Anthropic, Gemini, OpenAI, MiniMax, Ollama, VoyageAI behind a `ModelRouter`) and prompt logic.
 - `src/server/` Express + Socket.IO API.
 
 ## Source Of Truth

@@ -1,6 +1,6 @@
 # Project Sid → DyoBot: Implementation Roadmap
 
-Design plans for porting concepts from *Project Sid: Many-agent simulations toward AI civilization* (arXiv:2411.00114) into DyoBot. **Status: design only — review before any code.**
+Design plans for porting concepts from *Project Sid: Many-agent simulations toward AI civilization* (arXiv:2411.00114) into DyoBot. **Status: implemented — kept as design reference.**
 
 ## Thesis
 
