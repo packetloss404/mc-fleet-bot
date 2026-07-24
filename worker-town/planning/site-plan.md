@@ -287,3 +287,53 @@ purpose: deleting the row would make the brain rebuild immediately, and with the
 LLM kill switch off it would fall back to a library schematic and site it the
 same way it sited the stray hall. Delete the row once the LLM is re-enabled and
 the brain can produce a designed, sensibly-placed well.
+
+---
+
+## 9. Build-out — 2026-07-24 · COMPLETE
+
+Ravensreach now has housing and civic structure, not just a hall.
+
+### Five bot cottages
+
+One per resident, ringing the hall plaza. Each 13 × 11, cobblestone shell with
+spruce-log corner posts, gabled spruce roof, glazed elevations, south door, and
+a furnished interior (bed, chest, crafting table, furnace, hanging lantern). Each
+got its own cut-and-fill pad — only the hall's 41 × 41 was previously levelled,
+so the surrounding ground still ran y62–73.
+
+| Resident | Cottage centre |
+|---|---|
+| Architect | `(-118, -375)` west |
+| Mason | `(-52, -375)` east |
+| Surveyor | `(-85, -405)` north |
+| Steward | `(-112, -345)` south-west |
+| Scout | `(-58, -345)` south-east |
+
+### Civic
+
+- **Storehouse** `x[-95,-75] z[-420,-408]` — stone-brick, on the road toward the
+  northern mine, with four chests. Placed so hauled ore lands under cover at the
+  town end of that route rather than in the hall.
+- **Plaza** — the 41 × 41 protected box repaved in stone brick around the hall.
+- **Paths** — gravel runs from the plaza edge to every cottage door.
+
+**8/8 verification probes**, including two that re-checked the **hand-built hall
+is untouched** (floor and lectern both intact).
+
+### Registered with the TownBrain — deliberately
+
+All six new structures were inserted into `town.db` `buildings` as
+`status: complete`, `schematic_source: handbuilt`.
+
+This is the direct lesson from §8: a structure the brain cannot see is a
+structure it will decide to build for itself. Leaving five cottages and a
+storehouse unregistered would have re-created the duplicate-hall collision, five
+times over, the moment the LLM came back. `town.db` was backed up before the
+write.
+
+### Not built
+
+Per-resident interior styling by role (a blacksmith's forge, a farmer's store),
+walls or gates, and any second-tier civic buildings the brain may plan as the
+town grows past the founding tier.
