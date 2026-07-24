@@ -200,5 +200,15 @@ defects:
       defect and the fix is structural: raise the roof and add a floor at y70, or accept and document
       a single-storey deviation from a VERIFIED fact.
     found_by: interior fit-out pass (qa/as-built-survey.md ADDENDUM 4)
-    status: open
-    resolution: ""
+    status: resolved
+    resolution: >-
+      RESOLVED 2026-07-24 by building the missing storey. The partial cap at y70 was cleared, an
+      upper shell raised y70-y75 in white_terracotta, a new smooth_stone roof laid at y76, and an
+      oak upper floor laid at y70 with a double-height showroom void (x[-20,20] z[110,145]) edged by
+      an oak-fence ring, reached by a stair from the ground floor. Upper glazing and lighting added.
+      Verified: clear-air levels at (-50,*,110) are y65-69 and y71-75 -- two distinct storeys with a
+      floor between them, where before there was a single y65-69 volume.
+      Two build errors were caught by the post-build probes and corrected: the solid-shell fill had
+      overwritten the upper floor slab (the floor was laid before the shell rather than after), and
+      the mezzanine railing had been placed as a filled box, backfilling the void it was meant to
+      edge. Re-laid the floor and rebuilt the railing as a ring.

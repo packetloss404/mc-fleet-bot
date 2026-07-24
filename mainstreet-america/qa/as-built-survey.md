@@ -248,3 +248,49 @@ corroborates it: 145 × 76 = 11,020 blk² ≈ **44,080 SF** — the whole two-st
 area built as **one** floor rather than two of ~22,010 SF.
 
 This is a **shell** defect, not a fit-out defect. Filed as **DEF-007**.
+
+---
+
+# ADDENDUM 5 — 2026-07-24 · DEF-007 fixed, drop-off loop, landscaping
+
+## DEF-007 RESOLVED — the Guest Center now has two storeys
+
+Cleared the partial cap at y70, raised an upper shell **y70→y75**, laid a new
+roof at **y76**, and put an oak floor at **y70** with a double-height showroom
+void (`x[-20,20] z[110,145]`) edged by an oak-fence ring and reached by a stair.
+Upper glazing and lighting added.
+
+**Proof:** clear-air levels probed at `(-50, *, 110)` are now **y65–69 and
+y71–75** — two distinct volumes with a floor between. Before the fix it was a
+single y65–69 space.
+
+Two build errors were caught by the post-build probes and fixed rather than left:
+
+1. The solid-shell fill **overwrote the upper floor slab** — the floor was laid
+   before the shell instead of after. Re-laid.
+2. The mezzanine railing was placed as a **filled box**, backfilling the very
+   void it was meant to edge. Rebuilt as a ring.
+
+## Visitor drop-off loop — built, and repositioned
+
+`site-plan.md` §3.2 puts the teardrop at **(0, +135), r≈22**. That is **inside**
+the as-built Guest Center (`z[90,165]`) — the same GRID-era assumption (Center at
+z75) that displaced the parking field. Built instead as a **teardrop at (0, 190),
+r18** in the parking field's north bay, with a smooth-stone carriageway ring, a
+grass island with planting, and a spine link north to the Center forecourt.
+
+## Landscaping
+
+**42 trees.** Street trees on both verges (`x = ±9`) at 25-block spacing from
+z+50 to z−200, plus Z08 greenbelt planting along the z ±250 bands.
+
+> The greenbelt planting **deliberately skips `|x| ≤ 15`** to keep the reserved
+> **N3/N4 portal-approach corridors** clear, per Z08-R.
+
+Also laid a forecourt lawn along the Center's south elevation.
+
+## Still not built
+
+LED monument billboard (**position undecided** — `coordinates.yaml` says
+`(-260,64,280)`, `site-plan.md` says `≈(+95,+272)`), porte-cochère, cul-de-sac
+terminus treatment, detention pond.
