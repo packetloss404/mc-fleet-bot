@@ -1,8 +1,8 @@
-# DyoBot
+# mc-fleet-bot
 
 ## Project Overview
 
-DyoBot is a Voyager-style AI-powered Minecraft bot sidecar for DyoCraft. It connects mineflayer bots to a Minecraft server and uses an LLM to autonomously plan and execute tasks through code generation, with personality and social relationship systems.
+mc-fleet-bot (formerly DyoBot / mc-server-bot) is a Voyager-style AI-powered Minecraft bot sidecar for the DyoCraft Minecraft server. It connects mineflayer bots to a Minecraft server and uses an LLM to autonomously plan and execute tasks through code generation, with personality and social relationship systems.
 
 ## Build & Run
 
@@ -14,8 +14,10 @@ npm start
 
 Two systemd units run the stack, both enabled at boot, restart-on-failure with a 5s backoff:
 
-- `dyobot.service` — bot API on port **3001** (`/opt/mc-server-bot`, `node dist/index.js`, logs to `/var/log/dyobot.log`)
-- `dyobot-web.service` — Next.js dashboard on port **3000** (`/opt/mc-server-bot/web`, `npm start`, logs to `/var/log/dyobot-web.log`). Depends on `dyobot.service` and calls its API.
+- `dyobot.service` — bot API on port **3001** (`/opt/mc-fleet-bot`, `node dist/index.js`, logs to `/var/log/dyobot.log`)
+- `dyobot-web.service` — Next.js dashboard on port **3000** (`/opt/mc-fleet-bot/web`, `npm start`, logs to `/var/log/dyobot-web.log`). Depends on `dyobot.service` and calls its API.
+
+The systemd unit names and log paths keep the legacy `dyobot` name — those are real host names that are staying.
 
 ```bash
 sudo systemctl restart dyobot       # after npm run build (root)
@@ -70,13 +72,19 @@ curl -s http://127.0.0.1:3001/api/bots
 - `src/bot/` - bot lifecycle and Mineflayer connection management
 - `src/voyager/` - curriculum, action, critic, skill library, execution loop
 - `src/actions/` - primitive movement, mining, crafting, combat, container, patrol actions
-- `src/ai/` - LLM client abstraction with Gemini and Anthropic implementations
+- `src/ai/` - LLM client abstraction with Anthropic, Gemini, OpenAI, MiniMax, Ollama, and VoyageAI clients, plus `ModelRouter`/`ProviderRegistry` for per-task routing and `TokenLedger` for usage/budget tracking
 - `src/personality/` - affinity, conversation, personality behavior
 - `src/social/` - bot-to-bot messaging and memory
-- `src/server/api.ts` - Express API for bot CRUD, dashboard, and control
+- `src/server/api.ts` - Express app assembly and wiring; a thin registration hub — route handlers live in `src/server/routes/`
+- `src/server/routes/` - ~17 route modules (bots, events, town, build, campaign, chain, commander, control, config, routine, skill, metrics, missionCommand, schematic, terrain, grantHandler, helpers)
+- `src/server/auth.ts` - dashboard/plugin/player-session auth (cookies, rate-limited login)
+- `src/server/admin.ts` - operational admin endpoints (logs, backup, restart, heap snapshot)
+- `src/server/llmRoutes.ts` - LLM provider/routing/usage/budget endpoints
 - `src/server/socketEvents.ts` - Socket.IO real-time event broadcasting
 - `src/server/EventLog.ts` - in-memory circular event buffer
 - `src/control/` - fleet control platform (CommandCenter, MissionManager, MarkerStore, SquadManager, RoleManager, CommanderService)
+- `src/town/` - Town Builder subsystem (TownManager, TownBrain loops, decrees/approvals, chronicle, diplomacy, districts, disasters/Phoenix recovery)
+- `src/security/` - impersonation monitoring (bot-name spoof detection and quarantine)
 - `src/build/` - schematic-based build coordination
 - `src/supplychain/` - supply chain templates and coordination
 - `src/worker/` - worker thread handles, IPC channel, and proxies for cross-thread access
@@ -85,8 +93,18 @@ curl -s http://127.0.0.1:3001/api/bots
 
 ## API Endpoints
 
+### Auth
+
+- `POST /api/auth/login` - mint session cookies (body: `{playerName?, secret?}`; sets the dashboard cookie when `DASHBOARD_AUTH_SECRET` is configured, and a signed `pid` player-identity cookie when `playerName` is given). Rate-limited: 5 failed attempts per IP per 15 min.
+- `POST /api/auth/logout` - clear both cookies
+- `GET /api/auth/status` - auth config + session state (enabled, authenticated, playerName)
+- `GET /api/auth/me` - session player name
+
+When `DASHBOARD_AUTH_SECRET` is set, all `/api/*` routes except `/api/auth/*`, `/api/events/*`, `/api/health`, and `/api/status` require the dashboard session; `/api/events/*` requires the `X-Plugin-Token` header when `PLUGIN_AUTH_TOKEN` is set.
+
 ### Core Bot Management
 
+- `GET /api/health` - liveness check
 - `GET /api/status` - health check (returns bot count)
 - `GET /api/bots` - list all bots (basic status)
 - `GET /api/bots/:name` - get single bot (basic status)
@@ -94,12 +112,15 @@ curl -s http://127.0.0.1:3001/api/bots
 - `DELETE /api/bots/:name` - remove a single bot
 - `DELETE /api/bots` - remove all bots
 - `POST /api/bots/:name/mode` - set bot mode (body: `{mode: "primitive"|"codegen"}`)
+- `GET /api/security/impersonation` - impersonation monitor state
+- `POST /api/bots/:name/quarantine/release` - release a quarantined bot
 
 ### Event Relay (Java plugin integration)
 
 - `POST /api/events/chat` - relay chat event (body: `{playerName, message, nearestBot}`)
 - `POST /api/events/player-join` - relay player join (body: `{playerName}`)
 - `POST /api/events/player-leave` - relay player leave (body: `{playerName}`)
+- `POST /api/events/player-death`, `/block-placed`, `/block-broken`, `/item-crafted`, `/entity-killed`, `/player-move` - additional world-event relays (body: `{playerName, ...}` per event)
 
 ### Dashboard Endpoints
 
@@ -108,22 +129,47 @@ curl -s http://127.0.0.1:3001/api/bots
 - `GET /api/bots/:name/relationships` - bot affinity scores
 - `GET /api/bots/:name/conversations` - bot conversation history
 - `GET /api/bots/:name/tasks` - bot task state (current, queued, completed, failed)
+- `GET /api/bots/:name/viewer-port` - prismarine-viewer port for the bot
+- `GET /api/bots/:name/observed-role` - inferred role from observed action stats
+- `GET /api/bots/:name/decisions` - recent decision records
+- `GET /api/bots/:name/memories` - bot memories
+- `GET /api/bots/:name/messages` - bot-to-bot message log
+- `GET /api/bots/:name/diagnostics` - bot diagnostics
+- `GET /api/bots/:name/llm-trace` - recent LLM call trace for the bot
 - `GET /api/relationships` - full social graph (all bots and players)
-- `GET /api/skills` - list all learned skills with code preview
-- `GET /api/skills/:name` - get single skill with full code
+- `GET /api/players` - online players; `GET /api/players/:name/intent` - inferred player intent
+- `GET /api/reputation` / `GET /api/reputation/:name` - player reputation scores
 - `GET /api/world` - aggregate world state (time, weather, online count)
+- `GET /api/world/model` - shared world-model snapshot
+- `GET /api/events/world` - world event feed
+- `GET /api/difficulty` - adaptive difficulty state
+- `GET /api/culture` - emergent culture state
+- `GET /api/swarm/plans` - current swarm plans
 - `GET /api/blackboard` - shared blackboard state
 - `GET /api/activity` - activity event log (query: `limit`, `bot`, `type`)
+
+### Skill Library
+
+- `GET /api/skills` - list all learned skills with code preview
+- `GET /api/skills/stats` - skill usage statistics
+- `GET /api/skills/:name` - get single skill with full code
+- `PUT /api/skills/:name` - update skill code
+- `DELETE /api/skills/:name` - delete a skill
 
 ### Bot Interaction
 
 - `POST /api/bots/:name/chat` - send chat message to bot (body: `{playerName, message}`)
+- `POST /api/bots/:name/say` - make the bot say a chat line
+- `POST /api/bots/:name/bot-message` - inject a bot-to-bot message
 - `POST /api/bots/:name/task` - queue a task for bot (body: `{description}`)
+- `POST /api/bots/:name/grant` - grant items (dev-only: NODE_ENV=development or `config.auth.devSecret`)
 - `POST /api/swarm` - set a swarm directive (body: `{description, requestedBy?}`)
+- `POST /api/blackboard/swarm-directive` - set the swarm directive directly on the blackboard
 
 ### Metrics
 
 - `GET /api/metrics` - aggregate metrics (bots, tasks, commands, missions, commander, fleet, skills)
+- `GET /api/metrics/civilization` - town/civilization metrics
 
 ### Commander Endpoints
 
@@ -139,12 +185,25 @@ curl -s http://127.0.0.1:3001/api/bots
 ### Build Endpoints
 
 - `GET /api/schematics` - list available schematics
+- `GET /api/schematics/:filename` - get schematic details
+- `POST /api/schematics/upload` - upload a `.schem` file (multipart `file`)
 - `GET /api/builds` - list all build jobs
 - `POST /api/builds` - create a build job (body: `{schematicFile, origin, botNames, options?}`)
 - `GET /api/builds/:id` - get a specific build job
 - `POST /api/builds/:id/cancel` - cancel a build
 - `POST /api/builds/:id/pause` - pause a build
 - `POST /api/builds/:id/resume` - resume a build
+- `POST /api/builds/:id/retry` - retry a failed build
+- `POST /api/builds/:id/demolish` - demolish a completed build
+- `POST /api/tunnel` - dig a tunnel job
+
+### Campaign Endpoints
+
+- `GET /api/campaigns` - list all campaigns
+- `GET /api/campaigns/:id` - get a specific campaign
+- `POST /api/campaigns` - create a campaign (body: `{name, structures[], maxParallel?, autoSpawn?, spawnPersonality?, cleanupBots?, start?}`)
+- `POST /api/campaigns/:id/start` / `pause` / `resume` / `cancel` - campaign lifecycle
+- `DELETE /api/campaigns/:id` - delete a campaign
 
 ### Supply Chain Endpoints
 
@@ -162,6 +221,104 @@ curl -s http://127.0.0.1:3001/api/bots
 - `GET /api/terrain` - scan blocks in a region (query: `x`, `y`, `z`, `radius`)
 - `GET /api/terrain/height` - get terrain height at a column (query: `x`, `z`, `maxY?`, `minY?`)
 
+### Control Platform Endpoints
+
+- `GET/POST /api/markers`, `PATCH/DELETE /api/markers/:id` - named world markers
+- `GET/POST /api/zones`, `PATCH/DELETE /api/zones/:id` - zones
+- `GET/POST /api/routes`, `PATCH/DELETE /api/routes/:id` - patrol routes
+- `GET/POST /api/squads`, `GET/PATCH/DELETE /api/squads/:id` - squads
+- `POST /api/squads/:id/bots`, `DELETE /api/squads/:id/bots/:botName` - squad membership
+- `GET/POST /api/roles/assignments`, `PATCH/DELETE /api/roles/assignments/:id` - role assignments
+- `GET /api/roles/approvals`, `POST /api/roles/approvals/:id/approve` / `reject` - role approval queue
+- `GET /api/roles/overrides`, `DELETE /api/bots/:name/override` - role overrides
+
+### Mission & Command Endpoints
+
+- `GET/POST /api/missions`, `GET /api/missions/:id` - missions
+- `POST /api/missions/:id/:action` - mission lifecycle action (pause/resume/cancel/...)
+- `PATCH/DELETE /api/bots/:name/mission-queue` - edit or clear a bot's mission queue
+- `GET/POST /api/commands`, `GET /api/commands/:id`, `POST /api/commands/:id/cancel` - fleet commands
+- `POST /api/bots/:name/pause` / `resume` / `stop` / `follow` / `walkto` / `return-to-base` / `unstuck` / `equip-best` - per-bot control shortcuts (dispatched as commands)
+
+### Routine & Template Endpoints
+
+- `GET/POST /api/routines`, `PATCH/DELETE /api/routines/:id` - saved routines
+- `POST /api/routines/:id/execute` - run a routine
+- `GET /api/routines/recording`, `POST /api/routines/recording/start` / `stop` - record a routine from live commands
+- `GET /api/templates`, `GET /api/templates/:id` - mission templates
+
+### Runtime Config Endpoints
+
+- `GET /api/config` - all patchable config sections
+- `GET /api/config/:section` - one section plus its restart-required fields
+- `PATCH /api/config/:section` - hot-patch a section (body: `{values}`); persists to `config.yml` and broadcasts to live workers
+
+### LLM Management Endpoints
+
+- `GET/POST /api/llm/providers`, `DELETE /api/llm/providers/:name` - provider registry
+- `GET/PUT /api/llm/routes` - per-task-type model routing
+- `POST /api/llm/reload` - reload LLM settings
+- `GET /api/llm/usage` - token usage (TokenLedger)
+- `GET/POST /api/llm/enabled` - toggle LLM usage
+- `GET/PUT /api/llm/budget`, `POST /api/llm/budget/override` - budget limits and override
+
+### Admin Endpoints
+
+- `GET /api/admin/logs/stream` - live log stream
+- `GET /api/admin/backup` - download a data backup
+- `POST /api/admin/restart` - flush stores and restart
+- `POST /api/admin/heap-snapshot` - write a heap snapshot
+- `GET /api/admin/info` - process/runtime info
+
+### Town Builder Endpoints
+
+Towns core:
+
+- `GET /api/towns` - list towns
+- `POST /api/towns` - found a town (body: `{name, capital, stylePreset?, mayorTitle?, mayorPlayerName?}`)
+- `GET/PATCH/DELETE /api/towns/:id` - read, update, delete a town
+- `POST /api/towns/:id/pause` / `resume` - pause/resume the town brain
+
+Brain, planning, and style (reads): `GET /api/towns/:id/brain`, `/demand`, `/buildings`, `/designs`, `/style`, `/schedules`
+
+Residents and roles:
+
+- `GET/POST /api/towns/:id/residents` - list residents / add a resident (body: `{botName, role}`)
+- `GET /api/towns/:id/roles` - town role assignments
+- `POST /api/towns/:id/roles/:botName` - assign a role (body: `{role}`)
+
+Districts and expansion:
+
+- `GET/POST /api/towns/:id/districts` - list / create a district (body: `{name, stylePreset?, center}`)
+- `GET /api/towns/:id/children` - child settlements
+- `POST /api/towns/:id/expand` - trigger expansion
+
+Events, highlights, chronicle:
+
+- `GET /api/towns/:id/events` - town event log
+- `GET /api/towns/:id/highlights`, `GET /api/highlights` - highlight ring buffer (per-town / cross-town)
+- `GET /api/streaming/health` - highlight stream health
+- `GET /api/towns/:id/chronicle` - chronicle entries
+- `POST /api/towns/:id/chronicle/generate` - generate an entry (body: `{dayNumber?, force?}`)
+- `GET /api/towns/:id/journals` - resident journals
+
+Governance (mayor-only routes use the `pid` session cookie; see Auth migration notes):
+
+- `GET /api/towns/:id/decrees`, `GET /api/towns/:id/rules` - decree/rule reads
+- `POST /api/towns/:id/mayor/decree` - issue a decree (body: `{text}`, mayor-only)
+- `POST /api/towns/:id/propose-rule` - propose a rule (body: `{text, proposedBy?}`)
+- `GET /api/towns/:id/approvals` - pending approvals
+- `POST /api/towns/:id/approvals/:approvalId/vote` - cast a vote (body: `{voterBotName, choice}`)
+- `POST /api/towns/:id/approvals/:approvalId/decide` - decide an approval (body: `{choice}`, mayor-only)
+- `POST /api/towns/:id/approval-mode` - set approval mode (body: `{mode}`)
+
+Disasters and diplomacy:
+
+- `GET /api/towns/:id/disasters`, `GET /api/towns/:id/memorial` - disaster history and memorial park
+- `GET /api/towns/:id/trade-routes` - trade routes
+- `GET /api/towns/:id/relationships`, `POST /api/towns/:id/relationships/:peerTownId` - inter-town relations
+- `GET /api/town-relationships` - full inter-town relationship graph
+
 ### Socket.IO Events (real-time)
 
 - `bot:spawn` - bot created
@@ -170,8 +327,17 @@ curl -s http://127.0.0.1:3001/api/bots
 - `bot:health` - bot health/food changed
 - `bot:state` - bot state changed
 - `bot:inventory` - bot inventory changed
-- `bot:task` - task queued
-- `world:time` - world time update (every 30s)
+- `bot:decision` - bot decision record
+- `bot:died` - bot death
+- `player:position` - player position update
+- `world:event` - world event
+- `security:alert` - impersonation/security alert
+- `llm:call` - LLM call made
+- `build:*` - build lifecycle (`started`, `progress`, `placing`, `gathering`, `gather-started`, `bot-status`, `reassign`, `completed`, `cancelled`, `demolished`, `tunnel`)
+- `chain:*` - supply chain lifecycle (`started`, `stage-update`, `paused`, `completed`, `failed`, `cancelled`)
+- `town:event` - town event stream
+- `town:chronicle` - chronicle entry generated
+- `town:disaster` - disaster recorded
 - `activity` - general activity event
 
 ### Static Assets
