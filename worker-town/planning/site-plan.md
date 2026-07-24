@@ -239,3 +239,48 @@ goal too).
 Separately: **"tell the bots to walk to the hall" does not currently work.** The worker IPC
 switch has no `walkTo`/`follow`/`returnToBase` case, so those endpoints return HTTP success and
 move nothing. Fixing that is arguably a prerequisite to this town being usable at all.
+
+---
+
+## 8. TownBrain duplicate-hall collision — resolved 2026-07-24
+
+Resuming the brain after the hall was hand-built produced exactly the collision
+the runbook warned about: *there is no supported way to tell the brain "the hall
+already exists."* With `buildings` empty, `buildLoop` planned its own
+`town_hall` and cycled on it.
+
+**The protected zone held.** The brain's build was logged with
+`skippedProtected`, and every probe of the hand-built hall — floor, corner post,
+roof ridge, lectern, bell — passed before and after. Nothing of the real hall
+was ever at risk; `mining.protectedZones` did the job it was added for.
+
+What the brain *did* build was a partial structure in the part of its planned
+footprint that fell **outside** the protected box.
+
+### Resolution
+
+1. **Paused** the brain to stop further building.
+2. **Backed up** `town.db` (+`-wal`, +`-shm`), then **repointed** the
+   `town_hall` row to the hand-built hall: origin `(-97, 67, -381)`, 25×14×13,
+   `schematic_source: handbuilt`, district `Old Town`.
+3. **Demolished** the stray build. Its planned box was `x[-89,-38]`,
+   `z[-371,-318]`; subtracting the protected box leaves three regions the brain
+   could actually reach — `A x[-64,-38] z[-371,-318]`, `B x[-89,-65]
+   z[-354,-318]`, and a `C` sliver at `z[-399,-396]` from the well row.
+   Removal was **by block type** (`fill … air replace <type>`) rather than a
+   volume clear, so surrounding terrain was not scarred. 12 types were found
+   present and removed; 11,975 RCON commands.
+   The work window was deliberately capped at `x ≥ -64` for regions A/C so it
+   was *structurally impossible* to touch the hall.
+4. **Resumed.** Verified over 100 s: brain ticks, demand loop queues supply
+   tasks, and **zero build attempts** — because both founding-plan buildings now
+   have `complete` rows.
+
+### Known inconsistency, deliberately left
+
+The `well` row is marked `complete` but **no well exists** — the sliver that was
+built fell in region C and was demolished with the rest. It is left that way on
+purpose: deleting the row would make the brain rebuild immediately, and with the
+LLM kill switch off it would fall back to a library schematic and site it the
+same way it sited the stray hall. Delete the row once the LLM is re-enabled and
+the brain can produce a designed, sensibly-placed well.
