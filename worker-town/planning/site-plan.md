@@ -97,9 +97,57 @@ comfortably a single `/fill` session.
 > Not a blocker for siting, but it needs resolving before the fleet actually lives here. Options:
 > **(a)** plant a second grove and site a second mine just outside the town — cheap, and mirrors
 > what `mineSite` is for; **(b)** move `mining.mineSite` north entirely and let MSA-area work
-> travel instead; **(c)** leave it and accept the commute. **(a) is the recommendation** — nothing
-> says there may only be one grove, and `mineSite` is a single coordinate that can simply be
-> repointed once a northern mine exists.
+> travel instead; **(c)** leave it and accept the commute.
+>
+> **Operator chose (a), 2026-07-24 — both are now built. See §3.1.**
+
+### 3.1 Northern grove and mine — BUILT 2026-07-24
+
+Both placed by RCON (`/setblock` + `/fill`) with the work area force-loaded and released
+afterwards. 305 RCON commands.
+
+**Oak grove — `x[-125,-59]`, `z[-332,-314]`, 17 trees.** Sited **south of town**, in the strip
+between the town's south edge (`z = -335`) and the envelope's north edge (`z = -300`), so it sits
+on the natural route between the fleet's home and MSA. Trees are **built geometry** (5-block
+`oak_log` trunk, 5×5 `oak_leaves` slab, 3×3 cap), not saplings — saplings need random ticks and
+light to grow, which is slow and not verifiable in one pass. Six trunks were probe-verified
+present at ground+2.
+
+- **17 of 18 planted.** The column at `(-101,-314)` returned no surface and was skipped.
+- ⚠️ **The grove is not on level ground.** Most trees sit at y67–72, but three are far lower:
+  `(-71,-323)` at **y55**, `(-65,-314)` at **y57**, `(-89,-314)` at **y64**, against neighbours at
+  69–72. A 14-block drop between adjacent columns means a **ravine or cave opening** runs through
+  the grove's east end. Harmless for harvesting — the trees are real and reachable — but do not
+  assume this strip is flat, and survey it before putting anything else there.
+
+**Mine — centre `(-85, 64, -440)`, radius 20** (`x[-105,-65]`, `z[-460,-420]`). Sited **north of
+town**, ~110 blocks from the grove, keeping the same discipline as the original south-east pair:
+*mining never eats the trees*. Built with a 9×9 `stone_bricks` apron, a 3×3 collar, a starter
+shaft cut to y58, and a torch ring. Shaft verified open at y61.
+
+> ⚠️ **`mineSite` is SINGULAR and has NOT been repointed.** `geofence.ts:52` types it
+> `mineSite: MineSite | null` — the config supports exactly **one** communal mine, not a list. It
+> still points at the original **(80, 64, 42)** beside MSA.
+>
+> This is deliberate. The fleet does not live in the north yet; repointing now would simply invert
+> the problem, giving every MSA-area ore task a ~450-block trek. **Flip it when the town is
+> actually occupied**, by editing `config.yml`:
+>
+> ```yaml
+> mining:
+>   mineSite:
+>     x: -85
+>     y: 64
+>     z: -440
+>     radius: 20
+> ```
+>
+> Requires a **restart**, not a PATCH: `FIELD_TYPES.mining` types only `minDigY`, so `validatePatch`
+> would silently drop this, and `geofence.ts` memoises the whole `mining` section per worker thread.
+>
+> Supporting both mines at once is a code change (`mineSite` → a list, with nearest-site selection
+> in `routeToMineBlocks`). Worth doing if the fleet ends up working both ends of the map, but it is
+> not needed to occupy the town.
 
 ## 4. Not yet decided
 
