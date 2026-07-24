@@ -179,3 +179,26 @@ defects:
     found_by: overnight build report (self-noted); pending RCON/in-world confirmation
     status: open
     resolution: ""
+
+  - id: DEF-007
+    building: B01
+    severity: major
+    description: >-
+      As-built Guest Center is SINGLE-STOREY, contradicting the VERIFIED "44,019 SF, 2 story" fact
+      (REF-007). Probing the interior column at (0, y, 128) finds the first non-air block at y70, so
+      the shell is clear only from y65 to y69 -- about 6 blocks, enough for one floor and no more. An
+      upper floor at y70 was therefore NOT built during the interior fit-out; the pass skipped it
+      rather than pour a slab into the roof.
+      The footprint tells the same story: 145 x 76 = 11,020 blk^2 ~= 44,080 SF, which matches the
+      VERIFIED TOTAL for the building -- i.e. the whole two-storey area was built as a single floor
+      instead of two floors of ~22,010 SF each.
+      Consequence: the ground-floor zone areas laid in the fit-out (restaurant 1,476, event hall
+      1,476, showroom 4,104, T.E.D. 1,435, design studio 1,435 blk^2) all sit on one level, and the
+      ~10,000 SF design studio (REF-018) is represented at 1,435 blk^2 ~= 5,740 SF, a little over half
+      its verified size.
+      NOT a fit-out defect -- the interior work is correct for the shell that exists. This is a shell
+      defect and the fix is structural: raise the roof and add a floor at y70, or accept and document
+      a single-storey deviation from a VERIFIED fact.
+    found_by: interior fit-out pass (qa/as-built-survey.md ADDENDUM 4)
+    status: open
+    resolution: ""

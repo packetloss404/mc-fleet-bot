@@ -202,3 +202,49 @@ the west home row (which ends at x−52), on the z−95 lot line.
 Interiors, landscaping/planting, the drop-off loop, the LED monument billboard,
 porte-cochère, cul-de-sac terminus treatment, detention pond — and all of
 Raven Rock beyond Cavern A.
+
+---
+
+# ADDENDUM 4 — 2026-07-24 · interior fit-out
+
+## 12 homes — FITTED OUT (12/12 verified)
+
+The shells are genuinely enclosed. A perimeter test on the west home at lot z−95
+(expected `x[-52,-16] z[-110,-80]`) returned north 10/10, south 10/10, west 8/8,
+east 7/8 solid at wall height — the single gap being the **street-facing door**,
+centred on the lot z-centre. An earlier cross-section at exactly z−95 appeared to
+show no east wall for precisely that reason; it was cutting through the doorway.
+
+Each home received a two-storey domestic fit-out inside the existing shell:
+oak ground floor, upper floor slab at **y70** with a stairwell void and staircase,
+ground and upper partition walls with doorways, kitchen block (crafting table +
+furnace), storage, a table-and-chairs set, a bed and bookshelf upstairs, and
+hanging lanterns on both levels. **12/12 verified** on floor and upper-slab probes.
+
+## Guest Center — ground floor fitted to the VERIFIED program
+
+Zones laid to the documented program (REF-008 / REF-018):
+
+| Zone | Extent | Area |
+|---|---|---|
+| MAIN Restaurant | `x[-70,-30] z[92,127]` | 1,476 blk² |
+| Event hall | `x[30,70] z[92,127]` | 1,476 blk² |
+| Furniture showroom | `x[-28,28] z[92,163]` | 4,104 blk² |
+| T.E.D. distribution | `x[-70,-30] z[129,163]` | 1,435 blk² |
+| Design studio | `x[30,70] z[129,163]` | 1,435 blk² |
+
+Partition walls with doorways, central showroom left open, hanging lantern grid.
+6/6 verification probes passed.
+
+## ⚠️ New defect — DEF-007: the Guest Center is single-storey
+
+The planned upper floor was **not** built, and deliberately so. Probing the
+interior column at `(0, y, 128)` finds the first non-air block at **y70** — the
+shell is clear only y65→y69. There is no headroom for a second storey, so the
+pass skipped it rather than pour a slab into the underside of the roof.
+
+This contradicts the **VERIFIED** "44,019 SF, **2 story**" fact. The footprint
+corroborates it: 145 × 76 = 11,020 blk² ≈ **44,080 SF** — the whole two-storey
+area built as **one** floor rather than two of ~22,010 SF.
+
+This is a **shell** defect, not a fit-out defect. Filed as **DEF-007**.
