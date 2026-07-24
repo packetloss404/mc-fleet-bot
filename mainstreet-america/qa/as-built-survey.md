@@ -411,3 +411,39 @@ shell perimeter, roof deck and corner quoins were re-skinned.
 > count regardless of its verified square footage — Alexandria (6,011 SF, largest)
 > and Cape Pointe (1,815 SF, smallest) are still the same size in-world. Styling
 > is done; **scaling is not**.
+
+---
+
+# ADDENDUM 9 — 2026-07-24 · home SCALING · #20 COMPLETE
+
+ADDENDUM 8 styled the homes but left massing generic. Each shell has now been
+**rebuilt to its verified footprint and storey count**, from
+`buildings.yaml.building_record.footprint`:
+
+| Home | Footprint | Floors | Verified |
+|---|---|---|---|
+| Alexandria | 24×22 | **3** | 6,011 SF — largest |
+| Villa Lago | 28×27 | 2 | 5,979 SF |
+| Ashby Manor | 24×22 | 2 | 4,138 SF |
+| Calais | 24×21 | 2 | 4,101 SF |
+| Casa Lana | 28×29 | 1 | 3,240 SF |
+| Cross Creek | 28×29 | 1 | 3,223 SF |
+| Centennial | 19×18 | 2 | 2,715 SF |
+| Wakefield | 26×25 | 1 | 2,622 SF |
+| Midtown | **13×12** | **4** | 2,417 SF — tallest, narrowest |
+| Timbergrove | 24×24 | 1 | 2,321 SF |
+| Valencia | 22×21 | 1 | 1,881 SF |
+| Cape Pointe | **15×15** | 2 | 1,815 SF — smallest |
+
+The homes now differ in **size and height**, not just palette — Alexandria reads
+as the largest at 3 storeys, Midtown as a narrow 4-storey tower, Cape Pointe as
+the smallest. **12/12 verified.**
+
+> The six EAST homes first reported `shell=FAIL`. A clean west-pass/east-fail
+> split meant a systematic cause, not twelve build failures: east homes carry
+> their door face on `x0`, and the probe point `(x0, 67, z0+2)` is exactly where
+> the first **window** lands — I was probing glazing. Re-probed off the window
+> line: 6/6 OK, **12/12 overall**.
+
+**Still `[CREATIVE]`:** the block palettes and the interior layouts. Footprint,
+storey count and roster are VERIFIED; how each style is *rendered* is not.

@@ -149,3 +149,50 @@ column — bore verified open at y30 and y60.
 
 Reservoirs **N7** (`x−170…−130, z−34…−26`, sump y−18) — must use **line-then-flood**
 per OQ-5; interior fit-out of RR-B1…B4; lighting standard per OQ-3.
+
+---
+
+## 2026-07-24 — N7 reservoirs, building interiors, OQ-3 lighting · COMPLEX COMPLETE
+
+### N7 reservoirs — OQ-5 honoured as a *gate*, not a habit
+
+`x[-170,-130] z[-34,-26]`, sump floor **y−18**, filled to **y−14**, inside Cavern C.
+
+The line-then-flood rule was applied as the acceptance gate `qa-report.md` BU-10
+describes: liner placed, then **enclosure verified before a single water block
+was introduced**. The check swept the full clay perimeter and floor.
+
+- **Enclosure gaps: NONE** → gate passed → flooded.
+- Post-flood: water present at centre, **zero water outside the liner**.
+
+This is the third application of the discipline (Cavern A taught it the hard way,
+the MSA detention pond and now N7 applied it deliberately) — and the first where
+the verification ran *as a precondition* rather than as a post-hoc check.
+
+### RR-B1…B4 interiors + OQ-3 lighting
+
+Every floor of all four buildings: finished polished-andesite flooring, a central
+spine partition with a doorway, and a **sea-lantern grid on an 8-block pitch** —
+the `lighting_palette` standard OQ-3 ratified for all walkable/occupied volumes.
+4/4 buildings verified on both floor and lighting.
+
+> OQ-3's second half — WorldGuard `mob-spawning: deny` on the region — is **not**
+> applied. It is a plugin/config action, not construction, and belongs with the
+> OQ-2 de-op step. Note `difficulty=peaceful` currently masks the need.
+
+---
+
+# RAVEN ROCK — EXCAVATION AND STRUCTURE COMPLETE
+
+Caverns A/B/C · tunnels T1–T4 · vestibules N1/N2 · portals N3–N6 (N3 coffered
+and drained) · rotunda N10 · corridors C1/C2 · spur S1 · shaft RR-Z5 · buildings
+RR-B1…B4 on N8 spring pedestals · N7 reservoirs · OQ-3 lighting.
+
+**The MSA buffer at y41 was re-probed intact at every stage.** Every fill ran
+through an assertion that refused an upper bound above y41 outside the RR-Z5
+column. No assertion ever fired.
+
+**Remaining is finish work, not construction:** OQ-2 de-op + WorldGuard, OQ-3's
+`mob-spawning: deny`, the DS-01 disclosure signs at each portal, and regenerating
+`visuals/level-plans.svg` + `section.svg`, which still draw N3 at its
+pre-OQ-8 position.
