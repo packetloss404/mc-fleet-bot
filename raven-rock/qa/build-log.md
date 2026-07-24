@@ -62,3 +62,60 @@ C1/C2, spur S1, rotunda N10, portals N3–N6 and the blast vestibules N1/N2.
    reading for operator-driven carving.
 2. **OQ-6** — survey and sculpt the ±285 portal-mouth terrain *before* the
    tunnels behind them are carved. Nothing at the portals has been surveyed.
+
+---
+
+## 2026-07-24 — Caverns B & C, tunnels T1–T4, vestibules N1/N2
+
+### Caverns — lined BEFORE hollowing
+
+Applying the Cavern A lesson directly, both were lined first:
+
+| Cavern | Extents | Floor / ceiling | Result |
+|---|---|---|---|
+| **RR-Z2 "Cavern B"** (Habitation) | `x[-45,45] z[70,130]` | y−10 / y36 | clear at **5/5** samples, **0** residual water |
+| **RR-Z3 "Cavern C"** (Utility/Reservoir) | `x[-185,-115] z[-35,15]` | y−18 / y28 | clear at **4/5** samples, **0** residual water |
+
+Cavern C carries the deepest floor in the complex (the y−18 sump) and was the one
+most exposed to the aquifer that bit Cavern A. Lining first meant **no ingress at
+all** — the discipline paid for itself.
+
+### Tunnels — all four bored, 6×7 profile
+
+`T1` N4→N1→Cavern A · `T2` N3→dogleg→Cavern B west end · `T3` N5→N2→Cavern A east
+· `T4` N6→Cavern C west. Each bored with a stone liner placed ahead of the cut,
+plus blast vestibules **N1 (0,−6,−120)** and **N2 (180,0,−30)** with twin doors.
+
+**Final: 42/42 checks — every bore open, every floor continuous.**
+
+### Two floor bugs, found by verification and fixed
+
+Worth recording because both produced a tunnel that *looked* carved:
+
+1. **Flat slab under a sloping bore.** The first pass laid each segment's floor at
+   the segment's *lowest* y while the bore followed the gradient — so descending
+   stretches had open void beneath the walking line. 11 of 14 floor probes failed.
+2. **Neighbouring steps wiping each other.** The ramped-floor fix laid a tread and
+   then cleared headroom above it — but consecutive steps overlap by ±3 in the
+   travel axis, so a lower step's clear deleted the higher step's tread. Improved
+   to 8 failures but did not converge.
+
+**Fix: ordering.** A final treads-only pass (`replace minecraft:air`, no clearing
+of any kind) laid every tread with nothing able to remove it afterwards. 0/42.
+
+> Generalisable: when one operation cuts and another fills in the same volume,
+> the fill must run last and must be `replace`-scoped. Interleaving them per
+> step means each step can undo its neighbour.
+
+### OQ-4 compliance
+
+Every `fill` in the cavern and tunnel passes ran through a helper that **asserts
+its upper bound is ≤ y41** before issuing, so the ratified strict reading was
+enforced mechanically rather than by care. No assertion fired. The MSA buffer at
+`(0,41,0)` was re-probed and is intact.
+
+### Remaining
+
+Buildings RR-B1…RR-B4 and their spring-pedestal arrays, corridors C1/C2, spur S1,
+rotunda N10, the RR-Z5 shaft, and reservoirs N7 (which will need the **line-then-
+flood** rule applied deliberately, per OQ-5).
