@@ -6,6 +6,11 @@ Priority tags: **[P0]** time-boxed / do next · **[P1]** should do soon · **[P2
 
 ## Items
 
+### 0. [P0/blocked-external] Fleet offline — DyoCraft upgraded to Paper 26.2, bots speak 1.21.11
+- **Why:** `play.dyoburon.com` now runs Paper 26.2 (protocol 776, year-based versioning); the fleet pins `1.21.11` (`config.yml:10`) and every bot is kicked with "Outdated client! Please use 26.2" (~2.5k reconnect errors/day since the server upgrade). API/dashboard are healthy; zero bots in-world.
+- **Client-side is blocked upstream (verified 2026-07-24):** latest mineflayer 4.37.1 / minecraft-protocol 1.66.2 / minecraft-data 3.111.0 all top out at 1.21.11. node-minecraft-protocol PR #1496 ("26.2") only adds the version constant — minecraft-data master has no 26.x protocol data at all, and even protocol-775 mappings are known-buggy (mineflayer #3888). Tested the PR branch against the live server: `unsupported protocol version: 26.2`.
+- **Next action:** server-side fix — get ViaVersion + ViaBackwards installed on the Paper 26.2 server so 1.21.11 clients can join (needs whoever admins play.dyoburon.com). Meanwhile: watch PrismarineJS for 26.2 data landing (mineflayer #3893, node-minecraft-protocol #1496), then bump deps + `config.yml` version. Consider a long reconnect backoff on `differentVersionError` — it is a permanent failure, not transient, and the current loop burns ~2.5k errors/day into the logs.
+
 ### 1. [P1/M] Schema migration story before the next town DB change
 - **Why:** Town DB uses ad-hoc `CREATE TABLE IF NOT EXISTS`; drizzle-kit was deliberately dropped (commit `6ab4c8b`), so there is currently no way to alter existing columns/tables safely on deployed data.
 - **Next action:** Decide: reinstate drizzle-kit, or add a minimal versioned-migration runner (user_version pragma + numbered SQL files). Must land before the next schema change, not after.
