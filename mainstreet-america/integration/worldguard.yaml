@@ -1,0 +1,117 @@
+# =====================================================================================================
+# MainStreet America — WORLDGUARD REGION DEFINITION  (integration/worldguard.yaml)
+# =====================================================================================================
+# REQUIRED PLUGIN: WorldGuard (with WorldEdit, its hard dependency).
+# STATUS: STAGED, NOT ACTIVE. The target server is stock Paper. WorldGuard (and WorldEdit / Dynmap /
+#   Citizens) is NOT installed, and the builder bots are NOT opped. This region does NOT protect
+#   anything today — the "protected envelope" is a planning boundary only (site-plan.md §1). Apply this
+#   only once WorldGuard is installed. To load: merge into
+#   plugins/WorldGuard/worlds/<world>/regions.yml (or recreate via //commands), then reload.
+#
+# -----------------------------------------------------------------------------------------------------
+# PROVENANCE / HONESTY NOTE  (read before trusting the flags)
+# -----------------------------------------------------------------------------------------------------
+# The task cited "exactly the flags given in section 18." NO brief and NO "section 18" exist in this
+# repository (only ../references/manifest.yaml + ../references/README.md + planning/). This is the same
+# missing-brief gap recorded as coordinates.yaml CONFLICT-02 / palettes.yaml A01. I therefore AUTHORED
+# the flag set below — a sensible "curated public showcase" profile (visitors may walk through and use
+# doors, but cannot build/grief, and the environment is kept calm) — rather than transcribing a section
+# that does not exist. Treat the flag SET as reasoned construction, not a canonical transcription.
+# All flag NAMES and VALUES below are real WorldGuard state flags (WorldGuard 7.x).
+# =====================================================================================================
+
+# The region spans the full 600x600 project envelope (site-plan.md §1: X/Z in [-300, +300]) across the
+# full 1.21 world height. type: cuboid, min -> max inclusive.
+regions:
+  mainstreet_america:
+    type: cuboid
+    priority: 10
+    min:
+      x: -300
+      y: -64        # 1.21 world floor
+      z: -300
+    max:
+      x: 300
+      y: 320        # 1.21 world ceiling
+      z: 300
+
+    # --- FLAGS (authored; see provenance note) ----------------------------------------------------
+    # Intent: a walk-through museum/showcase. Non-members cannot alter the build; visitors may enter,
+    # move freely, and operate doors/gates; explosions, fire spread and hostile mobs are suppressed so
+    # the reconstruction is not damaged or made hostile.
+    flags:
+      # Build / grief protection
+      build: deny                # non-members cannot place or break anything
+      block-break: deny
+      block-place: deny
+      interact: allow            # visitors CAN use doors, gates, buttons, trapdoors (showcase walk-through)
+      chest-access: deny         # no container looting (there are no visitor chests, but deny by default)
+      use: allow                 # levers/buttons/doors usable by visitors
+      item-frame-rotation: deny
+      # Combat / safety
+      pvp: deny
+      mob-damage: deny           # ambient mobs cannot hurt visitors
+      damage-animals: deny
+      # Environment preservation
+      mob-spawning: deny         # keep the site clean of wandering mobs
+      creeper-explosion: deny
+      other-explosion: deny
+      tnt: deny
+      ghast-fireball: deny
+      wither-damage: deny
+      enderman-grief: deny
+      fire-spread: deny
+      lava-fire: deny
+      lighter: deny              # no flint-and-steel ignition
+      ice-form: deny
+      ice-melt: deny
+      snow-fall: deny
+      snow-melt: deny
+      vine-growth: deny
+      # Movement / presence
+      entry: allow
+      exit: allow
+      passthrough: allow
+      # Signage shown at the boundary (honest framing for visitors)
+      greeting: "&eWelcome to &6MainStreet America&e — a reconstruction of the former Design Tech Homes model-home park, I-45 Spring, TX. &7Layout & sizes are real; the buildings' look is our informed reconstruction."
+      farewell: "&7Leaving MainStreet America. Thanks for visiting."
+
+    # No owners/members are pre-seeded: the builder bots are NOT opped and there is no live server admin
+    # UUID to embed here. Fill these in at apply-time (the build crew + admins) so 'build: deny' does not
+    # lock out the very accounts that need to edit the site.
+    owners:
+      unique-ids: []
+      groups: []
+    members:
+      unique-ids: []
+      groups: []
+
+# =====================================================================================================
+# ASSUMPTIONS & CROSS-CHECK NOTES
+# =====================================================================================================
+assumptions:
+  - id: WG01
+    topic: No brief / no "section 18"
+    detail: >-
+      The flag set is authored, not transcribed (section 18 does not exist). Same gap as coordinates.yaml
+      CONFLICT-02. If a real brief later specifies exact flags, replace this set wholesale.
+    severity: high
+  - id: WG02
+    topic: World name + region file path
+    detail: >-
+      This entry must live in plugins/WorldGuard/worlds/<world>/regions.yml. The DyoCraft overworld name
+      is unconfirmed ('world' placeholder used elsewhere in integration/). Confirm before apply.
+    severity: medium
+  - id: WG03
+    topic: Empty owners/members
+    detail: >-
+      'build: deny' with no members will block ALL non-op edits (including the builder bots) once
+      WorldGuard is live. Seed the build crew's + admins' UUIDs into members/owners at apply-time, or
+      leave the region unapplied until the build is finished. The bots are currently un-opped anyway.
+    severity: medium
+  - id: WG04
+    topic: Y-bounds
+    detail: >-
+      min-y -64 / max-y 320 span the full 1.21 world column so protection is not just at the y=64 build
+      plane. Narrow this if only the surface build needs protecting.
+    severity: low

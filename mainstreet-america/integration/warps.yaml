@@ -1,0 +1,116 @@
+# =====================================================================================================
+# MainStreet America — WARP DEFINITIONS  (integration/warps.yaml)
+# =====================================================================================================
+# REQUIRED PLUGIN: EssentialsX (the /warp system). Any Essentials-compatible warp plugin will do.
+# STATUS: STAGED, NOT ACTIVE. The target server is stock Paper. EssentialsX is NOT installed (nor are
+#   WorldGuard / Dynmap / Citizens), and the builder bots are NOT opped. No /warp works today. Apply
+#   only once EssentialsX exists.
+#   NOTE ON LAYOUT: EssentialsX stores each warp as its own file at
+#   plugins/Essentials/warps/<name>.yml. This single file is a STAGING bundle of all five warps for
+#   review; split it into per-warp files (keys under 'warps:' -> individual <name>.yml) at apply-time,
+#   or feed it to a small importer.
+#
+# -----------------------------------------------------------------------------------------------------
+# PROVENANCE / HONESTY NOTE
+# -----------------------------------------------------------------------------------------------------
+# Coordinates are drawn VERBATIM from planning/coordinates.yaml `notable_locations` (N-series) so every
+# integration file collides against the same numbers. Per that file, absolute XZ is creative
+# approximation (no survey); the front-to-back SEQUENCE the warps trace is high-confidence inference.
+# XZ are centered on the block (+0.5) so players stand mid-block. Y is set to 65.0 (one above the y=64
+# ground/build plane) so a player materializes standing ON the surface, not inside it.
+#
+# Minecraft yaw reference used for 'facing': 0=+Z(South), 90=-X(West), 180=-Z(North), 270=+X(East).
+# =====================================================================================================
+
+schema_version: 1
+world_assumption: >-
+  'world' is a placeholder for the DyoCraft overworld name (unconfirmed — confirm before apply). It
+  must match the world used in location.yaml / worldguard.yaml / map-marker.yaml.
+
+# Five warps, tracing the visitor journey south(front) -> north(rear).
+warps:
+
+  # 1) Arrival — the parking field, the natural landing point at the front of the site.
+  mainstreet:
+    source_notable_location: N09 (Parking Field Centroid)
+    world: world
+    x: 0.5
+    y: 65.0
+    z: 188.5
+    yaw: 180.0            # face NORTH, toward the Guest Center / into the site
+    pitch: 0.0
+    label: "MainStreet America — Arrival / Parking"
+    confidence: high-confidence inference   # sequence known; exact block is placement (coordinates.yaml)
+
+  # 2) Guest Center — the anchor building's south entrance (faces the parking).
+  msa_guestcenter:
+    source_notable_location: N03 (Guest Center Main Entrance)
+    world: world
+    x: 0.5
+    y: 65.0
+    z: 113.5
+    yaw: 180.0            # face NORTH, into the Guest Center's south door
+    pitch: 0.0
+    label: "MainStreet America — Guest Center"
+    confidence: high-confidence inference
+
+  # 3) Showcase Homes — the south mouth of the internal model-home street.
+  msa_homes:
+    source_notable_location: N06 (Internal Street — South Entrance)
+    world: world
+    x: 0.5
+    y: 65.0
+    z: 25.5
+    yaw: 180.0            # face NORTH, up the street of 12 homes
+    pitch: 0.0
+    label: "MainStreet America — Showcase Homes"
+    confidence: high-confidence inference
+
+  # 4) Cul-de-sac — the dead-end terminus at the rear of the home street (verified street character).
+  msa_culdesac:
+    source_notable_location: N07 (Cul-de-sac Terminus)
+    world: world
+    x: 0.5
+    y: 65.0
+    z: -215.5
+    yaw: 0.0             # face SOUTH, looking back down the street over the homes
+    pitch: 0.0
+    label: "MainStreet America — Cul-de-sac"
+    confidence: high-confidence inference
+
+  # 5) Detention Pond — the naturalized rear water feature / scenic terminus.
+  msa_pond:
+    source_notable_location: N08 (Detention Pond)
+    world: world
+    x: 190.5
+    y: 65.0
+    z: -250.5
+    yaw: 90.0            # face WEST, toward the site interior / across the water
+    pitch: 0.0
+    label: "MainStreet America — Detention Pond"
+    confidence: moderate-confidence reconstruction   # pond is an unlabeled aerial read (REF-016)
+
+# =====================================================================================================
+# ASSUMPTIONS & CROSS-CHECK NOTES
+# =====================================================================================================
+assumptions:
+  - id: WP01
+    topic: Y offset +1
+    detail: >-
+      Notable_locations store y=64 (the build plane). Warp y is set to 65.0 so players stand on the
+      surface. If the ground surface block actually occupies y=64 (top at y=65) this is correct; if the
+      walkable surface is y=64, drop to 64.0. Verify against the finished terrain before apply.
+    severity: low
+  - id: WP02
+    topic: Five warps chosen from nine notable_locations
+    detail: >-
+      Selected N09, N03, N06, N07, N08 to give a coherent south->north visitor tour. The remaining
+      notables (N01 warehouse [back-of-house], N02 billboard, N04 design studio, N05 T.E.D. point) were
+      left as non-warp markers. Swap freely if a different five is preferred.
+    severity: low
+  - id: WP03
+    topic: World name + storage layout
+    detail: >-
+      'world' unconfirmed (see location.yaml L02). EssentialsX expects per-warp files under
+      plugins/Essentials/warps/; split this bundle at apply-time.
+    severity: medium

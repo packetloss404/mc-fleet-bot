@@ -1,0 +1,174 @@
+# MainStreet America (Spring, TX) — Minecraft Reconstruction: DEFECT REGISTER
+# Deliverable: qa/defects.yaml
+# Companion to: qa/qa-report.md  (Section 21 inspection items + Section 25 definition-of-done)
+#
+# ---------------------------------------------------------------------------------------------------
+# STATE: POPULATED (first pass, 2026-07-24). Construction is UNDERWAY. Source of as-built truth is the
+#        live-server RCON survey qa/as-built-survey.md. The records below are the plan-vs-as-built
+#        divergences that survey documents; where the survey is uncertain (home count, road material)
+#        the record is an OPEN verification item, NOT a confident fact. Later inspections append more.
+# ---------------------------------------------------------------------------------------------------
+#
+# PURPOSE
+#   A build defect is any as-built deviation found by a Section 21 inspection item (qa-report.md §4)
+#   or the §5 acceptance matrix. Each defect is one record with the schema below. Section 25
+#   (definition-of-done) gate DoD-03 requires zero open blocker/major defects to ship.
+#
+#   NOTE: pre-build PLANNING conflicts (e.g. the coordinates.yaml vs site-plan.md/buildings.yaml
+#   layout divergence) are NOT build defects and are NOT recorded here. They are tracked as open
+#   items in qa-report.md §2 and gate DoD-04. This register is for as-built findings only.
+#
+# ---------------------------------------------------------------------------------------------------
+# RECORD SCHEMA (every field required unless marked optional)
+#
+#   id:          string  - unique, format "DEF-###" (zero-padded, assigned in discovery order).
+#   building:    string  - the structure the defect is in. Use a canonical id from buildings.yaml
+#                          (MSA-00 .. MSA-13), or "SITE" for site-wide / circulation / landscape /
+#                          zone-level defects, or "MULTI" if it spans several structures.
+#   severity:    enum    - one of: blocker | major | minor | cosmetic
+#                            blocker  = violates a VERIFIED fact, breaks walkability, out of envelope,
+#                                       non-vanilla, or otherwise prevents ship (fails a DoD gate).
+#                            major    = clear failure of a Section 21 item; must fix before ship.
+#                            minor    = small deviation within a forgiving item; fix if time allows.
+#                            cosmetic = visual nitpick with no functional/accuracy impact.
+#   description: string  - what is wrong, where (coords), and which qa-report item it fails
+#                          (e.g. "fails SA-07 / TQ-06"). Be concrete and coordinate-anchored.
+#   found_by:    string  - who/what found it: a reviewer/agent name, or a verification method tag
+#                          from qa-report.md §3 (M1 F3 | M2 human-op fly | M3 terrain-scan API |
+#                          M4 world-model | M5 bot walkability | M6 prismarine-viewer | M7 tape).
+#   status:      enum    - one of: pending | open | in_progress | fixed | verified | wontfix | deferred
+#                            pending     = logged, not yet triaged.
+#                            open        = triaged, awaiting fix.
+#                            in_progress = fix underway.
+#                            fixed       = fix applied, awaiting re-inspection.
+#                            verified    = re-inspected and confirmed resolved (closes the defect).
+#                            wontfix     = accepted as-is with reviewer sign-off.
+#                            deferred    = postponed with reviewer sign-off (see resolution).
+#   resolution:  string  - how it was/will be resolved; empty string "" while unresolved.
+#
+# ---------------------------------------------------------------------------------------------------
+# TEMPLATE (copy for each new defect; delete this comment block's example when logging real ones).
+# Every newly logged defect starts at status: pending — nothing is built, so there is nothing to
+# mark otherwise. Example record shown commented-out below:
+#
+#   - id: DEF-001
+#     building: MSA-01            # The Alexandria
+#     severity: major
+#     description: >-
+#       Ground plate scans to 24x18 = 432 floor-blocks x 3 floors = 1,296 (target band 451-551/floor,
+#       1,353-1,653 total). Fails SA-07 (floor-area tolerance) at center (-118,64,-125).
+#     found_by: M3 terrain-scan API
+#     status: pending
+#     resolution: ""
+# ---------------------------------------------------------------------------------------------------
+
+schema_version: "1.0"
+
+# Enumerations (authoritative; validators may key off these).
+enums:
+  severity: [blocker, major, minor, cosmetic]
+  status:   [pending, open, in_progress, fixed, verified, wontfix, deferred]
+  building_ids:
+    - MSA-00   # Guest & Design Center
+    - MSA-01   # The Alexandria
+    - MSA-02   # The Villa Lago
+    - MSA-03   # The Cape Pointe
+    - MSA-04   # The Calais
+    - MSA-05   # The Ashby Manor
+    - MSA-06   # The Casa Lana
+    - MSA-07   # The Centennial
+    - MSA-08   # The Cross Creek
+    - MSA-09   # The Midtown
+    - MSA-10   # The Timbergrove
+    - MSA-11   # The Valencia
+    - MSA-12   # The Wakefield
+    - MSA-13   # Service Warehouse
+    - SITE     # site-wide / circulation / landscape / zones
+    - MULTI    # spans several structures
+
+# The register. Populated 2026-07-24 from the as-built RCON survey (qa/as-built-survey.md).
+# All measurements below trace to that survey; uncertain items are logged as OPEN verification, not fact.
+defects:
+  - id: DEF-001
+    building: SITE
+    severity: major
+    description: >-
+      Layout scheme divergence. As-built is a THIRD, unplanned "narrow central street": homes flank the
+      x=0 spine at x ≈ ±20-25 (west z≈{0,-96,-144,-195}, east z≈{21,-48,-93,-144,-195}). This matches
+      NEITHER the GRID scheme (homes at x=±85) NOR the OVAL scheme (homes at x≈±116). The DoD-4 GRID/OVAL
+      fork was effectively BYPASSED by the build, not resolved per plan. Fails the coordinate-integrity
+      intent behind SF-12 / TQ-06 against both planned layouts. (It does NOT violate the VERIFIED fact of
+      a single self-contained non-through street with homes on both sides — that character is preserved;
+      the divergence is against the invented GRID/OVAL geometry, which is [CREATIVE].) Planning coordinate
+      docs and staged integration files must be repointed to the actual compact-street geometry.
+    found_by: as-built RCON survey (qa/as-built-survey.md)
+    status: open
+    resolution: ""
+
+  - id: DEF-002
+    building: MSA-00
+    severity: major
+    description: >-
+      Guest Center centroid & size diverge from both plans. As-built solid footprint spans x -70…+70
+      (~141 wide) at z=128, z ~90…180+ deep at x=0, centroid ≈ (0, ~135); solid y63→y79 (~16 blocks,
+      2 stories + roof band), hollow interior y65-68. Plans specify (0,64,+75)/75×75 (GRID) or
+      (0,64,+88)/90×60 (OVAL). As-built is ~47-60 blocks farther north and ~50 blocks wider than either.
+      Fails SA-03 (footprint vs ≈44,019 SF / ≈10,800 floor-blocks target) and TQ-06 (centroid within
+      ±3 blocks of canonical). As-built plan area may exceed the VERIFIED SF target; a fine per-face scan
+      is needed to confirm the enclosed floor area before triaging severity further.
+    found_by: as-built RCON survey (qa/as-built-survey.md)
+    status: open
+    resolution: ""
+
+  - id: DEF-003
+    building: MULTI
+    severity: major
+    description: >-
+      Home count NOT yet confirmed at the VERIFIED 12 (SA-06, zero tolerance). The coarse RCON scan
+      detected only ~9 wall clusters (west z≈{0,-96,-144,-195}; east z≈{21,-48,-93,-144,-195}), which may
+      undercount due to probe spacing. This is an OPEN VERIFICATION item, not a confirmed shortfall: a
+      fine per-lot sweep is required to confirm all 12 homes are present and correctly styled. Escalate to
+      blocker if the fine sweep confirms fewer than 12 (that would violate a VERIFIED fact).
+    found_by: as-built RCON survey (qa/as-built-survey.md)
+    status: open
+    resolution: ""
+
+  - id: DEF-004
+    building: SITE
+    severity: minor
+    description: >-
+      Process/meta defect: the planning + QA docs (README.md "Current build status", qa/qa-report.md
+      "NOTHING HAS BEEN BUILT", and this defects register) were never updated after the overnight build
+      and still asserted "not started / nothing built" as of the 2026-07-24 survey. Stale docs, not an
+      in-world defect. Refreshed to as-built in the same 2026-07-24 reconciliation pass; planning
+      coordinate docs and integration files still pending repoint (tracked as OQ-1 / DoD-4).
+    found_by: as-built RCON survey (qa/as-built-survey.md)
+    status: fixed
+    resolution: >-
+      README.md and qa/qa-report.md refreshed to as-built and this register populated on 2026-07-24, all
+      citing qa/as-built-survey.md. Coordinate-doc / integration repoint remains open under OQ-1 (DoD-4).
+
+  - id: DEF-005
+    building: SITE
+    severity: cosmetic
+    description: >-
+      Road/street surface block unidentified. A real, continuous placed surface exists at y=63 along x=0,
+      z ~+200 → −235 (~435 blocks, bridging over water), but its block id falls outside the ~90-entry
+      probe palette used by the survey, so the material could not be auto-identified. No functional or
+      accuracy impact; identify on the next probe pass (expand the candidate palette).
+    found_by: as-built RCON survey (qa/as-built-survey.md)
+    status: open
+    resolution: ""
+
+  - id: DEF-006
+    building: MSA-00
+    severity: cosmetic
+    description: >-
+      Guest Center entrance door ended up on the NORTH face — the overnight build report self-noted the
+      drive/entrance orientation came out slightly off. Plan calls for the principal entrance / main door
+      and long face on the SOUTH (+Z) side (SA-14 / AR-14 / AR-16). Recorded as a known cosmetic defect
+      per the build report; the RCON survey did not directly probe door orientation, so confirm the face
+      on the next in-world pass (M1 F3 / M2 human-op fly).
+    found_by: overnight build report (self-noted); pending RCON/in-world confirmation
+    status: open
+    resolution: ""

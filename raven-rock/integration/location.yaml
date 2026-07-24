@@ -1,0 +1,226 @@
+# =====================================================================================================
+# Raven Rock Mountain Complex (Site R) — BOT-READABLE LOCATION RECORD  (integration/location.yaml)
+# =====================================================================================================
+# REQUIRED PLUGIN / CONSUMER: the mc-fleet-bot server-side event-relay plugin (the Minecraft <-> bot
+#   bridge). This file is the location/world-knowledge registry the bots read so they can recognize,
+#   name, and speak about the site when a player asks. (A Citizens guide-NPC or hologram could load the
+#   same record as a secondary consumer.) Mirrors the MainStreet America (MSA) integration set.
+#
+# STATUS: STAGED, NOT ACTIVE. Read this carefully — the server reality changed and this header reflects it:
+#   * The builder bots ARE now opped (level 4, confirmed in the server ops.json). Any earlier
+#     "bots are NOT opped" caveat (still present in planning/coordinates.yaml and site-plan.md) is
+#     OUTDATED and does not apply to this integration set.
+#   * BUT the plugins themselves are STILL ABSENT. The target server is stock Paper 1.21.x with NO
+#     mc-fleet-bot relay plugin, and NO WorldGuard / WorldEdit / Dynmap / EssentialsX / Citizens.
+#   * Therefore NOTHING here is live. This record cannot be read by any bot until the relay plugin is
+#     installed AND the overworld name is confirmed. Do not treat it as active.
+#
+# -----------------------------------------------------------------------------------------------------
+# PROVENANCE / HONESTY NOTE  (read before trusting this file)
+# -----------------------------------------------------------------------------------------------------
+# Raven Rock's INTERIOR IS CLASSIFIED. There is NO public floor plan, and since 2007 DoD policy forbids
+# making "any photograph, sketch, picture, drawing, map or graphical representation" of the complex
+# (manifest REF-015). Accordingly EVERY coordinate, cavern outline, building footprint, tunnel route and
+# dimension in this file is CREATIVE APPROXIMATION, carried verbatim from planning/coordinates.yaml. What
+# is public is only the SETTING and CONCEPT: greenstone geology (REF-003, verified); freestanding
+# multi-story buildings on shock-isolation springs in blasted caverns (REF-005, inference); several
+# tunnel portals (REF-007, inference); self-sufficient utilities (REF-009, inference); a
+# continuity-of-government / ANMCC command mission (REF-010, verified). This is an openly-labeled
+# imaginative interpretation of a public landmark, NOT a claimed map of the real, secret facility, and
+# a bot must present it to visitors that way.
+#
+# CONFIDENCE VOCABULARY (inherited from the manifest; never upgraded):
+#   verified                           - primary/multi-source public fact
+#   high-confidence inference          - one good source / a strong read
+#   moderate-confidence reconstruction - assembled from snippets
+#   creative approximation             - no evidence; invented for the build (ALL coordinates here)
+# Coordinates below are copied VERBATIM from planning/coordinates.yaml so every integration file
+# collides-checks against the same numbers.
+# =====================================================================================================
+
+schema_version: 1
+
+location:
+  id: raven_rock
+  display_name: Raven Rock Mountain Complex (Site R)
+  short_name: Raven Rock
+  category: attraction_reconstruction
+
+  # --- What this place really is (public facts; tags per manifest) -----------------------------------
+  real_world:
+    subject: >-
+      The Raven Rock Mountain Complex ("Site R"), a U.S. government underground continuity-of-government
+      / alternate national military command bunker near Blue Ridge Summit, Adams County, Pennsylvania —
+      popularly the "underground Pentagon."
+    location_irl: "Blue Ridge Summit, Adams County, Pennsylvania (Liberty Township), USA"
+    mission: >-
+      Alternate/relocation command site for national military leadership; home of the Alternate National
+      Military Command Center (ANMCC) and comms tenants such as the 114th Signal Battalion / DISA.
+    subject_confidence: verified                    # mission REF-010; comms tenancy REF-011
+    interior_status: >-
+      CLASSIFIED. No public floor plan exists; since 2007 DoD policy forbids any photograph, sketch, map
+      or graphical representation of the complex (REF-015). Everything spatial in this build is invented.
+    disambiguation: >-
+      This is the Adams County, PA military bunker ("Site R" / Raven Rock Mountain Complex). NOT Raven
+      Rock State Park (NC), and NOT the fictional "Raven Rock" of the Fallout games.
+
+  # --- Where it is in THIS Minecraft world ----------------------------------------------------------
+  world_placement:
+    world: world                       # ASSUMPTION: overworld name unconfirmed — confirm before apply (see RR-L02).
+    origin: {x: 0, y: 64, z: 0}        # shared world origin; y=64 is the MSA surface/build plane
+    build_plane_y: 64
+    subsurface: true                   # THE defining trait: Raven Rock is entirely BELOW the surface (see below)
+    boundary:
+      min: {x: -300, z: -300}
+      max: {x: 300, z: 300}
+      size_blocks: {x: 600, z: 600}
+    orientation:
+      north: "-Z"
+      south: "+Z"
+      east: "+X"
+      west: "-X"
+    vertical_placement:
+      note: >-
+        Raven Rock occupies the SUB-SURFACE volume of the same 600x600 envelope MainStreet America (MSA)
+        sits on top of. Cavern ceilings begin at y40 and floors reach y-12 (deepest sump y-18). A solid
+        ~20-block greenstone buffer (y41->y61) separates it from MSA's y62->y79 surface band. The two
+        builds share the X-Z envelope but NEVER overlap in Y.
+      ravenrock_ceilings_y: 40
+      ravenrock_floors_y: -12
+      ravenrock_deepest_y: -18         # Cavern C reservoir sump
+      rock_buffer_band: {y_min: 41, y_max: 61}
+      msa_surface_band: {y_min: 62, y_max: 79}
+      confidence: creative approximation
+    depth_note: >-
+      Burial depth is a build CONVENTION, not a survey. The real complex is popularly said to sit ~650 ft
+      (~325 blocks) below the summit (REF-008); per the manifest build-scale note it is buried only
+      ~20 blocks here as a deliberate stand-in for "deep inside the mountain."
+
+  # --- Relationship to MainStreet America (the surface build above) ---------------------------------
+  msa_relationship:
+    summary: >-
+      Raven Rock is built directly BENEATH MainStreet America. MSA is the surface build (y62->y79); Raven
+      Rock is the bunker beneath it (y40 and below). They share world origin and the 600x600 envelope but
+      never intersect in Y — a solid greenstone buffer sits between them.
+    connective_link: >-
+      A single deliberate-liberty vertical access shaft (RR-Z5) joins the two builds: it rises from
+      Cavern A's spur at the shaft base (x=200, y=-12, z=-15) up through the rock buffer to a surface
+      head-house (N9) at (x=200, y=64, z=-15) in MSA's east greenbelt flank. The shaft sits at x=200,
+      east of every planned MSA element — it clears the widest planned MSA footprint (x ~130) by ~70
+      blocks and the Z09 event lawn (x <= 160) by 33 blocks — so it pierces only rock and collides
+      with no MSA structure. NOTE: do not argue this clearance against "MSA's footprint x[-70,+70]";
+      that figure is the as-built Guest Center width, not MSA's outer bound (see visuals/
+      raven-rock-NOTES.md C-2). Relocated from (120,64,60) per the OQ-1 decision of 2026-07-24.
+    confidence: creative approximation   # the shaft is an invented convenience link (coordinates.yaml GAP-05)
+
+  # --- Key coordinates (copied VERBATIM from planning/coordinates.yaml) ------------------------------
+  # Canonical anchors a bot uses to point a player at a sub-location. All XZ/Y are creative approximation.
+  key_coordinates:
+    # Site center
+    site_center:              {x: 0,    y: 64,  z: 0}     # world origin (surface); the complex is below
+
+    # -- The four tunnel portals (mouths in the rock face at the envelope edge) --
+    north_vehicle_portal:     {x: 0,    y: 18,  z: -285}  # coordinates.yaml N4 (largest; vehicle/main entrance)
+    south_personnel_portal:   {x: 0,    y: 18,  z: 285}   # coordinates.yaml N3 (pedestrian, serves habitation)
+    east_portal:              {x: 285,  y: 18,  z: -30}   # coordinates.yaml N5
+    west_utility_portal:      {x: -290, y: 10,  z: 5}     # coordinates.yaml N6 (utility run into the plant)
+
+    # -- Blast-door vestibules --
+    north_blast_vestibule:    {x: 0,    y: -6,  z: -120}  # coordinates.yaml N1 (twin blast doors on T1)
+    east_blast_vestibule:     {x: 180,  y: 0,   z: -30}   # coordinates.yaml N2
+
+    # -- The three caverns (anchor points) --
+    central_operations_cavern: {x: 0,   y: -12, z: 0}     # Cavern A (RR-Z1) via rotunda N10; box [-75,-45,75,15], floor y-12 ceil y40
+    habitation_cavern:         {x: 0,   y: -6,  z: 100}   # Cavern B (RR-Z2); box [-45,70,45,130], floor y-10 ceil y36
+    utility_reservoir_cavern:  {x: -150, y: -14, z: -10}  # Cavern C (RR-Z3); box [-185,-35,-115,15], floor y-18 ceil y28
+    central_junction_rotunda:  {x: 0,   y: -12, z: 0}     # coordinates.yaml N10 (heart of Cavern A)
+
+    # -- The four buildings (freestanding on visible spring isolation; y = ground-floor base) --
+    command_operations_center: {x: -30, y: -8,  z: -15}   # RR-B1 Command & Operations Center (ANMCC), Cavern A
+    signal_comms_center:       {x: 38,  y: -8,  z: -15}   # RR-B2 Signal & Communications Center, Cavern A
+    quarters_dining_medical:   {x: 0,   y: -6,  z: 100}   # RR-B3 Quarters, Dining & Medical, Cavern B
+    power_ventilation_plant:   {x: -150, y: -14, z: -10}  # RR-B4 Power & Ventilation Plant, Cavern C
+
+    # -- Utility & spring features --
+    reservoirs_1_and_2:        {x: -150, y: -18, z: -30}  # coordinates.yaml N7 (two sumps; deepest point)
+    central_spring_array:      {x: -30, y: -12, z: -15}   # coordinates.yaml N8 (spring isolation under RR-B1)
+
+    # -- Vertical access shaft (RR-Z5, deliberate liberty; connects up to MSA surface) --
+    shaft_base:                {x: 200, y: -12, z: -15}   # base connects Cavern A spur (tunnel S1)
+    shaft_surface_headhouse:   {x: 200, y: 64,  z: -15}   # coordinates.yaml N9 (emerges at MSA surface plane)
+
+    coordinate_confidence: >-
+      Interior classified (REF-015); EVERY coordinate above is creative approximation, copied verbatim
+      from planning/coordinates.yaml. The public basis is concept only (springs-in-caverns, ~four portals,
+      self-sufficient utilities, alternate-command mission), never a surveyed position.
+
+  # --- What a bot may TELL a visitor (honest spoken copy) --------------------------------------------
+  spoken:
+    one_line: >-
+      Raven Rock Mountain Complex (Site R) — a Minecraft reconstruction of the U.S. government's
+      underground "Site R" continuity-of-government bunker near Blue Ridge Summit, PA, built beneath
+      MainStreet America.
+    honesty_disclaimer: >-
+      Raven Rock's interior is classified — there is no public floor plan, and by DoD policy no map of it
+      may be made (manifest REF-015). So EVERYTHING you see underground here — every cavern, building,
+      tunnel and room — is our invented interpretation, not documented fact. What is real is only the
+      concept: a greenstone mountain, buildings on giant shock-isolation springs in blasted caverns,
+      several tunnel portals, self-sufficient utilities, and an alternate-command mission. Enjoy it as an
+      openly-labeled imaginative reconstruction of a public landmark, not a photograph of the real site.
+    spoken_confidence: high-confidence inference   # public facts verified; exact wording authored
+
+  # --- ALIASES  (AUTHORED — no external canonical list existed; see MSA location.yaml precedent) -----
+  # Every phrase a player might type/say that should resolve to this location. Matching should be
+  # case-insensitive and whitespace/punctuation-insensitive. All are creative approximation as a SET.
+  alias_confidence: creative approximation
+  aliases:
+    - raven rock
+    - ravenrock
+    - raven rock mountain complex
+    - raven rock complex
+    - site r
+    - site-r
+    - the site r
+    - underground pentagon
+    - the underground pentagon
+    - anmcc
+    - alternate national military command center
+    - the bunker
+    - raven rock bunker
+    - the mountain complex
+    - blue ridge summit bunker
+    - the underground bunker
+    - the complex
+    - rr
+    - the caverns
+    - cavern complex
+
+# =====================================================================================================
+# ASSUMPTIONS & CROSS-CHECK NOTES
+# =====================================================================================================
+assumptions:
+  - id: RR-L01
+    topic: Interior is invented
+    detail: >-
+      The entire underground layout is creative approximation (interior classified, REF-015). Coordinates
+      are copied verbatim from planning/coordinates.yaml; none is a claimed real position.
+    severity: high
+  - id: RR-L02
+    topic: World name unconfirmed
+    detail: >-
+      'world' is a placeholder for the overworld name. Must be confirmed against the live server before
+      this record (and warps.yaml / worldguard.yaml / map-marker.yaml) is applied.
+    severity: medium
+  - id: RR-L03
+    topic: Plugins absent (staged, inactive)
+    detail: >-
+      The mc-fleet-bot relay plugin is not installed on the stock Paper server, so no bot can read this
+      record yet. Bots ARE now opped (level 4, per server ops.json), but op status does not supply the
+      relay plugin. Staged for later apply.
+    severity: high
+  - id: RR-L04
+    topic: Coordinates inherited, not re-derived
+    detail: >-
+      All key_coordinates are copied verbatim from planning/coordinates.yaml so every integration file
+      collides-checks against the same numbers. Their XZ/Y are creative approximation per that file.
+    severity: low

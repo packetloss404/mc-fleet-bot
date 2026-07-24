@@ -1,0 +1,551 @@
+# MainStreet America (Spring, TX) — Reference Manifest
+# Subject: the former MainStreet America home-design attraction / model-home park
+#   18750 Interstate 45 N, Spring, Texas 77373 (Greater Houston, Harris County). Now closed.
+# Purpose: authoritative, honestly-labeled source record for a Minecraft reconstruction.
+# Confidence vocabulary (never upgraded across this file):
+#   verified                          - multiple independent sources, or a primary source
+#   high-confidence inference         - one good source or a strong read, not independently confirmed
+#   moderate-confidence reconstruction- assembled from snippets / unlabeled imagery
+#   creative approximation            - no evidence; the build must invent it
+
+research_summary:
+  verdict: >-
+    Strong evidence exists. This was NOT a dead end. MainStreet America was a well-documented,
+    real ~$20 million commercial attraction, and the analysts recovered genuine primary sources:
+    (1) the property owner's own site and a marketing case study naming the developer;
+    (2) contemporaneous 2013 press (CultureMap, OutSmart Magazine, Community Impact, TourTexas);
+    (3) a primary commercial real-estate offering — the Colliers International FOR SALE flyer (c.2018-2020)
+    with an annotated aerial and a hard spec table (exact building square footages, acreage, year built,
+    parking), corroborated by a TenantBase listing and LoopNet summaries;
+    (4) MainStreet America's OWN "Showcase of Homes" pages recovered from the Wayback Machine
+    (2013 captures, corroborated by 2017 captures) giving verified names, styles, square footages and
+    bed/bath/story counts for ALL 12 model homes;
+    (5) a 2025 ABC13 Houston news report on the property's current vacant/vandalized condition.
+    The core history — Feigin family / Design Tech Homes as developer, opened February 2013 (structures
+    built 2011), 12 model homes, ~44,019 SF two-story guest center — is solidly verified.
+  what_is_well_established:
+    - Developer, concept, cost, and February 2013 opening.
+    - The full 12-home roster: names, architectural styles, and per-home square footages.
+    - The site's building program and dimensions (guest center, retail/cooking-school building,
+      warehouse, 12 model homes, parking) from a primary real-estate document.
+    - The overall site orientation and front-to-back functional layout (from an annotated aerial).
+    - That the business has closed and the buildings were still standing (vacant, vandalized) as of Oct 2025.
+  what_is_weak_or_missing:
+    - The EXTERIOR APPEARANCE and construction materials of the guest center and each individual home.
+      The real-estate docs give only square footage/stories; the flyer's renderings/photos could not be
+      extracted as text or visually verified. Any facade material, color, or roof detail in the build is a
+      creative approximation.
+    - The precise physical position of each named home along the internal street (no site plan mapping
+      home->lot was recovered).
+    - Post-2023 disposition: buyer identity, sale price, and definitive 2026 status are unknown.
+    - The "why" of closure rests on the company's own 2023 self-description (a strategic pivot), not
+      independent reporting.
+  bottom_line: >-
+    A faithful reconstruction of the SITE LAYOUT, BUILDING FOOTPRINTS/SIZES, HOME ROSTER and STYLES is
+    achievable from verified sources. The three-dimensional APPEARANCE of the buildings is largely
+    reconstruction/approximation and must be labeled as such to visitors. Do not present invented facades
+    as documented fact.
+
+references:
+  - id: REF-001
+    subject: Founder / developer (Feigin family, Design Tech Homes)
+    source_type: news
+    approximate_date: "2013-04"
+    source_url: https://www.outsmartmagazine.com/2013/04/fourteen-acre-theme-park/
+    confidence: verified
+    observations: >-
+      Created and owned by Mike (Michael) and Barbara Feigin of The Woodlands, the couple behind
+      Design Tech Homes, a Houston-area custom homebuilder (~17 years old as of 2013). Mike Feigin =
+      CEO/Founder; Barbara Feigin = CFO. Agreed across OutSmart, CultureMap, the Chief Outsiders case
+      study, and dth.com. Design Tech Homes was the sole/exclusive builder of every showcase home.
+
+  - id: REF-002
+    subject: Concept / purpose ("home-improvement theme park")
+    source_type: news
+    approximate_date: "2013-01"
+    source_url: https://houston.culturemap.com/news/home-design/01-15-13-a-new-theme-park-opens-in-houston-its-a-20-million-playground-that-will-blow-your-house-loving-mind
+    confidence: verified
+    observations: >-
+      A ~$20 million model-home park and home-design/retail destination on I-45 in Spring, marketed as a
+      "home-improvement theme park." 12 uninhabited model homes ("The MainStreet American Home Collection")
+      doubled as working retail showrooms for appliances, cabinetry, fixtures, and flooring. Bundled ~10
+      integrated Feigin-owned businesses: custom home building (Design Tech Homes), remodeling (MainStreet
+      Renovations), a furniture/accessories store, an architecture firm, a mortgage company, a realty/lot
+      agency, two restaurants (incl. MAIN Restaurant), and a culinary school (The Main Course / Main Course
+      Cooking School). Visitors paid admission (~$10 adult) and carried a handheld "T.E.D." (Technological
+      Educational Device — Google Nexus 7 tablets that scanned RFID product tags). Featured brands included
+      Kohler, GE, Bosch, Electrolux, Moen, Daltile, Kent Moore Cabinets, PPG, California Closets, Toto.
+
+  - id: REF-003
+    subject: Opening date (February 2013) vs construction year (2011)
+    source_type: news
+    approximate_date: "2013-02"
+    source_url: https://houston.culturemap.com/news/home-design/01-15-13-a-new-theme-park-opens-in-houston-its-a-20-million-playground-that-will-blow-your-house-loving-mind
+    confidence: verified
+    observations: >-
+      CultureMap (Jan 15, 2013) reported grand-opening festivities for the first week of February 2013;
+      OutSmart (Apr 1, 2013) says it "opened last February." Real-estate records (see REF-008) list
+      "Year Built 2011." Both are internally consistent: structures completed 2011, public attraction
+      launched Feb 2013. (A pre-launch TourTexas listing said "scheduled for fall 2012" — a planned date
+      that slipped. See conflicts.)
+
+  - id: REF-004
+    subject: Parcel identity (APN, legal description, county)
+    source_type: real_estate
+    approximate_date: "c.2018-2019"
+    source_url: https://www.loopnet.com/property/18750-interstate-45-spring-tx-77373/48201-1333170010001/
+    confidence: high-confidence inference
+    observations: >-
+      HCAD/appraisal parcel APN 1333170010001; legal description "RES A BLK 1 MAINSTREET AMERICA"
+      (Reserve A, Block 1 of a platted subdivision named MainStreet America); Harris County (48201),
+      Spring TX 77373. NOTE the site is in HARRIS County, not Montgomery. Confidence is inference, not
+      verified, because this string comes from a LoopNet/appraisal search-result snippet (LoopNet/Crexi
+      pages returned HTTP 403 and could not be rendered directly), though its specificity plus
+      corroboration make it strong.
+
+  - id: REF-005
+    subject: Site acreage
+    source_type: real_estate
+    approximate_date: "c.2018-2020"
+    source_url: https://s3.us-east-2.amazonaws.com/colliershouston/retail/MainStreet+(18750)+I-45+N_flyer+FINAL.pdf
+    confidence: verified
+    observations: >-
+      Colliers offering flyer states "Approximately 12.4079 Acres"; TenantBase/LoopNet say "12.41 acres"
+      with "Additional 28 acres available adjacent." CONFLICTS with 2013 promotional "fourteen-acre"
+      figure — see conflicts section; recorded both, not merged.
+
+  - id: REF-006
+    subject: Location on I-45 (east side, northbound frontage)
+    source_type: real_estate
+    approximate_date: "2011-2019"
+    source_url: https://www.loopnet.com/property/18750-interstate-45-spring-tx-77373/48201-1333170010001/
+    confidence: verified
+    observations: >-
+      Property sits on the EAST side of Interstate 45, fronting the I-45 NORTHBOUND frontage/access road
+      (address 18750 Interstate 45 N), between Houston and The Woodlands, just north of Beltway 8.
+      The Woodlands lies to the north. Confirmed via LoopNet parcel text, the Colliers annotated aerial,
+      and the CultureMap article.
+
+  - id: REF-007
+    subject: Guest Center (Building 1) — size, stories, class
+    source_type: real_estate
+    approximate_date: "c.2018-2020 (built 2011)"
+    source_url: https://s3.us-east-2.amazonaws.com/colliershouston/retail/MainStreet+(18750)+I-45+N_flyer+FINAL.pdf
+    confidence: verified
+    observations: >-
+      "Building 1: 44,019 SF Class A Office - 2 Story Building," Year Built 2011, submarket "The Woodlands."
+      Independently corroborated by TenantBase ("44,019 SF, two (2) story, class A office building,
+      constructed in 2011"). Matches the baseline ~44,000 SF guest center almost exactly. This is the
+      anchor structure at the freeway (west/front) end of the site. Promotional/news sources round it to a
+      "45,000-square-foot mansion" (Community Impact 2014) — see conflicts.
+
+  - id: REF-008
+    subject: Guest Center functions (restaurant, event venue, furniture showroom, orientation)
+    source_type: promotional
+    approximate_date: "2013-2014"
+    source_url: https://www.tourtexas.com/articles/43/main-street-america:-a-theme-park-of-a-different-kind
+    confidence: verified
+    observations: >-
+      TourTexas: "MAIN Restaurant is a world-class dining experience, located in the Guest Center."
+      Community Impact (2014) corroborates the culinary school and restaurant "housed inside" the main
+      building. The facility hosted fundraisers, private events, parties, corporate meetings, holiday
+      events, weddings, live music, farmers markets, and "Christmas on MainStreet." OutSmart describes it
+      as the "primary entrance facility" with a furniture showroom and the T.E.D. scanner distribution
+      point. (Whether the furniture store physically occupied Building 1 specifically vs adjacent retail is
+      a high-confidence inference, not verified.)
+
+  - id: REF-009
+    subject: Building 2 — retail building with cooking school
+    source_type: real_estate
+    approximate_date: "c.2018-2020"
+    source_url: https://s3.us-east-2.amazonaws.com/colliershouston/retail/MainStreet+(18750)+I-45+N_flyer+FINAL.pdf
+    confidence: verified
+    observations: >-
+      "Building 2: 8,342 SF Retail Building with cooking school" (the Main Course Cooking School), located
+      roughly mid-row along the internal street per the annotated aerial. NOTE a location conflict:
+      promotional/news sources treat the cooking school as part of the Guest Center experience, while the
+      Colliers survey isolates it into this separate 8,342 SF structure. Reconciliation (inference): the
+      branded "Guest Center" experience likely spanned adjoining structures. See conflicts.
+
+  - id: REF-010
+    subject: Building 3 — warehouse
+    source_type: real_estate
+    approximate_date: "c.2018-2020"
+    source_url: https://s3.us-east-2.amazonaws.com/colliershouston/retail/MainStreet+(18750)+I-45+N_flyer+FINAL.pdf
+    confidence: verified
+    observations: >-
+      "Building 3: 8,944 SF Warehouse," at the FAR EAST (rear) end of the parcel, behind the last homes —
+      the service end of the front-to-back functional gradient.
+
+  - id: REF-011
+    subject: 12 residential improvements — combined footprint
+    source_type: real_estate
+    approximate_date: "c.2018-2020"
+    source_url: https://s3.us-east-2.amazonaws.com/colliershouston/retail/MainStreet+(18750)+I-45+N_flyer+FINAL.pdf
+    confidence: verified
+    observations: >-
+      Flyer lists "12 Residential Improvements: 40,463 SF combined" (avg ~3,372 SF each). Total improved
+      area quoted as ~99,351 SF across all buildings. NOTE a later LoopNet search summary says "eleven"
+      model homes — see conflicts and unknowns.
+
+  - id: REF-012
+    subject: Parking field — size and position
+    source_type: real_estate
+    approximate_date: "c.2018-2020"
+    source_url: https://s3.us-east-2.amazonaws.com/colliershouston/retail/MainStreet+(18750)+I-45+N_flyer+FINAL.pdf
+    confidence: verified
+    observations: >-
+      A single large concrete parking field at the FRONT (southwest), between the I-45 frontage road and
+      the guest center. Colliers callout: "±100,000 SF concrete parking area with 236 Parking Spaces."
+      Space count conflicts: Colliers 236 vs LoopNet/TenantBase 258 — see conflicts.
+
+  - id: REF-013
+    subject: Frontage monument / electronic billboard
+    source_type: real_estate
+    approximate_date: "c.2018-2020"
+    source_url: https://s3.us-east-2.amazonaws.com/colliershouston/retail/MainStreet+(18750)+I-45+N_flyer+FINAL.pdf
+    confidence: verified
+    observations: >-
+      A large electronic LED monument billboard ("MainStreet America / Design Tech Homes") at the I-45
+      frontage (southwest corner, parking-lot edge). Colliers: "Largest electronic billboard in Harris
+      County outside of Minute Maid Park." The westernmost/front landmark of the site.
+
+  - id: REF-014
+    subject: Overall site orientation and front-to-back layout
+    source_type: aerial
+    approximate_date: "2011-2019"
+    source_url: https://s3.us-east-2.amazonaws.com/colliershouston/retail/MainStreet+(18750)+I-45+N_flyer+FINAL.pdf
+    confidence: high-confidence inference
+    observations: >-
+      Read from the Colliers annotated aerial (north up; The Woodlands arrow points up along I-45). Long,
+      narrow parcel with its long axis running roughly WEST-to-EAST. Front-to-back sequence:
+      (1) I-45 northbound frontage road on the WEST;
+      (2) electronic monument billboard at the SW frontage corner;
+      (3) large ~100,000 SF / 236-space concrete parking field;
+      (4) the 44,019 SF two-story guest/design center (Building 1) facing WEST toward the freeway;
+      (5) a single internal cul-de-sac street running EAST lined with the 12 model homes;
+      (6) the cooking-school/retail building (Building 2) mid-row;
+      (7) the warehouse (Building 3) at the far EAST/rear.
+      The entrance faces WEST toward I-45. Compass bearing is a read of the aerial's north arrow, not a
+      surveyed azimuth; hence inference, not verified.
+
+  - id: REF-015
+    subject: Internal street arrangement (12 homes in a linear cul-de-sac)
+    source_type: aerial
+    approximate_date: "2011-2019"
+    source_url: https://s3.us-east-2.amazonaws.com/colliershouston/retail/MainStreet+(18750)+I-45+N_flyer+FINAL.pdf
+    confidence: verified
+    observations: >-
+      The 12 model homes line a single internal street running roughly WEST-to-EAST, starting just east of
+      the guest center and extending back to a terminus. Contemporaneous articles describe "a quiet street
+      lined with twelve model homes" and a "quaint neighborhood cul-de-sac" (a dead-end residential loop,
+      not a through street). Homes appear on both sides of the drive. This is a linear pod, NOT a grid —
+      matching the long-narrow parcel. WHICH named home sits on WHICH lot was not recovered (see unknowns).
+
+  - id: REF-016
+    subject: Rear open land / detention pond
+    source_type: aerial
+    approximate_date: "c.2011-2019"
+    source_url: https://s3.us-east-2.amazonaws.com/colliershouston/retail/MainStreet+(18750)+I-45+N_flyer+FINAL.pdf
+    confidence: moderate-confidence reconstruction
+    observations: >-
+      The aerial appears to show a small water body / detention pond at the SOUTHEAST (rear) near Building
+      3, plus undeveloped grass/woodland wrapping the north and east edges. Unlabeled feature read from
+      satellite imagery — moderate confidence only.
+
+  - id: REF-017
+    subject: The 12 showcase homes — verified roster (names, styles, sizes)
+    source_type: promotional
+    approximate_date: "2013 (official site; roster stable through 2017)"
+    source_url: http://web.archive.org/web/20170711140321/http://www.mainstreetamerica.com/visit-our-homes
+    confidence: verified
+    observations: >-
+      Recovered from MainStreet America's OWN "Showcase of Homes" pages via the Wayback Machine (2013
+      captures corroborated by 2017 captures). Exactly 12 homes, all "built exclusively by Design Tech
+      Homes." Each officially prefixed "The ". Smallest = The Cape Pointe (1,815 SF); largest = The
+      Alexandria / Greek Revival (6,011 SF) — the ONLY home exceeding 6,000 SF. Range matches the published
+      "~1,800 to more than 6,000 sq ft." Square footages are the 2013 official values; a few homes were
+      revised later (e.g., The Midtown 2,417 -> 2,553 in the 2017 capture). See per-home figures below.
+    homes:
+      - name: The Alexandria
+        style: Greek Revival
+        sqft: 6011
+        beds: 4
+        baths: 3
+        stories: 3
+        note: >-
+          Largest of the 12. Three-story with oversized media room. This IS the "Greek Revival mansion"
+          from the project baseline — confirmed.
+      - name: The Villa Lago
+        style: Italian Mediterranean
+        sqft: 5979
+        beds: 5
+        baths: 4
+        stories: 2
+        note: >-
+          Expansive outdoor living area, 3-car garage. This IS the "Tuscan/Italian estate" from the
+          baseline, BUT the official label is "Italian Mediterranean," not "Tuscan." The "Tuscan"
+          descriptor in coverage refers to the separate stucco WELCOME/GUEST center, not this home.
+          (Chief Outsiders loosely calls it "6000+ sq ft"; official is 5,979.)
+      - name: The Cape Pointe
+        style: Coastal Beach House
+        sqft: 1815
+        beds: 3
+        baths: 2
+        stories: 2
+        note: >-
+          Smallest of the 12; two-story with loft. This is the "beach house" from the baseline, BUT the
+          official page says only "Coastal Beach House" — it does NOT say "Galveston-style" or
+          "elevated"/pier-and-beam. Treat those baseline words as paraphrase, NOT verified.
+      - name: The Calais
+        style: French Hill Country
+        sqft: 4101
+        beds: 4
+        baths: 4
+        stories: 2
+        note: Large game room. (dth.com catalog lists a different "Calais" at 4,093 SF.)
+      - name: The Ashby Manor
+        style: Old World
+        sqft: 4138
+        beds: 4
+        baths: 3
+        stories: null
+        note: >-
+          Private garden. Likely the "Old World Mediterranean" style CultureMap listed.
+          (dth.com catalog lists a different "Ashby Manor" at 4,507 SF.)
+      - name: The Casa Lana
+        style: Spanish Courtyard
+        sqft: 3240
+        beds: 3
+        baths: 3
+        stories: 1
+        note: One-story with an additional casita.
+      - name: The Centennial
+        style: Craftsman
+        sqft: 2715
+        beds: 3
+        baths: 2
+        stories: 2
+        note: Two-story Craftsman (called a "Craftsman bungalow" in some secondary coverage).
+      - name: The Cross Creek
+        style: Texas Hill Country
+        sqft: 3223
+        beds: 4
+        baths: 4
+        stories: 1
+        note: Rustic-but-elegant; expansive rear porch.
+      - name: The Midtown
+        style: Contemporary Townhome
+        sqft: 2417
+        beds: 3
+        baths: 3
+        stories: 4
+        note: >-
+          Four-story contemporary townhome. Square footage revised to 2,553 in the 2017 capture.
+      - name: The Timbergrove
+        style: Classic Stone & Siding
+        sqft: 2321
+        beds: 3
+        baths: 2
+        stories: 1
+        note: >-
+          Covered rear porch. Three figures exist: official 2,321; OutSmart 2,231; dth.com catalog 2,344.
+      - name: The Valencia
+        style: Southwestern Mediterranean
+        sqft: 1881
+        beds: 4
+        baths: 2
+        stories: 1
+        note: Efficient plan with a bonus fourth bedroom. (dth.com catalog lists a "Valencia" at 1,896 SF.)
+      - name: The Wakefield
+        style: Traditional Brick
+        sqft: 2622
+        beds: 4
+        baths: 3
+        stories: 1
+        note: >-
+          The energy/technology showcase home (geothermal HVAC, air-sealing, efficient appliances);
+          the 2017 site calls it "an NRG home." (dth.com catalog lists a "Wakefield" at 2,601 SF.)
+
+  - id: REF-018
+    subject: Architectural style list (secondary corroboration)
+    source_type: news
+    approximate_date: "2013-01"
+    source_url: https://houston.culturemap.com/news/home-design/01-15-13-a-new-theme-park-opens-in-houston-its-a-20-million-playground-that-will-blow-your-house-loving-mind
+    confidence: verified
+    observations: >-
+      CultureMap's opening feature listed the styles as Old World Mediterranean, French Hill Country,
+      Spanish Courtyard, Craftsman, Coastal Plain, Greek Revival, Texas Hill Country, and Contemporary
+      Townhome, plus a Tuscan-style stucco welcome center and a 10,000 SF design studio (a sub-space of
+      the 44,019 SF guest center, not a contradiction). These labels line up with the verified per-home
+      styles in REF-017.
+
+  - id: REF-019
+    subject: Guest Center / home exterior appearance and construction materials
+    source_type: other
+    approximate_date: "n/a"
+    source_url: none
+    confidence: creative approximation
+    observations: >-
+      NO retrieved source describes the guest center's architectural style, facade materials, or exterior
+      detailing beyond "Class A office, 2 story, built 2011" and the promotional word "mansion." The
+      Colliers flyer contained an overview rendering, aerial view, and site plan as IMAGES that could not
+      be extracted as text or visually verified. Per-home exterior materials/colors/roof forms are likewise
+      undocumented (styles are named — REF-017 — but materials are not). A "45,000 sq ft mansion" in a 2011
+      Houston-suburb context would TYPICALLY imply stucco/EIFS and/or brick with a pitched or parapet roof,
+      but there is ZERO evidence for specifics. Any facade the build renders is a creative approximation and
+      must be labeled as such.
+
+  - id: REF-020
+    subject: Closure — sold 2023, business closed
+    source_type: promotional
+    approximate_date: "2023"
+    source_url: https://www.dth.com/mainstreet-america/
+    confidence: high-confidence inference
+    observations: >-
+      Design Tech Homes' own site states that in 2023 the company "made the strategic decision to sell Main
+      Street America," shifting from a single showcase campus to model homes placed across Greater-Houston
+      communities, and relocated its corporate HQ to Hughes Landing in The Woodlands. Yelp lists the
+      business as CLOSED. The stated rationale (a go-to-market pivot, "meeting buyers where they are
+      already planning," not a stated financial failure) is the COMPANY'S OWN framing — no independent news
+      article on the closure or its cause was found. That it was sold in 2023 is high confidence; the WHY
+      is self-reported.
+
+  - id: REF-021
+    subject: Property current condition (vacant, vandalized, NOT demolished)
+    source_type: news
+    approximate_date: "2025-10-03"
+    source_url: https://abc13.com/post/2-arrested-allegedly-trying-steal-items-former-home-builder-spring-pct-4-says/17926628/
+    confidence: verified
+    observations: >-
+      ABC13 Houston (Oct 3, 2025): the property is vacant with "broken light poles, cracked windows, and an
+      empty parking lot." Thieves stole AC units, copper wiring and materials ("thousands, and thousands of
+      dollars worth of damage"); Harris County Precinct 4 arrested two people for alleged theft on-site.
+      Buildings were still STANDING and being re-marketed. NO evidence of demolition was found in any
+      source. 2026 status could not be affirmatively confirmed.
+
+  - id: REF-022
+    subject: Post-2023 disposition (buyer, price, current use) — unresolved
+    source_type: real_estate
+    approximate_date: "2020-2026"
+    source_url: https://www.bizbash.com/venue-directory/independent-event-spaces/venue/13467631/main-course-catering-events
+    confidence: moderate-confidence reconstruction
+    observations: >-
+      Signals could not be reconciled. TenantBase/LoopNet/Crexi still carried the property as available "to
+      lease or purchase" ($125,000/mo asking rent per TenantBase, presented by MHW Brokerage Services) into
+      mid-2026. Separately, an Instagram broker post surfaced in search ("Marketed, Sold, and Closed in
+      just 72 days! MainStreet...") implying a completed deal, but it could not be opened. A "Main Course
+      Catering & Events" venue and a live-event operator appear associated with 18750 I-45 in snippets,
+      suggesting event-space reuse of the venue building — but this was NOT validated against a fully
+      retrieved primary page. Buyer identity, sale price, and definitive current occupant are unknown.
+
+  - id: REF-023
+    subject: Original website (mainstreetamerica.com) — Wayback snapshot exists
+    source_type: other
+    approximate_date: "2015-12-30"
+    source_url: http://archive.org/wayback/available?url=mainstreetamerica.com&timestamp=2015
+    confidence: moderate-confidence reconstruction
+    observations: >-
+      The attraction's domain was mainstreetamerica.com (confirmed via OutSmart and contact pages). The
+      Wayback availability API returned a captured snapshot (HTTP 200, Dec 30 2015). The Showcase-of-Homes
+      sub-pages WERE recovered via curl (REF-017). CAUTION: "Main Street America" is also an unrelated
+      national Main Street preservation program AND an insurance group — those are NOT this Spring, TX
+      attraction.
+
+conflicts:
+  - topic: Acreage
+    promotional_value: "14 acres (\"fourteen-acre model home park\")"
+    promotional_source: "OutSmart Magazine (2013), CultureMap (2013), Tour Texas, HAR blog"
+    realestate_value: "12.4079 acres (~12.41), with \"Additional 28 acres available adjacent\""
+    realestate_source: "Colliers offering flyer (c.2018-2020); TenantBase; LoopNet"
+    note: >-
+      Likely a subdivided / differently-surveyed core parcel vs the original marketing footprint (the 14
+      may have included frontage/right-of-way or been rounded). Recorded both; not merged.
+  - topic: Build / open year
+    promotional_value: "Opened February 2013"
+    promotional_source: "CultureMap (2013), OutSmart (2013)"
+    realestate_value: "Year Built 2011"
+    realestate_source: "Colliers flyer; TenantBase; LoopNet"
+    note: "Both plausibly true — structures completed 2011, public attraction launched Feb 2013."
+  - topic: Guest center size
+    promotional_value: "~45,000 sq ft (\"45,000-square-foot mansion\")"
+    promotional_source: "Community Impact (2014); HAR promo"
+    realestate_value: "44,019 SF two-story Class A office"
+    realestate_source: "Colliers flyer; TenantBase"
+    note: "~1,000 SF gap consistent with promotional rounding vs measured leasable area."
+  - topic: Model home count
+    promotional_value: "12 model homes"
+    promotional_source: "Official Showcase-of-Homes roster; OutSmart (2013); CultureMap (2013); baseline"
+    realestate_value: "11 single-family residential model homes"
+    realestate_source: "LoopNet search-result summary (page itself 403; figure is inference, not verified)"
+    note: >-
+      The 12-home roster is verified from the owner's own pages. The later "11" may reflect one home
+      removed/relocated after the 2023 pivot, or a differing count method. The Colliers flyer itself says
+      "12 Residential Improvements." Use 12 for the build.
+  - topic: Parking space count
+    promotional_value: "236 parking spaces (with ~100,000 SF concrete)"
+    promotional_source: "Colliers offering flyer"
+    realestate_value: "258 parking spaces (5.68/1,000 SF)"
+    realestate_source: "LoopNet; TenantBase"
+    note: "Both from real-estate genre; minor discrepancy. Either is defensible for the build."
+  - topic: Cooking school location
+    promotional_value: "Cooking/culinary school \"housed inside\" the Guest Center"
+    promotional_source: "OutSmart (2013); Community Impact (2014); official amenities copy"
+    realestate_value: "Cooking school in a SEPARATE 8,342 SF retail building (Building 2)"
+    realestate_source: "Colliers offering flyer"
+    note: >-
+      Reconciliation (inference): the branded \"Guest Center\" experience likely spanned adjoining
+      structures; the commercial survey isolated the kitchen into its own retail parcel. Cannot verify
+      whether the demonstration kitchen was physically inside Building 1 or in the attached retail building.
+  - topic: Villa Lago size / "6,000+" attribution
+    promotional_value: "Italian villa \"6,000+ sq ft\" (the top-end home)"
+    promotional_source: "Chief Outsiders case study"
+    realestate_value: "Villa Lago = 5,979 SF; the only >6,000 home is The Alexandria (Greek Revival) at 6,011 SF"
+    realestate_source: "Official Showcase-of-Homes pages"
+    note: "Promo attributes the 6,000+ top end to the Italian villa; verified figures put it just under."
+  - topic: Timbergrove size
+    promotional_value: "2,231 sq ft (OutSmart) / 2,344 sq ft (dth.com catalog)"
+    promotional_source: "OutSmart Magazine (2013); dth.com virtual-tour catalog"
+    realestate_value: "2,321 sq ft (official 2013 page)"
+    realestate_source: "Official MainStreet America Showcase-of-Homes page"
+    note: "Three figures for one plan; use official 2,321."
+  - topic: Planned vs actual opening
+    promotional_value: "Opening \"scheduled for fall 2012\""
+    promotional_source: "TourTexas attraction listing"
+    realestate_value: "Actual grand opening February 2013"
+    realestate_source: "CultureMap (2013); OutSmart (2013)"
+    note: "Pre-launch planned date that slipped."
+
+unknowns:
+  - item: Exterior appearance & construction materials of the Guest Center
+    detail: >-
+      No source documents facade material, color, roof form, or window pattern. Only "Class A office,
+      2-story, built 2011" and the word "mansion" are known. The build must approximate; label as such.
+  - item: Exterior materials & detailing of each of the 12 homes
+    detail: >-
+      Names, styles, square footage, bed/bath/story counts are verified (REF-017), but specific facade
+      materials, colors, and roof details are not documented. Style names guide approximation only.
+  - item: Which named home sits on which lot along the internal street
+    detail: >-
+      The homes are known to line a single west-east cul-de-sac (REF-015), but no recovered site plan maps
+      each named home to a physical position. Ordering is the builder's choice.
+  - item: Precise parcel geometry / surveyed dimensions and bearings
+    detail: >-
+      Layout and orientation come from reading an annotated aerial (north-up), not a surveyed plat.
+      Compass bearings are approximate; exact lot lines and dimensions are unknown.
+  - item: Interior layouts of the guest center and buildings 2/3
+    detail: >-
+      Functions are known (restaurant, event hall, furniture showroom, T.E.D. distribution, 10,000 SF
+      design studio, cooking school, warehouse) but no floor plans were recovered.
+  - item: Post-2023 buyer, sale price, and definitive current occupant/use
+    detail: "Unresolved (REF-022). Event-venue reuse is only a moderate-confidence snippet reconstruction."
+  - item: Exact closure date and independently-confirmed reason
+    detail: >-
+      "Sold 2023" per the owner and "CLOSED" per Yelp; the reason is the company's own framing. No
+      independent closure reporting was found (REF-020).
+  - item: 2026 structural status
+    detail: >-
+      Standing but vacant/vandalized as of Oct 2025 (REF-021); no demolition evidence found, but 2026
+      status is unconfirmed.
+  - item: The 28 adjacent acres
+    detail: "Referenced as \"available adjacent\" in listings; their content/use is undescribed."

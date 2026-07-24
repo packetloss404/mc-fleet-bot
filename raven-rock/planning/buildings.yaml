@@ -1,0 +1,343 @@
+# Raven Rock Mountain Complex (Site R) — Building Manifest
+# Minecraft Java 1.21.x reconstruction. Spatial-design-engineer deliverable.
+# MASTER DOCUMENT: planning/site-plan.md. Cross-checked against planning/coordinates.yaml (centroids/
+# footprints/floors MUST match) and ../references/manifest.yaml (public-vs-invented source record).
+#
+# ---------------------------------------------------------------------------------------------------
+# CONFIDENCE DISCIPLINE (never upgraded; mirrors references/manifest.yaml)
+#   verified                  - primary/multi-source public fact (geology, mission, tenants, era)
+#   high_confidence_inference - one good source / strong read (springs concept, ~4 portals, utilities)
+#   moderate_reconstruction   - assembled from weak/qualitative hints
+#   creative_approximation    - no evidence; this build invents it (ALL geometry, palettes, rooms here)
+# When prose polish and a tag disagree, trust the tag.
+#
+# ---------------------------------------------------------------------------------------------------
+# THE CENTRAL HONESTY FLAG (read before trusting anything here)
+#   Raven Rock's INTERIOR IS CLASSIFIED and legally undocumentable since 2007 (manifest REF-015/016).
+#   There is NO public floor plan. EVERY footprint, centroid, floor count, massing concept, room, and
+#   block palette below is creative_approximation — invented for the build. What is public is only the
+#   CONCEPT: freestanding multi-story buildings on shock-isolation springs inside blasted greenstone
+#   caverns (REF-005, inference), serving a continuity-of-government / ANMCC mission (REF-010, verified).
+#   This is an openly-labeled imaginative interpretation of a public landmark, NOT a claimed map of the
+#   real, secret interior. On-site signage must say so.
+#
+# ASSUMPTIONS THE READER MUST KNOW
+#   A1. FOUR buildings is a design choice. Sources contest the count (three per Wikipedia vs five per
+#       popular sources, REF-006). Four is a reasoned middle. site-plan.md is master; if the count
+#       changes, reconcile all three files together.
+#   A2. ROCK = GREENSTONE/METABASALT, not granite (REF-003). Cavern-wall palette reads dark greenish.
+#   A3. ALL FACADES/PALETTES/ROOMS ARE INVENTED (REF-016). Vanilla 1.21 blocks only; no resource pack.
+#   A4. SPRINGS ARE MADE LEGIBLE. Each building floats on visible spring/pillar isolation pedestals
+#       (iron/copper + chains). The concept is inference (REF-005); the rendering is creative.
+#       spring_pedestal_height raises each building's base above its cavern floor (see coordinates.yaml).
+#   A5. DEPTH IS A CONVENTION (~20 blocks), not the real ~650 ft (REF-008 / manifest build-scale note).
+#       Building Y here is authoritative and never enters MSA's y62->y79 band (see coordinates.yaml
+#       vertical_stacking).
+#   A6. NO-OP SITE CONDITION. Stock Paper: no WorldEdit/WorldGuard/Dynmap/Citizens; bots not opped.
+#       Plain world coordinates only; no //commands, region protection, or NPCs assumed.
+# ---------------------------------------------------------------------------------------------------
+
+schema_version: "reconstructed-1.0"
+
+site_reference:
+  world_origin: [0, 64, 0]
+  msa_surface_plane_y: 64
+  envelope: { x_min: -300, x_max: 300, z_min: -300, z_max: 300 }
+  compass: { north: "-Z", south: "+Z", east: "+X", west: "-X" }
+  scale: "1 horizontal block ~= 2 real feet; ~5 blocks height per story (+2 roof)"
+  minecraft_edition: "Java 1.21.x, vanilla-compatible blocks only, no resource pack"
+  master_document: "planning/site-plan.md"
+  zone_source: "planning/site-plan.md sections 2-3 (RR-Z1..RR-Z5)"
+  vertical_stacking_summary: >-
+    Raven Rock ceilings at y40; buildings occupy y-18..y11; MSA is solid y62->y79. A ~20-block greenstone
+    buffer (y41->y61) separates them. No cavern or building geometry enters MSA's band; the RR-Z5 shaft
+    ALONE rises to y64 into it, but at x in [193,207] -- outside MSA's x in [-70,+70] footprint and east of
+    every MSA planned surface element (relocated from x=120 per open-questions OQ-1) -- so there is no
+    block collision. Details in coordinates.yaml.
+
+# ---------------------------------------------------------------------------------------------------
+# SHARED PALETTE (all creative_approximation, REF-016/003) — referenced by each building's palette block.
+# ---------------------------------------------------------------------------------------------------
+palette_reference:
+  greenstone_metabasalt_rock:         # cavern walls / undug mass — dark greenish, NOT granite (A2/REF-003)
+    primary: "deepslate + tuff"
+    green_cast: "mossy_cobblestone + moss_block patches + green_terracotta veins"
+    accents: "dripstone_block, prismarine (wet greenish seams)"
+    note: creative_approximation
+  institutional_concrete:             # the freestanding buildings' Cold-War concrete shell
+    walls: "light_gray_concrete + gray_concrete"
+    structure: "smooth_stone + polished_andesite"
+    trim: "iron_block"
+    glass: "glass_pane / tinted_glass"
+    lighting: "sea_lantern (matches MSA interior lighting convention)"
+    note: creative_approximation
+  spring_isolation:                    # visible shock-isolation pedestals (A4 / REF-005 concept)
+    springs: "iron_block + copper_block stacks"
+    tension: "chain"
+    base_pads: "smooth_stone / polished_deepslate"
+    note: creative_approximation
+  blast_doors:
+    door: "iron_block (thick, 3+ deep) + copper_block frame"
+    seal: "waxed_copper accents"
+    note: creative_approximation
+  utilities:
+    reservoir_water: "water in polished_deepslate basins"
+    pipes_ducts: "copper_block / lightning_rod + iron_bars (ventilation)"
+    power: "redstone/copper machinery massing (decorative)"
+    note: creative_approximation
+
+# Legend for per-record fields:
+#   category            - command | communications | habitation | utility
+#   verified_context    - the public facts this record leans on (with manifest REF); NOT interior facts
+#   location_center     - [x, y, z] footprint centroid; y = building base (top of spring pedestals)
+#   building_record:
+#     status            - always "not_started" (nothing built yet)
+#     confidence         - per-aspect tags (program-context vs geometry vs appearance)
+#     footprint         - {width_x, depth_z, area_blocks} ground-floor plate in blocks
+#     floors            - integer story count (creative design choice)
+#     building_top_y    - base_y + floors*5 + 2  (must stay below the zone ceiling)
+#     spring_pedestal_height - blocks of visible isolation springs beneath the base (A4)
+#     cavern_floor_y / cavern_ceiling_y - the zone's floor/ceiling this building sits within
+#     entrance_coordinate - [x,y,z] main door, 1 block outside the facing wall
+#     palette           - references shared palette_reference; all creative_approximation
+#     rooms             - INVENTED interior program (creative_approximation, REF-016)
+#     completion (5 booleans) - all false (nothing built)
+#     defects           - open issues / reconstruction gaps
+#     notes             - DISTINCT massing/roofline/entry concept + confidence commentary
+
+buildings:
+
+  # =================================================================================================
+  # RR-B1 — COMMAND & OPERATIONS CENTER (ANMCC) — the anchor of Cavern A.
+  # =================================================================================================
+  - id: RR-B1
+    name: "Command & Operations Center (ANMCC)"
+    category: command
+    zone: RR-Z1
+    verified_context: >-
+      Continuity-of-government / Alternate National Military Command Center mission (REF-010, verified);
+      housed emergency operations centers for the services. Freestanding-on-springs concept (REF-005,
+      inference). ALL geometry and interior below are creative_approximation (REF-016).
+    location_center: [-30, -8, -15]
+    building_record:
+      status: not_started
+      confidence:
+        program_context: verified              # the command mission is public (REF-010)
+        geometry: creative_approximation        # footprint/centroid/floors invented
+        appearance: creative_approximation       # facade/materials invented (REF-016)
+      footprint: { width_x: 40, depth_z: 34, area_blocks: 1360 }
+      floors: 3
+      building_top_y: 9                          # -8 + 3*5 + 2
+      spring_pedestal_height: 4                  # floats above Cavern A floor y-12
+      cavern_floor_y: -12
+      cavern_ceiling_y: 40
+      entrance_coordinate: [-30, -8, 3]          # +Z face, onto the central rotunda side
+      palette:
+        shell: "palette_reference.institutional_concrete"
+        springs: "palette_reference.spring_isolation"
+        lighting: "sea_lantern"
+        note: creative_approximation
+      rooms:
+        - main_operations_floor        # amphitheatre command floor with map wall
+        - situation_briefing_room
+        - service_ops_cells            # Army/Navy/Air Force/Marine emergency ops cells (REF-010 program)
+        - secure_conference
+        - senior_leadership_suite
+        - comms_patch_room             # links to RR-B2
+        - server_equipment_room
+        - staff_offices
+        - restrooms
+        - stair_and_lift_core
+      completion:
+        footprint_staked: false
+        exterior_shell_complete: false
+        roof_complete: false
+        interior_complete: false
+        palette_and_detailing_complete: false
+      defects:
+        - "Entire interior invented (REF-016). Footprint/centroid/floors are creative (A1)."
+      notes: >-
+        MASSING/ROOFLINE/ENTRY (distinct): the largest freestanding building, a broad 3-story concrete
+        block on a prominent visible SPRING ARRAY (N8), long face to the central rotunda. Flat institutional
+        roof, banded ribbon glazing, a projecting double-height operations-floor volume readable from
+        outside. Reads as the 1950s "office building underground." Concept ("springs-borne command block
+        with a projecting ops volume") is unique to this building.
+
+  # =================================================================================================
+  # RR-B2 — SIGNAL & COMMUNICATIONS CENTER — Cavern A, east of the rotunda.
+  # =================================================================================================
+  - id: RR-B2
+    name: "Signal & Communications Center"
+    category: communications
+    zone: RR-Z1
+    verified_context: >-
+      Modern tenants include the 114th Signal Battalion and DISA (REF-011, verified) — a real signals/
+      communications role. Springs concept (REF-005, inference). Geometry/interior creative_approximation.
+    location_center: [38, -8, -15]
+    building_record:
+      status: not_started
+      confidence:
+        program_context: verified              # signals/comms tenancy is public (REF-011)
+        geometry: creative_approximation
+        appearance: creative_approximation
+      footprint: { width_x: 32, depth_z: 30, area_blocks: 960 }
+      floors: 3
+      building_top_y: 9
+      spring_pedestal_height: 4
+      cavern_floor_y: -12
+      cavern_ceiling_y: 40
+      entrance_coordinate: [22, -8, -15]         # -X face, toward the rotunda
+      palette:
+        shell: "palette_reference.institutional_concrete"
+        springs: "palette_reference.spring_isolation"
+        comms_accents: "copper_block + lightning_rod (antenna/patch masts, decorative)"
+        note: creative_approximation
+      rooms:
+        - main_switchboard_hall
+        - message_center
+        - cryptologic_room
+        - radio_teletype_bays
+        - equipment_frames_room
+        - technical_control_facility
+        - staff_offices
+        - restrooms
+        - stair_and_lift_core
+      completion:
+        footprint_staked: false
+        exterior_shell_complete: false
+        roof_complete: false
+        interior_complete: false
+        palette_and_detailing_complete: false
+      defects:
+        - "Entire interior invented (REF-016). Geometry creative (A1)."
+      notes: >-
+        MASSING/ROOFLINE/ENTRY (distinct): a slightly smaller, taller-feeling 3-story comms block, also on
+        springs, bristling with copper patch masts / lightning-rod "antennas" on its flat roof — the visual
+        cue that this is the signals building. Paired across the rotunda from RR-B1 but distinguished by the
+        rooftop antenna array. Concept ("springs-borne comms block with rooftop mast array") is unique.
+
+  # =================================================================================================
+  # RR-B3 — QUARTERS, DINING & MEDICAL — Cavern B, the habitation cavern.
+  # =================================================================================================
+  - id: RR-B3
+    name: "Quarters, Dining & Medical"
+    category: habitation
+    zone: RR-Z2
+    verified_context: >-
+      The complex is described as a self-sufficient underground community able to seal off for months —
+      quarters, dining, medical (REF-009, inference). Specific counts/capacities are NOT authoritative
+      (conflict). Geometry/interior creative_approximation.
+    location_center: [0, -6, 100]
+    building_record:
+      status: not_started
+      confidence:
+        program_context: high_confidence_inference   # self-sufficient community (REF-009)
+        geometry: creative_approximation
+        appearance: creative_approximation
+      footprint: { width_x: 44, depth_z: 30, area_blocks: 1320 }
+      floors: 3
+      building_top_y: 11                         # -6 + 3*5 + 2
+      spring_pedestal_height: 4
+      cavern_floor_y: -10
+      cavern_ceiling_y: 36
+      entrance_coordinate: [0, -6, 85]           # -Z face, toward the A-B corridor (C1)
+      palette:
+        shell: "palette_reference.institutional_concrete"
+        springs: "palette_reference.spring_isolation"
+        warm_accents: "stripped_oak_wood + white_terracotta (living spaces)"
+        note: creative_approximation
+      rooms:
+        - dining_hall_galley
+        - kitchen_and_cold_stores
+        - dormitory_bunkrooms          # capacity is a popular figure, not authoritative (REF-009)
+        - senior_quarters
+        - infirmary_ward
+        - surgery_and_pharmacy
+        - recreation_dayroom           # the folkloric "bar"/rec space (REF-009), rendered lightly
+        - laundry_and_supply
+        - restrooms_and_showers
+        - stair_and_lift_core
+      completion:
+        footprint_staked: false
+        exterior_shell_complete: false
+        roof_complete: false
+        interior_complete: false
+        palette_and_detailing_complete: false
+      defects:
+        - "Bed/dining capacities are popular figures, not authoritative (REF-009). Interior invented (REF-016)."
+      notes: >-
+        MASSING/ROOFLINE/ENTRY (distinct): the widest, most horizontal building — a 3-story habitation slab
+        on springs with warmer interior cues (wood/white living spaces) glimpsed through more regular
+        residential-scale window bays, set apart in its own quieter cavern (B) off the personnel tunnel.
+        Concept ("springs-borne residential slab, domestic window rhythm") is unique.
+
+  # =================================================================================================
+  # RR-B4 — POWER & VENTILATION PLANT — Cavern C, the utility/reservoir cavern (deepest).
+  # =================================================================================================
+  - id: RR-B4
+    name: "Power & Ventilation Plant"
+    category: utility
+    zone: RR-Z3
+    verified_context: >-
+      Self-sufficiency systems — on-site power generation and a sophisticated ventilation system, plus
+      underground reservoirs — are a stable public theme (REF-009, inference). Counts ("dual power plants",
+      "two reservoirs") are popular figures, not authoritative (conflict). Geometry creative_approximation.
+    location_center: [-150, -14, -10]
+    building_record:
+      status: not_started
+      confidence:
+        program_context: high_confidence_inference   # power/ventilation self-sufficiency (REF-009)
+        geometry: creative_approximation
+        appearance: creative_approximation
+      footprint: { width_x: 40, depth_z: 28, area_blocks: 1120 }
+      floors: 2
+      building_top_y: -2                         # -14 + 2*5 + 2  (a lower, working structure)
+      spring_pedestal_height: 4                  # pedestals above the reservoir-cavern floor y-18
+      cavern_floor_y: -18
+      cavern_ceiling_y: 28
+      entrance_coordinate: [-130, -14, -10]      # +X face, toward the A-C corridor (C2)
+      palette:
+        shell: "palette_reference.institutional_concrete"
+        machinery: "palette_reference.utilities"
+        springs: "palette_reference.spring_isolation"
+        note: creative_approximation
+      rooms:
+        - generator_hall               # "dual power plant" massing (count popular, not authoritative)
+        - fuel_and_switchgear
+        - ventilation_plant            # air-entrainment / filtration (REF-007 "air-entrainment tunnels")
+        - water_treatment_and_pumps    # serves Reservoirs 1 & 2 (N7)
+        - control_room
+        - workshop
+        - restrooms
+      completion:
+        footprint_staked: false
+        exterior_shell_complete: false
+        roof_complete: false
+        interior_complete: false
+        palette_and_detailing_complete: false
+      defects:
+        - "'Dual power / two reservoirs' are popular figures, not authoritative (REF-009). Geometry invented."
+      notes: >-
+        MASSING/ROOFLINE/ENTRY (distinct): a lower, industrial 2-story plant hard against the reservoir
+        cavern — exposed copper ducting, ventilation stacks, and machinery massing, flanked by the two open
+        reservoir basins (N7). The only overtly utilitarian/industrial building and the deepest structure
+        (floor y-18). Concept ("industrial plant beside open reservoir basins") is unique.
+
+# ---------------------------------------------------------------------------------------------------
+# CROSS-CHECK CHECKLIST (collision + envelope + Y + MSA, for the reviewing agent)
+#   * All 4 records: status not_started; 5 completion booleans false.
+#   * Centroids/footprints/floors MATCH coordinates.yaml exactly (single layout; site-plan.md is master):
+#       RR-B1 (-30,-8,-15) 40x34 3fl ; RR-B2 (38,-8,-15) 32x30 3fl ;
+#       RR-B3 (0,-6,100) 44x30 3fl   ; RR-B4 (-150,-14,-10) 40x28 2fl.
+#   * Non-overlap: RR-B1 x[-50,-10] vs RR-B2 x[22,54] -> 32-block X gap; RR-B3 z[85,115] is 83 south of
+#     the Cavern-A pair (z max +2); RR-B4 x[-170,-130] is 80 west of RR-B1. No two footprints intersect.
+#   * Containment: each building inside its cavern box (RR-Z1/Z2/Z3) and inside envelope x/z[-300,300].
+#   * Y-range: buildings occupy y-18..y11; deepest floor y-18 > ~y-20 target; each building_top_y (9,9,11,-2)
+#     stays below its cavern ceiling (40,40,36,28). No cavern/building enters MSA's y62->y79 band
+#     (the RR-Z5 shaft alone reaches y64, at x=200 outside MSA x[-70,70] -- see next line).
+#   * MSA collision: RR ceiling y40 is 22 blocks below MSA foundation y62; only the RR-Z5 shaft (x=200,
+#     outside MSA x[-70,70] and east of every MSA planned surface element) crosses the buffer, through rock alone.
+#   * DISCREPANCIES TO RECONCILE (all documented): (a) four buildings vs contested three/five (A1/GAP-02);
+#     (b) utility/reservoir/spring/portal counts are popular figures (GAP-04); (c) the RR-Z5 shaft is a
+#     deliberate liberty droppable without affecting the four buildings (GAP-05).
+# ---------------------------------------------------------------------------------------------------

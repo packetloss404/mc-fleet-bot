@@ -1,0 +1,435 @@
+# Raven Rock Mountain Complex (Site R) — Minecraft Reconstruction: COORDINATE MANIFEST
+# Deliverable: planning/coordinates.yaml
+# Author role: spatial-design engineer.
+# MASTER DOCUMENT: planning/site-plan.md  (this file cross-checks against it and must AGREE exactly).
+# Source of truth for what is public vs invented: ../references/manifest.yaml (READ FIRST).
+#
+# ---------------------------------------------------------------------------------------------------
+# PROVENANCE / HONESTY NOTE (read before trusting any number here)
+# ---------------------------------------------------------------------------------------------------
+# Raven Rock's INTERIOR IS CLASSIFIED. There is NO public floor plan, and since 2007 DoD policy forbids
+# making "any photograph, sketch, picture, drawing, map or graphical representation" of the complex
+# (manifest REF-015). Accordingly, EVERY coordinate, cavern outline, building footprint, tunnel route,
+# room, and dimension in this file is CREATIVE APPROXIMATION — invented for the build. What is public is
+# only the SETTING and CONCEPT: greenstone geology (REF-003, verified); freestanding multi-story
+# buildings on shock-isolation springs in blasted caverns (REF-005, inference); several tunnel portals
+# (REF-007, inference); self-sufficient utilities (REF-009, inference); a continuity-of-government /
+# ANMCC mission (REF-010, verified). This is an openly-labeled imaginative interpretation of a public
+# landmark, NOT a claimed map of the real facility.
+#
+# CONFIDENCE VOCABULARY (inherited from the manifest; NEVER upgraded):
+#   verified                           - primary/multi-source public fact (geology, mission, era)
+#   high-confidence inference          - one good source / strong read (springs concept, ~4 portals, utilities)
+#   moderate-confidence reconstruction - assembled from weak/qualitative hints
+#   creative approximation             - no evidence; invented for the build (ALL coordinates & dimensions here)
+#
+# WHAT IS VERIFIED vs INVENTED IN THIS FILE:
+#   - Greenstone rock / command mission / that caverns were blasted .... verified (context only)
+#   - Springs-in-caverns concept / ~four portals / utility self-sufficiency . high-confidence inference (concept only)
+#   - EVERY XZ/Y coordinate, cavern box, building footprint, tunnel route . creative approximation
+#   - The ~20-block burial depth ...................................... creative convention (not the real ~650 ft)
+#   - Four buildings (vs contested three/five) ....................... creative design choice (REF-006)
+# ---------------------------------------------------------------------------------------------------
+
+meta:
+  subject: Raven Rock Mountain Complex ("Site R"), Blue Ridge Summit, Adams County, PA — the "underground Pentagon"
+  minecraft_version: "1.21.x"
+  block_palette: vanilla-compatible only, no resource pack
+  master_document: planning/site-plan.md   # authoritative for all centroids/dimensions; this file agrees with it
+  site_conditions: >-
+    Target server is stock Paper with NO plugins — no WorldEdit, WorldGuard, Dynmap, or EssentialsX/
+    Citizens (the staged integration files therefore stay dormant). CORRECTION: builder bots ARE now
+    opped (level 4, per the MSA as-built survey / ops.json) — the earlier "not opped" premise is stale.
+    These are plain world coordinates for bot-driven placement; no //commands or NPCs are assumed.
+    "Protected envelope" is a planning boundary, not an enforced region — and because the bots are opped
+    they would BYPASS any WorldGuard build:deny even if WorldGuard were added. PROTECTION MODEL — DECIDED
+    (see planning/open-questions.md OQ-2): builder bots stay opped DURING construction, then are DE-OPPED
+    once the build completes, after which WorldGuard build:deny protects the museum normally. The de-op is
+    a post-build operational step, NOT yet performed. Same decision applies to MSA (shared museum profile).
+  integrity_disclosure: >-
+    Interior classified (REF-015); every coordinate below is creative approximation and must be labeled
+    as such to visitors. This is not a claimed depiction of the real, secret interior.
+
+# ---------------------------------------------------------------------------------------------------
+# ORIGIN, SCALE, ORIENTATION, BOUNDARY, and the VERTICAL relationship to MainStreet America (MSA)
+# ---------------------------------------------------------------------------------------------------
+project:
+  origin: {x: 0, y: 64, z: 0}          # shared world origin; y=64 is the MSA surface/build plane
+  scale:
+    horizontal_blocks_per_foot: 0.5     # 1 block ~= 2 real feet
+    vertical_blocks_per_story: 5        # ~10 ft/story -> 5 blocks wall height (roof extra)
+    note: >-
+      creative convention shared with MSA. The real complex is popularly said to sit ~650 ft below the
+      summit (REF-008); reproduced literally that is ~325 blocks down and off-envelope. Per the manifest
+      build-scale note we bury the complex only ~20 blocks beneath the MSA plane as a deliberate stand-in.
+  orientation:
+    north: "-Z"
+    south: "+Z"
+    east: "+X"
+    west: "-X"
+  boundary:
+    min: {x: -300, z: -300}
+    max: {x: 300, z: 300}
+    size_blocks: {x: 600, z: 600}
+    note: The complex occupies the SUB-SURFACE volume of the same 600x600 envelope MSA sits on top of.
+  vertical_stacking:                    # THE key cross-build constraint (see site-plan.md section 1.1)
+    msa_surface_band:   {y_min: 62, y_max: 79, footprint: {x_min: -70, x_max: 70, z_min: -235, z_max: 200}}
+    rock_buffer_band:   {y_min: 41, y_max: 61, content: "solid greenstone; no excavation except the RR-Z5 shaft"}
+    ravenrock_ceilings: {y: 40, note: "cavern roofs begin here; utility cavern ceiling lower at y28"}
+    ravenrock_floors:   {main: -12, deepest: -18, note: "deepest = Cavern C reservoir sump; stays above bedrock"}
+    buffer_thickness_blocks: 22          # y40 ceiling to y62 MSA foundation
+    collision_statement: >-
+      Raven Rock's highest CAVERN/complex point (y40) is 22 blocks below MSA's y62 foundation (the
+      22-block greenstone buffer). No cavern or building geometry enters MSA's y62->y79 band; the RR-Z5
+      shaft ALONE rises to y64 into that band, but at x in [193,207], z in [-22,-8] -- OUTSIDE MSA's x in
+      [-70,+70] footprint AND east of every MSA surface element (nearest is the Z09 event lawn at x<=160,
+      ~33 blocks west) -- so its Y-overlap collides with no MSA block, only rock/greenbelt. A labeled deliberate liberty.
+    confidence: creative approximation
+
+# ---------------------------------------------------------------------------------------------------
+# FIVE ZONES  — plan box bounds are [min_x, min_z, max_x, max_z]; floor_y / ceiling_y give the vertical.
+# All boxes, floors, and ceilings are creative approximation (interior classified, REF-015/016).
+# ---------------------------------------------------------------------------------------------------
+zones:
+  - id: RR-Z1
+    name: Central Operations Cavern (Cavern A)
+    bounds: [-75, -45, 75, 15]
+    floor_y: -12
+    ceiling_y: 40
+    purpose: >-
+      Main blasted chamber (~52 blocks tall). Holds the Command & Operations Center (RR-B1) and the
+      Signal & Communications Center (RR-B2) on visible spring isolation; central junction rotunda (N10)
+      where the four portal tunnels and inter-cavern corridors meet. Mission basis REF-010 (verified);
+      springs concept REF-005 (inference); ALL geometry creative approximation.
+    confidence: creative approximation
+
+  - id: RR-Z2
+    name: Habitation & Support Cavern (Cavern B)
+    bounds: [-45, 70, 45, 130]
+    floor_y: -10
+    ceiling_y: 36
+    purpose: >-
+      Self-sufficient habitation zone (Quarters, Dining & Medical = RR-B3), enabling months of sealed
+      operation (REF-009, inference). South end meets the South Personnel Portal tunnel. Geometry creative.
+    confidence: creative approximation
+
+  - id: RR-Z3
+    name: Utility & Reservoir Cavern (Cavern C)
+    bounds: [-185, -35, -115, 15]
+    floor_y: -18            # reservoir sump = deepest point in the complex
+    ceiling_y: 28
+    purpose: >-
+      Utility cavern: Power & Ventilation Plant (RR-B4) plus two underground reservoirs. Self-sufficiency
+      systems are a stable public theme (REF-009, inference); the "two reservoirs / dual power" counts are
+      popular figures, not authoritative (conflict). Sizes/positions creative approximation.
+    confidence: creative approximation
+
+  - id: RR-Z4
+    name: Portal & Blast-Vestibule Network
+    bounds: [-300, -300, 300, 300]    # distributed: the four gently-curving portal tunnels + vestibules
+    floor_y: -18
+    ceiling_y: 25
+    purpose: >-
+      The four curving portal tunnels (T1 north, T2 south, T3 east, T4 west) and their blast-door
+      vestibules, threading the greenstone from caverns out to the envelope edges. Tunnels curve gently to
+      blunt blast (REF-005/017, inference); FOUR portals matches the common public statement (REF-007,
+      inference); exact routes/positions creative approximation. See notable_locations N1-N6 and tunnels[].
+    confidence: creative approximation
+
+  - id: RR-Z5
+    name: Vertical Access Shaft (deliberate creative liberty)
+    bounds: [193, -22, 207, -8]        # a ~14x14 shaft footprint centered on (200,-15)
+    floor_y: -12                        # base connects Cavern A spur
+    ceiling_y: 64                       # rises to the MSA surface plane
+    purpose: >-
+      A single invented shaft from Cavern A up through the rock buffer to a surface head-house (N9) at
+      (200, 64, -15) in MSA's EAST greenbelt, well clear of every MSA planned surface element (x=200 is
+      far east of MSA's built footprint x-max 70 and ~33 blocks east of the nearest planned element, the
+      Z09 event lawn at x<=160). RELOCATED from the former (120,60) head, which sat inside MSA's planned
+      east parking/event-lawn flank (see open-questions OQ-1). A labeled deliberate liberty; locally
+      interrupts the rock buffer but collides with nothing.
+    confidence: creative approximation
+
+# ---------------------------------------------------------------------------------------------------
+# FOUR BUILDINGS  (freestanding, on visible spring isolation)
+# location_center = {x,y,z}; y = building base (top of the spring pedestals, i.e. ground-floor slab).
+# footprint = ground-floor bounding box in blocks {x_size, z_size}, centered on location_center.
+# footprint_x span = center.x +/- x_size/2 ; footprint_z span = center.z +/- z_size/2.
+# floors * 5 = wall height in blocks; +2 for roof. building_top_y = base_y + floors*5 + 2.
+# EVERY value here is creative approximation; springs/multi-story concept is inference only (REF-005).
+# ---------------------------------------------------------------------------------------------------
+buildings:
+  - id: RR-B1
+    name: Command & Operations Center (ANMCC)
+    zone: RR-Z1
+    location_center: {x: -30, y: -8, z: -15}   # base y-8 = 4-block springs above Cavern A floor y-12
+    footprint: {x_size: 40, z_size: 34}
+    floors: 3
+    building_top_y: 9                            # -8 + 3*5 + 2
+    spring_pedestal_height: 4                    # visible isolation springs, floor y-12 -> base y-8
+    program_basis: verified                      # alternate-command mission (REF-010)
+    geometry_confidence: creative approximation
+    style_confidence: creative approximation
+
+  - id: RR-B2
+    name: Signal & Communications Center
+    zone: RR-Z1
+    location_center: {x: 38, y: -8, z: -15}
+    footprint: {x_size: 32, z_size: 30}
+    floors: 3
+    building_top_y: 9
+    spring_pedestal_height: 4
+    program_basis: verified                      # 114th Signal Bn / DISA comms tenancy (REF-011)
+    geometry_confidence: creative approximation
+    style_confidence: creative approximation
+
+  - id: RR-B3
+    name: Quarters, Dining & Medical
+    zone: RR-Z2
+    location_center: {x: 0, y: -6, z: 100}       # base y-6 = 4-block springs above Cavern B floor y-10
+    footprint: {x_size: 44, z_size: 30}
+    floors: 3
+    building_top_y: 11                           # -6 + 3*5 + 2
+    spring_pedestal_height: 4
+    program_basis: high-confidence inference      # self-sufficient community (REF-009)
+    geometry_confidence: creative approximation
+    style_confidence: creative approximation
+
+  - id: RR-B4
+    name: Power & Ventilation Plant
+    zone: RR-Z3
+    location_center: {x: -150, y: -14, z: -10}   # base y-14 = 4-block pedestals above Cavern C floor y-18
+    footprint: {x_size: 40, z_size: 28}
+    floors: 2
+    building_top_y: -2                           # -14 + 2*5 + 2
+    spring_pedestal_height: 4
+    program_basis: high-confidence inference      # on-site power/ventilation (REF-009)
+    geometry_confidence: creative approximation
+    style_confidence: creative approximation
+
+# ---------------------------------------------------------------------------------------------------
+# TUNNELS & CORRIDORS  (blasted voids in greenstone; ~6 wide x 7 tall; gently curving)
+# Curving-to-blunt-blast rationale is inference (REF-005/017); all routes creative approximation.
+# ---------------------------------------------------------------------------------------------------
+tunnels:
+  - id: T1
+    name: North Vehicle Tunnel
+    from: {x: 0, y: 18, z: -285}     # portal N4 (mouth in rock face)
+    via:  {x: 0, y: -6, z: -120}     # North Blast Vestibule N1
+    to:   {x: 0, y: -12, z: -45}     # Cavern A north wall
+    profile: {width: 6, height: 7, curve: gentle-S}
+    confidence: creative approximation
+  - id: T2
+    name: South Personnel Tunnel
+    from: {x: 0, y: 18, z: 285}      # portal N3
+    to:   {x: 0, y: -10, z: 130}     # Cavern B south wall
+    profile: {width: 6, height: 7, curve: gentle}
+    confidence: creative approximation
+  - id: T3
+    name: East Tunnel
+    from: {x: 285, y: 18, z: -30}    # portal N5
+    via:  {x: 180, y: 0, z: -30}     # East Blast Vestibule N2
+    to:   {x: 75, y: -12, z: -15}    # Cavern A east wall
+    profile: {width: 6, height: 7, curve: gentle}
+    confidence: creative approximation
+  - id: T4
+    name: West Utility Tunnel
+    from: {x: -290, y: 10, z: 5}     # portal N6
+    to:   {x: -185, y: -18, z: -10}  # Cavern C west wall
+    profile: {width: 6, height: 7, curve: gentle}
+    confidence: creative approximation
+  - id: C1
+    name: A-B Inter-Cavern Corridor
+    from: {x: 0, y: -12, z: 15}      # Cavern A south
+    to:   {x: 0, y: -10, z: 70}      # Cavern B north
+    profile: {width: 5, height: 6, curve: dog-leg}
+    confidence: creative approximation
+  - id: C2
+    name: A-C Inter-Cavern Corridor
+    from: {x: -75, y: -12, z: -15}   # Cavern A west
+    to:   {x: -115, y: -18, z: -10}  # Cavern C east
+    profile: {width: 5, height: 6, curve: gentle}
+    confidence: creative approximation
+  - id: S1
+    name: Shaft Spur (to RR-Z5)
+    from: {x: 75, y: -12, z: -15}    # branches off Cavern A east wall (the East Tunnel T3 junction)
+    to:   {x: 200, y: -12, z: -15}   # shaft base (relocated east; see open-questions OQ-1)
+    profile: {width: 4, height: 6, curve: gentle}
+    confidence: creative approximation
+
+# ---------------------------------------------------------------------------------------------------
+# NOTABLE LOCATIONS  (portals, vestibules, rotunda, reservoirs, springs, shaft head)
+# ---------------------------------------------------------------------------------------------------
+notable_locations:
+  - id: N1
+    name: North Blast Vestibule
+    coordinate: {x: 0, y: -6, z: -120}
+    footprint: {x_size: 14, z_size: 14}
+    zone: RR-Z4
+    confidence: creative approximation
+    note: Twin blast doors on the North Vehicle Tunnel. Blast doors exist in concept for a hardened site; placement creative.
+  - id: N2
+    name: East Blast Vestibule
+    coordinate: {x: 180, y: 0, z: -30}
+    footprint: {x_size: 12, z_size: 12}
+    zone: RR-Z4
+    confidence: creative approximation
+  - id: N3
+    name: South Personnel Portal (mouth)
+    coordinate: {x: 0, y: 18, z: 285}
+    zone: RR-Z4
+    confidence: high-confidence inference   # "several portals" is attested (REF-007); this position is creative
+  - id: N4
+    name: North Vehicle Portal (mouth)
+    coordinate: {x: 0, y: 18, z: -285}
+    zone: RR-Z4
+    confidence: high-confidence inference
+  - id: N5
+    name: East Portal (mouth)
+    coordinate: {x: 285, y: 18, z: -30}
+    zone: RR-Z4
+    confidence: high-confidence inference
+  - id: N6
+    name: West Utility Portal (mouth)
+    coordinate: {x: -290, y: 10, z: 5}
+    zone: RR-Z4
+    confidence: high-confidence inference
+  - id: N7
+    name: Reservoirs 1 & 2 (sumps)
+    coordinate: {x: -150, y: -18, z: -30}
+    footprint: {x_size: 40, z_size: 8}      # two adjacent basins in the south strip of Cavern C, clear of RR-B4
+    zone: RR-Z3
+    confidence: creative approximation
+    note: >-
+      "Two reservoirs" is a popular figure, not authoritative (REF-009 conflict); size/position invented.
+      Sits at z[-34,-26], south of RR-B4 (z-24..4) with a ~2-block gap; inside Cavern C z[-35,15].
+  - id: N8
+    name: Central Spring-Isolation Array (under RR-B1)
+    coordinate: {x: -30, y: -12, z: -15}
+    zone: RR-Z1
+    confidence: high-confidence inference   # springs concept REF-005; exact array creative
+    note: Visible iron/copper spring stacks + chains lifting RR-B1 off the cavern floor (concept made legible).
+  - id: N9
+    name: Vertical Access Shaft — Surface Head-House (deliberate liberty)
+    coordinate: {x: 200, y: 64, z: -15}
+    zone: RR-Z5
+    confidence: creative approximation
+    note: >-
+      Emerges at the MSA surface plane in the EAST greenbelt at x=200 (relocated from the former
+      (120,64,60) per OQ-1). Clears every MSA planned surface element: ~33 blocks east of the nearest
+      (the Z09 event lawn, x<=160), far east of the core buildings (x<=70), and separated in z from the
+      parking field (z>=125) and the rear detention/landscape (z<=-215). Within the +-300 envelope.
+  - id: N10
+    name: Central Junction Rotunda
+    coordinate: {x: 0, y: -12, z: 0}
+    zone: RR-Z1
+    confidence: creative approximation
+    note: Hub where T1/T3 and corridors C1/C2 meet inside Cavern A — the heart of the complex.
+
+# ---------------------------------------------------------------------------------------------------
+# INTERNAL CONSISTENCY CHECK  (computed, not eyeballed)
+# Rules: every building footprint lies inside its zone box AND inside the 600x600 envelope; no two
+# building footprints overlap; every Y stays within the buildable range and clear of MSA's y62->y79.
+# Method: axis-aligned bounding-box test on center +/- size/2.
+# ---------------------------------------------------------------------------------------------------
+consistency_check:
+  method: axis-aligned bounding box; boxes = center.x +/- x_size/2, center.z +/- z_size/2
+  building_extents:
+    RR-B1: {x: [-50, -10], z: [-32, 2],   y: [-8, 9]}
+    RR-B2: {x: [22, 54],   z: [-30, 0],   y: [-8, 9]}
+    RR-B3: {x: [-22, 22],  z: [85, 115],  y: [-6, 11]}
+    RR-B4: {x: [-170, -130], z: [-24, 4], y: [-14, -2]}
+  containment_in_zone: PASS       # RR-B1/B2 in RR-Z1 [-75,-45,75,15]; RR-B3 in RR-Z2 [-45,70,45,130]; RR-B4 in RR-Z3 [-185,-35,-115,15]
+  containment_in_envelope: PASS   # all building & portal extents within x/z [-300, 300]
+  pairwise_building_overlap: PASS # see clearances below
+  y_range_check: PASS             # all buildings within y[-18..11]; deepest floor y-18 > ~y-20 target; highest roof y11 < y40 ceilings
+  msa_collision_check: PASS       # highest CAVERN/complex point y40 is 22 blocks below MSA y62 foundation; RR-Z5 shaft alone reaches y64 but at x[193,207], outside MSA x[-70,70], so no block collision
+  shaft_vs_msa_check: PASS        # RR-Z5 shaft at x=200 clears MSA footprint x[-70,70] AND all planned surface elements (nearest Z09 event-lawn edge x=160 -> 33-block gap); crosses rock/greenbelt only
+  tightest_clearances:
+    - between: [RR-B1 east edge (x=-10), RR-B2 west edge (x=+22)]
+      gap_blocks: 32
+      axis: x
+    - between: [RR-B1/B2 south edges (z=0..2), RR-B3 north edge (z=+85)]
+      gap_blocks: 83
+      axis: z
+    - between: [RR-B4 east edge (x=-130), RR-B1 west edge (x=-50)]
+      gap_blocks: 80
+      axis: x
+    - between: [RR-B1 roof top (y=9), Cavern A ceiling (y=40)]
+      gap_blocks: 31
+      axis: y
+    - between: [RR ceiling (y=40), MSA foundation (y=62)]
+      gap_blocks: 22
+      axis: y
+  extents_summary:
+    x:
+      min: -290    # west portal N6 mouth -- the TRUE western extreme, NOT RR-B4's x=-170 west edge (a building edge, not the site extreme)
+      max: 285     # east portal N5 mouth
+      note: "tightest envelope margin is 10 blocks WEST (N6 x=-290 to boundary x=-300)"
+    z: {min: -285, max: 285}   # north portal N4 (min) / south portal N3 (max)
+    y: {min: -18, max: 40, note: "min = reservoir sump / cavern C floor; max = cavern ceilings; buildings within -18..11"}
+  notes: >-
+    Building footprints are structure boxes only; the spring pedestals sit under them and the cavern
+    walls stand well clear (each building floats inside a box larger on every side). All four buildings
+    are mutually non-overlapping, inside their caverns, inside the envelope, and inside the y-range, and
+    NONE enters MSA's y62->y79 band.
+
+# ---------------------------------------------------------------------------------------------------
+# ASSUMPTIONS & GAPS  (recorded, not silently resolved)
+# ---------------------------------------------------------------------------------------------------
+assumptions_and_gaps:
+  - id: GAP-01
+    topic: The entire interior is invented
+    detail: >-
+      The interior is classified and legally undocumentable (REF-015/016). Every coordinate, cavern,
+      building, tunnel, and room here is creative approximation and carries no historical claim. This is
+      the mirror of MSA, where sizes were verified and only surfaces were invented; here almost everything
+      spatial is invented.
+    severity: high
+  - id: GAP-02
+    topic: Building count is a design choice (three vs five contested)
+    detail: >-
+      Wikipedia says three buildings (1953); popular sources say five three-story buildings (REF-006). This
+      build uses FOUR as a reasoned middle choice. If a decision standardizes on three or five, reconcile
+      site-plan.md, this file, and buildings.yaml together.
+    severity: medium
+  - id: GAP-03
+    topic: Burial depth is a convention, not the real ~650 ft
+    detail: >-
+      Real depth ~650 ft below summit (REF-008) would be ~325 blocks down and off-envelope. Per the
+      manifest build-scale note we bury the complex ~20 blocks (ceiling y40) as a deliberate stand-in.
+    severity: low
+  - id: GAP-04
+    topic: Utility/portal/spring COUNTS are popular figures, not authoritative
+    detail: >-
+      Two reservoirs, dual power, four portals, and spring counts come from secondary/enthusiast sources
+      (REF-007/009 conflicts). Existence is inference; the specific numbers rendered are creative choices.
+    severity: low
+  - id: GAP-05
+    topic: Vertical access shaft is a deliberate liberty
+    detail: >-
+      RR-Z5 (shaft) and N9 (surface head) are an invented convenience link between the two builds. They
+      pierce the rock buffer at x=200 (relocated from x=120 per OQ-1), outside MSA's footprint and east of
+      every MSA planned surface element, colliding with nothing. If cut for purity, they drop with no
+      effect on the four buildings or four portals.
+    severity: low
+
+# ---------------------------------------------------------------------------------------------------
+# CONFLICTS DETECTED  (relative to sources / to MSA)
+# ---------------------------------------------------------------------------------------------------
+conflicts_detected:
+  - id: CONFLICT-01
+    topic: Greenstone vs "greenstone granite"
+    detail: >-
+      Popular RRMC write-ups say the complex was blasted from "greenstone granite." Geologically the
+      mountain is Catoctin greenstone = a chlorite-rich METABASALT, NOT a granite (REF-003). The rock
+      body/palette must read as dark greenish hard metabasalt, not pink/gray granite.
+    severity: low
+  - id: CONFLICT-02
+    topic: Number of internal buildings
+    detail: "Three (Wikipedia) vs five (popular). Build uses four (design choice, GAP-02). Recorded, not merged."
+    severity: medium
+  - id: CONFLICT-03
+    topic: Self-sufficiency counts
+    detail: "Two reservoirs / dual power plants are popular figures; existence agreed, counts vary (REF-009). Any count here is invented."
+    severity: low
