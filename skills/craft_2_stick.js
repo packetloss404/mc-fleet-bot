@@ -1,25 +1,34 @@
-async function craft2Sticks(bot) {
-  // Check if we already have at least 2 sticks
-  const sticks = bot.inventory.items().find(item => item.name === 'stick');
-  if (sticks && sticks.count >= 2) {
-    return; // Already have 2+ sticks
+async function craft1Stick(bot) {
+  const stick = bot.inventory.items().find(item => item.name === 'stick');
+  if (stick && stick.count >= 1) {
+    return; // Already have at least 1 stick
   }
 
-  // We need planks for sticks. 2 planks make 4 sticks at a crafting table.
-  // Place crafting table if not already placed, then craft sticks.
-  const craftingTable = bot.inventory.items().find(item => item.name === 'crafting_table');
-  const planks = bot.inventory.items().find(item => item.name.includes('_planks'));
+  // Sticks are crafted from planks. 2 planks -> 4 sticks.
+  // We need at least 2 planks to craft any sticks.
+  let planks = bot.inventory.items().find(item => item.name.includes('_planks'));
   if (!planks || planks.count < 2) {
-    // Not enough planks - this shouldn't happen given inventory
-    return;
+    // Need to get planks first. Assume we have wood logs.
+    // If not, this will fail, but the task is to craft sticks, not get wood.
+    // For now, assume we have planks or logs to make planks.
+    // A more robust solution would involve gathering logs and crafting planks first.
+    // Since the inventory shows planks, we'll proceed assuming we have them.
+    const oakLogs = bot.inventory.items().find(item => item.name === 'oak_log');
+    if (oakLogs && oakLogs.count >= 1) {
+      await craftItem('oak_planks', 4); // Craft 4 planks from 1 log
+      planks = bot.inventory.items().find(item => item.name.includes('_planks'));
+    } else {
+      const cherryLogs = bot.inventory.items().find(item => item.name === 'cherry_log');
+      if (cherryLogs && cherryLogs.count >= 1) {
+        await craftItem('cherry_planks', 4); // Craft 4 planks from 1 log
+        planks = bot.inventory.items().find(item => item.name.includes('_planks'));
+      }
+    }
+  }
+  if (!planks || planks.count < 2) {
+    throw new Error('Not enough planks to craft sticks.');
   }
 
-  // Place crafting table nearby
-  if (craftingTable) {
-    const pos = bot.entity.position;
-    await placeItem('crafting_table', Math.floor(pos.x) + 2, Math.floor(pos.y) - 1, Math.floor(pos.z));
-  }
-
-  // Craft 4 sticks using crafting table (uses 2 planks)
+  // Craft 4 sticks, as that's the smallest craftable amount from 2 planks.
   await craftItem('stick', 4);
 }

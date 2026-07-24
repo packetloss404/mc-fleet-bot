@@ -1,23 +1,37 @@
 async function swimToShoreDrowningAnd(bot) {
-  // First swim to the surface
-  await swimToTheSurfaceDrowning(bot);
+  const isHeadSubmerged = () => {
+    const eyePos = bot.entity.position.offset(0, bot.entity.eyeHeight, 0);
+    const eyeBlock = bot.blockAt(eyePos);
+    return eyeBlock && (eyeBlock.name.includes('water') || eyeBlock.name === 'bubble_column');
+  };
+  const isFeetInFluid = () => {
+    const feetBlock = bot.blockAt(bot.entity.position);
+    return feetBlock && (feetBlock.name.includes('water') || feetBlock.name === 'bubble_column');
+  };
 
-  // Now look for land nearby
-  const landBlock = bot.findBlock({
+  // Swim to surface first if submerged
+  if (isHeadSubmerged() || isFeetInFluid()) {
+    bot.setControlState('jump', true);
+    bot.setControlState('forward', true);
+    bot.setControlState('sprint', true);
+    const startTime = Date.now();
+    while (Date.now() - startTime < 30000) {
+      await bot.waitForTicks(5);
+      if (!isHeadSubmerged()) {
+        await bot.waitForTicks(10);
+        break;
+      }
+    }
+    bot.clearControlStates();
+  }
+
+  // Find nearby land
+  const land = bot.findBlock({
     matching: b => b.name === "grass_block" || b.name === "dirt" || b.name === "sand" || b.name === "stone",
     maxDistance: 32
   });
-  if (!landBlock) { console.log("Block not found"); return; }
-  if (landBlock) {
-    await moveTo(landBlock.position.x, landBlock.position.y, landBlock.position.z, 2, 30);
-  } else {
-    // If no land found, explore in a spiral to find shore
-    const pos = bot.entity.position;
-    await exploreUntil('north', 15, () => {
-      return bot.findBlock({
-        matching: b => b.name === "grass_block" || b.name === "dirt" || b.name === "sand",
-        maxDistance: 16
-      });
-    });
+  if (!land) { console.log("Block not found"); return; }
+  if (land) {
+    await moveTo(land.position.x, land.position.y, land.position.z, 2, 30);
   }
 }
