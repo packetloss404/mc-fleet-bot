@@ -84,6 +84,23 @@ export class TokenLedger {
   private dailySpend: Record<string, Record<string, number>> = {};
 
   constructor(dataDir?: string) {
+    // Refuse to bind the PRODUCTION data dir from inside a test run. The class
+    // comment above has warned about this since the paths were made per
+    // instance, but a warning is not a guard: two test files kept calling
+    // `new TokenLedger()` with no dataDir, so every `npm test` recorded its
+    // fixture costs into the real data/token-spend-daily.json. That inflated
+    // the daily bucket by ~$11.75 per run and, because the budget cap gates
+    // paid codegen on that number, a few test runs alone could switch the
+    // fleet off. Observed 2026-07-24: the bucket read $82.25 against $10.19 of
+    // genuine spend, purely from repeated test runs.
+    if (!dataDir && (process.env.VITEST || process.env.NODE_ENV === 'test')) {
+      throw new Error(
+        'TokenLedger: refusing to use the production data dir under test. ' +
+          'Pass an explicit dataDir (e.g. fs.mkdtempSync(...)) — an unqualified ' +
+          'new TokenLedger() in a test writes real spend into data/token-spend-daily.json ' +
+          'and can trip the budget cap.',
+      );
+    }
     const dir = dataDir ?? path.join(process.cwd(), 'data');
     this.dataPath = path.join(dir, 'token-ledger.json');
     this.dailyPath = path.join(dir, 'token-spend-daily.json');

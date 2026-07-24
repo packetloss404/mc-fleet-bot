@@ -75,7 +75,7 @@ describe('CommandCenter', () => {
     const result = await cc.dispatchCommand(cmd);
 
     expect(result.status).toBe('succeeded');
-    expect(bm._mockWorker.sendCommand).toHaveBeenCalledWith('setMode', { pause: true });
+    expect(bm._mockWorker.sendCommand).toHaveBeenCalledWith('pauseVoyager', { reason: 'operator' });
   });
 
   it('dispatches stop_movement command', async () => {
@@ -148,8 +148,8 @@ describe('CommandCenter', () => {
 
     expect(result.status).toBe('succeeded');
     expect(result.childCommandIds).toHaveLength(2);
-    expect(bm._mockWorker.sendCommand).toHaveBeenCalledWith('setMode', { pause: true });
-    expect(secondWorker.sendCommand).toHaveBeenCalledWith('setMode', { pause: true });
+    expect(bm._mockWorker.sendCommand).toHaveBeenCalledWith('pauseVoyager', { reason: 'operator' });
+    expect(secondWorker.sendCommand).toHaveBeenCalledWith('pauseVoyager', { reason: 'operator' });
   });
 
   // ── Task 1: Cancellation transitions status correctly ──

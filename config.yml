@@ -223,6 +223,33 @@ mining:
   # foundations, cellars and shallow coal/iron, while making runaway descent
   # impossible. Unset this to restore the old (unbounded) behaviour.
   minDigY: 50
+  # Excavation Y-CEILING for the Raven Rock carving campaign (OQ-4).
+  #
+  # The mirror of minDigY above: that stops bots digging too DEEP, this stops
+  # them cutting too HIGH. Raven Rock sits beneath MainStreet America with a
+  # 22-block greenstone buffer (y41->y61) between its cavern ceilings and MSA's
+  # y62 foundation. A bot carving a cavern roof or a tunnel that strays above
+  # y41 thins or breaches that buffer under a live surface build.
+  #
+  # DISABLED BY DEFAULT, and it must stay that way except while carving. With
+  # enabled: true nothing may edit a block above y41 outside the exempt boxes --
+  # which would forbid MSA surface work at y64 and the Ravensreach hall at y67,
+  # i.e. nearly everything currently standing. Turn it on for the duration of
+  # the Raven Rock dig, then turn it back off.
+  #
+  # The exempt box is the RR-Z5 vertical shaft, the single sanctioned breach.
+  # These are the RELOCATED (OQ-1) coordinates. Several documents still show the
+  # superseded x[113,127], z[53,67] -- wiring those would whitelist empty rock
+  # and refuse the real shaft.
+  carveCeiling:
+    enabled: false
+    maxY: 41
+    exempt:
+      - name: rr-z5-shaft
+        minX: 193
+        maxX: 207
+        minZ: -22
+        maxZ: -8
   # Communal mine site: bots walk here before mining any routed block type, then
   # dig down/out AT the site instead of wherever they happen to be standing.
   # Unset since the repoint — the old site (1720,64,194) is ~1730 blocks from

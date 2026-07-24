@@ -1,3 +1,6 @@
+import os from 'node:os';
+import fs from 'node:fs';
+import pathMod from 'node:path';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import { AnthropicClient } from '../../src/ai/AnthropicClient';
 import { TokenLedger } from '../../src/ai/TokenLedger';
@@ -53,7 +56,7 @@ describe('model-aware prompt cache threshold', () => {
 
 describe('prompt-cache cost accounting', () => {
   it('prices cache writes at 1.25x and reads at 0.1x of the input rate', () => {
-    const ledger = new TokenLedger();
+    const ledger = new TokenLedger(fs.mkdtempSync(pathMod.join(os.tmpdir(), 'ledger-')));
     const common = {
       provider: 'anthropic', model: 'claude-opus-4-8', taskType: 'codegen' as const,
       botName: 'T', latencyMs: 1, success: true, outputTokens: 0,
@@ -71,7 +74,7 @@ describe('prompt-cache cost accounting', () => {
   });
 
   it('still counts uncached input at the full rate', () => {
-    const ledger = new TokenLedger();
+    const ledger = new TokenLedger(fs.mkdtempSync(pathMod.join(os.tmpdir(), 'ledger-')));
     const before = ledger.getSpendTodayUsd({ provider: 'anthropic' });
     ledger.record({
       provider: 'anthropic', model: 'claude-opus-4-8', taskType: 'codegen',

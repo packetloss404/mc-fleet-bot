@@ -1,3 +1,6 @@
+import os from 'node:os';
+import fs from 'node:fs';
+import pathMod from 'node:path';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import * as fs from 'fs';
 import * as os from 'os';
@@ -35,7 +38,7 @@ async function freshSettings() {
   vi.resetModules();
   const { LLMSettings } = await import('../../src/ai/LLMSettings');
   const { TokenLedger } = await import('../../src/ai/TokenLedger');
-  return new LLMSettings(new TokenLedger());
+  return new LLMSettings(new TokenLedger(fs.mkdtempSync(pathMod.join(os.tmpdir(), 'ledger-'))));
 }
 
 describe('per-provider env seeding', () => {

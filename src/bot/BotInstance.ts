@@ -6,7 +6,7 @@ import { Vec3 } from 'vec3';
 import { BotState, BotMode } from './BotState';
 import { Config } from '../config';
 import { logger } from '../util/logger';
-import { isProtected, isBelowDigFloor, getMinDigY } from '../actions/geofence';
+import { isProtected, isBelowDigFloor, getMinDigY, isAboveCarveCeiling, getCarveCeiling } from '../actions/geofence';
 import { LLMClient } from '../ai/LLMClient';
 import { AffinityManager } from '../personality/AffinityManager';
 import { ConversationManager } from '../personality/ConversationManager';
@@ -312,6 +312,26 @@ export class BotInstance {
           );
           throw new Error(
             `dig blocked: (${Math.floor(p.x)},${Math.floor(p.y)},${Math.floor(p.z)}) is inside a protected build zone`,
+          );
+        }
+        // Excavation CEILING (Raven Rock OQ-4) — the mirror of the depth floor
+        // below, enforced at the same choke point and for the same reason:
+        // LLM-generated code calls bot.dig directly, so gating only mineBlock
+        // would leave the buffer unprotected. Off unless mining.carveCeiling
+        // is explicitly enabled, so this is a no-op for MSA/Worker Town work.
+        if (p && isAboveCarveCeiling(Math.floor(p.x), Math.floor(p.y), Math.floor(p.z))) {
+          const cc = getCarveCeiling();
+          logger.warn(
+            {
+              bot: this.name,
+              x: Math.floor(p.x), y: Math.floor(p.y), z: Math.floor(p.z),
+              maxY: cc?.maxY,
+            },
+            'dig blocked: above the excavation ceiling (protects the MSA buffer)',
+          );
+          throw new Error(
+            `dig blocked: (${Math.floor(p.x)},${Math.floor(p.y)},${Math.floor(p.z)}) is above the ` +
+            `excavation ceiling y${cc?.maxY} — the greenstone buffer under MainStreet America`,
           );
         }
         // Depth floor, enforced HERE rather than only in mineBlock: this is the
@@ -630,7 +650,15 @@ export class BotInstance {
     });
   }
 
-  private static BOT_PASSWORD = 'dyobot2026';
+  /**
+   * DyoAuth bot password. Sourced from MC_BOT_PASSWORD, falling back to
+   * config.minecraft.loginPassword at the call site. The literal was previously
+   * hardcoded here, which meant deleting the config key did NOT remove the
+   * credential — it just fell through to the constant. Empty default so a
+   * misconfigured DyoAuth flow fails to authenticate rather than broadcasting a
+   * real password; this path only runs when loginFlow is explicitly 'dyoauth'.
+   */
+  private static BOT_PASSWORD = process.env.MC_BOT_PASSWORD ?? '';
 
   private handleAuth(onReady: () => void): void {
     if (!this.bot) return;
@@ -639,8 +667,18 @@ export class BotInstance {
     // loginFlow: "none" — just join, no /login or /register. DyoCraft uses
     // "dyoauth" (the default). Skipping here also avoids the 15s auth-timeout
     // wait on servers that never send a login prompt.
-    if (this.config.minecraft.loginFlow === 'none') {
-      logger.info({ bot: this.name }, 'Auth: loginFlow=none, skipping login');
+    // OPT-IN, not opt-out. This was `=== 'none'` — an exact-match SKIP — and
+    // `loginFlow` is an optional key, so deleting it, misspelling it, or setting
+    // it to anything unexpected ran the full DyoAuth dance. On a stock Paper
+    // server `/login` is an unknown command, so the bot's PASSWORD would be
+    // echoed into PUBLIC CHAT by every bot on every join, followed by a 15s
+    // auth-timeout stall. Now only the literal string 'dyoauth' opts in, so any
+    // typo fails safe to "just join".
+    if (this.config.minecraft.loginFlow !== 'dyoauth') {
+      logger.info(
+        { bot: this.name, loginFlow: this.config.minecraft.loginFlow ?? '(unset)' },
+        'Auth: loginFlow is not "dyoauth", skipping login',
+      );
       onReady();
       return;
     }
@@ -721,8 +759,14 @@ export class BotInstance {
 
     // DyoClasses is a DyoCraft plugin; a vanilla/Paper server has no class
     // hotbar, so selectClass: false skips the dance entirely.
-    if (this.config.minecraft.selectClass === false) {
-      logger.info({ bot: this.name }, 'Class selection disabled (selectClass=false), skipping');
+    // OPT-IN for the same reason as loginFlow above: this was
+    // `selectClass === false`, so an absent or malformed key ran the DyoClasses
+    // hotbar dance against a server that has no such plugin.
+    if (this.config.minecraft.selectClass !== true) {
+      logger.info(
+        { bot: this.name, selectClass: this.config.minecraft.selectClass ?? '(unset)' },
+        'Class selection not explicitly enabled, skipping',
+      );
       onReady();
       return;
     }

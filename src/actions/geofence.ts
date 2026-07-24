@@ -47,12 +47,40 @@ export interface MineSite {
   radius?: number;
 }
 
+/**
+ * Excavation Y-CEILING for a subsurface carving campaign (Raven Rock OQ-4).
+ *
+ * The inverse of `minDigY`: that stops bots tunnelling too DEEP, this stops them
+ * cutting too HIGH. Raven Rock sits beneath MainStreet America with a 22-block
+ * greenstone buffer (y41→y61) between the cavern ceilings and MSA's y62
+ * foundation. A bot carving a cavern roof or a tunnel that strays above y41
+ * thins or breaches that buffer under a live surface build.
+ *
+ * MUST be opt-in. A blanket "no edits above y41" would forbid MSA surface work
+ * at y64 and the Worker Town hall at y67 — i.e. almost everything currently
+ * built. `enabled: false` (or absent) is the default and a complete no-op; turn
+ * it on only for the duration of the carving campaign.
+ */
+export interface CarveCeiling {
+  enabled?: boolean;
+  /** Highest Y a block edit may touch while enabled. OQ-4 ratified 41. */
+  maxY: number;
+  /** Columns exempt from the ceiling — the sanctioned breaches. */
+  exempt?: Array<{
+    name?: string;
+    minX: number; maxX: number;
+    minZ: number; maxZ: number;
+  }>;
+}
+
 interface MiningGeofence {
   protectedZones: ProtectedZone[];
   mineSite: MineSite | null;
   routeToMineBlocks: Set<string>;
   /** Y below which digging is refused outside the mine site. Null = no floor. */
   minDigY: number | null;
+  /** Excavation ceiling for subsurface carving. Null = disabled. */
+  carveCeiling: CarveCeiling | null;
 }
 
 let cached: MiningGeofence | null = null;
@@ -63,6 +91,7 @@ function load(): MiningGeofence {
   let mineSite: MineSite | null = null;
   let routeToMineBlocks = new Set<string>();
   let minDigY: number | null = null;
+  let carveCeiling: CarveCeiling | null = null;
   try {
     const cfg = loadConfig() as any;
     const m = cfg.mining || {};
@@ -70,10 +99,14 @@ function load(): MiningGeofence {
     if (m.mineSite && typeof m.mineSite.x === 'number') mineSite = m.mineSite;
     if (Array.isArray(m.routeToMineBlocks)) routeToMineBlocks = new Set(m.routeToMineBlocks);
     if (typeof m.minDigY === 'number') minDigY = m.minDigY;
+    if (m.carveCeiling && m.carveCeiling.enabled === true &&
+        typeof m.carveCeiling.maxY === 'number') {
+      carveCeiling = m.carveCeiling as CarveCeiling;
+    }
   } catch (err: any) {
     logger.warn(`[geofence] could not load mining config, geofence disabled: ${err?.message ?? err}`);
   }
-  cached = { protectedZones, mineSite, routeToMineBlocks, minDigY };
+  cached = { protectedZones, mineSite, routeToMineBlocks, minDigY, carveCeiling };
   return cached;
 }
 
@@ -100,6 +133,35 @@ export function isBelowDigFloor(x: number, y: number, z: number): boolean {
     if (dx * dx + dz * dz <= r * r) return false; // sanctioned deep mine
   }
   return true;
+}
+
+/**
+ * True if editing (x,y,z) would breach the excavation ceiling (OQ-4).
+ *
+ * Applies to ANY block edit — dig and place alike — because the constraint is
+ * "leave the buffer solid", which a stray placement violates as surely as a
+ * stray dig. Exempt columns are the sanctioned breaches: for Raven Rock that is
+ * the RR-Z5 vertical shaft at x[193,207], z[-22,-8].
+ *
+ * IMPORTANT: the exempt box must carry the RELOCATED shaft footprint. Several
+ * documents still show the pre-OQ-1 x[113,127], z[53,67]; wiring those would
+ * whitelist empty rock and refuse the real shaft.
+ *
+ * Fails open — carveCeiling absent or `enabled: false` means no ceiling.
+ */
+export function isAboveCarveCeiling(x: number, y: number, z: number): boolean {
+  const { carveCeiling } = load();
+  if (!carveCeiling) return false;
+  if (y <= carveCeiling.maxY) return false;
+  for (const e of carveCeiling.exempt ?? []) {
+    if (x >= e.minX && x <= e.maxX && z >= e.minZ && z <= e.maxZ) return false;
+  }
+  return true;
+}
+
+/** The active carve ceiling, or null when disabled. */
+export function getCarveCeiling(): CarveCeiling | null {
+  return load().carveCeiling;
 }
 
 /** The configured dig-depth floor, or null when unset. */

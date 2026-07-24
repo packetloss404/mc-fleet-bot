@@ -534,12 +534,19 @@ export class CommandCenter {
     }
 
     switch (type) {
+      // These sent `setMode {pause:true}` — but botWorker's setMode case reads
+      // `cmdData.mode`, not `cmdData.pause`, so the ternary fell through to
+      // PRIMITIVE and "pause" silently DOWNGRADED the bot's mode instead of
+      // pausing it (and "resume" did the same). Confirmed live: pausing three
+      // bots flipped all three from codegen to primitive. The correct
+      // pauseVoyager/resumeVoyager worker commands already existed and were
+      // simply unreachable over HTTP.
       case 'pause_voyager':
-        worker.sendCommand('setMode', { pause: true });
+        worker.sendCommand('pauseVoyager', { reason: params.reason || 'operator' });
         return { paused: true };
 
       case 'resume_voyager':
-        worker.sendCommand('setMode', { pause: false });
+        worker.sendCommand('resumeVoyager', {});
         return { resumed: true };
 
       case 'stop_movement':
