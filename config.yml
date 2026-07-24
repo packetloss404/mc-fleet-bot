@@ -250,6 +250,37 @@ mining:
         maxX: 207
         minZ: -22
         maxZ: -8
+      # The four portal-approach corridors (OQ-6). Added 2026-07-24 with
+      # sign-off, after the portal survey showed OQ-4 and OQ-6 could not both
+      # hold as written: every portal floor is at y18, but the surveyed surface
+      # above the mouths runs y62-y79, so there is no natural rock face and
+      # making one means cutting down through y41.
+      #
+      # This EXTENDS the exemption rather than weakening the rule. The buffer
+      # OQ-4 defends sits under MainStreet America; all four mouths are at the
+      # +-285/-290 envelope edge, 150+ blocks clear of it, so these carve-outs
+      # protect nothing less. Boxes match the reserved no-build corridors in
+      # MSA's site-plan.md Z08-R exactly.
+      - name: n3-south-portal-approach     # relocated per OQ-8 to x=-150
+        minX: -165
+        maxX: -135
+        minZ: 270
+        maxZ: 300
+      - name: n4-north-portal-approach
+        minX: -15
+        maxX: 15
+        minZ: -300
+        maxZ: -270
+      - name: n5-east-portal-approach
+        minX: 270
+        maxX: 300
+        minZ: -45
+        maxZ: -15
+      - name: n6-west-portal-approach
+        minX: -300
+        maxX: -275
+        minZ: -10
+        maxZ: 20
   # Communal mine site: bots walk here before mining any routed block type, then
   # dig down/out AT the site instead of wherever they happen to be standing.
   # Unset since the repoint — the old site (1720,64,194) is ~1730 blocks from
