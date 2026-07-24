@@ -119,3 +119,33 @@ enforced mechanically rather than by care. No assertion fired. The MSA buffer at
 Buildings RR-B1…RR-B4 and their spring-pedestal arrays, corridors C1/C2, spur S1,
 rotunda N10, the RR-Z5 shaft, and reservoirs N7 (which will need the **line-then-
 flood** rule applied deliberately, per OQ-5).
+
+---
+
+## 2026-07-24 — buildings, rotunda, corridors, shaft
+
+**RR-B1** Command & Operations (−30,−8,−15) 40×34×3 · **RR-B2** Signal & Comms
+(38,−8,−15) 32×30×3 · **RR-B3** Quarters/Dining/Medical (0,−6,100) 36×30×3 ·
+**RR-B4** Power & Ventilation (−150,−14,−10) 40×28×2.
+
+All four are **freestanding on visible N8 spring pedestals** — iron-block columns
+with a genuine air gap beneath the underside slab, per REF-005. Multi-storey
+shells with floor slabs, stairwell voids, glazing and lighting.
+
+> RR-B4's air-gap probe first read FAIL. It was a **check artifact** — the probe
+> point `(−150,−16,−10)` landed exactly on a pedestal column. Re-probed between
+> columns at three offsets: air gap present at all three.
+
+**N10 rotunda** floored at (0,−12,0), r12. **C1** rotunda→Cavern B, **C2** Cavern
+A→Cavern C, **S1** Cavern A→shaft base — all carved with the treads-last,
+replace-scoped ordering the tunnel pass established.
+
+**RR-Z5 shaft** `x[193,207] z[−22,−8]`, bored **y−12 → y64** with iron-bar
+landings every 5 blocks. This is the **sole sanctioned breach of the y41 ceiling**,
+and the fill helper's assertion was written to permit it *only* inside that
+column — bore verified open at y30 and y60.
+
+### Remaining
+
+Reservoirs **N7** (`x−170…−130, z−34…−26`, sump y−18) — must use **line-then-flood**
+per OQ-5; interior fit-out of RR-B1…B4; lighting standard per OQ-3.

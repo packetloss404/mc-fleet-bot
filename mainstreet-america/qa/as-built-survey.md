@@ -379,3 +379,35 @@ and the full as-built doc repoint.
 detailing, per-home styling to the verified roster (each home is currently a
 generic two-storey fit-out rather than Greek Revival / Coastal / Tuscan etc.),
 and interior furnishing of the Guest Center's five zones.
+
+---
+
+# ADDENDUM 8 — 2026-07-24 · per-home styling (DEF resolved: generic fit-out)
+
+All 12 homes were previously an identical cobble/oak fit-out, which contradicted
+the **VERIFIED** 12-home roster of distinct named styles. Each shell has now been
+re-skinned to its own palette — wall, roof and accent — with the street-facing
+door and window openings re-cut afterwards (the re-skin necessarily covers them).
+
+| Lot | West | Style | East | Style |
+|---|---|---|---|---|
+| +55 | Alexandria | Greek Revival (quartz) | Villa Lago | Tuscan (sandstone/terracotta) |
+| +5 | Cape Pointe | Coastal (white/light-blue) | Calais | French provincial (calcite) |
+| −45 | Ashby Manor | Tudor manor (brick/dark oak) | Casa Lana | Stucco Mediterranean |
+| −95 | Centennial | Colonial (white/deepslate) | Cross Creek | Ranch (brown terracotta) |
+| −145 | Timbergrove | Craftsman timber (spruce) | Midtown | Modern (grey/black) |
+| −195 | Wakefield | Farmhouse (white/grey) | Valencia | Spanish revival (orange terracotta) |
+
+**12/12 verified.** Interiors laid in ADDENDUM 4 were left intact — only the
+shell perimeter, roof deck and corner quoins were re-skinned.
+
+> Confidence: the *roster* (names, styles, sqft) is VERIFIED; the **block
+> palettes chosen to represent each style are `[CREATIVE]`** — no source
+> documents facade materials (REF-019). Note MSA OQ-4 already downgraded the
+> Tuscan `style_confidence` to creative approximation, so Villa Lago's treatment
+> is explicitly invented rather than sourced.
+>
+> Still generic: **massing**. Every home remains the same footprint and storey
+> count regardless of its verified square footage — Alexandria (6,011 SF, largest)
+> and Cape Pointe (1,815 SF, smallest) are still the same size in-world. Styling
+> is done; **scaling is not**.
