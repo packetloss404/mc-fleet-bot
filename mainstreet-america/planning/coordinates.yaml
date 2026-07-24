@@ -169,7 +169,11 @@ buildings:
   - id: B02
     name: Retail & Cooking School (Building 2)
     zone: 4
-    location_center: {x: -190, y: 64, z: -90}
+    location_center: {x: -110, y: 64, z: -95}   # BUILT 2026-07-24. Repointed from (-190,-90),
+                                                # which was GRID-scheme spacing around homes at
+                                                # x+/-85. Sited against the as-built street per
+                                                # OQ-3: west of the west home row (x-52) on the
+                                                # z-95 lot line. Footprint x[-133,-88] z[-118,-73].
     footprint: {x_size: 46, z_size: 46}
     verified_sqft: 8342
     stories: 1

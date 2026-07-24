@@ -159,3 +159,46 @@ Still to propagate into `planning/coordinates.yaml`, `planning/buildings.yaml`,
 `planning/site-plan.md` and the three `integration/*` files: the west/east row
 centres (**−34 / +32**, not ±85 GRID or ±116 OVAL) and the Guest Center centroid
 and size (**(0,128), 145×76**). That mechanical propagation is **not yet done**.
+
+---
+
+# ADDENDUM 3 — 2026-07-24 · surface-work build pass
+
+Three items from the "not yet built" list are now built and probe-verified.
+
+| Item | As-built | Verified |
+|---|---|---|
+| **Parking field (Z02)** | `x[-125,+125] z[+172,+268]`, paved y64 | 8/8 probes |
+| **B03 Service Warehouse** | `x[-24,+23] z[-278,-232]`, 48×47, 8 tall | 4/4 probes |
+| **B02 Retail & Cooking School** | `x[-133,-88] z[-118,-73]`, 46×46, 6 tall | 4/4 probes |
+
+## Plan conflict found and resolved — parking vs Guest Center
+
+`site-plan.md` Z02 specifies the parking box as `Z ∈ [+120, +235]`. The as-built
+Guest Center occupies `z[+90, +165]`. **Those overlap by 45 blocks.**
+
+The Z02 box was written against the GRID assumption that the Center sat at
+**z75**; it was actually built at **z128**. Rather than pave over the Center, the
+field was built **south of it**: `x[-125,+125] z[+172,+268]` = 251 × 97 =
+**24,347 block² ≈ 97,400 ft²**, against the VERIFIED **~100,000 ft²** (REF-012) —
+a ~2.6% shortfall, well inside the tolerance of a block-grid reconstruction.
+
+Includes three double-loaded aisle centrelines (z +196 / +224 / +252), the x=0
+entrance drive carried through the field, and a stone-brick kerb.
+
+> **Honest limit:** the paved area and aisle structure exist; individual bays are
+> **not striped to 236**. The VERIFIED figure that is satisfied is the *area*
+> (~100,000 ft²), not the *count*. Do not claim 236 spaces from this build.
+
+## B02 repointed as well as built
+
+`coordinates.yaml` had B02 at `(-190, 64, -90)` — GRID-scheme spacing that assumed
+homes on outer flanks at x±85. Per **OQ-3** (separate 8,342 SF structure, sited
+against as-built street geometry) it was built at **(-110, 64, -95)**: west of
+the west home row (which ends at x−52), on the z−95 lot line.
+
+## Still not built
+
+Interiors, landscaping/planting, the drop-off loop, the LED monument billboard,
+porte-cochère, cul-de-sac terminus treatment, detention pond — and all of
+Raven Rock beyond Cavern A.

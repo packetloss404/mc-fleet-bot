@@ -96,6 +96,14 @@ Ordering runs front→back (south +Z → north −Z), matching the real function
 
 ### Z02 — Arrival & Parking Field
 - **Box:** X ∈ [−170, +170], Z ∈ [+120, +235].
+  > ⚠️ **SUPERSEDED BY AS-BUILT, 2026-07-24.** This box **overlaps the Guest Center**, which was
+  > built at **z[+90, +165]** — 45 blocks of collision. The box was written against the GRID
+  > assumption that the Center sat at z75; it does not. The parking field was therefore built
+  > **south of the Center** at **x[−125, +125], z[+172, +268]** — 251 × 97 = **24,347 block²
+  > ≈ 97,400 ft²**, against the **VERIFIED ~100,000 ft²** (REF-012). Three double-loaded aisle
+  > centrelines at z +196 / +224 / +252, the x=0 entrance drive carried through the field, and a
+  > stone-brick kerb line. Space *striping* to 236 bays is not yet laid — the paved area and aisle
+  > structure are, so the verified area figure is satisfied and the count is not yet demonstrable.
 - **Contains:** the large **concrete parking field** flanking the central drive; the **visitor
   drop-off loop** at its north end against the guest-center forecourt.
 - **Program:** **~100,000 ft² of concrete / 236 spaces [VERIFIED]** (REF-012). 100,000 ft² ÷ 4 ≈
