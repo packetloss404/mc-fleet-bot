@@ -326,3 +326,56 @@ from the site side, and a blackstone-slab cap. 8/8 probes.
 ## MSA — still not built
 
 Porte-cochère, cul-de-sac terminus treatment, detention pond.
+
+---
+
+# ADDENDUM 7 — 2026-07-24 · final three items · MSA SURFACE BUILD COMPLETE
+
+## Porte-cochère — built at the NORTH door, confirming the orientation quirk
+
+Probed both elevations for a doorway before siting it. **North face `z=90` has a
+9-wide opening at `x[-4,+4]`; the south face `z=165` is solid** — no door at all.
+So the milestone-1 note that "the guest-center door is on the z90 (north) face"
+is **confirmed by measurement**, not just recollection.
+
+That inverts the planned arrival sequence, but the as-built one is coherent:
+**parking (south) → Center → door (north) → showcase street**. Guests enter from
+the street side. The porte-cochère was therefore built over the **north** door —
+putting it on the planned south face would have canopied a blank wall.
+
+`x[-11,+11] z[78,89]`: smooth-stone drop-off apron, four blackstone columns,
+canopy deck at y71 with a slab cap, soffit lanterns.
+
+## Cul-de-sac terminus
+
+Street surface confirmed present to `z-240`. Turning circle at **`(0, 64, -235)`,
+r14** — smooth-stone carriageway with a grassed central island (r8) and three
+planted trees. Honours the **VERIFIED** dead-end street character (REF-015).
+
+## Detention pond — lined before flooded
+
+`(190, 64, -250)`, **r22**. Basin cut to 4 deep at centre, 2 at the margin.
+
+Applied the **OQ-5 line-then-flood** discipline learned the hard way in Raven
+Rock's Cavern A: a **clay liner** was placed as a shell around and beneath the
+wetted volume **first**, and only then was water introduced. Bank planting on
+eight compass points.
+
+**Verified: zero water blocks outside the liner.** No seepage.
+
+---
+
+# MSA SURFACE BUILD — COMPLETE
+
+Everything on the "not yet built" list is now built and probe-verified: parking
+field, warehouse, cooking school, 12 home interiors, Guest Center ground floor
+**and** upper storey (DEF-007), drop-off loop, landscaping, LED billboard,
+porte-cochère, cul-de-sac terminus, detention pond — plus the street un-burying
+and the full as-built doc repoint.
+
+**Open defects: none.** DEF-003 and DEF-007 both resolved.
+
+**Remaining MSA work is refinement, not construction:** signage text, facade
+detailing, per-home styling to the verified roster (each home is currently a
+generic two-storey fit-out rather than Greek Revival / Coastal / Tuscan etc.),
+and interior furnishing of the Guest Center's five zones.
