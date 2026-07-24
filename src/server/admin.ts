@@ -13,7 +13,12 @@ import { logger } from '../util/logger';
 export type AdminShutdownHook = () => Promise<void> | void;
 
 export interface RegisterAdminOptions {
-  /** Path to the log file to tail. Defaults to /tmp/dyobot.log per CLAUDE.md. */
+  /**
+   * Path to the log file to tail. Defaults to the path the mc-fleet-bot
+   * systemd unit writes to. The previous default (/tmp/dyobot.log) was a
+   * legacy name that never existed on this host, so the SSE stream below
+   * silently emitted nothing — no caller passes this option.
+   */
   logPath?: string;
   /** Called before process.exit on graceful restart. */
   onRestart?: AdminShutdownHook;
@@ -23,7 +28,7 @@ export interface RegisterAdminOptions {
  * Register operational/admin API routes:
  *   GET  /api/admin/logs/stream   (SSE log tail)
  *   GET  /api/admin/backup        (tar.gz of data + skills + config)
- *   POST /api/admin/restart       (flush + process.exit, supervisor respawns)
+ *   POST /api/admin/restart       (flush + process.exit(0) — see caveat below)
  *   POST /api/admin/heap-snapshot (v8.writeHeapSnapshot)
  *   GET  /api/admin/info          (uptime, memory, bot count)
  *
@@ -34,7 +39,7 @@ export function registerAdminRoutes(
   app: Application,
   options: RegisterAdminOptions = {},
 ): void {
-  const logPath = options.logPath ?? '/tmp/dyobot.log';
+  const logPath = options.logPath ?? process.env.MC_FLEET_LOG_PATH ?? '/var/log/mc-fleet-bot.log';
 
   // ── GET /api/admin/logs/stream — SSE log tail ────────────────────────────
   app.get('/api/admin/logs/stream', (req: Request, res: Response) => {
@@ -225,6 +230,11 @@ export function registerAdminRoutes(
   });
 
   // ── POST /api/admin/restart — flush stores, then process.exit(0) ─────────
+  // CAVEAT: this only restarts under a supervisor that respawns on a CLEAN
+  // exit. The mc-fleet-bot systemd unit uses Restart=on-failure, which ignores
+  // exit 0 — so on this host the endpoint is a graceful STOP and the fleet
+  // stays down until someone runs `systemctl start`. Either switch the unit to
+  // Restart=always or exit non-zero here before calling this a restart.
   app.post('/api/admin/restart', async (_req: Request, res: Response) => {
     logger.warn('Admin restart requested via /api/admin/restart');
     res.status(202).json({ accepted: true, message: 'Server is restarting' });
