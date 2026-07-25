@@ -134,22 +134,44 @@ Two genuine defects the audits **missed**, both found by reading block states:
 - **Architect's and Steward's beds were inverted** — `head` one block *west* of `foot`
   while declaring `facing=east`. Fixed by flipping `facing` rather than moving blocks.
 
-### Blocked — needs a decision that Q5 did not anticipate
+### MSA Q5 — RE-ASKED and resolved, because the premise was false
 
-**H09 Casa Lana has no U-plan.** Q5 approved "roof the U-plan legs, keep the courtyard
-open". Surveying the walls first (as the audit insisted) shows there are **no legs**: at
-y68 the walls are a plain rectangular ring x[18,45] z[−31,−59] with a completely open
-interior. The only thing at roof height is a **1-block perimeter band** of
-`red_terracotta` at y70–71 — a parapet, not a covering. The building is a walled
-rectangle with a floor and no roof at all.
+**H09 Casa Lana has no U-plan and never did.** Q5 originally approved "roof the U-plan
+legs, keep the courtyard open". Surveying the walls first — as the audit insisted —
+showed there are **no legs and no courtyard**. As built, H09 is:
 
-So the ratified answer cannot be executed as written. Roofing "the legs" would mean
-either roofing the whole interior — which destroys the courtyard reading Q5 exists to
-protect — or inventing a leg layout that the world does not have. Both are design
-decisions beyond what was ratified, so nothing was built. **Q5 needs re-asking against
-the real geometry.**
+- one enclosed rectangular room, 28×29 outer / **26×27 interior**, x[18,45] z[−31,−59]
+- a **complete** oak-plank floor at y64 (812/812 cells solid — no void anywhere)
+- **complete** wall courses y65–y70 (110-block ring each), glazing course at y67
+- a **stepped** `red_terracotta` parapet: y70 ring at the outer edge, y71 ring inset 1
+- **furnished and in use** — bed (20–21,65,−57), chest (43,65,−33), lantern (32,67,−57)
+- **no roof at all**
 
-Also noted, not acted on: the perimeter wall has a 2-course gap at y65–66, and the
-plaza's east flooding is the known adjacent-lake problem the audit says draining cannot
-fix (it refills from outside any box) — that needs the dam-or-regrade decision, and is
+The real defect was therefore not "unroofed legs" but a furnished room standing open to
+the sky. Re-asked against the measured geometry; the operator chose **roof the whole
+interior**, consistent with the standing rule.
+
+**Executed:** deck laid at **y70**, `fill 19 70 −32 44 70 −58 red_terracotta replace air`
+— 702 blocks, exactly the predicted 26×27.
+
+Two decisions inside that one command are worth keeping:
+
+- **`replace air` is the safety mechanism.** It can only add, so walls, parapet, glazing
+  and furniture were untouchable by construction. Contrast trap #4, where a `replace`
+  scoped by *material* deleted the southern road because the material was not inventoried.
+  Scoping to `air` has no such failure mode.
+- **The deck belongs at y70, not y71.** Roofing flush with the upper parapet course would
+  have left the whole y70 interior as a sealed void layer under the deck — precisely the
+  stacked-roof pathology just removed from B01 at a cost of 17,637 blocks. Decking at y70
+  instead fills that void, supports the y71 ring (which was floating, carried only by its
+  corner connections), and leaves the parapet standing 1 course proud as a parapet should.
+
+**Verified after:** y70 110 → 812 (deck complete), y71 unchanged at 106, y72 still 0 (no
+overfill), all four furniture blocks intact at their original positions.
+
+### Still open, deliberately not acted on
+
+The plaza's east flooding is the known **adjacent-lake** problem: the audit is explicit
+that draining is futile because it refills from outside any box, and the last person to
+try progressively emptied a natural lake. It needs the dam-or-regrade decision and is
 explicitly *not* a targeted fix.
