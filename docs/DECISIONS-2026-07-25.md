@@ -169,6 +169,78 @@ Two decisions inside that one command are worth keeping:
 **Verified after:** y70 110 → 812 (deck complete), y71 unchanged at 106, y72 still 0 (no
 overfill), all four furniture blocks intact at their original positions.
 
+---
+
+## Execution record — Tier 2, 2026-07-25
+
+**Method note that changed the economics:** trap #7 (unloaded chunks) applies to *RCON
+probes*, not to region-file reads. A generated chunk is on disk whether or not it is
+loaded. So `block_census.mjs` settled every INCONCLUSIVE verdict below **without
+force-loading anything** — no world growth, no generation side-effects.
+
+### MSA Q1 — H11 and H12: pitched roofs CONFIRMED, flat decks restored
+
+Both were surveyed, both confirmed, both fixed. Renders were decisive where block
+counts were ambiguous.
+
+- **H11 The Midtown** — carried a stepped hip roof in `black_concrete`, y85–91,
+  shrinking 4 blocks per course with blackstone stairs at the corners. Its design is the
+  street's *only* hard-modern flat-roof palette. Usefully, **all 246 `black_concrete`
+  blocks in the building were in the cap**, so the cut was provably exactly the roof:
+  246 + 24 stairs removed, matching the census totals exactly. Rebuilt as designed —
+  `smooth_stone_slab` deck (110) with a 2-course `light_gray_concrete` parapet (46/level).
+  Verified y85=156, y86=46, y87=0.
+- **H12 The Valencia** — carried a gable running along x, ridge at z=−195, rings
+  shrinking 1 in z per course from y71 to y78. Removed (682 `red_terracotta` + 28
+  `brick_stairs`), and rebuilt to the adobe-pueblo design: `smooth_sandstone_slab` deck
+  (418), 2-course `mud_bricks` parapet (86/level), and 12 `stripped_spruce_log` **viga
+  ends** projecting from the long walls. Verified y70=98, y71=504, y72=86, y73=0.
+
+### Raven Rock OQ-H — N5/N6 resolved, and N6 is a new defect
+
+Both portals' chunks are generated and readable; the INCONCLUSIVE verdicts are closed.
+
+- **N5 east — CLEAN.** 390 `stone_bricks` of structure, no water.
+- **N6 west — FLOODED. New defect, not previously known.** 939 water blocks in the
+  portal area, **213 of them inside the throat itself**, with water continuous from y6
+  to y18. This is N3's problem again — a portal standing in water. **Not touched:**
+  draining is the operation that progressively emptied a natural lake here, and N3
+  needed a coffer built *first* (line-before-you-hollow, §5). Needs a decision.
+
+### Raven Rock OQ-E — blast doors are genuinely absent, and N1 is flooded too
+
+The audit could only say "not found at probed points" because its probe set was sparse.
+A full census closes it: the only iron in either vestibule is **natural ore**
+(11 `deepslate_iron_ore` + 1 `iron_ore` at N1, 5 `iron_ore` at N2) and there is **zero
+`iron_block`**. The doors were never built. R4 stands in full.
+
+**Also new: N1 is flooded** — 488 water blocks in the chamber core alone (1,583 in the
+wider vestibule area). Same class of defect as N6, same reason for not touching it.
+
+### Raven Rock OQ-D — buffer void determined NATURAL; no backfill
+
+Decision D pre-committed the branches, so the determination resolves it: **natural →
+doc annotation only.** Evidence:
+
+- the air boundary **wanders** per layer (low-side x extent moves −2, −3, −4, −5)
+- air volume **grows monotonically** with height (355 → 478 from y41 to y48), the
+  signature of approaching the surface; a dug void has constant cross-section
+- Cavern A's cap beneath it is intact at 10/10 probes
+
+Action per D: annotate, and correct the build log's "(0,41,0) intact at every stage",
+which is false either way. **No backfill.**
+
+> **A method that looked decisive and was not — recorded so nobody re-runs it.**
+> `cave_air` vs `air` seemed like a perfect natural-vs-artificial test: worldgen carves
+> `cave_air`, excavation leaves plain `air`. The void probed as plain `air`, which reads
+> as a smoking gun for "we dug it". **It is not.** In 1.18+ worldgen most caves are
+> *noise* caves formed during terrain shaping, which are plain `air`; only legacy
+> carvers emit `cave_air`. Plain air underground is therefore completely normal natural
+> terrain. Two of my own control boxes were also invalid — one spanned above-ground
+> atmosphere, the other contained a build. The verdict above rests on **shape**, not on
+> air type. `--include-air` was added to `block_census.mjs` during this and is still
+> worth having; the *inference* is what was wrong, not the tool.
+
 ### Still open, deliberately not acted on
 
 The plaza's east flooding is the known **adjacent-lake** problem: the audit is explicit

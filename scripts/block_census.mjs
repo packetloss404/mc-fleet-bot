@@ -53,6 +53,14 @@ const BOX = (arg('--box', 6) || []).map(Number);
 const LIST = has('--list');
 const STATES = has('--states');
 const ONLY = arg('--material');
+// Count air variants instead of skipping them. The point is `cave_air` vs `air`:
+// worldgen CARVES cave_air, while excavation, /fill and setblock leave plain air.
+// That makes this the cheapest natural-vs-artificial test available for a void, and
+// it settles questions ("is this buffer breach a worldgen cave or did we dig it?")
+// that no amount of probing solid blocks can. RCON cannot answer it at scale because
+// `execute if block` only reaches chunks that are currently LOADED, whereas the
+// region files hold every chunk ever generated.
+const WITH_AIR = has('--include-air');
 if (BOX.length !== 6 || BOX.some(Number.isNaN)) {
   console.error('usage: --regions <dir> --box x1 y1 z1 x2 y2 z2 [--list] [--states] [--material <id>]');
   process.exit(2);
@@ -115,13 +123,13 @@ for (let cz = z1 >> 4; cz <= (z2 >> 4); cz++) {
       const inBox = (x, y, z) => x >= x1 && x <= x2 && y >= y1 && y <= y2 && z >= z1 && z <= z2;
       const record = (x, y, z, name) => {
         if (!inBox(x, y, z)) return;
-        if (AIR.has(name.split('[')[0])) return;
+        if (!WITH_AIR && AIR.has(name.split('[')[0])) return;
         if (ONLY && !name.includes(ONLY)) return;
         tally.set(name, (tally.get(name) || 0) + 1);
         if (LIST) positions.push([x, y, z, name]);
       };
       if (pal.length === 1) {
-        if (AIR.has(pal[0].split('[')[0])) continue;
+        if (!WITH_AIR && AIR.has(pal[0].split("[")[0])) continue;
         for (let y = 0; y < 16; y++) for (let z = 0; z < 16; z++) for (let x = 0; x < 16; x++)
           record(cx * 16 + x, sy + y, cz * 16 + z, pal[0]);
         continue;
