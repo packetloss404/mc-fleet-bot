@@ -24,7 +24,7 @@ import type { TaskType } from '../ai/TaskType';
 import type { StyleDoc } from './StyleDoc';
 import type { Town, Building, Vec3 } from './Town';
 import type { PlanItem } from './PlanItem';
-import { validate } from './DesignValidator';
+import { validate, stripUncontainedFluids } from './DesignValidator';
 import { logger } from '../util/logger';
 
 /** Minimum dimensions per kind — used when the style doc lacks an entry. */
@@ -350,7 +350,7 @@ export class LlmDesigner {
       totalOutputTokens += response.outputTokens ?? 0;
 
       const parsed = parseJsonResponse(response.text);
-      const candidate = coerceBlockPlan(
+      let candidate = coerceBlockPlan(
         parsed,
         plan.kind,
         styleDoc?.seed_style ?? town.styleSeed ?? 'medieval-communal',
@@ -369,7 +369,31 @@ export class LlmDesigner {
       // Force the dimensions field to what we requested — the LLM doesn't get
       // to redraw the bounding box; we asked for a specific footprint.
       candidate.dimensions = dimensions;
-      const result = validate(candidate);
+      let result = validate(candidate);
+
+      // On the FINAL attempt, salvage an otherwise-good design whose only remaining
+      // fault is uncontained fluid, rather than discarding it. Ravensreach's well was
+      // a correct 66-block well spoiled by 5 unboxed water sources; those sources
+      // waterlogged its stair rim and fed ~449 blocks of flow across the town plaza
+      // permanently. A dry well is a far better outcome than either a flooded square
+      // or no well at all — and strictly better than the library fallback, which
+      // once answered "medieval stone well" with a tent.
+      if (!result.ok && attempt >= MAX_VALIDATION_RETRIES) {
+        const { plan: stripped, removed } = stripUncontainedFluids(candidate);
+        if (removed.length > 0) {
+          const after = validate(stripped);
+          if (after.ok) {
+            logger.warn(
+              { townId: town.id, kind: plan.kind, attempt, removed: removed.length,
+                at: removed.slice(0, 5).map((b) => `${b.name}@(${b.x},${b.y},${b.z})`) },
+              'LlmDesigner: stripped uncontained fluid to salvage an otherwise-valid design',
+            );
+            candidate = stripped;
+            result = after;
+          }
+        }
+      }
+
       if (result.ok) {
         return {
           plan: candidate,

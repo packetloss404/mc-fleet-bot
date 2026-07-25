@@ -46,6 +46,56 @@ const STRUCTURAL_TAGS = new Set([
   'glow_lichen',
 ]);
 
+/** Fluids that spread if not fully boxed in. */
+const FLUIDS = new Set(['water', 'lava', 'flowing_water', 'flowing_lava']);
+
+/**
+ * Block shapes that do NOT hold a fluid back.
+ *
+ * This list is the whole point of the containment check, and it is deliberately
+ * aggressive. Stairs, slabs, fences, panes, walls and bars all look like walls to
+ * a designer but they are WATERLOGGABLE: put water against one and it does not get
+ * dammed, the block silently absorbs it and becomes a permanent hidden source.
+ *
+ * That is not hypothetical. Ravensreach's LLM well design placed 5 uncontained
+ * water sources ringed by dark_oak_stairs. The water waterlogged 13 of those stairs
+ * plus 2 stone_brick_slabs, and those 15 blocks then fed ~449 blocks of flow across
+ * the town plaza indefinitely — surviving every drain, because
+ * `execute if block ... minecraft:water` does not match a waterlogged block and
+ * `fill ... air replace water` cannot remove one. Only a FULL solid block contains
+ * a fluid.
+ */
+const NON_CONTAINING_SHAPES = [
+  '_stairs', '_slab', '_fence', '_pane', '_wall', '_bars', '_trapdoor', '_door',
+  '_gate', '_carpet', '_button', '_plate', '_rail', '_sign', '_banner', '_head',
+  '_candle', '_torch', '_sapling', '_pot', 'ladder', 'chain', 'lantern', 'vine',
+  'scaffolding', 'glass_pane', 'iron_bars', 'grass', 'fern', 'flower', 'lily',
+  'snow', 'cobweb', 'air',
+];
+
+function bareName(name: string): string {
+  return name.toLowerCase().replace(/^minecraft:/, '').replace(/\[.*$/, '');
+}
+
+function isFluid(name: string): boolean {
+  return FLUIDS.has(bareName(name));
+}
+
+/** True only for blocks that actually dam a fluid — a full cube. */
+function isFullSolid(name: string): boolean {
+  const n = bareName(name);
+  if (FLUIDS.has(n)) return false;
+  return !NON_CONTAINING_SHAPES.some((s) => n.endsWith(s) || n === s || n.includes(s));
+}
+
+/** True for blocks that will WATERLOG rather than dam, if placed against a fluid. */
+function isWaterloggable(name: string): boolean {
+  const n = bareName(name);
+  if (FLUIDS.has(n)) return false;
+  return ['_stairs', '_slab', '_fence', '_pane', '_wall', '_bars', '_trapdoor', 'ladder', 'chain', 'scaffolding']
+    .some((s) => n.endsWith(s) || n.includes(s));
+}
+
 function blockKey(x: number, y: number, z: number): string {
   return `${x},${y},${z}`;
 }
@@ -144,5 +194,95 @@ export function validate(plan: BlockPlan): ValidationResult {
     }
   }
 
+  // Pass 3: fluid containment. A fluid block must be boxed in by FULL SOLID blocks
+  // on its four horizontal faces and below, or it escapes the footprint the moment
+  // it is pasted — and on flat ground it sheets outward indefinitely.
+  const byKey = new Map<string, BlockPlanEntry>();
+  for (const b of plan.blocks) byKey.set(blockKey(b.x, b.y, b.z), b);
+
+  const uncontained: Array<{ b: BlockPlanEntry; open: string[] }> = [];
+  let waterlogRisk = 0;
+  for (const b of plan.blocks) {
+    if (!isFluid(b.name)) continue;
+    const faces: Array<[string, number, number, number]> = [
+      ['-x', b.x - 1, b.y, b.z], ['+x', b.x + 1, b.y, b.z],
+      ['-z', b.x, b.y, b.z - 1], ['+z', b.x, b.y, b.z + 1],
+      ['below', b.x, b.y - 1, b.z],
+    ];
+    const open: string[] = [];
+    for (const [label, nx, ny, nz] of faces) {
+      // y === -1 is the ground the schematic sits on, which does contain.
+      if (label === 'below' && ny < 0) continue;
+      const nb = byKey.get(blockKey(nx, ny, nz));
+      if (!nb) { open.push(label); continue; }          // nothing there → escapes
+      if (isFluid(nb.name)) continue;                    // fluid body, fine
+      if (isWaterloggable(nb.name)) { waterlogRisk++; open.push(`${label}:waterloggable(${bareName(nb.name)})`); continue; }
+      if (!isFullSolid(nb.name)) open.push(`${label}:non-solid(${bareName(nb.name)})`);
+    }
+    if (open.length) uncontained.push({ b, open });
+  }
+
+  if (uncontained.length > 0) {
+    const sample = uncontained
+      .slice(0, MAX_REPORTED_FLOATERS)
+      .map((u) => `${bareName(u.b.name)}@(${u.b.x},${u.b.y},${u.b.z}) open:[${u.open.join(' ')}]`)
+      .join('; ');
+    const suffix = uncontained.length > MAX_REPORTED_FLOATERS
+      ? ` (+${uncontained.length - MAX_REPORTED_FLOATERS} more)` : '';
+    reasons.push(
+      `${uncontained.length} uncontained fluid block(s) — a fluid needs FULL SOLID blocks on all four sides and below, ` +
+      `and stairs/slabs/fences/panes do NOT count because they waterlog instead of damming: ${sample}${suffix}`,
+    );
+  }
+  if (waterlogRisk > 0) {
+    reasons.push(
+      `${waterlogRisk} fluid face(s) rest against waterloggable blocks; those will absorb the fluid and become ` +
+      `permanent hidden sources that neither a water probe nor "replace water" can find or remove`,
+    );
+  }
+
   return reasons.length === 0 ? { ok: true } : { ok: false, reasons };
+}
+
+/**
+ * Remove fluid blocks that `validate` would reject as uncontained, returning a new
+ * plan plus what was dropped.
+ *
+ * Rejecting a whole design over its water is usually the wrong trade: the LLM's
+ * Ravensreach well was a perfectly good 66-block well whose only defect was 5
+ * unboxed water sources. Stripping them yields a dry but correct well, which beats
+ * both a retry loop and a well that floods the town square.
+ *
+ * Callers that would rather have containment than no water should feed
+ * `validate()`'s reasons back into the designer prompt and only fall back to this.
+ */
+export function stripUncontainedFluids(plan: BlockPlan): { plan: BlockPlan; removed: BlockPlanEntry[] } {
+  if (!plan || !Array.isArray(plan.blocks)) return { plan, removed: [] };
+  const byKey = new Map<string, BlockPlanEntry>();
+  for (const b of plan.blocks) byKey.set(blockKey(b.x, b.y, b.z), b);
+
+  const contained = (b: BlockPlanEntry): boolean => {
+    const faces: Array<[number, number, number, boolean]> = [
+      [b.x - 1, b.y, b.z, false], [b.x + 1, b.y, b.z, false],
+      [b.x, b.y, b.z - 1, false], [b.x, b.y, b.z + 1, false],
+      [b.x, b.y - 1, b.z, true],
+    ];
+    for (const [nx, ny, nz, isBelow] of faces) {
+      if (isBelow && ny < 0) continue;
+      const nb = byKey.get(blockKey(nx, ny, nz));
+      if (!nb) return false;
+      if (isFluid(nb.name)) continue;
+      if (!isFullSolid(nb.name)) return false;
+    }
+    return true;
+  };
+
+  const removed: BlockPlanEntry[] = [];
+  const kept = plan.blocks.filter((b) => {
+    if (!isFluid(b.name)) return true;
+    if (contained(b)) return true;
+    removed.push(b);
+    return false;
+  });
+  return { plan: { ...plan, blocks: kept }, removed };
 }
