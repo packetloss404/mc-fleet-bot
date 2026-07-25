@@ -241,6 +241,81 @@ which is false either way. **No backfill.**
 > air type. `--include-air` was added to `block_census.mjs` during this and is still
 > worth having; the *inference* is what was wrong, not the tool.
 
+---
+
+## Execution record — Tier 3, 2026-07-25
+
+### OQ-I — shaft landings: they already existed; the real defect was access
+
+**The landings were never missing.** They are solid 9×9 `iron_bars` platforms at
+**15 levels** — y−11, −6, −1, 4, 9 … 59, 81 blocks each. The audit reported "0/11 iron
+bars found" because it probed y28, y33, y38, y−7 and y−2, and the actual spacing puts
+every landing at y ≡ 4 (mod 5). **Every one of its probes was off by one.** That is the
+fourth false negative this session produced by probing a guessed coordinate.
+
+Two further corrections: the bore is **9×9** (x[196,204] z[−19,−11]), not the planned
+15×15; and there were **zero ladders anywhere in the shaft**. So the shaft was floored
+solid at every fifth course with no ladder and no hatch — **not traversable in either
+direction**. That, not "missing landings", was the defect.
+
+Executed per the ratified ring-and-drop design: a 3×3 centre drop cut through all 15
+landings, and a continuous ladder. **225 blocks = 15 (ladder column) + 135 (15 drops ×
+9) + 75 ladders.** Verified: 75 continuous ladders, landings now 71 blocks each
+(81 − 9 − 1), centre column 71 air.
+
+The ladder runs on the **east** wall (x=204, backed by x=205). The west wall was the
+obvious choice and is wrong: it has a 6-block gap at y−11…−6, which is the **S1 spur
+mouth** opening into the shaft base. Filling it for ladder backing would have bricked up
+the corridor from Cavern A. x=205 is solid stone 77/77 for the full height.
+
+### OQ-A — N9 head-house built
+
+Measured grade at the mouth is **y63–64**, not the y62 the audit reported — so "natural
+grade" here effectively *is* the MSA y64 plane, satisfying both the no-earthworks intent
+and skyline consistency. Built on the planned RR-Z5 footprint x[193,207] z[−22,−8]
+(15×15), which gives a 3-wide apron round the bore:
+
+- y64 apron `stone_bricks` (144), y65 `polished_blackstone` base course, y66–69
+  `stone_bricks` walls (56/level), y70 roof, `iron_door`, 4 hanging lanterns
+- an `iron_bars` railing round the 9×9 shaft mouth — the shaft is now enclosed and
+  weatherproofed rather than an open hole to the sky
+
+The apron fill used **`replace stone`**, which cannot fill the shaft because the bore is
+air. Verified: foundation solid 144/144 at both y62 and y63 — not undermined.
+
+### OQ-J — Z-ROCK greenstone finish applied to all three caverns + N7
+
+**65,442 blocks.** Scheme, deterministic and per-surface (no WorldEdit random patterns,
+which would need the opped-bot chat path):
+
+| Surface | Material | Reading |
+|---|---|---|
+| Floor | `deepslate` (replace `andesite`) | dark base underfoot |
+| Lower walls | `mossy_cobblestone` | damp green at the base — carries the "green" |
+| Upper walls | `tuff` | grey-green metabasalt body |
+| Cap | `deepslate` (replace `stone`) | dark ceiling, reads as depth |
+
+Cavern A 38,934 · Cavern B 17,192 · Cavern C 9,316. N7 dressed to the Z-RESERVOIR
+palette: 1,097 `clay` → `prismarine_bricks`, solid-for-solid so there is never an
+intermediate gap. Water verified **unchanged at 1,845**.
+
+**Material scoping did the safety work, and it was inventoried first this time.**
+`replace andesite` / `replace stone` automatically spared, without any exclusion list:
+
+- the **spring pedestals** on the cavern floors (441 `polished_andesite`, 265
+  `iron_block`, 60 `stone_bricks` in Cavern A alone)
+- the **N7 reservoir** — note its 369 water columns sit *inside* Cavern C's floor layer
+  and read as "water in the cavern floor". That is the reservoir, not leak residue
+- the **Cavern C aquifer seal**. Three of its ten fills reported *"No blocks were
+  filled"* because the lower walls contain **no stone** — the 5,349-block seal is
+  `deepslate`. The finish therefore declined to re-skin a watertight seal with mossy
+  cobblestone, on its own, because the scope was a material rather than a volume.
+  Deepslate is already in the greenstone palette, so it reads correctly regardless.
+
+This is the inverse of trap #4. There, a material-scoped `replace` destroyed the
+southern road because the material had never been inventoried. Here every surface was
+censused *first*, and the same mechanism became the protection.
+
 ### Still open, deliberately not acted on
 
 The plaza's east flooding is the known **adjacent-lake** problem: the audit is explicit
