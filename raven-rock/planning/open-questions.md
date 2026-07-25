@@ -134,7 +134,7 @@ dig routines.**
 
 ## OQ-5 — Watertight-basin sequencing for the Cavern C reservoirs
 
-Cavern C (RR-Z3) holds the two reservoir basins (N7) at the deepest point of the complex (sump y−18).
+Cavern C (RR-Z3) holds the reservoir (N7) at the deepest point of the complex (sump y−18). **Amended 2026-07-25: a single undivided basin, not two — see docs/DECISIONS-2026-07-25.md.**
 Placing **water** in a blasted-rock basin on stock survival mechanics needs the basin to be **watertight
 and fully lined before flooding**, or water will find gaps, flow across the cavern floor, and flood the
 Power & Ventilation Plant (RR-B4) beside it. This is a **build-sequencing** question, not a geometry one.

@@ -332,7 +332,7 @@ buildings:
 #   * All 4 records: status not_started; 5 completion booleans false.
 #   * Centroids/footprints/floors MATCH coordinates.yaml exactly (single layout; site-plan.md is master):
 #       RR-B1 (-30,-8,-15) 40x34 3fl ; RR-B2 (38,-8,-15) 32x30 3fl ;
-#       RR-B3 (0,-6,100) 44x30 3fl   ; RR-B4 (-150,-14,-10) 40x28 2fl.
+#       RR-B3 (0,-6,100) 36x30 3fl   ; RR-B4 (-150,-14,-10) 40x28 2fl.   <-- RR-B3 AMENDED 2026-07-25 (was 44x30; as-built x[-18,18])
 #   * Non-overlap: RR-B1 x[-50,-10] vs RR-B2 x[22,54] -> 32-block X gap; RR-B3 z[85,115] is 83 south of
 #     the Cavern-A pair (z max +2); RR-B4 x[-170,-130] is 80 west of RR-B1. No two footprints intersect.
 #   * Containment: each building inside its cavern box (RR-Z1/Z2/Z3) and inside envelope x/z[-300,300].

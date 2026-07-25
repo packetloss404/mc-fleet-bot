@@ -171,10 +171,20 @@ building_palettes:
                                                   # but the specific materials are creative approximation
     palette_confidence: creative approximation
     dominant_read: warm cream stucco + terracotta tile — grand two-story "mansion" anchor
-    primary_wall: smooth_sandstone
-    secondary_wall: cut_sandstone
+    # REPOINTED TO AS-BUILT 2026-07-25 (MSA Q2, docs/DECISIONS-2026-07-25.md).
+    # The world was built in white_terracotta / smooth_stone, not the sandstone/brick
+    # planned below. Ratified decision: ACCEPT AS-BUILT and repoint this file, rather
+    # than re-skin a finished 145x76 building. The point is not cosmetic - every audit
+    # measures against this file, so leaving the planned values here manufactures a
+    # fresh "palette defect" on every future pass. The planned values are retained
+    # under `planned_*` as design intent, not as a target.
+    primary_wall: white_terracotta      # AS-BUILT
+    secondary_wall: smooth_stone        # AS-BUILT
+    planned_primary_wall: smooth_sandstone
+    planned_secondary_wall: cut_sandstone
     trim: smooth_quartz            # limestone quoins, cornices, string courses
-    roof: brick_stairs             # deep-red clay barrel tile (distinct from H07/H09 tile hues)
+    roof: smooth_stone             # AS-BUILT: flat deck at y76 (the y78 stacked roof was removed 2026-07-25)
+    planned_roof: brick_stairs     # deep-red clay barrel tile (distinct from H07/H09 tile hues)
     foundation: stone_bricks
     window_treatment: light_gray_stained_glass_pane framed with dark_oak_trapdoor shutters
     door: dark_oak_door            # grand double-leaf entry, south face (coordinates.yaml N03)
@@ -212,7 +222,12 @@ building_palettes:
     primary_wall: white_concrete
     secondary_wall: smooth_quartz
     trim: quartz_block                     # entablature, cornice, corner pilasters
-    roof: polished_deepslate_stairs        # grey slate, low pitch
+    roof: smooth_quartz                    # AS-BUILT: quartz, ridge y87-88. REPOINTED 2026-07-25 (MSA Q2)
+    planned_roof: polished_deepslate_stairs  # grey slate, low pitch
+    # MSA Q3 ratified: KEEP the tall roof. The quartz ridge sits 7 courses over the wall
+    # top - off-formula, but it reads well for the flagship and it is intact and correct.
+    # A separate light_gray_concrete shell (in nobody's palette) once hung around it, the
+    # remains of the pre-scaling generic footprint; that was removed 2026-07-25.
     foundation: smooth_stone
     window_treatment: white_stained_glass_pane, tall, framed; dark_oak_trapdoor louvered shutters
     door: dark_oak_door with quartz surround + glass sidelights
@@ -357,10 +372,28 @@ building_palettes:
     style_confidence: verified
     palette_confidence: creative approximation
     dominant_read: white stucco, wrought iron, red barrel-tile, one-story courtyard home w/ casita
+    # AS-BUILT 2026-07-25 — THE COURTYARD TYPOLOGY WAS NEVER BUILT. Read this before
+    # planning anything against the "Spanish Courtyard" description above.
+    # The world has ONE ENCLOSED RECTANGULAR ROOM: 28x29 outer / 26x27 interior at
+    # x[18,45] z[-31,-59], with a complete oak_plank floor at y64 (812/812 cells solid -
+    # no void anywhere), complete wall courses y65-y70, a glazing course at y67, and a
+    # STEPPED red_terracotta parapet (y70 ring at the outer edge, y71 ring inset one).
+    # There are no legs, no partitions, no courtyard and no detached casita.
+    # It was also FURNISHED AND IN USE while standing open to the sky - bed at
+    # (20-21,65,-57), chest at (43,65,-33), lantern at (32,67,-57).
+    # MSA Q5 was originally answered as "roof the U-plan legs, keep the courtyard open",
+    # against a building that does not exist; it was RE-ASKED against the measured
+    # geometry and answered "roof the whole interior". Deck laid at y70,
+    # `fill 19 70 -32 44 70 -58 red_terracotta replace air` = 702 blocks.
+    # y70, not flush at y71: roofing flush would have sealed the whole y70 interior as a
+    # void layer under the deck - the exact stacked-roof pathology just removed from B01
+    # at a cost of 17,637 blocks. Decking at y70 also SUPPORTS the y71 ring, which was
+    # floating (carried only by its corner connections).
     primary_wall: white_terracotta          # white stucco
     secondary_wall: smooth_sandstone
     trim: cut_sandstone
-    roof: granite_stairs                     # red-pink clay barrel tile (distinct hue from B01/H07)
+    roof: red_terracotta                    # AS-BUILT flat deck at y70 + stepped parapet y70/y71
+    planned_roof: granite_stairs            # red-pink clay barrel tile (distinct hue from B01/H07)
     foundation: cut_sandstone
     window_treatment: glass_pane behind iron_bars (reja / wrought-iron grilles), brown frame
     door: dark_oak_door with an iron_bars courtyard gate
@@ -397,6 +430,14 @@ building_palettes:
     secondary_wall: black_concrete          # contrasting charcoal accent volume
     trim: smooth_quartz
     roof: smooth_stone_slab                 # FLAT parapet roof (the only flat-roofed home besides H12)
+    # RESTORED 2026-07-25 (MSA Q1, docs/DECISIONS-2026-07-25.md). Commit 79193d9's
+    # "All 12 given pitched roofs" DID hit this home, which is a flat-roof design: it
+    # had acquired a stepped hip cap in black_concrete y85-91, shrinking 4 blocks per
+    # course. Removed (246 black_concrete + 24 polished_blackstone_stairs - and all 246
+    # black_concrete in the whole building were in that cap, so the cut was provably
+    # exactly the roof). Rebuilt as designed: smooth_stone_slab deck at y85 with a
+    # 2-course light_gray_concrete parapet at y85-86. Verified y85=156, y86=46, y87=0.
+    as_built_roof: {deck_y: 85, parapet_y: [85, 86], parapet: light_gray_concrete}
     foundation: polished_blackstone
     window_treatment: tinted_glass / gray_stained_glass_pane floor-to-ceiling curtain wall
     door: iron_door                         # clean modern flush door
@@ -411,10 +452,24 @@ building_palettes:
     style_confidence: verified
     palette_confidence: creative approximation
     dominant_read: earthy adobe (mud-brick) pueblo — flat parapet roof, projecting vigas, one story
-    primary_wall: mud_bricks                 # adobe — the defining Southwestern material
-    secondary_wall: smooth_sandstone
-    trim: stripped_spruce_log                # protruding vigas (roof beams)
-    roof: smooth_sandstone_slab              # flat adobe parapet roof
+    primary_wall: red_terracotta             # AS-BUILT (walls y65-70); planned mud_bricks below
+    planned_primary_wall: mud_bricks         # adobe — the defining Southwestern material
+    secondary_wall: orange_terracotta        # AS-BUILT
+    planned_secondary_wall: smooth_sandstone
+    trim: stripped_spruce_log                # protruding vigas (roof beams) — BUILT 2026-07-25, 12 ends
+    roof: smooth_sandstone_slab              # flat adobe parapet roof — RESTORED 2026-07-25
+    # RESTORED 2026-07-25 (MSA Q1). Like H11 this is a FLAT-roof design that had been
+    # given a pitch: a gable running along x with its ridge at z=-195, rings shrinking
+    # 1 in z per course from y71 to y78. On a "1 story" home that roof was most of the
+    # visible mass, which no block count made obvious — the render is what settled it.
+    # Removed (682 red_terracotta + 28 brick_stairs) and rebuilt to the design:
+    # smooth_sandstone_slab deck at y71 (418), 2-course mud_bricks parapet (86/level),
+    # and 12 stripped_spruce_log viga ends projecting from the long walls.
+    # Verified y70=98, y71=504, y72=86, y73=0.
+    # Walls were left as-built per Q2 (accept as-built, do not re-skin); only the roof
+    # form was a ratified change, so the deck and parapet use the DESIGN materials while
+    # the walls keep theirs.
+    as_built_roof: {deck_y: 71, parapet_y: [71, 72], parapet: mud_bricks, vigas_y: 70}
     foundation: cut_sandstone
     window_treatment: small deep-set glass_pane openings, orange_terracotta reveals, spruce_trapdoor shutters
     door: spruce_door under a sandstone arch

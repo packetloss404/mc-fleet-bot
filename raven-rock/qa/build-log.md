@@ -225,9 +225,24 @@ column. No assertion ever fired.
 > world, and the second one is the more important.**
 >
 > 1. `(0,41,0)` is **AIR**, not intact — found independently by five separate
->    audit agents whose routine control probes all landed on it. It reads as
->    `minecraft:air` rather than `cave_air`, i.e. command-placed. Cavern A's y40
+>    audit agents whose routine control probes all landed on it. ~~It reads as
+>    `minecraft:air` rather than `cave_air`, i.e. command-placed.~~ Cavern A's y40
 >    cap beneath it *is* continuous (10/10), so nothing escaped the cavern.
+>
+>    > **The struck clause is wrong, and the reasoning behind it does not work on
+>    > this world (determined 2026-07-25, OQ-D).** `cave_air` vs `air` looks like a
+>    > perfect natural-vs-artificial test — worldgen carves `cave_air`, excavation
+>    > leaves plain `air` — and the void does read as plain `air`, which is why it
+>    > was taken as proof we dug it. But in 1.18+ worldgen **most caves are *noise*
+>    > caves formed during terrain shaping, and those are plain `air`**; only legacy
+>    > carvers emit `cave_air`. Plain air underground is therefore ordinary natural
+>    > terrain and proves nothing.
+>    >
+>    > **The void is NATURAL**, determined on *shape* instead: its boundary wanders
+>    > per layer (low-side x moves −2, −3, −4, −5) and its air volume grows
+>    > monotonically with height (355 → 478 across y41–y48), which is the signature
+>    > of approaching the surface. An excavated void has a constant cross-section.
+>    > Per OQ-D's pre-committed branches: **doc annotation only, no backfill.**
 > 2. The buffer was **breached at two portals**: open construction pits of roughly
 >    15×13×44 at N3 (x[−157,−143] z[286,299]) and N4 (x[−7,7] z[−298,−286]),
 >    floors at the portal level and **open to sky** — about 8,500 blocks of void
