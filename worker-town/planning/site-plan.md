@@ -339,3 +339,40 @@ write.
 Per-resident interior styling by role (a blacksmith's forge, a farmer's store),
 walls or gates, and any second-tier civic buildings the brain may plan as the
 town grows past the founding tier.
+
+---
+
+## 10. Site grading — 2026-07-25
+
+Reported in-world as "the town hall and the builds don't look complete."
+
+**Confirmed, and it was the ground, not the buildings.** A surface sweep found
+the town site ranging **y62 → y82 — a 20-block spread.** Only the hall's 41×41
+plaza had ever been levelled (§4); each cottage got its own small cut-and-fill
+pad (§9), but the land *between* them was raw generated terrain. Buildings on
+disconnected pads amid lumpy ground read as a half-finished site.
+
+Two apparent structural faults were **probe errors, not defects**:
+
+- *"cottage Architect: 18/28 wall gaps"* — the probe box was 1 block outside the
+  cottage in z, so it sampled open air along two whole edges. Walls are complete.
+- *"hall roof MISSING"* — the probe point sits in the hollow beneath the gable.
+  The ridge verifies fine at y80.
+
+### Grading applied
+
+1. **Hollows filled** to y67 across `x[-132,-38] z[-425,-333]`, `replace`-scoped
+   to air and water so no built block could be touched.
+2. **High ground cut** to y67 — but only in tiles clear of every building
+   footprint, since a blanket cut would have decapitated the structures. First
+   pass used 10-block tiles with padded exclusions (63 graded, 37 skipped);
+   a second pass used **5-block tiles against exact footprints** to recover the
+   ground immediately around each building (243 tiles).
+
+**Result: surface spread 20 → 4 blocks**, 78/90 sampled columns exactly on y67.
+Hall floor, hall ridge, cottage floor, plaza and storehouse all verified intact.
+
+> This is the same lesson as MSA's grading, applied in the safer order: fill with
+> `replace`-scoping (which cannot damage a build), but **cut only where you have
+> proven there is no build**. The exclusion list is the safety mechanism — not
+> the scoping.
