@@ -228,6 +228,25 @@ write into production `data/`.
 9. **A structure the TownBrain cannot see is one it will build itself.** Every
    hand-built structure must get a `complete` row in `town.db` `buildings`, or
    the brain plans a duplicate. This already happened once with the Town Hall.
+10. **`scripts/mc_admin.py` cannot write files on the MC server, and does not say
+    so.** The SSH user is **`ianwalmsley` (uid 1000), not root** — it is in the
+    `sudo` group but the tool never escalates. Everything under
+    `/opt/packetcraft/paper-server` is root-owned, so every file write fails with
+    `Permission denied`. RCON is unaffected (it authenticates separately), which is
+    why this went unnoticed: the *runtime* half of each command works and only the
+    *persistence* half silently dies.
+    Concretely, `set-difficulty` runs `cp -n … 2>/dev/null; sed -i …` and then reads
+    only **stdout**, so the permission error on stderr is discarded and it prints
+    `server.properties persisted:` with an empty value — indistinguishable from
+    success. Proof it has never worked: no `server.properties.bak.mcadmin` exists on
+    the server despite the command having been run. **Consequence: any difficulty set
+    through this tool reverts on the next server restart.** `server.properties` still
+    reads `difficulty=peaceful`.
+    This is trap #7 all over again — a tool collapsing "I could not do it" into a
+    result that reads as done. Fix requires deciding whether `mc_admin.py` should
+    escalate (`sudo -S` fed from `MC_SERVER_SSH_PASS`) or should refuse loudly; until
+    then, treat every file-writing action in that tool as a no-op and verify by
+    reading the file back.
 
 ---
 
@@ -299,19 +318,28 @@ main thread ~1 GB  +  (bots × 0.8 GB)  +  ~2 GB OS/dashboard/headroom
 | | Now | Recommend | Why |
 |---|---|---|---|
 | **vCPU** | 2 | **4** | Paper is largely single-threaded, but chunk gen and I/O benefit |
-| **RAM** | 15 GB | **leave at 15 GB** — but raise the **heap** | The box is fine; the JVM is throttled |
+| **RAM** | 15 GB | **leave at 15 GB** — heap already raised | The box is fine; the JVM is no longer throttled |
 | **Disk** | 175 GB | **leave as is** | World is 66 MB of 159 GB free |
 
-**Do not add RAM here — the box has 13 GB free and Java is capped at `-Xmx2G`.**
-Adding RAM changes nothing while that flag stands. Instead edit the start script:
+**~~Do not add RAM here — Java is capped at `-Xmx2G`.~~ ALREADY DONE — verified
+2026-07-25.** The heap is `-Xms4G -Xmx6G` and has been since the process started
+(Jul 25 01:31). It is set in the **systemd unit**, not the start script:
 
 ```
--Xms4G -Xmx6G        (from -Xms1G -Xmx2G)
+# /etc/systemd/system/packetcraft-paper.service
+ExecStart=/usr/bin/java -Xms4G -Xmx6G -jar paper.jar --nogui
 ```
 
-That is the single highest-value change on this host. 2 GB is tight for a
-1.21.11 Paper server once you have three builds, force-loaded chunk work and
-several players; 6 GB gives real headroom and still leaves ~9 GB for the OS.
+The unit is `packetcraft-paper.service` (`Restart=always`, `SuccessExitStatus=0 143`,
+`TimeoutStopSec=180`) — note this is **unlike the bot host's units**, so a clean exit
+here *does* respawn. Measured after the change: java RSS 4.6 GB, box 4 of 15 GB used,
+10 GB available, load 0.13/0.32/0.34. There is nothing left to do on this line.
+
+> ⚠️ **`start.sh` still reads `-Xms1G -Xmx2G` and is a live footgun.** It is dormant —
+> systemd does not use it — but anyone who runs it by hand during debugging gets a
+> 2 GB server, and anyone who reads it to answer "what heap are we running?" gets the
+> wrong answer. That is exactly how §7 of this file came to claim the change was
+> outstanding when it had already shipped. Fixing it needs root (see below).
 
 ### Disk — no action on either host
 
@@ -321,8 +349,8 @@ that *was* growing without bound — a 152 MB unrotated bot log — now rotates.
 
 ### Order of work
 
-1. **Raise the MC server heap to `-Xmx6G`** — free, one line, biggest single win
-2. **Bot host 2 → 8 vCPU** — fixes the actual bottleneck
+1. ~~**Raise the MC server heap to `-Xmx6G`**~~ **DONE** — was already live; see above
+2. **Bot host 2 → 8 vCPU** — fixes the actual bottleneck, now the top item
 3. **Bot host 7 → 16 GB RAM** — only needed *before* raising bot count
 4. **MC server 2 → 4 vCPU** — nice to have
 5. **Disk** — nothing
