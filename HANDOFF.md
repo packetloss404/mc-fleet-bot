@@ -96,6 +96,13 @@ write into production `data/`.
 
 ## 3. Open items
 
+> **All 26 audit open questions were ratified on 2026-07-25 — see
+> `docs/DECISIONS-2026-07-25.md`.** The three `qa/audit-2026-07-25.md` reports each end
+> with a list of questions "a human must answer first"; every one now has an answer, so
+> nothing below is blocked on a decision. That file also carries the execution order and
+> the standing rule that came out of it: **where the world and the plan disagree and the
+> world is sound, amend the plan.** Demolition now needs a reason beyond non-compliance.
+
 ### Required
 - ~~**DS-01 disclosure signs at all four portals.**~~ **DONE 2026-07-25.** Six
   waxed `oak_sign`s placed and verified (text read back from block data): N4
