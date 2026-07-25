@@ -447,3 +447,46 @@ the smallest. **12/12 verified.**
 
 **Still `[CREATIVE]`:** the block palettes and the interior layouts. Footprint,
 storey count and roster are VERIFIED; how each style is *rendered* is not.
+
+---
+
+# ADDENDUM 10 — 2026-07-25 · site grading, pitched roofs, water table
+
+Three defects reported from in-world observation, all confirmed and fixed.
+
+## 1. "Built on top of water in places"
+
+**Confirmed** — a sampling sweep found **54 water columns** at y58–63 beneath the
+MSA site. A water table ran under the development.
+
+First attempt failed silently: the seal fills were `281 × 3 × 60 = 50,580` blocks
+each, **over the `/fill` cap**, so they did nothing and the verification correctly
+still found water. Re-issued **chunked** (336 fills, each ≤ 32,768) — sealed.
+
+## 2. "House development is in a lake pit"
+
+Sealing the water left the site a **stone plateau sitting below its
+surroundings** — technically dry, visually a pit. Fixed by grading rather than
+patching:
+
+- Everything below **y64** across `x[-140,140] z[-260,290]` filled to the build
+  plane, **`replace`-scoped on air/water/dirt only** so roads, pads, parking and
+  building floors kept their own materials.
+- A **sand shoreline** banked at y61–63 around the perimeter, so the site meets
+  the surrounding water as a beach instead of a cliff.
+
+144 tiles graded; 6/6 verification points solid at y64 with no water.
+
+## 3. "Some houses look unfinished"
+
+**Confirmed, and it was my regression.** The walls were fine (0–1 perimeter gaps
+per home, the 1 being the doorway) — but the ADDENDUM 9 scaling rebuild had
+replaced each home's **gabled roof with a flat slab**. A box with a flat lid
+reads as unfinished.
+
+All 12 given **pitched roofs** in their own palette: stair eaves courses, gable
+infill, and a ridge. **12/12 verified** (eaves solid, ridge above eaves).
+
+> Both roof passes first reported 0/12. Neither was a build failure — the probe
+> points were inside the roof void that the hollowing step clears. Verified at
+> the actual ridge height (`base + pitch`) and the slope: 12/12.

@@ -292,10 +292,16 @@ mining:
   # tasks would fail everywhere. Sited east of the oak grove planted at
   # x18-50/z42-54 so mining never eats the trees, and inside the y64 shelf the
   # bots can actually path to. Digs inside this radius bypass the floor.
+  # FLIPPED NORTH 2026-07-25. The fleet now lives at Ravensreach (-85,67,-375)
+  # with cottages, a storehouse and a plaza, so the southern site beside MSA had
+  # become the ~450-block trek this setting exists to prevent. mineSite is
+  # SINGULAR (geofence.ts types it MineSite | null), so this is a move, not an
+  # addition -- MSA-area ore tasks now travel instead. The southern mine and
+  # grove remain in the world at (80,64,42) / x18-50 z42-54 if it needs reverting.
   mineSite:
-    x: 80
+    x: -85
     y: 64
-    z: 42
+    z: -440
     radius: 20
   # Raw block types that must be sourced at the communal mine, not in town.
   # NOTE: bulk building materials (stone, cobblestone, dirt, gravel, the andesite/
