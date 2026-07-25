@@ -65,11 +65,18 @@ When prose polish and a confidence tag seem to disagree, trust the tag.
   - **All five bots ARE opped at permission level 4**, verified placing blocks. `/setblock` and
     `/fill` work; the build channel in practice is chunked `/fill` driven over **RCON** (SSH →
     the remote's localhost RCON), max 16,384 volume per fill.
-  - Still true: "Protected envelope" is currently a **planning boundary**, not an enforced region —
-    the WorldGuard region files and the map marker set are **staged, not applied**. Applying them is
-    the post-build step in Raven Rock **OQ-2** (de-op the builders, *then* apply WorldGuard).
-  - So this plan **may** assume op and `//` commands, but **may not yet** assume active region
-    protection or map markers.
+  - **UPDATED 2026-07-25 — partly applied.** WorldGuard region **`mainstreet_america`** now exists at
+    **x[-70,70] y[62,319] z[-235,200]**, priority 10, with **`mob-spawning: deny`** set (OQ-3's second
+    half). That is the *developed band*, deliberately narrower than `integration/worldguard.yaml`'s
+    staged full ±300 / y−64→320 envelope; the subsurface column beneath it is covered by `raven_rock`
+    (y ≤ 61). See `../../raven-rock/qa/oq3-worldguard.md`.
+  - Still true for BUILD protection: `build`/`block-break`/`block-place` deny are **NOT** set, so the
+    envelope is still a planning boundary for grief purposes. Setting them now would accomplish nothing —
+    op bypasses WorldGuard `build:deny`. Applying them is the post-build step in Raven Rock **OQ-2**
+    (de-op the builders **first**, *then* apply the build flags). The map marker set remains
+    staged-and-inactive (no Dynmap/BlueMap).
+  - So this plan **may** assume op, `//` commands, and mob-spawn suppression, but **may not yet** assume
+    active build protection or map markers.
 
 ---
 
@@ -389,5 +396,8 @@ authoritative. Top = NORTH = −Z (rear). Bottom = SOUTH = +Z (entrance).
   rotation is consistent with everyone else's read of "rear corner."
 - **Building footprint centroids for the builders:** Guest Center ≈ (0, +88); Cooking School ≈
   (−112, −7); Warehouse ≈ (−96, −206). These are the numbers other agents should collide-check.
-- **Service condition.** No WorldGuard/Dynmap/Citizens/op — all "protection" and NPC assumptions are
-  staged, inactive. Any downstream plan relying on them is out of scope until integration is active.
+- **Service condition** *(corrected 2026-07-25).* WorldEdit 7.4.0 + WorldGuard 7.0.16 **are** installed and
+  the bots **are** opped; only Dynmap/BlueMap and Citizens are absent. Region `mainstreet_america` is live
+  with `mob-spawning: deny`; **build/grief protection and NPC assumptions remain staged and inactive**
+  (build flags wait on the OQ-2 de-op — op bypasses them). Any downstream plan relying on build protection
+  or NPCs is still out of scope.

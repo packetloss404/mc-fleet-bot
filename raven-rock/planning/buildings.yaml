@@ -33,8 +33,12 @@
 #   A5. DEPTH IS A CONVENTION (~20 blocks), not the real ~650 ft (REF-008 / manifest build-scale note).
 #       Building Y here is authoritative and never enters MSA's y62->y79 band (see coordinates.yaml
 #       vertical_stacking).
-#   A6. NO-OP SITE CONDITION. Stock Paper: no WorldEdit/WorldGuard/Dynmap/Citizens; bots not opped.
-#       Plain world coordinates only; no //commands, region protection, or NPCs assumed.
+#   A6. SITE CONDITION — CORRECTED 2026-07-25 (the old "NO-OP / no plugins" text was false).
+#       WorldEdit 7.4.0 + WorldGuard 7.0.16 ARE installed; the bots ARE opped (level 4). Absent:
+#       Dynmap/BlueMap, EssentialsX, Citizens. Geometry here is still expressed as plain world
+#       coordinates and needs nothing more than block placement. Region protection is now PARTLY
+#       active: `mob-spawning: deny` on raven_rock / raven_rock_shaft (see qa/oq3-worldguard.md);
+#       build/grief flags are NOT set and would be inert anyway while the bots hold op (OQ-2).
 # ---------------------------------------------------------------------------------------------------
 
 schema_version: "reconstructed-1.0"

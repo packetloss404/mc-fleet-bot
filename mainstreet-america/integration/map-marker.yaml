@@ -2,9 +2,10 @@
 # MainStreet America — MAP MARKER DEFINITION  (integration/map-marker.yaml)
 # =====================================================================================================
 # REQUIRED PLUGIN: Dynmap (Markers component / dynmap-marker API).
-# STATUS: STAGED, NOT ACTIVE. The target server is stock Paper. Dynmap is NOT installed (nor are
-#   WorldGuard / Citizens / the mc-fleet-bot relay), and the builder bots are NOT opped. No web map or
-#   marker exists today. Apply only once Dynmap is installed — either by an importer that walks this
+# STATUS: STAGED, NOT ACTIVE — Dynmap/BlueMap is genuinely absent, as are Citizens and the mc-fleet-bot
+#   relay, so no web map or marker exists today. CORRECTED 2026-07-25: the side-claims were FALSE —
+#   **WorldGuard 7.0.16 and WorldEdit 7.4.0 ARE installed** and the **builder bots ARE opped (level 4)**;
+#   overworld name confirmed `world`. Apply only once Dynmap is installed — either by an importer that walks this
 #   file and calls the Marker API, or by hand via /dmarker addset & /dmarker add commands. This is NOT
 #   Dynmap's native markers.yml on-disk format (that file is machine-managed); it is a portable staging
 #   definition to recreate from.

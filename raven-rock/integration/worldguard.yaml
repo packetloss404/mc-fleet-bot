@@ -3,7 +3,19 @@
 # =====================================================================================================
 # REQUIRED PLUGIN: WorldGuard (with WorldEdit, its hard dependency).
 #
-# STATUS: STAGED, NOT ACTIVE. The current server reality, stated accurately:
+# STATUS (rewritten 2026-07-25): **PARTLY APPLIED.** Live on the server right now, in world `world`:
+#
+#     region  raven_rock         x[-300,300] y[-64,61] z[-300,300]   priority 11   mob-spawning: deny
+#     region  raven_rock_shaft   x[193,207]  y[-12,64] z[-22,-8]     priority 20   mob-spawning: deny
+#
+#   Bounds are EXACTLY as defined below — the y61 cap and the shaft sub-region were adopted unchanged.
+#   ONLY `mob-spawning: deny` is set (OQ-3's second half). Every other flag below — build, block-break,
+#   block-place, the explosion/fire family, greeting/farewell — is STILL UNSET **deliberately**: the bots
+#   hold op, op bypasses WorldGuard build protection, so setting them now would protect nothing while
+#   making the site look guarded. They are the OQ-2 step and go on AFTER the de-op.
+#   The overworld name is confirmed `world` (resolves RR-WG02). See qa/oq3-worldguard.md.
+#
+# ORIGINAL STATUS NOTE (retained; its "WorldGuard is STILL ABSENT" claim is FALSE as of 2026-07-25):
 #   * The builder bots ARE now opped (level 4, confirmed in the server ops.json) — the earlier
 #     "bots are NOT opped" caveat in the planning/ files is OUTDATED. This matters here: opped players
 #     BYPASS WorldGuard build protection by default, so 'build: deny' will NOT lock out the opped
@@ -152,9 +164,9 @@ assumptions:
   - id: RR-WG02
     topic: World name + region file path
     detail: >-
-      These entries must live in plugins/WorldGuard/worlds/<world>/regions.yml. The overworld name is
-      unconfirmed ('world' placeholder used across integration/). Confirm before apply.
-    severity: medium
+      RESOLVED 2026-07-25. The overworld IS named 'world'; both regions now live in
+      plugins/WorldGuard/worlds/world/regions.yml on the Paper host at 10.80.13.14.
+    severity: resolved
   - id: RR-WG03
     topic: Opped bots bypass protection; empty owners/members
     detail: >-

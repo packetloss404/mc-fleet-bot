@@ -54,6 +54,24 @@ export interface Config {
     ambientChatMinSec: number;
     ambientChatMaxSec: number;
     conversationRadius: number;
+    /**
+     * Upper bound on A* search cost, in blocks, passed to
+     * `bot.pathfinder.searchRadius`. mineflayer-pathfinder defaults this to -1,
+     * which disables the pruning branch entirely (`astar.js:51` sets
+     * `maxCost = -1`, and `astar.js:95` only prunes when `maxCost > 0`). With
+     * `canDig = true` the search space is then the full unbounded 3-D volume, and
+     * because `monitorMovement()` resumes the SAME AStar context every tick while
+     * the result stays 'partial', its closed/open sets grow without eviction for as
+     * long as the goal is unreachable. That is the worker OOM: 80 kills, 62 at a
+     * 512 MB cap and 18 at 768 MB, 79 of them mid-execution and 65 on stone mining
+     * — goals the mining geofence makes permanently unreachable.
+     *
+     * The value is a DETOUR allowance, not a distance limit: maxCost becomes
+     * `startNode.h + searchRadius`, so long legitimate paths still succeed while an
+     * impossible goal terminates as 'noPath' instead of eating the heap.
+     * Optional; defaults to 96 when absent.
+     */
+    pathfinderSearchRadius?: number;
   };
   affinity: {
     default: number;
@@ -350,6 +368,7 @@ const SECTION_SPECS: Record<string, { required: boolean; fields: FieldSpec[] }> 
       { key: 'ambientChatMinSec', type: 'number' },
       { key: 'ambientChatMaxSec', type: 'number' },
       { key: 'conversationRadius', type: 'number' },
+      { key: 'pathfinderSearchRadius', type: 'number', optional: true },
     ],
   },
   affinity: {

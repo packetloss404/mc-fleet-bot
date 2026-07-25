@@ -93,12 +93,16 @@ defect.** When prose polish and a confidence tag disagree, **trust the tag.**
    deliberately used a single spatial owner precisely to avoid the GRID/OVAL coordinate fork that bit
    MSA.** §3 verifies whether that discipline actually held. (It did — see §3.)
 
-3. **NO-OP STOCK PAPER governs *how* we inspect and *what can be built*.** Target server is stock Paper:
-   **no WorldEdit, no WorldGuard, no Dynmap, no Citizens; builder bots are NOT opped.** That removes
-   `//count`, `//size`, Dynmap renders, schematic-diff, region queries, and NPC pathing from the toolkit.
-   "Protected envelope" is a *planning boundary*, not an enforced region. All geometry must be placeable by
-   an un-opped mineflayer bot via plain block placement. "Verify in-world" always means one of the §4
-   methods, never a WorldEdit selection.
+3. ~~**NO-OP STOCK PAPER governs *how* we inspect and *what can be built*.**~~ **CORRECTED 2026-07-25 —
+   this premise was FALSE.** `plugins` over RCON reports **PacketCraft, WorldEdit 7.4.0, WorldGuard
+   7.0.16**, and the builder bots **ARE opped (level 4)**. So `//count`/`//size` and WorldGuard region
+   queries ARE available in principle — with one measured caveat: **WorldGuard's `/rg info` and `/rg list`
+   render asynchronously and their output is silently DROPPED for an RCON sender** (empty reply, nothing in
+   `latest.log`), whereas `/rg flag` and `/rg setpriority` reply synchronously and do come back. Genuinely
+   absent: **Dynmap/BlueMap, EssentialsX, Citizens** — so Dynmap renders and NPC pathing stay off the
+   toolkit. "Protected envelope" is now *partly* enforced (`mob-spawning: deny`; see `qa/oq3-worldguard.md`)
+   but **not** build-protected. The QA methods in §4 remain deliberately op-free and stay valid; keeping all
+   geometry placeable by plain block placement remains a design virtue.
 
 4. **Tolerances are mine and [CREATIVE].** Since every dimension is itself a creative approximation, there
    is no "true" figure to hit — tolerances here check *fidelity to the build's own plan*, not to history.
@@ -203,9 +207,13 @@ and enclosure matter more; no daylight silhouettes) but the methods are the same
 - **[M7] Manual tape-measure** — two F3 readings to count blocks along an axis (wall heights, tunnel
   section ~6×7, aisle widths) where a scan is overkill.
 
-Explicitly **unavailable** (do not write steps that assume them): WorldEdit `//count`/`//size`, Dynmap
-tiles, schematic-diff, WorldGuard region queries, Citizens NPC pathing. They return only if the staged
-integrations are later activated.
+Explicitly **unavailable** *(revised 2026-07-25)*: **Dynmap/BlueMap tiles** and **Citizens NPC pathing**
+(those plugins really are absent), and **WorldGuard `/rg info` / `/rg list` read-back over RCON** — those
+two commands render async and their output never reaches an RCON sender, so region state must be verified
+from `plugins/WorldGuard/worlds/world/regions.yml` after an explicit `rg save`. Now **available** (the old
+"no plugins" claim was false): WorldEdit `//count` / `//size` and `//` selections, driven through an opped
+bot via `POST /api/bots/<name>/say`; WorldGuard `/rg flag` and `/rg setpriority`, which do reply over RCON.
+schematic-diff remains unavailable (no tooling, not a plugin gap).
 
 **Result legend for every table:** `☐ pass  ☐ fail  ☐ N/A` — **all currently PENDING (nothing built).**
 Log any future fail as a record in `qa/defects.yaml`.

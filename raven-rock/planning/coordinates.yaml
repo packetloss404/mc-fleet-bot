@@ -37,12 +37,20 @@ meta:
   block_palette: vanilla-compatible only, no resource pack
   master_document: planning/site-plan.md   # authoritative for all centroids/dimensions; this file agrees with it
   site_conditions: >-
-    Target server is stock Paper with NO plugins — no WorldEdit, WorldGuard, Dynmap, or EssentialsX/
-    Citizens (the staged integration files therefore stay dormant). CORRECTION: builder bots ARE now
+    CORRECTED 2026-07-25 — the long-standing "stock Paper, NO plugins" premise was FALSE. `plugins` over
+    RCON reports three: PacketCraft, **WorldEdit 7.4.0** and **WorldGuard 7.0.16**, both installed and
+    responsive. WorldEdit //commands ARE therefore available (driven through an opped bot, since console
+    has no selection), and WorldGuard regions ARE enforceable. Still ABSENT: Dynmap/BlueMap, EssentialsX,
+    Citizens — so `integration/map-marker.yaml` and `integration/warps.yaml` remain genuinely dormant,
+    but `integration/worldguard.yaml` is no longer blocked. CORRECTION: builder bots ARE now
     opped (level 4, per the MSA as-built survey / ops.json) — the earlier "not opped" premise is stale.
-    These are plain world coordinates for bot-driven placement; no //commands or NPCs are assumed.
-    "Protected envelope" is a planning boundary, not an enforced region — and because the bots are opped
-    they would BYPASS any WorldGuard build:deny even if WorldGuard were added. PROTECTION MODEL — DECIDED
+    Plain world coordinates remain the primary placement method for bot-driven building.
+    "Protected envelope" is now a PARTLY enforced region: WorldGuard region `raven_rock`
+    (x[-300,300] y[-64,61] z[-300,300], priority 11) plus `raven_rock_shaft` (x[193,207] y[-12,64]
+    z[-22,-8], priority 20) were created 2026-07-25 with `mob-spawning: deny` set — see
+    `qa/oq3-worldguard.md`. The build/grief flags are deliberately NOT set yet: the bots are opped and
+    op BYPASSES WorldGuard build:deny, so build protection is worthless until the OQ-2 de-op happens.
+    PROTECTION MODEL — DECIDED
     (see planning/open-questions.md OQ-2): builder bots stay opped DURING construction, then are DE-OPPED
     once the build completes, after which WorldGuard build:deny protects the museum normally. The de-op is
     a post-build operational step, NOT yet performed. Same decision applies to MSA (shared museum profile).

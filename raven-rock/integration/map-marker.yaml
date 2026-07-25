@@ -6,9 +6,11 @@
 # STATUS: STAGED, NOT ACTIVE. The current server reality, stated accurately:
 #   * The builder bots ARE now opped (level 4, confirmed in the server ops.json) — any earlier
 #     "bots are NOT opped" caveat in the planning/ files is OUTDATED here.
-#   * BUT Dynmap is STILL ABSENT. The target server is stock Paper 1.21.x with no Dynmap (and no
-#     WorldGuard / WorldEdit / EssentialsX / Citizens / relay plugin). No web map or marker exists today.
-#   * Apply only once Dynmap is installed AND the overworld name is confirmed — either by an importer
+#   * BUT Dynmap is STILL ABSENT — that part is unchanged and this file really is dormant. No web map or
+#     marker exists today. CORRECTED 2026-07-25: the parenthetical "no WorldGuard / WorldEdit" was FALSE —
+#     **WorldEdit 7.4.0 and WorldGuard 7.0.16 ARE installed** (see qa/oq3-worldguard.md). Still absent
+#     alongside Dynmap: EssentialsX, Citizens, and the relay plugin.
+#   * The overworld name IS now confirmed: **`world`**. Apply once Dynmap is installed — either by an importer
 #     that walks this file and calls the Marker API, or by hand via /dmarker addset & /dmarker add. This
 #     is NOT Dynmap's native machine-managed markers.yml; it is a portable staging definition to recreate.
 #

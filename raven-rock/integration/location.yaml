@@ -8,12 +8,14 @@
 #
 # STATUS: STAGED, NOT ACTIVE. Read this carefully — the server reality changed and this header reflects it:
 #   * The builder bots ARE now opped (level 4, confirmed in the server ops.json). Any earlier
-#     "bots are NOT opped" caveat (still present in planning/coordinates.yaml and site-plan.md) is
-#     OUTDATED and does not apply to this integration set.
-#   * BUT the plugins themselves are STILL ABSENT. The target server is stock Paper 1.21.x with NO
-#     mc-fleet-bot relay plugin, and NO WorldGuard / WorldEdit / Dynmap / EssentialsX / Citizens.
+#     "bots are NOT opped" caveat is OUTDATED and does not apply to this integration set. (It was still
+#     present in planning/coordinates.yaml, site-plan.md, palettes.yaml and buildings.yaml A6 —
+#     all corrected 2026-07-25, along with the companion "no plugins" claim.)
+#   * The mc-fleet-bot relay plugin is STILL ABSENT, as are Dynmap/BlueMap, EssentialsX and Citizens.
+#     CORRECTED 2026-07-25: the claim "NO WorldGuard / WorldEdit" was FALSE — **WorldEdit 7.4.0 and
+#     WorldGuard 7.0.16 ARE installed** (see qa/oq3-worldguard.md). That does not make this file live.
 #   * Therefore NOTHING here is live. This record cannot be read by any bot until the relay plugin is
-#     installed AND the overworld name is confirmed. Do not treat it as active.
+#     installed. The overworld name IS now confirmed: **`world`**. Do not treat this file as active.
 #
 # -----------------------------------------------------------------------------------------------------
 # PROVENANCE / HONESTY NOTE  (read before trusting this file)

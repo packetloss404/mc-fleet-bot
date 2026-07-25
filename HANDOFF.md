@@ -1,7 +1,26 @@
 # HANDOFF — mc-fleet-bot
 
-**As of 2026-07-25.** Written to hand this project to the next person (or the
-next session) without re-deriving anything.
+**As of 2026-07-25 (updated late the same day).** Written to hand this project to
+the next person (or the next session) without re-deriving anything.
+
+> ## READ THIS FIRST — corrections to the version of this file you may remember
+>
+> A long working session audited all three builds against the world and found that
+> several confident statements in this handoff were **wrong**. They are corrected
+> in place below, but the pattern matters more than any single item: **this project's
+> documentation has repeatedly been more confident than its evidence.** Verify
+> against the world before acting on any claim here, including these.
+>
+> | Claimed | Actually |
+> |---|---|
+> | Worker OOM: "5 kills at 512 MB, 2 at 768" | **80 kills** (62 at 512, 18 at 768). Root-caused and fixed — see §3 |
+> | "`/fill` probes report FAIL in unloaded areas" (trap #7) | The **server distinguishes** them; *our own tool* was masking it. Fixed |
+> | Raven Rock visuals "need the original generator" | **No generator ever existed.** One now does |
+> | Ravensreach "no well exists" | A 30-block **tent remnant** did, on the Town Hall's apron |
+> | Buffer y41–61 intact, "no assertion ever fired" | **Two 44-block pits** breached it at N3/N4. Now backfilled |
+> | Cavern C "no ingress at all" | **213 water hits** from an active aquifer leak. Now sealed |
+> | Server is "stock Paper, NO plugins" | **WorldEdit 7.4.0 + WorldGuard 7.0.16** are installed and working |
+> | MSA H01/H02 ringed by "floating debris" | Enclosed by **intact leftover buildings** — a different repair entirely |
 
 ---
 
@@ -31,6 +50,18 @@ channel to the remote's localhost RCON. Credentials from `.env`.
 
 **All 20 tracked tasks complete.** Services active, 5 bots online, town running,
 LLM enabled.
+
+> **Read that line sceptically — it was true of the task tracker, not of the world.**
+> A later audit of all three builds found real defects behind it: a stacked roof over
+> the whole Guest Center, two leftover *buildings* enclosing H01/H02, floating
+> schematic debris over Ravensreach, an aquifer leak in Cavern C, two buffer
+> breaches, tunnel plugs, and a well that was a tent. "Complete" meant *the tasks
+> were closed*, not that the builds were verified. See §8 and the `qa/audit-2026-07-25.md`
+> reports in each build directory.
+>
+> Also note the claim above that all three builds were made "by the operator over
+> RCON, not by the bots" is **no longer true**: the TownBrain now designs and builds
+> autonomously, and a bot-built well stands in the Ravensreach plaza.
 
 ### The three builds
 
@@ -66,33 +97,93 @@ write into production `data/`.
 ## 3. Open items
 
 ### Required
-- **DS-01 disclosure signs at all four portals.** Marked REQUIRED in
-  `raven-rock/qa/qa-report.md` (REF-015): Raven Rock's real interior is
-  classified and every coordinate here is invented. The signs are what keep this
-  an openly-labelled interpretation. **Not placed.**
+- ~~**DS-01 disclosure signs at all four portals.**~~ **DONE 2026-07-25.** Six
+  waxed `oak_sign`s placed and verified (text read back from block data): N4
+  (3,19,−286) + (−3,19,−286); N3 (−147,19,286) + (−153,19,286); N5 (286,19,−27);
+  N6 (−291,11,8). Deviation from the design: the spec called for **wall** signs on
+  "the headwall beside each throat", but **there is no headwall** — all four spec
+  support blocks are air and a probe grid around N5 at y20 is air throughout. The
+  portals are open chambers, not mouths cut into rock, so wall signs would have had
+  nothing to attach to. Standing signs on verified-solid floor were used instead.
+  Placing them also resolved N5/N6's **INCONCLUSIVE** audit verdicts — both had
+  never been chunk-loaded; their throats are confirmed open.
 
 ### Build / finish work
 - Furnishing (Raven Rock buildings have floors, partitions and lighting but no
   contents; Guest Center zones are floored and partitioned, unfurnished)
 - Facade detailing beyond palette and massing
 - MSA signage lettering (the billboard has colour bands, not text)
-- Regenerate `raven-rock/visuals/level-plans.svg` and `section.svg` — both still
-  draw portal N3 at its **pre-OQ-8** position. `planning/coordinates.yaml` is
-  authoritative. Needs the original generator, not a hand-edit.
+- ~~Regenerate `raven-rock/visuals/level-plans.svg` and `section.svg`~~ **DONE
+  2026-07-25.** Both now derive from `planning/coordinates.yaml` via
+  `raven-rock/visuals/generate_visuals.py`, and N3 renders at its post-OQ-8
+  position. **The premise of the old note was false: there was never an "original
+  generator."** The SVGs were hand-authored XML with hand-written `aria-label`
+  prose — which is exactly why OQ-8 updated the manifest and the notes and left both
+  drawings wrong for a day. `--check` exits 1 when the outputs are stale, so this
+  can now be caught by CI or a pre-commit hook instead of by eye.
 
 ### Config / ops
-- **OQ-2** — de-op the builder bots, then apply WorldGuard
-- **OQ-3 second half** — WorldGuard `mob-spawning: deny`. The gamerule was set
-  via the opped-bot chat path, but `difficulty=peaceful` is doing the real work
-- **Phantom `well` row** in `town.db` says `complete` but no well exists. Delete
-  it now the LLM is back and the brain can *design* one rather than fall back to
-  a library schematic and site it badly
+- **OQ-2 — DEFERRED by operator decision 2026-07-25. Not an oversight; do not
+  "fix" it without asking.** It would mean de-opping the builder bots and *then*
+  setting the WorldGuard **build** flags — that order matters, because **op bypasses
+  `build: deny`**, so build protection is inert while the bots are opped.
+  It was dropped because de-opping is a one-way door for the current tooling: it
+  removes the bots' ability to build, the opped-bot chat path that is the documented
+  workaround for `gamerule` being broken over RCON (trap #6), and the only way to
+  drive WorldEdit `//` commands (the console has no selection).
+  **Be explicit about the consequence:** the WorldGuard regions from OQ-3 stop *mob
+  spawning only*. There is currently **no build or grief protection on any of the
+  three builds** — anyone or anything opped can modify them freely. That is an
+  accepted risk, not a gap waiting to be closed.
+- ~~**OQ-3 second half**~~ **DONE 2026-07-25.** Four WorldGuard regions with
+  `mob-spawning: deny`, verified by reading the live
+  `plugins/WorldGuard/worlds/world/regions.yml` (region-command output is *not*
+  routed back over RCON, so `rg list` looks empty — check the file):
+  `mainstreet_america` y[62,319], `raven_rock` y[−64,61], `raven_rock_shaft`
+  (priority 20), `ravensreach`. The y-split keeps MSA and Raven Rock from contending
+  over the same column. Before this, `regions.yml` held only `__global__` with zero
+  flags — **neither `integration/worldguard.yaml` had ever been applied.**
+  `difficulty=peaceful` still masks the need, so the flag is untested in anger.
+  Key insight: this did **not** need the OQ-2 de-op, because op bypasses `build`
+  but not `mob-spawning`. See `raven-rock/qa/oq3-worldguard.md`.
+- ~~**Phantom `well` row**~~ **DONE 2026-07-25**, and the note above was wrong: a
+  **30-block red-canvas tent remnant** did exist, on the Town Hall's stone-brick
+  apron, inside the protected plaza box — which is why the demolition pass never
+  touched it. The row claimed `schematic_source=llm`, `'medieval stone well'`; in
+  fact the LLM designer had failed (`"AI is disabled (kill switch)"`) and the brain
+  pasted `medieval-tent.schem`. Remnant removed via 9 per-material masked fills
+  (exactly 30 blocks, Town Hall untouched), row deleted, and rows added for the
+  plaza/path/grove/mine that previously had none — closing the trap-#9 duplicate-build
+  risk. A real well now stands **in the plaza** at (−85,68,−359).
+  **Four separate bugs had to be fixed to get that outcome** — schematic
+  kind-matching, a site-selection refusal that the caller silently overrode, the
+  plaza blocking its own centre, and canvas-vs-content footprints. See §8.
 
 ### Watch
-- **Worker OOM.** 5 kills at 512 MB, 2 at 768 MB. The cap contains the failure
-  but does not explain it: steady state is ~200 MB/worker, so something
-  occasionally balloons 3–4×. Raising the cap widens the margin; it does not fix
-  the leak. Root-cause before scaling bot count.
+- **Worker OOM — ROOT-CAUSED AND FIXED 2026-07-25.** It was never a leak, and it
+  was **80 kills, not 7** (62 at the 512 MB cap, 18 at 768; independently
+  corroborated by 81 `heap out of memory` lines in one log). Cause: an unbounded
+  dig-enabled A* search that could never succeed. `mineflayer-pathfinder` ships
+  `searchRadius = -1`, so `astar.js:51` computes `maxCost = -1` and the pruning
+  test at `astar.js:95` — which only fires when `maxCost > 0` — was disabled
+  entirely; with `canDig = true` the search space is the full 3-D volume; and
+  `index.js:442` re-enters the *same* AStar context every tick while its status
+  stays `'partial'`, and that context's closed/open sets have no eviction. The
+  trigger is the mining geofence: bots are told to mine stone while standing inside
+  the protected zone, so the goal is permanently unreachable. **79 of 80 kills were
+  mid-execution, 65 of them on stone mining.** Raising the cap never helped because
+  the growth is unbounded, not merely large.
+  Fixed by bounding the search (`config.behavior.pathfinderSearchRadius`, default
+  96 — note this is a *detour allowance*, `maxCost = startNode.h + searchRadius`,
+  not a range limit) and by adding the **per-worker heap telemetry that did not
+  exist**: `/api/admin/heap-snapshot` snapshots the *main* thread (~74 MB) and
+  cannot see a worker isolate at all, which is why two cap changes were made blind.
+  `getStatus()` now reports `heap{usedMb,totalMb,limitMb,usedPct}`.
+  Post-fix: 0 kills, heap steady 54–98 MB of 816 (7–12%).
+  **Still open:** the underlying contradiction is untouched — bots are still
+  assigned stone-mining inside a protected zone, so those goals still fail, just
+  cheaply now. That is probably why the town logs `supply:request stone have:0` on
+  repeat.
 - **LLM call volume.** First window with quota *and* the leak fixed, correct
   routing, and a registered town. Healthy is ~280 calls/hr, not ~1,400. Check
   `GET /api/llm/usage`.
@@ -123,6 +214,14 @@ write into production `data/`.
    Workaround: `POST /api/bots/<name>/say {"message":"/gamerule ..."}`.
 7. **`forceload` has a per-command chunk cap.** A 620×620 request silently fails
    and every probe in that area then reports FAIL. Scope force-loads tightly.
+   **CORRECTED 2026-07-25 — this was misdiagnosed, and it was our bug.** The server
+   replies `"That position is not loaded"`, which is *distinct* from `"Test failed"`.
+   `scripts/mc_admin.py` was collapsing both into `no`, so an **unverifiable** point
+   read as a **negative** one. It now reports three states (`MATCH` / `no` /
+   `NOT-LOADED`, plus `ERROR`). Consequence worth absorbing: **any survey taken
+   before this fix, over an area that was not force-loaded, may contain false
+   "missing" findings.** Absence of a block and inability to look are not the same
+   result, and the tool no longer pretends they are.
 8. **The API binds ~200 s after `systemctl restart`** — `index.ts` awaits
    `loadSavedBots()` before `listen()`. A dead port right after a restart is
    expected. Do not re-restart.
@@ -232,3 +331,85 @@ that *was* growing without bound — a 152 MB unrotated bot log — now rotates.
 > (§3, Watch) is unexplained: steady state is ~200 MB but something occasionally
 > balloons past 768 MB. More bots multiply an unresolved leak. Root-cause that
 > first, then scale.
+
+---
+
+## 8. Siting and schematic-selection bugs (fixed 2026-07-25)
+
+Ravensreach's well was built **in a pond three times running**, and each attempt
+exposed a different defect underneath the last. Recording all four, because any one
+of them will silently produce a mis-sited building again.
+
+**1. The schematic matcher scored style adjectives like nouns.**
+`SchematicMatcher` had no bucket for `well`, so a query of `"medieval stone well"`
+matched `medieval-tent.schem` on the shared word **"medieval"** (5 points intent + 3
+style) with zero match on the noun. Any file with "medieval" in its name could win
+any medieval contract. Fixed: buckets for the kinds the seed plans actually request,
+a `DESCRIPTOR_TOKENS` set so adjectives can never carry a match alone, nouns weighted
+6× against descriptors, and a **kind gate** — `TownBrain` passes `PlanItem.kind` and a
+candidate that cannot be identified as that kind is rejected outright. When nothing
+matches, the brain skips and logs `design:no-match` rather than building the wrong
+thing.
+
+**2. A failed schematic parse looked exactly like a measurement.**
+`getSchematicInfo` returns `size: {x:0,y:0,z:0}` when a schematic will not parse, and
+`{x:0,y:0,z:0}` is a **truthy object** — so every `if (!info.size)` guard sails past
+it. Those zeros were written onto town registry rows; `SiteSelector` derives its
+`avoidRects` from those rows; zero-area rects make siting blind. That is the
+documented "a well ended up fully inside the town hall" failure. Fixed with an
+explicit `parseFailed` flag, and `TownBrain` now refuses to build anything whose
+footprint is unmeasurable rather than recording a dimensionless row.
+
+**3. `SiteSelector` was *attracted* to water, not merely careless about it.**
+`isSolidGround()` treats fluid as not-ground, so `topSolidY()` scanned **down through
+a lake** and returned the lake **bed**. A lake bed is the flattest terrain in
+Minecraft, so it *beat* real ground on the flatness test; `originY = minY + 1` put the
+floor one block above the bed; and the ground-layer fluid probe sampled the bed
+(sand/dirt), so `FLUID_PENALTY` frequently never fired for the very case it existed
+to catch. Fixed: fluid is a **hard reject** on two axes (`maxSubmergedCols`,
+`maxFluidBlocks`), with early bail-out so rejected candidates do not exhaust the
+probe budget, and a **capped** fluid penalty so the opt-in for docks and bridges is
+actually usable (uncapped, 100 water blocks × 20 drove any permitted site below the
+`score > 0` gate).
+
+**4. `BuildCoordinator` silently overrode the refusal — the one that actually mattered.**
+On `selectBuildSite → null` it fell back to `nearestAvoidClearOrigin`, a purely
+**geometric** spiral that checks `avoidRects` and nothing else, and failing that to the
+raw origin. Every terrain, water and obstacle judgement was discarded. This is why the
+well kept landing in the pond **while the log correctly read "no acceptable site
+found"**, and how it reached a pond ~57 blocks away — outside the selector's own 24/48
+radius, reachable only by the unbounded geometric spiral. Fixed: the avoid-clear seed
+is **re-validated** with a tight search, and if that fails the build throws so
+`TownBrain`'s per-kind exponential backoff applies. Refusing is the right default —
+a missing building is a visible gap, whereas one in a lake also poisons the registry
+that later siting decisions are derived from.
+
+**Two further siting fixes that fell out of the above:**
+
+- **The plaza blocked its own centre.** `avoidRects` came from *every* registry row,
+  including `plaza:1` (41×41 over the whole town centre) and `mine:1` (at y58,
+  vetoing surface sites directly above it). A village well belongs in the plaza.
+  `TownBrain.NON_BLOCKING_KINDS` now exempts `plaza`/`path`/`road`/`mine`. The grove
+  stays blocking — trees are real obstacles — and structures inside an exempt rect
+  (the Town Hall sits inside the plaza) still block on their own account.
+- **Canvas vs content.** A schematic's declared size is its **canvas**. The
+  LLM-designed well is 66 solid blocks occupying **5×10×3** inside a **19×12×23**
+  canvas — 97% empty air. Siting therefore demanded a flat, dry 19×23 area plus
+  margin (~1,085 columns) for a building covering 15 columns, so nothing in the plaza
+  could ever qualify and only a lake was big and flat enough. `computeContentBounds()`
+  now measures the real extent, site selection uses it, and the paste anchor is
+  shifted by `−offset` so the **structure** lands on the validated ground
+  (`'coords'` mode is exempt — an explicit anchor must be honoured).
+
+### Still open here
+
+- Registry rows still record the **canvas** size, not content, so `avoidRects`
+  over-reserve. Conservative (it prevents stacking) so left alone — but it is why the
+  tent row claimed 21×11×21 for an 11×6×13 structure, and why `plaza:1` over-claims.
+- The well design's **5 water sources have no containment**, so on flat ground they
+  sheet outward; 282 blocks of spill were drained off the plaza. The schematic needs a
+  contained basin or the water removed.
+- **The plaza's east corner is flooded by an adjacent lake.** Draining is futile — it
+  refills from outside any box. Needs a dam or a regrade decision.
+- `SiteSelector` optimises for flatness with **no notion of "central to the town"**.
+  Nothing stops the next building landing on the outskirts.

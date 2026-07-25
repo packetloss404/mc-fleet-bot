@@ -2,11 +2,25 @@
 # MainStreet America — WORLDGUARD REGION DEFINITION  (integration/worldguard.yaml)
 # =====================================================================================================
 # REQUIRED PLUGIN: WorldGuard (with WorldEdit, its hard dependency).
-# STATUS: STAGED, NOT ACTIVE. The target server is stock Paper. WorldGuard (and WorldEdit / Dynmap /
-#   Citizens) is NOT installed, and the builder bots are NOT opped. This region does NOT protect
-#   anything today — the "protected envelope" is a planning boundary only (site-plan.md §1). Apply this
-#   only once WorldGuard is installed. To load: merge into
-#   plugins/WorldGuard/worlds/<world>/regions.yml (or recreate via //commands), then reload.
+#
+# STATUS (rewritten 2026-07-25): **PARTLY APPLIED.** Everything the old status line said was wrong:
+#   WorldEdit 7.4.0 and WorldGuard 7.0.16 ARE installed, and the builder bots ARE opped (level 4).
+#   The overworld is named `world` (resolves WG02). What is LIVE on the server right now:
+#
+#     region  mainstreet_america   x[-70,70] y[62,319] z[-235,200]   priority 10   mob-spawning: deny
+#
+#   Deltas from the definition below, and why:
+#     * BOUNDS NARROWED to MSA's developed band. The ±300 / y−64→320 envelope below would have blanketed
+#       Raven Rock's whole subsurface and MSA's own perimeter under MSA's flags. The subsurface column is
+#       instead owned by `raven-rock/integration/worldguard.yaml`'s `raven_rock` region (y ≤ 61), and the
+#       Ravensreach settlement (x[-140,-30] z[-430,-310]) by a separate `ravensreach` region. Together the
+#       three tile the space with no gap and no overlap.
+#     * y max is 319, NOT 320. 320 is out of range in a 1.21 overworld (build limit is y=319).
+#     * ONLY `mob-spawning: deny` is set — that is OQ-3's second half. Every other flag below, in
+#       particular build / block-break / block-place, is STILL UNSET **on purpose**: opped players bypass
+#       WorldGuard build protection, so applying them now would protect nothing while giving a false
+#       impression that the site is guarded. They are the OQ-2 step and must be applied AFTER the de-op.
+#   See raven-rock/qa/oq3-worldguard.md for the applied commands and the verification output.
 #
 # -----------------------------------------------------------------------------------------------------
 # PROVENANCE / HONESTY NOTE  (read before trusting the flags)
@@ -76,9 +90,11 @@ regions:
       greeting: "&eWelcome to &6MainStreet America&e — a reconstruction of the former Design Tech Homes model-home park, I-45 Spring, TX. &7Layout & sizes are real; the buildings' look is our informed reconstruction."
       farewell: "&7Leaving MainStreet America. Thanks for visiting."
 
-    # No owners/members are pre-seeded: the builder bots are NOT opped and there is no live server admin
-    # UUID to embed here. Fill these in at apply-time (the build crew + admins) so 'build: deny' does not
-    # lock out the very accounts that need to edit the site.
+    # CORRECTED 2026-07-25: the bots ARE opped (level 4) and a live admin UUID DOES exist —
+    # packetloss404 = dac51b37-928d-35f5-b87a-0fcabb26752a. owners/members are still empty on the live
+    # region because seeding them grants nothing while the bots hold op. Seed them as step 2 of the OQ-2
+    # sequence, i.e. BEFORE the de-op and before 'build: deny', or the de-op removes the last edit path
+    # into the finished site. See ../../raven-rock/qa/oq3-worldguard.md §5.
     owners:
       unique-ids: []
       groups: []
@@ -99,19 +115,24 @@ assumptions:
   - id: WG02
     topic: World name + region file path
     detail: >-
-      This entry must live in plugins/WorldGuard/worlds/<world>/regions.yml. The DyoCraft overworld name
-      is unconfirmed ('world' placeholder used elsewhere in integration/). Confirm before apply.
-    severity: medium
+      RESOLVED 2026-07-25. The overworld IS named 'world'; the region file is
+      plugins/WorldGuard/worlds/world/regions.yml on the Paper host, and the region has been created there.
+      Note the target server is the Paper box at 10.80.13.14, not the historical DyoCraft host.
+    severity: resolved
   - id: WG03
     topic: Empty owners/members
     detail: >-
-      'build: deny' with no members will block ALL non-op edits (including the builder bots) once
-      WorldGuard is live. Seed the build crew's + admins' UUIDs into members/owners at apply-time, or
-      leave the region unapplied until the build is finished. The bots are currently un-opped anyway.
+      UPDATED 2026-07-25 — the last sentence was backwards: the bots ARE opped, so 'build: deny' would not
+      restrain them at all today. That is precisely why 'build: deny' has NOT been applied: it would be
+      inert while giving a false impression of protection. Once the OQ-2 de-op happens, 'build: deny' with
+      empty members WILL block all non-op edits including the bots — so seed the build crew's + admins'
+      UUIDs into members/owners BEFORE de-opping.
     severity: medium
   - id: WG04
     topic: Y-bounds
     detail: >-
-      min-y -64 / max-y 320 span the full 1.21 world column so protection is not just at the y=64 build
-      plane. Narrow this if only the surface build needs protecting.
+      SUPERSEDED 2026-07-25. max-y 320 is OUT OF RANGE — a 1.21 overworld spans y -64..319, so 319 is the
+      real ceiling. And the column was narrowed rather than widened: the applied region is y[62,319] over
+      x[-70,70] z[-235,200], with the subsurface below y62 owned by the raven_rock region (y <= 61). The
+      two tile the column with no gap and no overlap.
     severity: low

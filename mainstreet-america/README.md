@@ -85,10 +85,13 @@ against the running Paper server, 2026-07-24) — everything asserted here about
 - **Fleet:** 5 bots online (Mason, Architect, Steward, Scout, Surveyor). **The bots ARE opped** — all
   five at `level: 4` in `ops.json` (build permission confirmed). The earlier "bots are not opped" claim
   in the planning docs is now **FALSE**; treat any doc still asserting it as stale.
-- **Plugins still absent:** no WorldGuard, Dynmap, or EssentialsX on the server. The "protected envelope"
-  remains a planning boundary only, not an enforced region, and the `integration/` files (WorldGuard
-  region, Dynmap markers, EssentialsX warps, bot location record) stay **staged and inactive** until the
-  corresponding plugins exist and a world name is confirmed.
+- **Plugins — CORRECTED 2026-07-25.** The "no WorldGuard" claim was **FALSE**. `plugins` over RCON reports
+  **PacketCraft, WorldEdit 7.4.0, WorldGuard 7.0.16**. Overworld name confirmed as **`world`** (resolves
+  assumption WG02). Still absent: **Dynmap/BlueMap, EssentialsX, Citizens** — so `map-marker.yaml` and
+  `warps.yaml` stay staged. `integration/worldguard.yaml` is now **partly applied**: region
+  `mainstreet_america` = x[-70,70] y[62,319] z[-235,200], priority 10, `mob-spawning: deny`. The envelope
+  is **not** build-protected yet — op bypasses `build: deny`, so those flags wait on the OQ-2 de-op.
+  See [`../raven-rock/qa/oq3-worldguard.md`](../raven-rock/qa/oq3-worldguard.md).
 - **The as-built geometry diverges from BOTH planned schemes** (see [`qa/as-built-survey.md`](qa/as-built-survey.md)
   and the defect register): the homes sit on a **narrow central street** (homes at x ≈ ±20–25), which
   matches **neither** the GRID scheme (homes x=±85) **nor** the OVAL scheme (homes x≈±116). The DoD-4

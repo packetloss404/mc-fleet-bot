@@ -80,6 +80,23 @@ Cavern C carries the deepest floor in the complex (the y−18 sump) and was the 
 most exposed to the aquifer that bit Cavern A. Lining first meant **no ingress at
 all** — the discipline paid for itself.
 
+> **CORRECTION 2026-07-25 — "no ingress at all" was not true.** A later audit found
+> an active aquifer leak in Cavern C: the shell planes held standing water, with a
+> source sheet against the excavation and a falling curtain into the interior. A
+> grid scan of the cavern returned **213 water hits outside the N7 reservoirs**.
+> The 4/5-sample check above was simply too sparse to see it.
+>
+> Repaired 2026-07-25: **5,349 blocks** of water replaced with stone across the
+> shell planes (x=−185, x=−115, z=−35, z=15), plus one column at x=−185/z=0 that
+> refilled after a `replace water` pass and needed an unconditional fill. Re-scanned
+> to **0 water hits**, with all 27 N7 reservoir samples preserved — the N7 basin box
+> x[−170,−130] z[−34,−26] was excluded by geometry, because basin water is `level=0`
+> source and materially identical to the leak a naive drain would have targeted.
+>
+> Two lessons worth carrying: a 5-sample check does not clear a 71×51 cavern, and
+> `replace water` alone did not hold on this world — one column refilled and only an
+> unconditional fill settled it.
+
 ### Tunnels — all four bored, 6×7 profile
 
 `T1` N4→N1→Cavern A · `T2` N3→dogleg→Cavern B west end · `T3` N5→N2→Cavern A east
@@ -113,6 +130,13 @@ Every `fill` in the cavern and tunnel passes ran through a helper that **asserts
 its upper bound is ≤ y41** before issuing, so the ratified strict reading was
 enforced mechanically rather than by care. No assertion fired. The MSA buffer at
 `(0,41,0)` was re-probed and is intact.
+
+> **CORRECTION 2026-07-25 — see the fuller note in "Closing" below.** `(0,41,0)` is
+> AIR, and the buffer was breached at N3 and N4 by open construction pits running
+> the full y41–y61 band. The assertion helper genuinely covered the *cavern and
+> tunnel* passes named here — the breaches came from portal/terrain work that did
+> not route through it. That is the precise gap: the guardrail was real but not
+> universal, and the log's phrasing implied it covered everything.
 
 ### Remaining
 
@@ -176,9 +200,14 @@ spine partition with a doorway, and a **sea-lantern grid on an 8-block pitch** �
 the `lighting_palette` standard OQ-3 ratified for all walkable/occupied volumes.
 4/4 buildings verified on both floor and lighting.
 
-> OQ-3's second half — WorldGuard `mob-spawning: deny` on the region — is **not**
-> applied. It is a plugin/config action, not construction, and belongs with the
-> OQ-2 de-op step. Note `difficulty=peaceful` currently masks the need.
+> **UPDATE 2026-07-25 — OQ-3's second half is now APPLIED.** WorldGuard regions
+> `raven_rock` (x[-300,300] y[-64,61] z[-300,300], priority 11) and
+> `raven_rock_shaft` (x[193,207] y[-12,64] z[-22,-8], priority 20) exist in world
+> `world` with `mob-spawning: deny`. It did NOT have to wait for the OQ-2 de-op —
+> only the *build* flags do, since op bypasses `build: deny` but not
+> `mob-spawning`. `difficulty=peaceful` is still set and still masks the need, so
+> the flag is untested in anger; it is now the durable guard if difficulty rises.
+> See `qa/oq3-worldguard.md`.
 
 ---
 
@@ -192,7 +221,31 @@ RR-B1…B4 on N8 spring pedestals · N7 reservoirs · OQ-3 lighting.
 through an assertion that refused an upper bound above y41 outside the RR-Z5
 column. No assertion ever fired.
 
-**Remaining is finish work, not construction:** OQ-2 de-op + WorldGuard, OQ-3's
-`mob-spawning: deny`, the DS-01 disclosure signs at each portal, and regenerating
+> **CORRECTION 2026-07-25 — the two claims above are both contradicted by the
+> world, and the second one is the more important.**
+>
+> 1. `(0,41,0)` is **AIR**, not intact — found independently by five separate
+>    audit agents whose routine control probes all landed on it. It reads as
+>    `minecraft:air` rather than `cave_air`, i.e. command-placed. Cavern A's y40
+>    cap beneath it *is* continuous (10/10), so nothing escaped the cavern.
+> 2. The buffer was **breached at two portals**: open construction pits of roughly
+>    15×13×44 at N3 (x[−157,−143] z[286,299]) and N4 (x[−7,7] z[−298,−286]),
+>    floors at the portal level and **open to sky** — about 8,500 blocks of void
+>    each, straight through y41–y61. So "no assertion ever fired" cannot be
+>    reconciled with the world: either those pits were cut by a pass that did not
+>    go through the assertion helper (portal/terrain work), or it was bypassed.
+>    **Chase this before trusting the guardrail again** — an assertion everyone
+>    believes in but which does not cover every write path is worse than none.
+>
+> Both pits were backfilled 2026-07-25 (15,350 blocks; stone to y61, then dirt and
+> a grass cap to match local surface), restoring the buffer at both locations and
+> sealing them from the sky. N3 turned out to be a dry shaft standing *inside a
+> lake* with water on three sides, so it is now solid rather than merely drained.
+> Verification: buffer solid 5/5 at each site, sky sealed, portal chambers y18–25
+> preserved, surrounding lake untouched.
+
+**Remaining is finish work, not construction:** OQ-2 de-op + the WorldGuard *build*
+flags (OQ-3's `mob-spawning: deny` is **done** — `qa/oq3-worldguard.md`),
+the DS-01 disclosure signs at each portal, and regenerating
 `visuals/level-plans.svg` + `section.svg`, which still draw N3 at its
 pre-OQ-8 position.

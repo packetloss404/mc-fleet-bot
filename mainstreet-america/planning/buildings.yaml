@@ -48,9 +48,12 @@
 #       material, color, or roof form. Style NAMES are verified; the block choices that render them are
 #       creative_approximation and must be labeled as such to visitors.
 #
-#   A7. NO-OP SITE CONDITION. Target server is stock Paper: no WorldEdit / WorldGuard / Dynmap /
-#       Citizens; bots not opped. All coordinates are plain world coordinates buildable by un-opped
-#       mineflayer bots. No //commands, region protection, or NPCs are assumed.
+#   A7. SITE CONDITION — CORRECTED 2026-07-25 (the old "NO-OP / no plugins" text was false).
+#       WorldEdit 7.4.0 + WorldGuard 7.0.16 ARE installed; all five bots ARE opped (level 4).
+#       Absent: Dynmap/BlueMap, EssentialsX, Citizens. All coordinates remain plain world coordinates
+#       buildable by plain block placement. Region protection is now PARTLY active: region
+#       `mainstreet_america` carries `mob-spawning: deny` (see ../../raven-rock/qa/oq3-worldguard.md);
+#       build/grief flags are NOT set and would be inert while the bots hold op (OQ-2).
 # ---------------------------------------------------------------------------------------------------
 
 schema_version: "reconstructed-1.0"   # see A1: section-20 schema reconstructed from the task field list

@@ -63,6 +63,36 @@ class Rcon:
         self.chan.send(self._pkt(2, 2, s))
         return self._read()[1]
 
+def classify_probe(reply):
+    """Three-state probe result: MATCH / no / NOT-LOADED.
+
+    This used to be two-state (`"MATCH" if "passed" in reply else "no"`), which
+    silently folded the server's "That position is not loaded" reply into "no" —
+    i.e. an UNVERIFIABLE point was reported as a NEGATIVE one. That is the whole
+    mechanism behind the long-standing belief that probes "report FAIL in
+    non-force-loaded areas": the game distinguishes the two cases perfectly well,
+    the tool was discarding the distinction. It cost a documented amount of
+    debugging (see HANDOFF trap #7) and it invalidates any survey that swept an
+    area without force-loading it first — absence of a block and inability to look
+    are not the same finding.
+
+    Returns one of:
+      'MATCH'      - the block matches the queried id
+      'no'         - the position is loaded and does NOT match
+      'NOT-LOADED' - the position could not be read; this is NOT evidence
+    """
+    low = reply.lower()
+    if 'not loaded' in low or 'is not loaded' in low:
+        return 'NOT-LOADED'
+    if 'passed' in low:
+        return 'MATCH'
+    if 'failed' in low:
+        return 'no'
+    # Anything else (unknown block id, malformed selector, permission error) is a
+    # tool/query problem, not a fact about the world — surface it verbatim.
+    return f'ERROR: {reply.strip()}'
+
+
 def main(argv):
     if not argv:
         print(__doc__); return 1
@@ -93,7 +123,7 @@ def main(argv):
             r = Rcon(cli)
             for bid in ids:
                 res = r.cmd(f'execute if block {x} {y} {z} minecraft:{bid}')
-                print(f'{bid}: {"MATCH" if "passed" in res.lower() else "no"}')
+                print(f'{bid}: {classify_probe(res)}')
         else:
             print(f'unknown action: {action}\n{__doc__}'); return 1
     finally:

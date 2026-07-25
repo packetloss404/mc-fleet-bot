@@ -42,9 +42,11 @@ meta:
   minecraft_version: "1.21.x"
   block_palette_rule: vanilla-compatible only, no resource pack
   site_conditions: >-
-    Target server is stock Paper — NO WorldEdit, WorldGuard, Dynmap, Citizens; builder bots are NOT
-    opped. This is a material manifest for bot-driven placement; nothing here assumes region protection,
-    // commands, NPCs, or op. All blocks listed are placeable by an un-opped survival/creative bot.
+    CORRECTED 2026-07-25 — the previous "no plugins / bots NOT opped" text was false. WorldEdit 7.4.0 and
+    WorldGuard 7.0.16 ARE installed; the bots ARE opped (level 4). Dynmap/BlueMap and Citizens are absent.
+    This remains a material manifest for bot-driven placement and nothing in it *depends* on // commands
+    or op. Region protection is partly active: `mainstreet_america` carries `mob-spawning: deny`; build
+    flags are not set (see ../../raven-rock/qa/oq3-worldguard.md).
   facade_confidence_blanket: >-
     creative approximation — REF-019. Style names & sizes verified (REF-017); all materials invented.
   building_set_note: >-

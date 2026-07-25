@@ -2,9 +2,10 @@
 # MainStreet America — WARP DEFINITIONS  (integration/warps.yaml)
 # =====================================================================================================
 # REQUIRED PLUGIN: EssentialsX (the /warp system). Any Essentials-compatible warp plugin will do.
-# STATUS: STAGED, NOT ACTIVE. The target server is stock Paper. EssentialsX is NOT installed (nor are
-#   WorldGuard / Dynmap / Citizens), and the builder bots are NOT opped. No /warp works today. Apply
-#   only once EssentialsX exists.
+# STATUS: STAGED, NOT ACTIVE — EssentialsX is genuinely absent, as are Dynmap/BlueMap and Citizens, so no
+#   /warp works today. CORRECTED 2026-07-25: the side-claims were FALSE — **WorldGuard 7.0.16 and
+#   WorldEdit 7.4.0 ARE installed** and the **builder bots ARE opped (level 4)**; overworld name confirmed
+#   `world`. Apply only once EssentialsX exists.
 #   NOTE ON LAYOUT: EssentialsX stores each warp as its own file at
 #   plugins/Essentials/warps/<name>.yml. This single file is a STAGING bundle of all five warps for
 #   review; split it into per-warp files (keys under 'warps:' -> individual <name>.yml) at apply-time,
