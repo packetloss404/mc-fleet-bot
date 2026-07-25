@@ -316,6 +316,74 @@ This is the inverse of trap #4. There, a material-scoped `replace` destroyed the
 southern road because the material had never been inventoried. Here every surface was
 censused *first*, and the same mechanism became the protection.
 
+---
+
+## The N6 and N1 floods — FIXED 2026-07-25
+
+Both verified dry and holding. A restore point was taken **before any water was
+touched** and is preserved at `data/worldsnap-restore-20260725-flood/` (32 MB, 4
+region files) — the `lake_restore.mjs` precedent is that a dated snapshot from 70
+minutes earlier is what made the last water accident recoverable.
+
+### N6 / T4 west — a bulkhead, not a drain
+
+The mouth opens into a **large natural aquifer**: 7,165+ water blocks west of it and
+continuing past every box measured. Draining that is the plaza-lake mistake at scale,
+so it was never attempted. Instead a **2-block bulkhead** (211 blocks of deepslate) was
+built at x=−278/−277, where T4 is a clean regular bore (y[6,17] z[−2,8]), sealing the
+complex from the flooded mouth cavity. Verified dry, and still dry on a later re-check.
+
+**The tunnel bore east of the bulkhead turned out to be dry all along.** The "1,308
+water blocks in T4" measured earlier were in the surrounding rock, because the drain box
+`y[−20,22] z[−20,14]` was far wider than the tunnel. T4 both descends (y5 → y−18) and
+curves (z+7 → z−13), so a fixed box misses the tunnel at its ends and reaches deep into
+the aquifer in the middle. Draining *that* is why it appeared to refill.
+
+**The fix was to stop locating the tunnel by its water and locate it by its built
+material.** Deriving the bore per-slice from the `stone_bricks` tread gave 96 exact
+slices; running them removed **0 blocks**, which is the proof the bore was already dry.
+
+### N1 / T1 north — genuinely flooded, and the cause was hidden
+
+N1 *was* flooded: 888 blocks inside the bore. The vestibule sits inside a large flooded
+natural cave system, not a tunnel with a single leak. Three things were required, in
+order, and the first two were not sufficient:
+
+1. **A rock jacket, derived per-slice from the tread**, across the whole wet corridor —
+   2,128 blocks, then 1,773 more where the cavity was taller than the jacket.
+2. **A perched aquifer pool at y19–21** (x7–11, z−175…−170) sitting directly on the
+   seal's ceiling and draining down through it — 298 blocks.
+3. **41 waterlogged blocks** — `pointed_dripstone` and `glow_lichen`. These were
+   decisive.
+
+**The tell was that the flood regenerated to the *identical* extent — 523 blocks —
+every single time.** That is the exact signature recorded in commit 4b27ba4: a
+waterlogged block is a permanent hidden source that `execute if block … water` does not
+match and `fill … air replace water` cannot remove. Until they were gone, every seal
+looked like it had failed. `/fill`'s replace filter accepts block states, so
+`fill … air replace minecraft:pointed_dripstone[waterlogged=true]` removes them directly
+— no offline state-reading required this time, only knowing to look.
+
+**Result: 0 blocks refilled after 150 s across all 136 slices.** Both bores confirmed
+dry by census at five separate segments.
+
+### What this cost, and the four things worth keeping
+
+- **Never seal water alone.** The first jacket replaced only `water` and left every
+  **air** pocket in the shell as an open channel, so the aquifer simply refilled through
+  them. Sealing both voids is what makes a shell continuous.
+- **Never seal unfiltered.** `fill … deepslate replace` with no filter was drafted and
+  rejected: the bottom jacket band overlaps the `stone_bricks` tread, so it would have
+  destroyed the built floor to fix a leak. Filtering to air+water seals every void and
+  touches nothing solid.
+- **RCON writes need *loaded* chunks.** The first bulkhead attempt returned `That
+  position is not loaded` and filled nothing. This is trap #7 in its write form, and it
+  is why the tool reporting `NOT-LOADED` distinctly from `no` matters. 72 chunks were
+  force-loaded for the work and **all 72 released afterwards** (172 → 100, the
+  pre-existing set untouched).
+- **Locate structures by built material, not by symptoms.** Water, like absence, is a
+  symptom; `stone_bricks` is the tunnel.
+
 ### Still open, deliberately not acted on
 
 The plaza's east flooding is the known **adjacent-lake** problem: the audit is explicit
