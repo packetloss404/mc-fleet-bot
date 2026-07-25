@@ -85,3 +85,71 @@ back from block data). The remaining eight:
 9. **Doc amendments** — grove count, N7 single basin, RR-B3 dims, palettes, H09 courtyard void, build-log corrections
 
 Items 1–3 are cheap and unblock everything. Item 8 is the long pole.
+
+---
+
+## Execution record — Tier 1, 2026-07-25
+
+Ratification and execution happened in the same session. What actually landed:
+
+**Platform**
+- `town.db` — the four approved writes applied against a **stopped service** so the WAL
+  checkpointed cleanly first (a live `cp` of a WAL-mode DB is not a backup). Backups at
+  `data/town.db.bak-clean-*`. `pragma integrity_check` = ok. All 9 district-assigned
+  buildings now fall inside Old Town's bounds; grove and mine sit outside with no
+  district, which is correct.
+- `config.yml` — `protectedZones` 1 → 8. Mine protected at its **apron only** (y63–70);
+  the shaft interior y58–62 is left diggable, because a mine that cannot be dug is not
+  a mine. Only the hall keeps `shelter: true` — several shelters would scatter the fleet
+  at dusk rather than muster it.
+- LLM routing switched to **Gemini primary, Anthropic fallback** (operator request, to
+  use free credits). Verified serving; Anthropic spend flat at $8.7763 across the switch
+  while total moved, so the delta is all Gemini. The fallback is deliberate — BACKLOG #9
+  is the outage where a single-provider chain 404'd the fleet for hours.
+
+**World (Ravensreach)** — three low columns raised to the y67 plane; storehouse
+`spruce_door` + 3 hanging lanterns; Surveyor cottage bed/chest/crafting table/cartography
+table; role items for the other four cottages (Mason stonecutter + smithing table,
+Architect cartography + lectern, Steward barrel + composter, Scout barrel + cartography).
+
+### Where the world contradicted the audits
+
+Recorded because this project's failure mode is documentation outrunning evidence — and
+that cuts **both ways**. Four audit findings did not survive contact:
+
+| Audit claimed | Actually |
+|---|---|
+| Storehouse: "0 of 4 chests exist", 15 explicit probes failed | **All 4 exist**, evenly spaced at z=−418. Nothing was placed |
+| "0 of 5 crafting tables" | **4 of 5 existed.** Only Surveyor was bare |
+| H09 floating `red_terracotta` debris at y77–78 | **None in the envelope.** Already cleared |
+| Water pocket at (−66,68,−352) | **Dry.** Surface is `grass_block` at y67, on-plane |
+
+The lesson is symmetrical with the original one: an audit that samples can produce false
+**negatives** as easily as a build log produces false positives. Both were fixed the same
+way — read the region files instead of guessing (`scripts/block_census.mjs`).
+
+Two genuine defects the audits **missed**, both found by reading block states:
+- **Mason and Scout had half-beds** — `part=foot` with no `head`. A bed missing its head
+  is non-functional and pops when used. Both completed.
+- **Architect's and Steward's beds were inverted** — `head` one block *west* of `foot`
+  while declaring `facing=east`. Fixed by flipping `facing` rather than moving blocks.
+
+### Blocked — needs a decision that Q5 did not anticipate
+
+**H09 Casa Lana has no U-plan.** Q5 approved "roof the U-plan legs, keep the courtyard
+open". Surveying the walls first (as the audit insisted) shows there are **no legs**: at
+y68 the walls are a plain rectangular ring x[18,45] z[−31,−59] with a completely open
+interior. The only thing at roof height is a **1-block perimeter band** of
+`red_terracotta` at y70–71 — a parapet, not a covering. The building is a walled
+rectangle with a floor and no roof at all.
+
+So the ratified answer cannot be executed as written. Roofing "the legs" would mean
+either roofing the whole interior — which destroys the courtyard reading Q5 exists to
+protect — or inventing a leg layout that the world does not have. Both are design
+decisions beyond what was ratified, so nothing was built. **Q5 needs re-asking against
+the real geometry.**
+
+Also noted, not acted on: the perimeter wall has a 2-course gap at y65–66, and the
+plaza's east flooding is the known adjacent-lake problem the audit says draining cannot
+fix (it refills from outside any box) — that needs the dam-or-regrade decision, and is
+explicitly *not* a targeted fix.
