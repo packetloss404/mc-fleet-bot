@@ -490,3 +490,30 @@ infill, and a ridge. **12/12 verified** (eaves solid, ridge above eaves).
 > Both roof passes first reported 0/12. Neither was a build failure — the probe
 > points were inside the roof void that the hollowing step clears. Verified at
 > the actual ridge height (`base + pitch`) and the slope: 12/12.
+
+## ADDENDUM 10b — road lost to the grading pass, re-laid full length
+
+Reported in-world immediately after the grading. **Confirmed and caused by the
+grading pass** (ADDENDUM 10, item 2).
+
+Probing the centreline showed the carriageway present at z+75→−45 and at the
+cul-de-sac, but **`grass_block` from z−75 to z−195** — the entire middle third of
+the street.
+
+**Cause.** The earlier un-burying only re-laid the carriageway for `z[-50,+80]`;
+beyond that the street kept its *original* surface. The grading pass's
+`grass_block replace minecraft:dirt / minecraft:air` at y64 was scoped to leave
+built materials alone — and it did leave `smooth_stone`, parking concrete and
+building floors intact — but the untouched southern street surface was **not**
+one of those materials, so it was converted to lawn.
+
+> Lesson: a `replace`-scoped surface pass is only as safe as your inventory of
+> what is already built. Anything laid in an *earlier* session, whose material
+> you have not confirmed, is not protected by scoping.
+
+**Fix.** Carriageway re-laid `x[-4,+4]` for the **full** z+80→−240 run, grass
+verges restored at `x[-12,-5]` and `x[+5,+12]`, headroom re-cleared, and the
+entrance drive re-laid on the x=0 spine z+90→+300 (which also completes it to the
+frontage for the first time — it had stopped at z275).
+
+**Verified: carriageway ALL OK across z+75→−235, drive 5/5, verges restored.**
