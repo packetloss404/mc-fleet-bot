@@ -36,14 +36,17 @@ groups:
         materials: [stone_bricks]
         # Arithmetic, because the first version of this threshold was wrong and
         # reported a FAIL against a plaza that is in fact fully paved:
-        #   plaza            41 x 41 = 1681 cells
-        #   less town hall   27 x 14 =  378   (sits inside the plaza)
-        #   less well         5 x  3 =   15
-        #                            = 1288 expected stone_bricks
-        # Measured 1306 -- the hall's own floor contributes some stone_bricks back.
-        # 1250 leaves headroom for the hall footprint growing in the redesign
-        # without turning this into a false alarm.
-        min: 1250
+        #   plaza                 41 x 41 = 1681 cells
+        #   less Moot Hall block  31 x 17 =  527   (polished_andesite, inside the plaza)
+        #   less well              5 x  3 =   15
+        #                                 = 1139 expected stone_bricks
+        # Measured 1105 after the rebuild.
+        #
+        # RE-BASELINED 2026-07-26. This was 1250 against the OLD 25x13 hall and
+        # correctly went red when the larger hall was built -- the baseline diff caught
+        # it as a regression, which is the mechanism working, not failing. The count
+        # falls because the bigger civic building covers more plaza, which is intended.
+        min: 1050
       - name: ground plane holds at y67 (no holes at sampled span)
         type: solid
         box: [-105, 67, -395, -65, 67, -355]
@@ -69,38 +72,75 @@ groups:
   # ---------------------------------------------------------------- town hall
   # Course-by-course, because "the walls are gone but the interior remains" is exactly
   # the failure the operator reported, and only a per-layer count catches it.
-  - name: Town hall
+  # REWRITTEN 2026-07-26 for the MOOT HALL. The previous assertions described the old
+  # 25x13 single-storey hall, which was demolished and replaced. A spec that keeps
+  # describing a demolished building is worse than no spec: it fails forever and
+  # trains the reader to ignore red.
+  - name: Moot Hall
     checks:
       - name: floor course y67
         type: contains
-        box: [-98, 67, -381, -72, 67, -368]
-        materials: [polished_andesite, stone_bricks]
-        min: 200
-      - name: wall course y69
+        box: [-100, 67, -392, -70, 67, -376]
+        materials: [polished_andesite]
+        min: 450
+      - name: wall course y70 (ground storey)
         type: ring
-        box: [-98, 69, -381, -72, 69, -368]
-        materials: [stone_bricks, spruce_log, glass_pane]
-        tolerance: 12       # doors and window openings interrupt the ring
-      - name: wall course y71
+        box: [-100, 70, -392, -70, 70, -376]
+        materials: [stone_bricks, spruce_log, glass_pane, chiseled_stone_bricks]
+        tolerance: 10
+      - name: wall course y75 (first storey)
         type: ring
-        box: [-98, 71, -381, -72, 71, -368]
-        materials: [stone_bricks, spruce_log, glass_pane]
-        tolerance: 12
-      - name: roof present y74-79
+        box: [-100, 75, -392, -70, 75, -376]
+        materials: [stone_bricks, spruce_log, glass_pane, chiseled_stone_bricks]
+        tolerance: 10
+      - name: chiseled string course y73
+        type: ring
+        box: [-100, 73, -392, -70, 73, -376]
+        materials: [chiseled_stone_bricks, spruce_log]
+        tolerance: 6
+      - name: roof present y77-85
         type: contains
-        box: [-98, 74, -381, -72, 79, -368]
-        materials: [spruce_stairs, spruce_planks]
-        min: 150
-      - name: ridge y80
+        box: [-101, 77, -393, -69, 85, -375]
+        materials: [spruce_stairs]
+        min: 450
+      - name: ridge y86
         type: contains
-        box: [-98, 80, -381, -72, 80, -368]
+        box: [-101, 86, -384, -69, 86, -384]
         materials: [spruce_planks]
-        min: 10
-      - name: bell still in place
+        min: 30
+      - name: bell tower reaches the spire
+        type: contains
+        box: [-88, 88, -375, -82, 95, -369]
+        materials: [stone_bricks, spruce_planks, spruce_stairs, lantern]
+        min: 40
+      - name: bell re-hung in the belfry
         type: count
-        box: [-87, 73, -370, -83, 75, -366]
+        box: [-87, 88, -374, -83, 90, -370]
         materials: [bell]
         expect: 1
+      - name: mayor's office is fitted out
+        # The operator's explicit brief was "multiple rooms and a mayor office".
+        # Assert the office EXISTS as a furnished room, not merely as empty volume.
+        type: contains
+        box: [-82, 74, -383, -71, 76, -377]
+        materials: [bookshelf, spruce_planks, red_carpet, chest, red_wall_banner, decorated_pot]
+        min: 20
+      - name: council chamber dais present
+        type: contains
+        box: [-99, 68, -387, -97, 69, -381]
+        materials: [polished_andesite, red_carpet, stone_brick_stairs, lectern]
+        min: 20
+      - name: interior partitions divide the rooms
+        # Walls A and B are what make this "multiple rooms" rather than one shed.
+        type: contains
+        box: [-87, 68, -391, -83, 77, -377]
+        materials: [stone_bricks]
+        min: 200
+      - name: strongroom is lockable
+        type: count
+        box: [-77, 68, -381, -75, 69, -379]
+        materials: [iron_door]
+        expect: 2
 
   # ---------------------------------------------------------------- cottages
   # Each cottage gets the same three assertions: a wall course, a roof, and its
