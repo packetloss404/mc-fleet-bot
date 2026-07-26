@@ -144,8 +144,11 @@ write into production `data/`.
   accepted risk, not a gap waiting to be closed.
 - ~~**OQ-3 second half**~~ **DONE 2026-07-25.** Four WorldGuard regions with
   `mob-spawning: deny`, verified by reading the live
-  `plugins/WorldGuard/worlds/world/regions.yml` (region-command output is *not*
-  routed back over RCON, so `rg list` looks empty — check the file):
+  `plugins/WorldGuard/worlds/world/regions.yml` (~~region-command output is *not*
+  routed back over RCON, so `rg list` looks empty — check the file~~ **that workaround
+  is obsolete as of 2026-07-26: `scripts/we_admin.py cmd "/rg info <region>"` runs the
+  command as an opped *bot* and reads the reply back, printing the full region info
+  including bounds and flags. The console still can't see it; a player can**):
   `mainstreet_america` y[62,319], `raven_rock` y[−64,61], `raven_rock_shaft`
   (priority 20), `ravensreach`. The y-split keeps MSA and Raven Rock from contending
   over the same column. Before this, `regions.yml` held only `__global__` with zero

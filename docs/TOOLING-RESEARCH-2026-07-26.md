@@ -299,9 +299,32 @@ through WorldEdit.
   last 20 minutes within 100 blocks"* — which is the exact shape of the debris-sweep
   disaster.
 
-**Caveat to test first:** WorldGuard will likely block a bot's WorldEdit ops inside our
-protected regions; it needs `worldedit.bypass` or region membership. Unverified — try it
-on a throwaway region.
+### WorldGuard — TESTED 2026-07-26, does not block. But read *why*.
+
+Full cycle run **inside the `mainstreet_america` region** (bounds x[-70,70] y[62,319]
+z[-235,200]), on a 5×5×5 box of pure air at y250: `//set glass` → *"Operation completed
+(125 blocks affected)"*, probes confirmed glass; `//undo` → *"Undid 1 available edits."*,
+probes confirmed air. **Nothing was blocked.**
+
+It does not block for **two independent reasons, and the second is a warning:**
+
+1. **No `build` flag is set on any region.** All four carry only `mob-spawning: deny`.
+2. **The bots are op level 4, and op bypasses `build: deny`** — so even if the flag were
+   set, it would not stop them.
+
+> ⚠️ **This couples two decisions that were previously independent.** OQ-2 (deferred) is
+> "de-op the builder bots, *then* set the WorldGuard build flags". The moment that
+> happens, **this WorldEdit path breaks** — a de-opped bot loses both the `//` commands
+> and the `build` permission. Whoever executes OQ-2 must also grant the build bot
+> `worldedit.bypass` or region membership, or bulk building stops working with no
+> obvious cause. Record this against OQ-2 before anyone acts on it.
+
+**Bonus capability discovered while testing:** a bot can read WorldGuard's `/rg` output,
+which the console cannot. HANDOFF's OQ-3 note said region-command output "is *not* routed
+back over RCON, so `rg list` looks empty — check the file". That workaround is now
+obsolete: `we_admin.py cmd "/rg info mainstreet_america"` returns the full region info —
+type, priority, flags, owners, members and bounds. Any RCON-invisible command output is
+now readable this way.
 
 ---
 
