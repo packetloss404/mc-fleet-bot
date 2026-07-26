@@ -157,8 +157,16 @@ def main():
                 for cz in range(z1 - 16, z2 + 17, 256):
                     ex, ez = min(cx + 255, x2 + 16), min(cz + 255, z2 + 16)
                     r = rc.cmd(f'forceload add {cx} {cz} {ex} {ez}')
-                    if 'Added' in r or 'forced' in r.lower():
-                        added.append((cx, cz, ex, ez))
+                    # Record the tile whatever the reply says. An earlier version only
+                    # recorded it when the reply contained 'Added' or 'forced'; the
+                    # server actually answers "Marked N chunks ... for force loading",
+                    # so nothing was ever recorded and nothing was ever released --
+                    # 167 chunks were left pinned across a session before anyone looked.
+                    # Releasing a tile we did not add is harmless; the `before` snapshot
+                    # below puts back anything of the operator's that goes with it.
+                    added.append((cx, cz, ex, ez))
+                    if 'Marked' not in r and 'force loading' not in r:
+                        print(f'  note: unexpected forceload reply: {r.strip()[:60]}')
             print(f'  force-loaded {len(added)} tile(s) covering x[{x1},{x2}] z[{z1},{z2}]')
             time.sleep(2)
 

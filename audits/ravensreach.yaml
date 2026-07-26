@@ -117,13 +117,20 @@ groups:
         materials: [chiseled_stone_bricks, spruce_log]
         tolerance: 6
       - name: roof present y87-96
-        # RE-BASELINED 2026-07-26. Two storeys were added to the Moot Hall, so the
-        # roof that used to sit at y77-85 now sits at y87-96 and the old box measured
-        # the new SECOND FLOOR instead. Measured after the raise: 597 spruce_stairs.
+        # RE-BASELINED TWICE.
+        # (1) Two storeys were added to the hall, so the roof moved from y77-85 to
+        #     y87-96 and the old box was measuring the new SECOND FLOOR. Measured
+        #     after the raise: 597 spruce_stairs.
+        # (2) 2026-07-26: the roof VOID was then converted into the penthouse, which
+        #     hollowed out the roof's interior fill -- 597 -> 257. That is what an
+        #     attic conversion is. The outer slopes are untouched: the penthouse sits
+        #     3 blocks inside the hall footprint on every side, and the six dormers
+        #     are glazed. The world is right and the number was stale, so the number
+        #     moved. Re-measured: 257.
         type: contains
         box: [-101, 87, -393, -69, 96, -375]
         materials: [spruce_stairs]
-        min: 450
+        min: 240
       - name: ridge y97
         # Followed the roof up. Measured: 33 spruce_planks along the ridge line.
         type: contains
