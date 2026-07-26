@@ -34,9 +34,16 @@ meta:
   minecraft_version: "1.21.x"
   block_palette: vanilla-compatible only, no resource pack
   site_conditions: >-
-    Target server is stock Paper — NO WorldEdit, WorldGuard, Dynmap, or Citizens; builder bots are
-    NOT opped. These coordinates are a design manifest for bot-driven placement; any WorldGuard/Dynmap
-    integration files are staged for later, not active.
+    CORRECTED 2026-07-25 — two claims here were stale and both are now false. (1) PLUGINS: `plugins` over
+    RCON reports PacketCraft, **WorldEdit 7.4.0** and **WorldGuard 7.0.16**. WorldEdit //commands and
+    WorldGuard regions are both available. Dynmap/BlueMap and Citizens are still absent, so
+    `integration/map-marker.yaml` and `integration/warps.yaml` stay dormant. (2) OPS: the builder bots ARE
+    opped (level 4, per ops.json) — they are not un-opped. Consequence: op BYPASSES WorldGuard build:deny,
+    so region build protection is inert until the OQ-2 de-op. `integration/worldguard.yaml` is now
+    PARTLY applied: region `mainstreet_america` was created 2026-07-25 at x[-70,70] y[62,319] z[-235,200]
+    (the developed band, NOT the staged full ±300 envelope) with `mob-spawning: deny` only — see
+    `../../raven-rock/qa/oq3-worldguard.md`. These coordinates remain a design manifest for bot-driven
+    placement.
 
 # ---------------------------------------------------------------------------------------------------
 # ORIGIN, SCALE, ORIENTATION, BOUNDARY

@@ -113,6 +113,22 @@ export class BotInstance {
   private pendingListeners: Array<() => void> = [];
   /** Counter for sampling the verbose path_update debug log (1 in 50). */
   private pathUpdateLogCounter = 0;
+  /** Ring buffer of recent SERVER messages (system output, not player chat).
+   *
+   *  Exists because commands issued through `POST /api/bots/:name/say` were
+   *  write-only: the command reached the server (verified in the server console as
+   *  "issued server command") but whatever the server said BACK — a WorldEdit
+   *  "3 blocks changed", a WorldGuard denial, a limit error — arrived as a system
+   *  message that nothing listened for. The only `message` listeners were the
+   *  transient ones inside the login/class-selection handshake.
+   *
+   *  That made every scripted command a blind write, which is precisely how this
+   *  project's worst incidents happened. Anything driving WorldEdit through a bot
+   *  MUST be able to read the reply, or a silently-refused operation is
+   *  indistinguishable from a successful one. */
+  private serverMessages: Array<{ t: number; text: string }> = [];
+  private static readonly SERVER_MESSAGE_CAP = 100;
+  private serverMessageListenerBound = false;
   private llmClient: LLMClient | null;
   private affinityManager: AffinityManager;
   private conversationManager: ConversationManager;
@@ -443,7 +459,34 @@ export class BotInstance {
         // vertical mining/scaffolding on the way to surface build sites.
         movements.allow1by1towers = false;
         this.bot.pathfinder.setMovements(movements);
-        logger.info({ bot: this.name, canDig: movements.canDig, digCost: movements.digCost }, 'Pathfinder movements configured');
+
+        // BOUND THE SEARCH. digCost/allow1by1towers above shape the ROUTE the
+        // planner prefers; neither bounds the SEARCH itself. mineflayer-pathfinder
+        // ships `searchRadius = -1`, which makes `astar.js:51` compute
+        // `maxCost = -1`, and the pruning test at `astar.js:95` only fires when
+        // `maxCost > 0` — so with canDig the search explores an unbounded 3-D
+        // volume. Worse, `index.js:442` re-enters the SAME AStar context every tick
+        // while its status stays 'partial', and that context's closedDataSet /
+        // openHeap / openDataMap / visitedChunks have no eviction. An unreachable
+        // goal therefore grows one allocation set forever.
+        //
+        // That is the worker OOM, measured: 80 kills (62 at the old 512 MB cap, 18
+        // at 768 MB), 79 of them mid-execution and 65 while mining stone — goals the
+        // mining geofence makes permanently unreachable, since the bots stand inside
+        // the protected zone they are told to mine. Raising the cap never addressed
+        // it because the growth is unbounded, not merely large.
+        //
+        // maxCost becomes `startNode.h + searchRadius`, i.e. this is a DETOUR
+        // allowance rather than a range limit, so distant reachable goals still
+        // path; an impossible one now ends as 'noPath' in bounded memory.
+        const searchRadius = this.config.behavior?.pathfinderSearchRadius ?? 96;
+        // Cast: the field is real (index.js:41 sets it, index.js:75 reads it) but is
+        // missing from @types/mineflayer-pathfinder's Pathfinder interface.
+        (this.bot.pathfinder as any).searchRadius = searchRadius;
+        logger.info(
+          { bot: this.name, canDig: movements.canDig, digCost: movements.digCost, searchRadius },
+          'Pathfinder movements configured',
+        );
 
         // Auto-dismount to prevent physicsTick from stopping (matches original Voyager)
         // Use once + re-register pattern to avoid accumulating listeners on respawn
@@ -1116,9 +1159,42 @@ export class BotInstance {
 
   private chatListenerBound = false;
 
+  /** Capture server system messages into a ring buffer so scripted commands can be
+   *  verified rather than assumed. Bound once per bot, alongside the chat listener.
+   *
+   *  Deliberately captures EVERYTHING and filters at read time. A filter here would
+   *  have to guess which prefixes matter, and the failures worth catching are
+   *  exactly the unanticipated ones — a WorldGuard denial reads nothing like a
+   *  WorldEdit success. */
+  private startServerMessageListener(): void {
+    if (!this.bot || this.serverMessageListenerBound) return;
+    this.serverMessageListenerBound = true;
+
+    this.bot.on('message', (msg: any) => {
+      let text: string;
+      try {
+        text = typeof msg?.toString === 'function' ? msg.toString() : String(msg);
+      } catch {
+        return;
+      }
+      if (!text || !text.trim()) return;
+      this.serverMessages.push({ t: Date.now(), text });
+      if (this.serverMessages.length > BotInstance.SERVER_MESSAGE_CAP) {
+        this.serverMessages.splice(0, this.serverMessages.length - BotInstance.SERVER_MESSAGE_CAP);
+      }
+    });
+  }
+
+  /** Recent server messages, newest last. `since` filters by timestamp so a caller
+   *  can issue a command and read only what arrived afterwards. */
+  getServerMessages(since = 0): Array<{ t: number; text: string }> {
+    return this.serverMessages.filter((m) => m.t > since);
+  }
+
   private startChatListener(): void {
     if (!this.bot || this.chatListenerBound) return;
     this.chatListenerBound = true;
+    this.startServerMessageListener();
 
     this.bot.on('chat', async (username: string, message: string) => {
       // Ignore own messages and empty messages
@@ -2229,6 +2305,30 @@ export class BotInstance {
     logger.info({ bot: this.name }, 'Bot disconnected and destroyed');
   }
 
+  /**
+   * This worker isolate's heap usage, rounded to MB, plus how close it is to its
+   * cap. `usedPct` is the number to watch: steady state on this fleet is ~200 MB
+   * against a 768 MB cap (~26%), and the OOM signature is a climb toward 100%
+   * during a single task rather than a slow drift across many.
+   */
+  private static readHeapStats(): { usedMb: number; totalMb: number; limitMb: number; usedPct: number } | null {
+    try {
+      const v8 = require('v8');
+      const s = v8.getHeapStatistics();
+      const mb = (n: number) => Math.round(n / 1024 / 1024);
+      const usedMb = mb(s.used_heap_size);
+      const limitMb = mb(s.heap_size_limit);
+      return {
+        usedMb,
+        totalMb: mb(s.total_heap_size),
+        limitMb,
+        usedPct: limitMb > 0 ? Math.round((usedMb / limitMb) * 100) : 0,
+      };
+    } catch {
+      return null; // telemetry must never break the status heartbeat
+    }
+  }
+
   getStatus() {
     return {
       name: this.name,
@@ -2240,6 +2340,22 @@ export class BotInstance {
       // a reconnect. null until the first connect() so a not-yet-spawned bot is
       // not flagged.
       inboundAgeMs: this.lastInboundPacketAt > 0 ? Date.now() - this.lastInboundPacketAt : null,
+      // Per-worker heap telemetry. getStatus() runs INSIDE the worker thread, and
+      // each worker is its own V8 isolate, so getHeapStatistics() reports THIS
+      // bot's heap and THIS bot's cap (the one MC_WORKER_HEAP_MB sets).
+      //
+      // This existed nowhere before. `POST /api/admin/heap-snapshot` snapshots the
+      // MAIN thread (~74 MB) and cannot see a worker isolate at all, so two
+      // successive cap changes (512 -> 768) were made with zero visibility into the
+      // heap that was actually dying. Surfacing it here means the next balloon is
+      // observable in the status heartbeat instead of only in an OOM exit code.
+      heap: BotInstance.readHeapStats(),
+      // Recent server system messages. Rides getStatus() rather than a new IPC
+      // request type because this path already crosses the worker boundary and is
+      // cached main-side; adding a bespoke round-trip for it would be more moving
+      // parts for no gain. Capped at 20 here so the status heartbeat stays small —
+      // the worker keeps 100.
+      serverMessages: this.serverMessages.slice(-20),
       position: this.bot?.entity?.position
         ? {
             x: Math.round(this.bot.entity.position.x),

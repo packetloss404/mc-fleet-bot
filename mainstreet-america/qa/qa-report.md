@@ -56,9 +56,10 @@ disagree, trust the tag.
    central-street layout matching neither column — see `qa/as-built-survey.md` — so DoD-4 is now a
    plan-vs-as-built reconciliation.) I did not silently merge them.
 
-3. **STOCK PAPER (no plugins) governs *how* we inspect.** Target is stock Paper: no WorldEdit, no
-   WorldGuard, no Dynmap, no Citizens. That removes `//count`, Dynmap renders, and schematic-diff from
-   the QA toolkit. **CORRECTION: the builder bots ARE now opped (level 4 in `ops.json`, per
+3. ~~**STOCK PAPER (no plugins) governs *how* we inspect.**~~ **CORRECTED 2026-07-25 — false premise.**
+   `plugins` over RCON reports **PacketCraft, WorldEdit 7.4.0, WorldGuard 7.0.16**. Only **Dynmap/BlueMap
+   and Citizens** are absent, so only Dynmap renders and NPC pathing are actually off the toolkit;
+   `//count` / `//size` ARE available through an opped bot. **CORRECTION: the builder bots ARE now opped (level 4 in `ops.json`, per
    `qa/as-built-survey.md`)** — the earlier "not opped" premise is stale. QA nonetheless **deliberately
    uses OP-FREE inspection methods only** (F3, the terrain-scan API, and un-opped walkability probes), so
    every §3 method stays valid *regardless* of op state. The "un-opped bot" *test designs* elsewhere
@@ -132,9 +133,13 @@ Every "How to verify" cell cites one or more of these methods by tag.
 - **[M7] Manual tape-measure** — count blocks along an axis using two F3 readings (dimensions, wall
   heights, aisle widths) where a scan is overkill.
 
-Explicitly **unavailable** (do not write QA steps that assume them): WorldEdit `//count` / `//size`,
-Dynmap tiles, schematic-diff, WorldGuard region queries, Citizens NPC pathing. Any of these becomes
-available only if the staged integrations are later activated.
+Explicitly **unavailable** *(revised 2026-07-25)*: **Dynmap/BlueMap tiles**, **Citizens NPC pathing**, and
+**WorldGuard `/rg info` / `/rg list` read-back over RCON** (those two commands render asynchronously and
+their output never reaches an RCON sender — verify region state from
+`plugins/WorldGuard/worlds/world/regions.yml` after an explicit `rg save` instead). Now **available**:
+WorldEdit `//count` / `//size` and `//` selections via an opped bot (`POST /api/bots/<name>/say`), and
+WorldGuard `/rg flag` / `/rg setpriority`, which do reply over RCON. schematic-diff is still unavailable
+(missing tooling, not a missing plugin).
 
 **Result legend for every table:** `☐ pass  ☐ fail  ☐ N/A` — every item is **PENDING** until individually
 run. Construction is underway (`qa/as-built-survey.md`), so these are no longer blocked on the absence of a

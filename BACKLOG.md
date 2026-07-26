@@ -1,10 +1,37 @@
 # Backlog
 
-Prioritized tracker for mc-fleet-bot. One page, scannable. Updated **2026-07-24** from a fleet-wide audit; supersedes the 2026-07-17 audit remnant (still-valid items carried over below).
+Prioritized tracker for mc-fleet-bot. One page, scannable. Updated **2026-07-26** with world-build items from the Westlight session; the platform items from the 2026-07-24 fleet audit are carried below unchanged.
+
+> **World-building work is tracked separately and machine-checked.** Run `python3 scripts/build_status.py` — it reads `builds/manifest.yaml` and reports every build unit's placement *and* traversability. It is the source of truth for items W0-W5 below; this page only records why they matter.
 
 Priority tags: **[P0]** time-boxed / do next · **[P1]** should do soon · **[P2]** when convenient · **[P3]** deferred. Effort: S / M / L.
 
 ## Items
+
+### W0. [P0/M] The Westlight theatre is sealed — a 6,000-seat venue nobody can enter
+- **Why:** `build_status.py` reports `SEALED 0/15,886` reachable interior cells from the surface, and only **6%** internally connected from its own lobby. Two defects: the grand stair court from the south forecourt down to the parterre at y35 was specified and never built, so there is no surface route at all; and `gen_westlight.py phase_theatre()` cuts drum vomitories at `TH_FLOOR + 1` and `36` while the lobby floors sit at y18 / y29 / y40, so two lobby levels serve no vomitory. It is the largest finished interior in the world and it is worth nothing until someone can walk in.
+- **Next action:** build the forecourt stair y67 -> y35, then re-cut the vomitories at *measured* lobby levels. Verify with `reachability.mjs --box`, never point targets.
+
+### W1. [P0/S] The members' club lounge has no door
+- **Why:** `SEALED 0/117`. The room is complete — 929 blocks, red concrete and velvet, a lit dance floor of black stained glass over sea lanterns, the bar — and walled on four sides at `x[-417,-400] y35-43 z[-566,-550]`. It has now been lost twice: once when `cl1/cl2/cl3` never ran behind a deadlocked sequencer, and again when the rebuild shipped sealed.
+- **Next action:** cut a door from the theatre balcony's west side. Tracked as `members-club-lounge` so it cannot go missing a third time.
+
+### W2. [P1/S] The Moot Hall has one external door
+- **Why:** 12 doors, 10 of them internal partitions; the only way in is a single double-door at `x[-86,-85] z=-376`. This is why the hall's upper storeys report **15%** reachable and why the Sanctum reports **sealed from the plaza** despite being reachable from the penthouse — you cannot get to the vertical core.
+- **Next action:** add entrances on the north and west elevations. One change should move three manifest units at once.
+
+### W3. [P1/M] Grange Hall 38% and Market Hall 64% reachable
+- **Why:** both interiors were executed from the Fable 5 plans and both have floor plates that exist without reliable stairs between them (Grange y68/y73/y82; Market walk/terrace/loft).
+- **Next action:** connect the levels, then re-run `build_status.py --only grange-hall-interior` / `--only market-hall-interior`.
+
+### W4. [P1/L] Four designed builds with complete specs and zero blocks
+- **Why:** `westlight-district` (Gatehead Square, a 54-block arcaded High Street with seven shophouses, the Beacon Inn and its 42-block tower, food hall, brew-barn, park, baths, boathouse, boardwalk, waterfall), `approach-road` (town -> Westlight, ~275 blocks, two bridges, a grey-to-white paving turnover at mid-span), `ravensgate` (the pavilion replacement — stoa, loggia, library portal, campanile, sunken court with a water chain), and `ravenrock-connectivity`. All four carry `planned:` in the manifest and count as failures until built.
+- **Next action:** `ravensgate` requires demolishing `pav1` first — it is retired but still standing.
+
+### W5. [P2/S] Nine repair ops files are outside the manifest
+- **Why:** `dm1_oldstadium`, `fix1`-`fix8` all ran and all reported clean, but "reported clean" is exactly the claim this session learned to distrust. `build_status.py` flags them as unchecked.
+- **Next action:** add standing assertions, or consciously record them as one-shot repairs. `fix7_doors.txt` matters most — it re-placed 29 doors that had silently vanished.
+
 
 ### 0. [P0/S] `loginFlow` is an opt-out sentinel — a typo broadcasts the bot password in public chat
 - **Why:** the DyoAuth guards are exact-match skips, not opt-ins: `src/bot/BotInstance.ts:567` (`if (loginFlow === 'none')`) and `:649` (`if (selectClass === false)`). Both keys are `optional: true` (`src/config.ts:33-35`), so if either is deleted, misspelled, or set to anything else, the full DyoAuth dance runs — `bot.chat('/login dyobot2026')` and `bot.chat('/register dyobot2026 dyobot2026')` (`BotInstance.ts:597,600,613,620`). On the current stock Paper server there is no auth plugin, so `/login` is an unknown command and **the password is echoed into public chat by every bot on every join**, followed by a 15s auth-timeout stall before the Voyager loop and chat listener are wired up (`:389-397,625-630`). The dashboard makes this a one-typo mistake: `web/src/app/settings/page.tsx:69` renders `loginFlow` as a free-text input and `src/util/configPersist.ts:128` only validates `typeof === 'string'` — no enum check. The credential is also hardcoded as a fallback at `BotInstance.ts:558`, so deleting the config key does not remove it.

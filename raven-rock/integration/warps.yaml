@@ -6,9 +6,11 @@
 # STATUS: STAGED, NOT ACTIVE. The current server reality, stated accurately:
 #   * The builder bots ARE now opped (level 4, confirmed in the server ops.json) — any earlier
 #     "bots are NOT opped" caveat in the planning/ files is OUTDATED here.
-#   * BUT EssentialsX is STILL ABSENT. The target server is stock Paper 1.21.x with no EssentialsX
-#     (and no WorldGuard / WorldEdit / Dynmap / Citizens / relay plugin). No /warp works today.
-#   * Apply only once EssentialsX exists AND the overworld name is confirmed. Do not treat as live.
+#   * BUT EssentialsX is STILL ABSENT — no /warp works today, so this file really is dormant.
+#     CORRECTED 2026-07-25: the parenthetical "no WorldGuard / WorldEdit" was FALSE — **WorldEdit 7.4.0
+#     and WorldGuard 7.0.16 ARE installed** (see qa/oq3-worldguard.md). Still absent with EssentialsX:
+#     Dynmap/BlueMap, Citizens, relay plugin.
+#   * Apply only once EssentialsX exists. Overworld name IS now confirmed: **`world`**. Not live.
 #   NOTE ON LAYOUT: EssentialsX stores each warp as its own file at plugins/Essentials/warps/<name>.yml.
 #   This single file is a STAGING bundle of all warps for review; split it into per-warp files (keys
 #   under 'warps:' -> individual <name>.yml) at apply-time, or feed it to a small importer.

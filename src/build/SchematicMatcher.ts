@@ -22,7 +22,42 @@ const KEYWORD_SYNONYMS: Record<string, string[]> = {
   temple: ['temple', 'shrine', 'sanctuary', 'chapel', 'church'],
   bridge: ['bridge', 'crossing', 'viaduct'],
   tree: ['tree', 'oak', 'spruce', 'birch'],
+  // Kinds the seed plans actually request (seed/medieval.ts, seed/midcentury.ts).
+  // Every PlanItem.kind MUST have a bucket here, or kind-gating cannot recognise
+  // it and match() will refuse to build it at all — which is the safe failure,
+  // but it means a new kind needs a bucket added alongside it.
+  well: ['well', 'wellhead', 'fountain', 'cistern'],
+  town_hall: ['hall', 'townhall', 'town_hall', 'courthouse', 'moot', 'guildhall'],
+  storage: ['storage', 'storehouse', 'warehouse', 'granary', 'silo', 'barn', 'depot'],
+  tavern: ['tavern', 'inn', 'pub', 'alehouse'],
+  blacksmith: ['blacksmith', 'smithy', 'forge', 'anvil'],
+  market: ['market', 'stall', 'bazaar', 'shop', 'store'],
+  library: ['library', 'archive', 'scriptorium'],
+  plaza: ['plaza', 'square', 'courtyard', 'green'],
+  windmill: ['windmill', 'mill', 'watermill'],
+  stable: ['stable', 'barn', 'paddock'],
+  dock: ['dock', 'pier', 'wharf', 'harbour', 'harbor'],
+  mine: ['mine', 'mineshaft', 'quarry', 'adit'],
 };
+
+/**
+ * Tokens that describe STYLE or SCALE rather than what a structure IS. These
+ * must never be sufficient to win a match on their own.
+ *
+ * This is the bug that produced a red canvas TENT when the town asked for a
+ * WELL: the query was "medieval stone well", 'well' had no synonym bucket so
+ * `hasRecognized` was false, and `medieval-tent.schem` scored 8 points purely on
+ * the shared adjective "medieval" (5 for the intent hit + 3 for the style hit)
+ * with zero match on the noun. Any file with "medieval" in its name could win
+ * any medieval contract.
+ */
+const DESCRIPTOR_TOKENS = new Set([
+  'medieval', 'modern', 'rustic', 'ancient', 'old', 'new', 'classic', 'traditional',
+  'midcentury', 'mid', 'century', 'victorian', 'colonial', 'gothic', 'nordic', 'japanese',
+  'small', 'large', 'big', 'tiny', 'huge', 'mini', 'grand', 'simple', 'basic', 'fancy',
+  'stone', 'wood', 'wooden', 'brick', 'oak', 'spruce', 'birch', 'dark', 'light', 'white',
+  'communal', 'default', 'starter', 'v1', 'v2', 'a', 'b', 'the', 'of', 'and',
+]);
 
 /** Minimum score required for `match()` to consider a result usable. */
 const MIN_SCORE = 1;
@@ -89,35 +124,77 @@ export class SchematicMatcher {
    * Find the best schematic for an intent like "oak house" or "tower".
    * Returns null if no schematic scores above the minimum threshold.
    */
-  match(intent: string, opts?: { style?: string }): SchematicMatch | null {
+  match(intent: string, opts?: { style?: string; kind?: string }): SchematicMatch | null {
     const all = this.matchAll(intent, { ...opts, limit: 1 });
     return all.length > 0 ? all[0] : null;
   }
 
+  /**
+   * Tokens that identify the thing a `kind` denotes, e.g. 'well' →
+   * {well,wellhead,fountain,cistern}. Falls back to the kind's own tokens so an
+   * unknown kind still demands a literal name match rather than matching anything.
+   */
+  private static kindTokens(kind: string): Set<string> {
+    const raw = tokenize(kind);
+    const out = new Set<string>(raw);
+    for (const t of raw) {
+      const direct = KEYWORD_SYNONYMS[t];
+      if (direct) for (const s of direct) out.add(s);
+      for (const [bucket, syns] of Object.entries(KEYWORD_SYNONYMS)) {
+        if (bucket === t || syns.includes(t)) {
+          out.add(bucket);
+          for (const s of syns) out.add(s);
+        }
+      }
+    }
+    // A kind must be identified by a noun, never by a descriptor.
+    for (const d of DESCRIPTOR_TOKENS) out.delete(d);
+    return out;
+  }
+
   /** Return up to N matches above the threshold, ranked by score. */
-  matchAll(intent: string, opts?: { style?: string; limit?: number }): SchematicMatch[] {
+  matchAll(intent: string, opts?: { style?: string; limit?: number; kind?: string }): SchematicMatch[] {
     const rawIntentTokens = tokenize(intent);
     if (rawIntentTokens.length === 0) return [];
-
-    // If the intent contains no recognized tokens at all, return null-ish.
-    const hasRecognized = rawIntentTokens.some(
-      (t) => KEYWORD_SYNONYMS[t] || Object.values(KEYWORD_SYNONYMS).some((l) => l.includes(t)),
-    );
 
     const intentTokens = new Set(expandIntentTokens(rawIntentTokens));
     const styleTokens = opts?.style ? new Set(tokenize(opts.style)) : null;
     const limit = opts?.limit ?? 5;
 
+    // KIND GATE. When the caller knows what it is building (TownBrain always
+    // does — PlanItem.kind), a candidate must be identifiable as that thing.
+    // Without this, descriptor overlap alone wins: "medieval stone well" matched
+    // medieval-tent.schem on the word "medieval", the town got a tent instead of
+    // a well, and it was sited on the town hall's apron.
+    const kindTokens = opts?.kind ? SchematicMatcher.kindTokens(opts.kind) : null;
+
     const scored: SchematicMatch[] = [];
     for (const [filename, fileTokens] of this.index.entries()) {
+      // Reject anything that cannot be identified as the requested kind. Refusing
+      // to build is the correct outcome here: a missing well is a gap someone can
+      // see and fix, whereas a tent recorded in the registry AS a well is drift
+      // that silently corrupts the town's own model of itself.
+      let kindHit: string | null = null;
+      if (kindTokens) {
+        for (const t of kindTokens) {
+          if (fileTokens.has(t)) { kindHit = t; break; }
+        }
+        if (!kindHit) continue;
+      }
+
       let intentHits = 0;
       const hitList: string[] = [];
+      let nounHits = 0;
       for (const t of intentTokens) {
         if (fileTokens.has(t)) {
           intentHits++;
+          if (!DESCRIPTOR_TOKENS.has(t)) nounHits++;
           if (hitList.length < 5) hitList.push(t);
         }
       }
+      // With no kind supplied, still require at least one NON-descriptor hit, so
+      // a bare adjective overlap can never carry a match on its own.
+      if (!kindTokens && nounHits === 0) continue;
       let styleHits = 0;
       if (styleTokens) {
         for (const t of styleTokens) {
@@ -125,20 +202,27 @@ export class SchematicMatcher {
         }
       }
 
-      // If the user's intent had no recognized keyword, require a direct token hit.
-      if (!hasRecognized && intentHits === 0) continue;
-      if (intentHits === 0 && styleHits === 0) continue;
+      // A candidate needs some positive evidence: either it satisfied the kind
+      // gate, or it shares a noun with the intent. Style alone is never enough.
+      if (!kindHit && nounHits === 0) continue;
 
       // Prefer concise filenames (subtract a small penalty for very long ones).
       const lengthPenalty = Math.max(0, fileTokens.size - 4) * 0.25;
-      const score = intentHits * 5 + styleHits * 3 - lengthPenalty;
+      // Noun hits outrank descriptor hits: matching "well" must beat matching
+      // "medieval". Style remains a tie-breaker only.
+      const descriptorHits = intentHits - nounHits;
+      const score = nounHits * 6 + descriptorHits * 1 + styleHits * 2 - lengthPenalty;
 
       if (score < MIN_SCORE) continue;
 
       scored.push({
         filename,
         score,
-        reason: `hits=${intentHits}${styleHits ? `+style:${styleHits}` : ''}${hitList.length ? ` on [${hitList.join(',')}]` : ''}`,
+        reason:
+          `nouns=${nounHits} desc=${descriptorHits}` +
+          `${styleHits ? ` style=${styleHits}` : ''}` +
+          `${kindHit ? ` kind:${kindHit}` : ''}` +
+          `${hitList.length ? ` on [${hitList.join(',')}]` : ''}`,
       });
     }
 

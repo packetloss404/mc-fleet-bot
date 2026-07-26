@@ -1,0 +1,216 @@
+# Build manifest — the checklist that stops a build being half-done and forgotten.
+#
+# Seven ops files in this project were generated, queued, and never run. The runner
+# logs looked healthy; a deadlocked sequencer meant nothing behind it ever started.
+# Nobody noticed for hours. Separately, the Moot Hall descent verified BUILT 5/5 on
+# block sampling and was still an unusable shaft, because placement and traversability
+# are different properties.
+#
+# So every build unit is listed here with BOTH kinds of check:
+#   ops:    the ops file(s) — sampled against the world by verify_ops.py
+#   walk:   from/to pairs — flood-filled by reachability.mjs
+# and `python3 scripts/build_status.py` reports the lot in one table.
+#
+# RULES:
+#  * A unit with no `walk:` must say why in `walk_na:` — silence is not an answer.
+#    Most things people enter need a walk check; a canopy 20 blocks overhead does not.
+#  * `retired: <reason>` marks a unit deliberately removed. Retired units are not
+#    failures, but they stay listed so the record shows what happened to them.
+#  * Add the unit here WHEN YOU GENERATE THE OPS, not when you finish. The point is
+#    to have an entry sitting there red until the work is actually done.
+#  * `both_ways: true` runs the walk in REVERSE as well, and you almost always want it.
+#    A player can fall any distance but only climb one block, so a downward-only check
+#    passes on a hole. Every basement in this town "passed" that way before the reverse
+#    check was added; the Moot Hall's were in fact completely sealed.
+#  * Walk coordinates are MEASURED standable cells, not levels read off a design doc.
+#    Nearly every false failure in this file's first run was a target sitting one or two
+#    blocks inside a floor slab, a bookshelf or a stage deck. Probe before asserting.
+
+units:
+
+  # ---------------------------------------------------------------- Ravensreach
+  - name: library
+    ops: [lib1_shell.txt, lib2_stairs.txt, lib3_fit.txt]
+    walk:
+      # in at the front door, and every one of the six storeys must be reachable.
+      # The stair core originally built five straight flights in ONE footprint, each a
+      # step short of its landing: you could fall to B3 but not climb to the first or
+      # second floor. Rebuilt as switchbacks; this check is what found it.
+      - from: [-128, 68, -424]
+        both_ways: true
+        to: [[-137, 68, -436], [-137, 76, -436], [-130, 84, -436],
+             [-137, 61, -436], [-137, 54, -436], [-137, 47, -436]]
+
+  - name: amsterdam-square
+    ops: [sq1.txt]
+    walk:
+      - from: [-85, 68, -370]
+        to: [[-103, 68, -350], [-85, 68, -394], [-67, 68, -360]]
+
+  - name: walkways
+    ops: [walk1.txt]
+    walk:
+      # the whole point of the road network is that these connect
+      - from: [-85, 68, -394]
+        to: [[-108, 68, -430], [-85, 68, -440]]
+
+  - name: market-hall-interior
+    ops: [int1_market.txt]
+    walk:
+      - from: [-70, 69, -341]
+        to: [[-56, 71, -336], [-46, 77, -327]]
+
+  - name: grange-hall-interior
+    ops: [int2_grange.txt]
+    walk:
+      - from: [-64, 69, -361]
+        to: [[-50, 69, -366], [-60, 74, -360], [-45, 83, -360]]
+
+  - name: farms
+    ops: [int3_farms.txt]
+    walk_na: irrigation and tilled soil, nothing to enter
+
+  - name: moot-hall-penthouse
+    ops: [sn1_penthouse.txt]
+    walk:
+      - from: [-85, 88, -382]
+        to: [[-96, 88, -388], [-80, 88, -374]]
+
+  - name: moot-hall-core
+    ops: [fix9_core.txt, fix10_corridor.txt, fix11_portal.txt, fix12_shaft.txt]
+    walk:
+      # One vertical core serving penthouse -> ground -> B1 -> B2 -> the deep corridor.
+      # Before it existed the basements were SEALED: the whole basement programme
+      # (3-screen multiplex, bowling alley, two-level bar, arcade, bank, IT office)
+      # had no way in or out. Three separate corridor ceilings each re-sealed this
+      # shaft during the repair, which is why the shaft is now carved LAST.
+      - from: [-85, 68, -370]
+        both_ways: true
+        to: [[-97, 65, -389], [-97, 57, -389], [-97, 44, -389]]
+
+  - name: sanctum-descent
+    ops: [sn2_descent.txt]
+    walk:
+      - from: [-95, 88, -388]
+        both_ways: true
+        to: [[-97, 44, -389]]
+
+  - name: sanctum
+    ops: [sn3_sanctum.txt]
+    walk:
+      # measured: the stage deck is y29 so you stand at y30; the seating rings rise
+      # 1 per row from y27, so a "floor at y27" target lands inside the tiers
+      - from: [-97, 44, -389]
+        both_ways: true
+        to: [[-85, 30, -380]]
+
+  # ---------------------------------------------------------------- Westlight
+  - name: westlight-site
+    ops: [wl0_site.txt]
+    walk_na: ground grading only
+    placement_na: >
+      Deliberately built over. This graded the site to grass at y67; the bowl and
+      canopy then replaced most of it, so sampling it reports MISSING correctly.
+
+  - name: westlight-theatre
+    ops: [wl1_theatre.txt, wl1_theatre_worldedit.txt]
+    walk:
+      # lobby -> through the blue drum -> orchestra floor -> balcony
+      - from: [-360, 19, -505]
+        both_ways: true
+        to: [[-360, 19, -560], [-360, 36, -530]]
+
+  - name: westlight-bowl
+    ops: [wl2_bowl.txt]
+    walk:
+      # in at grade, down to the field, and up to the top of the bowl
+      - from: [-360, 68, -498]
+        both_ways: true
+        to: [[-360, 59, -560], [-360, 82, -500]]
+
+  - name: westlight-canopy
+    ops: [wl3_canopy.txt, wl3_canopy_worldedit.txt]
+    walk_na: a roof 20 blocks above the rim, deliberately unreachable
+
+  - name: westlight-texture
+    ops: [wl4_texture.txt]
+    walk_na: material scatter over already-checked geometry
+
+  - name: members-club-lounge
+    ops: [wl1_theatre.txt]
+    walk:
+      # BUILT AND SEALED as of 2026-07-26: the room exists (929 blocks -- red concrete
+      # and velvet, a lit dance floor of black glass over sea lanterns, the bar) but
+      # there is no door from the balcony. Asserted red on purpose.
+      - from: [-361, 36, -557]
+        both_ways: true
+        to: [[-410, 36, -558]]
+
+  # ------------------------------------------------- designed but NOT YET BUILT
+  # These carry `planned:` and count as outstanding until ops exist and pass. They are
+  # listed because a design that only lives in a chat transcript is a design that gets
+  # forgotten -- which is exactly what happened to the members' club twice.
+
+  - name: westlight-district
+    planned: >
+      docs research 2026-07-26, agent design "WESTLIGHT". A lakefront market-crescent
+      wrapping the stadium's southern brim: Gatehead Square with a wayshrine clock
+      tower, the Ferry Bell tavern, a 54-block arcaded High Street with seven
+      shophouses, the Beacon Inn with a 42-block tower answering the canopy, Lantern
+      Hall food hall and Field House pavilions, Lantern Plaza, the Malt & Lantern
+      brew-barn, Shorelight Park, Lake Baths, Skiff House, jetty, Brimside boardwalk
+      and a waterfall into the lake. Nothing of it is built.
+
+  - name: approach-road
+    planned: >
+      Town -> Westlight, ~275 blocks: Millstone Bridge at x=-170, a meadow leg with a
+      tree-belt kept deliberately to hide the stadium, a Panorama bay at x=-224 for the
+      first full reveal, a lakeshore causeway, and the White Bridge at x=-305 where the
+      paving turns from grey klinker to white and the road becomes a street. Not built.
+
+  - name: ravensgate
+    planned: >
+      docs research 2026-07-26, agent design "RAVENSGATE" -- the replacement for the
+      pavilion that reads as a bus shelter. A deep south stoa with a continuous bench,
+      a west loggia carrying a proper library portal, a 42-block campanile at the axis
+      hinge, a gate and turn for compression, a two-step sunken court (the Nine Fields)
+      with a single falling water chain on axis, a pleached grove, and a paving gradient
+      from medieval grey to canopy white. Requires demolishing pav1 first. Not built.
+
+  - name: ravenrock-connectivity
+    planned: >
+      The access shaft at x=204 z=-15 runs surface y64 down to y20 and is reachable,
+      but the N5 portal at (286,20,-27) is NOT reachable from it -- closest approach 90
+      blocks. Raven Rock's four portals and its caverns/tunnels need a connectivity
+      sweep and, probably, joining up. Nobody has checked the rest of the complex.
+
+  # ---------------------------------------------------------------- retired
+  - name: town-concert-hall
+    ops: [ch1_site.txt, ch2_bowl.txt, ch6_canopy.txt]
+    retired: >
+      Built at x=-85 z=-513, then demolished 2026-07-26 when the stadium moved west
+      to Westlight. dm1_oldstadium.txt cleared the site back to flat grass at y67.
+
+  - name: town-concert-hall-fitout
+    ops: [ch3_seats.txt, ch4_canyons.txt, ch5_screen.txt, ch7_plaza.txt]
+    retired: >
+      NEVER RAN. A sequencer waited on `pgrep -f "buildops/ch2_bowl"`, which matched
+      its own command line, so it waited on itself forever and nothing behind it
+      started. Superseded by the Westlight bowl rather than restored.
+
+  - name: members-club
+    ops: [cl1_backstage.txt, cl2_hiddenway.txt, cl3_club.txt]
+    retired: >
+      NEVER RAN, same deadlock. Rebuilt inside wl1_theatre.txt as the theatre's
+      premium box lounge off the balcony's west side.
+
+  - name: central-pavilion
+    ops: [pav1.txt]
+    retired: >
+      Superseded by the Ravensgate scheme (a deep south stoa, a west loggia with a
+      library portal, a 42-block campanile at the axis hinge, and a sunken court with
+      a water chain). Not yet demolished.
+
+  - name: westlight-bowl-mix
+    ops: [wl2_bowl_worldedit.txt]
+    walk_na: material scatter over already-checked geometry

@@ -134,16 +134,18 @@ numbers and `coordinates.yaml` `buffer_thickness_blocks` say **22**. Both are de
 the same geometry, so the drawings state it precisely: the band **y41 → y61 is 21 block layers**, and
 the **clear gap from cavern ceiling y40 to MSA foundation y62 is 22 blocks**.
 
-### C-6 — "Stock Paper, no plugins" is false, and is still asserted in three files
+### C-6 — "Stock Paper, no plugins" is false — **CLOSED 2026-07-25**
 
 `open-questions.md` OQ-3 records that **WorldEdit 7.4.0 and WorldGuard 7.0.16 are installed**. The
-"stock Paper with no plugins" premise is still stated in `site-plan.md` §1, `coordinates.yaml`
-`meta.site_conditions`, and `palettes.yaml` SITE CONDITIONS. Not a geometry issue; not drawn.
+"stock Paper with no plugins" premise was still stated in `site-plan.md` §1, `coordinates.yaml`
+`meta.site_conditions`, and `palettes.yaml` SITE CONDITIONS. **All three are now corrected**, along with
+`buildings.yaml` A6, `README.md`, `qa/qa-report.md` §2/§4, all three `integration/` headers, and the MSA
+mirrors of the same claim. Never was a geometry issue; not drawn. See `qa/oq3-worldguard.md`.
 
-### C-7 — "Builder bots are NOT opped" is stale in two files
+### C-7 — "Builder bots are NOT opped" is stale in two files — **CLOSED 2026-07-25**
 
-Corrected in `site-plan.md` and `coordinates.yaml` (bots **are** opped, level 4). Still asserted in
-`palettes.yaml` SITE CONDITIONS and `buildings.yaml` assumption **A6**. Not drawn.
+Was corrected in `site-plan.md` and `coordinates.yaml` (bots **are** opped, level 4); the remaining
+assertions in `palettes.yaml` SITE CONDITIONS and `buildings.yaml` **A6** are now corrected too. Not drawn.
 
 ### C-8 — Three of four building entrances sit on the wall plane, not 1 block outside it
 

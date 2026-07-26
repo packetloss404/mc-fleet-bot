@@ -5,9 +5,11 @@
 #   bridge). This file is the location/world-knowledge registry the bots read so they can recognize,
 #   name, and speak about the site when a player asks. (A Citizens guide-NPC or hologram could load the
 #   same record as a secondary consumer.)
-# STATUS: STAGED, NOT ACTIVE. The target server is stock Paper. The mc-fleet-bot relay plugin is NOT
-#   installed (nor are WorldEdit / WorldGuard / Dynmap / Citizens), and the builder bots are NOT opped.
-#   Nothing here is live. Apply this file only once the relay plugin exists to load it.
+# STATUS: STAGED, NOT ACTIVE — but for the right reason. The mc-fleet-bot relay plugin is NOT installed,
+#   nor are Dynmap/BlueMap, EssentialsX or Citizens, so nothing here is live and this file waits on the
+#   relay plugin. CORRECTED 2026-07-25: two side-claims above were FALSE — **WorldEdit 7.4.0 and
+#   WorldGuard 7.0.16 ARE installed**, and the **builder bots ARE opped (level 4)**. Overworld name is
+#   confirmed `world`. See ../../raven-rock/qa/oq3-worldguard.md.
 #
 # -----------------------------------------------------------------------------------------------------
 # PROVENANCE / HONESTY NOTE  (read before trusting this file)

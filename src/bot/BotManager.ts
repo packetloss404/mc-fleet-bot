@@ -84,6 +84,14 @@ export class BotManager {
    *  Key is `${event}:${lowerName}`; value is the last-fire timestamp. */
   private playerEventLastFireAt: Map<string, number> = new Map();
   private static readonly PLAYER_EVENT_DEDUP_MS = 5_000;
+  /** Pending ghost-name confirmations, keyed by lowercased bot name. See
+   *  handleFleetPlayerEvent for why the signal must be confirmed, not fired live. */
+  private pendingGhostChecks: Map<string, NodeJS.Timeout> = new Map();
+  /** Grace period before a ghost-name suspicion is confirmed. Must comfortably
+   *  exceed a normal reconnect: the worker's own scheduleReconnect plus login and
+   *  the first status heartbeat. 20s covers that; a real impostor is still caught
+   *  20s later, which costs nothing operationally. */
+  private static readonly GHOST_NAME_CONFIRM_MS = 20_000;
 
   constructor(config: Config, llmClient: LLMClient | null) {
     this.config = config;
@@ -288,6 +296,7 @@ export class BotManager {
     const handle = this.workers.get(key);
     if (!handle) return false;
 
+    this.cancelGhostNameConfirmation(key);
     await handle.terminate();
     this.workers.delete(key);
     // Free the prismarine-viewer slot so the port can be reused by another bot.
@@ -332,16 +341,38 @@ export class BotManager {
       // bot of that name is offline (we were kicked / quarantined) and a player
       // with that name is online, that's an impostor wearing our identity —
       // corroborating the duplicate-login signal (or catching a server whose
-      // kick message we didn't pattern-match). Only fire on join; offline =
-      // cached state DISCONNECTED/QUARANTINED, so a healthy bot won't trip it.
+      // kick message we didn't pattern-match).
+      //
+      // The trap: OUR OWN RECONNECT looks exactly like this. When a bot logs back
+      // in, the server broadcasts its join to every *other* worker's tab list, and
+      // those relays arrive before the reconnecting bot's own status heartbeat has
+      // moved it off DISCONNECTED. Firing live therefore produced one false alert
+      // per observing bot on every restart (observed 2026-07-25: 4 incidents each
+      // for Scout and Surveyor, ~0.9s apart, both bots healthy). Worse, the main
+      // thread cannot simply track reconnect intent, because the worker's own
+      // scheduleReconnect reconnects without telling us.
+      //
+      // So CONFIRM rather than fire: wait out a normal reconnect, then re-read the
+      // state. If the bot came back, the join was ours and there is nothing to
+      // report. If it is still offline while its name is online, that is a real
+      // impostor. QUARANTINED is exempt from the wait — auto-reconnect is disabled
+      // for a quarantined bot, so it will NOT return on its own and the name being
+      // online is immediately suspicious.
       const detectionEnabled = this.config.security?.impersonationDetection !== false;
       const state = ownWorker.getCachedStatus()?.state;
-      if (event === 'join' && detectionEnabled && (state === 'QUARANTINED' || state === 'DISCONNECTED')) {
-        this.handleImpersonation({
-          botName: ownWorker.botName,
-          reason: `Roster name '${ownWorker.botName}' seen online while our bot is ${state}`,
-          signal: 'ghost-name',
-        });
+      switch (BotManager.classifyOwnNameSighting(event, state, detectionEnabled)) {
+        case 'alert-now':
+          this.handleImpersonation({
+            botName: ownWorker.botName,
+            reason: `Roster name '${ownWorker.botName}' seen online while our bot is ${state}`,
+            signal: 'ghost-name',
+          });
+          break;
+        case 'confirm-later':
+          this.scheduleGhostNameConfirmation(lower);
+          break;
+        case 'ignore':
+          break;
       }
       return; // either way, don't treat a bot name as a real-player presence
     }
@@ -360,6 +391,85 @@ export class BotManager {
       logger.info({ player: playerName }, 'Real player left server');
       try { this.playerPresenceTracker.recordLeave(playerName); }
       catch (err: any) { logger.warn({ player: playerName, err: err?.message }, 'recordLeave failed'); }
+    }
+  }
+
+  /**
+   * Decide what a roster sighting of one of OUR OWN bot names means.
+   *
+   * Pure so the policy can be unit-tested without standing up a BotManager:
+   *   'alert-now'     — the bot cannot come back on its own, so the name being
+   *                     online is immediately suspicious (QUARANTINED disables
+   *                     auto-reconnect).
+   *   'confirm-later' — indistinguishable from our own reconnect right now;
+   *                     re-check after a grace period.
+   *   'ignore'        — a healthy bot in the tab list, a leave event, or
+   *                     detection switched off.
+   */
+  static classifyOwnNameSighting(
+    event: 'join' | 'leave',
+    state: string | undefined,
+    detectionEnabled: boolean,
+  ): 'ignore' | 'alert-now' | 'confirm-later' {
+    if (event !== 'join' || !detectionEnabled) return 'ignore';
+    if (state === 'QUARANTINED') return 'alert-now';
+    if (state === 'DISCONNECTED') return 'confirm-later';
+    return 'ignore';
+  }
+
+  /**
+   * After the grace period: was the suspicion real? If the bot is back online the
+   * sighting was its own reconnect; if it is still offline while its name is on the
+   * roster, someone else is wearing it.
+   */
+  static ghostNameConfirmed(state: string | undefined): boolean {
+    return state === 'DISCONNECTED' || state === 'QUARANTINED';
+  }
+
+  /**
+   * Arm a delayed ghost-name confirmation for one of our own bots. Collapses the
+   * burst of duplicate sightings (every other worker relays the same join) into a
+   * single pending check, then fires only if the bot is STILL offline once a normal
+   * reconnect would have completed.
+   */
+  private scheduleGhostNameConfirmation(key: string): void {
+    if (this.pendingGhostChecks.has(key)) return; // burst already armed
+
+    const timer = setTimeout(() => {
+      this.pendingGhostChecks.delete(key);
+
+      // The bot may have been removed while we waited.
+      const handle = this.workers.get(key);
+      if (!handle) return;
+
+      const state = handle.getCachedStatus()?.state;
+      if (BotManager.ghostNameConfirmed(state)) {
+        this.handleImpersonation({
+          botName: handle.botName,
+          reason:
+            `Roster name '${handle.botName}' seen online while our bot is ${state} ` +
+            `(still offline ${BotManager.GHOST_NAME_CONFIRM_MS / 1000}s after the sighting)`,
+          signal: 'ghost-name',
+        });
+      } else {
+        logger.debug(
+          { bot: handle.botName, state },
+          'Ghost-name sighting resolved: our bot reconnected, so the join was its own',
+        );
+      }
+    }, BotManager.GHOST_NAME_CONFIRM_MS);
+
+    // Never hold the process open for a security timer.
+    if (typeof timer.unref === 'function') timer.unref();
+    this.pendingGhostChecks.set(key, timer);
+  }
+
+  /** Cancel any armed ghost-name confirmation for a bot (removal/shutdown). */
+  private cancelGhostNameConfirmation(key: string): void {
+    const timer = this.pendingGhostChecks.get(key);
+    if (timer) {
+      clearTimeout(timer);
+      this.pendingGhostChecks.delete(key);
     }
   }
 
@@ -451,6 +561,10 @@ export class BotManager {
    * Callers should invoke this AFTER any final saveBotsImmediate flush.
    */
   async terminateAllWorkers(): Promise<number> {
+    // Terminating every worker will trip the DISCONNECTED branch; don't leave
+    // confirmation timers armed to alert about bots we deliberately stopped.
+    for (const key of [...this.pendingGhostChecks.keys()]) this.cancelGhostNameConfirmation(key);
+
     const handles = [...this.workers.values()];
     await Promise.all(
       handles.map(async (h) => {

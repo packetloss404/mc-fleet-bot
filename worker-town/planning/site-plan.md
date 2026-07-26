@@ -120,6 +120,22 @@ light to grow, which is slow and not verifiable in one pass. Six trunks were pro
 present at ground+2.
 
 - **17 of 18 planted.** The column at `(-101,-314)` returned no surface and was skipped.
+
+> **AMENDED 2026-07-25 — the grove is a CROP, not scenery, and 8 trees remain.**
+> A world audit found **9 of the 17 gone — logs *and* leaves — on the half nearest
+> town** (every absent column is x ≥ −89; every surviving one is x ≤ −95), with five
+> bots idle in the plaza. Logs *and* leaves both absent is the signature of removal
+> followed by leaf decay, not of a partial build. **The fleet harvested them**, which
+> is the system working as designed while the town logs repeated wood requests.
+>
+> Ratified decision (`docs/DECISIONS-2026-07-25.md`, Ravensreach Q1): **accept and
+> de-register.** Do not rebuild in place — that just feeds the same loop. The grove is
+> therefore **8 trees and shrinking**, and is deliberately excluded from
+> `mining.protectedZones` so the bots may keep taking it.
+>
+> Note the corroborating detail, which is its own lesson: the build script only ever
+> verified `planted[:6]`, and in `GROVE` iteration order that is exactly the x=−125 and
+> x=−113 groups — **the trees still standing are precisely the ones that were verified.**
 - ⚠️ **The grove is not on level ground.** Most trees sit at y67–72, but three are far lower:
   `(-71,-323)` at **y55**, `(-65,-314)` at **y57**, `(-89,-314)` at **y64**, against neighbours at
   69–72. A 14-block drop between adjacent columns means a **ravine or cave opening** runs through

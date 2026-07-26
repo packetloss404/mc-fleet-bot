@@ -60,12 +60,19 @@ Every spatial assertion carries exactly one tag, never upgraded (vocabulary inhe
 - **The rock body:** the mountain reads as **dark greenish hard metabasalt (Catoctin greenstone), NOT
   granite** [VERIFIED REF-003]. All undug volume in the sub-surface is this greenstone mass; caverns and
   tunnels are voids blasted into it.
-- **Site condition:** target server is stock Paper with **no plugins — no WorldEdit / WorldGuard / Dynmap /
-  EssentialsX / Citizens** (the staged integration files stay dormant until a plugin exists). **CORRECTION:
+- **Site condition** *(corrected 2026-07-25 — the "no plugins" premise below was FALSE):* `plugins` over
+  RCON reports **PacketCraft, WorldEdit 7.4.0 and WorldGuard 7.0.16** — both EngineHub plugins are
+  installed and responsive. **Dynmap/BlueMap, EssentialsX and Citizens are still absent**, so
+  `integration/map-marker.yaml` and `integration/warps.yaml` stay dormant, but
+  `integration/worldguard.yaml` is actionable and is now **partly applied**. **CORRECTION:
   the builder bots ARE now opped (level 4, per the MSA as-built survey / `ops.json`)** — the earlier "bots
-  not opped" premise is stale. The build still assumes only plain `/fill`-style block placement and no
-  `//`commands or NPCs. "Protected envelope" is a *planning boundary*, not an enforced region; note that
-  opped bots would **bypass any WorldGuard `build:deny`** even if it were added later. **Protection model —
+  not opped" premise is stale. The build channel in practice remains chunked `/fill` over RCON; WorldEdit
+  `//`commands are available but must be driven through an opped bot (the console has no selection).
+  "Protected envelope" is now **partly enforced**: regions `raven_rock` (x[-300,300] y[-64,61] z[-300,300],
+  priority 11) and `raven_rock_shaft` (x[193,207] y[-12,64] z[-22,-8], priority 20) exist with
+  `mob-spawning: deny` as of 2026-07-25 (`qa/oq3-worldguard.md`). Build/grief flags are deliberately NOT
+  set, because opped bots **bypass any WorldGuard `build:deny`** — so build protection is inert until the
+  OQ-2 de-op. **Protection model —
   DECIDED (OQ-2): builder bots stay opped during construction, then are DE-OPPED once the build completes,
   after which WorldGuard `build:deny` protects the museum normally** — a post-build operational step, not
   yet performed (same decision applies to MSA; see `planning/open-questions.md`).
@@ -335,8 +342,10 @@ Full arithmetic is in `coordinates.yaml → consistency_check`. Summary:
 - **Spring/vestibule/reservoir counts.** All [CREATIVE]; adjust as a set if the concept art changes.
 - **Shaft as liberty.** If the shaft is cut for purity, RR-Z5 and N9 drop with no effect on the four
   buildings or the four portals.
-- **No WorldGuard/Dynmap/Citizens plugins** (integration files stay dormant). **Bots ARE opped (level 4)**,
-  so all "protection" is a planning boundary only, and opped bots would bypass WorldGuard `build:deny` even
-  if it were added. **Protection model — DECIDED (OQ-2): de-op the builder bots after the build completes,
+- **WorldEdit 7.4.0 + WorldGuard 7.0.16 ARE installed** *(corrected 2026-07-25; only Dynmap/BlueMap and
+  Citizens are absent, so just the map-marker/warps files stay dormant)*. **Bots ARE opped (level 4)**,
+  so build "protection" is still a planning boundary only — opped bots bypass WorldGuard `build:deny`.
+  `mob-spawning: deny` regions ARE live (see `qa/oq3-worldguard.md`); build flags are not.
+  **Protection model — DECIDED (OQ-2): de-op the builder bots after the build completes,
   then WorldGuard `build:deny` protects the museum normally** (a post-build step, not yet performed; same
   for MSA). See `planning/open-questions.md`.

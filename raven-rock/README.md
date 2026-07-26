@@ -96,11 +96,14 @@ defects.
   (GRID vs OVAL) that had to be reconciled, Raven Rock used **one master** (`planning/site-plan.md`); the
   two sibling YAMLs restate its numbers and **agree with it exactly.** The QA report
   [`qa/qa-report.md`](qa/qa-report.md) §3 recomputed and confirmed this.
-- **No-op stock Paper.** The target server is stock Paper with **no WorldEdit / WorldGuard / Dynmap /
-  Citizens**, and the builder bots are **not opped.** All geometry is designed to be placeable by an
-  un-opped bot via plain block placement. The `integration/` files (Dynmap markers, EssentialsX warps,
-  WorldGuard region, bot location record) stay **staged and inactive** until the matching plugins exist.
-  "Protected envelope" is a planning boundary, not an enforced region.
+- ~~**No-op stock Paper.**~~ **CORRECTED 2026-07-25 — both halves of this bullet were false.** The server
+  runs **WorldEdit 7.4.0 and WorldGuard 7.0.16** (plus PacketCraft); the builder bots **are opped at
+  level 4**. Only **Dynmap/BlueMap, EssentialsX and Citizens** are genuinely absent, so just
+  `integration/map-marker.yaml` and `integration/warps.yaml` stay dormant. All geometry is still designed
+  to be placeable by plain block placement (that remains a virtue, not a constraint).
+  `integration/worldguard.yaml` is now **partly applied**: the `raven_rock` / `raven_rock_shaft` regions
+  exist with `mob-spawning: deny` (OQ-3). The envelope is **not** yet build-protected — op bypasses
+  `build: deny`, so the build flags wait on the OQ-2 de-op. See [`qa/oq3-worldguard.md`](qa/oq3-worldguard.md).
 
 ## Directory guide
 

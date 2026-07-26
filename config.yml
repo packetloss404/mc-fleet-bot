@@ -205,6 +205,28 @@ mining:
   # The box also makes every block inside undiggable (enforced at the mineBlock
   # filter, the bot.dig hook, and the build engine's /fill paths), which is what
   # stops the hall being mined out from under itself.
+  # EXTENDED 2026-07-25 per docs/DECISIONS-2026-07-25.md (Ravensreach Q7). The
+  # 2026-07-25 world audit found every structure except the hall was undiggable by
+  # nobody: 5 cottages, the storehouse and the mine apron had no zone at all, and
+  # bots demonstrably act on nearby materials (9 of 17 grove trees were harvested).
+  # Boxes are the as-built footprints from town.db plus a 2-block margin.
+  #
+  # ONLY the hall carries `shelter: true`. getNearestProtectedCenter returns the
+  # NEAREST zone centre as the night-shelter target, so marking several would
+  # scatter the fleet across the town at dusk instead of mustering it at the hall.
+  #
+  # The mine is protected at its APRON ONLY (y63-70: the 9x9 stone_brick pad, the
+  # collar and the torch ring). The shaft interior y58-62 is deliberately left
+  # diggable — a mine that cannot be dug is not a mine, and the decision protects
+  # the apron, not the resource.
+  #
+  # Accepted trade-off, stated in the decision: bots also cannot REPAIR anything
+  # inside these boxes. That is moot while all repair work is operator-RCON.
+  #
+  # NOTE: this list cannot be hot-patched. FIELD_TYPES.mining types only minDigY,
+  # and validatePatch silently DROPS arrays while returning ok:true — a PATCH here
+  # reports success and changes nothing. Editing this file plus a restart is the
+  # only path.
   protectedZones:
     - name: ravensreach-town-hall
       minX: -105
@@ -214,6 +236,55 @@ mining:
       maxY: 95
       maxZ: -355
       shelter: true
+    - name: ravensreach-cottage-architect
+      minX: -126
+      minY: 60
+      minZ: -382
+      maxX: -110
+      maxY: 85
+      maxZ: -368
+    - name: ravensreach-cottage-mason
+      minX: -60
+      minY: 60
+      minZ: -382
+      maxX: -44
+      maxY: 85
+      maxZ: -368
+    - name: ravensreach-cottage-surveyor
+      minX: -93
+      minY: 60
+      minZ: -409
+      maxX: -77
+      maxY: 85
+      maxZ: -398
+    - name: ravensreach-cottage-steward
+      minX: -120
+      minY: 60
+      minZ: -352
+      maxX: -104
+      maxY: 85
+      maxZ: -338
+    - name: ravensreach-cottage-scout
+      minX: -66
+      minY: 60
+      minZ: -352
+      maxX: -50
+      maxY: 85
+      maxZ: -338
+    - name: ravensreach-storehouse
+      minX: -97
+      minY: 60
+      minZ: -422
+      maxX: -73
+      maxY: 80
+      maxZ: -406
+    - name: ravensreach-mine-apron
+      minX: -91
+      minY: 63
+      minZ: -446
+      maxX: -79
+      maxY: 70
+      maxZ: -434
   # Dig-depth floor. Bots default to tunnelling straight down whenever a surface
   # resource isn't immediately visible, then get entombed: on 2026-07-24 the
   # fleet was found at y14/y35/y52/y61 with solid blocks overhead, and "Mine 1

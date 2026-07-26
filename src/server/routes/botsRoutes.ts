@@ -476,6 +476,29 @@ export function registerBotRoutes(
     res.json({ success: true });
   });
 
+  // Recent SERVER messages this bot received (system output, not player chat).
+  //
+  // The companion read for POST /say. Issuing a command through /say was
+  // write-only: it reaches the server, but the reply — "3 blocks changed", a
+  // WorldGuard denial, a WorldEdit limit error — arrived as a system message that
+  // nothing captured. That made every scripted command a blind write, which is how
+  // this project's worst incidents happened. Anything driving WorldEdit through a
+  // bot must be able to tell a refusal from a success.
+  //
+  // Query: `since` (epoch ms) returns only messages after that instant, so a caller
+  // can stamp the time, issue a command, then read exactly its reply.
+  app.get('/api/bots/:name/server-messages', (req: Request, res: Response) => {
+    const handle = botManager.getWorker(req.params.name as string) as any;
+    if (!handle || !handle.isAlive()) {
+      res.status(404).json({ error: 'Bot not found or not connected' });
+      return;
+    }
+    const status = handle.getCachedStatus?.();
+    const all: Array<{ t: number; text: string }> = status?.serverMessages ?? [];
+    const since = Number(req.query.since ?? 0) || 0;
+    res.json({ messages: all.filter((m) => m.t > since) });
+  });
+
   // Task #72 — Dev-only /grant endpoint for offline-mode item seeding.
   // The handler logic lives in `createGrantHandler` (exported above, near
   // the top of this file) so it can be tested in isolation without

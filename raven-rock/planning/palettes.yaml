@@ -45,10 +45,12 @@
 #   variants) SHOULD be confirmed present on the target 1.21.x server. Blocks added in 1.21.4+
 #   (pale oak, resin, creaking family) are DELIBERATELY AVOIDED for compatibility.
 #
-# SITE CONDITIONS:
-#   Target server is stock Paper — no WorldEdit / WorldGuard / Dynmap / Citizens; builder bots are
-#   NOT opped. Every block listed is placeable by an un-opped survival/creative bot. Nothing here
-#   assumes // commands, region protection, NPCs, or op. This subterranean build sits ~20 blocks
+# SITE CONDITIONS  (CORRECTED 2026-07-25 — the old "no plugins / not opped" text was false):
+#   WorldEdit 7.4.0 and WorldGuard 7.0.16 ARE installed; the builder bots ARE opped (level 4).
+#   Dynmap/BlueMap, EssentialsX and Citizens are absent. Every block listed is still placeable by
+#   plain block placement, so nothing in this palette *depends* on // commands or op. Region
+#   protection is partly active (`mob-spawning: deny`; see qa/oq3-worldguard.md) — which is the
+#   BACKSTOP for, not a replacement for, the OQ-3 lighting standard below. This subterranean build sits ~20 blocks
 #   beneath the MainStreet America surface plane (a build convention, NOT the real ~650 ft depth —
 #   manifest BUILD-SCALE NOTE).
 # ===================================================================================================

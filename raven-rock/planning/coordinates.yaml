@@ -37,12 +37,20 @@ meta:
   block_palette: vanilla-compatible only, no resource pack
   master_document: planning/site-plan.md   # authoritative for all centroids/dimensions; this file agrees with it
   site_conditions: >-
-    Target server is stock Paper with NO plugins — no WorldEdit, WorldGuard, Dynmap, or EssentialsX/
-    Citizens (the staged integration files therefore stay dormant). CORRECTION: builder bots ARE now
+    CORRECTED 2026-07-25 — the long-standing "stock Paper, NO plugins" premise was FALSE. `plugins` over
+    RCON reports three: PacketCraft, **WorldEdit 7.4.0** and **WorldGuard 7.0.16**, both installed and
+    responsive. WorldEdit //commands ARE therefore available (driven through an opped bot, since console
+    has no selection), and WorldGuard regions ARE enforceable. Still ABSENT: Dynmap/BlueMap, EssentialsX,
+    Citizens — so `integration/map-marker.yaml` and `integration/warps.yaml` remain genuinely dormant,
+    but `integration/worldguard.yaml` is no longer blocked. CORRECTION: builder bots ARE now
     opped (level 4, per the MSA as-built survey / ops.json) — the earlier "not opped" premise is stale.
-    These are plain world coordinates for bot-driven placement; no //commands or NPCs are assumed.
-    "Protected envelope" is a planning boundary, not an enforced region — and because the bots are opped
-    they would BYPASS any WorldGuard build:deny even if WorldGuard were added. PROTECTION MODEL — DECIDED
+    Plain world coordinates remain the primary placement method for bot-driven building.
+    "Protected envelope" is now a PARTLY enforced region: WorldGuard region `raven_rock`
+    (x[-300,300] y[-64,61] z[-300,300], priority 11) plus `raven_rock_shaft` (x[193,207] y[-12,64]
+    z[-22,-8], priority 20) were created 2026-07-25 with `mob-spawning: deny` set — see
+    `qa/oq3-worldguard.md`. The build/grief flags are deliberately NOT set yet: the bots are opped and
+    op BYPASSES WorldGuard build:deny, so build protection is worthless until the OQ-2 de-op happens.
+    PROTECTION MODEL — DECIDED
     (see planning/open-questions.md OQ-2): builder bots stay opped DURING construction, then are DE-OPPED
     once the build completes, after which WorldGuard build:deny protects the museum normally. The de-op is
     a post-build operational step, NOT yet performed. Same decision applies to MSA (shared museum profile).
@@ -139,9 +147,22 @@ zones:
 
   - id: RR-Z5
     name: Vertical Access Shaft (deliberate creative liberty)
-    bounds: [193, -22, 207, -8]        # a ~14x14 shaft footprint centered on (200,-15)
+    bounds: [193, -22, 207, -8]        # RESERVED envelope, 15x15. AS-BUILT BORE IS 9x9 - see below.
+    as_built_bore: [196, -19, 204, -11]  # verified 2026-07-25 by census; the reserved envelope was never fully cut
     floor_y: -12                        # base connects Cavern A spur
     ceiling_y: 64                       # rises to the MSA surface plane
+    # AS-BUILT CORRECTIONS, 2026-07-25 (docs/DECISIONS-2026-07-25.md, Tier 3):
+    #   * Bore is 9x9 at x[196,204] z[-19,-11], not the 15x15 the envelope implies.
+    #   * Landings DO exist and always did: solid 9x9 iron_bars platforms at 15 levels,
+    #     y-11,-6,-1,4,9,14,19,24,29,34,39,44,49,54,59 - i.e. every y = 4 (mod 5).
+    #     The 2026-07-25 audit reported "0/11 iron bars found" because it probed
+    #     y28/33/38/-7/-2, every one of which is off by one from the real spacing.
+    #   * What was genuinely missing was ACCESS: zero ladders, and the landings were
+    #     solid floors with no hatch, so the shaft was not traversable either way.
+    #     Now fitted with a 3x3 centre drop through all 15 landings and a continuous
+    #     ladder on the EAST wall (x=204, backed by solid stone at x=205). The west
+    #     wall cannot carry it - it has a 6-block gap at y-11..-6 which is the S1 spur
+    #     mouth, and filling that for ladder backing would brick up the Cavern A route.
     purpose: >-
       A single invented shaft from Cavern A up through the rock buffer to a surface head-house (N9) at
       (200, 64, -15) in MSA's EAST greenbelt, well clear of every MSA planned surface element (x=200 is
@@ -188,7 +209,12 @@ buildings:
     name: Quarters, Dining & Medical
     zone: RR-Z2
     location_center: {x: 0, y: -6, z: 100}       # base y-6 = 4-block springs above Cavern B floor y-10
-    footprint: {x_size: 44, z_size: 30}
+    footprint: {x_size: 36, z_size: 30}          # AMENDED 2026-07-25 to as-built: was 44 x 30
+    # OQ-C, ratified: accept as-built and amend the plan. The world has x[-18,18], not
+    # x[-22,22] - shell is air at +-22 and the slab is solid at +-18, a real plan-vs-world
+    # delta that matches the build log, not probe error. Widening a finished building would
+    # risk its cavern clearances and re-open completed interior work to gain 8 blocks nobody
+    # perceives. See docs/DECISIONS-2026-07-25.md.
     floors: 3
     building_top_y: 11                           # -6 + 3*5 + 2
     spring_pedestal_height: 4
@@ -275,12 +301,29 @@ notable_locations:
     zone: RR-Z4
     confidence: creative approximation
     note: Twin blast doors on the North Vehicle Tunnel. Blast doors exist in concept for a hardened site; placement creative.
+    blast_doors: NOT BUILT            # confirmed 2026-07-25, see below
+    flood_status: SEALED 2026-07-25   # was flooded: 888 water blocks inside the bore
+    as_built_note: >-
+      FLOOD FIXED 2026-07-25 (docs/DECISIONS-2026-07-25.md). N1 sits inside a large flooded
+      natural cave system. Sealed with a per-slice rock jacket derived from the stone_bricks
+      tread (2,128 + 1,773 blocks), plus a perched aquifer pool at y19-21 that sat directly on
+      the seal's ceiling and drained down through it (298), plus 41 WATERLOGGED
+      pointed_dripstone/glow_lichen. The waterlogged blocks were decisive: the flood
+      regenerated to the IDENTICAL extent (523 blocks) after every drain until they were
+      removed, which is the signature of a hidden source that `execute if block ... water`
+      cannot match and `fill ... air replace water` cannot remove. Verified: 0 blocks refilled
+      after 150s across all 136 slices.
+      BLAST DOORS: genuinely absent, now confirmed rather than merely "not found at probed
+      points" - a full census of the vestibule returns ZERO iron_block; the only iron present
+      is natural ore (11 deepslate_iron_ore + 1 iron_ore). R4 stands in full.
   - id: N2
     name: East Blast Vestibule
     coordinate: {x: 180, y: 0, z: -30}
     footprint: {x_size: 12, z_size: 12}
     zone: RR-Z4
     confidence: creative approximation
+    blast_doors: NOT BUILT            # confirmed 2026-07-25: zero iron_block; only 5 natural iron_ore
+    flood_status: dry                 # no water found in the 2026-07-25 census
   - id: N3
     name: South Personnel Portal (mouth)
     coordinate: {x: -150, y: 18, z: 285}
@@ -311,15 +354,50 @@ notable_locations:
     coordinate: {x: -290, y: 10, z: 5}
     zone: RR-Z4
     confidence: high-confidence inference
+    flood_status: >-
+      MOUTH PERMANENTLY UNDER WATER; complex sealed from it 2026-07-25.
+    as_built_note: >-
+      The 2026-07-25 audit could only mark N5/N6 INCONCLUSIVE because their chunks had never
+      been loaded. Resolved by reading the region files instead - trap #7 applies to RCON
+      PROBES, not to region reads, so a generated chunk is on disk whether or not it is loaded.
+      N5 east is CLEAN (390 stone_bricks of structure, no water). N6 is FLOODED: the mouth
+      opens into a large natural aquifer, 7,165+ water blocks continuing past every box
+      measured, with 213 inside the throat itself.
+      DRAINING IS IMPOSSIBLE and was never attempted - it is the plaza-lake mistake at scale.
+      Instead a 2-block BULKHEAD (211 blocks of deepslate) was built at x=-278/-277, where T4
+      is a clean regular bore, sealing the complex from the flooded mouth cavity. T4 east of it
+      is verified DRY end to end, including the Cavern C junction at (-185,-16,-10) that the
+      audit flagged.
+      CONSEQUENCE, stated plainly: N6 is NOT usable as a portal. Making it usable needs a
+      coffer through the aquifer, as N3 got. That is a separate build and is NOT done.
+      Note also that T4's bore was dry all along; the "1,308 water blocks in T4" reported
+      earlier came from a survey box far wider than the tunnel, which both descends
+      (y5 -> y-18) and curves (z+7 -> z-13). Locate this tunnel by its stone_bricks tread,
+      never by its water.
   - id: N7
-    name: Reservoirs 1 & 2 (sumps)
+    name: Reservoir (single undivided basin)     # AMENDED 2026-07-25: was "Reservoirs 1 & 2 (sumps)"
     coordinate: {x: -150, y: -18, z: -30}
-    footprint: {x_size: 40, z_size: 8}      # two adjacent basins in the south strip of Cavern C, clear of RR-B4
+    footprint: {x_size: 40, z_size: 8}      # ONE basin in the south strip of Cavern C, clear of RR-B4
     zone: RR-Z3
     confidence: creative approximation
     note: >-
       "Two reservoirs" is a popular figure, not authoritative (REF-009 conflict); size/position invented.
       Sits at z[-34,-26], south of RR-B4 (z-24..4) with a ~2-block gap; inside Cavern C z[-35,15].
+      AMENDED 2026-07-25 per OQ-C/OQ-B (docs/DECISIONS-2026-07-25.md): a 15-point sweep found a
+      SINGLE UNDIVIDED BASIN with no partition at x=-150. Since the two-reservoir figure was never
+      authoritative and N7 is the best-executed element in the complex (full liner, 0/9 leakage),
+      the docs were amended rather than a partition cut into a verified-watertight liner - which is
+      exactly the operation that caused the Cavern A aquifer bleed.
+    as_built:
+      floor_y: -19                          # one course lower than the specified y-18
+      liner: prismarine_bricks              # dressed to Z-RESERVOIR 2026-07-25; was clay
+      water: 1845                           # verified unchanged across the re-lining
+      note: >-
+        Relined 1,097 clay -> prismarine_bricks solid-for-solid, so there was never an
+        intermediate gap and watertightness was preserved throughout. NOTE for future surveys:
+        N7's 369 water columns sit INSIDE Cavern C's floor layer, so a census of that floor
+        reports "water in the cavern floor". That is the reservoir, not leak residue - do not
+        drain it.
   - id: N8
     name: Central Spring-Isolation Array (under RR-B1)
     coordinate: {x: -30, y: -12, z: -15}
@@ -330,6 +408,20 @@ notable_locations:
     name: Vertical Access Shaft — Surface Head-House (deliberate liberty)
     coordinate: {x: 200, y: 64, z: -15}
     zone: RR-Z5
+    status: BUILT 2026-07-25          # was 0% / MISSING at the 2026-07-25 audit
+    as_built:
+      footprint: [193, -22, 207, -8]  # 15x15 - the full reserved RR-Z5 envelope, giving a 3-wide apron
+      floor_y: 64                     # apron stone_bricks, laid with `replace stone` so it cannot fill the bore
+      walls: [65, 69]                 # y65 polished_blackstone base course, y66-69 stone_bricks
+      roof_y: 70
+      fittings: iron_door (west, x=193 z=-15) · iron_bars railing round the 9x9 mouth · 4 hanging lanterns
+      note: >-
+        OQ-A chose "build at natural grade, no earthworks". Measured grade at the mouth is
+        y63-64, NOT the ~y62 the audit reported, so natural grade here IS the MSA y64 plane -
+        the no-earthworks choice and a consistent skyline turned out to be the same decision,
+        and the "2-block step down from MSA" the question worried about does not exist.
+        Foundation verified solid 144/144 at y62 and y63; the shaft is now enclosed and
+        weatherproofed rather than an open hole to the sky.
     confidence: creative approximation
     note: >-
       Emerges at the MSA surface plane in the EAST greenbelt at x=200 (relocated from the former
@@ -354,7 +446,7 @@ consistency_check:
   building_extents:
     RR-B1: {x: [-50, -10], z: [-32, 2],   y: [-8, 9]}
     RR-B2: {x: [22, 54],   z: [-30, 0],   y: [-8, 9]}
-    RR-B3: {x: [-22, 22],  z: [85, 115],  y: [-6, 11]}
+    RR-B3: {x: [-18, 18],  z: [85, 115],  y: [-6, 11]}   # AMENDED 2026-07-25 to as-built; was x[-22,22]
     RR-B4: {x: [-170, -130], z: [-24, 4], y: [-14, -2]}
   containment_in_zone: PASS       # RR-B1/B2 in RR-Z1 [-75,-45,75,15]; RR-B3 in RR-Z2 [-45,70,45,130]; RR-B4 in RR-Z3 [-185,-35,-115,15]
   containment_in_envelope: PASS   # all building & portal extents within x/z [-300, 300]

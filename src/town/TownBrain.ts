@@ -825,6 +825,86 @@ export class TownBrain {
       ? { width: footprint.size.x, height: footprint.size.y, depth: footprint.size.z }
       : {};
 
+    // UNMEASURABLE SCHEMATIC. If the footprint could not be parsed we cannot site
+    // it or record it honestly, so we do not build it. Proceeding used to write a
+    // dimensionless row, which makes the avoidRects derived from these rows
+    // zero-area and siting blind for every later building — and it is how a
+    // 15,613-block town hall schematic got pasted with no usable footprint,
+    // stranding material up to y99 with nothing beneath it.
+    if (!footprint || footprint.parseFailed || !dims.width || !dims.depth || !dims.height) {
+      logger.warn(
+        {
+          townId: this.townId,
+          kind: item.kind,
+          buildingId: building.id,
+          schematicFile: resolved.schematicFile,
+          parseFailed: footprint?.parseFailed ?? null,
+          dims,
+        },
+        'TownBrain build: schematic footprint is unmeasurable; refusing to build rather than record a dimensionless row',
+      );
+      this.townManager.recordEvent({
+        townId: this.townId,
+        kind: 'design:unmeasurable',
+        severity: 'minor',
+        payload: { kind: item.kind, schematicFile: resolved.schematicFile, parseFailed: footprint?.parseFailed ?? null },
+        highlightScore: 20,
+      });
+      this.townManager.deleteBuilding(building.id);
+      // Same reasoning as the oversize path: don't re-plan a kind we just refused.
+      this.recordBuildFailure(item.kind);
+      return;
+    }
+
+    // FOOTPRINT BOUND. A matched schematic can be far bigger than the kind implies:
+    // 'small medieval town hall.schem' placed 15,613 blocks for a founding-tier
+    // town hall whose registry row claims 25x14x13 (4,550 max). The oversize build
+    // overshot its plot, left material stranded up to y99 with nothing beneath it,
+    // and the row then under-described the world so the registry could not be
+    // trusted. Rejecting is better than building: a missing building is visible,
+    // whereas a mis-recorded one silently corrupts siting for everything after it,
+    // because avoidRects are derived from these very rows.
+    if (dims.width && dims.depth) {
+      const cap = TownBrain.footprintCapForKind(item.kind);
+      const blockCount = footprint.blockCount ?? 0;
+      // Solid-block count is the real measure of scale. 'small medieval town
+      // hall.schem' is 52x40x54 with 15,624 SOLID blocks against a 6,000 budget —
+      // that is what made it overrun its plot and strand material up to y99. A
+      // sparse design with a big canvas is fine; a dense one is not.
+      const tooMany = blockCount > cap.blocks;
+      const tooWide = dims.width > cap.side || dims.depth > cap.side;
+      const tooTall = (dims.height ?? 0) > cap.height;
+      if (tooMany || tooWide || tooTall) {
+        logger.warn(
+          {
+            townId: this.townId,
+            kind: item.kind,
+            buildingId: building.id,
+            schematicFile: resolved.schematicFile,
+            dims,
+            cap,
+          },
+          'TownBrain build: schematic exceeds the footprint budget for this kind; refusing to build',
+        );
+        this.townManager.recordEvent({
+          townId: this.townId,
+          kind: 'design:oversize',
+          severity: 'minor',
+          payload: { kind: item.kind, schematicFile: resolved.schematicFile, dims, blockCount, cap },
+          highlightScore: 20,
+        });
+        this.townManager.deleteBuilding(building.id);
+        // Back off this kind. Every rejection path deletes the planned row so the
+        // build lock cannot wedge — but that also means the kind is re-planned on
+        // the very next tick, which spun a tight loop (planned → rejected →
+        // deleted → planned) that added an event every ~50s until it was noticed.
+        // A size rejection is a decision, not a transient failure, so use the
+        // existing exponential per-kind cooldown rather than retrying immediately.
+        this.recordBuildFailure(item.kind);
+        return;
+      }
+    }
+
     // Pass to BuildCoordinator with auto-flat origin. The capital coords are
     // the seed for the SiteSelector spiral. The job carries townId/buildingId
     // so its lifecycle hooks can keep the building row in sync:
@@ -839,6 +919,7 @@ export class TownBrain {
     // town hall). corner-origin x/z rects; selectBuildSite inflates by margin.
     const avoidRects = existingBuildings
       .filter((b) => b.origin && b.width && b.depth && b.status !== 'destroyed')
+      .filter((b) => !TownBrain.isNonBlockingFootprint(b.name))
       .map((b) => ({
         x1: b.origin!.x,
         x2: b.origin!.x + (b.width as number),
@@ -1108,12 +1189,36 @@ export class TownBrain {
     // 4) Library fallback via SchematicMatcher.
     if (this.schematicMatcher) {
       try {
+        // Pass the KIND, not just the free-text query. Without it the matcher can
+        // satisfy a request on descriptor overlap alone — "medieval stone well"
+        // matched medieval-tent.schem on the word "medieval", and the town then
+        // recorded a red canvas tent in its registry as a completed well.
         const match = this.schematicMatcher.match(item.schematicQuery, {
           style: town.styleSeed ?? undefined,
+          kind: item.kind,
         });
         if (match) {
+          logger.info(
+            { townId: this.townId, kind: item.kind, file: match.filename, reason: match.reason },
+            'TownBrain build: library fallback matched',
+          );
           return { schematicFile: match.filename, source: 'library' };
         }
+        logger.warn(
+          { townId: this.townId, kind: item.kind, query: item.schematicQuery },
+          'TownBrain build: no library schematic matches this kind — skipping rather than building the wrong thing',
+        );
+        this.townManager.recordEvent({
+          townId: this.townId,
+          kind: 'design:no-match',
+          severity: 'minor',
+          payload: { kind: item.kind, query: item.schematicQuery },
+          highlightScore: 10,
+        });
+        // No library schematic is this kind, and that will still be true next
+        // tick — back off instead of re-asking every minute.
+        this.recordBuildFailure(item.kind);
+        return null;
       } catch (err: any) {
         logger.warn(
           { err: err?.message, kind: item.kind },
@@ -1129,6 +1234,68 @@ export class TownBrain {
       schematicFile: `${item.schematicQuery}.schem`,
       source: 'fallback',
     };
+  }
+
+  /**
+   * Largest footprint we will accept for a given building kind, as a max side
+   * length and max height in blocks. Deliberately generous — the point is to
+   * catch a schematic that is categorically the wrong scale for the slot, not to
+   * enforce a style guide. Anything not listed gets the default.
+   */
+  /**
+   * Footprint kinds that must NOT contribute an avoidRect.
+   *
+   * avoidRects exist to stop buildings being stacked on each other. But the town
+   * registry also holds rows for things that are SURFACES or are at a completely
+   * different elevation, and treating those as no-build zones makes the town
+   * unable to build on its own ground:
+   *
+   *  - `plaza` — a 41x41 paved pad covering the entire town centre. A village well
+   *    belongs IN the plaza, yet with the plaza blocking, siting refused every
+   *    candidate there and the only remaining "flat" ground the search could reach
+   *    was a pond, which is how the well ended up in water three times.
+   *  - `path` / `road` — paved surface, same reasoning.
+   *  - `mine` — sits at y58, tens of blocks below the surface plane; its rect was
+   *    vetoing surface sites directly above it for no reason at all.
+   *
+   * NOT exempt: `grove`. Trees are genuine obstacles with real vertical extent, and
+   * building through one destroys a deliberate landscape feature.
+   *
+   * Structures inside an exempt rect still block on their own account — the Town
+   * Hall sits within the plaza box and contributes its own avoidRect, so exempting
+   * the plaza does not permit building on the hall.
+   */
+  private static readonly NON_BLOCKING_KINDS = new Set(['plaza', 'path', 'road', 'mine']);
+
+  /** Building rows are named "<kind>:<id>"; the kind decides whether it blocks. */
+  private static isNonBlockingFootprint(name: string | null | undefined): boolean {
+    if (!name) return false;
+    const kind = String(name).split(':')[0].trim().toLowerCase();
+    return TownBrain.NON_BLOCKING_KINDS.has(kind);
+  }
+
+  private static footprintCapForKind(kind: string): { blocks: number; side: number; height: number } {
+    // `blocks` is the PRIMARY limit and is the one that matters. Judging by the
+    // bounding box alone rejects good designs: the LLM's well design is a
+    // perfectly reasonable 66 solid blocks inside a 19x12x23 canvas that is
+    // mostly empty air, and an early version of this cap threw it away on the
+    // canvas size and then re-planned it every tick in a loop.
+    // `side`/`height` stay as a loose backstop against a canvas so large it would
+    // overrun its plot regardless of how sparse it is.
+    const CAPS: Record<string, { blocks: number; side: number; height: number }> = {
+      well: { blocks: 500, side: 26, height: 16 },
+      house: { blocks: 3000, side: 32, height: 24 },
+      town_hall: { blocks: 6000, side: 44, height: 30 },
+      storage: { blocks: 3000, side: 36, height: 20 },
+      tavern: { blocks: 4000, side: 36, height: 24 },
+      blacksmith: { blocks: 2500, side: 28, height: 20 },
+      market: { blocks: 3000, side: 36, height: 18 },
+      plaza: { blocks: 3000, side: 48, height: 10 },
+      walls: { blocks: 8000, side: 96, height: 18 },
+      watchtower: { blocks: 2000, side: 20, height: 36 },
+      windmill: { blocks: 2500, side: 24, height: 34 },
+    };
+    return CAPS[kind] ?? { blocks: 5000, side: 40, height: 28 };
   }
 
   /** Lazy-load the style.json. Returns null when the file is missing. */

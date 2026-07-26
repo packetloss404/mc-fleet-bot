@@ -10,6 +10,19 @@ import { logger } from '../util/logger';
  * This replaces the old default of "place the schematic wherever the user
  * typed coordinates" — which dropped buildings into trees, off cliffs, and
  * underwater.
+ *
+ * WATER, specifically: for a long time this file claimed to avoid underwater
+ * placement but did not, and the failure mode was the opposite of random — the
+ * selector was ATTRACTED to water. `isSolidGround()` classifies fluid as
+ * not-ground, so `topSolidY()` scans down through a lake and reports the lake
+ * BED as the surface. A lake bed is the flattest terrain in Minecraft, so it beat
+ * real ground on the flatness test; `originY = minY + 1` then put the build floor
+ * one block above the bed; and the ground-layer fluid check at `originY - 1`
+ * sampled the bed itself (sand/dirt), so FLUID_PENALTY often never even fired.
+ * A town well was sited in a lake this way. Fluid is now a HARD REJECT on two
+ * axes — submerged columns (see maxSubmergedCols) and fluid in the footprint
+ * (see maxFluidBlocks) — rather than a score penalty that a good flatness
+ * reading could outweigh.
  */
 
 export interface SiteCandidate {
@@ -80,6 +93,28 @@ export interface SiteSelectorOptions {
    * paths/yards instead of sitting flush. Default 5.
    */
   spacingMargin?: number;
+  /**
+   * How many sampled footprint columns may be SUBMERGED (have fluid standing
+   * above the topmost solid block) before the candidate is rejected outright.
+   * Default 0 — i.e. any submerged column disqualifies the site.
+   *
+   * This is a hard gate rather than a score penalty because the selector is
+   * otherwise structurally ATTRACTED to water. `isSolidGround()` treats fluid as
+   * not-ground, so `topSolidY()` scans straight down through a lake and returns
+   * the LAKE BED; a lake is then the flattest terrain in Minecraft, sails through
+   * the flatness test, and `originY = minY + 1` places the build floor one block
+   * above the bed — underwater. Worse, the ground-layer probe at `originY - 1`
+   * lands on the bed (sand/dirt) and so records no fluid at all, meaning the
+   * FLUID_PENALTY frequently never fires for the very case it exists to catch.
+   * A well was sited in a lake this way.
+   */
+  maxSubmergedCols?: number;
+  /**
+   * How many fluid blocks may appear in the footprint's obstacle scan before the
+   * candidate is rejected. Default 0. Water inside a building footprint is
+   * disqualifying, not something to price in at 20 points and build anyway.
+   */
+  maxFluidBlocks?: number;
 }
 
 /** True if the candidate footprint [seedX,seedX+sx) × [seedZ,seedZ+sz),
@@ -151,6 +186,18 @@ const NEAR_FALLOFF = 12;
 
 const VEG_PENALTY = 3;
 const FLUID_PENALTY = 20;
+/**
+ * Ceiling on the TOTAL fluid penalty for one candidate.
+ *
+ * Fluid is now a hard reject by default (see maxFluidBlocks), so this only
+ * applies when a caller has explicitly opted into building near water — a dock or
+ * a bridge. Without a cap the opt-in was useless: a 5x5 footprint in a 4-deep
+ * lake accumulates ~100 fluid hits = 2000 penalty against a base score of ~130,
+ * so the site scored far below zero and was discarded by the `score > 0` gate
+ * even though the caller had just said water was acceptable. Capped, the penalty
+ * still expresses "prefer the drier of two options" without vetoing.
+ */
+const FLUID_PENALTY_CAP = 30;
 const SPAWNER_PENALTY = 30;
 const ARTIFICIAL_PENALTY = 50;
 const ROOF_PENALTY = 5;
@@ -305,7 +352,12 @@ async function timedProbe(
 
 /**
  * Find the topmost solid block in a column by scanning down from yStart.
- * Returns the Y of that block, or null if nothing solid found in the window.
+ *
+ * Also reports whether the scan passed THROUGH fluid on the way down, i.e.
+ * whether that solid block is a lake/river bed rather than a dry surface. The
+ * caller needs this because the y value alone cannot distinguish "flat ground"
+ * from "flat lake bottom", and the latter used to be selected preferentially:
+ * water is the flattest terrain there is.
  */
 async function topSolidY(
   probe: BlockProbe,
@@ -314,10 +366,12 @@ async function topSolidY(
   yStart: number,
   ctx: SearchContext,
   depth = 24,
-): Promise<number | null> {
+): Promise<{ y: number; submerged: boolean } | null> {
+  let sawFluid = false;
   for (let y = yStart + 8; y > yStart - depth; y--) {
     const b = await timedProbe(probe, x, y, z, ctx);
-    if (isSolidGround(b)) return y;
+    if (isFluid(b)) sawFluid = true;
+    if (isSolidGround(b)) return { y, submerged: sawFluid };
     // If budget was exhausted mid-column, bail out rather than continuing.
     if (budgetExceeded(ctx)) return null;
   }
@@ -333,6 +387,8 @@ async function evaluateCandidate(
   refPos: { x: number; y: number; z: number },
   flatTol: number,
   ctx: SearchContext,
+  maxSubmergedCols: number,
+  maxFluidBlocks: number,
 ): Promise<SiteCandidate | null> {
   // Sample a sparse grid of footprint columns rather than every column. For a
   // small footprint (area <= COL_SAMPLE_TARGET) stride is 1 → exhaustive, same
@@ -350,10 +406,30 @@ async function evaluateCandidate(
 
   // 1. Probe column tops across the sampled footprint.
   const tops: number[] = [];
+  let submergedCols = 0;
   for (const { dx, dz } of cols) {
     if (budgetExceeded(ctx)) return null;
     const top = await topSolidY(probe, seedX + dx, seedZ + dz, refY, ctx);
-    if (top !== null) tops.push(top);
+    if (top !== null) {
+      tops.push(top.y);
+      if (top.submerged) submergedCols++;
+    }
+    // Abandon a submerged candidate immediately instead of scanning the rest of
+    // its columns. Without this, every lake candidate costs a full column sweep,
+    // and over a wide spiral that exhausts the global probe budget — which
+    // surfaces as a thrown "site selection timed out" rather than a clean "no
+    // site here", because the budget and the deadline share one error path.
+    if (submergedCols > maxSubmergedCols) break;
+  }
+
+  // Reject a submerged site BEFORE the flatness test, because flatness is
+  // exactly what would let it through — a lake bed is perfectly level.
+  if (submergedCols > maxSubmergedCols) {
+    logger.debug(
+      { seedX, seedZ, submergedCols, sampledCols: cols.length, maxSubmergedCols, size },
+      'SiteSelector: candidate rejected — footprint is underwater (fluid above the ground surface)',
+    );
+    return null;
   }
   if (tops.length < cols.length / 2) {
     logger.debug({ seedX, seedZ, foundCols: tops.length, sampledCols: cols.length, neededCols: Math.ceil(cols.length / 2), size, refY }, 'SiteSelector: candidate rejected — too few solid columns');
@@ -372,6 +448,9 @@ async function evaluateCandidate(
   const origin = { x: seedX, y: originY, z: seedZ };
   const reasons: string[] = [`flat to ${range} block(s)`];
   let penalty = 0;
+  // Tracked apart from `penalty` so it can be capped at FLUID_PENALTY_CAP; see
+  // that constant for why an uncapped fluid penalty made maxFluidBlocks useless.
+  let fluidPenalty = 0;
   const obstacles = { vegetation: 0, logs: 0, fluid: 0, artificial: 0 };
 
   // 2. Inspect the sampled footprint columns and the ground layer. The vertical
@@ -386,7 +465,7 @@ async function evaluateCandidate(
     const ground = await timedProbe(probe, origin.x + dx, originY - 1, origin.z + dz, ctx);
     if (isLog(ground)) { obstacles.logs++; penalty += VEG_PENALTY * 2; }
     else if (isVeg(ground)) { obstacles.vegetation++; penalty += VEG_PENALTY; }
-    if (isFluid(ground)) { obstacles.fluid++; penalty += FLUID_PENALTY; }
+    if (isFluid(ground)) { obstacles.fluid++; fluidPenalty += FLUID_PENALTY; }
     if (isPlayerBuilt(ground)) { obstacles.artificial++; penalty += ARTIFICIAL_PENALTY; }
 
     // Column inside the footprint — looking for trees / spawners / player builds.
@@ -396,7 +475,7 @@ async function evaluateCandidate(
       if (!b || b.name === 'air' || b.name === 'cave_air') continue;
       if (isLog(b)) { obstacles.logs++; penalty += VEG_PENALTY * 2; }
       else if (isVeg(b)) { obstacles.vegetation++; penalty += VEG_PENALTY; }
-      if (isFluid(b)) { obstacles.fluid++; penalty += FLUID_PENALTY; }
+      if (isFluid(b)) { obstacles.fluid++; fluidPenalty += FLUID_PENALTY; }
       if (b.name === 'spawner' || b.name === 'monster_egg') penalty += SPAWNER_PENALTY;
       if (isPlayerBuilt(b)) { obstacles.artificial++; penalty += ARTIFICIAL_PENALTY; }
     }
@@ -410,6 +489,20 @@ async function evaluateCandidate(
       }
     }
   }
+
+  // Fluid anywhere in the footprint disqualifies the site. Previously this was
+  // only a 20-point penalty against a base score of 100 (+20 near bonus, +10
+  // sunlit), so a handful of water blocks still scored positively and
+  // `cand.score > 0` accepted it — the build then went up in the water.
+  if (obstacles.fluid > maxFluidBlocks) {
+    logger.debug(
+      { origin, fluid: obstacles.fluid, maxFluidBlocks, size },
+      'SiteSelector: candidate rejected — fluid inside the footprint',
+    );
+    return null;
+  }
+
+  penalty += Math.min(fluidPenalty, FLUID_PENALTY_CAP);
 
   // 3. Bonuses.
   const dist = Math.hypot(origin.x - refPos.x, origin.z - refPos.z);
@@ -470,6 +563,8 @@ export async function selectBuildSite(
   const maxProbes = options.maxProbes ?? DEFAULT_MAX_PROBES;
   const avoidRects = options.avoidRects ?? [];
   const spacingMargin = options.spacingMargin ?? 5;
+  const maxSubmergedCols = options.maxSubmergedCols ?? 0;
+  const maxFluidBlocks = options.maxFluidBlocks ?? 0;
 
   const refX = Math.floor(refPos.x);
   const refZ = Math.floor(refPos.z);
@@ -510,7 +605,10 @@ export async function selectBuildSite(
         continue;
       }
 
-      const cand = await evaluateCandidate(probe, refX + dx, refZ + dz, size, refY, refPos, flatTol, ctx);
+      const cand = await evaluateCandidate(
+        probe, refX + dx, refZ + dz, size, refY, refPos, flatTol, ctx,
+        maxSubmergedCols, maxFluidBlocks,
+      );
       if (cand && cand.score > 0) {
         scored.push(cand);
         if (!bestSoFar || cand.score > bestSoFar.score) bestSoFar = cand;

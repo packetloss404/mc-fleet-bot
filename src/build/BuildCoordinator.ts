@@ -17,10 +17,48 @@ import { SchematicStore } from './SchematicStore';
 import type { SchematicInfo, CachedSchematic } from './SchematicStore';
 import { GatherPlanner, normalizeResource } from './GatherPlanner';
 import type { GatherPlanEntry, SkillChunk } from './GatherPlanner';
+import { worldEditFill, logWorldEditResult } from './WorldEditOps';
 
 // Re-exported so existing importers of these types from BuildCoordinator keep working.
 export type { SchematicInfo, CachedSchematic } from './SchematicStore';
 export type { GatherPlanEntry } from './GatherPlanner';
+
+/**
+ * The bounding box of a schematic's actual CONTENT, as distinct from its canvas.
+ *
+ * `.size` is the declared canvas and can be wildly larger than the structure in
+ * it — the LLM-designed Ravensreach well is 66 solid blocks occupying 5x10x3
+ * inside a 19x12x23 canvas. Siting and footprint records that use the canvas
+ * demand (and reserve) ground the building never touches, which both prevents
+ * legitimate sites from qualifying and makes the town registry over-claim space.
+ *
+ * Returns the content size plus its offset within the canvas, so a caller can
+ * validate terrain against the real footprint and then shift the paste anchor by
+ * `-offset` to land the content exactly there. An empty schematic degrades to the
+ * canvas with a zero offset, which preserves the old behaviour.
+ */
+function computeContentBounds(cached: CachedSchematic): {
+  size: { x: number; y: number; z: number };
+  offset: { x: number; y: number; z: number };
+} {
+  if (!cached.blocks || cached.blocks.length === 0) {
+    return { size: cached.size, offset: { x: 0, y: 0, z: 0 } };
+  }
+  let x0 = Infinity, y0 = Infinity, z0 = Infinity;
+  let x1 = -Infinity, y1 = -Infinity, z1 = -Infinity;
+  for (const b of cached.blocks as Array<{ rx: number; ry: number; rz: number }>) {
+    if (b.rx < x0) x0 = b.rx;
+    if (b.ry < y0) y0 = b.ry;
+    if (b.rz < z0) z0 = b.rz;
+    if (b.rx > x1) x1 = b.rx;
+    if (b.ry > y1) y1 = b.ry;
+    if (b.rz > z1) z1 = b.rz;
+  }
+  return {
+    size: { x: x1 - x0 + 1, y: y1 - y0 + 1, z: z1 - z0 + 1 },
+    offset: { x: x0, y: y0, z: z0 },
+  };
+}
 
 // ── Interfaces ──────────────────────────────────────────────
 
@@ -409,9 +447,29 @@ export class BuildCoordinator {
     if (!handle) throw new Error('No connected bot available to issue /fill');
 
     logger.info({ jobId, box, chunks: chunks.length }, 'Demolishing build footprint');
-    for (const [cx1, cy1, cz1, cx2, cy2, cz2] of chunks) {
-      handle.chat(`/fill ${cx1} ${cy1} ${cz1} ${cx2} ${cy2} ${cz2} air`);
-      await this.sleep(150); // gentle cadence so the fills don't trip a chat-spam kick
+
+    // Prefer WorldEdit: one operation regardless of volume, and — the reason that
+    // matters for a DESTRUCTIVE op — it is undoable with `//undo`. Chunked `/fill`
+    // is not, which is why the 2026-07-25 tower loss needed a bespoke snapshot
+    // diff-and-replay to recover.
+    //
+    // Falls back to the original chunked `/fill` on failure, LOUDLY. Silent
+    // fallback would reintroduce exactly the blind-write problem this path exists
+    // to remove: the operator would believe they had an undo when they did not.
+    const we = await worldEditFill(handle, box, 'air');
+    logWorldEditResult({ jobId, box, op: 'demolish' }, we);
+
+    let usedWorldEdit = we.ok;
+    if (!we.ok) {
+      logger.warn(
+        { jobId, box, reason: we.reason, chunks: chunks.length },
+        'Demolish: WorldEdit unavailable or refused — falling back to chunked /fill. ' +
+          'THIS DEMOLITION WILL NOT BE UNDOABLE.',
+      );
+      for (const [cx1, cy1, cz1, cx2, cy2, cz2] of chunks) {
+        handle.chat(`/fill ${cx1} ${cy1} ${cz1} ${cx2} ${cy2} ${cz2} air`);
+        await this.sleep(150); // gentle cadence so the fills don't trip a chat-spam kick
+      }
     }
 
     job.status = 'cancelled';
@@ -419,8 +477,10 @@ export class BuildCoordinator {
     this.eventLog.push({
       type: 'build:demolished',
       botName: handle.botName ?? 'system',
-      description: `Demolished ${job.schematicFile} at ${x1},${y1},${z1} (${chunks.length} /fill ops)`,
-      metadata: { jobId, box },
+      description: usedWorldEdit
+        ? `Demolished ${job.schematicFile} at ${x1},${y1},${z1} (WorldEdit, ${we.blocksAffected ?? '?'} blocks, undoable)`
+        : `Demolished ${job.schematicFile} at ${x1},${y1},${z1} (${chunks.length} /fill ops, NOT undoable)`,
+      metadata: { jobId, box, usedWorldEdit, blocksAffected: we.blocksAffected },
     });
     this.io.emit('build:demolished', { jobId, box });
     this.persistJobs();
@@ -1198,6 +1258,17 @@ export class BuildCoordinator {
       throw new Error(`Schematic volume too large (${schSize.x}x${schSize.y}x${schSize.z} = ${volume.toLocaleString()} voxels). Max 2M voxels.`);
     }
 
+    // CONTENT BOUNDS vs CANVAS. A schematic's declared size is its canvas, which
+    // can be far larger than the structure inside it: the LLM-designed Ravensreach
+    // well is 66 solid blocks occupying 5x10x3 inside a 19x12x23 canvas — 97% empty
+    // air. Siting against the canvas therefore demanded a flat, dry 19x23 area
+    // (plus margin, ~1,085 columns) for a building covering 15 columns. Nothing in
+    // the town plaza could satisfy that, and the only terrain big and flat enough
+    // was a lake — which is how that well was built in water three times.
+    // Selecting on content, then shifting the paste back by the content's offset,
+    // means the STRUCTURE lands on the ground that was actually validated.
+    const contentBounds = computeContentBounds(cached);
+
     // ── Options ──
     let fillFoundation = options?.fillFoundation !== false; // default true
     let snapToGround = options?.snapToGround === true; // default false
@@ -1275,14 +1346,32 @@ export class BuildCoordinator {
     // Map originMode -> concrete {x, y, z}. The supplied `origin` is the
     // fallback for 'coords' mode and a hint elsewhere (e.g. Y for player mode).
     // CRITICAL: propagate a timeout so the caller can clean up.
-    origin = await withTimeout(
-      this.resolveOrigin(originMode, origin, botNames, probeHandle, schSize, {
+    const resolvedOrigin = await withTimeout(
+      this.resolveOrigin(originMode, origin, botNames, probeHandle, contentBounds.size, {
         avoidRects: options?.avoidRects,
         spacingMargin: options?.spacingMargin,
       }),
       sitePrepRemaining(),
       'startBuild resolveOrigin',
     );
+    // Shift the paste anchor back by the content offset so the STRUCTURE sits on
+    // the validated site rather than the canvas corner. Only for modes that
+    // actually choose a site — 'coords' means the caller gave an exact anchor and
+    // must get exactly that.
+    origin = originMode === 'coords'
+      ? resolvedOrigin
+      : {
+          x: resolvedOrigin.x - contentBounds.offset.x,
+          y: resolvedOrigin.y - contentBounds.offset.y,
+          z: resolvedOrigin.z - contentBounds.offset.z,
+        };
+    if (originMode !== 'coords' && (contentBounds.offset.x || contentBounds.offset.y || contentBounds.offset.z)) {
+      logger.info(
+        { schematicFile, canvas: schSize, content: contentBounds.size, offset: contentBounds.offset,
+          validatedAt: resolvedOrigin, pasteAt: origin },
+        'Build: paste anchor shifted so schematic content lands on the validated site',
+      );
+    }
     // resolveOrigin can return a Y from bot position, player position, or
     // auto-flat site selection — none of which are guaranteed to land inside
     // the build-height range. Re-check after resolution so non-'coords' modes
@@ -2631,11 +2720,19 @@ export class BuildCoordinator {
         spacingMargin: avoidOpts?.spacingMargin,
       });
       if (!cand) {
-        // No flat site qualified. Falling back to the raw supplied origin would
-        // re-create the very overlap the avoid-gate just prevented (it's the
-        // capital, usually already built on). Instead spiral out geometrically
-        // to the nearest origin whose footprint+margin clears every avoidRect —
-        // snapToGround/clearSite will handle the (possibly uneven) terrain there.
+        // No qualifying site. The old behaviour here silently DEFEATED site
+        // selection: it fell back to `nearestAvoidClearOrigin` — a purely
+        // GEOMETRIC spiral that checks avoidRects and nothing else — and failing
+        // that, to the raw supplied origin. Neither knows anything about terrain,
+        // so every flatness/water/obstacle judgement the selector had just made
+        // was thrown away. That is how Ravensreach's well was built in a pond
+        // three times in a row while the selector was correctly logging
+        // "no acceptable site found": the refusal was overridden by a
+        // terrain-blind coordinate.
+        //
+        // The avoid-clear spiral is still a useful SEED (it does solve the real
+        // problem the original comment describes — the capital is usually already
+        // built on), but it must be VALIDATED before use, not trusted.
         const avoidClear = nearestAvoidClearOrigin(
           fallbackOrigin,
           schSize,
@@ -2643,11 +2740,31 @@ export class BuildCoordinator {
           avoidOpts?.spacingMargin ?? 5,
         );
         if (avoidClear.x !== fallbackOrigin.x || avoidClear.z !== fallbackOrigin.z) {
-          logger.warn({ from: fallbackOrigin, to: avoidClear }, 'originMode auto-flat: no flat site; using nearest avoid-clear origin');
-          return avoidClear;
+          const revalidated = await selectBuildSite(probe, avoidClear, schSize, {
+            avoidRects: avoidOpts?.avoidRects,
+            spacingMargin: avoidOpts?.spacingMargin,
+            // Tight search: we only want to know whether this seed, or somewhere
+            // very close to it, is actually buildable.
+            radius: 16,
+            fallbackRadius: 32,
+          });
+          if (revalidated) {
+            logger.warn(
+              { from: fallbackOrigin, seed: avoidClear, chosen: revalidated.origin, reasons: revalidated.reasons },
+              'originMode auto-flat: no site near origin; validated a site near the avoid-clear seed',
+            );
+            return revalidated.origin;
+          }
         }
-        logger.warn({ refPos: fallbackOrigin }, 'originMode auto-flat: no acceptable site found near supplied origin, using supplied origin');
-        return fallbackOrigin;
+        // Refuse. TownBrain treats a thrown startBuild as "abort and retry", and
+        // it has per-kind exponential backoff for exactly this. A building that
+        // does not appear is a visible gap someone can act on; a building placed
+        // in a lake is worse, and it also poisons the registry that later siting
+        // decisions are derived from.
+        throw new Error(
+          `auto-flat site selection found no buildable site near ${fallbackOrigin.x},${fallbackOrigin.y},${fallbackOrigin.z} ` +
+          `for a ${schSize.x}x${schSize.y}x${schSize.z} footprint (terrain/water/obstacle checks all rejected it)`,
+        );
       }
       logger.info({ origin: cand.origin, confidence: cand.confidence, reasons: cand.reasons }, 'Build: auto-flat site selected');
       return cand.origin;
