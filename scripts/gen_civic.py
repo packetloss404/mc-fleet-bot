@@ -107,23 +107,49 @@ def phase_library_shell():
 
 
 def phase_library_stairs():
-    """A single stair core serving all six levels, plus the grand atrium stair."""
+    """A switchback stair core serving all six levels, plus the grand atrium stair.
+
+    THE FIRST VERSION DID NOT WORK AND THE REACHABILITY CHECK FOUND IT. It built one
+    straight flight per level, all five in the SAME footprint at different heights, each
+    one step short of its landing. Net effect: you could fall from the ground floor to
+    B3 but could not climb to the first or second floor at all -- the upper half of a
+    six-storey library was sealed. Placement sampling scored it BUILT.
+
+    A flight must actually span the gap between levels. Level spacing here is 7 blocks
+    below grade and 8 above, so each transition is two runs of four with a landing
+    between, which fits the 5x7 core and lands exactly on the next floor."""
     o = Ops()
-    sx, sz = -118, -444          # service core, NE corner
-    for _, y in LEVELS[:-1]:
-        h = 6 if y >= 67 else 5
-        o.set(sx - 1, y, sz - 1, sx + 3, y + h + 1, sz + 5, 'air')
-        for i in range(h + 1):
-            o.set(sx, y + i, sz + i, sx + 2, y + i, sz + i, 'polished_andesite')
-        o.set(sx - 1, y, sz - 1, sx + 3, y, sz + 5, 'polished_andesite')
-        o.set(sx + 3, y + 1, sz - 1, sx + 3, y + h, sz + 5, 'lantern')
-    # grand stair in the atrium, ground -> first -> second
-    for base in (67, 75):
-        for i in range(8):
+    CX1, CX2 = -118, -116          # 3-wide runs
+    ZA, ZB = -444, -440            # run A goes +z, run B returns -z
+    for a, b in zip(LEVELS, LEVELS[1:]):
+        y0, y1 = a[1], b[1]
+        rise = y1 - y0
+        n = (rise + 1) // 2        # steps per run; 7 -> 4, 8 -> 4
+        # hollow the core for this storey so the stair has somewhere to be
+        o.set(CX1 - 1, y0, ZA - 1, CX2 + 1, y1 + 2, ZB + 1, 'air')
+        y = y0
+        for i in range(n):         # run A, climbing north-to-south
+            o.set(CX1, y, ZA + i, CX2, y, ZA + i, 'polished_andesite')
+            y += 1
+        o.set(CX1, y, ZB - 1, CX2, y, ZB, 'polished_andesite')   # landing
+        for i in range(rise - n):  # run B, climbing back
+            o.set(CX1, y + i, ZB - 1 - i, CX2, y + i, ZB - 1 - i, 'polished_andesite')
+        o.set(CX1, y1, ZA, CX2, y1, ZA + 1, 'polished_andesite')  # arrive on the floor
+        o.set(CX2 + 1, y0 + 1, ZA, CX2 + 1, y1, ZB, 'lantern')
+    # A ladder in the same core as a second, unambiguous route. Stairs can be a block
+    # short and still look right in a render; a continuous ladder column cannot.
+    o.set(CX1 - 1, LEVELS[0][1], ZB + 1, CX1 - 1, LEVELS[-1][1] + 6, ZB + 1, 'stone_bricks')
+    o.set(CX1, LEVELS[0][1], ZB + 1, CX1, LEVELS[-1][1] + 6, ZB + 1,
+          'ladder[facing=south]')
+    o.set(CX1, LEVELS[0][1], ZB, CX2, LEVELS[-1][1] + 6, ZB, 'air')
+    # grand atrium stair, ground -> first -> second, spanning the full 8-block rise
+    for base, top in ((67, 75), (75, 83)):
+        for i in range(top - base):
             o.set(-131, base + i, -440 + i, -126, base + i, -440 + i, 'dark_oak_planks')
             o.set(-131, base + i + 1, -440 + i, -126, base + i + 4, -440 + i, 'air')
-        o.set(-132, base + 1, -440, -132, base + 8, -433, 'dark_oak_fence')
-        o.set(-125, base + 1, -440, -125, base + 8, -433, 'dark_oak_fence')
+        o.set(-131, top, -440 + (top - base), -126, top, -433, 'dark_oak_planks')
+        o.set(-132, base + 1, -440, -132, top, -433, 'dark_oak_fence')
+        o.set(-125, base + 1, -440, -125, top, -433, 'dark_oak_fence')
     return o.write('lib2_stairs.txt')
 
 
