@@ -48,6 +48,19 @@ groups:
         type: solid
         box: [-105, 67, -395, -65, 67, -355]
         min_fraction: 0.98
+      - name: plaza has no unpaved grass holes
+        # ADDED after a survey found 50 grass_block cells in the repave that the
+        # stone_bricks count alone sailed past. The plaza check was PASSING at 1306
+        # bricks while 50 cells were bare turf: counting what SHOULD be there does not
+        # catch what should NOT be. Assert both directions.
+        type: absent
+        box: [-105, 67, -395, -65, 67, -355]
+        materials: [grass_block, dirt, coarse_dirt, podzol]
+      - name: no furniture abandoned on the open plaza
+        # A double red bed sits exposed at (-89..-88, 68, -385) with no building on it.
+        type: absent
+        box: [-105, 68, -395, -65, 68, -355]
+        materials: [red_bed, chest, barrel, furnace, crafting_table]
       - name: no water on the plaza surface
         type: absent
         box: [-105, 68, -395, -65, 70, -355]
@@ -226,10 +239,25 @@ groups:
   # corresponds to something that actually went wrong here.
   - name: Regression guards
     checks:
+      - name: no gardens in the sky
+        # 28 rose bushes and grass platforms sit at y90-92 over the eastern annex —
+        # the "items floating in the sky" most visible from the ground. Planting above
+        # roof height is never intentional, which makes this an unambiguous assertion
+        # where a generic "is it floating?" test is not.
+        type: absent
+        box: [-130, 85, -425, -40, 130, -310]
+        materials: [rose_bush, grass_block, dirt, short_grass, poppy, dandelion, oak_sapling]
+      - name: no nether farm above the town
+        # soul_sand + nether_wart at y83-88 in the annex.
+        type: absent
+        box: [-130, 80, -425, -40, 130, -310]
+        materials: [soul_sand, nether_wart, soul_soil, netherrack]
       - name: no floating blocks in open sky above the town
-        # y95+ is well clear of every roof; the tallest structure tops out near y92.
+        # Deliberately starts ABOVE the legitimate tall structures: the town-hall
+        # belfry reaches y100 and the annex watchtower y109, and both are grounded.
+        # An assertion that flagged them would be noise, and noisy checks get ignored.
         type: empty
-        box: [-130, 95, -425, -40, 130, -335]
+        box: [-130, 112, -425, -40, 140, -310]
       - name: mine apron intact
         type: contains
         box: [-89, 64, -444, -81, 64, -436]
