@@ -58,6 +58,15 @@ groups:
         # catch what should NOT be. Assert both directions.
         type: absent
         box: [-105, 67, -395, -65, 67, -355]
+        exclude:
+          # The four 3x3 corner planters are DELIBERATE green, per the masterplan.
+          # This check went red at exactly 36 cells = 4 x 9 the moment they were
+          # planted, which is the assertion failing to distinguish a planting bed from
+          # an unpaved hole. Both are grass on a plaza; only one is a defect.
+          - [-104, 67, -394, -102, 67, -392]
+          - [-68, 67, -394, -66, 67, -392]
+          - [-104, 67, -358, -102, 67, -356]
+          - [-68, 67, -358, -66, 67, -356]
         materials: [grass_block, dirt, coarse_dirt, podzol]
       - name: no furniture abandoned on the open plaza
         # Originally caught a double red bed exposed at (-89..-88,68,-385) with no
@@ -328,3 +337,62 @@ groups:
         type: absent
         box: [-130, 68, -425, -40, 120, -335]
         materials: [soul_sand, nether_wart, netherrack, soul_soil]
+
+  # ---------------------------------------------------------------- public realm
+  # The operator's complaint was "no common roads, paths, gardens". Before this work
+  # the entire district held 27 gravel blocks and one four-block path.
+  - name: Public realm
+    checks:
+      - name: road network exists
+        type: contains
+        box: [-130, 62, -440, -40, 70, -330]
+        materials: [gravel]
+        min: 700
+      - name: streets are lit
+        type: contains
+        box: [-130, 68, -440, -40, 72, -330]
+        materials: [lantern, spruce_fence]
+        min: 40
+      - name: kitchen gardens planted
+        type: contains
+        box: [-130, 67, -372, -40, 68, -330]
+        materials: [farmland, spruce_fence_gate]
+        min: 60
+
+  # ---------------------------------------------------------------- annex
+  # Buildings whose fittings were placed by the town brain and whose shells never
+  # were. Each assertion pairs a WALL count with a FITTING count: if walls fail while
+  # fittings pass, that is precisely the "furniture floating in an open shell" symptom
+  # the operator reported, and the pair says so unambiguously.
+  - name: Annex buildings
+    checks:
+      - name: wizard tower is walled
+        type: contains
+        box: [-84, 68, -334, -72, 106, -322]
+        materials: [stone_bricks, chiseled_stone_bricks, spruce_log]
+        min: 1200
+      - name: wizard tower fittings enclosed
+        type: contains
+        box: [-84, 68, -334, -72, 106, -322]
+        materials: [barrel, chest, furnace, bookshelf, enchanting_table]
+        min: 30
+      - name: market longhouse is walled
+        type: contains
+        box: [-73, 68, -344, -39, 90, -323]
+        materials: [cobblestone, spruce_log]
+        min: 1000
+      - name: market longhouse is roofed
+        type: contains
+        box: [-74, 79, -345, -38, 91, -322]
+        materials: [spruce_stairs, spruce_planks]
+        min: 500
+      - name: group B is walled
+        type: contains
+        box: [-65, 68, -370, -41, 80, -352]
+        materials: [stone_bricks, spruce_log]
+        min: 700
+      - name: group B is roofed
+        type: contains
+        box: [-66, 81, -371, -40, 90, -351]
+        materials: [spruce_stairs, spruce_planks]
+        min: 250
