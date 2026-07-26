@@ -289,17 +289,28 @@ groups:
   - name: Regression guards
     checks:
       - name: no gardens in the sky
-        # 28 rose bushes and grass platforms sit at y90-92 over the eastern annex —
-        # the "items floating in the sky" most visible from the ground. Planting above
-        # roof height is never intentional, which makes this an unambiguous assertion
-        # where a generic "is it floating?" test is not.
+        # Originally 28 rose bushes and grass platforms floating at y90-92 with nothing
+        # under them. The wizard tower they belonged to was DESIGNED (its parapet posts
+        # stood at y107-109 marking the footprint) and never built — its fittings were
+        # placed and its shell was not.
+        #
+        # The tower has now been constructed and the overhanging platforms corbelled,
+        # so those gardens are a planted roof terrace rather than debris. The tower is
+        # excluded rather than the assertion weakened: planting above roof height ANY-
+        # WHERE ELSE is still wrong, and that is what this check is for.
         type: absent
         box: [-130, 85, -425, -40, 130, -310]
+        exclude:
+          - [-86, 85, -336, -70, 130, -320]   # wizard tower + its balconies
         materials: [rose_bush, grass_block, dirt, short_grass, poppy, dandelion, oak_sapling]
       - name: no nether farm above the town
-        # soul_sand + nether_wart at y83-88 in the annex.
+        # soul_sand + nether_wart at y83-88, likewise inside the tower now that it has
+        # walls. A nether farm on a wizard tower's floor is a room; the same blocks
+        # hanging in open air were not.
         type: absent
         box: [-130, 80, -425, -40, 130, -310]
+        exclude:
+          - [-86, 80, -336, -70, 130, -320]
         materials: [soul_sand, nether_wart, soul_soil, netherrack]
       - name: no floating blocks in open sky above the town
         # Deliberately starts ABOVE the legitimate tall structures: the town-hall
