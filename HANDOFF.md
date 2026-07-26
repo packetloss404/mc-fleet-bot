@@ -286,18 +286,36 @@ write into production `data/`.
 
 ---
 
-## 6. Hardware — see §7 of this file for sizing
+## 6. Hardware — RESIZED 2026-07-26. §7's plan is COMPLETE.
 
-Measured 2026-07-25:
+**Both hosts were upgraded by the operator and every item in the §7 order of work is
+now done.** Re-measured 2026-07-26:
 
 | | Bot host `.18` | MC server `.14` |
 |---|---|---|
-| Cores | **2** | **2** |
-| RAM | **7 GB** (1 used, 5 avail) | **15 GB** (2 used, 13 avail) |
+| Cores | **8** *(was 2)* — Xeon E5-2680 v4 @ 2.40GHz | **4** *(was 2)* |
+| RAM | **15 GB** *(was 7)* — 2 used, 13 avail | **15 GB** — 5 used, 10 avail |
 | Disk | 60 GB (8.9 used, 49 free) | 175 GB (8.7 used, 159 free) |
-| Load (1/5/15) | 0.55 / 1.55 / 2.11 | 0.73 / 0.62 / 0.56 |
-| Process | `mc-fleet-bot` RSS 0.92 GB | Java `-Xms1G -Xmx2G` |
+| Load (1/5/15) | **2.54 / 2.23 / 2.08 on 8 cores ≈ 32% subscribed** | low |
+| Process | 5 bot workers, heap 62–101 MB of 816 (8–12%) | Java `-Xms4G -Xmx6G`, RSS 4.5 GB |
 | Data | repo+data 1.7 GB, log 146 MB | world 66 MB, 18 region files, server dir 476 MB |
+
+**The CPU bottleneck is gone.** Sustained load ran 2.5–4.7 on a 2-core box through the
+2026-07-25 session — 125–235% subscribed, and everything that felt slow traced to it.
+The same workload now sits at ~32%.
+
+Two consequences worth knowing:
+
+- **Multi-agent fan-out is no longer throttled.** Concurrency is derived from core count
+  (`min(16, cores − 2)`), so a 6-agent fan-out that previously ran **2 at a time** now
+  runs **6**.
+- **Bot count can finally rise — the old warning against it is STALE.** §7 used to end
+  with "do not raise bot count immediately after resizing, the worker OOM is unexplained."
+  That blocker is gone: the OOM was root-caused to `mineflayer-pathfinder` shipping
+  `searchRadius = -1` (which disabled A* pruning entirely) and fixed via
+  `config.behavior.pathfinderSearchRadius`; there have been **0 kills since**, and workers
+  idle at 8–12% of their 816 MB cap. Budget `main ~1 GB + (bots × 0.8 GB) + ~2 GB OS`
+  → **15 GB comfortably carries 10–12 bots**, and the honest limit is ~15.
 
 ---
 
@@ -370,16 +388,31 @@ that *was* growing without bound — a 152 MB unrotated bot log — now rotates.
 
 ### Order of work
 
-1. ~~**Raise the MC server heap to `-Xmx6G`**~~ **DONE** — was already live; see above
-2. **Bot host 2 → 8 vCPU** — fixes the actual bottleneck, now the top item
-3. **Bot host 7 → 16 GB RAM** — only needed *before* raising bot count
-4. **MC server 2 → 4 vCPU** — nice to have
-5. **Disk** — nothing
+**ALL FIVE ITEMS ARE DONE as of 2026-07-26. Nothing here is outstanding.**
 
-> ⚠️ **Do not raise bot count immediately after resizing.** The worker OOM
-> (§3, Watch) is unexplained: steady state is ~200 MB but something occasionally
-> balloons past 768 MB. More bots multiply an unresolved leak. Root-cause that
-> first, then scale.
+1. ~~**Raise the MC server heap to `-Xmx6G`**~~ **DONE** — was already live; see above
+2. ~~**Bot host 2 → 8 vCPU**~~ **DONE** — the bottleneck is gone (235% → 32% subscribed)
+3. ~~**Bot host 7 → 16 GB RAM**~~ **DONE** — now 15 GB, 13 available
+4. ~~**MC server 2 → 4 vCPU**~~ **DONE**
+5. **Disk** — nothing needed, and still nothing
+
+> ~~⚠️ **Do not raise bot count immediately after resizing.** The worker OOM is
+> unexplained…~~
+>
+> **THIS WARNING IS RETIRED — do not act on it.** It was written while the OOM was
+> still a mystery ("steady state ~200 MB but something occasionally balloons past
+> 768 MB"). It is no longer a mystery and it was never a leak: `mineflayer-pathfinder`
+> ships `searchRadius = -1`, which makes `astar.js` compute `maxCost = -1` and disables
+> its pruning test entirely; with `canDig = true` the search space became the full 3-D
+> volume, and the same AStar context was re-entered every tick with no eviction. Bounded
+> via `config.behavior.pathfinderSearchRadius` (default 96). **0 kills since; workers
+> idle at 8–12% of their 816 MB cap.**
+>
+> Scaling is therefore unblocked. The real limit now is RAM, not stability:
+> `main ~1 GB + (bots × 0.8 GB) + ~2 GB OS` → **10–12 bots comfortable, ~15 the ceiling.**
+> Before adding any, note the open contradiction in §3: bots are still assigned
+> stone-mining inside protected zones, so those goals fail permanently. More bots would
+> multiply *that*, not a leak. Fix the geofence contradiction first, then scale.
 
 ---
 
