@@ -15,6 +15,8 @@
  * Usage:
  *   node scripts/reachability.mjs --from x,y,z --to x,y,z[;x,y,z...] \
  *        [--regions data/worldsnap/region] [--budget 400000] [--pad 8] [--trace]
+ *   node scripts/reachability.mjs --from x,y,z --box x1,y1,z1,x2,y2,z2
+ *        [--samples N]
  *
  * Exit 0 if every target is reachable, 1 if any is not (and it says which, plus how
  * close the flood got, so you know where the blockage is).
@@ -42,6 +44,7 @@ const REGIONS = arg('--regions', 'data/worldsnap/region');
 const BUDGET = Number(arg('--budget', 600000));
 const PAD = Number(arg('--pad', 10));
 const TRACE = args.includes('--trace');
+const SAMPLES = Math.max(0, Number(arg('--samples', 0)));
 
 const triple = (s) => s.split(',').map(Number);
 const FROM = triple(arg('--from'));
@@ -74,7 +77,8 @@ const PASSABLE_EXACT = new Set(['minecraft:snow', 'minecraft:short_grass',
                                 'minecraft:tall_grass', 'minecraft:fern',
                                 'minecraft:large_fern', 'minecraft:dead_bush',
                                 'minecraft:lantern', 'minecraft:soul_lantern',
-                                'minecraft:chain', 'minecraft:end_rod', 'minecraft:light',
+                                'minecraft:chain', 'minecraft:iron_chain',
+                                'minecraft:end_rod', 'minecraft:light',
                                 'minecraft:flower_pot', 'minecraft:lever',
                                 'minecraft:tripwire', 'minecraft:cobweb']);
 
@@ -281,18 +285,53 @@ async function run() {
       Math.min(BOX[0], BOX[3]), Math.min(BOX[1], BOX[4]), Math.min(BOX[2], BOX[5]),
       Math.max(BOX[0], BOX[3]), Math.max(BOX[1], BOX[4]), Math.max(BOX[2], BOX[5])];
     let inside = 0, got = 0;
+    const byLevel = new Map();
+    const reachedSamples = [];
+    const sealedSamples = [];
     for (let y = by1; y <= by2; y++)
       for (let z = bz1; z <= bz2; z++)
         for (let x = bx1; x <= bx2; x++) {
           if (!(await standable(x, y, z))) continue;
           inside++;
-          if (seen.has(`${x},${y},${z}`)) got++;
+          const reached = seen.has(`${x},${y},${z}`);
+          const counts = byLevel.get(y) || {
+            inside: 0, reached: 0, reachedSample: null, sealedSample: null,
+          };
+          counts.inside++;
+          if (reached) {
+            got++;
+            counts.reached++;
+            counts.reachedSample ||= [x, y, z];
+            if (reachedSamples.length < SAMPLES) reachedSamples.push([x, y, z]);
+          } else if (sealedSamples.length < SAMPLES) {
+            counts.sealedSample ||= [x, y, z];
+            sealedSamples.push([x, y, z]);
+          } else {
+            counts.sealedSample ||= [x, y, z];
+          }
+          byLevel.set(y, counts);
         }
     const pct = inside ? Math.round((100 * got) / inside) : 0;
     const verdict = inside === 0 ? 'NO-INTERIOR'
                   : got === 0 ? 'SEALED'
                   : pct >= 60 ? 'OPEN' : 'PARTLY-SEALED';
     console.log(`  ${verdict}  ${got}/${inside} standable interior cells reachable (${pct}%)`);
+    if (SAMPLES) {
+      const levels = [...byLevel.entries()]
+        .map(([y, n]) => {
+          const samples = [
+            n.reachedSample ? `r=${n.reachedSample.join(',')}` : null,
+            n.sealedSample ? `s=${n.sealedSample.join(',')}` : null,
+          ].filter(Boolean).join(' ');
+          return `y${y}:${n.reached}/${n.inside}${samples ? ` (${samples})` : ''}`;
+        })
+        .join('  ');
+      console.log(`  levels: ${levels}`);
+      if (reachedSamples.length)
+        console.log(`  reached samples: ${reachedSamples.map((p) => p.join(',')).join('  ')}`);
+      if (sealedSamples.length)
+        console.log(`  sealed samples: ${sealedSamples.map((p) => p.join(',')).join('  ')}`);
+    }
     process.exit(verdict === 'OPEN' || verdict === 'NO-INTERIOR' ? 0 : 1);
   }
   let bad = 0;

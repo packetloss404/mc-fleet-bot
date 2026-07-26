@@ -33,10 +33,10 @@ from mc_admin import Rcon, connect            # noqa: E402
 
 FILL_LIMIT = 32768
 # Blocks this server's COMMAND PARSER rejects, though WorldEdit places them happily.
-# Measured 2026-07-26: `setblock <x> <y> <z> chain` and `fill ... chain` both return
-# "Unknown block type 'minecraft:chain'", with or without an explicit axis state, while
-# the same block set through WorldEdit works. Anything listed here is routed to the
-# WorldEdit leftover file rather than being attempted and silently lost.
+# Measured 2026-07-26: the legacy `chain` / `minecraft:chain` id is absent on this
+# 1.21.11 server; its registry name is `minecraft:iron_chain`. Keep the legacy id
+# blocked so an old ops file cannot silently lose rigging. New generators must emit
+# `minecraft:iron_chain`, which works through vanilla /fill and needs no WorldEdit.
 COMMAND_BLOCKED = {'chain'}
 BATCH = 40                                     # commands per RCON round-trip
 OK = re.compile(r'Successfully filled|filled \d+ block')

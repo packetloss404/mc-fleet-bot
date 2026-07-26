@@ -16,7 +16,7 @@ found nothing to replace is not evidence of failure.
 
 Exit code 1 if any file scores below the pass threshold.
 """
-import argparse, json, os, random, subprocess, sys
+import argparse, json, os, random, re, subprocess, sys
 
 CENSUS = os.path.join(os.path.dirname(__file__), 'block_census.mjs')
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,10 +40,12 @@ def read_block(x, y, z):
                         str(x), str(y), str(z), '--include-air', '--list'],
                        capture_output=True, text=True, cwd=ROOT, timeout=180)
     for line in r.stdout.splitlines():
-        if 'minecraft:' in line and line.strip().startswith('-') or 'minecraft:' in line and line.strip()[0].isdigit() is False:
-            parts = line.split()
-            if len(parts) >= 4 and parts[3].startswith('minecraft:'):
-                return parts[3].replace('minecraft:', '')
+        # Read the coordinate-bearing line, not the aggregate tally above it. The
+        # old sign check only admitted position lines whose X coordinate began with
+        # "-", so every positive-coordinate build sampled as `None`.
+        m = re.match(r'\s*-?\d+\s+-?\d+\s+-?\d+\s+minecraft:(\S+)\s*$', line)
+        if m:
+            return m.group(1)
     return None
 
 

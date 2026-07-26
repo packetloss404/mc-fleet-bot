@@ -8,29 +8,25 @@ Priority tags: **[P0]** time-boxed / do next · **[P1]** should do soon · **[P2
 
 ## Items
 
-### W0. [P0/M] The Westlight theatre is sealed — a 6,000-seat venue nobody can enter
-- **Why:** `build_status.py` reports `SEALED 0/15,886` reachable interior cells from the surface, and only **6%** internally connected from its own lobby. Two defects: the grand stair court from the south forecourt down to the parterre at y35 was specified and never built, so there is no surface route at all; and `gen_westlight.py phase_theatre()` cuts drum vomitories at `TH_FLOOR + 1` and `36` while the lobby floors sit at y18 / y29 / y40, so two lobby levels serve no vomitory. It is the largest finished interior in the world and it is worth nothing until someone can walk in.
-- **Next action:** build the forecourt stair y67 -> y35, then re-cut the vomitories at *measured* lobby levels. Verify with `reachability.mjs --box`, never point targets.
+### W0. [DONE 2026-07-26] Westlight theatre circulation
+- **Resolution:** built the grade-to-parterre switchback and entry tunnel, joined the three lobby floors, and continued radial passages through the drum and seating tiers at measured y18 / y29 / y40 floor levels. Six representative destinations pass in both directions; measured venue coverage is **91%** (18,176/20,018 standable cells), enforced at an 85% floor in `builds/manifest.yaml`.
 
-### W1. [P0/S] The members' club lounge has no door
-- **Why:** `SEALED 0/117`. The room is complete — 929 blocks, red concrete and velvet, a lit dance floor of black stained glass over sea lanterns, the bar — and walled on four sides at `x[-417,-400] y35-43 z[-566,-550]`. It has now been lost twice: once when `cl1/cl2/cl3` never ran behind a deadlocked sequencer, and again when the rebuild shipped sealed.
-- **Next action:** cut a door from the theatre balcony's west side. Tracked as `members-club-lounge` so it cannot go missing a third time.
+### W1. [DONE 2026-07-26] Members' club circulation
+- **Resolution:** continued the west balcony vomitory through the solid raked seating and added a two-wide private stair down to the lounge without disturbing its bar or dance floor. Both lounge levels pass in both directions from the exterior; measured room coverage is **96%** (192/199 standable cells), enforced at a 90% floor in `builds/manifest.yaml`.
 
-### W2. [P1/S] The Moot Hall has one external door
-- **Why:** 12 doors, 10 of them internal partitions; the only way in is a single double-door at `x[-86,-85] z=-376`. This is why the hall's upper storeys report **15%** reachable and why the Sanctum reports **sealed from the plaza** despite being reachable from the penthouse — you cannot get to the vertical core.
-- **Next action:** add entrances on the north and west elevations. One change should move three manifest units at once.
+### W2. [DONE 2026-07-26] Moot Hall / Sanctum circulation
+- **Resolution:** measurement disproved the proposed façade fix: the hall already had an internal doorway into the core, but the final shaft carve had removed its landing. Restored landings at y67/y73/y79, added the missing top switchback into the penthouse, re-cut the overwritten processional corridor, and built a climbable Sanctum return aisle. Hall coverage is now **97%** (1,273/1,318 standable cells), and `moot-hall-core`, `sanctum-descent`, and `sanctum` are all `PLACED / WALKABLE` in both directions.
 
-### W3. [P1/M] Grange Hall 38% and Market Hall 64% reachable
-- **Why:** both interiors were executed from the Fable 5 plans and both have floor plates that exist without reliable stairs between them (Grange y68/y73/y82; Market walk/terrace/loft).
-- **Next action:** connect the levels, then re-run `build_status.py --only grange-hall-interior` / `--only market-hall-interior`.
+### W3. [DONE 2026-07-26] Grange Hall and Market Hall circulation
+- **Resolution:** measured the live stair failures rather than replacing the protected storage they crossed. Market now has a complete walk-to-terrace flight, a new clear-bay loft flight and a railed bridge joining both lofts; coverage is **91%** (1,249/1,375 standable cells). Grange now has a reopened hall-to-wall-walk flight and a new two-wide west-bay stair to the craft loft; coverage is **98%** (775/793). Both units pass representative destinations in both directions and enforce minimum coverage in `builds/manifest.yaml`.
 
-### W4. [P1/L] Four designed builds with complete specs and zero blocks
-- **Why:** `westlight-district` (Gatehead Square, a 54-block arcaded High Street with seven shophouses, the Beacon Inn and its 42-block tower, food hall, brew-barn, park, baths, boathouse, boardwalk, waterfall), `approach-road` (town -> Westlight, ~275 blocks, two bridges, a grey-to-white paving turnover at mid-span), `ravensgate` (the pavilion replacement — stoa, loggia, library portal, campanile, sunken court with a water chain), and `ravenrock-connectivity`. All four carry `planned:` in the manifest and count as failures until built.
-- **Next action:** `ravensgate` requires demolishing `pav1` first — it is retired but still standing.
+### W4. [DONE 2026-07-26] Western expansion and the remaining traversal failures
+- **Resolution:** replaced the temporary pavilion with Ravensgate (Garth, stoa, library loggia/portal, Bell-Gate campanile, belvedere and Long Water); built the two-bridge approach with its grey-to-white turnover; and built Westlight District with Gatehead, all seven High Street shops, both public pavilions, Beacon Inn, brew-barn, park, baths, Skiff House and the live-fitted Brimside boardwalk. The boardwalk/waterfall were moved outside the enlarged as-built bowl after traversal exposed the archived coordinate conflict.
+- **Also closed:** corrected the library's false atrium target; repaired six Amsterdam canal-house entries and the Ravensgate handoff; built a real stadium grade tunnel and field-to-rim aisle; and repaired Raven Rock N9's one-block ladder/railing egress. Raven Rock's supposedly unbuilt N5 route already existed—the old check clipped its y=-12/x=75 detour.
+- **Evidence:** all four former `planned:` units now have canonical ops and bidirectional walks in `builds/manifest.yaml`; the unfiltered status reports no problems.
 
-### W5. [P2/S] Nine repair ops files are outside the manifest
-- **Why:** `dm1_oldstadium`, `fix1`-`fix8` all ran and all reported clean, but "reported clean" is exactly the claim this session learned to distrust. `build_status.py` flags them as unchecked.
-- **Next action:** add standing assertions, or consciously record them as one-shot repairs. `fix7_doors.txt` matters most — it re-placed 29 doors that had silently vanished.
+### W5. [DONE 2026-07-26] One-shot repair-file policy
+- **Resolution:** `fix*` and `dm*` batches are treated as one-shot migration history rather than independent standing builds. Their durable final geometry is enforced by canonical unit ops, bidirectional manifest routes, and the structural audit; `build_status.py` no longer reports these historical batches as stray live units.
 
 
 ### 0. [P0/S] `loginFlow` is an opt-out sentinel — a typo broadcasts the bot password in public chat

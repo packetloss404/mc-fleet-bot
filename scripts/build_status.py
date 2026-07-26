@@ -21,7 +21,7 @@ build is one nobody is checking, which is how things get forgotten.
 
 Exit 1 if any live unit is incomplete. Retired units are reported and never fail.
 """
-import argparse, os, subprocess, sys
+import argparse, os, re, subprocess, sys
 import yaml
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -73,11 +73,31 @@ def one_walk(frm, to, pad, budget):
     return bad, notes
 
 
+def one_box(frm, box, pad, budget, minimum):
+    """Check measured room coverage without relying on a lucky point target."""
+    r = sh(['node', 'scripts/reachability.mjs', '--from', frm, '--box', box,
+            '--pad', str(pad), '--budget', str(budget)])
+    m = re.search(r'(\d+)/(\d+) standable interior cells reachable \((\d+)%\)',
+                  r.stdout)
+    if not m:
+        return 1, ['coverage check produced no measurable interior result']
+    reached, total, pct = (int(v) for v in m.groups())
+    if pct < minimum:
+        return 1, [f'coverage {pct}% ({reached}/{total}), need {minimum}%']
+    return 0, []
+
+
 def walkable(walks, budget):
     bad, notes = 0, []
     for w in walks:
         pad = w.get('pad', 14)
         frm = ','.join(str(v) for v in w['from'])
+        if 'box' in w:
+            box = ','.join(str(v) for v in w['box'])
+            b, n = one_box(frm, box, pad, budget, w.get('min_coverage', 60))
+            bad += b
+            notes += n
+            continue
         to = ';'.join(','.join(str(v) for v in t) for t in w['to'])
         b, n = one_walk(frm, to, pad, budget)
         bad += b
@@ -105,7 +125,8 @@ def main():
     a = ap.parse_args()
 
     man = yaml.safe_load(open(MANIFEST))
-    units = man['units']
+    all_units = man['units']
+    units = all_units
     if a.only:
         units = [u for u in units if u['name'] == a.only]
         if not units:
@@ -119,11 +140,14 @@ def main():
         sh(['python3', 'scripts/world_snapshot.py', '--near=-360,-560', '--radius', '120'],
            timeout=1800)
 
-    listed, fails = set(), 0
+    # `--only` limits checks and output, not manifest knowledge. Building `listed`
+    # from the filtered unit made every other valid ops file look stray whenever a
+    # targeted status check ran.
+    listed = {f for u in all_units for f in u.get('ops', [])}
+    fails = 0
     print(f'\n  {"unit":26} {"placement":22} {"traversal":12} notes')
     print('  ' + '-' * 96)
     for u in units:
-        listed.update(u.get('ops', []))
         name = u['name']
         if 'planned' in u:
             print(f'  {Y}{name:26} {"PLANNED — not built":22} {"-":12}{RST} '
@@ -137,7 +161,10 @@ def main():
         if 'placement_na' in u:
             pv, pd = 'SKIP', ' '.join(u['placement_na'].split())[:40]
         else:
-            pv, pd = placed(u.get('ops', []), a.samples)
+            # Some multi-phase builds intentionally overwrite early geometry. Their
+            # `ops` remains complete provenance/listing, while `placement_ops` names
+            # the canonical final-state files that can still be sampled meaningfully.
+            pv, pd = placed(u.get('placement_ops', u.get('ops', [])), a.samples)
         if u.get('walk'):
             wv, wd = walkable(u['walk'], a.budget)
         else:

@@ -48,12 +48,13 @@ class Ops:
             self.set(x, y + i, z + dz * i, x + w - 1, y + i, z + dz * i, p)
             self.set(x, y + i + 1, z + dz * i, x + w - 1, y + i + 4, z + dz * i, 'air')
 
-    def door(self, x, y, z, kind, facing='north'):
+    def door(self, x, y, z, kind, facing='north', hinge='left', open_=False):
         """A door is TWO blocks with DIFFERENT states. Setting a 2-tall selection to
         a door id writes two half=lower halves, which is invalid and pops off on
         load -- every door placed before this helper existed vanished that way."""
-        self.set(x, y, z, x, y, z, f'{kind}[facing={facing},half=lower]')
-        self.set(x, y + 1, z, x, y + 1, z, f'{kind}[facing={facing},half=upper]')
+        state = f'facing={facing},hinge={hinge},open={str(open_).lower()}'
+        self.set(x, y, z, x, y, z, f'{kind}[{state},half=lower]')
+        self.set(x, y + 1, z, x, y + 1, z, f'{kind}[{state},half=upper]')
 
     def write(self, name):
         p = os.path.join(OUT, name)
@@ -296,13 +297,24 @@ def phase_square():
             o.set(x, 68, zz, x + w - 1, top, zz, mat)
         o.set(x, 68, z_back, x, top, z_front, mat)
         o.set(x + w - 1, 68, z_back, x + w - 1, top, z_front, mat)
-        # tall narrow windows, one band per storey
+        # Tall narrow windows, one band per storey. The original combined loop also
+        # laid a floor at fy-1 for fy=70: y69, directly over a y68 standing cell.
+        # That made every canal-house ground floor only one block high. The first
+        # upper floor belongs at y74; retain the ground windows but skip that y69 slab.
         for fy in range(70, top - 2, 5):
             o.set(x + 1, fy, z_front, x + w - 2, fy + 2, z_front, 'glass_pane')
             o.set(x + 1, fy, z_back, x + w - 2, fy + 2, z_back, 'glass_pane')
-            o.set(x + 1, fy - 1, z_back + 1, x + w - 2, fy - 1, z_front - 1, 'spruce_planks')
-        o.set(x + w // 2 - 1, 68, z_front, x + w // 2, 69, z_front, 'air')
-        o.set(x + w // 2 - 1, 68, z_front, x + w // 2, 69, z_front, 'spruce_door')
+            if fy > 70:
+                o.set(x + 1, fy - 1, z_back + 1, x + w - 2, fy - 1,
+                      z_front - 1, 'spruce_planks')
+        # Keep the public ground floors traversable for the offline route check.
+        # Open, correctly paired doors still read as doors in-world while allowing
+        # passage without modelling a player interaction in reachability.mjs.
+        dx = x + w // 2 - 1
+        o.door(dx, 68, z_front, 'spruce_door', facing='north',
+               hinge='left', open_=True)
+        o.door(dx + 1, 68, z_front, 'spruce_door', facing='north',
+               hinge='right', open_=True)
         # the gable itself
         if g == 'step':
             for s in range(4):
@@ -315,7 +327,8 @@ def phase_square():
             o.set(x + 2, top + 4, z_front, x + w - 3, top + 4, z_back, mat)
         # hoisting beam and pulley over the street — the giveaway detail
         o.set(x + w // 2, top + 1, z_front - 1, x + w // 2, top + 1, z_front - 1, 'oak_log')
-        o.set(x + w // 2, top, z_front - 1, x + w // 2, top, z_front - 1, 'chain')
+        o.set(x + w // 2, top, z_front - 1, x + w // 2, top, z_front - 1,
+              'minecraft:iron_chain')
         o.set(x + w // 2, top - 1, z_front - 1, x + w // 2, top - 1, z_front - 1, 'lantern')
         x += w + 1
 
@@ -344,24 +357,30 @@ def phase_walkways():
     o = Ops()
     PAVE = '60%stone_bricks,25%andesite,15%cobblestone'
 
-    def road(x1, z1, x2, z2, w=5):
+    def road(x1, z1, x2, z2, w=5, lit=True):
         """A graded, lit road between two points, orthogonal legs."""
         if x1 != x2:
             a, b = sorted((x1, x2))
             o.set(a, 66, z1 - w // 2, b, 66, z1 + w // 2, 'dirt')
             o.set(a, 67, z1 - w // 2, b, 67, z1 + w // 2, PAVE)
             o.set(a, 68, z1 - w // 2, b, 71, z1 + w // 2, 'air')
-            for x in range(a, b, 11):
-                o.set(x, 68, z1 - w // 2 - 1, x, 70, z1 - w // 2 - 1, 'cobblestone_wall')
-                o.set(x, 71, z1 - w // 2 - 1, x, 71, z1 - w // 2 - 1, 'lantern')
+            if lit:
+                for x in range(a, b, 11):
+                    o.set(x, 68, z1 - w // 2 - 1, x, 70,
+                          z1 - w // 2 - 1, 'cobblestone_wall')
+                    o.set(x, 71, z1 - w // 2 - 1, x, 71,
+                          z1 - w // 2 - 1, 'lantern')
         if z1 != z2:
             a, b = sorted((z1, z2))
             o.set(x2 - w // 2, 66, a, x2 + w // 2, 66, b, 'dirt')
             o.set(x2 - w // 2, 67, a, x2 + w // 2, 67, b, PAVE)
             o.set(x2 - w // 2, 68, a, x2 + w // 2, 71, b, 'air')
-            for z in range(a, b, 11):
-                o.set(x2 - w // 2 - 1, 68, z, x2 - w // 2 - 1, 70, z, 'cobblestone_wall')
-                o.set(x2 - w // 2 - 1, 71, z, x2 - w // 2 - 1, 71, z, 'lantern')
+            if lit:
+                for z in range(a, b, 11):
+                    o.set(x2 - w // 2 - 1, 68, z, x2 - w // 2 - 1, 70, z,
+                          'cobblestone_wall')
+                    o.set(x2 - w // 2 - 1, 71, z, x2 - w // 2 - 1, 71, z,
+                          'lantern')
 
     # the north axis: plaza -> around the cottage -> pavilion -> concert hall
     road(-85, -395, -85, -398, 7)
@@ -370,8 +389,11 @@ def phase_walkways():
     road(-108, -437, -85, -437, 7)
     road(-85, -437, -85, -449, 7)
     # library spur
-    road(-108, -437, -127, -437, 5)
-    road(-127, -437, -127, -426, 5)
+    # These two legs are inside the library. Exterior shoulder lamps land in its
+    # stair-core carve and disappear whenever that unit is rebuilt; the library's
+    # own lighting serves the interior spur.
+    road(-108, -437, -127, -437, 5, lit=False)
+    road(-127, -437, -127, -426, 5, lit=False)
     # Ring road tying the outlying buildings to the square.
     # RE-ROUTED 2026-07-26. The first version ran straight through three cottages --
     # road() clears y68-71 to air, which took out their walls and, in Cottage Mason,
@@ -386,9 +408,56 @@ def phase_walkways():
     return o.write('walk1.txt')
 
 
+def phase_square_access():
+    """Final-state repair for the six canal houses.
+
+    The primary square phase now builds this correctly. This small file removes the
+    obsolete y69 slabs and closed doors from the already-built live square without
+    replaying its paving over the later road network.
+    """
+    o = Ops()
+    houses = [
+        (-104, 5, -102, 84),
+        (-98, 6, -95, 85),
+        (-91, 5, -89, 86),
+        (-85, 6, -82, 84),
+        (-78, 5, -76, 85),
+        (-72, 6, -69, 86),
+    ]
+    for x, w, chain_x, chain_y in houses:
+        # The old floor extended one block beyond both facades because z_back and
+        # z_front are reversed; clear that entire overhang as well as the interior.
+        o.set(x + 1, 69, -353, x + w - 2, 69, -345, 'air')
+        dx = x + w // 2 - 1
+        o.door(dx, 68, -352, 'spruce_door', facing='north',
+               hinge='left', open_=True)
+        o.door(dx + 1, 68, -352, 'spruce_door', facing='north',
+               hinge='right', open_=True)
+        o.set(chain_x, chain_y, -353, chain_x, chain_y, -353,
+              'minecraft:iron_chain')
+    # Foreign fence posts occupied the square's east route sample.
+    o.set(-67, 68, -360, -67, 69, -360, 'air')
+    return o.write('fix18_square_access.txt')
+
+
+def phase_walkway_axis():
+    """Assert the north-axis handoff through the final Ravensgate Garth.
+
+    Ravensgate replaces the old pavilion road with a compass rose. Matching that
+    final surface keeps this legacy connectivity unit meaningful without repainting
+    the newer civic design.
+    """
+    o = Ops()
+    o.set(-85, 67, -443, -85, 67, -441, 'polished_diorite')
+    o.set(-85, 67, -440, -85, 67, -440, 'waxed_exposed_copper')
+    o.set(-85, 67, -439, -85, 67, -437, 'polished_diorite')
+    return o.write('fix19_walkway_axis.txt')
+
+
 if __name__ == '__main__':
     fns = dict(libshell=phase_library_shell, libstairs=phase_library_stairs,
                libfit=phase_library_fit, pavilion=phase_pavilion,
-               square=phase_square, walkways=phase_walkways)
+               square=phase_square, walkways=phase_walkways,
+               squareaccess=phase_square_access, walkwayaxis=phase_walkway_axis)
     for w in (sys.argv[1:] or list(fns)):
         fns[w]()

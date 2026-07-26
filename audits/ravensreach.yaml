@@ -481,26 +481,225 @@ groups:
         # hillside outside the build. A guard that cries wolf over terrain gets muted.
         type: empty
         box: [-147, 100, -451, -108, 130, -423]
+        exclude:
+          # Ravensgate's Bell-Gate campanile deliberately rises beside the library.
+          - [-110, 100, -433, -106, 130, -427]
 
-  - name: Central Pavilion
+  # Replaces the temporary pavilion, whose glass-vault assertions were retired with
+  # the building. Counts below are fresh measurements after the 2026-07-26 W4 fit.
+  - name: Ravensgate
     checks:
-      - name: floor is laid
+      - name: Garth paving and compass are complete
         type: contains
-        box: [-105, 67, -449, -65, 67, -425]
-        materials: [smooth_stone, polished_andesite, stone_bricks, polished_diorite, water]
-        min: 900                       # measured 1025
-      - name: colonnade stands
+        box: [-105, 67, -446, -65, 67, -432]
+        materials: [stone_bricks, deepslate_tiles, polished_diorite, waxed_exposed_copper]
+        min: 615                       # measured 615
+      - name: south stoa has floor walls columns roof and bench
         type: contains
-        box: [-105, 68, -449, -65, 78, -425]
-        materials: [polished_diorite, polished_diorite_wall]
-        min: 180                       # measured 226
-      - name: glass vault is closed
+        box: [-105, 68, -431, -65, 78, -426]
+        materials: [deepslate_tiles, stone_bricks, polished_andesite,
+                    stripped_spruce_log, spruce_stairs]
+        min: 1320                      # measured 1352
+      - name: Bell-Gate campanile reaches its copper finial
         type: contains
-        box: [-105, 79, -449, -65, 85, -425]
-        materials: [light_gray_stained_glass, smooth_quartz]
-        min: 900                       # measured 1025
-      - name: it is open to walk through
-        # The pavilion's whole point is that you can cross it in any direction, so
-        # this asserts EMPTY at head height rather than a solid fraction.
+        box: [-110, 68, -432, -106, 109, -428]
+        materials: [stone_bricks, polished_deepslate, deepslate_tiles,
+                    oxidized_cut_copper_stairs, oxidized_copper, lightning_rod]
+        min: 510                       # measured 516
+      - name: Long Water and park structure remain present
+        type: contains
+        box: [-94, 64, -562, -76, 76, -458]
+        materials: [water, smooth_stone, deepslate_tiles, dirt_path, oak_log, oak_leaves]
+        min: 3700                      # measured 4057
+
+  - name: Westlight approach
+    checks:
+      - name: Millstone crossing remains built and lit
+        type: contains
+        box: [-182, 67, -509, -148, 74, -496]
+        materials: [stone_bricks, stone_brick_wall, spruce_fence, lantern]
+        min: 245                       # measured 250
+      - name: White Bridge carries the grey-to-white turnover
+        type: contains
+        box: [-322, 67, -500, -288, 74, -494]
+        materials: [polished_diorite, smooth_quartz, quartz_pillar, sea_lantern]
+        min: 140                       # measured 147
+
+  - name: Westlight district
+    checks:
+      - name: seven High Street shophouses have complete shells
+        type: contains
+        box: [-404, 67, -470, -353, 84, -448]
+        materials: [deepslate_tiles, calcite, stone_bricks, polished_andesite, spruce_planks]
+        min: 9000                      # measured 9126
+      - name: all seven shop beds remain
+        type: count
+        box: [-404, 67, -470, -353, 84, -448]
+        materials: [red_bed]
+        expect: 7
+      - name: Beacon Inn and tower remain complete
+        type: contains
+        box: [-428, 67, -496, -408, 107, -464]
+        materials: [deepslate_tiles, white_concrete, spruce_planks, polished_andesite,
+                    smooth_quartz, white_stained_glass, dark_oak_log, sea_lantern]
+        min: 7500                      # measured 7542
+      - name: Shorelight park baths and Skiff House remain fitted
+        type: contains
+        box: [-294, 62, -514, -260, 76, -462]
+        materials: [grass_block, oak_leaves, dark_oak_log, smooth_quartz,
+                    spruce_planks, dirt_path, water]
+        min: 4200                      # measured 4408
+      - name: Brimside boardwalk is outside the enlarged bowl
+        type: contains
+        box: [-290, 62, -556, -278, 72, -513]
+        materials: [spruce_planks, dark_oak_log, calcite, sea_lantern, soul_lantern]
+        min: 760                       # measured 766
+
+  # ---------------------------------------- Westlight circulation (2026-07-26)
+  # Counts are fresh-snapshot measurements after the live repair, with margin.
+  # Reachability itself is enforced separately by builds/manifest.yaml.
+  - name: Westlight theatre circulation
+    checks:
+      - name: forecourt entry floor reaches open ground
+        type: contains
+        box: [-356, 67, -505, -353, 67, -499]
+        materials: [polished_andesite, smooth_quartz]
+        min: 24                        # measured 28
+      - name: forecourt entry has full headroom
         type: empty
-        box: [-103, 72, -447, -67, 72, -427]
+        box: [-356, 68, -505, -353, 71, -499]
+      - name: grand switchback remains built
+        type: contains
+        box: [-367, 35, -512, -353, 67, -505]
+        materials: [polished_andesite, polished_andesite_stairs]
+        min: 180                       # measured 200
+      - name: all three lobby floors remain linked
+        type: contains
+        box: [-377, 18, -517, -344, 40, -515]
+        materials: [polished_andesite, polished_andesite_stairs]
+        min: 100                       # measured 114
+      - name: lower radial passage remains open
+        type: contains
+        box: [-348, 18, -562, -305, 18, -558]
+        materials: [polished_andesite]
+        min: 200                       # measured 220
+      - name: middle radial passage remains open
+        type: contains
+        box: [-328, 29, -562, -305, 29, -558]
+        materials: [polished_andesite]
+        min: 105                       # measured 120
+      - name: upper radial passage remains open
+        type: contains
+        box: [-322, 40, -562, -305, 40, -558]
+        materials: [polished_andesite]
+        min: 80                        # measured 90
+      - name: theatre rigging uses the live registry id
+        type: contains
+        box: [-402, 39, -598, -318, 49, -513]
+        materials: [iron_chain]
+        min: 130                       # measured 140
+
+  - name: Westlight members club circulation
+    checks:
+      - name: private stair remains built
+        type: contains
+        box: [-406, 35, -562, -402, 39, -561]
+        materials: [polished_andesite_stairs]
+        min: 10                        # measured 10
+      - name: west balcony vomitory remains built
+        type: contains
+        box: [-397, 40, -562, -380, 40, -558]
+        materials: [polished_andesite]
+        min: 90                        # measured 90
+      - name: west balcony vomitory has full headroom
+        type: empty
+        box: [-397, 41, -562, -380, 44, -558]
+
+  - name: Moot Hall and Sanctum circulation
+    checks:
+      - name: all three hall landings remain built
+        type: contains
+        box: [-98, 67, -391, -95, 79, -390]
+        materials: [polished_andesite]
+        min: 24                        # measured 24
+      - name: core ladder remains continuous
+        type: count
+        box: [-97, 42, -389, -97, 85, -389]
+        materials: [ladder]
+        expect: 44
+      - name: processional corridor floor remains continuous
+        type: contains
+        box: [-122, 40, -391, -120, 40, -338]
+        materials: [polished_deepslate]
+        min: 162                       # measured 162
+      - name: Sanctum return aisle remains built
+        type: contains
+        box: [-88, 29, -380, -82, 36, -350]
+        materials: [polished_blackstone, polished_blackstone_stairs]
+        min: 260                       # measured 277
+      - name: Sanctum rigging uses the live registry id
+        type: contains
+        box: [-102, 35, -395, -68, 41, -381]
+        materials: [iron_chain]
+        min: 45                        # measured 49
+
+  # -------------------------------------- Market and Grange circulation (2026-07-26)
+  # Counts are fresh-snapshot measurements after the live repair. Reachability,
+  # reverse routes and minimum room coverage are enforced by builds/manifest.yaml.
+  - name: Market Hall circulation
+    checks:
+      - name: walk-to-terrace stair remains complete
+        type: contains
+        box: [-70, 68, -341, -68, 70, -339]
+        materials: [spruce_stairs]
+        min: 9                         # measured 9
+      - name: terrace-to-loft stair remains complete
+        type: contains
+        box: [-46, 71, -339, -45, 76, -334]
+        materials: [spruce_stairs]
+        min: 12                        # measured 12
+      - name: both lofts remain bridged
+        type: contains
+        box: [-61, 76, -334, -51, 77, -332]
+        materials: [spruce_planks, spruce_fence]
+        min: 33                        # measured 11 floor + 22 rail
+
+  - name: Grange Hall circulation
+    checks:
+      - name: hall-to-wall-walk stair remains complete
+        type: contains
+        box: [-62, 68, -360, -60, 72, -356]
+        materials: [spruce_stairs]
+        min: 15                        # measured 15
+      - name: wall-walk-to-loft stair remains complete
+        type: contains
+        box: [-63, 74, -361, -62, 81, -354]
+        materials: [spruce_stairs]
+        min: 16                        # measured 16
+
+  # ----------------------------------------- Raven Rock connectivity (2026-07-26)
+  # The full route is enforced in builds/manifest.yaml. These counts pin the small
+  # pieces whose loss would make that route fail without trying to encode T3's
+  # long, curved tread as a guessed straight line.
+  - name: Raven Rock connectivity
+    checks:
+      - name: N9 head-house remains enclosed
+        type: contains
+        box: [193, 65, -22, 207, 70, -8]
+        materials: [stone_bricks, polished_blackstone]
+        min: 490                       # measured 503
+      - name: surface shaft ladder remains continuous
+        type: count
+        box: [204, -11, -15, 204, 64, -15]
+        materials: [ladder]
+        expect: 76
+      - name: T3 east vestibule floor remains built
+        type: contains
+        box: [174, 1, -36, 186, 1, -24]
+        materials: [stone_bricks, polished_blackstone]
+        min: 50                        # measured 53
+      - name: N5 portal tread remains built
+        type: count
+        box: [280, 18, -33, 286, 18, -27]
+        materials: [stone_bricks]
+        expect: 49

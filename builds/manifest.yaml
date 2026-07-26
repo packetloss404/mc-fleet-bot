@@ -38,33 +38,67 @@ units:
       # second floor. Rebuilt as switchbacks; this check is what found it.
       - from: [-128, 68, -424]
         both_ways: true
-        to: [[-137, 68, -436], [-137, 76, -436], [-130, 84, -436],
+        to: [[-137, 68, -436], [-137, 76, -436], [-134, 84, -436],
              [-137, 61, -436], [-137, 54, -436], [-137, 47, -436]]
 
   - name: amsterdam-square
-    ops: [sq1.txt]
+    ops: [sq1.txt, fix18_square_access.txt]
+    placement_ops: [fix18_square_access.txt]
     walk:
       - from: [-85, 68, -370]
+        both_ways: true
+        # A return from the north apron has to go around the Moot Hall footprint;
+        # the default 14-block search box clips both side passages.
+        pad: 18
         to: [[-103, 68, -350], [-85, 68, -394], [-67, 68, -360]]
 
   - name: walkways
-    ops: [walk1.txt]
+    ops: [walk1.txt, fix19_walkway_axis.txt]
+    placement_ops: [fix19_walkway_axis.txt]
     walk:
       # the whole point of the road network is that these connect
       - from: [-85, 68, -394]
+        both_ways: true
+        # Ravensgate replaces the straight pavilion road. Its return route turns
+        # west through Bell-Gate, outside the default 14-block search envelope.
+        pad: 30
         to: [[-108, 68, -430], [-85, 68, -440]]
 
   - name: market-hall-interior
-    ops: [int1_market.txt]
+    ops: [int1_market.txt, fix16_market_access.txt]
+    placement_ops: [fix16_market_access.txt]
     walk:
-      - from: [-70, 69, -341]
-        to: [[-56, 71, -336], [-46, 77, -327]]
+      # Measured after the 2026-07-26 repair: south entrance -> main hall ->
+      # Works Terrace -> east loft -> bridge -> west loft.
+      - from: [-51, 68, -343]
+        both_ways: true
+        to:
+          - [-56, 68, -336]
+          - [-46, 71, -340]
+          - [-46, 77, -333]
+          - [-68, 77, -328]
+      - from: [-51, 68, -343]
+        box: [-72, 68, -343, -40, 78, -324]
+        pad: 12
+        min_coverage: 85
 
   - name: grange-hall-interior
-    ops: [int2_grange.txt]
+    ops: [int2_grange.txt, fix17_grange_access.txt]
+    placement_ops: [fix17_grange_access.txt]
     walk:
-      - from: [-64, 69, -361]
-        to: [[-50, 69, -366], [-60, 74, -360], [-45, 83, -360]]
+      # Measured after the 2026-07-26 repair: west entry -> hall -> wall-walk ->
+      # new west-bay upper stair -> the complete craft loft.
+      - from: [-66, 68, -361]
+        both_ways: true
+        to:
+          - [-50, 68, -366]
+          - [-61, 74, -362]
+          - [-61, 83, -356]
+          - [-45, 83, -360]
+      - from: [-66, 68, -361]
+        box: [-64, 68, -369, -42, 83, -353]
+        pad: 12
+        min_coverage: 90
 
   - name: farms
     ops: [int3_farms.txt]
@@ -77,7 +111,9 @@ units:
         to: [[-96, 88, -388], [-80, 88, -374]]
 
   - name: moot-hall-core
-    ops: [fix9_core.txt, fix10_corridor.txt, fix11_portal.txt, fix12_shaft.txt]
+    ops: [fix9_core.txt, fix10_corridor.txt, fix11_portal.txt, fix12_shaft.txt,
+          fix14_core_access.txt]
+    placement_ops: [fix14_core_access.txt]
     walk:
       # One vertical core serving penthouse -> ground -> B1 -> B2 -> the deep corridor.
       # Before it existed the basements were SEALED: the whole basement programme
@@ -89,18 +125,21 @@ units:
         to: [[-97, 65, -389], [-97, 57, -389], [-97, 44, -389]]
 
   - name: sanctum-descent
-    ops: [sn2_descent.txt]
+    ops: [sn2_descent.txt, fix14_core_access.txt]
+    placement_ops: [fix14_core_access.txt]
     walk:
       - from: [-95, 88, -388]
         both_ways: true
         to: [[-97, 44, -389]]
 
   - name: sanctum
-    ops: [sn3_sanctum.txt]
+    ops: [sn3_sanctum.txt, fix15_sanctum_rigging.txt]
     walk:
       # measured: the stage deck is y29 so you stand at y30; the seating rings rise
-      # 1 per row from y27, so a "floor at y27" target lands inside the tiers
+      # 1 per row from y27, so a "floor at y27" target lands inside the tiers. The
+      # processional route bends 42 blocks south of the endpoints, hence pad 50.
       - from: [-97, 44, -389]
+        pad: 50
         both_ways: true
         to: [[-85, 30, -380]]
 
@@ -113,20 +152,45 @@ units:
       canopy then replaced most of it, so sampling it reports MISSING correctly.
 
   - name: westlight-theatre
-    ops: [wl1_theatre.txt, wl1_theatre_worldedit.txt]
+    ops: [wl1_theatre.txt]
     walk:
-      # lobby -> through the blue drum -> orchestra floor -> balcony
-      - from: [-360, 19, -505]
+      # Measured after the 2026-07-26 circulation repair: exterior forecourt ->
+      # all three lobby floors -> orchestra / parterre -> upper balcony. The wide
+      # target spread makes the flood include the switchbacks rather than assuming
+      # a straight-line search box. All coordinates are standable cells.
+      - from: [-354, 68, -498]
+        pad: 30
         both_ways: true
-        to: [[-360, 19, -560], [-360, 36, -530]]
+        to:
+          - [-360, 19, -512]
+          - [-370, 30, -514]
+          - [-360, 41, -512]
+          - [-401, 34, -578]
+          - [-392, 36, -590]
+          - [-375, 45, -596]
+      # Point checks above enforce return routes. This measured box prevents a few
+      # reachable points from masking a mostly sealed venue: current coverage is 91%.
+      - from: [-354, 68, -498]
+        box: [-421, 18, -613, -299, 50, -498]
+        pad: 2
+        min_coverage: 85
 
   - name: westlight-bowl
-    ops: [wl2_bowl.txt]
+    ops: [wl2_bowl.txt, wl5_bowl_access.txt]
+    # The theatre circulation and texture pass intentionally overwrite sampled
+    # cells from the original bowl file. This last phase is the canonical route.
+    placement_ops: [wl5_bowl_access.txt]
     walk:
-      # in at grade, down to the field, and up to the top of the bowl
-      - from: [-360, 68, -498]
+      # Public forecourt -> grade concourse -> field -> upper tier -> rim. The old
+      # start was inside a four-high column and the old rim target was a solid block.
+      - from: [-359, 68, -498]
+        pad: 40
         both_ways: true
-        to: [[-360, 59, -560], [-360, 82, -500]]
+        to:
+          - [-354, 68, -530]
+          - [-360, 59, -560]
+          - [-306, 76, -560]
+          - [-293, 83, -560]
 
   - name: westlight-canopy
     ops: [wl3_canopy.txt, wl3_canopy_worldedit.txt]
@@ -139,50 +203,96 @@ units:
   - name: members-club-lounge
     ops: [wl1_theatre.txt]
     walk:
-      # BUILT AND SEALED as of 2026-07-26: the room exists (929 blocks -- red concrete
-      # and velvet, a lit dance floor of black glass over sea lanterns, the bar) but
-      # there is no door from the balcony. Asserted red on purpose.
-      - from: [-361, 36, -557]
+      # Measured after the balcony-vomitory and private-stair repair. Both the main
+      # lounge floor and upper gallery must return all the way to the forecourt.
+      - from: [-354, 68, -498]
+        pad: 30
         both_ways: true
-        to: [[-410, 36, -558]]
+        to: [[-408, 36, -560], [-410, 41, -560]]
+      # Current fresh-snapshot coverage is 96% (192/199 standable cells).
+      - from: [-354, 68, -498]
+        box: [-417, 36, -566, -400, 42, -550]
+        pad: 30
+        min_coverage: 90
 
-  # ------------------------------------------------- designed but NOT YET BUILT
-  # These carry `planned:` and count as outstanding until ops exist and pass. They are
-  # listed because a design that only lives in a chat transcript is a design that gets
-  # forgotten -- which is exactly what happened to the members' club twice.
+  # ---------------------------------------------------------- W4 western expansion
+  # Built from the final archived designs after fitting their coordinates to the live
+  # enlarged Westlight bowl and the measured lake shore.
 
   - name: westlight-district
-    planned: >
-      docs research 2026-07-26, agent design "WESTLIGHT". A lakefront market-crescent
-      wrapping the stadium's southern brim: Gatehead Square with a wayshrine clock
-      tower, the Ferry Bell tavern, a 54-block arcaded High Street with seven
-      shophouses, the Beacon Inn with a 42-block tower answering the canopy, Lantern
-      Hall food hall and Field House pavilions, Lantern Plaza, the Malt & Lantern
-      brew-barn, Shorelight Park, Lake Baths, Skiff House, jetty, Brimside boardwalk
-      and a waterfall into the lake. Nothing of it is built.
+    ops: [wd1_ground.txt, wd2_buildings.txt, wd3_waterfront.txt, wd4_final.txt]
+    placement_ops: [wd4_final.txt]
+    walk:
+      # Gatehead reaches the stadium, both anchors, all seven shop plots, the public
+      # pavilions, park/shore, and the boardwalk fitted outside the enlarged bowl.
+      - from: [-344, 68, -486]
+        pad: 35
+        both_ways: true
+        to:
+          - [-354, 68, -498]       # stadium public entrance
+          - [-380, 68, -476]       # High Street
+          - [-332, 68, -484]       # Ferry Bell
+          - [-326, 68, -505]       # Lantern Hall
+          - [-400, 68, -465]       # shops A
+          - [-393, 68, -465]       # B
+          - [-386, 68, -465]       # C
+          - [-379, 68, -465]       # D
+          - [-370, 68, -465]       # E
+          - [-362, 68, -465]       # F
+          - [-355, 68, -465]       # G
+          - [-394, 68, -490]       # Field House
+          - [-416, 68, -480]       # Beacon Inn
+          - [-344, 68, -455]       # Malt & Lantern
+          - [-280, 68, -486]       # Shorelight Park / baths
+          - [-280, 68, -507]       # Skiff House
+          - [-282, 68, -535]       # Brimside boardwalk
 
   - name: approach-road
-    planned: >
-      Town -> Westlight, ~275 blocks: Millstone Bridge at x=-170, a meadow leg with a
-      tree-belt kept deliberately to hide the stadium, a Panorama bay at x=-224 for the
-      first full reveal, a lakeshore causeway, and the White Bridge at x=-305 where the
-      paving turns from grey klinker to white and the road becomes a street. Not built.
+    ops: [ar1_road.txt, ar2_final.txt]
+    placement_ops: [ar2_final.txt]
+    walk:
+      # Ravensgate road columns -> Millstone -> Panorama -> White Bridge -> Gatehead.
+      - from: [-148, 68, -500]
+        pad: 12
+        both_ways: true
+        to:
+          - [-170, 72, -506]
+          - [-224, 70, -496]
+          - [-305, 73, -497]
+          - [-322, 68, -497]
+          - [-344, 68, -486]
 
   - name: ravensgate
-    planned: >
-      docs research 2026-07-26, agent design "RAVENSGATE" -- the replacement for the
-      pavilion that reads as a bus shelter. A deep south stoa with a continuous bench,
-      a west loggia carrying a proper library portal, a 42-block campanile at the axis
-      hinge, a gate and turn for compression, a two-step sunken court (the Nine Fields)
-      with a single falling water chain on axis, a pleached grove, and a paving gradient
-      from medieval grey to canopy white. Requires demolishing pav1 first. Not built.
+    ops: [rg1_civic.txt, rg2_park.txt, rg3_final.txt]
+    placement_ops: [rg3_final.txt]
+    walk:
+      # Town lane -> Bell-Gate -> Garth/library -> belvedere -> Long Water ->
+      # tempietto and western handoff.
+      - from: [-108, 68, -421]
+        pad: 40
+        both_ways: true
+        to:
+          - [-108, 68, -430]
+          - [-85, 68, -440]
+          - [-114, 68, -438]
+          - [-85, 71, -452]
+          - [-90, 68, -470]
+          - [-130, 68, -498]
+          - [-85, 70, -556]
 
   - name: ravenrock-connectivity
-    planned: >
-      The access shaft at x=204 z=-15 runs surface y64 down to y20 and is reachable,
-      but the N5 portal at (286,20,-27) is NOT reachable from it -- closest approach 90
-      blocks. Raven Rock's four portals and its caverns/tunnels need a connectivity
-      sweep and, probably, joining up. Nobody has checked the rest of the complex.
+    ops: [fix18_ravenrock_access.txt]
+    walk:
+      # The earlier "closest approach 90 blocks" result bounded the search to
+      # target_y +/- 10, excluding both the y=-12 connection and the route's westward
+      # detour through Cavern A at x=75. It also targeted a non-standable cell one
+      # block above the N5 tread. The built route is N9 shaft -> S1 -> Cavern A -> T3
+      # -> N5. The final two-block repair extends the ladder to the surface walking
+      # level and opens its east railing so the same route works in reverse.
+      - from: [194, 65, -15]
+        to: [[285, 19, -30]]
+        pad: 130
+        both_ways: true
 
   # ---------------------------------------------------------------- retired
   - name: town-concert-hall
@@ -207,9 +317,8 @@ units:
   - name: central-pavilion
     ops: [pav1.txt]
     retired: >
-      Superseded by the Ravensgate scheme (a deep south stoa, a west loggia with a
-      library portal, a 42-block campanile at the axis hinge, and a sunken court with
-      a water chain). Not yet demolished.
+      Demolished 2026-07-26 and superseded by Ravensgate: Garth, south stoa, library
+      loggia, 42-block Bell-Gate campanile, belvedere, Long Water and western park.
 
   - name: westlight-bowl-mix
     ops: [wl2_bowl_worldedit.txt]

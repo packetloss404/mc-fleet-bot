@@ -179,11 +179,13 @@ def phase_theatre():
         o.set(WX - 16, 43, z, WX + 16, 43, z, 'polished_blackstone_slab')
     o.repl(WX - 16, 43, STAGE_Z - 16, WX + 16, 43, STAGE_Z, 'air', 'iron_bars')
     for dx in range(-12, 13, 6):                           # chain hoists and fixtures
-        o.set(WX + dx, 40, STAGE_Z - 8, WX + dx, 42, STAGE_Z - 8, 'chain')
+        o.set(WX + dx, 40, STAGE_Z - 8, WX + dx, 42, STAGE_Z - 8,
+              'minecraft:iron_chain')
         o.set(WX + dx, 39, STAGE_Z - 8, WX + dx, 39, STAGE_Z - 8, 'ochre_froglight')
     for dx in range(-14, 15, 7):                           # the L-ISA speaker hangs
         o.set(WX + dx, 34, STAGE_Z + 2, WX + dx, 38, STAGE_Z + 2, 'black_concrete')
-        o.set(WX + dx, 39, STAGE_Z + 2, WX + dx, 42, STAGE_Z + 2, 'chain')
+        o.set(WX + dx, 39, STAGE_Z + 2, WX + dx, 42, STAGE_Z + 2,
+              'minecraft:iron_chain')
 
     # --- the sky grid over the HOUSE, and the lid above it
     o.disc(WX, 47, WZ, 'black_concrete', DRUM_A, DRUM_B)
@@ -193,19 +195,9 @@ def phase_theatre():
         o.set(WX - 44, 44, z, WX + 44, 44, z, 'polished_blackstone_slab')
     for x in range(WX - 42, WX + 43, 12):
         for z in range(WZ - 30, WZ + 31, 12):
-            o.set(x, 45, z, x, 46, z, 'chain')
+            o.set(x, 45, z, x, 46, z, 'minecraft:iron_chain')
             o.set(x, 43, z, x, 43, z, 'ochre_froglight')
     o.disc(WX, 48, WZ, 'polished_deepslate', DRUM_A + 2, DRUM_B + 2, y2=53)
-
-    # --- vomitories punched THROUGH the drum at both audience levels
-    for ang in (150, 180, 210, 330, 0, 30):
-        r = math.radians(ang)
-        for lvl in (TH_FLOOR + 1, 36):
-            x = WX + round((DRUM_A + 2) * math.cos(r))
-            z = WZ + round((DRUM_B + 2) * math.sin(r))
-            o.set(x - 2, lvl, z - 2, x + 2, lvl + 3, z + 2, 'air')
-            o.set(x - 2, lvl - 1, z - 2, x + 2, lvl - 1, z + 2, 'polished_andesite')
-            o.set(x - 2, lvl + 4, z - 2, x + 2, lvl + 4, z + 2, 'ochre_froglight')
 
     # --- THE LOBBY CRESCENT: three levels between the drum and a backlit façade.
     #     The façade is the trick that stops an underground room reading as a cave --
@@ -228,7 +220,8 @@ def phase_theatre():
             y2=49)
     o.shell(WX, TH_FLOOR + 1, WZ, 'sea_lantern', LOB_A + 3, zr(LOB_A) + 3, 1, y2=49)
     # the three-storey chandelier down the lobby atrium, and the 360 bar on level 3
-    o.set(WX, 41, WZ + zr(LOB_A) - 3, WX, 49, WZ + zr(LOB_A) - 3, 'chain')
+    o.set(WX, 41, WZ + zr(LOB_A) - 3, WX, 49, WZ + zr(LOB_A) - 3,
+          'minecraft:iron_chain')
     o.set(WX - 1, 38, WZ + zr(LOB_A) - 4, WX + 1, 40, WZ + zr(LOB_A) - 2,
           'pearlescent_froglight')
     o.set(WX - 2, 20, WZ + zr(LOB_A) - 5, WX + 2, 37, WZ + zr(LOB_A) - 1, 'air')
@@ -261,6 +254,116 @@ def phase_theatre():
             z = WZ + round(zr(t) * math.sin(r)) if t > 8 else WZ
             o.set(x - 1, 51, z - 1, x + 1, 53, z + 1, 'polished_deepslate')
     o.disc(WX, 57, WZ, 'coarse_dirt', LOB_A + 3, zr(LOB_A) + 3)
+
+    # --- CIRCULATION, LAST. Floors, shells and the transfer slab above used to
+    #     overwrite access work silently, so every carve belongs at the end.
+
+    # Three radial passage levels match the ACTUAL lobby floors (18 / 29 / 40).
+    # The old 5x5 drum punches at feet y19 and y36 stopped inside the seating mass:
+    # they connected the lobby to a blue wall, not to the house. These passages run
+    # from the outer lobby through both the drum and the relevant seating tier.
+    def radial_passages(floor_y, inner_a, inner_b):
+        for ang in (150, 180, 210, 330, 0, 30):
+            r = math.radians(ang)
+            ix = WX + round(inner_a * math.cos(r))
+            iz = WZ + round(inner_b * math.sin(r))
+            ox = WX + round((LOB_A - 3) * math.cos(r))
+            oz = WZ + round((zr(LOB_A) - 3) * math.sin(r))
+            steps = max(abs(ox - ix), abs(oz - iz))
+            for n in range(steps + 1):
+                t = n / steps if steps else 0
+                x = round(ix + (ox - ix) * t)
+                z = round(iz + (oz - iz) * t)
+                if abs(math.cos(r)) >= abs(math.sin(r)):
+                    o.set(x, floor_y, z - 2, x, floor_y, z + 2,
+                          'polished_andesite')
+                    o.set(x, floor_y + 1, z - 2, x, floor_y + 4, z + 2, 'air')
+                else:
+                    o.set(x - 2, floor_y, z, x + 2, floor_y, z,
+                          'polished_andesite')
+                    o.set(x - 2, floor_y + 1, z, x + 2, floor_y + 4, z, 'air')
+
+    radial_passages(TH_FLOOR, 12, 10)   # lobby -> theatre floor / lower orchestra
+    radial_passages(29, 32, 30)         # middle lobby -> upper orchestra
+    radial_passages(40, 38, 36)         # upper lobby -> balcony
+
+    # The west upper passage used to stop at x=WX-38, still inside the balcony's
+    # solid raked seating. Continue it to the open house, then descend five blocks
+    # inside the members' lounge. The two-wide stair uses the north edge of the room
+    # so it does not overwrite the bar or the black-glass dance floor.
+    o.set(WX - 37, 40, WZ - 2, WX - 20, 40, WZ + 2, 'polished_andesite')
+    o.set(WX - 37, 41, WZ - 2, WX - 20, 44, WZ + 2, 'air')
+    for i, x in enumerate(range(WX - 46, WX - 41)):
+        y = 35 + i
+        o.set(x, y, WZ - 2, x, y, WZ - 1,
+              'polished_andesite_stairs[facing=east]')
+        o.set(x, y + 1, WZ - 2, x, y + 4, WZ - 1, 'air')
+    o.set(WX - 41, 40, WZ - 2, WX - 41, 40, WZ - 1, 'polished_andesite')
+    o.set(WX - 41, 41, WZ - 2, WX - 41, 44, WZ - 1, 'air')
+
+    # The lobby itself was three isolated rings. Two 3-wide flights in the south
+    # crescent join the measured floor plates without consuming auditorium seats.
+    def lobby_flight(x1, x2, z1, floor1, floor2, facing):
+        step = 1 if x2 > x1 else -1
+        for i, x in enumerate(range(x1, x2 + step, step)):
+            y = floor1 + i
+            o.set(x, y + 1, z1, x, y + 4, z1 + 2, 'air')
+            o.set(x, y, z1, x, y, z1 + 2,
+                  f'polished_andesite_stairs[facing={facing}]')
+        o.set(x1 - 1, floor1, z1, x1, floor1, z1 + 2, 'polished_andesite')
+        o.set(x2, floor2, z1, x2 + 1, floor2, z1 + 2, 'polished_andesite')
+
+    lobby_flight(WX - 16, WX - 5, WZ + 43, TH_FLOOR, 29, 'east')
+    lobby_flight(WX + 5, WX + 16, WZ + 43, 29, 40, 'east')
+
+    # Grand south-forecourt switchback. Grade is floor y67 (feet y68); the public
+    # theatre entry is the parterre floor y35 (feet y36). Three stacked flights fit
+    # the 13x8 court, with ten blocks of vertical clearance between reused lanes.
+    sx1, sx2 = WX - 7, WX + 7
+    sz1, sz2 = WZ + 48, WZ + 55
+    o.set(sx1, 35, sz1, sx2, 70, sz2, 'air')
+    o.set(sx1, 35, sz1, sx1, 69, sz2, 'smooth_quartz')
+    o.set(sx2, 35, sz1, sx2, 69, sz2, 'smooth_quartz')
+    o.set(sx1, 35, sz2, sx2, 69, sz2, 'smooth_quartz')
+    o.set(sx1, 70, sz1, sx2, 70, sz2, 'white_stained_glass')
+    # The stadium's outer seating mass reaches z=WZ+60 at grade. Continue the
+    # entrance through it to open forecourt grass; otherwise the stair has a door
+    # in its own wall and six solid blocks immediately outside that door.
+    o.set(WX + 4, 67, sz2, WX + 7, 67, WZ + 61, 'polished_andesite')
+    o.set(WX + 4, 68, sz2, WX + 7, 71, WZ + 61, 'air')
+
+    # Top flight: east/grade to west/y56.
+    for i, x in enumerate(range(WX + 6, WX - 6, -1)):
+        y = 67 - i
+        o.set(x, y, WZ + 52, x, y, WZ + 54,
+              'polished_andesite_stairs[facing=east]')
+        o.set(x, y + 1, WZ + 52, x, y + 4, WZ + 54, 'air')
+    o.set(WX - 7, 56, WZ + 49, WX - 5, 56, WZ + 54, 'polished_andesite')
+
+    # Middle flight: west/y56 to east/y45.
+    for i, x in enumerate(range(WX - 6, WX + 6)):
+        y = 56 - i
+        o.set(x, y, WZ + 49, x, y, WZ + 51,
+              'polished_andesite_stairs[facing=west]')
+        o.set(x, y + 1, WZ + 49, x, y + 4, WZ + 51, 'air')
+    o.set(WX + 5, 45, WZ + 49, WX + 7, 45, WZ + 54, 'polished_andesite')
+
+    # Bottom flight: east/y45 to west/parterre y35.
+    for i, x in enumerate(range(WX + 6, WX - 5, -1)):
+        y = 45 - i
+        o.set(x, y, WZ + 52, x, y, WZ + 54,
+              'polished_andesite_stairs[facing=east]')
+        o.set(x, y + 1, WZ + 52, x, y + 4, WZ + 54, 'air')
+    o.set(WX - 7, 35, WZ + 49, WX - 4, 35, WZ + 54, 'polished_andesite')
+
+    # The north wall opens at the bottom and at upper-lobby level. A broad, lit
+    # corridor continues under the stadium footing to the parterre's south tip.
+    o.set(WX - 5, 36, sz1, WX + 5, 39, sz1, 'air')
+    o.set(WX - 4, 40, sz1, WX + 4, 40, WZ + 52, 'polished_andesite')
+    o.set(WX - 4, 41, sz1, WX + 4, 44, WZ + 52, 'air')
+    o.set(WX - 5, 35, WZ + 2, WX + 5, 35, sz1, 'polished_andesite')
+    o.set(WX - 5, 36, WZ + 2, WX + 5, 39, sz1, 'air')
+    o.set(WX - 5, 40, WZ + 2, WX + 5, 40, sz1, 'sea_lantern')
     return o.write('wl1_theatre.txt')
 
 
@@ -345,7 +448,7 @@ def phase_canopy():
         o.repl(WX - 66, 89, z, WX + 66, 94, z, ETFE, GRID)
     o.shell(WX, 88, WZ, 'polished_deepslate', 66, zr(66), 2)     # compression ring
     for x in range(WX - 60, WX + 61, 10):
-        o.repl(x, 88, WZ - 52, x, 93, WZ + 52, 'air', 'chain')
+        o.repl(x, 88, WZ - 52, x, 93, WZ + 52, 'air', 'minecraft:iron_chain')
     for ang in range(0, 360, 30):                                # the twelve columns
         r = math.radians(ang)
         x = WX + round(COL_A * math.cos(r))
@@ -378,8 +481,38 @@ def phase_texture():
     return o.write('wl4_texture.txt')
 
 
+def phase_bowl_access():
+    """Final-state public circulation for the stadium bowl.
+
+    This is deliberately a separate, last phase. The original facade "vomitories"
+    were only five-block pockets at the outer shell and never reached the grade
+    concourse. Its radial aisle tiles were also emitted before the concourse carve,
+    which removed the middle steps. Keeping the route here prevents either the bowl
+    shell or its texture pass from silently sealing it again.
+    """
+    o = Ops()
+
+    # Continue the existing south-forecourt passage through the seating belt to the
+    # live grade-concourse tip. The x offset avoids the theatre switchback beside it.
+    o.set(WX + 6, GRADE, WZ + 30, WX + 8, GRADE, WZ + 55,
+          'polished_andesite')
+    o.set(WX + 6, GRADE + 1, WZ + 30, WX + 8, GRADE + 4, WZ + 55, 'air')
+
+    # A three-wide, 1:2 aisle climbs from the east edge of the field to the rim.
+    # Each clearance carve precedes the next tread restoration, so adjacent treads
+    # remain connected while still leaving two blocks of player headroom.
+    for i in range(24):
+        x = WX + 22 + 2 * i
+        y = FIELD + 1 + i
+        o.set(x - 1, y, WZ - 1, x + 1, y, WZ + 1, 'polished_andesite')
+        o.set(x - 1, y + 1, WZ - 1, x + 1, y + 3, WZ + 1, 'air')
+
+    return o.write('wl5_bowl_access.txt')
+
+
 if __name__ == '__main__':
     fns = dict(site=phase_site, theatre=phase_theatre, bowl=phase_bowl,
-               canopy=phase_canopy, texture=phase_texture)
+               canopy=phase_canopy, texture=phase_texture,
+               bowl_access=phase_bowl_access)
     for w in (sys.argv[1:] or list(fns)):
         fns[w]()

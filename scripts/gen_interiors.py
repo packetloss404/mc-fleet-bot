@@ -2,12 +2,15 @@
 """
 Execute the two Fable 5 interior floor plans: the Market Hall and the Grange Hall.
 
-SAFETY RULE, applied without exception: every fill inside these buildings is a
-masked `REPL <mask> air -> <material>`, so it can only ever occupy empty space.
-It cannot destroy a chest, a furnace, a crop, the embedded cobblestone hut, the
-White Raven statue, or the neighbour cottage. The only subtractive ops are:
-  - cutting the hillside back (mask limited to stone/dirt/grass/gravel), and
+SAFETY RULE: the original fit-out fills inside these buildings are masked
+`REPL <mask> air -> <material>`, so they can only occupy empty space. The final
+circulation helpers use narrow `SET` operations at live-measured empty cells and
+at the floor plates that originally sealed their own stairs. They are routed away
+from every chest, furnace, crop, fitting, the embedded cobblestone hut, the White
+Raven statue, and the neighbour cottage. The only subtractive ops are:
+  - cutting the hillside back (mask limited to stone/dirt/grass/gravel),
   - the Grange Hall entry passage through the old town wall, which the plan calls for.
+  - measured stair headroom through the halls' own generated floor plates and rails.
 
 The stacked chest masses are deliberately LEFT ALONE. Moving a chest with WorldEdit
 destroys its contents, and these are residents' chests. The floors are built around
@@ -130,7 +133,40 @@ def phase_market():
     for z in range(NAVE[1] + 2, NAVE[3] - 1, 5):
         o.fill_air(NAVE[0] + 2, 68, z, NAVE[0] + 5, 68, z, 'spruce_slab')
         o.fill_air(NAVE[2] - 5, 68, z, NAVE[2] - 2, 68, z, 'spruce_slab')
+    market_access(o)
     return o.write('int1_market.txt')
+
+
+def market_access(o):
+    """Canonical stairs, emitted last so gallery and loft floors cannot seal them."""
+    # The terrace plate was already present when the original air-masked lower
+    # flight ran. It survived above the first two steps and occupied the third.
+    for i in range(3):
+        y, z = 68 + i, -341 + i
+        o.set(-70, y, z, -68, y, z, 'spruce_stairs[facing=south]')
+        o.set(-70, y + 1, z, -68, y + 2, z, 'air')
+    o.set(-70, 70, -338, -68, 70, -337, 'spruce_planks')
+
+    # The planned loft flight crossed the protected east chest stack. Use the
+    # measured-clear bay immediately south of the loft instead; the last headroom
+    # cut opens its gallery rail without touching any storage or fittings.
+    for i in range(6):
+        y, z = 71 + i, -339 + i
+        o.set(-46, y, z, -45, y, z, 'spruce_stairs[facing=south]')
+        o.set(-46, y + 1, z, -45, y + 3, z, 'air')
+
+    # Join the east and west lofts across the measured-empty north edge of the
+    # nave. Rails keep the eleven-block bridge safe without touching the White
+    # Raven or any of the preserved smelter fittings below.
+    o.set(-61, 76, -333, -51, 76, -333, 'spruce_planks')
+    o.set(-61, 77, -334, -51, 77, -334, 'spruce_fence')
+    o.set(-61, 77, -332, -51, 77, -332, 'spruce_fence')
+
+
+def phase_market_access():
+    o = Ops()
+    market_access(o)
+    return o.write('fix16_market_access.txt')
 
 
 # ===================================================== THE GRANGE HALL
@@ -202,10 +238,45 @@ def phase_grange():
         for z in range(GZ1 + 3, GZ2, 5):
             o.fill_air(x, 72, z, x, 72, z, 'lantern[hanging=true]')
             o.fill_air(x, 81, z, x, 81, z, 'lantern[hanging=true]')
+    grange_access(o)
     return o.write('int2_grange.txt')
 
 
+def grange_access(o):
+    """Canonical lower and upper flights, kept clear after both floor plates."""
+    # The first lower step was absent and the y73 wall-walk plate sealed the top
+    # two steps. Restore the measured flight and cut only its body/head cells.
+    o.set(-62, 67, -356, -60, 67, -356, 'stone_bricks')
+    for i in range(5):
+        y, z = 68 + i, -356 - i
+        o.set(-62, y, z, -60, y, z, 'spruce_stairs[facing=north]')
+        o.set(-62, y + 1, z, -60, y + 2, z, 'air')
+
+    # The original east flight runs through resident pots, brewing equipment and
+    # chests. A new two-wide flight climbs the measured-empty west bay from the
+    # wall-walk to the loft and turns east onto the intact y82 landing.
+    for i in range(8):
+        y, z = 74 + i, -361 + i
+        if i:
+            o.set(-63, y - 1, z, -62, y - 1, z, 'spruce_planks')
+        o.set(-63, y, z, -62, y, z, 'spruce_stairs[facing=south]')
+        o.set(-63, y + 1, z, -62, y + 2, z, 'air')
+    # The roof stair above z=-354 leaves only one block of headroom at loft level.
+    # Turn north on a one-block-lower landing, then step onto the intact loft plate
+    # at z=-356 where the roof is clear.
+    o.set(-61, 81, -355, -61, 81, -354, 'spruce_planks')
+    o.set(-61, 82, -355, -61, 83, -354, 'air')
+    o.set(-61, 82, -356, -61, 82, -356, 'spruce_planks')
+
+
+def phase_grange_access():
+    o = Ops()
+    grange_access(o)
+    return o.write('fix17_grange_access.txt')
+
+
 if __name__ == '__main__':
-    fns = dict(market=phase_market, grange=phase_grange)
+    fns = dict(market=phase_market, grange=phase_grange,
+               market_access=phase_market_access, grange_access=phase_grange_access)
     for w in (sys.argv[1:] or list(fns)):
         fns[w]()

@@ -219,11 +219,13 @@ def phase_sanctum():
     for dx in (-17, 17):
         o.set(CX + dx, FLOOR, STAGE_Z - 1, CX + dx, WALL_TOP - 2, STAGE_Z - 1, 'polished_deepslate')
     o.set(CX - 17, WALL_TOP - 2, STAGE_Z - 1, CX + 17, WALL_TOP - 2, STAGE_Z - 1, 'polished_deepslate')
-    o.set(CX - 16, WALL_TOP - 3, STAGE_Z - 1, CX + 16, WALL_TOP - 3, STAGE_Z - 1, 'chain')
+    o.set(CX - 16, WALL_TOP - 3, STAGE_Z - 1, CX + 16, WALL_TOP - 3, STAGE_Z - 1,
+          'minecraft:iron_chain')
     # rigging over the stage: a gantry, hoists, and a lighting bar
     o.set(CX - 15, WALL_TOP - 4, -394, CX + 15, WALL_TOP - 4, STAGE_Z - 2, 'polished_deepslate_wall')
     for dx in range(-14, 15, 4):
-        o.set(CX + dx, WALL_TOP - 6, -390, CX + dx, WALL_TOP - 5, -390, 'chain')
+        o.set(CX + dx, WALL_TOP - 6, -390, CX + dx, WALL_TOP - 5, -390,
+              'minecraft:iron_chain')
         o.set(CX + dx, WALL_TOP - 7, -390, CX + dx, WALL_TOP - 7, -390, 'redstone_lamp')
     o.set(CX - 14, STAGE_DECK + 1, -395, CX - 12, STAGE_DECK + 4, -395, 'barrel')
     o.set(CX + 12, STAGE_DECK + 1, -395, CX + 14, STAGE_DECK + 4, -395, 'barrel')
@@ -286,7 +288,77 @@ def phase_sanctum():
     return o.write('sn3_sanctum.txt')
 
 
+# ================================================ 4. REGISTRY-CORRECT SANCTUM RIGGING
+def phase_rigging():
+    """Re-place rigging omitted when the server rejected the legacy `chain` id."""
+    o = Ops()
+    o.set(CX - 16, WALL_TOP - 3, STAGE_Z - 1, CX + 16, WALL_TOP - 3, STAGE_Z - 1,
+          'minecraft:iron_chain')
+    for dx in range(-14, 15, 4):
+        o.set(CX + dx, WALL_TOP - 6, -390, CX + dx, WALL_TOP - 5, -390,
+              'minecraft:iron_chain')
+    return o.write('fix15_sanctum_rigging.txt')
+
+
+# ============================================================ 4. FINAL ACCESS REPAIR
+def phase_access():
+    """Canonical landings and return route, emitted after the original phases.
+
+    The final shaft carve removed fix9's landings, leaving a valid ladder behind a
+    doorway with no floor. The Sanctum route also descended through the seating but
+    had no climb back to its y41 portal. Keep these last so later shells cannot seal
+    them again.
+    """
+    o = Ops()
+
+    # Bridge the hall doorway to the ladder at ground, first floor and second floor.
+    # The landing stops at z=-390 so the ladder column at z=-389 stays continuous.
+    for floor_y in (67, 73, 79):
+        o.set(-98, floor_y, -391, -95, floor_y, -390, 'polished_andesite')
+        o.set(-95, floor_y + 1, -390, -94, floor_y + 2, -390, 'air')
+
+    # Three short turns from the last ladder cell at y85 into the penthouse's open
+    # concealed door at (-95,88,-389). This fits inside the existing shaft shell.
+    o.set(-96, 84, -389, -96, 84, -389, 'polished_andesite')
+    o.set(-96, 85, -390, -96, 85, -390,
+          'polished_andesite_stairs[facing=south]')
+    o.set(-96, 86, -390, -96, 88, -390, 'air')
+    o.set(-95, 86, -390, -95, 86, -390,
+          'polished_andesite_stairs[facing=east]')
+    o.set(-95, 87, -390, -95, 89, -390, 'air')
+    o.set(-95, 87, -389, -95, 87, -389,
+          'polished_andesite_stairs[facing=south]')
+
+    # Re-cut the measured route after all chamber and shaft shells. The east leg had
+    # a one-block cross-wall at x=-89, while the northern half of the long west leg
+    # had been completely re-filled with polished deepslate. Both defects made the
+    # nominal corridor a one-way fall through surrounding caves.
+    for a, b in (((-122, -391), (-96, -389)),
+                 ((-122, -391), (-120, -338)),
+                 ((-122, -340), (-84, -338))):
+        o.set(a[0], CORRIDOR_Y - 1, a[1], b[0], CORRIDOR_Y - 1, b[1],
+              'polished_deepslate')
+        o.set(a[0], CORRIDOR_Y, a[1], b[0], CORRIDOR_Y + 3, b[1], 'air')
+    # The west-leg headroom overlaps the bottom three ladder cells; restore the
+    # continuous climb only after the corridor has been re-cut.
+    o.set(-97, 42, -389, -97, 85, -389, 'ladder[facing=south]')
+
+    # A seven-rise central aisle links the stage deck (y29) to the existing bottom
+    # portal landing (y36 at z=-350). Four-block treads preserve the auditorium rake
+    # while making the formerly one-way descent climbable in both directions.
+    for z in range(STAGE_Z, -349):
+        rise = min(7, (z - STAGE_Z) // 4)
+        y = STAGE_DECK + rise
+        block = ('polished_blackstone_stairs[facing=north]'
+                 if z != STAGE_Z and (z - STAGE_Z) % 4 == 0
+                 else 'polished_blackstone')
+        o.set(CX - 3, y, z, CX + 3, y, z, block)
+        o.set(CX - 3, y + 1, z, CX + 3, y + 4, z, 'air')
+    return o.write('fix14_core_access.txt')
+
+
 if __name__ == '__main__':
-    fns = dict(penthouse=phase_penthouse, descent=phase_descent, sanctum=phase_sanctum)
+    fns = dict(penthouse=phase_penthouse, descent=phase_descent, sanctum=phase_sanctum,
+               rigging=phase_rigging, access=phase_access)
     for w in (sys.argv[1:] or list(fns)):
         fns[w]()
