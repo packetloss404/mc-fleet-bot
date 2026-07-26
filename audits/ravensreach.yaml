@@ -1,0 +1,242 @@
+# Ravensreach — repeatable structural audit
+#
+# Run:  python3 scripts/audit.py audits/ravensreach.yaml --refresh
+# Diff: python3 scripts/audit.py audits/ravensreach.yaml --json today.json --baseline yesterday.json
+#
+# EVERY box below comes from geometry MEASURED against the world, not from a design
+# document. That distinction is the whole point: this town's docs have been wrong in
+# both directions repeatedly, and assertions written from a doc would encode the same
+# errors the audits made by hand.
+#
+# Known-corrected geometry baked in here:
+#   * house:Surveyor is 13x8 at z[-407,-400], NOT the 13x11 the plan claimed -- its
+#     northern rows are physically inside the storehouse.
+#   * town_hall is 27x14 from x=-98, not 25x13 from x=-97; the roof overhangs by one
+#     on three faces.
+#   * the well is 5x10x3 CONTENT at (-85,68,-359); the registry recorded a 19x12x23
+#     schematic canvas, which is a different thing.
+#   * the oak grove is 8 trees and shrinking because the fleet harvests it. That is
+#     accepted behaviour, so there is deliberately NO assertion demanding 17 trees.
+#
+# When a check fails, fix the WORLD or fix the ASSERTION -- but say which, and why.
+
+name: Ravensreach structural audit
+snapshot:
+  near: "-85,-375"
+  radius: 250
+
+groups:
+
+  # ---------------------------------------------------------------- ground
+  - name: Site
+    checks:
+      - name: plaza is paved stone_bricks at y67
+        type: contains
+        box: [-105, 67, -395, -65, 67, -355]
+        materials: [stone_bricks]
+        # Arithmetic, because the first version of this threshold was wrong and
+        # reported a FAIL against a plaza that is in fact fully paved:
+        #   plaza            41 x 41 = 1681 cells
+        #   less town hall   27 x 14 =  378   (sits inside the plaza)
+        #   less well         5 x  3 =   15
+        #                            = 1288 expected stone_bricks
+        # Measured 1306 -- the hall's own floor contributes some stone_bricks back.
+        # 1250 leaves headroom for the hall footprint growing in the redesign
+        # without turning this into a false alarm.
+        min: 1250
+      - name: ground plane holds at y67 (no holes at sampled span)
+        type: solid
+        box: [-105, 67, -395, -65, 67, -355]
+        min_fraction: 0.98
+      - name: no water on the plaza surface
+        type: absent
+        box: [-105, 68, -395, -65, 70, -355]
+        materials: [water]
+
+  # ---------------------------------------------------------------- town hall
+  # Course-by-course, because "the walls are gone but the interior remains" is exactly
+  # the failure the operator reported, and only a per-layer count catches it.
+  - name: Town hall
+    checks:
+      - name: floor course y67
+        type: contains
+        box: [-98, 67, -381, -72, 67, -368]
+        materials: [polished_andesite, stone_bricks]
+        min: 200
+      - name: wall course y69
+        type: ring
+        box: [-98, 69, -381, -72, 69, -368]
+        materials: [stone_bricks, spruce_log, glass_pane]
+        tolerance: 12       # doors and window openings interrupt the ring
+      - name: wall course y71
+        type: ring
+        box: [-98, 71, -381, -72, 71, -368]
+        materials: [stone_bricks, spruce_log, glass_pane]
+        tolerance: 12
+      - name: roof present y74-79
+        type: contains
+        box: [-98, 74, -381, -72, 79, -368]
+        materials: [spruce_stairs, spruce_planks]
+        min: 150
+      - name: ridge y80
+        type: contains
+        box: [-98, 80, -381, -72, 80, -368]
+        materials: [spruce_planks]
+        min: 10
+      - name: bell still in place
+        type: count
+        box: [-87, 73, -370, -83, 75, -366]
+        materials: [bell]
+        expect: 1
+
+  # ---------------------------------------------------------------- cottages
+  # Each cottage gets the same three assertions: a wall course, a roof, and its
+  # interior fittings. If walls fail while fittings pass, that IS the "furniture
+  # floating in an open shell" symptom -- and the pair of results says so precisely.
+  - name: Cottage Architect
+    checks:
+      - name: wall course y69
+        type: ring
+        box: [-124, 69, -380, -112, 69, -370]
+        materials: [cobblestone, spruce_log, glass_pane]
+        tolerance: 8
+      - name: roof y74-77
+        type: contains
+        box: [-124, 74, -380, -112, 77, -370]
+        materials: [spruce_stairs, spruce_planks]
+        min: 40
+      - name: interior fittings present
+        type: contains
+        box: [-123, 68, -379, -113, 68, -371]
+        materials: [red_bed, chest, furnace, crafting_table, cartography_table, lectern]
+        min: 5
+
+  - name: Cottage Mason
+    checks:
+      - name: wall course y69
+        type: ring
+        box: [-58, 69, -380, -46, 69, -370]
+        materials: [cobblestone, spruce_log, glass_pane]
+        tolerance: 8
+      - name: roof y74-77
+        type: contains
+        box: [-58, 74, -380, -46, 77, -370]
+        materials: [spruce_stairs, spruce_planks]
+        min: 40
+      - name: interior fittings present
+        type: contains
+        box: [-57, 68, -379, -47, 68, -371]
+        materials: [red_bed, chest, furnace, crafting_table, stonecutter, smithing_table]
+        min: 5
+
+  - name: Cottage Scout
+    checks:
+      - name: wall course y69
+        type: ring
+        box: [-64, 69, -350, -52, 69, -340]
+        materials: [cobblestone, spruce_log, glass_pane, stone_bricks]
+        tolerance: 8
+      - name: roof y74-77
+        type: contains
+        box: [-64, 74, -350, -52, 77, -340]
+        materials: [spruce_stairs, spruce_planks]
+        min: 40
+      - name: interior fittings present
+        type: contains
+        box: [-63, 68, -349, -53, 68, -341]
+        materials: [red_bed, chest, furnace, crafting_table, barrel, cartography_table]
+        min: 5
+
+  - name: Cottage Steward
+    checks:
+      - name: wall course y69
+        type: ring
+        box: [-118, 69, -350, -106, 69, -340]
+        materials: [cobblestone, spruce_log, glass_pane]
+        tolerance: 8
+      - name: roof y74-77
+        type: contains
+        box: [-118, 74, -350, -106, 77, -340]
+        materials: [spruce_stairs, spruce_planks]
+        min: 40
+      - name: interior fittings present
+        type: contains
+        box: [-117, 68, -349, -107, 68, -341]
+        materials: [red_bed, chest, furnace, crafting_table, barrel, composter]
+        min: 5
+
+  - name: Cottage Surveyor
+    checks:
+      # 13x8 as-built, NOT the 13x11 in the plan.
+      - name: wall course y69
+        type: ring
+        box: [-91, 69, -407, -79, 69, -400]
+        materials: [cobblestone, spruce_log, glass_pane]
+        tolerance: 8
+      - name: north wall at z=-407 exists
+        type: contains
+        box: [-91, 69, -407, -79, 71, -407]
+        materials: [cobblestone, spruce_log, glass_pane]
+        min: 20
+      - name: interior fittings present
+        type: contains
+        box: [-90, 68, -406, -80, 68, -401]
+        materials: [red_bed, chest, furnace, crafting_table, cartography_table]
+        min: 5
+
+  # ---------------------------------------------------------------- storehouse
+  - name: Storehouse
+    checks:
+      - name: shell walls y70
+        type: ring
+        box: [-95, 70, -420, -75, 70, -408]
+        materials: [stone_bricks]
+        tolerance: 8
+      - name: lid y74
+        type: contains
+        box: [-95, 74, -420, -75, 74, -408]
+        materials: [smooth_stone, stone_bricks]
+        min: 200
+      - name: four chests present
+        type: count
+        box: [-94, 68, -419, -76, 68, -409]
+        materials: [chest]
+        expect: 4
+      - name: door fitted to the entrance
+        type: count
+        box: [-86, 68, -409, -84, 69, -407]
+        materials: [spruce_door]
+        expect: 2      # a door is two blocks
+
+  # ---------------------------------------------------------------- well
+  - name: Well
+    checks:
+      - name: structure present
+        type: contains
+        box: [-86, 68, -360, -80, 78, -356]
+        materials: [cobblestone, stone, dark_oak_planks, dark_oak_stairs]
+        min: 60
+      - name: no uncontained water spilling
+        type: absent
+        box: [-95, 68, -370, -70, 72, -345]
+        materials: [water]
+
+  # ---------------------------------------------------------------- hazards
+  # Assertions that exist to catch REGRESSIONS, not to describe intent. Each one
+  # corresponds to something that actually went wrong here.
+  - name: Regression guards
+    checks:
+      - name: no floating blocks in open sky above the town
+        # y95+ is well clear of every roof; the tallest structure tops out near y92.
+        type: empty
+        box: [-130, 95, -425, -40, 130, -335]
+      - name: mine apron intact
+        type: contains
+        box: [-89, 64, -444, -81, 64, -436]
+        materials: [stone_bricks]
+        min: 70
+      - name: no nether blocks in an overworld town
+        # A previous debris sweep found soul_sand and nether_wart at y83-88 here.
+        type: absent
+        box: [-130, 68, -425, -40, 120, -335]
+        materials: [soul_sand, nether_wart, netherrack, soul_soil]
