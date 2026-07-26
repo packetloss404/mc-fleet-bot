@@ -30,26 +30,26 @@ groups:
   # ---------------------------------------------------------------- ground
   - name: Site
     checks:
-      - name: plaza is paved stone_bricks at y67
+      - name: plaza is paved in Amsterdam klinker at y67
+        # RE-BASELINED 2026-07-26. The square was rebuilt to read as an Amsterdam
+        # one: banded klinker brickwork instead of a single flat tone of stone_bricks,
+        # so the old assertion (>=1050 stone_bricks) correctly went red. The baseline
+        # diff catching that is the mechanism working. Measured after the rebuild:
+        #   bricks 434 + mud_bricks 205 + granite 156 + polished_granite 131 = 926
+        # The 527 polished_andesite in this box is the Moot Hall's own ground floor,
+        # which is asserted separately and is deliberately NOT klinker.
         type: contains
         box: [-105, 67, -395, -65, 67, -355]
-        materials: [stone_bricks]
-        # Arithmetic, because the first version of this threshold was wrong and
-        # reported a FAIL against a plaza that is in fact fully paved:
-        #   plaza                 41 x 41 = 1681 cells
-        #   less Moot Hall block  31 x 17 =  527   (polished_andesite, inside the plaza)
-        #   less well              5 x  3 =   15
-        #                                 = 1139 expected stone_bricks
-        # Measured 1105 after the rebuild.
-        #
-        # RE-BASELINED 2026-07-26. This was 1250 against the OLD 25x13 hall and
-        # correctly went red when the larger hall was built -- the baseline diff caught
-        # it as a regression, which is the mechanism working, not failing. The count
-        # falls because the bigger civic building covers more plaza, which is intended.
-        min: 1050
+        materials: [bricks, mud_bricks, granite, polished_granite]
+        min: 880
       - name: ground plane holds at y67 (no holes at sampled span)
+        # The west canal is a deliberate 4-wide void through this box, so it is
+        # excluded rather than tolerated -- a loosened fraction would also hide a
+        # real hole somewhere else, which is the failure mode this check exists for.
         type: solid
         box: [-105, 67, -395, -65, 67, -355]
+        exclude:
+          - [-105, 67, -395, -102, 67, -356]
         min_fraction: 0.98
       - name: plaza has no unpaved grass holes
         # ADDED after a survey found 50 grass_block cells in the repave that the
@@ -116,14 +116,18 @@ groups:
         box: [-100, 73, -392, -70, 73, -376]
         materials: [chiseled_stone_bricks, spruce_log]
         tolerance: 6
-      - name: roof present y77-85
+      - name: roof present y87-96
+        # RE-BASELINED 2026-07-26. Two storeys were added to the Moot Hall, so the
+        # roof that used to sit at y77-85 now sits at y87-96 and the old box measured
+        # the new SECOND FLOOR instead. Measured after the raise: 597 spruce_stairs.
         type: contains
-        box: [-101, 77, -393, -69, 85, -375]
+        box: [-101, 87, -393, -69, 96, -375]
         materials: [spruce_stairs]
         min: 450
-      - name: ridge y86
+      - name: ridge y97
+        # Followed the roof up. Measured: 33 spruce_planks along the ridge line.
         type: contains
-        box: [-101, 86, -384, -69, 86, -384]
+        box: [-101, 97, -393, -69, 97, -375]
         materials: [spruce_planks]
         min: 30
       - name: bell tower reaches the spire
@@ -327,11 +331,14 @@ groups:
         # An assertion that flagged them would be noise, and noisy checks get ignored.
         type: empty
         box: [-130, 112, -425, -40, 140, -310]
-      - name: mine apron intact
-        type: contains
-        box: [-89, 64, -444, -81, 64, -436]
-        materials: [stone_bricks]
-        min: 70
+      # RETIRED 2026-07-26 -- "mine apron intact".
+      # The Central Pavilion was built on this pad and its foundation replaced the
+      # apron's stone_bricks with stone. Before retiring the check I looked for what
+      # the apron was an apron TO: there is no shaft, no rail, no ladder and no torch
+      # anywhere below it down to y20. It was a paved pad with nothing behind it,
+      # consistent with mining.mineSite being empty for this world. Nothing functional
+      # was buried, so this is a change of land use and not damage -- but it is being
+      # recorded as such rather than quietly deleted.
       - name: no nether blocks in an overworld town
         # A previous debris sweep found soul_sand and nether_wart at y83-88 here.
         type: absent
@@ -396,3 +403,97 @@ groups:
         box: [-66, 81, -371, -40, 90, -351]
         materials: [spruce_stairs, spruce_planks]
         min: 250
+
+  # ---------------------------------------------- civic quarter (built 2026-07-26)
+  # Every minimum below is MEASURED from the world after the build, then given a
+  # margin -- not taken from the generator that produced it. Where the two disagree
+  # the world wins, which is the entire reason this file exists.
+  - name: Amsterdam square
+    checks:
+      - name: canals hold water
+        type: contains
+        box: [-105, 63, -395, -102, 67, -356]
+        materials: [water]
+        min: 400                       # measured 452
+      - name: east canal holds water
+        type: contains
+        box: [-63, 63, -395, -60, 67, -356]
+        materials: [water]
+        min: 400                       # measured 437
+      - name: canals do not leak south
+        # ADDED after they DID leak. Both canals were dug with open ends; water ran
+        # out of the south end and put 23 blocks of it inside Cottage Scout, plus
+        # 107 more across the ground between. End walls now cap both ends at z=-396
+        # and z=-355. The 9 water blocks left in this box are the Market Hall's farm
+        # irrigation channel at x=-61 y67, which is deliberate and is excluded.
+        # `absent`, not `contains` with a ceiling: audit.py's contains only takes a
+        # MINIMUM, so an earlier draft of this check passed with 9 blocks of escaped
+        # water simply because 9 >= 1. A leak check that passes when it finds water
+        # is worse than no check at all.
+        type: absent
+        box: [-112, 63, -354, -50, 68, -325]
+        materials: [water]
+        exclude:
+          - [-66, 67, -340, -56, 67, -332]
+      - name: canals do not leak north
+        type: absent
+        box: [-112, 63, -410, -50, 68, -397]
+        materials: [water]
+      - name: gable terrace closes the south side
+        type: contains
+        box: [-105, 68, -352, -65, 92, -346]
+        materials: [bricks, red_terracotta, brown_terracotta, glass_pane, spruce_planks]
+        min: 1200                      # measured 3181 non-air overall
+      - name: the monument stands
+        type: contains
+        box: [-88, 67, -363, -82, 86, -357]
+        materials: [quartz_pillar, chiseled_quartz_block, smooth_quartz, quartz_stairs, sea_lantern]
+        min: 60                        # measured 125
+
+  - name: Library
+    checks:
+      - name: all six storeys have a floor
+        type: contains
+        box: [-142, 46, -446, -113, 83, -428]
+        materials: [polished_andesite, stone_bricks, deepslate_bricks]
+        min: 2400                      # measured ~570 per plate x 6
+      - name: stair core runs the full height
+        type: contains
+        box: [-119, 46, -445, -115, 89, -439]
+        materials: [polished_andesite, lantern]
+        min: 240                       # measured 269 of these two materials
+                                       # (459 was the non-air total, a different thing)
+      - name: roof is on
+        type: contains
+        box: [-145, 90, -449, -110, 98, -425]
+        materials: [deepslate_tiles, glass]
+        min: 1400                      # measured 1752
+      - name: no floating fittings above the roof
+        # Box narrowed to the GRADED footprint. The first version reached to x=-150
+        # and z=-420 and reported 255 "floating" blocks that were an ungraded natural
+        # hillside outside the build. A guard that cries wolf over terrain gets muted.
+        type: empty
+        box: [-147, 100, -451, -108, 130, -423]
+
+  - name: Central Pavilion
+    checks:
+      - name: floor is laid
+        type: contains
+        box: [-105, 67, -449, -65, 67, -425]
+        materials: [smooth_stone, polished_andesite, stone_bricks, polished_diorite, water]
+        min: 900                       # measured 1025
+      - name: colonnade stands
+        type: contains
+        box: [-105, 68, -449, -65, 78, -425]
+        materials: [polished_diorite, polished_diorite_wall]
+        min: 180                       # measured 226
+      - name: glass vault is closed
+        type: contains
+        box: [-105, 79, -449, -65, 85, -425]
+        materials: [light_gray_stained_glass, smooth_quartz]
+        min: 900                       # measured 1025
+      - name: it is open to walk through
+        # The pavilion's whole point is that you can cross it in any direction, so
+        # this asserts EMPTY at head height rather than a solid fraction.
+        type: empty
+        box: [-103, 72, -447, -67, 72, -427]

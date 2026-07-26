@@ -272,6 +272,32 @@ write into production `data/`.
     then, treat every file-writing action in that tool as a no-op and verify by
     reading the file back.
 
+12. **Never drive a player-relative WorldEdit command from a bot.** `//cyl`, `//sphere`,
+    `//pyramid` and `//forest` are all centred on the *player*, and the bot **falls**
+    between the `/tp` and the command reaching the server. Measured on 2026-07-26: a
+    cylinder aimed at y=100 landed at y=98; one aimed at y=104 landed at y=101. The
+    drift is non-deterministic, so a fill and a carve issued at the "same" level miss
+    each other and you get a solid lump instead of a bowl. Spectator mode does **not**
+    fix it. Rasterise the shape in Python and emit `//pos1`/`//pos2`/`//set` boxes —
+    absolute coordinates depend on nothing. It costs ~13× the ops and is still right.
+
+13. **A road that clears headroom will eat a building.** `road()` in
+    `scripts/gen_civic.py` sets y68-71 to air along its route. Three legs ran through
+    cottage footprints and destroyed walls, two fittings and half a bed — chest
+    *contents* are unrecoverable. Before running any path/road generator, intersect its
+    route boxes against known building footprints. The generator is now re-routed and
+    carries the footprints it must avoid in a comment.
+
+14. **`REPL <mask> air → X` does not fill cells that were never air-masked.** Laying
+    farmland with `REPL dirt,grass_block,… → farmland` leaves pre-existing **air** gaps
+    as air, so a water channel run through it spreads out through those gaps. Two
+    separate floods came from this. When a fill must be watertight, fill the air too,
+    and wall the ends of any channel.
+
+15. **Dig no canal without capping both ends.** Both Ravensreach canals were cut with
+    open ends and drained themselves across the town — 130 blocks of stray water, 23 of
+    them inside a resident's cottage. Same class as the N1/N6 floods.
+
 ---
 
 ## 5. Build discipline that worked
