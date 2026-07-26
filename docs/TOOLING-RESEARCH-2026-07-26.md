@@ -260,6 +260,106 @@ throughput estimates (±2× error bar — one benchmark render settles it); Blue
 URL-anchor field grammar (five minutes empirically); whether vanilla Minecraft renders
 acceptably under llvmpipe without a GPU.
 
-**Still pending:** the fourth agent, on build/schematic tooling and undo/rollback, has not
-reported. Its findings will overlap CoreProtect and FAWE above. This document will need a
-section on schematic round-tripping and safe rollback when it lands.
+**All four agents have now reported.** See §10 and §11.
+
+---
+
+## 10. The finding that changes how we build — "you are using the wrong actor"
+
+> **WorldEdit needs a *player* to hold a session.** That is why every build script here
+> fell back to RCON `/fill`. **But we already run a fleet of player-shaped mineflayer
+> bots.** Op one, grant it `worldedit.*`, and have it type `//pos1`, `//pos2`, `//set`.
+
+That single change collapses **four of the five standing build pain points at once**:
+
+| Pain point | Today | With a bot driving WorldEdit |
+|---|---|---|
+| `/fill` silently no-ops above 32,768 blocks | every op hand-chunked | `maxChangeLimit: -1` — no cap |
+| RCON writes need loaded chunks | manual `forceload add`/`remove` | WorldEdit handles chunk loading |
+| No undo | hand-rolled snapshot diffs | `//undo`, and `//restore` from a backup |
+| `/fill` cannot express random patterns | one material per fill | native weighted-random syntax |
+
+**We already knew half of this and never connected it.** HANDOFF's OQ-2 note says plainly
+that opped bots are *"the only way to drive WorldEdit `//` commands (the console has no
+selection)"* — recorded as a reason **not** to de-op, never as a reason to route builds
+through WorldEdit.
+
+**What it would have meant for last night's work, concretely:**
+
+- The greenstone finish ran as **30 hand-chunked `/fill` commands** across three caverns
+  with **one material per surface**, because `/fill` cannot speckle. In WorldEdit that is
+  three lines with real variation:
+  `//set 70%stone,15%mossy_cobblestone,10%andesite,5%emerald_ore`
+- **`//restore` is the recovery tool I needed and hand-rolled.** Point `snapshotRepo` at a
+  backup directory and `//restore` rebuilds **a selection** from a snapshot, live, no
+  downtime. Recovering the destroyed 460-block tower would have been `/snap use` +
+  `//restore` instead of a bespoke diff-and-replay script and a `/tmp` archaeology
+  expedition.
+- FAWE adds `/frb history <bot> <radius> <time>` — *"undo everything this bot did in the
+  last 20 minutes within 100 blocks"* — which is the exact shape of the debris-sweep
+  disaster.
+
+**Caveat to test first:** WorldGuard will likely block a bot's WorldEdit ops inside our
+protected regions; it needs `worldedit.bypass` or region membership. Unverified — try it
+on a throwaway region.
+
+---
+
+## 11. VERIFIED live defect in our own code — `prismarine-schematic`
+
+`src/build/SchematicStore.ts:65` reads `.schem` files via `prismarine-schematic`. I
+inspected the installed package. **All three defects are real, and we are on 1.2.3 —
+older than the 1.3.0 the agent assessed.**
+
+| Defect | Evidence from `node_modules/prismarine-schematic/lib/spongeSchematic.js` |
+|---|---|
+| **Cannot read Sponge v3** | Reader uses **flat root access** — `nbt.Palette`, `nbt.Width`, `nbt.BlockData`. v3 nests these under `{"": {"Schematic": {"Blocks": {…}}}}`. **WorldEdit 7.4 writes v3 by default**, so `//schem save` output will fail or decode to garbage |
+| **Writes v2 only** | `Version: { type: 'int', value: 2 }` — hardcoded |
+| **Drops all block entities** | **Zero** `BlockEntities`/`TileEntities`/`Entities` handling anywhere in the package. Chests, signs, banners, item frames vanish on round-trip |
+
+Plus upstream bug [#82](https://github.com/PrismarineJS/prismarine-schematic/issues/82)
+(filed 2026-04-21, unfixed): int-typed block states mis-decode —
+`white_stained_glass_pane` reads as `repeater`.
+
+**Why #82 matters more than it looks:** it produces **false mismatches** when diffing a
+build against its schematic. That is precisely the failure class that dominated the
+2026-07-25 audits — four "missing" findings that turned out to be probe errors. A
+verification tool that reports phantom differences is worse than no tool, because it
+manufactures work and erodes trust in real findings.
+
+**Stopgap:** force `//schem save sponge.2 <name>` so WorldEdit emits v2.
+**Real fix:** move region reads to `prismarine-provider-anvil` 2.13.0 (`loadRaw`/`saveRaw`,
+MIT, 2026-04-01), or evaluate `nucleation`.
+
+### nucleation — promising, not yet dependable
+
+MIT, Rust→WASM for Node *and* native Python wheels. Reads/writes `.litematic`, Sponge v2
+**and v3**, `.mcstructure`, `.mca`, whole world dirs. Two primitives are directly aimed at
+our problems: **`Diff.compute(before, after)`** (structural diff — verification and
+rollback in one call) and **`Fingerprint.is_duplicate()`** (translation- and
+orientation-invariant: *"did the bots build the right thing, anywhere?"*).
+
+**But:** ~14 stars, pre-1.0, and shipping **breaking releases daily** (0.3.18 → 0.7.0 in
+five days). Pin an exact version, wrap it behind an interface, keep prismarine as
+fallback. Do not bet the fleet on it yet.
+
+### ⚠️ New trap — a world cleaner would delete our town
+
+**Never run Thanos, PotatoPeeler, or ChunkCleaner on this world.** All three prune chunks
+by `InhabitedTime` — and **a bot-built 600×600 town that no human has ever walked through
+has near-zero `InhabitedTime`.** PotatoPeeler's own docs warn that worlds *"created or
+edited by mods / external softwares rather than manual construction by players"* have
+unpredictable values. These are marketed as disk-saving tools; here they are a
+world-deleting hazard.
+
+### Also worth knowing
+
+- **Amulet is NOT open source.** Its `LICENSE` reads *"All rights reserved. A licence must
+  be purchased."* There was never a permissive period — earlier releases shipped with no
+  licence file at all, which defaults to all-rights-reserved. PyPI ships blank licence
+  metadata, which is how the "Amulet is open source" myth spreads.
+- **The entire MCEdit lineage is dead** — the 1.13 flattening killed it. Hard 1.12 ceiling.
+- **WorldEdit 7.4.4** is out; we run **7.4.0**.
+- **Never run WorldEdit and FAWE together** — FAWE replaces it.
+- **`//fast` disables FAWE logging**, so anything run under it cannot be undone. Never use
+  it for automated destructive work.
