@@ -17,6 +17,7 @@ import { SchematicStore } from './SchematicStore';
 import type { SchematicInfo, CachedSchematic } from './SchematicStore';
 import { GatherPlanner, normalizeResource } from './GatherPlanner';
 import type { GatherPlanEntry, SkillChunk } from './GatherPlanner';
+import { worldEditFill, logWorldEditResult } from './WorldEditOps';
 
 // Re-exported so existing importers of these types from BuildCoordinator keep working.
 export type { SchematicInfo, CachedSchematic } from './SchematicStore';
@@ -446,9 +447,29 @@ export class BuildCoordinator {
     if (!handle) throw new Error('No connected bot available to issue /fill');
 
     logger.info({ jobId, box, chunks: chunks.length }, 'Demolishing build footprint');
-    for (const [cx1, cy1, cz1, cx2, cy2, cz2] of chunks) {
-      handle.chat(`/fill ${cx1} ${cy1} ${cz1} ${cx2} ${cy2} ${cz2} air`);
-      await this.sleep(150); // gentle cadence so the fills don't trip a chat-spam kick
+
+    // Prefer WorldEdit: one operation regardless of volume, and — the reason that
+    // matters for a DESTRUCTIVE op — it is undoable with `//undo`. Chunked `/fill`
+    // is not, which is why the 2026-07-25 tower loss needed a bespoke snapshot
+    // diff-and-replay to recover.
+    //
+    // Falls back to the original chunked `/fill` on failure, LOUDLY. Silent
+    // fallback would reintroduce exactly the blind-write problem this path exists
+    // to remove: the operator would believe they had an undo when they did not.
+    const we = await worldEditFill(handle, box, 'air');
+    logWorldEditResult({ jobId, box, op: 'demolish' }, we);
+
+    let usedWorldEdit = we.ok;
+    if (!we.ok) {
+      logger.warn(
+        { jobId, box, reason: we.reason, chunks: chunks.length },
+        'Demolish: WorldEdit unavailable or refused — falling back to chunked /fill. ' +
+          'THIS DEMOLITION WILL NOT BE UNDOABLE.',
+      );
+      for (const [cx1, cy1, cz1, cx2, cy2, cz2] of chunks) {
+        handle.chat(`/fill ${cx1} ${cy1} ${cz1} ${cx2} ${cy2} ${cz2} air`);
+        await this.sleep(150); // gentle cadence so the fills don't trip a chat-spam kick
+      }
     }
 
     job.status = 'cancelled';
@@ -456,8 +477,10 @@ export class BuildCoordinator {
     this.eventLog.push({
       type: 'build:demolished',
       botName: handle.botName ?? 'system',
-      description: `Demolished ${job.schematicFile} at ${x1},${y1},${z1} (${chunks.length} /fill ops)`,
-      metadata: { jobId, box },
+      description: usedWorldEdit
+        ? `Demolished ${job.schematicFile} at ${x1},${y1},${z1} (WorldEdit, ${we.blocksAffected ?? '?'} blocks, undoable)`
+        : `Demolished ${job.schematicFile} at ${x1},${y1},${z1} (${chunks.length} /fill ops, NOT undoable)`,
+      metadata: { jobId, box, usedWorldEdit, blocksAffected: we.blocksAffected },
     });
     this.io.emit('build:demolished', { jobId, box });
     this.persistJobs();
