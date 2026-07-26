@@ -46,8 +46,15 @@ const TRACE = args.includes('--trace');
 const triple = (s) => s.split(',').map(Number);
 const FROM = triple(arg('--from'));
 const TARGETS = (arg('--to') || '').split(';').filter(Boolean).map(triple);
-if (!FROM || FROM.length !== 3 || !TARGETS.length) {
-  console.error('need --from x,y,z and --to x,y,z[;x,y,z...]');
+/* --box asks the question point targets keep getting wrong: what FRACTION of a room's
+ * interior can you actually reach? A single coordinate one block inside a floor slab,
+ * a bookshelf or a stage deck reports UNREACHABLE on a perfectly open room, and nearly
+ * every false failure in this project came from exactly that. A box needs no lucky
+ * guess -- it enumerates the room's own standable cells and reports coverage. */
+const BOX = (arg('--box') || '').split(',').map(Number);
+const HAS_BOX = BOX.length === 6 && BOX.every((v) => Number.isFinite(v));
+if (!FROM || FROM.length !== 3 || (!TARGETS.length && !HAS_BOX)) {
+  console.error('need --from x,y,z and either --to x,y,z[;...] or --box x1,y1,z1,x2,y2,z2');
   process.exit(2);
 }
 
@@ -189,10 +196,12 @@ async function standable(x, y, z) {
   return footing(bn, bs);
 }
 
+const boxPts = HAS_BOX ? [[BOX[0], BOX[1], BOX[2]], [BOX[3], BOX[4], BOX[5]]] : [];
 const bbox = (() => {
-  const xs = [FROM[0], ...TARGETS.map((t) => t[0])];
-  const ys = [FROM[1], ...TARGETS.map((t) => t[1])];
-  const zs = [FROM[2], ...TARGETS.map((t) => t[2])];
+  const all = [...TARGETS, ...boxPts];
+  const xs = [FROM[0], ...all.map((t) => t[0])];
+  const ys = [FROM[1], ...all.map((t) => t[1])];
+  const zs = [FROM[2], ...all.map((t) => t[2])];
   return {
     x1: Math.min(...xs) - PAD, x2: Math.max(...xs) + PAD,
     y1: Math.min(...ys) - PAD, y2: Math.max(...ys) + PAD,
@@ -267,6 +276,25 @@ async function run() {
 
   console.log(`  flood: ${seen.size} standable cells reached, ${visited} expanded` +
               ` (chunks ${chunksRead} read, ${chunksMissing} absent)`);
+  if (HAS_BOX) {
+    const [bx1, by1, bz1, bx2, by2, bz2] = [
+      Math.min(BOX[0], BOX[3]), Math.min(BOX[1], BOX[4]), Math.min(BOX[2], BOX[5]),
+      Math.max(BOX[0], BOX[3]), Math.max(BOX[1], BOX[4]), Math.max(BOX[2], BOX[5])];
+    let inside = 0, got = 0;
+    for (let y = by1; y <= by2; y++)
+      for (let z = bz1; z <= bz2; z++)
+        for (let x = bx1; x <= bx2; x++) {
+          if (!(await standable(x, y, z))) continue;
+          inside++;
+          if (seen.has(`${x},${y},${z}`)) got++;
+        }
+    const pct = inside ? Math.round((100 * got) / inside) : 0;
+    const verdict = inside === 0 ? 'NO-INTERIOR'
+                  : got === 0 ? 'SEALED'
+                  : pct >= 60 ? 'OPEN' : 'PARTLY-SEALED';
+    console.log(`  ${verdict}  ${got}/${inside} standable interior cells reachable (${pct}%)`);
+    process.exit(verdict === 'OPEN' || verdict === 'NO-INTERIOR' ? 0 : 1);
+  }
   let bad = 0;
   for (const t of TARGETS) {
     const k = key(...t);

@@ -175,10 +175,40 @@ src/
 └── util/         # Logger and helpers
 web/              # Next.js dashboard
 skills/           # Learned skills saved as JS modules (the library grows as bots run)
+scripts/          # World tooling — see below
+builds/           # manifest.yaml: every build unit and its completeness assertions
+audits/           # Declarative structural audits (ravensreach.yaml: 65 checks)
 data/             # Persistent bot state and memory (gitignored)
 ```
 
 The town subsystem (`src/town/`) persists via **Drizzle ORM over better-sqlite3** (`data/town.db`), with a schema kept deliberately Postgres-portable (text PKs, epoch-ms ints, JSON-as-text); everything else persists to JSON files under `data/`.
+
+## World tooling
+
+Large structures are built by generating **ops files** (absolute-coordinate boxes) and
+running them against the server. Nothing here goes through the bots' Voyager loop.
+
+| script | does |
+|---|---|
+| `rcon_runner.py` | Runs ops as vanilla `/fill` over RCON — **0.002 s per command** vs ~1.5 s through a bot's WorldEdit selection. Force-loads the target region and restores the operator's pinned chunks afterwards. Checks every reply. |
+| `build_runner.py` | The slow path: drives an opped mineflayer bot through WorldEdit. Still needed for random patterns and for block ids the server's command parser rejects. |
+| `verify_ops.py` | Samples an ops file against the world, because a runner reporting *issued* is not the same as *exists*. Ordering-aware. |
+| `reachability.mjs` | Flood-fills the space a player can occupy. `--box` reports what fraction of a room's interior you can actually reach. |
+| `build_status.py` | Reads `builds/manifest.yaml` and runs both checks over every build unit. **One command that says which builds are finished.** |
+| `audit.py` | Declarative structural audits with baseline diffing. |
+| `block_census.mjs` | Reads region files offline and reports exactly what occupies a box. |
+| `mc_look.py` | Renders a first-person view from the region files (see the `mc-look` skill). |
+
+```bash
+python3 scripts/build_status.py          # is anything half-built or sealed?
+python3 scripts/audit.py audits/ravensreach.yaml --refresh
+```
+
+**Why two kinds of check.** Placement and traversability are different properties. A
+descent shaft once verified BUILT 5/5 on block sampling and was completely unusable —
+every sampled block existed and three separate ceilings sealed it. `build_status.py`
+asserts both, and walk checks run `both_ways` because a player falls any distance but
+climbs one block, so a downward-only check passes on a hole in the floor.
 
 ## Control Platform
 

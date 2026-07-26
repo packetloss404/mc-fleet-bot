@@ -1,5 +1,13 @@
 # HANDOFF — mc-fleet-bot
 
+> ### ⇒ For the current state of the WORLD, read `HANDOFF-2026-07-26.md` first.
+> That session relocated the stadium, built the Westlight complex, and — more useful —
+> established that **placement and traversability are different properties** and that we
+> had only ever checked placement. Three finished builds turned out to be completely
+> sealed. Start any world work with `python3 scripts/build_status.py`.
+>
+> This file remains correct for the platform, the hosts, and the 2026-07-25 audit.
+
 **As of 2026-07-25 (updated late the same day).** Written to hand this project to
 the next person (or the next session) without re-deriving anything.
 

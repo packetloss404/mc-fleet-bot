@@ -125,6 +125,11 @@ def main():
     for u in units:
         listed.update(u.get('ops', []))
         name = u['name']
+        if 'planned' in u:
+            print(f'  {Y}{name:26} {"PLANNED — not built":22} {"-":12}{RST} '
+                  f'{" ".join(u["planned"].split())[:44]}')
+            fails += 1
+            continue
         if 'retired' in u:
             print(f'  {DIM}{name:26} {"retired":22} {"-":12} '
                   f'{" ".join(u["retired"].split())[:44]}{RST}')

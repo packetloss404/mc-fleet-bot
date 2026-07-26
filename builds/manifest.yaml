@@ -136,6 +136,54 @@ units:
     ops: [wl4_texture.txt]
     walk_na: material scatter over already-checked geometry
 
+  - name: members-club-lounge
+    ops: [wl1_theatre.txt]
+    walk:
+      # BUILT AND SEALED as of 2026-07-26: the room exists (929 blocks -- red concrete
+      # and velvet, a lit dance floor of black glass over sea lanterns, the bar) but
+      # there is no door from the balcony. Asserted red on purpose.
+      - from: [-361, 36, -557]
+        both_ways: true
+        to: [[-410, 36, -558]]
+
+  # ------------------------------------------------- designed but NOT YET BUILT
+  # These carry `planned:` and count as outstanding until ops exist and pass. They are
+  # listed because a design that only lives in a chat transcript is a design that gets
+  # forgotten -- which is exactly what happened to the members' club twice.
+
+  - name: westlight-district
+    planned: >
+      docs research 2026-07-26, agent design "WESTLIGHT". A lakefront market-crescent
+      wrapping the stadium's southern brim: Gatehead Square with a wayshrine clock
+      tower, the Ferry Bell tavern, a 54-block arcaded High Street with seven
+      shophouses, the Beacon Inn with a 42-block tower answering the canopy, Lantern
+      Hall food hall and Field House pavilions, Lantern Plaza, the Malt & Lantern
+      brew-barn, Shorelight Park, Lake Baths, Skiff House, jetty, Brimside boardwalk
+      and a waterfall into the lake. Nothing of it is built.
+
+  - name: approach-road
+    planned: >
+      Town -> Westlight, ~275 blocks: Millstone Bridge at x=-170, a meadow leg with a
+      tree-belt kept deliberately to hide the stadium, a Panorama bay at x=-224 for the
+      first full reveal, a lakeshore causeway, and the White Bridge at x=-305 where the
+      paving turns from grey klinker to white and the road becomes a street. Not built.
+
+  - name: ravensgate
+    planned: >
+      docs research 2026-07-26, agent design "RAVENSGATE" -- the replacement for the
+      pavilion that reads as a bus shelter. A deep south stoa with a continuous bench,
+      a west loggia carrying a proper library portal, a 42-block campanile at the axis
+      hinge, a gate and turn for compression, a two-step sunken court (the Nine Fields)
+      with a single falling water chain on axis, a pleached grove, and a paving gradient
+      from medieval grey to canopy white. Requires demolishing pav1 first. Not built.
+
+  - name: ravenrock-connectivity
+    planned: >
+      The access shaft at x=204 z=-15 runs surface y64 down to y20 and is reachable,
+      but the N5 portal at (286,20,-27) is NOT reachable from it -- closest approach 90
+      blocks. Raven Rock's four portals and its caverns/tunnels need a connectivity
+      sweep and, probably, joining up. Nobody has checked the rest of the complex.
+
   # ---------------------------------------------------------------- retired
   - name: town-concert-hall
     ops: [ch1_site.txt, ch2_bowl.txt, ch6_canopy.txt]
