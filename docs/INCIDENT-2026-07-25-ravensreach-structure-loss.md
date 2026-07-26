@@ -90,6 +90,30 @@ ratified grove harvest and 67 `water`, all three excluded deliberately.
 > whole block names, never substrings.** Minecraft's naming makes every natural block a
 > prefix of a built one.
 
+## Wider sweep — no other damage found
+
+The operator asked for the rest of the town to be checked against the same snapshot.
+Done with `scripts/diff_snapshots.mjs` (written for this, since the first pass was
+ad-hoc `comm` over sorted text dumps) over **x[−300,150] y[50,160] z[−560,−160] — 754
+chunks**, four times the area of the original survey.
+
+**2,184 removals, and every one is accounted for. None is damage.**
+
+| Removed | Where | Verdict |
+|---|---|---|
+| 604 `red_terracotta`, 20 `brick_stairs` | x[20,43] y[72,78] z[−203,−187] | **Intentional** — exactly the H12 Valencia gable removed under MSA Q1 |
+| 120 `light_gray_concrete` | x[32,37] y[85,87] z[−204,−185] | **Genuine debris** — verified: y73–84 beneath it is 0/2880 non-air, so it was floating over open air with nothing under it |
+| 1,207 `dirt`/`stone`/`grass_block` | y50–72, peaking y67–71 | **Bot mining.** Spread across 36 separate 16×16 columns (~34 blocks each) along the MSA↔Ravensreach travel corridor. Scattered, not a coherent cut — the signature of the fleet digging, not a sweep |
+| birch leaves/logs, leaf_litter, short_grass | scattered | Vegetation churn / harvesting |
+
+Re-diffing the already-restored town box returns only the 163 `oak_leaves` + 11
+`oak_log` of the ratified grove harvest and 67 `water` — all three excluded on purpose.
+
+**Conclusion: the destroyed tower was the only real casualty, and it is fully restored.**
+The scattered terrain loss is worth knowing about for a different reason — bots are
+excavating along their routes, which is exactly the behaviour the newly-extended
+`mining.protectedZones` is meant to bound.
+
 ## What to change before running the sweep again
 
 1. **Never let it write.** `find_floating.mjs` is explicitly designed to emit commands for
