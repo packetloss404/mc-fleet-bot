@@ -60,9 +60,18 @@ groups:
         box: [-105, 67, -395, -65, 67, -355]
         materials: [grass_block, dirt, coarse_dirt, podzol]
       - name: no furniture abandoned on the open plaza
-        # A double red bed sits exposed at (-89..-88, 68, -385) with no building on it.
+        # Originally caught a double red bed exposed at (-89..-88,68,-385) with no
+        # building on it (since removed).
+        #
+        # Then it caught the MOOT HALL'S OWN strongroom chests and archive barrels,
+        # because the plaza box necessarily contains the building standing in it. That
+        # was a false positive of mine, not a defect -- exactly the shape of error this
+        # whole tool exists to eliminate. Hence `exclude`.
         type: absent
         box: [-105, 68, -395, -65, 68, -355]
+        exclude:
+          - [-100, 68, -392, -70, 68, -376]   # Moot Hall main block
+          - [-88, 68, -375, -82, 68, -369]    # Moot Hall bell tower
         materials: [red_bed, chest, barrel, furnace, crafting_table]
       - name: no water on the plaza surface
         type: absent

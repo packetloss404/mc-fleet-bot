@@ -149,7 +149,25 @@ def run_check(chk, regions):
     if c['chunks_absent'] > 0:
         return UNKNOWN, f"{c['chunks_absent']} chunk(s) missing from snapshot", c
 
-    ev = {'cells': c['cells'], 'non_air': c['total'], 'top': dict(list(c['tally'].items())[:6])}
+    # `exclude:` subtracts sub-boxes from the tally. Needed whenever a building stands
+    # INSIDE the area being asserted on: a "no abandoned furniture on the plaza" check
+    # flagged the town hall's own strongroom chests and archive barrels, because the
+    # plaza box necessarily contains the hall. Carving the region into strips by hand
+    # is error-prone and the errors look exactly like real findings, which is the whole
+    # failure mode this tool exists to remove.
+    excluded = 0
+    for ebox in chk.get('exclude', []):
+        e = census(ebox, regions, include_air=include_air)
+        if e['chunks_absent'] > 0:
+            return UNKNOWN, f"{e['chunks_absent']} chunk(s) missing under an exclude box", e
+        for name, n in e['tally'].items():
+            c['tally'][name] = max(0, c['tally'].get(name, 0) - n)
+            excluded += n
+        c['total'] = max(0, c['total'] - e['total'])
+        c['cells'] = max(0, c['cells'] - e['cells'])
+
+    ev = {'cells': c['cells'], 'non_air': c['total'], 'excluded': excluded,
+          'top': dict(list(c['tally'].items())[:6])}
 
     if kind == 'solid':
         got, want = c['total'], c['cells']
