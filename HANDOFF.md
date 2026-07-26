@@ -524,3 +524,26 @@ that later siting decisions are derived from.
   refills from outside any box. Needs a dam or a regrade decision.
 - `SiteSelector` optimises for flatness with **no notion of "central to the town"**.
   Nothing stops the next building landing on the outskirts.
+
+16. **Build ops belong on RCON `/fill`, not on a bot's WorldEdit selection.** WorldEdit
+    needs a *player* selection, so `build_runner.py` drives an opped mineflayer bot and
+    spends three chat round-trips per op (`//pos1`, `//pos2`, `//set`) plus a reply
+    poll — measured **~1.5 s per op**, which is four hours for a 9,500-op build.
+    Vanilla `/fill` needs no selection: one command per box, measured **0.002 s** over
+    an already-open RCON channel. The same 9,500 ops took **19 seconds**. Use
+    `scripts/rcon_runner.py`. Three caveats it handles, all of which bite silently:
+    - `/fill` **refuses unloaded chunks** with `That position is not loaded` — the bots
+      never move (we place by coordinate), so nothing at a remote site is loaded. It
+      force-loads the ops' bounding box and restores any of the operator's ~281 pinned
+      chunks that its own `forceload remove` takes with it.
+    - `/fill` caps at **32768 blocks**; bigger boxes are split.
+    - `/fill` has **no random patterns**. Lay geometry down in flat single materials and
+      scatter accents afterwards in a handful of big WorldEdit `//replace` passes —
+      1,540 per-row mix ops cost ~38 min through a bot; four `//replace` cost seconds.
+
+17. **This server's command parser rejects `chain`.** `setblock <x> <y> <z> chain` and
+    `fill … chain` both answer `Unknown block type 'minecraft:chain'`, with or without
+    an explicit axis state, while WorldEdit places the same block happily. Also
+    **`smooth_basalt_slab` does not exist** in vanilla — smooth_basalt has no slab
+    variant, and an LLM design suggested it. `rcon_runner.py` carries a `COMMAND_BLOCKED`
+    set that routes such ids to WorldEdit instead of losing them.

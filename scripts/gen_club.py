@@ -44,6 +44,13 @@ class Ops:
         for a, b in ((x1, x1), (x2, x2)):
             self.set(a, y1, z1, b, y2, z2, wall)
 
+    def door(self, x, y, z, kind, facing='north'):
+        """A door is TWO blocks with DIFFERENT states. Setting a 2-tall selection to
+        a door id writes two half=lower halves, which is invalid and pops off on
+        load -- every door placed before this helper existed vanished that way."""
+        self.set(x, y, z, x, y, z, f'{kind}[facing={facing},half=lower]')
+        self.set(x, y + 1, z, x, y + 1, z, f'{kind}[facing={facing},half=upper]')
+
     def write(self, name):
         p = os.path.join(OUT, name)
         with open(p, 'w') as f:
