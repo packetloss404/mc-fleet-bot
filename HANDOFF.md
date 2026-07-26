@@ -235,7 +235,21 @@ write into production `data/`.
 9. **A structure the TownBrain cannot see is one it will build itself.** Every
    hand-built structure must get a `complete` row in `town.db` `buildings`, or
    the brain plans a duplicate. This already happened once with the Town Hall.
-10. **`scripts/mc_admin.py` cannot write files on the MC server, and does not say
+10. **`scripts/find_floating.mjs` deleted a real furnished building** and its guards
+    did not fire. 460 built blocks — 36 chests, an anvil, a loom, a brewing stand,
+    beds, signs — were removed from a tower east of the Ravensreach plaza as
+    "floating debris". The `--max-cluster` guard protects against deleting one big
+    thing; it does nothing about deleting a big thing **in pieces**, which is what
+    happened. Restored in full 2026-07-25, but only because an unrelated session had
+    left a 17:41 world snapshot in `/tmp` — that is luck, not process. **Do not run
+    that sweep without the review step, a durable pre-snapshot, and a furniture veto.**
+    Full write-up: `docs/INCIDENT-2026-07-25-ravensreach-structure-loss.md`.
+11. **A material filter must match whole block names, never substrings.** The restore
+    above initially left the tower body out because `grep -vE "deepslate|stone"`,
+    meant to skip *natural* deepslate and stone, also swallowed `deepslate_brick_stairs`,
+    `stone_bricks` and `cobblestone`. Minecraft names make **every natural block a prefix
+    of a built one**, so substring filters silently eat structure. Same class as trap #4.
+12. **`scripts/mc_admin.py` cannot write files on the MC server, and does not say
     so.** The SSH user is **`ianwalmsley` (uid 1000), not root** — it is in the
     `sudo` group but the tool never escalates. Everything under
     `/opt/packetcraft/paper-server` is root-owned, so every file write fails with
