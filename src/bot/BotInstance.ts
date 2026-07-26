@@ -113,6 +113,22 @@ export class BotInstance {
   private pendingListeners: Array<() => void> = [];
   /** Counter for sampling the verbose path_update debug log (1 in 50). */
   private pathUpdateLogCounter = 0;
+  /** Ring buffer of recent SERVER messages (system output, not player chat).
+   *
+   *  Exists because commands issued through `POST /api/bots/:name/say` were
+   *  write-only: the command reached the server (verified in the server console as
+   *  "issued server command") but whatever the server said BACK — a WorldEdit
+   *  "3 blocks changed", a WorldGuard denial, a limit error — arrived as a system
+   *  message that nothing listened for. The only `message` listeners were the
+   *  transient ones inside the login/class-selection handshake.
+   *
+   *  That made every scripted command a blind write, which is precisely how this
+   *  project's worst incidents happened. Anything driving WorldEdit through a bot
+   *  MUST be able to read the reply, or a silently-refused operation is
+   *  indistinguishable from a successful one. */
+  private serverMessages: Array<{ t: number; text: string }> = [];
+  private static readonly SERVER_MESSAGE_CAP = 100;
+  private serverMessageListenerBound = false;
   private llmClient: LLMClient | null;
   private affinityManager: AffinityManager;
   private conversationManager: ConversationManager;
@@ -1143,9 +1159,42 @@ export class BotInstance {
 
   private chatListenerBound = false;
 
+  /** Capture server system messages into a ring buffer so scripted commands can be
+   *  verified rather than assumed. Bound once per bot, alongside the chat listener.
+   *
+   *  Deliberately captures EVERYTHING and filters at read time. A filter here would
+   *  have to guess which prefixes matter, and the failures worth catching are
+   *  exactly the unanticipated ones — a WorldGuard denial reads nothing like a
+   *  WorldEdit success. */
+  private startServerMessageListener(): void {
+    if (!this.bot || this.serverMessageListenerBound) return;
+    this.serverMessageListenerBound = true;
+
+    this.bot.on('message', (msg: any) => {
+      let text: string;
+      try {
+        text = typeof msg?.toString === 'function' ? msg.toString() : String(msg);
+      } catch {
+        return;
+      }
+      if (!text || !text.trim()) return;
+      this.serverMessages.push({ t: Date.now(), text });
+      if (this.serverMessages.length > BotInstance.SERVER_MESSAGE_CAP) {
+        this.serverMessages.splice(0, this.serverMessages.length - BotInstance.SERVER_MESSAGE_CAP);
+      }
+    });
+  }
+
+  /** Recent server messages, newest last. `since` filters by timestamp so a caller
+   *  can issue a command and read only what arrived afterwards. */
+  getServerMessages(since = 0): Array<{ t: number; text: string }> {
+    return this.serverMessages.filter((m) => m.t > since);
+  }
+
   private startChatListener(): void {
     if (!this.bot || this.chatListenerBound) return;
     this.chatListenerBound = true;
+    this.startServerMessageListener();
 
     this.bot.on('chat', async (username: string, message: string) => {
       // Ignore own messages and empty messages
@@ -2301,6 +2350,12 @@ export class BotInstance {
       // heap that was actually dying. Surfacing it here means the next balloon is
       // observable in the status heartbeat instead of only in an OOM exit code.
       heap: BotInstance.readHeapStats(),
+      // Recent server system messages. Rides getStatus() rather than a new IPC
+      // request type because this path already crosses the worker boundary and is
+      // cached main-side; adding a bespoke round-trip for it would be more moving
+      // parts for no gain. Capped at 20 here so the status heartbeat stays small —
+      // the worker keeps 100.
+      serverMessages: this.serverMessages.slice(-20),
       position: this.bot?.entity?.position
         ? {
             x: Math.round(this.bot.entity.position.x),
