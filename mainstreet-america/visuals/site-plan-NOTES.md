@@ -8,6 +8,12 @@ Source precedence used throughout: **`qa/as-built-survey.md` (live-server RCON) 
 compact-street geometry). Everything the survey does not cover is drawn from the planning set and is
 **labelled on the drawing as planned-not-built**, or is flagged as this drawing's own invention.
 
+> **Superseded-state warning (2026-07-26):** this drawing is a provenance artifact for the initial
+> 2026-07-24 survey, not a current site map. Parking, the terraced south gate, the loop near `(0,+190)`,
+> Guest Center south entry, service buildings, billboard, all 12 homes, infill, mountain complex, and
+> fence were subsequently built/recovered. Use `data/world-map.db`,
+> `qa/audit-2026-07-26.md`, and `qa/parking-recovery-2026-07-26.md` for current state.
+
 ---
 
 ## 1. Drawn from the AS-BUILT SURVEY (measured, `qa/as-built-survey.md`)

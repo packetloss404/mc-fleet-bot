@@ -17,6 +17,10 @@ describe('config', () => {
     expect(config.llm.maxConcurrentRequests).toBeGreaterThan(0);
     expect(config.logging).toBeDefined();
     expect(config.logging.level).toBeDefined();
+    expect(config.leash).toHaveLength(5);
+    expect(config.leash.every((entry: any) => entry.caretaker === false)).toBe(true);
+    expect(config.leash.every((entry: any) => entry.x === -85 && entry.z === -370))
+      .toBe(true);
   });
 
   it('.env.example defaults match config.yml provider', () => {

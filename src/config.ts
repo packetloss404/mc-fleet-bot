@@ -276,10 +276,19 @@ export interface Config {
   /**
    * Per-bot movement leash. Each entry pins a named bot to a home anchor (x,z)
    * and radius — generated code cannot move it outside the radius (enforced in
-   * CodeExecutor.moveTo, and exploreUntil is disabled for it). Used to keep a
-   * dedicated caretaker bot on its island/site. Absent/empty → no bot leashed.
+   * CodeExecutor.moveTo, and exploreUntil is disabled for it). `caretaker`
+   * opts a builder-personality bot into the place-only caretaker curriculum.
+   * It defaults to the historical builder-personality behavior when omitted;
+   * set false for town residents who must remain bounded while still claiming
+   * their role-specific blackboard work. Absent/empty → no bot leashed.
    */
-  leash?: Array<{ botName: string; x: number; z: number; radius: number }>;
+  leash?: Array<{
+    botName: string;
+    x: number;
+    z: number;
+    radius: number;
+    caretaker?: boolean;
+  }>;
   /**
    * Safe fallback location a stranded bot teleports itself to when it gets stuck
    * in liquid and can't complete tasks (see VoyagerLoop.tryRescueIfStranded).

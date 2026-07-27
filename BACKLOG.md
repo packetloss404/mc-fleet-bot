@@ -1,6 +1,6 @@
 # Backlog
 
-Prioritized tracker for mc-fleet-bot. One page, scannable. Updated **2026-07-26** with world-build items from the Westlight session; the platform items from the 2026-07-24 fleet audit are carried below unchanged.
+Prioritized tracker for mc-fleet-bot. One page, scannable. Updated **2026-07-27** with the worldwide interior review; the platform items from the 2026-07-24 fleet audit are carried below unchanged.
 
 > **World-building work is tracked separately and machine-checked.** Run `python3 scripts/build_status.py` — it reads `builds/manifest.yaml` and reports every build unit's placement *and* traversability. It is the source of truth for items W0-W5 below; this page only records why they matter.
 
@@ -15,7 +15,10 @@ Priority tags: **[P0]** time-boxed / do next · **[P1]** should do soon · **[P2
 - **Resolution:** continued the west balcony vomitory through the solid raked seating and added a two-wide private stair down to the lounge without disturbing its bar or dance floor. Both lounge levels pass in both directions from the exterior; measured room coverage is **96%** (192/199 standable cells), enforced at a 90% floor in `builds/manifest.yaml`.
 
 ### W2. [DONE 2026-07-26] Moot Hall / Sanctum circulation
-- **Resolution:** measurement disproved the proposed façade fix: the hall already had an internal doorway into the core, but the final shaft carve had removed its landing. Restored landings at y67/y73/y79, added the missing top switchback into the penthouse, re-cut the overwritten processional corridor, and built a climbable Sanctum return aisle. Hall coverage is now **97%** (1,273/1,318 standable cells), and `moot-hall-core`, `sanctum-descent`, and `sanctum` are all `PLACED / WALKABLE` in both directions.
+- **Final resolution 2026-07-27:** the interim ladder route was superseded. A
+  finished 9×9 deep↔B2 switchback and stacked two-wide bell-core stairs now
+  connect Sanctum, B2, B1, ground, 1F, 2F, 3F, and penthouse. All 58 Moot Hall
+  ladders were removed/capped; 20/20 directional routes pass.
 
 ### W3. [DONE 2026-07-26] Grange Hall and Market Hall circulation
 - **Resolution:** measured the live stair failures rather than replacing the protected storage they crossed. Market now has a complete walk-to-terrace flight, a new clear-bay loft flight and a railed bridge joining both lofts; coverage is **91%** (1,249/1,375 standable cells). Grange now has a reopened hall-to-wall-walk flight and a new two-wide west-bay stair to the craft loft; coverage is **98%** (775/793). Both units pass representative destinations in both directions and enforce minimum coverage in `builds/manifest.yaml`.
@@ -28,18 +31,50 @@ Priority tags: **[P0]** time-boxed / do next · **[P1]** should do soon · **[P2
 ### W5. [DONE 2026-07-26] One-shot repair-file policy
 - **Resolution:** `fix*` and `dm*` batches are treated as one-shot migration history rather than independent standing builds. Their durable final geometry is enforced by canonical unit ops, bidirectional manifest routes, and the structural audit; `build_status.py` no longer reports these historical batches as stray live units.
 
+### W6. [DONE 2026-07-27] Moot Hall south multiplex and final Ravensreach regressions
+- **Resolution:** repaired the IMAX aisle, both medium cinemas, and B2
+  concessions lounge; retired the orphan flight; closed the irrigation sidewall
+  at its actual source; restored the Market stair and Garth paving; and removed
+  transient canal dirt. Final snapshot
+  `ebf7bfbce2128e2ffcc6b61d6c667c8831c8f4b0b9572fdba1010aafb1b8cfc2`
+  passes **112/112**. B1/B2/vertical/combined PNG and PDF maps are complete.
 
-### 0. [P0/S] `loginFlow` is an opt-out sentinel — a typo broadcasts the bot password in public chat
-- **Why:** the DyoAuth guards are exact-match skips, not opt-ins: `src/bot/BotInstance.ts:567` (`if (loginFlow === 'none')`) and `:649` (`if (selectClass === false)`). Both keys are `optional: true` (`src/config.ts:33-35`), so if either is deleted, misspelled, or set to anything else, the full DyoAuth dance runs — `bot.chat('/login dyobot2026')` and `bot.chat('/register dyobot2026 dyobot2026')` (`BotInstance.ts:597,600,613,620`). On the current stock Paper server there is no auth plugin, so `/login` is an unknown command and **the password is echoed into public chat by every bot on every join**, followed by a 15s auth-timeout stall before the Voyager loop and chat listener are wired up (`:389-397,625-630`). The dashboard makes this a one-typo mistake: `web/src/app/settings/page.tsx:69` renders `loginFlow` as a free-text input and `src/util/configPersist.ts:128` only validates `typeof === 'string'` — no enum check. The credential is also hardcoded as a fallback at `BotInstance.ts:558`, so deleting the config key does not remove it.
-- **Next action:** invert the guards to opt-in (`if (loginFlow === 'dyoauth')`), add enum validation in `configPersist` + a select input in the settings page, and move the password out of source into env.
+### W7. [DONE 2026-07-27] Worldwide floor plans, furnishings, and stairs
+- **Resolution:** audited all 68 mapped structures and 236 named rooms; fitted
+  every empty/under-detailed room; replaced remaining cataloged ladders with
+  stairs; repaired H09/H11, the six-level Ravensreach Library, Beacon Inn's
+  solid tower volume and ascent, and four sealed C01 lower-operations rooms.
+  The final snapshot has **0 empty rooms, 0 under-detailed rooms, 0 structures
+  using ladders, and 0 multi-floor structures without stairs**. All 32
+  saved-world route suites pass, and seven database scans retain 335 feature
+  observations. See `docs/WORLDWIDE-INTERIOR-REVIEW-2026-07-27.md`.
+
+### W8. [DONE 2026-07-27] MainStreet secure-complex design and detail wave
+- **Resolution:** gave the parking-side C01 bunker a real five-level primary
+  stair, rebuilt its theater and three conference rooms, dressed the aviation
+  hangar and response arena, designed eight observatory rooms and three
+  functional roof-lens assemblies, and separated the hidden luxury penthouse
+  from public circulation. The apartment, safe suite, shelter, communications
+  room, and three-level grand vault now have complete room programs,
+  furnishings, working stairs, rails, and wayfinding.
+- **Evidence:** 2,075 guarded build commands plus 11 final wayfinding commands
+  completed live; the immutable final snapshot passes 21/21 saved-world checks.
+  Forty-one feature observations are stored in database scan
+  `wsc_edfbf0742b8587b6`. See
+  `docs/MAINSTREET-SECURE-COMPLEX-WAVE5-2026-07-27.md`.
+
+
+### 0. [P1/S] Finish dashboard hardening for DyoAuth settings — backend risk fixed
+- **Fixed 2026-07-26:** `BotInstance` now runs DyoAuth only when `loginFlow === 'dyoauth'`, class selection only when explicitly true, and the source fallback is empty/`MC_BOT_PASSWORD`; `configPersist` validates `loginFlow` against `none|dyoauth`. A missing or misspelled setting now fails safe instead of sending a credential to chat.
+- **Residual:** the generic dashboard form still renders `loginFlow` as a free-text field even though the API accepts only the enum. The tracked runtime config also still carries a nonempty legacy login password even though this server uses `loginFlow: none`.
+- **Next action:** render `loginFlow` as a select and clear the dead tracked credential (use `MC_BOT_PASSWORD` only on a server that explicitly needs DyoAuth).
 
 ### 1. [P1/S] Decide what `POST /api/admin/restart` should do
 - **Why:** it flushes stores then `process.exit(0)`, but the unit is `Restart=on-failure`, which ignores a clean exit — so the endpoint is a graceful *stop* that leaves the fleet down until someone runs `systemctl start`. The name and the 202 body (`"Server is restarting"`) both lie. Documented in place (`src/server/admin.ts:232`) but not fixed, because the fix is a judgement call.
 - **Next action:** pick one — switch the unit to `Restart=always` (then the endpoint works as named, but a deliberate `systemctl stop` still stops cleanly), or `process.exit(1)` so on-failure respawns it, or rename it to `/api/admin/shutdown` and drop the pretence.
 
-### 2. [P1/M] Schema migration story before the next town DB change
-- **Why:** Town DB uses ad-hoc `CREATE TABLE IF NOT EXISTS`; drizzle-kit was deliberately dropped (commit `6ab4c8b`), so there is currently no way to alter existing columns/tables safely on deployed data.
-- **Next action:** Decide: reinstate drizzle-kit, or add a minimal versioned-migration runner (user_version pragma + numbered SQL files). Must land before the next schema change, not after.
+### 2. [DONE 2026-07-26] Versioned town DB migrations
+- **Resolution:** `src/town/db.ts` now owns an ordered `MIGRATIONS` list, persists the applied version with SQLite `PRAGMA user_version`, and runs pending migrations before creating indexes. Fresh-table definitions and deployed-data migrations are documented together.
 
 ### 3. [P1/M] Finish build-intent wiring (stranded at ~80%)
 - **Why:** The chat build-intent parser works and resolves coordinates, but only logs — "build me a house here" goes nowhere (`src/bot/BotInstance.ts:1006-1008`, TODO: dispatch to BuildCoordinator).
@@ -65,17 +100,52 @@ Priority tags: **[P0]** time-boxed / do next · **[P1]** should do soon · **[P2
 - **Why:** `data/llm-settings.json` stores provider apiKeys in plaintext (`src/ai/LLMSettings.ts:384`), but already mitigated: written mode `0o600` and masked in all API responses (`src/ai/LLMSettings.ts:100`). Single-user self-hosted box, so any encryption key would live alongside the data — marginal benefit.
 - **Next action:** None unless the deployment goes multi-tenant; then add passphrase/OS-keychain wrapping of the apiKey fields.
 
-### 9. [P1/S] No LLM fallback chain — one provider outage takes the whole fleet down
-- **Why:** demonstrated in production on 2026-07-24. `ModelRouter.dispatch` builds its chain from `route.provider` + `route.fallback` + `defaultProvider` (`src/ai/ModelRouter.ts:346-354`), but `data/llm-settings.json` has `routes: {}` — so the chain is literally `["gemini"]`. When the pinned Gemini model was retired the fleet 404'd 684 times with a 3% success rate for hours, while a configured, enabled, keyed Anthropic provider sat unused. The log line "LLM generate failed, trying fallback" (`ModelRouter.ts:454`) is a misnomer for "chain exhausted".
-- **Next action:** populate `routes` so each task type has anthropic as a fallback (budget gating at `:359` already protects spend), or make `dispatch` append all other enabled providers to the chain by default.
+### 9. [DONE 2026-07-26] Per-task LLM fallback chains
+- **Resolution:** `data/llm-settings.json` now defines routes for codegen, critic, curriculum, chat, and embeddings; every route has a fallback and the default provider is Anthropic. The prior empty-route single-provider failure mode is closed.
 
 ### 10. [P2/S] Config knobs the dashboard lets you edit that nothing reads
 - **Why:** `behavior.ambientChatMinSec`/`ambientChatMaxSec` (`config.yml:39-40`) are read by no behavior code — `BotInstance.ts:1292-1294` hardcodes 10–20 min. Worse, `src/util/configPersist.ts:65-69` lists them under `RESTART_REQUIRED_FIELDS` claiming they "drive setInterval schedules at bot worker boot", and the settings page renders them as editable numbers. An operator turns the dial and nothing happens. `security.quarantineReleaseSec` has zero readers (honestly labelled "reserved"). `behavior.wanderRadius`/`wanderIntervalMs` are live but unreachable for a codegen-mode fleet (`BotInstance.ts:391-393`).
 - **Next action:** wire ambientChat timings to the hardcoded schedule or delete the keys and their persistence entries; leave the reserved ones documented.
 
-### 11. [P2/S] Stale world docs written in the present tense
-- **Why:** `docs/BUNKER-MAP.md` carries a standing instruction to "update it every time we build out a room" for a bunker at x1669–1700 that exists only in the abandoned DyoCraft world; `docs/RAILWAY.md`, `docs/BUNKER.md`, and `docs/STEALTH-SURFACE.md` likewise state old-world coordinates as verified ground truth. `web/README.md` is still titled "DyoCraft Dashboard" and half-rebranded. `REPO_REVIEW.md:9` and `REPO_REVIEW_NOTES.md:4` open by naming `play.dyoburon.com` as the target server.
-- **Next action:** add a dated "describes the retired DyoCraft world" banner to the four `docs/*.md` files, finish the `web/README.md` rebrand, and one-line-banner the two review docs.
+### 11. [DONE 2026-07-27] Reconcile active Ravensreach world documents
+- **Resolution:** current interiors, civic-quarter, completion, south-extension,
+  audit, manifest, and reconciliation documents now agree with the 112/112
+  final snapshot. Historical diagnoses retain supersession banners instead of
+  being rewritten.
+
+### 12. [P1/S] Finish Raven Rock WorldGuard ownership — Ravensreach done
+- **Resolved:** `ravensreach` now has `packetloss404` as owner and all five
+  residents as members; the matching PacketCraft parcel accepts all five.
+- **Remaining:** apply and probe the intended membership for `raven_rock` and
+  `raven_rock_shaft` without changing their build-flag policy.
+
+### 13. [DONE 2026-07-27] Set a current-world `rescueHome`
+- **Resolution:** configured the lit Moot Hall plaza cell `(-85,68,-370)` and
+  added targeted config/geofence coverage.
+
+## Optional initiatives (not completion debt)
+
+Canonical scope, gates, dependencies, and acceptance criteria live in
+[`docs/OPTIONAL-INITIATIVES-2026-07-26.md`](docs/OPTIONAL-INITIATIVES-2026-07-26.md).
+These entries do not reopen the completed MainStreet America audit and never
+outrank required items above.
+
+| ID | Priority / effort | State | Short name |
+|---|---|---|---|
+| OPT-01 | P1 / M | READY | Generic read-only world scanner |
+| OPT-02 | P1 / S | DESIGN | Scheduled Box archive activation |
+| OPT-03 | P1 / M | READY | Repeatable map and visual-QA bundle |
+| OPT-04 | P2 / M | DESIGN | MainStreet presentation polish pack |
+| OPT-05 | P2 / M | DESIGN | Raven Rock finish pack |
+| OPT-06 | P2 / S–M | DESIGN | Ravensreach east civic-water edge |
+| OPT-07 | P2 / M | DESIGN | Curated schematic library packs |
+| OPT-08 | P3 / M | DESIGN | Personality-drift experiment |
+| OPT-09 | P3 / S–M | DESIGN | Weighted voting / executive override |
+| OPT-10 | P3 / M | READY | Continuous action awareness |
+| OPT-11 | P3 / L | CONDITIONAL | Dedicated render VM / higher-fidelity render farm |
+| OPT-12 | P3 / M | CONDITIONAL | At-rest LLM-key encryption |
+| OPT-13 | P3 / L | PARKED | Virtual town currency |
+| OPT-14 | — | ARCHIVED | Retired DyoCraft rail/residue work |
 
 ## Resolved decisions
 

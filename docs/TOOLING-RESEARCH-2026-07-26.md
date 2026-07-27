@@ -67,7 +67,7 @@ signal here.
 
 ---
 
-## 3. Unresolved — do not guess, test
+## 3. Field resolutions — tested on the fleet host
 
 **Two agents contradict each other. Both did real verification. Neither is obviously wrong.**
 
@@ -86,6 +86,22 @@ keeps getting burned by. But the prescribed fix differs:
 under each flag set. Do not wire this into a skill until one is proven, and build the
 screenshot step to **fail loudly on a blank image** rather than return it.
 
+**Tested 2026-07-26:** the first flag set works with the cached Chrome Headless Shell
+150 on the GPU-less fleet host:
+
+```text
+--use-gl=angle
+--use-angle=swiftshader-webgl
+--enable-unsafe-swiftshader
+--no-sandbox
+```
+
+The host needed the normal ATK/X11/GBM/ALSA runtime libraries. Chrome logged expected
+SwiftShader/WebGL `ReadPixels` performance warnings, but BlueMap loaded a real 1280×720
+WebGL canvas and produced textured screenshots. Chrome's one-shot `--screenshot` mode
+did not terminate reliably on BlueMap's perpetual render loop; Puppeteer
+`page.screenshot()` after the map loaded did.
+
 ### 3.2 BlueMap version pin — RESOLVED, primary source
 
 One agent said pin **5.16**; the other said go to **5.22**. I checked the release notes:
@@ -101,6 +117,33 @@ render VM where we install Java 25 anyway, **5.22 is the better choice** and is 
 compatible with the 26.x staging path.
 
 ⚠️ **Skip 5.21 entirely — map-breaking bug, fixed in 5.22.** Confirmed in the release notes.
+
+### 3.3 BlueMap camera grammar and interior capture — RESOLVED in-world
+
+BlueMap 5.16 CLI was run under a local Temurin 21 JRE against a `save-all flush`
+snapshot of the 1.21.11 world. `remove-caves-below-y: -10000` preserved the mountain
+interiors. A second map with a y72 render mask supplied a useful top-down cutaway.
+
+For a Minecraft player camera, the tested conversion is:
+
+```text
+BlueMap rotation = radians(Minecraft yaw) + PI
+BlueMap angle    = PI / 2 - radians(Minecraft pitch)
+```
+
+The full free-camera anchor remains:
+
+```text
+#<map>:x:y:z:0:<rotation>:<angle>:0:0:free
+```
+
+At the MainStreet mountain entrance, player yaw `-141.673°` and pitch `15.150°`
+converted to rotation `0.670`, angle `1.306`; BlueMap reported direction
+approximately `(0.599,-0.262,-0.756)`, matching the Minecraft view. The same-camera
+before/after capture exposed a sealed lobby/hangar route that the 51-check material
+audit had missed. The resulting reachability repair expanded the connected region
+from 3,362 to 28,123 standable cells. This is the first production proof that the
+snapshot → BlueMap → headless camera → structural audit loop catches a real defect.
 
 ---
 
@@ -227,7 +270,8 @@ setting bots to `viewDistance: 'tiny'` both beat adding cores.
 
 1. **`remove-caves-below-y` defaults to ~55** → Raven Rock silently vanishes. Set `-10000`.
 2. **Chrome 137+ dropped automatic SwiftShader fallback** → blank screenshots, no error.
-   Flags unresolved (§3.1) — make the screenshot step fail loudly on blank.
+   The tested fleet-host flags are recorded in §3.1; still make the screenshot step fail
+   loudly on a blank or unloaded canvas.
 3. **Two unrelated projects are named "Chunky"** — `chunky-dev/chunky` is the path
    tracer; `pop4959/Chunky` is the pregeneration plugin. Most 1.21.11 search results
    point at the wrong one.
@@ -256,8 +300,7 @@ matrix and the skip-5.21 warning.
 
 **Flagged by the agents as unverified — do not cite without checking:** the arXiv IDs for
 the "Ratchet" skill-lifecycle paper; whether Pufferfish has a 1.21.11 build; Chunky SPS
-throughput estimates (±2× error bar — one benchmark render settles it); BlueMap's exact
-URL-anchor field grammar (five minutes empirically); whether vanilla Minecraft renders
+throughput estimates (±2× error bar — one benchmark render settles it); whether vanilla Minecraft renders
 acceptably under llvmpipe without a GPU.
 
 **All four agents have now reported.** See §10 and §11.

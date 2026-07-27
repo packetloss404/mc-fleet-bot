@@ -1,0 +1,435 @@
+name: MainStreet America as-built regression audit
+snapshot:
+  near: "0,0"
+  radius: 350
+
+groups:
+  - name: canonical shells
+    checks:
+      - id: guest-center-foundation
+        type: layer
+        box: [-72, 63, 90, 72, 63, 165]
+        materials: [stone_bricks, polished_andesite, smooth_stone]
+        min: 8000
+      - id: cooking-school-shell
+        type: ring
+        box: [-133, 65, -118, -88, 65, -73]
+        min: 160
+      - id: service-warehouse-shell
+        type: ring
+        box: [-24, 65, -278, 23, 65, -232]
+        min: 170
+      - id: main-street-surface
+        type: contains
+        box: [-4, 63, -235, 4, 64, 80]
+        materials: [smooth_stone]
+        min: 2200
+
+  - name: abandoned roof operations
+    checks:
+      - id: h03-foreign-deepslate-frame
+        type: absent
+        box: [-52, 76, -62, -17, 96, -28]
+        materials: [deepslate_tiles]
+      - id: h04-west-frame
+        type: absent
+        box: [-50, 76, -111, -44, 96, -79]
+        materials: [deepslate_tiles, deepslate_tile_stairs]
+      - id: h04-east-frame
+        type: absent
+        box: [-24, 76, -111, -18, 96, -79]
+        materials: [deepslate_tiles, deepslate_tile_stairs]
+      - id: h04-north-frame
+        type: absent
+        box: [-43, 76, -111, -25, 96, -105]
+        materials: [deepslate_tiles, deepslate_tile_stairs]
+      - id: h04-south-frame
+        type: absent
+        box: [-43, 76, -85, -25, 96, -79]
+        materials: [deepslate_tiles, deepslate_tile_stairs]
+      - id: h04-overhead-frame
+        type: absent
+        box: [-50, 84, -111, -18, 96, -79]
+        materials: [deepslate_tiles, deepslate_tile_stairs]
+      - id: h08-foreign-dark-oak-frame
+        type: absent
+        box: [14, 76, -11, 50, 96, 21]
+        materials: [dark_oak_planks]
+
+  - name: service fit-out
+    checks:
+      - id: warehouse-storage
+        type: contains
+        box: [-22, 64, -276, 21, 72, -234]
+        materials: [barrel, chest]
+        min: 12
+      - id: warehouse-workstations
+        type: contains
+        box: [-22, 64, -276, 21, 72, -234]
+        materials: [crafting_table, stonecutter, smithing_table]
+        min: 4
+      - id: cooking-school-appliances
+        type: contains
+        box: [-131, 64, -116, -90, 71, -75]
+        materials: [furnace, smoker, blast_furnace]
+        min: 12
+      - id: cooking-school-storage
+        type: contains
+        box: [-131, 64, -116, -90, 71, -75]
+        materials: [barrel, chest]
+        min: 10
+
+  - name: guest center quality
+    checks:
+      - id: south-grand-entry
+        type: contains
+        box: [-2, 65, 164, 1, 66, 166]
+        materials: [dark_oak_door]
+        min: 4
+      - id: south-portico-order
+        type: contains
+        box: [-14, 64, 165, 14, 83, 176]
+        materials: [quartz_pillar, smooth_quartz, chiseled_quartz_block]
+        min: 100
+      - id: restaurant-fitout
+        type: contains
+        box: [-70, 65, 92, -30, 69, 127]
+        materials: [smoker, furnace, barrel, crafting_table, dark_oak_fence]
+        min: 15
+      - id: event-hall-fitout
+        type: contains
+        box: [30, 65, 92, 70, 69, 127]
+        materials: [dark_oak_planks, quartz_stairs, red_carpet]
+        min: 100
+      - id: studio-and-distribution-fitout
+        type: contains
+        box: [-70, 65, 129, 70, 69, 163]
+        materials: [bookshelf, smooth_quartz, polished_andesite]
+        min: 150
+
+  - name: authored home floorplans
+    checks:
+      - {id: h01-partitions, type: contains, box: [-45, 65, 45, -24, 73, 64], materials: [smooth_quartz], min: 100}
+      - {id: h02-partitions, type: contains, box: [-40, 65, -1, -28, 68, 11], materials: [light_blue_terracotta], min: 25}
+      - {id: h03-partitions, type: contains, box: [-45, 65, -55, -24, 73, -35], materials: [dark_oak_planks], min: 100}
+      - {id: h04-partitions, type: contains, box: [-42, 65, -103, -26, 73, -87], materials: [stripped_spruce_wood, spruce_planks], min: 100}
+      - {id: h05-partitions, type: contains, box: [-45, 65, -156, -23, 68, -134], materials: [spruce_planks], min: 100}
+      - {id: h06-partitions, type: contains, box: [-46, 65, -206, -23, 68, -184], materials: [bricks], min: 100}
+      - {id: h07-partitions, type: contains, box: [19, 65, 43, 44, 68, 67], materials: [smooth_sandstone], min: 150}
+      - {id: h08-partitions, type: contains, box: [21, 65, -4, 42, 73, 14], materials: [calcite], min: 100}
+      - {id: h09-partitions, type: contains, box: [19, 65, -58, 45, 68, -32], materials: [orange_terracotta], min: 150}
+      - {id: h10-partitions, type: contains, box: [19, 65, -108, 44, 68, -82], materials: [stone_bricks], min: 150}
+      - {id: h11-vertical-circulation, type: contains, box: [27, 65, -150, 37, 82, -141], materials: [scaffolding], min: 15}
+      - {id: h12-partitions, type: contains, box: [22, 65, -204, 41, 68, -186], materials: [white_terracotta], min: 100}
+
+  - name: neighborhood infill
+    checks:
+      - {id: c02-garden-villa, type: ring, box: [-78, 65, 21, -62, 65, 39], materials: [white_concrete], min: 65}
+      - {id: c03-garden-villa, type: ring, box: [62, 65, 21, 78, 65, 39], materials: [white_concrete], min: 65}
+      - {id: c04-brick-home, type: ring, box: [-78, 65, -79, -62, 65, -61], materials: [bricks], min: 65}
+      - {id: c05-brick-home, type: ring, box: [62, 65, -79, 78, 65, -61], materials: [bricks], min: 65}
+      - {id: c06-timber-lodge, type: ring, box: [-78, 65, -179, -62, 65, -161], materials: [spruce_planks], min: 65}
+      - {id: c07-timber-lodge, type: ring, box: [62, 65, -179, 78, 65, -161], materials: [spruce_planks], min: 65}
+
+  - name: circulation and safety
+    checks:
+      - id: street-lamps
+        type: contains
+        box: [-12, 64, -235, 12, 70, 80]
+        materials: [lantern]
+        min: 14
+      - id: east-complex-shaft-climb
+        type: contains
+        box: [199, 55, 152, 201, 102, 155]
+        materials: [ladder, scaffolding]
+        min: 40
+      - id: east-complex-shaft-light
+        type: contains
+        box: [197, 54, 150, 203, 103, 157]
+        materials: [lantern, sea_lantern, glowstone, shroomlight]
+        min: 4
+
+  - name: east complex fit-out
+    checks:
+      - id: east-complex-hangar-geology-cleared
+        type: absent
+        box: [109, 63, 83, 188, 75, 142]
+        materials: [dirt, grass_block, sand, gravel, stone, andesite, diorite, granite, coal_ore, copper_ore, iron_ore]
+      - id: east-complex-arena-geology-cleared
+        type: absent
+        box: [202, 63, 83, 248, 75, 132]
+        materials: [dirt, grass_block, sand, gravel, stone, andesite, diorite, granite, coal_ore, copper_ore, iron_ore]
+      - id: east-complex-hangar-storage
+        type: contains
+        box: [109, 63, 83, 188, 75, 142]
+        materials: [barrel, chest, ender_chest]
+        min: 120
+      - id: east-complex-hangar-maintenance
+        type: contains
+        box: [109, 63, 83, 188, 75, 142]
+        materials: [blast_furnace, anvil, smithing_table, crafting_table, stonecutter]
+        min: 20
+      - id: east-complex-training-arena
+        type: contains
+        box: [202, 63, 83, 248, 75, 132]
+        materials: [target, barrel, dark_oak_stairs, brewing_stand, lectern]
+        min: 70
+      - id: east-complex-lower-operations
+        type: contains
+        box: [141, 51, 103, 263, 60, 132]
+        materials: [barrel, chest, bookshelf, red_bed, cartography_table, lectern, crafting_table, smithing_table, stonecutter]
+        min: 180
+
+  - name: mountain public access and visual finish
+    checks:
+      - id: mountain-entrance-authored-lobby
+        type: contains
+        box: [109, 64, 153, 138, 75, 171]
+        materials: [smooth_stone, polished_deepslate, stone_bricks, polished_blackstone, deepslate_tiles, sea_lantern, waxed_weathered_cut_copper, iron_chain, smooth_quartz, dark_oak_stairs, lantern]
+        min: 900
+      - id: mountain-entrance-portal-and-canopy
+        type: contains
+        box: [105, 64, 171, 130, 77, 180]
+        materials: [deepslate_tiles, waxed_weathered_cut_copper, smooth_stone, sea_lantern, polished_blackstone, polished_andesite, tinted_glass]
+        min: 1100
+      - id: mountain-lobby-to-hangar-concourse
+        type: contains
+        box: [117, 62, 143, 131, 72, 152]
+        materials: [deepslate_tiles, deepslate_bricks, polished_blackstone, polished_deepslate, waxed_weathered_cut_copper, smooth_stone, sea_lantern]
+        min: 650
+      - id: mountain-hangar-to-arena-cross-passage
+        type: contains
+        box: [189, 62, 105, 208, 72, 115]
+        materials: [deepslate_tiles, dark_prismarine, polished_deepslate, polished_blackstone, smooth_stone, oxidized_cut_copper, waxed_weathered_cut_copper, waxed_oxidized_cut_copper, sea_lantern, white_concrete, orange_concrete, cyan_concrete]
+        min: 740
+      - id: mountain-retaining-face-landscape-blend
+        type: contains
+        box: [90, 65, 171, 128, 80, 205]
+        materials: [deepslate_tiles, stone, dirt, grass_block, stone_bricks, mossy_stone_bricks, polished_andesite, waxed_weathered_cut_copper, sea_lantern, azalea_leaves, flowering_azalea_leaves]
+        min: 1800
+
+  - name: parking arrival and gardens
+    checks:
+      - id: parking-individual-stall-striping
+        type: contains
+        box: [-125, 64, 172, 125, 64, 268]
+        materials: [white_concrete]
+        min: 2500
+      - id: parking-accessible-and-ev-markings
+        type: contains
+        box: [-125, 64, 172, 125, 64, 268]
+        materials: [blue_concrete]
+        min: 280
+      - id: parking-nine-wide-drive-aisles
+        type: contains
+        box: [-125, 64, 172, 125, 64, 268]
+        materials: [gray_concrete]
+        min: 4500
+      - id: parking-field-functional-lighting
+        type: contains
+        box: [-125, 64, 172, 125, 72, 268]
+        materials: [sea_lantern]
+        min: 120
+      - id: parking-solar-style-canopies
+        type: contains
+        box: [-116, 65, 256, 84, 72, 266]
+        materials: [black_stained_glass, waxed_oxidized_cut_copper, polished_blackstone_bricks, sea_lantern]
+        min: 780
+      - id: parking-formal-and-rain-gardens
+        type: contains
+        box: [-20, 64, 177, 119, 72, 245]
+        materials: [moss_block, rooted_dirt, coarse_dirt, azalea_leaves, flowering_azalea_leaves, oak_leaves]
+        min: 350
+      - id: parking-mountain-discovery-court
+        type: contains
+        box: [87, 64, 183, 95, 70, 209]
+        materials: [polished_andesite, smooth_stone, waxed_weathered_cut_copper, polished_blackstone_bricks, sea_lantern]
+        min: 300
+      - id: parking-south-arrival-retaining-and-light
+        type: contains
+        box: [-11, 64, 268, 11, 100, 305]
+        materials: [smooth_stone, gray_concrete, stone_bricks, mossy_stone_bricks, polished_blackstone_bricks, waxed_weathered_cut_copper, sea_lantern]
+        min: 1500
+      - id: parking-south-gate-full-opening
+        type: layer
+        box: [-10, 78, 305, 10, 78, 305]
+        materials: [smooth_stone, gray_concrete]
+        min: 21
+      - id: arena-to-hangar-wayfinding
+        type: contains
+        box: [150, 62, 106, 207, 62, 110]
+        materials: [oxidized_cut_copper, waxed_oxidized_cut_copper, waxed_weathered_cut_copper, gray_concrete, dark_prismarine, polished_deepslate, sea_lantern]
+        min: 280
+
+  - name: superseded outer boundary
+    checks:
+      - id: obsolete-north-fence-removed
+        type: absent
+        box: [-305, 40, -305, 305, 160, -301]
+        materials: [birch_fence, white_concrete, quartz_pillar]
+      - id: obsolete-south-fence-removed-outside-new-arrival-gate
+        type: absent
+        box: [-305, 40, 301, 305, 160, 305]
+        materials: [birch_fence, white_concrete, quartz_pillar]
+        exclude:
+          - [-14, 40, 301, 14, 160, 305]
+      - id: obsolete-east-fence-removed
+        type: absent
+        box: [301, 40, -305, 305, 160, 305]
+        materials: [birch_fence, white_concrete, quartz_pillar]
+      - id: obsolete-west-fence-removed
+        type: absent
+        box: [-305, 40, -305, -301, 160, 305]
+        materials: [birch_fence, white_concrete, quartz_pillar]
+
+  - name: project white-picket boundaries
+    checks:
+      - id: project-boundary-field-total
+        type: contains
+        box: [-300, 60, -300, 300, 120, 305]
+        materials: [birch_fence]
+        min: 4200
+      - id: arrival-campus-south-gate-open
+        type: absent
+        box: [-10, 79, 305, 10, 83, 305]
+        materials: [birch_fence]
+      - id: pond-west-gate-open
+        type: absent
+        box: [160, 65, -252, 160, 71, -248]
+        materials: [birch_fence]
+      - id: pond-east-gate-open
+        type: absent
+        box: [220, 65, -253, 220, 73, -247]
+        materials: [birch_fence]
+      - id: mountain-public-gate-open
+        type: absent
+        box: [90, 64, 196, 90, 74, 204]
+        materials: [birch_fence]
+
+  - name: completed audit landscapes
+    checks:
+      - id: l01-pond-water-preserved
+        type: count
+        box: [168, 60, -272, 212, 63, -228]
+        materials: [water]
+        expect: 4282
+      - id: l01-ecology-walk
+        type: contains
+        box: [160, 63, -280, 220, 75, -220]
+        materials: [packed_mud, stone_bricks, stone_brick_stairs, sea_lantern]
+        min: 620
+      - id: l01-safety-and-property-edge
+        type: contains
+        box: [160, 63, -280, 220, 75, -220]
+        materials: [birch_fence, smooth_quartz, smooth_quartz_slab]
+        min: 400
+      - id: l02-monument-terraces
+        type: contains
+        box: [82, 63, 276, 108, 76, 300]
+        materials: [stone_bricks, smooth_stone, polished_andesite, stone_brick_stairs, moss_block, quartz_stairs]
+        min: 1350
+
+  - name: town grid roads and projects
+    checks:
+      - id: r02-west-lane
+        type: contains
+        box: [-83, 62, -218, -81, 80, 84]
+        materials: [gray_concrete, yellow_concrete, stone_bricks, polished_andesite, white_concrete]
+        min: 850
+      - id: r03-east-avenue
+        type: contains
+        box: [81, 62, -218, 87, 90, 70]
+        materials: [gray_concrete, yellow_concrete, stone_bricks, polished_andesite, white_concrete, smooth_stone]
+        min: 1700
+      - id: r04-south-cross
+        type: contains
+        box: [-142, 62, 81, 90, 90, 87]
+        materials: [gray_concrete, yellow_concrete, stone_bricks, polished_andesite, white_concrete, smooth_stone]
+        min: 1400
+      - id: r05-garden-cross
+        type: contains
+        box: [-82, 62, 16, 84, 85, 18]
+        materials: [gray_concrete, yellow_concrete, stone_bricks, polished_andesite, white_concrete]
+        min: 450
+      - id: r06-brick-cross
+        type: contains
+        box: [-83, 62, -84, 4, 75, -82]
+        materials: [gray_concrete, yellow_concrete, stone_bricks, polished_andesite, white_concrete]
+        min: 240
+      - id: r07-service-cross
+        type: contains
+        box: [-84, 61, -219, 220, 80, -217]
+        materials: [gray_concrete, yellow_concrete, stone_bricks, polished_andesite, white_concrete]
+        min: 850
+      - id: grid-w2-design-lab
+        type: contains
+        box: [-132, 67, -52, -96, 81, 4]
+        materials: [smooth_quartz, spruce_planks, oxidized_cut_copper, gray_concrete, light_blue_stained_glass, bookshelf, smithing_table]
+        min: 5000
+      - id: grid-e2-clubhouse
+        type: contains
+        box: [88, 70, -45, 135, 90, 16]
+        materials: [smooth_quartz, dark_oak_planks, dark_oak_slab, polished_andesite, bricks, white_stained_glass, moss_block, bookshelf]
+        min: 4000
+
+  - name: surface hangar observatory and residence
+    checks:
+      - id: surface-hangar-shell-and-bay
+        type: contains
+        box: [175, 97, 137, 235, 140, 182]
+        materials: [light_gray_concrete, polished_deepslate, smooth_quartz, smooth_stone, gray_concrete, polished_andesite, light_blue_stained_glass, quartz_block]
+        min: 25000
+      - id: surface-office-overlook
+        type: contains
+        box: [190, 105, 145, 230, 114, 162]
+        materials: [light_blue_stained_glass, dark_oak_planks, smooth_quartz, gray_concrete, deepslate_bricks, polished_deepslate, deepslate_tiles, barrel, bookshelf, sea_lantern]
+        min: 900
+      - id: observatory-three-dome-complex
+        type: contains
+        box: [175, 119, 137, 235, 140, 182]
+        materials: [smooth_quartz, smooth_stone, quartz_block, oxidized_copper, light_blue_stained_glass, quartz_pillar, white_concrete, diorite_wall, polished_blackstone]
+        min: 8000
+      - id: command-center-twelve-monitors
+        type: count
+        box: [188, 106, 136, 208, 113, 153]
+        materials: [black_stained_glass]
+        expect: 12
+      - id: four-head-glass-marble-spa
+        type: contains
+        box: [179, 105, 164, 200, 113, 177]
+        materials: [glass, smooth_quartz, end_rod, water]
+        min: 600
+      - id: shelter-dry
+        type: absent
+        box: [149, 82, 144, 187, 90, 179]
+        materials: [water, bubble_column]
+      - id: grand-vault-dry
+        type: absent
+        box: [231, 45, 185, 261, 75, 225]
+        materials: [water, bubble_column]
+      - id: grand-vault-marble-gold-and-valuables
+        type: contains
+        box: [230, 44, 184, 262, 76, 226]
+        materials: [smooth_quartz, quartz_pillar, quartz_stairs, gold_block, netherite_block, diamond_block, emerald_block, raw_gold_block, raw_iron_block, raw_copper_block, beacon, ancient_debris, conduit]
+        min: 9800
+      - id: grand-vault-actual-inventory-chests
+        type: count
+        box: [230, 44, 184, 262, 76, 226]
+        materials: [chest]
+        expect: 9
+      - id: shelter-roof-landscape-cover
+        type: solid
+        box: [148, 92, 154, 164, 92, 180]
+      - id: grand-vault-roof-landscape-cover
+        type: solid
+        box: [230, 77, 210, 262, 77, 226]
+      - id: heliport-preserved
+        type: count
+        box: [238, 88, 172, 257, 90, 191]
+        materials: [gray_concrete, yellow_concrete]
+        expect: 442
+      - id: continuous-office-shaft
+        type: count
+        box: [200, 24, 153, 200, 105, 153]
+        materials: [scaffolding]
+        expect: 82

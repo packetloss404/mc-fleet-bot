@@ -107,6 +107,7 @@ cd web && npm test
 - List bots: `curl -s http://127.0.0.1:3001/api/bots`
 - Stream logs: `tail -f /var/log/mc-fleet-bot.log`
 - Filter important backend log events: `grep -E "task proposed|Execution result|task evaluated" /var/log/mc-fleet-bot.log`
+- Import MainStreet America's authored room bounds after `npm run build`: `node scripts/import_mainstreet_floorplans.js`
 
 ## Control Platform Services (`src/control/`)
 
@@ -307,3 +308,54 @@ The frontend connects to the backend API at `http://localhost:3001` and uses Soc
 - For frontend changes, run `npm run lint --prefix web` on touched files or the full app when practical.
 - If you add a new command, script, or workflow, update this file.
 - If you add tests, include both full-suite and single-test commands here.
+
+## MainStreet Picket Fence Workflow
+
+- The reviewed fence design is `mainstreet-america/planning/picket-fence.yaml`.
+- Refresh the local source data before generating fence operations:
+
+```bash
+python3 scripts/world_snapshot.py --near=0,0 --radius 320
+```
+
+- Generate the 32-column visual pilot and the full terrain-following perimeter:
+
+```bash
+node scripts/generate_picket_fence.mjs --mode pilot
+node scripts/generate_picket_fence.mjs --mode full
+```
+
+- Default outputs are:
+  - `data/buildops/msa_picket_fence_pilot.txt`
+  - `data/buildops/msa_picket_fence_pilot.report.json`
+  - `data/buildops/msa_picket_fence_full.txt`
+  - `data/buildops/msa_picket_fence_full.report.json`
+- Generation is offline and read-only. It decodes the local Anvil snapshot and
+  must not connect to or mutate the live world.
+- Review every collision, skipped column, water-plinth column, and grade break in
+  the JSON report before execution. A generated ops file is tied to the snapshot
+  listed in its report; regenerate after any newer world changes.
+- Fence operations use exact-material `REPL` guards. They may replace air,
+  explicitly identified replaceable plants, or top-layer water for an approved
+  plinth. At a 1..4-block outward detour only, the generator may minimally prune
+  exact-matched leaves or mangrove-root blocks when the whole corridor remains
+  obstructed; it never cuts logs or blindly overwrites an occupied target. The
+  report lists every such block under `trimmedFoliage`.
+- A full artifact is execution-ready only when its report shows zero final
+  collisions, skips, gate violations, non-orthogonal edges, path branches, and
+  unresolved grade discontinuities, with all baseline conflicts resolved.
+- Dry-run both generated files before any authorized build:
+
+```bash
+python3 scripts/rcon_runner.py data/buildops/msa_picket_fence_pilot.txt --dry-run
+python3 scripts/rcon_runner.py data/buildops/msa_picket_fence_full.txt --dry-run
+```
+
+- Run the focused generator tests with:
+
+```bash
+npx vitest run test/build/generatePicketFence.test.ts
+```
+
+- Do not execute either fence file live without reviewing the corresponding
+  report and coordinating with other active world-building work.

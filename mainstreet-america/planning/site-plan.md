@@ -107,10 +107,14 @@ Ordering runs front→back (south +Z → north −Z), matching the real function
   > built at **z[+90, +165]** — 45 blocks of collision. The box was written against the GRID
   > assumption that the Center sat at z75; it does not. The parking field was therefore built
   > **south of the Center** at **x[−125, +125], z[+172, +268]** — 251 × 97 = **24,347 block²
-  > ≈ 97,400 ft²**, against the **VERIFIED ~100,000 ft²** (REF-012). Three double-loaded aisle
-  > centrelines at z +196 / +224 / +252, the x=0 entrance drive carried through the field, and a
-  > stone-brick kerb line. Space *striping* to 236 bays is not yet laid — the paved area and aisle
-  > structure are, so the verified area figure is satisfied and the count is not yet demonstrable.
+  > ≈ 97,400 ft²**, against the **VERIFIED ~100,000 ft²** (REF-012).
+  >
+  > **AS-BUILT UPDATE, 2026-07-26.** The field is now fully striped and database-inventoried as
+  > **236 spaces**: 205 standard, 8 accessible, 14 EV, and 9 premium. Three double-loaded aisle
+  > bands occupy z[192,200], z[219,227], and z[246,254]. It includes shared accessible access
+  > aisles, step-free walks, crosswalks, 23 dual-head poles, 32 flush lights, two EV/solar canopies,
+  > formal/rain gardens, bike parking, and Discovery Court. Exact geometry and evidence are in
+  > `planning/parking-arrival-gardens.md` and `qa/parking-recovery-2026-07-26.md`.
 - **Contains:** the large **concrete parking field** flanking the central drive; the **visitor
   drop-off loop** at its north end against the guest-center forecourt.
 - **Program:** **~100,000 ft² of concrete / 236 spaces [VERIFIED]** (REF-012). 100,000 ft² ÷ 4 ≈
@@ -242,15 +246,16 @@ terrain at each mouth.
 All routes are surface roads/paths at Y = 64 (concrete, concrete-powder, and path blocks; vanilla
 only). No Citizens/NPC pathing assumed — geometry must be walkable by un-opped mineflayer bots.
 
-1. **Primary entrance drive (SOUTH).** Enters at the south edge, **Z = +300, X ≈ 0**, width ~9
-   blocks, and runs due north up the **X ≈ 0 spine** through Z01 and Z02 to the drop-off loop at
-   Z ≈ +130. This is the single grand public approach — axial, centered on the Guest Center's south
-   face, so the anchor building terminates the view on arrival. **[CREATIVE geometry; VERIFIED that
-   the entrance/approach fronted the guest center].**
+1. **Primary entrance drive (SOUTH).** The final public threshold is centered at **(0,79,305)** with
+   a fully clear x[−10,+10] gate opening. A terraced carriage approach and two step-free walks descend
+   northward through the frontage cut, join the parking circulation, and continue on the X≈0 axis to
+   the Guest Center. This is the single grand public approach — axial and centered on the Guest
+   Center's south face. **[CREATIVE geometry; VERIFIED that the entrance/approach fronted the guest
+   center].**
 
-2. **Visitor drop-off loop.** A teardrop turnaround centered ≈ **(0, +135)**, radius ~22, tangent to
-   the Guest Center forecourt at Z ≈ +120. Lets guests be set down at the door before parking peels
-   off into Z02. **[CREATIVE]** — not documented; a hallmark of a curated attraction.
+2. **Visitor drop-off loop.** A teardrop turnaround centered ≈ **(0, +190)**, radius ~18, tangent to
+   the Guest Center approach. It lets guests be set down at the door before parking peels off into
+   Z02. **[CREATIVE]** — not documented; a hallmark of a curated attraction.
 
 3. **Showcase-home circulation loop (the oval).** A single closed **oval ring road** around Z04
    (carriageway ~7 wide), fed by **two short connectors** from the NE and NW corners of the Guest
@@ -266,8 +271,9 @@ only). No Citizens/NPC pathing assumed — geometry must be walkable by un-opped
    crosses the entrance drive or the oval at grade. **[CREATIVE geometry; INFERENCE that a service
    circuit reached the rear warehouse — the warehouse is the verified service terminus].**
 
-5. **Parking aisles.** Within Z02, double-loaded bays run **east–west** off the central spine, aisle
-   centerlines at Z ≈ +150, +178, +206; ~236 stalls total. Layout **[CREATIVE]**; count/area **[VERIFIED].**
+5. **Parking aisles.** Within Z02, double-loaded bays run **east–west** off the central spine in
+   z[192,200], z[219,227], and z[246,254]; **236 individually mapped stalls** total. Layout
+   **[CREATIVE]**; count/area **[VERIFIED].**
 
 6. **Pedestrian links (every major area connected).**
    - Continuous sidewalk up the **east side of the entrance drive**, from the frontage sidewalk to

@@ -14,15 +14,16 @@
 # PROVENANCE / HONESTY NOTE
 # -----------------------------------------------------------------------------------------------------
 # No brief / "section 17/18" exists in this repo (same gap as coordinates.yaml CONFLICT-02). The marker
-# set, labels and icons below are authored. All coordinates are drawn VERBATIM from
-# planning/coordinates.yaml (site center = origin; POIs = notable_locations / building centroids), whose
-# absolute XZ is creative approximation. Icon names are stock Dynmap marker icons.
+# set, labels and icons below are authored. Current arrival/parking/building anchors were reconciled
+# on 2026-07-26 against the as-built survey and world-map.db; untouched entries retain their declared
+# planning/coordinates.yaml provenance. Absolute XZ remains a creative reconstruction rather than a
+# surveyed real-world placement. Icon names are stock Dynmap marker icons.
 # =====================================================================================================
 
 schema_version: 1
 world_assumption: >-
-  'world' is a placeholder for the DyoCraft overworld name (unconfirmed — confirm before apply); must
-  match location.yaml / worldguard.yaml / warps.yaml.
+  'world' is the live overworld name confirmed by RCON on 2026-07-25; it matches
+  location.yaml / worldguard.yaml / warps.yaml.
 
 # --- The marker set (a toggleable layer on the Dynmap web UI) --------------------------------------
 markerset:
@@ -69,37 +70,37 @@ markerset:
       CONFLICT-04). Do not read it as a lot boundary.
     confidence: creative approximation   # envelope size is a build convention
 
-  # --- Point-of-interest markers, drawn verbatim from planning/coordinates.yaml --------------------
+  # --- Point-of-interest markers, reconciled to current as-built anchors where available ------------
   poi_markers:
     - id: msa_gateway
       world: world
       x: 0
-      y: 64
-      z: 275
+      y: 79
+      z: 305
       icon: door
-      label: "South Gateway / Entrance Drive"
+      label: "South Gateway / Terraced Arrival"
       confidence: high-confidence inference
     - id: msa_billboard
       world: world
-      x: -260
-      y: 64
-      z: 280
+      x: 95
+      y: 72
+      z: 272
       icon: star
       label: "LED Monument Billboard"
       confidence: high-confidence inference     # existence verified (REF-013); placement is build choice
     - id: msa_parking
       world: world
       x: 0
-      y: 64
-      z: 188
+      y: 65
+      z: 220
       icon: portal
-      label: "Parking Field (236 spaces)"       # 236 spaces / ~100,000 SF verified (REF-012)
+      label: "Parking & Arrival Gardens (236 spaces)"
       confidence: high-confidence inference
     - id: msa_guestcenter
       world: world
       x: 0
-      y: 64
-      z: 75
+      y: 65
+      z: 128
       icon: building
       label: "Guest Center (Building 1) — 44,019 SF, 2 story"   # verified size (REF-007)
       confidence: verified                        # size verified; XZ placement creative approximation
@@ -116,17 +117,17 @@ markerset:
       confidence: verified
     - id: msa_cookingschool
       world: world
-      x: -190
-      y: 64
-      z: -90
+      x: -110
+      y: 65
+      z: -95
       icon: building
       label: "Cooking School & Retail (Building 2) — 8,342 SF"  # verified size (REF-009)
       confidence: verified
     - id: msa_culdesac
       world: world
       x: 0
-      y: 64
-      z: -215
+      y: 65
+      z: -235
       icon: cross
       label: "Cul-de-sac Terminus"
       confidence: high-confidence inference
@@ -146,6 +147,30 @@ markerset:
       icon: water
       label: "Detention Pond"
       confidence: moderate-confidence reconstruction            # unlabeled aerial read (REF-016)
+    - id: msa_mountain_entry
+      world: world
+      x: 116
+      y: 65
+      z: 172
+      icon: door
+      label: "Mountain Complex — Public Entry"
+      confidence: creative approximation
+    - id: msa_mountain_hangar
+      world: world
+      x: 150
+      y: 63
+      z: 110
+      icon: hammer
+      label: "Mountain Complex — Hangar"
+      confidence: creative approximation
+    - id: msa_mountain_arena
+      world: world
+      x: 225
+      y: 63
+      z: 110
+      icon: cross
+      label: "Mountain Complex — Training Arena"
+      confidence: creative approximation
 
 # =====================================================================================================
 # ASSUMPTIONS & CROSS-CHECK NOTES
@@ -165,11 +190,11 @@ assumptions:
     severity: low
   - id: MK03
     topic: World name
-    detail: "'world' unconfirmed (see location.yaml L02). Confirm before apply."
-    severity: medium
+    detail: "'world' confirmed by live RCON on 2026-07-25."
+    severity: low
   - id: MK04
-    topic: Coordinates inherited
+    topic: Coordinates reconciled
     detail: >-
-      All marker XZ are copied from planning/coordinates.yaml so the map agrees with warps.yaml and
-      location.yaml. Absolute XZ is creative approximation per that file.
+      Current visitor/parking/building anchors are reconciled to the as-built survey and agree with
+      warps.yaml and location.yaml. Absolute XZ remains a creative real-site reconstruction.
     severity: low

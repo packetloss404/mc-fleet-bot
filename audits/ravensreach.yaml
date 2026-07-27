@@ -170,6 +170,68 @@ groups:
         box: [-77, 68, -381, -75, 69, -379]
         materials: [iron_door]
         expect: 2
+      - name: public ground-to-B1 stair has all six three-wide rises
+        type: count
+        box: [-86, 61, -383, -84, 66, -378]
+        materials: [stone_brick_stairs]
+        expect: 18
+      - name: B1-B2 grand stair has all six six-wide rises
+        type: count
+        box: [-79, 57, -383, -74, 62, -378]
+        materials: [dark_oak_stairs]
+        expect: 36
+      - name: B1-B2 secondary stair has all eight three-wide rises
+        type: count
+        box: [-88, 55, -365, -86, 62, -358]
+        materials: [stone_brick_stairs]
+        expect: 24
+      - name: basement shell has no natural cavern cells
+        type: absent
+        box: [-100, 54, -392, -70, 66, -341]
+        materials: [cave_air]
+      - name: B2 private suites have three complete beds
+        type: count
+        box: [-83, 55, -373, -74, 58, -362]
+        materials: [red_bed]
+        expect: 6
+      - name: B1 and B2 venue fit-out remains present
+        type: contains
+        box: [-99, 55, -391, -71, 66, -358]
+        materials: [barrel, brewing_stand, jukebox, note_block, sea_lantern,
+                    lectern, chest, bookshelf]
+        min: 80
+      - name: south IMAX has all eight center-aisle treads
+        type: count
+        box: [-93, 56, -354, -93, 63, -347]
+        materials: [polished_andesite_stairs]
+        expect: 8
+      - name: south IMAX retains all 32 seats
+        type: count
+        box: [-99, 55, -357, -87, 66, -343]
+        materials: [spruce_stairs]
+        expect: 32
+      - name: south medium cinemas retain all 48 usable seats
+        type: count
+        box: [-85, 62, -357, -71, 66, -343]
+        materials: [spruce_stairs]
+        expect: 48
+      - name: south cinema lounge service fit-out remains present
+        type: contains
+        box: [-85, 55, -357, -71, 59, -342]
+        materials: [barrel, brewing_stand, jukebox, note_block]
+        min: 6
+      - name: orphan south lounge flight remains retired
+        type: absent
+        box: [-74, 56, -347, -72, 58, -344]
+        materials: [stone_brick_stairs]
+      - name: IMAX top-row head pocket remains clear
+        type: empty
+        box: [-97, 66, -354, -90, 66, -354]
+      - name: plaza cap remains intact above IMAX head pocket
+        type: contains
+        box: [-97, 67, -354, -90, 67, -354]
+        materials: [granite, mud_bricks, bricks]
+        min: 8
 
   # ---------------------------------------------------------------- cottages
   # Each cottage gets the same three assertions: a wall course, a roof, and its
@@ -617,16 +679,26 @@ groups:
 
   - name: Moot Hall and Sanctum circulation
     checks:
-      - name: all three hall landings remain built
+      - name: retired shaft landings and firestop remain built
         type: contains
         box: [-98, 67, -391, -95, 79, -390]
-        materials: [polished_andesite]
-        min: 24                        # measured 24
-      - name: core ladder remains continuous
+        materials: [polished_andesite, polished_deepslate]
+        min: 44                        # measured 44 after ladderless conversion
+      - name: old Moot Hall public ladders remain fully retired
         type: count
-        box: [-97, 42, -389, -97, 85, -389]
+        box: [-100, 39, -394, -70, 91, -332]
         materials: [ladder]
-        expect: 44
+        expect: 0
+      - name: deep corridor to B2 switchback remains complete
+        type: count
+        box: [-89, 39, -340, -81, 59, -332]
+        materials: [stone_brick_stairs]
+        expect: 45
+      - name: upper bell-core switchbacks remain complete
+        type: count
+        box: [-87, 73, -375, -83, 87, -370]
+        materials: [spruce_stairs]
+        expect: 26
       - name: processional corridor floor remains continuous
         type: contains
         box: [-122, 40, -391, -120, 40, -338]

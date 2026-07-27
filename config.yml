@@ -403,20 +403,27 @@ mining:
 
 # Per-bot movement leash. Pins a named bot to a home anchor (x,z) + radius:
 # generated code can't move it outside the radius (CodeExecutor.moveTo rejects
-# outward targets; exploreUntil is disabled for it). Keeps a caretaker bot on
-# its island/site. Adjust radius to the island size.
+# outward targets; exploreUntil is disabled for it). `caretaker: false` keeps a
+# town resident bounded while allowing normal role-specific blackboard work.
 # Emptied 2026-07-24 on the repoint: the Eleven (1559,-392) and Sam (1663,194)
 # anchors were old-world coordinates. A leash is enforced from spawn onward, so
 # spawning either name would have stranded the bot permanently — it could never
 # walk to an anchor ~1600 blocks outside its own leash radius.
-leash: []
+leash:
+  # Ravensreach citizen district. Radius 50 is wholly inside the registered
+  # PacketCraft parcel x[-140,-30], z[-430,-310], centered near the Moot Hall.
+  - { botName: Architect, x: -85, z: -370, radius: 50, caretaker: false }
+  - { botName: Mason, x: -85, z: -370, radius: 50, caretaker: false }
+  - { botName: Scott, x: -85, z: -370, radius: 50, caretaker: false }
+  - { botName: Steward, x: -85, z: -370, radius: 50, caretaker: false }
+  - { botName: Surveyor, x: -85, z: -370, radius: 50, caretaker: false }
 
 # Safe fallback spot a stranded bot self-teleports to when stuck in liquid and
 # unable to complete tasks (VoyagerLoop.tryRescueIfStranded). Unset since the
 # 2026-07-24 repoint — the old value (1559,65,-392) was the DyoCraft island HQ,
 # ~1600 blocks from this world. With it absent, unleashed bots escalate a WARN
 # instead of auto-rescuing. Point it at this world's capital once one exists.
-# rescueHome:
-#   x: 0
-#   y: 64
-#   z: 0
+rescueHome:
+  x: -85
+  y: 68
+  z: -370

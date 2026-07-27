@@ -212,9 +212,8 @@ export class ScheduleManager {
       .filter((r) => r.status === 'alive' || r.status == null);
     if (residents.length === 0) return;
 
-    // Group residents by role so we emit at most one task per (role, phase)
-    // window. The task itself is plain swarm-priority; the role keyword lets
-    // role-tagged bots claim it via the existing scorer.
+    // Group residents by role. emitForRole performs open-task deduplication,
+    // so each active role has one current schedule job without duplicates.
     const rolesPresent = new Set<TownRole>();
     for (const r of residents) {
       const role = this.roleOf(r);
@@ -225,11 +224,16 @@ export class ScheduleManager {
     for (const role of rolesPresent) {
       const key = `${townId}::${role}`;
       const last = this.lastEmittedPhase.get(key);
-      // Phase didn't flip AND we've already emitted once → skip.
-      if (last === phase) continue;
+      // Always offer the current schedule. emitForRole skips it while an
+      // identical pending/claimed task exists, but re-emits after completion.
+      // This matches the class contract above: phase flip OR no matching open
+      // task. The old early-continue left every resident permanently idle
+      // after completing one job until the next day/night transition.
       this.emitForRole(townId, role, phase);
-      this.lastEmittedPhase.set(key, phase);
-      mutated = true;
+      if (last !== phase) {
+        this.lastEmittedPhase.set(key, phase);
+        mutated = true;
+      }
     }
     if (mutated) this.persistTown(townId);
   }
@@ -388,6 +392,12 @@ export class ScheduleManager {
     const entries = SCHEDULES[role]?.[phase] ?? [];
     for (const entry of entries) {
       try {
+        // Put the town and role contract in the description, not only in
+        // score-boosting keywords. BlackboardManager treats the
+        // `(requesting role: …)` tag as an exclusive claim constraint, so a
+        // fast-polling guard can no longer steal the farmer's or miner's work.
+        const description =
+          `town:${townId} ${entry.description} (requesting role: ${role}).`;
         // Followup #41 — skip the push if an open (pending or claimed)
         // swarm-source task with the same description is already on the
         // board. Phase-flip cadence means duplicate descriptions otherwise
@@ -395,9 +405,9 @@ export class ScheduleManager {
         // — see BlackboardManager.existsOpenWithDescription — so the
         // schedule can still re-emit once the previous instance completes
         // or is GC'd.
-        if (this.blackboard.existsOpenWithDescription?.(entry.description, 'swarm')) {
+        if (this.blackboard.existsOpenWithDescription?.(description, 'swarm')) {
           logger.debug(
-            { townId, role, phase, description: entry.description },
+            { townId, role, phase, description },
             'ScheduleManager: skipping duplicate emit (open swarm task exists)',
           );
           continue;
@@ -407,7 +417,7 @@ export class ScheduleManager {
         // also what the demand-loop uses — keep them consistent.
         const keywords = ['town', `town:${townId}`, 'phase', phase, role, ...entry.keywords];
         this.blackboard.addTask(
-          { description: entry.description, keywords },
+          { description, keywords },
           'swarm',
           undefined,
           entry.priority ?? 'normal',

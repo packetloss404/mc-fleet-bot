@@ -14,42 +14,41 @@
 # -----------------------------------------------------------------------------------------------------
 # PROVENANCE / HONESTY NOTE
 # -----------------------------------------------------------------------------------------------------
-# Coordinates are drawn VERBATIM from planning/coordinates.yaml `notable_locations` (N-series) so every
-# integration file collides against the same numbers. Per that file, absolute XZ is creative
-# approximation (no survey); the front-to-back SEQUENCE the warps trace is high-confidence inference.
-# XZ are centered on the block (+0.5) so players stand mid-block. Y is set to 65.0 (one above the y=64
-# ground/build plane) so a player materializes standing ON the surface, not inside it.
+# Current south-arrival and Guest Center warps were reconciled on 2026-07-26 against the measured
+# as-built geometry and world-map.db; the remaining tour anchors retain their declared N-series
+# provenance. Absolute XZ is still a creative reconstruction of the real property. XZ values are
+# centered on the block (+0.5); Y is the measured safe standing height for each destination.
 #
 # Minecraft yaw reference used for 'facing': 0=+Z(South), 90=-X(West), 180=-Z(North), 270=+X(East).
 # =====================================================================================================
 
 schema_version: 1
 world_assumption: >-
-  'world' is a placeholder for the DyoCraft overworld name (unconfirmed — confirm before apply). It
-  must match the world used in location.yaml / worldguard.yaml / map-marker.yaml.
+  'world' is the live overworld name confirmed by RCON on 2026-07-25 and matches
+  location.yaml / worldguard.yaml / map-marker.yaml.
 
-# Five warps, tracing the visitor journey south(front) -> north(rear).
+# Visitor warps tracing the public journey plus direct hangar access.
 warps:
 
-  # 1) Arrival — the parking field, the natural landing point at the front of the site.
+  # 1) Arrival — the built south gate, looking down the terraced approach.
   mainstreet:
-    source_notable_location: N09 (Parking Field Centroid)
+    source_notable_location: P01-SOUTH-ARRIVAL-CARRIAGE
     world: world
     x: 0.5
-    y: 65.0
-    z: 188.5
+    y: 79.0
+    z: 304.5
     yaw: 180.0            # face NORTH, toward the Guest Center / into the site
     pitch: 0.0
-    label: "MainStreet America — Arrival / Parking"
+    label: "MainStreet America — South Gate / Arrival Gardens"
     confidence: high-confidence inference   # sequence known; exact block is placement (coordinates.yaml)
 
-  # 2) Guest Center — the anchor building's south entrance (faces the parking).
+  # 2) Guest Center — the repaired formal south entrance facing the parking.
   msa_guestcenter:
-    source_notable_location: N03 (Guest Center Main Entrance)
+    source_notable_location: B01 south-grand-entry
     world: world
     x: 0.5
     y: 65.0
-    z: 113.5
+    z: 168.5
     yaw: 180.0            # face NORTH, into the Guest Center's south door
     pitch: 0.0
     label: "MainStreet America — Guest Center"
@@ -57,11 +56,11 @@ warps:
 
   # 3) Showcase Homes — the south mouth of the internal model-home street.
   msa_homes:
-    source_notable_location: N06 (Internal Street — South Entrance)
+    source_notable_location: R01 south endpoint
     world: world
     x: 0.5
     y: 65.0
-    z: 25.5
+    z: 80.5
     yaw: 180.0            # face NORTH, up the street of 12 homes
     pitch: 0.0
     label: "MainStreet America — Showcase Homes"
@@ -69,11 +68,11 @@ warps:
 
   # 4) Cul-de-sac — the dead-end terminus at the rear of the home street (verified street character).
   msa_culdesac:
-    source_notable_location: N07 (Cul-de-sac Terminus)
+    source_notable_location: R01 north endpoint
     world: world
     x: 0.5
     y: 65.0
-    z: -215.5
+    z: -235.5
     yaw: 0.0             # face SOUTH, looking back down the street over the homes
     pitch: 0.0
     label: "MainStreet America — Cul-de-sac"
@@ -91,6 +90,18 @@ warps:
     label: "MainStreet America — Detention Pond"
     confidence: moderate-confidence reconstruction   # pond is an unlabeled aerial read (REF-016)
 
+  # 6) Mountain hangar — inside the west end of the operations complex.
+  msa_hangar:
+    source_notable_location: C01 hangarTarget
+    world: world
+    x: 150.5
+    y: 63.0
+    z: 110.5
+    yaw: 270.0            # face EAST, down the lit ribbon toward the arena
+    pitch: 0.0
+    label: "MainStreet America — Mountain Hangar"
+    confidence: creative approximation
+
 # =====================================================================================================
 # ASSUMPTIONS & CROSS-CHECK NOTES
 # =====================================================================================================
@@ -103,15 +114,15 @@ assumptions:
       walkable surface is y=64, drop to 64.0. Verify against the finished terrain before apply.
     severity: low
   - id: WP02
-    topic: Five warps chosen from nine notable_locations
+    topic: Visitor and operations warps
     detail: >-
-      Selected N09, N03, N06, N07, N08 to give a coherent south->north visitor tour. The remaining
-      notables (N01 warehouse [back-of-house], N02 billboard, N04 design studio, N05 T.E.D. point) were
-      left as non-warp markers. Swap freely if a different five is preferred.
+      The five original visitor-tour anchors are retained, with a sixth direct hangar anchor added
+      after the 2026-07-26 access recovery. Warehouse, billboard, design studio, and T.E.D. point
+      remain markers rather than warps.
     severity: low
   - id: WP03
     topic: World name + storage layout
     detail: >-
-      'world' unconfirmed (see location.yaml L02). EssentialsX expects per-warp files under
-      plugins/Essentials/warps/; split this bundle at apply-time.
-    severity: medium
+      'world' is confirmed. EssentialsX expects per-warp files under plugins/Essentials/warps/;
+      split this bundle at apply-time.
+    severity: low

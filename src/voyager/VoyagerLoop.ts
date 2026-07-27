@@ -256,11 +256,12 @@ export class VoyagerLoop {
     if (leashEntry) {
       this.leashHome = { x: leashEntry.x, z: leashEntry.z, radius: leashEntry.radius };
       this.codeExecutor.setLeash({ x: leashEntry.x, z: leashEntry.z, radius: leashEntry.radius });
-      // A leashed `builder` becomes a HQ caretaker: it must not chase roaming
-      // swarm/DungeonMaster explore tasks (the leash would just reject the move
-      // and it thrashes). Instead it withdraws materials from a home chest and
-      // place-only expands the structure it's parked on. See proposeCaretakerTask.
-      this.isCaretakerBuilder = personality.toLowerCase() === 'builder';
+      // A leashed builder historically became an HQ caretaker automatically.
+      // Keep that default for existing entries, while allowing town residents
+      // to use the same hard movement boundary without abandoning their
+      // role-specific blackboard schedules.
+      this.isCaretakerBuilder = leashEntry.caretaker
+        ?? personality.toLowerCase() === 'builder';
       logger.info(
         {
           bot: botName,

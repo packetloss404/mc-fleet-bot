@@ -73,7 +73,7 @@ export function resourceLocaleHint(resource: string): string {
     return ' LOCATION: this resource is found ABOVE GROUND in open daylight. If you are underground or walled in by stone/deepslate (low Y, no open sky overhead), travel UP to open sky FIRST: scan your column for the highest solid block (or a grass_block) and moveTo just above it, then search. Do NOT look for it down in the rock.';
   }
   if (locale === 'underground') {
-    return ' LOCATION: this resource is found UNDERGROUND. If none is near you at ground level, dig a staircase DOWN to the stone layer FIRST (around Y 0 to 48; never dig straight down under your feet), then search.';
+    return ' LOCATION: this resource is found in exposed or shallow rock. Search nearby cut faces first; if you must descend, use a staircase and remain ABOVE the configured dig-depth floor. Never dig inside a protected building/road and never tunnel below the safety floor. Routed ores belong at the configured communal mine.';
   }
   return '';
 }

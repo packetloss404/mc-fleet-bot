@@ -167,10 +167,10 @@ export function registerAdminRoutes(
   });
 
   // ── GET /api/admin/backup — streaming tar.gz of data + skills + config ───
-  // SECURITY: data/llm-settings.json contains raw provider API keys and is
-  // EXCLUDED from the backup. Operators who need to migrate keys must export
-  // them out-of-band. config.yml is included but should not contain secrets
-  // (all secrets live in env vars or llm-settings.json).
+  // SECURITY: the LLM and Box integration settings contain raw credentials and
+  // are EXCLUDED from the backup. Operators who need to migrate keys must
+  // export them out-of-band. config.yml is included but should not contain
+  // secrets (all secrets live in env vars or restricted settings files).
   app.get('/api/admin/backup', (req: Request, res: Response) => {
     const cwd = process.cwd();
     const candidates = ['data', 'skills', 'config.yml'];
@@ -200,6 +200,9 @@ export function registerAdminRoutes(
       '-czf', '-',
       '--exclude=data/llm-settings.json',
       '--exclude=data/llm-settings.json.bak',
+      '--exclude=data/box-integration.json',
+      '--exclude=data/box-integration.json.bak',
+      '--exclude=data/box-integration.json.*.tmp',
       ...includes,
     ], { cwd });
     let stderrBuf = '';

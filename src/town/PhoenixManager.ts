@@ -294,8 +294,9 @@ export class PhoenixManager {
 
   private queueRepairTask(townId: string, action: RepairAction): void {
     const description =
-      `town:${townId} repair building ${action.kind ?? action.buildingId} (id: ${action.buildingId})`;
-    const keywords = ['repair', 'build', 'town', action.kind ?? 'building'].filter(
+      `town:${townId} repair building ${action.kind ?? action.buildingId} ` +
+      `(id: ${action.buildingId}) (requesting role: builder)`;
+    const keywords = ['repair', 'build', 'builder', 'town', action.kind ?? 'building'].filter(
       (k): k is string => typeof k === 'string',
     );
     this.blackboard.addTask(
@@ -357,9 +358,14 @@ export class PhoenixManager {
       // Punt: queue a blackboard task and let the brain's main buildLoop pick
       // it up in its next pass via the standard plan-gap path. We've already
       // marked the row destroyed and the haveCounts excludes it.
-      const description = `town:${townId} rebuild ${action.kind ?? action.buildingId} (destroyed)`;
+      const description =
+        `town:${townId} rebuild ${action.kind ?? action.buildingId} ` +
+        `(destroyed) (requesting role: builder)`;
       this.blackboard.addTask(
-        { description, keywords: ['rebuild', 'build', 'town', action.kind ?? 'building'] },
+        {
+          description,
+          keywords: ['rebuild', 'build', 'builder', 'town', action.kind ?? 'building'],
+        },
         'swarm',
         undefined,
         'normal',

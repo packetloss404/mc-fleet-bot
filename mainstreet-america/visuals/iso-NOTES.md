@@ -7,6 +7,12 @@ fonts/images/scripts; 2:1 isometric massing, camera in the **+X / −Z** quadran
 **These are massing mockups of block shells, not renders and not screenshots of the world.** Both
 drawings carry that statement on their face. Nothing here was traced from a capture of the server.
 
+> **Superseded-state warning (2026-07-26):** these mockups document the initial 2026-07-24 survey,
+> not the recovered site. Later work completed the 236-space parking/arrival system, south entrance,
+> Guest Center and service fit-outs, 12 authored home plans/façade packages, infill, mountain
+> complex access/fit-out, and campus fence. Current truth is `data/world-map.db`,
+> `qa/audit-2026-07-26.md`, and the final BlueMap captures under `qa/`.
+
 ---
 
 ## 1. What came from the as-built survey (`qa/as-built-survey.md`, live-server RCON, 2026-07-24)

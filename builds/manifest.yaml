@@ -62,7 +62,10 @@ units:
         # Ravensgate replaces the straight pavilion road. Its return route turns
         # west through Bell-Gate, outside the default 14-block search envelope.
         pad: 30
-        to: [[-108, 68, -430], [-85, 68, -440]]
+        # The old -440 target is occupied by a separately built dirt/cobblestone
+        # structure. -439 is the measured standable path cell immediately outside;
+        # preserve/inventory the unknown structure instead of deleting it.
+        to: [[-108, 68, -430], [-85, 68, -439]]
 
   - name: market-hall-interior
     ops: [int1_market.txt, fix16_market_access.txt]
@@ -101,7 +104,8 @@ units:
         min_coverage: 90
 
   - name: farms
-    ops: [int3_farms.txt]
+    ops: [int3_farms.txt, audit-remediation-ravensreach-2026-07-26.txt]
+    placement_ops: [int3_farms.txt, audit-remediation-ravensreach-2026-07-26.txt]
     walk_na: irrigation and tilled soil, nothing to enter
 
   - name: moot-hall-penthouse
@@ -113,24 +117,117 @@ units:
   - name: moot-hall-core
     ops: [fix9_core.txt, fix10_corridor.txt, fix11_portal.txt, fix12_shaft.txt,
           fix14_core_access.txt]
-    placement_ops: [fix14_core_access.txt]
+    placement_na: >
+      Historical recovery phase, superseded by moot-hall-ladderless-core. The
+      old west shaft is capped/fire-stopped and no longer a public route.
+    walk_na: >
+      Superseded by the finished stair-only network asserted below.
+
+  - name: moot-hall-basement-enhancement
+    ops: [moot-hall-basement-enhancement-2026-07-26.txt,
+          moot-hall-ground-b1-public-stair-2026-07-27.txt]
+    placement_ops: [moot-hall-basement-enhancement-2026-07-26.txt]
     walk:
-      # One vertical core serving penthouse -> ground -> B1 -> B2 -> the deep corridor.
-      # Before it existed the basements were SEALED: the whole basement programme
-      # (3-screen multiplex, bowling alley, two-level bar, arcade, bank, IT office)
-      # had no way in or out. Three separate corridor ceilings each re-sealed this
-      # shaft during the repair, which is why the shaft is now carved LAST.
+      # Public basement access no longer depends on the ladder core. This single
+      # flood crosses the completed ground-to-B1 stair and both B1-to-B2 stairs.
       - from: [-85, 68, -370]
+        pad: 20
         both_ways: true
-        to: [[-97, 65, -389], [-97, 57, -389], [-97, 44, -389]]
+        to: [[-85, 62, -384], [-78, 63, -377], [-78, 57, -384],
+             [-87, 56, -366], [-84, 63, -358]]
+
+  - name: moot-hall-south-multiplex-repair
+    ops: [moot-hall-south-multiplex-repair-2026-07-27.txt]
+    placement_na: >
+      REPL-only exact-state package; 67/67 preflight guards, 71/71 live
+      commands, and the post-capture material census are the placement record.
+    walk:
+      - from: [-93, 56, -344]
+        pad: 16
+        both_ways: true
+        to: [[-93, 64, -354], [-84, 56, -344]]
+      - from: [-84, 56, -344]
+        box: [-98, 56, -354, -88, 65, -344]
+        pad: 8
+        min_coverage: 95
+      - from: [-85, 63, -350]
+        pad: 12
+        both_ways: true
+        to: [[-84, 64, -355], [-84, 64, -345]]
+      - from: [-85, 63, -350]
+        box: [-84, 63, -356, -72, 65, -343]
+        pad: 8
+        min_coverage: 95
+      - from: [-84, 56, -344]
+        box: [-85, 56, -357, -71, 58, -342]
+        pad: 8
+        min_coverage: 95
+
+  - name: moot-hall-ladderless-core
+    ops: [moot-hall-ladderless-core-2026-07-27.txt]
+    placement_na: >
+      Snapshot-bound exact-state REPL package. The live record is 1,858/1,858
+      commands accepted, with 1,851/1,851 geometry guards preflighted and zero
+      ladders in the post-build envelope.
+    walk:
+      - from: [-85, 30, -380]
+        to: [[-84, 41, -341]]
+        pad: 25
+        both_ways: true
+      - from: [-84, 41, -341]
+        to: [[-83, 56, -342]]
+        pad: 8
+        both_ways: true
+      - from: [-78, 57, -384]
+        to: [[-78, 63, -377]]
+        pad: 12
+        both_ways: true
+      - from: [-85, 62, -384]
+        to: [[-85, 68, -377]]
+        pad: 14
+        both_ways: true
+      - from: [-85, 68, -377]
+        to: [[-85, 74, -384]]
+        pad: 16
+        both_ways: true
+      - from: [-85, 74, -375]
+        to: [[-84, 79, -375]]
+        pad: 10
+        both_ways: true
+      - from: [-84, 79, -375]
+        to: [[-84, 84, -375]]
+        pad: 10
+        both_ways: true
+      - from: [-84, 84, -375]
+        to: [[-85, 88, -379]]
+        pad: 12
+        both_ways: true
+      - from: [-84, 41, -341]
+        to: [[-85, 88, -379]]
+        pad: 25
+        both_ways: true
+      - from: [-85, 30, -380]
+        to: [[-85, 88, -379]]
+        pad: 60
+        both_ways: true
+
+  - name: ravensreach-physical-regression-closure
+    ops: [ravensreach-physical-regression-repair-2026-07-27.txt,
+          ravensreach-settled-fluid-and-canal-cleanup-2026-07-27.txt,
+          ravensreach-irrigation-sidewall-final-2026-07-27.txt]
+    placement_na: >
+      Exact one-cell repair packages verified by the 112/112 structural audit.
+    walk_na: >
+      Surface containment, stair-cell, and paving-cell repairs; routes are
+      covered by Market Hall and Ravensgate entries.
 
   - name: sanctum-descent
     ops: [sn2_descent.txt, fix14_core_access.txt]
-    placement_ops: [fix14_core_access.txt]
-    walk:
-      - from: [-95, 88, -388]
-        both_ways: true
-        to: [[-97, 44, -389]]
+    placement_na: >
+      Historical shaft phase superseded by moot-hall-ladderless-core.
+    walk_na: >
+      The current Sanctum-to-penthouse public route is the finished stair chain
+      in moot-hall-ladderless-core; the retired ladder shaft is not accepted.
 
   - name: sanctum
     ops: [sn3_sanctum.txt, fix15_sanctum_rigging.txt]
@@ -263,8 +360,9 @@ units:
           - [-344, 68, -486]
 
   - name: ravensgate
-    ops: [rg1_civic.txt, rg2_park.txt, rg3_final.txt]
-    placement_ops: [rg3_final.txt]
+    ops: [rg1_civic.txt, rg2_park.txt, rg3_final.txt,
+          audit-remediation-ravensreach-2026-07-26.txt]
+    placement_ops: [rg3_final.txt, audit-remediation-ravensreach-2026-07-26.txt]
     walk:
       # Town lane -> Bell-Gate -> Garth/library -> belvedere -> Long Water ->
       # tempietto and western handoff.
@@ -273,7 +371,9 @@ units:
         both_ways: true
         to:
           - [-108, 68, -430]
-          - [-85, 68, -440]
+          # -440 is now occupied by an inventoried dirt/cobble structure. The
+          # road's measured standable destination is the adjacent -439 cell.
+          - [-85, 68, -439]
           - [-114, 68, -438]
           - [-85, 71, -452]
           - [-90, 68, -470]
@@ -293,6 +393,187 @@ units:
         to: [[285, 19, -30]]
         pad: 130
         both_ways: true
+
+  # ------------------------------------------------------- MainStreet America
+  # These are composite, repeatedly repaired builds. Sampling an early SET file as
+  # if it were the final desired state is actively misleading: later phases replace
+  # walls with doors, roofs with secure landscape, and the rejected outer fence with
+  # thirteen parcel boundaries. Placement acceptance therefore comes from the
+  # 96-check exact snapshot audit and the zero-op generator reports named below;
+  # this manifest owns every ops artifact and independently owns the route checks.
+
+  - name: mainstreet-surface-neighborhood
+    ops:
+      - mainstreet-audit-phase1-2026-07-26.txt
+      - mainstreet-civic-service-phase2-2026-07-26.txt
+      - mainstreet-guest-center-phase3-2026-07-26.txt
+      - mainstreet-homes-phase4-2026-07-26.txt
+      - mainstreet-infill-grounds-phase5-2026-07-26.txt
+      - mainstreet-east-complex-phase6-2026-07-26.txt
+      - mainstreet-mountain-entrance-phase7-2026-07-26.txt
+      - mainstreet-mountain-internal-connectors-phase7b-2026-07-26.txt
+      - mainstreet-mountain-access-corrections-phase7c-2026-07-26.txt
+      - mainstreet-parking-arrival-gardens-2026-07-26.txt
+      - mainstreet-parking-access-wayfinding-phase8b-2026-07-26.txt
+      - mainstreet-parking-low-lighting-phase8c-2026-07-26.txt
+    placement_na: >
+      Final state is checked by audits/mainstreet-america.yaml (96/96); later
+      phases intentionally overwrite early sampled cells.
+    walk_na: >
+      Building/material regression unit; public circulation is checked by the
+      dedicated mountain-and-surface route unit below.
+
+  - name: mainstreet-grid-roads-and-projects
+    ops:
+      - mainstreet-grid-projects-2026-07-26.txt
+      - mainstreet-grid-roads-2026-07-26.txt
+      - mainstreet-circulation-qa-repair-2026-07-26.txt
+    placement_na: >
+      Current road and project generator reports are execution-ready, zero-op,
+      and snapshot-satisfied; the composite audit owns material assertions.
+    walk:
+      - from: [-82, 65, -218]
+        pad: 40
+        both_ways: true
+        to:
+          - [-82, 69, 17]
+          - [84, 73, 17]
+          - [84, 80, 70]
+          - [0, 73, 84]
+
+  - name: mainstreet-project-boundaries
+    ops:
+      - mainstreet-c01-public-gate-2026-07-26.txt
+      - mainstreet-project-boundaries-2026-07-26.txt
+      - mainstreet-project-boundary-post-repair-2026-07-26.txt
+      - mainstreet-obsolete-south-fence-tail-removal-2026-07-26.txt
+    placement_na: >
+      Current boundary report proves 5,954/5,954 targets, 13 boundaries,
+      32 exact gates, and zero remaining operations or errors.
+    walk_na: >
+      Property-edge assemblies are not interiors; road and declared-gate
+      connectivity is checked by the road generator and grid route unit.
+
+  - name: mainstreet-landscapes
+    ops:
+      - mainstreet-audit-landscapes-2026-07-26.txt
+      - mainstreet-landscape-access-repair-2026-07-26.txt
+      - mainstreet-mountain-landscape-completion-2026-07-26.txt
+      - mainstreet-mountain-landscape-refinement-2026-07-26.txt
+      - mainstreet-mountain-landscape-light-repair-2026-07-26.txt
+    placement_na: >
+      L01, L02, retaining-face blend, and secure access are covered by the
+      final exact snapshot audit; the generators report no errors.
+    walk:
+      - from: [0, 65, 267]
+        pad: 80
+        both_ways: true
+        to:
+          - [92, 70, 284]
+      - from: [160, 68, -250]
+        pad: 40
+        both_ways: true
+        to:
+          - [217, 69, -250]
+
+  - name: mainstreet-mountain-and-surface-route
+    ops:
+      - mainstreet-mountain-wayfinding-2026-07-26.txt
+      - mainstreet-surface-hangar-observatory-2026-07-26.txt
+      - mainstreet-surface-hangar-terrace-rail-repair-2026-07-26.txt
+    placement_na: >
+      Final structural state is covered by the 96-check audit and current
+      snapshot; this unit independently proves the public route.
+    walk:
+      - from: [116, 65, 172]
+        pad: 100
+        both_ways: true
+        to:
+          - [150, 63, 110]
+          - [225, 63, 110]
+          - [200, 106, 153]
+          - [218, 99, 160]
+          - [220, 99, 180]
+          - [248, 90, 182]
+          - [145, 51, 175]
+          - [214, 51, 175]
+
+  - name: mainstreet-private-shelter-and-vault
+    ops:
+      - mainstreet-private-circulation-repair-2026-07-26.txt
+      - mainstreet-private-room-access-repair-2026-07-26.txt
+      - mainstreet-private-stair-final-repair-2026-07-26.txt
+      - mainstreet-grand-vault-dewatering-repair-2026-07-26.txt
+      - mainstreet-grand-vault-threshold-repair-2026-07-26.txt
+      - mainstreet-vault-aquifer-source-seal-2026-07-26.txt
+      - mainstreet-secure-roof-landscape-2026-07-26.txt
+    placement_na: >
+      Exact audit and full census prove dry interiors, non-waterlogged conduits,
+      valuables, inventory containers, and complete natural roof cover.
+    walk:
+      - from: [214, 106, 146]
+        pad: 100
+        both_ways: true
+        to:
+          - [160, 82, 148]
+          - [226, 82, 174]
+          - [240, 67, 190]
+          - [238, 56, 205]
+          - [246, 45, 222]
+
+  # -------------------------------------------- worldwide interior review 2026-07-27
+  - name: worldwide-interior-wave1
+    ops: [worldwide-interior-wave1-2026-07-27.txt]
+    placement_ops: [worldwide-interior-wave1-2026-07-27.txt]
+    walk_na: >
+      Stair and return-path coverage is enforced by the 14-suite saved-world
+      report in data/world-review/worldwide-interior-wave1-post-route-qa-2026-07-27.json.
+
+  - name: mainstreet-interior-wave2
+    ops: [mainstreet-interior-wave2-2026-07-27.txt]
+    placement_ops: [mainstreet-interior-wave2-2026-07-27.txt]
+    walk_na: >
+      MainStreet catalog-room and H11 four-floor coverage is enforced by
+      data/world-review/mainstreet-interior-wave2-post-route-qa-2026-07-27.json.
+
+  - name: ravensreach-ladderless-interiors-wave3
+    ops: [ravensreach-ladderless-interiors-wave3-2026-07-27.txt]
+    placement_ops: [ravensreach-ladderless-interiors-wave3-2026-07-27.txt]
+    walk_na: >
+      Seven bidirectional Library, Market, and Grange route suites are recorded
+      in data/world-review/ravensreach-ladderless-wave3-post-route-qa-2026-07-27.json.
+
+  - name: worldwide-room-fitout-wave4
+    ops: [worldwide-room-fitout-wave4-2026-07-27.txt]
+    placement_ops: [worldwide-room-fitout-wave4-2026-07-27.txt]
+    walk_na: >
+      The final post-build snapshot passes 32 saved-world route suites across
+      the cross-area, Ravensreach, MainStreet, Beacon, and Westlight venue reports.
+
+  - name: mainstreet-secure-complex-detail-wave5
+    ops:
+      - mainstreet-secure-complex-detail-wave5-2026-07-27.txt
+      - mainstreet-secure-wave5-wayfinding-2026-07-27.txt
+    placement_na: >
+      Both command packages are exact-state guarded and are covered by the
+      2,075/2,075 main preflight, 6/6 wayfinding preflight, zero-failure live
+      execution reports, and 21/21 assertions against the immutable final
+      snapshot recorded in
+      data/world-review/mainstreet-secure-complex-detail-wave5-saved-world-qa-2026-07-27.json.
+    walk_na: >
+      Fourteen bidirectional route suites in the saved-world QA cover both
+      observatory stairs, the safe-to-shelter/treasury routes, all three vault
+      levels, the five-level C01 stair, and the rebuilt lower and arrival rooms.
+
+  - name: mainstreet-rejected-outer-fence
+    ops:
+      - msa_picket_fence_pilot.txt
+      - msa_picket_fence_full.txt
+      - msa_picket_fence_superseded_inverse-2026-07-26.txt
+    retired: >
+      The water-crossing outer ring was deliberately reversed and superseded by
+      thirteen project/division boundaries. The inverse remains listed as teardown
+      provenance; it is not desired placement geometry.
 
   # ---------------------------------------------------------------- retired
   - name: town-concert-hall

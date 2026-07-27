@@ -49,6 +49,12 @@ const PERSONALITY_KEYWORDS: Record<string, string[]> = {
   builder: ['build', 'place', 'construct', 'house', 'wall', 'floor', 'roof', 'door', 'window', 'foundation', 'structure', 'planks', 'cobblestone', 'stone'],
 };
 
+const REQUESTING_ROLE_RE = /\(requesting role:\s*([a-z_]+)\)/i;
+
+function requestedRole(task: BlackboardTask): string | null {
+  return task.description.match(REQUESTING_ROLE_RE)?.[1]?.toLowerCase() ?? null;
+}
+
 export interface BlackboardMessage {
   id: string;
   botName: string;
@@ -197,8 +203,23 @@ export class BlackboardManager {
     botPosition?: { x: number; y: number; z: number },
     role?: string,
   ): BlackboardTask | null {
-    const candidates = this.state.tasks.filter((t) => t.status === 'pending');
+    let candidates = this.state.tasks.filter((t) => t.status === 'pending');
     if (candidates.length === 0) return null;
+    // Town residents work the town board, not the global exploratory swarm
+    // backlog. A score boost was not enough: a fast-polling guard could steal a
+    // farmer job, and residents could abandon town to claim old "explore 70
+    // blocks" jobs. Explicit role contracts are exclusive; legacy town tasks
+    // without a role contract remain claimable by any resident. Direct
+    // player/mission queues bypass this blackboard filter.
+    const normalizedRole = role?.toLowerCase();
+    if (normalizedRole && normalizedRole !== 'idle') {
+      candidates = candidates.filter((task) => {
+        const required = requestedRole(task);
+        if (required !== null) return required === normalizedRole;
+        return task.description.toLowerCase().startsWith('town:');
+      });
+      if (candidates.length === 0) return null;
+    }
     const lowered = query?.toLowerCase() || '';
     // SHOULD-FIX #2 — resolve the bot's active standing rules ONCE here rather
     // than inside the sort comparator. The wired resolver walks all

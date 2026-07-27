@@ -370,8 +370,9 @@ export class BotInstance {
       b.__digGuarded = true;
     });
 
-    // Pathfinder depth guard, wrapped at the same choke-point level as the dig
-    // guard above. Guarding CodeExecutor.moveTo alone was not enough: raw
+    // Pathfinder depth + citizen-boundary guard, wrapped at the same
+    // choke-point level as the dig guard above. Guarding
+    // CodeExecutor.moveTo alone was not enough: raw
     // `bot.pathfinder.setGoal` is exposed to generated code (CodeExecutor
     // ~line 646) and is also called directly by moveHelper/craft/attack, so a
     // bot blocked from digging down simply pathed down instead — the moveTo
@@ -385,17 +386,49 @@ export class BotInstance {
       const b = this.bot as any;
       if (!b?.pathfinder || typeof b.pathfinder.setGoal !== 'function' || b.__depthGuarded) return;
       const originalSetGoal = b.pathfinder.setGoal.bind(b.pathfinder);
+      const leash = this.config.leash?.find(
+        (entry) => entry.botName.toLowerCase() === this.name.toLowerCase(),
+      );
       b.pathfinder.setGoal = (goal: any, dynamic?: boolean) => {
         const floorY = getMinDigY();
         const gy = goal?.y;
-        if (floorY !== null && goal && typeof gy === 'number') {
-          const self = this.bot as any;
-          const cur = self?.entity?.position;
-          const gx = typeof goal.x === 'number' ? goal.x : cur?.x ?? 0;
-          const gz = typeof goal.z === 'number' ? goal.z : cur?.z ?? 0;
-          if (isBelowDigFloor(Math.floor(gx), Math.floor(gy), Math.floor(gz)) && cur && gy <= cur.y) {
+        const entityGoal = goal?.entity?.position;
+        const current = (this.bot as any)?.entity?.position;
+        const gx = typeof goal?.x === 'number' ? goal.x : entityGoal?.x;
+        const gz = typeof goal?.z === 'number' ? goal.z : entityGoal?.z;
+        if (leash && goal && current
+            && typeof gx === 'number' && typeof gz === 'number') {
+          const targetDistance = Math.hypot(gx - leash.x, gz - leash.z);
+          const currentDistance = Math.hypot(current.x - leash.x, current.z - leash.z);
+          // Inward recovery is always permitted when a bot was pushed or
+          // teleported outside its district. All other outward goals are
+          // stopped at the universal pathfinder choke point, covering ambient
+          // wander, flee/follow helpers, and raw generated setGoal calls.
+          if (targetDistance > leash.radius && targetDistance >= currentDistance) {
             logger.warn(
-              { bot: this.name, goalY: Math.floor(gy), currentY: Math.floor(cur.y), minDigY: floorY },
+              {
+                bot: this.name,
+                goal: { x: Math.floor(gx), z: Math.floor(gz) },
+                home: { x: leash.x, z: leash.z },
+                radius: leash.radius,
+              },
+              'pathfinder goal blocked: outside the movement leash',
+            );
+            return originalSetGoal(null, dynamic);
+          }
+        }
+        if (floorY !== null && goal && typeof gy === 'number') {
+          const depthX = typeof gx === 'number' ? gx : current?.x ?? 0;
+          const depthZ = typeof gz === 'number' ? gz : current?.z ?? 0;
+          if (isBelowDigFloor(Math.floor(depthX), Math.floor(gy), Math.floor(depthZ))
+              && current && gy <= current.y) {
+            logger.warn(
+              {
+                bot: this.name,
+                goalY: Math.floor(gy),
+                currentY: Math.floor(current.y),
+                minDigY: floorY,
+              },
               'pathfinder goal blocked: below the dig-depth floor',
             );
             throw new Error(

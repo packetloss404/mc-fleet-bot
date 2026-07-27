@@ -1,0 +1,1331 @@
+{
+  "spec": "MainStreet America as-built regression audit",
+  "at": "2026-07-26T16:20:02+00:00",
+  "counts": {
+    "PASS": 51,
+    "FAIL": 0,
+    "UNKNOWN": 0
+  },
+  "results": [
+    {
+      "group": "canonical shells",
+      "check": "layer",
+      "verdict": "PASS",
+      "detail": "10032 of stone_bricks+polished_andesite+smooth_stone, expected >= 8000",
+      "box": [
+        -72,
+        63,
+        90,
+        72,
+        63,
+        165
+      ],
+      "evidence": {
+        "cells": 11020,
+        "non_air": 11020,
+        "excluded": 0,
+        "top": {
+          "minecraft:stone_bricks": 9728,
+          "minecraft:gray_concrete": 836,
+          "minecraft:smooth_stone": 304,
+          "minecraft:yellow_concrete": 152
+        }
+      }
+    },
+    {
+      "group": "canonical shells",
+      "check": "ring",
+      "verdict": "PASS",
+      "detail": "453 of any, expected >= 160",
+      "box": [
+        -133,
+        65,
+        -118,
+        -88,
+        65,
+        -73
+      ],
+      "evidence": {
+        "cells": 2116,
+        "non_air": 453,
+        "excluded": 0,
+        "top": {
+          "minecraft:white_terracotta": 253,
+          "minecraft:smooth_quartz": 120,
+          "minecraft:barrel": 60,
+          "minecraft:bookshelf": 8,
+          "minecraft:chest": 6,
+          "minecraft:dark_oak_door": 2
+        }
+      }
+    },
+    {
+      "group": "canonical shells",
+      "check": "ring",
+      "verdict": "PASS",
+      "detail": "386 of any, expected >= 170",
+      "box": [
+        -24,
+        65,
+        -278,
+        23,
+        65,
+        -232
+      ],
+      "evidence": {
+        "cells": 2256,
+        "non_air": 386,
+        "excluded": 0,
+        "top": {
+          "minecraft:spruce_planks": 216,
+          "minecraft:light_gray_concrete": 155,
+          "minecraft:polished_deepslate_wall": 4,
+          "minecraft:oak_log": 3,
+          "minecraft:crafting_table": 2,
+          "minecraft:dirt": 1
+        }
+      }
+    },
+    {
+      "group": "canonical shells",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "2838 of smooth_stone, expected >= 2200",
+      "box": [
+        -4,
+        63,
+        -235,
+        4,
+        64,
+        80
+      ],
+      "evidence": {
+        "cells": 5688,
+        "non_air": 5676,
+        "excluded": 0,
+        "top": {
+          "minecraft:smooth_stone": 2838,
+          "minecraft:gray_concrete": 1993,
+          "minecraft:yellow_concrete": 581,
+          "minecraft:dirt": 77,
+          "minecraft:stone_bricks": 54,
+          "minecraft:stone": 28
+        }
+      }
+    },
+    {
+      "group": "abandoned roof operations",
+      "check": "absent",
+      "verdict": "PASS",
+      "detail": "0 of deepslate_tiles, expected 0",
+      "box": [
+        -52,
+        76,
+        -62,
+        -17,
+        96,
+        -28
+      ],
+      "evidence": {
+        "cells": 26460,
+        "non_air": 820,
+        "excluded": 0,
+        "top": {
+          "minecraft:dark_oak_planks": 792,
+          "minecraft:dark_oak_stairs": 28
+        }
+      }
+    },
+    {
+      "group": "abandoned roof operations",
+      "check": "absent",
+      "verdict": "PASS",
+      "detail": "0 of deepslate_tiles+deepslate_tile_stairs, expected 0",
+      "box": [
+        -50,
+        76,
+        -111,
+        -44,
+        96,
+        -79
+      ],
+      "evidence": {
+        "cells": 4851,
+        "non_air": 0,
+        "excluded": 0,
+        "top": {}
+      }
+    },
+    {
+      "group": "abandoned roof operations",
+      "check": "absent",
+      "verdict": "PASS",
+      "detail": "0 of deepslate_tiles+deepslate_tile_stairs, expected 0",
+      "box": [
+        -24,
+        76,
+        -111,
+        -18,
+        96,
+        -79
+      ],
+      "evidence": {
+        "cells": 4851,
+        "non_air": 0,
+        "excluded": 0,
+        "top": {}
+      }
+    },
+    {
+      "group": "abandoned roof operations",
+      "check": "absent",
+      "verdict": "PASS",
+      "detail": "0 of deepslate_tiles+deepslate_tile_stairs, expected 0",
+      "box": [
+        -43,
+        76,
+        -111,
+        -25,
+        96,
+        -105
+      ],
+      "evidence": {
+        "cells": 2793,
+        "non_air": 0,
+        "excluded": 0,
+        "top": {}
+      }
+    },
+    {
+      "group": "abandoned roof operations",
+      "check": "absent",
+      "verdict": "PASS",
+      "detail": "0 of deepslate_tiles+deepslate_tile_stairs, expected 0",
+      "box": [
+        -43,
+        76,
+        -85,
+        -25,
+        96,
+        -79
+      ],
+      "evidence": {
+        "cells": 2793,
+        "non_air": 0,
+        "excluded": 0,
+        "top": {}
+      }
+    },
+    {
+      "group": "abandoned roof operations",
+      "check": "absent",
+      "verdict": "PASS",
+      "detail": "0 of deepslate_tiles+deepslate_tile_stairs, expected 0",
+      "box": [
+        -50,
+        84,
+        -111,
+        -18,
+        96,
+        -79
+      ],
+      "evidence": {
+        "cells": 14157,
+        "non_air": 0,
+        "excluded": 0,
+        "top": {}
+      }
+    },
+    {
+      "group": "abandoned roof operations",
+      "check": "absent",
+      "verdict": "PASS",
+      "detail": "0 of dark_oak_planks, expected 0",
+      "box": [
+        14,
+        76,
+        -11,
+        50,
+        96,
+        21
+      ],
+      "evidence": {
+        "cells": 25641,
+        "non_air": 758,
+        "excluded": 0,
+        "top": {
+          "minecraft:deepslate_tiles": 730,
+          "minecraft:deepslate_tile_stairs": 28
+        }
+      }
+    },
+    {
+      "group": "service fit-out",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "92 of barrel+chest, expected >= 12",
+      "box": [
+        -22,
+        64,
+        -276,
+        21,
+        72,
+        -234
+      ],
+      "evidence": {
+        "cells": 17028,
+        "non_air": 2810,
+        "excluded": 0,
+        "top": {
+          "minecraft:smooth_stone": 1781,
+          "minecraft:spruce_planks": 432,
+          "minecraft:polished_deepslate_slab": 225,
+          "minecraft:oak_leaves": 126,
+          "minecraft:barrel": 92,
+          "minecraft:grass_block": 59
+        }
+      }
+    },
+    {
+      "group": "service fit-out",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "4 of crafting_table+stonecutter+smithing_table, expected >= 4",
+      "box": [
+        -22,
+        64,
+        -276,
+        21,
+        72,
+        -234
+      ],
+      "evidence": {
+        "cells": 17028,
+        "non_air": 2810,
+        "excluded": 0,
+        "top": {
+          "minecraft:smooth_stone": 1781,
+          "minecraft:spruce_planks": 432,
+          "minecraft:polished_deepslate_slab": 225,
+          "minecraft:oak_leaves": 126,
+          "minecraft:barrel": 92,
+          "minecraft:grass_block": 59
+        }
+      }
+    },
+    {
+      "group": "service fit-out",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "12 of furnace+smoker+blast_furnace, expected >= 12",
+      "box": [
+        -131,
+        64,
+        -116,
+        -90,
+        71,
+        -75
+      ],
+      "evidence": {
+        "cells": 14112,
+        "non_air": 4297,
+        "excluded": 0,
+        "top": {
+          "minecraft:smooth_stone": 1764,
+          "minecraft:brick_slab": 1764,
+          "minecraft:white_terracotta": 396,
+          "minecraft:barrel": 192,
+          "minecraft:smooth_quartz": 120,
+          "minecraft:lantern": 24
+        }
+      }
+    },
+    {
+      "group": "service fit-out",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "198 of barrel+chest, expected >= 10",
+      "box": [
+        -131,
+        64,
+        -116,
+        -90,
+        71,
+        -75
+      ],
+      "evidence": {
+        "cells": 14112,
+        "non_air": 4297,
+        "excluded": 0,
+        "top": {
+          "minecraft:smooth_stone": 1764,
+          "minecraft:brick_slab": 1764,
+          "minecraft:white_terracotta": 396,
+          "minecraft:barrel": 192,
+          "minecraft:smooth_quartz": 120,
+          "minecraft:lantern": 24
+        }
+      }
+    },
+    {
+      "group": "guest center quality",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "4 of dark_oak_door, expected >= 4",
+      "box": [
+        -2,
+        65,
+        164,
+        1,
+        66,
+        166
+      ],
+      "evidence": {
+        "cells": 24,
+        "non_air": 8,
+        "excluded": 0,
+        "top": {
+          "minecraft:dark_oak_door": 4,
+          "minecraft:smooth_quartz": 2,
+          "minecraft:tinted_glass": 2
+        }
+      }
+    },
+    {
+      "group": "guest center quality",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "434 of quartz_pillar+smooth_quartz+chiseled_quartz_block, expected >= 100",
+      "box": [
+        -14,
+        64,
+        165,
+        14,
+        83,
+        176
+      ],
+      "evidence": {
+        "cells": 6960,
+        "non_air": 1372,
+        "excluded": 0,
+        "top": {
+          "minecraft:smooth_quartz": 389,
+          "minecraft:smooth_stone": 357,
+          "minecraft:smooth_quartz_slab": 294,
+          "minecraft:white_terracotta": 166,
+          "minecraft:tinted_glass": 85,
+          "minecraft:quartz_pillar": 44
+        }
+      }
+    },
+    {
+      "group": "guest center quality",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "26 of smoker+furnace+barrel+crafting_table+dark_oak_fence, expected >= 15",
+      "box": [
+        -70,
+        65,
+        92,
+        -30,
+        69,
+        127
+      ],
+      "evidence": {
+        "cells": 7380,
+        "non_air": 91,
+        "excluded": 0,
+        "top": {
+          "minecraft:dark_oak_slab": 54,
+          "minecraft:dark_oak_fence": 6,
+          "minecraft:lantern": 6,
+          "minecraft:smoker": 5,
+          "minecraft:furnace": 5,
+          "minecraft:barrel": 5
+        }
+      }
+    },
+    {
+      "group": "guest center quality",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "338 of dark_oak_planks+quartz_stairs+red_carpet, expected >= 100",
+      "box": [
+        30,
+        65,
+        92,
+        70,
+        69,
+        127
+      ],
+      "evidence": {
+        "cells": 7380,
+        "non_air": 367,
+        "excluded": 0,
+        "top": {
+          "minecraft:dark_oak_planks": 138,
+          "minecraft:quartz_stairs": 124,
+          "minecraft:red_carpet": 76,
+          "minecraft:dark_oak_stairs": 25,
+          "minecraft:lantern": 4
+        }
+      }
+    },
+    {
+      "group": "guest center quality",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "644 of bookshelf+smooth_quartz+polished_andesite, expected >= 150",
+      "box": [
+        -70,
+        65,
+        129,
+        70,
+        69,
+        163
+      ],
+      "evidence": {
+        "cells": 24675,
+        "non_air": 1240,
+        "excluded": 0,
+        "top": {
+          "minecraft:white_terracotta": 342,
+          "minecraft:smooth_quartz": 321,
+          "minecraft:bookshelf": 263,
+          "minecraft:light_gray_carpet": 75,
+          "minecraft:polished_andesite": 60,
+          "minecraft:blue_carpet": 44
+        }
+      }
+    },
+    {
+      "group": "authored home floorplans",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "205 of smooth_quartz, expected >= 100",
+      "box": [
+        -45,
+        65,
+        45,
+        -24,
+        73,
+        64
+      ],
+      "evidence": {
+        "cells": 3960,
+        "non_air": 693,
+        "excluded": 0,
+        "top": {
+          "minecraft:oak_planks": 433,
+          "minecraft:smooth_quartz": 205,
+          "minecraft:red_carpet": 21,
+          "minecraft:bookshelf": 16,
+          "minecraft:oak_stairs": 9,
+          "minecraft:smoker": 6
+        }
+      }
+    },
+    {
+      "group": "authored home floorplans",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "43 of light_blue_terracotta, expected >= 25",
+      "box": [
+        -40,
+        65,
+        -1,
+        -28,
+        68,
+        11
+      ],
+      "evidence": {
+        "cells": 676,
+        "non_air": 61,
+        "excluded": 0,
+        "top": {
+          "minecraft:light_blue_terracotta": 43,
+          "minecraft:light_blue_carpet": 6,
+          "minecraft:barrel": 5,
+          "minecraft:spruce_stairs": 4,
+          "minecraft:red_bed": 2,
+          "minecraft:lantern": 1
+        }
+      }
+    },
+    {
+      "group": "authored home floorplans",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "213 of dark_oak_planks, expected >= 100",
+      "box": [
+        -45,
+        65,
+        -55,
+        -24,
+        73,
+        -35
+      ],
+      "evidence": {
+        "cells": 4158,
+        "non_air": 860,
+        "excluded": 0,
+        "top": {
+          "minecraft:oak_planks": 433,
+          "minecraft:dark_oak_planks": 213,
+          "minecraft:bricks": 183,
+          "minecraft:bookshelf": 16,
+          "minecraft:blast_furnace": 7,
+          "minecraft:dark_oak_stairs": 5
+        }
+      }
+    },
+    {
+      "group": "authored home floorplans",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "161 of stripped_spruce_wood+spruce_planks, expected >= 100",
+      "box": [
+        -42,
+        65,
+        -103,
+        -26,
+        73,
+        -87
+      ],
+      "evidence": {
+        "cells": 2601,
+        "non_air": 586,
+        "excluded": 0,
+        "top": {
+          "minecraft:oak_planks": 265,
+          "minecraft:white_terracotta": 145,
+          "minecraft:stripped_spruce_wood": 105,
+          "minecraft:spruce_planks": 56,
+          "minecraft:furnace": 6,
+          "minecraft:spruce_stairs": 5
+        }
+      }
+    },
+    {
+      "group": "authored home floorplans",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "311 of spruce_planks, expected >= 100",
+      "box": [
+        -45,
+        65,
+        -156,
+        -23,
+        68,
+        -134
+      ],
+      "evidence": {
+        "cells": 2116,
+        "non_air": 396,
+        "excluded": 0,
+        "top": {
+          "minecraft:spruce_planks": 311,
+          "minecraft:green_carpet": 49,
+          "minecraft:bookshelf": 20,
+          "minecraft:smoker": 5,
+          "minecraft:glass_pane": 5,
+          "minecraft:stripped_spruce_log": 4
+        }
+      }
+    },
+    {
+      "group": "authored home floorplans",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "117 of bricks, expected >= 100",
+      "box": [
+        -46,
+        65,
+        -206,
+        -23,
+        68,
+        -184
+      ],
+      "evidence": {
+        "cells": 2208,
+        "non_air": 195,
+        "excluded": 0,
+        "top": {
+          "minecraft:bricks": 117,
+          "minecraft:blue_carpet": 42,
+          "minecraft:bookshelf": 24,
+          "minecraft:furnace": 8,
+          "minecraft:red_bed": 2,
+          "minecraft:lantern": 1
+        }
+      }
+    },
+    {
+      "group": "authored home floorplans",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "251 of smooth_sandstone, expected >= 150",
+      "box": [
+        19,
+        65,
+        43,
+        44,
+        68,
+        67
+      ],
+      "evidence": {
+        "cells": 2600,
+        "non_air": 345,
+        "excluded": 0,
+        "top": {
+          "minecraft:smooth_sandstone": 251,
+          "minecraft:cut_sandstone": 56,
+          "minecraft:blue_glazed_terracotta": 25,
+          "minecraft:smoker": 5,
+          "minecraft:sandstone_stairs": 4,
+          "minecraft:red_bed": 2
+        }
+      }
+    },
+    {
+      "group": "authored home floorplans",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "194 of calcite, expected >= 100",
+      "box": [
+        21,
+        65,
+        -4,
+        42,
+        73,
+        14
+      ],
+      "evidence": {
+        "cells": 3762,
+        "non_air": 621,
+        "excluded": 0,
+        "top": {
+          "minecraft:oak_planks": 411,
+          "minecraft:calcite": 194,
+          "minecraft:polished_diorite_stairs": 5,
+          "minecraft:smoker": 5,
+          "minecraft:red_bed": 2,
+          "minecraft:lantern": 2
+        }
+      }
+    },
+    {
+      "group": "authored home floorplans",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "271 of orange_terracotta, expected >= 150",
+      "box": [
+        19,
+        65,
+        -58,
+        45,
+        68,
+        -32
+      ],
+      "evidence": {
+        "cells": 2916,
+        "non_air": 527,
+        "excluded": 0,
+        "top": {
+          "minecraft:orange_terracotta": 271,
+          "minecraft:smooth_sandstone": 104,
+          "minecraft:red_sandstone": 80,
+          "minecraft:orange_glazed_terracotta": 63,
+          "minecraft:smoker": 5,
+          "minecraft:red_bed": 2
+        }
+      }
+    },
+    {
+      "group": "authored home floorplans",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "267 of stone_bricks, expected >= 150",
+      "box": [
+        19,
+        65,
+        -108,
+        44,
+        68,
+        -82
+      ],
+      "evidence": {
+        "cells": 2808,
+        "non_air": 393,
+        "excluded": 0,
+        "top": {
+          "minecraft:stone_bricks": 267,
+          "minecraft:brown_carpet": 117,
+          "minecraft:blast_furnace": 5,
+          "minecraft:red_bed": 2,
+          "minecraft:lantern": 1,
+          "minecraft:chest": 1
+        }
+      }
+    },
+    {
+      "group": "authored home floorplans",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "18 of scaffolding, expected >= 15",
+      "box": [
+        27,
+        65,
+        -150,
+        37,
+        82,
+        -141
+      ],
+      "evidence": {
+        "cells": 1980,
+        "non_air": 390,
+        "excluded": 0,
+        "top": {
+          "minecraft:oak_planks": 309,
+          "minecraft:scaffolding": 18,
+          "minecraft:light_gray_concrete": 10,
+          "minecraft:white_concrete": 10,
+          "minecraft:gray_concrete": 10,
+          "minecraft:black_concrete": 10
+        }
+      }
+    },
+    {
+      "group": "authored home floorplans",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "179 of white_terracotta, expected >= 100",
+      "box": [
+        22,
+        65,
+        -204,
+        41,
+        68,
+        -186
+      ],
+      "evidence": {
+        "cells": 1520,
+        "non_air": 292,
+        "excluded": 0,
+        "top": {
+          "minecraft:white_terracotta": 179,
+          "minecraft:orange_glazed_terracotta": 105,
+          "minecraft:smoker": 4,
+          "minecraft:red_bed": 2,
+          "minecraft:lantern": 1,
+          "minecraft:chest": 1
+        }
+      }
+    },
+    {
+      "group": "neighborhood infill",
+      "check": "ring",
+      "verdict": "PASS",
+      "detail": "66 of white_concrete, expected >= 65",
+      "box": [
+        -78,
+        65,
+        21,
+        -62,
+        65,
+        39
+      ],
+      "evidence": {
+        "cells": 323,
+        "non_air": 91,
+        "excluded": 0,
+        "top": {
+          "minecraft:white_concrete": 66,
+          "minecraft:smooth_quartz": 13,
+          "minecraft:smoker": 5,
+          "minecraft:bookshelf": 5,
+          "minecraft:dark_oak_door": 2
+        }
+      }
+    },
+    {
+      "group": "neighborhood infill",
+      "check": "ring",
+      "verdict": "PASS",
+      "detail": "66 of white_concrete, expected >= 65",
+      "box": [
+        62,
+        65,
+        21,
+        78,
+        65,
+        39
+      ],
+      "evidence": {
+        "cells": 323,
+        "non_air": 91,
+        "excluded": 0,
+        "top": {
+          "minecraft:white_concrete": 66,
+          "minecraft:smooth_quartz": 13,
+          "minecraft:smoker": 5,
+          "minecraft:bookshelf": 5,
+          "minecraft:dark_oak_door": 2
+        }
+      }
+    },
+    {
+      "group": "neighborhood infill",
+      "check": "ring",
+      "verdict": "PASS",
+      "detail": "66 of bricks, expected >= 65",
+      "box": [
+        -78,
+        65,
+        -79,
+        -62,
+        65,
+        -61
+      ],
+      "evidence": {
+        "cells": 323,
+        "non_air": 91,
+        "excluded": 0,
+        "top": {
+          "minecraft:bricks": 66,
+          "minecraft:stone_bricks": 13,
+          "minecraft:blast_furnace": 5,
+          "minecraft:bookshelf": 5,
+          "minecraft:spruce_door": 2
+        }
+      }
+    },
+    {
+      "group": "neighborhood infill",
+      "check": "ring",
+      "verdict": "PASS",
+      "detail": "66 of bricks, expected >= 65",
+      "box": [
+        62,
+        65,
+        -79,
+        78,
+        65,
+        -61
+      ],
+      "evidence": {
+        "cells": 323,
+        "non_air": 91,
+        "excluded": 0,
+        "top": {
+          "minecraft:bricks": 66,
+          "minecraft:stone_bricks": 13,
+          "minecraft:blast_furnace": 5,
+          "minecraft:bookshelf": 5,
+          "minecraft:spruce_door": 2
+        }
+      }
+    },
+    {
+      "group": "neighborhood infill",
+      "check": "ring",
+      "verdict": "PASS",
+      "detail": "66 of spruce_planks, expected >= 65",
+      "box": [
+        -78,
+        65,
+        -179,
+        -62,
+        65,
+        -161
+      ],
+      "evidence": {
+        "cells": 323,
+        "non_air": 92,
+        "excluded": 0,
+        "top": {
+          "minecraft:spruce_planks": 66,
+          "minecraft:stripped_spruce_wood": 13,
+          "minecraft:smoker": 5,
+          "minecraft:bookshelf": 5,
+          "minecraft:dark_oak_door": 2,
+          "minecraft:acacia_log": 1
+        }
+      }
+    },
+    {
+      "group": "neighborhood infill",
+      "check": "ring",
+      "verdict": "PASS",
+      "detail": "66 of spruce_planks, expected >= 65",
+      "box": [
+        62,
+        65,
+        -179,
+        78,
+        65,
+        -161
+      ],
+      "evidence": {
+        "cells": 323,
+        "non_air": 91,
+        "excluded": 0,
+        "top": {
+          "minecraft:spruce_planks": 66,
+          "minecraft:stripped_spruce_wood": 13,
+          "minecraft:smoker": 5,
+          "minecraft:bookshelf": 5,
+          "minecraft:dark_oak_door": 2
+        }
+      }
+    },
+    {
+      "group": "circulation and safety",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "16 of lantern, expected >= 14",
+      "box": [
+        -12,
+        64,
+        -235,
+        12,
+        70,
+        80
+      ],
+      "evidence": {
+        "cells": 55300,
+        "non_air": 8743,
+        "excluded": 0,
+        "top": {
+          "minecraft:smooth_stone": 5055,
+          "minecraft:grass_block": 2236,
+          "minecraft:dirt": 590,
+          "minecraft:stone_brick_slab": 582,
+          "minecraft:oak_leaves": 105,
+          "minecraft:polished_blackstone_brick_wall": 64
+        }
+      }
+    },
+    {
+      "group": "circulation and safety",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "48 of ladder+scaffolding, expected >= 40",
+      "box": [
+        199,
+        55,
+        152,
+        201,
+        102,
+        155
+      ],
+      "evidence": {
+        "cells": 576,
+        "non_air": 63,
+        "excluded": 0,
+        "top": {
+          "minecraft:scaffolding": 48,
+          "minecraft:dirt": 11,
+          "minecraft:sea_lantern": 4
+        }
+      }
+    },
+    {
+      "group": "circulation and safety",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "7 of lantern+sea_lantern+glowstone+shroomlight, expected >= 4",
+      "box": [
+        197,
+        54,
+        150,
+        203,
+        103,
+        157
+      ],
+      "evidence": {
+        "cells": 2800,
+        "non_air": 1923,
+        "excluded": 0,
+        "top": {
+          "minecraft:iron_block": 948,
+          "minecraft:stone": 730,
+          "minecraft:dirt": 120,
+          "minecraft:scaffolding": 50,
+          "minecraft:stone_bricks": 35,
+          "minecraft:polished_deepslate": 23
+        }
+      }
+    },
+    {
+      "group": "east complex fit-out",
+      "check": "absent",
+      "verdict": "PASS",
+      "detail": "0 of dirt+grass_block+sand+gravel+stone+andesite+diorite+granite+coal_ore+copper_ore+iron_ore, expected 0",
+      "box": [
+        109,
+        63,
+        83,
+        188,
+        75,
+        142
+      ],
+      "evidence": {
+        "cells": 62400,
+        "non_air": 3067,
+        "excluded": 0,
+        "top": {
+          "minecraft:iron_block": 613,
+          "minecraft:smooth_stone_slab": 528,
+          "minecraft:sea_lantern": 494,
+          "minecraft:yellow_concrete": 410,
+          "minecraft:stone_bricks": 358,
+          "minecraft:iron_bars": 268
+        }
+      }
+    },
+    {
+      "group": "east complex fit-out",
+      "check": "absent",
+      "verdict": "PASS",
+      "detail": "0 of dirt+grass_block+sand+gravel+stone+andesite+diorite+granite+coal_ore+copper_ore+iron_ore, expected 0",
+      "box": [
+        202,
+        63,
+        83,
+        248,
+        75,
+        132
+      ],
+      "evidence": {
+        "cells": 30550,
+        "non_air": 1983,
+        "excluded": 0,
+        "top": {
+          "minecraft:smooth_quartz": 1327,
+          "minecraft:sea_lantern": 240,
+          "minecraft:quartz_stairs": 215,
+          "minecraft:white_carpet": 124,
+          "minecraft:barrel": 34,
+          "minecraft:dark_oak_stairs": 31
+        }
+      }
+    },
+    {
+      "group": "east complex fit-out",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "144 of barrel+chest+ender_chest, expected >= 120",
+      "box": [
+        109,
+        63,
+        83,
+        188,
+        75,
+        142
+      ],
+      "evidence": {
+        "cells": 62400,
+        "non_air": 3067,
+        "excluded": 0,
+        "top": {
+          "minecraft:iron_block": 613,
+          "minecraft:smooth_stone_slab": 528,
+          "minecraft:sea_lantern": 494,
+          "minecraft:yellow_concrete": 410,
+          "minecraft:stone_bricks": 358,
+          "minecraft:iron_bars": 268
+        }
+      }
+    },
+    {
+      "group": "east complex fit-out",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "33 of blast_furnace+anvil+smithing_table+crafting_table+stonecutter, expected >= 20",
+      "box": [
+        109,
+        63,
+        83,
+        188,
+        75,
+        142
+      ],
+      "evidence": {
+        "cells": 62400,
+        "non_air": 3067,
+        "excluded": 0,
+        "top": {
+          "minecraft:iron_block": 613,
+          "minecraft:smooth_stone_slab": 528,
+          "minecraft:sea_lantern": 494,
+          "minecraft:yellow_concrete": 410,
+          "minecraft:stone_bricks": 358,
+          "minecraft:iron_bars": 268
+        }
+      }
+    },
+    {
+      "group": "east complex fit-out",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "77 of target+barrel+dark_oak_stairs+brewing_stand+lectern, expected >= 70",
+      "box": [
+        202,
+        63,
+        83,
+        248,
+        75,
+        132
+      ],
+      "evidence": {
+        "cells": 30550,
+        "non_air": 1983,
+        "excluded": 0,
+        "top": {
+          "minecraft:smooth_quartz": 1327,
+          "minecraft:sea_lantern": 240,
+          "minecraft:quartz_stairs": 215,
+          "minecraft:white_carpet": 124,
+          "minecraft:barrel": 34,
+          "minecraft:dark_oak_stairs": 31
+        }
+      }
+    },
+    {
+      "group": "east complex fit-out",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "263 of barrel+chest+bookshelf+red_bed+cartography_table+lectern+crafting_table+smithing_table+stonecutter, expected >= 180",
+      "box": [
+        141,
+        51,
+        103,
+        263,
+        60,
+        132
+      ],
+      "evidence": {
+        "cells": 36900,
+        "non_air": 20755,
+        "excluded": 0,
+        "top": {
+          "minecraft:stone": 16360,
+          "minecraft:glass": 1824,
+          "minecraft:polished_blackstone": 614,
+          "minecraft:iron_block": 524,
+          "minecraft:quartz_block": 300,
+          "minecraft:polished_deepslate": 300
+        }
+      }
+    },
+    {
+      "group": "campus boundary",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "687 of birch_fence+white_concrete+quartz_pillar, expected >= 500",
+      "box": [
+        -305,
+        40,
+        -305,
+        305,
+        160,
+        -301
+      ],
+      "evidence": {
+        "cells": 369655,
+        "non_air": 88215,
+        "excluded": 0,
+        "top": {
+          "minecraft:stone": 57756,
+          "minecraft:dirt": 8854,
+          "minecraft:diorite": 4215,
+          "minecraft:water": 4164,
+          "minecraft:grass_block": 2800,
+          "minecraft:andesite": 2586
+        }
+      }
+    },
+    {
+      "group": "campus boundary",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "732 of birch_fence+white_concrete+quartz_pillar, expected >= 450",
+      "box": [
+        -305,
+        40,
+        301,
+        305,
+        160,
+        305
+      ],
+      "evidence": {
+        "cells": 369655,
+        "non_air": 99562,
+        "excluded": 0,
+        "top": {
+          "minecraft:stone": 52501,
+          "minecraft:water": 19770,
+          "minecraft:dirt": 6515,
+          "minecraft:andesite": 5437,
+          "minecraft:diorite": 3203,
+          "minecraft:granite": 2782
+        }
+      }
+    },
+    {
+      "group": "campus boundary",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "678 of birch_fence+white_concrete+quartz_pillar, expected >= 500",
+      "box": [
+        301,
+        40,
+        -305,
+        305,
+        160,
+        305
+      ],
+      "evidence": {
+        "cells": 369655,
+        "non_air": 93866,
+        "excluded": 0,
+        "top": {
+          "minecraft:stone": 56475,
+          "minecraft:dirt": 7729,
+          "minecraft:andesite": 5531,
+          "minecraft:water": 5390,
+          "minecraft:diorite": 4666,
+          "minecraft:granite": 4608
+        }
+      }
+    },
+    {
+      "group": "campus boundary",
+      "check": "contains",
+      "verdict": "PASS",
+      "detail": "597 of birch_fence+white_concrete+quartz_pillar, expected >= 500",
+      "box": [
+        -305,
+        40,
+        -305,
+        -301,
+        160,
+        305
+      ],
+      "evidence": {
+        "cells": 369655,
+        "non_air": 88019,
+        "excluded": 0,
+        "top": {
+          "minecraft:stone": 40680,
+          "minecraft:water": 12401,
+          "minecraft:mangrove_leaves": 7144,
+          "minecraft:mud": 5190,
+          "minecraft:andesite": 4610,
+          "minecraft:dirt": 2834
+        }
+      }
+    }
+  ]
+}

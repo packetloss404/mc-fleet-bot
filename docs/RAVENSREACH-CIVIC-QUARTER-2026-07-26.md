@@ -9,14 +9,14 @@
 
 | Building | Footprint | Levels | State |
 |---|---|---|---|
-| **Multiplex** (3 screens) | under the Moot Hall, B1/B2 | IMAX y55-66 + 2 medium y62-66 | built |
+| **Multiplex** (3 screens) | under the Moot Hall, B1/B2 | IMAX y55-66 + 2 medium y62-66 | built, repaired, post-capture verified |
 | **The Library** | x[-144,-111] z[-448,-426] | 3 above (y67/75/83) + 3 below (y60/53/46) | built, audited |
 | **Central Pavilion** | x[-105,-65] z[-449,-425] | open colonnade, glass vault y79-85 | built, audited |
 | **Amsterdam square** | the plaza + two canals | y67 | built, audited |
 | **Walkways** | plaza → pavilion → library, plus a ring road | y67 | built, audited |
-| **Concert Hall** | bowl x[-135,-35] z[-553,-473], canopy x[-148,-22] z[-562,-450] | floor y55 → rim y81 → canopy y83-89 | in progress |
+| **Concert Hall** | bowl x[-135,-35] z[-553,-473], canopy x[-148,-22] z[-562,-450] | floor y55 → rim y81 → canopy y83-89 | built and walkable |
 | **Market Hall / Grange Hall interiors** | — | 3 levels each | built |
-| **The members' club** | under the bowl, y36-46 | vestibule → grand entrance → Red Room | queued |
+| **The members' club** | under the bowl, y36-46 | vestibule → grand entrance → Red Room | built and walkable |
 
 ---
 
@@ -155,11 +155,11 @@ empty space. It cannot destroy a chest, a furnace, a crop, the embedded cobblest
 hut, the White Raven statue, or the neighbour cottage. Verified after the fact: chest
 counts unchanged at 33 and 37.
 
-**What was not done:** the plans called for the stacked chest masses to be re-racked
-into openable trapdoor shelving. Moving a chest with WorldEdit **destroys its
-contents**, and these are residents' chests. The floors were built around them and
-their outward faces cleared instead. The chests buried inside the mass remain
-unreachable. That is a live decision for the operator, not something to delete quietly.
+**What was not done:** no chest was moved. Moving a chest with WorldEdit can
+destroy its contents. Final route analysis found that the existing service
+aisles already reach the racks: Market 3/3 representative approaches and Grange
+8/8. Each hall contains 33 chest blocks; the stale Grange count of 37 included
+four chests outside the hall box. No destructive chest-access work remains.
 
 The farms were a genuine casualty of a different kind: farmland had already dried to
 dirt (22 → 14 cells in the Market Hall) because the original irrigation was a single
@@ -169,8 +169,9 @@ water block. Both farms were rebuilt with real, contained channels.
 
 ## 6. Audit
 
-`audits/ravensreach.yaml` is now **65 checks, 65 passing**, up from 52. New groups:
-Amsterdam square (6), Library (4), Central Pavilion (4). Re-baselined: the plaza
+`audits/ravensreach.yaml` is now **112 checks, 112 passing**. It includes the
+Concert Hall, members' club, repaired south multiplex, Market/Grange
+circulation, and stair-only Moot/Sanctum route. Re-baselined: the plaza
 paving (klinker, not stone_bricks), the plaza ground plane (the canal is an excluded
 void, not a tolerated hole), and the Moot Hall roof and ridge, which moved from y77-85
 / y86 to y87-96 / y97 when two storeys went in beneath them.
@@ -183,6 +184,5 @@ python3 scripts/audit.py audits/ravensreach.yaml --refresh
 python3 scripts/audit.py audits/ravensreach.yaml --json today.json --baseline yesterday.json
 ```
 
-Not yet asserted: the Concert Hall and the club beneath it. Those assertions get
-written from measurement once the build finishes, for the reason stated in the last
-doc — writing them from the generator would encode intent instead of fact.
+The Concert Hall and club are asserted from measured post-build state and
+manifest route checks, not generator intent.

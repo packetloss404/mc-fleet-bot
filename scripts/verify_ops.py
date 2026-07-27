@@ -87,7 +87,11 @@ def check(path, samples):
     if not ops:
         return path, None, 'no independently verifiable SET ops'
     random.seed(len(ops))
-    picks = [ops[i * len(ops) // samples] for i in range(min(samples, len(ops)))]
+    # Scale by the number we can actually draw. The previous denominator stayed
+    # at the caller's requested sample count even when there were fewer eligible
+    # ops, producing duplicate early indexes and never checking later operations.
+    sample_count = min(samples, len(ops))
+    picks = [ops[i * len(ops) // sample_count] for i in range(sample_count)]
     hit = miss = 0
     misses = []
     for f in picks:

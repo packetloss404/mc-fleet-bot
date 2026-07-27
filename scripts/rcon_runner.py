@@ -39,8 +39,13 @@ FILL_LIMIT = 32768
 # `minecraft:iron_chain`, which works through vanilla /fill and needs no WorldEdit.
 COMMAND_BLOCKED = {'chain'}
 BATCH = 40                                     # commands per RCON round-trip
-OK = re.compile(r'Successfully filled|filled \d+ block')
-NOOP = re.compile(r'No blocks (were )?(filled|changed)|could not be placed')
+OK = re.compile(
+    r'Successfully filled|filled \d+ block|Changed the block at|Modified block data of'
+)
+NOOP = re.compile(
+    r'No blocks (were )?(filled|changed)|could not be placed|'
+    r'Could not set the block|Nothing changed\. The specified properties'
+)
 
 
 def parse(path):
@@ -78,6 +83,27 @@ def split(b):
     return split(tuple(a)) + split(tuple(bb))
 
 
+def split_masks(mask):
+    """Split a comma-delimited material mask without splitting block states.
+
+    REPL historically allowed masks such as ``air,cave_air``. Modern guarded
+    operations also use exact states such as
+    ``lantern[hanging=false,waterlogged=false]``; a plain ``str.split(',')``
+    corrupts that state into two invalid commands.
+    """
+    masks, start, depth = [], 0, 0
+    for i, char in enumerate(mask):
+        if char == '[':
+            depth += 1
+        elif char == ']':
+            depth = max(0, depth - 1)
+        elif char == ',' and depth == 0:
+            masks.append(mask[start:i])
+            start = i + 1
+    masks.append(mask[start:])
+    return [entry for entry in masks if entry]
+
+
 def commands(ops):
     """Turn ops into (line_no, /fill command) pairs. Returns leftovers separately."""
     out, leftover = [], []
@@ -101,7 +127,7 @@ def commands(ops):
             x1, y1, z1, x2, y2, z2 = piece
             base = f'fill {x1} {y1} {z1} {x2} {y2} {z2} {pattern}'
             if mask:
-                for m in mask.split(','):
+                for m in split_masks(mask):
                     if m in ('air', 'cave_air'):
                         out.append((n, base + ' replace ' + m))
                     else:
@@ -151,11 +177,19 @@ def main():
     try:
         if bx:
             x1, z1, x2, z2 = bx
-            # forceload add takes block coords and covers at most 256 chunks per call,
-            # so walk the region in 16x16-chunk (256x256 block) tiles.
-            for cx in range(x1 - 16, x2 + 17, 256):
-                for cz in range(z1 - 16, z2 + 17, 256):
-                    ex, ez = min(cx + 255, x2 + 16), min(cz + 255, z2 + 16)
+            # forceload add takes block coords and covers at most 256 chunks per
+            # call. Tile in CHUNK space, aligned to chunk boundaries. A previous
+            # block-space loop started at unaligned x1-16/z1-16 coordinates; an
+            # apparently 256x256 block tile could therefore touch 17x17=289 chunks
+            # and be rejected as "Too many chunks", leaving edge ops unloaded.
+            min_cx, max_cx = x1 // 16, x2 // 16
+            min_cz, max_cz = z1 // 16, z2 // 16
+            for chunk_x in range(min_cx, max_cx + 1, 16):
+                for chunk_z in range(min_cz, max_cz + 1, 16):
+                    end_chunk_x = min(chunk_x + 15, max_cx)
+                    end_chunk_z = min(chunk_z + 15, max_cz)
+                    cx, cz = chunk_x * 16, chunk_z * 16
+                    ex, ez = end_chunk_x * 16 + 15, end_chunk_z * 16 + 15
                     r = rc.cmd(f'forceload add {cx} {cz} {ex} {ez}')
                     # Record the tile whatever the reply says. An earlier version only
                     # recorded it when the reply contained 'Added' or 'forced'; the

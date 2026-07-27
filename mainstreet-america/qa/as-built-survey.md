@@ -517,3 +517,35 @@ entrance drive re-laid on the x=0 spine z+90→+300 (which also completes it to 
 frontage for the first time — it had stopped at z275).
 
 **Verified: carriageway ALL OK across z+75→−235, drive 5/5, verges restored.**
+
+---
+
+# ADDENDUM 11 — 2026-07-26 · parking/arrival/gardens recovery and record correction
+
+The ADDENDUM 3 parking measurement remains valid only for the gross paved field:
+`x[-125,+125] z[+172,+268]`, approximately 97,400 ft² against the sourced
+~100,000 ft². Its warning that 236 stalls were not then demonstrable was correct.
+The later ADDENDUM 7 phrase “MSA SURFACE BUILD COMPLETE” was too broad: it did
+not have reproducible parking operations or evidence for stall striping,
+accessibility, lighting, gardens, or continuous south-gate circulation.
+
+That parking claim is now superseded by a new, independently auditable recovery:
+
+- **236 individually mapped bays**: 205 standard, 8 accessible, 14 EV, 9 premium;
+- three double-loaded aisle bands, six crossings, shared accessible access
+  aisles, and step-free pedestrian connectors;
+- 23 dual-head light poles plus 32 flush lights, two EV/solar canopies, formal
+  gardens, a rain garden, Discovery Court, bike corral, and three arrival arches;
+- a full x[-10,+10] public gate at `(0,79,305)`, connected to the Guest Center,
+  mountain portal, hangar, and arena;
+- **41,809/41,809** merged intended block targets present in the post-build
+  snapshot, with zero changed blocks inside the protected Guest Center,
+  mountain-entry, and billboard comparison boxes;
+- executable audit result **66 passed / 0 failed / 0 unknown**.
+
+The exact operations, hashes, visual captures, reachability results, and
+`world-map.db` import record are catalogued in
+[`parking-recovery-2026-07-26.md`](parking-recovery-2026-07-26.md). The historical
+2-vCPU constraint is credible operational context, but the surviving records do
+not prove that it caused this specific parking omission. The proven older
+failures were an over-cap `/fill` and a grading pass that overwrote road surface.

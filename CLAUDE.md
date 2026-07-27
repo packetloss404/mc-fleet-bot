@@ -145,6 +145,9 @@ When `DASHBOARD_AUTH_SECRET` is set, all `/api/*` routes except `/api/auth/*`, `
 - `GET /api/reputation` / `GET /api/reputation/:name` - player reputation scores
 - `GET /api/world` - aggregate world state (time, weather, online count)
 - `GET /api/world/model` - shared world-model snapshot
+- `GET/POST /api/world/features`, `GET/PATCH/DELETE /api/world/features/:id` - durable project/as-built asset catalog
+- `POST /api/world/features/import` - idempotent bulk feature import by project/external ID
+- `GET/POST /api/world/scans`, `GET /api/world/scans/:id`, `POST /api/world/scans/:id/observations|complete` - persisted survey runs and findings
 - `GET /api/events/world` - world event feed
 - `GET /api/difficulty` - adaptive difficulty state
 - `GET /api/culture` - emergent culture state

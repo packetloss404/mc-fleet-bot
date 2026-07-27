@@ -44,6 +44,11 @@ meta:
     (the developed band, NOT the staged full ±300 envelope) with `mob-spawning: deny` only — see
     `../../raven-rock/qa/oq3-worldguard.md`. These coordinates remain a design manifest for bot-driven
     placement.
+  as_built_reconciliation_2026_07_26: >-
+    The entrance, parking, Guest Center entry, street, service buildings, and billboard anchors below
+    have been repointed to measured as-built coordinates. Older home-lot and zone-layout values remain
+    a historical creative plan where explicitly noted; data/world-map.db is authoritative for current
+    feature extents, hierarchy, condition, and scan history.
 
 # ---------------------------------------------------------------------------------------------------
 # ORIGIN, SCALE, ORIENTATION, BOUNDARY
@@ -78,10 +83,12 @@ project:
 
 entrance:
   # Principal SOUTH site entrance: drive off the frontage road, on axis, leading north into parking.
-  coordinate: {x: 0, y: 64, z: 275}
+  coordinate: {x: 0, y: 79, z: 305}
   facing: south              # gateway opens toward the frontage road (+Z)
   confidence: high-confidence inference   # sequence known; exact block is placement choice
-  note: Site gateway. The Guest Center's own main door is a separate notable_location (faces south).
+  note: >-
+    Measured center of the built 21-wide south gate and terraced arrival. The Guest Center's own
+    main door is a separate notable_location (faces south).
 
 # ---------------------------------------------------------------------------------------------------
 # NINE ZONES  — bounds are [min_x, min_z, max_x, max_z]  (a horizontal footprint on the y=64 plane)
@@ -96,8 +103,10 @@ zones:
 
   - id: 2
     name: Parking Field
-    bounds: [-230, 125, 230, 250]        # ~100,000 SF concrete lot between frontage and guest center
-    purpose: 236-space concrete parking field (REF-012); area 460x125=57,500 blocks ~= 230,000 SF gross zone
+    bounds: [-125, 172, 125, 268]        # measured 2026-07-26 slab; arrival continues south to z305
+    purpose: >-
+      Built 236-space concrete parking field (REF-012), Arrival Gardens, accessible/EV bays,
+      canopies, lighting, and circulation; exact children are inventoried under P01 in world-map.db
     confidence: high-confidence inference
 
   - id: 3
@@ -355,7 +364,7 @@ notable_locations:
 
   - id: N03
     name: Guest Center Main Entrance
-    coordinate: {x: 0, y: 64, z: 113}           # south face of Building 1, facing parking
+    coordinate: {x: 0, y: 65, z: 166}           # repaired formal south entry, facing parking
     confidence: high-confidence inference
 
   - id: N04
@@ -371,13 +380,13 @@ notable_locations:
 
   - id: N06
     name: Internal Street — South Entrance
-    coordinate: {x: 0, y: 64, z: 25}
+    coordinate: {x: 0, y: 65, z: 80}
     zone: 7
     confidence: high-confidence inference
 
   - id: N07
     name: Cul-de-sac Terminus
-    coordinate: {x: 0, y: 64, z: -215}
+    coordinate: {x: 0, y: 65, z: -235}
     zone: 7
     confidence: high-confidence inference        # dead-end residential loop (REF-015)
 
@@ -389,7 +398,7 @@ notable_locations:
 
   - id: N09
     name: Parking Field Centroid
-    coordinate: {x: 0, y: 64, z: 188}
+    coordinate: {x: 0, y: 65, z: 220}
     zone: 2
     confidence: high-confidence inference
 

@@ -241,7 +241,11 @@ def main():
             continue
         print(f'  \033[1m{gname}\033[0m')
         for chk in group.get('checks', []):
-            cname = chk.get('name', chk.get('type', '?'))
+            # Specs use stable `id` values for regression identity. Falling straight
+            # back from `name` to `type` collapsed every `contains` check in a group
+            # onto the same label, making the JSON baseline unable to say which
+            # building or route had actually regressed.
+            cname = chk.get('name', chk.get('id', chk.get('type', '?')))
             try:
                 verdict, detail, ev = run_check(chk, a.regions)
             except CensusError as e:

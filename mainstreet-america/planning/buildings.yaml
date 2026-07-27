@@ -74,7 +74,8 @@ site_reference:
 #   verified_spec      - the primary-sourced numbers this record must honor (with manifest REF)
 #   location_center    - [x, y, z] footprint centroid (creative_approximation; cross-check target)
 #   building_record:
-#     status           - always "not_started" (nothing built yet)
+#     status           - historical design-phase value only; do not use as current build state.
+#                        Current status/condition lives in data/world-map.db and the 2026-07-26 audit.
 #     confidence        - per-aspect tags (program/size vs placement vs appearance)
 #     footprint        - {width_x, depth_z, area_blocks} ground-floor plate in blocks
 #     floors           - integer story count (verified where sourced)
@@ -816,7 +817,8 @@ buildings:
 
 # ---------------------------------------------------------------------------------------------------
 # CROSS-CHECK CHECKLIST (collision + envelope, for the reviewing agent)
-#   * All 14 records: status not_started; 5 completion booleans false.
+#   * Historical design-phase records retain status not_started and false completion booleans.
+#     They are not current operational state; use data/world-map.db and qa/audit-2026-07-26.md.
 #   * Homes MSA-01..MSA-12 verified non-overlapping (min inter-home gap ~10 blocks) and inside Z04 box
 #     X in [-145,+145], Z in [-150,+40]. Extremes: Alexandria north face Z=-136 (> -150); east homes
 #     max X=+130 (< +145); west homes min X=-132 (> -145); Casa Lana / Timbergrove south faces <= +40.

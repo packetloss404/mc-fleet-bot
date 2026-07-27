@@ -59,9 +59,13 @@ def placed(files, samples):
     return ('MISSING' if hits == 0 else 'PARTIAL'), f'{hits}/{tot} ' + '; '.join(worst[:2])
 
 
-def one_walk(frm, to, pad, budget):
-    r = sh(['node', 'scripts/reachability.mjs', '--from', frm, '--to', to,
-            '--pad', str(pad), '--budget', str(budget)])
+def one_walk(frm, to, pad, budget, regions=None):
+    cmd = ['node', 'scripts/reachability.mjs']
+    if regions:
+        cmd.extend(['--regions', regions])
+    cmd.extend(['--from', frm, '--to', to,
+                '--pad', str(pad), '--budget', str(budget)])
+    r = sh(cmd)
     bad, notes = 0, []
     for line in r.stdout.splitlines():
         t = line.strip()
@@ -73,10 +77,14 @@ def one_walk(frm, to, pad, budget):
     return bad, notes
 
 
-def one_box(frm, box, pad, budget, minimum):
+def one_box(frm, box, pad, budget, minimum, regions=None):
     """Check measured room coverage without relying on a lucky point target."""
-    r = sh(['node', 'scripts/reachability.mjs', '--from', frm, '--box', box,
-            '--pad', str(pad), '--budget', str(budget)])
+    cmd = ['node', 'scripts/reachability.mjs']
+    if regions:
+        cmd.extend(['--regions', regions])
+    cmd.extend(['--from', frm, '--box', box,
+                '--pad', str(pad), '--budget', str(budget)])
+    r = sh(cmd)
     m = re.search(r'(\d+)/(\d+) standable interior cells reachable \((\d+)%\)',
                   r.stdout)
     if not m:
@@ -87,19 +95,21 @@ def one_box(frm, box, pad, budget, minimum):
     return 0, []
 
 
-def walkable(walks, budget):
+def walkable(walks, budget, regions=None):
     bad, notes = 0, []
     for w in walks:
         pad = w.get('pad', 14)
         frm = ','.join(str(v) for v in w['from'])
         if 'box' in w:
             box = ','.join(str(v) for v in w['box'])
-            b, n = one_box(frm, box, pad, budget, w.get('min_coverage', 60))
+            b, n = one_box(
+                frm, box, pad, budget, w.get('min_coverage', 60), regions,
+            )
             bad += b
             notes += n
             continue
         to = ';'.join(','.join(str(v) for v in t) for t in w['to'])
-        b, n = one_walk(frm, to, pad, budget)
+        b, n = one_walk(frm, to, pad, budget, regions)
         bad += b
         notes += n
         # A player falls any distance but climbs only one block, so a one-way check
@@ -107,7 +117,7 @@ def walkable(walks, budget):
         if w.get('both_ways'):
             for t in w['to']:
                 tk = ','.join(str(v) for v in t)
-                b, n = one_walk(tk, frm, pad, budget)
+                b, n = one_walk(tk, frm, pad, budget, regions)
                 bad += b
                 notes += [f'(return) {x}' for x in n]
     if bad == 0:
@@ -120,6 +130,10 @@ def main():
     ap.add_argument('--only')
     ap.add_argument('--samples', type=int, default=4)
     ap.add_argument('--budget', type=int, default=400000)
+    ap.add_argument(
+        '--regions',
+        help='region snapshot directory used by reachability checks',
+    )
     ap.add_argument('--refresh', action='store_true',
                     help='pull a fresh region snapshot first (checks read the snapshot)')
     a = ap.parse_args()
@@ -166,7 +180,7 @@ def main():
             # the canonical final-state files that can still be sampled meaningfully.
             pv, pd = placed(u.get('placement_ops', u.get('ops', [])), a.samples)
         if u.get('walk'):
-            wv, wd = walkable(u['walk'], a.budget)
+            wv, wd = walkable(u['walk'], a.budget, a.regions)
         else:
             wv, wd = 'n/a', u.get('walk_na', f'{R}NO WALK CHECK AND NO REASON GIVEN{RST}')
         ok = pv in ('PLACED', 'SKIP') and wv in ('WALKABLE', 'n/a')

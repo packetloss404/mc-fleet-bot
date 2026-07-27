@@ -1,138 +1,80 @@
-# =====================================================================================================
-# MainStreet America — WORLDGUARD REGION DEFINITION  (integration/worldguard.yaml)
-# =====================================================================================================
-# REQUIRED PLUGIN: WorldGuard (with WorldEdit, its hard dependency).
+# MainStreet America — live WorldGuard policy
 #
-# STATUS (rewritten 2026-07-25): **PARTLY APPLIED.** Everything the old status line said was wrong:
-#   WorldEdit 7.4.0 and WorldGuard 7.0.16 ARE installed, and the builder bots ARE opped (level 4).
-#   The overworld is named `world` (resolves WG02). What is LIVE on the server right now:
-#
-#     region  mainstreet_america   x[-70,70] y[62,319] z[-235,200]   priority 10   mob-spawning: deny
-#
-#   Deltas from the definition below, and why:
-#     * BOUNDS NARROWED to MSA's developed band. The ±300 / y−64→320 envelope below would have blanketed
-#       Raven Rock's whole subsurface and MSA's own perimeter under MSA's flags. The subsurface column is
-#       instead owned by `raven-rock/integration/worldguard.yaml`'s `raven_rock` region (y ≤ 61), and the
-#       Ravensreach settlement (x[-140,-30] z[-430,-310]) by a separate `ravensreach` region. Together the
-#       three tile the space with no gap and no overlap.
-#     * y max is 319, NOT 320. 320 is out of range in a 1.21 overworld (build limit is y=319).
-#     * ONLY `mob-spawning: deny` is set — that is OQ-3's second half. Every other flag below, in
-#       particular build / block-break / block-place, is STILL UNSET **on purpose**: opped players bypass
-#       WorldGuard build protection, so applying them now would protect nothing while giving a false
-#       impression that the site is guarded. They are the OQ-2 step and must be applied AFTER the de-op.
-#   See raven-rock/qa/oq3-worldguard.md for the applied commands and the verification output.
-#
-# -----------------------------------------------------------------------------------------------------
-# PROVENANCE / HONESTY NOTE  (read before trusting the flags)
-# -----------------------------------------------------------------------------------------------------
-# The task cited "exactly the flags given in section 18." NO brief and NO "section 18" exist in this
-# repository (only ../references/manifest.yaml + ../references/README.md + planning/). This is the same
-# missing-brief gap recorded as coordinates.yaml CONFLICT-02 / palettes.yaml A01. I therefore AUTHORED
-# the flag set below — a sensible "curated public showcase" profile (visitors may walk through and use
-# doors, but cannot build/grief, and the environment is kept calm) — rather than transcribing a section
-# that does not exist. Treat the flag SET as reasoned construction, not a canonical transcription.
-# All flag NAMES and VALUES below are real WorldGuard state flags (WorldGuard 7.x).
-# =====================================================================================================
+# Verified and applied 2026-07-26. This file records the live regions; it is no
+# longer a speculative flag profile. WorldGuard protects region geometry by
+# membership even when the explicit `build` flag is unset. Keeping `build`
+# unset is intentional: an unconditional build-deny flag would also block the
+# five named builders. PacketCraft's parcel/build zones add a second layer for
+# scheduled fleet construction.
 
-# The region spans the full 600x600 project envelope (site-plan.md §1: X/Z in [-300, +300]) across the
-# full 1.21 world height. type: cuboid, min -> max inclusive.
+status: applied
+world: world
+plugins:
+  worldedit: 7.4.0
+  worldguard: 7.0.16
+
 regions:
   mainstreet_america:
     type: cuboid
     priority: 10
-    min:
-      x: -300
-      y: -64        # 1.21 world floor
-      z: -300
-    max:
-      x: 300
-      y: 320        # 1.21 world ceiling
-      z: 300
-
-    # --- FLAGS (authored; see provenance note) ----------------------------------------------------
-    # Intent: a walk-through museum/showcase. Non-members cannot alter the build; visitors may enter,
-    # move freely, and operate doors/gates; explosions, fire spread and hostile mobs are suppressed so
-    # the reconstruction is not damaged or made hostile.
+    min: {x: -300, y: -64, z: -300}
+    max: {x: 300, y: 319, z: 300}
     flags:
-      # Build / grief protection
-      build: deny                # non-members cannot place or break anything
-      block-break: deny
-      block-place: deny
-      interact: allow            # visitors CAN use doors, gates, buttons, trapdoors (showcase walk-through)
-      chest-access: deny         # no container looting (there are no visitor chests, but deny by default)
-      use: allow                 # levers/buttons/doors usable by visitors
-      item-frame-rotation: deny
-      # Combat / safety
-      pvp: deny
-      mob-damage: deny           # ambient mobs cannot hurt visitors
-      damage-animals: deny
-      # Environment preservation
-      mob-spawning: deny         # keep the site clean of wandering mobs
-      creeper-explosion: deny
-      other-explosion: deny
-      tnt: deny
-      ghast-fireball: deny
-      wither-damage: deny
-      enderman-grief: deny
-      fire-spread: deny
-      lava-fire: deny
-      lighter: deny              # no flint-and-steel ignition
-      ice-form: deny
-      ice-melt: deny
-      snow-fall: deny
-      snow-melt: deny
-      vine-growth: deny
-      # Movement / presence
-      entry: allow
-      exit: allow
-      passthrough: allow
-      # Signage shown at the boundary (honest framing for visitors)
-      greeting: "&eWelcome to &6MainStreet America&e — a reconstruction of the former Design Tech Homes model-home park, I-45 Spring, TX. &7Layout & sizes are real; the buildings' look is our informed reconstruction."
-      farewell: "&7Leaving MainStreet America. Thanks for visiting."
-
-    # CORRECTED 2026-07-25: the bots ARE opped (level 4) and a live admin UUID DOES exist —
-    # packetloss404 = dac51b37-928d-35f5-b87a-0fcabb26752a. owners/members are still empty on the live
-    # region because seeding them grants nothing while the bots hold op. Seed them as step 2 of the OQ-2
-    # sequence, i.e. BEFORE the de-op and before 'build: deny', or the de-op removes the last edit path
-    # into the finished site. See ../../raven-rock/qa/oq3-worldguard.md §5.
-    owners:
-      unique-ids: []
-      groups: []
+      mob-spawning: deny
+    owner:
+      name: packetloss404
+      uuid: dac51b37-928d-35f5-b87a-0fcabb26752a
     members:
-      unique-ids: []
-      groups: []
+      # UUIDs are the durable live values. Names are retained for operations.
+      - {name: Architect, uuid: c12cc45b-0377-32a5-8fa0-d0f7cc95b22c}
+      - {name: Mason, uuid: 5f8c8e1b-c0df-3f13-9235-316eebfa3c01}
+      - {name: Steward, uuid: a24c913a-a70e-32b9-a631-2c491f7bd863}
+      - {name: Surveyor, uuid: 45b61cfc-f8fc-35e2-9dbd-d05d666b59f6}
+      - {name: Scout, uuid: 274eb56c-e054-365b-af9f-d464a7f210e0}
 
-# =====================================================================================================
-# ASSUMPTIONS & CROSS-CHECK NOTES
-# =====================================================================================================
-assumptions:
-  - id: WG01
-    topic: No brief / no "section 18"
-    detail: >-
-      The flag set is authored, not transcribed (section 18 does not exist). Same gap as coordinates.yaml
-      CONFLICT-02. If a real brief later specifies exact flags, replace this set wholesale.
-    severity: high
-  - id: WG02
-    topic: World name + region file path
-    detail: >-
-      RESOLVED 2026-07-25. The overworld IS named 'world'; the region file is
-      plugins/WorldGuard/worlds/world/regions.yml on the Paper host, and the region has been created there.
-      Note the target server is the Paper box at 10.80.13.14, not the historical DyoCraft host.
-    severity: resolved
-  - id: WG03
-    topic: Empty owners/members
-    detail: >-
-      UPDATED 2026-07-25 — the last sentence was backwards: the bots ARE opped, so 'build: deny' would not
-      restrain them at all today. That is precisely why 'build: deny' has NOT been applied: it would be
-      inert while giving a false impression of protection. Once the OQ-2 de-op happens, 'build: deny' with
-      empty members WILL block all non-op edits including the bots — so seed the build crew's + admins'
-      UUIDs into members/owners BEFORE de-opping.
-    severity: medium
-  - id: WG04
-    topic: Y-bounds
-    detail: >-
-      SUPERSEDED 2026-07-25. max-y 320 is OUT OF RANGE — a 1.21 overworld spans y -64..319, so 319 is the
-      real ceiling. And the column was narrowed rather than widened: the applied region is y[62,319] over
-      x[-70,70] z[-235,200], with the subsurface below y62 owned by the raven_rock region (y <= 61). The
-      two tile the column with no gap and no overlap.
-    severity: low
+  # `raven_rock` has priority 11 across the whole subsurface. This child region
+  # gives the non-Raven-Rock MainStreet mountain complex its own higher-priority
+  # edit domain without granting access to the rest of Raven Rock.
+  msa_mountain_sub:
+    type: cuboid
+    priority: 12
+    min: {x: 90, y: -64, z: 70}
+    max: {x: 294, y: 61, z: 240}
+    flags:
+      mob-spawning: deny
+    owner:
+      name: packetloss404
+      uuid: dac51b37-928d-35f5-b87a-0fcabb26752a
+    members:
+      - {name: Architect, uuid: c12cc45b-0377-32a5-8fa0-d0f7cc95b22c}
+      - {name: Mason, uuid: 5f8c8e1b-c0df-3f13-9235-316eebfa3c01}
+      - {name: Steward, uuid: a24c913a-a70e-32b9-a631-2c491f7bd863}
+      - {name: Surveyor, uuid: 45b61cfc-f8fc-35e2-9dbd-d05d666b59f6}
+      - {name: Scout, uuid: 274eb56c-e054-365b-af9f-d464a7f210e0}
+
+operator_policy:
+  operators:
+    - packetloss404
+  deopped_builders:
+    - Architect
+    - Mason
+    - Steward
+    - Surveyor
+    - Scout
+
+acceptance:
+  - Full property region verified at `(-300,-64,-300) -> (300,319,300)`.
+  - MainStreet mountain child verified at `(90,-64,70) -> (294,61,240)`.
+  - Owner and five builder UUIDs are persisted in both applicable edit domains.
+  - `ops.json` contains only packetloss404; operator bypass is no longer the
+    fleet's normal construction path.
+  - A live WorldGuard debug test allowed the member past WorldGuard and reached
+    PacketCraft's parcel policy; after temporarily removing that membership, the
+    same non-opped player received WorldGuard's block-break denial. Membership
+    was restored immediately.
+
+notes:
+  - Dynmap, BlueMap, EssentialsX, and Citizens are not live server plugins.
+    BlueMap is used only as an offline snapshot QA renderer.
+  - Visitor interaction, chest, combat, fire, and greeting flags from the old
+    authored museum profile were never applied and are not represented as live.

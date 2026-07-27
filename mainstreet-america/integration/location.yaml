@@ -28,8 +28,9 @@
 #   high-confidence inference          - one good source / a strong read
 #   moderate-confidence reconstruction - assembled from snippets
 #   creative approximation             - no evidence; invented for the build
-# Coordinates below are copied verbatim from planning/coordinates.yaml (its own XZ placement is
-# "creative approximation": no survey exists; the front-to-back SEQUENCE is high-confidence inference).
+# Current visitor anchors were reconciled on 2026-07-26 against measured as-built geometry and
+# world-map.db. Untouched planning positions retain their declared creative-approximation confidence;
+# the front-to-back sequence remains a high-confidence inference.
 # =====================================================================================================
 
 schema_version: 1
@@ -61,7 +62,7 @@ location:
 
   # --- Where it is in THIS Minecraft world ----------------------------------------------------------
   world_placement:
-    world: world                       # ASSUMPTION: DyoCraft overworld name unconfirmed — confirm before apply.
+    world: world                       # confirmed live overworld name, 2026-07-25
     origin: {x: 0, y: 64, z: 0}
     build_plane_y: 64
     boundary:
@@ -84,20 +85,24 @@ location:
       (verified acreage, REF-005). The developed core is a central long-narrow strip; the surplus is
       landscaped greenbelt buffer. Do not read the boundary as a lot line. (coordinates.yaml CONFLICT-04.)
 
-  # --- Key coordinates (copied verbatim from planning/coordinates.yaml) ------------------------------
-  # These are the canonical anchors a bot should use to point a player at a sub-location.
+  # --- Key coordinates (reconciled to 2026-07-26 as-built geometry) -----------------------------------
+  # These are the canonical visitor anchors a bot should use. world-map.db remains authoritative for
+  # full bounds, routes, hierarchy, condition, and scan history.
   key_coordinates:
     site_center:            {x: 0,    y: 64, z: 0}      # world origin
-    site_gateway:           {x: 0,    y: 64, z: 275}    # SOUTH entrance drive off frontage road
-    parking_field_centroid: {x: 0,    y: 64, z: 188}    # coordinates.yaml N09
+    site_gateway:           {x: 0,    y: 79, z: 305}    # built SOUTH gate and terraced approach
+    parking_field_centroid: {x: 0,    y: 65, z: 220}    # as-built x[-125,125] z[172,268]
     guest_center:           {x: 0,    y: 64, z: 128}    # B01 centroid, REPOINTED to as-built (145x76, x[-72,72] z[90,165]); was z75 GRID. 44,019 SF, 2 story (verified)
-    guest_center_entrance:  {x: 0,    y: 64, z: 113}    # coordinates.yaml N03 (south face, faces parking)
-    internal_street_south:  {x: 0,    y: 64, z: 25}     # coordinates.yaml N06 (start of the model-home street)
-    culdesac_terminus:      {x: 0,    y: 64, z: -215}   # coordinates.yaml N07 (dead-end, verified street char.)
-    cooking_school:         {x: -190, y: 64, z: -90}    # Building 2 centroid (B02); 8,342 SF (verified)
+    guest_center_entrance:  {x: 0,    y: 65, z: 166}    # formal south entry added in 2026-07-26 repair
+    internal_street_south:  {x: 0,    y: 65, z: 80}     # as-built south end of the model-home street
+    culdesac_terminus:      {x: 0,    y: 65, z: -235}   # built turning circle
+    cooking_school:         {x: -110, y: 65, z: -95}    # as-built Building 2 centroid
     warehouse:              {x: 0,    y: 64, z: -255}   # coordinates.yaml N01 (Building 3); 8,944 SF (verified)
     detention_pond:         {x: 190,  y: 64, z: -250}   # coordinates.yaml N08 (moderate-confidence read)
-    led_monument_billboard: {x: -260, y: 64, z: 280}    # coordinates.yaml N02 (SW frontage corner)
+    led_monument_billboard: {x: 95,   y: 72, z: 272}    # as-built frontage monument
+    mountain_public_entry:  {x: 116,  y: 65, z: 172}    # authored public lobby portal
+    mountain_hangar:        {x: 150,  y: 63, z: 110}    # west end of lit arena-to-hangar ribbon
+    mountain_arena:         {x: 225,  y: 63, z: 110}    # east end of operations complex
     coordinate_confidence: >-
       Building SIZES/roster are verified; absolute XZ placement is creative approximation (no survey).
       The south->north SEQUENCE is high-confidence inference from the Colliers aerial.
@@ -149,6 +154,11 @@ location:
     - 18750 interstate 45 north
     - spring texas model homes
     - the i-45 model homes
+    - mountain complex
+    - mountain hangar
+    - the hangar
+    - operations hangar
+    - training arena
 
 # =====================================================================================================
 # ASSUMPTIONS & CROSS-CHECK NOTES
@@ -161,14 +171,14 @@ assumptions:
       transcribed from a section 17 (which does not exist). Same gap as coordinates.yaml CONFLICT-02.
     severity: high
   - id: L02
-    topic: World name unconfirmed
+    topic: World name confirmed
     detail: >-
-      'world' is a placeholder for the DyoCraft overworld name. Must be confirmed against the live
-      server before this record (and warps.yaml / worldguard.yaml / map-marker.yaml) is applied.
-    severity: medium
+      Live RCON confirmed the overworld name as 'world' on 2026-07-25. Integration files now use that
+      confirmed value.
+    severity: low
   - id: L03
-    topic: Coordinates inherited, not re-derived
+    topic: Coordinates reconciled
     detail: >-
-      All key_coordinates are copied verbatim from planning/coordinates.yaml so every integration file
-      collides-checks against the same numbers. Their XZ is creative approximation per that file.
+      Arrival, parking, Guest Center, street, service-building, and billboard anchors were reconciled
+      against the as-built survey. world-map.db is authoritative for complete extents and routes.
     severity: low

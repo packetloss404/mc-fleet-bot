@@ -1,4 +1,4 @@
-# Ravensreach interiors — Moot Hall as built, and two floor plans awaiting execution
+# Ravensreach interiors — Moot Hall and basement enhancement as built
 
 **2026-07-26.** Companion to `RAVENSREACH-REDESIGN-2026-07-26.md`.
 
@@ -6,24 +6,57 @@
 
 ## 1. Moot Hall — BUILT
 
-Four storeys above ground and two basements, on the plaza footprint x[-100,-70] z[-392,-376].
+Four storeys above ground and two basements. The **above-ground** plaza
+footprint is x[-100,-70] z[-392,-376]; the basement shell continues south to
+z=-341, and the deep public switchback continues to z=-332.
 
 | Level | y | Contents |
 |---|---|---|
-| **B2** | floor 54, head 55–59 | Bowling alley (4 lanes, gutters, pin decks, ball-return posts, concourse booths) · lower bar · club · private rooms |
-| **B1** | floor 61, head 62–66 | Cinema (screen, 4 tiered seating rows, projector booth, dark acoustic walls) · upper bar / mezzanine · arcade · bank · IT office |
+| **B2** | structural slab 54, finished floor mostly 55, stand mostly 56 | Bowling alley (4 lanes, gutters, pin decks, ball-return posts, concourse booths) · lower bar · club · private rooms · cinema foyer/concessions · 32-seat full-height IMAX |
+| **B1** | staggered support 61/62, stand 62/63 | Original cinema · two repaired 24-seat medium cinemas · upper bar / mezzanine · arcade · bank · IT office |
 | **Ground** | 67, head 68–72 | Vestibule, corridor, council chamber + dais, registry, records, strongroom |
 | **1st** | slab 73, head 74–77 | Mayor's office, library, gallery, clock room |
 | **2nd** | slab 78, head 79–82 | **Courtroom** (bench, dock, counsel tables, railed public gallery) · **Post office** (counter, service windows, pigeon-hole sorting wall, writing desk) |
 | **3rd** | slab 83, head 84–87 | Judge's chambers, jury room, records |
 | **Roof / tower** | ridge 97, spire 108 | Belfry raised above the new ridge so the tower still reads as the tallest thing |
 
-**The two-level bar** spans B1 and B2 through a cut void (x[-80,-73] z[-389,-380]), joined by a
-6-wide dark-oak **grand staircase** with balustrades, and a galleried rail around the opening on
-B1 so the upper bar overlooks the lower.
+**The two-level bar** is joined by a six-wide dark-oak **grand staircase** with
+balustrades. A fresh structural survey proved that the earlier claim of a full
+`x[-80,-73] z[-389,-380]` cut void was wrong: the B1 upper-bar deck occupies that
+area. The 2026-07-26 enhancement completed only the two missing upper stair rises
+and their head opening, preserving the bar floor and fittings.
 
-The basements extend **south under the plaza** (z[-376,-358]) because the hall footprint alone
-could not hold the programme. A spine corridor and a second stair connect the two levels there.
+The basements extend **south under the plaza** to an as-built closed wall at
+`z=-341`, not the stale narrative bound `z=-358`. The verified public B1/B2
+secondary stair is at `x[-88,-86] z[-365,-358]`. A separate orphan flight in
+the south lounge did not connect levels and was retired on 2026-07-27. The
+post-build scan found zero B1 or B2 perimeter openings and zero
+natural-cavern interfaces.
+
+### 2026-07-26 basement enhancement
+
+The basement fit-out and circulation recovery is now built:
+
+- a dropped three-wide ground-to-B1 public stair was completed;
+- the B1/B2 grand stair and three-wide secondary stair were completed;
+- the old west-core and bell ladders were removed and capped after finished
+  replacement stairs passed both ways;
+- three B1 room arches, the B2 suite partitions, furniture, lighting, lamp
+  controls, and directional signs were added;
+- 179/179 fresh-snapshot guards passed before execution, 193/193 live commands
+  succeeded, and every public stair route passed both ways afterward.
+
+The exact plan and evidence are in
+`data/exports/box/moot-hall-basement-enhancement-2026-07-26/COMPLETION-REPORT.md`.
+
+### 2026-07-27 south-multiplex and no-ladder completion
+
+The south IMAX now has an eight-step center aisle and 32/32 reachable seats.
+Both medium houses have 24 reachable seats, corrected headroom, and usable
+center/cross aisles. The B2 lounge has concessions storage, service, music, and
+wayfinding. A new 9×9 deep↔B2 switchback plus stacked bell-core stairs link the
+Sanctum to the penthouse without ladders. Live QA passed 20/20 directional
+checks.
 
 ### Verification note worth keeping
 
@@ -34,12 +67,10 @@ recurred even while deliberately watching for it. Re-probed at open floor: all c
 
 ---
 
-## 2. Two floor plans — DELIVERED, NOT YET EXECUTED
+## 2. Two other floor plans — HISTORICAL PLANS, NOW BUILT
 
-Two Fable 5 agents produced complete interior specs for the buildings whose shells were raised
-earlier. **Both surveys found substantial content inside those shells that was never surveyed
-before the shells went up.** That is a real process failure on my part: the shells were sized from
-*fitting* clusters, and nothing checked what else occupied the volume.
+These are the historical design surveys used to build the Market and Grange
+interiors. Both are now built and their circulation is manifest-verified.
 
 ### 2.1 Market Longhouse → **the Market Hall** (x[-73,-39] z[-344,-323])
 
@@ -73,8 +104,8 @@ re-racked with trapdoor shelves **so it can actually be opened**.
 **The plan:** three levels — hall floor y68, a wall-walk balcony on top of the old town wall at
 y73, and a craft loft at y82 under the existing beam. Rooms: Entry Passage (carved *through* the
 town wall), Great Hall, Garden Court (the existing farm kept and gated), the Well, Storeroom,
-Still Room, Balcony, Craft Loft. 37 stacked chests become 38 openable ones in trapdoor-shelved
-racks.
+Still Room, Balcony, Craft Loft. The stale 37-chest count included four
+external chests; the current in-hall count is 33.
 
 ### Both plans include
 
@@ -87,14 +118,13 @@ pen and pond for animals in-game before draining.
 
 ## 3. Honest status
 
-Built and verified: the Moot Hall in full, both basements and every venue in them.
+Built and verified: the Moot Hall in full, both basements, the three-screen
+multiplex, the stair-only Sanctum↔penthouse route, Market Hall, and Grange Hall.
 
-Not built: the two interior plans above. They are large — the Grange Hall alone is ~330
-stone_bricks, ~290 planks, 38 chests and a nine-phase order — and each begins with demolition
-inside a building containing other people's property. They should be executed deliberately, with
-the entity check first, not appended to the end of a long session.
+Market and Grange each contain 33 chest blocks. All 66 block entities were empty
+in the final snapshot, and the existing service aisles already reach the racks
+(Market 3/3 representative approaches; Grange 8/8). No chest move or destructive
+hatch is needed.
 
-The audit at `audits/ravensreach.yaml` does not yet assert on any of the new hall levels or on
-either interior. Those assertions should be written *from the plans* once the plans are built —
-writing them beforehand would encode intent rather than measurement, which is the mistake this
-whole tooling effort exists to stop.
+The final audit at `audits/ravensreach.yaml` passes **112/112**, including the
+new south-multiplex and ladderless-circulation assertions.

@@ -4,6 +4,74 @@ All notable changes to DyoBot are documented in this file.
 
 ---
 
+## 2026-07-27
+
+### Features — MainStreet secure complex detail wave
+- **Parking-side bunker rebuilt as a complete facility** — added an enclosed,
+  two-wide primary stair serving lower operations, upper hangar/arena, shelter,
+  surface hangar, and office; rebuilt the lower theater and three conference
+  rooms; and fitted the hangar with aircraft, rotorcraft, rescue equipment, a
+  catwalk, and the arena with a response course, triage, and decontamination.
+- **Observatory given its own program and working visual identity** — divided
+  the public observatory into a foyer, instrument archive, optics workshops,
+  observation logs, lab, and photo-control rooms. All three domes now have open
+  roof apertures, bearing rings, telescope tubes, shutters, and distinct lenses.
+- **Hidden penthouse and secure stack completed** — separated the private
+  apartment from public observatory circulation and fitted its library salon,
+  twelve-monitor command room, dressing lounge, bedroom, living salon,
+  dining-kitchen, glass-and-marble spa, and safe suite. The concealed stair now
+  continues through a furnished fallout shelter to the dry three-level grand
+  vault, whose galleries have working stairs, rails, and loaded treasure stores.
+- **Secure-complex atlas and database refresh** — published five annotated map
+  sheets plus a combined PDF and recorded 41 authoritative feature
+  observations against the final post-build snapshot.
+
+### Bug Fixes — MainStreet secure complex
+- **Misleading surface route** — removed the public scaffold that crossed the
+  penthouse bedroom, capped and labeled the legacy U01 riser as maintenance
+  access, and installed clear level signs on the new primary stair.
+- **One-way and unfinished underground spaces** — repaired the shelter treasury
+  connection, restored the safe-room bulkhead, sealed raw cavern edges, added
+  real shelter beds and facilities, and installed rails across all three vault
+  levels.
+
+### Verification — MainStreet secure complex
+- **Saved-world proof** — 2,075/2,075 guarded build commands and 11/11 final
+  wayfinding commands succeeded live. The immutable post-sign snapshot
+  `8fbf6997638da3ef36f200ce73315e0becbea3746ffbc350817cb3d1b0de66ac`
+  passes 21/21 route and structural assertions, including fourteen
+  bidirectional route suites.
+
+### Features — worldwide interiors
+- **Whole-world room register and fit-out** — promoted 68 active structures and
+  236 named functional rooms into the spatial database, then furnished every
+  room that the snapshot census classified as empty or under-detailed.
+- **Ladder-free vertical circulation** — rebuilt Raven Rock building stairs,
+  RR-Z5's seventeen-level surface stair, the Ravensgate campanile, Westlight
+  upper floors, H11, and the six-level Ravensreach Library. The final census
+  reports zero cataloged ladders and zero multi-floor structures without stairs.
+- **First-class scan history** — seven final `region_snapshot` scans attach 335
+  observations and the authoritative snapshot hash to active-area buildings,
+  rooms, circulation records, and the approach road.
+
+### Bug Fixes — world
+- **Beacon Inn tower was solid** — excavated the advertised lower lounge,
+  authored three occupied tower levels and a continuous quartz spiral, and
+  removed a floor plate that allowed descent but blocked ascent to the lookout.
+- **Four C01 rooms were sealed** — connected the finished Bunk, Records, Comms,
+  and Fabrication rooms to the lower operations gallery with broad walkable
+  arches.
+- **Hidden room failures** — opened H09's sealed primary suite, replaced H11
+  scaffolding with a real four-floor stair, and removed 45 legacy ladders from
+  the Library, Market, and Grange.
+
+### Verification
+- **Saved-world proof after execution** — 4,340/4,340 commands succeeded across
+  four waves. A fresh 26-region snapshot passes 32/32 route suites and a final
+  census of 236/236 fitted rooms.
+
+---
+
 ## 2026-07-26
 
 ### Tooling — build verification

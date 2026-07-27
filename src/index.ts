@@ -108,7 +108,17 @@ async function main() {
   const highlightStream = new HighlightStream();
 
   // Start HTTP API server with Socket.IO
-  const { app, httpServer, io, eventLog, buildCoordinator, campaignManager, chainCoordinator, chronicleScheduler } = createAPIServer(botManager, config, tokenLedger, highlightStream);
+  const {
+    app,
+    httpServer,
+    io,
+    eventLog,
+    buildCoordinator,
+    campaignManager,
+    chainCoordinator,
+    chronicleScheduler,
+    worldFeatureStore,
+  } = createAPIServer(botManager, config, tokenLedger, highlightStream);
 
   // Register LLM settings/usage API routes (llmSettings + tokenLedger built above)
   registerLLMRoutes(app, llmSettings, tokenLedger, botManager);
@@ -345,6 +355,9 @@ async function main() {
 
     // Flush campaign manager (persists state)
     campaignManager.shutdown();
+
+    // Close the durable as-built/world-feature catalog.
+    try { worldFeatureStore.close(); } catch { /* swallow */ }
 
     // Flush persistence managers on BotManager (affinityManager, socialMemory, blackboardManager)
     // shutdownPersistence() is the canonical method when available; fall back to individual shutdown() calls

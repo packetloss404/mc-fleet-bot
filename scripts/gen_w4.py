@@ -487,6 +487,28 @@ def phase_westlight_buildings() -> str:
     o.wall_ring(-420, 83, -490, -412, 103, -482, 'white_concrete')
     for y in (88, 96):
         o.wall_ring(-420, y, -490, -412, y, -482, 'dark_oak_log')
+    # The inn's stepped roof originally filled y84..87 inside the mast, leaving
+    # the advertised lower tower lounge as a solid deepslate plug. Author the
+    # actual three-level tower and its continuous, ladder-free spiral here so a
+    # rebuild cannot restore the sealed volume.
+    o.set(-419, 84, -489, -413, 102, -483, 'air')
+    for floor_y in (88, 96):
+        o.set(-419, floor_y, -489, -413, floor_y, -483, 'dark_oak_planks')
+    beacon_spiral = (
+        (-418, -488, 'east'),
+        (-417, -488, 'east'),
+        (-416, -488, 'south'),
+        (-416, -487, 'south'),
+        (-416, -486, 'west'),
+        (-417, -486, 'west'),
+        (-418, -486, 'north'),
+        (-418, -487, 'north'),
+    )
+    for y in range(78, 97):
+        x, z, facing = beacon_spiral[(y - 78) % len(beacon_spiral)]
+        o.set(x, y, z, x, y, z,
+              f'quartz_stairs[facing={facing},half=bottom]')
+        o.set(x, y + 1, z, x, y + 2, z, 'air')
     o.set(-421, 103, -491, -411, 103, -481, 'smooth_quartz')
     o.set(-420, 104, -490, -412, 104, -482, 'white_stained_glass')
     o.set(-418, 105, -488, -414, 105, -484, 'sea_lantern')

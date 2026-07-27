@@ -67,43 +67,43 @@ Enjoy it as a faithful map, not a photograph.
 
 ## Current build status
 
-**Construction UNDERWAY as of 2026-07-24.** An overnight bot build placed much of the core; the planning
-docs below were written before that build and are being reconciled to it. The single source of as-built
-truth is the live-server RCON survey [`qa/as-built-survey.md`](qa/as-built-survey.md) (measured directly
-against the running Paper server, 2026-07-24) — everything asserted here about what exists traces to it.
+**Physical build closed and operational deployment verified on 2026-07-26.**
+The immutable snapshot hash is
+`78a28b83e1580d436c2ce5cbd044c5853c51c78c8f16d2d860aaa903d8ae10c9`.
+The final as-built material suite passes **96/96**, and independent bidirectional
+flood-fill checks reach the public mountain complex, surface hangar, heliport,
+lower operations, penthouse safe room, fallout shelter, and all three vault
+levels. See [`qa/audit-2026-07-26.md`](qa/audit-2026-07-26.md) and
+`qa/audit-closure-2026-07-26.json`.
 
-- **What the survey confirms is built (`verified` — directly RCON-probed):**
-  - A **Guest Center** as a two-story hollow shell — solid `y63→y79` (~16 blocks, 2 stories + roof band)
-    with interior air `y65–68` and walls present — **~141 blocks wide** (x −70…+70 at z=128), centroid
-    **≈ (0, ~135)**. Materials are manufactured, not natural (polished_andesite floor, sea_lantern
-    interior lighting, gray_concrete roof, stone_brick foundation).
-  - A continuous placed **road / street spine** at **y=63 along x=0**, running **z ≈ +200 → −235**
-    (~435 blocks), bridging over water in the northern stretch.
-  - **Flanking model homes** along the central street: **west = deepslate_bricks** (≈ Ashby Manor / Old
-    World read), **east = stone_bricks**, multi-story walls `y63→~79`.
-  - The build area was **graded/filled to y≈63**.
-- **Fleet:** 5 bots online (Mason, Architect, Steward, Scout, Surveyor). **The bots ARE opped** — all
-  five at `level: 4` in `ops.json` (build permission confirmed). The earlier "bots are not opped" claim
-  in the planning docs is now **FALSE**; treat any doc still asserting it as stale.
-- **Plugins — CORRECTED 2026-07-25.** The "no WorldGuard" claim was **FALSE**. `plugins` over RCON reports
-  **PacketCraft, WorldEdit 7.4.0, WorldGuard 7.0.16**. Overworld name confirmed as **`world`** (resolves
-  assumption WG02). Still absent: **Dynmap/BlueMap, EssentialsX, Citizens** — so `map-marker.yaml` and
-  `warps.yaml` stay staged. `integration/worldguard.yaml` is now **partly applied**: region
-  `mainstreet_america` = x[-70,70] y[62,319] z[-235,200], priority 10, `mob-spawning: deny`. The envelope
-  is **not** build-protected yet — op bypasses `build: deny`, so those flags wait on the OQ-2 de-op.
-  See [`../raven-rock/qa/oq3-worldguard.md`](../raven-rock/qa/oq3-worldguard.md).
-- **The as-built geometry diverges from BOTH planned schemes** (see [`qa/as-built-survey.md`](qa/as-built-survey.md)
-  and the defect register): the homes sit on a **narrow central street** (homes at x ≈ ±20–25), which
-  matches **neither** the GRID scheme (homes x=±85) **nor** the OVAL scheme (homes x≈±116). The DoD-4
-  GRID/OVAL fork was effectively **bypassed by the build**, not resolved per plan. The planning
-  coordinate docs and the staged integration files must be **repointed to the actual as-built geometry**
-  — a reconciliation item tracked in [`planning/open-questions.md`](planning/open-questions.md) (OQ-1),
-  pending orchestrator sign-off. Do not read the planned coordinates below as as-built.
-- **Not yet built / not yet verified:** interiors, landscaping, parking field, warehouse, cooking school,
-  monument/billboard, and the underground complex are not confirmed by the survey; the 12-home roster is
-  **not yet confirmed at 12** (the coarse RCON scan found only ~9 wall clusters — an open verification
-  item, not a fact). Per-structure completion booleans are being reconciled against the survey, not
-  presumed from it.
+- R01–R07 are one connected road network with 48 lamps and every declared
+  road-linked gate connected.
+- The accepted boundary system is 13 project/division white-picket fences with
+  32 gates and 5,954/5,954 exact targets. The former ±305 water-crossing ring was
+  reversed and retired.
+- Parking/arrival/gardens contains 236 modeled bays, crosswalks, lighting,
+  canopies, gardens, Discovery Court, and the connected mountain approach.
+- Guest Center, cooking school, warehouse, 12 authored home floorplans, six
+  infill homes, pond landscape, monument terraces, underground hangar/arena,
+  lower operations, and repaired failed roofs pass their regression groups.
+- The surface program is built: large hangar and second-floor overlook office,
+  rooftop three-dome observatory, one-bedroom private residence, 12-monitor
+  command center, library, glass/marble spa, wardrobe, safe room, shelter,
+  communications/treasury rooms, and a dry three-level marble-and-gold vault.
+- `mainstreet_america` now covers the full property and world height. A
+  higher-priority `msa_mountain_sub` region gives the non-Raven-Rock mountain
+  project an explicit edit domain below y62. The five fleet bots are members,
+  no longer operators, and `packetloss404` is the sole owner/operator.
+- `data/world-map.db` is the first-class spatial catalog. Stable project IDs,
+  hierarchy, geometry, source hashes, snapshot scans, and observations are
+  imported idempotently by `scripts/import_mainstreet_project_grid.js`.
+- Dynmap/BlueMap and EssentialsX remain absent as server plugins. BlueMap is an
+  offline QA renderer; live navigation uses MarkerStore markers, zones, and
+  routes from `scripts/register_msa_navigation.mjs`.
+
+The Box archive is configured in Dashboard → Settings → Integrations. Its first
+live sync uploaded all 207 discovered artifacts to the approved `mc-fleet-bot`
+folder with zero failures. Secrets are not stored in source control.
 
 ## Directory guide
 

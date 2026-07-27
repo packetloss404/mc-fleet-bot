@@ -15,6 +15,13 @@ state. Most inspection items below remain `status: PENDING` until each is indivi
 no longer blocked on the absence of a build. The defect register (`qa/defects.yaml`) has been populated
 with the first plan-vs-as-built divergences the survey documents.
 
+> **2026-07-26 recovery status.** This document remains the historical/manual acceptance framework; its
+> unchecked boxes are not the current automated result. The executable suite in
+> `audits/mainstreet-america.yaml` passes **66/66**, including ten parking/arrival checks. The recovered
+> parking field contains 236 mapped spaces and the south gate is walkably connected to the Guest Center,
+> Discovery Court, mountain portal, hangar, and arena. See `qa/audit-2026-07-26.md`,
+> `qa/audit-post-parking-2026-07-26.json`, and `qa/parking-recovery-2026-07-26.md`.
+
 ---
 
 ## 0. How to read this document (confidence discipline — inherited, never upgraded)

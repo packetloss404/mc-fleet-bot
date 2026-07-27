@@ -14,9 +14,15 @@
  *
  * Usage:
  *   node scripts/reachability.mjs --from x,y,z --to x,y,z[;x,y,z...] \
- *        [--regions data/worldsnap/region] [--budget 400000] [--pad 8] [--trace]
+ *        [--regions data/worldsnap/region] [--ops data/buildops/design.txt] \
+ *        [--budget 400000] [--pad 8] [--trace]
  *   node scripts/reachability.mjs --from x,y,z --box x1,y1,z1,x2,y2,z2
  *        [--samples N]
+ *
+ * --ops projects SET/REPL block replacements over the copied snapshot in memory.
+ * It never writes Anvil data or contacts the live server. Run guarded-op preflight
+ * separately: projection answers "would this route work?", while preflight answers
+ * "does every exact source guard still match?"
  *
  * Exit 0 if every target is reachable, 1 if any is not (and it says which, plus how
  * close the flood got, so you know where the blockage is).
@@ -41,6 +47,7 @@ const arg = (k, d = null) => {
   return i >= 0 && args[i + 1] ? args[i + 1] : d;
 };
 const REGIONS = arg('--regions', 'data/worldsnap/region');
+const OPS_PATH = arg('--ops');
 const BUDGET = Number(arg('--budget', 600000));
 const PAD = Number(arg('--pad', 10));
 const TRACE = args.includes('--trace');
@@ -182,7 +189,55 @@ async function chunkAt(cx, cz) {
 }
 
 const UNKNOWN = ['~unknown~', null];
+function parseBlockSpec(spec) {
+  const bracket = spec.indexOf('[');
+  if (bracket < 0) return [spec, null];
+  const name = spec.slice(0, bracket);
+  const state = {};
+  for (const entry of spec.slice(bracket + 1, -1).split(',')) {
+    const separator = entry.indexOf('=');
+    if (separator < 0) continue;
+    state[entry.slice(0, separator)] = entry.slice(separator + 1);
+  }
+  return [name, state];
+}
+
+const projectedBlocks = new Map();
+if (OPS_PATH) {
+  const resolvedOpsPath = path.resolve(OPS_PATH);
+  if (!fs.existsSync(resolvedOpsPath)) {
+    console.error(`ops file not found: ${OPS_PATH}`);
+    process.exit(2);
+  }
+  for (const rawLine of fs.readFileSync(resolvedOpsPath, 'utf8').split(/\r?\n/)) {
+    const fields = rawLine.trim().split(/\s+/);
+    if (!['SET', 'REPL'].includes(fields[0]) || fields.length < 8) continue;
+    const coordinates = fields.slice(1, 7).map(Number);
+    if (coordinates.some((value) => !Number.isFinite(value))) continue;
+    const replacement = fields[0] === 'SET' ? fields[7] : fields[8];
+    if (!replacement || replacement.includes('%')) continue;
+    const [x1, y1, z1, x2, y2, z2] = [
+      Math.min(coordinates[0], coordinates[3]),
+      Math.min(coordinates[1], coordinates[4]),
+      Math.min(coordinates[2], coordinates[5]),
+      Math.max(coordinates[0], coordinates[3]),
+      Math.max(coordinates[1], coordinates[4]),
+      Math.max(coordinates[2], coordinates[5]),
+    ];
+    const block = parseBlockSpec(replacement);
+    for (let y = y1; y <= y2; y += 1) {
+      for (let z = z1; z <= z2; z += 1) {
+        for (let x = x1; x <= x2; x += 1) {
+          projectedBlocks.set(`${x},${y},${z}`, block);
+        }
+      }
+    }
+  }
+}
+
 async function blockAt(x, y, z) {
+  const projected = projectedBlocks.get(`${x},${y},${z}`);
+  if (projected) return projected;
   const ch = await chunkAt(x >> 4, z >> 4);
   if (!ch) return UNKNOWN;                       // chunk absent: NOT the same as air
   return ch.get(`${x},${y},${z}`) || ['minecraft:air', null];
@@ -217,6 +272,11 @@ const inBox = (x, y, z) =>
   z >= bbox.z1 && z <= bbox.z2;
 
 async function run() {
+  if (OPS_PATH) {
+    console.log(
+      `  projection: ${projectedBlocks.size} block cells from ${path.relative(process.cwd(), path.resolve(OPS_PATH))}`,
+    );
+  }
   const key = (x, y, z) => `${x},${y},${z}`;
   const want = new Map(TARGETS.map((t) => [key(...t), t]));
   const seen = new Set();
