@@ -1,0 +1,3050 @@
+{
+  "schemaVersion": 1,
+  "generatedAtUtc": "2026-07-28T00:37:20.690Z",
+  "status": "PASS",
+  "passed": true,
+  "checks": {
+    "packages": true,
+    "atomicTransaction": true,
+    "crossPackageTargetSeparation": true,
+    "uniqueDatabaseFeatureIds": true,
+    "liveEntityGate": true,
+    "liveEntityGateTiming": true,
+    "routeQa": true,
+    "snapshotChanged": true,
+    "postSnapshotComplete": true
+  },
+  "preSnapshot": {
+    "directory": "data/worldsnap-prerelease2-42545b02f60fa881-20260727/region",
+    "sha256": "42545b02f60fa881cb3d7fb82f2b22b1145623fa16e8c674a179113b48c639cf",
+    "regionFileCount": 26,
+    "bytes": 122744700,
+    "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+  },
+  "postSnapshot": {
+    "directory": "data/worldsnap-postrelease-f8edf99494c023dd-20260728/region",
+    "sha256": "f8edf99494c023dd4b7e412d146a9018bb4ac29636f19c27431083e6b0f6ec10",
+    "regionFileCount": 26,
+    "bytes": 122744700,
+    "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+  },
+  "atomicTransaction": "data/world-review/redevelopment-atomic-transaction-2026-07-27.json",
+  "transactionPackageBindings": [
+    {
+      "packageId": "VEN-WL-01",
+      "key": "westlight",
+      "passed": true
+    },
+    {
+      "packageId": "INF-RR-01",
+      "key": "ravenrock",
+      "passed": true
+    },
+    {
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "key": "mainstreet",
+      "passed": true
+    },
+    {
+      "packageId": "mainstreet-bunker-surface-phase1-2026-07-27",
+      "key": "bunker-phase1",
+      "passed": true
+    },
+    {
+      "packageId": "mainstreet-bunker-recessed-portal-phase2-2026-07-27",
+      "key": "bunker-phase2",
+      "passed": true
+    }
+  ],
+  "liveEntityGate": "data/world-review/redevelopment-live-entity-gate-2026-07-27.json",
+  "liveEntityGatePackageBindings": [
+    {
+      "packageId": "VEN-WL-01",
+      "file": "data/buildops/westlight-infinity-screen-2026-07-27.txt",
+      "present": true,
+      "passed": true,
+      "operationSha256Matched": true,
+      "querySchemaPassed": true
+    },
+    {
+      "packageId": "INF-RR-01",
+      "file": "data/buildops/ravenrock-s1-section-pilot-2026-07-27.txt",
+      "present": true,
+      "passed": true,
+      "operationSha256Matched": true,
+      "querySchemaPassed": true
+    },
+    {
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "file": "data/buildops/mainstreet-redevelopment-r4-r5-runtime-safe-2026-07-27.txt",
+      "present": true,
+      "passed": true,
+      "operationSha256Matched": true,
+      "querySchemaPassed": true
+    },
+    {
+      "packageId": "mainstreet-bunker-surface-phase1-2026-07-27",
+      "file": "data/buildops/mainstreet-bunker-surface-phase1-2026-07-27.txt",
+      "present": true,
+      "passed": true,
+      "operationSha256Matched": true,
+      "querySchemaPassed": true
+    },
+    {
+      "packageId": "mainstreet-bunker-recessed-portal-phase2-2026-07-27",
+      "file": "data/buildops/mainstreet-bunker-recessed-portal-phase2-2026-07-27.txt",
+      "present": true,
+      "passed": true,
+      "operationSha256Matched": true,
+      "querySchemaPassed": true
+    }
+  ],
+  "liveEntityGateTiming": {
+    "generatedAtUtc": "2026-07-27T23:51:39Z",
+    "earliestExecutionAtUtc": "2026-07-27T23:51:50.000Z",
+    "leadMilliseconds": 11000,
+    "maximumLeadMilliseconds": 300000
+  },
+  "routeQa": "data/world-review/redevelopment-route-qa-2026-07-27.json",
+  "routePackageBindings": {
+    "VEN-WL-01": true,
+    "INF-RR-01": true,
+    "mainstreet-america-redevelopment-r4-r5": true,
+    "mainstreet-bunker-surface-phase1-2026-07-27": true,
+    "mainstreet-bunker-recessed-portal-phase2-2026-07-27": true
+  },
+  "packages": {
+    "VEN-WL-01": {
+      "status": "PASS",
+      "designSha256": "cb8401573fc748eb46e1820e7d9883f080ae4598a9676e6f38737b229664b91f",
+      "operationSha256": "fa0c4a086f7bdcd92640d63bd57086ad5d2ebd2230f937ad0fc72b93095011fa",
+      "execution": "data/buildops/westlight-infinity-screen-2026-07-27.execution.json",
+      "postState": "data/buildops/westlight-infinity-screen-2026-07-27.rollback.post-preflight.json",
+      "targetCells": 524,
+      "mediaCount": 48
+    },
+    "INF-RR-01": {
+      "status": "PASS",
+      "designSha256": "c6b421d8fa3867ffb83790beb2ca0994222b05262b0dd0a47a9b9cc4b780de08",
+      "operationSha256": "2869cfea1243b08a81d878a9da9a51c23eda9d3c651fa6ca64ad23577877639e",
+      "execution": "data/buildops/ravenrock-s1-section-pilot-2026-07-27.execution.json",
+      "postState": "data/buildops/ravenrock-s1-section-pilot-2026-07-27.rollback.post-preflight.json",
+      "targetCells": 335,
+      "mediaCount": 2
+    },
+    "mainstreet-america-redevelopment-r4-r5": {
+      "status": "PASS",
+      "designSha256": "136912978b0f2b61554b8da4066e696175cdffe403ec81fffc76f2dcc56a4faa",
+      "operationSha256": "c96958c9ce7c3a2e9d481d5063bc0cbd26d0879068967c1d66ca06943b9b2972",
+      "execution": "data/buildops/mainstreet-redevelopment-r4-r5-runtime-safe-2026-07-27.execution.json",
+      "postState": "data/buildops/mainstreet-redevelopment-r4-r5-runtime-safe-2026-07-27.rollback.post-preflight.json",
+      "targetCells": 5561,
+      "mediaCount": 28
+    },
+    "mainstreet-bunker-surface-phase1-2026-07-27": {
+      "status": "PASS",
+      "designSha256": "02e50b796f9fe6b6e42e68ca8f1e56f6cd3392fa6fa1e969c9cd771ef182fad8",
+      "operationSha256": "fa108cc0a18d9cad0980abd8fca0f483a45406688fd9e32e0bf6b2dcf0350233",
+      "execution": "data/buildops/mainstreet-bunker-surface-phase1-2026-07-27.execution.json",
+      "postState": "data/buildops/mainstreet-bunker-surface-phase1-2026-07-27.rollback.post-preflight.json",
+      "targetCells": 28729,
+      "mediaCount": 8
+    },
+    "mainstreet-bunker-recessed-portal-phase2-2026-07-27": {
+      "status": "PASS",
+      "designSha256": "58761d712fe08b302868ae547373a9247bffc71e30e5abde91e39fdf0fd98734",
+      "operationSha256": "f50ce795daee455c81acb8f1456265f954e24661d99853de50a80d82b9f67e4f",
+      "execution": "data/buildops/mainstreet-bunker-recessed-portal-phase2-2026-07-27.execution.json",
+      "postState": "data/buildops/mainstreet-bunker-recessed-portal-phase2-2026-07-27.rollback.post-preflight.json",
+      "targetCells": 1632,
+      "mediaCount": 5
+    }
+  },
+  "packageDetails": [
+    {
+      "key": "westlight",
+      "packageId": "VEN-WL-01",
+      "design": "data/buildops/westlight-infinity-screen-2026-07-27.report.json",
+      "designSha256": "cb8401573fc748eb46e1820e7d9883f080ae4598a9676e6f38737b229664b91f",
+      "forward": {
+        "path": "data/buildops/westlight-infinity-screen-2026-07-27.txt",
+        "sha256": "fa0c4a086f7bdcd92640d63bd57086ad5d2ebd2230f937ad0fc72b93095011fa",
+        "operations": 524,
+        "expandedCommands": 524,
+        "guardedBoxes": 524,
+        "commands": 0,
+        "entitySafetyEnvelope": [
+          -370,
+          72,
+          -569,
+          -349,
+          95,
+          -550
+        ],
+        "uniqueTargetCells": 524,
+        "duplicateTargetCells": 0,
+        "incompleteStateCount": 0,
+        "permittedMaterialRemovalCells": 0,
+        "permittedFiniteExactStateUnionCells": 0,
+        "incompleteStateSample": [],
+        "invalidCommandCount": 0,
+        "invalidCommandSample": []
+      },
+      "rollback": {
+        "path": "data/buildops/westlight-infinity-screen-2026-07-27.rollback.txt",
+        "sha256": "8feb080b459a7b16115bfaef5e54f7c2b9c3aeaa9667e538e5df7cbf4bf8a5ba",
+        "operations": 524,
+        "guardedBoxes": 524,
+        "commands": 0,
+        "uniqueTargetCells": 524,
+        "duplicateTargetCells": 0,
+        "mismatchCount": 0,
+        "mismatchSample": [],
+        "incompleteStateCount": 0,
+        "incompleteStateSample": [],
+        "invalidCommandCount": 0,
+        "invalidCommandSample": []
+      },
+      "evidence": {
+        "preflight": "data/buildops/westlight-infinity-screen-2026-07-27.prerelease-preflight.json",
+        "execution": "data/buildops/westlight-infinity-screen-2026-07-27.execution.json",
+        "postState": "data/buildops/westlight-infinity-screen-2026-07-27.rollback.post-preflight.json",
+        "media": [
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/east-lower-concert.png",
+            "bytes": 131276,
+            "sha256": "0a7373a6f44dccb8af7a8be87b29ea666351280c7f9df5f0a91a645d1ca53cd1"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/east-lower-sports.png",
+            "bytes": 140412,
+            "sha256": "02d9fbfe028f93e9a6096edac6cb883c29863999f017cd2b7d4d2d6facbaae6b"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/east-middle-concert.png",
+            "bytes": 207312,
+            "sha256": "215081a596b5beec36a748033a849bdf1962a55e6d06f889cb24597a24c08b8f"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/east-middle-sports.png",
+            "bytes": 200735,
+            "sha256": "a02672393d4bf5fb490c4085d8a951d74f733d09c0e23fc0cb0c75d378b04f99"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/east-upper-concert.png",
+            "bytes": 284063,
+            "sha256": "374324121a6a3f143e6dcc3c06e983283c26e596163ce22fdbd5fd9eb32cf9f9"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/east-upper-sports.png",
+            "bytes": 272640,
+            "sha256": "12155565009e35cce742c59534709ad2455c7c68b566a67578e6f24dbb3555be"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/north-lower-concert.png",
+            "bytes": 28951,
+            "sha256": "818f4d5e2ed1c6b8d3ee8d8824d1d5372caf36eb7d05099a34d03a80723f0a27"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/north-lower-sports.png",
+            "bytes": 133240,
+            "sha256": "3dd568508e341881b6cf302a3f864e27f27ddf6dff007b3cc8fbc44a3e4c9f3d"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/north-middle-concert.png",
+            "bytes": 22887,
+            "sha256": "97c1129f13eb8a3a6ae06ca4a526cf81d811e60196e008dbf7deca59dd8b9ad5"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/north-middle-sports.png",
+            "bytes": 152478,
+            "sha256": "5690afada5177d2dfb42fa0b49e51f99b1797b050d4d8beb59902673fd09eaec"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/north-upper-concert.png",
+            "bytes": 141319,
+            "sha256": "c361c604a8d203a0fb620bbdc8fb78944df416bd46611bf53548b277077c4983"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/north-upper-sports.png",
+            "bytes": 243356,
+            "sha256": "d0eeabd2ec199a5093678b04651c5cdd22158536c2670149c4a739c9c6af08ac"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/northeast-lower-concert.png",
+            "bytes": 121515,
+            "sha256": "d15888b6922501cc6030e4af5bab1297f46a99a9e33f1c7871ab582a8a691bc9"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/northeast-lower-sports.png",
+            "bytes": 142515,
+            "sha256": "f6329a8a416637f607f47a7d5b2484aa3555db01411fd6a98958326ff7507782"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/northeast-middle-concert.png",
+            "bytes": 126643,
+            "sha256": "cfc720e64d460c4ec65aa6a8d063172fe5c2d5456fcdc1dea14fbe05399d3ffc"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/northeast-middle-sports.png",
+            "bytes": 195800,
+            "sha256": "3a71634ba40ceab42e6ae2ddf23f40278504563b5895b5bb289473f5f033b970"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/northeast-upper-concert.png",
+            "bytes": 234838,
+            "sha256": "0bf716adfce0fa3c3048be94c49759ddfd1ebd9debf0df834bad27184261eb02"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/northeast-upper-sports.png",
+            "bytes": 282946,
+            "sha256": "2df2c10eadca3ba98438176740713c6b5db38d656c744d427c1e442fbdd54320"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/northwest-lower-concert.png",
+            "bytes": 123763,
+            "sha256": "47fff5432eff054c9c59928b40af9e17cff1945aec4fca903d0f611582556e83"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/northwest-lower-sports.png",
+            "bytes": 143378,
+            "sha256": "accab97fecf2b068a8ed2f47e65b302ba26b95be236e7394ec4dac1322ff69da"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/northwest-middle-concert.png",
+            "bytes": 124447,
+            "sha256": "2a1de621f3adf2d033ee7636faa3392ad1d26e9d41bc93aa97d94ab7dda54a54"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/northwest-middle-sports.png",
+            "bytes": 186991,
+            "sha256": "dbfb739906fdd1cae8be9296e9b318d4b444596ad0f79c29a6fcff182b38a557"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/northwest-upper-concert.png",
+            "bytes": 220203,
+            "sha256": "e79c6411f40ba1f8dc17115ba0074fb98a1b5e7fcb295d3087c92eefdce4daa6"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/northwest-upper-sports.png",
+            "bytes": 266346,
+            "sha256": "24bac06c11c87756e9359249de952f2672307281a7d398160743d98092bf5355"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/south-lower-concert.png",
+            "bytes": 126909,
+            "sha256": "77286d71bd51d7d243c566858ecf324be677a87e6bd2d17377edb6cd52baf06e"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/south-lower-sports.png",
+            "bytes": 131704,
+            "sha256": "577498d4a8c06d9e33e5e43ea80ea0cbeca42b6bdf9166974c06106e53b1537e"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/south-middle-concert.png",
+            "bytes": 190616,
+            "sha256": "bb74b48324cdf6bff2c1b83f10fdeb54a4b91421de62467c772c31065a292044"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/south-middle-sports.png",
+            "bytes": 155680,
+            "sha256": "29a98c42dce8764b38202bbfc2f882ce5fa27717b8b2dc2d2d59b88c956e6881"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/south-upper-concert.png",
+            "bytes": 275245,
+            "sha256": "250cff661bb51941bde43f21e0c463c513ff30ec3dc9a5d561c93a7f351f0864"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/south-upper-sports.png",
+            "bytes": 254004,
+            "sha256": "4c5cef5544a01ad1e9ac4f493f37c8f3c0cffdf53367206d562ccafe04b927d3"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/southeast-lower-concert.png",
+            "bytes": 137134,
+            "sha256": "44e725612384fee1e23e46b10a2feecdda65d34e5e791e775553cd47262632ab"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/southeast-lower-sports.png",
+            "bytes": 140470,
+            "sha256": "6f4e79e9d2476c43e05475d71e511e6d1ab80cbb04b575c7e27a726e7b26576f"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/southeast-middle-concert.png",
+            "bytes": 226861,
+            "sha256": "e18303c05885bc03f27d9b69bd6561fda1198fda193a1461164a324365e35deb"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/southeast-middle-sports.png",
+            "bytes": 202683,
+            "sha256": "1b9605c1b01f26d06efebc94650368e140ecec125c5bdb35d03aa3bb45e2442f"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/southeast-upper-concert.png",
+            "bytes": 307356,
+            "sha256": "0654dae8a822e3e3a78d6584d1431124cf71395b6bac462f3de85647af4a55d3"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/southeast-upper-sports.png",
+            "bytes": 291541,
+            "sha256": "9e8448d496da67e7357cd97e02470335b07d26abfcfc357b24317c6a989ad64b"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/southwest-lower-concert.png",
+            "bytes": 138254,
+            "sha256": "d186e7b798e7ef917548cf1e7638c25c60e7a1d9fa725415d6376f4f95fc624c"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/southwest-lower-sports.png",
+            "bytes": 143196,
+            "sha256": "462fa591831010025583c66d8493427248cbf5498751b03c4125e0a8f7fce647"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/southwest-middle-concert.png",
+            "bytes": 223478,
+            "sha256": "17194d80f4e3923e5dbf57502e6f0b7617d4557d7b1f974874c2c7315e795e03"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/southwest-middle-sports.png",
+            "bytes": 191076,
+            "sha256": "d20f10b0ca6329b3f061ff6247ec1201792df2e330b68dbe34bbb416ec6ac0a3"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/southwest-upper-concert.png",
+            "bytes": 294157,
+            "sha256": "54d20caccd22d211c162f4dd582cc46a120b0b320f6c7763a0a2c9375879aad3"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/southwest-upper-sports.png",
+            "bytes": 264974,
+            "sha256": "59d0db1e1aaba1ac1a384fa17af3eb86cc7bd043d53d4b9aa6c195a5b988007b"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/west-lower-concert.png",
+            "bytes": 133844,
+            "sha256": "50294897a1d4920ffda87825683c93e1290a763e4034f3aa5637610bbedd0ffc"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/west-lower-sports.png",
+            "bytes": 139225,
+            "sha256": "02cd8567ea1dc8e79f5039ff9913f51275ae58188c30f95a4096593a46a74bad"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/west-middle-concert.png",
+            "bytes": 197242,
+            "sha256": "1f5fe9201f5fda064975bdd06e06ab5a7a9aca3c689014b1109f1e13ad0f1bee"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/west-middle-sports.png",
+            "bytes": 185603,
+            "sha256": "2e87a04afd460e5453dc759f92571d5f6806a46ee302aaeba1fc295a6e52078e"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/west-upper-concert.png",
+            "bytes": 257257,
+            "sha256": "d784b9294def324f04a0b6822d43d2f576aa36bb8dedc54cc5826105cf7da177"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after/west-upper-sports.png",
+            "bytes": 249447,
+            "sha256": "c8e56c2a72d5922cdb48bd038990aaa31f71448568d23dc9499cfc82a18ca981"
+          }
+        ]
+      },
+      "checks": {
+        "packageIdentity": true,
+        "designArtifactBinding": true,
+        "noSetOperations": true,
+        "exactStateCompleteness": true,
+        "materialRemovalExceptions": true,
+        "finiteExactStateUnions": true,
+        "guardedCommands": true,
+        "noDuplicateTargetCells": true,
+        "rollbackBijection": true,
+        "preflight": true,
+        "preflightBinding": true,
+        "execution": true,
+        "evidenceTiming": true,
+        "postState": true,
+        "postStateBinding": true,
+        "media": true
+      },
+      "passed": true
+    },
+    {
+      "key": "ravenrock",
+      "packageId": "INF-RR-01",
+      "design": "data/buildops/ravenrock-s1-section-pilot-2026-07-27.report.json",
+      "designSha256": "c6b421d8fa3867ffb83790beb2ca0994222b05262b0dd0a47a9b9cc4b780de08",
+      "forward": {
+        "path": "data/buildops/ravenrock-s1-section-pilot-2026-07-27.txt",
+        "sha256": "2869cfea1243b08a81d878a9da9a51c23eda9d3c651fa6ca64ad23577877639e",
+        "operations": 335,
+        "expandedCommands": 335,
+        "guardedBoxes": 335,
+        "commands": 0,
+        "entitySafetyEnvelope": [
+          137,
+          -14,
+          -19,
+          150,
+          0,
+          -8
+        ],
+        "uniqueTargetCells": 335,
+        "duplicateTargetCells": 0,
+        "incompleteStateCount": 0,
+        "permittedMaterialRemovalCells": 0,
+        "permittedFiniteExactStateUnionCells": 0,
+        "incompleteStateSample": [],
+        "invalidCommandCount": 0,
+        "invalidCommandSample": []
+      },
+      "rollback": {
+        "path": "data/buildops/ravenrock-s1-section-pilot-2026-07-27.rollback.txt",
+        "sha256": "8dcbc3b11aa4e2ac4caad4c4f2460b55c53db82e5ec145ec5426cbfa1753e5e7",
+        "operations": 335,
+        "guardedBoxes": 335,
+        "commands": 0,
+        "uniqueTargetCells": 335,
+        "duplicateTargetCells": 0,
+        "mismatchCount": 0,
+        "mismatchSample": [],
+        "incompleteStateCount": 0,
+        "incompleteStateSample": [],
+        "invalidCommandCount": 0,
+        "invalidCommandSample": []
+      },
+      "evidence": {
+        "preflight": "data/buildops/ravenrock-s1-section-pilot-2026-07-27.prerelease-preflight.json",
+        "execution": "data/buildops/ravenrock-s1-section-pilot-2026-07-27.execution.json",
+        "postState": "data/buildops/ravenrock-s1-section-pilot-2026-07-27.rollback.post-preflight.json",
+        "media": [
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/ravenrock/after/s1-east-to-west.png",
+            "bytes": 26870,
+            "sha256": "6cc97b5baefbe441227ff53159f0bf1909a63ad865b642b71a58d9e50a4bfec0"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/ravenrock/after/s1-west-to-east.png",
+            "bytes": 26057,
+            "sha256": "d6143cabef0524f6f73b3c0e18a7303ebea6340f67292e10695410934a8279e8"
+          }
+        ]
+      },
+      "checks": {
+        "packageIdentity": true,
+        "designArtifactBinding": true,
+        "noSetOperations": true,
+        "exactStateCompleteness": true,
+        "materialRemovalExceptions": true,
+        "finiteExactStateUnions": true,
+        "guardedCommands": true,
+        "noDuplicateTargetCells": true,
+        "rollbackBijection": true,
+        "preflight": true,
+        "preflightBinding": true,
+        "execution": true,
+        "evidenceTiming": true,
+        "postState": true,
+        "postStateBinding": true,
+        "media": true
+      },
+      "passed": true
+    },
+    {
+      "key": "mainstreet",
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "design": "data/buildops/mainstreet-redevelopment-r4-r5-runtime-safe-2026-07-27.report.json",
+      "designSha256": "136912978b0f2b61554b8da4066e696175cdffe403ec81fffc76f2dcc56a4faa",
+      "forward": {
+        "path": "data/buildops/mainstreet-redevelopment-r4-r5-runtime-safe-2026-07-27.txt",
+        "sha256": "c96958c9ce7c3a2e9d481d5063bc0cbd26d0879068967c1d66ca06943b9b2972",
+        "operations": 5561,
+        "expandedCommands": 5588,
+        "guardedBoxes": 5561,
+        "commands": 0,
+        "entitySafetyEnvelope": [
+          -88,
+          61,
+          -232,
+          87,
+          87,
+          72
+        ],
+        "uniqueTargetCells": 5561,
+        "duplicateTargetCells": 0,
+        "incompleteStateCount": 0,
+        "permittedMaterialRemovalCells": 0,
+        "permittedFiniteExactStateUnionCells": 27,
+        "incompleteStateSample": [],
+        "invalidCommandCount": 0,
+        "invalidCommandSample": []
+      },
+      "rollback": {
+        "path": "data/buildops/mainstreet-redevelopment-r4-r5-runtime-safe-2026-07-27.rollback.txt",
+        "sha256": "86d9d452dac29d40cffb253a5e31e4d36d4eb6087a0dc1c25e10cb95d61dd1f3",
+        "operations": 5561,
+        "guardedBoxes": 5561,
+        "commands": 0,
+        "uniqueTargetCells": 5561,
+        "duplicateTargetCells": 0,
+        "mismatchCount": 0,
+        "mismatchSample": [],
+        "incompleteStateCount": 0,
+        "incompleteStateSample": [],
+        "invalidCommandCount": 0,
+        "invalidCommandSample": []
+      },
+      "evidence": {
+        "preflight": "data/buildops/mainstreet-redevelopment-r4-r5-runtime-safe-2026-07-27.prerelease-preflight.json",
+        "execution": "data/buildops/mainstreet-redevelopment-r4-r5-runtime-safe-2026-07-27.execution.json",
+        "postState": "data/buildops/mainstreet-redevelopment-r4-r5-runtime-safe-2026-07-27.rollback.post-preflight.json",
+        "media": [
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+            "bytes": 269370,
+            "sha256": "10ae1c3ee39fab31dbf47e164847887becee24e081f5f984bde72f2c175466e6"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+            "bytes": 269820,
+            "sha256": "bb55191aa0719832d91079d980acf9aeb97ace4cf421d124bf54f33d7ecf6530"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+            "bytes": 172157,
+            "sha256": "e9eeb33ebe6473360f738458fdedb479f2f003d2ac8ae2a53c9a2c6c3000e119"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+            "bytes": 247654,
+            "sha256": "7ac65297920c1ffc41f3cb8f1ea63d6aa2738b3479cf91c5fabb467c4bf460e6"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+            "bytes": 263738,
+            "sha256": "788734738bb143ded283dbe323e33c20b7181ea7e326a8d72863041806e08217"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+            "bytes": 178571,
+            "sha256": "fc861d9b566f5be3740bce7d39a98428cc5412038c9230ca54e8b0500cf1af37"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+            "bytes": 304124,
+            "sha256": "388ffd816693b317229b68eea52de71affd2ca3a760edeb405c7caddbd048b15"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+            "bytes": 204219,
+            "sha256": "ba2e77a5d85de53d94f19d79c13a708af7f60c484ca81b134bb2bba1eb549223"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+            "bytes": 256237,
+            "sha256": "d8431f77ce52fe5a37cde7e7d1964bda101cd67e63b89b9dbac7b5e43687ed9d"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+            "bytes": 311575,
+            "sha256": "86fead59d32852e84dbf09fbc36487816d9eabe15165de400301ea80995afdfe"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+            "bytes": 35429,
+            "sha256": "50c7afcf25e5115d867a0df184efed82646e5c294550702fcd450afd4963792b"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+            "bytes": 68282,
+            "sha256": "910c1cde75dca766a9a5cb8d47ada1b119f6920084084fd43ec50b5ac3a1225a"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+            "bytes": 58148,
+            "sha256": "fa7c9990fcc951252adfd17566cddcb625bb74c1605e19e137516c9304aa3149"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+            "bytes": 55114,
+            "sha256": "863bb2463979ef79bcb21f4d8815e91605db316a69f0903355df9b1e8f3161b1"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+            "bytes": 53438,
+            "sha256": "0ceb8b004ffa78c7dcd7c0799dd3901fa46e02a633db6ad4b2425a29cb81bafa"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+            "bytes": 55179,
+            "sha256": "d0fd2fe7cf60d11c8636cb5ea571a5ebbd52626bdfdbe22a60f010674a8433af"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+            "bytes": 12671,
+            "sha256": "393c5f02da16194534a818e06c00e24447d6f3e736699a4ebc732dd016e244c3"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+            "bytes": 15226,
+            "sha256": "940c96e2e9574f132958aa13318ae5d976d6e052950e8e67adc61b113792572a"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+            "bytes": 55255,
+            "sha256": "d05118cc66a4c10930fa5a486f138ae7c4f1131a7bad928e1a033a4e15d7e506"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+            "bytes": 66091,
+            "sha256": "46110c2292df31350840a3b199792a01e9accac0ae52095e323131b7839b2718"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+            "bytes": 56171,
+            "sha256": "f07b10269b860c8b675cd8706bf0dbd3e3cd7ba514d21c77e35184892b25d22a"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+            "bytes": 48022,
+            "sha256": "78c56a7ef50de9cc7a6aa1eb22cf4ec405541498683fd7e2281f9505d4b2b740"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+            "bytes": 50750,
+            "sha256": "67199bf0306c74541ed02e2e8de74a91ed8fadf75df946f1b69e2453034e0cb5"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+            "bytes": 52457,
+            "sha256": "f0ae2ff6bfde40ef51e0f501c0f0dee73b4d288dba063c211d9d5dae91175718"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+            "bytes": 63230,
+            "sha256": "33fa002a027347d0172541764e88747d48903dc429e2156884ca1e2e719b0085"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+            "bytes": 43658,
+            "sha256": "54c8f1fe6351b42ba42b337253cc7989913b571e3644a768beabec8de7ff0e9d"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+            "bytes": 57984,
+            "sha256": "a8502360e35a750c6907f3b1c886e825b1ab8906e7b37e1c60c4d2914dd0cf0e"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png",
+            "bytes": 62135,
+            "sha256": "b2f21516e853dee8723b8801ed0949fcb07aa52180e5f0de59dff47f017c52a5"
+          }
+        ]
+      },
+      "checks": {
+        "packageIdentity": true,
+        "designArtifactBinding": true,
+        "noSetOperations": true,
+        "exactStateCompleteness": true,
+        "materialRemovalExceptions": true,
+        "finiteExactStateUnions": true,
+        "guardedCommands": true,
+        "noDuplicateTargetCells": true,
+        "rollbackBijection": true,
+        "preflight": true,
+        "preflightBinding": true,
+        "execution": true,
+        "evidenceTiming": true,
+        "postState": true,
+        "postStateBinding": true,
+        "media": true
+      },
+      "passed": true
+    },
+    {
+      "key": "bunker-phase1",
+      "packageId": "mainstreet-bunker-surface-phase1-2026-07-27",
+      "design": "data/buildops/mainstreet-bunker-surface-phase1-2026-07-27.report.json",
+      "designSha256": "02e50b796f9fe6b6e42e68ca8f1e56f6cd3392fa6fa1e969c9cd771ef182fad8",
+      "forward": {
+        "path": "data/buildops/mainstreet-bunker-surface-phase1-2026-07-27.txt",
+        "sha256": "fa108cc0a18d9cad0980abd8fca0f483a45406688fd9e32e0bf6b2dcf0350233",
+        "operations": 769,
+        "expandedCommands": 769,
+        "guardedBoxes": 766,
+        "commands": 3,
+        "entitySafetyEnvelope": [
+          118,
+          62,
+          138,
+          262,
+          121,
+          247
+        ],
+        "uniqueTargetCells": 28729,
+        "duplicateTargetCells": 0,
+        "incompleteStateCount": 2,
+        "permittedMaterialRemovalCells": 5,
+        "permittedFiniteExactStateUnionCells": 0,
+        "incompleteStateSample": [
+          {
+            "line": 771,
+            "role": "source",
+            "state": "minecraft:birch_fence",
+            "complete": false,
+            "reason": "incomplete-properties",
+            "required": [
+              "east",
+              "north",
+              "south",
+              "waterlogged",
+              "west"
+            ],
+            "provided": []
+          },
+          {
+            "line": 773,
+            "role": "source",
+            "state": "minecraft:birch_fence",
+            "complete": false,
+            "reason": "incomplete-properties",
+            "required": [
+              "east",
+              "north",
+              "south",
+              "waterlogged",
+              "west"
+            ],
+            "provided": []
+          }
+        ],
+        "invalidCommandCount": 0,
+        "invalidCommandSample": []
+      },
+      "rollback": {
+        "path": "data/buildops/mainstreet-bunker-surface-phase1-2026-07-27.rollback.txt",
+        "sha256": "698cb58c226a90dfa946d8dbbec587fae39b3d48bebe0b334ecb37bbbf94bc3d",
+        "operations": 766,
+        "guardedBoxes": 766,
+        "commands": 0,
+        "uniqueTargetCells": 28729,
+        "duplicateTargetCells": 0,
+        "mismatchCount": 0,
+        "mismatchSample": [],
+        "incompleteStateCount": 0,
+        "incompleteStateSample": [],
+        "invalidCommandCount": 0,
+        "invalidCommandSample": []
+      },
+      "evidence": {
+        "preflight": "data/buildops/mainstreet-bunker-surface-phase1-2026-07-27.prerelease-preflight.json",
+        "execution": "data/buildops/mainstreet-bunker-surface-phase1-2026-07-27.execution.json",
+        "postState": "data/buildops/mainstreet-bunker-surface-phase1-2026-07-27.rollback.post-preflight.json",
+        "media": [
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/bunker/after/01-parking-center-east-seam.png",
+            "bytes": 290414,
+            "sha256": "15b8ab8ef7c0be1fcd161fa1f627b8a2a3cc355b81055269c33d992e1ab11a67"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/bunker/after/02-southwest-oblique.png",
+            "bytes": 254705,
+            "sha256": "30c0e03d2d55549775b4927a9b851e1709e0d23f0eb9e82dd91c9eba23b8e5cd"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/bunker/after/03-east-oblique.png",
+            "bytes": 262363,
+            "sha256": "06e520ade02855e59ab6220952616e7ae7ad1891134041065a78abe7fd8bb446"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/bunker/after/04-hangar-door.png",
+            "bytes": 119637,
+            "sha256": "6d54591f31aece72ce30ffcf5a6ee0d53a6ff56def37c239faa03605b5125ccf"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/bunker/after/05-north-oblique.png",
+            "bytes": 166549,
+            "sha256": "c171f213f0c705fa9dbcd0fa0a9cc25298df7f0d725c266b016261a901750097"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/bunker/after/06-road-northbound.png",
+            "bytes": 55660,
+            "sha256": "9f1235f37ab5365743ad8fdd3bc273f110e4058124f2f98b449c1f3dc9ae9e09"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/bunker/after/07-road-southbound.png",
+            "bytes": 82654,
+            "sha256": "2acda770a7a0d32b78e27ab44ada36de454650f05214ca0b648b5880f532ce3b"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/bunker/after/08-surface-map.png",
+            "bytes": 52803,
+            "sha256": "970009c548bc55d27b67233784ec999c87901f6208f210eec5410da2176cb8d2"
+          }
+        ]
+      },
+      "checks": {
+        "packageIdentity": true,
+        "designArtifactBinding": true,
+        "noSetOperations": true,
+        "exactStateCompleteness": true,
+        "materialRemovalExceptions": true,
+        "finiteExactStateUnions": true,
+        "guardedCommands": true,
+        "noDuplicateTargetCells": true,
+        "rollbackBijection": true,
+        "preflight": true,
+        "preflightBinding": true,
+        "execution": true,
+        "evidenceTiming": true,
+        "postState": true,
+        "postStateBinding": true,
+        "media": true
+      },
+      "passed": true
+    },
+    {
+      "key": "bunker-phase2",
+      "packageId": "mainstreet-bunker-recessed-portal-phase2-2026-07-27",
+      "design": "data/buildops/mainstreet-bunker-recessed-portal-phase2-2026-07-27.report.json",
+      "designSha256": "58761d712fe08b302868ae547373a9247bffc71e30e5abde91e39fdf0fd98734",
+      "forward": {
+        "path": "data/buildops/mainstreet-bunker-recessed-portal-phase2-2026-07-27.txt",
+        "sha256": "f50ce795daee455c81acb8f1456265f954e24661d99853de50a80d82b9f67e4f",
+        "operations": 80,
+        "expandedCommands": 80,
+        "guardedBoxes": 79,
+        "commands": 1,
+        "entitySafetyEnvelope": [
+          138,
+          60,
+          162,
+          149,
+          72,
+          203
+        ],
+        "uniqueTargetCells": 1632,
+        "duplicateTargetCells": 0,
+        "incompleteStateCount": 0,
+        "permittedMaterialRemovalCells": 0,
+        "permittedFiniteExactStateUnionCells": 0,
+        "incompleteStateSample": [],
+        "invalidCommandCount": 0,
+        "invalidCommandSample": []
+      },
+      "rollback": {
+        "path": "data/buildops/mainstreet-bunker-recessed-portal-phase2-2026-07-27.rollback.txt",
+        "sha256": "7de8c45fdb418f1d6c7f1ca772dc5b7e616359c616ab2cacff3cd6cc1d5ca640",
+        "operations": 79,
+        "guardedBoxes": 79,
+        "commands": 0,
+        "uniqueTargetCells": 1632,
+        "duplicateTargetCells": 0,
+        "mismatchCount": 0,
+        "mismatchSample": [],
+        "incompleteStateCount": 0,
+        "incompleteStateSample": [],
+        "invalidCommandCount": 0,
+        "invalidCommandSample": []
+      },
+      "evidence": {
+        "preflight": "data/buildops/mainstreet-bunker-recessed-portal-phase2-2026-07-27.prerelease-preflight.json",
+        "execution": "data/buildops/mainstreet-bunker-recessed-portal-phase2-2026-07-27.execution.json",
+        "postState": "data/buildops/mainstreet-bunker-recessed-portal-phase2-2026-07-27.rollback.post-preflight.json",
+        "media": [
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/01-new-mouth-south.png",
+            "bytes": 12661,
+            "sha256": "7a1b109fb0ce19e4727e37cdff81bb6929dde2772969273b857840a020095ad1"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/02-parking-context.png",
+            "bytes": 141911,
+            "sha256": "29f71ec227fdcf9b138b748e6318e5fba220ddec49e89ffec62b3a0bf0b742e1"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/03-dogleg-north.png",
+            "bytes": 17320,
+            "sha256": "cf567261dfb89fa92a69c1cf308770bead4749428628c2a052519d0fd11676e4"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/04-lobby-return.png",
+            "bytes": 13967,
+            "sha256": "fd31796449b543aeb6effc8b39db69d4db46b633f113cac6c972ada10747b8c0"
+          },
+          {
+            "path": "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/05-old-new-entry-context.png",
+            "bytes": 318346,
+            "sha256": "6257357c14b3848d9242d5a5ed511559d332d0a7d19b00e5efc9469b21885945"
+          }
+        ]
+      },
+      "checks": {
+        "packageIdentity": true,
+        "designArtifactBinding": true,
+        "noSetOperations": true,
+        "exactStateCompleteness": true,
+        "materialRemovalExceptions": true,
+        "finiteExactStateUnions": true,
+        "guardedCommands": true,
+        "noDuplicateTargetCells": true,
+        "rollbackBijection": true,
+        "preflight": true,
+        "preflightBinding": true,
+        "execution": true,
+        "evidenceTiming": true,
+        "postState": true,
+        "postStateBinding": true,
+        "media": true
+      },
+      "passed": true
+    }
+  ],
+  "crossPackageOverlaps": [],
+  "duplicateFeatureIds": [],
+  "featureQuality": {
+    "WL-INFINITY-SCREEN": {
+      "functional": {
+        "score": 96,
+        "status": "as-built-post-state-pass"
+      },
+      "sightline": {
+        "score": 94,
+        "status": "48-view-matrix-rendered"
+      },
+      "legibility": {
+        "score": 96,
+        "status": "four-face-display"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "before-after-and-view-matrix"
+      }
+    },
+    "RR-S1-STANDARD-PILOT": {
+      "functional": {
+        "score": 96,
+        "status": "11-of-11-stations-and-bidirectional-walk-pass"
+      },
+      "walkability": {
+        "score": 96,
+        "status": "seven-wide-eight-high-flat-pilot"
+      },
+      "legibility": {
+        "score": 82,
+        "status": "route-band-and-lights-as-built"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "same-camera-before-after"
+      }
+    },
+    "R4-GAR-H01": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-GAR-H02": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-GAR-H03": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-GAR-H04": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-GAR-H05": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-GAR-H06": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-GAR-H07": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-GAR-H08": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-GAR-H09": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-GAR-H10": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-GAR-H11": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-GAR-H12": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-GAR-C02": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-GAR-C03": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-GAR-C04": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-GAR-C05": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-GAR-C06": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-GAR-C07": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-ALLEY-W": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-ALLEY-E": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R5-B02-CULINARY-FORECOURT": {
+      "functional": {
+        "score": 92,
+        "status": "post-state-pass"
+      },
+      "legibility": {
+        "score": 90,
+        "status": "as-built-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "post-release-evidence-linked"
+      }
+    },
+    "R5-B02-CULINARY-PYLONS": {
+      "functional": {
+        "score": 92,
+        "status": "post-state-pass"
+      },
+      "legibility": {
+        "score": 90,
+        "status": "as-built-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "post-release-evidence-linked"
+      }
+    },
+    "R5-B03-SERVICE-LANE": {
+      "functional": {
+        "score": 92,
+        "status": "post-state-pass"
+      },
+      "legibility": {
+        "score": 90,
+        "status": "as-built-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "post-release-evidence-linked"
+      }
+    },
+    "R5-B03-SERVICE-SCREEN": {
+      "functional": {
+        "score": 92,
+        "status": "post-state-pass"
+      },
+      "legibility": {
+        "score": 90,
+        "status": "as-built-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "post-release-evidence-linked"
+      }
+    },
+    "R5-B03-SERVICE-PYLONS": {
+      "functional": {
+        "score": 92,
+        "status": "post-state-pass"
+      },
+      "legibility": {
+        "score": 90,
+        "status": "as-built-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "post-release-evidence-linked"
+      }
+    },
+    "R4-WF-R01-R05": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "R4-WF-R01-R06-B02": {
+      "functional": {
+        "score": 92,
+        "status": "post-state-pass"
+      },
+      "legibility": {
+        "score": 90,
+        "status": "as-built-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "post-release-evidence-linked"
+      }
+    },
+    "R4-WF-R02-B02-GATE": {
+      "functional": {
+        "score": 92,
+        "status": "post-state-pass"
+      },
+      "legibility": {
+        "score": 90,
+        "status": "as-built-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "post-release-evidence-linked"
+      }
+    },
+    "R4-WF-R01-R07-B03": {
+      "functional": {
+        "score": 92,
+        "status": "post-state-pass"
+      },
+      "legibility": {
+        "score": 90,
+        "status": "as-built-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "post-release-evidence-linked"
+      }
+    },
+    "R4-WF-R02-R07": {
+      "functional": {
+        "score": 92,
+        "status": "post-state-pass"
+      },
+      "legibility": {
+        "score": 90,
+        "status": "as-built-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "post-release-evidence-linked"
+      }
+    },
+    "R4-WF-R03-R07": {
+      "functional": {
+        "score": 92,
+        "status": "post-state-pass"
+      },
+      "legibility": {
+        "score": 90,
+        "status": "as-built-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "post-release-evidence-linked"
+      }
+    },
+    "C01-PHASE1-LANDFORM-WEST": {
+      "functional": {
+        "score": 90,
+        "status": "post-state-pass"
+      },
+      "concealment": {
+        "score": 91,
+        "status": "authored-landform-as-built"
+      },
+      "legibility": {
+        "score": 88,
+        "status": "observatory-retained-as-intentional-landmark"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "eight-view-before-after-contract"
+      }
+    },
+    "C01-PHASE1-LANDFORM-EAST": {
+      "functional": {
+        "score": 90,
+        "status": "post-state-pass"
+      },
+      "concealment": {
+        "score": 91,
+        "status": "authored-landform-as-built"
+      },
+      "legibility": {
+        "score": 88,
+        "status": "observatory-retained-as-intentional-landmark"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "eight-view-before-after-contract"
+      }
+    },
+    "C01-PHASE1-LANDFORM-SOUTHWEST": {
+      "functional": {
+        "score": 90,
+        "status": "post-state-pass"
+      },
+      "concealment": {
+        "score": 91,
+        "status": "authored-landform-as-built"
+      },
+      "legibility": {
+        "score": 88,
+        "status": "observatory-retained-as-intentional-landmark"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "eight-view-before-after-contract"
+      }
+    },
+    "C01-EAST-EDGE-ROAD-PHASE1": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "GATE-C01-EAST-EDGE-ROAD": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "C01-EAST-ROAD-DIRECTORY-NORTH": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "C01-EAST-ROAD-DIRECTORY-GATE": {
+      "functional": {
+        "score": 94,
+        "status": "connected-as-built"
+      },
+      "walkability": {
+        "score": 92,
+        "status": "grade-and-clearance-pass"
+      },
+      "legibility": {
+        "score": 92,
+        "status": "frontage-and-wayfinding-pass"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "district-after-evidence"
+      }
+    },
+    "C01-PUBLIC-PORTAL-APPROACH-PHASE1": {
+      "functional": {
+        "score": 93,
+        "status": "post-state-and-bidirectional-walk-pass"
+      },
+      "walkability": {
+        "score": 90,
+        "status": "five-wide-four-high-stair-backed-route"
+      },
+      "legibility": {
+        "score": 94,
+        "status": "named-route-band-and-directory"
+      },
+      "concealment": {
+        "score": 96,
+        "status": "recessed-under-natural-cover"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "same-camera-before-after"
+      }
+    },
+    "C01-PUBLIC-PORTAL-RECESSED-PHASE2": {
+      "functional": {
+        "score": 93,
+        "status": "post-state-and-bidirectional-walk-pass"
+      },
+      "walkability": {
+        "score": 90,
+        "status": "five-wide-four-high-stair-backed-route"
+      },
+      "legibility": {
+        "score": 94,
+        "status": "named-route-band-and-directory"
+      },
+      "concealment": {
+        "score": 96,
+        "status": "recessed-under-natural-cover"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "same-camera-before-after"
+      }
+    },
+    "C01-PUBLIC-CONNECTOR-DOGLEG-PHASE2": {
+      "functional": {
+        "score": 93,
+        "status": "post-state-and-bidirectional-walk-pass"
+      },
+      "walkability": {
+        "score": 90,
+        "status": "five-wide-four-high-stair-backed-route"
+      },
+      "legibility": {
+        "score": 94,
+        "status": "named-route-band-and-directory"
+      },
+      "concealment": {
+        "score": 96,
+        "status": "recessed-under-natural-cover"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "same-camera-before-after"
+      }
+    },
+    "C01-PUBLIC-PORTAL-DIRECTORY-PHASE2": {
+      "functional": {
+        "score": 93,
+        "status": "post-state-and-bidirectional-walk-pass"
+      },
+      "walkability": {
+        "score": 90,
+        "status": "five-wide-four-high-stair-backed-route"
+      },
+      "legibility": {
+        "score": 94,
+        "status": "named-route-band-and-directory"
+      },
+      "concealment": {
+        "score": 96,
+        "status": "recessed-under-natural-cover"
+      },
+      "mediaCoverage": {
+        "score": 100,
+        "status": "same-camera-before-after"
+      }
+    }
+  },
+  "featureMedia": {
+    "WL-INFINITY-SCREEN": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/east-lower-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/east-lower-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/east-middle-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/east-middle-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/east-upper-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/east-upper-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/north-lower-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/north-lower-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/north-middle-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/north-middle-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/north-upper-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/north-upper-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/northeast-lower-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/northeast-lower-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/northeast-middle-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/northeast-middle-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/northeast-upper-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/northeast-upper-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/northwest-lower-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/northwest-lower-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/northwest-middle-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/northwest-middle-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/northwest-upper-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/northwest-upper-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/south-lower-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/south-lower-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/south-middle-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/south-middle-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/south-upper-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/south-upper-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/southeast-lower-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/southeast-lower-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/southeast-middle-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/southeast-middle-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/southeast-upper-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/southeast-upper-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/southwest-lower-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/southwest-lower-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/southwest-middle-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/southwest-middle-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/southwest-upper-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/southwest-upper-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/west-lower-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/west-lower-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/west-middle-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/west-middle-sports.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/west-upper-concert.png",
+        "data/exports/redevelopment-qa-2026-07-27/westlight/after/west-upper-sports.png"
+      ],
+      "packageId": "VEN-WL-01",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/westlight/after"
+    },
+    "RR-S1-STANDARD-PILOT": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/ravenrock/after/s1-east-to-west.png",
+        "data/exports/redevelopment-qa-2026-07-27/ravenrock/after/s1-west-to-east.png"
+      ],
+      "packageId": "INF-RR-01",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/ravenrock/after"
+    },
+    "R4-GAR-H01": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-GAR-H02": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-GAR-H03": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-GAR-H04": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-GAR-H05": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-GAR-H06": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-GAR-H07": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-GAR-H08": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-GAR-H09": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-GAR-H10": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-GAR-H11": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-GAR-H12": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-GAR-C02": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-GAR-C03": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-GAR-C04": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-GAR-C05": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-GAR-C06": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-GAR-C07": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-ALLEY-W": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-ALLEY-E": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R5-B02-CULINARY-FORECOURT": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R5-B02-CULINARY-PYLONS": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R5-B03-SERVICE-LANE": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R5-B03-SERVICE-SCREEN": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R5-B03-SERVICE-PYLONS": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-WF-R01-R05": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-WF-R01-R06-B02": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-WF-R02-B02-GATE": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-WF-R01-R07-B03": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-WF-R02-R07": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "R4-WF-R03-R07": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-e-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-alley-w-long.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b02-culinary.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-b03-service.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-central-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-map.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-district-oblique.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h03-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-h09-rear-relation.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/msa-r4r5-r07-connections.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-c07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h01.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h02.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h03.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h04.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h05.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h06.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h07.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h08.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h09.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h10.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h11.after.png",
+        "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after/objects/gar-h12.after.png"
+      ],
+      "packageId": "mainstreet-america-redevelopment-r4-r5",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/mainstreet-r4-r5-runtime-safe/after"
+    },
+    "C01-PHASE1-LANDFORM-WEST": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/01-parking-center-east-seam.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/02-southwest-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/03-east-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/04-hangar-door.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/05-north-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/06-road-northbound.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/07-road-southbound.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/08-surface-map.png"
+      ],
+      "packageId": "mainstreet-bunker-surface-phase1-2026-07-27",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/bunker/after"
+    },
+    "C01-PHASE1-LANDFORM-EAST": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/01-parking-center-east-seam.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/02-southwest-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/03-east-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/04-hangar-door.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/05-north-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/06-road-northbound.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/07-road-southbound.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/08-surface-map.png"
+      ],
+      "packageId": "mainstreet-bunker-surface-phase1-2026-07-27",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/bunker/after"
+    },
+    "C01-PHASE1-LANDFORM-SOUTHWEST": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/01-parking-center-east-seam.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/02-southwest-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/03-east-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/04-hangar-door.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/05-north-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/06-road-northbound.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/07-road-southbound.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/08-surface-map.png"
+      ],
+      "packageId": "mainstreet-bunker-surface-phase1-2026-07-27",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/bunker/after"
+    },
+    "C01-EAST-EDGE-ROAD-PHASE1": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/01-parking-center-east-seam.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/02-southwest-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/03-east-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/04-hangar-door.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/05-north-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/06-road-northbound.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/07-road-southbound.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/08-surface-map.png"
+      ],
+      "packageId": "mainstreet-bunker-surface-phase1-2026-07-27",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/bunker/after"
+    },
+    "GATE-C01-EAST-EDGE-ROAD": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/01-parking-center-east-seam.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/02-southwest-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/03-east-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/04-hangar-door.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/05-north-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/06-road-northbound.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/07-road-southbound.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/08-surface-map.png"
+      ],
+      "packageId": "mainstreet-bunker-surface-phase1-2026-07-27",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/bunker/after"
+    },
+    "C01-EAST-ROAD-DIRECTORY-NORTH": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/01-parking-center-east-seam.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/02-southwest-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/03-east-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/04-hangar-door.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/05-north-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/06-road-northbound.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/07-road-southbound.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/08-surface-map.png"
+      ],
+      "packageId": "mainstreet-bunker-surface-phase1-2026-07-27",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/bunker/after"
+    },
+    "C01-EAST-ROAD-DIRECTORY-GATE": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/01-parking-center-east-seam.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/02-southwest-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/03-east-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/04-hangar-door.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/05-north-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/06-road-northbound.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/07-road-southbound.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/08-surface-map.png"
+      ],
+      "packageId": "mainstreet-bunker-surface-phase1-2026-07-27",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/bunker/after"
+    },
+    "C01-PUBLIC-PORTAL-APPROACH-PHASE1": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/01-parking-center-east-seam.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/02-southwest-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/03-east-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/04-hangar-door.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/05-north-oblique.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/06-road-northbound.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/07-road-southbound.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker/after/08-surface-map.png"
+      ],
+      "packageId": "mainstreet-bunker-surface-phase1-2026-07-27",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/bunker/after"
+    },
+    "C01-PUBLIC-PORTAL-RECESSED-PHASE2": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/01-new-mouth-south.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/02-parking-context.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/03-dogleg-north.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/04-lobby-return.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/05-old-new-entry-context.png"
+      ],
+      "packageId": "mainstreet-bunker-recessed-portal-phase2-2026-07-27",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after"
+    },
+    "C01-PUBLIC-CONNECTOR-DOGLEG-PHASE2": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/01-new-mouth-south.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/02-parking-context.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/03-dogleg-north.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/04-lobby-return.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/05-old-new-entry-context.png"
+      ],
+      "packageId": "mainstreet-bunker-recessed-portal-phase2-2026-07-27",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after"
+    },
+    "C01-PUBLIC-PORTAL-DIRECTORY-PHASE2": {
+      "screenshots": [
+        "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/01-new-mouth-south.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/02-parking-context.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/03-dogleg-north.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/04-lobby-return.png",
+        "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after/05-old-new-entry-context.png"
+      ],
+      "packageId": "mainstreet-bunker-recessed-portal-phase2-2026-07-27",
+      "evidenceDirectory": "data/exports/redevelopment-qa-2026-07-27/bunker-phase2/after"
+    }
+  },
+  "totals": {
+    "packages": 5,
+    "guardedOperations": 7265,
+    "commandOperations": 4,
+    "uniqueTargetCells": 36781,
+    "crossPackageOverlaps": 0,
+    "databaseFeatures": 44,
+    "postScreenshots": 91
+  }
+}

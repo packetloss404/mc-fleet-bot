@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "ianlan-nextgen-underground-navigation-railway-publication-2026-07-28",
+  "generatedAtUtc": "2026-07-28T23:25:29Z",
+  "status": "PASS_RAILWAY_PUBLICATION_VERIFIED",
+  "passed": true,
+  "safety": {
+    "liveWorldMutated": false,
+    "databaseMutated": false,
+    "credentialsIncluded": false,
+    "requestedPinConfigured": true,
+    "requestedPinValueIncluded": false
+  },
+  "report": {
+    "name": "Underground Navigation",
+    "libraryPosition": 2,
+    "path": "/reports/underground-navigation",
+    "package": "docs/redevelopment/2026-07-28-underground-navigation",
+    "counts": {
+      "pdfPages": 97,
+      "maps": 18,
+      "undergroundNavigationRecords": 289,
+      "c01Spaces": 168,
+      "c01GraphEdges": 181,
+      "entranceAndAccessRecords": 22,
+      "acceptedScreenshots": 20,
+      "contactSheets": 2
+    },
+    "hashes": {
+      "artifactManifestSha256": "93049629d216a63735fcb66471fdac4c1270691f6fc1f7ee970fa261d9b0621d",
+      "reportQaSha256": "cf460328a4e61b1b1d4cb0c6881a14ed4e3f7ad327fce2064a566fcaa82453f4",
+      "pdfSha256": "c166eb86cc2ee73264a77da9c3271847a645e9129bfb9891fc5c32f695d936c1",
+      "portalPublicationManifestSha256": "0746eb055aab9ae21662bfc0d5f26921ea1afffdb1bf4f7eff59e44eb266401a"
+    },
+    "truthBoundary": {
+      "issue002RemainsOpen": true,
+      "c01EastSurfaceArrivalContested": true,
+      "legacyMainStreetPortalRetained": true,
+      "ravensgatePresentedAsNavigable": false,
+      "ravenRockCreativeApproximationLabeled": true
+    }
+  },
+  "railway": {
+    "projectId": "5a2dd023-5da1-4fb9-adff-bd51caad4076",
+    "projectName": "IANLAN NextGen",
+    "serviceId": "381f60c7-5267-46bd-b563-979ec6456d1a",
+    "serviceName": "IANLAN NextGen",
+    "environmentId": "e7833950-bfa8-4d73-b168-1e000b898d04",
+    "environmentName": "production",
+    "domain": "https://ianlan-nextgen-production.up.railway.app",
+    "deploymentId": "c7925bf6-5abe-442c-9e8b-52d19275312b",
+    "deploymentStatus": "SUCCESS",
+    "sourceCommit": "3db9d0335b765b368fc54680975542aa664303c9",
+    "imageDigest": "sha256:8e1355a1fd471118b0be040fb0097e1798a43fd200a7a237f55f272db0bd065b"
+  },
+  "verification": {
+    "localProductionBuild": "PASS",
+    "localAuthenticationFlow": "PASS",
+    "desktopVisualReview": "PASS",
+    "mobileVisualReview": "PASS",
+    "mobileHorizontalOverflowPixels": 0,
+    "productionVisualReview": "PASS",
+    "productionDependencyAudit": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "productionHttp": {
+      "health": 200,
+      "anonymousLoginGate": 200,
+      "correctPin": 200,
+      "authenticatedReportLibrary": 200,
+      "authenticatedUndergroundNavigation": 200,
+      "undergroundPdfRange": 206,
+      "skywalkMap": 200,
+      "reportQa": 200
+    },
+    "content": {
+      "reportCardPresent": true,
+      "entranceRows": 22,
+      "areaMaps": 8,
+      "c01Maps": 8,
+      "pageImagesLoaded": 26,
+      "pageImagesFailed": 0,
+      "issue002TruthBoundaryPresent": true
+    },
+    "securityHeaders": {
+      "authCacheControl": "no-store",
+      "referrerPolicy": "no-referrer",
+      "xContentTypeOptions": "nosniff",
+      "xFrameOptions": "DENY",
+      "permissionsPolicy": "camera=(), microphone=(), geolocation=()"
+    }
+  },
+  "box": {
+    "status": "BOX_VERIFIED",
+    "remoteRoot": "exports/town-expansion-r1-final-2026-07-28",
+    "reportSubdirectory": "reports/underground-navigation",
+    "verifiedFiles": 637,
+    "failedFiles": 0,
+    "verificationReceipt": "docs/redevelopment/2026-07-28-town-expansion/box-upload-verification-receipt.json"
+  },
+  "sites": {
+    "url": "https://mc-fleet-world-atlas.ianwalmsley.chatgpt.site",
+    "ownerRemovalAuthorized": true,
+    "removalPerformed": false,
+    "status": "OWNER_ONLY_DELETE_CONTROL_UNAVAILABLE",
+    "blocker": "No delete, unpublish, archive, or disable operation is exposed by the connected Sites control surface."
+  }
+}

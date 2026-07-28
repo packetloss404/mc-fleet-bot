@@ -1,25 +1,43 @@
 {
   "schemaVersion": 1,
   "id": "ianlan-nextgen-railway-migration-closeout-2026-07-28",
-  "generatedAtUtc": "2026-07-28T22:31:38Z",
-  "status": "RAILWAY_CUTOVER_CANDIDATE_VERIFIED_SITES_RETAINED",
+  "generatedAtUtc": "2026-07-28T23:25:29Z",
+  "status": "RAILWAY_CUTOVER_VERIFIED_UNDERGROUND_PUBLISHED_SITES_DELETE_UNAVAILABLE",
   "passed": true,
-  "scope": "Move the authenticated report portal from ChatGPT Sites to Railway without removing the Sites deployment before owner confirmation.",
+  "scope": "Operate IANLAN NextGen on Railway, publish Master Plan and Underground Navigation as adjacent authenticated reports, update Box, and retire the superseded ChatGPT Sites deployment where the available control surface permits.",
   "safety": {
     "liveWorldMutated": false,
     "databaseMutated": false,
-    "boxMutated": false,
+    "boxMutated": true,
     "sitesRemoved": false,
     "credentialsIncluded": false
   },
   "product": {
     "name": "IANLAN NextGen",
     "model": "Authenticate once, open a report library, and place each future job-specific report beside the existing Master Plan.",
-    "firstReport": {
-      "name": "Master Plan",
-      "path": "/reports/master-plan",
-      "status": "ACCEPTED"
-    }
+    "reports": [
+      {
+        "number": "01",
+        "name": "Master Plan",
+        "path": "/reports/master-plan",
+        "status": "ACCEPTED"
+      },
+      {
+        "number": "02",
+        "name": "Underground Navigation",
+        "path": "/reports/underground-navigation",
+        "status": "REPORT_COMPLETE",
+        "counts": {
+          "pdfPages": 97,
+          "maps": 18,
+          "undergroundNavigationRecords": 289,
+          "c01Spaces": 168,
+          "entranceAndAccessRecords": 22,
+          "publishedPageImages": 26
+        },
+        "truthBoundary": "The cataloged C01 east stack is explicitly contested under ISSUE-002; the report does not claim that the relocation, road, recovered parking, or sunken entrance exists."
+      }
+    ]
   },
   "railway": {
     "workspace": {
@@ -40,10 +58,10 @@
     },
     "domain": "https://ianlan-nextgen-production.up.railway.app",
     "deployment": {
-      "id": "149aee28-6b29-4b8d-b926-f8a9e0106d7d",
+      "id": "c7925bf6-5abe-442c-9e8b-52d19275312b",
       "status": "SUCCESS",
-      "sourceCommit": "ffe53f693b6856daf584c83d812d4f1de4a401f0",
-      "imageDigest": "sha256:ded721f106bb8fdb451e1f56ad7350b20c05d2f10e3861d7dac07c2bb4d7c7a0",
+      "sourceCommit": "3db9d0335b765b368fc54680975542aa664303c9",
+      "imageDigest": "sha256:8e1355a1fd471118b0be040fb0097e1798a43fd200a7a237f55f272db0bd065b",
       "builder": "RAILPACK",
       "startCommand": "npm run start",
       "healthcheckPath": "/api/health",
@@ -92,15 +110,24 @@
       "correctPin": 200,
       "authenticatedReportLibrary": 200,
       "authenticatedMasterPlan": 200,
+      "authenticatedUndergroundNavigation": 200,
       "masterPlanPdfRange": 206,
-      "mapAsset": 200,
+      "undergroundPdfRange": 206,
+      "undergroundSkywalkMap": 200,
+      "undergroundReportQa": 200,
       "favicon": 200
     },
     "contentChecks": {
       "ianlanBrand": true,
       "masterPlanCard": true,
+      "undergroundNavigationCard": true,
       "futureReportSlot": true,
-      "masterPlanAtlas": true
+      "masterPlanAtlas": true,
+      "undergroundEntranceRows": 22,
+      "undergroundAreaMaps": 8,
+      "undergroundC01Maps": 8,
+      "publishedPageImagesLoaded": "26/26",
+      "issue002TruthBoundary": true
     },
     "securityHeaders": {
       "cacheControlOnAuth": "no-store",
@@ -112,9 +139,26 @@
   },
   "sites": {
     "url": "https://mc-fleet-world-atlas.ianwalmsley.chatgpt.site",
-    "status": "RETAINED_PENDING_OWNER_CONFIRMATION",
+    "status": "OWNER_AUTHORIZED_DELETE_CONTROL_UNAVAILABLE",
     "anonymousHttpStatus": 401,
-    "removalPerformed": false
+    "ownerRemovalAuthorized": true,
+    "removalPerformed": false,
+    "accessMode": "OWNER_ONLY",
+    "blocker": "The connected ChatGPT Sites control surface exposes deployment, version, metadata, environment, domain, and access controls but no delete, unpublish, archive, or disable operation. It cannot truthfully remove this deployment."
+  },
+  "box": {
+    "status": "BOX_VERIFIED",
+    "remoteRoot": "exports/town-expansion-r1-final-2026-07-28",
+    "verifiedFiles": 637,
+    "failedFiles": 0,
+    "uploadedFiles": 1,
+    "updatedFiles": 4,
+    "unchangedFiles": 632,
+    "undergroundReportFiles": 48,
+    "verification": "docs/redevelopment/2026-07-28-town-expansion/box-upload-verification.json",
+    "receipt": "docs/redevelopment/2026-07-28-town-expansion/box-upload-verification-receipt.json",
+    "receiptStatus": "BOX_REPORT_VERIFIED",
+    "receiptBoxFileId": "2374452599782"
   },
   "issues": {
     "path": "ISSUES.MD",
@@ -125,8 +169,9 @@
     ]
   },
   "decision": {
-    "railwayReadyForOwnerReview": true,
-    "sitesRemovalAuthorized": false,
-    "nextAction": "Owner confirms the Railway portal; only then remove the ChatGPT Sites deployment."
+    "railwayCutoverComplete": true,
+    "sitesRemovalAuthorized": true,
+    "sitesRemovalAutomated": false,
+    "nextAction": "Delete the legacy ChatGPT Sites project manually when a Sites UI/API with deletion authority is available. Do not alter the Railway service."
   }
 }

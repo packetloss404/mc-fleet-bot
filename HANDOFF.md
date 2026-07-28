@@ -1,5 +1,61 @@
 # HANDOFF — mc-fleet-bot
 
+## Current closeout — 2026-07-28 IANLAN NextGen
+
+The authenticated report workspace now runs on Railway at
+`https://ianlan-nextgen-production.up.railway.app`. Its production project,
+service, and display name are all **IANLAN NextGen**. The production deployment
+`c7925bf6-5abe-442c-9e8b-52d19275312b` is `SUCCESS` with image digest
+`sha256:8e1355a1fd471118b0be040fb0097e1798a43fd200a7a237f55f272db0bd065b`.
+Do not replace or create a second Railway project; deploy `world-showcase/` to
+the already-linked service.
+
+The report library has two adjacent authenticated reports:
+
+1. **Master Plan** — `/reports/master-plan`
+2. **Underground Navigation** — `/reports/underground-navigation`
+
+Underground Navigation is the comprehensive, map-first guide to the cataloged
+tunnels, bunkers, vaults, below-grade venues, bars, adult-only hospitality
+areas, rooms, and access nodes. Its sealed package lives at
+`docs/redevelopment/2026-07-28-underground-navigation/` and contains a 97-page
+PDF, 18 maps, 289 underground/navigation records, 168 C01 spaces, 22
+entrance/access records, and 20 accepted source screenshots plus two contact
+sheets. Generate and seal it with:
+
+```bash
+node scripts/generate_underground_navigation_report.mjs
+# Print underground-navigation-report.html to the package PDF with Chromium.
+node scripts/finalize_underground_navigation_report.mjs
+npm run sync:underground --prefix world-showcase
+```
+
+The report is read-only. **No world edits were made.** ISSUE-001 and ISSUE-002
+remain open in `ISSUES.MD`. In particular, the C01 east-stack maps are marked
+cataloged/contested: they do not prove that the complex was moved east or that
+the road, recovered parking, and sunken entrance exist. The legacy MainStreet
+C01 portal remains the reliable mapped public arrival.
+
+The Railway access-code and session-signing values are not in Git. The local
+0600 recovery record is
+`/home/ianwalmsley/.config/ianlan-nextgen/credentials.env`; do not copy its
+values into documentation, commands, logs, commits, or Box. Production auth,
+the report page, all 26 page images, PDF byte ranges, and security headers were
+verified after deployment.
+
+Box contains the report under
+`exports/town-expansion-r1-final-2026-07-28/reports/underground-navigation/`.
+The verified upload has 637 files and zero failures; see
+`docs/redevelopment/2026-07-28-town-expansion/box-upload-verification.json`
+and its receipt.
+
+The owner authorized deletion of the superseded ChatGPT Sites project. The
+connected Sites control surface has no delete, unpublish, archive, or disable
+operation, so it could not truthfully be removed. It remains owner-only at
+`https://mc-fleet-world-atlas.ianwalmsley.chatgpt.site`. Delete it manually
+when an authorized Sites UI/API exposes that action; do not publish new
+versions there.
+
 > ### ⇒ For the current state of the WORLD, read `HANDOFF-2026-07-26.md` first.
 > That session relocated the stadium, built the Westlight complex, and — more useful —
 > established that **placement and traversability are different properties** and that we

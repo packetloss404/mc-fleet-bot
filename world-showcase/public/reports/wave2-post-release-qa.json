@@ -1,0 +1,772 @@
+{
+  "schemaVersion": 1,
+  "id": "redevelopment-wave2-post-release-qa",
+  "generatedAtUtc": "2026-07-28T02:42:09.174Z",
+  "status": "PASS",
+  "passed": true,
+  "readOnly": true,
+  "liveWorldMutated": false,
+  "databaseMutated": false,
+  "manifest": {
+    "path": "data/buildops/redevelopment-wave2-release-manifest.json",
+    "bytes": 858,
+    "sha256": "df8ca8586b0415d2bc0a7653ec3a61d1c8ed333b90c9a05d4ca2b67d0cb946fe"
+  },
+  "transaction": {
+    "path": "data/world-review/redevelopment-wave2-atomic-transaction-2026-07-28.json",
+    "bytes": 949423,
+    "sha256": "e9b3752e89771c4ab218e5811bf23700cfd5f08128e9277324ca9df990f43ef2"
+  },
+  "liveEntityGate": {
+    "path": "data/world-review/redevelopment-wave2-live-entity-gate-2026-07-28.json",
+    "bytes": 60658,
+    "sha256": "672e6ae5f5a7560695d01a1c90b35a022a454cebc7c8a039717df98ac52bb754"
+  },
+  "routeReport": {
+    "path": "data/world-review/redevelopment-wave2-route-qa-2026-07-28.json",
+    "bytes": 103455,
+    "sha256": "6f97def62efe5abb6a3ae89c685cccfa39583b609357273df0855c3121e15ccf"
+  },
+  "snapshots": {
+    "pre": {
+      "path": "data/worldsnap-wave2-prerelease-b1356bca9fcbdc7a-20260728/region",
+      "sha256": "b1356bca9fcbdc7a90b580b2f9210947788d74716e1a706f5e8f0d0f789dbb27",
+      "regionFileCount": 26,
+      "bytes": 123279631
+    },
+    "post": {
+      "path": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region",
+      "sha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999",
+      "regionFileCount": 26,
+      "bytes": 123313802
+    }
+  },
+  "totals": {
+    "packages": 2,
+    "explicitTargetCells": 887,
+    "reactiveCells": 2,
+    "rollbackMatched": 887,
+    "guardedCommands": 4,
+    "routes": 2,
+    "directions": 4,
+    "matchedAfterCameras": 14,
+    "importedDatabaseFeatures": 51
+  },
+  "packages": [
+    {
+      "key": "ravenrock-t2b",
+      "forward": {
+        "path": "data/buildops/ravenrock-t2b-liner-pilot-wave2-prerelease-2026-07-28.txt",
+        "bytes": 10495,
+        "sha256": "2ad97a32c2a48b28021edd2dd782acd78e0f07ed42b7d3949a0685bc06fd9690"
+      },
+      "rollback": {
+        "path": "data/buildops/ravenrock-t2b-liner-pilot-wave2-prerelease-2026-07-28.rollback.txt",
+        "bytes": 10234,
+        "sha256": "56df298c3e35d94bb3ccc8abd83ebda8a2b49d5717aca24b9bbaf5a2be97bc61"
+      },
+      "explicitTargetCells": 151,
+      "reactiveCells": [],
+      "projectionFailures": [],
+      "explicitPostMismatches": [],
+      "reactivePostMismatches": [],
+      "rollbackGuardMismatches": [],
+      "rollbackMatched": 151,
+      "rollbackSimulationFailures": [],
+      "restorationMismatches": [],
+      "commandChecks": [],
+      "passed": true
+    },
+    {
+      "key": "mainstreet-r08",
+      "forward": {
+        "path": "data/buildops/mainstreet-wave2-r08-prerelease-2026-07-28.txt",
+        "bytes": 60679,
+        "sha256": "d9dea58a3c20ba6e5faca63fbb1ee7cc11857dc51e4956ff27624fee8c3da69f"
+      },
+      "rollback": {
+        "path": "data/buildops/mainstreet-wave2-r08-prerelease-2026-07-28.rollback.txt",
+        "bytes": 56978,
+        "sha256": "5836dc47ce987fda6a10f2b00cb43e2a5582f93be215894c20294858274efd71"
+      },
+      "explicitTargetCells": 736,
+      "reactiveCells": [
+        [
+          -8,
+          65,
+          -124
+        ],
+        [
+          8,
+          65,
+          -128
+        ]
+      ],
+      "projectionFailures": [],
+      "explicitPostMismatches": [],
+      "reactivePostMismatches": [],
+      "rollbackGuardMismatches": [],
+      "rollbackMatched": 736,
+      "rollbackSimulationFailures": [],
+      "restorationMismatches": [],
+      "commandChecks": [
+        {
+          "point": [
+            7,
+            67,
+            -132
+          ],
+          "guardState": "minecraft:oak_sign[rotation=8,waterlogged=false]",
+          "text": [
+            "R08 CROSS-LINK",
+            "B03 NORTH",
+            "B02 VIA W ALLEY",
+            "C01 VIA E ALLEY"
+          ],
+          "entityPresent": true,
+          "allTextPresent": true,
+          "passed": true
+        },
+        {
+          "point": [
+            -63,
+            67,
+            -130
+          ],
+          "guardState": "minecraft:oak_sign[rotation=4,waterlogged=false]",
+          "text": [
+            "WEST ALLEY",
+            "S R06 / B02",
+            "N R07 / B03",
+            "R08 / R01 >"
+          ],
+          "entityPresent": true,
+          "allTextPresent": true,
+          "passed": true
+        },
+        {
+          "point": [
+            63,
+            67,
+            -130
+          ],
+          "guardState": "minecraft:oak_sign[rotation=12,waterlogged=false]",
+          "text": [
+            "EAST ALLEY",
+            "S R06 / C01",
+            "N R07 / B03",
+            "< R01 / R08"
+          ],
+          "entityPresent": true,
+          "allTextPresent": true,
+          "passed": true
+        },
+        {
+          "point": [
+            6,
+            67,
+            -223
+          ],
+          "guardState": "minecraft:oak_sign[rotation=8,waterlogged=false]",
+          "text": [
+            "WESTLIGHT VENUE",
+            "N RAVENSREACH",
+            "THEN RAVENSGATE",
+            "W APPROACH RD"
+          ],
+          "entityPresent": true,
+          "allTextPresent": true,
+          "passed": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "routeChecks": [
+    {
+      "id": "RR-T2B-W2-BIDIRECTIONAL",
+      "passed": true,
+      "directionCount": 2,
+      "forwardFound": true,
+      "reverseFound": true
+    },
+    {
+      "id": "MSA-R08-WEST-EAST-BIDIRECTIONAL",
+      "passed": true,
+      "directionCount": 2,
+      "forwardFound": true,
+      "reverseFound": true
+    }
+  ],
+  "media": {
+    "mainstreet": {
+      "manifest": {
+        "path": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08-prerelease/same-camera-manifest.json",
+        "bytes": 66717,
+        "sha256": "7b3510a12f1b7085c2aae456a9be69581d1793a9ad1e0d3f0b91cb7be97141e0"
+      },
+      "beforeReport": {
+        "path": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08-prerelease/before-capture-report.json",
+        "bytes": 10456,
+        "sha256": "1bcc5a29beee08e15354e02736cb1d46bedc39e8687d5442d1f0bba5291e7619"
+      },
+      "afterReport": {
+        "path": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08/after-capture-report.json",
+        "bytes": 10349,
+        "sha256": "b92f736ce62342d4fd77482f1d6cbd5515feef1c3fa774bd29f958679de186c5"
+      },
+      "expectedCount": 8,
+      "captureCount": 8,
+      "changedCaptures": 8,
+      "captures": [
+        {
+          "id": "MSA-R08-OVERALL-MAP",
+          "primaryFeatureId": "R8-R08-CROSS-LINK",
+          "output": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08/after/01-r08-overall-map.before.png",
+          "exists": true,
+          "reportSha256": "2eb312080cce29183570b0eea858f4edc3589259e4d512d94d22884ac64c8721",
+          "actualSha256": "2eb312080cce29183570b0eea858f4edc3589259e4d512d94d22884ac64c8721",
+          "sameCameraParameters": true,
+          "changedFromBefore": true,
+          "passed": true
+        },
+        {
+          "id": "MSA-R08-WEST-ENDPOINT",
+          "primaryFeatureId": "R8-JCT-ALLEY-W-R08",
+          "output": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08/after/02-west-endpoint.before.png",
+          "exists": true,
+          "reportSha256": "45bcd4070a688f007a1d3e591cacdf9a442966291166904c030237bedc304232",
+          "actualSha256": "45bcd4070a688f007a1d3e591cacdf9a442966291166904c030237bedc304232",
+          "sameCameraParameters": true,
+          "changedFromBefore": true,
+          "passed": true
+        },
+        {
+          "id": "MSA-R08-WEST-GATE",
+          "primaryFeatureId": "R8-GATE-R08-WEST-MAIN",
+          "output": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08/after/03-west-gate.before.png",
+          "exists": true,
+          "reportSha256": "ec2d8f154b47e08513a6293b2fdf038909d0f26b659af4300fa722452d5d2097",
+          "actualSha256": "ec2d8f154b47e08513a6293b2fdf038909d0f26b659af4300fa722452d5d2097",
+          "sameCameraParameters": true,
+          "changedFromBefore": true,
+          "passed": true
+        },
+        {
+          "id": "MSA-R08-R01-JUNCTION",
+          "primaryFeatureId": "R8-JCT-R01-R08",
+          "output": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08/after/04-r01-junction.before.png",
+          "exists": true,
+          "reportSha256": "86185a5ef5d3071777824cb806e7ed998fd05f62ff517d0482ae8a6e1323b9c5",
+          "actualSha256": "86185a5ef5d3071777824cb806e7ed998fd05f62ff517d0482ae8a6e1323b9c5",
+          "sameCameraParameters": true,
+          "changedFromBefore": true,
+          "passed": true
+        },
+        {
+          "id": "MSA-R08-EAST-GATE",
+          "primaryFeatureId": "R8-GATE-R08-EAST-MAIN",
+          "output": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08/after/05-east-gate.before.png",
+          "exists": true,
+          "reportSha256": "ef1c01c935f47026b0c361323143647e070dba9b3229d5aa40d877939177c2ff",
+          "actualSha256": "ef1c01c935f47026b0c361323143647e070dba9b3229d5aa40d877939177c2ff",
+          "sameCameraParameters": true,
+          "changedFromBefore": true,
+          "passed": true
+        },
+        {
+          "id": "MSA-R08-EAST-ENDPOINT",
+          "primaryFeatureId": "R8-JCT-R08-ALLEY-E",
+          "output": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08/after/06-east-endpoint.before.png",
+          "exists": true,
+          "reportSha256": "da9429774404f8f1023558713ca93a038ac2f9f11c083cd9d6209dba12f5b14c",
+          "actualSha256": "da9429774404f8f1023558713ca93a038ac2f9f11c083cd9d6209dba12f5b14c",
+          "sameCameraParameters": true,
+          "changedFromBefore": true,
+          "passed": true
+        },
+        {
+          "id": "MSA-R08-DIRECTORY",
+          "primaryFeatureId": "R8-WF-R08-CENTRAL",
+          "output": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08/after/07-r08-directory.before.png",
+          "exists": true,
+          "reportSha256": "27066291d1da2f3baf36c0d48e0461c2778e46ba79f1e5c06706425b11eb33c3",
+          "actualSha256": "27066291d1da2f3baf36c0d48e0461c2778e46ba79f1e5c06706425b11eb33c3",
+          "sameCameraParameters": true,
+          "changedFromBefore": true,
+          "passed": true
+        },
+        {
+          "id": "MSA-WESTLIGHT-DIRECTORY",
+          "primaryFeatureId": "R8-WF-WESTLIGHT",
+          "output": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08/after/08-westlight-directory.before.png",
+          "exists": true,
+          "reportSha256": "b72f11f21b707e0fd395764562c5cada0b7c4b17dd8ba20fd50d0478c84bbc3c",
+          "actualSha256": "b72f11f21b707e0fd395764562c5cada0b7c4b17dd8ba20fd50d0478c84bbc3c",
+          "sameCameraParameters": true,
+          "changedFromBefore": true,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    "ravenrock": {
+      "manifest": {
+        "path": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/t2b-camera-manifest-prerelease.json",
+        "bytes": 5914,
+        "sha256": "b302ae32347888b2afd5e3f0381ae56ab5dee10fdffb0e42d773fc04ee0e7c44"
+      },
+      "beforeReport": {
+        "path": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/before-prerelease/capture-report.json",
+        "bytes": 8043,
+        "sha256": "8d75ff202fcbabd0521fd23b2cfd2837963e000b8fa53465cf2d4ea95723c9aa"
+      },
+      "afterReport": {
+        "path": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/after/capture-report.json",
+        "bytes": 7966,
+        "sha256": "71a1f687cd3c5815fc481b0ae203694e8cd05d389f9bce60ceb4ddf47bd5dcd9"
+      },
+      "expectedCount": 6,
+      "captureCount": 6,
+      "changedCaptures": 6,
+      "captures": [
+        {
+          "id": "RR-T2B-W2-WEST-TO-EAST",
+          "primaryFeatureId": "RR-T2B-LINER-PILOT-W2",
+          "output": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/after/t2b-west-to-east.png",
+          "exists": true,
+          "reportSha256": "f25757518f7a4448a8e2ecfb2d95ecbcb236c39727eaf865276f379e02058a83",
+          "actualSha256": "f25757518f7a4448a8e2ecfb2d95ecbcb236c39727eaf865276f379e02058a83",
+          "sameCameraParameters": true,
+          "changedFromBefore": true,
+          "passed": true
+        },
+        {
+          "id": "RR-T2B-W2-EAST-TO-WEST",
+          "primaryFeatureId": "RR-T2B-LINER-PILOT-W2",
+          "output": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/after/t2b-east-to-west.png",
+          "exists": true,
+          "reportSha256": "01df35498224f6aa67706b38cc56ba46dd0ddf4567dc86575f5d7a5e50f8fce1",
+          "actualSha256": "01df35498224f6aa67706b38cc56ba46dd0ddf4567dc86575f5d7a5e50f8fce1",
+          "sameCameraParameters": true,
+          "changedFromBefore": true,
+          "passed": true
+        },
+        {
+          "id": "RR-T2B-W2-CAVE-WINDOW",
+          "primaryFeatureId": "RR-T2B-LINER-PILOT-W2",
+          "output": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/after/t2b-intentional-cave-window.png",
+          "exists": true,
+          "reportSha256": "d4c7f0dbeef5770a81ecbf6dd92ebfb674103280dc5f521ee6c2c53ac45d4485",
+          "actualSha256": "d4c7f0dbeef5770a81ecbf6dd92ebfb674103280dc5f521ee6c2c53ac45d4485",
+          "sameCameraParameters": true,
+          "changedFromBefore": true,
+          "passed": true
+        },
+        {
+          "id": "RR-T2B-W2-SECTION",
+          "primaryFeatureId": "RR-T2B-LINER-PILOT-W2",
+          "output": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/after/t2b-section.png",
+          "exists": true,
+          "reportSha256": "cd0564d763e09d58a64c22ad25177a17c9337bff8db21b7fa47a592acf994235",
+          "actualSha256": "cd0564d763e09d58a64c22ad25177a17c9337bff8db21b7fa47a592acf994235",
+          "sameCameraParameters": true,
+          "changedFromBefore": true,
+          "passed": true
+        },
+        {
+          "id": "RR-T2B-W2-AQUIFER-EXCLUSION",
+          "primaryFeatureId": "RR-T2B-LINER-PILOT-W2",
+          "output": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/after/t2b-aquifer-exclusion.png",
+          "exists": true,
+          "reportSha256": "e2b9c4c3318a87171dc3febb78f6a2e578bfab1da7d4231a51c1eca3f49996cf",
+          "actualSha256": "e2b9c4c3318a87171dc3febb78f6a2e578bfab1da7d4231a51c1eca3f49996cf",
+          "sameCameraParameters": true,
+          "changedFromBefore": true,
+          "passed": true
+        },
+        {
+          "id": "RR-T2B-W2-OBLIQUE",
+          "primaryFeatureId": "RR-T2B-LINER-PILOT-W2",
+          "output": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/after/t2b-oblique.png",
+          "exists": true,
+          "reportSha256": "bba9933cbde6fe834fcf7a2f5b236d98f271fbcbbff1d8059c4edcffc40b0a06",
+          "actualSha256": "bba9933cbde6fe834fcf7a2f5b236d98f271fbcbbff1d8059c4edcffc40b0a06",
+          "sameCameraParameters": true,
+          "changedFromBefore": true,
+          "passed": true
+        }
+      ],
+      "passed": true
+    }
+  },
+  "database": {
+    "path": "data/world-map.db",
+    "sha256": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+    "importedRows": 51,
+    "missingIds": []
+  },
+  "gates": [
+    {
+      "id": "pre-and-post-snapshot-identity",
+      "passed": true,
+      "details": {
+        "pre": {
+          "path": "data/worldsnap-wave2-prerelease-b1356bca9fcbdc7a-20260728/region",
+          "sha256": "b1356bca9fcbdc7a90b580b2f9210947788d74716e1a706f5e8f0d0f789dbb27",
+          "regionFileCount": 26,
+          "bytes": 123279631
+        },
+        "post": {
+          "path": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region",
+          "sha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999",
+          "regionFileCount": 26,
+          "bytes": 123313802
+        }
+      }
+    },
+    {
+      "id": "post-state-and-rollback-ravenrock-t2b",
+      "passed": true,
+      "details": {
+        "explicitTargetCells": 151,
+        "reactiveCells": 0,
+        "explicitPostMismatches": 0,
+        "reactivePostMismatches": 0,
+        "rollbackMatched": 151,
+        "rollbackGuardMismatches": 0,
+        "rollbackSimulationFailures": 0,
+        "restorationMismatches": 0,
+        "guardedCommands": 0,
+        "guardedCommandFailures": 0
+      }
+    },
+    {
+      "id": "post-state-and-rollback-mainstreet-r08",
+      "passed": true,
+      "details": {
+        "explicitTargetCells": 736,
+        "reactiveCells": 2,
+        "explicitPostMismatches": 0,
+        "reactivePostMismatches": 0,
+        "rollbackMatched": 736,
+        "rollbackGuardMismatches": 0,
+        "rollbackSimulationFailures": 0,
+        "restorationMismatches": 0,
+        "guardedCommands": 4,
+        "guardedCommandFailures": 0
+      }
+    },
+    {
+      "id": "all-package-live-entity-gate",
+      "passed": true,
+      "details": {
+        "artifact": {
+          "path": "data/world-review/redevelopment-wave2-live-entity-gate-2026-07-28.json",
+          "bytes": 60658,
+          "sha256": "672e6ae5f5a7560695d01a1c90b35a022a454cebc7c8a039717df98ac52bb754"
+        },
+        "status": "PASS",
+        "packageChecks": [
+          {
+            "key": "ravenrock-t2b",
+            "passed": true
+          },
+          {
+            "key": "mainstreet-r08",
+            "passed": true
+          }
+        ],
+        "blockOrEntityMutation": false
+      }
+    },
+    {
+      "id": "atomic-transaction-committed",
+      "passed": true,
+      "details": {
+        "artifact": {
+          "path": "data/world-review/redevelopment-wave2-atomic-transaction-2026-07-28.json",
+          "bytes": 949423,
+          "sha256": "e9b3752e89771c4ab218e5811bf23700cfd5f08128e9277324ca9df990f43ef2"
+        },
+        "transactionId": "redevelopment-atomic-release-wave2-2026-07-28",
+        "status": "committed-pending-post-qa",
+        "releaseManifestSha256": "df8ca8586b0415d2bc0a7653ec3a61d1c8ed333b90c9a05d4ca2b67d0cb946fe",
+        "packageChecks": [
+          {
+            "key": "ravenrock-t2b",
+            "status": "committed",
+            "forwardHashMatched": true,
+            "rollbackHashMatched": true,
+            "executionPassed": true,
+            "localEntityGatePassed": true,
+            "passed": true
+          },
+          {
+            "key": "mainstreet-r08",
+            "status": "committed",
+            "forwardHashMatched": true,
+            "rollbackHashMatched": true,
+            "executionPassed": true,
+            "localEntityGatePassed": true,
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "bidirectional-live-routes",
+      "passed": true,
+      "details": {
+        "artifact": {
+          "path": "data/world-review/redevelopment-wave2-route-qa-2026-07-28.json",
+          "bytes": 103455,
+          "sha256": "6f97def62efe5abb6a3ae89c685cccfa39583b609357273df0855c3121e15ccf"
+        },
+        "status": "PASS",
+        "postSnapshotSha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999",
+        "operationHashesBound": 2,
+        "routeChecks": [
+          {
+            "id": "RR-T2B-W2-BIDIRECTIONAL",
+            "passed": true,
+            "directionCount": 2,
+            "forwardFound": true,
+            "reverseFound": true
+          },
+          {
+            "id": "MSA-R08-WEST-EAST-BIDIRECTIONAL",
+            "passed": true,
+            "directionCount": 2,
+            "forwardFound": true,
+            "reverseFound": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "matched-after-media",
+      "passed": true,
+      "details": {
+        "mainstreet": {
+          "manifest": {
+            "path": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08-prerelease/same-camera-manifest.json",
+            "bytes": 66717,
+            "sha256": "7b3510a12f1b7085c2aae456a9be69581d1793a9ad1e0d3f0b91cb7be97141e0"
+          },
+          "beforeReport": {
+            "path": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08-prerelease/before-capture-report.json",
+            "bytes": 10456,
+            "sha256": "1bcc5a29beee08e15354e02736cb1d46bedc39e8687d5442d1f0bba5291e7619"
+          },
+          "afterReport": {
+            "path": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08/after-capture-report.json",
+            "bytes": 10349,
+            "sha256": "b92f736ce62342d4fd77482f1d6cbd5515feef1c3fa774bd29f958679de186c5"
+          },
+          "expectedCount": 8,
+          "captureCount": 8,
+          "changedCaptures": 8,
+          "captures": [
+            {
+              "id": "MSA-R08-OVERALL-MAP",
+              "primaryFeatureId": "R8-R08-CROSS-LINK",
+              "output": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08/after/01-r08-overall-map.before.png",
+              "exists": true,
+              "reportSha256": "2eb312080cce29183570b0eea858f4edc3589259e4d512d94d22884ac64c8721",
+              "actualSha256": "2eb312080cce29183570b0eea858f4edc3589259e4d512d94d22884ac64c8721",
+              "sameCameraParameters": true,
+              "changedFromBefore": true,
+              "passed": true
+            },
+            {
+              "id": "MSA-R08-WEST-ENDPOINT",
+              "primaryFeatureId": "R8-JCT-ALLEY-W-R08",
+              "output": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08/after/02-west-endpoint.before.png",
+              "exists": true,
+              "reportSha256": "45bcd4070a688f007a1d3e591cacdf9a442966291166904c030237bedc304232",
+              "actualSha256": "45bcd4070a688f007a1d3e591cacdf9a442966291166904c030237bedc304232",
+              "sameCameraParameters": true,
+              "changedFromBefore": true,
+              "passed": true
+            },
+            {
+              "id": "MSA-R08-WEST-GATE",
+              "primaryFeatureId": "R8-GATE-R08-WEST-MAIN",
+              "output": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08/after/03-west-gate.before.png",
+              "exists": true,
+              "reportSha256": "ec2d8f154b47e08513a6293b2fdf038909d0f26b659af4300fa722452d5d2097",
+              "actualSha256": "ec2d8f154b47e08513a6293b2fdf038909d0f26b659af4300fa722452d5d2097",
+              "sameCameraParameters": true,
+              "changedFromBefore": true,
+              "passed": true
+            },
+            {
+              "id": "MSA-R08-R01-JUNCTION",
+              "primaryFeatureId": "R8-JCT-R01-R08",
+              "output": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08/after/04-r01-junction.before.png",
+              "exists": true,
+              "reportSha256": "86185a5ef5d3071777824cb806e7ed998fd05f62ff517d0482ae8a6e1323b9c5",
+              "actualSha256": "86185a5ef5d3071777824cb806e7ed998fd05f62ff517d0482ae8a6e1323b9c5",
+              "sameCameraParameters": true,
+              "changedFromBefore": true,
+              "passed": true
+            },
+            {
+              "id": "MSA-R08-EAST-GATE",
+              "primaryFeatureId": "R8-GATE-R08-EAST-MAIN",
+              "output": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08/after/05-east-gate.before.png",
+              "exists": true,
+              "reportSha256": "ef1c01c935f47026b0c361323143647e070dba9b3229d5aa40d877939177c2ff",
+              "actualSha256": "ef1c01c935f47026b0c361323143647e070dba9b3229d5aa40d877939177c2ff",
+              "sameCameraParameters": true,
+              "changedFromBefore": true,
+              "passed": true
+            },
+            {
+              "id": "MSA-R08-EAST-ENDPOINT",
+              "primaryFeatureId": "R8-JCT-R08-ALLEY-E",
+              "output": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08/after/06-east-endpoint.before.png",
+              "exists": true,
+              "reportSha256": "da9429774404f8f1023558713ca93a038ac2f9f11c083cd9d6209dba12f5b14c",
+              "actualSha256": "da9429774404f8f1023558713ca93a038ac2f9f11c083cd9d6209dba12f5b14c",
+              "sameCameraParameters": true,
+              "changedFromBefore": true,
+              "passed": true
+            },
+            {
+              "id": "MSA-R08-DIRECTORY",
+              "primaryFeatureId": "R8-WF-R08-CENTRAL",
+              "output": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08/after/07-r08-directory.before.png",
+              "exists": true,
+              "reportSha256": "27066291d1da2f3baf36c0d48e0461c2778e46ba79f1e5c06706425b11eb33c3",
+              "actualSha256": "27066291d1da2f3baf36c0d48e0461c2778e46ba79f1e5c06706425b11eb33c3",
+              "sameCameraParameters": true,
+              "changedFromBefore": true,
+              "passed": true
+            },
+            {
+              "id": "MSA-WESTLIGHT-DIRECTORY",
+              "primaryFeatureId": "R8-WF-WESTLIGHT",
+              "output": "data/exports/redevelopment-wave2-2026-07-28/mainstreet-r08/after/08-westlight-directory.before.png",
+              "exists": true,
+              "reportSha256": "b72f11f21b707e0fd395764562c5cada0b7c4b17dd8ba20fd50d0478c84bbc3c",
+              "actualSha256": "b72f11f21b707e0fd395764562c5cada0b7c4b17dd8ba20fd50d0478c84bbc3c",
+              "sameCameraParameters": true,
+              "changedFromBefore": true,
+              "passed": true
+            }
+          ],
+          "passed": true
+        },
+        "ravenrock": {
+          "manifest": {
+            "path": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/t2b-camera-manifest-prerelease.json",
+            "bytes": 5914,
+            "sha256": "b302ae32347888b2afd5e3f0381ae56ab5dee10fdffb0e42d773fc04ee0e7c44"
+          },
+          "beforeReport": {
+            "path": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/before-prerelease/capture-report.json",
+            "bytes": 8043,
+            "sha256": "8d75ff202fcbabd0521fd23b2cfd2837963e000b8fa53465cf2d4ea95723c9aa"
+          },
+          "afterReport": {
+            "path": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/after/capture-report.json",
+            "bytes": 7966,
+            "sha256": "71a1f687cd3c5815fc481b0ae203694e8cd05d389f9bce60ceb4ddf47bd5dcd9"
+          },
+          "expectedCount": 6,
+          "captureCount": 6,
+          "changedCaptures": 6,
+          "captures": [
+            {
+              "id": "RR-T2B-W2-WEST-TO-EAST",
+              "primaryFeatureId": "RR-T2B-LINER-PILOT-W2",
+              "output": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/after/t2b-west-to-east.png",
+              "exists": true,
+              "reportSha256": "f25757518f7a4448a8e2ecfb2d95ecbcb236c39727eaf865276f379e02058a83",
+              "actualSha256": "f25757518f7a4448a8e2ecfb2d95ecbcb236c39727eaf865276f379e02058a83",
+              "sameCameraParameters": true,
+              "changedFromBefore": true,
+              "passed": true
+            },
+            {
+              "id": "RR-T2B-W2-EAST-TO-WEST",
+              "primaryFeatureId": "RR-T2B-LINER-PILOT-W2",
+              "output": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/after/t2b-east-to-west.png",
+              "exists": true,
+              "reportSha256": "01df35498224f6aa67706b38cc56ba46dd0ddf4567dc86575f5d7a5e50f8fce1",
+              "actualSha256": "01df35498224f6aa67706b38cc56ba46dd0ddf4567dc86575f5d7a5e50f8fce1",
+              "sameCameraParameters": true,
+              "changedFromBefore": true,
+              "passed": true
+            },
+            {
+              "id": "RR-T2B-W2-CAVE-WINDOW",
+              "primaryFeatureId": "RR-T2B-LINER-PILOT-W2",
+              "output": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/after/t2b-intentional-cave-window.png",
+              "exists": true,
+              "reportSha256": "d4c7f0dbeef5770a81ecbf6dd92ebfb674103280dc5f521ee6c2c53ac45d4485",
+              "actualSha256": "d4c7f0dbeef5770a81ecbf6dd92ebfb674103280dc5f521ee6c2c53ac45d4485",
+              "sameCameraParameters": true,
+              "changedFromBefore": true,
+              "passed": true
+            },
+            {
+              "id": "RR-T2B-W2-SECTION",
+              "primaryFeatureId": "RR-T2B-LINER-PILOT-W2",
+              "output": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/after/t2b-section.png",
+              "exists": true,
+              "reportSha256": "cd0564d763e09d58a64c22ad25177a17c9337bff8db21b7fa47a592acf994235",
+              "actualSha256": "cd0564d763e09d58a64c22ad25177a17c9337bff8db21b7fa47a592acf994235",
+              "sameCameraParameters": true,
+              "changedFromBefore": true,
+              "passed": true
+            },
+            {
+              "id": "RR-T2B-W2-AQUIFER-EXCLUSION",
+              "primaryFeatureId": "RR-T2B-LINER-PILOT-W2",
+              "output": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/after/t2b-aquifer-exclusion.png",
+              "exists": true,
+              "reportSha256": "e2b9c4c3318a87171dc3febb78f6a2e578bfab1da7d4231a51c1eca3f49996cf",
+              "actualSha256": "e2b9c4c3318a87171dc3febb78f6a2e578bfab1da7d4231a51c1eca3f49996cf",
+              "sameCameraParameters": true,
+              "changedFromBefore": true,
+              "passed": true
+            },
+            {
+              "id": "RR-T2B-W2-OBLIQUE",
+              "primaryFeatureId": "RR-T2B-LINER-PILOT-W2",
+              "output": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/after/t2b-oblique.png",
+              "exists": true,
+              "reportSha256": "bba9933cbde6fe834fcf7a2f5b236d98f271fbcbbff1d8059c4edcffc40b0a06",
+              "actualSha256": "bba9933cbde6fe834fcf7a2f5b236d98f271fbcbbff1d8059c4edcffc40b0a06",
+              "sameCameraParameters": true,
+              "changedFromBefore": true,
+              "passed": true
+            }
+          ],
+          "passed": true
+        }
+      }
+    },
+    {
+      "id": "database-import",
+      "passed": true,
+      "details": {
+        "database": "data/world-map.db",
+        "sha256BeforeRead": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+        "sha256AfterRead": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+        "expectedExternalIds": 51,
+        "importedRows": 51,
+        "missingExternalIds": [],
+        "readonlyAudit": true
+      }
+    }
+  ],
+  "failures": [],
+  "decision": {
+    "release": "ACCEPTED",
+    "rationale": "Atomic transaction, immutable installed state, reactive fence state, rollback postflight, routes, matched after media, and database import all pass."
+  }
+}

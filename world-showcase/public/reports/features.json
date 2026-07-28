@@ -1,0 +1,6802 @@
+[
+  {
+    "id": "wft_7965caff8356ace7f842b69f",
+    "project_id": "town-expansion-r1",
+    "external_id": "ARC-G-DINING",
+    "parent_id": "wft_fea9ac45298a759da65b57b1",
+    "name": "formal dining",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -131,
+      "maxX": -126,
+      "minZ": -296,
+      "maxZ": -284,
+      "minY": 70,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_5ad1f0162e975aa03df266cf",
+    "project_id": "town-expansion-r1",
+    "external_id": "ARC-G-ENTRY",
+    "parent_id": "wft_fea9ac45298a759da65b57b1",
+    "name": "entry, cloak and stair reception",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -143,
+      "maxX": -137,
+      "minZ": -308,
+      "maxZ": -301,
+      "minY": 70,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_ba3414d5f51a9454396a8c43",
+    "project_id": "town-expansion-r1",
+    "external_id": "ARC-G-GREAT",
+    "parent_id": "wft_fea9ac45298a759da65b57b1",
+    "name": "great room and hearth",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -143,
+      "maxX": -133,
+      "minZ": -296,
+      "maxZ": -284,
+      "minY": 70,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_4c0fe1ac79fff2a67ee00711",
+    "project_id": "town-expansion-r1",
+    "external_id": "ARC-G-KITCHEN",
+    "parent_id": "wft_fea9ac45298a759da65b57b1",
+    "name": "kitchen, pantry and scullery",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -124,
+      "maxX": -119,
+      "minZ": -296,
+      "maxZ": -284,
+      "minY": 70,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_30d5366c49e14712ce3062b8",
+    "project_id": "town-expansion-r1",
+    "external_id": "ARC-G-OFFICE",
+    "parent_id": "wft_fea9ac45298a759da65b57b1",
+    "name": "client office and plan archive",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -124,
+      "maxX": -119,
+      "minZ": -308,
+      "maxZ": -298,
+      "minY": 70,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_920ac96d346bc9e626f391de",
+    "project_id": "town-expansion-r1",
+    "external_id": "ARC-G-STUDIO",
+    "parent_id": "wft_fea9ac45298a759da65b57b1",
+    "name": "architect drafting/model studio",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -135,
+      "maxX": -126,
+      "minZ": -308,
+      "maxZ": -298,
+      "minY": 70,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_ae58e6257eed866687bd10a3",
+    "project_id": "town-expansion-r1",
+    "external_id": "ARC-GARAGE-6",
+    "parent_id": "wft_fea9ac45298a759da65b57b1",
+    "name": "Architect House mini-mansion attached automotive garage",
+    "kind": "parking",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -118,
+      "maxX": -106,
+      "minZ": -309,
+      "maxZ": -284,
+      "minY": 69,
+      "maxY": 76
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_4b9f3054ab975d8fb5f80e03",
+    "project_id": "town-expansion-r1",
+    "external_id": "ARC-L2-DESIGN-LIBRARY",
+    "parent_id": "wft_fea9ac45298a759da65b57b1",
+    "name": "design library and budget desk",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -132,
+      "maxX": -125,
+      "minZ": -308,
+      "maxZ": -299,
+      "minY": 78,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_16952ee157c41190d0a06f64",
+    "project_id": "town-expansion-r1",
+    "external_id": "ARC-L2-GUEST-A",
+    "parent_id": "wft_fea9ac45298a759da65b57b1",
+    "name": "guest/family bedroom",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -123,
+      "maxX": -119,
+      "minZ": -308,
+      "maxZ": -299,
+      "minY": 78,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_a27fe7560ab59bd8cfe65423",
+    "project_id": "town-expansion-r1",
+    "external_id": "ARC-L2-GUEST-B",
+    "parent_id": "wft_fea9ac45298a759da65b57b1",
+    "name": "guest/family bedroom",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -143,
+      "maxX": -134,
+      "minZ": -297,
+      "maxZ": -284,
+      "minY": 78,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_a517c049206bf91236753291",
+    "project_id": "town-expansion-r1",
+    "external_id": "ARC-L2-PRIMARY",
+    "parent_id": "wft_fea9ac45298a759da65b57b1",
+    "name": "primary bedroom, dressing and bath",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -143,
+      "maxX": -134,
+      "minZ": -308,
+      "maxZ": -299,
+      "minY": 78,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_0d64cae3cf6d9258743bbb43",
+    "project_id": "town-expansion-r1",
+    "external_id": "ARC-L2-RED-SUITE",
+    "parent_id": "wft_fea9ac45298a759da65b57b1",
+    "name": "adult-only, non-graphic furnished private red suite",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -132,
+      "maxX": -119,
+      "minZ": -297,
+      "maxZ": -284,
+      "minY": 78,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_51a55ee2f8d8d121a65e4c7b",
+    "project_id": "town-expansion-r1",
+    "external_id": "GRT-OWNER-GRAND-DESCENT",
+    "parent_id": null,
+    "name": "Gilded Raven Owner Grand Descent",
+    "kind": "road",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -34,
+      "maxX": 14,
+      "minZ": -400,
+      "maxZ": -383,
+      "minY": -46,
+      "maxY": 67
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_2953accb4fa199f9059cb269",
+    "project_id": "town-expansion-r1",
+    "external_id": "MAS-G-DINING",
+    "parent_id": "wft_e32456957164a3dca8ae8436",
+    "name": "dining",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -115,
+      "maxX": -107,
+      "minZ": -181,
+      "maxZ": -176,
+      "minY": 65,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_0eb3cc4bb790362f568ac622",
+    "project_id": "town-expansion-r1",
+    "external_id": "MAS-G-ENTRY",
+    "parent_id": "wft_e32456957164a3dca8ae8436",
+    "name": "side entry and cloak",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -128,
+      "maxX": -122,
+      "minZ": -190,
+      "maxZ": -183,
+      "minY": 65,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_8c9a368584a469cb36f610eb",
+    "project_id": "town-expansion-r1",
+    "external_id": "MAS-G-GREAT",
+    "parent_id": "wft_e32456957164a3dca8ae8436",
+    "name": "great room and hearth",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -128,
+      "maxX": -117,
+      "minZ": -181,
+      "maxZ": -176,
+      "minY": 65,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_5f687964389cc8fa90fa9cbc",
+    "project_id": "town-expansion-r1",
+    "external_id": "MAS-G-KITCHEN",
+    "parent_id": "wft_e32456957164a3dca8ae8436",
+    "name": "kitchen, pantry and scullery",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -105,
+      "maxX": -96,
+      "minZ": -181,
+      "maxZ": -176,
+      "minY": 65,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_8ef9f41a1d5960136ab89f40",
+    "project_id": "town-expansion-r1",
+    "external_id": "MAS-G-STAIR-LOBBY",
+    "parent_id": "wft_e32456957164a3dca8ae8436",
+    "name": "broad main stair lobby",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -120,
+      "maxX": -114,
+      "minZ": -190,
+      "maxZ": -183,
+      "minY": 65,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_1736e9287beded64c703bfe2",
+    "project_id": "town-expansion-r1",
+    "external_id": "MAS-G-WORKSHOP",
+    "parent_id": "wft_e32456957164a3dca8ae8436",
+    "name": "clean masonry studio and samples",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -112,
+      "maxX": -96,
+      "minZ": -190,
+      "maxZ": -183,
+      "minY": 65,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_a2749ad735c0a7c72db10582",
+    "project_id": "town-expansion-r1",
+    "external_id": "MAS-GARAGE-4",
+    "parent_id": "wft_e32456957164a3dca8ae8436",
+    "name": "Mason House mini-mansion attached automotive garage",
+    "kind": "parking",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -129,
+      "maxX": -112,
+      "minZ": -203,
+      "maxZ": -191,
+      "minY": 64,
+      "maxY": 71
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_f3a76d3cd81b66505128efea",
+    "project_id": "town-expansion-r1",
+    "external_id": "MAS-L2-GUEST-A",
+    "parent_id": "wft_e32456957164a3dca8ae8436",
+    "name": "guest/family bedroom",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -112,
+      "maxX": -96,
+      "minZ": -190,
+      "maxZ": -183,
+      "minY": 73,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_553603289fa309a224b76c5d",
+    "project_id": "town-expansion-r1",
+    "external_id": "MAS-L2-GUEST-B",
+    "parent_id": "wft_e32456957164a3dca8ae8436",
+    "name": "guest/family bedroom and sample library",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -128,
+      "maxX": -114,
+      "minZ": -181,
+      "maxZ": -176,
+      "minY": 73,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_a2c1d057cdb9b3762673d659",
+    "project_id": "town-expansion-r1",
+    "external_id": "MAS-L2-PRIMARY",
+    "parent_id": "wft_e32456957164a3dca8ae8436",
+    "name": "primary bedroom, dressing and bath",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -128,
+      "maxX": -114,
+      "minZ": -190,
+      "maxZ": -183,
+      "minY": 73,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_d2deb76f171b61892244dcb8",
+    "project_id": "town-expansion-r1",
+    "external_id": "MAS-L2-RED-SUITE",
+    "parent_id": "wft_e32456957164a3dca8ae8436",
+    "name": "adult-only, non-graphic furnished private red suite",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -112,
+      "maxX": -96,
+      "minZ": -181,
+      "maxZ": -176,
+      "minY": 73,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_c6c27d87d93e9c65ab78d262",
+    "project_id": "town-expansion-r1",
+    "external_id": "OBS-OWNER-EAST-ARRIVAL-GALLERY",
+    "parent_id": null,
+    "name": "Observatory Owner East Arrival Gallery",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 269,
+      "maxX": 348,
+      "minZ": 156,
+      "maxZ": 174,
+      "minY": 109,
+      "maxY": 120
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_a639d847ff4c4a3d2f4b5445",
+    "project_id": "town-expansion-r1",
+    "external_id": "OBS-OWNER-EAST-ASCENT",
+    "parent_id": null,
+    "name": "Observatory Owner East Ascent",
+    "kind": "road",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 348,
+      "maxX": 377,
+      "minZ": 150,
+      "maxZ": 180,
+      "minY": -46,
+      "maxY": 112
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_e487ee9e9ad177980db7fb3d",
+    "project_id": "town-expansion-r1",
+    "external_id": "OWNER-CITY-SALES-OFFICE-01",
+    "parent_id": null,
+    "name": "Founders' Gallery Sales Office",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 78,
+      "maxX": 106,
+      "minZ": -227,
+      "maxZ": -204,
+      "minY": -46,
+      "maxY": -33
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_d8ff315276a6b73ea6713910",
+    "project_id": "town-expansion-r1",
+    "external_id": "OWNER-CORRIDOR-GRT-OBS-01",
+    "parent_id": null,
+    "name": "Gilded Raven–Observatory Owner Corridor",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -14,
+      "maxX": 367,
+      "minZ": -394,
+      "maxZ": 169,
+      "minY": -46,
+      "maxY": -37
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_b2ac91d039351e487abdc613",
+    "project_id": "town-expansion-r1",
+    "external_id": "OWNER-REST-A",
+    "parent_id": null,
+    "name": "Owner Corridor Rest Suite A",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 20,
+      "maxX": 48,
+      "minZ": -351,
+      "maxZ": -331,
+      "minY": -46,
+      "maxY": -34
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_c82d377bd13b99e90403c291",
+    "project_id": "town-expansion-r1",
+    "external_id": "OWNER-REST-B",
+    "parent_id": null,
+    "name": "Owner Corridor Rest Suite B",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 20,
+      "maxX": 48,
+      "minZ": -269,
+      "maxZ": -249,
+      "minY": -46,
+      "maxY": -34
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_c094a31ff3aae18fe145c70e",
+    "project_id": "town-expansion-r1",
+    "external_id": "OWNER-REST-C",
+    "parent_id": null,
+    "name": "Owner Corridor Rest Suite C",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 157,
+      "maxX": 186,
+      "minZ": -161,
+      "maxZ": -141,
+      "minY": -46,
+      "maxY": -34
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_00978c20fa7f7d296394b08e",
+    "project_id": "town-expansion-r1",
+    "external_id": "OWNER-REST-D",
+    "parent_id": null,
+    "name": "Owner Corridor Rest Suite D",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 157,
+      "maxX": 186,
+      "minZ": -111,
+      "maxZ": -91,
+      "minY": -46,
+      "maxY": -34
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_06434e036a79cd6cece9341d",
+    "project_id": "town-expansion-r1",
+    "external_id": "OWNER-REST-E",
+    "parent_id": null,
+    "name": "Owner Corridor Rest Suite E",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 172,
+      "maxX": 201,
+      "minZ": 30,
+      "maxZ": 50,
+      "minY": -46,
+      "maxY": -34
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_38145fb8e340a8abb1780887",
+    "project_id": "town-expansion-r1",
+    "external_id": "OWNER-REST-F",
+    "parent_id": null,
+    "name": "Owner Corridor Rest Suite F",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 235,
+      "maxX": 264,
+      "minZ": 62,
+      "maxZ": 82,
+      "minY": -46,
+      "maxY": -34
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_6afdc7e9c2f3d4ad9bbe92ea",
+    "project_id": "town-expansion-r1",
+    "external_id": "OWNER-REST-G",
+    "parent_id": null,
+    "name": "Owner Corridor Rest Suite G",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 326,
+      "maxX": 355,
+      "minZ": 90,
+      "maxZ": 110,
+      "minY": -46,
+      "maxY": -34
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_24876c4c199657258f5d10e5",
+    "project_id": "town-expansion-r1",
+    "external_id": "RG-GARTH-STATUES",
+    "parent_id": null,
+    "name": "Rg Garth Statues",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -93,
+      "maxX": -68,
+      "minZ": -444,
+      "maxZ": -428,
+      "minY": 67,
+      "maxY": 74
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_fea9ac45298a759da65b57b1",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-ARCHITECT",
+    "parent_id": null,
+    "name": "Architect House mini-mansion",
+    "kind": "building",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -144,
+      "maxX": -106,
+      "minZ": -309,
+      "maxZ": -283,
+      "minY": 69,
+      "maxY": 96
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_35d6ed99a67edd70e1b1b5c1",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-ARCHITECT:FURNISHINGS",
+    "parent_id": null,
+    "name": "Rrch Architect Furnishings",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -143,
+      "maxX": -119,
+      "minZ": -308,
+      "maxZ": -296,
+      "minY": 71,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_9b773e0a4b27c65b86a40aad",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-ARCHITECT:GARAGE",
+    "parent_id": null,
+    "name": "Rrch Architect Garage",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -118,
+      "maxX": -106,
+      "minZ": -309,
+      "maxZ": -284,
+      "minY": 69,
+      "maxY": 76
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_7ec6e81971ef154ad721b312",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-ARCHITECT:HOUSE:1",
+    "parent_id": null,
+    "name": "Rrch Architect House 1",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -144,
+      "maxX": -118,
+      "minZ": -309,
+      "maxZ": -283,
+      "minY": 69,
+      "maxY": 87
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_bf10808f21bbe84fad60c9be",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-ARCHITECT:MAIN-STAIR",
+    "parent_id": null,
+    "name": "Rrch Architect Main Stair",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -143,
+      "maxX": -141,
+      "minZ": -308,
+      "maxZ": -301,
+      "minY": 69,
+      "maxY": 77
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_f077e7f5ef4a1a1b35b092ed",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-ARCHITECT:PATIO",
+    "parent_id": null,
+    "name": "Rrch Architect Patio",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -144,
+      "maxX": -126,
+      "minZ": -282,
+      "maxZ": -278,
+      "minY": 73,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_b15a47a0aab66ee1c24a23d3",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-ARCHITECT:PRIVATE-SUITE",
+    "parent_id": null,
+    "name": "Rrch Architect Private Suite",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -131,
+      "maxX": -120,
+      "minZ": -296,
+      "maxZ": -288,
+      "minY": 79,
+      "maxY": 80
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_62dcb867d1ffdaa04eb32624",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-ARCHITECT:PUBLIC-ENTRY",
+    "parent_id": null,
+    "name": "Rrch Architect Public Entry",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -140,
+      "maxX": -140,
+      "minZ": -309,
+      "maxZ": -309,
+      "minY": 70,
+      "maxY": 71
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_8dd4a56dea0ff0e822844ded",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-ARCHITECT:REMOTE-STAIR",
+    "parent_id": null,
+    "name": "Rrch Architect Remote Stair",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -144,
+      "maxX": -142,
+      "minZ": -291,
+      "maxZ": -284,
+      "minY": 69,
+      "maxY": 77
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_83075e1870cc5501048a118a",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-GILDED-RAVEN",
+    "parent_id": null,
+    "name": "Gilded Raven Theatre House",
+    "kind": "building",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -34,
+      "maxX": 18,
+      "minZ": -402,
+      "maxZ": -350,
+      "minY": 40,
+      "maxY": 110
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_e32456957164a3dca8ae8436",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-MASON",
+    "parent_id": null,
+    "name": "Mason House mini-mansion",
+    "kind": "building",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -129,
+      "maxX": -95,
+      "minZ": -203,
+      "maxZ": -175,
+      "minY": 64,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_9f8aa3a13d4aa47444756e10",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-MASON:FURNISHINGS",
+    "parent_id": null,
+    "name": "Rrch Mason Furnishings",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -128,
+      "maxX": -100,
+      "minZ": -190,
+      "maxZ": -181,
+      "minY": 66,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_61628888498769e55db1fd67",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-MASON:GARAGE",
+    "parent_id": null,
+    "name": "Rrch Mason Garage",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -129,
+      "maxX": -112,
+      "minZ": -203,
+      "maxZ": -191,
+      "minY": 64,
+      "maxY": 71
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_ba1c0b3ac2e2e62ea2077ec8",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-MASON:GARAGE-TURNING",
+    "parent_id": null,
+    "name": "Rrch Mason Garage Turning",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -132,
+      "maxX": -108,
+      "minZ": -214,
+      "maxZ": -204,
+      "minY": 64,
+      "maxY": 64
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_1d7ca701fc103a412510bd16",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-MASON:HOUSE:1",
+    "parent_id": null,
+    "name": "Rrch Mason House 1",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -129,
+      "maxX": -95,
+      "minZ": -191,
+      "maxZ": -175,
+      "minY": 64,
+      "maxY": 81
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_6ef17453124abbc690e13cab",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-MASON:MAIN-STAIR",
+    "parent_id": null,
+    "name": "Rrch Mason Main Stair",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -120,
+      "maxX": -118,
+      "minZ": -190,
+      "maxZ": -183,
+      "minY": 64,
+      "maxY": 72
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_0b7a06b5c76a21052c4b2011",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-MASON:PATIO",
+    "parent_id": null,
+    "name": "Rrch Mason Patio",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -129,
+      "maxX": -110,
+      "minZ": -174,
+      "maxZ": -169,
+      "minY": 64,
+      "maxY": 66
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_3278b52cb1a8501b06586bd0",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-MASON:PRIVATE-SUITE",
+    "parent_id": null,
+    "name": "Rrch Mason Private Suite",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -111,
+      "maxX": -99,
+      "minZ": -180,
+      "maxZ": -177,
+      "minY": 74,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_e5eee32c5cf9f975e421e817",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-MASON:PUBLIC-ENTRY",
+    "parent_id": null,
+    "name": "Rrch Mason Public Entry",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -95,
+      "maxX": -95,
+      "minZ": -186,
+      "maxZ": -186,
+      "minY": 65,
+      "maxY": 66
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_d52441abc788b0ad07e16738",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-MASON:REMOTE-STAIR",
+    "parent_id": null,
+    "name": "Rrch Mason Remote Stair",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -128,
+      "maxX": -126,
+      "minZ": -182,
+      "maxZ": -175,
+      "minY": 64,
+      "maxY": 72
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_53610885d46690a0571a82d2",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-MV-EAST-CONNECTOR",
+    "parent_id": null,
+    "name": "RRCH-MV-EAST-CONNECTOR",
+    "kind": "road",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -55,
+      "maxX": -49,
+      "minZ": -310,
+      "maxZ": -215,
+      "minY": 45,
+      "maxY": 100
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_3960715e2c148bad8505195a",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-MV-R07-WEST",
+    "parent_id": null,
+    "name": "RRCH-MV-R07-WEST",
+    "kind": "road",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -132,
+      "maxX": -84,
+      "minZ": -221,
+      "maxZ": -215,
+      "minY": 45,
+      "maxY": 100
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_3c1b0026304485628d8d22c1",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-MV-UPPER-STREET",
+    "parent_id": null,
+    "name": "RRCH-MV-UPPER-STREET",
+    "kind": "road",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -145,
+      "maxX": -49,
+      "minZ": -317,
+      "maxZ": -311,
+      "minY": 45,
+      "maxY": 100
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_db7d62a8ba73545ce532b997",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SCOUT",
+    "parent_id": null,
+    "name": "Scott House mini-mansion",
+    "kind": "building",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -81,
+      "maxX": -58,
+      "minZ": -258,
+      "maxZ": -233,
+      "minY": 64,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_4a4470e848e7c6d0223f0bad",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SCOUT:FURNISHINGS",
+    "parent_id": null,
+    "name": "Rrch Scout Furnishings",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -80,
+      "maxX": -59,
+      "minZ": -257,
+      "maxZ": -236,
+      "minY": 66,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_877d469ba4e79d1cb3e7af26",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SCOUT:GARAGE",
+    "parent_id": null,
+    "name": "Rrch Scout Garage",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -81,
+      "maxX": -64,
+      "minZ": -245,
+      "maxZ": -233,
+      "minY": 64,
+      "maxY": 71
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_fd64e32be736900fd58c9ac0",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SCOUT:GARAGE-TURNING",
+    "parent_id": null,
+    "name": "Rrch Scout Garage Turning",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -84,
+      "maxX": -60,
+      "minZ": -232,
+      "maxZ": -222,
+      "minY": 64,
+      "maxY": 64
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_9905cdfe223af2f6e795e247",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SCOUT:HOUSE:1",
+    "parent_id": null,
+    "name": "Rrch Scout House 1",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -81,
+      "maxX": -58,
+      "minZ": -258,
+      "maxZ": -245,
+      "minY": 64,
+      "maxY": 81
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_966b1b65f56956707bbf87fe",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SCOUT:HOUSE:2",
+    "parent_id": null,
+    "name": "Rrch Scout House 2",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -63,
+      "maxX": -58,
+      "minZ": -245,
+      "maxZ": -233,
+      "minY": 64,
+      "maxY": 81
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_69dad4e836a0dc189940554a",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SCOUT:MAIN-STAIR",
+    "parent_id": null,
+    "name": "Rrch Scout Main Stair",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -72,
+      "maxX": -70,
+      "minZ": -257,
+      "maxZ": -250,
+      "minY": 64,
+      "maxY": 72
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_9b1e8c6de0268f4eac71f737",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SCOUT:PATIO",
+    "parent_id": null,
+    "name": "Rrch Scout Patio",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -82,
+      "maxX": -58,
+      "minZ": -269,
+      "maxZ": -260,
+      "minY": 65,
+      "maxY": 67
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_493615824c55a3fa2fa7fa58",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SCOUT:PRIVATE-SUITE",
+    "parent_id": null,
+    "name": "Rrch Scout Private Suite",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -69,
+      "maxX": -65,
+      "minZ": -243,
+      "maxZ": -235,
+      "minY": 74,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_3cb578e10a4fcb2ec347b6df",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SCOUT:PUBLIC-ENTRY",
+    "parent_id": null,
+    "name": "Rrch Scout Public Entry",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -81,
+      "maxX": -81,
+      "minZ": -251,
+      "maxZ": -251,
+      "minY": 65,
+      "maxY": 66
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_d88deb69e033f20262a6521a",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SCOUT:REMOTE-STAIR",
+    "parent_id": null,
+    "name": "Rrch Scout Remote Stair",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -63,
+      "maxX": -61,
+      "minZ": -252,
+      "maxZ": -245,
+      "minY": 64,
+      "maxY": 72
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_f210d57904ab63b662355a9d",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-STEWARD",
+    "parent_id": null,
+    "name": "Steward House mini-mansion",
+    "kind": "building",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -91,
+      "maxX": -58,
+      "minZ": -309,
+      "maxZ": -283,
+      "minY": 69,
+      "maxY": 92
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_d73d9a1ee1db5e84861a2946",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-STEWARD:FURNISHINGS",
+    "parent_id": null,
+    "name": "Rrch Steward Furnishings",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -78,
+      "maxX": -59,
+      "minZ": -308,
+      "maxZ": -296,
+      "minY": 71,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_0d3909f937aef08f8dddb853",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-STEWARD:GARAGE",
+    "parent_id": null,
+    "name": "Rrch Steward Garage",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -91,
+      "maxX": -79,
+      "minZ": -309,
+      "maxZ": -284,
+      "minY": 69,
+      "maxY": 76
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_e3c9989efbdd30e906ec90d9",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-STEWARD:GARAGE-TURNING",
+    "parent_id": null,
+    "name": "Rrch Steward Garage Turning",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -105,
+      "maxX": -92,
+      "minZ": -310,
+      "maxZ": -282,
+      "minY": 64,
+      "maxY": 85
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_24abf3601a9c13d959c98039",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-STEWARD:HOUSE:1",
+    "parent_id": null,
+    "name": "Rrch Steward House 1",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -79,
+      "maxX": -58,
+      "minZ": -309,
+      "maxZ": -283,
+      "minY": 69,
+      "maxY": 86
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_8d30384d52f4d832345d0e8e",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-STEWARD:MAIN-STAIR",
+    "parent_id": null,
+    "name": "Rrch Steward Main Stair",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -78,
+      "maxX": -76,
+      "minZ": -308,
+      "maxZ": -301,
+      "minY": 69,
+      "maxY": 77
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_5139cb76ca3e420dc15542d9",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-STEWARD:PATIO",
+    "parent_id": null,
+    "name": "Rrch Steward Patio",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -78,
+      "maxX": -59,
+      "minZ": -282,
+      "maxZ": -277,
+      "minY": 69,
+      "maxY": 71
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_c3d6ee32f8755dfa5cd24b54",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-STEWARD:PRIVATE-SUITE",
+    "parent_id": null,
+    "name": "Rrch Steward Private Suite",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -67,
+      "maxX": -60,
+      "minZ": -296,
+      "maxZ": -286,
+      "minY": 79,
+      "maxY": 80
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_994defb806c8354660ccdc0f",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-STEWARD:PUBLIC-ENTRY",
+    "parent_id": null,
+    "name": "Rrch Steward Public Entry",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -75,
+      "maxX": -75,
+      "minZ": -309,
+      "maxZ": -309,
+      "minY": 70,
+      "maxY": 71
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_5383716f91ce185947af0be9",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-STEWARD:REMOTE-STAIR",
+    "parent_id": null,
+    "name": "Rrch Steward Remote Stair",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -63,
+      "maxX": -61,
+      "minZ": -291,
+      "maxZ": -284,
+      "minY": 69,
+      "maxY": 77
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_d92515fc48429e9ce797c646",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SURVEYOR",
+    "parent_id": null,
+    "name": "Surveyor House mini-mansion",
+    "kind": "building",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -129,
+      "maxX": -95,
+      "minZ": -258,
+      "maxZ": -233,
+      "minY": 64,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_a139dc3199fdb88d41a2a3f0",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SURVEYOR:FURNISHINGS",
+    "parent_id": null,
+    "name": "Rrch Surveyor Furnishings",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -128,
+      "maxX": -96,
+      "minZ": -257,
+      "maxZ": -242,
+      "minY": 66,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_d098cec9d54aba8394b91793",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SURVEYOR:GARAGE",
+    "parent_id": null,
+    "name": "Rrch Surveyor Garage",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -129,
+      "maxX": -112,
+      "minZ": -245,
+      "maxZ": -233,
+      "minY": 64,
+      "maxY": 71
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_acd5156acde91581327134ab",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SURVEYOR:GARAGE-TURNING",
+    "parent_id": null,
+    "name": "Rrch Surveyor Garage Turning",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -132,
+      "maxX": -108,
+      "minZ": -232,
+      "maxZ": -222,
+      "minY": 64,
+      "maxY": 68
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_0d1d4fd7c4deb47bf5759bfe",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SURVEYOR:HOUSE:1",
+    "parent_id": null,
+    "name": "Rrch Surveyor House 1",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -129,
+      "maxX": -95,
+      "minZ": -258,
+      "maxZ": -245,
+      "minY": 64,
+      "maxY": 82
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_9b7bff522bd90ad692d7e8fe",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SURVEYOR:HOUSE:2",
+    "parent_id": null,
+    "name": "Rrch Surveyor House 2",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -111,
+      "maxX": -95,
+      "minZ": -245,
+      "maxZ": -233,
+      "minY": 64,
+      "maxY": 81
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_5e236f248dfdb3b17e1d4f1a",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SURVEYOR:MAIN-STAIR",
+    "parent_id": null,
+    "name": "Rrch Surveyor Main Stair",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -106,
+      "maxX": -104,
+      "minZ": -257,
+      "maxZ": -250,
+      "minY": 64,
+      "maxY": 72
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_bc8473e53080debf5e015ffa",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SURVEYOR:PATIO",
+    "parent_id": null,
+    "name": "Rrch Surveyor Patio",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -130,
+      "maxX": -95,
+      "minZ": -269,
+      "maxZ": -260,
+      "minY": 65,
+      "maxY": 67
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_ddf90869aa112d4fdb6d82e3",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SURVEYOR:PRIVATE-SUITE",
+    "parent_id": null,
+    "name": "Rrch Surveyor Private Suite",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -114,
+      "maxX": -105,
+      "minZ": -243,
+      "maxZ": -236,
+      "minY": 74,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_62b0e1900f3b8e375c407180",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SURVEYOR:PUBLIC-ENTRY",
+    "parent_id": null,
+    "name": "Rrch Surveyor Public Entry",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -95,
+      "maxX": -95,
+      "minZ": -251,
+      "maxZ": -251,
+      "minY": 65,
+      "maxY": 66
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_1850eef873b2b55bdc898f40",
+    "project_id": "town-expansion-r1",
+    "external_id": "RRCH-SURVEYOR:REMOTE-STAIR",
+    "parent_id": null,
+    "name": "Rrch Surveyor Remote Stair",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -129,
+      "maxX": -127,
+      "minZ": -252,
+      "maxZ": -245,
+      "minY": 64,
+      "maxY": 72
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_640c44ea53f787600e3df781",
+    "project_id": "town-expansion-r1",
+    "external_id": "SCO-G-FIELD-GEAR",
+    "parent_id": "wft_db7d62a8ba73545ce532b997",
+    "name": "field gear, drying and equipment room",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -80,
+      "maxX": -74,
+      "minZ": -257,
+      "maxZ": -247,
+      "minY": 65,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_07a2bd3e1b68c0c5f403316f",
+    "project_id": "town-expansion-r1",
+    "external_id": "SCO-G-GREAT",
+    "parent_id": "wft_db7d62a8ba73545ce532b997",
+    "name": "great room and hearth",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -62,
+      "maxX": -59,
+      "minZ": -244,
+      "maxZ": -239,
+      "minY": 65,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_1a0ad8ae5577ff0e25b9fedb",
+    "project_id": "town-expansion-r1",
+    "external_id": "SCO-G-KITCHEN-DINING",
+    "parent_id": "wft_db7d62a8ba73545ce532b997",
+    "name": "dining, kitchen, pantry and scullery",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -62,
+      "maxX": -59,
+      "minZ": -237,
+      "maxZ": -234,
+      "minY": 65,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_e46c0ded57afe2d4e6b6ec9b",
+    "project_id": "town-expansion-r1",
+    "external_id": "SCO-G-ROUTE-OFFICE",
+    "parent_id": "wft_db7d62a8ba73545ce532b997",
+    "name": "route-planning office and briefing table",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -64,
+      "maxX": -59,
+      "minZ": -257,
+      "maxZ": -247,
+      "minY": 65,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_3fed86fbd22f0c45b8cac695",
+    "project_id": "town-expansion-r1",
+    "external_id": "SCO-G-STAIR-LOBBY",
+    "parent_id": "wft_db7d62a8ba73545ce532b997",
+    "name": "entry and broad main stair",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -72,
+      "maxX": -66,
+      "minZ": -257,
+      "maxZ": -247,
+      "minY": 65,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_be7e9cc76acac3ab8174035d",
+    "project_id": "town-expansion-r1",
+    "external_id": "SCO-GARAGE-4",
+    "parent_id": "wft_db7d62a8ba73545ce532b997",
+    "name": "Scott House mini-mansion attached automotive garage",
+    "kind": "parking",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -81,
+      "maxX": -64,
+      "minZ": -245,
+      "maxZ": -233,
+      "minY": 64,
+      "maxY": 71
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_9cd481a871068bc1befb301d",
+    "project_id": "town-expansion-r1",
+    "external_id": "SCO-L2-BRIEFING-LIBRARY",
+    "parent_id": "wft_db7d62a8ba73545ce532b997",
+    "name": "briefing library and route archive",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -63,
+      "maxX": -59,
+      "minZ": -257,
+      "maxZ": -247,
+      "minY": 73,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_adc44458e2e06d5d02c80469",
+    "project_id": "town-expansion-r1",
+    "external_id": "SCO-L2-GUEST-A",
+    "parent_id": "wft_db7d62a8ba73545ce532b997",
+    "name": "guest/family bedroom",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -71,
+      "maxX": -65,
+      "minZ": -257,
+      "maxZ": -247,
+      "minY": 73,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_7d0253631090aa33b93b018a",
+    "project_id": "town-expansion-r1",
+    "external_id": "SCO-L2-GUEST-B",
+    "parent_id": "wft_db7d62a8ba73545ce532b997",
+    "name": "guest/family bedroom",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -80,
+      "maxX": -72,
+      "minZ": -244,
+      "maxZ": -234,
+      "minY": 73,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_da3e9c35cf7af44acb50ab7a",
+    "project_id": "town-expansion-r1",
+    "external_id": "SCO-L2-PRIMARY",
+    "parent_id": "wft_db7d62a8ba73545ce532b997",
+    "name": "primary bedroom, dressing and bath",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -80,
+      "maxX": -73,
+      "minZ": -257,
+      "maxZ": -247,
+      "minY": 73,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_8afb7f342c56a2dd7568c50b",
+    "project_id": "town-expansion-r1",
+    "external_id": "SCO-L2-RED-SUITE",
+    "parent_id": "wft_db7d62a8ba73545ce532b997",
+    "name": "adult-only, non-graphic furnished private red suite",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -70,
+      "maxX": -64,
+      "minZ": -244,
+      "maxZ": -234,
+      "minY": 73,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_315a4744f418b0d39ff444f0",
+    "project_id": "town-expansion-r1",
+    "external_id": "SCO-L2-SITTING",
+    "parent_id": "wft_db7d62a8ba73545ce532b997",
+    "name": "upper sitting room and linen",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -62,
+      "maxX": -59,
+      "minZ": -244,
+      "maxZ": -234,
+      "minY": 73,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_7777687c585c547034b9ec23",
+    "project_id": "town-expansion-r1",
+    "external_id": "STW-G-DINING",
+    "parent_id": "wft_f210d57904ab63b662355a9d",
+    "name": "formal dining",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -78,
+      "maxX": -72,
+      "minZ": -297,
+      "maxZ": -284,
+      "minY": 70,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_5ab1c7c2d6187b1a70472d8b",
+    "project_id": "town-expansion-r1",
+    "external_id": "STW-G-ENTRY",
+    "parent_id": "wft_f210d57904ab63b662355a9d",
+    "name": "entry, cloak and stair",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -78,
+      "maxX": -73,
+      "minZ": -308,
+      "maxZ": -300,
+      "minY": 70,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_15b5624f44894e7cc86276d9",
+    "project_id": "town-expansion-r1",
+    "external_id": "STW-G-GREAT",
+    "parent_id": "wft_f210d57904ab63b662355a9d",
+    "name": "great room and hearth",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -63,
+      "maxX": -59,
+      "minZ": -308,
+      "maxZ": -299,
+      "minY": 70,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_a6d811211ec8f658e44c80a7",
+    "project_id": "town-expansion-r1",
+    "external_id": "STW-G-KITCHEN",
+    "parent_id": "wft_f210d57904ab63b662355a9d",
+    "name": "kitchen, pantry and scullery",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -70,
+      "maxX": -65,
+      "minZ": -297,
+      "maxZ": -284,
+      "minY": 70,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_95bf648d8e21b60031e388ac",
+    "project_id": "town-expansion-r1",
+    "external_id": "STW-G-LIVING",
+    "parent_id": "wft_f210d57904ab63b662355a9d",
+    "name": "household sitting and service room",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -63,
+      "maxX": -59,
+      "minZ": -297,
+      "maxZ": -284,
+      "minY": 70,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_bc83b3d8245a328e1b705590",
+    "project_id": "town-expansion-r1",
+    "external_id": "STW-G-OFFICE",
+    "parent_id": "wft_f210d57904ab63b662355a9d",
+    "name": "steward office and records counter",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -71,
+      "maxX": -65,
+      "minZ": -308,
+      "maxZ": -299,
+      "minY": 70,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_f3ed235723e60a1ba403f68d",
+    "project_id": "town-expansion-r1",
+    "external_id": "STW-GARAGE-6",
+    "parent_id": "wft_f210d57904ab63b662355a9d",
+    "name": "Steward House mini-mansion attached automotive garage",
+    "kind": "parking",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -91,
+      "maxX": -79,
+      "minZ": -309,
+      "maxZ": -284,
+      "minY": 69,
+      "maxY": 76
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_a4f2c37258fab13cdee8d122",
+    "project_id": "town-expansion-r1",
+    "external_id": "STW-L2-GUEST-A",
+    "parent_id": "wft_f210d57904ab63b662355a9d",
+    "name": "guest/family bedroom",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -69,
+      "maxX": -65,
+      "minZ": -308,
+      "maxZ": -299,
+      "minY": 78,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_5de9c2145b37f4beea8fb5c6",
+    "project_id": "town-expansion-r1",
+    "external_id": "STW-L2-GUEST-B",
+    "parent_id": "wft_f210d57904ab63b662355a9d",
+    "name": "guest/family bedroom",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -63,
+      "maxX": -59,
+      "minZ": -308,
+      "maxZ": -299,
+      "minY": 78,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_8858c8fc0d94e2c9b3e7e308",
+    "project_id": "town-expansion-r1",
+    "external_id": "STW-L2-LIBRARY",
+    "parent_id": "wft_f210d57904ab63b662355a9d",
+    "name": "manager library and budget desk",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -78,
+      "maxX": -70,
+      "minZ": -297,
+      "maxZ": -284,
+      "minY": 78,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_161ac3b91193bfe8fcd3aad4",
+    "project_id": "town-expansion-r1",
+    "external_id": "STW-L2-PRIMARY",
+    "parent_id": "wft_f210d57904ab63b662355a9d",
+    "name": "primary bedroom, dressing and bath",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -78,
+      "maxX": -71,
+      "minZ": -308,
+      "maxZ": -299,
+      "minY": 78,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_1b4da9dac18636ad15b13968",
+    "project_id": "town-expansion-r1",
+    "external_id": "STW-L2-RED-SUITE",
+    "parent_id": "wft_f210d57904ab63b662355a9d",
+    "name": "adult-only, non-graphic furnished private red suite",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -68,
+      "maxX": -59,
+      "minZ": -297,
+      "maxZ": -284,
+      "minY": 78,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_d34e6e3572c5a15ebeceeab4",
+    "project_id": "town-expansion-r1",
+    "external_id": "SUR-G-DINING",
+    "parent_id": "wft_d92515fc48429e9ce797c646",
+    "name": "formal dining",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -103,
+      "maxX": -100,
+      "minZ": -244,
+      "maxZ": -234,
+      "minY": 65,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_7272578696b55b7cd05bf323",
+    "project_id": "town-expansion-r1",
+    "external_id": "SUR-G-FIELD-OFFICE",
+    "parent_id": "wft_d92515fc48429e9ce797c646",
+    "name": "field office, archives and equipment counter",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -117,
+      "maxX": -108,
+      "minZ": -257,
+      "maxZ": -247,
+      "minY": 65,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_da853a76b3eaad7f3f89cf2c",
+    "project_id": "town-expansion-r1",
+    "external_id": "SUR-G-GREAT",
+    "parent_id": "wft_d92515fc48429e9ce797c646",
+    "name": "great room and hearth",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -110,
+      "maxX": -105,
+      "minZ": -244,
+      "maxZ": -234,
+      "minY": 65,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_497ad59942e49463ee338455",
+    "project_id": "town-expansion-r1",
+    "external_id": "SUR-G-KITCHEN",
+    "parent_id": "wft_d92515fc48429e9ce797c646",
+    "name": "kitchen, pantry and scullery",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -98,
+      "maxX": -96,
+      "minZ": -244,
+      "maxZ": -234,
+      "minY": 65,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_30e78cd8fff9fc0f4a985d14",
+    "project_id": "town-expansion-r1",
+    "external_id": "SUR-G-MAP-STUDIO",
+    "parent_id": "wft_d92515fc48429e9ce797c646",
+    "name": "survey map room and plotting tables",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -128,
+      "maxX": -119,
+      "minZ": -257,
+      "maxZ": -247,
+      "minY": 65,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_9ccc20c96e206ec06a437d57",
+    "project_id": "town-expansion-r1",
+    "external_id": "SUR-G-STAIR-LOBBY",
+    "parent_id": "wft_d92515fc48429e9ce797c646",
+    "name": "entry and broad main stair",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -106,
+      "maxX": -96,
+      "minZ": -257,
+      "maxZ": -247,
+      "minY": 65,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_41ddacef3f413a7a661e0158",
+    "project_id": "town-expansion-r1",
+    "external_id": "SUR-GARAGE-4",
+    "parent_id": "wft_d92515fc48429e9ce797c646",
+    "name": "Surveyor House mini-mansion attached automotive garage",
+    "kind": "parking",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -129,
+      "maxX": -112,
+      "minZ": -245,
+      "maxZ": -233,
+      "minY": 64,
+      "maxY": 71
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_ab7ce9af2e5c85bd43732311",
+    "project_id": "town-expansion-r1",
+    "external_id": "SUR-L2-CHART-LIBRARY",
+    "parent_id": "wft_d92515fc48429e9ce797c646",
+    "name": "chart library and reading desk",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -115,
+      "maxX": -105,
+      "minZ": -257,
+      "maxZ": -247,
+      "minY": 73,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_8fcf43210d035405d4c9384c",
+    "project_id": "town-expansion-r1",
+    "external_id": "SUR-L2-GUEST-A",
+    "parent_id": "wft_d92515fc48429e9ce797c646",
+    "name": "guest/family bedroom",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -103,
+      "maxX": -96,
+      "minZ": -257,
+      "maxZ": -247,
+      "minY": 73,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_f954faf0e1503578e43ceb2a",
+    "project_id": "town-expansion-r1",
+    "external_id": "SUR-L2-GUEST-B",
+    "parent_id": "wft_d92515fc48429e9ce797c646",
+    "name": "guest/family bedroom",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -128,
+      "maxX": -117,
+      "minZ": -244,
+      "maxZ": -234,
+      "minY": 73,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_b271f15cb106190ce8056794",
+    "project_id": "town-expansion-r1",
+    "external_id": "SUR-L2-PRIMARY",
+    "parent_id": "wft_d92515fc48429e9ce797c646",
+    "name": "primary bedroom, dressing and bath",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -128,
+      "maxX": -117,
+      "minZ": -257,
+      "maxZ": -247,
+      "minY": 73,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_4a48e90fdb96f322500cad60",
+    "project_id": "town-expansion-r1",
+    "external_id": "SUR-L2-RED-SUITE",
+    "parent_id": "wft_d92515fc48429e9ce797c646",
+    "name": "adult-only, non-graphic furnished private red suite",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -115,
+      "maxX": -104,
+      "minZ": -244,
+      "maxZ": -234,
+      "minY": 73,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_fca8106f6c2ede0e00329c1c",
+    "project_id": "town-expansion-r1",
+    "external_id": "SUR-L2-SITTING",
+    "parent_id": "wft_d92515fc48429e9ce797c646",
+    "name": "upper sitting room and linen",
+    "kind": "room",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -102,
+      "maxX": -96,
+      "minZ": -244,
+      "maxZ": -234,
+      "minY": 73,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_b83db3be2ffd4c257c00d8ab",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ATTACHED-GARAGE-C02",
+    "parent_id": null,
+    "name": "Te Attached Garage C02",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -79,
+      "maxX": -68,
+      "minZ": 6,
+      "maxZ": 50,
+      "minY": 64,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_ac3d6eeba7213b59a857a72e",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ATTACHED-GARAGE-C03",
+    "parent_id": null,
+    "name": "Te Attached Garage C03",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 68,
+      "maxX": 79,
+      "minZ": 39,
+      "maxZ": 51,
+      "minY": 64,
+      "maxY": 84
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_58acaa631186964186655ebf",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ATTACHED-GARAGE-C04",
+    "parent_id": null,
+    "name": "Te Attached Garage C04",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -79,
+      "maxX": -68,
+      "minZ": -61,
+      "maxZ": -50,
+      "minY": 64,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_07e0f44dc0759eb56b7300ca",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ATTACHED-GARAGE-C05",
+    "parent_id": null,
+    "name": "Te Attached Garage C05",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 68,
+      "maxX": 79,
+      "minZ": -61,
+      "maxZ": -50,
+      "minY": 64,
+      "maxY": 85
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_1d0e02a4e44607683274ea37",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ATTACHED-GARAGE-C06",
+    "parent_id": null,
+    "name": "Te Attached Garage C06",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -79,
+      "maxX": -68,
+      "minZ": -202,
+      "maxZ": -179,
+      "minY": 64,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_74fd915fd7fad504c787681f",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ATTACHED-GARAGE-C07",
+    "parent_id": null,
+    "name": "Te Attached Garage C07",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 68,
+      "maxX": 78,
+      "minZ": -161,
+      "maxZ": -145,
+      "minY": 64,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_6ae725cf50b043ccd88a4b60",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ATTACHED-GARAGE-H01",
+    "parent_id": null,
+    "name": "Te Attached Garage H01",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -55,
+      "maxX": -46,
+      "minZ": 42,
+      "maxZ": 66,
+      "minY": 64,
+      "maxY": 72
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_777e0ef11be3ea9818fe8a45",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ATTACHED-GARAGE-H02",
+    "parent_id": null,
+    "name": "Te Attached Garage H02",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -55,
+      "maxX": -41,
+      "minZ": 0,
+      "maxZ": 10,
+      "minY": 64,
+      "maxY": 72
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_4c1acbf819ccf3b46b379d62",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ATTACHED-GARAGE-H03",
+    "parent_id": null,
+    "name": "Te Attached Garage H03",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -55,
+      "maxX": -46,
+      "minZ": -53,
+      "maxZ": -37,
+      "minY": 64,
+      "maxY": 72
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_d0c95a926e44b435b31f82bd",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ATTACHED-GARAGE-H04",
+    "parent_id": null,
+    "name": "Te Attached Garage H04",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -55,
+      "maxX": -43,
+      "minZ": -101,
+      "maxZ": -91,
+      "minY": 64,
+      "maxY": 72
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_045aeea08ac69bd7c1d4ddd5",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ATTACHED-GARAGE-H05",
+    "parent_id": null,
+    "name": "Te Attached Garage H05",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -55,
+      "maxX": -46,
+      "minZ": -154,
+      "maxZ": -144,
+      "minY": 64,
+      "maxY": 72
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_984b810c8cae09f89ddc4e62",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ATTACHED-GARAGE-H06",
+    "parent_id": null,
+    "name": "Te Attached Garage H06",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -56,
+      "maxX": -47,
+      "minZ": -202,
+      "maxZ": -192,
+      "minY": 64,
+      "maxY": 72
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_f302d426172ab996466e1970",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ATTACHED-GARAGE-H07",
+    "parent_id": null,
+    "name": "Te Attached Garage H07",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 20,
+      "maxX": 52,
+      "minZ": 21,
+      "maxZ": 42,
+      "minY": 69,
+      "maxY": 80
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_d73463d3a58e88ae308e291a",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ATTACHED-GARAGE-H08",
+    "parent_id": null,
+    "name": "Te Attached Garage H08",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 43,
+      "maxX": 59,
+      "minZ": -3,
+      "maxZ": 13,
+      "minY": 64,
+      "maxY": 79
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_a8945ff4fef4681b4a9decdd",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ATTACHED-GARAGE-H09",
+    "parent_id": null,
+    "name": "Te Attached Garage H09",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 45,
+      "maxX": 59,
+      "minZ": -57,
+      "maxZ": -41,
+      "minY": 64,
+      "maxY": 84
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_311f51ea521d90aefd020daf",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ATTACHED-GARAGE-H10",
+    "parent_id": null,
+    "name": "Te Attached Garage H10",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 45,
+      "maxX": 54,
+      "minZ": -106,
+      "maxZ": -90,
+      "minY": 64,
+      "maxY": 72
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_228d31dcd7a0ebf4b5767ee9",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ATTACHED-GARAGE-H11",
+    "parent_id": null,
+    "name": "Te Attached Garage H11",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 38,
+      "maxX": 54,
+      "minZ": -151,
+      "maxZ": -141,
+      "minY": 64,
+      "maxY": 71
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_28a0cae2816d7fd075e8b7af",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ATTACHED-GARAGE-H12",
+    "parent_id": null,
+    "name": "Te Attached Garage H12",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 42,
+      "maxX": 53,
+      "minZ": -199,
+      "maxZ": -188,
+      "minY": 64,
+      "maxY": 71
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_0d6849b68fd4a8053853e4be",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-COURT-01",
+    "parent_id": null,
+    "name": "Te Court 01",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -104,
+      "maxX": -66,
+      "minZ": -365,
+      "maxZ": -357,
+      "minY": 67,
+      "maxY": 74
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_17f5393002c3b0d92ad6a993",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-GUILDHALL-01",
+    "parent_id": null,
+    "name": "Te Guildhall 01",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -65,
+      "maxX": -6,
+      "minZ": -463,
+      "maxZ": -408,
+      "minY": 51,
+      "maxY": 99
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_55ee83cd3505d67974c44f56",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-200-SEAT-AUDITORIUM",
+    "parent_id": null,
+    "name": "Te Ia 200 Seat Auditorium",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 804,
+      "maxX": 830,
+      "minZ": -514,
+      "maxZ": -477,
+      "minY": 72,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_890b137ee654108a696f9c10",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-200-SEAT-CINEMA",
+    "parent_id": null,
+    "name": "Te Ia 200 Seat Cinema",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 831,
+      "maxX": 857,
+      "minZ": -514,
+      "maxZ": -477,
+      "minY": 72,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_a44ea50e51e50fb9e648b32c",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-CONCORD",
+    "parent_id": null,
+    "name": "Te Ia Concord",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 600,
+      "maxX": 808,
+      "minZ": -428,
+      "maxZ": -346,
+      "minY": 39,
+      "maxY": 90
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_f23f0671539fbf374976b33c",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-CONCORD-BAR",
+    "parent_id": null,
+    "name": "Te Ia Concord Bar",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 649,
+      "maxX": 676,
+      "minZ": -370,
+      "maxZ": -350,
+      "minY": 49,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_6283967061519abb490989b4",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-CONCORD-BROADCAST-EXCHANGE",
+    "parent_id": null,
+    "name": "Te Ia Concord Broadcast Exchange",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 680,
+      "maxX": 730,
+      "minZ": -425,
+      "maxZ": -350,
+      "minY": 38,
+      "maxY": 145
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_bcb38c71aedf9111137043d8",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-CONCORD-DANCE",
+    "parent_id": null,
+    "name": "Te Ia Concord Dance",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 773,
+      "maxX": 809,
+      "minZ": -386,
+      "maxZ": -362,
+      "minY": 65,
+      "maxY": 82
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_80001e42863c55b3d6e9c501",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-CONCORD-GAS",
+    "parent_id": null,
+    "name": "Te Ia Concord Gas",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 649,
+      "maxX": 676,
+      "minZ": -416,
+      "maxZ": -396,
+      "minY": 65,
+      "maxY": 82
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_c3d73391ef36988b1fc5cbf2",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-CONCORD-MOTEL",
+    "parent_id": null,
+    "name": "Te Ia Concord Motel",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 730,
+      "maxX": 773,
+      "minZ": -386,
+      "maxZ": -349,
+      "minY": 60,
+      "maxY": 80
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_2fa49db3fa5dcef7ac27b098",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-CONCORD-POST",
+    "parent_id": null,
+    "name": "Te Ia Concord Post",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 649,
+      "maxX": 676,
+      "minZ": -391,
+      "maxZ": -373,
+      "minY": 66,
+      "maxY": 82
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_df478b58e7af9bd2d4716179",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-CONCORD-SATELLITE-PAD",
+    "parent_id": null,
+    "name": "Te Ia Concord Satellite Pad",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 737,
+      "maxX": 769,
+      "minZ": -425,
+      "maxZ": -390,
+      "minY": 63,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_751c71fcc48f650bf0a65e55",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-CONCORD-SOUNDSTAGE-ANNEX",
+    "parent_id": null,
+    "name": "Te Ia Concord Soundstage Annex",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 656,
+      "maxX": 804,
+      "minZ": -491,
+      "maxZ": -425,
+      "minY": 49,
+      "maxY": 96
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_9919f85802f9e06f2245a63e",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-CONCORD-THEATER",
+    "parent_id": null,
+    "name": "Te Ia Concord Theater",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 773,
+      "maxX": 809,
+      "minZ": -426,
+      "maxZ": -389,
+      "minY": 58,
+      "maxY": 81
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_527fd6a04ea8aa62633901c9",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM01",
+    "parent_id": null,
+    "name": "Te Ia Data Dm01",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 720,
+      "maxX": 764,
+      "minZ": -701,
+      "maxZ": -663,
+      "minY": 59,
+      "maxY": 93
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_9d7321dcf2c3ac8c08009b3a",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM02",
+    "parent_id": null,
+    "name": "Te Ia Data Dm02",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 767,
+      "maxX": 811,
+      "minZ": -701,
+      "maxZ": -663,
+      "minY": 47,
+      "maxY": 92
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_be440cd4d36395be29199a40",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM03",
+    "parent_id": null,
+    "name": "Te Ia Data Dm03",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 720,
+      "maxX": 764,
+      "minZ": -658,
+      "maxZ": -620,
+      "minY": 68,
+      "maxY": 92
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_556f6f363f2e4a00289c71c7",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM04",
+    "parent_id": null,
+    "name": "Te Ia Data Dm04",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 767,
+      "maxX": 811,
+      "minZ": -658,
+      "maxZ": -620,
+      "minY": 69,
+      "maxY": 93
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_647bfe5995966f8277375eba",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM05",
+    "parent_id": null,
+    "name": "Te Ia Data Dm05",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 814,
+      "maxX": 858,
+      "minZ": -701,
+      "maxZ": -663,
+      "minY": 64,
+      "maxY": 93
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_c58fccbc08a5999e7491b344",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM06",
+    "parent_id": null,
+    "name": "Te Ia Data Dm06",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 673,
+      "maxX": 717,
+      "minZ": -701,
+      "maxZ": -663,
+      "minY": 66,
+      "maxY": 91
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_244b5827e3bc1e5a4e2841c7",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM07",
+    "parent_id": null,
+    "name": "Te Ia Data Dm07",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 814,
+      "maxX": 858,
+      "minZ": -658,
+      "maxZ": -620,
+      "minY": 64,
+      "maxY": 89
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_acae1a7b4b911ec417a58e5b",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM08",
+    "parent_id": null,
+    "name": "Te Ia Data Dm08",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 861,
+      "maxX": 905,
+      "minZ": -658,
+      "maxZ": -620,
+      "minY": 53,
+      "maxY": 86
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_bb6b6faca993ead54539d9a0",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM09",
+    "parent_id": null,
+    "name": "Te Ia Data Dm09",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 579,
+      "maxX": 623,
+      "minZ": -529,
+      "maxZ": -491,
+      "minY": 62,
+      "maxY": 89
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_86d03ee3e556777dde95ec77",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM10",
+    "parent_id": null,
+    "name": "Te Ia Data Dm10",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 743,
+      "maxX": 800,
+      "minZ": -550,
+      "maxZ": -500,
+      "minY": 65,
+      "maxY": 94
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_30ae094d5929d67a9b52c20a",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM11",
+    "parent_id": null,
+    "name": "Te Ia Data Dm11",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 626,
+      "maxX": 670,
+      "minZ": -529,
+      "maxZ": -491,
+      "minY": 57,
+      "maxY": 87
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_7fbc607255b08dcca2e4f6a2",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM12",
+    "parent_id": null,
+    "name": "Te Ia Data Dm12",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 673,
+      "maxX": 717,
+      "minZ": -529,
+      "maxZ": -491,
+      "minY": 64,
+      "maxY": 92
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_c7ca1f58ad48af291cf66d8f",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM13",
+    "parent_id": null,
+    "name": "Te Ia Data Dm13",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 955,
+      "maxX": 999,
+      "minZ": -572,
+      "maxZ": -534,
+      "minY": 63,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_6c8977a49719ddbc5b9935a1",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM14",
+    "parent_id": null,
+    "name": "Te Ia Data Dm14",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 861,
+      "maxX": 905,
+      "minZ": -443,
+      "maxZ": -405,
+      "minY": 46,
+      "maxY": 92
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_4857a4465f2d693454198635",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM15",
+    "parent_id": null,
+    "name": "Te Ia Data Dm15",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 908,
+      "maxX": 952,
+      "minZ": -443,
+      "maxZ": -405,
+      "minY": 62,
+      "maxY": 92
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_24966ee8c2bede78ed21488c",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM16",
+    "parent_id": null,
+    "name": "Te Ia Data Dm16",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 955,
+      "maxX": 999,
+      "minZ": -443,
+      "maxZ": -405,
+      "minY": 67,
+      "maxY": 93
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_1630633db889b4dec436bc71",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM17",
+    "parent_id": null,
+    "name": "Te Ia Data Dm17",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 861,
+      "maxX": 905,
+      "minZ": -400,
+      "maxZ": -362,
+      "minY": 68,
+      "maxY": 92
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_d126030c12c4149b6e5f5883",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM18",
+    "parent_id": null,
+    "name": "Te Ia Data Dm18",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 908,
+      "maxX": 952,
+      "minZ": -400,
+      "maxZ": -362,
+      "minY": 70,
+      "maxY": 100
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_a038aeeb8851c20fceba9415",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM40",
+    "parent_id": null,
+    "name": "Te Ia Data Dm40",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 814,
+      "maxX": 858,
+      "minZ": -357,
+      "maxZ": -319,
+      "minY": 63,
+      "maxY": 89
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_bb3c6b0c0d60eaea3e718444",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM41",
+    "parent_id": null,
+    "name": "Te Ia Data Dm41",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 861,
+      "maxX": 905,
+      "minZ": -357,
+      "maxZ": -319,
+      "minY": 48,
+      "maxY": 90
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_d7e770d4bbcc6e1d7c82938d",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM42",
+    "parent_id": null,
+    "name": "Te Ia Data Dm42",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 908,
+      "maxX": 952,
+      "minZ": -357,
+      "maxZ": -319,
+      "minY": 68,
+      "maxY": 98
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_6ecfdd9c6ac7cea1c2b88f5e",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM43",
+    "parent_id": null,
+    "name": "Te Ia Data Dm43",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 814,
+      "maxX": 858,
+      "minZ": -314,
+      "maxZ": -276,
+      "minY": 63,
+      "maxY": 91
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_17389110cd84d7d7777c26f4",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM44",
+    "parent_id": null,
+    "name": "Te Ia Data Dm44",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 861,
+      "maxX": 905,
+      "minZ": -314,
+      "maxZ": -276,
+      "minY": 56,
+      "maxY": 87
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_c4655582034ce96ab4fc7108",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DATA-DM45",
+    "parent_id": null,
+    "name": "Te Ia Data Dm45",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 908,
+      "maxX": 952,
+      "minZ": -314,
+      "maxZ": -276,
+      "minY": 61,
+      "maxY": 90
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_77a5d468f3036f8af1810f22",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DISTRICT-GOOGLE",
+    "parent_id": null,
+    "name": "Te Ia District Google",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 1155,
+      "maxX": 1255,
+      "minZ": -550,
+      "maxZ": -472,
+      "minY": 64,
+      "maxY": 92
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_69a7a3fc954849745197935b",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DISTRICT-GOOGLE-MODULAR_UTILITY_BUILDING_A",
+    "parent_id": null,
+    "name": "Te Ia District Google Modular Utility Building A",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 1159,
+      "maxX": 1181,
+      "minZ": -493,
+      "maxZ": -479,
+      "minY": 68,
+      "maxY": 86
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_d995d63db209ed70265371e6",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DISTRICT-GOOGLE-MODULAR_UTILITY_BUILDING_B",
+    "parent_id": null,
+    "name": "Te Ia District Google Modular Utility Building B",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 1185,
+      "maxX": 1207,
+      "minZ": -493,
+      "maxZ": -479,
+      "minY": 67,
+      "maxY": 85
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_0ebb7eb09f0e592870608c4a",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DISTRICT-GOOGLE-REPAIR_STAGING_BUILDING",
+    "parent_id": null,
+    "name": "Te Ia District Google Repair Staging Building",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 1237,
+      "maxX": 1251,
+      "minZ": -493,
+      "maxZ": -479,
+      "minY": 68,
+      "maxY": 85
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_ff13615a7623bc8ee65c4f3a",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DISTRICT-GOOGLE-SUBSTATION",
+    "parent_id": null,
+    "name": "Te Ia District Google Substation",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 1241,
+      "maxX": 1253,
+      "minZ": -544,
+      "maxZ": -520,
+      "minY": 64,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_38cff0bfaeb13445958a09e7",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DISTRICT-GOOGLE-VISITOR_OPERATIONS_BUILDING",
+    "parent_id": null,
+    "name": "Te Ia District Google Visitor Operations Building",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 1211,
+      "maxX": 1233,
+      "minZ": -493,
+      "maxZ": -479,
+      "minY": 66,
+      "maxY": 85
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_5d7e2cd189365a3ca3425ba7",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DISTRICT-LIGHTEDGE-EDGEBCC",
+    "parent_id": null,
+    "name": "Te Ia District Lightedge Edgebcc",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 1040,
+      "maxX": 1126,
+      "minZ": -380,
+      "maxZ": -297,
+      "minY": 64,
+      "maxY": 117
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_cd7f5ed83c09bb741c5bb65c",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DISTRICT-LIGHTEDGE-EDGEBCC-RECOVERY_ADMIN_BUILDING",
+    "parent_id": null,
+    "name": "Te Ia District Lightedge Edgebcc Recovery Admin Building",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 1073,
+      "maxX": 1101,
+      "minZ": -324,
+      "maxZ": -306,
+      "minY": 82,
+      "maxY": 111
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_145c5d2d335d6a7268734604",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DISTRICT-LIGHTEDGE-EDGEBCC-SERVICE_AND_REPAIR_CENTER",
+    "parent_id": null,
+    "name": "Te Ia District Lightedge Edgebcc Service And Repair Center",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 1104,
+      "maxX": 1121,
+      "minZ": -324,
+      "maxZ": -306,
+      "minY": 94,
+      "maxY": 116
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_c3475bfad3987c9590546d60",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DISTRICT-LIGHTEDGE-EDGEBCC-SUBSTATION",
+    "parent_id": null,
+    "name": "Te Ia District Lightedge Edgebcc Substation",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 1045,
+      "maxX": 1069,
+      "minZ": -323,
+      "maxZ": -305,
+      "minY": 72,
+      "maxY": 97
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_6a7523db53ee1cdf40201891",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DISTRICT-META",
+    "parent_id": null,
+    "name": "Te Ia District Meta",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 1040,
+      "maxX": 1140,
+      "minZ": -550,
+      "maxZ": -472,
+      "minY": 40,
+      "maxY": 100
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_bf2d0b5324c96556f29151ca",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DISTRICT-META-MATERIALS_RECOVERY_AND_STAFF_SUPPORT",
+    "parent_id": null,
+    "name": "Te Ia District Meta Materials Recovery And Staff Support",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 1124,
+      "maxX": 1138,
+      "minZ": -515,
+      "maxZ": -503,
+      "minY": 73,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_23d8eb8b2d6cc61c67103fe6",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DISTRICT-META-OPERATIONS_TRAINING_CENTER",
+    "parent_id": null,
+    "name": "Te Ia District Meta Operations Training Center",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 1124,
+      "maxX": 1138,
+      "minZ": -544,
+      "maxZ": -519,
+      "minY": 72,
+      "maxY": 89
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_f2d9dfa3dd98eddf72a5591c",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DISTRICT-META-SUBSTATION",
+    "parent_id": null,
+    "name": "Te Ia District Meta Substation",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 1124,
+      "maxX": 1138,
+      "minZ": -500,
+      "maxZ": -480,
+      "minY": 71,
+      "maxY": 80
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_07b427473edc10d828cffd4a",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DISTRICT-ROAD-NETWORK",
+    "parent_id": null,
+    "name": "Te Ia District Road Network",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 567,
+      "maxX": 1283,
+      "minZ": -713,
+      "maxZ": -264,
+      "minY": 62,
+      "maxY": 100
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_7a399266df142ccb1e5e92b1",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DISTRICT-SHARED-GRID",
+    "parent_id": null,
+    "name": "Te Ia District Shared Grid",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 1000,
+      "maxX": 1300,
+      "minZ": -620,
+      "maxZ": -172,
+      "minY": 63,
+      "maxY": 135
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_44dbb1a1d18f847b774b3548",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DISTRICT-WORKER-COMMONS",
+    "parent_id": null,
+    "name": "Te Ia District Worker Commons",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 790,
+      "maxX": 1258,
+      "minZ": -544,
+      "maxZ": -189,
+      "minY": 43,
+      "maxY": 97
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_86d95c962ba542946694d0eb",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-DISTRICT-WORKER-COMMONS-DISC-GOLF",
+    "parent_id": null,
+    "name": "Te Ia District Worker Commons Disc Golf",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 1110,
+      "maxX": 1273,
+      "minZ": -298,
+      "maxZ": -201,
+      "minY": 58,
+      "maxY": 127
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_5a92d67aa0279d1016b6127e",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-FUTURE-EXPANSION",
+    "parent_id": null,
+    "name": "Te Ia Future Expansion",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 805,
+      "maxX": 951,
+      "minZ": -255,
+      "maxZ": -235,
+      "minY": 82,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_420d79275efa1ab9200b8024",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-HOLDOUT-HOME",
+    "parent_id": null,
+    "name": "Te Ia Holdout Home",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 573,
+      "maxX": 625,
+      "minZ": -176,
+      "maxZ": -108,
+      "minY": 63,
+      "maxY": 86
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_69f96100d9662c2216017856",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-HOLDOUT-HOME-GARAGE",
+    "parent_id": null,
+    "name": "Te Ia Holdout Home Garage",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 574,
+      "maxX": 595,
+      "minZ": -176,
+      "maxZ": -150,
+      "minY": 69,
+      "maxY": 79
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_082aca1dff753c77e15889bb",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-HOLDOUT-HOME-ROAD",
+    "parent_id": null,
+    "name": "Te Ia Holdout Home Road",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 557,
+      "maxX": 588,
+      "minZ": -222,
+      "maxZ": -173,
+      "minY": 61,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_56f9d65714d58900acfb00f2",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-HOLDOUT-HOME-SHELTER",
+    "parent_id": null,
+    "name": "Te Ia Holdout Home Shelter",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 602,
+      "maxX": 624,
+      "minZ": -160,
+      "maxZ": -130,
+      "minY": 38,
+      "maxY": 72
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_b8011ae8eab56aeea3560cbb",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-HOLDOUT-HOME-TREE-PLAYHOUSE",
+    "parent_id": null,
+    "name": "Te Ia Holdout Home Tree Playhouse",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 600,
+      "maxX": 619,
+      "minZ": -127,
+      "maxZ": -108,
+      "minY": 64,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_34bb2f2ccfe633b5a0f5dcd5",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-INFO-ANNEX",
+    "parent_id": null,
+    "name": "Te Ia Info Annex",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 744,
+      "maxX": 804,
+      "minZ": -512,
+      "maxZ": -435,
+      "minY": 20,
+      "maxY": 80
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_453a76dbbdc3321f2fb5544f",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-MEGACAMPUS-POLLINATOR",
+    "parent_id": null,
+    "name": "Te Ia Megacampus Pollinator",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 697,
+      "maxX": 810,
+      "minZ": -626,
+      "maxZ": -575,
+      "minY": 67,
+      "maxY": 73
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_0e2a4ab115a6778e566ae28c",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-NOC",
+    "parent_id": null,
+    "name": "Te Ia Noc",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 804,
+      "maxX": 857,
+      "minZ": -550,
+      "maxZ": -517,
+      "minY": 73,
+      "maxY": 92
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_ac746c93a3780f27b58a33a4",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-OUTER-COMPOUND",
+    "parent_id": null,
+    "name": "Te Ia Outer Compound",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 465,
+      "maxX": 563,
+      "minZ": -310,
+      "maxZ": -180,
+      "minY": 74,
+      "maxY": 103
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_b1805dd1cc974b61726df41e",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-OUTER-WAREHOUSE-A",
+    "parent_id": null,
+    "name": "Te Ia Outer Warehouse A",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 469,
+      "maxX": 511,
+      "minZ": -301,
+      "maxZ": -259,
+      "minY": 74,
+      "maxY": 92
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_e8a5a353499c50d11bf42678",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-OUTER-WAREHOUSE-B",
+    "parent_id": null,
+    "name": "Te Ia Outer Warehouse B",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 515,
+      "maxX": 557,
+      "minZ": -301,
+      "maxZ": -259,
+      "minY": 74,
+      "maxY": 93
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_c0783f677c55266ce4a5ea48",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-POWER-CAMPUS",
+    "parent_id": null,
+    "name": "Te Ia Power Campus",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 675,
+      "maxX": 719,
+      "minZ": -605,
+      "maxZ": -569,
+      "minY": 77,
+      "maxY": 87
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_e89635d90c2b6e25e3bf38b2",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-RAVENSREACH-DIRT-ROAD",
+    "parent_id": null,
+    "name": "Te Ia Ravensreach Dirt Road",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 130,
+      "maxX": 470,
+      "minZ": -248,
+      "maxZ": -217,
+      "minY": 69,
+      "maxY": 82
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_5d9389ba99ac0bebca70b280",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-STAFF-LODGE",
+    "parent_id": null,
+    "name": "Te Ia Staff Lodge",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 979,
+      "maxX": 1025,
+      "minZ": -331,
+      "maxZ": -289,
+      "minY": 89,
+      "maxY": 117
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_93022eeca2cff6b7cdb1336c",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-IA-VENUE-BOH",
+    "parent_id": null,
+    "name": "Te Ia Venue Boh",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 804,
+      "maxX": 857,
+      "minZ": -477,
+      "maxZ": -459,
+      "minY": 73,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_90156d34b46103d92276ddd6",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-LIB-GUILD-SECRET-01",
+    "parent_id": null,
+    "name": "Te Lib Guild Secret 01",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -111,
+      "maxX": -58,
+      "minZ": -442,
+      "maxZ": -423,
+      "minY": 58,
+      "maxY": 64
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_d77a45a35fd2bf34fca52206",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-LIBRARY-04X",
+    "parent_id": null,
+    "name": "Te Library 04x",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -178,
+      "maxX": -111,
+      "minZ": -448,
+      "maxZ": -403,
+      "minY": 44,
+      "maxY": 91
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_58d0517cf960753eef3d41e3",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-LIBRARY-TERRACE",
+    "parent_id": null,
+    "name": "Te Library Terrace",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -110,
+      "maxX": -94,
+      "minZ": -447,
+      "maxZ": -432,
+      "minY": 67,
+      "maxY": 82
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_bc01e69ad93ce7fcd8aed542",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-LONGHOUSE-01",
+    "parent_id": null,
+    "name": "Te Longhouse 01",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -105,
+      "maxX": -66,
+      "minZ": -357,
+      "maxZ": -341,
+      "minY": 67,
+      "maxY": 90
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_19fb84933823759c1bb62660",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-MAINSTREET-EMPLOYEE-LOUNGE",
+    "parent_id": null,
+    "name": "Te Mainstreet Employee Lounge",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -95,
+      "maxX": -72,
+      "minZ": 89,
+      "maxZ": 122,
+      "minY": 63,
+      "maxY": 77
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_26fe79111710bee470dcccee",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-MSA-B01-GUEST-SERVICES-DESTINATION",
+    "parent_id": null,
+    "name": "Te Msa B01 Guest Services Destination",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -72,
+      "maxX": 72,
+      "minZ": 90,
+      "maxZ": 166,
+      "minY": 50,
+      "maxY": 100
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_80a7b747356f598b057f262a",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-MSA-UW01-DRY-CORE",
+    "parent_id": null,
+    "name": "Te Msa Uw01 Dry Core",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 31,
+      "maxX": 88,
+      "minZ": 193,
+      "maxZ": 296,
+      "minY": 40,
+      "maxY": 74
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_057ffc501ef2511c90fc65b8",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-MSA-UW01-DRY-EAST-WINGS",
+    "parent_id": null,
+    "name": "Te Msa Uw01 Dry East Wings",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 86,
+      "maxX": 125,
+      "minZ": 200,
+      "maxZ": 296,
+      "minY": 40,
+      "maxY": 60
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_92efa733bfec629be557f009",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OASIS-01",
+    "parent_id": null,
+    "name": "Te Oasis 01",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -248,
+      "maxX": -209,
+      "minZ": -510,
+      "maxZ": -482,
+      "minY": 70,
+      "maxY": 86
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_888d86906a1650138d84742b",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OASIS-BUNKER-01",
+    "parent_id": null,
+    "name": "Te Oasis Bunker 01",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -252,
+      "maxX": -208,
+      "minZ": -548,
+      "maxZ": -513,
+      "minY": 44,
+      "maxY": 69
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_973d0b3bc3bea76f02f5eae4",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-DISH-FARM",
+    "parent_id": null,
+    "name": "Te Obs Dish Farm",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 240,
+      "maxX": 271,
+      "minZ": 100,
+      "maxZ": 122,
+      "minY": 104,
+      "maxY": 119
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_4e4d26e28a5099f4a641a480",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-ESTATE-SOUTH-COURT",
+    "parent_id": null,
+    "name": "Te Obs Estate South Court",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 178,
+      "maxX": 232,
+      "minZ": 177,
+      "maxZ": 218,
+      "minY": 103,
+      "maxY": 116
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_87b1e5a65c3a1b20d990db1c",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-NIGHT-SKY-TERRACE",
+    "parent_id": null,
+    "name": "Te Obs Night Sky Terrace",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 175,
+      "maxX": 235,
+      "minZ": 110,
+      "maxZ": 136,
+      "minY": 117,
+      "maxY": 122
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_cf4898921edf4770254e1de2",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-OWNER-EAST-ARRIVAL-GALLERY",
+    "parent_id": null,
+    "name": "Te Obs Owner East Arrival Gallery",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 268,
+      "maxX": 354,
+      "minZ": 153,
+      "maxZ": 174,
+      "minY": 109,
+      "maxY": 120
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_7d8b2f5cbd94a13eca2d958f",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-OWNER-EAST-ASCENT",
+    "parent_id": null,
+    "name": "Te Obs Owner East Ascent",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 348,
+      "maxX": 377,
+      "minZ": 150,
+      "maxZ": 181,
+      "minY": -46,
+      "maxY": 119
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_b5bd4f7245692e59a75019a9",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-OWNER-MEGA-ESTATE",
+    "parent_id": null,
+    "name": "Te Obs Owner Mega Estate",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 149,
+      "maxX": 271,
+      "minZ": 124,
+      "maxZ": 214,
+      "minY": 75,
+      "maxY": 127
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_6c8a3488e4855f87df912992",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-OWNER-RED-ROOM",
+    "parent_id": null,
+    "name": "Te Obs Owner Red Room",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 152,
+      "maxX": 171,
+      "minZ": 150,
+      "maxZ": 175,
+      "minY": 113,
+      "maxY": 118
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_c4f5552969c9529f04cda90a",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-OWNER-SPA",
+    "parent_id": null,
+    "name": "Te Obs Owner Spa",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 149,
+      "maxX": 175,
+      "minZ": 195,
+      "maxZ": 221,
+      "minY": 105,
+      "maxY": 117
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_806b091bfcdcf7df3702c982",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-OWNER-SPA-POOL",
+    "parent_id": null,
+    "name": "Te Obs Owner Spa Pool",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 151,
+      "maxX": 167,
+      "minZ": 197,
+      "maxZ": 211,
+      "minY": 106,
+      "maxY": 109
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_abf38d79c078ed5aff92dca7",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-PORTAL-DATACAMPUS",
+    "parent_id": null,
+    "name": "Te Obs Portal Datacampus",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 230,
+      "maxX": 245,
+      "minZ": 123,
+      "maxZ": 148,
+      "minY": 78,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_4a5e81e42e1277c2ab21bdd6",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-PORTAL-HUB-CENTRAL",
+    "parent_id": null,
+    "name": "Te Obs Portal Hub Central",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 230,
+      "maxX": 250,
+      "minZ": 145,
+      "maxZ": 165,
+      "minY": 78,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_2507808d6e56ecd07760934f",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-PORTAL-MAINSTREET",
+    "parent_id": null,
+    "name": "Te Obs Portal Mainstreet",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 246,
+      "maxX": 270,
+      "minZ": 145,
+      "maxZ": 160,
+      "minY": 78,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_48c003dacec10aa8ea560c6e",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-PORTAL-PANORAMA",
+    "parent_id": null,
+    "name": "Te Obs Portal Panorama",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 210,
+      "maxX": 234,
+      "minZ": 145,
+      "maxZ": 165,
+      "minY": 78,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_b1cdaf20d4992edeb9e922ea",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-PORTAL-RAVENROCK",
+    "parent_id": null,
+    "name": "Te Obs Portal Ravenrock",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 246,
+      "maxX": 270,
+      "minZ": 162,
+      "maxZ": 177,
+      "minY": 78,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_5cd4a2b1eab29c5b525db0ae",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-PORTAL-RAVENSREACH",
+    "parent_id": null,
+    "name": "Te Obs Portal Ravensreach",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 230,
+      "maxX": 245,
+      "minZ": 162,
+      "maxZ": 187,
+      "minY": 78,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_3eb5a210ffa56f94440ddd64",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-PORTAL-SECRET-PASSAGE",
+    "parent_id": null,
+    "name": "Te Obs Portal Secret Passage",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 211,
+      "maxX": 232,
+      "minZ": 145,
+      "maxZ": 155,
+      "minY": 89,
+      "maxY": 114
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_fd38d0347b82a7e93a31b145",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-PORTAL-SPARE-A",
+    "parent_id": null,
+    "name": "Te Obs Portal Spare A",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 247,
+      "maxX": 258,
+      "minZ": 123,
+      "maxZ": 148,
+      "minY": 78,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_806b36dbd1dda606403cfb99",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-PORTAL-SPARE-B",
+    "parent_id": null,
+    "name": "Te Obs Portal Spare B",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 260,
+      "maxX": 270,
+      "minZ": 123,
+      "maxZ": 148,
+      "minY": 78,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_f0a1d2ae4e2292a3dabda154",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-PORTAL-WESTLIGHT",
+    "parent_id": null,
+    "name": "Te Obs Portal Westlight",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 210,
+      "maxX": 229,
+      "minZ": 166,
+      "maxZ": 187,
+      "minY": 78,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_cb5690a8cb8702b80881b434",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-RETAINED-CROWN",
+    "parent_id": null,
+    "name": "Te Obs Retained Crown",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 188,
+      "maxX": 224,
+      "minZ": 141,
+      "maxZ": 161,
+      "minY": 137,
+      "maxY": 150
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_f6503c0c1d1d8b2572ee026b",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OBS-SHL-EXPANDED",
+    "parent_id": null,
+    "name": "Te Obs Shl Expanded",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 236,
+      "maxX": 274,
+      "minZ": 170,
+      "maxZ": 218,
+      "minY": 93,
+      "maxY": 111
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_766495459331f52b4ee2f24e",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OWNER-CITY-SALES-OFFICE",
+    "parent_id": null,
+    "name": "Te Owner City Sales Office",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 78,
+      "maxX": 106,
+      "minZ": -230,
+      "maxZ": -203,
+      "minY": -46,
+      "maxY": -33
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_f34a18cf610099a86a07d724",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OWNER-CORRIDOR-GRT-OBS",
+    "parent_id": null,
+    "name": "Te Owner Corridor Grt Obs",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -10,
+      "maxX": 368,
+      "minZ": -395,
+      "maxZ": 159,
+      "minY": -46,
+      "maxY": -37
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_b675295bfe63ad37ff18a4a6",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OWNER-CORRIDOR-REST-A",
+    "parent_id": null,
+    "name": "Te Owner Corridor Rest A",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 20,
+      "maxX": 55,
+      "minZ": -351,
+      "maxZ": -331,
+      "minY": -46,
+      "maxY": -34
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_90293fdb01303b86a03841bb",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OWNER-CORRIDOR-REST-B",
+    "parent_id": null,
+    "name": "Te Owner Corridor Rest B",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 20,
+      "maxX": 55,
+      "minZ": -269,
+      "maxZ": -249,
+      "minY": -46,
+      "maxY": -34
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_4df09e17917bad9b48898a99",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OWNER-CORRIDOR-REST-C",
+    "parent_id": null,
+    "name": "Te Owner Corridor Rest C",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 150,
+      "maxX": 186,
+      "minZ": -161,
+      "maxZ": -141,
+      "minY": -46,
+      "maxY": -34
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_72f0bed26b36e7268a55430a",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OWNER-CORRIDOR-REST-D",
+    "parent_id": null,
+    "name": "Te Owner Corridor Rest D",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 150,
+      "maxX": 186,
+      "minZ": -111,
+      "maxZ": -91,
+      "minY": -46,
+      "maxY": -34
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_2bdb1133a670163716ae7cdb",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OWNER-CORRIDOR-REST-E",
+    "parent_id": null,
+    "name": "Te Owner Corridor Rest E",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 172,
+      "maxX": 201,
+      "minZ": 30,
+      "maxZ": 55,
+      "minY": -46,
+      "maxY": -34
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_0637839e54c885a6b5b2968e",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OWNER-CORRIDOR-REST-F",
+    "parent_id": null,
+    "name": "Te Owner Corridor Rest F",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 235,
+      "maxX": 264,
+      "minZ": 55,
+      "maxZ": 82,
+      "minY": -46,
+      "maxY": -34
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_a82f14d7de363329092d66bf",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-OWNER-CORRIDOR-REST-G",
+    "parent_id": null,
+    "name": "Te Owner Corridor Rest G",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 326,
+      "maxX": 363,
+      "minZ": 90,
+      "maxZ": 110,
+      "minY": -46,
+      "maxY": -34
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_4d2efd74c4b47f9fdef9ae54",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV01",
+    "parent_id": null,
+    "name": "Te Pan Rv01",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -714,
+      "maxX": -610,
+      "minZ": -453,
+      "maxZ": -289,
+      "minY": 74,
+      "maxY": 98
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_44287b0a2420adc79747fbf4",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV01-CLUB",
+    "parent_id": null,
+    "name": "Te Pan Rv01 Club",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -514,
+      "maxX": -474,
+      "minZ": -357,
+      "maxZ": -318,
+      "minY": 71,
+      "maxY": 97
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_b00535b84e0aa785513427b5",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV01-CUSTOMER",
+    "parent_id": null,
+    "name": "Te Pan Rv01 Customer",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -609,
+      "maxX": -564,
+      "minZ": -451,
+      "maxZ": -411,
+      "minY": 76,
+      "maxY": 102
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_abc479d436082e5860355216",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV01-DIVE",
+    "parent_id": null,
+    "name": "Te Pan Rv01 Dive",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -514,
+      "maxX": -479,
+      "minZ": -313,
+      "maxZ": -286,
+      "minY": 71,
+      "maxY": 92
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_b9d080236a99e3b0e4d1aadc",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV01-FUEL",
+    "parent_id": null,
+    "name": "Te Pan Rv01 Fuel",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -666,
+      "maxX": -616,
+      "minZ": -294,
+      "maxZ": -252,
+      "minY": 71,
+      "maxY": 84
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_5f514319390a0b950bf7229d",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV01-REPAIR",
+    "parent_id": null,
+    "name": "Te Pan Rv01 Repair",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -668,
+      "maxX": -543,
+      "minZ": -379,
+      "maxZ": -311,
+      "minY": 71,
+      "maxY": 102
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_022ee2512ee24f2e1a0a2aa5",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV01-ROAD",
+    "parent_id": null,
+    "name": "Te Pan Rv01 Road",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -692,
+      "maxX": -190,
+      "minZ": -664,
+      "maxZ": -459,
+      "minY": 68,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_41c19f495899b71c5252707f",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV01-SALES",
+    "parent_id": null,
+    "name": "Te Pan Rv01 Sales",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -609,
+      "maxX": -564,
+      "minZ": -411,
+      "maxZ": -381,
+      "minY": 74,
+      "maxY": 95
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_7ddba744a67a7d17977c97de",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV01-TRAVEL",
+    "parent_id": null,
+    "name": "Te Pan Rv01 Travel",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -609,
+      "maxX": -564,
+      "minZ": -313,
+      "maxZ": -269,
+      "minY": 71,
+      "maxY": 95
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_d5fdfe9085a9499d1d7eb221",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV29-A",
+    "parent_id": null,
+    "name": "Te Pan Rv29 A",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -708,
+      "maxX": -704,
+      "minZ": -442,
+      "maxZ": -412,
+      "minY": 77,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_f5a0461f7cb628151bed9734",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV29-B",
+    "parent_id": null,
+    "name": "Te Pan Rv29 B",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -696,
+      "maxX": -692,
+      "minZ": -442,
+      "maxZ": -412,
+      "minY": 77,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_280667df573afc6f566ce147",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV29-C",
+    "parent_id": null,
+    "name": "Te Pan Rv29 C",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -684,
+      "maxX": -680,
+      "minZ": -442,
+      "maxZ": -412,
+      "minY": 77,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_2d0ea9f03a45b92fed239f08",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV29-D",
+    "parent_id": null,
+    "name": "Te Pan Rv29 D",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -672,
+      "maxX": -668,
+      "minZ": -442,
+      "maxZ": -412,
+      "minY": 77,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_d225d560a96f0ce2df3342fd",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV39-A",
+    "parent_id": null,
+    "name": "Te Pan Rv39 A",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -708,
+      "maxX": -704,
+      "minZ": -403,
+      "maxZ": -363,
+      "minY": 77,
+      "maxY": 86
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_08a8c8aba504b18f9057157f",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV39-B",
+    "parent_id": null,
+    "name": "Te Pan Rv39 B",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -696,
+      "maxX": -692,
+      "minZ": -403,
+      "maxZ": -363,
+      "minY": 77,
+      "maxY": 86
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_a276a0871622d1d9f0aa9987",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV39-C",
+    "parent_id": null,
+    "name": "Te Pan Rv39 C",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -684,
+      "maxX": -680,
+      "minZ": -403,
+      "maxZ": -363,
+      "minY": 77,
+      "maxY": 86
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_f4a5ed78a89ea68c76e11fc0",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV39-D",
+    "parent_id": null,
+    "name": "Te Pan Rv39 D",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -672,
+      "maxX": -668,
+      "minZ": -403,
+      "maxZ": -363,
+      "minY": 77,
+      "maxY": 86
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_df7683634d9e276a21999ded",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV48-A",
+    "parent_id": null,
+    "name": "Te Pan Rv48 A",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -708,
+      "maxX": -703,
+      "minZ": -354,
+      "maxZ": -305,
+      "minY": 77,
+      "maxY": 87
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_80fa06f5e34590abf6a687bd",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV48-B",
+    "parent_id": null,
+    "name": "Te Pan Rv48 B",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -695,
+      "maxX": -690,
+      "minZ": -354,
+      "maxZ": -305,
+      "minY": 77,
+      "maxY": 87
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_dbc92033d76237ed6c2b28b0",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV48-C",
+    "parent_id": null,
+    "name": "Te Pan Rv48 C",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -682,
+      "maxX": -677,
+      "minZ": -354,
+      "maxZ": -305,
+      "minY": 77,
+      "maxY": 87
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_6d34daf970a8fe864056f68a",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAN-RV48-D",
+    "parent_id": null,
+    "name": "Te Pan Rv48 D",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -669,
+      "maxX": -664,
+      "minZ": -354,
+      "maxZ": -305,
+      "minY": 77,
+      "maxY": 87
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_28de30ac2c6d615765b70702",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAV-BUCKINGHAM-FOUNTAIN",
+    "parent_id": null,
+    "name": "Te Pav Buckingham Fountain",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 70,
+      "maxX": 100,
+      "minZ": -478,
+      "maxZ": -463,
+      "minY": 66,
+      "maxY": 81
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_3d87d99a2396509182e28e97",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAV-CIVIC-MONUMENT",
+    "parent_id": null,
+    "name": "Te Pav Civic Monument",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 86,
+      "maxX": 117,
+      "minZ": -458,
+      "maxZ": -432,
+      "minY": 64,
+      "maxY": 85
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_e91f1c3e00f2a2330166de21",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAV-REFLECTING-POOL-NORTH",
+    "parent_id": null,
+    "name": "Te Pav Reflecting Pool North",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 24,
+      "maxX": 56,
+      "minZ": -480,
+      "maxZ": -462,
+      "minY": 67,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_c110e7e518c19e52b972077e",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAV-REFLECTING-POOL-SOUTH",
+    "parent_id": null,
+    "name": "Te Pav Reflecting Pool South",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 24,
+      "maxX": 56,
+      "minZ": -422,
+      "maxZ": -404,
+      "minY": 67,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_2426466a4fb2d9f82d5804e6",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PAVILION-EAST-CIVIC-GROUNDS",
+    "parent_id": null,
+    "name": "Te Pavilion East Civic Grounds",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -6,
+      "maxX": 122,
+      "minZ": -486,
+      "maxZ": -400,
+      "minY": 67,
+      "maxY": 76
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_fa4c187dcf54af49e69feb88",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-PENTHOUSE-01",
+    "parent_id": null,
+    "name": "Te Penthouse 01",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -98,
+      "maxX": -72,
+      "minZ": -390,
+      "maxZ": -373,
+      "minY": 88,
+      "maxY": 98
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_36ca9e24e55adc39950b34af",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-RAVENSREACH-MAINSTREET-STAFF-PATH",
+    "parent_id": null,
+    "name": "Te Ravensreach Mainstreet Staff Path",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -155,
+      "maxX": -80,
+      "minZ": -300,
+      "maxZ": 89,
+      "minY": 63,
+      "maxY": 77
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_a8cb4e9716f5a5b196658f37",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-RAVENSREACH-WORKFORCE-COURT",
+    "parent_id": null,
+    "name": "Te Ravensreach Workforce Court",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -205,
+      "maxX": -159,
+      "minZ": -266,
+      "maxZ": -251,
+      "minY": 74,
+      "maxY": 79
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_5cc874e4759444563ada9b1a",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-RAVENSREACH-WORKFORCE-HOUSING-A",
+    "parent_id": null,
+    "name": "Te Ravensreach Workforce Housing A",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -206,
+      "maxX": -158,
+      "minZ": -291,
+      "maxZ": -266,
+      "minY": 60,
+      "maxY": 98
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_3304a8ef0c78d35e41369e58",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-RAVENSREACH-WORKFORCE-HOUSING-B-EAST",
+    "parent_id": null,
+    "name": "Te Ravensreach Workforce Housing B East",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -182,
+      "maxX": -158,
+      "minZ": -251,
+      "maxZ": -226,
+      "minY": 60,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_852debbe905d7967061d0715",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-RAVENSREACH-WORKFORCE-HOUSING-B-WEST",
+    "parent_id": null,
+    "name": "Te Ravensreach Workforce Housing B West",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -206,
+      "maxX": -183,
+      "minZ": -251,
+      "maxZ": -226,
+      "minY": 60,
+      "maxY": 90
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_965d97d0082f819a5b0824b4",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-ROAD-01",
+    "parent_id": null,
+    "name": "Te Road 01",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -348,
+      "maxX": -144,
+      "minZ": -529,
+      "maxZ": -482,
+      "minY": 67,
+      "maxY": 86
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_a6418ebc21d709b30e8a0ec2",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-RR-MODERN-CORRIDOR-PILOT-01",
+    "parent_id": null,
+    "name": "Te Rr Modern Corridor Pilot 01",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -145,
+      "maxX": -136,
+      "minZ": 179,
+      "maxZ": 190,
+      "minY": 1,
+      "maxY": 8
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_1a02a044d67c352dc41ad563",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-RRCH-GILDED-RAVEN",
+    "parent_id": null,
+    "name": "Te Rrch Gilded Raven",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -34,
+      "maxX": 18,
+      "minZ": -402,
+      "maxZ": -340,
+      "minY": -46,
+      "maxY": 110
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_2219a6408e1f567416b80789",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-RUSSIAN-TEREM-PAVILION",
+    "parent_id": null,
+    "name": "Te Russian Terem Pavilion",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -106,
+      "maxX": -64,
+      "minZ": -447,
+      "maxZ": -425,
+      "minY": 68,
+      "maxY": 97
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_459c6a45de60eb70eb368282",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WESTLIGHT-CRATER-LAKE",
+    "parent_id": null,
+    "name": "Te Westlight Crater Lake",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -520,
+      "maxX": -430,
+      "minZ": -634,
+      "maxZ": -542,
+      "minY": 47,
+      "maxY": 74
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_9cf7794e3005eaa63d206571",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WESTLIGHT-FERRIS-WHEEL",
+    "parent_id": null,
+    "name": "Te Westlight Ferris Wheel",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -340,
+      "maxX": -292,
+      "minZ": -437,
+      "maxZ": -382,
+      "minY": 66,
+      "maxY": 108
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_540ba2f29a8c5cf6a141d50e",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WESTLIGHT-MAIN-PED-MALL",
+    "parent_id": null,
+    "name": "Te Westlight Main Ped Mall",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -435,
+      "maxX": -268,
+      "minZ": -502,
+      "maxZ": -318,
+      "minY": 45,
+      "maxY": 73
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_ef1d06f0519a722966c44554",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WESTLIGHT-ROLLER-COASTER",
+    "parent_id": null,
+    "name": "Te Westlight Roller Coaster",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -428,
+      "maxX": -367,
+      "minZ": -440,
+      "maxZ": -382,
+      "minY": 67,
+      "maxY": 96
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_e6497b78bbfffe3d607feeea",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WESTLIGHT-SHRIMP-HOUSE",
+    "parent_id": null,
+    "name": "Te Westlight Shrimp House",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -341,
+      "maxX": -303,
+      "minZ": -360,
+      "maxZ": -323,
+      "minY": 67,
+      "maxY": 84
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_7bea720dfecc8076461c547a",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WESTLIGHT-STEAK-HOUSE",
+    "parent_id": null,
+    "name": "Te Westlight Steak House",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -406,
+      "maxX": -368,
+      "minZ": -360,
+      "maxZ": -323,
+      "minY": 67,
+      "maxY": 84
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_0f538237b40f06f294eb0cef",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-ADVENTURE-EXCHANGE",
+    "parent_id": null,
+    "name": "Te Wl Adventure Exchange",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -610,
+      "maxX": -560,
+      "minZ": -677,
+      "maxZ": -647,
+      "minY": 67,
+      "maxY": 80
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_816a34fed738c0d5d78baff5",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-BLUE-DRUM",
+    "parent_id": null,
+    "name": "Te Wl Blue Drum",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -443,
+      "maxX": -304,
+      "minZ": -613,
+      "maxZ": -526,
+      "minY": 18,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_8e83736ab733c6e78069a1f6",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-CRATER-WEST-GREEN-LINK",
+    "parent_id": null,
+    "name": "Te Wl Crater West Green Link",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -523,
+      "maxX": -489,
+      "minZ": -653,
+      "maxZ": -548,
+      "minY": 67,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_9cd3dafe51dacced6995b5c5",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-FREIGHT",
+    "parent_id": null,
+    "name": "Te Wl Freight",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -347,
+      "maxX": -200,
+      "minZ": -620,
+      "maxZ": -471,
+      "minY": 7,
+      "maxY": 76
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_13cef55f3a6148801cf93eaa",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-HARBORLIGHT",
+    "parent_id": null,
+    "name": "Te Wl Harborlight",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -518,
+      "maxX": -448,
+      "minZ": -555,
+      "maxZ": -507,
+      "minY": 65,
+      "maxY": 65
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_5c975a39e4900aecd2506dfc",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-HL-A",
+    "parent_id": null,
+    "name": "Te Wl Hl A",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -517,
+      "maxX": -486,
+      "minZ": -548,
+      "maxZ": -513,
+      "minY": 65,
+      "maxY": 91
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_90c5e0cbb327dd1855013c08",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-HL-A-GARAGE",
+    "parent_id": null,
+    "name": "Te Wl Hl A Garage",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -517,
+      "maxX": -502,
+      "minZ": -522,
+      "maxZ": -513,
+      "minY": 65,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_3c37563676d7b8718d327a7f",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-HL-B",
+    "parent_id": null,
+    "name": "Te Wl Hl B",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -483,
+      "maxX": -449,
+      "minZ": -548,
+      "maxZ": -513,
+      "minY": 65,
+      "maxY": 91
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_8f7a2ee284ed7c44b3af4060",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-HL-B-GARAGE",
+    "parent_id": null,
+    "name": "Te Wl Hl B Garage",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -464,
+      "maxX": -449,
+      "minZ": -522,
+      "maxZ": -513,
+      "minY": 65,
+      "maxY": 75
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_7299e87186273b55327ea863",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-HL-C",
+    "parent_id": null,
+    "name": "Te Wl Hl C",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -517,
+      "maxX": -449,
+      "minZ": -507,
+      "maxZ": -471,
+      "minY": 65,
+      "maxY": 93
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_058cdfba85111c4f0c58f820",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-HL-C-GARAGE",
+    "parent_id": null,
+    "name": "Te Wl Hl C Garage",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -517,
+      "maxX": -496,
+      "minZ": -507,
+      "maxZ": -498,
+      "minY": 65,
+      "maxY": 74
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_e169669a885af454be6a5eaa",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-LANTERN-STUDIO",
+    "parent_id": null,
+    "name": "Te Wl Lantern Studio",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -443,
+      "maxX": -401,
+      "minZ": -589,
+      "maxZ": -550,
+      "minY": 35,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_55be366a6afe14b7a9e23a98",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-NORTHWIND",
+    "parent_id": null,
+    "name": "Te Wl Northwind",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -671,
+      "maxX": -523,
+      "minZ": -719,
+      "maxZ": -675,
+      "minY": 38,
+      "maxY": 65
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_1d1cf5c0858f81a230aeb3dd",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-NORTHWIND-BATH",
+    "parent_id": null,
+    "name": "Te Wl Northwind Bath",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -555,
+      "maxX": -521,
+      "minZ": -680,
+      "maxZ": -672,
+      "minY": 64,
+      "maxY": 79
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_c7a6b17a9a0df7faabf15c31",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-NORTHWIND-PLANT",
+    "parent_id": null,
+    "name": "Te Wl Northwind Plant",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -555,
+      "maxX": -521,
+      "minZ": -719,
+      "maxZ": -699,
+      "minY": 64,
+      "maxY": 73
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_7ae44b09532c80d0e66c4e49",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-NORTHWIND-QUIET",
+    "parent_id": null,
+    "name": "Te Wl Northwind Quiet",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -556,
+      "maxX": -520,
+      "minZ": -698,
+      "maxZ": -678,
+      "minY": 63,
+      "maxY": 66
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_1a236ea095faa56f94f54e13",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-NORTHWIND-RIVER",
+    "parent_id": null,
+    "name": "Te Wl Northwind River",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -634,
+      "maxX": -594,
+      "minZ": -713,
+      "maxZ": -682,
+      "minY": 63,
+      "maxY": 66
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_7bbb8773d733daaff936993e",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-NORTHWIND-SLIDES",
+    "parent_id": null,
+    "name": "Te Wl Northwind Slides",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -590,
+      "maxX": -558,
+      "minZ": -713,
+      "maxZ": -655,
+      "minY": 63,
+      "maxY": 92
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_36a04efc19675659741e822f",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-NORTHWIND-WAVE",
+    "parent_id": null,
+    "name": "Te Wl Northwind Wave",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -671,
+      "maxX": -636,
+      "minZ": -712,
+      "maxZ": -680,
+      "minY": 63,
+      "maxY": 70
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_908cf8e515e8505b1d22d1be",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-PARKWAY-EXTENSION",
+    "parent_id": null,
+    "name": "Te Wl Parkway Extension",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -559,
+      "maxX": -199,
+      "minZ": -664,
+      "maxZ": -473,
+      "minY": 67,
+      "maxY": 69
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_dfb5d3fdf440e0853b33e40d",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-RAVENCREST",
+    "parent_id": null,
+    "name": "Te Wl Ravencrest",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -655,
+      "maxX": -537,
+      "minZ": -643,
+      "maxZ": -537,
+      "minY": 67,
+      "maxY": 88
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_1efbfa7ca4606ac46edd127d",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-RAVENCREST-DARK-RIDE",
+    "parent_id": null,
+    "name": "Te Wl Ravencrest Dark Ride",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -636,
+      "maxX": -605,
+      "minZ": -581,
+      "maxZ": -541,
+      "minY": 69,
+      "maxY": 93
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_b13951df96c3e044e2baf7bf",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-RAVENCREST-EMBER",
+    "parent_id": null,
+    "name": "Te Wl Ravencrest Ember",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -643,
+      "maxX": -639,
+      "minZ": -631,
+      "maxZ": -589,
+      "minY": 81,
+      "maxY": 89
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_9cc49f3534ccd8496ab2aa82",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-RAVENCREST-EVENT",
+    "parent_id": null,
+    "name": "Te Wl Ravencrest Event",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -592,
+      "maxX": -548,
+      "minZ": -558,
+      "maxZ": -524,
+      "minY": 76,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_8799ae3baa6a83bfdcb10f6c",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-RAVENCREST-FAMILY",
+    "parent_id": null,
+    "name": "Te Wl Ravencrest Family",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -551,
+      "maxX": -533,
+      "minZ": -603,
+      "maxZ": -585,
+      "minY": 72,
+      "maxY": 84
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_256c316e6a4b67710bd85816",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-RAVENCREST-GATE",
+    "parent_id": null,
+    "name": "Te Wl Ravencrest Gate",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -609,
+      "maxX": -565,
+      "minZ": -647,
+      "maxZ": -625,
+      "minY": 66,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_3f0dfe7e78bb4e51f8aa974c",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-RAVENCREST-MAINT",
+    "parent_id": null,
+    "name": "Te Wl Ravencrest Maint",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -671,
+      "maxX": -645,
+      "minZ": -539,
+      "maxZ": -521,
+      "minY": 63,
+      "maxY": 85
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_a5dca5671e8d598df383ac0d",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-RAVENCREST-MIDWAY",
+    "parent_id": null,
+    "name": "Te Wl Ravencrest Midway",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -602,
+      "maxX": -573,
+      "minZ": -620,
+      "maxZ": -568,
+      "minY": 75,
+      "maxY": 83
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_18049412392e713bfa3ab3eb",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-RAVENCREST-RIDGE-RUNNER",
+    "parent_id": null,
+    "name": "Te Wl Ravencrest Ridge Runner",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -671,
+      "maxX": -639,
+      "minZ": -633,
+      "maxZ": -539,
+      "minY": 64,
+      "maxY": 116
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_2ff0eb1eab98857b48dbbe32",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-RAVENCREST-SIGNAL",
+    "parent_id": null,
+    "name": "Te Wl Ravencrest Signal",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -612,
+      "maxX": -596,
+      "minZ": -540,
+      "maxZ": -524,
+      "minY": 82,
+      "maxY": 123
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_a42e893979ceb772567a9980",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-SKY-BOWL-IDENTITY",
+    "parent_id": null,
+    "name": "Te Wl Sky Bowl Identity",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -378,
+      "maxX": -347,
+      "minZ": -503,
+      "maxZ": -492,
+      "minY": 67,
+      "maxY": 78
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_33f7bdd15973d262cabcd1bc",
+    "project_id": "town-expansion-r1",
+    "external_id": "TE-WL-VENUE-BASEMENTS",
+    "parent_id": null,
+    "name": "Te Wl Venue Basements",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": -384,
+      "maxX": -336,
+      "minZ": -611,
+      "maxZ": -579,
+      "minY": -5,
+      "maxY": 22
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_19d3fbdd31eb7904f9db5e28",
+    "project_id": "town-expansion-r1",
+    "external_id": "c01_east_l1_security_garage",
+    "parent_id": null,
+    "name": "C01 East L1 Security Garage",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 700,
+      "maxX": 900,
+      "minZ": -140,
+      "maxZ": -5,
+      "minY": 42,
+      "maxY": 53
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_c51b9048b8379ff157039fc3",
+    "project_id": "town-expansion-r1",
+    "external_id": "c01_east_l2_living_adult",
+    "parent_id": null,
+    "name": "C01 East L2 Living Adult",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 700,
+      "maxX": 900,
+      "minZ": -140,
+      "maxZ": -5,
+      "minY": 33,
+      "maxY": 41
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_5300f8534917f124fca2f5ff",
+    "project_id": "town-expansion-r1",
+    "external_id": "c01_east_l3_agriculture_water",
+    "parent_id": null,
+    "name": "C01 East L3 Agriculture Water",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 700,
+      "maxX": 900,
+      "minZ": -141,
+      "maxZ": -5,
+      "minY": 24,
+      "maxY": 32
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_ef265e264e1a356dfc68e324",
+    "project_id": "town-expansion-r1",
+    "external_id": "c01_east_l4_command_medical",
+    "parent_id": null,
+    "name": "C01 East L4 Command Medical",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 702,
+      "maxX": 854,
+      "minZ": -70,
+      "maxZ": -19,
+      "minY": 15,
+      "maxY": 23
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_5073ab1978d5ed1db3b94009",
+    "project_id": "town-expansion-r1",
+    "external_id": "c01_east_l5_power_escape",
+    "parent_id": null,
+    "name": "C01 East L5 Power Escape",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 703,
+      "maxX": 854,
+      "minZ": -68,
+      "maxZ": -20,
+      "minY": 6,
+      "maxY": 14
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_8a37bcc36c9fa5a632d7f46d",
+    "project_id": "town-expansion-r1",
+    "external_id": "c01_owner_club_arrival",
+    "parent_id": null,
+    "name": "C01 Owner Club Arrival",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 721,
+      "maxX": 850,
+      "minZ": -64,
+      "maxZ": -22,
+      "minY": -14,
+      "maxY": 4
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_8aa64b82d27c50f069ff5765",
+    "project_id": "town-expansion-r1",
+    "external_id": "c01_owner_residence",
+    "parent_id": null,
+    "name": "C01 Owner Residence",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 714,
+      "maxX": 895,
+      "minZ": -74,
+      "maxZ": -10,
+      "minY": -31,
+      "maxY": -18
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  },
+  {
+    "id": "wft_e11000916d2287061da769f9",
+    "project_id": "town-expansion-r1",
+    "external_id": "c01_owner_tunnel_detour",
+    "parent_id": null,
+    "name": "C01 Owner Tunnel Detour",
+    "kind": "custom",
+    "status": "complete",
+    "geometry_json": {
+      "type": "bounds",
+      "minX": 364,
+      "maxX": 718,
+      "minZ": -46,
+      "maxZ": 58,
+      "minY": -45,
+      "maxY": -37
+    },
+    "revision": 1,
+    "observed_at": 1785273037418
+  }
+]

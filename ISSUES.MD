@@ -51,6 +51,12 @@ post-change evidence.
   bunker, parking, road, terrain, and entrance bounds. Compare those coordinates
   against the relocation engineering and accepted object registry, then produce
   annotated overhead, approach, parking-conflict, and entrance images.
+- Current report evidence: The read-only Underground Navigation report at
+  `docs/redevelopment/2026-07-28-underground-navigation/` maps both the accepted
+  legacy MainStreet portal and the cataloged east-stack interior, but marks the
+  east surface arrival `CONTESTED`. Its map and entrance table are navigation
+  aids, not evidence that the missing relocation, road, parking recovery, or
+  sunken entrance was delivered.
 - Discussion required: Agree the eastward offset, parking capacity and aisles,
   road alignment/grade, sunken court dimensions, security threshold, drainage,
   landscaping, and how the entrance conceals the underground mass.

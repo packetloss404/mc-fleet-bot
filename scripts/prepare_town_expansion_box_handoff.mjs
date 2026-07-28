@@ -75,6 +75,10 @@ copyTree(
   'documents/redevelopment/2026-07-28-town-expansion',
 );
 copyTree(
+  'docs/redevelopment/2026-07-28-underground-navigation',
+  'reports/underground-navigation',
+);
+copyTree(
   'world-showcase/public/atlas/town-expansion',
   'media/maps',
 );
@@ -168,6 +172,14 @@ const machineArtifacts = [
     'world-showcase/public/data/buildings.json',
     'machine/publication/site-buildings.json',
   ],
+  [
+    'world-showcase/public/underground/publication-manifest.json',
+    'machine/publication/underground-navigation-publication.json',
+  ],
+  [
+    'world-showcase/public/underground/portal-summary.json',
+    'machine/publication/underground-navigation-portal-summary.json',
+  ],
 ];
 
 for (const [source, target] of machineArtifacts) copy(source, target);
@@ -193,10 +205,17 @@ const maps = files.filter((entry) => entry.path.startsWith('media/maps/'));
 const screenshots = files.filter(
   (entry) => entry.path.startsWith('media/exact-object-screenshots/'),
 );
+const undergroundReportFiles = files.filter(
+  (entry) => entry.path.startsWith('reports/underground-navigation/'),
+);
 invariant(maps.length === 13, `Expected 13 maps, found ${maps.length}`);
 invariant(
   screenshots.length === 340,
   `Expected 340 exact-object screenshots, found ${screenshots.length}`,
+);
+invariant(
+  undergroundReportFiles.length >= 47,
+  `Expected at least 47 underground report files, found ${undergroundReportFiles.length}`,
 );
 
 const manifest = {
@@ -222,6 +241,7 @@ const manifest = {
     bytes: files.reduce((sum, entry) => sum + entry.bytes, 0),
     maps: maps.length,
     exactObjectScreenshots: screenshots.length,
+    undergroundReportFiles: undergroundReportFiles.length,
     documents: files.filter((entry) => entry.path.startsWith('documents/')).length,
     machineArtifacts: files.filter((entry) => entry.path.startsWith('machine/')).length,
     filesOverDirectUploadLimit: 0,

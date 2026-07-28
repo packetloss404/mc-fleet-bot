@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "id": "town-expansion-r1-database-publication-report",
+  "generatedAtUtc": "2026-07-28T21:12:13.495Z",
+  "status": "PASS",
+  "passed": true,
+  "readOnly": true,
+  "databaseMutated": false,
+  "database": {
+    "path": "data/world-map.db",
+    "sha256": "71876a7ecf73e90475a9b5047938e14f39ea0a20381dea8c5286582059f95f8a",
+    "integrity": "ok",
+    "foreignKeyViolations": [],
+    "counts": {
+      "worldFeatures": 1215,
+      "worldScans": 24,
+      "featureObservations": 2221
+    }
+  },
+  "evidence": {
+    "postSnapshotSha256": "c39d0d67c9dec737aa5807cf5fa56a84f3c3d38d4b13d0f82599d3eb30fa6751",
+    "forwardSha256": "1a10954b1ae6ae702dcc01cd92d39adbb3820e3feff5461f3caa1283a578b896",
+    "crosswalkSha256": "63c7ea13c688f6c40b6700902065cc5ba23e51fae5db0ef3968aa8b35a16cfd2",
+    "mediaQaSha256": "e9a287f9c2536ae81701604bd2232262ecb04a4567606da030baf833bfa01226",
+    "postReleaseQaSha256": "7200a6d23e838d80f1c21fb5585a72434103056c71793073d68918885f083672",
+    "transactionSha256": "042f445b097f52fbba795e59072084df8cbe60527e85330b3b6e7cb3902d3ec3"
+  },
+  "registry": {
+    "path": "data/exports/town-expansion-media-2026-07-28/object-media-database-crosswalk.json",
+    "sha256": "63c7ea13c688f6c40b6700902065cc5ba23e51fae5db0ef3968aa8b35a16cfd2",
+    "exactObjects": 340,
+    "expectedMediaRelations": 1152
+  },
+  "publication": {
+    "projectId": "town-expansion-r1",
+    "features": 340,
+    "acceptedScans": 1,
+    "observations": 340,
+    "mediaRelations": 1152,
+    "requestedStates": {
+      "frozen authored program represented by the cited source": 340
+    },
+    "acceptedStates": {
+      "VERIFIED_POST_STATE": 340
+    },
+    "databaseStates": {
+      "DATABASE_IMPORTED": 340
+    },
+    "importDispositions": {
+      "verified-as-built": 339,
+      "verified-built-marker": 1
+    }
+  },
+  "acceptedScan": {
+    "id": "wsc_1503ecab864246ae487be85d",
+    "status": "complete",
+    "snapshotRef": "data/worldsnap-town-terminal-recovery-post-20260728T1839Z/region:sha256=c39d0d67c9dec737aa5807cf5fa56a84f3c3d38d4b13d0f82599d3eb30fa6751",
+    "startedAt": 1785273037418,
+    "completedAt": 1785273037418
+  },
+  "failures": {
+    "missingFeatures": [],
+    "extraProjectFeatures": [],
+    "truthFailures": [],
+    "evidenceFailures": [],
+    "mediaFailures": [],
+    "parentFailures": [],
+    "acceptedScanCount": 1,
+    "missingObservations": [],
+    "observationFailures": [],
+    "databaseIntegrity": [],
+    "foreignKeyViolations": []
+  }
+}

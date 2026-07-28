@@ -1,0 +1,558 @@
+{
+  "schemaVersion": 1,
+  "generatedAtUtc": "2026-07-28T23:20:45.678Z",
+  "status": "PASS_PORTAL_SUMMARY",
+  "counts": {
+    "allWorldFeatures": 1215,
+    "undergroundNavigationRecords": 289,
+    "c01Levels": 7,
+    "c01Spaces": 168,
+    "c01GraphNodes": 165,
+    "c01GraphEdges": 181,
+    "venueDatabaseRecords": 44,
+    "c01VenueAndAdultSpaces": 55,
+    "entranceAndAccessRecords": 22,
+    "maps": 18,
+    "screenshots": 20,
+    "contactSheets": 2,
+    "pdfPages": 97,
+    "featureCountsBySystem": {
+      "raven-rock": 81,
+      "mainstreet-secure": 92,
+      "ravensreach-civic": 33,
+      "owner-corridor": 29,
+      "c01-east": 8,
+      "westlight": 28,
+      "road-bunkers": 1,
+      "data-district": 17
+    }
+  },
+  "truthBoundary": {
+    "ravenRock": "The Minecraft interior is an openly labeled creative approximation; it is not a map of the real Raven Rock Mountain Complex.",
+    "c01East": "The catalog and terminal media describe the east stack, but owner field observation reports that relocation, road, parking recovery, and the sunken entrance were not delivered. Those arrival claims remain contested under ISSUE-002.",
+    "restrictedRavensgate": "The Ravensgate restricted underground exclusion is not mapped as a navigable system because no authorized access point is confirmed.",
+    "portalGallery": "Portal-gallery rooms are destinations, not proof that portals are active."
+  },
+  "systems": [
+    {
+      "id": "raven-rock",
+      "label": "Raven Rock / Site R",
+      "records": 81
+    },
+    {
+      "id": "mainstreet-secure",
+      "label": "MainStreet mountain secure complex",
+      "records": 92
+    },
+    {
+      "id": "ravensreach-civic",
+      "label": "Ravensreach civic underground",
+      "records": 33
+    },
+    {
+      "id": "owner-corridor",
+      "label": "Gilded Raven / owner corridor",
+      "records": 29
+    },
+    {
+      "id": "c01-east",
+      "label": "Cataloged C01 east stack",
+      "records": 8
+    },
+    {
+      "id": "westlight",
+      "label": "Westlight below-grade venues",
+      "records": 28
+    },
+    {
+      "id": "road-bunkers",
+      "label": "Approach-road and oasis bunkers",
+      "records": 1
+    },
+    {
+      "id": "data-district",
+      "label": "Iowa data district / Concord",
+      "records": 17
+    }
+  ],
+  "entrances": [
+    {
+      "id": "E-RR-N3",
+      "name": "Raven Rock south personnel portal",
+      "system": "raven-rock",
+      "point": [
+        -150,
+        18,
+        285
+      ],
+      "access": "personnel",
+      "certainty": "cataloged exact point",
+      "route": "RR-T2a → T2b → Cavern B"
+    },
+    {
+      "id": "E-RR-N4",
+      "name": "Raven Rock north vehicle portal",
+      "system": "raven-rock",
+      "point": [
+        0,
+        18,
+        -285
+      ],
+      "access": "vehicle",
+      "certainty": "cataloged exact point",
+      "route": "RR-T1a → T1b → Cavern A"
+    },
+    {
+      "id": "E-RR-N5",
+      "name": "Raven Rock east portal",
+      "system": "raven-rock",
+      "point": [
+        285,
+        18,
+        -30
+      ],
+      "access": "mixed",
+      "certainty": "cataloged exact point",
+      "route": "RR-T3a → T3b → Cavern A"
+    },
+    {
+      "id": "E-RR-N6",
+      "name": "Raven Rock west utility portal",
+      "system": "raven-rock",
+      "point": [
+        -290,
+        10,
+        5
+      ],
+      "access": "utility",
+      "certainty": "cataloged exact point",
+      "route": "RR-T4 → Cavern C"
+    },
+    {
+      "id": "E-RR-Z5",
+      "name": "Raven Rock RR-Z5 surface headhouse",
+      "system": "raven-rock",
+      "point": [
+        200,
+        67,
+        -15
+      ],
+      "access": "stairs / shaft",
+      "certainty": "cataloged structure centroid",
+      "route": "15 switchback flights → RR-S1"
+    },
+    {
+      "id": "E-C01-LEGACY-PUBLIC",
+      "name": "Legacy MainStreet C01 recessed public portal",
+      "system": "mainstreet-secure",
+      "point": [
+        143,
+        69,
+        182
+      ],
+      "access": "public",
+      "certainty": "accepted legacy portal geometry",
+      "route": "dogleg connector → hangar / arena / lower operations"
+    },
+    {
+      "id": "E-C01-EAST-CATALOG",
+      "name": "Cataloged C01 east grand security entry",
+      "system": "c01-east",
+      "point": [
+        703,
+        42,
+        -80
+      ],
+      "access": "cataloged public interior arrival",
+      "certainty": "CONTESTED — surface road, relocation, and sunken arrival require field verification (ISSUE-002)",
+      "route": "L1 security entry → seven-level internal route graph"
+    },
+    {
+      "id": "E-C01-EAST-EGRESS-W",
+      "name": "Cataloged C01 east independent egress west control",
+      "system": "c01-east",
+      "point": [
+        745,
+        6,
+        -28
+      ],
+      "access": "owner / emergency",
+      "certainty": "deep internal egress node; surface endpoint not independently verified",
+      "route": "L5 power/escape level"
+    },
+    {
+      "id": "E-C01-EAST-EGRESS-E",
+      "name": "Cataloged C01 east independent egress east control",
+      "system": "c01-east",
+      "point": [
+        793,
+        6,
+        -28
+      ],
+      "access": "owner / emergency",
+      "certainty": "deep internal egress node; surface endpoint not independently verified",
+      "route": "L5 power/escape level"
+    },
+    {
+      "id": "E-GILDED-DESCENT",
+      "name": "Gilded Raven owner grand descent",
+      "system": "owner-corridor",
+      "point": [
+        -10,
+        67,
+        -391
+      ],
+      "access": "owner",
+      "certainty": "authored and post-release cataloged",
+      "route": "theatre → y-44 owner corridor"
+    },
+    {
+      "id": "E-OBS-ASCENT",
+      "name": "Observatory east owner ascent",
+      "system": "owner-corridor",
+      "point": [
+        363,
+        112,
+        165
+      ],
+      "access": "owner",
+      "certainty": "authored and post-release cataloged",
+      "route": "owner corridor → owner estate arrival gallery"
+    },
+    {
+      "id": "E-LIBRARY-SECRET",
+      "name": "Library concealed archive-tunnel endpoint",
+      "system": "ravensreach-civic",
+      "point": [
+        -111,
+        60,
+        -435
+      ],
+      "access": "concealed civic",
+      "certainty": "bounded endpoint; exact door should be read in-world",
+      "route": "library → isolated archive tunnel → Guild Hall"
+    },
+    {
+      "id": "E-GUILD-SECRET",
+      "name": "Guild Hall concealed archive-tunnel endpoint",
+      "system": "ravensreach-civic",
+      "point": [
+        -58,
+        60,
+        -435
+      ],
+      "access": "concealed civic",
+      "certainty": "bounded endpoint; exact door should be read in-world",
+      "route": "Guild Hall → isolated archive tunnel → library"
+    },
+    {
+      "id": "E-MOOT",
+      "name": "Moot Hall vertical underground circulation",
+      "system": "ravensreach-civic",
+      "point": [
+        -85,
+        98,
+        -366
+      ],
+      "access": "building-contained stairs",
+      "certainty": "cataloged circulation envelope; use Moot Hall entrance in-world",
+      "route": "surface hall → B1/B2 → sanctum"
+    },
+    {
+      "id": "E-LIBRARY",
+      "name": "Civic Library vertical underground circulation",
+      "system": "ravensreach-civic",
+      "point": [
+        -127,
+        110,
+        -437
+      ],
+      "access": "building-contained stairs",
+      "certainty": "cataloged circulation envelope; use library entrance in-world",
+      "route": "entrance hall → stacks → archives → rare-book vault"
+    },
+    {
+      "id": "E-WL-THEATRE",
+      "name": "Westlight below-grade theatre circulation",
+      "system": "westlight",
+      "point": [
+        -360,
+        50,
+        -555
+      ],
+      "access": "public venue",
+      "certainty": "cataloged building centroid; follow venue doors and stairs",
+      "route": "upper lobby → parterre → lower lobby/backstage"
+    },
+    {
+      "id": "E-WL-CLUB",
+      "name": "Westlight members club circulation",
+      "system": "westlight",
+      "point": [
+        -408,
+        44,
+        -558
+      ],
+      "access": "members",
+      "certainty": "cataloged building centroid; follow venue doors and stairs",
+      "route": "club landing → lounge / bar / dance floor"
+    },
+    {
+      "id": "E-OASIS",
+      "name": "Approach-road oasis mini-bunker",
+      "system": "road-bunkers",
+      "point": [
+        -230,
+        69,
+        -530
+      ],
+      "access": "roadside",
+      "certainty": "cataloged object centroid; surface threshold requires in-world reading",
+      "route": "oasis surface arrival → bunker interior"
+    },
+    {
+      "id": "E-WAREHOUSE",
+      "name": "MainStreet underground warehouse dry core",
+      "system": "mainstreet-secure",
+      "point": [
+        60,
+        74,
+        245
+      ],
+      "access": "service / logistics",
+      "certainty": "cataloged object centroid; exact ramp/door requires in-world reading",
+      "route": "MainStreet service area → dry core / east wings"
+    },
+    {
+      "id": "E-SHELTER",
+      "name": "Private mountain shelter via penthouse safe-room stair",
+      "system": "mainstreet-secure",
+      "point": [
+        207,
+        104,
+        146
+      ],
+      "access": "private",
+      "certainty": "cataloged route endpoint",
+      "route": "penthouse safe room → shelter → grand vault"
+    },
+    {
+      "id": "E-INFO",
+      "name": "Iowa underground information / continuity annex",
+      "system": "data-district",
+      "point": [
+        774,
+        80,
+        -473
+      ],
+      "access": "controlled",
+      "certainty": "cataloged object centroid; exact surface door requires in-world reading",
+      "route": "data campus → underground annex"
+    },
+    {
+      "id": "E-HOLDOUT",
+      "name": "Holdout-home shelter access",
+      "system": "data-district",
+      "point": [
+        613,
+        72,
+        -145
+      ],
+      "access": "private residence",
+      "certainty": "cataloged object centroid; exact hatch/door requires in-world reading",
+      "route": "holdout home → private shelter"
+    }
+  ],
+  "c01Levels": [
+    {
+      "id": "C01-L1-SECURITY-GARAGE",
+      "spaceCount": 16
+    },
+    {
+      "id": "C01-L2-LIVING-AMENITY",
+      "spaceCount": 49
+    },
+    {
+      "id": "C01-L3-AGRICULTURE-WATER",
+      "spaceCount": 12
+    },
+    {
+      "id": "C01-L4-COMMAND-MEDICAL",
+      "spaceCount": 14
+    },
+    {
+      "id": "C01-L5-POWER-ESCAPE",
+      "spaceCount": 12
+    },
+    {
+      "id": "C01-OWNER-CLUB-ARRIVAL",
+      "spaceCount": 31
+    },
+    {
+      "id": "C01-OWNER-RESIDENCE",
+      "spaceCount": 34
+    }
+  ],
+  "screenshots": [
+    {
+      "name": "raven-rock-command-center.png",
+      "caption": "Raven Rock command and operations center",
+      "source": "data/exports/redevelopment-media-wave2-2026-07-28/buildings/raven-rock/rr-b1--command-operations-center.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/raven-rock-command-center.png",
+      "bytes": 75516,
+      "sha256": "c6897a33231187942b9b2115a99be68937ac6745550790e75cb3429e017f6a48"
+    },
+    {
+      "name": "raven-rock-t2b.png",
+      "caption": "Raven Rock T2b standardized tunnel",
+      "source": "data/exports/redevelopment-wave2-2026-07-28/ravenrock/after/t2b-west-to-east.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/raven-rock-t2b.png",
+      "bytes": 27863,
+      "sha256": "f25757518f7a4448a8e2ecfb2d95ecbcb236c39727eaf865276f379e02058a83"
+    },
+    {
+      "name": "raven-rock-z5-floorplan.png",
+      "caption": "Raven Rock RR-Z5 surface shaft floorplan",
+      "source": "data/exports/world-catalog-wave2-2026-07-28/floorplans/structures/raven-rock-rr-z5.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/raven-rock-z5-floorplan.png",
+      "bytes": 89276,
+      "sha256": "8c1dacdfa502c7d1a9f5f646b75f693970b4b3bfe2ca592a0a4b52e16d47a30f"
+    },
+    {
+      "name": "legacy-c01-upper-plan.png",
+      "caption": "Legacy MainStreet C01 upper plan",
+      "source": "data/exports/box/mainstreet-secure-complex-wave5-2026-07-27/01-c01-upper-plan.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/legacy-c01-upper-plan.png",
+      "bytes": 125148,
+      "sha256": "c1ccb19c0af93d0b7176657de8057959990b18d3afac93b3a5b9e2b235cdff87"
+    },
+    {
+      "name": "shelter-vault-levels.png",
+      "caption": "Private shelter and grand-vault levels",
+      "source": "data/exports/box/mainstreet-secure-complex-wave5-2026-07-27/04-shelter-vault-levels.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/shelter-vault-levels.png",
+      "bytes": 249748,
+      "sha256": "3f79e20bef50a0f2fc37f615ff4f1bef7805418384d92e2cd3e844d6d4a37039"
+    },
+    {
+      "name": "underground-warehouse.png",
+      "caption": "MainStreet underground warehouse dry core",
+      "source": "data/exports/town-expansion-media-2026-07-28/terminal-c39d-render-v6/pass-1/mainstreet/object-te-msa-uw01-dry-core.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/underground-warehouse.png",
+      "bytes": 210694,
+      "sha256": "28af11186bcf5127f9dbd5523ee4e1dc9718f12270707a1170b994a53ee0ebdb"
+    },
+    {
+      "name": "library-guild-secret.png",
+      "caption": "Library–Guild Hall isolated secret passage",
+      "source": "data/exports/town-expansion-media-2026-07-28/terminal-c39d-render-v6/pass-1/civic-pavilion-library-guild/object-te-lib-guild-secret-01.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/library-guild-secret.png",
+      "bytes": 26403,
+      "sha256": "fec611ac929b25c7829917bd5fe67225c3cf33acfe77a6c4a39b7f6e8e4ecadc"
+    },
+    {
+      "name": "gilded-raven.png",
+      "caption": "Gilded Raven Theatre House",
+      "source": "data/exports/town-expansion-media-2026-07-28/terminal-c39d-render-v6/pass-1/gilded-owner-corridor/object-te-rrch-gilded-raven.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/gilded-raven.png",
+      "bytes": 47613,
+      "sha256": "8a04366afe66dac92b7c3d809e8fcb6cbda50a000148c95f7edf8c1eaf7e5a1a"
+    },
+    {
+      "name": "owner-corridor.png",
+      "caption": "Gilded Raven–Observatory owner corridor",
+      "source": "data/exports/town-expansion-media-2026-07-28/terminal-c39d-render-v6/pass-1/gilded-owner-corridor/object-te-owner-corridor-grt-obs.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/owner-corridor.png",
+      "bytes": 24081,
+      "sha256": "a089fa94a41fe552fe06c3b55e2bc8ec6726991dced92262e00ad22d7cf6f0eb"
+    },
+    {
+      "name": "owner-sales-office.png",
+      "caption": "Founders’ Gallery sales office",
+      "source": "data/exports/town-expansion-media-2026-07-28/terminal-c39d-render-v6/pass-1/gilded-owner-corridor/object-te-owner-city-sales-office.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/owner-sales-office.png",
+      "bytes": 43131,
+      "sha256": "c3cf7cbdfbfbf50ef3887f1df994a6a8dd5679a5bb6b7e26eeaa88df6c27663f"
+    },
+    {
+      "name": "westlight-venue-basements.png",
+      "caption": "Westlight venue basement support",
+      "source": "data/exports/town-expansion-media-2026-07-28/terminal-c39d-render-v6/pass-1/westlight/object-te-wl-venue-basements.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/westlight-venue-basements.png",
+      "bytes": 24584,
+      "sha256": "395689f74613f0f84dd63bebf164d323076abe6ee19d49b4c28888a76df11bf0"
+    },
+    {
+      "name": "westlight-members-club.png",
+      "caption": "Westlight members club",
+      "source": "data/exports/redevelopment-media-wave2-2026-07-28/buildings/westlight-venue/wl-club--members-club.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/westlight-members-club.png",
+      "bytes": 96643,
+      "sha256": "0da0f5ddd8be62116d8bd7699ac392376793ac6edd44e21ccc4b936a37d06fd9"
+    },
+    {
+      "name": "oasis-bunker.png",
+      "caption": "Approach-road oasis mini-bunker",
+      "source": "data/exports/town-expansion-media-2026-07-28/terminal-c39d-render-v6/pass-1/oasis-rv/object-te-oasis-bunker-01.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/oasis-bunker.png",
+      "bytes": 251532,
+      "sha256": "5dd76bda4140b8ce5245b4a3e3a5cc640435e434f75a88c56462b49b068163fd"
+    },
+    {
+      "name": "info-annex.png",
+      "caption": "Iowa underground information annex",
+      "source": "data/exports/town-expansion-media-2026-07-28/terminal-c39d-render-v6/pass-1/dsm-infobunker/object-te-ia-info-annex.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/info-annex.png",
+      "bytes": 226548,
+      "sha256": "5fe5b81ea931af46ce14ddd7af8e2c504b3ac7dafef2ca28d704ce9b60283865"
+    },
+    {
+      "name": "holdout-shelter.png",
+      "caption": "Holdout-home shelter",
+      "source": "data/exports/town-expansion-media-2026-07-28/terminal-c39d-render-v6/pass-1/dsm-infobunker/object-te-ia-holdout-home-shelter.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/holdout-shelter.png",
+      "bytes": 63890,
+      "sha256": "e271d114b8467a3dcbaec77dac55a8f5f0405194496b7cde7377782c66d550a2"
+    },
+    {
+      "name": "concord-bar.png",
+      "caption": "Concord bar",
+      "source": "data/exports/town-expansion-media-2026-07-28/terminal-c39d-render-v6/pass-1/data-district-concord/object-te-ia-concord-bar.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/concord-bar.png",
+      "bytes": 266910,
+      "sha256": "25198c037c3988cd97929213b870859ceabdade8ebe05e0e16af0dcf5dfd2979"
+    },
+    {
+      "name": "c01-east-l1.png",
+      "caption": "Cataloged C01 east L1 security garage",
+      "source": "data/exports/town-expansion-media-2026-07-28/terminal-c39d-render-v6/pass-1/c01/object-c01-east-l1-security-garage.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/c01-east-l1.png",
+      "bytes": 35367,
+      "sha256": "3ddc206c9bed64d5624c589b02a9d190183996a2a70fcc945b8f041ed1fcf030"
+    },
+    {
+      "name": "c01-east-l2-adult.png",
+      "caption": "Cataloged C01 east L2 living / adult level (non-graphic)",
+      "source": "data/exports/town-expansion-media-2026-07-28/terminal-c39d-render-v6/pass-1/c01/object-c01-east-l2-living-adult.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/c01-east-l2-adult.png",
+      "bytes": 39493,
+      "sha256": "cf1cae03952a45065fa289689b9d60e7e279c831d38028e7800312c1cac3441a"
+    },
+    {
+      "name": "c01-owner-club.png",
+      "caption": "Cataloged C01 owner club arrival",
+      "source": "data/exports/town-expansion-media-2026-07-28/terminal-c39d-render-v6/pass-1/c01/object-c01-owner-club-arrival.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/c01-owner-club.png",
+      "bytes": 65135,
+      "sha256": "4dac3b5e691c0e601d4cccce8e9be92229cd66f82aded4c33ac56cba793a0ff7"
+    },
+    {
+      "name": "c01-owner-residence.png",
+      "caption": "Cataloged C01 owner residence",
+      "source": "data/exports/town-expansion-media-2026-07-28/terminal-c39d-render-v6/pass-1/c01/object-c01-owner-residence.png",
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/screenshots/c01-owner-residence.png",
+      "bytes": 65554,
+      "sha256": "61cdc990bbb126e640e13d7ccdcd5fe989aee2e91986c4d9c49b64bf6cf704fc"
+    }
+  ]
+}

@@ -353,6 +353,41 @@ node scripts/generate_world_catalog.mjs \
 - Do not overwrite a prior catalog. Refresh `data/worldsnap/region` first when a
   current saved-world baseline is required, then use a new dated output path.
 
+## Underground Navigation Report Workflow
+
+- Generate the read-only underground inventory, geographic and skywalk-style
+  maps, C01 level graphs, evidence book, and HTML report:
+
+```bash
+node scripts/generate_underground_navigation_report.mjs
+```
+
+- Print the generated HTML with headless Chromium, then validate and seal all
+  report artifacts:
+
+```bash
+/home/ianwalmsley/.cache/ms-playwright/chromium_headless_shell-1181/chrome-linux/headless_shell \
+  --headless --no-sandbox --disable-gpu --allow-file-access-from-files \
+  --print-to-pdf=docs/redevelopment/2026-07-28-underground-navigation/underground-navigation-report.pdf \
+  --print-to-pdf-no-header \
+  file:///opt/stacks/mc-fleet-bot/docs/redevelopment/2026-07-28-underground-navigation/underground-navigation-report.html
+node scripts/finalize_underground_navigation_report.mjs
+```
+
+- Sync the sealed package into the IANLAN NextGen source and build it:
+
+```bash
+npm run sync:underground --prefix world-showcase
+npm run build --prefix world-showcase
+```
+
+- The generator opens `data/world-map.db` read-only and reads accepted manifests,
+  immutable-snapshot identity, and existing media. It never connects to
+  Minecraft, RCON, the fleet API, systemd, Railway, Sites, or Box.
+- Keep ISSUE-002 open unless a separate field survey proves the C01 relocation,
+  road, parking recovery, and sunken entrance. The east-stack graph is catalog
+  evidence, not proof of those surface conditions.
+
 ## Town Expansion Global Cross-Scope Gate
 
 - Run the complete offline ownership/interface gate with:
