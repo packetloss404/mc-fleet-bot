@@ -28,6 +28,23 @@ export interface MayorConfig {
 export interface TownConfig {
   mayor?: MayorConfig;
   sliders?: Record<string, number>;
+  /**
+   * Optional, reviewed resident shift routes. A shift is emitted only for its
+   * listed role/phase and carries every approved waypoint in the task text.
+   * This works with the matching leash civic corridors; it is not permission
+   * to explore between arbitrary coordinates.
+   */
+  citizenRoutine?: {
+    shifts?: Array<{
+      id: string;
+      destination: string;
+      role: string;
+      phase: 'day' | 'night';
+      activity: string;
+      waypoints: Vec3[];
+      nonDestructive?: boolean;
+    }>;
+  };
   [key: string]: unknown;
 }
 

@@ -157,6 +157,70 @@ describe('validateConfig', () => {
     }
   });
 
+  it('validates named civic destinations and waypoint corridors', () => {
+    const raw = baseValid();
+    raw.leash = [{
+      botName: 'Scott',
+      x: -85,
+      z: -370,
+      radius: 50,
+      destinations: [
+        { name: 'employee-lounge', x: -82, z: 90, radius: 16 },
+      ],
+      corridors: [{
+        name: 'reviewed-worker-route',
+        width: 4,
+        waypoints: [
+          { x: -85, z: -370 },
+          { x: -82, z: 90 },
+        ],
+      }],
+    }];
+    expect(validateConfig(raw).ok).toBe(true);
+
+    raw.leash[0].corridors[0].waypoints[1].z = 'ninety';
+    const invalid = validateConfig(raw);
+    expect(invalid.ok).toBe(false);
+    if (!invalid.ok) {
+      expect(invalid.errors).toContain(
+        'leash[0].corridors[0].waypoints[1].z: expected number, got string',
+      );
+    }
+  });
+
+  it('rejects empty, non-finite, or non-traversable civic mobility geometry', () => {
+    const raw = baseValid();
+    raw.leash = [{
+      botName: ' ',
+      x: Number.NaN,
+      z: -370,
+      radius: 0,
+      destinations: [
+        { name: '', x: -82, z: Number.POSITIVE_INFINITY, radius: -1 },
+      ],
+      corridors: [{
+        name: '',
+        width: 0,
+        waypoints: [{ x: -85, z: -370 }],
+      }],
+    }];
+    const invalid = validateConfig(raw);
+    expect(invalid.ok).toBe(false);
+    if (!invalid.ok) {
+      expect(invalid.errors).toEqual(expect.arrayContaining([
+        'leash[0].botName: expected non-empty string',
+        'leash[0].x: expected finite number',
+        'leash[0].radius: expected positive finite number',
+        'leash[0].destinations[0].name: expected non-empty string',
+        'leash[0].destinations[0].z: expected finite number',
+        'leash[0].destinations[0].radius: expected positive finite number',
+        'leash[0].corridors[0].name: expected non-empty string',
+        'leash[0].corridors[0].width: expected positive finite number',
+        'leash[0].corridors[0].waypoints: expected at least two waypoints',
+      ]));
+    }
+  });
+
   it('the real repo config.yml passes validation', () => {
     const configPath = path.join(process.cwd(), 'config.yml');
     const raw = yaml.load(fs.readFileSync(configPath, 'utf-8'));

@@ -1,0 +1,321 @@
+schema_version: 1
+id: mainstreet-america-redevelopment-r4-r5
+title: MainStreet America two-street frontage, garages, and support-building identity
+authored_at_utc: 2026-07-27
+coordinate_system: Minecraft Java block coordinates; north is -Z and east is +X
+
+execution:
+  mode: implementation_package_for_authorized_execution
+  live_mutation_authorized: true
+  package_is_atomic: true
+  source_snapshot:
+    directory: data/worldsnap-rollbackcheck-64829086424cde6f-20260727/region
+    sha256: 64829086424cde6f0bbf8db9166a152daf753ae2c3cf5652ba165dddc8229142
+    hash_algorithm: sha256(filename + NUL + bytes + NUL, sorted by filename)
+  runtime_rebase:
+    reason: strict neighbor-physics no-op correction after compensated first execution
+    failed_forward_operations: data/buildops/mainstreet-redevelopment-r4-r5-2026-07-27.txt
+    failed_execution_report: data/buildops/mainstreet-redevelopment-r4-r5-2026-07-27.execution.json
+    compensation_report: data/buildops/mainstreet-redevelopment-r4-r5-2026-07-27.emergency-rollback.execution.json
+    failed_source_snapshot_sha256: c9e2bf0a2c8d3072d356b8db5c765622a9d367577bc4e09d077bbc58c4310654
+    failed_sequence_hazards:
+      support_dependent_plants: 311
+      connected_fences: 27
+      total: 338
+    rollback_snapshot_divergences:
+      already_desired_air_clearance_omitted: 189
+      structural_targets_rebased_from_plants_to_air: 33
+      air_after_neighbor_updates_total: 222
+      stable_spruce_leaves_distance_7: 116
+      total: 338
+  stop_on_any_collision: true
+  stop_on_any_skipped_garage: true
+  maximum_garage_cut: 3
+  maximum_garage_fill: 2
+  minimum_clear_headroom: 3
+
+design_principles:
+  - Preserve every completed building shell and interior.
+  - Do not move B02, B03, H01-H12, or C02-C07.
+  - H01-H12 continue to address Main Street (R01).
+  - C02, C04, and C06 address West Lane (R02).
+  - C03, C05, and C07 address East Avenue (R03).
+  - Use detached seven-by-seven garage pavilions with five-by-five clear interiors.
+  - Keep front-door walks distinct from three-wide vehicle access.
+  - Give B02 a public culinary forecourt and B03 a clearly screened service identity.
+
+palette:
+  garage_floor: minecraft:polished_andesite
+  garage_wall: minecraft:stone_bricks
+  garage_lintel: minecraft:smooth_quartz
+  garage_roof: minecraft:dark_oak_slab[type=bottom,waterlogged=false]
+  driveway: minecraft:light_gray_concrete
+  driveway_foundation: minecraft:stone_bricks
+  alley_surface: minecraft:light_gray_concrete
+  culinary_forecourt: minecraft:polished_andesite
+  culinary_identity: minecraft:orange_concrete
+  service_lane: minecraft:gray_concrete
+  service_identity: minecraft:blue_concrete
+  east_lane_identity: minecraft:cyan_concrete
+  identity_pylon: minecraft:bricks
+  service_pylon: minecraft:blue_terracotta
+  pylon_light: minecraft:sea_lantern
+  # Persistent leaves without nearby logs normalize to distance=7 in Java.
+  screen_hedge: minecraft:spruce_leaves[distance=7,persistent=true,waterlogged=false]
+
+roads:
+  - {id: R01, name: Main Street, center_x: 0, west_edge_x: -4, east_edge_x: 4}
+  - {id: R02, name: West Lane, center_x: -82, west_edge_x: -83, east_edge_x: -81}
+  - {id: R03, name: East Avenue, center_x: 84, west_edge_x: 83, east_edge_x: 85}
+  - {id: ALLEY-W, name: West Rear Alley, center_x: -59, west_edge_x: -60, east_edge_x: -58}
+  - {id: ALLEY-E, name: East Rear Alley, center_x: 58, west_edge_x: 57, east_edge_x: 59}
+
+protected_buildings:
+  - {id: B01, bounds: [-72, 72, 90, 165]}
+  - {id: B02, bounds: [-133, -88, -118, -73]}
+  - {id: B03, bounds: [-24, 23, -278, -232]}
+  - {id: H01, bounds: [-46, -23, 44, 65]}
+  - {id: H02, bounds: [-41, -27, -2, 12]}
+  - {id: H03, bounds: [-46, -23, -56, -34]}
+  - {id: H04, bounds: [-43, -25, -104, -86]}
+  - {id: H05, bounds: [-46, -22, -157, -133]}
+  - {id: H06, bounds: [-47, -22, -207, -183]}
+  - {id: H07, bounds: [18, 45, 42, 68]}
+  - {id: H08, bounds: [20, 43, -5, 15]}
+  - {id: H09, bounds: [18, 46, -59, -31]}
+  - {id: H10, bounds: [18, 45, -109, -81]}
+  - {id: H11, bounds: [26, 38, -151, -140]}
+  - {id: H12, bounds: [21, 42, -205, -185]}
+  - {id: C02, bounds: [-78, -62, 21, 39]}
+  - {id: C03, bounds: [62, 78, 21, 39]}
+  - {id: C04, bounds: [-78, -62, -79, -61]}
+  - {id: C05, bounds: [62, 78, -79, -61]}
+  - {id: C06, bounds: [-78, -62, -179, -161]}
+  - {id: C07, bounds: [62, 78, -179, -161]}
+  - {id: GRID-W2, bounds: [-132, -96, -52, 4]}
+  - {id: GRID-E2, bounds: [106, 134, -32, 10]}
+
+# Bounds are [min_x, max_x, min_z, max_z]; floor_y is the finished floor.
+# drive_x is inclusive and ordered from the access route toward the garage.
+# H-house garages are behind/outward from the R01 principal facade. They never
+# occupy the Main Street front garden. C-house garages use side placements.
+garages:
+  - {id: GAR-H01, building: H01, frontage: R01, access_route: ALLEY-W, side: west, placement: rear_outward, bounds: [-55, -49, 51, 57], floor_y: 64, drive_x: [-56, -56], principal_facade_x: -23}
+  - {id: GAR-H02, building: H02, frontage: R01, access_route: ALLEY-W, side: west, placement: rear_outward, bounds: [-55, -49, 1, 7], floor_y: 64, drive_x: [-56, -56], principal_facade_x: -27}
+  - {id: GAR-H03, building: H03, frontage: R01, access_route: ALLEY-W, side: west, placement: rear_outward, bounds: [-55, -49, -51, -45], floor_y: 64, drive_x: [-58, -56], principal_facade_x: -23}
+  - {id: GAR-H04, building: H04, frontage: R01, access_route: ALLEY-W, side: west, placement: rear_outward, bounds: [-55, -49, -101, -95], floor_y: 64, drive_x: [-58, -56], principal_facade_x: -25}
+  - {id: GAR-H05, building: H05, frontage: R01, access_route: ALLEY-W, side: west, placement: rear_outward, bounds: [-55, -49, -152, -146], floor_y: 64, drive_x: [-58, -56], principal_facade_x: -22}
+  - {id: GAR-H06, building: H06, frontage: R01, access_route: ALLEY-W, side: west, placement: rear_outward, bounds: [-56, -50, -202, -196], floor_y: 64, drive_x: [-58, -57], principal_facade_x: -22}
+
+  # Runtime-safe rebase: the northeast rear pavilion and alley terminal move
+  # south of the double-plant choke at z=38..39. This keeps the detached
+  # garage behind/outward of H07 while preserving a uniform three-wide route.
+  - {id: GAR-H07, building: H07, frontage: R01, access_route: ALLEY-E, side: east, placement: rear_outward_northeast, bounds: [46, 52, 21, 27], floor_y: 72, drive_x: [57, 53], principal_facade_x: 18}
+  - {id: GAR-H08, building: H08, frontage: R01, access_route: ALLEY-E, side: east, placement: rear_outward_upper_terrace, bounds: [53, 59, 0, 6], floor_y: 71, drive_x: [62, 60], principal_facade_x: 20}
+  - {id: GAR-H09, building: H09, frontage: R01, access_route: ALLEY-E, side: east, placement: rear_outward_upper_terrace, bounds: [53, 59, -55, -49], floor_y: 77, drive_x: [62, 60], principal_facade_x: 18}
+  - {id: GAR-H10, building: H10, frontage: R01, access_route: ALLEY-E, side: east, placement: rear_outward, bounds: [48, 54, -104, -98], floor_y: 64, drive_x: [57, 55], principal_facade_x: 18}
+  - {id: GAR-H11, building: H11, frontage: R01, access_route: ALLEY-E, side: east, placement: rear_outward, bounds: [48, 54, -151, -145], floor_y: 64, drive_x: [57, 55], principal_facade_x: 26}
+  - {id: GAR-H12, building: H12, frontage: R01, access_route: ALLEY-E, side: east, placement: rear_outward, bounds: [47, 53, -194, -188], floor_y: 64, drive_x: [57, 54], principal_facade_x: 21}
+
+  - {id: GAR-C02, building: C02, frontage: R02, side: west, bounds: [-79, -73, 6, 12], floor_y: 68, drive_x: [-82, -80]}
+  - {id: GAR-C03, building: C03, frontage: R03, side: east, bounds: [73, 79, 45, 51], floor_y: 78, drive_x: [84, 80]}
+  - {id: GAR-C04, building: C04, frontage: R02, side: west, bounds: [-79, -73, -58, -52], floor_y: 64, drive_x: [-82, -80]}
+  - {id: GAR-C05, building: C05, frontage: R03, side: east, bounds: [73, 79, -57, -51], floor_y: 79, drive_x: [84, 80]}
+  - {id: GAR-C06, building: C06, frontage: R02, side: west, bounds: [-79, -73, -202, -196], floor_y: 64, drive_x: [-82, -80]}
+  - {id: GAR-C07, building: C07, frontage: R03, side: east, bounds: [70, 76, -151, -145], floor_y: 64, drive_x: [84, 77]}
+
+shared_alleys:
+  - id: ALLEY-W
+    width: 3
+    headroom: 3
+    max_cut: 3
+    max_fill: 3
+    z_range: [-218, 70]
+    centerline:
+      - [-59, -218]
+      - [-59, -155]
+      - [-58, -154]
+      - [-58, -153]
+      - [-59, -152]
+      - [-59, -56]
+      - [-58, -55]
+      - [-57, -54]
+      - [-57, -53]
+      - [-58, -52]
+      - [-59, -51]
+      - [-59, -22]
+      - [-58, -21]
+      - [-57, -20]
+      - [-58, -19]
+      - [-58, -17]
+      - [-57, -16]
+      - [-57, 13]
+      - [-56, 14]
+      - [-56, 18]
+      - [-55, 19]
+      - [-54, 20]
+      - [-55, 21]
+      - [-56, 22]
+      - [-57, 23]
+      - [-57, 70]
+    grade_anchors:
+      - {z: -218, target_y: 64, purpose: R07_connection}
+      - {z: -199, target_y: 64, purpose: GAR-H06}
+      - {z: -149, target_y: 64, purpose: GAR-H05}
+      - {z: -98, target_y: 64, purpose: GAR-H04}
+      - {z: -83, target_y: 64, purpose: R06_connection}
+      - {z: -48, target_y: 64, purpose: GAR-H03}
+      - {z: 4, target_y: 64, purpose: GAR-H02}
+      - {z: 17, target_y: 64, purpose: R05_connection}
+      - {z: 56, target_y: 64, purpose: GAR-H01}
+      - {z: 70, target_y: 64, purpose: terminal_turn_pad}
+    public_connections: [R07, R06, R05]
+    terminal_turn_pad: {bounds: [-58, -54, 68, 70], floor_y: 64}
+
+  - id: ALLEY-E
+    width: 3
+    headroom: 3
+    max_cut: 3
+    max_fill: 3
+    z_range: [-218, 37]
+    centerline:
+      - [50, -218]
+      - [50, -205]
+      - [51, -204]
+      - [51, -202]
+      - [52, -201]
+      - [53, -200]
+      - [54, -199]
+      - [55, -198]
+      - [56, -197]
+      - [57, -196]
+      - [58, -195]
+      - [58, -186]
+      - [57, -185]
+      - [57, -183]
+      - [58, -182]
+      - [58, -88]
+      - [57, -87]
+      - [56, -86]
+      - [57, -85]
+      - [58, -84]
+      - [58, -60]
+      - [59, -59]
+      - [60, -58]
+      - [61, -57]
+      - [62, -56]
+      - [63, -55]
+      - [63, -49]
+      - [62, -48]
+      - [61, -47]
+      - [60, -46]
+      - [59, -45]
+      - [58, -44]
+      - [58, -31]
+      - [57, -30]
+      - [56, -29]
+      - [57, -28]
+      - [58, -27]
+      - [58, -5]
+      - [59, -4]
+      - [60, -3]
+      - [61, -2]
+      - [62, -1]
+      - [63, 0]
+      - [63, 6]
+      - [62, 7]
+      - [61, 8]
+      - [60, 9]
+      - [59, 10]
+      - [58, 11]
+      - [58, 37]
+    grade_anchors:
+      - {z: -218, target_y: 64, purpose: R07_connection}
+      - {z: -191, target_y: 64, purpose: GAR-H12}
+      - {z: -148, target_y: 64, purpose: GAR-H11}
+      - {z: -101, target_y: 64, purpose: GAR-H10}
+      - {z: -53, target_y: 77, purpose: GAR-H09_portal_south}
+      - {z: -52, target_y: 77, purpose: GAR-H09}
+      - {z: -51, target_y: 77, purpose: GAR-H09_portal_north}
+      - {z: 3, target_y: 71, purpose: GAR-H08}
+      - {z: 17, target_y: 70, purpose: R05_connection}
+      - {z: 23, target_y: 72, purpose: GAR-H07_portal_south}
+      - {z: 24, target_y: 72, purpose: GAR-H07}
+      - {z: 25, target_y: 72, purpose: GAR-H07_portal_north}
+      - {z: 35, target_y: 76, purpose: terminal_turn_pad_start}
+      - {z: 36, target_y: 76, purpose: terminal_turn_pad_mid}
+      - {z: 37, target_y: 76, purpose: terminal_turn_pad}
+    public_connections: [R07, R05]
+    terminal_turn_pad: {bounds: [55, 59, 35, 37], floor_y: 76}
+
+frontage_assignments:
+  R01: [H01, H02, H03, H04, H05, H06, H07, H08, H09, H10, H11, H12]
+  R02: [C02, C04, C06, B02]
+  R03: [C03, C05, C07]
+  SERVICE: [B03]
+
+b02_frontage:
+  building: B02
+  frontage: R02
+  forecourt:
+    bounds: [-87, -81, -98, -92]
+    floor_y: 64
+    surface_following: true
+    minimum_headroom: 3
+  pylons:
+    - {x: -86, z: -105, ground_y: 64, body: culinary}
+    - {x: -86, z: -85, ground_y: 65, body: culinary}
+
+b03_service_identity:
+  building: B03
+  frontage: SERVICE
+  lane:
+    bounds: [-3, 3, -231, -219]
+    center_stripe_x: 0
+    surface_following: true
+    minimum_headroom: 3
+  pylons:
+    - {x: -7, z: -226, body: service}
+    - {x: 7, z: -226, body: service}
+  screen_segments:
+    - {axis: z, fixed: -28, min: -247, max: -236, height: 2}
+    - {axis: z, fixed: 28, min: -247, max: -236, height: 2}
+    - {axis: x, fixed: -282, min: -24, max: -8, height: 2}
+    - {axis: x, fixed: -282, min: 8, max: 24, height: 2}
+
+wayfinding_inlays:
+  - id: WF-R01-R05
+    desired: minecraft:white_concrete
+    points: [[-3, 17], [-2, 17], [-1, 17], [0, 17], [1, 17], [2, 17], [3, 17]]
+  - id: WF-R01-R06-B02
+    desired: minecraft:orange_concrete
+    points: [[-3, -83], [-2, -83], [-1, -83], [0, -83], [1, -83], [2, -83], [3, -83]]
+  - id: WF-R02-B02-GATE
+    desired: minecraft:orange_concrete
+    points: [[-83, -95], [-82, -95], [-81, -95]]
+  - id: WF-R01-R07-B03
+    desired: minecraft:blue_concrete
+    points: [[-3, -218], [-2, -218], [-1, -218], [0, -218], [1, -218], [2, -218], [3, -218]]
+  - id: WF-R02-R07
+    desired: minecraft:blue_concrete
+    points: [[-83, -218], [-82, -218], [-81, -218]]
+  - id: WF-R03-R07
+    desired: minecraft:cyan_concrete
+    points: [[83, -218], [84, -218], [85, -218]]
+
+acceptance:
+  requested_garages: 18
+  required_usable_garages: 18
+  required_frontage_assignment_count: 20
+  maximum_adjacent_driveway_step: 1
+  building_relocations: 0
+  protected_building_intersections: 0
+  target_block_entities: 0
+  unresolved_collisions: 0
+  skipped_operations: 0
+  required_shared_alleys: 2
+  required_complete_alley_connections: 5
+  maximum_adjacent_alley_step: 1
+  minimum_alley_reversal_plateau_rows: 2
+  minimum_garage_rear_setback: 2
+  front_garden_garages: 0

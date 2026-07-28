@@ -5,6 +5,30 @@ import { moveNearWithCleanup } from './moveHelper';
 
 const CONTAINER_OPEN_TIMEOUT = 10000;
 
+export interface ContainerItemSummary {
+  name: string;
+  count: number;
+}
+
+/**
+ * Convert the action-style inspection result into the collection shape the
+ * generated-code sandbox advertises. Failed/empty inspections become `[]`, so
+ * callers can safely use `.find`, `.filter`, and `.some` without probing
+ * ActionResult internals.
+ */
+export function containerItemsFromResult(result: ActionResult): ContainerItemSummary[] {
+  if (!result.success) return [];
+  const items = result.data?.items;
+  if (!items || typeof items !== 'object' || Array.isArray(items)) return [];
+  return Object.entries(items)
+    .filter((entry): entry is [string, number] =>
+      typeof entry[0] === 'string'
+      && typeof entry[1] === 'number'
+      && Number.isFinite(entry[1])
+      && entry[1] > 0)
+    .map(([name, count]) => ({ name, count }));
+}
+
 function withTimeout<T>(promise: Promise<T>, ms: number, label: string): Promise<T> {
   return Promise.race([
     promise,

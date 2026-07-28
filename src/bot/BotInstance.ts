@@ -6,7 +6,13 @@ import { Vec3 } from 'vec3';
 import { BotState, BotMode } from './BotState';
 import { Config } from '../config';
 import { logger } from '../util/logger';
-import { isProtected, isBelowDigFloor, getMinDigY, isAboveCarveCeiling, getCarveCeiling } from '../actions/geofence';
+import {
+  getCarveCeiling,
+  getMinDigY,
+  isAboveCarveCeiling,
+  isBelowDigFloor,
+  isProtected,
+} from '../actions/geofence';
 import { LLMClient } from '../ai/LLMClient';
 import { AffinityManager } from '../personality/AffinityManager';
 import { ConversationManager } from '../personality/ConversationManager';
@@ -32,6 +38,11 @@ import { SharedWorldModel } from '../voyager/SharedWorldModel';
 import { SocialMemory } from '../social/SocialMemory';
 import { BotComms, BotMessage } from '../social/BotComms';
 import { parseBuildIntent } from '../control/BuildIntentResolver';
+import {
+  canMoveWithinCivicMobility,
+  getCivicStepExclusionCost,
+} from '../control/CivicMobility';
+import { applyPathfinderMovementSafety } from './PathfinderMovementPolicy';
 
 /**
  * Project Sid P3 (SHOULD-FIX #1) — minimal inter-bot comms surface BotInstance
@@ -190,6 +201,12 @@ export class BotInstance {
   private statsTracker = new StatsTracker('./data');
   private static CHAT_COOLDOWN_MS = 3000;
   private lastPathResetLog: { reason: string; at: number; suppressed: number } | null = null;
+  private controlledWalkStatus: {
+    status: 'running' | 'succeeded' | 'failed';
+    target: { x: number; y: number; z: number; range: number };
+    updatedAt: number;
+    message?: string;
+  } | null = null;
 
   // ── Overnight-survival state ──
   /** Last time we evaluated the "am I hungry?" branch. Gated to ~10s. */
@@ -398,21 +415,24 @@ export class BotInstance {
         const gz = typeof goal?.z === 'number' ? goal.z : entityGoal?.z;
         if (leash && goal && current
             && typeof gx === 'number' && typeof gz === 'number') {
-          const targetDistance = Math.hypot(gx - leash.x, gz - leash.z);
-          const currentDistance = Math.hypot(current.x - leash.x, current.z - leash.z);
-          // Inward recovery is always permitted when a bot was pushed or
-          // teleported outside its district. All other outward goals are
-          // stopped at the universal pathfinder choke point, covering ambient
-          // wander, flee/follow helpers, and raw generated setGoal calls.
-          if (targetDistance > leash.radius && targetDistance >= currentDistance) {
+          // Named destinations and surveyed corridors extend the citizen's
+          // home circle without enabling free roaming. Out-of-bounds recovery
+          // is still allowed when the target moves closer to an approved area.
+          if (!canMoveWithinCivicMobility(
+            leash,
+            { x: current.x, z: current.z },
+            { x: gx, z: gz },
+          )) {
             logger.warn(
               {
                 bot: this.name,
                 goal: { x: Math.floor(gx), z: Math.floor(gz) },
                 home: { x: leash.x, z: leash.z },
                 radius: leash.radius,
+                destinations: leash.destinations?.map((destination) => destination.name) ?? [],
+                corridors: leash.corridors?.map((corridor) => corridor.name) ?? [],
               },
-              'pathfinder goal blocked: outside the movement leash',
+              'pathfinder goal blocked: outside approved civic mobility areas',
             );
             return originalSetGoal(null, dynamic);
           }
@@ -481,16 +501,39 @@ export class BotInstance {
         // Set up pathfinder movements
         const mcData = require('minecraft-data')(this.bot.version);
         const movements = new Movements(this.bot);
-        movements.canDig = true; // Keep digging available to escape holes (matches original Voyager)
+        const civicBoundary = this.config.leash?.find(
+          (entry) => entry.botName.toLowerCase() === this.name.toLowerCase(),
+        );
+        const civicStepExclusion = civicBoundary
+          ? (block: any) => {
+              const current = this.bot?.entity?.position;
+              if (!current) return 0;
+              return getCivicStepExclusionCost(
+                civicBoundary,
+                { x: current.x, z: current.z },
+                block,
+              );
+            }
+          : undefined;
+        // Keep digging available to escape holes (matches original Voyager),
         // ...but make it expensive. With the library default digCost=1, pathfinder
         // treats tunnelling straight through terrain as the cheapest route, which
         // is the bulk of the "bots endlessly dig underground" behaviour. Raising it
         // makes the planner strongly prefer walking/going around; digging stays a
         // last resort (escaping a hole, no other path).
-        movements.digCost = 12;
-        // Don't pillar up 1x1 towers to reach goals — another source of pointless
-        // vertical mining/scaffolding on the way to surface build sites.
-        movements.allow1by1towers = false;
+        // forbid 1x1 towers, and teach A* the immutable dig boundaries enforced
+        // by the runtime wrapper. Cost >=100 is mineflayer-pathfinder's hard
+        // exclusion convention.
+        applyPathfinderMovementSafety(movements, civicStepExclusion);
+
+        // mineflayer-collectblock owns a second Movements instance and installs
+        // it before every collection task. It must carry the exact same policy
+        // or a saved farming/mining skill can silently replace the safe normal
+        // movements and hammer bot.dig against one protected obstacle.
+        const collectMovements = (this.bot as any).collectBlock?.movements as Movements | undefined;
+        if (collectMovements) {
+          applyPathfinderMovementSafety(collectMovements, civicStepExclusion);
+        }
         this.bot.pathfinder.setMovements(movements);
 
         // BOUND THE SEARCH. digCost/allow1by1towers above shape the ROUTE the
@@ -517,7 +560,16 @@ export class BotInstance {
         // missing from @types/mineflayer-pathfinder's Pathfinder interface.
         (this.bot.pathfinder as any).searchRadius = searchRadius;
         logger.info(
-          { bot: this.name, canDig: movements.canDig, digCost: movements.digCost, searchRadius },
+          {
+            bot: this.name,
+            canDig: movements.canDig,
+            digCost: movements.digCost,
+            breakExclusions: movements.exclusionAreasBreak.length,
+            stepExclusions: movements.exclusionAreasStep.length,
+            collectBreakExclusions: collectMovements?.exclusionAreasBreak.length ?? 0,
+            collectStepExclusions: collectMovements?.exclusionAreasStep.length ?? 0,
+            searchRadius,
+          },
           'Pathfinder movements configured',
         );
 
@@ -2396,7 +2448,21 @@ export class BotInstance {
             z: Math.round(this.bot.entity.position.z),
           }
         : null,
+      // Exposed for controlled runtime gates and the dashboard. CommandCenter
+      // dispatch is intentionally asynchronous, so position alone can look
+      // close enough while the worker is still traversing the last node.
+      pathfinderMoving: Boolean(this.bot?.pathfinder?.isMoving?.()),
+      controlledWalkStatus: this.controlledWalkStatus,
     };
+  }
+
+  setControlledWalkStatus(status: {
+    status: 'running' | 'succeeded' | 'failed';
+    target: { x: number; y: number; z: number; range: number };
+    updatedAt: number;
+    message?: string;
+  }): void {
+    this.controlledWalkStatus = status;
   }
 
   getDetailedStatus() {

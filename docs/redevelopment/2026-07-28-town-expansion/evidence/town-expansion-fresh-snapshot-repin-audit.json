@@ -1,0 +1,274 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "TOWN-EXPANSION-FRESH-SNAPSHOT-REPIN-AUDIT-20260728T0930Z",
+  "status": "PASS_REGENERATE_EXACT_GUARDS_DO_NOT_BLIND_REPIN",
+  "liveWorldMutated": false,
+  "oldSnapshot": {
+    "directory": "data/worldsnap-town-expansion-expanded-baseline-20260728T0405Z/region",
+    "sha256": "e612b1feabcf8bd81e427804e0c5cdccea5aac79ef543cadbf2b05d360de7a5a",
+    "regionFileCount": 24
+  },
+  "freshSnapshot": {
+    "directory": "data/worldsnap-town-expansion-prerelease-20260728T0930Z/region",
+    "sha256": "f9a6a21ec115bd556d7626a9b18151b38d1d4f145226c9e3f741de636528eb8e",
+    "regionFileCount": 26
+  },
+  "regionMembership": {
+    "unchangedSharedRegions": 20,
+    "changedSharedRegions": [
+      "r.-1.-1.mca",
+      "r.-1.0.mca",
+      "r.0.-1.mca",
+      "r.0.0.mca"
+    ],
+    "freshOnlyRegions": [
+      "r.-1.-4.mca",
+      "r.0.-4.mca"
+    ],
+    "oldOnlyRegions": []
+  },
+  "exactTargetComparison": {
+    "oldUniqueTargets": 3642911,
+    "freshUniqueTargets": 3642910,
+    "oldExpandedReplCellsIncludingWaterStageTwo": 3667673,
+    "freshExpandedReplCellsIncludingWaterStageTwo": 3667672,
+    "oldOperationGroups": 473861,
+    "freshOperationGroups": 473859,
+    "desiredStateDifferences": 0,
+    "scopeOwnershipDifferences": 0,
+    "sourceGuardStateDifferences": 22,
+    "droppedAlreadySatisfiedTargets": 1,
+    "newTargets": 0,
+    "guardedCommandCountOld": 1660,
+    "guardedCommandCountFresh": 1660,
+    "guardedCommandDifferences": 1,
+    "sourceGuardDifferencesByScope": {
+      "TE-ATTACHED-GARAGE-H07": 7,
+      "TE-MSA-B01-GUEST-SERVICES-DESTINATION": 2,
+      "TE-OBS-OWNER-MEGA-ESTATE": 7,
+      "TE-OBS-OWNER-RED-ROOM": 3,
+      "TE-MAINSTREET-EMPLOYEE-LOUNGE": 1,
+      "TE-OBS-OWNER-EAST-ASCENT": 1,
+      "manager-vale-five-cottages": 1
+    },
+    "c01TargetGuardDifferences": 0,
+    "cbeTargetGuardDifferences": 0,
+    "differences": [
+      {
+        "points": [[37, 72, 33], [38, 72, 33], [41, 72, 33]],
+        "scope": "TE-ATTACHED-GARAGE-H07",
+        "old": "minecraft:short_grass",
+        "fresh": "minecraft:air"
+      },
+      {
+        "points": [[42, 72, 33], [43, 72, 33]],
+        "scope": "TE-ATTACHED-GARAGE-H07",
+        "old": "minecraft:grass_block[snowy=false]",
+        "fresh": "minecraft:air"
+      },
+      {
+        "points": [[44, 72, 33]],
+        "scope": "TE-ATTACHED-GARAGE-H07",
+        "old": "minecraft:dirt",
+        "fresh": "minecraft:air"
+      },
+      {
+        "points": [[44, 73, 33]],
+        "scope": "TE-ATTACHED-GARAGE-H07",
+        "old": "minecraft:grass_block[snowy=false]",
+        "fresh": "minecraft:air"
+      },
+      {
+        "points": [[42, 73, 33]],
+        "scope": "TE-ATTACHED-GARAGE-H07",
+        "old": "minecraft:short_grass",
+        "fresh": "minecraft:air",
+        "result": "fresh state already equals desired air; target omitted"
+      },
+      {
+        "points": [[0, 65, 165], [0, 66, 165]],
+        "scope": "TE-MSA-B01-GUEST-SERVICES-DESTINATION",
+        "old": "closed right-hand dark-oak door",
+        "fresh": "open right-hand dark-oak door"
+      },
+      {
+        "points": [[164, 109, 166], [164, 110, 166], [164, 112, 166], [164, 114, 166], [164, 113, 166], [164, 115, 166], [164, 108, 166]],
+        "scope": "TE-OBS-OWNER-MEGA-ESTATE / TE-OBS-OWNER-RED-ROOM",
+        "old": "minecraft:cut_copper",
+        "fresh": "minecraft:exposed_cut_copper"
+      },
+      {
+        "points": [[164, 111, 166], [164, 105, 166], [164, 107, 166]],
+        "scope": "TE-OBS-OWNER-MEGA-ESTATE",
+        "old": "minecraft:cut_copper",
+        "fresh": "minecraft:weathered_cut_copper"
+      },
+      {
+        "points": [[-94, 70, 103]],
+        "scope": "TE-MAINSTREET-EMPLOYEE-LOUNGE",
+        "old": "minecraft:short_grass",
+        "fresh": "minecraft:air"
+      },
+      {
+        "points": [[369, 68, 161]],
+        "scope": "TE-OBS-OWNER-EAST-ASCENT",
+        "old": "minecraft:dirt",
+        "fresh": "minecraft:grass_block[snowy=false]"
+      },
+      {
+        "points": [[-95, 64, -178]],
+        "scope": "manager-vale-five-cottages",
+        "old": "minecraft:dirt",
+        "fresh": "minecraft:grass_block[snowy=false]"
+      }
+    ]
+  },
+  "managerValeSourcePreconditionAudit": {
+    "protectedBlockEntities": 41,
+    "sourceBlockStateDifferences": 0,
+    "sourceTypedNbtDifferences": 1,
+    "changedSource": {
+      "coordinate": [-48, 68, -378],
+      "block": "minecraft:chest[facing=south,type=single,waterlogged=false]",
+      "oldTypedNbtSha256": "523a4f1f560579f9514027667a2803998e13dfd8e5c6afc2b4e7fc5e2bd0805a",
+      "freshTypedNbtSha256": "ecee288d7adfdb63fec3d7c14074f56ff714b276639d53c6fa7038216dd74563",
+      "oldInventory": "31 minecraft:oak_log in slot 0",
+      "freshInventory": "30 minecraft:oak_log in slot 0"
+    },
+    "freshItemStackCount": 2,
+    "freshTotalItemCount": 36,
+    "requiredAction": "regenerate exact NBT ledger and guarded copy command from the fresh snapshot"
+  },
+  "c01SourcePreconditionAudit": {
+    "ledgerEntries": 1896,
+    "rawBlockEntitiesFound": 1896,
+    "typedNbtHashDifferences": 0,
+    "movedEntries": 1619,
+    "movedSourceBlockStateDifferences": 0,
+    "retainedEntries": 277,
+    "retainedSourceBlockStateDifferences": 1,
+    "retainedDifference": {
+      "sequenceNumber": 1870,
+      "coordinate": [207, 122, 140],
+      "old": "minecraft:daylight_detector[inverted=false,power=8]",
+      "fresh": "minecraft:daylight_detector[inverted=false,power=11]",
+      "disposition": "retain",
+      "interpretation": "dynamic redstone power only; not copied, moved, or retired"
+    },
+    "requiredAction": "keep the immutable source migration ledger pinned; repeat the live same-moment NBT gate before any copy"
+  },
+  "cbeAndC01TargetConclusion": {
+    "cbeTargetStateDifferences": 0,
+    "c01TargetStateDifferences": 0,
+    "cbePrimaryRegion": "r.1.-1.mca",
+    "c01PrimaryTargetRegion": "r.1.-1.mca",
+    "primaryRegionUnchangedByteForByte": true,
+    "requiredAction": "retain historical design-survey evidence; use the fresh snapshot as the regenerated release source"
+  },
+  "pinInventory": [
+    {
+      "surface": "shared town generator release source",
+      "location": "scripts/generate_town_expansion_r1.mjs DEFAULT_REGIONS",
+      "oldRole": "default release input path; hash calculated at runtime",
+      "decision": "repinned to fresh snapshot and all exact guards regenerated"
+    },
+    {
+      "surface": "Manager Vale compiler",
+      "location": "scripts/manager_vale_cottage_compiler.mjs DEFAULT_REGIONS and EXPECTED_SNAPSHOT_HASH",
+      "oldRole": "hard snapshot path/hash acceptance gate",
+      "decision": "repinned after exact target and 41-source NBT reconciliation"
+    },
+    {
+      "surface": "Manager Vale schedule evidence",
+      "location": "worker-town-all-role-cottages-mini-mansion-coordinate-schedule.json evidence.snapshot and designValidation.validatedAgainst",
+      "oldRole": "compiler-validated snapshot evidence",
+      "decision": "repinned; schedule, artifacts, hashes, tests and independent QA regenerated"
+    },
+    {
+      "surface": "Manager Vale independent QA and focused tests",
+      "location": "scripts/qa_manager_vale_cottage_compiler.mjs and test/build/*.test.ts",
+      "oldRole": "expected snapshot and standalone artifact-hash locks",
+      "decision": "updated to the fresh generated hashes"
+    },
+    {
+      "surface": "C01 relocation coordinate schedule",
+      "location": "c01-east-relocation-coordinate-schedule.json",
+      "oldRole": "historical design survey pinned to d05ac782...",
+      "decision": "retained as historical design evidence; not a release-source override"
+    },
+    {
+      "surface": "C01 classification manifest",
+      "location": "generate_c01_bunker_classification_manifest.mjs SNAPSHOT_SHA and c01-bunker-classification-manifest.json",
+      "oldRole": "historical geometry, terrain and owner-route survey evidence pinned to e612...",
+      "decision": "retained after zero C01 target-state differences and fresh C01 model audit PASS"
+    },
+    {
+      "surface": "C01 source migration ledger",
+      "location": "generate_c01_source_nbt_migration_ledger.mjs SOURCE_REGIONS/EXPECTED_SNAPSHOT_HASH and c01-source-nbt-migration-ledger.json",
+      "oldRole": "immutable source C01 typed-NBT census pinned to f8edf994...",
+      "decision": "retained; 1896/1896 fresh NBT hashes and all 1619 moved source states match"
+    },
+    {
+      "surface": "CBE main and annex schedules",
+      "location": "concord-broadcast-exchange-coordinate-schedule.json, concord-broadcast-exchange-soundstage-annex-coordinate-schedule.json and generate_cbe_soundstage_annex_schedule.mjs",
+      "oldRole": "historical design/surface census evidence pinned to e612...",
+      "decision": "retained; primary region unchanged byte-for-byte, zero target differences, and fresh CBE model audit PASS"
+    },
+    {
+      "surface": "Iowa data-district schedule",
+      "location": "iowa-data-district-full-build-coordinate-schedule.json",
+      "oldRole": "historical terrain and public-realm survey evidence pinned to e612...",
+      "decision": "retained as design evidence; the combined exact release source is the fresh snapshot"
+    }
+  ],
+  "regeneratedArtifacts": {
+    "sharedGeneratorSha256": "3bf70d81b0901de9da693315aeade04015d3feae99f99132936a910dbb20d373",
+    "managerValeCompilerSha256": "ac3aa76628da43491dbcf92c4bbf9affbd7c61bc0e99ca41de615b4b9aae5be2",
+    "combinedForward": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.txt",
+      "sha256": "a326d880dbdb4ff174a9c12e2be124272d7e1513c282508582749c3d3962975b"
+    },
+    "combinedRollback": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.rollback.txt",
+      "sha256": "00872afc0ba6321c94a59253344ca1060acf088ff20ef62ea850588d1d94f4e8"
+    },
+    "combinedReport": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.report.json",
+      "sha256": "23a3e13295e8a3227f824ef4f3fa0df9ba46e04dca041fc386d96647dc6c6ecd"
+    },
+    "combinedOwnershipManifest": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.manifest.json",
+      "sha256": "05acf71405b2ab697f8249d52a5d3fddd93defb13a40cfcd351e338d8725587e"
+    },
+    "managerValeForwardSha256": "cddba81d860a5f75bf9849a50e76eb74775915318e310c9d7f0ac0fa4a0b6c3f",
+    "managerValeRollbackSha256": "bfdde00455c750291f7b8dc93aa68b1451c44c60a825ee7d6629c2b3dd537f97",
+    "managerValeLedgerSha256": "193d826e4da44b9fa7feda74278d764a11fda685de6412af3006a713ddb76e3c"
+  },
+  "offlineValidation": {
+    "combinedGeneratorStatus": "COMMISSION_STAGE_READY_C01_RETIREMENT_AND_P01_RECOVERY_DEFERRED",
+    "combinedTargetCells": 3642910,
+    "combinedOperationGroups": 473859,
+    "protectedTargetBlockEntities": 0,
+    "globalCrossScopeStatus": "GLOBAL_CROSS_SCOPE_INTERFACE_GATE_PASS",
+    "globalModeledTargets": 6328569,
+    "globalUnreviewedInterfaces": 0,
+    "managerValeIndependentQa": "PASS_16_OF_16",
+    "managerValeExactSourcePreflight": "PASS_37584_OF_37584",
+    "managerValeForwardParserDryRun": "PASS_37584",
+    "managerValeRollbackParserDryRun": "PASS_37584",
+    "c01ModelAudit": "PASS_30_OF_30",
+    "cbeModelAudit": "PASS_11_OF_11",
+    "focusedTests": "PASS_12_OF_12"
+  },
+  "safeProcedure": [
+    "verify the fresh snapshot directory hash and region membership independently",
+    "compare every old and regenerated exact target guard and require zero desired-state and ownership differences",
+    "audit every protected source block state and typed NBT hash",
+    "repin only the shared release generator and Manager Vale compiler/schedule to the fresh snapshot",
+    "do not repin C01's historical source-migration ledger or C01/CBE design-survey records",
+    "regenerate Manager Vale forward, rollback, NBT, furnishing, media and database artifacts",
+    "regenerate the full combined forward, rollback, report, manifest and global cross-scope audit",
+    "run independent Manager Vale, C01, CBE, global-interface and focused test gates",
+    "treat all offline passes as live gates pending"
+  ]
+}

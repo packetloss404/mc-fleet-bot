@@ -1,0 +1,1002 @@
+{
+  "schemaVersion": 1,
+  "id": "town-expansion-r1-representative-routes",
+  "postSnapshot": {
+    "directory": "data/worldsnap-town-accessibility-source-restored-20260728T1735Z/region",
+    "sha256": "0a74e06adf1b0520ad24433a459346f1d65105e40b0c92da222b94b356db3218"
+  },
+  "package": {
+    "file": "data/buildops/town-expansion-r1-2026-07-28.txt",
+    "sha256": "1a10954b1ae6ae702dcc01cd92d39adbb3820e3feff5461f3caa1283a578b896"
+  },
+  "movementPolicy": {
+    "normalWalk": true,
+    "dig": false,
+    "tower": false,
+    "parkour": false,
+    "sprint": false,
+    "jumpControl": false,
+    "maximumRiseBlocks": 1,
+    "maximumDropBlocks": 1,
+    "minimumHeadroomBlocks": 2
+  },
+  "requiredDomains": [
+    "c01-bunker",
+    "civic-guild-library",
+    "westlight-stadium-pier",
+    "mainstreet-warehouse-roads",
+    "data-district-concord",
+    "observatory-estate-portals",
+    "citizen-commute"
+  ],
+  "routes": [
+    {
+      "id": "TE-ROUTE-C01-L1-ENTRY-GARAGE",
+      "domain": "c01-bunker",
+      "description": "C01 grand security entry to the underground vehicle garage.",
+      "standard": "Main-level public route with no digging, tower, parkour, sprint or jump control.",
+      "accessClass": "public",
+      "searchBounds": [
+        699,
+        42,
+        -141,
+        900,
+        50,
+        -4
+      ],
+      "startAnchor": {
+        "label": "grand security entry",
+        "box": [
+          701,
+          43,
+          -82,
+          707,
+          47,
+          -76
+        ]
+      },
+      "endAnchor": {
+        "label": "secure vehicle garage",
+        "box": [
+          800,
+          43,
+          -136,
+          804,
+          47,
+          -130
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 250000
+    },
+    {
+      "id": "TE-ROUTE-C01-MOUNTAIN-PORTAL-L1",
+      "domain": "c01-bunker",
+      "description": "Active recessed C01 garage road cut through the guarded vehicle portal.",
+      "standard": "Sole active visible C01 portal; superseded x684 waypoint is not accepted.",
+      "accessClass": "controlled-vehicle-and-pedestrian",
+      "searchBounds": [
+        795,
+        42,
+        -141,
+        825,
+        52,
+        -124
+      ],
+      "startAnchor": {
+        "label": "active recessed garage road-cut forecourt",
+        "box": [
+          800,
+          43,
+          -140,
+          818,
+          49,
+          -138
+        ]
+      },
+      "endAnchor": {
+        "label": "active L1 secure garage opening",
+        "box": [
+          800,
+          43,
+          -137,
+          818,
+          49,
+          -128
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 50000
+    },
+    {
+      "id": "TE-ROUTE-C01-PUBLIC-VERTICAL",
+      "domain": "c01-bunker",
+      "description": "C01 broad public stair between the first three ordinary levels.",
+      "standard": "Seven-wide authored stair; one-block maximum rise/drop.",
+      "accessClass": "public",
+      "searchBounds": [
+        699,
+        23,
+        -141,
+        900,
+        50,
+        -4
+      ],
+      "startAnchor": {
+        "label": "L1 broad stair landing",
+        "box": [
+          758,
+          43,
+          -48,
+          772,
+          47,
+          -38
+        ]
+      },
+      "endAnchor": {
+        "label": "L3 broad stair landing",
+        "box": [
+          828,
+          25,
+          -56,
+          840,
+          29,
+          -46
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 80000
+    },
+    {
+      "id": "TE-ROUTE-C01-OWNER-VERTICAL",
+      "domain": "c01-bunker",
+      "description": "C01 controlled owner stair between command, power and owner-club levels.",
+      "standard": "Controlled stair route with full landings and no ladder dependency.",
+      "accessClass": "owner",
+      "searchBounds": [
+        699,
+        -15,
+        -141,
+        900,
+        20,
+        -4
+      ],
+      "startAnchor": {
+        "label": "L4 command landing",
+        "box": [
+          803,
+          16,
+          -33,
+          815,
+          20,
+          -23
+        ]
+      },
+      "endAnchor": {
+        "label": "owner-club landing",
+        "box": [
+          836,
+          -13,
+          -56,
+          848,
+          -9,
+          -46
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 80000
+    },
+    {
+      "id": "TE-ROUTE-C01-SERVICE-BACKBONE",
+      "domain": "c01-bunker",
+      "description": "Garage dispatch wall to the service stair/backroom interface.",
+      "standard": "Service route remains distinct from the public garage floor.",
+      "accessClass": "service",
+      "searchBounds": [
+        850,
+        41,
+        -141,
+        890,
+        50,
+        -28
+      ],
+      "startAnchor": {
+        "label": "garage security dispatch",
+        "box": [
+          859,
+          43,
+          -138,
+          866,
+          47,
+          -132
+        ]
+      },
+      "endAnchor": {
+        "label": "service stair",
+        "box": [
+          870,
+          43,
+          -40,
+          880,
+          47,
+          -31
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 100000
+    },
+    {
+      "id": "TE-ROUTE-CIVIC-LIBRARY-PAVILION-GUILD",
+      "domain": "civic-guild-library",
+      "description": "Library walkout terrace through the Russian Revival pavilion to the Guild Hall portico.",
+      "standard": "Public civic route with ordinary stair geometry and an unobstructed pavilion axis.",
+      "accessClass": "public",
+      "searchBounds": [
+        -180,
+        65,
+        -465,
+        -50,
+        92,
+        -400
+      ],
+      "startAnchor": {
+        "label": "library upper walkout",
+        "box": [
+          -108,
+          76,
+          -443,
+          -100,
+          81,
+          -435
+        ]
+      },
+      "endAnchor": {
+        "label": "Guild Hall garth portico",
+        "box": [
+          -64,
+          68,
+          -441,
+          -55,
+          73,
+          -435
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 250000
+    },
+    {
+      "id": "TE-ROUTE-CIVIC-SECRET-ARCHIVE",
+      "domain": "civic-guild-library",
+      "description": "The sole isolated Library-to-Guild archive tunnel.",
+      "standard": "Two endpoints only; no Ravensgate or civilian-tunnel branch.",
+      "accessClass": "controlled",
+      "searchBounds": [
+        -112,
+        57,
+        -444,
+        -57,
+        65,
+        -421
+      ],
+      "startAnchor": {
+        "label": "library endpoint vestibule",
+        "box": [
+          -110,
+          59,
+          -441,
+          -106,
+          62,
+          -437
+        ]
+      },
+      "endAnchor": {
+        "label": "Guild endpoint vestibule",
+        "box": [
+          -64,
+          59,
+          -441,
+          -59,
+          62,
+          -437
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 60000
+    },
+    {
+      "id": "TE-ROUTE-WESTLIGHT-STADIUM-PIER-AXIS",
+      "domain": "westlight-stadium-pier",
+      "description": "Stadium throat to the outer public quay on the axial pedestrian mall.",
+      "standard": "Supported pier deck, continuous dry pedestrian route.",
+      "accessClass": "public",
+      "searchBounds": [
+        -365,
+        66,
+        -448,
+        -344,
+        74,
+        -315
+      ],
+      "startAnchor": {
+        "label": "stadium throat",
+        "box": [
+          -358,
+          68,
+          -444,
+          -351,
+          71,
+          -438
+        ]
+      },
+      "endAnchor": {
+        "label": "outer public quay",
+        "box": [
+          -358,
+          68,
+          -329,
+          -351,
+          71,
+          -320
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 80000
+    },
+    {
+      "id": "TE-ROUTE-WESTLIGHT-PIER-RESTAURANTS",
+      "domain": "westlight-stadium-pier",
+      "description": "Outer cross mall to the steak-house and shrimp-house arrival zone.",
+      "standard": "Public pier route remains above water and outside ride maintenance envelopes.",
+      "accessClass": "public",
+      "searchBounds": [
+        -420,
+        66,
+        -382,
+        -285,
+        73,
+        -330
+      ],
+      "startAnchor": {
+        "label": "outer cross mall",
+        "box": [
+          -414,
+          68,
+          -376,
+          -407,
+          71,
+          -368
+        ]
+      },
+      "endAnchor": {
+        "label": "restaurant arrival deck",
+        "box": [
+          -389,
+          68,
+          -365,
+          -381,
+          71,
+          -356
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 120000
+    },
+    {
+      "id": "TE-ROUTE-WESTLIGHT-VENUE-CORE",
+      "domain": "westlight-stadium-pier",
+      "description": "Blue Drum independent marquee to its lower venue landing.",
+      "standard": "Modern switchback stair with full landings; no ladder.",
+      "accessClass": "public",
+      "searchBounds": [
+        -444,
+        17,
+        -550,
+        -418,
+        79,
+        -525
+      ],
+      "startAnchor": {
+        "label": "Blue Drum marquee vestibule",
+        "box": [
+          -442,
+          68,
+          -547,
+          -432,
+          76,
+          -527
+        ]
+      },
+      "endAnchor": {
+        "label": "Blue Drum orchestra landing",
+        "box": [
+          -441,
+          18,
+          -544,
+          -430,
+          24,
+          -531
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 150000
+    },
+    {
+      "id": "TE-ROUTE-MAINSTREET-WAREHOUSE-DRIVE-HALL",
+      "domain": "mainstreet-warehouse-roads",
+      "description": "Full-size parking portal down to the dry warehouse vehicle hall.",
+      "standard": "Contained drive-down route inside the dry reservation.",
+      "accessClass": "vehicle-and-pedestrian-observation",
+      "searchBounds": [
+        30,
+        41,
+        190,
+        90,
+        75,
+        298
+      ],
+      "startAnchor": {
+        "label": "opulent surface vehicle portal",
+        "box": [
+          33,
+          64,
+          195,
+          43,
+          71,
+          202
+        ]
+      },
+      "endAnchor": {
+        "label": "dry high-bay vehicle hall",
+        "box": [
+          42,
+          43,
+          286,
+          50,
+          49,
+          294
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 250000
+    },
+    {
+      "id": "TE-ROUTE-MAINSTREET-P01-DRIVE-AISLE",
+      "domain": "mainstreet-warehouse-roads",
+      "description": "Full-size MainStreet parking deck central two-way drive aisle.",
+      "standard": "Continuous unobstructed parking circulation after C01 relocation.",
+      "accessClass": "public-vehicle-and-pedestrian-observation",
+      "searchBounds": [
+        -126,
+        63,
+        224,
+        126,
+        72,
+        255
+      ],
+      "startAnchor": {
+        "label": "west parking arrival",
+        "box": [
+          -123,
+          65,
+          228,
+          -114,
+          69,
+          236
+        ]
+      },
+      "endAnchor": {
+        "label": "east parking circulation",
+        "box": [
+          112,
+          65,
+          228,
+          120,
+          69,
+          236
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 150000
+    },
+    {
+      "id": "TE-ROUTE-MAINSTREET-WAREHOUSE-EAST-WINGS",
+      "domain": "mainstreet-warehouse-roads",
+      "description": "Dry warehouse core through reviewed bulkheads to both east wings.",
+      "standard": "Dry, fire-separated logistics route; excluded aquifer seam remains isolated.",
+      "accessClass": "service",
+      "searchBounds": [
+        55,
+        41,
+        198,
+        124,
+        55,
+        298
+      ],
+      "startAnchor": {
+        "label": "core pedestrian spine",
+        "box": [
+          58,
+          43,
+          218,
+          65,
+          49,
+          226
+        ]
+      },
+      "endAnchor": {
+        "label": "south east wing",
+        "box": [
+          92,
+          43,
+          254,
+          101,
+          49,
+          267
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 200000
+    },
+    {
+      "id": "TE-ROUTE-DATA-DISTRICT-SHARED-GREENWAY",
+      "domain": "data-district-concord",
+      "description": "Shared worker greenway from the Meta gate toward the pond commons.",
+      "standard": "Three-wide supported trail with one-block maximum grade change.",
+      "accessClass": "worker-public",
+      "searchBounds": [
+        1015,
+        62,
+        -525,
+        1132,
+        82,
+        -395
+      ],
+      "startAnchor": {
+        "label": "Meta gate crossing",
+        "box": [
+          1028,
+          70,
+          -523,
+          1036,
+          80,
+          -515
+        ]
+      },
+      "endAnchor": {
+        "label": "pond commons trail",
+        "box": [
+          1060,
+          64,
+          -460,
+          1070,
+          76,
+          -450
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 350000
+    },
+    {
+      "id": "TE-ROUTE-DATA-DISTRICT-META-GOOGLE-SPINE",
+      "domain": "data-district-concord",
+      "description": "North district service spine linking the Meta- and Google-inspired campus gates.",
+      "standard": "Terrain-following supported roadway with one-block maximum grade transition.",
+      "accessClass": "staff-service",
+      "searchBounds": [
+        1010,
+        60,
+        -570,
+        1170,
+        95,
+        -505
+      ],
+      "startAnchor": {
+        "label": "Meta campus road gate",
+        "box": [
+          1035,
+          65,
+          -525,
+          1045,
+          86,
+          -515
+        ]
+      },
+      "endAnchor": {
+        "label": "Google campus spur",
+        "box": [
+          1150,
+          65,
+          -525,
+          1160,
+          86,
+          -515
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 350000
+    },
+    {
+      "id": "TE-ROUTE-DATA-DISTRICT-LIGHTEDGE-SPUR",
+      "domain": "data-district-concord",
+      "description": "Eastern district loop to the LightEdge EdgeBCC-inspired campus.",
+      "standard": "Terrain-following supported roadway with one-block maximum grade transition.",
+      "accessClass": "staff-service",
+      "searchBounds": [
+        1008,
+        60,
+        -465,
+        1050,
+        100,
+        -340
+      ],
+      "startAnchor": {
+        "label": "east campus loop",
+        "box": [
+          1013,
+          62,
+          -460,
+          1023,
+          90,
+          -450
+        ]
+      },
+      "endAnchor": {
+        "label": "LightEdge campus gate",
+        "box": [
+          1035,
+          65,
+          -355,
+          1045,
+          90,
+          -345
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 300000
+    },
+    {
+      "id": "TE-ROUTE-DATA-DISTRICT-HALL-AISLES",
+      "domain": "data-district-concord",
+      "description": "Representative completed Meta data hall front-to-rear aisle.",
+      "standard": "Walkable completed hall with front and rear cross aisles and no rack-row collision.",
+      "accessClass": "staff",
+      "searchBounds": [
+        1045,
+        78,
+        -545,
+        1070,
+        102,
+        -513
+      ],
+      "startAnchor": {
+        "label": "Meta Hall 01 staff entry",
+        "box": [
+          1054,
+          82,
+          -543,
+          1062,
+          84,
+          -539
+        ]
+      },
+      "endAnchor": {
+        "label": "Meta Hall 01 rear cross aisle",
+        "box": [
+          1050,
+          82,
+          -537,
+          1066,
+          84,
+          -534
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 100000
+    },
+    {
+      "id": "TE-ROUTE-CONCORD-BROADCAST-PUBLIC",
+      "domain": "data-district-concord",
+      "description": "Concord Broadcast Exchange public lobby-to-showcase spine.",
+      "standard": "Public route does not enter production, night-market, tower or satellite service areas.",
+      "accessClass": "public",
+      "searchBounds": [
+        679,
+        63,
+        -427,
+        699,
+        75,
+        -348
+      ],
+      "startAnchor": {
+        "label": "Broadcast Exchange lobby",
+        "box": [
+          682,
+          66,
+          -408,
+          689,
+          71,
+          -399
+        ]
+      },
+      "endAnchor": {
+        "label": "ordinary media showcase",
+        "box": [
+          682,
+          66,
+          -362,
+          689,
+          71,
+          -352
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 120000
+    },
+    {
+      "id": "TE-ROUTE-CONCORD-SOUNDSTAGE-PUBLIC",
+      "domain": "data-district-concord",
+      "description": "Late-night soundstage public lobby to audience bowl.",
+      "standard": "Audience entrance is distinct from talent, production and truck-loading paths.",
+      "accessClass": "public",
+      "searchBounds": [
+        670,
+        68,
+        -532,
+        727,
+        96,
+        -466
+      ],
+      "startAnchor": {
+        "label": "late-night public lobby",
+        "box": [
+          673,
+          72,
+          -528,
+          683,
+          80,
+          -518
+        ]
+      },
+      "endAnchor": {
+        "label": "late-night audience area",
+        "box": [
+          684,
+          72,
+          -516,
+          720,
+          82,
+          -492
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 180000
+    },
+    {
+      "id": "TE-ROUTE-OBSERVATORY-ESTATE-PUBLIC",
+      "domain": "observatory-estate-portals",
+      "description": "Observatory estate arrival court to retained crown approach.",
+      "standard": "Estate circulation remains independent of the old C01 retirement footprint.",
+      "accessClass": "owner-guest",
+      "searchBounds": [
+        145,
+        102,
+        98,
+        275,
+        152,
+        226
+      ],
+      "startAnchor": {
+        "label": "south arrival court",
+        "box": [
+          195,
+          105,
+          190,
+          215,
+          120,
+          210
+        ]
+      },
+      "endAnchor": {
+        "label": "retained observatory crown approach",
+        "box": [
+          195,
+          120,
+          130,
+          220,
+          145,
+          145
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 350000
+    },
+    {
+      "id": "TE-ROUTE-OBSERVATORY-PORTAL-HUB",
+      "domain": "observatory-estate-portals",
+      "description": "Hidden celestial passage to the inactive district portal gallery.",
+      "standard": "Isolated owner route; all destination frames remain inactive.",
+      "accessClass": "owner",
+      "searchBounds": [
+        208,
+        77,
+        121,
+        273,
+        116,
+        190
+      ],
+      "startAnchor": {
+        "label": "celestial hidden entry",
+        "box": [
+          214,
+          105,
+          151,
+          218,
+          111,
+          156
+        ]
+      },
+      "endAnchor": {
+        "label": "central portal hub ring",
+        "box": [
+          231,
+          79,
+          153,
+          249,
+          87,
+          164
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 250000
+    },
+    {
+      "id": "RR-MSA-CITIZEN-COMMUTE-01-BIDIRECTIONAL",
+      "domain": "citizen-commute",
+      "description": "Ravensreach worker housing to MainStreet employee entrance.",
+      "standard": "Exact post-release citizen commute; activation remains live-walk gated.",
+      "accessClass": "citizen",
+      "searchBounds": [
+        -120,
+        62,
+        -340,
+        -50,
+        76,
+        95
+      ],
+      "startAnchor": {
+        "label": "Ravensreach worker housing",
+        "box": [
+          -114,
+          68,
+          -335,
+          -108,
+          73,
+          -328
+        ]
+      },
+      "endAnchor": {
+        "label": "MainStreet employee arrival",
+        "box": [
+          -85,
+          64,
+          86,
+          -79,
+          70,
+          93
+        ]
+      },
+      "minimumHeadroomBlocks": 2,
+      "requiredBidirectional": true,
+      "maxVisited": 450000
+    }
+  ],
+  "isolationAssertions": [
+    {
+      "id": "TE-ISO-RAVENSGATE-RESTRICTED-TARGETS",
+      "kind": "json-equals",
+      "description": "Town Expansion authored no target inside restricted Ravensgate underground volumes.",
+      "expected": 0,
+      "source": {
+        "file": "data/buildops/town-expansion-r1-2026-07-28.report.json",
+        "path": [
+          "coverage",
+          "ravensgateRestrictedUndergroundTargets"
+        ]
+      }
+    },
+    {
+      "id": "TE-ISO-RAVENSGATE-ACCESS-SEALED",
+      "kind": "json-equals",
+      "description": "No Ravensgate access was implicitly created; the reserved study remains sealed and separately authorized.",
+      "expected": "SEALED_NOT_AUTHORIZED_NOT_BUILT",
+      "source": {
+        "file": "docs/redevelopment/2026-07-28-town-expansion/pavilion-east-grounds-and-ravensgate-exclusion-coordinate-schedule.json",
+        "path": [
+          "restrictedUnderground",
+          "reservedAccessStudyOnly",
+          "status"
+        ]
+      }
+    },
+    {
+      "id": "TE-ISO-LIBRARY-GUILD-TUNNEL-ENDPOINTS",
+      "kind": "json-equals",
+      "description": "The Library-Guild tunnel has exactly two endpoints and no civilian-network branch.",
+      "expected": [
+        "RRCH-LIBRARY",
+        "TE-GUILDHALL-01"
+      ],
+      "source": {
+        "file": "docs/redevelopment/2026-07-28-town-expansion/pavilion-east-grounds-and-ravensgate-exclusion-coordinate-schedule.json",
+        "path": [
+          "isolatedLibraryGuildTunnel",
+          "soleEndpoints"
+        ]
+      }
+    },
+    {
+      "id": "TE-ISO-PORTAL-ACTIVE-BLOCKS",
+      "kind": "json-equals",
+      "description": "The observatory district portal gallery contains no active portal blocks.",
+      "expected": true,
+      "source": {
+        "file": "data/buildops/town-expansion-r1-2026-07-28.report.json",
+        "path": [
+          "acceptance",
+          "ownerPortalGalleryInactiveAndOnlyContainedC01PortalActive"
+        ]
+      }
+    }
+  ],
+  "liveOnlyGates": [
+    {
+      "id": "TE-LIVE-ROUTE-01",
+      "requirement": "Run a no-dig/no-tower Mineflayer walker over each representative route in both directions against the same live save state.",
+      "status": "PENDING"
+    },
+    {
+      "id": "TE-LIVE-ROUTE-02",
+      "requirement": "Exercise powered iron-door, airlock and access-control interactions without breaking blocks.",
+      "status": "PENDING"
+    },
+    {
+      "id": "TE-LIVE-ROUTE-03",
+      "requirement": "Observe dynamic entity collision and crowding at C01, civic, Westlight, warehouse, data-district and observatory thresholds.",
+      "status": "PENDING"
+    },
+    {
+      "id": "TE-LIVE-ROUTE-04",
+      "requirement": "Complete the separately controlled citizen commute live walk before enabling resident shifts.",
+      "status": "PENDING"
+    }
+  ],
+  "repairProjection": {
+    "id": "town-expansion-r1-accessibility-repair-2026-07-28",
+    "sourceManifest": "docs/redevelopment/2026-07-28-town-expansion/town-expansion-representative-route-manifest.json",
+    "sourceManifestSha256": "a63914ef2e8321db17e18552f3962394fda8387ddde3f279d535b2b22ceb42bf",
+    "operations": "data/buildops/town-expansion-r1-accessibility-repair-2026-07-28.txt",
+    "operationsSha256": "b042a63f6947554b701db0a56e970ef9054e5941a7c979f8c3f761d93d11cc3b",
+    "status": "OFFLINE_PROJECTED_NOT_AS_BUILT"
+  }
+}

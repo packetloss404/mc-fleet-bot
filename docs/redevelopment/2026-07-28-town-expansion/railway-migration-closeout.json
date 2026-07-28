@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "ianlan-nextgen-railway-migration-closeout-2026-07-28",
+  "generatedAtUtc": "2026-07-28T22:31:38Z",
+  "status": "RAILWAY_CUTOVER_CANDIDATE_VERIFIED_SITES_RETAINED",
+  "passed": true,
+  "scope": "Move the authenticated report portal from ChatGPT Sites to Railway without removing the Sites deployment before owner confirmation.",
+  "safety": {
+    "liveWorldMutated": false,
+    "databaseMutated": false,
+    "boxMutated": false,
+    "sitesRemoved": false,
+    "credentialsIncluded": false
+  },
+  "product": {
+    "name": "IANLAN NextGen",
+    "model": "Authenticate once, open a report library, and place each future job-specific report beside the existing Master Plan.",
+    "firstReport": {
+      "name": "Master Plan",
+      "path": "/reports/master-plan",
+      "status": "ACCEPTED"
+    }
+  },
+  "railway": {
+    "workspace": {
+      "id": "db6787a4-d1f1-4b0e-84f6-3939cd79b67d",
+      "name": "FIFTY ELEVEN"
+    },
+    "project": {
+      "id": "5a2dd023-5da1-4fb9-adff-bd51caad4076",
+      "name": "IANLAN NextGen"
+    },
+    "service": {
+      "id": "381f60c7-5267-46bd-b563-979ec6456d1a",
+      "name": "IANLAN NextGen"
+    },
+    "environment": {
+      "id": "e7833950-bfa8-4d73-b168-1e000b898d04",
+      "name": "production"
+    },
+    "domain": "https://ianlan-nextgen-production.up.railway.app",
+    "deployment": {
+      "id": "149aee28-6b29-4b8d-b926-f8a9e0106d7d",
+      "status": "SUCCESS",
+      "sourceCommit": "ffe53f693b6856daf584c83d812d4f1de4a401f0",
+      "imageDigest": "sha256:ded721f106bb8fdb451e1f56ad7350b20c05d2f10e3861d7dac07c2bb4d7c7a0",
+      "builder": "RAILPACK",
+      "startCommand": "npm run start",
+      "healthcheckPath": "/api/health",
+      "healthcheckTimeoutSeconds": 300,
+      "restartPolicy": "ON_FAILURE",
+      "restartMaxRetries": 3
+    }
+  },
+  "access": {
+    "pinDigits": 10,
+    "requestedPinConfigured": true,
+    "sessionSigningSecretConfigured": true,
+    "credentialValuesIncluded": false,
+    "localRecoveryRecord": {
+      "path": "/home/ianwalmsley/.config/ianlan-nextgen/credentials.env",
+      "mode": "0600"
+    },
+    "cookie": {
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "strict",
+      "ttlDays": 30
+    },
+    "failedLoginThrottle": {
+      "maximumFailedAttempts": 10,
+      "windowMinutes": 15,
+      "eleventhAttemptStatus": 429
+    }
+  },
+  "verification": {
+    "localProductionBuild": "PASS",
+    "desktopVisualReview": "PASS",
+    "mobileVisualReview": "PASS",
+    "productionVisualReview": "PASS",
+    "productionRuntimeDependencyAudit": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "productionHttp": {
+      "health": 200,
+      "anonymousLoginGate": 200,
+      "incorrectPin": 401,
+      "correctPin": 200,
+      "authenticatedReportLibrary": 200,
+      "authenticatedMasterPlan": 200,
+      "masterPlanPdfRange": 206,
+      "mapAsset": 200,
+      "favicon": 200
+    },
+    "contentChecks": {
+      "ianlanBrand": true,
+      "masterPlanCard": true,
+      "futureReportSlot": true,
+      "masterPlanAtlas": true
+    },
+    "securityHeaders": {
+      "cacheControlOnAuth": "no-store",
+      "referrerPolicy": "no-referrer",
+      "xContentTypeOptions": "nosniff",
+      "xFrameOptions": "DENY",
+      "permissionsPolicy": "camera=(), microphone=(), geolocation=()"
+    }
+  },
+  "sites": {
+    "url": "https://mc-fleet-world-atlas.ianwalmsley.chatgpt.site",
+    "status": "RETAINED_PENDING_OWNER_CONFIRMATION",
+    "anonymousHttpStatus": 401,
+    "removalPerformed": false
+  },
+  "issues": {
+    "path": "ISSUES.MD",
+    "openAtCloseout": 2,
+    "items": [
+      "ISSUE-001 — Town Expansion stairwells are visually poor",
+      "ISSUE-002 — Bunker relocation and arrival were not delivered"
+    ]
+  },
+  "decision": {
+    "railwayReadyForOwnerReview": true,
+    "sitesRemovalAuthorized": false,
+    "nextAction": "Owner confirms the Railway portal; only then remove the ChatGPT Sites deployment."
+  }
+}

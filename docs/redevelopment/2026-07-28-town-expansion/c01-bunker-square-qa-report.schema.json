@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mc-fleet.local/schemas/c01-bunker-square-qa-report.schema.json",
+  "title": "C01 bunker square independent QA report",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "generatedAtUtc",
+    "readOnly",
+    "liveWorldMutated",
+    "status",
+    "inputs",
+    "gates",
+    "utilization",
+    "levels",
+    "routeGraph",
+    "operationEvidence",
+    "failures"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "id": { "type": "string" },
+    "generatedAtUtc": { "type": "string", "format": "date-time" },
+    "readOnly": { "const": true },
+    "liveWorldMutated": { "const": false },
+    "status": {
+      "enum": ["PASS_OFFLINE_CLASSIFICATION_AND_DECLARED_ROUTE_GRAPH", "FAIL"]
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": { "type": "boolean" }
+    },
+    "utilization": {
+      "type": "object",
+      "required": [
+        "grossCells",
+        "grossColumns",
+        "netCells",
+        "programmedCells",
+        "structuralAndSafetyVoidCells",
+        "netToGrossRatio",
+        "programmedToNetRatio",
+        "unlabeledCells",
+        "overlapCells"
+      ]
+    },
+    "levels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "grossCells",
+          "grossColumns",
+          "categoryCellCounts",
+          "categoryColumnCounts",
+          "netCells",
+          "unlabeledCellCount",
+          "overlapCellCount",
+          "heatmap"
+        ]
+      }
+    },
+    "failures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["gate", "message"]
+      }
+    }
+  },
+  "additionalProperties": true
+}

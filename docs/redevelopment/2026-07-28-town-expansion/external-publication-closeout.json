@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 2,
+  "auditId": "REDEV-2026-07-28-TOWN-EXPANSION-PUBLICATION-CLOSEOUT",
+  "auditedAtUtc": "2026-07-28T22:02:00Z",
+  "scope": "Town Expansion final Sites deployment and Box handoff boundary",
+  "safety": {
+    "liveWorldMutated": false,
+    "databaseMutated": false,
+    "sitesMutated": true,
+    "boxMutated": true,
+    "credentialsIncluded": false
+  },
+  "sites": {
+    "projectId": "appgprj_6a67cce1a3848191bfb86ef2ef8ab567",
+    "productionUrl": "https://mc-fleet-world-atlas.ianwalmsley.chatgpt.site",
+    "status": "DEPLOYED_PLATFORM_ACCESS_BLOCKED",
+    "version": {
+      "number": 6,
+      "id": "appgprj_6a67cce1a3848191bfb86ef2ef8ab567~appgver_df26516988248191a090347f01416a2f",
+      "sourceCommit": "83902598c0fa6952f07b9600ddc0dafb00536925",
+      "archiveContentHash": "sha256:76193a4d74eebc10ac38acf4208c89080ab0cfe060328701571fd950260d2230",
+      "archiveBytes": 205824000,
+      "archiveFiles": 2092
+    },
+    "deployment": {
+      "id": "appgdep_6a69238decd48191ab56e31b66f4dd57",
+      "status": "succeeded",
+      "environmentRevision": 1,
+      "completedAtUtc": "2026-07-28T21:48:42.293049Z"
+    },
+    "applicationAccess": {
+      "kind": "ten-digit PIN with signed HTTP-only session cookie",
+      "runtimeSecretsConfigured": true,
+      "secretsIncluded": false,
+      "localProductionBuildChecks": {
+        "rootGateStatus": 200,
+        "incorrectPinStatus": 401,
+        "correctPinStatus": 200,
+        "authenticatedAtlasStatus": 200,
+        "faviconStatus": 200,
+        "iconStatus": 200
+      }
+    },
+    "productionEvidence": {
+      "rootStatus": 200,
+      "workerOutcome": "ok",
+      "requestId": "a22716cb3cfb6707",
+      "productionScreenshotShowsPinGate": true,
+      "currentAssetRoutingInterpretation": "The production screenshot renders the complete styled PIN gate. Earlier cross-cutover 404s requested version-5 asset hashes after version 6 became active; current assets are served by the static binding and do not fall through to Worker logs."
+    },
+    "platformAccess": {
+      "requestedMode": "public",
+      "actualMode": "custom",
+      "ownerOnly": true,
+      "allowedUsers": 1,
+      "allowedGroups": 0,
+      "updateStatus": "REJECTED_BY_WORKSPACE_POLICY",
+      "error": "Publishing Sites to the internet is not enabled for this workspace.",
+      "anonymousRootStatus": 401,
+      "impact": "Anonymous visitors still encounter the ChatGPT Sites access layer before the application PIN. Removing that layer requires a workspace administrator to enable internet-public Sites."
+    },
+    "favicon": {
+      "applicationRouteImplemented": true,
+      "metadataPointsToFaviconRoute": true,
+      "localBuiltRouteStatus": 200,
+      "anonymousProductionStatus": 401,
+      "status": "PRODUCTION_ROUTE_VERIFICATION_BLOCKED_BY_PLATFORM_ACCESS"
+    }
+  },
+  "box": {
+    "status": "BOX_VERIFIED",
+    "connectorConnection": "PASS",
+    "remoteMutationPerformed": true,
+    "remoteRoot": "exports/town-expansion-r1-final-2026-07-28",
+    "localHandoff": {
+      "path": "data/exports/box/town-expansion-r1-final-2026-07-28",
+      "manifest": "data/exports/box/town-expansion-r1-final-2026-07-28/handoff-manifest.json",
+      "filesIncludingManifest": 585,
+      "maps": 13,
+      "exactObjectScreenshots": 340,
+      "documents": 210,
+      "machineArtifacts": 21,
+      "filesOverDirectUploadLimit": 0
+    },
+    "remoteVerification": {
+      "status": "BOX_VERIFIED",
+      "files": 585,
+      "verified": 585,
+      "failed": 0,
+      "report": "docs/redevelopment/2026-07-28-town-expansion/box-upload-verification.json",
+      "reportReceipt": "docs/redevelopment/2026-07-28-town-expansion/box-upload-verification-receipt.json",
+      "reportRemotePath": "exports/town-expansion-r1-final-2026-07-28/verification/box-upload-verification.json",
+      "authority": "The verification report and its receipt carry the terminal timestamps, action counts, byte total, report hash, and Box file identity. Volatile self-referential values are intentionally not copied into this closeout ledger.",
+      "credentialsIncluded": false
+    }
+  },
+  "history": {
+    "priorAudit": "docs/redevelopment/2026-07-28-town-expansion/external-publication-audit.json",
+    "priorHealthySitesVersion": 4,
+    "failedSitesVersion": 3,
+    "failedSitesWorkerRayId": "a2209982e8a31497"
+  },
+  "decision": {
+    "physicalMediaDatabaseRelease": "ACCEPTED",
+    "sitesVersion": "DEPLOYED",
+    "sitesAnonymousAccess": "BLOCKED_BY_WORKSPACE_ADMIN_POLICY",
+    "boxRemoteHandoff": "BOX_VERIFIED",
+    "externalPublicationFinality": "BOX_VERIFIED_SITES_DEPLOYED_PUBLIC_ACCESS_ADMIN_BLOCKED"
+  }
+}

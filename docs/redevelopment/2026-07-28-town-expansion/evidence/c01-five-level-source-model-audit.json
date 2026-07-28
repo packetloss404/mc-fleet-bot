@@ -1,0 +1,5282 @@
+{
+  "status": "C01_MODEL_AUDIT_PASS",
+  "liveWorldMutated": false,
+  "sourceSnapshot": {
+    "directory": "data/worldsnap-town-expansion-prerelease-20260728T0930Z/region",
+    "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)",
+    "sha256": "f9a6a21ec115bd556d7626a9b18151b38d1d4f145226c9e3f741de636528eb8e",
+    "regionFileCount": 26,
+    "members": [
+      {
+        "file": "r.-1.-1.mca",
+        "bytes": 9848223,
+        "sha256": "3613ebb0f4adac309c7cc3b66f30f1aff4ecca626265dd545dcb83d48477bc7e"
+      },
+      {
+        "file": "r.-1.-2.mca",
+        "bytes": 7319638,
+        "sha256": "7f47e89236e9691b21845954c3cc6daef427ade1b50d81bdccd376ea28f7ce63"
+      },
+      {
+        "file": "r.-1.-3.mca",
+        "bytes": 5906432,
+        "sha256": "ccffda4e0dc5298bcb8400104ac30026353e06c8469c1b4805e7810fb1ef738b"
+      },
+      {
+        "file": "r.-1.-4.mca",
+        "bytes": 450560,
+        "sha256": "96d6853f65fd3b3bd9ca4eee4ca229ee68ee6662acc0ba38538d78767ed7031f"
+      },
+      {
+        "file": "r.-1.0.mca",
+        "bytes": 8744960,
+        "sha256": "76b102fc3683391d36909345b363e4f3704c1e04f08a33780e041762430d57d0"
+      },
+      {
+        "file": "r.-1.1.mca",
+        "bytes": 1654784,
+        "sha256": "c4d63e4c42d77783b66919501d3f2a8f2562779796683144744e5941078a87ba"
+      },
+      {
+        "file": "r.-2.-1.mca",
+        "bytes": 3136787,
+        "sha256": "e55c49c38e3b1e8f12025c6180a97e1441c07555b771984e59157952d5c0a3f1"
+      },
+      {
+        "file": "r.-2.-2.mca",
+        "bytes": 2953644,
+        "sha256": "59a1b4a9adb036cc93c9075fcdd24fd87088e16963ef19515966e79c4ba02171"
+      },
+      {
+        "file": "r.-2.0.mca",
+        "bytes": 1511424,
+        "sha256": "165dce3826262e8f1f47c5ccb9031c7fba4d1fc0e88864904c85b10eb188bfef"
+      },
+      {
+        "file": "r.-2.1.mca",
+        "bytes": 163840,
+        "sha256": "11e0d6a509a7dee8510bfeec578a31195fb4bd7628b2ec7e949d25edee7e3609"
+      },
+      {
+        "file": "r.0.-1.mca",
+        "bytes": 9097216,
+        "sha256": "602be61dad806e8e8da91b5fb03a8b052c74257e143102b062965f0d582945e2"
+      },
+      {
+        "file": "r.0.-2.mca",
+        "bytes": 8015872,
+        "sha256": "1d8f1614a8bc3e56ee08458d3a30c436bc2d5006d7f46f53afbebf89acb2a383"
+      },
+      {
+        "file": "r.0.-3.mca",
+        "bytes": 6782976,
+        "sha256": "a64db45ee72de721ee0b40595d2a19f782cd8bc01025802bf60025a2ee22a875"
+      },
+      {
+        "file": "r.0.-4.mca",
+        "bytes": 503808,
+        "sha256": "0d3fbc77c567ef0da94b169b5a8bee262ac2d71d7e1a923e20814fe0c726feaf"
+      },
+      {
+        "file": "r.0.0.mca",
+        "bytes": 8659889,
+        "sha256": "fff8b48111f322b1a74022b2a8cde36d4a8e5e4feac4c94abdd0c86c25f1fd29"
+      },
+      {
+        "file": "r.0.1.mca",
+        "bytes": 3551232,
+        "sha256": "4cb0dd02baf8711ce12c9f7c6ca9026667aa03d0da27ec51abd51b25b7e0f457"
+      },
+      {
+        "file": "r.1.-1.mca",
+        "bytes": 10522624,
+        "sha256": "afdad354f7ea043fb98f96cd882d0b0dbaa16bca4506eccf26463668173a55c6"
+      },
+      {
+        "file": "r.1.-2.mca",
+        "bytes": 5914624,
+        "sha256": "a906b3042bc46e7fc04995f79732ab1344048f34539293ec31fa5efa586d6705"
+      },
+      {
+        "file": "r.1.0.mca",
+        "bytes": 7839744,
+        "sha256": "bc229d5792f0548ab0b9249ba2196ff151c016121ddde8d692d958ee12b574ea"
+      },
+      {
+        "file": "r.1.1.mca",
+        "bytes": 4841472,
+        "sha256": "ed6b6e54fe24d76a8e273c88e65fa4c6d0b89aa01c90a798a29d7cb60d001cee"
+      },
+      {
+        "file": "r.1.2.mca",
+        "bytes": 212992,
+        "sha256": "9cebe13b5116d52dada07bbe82c772a2a756fa7b46c6f88e93034fd7fec226d6"
+      },
+      {
+        "file": "r.2.-1.mca",
+        "bytes": 7917568,
+        "sha256": "b4cde3be1290286e5c140ff551cdd7dd16fd4290dec6e0c71f8650371aebd3d6"
+      },
+      {
+        "file": "r.2.-2.mca",
+        "bytes": 2605056,
+        "sha256": "b63b9ccb647ed124dd4c6249e2e1b9a6c4a795650c8fea22bd9ee23504b6e621"
+      },
+      {
+        "file": "r.2.0.mca",
+        "bytes": 2342912,
+        "sha256": "15b2f13f8a429ff2cfb19708d2afbb403c346cb6463950a2ae739e2e60ee8a9d"
+      },
+      {
+        "file": "r.2.1.mca",
+        "bytes": 212992,
+        "sha256": "2592cd89f49d311df1f67d08665626a651f732709a01e593085dba0bdf5385c6"
+      },
+      {
+        "file": "r.2.2.mca",
+        "bytes": 2781184,
+        "sha256": "7012277828611862b0587423b352d701138562e1f934e45929378a4808a709f2"
+      }
+    ]
+  },
+  "checks": {
+    "manifestStatusFrozen": true,
+    "exactClassifiedCells": true,
+    "exactScopeRegister": true,
+    "allSevenLevelScopesAuthored": true,
+    "onlyExactRetirementDeferred": true,
+    "noHangarTag": true,
+    "noArenaTag": true,
+    "exactGarageVehicles": true,
+    "exactPublicAdultPrivateRooms": true,
+    "publicOneToOneMinimum": true,
+    "exactOwnerPrivateRooms": true,
+    "exactPolySuites": true,
+    "exactMasterBedrooms": true,
+    "exactMasterKitchens": true,
+    "allAdultRoomsFullyFurnished": true,
+    "exactRoomAndCameraObjects": true,
+    "allDeclaredNodesReachable": true,
+    "broadStairAndPairedLiftEveryLevel": true,
+    "activeContainedPortalPresent": true,
+    "ownerTunnelModernFiveByFive": true,
+    "noPinnedProtectedBlockEntityTargets": true,
+    "terrainSealPolicyPresent": true,
+    "garagePortalIsOnlyNewVisibleMask": true,
+    "exactProgramTags": true,
+    "migrationLedgerPinnedAndComplete": true,
+    "exactMigrationDestinationsAuthored": true,
+    "noUnreviewedC01Interfaces": true,
+    "noAircraftOrArenaRoles": true,
+    "exactActivePortalScope": true,
+    "noExposedConcreteBunkerRoles": true
+  },
+  "c01": {
+    "id": "C01-EAST-FIVE-LEVEL-GARAGE-OWNER-STACK-R1",
+    "status": "C01_SOURCE_MODEL_PASS_LIVE_GATES_PENDING",
+    "liveWorldMutated": false,
+    "manifest": {
+      "file": "/opt/stacks/mc-fleet-bot/docs/redevelopment/2026-07-28-town-expansion/c01-bunker-classification-manifest.json",
+      "sha256": "26b811e96b86f2c3766e0f4f7b5e24604215b0520d43f57be1272bf217d4b1e5",
+      "classifiedCells": 885022,
+      "grossColumns": 93268,
+      "levels": 7,
+      "classifiedSpaces": 168,
+      "occupiedRoomAndRouteObjects": 165,
+      "routeNodes": 165,
+      "routeEdges": 181,
+      "cameras": 165
+    },
+    "bunkerScopes": [
+      "c01_east_l1_security_garage",
+      "c01_east_l2_living_adult",
+      "c01_east_l3_agriculture_water",
+      "c01_east_l4_command_medical",
+      "c01_east_l5_power_escape",
+      "c01_owner_club_arrival",
+      "c01_owner_residence",
+      "c01_owner_tunnel_detour",
+      "c01_source_exact_retirement"
+    ],
+    "authoredScopes": [
+      "c01_east_l1_security_garage",
+      "c01_east_l2_living_adult",
+      "c01_east_l3_agriculture_water",
+      "c01_east_l4_command_medical",
+      "c01_east_l5_power_escape",
+      "c01_owner_club_arrival",
+      "c01_owner_residence",
+      "c01_owner_tunnel_detour"
+    ],
+    "deferredScopes": [
+      "c01_source_exact_retirement"
+    ],
+    "deferredScopeSummaries": [
+      {
+        "scope": "c01_source_exact_retirement",
+        "targetCells": 0,
+        "roles": [
+          "deferred_until_new_complex_post_commission_and_live_nbt_hash_gate"
+        ],
+        "bounds": null,
+        "expectedStateCounts": {},
+        "readiness": "BLOCKED_BY_COMMISSION_NEW_BEFORE_RETIRE_OLD_SEQUENCE"
+      }
+    ],
+    "levels": [
+      {
+        "levelId": "C01-L1-SECURITY-GARAGE",
+        "scope": "c01_east_l1_security_garage",
+        "classifiedCells": 187254,
+        "authoredCells": 185364,
+        "safetyCells": 1890,
+        "rooms": 16,
+        "occupiedRooms": 15,
+        "adultFitouts": [],
+        "poolWaterCells": 0,
+        "activePortalCells": 0,
+        "vertical": {
+          "stairs": 1,
+          "lifts": 2
+        }
+      },
+      {
+        "levelId": "C01-L2-LIVING-AMENITY",
+        "scope": "c01_east_l2_living_adult",
+        "classifiedCells": 166448,
+        "authoredCells": 164768,
+        "safetyCells": 1680,
+        "rooms": 49,
+        "occupiedRooms": 48,
+        "adultFitouts": [
+          {
+            "roomId": "l2-adult-private-01",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 4
+          },
+          {
+            "roomId": "l2-adult-private-02",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 5
+          },
+          {
+            "roomId": "l2-adult-private-03",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 0
+          },
+          {
+            "roomId": "l2-adult-private-04",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 1
+          },
+          {
+            "roomId": "l2-adult-private-05",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 2
+          },
+          {
+            "roomId": "l2-adult-private-06",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 3
+          },
+          {
+            "roomId": "l2-adult-private-07",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 4
+          },
+          {
+            "roomId": "l2-adult-private-08",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 5
+          },
+          {
+            "roomId": "l2-adult-private-09",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 0
+          },
+          {
+            "roomId": "l2-adult-private-10",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 1
+          },
+          {
+            "roomId": "l2-adult-private-11",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 2
+          },
+          {
+            "roomId": "l2-adult-private-12",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 3
+          },
+          {
+            "roomId": "l2-adult-private-13",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 4
+          },
+          {
+            "roomId": "l2-adult-private-14",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 5
+          },
+          {
+            "roomId": "l2-adult-private-15",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 0
+          },
+          {
+            "roomId": "l2-adult-private-16",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 1
+          },
+          {
+            "roomId": "l2-adult-private-17",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 2
+          },
+          {
+            "roomId": "l2-adult-private-18",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 3
+          },
+          {
+            "roomId": "l2-adult-private-19",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 4
+          },
+          {
+            "roomId": "l2-adult-private-20",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 5
+          },
+          {
+            "roomId": "l2-adult-private-21",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 0
+          },
+          {
+            "roomId": "l2-adult-private-22",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 1
+          },
+          {
+            "roomId": "l2-adult-private-23",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 2
+          },
+          {
+            "roomId": "l2-adult-private-24",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 3
+          },
+          {
+            "roomId": "l2-adult-one-to-one-01",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 4
+          },
+          {
+            "roomId": "l2-adult-one-to-one-02",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 5
+          },
+          {
+            "roomId": "l2-adult-one-to-one-03",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 0
+          },
+          {
+            "roomId": "l2-adult-one-to-one-04",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 1
+          },
+          {
+            "roomId": "l2-adult-one-to-one-05",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 2
+          }
+        ],
+        "poolWaterCells": 117,
+        "activePortalCells": 0,
+        "vertical": {
+          "stairs": 1,
+          "lifts": 2
+        }
+      },
+      {
+        "levelId": "C01-L3-AGRICULTURE-WATER",
+        "scope": "c01_east_l3_agriculture_water",
+        "classifiedCells": 166448,
+        "authoredCells": 164768,
+        "safetyCells": 1680,
+        "rooms": 12,
+        "occupiedRooms": 11,
+        "adultFitouts": [],
+        "poolWaterCells": 0,
+        "activePortalCells": 0,
+        "vertical": {
+          "stairs": 1,
+          "lifts": 2
+        }
+      },
+      {
+        "levelId": "C01-L4-COMMAND-MEDICAL",
+        "scope": "c01_east_l4_command_medical",
+        "classifiedCells": 59192,
+        "authoredCells": 59192,
+        "safetyCells": 0,
+        "rooms": 14,
+        "occupiedRooms": 14,
+        "adultFitouts": [],
+        "poolWaterCells": 0,
+        "activePortalCells": 0,
+        "vertical": {
+          "stairs": 1,
+          "lifts": 2
+        }
+      },
+      {
+        "levelId": "C01-L5-POWER-ESCAPE",
+        "scope": "c01_east_l5_power_escape",
+        "classifiedCells": 59192,
+        "authoredCells": 59192,
+        "safetyCells": 0,
+        "rooms": 12,
+        "occupiedRooms": 12,
+        "adultFitouts": [],
+        "poolWaterCells": 0,
+        "activePortalCells": 28,
+        "vertical": {
+          "stairs": 1,
+          "lifts": 2
+        }
+      },
+      {
+        "levelId": "C01-OWNER-CLUB-ARRIVAL",
+        "scope": "c01_owner_club_arrival",
+        "classifiedCells": 82688,
+        "authoredCells": 82688,
+        "safetyCells": 0,
+        "rooms": 31,
+        "occupiedRooms": 31,
+        "adultFitouts": [
+          {
+            "roomId": "owner-private-adult-01",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 2
+          },
+          {
+            "roomId": "owner-private-adult-02",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 3
+          },
+          {
+            "roomId": "owner-private-adult-03",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 4
+          },
+          {
+            "roomId": "owner-private-adult-04",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 5
+          },
+          {
+            "roomId": "owner-private-adult-05",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 0
+          },
+          {
+            "roomId": "owner-private-adult-06",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 1
+          },
+          {
+            "roomId": "owner-private-adult-07",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 2
+          },
+          {
+            "roomId": "owner-private-adult-08",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 3
+          },
+          {
+            "roomId": "owner-private-adult-09",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 4
+          },
+          {
+            "roomId": "owner-private-adult-10",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 5
+          },
+          {
+            "roomId": "owner-private-adult-11",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 0
+          },
+          {
+            "roomId": "owner-private-adult-12",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 1
+          }
+        ],
+        "poolWaterCells": 0,
+        "activePortalCells": 0,
+        "vertical": {
+          "stairs": 1,
+          "lifts": 2
+        }
+      },
+      {
+        "levelId": "C01-OWNER-RESIDENCE",
+        "scope": "c01_owner_residence",
+        "classifiedCells": 163800,
+        "authoredCells": 163800,
+        "safetyCells": 0,
+        "rooms": 34,
+        "occupiedRooms": 34,
+        "adultFitouts": [
+          {
+            "roomId": "master-grand-central-bedroom",
+            "roles": [
+              "bed",
+              "bedside_surfaces",
+              "lounge_seating",
+              "lounge_table",
+              "dressing",
+              "wash_cleanup",
+              "storage",
+              "non_graphic_themed_furniture_silhouette",
+              "ambient_light",
+              "task_light"
+            ],
+            "paletteIndex": 0
+          }
+        ],
+        "poolWaterCells": 0,
+        "activePortalCells": 0,
+        "vertical": {
+          "stairs": 1,
+          "lifts": 2
+        }
+      }
+    ],
+    "garage": {
+      "roomId": "l1-secure-vehicle-garage",
+      "bounds": [
+        800,
+        42,
+        -137,
+        858,
+        50,
+        -88
+      ],
+      "activeHangarProgram": false,
+      "vehicles": [
+        {
+          "id": "C01-VEH-01",
+          "type": "car",
+          "bounds": [
+            804,
+            43,
+            -132,
+            808,
+            46,
+            -126
+          ]
+        },
+        {
+          "id": "C01-VEH-02",
+          "type": "car",
+          "bounds": [
+            818,
+            43,
+            -132,
+            822,
+            46,
+            -126
+          ]
+        },
+        {
+          "id": "C01-VEH-03",
+          "type": "car",
+          "bounds": [
+            832,
+            43,
+            -132,
+            836,
+            46,
+            -126
+          ]
+        },
+        {
+          "id": "C01-VEH-04",
+          "type": "car",
+          "bounds": [
+            846,
+            43,
+            -132,
+            850,
+            46,
+            -126
+          ]
+        },
+        {
+          "id": "C01-VEH-05",
+          "type": "car",
+          "bounds": [
+            860,
+            43,
+            -132,
+            864,
+            46,
+            -126
+          ]
+        },
+        {
+          "id": "C01-VEH-06",
+          "type": "car",
+          "bounds": [
+            804,
+            43,
+            -122,
+            808,
+            46,
+            -116
+          ]
+        },
+        {
+          "id": "C01-VEH-07",
+          "type": "car",
+          "bounds": [
+            818,
+            43,
+            -122,
+            822,
+            46,
+            -116
+          ]
+        },
+        {
+          "id": "C01-VEH-08",
+          "type": "car",
+          "bounds": [
+            832,
+            43,
+            -122,
+            836,
+            46,
+            -116
+          ]
+        },
+        {
+          "id": "C01-VEH-09",
+          "type": "car",
+          "bounds": [
+            846,
+            43,
+            -122,
+            850,
+            46,
+            -116
+          ]
+        },
+        {
+          "id": "C01-VEH-10",
+          "type": "car",
+          "bounds": [
+            860,
+            43,
+            -122,
+            864,
+            46,
+            -116
+          ]
+        },
+        {
+          "id": "C01-VEH-11",
+          "type": "car",
+          "bounds": [
+            804,
+            43,
+            -112,
+            808,
+            46,
+            -106
+          ]
+        },
+        {
+          "id": "C01-VEH-12",
+          "type": "car",
+          "bounds": [
+            818,
+            43,
+            -112,
+            822,
+            46,
+            -106
+          ]
+        },
+        {
+          "id": "C01-VEH-13",
+          "type": "truck",
+          "bounds": [
+            832,
+            43,
+            -112,
+            836,
+            46,
+            -103
+          ]
+        },
+        {
+          "id": "C01-VEH-14",
+          "type": "truck",
+          "bounds": [
+            846,
+            43,
+            -112,
+            850,
+            46,
+            -103
+          ]
+        },
+        {
+          "id": "C01-VEH-15",
+          "type": "truck",
+          "bounds": [
+            860,
+            43,
+            -112,
+            864,
+            46,
+            -103
+          ]
+        },
+        {
+          "id": "C01-VEH-16",
+          "type": "truck",
+          "bounds": [
+            804,
+            43,
+            -102,
+            808,
+            46,
+            -93
+          ]
+        },
+        {
+          "id": "C01-VEH-17",
+          "type": "truck",
+          "bounds": [
+            818,
+            43,
+            -102,
+            822,
+            46,
+            -93
+          ]
+        },
+        {
+          "id": "C01-VEH-18",
+          "type": "truck",
+          "bounds": [
+            832,
+            43,
+            -102,
+            836,
+            46,
+            -93
+          ]
+        },
+        {
+          "id": "C01-VEH-19",
+          "type": "truck",
+          "bounds": [
+            846,
+            43,
+            -102,
+            850,
+            46,
+            -93
+          ]
+        },
+        {
+          "id": "C01-VEH-20",
+          "type": "truck",
+          "bounds": [
+            860,
+            43,
+            -102,
+            864,
+            46,
+            -93
+          ]
+        },
+        {
+          "id": "C01-VEH-21",
+          "type": "secure_service_vehicle",
+          "bounds": [
+            804,
+            43,
+            -92,
+            808,
+            46,
+            -82
+          ]
+        },
+        {
+          "id": "C01-VEH-22",
+          "type": "secure_service_vehicle",
+          "bounds": [
+            818,
+            43,
+            -92,
+            822,
+            46,
+            -82
+          ]
+        },
+        {
+          "id": "C01-VEH-23",
+          "type": "secure_service_vehicle",
+          "bounds": [
+            832,
+            43,
+            -92,
+            836,
+            46,
+            -82
+          ]
+        },
+        {
+          "id": "C01-VEH-24",
+          "type": "secure_service_vehicle",
+          "bounds": [
+            846,
+            43,
+            -92,
+            850,
+            46,
+            -82
+          ]
+        }
+      ],
+      "vehicleCount": 24,
+      "portal": {
+        "opening": [
+          800,
+          43,
+          -137,
+          818,
+          49,
+          -137
+        ],
+        "roadCutBounds": [
+          796,
+          42,
+          -140,
+          822,
+          53,
+          -137
+        ],
+        "untouchedSeparationBand": [
+          700,
+          -160,
+          900,
+          -141
+        ],
+        "approvedVisibleException": true,
+        "concreteOutsideApprovedMask": 0
+      }
+    },
+    "ownerTunnel": {
+      "scope": "c01_owner_tunnel_detour",
+      "targetCells": 19721,
+      "centerlineCells": 356,
+      "clearWidth": 5,
+      "clearHeight": 5,
+      "endpointAirlocks": true,
+      "rejectedStraightRouteAbsent": true
+    },
+    "migration": {
+      "file": "/opt/stacks/mc-fleet-bot/docs/redevelopment/2026-07-28-town-expansion/c01-source-nbt-migration-ledger.json",
+      "exists": true,
+      "sha256": "545a9835ccf7cb2e39d52e5440d011684a9727b812751d730a669af8863bbc4f",
+      "status": "PINNED_LEDGER_COMPLETE_SAME_MOMENT_HASH_GATE_PENDING",
+      "counts": {
+        "blockEntities": 1896,
+        "inventories": 1622,
+        "itemStacks": 92,
+        "totalItemCount": 5132,
+        "move": 1619,
+        "retain": 277,
+        "companionPlacements": 25
+      },
+      "checks": {
+        "exactBlockEntities": true,
+        "exactInventories": true,
+        "exactItemStacks": true,
+        "exactItemCount": true,
+        "allNbtHashed": true,
+        "allDispositioned": true,
+        "commandsGuarded": true
+      }
+    },
+    "migrationPlacements": {
+      "placements": 1619,
+      "companions": 25,
+      "supportBlocks": 12,
+      "forwardCommandCount": 1619,
+      "rollbackCommandCount": 1619
+    },
+    "exactProgramChecks": {
+      "public_adult_private_room": true,
+      "public_adult_one_to_one_room": true,
+      "owner_private_adult_room": true,
+      "owner_meeting_room": true,
+      "poly_suite": true,
+      "master_bedroom": true,
+      "master_kitchen": true
+    },
+    "tagCounts": {
+      "primary_loop": 7,
+      "c01-l1-security-garage_loop": 1,
+      "main_level_room": 6,
+      "secure_vehicle_garage": 1,
+      "clear_span": 1,
+      "cars_and_trucks": 1,
+      "glazed_vehicle_overlook_gallery": 5,
+      "garage_support_one_wall": 5,
+      "grand_entry": 1,
+      "security_entrance": 1,
+      "directory": 1,
+      "checkpoint": 1,
+      "decontamination": 1,
+      "eoc_flexible_operations": 1,
+      "training": 1,
+      "logistics": 1,
+      "adults_only_wing": 1,
+      "age_acoustic_vestibule": 1,
+      "visible_from_entry": 1,
+      "broad_stair": 7,
+      "full_landings": 8,
+      "visible_wayfinding": 2,
+      "paired_lift": 7,
+      "service_stair": 1,
+      "expanded_safety_earth_island": 3,
+      "c01-l2-living-amenity_loop": 1,
+      "staff_quarters": 1,
+      "villager_trading_hall_visual_model": 1,
+      "main_kitchen": 1,
+      "dining": 1,
+      "theater": 1,
+      "stage_before_seating": 1,
+      "indoor_pool": 1,
+      "offices": 1,
+      "library": 1,
+      "gaming_room": 1,
+      "golf_simulator": 1,
+      "music_studio": 1,
+      "guest_suites": 1,
+      "adult_public_exhibition_salon": 1,
+      "no_fixed_seating": 1,
+      "adult_perimeter_viewing_gallery": 1,
+      "adult_performer_corridor": 1,
+      "independent_egress": 3,
+      "adult_public_concourse": 1,
+      "adult_bar": 1,
+      "adult_lounge": 1,
+      "adult_dressing": 1,
+      "adult_wash": 1,
+      "adult_storage": 1,
+      "non_graphic_adult_room": 42,
+      "public_adult_private_room": 24,
+      "public_adult_one_to_one_room": 5,
+      "c01-l3-agriculture-water_loop": 1,
+      "farms": 1,
+      "hydroponics": 1,
+      "animals": 1,
+      "veterinary_support": 1,
+      "food_storage": 1,
+      "cold_storage": 1,
+      "water_systems": 2,
+      "treatment": 1,
+      "cisterns": 1,
+      "pumps": 1,
+      "seed_bank": 1,
+      "processing_kitchen": 1,
+      "maintenance": 1,
+      "service_backroom": 1,
+      "c01-l4-command-medical_loop": 1,
+      "command_center": 1,
+      "situation_room": 1,
+      "security_operations_center": 1,
+      "alarm_controls": 1,
+      "piston_lockdown_controls": 1,
+      "armory": 1,
+      "armor_stands": 1,
+      "enchanted_weapons": 1,
+      "shields": 1,
+      "secure_storage": 1,
+      "vault": 1,
+      "medical_bay": 1,
+      "medical_beds": 1,
+      "brewing_stations": 1,
+      "potion_storage": 1,
+      "quarantine_rooms": 1,
+      "server_room": 1,
+      "iron_glass_redstone_observers_copper": 1,
+      "prison": 1,
+      "intruder_holding_cells": 1,
+      "indoor_shooting_range": 1,
+      "controlled_backstop": 1,
+      "c01-l5-power-escape_loop": 1,
+      "power_plant": 1,
+      "switchgear": 1,
+      "fuel_support": 1,
+      "secondary_panic_bunker": 1,
+      "nether_portal": 1,
+      "trophy_gallery": 1,
+      "rare_blocks": 1,
+      "mob_heads": 1,
+      "artifacts": 1,
+      "armor": 1,
+      "escape_tunnels": 1,
+      "airlocks": 1,
+      "emergency_stores": 1,
+      "c01-owner-club-arrival_loop": 1,
+      "owner_club_theater": 1,
+      "double_height": 1,
+      "stage_before_audience": 1,
+      "owner_club_backrooms": 1,
+      "dressing": 1,
+      "storage": 1,
+      "wash": 1,
+      "bar_service": 1,
+      "owner_meeting_room": 6,
+      "owner_private_adult_room": 12,
+      "owner_ceremonial_arrival": 1,
+      "owner_living": 1,
+      "owner_formal_dining": 1,
+      "owner_casual_private_dining": 1,
+      "owner_small_cinema": 1,
+      "owner_office": 1,
+      "owner_12_monitor_office": 1,
+      "owner_two_rack_micro_datacenter": 1,
+      "c01-owner-residence_loop": 1,
+      "poly_suite": 15,
+      "master_bedroom": 3,
+      "master_kitchen": 2,
+      "master_living": 1,
+      "master_safe_room": 1,
+      "master_spa": 1,
+      "master_cinema": 1,
+      "master_indoor_pool": 1,
+      "master_hot_tub": 1,
+      "master_sauna": 1,
+      "master_gym": 1,
+      "master_computer_office": 1,
+      "master_library": 1,
+      "ventilated_cigar_smoke_lounge": 1,
+      "premium_coffee_bar": 1,
+      "master_grand_main_door": 1,
+      "owner_back_tunnel_only": 1,
+      "airlock": 2,
+      "owner_tunnel_interface": 1,
+      "master_grand_bedroom": 1,
+      "principal_bedroom": 1
+    },
+    "adultRooms": {
+      "count": 42,
+      "furnishedRooms": [
+        {
+          "roomId": "l2-adult-private-01",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-02",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-03",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-04",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-05",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-06",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-07",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-08",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-09",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-10",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-11",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-12",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-13",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-14",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-15",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-16",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-17",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-18",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-19",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-20",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-21",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-22",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-23",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-private-24",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-one-to-one-01",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-one-to-one-02",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-one-to-one-03",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-one-to-one-04",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "l2-adult-one-to-one-05",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "owner-private-adult-01",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "owner-private-adult-02",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "owner-private-adult-03",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "owner-private-adult-04",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "owner-private-adult-05",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "owner-private-adult-06",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "owner-private-adult-07",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "owner-private-adult-08",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "owner-private-adult-09",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "owner-private-adult-10",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "owner-private-adult-11",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "owner-private-adult-12",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        },
+        {
+          "roomId": "master-grand-central-bedroom",
+          "furnishingCount": 10,
+          "hasBed": true,
+          "hasLounge": true,
+          "hasDressing": true,
+          "hasWash": true,
+          "hasStorage": true,
+          "hasThemedSilhouette": true
+        }
+      ]
+    },
+    "containment": {
+      "activePortalCells": 28,
+      "containedPoolWaterCells": 117,
+      "targetBlockEntityIntersections": [],
+      "minimumTerrainCover": 3,
+      "allowedVisibleMasks": [
+        "approved garage portal opening in retained road cut",
+        "OBS-S01 mountain-form observatory",
+        "APT-S01 owner penthouse/estate"
+      ]
+    },
+    "publication": {
+      "roomObjects": 165,
+      "cameraCandidates": [
+        {
+          "id": "CAM-l2-adult-private-01",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            791,
+            34,
+            -38
+          ],
+          "target": [
+            795,
+            34,
+            -32
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-02",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            798,
+            34,
+            -38
+          ],
+          "target": [
+            802,
+            34,
+            -32
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-03",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            805,
+            34,
+            -38
+          ],
+          "target": [
+            809,
+            34,
+            -32
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-04",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            812,
+            34,
+            -38
+          ],
+          "target": [
+            816,
+            34,
+            -32
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-05",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            819,
+            34,
+            -38
+          ],
+          "target": [
+            823,
+            34,
+            -32
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-06",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            826,
+            34,
+            -38
+          ],
+          "target": [
+            830,
+            34,
+            -32
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-07",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            833,
+            34,
+            -38
+          ],
+          "target": [
+            837,
+            34,
+            -32
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-08",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            840,
+            34,
+            -38
+          ],
+          "target": [
+            844,
+            34,
+            -32
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-09",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            847,
+            34,
+            -38
+          ],
+          "target": [
+            851,
+            34,
+            -32
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-10",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            854,
+            34,
+            -38
+          ],
+          "target": [
+            858,
+            34,
+            -32
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-11",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            861,
+            34,
+            -38
+          ],
+          "target": [
+            865,
+            34,
+            -32
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-12",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            868,
+            34,
+            -38
+          ],
+          "target": [
+            872,
+            34,
+            -32
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-13",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            791,
+            34,
+            -28
+          ],
+          "target": [
+            795,
+            34,
+            -22
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-14",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            798,
+            34,
+            -28
+          ],
+          "target": [
+            802,
+            34,
+            -22
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-15",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            805,
+            34,
+            -28
+          ],
+          "target": [
+            809,
+            34,
+            -22
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-16",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            812,
+            34,
+            -28
+          ],
+          "target": [
+            816,
+            34,
+            -22
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-17",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            819,
+            34,
+            -28
+          ],
+          "target": [
+            823,
+            34,
+            -22
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-18",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            826,
+            34,
+            -28
+          ],
+          "target": [
+            830,
+            34,
+            -22
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-19",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            833,
+            34,
+            -28
+          ],
+          "target": [
+            837,
+            34,
+            -22
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-20",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            840,
+            34,
+            -28
+          ],
+          "target": [
+            844,
+            34,
+            -22
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-21",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            847,
+            34,
+            -28
+          ],
+          "target": [
+            851,
+            34,
+            -22
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-22",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            854,
+            34,
+            -28
+          ],
+          "target": [
+            858,
+            34,
+            -22
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-23",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            861,
+            34,
+            -28
+          ],
+          "target": [
+            865,
+            34,
+            -22
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-private-24",
+          "roomType": "private_themed_room",
+          "interior": true,
+          "position": [
+            868,
+            34,
+            -28
+          ],
+          "target": [
+            872,
+            34,
+            -22
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-one-to-one-01",
+          "roomType": "one_to_one_room",
+          "interior": true,
+          "position": [
+            791,
+            34,
+            -46
+          ],
+          "target": [
+            795,
+            34,
+            -42
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-one-to-one-02",
+          "roomType": "one_to_one_room",
+          "interior": true,
+          "position": [
+            798,
+            34,
+            -46
+          ],
+          "target": [
+            802,
+            34,
+            -42
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-one-to-one-03",
+          "roomType": "one_to_one_room",
+          "interior": true,
+          "position": [
+            805,
+            34,
+            -46
+          ],
+          "target": [
+            809,
+            34,
+            -42
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-one-to-one-04",
+          "roomType": "one_to_one_room",
+          "interior": true,
+          "position": [
+            812,
+            34,
+            -46
+          ],
+          "target": [
+            816,
+            34,
+            -42
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-one-to-one-05",
+          "roomType": "one_to_one_room",
+          "interior": true,
+          "position": [
+            819,
+            34,
+            -46
+          ],
+          "target": [
+            823,
+            34,
+            -42
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-owner-private-adult-01",
+          "roomType": "owner_private_room",
+          "interior": true,
+          "position": [
+            727,
+            -12,
+            -38
+          ],
+          "target": [
+            733,
+            -12,
+            -36
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-owner-private-adult-02",
+          "roomType": "owner_private_room",
+          "interior": true,
+          "position": [
+            737,
+            -12,
+            -38
+          ],
+          "target": [
+            743,
+            -12,
+            -36
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-owner-private-adult-03",
+          "roomType": "owner_private_room",
+          "interior": true,
+          "position": [
+            747,
+            -12,
+            -38
+          ],
+          "target": [
+            753,
+            -12,
+            -36
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-owner-private-adult-04",
+          "roomType": "owner_private_room",
+          "interior": true,
+          "position": [
+            757,
+            -12,
+            -38
+          ],
+          "target": [
+            763,
+            -12,
+            -36
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-owner-private-adult-05",
+          "roomType": "owner_private_room",
+          "interior": true,
+          "position": [
+            767,
+            -12,
+            -38
+          ],
+          "target": [
+            773,
+            -12,
+            -36
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-owner-private-adult-06",
+          "roomType": "owner_private_room",
+          "interior": true,
+          "position": [
+            777,
+            -12,
+            -38
+          ],
+          "target": [
+            783,
+            -12,
+            -36
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-owner-private-adult-07",
+          "roomType": "owner_private_room",
+          "interior": true,
+          "position": [
+            727,
+            -12,
+            -33
+          ],
+          "target": [
+            733,
+            -12,
+            -31
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-owner-private-adult-08",
+          "roomType": "owner_private_room",
+          "interior": true,
+          "position": [
+            737,
+            -12,
+            -33
+          ],
+          "target": [
+            743,
+            -12,
+            -31
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-owner-private-adult-09",
+          "roomType": "owner_private_room",
+          "interior": true,
+          "position": [
+            747,
+            -12,
+            -33
+          ],
+          "target": [
+            753,
+            -12,
+            -31
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-owner-private-adult-10",
+          "roomType": "owner_private_room",
+          "interior": true,
+          "position": [
+            757,
+            -12,
+            -33
+          ],
+          "target": [
+            763,
+            -12,
+            -31
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-owner-private-adult-11",
+          "roomType": "owner_private_room",
+          "interior": true,
+          "position": [
+            767,
+            -12,
+            -33
+          ],
+          "target": [
+            773,
+            -12,
+            -31
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-owner-private-adult-12",
+          "roomType": "owner_private_room",
+          "interior": true,
+          "position": [
+            777,
+            -12,
+            -33
+          ],
+          "target": [
+            783,
+            -12,
+            -31
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-master-grand-central-bedroom",
+          "roomType": "master_grand_bedroom",
+          "interior": true,
+          "position": [
+            721,
+            -29,
+            -71
+          ],
+          "target": [
+            774,
+            -29,
+            -64
+          ],
+          "requiredViews": [
+            "entrance_privacy",
+            "bed_lounge_storage_wash_focal"
+          ]
+        },
+        {
+          "id": "CAM-C01-L1-SECURITY-GARAGE-loop",
+          "roomType": "primary_loop",
+          "interior": true,
+          "position": [
+            797,
+            42,
+            -140
+          ],
+          "target": [
+            888,
+            42,
+            -140
+          ],
+          "objectId": "C01-L1-SECURITY-GARAGE-loop",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l1-secure-vehicle-garage",
+          "roomType": "main_level_room",
+          "interior": true,
+          "position": [
+            800,
+            42,
+            -137
+          ],
+          "target": [
+            858,
+            42,
+            -137
+          ],
+          "objectId": "l1-secure-vehicle-garage",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l1-garage-security-dispatch",
+          "roomType": "glazed_vehicle_overlook_gallery",
+          "interior": true,
+          "position": [
+            861,
+            42,
+            -137
+          ],
+          "target": [
+            886,
+            42,
+            -137
+          ],
+          "objectId": "l1-garage-security-dispatch",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l1-garage-maintenance-control",
+          "roomType": "glazed_vehicle_overlook_gallery",
+          "interior": true,
+          "position": [
+            861,
+            42,
+            -127
+          ],
+          "target": [
+            886,
+            42,
+            -127
+          ],
+          "objectId": "l1-garage-maintenance-control",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l1-garage-parts-storage",
+          "roomType": "glazed_vehicle_overlook_gallery",
+          "interior": true,
+          "position": [
+            861,
+            42,
+            -117
+          ],
+          "target": [
+            886,
+            42,
+            -117
+          ],
+          "objectId": "l1-garage-parts-storage",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l1-garage-motor-pool-office",
+          "roomType": "glazed_vehicle_overlook_gallery",
+          "interior": true,
+          "position": [
+            861,
+            42,
+            -107
+          ],
+          "target": [
+            886,
+            42,
+            -107
+          ],
+          "objectId": "l1-garage-motor-pool-office",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l1-garage-decon-overlook",
+          "roomType": "glazed_vehicle_overlook_gallery",
+          "interior": true,
+          "position": [
+            861,
+            42,
+            -97
+          ],
+          "target": [
+            886,
+            42,
+            -97
+          ],
+          "objectId": "l1-garage-decon-overlook",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l1-grand-security-entry",
+          "roomType": "main_level_room",
+          "interior": true,
+          "position": [
+            703,
+            42,
+            -80
+          ],
+          "target": [
+            735,
+            42,
+            -80
+          ],
+          "objectId": "l1-grand-security-entry",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l1-security-checkpoint",
+          "roomType": "main_level_room",
+          "interior": true,
+          "position": [
+            703,
+            42,
+            -60
+          ],
+          "target": [
+            735,
+            42,
+            -60
+          ],
+          "objectId": "l1-security-checkpoint",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l1-decontamination",
+          "roomType": "main_level_room",
+          "interior": true,
+          "position": [
+            703,
+            42,
+            -49
+          ],
+          "target": [
+            705,
+            42,
+            -49
+          ],
+          "objectId": "l1-decontamination",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l1-eoc-flex-operations-training",
+          "roomType": "main_level_room",
+          "interior": true,
+          "position": [
+            740,
+            42,
+            -80
+          ],
+          "target": [
+            783,
+            42,
+            -80
+          ],
+          "objectId": "l1-eoc-flex-operations-training",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l1-adults-wing-controlled-vestibule",
+          "roomType": "main_level_room",
+          "interior": true,
+          "position": [
+            740,
+            42,
+            -52
+          ],
+          "target": [
+            760,
+            42,
+            -52
+          ],
+          "objectId": "l1-adults-wing-controlled-vestibule",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l1-main-broad-stair",
+          "roomType": "broad_stair",
+          "interior": true,
+          "position": [
+            764,
+            42,
+            -43
+          ],
+          "target": [
+            775,
+            42,
+            -43
+          ],
+          "objectId": "l1-main-broad-stair",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l1-main-lift",
+          "roomType": "paired_lift",
+          "interior": true,
+          "position": [
+            778,
+            42,
+            -43
+          ],
+          "target": [
+            784,
+            42,
+            -43
+          ],
+          "objectId": "l1-main-lift",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l1-service-stair",
+          "roomType": "service_stair",
+          "interior": true,
+          "position": [
+            875,
+            42,
+            -35
+          ],
+          "target": [
+            888,
+            42,
+            -35
+          ],
+          "objectId": "l1-service-stair",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-C01-L2-LIVING-AMENITY-loop",
+          "roomType": "primary_loop",
+          "interior": true,
+          "position": [
+            797,
+            33,
+            -140
+          ],
+          "target": [
+            888,
+            33,
+            -140
+          ],
+          "objectId": "C01-L2-LIVING-AMENITY-loop",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l2-protected-staff-quarters",
+          "roomType": "staff_quarters",
+          "interior": true,
+          "position": [
+            800,
+            33,
+            -137
+          ],
+          "target": [
+            838,
+            33,
+            -137
+          ],
+          "objectId": "l2-protected-staff-quarters",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l2-main-kitchen-dining",
+          "roomType": "main_kitchen",
+          "interior": true,
+          "position": [
+            840,
+            33,
+            -137
+          ],
+          "target": [
+            886,
+            33,
+            -137
+          ],
+          "objectId": "l2-main-kitchen-dining",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l2-theater",
+          "roomType": "theater",
+          "interior": true,
+          "position": [
+            800,
+            33,
+            -107
+          ],
+          "target": [
+            842,
+            33,
+            -107
+          ],
+          "objectId": "l2-theater",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l2-indoor-pool",
+          "roomType": "indoor_pool",
+          "interior": true,
+          "position": [
+            844,
+            33,
+            -107
+          ],
+          "target": [
+            886,
+            33,
+            -107
+          ],
+          "objectId": "l2-indoor-pool",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l2-offices",
+          "roomType": "offices",
+          "interior": true,
+          "position": [
+            703,
+            33,
+            -80
+          ],
+          "target": [
+            742,
+            33,
+            -80
+          ],
+          "objectId": "l2-offices",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l2-library",
+          "roomType": "library",
+          "interior": true,
+          "position": [
+            744,
+            33,
+            -80
+          ],
+          "target": [
+            783,
+            33,
+            -80
+          ],
+          "objectId": "l2-library",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l2-gaming-room",
+          "roomType": "gaming_room",
+          "interior": true,
+          "position": [
+            703,
+            33,
+            -59
+          ],
+          "target": [
+            722,
+            33,
+            -59
+          ],
+          "objectId": "l2-gaming-room",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l2-golf-simulator",
+          "roomType": "golf_simulator",
+          "interior": true,
+          "position": [
+            724,
+            33,
+            -59
+          ],
+          "target": [
+            742,
+            33,
+            -59
+          ],
+          "objectId": "l2-golf-simulator",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l2-music-studio",
+          "roomType": "music_studio",
+          "interior": true,
+          "position": [
+            744,
+            33,
+            -59
+          ],
+          "target": [
+            764,
+            33,
+            -59
+          ],
+          "objectId": "l2-music-studio",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l2-guest-suites",
+          "roomType": "guest_suites",
+          "interior": true,
+          "position": [
+            703,
+            33,
+            -34
+          ],
+          "target": [
+            763,
+            33,
+            -34
+          ],
+          "objectId": "l2-guest-suites",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-exhibition-salon",
+          "roomType": "adult_public_exhibition_salon",
+          "interior": true,
+          "position": [
+            790,
+            33,
+            -80
+          ],
+          "target": [
+            840,
+            33,
+            -80
+          ],
+          "objectId": "l2-adult-exhibition-salon",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-perimeter-viewing-gallery",
+          "roomType": "adult_perimeter_viewing_gallery",
+          "interior": true,
+          "position": [
+            841,
+            33,
+            -80
+          ],
+          "target": [
+            872,
+            33,
+            -80
+          ],
+          "objectId": "l2-adult-perimeter-viewing-gallery",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-performer-corridor",
+          "roomType": "adult_performer_corridor",
+          "interior": true,
+          "position": [
+            787,
+            33,
+            -83
+          ],
+          "target": [
+            789,
+            33,
+            -83
+          ],
+          "objectId": "l2-adult-performer-corridor",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-public-concourse",
+          "roomType": "adult_public_concourse",
+          "interior": true,
+          "position": [
+            790,
+            33,
+            -53
+          ],
+          "target": [
+            872,
+            33,
+            -53
+          ],
+          "objectId": "l2-adult-public-concourse",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-bar-lounge",
+          "roomType": "adult_bar",
+          "interior": true,
+          "position": [
+            825,
+            33,
+            -47
+          ],
+          "target": [
+            844,
+            33,
+            -47
+          ],
+          "objectId": "l2-adult-bar-lounge",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l2-adult-dressing-wash-storage",
+          "roomType": "adult_dressing",
+          "interior": true,
+          "position": [
+            845,
+            33,
+            -47
+          ],
+          "target": [
+            872,
+            33,
+            -47
+          ],
+          "objectId": "l2-adult-dressing-wash-storage",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l2-main-broad-stair",
+          "roomType": "broad_stair",
+          "interior": true,
+          "position": [
+            764,
+            33,
+            -43
+          ],
+          "target": [
+            775,
+            33,
+            -43
+          ],
+          "objectId": "l2-main-broad-stair",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l2-main-lift",
+          "roomType": "paired_lift",
+          "interior": true,
+          "position": [
+            778,
+            33,
+            -43
+          ],
+          "target": [
+            784,
+            33,
+            -43
+          ],
+          "objectId": "l2-main-lift",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-C01-L3-AGRICULTURE-WATER-loop",
+          "roomType": "primary_loop",
+          "interior": true,
+          "position": [
+            797,
+            24,
+            -140
+          ],
+          "target": [
+            888,
+            24,
+            -140
+          ],
+          "objectId": "C01-L3-AGRICULTURE-WATER-loop",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l3-hydroponic-farms",
+          "roomType": "farms",
+          "interior": true,
+          "position": [
+            800,
+            24,
+            -137
+          ],
+          "target": [
+            842,
+            24,
+            -137
+          ],
+          "objectId": "l3-hydroponic-farms",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l3-animal-husbandry",
+          "roomType": "animals",
+          "interior": true,
+          "position": [
+            844,
+            24,
+            -137
+          ],
+          "target": [
+            886,
+            24,
+            -137
+          ],
+          "objectId": "l3-animal-husbandry",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l3-food-storage",
+          "roomType": "food_storage",
+          "interior": true,
+          "position": [
+            703,
+            24,
+            -80
+          ],
+          "target": [
+            755,
+            24,
+            -80
+          ],
+          "objectId": "l3-food-storage",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l3-water-treatment",
+          "roomType": "water_systems",
+          "interior": true,
+          "position": [
+            758,
+            24,
+            -80
+          ],
+          "target": [
+            810,
+            24,
+            -80
+          ],
+          "objectId": "l3-water-treatment",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l3-cistern-pumps",
+          "roomType": "water_systems",
+          "interior": true,
+          "position": [
+            813,
+            24,
+            -80
+          ],
+          "target": [
+            872,
+            24,
+            -80
+          ],
+          "objectId": "l3-cistern-pumps",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l3-seed-bank",
+          "roomType": "seed_bank",
+          "interior": true,
+          "position": [
+            703,
+            24,
+            -51
+          ],
+          "target": [
+            740,
+            24,
+            -51
+          ],
+          "objectId": "l3-seed-bank",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l3-processing-kitchen",
+          "roomType": "processing_kitchen",
+          "interior": true,
+          "position": [
+            743,
+            24,
+            -51
+          ],
+          "target": [
+            784,
+            24,
+            -51
+          ],
+          "objectId": "l3-processing-kitchen",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l3-maintenance-backrooms",
+          "roomType": "maintenance",
+          "interior": true,
+          "position": [
+            787,
+            24,
+            -51
+          ],
+          "target": [
+            830,
+            24,
+            -51
+          ],
+          "objectId": "l3-maintenance-backrooms",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l3-main-broad-stair",
+          "roomType": "broad_stair",
+          "interior": true,
+          "position": [
+            833,
+            24,
+            -51
+          ],
+          "target": [
+            846,
+            24,
+            -51
+          ],
+          "objectId": "l3-main-broad-stair",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l3-main-lift",
+          "roomType": "paired_lift",
+          "interior": true,
+          "position": [
+            849,
+            24,
+            -51
+          ],
+          "target": [
+            856,
+            24,
+            -51
+          ],
+          "objectId": "l3-main-lift",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-C01-L4-COMMAND-MEDICAL-loop",
+          "roomType": "primary_loop",
+          "interior": true,
+          "position": [
+            704,
+            15,
+            -68
+          ],
+          "target": [
+            854,
+            15,
+            -68
+          ],
+          "objectId": "C01-L4-COMMAND-MEDICAL-loop",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l4-command-center",
+          "roomType": "command_center",
+          "interior": true,
+          "position": [
+            707,
+            15,
+            -65
+          ],
+          "target": [
+            754,
+            15,
+            -65
+          ],
+          "objectId": "l4-command-center",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l4-situation-room",
+          "roomType": "situation_room",
+          "interior": true,
+          "position": [
+            757,
+            15,
+            -65
+          ],
+          "target": [
+            806,
+            15,
+            -65
+          ],
+          "objectId": "l4-situation-room",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l4-security-operations-center",
+          "roomType": "security_operations_center",
+          "interior": true,
+          "position": [
+            809,
+            15,
+            -65
+          ],
+          "target": [
+            851,
+            15,
+            -65
+          ],
+          "objectId": "l4-security-operations-center",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l4-armory",
+          "roomType": "armory",
+          "interior": true,
+          "position": [
+            707,
+            15,
+            -45
+          ],
+          "target": [
+            741,
+            15,
+            -45
+          ],
+          "objectId": "l4-armory",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l4-vault",
+          "roomType": "vault",
+          "interior": true,
+          "position": [
+            744,
+            15,
+            -45
+          ],
+          "target": [
+            776,
+            15,
+            -45
+          ],
+          "objectId": "l4-vault",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l4-medical-bay",
+          "roomType": "medical_bay",
+          "interior": true,
+          "position": [
+            779,
+            15,
+            -45
+          ],
+          "target": [
+            815,
+            15,
+            -45
+          ],
+          "objectId": "l4-medical-bay",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l4-brewing-potion",
+          "roomType": "brewing_stations",
+          "interior": true,
+          "position": [
+            818,
+            15,
+            -45
+          ],
+          "target": [
+            832,
+            15,
+            -45
+          ],
+          "objectId": "l4-brewing-potion",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l4-quarantine",
+          "roomType": "quarantine_rooms",
+          "interior": true,
+          "position": [
+            835,
+            15,
+            -45
+          ],
+          "target": [
+            851,
+            15,
+            -45
+          ],
+          "objectId": "l4-quarantine",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l4-server-room",
+          "roomType": "server_room",
+          "interior": true,
+          "position": [
+            707,
+            15,
+            -28
+          ],
+          "target": [
+            759,
+            15,
+            -28
+          ],
+          "objectId": "l4-server-room",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l4-holding-cells",
+          "roomType": "prison",
+          "interior": true,
+          "position": [
+            762,
+            15,
+            -28
+          ],
+          "target": [
+            782,
+            15,
+            -28
+          ],
+          "objectId": "l4-holding-cells",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l4-indoor-shooting-range",
+          "roomType": "indoor_shooting_range",
+          "interior": true,
+          "position": [
+            783,
+            15,
+            -28
+          ],
+          "target": [
+            806,
+            15,
+            -28
+          ],
+          "objectId": "l4-indoor-shooting-range",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l4-main-broad-stair",
+          "roomType": "broad_stair",
+          "interior": true,
+          "position": [
+            809,
+            15,
+            -28
+          ],
+          "target": [
+            830,
+            15,
+            -28
+          ],
+          "objectId": "l4-main-broad-stair",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l4-main-lift",
+          "roomType": "paired_lift",
+          "interior": true,
+          "position": [
+            833,
+            15,
+            -28
+          ],
+          "target": [
+            842,
+            15,
+            -28
+          ],
+          "objectId": "l4-main-lift",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-C01-L5-POWER-ESCAPE-loop",
+          "roomType": "primary_loop",
+          "interior": true,
+          "position": [
+            704,
+            6,
+            -68
+          ],
+          "target": [
+            854,
+            6,
+            -68
+          ],
+          "objectId": "C01-L5-POWER-ESCAPE-loop",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l5-power-plant",
+          "roomType": "power_plant",
+          "interior": true,
+          "position": [
+            707,
+            6,
+            -65
+          ],
+          "target": [
+            765,
+            6,
+            -65
+          ],
+          "objectId": "l5-power-plant",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l5-fuel-switchgear",
+          "roomType": "switchgear",
+          "interior": true,
+          "position": [
+            768,
+            6,
+            -65
+          ],
+          "target": [
+            810,
+            6,
+            -65
+          ],
+          "objectId": "l5-fuel-switchgear",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l5-secondary-panic-bunker",
+          "roomType": "secondary_panic_bunker",
+          "interior": true,
+          "position": [
+            813,
+            6,
+            -65
+          ],
+          "target": [
+            851,
+            6,
+            -65
+          ],
+          "objectId": "l5-secondary-panic-bunker",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l5-nether-portal-room",
+          "roomType": "nether_portal",
+          "interior": true,
+          "position": [
+            707,
+            6,
+            -45
+          ],
+          "target": [
+            742,
+            6,
+            -45
+          ],
+          "objectId": "l5-nether-portal-room",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l5-trophy-gallery",
+          "roomType": "trophy_gallery",
+          "interior": true,
+          "position": [
+            745,
+            6,
+            -45
+          ],
+          "target": [
+            790,
+            6,
+            -45
+          ],
+          "objectId": "l5-trophy-gallery",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l5-escape-tunnel-control",
+          "roomType": "escape_tunnels",
+          "interior": true,
+          "position": [
+            793,
+            6,
+            -45
+          ],
+          "target": [
+            830,
+            6,
+            -45
+          ],
+          "objectId": "l5-escape-tunnel-control",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l5-emergency-stores",
+          "roomType": "emergency_stores",
+          "interior": true,
+          "position": [
+            833,
+            6,
+            -45
+          ],
+          "target": [
+            851,
+            6,
+            -45
+          ],
+          "objectId": "l5-emergency-stores",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l5-main-broad-stair",
+          "roomType": "broad_stair",
+          "interior": true,
+          "position": [
+            707,
+            6,
+            -28
+          ],
+          "target": [
+            730,
+            6,
+            -28
+          ],
+          "objectId": "l5-main-broad-stair",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l5-main-lift",
+          "roomType": "paired_lift",
+          "interior": true,
+          "position": [
+            733,
+            6,
+            -28
+          ],
+          "target": [
+            742,
+            6,
+            -28
+          ],
+          "objectId": "l5-main-lift",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l5-independent-egress-west",
+          "roomType": "independent_egress",
+          "interior": true,
+          "position": [
+            745,
+            6,
+            -28
+          ],
+          "target": [
+            790,
+            6,
+            -28
+          ],
+          "objectId": "l5-independent-egress-west",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-l5-independent-egress-east",
+          "roomType": "independent_egress",
+          "interior": true,
+          "position": [
+            793,
+            6,
+            -28
+          ],
+          "target": [
+            838,
+            6,
+            -28
+          ],
+          "objectId": "l5-independent-egress-east",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-C01-OWNER-CLUB-ARRIVAL-loop",
+          "roomType": "primary_loop",
+          "interior": true,
+          "position": [
+            723,
+            -14,
+            -62
+          ],
+          "target": [
+            850,
+            -14,
+            -62
+          ],
+          "objectId": "C01-OWNER-CLUB-ARRIVAL-loop",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-club-theater",
+          "roomType": "owner_club_theater",
+          "interior": true,
+          "position": [
+            726,
+            -13,
+            -59
+          ],
+          "target": [
+            790,
+            -13,
+            -59
+          ],
+          "objectId": "owner-club-theater",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-club-backrooms",
+          "roomType": "owner_club_backrooms",
+          "interior": true,
+          "position": [
+            793,
+            -13,
+            -59
+          ],
+          "target": [
+            848,
+            -13,
+            -59
+          ],
+          "objectId": "owner-club-backrooms",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-meeting-01",
+          "roomType": "owner_meeting_room",
+          "interior": true,
+          "position": [
+            793,
+            -5,
+            -50
+          ],
+          "target": [
+            809,
+            -5,
+            -50
+          ],
+          "objectId": "owner-meeting-01",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-meeting-02",
+          "roomType": "owner_meeting_room",
+          "interior": true,
+          "position": [
+            811,
+            -5,
+            -50
+          ],
+          "target": [
+            827,
+            -5,
+            -50
+          ],
+          "objectId": "owner-meeting-02",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-meeting-03",
+          "roomType": "owner_meeting_room",
+          "interior": true,
+          "position": [
+            829,
+            -5,
+            -50
+          ],
+          "target": [
+            831,
+            -5,
+            -50
+          ],
+          "objectId": "owner-meeting-03",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-meeting-04",
+          "roomType": "owner_meeting_room",
+          "interior": true,
+          "position": [
+            793,
+            -5,
+            -42
+          ],
+          "target": [
+            809,
+            -5,
+            -42
+          ],
+          "objectId": "owner-meeting-04",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-meeting-05",
+          "roomType": "owner_meeting_room",
+          "interior": true,
+          "position": [
+            811,
+            -5,
+            -42
+          ],
+          "target": [
+            827,
+            -5,
+            -42
+          ],
+          "objectId": "owner-meeting-05",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-meeting-06",
+          "roomType": "owner_meeting_room",
+          "interior": true,
+          "position": [
+            829,
+            -5,
+            -42
+          ],
+          "target": [
+            845,
+            -5,
+            -42
+          ],
+          "objectId": "owner-meeting-06",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-ceremonial-arrival-hall",
+          "roomType": "owner_ceremonial_arrival",
+          "interior": true,
+          "position": [
+            793,
+            -13,
+            -39
+          ],
+          "target": [
+            848,
+            -13,
+            -39
+          ],
+          "objectId": "owner-ceremonial-arrival-hall",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-living-salon",
+          "roomType": "owner_living",
+          "interior": true,
+          "position": [
+            793,
+            -5,
+            -39
+          ],
+          "target": [
+            810,
+            -5,
+            -39
+          ],
+          "objectId": "owner-living-salon",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-formal-dining",
+          "roomType": "owner_formal_dining",
+          "interior": true,
+          "position": [
+            812,
+            -5,
+            -39
+          ],
+          "target": [
+            828,
+            -5,
+            -39
+          ],
+          "objectId": "owner-formal-dining",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-casual-private-dining",
+          "roomType": "owner_casual_private_dining",
+          "interior": true,
+          "position": [
+            830,
+            -5,
+            -39
+          ],
+          "target": [
+            848,
+            -5,
+            -39
+          ],
+          "objectId": "owner-casual-private-dining",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-small-cinema",
+          "roomType": "owner_small_cinema",
+          "interior": true,
+          "position": [
+            726,
+            -4,
+            -30
+          ],
+          "target": [
+            760,
+            -4,
+            -30
+          ],
+          "objectId": "owner-small-cinema",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-ordinary-office",
+          "roomType": "owner_office",
+          "interior": true,
+          "position": [
+            762,
+            -4,
+            -30
+          ],
+          "target": [
+            780,
+            -4,
+            -30
+          ],
+          "objectId": "owner-ordinary-office",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-12-monitor-office",
+          "roomType": "owner_12_monitor_office",
+          "interior": true,
+          "position": [
+            782,
+            -4,
+            -30
+          ],
+          "target": [
+            820,
+            -4,
+            -30
+          ],
+          "objectId": "owner-12-monitor-office",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-two-rack-micro-dc",
+          "roomType": "owner_two_rack_micro_datacenter",
+          "interior": true,
+          "position": [
+            822,
+            -4,
+            -30
+          ],
+          "target": [
+            848,
+            -4,
+            -30
+          ],
+          "objectId": "owner-two-rack-micro-dc",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-club-broad-stair",
+          "roomType": "broad_stair",
+          "interior": true,
+          "position": [
+            842,
+            -13,
+            -51
+          ],
+          "target": [
+            848,
+            -13,
+            -51
+          ],
+          "objectId": "owner-club-broad-stair",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-club-lift",
+          "roomType": "paired_lift",
+          "interior": true,
+          "position": [
+            832,
+            -13,
+            -51
+          ],
+          "target": [
+            840,
+            -13,
+            -51
+          ],
+          "objectId": "owner-club-lift",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-C01-OWNER-RESIDENCE-loop",
+          "roomType": "primary_loop",
+          "interior": true,
+          "position": [
+            716,
+            -31,
+            -74
+          ],
+          "target": [
+            895,
+            -31,
+            -74
+          ],
+          "objectId": "C01-OWNER-RESIDENCE-loop",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-poly-suite-01",
+          "roomType": "poly_suite",
+          "interior": true,
+          "position": [
+            724,
+            -30,
+            -60
+          ],
+          "target": [
+            755,
+            -30,
+            -60
+          ],
+          "objectId": "poly-suite-01",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-poly-suite-02",
+          "roomType": "poly_suite",
+          "interior": true,
+          "position": [
+            757,
+            -30,
+            -60
+          ],
+          "target": [
+            788,
+            -30,
+            -60
+          ],
+          "objectId": "poly-suite-02",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-poly-suite-03",
+          "roomType": "poly_suite",
+          "interior": true,
+          "position": [
+            790,
+            -30,
+            -60
+          ],
+          "target": [
+            821,
+            -30,
+            -60
+          ],
+          "objectId": "poly-suite-03",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-poly-suite-04",
+          "roomType": "poly_suite",
+          "interior": true,
+          "position": [
+            823,
+            -30,
+            -60
+          ],
+          "target": [
+            854,
+            -30,
+            -60
+          ],
+          "objectId": "poly-suite-04",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-poly-suite-05",
+          "roomType": "poly_suite",
+          "interior": true,
+          "position": [
+            856,
+            -30,
+            -60
+          ],
+          "target": [
+            887,
+            -30,
+            -60
+          ],
+          "objectId": "poly-suite-05",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-poly-suite-06",
+          "roomType": "poly_suite",
+          "interior": true,
+          "position": [
+            724,
+            -30,
+            -50
+          ],
+          "target": [
+            755,
+            -30,
+            -50
+          ],
+          "objectId": "poly-suite-06",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-poly-suite-07",
+          "roomType": "poly_suite",
+          "interior": true,
+          "position": [
+            757,
+            -30,
+            -50
+          ],
+          "target": [
+            788,
+            -30,
+            -50
+          ],
+          "objectId": "poly-suite-07",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-poly-suite-08",
+          "roomType": "poly_suite",
+          "interior": true,
+          "position": [
+            790,
+            -30,
+            -50
+          ],
+          "target": [
+            821,
+            -30,
+            -50
+          ],
+          "objectId": "poly-suite-08",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-poly-suite-09",
+          "roomType": "poly_suite",
+          "interior": true,
+          "position": [
+            823,
+            -30,
+            -50
+          ],
+          "target": [
+            854,
+            -30,
+            -50
+          ],
+          "objectId": "poly-suite-09",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-poly-suite-10",
+          "roomType": "poly_suite",
+          "interior": true,
+          "position": [
+            856,
+            -30,
+            -50
+          ],
+          "target": [
+            887,
+            -30,
+            -50
+          ],
+          "objectId": "poly-suite-10",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-poly-suite-11",
+          "roomType": "poly_suite",
+          "interior": true,
+          "position": [
+            724,
+            -30,
+            -40
+          ],
+          "target": [
+            755,
+            -30,
+            -40
+          ],
+          "objectId": "poly-suite-11",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-poly-suite-12",
+          "roomType": "poly_suite",
+          "interior": true,
+          "position": [
+            757,
+            -30,
+            -40
+          ],
+          "target": [
+            788,
+            -30,
+            -40
+          ],
+          "objectId": "poly-suite-12",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-poly-suite-13",
+          "roomType": "poly_suite",
+          "interior": true,
+          "position": [
+            790,
+            -30,
+            -40
+          ],
+          "target": [
+            821,
+            -30,
+            -40
+          ],
+          "objectId": "poly-suite-13",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-poly-suite-14",
+          "roomType": "poly_suite",
+          "interior": true,
+          "position": [
+            823,
+            -30,
+            -40
+          ],
+          "target": [
+            854,
+            -30,
+            -40
+          ],
+          "objectId": "poly-suite-14",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-poly-suite-15",
+          "roomType": "poly_suite",
+          "interior": true,
+          "position": [
+            856,
+            -30,
+            -40
+          ],
+          "target": [
+            887,
+            -30,
+            -40
+          ],
+          "objectId": "poly-suite-15",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-master-bedroom-two",
+          "roomType": "master_bedroom",
+          "interior": true,
+          "position": [
+            778,
+            -30,
+            -72
+          ],
+          "target": [
+            818,
+            -30,
+            -72
+          ],
+          "objectId": "master-bedroom-two",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-master-bedroom-three",
+          "roomType": "master_bedroom",
+          "interior": true,
+          "position": [
+            821,
+            -30,
+            -72
+          ],
+          "target": [
+            861,
+            -30,
+            -72
+          ],
+          "objectId": "master-bedroom-three",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-master-kitchen-one",
+          "roomType": "master_kitchen",
+          "interior": true,
+          "position": [
+            720,
+            -30,
+            -28
+          ],
+          "target": [
+            755,
+            -30,
+            -28
+          ],
+          "objectId": "master-kitchen-one",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-master-kitchen-two",
+          "roomType": "master_kitchen",
+          "interior": true,
+          "position": [
+            758,
+            -30,
+            -28
+          ],
+          "target": [
+            793,
+            -30,
+            -28
+          ],
+          "objectId": "master-kitchen-two",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-master-living",
+          "roomType": "master_living",
+          "interior": true,
+          "position": [
+            796,
+            -30,
+            -28
+          ],
+          "target": [
+            845,
+            -30,
+            -28
+          ],
+          "objectId": "master-living",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-master-safe-room",
+          "roomType": "master_safe_room",
+          "interior": true,
+          "position": [
+            848,
+            -30,
+            -28
+          ],
+          "target": [
+            892,
+            -30,
+            -28
+          ],
+          "objectId": "master-safe-room",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-master-spa",
+          "roomType": "master_spa",
+          "interior": true,
+          "position": [
+            720,
+            -30,
+            -18
+          ],
+          "target": [
+            746,
+            -30,
+            -18
+          ],
+          "objectId": "master-spa",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-master-cinema",
+          "roomType": "master_cinema",
+          "interior": true,
+          "position": [
+            749,
+            -30,
+            -18
+          ],
+          "target": [
+            778,
+            -30,
+            -18
+          ],
+          "objectId": "master-cinema",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-master-indoor-pool",
+          "roomType": "master_indoor_pool",
+          "interior": true,
+          "position": [
+            781,
+            -30,
+            -18
+          ],
+          "target": [
+            814,
+            -30,
+            -18
+          ],
+          "objectId": "master-indoor-pool",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-master-hot-tub-sauna-gym",
+          "roomType": "master_hot_tub",
+          "interior": true,
+          "position": [
+            817,
+            -30,
+            -18
+          ],
+          "target": [
+            847,
+            -30,
+            -18
+          ],
+          "objectId": "master-hot-tub-sauna-gym",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-master-computer-office-library",
+          "roomType": "master_computer_office",
+          "interior": true,
+          "position": [
+            850,
+            -30,
+            -18
+          ],
+          "target": [
+            892,
+            -30,
+            -18
+          ],
+          "objectId": "master-computer-office-library",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-master-smoke-lounge-coffee",
+          "roomType": "ventilated_cigar_smoke_lounge",
+          "interior": true,
+          "position": [
+            864,
+            -30,
+            -72
+          ],
+          "target": [
+            892,
+            -30,
+            -72
+          ],
+          "objectId": "master-smoke-lounge-coffee",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-master-grand-main-door",
+          "roomType": "master_grand_main_door",
+          "interior": true,
+          "position": [
+            716,
+            -30,
+            -62
+          ],
+          "target": [
+            723,
+            -30,
+            -62
+          ],
+          "objectId": "master-grand-main-door",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-master-owner-back-airlock",
+          "roomType": "owner_back_tunnel_only",
+          "interior": true,
+          "position": [
+            720,
+            -30,
+            -52
+          ],
+          "target": [
+            723,
+            -30,
+            -52
+          ],
+          "objectId": "master-owner-back-airlock",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-master-owner-tunnel-interface-chamber",
+          "roomType": "owner_tunnel_interface",
+          "interior": true,
+          "position": [
+            716,
+            -30,
+            -52
+          ],
+          "target": [
+            719,
+            -30,
+            -52
+          ],
+          "objectId": "master-owner-tunnel-interface-chamber",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-residence-broad-stair",
+          "roomType": "broad_stair",
+          "interior": true,
+          "position": [
+            872,
+            -30,
+            -39
+          ],
+          "target": [
+            892,
+            -30,
+            -39
+          ],
+          "objectId": "owner-residence-broad-stair",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        },
+        {
+          "id": "CAM-owner-residence-lift",
+          "roomType": "paired_lift",
+          "interior": true,
+          "position": [
+            861,
+            -30,
+            -39
+          ],
+          "target": [
+            870,
+            -30,
+            -39
+          ],
+          "objectId": "owner-residence-lift",
+          "requiredViews": [
+            "threshold_context",
+            "interior_program_and_route"
+          ]
+        }
+      ],
+      "floorPlanLevels": [
+        "C01-L1-SECURITY-GARAGE",
+        "C01-L2-LIVING-AMENITY",
+        "C01-L3-AGRICULTURE-WATER",
+        "C01-L4-COMMAND-MEDICAL",
+        "C01-L5-POWER-ESCAPE",
+        "C01-OWNER-CLUB-ARRIVAL",
+        "C01-OWNER-RESIDENCE"
+      ],
+      "state": "SOURCE_MODELED_NOT_LIVE"
+    },
+    "checks": {
+      "manifestStatusFrozen": true,
+      "exactClassifiedCells": true,
+      "exactScopeRegister": true,
+      "allSevenLevelScopesAuthored": true,
+      "onlyExactRetirementDeferred": true,
+      "noHangarTag": true,
+      "noArenaTag": true,
+      "exactGarageVehicles": true,
+      "exactPublicAdultPrivateRooms": true,
+      "publicOneToOneMinimum": true,
+      "exactOwnerPrivateRooms": true,
+      "exactPolySuites": true,
+      "exactMasterBedrooms": true,
+      "exactMasterKitchens": true,
+      "allAdultRoomsFullyFurnished": true,
+      "exactRoomAndCameraObjects": true,
+      "allDeclaredNodesReachable": true,
+      "broadStairAndPairedLiftEveryLevel": true,
+      "activeContainedPortalPresent": true,
+      "ownerTunnelModernFiveByFive": true,
+      "noPinnedProtectedBlockEntityTargets": true,
+      "terrainSealPolicyPresent": true,
+      "garagePortalIsOnlyNewVisibleMask": true,
+      "exactProgramTags": true,
+      "migrationLedgerPinnedAndComplete": true,
+      "exactMigrationDestinationsAuthored": true
+    }
+  },
+  "targetCells": 901073,
+  "reviewedC01Interfaces": [],
+  "unreviewedC01Interfaces": []
+}

@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "status": "READ_ONLY_IMMUTABLE_SNAPSHOT_SURVEY",
+  "snapshot": {
+    "path": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region",
+    "sha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999"
+  },
+  "database": {
+    "path": "data/world-map.db",
+    "sha256AtSurvey": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+    "mode": "read-only"
+  },
+  "method": {
+    "buildingWaterAdjacency": "Count water blocks at y62 in a five-block ring around each recorded building footprint.",
+    "crater": "Remove foliage, logs, replaceable plants and grass cover from the top-support classification; select the contiguous dry component whose support is below y62; count every source state from support+1 through y62."
+  },
+  "buildingWaterAdjacency": [
+    {"id": "WD-INN", "ringWater": 109, "ringCells": 640, "percent": 17.0},
+    {"id": "WD-SHOP-A", "ringWater": 97, "ringCells": 410, "percent": 23.7},
+    {"id": "WD-FIELD", "ringWater": 0, "ringCells": 460, "percent": 0.0},
+    {"id": "WD-SHOP-B", "ringWater": 45, "ringCells": 400, "percent": 11.3},
+    {"id": "WD-SHOP-C", "ringWater": 51, "ringCells": 400, "percent": 12.8},
+    {"id": "WD-SHOP-D", "ringWater": 114, "ringCells": 390, "percent": 29.2},
+    {"id": "WD-SHOP-E", "ringWater": 120, "ringCells": 410, "percent": 29.3},
+    {"id": "WD-SHOP-F", "ringWater": 51, "ringCells": 400, "percent": 12.8},
+    {"id": "WD-SHOP-G", "ringWater": 62, "ringCells": 390, "percent": 15.9},
+    {"id": "WD-BREW", "ringWater": 425, "ringCells": 600, "percent": 70.8},
+    {"id": "WD-GATEHEAD", "ringWater": 113, "ringCells": 420, "percent": 26.9},
+    {"id": "WD-LANTERN", "ringWater": 0, "ringCells": 420, "percent": 0.0},
+    {"id": "WD-FERRY", "ringWater": 75, "ringCells": 420, "percent": 17.9},
+    {"id": "WD-SKIFF", "ringWater": 52, "ringCells": 340, "percent": 15.3}
+  ],
+  "foundationFacts": {
+    "solidPadBuildings": ["WD-INN", "WD-SHOP-A", "WD-FIELD", "WD-SHOP-B", "WD-SHOP-C", "WD-SHOP-D", "WD-SHOP-E", "WD-SHOP-F", "WD-SHOP-G", "WD-BREW", "WD-GATEHEAD", "WD-LANTERN", "WD-FERRY"],
+    "solidPadSource": "scripts/gen_w4.py:simple_house/pavilion foundation() fills every footprint x/z from y62 through y66 with stone",
+    "pileSupportedPrecedent": {"id": "WD-SKIFF", "support": "dark_oak_log", "y": [62, 66]}
+  },
+  "crater": {
+    "componentBounds": [-491, -447, -620, -556],
+    "columns": 1507,
+    "supportY": {
+      "min": 46,
+      "max": 61,
+      "histogram": {
+        "46": 39,
+        "47": 80,
+        "48": 81,
+        "49": 97,
+        "50": 99,
+        "51": 83,
+        "52": 87,
+        "53": 83,
+        "54": 97,
+        "55": 130,
+        "56": 205,
+        "57": 144,
+        "58": 76,
+        "59": 67,
+        "60": 71,
+        "61": 68
+      }
+    },
+    "waterLevel": {
+      "targetWaterBlockY": 62,
+      "standingSurfaceY": 63,
+      "basis": "surrounding natural lake blocks"
+    },
+    "fillVolume": {
+      "grossCells": 12288,
+      "sourceStates": {
+        "minecraft:air": 11746,
+        "minecraft:grass_block": 523,
+        "minecraft:short_grass": 19
+      }
+    },
+    "limitations": [
+      "The calculation is a surface-basin volume, not a subsurface cave-seal certification.",
+      "The apparent rim and every lateral neighbor must be rechecked on the fresh release snapshot.",
+      "No bulk water command is safe; exact-state one-cell guards and rollback are required."
+    ]
+  }
+}

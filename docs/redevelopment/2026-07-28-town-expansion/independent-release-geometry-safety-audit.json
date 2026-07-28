@@ -1,0 +1,242 @@
+{
+  "schemaVersion": "1.0.0",
+  "auditId": "TE-R1-INDEPENDENT-GEOMETRY-SAFETY-20260728",
+  "status": "BLOCKED_DO_NOT_RELEASE",
+  "liveWorldMutated": false,
+  "generator": {
+    "path": "scripts/generate_town_expansion_r1.mjs",
+    "capturedSha256": "37589d47df864163e1f54a6f689e9ef1b15dc324602c66f84d6b957fd39cdde3",
+    "snapshotPath": "data/worldsnap-town-expansion-expanded-baseline-20260728T0405Z/region",
+    "snapshotSha256": "e612b1feabcf8bd81e427804e0c5cdccea5aac79ef543cadbf2b05d360de7a5a",
+    "compileResult": "FAIL_RANGEERROR_BOUNDS_SPREAD"
+  },
+  "measurements": {
+    "dataCampusDirectSourceConflicts": {
+      "water": 666,
+      "bubbleColumns": 4,
+      "lava": 40,
+      "affectedScopes": [
+        "TE-IA-DATA-DM05",
+        "TE-IA-DATA-DM06",
+        "TE-IA-DATA-DM07",
+        "TE-IA-DATA-DM08",
+        "TE-IA-DATA-DM09",
+        "TE-IA-DATA-DM10",
+        "TE-IA-POWER-CAMPUS",
+        "TE-IA-OUTER-WAREHOUSE-A"
+      ]
+    },
+    "warehouseWestHallAquaticStates": {
+      "bubbleColumns": 70,
+      "kelpPlant": 362,
+      "seagrass": 312,
+      "tallSeagrass": 252,
+      "kelp": 43,
+      "magma": 6,
+      "sand": 3338,
+      "gravel": 1667
+    },
+    "c01NewMainModule": {
+      "waterOrLava": 0,
+      "gravitySensitive": 2175
+    },
+    "c01BlindRoadPiers": {
+      "waterOrBubble": 647,
+      "lava": 3,
+      "gravitySensitive": 311
+    },
+    "estateReservationBlockEntities": {
+      "bounds": [
+        145,
+        75,
+        100,
+        275,
+        150,
+        225
+      ],
+      "count": 1058,
+      "nonEmpty": 3,
+      "itemCount": 1292
+    },
+    "oldC01MigrationContract": {
+      "blockEntities": 1896,
+      "nonEmptyInventories": 12,
+      "itemCount": 5132,
+      "databaseObjects": 36
+    },
+    "ravensgateSeparation": {
+      "restrictedMaxY": 35,
+      "bufferMaxY": 43,
+      "civilianTunnelMinY": 58,
+      "untouchedLevelsBetween": 14
+    }
+  },
+  "gates": [
+    {
+      "id": "GEN-01",
+      "area": "generator",
+      "status": "FAIL",
+      "finding": "boundsOf uses spread reduction over a multi-million-cell scope and crashes before report output.",
+      "requiredFix": "Use an iterative min/max reducer and rerun from a stable source hash."
+    },
+    {
+      "id": "GEN-02",
+      "area": "scope dispatch",
+      "status": "FAIL",
+      "finding": "modelCivicPavilionEastGrounds is defined but not called; observatory estate and Westlight three-venue models are absent.",
+      "requiredFix": "Dispatch every requested scope explicitly and fail coverage when a scope has zero final target cells."
+    },
+    {
+      "id": "GEN-03",
+      "area": "readiness semantics",
+      "status": "FAIL",
+      "finding": "READY_FOR_PREFLIGHT is based only on protected block-entity count.",
+      "requiredFix": "Gate on fluids, gravity halos, final-state counts, cross-scope allowlist, route topology, required scopes and design-source supersession."
+    },
+    {
+      "id": "DC-01",
+      "area": "data campus hydrology",
+      "status": "FAIL",
+      "finding": "Current data targets include 666 water, four bubble-column and 40 lava cells.",
+      "requiredFix": "Replace blanket y60-to-base foundations with newly censused dry stepped pads or reviewed support columns."
+    },
+    {
+      "id": "DC-02",
+      "area": "data campus equipment warehouses",
+      "status": "FAIL",
+      "finding": "Rack helper hardcodes y51..59 beneath warehouses whose finished floor is y75.",
+      "requiredFix": "Parameterize rack base elevation and prove walkable rows inside each shell."
+    },
+    {
+      "id": "DC-03",
+      "area": "data hall rack contract",
+      "status": "FAIL",
+      "finding": "The counter increments before controlled cages overwrite parts of four upper rack rows; no final-state row proof exists.",
+      "requiredFix": "Count surviving named rows after all overrides and require 40 per hall with cross aisles and front/rear access."
+    },
+    {
+      "id": "DC-04",
+      "area": "data campus circulation",
+      "status": "FAIL",
+      "finding": "Halls lack remote stairs/cross aisles; lodge has four inaccessible floor plates; Info-annex stair leaves its shaft and misses the DM10 threshold.",
+      "requiredFix": "Add contained remote stairs, explicit cross aisles, lodge vertical circulation and threshold-to-threshold annex access."
+    },
+    {
+      "id": "DC-05",
+      "area": "data campus cross-scope",
+      "status": "FAIL",
+      "finding": "Road overwrites the power fence, DM03 corner and venue BOH wall.",
+      "requiredFix": "Shift routes or create exact designed gate/door interfaces and allowlist only those cells."
+    },
+    {
+      "id": "WH-01",
+      "area": "parking warehouse authority",
+      "status": "FAIL",
+      "finding": "Generator builds the superseded wet west hall instead of the later dry-core reservation.",
+      "requiredFix": "Select the later dry-core schedule and remove wet west-hall/ramp targets."
+    },
+    {
+      "id": "WH-02",
+      "area": "warehouse egress",
+      "status": "FAIL",
+      "finding": "Straight stairs extend beyond all three remote-exit liners.",
+      "requiredFix": "Use contained switchbacks or extend fully censused lined shafts through every step and landing."
+    },
+    {
+      "id": "WH-03",
+      "area": "warehouse recovered wings",
+      "status": "FAIL",
+      "finding": "E2 violates the five-block source-water halo and generated pods do not reach the later south-wing reservation.",
+      "requiredFix": "Re-site pods to the authoritative dry schedule and prove one- and five-cell fluid/gravity halos."
+    },
+    {
+      "id": "C01-01",
+      "area": "C01 source of truth",
+      "status": "FAIL",
+      "finding": "The x797 and x325 relocation schedules are both active and incompatible.",
+      "requiredFix": "Publish one supersession decision and retain one C01 coordinate authority."
+    },
+    {
+      "id": "C01-02",
+      "area": "C01 road",
+      "status": "FAIL",
+      "finding": "Blind road piers target 647 water/bubble, three lava and 311 gravity-sensitive cells.",
+      "requiredFix": "Terminate reviewed supports at competent ground and bridge fluid bands without blind deep piers."
+    },
+    {
+      "id": "C01-03",
+      "area": "C01 access",
+      "status": "FAIL",
+      "finding": "Inner airlock is outside its connector; double doors do not close corridor width; east egress visibly daylights.",
+      "requiredFix": "Build full bulkhead walls, two sequential vestibules, connected thresholds and concealed egress landforms."
+    },
+    {
+      "id": "C01-04",
+      "area": "C01 migration",
+      "status": "FAIL",
+      "finding": "Only the parking intrusion is cleared; the full 36-object old C01 remains and no 1896-BE/5132-item migration is implemented.",
+      "requiredFix": "Commission, migrate, reconcile and retire only C01-owned cells; preserve the sibling owner estate."
+    },
+    {
+      "id": "WL-01",
+      "area": "Westlight implementation",
+      "status": "FAIL",
+      "finding": "No three-venue, backstage, basement, dock or freight model exists in the generator.",
+      "requiredFix": "Implement the reviewed schedule after its internal reservations are corrected."
+    },
+    {
+      "id": "WL-02",
+      "area": "Westlight planning geometry",
+      "status": "FAIL",
+      "finding": "Blue core does not reach claimed lower levels; Lantern audience and bar overlap 125 program cells.",
+      "requiredFix": "Extend/prove lower circulation and separate the Lantern audience and bar footprints."
+    },
+    {
+      "id": "RG-01",
+      "area": "Ravensgate deep exclusion",
+      "status": "PASS_PLANNING_ONLY",
+      "finding": "Civilian tunnel y58..64 is vertically separate from the exclusion ending y35 and buffer ending y43.",
+      "requiredFix": "Import exclusion/buffer as protected 3D objects and prove zero operation intersections."
+    },
+    {
+      "id": "PAV-01",
+      "area": "pavilion grounds",
+      "status": "FAIL",
+      "finding": "South pool, two statues and monument steps overlap the actual Guild Hall geometry.",
+      "requiredFix": "Shift these objects outside x-60..-6,z-463..-408 and refresh the surface survey."
+    },
+    {
+      "id": "PAV-02",
+      "area": "secret tunnel",
+      "status": "FAIL",
+      "finding": "Branch rooms are sealed and endpoint doors are not across endpoint openings.",
+      "requiredFix": "Cut one controlled room door each and construct full-section closable endpoint vestibules."
+    },
+    {
+      "id": "OBS-01",
+      "area": "observatory estate",
+      "status": "FAIL",
+      "finding": "No generator model exists; full reservation contains 1058 BEs and depends on C01 support.",
+      "requiredFix": "Build independent podium first and create a complete preserve/move/retire NBT ledger."
+    },
+    {
+      "id": "OBS-02",
+      "area": "portal gallery",
+      "status": "FAIL",
+      "finding": "Hidden-entry narrative conflicts with its safe-room coordinates; overall bounds touch the grand-vault roof.",
+      "requiredFix": "Move entry to the owner library or re-register the safe room, and reserve y78+ with a vault no-target mask."
+    },
+    {
+      "id": "OBS-03",
+      "area": "inactive portals",
+      "status": "PENDING",
+      "finding": "Planning requires offline frames but no implementation or zero-active-block census exists.",
+      "requiredFix": "Prove zero active portal/gateway cells and full-width closed OFFLINE vestibules for every destination."
+    }
+  ],
+  "releaseDecision": {
+    "preflightAuthorized": false,
+    "liveExecutionAuthorized": false,
+    "statement": "Resolve every FAIL gate, regenerate from a stable source hash and fresh same-moment snapshot, then run strict exact-state preflight and independent route/media acceptance."
+  }
+}

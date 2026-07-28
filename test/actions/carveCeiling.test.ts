@@ -88,6 +88,16 @@ describe('carve ceiling (OQ-4)', () => {
       expect(g.isAboveCarveCeiling(200, 64, -23)).toBe(true);
       expect(g.isAboveCarveCeiling(200, 64, -7)).toBe(true);
     });
+
+    it('hard-excludes above-ceiling breaks from path planning', async () => {
+      const g = await freshGeofence(mining);
+      expect(g.getPathfinderBreakExclusionCost({
+        position: { x: 0, y: 42, z: 0 },
+      })).toBe(100);
+      expect(g.getPathfinderBreakExclusionCost({
+        position: { x: 200, y: 64, z: -15 },
+      })).toBe(0);
+    });
   });
 
   it('ignores a malformed block rather than half-enabling it', async () => {

@@ -1,0 +1,287 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "town-expansion-r1-program-envelope-read-only-audit",
+  "generatedAtUtc": "2026-07-28T07:03:35.190Z",
+  "status": "HOLD_CRITICAL_PROGRAM_ENVELOPE_FINDINGS",
+  "readOnly": true,
+  "liveWorldMutated": false,
+  "inputs": [
+    {
+      "file": "scripts/generate_town_expansion_r1.mjs",
+      "sha256": "4a1f15528708f5013a521ce00a9d469d95d03cc71286ce98340b6d96eb4bf6c6"
+    },
+    {
+      "file": "data/buildops/town-expansion-r1-wip2.report.json",
+      "sha256": "04b1c2dffaac3396c94be5ea3fc30245e9665accabd341f12550515a46eda399"
+    },
+    {
+      "file": "docs/redevelopment/2026-07-28-town-expansion/concord-broadcast-exchange-coordinate-schedule.json",
+      "sha256": "965411971a8414dd78ef88b92a55f5309be2b96966d0296bd1d50aef6ad9b0a0",
+      "status": "FROZEN_DESIGN_NOT_GENERATED_NOT_LIVE"
+    },
+    {
+      "file": "docs/redevelopment/2026-07-28-town-expansion/c01-east-relocation-coordinate-schedule.json",
+      "sha256": "1b8d148ca4a6f595e979f9a6fe884eb7271164c697af112d428dddc616bf171f",
+      "status": "INDEPENDENT_PLANNING_DECISION_NOT_A_BUILD_RELEASE"
+    }
+  ],
+  "summary": {
+    "findings": 8,
+    "critical": 6,
+    "high": 2,
+    "medium": 0
+  },
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "FIT-C01-001",
+      "title": "The compact C01 module shrinks the recognizable big-square base",
+      "scopeIds": [
+        "TE-C01-EAST-REBUILD"
+      ],
+      "bounds": {
+        "oldFootprint": [
+          100,
+          70,
+          300,
+          235
+        ],
+        "currentMainModule": [
+          797,
+          -140,
+          888,
+          -85
+        ]
+      },
+      "promised": "Preserve and use the full bunker-square program capacity; every internal column must be classified and no dead void may be hidden.",
+      "measured": "5,152 columns versus 33,366 old-footprint columns (15.4%). The report exposes only 12 program rooms in a 92×56 module.",
+      "evidence": "data/buildops/town-expansion-r1-wip2.report.json coverage.c01MainModuleBounds/c01RelocationProgramRooms; docs/redevelopment/2026-07-28-town-expansion/c01-east-relocation-coordinate-schedule.json existing.c01.bounds.",
+      "consequence": "The current package cannot prove that the former large base was used, and it has no full-envelope utilization/classification ledger.",
+      "disposition": "FINDING_ONLY_NO_FIX_APPLIED"
+    },
+    {
+      "severity": "critical",
+      "id": "FIT-C01-002",
+      "title": "Rejected arena and compact display bay still occupy the main arrival level",
+      "scopeIds": [
+        "TE-C01-EAST-REBUILD"
+      ],
+      "bounds": {
+        "northRoom": [
+          800,
+          42,
+          -137,
+          835,
+          49,
+          -118
+        ],
+        "hangarRoom": [
+          850,
+          42,
+          -137,
+          885,
+          49,
+          -118
+        ]
+      },
+      "promised": "No stadium/arena. One true clear-span hangar with a glazed two-story support/administration wall, plus an obvious replacement destination from the orientation concourse.",
+      "measured": "Roles still include b1_training_arena (true) and compact_aircraft_display (true); the nominal hangar room has only a 34×18 interior after perimeter walls.",
+      "evidence": "scripts/generate_town_expansion_r1.mjs modelC01EastRelocation; data/buildops/town-expansion-r1-wip2.report.json TE-C01-EAST-REBUILD role census.",
+      "consequence": "The arrival sequence still presents the exact two objects the user rejected and does not physically express a large clear-span hangar.",
+      "disposition": "FINDING_ONLY_NO_FIX_APPLIED"
+    },
+    {
+      "severity": "critical",
+      "id": "FIT-C01-003",
+      "title": "C01 vertical circulation is compact and lacks the promised broad stair/lift system",
+      "scopeIds": [
+        "TE-C01-EAST-REBUILD"
+      ],
+      "bounds": {
+        "primaryCore": [
+          840,
+          21,
+          -137,
+          846,
+          51,
+          -119
+        ],
+        "eastEgress": [
+          880,
+          42,
+          -112,
+          887,
+          82,
+          -101
+        ]
+      },
+      "promised": "Broad, visible, landing-rich stairs and lifts connecting every occupied level, with a continuous entrance-to-main-level loop.",
+      "measured": "4 compactSwitchbackStair calls in C01; zero lift-role occurrences in the C01 scope; the primary outer core is only 7 blocks wide.",
+      "evidence": "scripts/generate_town_expansion_r1.mjs modelC01EastRelocation; data/buildops/town-expansion-r1-wip2.report.json TE-C01-EAST-REBUILD roles.",
+      "consequence": "The current geometry does not meet the legibility/access brief and provides no graph proof that every occupied room is reachable.",
+      "disposition": "FINDING_ONLY_NO_FIX_APPLIED"
+    },
+    {
+      "severity": "critical",
+      "id": "FIT-C01-004",
+      "title": "The expanded public and owner program is absent from the C01 envelope",
+      "scopeIds": [
+        "TE-C01-EAST-REBUILD"
+      ],
+      "bounds": {
+        "minX": 690,
+        "minY": 20,
+        "minZ": -140,
+        "maxX": 888,
+        "maxY": 82,
+        "maxZ": -49
+      },
+      "promised": "Exact current contract: {\"publicAdultsOnlyWingDoubled\":2,\"ownerBedroomSuites\":15,\"ownerMasterBedrooms\":3,\"ownerMicroDataRacks\":2,\"ownerKitchens\":2}, distinct public/owner/service/tunnel routes, owner-only deep club/residence, and non-graphic architectural treatment.",
+      "measured": "Matching C01 operation roles: 4; exact promised suites/bedrooms/racks/kitchens currently measure 0.",
+      "evidence": "data/buildops/town-expansion-r1-wip2.report.json TE-C01-EAST-REBUILD role census and coverage.c01RelocationProgramRooms.",
+      "consequence": "This is an omitted main program, not a detail pass; it cannot fit without a new classified multi-level envelope.",
+      "disposition": "FINDING_ONLY_NO_FIX_APPLIED"
+    },
+    {
+      "severity": "critical",
+      "id": "FIT-CBE-001",
+      "title": "Broadcast Exchange source is a reduced placeholder, not the frozen 113-room schedule",
+      "scopeIds": [
+        "TE-IA-CONCORD-BROADCAST-EXCHANGE",
+        "TE-IA-CONCORD-BROADCAST-TOWER",
+        "TE-IA-CONCORD-SATELLITE-PAD"
+      ],
+      "bounds": {
+        "sourceShell": [
+          680,
+          -425,
+          730,
+          -350
+        ],
+        "frozenShell": [
+          680,
+          38,
+          -425,
+          715,
+          84,
+          -350
+        ],
+        "frozenSatellitePad": [
+          737,
+          62,
+          -425,
+          769,
+          78,
+          -390
+        ]
+      },
+      "promised": "Frozen exact schedule: 33 above-ground mini rooms, 8 B2 set rooms, 2 halls, 9 dishes, 113 total room records.",
+      "measured": "12 above-ground rooms, 4 underground themed rooms, 0 hall, 3 dish arrays. The current generated report contains no TE-IA-CONCORD-BROADCAST-EXCHANGE scope summary.",
+      "evidence": "scripts/generate_town_expansion_r1.mjs modelConcordServiceTown; docs/redevelopment/2026-07-28-town-expansion/concord-broadcast-exchange-coordinate-schedule.json; data/buildops/town-expansion-r1-wip2.report.json.",
+      "consequence": "Named program exists in prose/source, but most distinct rooms, support spaces, tower decks, and exact capacities are not represented in the release artifact.",
+      "disposition": "FINDING_ONLY_NO_FIX_APPLIED"
+    },
+    {
+      "severity": "critical",
+      "id": "FIT-DATA-001",
+      "title": "The current generated package/report contains only the obsolete ten-hall data-campus increment",
+      "scopeIds": [
+        "TE-IA-DATA-DM01",
+        "TE-IA-DATA-DM02",
+        "TE-IA-DATA-DM03",
+        "TE-IA-DATA-DM04",
+        "TE-IA-DATA-DM05",
+        "TE-IA-DATA-DM06",
+        "TE-IA-DATA-DM07",
+        "TE-IA-DATA-DM08",
+        "TE-IA-DATA-DM09",
+        "TE-IA-DATA-DM10"
+      ],
+      "bounds": {
+        "generatedCampusBounds": {
+          "minX": 723,
+          "minZ": -649,
+          "maxX": 1025,
+          "maxZ": -289
+        }
+      },
+      "promised": "24 DSM-numbered halls plus 12 Meta-inspired, 6 Google-inspired, and 2 LightEdge EdgeBCC buildings: 44 walkable halls total.",
+      "measured": "10 DSM scope summaries and 0 Meta/Google/EdgeBCC scope summaries; coverage.dataCenterCampusBuildings=10.",
+      "evidence": "data/buildops/town-expansion-r1-wip2.report.json operations.scopeSummary and coverage.",
+      "consequence": "Even if newer source code is in progress, the current exact-state package does not contain the promised campuses and cannot be treated as the deployable source of truth.",
+      "disposition": "FINDING_ONLY_NO_FIX_APPLIED"
+    },
+    {
+      "severity": "high",
+      "id": "FIT-CBE-002",
+      "title": "Broadcast Exchange circulation count is below the frozen access plan",
+      "scopeIds": [
+        "TE-IA-CONCORD-BROADCAST-EXCHANGE"
+      ],
+      "bounds": {
+        "currentUnderground": [
+          682,
+          28,
+          -421,
+          728,
+          55,
+          -354
+        ]
+      },
+      "promised": "Five vertical cores: north/south public, north/south service-performer, and central freight; distinct public, creator, performer, service, tower, satellite, and garden routes.",
+      "measured": "Current model declares two broad stair cores and one lift core (3 total) and combines creator/service/public into one gallery.",
+      "evidence": "scripts/generate_town_expansion_r1.mjs return.broadcastExchange and generated core roles; docs/redevelopment/2026-07-28-town-expansion/concord-broadcast-exchange-coordinate-schedule.json verticalCirculation.",
+      "consequence": "The promised room count cannot have believable separated public/backstage/service access with the current three-core representation.",
+      "disposition": "FINDING_ONLY_NO_FIX_APPLIED"
+    },
+    {
+      "severity": "high",
+      "id": "FIT-STEWARD-001",
+      "title": "Plural steward-cottage conversion currently resolves to one mini-mansion",
+      "scopeIds": [
+        "TE-RRCH-STEWARD-MINI-MANSION"
+      ],
+      "bounds": {
+        "minX": -140,
+        "minY": 65,
+        "minZ": -357,
+        "maxX": -106,
+        "maxY": 89,
+        "maxZ": -331
+      },
+      "promised": "Convert all steward cottages in the worker town into blended, detailed mid-management mini-mansions.",
+      "measured": "coverage.stewardCottagesFoundAndUpgraded=1; one converted envelope is present.",
+      "evidence": "data/buildops/town-expansion-r1-wip2.report.json coverage and TE-RRCH-STEWARD-MINI-MANSION scope summary.",
+      "consequence": "The singular implementation can be internally detailed but does not fulfill the plural source-feature inventory.",
+      "disposition": "FINDING_ONLY_NO_FIX_APPLIED"
+    }
+  ],
+  "falsePositivesAndExclusions": [
+    {
+      "id": "EXCL-SCREEN-001",
+      "reason": "The current C01 arena is rejected as a program, but it is not flagged for the earlier “seats face a doorway/no screen” defect: the current source places a screen before its seating."
+    },
+    {
+      "id": "EXCL-GUILD-001",
+      "reason": "Guild Hall has two basement levels, three above-grade stories, four kitchen worklines, screen-before-seat theater/lecture roles, dormitory bays, and a normal-walk stair in the generated role census. No numeric contradiction was established in this pass."
+    },
+    {
+      "id": "EXCL-WESTLIGHT-001",
+      "reason": "Westlight source declares three venues, distinct identity entries, separate backstage rooms, service loading, and vertical cores. Post-state walking/visual proof is still required, but absence of that future proof is not itself a fit contradiction."
+    },
+    {
+      "id": "EXCL-GILDED-001",
+      "reason": "The Gilded Raven theater/tunnel has a frozen exact schedule and previously passed focused generator tests; no new envelope contradiction was established here."
+    },
+    {
+      "id": "EXCL-DM-RACKS-001",
+      "reason": "Each of the ten DSM halls in this stale report declares 40 rack rows; the finding is missing campus/hall count, not rack-count inflation inside those ten halls."
+    }
+  ],
+  "limitations": [
+    "This is a static source/report/schedule comparison, not a Minecraft pathfinding or camera review.",
+    "It intentionally reports contradictions before fixes and does not edit the shared generator.",
+    "A newer ungenerated source increment does not cure a stale exact-state operation file/report.",
+    "Schedules labeled planning/frozen are treated as promises, not as-built evidence."
+  ]
+}

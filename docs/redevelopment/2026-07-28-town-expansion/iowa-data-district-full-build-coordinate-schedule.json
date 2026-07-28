@@ -1,0 +1,727 @@
+{
+  "schemaVersion": 1,
+  "title": "Iowa Data District Full Build and Shared Worker Commons Coordinate Schedule",
+  "preparedAtUtc": "2026-07-28T05:42:00Z",
+  "status": "CANDIDATE_PENDING_COMPILER_AND_SNAPSHOT_COLLISION_GATE",
+  "supersedes": "Iowa Data District Phase 0 envelope-only plan",
+  "truthBoundary": {
+    "publicPrecedent": "Campus counts and broad program themes come only from cited public sources.",
+    "fictionalDesign": "All coordinates, rooms, racks, roads, utilities, power, landscaping, paths and recreation geometry are original Minecraft design.",
+    "asBuiltRule": "No object is AS_BUILT until guarded release, immutable post snapshot, object import, route QA and second-pass evidence pass."
+  },
+  "coordinateConvention": {
+    "bounds": "inclusive [minX,minYOrNull,minZ,maxX,maxYOrNull,maxZ]",
+    "surfacePosition": "x/z are frozen; y is resolved by the compiler as first walkable placement level above the audited terrain surface unless an explicit y is present",
+    "routeNodes": "ordered [x,z] centerline nodes; compiler must generate three clear blocks, terrain-following y, headroom and distinct outbound/return cells",
+    "flightCorridor": "inclusive x/z exclusion bounds around the complete tee-waypoint-basket polyline; every surface column and final modeled cell requires collision census",
+    "cameraPosition": "x/z plus surfaceYOffset is an exact snapshot-relative placement rule, not an arbitrary suggestion",
+    "discGolfTransformControl": "All x/z arrays inside discGolf are stored in COURSE_LOCAL_BASELINE and resolve to final world x/z by adding discGolf.finalWorldTransform before compilation, collision QA, database import, maps or cameras."
+  },
+  "releaseScopes": {
+    "meta": "TE-IA-DISTRICT-META",
+    "google": "TE-IA-DISTRICT-GOOGLE",
+    "lightEdgeEdgeBcc": "TE-IA-DISTRICT-LIGHTEDGE-EDGEBCC",
+    "commons": "TE-IA-DISTRICT-WORKER-COMMONS",
+    "discGolf": "TE-IA-DISTRICT-WORKER-COMMONS-DISC-GOLF",
+    "roads": "TE-IA-DISTRICT-ROAD-NETWORK",
+    "grid": "TE-IA-DISTRICT-SHARED-GRID"
+  },
+  "requiredCounts": {
+    "metaHalls": 12,
+    "googleHalls": 6,
+    "edgeBccBuildings": 2,
+    "completedWalkableDataBuildings": 20,
+    "shelterHouses": 4,
+    "discGolfHoles": 18,
+    "discGolfTees": 18,
+    "discGolfBaskets": 18,
+    "discGolfSigns": 18,
+    "discGolfCameras": 36,
+    "discGolfTotalPar": 58,
+    "pondConcaveBaysMinimum": 3,
+    "closedWorkerLoop": 1
+  },
+  "campuses": [
+    {
+      "objectId": "IA-META-CAMPUS-001",
+      "name": "Meta Altoona-inspired Campus",
+      "bounds": [1040, null, -550, 1140, null, -475],
+      "requiredCompletedBuildings": 12,
+      "publicCountBasis": "Meta public announcements support a twelve-building planning precedent.",
+      "designStatus": "FULL_BUILD_AUTHORIZED",
+      "publicationStatus": "PENDING_POST_RELEASE_VISUAL_QA"
+    },
+    {
+      "objectId": "IA-GOOGLE-CAMPUS-001",
+      "name": "Google Iowa-inspired Campus",
+      "bounds": [1155, null, -550, 1255, null, -475],
+      "requiredCompletedBuildings": 6,
+      "publicCountBasis": "Six is an explicitly fictional project choice; Google's official Iowa page does not publish a clean current building count.",
+      "designStatus": "FULL_BUILD_AUTHORIZED",
+      "publicationStatus": "PENDING_POST_RELEASE_VISUAL_QA"
+    },
+    {
+      "objectId": "IA-LIGHTEDGE-EDGEBCC-CAMPUS-001",
+      "name": "LightEdge Solutions EdgeBCC-inspired Campus",
+      "bounds": [1040, null, -380, 1125, null, -300],
+      "requiredCompletedBuildings": 2,
+      "requiredQuadrantsPerBuilding": 4,
+      "namingControl": "EdgeBCC, not EdgeConneX",
+      "designStatus": "FULL_BUILD_AUTHORIZED",
+      "publicationStatus": "PENDING_POST_RELEASE_VISUAL_QA"
+    }
+  ],
+  "workerCommons": {
+    "objectId": "IA-WORKER-COMMONS-001",
+    "scope": "TE-IA-DISTRICT-WORKER-COMMONS",
+    "designStatus": "FULL_BUILD_AUTHORIZED",
+    "publicationStatus": "PENDING_POST_RELEASE_VISUAL_QA",
+    "pond": {
+      "objectId": "IA-WORKER-COMMONS-POND-001",
+      "name": "Three Campuses Worker Pond",
+      "containmentBounds": [1066, null, -460, 1122, null, -410],
+      "surveySeed": [1088, -440],
+      "shorelinePolygon": [
+        [1068, -440],
+        [1072, -454],
+        [1084, -458],
+        [1082, -450],
+        [1096, -460],
+        [1110, -456],
+        [1106, -448],
+        [1120, -442],
+        [1118, -426],
+        [1108, -414],
+        [1098, -422],
+        [1088, -412],
+        [1074, -418],
+        [1080, -430],
+        [1068, -440]
+      ],
+      "concaveBays": [
+        {
+          "bayId": "POND-BAY-NORTH-MEADOW",
+          "mouth": [[1072, -454], [1096, -460]],
+          "inlet": [1082, -450]
+        },
+        {
+          "bayId": "POND-BAY-EAST-WILLOW",
+          "mouth": [[1096, -460], [1120, -442]],
+          "inlet": [1106, -448]
+        },
+        {
+          "bayId": "POND-BAY-SOUTH-PRAIRIE",
+          "mouth": [[1118, -426], [1088, -412]],
+          "inlet": [1098, -422]
+        },
+        {
+          "bayId": "POND-BAY-WEST-FOREBAY",
+          "mouth": [[1074, -418], [1068, -440]],
+          "inlet": [1080, -430]
+        }
+      ],
+      "requiredZones": [
+        "sealed bed",
+        "open water",
+        "shallow shelf",
+        "wet planting band",
+        "wet-mesic bank",
+        "mesic bank",
+        "upland prairie edge"
+      ],
+      "introducedWaterContainmentRule": "Every introduced water cell must be inside shorelinePolygon and containmentBounds and absent from every path, shelter and disc-golf exclusion.",
+      "requiredQuantitativeReportFields": [
+        "preExistingWaterCells",
+        "introducedWaterCells",
+        "retainedWaterCells",
+        "removedWaterCells",
+        "shorelineColumns",
+        "shallowShelfColumns",
+        "bankPlantingCells",
+        "maximumExcavationDepth",
+        "protectedBlockEntityIntersections"
+      ],
+      "cameraIds": [
+        "IA-CAM-POND-NW-001",
+        "IA-CAM-POND-SE-002"
+      ]
+    },
+    "closedWalkBikeLoop": {
+      "objectId": "IA-WORKER-LOOP-001",
+      "name": "Concord and Three Campuses Walk-Bike Loop",
+      "trailheadObjectId": "IA-CONCORD-TRAILHEAD-001",
+      "routeNodes": [
+        [780, -345],
+        [860, -360],
+        [940, -375],
+        [1010, -390],
+        [1044, -400],
+        [1044, -465],
+        [1040, -475],
+        [1140, -475],
+        [1155, -475],
+        [1255, -475],
+        [1268, -475],
+        [1268, -330],
+        [1130, -330],
+        [1130, -400],
+        [1080, -390],
+        [1040, -385],
+        [1040, -350],
+        [1025, -345],
+        [970, -335],
+        [880, -325],
+        [820, -330],
+        [780, -345]
+      ],
+      "campusConnections": [
+        {
+          "campusObjectId": "IA-META-CAMPUS-001",
+          "entryNode": [1040, -475],
+          "exitNode": [1140, -475]
+        },
+        {
+          "campusObjectId": "IA-GOOGLE-CAMPUS-001",
+          "entryNode": [1155, -475],
+          "exitNode": [1255, -475]
+        },
+        {
+          "campusObjectId": "IA-LIGHTEDGE-EDGEBCC-CAMPUS-001",
+          "entryNode": [1040, -385],
+          "gateNode": [1040, -350]
+        }
+      ],
+      "controlledCrossings": [
+        {
+          "crossingId": "IA-XING-WEST-FRONTAGE-OUTBOUND",
+          "center": [1018, -390],
+          "roadScope": "TE-IA-DISTRICT-ROAD-NETWORK",
+          "requiredElements": ["raised table", "contrasting surface", "bollard separation", "lighting"]
+        },
+        {
+          "crossingId": "IA-XING-WEST-FRONTAGE-RETURN",
+          "center": [1018, -345],
+          "roadScope": "TE-IA-DISTRICT-ROAD-NETWORK",
+          "requiredElements": ["raised table", "contrasting surface", "bollard separation", "lighting"]
+        }
+      ],
+      "boardwalkSegments": [
+        {
+          "objectId": "IA-LOOP-BOARDWALK-EAST-WETLAND-001",
+          "centerline": [[1268, -355], [1268, -335]],
+          "deckY": 63,
+          "clearWidthBlocks": 3,
+          "requiredElements": ["retained water below", "non-slip deck analogue", "edge rail", "approach landings", "low-level lighting"],
+          "waterReplacementAllowed": false,
+          "purpose": "The immutable snapshot has a narrow wetland crossing on the only practical dry-side eastern return. The path bridges it rather than draining or filling it."
+        },
+        {
+          "objectId": "IA-LOOP-BOARDWALK-EAST-TURN-002",
+          "centerline": [[1260, -330], [1250, -330]],
+          "deckY": 63,
+          "clearWidthBlocks": 3,
+          "requiredElements": ["retained water below", "non-slip deck analogue", "edge rail", "turn landing", "low-level lighting"],
+          "waterReplacementAllowed": false,
+          "purpose": "A five-column wet pocket touches the eastern turn; the loop remains continuous on a short transverse deck."
+        }
+      ],
+      "minimumClearWidthBlocks": 3,
+      "minimumHeadroomBlocks": 3,
+      "jumpCountAllowed": 0,
+      "distinctReturnRequirement": true,
+      "repeatedDirectedEdgeCountAllowed": 0,
+      "requiredQuantitativeReportFields": [
+        "centerlineCells",
+        "surfaceCells",
+        "lengthBlocks",
+        "minimumClearWidthBlocks",
+        "maximumGradePercent",
+        "gradeBreakCount",
+        "landingCount",
+        "controlledCrossingCount",
+        "repeatedDirectedEdgeCount",
+        "roadOverlapCells",
+        "utilityOverlapCells",
+        "pondOverlapCells",
+        "boardwalkWaterColumns",
+        "protectedBlockEntityIntersections"
+      ],
+      "cameraIds": [
+        "IA-CAM-LOOP-CONCORD-001",
+        "IA-CAM-LOOP-META-002",
+        "IA-CAM-LOOP-GOOGLE-003",
+        "IA-CAM-LOOP-EDGEBCC-004"
+      ]
+    },
+    "trailhead": {
+      "objectId": "IA-CONCORD-TRAILHEAD-001",
+      "bounds": [772, null, -352, 792, null, -336],
+      "requiredProgram": [
+        "gateway and map",
+        "roofed information kiosk",
+        "bicycle racks",
+        "repair stand",
+        "drinking fountain analogue",
+        "seating and companion space",
+        "waste and recycling",
+        "lighting",
+        "step-free Concord connection"
+      ],
+      "cameraIds": ["IA-CAM-TRAILHEAD-001", "IA-CAM-TRAILHEAD-002"]
+    },
+    "shelters": [
+      {
+        "objectId": "IA-SHELTER-CONCORD-001",
+        "name": "Concord Trailhead Shelter",
+        "bounds": [794, null, -354, 806, null, -344],
+        "program": ["information", "shift-break seating", "bike repair", "waste station"],
+        "cameraIds": ["IA-CAM-SHELTER-CONCORD-001"]
+      },
+      {
+        "objectId": "IA-SHELTER-POND-002",
+        "name": "Pond Commons Shelter",
+        "bounds": [1042, null, -410, 1052, null, -400],
+        "program": ["tables", "grill analogue", "water view", "event-lawn edge"],
+        "cameraIds": ["IA-CAM-SHELTER-POND-002"]
+      },
+      {
+        "objectId": "IA-SHELTER-PRAIRIE-003",
+        "name": "North Prairie Shelter",
+        "bounds": [1134, null, -468, 1144, null, -458],
+        "program": ["quiet lunch", "prairie overlook", "outdoor work tables"],
+        "cameraIds": ["IA-CAM-SHELTER-PRAIRIE-003"]
+      },
+      {
+        "objectId": "IA-SHELTER-EDGEBCC-004",
+        "name": "EdgeBCC Grove Shelter",
+        "bounds": [1026, null, -388, 1036, null, -378],
+        "program": ["small-team outdoor work", "recovery seating", "grove overlook"],
+        "cameraIds": ["IA-CAM-SHELTER-EDGEBCC-004"]
+      }
+    ],
+    "parkAmenities": [
+      {
+        "objectId": "IA-PARK-EVENT-LAWN-001",
+        "bounds": [1138, null, -440, 1170, null, -410],
+        "program": "open worker event and lunch lawn"
+      },
+      {
+        "objectId": "IA-PARK-NATURE-PLAY-002",
+        "bounds": [1175, null, -432, 1195, null, -412],
+        "program": "small nature-play and balance area"
+      },
+      {
+        "objectId": "IA-PARK-FITNESS-003",
+        "bounds": [1200, null, -424, 1218, null, -408],
+        "program": "stretch and low-impact fitness node"
+      },
+      {
+        "objectId": "IA-PARK-POND-DECK-NORTH-004",
+        "bounds": [1086, null, -464, 1100, null, -458],
+        "program": "high-bank pond overlook"
+      },
+      {
+        "objectId": "IA-PARK-POND-DECK-SOUTH-005",
+        "bounds": [1102, null, -414, 1116, null, -408],
+        "program": "low-bank pond overlook"
+      }
+    ],
+    "landscapeControls": {
+      "treeClusterMinimum": 24,
+      "groveMinimum": 6,
+      "bioswaleMinimum": 4,
+      "plantingZones": ["wet", "wet-mesic", "mesic", "upland prairie", "woodland edge"],
+      "noOrchardGrid": true,
+      "noFlatGrassSlab": true,
+      "requiredQuantitativeReportFields": [
+        "treeObjects",
+        "treeCells",
+        "groveObjects",
+        "nativePlantCells",
+        "bioswaleCells",
+        "plantedCutFillCells",
+        "unblendedVerticalFaces",
+        "pathRootOrTrunkConflicts",
+        "discFlightVegetationConflicts"
+      ]
+    }
+  },
+  "discGolf": {
+    "objectId": "IA-THREE-CAMPUSES-DISC-GOLF-001",
+    "name": "Three Campuses Disc Golf",
+    "scope": "TE-IA-DISTRICT-WORKER-COMMONS-DISC-GOLF",
+    "storedCoordinateSpace": "COURSE_LOCAL_BASELINE",
+    "storedGeometryBounds": [1138, null, -390, 1274, null, -290],
+    "finalWorldTransform": {
+      "xDelta": 0,
+      "zDelta": 100,
+      "reason": "The first coordinated band had surveyed surface-water flight conflicts. The same exact topology is moved south into the compiler-surveyed dry band.",
+      "resolvedWorldFormula": "[x + xDelta, z + zDelta]",
+      "appliesTo": [
+        "holes[].tee",
+        "holes[].sign",
+        "holes[].flightWaypoints",
+        "holes[].basket",
+        "holes[].flightCorridor",
+        "holes[].nextTeeRoute",
+        "cameraCandidates[].positionXZ",
+        "cameraCandidates[].targetXZ"
+      ]
+    },
+    "courseContainmentBounds": [1138, null, -290, 1274, null, -190],
+    "totalPar": 58,
+    "surfacePlacementRule": "Resolve final world x/z with finalWorldTransform first. Tee, sign, basket and course path y are then individually terrain-surveyed; no single course bench.",
+    "fairwayBufferRadiusBlocks": 2,
+    "sharedPathInsideFlightCorridorAllowed": false,
+    "roadInsideFlightCorridorAllowed": false,
+    "buildingInsideFlightCorridorAllowed": false,
+    "utilityInsideFlightCorridorAllowed": false,
+    "pondInsideFlightCorridorAllowed": false,
+    "holes": [
+      {
+        "objectId": "IA-DG-HOLE-01",
+        "number": 1,
+        "par": 3,
+        "tee": [1140, -388],
+        "sign": [1140, -390],
+        "flightWaypoints": [[1140, -388], [1148, -387], [1156, -388]],
+        "basket": [1156, -388],
+        "flightCorridor": [1138, -390, 1158, -385],
+        "shotShape": "short meadow right-drift opener",
+        "nextTeeRoute": [[1156, -388], [1166, -388], [1166, -377], [1162, -377]],
+        "cameraIds": ["IA-DG-CAM-01-TEE", "IA-DG-CAM-01-BASKET"]
+      },
+      {
+        "objectId": "IA-DG-HOLE-02",
+        "number": 2,
+        "par": 3,
+        "tee": [1162, -377],
+        "sign": [1162, -379],
+        "flightWaypoints": [[1162, -377], [1152, -376], [1142, -377]],
+        "basket": [1142, -377],
+        "flightCorridor": [1140, -379, 1164, -374],
+        "shotShape": "reverse left-drift woodland edge",
+        "nextTeeRoute": [[1142, -377], [1136, -377], [1136, -368], [1142, -368]],
+        "cameraIds": ["IA-DG-CAM-02-TEE", "IA-DG-CAM-02-BASKET"]
+      },
+      {
+        "objectId": "IA-DG-HOLE-03",
+        "number": 3,
+        "par": 3,
+        "tee": [1142, -368],
+        "sign": [1142, -370],
+        "flightWaypoints": [[1142, -368], [1157, -370], [1172, -368]],
+        "basket": [1172, -368],
+        "flightCorridor": [1140, -372, 1174, -366],
+        "shotShape": "shallow left dogleg",
+        "nextTeeRoute": [[1172, -368], [1180, -368], [1180, -358], [1175, -358]],
+        "cameraIds": ["IA-DG-CAM-03-TEE", "IA-DG-CAM-03-BASKET"]
+      },
+      {
+        "objectId": "IA-DG-HOLE-04",
+        "number": 4,
+        "par": 3,
+        "tee": [1175, -358],
+        "sign": [1175, -356],
+        "flightWaypoints": [[1175, -358], [1160, -356], [1145, -358]],
+        "basket": [1145, -358],
+        "flightCorridor": [1143, -360, 1177, -354],
+        "shotShape": "reverse right dogleg and rising finish",
+        "nextTeeRoute": [[1145, -358], [1136, -358], [1136, -342], [1184, -342], [1184, -395], [1210, -395], [1210, -388]],
+        "cameraIds": ["IA-DG-CAM-04-TEE", "IA-DG-CAM-04-BASKET"]
+      },
+      {
+        "objectId": "IA-DG-HOLE-05",
+        "number": 5,
+        "par": 4,
+        "tee": [1210, -388],
+        "sign": [1210, -390],
+        "flightWaypoints": [[1210, -388], [1225, -386], [1240, -388]],
+        "basket": [1240, -388],
+        "flightCorridor": [1208, -390, 1242, -384],
+        "shotShape": "long lowland S-line",
+        "nextTeeRoute": [[1240, -388], [1270, -388], [1270, -378], [1265, -378]],
+        "cameraIds": ["IA-DG-CAM-05-TEE", "IA-DG-CAM-05-BASKET"]
+      },
+      {
+        "objectId": "IA-DG-HOLE-06",
+        "number": 6,
+        "par": 3,
+        "tee": [1265, -378],
+        "sign": [1265, -376],
+        "flightWaypoints": [[1265, -378], [1250, -380], [1235, -378]],
+        "basket": [1235, -378],
+        "flightCorridor": [1233, -382, 1267, -376],
+        "shotShape": "reverse lowland hyzer",
+        "nextTeeRoute": [[1235, -378], [1235, -369], [1242, -369]],
+        "cameraIds": ["IA-DG-CAM-06-TEE", "IA-DG-CAM-06-BASKET"]
+      },
+      {
+        "objectId": "IA-DG-HOLE-07",
+        "number": 7,
+        "par": 3,
+        "tee": [1242, -369],
+        "sign": [1242, -371],
+        "flightWaypoints": [[1242, -369], [1257, -371], [1272, -369]],
+        "basket": [1272, -369],
+        "flightCorridor": [1240, -373, 1274, -367],
+        "shotShape": "shallow right dogleg",
+        "nextTeeRoute": [[1272, -369], [1272, -350], [1225, -350], [1225, -358]],
+        "cameraIds": ["IA-DG-CAM-07-TEE", "IA-DG-CAM-07-BASKET"]
+      },
+      {
+        "objectId": "IA-DG-HOLE-08",
+        "number": 8,
+        "par": 3,
+        "tee": [1225, -358],
+        "sign": [1225, -360],
+        "flightWaypoints": [[1225, -358], [1210, -356], [1195, -358]],
+        "basket": [1195, -358],
+        "flightCorridor": [1193, -360, 1227, -354],
+        "shotShape": "reverse wooded-edge bend",
+        "nextTeeRoute": [[1195, -358], [1195, -348], [1208, -348]],
+        "cameraIds": ["IA-DG-CAM-08-TEE", "IA-DG-CAM-08-BASKET"]
+      },
+      {
+        "objectId": "IA-DG-HOLE-09",
+        "number": 9,
+        "par": 4,
+        "tee": [1208, -348],
+        "sign": [1208, -350],
+        "flightWaypoints": [[1208, -348], [1228, -346], [1248, -348]],
+        "basket": [1248, -348],
+        "flightCorridor": [1206, -350, 1250, -344],
+        "shotShape": "long open turnover",
+        "nextTeeRoute": [[1248, -348], [1220, -342], [1220, -333], [1218, -333]],
+        "cameraIds": ["IA-DG-CAM-09-TEE", "IA-DG-CAM-09-BASKET"]
+      },
+      {
+        "objectId": "IA-DG-HOLE-10",
+        "number": 10,
+        "par": 3,
+        "tee": [1218, -333],
+        "sign": [1218, -335],
+        "flightWaypoints": [[1218, -333], [1204, -331], [1190, -333]],
+        "basket": [1190, -333],
+        "flightCorridor": [1188, -335, 1220, -329],
+        "shotShape": "descending left finish",
+        "nextTeeRoute": [[1190, -333], [1178, -333], [1170, -333]],
+        "cameraIds": ["IA-DG-CAM-10-TEE", "IA-DG-CAM-10-BASKET"]
+      },
+      {
+        "objectId": "IA-DG-HOLE-11",
+        "number": 11,
+        "par": 3,
+        "tee": [1170, -333],
+        "sign": [1170, -331],
+        "flightWaypoints": [[1170, -333], [1156, -335], [1142, -333]],
+        "basket": [1142, -333],
+        "flightCorridor": [1140, -337, 1172, -331],
+        "shotShape": "ridge reverse hyzer",
+        "nextTeeRoute": [[1142, -333], [1136, -333], [1136, -323], [1142, -323]],
+        "cameraIds": ["IA-DG-CAM-11-TEE", "IA-DG-CAM-11-BASKET"]
+      },
+      {
+        "objectId": "IA-DG-HOLE-12",
+        "number": 12,
+        "par": 3,
+        "tee": [1142, -323],
+        "sign": [1142, -325],
+        "flightWaypoints": [[1142, -323], [1156, -321], [1170, -323]],
+        "basket": [1170, -323],
+        "flightCorridor": [1140, -325, 1172, -319],
+        "shotShape": "ridge right finish",
+        "nextTeeRoute": [[1170, -323], [1190, -323]],
+        "cameraIds": ["IA-DG-CAM-12-TEE", "IA-DG-CAM-12-BASKET"]
+      },
+      {
+        "objectId": "IA-DG-HOLE-13",
+        "number": 13,
+        "par": 3,
+        "tee": [1190, -323],
+        "sign": [1190, -321],
+        "flightWaypoints": [[1190, -323], [1204, -325], [1218, -323]],
+        "basket": [1218, -323],
+        "flightCorridor": [1188, -327, 1220, -321],
+        "shotShape": "valley left dogleg",
+        "nextTeeRoute": [[1218, -323], [1230, -323]],
+        "cameraIds": ["IA-DG-CAM-13-TEE", "IA-DG-CAM-13-BASKET"]
+      },
+      {
+        "objectId": "IA-DG-HOLE-14",
+        "number": 14,
+        "par": 4,
+        "tee": [1230, -323],
+        "sign": [1230, -325],
+        "flightWaypoints": [[1230, -323], [1244, -321], [1258, -323]],
+        "basket": [1258, -323],
+        "flightCorridor": [1228, -325, 1260, -319],
+        "shotShape": "long lowland right finish",
+        "nextTeeRoute": [[1258, -323], [1272, -323], [1272, -313], [1268, -313]],
+        "cameraIds": ["IA-DG-CAM-14-TEE", "IA-DG-CAM-14-BASKET"]
+      },
+      {
+        "objectId": "IA-DG-HOLE-15",
+        "number": 15,
+        "par": 3,
+        "tee": [1268, -313],
+        "sign": [1268, -311],
+        "flightWaypoints": [[1268, -313], [1253, -315], [1238, -313]],
+        "basket": [1238, -313],
+        "flightCorridor": [1236, -317, 1270, -311],
+        "shotShape": "reverse meadow bend",
+        "nextTeeRoute": [[1238, -313], [1228, -316], [1218, -316]],
+        "cameraIds": ["IA-DG-CAM-15-TEE", "IA-DG-CAM-15-BASKET"]
+      },
+      {
+        "objectId": "IA-DG-HOLE-16",
+        "number": 16,
+        "par": 3,
+        "tee": [1218, -316],
+        "sign": [1218, -314],
+        "flightWaypoints": [[1218, -316], [1204, -318], [1190, -316]],
+        "basket": [1190, -316],
+        "flightCorridor": [1188, -320, 1220, -314],
+        "shotShape": "rolling prairie turnover",
+        "nextTeeRoute": [[1190, -316], [1180, -316], [1170, -313]],
+        "cameraIds": ["IA-DG-CAM-16-TEE", "IA-DG-CAM-16-BASKET"]
+      },
+      {
+        "objectId": "IA-DG-HOLE-17",
+        "number": 17,
+        "par": 3,
+        "tee": [1170, -313],
+        "sign": [1170, -311],
+        "flightWaypoints": [[1170, -313], [1156, -315], [1142, -313]],
+        "basket": [1142, -313],
+        "flightCorridor": [1140, -317, 1172, -311],
+        "shotShape": "reverse ridge bend",
+        "nextTeeRoute": [[1142, -313], [1136, -313], [1136, -303], [1142, -303]],
+        "cameraIds": ["IA-DG-CAM-17-TEE", "IA-DG-CAM-17-BASKET"]
+      },
+      {
+        "objectId": "IA-DG-HOLE-18",
+        "number": 18,
+        "par": 4,
+        "tee": [1142, -303],
+        "sign": [1142, -305],
+        "flightWaypoints": [[1142, -303], [1156, -301], [1170, -303]],
+        "basket": [1170, -303],
+        "flightCorridor": [1140, -305, 1172, -299],
+        "shotShape": "final ridge S-line",
+        "nextTeeRoute": [[1170, -303], [1136, -290], [1135, -330], [1135, -390]],
+        "cameraIds": ["IA-DG-CAM-18-TEE", "IA-DG-CAM-18-BASKET"]
+      }
+    ],
+    "cameraCandidates": [
+      {"cameraId":"IA-DG-CAM-01-TEE","positionXZ":[1134,-388],"surfaceYOffset":4,"targetXZ":[1148,-387],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-01"]},
+      {"cameraId":"IA-DG-CAM-01-BASKET","positionXZ":[1162,-388],"surfaceYOffset":4,"targetXZ":[1156,-388],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-01"]},
+      {"cameraId":"IA-DG-CAM-02-TEE","positionXZ":[1168,-377],"surfaceYOffset":4,"targetXZ":[1152,-376],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-02"]},
+      {"cameraId":"IA-DG-CAM-02-BASKET","positionXZ":[1136,-377],"surfaceYOffset":4,"targetXZ":[1142,-377],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-02"]},
+      {"cameraId":"IA-DG-CAM-03-TEE","positionXZ":[1136,-368],"surfaceYOffset":4,"targetXZ":[1157,-370],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-03"]},
+      {"cameraId":"IA-DG-CAM-03-BASKET","positionXZ":[1178,-368],"surfaceYOffset":4,"targetXZ":[1172,-368],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-03"]},
+      {"cameraId":"IA-DG-CAM-04-TEE","positionXZ":[1181,-358],"surfaceYOffset":4,"targetXZ":[1160,-356],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-04"]},
+      {"cameraId":"IA-DG-CAM-04-BASKET","positionXZ":[1139,-358],"surfaceYOffset":4,"targetXZ":[1145,-358],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-04"]},
+      {"cameraId":"IA-DG-CAM-05-TEE","positionXZ":[1204,-388],"surfaceYOffset":4,"targetXZ":[1225,-386],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-05"]},
+      {"cameraId":"IA-DG-CAM-05-BASKET","positionXZ":[1246,-388],"surfaceYOffset":4,"targetXZ":[1240,-388],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-05"]},
+      {"cameraId":"IA-DG-CAM-06-TEE","positionXZ":[1271,-378],"surfaceYOffset":4,"targetXZ":[1250,-380],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-06"]},
+      {"cameraId":"IA-DG-CAM-06-BASKET","positionXZ":[1229,-378],"surfaceYOffset":4,"targetXZ":[1235,-378],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-06"]},
+      {"cameraId":"IA-DG-CAM-07-TEE","positionXZ":[1236,-369],"surfaceYOffset":4,"targetXZ":[1257,-371],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-07"]},
+      {"cameraId":"IA-DG-CAM-07-BASKET","positionXZ":[1274,-369],"surfaceYOffset":4,"targetXZ":[1272,-369],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-07"]},
+      {"cameraId":"IA-DG-CAM-08-TEE","positionXZ":[1231,-358],"surfaceYOffset":4,"targetXZ":[1210,-356],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-08"]},
+      {"cameraId":"IA-DG-CAM-08-BASKET","positionXZ":[1189,-358],"surfaceYOffset":4,"targetXZ":[1195,-358],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-08"]},
+      {"cameraId":"IA-DG-CAM-09-TEE","positionXZ":[1202,-348],"surfaceYOffset":4,"targetXZ":[1228,-346],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-09"]},
+      {"cameraId":"IA-DG-CAM-09-BASKET","positionXZ":[1254,-348],"surfaceYOffset":4,"targetXZ":[1248,-348],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-09"]},
+      {"cameraId":"IA-DG-CAM-10-TEE","positionXZ":[1224,-333],"surfaceYOffset":4,"targetXZ":[1204,-331],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-10"]},
+      {"cameraId":"IA-DG-CAM-10-BASKET","positionXZ":[1184,-333],"surfaceYOffset":4,"targetXZ":[1190,-333],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-10"]},
+      {"cameraId":"IA-DG-CAM-11-TEE","positionXZ":[1176,-333],"surfaceYOffset":4,"targetXZ":[1156,-335],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-11"]},
+      {"cameraId":"IA-DG-CAM-11-BASKET","positionXZ":[1136,-333],"surfaceYOffset":4,"targetXZ":[1142,-333],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-11"]},
+      {"cameraId":"IA-DG-CAM-12-TEE","positionXZ":[1136,-323],"surfaceYOffset":4,"targetXZ":[1156,-321],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-12"]},
+      {"cameraId":"IA-DG-CAM-12-BASKET","positionXZ":[1176,-323],"surfaceYOffset":4,"targetXZ":[1170,-323],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-12"]},
+      {"cameraId":"IA-DG-CAM-13-TEE","positionXZ":[1184,-323],"surfaceYOffset":4,"targetXZ":[1204,-325],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-13"]},
+      {"cameraId":"IA-DG-CAM-13-BASKET","positionXZ":[1224,-323],"surfaceYOffset":4,"targetXZ":[1218,-323],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-13"]},
+      {"cameraId":"IA-DG-CAM-14-TEE","positionXZ":[1224,-323],"surfaceYOffset":4,"targetXZ":[1244,-321],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-14"]},
+      {"cameraId":"IA-DG-CAM-14-BASKET","positionXZ":[1264,-323],"surfaceYOffset":4,"targetXZ":[1258,-323],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-14"]},
+      {"cameraId":"IA-DG-CAM-15-TEE","positionXZ":[1274,-313],"surfaceYOffset":4,"targetXZ":[1253,-315],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-15"]},
+      {"cameraId":"IA-DG-CAM-15-BASKET","positionXZ":[1232,-313],"surfaceYOffset":4,"targetXZ":[1238,-313],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-15"]},
+      {"cameraId":"IA-DG-CAM-16-TEE","positionXZ":[1224,-316],"surfaceYOffset":4,"targetXZ":[1204,-318],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-16"]},
+      {"cameraId":"IA-DG-CAM-16-BASKET","positionXZ":[1184,-316],"surfaceYOffset":4,"targetXZ":[1190,-316],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-16"]},
+      {"cameraId":"IA-DG-CAM-17-TEE","positionXZ":[1176,-313],"surfaceYOffset":4,"targetXZ":[1156,-315],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-17"]},
+      {"cameraId":"IA-DG-CAM-17-BASKET","positionXZ":[1136,-313],"surfaceYOffset":4,"targetXZ":[1142,-313],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-17"]},
+      {"cameraId":"IA-DG-CAM-18-TEE","positionXZ":[1136,-303],"surfaceYOffset":4,"targetXZ":[1156,-301],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-18"]},
+      {"cameraId":"IA-DG-CAM-18-BASKET","positionXZ":[1176,-303],"surfaceYOffset":4,"targetXZ":[1170,-303],"targetSurfaceYOffset":2,"objects":["IA-DG-HOLE-18"]}
+    ],
+    "requiredQuantitativeReportFields": [
+      "holeCount",
+      "totalPar",
+      "uniqueTeeCount",
+      "uniqueBasketCount",
+      "uniqueSignCount",
+      "cameraCount",
+      "flightCenterlineCells",
+      "flightBufferCells",
+      "nextTeeRouteCells",
+      "surfaceFluidIntersections",
+      "buildingIntersections",
+      "roadIntersections",
+      "sharedPathIntersections",
+      "utilityIntersections",
+      "pondIntersections",
+      "protectedBlockEntityIntersections",
+      "fairwayToFairwayOverlapCells",
+      "maximumFairwayElevationDelta",
+      "erosionTreatmentCells"
+    ]
+  },
+  "qa": {
+    "status": "PENDING",
+    "baselineSnapshotSurvey": {
+      "regionDirectory": "data/worldsnap-town-expansion-expanded-baseline-20260728T0405Z/region",
+      "snapshotSha256": "e612b1feabcf8bd81e427804e0c5cdccea5aac79ef543cadbf2b05d360de7a5a",
+      "snapshotRegionFiles": 24,
+      "discGolfResolvedWorldBounds": [1138, null, -290, 1274, null, -190],
+      "discGolfHoleCount": 18,
+      "discGolfTotalPar": 58,
+      "discGolfCameraCount": 36,
+      "discGolfFlightSurfaceColumnsWithFluid": 0,
+      "discGolfFlightVoidColumns": 0,
+      "discGolfNextTeeSurfaceColumnsWithFluid": 0,
+      "discGolfNextTeeVoidColumns": 0,
+      "workerLoopCenterlineCells": 1304,
+      "workerLoopThreeWideSurfaceCells": 4145,
+      "workerLoopVoidColumns": 0,
+      "workerLoopWaterColumns": 42,
+      "workerLoopWaterColumnsAssignedToBoardwalks": 42,
+      "workerLoopUnassignedWaterColumns": 0,
+      "note": "This is a read-only baseline surface census. Protected full-volume, modeled-cell, road, utility, hall, pond, cross-scope and final terrain collision gates remain compiler responsibilities."
+    },
+    "requiredPasses": [
+      "JSON schema and unique ID validation",
+      "snapshot surface, fluid and void census",
+      "protected block-entity census through all modeled y ranges",
+      "compiler model collision census",
+      "pond polygon containment and concavity validation",
+      "closed loop graph and repeated-edge validation",
+      "two-direction normal-walk loop test",
+      "18-hole tee/basket/sign/count/par validation",
+      "flight and next-tee corridor conflict validation",
+      "36-camera manifest validation",
+      "first-pass visual review",
+      "defect correction",
+      "matched second-pass visual review",
+      "database and map import verification"
+    ],
+    "acceptance": {
+      "missingSnapshotColumns": 0,
+      "protectedBlockEntityIntersections": 0,
+      "surfaceLavaIntersections": 0,
+      "discGolfConflictIntersections": 0,
+      "discGolfCameraCount": 36,
+      "closedLoop": true,
+      "repeatedDirectedEdges": 0,
+      "pondConcaveBaysMinimum": 3,
+      "unblendedVerticalTerrainFaces": 0,
+      "publicationStatusOnPass": "PENDING_SECOND_PASS_VISUAL_QA"
+    }
+  }
+}

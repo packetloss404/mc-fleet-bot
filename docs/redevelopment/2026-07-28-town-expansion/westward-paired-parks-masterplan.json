@@ -1,0 +1,575 @@
+{
+  "schemaVersion": 1,
+  "status": "SURVEYED_MASTERPLAN_NOT_A_LIVE_RELEASE",
+  "generatedAtUtc": "2026-07-28T03:40:28Z",
+  "coordinateConvention": {
+    "north": "-Z",
+    "west": "-X",
+    "bounds": "inclusive",
+    "standingY": "the block-space occupied by a walking player; support is standingY - 1"
+  },
+  "evidence": {
+    "snapshot": {
+      "path": "data/worldsnap-town-expansion-complete-baseline-20260728T0315Z/region",
+      "hashAlgorithm": "sha256(filename + NUL + bytes + NUL, filenames sorted)",
+      "sha256": "0bb1faa61ca69724816afe682080e3a517fa974ec1300c3651e399ea03505501",
+      "regionFileCount": 9,
+      "mode": "read-only"
+    },
+    "database": {
+      "path": "data/world-map.db",
+      "sha256AtSurvey": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+      "mode": "read-only"
+    },
+    "coordinatedPlans": [
+      "docs/redevelopment/2026-07-28-town-expansion/westlight-waterfront-coordinate-schedule.json",
+      "docs/redevelopment/2026-07-28-town-expansion/westlight-island-and-russian-pavilion-change-control.md",
+      "docs/redevelopment/2026-07-28-town-expansion/westward-entertainment-housing-workforce-change-control.md"
+    ]
+  },
+  "sourceResearch": [
+    {
+      "organization": "Adventureland Park",
+      "title": "Official 2023 park map",
+      "url": "https://www.adventurelandpark.com/content/dam/adp/files/pdfs/2023%20Map%20compress.pdf",
+      "designTranslation": "Use a legible gate street, clustered family/thrill districts, distributed food, a park-circulation ride, and a separately serviced water-park zone."
+    },
+    {
+      "organization": "Adventureland Park",
+      "title": "Adventureland rides",
+      "url": "https://www.adventurelandpark.com/discover-the-park/adventureland-rides/",
+      "designTranslation": "Balance family, classic, indoor and major-thrill attractions; do not make a park that is only one coaster."
+    },
+    {
+      "organization": "Adventureland Park",
+      "title": "Adventure Bay",
+      "url": "https://www.adventurelandpark.com/adventure-bay/",
+      "designTranslation": "Provide wave, river, slide and young-family water experiences as distinct operating zones."
+    },
+    {
+      "organization": "Worlds of Fun",
+      "title": "Official 2026 Worlds of Fun and Oceans of Fun map",
+      "url": "https://worldsoffun.enchantedparks.com/wp-content/uploads/sites/12/2026/03/final-wof-reg-season-map.pdf",
+      "designTranslation": "Use paired but independently operable gates, themed districts, a circulation loop, water-park bathhouses, first aid, guest services and distributed support."
+    },
+    {
+      "organization": "Worlds of Fun",
+      "title": "Official park overview",
+      "url": "https://worldsoffun.enchantedparks.com/",
+      "designTranslation": "Create several original districts and a complete day-to-night mix rather than copying branded rides or iconography."
+    },
+    {
+      "organization": "United States Access Board",
+      "title": "Chapter 10: Amusement Rides",
+      "url": "https://www.access-board.gov/aba/guides/chapter-10-amusement-rides/",
+      "designTranslation": "Every load/unload area and queue receives a continuous accessible route, turning space and signed access; the primary path target is no steeper than 1:12."
+    },
+    {
+      "organization": "Centers for Disease Control and Prevention",
+      "title": "2024 Model Aquatic Health Code",
+      "url": "https://www.cdc.gov/model-aquatic-health-code/media/pdfs/2024/11/5th-Ed-MAHC-Code-508.pdf",
+      "designTranslation": "Every active pool is a separately containable shell with a represented plant room, isolation, barriers, inspection access, depth marking and night lighting."
+    },
+    {
+      "organization": "United States Consumer Product Safety Commission",
+      "title": "Amusement rides and adventure-attraction voluntary standards",
+      "url": "https://www.cpsc.gov/Regulations-Laws--Standards/Voluntary-Standards/Amusement-Rides-Trampoline-Parks-and-Adventure-Attractions",
+      "designTranslation": "Treat track, supports, station, evacuation walk and maintenance access as one engineered object; decorative track alone is not acceptable."
+    }
+  ],
+  "surveyedParcels": [
+    {
+      "id": "NW-DISTRICT",
+      "name": "Northwind Water Gardens",
+      "bounds": {
+        "minX": -672,
+        "maxX": -520,
+        "minY": 38,
+        "maxY": 96,
+        "minZ": -720,
+        "maxZ": -674
+      },
+      "sampleStep": 2,
+      "sampledColumns": 1848,
+      "waterAtY62Percent": 54.4,
+      "supportY": {
+        "min": 38,
+        "q10": 46,
+        "q25": 48,
+        "median": 61,
+        "q75": 62,
+        "q90": 63,
+        "max": 65
+      },
+      "designResponse": "Pile-supported public deck at support Y64, with every active aquatic venue in its own exact-state contained shell. Existing open water remains visual water, not an unbounded swimming venue."
+    },
+    {
+      "id": "RC-DISTRICT",
+      "name": "Ravencrest Adventure Grounds",
+      "bounds": {
+        "minX": -672,
+        "maxX": -520,
+        "minY": 43,
+        "maxY": 124,
+        "minZ": -650,
+        "maxZ": -520
+      },
+      "sampleStep": 2,
+      "sampledColumns": 5082,
+      "waterAtY62Percent": 5.0,
+      "supportY": {
+        "min": 43,
+        "q10": 65,
+        "q25": 70,
+        "median": 75,
+        "q75": 82,
+        "q90": 93,
+        "max": 115
+      },
+      "designResponse": "Use the ridge as the coaster and landmark terrain; place the family district on the gentler east terrace and connect Y68, Y76 and Y84 terraces with long slab ramps and switchbacks."
+    },
+    {
+      "id": "AX-DISTRICT",
+      "name": "Adventure Exchange shared arrival",
+      "bounds": {
+        "minX": -610,
+        "maxX": -560,
+        "minY": 38,
+        "maxY": 82,
+        "minZ": -673,
+        "maxZ": -651
+      },
+      "sampleStep": 2,
+      "sampledColumns": 312,
+      "waterAtY62Percent": 18.3,
+      "supportY": {
+        "min": 38,
+        "q10": 57,
+        "q25": 63,
+        "median": 65,
+        "q75": 67,
+        "q90": 69,
+        "max": 70
+      },
+      "designResponse": "Build a pile-and-causeway arrival floor at support Y67, standing Y68, with a raised pedestrian table across the parkway."
+    },
+    {
+      "id": "HL-DISTRICT",
+      "name": "Harborlight Courts lakeside housing",
+      "bounds": {
+        "minX": -518,
+        "maxX": -448,
+        "minY": 58,
+        "maxY": 96,
+        "minZ": -548,
+        "maxZ": -470
+      },
+      "sampleStep": 2,
+      "sampledColumns": 1440,
+      "waterAtY62Percent": 0.0,
+      "supportY": {
+        "min": 58,
+        "q10": 66,
+        "q25": 68,
+        "median": 70,
+        "q75": 73,
+        "q90": 74,
+        "max": 77
+      },
+      "blockEntityCount": 0,
+      "designResponse": "Medium-density gabled court buildings with public lake frontage, planted thresholds and attached four- or six-bay shared garage wings."
+    }
+  ],
+  "protectedSourceState": [
+    {
+      "id": "RC-EMBER-RUIN-CORE",
+      "name": "Surface ruined-portal fabric and empty chest",
+      "observedFabricBounds": {
+        "minX": -632,
+        "maxX": -610,
+        "minY": 81,
+        "maxY": 98,
+        "minZ": -621,
+        "maxZ": -599
+      },
+      "noTargetEnvelope": {
+        "minX": -637,
+        "maxX": -605,
+        "minY": 77,
+        "maxY": 102,
+        "minZ": -626,
+        "maxZ": -594
+      },
+      "blockEntity": {
+        "id": "minecraft:chest",
+        "x": -620,
+        "y": 93,
+        "z": -612,
+        "observedItemStacks": 0
+      },
+      "fabricCensus": {
+        "netherrack": 549,
+        "magmaBlock": 39,
+        "obsidian": 14,
+        "cryingObsidian": 1,
+        "goldBlock": 1,
+        "stoneBrickFamily": 36,
+        "chest": 1
+      },
+      "rule": "Preserve every source cell and the chest. The park may add only a freestanding overlook path outside the no-target envelope."
+    },
+    {
+      "id": "NW-DEEP-DUNGEON",
+      "blockEntities": [
+        {"id": "minecraft:chest", "x": -617, "y": -45, "z": -708},
+        {"id": "minecraft:chest", "x": -617, "y": -45, "z": -712},
+        {"id": "minecraft:mob_spawner", "x": -617, "y": -45, "z": -710}
+      ],
+      "rule": "No water-park pile, utility or excavation may extend below Y38; these cells remain untouched."
+    },
+    {
+      "id": "RC-DEEP-DUNGEON",
+      "blockEntities": [
+        {"id": "minecraft:mob_spawner", "x": -559, "y": -35, "z": -591},
+        {"id": "minecraft:chest", "x": -558, "y": -35, "z": -589}
+      ],
+      "rule": "No dry-park excavation may extend below Y55 in this quadrant; these cells remain untouched."
+    },
+    {
+      "id": "CRATER-WEST-DEEP-CHEST",
+      "blockEntities": [
+        {"id": "minecraft:chest", "x": -494, "y": 39, "z": -555}
+      ],
+      "rule": "The crater-lake package must preserve this subsurface cell and prove that basin containment has no route to it."
+    }
+  ],
+  "approachExtension": {
+    "id": "WL-PARKWAY-EXTENSION",
+    "name": "North Shore Parkway and Causeway",
+    "tieIn": {
+      "point": [-224, 70, -496],
+      "existingObject": "APPROACH-ROAD:PRIMARY",
+      "rule": "The only intentional existing-feature intersection is the surveyed tie-in apron."
+    },
+    "centerline": [
+      {"station": "0+000", "x": -224, "standingY": 70, "z": -496, "type": "existing-road-tie-in"},
+      {"station": "0+025", "x": -248, "standingY": 71, "z": -500, "type": "land-transition"},
+      {"station": "0+187", "x": -248, "standingY": 68, "z": -662, "type": "east-causeway-turn"},
+      {"station": "0+383", "x": -444, "standingY": 68, "z": -662, "type": "north-stadium-causeway"},
+      {"station": "0+439", "x": -500, "standingY": 68, "z": -662, "type": "north-crater-greenbelt"},
+      {"station": "0+499", "x": -560, "standingY": 68, "z": -662, "type": "arrival-approach"},
+      {"station": "0+549", "x": -610, "standingY": 70, "z": -662, "type": "adventure-exchange-terminus"}
+    ],
+    "crossSection": {
+      "clearCarriagewayBlocks": 11,
+      "curbBlocksEachSide": 1,
+      "southOrEastGreenwayClearBlocks": 5,
+      "landscapeSeparationBlocks": 2,
+      "maximumTotalHalfWidthFromCenterline": 10,
+      "bridgeSupportY": 67,
+      "bridgeStandingY": 68
+    },
+    "engineering": [
+      "Use pile bents and explicit bridge spans where the baseline contains water at Y62; do not mass-fill the lagoon.",
+      "Keep the full corridor south of Z=-652 along the westbound leg so the stadium boundary at Z=-640 remains untouched.",
+      "Provide a five-block clear emergency/greenway route independent of the carriageway.",
+      "Grade transitions no faster than one full block per twelve horizontal blocks on the primary accessible route."
+    ]
+  },
+  "sharedArrival": {
+    "id": "AX-01",
+    "name": "Adventure Exchange",
+    "bounds": {"minX": -610, "maxX": -560, "minY": 63, "maxY": 82, "minZ": -673, "maxZ": -651},
+    "roadCenterZ": -662,
+    "raisedCrossing": {"minX": -602, "maxX": -568, "minZ": -667, "maxZ": -657, "standingY": 68},
+    "waterParkGate": {"minX": -604, "maxX": -566, "minZ": -678, "maxZ": -674, "faces": "south"},
+    "dryParkGate": {"minX": -604, "maxX": -566, "minZ": -650, "maxZ": -646, "faces": "north"},
+    "requiredRooms": [
+      "two independent ticket/security halls",
+      "shared orientation gallery",
+      "guest services and accessibility desk at each gate",
+      "first aid",
+      "rentals and lockers",
+      "family care",
+      "staff control room"
+    ]
+  },
+  "waterPark": {
+    "id": "NW-DISTRICT",
+    "name": "Northwind Water Gardens",
+    "identity": "An original wind-and-water garden on pile decks; it is not a copy of Adventure Bay or Oceans of Fun.",
+    "publicDeck": {"supportY": 64, "standingY": 65},
+    "activeWaterTopY": 64,
+    "zones": [
+      {
+        "id": "NW-WAVE",
+        "name": "Breaker Basin",
+        "bounds": {"minX": -669, "maxX": -638, "minY": 61, "maxY": 70, "minZ": -710, "maxZ": -682},
+        "program": "contained wave-pool representation, beach ramp, lifeguard overlooks and independent plant isolation"
+      },
+      {
+        "id": "NW-FAMILY",
+        "name": "Kestrel Splashworks",
+        "bounds": {"minX": -669, "maxX": -638, "minY": 61, "maxY": 76, "minZ": -678, "maxZ": -674},
+        "program": "young-family splash court with direct family-care route"
+      },
+      {
+        "id": "NW-RIVER",
+        "name": "Tidelace River",
+        "bounds": {"minX": -634, "maxX": -594, "minY": 61, "maxY": 70, "minZ": -713, "maxZ": -682},
+        "program": "closed lazy-river loop, two accessible entries, bridge sightlines and a continuous dry perimeter walk"
+      },
+      {
+        "id": "NW-SLIDES",
+        "name": "Rainspine Slides",
+        "bounds": {"minX": -590, "maxX": -558, "minY": 61, "maxY": 92, "minZ": -713, "maxZ": -681},
+        "program": "one supported launch tower, three legible runouts, queue, exit and independent evacuation stair"
+      },
+      {
+        "id": "NW-QUIET",
+        "name": "Bluewater Coves",
+        "bounds": {"minX": -554, "maxX": -522, "minY": 63, "maxY": 76, "minZ": -696, "maxZ": -674},
+        "program": "quiet pool, shaded cabanas, sensory-rest room and open-water overlook"
+      },
+      {
+        "id": "NW-PLANT",
+        "name": "Northwind water plant and service court",
+        "bounds": {"minX": -554, "maxX": -522, "minY": 58, "maxY": 72, "minZ": -718, "maxZ": -700},
+        "program": "represented pumps, filtration, chemical/storage separation, maintenance shop and emergency isolation"
+      },
+      {
+        "id": "NW-BATH",
+        "name": "Northwind bathhouse and gate services",
+        "bounds": {"minX": -634, "maxX": -594, "minY": 64, "maxY": 78, "minZ": -680, "maxZ": -674},
+        "program": "changing, universal changing, lockers, rentals, first aid, guest services and height/admission check"
+      }
+    ],
+    "routes": {
+      "guestLoopClearWidth": 7,
+      "poolPerimeterClearWidth": 5,
+      "serviceRoute": {"minX": -526, "maxX": -520, "minZ": -720, "maxZ": -674},
+      "emergencyReturn": {"minZ": -720, "maxZ": -714, "minX": -672, "maxX": -520}
+    },
+    "containmentRules": [
+      "Active water must never share a source cell or open face with the natural Y62 water.",
+      "Every venue has an exact shell census, independent drain/isolation representation and rollback.",
+      "All public water edges have barriers or deliberate supervised entries; depth and no-diving markers are required.",
+      "Lighting must make each basin bottom and every exit visible at night."
+    ]
+  },
+  "dryPark": {
+    "id": "RC-DISTRICT",
+    "name": "Ravencrest Adventure Grounds",
+    "identity": "An original ridge-and-foundry park using the terrain as its organizing device.",
+    "terraces": [
+      {"name": "Gate Terrace", "standingY": 68},
+      {"name": "Midway Terrace", "standingY": 76},
+      {"name": "Ridge Terrace", "standingY": 84}
+    ],
+    "zones": [
+      {
+        "id": "RC-GATE",
+        "name": "Lantern Gate and Founders Avenue",
+        "bounds": {"minX": -608, "maxX": -566, "minY": 67, "maxY": 84, "minZ": -650, "maxZ": -630},
+        "program": "entry street, ticket/security, guest services, first aid, rentals, arcade and food"
+      },
+      {
+        "id": "RC-COASTER",
+        "name": "Ridge Runner",
+        "bounds": {"minX": -670, "maxX": -640, "minY": 64, "maxY": 118, "minZ": -632, "maxZ": -540},
+        "station": {"minX": -668, "maxX": -646, "minY": 74, "maxY": 86, "minZ": -608, "maxZ": -584},
+        "program": "terrain-following family-thrill coaster with lift, crest, drops, supported turns, station, queue, maintenance spur and full evacuation walk"
+      },
+      {
+        "id": "RC-EMBER",
+        "name": "Ember Gate Ruin Garden",
+        "bounds": {"minX": -637, "maxX": -605, "minY": 77, "maxY": 102, "minZ": -626, "maxZ": -594},
+        "program": "non-invasive overlook around the protected ruined portal; no source cell in this envelope may be targeted"
+      },
+      {
+        "id": "RC-MIDWAY",
+        "name": "Lantern Midway",
+        "bounds": {"minX": -604, "maxX": -566, "minY": 67, "maxY": 94, "minZ": -628, "maxZ": -570},
+        "program": "three distinct flat rides, games, shade, food and a night-light axis"
+      },
+      {
+        "id": "RC-FAMILY",
+        "name": "Rookery Family Grove",
+        "bounds": {"minX": -562, "maxX": -524, "minY": 64, "maxY": 90, "minZ": -626, "maxZ": -566},
+        "program": "carousel, small vehicle circuit, play garden, family care and quiet seating"
+      },
+      {
+        "id": "RC-DARK",
+        "name": "Foundry Hollow",
+        "bounds": {"minX": -635, "maxX": -606, "minY": 70, "maxY": 98, "minZ": -580, "maxZ": -542},
+        "program": "story-driven indoor mine/foundry dark ride with level load platform and independent emergency exit"
+      },
+      {
+        "id": "RC-SIGNAL",
+        "name": "Signal Drop",
+        "bounds": {"minX": -612, "maxX": -596, "minY": 82, "maxY": 124, "minZ": -540, "maxZ": -524},
+        "program": "observation/drop landmark on the natural high point, with a separate protected access and evacuation core"
+      },
+      {
+        "id": "RC-EVENT",
+        "name": "Meadow Court",
+        "bounds": {"minX": -592, "maxX": -548, "minY": 68, "maxY": 92, "minZ": -558, "maxZ": -524},
+        "program": "event lawn, covered stage, food hall, restrooms and weather shelter"
+      },
+      {
+        "id": "RC-MAINT",
+        "name": "Ravencrest maintenance compound",
+        "bounds": {"minX": -670, "maxX": -646, "minY": 62, "maxY": 86, "minZ": -538, "maxZ": -522},
+        "program": "coaster shop, stores, staff room, service gate and refuse/loading court"
+      }
+    ],
+    "routes": {
+      "primaryGuestLoop": [
+        [-587, 68, -630],
+        [-548, 72, -610],
+        [-540, 74, -570],
+        [-570, 76, -540],
+        [-625, 84, -545],
+        [-655, 84, -590],
+        [-640, 80, -625],
+        [-587, 68, -630]
+      ],
+      "clearWidth": 7,
+      "maximumPrimarySlope": "1:12 using slab ramps and landings",
+      "servicePerimeterClearWidth": 5,
+      "serviceRule": "The outer service loop may cross the guest system only at the controlled Gate Terrace crossing."
+    }
+  },
+  "greenbeltIntegration": {
+    "id": "WL-CRATER-WEST-GREEN-LINK",
+    "bounds": {"minX": -519, "maxX": -492, "minY": 56, "maxY": 86, "minZ": -638, "maxZ": -520},
+    "links": [
+      {"from": [-520, 72, -580], "to": [-492, 68, -580], "name": "Ravencrest-to-crater west promenade"},
+      {"from": [-500, 68, -650], "to": [-500, 72, -620], "name": "parkway-to-crater north greenway"},
+      {"from": [-492, 68, -548], "to": [-500, 70, -548], "name": "crater loop-to-Harborlight Courts"}
+    ],
+    "rules": [
+      "The public crater loop stays outside all ticketed park boundaries.",
+      "The parkway crosses the greenbelt north of the crater and does not turn the lake into a traffic island.",
+      "No lake package may target the protected chest at (-494,39,-555) or open a subsurface water path to it."
+    ]
+  },
+  "lakesideHousing": {
+    "id": "HL-DISTRICT",
+    "name": "Harborlight Courts",
+    "style": "original medium-density coastal-gabled neighborhood with light masonry, timber, slate/copper roofs, porches, hedges and public waterfront access",
+    "parcel": {"minX": -518, "maxX": -448, "minY": 58, "maxY": 96, "minZ": -548, "maxZ": -470},
+    "publicLakeWalk": {"minX": -518, "maxX": -448, "minZ": -555, "maxZ": -549, "clearWidth": 7},
+    "street": {"name": "Bayberry Lane", "minX": -515, "maxX": -451, "centerZ": -510, "clearCarriagewayWidth": 7},
+    "projects": [
+      {
+        "id": "HL-A",
+        "name": "Sea Hedge Court",
+        "bounds": {"minX": -516, "maxX": -487, "minY": 66, "maxY": 94, "minZ": -547, "maxZ": -514},
+        "units": 8,
+        "floors": 3,
+        "centralGreen": {"minX": -505, "maxX": -494, "minZ": -539, "maxZ": -526},
+        "attachedGarage": {"minX": -516, "maxX": -503, "minZ": -521, "maxZ": -514, "clearBays": 4}
+      },
+      {
+        "id": "HL-B",
+        "name": "Bayberry Court",
+        "bounds": {"minX": -482, "maxX": -450, "minY": 66, "maxY": 94, "minZ": -547, "maxZ": -514},
+        "units": 8,
+        "floors": 3,
+        "centralGreen": {"minX": -472, "maxX": -459, "minZ": -539, "maxZ": -526},
+        "attachedGarage": {"minX": -463, "maxX": -450, "minZ": -521, "maxZ": -514, "clearBays": 4}
+      },
+      {
+        "id": "HL-C",
+        "name": "Dune House Commons",
+        "bounds": {"minX": -516, "maxX": -450, "minY": 66, "maxY": 96, "minZ": -506, "maxZ": -472},
+        "units": 14,
+        "floors": 3,
+        "centralGreen": {"minX": -491, "maxX": -474, "minZ": -496, "maxZ": -480},
+        "attachedGarage": {"minX": -516, "maxX": -497, "minZ": -506, "maxZ": -499, "clearBays": 6}
+      }
+    ],
+    "rules": [
+      "Every garage is physically attached to its parent building.",
+      "The large south court receives six clear bays; the two smaller court buildings receive four clear bays each.",
+      "No private parcel or garage interrupts the continuous public lake walk.",
+      "Garage doors address Bayberry Lane or a service mews, never the lake."
+    ]
+  },
+  "crossPackageCollisionAudit": {
+    "databaseMethod": "inclusive AABB intersection against every data/world-map.db world_features row",
+    "results": [
+      {"scope": "Northwind Water Gardens", "intersections": 0},
+      {"scope": "Ravencrest Adventure Grounds", "intersections": 0},
+      {"scope": "Adventure Exchange", "intersections": 0},
+      {"scope": "crater west green link", "intersections": 0},
+      {"scope": "Harborlight Courts", "intersections": 0},
+      {"scope": "new westbound parkway after the tie-in", "intersections": 0}
+    ],
+    "intentionalTieIn": [
+      "approach-road:DISTRICT",
+      "APPROACH-ROAD:PRIMARY"
+    ],
+    "separations": [
+      "The westbound road outer envelope ends at Z=-652; the protected stadium district begins at Z=-640.",
+      "The park parcels end at X=-520; the planned crater west green link occupies X=-519..-492; the measured crater begins at X=-491.",
+      "The Westlight amusement-pier planning envelope is south/east at X=-428..-274, Z=-445..-318 and does not intersect any park or housing parcel."
+    ]
+  },
+  "databaseContract": {
+    "projectIds": [
+      "westlight-parkway",
+      "northwind-water-gardens",
+      "ravencrest-adventure-grounds",
+      "harborlight-courts"
+    ],
+    "requiredKinds": [
+      "district",
+      "road",
+      "route",
+      "building",
+      "room",
+      "custom",
+      "media"
+    ],
+    "requiredRelations": [
+      "every attraction to its district",
+      "every queue/load/service/evacuation route to its attraction",
+      "every active water shell to its plant/isolation record",
+      "every dwelling room and attached garage to its parent building",
+      "every screenshot and floor plan to the exact object it depicts"
+    ]
+  },
+  "releaseGates": [
+    "Fresh same-moment immutable snapshot and hash.",
+    "Exact-cell forward and reverse packages; no old forward file replay.",
+    "Zero unreviewed database-feature, block-entity, fluid-neighbor or cross-package targets.",
+    "Entity/player clearance and a fixed coordinated transaction order.",
+    "Contained-water simulation proving no leak to natural water, caves or protected block entities.",
+    "Coaster/slide support, clearance, queue, evacuation and service-route independent QA.",
+    "Bidirectional normal-walk QA for every gate, primary loop, attraction load area, greenway, housing street and lake path.",
+    "Post snapshot, exact-state census, matched maps/captures and database import integrity.",
+    "Sites and Box publication only after the physical and documentary release is accepted."
+  ],
+  "mediaContract": {
+    "maps": [
+      "westward regional figure-ground",
+      "existing grade/water/protected-object survey",
+      "North Shore Parkway station and bridge plan",
+      "paired-gate and arrival plan",
+      "Northwind Water Gardens plan and containment diagram",
+      "Ravencrest Adventure Grounds plan and ride-clearance diagram",
+      "crater-greenbelt and Harborlight Courts public-access plan"
+    ],
+    "exactCaptures": [
+      "both gates from the same Adventure Exchange camera",
+      "every attraction exterior, queue/load area and service/evacuation condition",
+      "each active water shell, barrier and plant room",
+      "Ridge Runner station, lift, crest, turns, supports and evacuation walk",
+      "protected Ember Gate ruin from the non-invasive overlook",
+      "parkway causeway and stadium/crater separation",
+      "each Harborlight court, central green, attached garage and public lake walk"
+    ]
+  }
+}

@@ -1,0 +1,544 @@
+{
+  "schemaVersion": 1,
+  "artifactId": "TE-NE-DATACENTER-C01-WAREHOUSE-ENGINEERING-01",
+  "generatedAtUtc": "2026-07-28T04:12:12Z",
+  "state": "DESIGN_REVIEW_ONLY_NO_LIVE_MUTATION",
+  "coordinateConvention": "Inclusive Minecraft integer bounds [minX,minY,minZ,maxX,maxY,maxZ]",
+  "securityBoundary": {
+    "rule": "Use only public design principles. Do not reproduce a real data center, continuity site, or underground facility's non-public layout, protection weaknesses, access sequence, utility topology, or emergency procedures.",
+    "fictionalNaming": "DM numbers are fictional campus identifiers and do not claim to describe a real Microsoft site.",
+    "aviationStatus": "The strip and helipad are scenic Minecraft representations. They are not represented as certified or operational aviation facilities."
+  },
+  "source": {
+    "snapshot": {
+      "path": "data/worldsnap-town-expansion-complete-baseline-20260728T0315Z/region",
+      "sha256": "0bb1faa61ca69724816afe682080e3a517fa974ec1300c3651e399ea03505501",
+      "regionFileCount": 9,
+      "bytes": 59287653,
+      "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+    },
+    "database": {
+      "path": "data/world-map.db",
+      "mode": "read-only",
+      "sha256": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+      "bytes": 2547712,
+      "features": 875,
+      "scans": 23,
+      "observations": 1881
+    }
+  },
+  "researchSources": [
+    {
+      "authority": "Microsoft",
+      "title": "Virtual datacenter tour",
+      "url": "https://datacenters.microsoft.com/globe/explore/datacenter/",
+      "designUse": "publicly described campus sequence, server lifecycle, sustainability, monitored entry, and operational support only"
+    },
+    {
+      "authority": "Microsoft",
+      "title": "Datacenter security overview",
+      "url": "https://learn.microsoft.com/en-us/compliance/assurance/assurance-datacenter-security",
+      "designUse": "fictional defense-in-depth zoning, NOC monitoring, environmental sensing, continuity planning, and least-privilege operations without copying a real site"
+    },
+    {
+      "authority": "U.S. Department of Energy Federal Energy Management Program",
+      "title": "Best Practices Guide for Energy-Efficient Data Center Design",
+      "url": "https://www.energy.gov/sites/default/files/2024-07/best-practice-guide-data-center-design.pdf",
+      "designUse": "hot-aisle/cold-aisle separation, airflow management, future-load planning, electrical and cooling efficiency, heat recovery, PUE and WUE measurement"
+    },
+    {
+      "authority": "National Institute of Standards and Technology",
+      "title": "SP 800-53 Rev. 5 — Security and Privacy Controls",
+      "url": "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final",
+      "designUse": "high-level physical and environmental control families, contingency planning, logging, maintenance, and least privilege"
+    },
+    {
+      "authority": "Federal Emergency Management Agency",
+      "title": "Continuity Guidance Circular, 2024 update",
+      "url": "https://www.fema.gov/sites/default/files/documents/fema_continuity-guidance-circular_082024.pdf",
+      "designUse": "alternate-facility communications, geographic and media diversity, reconstitution priorities, training, tests, and exercises"
+    },
+    {
+      "authority": "U.S. Occupational Safety and Health Administration",
+      "title": "1910.36 — Design and construction requirements for exit routes",
+      "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.36",
+      "designUse": "permanent remote exits, protected discharge, minimum clear route principles, and outward-swinging doors for larger occupant loads"
+    },
+    {
+      "authority": "Federal Aviation Administration",
+      "title": "AC 150/5390-2D — Heliport Design",
+      "url": "https://www.faa.gov/regulations_policies/advisory_circulars/index.cfm/go/document.information/documentNumber/150_5390-2D",
+      "designUse": "reserve a distinct TLOF/FATO-inspired scenic pad, clear approaches, and a design-helicopter verification gate"
+    },
+    {
+      "authority": "Federal Aviation Administration",
+      "title": "AC 150/5300-13B Change 1 — Airport Design",
+      "url": "https://www.faa.gov/airports/resources/advisory_circulars/index.cfm/go/document.current/documentNumber/150_5300-",
+      "designUse": "separate runway, safety area, object-free area, taxi access, drainage, and aircraft-specific performance review"
+    },
+    {
+      "authority": "U.S. Army Corps of Engineers",
+      "title": "EM 1110-2-2102 — Waterstops and Other Preformed Joint Materials",
+      "url": "https://www.publications.usace.army.mil/portals/76/publications/engineermanuals/em_1110-2-2102.pdf",
+      "designUse": "continuous joint seals, compartment joints, waterstop selection, and construction-joint inspection for the C01 shell and warehouse pods"
+    },
+    {
+      "authority": "Federal Highway Administration",
+      "title": "Technical Manual for Design and Construction of Road Tunnels — Civil Elements",
+      "url": "https://www.fhwa.dot.gov/bridge/Tunnel/pubs/nhi09010/tunnel_manual.pdf",
+      "designUse": "geotechnical baseline, groundwater control, cut-and-cover sequencing, risk register, instrumentation, lining, and rehabilitation principles"
+    },
+    {
+      "authority": "National Aeronautics and Space Administration",
+      "title": "Commissioning Guide for New and Existing Buildings",
+      "url": "https://www.wbdg.org/nasa/guides-handbooks/commissioning-guide",
+      "designUse": "commissioning begins in planning and continues through design, construction, occupancy, operations, recommissioning, and ongoing verification"
+    }
+  ],
+  "worldSurvey": {
+    "northeastSearch": {
+      "bounds": [305, -64, -520, 500, 136, 60],
+      "surfaceCandidateA": {
+        "bounds": [305, 0, -315, 500, 100, 60],
+        "columns": 73696,
+        "topWaterColumns": 6580,
+        "topLavaColumns": 43,
+        "dryRatio": 0.910131,
+        "groundElevation": {"min": 24, "p10": 62, "median": 68, "p90": 79, "max": 97}
+      },
+      "decision": "Use the dry north plateau around z=-256..-177 for occupied halls. Do not treat the water band around z=-160..-113 as buildable land."
+    },
+    "dataCenterOuterEnvelope": {
+      "bounds": [304, 30, -304, 500, 112, -145],
+      "cells": 2616160,
+      "chunksRead": 130,
+      "chunksMissing": 0,
+      "fullWaterSources": 17360,
+      "otherWaterStates": 324,
+      "fullLavaSources": 80,
+      "otherLavaStates": 37,
+      "bubbleColumns": 1,
+      "gravel": 14055,
+      "sand": 2007,
+      "blockEntities": [
+        {"id": "minecraft:mob_spawner", "position": [370, 33, -158], "preserveAs": "cave easement"},
+        {"id": "minecraft:mob_spawner", "position": [382, 33, -276], "preserveAs": "dungeon easement"},
+        {"id": "minecraft:chest", "position": [384, 33, -275], "preserveAs": "dungeon easement and inventory-NBT evidence"},
+        {"id": "minecraft:beehive", "position": [370, 66, -158], "preserveAs": "wet-buffer habitat"},
+        {"id": "minecraft:beehive", "position": [446, 76, -239], "containedBees": 0, "preserveAs": "reviewed biodiversity migration"},
+        {"id": "minecraft:beehive", "position": [457, 76, -246], "containedBees": 2, "preserveAs": "NBT-preserving biodiversity migration"}
+      ],
+      "databaseCollision": {
+        "detailedActiveFeatures": 0,
+        "broadOrRetiredContext": ["mainstreet-america:F01 retired white-picket fence at the west boundary"],
+        "knownTunnelIntersections": 0
+      },
+      "interpretation": "The outer envelope is not a demolition box. It contains natural water, lava, caves, a dungeon and habitat. Only the individually censused dry prisms below may advance."
+    },
+    "dryHallPlateau": {
+      "bounds": [336, 70, -256, 471, 100, -177],
+      "chunksRead": 45,
+      "chunksMissing": 0,
+      "waterOrLavaStates": 0,
+      "blockEntities": 2,
+      "blockEntityPositions": [[446, 76, -239], [457, 76, -246]]
+    },
+    "c01Source": {
+      "transactionBounds": [90, 44, 70, 300, 136, 235],
+      "cells": 3257418,
+      "chunksRead": 154,
+      "chunksMissing": 0,
+      "fullWaterSources": 4326,
+      "otherWaterStates": 60,
+      "fullLavaSources": 56,
+      "gravityCells": {"sand": 1343, "gravel": 999},
+      "blockEntities": {
+        "count": 1896,
+        "inventories": 1622,
+        "nonemptyInventories": 12,
+        "itemStacks": 92,
+        "totalItemCount": 5132,
+        "byType": {
+          "minecraft:barrel": 1159,
+          "minecraft:chiseled_bookshelf": 373,
+          "minecraft:beacon": 102,
+          "minecraft:conduit": 90,
+          "minecraft:brewing_stand": 40,
+          "minecraft:bed": 36,
+          "minecraft:chest": 28,
+          "minecraft:lectern": 24,
+          "minecraft:blast_furnace": 17,
+          "minecraft:sign": 14,
+          "minecraft:ender_chest": 4,
+          "minecraft:jukebox": 3,
+          "minecraft:smoker": 3,
+          "minecraft:furnace": 1,
+          "minecraft:campfire": 1,
+          "minecraft:daylight_detector": 1
+        }
+      },
+      "databaseObjects": {
+        "recursiveC01Count": 36,
+        "byKind": {"building": 3, "custom": 6, "landmark": 4, "room": 21, "sidewalk": 1, "utility": 1}
+      }
+    },
+    "rejectedLiteralDestination": {
+      "translation": [208, 0, 0],
+      "bounds": [298, 44, 70, 508, 136, 235],
+      "cells": 3257418,
+      "chunksRead": 154,
+      "chunksMissing": 0,
+      "fullWaterSources": 101675,
+      "bubbleColumns": 43,
+      "gravel": 15061,
+      "sand": 5422,
+      "blockEntities": [
+        {"id": "minecraft:beehive", "position": [386, 70, 186], "containedBees": 3},
+        {"id": "minecraft:beehive", "position": [369, 71, 228], "containedBees": 3}
+      ],
+      "decision": "REJECT_DIRECT_COPY_DESTINATION"
+    },
+    "recommendedC01Shell": {
+      "bounds": [325, 0, 205, 388, 45, 265],
+      "cells": 179584,
+      "chunksRead": 25,
+      "chunksMissing": 0,
+      "fullWaterSources": 0,
+      "flowingWaterStates": 67,
+      "lavaStates": 0,
+      "gravel": 2690,
+      "blockEntities": 0,
+      "surfaceContract": {
+        "surveyedAllDryRectangle": [301, 51, 198, 396, 86, 270],
+        "shellRoofY": 45,
+        "minimumExistingGroundY": 51,
+        "minimumCoverBlocksAboveRoof": 5
+      },
+      "databaseCollision": {
+        "detailedActiveFeatures": 0,
+        "knownTunnelIntersections": 0,
+        "broadOrRetiredContext": ["mainstreet-america:F01 retired fence touches x=301..305"]
+      }
+    },
+    "warehouseEastPods": [
+      {
+        "id": "UW-E1",
+        "bounds": [20, 50, 181, 92, 61, 262],
+        "cells": 71832,
+        "nonAirCells": 71832,
+        "waterOrLavaStates": 0,
+        "blockEntities": 0,
+        "gravityCells": {"gravel": 1138}
+      },
+      {
+        "id": "UW-E2-RECOVERED",
+        "bounds": [94, 50, 181, 116, 61, 235],
+        "cells": 15180,
+        "nonAirCells": 15180,
+        "waterOrLavaStates": 0,
+        "blockEntities": 0,
+        "gravityCells": {"gravel": 38}
+      },
+      {
+        "id": "UW-E3-RECOVERED",
+        "bounds": [94, 50, 238, 116, 61, 262],
+        "cells": 6900,
+        "nonAirCells": 6900,
+        "waterOrLavaStates": 0,
+        "blockEntities": 0,
+        "gravityCells": {"gravel": 127}
+      },
+      {
+        "id": "UW-CENTRAL-CONNECTOR",
+        "bounds": [-19, 52, 217, 19, 59, 225],
+        "cells": 2808,
+        "nonAirCells": 2808,
+        "waterOrLavaStates": 0,
+        "blockEntities": 0,
+        "gravityCells": {"gravel": 88}
+      }
+    ]
+  },
+  "dataCenterCampus": {
+    "name": "Fictional DM Northeast Forest Compute Campus",
+    "planningEnvelope": [304, 30, -320, 500, 112, -145],
+    "surfaceRule": "No blind flattening. Each occupied prism uses exact-state grading and retains the wet band, dungeon easements and cave hydrology outside its shell.",
+    "roads": {
+      "ravensreachStartConnector": {
+        "centerline": [[-72, 67, -405], [-38, 67, -405]],
+        "width": 5,
+        "connection": "Ravensreach Mine Road east service gate"
+      },
+      "outerDirtRoad": {
+        "surfaceSearchStart": [-38, 67, -405],
+        "surfaceSearchEnd": [304, 69, -304],
+        "surveyedRasterLengthBlocks": 456,
+        "width": 7,
+        "sampledCenterline": [
+          [-38, 67, -405],
+          [-6, 70, -397],
+          [25, 70, -388],
+          [56, 70, -379],
+          [82, 63, -365],
+          [117, 65, -366],
+          [150, 65, -361],
+          [182, 65, -355],
+          [213, 66, -346],
+          [226, 65, -319],
+          [255, 70, -308],
+          [304, 69, -304]
+        ],
+        "centerlineTopWaterColumns": [[82, 62, -365], [84, 62, -365]],
+        "dryBridgeBounds": [78, 62, -369, 90, 70, -362],
+        "releaseRule": "Render and exact-census the final seven-wide buffered raster. The selected one-wide centerline crosses two isolated water columns; the road must remain dry on a small bridge while leaving water flow open."
+      },
+      "internalServiceSpine": {
+        "centerline": [[304, 69, -304], [328, 70, -288], [328, 70, -216], [480, 70, -216]],
+        "width": 7,
+        "separatePedestrianWay": 3
+      }
+    },
+    "halls": [
+      {
+        "id": "DM10",
+        "name": "DM10 Normal Compute Hall",
+        "bounds": [336, 70, -256, 375, 100, -177],
+        "census": {"chunksRead": 15, "chunksMissing": 0, "waterOrLavaStates": 0, "blockEntities": 0},
+        "rackRows": {
+          "count": 40,
+          "pairFormula": "For pair i=0..19, rows occupy z=-253+3*i and z=-252+3*i.",
+          "runX": [340, 372],
+          "crossAislesAfterPairs": [5, 10, 15],
+          "frontStagingZ": [-256, -254],
+          "rearElectricalAndCoolingZ": [-194, -177]
+        },
+        "levels": {"servicePlenum": [70, 73], "whiteSpace": [74, 88], "roofMechanical": [89, 100]}
+      },
+      {
+        "id": "DM11",
+        "name": "DM11 Compute Hall",
+        "bounds": [384, 70, -256, 423, 100, -177],
+        "census": {"chunksRead": 15, "chunksMissing": 0, "waterOrLavaStates": 0, "blockEntities": 0},
+        "rackRows": {
+          "count": 40,
+          "pairFormula": "For pair i=0..19, rows occupy z=-253+3*i and z=-252+3*i.",
+          "runX": [388, 420],
+          "crossAislesAfterPairs": [5, 10, 15],
+          "frontStagingZ": [-256, -254],
+          "rearElectricalAndCoolingZ": [-194, -177]
+        },
+        "levels": {"servicePlenum": [70, 73], "whiteSpace": [74, 88], "roofMechanical": [89, 100]}
+      },
+      {
+        "id": "DM12",
+        "name": "DM12 Compute Hall",
+        "bounds": [432, 70, -256, 471, 100, -177],
+        "census": {"chunksRead": 15, "chunksMissing": 0, "waterOrLavaStates": 0, "blockEntities": 2},
+        "blockEntityGate": {
+          "sourcePositions": [[446, 76, -239], [457, 76, -246]],
+          "approvedTargetHabitatBounds": [472, 70, -216, 479, 86, -201],
+          "rule": "Preserve complete beehive NBT, contained bee count and before/after media; abort on state drift."
+        },
+        "rackRows": {
+          "count": 40,
+          "pairFormula": "For pair i=0..19, rows occupy z=-253+3*i and z=-252+3*i.",
+          "runX": [436, 468],
+          "crossAislesAfterPairs": [5, 10, 15],
+          "frontStagingZ": [-256, -254],
+          "rearElectricalAndCoolingZ": [-194, -177]
+        },
+        "levels": {"servicePlenum": [70, 73], "whiteSpace": [74, 88], "roofMechanical": [89, 100]}
+      }
+    ],
+    "infoBunker": {
+      "id": "DM10-IB01",
+      "name": "Separate underground continuity and information facility",
+      "bounds": [336, 34, -256, 395, 58, -217],
+      "census": {"cells": 60000, "chunksRead": 12, "chunksMissing": 0, "waterOrLavaStates": 0, "blockEntities": 0, "gravel": 921},
+      "separation": {
+        "rockBufferY": [59, 69],
+        "minimumVerticalBufferBlocks": 11,
+        "sharedWallsWithDM10": 0
+      },
+      "levels": [
+        {"name": "lower continuity level", "clearY": [36, 45], "program": ["essential records", "systems spares", "staff refuge", "sanitary support"]},
+        {"name": "upper operations level", "clearY": [47, 56], "program": ["continuity operations", "communications", "briefing", "controlled staging"]}
+      ],
+      "dm10RearConnector": {
+        "bounds": [360, 54, -256, 367, 70, -249],
+        "type": "enclosed stair and bulkhead connector",
+        "rule": "The connector is the only normal internal connection; it receives independent smoke, flood and access-control bulkheads."
+      },
+      "remoteEgress": {
+        "bounds": [388, 54, -224, 395, 70, -217],
+        "rule": "Remote protected discharge to the east service lane; it is not a second public entrance."
+      }
+    },
+    "supportBuildings": [
+      {
+        "id": "DM-NOC",
+        "name": "Network and campus operations center",
+        "bounds": [304, 70, -256, 319, 94, -233],
+        "program": ["operations floor", "incident room", "facilities monitoring", "dispatch", "staff support"],
+        "census": {"waterOrLavaStates": 0, "blockEntities": 0}
+      },
+      {
+        "id": "DM-PRES-200",
+        "name": "200-seat presentation theater",
+        "bounds": [304, 70, -232, 319, 94, -205],
+        "seatGrid": {"x": [306, 315], "z": [-226, -207], "rows": 20, "seatsPerRow": 10, "total": 200},
+        "stageZ": [-231, -228],
+        "publicDoor": [304, 72, -230, 304, 75, -227],
+        "remoteExit": [319, 72, -208, 319, 75, -205],
+        "census": {"waterOrLavaStates": 0, "blockEntities": 0}
+      },
+      {
+        "id": "DM-CINEMA-200",
+        "name": "200-seat cinema",
+        "bounds": [304, 70, -204, 319, 94, -177],
+        "seatGrid": {"x": [306, 315], "z": [-198, -179], "rows": 20, "seatsPerRow": 10, "total": 200},
+        "screenZ": -203,
+        "publicDoor": [304, 72, -202, 304, 75, -199],
+        "remoteExit": [319, 72, -180, 319, 75, -177],
+        "census": {"waterOrLavaStates": 0, "blockEntities": 0}
+      },
+      {
+        "id": "DM-AUD-CONNECTOR",
+        "name": "presentation/cinema controlled rear gallery",
+        "bounds": [317, 72, -232, 319, 82, -177],
+        "rule": "The rooms connect internally but retain different public doors, lobbies, acoustic shells, screens/stages and remote exits."
+      },
+      {
+        "id": "DM-DORMS",
+        "name": "Operations dormitory",
+        "bounds": [320, 70, -256, 335, 100, -177],
+        "program": ["three residential floors", "quiet rooms", "accessible rooms", "lounges", "laundry", "showers", "small pantry"],
+        "census": {"waterOrLavaStates": 0, "blockEntities": 0}
+      },
+      {
+        "id": "DM-CONSTRUCTION-YARD",
+        "name": "Fenced expansion construction yard",
+        "bounds": [304, 70, -272, 319, 88, -257],
+        "census": {"waterOrLavaStates": 0, "blockEntities": 0}
+      }
+    ],
+    "utilitiesAndOuterCompound": {
+      "powerYard": {
+        "bounds": [400, 70, -320, 479, 91, -305],
+        "census": {"waterOrLavaStates": 0, "blockEntities": 0},
+        "program": ["fictional substation", "A/B symbolic feeds", "metering house", "battery room", "transformer courts", "service road"],
+        "securityRule": "Do not model a real utility topology or vulnerable switching sequence."
+      },
+      "equipmentWarehouses": [
+        {"id": "DM-EQ-WH-A", "bounds": [464, 70, -304, 479, 88, -265], "census": {"waterOrLavaStates": 0, "blockEntities": 0}},
+        {"id": "DM-EQ-WH-B", "bounds": [464, 70, -256, 479, 88, -217], "census": {"waterOrLavaStates": 0, "blockEntities": 0}}
+      ],
+      "helipad": {
+        "bounds": [432, 70, -176, 463, 82, -145],
+        "census": {"waterOrLavaStates": 0, "blockEntities": 0},
+        "status": "SCENIC_ONLY_DESIGN_HELICOPTER_AND_FAA_REVIEW_REQUIRED"
+      },
+      "smallAircraftStrip": {
+        "bounds": [480, 70, -304, 500, 76, -177],
+        "lengthBlocks": 128,
+        "widthBlocks": 21,
+        "census": {"waterOrLavaStates": 0, "blockEntities": 0, "gravel": 58},
+        "status": "SCENIC_SHORT_STRIP_NOT_OPERATIONAL",
+        "releaseRule": "A named design aircraft, performance, runway safety area, object-free area, drainage and obstacle review are mandatory before any operational claim."
+      },
+      "outerTowers": [
+        {"id": "TOWER-NW", "bounds": [304, 70, -272, 310, 98, -266]},
+        {"id": "TOWER-NE", "bounds": [490, 70, -304, 496, 98, -298]},
+        {"id": "TOWER-SW", "bounds": [320, 70, -184, 326, 98, -178]},
+        {"id": "TOWER-SE", "bounds": [490, 70, -184, 496, 98, -178]}
+      ]
+    }
+  },
+  "c01Relocation": {
+    "requirement": "Move the entire C01 bunker program farther east so P01 can be completed uninterrupted, provide a new descending road and recessed entrance well east of the lot, and keep the concrete shell hidden.",
+    "options": [
+      {
+        "id": "OPTION-A-LITERAL-PLUS208",
+        "description": "Copy every block state and all block-entity NBT to the same geometry translated +208 X.",
+        "scoresOutOf5": {"siteDryness": 1, "inventorySafety": 2, "rollbackClarity": 2, "programFidelity": 5, "constructability": 1, "total": 11},
+        "decision": "REJECT",
+        "reasons": ["101675 destination water sources", "43 bubble columns", "two occupied beehives", "1896 source block entities", "copy-then-delete creates a very large partial-failure surface"]
+      },
+      {
+        "id": "OPTION-B-NEW-EAST-SHELL-MIGRATION",
+        "description": "Build and commission a compact, compartmentalized east shell, recreate all 36 database objects and semantic routes, migrate NBT-managed contents under a ledger, and retain the source intact until acceptance.",
+        "scoresOutOf5": {"siteDryness": 4, "inventorySafety": 5, "rollbackClarity": 5, "programFidelity": 4, "constructability": 4, "total": 22},
+        "decision": "RECOMMENDED"
+      }
+    ],
+    "recommendedShell": {
+      "bounds": [325, 0, 205, 388, 45, 265],
+      "levels": [
+        {"id": "C01-E-L4", "clearY": [2, 10], "program": ["archive", "bunks", "communications", "records", "stores", "fabrication"]},
+        {"id": "C01-E-L3", "clearY": [12, 20], "program": ["operations theater", "three conference rooms", "briefing", "service support"]},
+        {"id": "C01-E-L2", "clearY": [22, 32], "program": ["hangar", "dispatch", "maintenance", "vehicle and aircraft displays", "cross-passage"]},
+        {"id": "C01-E-L1", "clearY": [34, 43], "program": ["recessed lobby", "grand concourse", "training arena", "medical/decon", "public briefing"]}
+      ],
+      "serviceSpineBounds": [351, 2, 229, 357, 43, 237],
+      "primaryStairBounds": [378, 2, 250, 386, 43, 258],
+      "routeParity": ["public portal to lobby", "lobby to hangar", "hangar to arena", "upper service spine", "lower operations loop", "primary stair", "two remote discharges"]
+    },
+    "descendingRoadAndPortal": {
+      "roadBounds": [126, 40, 232, 324, 69, 249],
+      "centerline": [[126, 64, 245], [180, 62, 245], [240, 56, 245], [292, 48, 245], [301, 44, 240], [301, 42, 236]],
+      "width": 9,
+      "portalBounds": [301, 38, 226, 324, 64, 244],
+      "portalToShellBulkhead": [324, 38, 232, 325, 45, 238],
+      "rule": "The road stays south of the old C01 envelope until its final recessed turn. The final curve and P01 edge completion occur only after source retirement."
+    },
+    "atomicSequence": [
+      "Freeze the snapshot and database hashes; census entities and active builders.",
+      "Export a canonical source ledger for every changed block, complete block state, block-entity NBT, inventory slot, item count, sign text and custom name.",
+      "Build the new shell as independently sealed monoliths; install joint waterstops, perimeter drain, sumps and temporary bulkheads before excavation between cells.",
+      "Build all stairs, routes, rooms and support systems with placeholder empty inventories.",
+      "Commission shell dryness, lighting, exits, bidirectional walking, room parity and media while the source remains untouched.",
+      "Migrate only a bounded NBT batch; hash source and target, then accept or roll back that batch before the next batch.",
+      "Run the complete 1896-block-entity and 5132-item-count reconciliation plus 36-object database crosswalk.",
+      "Switch wayfinding and access to the new shell while retaining the old source as rollback.",
+      "After a hold period and explicit acceptance, retire the old shell with exact rollback data; then complete the descending road, P01 surface and warehouse recovered pods.",
+      "Capture immutable post snapshot, import reviewed features, and run final route, concealment, inventory and media acceptance."
+    ]
+  },
+  "parkingWarehouseExpansion": {
+    "existingWestHall": [-112, 50, 181, -20, 61, 262],
+    "centralConnector": [-19, 52, 217, 19, 59, 225],
+    "eastMainPod": [20, 50, 181, 92, 61, 262],
+    "recoveredNorthEastPod": [94, 50, 181, 116, 61, 235],
+    "recoveredSouthEastPod": [94, 50, 238, 116, 61, 262],
+    "bulkheads": [
+      {"id": "BH-CENTRAL", "bounds": [19, 53, 217, 20, 58, 225]},
+      {"id": "BH-E2", "bounds": [93, 53, 208, 94, 57, 214]},
+      {"id": "BH-E3", "bounds": [93, 53, 248, 94, 57, 254]}
+    ],
+    "surfaceContract": {
+      "warehouseRoofY": 61,
+      "untouchedSupportCoursesY": [62, 63],
+      "parkingSurfaceY": 64,
+      "rule": "No operation may target y62, y63, y64 or any P01 bay, aisle, crosswalk, canopy, light or route. Each pod is lined and accepted dry before its connecting bulkhead opens."
+    },
+    "dependency": "The recovered pods advance only after C01 migration acceptance and exact source retirement. C01 and warehouse transactions may not overlap."
+  },
+  "releaseGates": [
+    "No live command is authorized by this artifact.",
+    "Refresh to a new immutable same-moment snapshot and abort on snapshot or database hash drift.",
+    "Recompute every selected prism, road buffer, neighbor-fluid face, gravity cell, block entity, entity and protected-feature collision.",
+    "Keep the three natural cave/dungeon easements and wet-buffer habitat outside every operation.",
+    "Obtain an empty-world or offline simulation with exact forward and inverse operations before touching the world.",
+    "Require strict exact-state guards; no blanket SET or unmasked fill is permitted.",
+    "Clear players, bots, item entities, vehicles and active builders from each transaction cell.",
+    "Move beehives only with complete NBT, contained-bee and same-camera evidence; otherwise shift DM12.",
+    "Validate 40 rack rows in each hall, front/rear access, cross aisles, remote exits, NOC visibility and separated support traffic.",
+    "Test presentation and cinema independently at 200 seats, with separate public doors and two remote exit paths each.",
+    "Test the DM10-to-InfoBunker connector and remote egress in both directions without using the other route.",
+    "Do not claim the helipad or strip operational without FAA/design-aircraft review; preserve obstacle and safety buffers.",
+    "For C01, reconcile all 1896 block entities, 1622 inventories, 92 item stacks, 5132 item count and 36 database objects before source retirement.",
+    "Require C01 zero exposed concrete, minimum five-block cover at the compact shell, dry joints, working drains and two independent exits.",
+    "Build warehouse pods shell-first; accept each pod dry before opening one guarded bulkhead; preserve y62..64.",
+    "Run matched before/after captures, immutable post snapshot, database import, bidirectional walking and independent post-release acceptance."
+  ]
+}

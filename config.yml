@@ -410,13 +410,566 @@ mining:
 # spawning either name would have stranded the bot permanently — it could never
 # walk to an anchor ~1600 blocks outside its own leash radius.
 leash:
-  # Ravensreach citizen district. Radius 50 is wholly inside the registered
-  # PacketCraft parcel x[-140,-30], z[-430,-310], centered near the Moot Hall.
-  - { botName: Architect, x: -85, z: -370, radius: 50, caretaker: false }
-  - { botName: Mason, x: -85, z: -370, radius: 50, caretaker: false }
-  - { botName: Scott, x: -85, z: -370, radius: 50, caretaker: false }
-  - { botName: Steward, x: -85, z: -370, radius: 50, caretaker: false }
-  - { botName: Surveyor, x: -85, z: -370, radius: 50, caretaker: false }
+  - botName: Architect
+    x: -85
+    z: -370
+    radius: 50
+    caretaker: false
+    destinations:
+      - name: mainstreet-rear-staff-staging
+        x: -82
+        z: 85
+        radius: 8
+    corridors:
+      - name: ravensreach-mainstreet-reviewed-commute
+        width: 3
+        waypoints:
+          - x: -111
+            z: -332
+          - x: -111
+            z: -322
+          - x: -106
+            z: -317
+          - x: -98
+            z: -315
+          - x: -92
+            z: -311
+          - x: -82
+            z: -311
+          - x: -72
+            z: -311
+          - x: -63
+            z: -310
+          - x: -57
+            z: -310
+          - x: -57
+            z: -306
+          - x: -57
+            z: -296
+          - x: -57
+            z: -286
+          - x: -57
+            z: -276
+          - x: -57
+            z: -266
+          - x: -57
+            z: -256
+          - x: -57
+            z: -246
+          - x: -57
+            z: -236
+          - x: -57
+            z: -232
+          - x: -63
+            z: -232
+          - x: -69
+            z: -228
+          - x: -75
+            z: -224
+          - x: -80
+            z: -219
+          - x: -81
+            z: -219
+          - x: -82
+            z: -219
+          - x: -82
+            z: -119
+          - x: -82
+            z: -19
+          - x: -82
+            z: -8
+          - x: -81
+            z: -7
+          - x: -82
+            z: -6
+          - x: -81
+            z: -5
+          - x: -82
+            z: -4
+          - x: -81
+            z: -3
+          - x: -82
+            z: -2
+          - x: -83
+            z: -1
+          - x: -83
+            z: 0
+          - x: -83
+            z: 1
+          - x: -83
+            z: 2
+          - x: -82
+            z: 3
+          - x: -82
+            z: 4
+          - x: -82
+            z: 5
+          - x: -82
+            z: 10
+          - x: -82
+            z: 11
+          - x: -82
+            z: 20
+          - x: -82
+            z: 45
+          - x: -82
+            z: 60
+          - x: -82
+            z: 75
+          - x: -82
+            z: 81
+          - x: -82
+            z: 85
+          - x: -82
+            z: 90
+  - botName: Mason
+    x: -85
+    z: -370
+    radius: 50
+    caretaker: false
+    destinations:
+      - name: mainstreet-rear-staff-staging
+        x: -82
+        z: 85
+        radius: 8
+    corridors:
+      - name: ravensreach-mainstreet-reviewed-commute
+        width: 3
+        waypoints:
+          - x: -111
+            z: -332
+          - x: -111
+            z: -322
+          - x: -106
+            z: -317
+          - x: -98
+            z: -315
+          - x: -92
+            z: -311
+          - x: -82
+            z: -311
+          - x: -72
+            z: -311
+          - x: -63
+            z: -310
+          - x: -57
+            z: -310
+          - x: -57
+            z: -306
+          - x: -57
+            z: -296
+          - x: -57
+            z: -286
+          - x: -57
+            z: -276
+          - x: -57
+            z: -266
+          - x: -57
+            z: -256
+          - x: -57
+            z: -246
+          - x: -57
+            z: -236
+          - x: -57
+            z: -232
+          - x: -63
+            z: -232
+          - x: -69
+            z: -228
+          - x: -75
+            z: -224
+          - x: -80
+            z: -219
+          - x: -81
+            z: -219
+          - x: -82
+            z: -219
+          - x: -82
+            z: -119
+          - x: -82
+            z: -19
+          - x: -82
+            z: -8
+          - x: -81
+            z: -7
+          - x: -82
+            z: -6
+          - x: -81
+            z: -5
+          - x: -82
+            z: -4
+          - x: -81
+            z: -3
+          - x: -82
+            z: -2
+          - x: -83
+            z: -1
+          - x: -83
+            z: 0
+          - x: -83
+            z: 1
+          - x: -83
+            z: 2
+          - x: -82
+            z: 3
+          - x: -82
+            z: 4
+          - x: -82
+            z: 5
+          - x: -82
+            z: 10
+          - x: -82
+            z: 11
+          - x: -82
+            z: 20
+          - x: -82
+            z: 45
+          - x: -82
+            z: 60
+          - x: -82
+            z: 75
+          - x: -82
+            z: 81
+          - x: -82
+            z: 85
+          - x: -82
+            z: 90
+  - botName: Scott
+    x: -85
+    z: -370
+    radius: 50
+    caretaker: false
+    destinations:
+      - name: mainstreet-rear-staff-staging
+        x: -82
+        z: 85
+        radius: 8
+    corridors:
+      - name: ravensreach-mainstreet-reviewed-commute
+        width: 3
+        waypoints:
+          - x: -111
+            z: -332
+          - x: -111
+            z: -322
+          - x: -106
+            z: -317
+          - x: -98
+            z: -315
+          - x: -92
+            z: -311
+          - x: -82
+            z: -311
+          - x: -72
+            z: -311
+          - x: -63
+            z: -310
+          - x: -57
+            z: -310
+          - x: -57
+            z: -306
+          - x: -57
+            z: -296
+          - x: -57
+            z: -286
+          - x: -57
+            z: -276
+          - x: -57
+            z: -266
+          - x: -57
+            z: -256
+          - x: -57
+            z: -246
+          - x: -57
+            z: -236
+          - x: -57
+            z: -232
+          - x: -63
+            z: -232
+          - x: -69
+            z: -228
+          - x: -75
+            z: -224
+          - x: -80
+            z: -219
+          - x: -81
+            z: -219
+          - x: -82
+            z: -219
+          - x: -82
+            z: -119
+          - x: -82
+            z: -19
+          - x: -82
+            z: -8
+          - x: -81
+            z: -7
+          - x: -82
+            z: -6
+          - x: -81
+            z: -5
+          - x: -82
+            z: -4
+          - x: -81
+            z: -3
+          - x: -82
+            z: -2
+          - x: -83
+            z: -1
+          - x: -83
+            z: 0
+          - x: -83
+            z: 1
+          - x: -83
+            z: 2
+          - x: -82
+            z: 3
+          - x: -82
+            z: 4
+          - x: -82
+            z: 5
+          - x: -82
+            z: 10
+          - x: -82
+            z: 11
+          - x: -82
+            z: 20
+          - x: -82
+            z: 45
+          - x: -82
+            z: 60
+          - x: -82
+            z: 75
+          - x: -82
+            z: 81
+          - x: -82
+            z: 85
+          - x: -82
+            z: 90
+  - botName: Steward
+    x: -85
+    z: -370
+    radius: 50
+    caretaker: false
+    destinations:
+      - name: mainstreet-rear-staff-staging
+        x: -82
+        z: 85
+        radius: 8
+    corridors:
+      - name: ravensreach-mainstreet-reviewed-commute
+        width: 3
+        waypoints:
+          - x: -111
+            z: -332
+          - x: -111
+            z: -322
+          - x: -106
+            z: -317
+          - x: -98
+            z: -315
+          - x: -92
+            z: -311
+          - x: -82
+            z: -311
+          - x: -72
+            z: -311
+          - x: -63
+            z: -310
+          - x: -57
+            z: -310
+          - x: -57
+            z: -306
+          - x: -57
+            z: -296
+          - x: -57
+            z: -286
+          - x: -57
+            z: -276
+          - x: -57
+            z: -266
+          - x: -57
+            z: -256
+          - x: -57
+            z: -246
+          - x: -57
+            z: -236
+          - x: -57
+            z: -232
+          - x: -63
+            z: -232
+          - x: -69
+            z: -228
+          - x: -75
+            z: -224
+          - x: -80
+            z: -219
+          - x: -81
+            z: -219
+          - x: -82
+            z: -219
+          - x: -82
+            z: -119
+          - x: -82
+            z: -19
+          - x: -82
+            z: -8
+          - x: -81
+            z: -7
+          - x: -82
+            z: -6
+          - x: -81
+            z: -5
+          - x: -82
+            z: -4
+          - x: -81
+            z: -3
+          - x: -82
+            z: -2
+          - x: -83
+            z: -1
+          - x: -83
+            z: 0
+          - x: -83
+            z: 1
+          - x: -83
+            z: 2
+          - x: -82
+            z: 3
+          - x: -82
+            z: 4
+          - x: -82
+            z: 5
+          - x: -82
+            z: 10
+          - x: -82
+            z: 11
+          - x: -82
+            z: 20
+          - x: -82
+            z: 45
+          - x: -82
+            z: 60
+          - x: -82
+            z: 75
+          - x: -82
+            z: 81
+          - x: -82
+            z: 85
+          - x: -82
+            z: 90
+  - botName: Surveyor
+    x: -85
+    z: -370
+    radius: 50
+    caretaker: false
+    destinations:
+      - name: mainstreet-rear-staff-staging
+        x: -82
+        z: 85
+        radius: 8
+    corridors:
+      - name: ravensreach-mainstreet-reviewed-commute
+        width: 3
+        waypoints:
+          - x: -111
+            z: -332
+          - x: -111
+            z: -322
+          - x: -106
+            z: -317
+          - x: -98
+            z: -315
+          - x: -92
+            z: -311
+          - x: -82
+            z: -311
+          - x: -72
+            z: -311
+          - x: -63
+            z: -310
+          - x: -57
+            z: -310
+          - x: -57
+            z: -306
+          - x: -57
+            z: -296
+          - x: -57
+            z: -286
+          - x: -57
+            z: -276
+          - x: -57
+            z: -266
+          - x: -57
+            z: -256
+          - x: -57
+            z: -246
+          - x: -57
+            z: -236
+          - x: -57
+            z: -232
+          - x: -63
+            z: -232
+          - x: -69
+            z: -228
+          - x: -75
+            z: -224
+          - x: -80
+            z: -219
+          - x: -81
+            z: -219
+          - x: -82
+            z: -219
+          - x: -82
+            z: -119
+          - x: -82
+            z: -19
+          - x: -82
+            z: -8
+          - x: -81
+            z: -7
+          - x: -82
+            z: -6
+          - x: -81
+            z: -5
+          - x: -82
+            z: -4
+          - x: -81
+            z: -3
+          - x: -82
+            z: -2
+          - x: -83
+            z: -1
+          - x: -83
+            z: 0
+          - x: -83
+            z: 1
+          - x: -83
+            z: 2
+          - x: -82
+            z: 3
+          - x: -82
+            z: 4
+          - x: -82
+            z: 5
+          - x: -82
+            z: 10
+          - x: -82
+            z: 11
+          - x: -82
+            z: 20
+          - x: -82
+            z: 45
+          - x: -82
+            z: 60
+          - x: -82
+            z: 75
+          - x: -82
+            z: 81
+          - x: -82
+            z: 85
+          - x: -82
+            z: 90
 
 # Safe fallback spot a stranded bot self-teleports to when stuck in liquid and
 # unable to complete tasks (VoyagerLoop.tryRescueIfStranded). Unset since the

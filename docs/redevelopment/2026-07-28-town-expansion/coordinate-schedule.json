@@ -1,0 +1,468 @@
+{
+  "schemaVersion": 1,
+  "status": "SURVEY_DESIGN_BASIS_NOT_A_RELEASE",
+  "generatedAtUtc": "2026-07-28T04:00:00Z",
+  "world": "world",
+  "coordinateConvention": {
+    "north": "-Z",
+    "surfaceSupportY": 67,
+    "normalStandingY": 68,
+    "bounds": "inclusive"
+  },
+  "evidence": {
+    "snapshot": {
+      "path": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region",
+      "sha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999",
+      "acceptance": "docs/redevelopment/2026-07-28-wave2/post-release-independent-acceptance.md"
+    },
+    "worldDatabase": {
+      "path": "data/world-map.db",
+      "sha256AtSurvey": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+      "mode": "read-only"
+    },
+    "townDatabase": {
+      "path": "data/town.db",
+      "sha256AtSurvey": "c34f28ec29e002c2e6bac67f3641d1c4254d40a5c08470abeafc60c7ee220503",
+      "mode": "read-only"
+    }
+  },
+  "facts": [
+    {
+      "id": "RRCH-MOOT",
+      "name": "Moot Hall and Sanctum stack",
+      "bounds": {
+        "minX": -100,
+        "maxX": -70,
+        "minY": 29,
+        "maxY": 98,
+        "minZ": -392,
+        "maxZ": -341
+      },
+      "floorsY": [
+        29,
+        41,
+        55,
+        62,
+        67,
+        73,
+        78,
+        83,
+        87
+      ],
+      "source": "data/world-map.db:world_features"
+    },
+    {
+      "id": "RRCH-MOOT-PENTHOUSE",
+      "name": "Recorded Penthouse Hall",
+      "bounds": {
+        "minX": -99,
+        "maxX": -71,
+        "minY": 87,
+        "maxY": 98,
+        "minZ": -391,
+        "maxZ": -367
+      },
+      "supportY": 87,
+      "source": "data/world-map.db:RRCH-MOOT:ROOM:9:penthouse-hall"
+    },
+    {
+      "id": "RRCH-AMSTERDAM-TERRACE",
+      "name": "Six Amsterdam-style canal houses to replace",
+      "bounds": {
+        "minX": -104,
+        "maxX": -67,
+        "minY": 67,
+        "maxY": 92,
+        "minZ": -352,
+        "maxZ": -346
+      },
+      "source": "scripts/gen_civic.py:phase_square",
+      "warning": "This generated terrace overlaps the broad RRCH-MOOT recorded envelope. It requires an exact-cell inventory and protected-room comparison before any removal."
+    },
+    {
+      "id": "RRCH-LIBRARY",
+      "name": "Six-level civic library",
+      "bounds": {
+        "minX": -144,
+        "maxX": -111,
+        "minY": 46,
+        "maxY": 98,
+        "minZ": -448,
+        "maxZ": -426
+      },
+      "floorsY": [
+        46,
+        53,
+        60,
+        67,
+        75,
+        83
+      ],
+      "floorplateCells": 782,
+      "grossProgramCells": 4692,
+      "source": "data/world-map.db:RRCH-LIBRARY"
+    },
+    {
+      "id": "RG-GARTH",
+      "name": "Former Central Pavilion footprint, now Ravensgate Garth",
+      "bounds": {
+        "minX": -105,
+        "maxX": -65,
+        "minY": 67,
+        "maxY": 78,
+        "minZ": -446,
+        "maxZ": -426
+      },
+      "source": "scripts/gen_w4.py:phase_ravensgate_civic",
+      "warning": "The original glass pavilion x[-105,-65] z[-449,-425] y68..95 was deliberately removed. Do not treat its obsolete shell as current."
+    },
+    {
+      "id": "RG-LOGGIA",
+      "name": "Library loggia",
+      "bounds": {
+        "minX": -111,
+        "maxX": -106,
+        "minY": 68,
+        "maxY": 78,
+        "minZ": -447,
+        "maxZ": -433
+      },
+      "entry": [
+        -110,
+        69,
+        -438
+      ],
+      "source": "data/world-map.db:RG-LOGGIA"
+    },
+    {
+      "id": "RG-STOA",
+      "name": "South stoa",
+      "bounds": {
+        "minX": -105,
+        "maxX": -65,
+        "minY": 68,
+        "maxY": 78,
+        "minZ": -431,
+        "maxZ": -426
+      },
+      "source": "data/world-map.db:RG-STOA"
+    },
+    {
+      "id": "APPROACH-ROAD-PRIMARY",
+      "name": "Ravensgate to Westlight Approach Road",
+      "bounds": {
+        "minX": -352,
+        "maxX": -148,
+        "minZ": -509,
+        "maxZ": -484
+      },
+      "keyframes": [
+        [-148, 67, -500],
+        [-158, 68, -506],
+        [-170, 71, -506],
+        [-182, 68, -506],
+        [-224, 69, -496],
+        [-288, 69, -497],
+        [-305, 72, -497],
+        [-322, 69, -497],
+        [-336, 68, -492],
+        [-344, 67, -486],
+        [-352, 67, -486]
+      ],
+      "source": "scripts/gen_w4.py:phase_approach"
+    },
+    {
+      "id": "PANORAMA-BAY",
+      "name": "Existing halfway stopping bay",
+      "bounds": {
+        "minX": -232,
+        "maxX": -224,
+        "minY": 69,
+        "maxY": 73,
+        "minZ": -500,
+        "maxZ": -492
+      },
+      "source": "scripts/gen_w4.py:phase_approach"
+    }
+  ],
+  "conceptParcels": [
+    {
+      "id": "TE-PENTHOUSE-01",
+      "name": "Moot Hall penthouse completion",
+      "status": "retain-envelope-refit-and-articulate",
+      "bounds": {
+        "minX": -99,
+        "maxX": -71,
+        "minY": 87,
+        "maxY": 98,
+        "minZ": -391,
+        "maxZ": -367
+      },
+      "releaseRule": "Preserve the verified nine-floor stair chain and every exact support/roof cell until an immutable fresh-snapshot diff proves the redesign is bijective."
+    },
+    {
+      "id": "TE-LONGHOUSE-01",
+      "name": "Period longhouse replacing Amsterdam terrace",
+      "status": "provisional-envelope",
+      "bounds": {
+        "minX": -104,
+        "maxX": -75,
+        "minY": 67,
+        "maxY": 88,
+        "minZ": -356,
+        "maxZ": -342
+      },
+      "longAxis": "east-west",
+      "entryAxis": "north-south",
+      "subspaces": [
+        "west service bay",
+        "central double-height hall and hearth",
+        "east lodging/work bay",
+        "south porch to Longhouse Court"
+      ],
+      "releaseRule": "The six canal houses may be exact-state retired only after a fresh block/entity/container census. The underlying and overlapping RRCH-MOOT cells are protected."
+    },
+    {
+      "id": "TE-COURT-01",
+      "name": "Longhouse Court",
+      "status": "public-realm-concept",
+      "bounds": {
+        "minX": -105,
+        "maxX": -67,
+        "minY": 67,
+        "maxY": 75,
+        "minZ": -365,
+        "maxZ": -357
+      },
+      "program": [
+        "hard-paved ceremonial court",
+        "contained rain garden",
+        "arcaded edge",
+        "continuous accessible route",
+        "two active building frontages"
+      ],
+      "releaseRule": "Resolve its overlap with the RRCH-MOOT public-foyer volume as an authored threshold, not a blind exterior carve."
+    },
+    {
+      "id": "TE-LIBRARY-04X",
+      "name": "Four-times civic library envelope",
+      "status": "preferred-masterplan-envelope",
+      "bounds": {
+        "minX": -178,
+        "maxX": -111,
+        "minY": 46,
+        "maxY": 98,
+        "minZ": -448,
+        "maxZ": -403
+      },
+      "floorplateCells": 3128,
+      "multipleOfExistingFloorplate": 4,
+      "floorsY": [
+        46,
+        53,
+        60,
+        67,
+        75,
+        83
+      ],
+      "strategy": "Retain the current library as the east reading-room spine; expand west and south so the Ravensgate loggia connection remains intact.",
+      "releaseRule": "A foundation/geotechnical section is mandatory along the western slope. Do not grade the full rectangle or touch shoreline water by assumption."
+    },
+    {
+      "id": "TE-LIBRARY-TERRACE",
+      "name": "Two-level concrete library terrace into the Garth",
+      "status": "preferred-masterplan-envelope",
+      "bounds": {
+        "minX": -110,
+        "maxX": -96,
+        "minY": 67,
+        "maxY": 75,
+        "minZ": -447,
+        "maxZ": -433
+      },
+      "levels": [
+        {
+          "supportY": 75,
+          "use": "second-floor walkout and event terrace"
+        },
+        {
+          "supportY": 71,
+          "use": "mid-landing overlook"
+        },
+        {
+          "supportY": 67,
+          "use": "Garth threshold"
+        }
+      ],
+      "releaseRule": "Reuse the current RG-LOGGIA roof/threshold where exact geometry permits; preserve the campanile, stoa, compass rose and belvedere."
+    },
+    {
+      "id": "TE-GUILDHALL-01",
+      "name": "Great Guild Hall",
+      "status": "preferred-opposite-side-site",
+      "bounds": {
+        "minX": -59,
+        "maxX": -7,
+        "minY": 53,
+        "maxY": 93,
+        "minZ": -462,
+        "maxZ": -418
+      },
+      "floorsY": [
+        53,
+        60,
+        67,
+        75,
+        83
+      ],
+      "connection": {
+        "from": [-64, 68, -439],
+        "to": [-59, 68, -439],
+        "mode": "arcaded Garth threshold"
+      },
+      "programByLevel": {
+        "B2_y53": [
+          "bulk stores",
+          "cold cellar",
+          "barrel cellar",
+          "laundry",
+          "plant/service corridor"
+        ],
+        "B1_y60": [
+          "four distinct production kitchens",
+          "scullery",
+          "banquet staging",
+          "theatre back-of-house",
+          "service stair"
+        ],
+        "G_y67": [
+          "great hall",
+          "ceremonial stair",
+          "guild bar",
+          "members lounge",
+          "Garth arcade"
+        ],
+        "L2_y75": [
+          "theatre",
+          "lecture hall",
+          "dance hall",
+          "musicians gallery"
+        ],
+        "L3_y83": [
+          "dormitories",
+          "living suites",
+          "quiet rooms",
+          "house library",
+          "roof loggia"
+        ]
+      },
+      "releaseRule": "Fresh terrain, vegetation, water, cave, container and entity surveys are mandatory. Basements need a three-block solid cover/liner policy and must not connect to natural caverns."
+    },
+    {
+      "id": "TE-ROAD-01",
+      "name": "Westlight ceremonial stadium approach",
+      "status": "widen-current-alignment",
+      "bounds": {
+        "minX": -352,
+        "maxX": -148,
+        "minY": 62,
+        "maxY": 82,
+        "minZ": -513,
+        "maxZ": -480
+      },
+      "crossSection": {
+        "minimumDeckWidth": 9,
+        "clearWalkingWidth": 7,
+        "shoulders": 1,
+        "bridgeParapets": true,
+        "lightingRhythmBlocks": 12
+      },
+      "billboardStations": [
+        [-154, 68, -493],
+        [-196, 70, -500],
+        [-217, 70, -502],
+        [-269, 70, -503],
+        [-298, 73, -503],
+        [-330, 69, -488]
+      ],
+      "releaseRule": "Keep billboards outside intersection/bridge decision points and outside the road clear zone; directional signs retain priority."
+    },
+    {
+      "id": "TE-OASIS-01",
+      "name": "Panorama Tollway Oasis",
+      "status": "preferred-halfway-site",
+      "bounds": {
+        "minX": -248,
+        "maxX": -210,
+        "minY": 62,
+        "maxY": 84,
+        "minZ": -510,
+        "maxZ": -482
+      },
+      "bridgeHallSupportY": 75,
+      "roadClearance": {
+        "roadSupportY": 69,
+        "standingY": 70,
+        "minimumClearThroughY": 74
+      },
+      "forecourts": {
+        "north": {
+          "minX": -255,
+          "maxX": -205,
+          "minZ": -534,
+          "maxZ": -511
+        },
+        "south": {
+          "minX": -255,
+          "maxX": -205,
+          "minZ": -481,
+          "maxZ": -458
+        }
+      },
+      "releaseRule": "Build over and beside the existing road; never sever it. The current Panorama bay is the anchor and must remain walkable throughout staged construction."
+    },
+    {
+      "id": "TE-OASIS-BUNKER-01",
+      "name": "Panorama mini-bunker",
+      "status": "preferred-subgrade-site",
+      "bounds": {
+        "minX": -252,
+        "maxX": -220,
+        "minY": 40,
+        "maxY": 66,
+        "minZ": -548,
+        "maxZ": -515
+      },
+      "entry": {
+        "portalCenter": [-230, 65, -514],
+        "facing": "south",
+        "approachFrom": [-230, 68, -506]
+      },
+      "floorsY": [
+        45,
+        54
+      ],
+      "program": [
+        "concealed portal and vehicle ramp",
+        "security vestibule",
+        "operations room",
+        "small workshop",
+        "stores",
+        "crew quarters",
+        "mechanical room",
+        "emergency stair to Oasis service court"
+      ],
+      "sitingNote": "The original surveyed envelope extended east to x=-208 and crossed 52 surface-water columns at x=-217..-208, z=-548..-540. The preferred envelope is deliberately held west of x=-219.",
+      "releaseRule": "This is a siting envelope only. Reject or shift it if a fresh section finds subsurface water, waterlogged blocks, gravity blocks, containers, protected features, or less than three blocks of cover."
+    }
+  ],
+  "hardGates": [
+    "No live mutation is authorized by this schedule.",
+    "Take a fresh immutable saved-world snapshot immediately before engineering.",
+    "Generate exact one-cell source-state guards and exact rollback for every changed cell.",
+    "Run block-entity, free-entity, player, fluid, gravity, cave and protected-feature censuses.",
+    "Do not use unmasked SET demolition over the Amsterdam terrace, Moot Hall, library, Garth, road or Panorama bay.",
+    "Preserve every existing bidirectional stair route until a replacement passes normal-walk QA in both directions.",
+    "Capture same-camera before and after evidence for each parcel and import accepted features/media only after post-state QA."
+  ]
+}

@@ -288,6 +288,26 @@ export interface Config {
     z: number;
     radius: number;
     caretaker?: boolean;
+    /**
+     * Named, bounded civic destinations outside the home circle. These do not
+     * enable free roaming: path targets must still fall inside one of these
+     * circles or an approved corridor below.
+     */
+    destinations?: Array<{
+      name: string;
+      x: number;
+      z: number;
+      radius: number;
+    }>;
+    /**
+     * Surveyed movement corridors joining home and civic destinations.
+     * Generated routines should traverse the listed waypoints in order.
+     */
+    corridors?: Array<{
+      name: string;
+      width: number;
+      waypoints: Array<{ x: number; z: number }>;
+    }>;
   }>;
   /**
    * Safe fallback location a stranded bot teleports itself to when it gets stuck
@@ -609,6 +629,141 @@ function checkLlmProviders(providers: unknown, errors: string[]): void {
   }
 }
 
+function checkLeash(leash: unknown, errors: string[]): void {
+  if (!Array.isArray(leash)) {
+    errors.push(`leash: expected array, got ${typeOf(leash)}`);
+    return;
+  }
+  leash.forEach((entry, index) => {
+    const base = `leash[${index}]`;
+    if (!isPlainObject(entry)) {
+      errors.push(`${base}: expected object, got ${typeOf(entry)}`);
+      return;
+    }
+    for (const [key, expected] of [
+      ['botName', 'string'],
+      ['x', 'number'],
+      ['z', 'number'],
+      ['radius', 'number'],
+    ] as const) {
+      if (typeOf(entry[key]) !== expected) {
+        errors.push(`${base}.${key}: expected ${expected}, got ${typeOf(entry[key])}`);
+      }
+    }
+    if (typeof entry.botName === 'string' && entry.botName.trim().length === 0) {
+      errors.push(`${base}.botName: expected non-empty string`);
+    }
+    for (const key of ['x', 'z'] as const) {
+      if (typeof entry[key] === 'number' && !Number.isFinite(entry[key])) {
+        errors.push(`${base}.${key}: expected finite number`);
+      }
+    }
+    if (
+      typeof entry.radius === 'number'
+      && (!Number.isFinite(entry.radius) || entry.radius <= 0)
+    ) {
+      errors.push(`${base}.radius: expected positive finite number`);
+    }
+    if (entry.caretaker !== undefined && typeof entry.caretaker !== 'boolean') {
+      errors.push(`${base}.caretaker: expected boolean, got ${typeOf(entry.caretaker)}`);
+    }
+    if (entry.destinations !== undefined) {
+      if (!Array.isArray(entry.destinations)) {
+        errors.push(`${base}.destinations: expected array, got ${typeOf(entry.destinations)}`);
+      } else {
+        entry.destinations.forEach((destination, destinationIndex) => {
+          const destinationBase = `${base}.destinations[${destinationIndex}]`;
+          if (!isPlainObject(destination)) {
+            errors.push(`${destinationBase}: expected object, got ${typeOf(destination)}`);
+            return;
+          }
+          for (const [key, expected] of [
+            ['name', 'string'],
+            ['x', 'number'],
+            ['z', 'number'],
+            ['radius', 'number'],
+          ] as const) {
+            if (typeOf(destination[key]) !== expected) {
+              errors.push(
+                `${destinationBase}.${key}: expected ${expected}, got ${typeOf(destination[key])}`,
+              );
+            }
+          }
+          if (
+            typeof destination.name === 'string'
+            && destination.name.trim().length === 0
+          ) {
+            errors.push(`${destinationBase}.name: expected non-empty string`);
+          }
+          for (const key of ['x', 'z'] as const) {
+            if (
+              typeof destination[key] === 'number'
+              && !Number.isFinite(destination[key])
+            ) {
+              errors.push(`${destinationBase}.${key}: expected finite number`);
+            }
+          }
+          if (
+            typeof destination.radius === 'number'
+            && (!Number.isFinite(destination.radius) || destination.radius <= 0)
+          ) {
+            errors.push(`${destinationBase}.radius: expected positive finite number`);
+          }
+        });
+      }
+    }
+    if (entry.corridors !== undefined) {
+      if (!Array.isArray(entry.corridors)) {
+        errors.push(`${base}.corridors: expected array, got ${typeOf(entry.corridors)}`);
+      } else {
+        entry.corridors.forEach((corridor, corridorIndex) => {
+          const corridorBase = `${base}.corridors[${corridorIndex}]`;
+          if (!isPlainObject(corridor)) {
+            errors.push(`${corridorBase}: expected object, got ${typeOf(corridor)}`);
+            return;
+          }
+          if (typeof corridor.name !== 'string') {
+            errors.push(`${corridorBase}.name: expected string, got ${typeOf(corridor.name)}`);
+          } else if (corridor.name.trim().length === 0) {
+            errors.push(`${corridorBase}.name: expected non-empty string`);
+          }
+          if (typeof corridor.width !== 'number') {
+            errors.push(`${corridorBase}.width: expected number, got ${typeOf(corridor.width)}`);
+          } else if (!Number.isFinite(corridor.width) || corridor.width <= 0) {
+            errors.push(`${corridorBase}.width: expected positive finite number`);
+          }
+          if (!Array.isArray(corridor.waypoints)) {
+            errors.push(
+              `${corridorBase}.waypoints: expected array, got ${typeOf(corridor.waypoints)}`,
+            );
+            return;
+          }
+          if (corridor.waypoints.length < 2) {
+            errors.push(`${corridorBase}.waypoints: expected at least two waypoints`);
+          }
+          corridor.waypoints.forEach((waypoint, waypointIndex) => {
+            const waypointBase = `${corridorBase}.waypoints[${waypointIndex}]`;
+            if (!isPlainObject(waypoint)) {
+              errors.push(`${waypointBase}: expected object, got ${typeOf(waypoint)}`);
+              return;
+            }
+            if (typeof waypoint.x !== 'number') {
+              errors.push(`${waypointBase}.x: expected number, got ${typeOf(waypoint.x)}`);
+            } else if (!Number.isFinite(waypoint.x)) {
+              errors.push(`${waypointBase}.x: expected finite number`);
+            }
+            if (typeof waypoint.z !== 'number') {
+              errors.push(`${waypointBase}.z: expected number, got ${typeOf(waypoint.z)}`);
+            } else if (!Number.isFinite(waypoint.z)) {
+              errors.push(`${waypointBase}.z: expected finite number`);
+            }
+          });
+        });
+      }
+    }
+  });
+}
+
 export type ValidateConfigResult =
   | { ok: true; config: Config; warnings: string[] }
   | { ok: false; errors: string[]; warnings: string[] };
@@ -664,6 +819,9 @@ export function validateConfig(raw: unknown): ValidateConfigResult {
     if (Object.prototype.hasOwnProperty.call(llm, 'providers') && llm.providers !== undefined) {
       checkLlmProviders(llm.providers, errors);
     }
+  }
+  if (Object.prototype.hasOwnProperty.call(raw, 'leash')) {
+    checkLeash(raw.leash, errors);
   }
 
   if (errors.length > 0) {

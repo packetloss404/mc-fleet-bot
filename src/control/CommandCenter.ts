@@ -567,8 +567,12 @@ export class CommandCenter {
         if (x == null || y == null || z == null) {
           throw { code: 'MISSING_PARAM', message: 'x, y, z coordinates are required' } as CommandError;
         }
-        worker.sendCommand('walkTo', { x, y, z });
-        return { walkingTo: { x, y, z } };
+        const range = params.range == null ? 2 : Number(params.range);
+        if (!Number.isFinite(range) || range < 0 || range > 4) {
+          throw { code: 'INVALID_PARAM', message: 'range must be between 0 and 4' } as CommandError;
+        }
+        worker.sendCommand('walkTo', { x, y, z, range });
+        return { walkingTo: { x, y, z, range } };
       }
 
       case 'move_to_marker': {

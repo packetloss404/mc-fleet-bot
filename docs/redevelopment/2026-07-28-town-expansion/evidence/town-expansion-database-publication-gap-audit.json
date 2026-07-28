@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "status": "BASELINE_DATABASE_PRESENT_TOWN_EXPANSION_NOT_IMPORTED",
+  "generatedAtUtc": "2026-07-28T05:33:00Z",
+  "auditType": "read-only SQLite census",
+  "liveWorldMutated": false,
+  "databases": {
+    "worldMap": {
+      "path": "data/world-map.db",
+      "sha256": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+      "purpose": "World-feature catalog, scans, observations, geometry and evidence attributes",
+      "tables": {
+        "world_features": 875,
+        "feature_observations": 1881,
+        "world_scans": 23
+      },
+      "featureStatus": {
+        "complete": 874,
+        "removed": 1
+      },
+      "featuresWithScreenshotMediaOrCameraTextInAttributes": 137,
+      "townExpansionTePrefixedOrTownExpansionProjectFeatures": 0,
+      "projects": {
+        "approach-road": 2,
+        "mainstreet-america": 631,
+        "raven-rock": 81,
+        "ravensgate": 13,
+        "ravensreach": 63,
+        "westlight-district": 59,
+        "westlight-venue": 26
+      },
+      "latestAcceptedObserver": "codex-wave2-release-import",
+      "latestAcceptedSnapshot": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region:sha256=d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999"
+    },
+    "town": {
+      "path": "data/town.db",
+      "sha256": "15978d0c1416a779ef0fb165abb8a18cd06cc8c2f017d0d1f6f48d1cf25b7621",
+      "purpose": "Town-builder operational state, residents, events, chronicle and its smaller authored building registry",
+      "tables": {
+        "towns": 1,
+        "districts": 1,
+        "buildings": 12,
+        "residents": 5,
+        "events": 6288,
+        "chronicle_entries": 190
+      }
+    }
+  },
+  "townExpansionCompilerPublication": {
+    "compilerSha256AtAudit": "d0409e524a756eca5c23ce641a897cfe353544f0f2e1095bf11c3800eb4fb3ef",
+    "globalObjectRecords": 13,
+    "globalObjectRecordScope": "Gilded Raven theatre/owner-route records only",
+    "matchedCameraCandidates": 26,
+    "databaseImporterPresentForTownExpansion": false,
+    "postReleaseSnapshotPresent": false,
+    "postReleaseMatchedMediaPresent": false
+  },
+  "decision": {
+    "databaseWasUpdatedAsTownExpansionDesignChanged": false,
+    "reason": "The package is still blocked design/model work. Importing planned geometry as complete would corrupt as-built truth.",
+    "requiredSequence": [
+      "Freeze final compiler and binding schedules.",
+      "Generate a complete release-object registry for every built scope and subobject.",
+      "Pass exact-state preflight, protected-entity/fluid/gravity gates and coordinated live transaction.",
+      "Capture and accept immutable post-release snapshot and route/interior QA.",
+      "Capture every object using linked first-pass camera IDs, repair defects, then capture same-camera second pass.",
+      "Run a dedicated guarded town-expansion importer that records the accepted post snapshot, transaction, QA and media hashes.",
+      "Regenerate world catalog, object-to-media crosswalk, maps, dossier and Sites payload from that accepted database state."
+    ]
+  }
+}

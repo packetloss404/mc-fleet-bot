@@ -1,0 +1,396 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "MANAGER-VALE-FIVE-COTTAGE-INTEGRATION-HANDOFF-R1",
+  "status": "READY_FOR_POST_C01_GENERATOR_INTEGRATION",
+  "liveWorldMutated": false,
+  "module": "scripts/manager_vale_cottage_compiler.mjs",
+  "exportName": "compileManagerValeCottages",
+  "sourceSchedule": {
+    "path": "docs/redevelopment/2026-07-28-town-expansion/worker-town-all-role-cottages-mini-mansion-coordinate-schedule.json",
+    "sha256": "9406e524b6d5ef36a42ab7ef553d0cec32e14942be1025036cffa16824ffad51",
+    "schemaVersion": "3.0.0"
+  },
+  "sourceSnapshot": {
+    "directory": "data/worldsnap-town-expansion-frozen-rebase-20260728T141025Z/region",
+    "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)",
+    "sha256": "de807a2d4a1cb597bd259d55d1d7c0cda8b710af5017497e75660c8a976603f5",
+    "regionFileCount": 30,
+    "members": [
+      {
+        "file": "r.-1.-1.mca",
+        "bytes": 9848223,
+        "sha256": "fc9fbdc4ae2d7cff2fb3af46adae5dbb2082d6fb4dcf12bf4d4b2b1f22bb61f2"
+      },
+      {
+        "file": "r.-1.-2.mca",
+        "bytes": 7516987,
+        "sha256": "a1e8c0abe87a65d3e3bf141f5ce24d2a747cba306ad4bcc99a3b804b739e8592"
+      },
+      {
+        "file": "r.-1.-3.mca",
+        "bytes": 5919719,
+        "sha256": "9e7fd834ff0335851083b32ccb5dd38ac7d3cb45b9339a9d90acf4243a7a7b57"
+      },
+      {
+        "file": "r.-1.-4.mca",
+        "bytes": 500120,
+        "sha256": "05895df2faf07daaf769e1eb60c0d859827a3bb8496ca3bdf1f4b43bf5b41906"
+      },
+      {
+        "file": "r.-1.0.mca",
+        "bytes": 8744960,
+        "sha256": "63bf1d712a69db71050a3297fe6ac4cd73935eefe03cf22c6eeb926e73c9563d"
+      },
+      {
+        "file": "r.-1.1.mca",
+        "bytes": 1654784,
+        "sha256": "c4d63e4c42d77783b66919501d3f2a8f2562779796683144744e5941078a87ba"
+      },
+      {
+        "file": "r.-2.-1.mca",
+        "bytes": 6034760,
+        "sha256": "d8e4936033f747c4f82eb4ae9423f058a1a48b7a628d4e773dc5d1fab69315bd"
+      },
+      {
+        "file": "r.-2.-2.mca",
+        "bytes": 5866352,
+        "sha256": "250011881cc1b2b626802c8cf6a555b9953bae5d93430b6ac674c76e48d9e84a"
+      },
+      {
+        "file": "r.-2.-3.mca",
+        "bytes": 29080,
+        "sha256": "fcf4277e47e49d194b8aed196483e7db66da06ec3d47de67262f819ae88bd300"
+      },
+      {
+        "file": "r.-2.0.mca",
+        "bytes": 1511424,
+        "sha256": "165dce3826262e8f1f47c5ccb9031c7fba4d1fc0e88864904c85b10eb188bfef"
+      },
+      {
+        "file": "r.-2.1.mca",
+        "bytes": 163840,
+        "sha256": "11e0d6a509a7dee8510bfeec578a31195fb4bd7628b2ec7e949d25edee7e3609"
+      },
+      {
+        "file": "r.-3.-1.mca",
+        "bytes": 323996,
+        "sha256": "e96dc92da22321e54f367a5c6b79798f97925997d547b2a49bcd692f6a7fcdf5"
+      },
+      {
+        "file": "r.-3.-2.mca",
+        "bytes": 729500,
+        "sha256": "49248ddf178e28c76ca80d205a19a5096256355d70441e1bd77ce9fd5950d45a"
+      },
+      {
+        "file": "r.0.-1.mca",
+        "bytes": 9097216,
+        "sha256": "e71f52246d7e4b3616222d77102efd50bf8c50b4a252211a0040499766fdfa3b"
+      },
+      {
+        "file": "r.0.-2.mca",
+        "bytes": 8118887,
+        "sha256": "38eabc6b86669244ef4c7f2abf69a154986cbfb704d840991addf87d2b39d09f"
+      },
+      {
+        "file": "r.0.-3.mca",
+        "bytes": 7485011,
+        "sha256": "53920c34747941c2c08aada5663be623a7e57f220fcbfecdd71f7a8227481f20"
+      },
+      {
+        "file": "r.0.-4.mca",
+        "bytes": 834003,
+        "sha256": "4b8b91409174846f709b24cdca4cd88075d2cbe5aaf6a2ae984de682ec56b6e2"
+      },
+      {
+        "file": "r.0.0.mca",
+        "bytes": 8659889,
+        "sha256": "113a532db868138f6bfe26658406cd4af4e953506bee36590abee903a5e61954"
+      },
+      {
+        "file": "r.0.1.mca",
+        "bytes": 3551232,
+        "sha256": "4cb0dd02baf8711ce12c9f7c6ca9026667aa03d0da27ec51abd51b25b7e0f457"
+      },
+      {
+        "file": "r.1.-1.mca",
+        "bytes": 10552036,
+        "sha256": "cce486625a928dbbd32fbe59417f548026c15f85d9872ec00e1b82216b366a3a"
+      },
+      {
+        "file": "r.1.-2.mca",
+        "bytes": 6738104,
+        "sha256": "2d70cfaf64c6a2a0e3e2d4ad79c41c120954f4eeb588ee44f2b5bb7b4729e577"
+      },
+      {
+        "file": "r.1.-3.mca",
+        "bytes": 373149,
+        "sha256": "6000342de6bda60d344a5d59f8a46a73767af2b0d471a0ea1680ef9a53cfcd5f"
+      },
+      {
+        "file": "r.1.0.mca",
+        "bytes": 7860694,
+        "sha256": "62c2c35ad17c4a283fbc6c959a798201f2b20b6696ccf70f49a0b54919edd447"
+      },
+      {
+        "file": "r.1.1.mca",
+        "bytes": 4841472,
+        "sha256": "ed6b6e54fe24d76a8e273c88e65fa4c6d0b89aa01c90a798a29d7cb60d001cee"
+      },
+      {
+        "file": "r.1.2.mca",
+        "bytes": 212992,
+        "sha256": "9cebe13b5116d52dada07bbe82c772a2a756fa7b46c6f88e93034fd7fec226d6"
+      },
+      {
+        "file": "r.2.-1.mca",
+        "bytes": 8444196,
+        "sha256": "23c314d4782ab35dee7d27130ead607b6372a16e19e2bc9f3a50ea3f96738c79"
+      },
+      {
+        "file": "r.2.-2.mca",
+        "bytes": 3708290,
+        "sha256": "cc1501c687721902ecd25b16539df1773aff998d43f99e0a1433372802ab8bec"
+      },
+      {
+        "file": "r.2.0.mca",
+        "bytes": 2352557,
+        "sha256": "9490830c62f040d72a7ab23dd9738b5cd79adfe508fd77771ea2a22fa8536032"
+      },
+      {
+        "file": "r.2.1.mca",
+        "bytes": 212992,
+        "sha256": "2592cd89f49d311df1f67d08665626a651f732709a01e593085dba0bdf5385c6"
+      },
+      {
+        "file": "r.2.2.mca",
+        "bytes": 2781184,
+        "sha256": "7012277828611862b0587423b352d701138562e1f934e45929378a4808a709f2"
+      }
+    ],
+    "designBaselineSha256": "f9a6a21ec115bd556d7626a9b18151b38d1d4f145226c9e3f741de636528eb8e",
+    "expectedSha256": "de807a2d4a1cb597bd259d55d1d7c0cda8b710af5017497e75660c8a976603f5",
+    "hashMatched": true
+  },
+  "counts": {
+    "cottages": 5,
+    "bays": 24,
+    "rooms": 55,
+    "cameras": 45,
+    "blockEntities": 41,
+    "furnishings": 406,
+    "privateSuites": 5,
+    "privateSuiteFixtures": 35,
+    "attachedGarages": 5,
+    "garageDoorOpenings": 24,
+    "garageTurningEnvelopes": 5,
+    "garageStreetRoutes": 5,
+    "mainStairs": 5,
+    "remoteStairs": 5,
+    "roads": 3,
+    "databaseFeatures": 68,
+    "databaseBuildings": 5,
+    "databaseRooms": 55,
+    "databaseGarages": 5,
+    "databaseRoads": 3
+  },
+  "garageCapacityByHouse": {
+    "RRCH-ARCHITECT": 6,
+    "RRCH-STEWARD": 6,
+    "RRCH-MASON": 4,
+    "RRCH-SURVEYOR": 4,
+    "RRCH-SCOUT": 4
+  },
+  "identityCrosswalk": {
+    "occupantFacingName": "Scott",
+    "residenceName": "Scott House mini-mansion",
+    "historicalExternalIdAlias": "RRCH-SCOUT",
+    "migrationMode": "atomic-crosswalk-no-duplicate-resident"
+  },
+  "protectedMigration": {
+    "ledgerId": "MANAGER-VALE-FIVE-COTTAGE-PROTECTED-BE-LEDGER-R1",
+    "protectedBlockEntities": 41,
+    "inventories": 2,
+    "itemStacks": 2,
+    "itemCount": 36,
+    "byType": {
+      "minecraft:barrel": 9,
+      "minecraft:bed": 11,
+      "minecraft:chest": 10,
+      "minecraft:chiseled_bookshelf": 1,
+      "minecraft:furnace": 7,
+      "minecraft:lectern": 3
+    },
+    "sourceRetirementIncluded": false,
+    "sourceRetirementOperationCount": 0,
+    "checks": {
+      "exactProtectedCount": true,
+      "uniqueSourceCoordinates": true,
+      "uniqueDestinationCoordinates": true,
+      "everySourceTypedNbtHashed": true,
+      "everyDestinationTypedNbtHashed": true,
+      "everyCopyGuarded": true,
+      "noSourceRetirementCommands": true
+    }
+  },
+  "privateSuiteDesign": {
+    "suiteCount": 5,
+    "scheduledFixtureGroups": 35,
+    "fixtureGroupsPerSuite": {
+      "RRCH-ARCHITECT": 7,
+      "RRCH-MASON": 7,
+      "RRCH-SURVEYOR": 7,
+      "RRCH-STEWARD": 7,
+      "RRCH-SCOUT": 7
+    },
+    "themes": {
+      "RRCH-ARCHITECT": {
+        "id": "art-deco-observation-suite",
+        "palette": [
+          "polished_blackstone",
+          "quartz",
+          "copper",
+          "cyan_glass"
+        ],
+        "accentBlock": "minecraft:oxidized_cut_copper"
+      },
+      "RRCH-MASON": {
+        "id": "blackened-steel-studio",
+        "palette": [
+          "polished_blackstone",
+          "iron",
+          "gray_wool",
+          "crimson"
+        ],
+        "accentBlock": "minecraft:polished_blackstone"
+      },
+      "RRCH-SURVEYOR": {
+        "id": "spa-suite",
+        "palette": [
+          "calcite",
+          "quartz",
+          "pale_wood",
+          "copper"
+        ],
+        "accentBlock": "minecraft:calcite"
+      },
+      "RRCH-STEWARD": {
+        "id": "gothic-library-salon",
+        "palette": [
+          "deepslate_tile",
+          "dark_oak",
+          "red_carpet",
+          "warm_lantern"
+        ],
+        "accentBlock": "minecraft:deepslate_tiles"
+      },
+      "RRCH-SCOUT": {
+        "id": "red-velvet-salon",
+        "palette": [
+          "crimson_wool",
+          "dark_oak",
+          "blackstone",
+          "warm_lantern"
+        ],
+        "accentBlock": "minecraft:crimson_planks"
+      }
+    },
+    "requiredFixtureTypes": [
+      "VESTIBULE",
+      "CANOPY-BED",
+      "CHAISE",
+      "RATED-SUSPENDED-LOUNGE",
+      "CLOSED-TOY-STORAGE",
+      "DRESSING-VANITY",
+      "WASH"
+    ],
+    "everySuiteHasRequiredAnatomy": true,
+    "cameraCrosswalk": [
+      {
+        "cottageId": "RRCH-ARCHITECT",
+        "roomId": "ARC-L2-RED-SUITE",
+        "themeId": "art-deco-observation-suite",
+        "privacyAndWayfindingContextCameraId": "ARC-AFTER-UPPER",
+        "interiorFurnitureCameraId": "ARC-AFTER-PRIVATE",
+        "exactGeometryRequired": true,
+        "contentReviewRequired": true
+      },
+      {
+        "cottageId": "RRCH-MASON",
+        "roomId": "MAS-L2-RED-SUITE",
+        "themeId": "blackened-steel-studio",
+        "privacyAndWayfindingContextCameraId": "MAS-AFTER-UPPER",
+        "interiorFurnitureCameraId": "MAS-AFTER-PRIVATE",
+        "exactGeometryRequired": true,
+        "contentReviewRequired": true
+      },
+      {
+        "cottageId": "RRCH-SURVEYOR",
+        "roomId": "SUR-L2-RED-SUITE",
+        "themeId": "spa-suite",
+        "privacyAndWayfindingContextCameraId": "SUR-AFTER-UPPER",
+        "interiorFurnitureCameraId": "SUR-AFTER-PRIVATE",
+        "exactGeometryRequired": true,
+        "contentReviewRequired": true
+      },
+      {
+        "cottageId": "RRCH-STEWARD",
+        "roomId": "STW-L2-RED-SUITE",
+        "themeId": "gothic-library-salon",
+        "privacyAndWayfindingContextCameraId": "STW-AFTER-UPPER",
+        "interiorFurnitureCameraId": "STW-AFTER-PRIVATE",
+        "exactGeometryRequired": true,
+        "contentReviewRequired": true
+      },
+      {
+        "cottageId": "RRCH-SCOUT",
+        "roomId": "SCO-L2-RED-SUITE",
+        "themeId": "red-velvet-salon",
+        "privacyAndWayfindingContextCameraId": "SCO-AFTER-UPPER",
+        "interiorFurnitureCameraId": "SCO-AFTER-PRIVATE",
+        "exactGeometryRequired": true,
+        "contentReviewRequired": true
+      }
+    ],
+    "contentBoundary": "architecture, furniture, lighting, privacy, hospitality, storage and wash zones only; no figures, anatomy, explicit imagery or depicted acts"
+  },
+  "overrideAudit": {
+    "eventCount": 24458,
+    "byClassification": {
+      "planned-same-cottage-model-layer": 24458
+    },
+    "unreviewedCrossScopeOverrides": 0,
+    "unreviewedExamples": []
+  },
+  "integrationOrder": [
+    "wait until C01 finishes ownership of scripts/generate_town_expansion_r1.mjs",
+    "import compileManagerValeCottages from the dedicated module",
+    "require the exact immutable snapshot hash before merging target cells",
+    "reject any cross-package target-cell intersection",
+    "merge the one-cell exact commission transaction and database features",
+    "run strict-noop preflight and live clearance gates",
+    "commission roads, buildings, garages, rooms, stairs and furnishings",
+    "copy and verify all 41 protected block entities",
+    "commission route, database and 45-camera evidence",
+    "retire old cottages only through a later separately reviewed transaction"
+  ],
+  "sourceRetirementIncluded": false,
+  "sourceRetirementOperationCount": 0,
+  "artifacts": {
+    "report": {
+      "path": "data/buildops/manager-vale-five-cottages-2026-07-28.report.json",
+      "sha256": "a14ade1686e422cc2347b40dd5d254d91239ce27a60ef422fdc280638ba90b50"
+    },
+    "forward": {
+      "path": "data/buildops/manager-vale-five-cottages-2026-07-28.txt",
+      "sha256": "b6a37a4c98fc117d2a6f7d2af360091ab75b9ce197f3b964c0b6350838100c96"
+    },
+    "rollback": {
+      "path": "data/buildops/manager-vale-five-cottages-2026-07-28.rollback.txt",
+      "sha256": "3a8cc167d0247fdfbed2e03789cad6c7b8999adcfc1fc3afb6f615faecfdfc81"
+    },
+    "migrationLedger": {
+      "path": "data/buildops/manager-vale-five-cottages-2026-07-28.nbt-ledger.json",
+      "sha256": "193d826e4da44b9fa7feda74278d764a11fda685de6412af3006a713ddb76e3c"
+    }
+  }
+}

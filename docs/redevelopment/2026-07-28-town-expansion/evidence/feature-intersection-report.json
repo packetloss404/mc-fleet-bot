@@ -1,0 +1,557 @@
+{
+  "schemaVersion": 1,
+  "status": "READ_ONLY_DATABASE_INTERSECTION_AUDIT",
+  "sourceSchedule": "docs/redevelopment/2026-07-28-town-expansion/coordinate-schedule.json",
+  "database": "data/world-map.db",
+  "databaseSha256": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+  "parcels": [
+    {
+      "id": "TE-PENTHOUSE-01",
+      "bounds": {
+        "minX": -99,
+        "maxX": -71,
+        "minY": 87,
+        "maxY": 98,
+        "minZ": -391,
+        "maxZ": -367
+      },
+      "intersections": [
+        {
+          "project_id": "ravensreach",
+          "external_id": "RRCH-MOOT",
+          "name": "Moot Hall and Sanctum stack",
+          "kind": "building",
+          "status": "complete",
+          "min_x": -100,
+          "max_x": -70,
+          "min_z": -392,
+          "max_z": -341,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "ravensreach",
+          "external_id": "RRCH-TOWN-HALL",
+          "name": "Original Town Hall shell within Moot Hall",
+          "kind": "building",
+          "status": "complete",
+          "min_x": -98,
+          "max_x": -72,
+          "min_z": -381,
+          "max_z": -368,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "ravensreach",
+          "external_id": "RRCH-MOOT:CIRCULATION",
+          "name": "Moot Hall and Sanctum stack vertical circulation",
+          "kind": "custom",
+          "status": "complete",
+          "min_x": -100,
+          "max_x": -70,
+          "min_z": -392,
+          "max_z": -341,
+          "source_ref": "data/world-review/worldwide-interior-wave3-post-census-2026-07-27.json"
+        },
+        {
+          "project_id": "ravensreach",
+          "external_id": "RRCH-TOWN-HALL:CIRCULATION",
+          "name": "Original Town Hall shell within Moot Hall vertical circulation",
+          "kind": "custom",
+          "status": "complete",
+          "min_x": -98,
+          "max_x": -72,
+          "min_z": -381,
+          "max_z": -368,
+          "source_ref": "data/world-review/worldwide-interior-wave3-post-census-2026-07-27.json"
+        },
+        {
+          "project_id": "ravensreach",
+          "external_id": "ravensreach:DISTRICT",
+          "name": "Ravensreach",
+          "kind": "district",
+          "status": "complete",
+          "min_x": -147,
+          "max_x": -40,
+          "min_z": -451,
+          "max_z": -324,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        }
+      ]
+    },
+    {
+      "id": "TE-LONGHOUSE-01",
+      "bounds": {
+        "minX": -104,
+        "maxX": -75,
+        "minY": 67,
+        "maxY": 88,
+        "minZ": -356,
+        "maxZ": -342
+      },
+      "intersections": [
+        {
+          "project_id": "ravensreach",
+          "external_id": "RRCH-MOOT",
+          "name": "Moot Hall and Sanctum stack",
+          "kind": "building",
+          "status": "complete",
+          "min_x": -100,
+          "max_x": -70,
+          "min_z": -392,
+          "max_z": -341,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "ravensreach",
+          "external_id": "RRCH-MOOT:CIRCULATION",
+          "name": "Moot Hall and Sanctum stack vertical circulation",
+          "kind": "custom",
+          "status": "complete",
+          "min_x": -100,
+          "max_x": -70,
+          "min_z": -392,
+          "max_z": -341,
+          "source_ref": "data/world-review/worldwide-interior-wave3-post-census-2026-07-27.json"
+        },
+        {
+          "project_id": "ravensreach",
+          "external_id": "ravensreach:DISTRICT",
+          "name": "Ravensreach",
+          "kind": "district",
+          "status": "complete",
+          "min_x": -147,
+          "max_x": -40,
+          "min_z": -451,
+          "max_z": -324,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        }
+      ]
+    },
+    {
+      "id": "TE-COURT-01",
+      "bounds": {
+        "minX": -105,
+        "maxX": -67,
+        "minY": 67,
+        "maxY": 75,
+        "minZ": -365,
+        "maxZ": -357
+      },
+      "intersections": [
+        {
+          "project_id": "ravensreach",
+          "external_id": "RRCH-MOOT",
+          "name": "Moot Hall and Sanctum stack",
+          "kind": "building",
+          "status": "complete",
+          "min_x": -100,
+          "max_x": -70,
+          "min_z": -392,
+          "max_z": -341,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "ravensreach",
+          "external_id": "RRCH-MOOT:CIRCULATION",
+          "name": "Moot Hall and Sanctum stack vertical circulation",
+          "kind": "custom",
+          "status": "complete",
+          "min_x": -100,
+          "max_x": -70,
+          "min_z": -392,
+          "max_z": -341,
+          "source_ref": "data/world-review/worldwide-interior-wave3-post-census-2026-07-27.json"
+        },
+        {
+          "project_id": "ravensreach",
+          "external_id": "ravensreach:DISTRICT",
+          "name": "Ravensreach",
+          "kind": "district",
+          "status": "complete",
+          "min_x": -147,
+          "max_x": -40,
+          "min_z": -451,
+          "max_z": -324,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        }
+      ]
+    },
+    {
+      "id": "TE-LIBRARY-04X",
+      "bounds": {
+        "minX": -178,
+        "maxX": -111,
+        "minY": 46,
+        "maxY": 98,
+        "minZ": -448,
+        "maxZ": -403
+      },
+      "intersections": [
+        {
+          "project_id": "ravensgate",
+          "external_id": "RG-LOGGIA",
+          "name": "Library loggia",
+          "kind": "building",
+          "status": "complete",
+          "min_x": -111,
+          "max_x": -106,
+          "min_z": -447,
+          "max_z": -433,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "ravensgate",
+          "external_id": "ravensgate:DISTRICT",
+          "name": "Ravensgate",
+          "kind": "district",
+          "status": "complete",
+          "min_x": -148,
+          "max_x": -64,
+          "min_z": -562,
+          "max_z": -420,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "ravensreach",
+          "external_id": "RRCH-LIBRARY",
+          "name": "Six-level civic library",
+          "kind": "building",
+          "status": "complete",
+          "min_x": -144,
+          "max_x": -111,
+          "min_z": -448,
+          "max_z": -426,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "ravensreach",
+          "external_id": "RRCH-LIBRARY:CIRCULATION",
+          "name": "Six-level civic library vertical circulation",
+          "kind": "custom",
+          "status": "complete",
+          "min_x": -144,
+          "max_x": -111,
+          "min_z": -448,
+          "max_z": -426,
+          "source_ref": "data/world-review/worldwide-interior-wave3-post-census-2026-07-27.json"
+        },
+        {
+          "project_id": "ravensreach",
+          "external_id": "ravensreach:DISTRICT",
+          "name": "Ravensreach",
+          "kind": "district",
+          "status": "complete",
+          "min_x": -147,
+          "max_x": -40,
+          "min_z": -451,
+          "max_z": -324,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        }
+      ]
+    },
+    {
+      "id": "TE-LIBRARY-TERRACE",
+      "bounds": {
+        "minX": -110,
+        "maxX": -96,
+        "minY": 67,
+        "maxY": 75,
+        "minZ": -447,
+        "maxZ": -433
+      },
+      "intersections": [
+        {
+          "project_id": "ravensgate",
+          "external_id": "RG-LOGGIA",
+          "name": "Library loggia",
+          "kind": "building",
+          "status": "complete",
+          "min_x": -111,
+          "max_x": -106,
+          "min_z": -447,
+          "max_z": -433,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "ravensgate",
+          "external_id": "ravensgate:DISTRICT",
+          "name": "Ravensgate",
+          "kind": "district",
+          "status": "complete",
+          "min_x": -148,
+          "max_x": -64,
+          "min_z": -562,
+          "max_z": -420,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "ravensreach",
+          "external_id": "ravensreach:DISTRICT",
+          "name": "Ravensreach",
+          "kind": "district",
+          "status": "complete",
+          "min_x": -147,
+          "max_x": -40,
+          "min_z": -451,
+          "max_z": -324,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        }
+      ]
+    },
+    {
+      "id": "TE-GUILDHALL-01",
+      "bounds": {
+        "minX": -59,
+        "maxX": -7,
+        "minY": 53,
+        "maxY": 93,
+        "minZ": -462,
+        "maxZ": -418
+      },
+      "intersections": [
+        {
+          "project_id": "ravensreach",
+          "external_id": "ravensreach:DISTRICT",
+          "name": "Ravensreach",
+          "kind": "district",
+          "status": "complete",
+          "min_x": -147,
+          "max_x": -40,
+          "min_z": -451,
+          "max_z": -324,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        }
+      ]
+    },
+    {
+      "id": "TE-ROAD-01",
+      "bounds": {
+        "minX": -352,
+        "maxX": -148,
+        "minY": 62,
+        "maxY": 82,
+        "minZ": -513,
+        "maxZ": -480
+      },
+      "intersections": [
+        {
+          "project_id": "approach-road",
+          "external_id": "approach-road:DISTRICT",
+          "name": "Western Approach Road",
+          "kind": "district",
+          "status": "complete",
+          "min_x": -352,
+          "max_x": -148,
+          "min_z": -509,
+          "max_z": -484,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "approach-road",
+          "external_id": "APPROACH-ROAD:PRIMARY",
+          "name": "Ravensgate to Westlight Approach Road",
+          "kind": "road",
+          "status": "complete",
+          "min_x": -347.5,
+          "max_x": -144.5,
+          "min_z": -509.5,
+          "max_z": -482.5,
+          "source_ref": "builds/manifest.yaml#approach-road"
+        },
+        {
+          "project_id": "ravensgate",
+          "external_id": "ravensgate:DISTRICT",
+          "name": "Ravensgate",
+          "kind": "district",
+          "status": "complete",
+          "min_x": -148,
+          "max_x": -64,
+          "min_z": -562,
+          "max_z": -420,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "westlight-district",
+          "external_id": "WD-FERRY",
+          "name": "Ferry Bell House",
+          "kind": "building",
+          "status": "complete",
+          "min_x": -316,
+          "max_x": -302,
+          "min_z": -482,
+          "max_z": -466,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "westlight-district",
+          "external_id": "WD-GATEHEAD",
+          "name": "Gatehead House",
+          "kind": "building",
+          "status": "complete",
+          "min_x": -334,
+          "max_x": -320,
+          "min_z": -492,
+          "max_z": -476,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "westlight-district",
+          "external_id": "WD-LANTERN",
+          "name": "Lantern Hall",
+          "kind": "building",
+          "status": "complete",
+          "min_x": -334,
+          "max_x": -318,
+          "min_z": -514,
+          "max_z": -500,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "westlight-district",
+          "external_id": "WD-SKIFF",
+          "name": "Skiff House",
+          "kind": "building",
+          "status": "complete",
+          "min_x": -286,
+          "max_x": -274,
+          "min_z": -512,
+          "max_z": -502,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "westlight-district",
+          "external_id": "WD-GATEHEAD:CIRCULATION",
+          "name": "Gatehead House vertical circulation",
+          "kind": "custom",
+          "status": "complete",
+          "min_x": -334,
+          "max_x": -320,
+          "min_z": -492,
+          "max_z": -476,
+          "source_ref": "data/world-review/worldwide-interior-wave3-post-census-2026-07-27.json"
+        },
+        {
+          "project_id": "westlight-district",
+          "external_id": "westlight-district:DISTRICT",
+          "name": "Westlight District",
+          "kind": "district",
+          "status": "complete",
+          "min_x": -429,
+          "max_x": -260,
+          "min_z": -556,
+          "max_z": -445,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "westlight-venue",
+          "external_id": "WL-BOWL",
+          "name": "Stadium bowl and concourses",
+          "kind": "building",
+          "status": "complete",
+          "min_x": -429,
+          "max_x": -291,
+          "min_z": -629,
+          "max_z": -491,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "westlight-venue",
+          "external_id": "WL-THEATRE",
+          "name": "Below-grade theatre and lobbies",
+          "kind": "building",
+          "status": "complete",
+          "min_x": -421,
+          "max_x": -299,
+          "min_z": -613,
+          "max_z": -498,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "westlight-venue",
+          "external_id": "WL-BOWL:CIRCULATION",
+          "name": "Stadium bowl and concourses vertical circulation",
+          "kind": "custom",
+          "status": "complete",
+          "min_x": -429,
+          "max_x": -291,
+          "min_z": -629,
+          "max_z": -491,
+          "source_ref": "data/world-review/worldwide-interior-wave3-post-census-2026-07-27.json"
+        },
+        {
+          "project_id": "westlight-venue",
+          "external_id": "WL-THEATRE:CIRCULATION",
+          "name": "Below-grade theatre and lobbies vertical circulation",
+          "kind": "custom",
+          "status": "complete",
+          "min_x": -421,
+          "max_x": -299,
+          "min_z": -613,
+          "max_z": -498,
+          "source_ref": "data/world-review/worldwide-interior-wave3-post-census-2026-07-27.json"
+        },
+        {
+          "project_id": "westlight-venue",
+          "external_id": "westlight-venue:DISTRICT",
+          "name": "Westlight Theatre / Stadium",
+          "kind": "district",
+          "status": "complete",
+          "min_x": -443,
+          "max_x": -272,
+          "min_z": -640,
+          "max_z": -488,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        }
+      ]
+    },
+    {
+      "id": "TE-OASIS-01",
+      "bounds": {
+        "minX": -248,
+        "maxX": -210,
+        "minY": 62,
+        "maxY": 84,
+        "minZ": -510,
+        "maxZ": -482
+      },
+      "intersections": [
+        {
+          "project_id": "approach-road",
+          "external_id": "approach-road:DISTRICT",
+          "name": "Western Approach Road",
+          "kind": "district",
+          "status": "complete",
+          "min_x": -352,
+          "max_x": -148,
+          "min_z": -509,
+          "max_z": -484,
+          "source_ref": "data/world-review/active-interior-register-2026-07-27.json"
+        },
+        {
+          "project_id": "approach-road",
+          "external_id": "APPROACH-ROAD:PRIMARY",
+          "name": "Ravensgate to Westlight Approach Road",
+          "kind": "road",
+          "status": "complete",
+          "min_x": -347.5,
+          "max_x": -144.5,
+          "min_z": -509.5,
+          "max_z": -482.5,
+          "source_ref": "builds/manifest.yaml#approach-road"
+        }
+      ]
+    },
+    {
+      "id": "TE-OASIS-BUNKER-01",
+      "bounds": {
+        "minX": -252,
+        "maxX": -220,
+        "minY": 40,
+        "maxY": 66,
+        "minZ": -548,
+        "maxZ": -515
+      },
+      "intersections": []
+    }
+  ]
+}

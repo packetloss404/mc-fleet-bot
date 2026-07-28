@@ -184,6 +184,39 @@ export function isProtected(x: number, y: number, z: number): boolean {
 }
 
 /**
+ * mineflayer-pathfinder planner hook for blocks it considers breaking.
+ *
+ * The runtime bot.dig wrapper remains the final safety boundary, but relying on
+ * that wrapper alone lets A* repeatedly choose an illegal break and only learn
+ * about the refusal during execution. A cost of 100 is pathfinder's documented
+ * hard exclusion threshold, so forbidden blocks never enter a planned route.
+ *
+ * Fail-open for malformed callback values because pathfinder supplies real
+ * Block objects and a missing position should not make every route impossible.
+ */
+export function getPathfinderBreakExclusionCost(
+  block: { position?: { x?: number; y?: number; z?: number } } | null | undefined,
+): number {
+  const p = block?.position;
+  if (
+    typeof p?.x !== 'number' || !Number.isFinite(p.x) ||
+    typeof p?.y !== 'number' || !Number.isFinite(p.y) ||
+    typeof p?.z !== 'number' || !Number.isFinite(p.z)
+  ) {
+    return 0;
+  }
+
+  const x = Math.floor(p.x);
+  const y = Math.floor(p.y);
+  const z = Math.floor(p.z);
+  return (
+    isProtected(x, y, z) ||
+    isBelowDigFloor(x, y, z) ||
+    isAboveCarveCeiling(x, y, z)
+  ) ? 100 : 0;
+}
+
+/**
  * Returns the first protected zone whose AABB overlaps the given box, or null
  * when the box is clear. Used by destructive op-command paths (e.g. the build
  * engine's `clearSite` / `/fill ... air destroy`) that bypass the per-block

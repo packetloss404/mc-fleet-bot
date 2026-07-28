@@ -1,0 +1,128 @@
+schema_version: 1
+id: mainstreet-america-redevelopment-wave2-r08
+title: Wave 2 R08 shared cross-link and district directory
+generated_for: MainStreet America redevelopment programme
+date: 2026-07-28
+
+source:
+  immutable_snapshot:
+    directory: data/worldsnap-wave2-baseline-4fca1ff3-20260728/region
+    sha256: 4fca1ff3c40ae9c24c9338483b0780678aa5966bb570a642f0d0277885331a2b
+    region_file_count: 26
+    bytes: 122744700
+  database: data/world-map.db
+  accepted_release_qa: data/world-review/redevelopment-post-deployment-qa-2026-07-27.json
+
+decision:
+  selected_defect: R06 and R07 are approximately 135 blocks apart, exceeding ST-03's 100-block connection interval and leaving no named midblock cross-link.
+  selected_package: A three-wide public shared cross-link between ALLEY-W and ALLEY-E, across R01, plus four district directory pylons.
+  classification: pedestrian/shared-street cross-link
+  standards:
+    - ST-01 connected hierarchy
+    - ST-02 three-block minimum cross street
+    - ST-03 block and connection interval
+    - ST-04 compact intersection
+    - ST-07 bidirectional walkable grade
+    - WF-02 decision information before a choice
+  rejected_alternatives:
+    - id: R08-FULL-R02-R03
+      decision: rejected
+      reason: A straight x=-80..82 connection would breach both outer neighborhood fences and create unnecessary R02/R03 curb work.
+    - id: R08-STRAIGHT-Z124
+      decision: rejected
+      reason: A straight z=-124 cross-link would remove two authored sea-lantern gateway markers and intersect the central fence at visually weak locations.
+    - id: R08-EXISTING-GATE-Z147
+      decision: rejected
+      reason: The existing five-wide central gate aligns with the registered Timbergrove and Midtown building envelopes.
+    - id: R02-WIDENING
+      decision: deferred
+      reason: The standards explicitly make widening a study, not a presumption; fence, property, and grade risk exceed this wave's benefit.
+
+geometry:
+  surface_y: 64
+  foundation_y: 63
+  road:
+    material: minecraft:gray_concrete
+    centerline_material: minecraft:yellow_concrete
+    crosswalk_material: minecraft:white_concrete
+    width: 3
+    cells:
+      - {id: west_leg, min_x: -57, max_x: -14, min_z: -125, max_z: -123}
+      - {id: west_offset, min_x: -14, max_x: -12, min_z: -127, max_z: -123}
+      - {id: central_crossing, min_x: -14, max_x: 14, min_z: -127, max_z: -125}
+      - {id: east_offset, min_x: 12, max_x: 14, min_z: -127, max_z: -123}
+      - {id: east_leg, min_x: 14, max_x: 56, min_z: -125, max_z: -123}
+    centerline:
+      - [-57, 64, -124]
+      - [-13, 64, -124]
+      - [-13, 64, -126]
+      - [13, 64, -126]
+      - [13, 64, -124]
+      - [56, 64, -124]
+    bidirectional_endpoints:
+      west: [-57, 65, -124]
+      east: [56, 65, -124]
+    connections:
+      west: ALLEY-W
+      center: R01
+      east: ALLEY-E
+  declared_gates:
+    - id: GATE-R08-WEST-MAIN
+      fence_feature: wft_53cc30021f667ec4
+      x: -8
+      min_z: -127
+      max_z: -125
+      y: 65
+    - id: GATE-R08-EAST-MAIN
+      fence_feature: wft_ba0ef8627500d517
+      x: 8
+      min_z: -127
+      max_z: -125
+      y: 65
+
+wayfinding:
+  pylons:
+    - id: R8-WF-R08-CENTRAL
+      point: [7, 64, -132]
+      rotation: 8
+      lines: [R08 CROSS-LINK, B03 NORTH, B02 VIA W ALLEY, C01 VIA E ALLEY]
+    - id: R8-WF-R08-WEST
+      point: [-63, 64, -130]
+      rotation: 4
+      lines: [WEST ALLEY, S R06 / B02, N R07 / B03, R08 / R01 >]
+    - id: R8-WF-R08-EAST
+      point: [63, 64, -130]
+      rotation: 12
+      lines: [EAST ALLEY, S R06 / C01, N R07 / B03, < R01 / R08]
+    - id: R8-WF-WESTLIGHT
+      point: [6, 64, -223]
+      rotation: 8
+      lines: [WESTLIGHT VENUE, N RAVENSREACH, THEN RAVENSGATE, W APPROACH RD]
+
+protection:
+  accepted_r1_operation_files:
+    - data/buildops/westlight-infinity-screen-2026-07-27.txt
+    - data/buildops/ravenrock-s1-section-pilot-2026-07-27.txt
+    - data/buildops/mainstreet-redevelopment-r4-r5-runtime-safe-2026-07-27.txt
+    - data/buildops/mainstreet-bunker-surface-phase1-2026-07-27.txt
+    - data/buildops/mainstreet-bunker-recessed-portal-phase2-2026-07-27.txt
+  protected_database_kinds:
+    - building
+    - room
+    - driveway
+    - landscape
+  fence_policy: Only the six exact declared gate cells may be removed. Coarse fence feature bounding boxes describe enclosed districts, not occupied fence cells.
+  block_entity_policy: No existing block entity may be targeted.
+  tree_policy: No log or leaf block may be targeted.
+
+release:
+  atomic: true
+  live_mutation_authorized_by_this_plan: false
+  required_before_any_future_live_run:
+    - refresh an immutable saved-world snapshot and regenerate exact guards
+    - pass exact guard preflight
+    - pass entity-clear gate
+    - capture same-camera before media
+    - execute forward as one strict transaction
+    - validate both route directions and all directory text
+    - retain exact rollback and test it against a disposable projection

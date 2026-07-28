@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "town-expansion-r1-program-envelope-read-only-audit",
+  "generatedAtUtc": "2026-07-28T10:01:44.040Z",
+  "status": "PASS_CURRENT_PROGRAM_ENVELOPES",
+  "readOnly": true,
+  "liveWorldMutated": false,
+  "inputs": [
+    {
+      "file": "scripts/generate_town_expansion_r1.mjs",
+      "sha256": "3bf70d81b0901de9da693315aeade04015d3feae99f99132936a910dbb20d373"
+    },
+    {
+      "file": "data/buildops/town-expansion-r1-2026-07-28.report.json",
+      "sha256": "23a3e13295e8a3227f824ef4f3fa0df9ba46e04dca041fc386d96647dc6c6ecd"
+    },
+    {
+      "file": "docs/redevelopment/2026-07-28-town-expansion/concord-broadcast-exchange-coordinate-schedule.json",
+      "sha256": "965411971a8414dd78ef88b92a55f5309be2b96966d0296bd1d50aef6ad9b0a0",
+      "status": "FROZEN_DESIGN_NOT_GENERATED_NOT_LIVE"
+    },
+    {
+      "file": "docs/redevelopment/2026-07-28-town-expansion/c01-east-relocation-coordinate-schedule.json",
+      "sha256": "1b8d148ca4a6f595e979f9a6fe884eb7271164c697af112d428dddc616bf171f",
+      "status": "INDEPENDENT_PLANNING_DECISION_NOT_A_BUILD_RELEASE"
+    },
+    {
+      "file": "docs/redevelopment/2026-07-28-town-expansion/evidence/c01-five-level-source-model-audit.json",
+      "sha256": "bd45208ae7b900cdf55adda1654143cc19442febc4cc5f096c43ce0d6dc363d5",
+      "status": "C01_MODEL_AUDIT_PASS"
+    }
+  ],
+  "summary": {
+    "findings": 0,
+    "critical": 0,
+    "high": 0,
+    "medium": 0
+  },
+  "findings": [],
+  "falsePositivesAndExclusions": [
+    {
+      "id": "EXCL-SCREEN-001",
+      "reason": "The rejected C01 arena and aircraft display are absent; L1 is the accepted underground vehicle-storage and security program."
+    },
+    {
+      "id": "EXCL-GUILD-001",
+      "reason": "Guild Hall has two basement levels, three above-grade stories, four kitchen worklines, screen-before-seat theater/lecture roles, dormitory bays, and a normal-walk stair in the generated role census. No numeric contradiction was established in this pass."
+    },
+    {
+      "id": "EXCL-WESTLIGHT-001",
+      "reason": "Westlight source declares three venues, distinct identity entries, separate backstage rooms, service loading, and vertical cores. Post-state walking/visual proof is still required, but absence of that future proof is not itself a fit contradiction."
+    },
+    {
+      "id": "EXCL-GILDED-001",
+      "reason": "The Gilded Raven theater/tunnel has a frozen exact schedule and previously passed focused generator tests; no new envelope contradiction was established here."
+    },
+    {
+      "id": "EXCL-DM-RACKS-001",
+      "reason": "The current package contains 24 DSM halls plus 20 completed Meta/Google/LightEdge-inspired halls; rack and circulation details remain subject to post-release visual QA."
+    }
+  ],
+  "limitations": [
+    "This is a static source/report/schedule comparison, not a Minecraft pathfinding or camera review.",
+    "The earlier pre-fix audit remains separate evidence; this pass evaluates the regenerated exact-state report and accepted module audits.",
+    "Schedules labeled planning/frozen are treated as promises, not as-built evidence."
+  ]
+}

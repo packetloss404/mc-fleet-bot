@@ -13,7 +13,7 @@ import { SocialMemory } from '../social/SocialMemory';
 import { BotComms } from '../social/BotComms';
 import { CultureManager } from '../social/CultureManager';
 import { BlackboardManager } from '../voyager/BlackboardManager';
-import { WorkerHandle } from '../worker/WorkerHandle';
+import { getWorkerHeartbeatAgeMs, WorkerHandle } from '../worker/WorkerHandle';
 import { SharedWorldModel } from '../voyager/SharedWorldModel';
 import { SwarmCoordinator } from '../voyager/SwarmCoordinator';
 import { DungeonMaster } from '../voyager/DungeonMaster';
@@ -23,6 +23,8 @@ import { BotReputation } from '../voyager/BotReputation';
 import { PlayerPresenceTracker } from './PlayerPresenceTracker';
 import { PlayerPositionCache } from '../control/PlayerPositionCache';
 import { TownManager } from '../town/TownManager';
+import type { Resident, Town } from '../town/Town';
+import { resolveResidentIdentity } from '../town/ResidentIdentity';
 import { RuleStore, TownRule } from '../town/RuleStore';
 import { ImpersonationMonitor, ImpersonationIncident, ImpersonationInput } from '../security/ImpersonationMonitor';
 
@@ -87,6 +89,8 @@ export class BotManager {
   /** Pending ghost-name confirmations, keyed by lowercased bot name. See
    *  handleFleetPlayerEvent for why the signal must be confirmed, not fired live. */
   private pendingGhostChecks: Map<string, NodeJS.Timeout> = new Map();
+  /** Avoid repeating the same reconciliation warning on every 60s role-cache refresh. */
+  private reconciledResidentWarnings: Set<string> = new Set();
   /** Grace period before a ghost-name suspicion is confirmed. Must comfortably
    *  exceed a normal reconnect: the worker's own scheduleReconnect plus login and
    *  the first status heartbeat. 20s covers that; a real impostor is still caught
@@ -147,6 +151,34 @@ export class BotManager {
    *  to read the `governance.enabled` flag). */
   getConfig(): Config { return this.config; }
 
+  private resolveResidentForBot(botName: string): { town: Town; resident: Resident } | null {
+    const towns = this.townManager.listTowns();
+    const candidates = towns.flatMap((town) =>
+      this.townManager.listResidents(town.id).map((resident) => ({ town, resident })));
+    const match = resolveResidentIdentity(
+      botName,
+      candidates.map(({ resident }) => resident),
+    );
+    if (!match) return null;
+    const candidate = candidates.find(({ resident }) => resident === match.resident);
+    if (!candidate) return null;
+    if (match.match === 'single-substitution') {
+      const warningKey = `${botName.toLowerCase()}::${match.resident.botName.toLowerCase()}`;
+      if (!this.reconciledResidentWarnings.has(warningKey)) {
+        this.reconciledResidentWarnings.add(warningKey);
+        logger.warn(
+          {
+            bot: botName,
+            persistedResident: match.resident.botName,
+            townId: candidate.town.id,
+          },
+          'Reconciled globally unique one-character resident identity drift; migrate the persisted name',
+        );
+      }
+    }
+    return candidate;
+  }
+
   /**
    * Project Sid P2-B — resolve a bot's ACTIVE town rules across the worker
    * boundary. Mirrors the role resolver: walks every town (small N) for a
@@ -159,14 +191,8 @@ export class BotManager {
   private resolveActiveRulesForBot(botName: string): TownRule[] {
     if (!this.config.governance?.enabled) return [];
     try {
-      const towns = this.townManager.listTowns();
-      for (const town of towns) {
-        const residents = this.townManager.listResidents(town.id);
-        const hit = residents.find(
-          (r) => r.botName.toLowerCase() === botName.toLowerCase(),
-        );
-        if (hit) return this.ruleStore.getActiveRules(town.id);
-      }
+      const match = this.resolveResidentForBot(botName);
+      if (match) return this.ruleStore.getActiveRules(match.town.id);
     } catch {
       /* swallow — rule injection is additive */
     }
@@ -219,14 +245,7 @@ export class BotManager {
       // caches the result for 60s so the per-claim cost is bounded.
       (botName: string): string | null => {
         try {
-          const towns = this.townManager.listTowns();
-          for (const town of towns) {
-            const residents = this.townManager.listResidents(town.id);
-            const hit = residents.find(
-              (r) => r.botName.toLowerCase() === botName.toLowerCase(),
-            );
-            if (hit && hit.currentRole) return hit.currentRole;
-          }
+          return this.resolveResidentForBot(botName)?.resident.currentRole ?? null;
         } catch {
           /* swallow — role lookup is additive */
         }
@@ -647,13 +666,7 @@ export class BotManager {
    */
   private resolveTownIdForBot(botName: string): string {
     try {
-      const towns = this.townManager.listTowns();
-      for (const town of towns) {
-        const residents = this.townManager.listResidents(town.id);
-        if (residents.some((r) => r.botName.toLowerCase() === botName.toLowerCase())) {
-          return town.id;
-        }
-      }
+      return this.resolveResidentForBot(botName)?.town.id ?? '';
     } catch {
       /* swallow — town tagging is additive */
     }
@@ -749,10 +762,14 @@ export class BotManager {
   /** Gap (ms) since the last worker heartbeat beyond which the worker event loop
    *  is considered wedged. The worker force-posts every <=30s, so 90s = 3 misses. */
   private static WEDGED_WORKER_MS = 90_000;
+  /** Do not apply socket/heartbeat recovery to a freshly replaced worker. */
+  private static WORKER_STARTUP_GRACE_MS = 60_000;
 
   private watchdogTick(): void {
     const now = Date.now();
     for (const handle of this.workers.values()) {
+      if (handle.getState() !== 'RUNNING') continue;
+      if (now - handle.getStartedAt() < BotManager.WORKER_STARTUP_GRACE_MS) continue;
       const status = handle.getCachedStatus();
 
       // (1) Clean disconnect: 'end'/'kicked' fired and set DISCONNECTED. The
@@ -766,10 +783,21 @@ export class BotManager {
       // (3) Wedged worker: event loop blocked, no heartbeats. Can't process a
       // 'reconnect' IPC — must terminate+restart. Checked before the zombie-socket
       // branch because a wedged worker also produces a stale inboundAgeMs, and the
-      // restart is the stronger remedy. Skip until the first heartbeat has arrived.
-      if (handle.lastStatusReceivedAt > 0 && now - handle.lastStatusReceivedAt > BotManager.WEDGED_WORKER_MS) {
+      // restart is the stronger remedy. Before the first heartbeat, measure
+      // from generation start so a worker that wedges during startup is not
+      // exempt forever after the startup grace expires.
+      const heartbeatAgeMs = getWorkerHeartbeatAgeMs(
+        now,
+        handle.getStartedAt(),
+        handle.lastStatusReceivedAt,
+      );
+      if (heartbeatAgeMs > BotManager.WEDGED_WORKER_MS) {
         logger.error(
-          { bot: handle.botName, sinceHeartbeatMs: now - handle.lastStatusReceivedAt },
+          {
+            bot: handle.botName,
+            sinceHeartbeatMs: heartbeatAgeMs,
+            firstHeartbeatPending: handle.lastStatusReceivedAt <= 0,
+          },
           'Watchdog: worker heartbeat stale — terminating and restarting wedged worker',
         );
         void handle.forceRestart();

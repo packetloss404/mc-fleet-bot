@@ -1,0 +1,336 @@
+{
+  "schemaVersion": 1,
+  "manifestId": "REDEV-2026-07-28-SESSION-CONTROL-01",
+  "generatedAtUtc": "2026-07-28T03:32:39Z",
+  "state": "INTERIM_TOWN_EXPANSION_IN_PROGRESS",
+  "hashAlgorithm": "SHA-256 of file bytes unless a snapshot record states its aggregate directory algorithm",
+  "scope": [
+    "R1 closeout and publication performed during the July 28 UTC session",
+    "Wave 2 engineering, live release, QA, database, atlas, dossier and publication",
+    "Sites version 3 runtime failure and version 4 repair",
+    "Box handoff readiness",
+    "Town-expansion survey, design and current change control"
+  ],
+  "acceptedSourceRegisters": [
+    {
+      "release": "REDEV-2026-07-27-R1",
+      "path": "data/world-review/redevelopment-artifact-manifest-2026-07-27.json",
+      "sha256": "5680c2fcaad0a2f139dd453f26c53c598aae9011dd748d5c4b637ae171bd1f49"
+    },
+    {
+      "release": "REDEV-2026-07-28-R2",
+      "path": "data/world-review/redevelopment-artifact-manifest-2026-07-28-wave2.json",
+      "sha256": "2b0d026fb1ffab6dc23e606a61bf4613e0314e03614dc8dc43be48784e03d0a3",
+      "summary": {
+        "files": 356,
+        "bytes": 45624708,
+        "images": 214,
+        "machineReadableJson": 78,
+        "categories": 10
+      }
+    }
+  ],
+  "acceptedControlArtifacts": [
+    {
+      "path": "data/world-review/redevelopment-post-deployment-qa-2026-07-27.json",
+      "sha256": "0e3140f01614c21e4dfccad6613cbe0ae17bbf3f865cfbd1eaa2570106b4ba91",
+      "role": "R1 post-release acceptance"
+    },
+    {
+      "path": "data/world-review/redevelopment-release-database-import-2026-07-27.json",
+      "sha256": "8c766c45edcade184ab8fb4d4004020c5ecd7ec9fbf0b0bbfb92ae4b59f2bd6d",
+      "role": "R1 database import"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-27/master-plan.pdf",
+      "sha256": "3a9e8b49f7ee6aab8f59f92eb0f596dc2d5009e9f6b11e473469b223815acc3d",
+      "role": "R1 compiled dossier"
+    },
+    {
+      "path": "data/buildops/redevelopment-wave2-release-manifest.json",
+      "sha256": "df8ca8586b0415d2bc0a7653ec3a61d1c8ed333b90c9a05d4ca2b67d0cb946fe",
+      "role": "Wave 2 combined transaction source"
+    },
+    {
+      "path": "data/world-review/redevelopment-wave2-atomic-transaction-2026-07-28.json",
+      "sha256": "e9b3752e89771c4ab218e5811bf23700cfd5f08128e9277324ca9df990f43ef2",
+      "role": "Wave 2 live transaction"
+    },
+    {
+      "path": "data/world-review/redevelopment-wave2-route-qa-2026-07-28.json",
+      "sha256": "6f97def62efe5abb6a3ae89c685cccfa39583b609357273df0855c3121e15ccf",
+      "role": "Wave 2 bidirectional route QA"
+    },
+    {
+      "path": "data/world-review/redevelopment-wave2-database-import-2026-07-28.json",
+      "sha256": "5321f35ca15c3b3cfa2dd1de48963776234f53d35d7875e291bcc41cfd51b524",
+      "role": "Wave 2 database import"
+    },
+    {
+      "path": "data/world-review/redevelopment-wave2-post-release-qa-2026-07-28.json",
+      "sha256": "551be053a21e37edc246f95cb2ded30df138f600f66c5574c2cf9b9b7f321d4c",
+      "role": "Wave 2 final acceptance"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-wave2/master-plan.pdf",
+      "sha256": "d26d810d90e6fec0218f6015cfc712f184a70f3e4609a7713c78a1c0d42c4a80",
+      "role": "Wave 2 compiled dossier"
+    },
+    {
+      "path": "data/exports/redevelopment-media-wave2-2026-07-28/capture-report.json",
+      "sha256": "8979eeadb7bd9a101ac11d67067fa9f99ab19d70cda9260642c0572dccd6c57a",
+      "role": "Wave 2 79-image render report"
+    },
+    {
+      "path": "data/world-review/world-media-wave2-2026-07-28.qa.json",
+      "sha256": "5825b4d8f231e78780f6d7b105ef65762e0bc1bbc1b481e3bed7c93bb04621c5",
+      "role": "Wave 2 exact media QA"
+    },
+    {
+      "path": "data/exports/box/redevelopment-atlas-wave2-post-2026-07-28/team-a/atlas-manifest.json",
+      "sha256": "2b2e17781b61eb8c9c4f4dc045d5f88304f467193dd9ae93a97fa599e28d2b78",
+      "role": "Wave 2 seven-sheet post atlas"
+    }
+  ],
+  "snapshotIdentities": [
+    {
+      "state": "R1 accepted post / Wave 2 engineering baseline",
+      "path": "data/worldsnap-wave2-baseline-4fca1ff3-20260728/region",
+      "sha256": "4fca1ff3c40ae9c24c9338483b0780678aa5966bb570a642f0d0277885331a2b",
+      "regionFiles": 26,
+      "bytes": 122744700
+    },
+    {
+      "state": "Wave 2 prerelease",
+      "path": "data/worldsnap-wave2-prerelease-b1356bca9fcbdc7a-20260728/region",
+      "sha256": "b1356bca9fcbdc7a90b580b2f9210947788d74716e1a706f5e8f0d0f789dbb27",
+      "regionFiles": 26,
+      "bytes": 123279631
+    },
+    {
+      "state": "Wave 2 accepted post",
+      "path": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region",
+      "sha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999",
+      "regionFiles": 26,
+      "bytes": 123313802
+    }
+  ],
+  "databaseIdentities": [
+    {
+      "state": "R1 accepted",
+      "features": 824,
+      "scans": 21,
+      "observations": 1830,
+      "sha256": "005a714f90e1fc12a42de825b84290d07a9a090d0580b7112b277158e942123d"
+    },
+    {
+      "state": "Wave 2 accepted",
+      "features": 875,
+      "scans": 23,
+      "observations": 1881,
+      "sha256": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503"
+    }
+  ],
+  "currentTownExpansionControlArtifacts": [
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/session-pm-dossier.md",
+      "bytes": 67035,
+      "sha256": "64442f572e2f2418d50d56f1ff0efe15d5711fcb41913d83c51b1cc0ea1453ac",
+      "role": "session PM review source"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/box-handoff-audit.md",
+      "bytes": 8027,
+      "sha256": "ec0a6def615907e5a2f805d4edf33e2ab5e18866874e6a5e4e30b82cecd9c75f",
+      "role": "Box handoff audit"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/external-publication-audit.json",
+      "bytes": 5710,
+      "sha256": "939f3af849ede6f8c99ac1f9987d7df00776de42ff64ff641180465e33d57388",
+      "role": "Box and Sites machine audit"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/media-file-verification-audit.json",
+      "bytes": 5611,
+      "sha256": "de340f9bb4a9cf81bc2132b0846e2d716c29c1de21081512af418e7f788c2b9e",
+      "role": "July 28 PDF structural and image decode audit"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/attached-garage-requirement-supersession.md",
+      "bytes": 9715,
+      "sha256": "50d9f54fea11017dbab189e15fab9dd402f66e48dac8ee29836cf7705ffb8432",
+      "role": "controlling garage change record"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/coordinate-schedule.json",
+      "bytes": 13132,
+      "sha256": "3215776d0f30d41e18c7b3c6ee7333d1a260d022f6d70945aa2ac05b7801efdc",
+      "role": "town-expansion survey/design coordinate assumptions"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/guild-hall-and-bar-source-of-truth.md",
+      "bytes": 42453,
+      "sha256": "1fd88c88528cbfdd1097fe9ab90b85c6d1fff4e7e9bae078f632a72d68b70649",
+      "role": "guild hall and specialist bar design source"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/guild-hall-program.json",
+      "bytes": 15310,
+      "sha256": "0752904fcf786b7c360829a2b3ee0632d0d3407f3f3594697d83af3e2f06a57d",
+      "role": "machine guild-hall program"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/mainstreet-attached-garage-coordinate-schedule.json",
+      "bytes": 12784,
+      "sha256": "b03a999ff72f8060b6dc373be5b45bd14b970c83b3d92a65b14de28055d71ea1",
+      "role": "18-house attached-garage redesign basis"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/westlight-island-and-russian-pavilion-change-control.md",
+      "bytes": 16771,
+      "sha256": "59c6b7f28babd6e7f5f7330f76118603b9095548efa9730f4fdffab2a4522eb8",
+      "role": "controlling Westlight island and Russian civic-pavilion change"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/westward-entertainment-housing-workforce-change-control.md",
+      "bytes": 16343,
+      "sha256": "f9c5cd6e2edd26124bfcedb4c0470d3be99cedf0e60d85ac63d81dc54a6c49ee",
+      "role": "controlling westward paired-parks, housing, staff-path and lounge change"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/evidence/parcel-surface-survey.json",
+      "bytes": 8156,
+      "sha256": "d19575c469607a2590040f5ede475c78bb6e2e2eb2d20067e386bbecb8a66cb6",
+      "role": "town-expansion parcel surface and candidate-footprint survey"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/evidence/feature-intersection-report.json",
+      "bytes": 16877,
+      "sha256": "9a7a02aa13aaa83c7f5e8fe04934be3824838f41b49f6391a161f90f03a118d9",
+      "role": "candidate-parcel intersection and conflict report"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/evidence/westlight-waterfront-current-map.png",
+      "bytes": 81650,
+      "sha256": "135fbc929943246c3f37f5fba96f85b0517cc632ebecba0796c1553a3f06209f",
+      "role": "Westlight waterfront current-condition survey map"
+    },
+    {
+      "path": "data/exports/box/town-expansion-baseline-2026-07-28/team-a/atlas-manifest.json",
+      "bytes": 21486,
+      "sha256": "701522c65c0bfdd9086f8d6703c53005d227cf6d33f6529aa369f7bb9728f91d",
+      "role": "town-expansion baseline atlas"
+    }
+  ],
+  "sites": {
+    "projectId": "appgprj_6a67cce1a3848191bfb86ef2ef8ab567",
+    "productionUrl": "https://mc-fleet-world-atlas.ianwalmsley.chatgpt.site",
+    "currentVersionNumber": 4,
+    "currentVersionId": "appgprj_6a67cce1a3848191bfb86ef2ef8ab567~appgver_33afceee942c8191a33e8cbd53b5420a",
+    "sourceCommit": "7777e20566f888d5ff66f5e290821eba0ef5bac3",
+    "archiveSha256": "14c029631b5b7e37b14469471fe69128688f8d2cb7626e7d69e4b92e367e868b",
+    "access": "custom owner-only, one allowed user, no groups",
+    "postFixRootStatus": 200,
+    "postFixWorkerOutcome": "ok",
+    "postFixRayId": "a220a6915909f4e6"
+  },
+  "box": {
+    "connection": "PASS",
+    "currentHandoff": "PENDING_SYNC",
+    "lastLedgerCompletedAtUtc": "2026-07-27T04:25:16.826Z",
+    "lastLedgerPath": "data/box-sync-state.json",
+    "lastLedgerSha256": "dccb85839f92baf789e6561a630a9e2f2884dc099e898a82a9c0a4afddb5cced",
+    "postLedgerCandidateFilesAtAudit": 242,
+    "postLedgerCandidateBytesAtAudit": 84285976,
+    "representativeJuly28RemoteDirectoriesPresent": 0,
+    "representativeJuly28RemoteDirectoriesChecked": 4
+  },
+  "controllingChanges": [
+    {
+      "id": "REDEV-2026-07-28-CR-ATTACHED-GARAGES-01",
+      "requirement": "All residential garages attached; large houses have four-car or six-car attached garages.",
+      "affectedExistingObjects": 18,
+      "affectedObjectIds": [
+        "R4-GAR-H01",
+        "R4-GAR-H02",
+        "R4-GAR-H03",
+        "R4-GAR-H04",
+        "R4-GAR-H05",
+        "R4-GAR-H06",
+        "R4-GAR-H07",
+        "R4-GAR-H08",
+        "R4-GAR-H09",
+        "R4-GAR-H10",
+        "R4-GAR-H11",
+        "R4-GAR-H12",
+        "R4-GAR-C02",
+        "R4-GAR-C03",
+        "R4-GAR-C04",
+        "R4-GAR-C05",
+        "R4-GAR-C06",
+        "R4-GAR-C07"
+      ],
+      "physicalState": "PENDING_REMEDIATION"
+    },
+    {
+      "id": "REDEV-2026-07-28-CR-WESTLIGHT-PAVILION-02",
+      "requirements": [
+        "Russian architectural reference replaces glass-pavilion language while retaining library-civic-space-Guild Hall connectivity.",
+        "Westlight stadium island becomes a coherent district.",
+        "Water buildings become intentional pier buildings.",
+        "A researched amusement pier includes a roller coaster and Ferris wheel.",
+        "Outer paired steak and shrimp houses become destination bookends.",
+        "Main, pier and stadium areas align through pedestrian malls and streets.",
+        "The west crater is filled with contained water and edged by quay and green space."
+      ],
+      "physicalState": "PENDING_SURVEY_RESEARCH_DESIGN_AND_RELEASE"
+    },
+    {
+      "id": "REDEV-2026-07-28-CR-WESTWARD-DISTRICTS-03",
+      "requirements": [
+        "Two researched facing dry/water amusement parks west of Westlight using named parks only as precedents.",
+        "Westward approach-road extension integrated with the crater-lake green belt.",
+        "Hampton-style medium-density lakeside housing with a public waterfront.",
+        "Two connected southwest-Ravensreach affordable/distressed housing projects with central outdoor spaces.",
+        "Ravensreach-to-rear-MainStreet staff path and an employee lounge."
+      ],
+      "physicalState": "PENDING_SURVEY_RESEARCH_DESIGN_AND_RELEASE"
+    }
+  ],
+  "requiredFinalInputs": [
+    "town-expansion immutable baseline identity",
+    "approved coordinated design and protected/demolition object register",
+    "exact forward/rollback packages and combined release manifest",
+    "cross-package QA and same-moment entity gate",
+    "atomic transaction ledger",
+    "immutable post-construction snapshot identity",
+    "installed-state and exact rollback verifier",
+    "bidirectional route QA for every required circulation relation",
+    "matched before/after camera manifests and images",
+    "attached-garage attachment/capacity/route/media proof",
+    "Russian civic-pavilion research/selection and library-civic-space-Guild Hall route/sightline proof",
+    "Westlight island figure-ground, shoreline, grade/water, protected-object and route/sightline surveys",
+    "intentional pier-building register, structure/section/route/media proof",
+    "amusement-pier research and Ferris-wheel/roller-coaster geometry/clearance/route proof",
+    "paired steak-house and shrimp-house operational plans and exact media",
+    "main/pier/stadium mall/street alignment plan",
+    "crater-lake containment/neighbor-fluid proof and quay/green-loop QA",
+    "paired dry/water-park research, original master plan, attraction/clearance/route and contained-water proof",
+    "westward approach-road alignment/crossings and crater-green-belt integration",
+    "Hampton-style lakeside housing code, medium-density blocks, public-edge and attached-garage proof",
+    "two southwest-Ravensreach housing projects, central-space, connection and dignity QA",
+    "staff-path and employee-lounge survey/design/transaction/route/database/media proof",
+    "database backup/import/integrity/foreign-key ledger and accepted hash",
+    "final object-to-media catalog and atlas",
+    "final PM HTML/PDF and file hash register",
+    "new owner-only Sites version and production runtime evidence",
+    "Box sync report and remote SHA-1 equality for final handoff"
+  ],
+  "limitations": [
+    "This is an interim control manifest, not the final town-expansion artifact register.",
+    "Current expansion files may change while parallel design/construction work continues.",
+    "The final manifest must be regenerated only after the workspace is quiescent and all acceptance evidence exists.",
+    "No live world, database, Box, or Sites mutation was performed to create this manifest."
+  ]
+}

@@ -1,0 +1,548 @@
+{
+  "checks": [
+    {
+      "evidence": {
+        "errors": [],
+        "gateSha256": "02a52a437ccf1d0a83e732fd796af4f91c9dfe3848b107de39207262adb330ee",
+        "manifestSha256": "54f201d332f0ad7f957736ea1adbcd7c0bf20e3641fafe75259409d9e9d0c57c",
+        "operationSha256": "a326d880dbdb4ff174a9c12e2be124272d7e1513c282508582749c3d3962975b"
+      },
+      "id": "REL-001",
+      "requiredForAcceptance": true,
+      "requiredForPartialRelocation": true,
+      "requiredForWorldRelease": true,
+      "severity": "critical",
+      "status": "PASS",
+      "title": "Gate, manifest, and guarded-operation identity binding"
+    },
+    {
+      "evidence": {
+        "capturedObservations": 179,
+        "capturedUuidCount": 173,
+        "duplicateObservationGroups": {
+          "-1475245089,458441651,-1572743112,-1510262674": 2,
+          "-171897697,-827109480,-2013286600,-1552866030": 2,
+          "-1722941363,1439911387,-2006804287,1164179507": 2,
+          "-524528408,-1091089276,-1792084810,-976982682": 2,
+          "1039094258,-58046789,-1927874395,545214575": 2,
+          "222551396,910118584,-1349353052,-806972369": 2
+        },
+        "eligibleAndBlockedOverlap": [],
+        "explicitlyBlockedRowCount": 0,
+        "extraManifestRows": [],
+        "manifestRowCount": 173,
+        "missingManifestRows": [],
+        "verifiedCapturedObservations": 178,
+        "verifiedCapturedUuidCount": 173
+      },
+      "id": "REL-002",
+      "requiredForAcceptance": true,
+      "requiredForPartialRelocation": true,
+      "requiredForWorldRelease": true,
+      "severity": "critical",
+      "status": "PASS",
+      "title": "UUID aggregation covers every captured identity exactly once"
+    },
+    {
+      "evidence": {
+        "eligibleRowBindingErrors": [],
+        "generatorSourceMatcherCallCount": 1,
+        "generatorSourceMatcherDefinitionLine": 155,
+        "identityCheckFailures": [],
+        "interpretation": "Identity failures and nearest-source mismatches are acceptable only when quarantined outside transactionRows. They block final world release under REL-005, not the exact eligible partial rows.",
+        "nearestDifferentObservationFindings": [
+          {
+            "assignedDistance": 0.616086401618135,
+            "capturedPosition": [
+              1085.542375072593,
+              84.76636799395752,
+              -559.3554986740706
+            ],
+            "label": "Sheep",
+            "nearestDistance": 0.23415931199942305,
+            "nearestTieCount": 1,
+            "observationPosition": [
+              1085.1683319978908,
+              85.0,
+              -559.7856966729953
+            ],
+            "uuidKey": "222551396,910118584,-1349353052,-806972369"
+          }
+        ],
+        "nonUniqueCaptureCandidateSets": [
+          {
+            "candidateCount": 2,
+            "label": "Cow",
+            "position": [
+              -583.2946146870912,
+              73.0,
+              -333.66565913551153
+            ],
+            "uuidKey": "-1755064262,-1903278682,-1300957652,-1981111763"
+          },
+          {
+            "candidateCount": 2,
+            "label": "Cow",
+            "position": [
+              -583.4630026136053,
+              73.0,
+              -334.2745830001704
+            ],
+            "uuidKey": "1597408727,1429884289,-1536978370,-14477448"
+          }
+        ]
+      },
+      "id": "REL-003",
+      "requiredForAcceptance": true,
+      "requiredForPartialRelocation": true,
+      "requiredForWorldRelease": true,
+      "severity": "critical",
+      "status": "PASS",
+      "title": "Every observation has an unambiguous, locally valid UUID capture"
+    },
+    {
+      "evidence": {
+        "historicalFullProjectionMismatches": [],
+        "immutableProjectionMismatches": [],
+        "rowsProvingFullStateDriftWhileImmutableStateHeld": [
+          "-524528408,-1091089276,-1792084810,-976982682"
+        ],
+        "volatileFieldsIncorrectlyImmutable": []
+      },
+      "id": "REL-004",
+      "requiredForAcceptance": true,
+      "requiredForPartialRelocation": true,
+      "requiredForWorldRelease": true,
+      "severity": "critical",
+      "status": "PASS",
+      "title": "Volatile tick state is separated from immutable preservation state"
+    },
+    {
+      "evidence": {
+        "blockedUuidRows": [],
+        "manifestStatus": "READY_PARTIAL_EVACUATION_WORLD_RELEASE_BLOCKED",
+        "transientAbsenceNotProven": [
+          {
+            "captureBindingReasons": [],
+            "capturedUuidKey": null,
+            "collisionClass": "conservative-halo-only",
+            "disposition": "ABSENCE_ONLY_FRESH_GATE_REQUIRED",
+            "label": "Egg",
+            "nbtCaptureError": "NBT capture found no minecraft:egg within 1 blocks",
+            "observationIndex": 53,
+            "operationLine": 6809,
+            "policyClass": "transient-no-move",
+            "position": [
+              -139.94962895749387,
+              68,
+              -416.07763436592546
+            ],
+            "targetBox": [
+              -139,
+              64,
+              -416,
+              -139,
+              65,
+              -415
+            ]
+          },
+          {
+            "captureBindingReasons": [],
+            "capturedUuidKey": null,
+            "collisionClass": "conservative-halo-only",
+            "disposition": "ABSENCE_ONLY_FRESH_GATE_REQUIRED",
+            "label": "Egg",
+            "nbtCaptureError": "NBT capture found no minecraft:egg within 1 blocks",
+            "observationIndex": 66,
+            "operationLine": 45752,
+            "policyClass": "transient-no-move",
+            "position": [
+              473.5344998826799,
+              77,
+              -252.3368253009398
+            ],
+            "targetBox": [
+              472,
+              75,
+              -254,
+              486,
+              75,
+              -250
+            ]
+          },
+          {
+            "captureBindingReasons": [],
+            "capturedUuidKey": null,
+            "collisionClass": "conservative-halo-only",
+            "disposition": "ABSENCE_ONLY_FRESH_GATE_REQUIRED",
+            "label": "Egg",
+            "nbtCaptureError": "NBT capture found no minecraft:egg within 1 blocks",
+            "observationIndex": 121,
+            "operationLine": 107703,
+            "policyClass": "transient-no-move",
+            "position": [
+              784.237677575117,
+              69,
+              -486.0954556913194
+            ],
+            "targetBox": [
+              783,
+              70,
+              -489,
+              785,
+              70,
+              -482
+            ]
+          },
+          {
+            "captureBindingReasons": [],
+            "capturedUuidKey": null,
+            "collisionClass": "direct-cell-volume",
+            "disposition": "ABSENCE_ONLY_FRESH_GATE_REQUIRED",
+            "label": "Egg",
+            "nbtCaptureError": "NBT capture found no minecraft:egg within 1 blocks",
+            "observationIndex": 166,
+            "operationLine": 128465,
+            "policyClass": "transient-no-move",
+            "position": [
+              1029.897911392953,
+              92,
+              -272.254663851561
+            ],
+            "targetBox": [
+              1029,
+              91,
+              -278,
+              1029,
+              91,
+              -271
+            ]
+          }
+        ],
+        "unresolvedNonTransient": [
+          {
+            "captureBindingReasons": [],
+            "capturedUuidKey": null,
+            "collisionClass": "conservative-halo-only",
+            "disposition": "UNRESOLVED_HARD_STOP",
+            "label": "Chicken",
+            "nbtCaptureError": "NBT capture found no minecraft:chicken within 1 blocks",
+            "observationIndex": 165,
+            "operationLine": 128473,
+            "policyClass": "ordinary-livestock",
+            "position": [
+              1034.4651716201934,
+              90,
+              -273.49559486445486
+            ],
+            "targetBox": [
+              1033,
+              91,
+              -275,
+              1033,
+              91,
+              -275
+            ]
+          },
+          {
+            "captureBindingReasons": [],
+            "capturedUuidKey": null,
+            "collisionClass": "conservative-halo-only",
+            "disposition": "UNRESOLVED_HARD_STOP",
+            "label": "Chicken",
+            "nbtCaptureError": "NBT capture found no minecraft:chicken within 1 blocks",
+            "observationIndex": 170,
+            "operationLine": 133955,
+            "policyClass": "ordinary-livestock",
+            "position": [
+              1056.06832531069,
+              79,
+              -402.39823114440895
+            ],
+            "targetBox": [
+              1055,
+              78,
+              -408,
+              1055,
+              78,
+              -403
+            ]
+          },
+          {
+            "captureBindingReasons": [
+              "captured-position-nearest-different-observation"
+            ],
+            "capturedUuidKey": "222551396,910118584,-1349353052,-806972369",
+            "collisionClass": "conservative-halo-only",
+            "disposition": "UNRESOLVED_HARD_STOP",
+            "label": "Sheep",
+            "nbtCaptureError": null,
+            "observationIndex": 176,
+            "operationLine": 122658,
+            "policyClass": "ordinary-livestock",
+            "position": [
+              1085.1683319978908,
+              85,
+              -559.7856966729953
+            ],
+            "targetBox": [
+              1086,
+              83,
+              -562,
+              1086,
+              83,
+              -558
+            ]
+          }
+        ],
+        "worldReleaseAuthorized": false
+      },
+      "id": "REL-005",
+      "requiredForAcceptance": true,
+      "requiredForPartialRelocation": false,
+      "requiredForWorldRelease": true,
+      "severity": "critical",
+      "status": "FAIL",
+      "title": "No unresolved or transient identity remains before release"
+    },
+    {
+      "evidence": {
+        "minimumPairDistance": 8.0,
+        "requiredPairDistanceGreaterThan": 3.0,
+        "rowCount": 173,
+        "targetHaloChunkConflicts": [],
+        "uniqueDestinationBlocks": 173,
+        "uniqueDestinationChunks": 173,
+        "uniqueExactDestinations": 173,
+        "validDestinations": 173
+      },
+      "id": "REL-006",
+      "requiredForAcceptance": true,
+      "requiredForPartialRelocation": true,
+      "requiredForWorldRelease": true,
+      "severity": "critical",
+      "status": "PASS",
+      "title": "Destination entity slots are unique, separated, and outside target halos"
+    },
+    {
+      "evidence": {
+        "overlapPairCount": 0,
+        "sample": []
+      },
+      "id": "REL-007",
+      "requiredForAcceptance": true,
+      "requiredForPartialRelocation": true,
+      "requiredForWorldRelease": true,
+      "severity": "high",
+      "status": "PASS",
+      "title": "Declared local footing envelopes do not overlap"
+    },
+    {
+      "evidence": {
+        "errors": [],
+        "note": "This check covers captured/eligible special rows. REL-005 separately blocks release on any unresolved special observation.",
+        "specialRows": 15,
+        "specialTypes": [
+          "minecraft:bee",
+          "minecraft:chest_minecart",
+          "minecraft:donkey",
+          "minecraft:fox",
+          "minecraft:item",
+          "minecraft:turtle",
+          "minecraft:wolf"
+        ],
+        "unresolvedSpecialObservations": []
+      },
+      "id": "REL-008A",
+      "requiredForAcceptance": true,
+      "requiredForPartialRelocation": true,
+      "requiredForWorldRelease": true,
+      "severity": "critical",
+      "status": "PASS",
+      "title": "Special mobs and dropped items retain payload, ownership, home, and variant state"
+    },
+    {
+      "evidence": {
+        "executorBuildsTypedUuidSelector": true,
+        "identityCountLine": 385,
+        "rowErrors": [],
+        "selectorMethodLine": 378
+      },
+      "id": "REL-008",
+      "requiredForAcceptance": true,
+      "requiredForPartialRelocation": true,
+      "requiredForWorldRelease": true,
+      "severity": "critical",
+      "status": "PASS",
+      "title": "Every selector binds exact type plus four-int UUID and detects duplicates"
+    },
+    {
+      "evidence": {
+        "failure": "postquery rotation mismatch",
+        "journal": "data/buildops/town-expansion-r1-2026-07-28.entity-evacuation.fresh.retry1.journal.json",
+        "journalSha256": "852b3ac25240f1a4e3f7882e2e982ee52ea9017c79f8a994187c84e13ab44393",
+        "orderingInterpretation": "The historical executor emitted this exact error only after restored position and immutable projection passed. Rotation is excluded from every immutable projection and is normal tick-volatile mob facing state. The six rows are therefore safety-compensated even though their old journal status remains an administrative rollback-failed record.",
+        "rollbackFailedRows": [],
+        "rollbackFailures": [],
+        "rotationOnlySafetyReconciliationAccepted": false,
+        "rows": 11,
+        "status": "explicitly-rolled-back"
+      },
+      "id": "REL-015",
+      "requiredForAcceptance": true,
+      "requiredForPartialRelocation": true,
+      "requiredForWorldRelease": true,
+      "severity": "critical",
+      "status": "PASS",
+      "title": "Every attempted live row has completed or fully compensated"
+    },
+    {
+      "evidence": {
+        "ensureLoadedLine": 315,
+        "globalSetResetCanRemoveConcurrentUnrelatedLoads": false,
+        "journalTemporaryLoadsLine": 615,
+        "journalsTemporaryLoadsBeforeAddingThem": true,
+        "loadsSourceAndDestinationChunks": true,
+        "restoreForceSetLine": 349
+      },
+      "id": "REL-009",
+      "requiredForAcceptance": true,
+      "requiredForPartialRelocation": true,
+      "requiredForWorldRelease": true,
+      "severity": "critical",
+      "status": "PASS",
+      "title": "Source/destination force-loads are exact, journaled, and non-destructive"
+    },
+    {
+      "evidence": {
+        "durableJsonLine": 69,
+        "fileAndDirectoryFsync": true,
+        "journalCreatedWithExclusiveTransactionLock": true,
+        "sourceRotationCapturedForExactRollback": true,
+        "teleportIntentDurableBeforeCommand": true,
+        "teleportIntentLine": 661
+      },
+      "id": "REL-010",
+      "requiredForAcceptance": true,
+      "requiredForPartialRelocation": true,
+      "requiredForWorldRelease": true,
+      "severity": "critical",
+      "status": "PASS",
+      "title": "Journal is durable and complete before each irreversible action"
+    },
+    {
+      "evidence": {
+        "chestMinecartRows": 1,
+        "contractErrors": [],
+        "exactBeforeDuringGuardsPresent": true,
+        "railMutationIntentSavedBeforeSetBlock": true,
+        "railPlacementIntentIsCompensated": true,
+        "rollbackStateFilterLine": null,
+        "setRailLine": 469,
+        "uniqueRailPositions": 1
+      },
+      "id": "REL-011",
+      "requiredForAcceptance": true,
+      "requiredForPartialRelocation": true,
+      "requiredForWorldRelease": true,
+      "severity": "critical",
+      "status": "PASS",
+      "title": "Chest-minecart rail is exact-state and crash-recoverable"
+    },
+    {
+      "evidence": {
+        "railPlacementIntentCompensated": true,
+        "reverseOrder": true,
+        "rollbackFailedStateRetryable": true,
+        "rollbackRowsLine": 518,
+        "teleportIssuedStateCompensated": true
+      },
+      "id": "REL-012",
+      "requiredForAcceptance": true,
+      "requiredForPartialRelocation": true,
+      "requiredForWorldRelease": true,
+      "severity": "critical",
+      "status": "PASS",
+      "title": "Failure compensation is reverse-order, complete, and retryable"
+    },
+    {
+      "evidence": {
+        "executeAuthorizationLine": 784,
+        "executorEnforcesBoundGateFreshness": true,
+        "freshnessOverrideCanExceedFiveMinutePolicy": false,
+        "gatePassed": false,
+        "gateStatus": "FAIL",
+        "gateToManifestLagSeconds": 35.01,
+        "manifestAuthorizedForPartialEvacuation": true,
+        "manifestWorldReleaseAuthorized": false,
+        "maximumGateAgeSeconds": 300,
+        "observedGateAgeSecondsAtAudit": 75.459184
+      },
+      "id": "REL-013",
+      "requiredForAcceptance": true,
+      "requiredForPartialRelocation": true,
+      "requiredForWorldRelease": true,
+      "severity": "critical",
+      "status": "PASS",
+      "title": "Executor requires a fresh bound gate before movement and zero blockers before release"
+    },
+    {
+      "evidence": {
+        "currentManifestIsPartialOnly": true,
+        "partialPlanCannotAuthorizeWorldRelease": true,
+        "validateManifestLine": 171,
+        "validatorWouldAcceptBlockedPartialPlan": true,
+        "worldReleaseRunner": "scripts/run_redevelopment_atomic_release.py",
+        "worldReleaseRunnerSha256": "4197c3e565d14ccb71c6e47d6cced73b706f6ba38e1e4139bd161dc2d919aaa2"
+      },
+      "id": "REL-014",
+      "requiredForAcceptance": true,
+      "requiredForPartialRelocation": false,
+      "requiredForWorldRelease": true,
+      "severity": "critical",
+      "status": "PASS",
+      "title": "Partial evacuation evidence cannot authorize the world release runner"
+    }
+  ],
+  "decision": {
+    "partialRelocation": "ACCEPT_EXACT_LISTED_PARTIAL_UUID_RELOCATION",
+    "worldRelease": "BLOCK_WORLD_RELEASE"
+  },
+  "freshnessPolicySeconds": 300,
+  "generatedAtUtc": "2026-07-28T11:09:54Z",
+  "inputs": {
+    "executor": {
+      "path": "scripts/run_town_entity_evacuation.py",
+      "sha256": "9215262c1995f07bdbcb594718fab21d0dd4685a429b84b3620bfac1e1d6955a"
+    },
+    "gate": {
+      "path": "data/world-review/town-expansion-r1-live-entity-gate-fresh2-20260728.json",
+      "sha256": "02a52a437ccf1d0a83e732fd796af4f91c9dfe3848b107de39207262adb330ee"
+    },
+    "generator": {
+      "path": "scripts/generate_town_entity_evacuation_plan.mjs",
+      "sha256": "47f6d08b776b21d46cd4deea841614f020574935f109d60b1a751213b1d3bed2"
+    },
+    "journal": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.entity-evacuation.fresh.retry1.journal.json",
+      "sha256": "852b3ac25240f1a4e3f7882e2e982ee52ea9017c79f8a994187c84e13ab44393"
+    },
+    "manifest": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.entity-evacuation.fresh2.manifest.json",
+      "sha256": "54f201d332f0ad7f957736ea1adbcd7c0bf20e3641fafe75259409d9e9d0c57c"
+    }
+  },
+  "liveWorldMutation": false,
+  "readOnly": true,
+  "releaseRule": "Partial relocation may move only the exact eligible UUID rows after every partial-required check passes against a fresh bound gate. The Town Expansion block transaction remains prohibited until every world-release-required check passes and a fresh zero-blocker live gate independently authorizes the atomic runner.",
+  "schemaVersion": 1,
+  "status": "PARTIAL_PASS_WORLD_BLOCKED",
+  "summary": {
+    "checks": 16,
+    "criticalFailures": 1,
+    "failed": 1,
+    "partialRequiredFailures": 0,
+    "passed": 15,
+    "worldRequiredFailures": 1
+  }
+}

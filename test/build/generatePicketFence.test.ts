@@ -16,6 +16,32 @@ beforeAll(async () => {
 });
 
 describe('generate_picket_fence', () => {
+  it('retains complete, deterministically ordered block properties', () => {
+    const snapshot = new fence.AnvilSnapshot('/not-used-by-this-test');
+    const chunk = {
+      sections: new Map([
+        [4, {
+          palette: [{
+            Name: 'minecraft:birch_fence',
+            Properties: {
+              west: 'true',
+              waterlogged: 'false',
+              south: 'false',
+              north: 'false',
+              east: 'true',
+            },
+          }],
+        }],
+      ]),
+    };
+
+    expect(snapshot.blockName(chunk, 0, 64, 0)).toBe('minecraft:birch_fence');
+    expect(snapshot.blockState(chunk, 0, 64, 0)).toBe(
+      'minecraft:birch_fence['
+      + 'east=true,north=false,south=false,waterlogged=false,west=true]',
+    );
+  });
+
   it('builds one unique 2,440-column ring and preserves all five gate openings', () => {
     const columns = fence.buildPerimeterColumns(plan, 'full');
     const keys = new Set(columns.map((column) => `${column.x},${column.z}`));

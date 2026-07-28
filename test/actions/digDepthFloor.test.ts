@@ -9,7 +9,12 @@ import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
 vi.mock('../../src/config', () => ({ loadConfig: () => mockCfg }));
 let mockCfg: any;
 
-import { isBelowDigFloor, getMinDigY, _resetGeofenceCache } from '../../src/actions/geofence';
+import {
+  _resetGeofenceCache,
+  getMinDigY,
+  getPathfinderBreakExclusionCost,
+  isBelowDigFloor,
+} from '../../src/actions/geofence';
 
 beforeEach(() => { _resetGeofenceCache(); });
 afterEach(() => { _resetGeofenceCache(); });
@@ -46,5 +51,15 @@ describe('dig depth floor', () => {
     mockCfg = { mining: { minDigY: 58, mineSite: { x: 0, y: 64, z: 0 } } };
     expect(isBelowDigFloor(20, 10, 0)).toBe(false);
     expect(isBelowDigFloor(30, 10, 0)).toBe(true);
+  });
+
+  it('hard-excludes below-floor breaks from path planning outside the mine', () => {
+    mockCfg = { mining: { minDigY: 58, mineSite: { x: 100, y: 64, z: 100, radius: 24 } } };
+    expect(getPathfinderBreakExclusionCost({
+      position: { x: 140, y: 57, z: 100 },
+    })).toBe(100);
+    expect(getPathfinderBreakExclusionCost({
+      position: { x: 100, y: 10, z: 100 },
+    })).toBe(0);
   });
 });

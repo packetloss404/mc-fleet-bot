@@ -501,15 +501,17 @@ export class TownBrain {
       const resourceRe = new RegExp(`needs \\d+ more ${resource}\\b`);
       const matcher = (t: { description: string }) =>
         t.description.startsWith(`town:${this.townId} needs`) && resourceRe.test(t.description);
-      const { claimedActive, removed } = this.blackboard.reapShortageTasks(matcher);
+      const { claimedActive, backoffActive, removed } =
+        this.blackboard.reapShortageTasks(matcher);
       if (removed > 0) {
         logger.info(
           { townId: this.townId, resource, removed },
           'TownBrain demand: reaped stale duplicate supply tasks',
         );
       }
-      if (claimedActive) {
-        // A bot is already working this shortage — don't queue a duplicate.
+      if (claimedActive || backoffActive) {
+        // A bot is already working this shortage, or the latest failed
+        // attempt is in exponential cooldown — don't queue a duplicate.
         continue;
       }
 

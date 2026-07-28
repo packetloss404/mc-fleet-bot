@@ -1,0 +1,313 @@
+{
+  "schemaVersion": 1,
+  "status": "READ_ONLY_IMMUTABLE_SNAPSHOT_SURVEY",
+  "schedule": "docs/redevelopment/2026-07-28-town-expansion/coordinate-schedule.json",
+  "snapshot": {
+    "path": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region",
+    "sha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999",
+    "acceptance": "docs/redevelopment/2026-07-28-wave2/post-release-independent-acceptance.md"
+  },
+  "method": "Highest non-air block per column after ignoring plants, foliage, logs, small fixtures and pass-through fittings; buildings and authored hardscape remain visible as surface.",
+  "parcels": [
+    {
+      "id": "TE-PENTHOUSE-01",
+      "bounds": {
+        "minX": -99,
+        "maxX": -71,
+        "minY": 87,
+        "maxY": 98,
+        "minZ": -391,
+        "maxZ": -367
+      },
+      "columns": 725,
+      "missingColumns": 0,
+      "surfaceY": {
+        "min": 67,
+        "p10": 67,
+        "median": 92,
+        "p90": 97,
+        "max": 107
+      },
+      "waterSurfaceColumns": 0,
+      "vegetatedColumns": 41,
+      "surfaceMaterials": {
+        "minecraft:dark_oak_planks": 202,
+        "minecraft:spruce_stairs": 156,
+        "minecraft:bricks": 71,
+        "minecraft:deepslate_tiles": 69,
+        "minecraft:spruce_planks": 54,
+        "minecraft:mud_bricks": 53,
+        "minecraft:polished_andesite": 34,
+        "minecraft:stone_bricks": 32,
+        "minecraft:granite": 28,
+        "minecraft:polished_granite": 21,
+        "minecraft:dirt": 5
+      }
+    },
+    {
+      "id": "TE-LONGHOUSE-01",
+      "bounds": {
+        "minX": -104,
+        "maxX": -75,
+        "minY": 67,
+        "maxY": 88,
+        "minZ": -356,
+        "maxZ": -342
+      },
+      "columns": 450,
+      "missingColumns": 0,
+      "surfaceY": {
+        "min": 66,
+        "p10": 67,
+        "median": 67,
+        "p90": 88,
+        "max": 90
+      },
+      "waterSurfaceColumns": 3,
+      "vegetatedColumns": 25,
+      "surfaceMaterials": {
+        "minecraft:bricks": 146,
+        "minecraft:stone_bricks": 84,
+        "minecraft:red_terracotta": 41,
+        "minecraft:brown_terracotta": 36,
+        "minecraft:granite": 26,
+        "minecraft:spruce_planks": 26,
+        "minecraft:mud_bricks": 25,
+        "minecraft:polished_granite": 16,
+        "minecraft:dirt": 11,
+        "minecraft:mossy_stone_bricks": 4,
+        "minecraft:cobblestone": 4,
+        "minecraft:gravel": 4,
+        "minecraft:water": 3,
+        "minecraft:note_block": 3,
+        "minecraft:bookshelf": 3
+      }
+    },
+    {
+      "id": "TE-COURT-01",
+      "bounds": {
+        "minX": -105,
+        "maxX": -67,
+        "minY": 67,
+        "maxY": 75,
+        "minZ": -365,
+        "maxZ": -357
+      },
+      "columns": 351,
+      "missingColumns": 0,
+      "surfaceY": {
+        "min": 66,
+        "p10": 66,
+        "median": 67,
+        "p90": 68,
+        "max": 84
+      },
+      "waterSurfaceColumns": 36,
+      "vegetatedColumns": 51,
+      "surfaceMaterials": {
+        "minecraft:bricks": 101,
+        "minecraft:polished_granite": 59,
+        "minecraft:mud_bricks": 45,
+        "minecraft:granite": 41,
+        "minecraft:water": 36,
+        "minecraft:smooth_quartz": 18,
+        "minecraft:dark_oak_stairs": 11,
+        "minecraft:quartz_stairs": 10,
+        "minecraft:smooth_stone_slab": 9,
+        "minecraft:quartz_pillar": 8,
+        "minecraft:dirt": 6,
+        "minecraft:chiseled_bookshelf": 1,
+        "minecraft:lectern": 1,
+        "minecraft:chiseled_quartz_block": 1,
+        "minecraft:cartography_table": 1
+      }
+    },
+    {
+      "id": "TE-LIBRARY-04X",
+      "bounds": {
+        "minX": -178,
+        "maxX": -111,
+        "minY": 46,
+        "maxY": 98,
+        "minZ": -448,
+        "maxZ": -403
+      },
+      "columns": 3128,
+      "missingColumns": 0,
+      "surfaceY": {
+        "min": 60,
+        "p10": 62,
+        "median": 66,
+        "p90": 98,
+        "max": 117
+      },
+      "waterSurfaceColumns": 904,
+      "vegetatedColumns": 1125,
+      "surfaceMaterials": {
+        "minecraft:water": 904,
+        "minecraft:deepslate_tiles": 833,
+        "minecraft:dirt": 797,
+        "minecraft:stone": 318,
+        "minecraft:stone_bricks": 133,
+        "minecraft:sand": 116,
+        "minecraft:granite": 8,
+        "minecraft:stone_brick_slab": 7,
+        "minecraft:andesite": 6,
+        "minecraft:cobblestone": 3,
+        "minecraft:clay": 2,
+        "minecraft:gravel": 1
+      }
+    },
+    {
+      "id": "TE-LIBRARY-TERRACE",
+      "bounds": {
+        "minX": -110,
+        "maxX": -96,
+        "minY": 67,
+        "maxY": 75,
+        "minZ": -447,
+        "maxZ": -433
+      },
+      "columns": 225,
+      "missingColumns": 0,
+      "surfaceY": {
+        "min": 67,
+        "p10": 67,
+        "median": 67,
+        "p90": 81,
+        "max": 103
+      },
+      "waterSurfaceColumns": 0,
+      "vegetatedColumns": 0,
+      "surfaceMaterials": {
+        "minecraft:stone_bricks": 111,
+        "minecraft:deepslate_tiles": 92,
+        "minecraft:stone_brick_stairs": 7,
+        "minecraft:cobblestone": 6,
+        "minecraft:stone_brick_slab": 6,
+        "minecraft:smooth_stone": 3
+      }
+    },
+    {
+      "id": "TE-GUILDHALL-01",
+      "bounds": {
+        "minX": -59,
+        "maxX": -7,
+        "minY": 53,
+        "maxY": 93,
+        "minZ": -462,
+        "maxZ": -418
+      },
+      "columns": 2385,
+      "missingColumns": 0,
+      "surfaceY": {
+        "min": 61,
+        "p10": 63,
+        "median": 66,
+        "p90": 67,
+        "max": 71
+      },
+      "waterSurfaceColumns": 0,
+      "vegetatedColumns": 2092,
+      "surfaceMaterials": {
+        "minecraft:dirt": 1301,
+        "minecraft:leaf_litter": 608,
+        "minecraft:stone": 475,
+        "minecraft:cobblestone": 1
+      }
+    },
+    {
+      "id": "TE-ROAD-01",
+      "bounds": {
+        "minX": -352,
+        "maxX": -148,
+        "minY": 62,
+        "maxY": 82,
+        "minZ": -513,
+        "maxZ": -480
+      },
+      "columns": 6970,
+      "missingColumns": 0,
+      "surfaceY": {
+        "min": 60,
+        "p10": 62,
+        "median": 67,
+        "p90": 83,
+        "max": 90
+      },
+      "waterSurfaceColumns": 342,
+      "vegetatedColumns": 3619,
+      "surfaceMaterials": {
+        "minecraft:dirt": 2869,
+        "minecraft:stone_bricks": 696,
+        "minecraft:stone": 667,
+        "minecraft:polished_diorite": 366,
+        "minecraft:white_concrete": 342,
+        "minecraft:water": 342,
+        "minecraft:smooth_quartz": 309,
+        "minecraft:gravel": 277,
+        "minecraft:dark_oak_planks": 250,
+        "minecraft:deepslate_tiles": 238,
+        "minecraft:dirt_path": 136,
+        "minecraft:white_stained_glass": 134,
+        "minecraft:sand": 101,
+        "minecraft:light_gray_stained_glass": 94,
+        "minecraft:deepslate_tile_stairs": 49
+      }
+    },
+    {
+      "id": "TE-OASIS-01",
+      "bounds": {
+        "minX": -248,
+        "maxX": -210,
+        "minY": 62,
+        "maxY": 84,
+        "minZ": -510,
+        "maxZ": -482
+      },
+      "columns": 1131,
+      "missingColumns": 0,
+      "surfaceY": {
+        "min": 62,
+        "p10": 67,
+        "median": 70,
+        "p90": 71,
+        "max": 72
+      },
+      "waterSurfaceColumns": 0,
+      "vegetatedColumns": 993,
+      "surfaceMaterials": {
+        "minecraft:dirt": 987,
+        "minecraft:stone_bricks": 115,
+        "minecraft:polished_andesite": 29
+      }
+    },
+    {
+      "id": "TE-OASIS-BUNKER-01",
+      "bounds": {
+        "minX": -252,
+        "maxX": -220,
+        "minY": 40,
+        "maxY": 66,
+        "minZ": -548,
+        "maxZ": -515
+      },
+      "columns": 1122,
+      "missingColumns": 0,
+      "surfaceY": {
+        "min": 61,
+        "p10": 61,
+        "median": 62,
+        "p90": 67,
+        "max": 71
+      },
+      "waterSurfaceColumns": 0,
+      "vegetatedColumns": 1030,
+      "surfaceMaterials": {
+        "minecraft:dirt": 1026,
+        "minecraft:sand": 96
+      },
+      "sitingCorrection": "The first x[-252,-208] survey crossed 52 surface-water columns at its east-northeast edge. This west-held envelope excludes them; subsurface fluid and cave gates still apply."
+    }
+  ]
+}

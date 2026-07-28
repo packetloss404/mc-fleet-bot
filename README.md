@@ -210,6 +210,91 @@ every sampled block existed and three separate ceilings sealed it. `build_status
 asserts both, and walk checks run `both_ways` because a player falls any distance but
 climbs one block, so a downward-only check passes on a hole in the floor.
 
+### Town Expansion PM closeout
+
+The July 28 Town Expansion documentation has separate draft and final/as-built
+profiles. Prepare the reviewable register, 98-requirement status matrix, and
+HTML dossier without making a live-world claim:
+
+```bash
+node scripts/generate_redevelopment_artifact_register.mjs \
+  --profile town-expansion --mode draft
+node scripts/generate_redevelopment_dossier.mjs \
+  --profile town-expansion --mode draft --html-only
+```
+
+Draft output is prominently labeled `DRAFT — NOT AS-BUILT`. It includes the
+frozen session scope, research and design sources, coordinate schedules,
+citizen reports, current deployment/entity/database status, a 13-map evidence
+book, representative exact-object screenshot slots, and a SHA-256 artifact
+ledger. It does not convert generated work or empty image slots into as-built
+evidence.
+
+After one committed transaction and accepted post-state, run the same profiles
+in `final` mode, supplying the exact transaction ledger, immutable post region
+directory, post QA, paired media QA, database-import report, and read-only
+database census:
+
+```bash
+node scripts/generate_redevelopment_artifact_register.mjs \
+  --profile town-expansion --mode final \
+  --transaction <ledger.json> --post <immutable-post-region-dir> \
+  --post-qa <post-qa.json> --media-qa <media-qa.json> \
+  --db-import <database-closeout.json> --db-report <database-report.json>
+
+node scripts/generate_redevelopment_dossier.mjs \
+  --profile town-expansion --mode final \
+  --transaction <ledger.json> --post <immutable-post-region-dir> \
+  --post-qa <post-qa.json> --media-qa <media-qa.json> \
+  --capture-report <complete-capture-report.json> \
+  --db-import <database-closeout.json> --db-report <database-report.json>
+```
+
+Final mode fails closed unless the package, transaction, distinct post snapshot,
+entity clearance, post QA, all paired media (including exactly 13 maps),
+database import, database report, and their byte hashes agree. Accepted outputs
+live under `docs/redevelopment/2026-07-28-town-expansion/`; the machine artifact
+register lives under `data/world-review/`.
+
+Release failures and recovery work are retained in a separate searchable
+knowledge base. Its counting policy distinguishes one atomic rollback incident
+from each rollback/recovery execution, so a failed generic rollback followed by
+a successful bounded recovery is visible instead of collapsed:
+
+```bash
+node scripts/build_redevelopment_kb.mjs
+```
+
+Canonical source:
+`data/knowledge-base/redevelopment-release-incidents.json`
+Searchable SQLite database:
+`data/knowledge-base/redevelopment-kb.sqlite`
+Integrity and artifact audit:
+`data/knowledge-base/redevelopment-kb.report.json`
+Human incident ledger:
+`docs/redevelopment/2026-07-28-town-expansion/knowledge-base/incident-ledger.md`
+
+The current ledger records six rollback incidents, eleven rollback/recovery
+executions (eight complete and three failed), thirteen separately classified
+post-QA defects, thirty-one error occurrences, and twenty-six prevention
+rules. Rebuilding fails on misplaced IDs, duplicate rows, mismatched
+counts/statuses, missing prevention rules, foreign-key errors, or SQLite
+integrity failures.
+
+The accepted physical Town Expansion release consists of 484,676 committed
+source groups (484,690 changed commands), five verified packages, 340 exact
+database/media objects, 589 paired camera shots, 1,178 terminal-snapshot
+captures, and thirteen maps including one whole-world atlas. Citizen route
+geometry passed, but the autonomous resident lifecycle observer remains an
+open, non-blocking troubleshooting item; do not report citizen lifecycle as
+accepted until the separate observer handoff is closed.
+
+The `world-showcase/` Sites app uses an application-level quick PIN gate.
+`SITE_PASSCODE` and `SITE_SESSION_SECRET` must be stored as secret production
+runtime variables in Sites and must never be committed to the repository. The
+signed HttpOnly session protects the homepage and direct atlas, screenshot, and
+report routes even though the Sites access mode is public.
+
 ## Control Platform
 
 The control platform provides centralized fleet management:

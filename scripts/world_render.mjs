@@ -419,8 +419,13 @@ async function renderMap() {
   const c = vec(A.center, [-85, -375]);
   const span = num(A.span, 256);
   const half = Math.floor(span / 2);
-  const minX = c[0] - half, maxX = c[0] + half - 1;
-  const minZ = c[1] - half, maxZ = c[1] + half - 1;
+  // Authored union bounds commonly have half-block centers (for example
+  // 933.5,-442.5). Anvil cells are integer-addressed; carrying the fraction
+  // into every volume lookup silently produces an all-background map.
+  const centerX = Math.round(c[0]);
+  const centerZ = Math.round(c[1]);
+  const minX = centerX - half, maxX = centerX + half - 1;
+  const minZ = centerZ - half, maxZ = centerZ + half - 1;
   const minY = num(A.ymin, -64), maxY = num(A.ymax, 200);
   const t0 = Date.now();
   const { vol, loaded, missing } = await loadVolume(minX, minY, minZ, maxX, maxY, maxZ);
@@ -460,7 +465,7 @@ async function renderMap() {
   }
   ctx.putImageData(img, 0, 0);
   ctx.font = '14px DejaVu Sans, sans-serif';
-  const label = `top-down  centre x=${c[0]} z=${c[1]}  span ${span}  (north = up, -Z)`;
+  const label = `top-down  centre x=${centerX} z=${centerZ}  span ${span}  (north = up, -Z)`;
   ctx.fillStyle = 'rgba(0,0,0,0.6)'; ctx.fillRect(0, h - 24, ctx.measureText(label).width + 16, 24);
   ctx.fillStyle = '#fff'; ctx.fillText(label, 8, h - 7);
   fs.writeFileSync(OUT, canvas.toBuffer('image/png'));

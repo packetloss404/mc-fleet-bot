@@ -237,23 +237,37 @@ export class AnvilSnapshot {
     return { cx, cz, sections };
   }
 
-  blockName(chunk, x, y, z) {
+  paletteEntry(chunk, x, y, z) {
     if (!chunk) return null;
     const states = chunk.sections.get(Math.floor(y / 16));
-    if (!states?.palette?.length) return 'minecraft:air';
+    if (!states?.palette?.length) return { Name: 'minecraft:air' };
 
     const palette = states.palette;
-    if (palette.length === 1) return palette[0].Name;
+    if (palette.length === 1) return palette[0];
     const bits = Math.max(4, 32 - Math.clz32(palette.length - 1));
     const perLong = Math.floor(64 / bits);
     const index = ((y & 15) << 8) | ((z & 15) << 4) | (x & 15);
     const longIndex = Math.floor(index / perLong);
     const data = states.data ?? [];
-    if (longIndex >= data.length) return 'minecraft:air';
+    if (longIndex >= data.length) return { Name: 'minecraft:air' };
     const shift = BigInt((index % perLong) * bits);
     const mask = (1n << BigInt(bits)) - 1n;
     const paletteIndex = Number((longToBig(data[longIndex]) >> shift) & mask);
-    return palette[paletteIndex]?.Name ?? 'minecraft:air';
+    return palette[paletteIndex] ?? { Name: 'minecraft:air' };
+  }
+
+  blockName(chunk, x, y, z) {
+    return this.paletteEntry(chunk, x, y, z)?.Name ?? 'minecraft:air';
+  }
+
+  blockState(chunk, x, y, z) {
+    const entry = this.paletteEntry(chunk, x, y, z);
+    if (!entry) return null;
+    const properties = Object.entries(entry.Properties ?? {})
+      .map(([name, value]) => `${name}=${value}`)
+      .sort()
+      .join(',');
+    return properties ? `${entry.Name}[${properties}]` : entry.Name;
   }
 
   async readColumn(x, z, yMin, yMax) {
@@ -262,6 +276,22 @@ export class AnvilSnapshot {
     const blocks = new Map();
     for (let y = yMin; y <= yMax; y += 1) {
       blocks.set(y, this.blockName(chunk, x, y, z));
+    }
+    return {
+      x,
+      z,
+      get(y) {
+        return blocks.get(y) ?? 'minecraft:air';
+      },
+    };
+  }
+
+  async readStateColumn(x, z, yMin, yMax) {
+    const chunk = await this.readChunk(Math.floor(x / 16), Math.floor(z / 16));
+    if (!chunk) return null;
+    const blocks = new Map();
+    for (let y = yMin; y <= yMax; y += 1) {
+      blocks.set(y, this.blockState(chunk, x, y, z));
     }
     return {
       x,

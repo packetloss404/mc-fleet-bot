@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "generatedAtUtc": "2026-07-28T08:20:42Z",
+  "auditId": "RAVENSREACH-FIVE-CITIZEN-LIFE-SCHEDULE-AUDIT-R1",
+  "status": "NOT_READY_FOR_AUTONOMOUS_DAILY_LIFE_OR_CROSS_CITY_ACTIVATION",
+  "liveStateMutated": false,
+  "town": {
+    "id": "town_mrzgshth_9d12c17d",
+    "name": "Ravensreach",
+    "paused": true,
+    "citizenRoutinePresent": false
+  },
+  "runtime": {
+    "voyagerEnabled": false,
+    "connectedBots": 5,
+    "idleBots": 5,
+    "healthyAndFedBots": 5,
+    "configSha256": "90c72397c7be7db4cb861236583d6355994f28c66dcdf3d44fb24c03c1bfa411",
+    "townDatabaseSha256": "c8041d20a8a477eb71a8eeee8ebed9aaa349b78bbbe0ebb664634cb1f69f27ab"
+  },
+  "roles": {
+    "Scott": "lumberjack",
+    "Architect": "builder",
+    "Mason": "miner",
+    "Surveyor": "guard",
+    "Steward": "farmer"
+  },
+  "positions": {
+    "Scott": [-83, 60, -427],
+    "Architect": [-121, 68, -376],
+    "Mason": [-49, 68, -377],
+    "Surveyor": [-82, 70, -2],
+    "Steward": [-115, 68, -340]
+  },
+  "blackboard": {
+    "total": 76,
+    "blocked": 54,
+    "pending": 16,
+    "completed": 5,
+    "claimed": 1,
+    "townTasks": 39,
+    "retainedAssignedTownOutcomes": {
+      "Scott": {"blocked": 3, "completed": 0, "claimed": 0},
+      "Architect": {"blocked": 5, "completed": 0, "claimed": 0},
+      "Mason": {"blocked": 7, "completed": 2, "claimed": 1},
+      "Surveyor": {"blocked": 9, "completed": 2, "claimed": 0},
+      "Steward": {"blocked": 7, "completed": 1, "claimed": 0}
+    }
+  },
+  "mobility": {
+    "sharedHomeAnchor": [-85, -370],
+    "sharedHomeRadius": 50,
+    "individualHomesConfigured": 0,
+    "mainstreetDestination": "mainstreet-rear-staff-staging",
+    "runtimeLeashWaypointCount": 14,
+    "reviewedRoutineWaypointCount": 19,
+    "liveWalkAttempts": 4,
+    "liveWalkPasses": 0,
+    "reverseWalkPasses": 0,
+    "latestFailure": {
+      "evidence": "data/runtime-audits/citizen-route-live-walk-20260728T081735Z.json",
+      "target": [-82, 73, 0],
+      "arrival": [-82, 70, -2],
+      "failure": "arrival timeout after 45 seconds"
+    }
+  },
+  "improvements": [
+    {
+      "id": "LIFE-01",
+      "name": "staggered-persisted-resident-itinerary",
+      "behavior": "Start at most one resident routine per TownBrain tick and persist per-resident window/cursor state.",
+      "codeTargets": [
+        "src/town/ScheduleManager.ts",
+        "src/town/Town.ts",
+        "src/town/TownManager.ts"
+      ],
+      "configTargets": [
+        "citizenRoutine.residents",
+        "citizenRoutine.windows"
+      ]
+    },
+    {
+      "id": "LIFE-02",
+      "name": "exact-individual-home-loops",
+      "behavior": "Give every resident a verified door, rest anchor, home-to-street route and reverse route.",
+      "codeTargets": [
+        "src/town/ScheduleManager.ts",
+        "src/town/Town.ts"
+      ],
+      "configTargets": [
+        "citizenRoutine.residents[].residence",
+        "leash[].destinations",
+        "leash[].corridors"
+      ]
+    },
+    {
+      "id": "LIFE-03",
+      "name": "verified-role-worksite-contracts",
+      "behavior": "Emit destructive work only for a verified worksite and otherwise rotate to inspection.",
+      "codeTargets": [
+        "src/town/ScheduleManager.ts",
+        "src/town/TownBrain.ts",
+        "src/town/Town.ts"
+      ],
+      "configTargets": [
+        "citizenRoutine.worksites"
+      ]
+    },
+    {
+      "id": "LIFE-04",
+      "name": "coordinated-leisure-and-social-windows",
+      "behavior": "Stagger venue arrivals, overlap bounded leisure dwell and require return home.",
+      "codeTargets": [
+        "src/town/ScheduleManager.ts",
+        "src/town/Town.ts"
+      ],
+      "configTargets": [
+        "citizenRoutine.venues",
+        "citizenRoutine.leisure"
+      ]
+    },
+    {
+      "id": "LIFE-05",
+      "name": "transactional-cross-city-commute",
+      "behavior": "Run outbound, activity and reverse-return stages under one exclusive corridor lease with checkpoint persistence.",
+      "codeTargets": [
+        "src/town/ScheduleManager.ts",
+        "src/town/Town.ts",
+        "src/control/CivicMobility.ts"
+      ],
+      "configTargets": [
+        "citizenRoutine.shifts",
+        "leash[].corridors"
+      ]
+    }
+  ],
+  "checks": {
+    "exactlyFiveImprovements": true,
+    "identityAndRoleRegisterConsistent": true,
+    "believableWorkCurrentlyProven": false,
+    "individualHomeRoutineCurrentlyProven": false,
+    "leisureRoutineCurrentlyProven": false,
+    "staggeredScheduleCurrentlyProven": false,
+    "crossCityRoutineCurrentlyProven": false
+  },
+  "safetyBoundary": {
+    "liveDatabaseChanged": false,
+    "liveConfigChanged": false,
+    "serviceRestarted": false,
+    "worldChanged": false,
+    "botMovementCommandSent": false,
+    "townGeneratorChanged": false,
+    "cottageFilesChanged": false
+  }
+}

@@ -1,0 +1,2347 @@
+{
+  "schemaVersion": 1,
+  "projectId": "CBE-STAGE-ANNEX-001",
+  "title": "Concord Broadcast Exchange Soundstage Annex",
+  "status": "FROZEN_EXACT_COORDINATE_SCHEDULE_NOT_LIVE",
+  "preparedAtUtc": "2026-07-28T06:00:00Z",
+  "sourceOfTruth": "docs/redevelopment/2026-07-28-town-expansion/concord-broadcast-exchange-soundstage-annex-source-of-truth.md",
+  "sourceSnapshot": {
+    "directory": "data/worldsnap-town-expansion-expanded-baseline-20260728T0405Z/region",
+    "sha256": "e612b1feabcf8bd81e427804e0c5cdccea5aac79ef543cadbf2b05d360de7a5a",
+    "readOnly": true,
+    "liveWorldMutated": false
+  },
+  "researchSources": [
+    "https://www.universalstudioslot.com/stages/stages",
+    "https://universalstudioslot.com/support-space",
+    "https://www.nbcuniversal.com/article/nbcuniversals-stamford-studios-celebrates-15-years-production",
+    "https://studiooperations.warnerbros.com/about/",
+    "https://studiooperations.warnerbros.com/the-ranch-prev/",
+    "https://www.wbdg.org/FFC/AF/AFMAN/141389_Television_Production_Facility.pdf",
+    "https://interviews.televisionacademy.com/shows/arsenio-hall-show-the"
+  ],
+  "siteObjects": [
+    {
+      "objectId": "CBE-ANNEX-LN-SHELL-001",
+      "bounds": [
+        674,
+        72,
+        -490,
+        733,
+        96,
+        -431
+      ],
+      "program": "rotated late-night stage shell and partial two-story support bar"
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-CLEAR-001",
+      "bounds": [
+        680,
+        73,
+        -470,
+        731,
+        90,
+        -437
+      ],
+      "program": "52 by 34 by 18 clear-span filming volume below the catwalk zone"
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-LOADING-001",
+      "bounds": [
+        668,
+        67,
+        -490,
+        673,
+        80,
+        -450
+      ],
+      "program": "late-night west scenery yard and two stage doors"
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-SHELL-001",
+      "bounds": [
+        738,
+        70,
+        -490,
+        797,
+        94,
+        -431
+      ],
+      "program": "rotated sitcom stage shell and partial two-story support bar"
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-CLEAR-001",
+      "bounds": [
+        740,
+        71,
+        -470,
+        791,
+        88,
+        -437
+      ],
+      "program": "52 by 34 by 18 clear-span filming volume below the catwalk zone"
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-LOADING-001",
+      "bounds": [
+        798,
+        65,
+        -490,
+        804,
+        88,
+        -450
+      ],
+      "program": "sitcom east scenery yard and two stage doors"
+    },
+    {
+      "objectId": "CBE-ANNEX-CONNECTOR-001",
+      "bounds": [
+        710,
+        66,
+        -430,
+        757,
+        80,
+        -426
+      ],
+      "program": "two-story shared support and enclosed Exchange link"
+    },
+    {
+      "objectId": "CBE-ANNEX-STREET-001",
+      "bounds": [
+        674,
+        62,
+        -430,
+        797,
+        75,
+        -426
+      ],
+      "program": "numbered studio street and separated audience arrivals"
+    },
+    {
+      "objectId": "CBE-ANNEX-SERVICE-YARD-001",
+      "bounds": [
+        668,
+        61,
+        -490,
+        804,
+        88,
+        -450
+      ],
+      "program": "separated west/east truck, scenery and production service yards"
+    },
+    {
+      "objectId": "CBE-ANNEX-LANDSCAPE-001",
+      "bounds": [
+        658,
+        45,
+        -490,
+        804,
+        96,
+        -426
+      ],
+      "program": "retained woodland, planted slopes, rain gardens and bridge edge"
+    }
+  ],
+  "snapshotCensus": {
+    "lateNightReservation": {
+      "bounds": [
+        680,
+        45,
+        -508,
+        731,
+        110,
+        -432
+      ],
+      "surface": {
+        "minY": 47,
+        "p10Y": 63,
+        "medianY": 69,
+        "p90Y": 74,
+        "maxY": 81
+      },
+      "buriedWaterCells": 70,
+      "lavaCells": 0,
+      "blockEntities": 0,
+      "topWaterColumns": 0
+    },
+    "lateNightFinalShell": {
+      "footprint": [
+        674,
+        -490,
+        733,
+        -431
+      ],
+      "observedSurface": {
+        "minY": 47,
+        "p10Y": 63,
+        "medianY": 65,
+        "p90Y": 68,
+        "maxY": 70
+      },
+      "protectedSurfaceWaterPoints": [],
+      "blockEntities": [],
+      "foundationRule": "target only exact dry cells above surveyed terrain; no DM12 target overlap"
+    },
+    "sitcomReservation": {
+      "bounds": [
+        736,
+        45,
+        -508,
+        787,
+        110,
+        -432
+      ],
+      "surface": {
+        "minY": 57,
+        "p10Y": 63,
+        "medianY": 68,
+        "p90Y": 73,
+        "maxY": 79
+      },
+      "waterCells": 0,
+      "lavaCells": 0,
+      "topWaterColumns": 0
+    },
+    "sitcomFinalShell": {
+      "footprint": [
+        738,
+        -490,
+        797,
+        -431
+      ],
+      "observedSurface": {
+        "minY": 57,
+        "p10Y": 63,
+        "medianY": 64,
+        "p90Y": 67,
+        "maxY": 69
+      },
+      "protectedDeepBlockEntities": [
+        [
+          "minecraft:chest",
+          752,
+          -21,
+          -501
+        ],
+        [
+          "minecraft:mob_spawner",
+          752,
+          -21,
+          -498
+        ],
+        [
+          "minecraft:chest",
+          749,
+          -21,
+          -496
+        ]
+      ],
+      "minimumTargetY": 56,
+      "minimumVerticalSeparationBlocks": 77
+    },
+    "studioStreet": {
+      "footprint": [
+        674,
+        -430,
+        797,
+        -426
+      ],
+      "observedSurface": {
+        "minY": 63,
+        "p10Y": 64,
+        "medianY": 64,
+        "p90Y": 65,
+        "maxY": 66
+      },
+      "surfaceFluidColumns": 0,
+      "blockEntities": 0
+    }
+  },
+  "rooms": [
+    {
+      "objectId": "CBE-ANNEX-LN-STAGE-001",
+      "stage": "late-night",
+      "level": "STAGE",
+      "program": "34 by 52 clear-span late-night filming volume",
+      "bounds": [
+        680,
+        73,
+        -470,
+        731,
+        90,
+        -437
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-005",
+        "CBE-ANNEX-CAM-006",
+        "CBE-ANNEX-CAM-009"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-LOBBY-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "public audience lobby and marquee threshold",
+      "bounds": [
+        676,
+        72,
+        -436,
+        687,
+        80,
+        -431
+      ],
+      "routeClass": "public",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-003",
+        "CBE-ANNEX-CAM-014"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-TICKET-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "ticket and audience check-in",
+      "bounds": [
+        689,
+        72,
+        -436,
+        698,
+        80,
+        -431
+      ],
+      "routeClass": "public",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-003"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-SECURITY-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "audience security and bag-check analogue",
+      "bounds": [
+        700,
+        72,
+        -436,
+        709,
+        80,
+        -431
+      ],
+      "routeClass": "public",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-003"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-HOLDING-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "audience holding",
+      "bounds": [
+        711,
+        72,
+        -436,
+        731,
+        80,
+        -431
+      ],
+      "routeClass": "public",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-003"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-CONCESSIONS-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "audience concessions",
+      "bounds": [
+        680,
+        72,
+        -489,
+        683,
+        79,
+        -482
+      ],
+      "routeClass": "public",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-COAT-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "audience coat storage",
+      "bounds": [
+        680,
+        72,
+        -479,
+        683,
+        79,
+        -472
+      ],
+      "routeClass": "public",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-WC-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "audience restroom analogue",
+      "bounds": [
+        685,
+        72,
+        -489,
+        688,
+        79,
+        -482
+      ],
+      "routeClass": "public",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-HOST-DRESS-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "host dressing suite",
+      "bounds": [
+        685,
+        72,
+        -479,
+        688,
+        79,
+        -472
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-GUEST-DRESS-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "guest dressing room one",
+      "bounds": [
+        690,
+        72,
+        -489,
+        693,
+        79,
+        -482
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-GUEST-DRESS-002",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "guest dressing room two",
+      "bounds": [
+        690,
+        72,
+        -479,
+        693,
+        79,
+        -472
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-GREEN-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "guest and musical-act green room",
+      "bounds": [
+        695,
+        72,
+        -489,
+        698,
+        79,
+        -482
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-HAIR-MAKEUP-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "hair and makeup room",
+      "bounds": [
+        695,
+        72,
+        -479,
+        698,
+        79,
+        -472
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-WARDROBE-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "wardrobe room and fitting area",
+      "bounds": [
+        700,
+        72,
+        -489,
+        703,
+        79,
+        -482
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-TALENT-LOUNGE-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "talent lounge",
+      "bounds": [
+        700,
+        72,
+        -479,
+        703,
+        79,
+        -472
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-SHOWRUNNER-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "showrunner office",
+      "bounds": [
+        705,
+        72,
+        -489,
+        708,
+        79,
+        -482
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-PRODUCER-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "producer office",
+      "bounds": [
+        705,
+        72,
+        -479,
+        708,
+        79,
+        -472
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-WRITERS-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "writers room",
+      "bounds": [
+        710,
+        72,
+        -489,
+        713,
+        79,
+        -482
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-PRODUCTION-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "production office",
+      "bounds": [
+        710,
+        72,
+        -479,
+        713,
+        79,
+        -472
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-STAGE-MANAGER-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "stage manager station",
+      "bounds": [
+        715,
+        72,
+        -489,
+        718,
+        79,
+        -482
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-TABLE-READ-001",
+      "stage": "late-night",
+      "level": "G0",
+      "program": "conference and table-read room",
+      "bounds": [
+        715,
+        72,
+        -479,
+        718,
+        79,
+        -472
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-STAFF-WORK-001",
+      "stage": "late-night",
+      "level": "G1",
+      "program": "staff workroom",
+      "bounds": [
+        680,
+        82,
+        -489,
+        683,
+        89,
+        -482
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-CONTROL-001",
+      "stage": "late-night",
+      "level": "G1",
+      "program": "production control room with glazed stage overlook",
+      "bounds": [
+        680,
+        82,
+        -479,
+        683,
+        89,
+        -472
+      ],
+      "routeClass": "technical",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-AUDIO-001",
+      "stage": "late-night",
+      "level": "G1",
+      "program": "audio control room with glazed stage overlook",
+      "bounds": [
+        685,
+        82,
+        -489,
+        688,
+        89,
+        -482
+      ],
+      "routeClass": "technical",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-LIGHTING-001",
+      "stage": "late-night",
+      "level": "G1",
+      "program": "lighting control room with glazed stage overlook",
+      "bounds": [
+        685,
+        82,
+        -479,
+        688,
+        89,
+        -472
+      ],
+      "routeClass": "technical",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-EDIT-GRAPHICS-001",
+      "stage": "late-night",
+      "level": "G1",
+      "program": "edit and graphics suite",
+      "bounds": [
+        690,
+        82,
+        -489,
+        693,
+        89,
+        -482
+      ],
+      "routeClass": "technical",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-MACHINE-001",
+      "stage": "late-night",
+      "level": "G1",
+      "program": "broadcast machine room",
+      "bounds": [
+        690,
+        82,
+        -479,
+        693,
+        89,
+        -472
+      ],
+      "routeClass": "technical",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-GEAR-001",
+      "stage": "late-night",
+      "level": "G1",
+      "program": "camera and lighting equipment cage",
+      "bounds": [
+        695,
+        82,
+        -489,
+        698,
+        89,
+        -482
+      ],
+      "routeClass": "technical",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-MIC-STORE-001",
+      "stage": "late-night",
+      "level": "G1",
+      "program": "microphone and audio storage",
+      "bounds": [
+        695,
+        82,
+        -479,
+        698,
+        89,
+        -472
+      ],
+      "routeClass": "technical",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-TECH-REPAIR-001",
+      "stage": "late-night",
+      "level": "G1",
+      "program": "technical repair bench",
+      "bounds": [
+        700,
+        82,
+        -489,
+        703,
+        89,
+        -482
+      ],
+      "routeClass": "technical",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-PROP-001",
+      "stage": "late-night",
+      "level": "G1",
+      "program": "late-night prop storage",
+      "bounds": [
+        700,
+        82,
+        -479,
+        703,
+        89,
+        -472
+      ],
+      "routeClass": "service",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-SCENERY-DOCK-001",
+      "stage": "late-night",
+      "level": "G1",
+      "program": "late-night scenery dock",
+      "bounds": [
+        705,
+        82,
+        -489,
+        708,
+        89,
+        -482
+      ],
+      "routeClass": "service",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-JANITOR-001",
+      "stage": "late-night",
+      "level": "G1",
+      "program": "janitor and cleanup store",
+      "bounds": [
+        705,
+        82,
+        -479,
+        708,
+        89,
+        -472
+      ],
+      "routeClass": "service",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-ELEC-PLANT-001",
+      "stage": "late-night",
+      "level": "G1",
+      "program": "electrical and plant visual analogue",
+      "bounds": [
+        710,
+        82,
+        -489,
+        713,
+        89,
+        -482
+      ],
+      "routeClass": "service",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-LN-SERVICE-EGRESS-001",
+      "stage": "late-night",
+      "level": "G1",
+      "program": "independent service egress vestibule",
+      "bounds": [
+        710,
+        82,
+        -479,
+        713,
+        89,
+        -472
+      ],
+      "routeClass": "service",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-009",
+        "CBE-ANNEX-CAM-011"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-STAGE-001",
+      "stage": "sitcom",
+      "level": "STAGE",
+      "program": "34 by 52 clear-span multi-camera sitcom filming volume",
+      "bounds": [
+        740,
+        71,
+        -470,
+        791,
+        88,
+        -437
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-007",
+        "CBE-ANNEX-CAM-008",
+        "CBE-ANNEX-CAM-010"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-LOBBY-001",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "public audience lobby and sitcom marquee threshold",
+      "bounds": [
+        740,
+        70,
+        -436,
+        751,
+        78,
+        -431
+      ],
+      "routeClass": "public",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-004",
+        "CBE-ANNEX-CAM-015"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-CHECKIN-001",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "audience check-in",
+      "bounds": [
+        753,
+        70,
+        -436,
+        762,
+        78,
+        -431
+      ],
+      "routeClass": "public",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-004"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-HOLDING-001",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "sitcom audience holding",
+      "bounds": [
+        764,
+        70,
+        -436,
+        775,
+        78,
+        -431
+      ],
+      "routeClass": "public",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-004"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-CONCESSIONS-001",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "audience concessions",
+      "bounds": [
+        777,
+        70,
+        -436,
+        795,
+        78,
+        -431
+      ],
+      "routeClass": "public",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-004"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-WC-001",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "audience restroom analogue",
+      "bounds": [
+        744,
+        70,
+        -489,
+        747,
+        77,
+        -482
+      ],
+      "routeClass": "public",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-PUBLIC-EGRESS-001",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "remote public egress vestibule",
+      "bounds": [
+        744,
+        70,
+        -479,
+        747,
+        77,
+        -472
+      ],
+      "routeClass": "public",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-CAST-DRESS-001",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "cast dressing room one",
+      "bounds": [
+        749,
+        70,
+        -489,
+        752,
+        77,
+        -482
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-CAST-DRESS-002",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "cast dressing room two",
+      "bounds": [
+        749,
+        70,
+        -479,
+        752,
+        77,
+        -472
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-CAST-DRESS-003",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "cast dressing room three",
+      "bounds": [
+        754,
+        70,
+        -489,
+        757,
+        77,
+        -482
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-CAST-DRESS-004",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "cast dressing room four",
+      "bounds": [
+        754,
+        70,
+        -479,
+        757,
+        77,
+        -472
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-CAST-DRESS-005",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "cast dressing room five",
+      "bounds": [
+        759,
+        70,
+        -489,
+        762,
+        77,
+        -482
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-CAST-DRESS-006",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "cast dressing room six",
+      "bounds": [
+        759,
+        70,
+        -479,
+        762,
+        77,
+        -472
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-GUEST-DRESS-001",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "guest dressing room one",
+      "bounds": [
+        764,
+        70,
+        -489,
+        767,
+        77,
+        -482
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-GUEST-DRESS-002",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "guest dressing room two",
+      "bounds": [
+        764,
+        70,
+        -479,
+        767,
+        77,
+        -472
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-GREEN-001",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "cast green room",
+      "bounds": [
+        769,
+        70,
+        -489,
+        772,
+        77,
+        -482
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-HAIR-MAKEUP-001",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "hair and makeup room",
+      "bounds": [
+        769,
+        70,
+        -479,
+        772,
+        77,
+        -472
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-WARDROBE-001",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "wardrobe room",
+      "bounds": [
+        774,
+        70,
+        -489,
+        777,
+        77,
+        -482
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-CAST-LOUNGE-001",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "cast lounge",
+      "bounds": [
+        774,
+        70,
+        -479,
+        777,
+        77,
+        -472
+      ],
+      "routeClass": "talent",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-REHEARSAL-001",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "rehearsal and table-read room",
+      "bounds": [
+        779,
+        70,
+        -489,
+        782,
+        77,
+        -482
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-SHOWRUNNER-001",
+      "stage": "sitcom",
+      "level": "G0",
+      "program": "showrunner office",
+      "bounds": [
+        779,
+        70,
+        -479,
+        782,
+        77,
+        -472
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-WRITERS-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "writers room",
+      "bounds": [
+        744,
+        80,
+        -489,
+        747,
+        87,
+        -482
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-PRODUCTION-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "production office",
+      "bounds": [
+        744,
+        80,
+        -479,
+        747,
+        87,
+        -472
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-DIRECTOR-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "director office",
+      "bounds": [
+        749,
+        80,
+        -489,
+        752,
+        87,
+        -482
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-AD-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "assistant director office",
+      "bounds": [
+        749,
+        80,
+        -479,
+        752,
+        87,
+        -472
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-MEETING-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "production meeting room",
+      "bounds": [
+        754,
+        80,
+        -489,
+        757,
+        87,
+        -482
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-SCRIPT-COPY-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "script and copy room",
+      "bounds": [
+        754,
+        80,
+        -479,
+        757,
+        87,
+        -472
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-STAFF-WORK-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "staff workroom",
+      "bounds": [
+        759,
+        80,
+        -489,
+        762,
+        87,
+        -482
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-CONTROL-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "production control room with glazed stage overlook",
+      "bounds": [
+        759,
+        80,
+        -479,
+        762,
+        87,
+        -472
+      ],
+      "routeClass": "technical",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-AUDIO-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "audio control room with glazed stage overlook",
+      "bounds": [
+        764,
+        80,
+        -489,
+        767,
+        87,
+        -482
+      ],
+      "routeClass": "technical",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-LIGHTING-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "lighting control room with glazed stage overlook",
+      "bounds": [
+        764,
+        80,
+        -479,
+        767,
+        87,
+        -472
+      ],
+      "routeClass": "technical",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-EDIT-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "sitcom edit bay",
+      "bounds": [
+        769,
+        80,
+        -489,
+        772,
+        87,
+        -482
+      ],
+      "routeClass": "technical",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-MACHINE-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "broadcast machine room",
+      "bounds": [
+        769,
+        80,
+        -479,
+        772,
+        87,
+        -472
+      ],
+      "routeClass": "technical",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-GEAR-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "camera and lighting equipment cage",
+      "bounds": [
+        774,
+        80,
+        -489,
+        777,
+        87,
+        -482
+      ],
+      "routeClass": "technical",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-TECH-REPAIR-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "technical repair bench",
+      "bounds": [
+        774,
+        80,
+        -479,
+        777,
+        87,
+        -472
+      ],
+      "routeClass": "technical",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-PROP-CAGE-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "sitcom prop cage",
+      "bounds": [
+        779,
+        80,
+        -489,
+        782,
+        87,
+        -482
+      ],
+      "routeClass": "service",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-WARDROBE-WORK-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "wardrobe workroom",
+      "bounds": [
+        779,
+        80,
+        -479,
+        782,
+        87,
+        -472
+      ],
+      "routeClass": "service",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-SET-DRESS-STORE-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "set-dressing store",
+      "bounds": [
+        740,
+        80,
+        -436,
+        751,
+        88,
+        -431
+      ],
+      "routeClass": "service",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-SCENE-DOCK-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "sitcom scenery dock",
+      "bounds": [
+        753,
+        80,
+        -436,
+        762,
+        88,
+        -431
+      ],
+      "routeClass": "service",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-JANITOR-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "janitor and cleanup store",
+      "bounds": [
+        764,
+        80,
+        -436,
+        775,
+        88,
+        -431
+      ],
+      "routeClass": "service",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SC-SERVICE-EGRESS-001",
+      "stage": "sitcom",
+      "level": "G1",
+      "program": "independent service egress vestibule",
+      "bounds": [
+        777,
+        80,
+        -436,
+        785,
+        88,
+        -431
+      ],
+      "routeClass": "service",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-010",
+        "CBE-ANNEX-CAM-012"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SHARED-SECURITY-001",
+      "stage": "shared",
+      "level": "G0",
+      "program": "annex security and reception",
+      "bounds": [
+        710,
+        66,
+        -430,
+        720,
+        73,
+        -426
+      ],
+      "routeClass": "public",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-014"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SHARED-COMMISSARY-001",
+      "stage": "shared",
+      "level": "G0",
+      "program": "commissary and crew-feed room",
+      "bounds": [
+        722,
+        66,
+        -430,
+        733,
+        73,
+        -426
+      ],
+      "routeClass": "staff",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-014"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SHARED-FIRST-AID-001",
+      "stage": "shared",
+      "level": "G0",
+      "program": "first aid room",
+      "bounds": [
+        735,
+        66,
+        -430,
+        744,
+        73,
+        -426
+      ],
+      "routeClass": "staff",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-014"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SHARED-WC-001",
+      "stage": "shared",
+      "level": "G0",
+      "program": "shared restroom analogue",
+      "bounds": [
+        746,
+        66,
+        -430,
+        757,
+        73,
+        -426
+      ],
+      "routeClass": "public",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-014"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SHARED-TABLE-READ-001",
+      "stage": "shared",
+      "level": "G1",
+      "program": "shared rehearsal and table-read room",
+      "bounds": [
+        710,
+        75,
+        -430,
+        722,
+        79,
+        -426
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-014"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SHARED-MEETING-001",
+      "stage": "shared",
+      "level": "G1",
+      "program": "shared production meeting room",
+      "bounds": [
+        724,
+        75,
+        -430,
+        735,
+        79,
+        -426
+      ],
+      "routeClass": "production",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-014"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SHARED-TECH-001",
+      "stage": "shared",
+      "level": "G1",
+      "program": "central technical support",
+      "bounds": [
+        737,
+        75,
+        -430,
+        746,
+        79,
+        -426
+      ],
+      "routeClass": "technical",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-014"
+      ]
+    },
+    {
+      "objectId": "CBE-ANNEX-SHARED-WC-002",
+      "stage": "shared",
+      "level": "G1",
+      "program": "shared staff restroom analogue",
+      "bounds": [
+        748,
+        75,
+        -430,
+        757,
+        79,
+        -426
+      ],
+      "routeClass": "staff",
+      "implementationStatus": "frozen_for_exact_compilation",
+      "cameraIds": [
+        "CBE-ANNEX-CAM-014"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "routeId": "CBE-ANNEX-ROUTE-PUBLIC-01",
+      "class": "public",
+      "sequence": [
+        "studio street",
+        "shared security",
+        "separated stage marquees"
+      ]
+    },
+    {
+      "routeId": "CBE-ANNEX-ROUTE-LN-AUDIENCE-01",
+      "class": "public",
+      "sequence": [
+        "late-night marquee",
+        "ticket",
+        "security",
+        "holding",
+        "audience floor"
+      ],
+      "crossesService": false
+    },
+    {
+      "routeId": "CBE-ANNEX-ROUTE-SC-AUDIENCE-01",
+      "class": "public",
+      "sequence": [
+        "sitcom marquee",
+        "check-in",
+        "holding",
+        "audience floor"
+      ],
+      "crossesService": false
+    },
+    {
+      "routeId": "CBE-ANNEX-ROUTE-LN-TALENT-01",
+      "class": "talent",
+      "sequence": [
+        "staff link",
+        "late-night dressing corridor",
+        "scenery crossover",
+        "set"
+      ],
+      "crossesAudienceQueue": false
+    },
+    {
+      "routeId": "CBE-ANNEX-ROUTE-SC-TALENT-01",
+      "class": "talent",
+      "sequence": [
+        "staff link",
+        "sitcom dressing corridor",
+        "scenery crossover",
+        "set"
+      ],
+      "crossesAudienceQueue": false
+    },
+    {
+      "routeId": "CBE-ANNEX-ROUTE-LN-SERVICE-01",
+      "class": "service",
+      "sequence": [
+        "north truck yard",
+        "late-night dock",
+        "two stage doors",
+        "scenery crossover"
+      ],
+      "crossesPublic": false
+    },
+    {
+      "routeId": "CBE-ANNEX-ROUTE-SC-SERVICE-01",
+      "class": "service",
+      "sequence": [
+        "north truck yard",
+        "sitcom dock",
+        "two stage doors",
+        "scenery crossover"
+      ],
+      "crossesPublic": false
+    },
+    {
+      "routeId": "CBE-ANNEX-ROUTE-STAFF-LINK-01",
+      "class": "staff",
+      "sequence": [
+        "Exchange enclosed link",
+        "shared support",
+        "late-night bar",
+        "sitcom bar"
+      ]
+    },
+    {
+      "routeId": "CBE-ANNEX-ROUTE-EGRESS-LN-01",
+      "class": "egress",
+      "exits": [
+        "southwest public",
+        "southeast public",
+        "north service"
+      ]
+    },
+    {
+      "routeId": "CBE-ANNEX-ROUTE-EGRESS-SC-01",
+      "class": "egress",
+      "exits": [
+        "southwest public",
+        "southeast public",
+        "north service"
+      ]
+    }
+  ],
+  "cameraCandidates": [
+    {
+      "cameraId": "CBE-ANNEX-CAM-001",
+      "position": [
+        654,
+        89,
+        -461
+      ],
+      "target": [
+        704,
+        82,
+        -461
+      ],
+      "evidence": "pre-build and completed late-night site overview"
+    },
+    {
+      "cameraId": "CBE-ANNEX-CAM-002",
+      "position": [
+        817,
+        87,
+        -461
+      ],
+      "target": [
+        768,
+        80,
+        -461
+      ],
+      "evidence": "pre-build and completed sitcom site overview"
+    },
+    {
+      "cameraId": "CBE-ANNEX-CAM-003",
+      "position": [
+        704,
+        78,
+        -420
+      ],
+      "target": [
+        704,
+        79,
+        -434
+      ],
+      "evidence": "late-night studio-street facade and marquee"
+    },
+    {
+      "cameraId": "CBE-ANNEX-CAM-004",
+      "position": [
+        768,
+        76,
+        -420
+      ],
+      "target": [
+        768,
+        77,
+        -434
+      ],
+      "evidence": "sitcom studio-street facade and marquee"
+    },
+    {
+      "cameraId": "CBE-ANNEX-CAM-005",
+      "position": [
+        705,
+        77,
+        -441
+      ],
+      "target": [
+        705,
+        77,
+        -466
+      ],
+      "evidence": "late-night audience-to-set sightline"
+    },
+    {
+      "cameraId": "CBE-ANNEX-CAM-006",
+      "position": [
+        705,
+        77,
+        -466
+      ],
+      "target": [
+        705,
+        77,
+        -441
+      ],
+      "evidence": "late-night set-to-audience reverse view"
+    },
+    {
+      "cameraId": "CBE-ANNEX-CAM-007",
+      "position": [
+        766,
+        75,
+        -441
+      ],
+      "target": [
+        766,
+        75,
+        -466
+      ],
+      "evidence": "sitcom audience-to-three-standing-sets sightline"
+    },
+    {
+      "cameraId": "CBE-ANNEX-CAM-008",
+      "position": [
+        766,
+        75,
+        -466
+      ],
+      "target": [
+        766,
+        75,
+        -441
+      ],
+      "evidence": "sitcom set-to-audience reverse view"
+    },
+    {
+      "cameraId": "CBE-ANNEX-CAM-009",
+      "position": [
+        704,
+        86,
+        -471
+      ],
+      "target": [
+        704,
+        78,
+        -461
+      ],
+      "evidence": "late-night partial second-floor control overlook"
+    },
+    {
+      "cameraId": "CBE-ANNEX-CAM-010",
+      "position": [
+        766,
+        84,
+        -471
+      ],
+      "target": [
+        766,
+        76,
+        -461
+      ],
+      "evidence": "sitcom partial second-floor control overlook"
+    },
+    {
+      "cameraId": "CBE-ANNEX-CAM-011",
+      "position": [
+        704,
+        77,
+        -480
+      ],
+      "target": [
+        720,
+        77,
+        -480
+      ],
+      "evidence": "late-night dressing and support corridor"
+    },
+    {
+      "cameraId": "CBE-ANNEX-CAM-012",
+      "position": [
+        766,
+        75,
+        -480
+      ],
+      "target": [
+        784,
+        75,
+        -480
+      ],
+      "evidence": "sitcom dressing and support corridor"
+    },
+    {
+      "cameraId": "CBE-ANNEX-CAM-013",
+      "position": [
+        654,
+        79,
+        -479
+      ],
+      "target": [
+        674,
+        78,
+        -479
+      ],
+      "evidence": "late-night loading and scenery route"
+    },
+    {
+      "cameraId": "CBE-ANNEX-CAM-014",
+      "position": [
+        733,
+        73,
+        -419
+      ],
+      "target": [
+        733,
+        72,
+        -428
+      ],
+      "evidence": "shared connector and enclosed Exchange link"
+    },
+    {
+      "cameraId": "CBE-ANNEX-CAM-015",
+      "position": [
+        817,
+        77,
+        -479
+      ],
+      "target": [
+        797,
+        76,
+        -479
+      ],
+      "evidence": "sitcom loading and scenery route"
+    },
+    {
+      "cameraId": "CBE-ANNEX-CAM-016",
+      "position": [
+        654,
+        76,
+        -491
+      ],
+      "target": [
+        675,
+        75,
+        -488
+      ],
+      "evidence": "late-night terrain bridge and planted retaining edge"
+    },
+    {
+      "cameraId": "CBE-ANNEX-CAM-017",
+      "position": [
+        817,
+        75,
+        -491
+      ],
+      "target": [
+        796,
+        74,
+        -488
+      ],
+      "evidence": "sitcom planted service edge and terrain fit"
+    },
+    {
+      "cameraId": "CBE-ANNEX-CAM-018",
+      "position": [
+        735,
+        88,
+        -419
+      ],
+      "target": [
+        735,
+        79,
+        -456
+      ],
+      "evidence": "nighttime two-stage studio-lot identity"
+    }
+  ],
+  "exactCounts": {
+    "scheduledRooms": 84,
+    "lateNightScheduledRooms": 35,
+    "sitcomScheduledRooms": 41,
+    "sharedScheduledRooms": 8,
+    "stageBuildings": 2,
+    "clearSpanStageVolumes": 2,
+    "clearSpanWidthBlocksEach": 34,
+    "clearSpanLengthBlocksEach": 52,
+    "minimumClearHeightBlocksEach": 18,
+    "modeledClearHeightBlocksEach": 18,
+    "lateNightSeatBlocks": 96,
+    "lateNightOpenBayAnalogues": 6,
+    "lateNightAudiencePositions": 102,
+    "sitcomSeatBlocks": 84,
+    "sitcomOpenBayAnalogues": 4,
+    "sitcomAudiencePositions": 88,
+    "lateNightProductionZones": 4,
+    "sitcomStandingSets": 3,
+    "sitcomSwingSets": 1,
+    "truckHeightStageDoorsPerBuilding": 2,
+    "remotePublicExitsPerBuilding": 2,
+    "independentServiceExitsPerBuilding": 1,
+    "partialTwoStorySupportBars": 2,
+    "glazedStageOverlooks": 2,
+    "publicTalentServiceRouteFamilies": 3,
+    "cameraCandidates": 18
+  },
+  "acceptance": {
+    "exactSchedule": [
+      "Every room, object, route and camera ID is generated exactly once.",
+      "No unscheduled room is counted as satisfying a required program.",
+      "All exactCounts values fail closed on mismatch."
+    ],
+    "stage": [
+      "Each clear filming volume is at least 34 by 52 by 18 blocks.",
+      "No support room, column, stair, lift or plant cell intrudes into either clear-span volume.",
+      "Late-night seating faces four real production zones; sitcom seating faces three principal standing sets.",
+      "The second floor remains only over the long support bar."
+    ],
+    "circulation": [
+      "Public, talent and service routes remain physically separated.",
+      "Scenery reaches each stage from two truck-height doors without crossing an audience lobby.",
+      "Each stage has two remote public exits and one independent service exit."
+    ],
+    "site": [
+      "No target touches the protected late-night water point or its support halo.",
+      "No target enters the protected deep dungeon block-entity cells.",
+      "Natural terrain is retained through stepped courts, bridges, planted slopes and screened service edges.",
+      "Zero unreviewed CBE-to-Concord or CBE-to-data-district interfaces."
+    ],
+    "evidence": [
+      "All 18 cameras receive matched first-pass and second-pass evidence after live deployment.",
+      "No camera is accepted until its exact object link and route context are verified."
+    ]
+  },
+  "liveExecutionAuthorized": false
+}

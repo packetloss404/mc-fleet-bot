@@ -18,9 +18,18 @@ const Database = require('better-sqlite3');
 const yaml = require('js-yaml');
 
 const ROOT = process.cwd();
-const REGION_DIR = path.join(ROOT, 'data/worldsnap/region');
+const args = process.argv.slice(2);
+const value = (flag, fallback) => {
+  const index = args.indexOf(flag);
+  return index >= 0 && args[index + 1] ? args[index + 1] : fallback;
+};
+const positionalOutput = args[0] && !args[0].startsWith('--') ? args[0] : null;
+const REGION_DIR = path.resolve(
+  ROOT,
+  value('--regions', 'data/worldsnap/region'),
+);
 const OUTPUT_DIR = path.resolve(
-  process.argv[2]
+  value('--out', positionalOutput)
     ?? path.join(ROOT, 'data/exports/box/atlas-2026-07-26/team-a'),
 );
 const MASTER = {

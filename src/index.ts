@@ -158,17 +158,23 @@ async function main() {
   // ScheduleManager.maybeRunGc → TownBrain.tick — and TownBrain.tick early-
   // returns when the town is paused, so a paused town's GC never fires and
   // the blackboard pile (4900+ terminal tasks observed pre-fix) stays in mem.
-  // 10min cadence is plenty for housekeeping; methods are idempotent so the
-  // ScheduleManager path can keep calling the same ones on an unpaused town.
-  const MAINT_INTERVAL_MS = 10 * 60 * 1000;
+  // Run once a minute so a worker that disappears during a paused town or a
+  // route-validation hold does not leave a claim pinned for the rest of the
+  // session. Methods are idempotent, so the ScheduleManager path can keep
+  // calling the same GC methods on an unpaused town.
+  const MAINT_INTERVAL_MS = 60 * 1000;
   const MAINT_MAX_AGE_MS = 24 * 60 * 60 * 1000;
   setInterval(() => {
     try {
       const bb = botManager.getBlackboardManager();
+      const released = bb.releaseStale?.() ?? 0;
       const stale = bb.gcStaleScheduleTasks?.(MAINT_MAX_AGE_MS) ?? 0;
       const terminal = bb.gcTerminalTasks?.(MAINT_MAX_AGE_MS) ?? 0;
-      if (stale > 0 || terminal > 0) {
-        logger.info({ stale, terminal, maxAgeMs: MAINT_MAX_AGE_MS }, 'Maintenance: blackboard GC swept stale rows');
+      if (released > 0 || stale > 0 || terminal > 0) {
+        logger.info(
+          { released, stale, terminal, maxAgeMs: MAINT_MAX_AGE_MS },
+          'Maintenance: blackboard GC swept stale rows',
+        );
       }
     } catch (err: any) {
       logger.warn({ err: err?.message }, 'Maintenance: blackboard GC threw; continuing');
@@ -207,12 +213,31 @@ async function main() {
       };
       const event = botManager.getDungeonMaster().evaluateAndGenerate(snapshot);
       if (event) {
-        for (const task of event.tasks) {
-          botManager.getBlackboardManager().addTask(
-            { description: task.description, keywords: task.keywords },
-            'swarm',
-            undefined,
-            task.priority as any,
+        const residentNames = new Set(
+          botManager.getTownManager().listTowns().flatMap((town) =>
+            botManager.getTownManager().listResidents(town.id)
+              .filter((resident) => resident.status === null || resident.status === 'alive')
+              .map((resident) => resident.botName.toLowerCase()),
+          ),
+        );
+        const allWorkersAreResidents = workers.every(
+          (worker) => residentNames.has(worker.botName.toLowerCase()),
+        );
+        if (!allWorkersAreResidents) {
+          for (const task of event.tasks) {
+            const blackboard = botManager.getBlackboardManager();
+            if (blackboard.existsOpenWithDescription(task.description, 'swarm')) continue;
+            blackboard.addTask(
+              { description: task.description, keywords: task.keywords },
+              'swarm',
+              undefined,
+              task.priority as any,
+            );
+          }
+        } else {
+          logger.info(
+            { eventId: event.id, skippedTasks: event.tasks.length },
+            'DungeonMaster event retained as world flavor; all workers are town residents, so unscoped roaming tasks were not queued',
           );
         }
         const ev = eventLog.push({ type: 'world:event', botName: 'DungeonMaster', description: event.title });

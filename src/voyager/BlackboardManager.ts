@@ -21,6 +21,10 @@ export interface BlackboardTask {
   updatedAt: number;
   claimedAt?: number;
   blocker?: string;
+  /** Consecutive failures observed for this exact recurring task family. */
+  failureCount?: number;
+  /** Earliest wall-clock time the producer may re-emit this task. */
+  retryAfter?: number;
   /**
    * Optional structured task contract. When set, downstream consumers
    * (Voyager loop, future ChainCoordinator integration, dashboard) can
@@ -256,12 +260,36 @@ export class BlackboardManager {
   blockTask(taskDescription: string, botName: string, blocker: string): void {
     const task = this.state.tasks.find((t) => t.description === taskDescription && t.assignedBot === botName && t.status === 'claimed');
     if (!task) return;
+    const now = Date.now();
+    const recentFamilyFailures = this.state.tasks.filter((candidate) =>
+      candidate.id !== task.id
+      && candidate.source === task.source
+      && candidate.description === task.description
+      && candidate.status === 'blocked'
+      && now - candidate.updatedAt <= BlackboardManager.FAILURE_FAMILY_WINDOW_MS);
+    const previousFailureCount = recentFamilyFailures.reduce(
+      (max, candidate) => Math.max(max, candidate.failureCount ?? 1),
+      0,
+    );
+    task.failureCount = Math.min(
+      BlackboardManager.MAX_FAILURE_BACKOFF_EXPONENT,
+      previousFailureCount + 1,
+    );
+    task.retryAfter = now + Math.min(
+      BlackboardManager.MAX_FAILURE_BACKOFF_MS,
+      BlackboardManager.BASE_FAILURE_BACKOFF_MS * 2 ** (task.failureCount - 1),
+    );
     task.status = 'blocked';
     task.blocker = blocker;
-    task.updatedAt = Date.now();
+    task.updatedAt = now;
     this.postMessage(botName, 'blocker', `${task.description} is blocked: ${blocker}`);
     this.persist();
   }
+
+  private static readonly BASE_FAILURE_BACKOFF_MS = 60_000;
+  private static readonly MAX_FAILURE_BACKOFF_MS = 30 * 60_000;
+  private static readonly MAX_FAILURE_BACKOFF_EXPONENT = 6;
+  private static readonly FAILURE_FAMILY_WINDOW_MS = 60 * 60_000;
 
   postMessage(botName: string, kind: BlackboardMessage['kind'], text: string): void {
     this.state.messages.push({
@@ -342,6 +370,55 @@ export class BlackboardManager {
       return true;
     }
     return false;
+  }
+
+  existsOpenWithKeywords(
+    keywords: string[],
+    source: BlackboardTask['source'],
+  ): boolean {
+    return this.state.tasks.some((task) =>
+      task.source === source
+      && (task.status === 'pending' || task.status === 'claimed')
+      && keywords.every((keyword) => task.keywords.includes(keyword)));
+  }
+
+  /**
+   * Remove unclaimed tasks matching an exact producer contract.
+   *
+   * ScheduleManager uses this at day/night transitions so obsolete work from
+   * the previous phase cannot be claimed after the town has moved on. Claimed
+   * work is deliberately preserved: a bot already executing it owns that
+   * lifecycle and will complete or block it normally.
+   */
+  discardPendingWithKeywords(
+    keywords: string[],
+    source: BlackboardTask['source'],
+  ): number {
+    const before = this.state.tasks.length;
+    this.state.tasks = this.state.tasks.filter((task) =>
+      task.source !== source
+      || task.status !== 'pending'
+      || !keywords.every((keyword) => task.keywords.includes(keyword)));
+    const removed = before - this.state.tasks.length;
+    if (removed > 0) this.persist();
+    return removed;
+  }
+
+  /**
+   * True while the newest blocked copy of an exact recurring task is cooling
+   * down. Schedule/demand producers use this alongside open-task dedup so an
+   * impossible role job is not recreated every brain tick.
+   */
+  isTaskFamilyBackedOff(
+    description: string,
+    source: BlackboardTask['source'],
+    now = Date.now(),
+  ): boolean {
+    return this.state.tasks.some((task) =>
+      task.source === source
+      && task.status === 'blocked'
+      && task.description === description
+      && (task.retryAfter ?? 0) > now);
   }
 
   /**
@@ -432,10 +509,22 @@ export class BlackboardManager {
    * a claim is already active (so the caller skips re-queueing) and the count
    * removed.
    */
-  reapShortageTasks(matcher: (t: BlackboardTask) => boolean): { claimedActive: boolean; removed: number } {
+  reapShortageTasks(
+    matcher: (t: BlackboardTask) => boolean,
+  ): { claimedActive: boolean; backoffActive: boolean; removed: number } {
+    const now = Date.now();
+    const backoffActive = this.state.tasks.some((task) =>
+      matcher(task)
+      && task.status === 'blocked'
+      && (task.retryAfter ?? 0) > now);
     const removeIds = new Set(
       this.state.tasks
-        .filter((t) => matcher(t) && (t.status === 'pending' || t.status === 'blocked'))
+        .filter((task) =>
+          matcher(task)
+          && (
+            task.status === 'pending'
+            || (task.status === 'blocked' && (task.retryAfter ?? 0) <= now)
+          ))
         .map((t) => t.id),
     );
     if (removeIds.size > 0) {
@@ -443,7 +532,7 @@ export class BlackboardManager {
       this.persist();
     }
     const claimedActive = this.state.tasks.some((t) => matcher(t) && t.status === 'claimed');
-    return { claimedActive, removed: removeIds.size };
+    return { claimedActive, backoffActive, removed: removeIds.size };
   }
 
   releaseStale(timeoutMs: number = 5 * 60 * 1000): number {

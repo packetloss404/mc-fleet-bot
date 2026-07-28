@@ -8,8 +8,17 @@ import { craft } from '../actions/craft';
 import { placeBlock } from '../actions/placeBlock';
 import { attack } from '../actions/attack';
 import { smelt } from '../actions/smelt';
-import { depositToContainer, inspectContainer, withdrawFromContainer } from '../actions/container';
+import {
+  containerItemsFromResult,
+  depositToContainer,
+  inspectContainer,
+  withdrawFromContainer,
+} from '../actions/container';
 import { dropJunk } from '../actions/dropJunk';
+import {
+  canMoveWithinCivicMobility,
+  type CivicMobilityBoundary,
+} from '../control/CivicMobility';
 
 export interface ExecutionResult {
   success: boolean;
@@ -47,14 +56,14 @@ export class CodeExecutor {
    *  outside `radius` blocks of (x,z) — the hard guarantee behind "keep this
    *  bot on its island". moveTo rejects outward targets (recall toward home is
    *  still allowed); exploreUntil is disabled entirely for a leashed bot. */
-  private leash: { x: number; z: number; radius: number } | null = null;
+  private leash: CivicMobilityBoundary | null = null;
 
   constructor(timeoutMs: number) {
     this.timeoutMs = timeoutMs;
   }
 
   /** Pin this executor's bot to a home anchor + radius (or clear with null). */
-  setLeash(leash: { x: number; z: number; radius: number } | null): void {
+  setLeash(leash: CivicMobilityBoundary | null): void {
     this.leash = leash;
   }
 
@@ -284,7 +293,7 @@ export class CodeExecutor {
         const message = result.message || 'inspectContainer completed';
         pushLog(`[primitive] inspectContainer result: ${message}`);
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'inspectContainer', containerName });
-        return result;
+        return containerItemsFromResult(result);
       },
       dropJunk: async (minFreeSlots = 6, threshold = 30) => {
         throwIfInterrupted();
@@ -327,18 +336,17 @@ export class CodeExecutor {
         // (one that brings the bot CLOSER to home than it is now) is still
         // allowed so a bot nudged out of bounds can walk back.
         if (this.leash) {
-          const tx = x - this.leash.x, tz = z - this.leash.z;
-          const targetDist = Math.sqrt(tx * tx + tz * tz);
-          if (targetDist > this.leash.radius) {
-            const p = bot.entity.position;
-            const curDist = Math.sqrt((p.x - this.leash.x) ** 2 + (p.z - this.leash.z) ** 2);
-            if (targetDist >= curDist) {
-              throw new Error(
-                `LEASHED: target (${Math.floor(x)},${Math.floor(z)}) is ${Math.round(targetDist)} blocks from home ` +
-                `(${this.leash.x},${this.leash.z}), outside the ${this.leash.radius}-block boundary. Stay near HQ — ` +
-                `only move to coordinates within ${this.leash.radius} blocks of home.`,
-              );
-            }
+          const p = bot.entity.position;
+          if (!canMoveWithinCivicMobility(
+            this.leash,
+            { x: p.x, z: p.z },
+            { x, z },
+          )) {
+            throw new Error(
+              `LEASHED: target (${Math.floor(x)},${Math.floor(z)}) is outside the approved home district, ` +
+              `named civic destinations, and surveyed movement corridors. Use the approved route waypoints; ` +
+              `free roaming remains disabled.`,
+            );
           }
         }
         // Depth guard: refuse to path DOWN below the dig floor. The dig floor
@@ -655,13 +663,54 @@ export class CodeExecutor {
       blockAt: (pos: Vec3) => {
         const b = bot.blockAt(pos);
         if (!b) return null;
-        return { name: b.name, position: b.position, hardness: b.hardness };
+        return {
+          name: b.name,
+          position: b.position,
+          x: b.position.x,
+          y: b.position.y,
+          z: b.position.z,
+          hardness: b.hardness,
+          offset: (x: number, y: number, z: number) => b.position.offset(x, y, z),
+          distanceTo: (other: Vec3) => b.position.distanceTo(other),
+          // Crop routines depend on block-state properties such as `age`.
+          // Keep the sandbox result data-only while preserving that safe
+          // Mineflayer inspection contract.
+          getProperties: () => b.getProperties(),
+        };
       },
       findBlock: (opts: { matching: (b: any) => boolean; maxDistance: number; count?: number }) => {
         return bot.findBlock({
           matching: opts.matching,
           maxDistance: opts.maxDistance,
           count: opts.count || 1,
+        });
+      },
+      findBlocks: (opts: { matching: (b: any) => boolean; maxDistance: number; count?: number }) => {
+        const positions = bot.findBlocks({
+          matching: opts.matching,
+          maxDistance: opts.maxDistance,
+          count: opts.count || 1,
+        });
+        // Mineflayer returns Vec3 positions, while generated code routinely
+        // expects block-like values with `.name` and `.position`. Normalize
+        // once at the sandbox boundary and drop stale/unloaded positions.
+        return positions.flatMap((position) => {
+          const block = bot.blockAt(position);
+          if (!block) return [];
+          return [{
+            name: block.name,
+            position: block.position,
+            // Compatibility bridge: older learned skills treated Mineflayer's
+            // findBlocks() output as Vec3 positions, while newer code expects
+            // blocks. Expose both views until those skills are revalidated.
+            x: block.position.x,
+            y: block.position.y,
+            z: block.position.z,
+            hardness: block.hardness,
+            offset: (x: number, y: number, z: number) => block.position.offset(x, y, z),
+            distanceTo: (other: Vec3) => block.position.distanceTo(other),
+            getProperties: () => block.getProperties(),
+          }];
         });
       },
       nearestEntity: (filter?: (e: any) => boolean) => {

@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-28T09:29:36Z",
+  "scope": {
+    "townId": "town_mrzgshth_9d12c17d",
+    "townName": "Ravensreach",
+    "bots": [
+      "Scott",
+      "Architect",
+      "Mason",
+      "Surveyor",
+      "Steward"
+    ]
+  },
+  "releaseState": {
+    "sourceImplementation": "PASS",
+    "correctiveSourcePass": "PASS_OFFLINE",
+    "offlineQa": "PASS",
+    "identityMigration": "PASS",
+    "controlledCorridorHold": "PASS_RELEASED_BY_SHIFT_TRANSACTION",
+    "crossCityRouteOffline": "PASS_34_WAYPOINTS_33_SEGMENTS",
+    "crossCityRouteLive": "PASS_BIDIRECTIONAL",
+    "shiftTransaction": "PASS",
+    "autonomousShifts": "CONFIGURED_TOWN_RESUMED_SERVICE_START_PENDING",
+    "serviceStateAtDocumentation": "INACTIVE"
+  },
+  "initialAuditSnapshot": {
+    "blackboard": {
+      "total": 520,
+      "blocked": 484,
+      "completed": 21,
+      "pending": 9,
+      "claimed": 6,
+      "note": "Historical point-in-time census before the coordinated identity migration and corridor hold."
+    },
+    "residentIdentityDrift": {
+      "liveBot": "Scott",
+      "persistedResident": "Scout",
+      "persistedRole": "lumberjack",
+      "resolution": "MIGRATED_TO_EXACT_SCOTT_IDENTITY"
+    },
+    "movementPolicy": {
+      "home": {
+        "x": -85,
+        "z": -370,
+        "radius": 50
+      },
+      "problem": "Radius-only confinement could not express reviewed civic routes or destinations.",
+      "resolution": "Named destinations, reviewed waypoint corridors, raw-goal enforcement, and pathfinder step exclusions are implemented."
+    }
+  },
+  "currentTruth": {
+    "residentRoles": [
+      {
+        "name": "Architect",
+        "role": "builder",
+        "status": "alive"
+      },
+      {
+        "name": "Mason",
+        "role": "miner",
+        "status": "alive"
+      },
+      {
+        "name": "Scott",
+        "role": "lumberjack",
+        "status": "alive"
+      },
+      {
+        "name": "Steward",
+        "role": "farmer",
+        "status": "alive"
+      },
+      {
+        "name": "Surveyor",
+        "role": "guard",
+        "status": "alive"
+      }
+    ],
+    "runtimeStateNote": "The guarded shift transaction passed with Voyager configured enabled and Ravensreach resumed. The transaction leaves mc-fleet-bot.service stopped; runtime shift observation begins only after the systemd service is started.",
+    "route": {
+      "surveyState": "PASS_OFFLINE_EXISTING_SURFACE_ROUTE",
+      "acceptedSnapshotSha256": "70eb7051d635d7558d3603e345e2b2d17d712607e92019363a12bbcc62267099",
+      "exactPathSha256": "c4e5924b91172a5c07c6b369cd196ce77c82df17bcc3abc08ff4e3adcd6c50b1",
+      "exactPathCells": 498,
+      "waypoints": 34,
+      "segmentsPerDirection": 33,
+      "forwardSegmentsPassedOffline": 33,
+      "reverseSegmentsPassedOffline": 33,
+      "minimumContiguousStandableWidth": 2,
+      "belowFiveWideCells": 307,
+      "hazardCounts": {
+        "exactPath": 0,
+        "halo": 0,
+        "gravitySupports": 0,
+        "nearbyBlockEntities": 0,
+        "buildingIntersections": 0,
+        "miningProtectionIntersections": 0
+      },
+      "livePassAccepted": true,
+      "priorFailedAudits": "SUPERSEDED_BY_HASH_BOUND_PASS",
+      "currentRouteLiveResult": {
+        "artifact": "data/runtime-audits/citizen-route-live-walk-20260728T092815Z.json",
+        "artifactSha256": "68f701830b37253877df19fea70d0ee2e03e63249bb93ef5262afd662afadb47",
+        "generatedAtUtc": "2026-07-28T09:28:15.503Z",
+        "bot": "Surveyor",
+        "status": "PASS_BIDIRECTIONAL",
+        "stagingCheckpointsPassed": 21,
+        "forwardCheckpointsPassed": 34,
+        "reverseCheckpointsPassed": 34,
+        "goalRange": 1,
+        "attemptTimeoutSeconds": 45,
+        "maximumAttemptsPerCheckpoint": 2,
+        "retriesUsed": 0,
+        "westShoulderStair": true,
+        "digCountBefore": 0,
+        "digCountAfter": 0,
+        "noDigObserved": true,
+        "securityIncidentsBefore": 0,
+        "securityIncidentsAfter": 0
+      },
+      "activationTransactions": {
+        "corridor": {
+          "artifact": "data/runtime-audits/citizen-route-corridor-20260728T092841Z.json",
+          "artifactSha256": "3869915e9243f0ea9e096329d1159f0d6c9f0e6eaeae620055a67d5e03c1e24d",
+          "status": "PASS",
+          "mode": "execute",
+          "leashEntries": 5,
+          "voyagerEnabledAfter": false,
+          "townPausedAfter": true
+        },
+        "shifts": {
+          "artifact": "data/runtime-audits/citizen-route-shifts-20260728T092841Z.json",
+          "artifactSha256": "f05e33431e32869e27116b86eb18160a1f88647b231c73c3d7e38eec7c460bde",
+          "status": "PASS",
+          "mode": "execute",
+          "shifts": 5,
+          "voyagerEnabledAfter": true,
+          "townPausedAfter": false,
+          "walkAudit": "data/runtime-audits/citizen-route-live-walk-20260728T092815Z.json"
+        }
+      },
+      "allCompletedLiveAuditsNoDig": true,
+      "allCompletedLiveAuditsSecurityClean": true
+    }
+  },
+  "fiveCitizenImprovements": [
+    {
+      "name": "Correct identity and role ownership",
+      "status": "PASS_ACTIVE",
+      "evidence": "The database has exact Scott/lumberjack identity and no Scout resident."
+    },
+    {
+      "name": "Use a reviewed civic mobility network",
+      "status": "PASS_SOURCE_OFFLINE_AND_LIVE_ROUTE",
+      "evidence": "Five home boundaries, named MainStreet destination, corridor geometry, raw-goal enforcement, 34 reviewed 3D checkpoints, and an accepted hash-bound bidirectional audit."
+    },
+    {
+      "name": "Give citizens rotating daily lives",
+      "status": "PASS_CONFIGURED_RUNTIME_OBSERVATION_PENDING",
+      "evidence": "Five non-destructive MainStreet shifts are installed, Voyager is configured enabled, and Ravensreach is resumed; the service start and day/night observation remain."
+    },
+    {
+      "name": "Stop impossible-job churn",
+      "status": "PASS_SOURCE_RUNTIME_REVALIDATION_PENDING",
+      "evidence": "Task-family backoff, exact role contracts, global paused releaseStale, resident-ineligible DungeonMaster suppression, and migration cleanup are implemented."
+    },
+    {
+      "name": "Use a measured rollout",
+      "status": "IN_PROGRESS",
+      "evidence": "Identity, offline route, live bidirectional walk, and atomic shift activation gates pass; service start and a full day/night observation remain required."
+    }
+  ],
+  "fiveCodeImprovements": [
+    {
+      "name": "Resident identity reconciliation",
+      "status": "PASS",
+      "detail": "Exact match first, then unique one-character substitution fallback; BotManager uses the resolver for town, role, and rules."
+    },
+    {
+      "name": "Backoff and rotating schedules",
+      "status": "PASS",
+      "detail": "Exponential retryAfter/failureCount, one active town/phase/role task, and multi-entry role rotation."
+    },
+    {
+      "name": "Civic mobility enforcement",
+      "status": "PASS_LIVE_ROUTE",
+      "detail": "Home, destination, corridor, recovery-distance, generated moveTo, raw pathfinder goal, and intermediate-step enforcement; the accepted 34-waypoint route passed live in both directions."
+    },
+    {
+      "name": "Sandbox API parity",
+      "status": "PASS_OFFLINE",
+      "detail": "inspectContainer returns an item array; findBlocks and blockAt expose block-state getProperties plus legacy coordinate helpers."
+    },
+    {
+      "name": "Worker generation ownership",
+      "status": "PASS",
+      "detail": "Generation-captured worker/IPC callbacks, stale-exit rejection, restart coalescing, awaited termination, and watchdog startup grace."
+    }
+  ],
+  "correctiveRuntimeGateFixes": [
+    {
+      "id": "blockAt-state-parity",
+      "sourceStatus": "FIXED_AND_TESTED",
+      "runtimeStatus": "PENDING_CONTROLLED_VALIDATION",
+      "detail": "blockAt now exposes getProperties, x/y/z, offset, and distanceTo; wheat age regression passes."
+    },
+    {
+      "id": "walk-audit-hash-binding",
+      "sourceStatus": "FIXED_AND_INSPECTED",
+      "runtimeStatus": "VALIDATED_BY_ACCEPTED_PASS_ARTIFACT",
+      "detail": "Shift activation requires audit snapshot and exact-path hashes to equal the current survey; the accepted live artifact carries the matching hashes."
+    },
+    {
+      "id": "paused-release-stale",
+      "sourceStatus": "FIXED_AND_INSPECTED",
+      "runtimeStatus": "PENDING_CONTROLLED_VALIDATION",
+      "detail": "Global maintenance invokes releaseStale every minute even while the town is paused or Voyager disabled."
+    },
+    {
+      "id": "dungeonmaster-resident-eligibility",
+      "sourceStatus": "FIXED_AND_INSPECTED",
+      "runtimeStatus": "PENDING_CONTROLLED_VALIDATION",
+      "detail": "Unscoped event work is not queued when every worker is an alive resident; open descriptions are deduplicated when eligible non-residents exist."
+    },
+    {
+      "id": "corridor-hold-task-coverage",
+      "sourceStatus": "FIXED_AND_INSPECTED",
+      "runtimeStatus": "VALIDATED_BY_FINAL_CORRIDOR_TRANSACTION",
+      "detail": "Canonical town-description prefixes and the legacy impossible iron-deposit family are covered by controlled task holding; the final corridor transaction held 12 matching tasks."
+    },
+    {
+      "id": "bounded-stuck-recovery",
+      "sourceStatus": "FIXED_AND_TESTED",
+      "runtimeStatus": "PRODUCTION_ACTION_STACK_PASSED_ROUTE_STUCK_BRANCH_NOT_OBSERVED",
+      "detail": "A stuck reset triggers a goal-facing 600 ms jump-forward nudge, two-second recovery spacing, full control/listener cleanup, and restoration of the same GoalNear under the original timeout and civic exclusions. The accepted range-1 route audit passed without a checkpoint retry and does not assert that the stuck hook fired."
+    }
+  ],
+  "remainingGates": [
+    "Retain the accepted PASS_BIDIRECTIONAL artifact with acceptedSnapshotSha256 70eb7051d635d7558d3603e345e2b2d17d712607e92019363a12bbcc62267099 and exactPathSha256 c4e5924b91172a5c07c6b369cd196ce77c82df17bcc3abc08ff4e3adcd6c50b1.",
+    "Start only the systemd-owned mc-fleet-bot.service; do not repeat the passing corridor or shift execute transactions.",
+    "Verify five unique citizen sessions, then observe a full day/night cycle for productive and civic/social completion.",
+    "Do not claim the citizens fully fixed until live work, backlog, mobility, build-safety, worker-generation, and security gates pass."
+  ],
+  "qa": {
+    "currentFocused": {
+      "files": 9,
+      "tests": 44,
+      "result": "PASS",
+      "includes": [
+        "Resident identity",
+        "Civic mobility",
+        "Pathfinder movement safety",
+        "Generated sandbox APIs including blockAt state",
+        "Role dispatch and backoff",
+        "Worker generation ownership",
+        "Bounded stuck recovery",
+        "Route survey",
+        "Real config schema"
+      ]
+    },
+    "historicalTownAndVoyager": {
+      "files": 35,
+      "tests": 242,
+      "result": "PASS"
+    },
+    "historicalFullBackend": {
+      "passingFiles": 94,
+      "passingTests": 665,
+      "failingFiles": 1,
+      "failingTests": 2,
+      "result": "FAIL_UNRELATED_RAVEN_ROCK_T2B_PACKAGE",
+      "detail": "No citizen-fleet test failed in that historical full-suite run."
+    }
+  },
+  "safetyBoundary": {
+    "protectedBuildRulesWeakened": false,
+    "impersonationDetectionDisabled": false,
+    "freeRoamingEnabled": false,
+    "liveBidirectionalPassClaimed": true,
+    "liveDatabaseMutatedByDocumentationPass": false,
+    "liveConfigMutatedByDocumentationPass": false,
+    "serviceRestartedByDocumentationPass": false,
+    "minecraftBlocksMutatedByDocumentationPass": false
+  }
+}

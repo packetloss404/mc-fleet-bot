@@ -280,11 +280,43 @@ ipc.onCommand((type, cmdData) => {
         logger.warn({ bot: data.botName, cmdData }, 'walkTo ignored: missing coordinate');
         break;
       }
+      const range = cmdData?.range == null ? 2 : Number(cmdData.range);
+      if (!Number.isFinite(range) || range < 0 || range > 4) {
+        logger.warn({ bot: data.botName, cmdData }, 'walkTo ignored: invalid range');
+        break;
+      }
       const bot = (instance as any).bot;
       if (!bot) { logger.warn({ bot: data.botName }, 'walkTo ignored: no bot'); break; }
-      walkTo(bot, Number(x), Number(y), Number(z))
-        .then((r) => logger.info({ bot: data.botName, x, y, z, ok: r?.success }, 'walkTo finished'))
-        .catch((err) => logger.warn({ bot: data.botName, err: err?.message }, 'walkTo failed'));
+      const target = {
+        x: Number(x),
+        y: Number(y),
+        z: Number(z),
+        range,
+      };
+      instance.setControlledWalkStatus({
+        status: 'running',
+        target,
+        updatedAt: Date.now(),
+      });
+      walkTo(bot, Number(x), Number(y), Number(z), range)
+        .then((r) => {
+          instance.setControlledWalkStatus({
+            status: r?.success ? 'succeeded' : 'failed',
+            target,
+            updatedAt: Date.now(),
+            message: r?.message,
+          });
+          logger.info({ bot: data.botName, x, y, z, range, ok: r?.success }, 'walkTo finished');
+        })
+        .catch((err) => {
+          instance.setControlledWalkStatus({
+            status: 'failed',
+            target,
+            updatedAt: Date.now(),
+            message: err?.message ?? 'walkTo failed',
+          });
+          logger.warn({ bot: data.botName, err: err?.message }, 'walkTo failed');
+        });
       break;
     }
     case 'follow': {

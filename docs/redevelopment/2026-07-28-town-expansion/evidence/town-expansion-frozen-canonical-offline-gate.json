@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "generatedAtUtc": "2026-07-28T15:08:29Z",
+  "mode": "offline-read-only-independent-release-gate",
+  "decision": "PASS_OFFLINE_RELEASE_INTERFACES",
+  "worldReleaseAuthorized": false,
+  "worldMutationPerformed": false,
+  "liveSystemsAccessed": false,
+  "snapshot": {
+    "directory": "data/worldsnap-town-expansion-frozen-rebase-20260728T141025Z/region",
+    "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)",
+    "sha256": "de807a2d4a1cb597bd259d55d1d7c0cda8b710af5017497e75660c8a976603f5",
+    "regionFileCount": 30,
+    "bytes": 134667649
+  },
+  "canonicalArtifacts": {
+    "forward": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.txt",
+      "sha256": "1a10954b1ae6ae702dcc01cd92d39adbb3820e3feff5461f3caa1283a578b896"
+    },
+    "rollback": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.rollback.txt",
+      "sha256": "1edf4d1004ce5ff59b5c15cb8f1d16ea9de04f52b47a68aad7f0828a58ab88de"
+    },
+    "generatorReport": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.report.json",
+      "sha256": "d855d0072a213c27ebedc2b36ec53761363568e9de963650a8563a9179d81930"
+    },
+    "ownershipManifest": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.manifest.json",
+      "sha256": "3073ef269d07f720ef62708b1f673d179a5f641fd19856b61f19e2eae4e78510"
+    },
+    "atomicReleasePlan": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.atomic-release.json",
+      "sha256": "53dc2fb938fa526a7972f4588f9af84ebc1a17a34d46b21e41c1f9412af33651"
+    }
+  },
+  "implementations": {
+    "runner": {
+      "path": "scripts/rcon_runner.py",
+      "sha256": "e998cc85c1bf52b6c4be1a6c38fa7fd5eac9797339ad49e22b856f79feb1b015"
+    },
+    "atomicWrapper": {
+      "path": "scripts/run_redevelopment_atomic_release.py",
+      "sha256": "175a9eb038bb2728fd3603a2d8ff6d76cd08f016edd896481c2df2d3f4432eeb"
+    },
+    "manifestValidator": {
+      "path": "scripts/qa_guarded_release_manifest.mjs",
+      "sha256": "ca44df998b1f2ee76296b2de2bac075cc5d65efcdc9036169e638e339b330317"
+    }
+  },
+  "gates": {
+    "immutableSourcePreflight": {
+      "status": "PASS",
+      "path": "data/buildops/town-expansion-r1-2026-07-28.live-safety-final-prerelease-preflight.json",
+      "sha256": "7c72f683852255a0560ed6bdceb2328a9d27e88e001d630603a93ac65da61194",
+      "regions": "data/worldsnap-town-expansion-frozen-rebase-20260728T141025Z/region",
+      "operationCount": 483016,
+      "passed": 483016,
+      "failed": 0,
+      "partialMasks": 0,
+      "orderAwareProjection": true
+    },
+    "atomicManifest": {
+      "status": "PASS",
+      "path": "data/buildops/town-expansion-r1-2026-07-28.live-safety-final-atomic-manifest-qa.json",
+      "sha256": "09d5553fde76be28fe5230c0a859371cb2873f77690a0d7bef0417059cb11a85",
+      "packages": 1,
+      "passedPackages": 1,
+      "forwardReplGroups": 483016,
+      "forwardGuardedCommandGroups": 1660,
+      "rollbackReplGroups": 483016,
+      "rollbackGuardedCommandGroups": 1619,
+      "rollbackExternalSourceRestoreGroups": 1619,
+      "uniqueTargetCells": 3665580,
+      "orderedStagedDuplicateCells": 24762,
+      "definitionErrors": 0,
+      "forwardErrors": 0,
+      "rollbackErrors": 0,
+      "cellErrors": 0,
+      "crossPackageIntersectionCells": 0
+    },
+    "strictStreamingDryRun": {
+      "status": "PASS",
+      "path": "data/buildops/town-expansion-r1-2026-07-28.paper-strict-final-streaming-strict-dry-run.json",
+      "sha256": "4b38feb325ae2adda2322256d54781158e8ca6c715ce86ed2f1df25eaa12c29b",
+      "strictNoop": true,
+      "sourceGroups": 484676,
+      "replGroups": 483016,
+      "commandGroups": 1660,
+      "expandedCommands": 484690,
+      "failedGroups": 0,
+      "failedCommands": 0,
+      "unexpectedNoopCommands": 0,
+      "unknownReplyCommands": 0,
+      "worldEditLeftovers": 0,
+      "sourceGroupPlanSha256": "ea8f5363ffcd7266798278d62eb45c34d33f96c76675164a15d19f1378db470f",
+      "expandedCommandSha256": "8062a3f6a3e48570eed592e8072a554838b87df4d9e2cd8b8bc850864d6a83f2",
+      "paperStrictFillCommands": true
+    },
+    "streamingRedTeam": {
+      "status": "ACCEPTED_FOR_BOUNDED_STREAMING",
+      "jsonPath": "docs/redevelopment/2026-07-28-town-expansion/evidence/town-rcon-streaming-red-team-audit.paper-strict-final.json",
+      "jsonSha256": "a0df49c479e5b2e7d497d2f281e99ccfd3c16099454aac55613fc23bc5e67200",
+      "markdownPath": "docs/redevelopment/2026-07-28-town-expansion/evidence/town-rcon-streaming-red-team-audit.paper-strict-final.md",
+      "markdownSha256": "de795e50476c81880b25710a2b286e27c889da3dc897f69a903b94118368e3c0",
+      "checksPassed": 11,
+      "checksTotal": 11,
+      "exactPackageChunks": 2265,
+      "denseEnvelopeChunks": 8128,
+      "maximumIndivisibleGroupChunks": 25,
+      "capacityScenario": {
+        "serverLimit": 256,
+        "preExistingCount": 104,
+        "availableTemporaryChunks": 152
+      }
+    },
+    "focusedTests": {
+      "status": "PASS",
+      "testFiles": 9,
+      "testsPassed": 51,
+      "testsFailed": 0,
+      "commands": [
+        {
+          "command": "npx vitest run test/build/completeBlockState.test.ts test/build/generateManagerValeCottageCompiler.test.ts test/build/townExpansionOperationOrder.test.ts test/build/qaGuardedReleaseManifest.test.ts",
+          "filesPassed": 4,
+          "testsPassed": 14
+        },
+        {
+          "command": "python3 test/scripts/test_rcon_runner.py -v",
+          "testsPassed": 20
+        },
+        {
+          "command": "python3 test/scripts/test_atomic_release_manifest.py -v",
+          "testsPassed": 6
+        },
+        {
+          "command": "python3 test/scripts/test_atomic_release_runner_contract.py -v",
+          "testsPassed": 4
+        },
+        {
+          "command": "python3 test/scripts/test_redevelopment_runtime_paths.py -v",
+          "testsPassed": 3
+        },
+        {
+          "command": "python3 test/scripts/test_audit_rcon_runner_chunk_streaming.py -v",
+          "testsPassed": 4
+        }
+      ]
+    }
+  },
+  "scopeNotes": [
+    "The 24762 repeated target cells are validated ordered water transitions with continuous forward state and an exact reverse rollback sequence; they are not conflicting package ownership.",
+    "All 1660 forward and 1619 rollback block-data commands are exact-state guarded. The 1619 rollback external merges are validated source-restoration commands.",
+    "Clearance operations are ordered top-down and construction operations bottom-up; the dedicated ordering suite passed both contracts.",
+    "Every generated SET/REPL fill command uses Paper 1.21.11 strict mode to suppress neighbor updates while dependent blocks are frozen. Empty conditional replies fail strict forward execution, are tolerated only in non-strict rollback, and empty fill replies remain fail-closed.",
+    "The generator report intentionally leaves C01 source retirement and full P01 parking recovery deferred; this gate does not reinterpret those accepted deferrals as completed work.",
+    "Offline PASS validates the frozen package interfaces only. It does not replace same-moment source comparison, live entity and player clearance, protected inventory checks, coordinated atomic execution, immutable post snapshot, bidirectional walking QA, or matched after-media gates."
+  ]
+}

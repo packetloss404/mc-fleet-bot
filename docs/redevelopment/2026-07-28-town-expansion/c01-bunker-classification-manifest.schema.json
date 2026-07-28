@@ -1,0 +1,384 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mc-fleet.local/schemas/c01-bunker-classification-manifest.schema.json",
+  "title": "C01 bunker full-envelope classification manifest",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "bunkerScopes",
+    "envelope",
+    "levels",
+    "routeGraph",
+    "verticalCirculationPolicy",
+    "adultRoomPolicy",
+    "acceptance"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "id": { "type": "string", "minLength": 1 },
+    "bunkerScopes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "envelope": {
+      "type": "object",
+      "required": ["boxes"],
+      "properties": {
+        "boxes": { "$ref": "#/$defs/boxes" },
+        "oldFootprintColumns": { "type": "integer", "minimum": 1 },
+        "newFootprintColumns": { "type": "integer", "minimum": 1 },
+        "studySquare": { "$ref": "#/$defs/box3" }
+      },
+      "additionalProperties": true
+    },
+    "levels": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "mainLevel", "auditVolumeBoxes", "spaces"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "mainLevel": { "type": "boolean" },
+          "auditVolumeBoxes": { "$ref": "#/$defs/boxes" },
+          "spaces": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["id", "category", "boxes", "occupied", "tags"],
+              "properties": {
+                "id": { "type": "string", "minLength": 1 },
+                "category": {
+                  "enum": [
+                    "programmed_room",
+                    "circulation",
+                    "stair_lift",
+                    "service_backroom",
+                    "structure",
+                    "deliberate_safety_void"
+                  ]
+                },
+                "boxes": { "$ref": "#/$defs/boxes" },
+                "occupied": { "type": "boolean" },
+                "requiredReachability": { "type": "boolean" },
+                "tags": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": { "type": "string" }
+                },
+                "rationale": { "type": "string" }
+                ,
+                "adultRoomProgram": {
+                  "type": "object",
+                  "required": [
+                    "programId",
+                    "roomType",
+                    "themeId",
+                    "materialPaletteId",
+                    "lightingId",
+                    "privacyThresholdId",
+                    "furnishings",
+                    "requiredFunctions",
+                    "cameraIds"
+                  ],
+                  "properties": {
+                    "programId": { "type": "string", "minLength": 1 },
+                    "roomType": { "type": "string", "minLength": 1 },
+                    "themeId": { "type": "string", "minLength": 1 },
+                    "materialPaletteId": { "type": "string", "minLength": 1 },
+                    "lightingId": { "type": "string", "minLength": 1 },
+                    "privacyThresholdId": { "type": "string", "minLength": 1 },
+                    "furnishings": {
+                      "type": "array",
+                      "minItems": 2,
+                      "uniqueItems": true,
+                      "items": { "type": "string", "minLength": 1 }
+                    },
+                    "requiredFunctions": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "items": { "type": "string", "minLength": 1 }
+                    },
+                    "cameraIds": {
+                      "type": "array",
+                      "minItems": 1,
+                      "uniqueItems": true,
+                      "items": { "type": "string", "minLength": 1 }
+                    }
+                  }
+                }
+              },
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "routeGraph": {
+      "type": "object",
+      "required": ["entranceNode", "nodes", "edges"],
+      "properties": {
+        "entranceNode": { "type": "string" },
+        "classEntrances": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "egressNodes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "spaceId", "level", "point", "tags", "accessClasses"],
+            "properties": {
+              "id": { "type": "string" },
+              "spaceId": { "type": "string" },
+              "level": { "type": "string" },
+              "point": {
+                "type": "array",
+                "prefixItems": [
+                  { "type": "integer" },
+                  { "type": "integer" },
+                  { "type": "integer" }
+                ],
+                "items": false
+              },
+              "tags": { "type": "array", "items": { "type": "string" } },
+              "accessClasses": { "$ref": "#/$defs/accessClasses" }
+            }
+          }
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "from",
+              "to",
+              "kind",
+              "width",
+              "headroom",
+              "bidirectional",
+              "accessClasses"
+            ],
+            "properties": {
+              "id": { "type": "string" },
+              "from": { "type": "string" },
+              "to": { "type": "string" },
+              "kind": {
+                "enum": ["corridor", "door", "stair", "lift", "airlock", "tunnel"]
+              },
+              "width": { "type": "number", "minimum": 1 },
+              "headroom": { "type": "number", "minimum": 1 },
+              "bidirectional": { "const": true },
+              "accessClasses": { "$ref": "#/$defs/accessClasses" }
+            }
+          }
+        }
+      }
+    },
+    "programRequirements": {
+      "type": "object",
+      "properties": {
+        "exactSpaceTagCounts": {
+          "type": "object",
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        },
+        "minimumSpaceTagCounts": {
+          "type": "object",
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        },
+        "requiredSpaceTags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string" }
+        },
+        "prohibitedContentTags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "adultRoomPolicy": {
+      "type": "object",
+      "required": [
+        "adultRoomTag",
+        "minimumFurnishingsPerRoom",
+        "themedSilhouetteFurnishingId",
+        "requiredFunctionsByType"
+      ],
+      "properties": {
+        "adultRoomTag": { "const": "non_graphic_adult_room" },
+        "minimumFurnishingsPerRoom": { "type": "integer", "minimum": 2 },
+        "themedSilhouetteFurnishingId": {
+          "const": "non_graphic_themed_furniture_silhouette"
+        },
+        "requiredFunctionsByType": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "bed",
+                "lounge_seating",
+                "dressing",
+                "wash_cleanup",
+                "storage",
+                "service_refreshment",
+                "bar",
+                "non_graphic_themed_furniture_silhouette"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "evidenceCameras": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "roomType", "interior", "position", "target"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "roomType": { "type": "string", "minLength": 1 },
+          "interior": { "const": true },
+          "position": {
+            "type": "array",
+            "prefixItems": [
+              { "type": "number" },
+              { "type": "number" },
+              { "type": "number" }
+            ],
+            "items": false
+          },
+          "target": {
+            "type": "array",
+            "prefixItems": [
+              { "type": "number" },
+              { "type": "number" },
+              { "type": "number" }
+            ],
+            "items": false
+          }
+        }
+      }
+    },
+    "verticalCirculationPolicy": {
+      "type": "object",
+      "required": [
+        "minimumRouteWidth",
+        "minimumStairWidth",
+        "minimumLiftWidth",
+        "minimumHeadroom",
+        "requireStairAndLiftPerOccupiedLevel"
+      ],
+      "properties": {
+        "minimumRouteWidth": { "type": "number", "minimum": 1 },
+        "minimumStairWidth": { "type": "number", "minimum": 1 },
+        "minimumLiftWidth": { "type": "number", "minimum": 1 },
+        "minimumHeadroom": { "type": "number", "minimum": 2 },
+        "requireStairAndLiftPerOccupiedLevel": { "const": true }
+      }
+    },
+    "egressPolicy": {
+      "type": "object",
+      "properties": {
+        "minimumIndependentEgresses": { "type": "integer", "minimum": 2 }
+      }
+    },
+    "terrainSafety": {
+      "type": "object",
+      "properties": {
+        "minimumCoverBlocks": { "type": "integer", "minimum": 1 },
+        "measuredMinimumCoverBlocks": { "type": "integer", "minimum": 0 },
+        "fluidCells": { "type": "integer", "minimum": 0 },
+        "unresolvedFluidCells": { "type": "integer", "minimum": 0 },
+        "snapshotSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "acceptance": {
+      "type": "object",
+      "required": ["requiredMainLevelTags", "requiredAccessClasses"],
+      "properties": {
+        "requiredMainLevelTags": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string" }
+        },
+        "requiredAccessClasses": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "enum": ["public", "owner", "service", "tunnel"] }
+        },
+        "backTunnelOnlySpaceTag": { "type": "string" },
+        "grandEntryNodeTag": { "type": "string" }
+      }
+    },
+    "protectedEntities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id"],
+        "oneOf": [
+          { "required": ["point"] },
+          { "required": ["bounds"] }
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "point": {
+            "type": "array",
+            "prefixItems": [
+              { "type": "integer" },
+              { "type": "integer" },
+              { "type": "integer" }
+            ],
+            "items": false
+          },
+          "bounds": { "$ref": "#/$defs/box3" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "box3": {
+      "type": "array",
+      "prefixItems": [
+        { "type": "integer" },
+        { "type": "integer" },
+        { "type": "integer" },
+        { "type": "integer" },
+        { "type": "integer" },
+        { "type": "integer" }
+      ],
+      "items": false
+    },
+    "boxes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/box3" }
+    },
+    "accessClasses": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["public", "owner", "service", "tunnel"] }
+    }
+  },
+  "additionalProperties": true
+}

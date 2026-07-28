@@ -1,0 +1,464 @@
+{
+  "schemaVersion": 1,
+  "id": "RRCH-GUILD-HALL",
+  "name": "Ravensreach Guild Hall and Gilded Ledger",
+  "status": "design-source-of-truth-survey-hold",
+  "liveWorldAuthorized": false,
+  "preparedAtUtc": "2026-07-28T00:00:00.000Z",
+  "coordinateSystem": {
+    "north": "-Z",
+    "east": "+X",
+    "publicFloorSupportY": 67,
+    "publicWalkingY": 68
+  },
+  "baseline": {
+    "snapshot": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region",
+    "sha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999",
+    "purpose": "design evidence only; a fresh immutable snapshot is required for engineering and again for live preflight"
+  },
+  "activeContext": {
+    "library": {
+      "bounds": {
+        "minX": -147,
+        "maxX": -108,
+        "minY": 44,
+        "maxY": 110,
+        "minZ": -451,
+        "maxZ": -423
+      },
+      "entrance": [-128, 68, -424]
+    },
+    "retiredCentralPavilion": {
+      "bounds": {
+        "minX": -107,
+        "maxX": -63,
+        "minY": 60,
+        "maxY": 95,
+        "minZ": -451,
+        "maxZ": -423
+      },
+      "active": false,
+      "supersededBy": [
+        "Ravensgate Garth",
+        "south stoa",
+        "library loggia",
+        "Bell-Gate campanile",
+        "belvedere",
+        "Long Water",
+        "western park"
+      ]
+    },
+    "pavilionInterpretation": "The active Ravensgate Garth, south stoa, and library loggia ensemble",
+    "protectedRouteCells": [
+      [-108, 68, -421],
+      [-108, 68, -430],
+      [-85, 68, -439],
+      [-114, 68, -438]
+    ]
+  },
+  "surveyHold": {
+    "bounds": {
+      "minX": -63,
+      "maxX": -11,
+      "minZ": -464,
+      "maxZ": -406
+    },
+    "bufferBlocks": 16,
+    "principalFace": "west",
+    "serviceFace": "east",
+    "pavilionLink": {
+      "face": "west",
+      "minZ": -444,
+      "maxZ": -432,
+      "clearWidth": 5
+    },
+    "concealedParking": {
+      "status": "conceptual-survey-hold",
+      "bounds": {"minX": -10, "maxX": 14, "minZ": -451, "maxZ": -410},
+      "location": "below east service court",
+      "bayCount": 8,
+      "bayClear": [5, 9],
+      "maneuveringAisleClearWidth": 7,
+      "clearHeadroom": 4,
+      "rampMaximumRisePerHorizontalRun": "1:3",
+      "publiclyVisible": false
+    },
+    "warning": "Not build coordinates. Survey terrain, fluids, foliage, entities, structures, protected features, current routes, and unknown player work first."
+  },
+  "levels": [
+    {
+      "id": "B2",
+      "supportY": 52,
+      "clearMinY": 53,
+      "clearMaxY": 58,
+      "rooms": [
+        {
+          "id": "B2-01",
+          "name": "Ale, wine, and cask cellar",
+          "bounds": {"minX": -49, "maxX": -33, "minZ": -462, "maxZ": -440},
+          "capacityTarget": 112,
+          "capacityUnit": "barrels"
+        },
+        {
+          "id": "B2-02",
+          "name": "Guild treasury and archive",
+          "bounds": {"minX": -31, "maxX": -13, "minZ": -462, "maxZ": -440}
+        },
+        {
+          "id": "B2-03",
+          "name": "Service gallery",
+          "bounds": {"minX": -49, "maxX": -13, "minZ": -439, "maxZ": -434}
+        },
+        {
+          "id": "B2-04",
+          "name": "Dry, cold, and event stores",
+          "bounds": {"minX": -49, "maxX": -31, "minZ": -433, "maxZ": -409}
+        },
+        {
+          "id": "B2-05",
+          "name": "Plant, maintenance, and guild workshop",
+          "bounds": {"minX": -29, "maxX": -13, "minZ": -433, "maxZ": -409}
+        },
+        {
+          "id": "B2-06",
+          "name": "Founders' crypt gallery",
+          "targetArea": 180
+        },
+        {
+          "id": "B2-07",
+          "name": "Concealed carriage and parking vault",
+          "bounds": {"minX": -10, "maxX": 14, "minZ": -451, "maxZ": -410},
+          "status": "conceptual-survey-hold",
+          "bayCount": 8,
+          "bayClear": [5, 9],
+          "maneuveringAisleClearWidth": 7
+        }
+      ]
+    },
+    {
+      "id": "B1",
+      "supportY": 60,
+      "clearMinY": 61,
+      "clearMaxY": 66,
+      "rooms": [
+        {
+          "id": "B1-01",
+          "name": "Dance Hall",
+          "bounds": {"minX": -49, "maxX": -13, "minZ": -462, "maxZ": -441},
+          "capacityTarget": 120,
+          "capacityUnit": "people"
+        },
+        {
+          "id": "B1-02",
+          "name": "Acoustic and service gallery",
+          "bounds": {"minX": -49, "maxX": -13, "minZ": -440, "maxZ": -434}
+        },
+        {
+          "id": "B1-03",
+          "name": "Gilded Ledger patron hall",
+          "bounds": {"minX": -49, "maxX": -22, "minZ": -433, "maxZ": -409},
+          "capacityTarget": 96,
+          "capacityUnit": "people"
+        },
+        {
+          "id": "B1-04",
+          "name": "Bar finishing kitchen and wash",
+          "bounds": {"minX": -20, "maxX": -13, "minZ": -433, "maxZ": -409},
+          "kitchenId": "K2"
+        }
+      ]
+    },
+    {
+      "id": "G",
+      "supportY": 67,
+      "clearMinY": 68,
+      "clearMaxY": 74,
+      "rooms": [
+        {
+          "id": "G-01",
+          "name": "Garth portico and vestibule",
+          "bounds": {"minX": -62, "maxX": -52, "minZ": -445, "maxZ": -431}
+        },
+        {
+          "id": "G-02",
+          "name": "Processional gallery",
+          "bounds": {"minX": -51, "maxX": -13, "minZ": -438, "maxZ": -433}
+        },
+        {
+          "id": "G-03",
+          "name": "Great Hall",
+          "bounds": {"minX": -49, "maxX": -13, "minZ": -462, "maxZ": -440},
+          "capacityTarget": 120,
+          "capacityUnit": "banquet seats",
+          "alternateCapacityTarget": 144,
+          "alternateCapacityUnit": "theater positions"
+        },
+        {
+          "id": "G-04",
+          "name": "Guild Court chamber",
+          "bounds": {"minX": -49, "maxX": -35, "minZ": -430, "maxZ": -409},
+          "capacityTarget": 48,
+          "capacityUnit": "seats"
+        },
+        {
+          "id": "G-05",
+          "name": "Grand banquet kitchen",
+          "bounds": {"minX": -33, "maxX": -13, "minZ": -430, "maxZ": -409},
+          "kitchenId": "K1"
+        }
+      ]
+    },
+    {
+      "id": "L2",
+      "supportY": 75,
+      "clearMinY": 76,
+      "clearMaxY": 82,
+      "rooms": [
+        {
+          "id": "L2-01",
+          "name": "Guild Theater",
+          "bounds": {"minX": -49, "maxX": -13, "minZ": -462, "maxZ": -438},
+          "capacityTarget": 84,
+          "capacityUnit": "seats",
+          "screen": {"width": 17, "height": 7, "requiredBeforeSeats": true}
+        },
+        {
+          "id": "L2-02",
+          "name": "Foyer and acoustic lock",
+          "bounds": {"minX": -49, "maxX": -13, "minZ": -437, "maxZ": -432}
+        },
+        {
+          "id": "L2-03",
+          "name": "Lecture Hall",
+          "bounds": {"minX": -49, "maxX": -29, "minZ": -431, "maxZ": -409},
+          "capacityTarget": 72,
+          "capacityUnit": "seats",
+          "screen": {"width": 13, "height": 6, "requiredBeforeSeats": true}
+        },
+        {
+          "id": "L2-04",
+          "name": "Demonstration kitchen",
+          "bounds": {"minX": -27, "maxX": -13, "minZ": -431, "maxZ": -409},
+          "kitchenId": "K3"
+        },
+        {
+          "id": "L2-05",
+          "name": "Backstage and green room",
+          "targetArea": 180
+        }
+      ]
+    },
+    {
+      "id": "L3",
+      "supportY": 83,
+      "clearMinY": 84,
+      "clearMaxY": 90,
+      "rooms": [
+        {
+          "id": "L3-01",
+          "name": "Dormitory wing",
+          "bounds": {"minX": -49, "maxX": -13, "minZ": -462, "maxZ": -440},
+          "bedTarget": 20,
+          "personalStorageTarget": 20
+        },
+        {
+          "id": "L3-02",
+          "name": "Residential gallery",
+          "bounds": {"minX": -49, "maxX": -13, "minZ": -439, "maxZ": -434}
+        },
+        {
+          "id": "L3-03",
+          "name": "Members' living salon",
+          "bounds": {"minX": -49, "maxX": -31, "minZ": -433, "maxZ": -409}
+        },
+        {
+          "id": "L3-04",
+          "name": "Residential kitchen and dining",
+          "bounds": {"minX": -29, "maxX": -13, "minZ": -433, "maxZ": -409},
+          "kitchenId": "K4"
+        },
+        {
+          "id": "L3-05",
+          "name": "Founders' chapel and memorial room",
+          "targetArea": 120
+        }
+      ]
+    }
+  ],
+  "cores": [
+    {
+      "id": "STAIR-N",
+      "kind": "public-normal-walk-stair",
+      "bounds": {"minX": -62, "maxX": -53, "minZ": -463, "maxZ": -450},
+      "clearWidth": 3,
+      "requiredLevels": ["B2", "B1", "G", "L2", "L3"]
+    },
+    {
+      "id": "STAIR-S",
+      "kind": "public-normal-walk-stair",
+      "bounds": {"minX": -62, "maxX": -53, "minZ": -420, "maxZ": -407},
+      "clearWidth": 3,
+      "requiredLevels": ["B2", "B1", "G", "L2", "L3"]
+    },
+    {
+      "id": "STAIR-SVC",
+      "kind": "service-normal-walk-stair",
+      "bounds": {"minX": -21, "maxX": -13, "minZ": -463, "maxZ": -450},
+      "clearWidth": 3,
+      "requiredLevels": ["B2", "B1", "G", "L2", "L3"]
+    },
+    {
+      "id": "LIFT-ANALOGUE",
+      "kind": "optional-convenience-not-route-acceptance",
+      "bounds": {"minX": -20, "maxX": -16, "minZ": -447, "maxZ": -443}
+    }
+  ],
+  "kitchens": [
+    {
+      "id": "K1",
+      "name": "Grand banquet kitchen",
+      "load": ["Great Hall", "Guild Court"],
+      "requiredZones": ["receiving", "dry store", "cold prep", "hot line", "pastry", "plate pass", "dirty dish", "hand wash"]
+    },
+    {
+      "id": "K2",
+      "name": "Bar finishing kitchen",
+      "load": ["Gilded Ledger", "Dance Hall"],
+      "requiredZones": ["cold prep", "snack hot line", "glasswash", "three-sink line", "clean glass", "hand wash"]
+    },
+    {
+      "id": "K3",
+      "name": "Demonstration kitchen",
+      "load": ["Lecture Hall", "guild classes"],
+      "requiredZones": ["instructor island", "four learner stations", "screen sightline", "wash", "hand wash"]
+    },
+    {
+      "id": "K4",
+      "name": "Residential kitchen",
+      "load": ["Dormitories", "Members' living salon"],
+      "requiredZones": ["hearth or range", "communal island", "pantry", "dish storage", "hand wash"]
+    }
+  ],
+  "bar": {
+    "id": "RRCH-GUILD-BAR",
+    "name": "The Gilded Ledger",
+    "floorSupportY": 60,
+    "guestBounds": {"minX": -49, "maxX": -22, "minZ": -433, "maxZ": -409},
+    "fixtures": [
+      {
+        "id": "BAR-LONG",
+        "name": "Long counter",
+        "bounds": {"minX": -29, "maxX": -27, "minZ": -429, "maxZ": -413}
+      },
+      {
+        "id": "BAR-RETURN-N",
+        "name": "North return",
+        "bounds": {"minX": -40, "maxX": -30, "minZ": -429, "maxZ": -427}
+      },
+      {
+        "id": "BAR-RETURN-S",
+        "name": "South return",
+        "bounds": {"minX": -40, "maxX": -30, "minZ": -415, "maxZ": -413}
+      },
+      {
+        "id": "BAR-BACK",
+        "name": "Three-tier back bar",
+        "bounds": {"minX": -25, "maxX": -21, "minZ": -429, "maxZ": -413},
+        "tapRhythm": 24
+      },
+      {
+        "id": "BAR-COMMUNAL",
+        "name": "Communal ledger table",
+        "bounds": {"minX": -44, "maxX": -39, "minZ": -425, "maxZ": -417},
+        "seatTarget": 18
+      }
+    ],
+    "serviceStationTarget": 4,
+    "boothGroupTarget": 12,
+    "requiredFeatures": [
+      "lower service-counter analogue with 5x5 approach",
+      "two remotely separated exits",
+      "two-door acoustic lobby to dance hall",
+      "isolated and marked gas niche",
+      "low-level cellar detector or alarm fixture",
+      "short inspectable beer-line chase",
+      "separate dirty glass return",
+      "fireplace with noncombustible apron",
+      "performance niche clear of exits"
+    ]
+  },
+  "statues": [
+    {"id": "STATUE-CRAFT", "name": "Craft", "height": 7, "plinth": [3, 3], "districtPosition": "northwest Garth"},
+    {"id": "STATUE-LEARNING", "name": "Learning", "height": 7, "plinth": [3, 3], "districtPosition": "southwest Garth"},
+    {"id": "STATUE-FELLOWSHIP", "name": "Fellowship", "height": 7, "plinth": [3, 3], "districtPosition": "northeast Garth"},
+    {"id": "STATUE-STEWARDSHIP", "name": "Stewardship", "height": 7, "plinth": [3, 3], "districtPosition": "southeast Garth"},
+    {"id": "STATUE-MASTER", "name": "The Master", "height": 9, "districtPosition": "Guild Hall west facade"},
+    {"id": "STATUE-BUILDER", "name": "The Builder", "height": 9, "districtPosition": "Guild Hall west facade"}
+  ],
+  "routeStandards": {
+    "normalWalkOnly": true,
+    "ladderAccepted": false,
+    "fallAccepted": false,
+    "swimAccepted": false,
+    "digAccepted": false,
+    "towerAccepted": false,
+    "publicCorridorClearWidth": 3,
+    "processionalClearWidth": 5,
+    "serviceClearWidth": 3,
+    "stairClearWidth": 3,
+    "minimumHeadroom": 3,
+    "landingClear": [5, 5],
+    "bidirectionalDirectionTargetWithoutParking": 26,
+    "bidirectionalDirectionTargetWithParking": 28
+  },
+  "serviceAndParking": {
+    "loadingCourt": {
+      "face": "east",
+      "targetMinZ": -431,
+      "targetMaxZ": -421,
+      "screenedFromPublicApproaches": true,
+      "directConnections": ["K1", "STAIR-SVC", "B2-04", "B2-05"]
+    },
+    "publicGarthIsPedestrian": true,
+    "parkingPubliclyVisible": false,
+    "parkingSeparatedFrom": ["B2-01", "B2-02", "B1-03"],
+    "residentialGarageScope": {
+      "included": false,
+      "note": "Separate town-residential package: garages attached only; reviewed large-house types use 4-car or 6-car attached bays; no detached garages."
+    }
+  },
+  "qa": {
+    "exactStateGuards": true,
+    "strictNoop": true,
+    "forwardRollbackBijection": true,
+    "freshPreSnapshotRequired": true,
+    "immutablePostSnapshotRequired": true,
+    "screensBeforeSeats": true,
+    "objectLinkedMedia": true,
+    "zeroUnknownContainerOverwrites": true,
+    "zeroProtectedFeatureOverwrites": true,
+    "zeroUnreviewedFluidTargets": true,
+    "minimumMatchedCameraGroups": 17
+  },
+  "sources": [
+    "https://www.guildhall.cityoflondon.gov.uk/spaces/great-hall",
+    "https://www.guildhall.cityoflondon.gov.uk/visual-guides/great-hall-interactive-guide",
+    "https://www.guildhall.cityoflondon.gov.uk/spaces/east-west-crypts",
+    "https://merchantshallyork.org/the-hall/",
+    "https://her.york.gov.uk/Designation/DYO1133",
+    "https://www.vintnershall.co.uk/our-hall",
+    "https://www.thegoldsmiths.co.uk/goldsmiths-hall",
+    "https://www.loc.gov/pictures/item/2020722960/",
+    "https://www.loc.gov/pictures/item/pa1064.sheet.00011a/",
+    "https://legacy.wbdg.org/space-types/auditorium",
+    "https://uh.edu/facilities-planning-construction/vendor-resources/owners-design-criteria/design-guidelines/DESIGN-GUIDELINES-JULY-2017-9-29-17.pdf",
+    "https://www.access-board.gov/ada/",
+    "https://www.access-board.gov/ada/guides/chapter-4-accessible-routes/",
+    "https://assets.publishing.service.gov.uk/media/677fa379d119b345376655eb/Approved_Document_B__fire_safety__volume_2_-_Buildings_other_than_dwellings__2019_edition.pdf",
+    "https://www.osha.gov/etools/evacuation-plans-procedures/emergency-standards/design-construction",
+    "https://www.nist.gov/publications/nist-station-nightclub-fire-investigation-physical-simulation-fire",
+    "https://www.fda.gov/food/fda-food-code/food-code-2022",
+    "https://www.brewersassociation.org/educational-publications/draught-beer-quality-manual/",
+    "https://www.hse.gov.uk/coshh/basics/carbondioxide.htm"
+  ]
+}
