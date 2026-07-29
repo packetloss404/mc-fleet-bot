@@ -1,19 +1,42 @@
 # HANDOFF — mc-fleet-bot
 
-## Current closeout — 2026-07-28 IANLAN NextGen
+## Current closeout — 2026-07-29 IANLAN NextGen
 
 The authenticated report workspace now runs on Railway at
 `https://ianlan-nextgen-production.up.railway.app`. Its production project,
 service, and display name are all **IANLAN NextGen**. The production deployment
-`c7925bf6-5abe-442c-9e8b-52d19275312b` is `SUCCESS` with image digest
-`sha256:8e1355a1fd471118b0be040fb0097e1798a43fd200a7a237f55f272db0bd065b`.
+`bd072387-4f99-4e49-922a-c8ef9e22a2d6` is `SUCCESS` with image digest
+`sha256:d3ff7878be51c4b0cb72cfd57fdadfe04e1d04a3788818b2dd4fa7324d91249a`.
 Do not replace or create a second Railway project; deploy `world-showcase/` to
 the already-linked service.
 
-The report library has two adjacent authenticated reports:
+The report library has three adjacent authenticated reports. Report 04 is
+intentionally numbered as requested; no Report 03 has been fabricated:
 
 1. **Master Plan** — `/reports/master-plan`
 2. **Underground Navigation** — `/reports/underground-navigation`
+3. **POI Coordinate Directory (Report 04)** —
+   `/reports/poi-coordinate-directory`
+
+Report 04 is a searchable operator directory of all 1,215 durable catalog
+records. Each record appears exactly once under surface builds, remote sites,
+PassageWay access, route/station infrastructure, anomalies/controls, or
+candidate parcels. It includes copy-ready `/tp` commands and sealed HTML, JSON,
+CSV, and 135-page PDF artifacts. PassageWay is the proper name of the
+underground tunnel system. The package and production verification receipt live
+at `docs/redevelopment/2026-07-29-poi-coordinate-directory/`.
+
+Coordinates prefer authored entrances and exact points. Derived area centers
+are labeled as references rather than safe landing claims, and records without
+a narrow usable Y retain the operator's current elevation with `~`. Generate,
+print, seal, and sync the directory with:
+
+```bash
+node scripts/generate_poi_coordinate_directory.mjs
+# Print poi-coordinate-directory.html to the package PDF with Chromium.
+node scripts/finalize_poi_coordinate_directory.mjs
+npm run sync:coordinates --prefix world-showcase
+```
 
 Underground Navigation is the comprehensive, map-first guide to the cataloged
 tunnels, bunkers, vaults, below-grade venues, bars, adult-only hospitality

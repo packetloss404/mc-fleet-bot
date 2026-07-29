@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "id": "ianlan-nextgen-poi-coordinate-directory-publication",
+  "generatedAt": "2026-07-29T00:36:45.467Z",
+  "source": "docs/redevelopment/2026-07-29-poi-coordinate-directory",
+  "status": "SYNCED",
+  "counts": {
+    "records": 1215,
+    "active": 1214,
+    "retired": 1,
+    "exactOrAuthoredReferences": 202,
+    "derivedReferences": 1013,
+    "relativeYCommands": 85,
+    "projects": 8,
+    "kinds": 14,
+    "categories": 6,
+    "byCategory": {
+      "surface-builds": 109,
+      "remote-sites": 26,
+      "passageway-access": 299,
+      "route-station-infrastructure": 713,
+      "anomalies-controls": 66,
+      "candidate-parcels": 2
+    },
+    "byProject": {
+      "approach-road": 2,
+      "mainstreet-america": 631,
+      "raven-rock": 81,
+      "ravensgate": 13,
+      "ravensreach": 63,
+      "town-expansion-r1": 340,
+      "westlight-district": 59,
+      "westlight-venue": 26
+    },
+    "byKind": {
+      "building": 75,
+      "custom": 392,
+      "district": 19,
+      "driveway": 6,
+      "fence": 14,
+      "landmark": 33,
+      "landscape": 13,
+      "lighting": 55,
+      "parking": 242,
+      "property": 1,
+      "road": 29,
+      "room": 322,
+      "sidewalk": 12,
+      "utility": 2
+    },
+    "pdfPages": 135
+  },
+  "files": [
+    {
+      "path": "public/coordinates/artifact-manifest.json",
+      "bytes": 2699,
+      "sha256": "7557455b4fddd7c9190e7b4e5e11ff11ea345cbe31633034db7372cd79d97071"
+    },
+    {
+      "path": "public/coordinates/poi-coordinate-directory.csv",
+      "bytes": 336722,
+      "sha256": "49926cdaadfaac96230f967521c38eac4af798383d15b3d5a9251cbef1546586"
+    },
+    {
+      "path": "public/coordinates/poi-coordinate-directory.html",
+      "bytes": 1487399,
+      "sha256": "3df42faaff468761331d0863896d83acfc7d8ce7f0373565c930dd955c0b5603"
+    },
+    {
+      "path": "public/coordinates/poi-coordinate-directory.json",
+      "bytes": 1876749,
+      "sha256": "93d0266339740087b903adf1b0f900d43110f78a2cecd8fdbd1871fd819bff1e"
+    },
+    {
+      "path": "public/coordinates/poi-coordinate-directory.pdf",
+      "bytes": 2700356,
+      "sha256": "f4bed1732d9672dea26a43b0afe69827daf115d248f9e278ece59d6438556950"
+    },
+    {
+      "path": "public/coordinates/portal-summary.json",
+      "bytes": 1012512,
+      "sha256": "486b6ed06063e8e72252e65a3b5aa5e3ff0f340c074f4530d95c0385def80b6e"
+    },
+    {
+      "path": "public/coordinates/report-qa.json",
+      "bytes": 2208,
+      "sha256": "6ff0c2de8d8e431435c77c607934ff3af671db0a99544efe641321c159181620"
+    }
+  ]
+}

@@ -55,4 +55,23 @@ export const reports: ReportDefinition[] = [
       { value: '22', label: 'access nodes' },
     ],
   },
+  {
+    slug: 'poi-coordinate-directory',
+    number: '04',
+    title: 'POI Coordinate Directory',
+    project: 'MC Fleet · World Operator Index',
+    summary: (
+      'Every cataloged point and place of interest, grouped for operators and '
+      + 'searchable with copy-ready teleport coordinates.'
+    ),
+    status: 'Directory sealed',
+    published: '29 July 2026',
+    image: '/atlas/town-expansion/map-whole-world-overview.png',
+    href: '/reports/poi-coordinate-directory',
+    metrics: [
+      { value: '1,215', label: 'places indexed' },
+      { value: '6', label: 'operator groups' },
+      { value: '135', label: 'PDF pages' },
+    ],
+  },
 ];

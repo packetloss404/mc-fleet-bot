@@ -388,6 +388,46 @@ npm run build --prefix world-showcase
   road, parking recovery, and sunken entrance. The east-stack graph is catalog
   evidence, not proof of those surface conditions.
 
+## POI Coordinate Directory Workflow
+
+- Generate Report 04 as a read-only directory of every durable
+  `world_features` record:
+
+```bash
+node scripts/generate_poi_coordinate_directory.mjs
+```
+
+- Print the generated HTML with headless Chromium, then validate and seal the
+  report package:
+
+```bash
+/home/ianwalmsley/.cache/ms-playwright/chromium_headless_shell-1181/chrome-linux/headless_shell \
+  --headless --no-sandbox --disable-gpu --allow-file-access-from-files \
+  --print-to-pdf=docs/redevelopment/2026-07-29-poi-coordinate-directory/poi-coordinate-directory.pdf \
+  --print-to-pdf-no-header \
+  file:///opt/stacks/mc-fleet-bot/docs/redevelopment/2026-07-29-poi-coordinate-directory/poi-coordinate-directory.html
+node scripts/finalize_poi_coordinate_directory.mjs
+```
+
+- Sync the sealed HTML, JSON, CSV, PDF, portal summary, QA, and manifests into
+  IANLAN NextGen and build it:
+
+```bash
+npm run sync:coordinates --prefix world-showcase
+npm run build --prefix world-showcase
+```
+
+- The six report groups are surface builds, remote sites, PassageWay access,
+  route/station infrastructure, anomalies/controls, and candidate parcels.
+  **PassageWay is the proper name of the underground tunnel system.**
+- Copy-ready `/tp` commands prefer catalog-authored entrances and exact points,
+  then route starts. Area centers are labeled as derived references; when a
+  usable Y is unavailable, the command uses `~` rather than inventing an
+  elevation. The directory is not a landing-safety claim.
+- The generator opens `data/world-map.db` read-only and binds the accepted
+  immutable snapshot. It never connects to or mutates Minecraft, RCON, the
+  fleet API, systemd, Railway, Sites, or Box.
+
 ## Town Expansion Global Cross-Scope Gate
 
 - Run the complete offline ownership/interface gate with:

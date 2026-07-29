@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "ianlan-poi-coordinate-directory-2026-07-29",
+  "generatedAt": "2026-07-29T00:36:41.612Z",
+  "source": {
+    "database": {
+      "path": "data/world-map.db",
+      "bytes": 6733824,
+      "sha256": "71876a7ecf73e90475a9b5047938e14f39ea0a20381dea8c5286582059f95f8a"
+    },
+    "snapshot": {
+      "directory": "data/worldsnap-town-terminal-recovery-post-20260728T1839Z/region",
+      "sha256": "c39d0d67c9dec737aa5807cf5fa56a84f3c3d38d4b13d0f82599d3eb30fa6751",
+      "regionFileCount": 30,
+      "bytes": 134749182,
+      "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+    }
+  },
+  "expected": {
+    "records": 1215,
+    "uniqueIds": 1215,
+    "categoryTotal": 1215
+  },
+  "artifacts": [
+    {
+      "path": "poi-coordinate-directory.html",
+      "bytes": 1487399,
+      "sha256": "3df42faaff468761331d0863896d83acfc7d8ce7f0373565c930dd955c0b5603"
+    },
+    {
+      "path": "poi-coordinate-directory.json",
+      "bytes": 1876728,
+      "sha256": "f8245e331e5d1abd31080f39f52060e4394ba19ca5aee0e600ff17235dde96b2"
+    },
+    {
+      "path": "poi-coordinate-directory.csv",
+      "bytes": 336722,
+      "sha256": "49926cdaadfaac96230f967521c38eac4af798383d15b3d5a9251cbef1546586"
+    },
+    {
+      "path": "portal-summary.json",
+      "bytes": 1012491,
+      "sha256": "54733c50937d5898df0d03b5b288a850ed92a7c99f86f336598f3b0726fe60b8"
+    }
+  ]
+}
