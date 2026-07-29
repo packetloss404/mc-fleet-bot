@@ -40,8 +40,8 @@ Version `0.x` is deliberately read-only with respect to Minecraft.
   overwritten.
 - The project has no RCON, WorldEdit, restart, upload, or live-world mutation
   capability.
-- The API binds to `127.0.0.1` by default because it does not yet include
-  authentication.
+- The API binds to all network interfaces by default. It does not yet include
+  authentication and should be reachable only from a trusted network.
 
 Do not point the workbench at a live world being actively written. Register a
 copied snapshot instead.
@@ -94,20 +94,22 @@ npm run cli -- registry check
 npm run dev
 ```
 
-Open [http://127.0.0.1:4310](http://127.0.0.1:4310). The dashboard lists
-registered worlds and recipes, queues reports, monitors the worker, and links to
-completed HTML artifacts.
+Open `http://<host-ip>:4310`. On the current development host, the dashboard is
+available at [http://10.80.13.18:4310](http://10.80.13.18:4310). It lists
+registered worlds and recipes, queues reports, monitors the worker, and links
+to completed HTML artifacts.
 
 To use a different bind address or port:
 
 ```bash
-MC_FLEET_DEVTOOLS_HOST=127.0.0.1 \
+MC_FLEET_DEVTOOLS_HOST=0.0.0.0 \
 MC_FLEET_DEVTOOLS_PORT=4310 \
 npm run dev
 ```
 
-Do not expose the service to an untrusted network without an authenticated
-reverse proxy.
+Use `MC_FLEET_DEVTOOLS_HOST=127.0.0.1` to restrict access to the local machine.
+Do not expose the service to a public or untrusted network without an
+authenticated reverse proxy and appropriate firewall rules.
 
 ## Command-line usage
 
@@ -149,7 +151,7 @@ Paths can be overridden without changing the local registry:
 | `MC_FLEET_RECIPES` | `recipes/` |
 | `MC_FLEET_JOBS` | `data/jobs/` |
 | `MC_FLEET_ARTIFACTS` | `data/artifacts/` |
-| `MC_FLEET_DEVTOOLS_HOST` | `127.0.0.1` |
+| `MC_FLEET_DEVTOOLS_HOST` | `0.0.0.0` |
 | `MC_FLEET_DEVTOOLS_PORT` | `4310` |
 
 When the local registry does not exist, the example registry is loaded.
@@ -191,7 +193,7 @@ CPU-, memory-, and disk-heavy world scans.
 Example request:
 
 ```bash
-curl http://127.0.0.1:4310/api/jobs \
+curl http://10.80.13.18:4310/api/jobs \
   --header 'Content-Type: application/json' \
   --data '{
     "serverId": "example",

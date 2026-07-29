@@ -43,9 +43,10 @@ Recipe files are not arbitrary scripts. The loader accepts only a fixed set of
 step types implemented inside `packages/reporting`. This prevents a report
 request from becoming an implicit shell-command or RCON execution surface.
 
-The API has no authentication in v0.1 and therefore binds to `127.0.0.1`.
-Remote exposure requires an authenticated reverse proxy or a future native auth
-layer.
+The API has no authentication in v0.1. It binds to `0.0.0.0` for trusted LAN
+access by default and can be restricted to loopback with
+`MC_FLEET_DEVTOOLS_HOST=127.0.0.1`. Public or untrusted-network exposure
+requires an authenticated reverse proxy or a future native auth layer.
 
 ## Connector boundary
 
