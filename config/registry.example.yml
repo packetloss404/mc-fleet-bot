@@ -1,0 +1,15 @@
+version: 1
+servers:
+  - id: example
+    name: Example Minecraft Server
+    connector:
+      kind: local
+      root: /srv/minecraft/example-tooling
+    worlds:
+      - id: overworld
+        name: Overworld
+        dimension: minecraft:overworld
+        snapshot: snapshots/latest/region
+        databases:
+          world: data/world-map.db
+          town: data/town.db

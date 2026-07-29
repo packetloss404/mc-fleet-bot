@@ -1,0 +1,38 @@
+{
+  "name": "mc-fleet-devtools",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build:packages && npm run build:apps",
+    "build:packages": "npm run build -w @mc-fleet/world-core && npm run build -w @mc-fleet/anvil && npm run build -w @mc-fleet/catalog && npm run build -w @mc-fleet/reporting",
+    "build:apps": "npm run build -w @mc-fleet/cli && npm run build -w @mc-fleet/api && npm run build -w @mc-fleet/dashboard",
+    "check": "npm run build && npm run test",
+    "test": "vitest run",
+    "dev": "npm run build:packages && tsx apps/api/src/index.ts",
+    "start": "node apps/api/dist/index.js",
+    "cli": "npm run build:packages --silent && tsx apps/cli/src/index.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.10.0",
+    "express": "^4.21.0",
+    "js-yaml": "^4.1.0",
+    "prismarine-nbt": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/express": "^5.0.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.1.1"
+  }
+}

@@ -1,0 +1,20 @@
+version: 1
+id: world-catalog
+name: World Database Catalog
+description: Snapshot identity, read-only SQLite census, features, and HTML.
+steps:
+  - id: snapshot
+    type: snapshot-summary
+  - id: database
+    type: database-catalog
+    options:
+      database: world
+  - id: features
+    type: world-features
+    options:
+      database: world
+      limit: 100000
+  - id: report
+    type: html-report
+    options:
+      title: World Database Catalog

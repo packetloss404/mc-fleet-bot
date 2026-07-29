@@ -1,0 +1,11 @@
+node_modules/
+**/dist/
+*.tsbuildinfo
+.env
+config/registry.local.yml
+data/jobs/*
+data/artifacts/*
+!data/jobs/.gitkeep
+!data/artifacts/.gitkeep
+npm-debug.log*
+.DS_Store

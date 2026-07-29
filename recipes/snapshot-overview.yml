@@ -1,0 +1,11 @@
+version: 1
+id: snapshot-overview
+name: Snapshot Overview
+description: Immutable snapshot identity, region coverage, and an HTML handoff.
+steps:
+  - id: snapshot
+    type: snapshot-summary
+  - id: report
+    type: html-report
+    options:
+      title: Snapshot Overview

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07121b">
+  <title>MC Fleet Devtools</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="rail">
+      <a class="brand" href="/" aria-label="MC Fleet Devtools home">
+        <span class="brand-mark">MC</span>
+        <span><strong>Fleet</strong><small>Devtools</small></span>
+      </a>
+      <nav aria-label="Primary">
+        <a class="active" href="#overview">Overview</a>
+        <a href="#worlds">Worlds</a>
+        <a href="#recipes">Reports</a>
+        <a href="#jobs">Jobs</a>
+      </nav>
+      <div class="mode-card">
+        <span class="pulse"></span>
+        <div><strong>Read-only</strong><small>Live mutation disabled</small></div>
+      </div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Minecraft WorldOps</p>
+          <h1>World intelligence, with a front door.</h1>
+        </div>
+        <button class="primary" id="new-report">Run a report</button>
+      </header>
+
+      <section id="overview" class="hero-grid">
+        <article class="hero">
+          <div class="hero-copy">
+            <span class="tag">Operator workspace</span>
+            <h2>Scan once. Understand the world. Keep the evidence.</h2>
+            <p>Request immutable snapshot reports, inspect durable world data, and follow every job from recipe to hash-bound artifacts.</p>
+          </div>
+          <div class="contours" aria-hidden="true"></div>
+        </article>
+        <article class="queue-card">
+          <div class="section-label">Worker</div>
+          <div class="queue-state"><span id="queue-light"></span><strong id="queue-label">Connecting</strong></div>
+          <p id="queue-copy">Reading local job state…</p>
+          <div class="mini-grid">
+            <div><span>Servers</span><strong id="server-count">—</strong></div>
+            <div><span>Worlds</span><strong id="world-count">—</strong></div>
+            <div><span>Recipes</span><strong id="recipe-count">—</strong></div>
+          </div>
+        </article>
+      </section>
+
+      <section id="worlds" class="section-block">
+        <div class="section-heading">
+          <div><p class="eyebrow">Registry</p><h2>Worlds</h2></div>
+          <span id="registry-name" class="quiet-pill">Loading…</span>
+        </div>
+        <div id="world-grid" class="card-grid">
+          <div class="skeleton"></div><div class="skeleton"></div>
+        </div>
+      </section>
+
+      <section id="recipes" class="section-block">
+        <div class="section-heading">
+          <div><p class="eyebrow">Recipe engine</p><h2>Available reports</h2></div>
+          <span class="quiet-pill">Same engine in CLI + API</span>
+        </div>
+        <div id="recipe-grid" class="card-grid recipe-grid">
+          <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+        </div>
+      </section>
+
+      <section id="jobs" class="section-block">
+        <div class="section-heading">
+          <div><p class="eyebrow">Evidence trail</p><h2>Recent jobs</h2></div>
+          <button class="ghost" id="refresh">Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Report</th><th>World</th><th>Created</th><th>Status</th><th>Artifact</th></tr></thead>
+            <tbody id="job-rows"><tr><td colspan="5">Loading jobs…</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="report-dialog">
+    <form id="report-form" method="dialog">
+      <div class="dialog-head">
+        <div><p class="eyebrow">New job</p><h2>Run a report</h2></div>
+        <button type="button" class="close" id="close-dialog" aria-label="Close">×</button>
+      </div>
+      <p class="dialog-copy">The worker reads registered snapshots and databases only. Every run receives a fresh artifact directory.</p>
+      <label>Server<select id="server-select" required></select></label>
+      <label>World<select id="world-select" required></select></label>
+      <label>Report recipe<select id="recipe-select" required></select></label>
+      <label id="bounds-field" hidden>Optional bounds
+        <input id="bounds-input" placeholder="-128,-64,-128,128,319,128">
+        <small>Inclusive x1,y1,z1,x2,y2,z2</small>
+      </label>
+      <div id="form-message" role="status"></div>
+      <div class="dialog-actions">
+        <button type="button" class="ghost" id="cancel-dialog">Cancel</button>
+        <button type="submit" class="primary">Queue report</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
