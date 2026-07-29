@@ -38,6 +38,21 @@ node scripts/finalize_poi_coordinate_directory.mjs
 npm run sync:coordinates --prefix world-showcase
 ```
 
+The reusable scanner/report-engine extraction now lives in the separate local
+repository `/opt/stacks/mc-fleet-devtools` on `main` at commit `420ca98`. It
+provides a read-only Anvil scanner, SQLite catalog exporter, YAML report
+recipes, serialized job worker, CLI, REST API, and browser dashboard. Its local
+IANLAN registry and generated jobs/artifacts are ignored. The repository has no
+remote yet; do not push it into `mc-fleet-bot` or invent a destination. Validate
+it with:
+
+```bash
+cd /opt/stacks/mc-fleet-devtools
+npm run check
+npm run cli -- registry check
+npm start
+```
+
 Underground Navigation is the comprehensive, map-first guide to the cataloged
 tunnels, bunkers, vaults, below-grade venues, bars, adult-only hospitality
 areas, rooms, and access nodes. Its sealed package lives at
