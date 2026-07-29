@@ -1,11 +1,28 @@
+# Dependencies and build output
 node_modules/
 **/dist/
+coverage/
 *.tsbuildinfo
+
+# Local environment and operator configuration
 .env
+.env.*
+!.env.example
 config/registry.local.yml
+
+# Runtime state and generated reports
 data/jobs/*
 data/artifacts/*
 !data/jobs/.gitkeep
 !data/artifacts/.gitkeep
+
+# Logs, caches, and temporary files
+*.log
 npm-debug.log*
+.cache/
+.tmp/
+
+# Editor and operating-system files
 .DS_Store
+.idea/
+.vscode/
