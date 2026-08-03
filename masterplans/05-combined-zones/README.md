@@ -11,10 +11,14 @@ Start here:
 - [site-coordinates.json](site-coordinates.json) — machine-readable study transform, zone bounds, and interface points.
 - [maps/current-and-proposed-whole-world.png](maps/current-and-proposed-whole-world.png) — the requested top-down map of the accepted current baseline plus the proposed east-side build.
 - [maps/current-and-proposed-whole-world.svg](maps/current-and-proposed-whole-world.svg) — scalable, coordinate-aware source for the top-down map.
+- [maps/gateway-approach-and-terminal-plan.png](maps/gateway-approach-and-terminal-plan.png) — layer-separated Z02 plan showing the two surface stops, concealed subway branch, and eight-track expansion terminal.
+- [maps/gateway-approach-and-terminal-plan.svg](maps/gateway-approach-and-terminal-plan.svg) — scalable, coordinate-aware source for the Z02 plan.
 - [maps/vertical-zoning-section.png](maps/vertical-zoning-section.png) — the vanilla-height redesign that makes a same-world version possible in principle.
 - [maps/vertical-zoning-section.svg](maps/vertical-zoning-section.svg) — scalable source for the vertical study.
 - [map-qa.json](map-qa.json) — source/output hashes and mechanical map checks.
 
 The top-down proposal reserves an east-side study envelope at `x=1500…3050`, `z=-1050…450`. It does not overlap the cataloged current feature union, whose eastern limit is `x=1300`. Most of the proposed envelope is outside the accepted snapshot's rendered terrain, so the dark/hatched area on the map means **not surveyed**, not empty.
+
+Z02 is the **Gateway Approach**, not a duplicate Old Town. Ravensreach retains the historic-town identity. Z02 provides the landscaped arrival, two future-use passenger stops, utilities, and the concealed Gateway Expansion Terminal (“The Empty Eight”) with eight tracks, eight platforms, mall shells, and sealed future-line interfaces.
 
 No Minecraft, RCON, fleet API, systemd, or live-world operation was used to create this package.

@@ -6,12 +6,12 @@ Status: **SITING STUDY — NOT AUTHORIZED FOR WORLD EDITS**
 
 Build the Combined Complex as a new east-side district of the current world, not at Masterplan 04's authored origin and not at the obsolete `(935,60,300)` starter-base location.
 
-The recommended study reserves `x=1500…3050`, `z=-1050…450`. Its local origin is provisionally mapped to `(2250,72,-300)`. The complete plan is rotated 90 degrees so its original south-facing historical gateway faces west toward the current Data District. This creates a short, legible surface interface while putting the mountain and secure complex farther east, away from the accepted built envelope.
+The recommended study reserves `x=1500…3050`, `z=-1050…450`. Its local origin is provisionally mapped to `(2250,72,-300)`. The complete plan is rotated 90 degrees so its original south-facing gateway faces west toward the current Data District. This creates a short, legible surface interface while putting the mountain and secure complex farther east, away from the accepted built envelope.
 
 The horizontal layout retains Masterplan 04's authored relationships. The vertical layout is redesigned to fit the current stock Paper world. The choice is deliberate:
 
 - Current cataloged features end at `x=1300`; the study reservation starts at `x=1500`.
-- The old town and gateway become the nearest proposed zones to the current world.
+- The landscaped Gateway Approach and gateway become the nearest proposed zones to the current world.
 - The Data District becomes the physical arrival edge instead of an isolated portal-only jump.
 - The mountain reads as an eastern horizon and does not cover MainStreet, Raven Rock, Ravensreach, Westlight, C01, or the owner estate.
 - A 90-degree rotation is easier to audit than separately nudging every child zone.
@@ -53,8 +53,8 @@ This maps local south (`+Z`) to world west (`-X`). Examples:
 
 | Authored local point | Proposed world X/Z | Meaning |
 |---|---:|---|
-| `(0, 0, 700)` | `(1550, -300)` | historical gateway |
-| `(0, 0, 500)` | `(1750, -300)` | old-town / Grand Avenue origin |
+| `(0, 0, 700)` | `(1550, -300)` | gateway arrival edge |
+| `(0, 0, 500)` | `(1750, -300)` | Gateway Approach / Grand Avenue origin |
 | `(0, 0, 0)` | `(2250, -300)` | combined city center |
 | `(60, 0, -70)` | `(2320, -240)` | public shaft head |
 | `(-100, 0, -300)` | `(2550, -400)` | SubTropolis service-tunnel end |
@@ -82,6 +82,7 @@ This yields:
 |---|---:|---:|
 | SubTropolis floor / design minimum | -100 | -56 |
 | public-shaft mid-landing | -50 | 8 |
+| Z02-U1 subway rail plane | site-specific | 48 |
 | city street | 0 | 72 |
 | granite-limestone contact | 200 | 130 |
 | Cheyenne chamber | 250…400 | 145…188 |
@@ -101,7 +102,7 @@ All bounds below are inclusive study envelopes, not cleared build limits.
 |---|---|---|
 | Z00 East reserve | `x=1500…3050`, `z=-1050…450` | survey and coordination envelope; 50-block mountain overrun buffer included |
 | Z01 Gateway / arrival | anchor `(1550,~, -300)` | west-facing 7×7 pavilion, visitor orientation, rail/road transfer |
-| Z02 Old town | `x=1550…1950`, `z=-600…0` | 33 curated schematics in residential, fortress, temple, statue, attraction, and easter-egg groups |
+| Z02 Gateway Approach | `x=1550…1950`, `z=-600…0` | landscaped arrival district, utilities, protected walking route, surface passenger rail with two future-use stops, and the concealed Z02-U1 expansion terminal |
 | Z03 Grand Avenue | `(1750,~, -300)` to `(2180,~, -240)` | measured 8-block civic spine; final centerline follows surveyed terrain |
 | Z04 Houston city | `x=2181…2319`, `z=-369…-231` | 138×138 downtown, towers, street grid, food courts, T-markers, and local skybridges |
 | Z05 Houston tunnels | same plan envelope as Z04, approximately `Y=64…72` | pedestrian city-in-a-city network, floodgates, wayfinding |
@@ -113,6 +114,49 @@ All bounds below are inclusive study envelopes, not cleared build limits.
 | Z11 Summit/return | summit `(2750,304,-300)` | summit platform, rock chart, switchback funicular, surface return road |
 
 The mountain envelope projects over the underground zones on the map; this is intentional vertical overlap, not a scope collision.
+
+## Z02 — Gateway Approach and the Empty Eight
+
+Ravensreach remains the current world's canonical historic town and Old Town. The separate 33-schematic “old town” inherited from Masterplan 04 is removed from the Combined Complex program; no replica of Ravensreach is proposed here. Its schematic collection may become a separately approved Fleet Archive Park in the future, but it is not part of this masterplan.
+
+Z02 instead becomes the transition between the current world and the Combined Complex. Its surface program is intentionally spacious: gateway forecourt, tree and rain-garden bands, protected pedestrian route, utility reserve, passenger rail, and parcels that can mature later without rebuilding the main connection. The zone keeps its existing `x=1550…1950`, `z=-600…0` envelope so Z03–Z11 do not move.
+
+The layer-separated detail sheet is [maps/gateway-approach-and-terminal-plan.png](maps/gateway-approach-and-terminal-plan.png).
+
+### Surface passenger rail
+
+The passenger-rail study centerline runs east-west near `z=-250`, from the Gateway side of Z02 toward Houston. Its final Y, drainage, curve radii, powered-rail cadence, and exact city tie-in remain controlled by the Phase 0 terrain survey.
+
+| ID | Study center | Initial role | Provision |
+|---|---:|---|---|
+| GA-S1 Gateway Gardens | `(1640,~, -250)` | first stop after the Gateway; landscape, event-lawn, and future parcel access | two 48-block side platforms, shelter, stairs/ramps, utility room, and extension-ready platform ends |
+| GA-S2 Approach Commons | `(1920,~, -250)` | eastern Z02 stop before Grand Avenue/Houston | two 48-block side platforms, shelter, stairs/ramps, utility room, and a protected future entrance box |
+
+Both are complete, safe request stops even if early ridership is low. They are not decorative platforms: each must have a stopping control, accessible surface route, lighting, signs, weather cover, and a guarded continuation path.
+
+### Concealed subway branch
+
+Between the two stops, `GA-J1` diverges north from the surface passenger line at approximately `(1780,~, -250)`. To ordinary riders it reads as a short maintenance siding disappearing behind a landscaped retaining wall. A subtle discovery marker reveals that the siding continues; the easter egg is the discovery, not an unsafe or unmarked emergency condition.
+
+The provisional branch passes a portal near `(1780,~, -285)` and reaches the terminal throat near `(1780,48,-430)`. With the provisional surface rail at `Y≈72`, the alignment provides at least 145 horizontal blocks for a 24-block descent—an average grade no steeper than 1:6. The detailed rail compiler must replace this study line after terrain and headroom surveys.
+
+### Z02-U1 Gateway Expansion Terminal
+
+The official name is **Gateway Expansion Terminal**. Its in-world nickname, revealed only after entry, is **The Empty Eight**: a monumental, fully finished but initially quiet subway terminal built for a city larger than the one that exists.
+
+| Element | Study definition |
+|---|---|
+| Shell | `x=1600…1940`, `z=-590…-430`, `Y=40…63`; the roof must retain at least eight surveyed solid-cover blocks below the final surface formation |
+| Rail plane | eight north-south track centerlines at `Y≈48`; fan throat at `z=-430…-450` |
+| Tracks | 8, extending through the platform hall and ending in protected future stubs at `z=-590` |
+| Platforms | 8, each approximately 7×101 blocks over `z=-470…-570`; one assigned passenger platform per track |
+| Future network | four paired line provisions: Tracks 1–2, 3–4, 5–6, and 7–8; every north stub ends at a separately owned, sealed interface wall |
+| Mall/concourse | two oversized side gallerias, a perimeter mezzanine, four future ticket-hall boxes, 24 empty retail shells, public toilets, plant rooms, storage, and open atria overlooking the platforms |
+| Life safety | two independent protected egress/accessible routes, smoke-separated stairs and lifts, ventilation shafts, emergency lighting, platform barriers, drainage sumps, and fire/service access |
+
+The architecture is late-Soviet-inspired civic monumentality—stone, deep vaults, chandeliers, mosaics, long sightlines, and overbuilt public halls—without copying a specific real station. Empty storefronts are capped and signed as future space. Unused track stubs remain lit, barriered, inspectable, and physically sealed.
+
+No Z02 tunnel connects to PassageWay, SubTropolis, Houston's pedestrian tunnels, or Cheyenne in this release. Those systems keep separate ownership and security boundaries. A future project may open one or more terminal stubs only through an exact interface contract, fresh source snapshot, guarded operation, rollback, and bidirectional route QA.
 
 ## How it connects to the current map
 
@@ -140,23 +184,28 @@ Reserve, but do not build, an underground interchange between the existing easte
 
 The future interface must be separately isolated from secure Cheyenne circulation. Public arrival goes to SubTropolis and Houston; Cheyenne remains behind its service checkpoint and blast-door sequence.
 
+### C4 — Gateway Approach subway provision
+
+C4 is the internal connection from the Z02 surface passenger railway through `GA-J1` to Z02-U1. It is an expansion seed, not a current regional subway. The branch, descent, terminal throat, eight track bays, and sealed north stubs share one zone owner but remain separate release subscopes so an underground failure cannot force rollback of the operating surface railway.
+
 ## Visitor sequence
 
 The intended journey is continuous and understandable:
 
 1. Leave the current Data District on the east connector.
 2. Arrive at the west-facing Gateway Pavilion.
-3. Explore the old town and its reused schematic library.
-4. Follow Grand Avenue into the Houston-inspired city.
-5. Descend through the public shaft and observation landing.
-6. Enter SubTropolis and its tenant avenues.
-7. Transfer to the controlled service rail.
-8. Cross the limestone/granite contact at the terrane plaque.
-9. Pass the 25-ton blast-door threshold into Cheyenne.
-10. Ride the switchback funicular to the summit.
-11. Return by the mountain road to the city and gateway.
+3. Walk or ride through the landscaped Gateway Approach, using Gateway Gardens and Approach Commons as the first two passenger stops.
+4. Optionally discover the unadvertised siding and descend into the Empty Eight expansion terminal.
+5. Follow Grand Avenue into the Houston-inspired city.
+6. Descend through the public shaft and observation landing.
+7. Enter SubTropolis and its tenant avenues.
+8. Transfer to the controlled service rail.
+9. Cross the limestone/granite contact at the terrane plaque.
+10. Pass the 25-ton blast-door threshold into Cheyenne.
+11. Ride the switchback funicular to the summit.
+12. Return by the mountain road to the city and gateway.
 
-The material progression is old-town vernacular → Houston modern → limestone industrial → granite military → open summit.
+The material progression is Ravensreach/current-world history → landscaped arrival → monumental expansion terminal or Houston modern → limestone industrial → granite military → open summit.
 
 ## Delivery sequence
 
@@ -174,6 +223,7 @@ Exit gate: selected survey report, zero undisclosed current-feature intersection
 ### Phase 1 — interfaces and enabling works
 
 - Design the exact C1 centerlines and gateway landing.
+- Freeze the Z02 surface passenger alignment, both stop footprints, `GA-J1`, independent subway release boundary, and emergency-access reservations.
 - Establish protected staging areas and material logistics outside future public zones.
 - Compile the zone ownership/interface contract before any block operation.
 - Build only a bounded visual pilot of the connector and gateway using fresh exact-state guards.
@@ -182,6 +232,7 @@ Exit gate: bidirectional normal-walk pilot, drainage and grade review, no protec
 
 ### Phase 2 — deep shells first
 
+- Excavate and line the Z02-U1 terminal, branch, egress, ventilation, and eight sealed future-line interfaces before placing the surface landscape above them.
 - Excavate and line the public shaft lower works and SubTropolis chamber.
 - Construct the service/contact route with rail-valid grades.
 - Build the Cheyenne chamber shell and its independent construction access.
@@ -192,23 +243,24 @@ Exit gate: structural envelopes, headroom, fluids, lighting, egress, and route g
 ### Phase 3 — surface framework
 
 - Form the continuous mountain and its drainage without a ravine.
-- Build the old-town parcels, Grand Avenue, Houston street grid, and gateway public realm.
+- Build the Gateway Approach landscape, GA-S1 and GA-S2 surface stops, Grand Avenue, Houston street grid, and gateway public realm.
 - Build the summit return geometry as switchbacks, not the obsolete vertical line.
 
 Exit gate: terrain tie-ins, no unintended water diversion, surface route continuity, and verified non-intersection with all deep shells.
 
 ### Phase 4 — fit-out and identity
 
+- Fit out the Empty Eight's eight platforms, monumental concourse, mall shells, discovery sequence, life-safety systems, and capped future spaces.
 - Fit out SubTropolis tenant zones and Houston food courts.
 - Install Cheyenne's 15 spring-mounted buildings, Battle Cab, chapel, reservoir, inn, blast doors, and signs.
 - Install the terrane plaque only after its final geological wording is reviewed.
-- Place the curated old-town schematics only after their exact footprints, rotations, block entities, and provenance are inventoried.
 
 Exit gate: every occupied floor has safe circulation, every access class is enforced, protected block entities are migrated transactionally, and all exact objects have evidence cameras.
 
 ### Phase 5 — transport and commissioning
 
 - Commission C1 road, pedestrian, and rail modes.
+- Commission both Z02 surface stops, then commission the concealed branch and terminal as a separate operational and rollback scope.
 - Commission the public shaft, internal passenger rail, service rail, switchback funicular, and return road.
 - Optionally activate C2 only after portal safety and permissions pass.
 - Keep C3 reserved until an exact existing PassageWay endpoint is accepted.
@@ -232,8 +284,8 @@ Exit gate: complete bidirectional no-dig/no-tower walks, powered-door tests, min
 2. Approve or move the east reserve after the fresh terrain survey.
 3. Fix the exact connector endpoint and cross-section at the Data District.
 4. Select the active portal mechanism, if any.
-5. Resolve the public shaft dogleg and the single canonical rail-spur centerline.
+5. Resolve the public shaft dogleg and freeze the detailed surface-rail, subway descent, throat, and eight-platform cross-sections.
 6. Approve final geological wording for the contact plaque.
-7. Inventory and license/provenance-check every old-town schematic before placement.
+7. Approve the Empty Eight's final architectural palette, discovery cue, capped retail-shell schedule, egress design, and sealed future-line interface contracts.
 
 Until those decisions and Phase 0 gates pass, the coordinates in this package are a coherent planning transform, not build coordinates.

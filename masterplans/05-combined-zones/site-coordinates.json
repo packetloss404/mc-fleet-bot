@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "id": "combined-zones-east-reserve-study-v1",
+  "schemaVersion": 2,
+  "id": "combined-zones-east-reserve-study-v2",
   "status": "SITING_STUDY_NOT_AUTHORIZED_FOR_WORLD_EDITS",
   "world": "world",
   "orientation": {
@@ -55,6 +55,19 @@
     "masterplan 04 map-integration material only where consistent with the first three",
     "renderings for communication only"
   ],
+  "identityCorrections": {
+    "canonicalOldTown": {
+      "name": "Ravensreach",
+      "status": "accepted-current-world",
+      "oldTownBounds": { "minX": -126, "maxX": -45, "minZ": -422, "maxZ": -338 },
+      "replicaRequired": false
+    },
+    "supersededProposal": {
+      "name": "Masterplan 04 schematic-library old town",
+      "decision": "removed-from-combined-complex-core-program",
+      "futureOption": "separately approved Fleet Archive Park"
+    }
+  },
   "studyReservation": {
     "name": "east-reserve",
     "bounds": {
@@ -122,10 +135,125 @@
     },
     {
       "id": "Z02",
-      "name": "Old town",
-      "status": "proposed",
+      "name": "Gateway Approach",
+      "status": "proposed-surface-and-underground-expansion-reserve",
       "bounds": { "minX": 1550, "maxX": 1950, "minZ": -600, "maxZ": 0 },
-      "sourceLocalBounds": { "minX": -300, "maxX": 300, "minZ": 300, "maxZ": 700 }
+      "sourceLocalBounds": { "minX": -300, "maxX": 300, "minZ": 300, "maxZ": 700 },
+      "surfaceProgram": [
+        "gateway forecourt",
+        "tree and rain-garden bands",
+        "protected pedestrian route",
+        "utility reserve",
+        "surface passenger rail",
+        "future development parcels"
+      ],
+      "surfacePassengerRail": {
+        "status": "proposed-centerline-study",
+        "centerline": {
+          "from": { "x": 1550, "y": null, "z": -250 },
+          "to": { "x": 2180, "y": null, "z": -250 }
+        },
+        "finalYAndTieInSurveyRequired": true,
+        "stops": [
+          {
+            "id": "GA-S1",
+            "name": "Gateway Gardens",
+            "center": { "x": 1640, "y": null, "z": -250 },
+            "platformCount": 2,
+            "platformLengthBlocks": 48,
+            "platformType": "side",
+            "initialService": "future-use-request-stop"
+          },
+          {
+            "id": "GA-S2",
+            "name": "Approach Commons",
+            "center": { "x": 1920, "y": null, "z": -250 },
+            "platformCount": 2,
+            "platformLengthBlocks": 48,
+            "platformType": "side",
+            "initialService": "future-use-request-stop"
+          }
+        ]
+      },
+      "hiddenSubway": {
+        "status": "proposed-easter-egg-expansion-seed",
+        "junction": {
+          "id": "GA-J1",
+          "at": { "x": 1780, "y": null, "z": -250 },
+          "presentation": "maintenance siding behind landscaped retaining wall",
+          "discoveryNotHazard": true
+        },
+        "branch": {
+          "portalStudy": { "x": 1780, "y": null, "z": -285 },
+          "terminalThroatStudy": { "x": 1780, "y": 48, "z": -430 },
+          "provisionalSurfaceRailY": 72,
+          "verticalChangeBlocks": 24,
+          "minimumHorizontalRunBlocks": 145,
+          "maximumAverageGrade": "1:6",
+          "finalAlignmentSurveyRequired": true
+        },
+        "terminal": {
+          "id": "Z02-U1",
+          "officialName": "Gateway Expansion Terminal",
+          "nickname": "The Empty Eight",
+          "status": "proposed-complete-safe-shell-initially-low-use",
+          "bounds": { "minX": 1600, "maxX": 1940, "minY": 40, "maxY": 63, "minZ": -590, "maxZ": -430 },
+          "minimumSolidCoverBlocks": 8,
+          "railY": 48,
+          "trackCount": 8,
+          "platformCount": 8,
+          "trackCenterlinesX": [1720, 1733, 1746, 1759, 1772, 1785, 1798, 1811],
+          "trackExtentZ": { "minZ": -590, "maxZ": -450 },
+          "platforms": {
+            "count": 8,
+            "assignedOnePerTrack": true,
+            "widthBlocks": 7,
+            "lengthBlocks": 101,
+            "minZ": -570,
+            "maxZ": -470,
+            "offsetFromAssignedTrackX": { "min": 2, "max": 8, "side": "+x" }
+          },
+          "futureLinePairs": [
+            { "id": "GL-A", "tracks": [1, 2] },
+            { "id": "GL-B", "tracks": [3, 4] },
+            { "id": "GL-C", "tracks": [5, 6] },
+            { "id": "GL-D", "tracks": [7, 8] }
+          ],
+          "futureInterfaces": {
+            "northStubZ": -590,
+            "count": 8,
+            "state": "sealed-owned-interface-walls",
+            "openingRequiresSeparateGuardedRelease": true
+          },
+          "concourse": {
+            "style": "late-Soviet-inspired civic monumentality without copying a specific station",
+            "mallWings": 2,
+            "perimeterMezzanine": true,
+            "futureTicketHallBoxes": 4,
+            "emptyRetailShells": 24,
+            "openAtria": true
+          },
+          "lifeSafety": {
+            "independentEgressRoutes": 2,
+            "accessibleRoutes": 2,
+            "egressStudyAnchors": [
+              { "id": "EG-A", "x": 1630, "y": null, "z": -455, "position": "southwest" },
+              { "id": "EG-B", "x": 1910, "y": null, "z": -455, "position": "southeast" }
+            ],
+            "smokeSeparatedStairsAndLifts": true,
+            "ventilationRequired": true,
+            "emergencyLightingRequired": true,
+            "platformBarriersRequired": true,
+            "drainageSumpsRequired": true
+          }
+        },
+        "prohibitedInitialConnections": [
+          "PassageWay",
+          "SubTropolis",
+          "Houston pedestrian tunnels",
+          "Cheyenne secure circulation"
+        ]
+      }
     },
     {
       "id": "Z03",
@@ -210,7 +338,7 @@
       "from": { "x": 1283, "y": null, "z": -300, "basis": "derived from current Data District road-network eastern bound" },
       "to": { "x": 1550, "y": null, "z": -300, "basis": "transformed gateway anchor" },
       "directPlanDistanceBlocks": 267,
-      "modes": ["road", "pedestrian", "utility", "rail-reservation"],
+      "modes": ["road", "pedestrian", "utility", "passenger-rail"],
       "surveyRequired": true
     },
     {
@@ -233,6 +361,18 @@
         "do not treat a database centroid as an exact tunnel door",
         "keep public circulation isolated from secure Cheyenne circulation"
       ]
+    },
+    {
+      "id": "C4",
+      "name": "Gateway Approach concealed subway provision",
+      "status": "internal-proposed-separate-release-subscope",
+      "from": { "x": 1780, "y": null, "z": -250, "basis": "GA-J1 surface passenger-rail turnout study point" },
+      "to": { "x": 1780, "y": 48, "z": -430, "basis": "Z02-U1 terminal throat study point" },
+      "terminalId": "Z02-U1",
+      "trackCount": 8,
+      "platformCount": 8,
+      "surfaceAndUndergroundRollbackSeparated": true,
+      "surveyRequired": true
     }
   ],
   "validationGates": [
@@ -243,7 +383,7 @@
     "current ownership and interface audit",
     "final surface Y and piecewise vertical mapping approval",
     "single normalized child-plan coordinate registry",
-    "schematic footprint, rotation, block-entity, and provenance inventory",
+    "Z02 surface-rail, subway grade, terminal cover, fluids, egress, ventilation, and sealed-interface validation",
     "rail, road, shaft, egress, and funicular route-grade validation",
     "exact guarded forward and rollback packages",
     "strict-noop parser and source-state preflight",

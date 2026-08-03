@@ -57,7 +57,13 @@ The directory named `03-houston-tunnel-system` is the city-in-a-city layer: a 13
 - Return route is funicular plus summit road; there is no combined-complex return skybridge.
 - The Houston downtown remains 138×138; “24 blocks” in older text is a sample/compressed block logic, not the city envelope.
 - Houston-local skybridges remain allowed. The no-skybridge decision applies only to the mountain return route.
-- The public shaft, SubTropolis, service tunnel, Cheyenne chamber, old town, Grand Avenue, gateway, and summit remain the principal sequence.
+- The public shaft, SubTropolis, service tunnel, Cheyenne chamber, Gateway Approach, Grand Avenue, gateway, and summit remain the principal sequence.
+
+## Old Town identity clarification
+
+“Old Town” means the accepted current-world Ravensreach district. The Ravensreach public-realm plan and the accepted Old Town bounds at `x=-126…-45`, `z=-422…-338` control that identity.
+
+Masterplan 04 separately invented a 33-schematic “old town” as a museum of the fleet's schematic library. That interpretation is superseded. Masterplan 05 does not copy, relocate, or compete with Ravensreach. The former program area is Z02 Gateway Approach; the schematic museum is deferred to a separately named and approved Fleet Archive Park, if ever requested.
 
 ## Superseded assumptions and conflicts
 
@@ -78,6 +84,8 @@ The following conflicts are normalized by this package:
 | Old gateway command lands 60 blocks above its architecture | New landing Y must be derived from the surveyed entrance floor |
 | Root summit and map-integration summit disagree | Root v2 local summit `(0,800,-500)` controls |
 | Portal-gallery rooms are treated like active portals | They are architectural destinations only; activation is a separate decision and test |
+| “Old town” was interpreted as a new 33-schematic district | Ravensreach remains the canonical Old Town; replace the duplicate with Z02 Gateway Approach and defer any schematic museum |
+| Z02 had no mature transit role beyond a reserved rail line | Add two complete future-use surface stops and a separately releasable concealed subway branch to an eight-track/eight-platform expansion terminal |
 
 ## Current interfaces that may be reused
 
@@ -94,4 +102,5 @@ The following conflicts are normalized by this package:
 - The east reserve is intentionally outside all cataloged feature bounds, but most of it is not present in the accepted rendered snapshot.
 - A database non-overlap check is not a terrain, entity, ownership, hydrology, chunk-generation, or protected-interface clearance.
 - Derived centers in the POI directory are navigation references, not landing-safety claims.
+- Z02 station, branch, and terminal coordinates are coherent study geometry, not evidence of terrain cover, fluid clearance, safe grade, or buildable underground volume.
 - Offline geometry and maps do not authorize a live build.

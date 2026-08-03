@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050" role="img" aria-labelledby="title desc">
   <title id="title">Combined Zones vanilla-height vertical zoning study</title>
-  <desc id="desc">Vertical section comparing the native Masterplan 04 height requirement with a provisional piecewise compression into the current vanilla Minecraft world height.</desc>
+  <desc id="desc">Vertical section comparing the native Masterplan 04 height requirement with a provisional piecewise compression into the current vanilla Minecraft world height, including the Z02 Empty Eight terminal near Y 48.</desc>
   <defs>
     <pattern id="lime" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="12" height="12" fill="#d8d1bb"/><line x1="0" y1="0" x2="0" y2="12" stroke="#a39a7e" stroke-width="2"/></pattern>
     <pattern id="gran" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect width="12" height="12" fill="#d6a58f"/><line x1="0" y1="0" x2="0" y2="12" stroke="#a86852" stroke-width="2"/></pattern>
@@ -24,17 +24,23 @@
   </g>
 
   <rect x="120" y="599" width="1000" height="251" fill="url(#lime)" stroke="#8d8469" stroke-width="1.5"/>
-  <text x="145" y="629" font-family="Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#615a48">LIMESTONE / BELOW-STREET BAND</text>
-  <text x="145" y="655" font-family="monospace" font-size="12" fill="#615a48">local Y -100…0 → world Y -56…72</text>
+  <text x="1090" y="629" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#615a48">LIMESTONE / BELOW-STREET BAND</text>
+  <text x="1090" y="655" text-anchor="end" font-family="monospace" font-size="12" fill="#615a48">local Y -100…0 → world Y -56…72</text>
 
   <rect x="120" y="169" width="1000" height="430" fill="url(#gran)" stroke="#a86852" stroke-width="1.5"/>
   <text x="145" y="201" font-family="Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#684233">GRANITE / ABOVE-STREET MOUNTAIN BAND</text>
   <text x="145" y="227" font-family="monospace" font-size="12" fill="#684233">local Y 0…800 → world Y 72…304</text>
 
   <line x1="120" y1="599" x2="1120" y2="599" stroke="#425d5c" stroke-width="5"/>
-  <text x="1090" y="586" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#294746">CITY STREET / GATEWAY · Y≈72</text>
+  <text x="1090" y="586" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#294746">CITY STREET / GATEWAY / SURFACE RAIL · Y≈72</text>
   <line x1="120" y1="492" x2="1120" y2="492" stroke="#f0b83f" stroke-width="6" stroke-dasharray="14 8"/>
   <text x="1090" y="479" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#815c12">GRANITE–LIMESTONE CONTACT · Y≈130</text>
+
+  <path d="M155,599 L177,615" fill="none" stroke="#8e76bd" stroke-width="5" stroke-dasharray="5 5"/>
+  <rect x="142" y="615" width="70" height="44" fill="url(#void)" stroke="#4e416a" stroke-width="3"/>
+  <text x="177" y="634" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">Z02-U1</text>
+  <text x="177" y="650" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#efe8ff">8T · 8P · Y≈48</text>
+  <text x="177" y="681" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="700" fill="#4e416a">EMPTY EIGHT</text>
 
   <rect x="225" y="599" width="150" height="236" fill="url(#void)" stroke="#4e416a" stroke-width="3"/>
   <text x="300" y="698" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">SUBTROPOLIS</text>
@@ -91,7 +97,7 @@
   </g>
 
   <line x1="60" y1="925" x2="1540" y2="925" stroke="#c9c2b7"/>
-  <text x="60" y="956" font-family="monospace" font-size="12" fill="#60656c">The geological/material sequence is retained; vertical distance is explicitly compressed. Horizontal top-down geometry uses the separate 90° rotation/translation in site-coordinates.json.</text>
+  <text x="60" y="956" font-family="monospace" font-size="12" fill="#60656c">The geological/material sequence is retained; Z02-U1 sits provisionally near Y=48. Horizontal geometry uses the 90° transform in site-coordinates.json.</text>
   <text x="60" y="981" font-family="monospace" font-size="12" fill="#60656c">A native-height alternative remains possible only in a separate world/dimension with the required build-height platform.</text>
   <text x="60" y="1006" font-family="monospace" font-size="12" fill="#a85b2e">STUDY ONLY — final Y levels must come from a fresh east-site terrain and section survey.</text>
 </svg>

@@ -1,11 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "buildId": "05-combined-zones",
   "title": "Combined Zones — Current World Integration Study",
   "status": "SITING_STUDY_NOT_AUTHORIZED_FOR_WORLD_EDITS",
-  "generatedAtUtc": "2026-08-03T21:43:35.000Z",
+  "generatedAtUtc": "2026-08-03T22:25:56.000Z",
   "world": "world",
   "physicalMutation": false,
+  "designRevision": {
+    "id": "gateway-approach-empty-eight",
+    "canonicalOldTown": "Ravensreach",
+    "z02": "Gateway Approach",
+    "surfacePassengerStops": 2,
+    "subwayTracks": 8,
+    "subwayPlatforms": 8,
+    "futureInterfacesInitiallySealed": true
+  },
   "selectedStudy": {
     "name": "east-reserve-rotated-vanilla-height",
     "reservation": {
@@ -48,6 +57,8 @@
     "map-qa.json",
     "maps/current-and-proposed-whole-world.svg",
     "maps/current-and-proposed-whole-world.png",
+    "maps/gateway-approach-and-terminal-plan.svg",
+    "maps/gateway-approach-and-terminal-plan.png",
     "maps/vertical-zoning-section.svg",
     "maps/vertical-zoning-section.png"
   ]
