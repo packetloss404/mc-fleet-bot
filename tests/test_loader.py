@@ -4,10 +4,14 @@ The primary fixture is the real ``04-combined-complex`` masterplan from
 ``D:/projects/mc-fleet-bot/masterplans/`` — a full production spec
 authored independently. If these tests pass, the schema is sound and
 the loader handles real-world input.
+
+The source path is configurable via the ``MCWB_FIXTURE_PLAN_DIR`` env var
+so the tests work on machines where the masterplan lives elsewhere.
 """
 
 from __future__ import annotations
 
+import os
 import shutil
 from pathlib import Path
 
@@ -17,10 +21,14 @@ from mcwb.spec import MasterplanError, load_masterplan
 
 
 # Resolve the canonical fixture path. The fixture is the user's real
-# masterplan — copied in once at test-collection time, never re-copied
-# unless --refresh-fixtures is passed.
+# masterplan — copied in once at test-collection time.
 FIXTURES_DIR = Path(__file__).resolve().parent / "fixtures"
-SOURCE_PLAN_DIR = Path(r"D:\projects\mc-fleet-bot\masterplans\04-combined-complex")
+SOURCE_PLAN_DIR = Path(
+    os.environ.get(
+        "MCWB_FIXTURE_PLAN_DIR",
+        r"D:\projects\mc-fleet-bot\masterplans\04-combined-complex",
+    )
+)
 FIXTURE_PLAN_DIR = FIXTURES_DIR / "04-combined-complex"
 
 

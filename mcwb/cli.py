@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import sys
+import tomllib
 from pathlib import Path
 
 from mcwb import __version__
@@ -46,24 +47,14 @@ def _resolve_world_dir(args: argparse.Namespace, config: dict) -> Path:
 
 
 def _load_config(path: Path) -> dict:
-    """Tiny .mcwb.toml loader. Avoids a toml dependency for MVP."""
+    """Load .mcwb.toml. Uses stdlib tomllib (Python 3.11+)."""
     if not path.exists():
         return {}
-    config: dict = {}
-    in_section = None
-    for raw_line in path.read_text(encoding="utf-8").splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith("#"):
-            continue
-        if line.startswith("[") and line.endswith("]"):
-            in_section = line[1:-1].strip()
-            config[in_section] = {}
-            continue
-        if "=" in line and in_section:
-            key, _, value = line.partition("=")
-            value = value.strip().strip('"').strip("'")
-            config[in_section][key.strip()] = value
-    return config
+    try:
+        with path.open("rb") as f:
+            return tomllib.load(f)
+    except tomllib.TOMLDecodeError as e:
+        raise SystemExit(f"invalid TOML in {path}: {e}") from e
 
 
 def cmd_validate(args: argparse.Namespace) -> int:

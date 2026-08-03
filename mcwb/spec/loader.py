@@ -174,6 +174,31 @@ def _check_phase_count(brief: dict[str, Any]) -> list[str]:
     return errors
 
 
+def _check_phase_numbers_unique(brief: dict[str, Any]) -> list[str]:
+    """Cross-field check: phase numbers must be unique 1..N.
+
+    Catches the easy mistake of having two phases with the same ``phase``
+    field, which would silently break the phase diff logic in v0.2.
+    """
+    errors: list[str] = []
+    phases = brief.get("phases")
+    if not isinstance(phases, list):
+        return errors
+    seen: set[int] = set()
+    duplicates: list[int] = []
+    for p in phases:
+        if not isinstance(p, dict):
+            continue
+        n = p.get("phase")
+        if isinstance(n, int):
+            if n in seen:
+                duplicates.append(n)
+            seen.add(n)
+    if duplicates:
+        errors.append(f"duplicate phase numbers: {sorted(set(duplicates))}")
+    return errors
+
+
 def _check_spec_version(brief: dict[str, Any]) -> list[str]:
     """Warn if the brief targets a spec version newer than this tool knows about."""
     errors: list[str] = []
@@ -215,13 +240,13 @@ def _ensure_spec_version(brief: dict[str, Any]) -> dict[str, Any]:
     return brief
 
 
-def load_spec(plan_dir: Path) -> dict[str, Any]:
+def load_spec(plan_dir: Path) -> tuple[dict[str, Any], ValidationResult]:
     """Load and validate the contractor brief in ``plan_dir``.
 
-    Returns the brief dict. Cross-field warnings are stored on the
-    ``Masterplan`` returned by :func:`load_masterplan` — this function
-    raises ``MasterplanError`` only on hard errors (missing files, schema
-    violations, phase count mismatch, etc.).
+    Returns ``(brief, validation)``. The brief is the raw dict (with
+    default-injected fields applied). The validation result separates
+    hard errors (always raised via ``MasterplanError``) from soft warnings
+    (surfaced to the user).
     """
     plan_dir = plan_dir.resolve()
     if not plan_dir.is_dir():
@@ -238,11 +263,14 @@ def load_spec(plan_dir: Path) -> dict[str, Any]:
     brief = _ensure_spec_version(brief)
 
     errors: list[str] = []
+    warnings: list[str] = []
     errors.extend(_validate(brief))
     errors.extend(_check_spec_version(brief))
-    phase_errors, _phase_warnings = _check_phase_budget(brief)
+    phase_errors, phase_warnings = _check_phase_budget(brief)
     errors.extend(phase_errors)
+    warnings.extend(phase_warnings)
     errors.extend(_check_phase_count(brief))
+    errors.extend(_check_phase_numbers_unique(brief))
 
     if errors:
         bullet = "\n  - ".join(errors)
@@ -250,7 +278,7 @@ def load_spec(plan_dir: Path) -> dict[str, Any]:
             f"masterplan at {plan_dir} failed validation:\n  - {bullet}"
         )
 
-    return brief
+    return brief, ValidationResult(errors=[], warnings=warnings)
 
 
 def load_build_info(plan_dir: Path) -> dict[str, Any]:
@@ -270,14 +298,7 @@ def load_masterplan(plan_dir: Path) -> Masterplan:
     (surfaced for the author to review).
     """
     build_info = load_build_info(plan_dir)
-    brief = load_spec(plan_dir)
-
-    # Recompute warnings since load_spec already consumed them.
-    _phase_errors, phase_warnings = _check_phase_budget(brief)
-    all_warnings: list[str] = []
-    all_warnings.extend(phase_warnings)
-
-    validation = ValidationResult(errors=[], warnings=all_warnings)
+    brief, validation = load_spec(plan_dir)
     return Masterplan(
         plan_dir=plan_dir.resolve(),
         build_info=build_info,
