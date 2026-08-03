@@ -101,6 +101,7 @@ All bounds below are inclusive study envelopes, not cleared build limits.
 | Zone | Proposed world envelope or anchor | Program |
 |---|---|---|
 | Z00 East reserve | `x=1500…3050`, `z=-1050…450` | survey and coordination envelope; 50-block mountain overrun buffer included |
+| C1 East Corridor | `(430,~,80)` to `(1550,~,-300)`, 56-block reservation, 80-block land take | multimodal corridor outside the reserve: 4-lane divided highway, double-track railway, protected pedestrian route, utility reserve; two terminal roundabouts and one district interchange |
 | Z01 Gateway / arrival | anchor `(1550,~, -300)` | west-facing 7×7 pavilion, visitor orientation, rail/road transfer |
 | Z02 Gateway Approach | `x=1550…1950`, `z=-600…0` | landscaped arrival district, utilities, protected walking route, surface passenger rail with two future-use stops, and the concealed Z02-U1 expansion terminal |
 | Z03 Grand Avenue | `(1750,~, -300)` to `(2180,~, -240)` | measured 8-block civic spine; final centerline follows surveyed terrain |
@@ -126,6 +127,8 @@ The layer-separated detail sheet is [maps/gateway-approach-and-terminal-plan.png
 ### Surface passenger rail
 
 The passenger-rail study centerline runs east-west near `z=-250`, from the Gateway side of Z02 toward Houston. Its final Y, drainage, curve radii, powered-rail cadence, and exact city tie-in remain controlled by the Phase 0 terrain survey.
+
+This is no longer the western end of the line. The East Corridor (C1d) carries the railway west from the Gateway all the way to MainStreet East, so GA-S1 and GA-S2 are intermediate stops on a through route rather than the first two stations of an isolated shuttle. The Gateway station GW-1 is the interchange between the two.
 
 | ID | Study center | Initial role | Provision |
 |---|---:|---|---|
@@ -160,17 +163,210 @@ No Z02 tunnel connects to PassageWay, SubTropolis, Houston's pedestrian tunnels,
 
 ## How it connects to the current map
 
-### C1 — physical surface connection
+### C1 — the East Corridor
 
-The primary connection is a new multimodal approach from the surveyed east edge of the Data District road network to the west-facing Combined Zones gateway.
+The primary connection is no longer a 267-block stub to the Data District's eastern bound. It is a **single multimodal corridor, 1,277 blocks long**, running from a terminal roundabout east of MainStreet America to the Gateway, carrying a controlled-access highway, a double-track passenger railway, a protected pedestrian route, and a utility reserve in **one reservation**.
 
-- Current study interface: approximately `(1283,~, -300)`, derived from the road-network eastern bound.
-- New gateway: `(1550,~, -300)`.
-- Direct plan distance: 267 blocks.
-- Program: two-way road, protected pedestrian path, utilities, and a reserved rail centerline.
-- Rule: the final current-world endpoint, grade, bridges, drainage, and Y values come from a fresh terrain and ownership survey.
+The road and the rail are designed together, in one cross-section, on one alignment, under one survey. That is the point of the change: staging them separately forecloses the rail permanently.
 
-This is the line that makes the proposal part of the current map rather than an isolated attraction.
+The corridor deliberately **swings south of the Data District**. The district's southern boundary is `z=-172` (`Te Ia District Shared Grid`, `x=1000…1300`), with Worker Commons at `z=-189` and the disc golf course at `z=-201`. Running south of those and returning north-east to the Gateway keeps the corridor clear of every cataloged surface feature while giving the district a proper interchange instead of a road that dead-ends against it.
+
+#### Alignment
+
+Only orthogonal legs and exact 45-degree diagonals are used — the only geometry that reads as engineered on a 1-block grid.
+
+| Point | Coordinate | Role | Curve radius |
+|---|---|---|---:|
+| W-TERM | `(430,~,80)` | west terminal roundabout center | — |
+| PI-1 | `(905,~,80)` | northward deflection | 140 |
+| PI-2 | `(1065,~,-80)` | southward deflection | 120 |
+| PI-3 | `(1330,~,-80)` | northward deflection | 140 |
+| E-TERM | `(1550,~,-300)` | Gateway terminal roundabout center | — |
+
+| Leg | Path length | Function |
+|---|---:|---|
+| W-TERM → PI-1 | 475 | west tangent; carries the 250-block terminal speed transition |
+| PI-1 → PI-2 | 226 | 45-degree descent past the C01 East stack |
+| PI-2 → PI-3 | 265 | **district tangent** — carries the whole Data District interchange |
+| PI-3 → E-TERM | 311 | 45-degree climb; 211 blocks of straight approach into the Gateway circle |
+
+Three curve vertices against a budget of four. Each is chamfered with a spiral–arc–spiral staircase (`1:16 → 1:12 → 1:8 → 1:6 → 1:8 → 1:12 → 1:16`), never a raw 45-degree kink. Vertices deflecting north put the railway on the inside of the curve, so those use `R=140` to keep the rail radius at 120.
+
+#### Cross-section — 56-block reservation
+
+Offsets are from the highway median barrier centerline; north is `-Z`. The railway sits on the **north flank**, not in the median, so platforms face the pedestrian route and the district is reached at grade with no station structures.
+
+| Element | Blocks | Offset |
+|---|---:|---|
+| North boundary — fence, hedge, ditch | 1 | `-36` |
+| Protected pedestrian route | 3 | `-35 … -33` |
+| Pedestrian/rail protective buffer | 2 | `-32 … -31` |
+| **Rail reservation, fenced** | **13** | **`-30 … -18`** |
+| — north cess / emergency walkway | 2 | `-30 … -29` |
+| — Track 1 centerline (eastbound) | — | `-28` |
+| — six-foot / mast line | 3 | `-27 … -25` |
+| — Track 2 centerline (westbound) | — | `-24` |
+| — south cess / emergency walkway | 2 | `-23 … -22` |
+| — rail boundary fence + ditch | 4 | `-21 … -18` |
+| Vehicle restraint system + verge | 3 | `-17 … -15` |
+| Highway outside shoulder, north | 3 | `-14 … -12` |
+| Lane W2 — westbound outer | 4 | `-11 … -8` |
+| Lane W1 — westbound inner | 4 | `-7 … -4` |
+| Inside shoulder, north | 2 | `-3 … -2` |
+| **Median + barrier** | 3 | `-1 … +1` |
+| Inside shoulder, south | 2 | `+2 … +3` |
+| Lane E1 — eastbound inner | 4 | `+4 … +7` |
+| Lane E2 — eastbound outer | 4 | `+8 … +11` |
+| Highway outside shoulder, south | 3 | `+12 … +14` |
+| Utility reserve | 3 | `+15 … +17` |
+| Drainage ditch / south boundary | 2 | `+18 … +19` |
+
+Reservation 56 blocks; slope and working easement a further 12 blocks each side; **total land take 80 blocks**. Both carriageways drain as a single southward crossfall — no crown — because the ditch is on the south side only. The rail formation drains north into its own cess drain.
+
+The 3-block band at `-17 … -15` must contain a **vehicle restraint barrier, not a boundary fence**. At 56 blocks the formal clear zone is not met on either flank, and a highway running beside a railway inside a shared reservation requires positive protection against vehicle incursion.
+
+#### Design speed
+
+Declared on the plan as **mainline 85 km/h, connector roads 70 km/h**. This is not a compromise. In-world travel speeds are horse ~52 km/h and minecart ~29 km/h, which lands in the "urban ≤50 mph" tier of real practice, so that tier is built at true 1:1 rather than scaled down from a motorway standard. Only storage and queueing elements — deceleration lanes, auxiliary lanes, weaving lengths — take a 0.6 longitudinal factor. Gores, noses, taper ratios, and the cross-section take no factor at all.
+
+Sight distance is replaced by render distance: no curve, crest, or structure may conceal the running surface within 128 blocks, and gore points must be visible from 160 blocks.
+
+#### Verified clearance
+
+Checked against all 1,215 catalog records; the machine-generated record is [corridor-clearance.json](corridor-clearance.json).
+
+| Result | Value |
+|---|---|
+| Surface features intersecting the reservation | **none** |
+| Nearest surface feature | `Te Ia District Shared Grid`, **50 blocks** |
+| Nearest subsurface feature | C01 East L1–L3, **18 blocks** in plan, ~17 blocks below grade |
+| Crossed subsurface feature | `C01 Owner Tunnel Detour`, `y=-45…-37`, ~110 blocks of cover |
+
+Two constraints are load-bearing and must not be relaxed without re-running the check:
+
+- **C01 East (`x=700…900`, `z=-140…-5`, `y=24…53`) is contested under ISSUE-002.** The corridor clears it by 18 blocks in plan and passes ~17 blocks above it. Highway embankment loading over a contested stack is not authorized by a non-overlap result; the west tangent's final grade needs an explicit structural review against whatever ISSUE-002 resolves to.
+- **The `C01 Owner Tunnel Detour` is crossed, not avoided.** Cover is ample, but the corridor sits directly over owner infrastructure for a long run of the west tangent.
+
+### C1a — Data District interchange
+
+One interchange, not two. The district tangent is 265 blocks; the minimum gore-to-gore spacing for an off-off or on-on pair is 305 blocks, so two independent interchanges are not a compressed design but a geometric impossibility — the whole tangent is shorter than the single separation those pairs require. The only spacing the tangent can satisfy is off-on at 152 blocks, which is precisely the signature of one interchange's own ramp pair.
+
+**Form: a two-quadrant partial cloverleaf with all four ramps in the southern quadrants, and the district spine road bridging north over the full 56-block corridor.**
+
+This resolves a real clash. With right-hand traffic the westbound carriageway is the northern one, so its right-side ramps would naturally develop north — directly into the railway and the pedestrian route. Sending every ramp into the open southern quadrants keeps the north flank undisturbed, which is the entire reason the rail is on that flank.
+
+| Element | Value |
+|---|---|
+| Crossroad bridge | `x≈1180`, clear-spanning the whole reservation |
+| Ramp quadrants | all four, south of the mainline |
+| Structures | **1** |
+| Exit taper | 48 blocks at 1:12 |
+| Painted nose → physical nose | 12 blocks |
+| Nose length, 1:12 to a 3-block hatch | 40 blocks |
+| Acceleration lane, built as a lane gain | 80 blocks |
+| Accel : decel ratio | 2:1 — preserve it |
+| Loop radius | 25–30 blocks |
+
+**The ramp chainage does not quite fit the tangent.** A full sequence — advance gantry, taper, painted nose, physical nose, back of nose, then the off-on minimum of 152 blocks to the merge nose, then an 80-block acceleration lane — needs about 296 blocks. The district tangent is 265. The acceleration lane therefore runs onto the PI-3 curve rather than finishing on straight. That is acceptable for a lane gain but it is a real 31-block shortfall, not a rounding error, and detailed design must either accept the aux lane on the curve or lengthen the tangent at PI-2. The gore spacings themselves (305 off-off/on-on, 152 off-on, 488 service-to-service weave) must not be compressed to make it fit — those are 1:1 values and shortening them is what makes an interchange read as amateur from above.
+
+Advance signing runs as a rhythm of gantries at **128, 88, and 48 blocks** before the painted nose, with the gore sign standing inside the hatched triangle. Spacing must be identical in both directions and at every interchange — uniformity is what makes the corridor read as one road. Exit number derives from the mainline X coordinate: `EXIT 11`.
+
+Every taper is built as a repeating module of `(R−1)` straight blocks plus one diagonal, giving exactly one block of lateral shift per `R` blocks of run, with the risers distributed evenly. Bunching two diagonals and then running twenty-two straight is visible instantly from above.
+
+North of the bridge, the district spine runs 56 blocks to the boundary at `z=-172` and splits to serve two separate entry points into the shared grid — delivering two district access points from a single mainline access.
+
+**No left-hand exits anywhere on the corridor.**
+
+### C1b — west terminus, MainStreet East
+
+The freeway ends in a **single terminal roundabout, inscribed circle diameter 60 blocks, zero structures**, centered `(430,~,80)`. Four legs — the freeway plus three local roads — sit roughly 47 blocks apart around the ring, ample for entry flares and splitter islands. The 475-block west tangent carries the speed transition: median narrowing, shoulder reduction, and a lane drop, so the approach is visibly an arterial by the time it reaches the yield line. A freeway cannot yield-line into a circle.
+
+**The road class must step down, not fall off a cliff.** A freeway discharging straight into local streets skips two levels of the functional hierarchy — expressway and collector — and that is the most visible hierarchy error there is from above. The ladder is built inside the footprint already available:
+
+`freeway (475-block approach) → arterialized section (last 120 blocks) → roundabout → collector spine (100 blocks) → local streets`
+
+- The last **120 blocks** of the approach drop to a 28–32 block arterial section: 2+2 lanes, 3-block median, 2-block verge, trees closing to 4 blocks from the pavement edge. Kerb begins 120 blocks out — walk it and you should step up. That kerb is the single strongest threshold cue on the corridor.
+- **L2 becomes a campus spine collector**, 22 blocks wide, running at least 100 blocks before it splits down to local streets. L1 and L3 remain 16-block local streets.
+
+Roundabout internals, at ICD 60: circulatory carriageway 10 blocks, truck apron 2, **central island 36 blocks, raised and mounded 3–5 blocks and planted so it fully blocks the sightline across the circle**. A flat island defeats the junction. Entry deflection must be at least 3 blocks of lateral shift over the last 20 — deflection, not approach length, is the active ingredient in speed reduction.
+
+**Leg spacing needs a fix.** As drawn, L2 departs due west and L3 south-west, only about 40 degrees apart; roundabouts degrade below 60–70 degrees between legs. L3 must leave the ring on a due-south bearing and bend west only after it clears the junction. The three exits must not cluster on one side.
+
+Two of the three local roads tie into **cataloged existing roads**; the third does not, and is not permitted to pretend otherwise.
+
+| Road | From | To | Basis |
+|---|---|---|---|
+| L1 — Ravensreach link | ring north leg | `(470,~,-232)` | east end of the cataloged `Te Ia Ravensreach Dirt Road` (`x=130…470`, `z=-248…-217`), which continues west to `Service Cross` (`x=-84…220`, `z=-218`, `y=64`) |
+| L2 — MainStreet East gate | ring west leg | `(305,~,80)` provisional | **no cataloged gate exists on the campus east face**; requires a new surveyed gate fronting the Earth-covered east operations complex (`x=100…300`, `z=70…235`) |
+| L3 — Observatory link | ring south-west leg | `(362,~,165)` | cataloged `Observatory Owner East Ascent` (`road`, `x=348…377`, `z=150…180`, `y=-46…112`) |
+
+L2 is the one to watch. The campus east flank has cataloged gates at `GATE-A01-EAST (135,64,172)`, `GATE-L01-EAST (220,64,-250)`, and the C01 East Edge Road boundary gate near `(120…125,~,231)` — none of them on the face this road would meet. Do not treat the white picket campus fence line at `x=305` as an interface until a gate is surveyed and approved.
+
+### C1c — Gateway terminus
+
+The freeway dies into a second **terminal roundabout, ICD 60, centered on the Gateway anchor `(1550,~,-300)`, with the Gateway Pavilion standing in the central island**. Zero structures. Legs: the freeway from the south-west, the Z02 spine east toward Grand Avenue, a north landscape road, and a south leg to the rail station forecourt.
+
+The 311-block diagonal from PI-3 is the speed-transition section, giving 211 blocks of straight approach into the circle. That is 39 blocks short of the 250-block preference; the `R=140` chamfer at PI-3 absorbs part of the transition, but the shortfall is real and should be closed at detailed design, either by lengthening the diagonal or by starting the downgrade before the vertex.
+
+### C1d — the passenger railway
+
+The current world contains **no rail at all**. The catalog holds 1,215 features and not one of them is track. The west end is therefore a true terminus, not a tie-in, and this corridor is the world's first railway.
+
+The line runs the full corridor on the north flank and continues east into Z02, joining the surface passenger alignment already defined there:
+
+| Station | Coordinate | Platforms | Role |
+|---|---|---|---|
+| **MS-1 MainStreet East** | `(430,~,80)` | 2 side, 32 blocks | terminus; interchange with the terminal roundabout and all three local roads |
+| **DD-1 Data District** | `(1240,~,-80)` | 2 side, 32 blocks | platform sits ~56 blocks of level, at-grade walk from the district frontage, with no highway crossing |
+| **GW-1 Gateway** | `(1550,~,-300)` | 2 side, 32 blocks | Z01 road/rail transfer on the roundabout's south leg |
+| GA-S1 Gateway Gardens | `(1640,~,-250)` | 2 side, 48 blocks | existing Z02 stop |
+| GA-S2 Approach Commons | `(1920,~,-250)` | 2 side, 48 blocks | existing Z02 stop |
+| Houston terminus | `(2180,~,-250)` | — | Z04 arrival |
+
+DD-1 is the whole argument for flank running. A median alignment would put the only station with a real catchment on the far side of two carriageways, forcing every district passenger to cross the highway, and would need a vertical circulation core at all three stations — six structures built purely to undo a decision that did not have to be made.
+
+Every station holds a dead-straight orthogonal tangent of at least 62 blocks. Rail diagonals are built as a **coarse staircase**, never a fine sawtooth: powered rails cannot be curved, so a block-by-block zigzag cannot be powered at all. Straight segments of 4+ blocks between jogs both take powered rails and read as a broad-radius curve rather than a stair.
+
+Line standard is **1:8 maximum gradient**; 1:12 where length allows. Powered rails run 1 per 38 blocks on the flat, 3 consecutive on departure from each station, and 1 per 4 on any sustained climb.
+
+#### Staged delivery — the rail is foreclosed by default
+
+If the highway is built first and these are not right on day one, the railway becomes unbuildable at that point permanently:
+
+1. **Reserve the 13-block rail strip at the north edge and leave it void** for the whole 1,277 blocks — no fill, no landscape, no encroachment.
+2. **Every structure crossing the corridor must clear-span the full rail reservation.** No piers inside the envelope, ever.
+3. **Build those crossings to rail vertical clearance, not road clearance** — 7 blocks above the future rail plane to running surface. A structure built to road clearance has to be demolished.
+4. Fix the highway barrier line at its ultimate offset now; do not let interim shoulder widening creep north.
+5. Grade the strip to final formation level and hold the rail vertical alignment across the whole corridor.
+6. Lay the utility reserve and empty ductbank now.
+7. Mark the reservation with a visible fence line during the interim so nobody builds into it.
+
+Items 2 and 3 are the highest-consequence entries in this masterplan. They are cheap now and unrecoverable later.
+
+### C1e — Grand Avenue crosses the railway at a skew
+
+Planning the two modes together surfaced a defect in the existing Z03 alignment that neither the road plan nor the rail plan had caught on its own.
+
+Grand Avenue runs `(1750,~,-300)` to `(2180,~,-240)`; the Z02 surface rail runs flat at `z=-250`. **They cross at approximately `(2108,~,-250)` at a 7.9-degree skew** — very nearly parallel. A bridge deck spanning the 13-block rail reservation at that angle would need to be about **95 blocks long**. That is not a crossing, it is a viaduct running alongside the railway.
+
+The fix is to **insert an orthogonal crossing node**: bring the avenue onto a north-south run for roughly 30 blocks centered on `x=2108`, cross the rail at 90 degrees, and resume the shallow diagonal either side. The kink is invisible on the ground and reads as a deliberate civic gesture — a square where the avenue meets the railway.
+
+| Crossing angle | Clear span over the 13-block reservation | Verdict |
+|---|---:|---|
+| 90 degrees | 17 blocks | **adopt** |
+| 45 degrees | ~23 blocks | acceptable |
+| 7.9 degrees as currently drawn | ~95 blocks | do not build |
+
+**Road over rail.** The railway is the through, gradient-constrained mode on a fixed plane; the avenue is the crossing, gradient-tolerant mode. Breaking the rail plane would cost 112+ blocks of rail ramp, put the railway in a 7-block sump with the attendant water problem, and destroy the flat rail plane that makes the eastern run legible.
+
+| Level | Y |
+|---|---|
+| Top of rail, held flat and unbroken | 72 |
+| Clear air above rail | 73–77 |
+| Bridge soffit | 78 |
+| Avenue running surface | 79 |
+
+Approach embankments at 1:8 run 56 blocks each side, so the works occupy roughly `x=2044…2172` along the avenue. The rail staircase must finish by `x≈2060` so the structure sits on dead-straight tangent. **Clear-span the whole reservation — no piers inside the rail envelope.**
 
 ### C2 — optional visitor portal
 
@@ -192,8 +388,8 @@ C4 is the internal connection from the Z02 surface passenger railway through `GA
 
 The intended journey is continuous and understandable:
 
-1. Leave the current Data District on the east connector.
-2. Arrive at the west-facing Gateway Pavilion.
+1. Join the East Corridor at the MainStreet East roundabout, by road from Ravensreach, the campus east gate, or the Observatory link — or board the train at MS-1.
+2. Run east past the Data District interchange, then north-east on the climb, and arrive at the Gateway Pavilion standing in its terminal circle.
 3. Walk or ride through the landscaped Gateway Approach, using Gateway Gardens and Approach Commons as the first two passenger stops.
 4. Optionally discover the unadvertised siding and descend into the Empty Eight expansion terminal.
 5. Follow Grand Avenue into the Houston-inspired city.
@@ -222,7 +418,11 @@ Exit gate: selected survey report, zero undisclosed current-feature intersection
 
 ### Phase 1 — interfaces and enabling works
 
-- Design the exact C1 centerlines and gateway landing.
+- Design the exact C1 centerlines, the three curve chamfers, and both terminal roundabouts.
+- **Freeze the 56-block corridor cross-section, including the 13-block rail reservation, before any earthwork.** Every crossing structure must be sized to clear-span it at rail vertical clearance from the first build.
+- Fix the Data District interchange crossroad bridge position and all four southern ramp quadrants.
+- Resolve the L2 MainStreet east campus gate — survey and approve a real gate, or delete the road.
+- Insert the orthogonal crossing node where Grand Avenue meets the railway near `(2108,~,-250)`.
 - Freeze the Z02 surface passenger alignment, both stop footprints, `GA-J1`, independent subway release boundary, and emergency-access reservations.
 - Establish protected staging areas and material logistics outside future public zones.
 - Compile the zone ownership/interface contract before any block operation.
@@ -259,7 +459,8 @@ Exit gate: every occupied floor has safe circulation, every access class is enfo
 
 ### Phase 5 — transport and commissioning
 
-- Commission C1 road, pedestrian, and rail modes.
+- Commission the East Corridor as one system: highway, both terminal roundabouts, the Data District interchange, the pedestrian route, and the railway with MS-1, DD-1, and GW-1.
+- Verify no structure anywhere on the corridor has a pier inside the rail envelope or a soffit below rail vertical clearance.
 - Commission both Z02 surface stops, then commission the concealed branch and terminal as a separate operational and rollback scope.
 - Commission the public shaft, internal passenger rail, service rail, switchback funicular, and return road.
 - Optionally activate C2 only after portal safety and permissions pass.
@@ -282,7 +483,9 @@ Exit gate: complete bidirectional no-dig/no-tower walks, powered-door tests, min
 
 1. Accept the same-world vertical compression, or preserve Masterplan 04's native height in a separate world/dimension.
 2. Approve or move the east reserve after the fresh terrain survey.
-3. Fix the exact connector endpoint and cross-section at the Data District.
+3. Accept or amend the 56-block East Corridor reservation and its 80-block total land take, and confirm the corridor may pass over the contested C01 East stack and the C01 Owner Tunnel Detour.
+3a. Approve or replace the provisional L2 MainStreet east campus gate at `(305,~,80)`, which has no cataloged counterpart.
+3b. Decide whether the railway is built with the highway or merely reserved — and if reserved, commit to the clear-span and vertical-clearance rules that keep it buildable.
 4. Select the active portal mechanism, if any.
 5. Resolve the public shaft dogleg and freeze the detailed surface-rail, subway descent, throat, and eight-platform cross-sections.
 6. Approve final geological wording for the contact plaque.

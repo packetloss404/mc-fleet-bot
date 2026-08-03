@@ -27,7 +27,7 @@
   <rect width="2400" height="104" fill="#e9e3d8"/>
   <line x1="0" y1="104" x2="2400" y2="104" stroke="#24282e" stroke-width="2"/>
   <text x="60" y="43" font-family="Helvetica,Arial,sans-serif" font-size="30" font-weight="700" letter-spacing="3" fill="#25282d">MASTERPLAN 05 · COMBINED ZONES</text>
-  <text x="60" y="76" font-family="Helvetica,Arial,sans-serif" font-size="15" letter-spacing="2" fill="#5c6067">ACCEPTED CURRENT BASELINE + EAST RESERVE SITING STUDY · NORTH UP · 1 BLOCK = 1 MAP UNIT</text>
+  <text x="60" y="76" font-family="Helvetica,Arial,sans-serif" font-size="15" letter-spacing="2" fill="#5c6067">ACCEPTED CURRENT BASELINE + EAST RESERVE + C1 EAST CORRIDOR · NORTH UP · 1 BLOCK = 1 MAP UNIT</text>
   <text x="2340" y="42" text-anchor="end" font-family="monospace" font-size="14" font-weight="700" fill="#a85b2e">STUDY ONLY — NOT BUILD AUTHORIZATION</text>
   <text x="2340" y="70" text-anchor="end" font-family="monospace" font-size="12" fill="#62666d">CURRENT SNAPSHOT c39d0d67… · CURRENT MAP ca62fa26…</text>
 
@@ -84,8 +84,26 @@
     <rect x="1682.22" y="611.11" width="35.56" height="35.56" fill="url(#underground)" stroke="#f0d6ff" stroke-width="3"/>
     <text x="1700" y="666" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#f0d6ff" stroke="#13171c" stroke-width="4" paint-order="stroke">Z10 CHEYENNE</text>
 
-    <path d="M1030.22,628.89 L1148.89,628.89" fill="none" stroke="#f0b83f" stroke-width="9" stroke-dasharray="18 8" marker-end="url(#goldArrow)"/>
-    <text x="1089" y="613" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#fff2c8" stroke="#15181d" stroke-width="4" paint-order="stroke">C1 · 267-BLOCK SURFACE LINK</text>
+    <!-- C1 East Corridor -->
+    <polyline points="651.11,797.78 862.22,797.78 933.33,726.67 1051.11,726.67 1148.89,628.89" fill="none" stroke="#1d232b" stroke-width="13" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/>
+    <polyline points="651.11,797.78 862.22,797.78 933.33,726.67 1051.11,726.67 1148.89,628.89" fill="none" stroke="#f0b83f" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round"/>
+    <polyline points="651.11,785.33 862.22,785.33 933.33,714.22 1051.11,714.22 1148.89,616.44" fill="none" stroke="#5fd6b4" stroke-width="3" stroke-dasharray="8 5" stroke-linejoin="round"/>
+    <circle cx="651.11" cy="797.78" r="11" fill="#15181d" stroke="#ffd97a" stroke-width="4.5"/>
+    <circle cx="1148.89" cy="628.89" r="11" fill="#15181d" stroke="#ffd97a" stroke-width="4.5"/>
+    <circle cx="862.22" cy="797.78" r="5" fill="#ffd97a" stroke="#15181d" stroke-width="2"/>
+    <circle cx="933.33" cy="726.67" r="5" fill="#ffd97a" stroke="#15181d" stroke-width="2"/>
+    <circle cx="1051.11" cy="726.67" r="5" fill="#ffd97a" stroke="#15181d" stroke-width="2"/>
+    <line x1="984.44" y1="685.78" x2="984.44" y2="766.67" stroke="#e8843c" stroke-width="4"/>
+    <circle cx="984.44" cy="726.67" r="7" fill="#15181d" stroke="#e8843c" stroke-width="3.5"/>
+    <text x="984.44" y="673.33" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#ffd0ac" stroke="#15181d" stroke-width="4" paint-order="stroke">EXIT 11 · DATA DISTRICT</text>
+    <rect x="647.11" y="782.33" width="8" height="6" fill="#0f1418" stroke="#5fd6b4" stroke-width="2.5"/>
+    <rect x="1007.11" y="711.22" width="8" height="6" fill="#0f1418" stroke="#5fd6b4" stroke-width="2.5"/>
+    <rect x="1144.89" y="613.44" width="8" height="6" fill="#0f1418" stroke="#5fd6b4" stroke-width="2.5"/>
+    <line x1="651.11" y1="797.78" x2="668.89" y2="659.11" stroke="#8fd06a" stroke-width="3"/>
+    <line x1="651.11" y1="797.78" x2="595.56" y2="797.78" stroke="#ff7a6e" stroke-width="3" stroke-dasharray="7 5"/>
+    <line x1="651.11" y1="797.78" x2="620.89" y2="835.56" stroke="#8fd06a" stroke-width="3"/>
+    <text x="771.11" y="833.33" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="700" fill="#fff2c8" stroke="#15181d" stroke-width="4.5" paint-order="stroke">C1 · EAST CORRIDOR — 1,277 BLOCKS</text>
+    <text x="771.11" y="864.44" text-anchor="middle" font-family="monospace" font-size="11.5" fill="#e4dcc9" stroke="#15181d" stroke-width="4" paint-order="stroke">highway + double-track rail + pedestrian + utility · 56-block reservation</text>
 
     <path d="M566.67,831.11 C760,1005 970,925 1148.89,628.89" fill="none" stroke="#b99ce6" stroke-width="5" stroke-dasharray="4 11"/>
     <circle cx="566.67" cy="831.11" r="12" fill="#322946" stroke="#d8c4fa" stroke-width="4"/>
@@ -181,22 +199,25 @@
     <text x="28" y="630" font-family="monospace" font-size="13" fill="#555b63">worldZ = -300 + localX</text>
     <text x="28" y="654" font-family="monospace" font-size="13" fill="#555b63">local south faces world west</text>
 
-    <text x="28" y="704" font-family="Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#25282d">PRIMARY CONNECTION</text>
-    <text x="28" y="733" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#555b63">Data District road edge</text>
-    <text x="28" y="756" font-family="monospace" font-size="13" fill="#555b63">(1283, ~, -300)</text>
-    <text x="28" y="785" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#555b63">to west-facing Gateway</text>
-    <text x="28" y="808" font-family="monospace" font-size="13" fill="#555b63">(1550, ~, -300)</text>
-    <text x="28" y="837" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#555b63">267-block direct plan distance</text>
+    <text x="28" y="704" font-family="Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#25282d">PRIMARY CONNECTION — C1 EAST CORRIDOR</text>
+    <text x="28" y="731" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#555b63">MainStreet East terminal roundabout</text>
+    <text x="28" y="753" font-family="monospace" font-size="13" fill="#555b63">(430, ~, 80)</text>
+    <text x="28" y="777" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#555b63">to the Gateway terminal roundabout</text>
+    <text x="28" y="799" font-family="monospace" font-size="13" fill="#555b63">(1550, ~, -300)</text>
+    <text x="28" y="823" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#555b63">1,277 blocks · 56-block reservation</text>
+    <text x="28" y="845" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#555b63">highway + rail + pedestrian + utility</text>
+    <text x="28" y="867" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#555b63">1 district interchange · 3 rail stations</text>
+    <text x="28" y="889" font-family="monospace" font-size="12.5" fill="#3f7a63">zero cataloged surface intersections</text>
 
-    <text x="28" y="876" font-family="Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#25282d">HARD GATES</text>
-    <text x="28" y="905" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#555b63">• fresh immutable snapshot</text>
-    <text x="28" y="929" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#555b63">• east terrain / ownership survey</text>
-    <text x="28" y="953" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#555b63">• terminal cover / fluid / egress audit</text>
-    <text x="28" y="977" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#555b63">• collision and interface audit</text>
-    <text x="28" y="1001" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#555b63">• exact guarded operations + rollback</text>
+    <text x="28" y="925" font-family="Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#25282d">HARD GATES</text>
+    <text x="28" y="951" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#555b63">• fresh immutable snapshot</text>
+    <text x="28" y="973" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#555b63">• east terrain / ownership survey</text>
+    <text x="28" y="995" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#555b63">• terminal cover / fluid / egress audit</text>
+    <text x="28" y="1017" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#555b63">• collision and interface audit</text>
+    <text x="28" y="1039" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#555b63">• exact guarded operations + rollback</text>
 
-    <text x="28" y="1027" font-family="monospace" font-size="11.5" fill="#7a5b42">No current feature overlap is shown.</text>
-    <text x="28" y="1049" font-family="monospace" font-size="11.5" fill="#7a5b42">Terrain / underground clearance NOT proven.</text>
+    <text x="28" y="1063" font-family="monospace" font-size="11.5" fill="#7a5b42">No current feature overlap is shown.</text>
+    <text x="28" y="1083" font-family="monospace" font-size="11.5" fill="#7a5b42">Terrain / underground clearance NOT proven.</text>
   </g>
 
   <g transform="translate(1540,1260)">

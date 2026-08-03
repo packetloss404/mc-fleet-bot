@@ -14,19 +14,19 @@
     },
     "coordinateRegistry": {
       "path": "masterplans/05-combined-zones/site-coordinates.json",
-      "sha256": "389817768da0ee44dc71c6968e629ff22e617c14a562d2ae3b13533b2714f758"
+      "sha256": "f0e1eb9f0885b16fdf386f7b9838613fd9d6ad259769a9746ae51de546aa90e0"
     }
   },
   "outputs": {
     "canonicalSvg": {
       "path": "masterplans/05-combined-zones/maps/current-and-proposed-whole-world.svg",
-      "sha256": "469968a1ca64c50277aa44fda08054a229ea622825481ae7ae798d077d831be1",
+      "sha256": "2ed8253ecfd028b90304b438d7cfb5c6713671f29f5c313f0af08c71509e2f91",
       "width": 2400,
       "height": 1500
     },
     "renderedPng": {
       "path": "masterplans/05-combined-zones/maps/current-and-proposed-whole-world.png",
-      "sha256": "f2d647a12f22feb1a82cc70a9f8ee237e6b759efe93d7200a98abef6895cd393",
+      "sha256": "ce5ba495f6d7595fc97d82eeb65a4444f849fabd5ba5339ef015705a24f112b3",
       "width": 2400,
       "height": 1500
     },
@@ -53,6 +53,22 @@
       "sha256": "85a1dbdbd9001f14b88f4cebcee7d045447c400486b3300d536a6b37582fc300",
       "width": 1600,
       "height": 1050
+    },
+    "eastCorridorSvg": {
+      "path": "masterplans/05-combined-zones/maps/east-corridor-plan.svg",
+      "sha256": "21c92462a8b95a0fff3e30c9f5b30fcf0056f13ed07b971fefd4e5002c88b4b4",
+      "width": 2000,
+      "height": 1250
+    },
+    "eastCorridorPng": {
+      "path": "masterplans/05-combined-zones/maps/east-corridor-plan.png",
+      "sha256": "abe0c698a7000b48edcc37882ff9f13e8ada8cde4a1f60efe24e43f91e6d24a4",
+      "width": 2000,
+      "height": 1250
+    },
+    "reportHtml": {
+      "path": "masterplans/05-combined-zones/combined-zones-report.html",
+      "sha256": "5d7618eec28576f09d092a675504b3417c3bde90db3519513729f0d2b8e0798f"
     }
   },
   "checks": [
@@ -135,6 +151,38 @@
       "id": "png-rendered",
       "passed": true,
       "detail": "Headless Chromium rendered the whole-world, Z02 detail, and vertical SVGs at 2400x1500, 1800x1200, and 1600x1050 with local-file access enabled."
+    },
+    {
+      "id": "east-corridor-clearance",
+      "description": "East Corridor 56-block reservation tested against all 1,215 cataloged feature footprints",
+      "result": "PASS",
+      "detail": "zero surface-feature intersections; nearest surface feature Te Ia District Shared Grid at 50 blocks; nearest subsurface C01 East at 18 blocks plan with ~17 blocks vertical separation",
+      "record": "masterplans/05-combined-zones/corridor-clearance.json",
+      "limitation": "plan-only separation against cataloged footprints; not a terrain, hydrology, entity, ownership, or chunk-generation clearance"
+    },
+    {
+      "id": "east-corridor-45-degree-geometry",
+      "description": "Every corridor leg is orthogonal or an exact 45-degree diagonal",
+      "result": "PASS",
+      "detail": "asserted at generation time; 3 curve vertices against a budget of 4"
+    },
+    {
+      "id": "grand-avenue-rail-skew",
+      "description": "Grand Avenue crossing angle over the Z02 rail reservation",
+      "result": "FAIL_FIX_SPECIFIED",
+      "detail": "7.9-degree skew at approximately (2108,-250) would need a ~95-block deck; orthogonal crossing node specified in C1e"
+    },
+    {
+      "id": "whole-world-map-corridor-overlay",
+      "description": "Whole-world sheet regenerated with the C1 East Corridor, both terminal roundabouts, the district interchange, three rail stations and the three local roads",
+      "result": "PASS",
+      "detail": "corridor drawn from site-coordinates.json via the sheet's documented transform px=460+0.4444x, py=762.222+0.4444z; accepted raster base retained (sha256 ca62fa26... verified before render)"
+    },
+    {
+      "id": "report-html-figures-derived",
+      "description": "combined-zones-report.html figures are generated from site-coordinates.json and corridor-clearance.json rather than hand-typed",
+      "result": "PASS",
+      "detail": "prose cannot drift from the machine-checked numbers; 19 sections, 15 tables, 4 figures"
     }
   ],
   "limitations": [

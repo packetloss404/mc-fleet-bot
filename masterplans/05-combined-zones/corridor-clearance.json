@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-east-corridor-clearance",
+  "status": "STUDY_GEOMETRY_ONLY_NOT_A_TERRAIN_OR_OWNERSHIP_CLEARANCE",
+  "method": "Plan-only Chebyshev separation between the reservation band and each cataloged feature footprint, evaluated per shared X column. A database non-overlap check is not a terrain, entity, ownership, hydrology, chunk-generation, or protected-interface clearance.",
+  "source": {
+    "poiDirectory": "docs/redevelopment/2026-07-29-poi-coordinate-directory/poi-coordinate-directory.json",
+    "poiSha256": "fbb9d44f683e087dacf7fa0f2cec0792c4cbef89b1165d4987ad4967b2e2a3e9",
+    "recordsWithGeometry": 1215,
+    "catalogRecords": 1215
+  },
+  "alignment": {
+    "pointsOfIntersection": [
+      {
+        "id": "W-TERM",
+        "x": 430,
+        "z": 80,
+        "role": "west terminal roundabout centre"
+      },
+      {
+        "id": "PI-1",
+        "x": 905,
+        "z": 80,
+        "role": "northward deflection",
+        "radius": 140
+      },
+      {
+        "id": "PI-2",
+        "x": 1065,
+        "z": -80,
+        "role": "southward deflection",
+        "radius": 120
+      },
+      {
+        "id": "PI-3",
+        "x": 1330,
+        "z": -80,
+        "role": "northward deflection",
+        "radius": 140
+      },
+      {
+        "id": "E-TERM",
+        "x": 1550,
+        "z": -300,
+        "role": "Gateway terminal roundabout centre"
+      }
+    ],
+    "legs": [
+      {
+        "from": "W-TERM",
+        "to": "PI-1",
+        "bearing": "east-west tangent",
+        "deltaX": 475,
+        "deltaZ": 0,
+        "pathLengthBlocks": 475.0
+      },
+      {
+        "from": "PI-1",
+        "to": "PI-2",
+        "bearing": "45-degree diagonal",
+        "deltaX": 160,
+        "deltaZ": -160,
+        "pathLengthBlocks": 226.3
+      },
+      {
+        "from": "PI-2",
+        "to": "PI-3",
+        "bearing": "east-west tangent",
+        "deltaX": 265,
+        "deltaZ": 0,
+        "pathLengthBlocks": 265.0
+      },
+      {
+        "from": "PI-3",
+        "to": "E-TERM",
+        "bearing": "45-degree diagonal",
+        "deltaX": 220,
+        "deltaZ": -220,
+        "pathLengthBlocks": 311.1
+      }
+    ],
+    "planLengthBlocks": 1277,
+    "geometryRule": "orthogonal legs and exact 45-degree diagonals only",
+    "curveVertices": 3,
+    "curveVertexBudget": 4
+  },
+  "crossSection": {
+    "reservationBlocks": 56,
+    "northEdgeOffset": -36,
+    "southEdgeOffset": 19,
+    "slopeEasementEachSide": 12,
+    "totalLandTakeBlocks": 80
+  },
+  "results": {
+    "surfaceFeaturesIntersectingReservation": [],
+    "nearestSurfaceFeature": {
+      "feature": "Te Ia District Shared Grid",
+      "project": "Town Expansion R1",
+      "layer": "surface",
+      "featureTopY": 135,
+      "featureBaseY": 63,
+      "reservationPlanGapBlocks": 50,
+      "withEasementPlanGapBlocks": 26,
+      "extent": {
+        "minX": 1000,
+        "maxX": 1300,
+        "minZ": -620,
+        "maxZ": -172
+      }
+    },
+    "findings": [
+      {
+        "feature": "C01 Owner Tunnel Detour",
+        "project": "Town Expansion R1",
+        "layer": "subsurface",
+        "featureTopY": -37,
+        "featureBaseY": -45,
+        "reservationPlanGapBlocks": 0,
+        "withEasementPlanGapBlocks": 0,
+        "extent": {
+          "minX": 364,
+          "maxX": 718,
+          "minZ": -46,
+          "maxZ": 58
+        }
+      },
+      {
+        "feature": "C01 East L1 Security Garage",
+        "project": "Town Expansion R1",
+        "layer": "subsurface",
+        "featureTopY": 53,
+        "featureBaseY": 42,
+        "reservationPlanGapBlocks": 18,
+        "withEasementPlanGapBlocks": 0,
+        "extent": {
+          "minX": 700,
+          "maxX": 900,
+          "minZ": -140,
+          "maxZ": -5
+        }
+      },
+      {
+        "feature": "C01 East L2 Living Adult",
+        "project": "Town Expansion R1",
+        "layer": "subsurface",
+        "featureTopY": 41,
+        "featureBaseY": 33,
+        "reservationPlanGapBlocks": 18,
+        "withEasementPlanGapBlocks": 0,
+        "extent": {
+          "minX": 700,
+          "maxX": 900,
+          "minZ": -140,
+          "maxZ": -5
+        }
+      },
+      {
+        "feature": "C01 East L3 Agriculture Water",
+        "project": "Town Expansion R1",
+        "layer": "subsurface",
+        "featureTopY": 32,
+        "featureBaseY": 24,
+        "reservationPlanGapBlocks": 18,
+        "withEasementPlanGapBlocks": 0,
+        "extent": {
+          "minX": 700,
+          "maxX": 900,
+          "minZ": -141,
+          "maxZ": -5
+        }
+      },
+      {
+        "feature": "C01 Owner Residence",
+        "project": "Town Expansion R1",
+        "layer": "subsurface",
+        "featureTopY": -18,
+        "featureBaseY": -31,
+        "reservationPlanGapBlocks": 28,
+        "withEasementPlanGapBlocks": 4,
+        "extent": {
+          "minX": 714,
+          "maxX": 895,
+          "minZ": -74,
+          "maxZ": -10
+        }
+      },
+      {
+        "feature": "Te Ia District Shared Grid",
+        "project": "Town Expansion R1",
+        "layer": "surface",
+        "featureTopY": 135,
+        "featureBaseY": 63,
+        "reservationPlanGapBlocks": 50,
+        "withEasementPlanGapBlocks": 26,
+        "extent": {
+          "minX": 1000,
+          "maxX": 1300,
+          "minZ": -620,
+          "maxZ": -172
+        }
+      },
+      {
+        "feature": "C01 East L4 Command Medical",
+        "project": "Town Expansion R1",
+        "layer": "subsurface",
+        "featureTopY": 23,
+        "featureBaseY": 15,
+        "reservationPlanGapBlocks": 63,
+        "withEasementPlanGapBlocks": 51,
+        "extent": {
+          "minX": 702,
+          "maxX": 854,
+          "minZ": -70,
+          "maxZ": -19
+        }
+      },
+      {
+        "feature": "C01 East L5 Power Escape",
+        "project": "Town Expansion R1",
+        "layer": "subsurface",
+        "featureTopY": 14,
+        "featureBaseY": 6,
+        "reservationPlanGapBlocks": 64,
+        "withEasementPlanGapBlocks": 52,
+        "extent": {
+          "minX": 703,
+          "maxX": 854,
+          "minZ": -68,
+          "maxZ": -20
+        }
+      },
+      {
+        "feature": "C01 Owner Club Arrival",
+        "project": "Town Expansion R1",
+        "layer": "subsurface",
+        "featureTopY": 4,
+        "featureBaseY": -14,
+        "reservationPlanGapBlocks": 66,
+        "withEasementPlanGapBlocks": 54,
+        "extent": {
+          "minX": 721,
+          "maxX": 850,
+          "minZ": -64,
+          "maxZ": -22
+        }
+      },
+      {
+        "feature": "Te Ia District Worker Commons",
+        "project": "Town Expansion R1",
+        "layer": "surface",
+        "featureTopY": 97,
+        "featureBaseY": 43,
+        "reservationPlanGapBlocks": 73,
+        "withEasementPlanGapBlocks": 61,
+        "extent": {
+          "minX": 790,
+          "maxX": 1258,
+          "minZ": -544,
+          "maxZ": -189
+        }
+      }
+    ]
+  },
+  "truthBoundary": {
+    "offRasterPointsOfIntersection": [
+      "E-TERM"
+    ],
+    "acceptedRasterExtent": {
+      "minX": -883,
+      "maxX": 1468,
+      "minZ": -1387,
+      "maxZ": 964
+    },
+    "note": "Corridor length east of x=1468 lies outside the accepted rendered raster. Absent records and unrendered map area are not evidence of buildable land."
+  }
+}

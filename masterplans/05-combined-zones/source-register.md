@@ -86,6 +86,29 @@ The following conflicts are normalized by this package:
 | Portal-gallery rooms are treated like active portals | They are architectural destinations only; activation is a separate decision and test |
 | “Old town” was interpreted as a new 33-schematic district | Ravensreach remains the canonical Old Town; replace the duplicate with Z02 Gateway Approach and defer any schematic museum |
 | Z02 had no mature transit role beyond a reserved rail line | Add two complete future-use surface stops and a separately releasable concealed subway branch to an eight-track/eight-platform expansion terminal |
+| C1 was a 267-block stub whose current-world endpoint was a road-network bounding-box edge | Replace with the 1,277-block East Corridor from a terminal roundabout at `(430,~,80)` to the Gateway, swinging south of the Data District and ending in local roads that tie into cataloged existing roads |
+| C1 carried rail only as a "reserved centerline" with no alignment, no Y, and no station | Design road and rail together in one 56-block reservation with three stations, and state the clear-span and vertical-clearance rules that keep the rail buildable if the highway goes first |
+| Grand Avenue and the Z02 rail were planned independently | They cross at approximately `(2108,~,-250)` at a 7.9-degree skew needing a ~95-block deck; insert an orthogonal crossing node and carry the road over the rail |
+| The current world was assumed to have a railway | It does not. The catalog holds 1,215 features and no track of any kind; "Railway" elsewhere in this repository is the PaaS host, not rail infrastructure |
+
+## Highway and rail design authorities
+
+The East Corridor geometry is derived from real published standards rather than invented. Where a figure is compressed, the compression rule is stated with it.
+
+| Topic | Authority |
+|---|---|
+| Interchange spacing, ramp gore spacing, weaving minimums, C-D roads | WSDOT Design Manual M 22-01, Ch. 1360 (Exhibits 1360-2, 1360-3, 1360-26) |
+| Interchange type selection, LOS by form, cost and ROW ranking | VTRC 99-R15, *Guidelines for Preliminary Selection of the Optimum Interchange Type* |
+| Interchange forms, frontage roads, DDI geometry | TxDOT Roadway Design Manual 14.10, 15.3, 15.3.2; TSP Manual 11.2.1 |
+| Alternative intersections and interchanges | FHWA-HRT-09-060 (AIIR); DDI Informational Guide 2nd ed. (TRB) |
+| Roundabout geometry, entry flares, splitter islands | NCHRP Report 672 |
+| Speed-change lanes, taper ratios, gore and nose geometry | AASHTO Green Book; Caltrans HDM 504; UK DMRB CD 122 |
+| Advance signing sequence and exit numbering | MUTCD 11th ed. §2E |
+| Double-track reservation, track centers, cess, structure gauge | Sound Transit design criteria; UTA DCM §3.3–3.4, Table 8-1; TCRP 57 §3.4 |
+| Rail-in-highway-median precedent and its documented failure modes | CTA Blue/Red Line expressway-median branches; LA Metro C Line in the I-105 median |
+| Emergency egress from constrained rail corridors | NFPA 130 |
+
+**Design speed is declared, not scaled.** The corridor is built to the "urban ≤50 mph" tier at true 1:1 because in-world travel speeds — horse ~52 km/h, minecart ~29 km/h — genuinely sit in that tier. A 0.6 longitudinal factor is applied only to storage and queueing elements. Gores, noses, taper ratios, and the cross-section take no factor.
 
 ## Current interfaces that may be reused
 
@@ -100,6 +123,10 @@ The following conflicts are normalized by this package:
 ## Evidence limitations carried into the plan
 
 - The east reserve is intentionally outside all cataloged feature bounds, but most of it is not present in the accepted rendered snapshot.
+- The East Corridor clearance result in `corridor-clearance.json` is a plan-only separation test against cataloged footprints. It reports zero surface intersections and a 50-block nearest-surface clearance; it is not a terrain, hydrology, entity, ownership, or chunk-generation clearance.
+- The corridor passes over the contested C01 East stack with 18 blocks of plan clearance and roughly 17 blocks of vertical separation. ISSUE-002 must close before embankment loading there is designed.
+- The corridor's eastern terminus lies beyond the accepted raster edge at `x=1468`; that segment has never been rendered.
+- Nothing is cataloged south of the corridor along its whole length. That is an absence of records, not evidence of buildable land, and the southern ramp quadrants depend on it being surveyed.
 - A database non-overlap check is not a terrain, entity, ownership, hydrology, chunk-generation, or protected-interface clearance.
 - Derived centers in the POI directory are navigation references, not landing-safety claims.
 - Z02 station, branch, and terminal coordinates are coherent study geometry, not evidence of terrain cover, fluid clearance, safe grade, or buildable underground volume.
