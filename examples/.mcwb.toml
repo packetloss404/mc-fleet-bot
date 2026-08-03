@@ -1,0 +1,24 @@
+# mcwb config — drop a copy of this in your project root as `.mcwb.toml`
+# and edit the paths to match your setup. mcwb looks for this file in
+# the current working directory.
+
+[paths]
+# Path to the masterplan directory. Should contain build-info.json
+# and 04-contractor/contractor-brief.json.
+plan_dir = "D:/projects/mc-fleet-bot/masterplans/04-combined-complex"
+
+# Path to the live Minecraft world directory. mcwb assumes the
+# Minecraft server is STOPPED before running `mcwb build`.
+world_dir = "D:/minecraft/servers/combined-complex/world"
+
+[build]
+# Java edition version. Must match the palette available in mcwb/palette/.
+java_version = "1.21"
+
+# Edition — only "java" is supported in v0.1.
+edition = "java"
+
+[verify]
+# Run all 10 acceptance checks from the contractor brief after each build.
+# Lands in v0.2.
+run_qa_after_build = true

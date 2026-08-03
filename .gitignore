@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.env
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# mypy / ruff
+.mypy_cache/
+.ruff_cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# mcwb local state
+.mcwb-state.json
+.mcwb-cache/
+
+# build output
+out/
+build-output/
+*.litematic
+*.schem
+*.schematic
+
+# test fixtures — keep the briefs, ignore bulky binary blobs
+tests/fixtures/**/overhead-map-same-world.png
