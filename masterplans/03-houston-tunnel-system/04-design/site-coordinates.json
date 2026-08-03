@@ -1,0 +1,471 @@
+{
+  "build_name": "Houston Tunnel System",
+  "build_id": "03-houston-tunnel-system",
+  "compass_orientation": "north = -z, east = +x, up = +y",
+  "scale": {
+    "horizontal_compression": "4:1 on city block footprint (real 80m x 80m block compressed to 20m x 20m)",
+    "vertical_compression": "1:1 (tunnel sits 20 ft below street level)",
+    "linear_length_compression": "1:4 (real 6 mi of corridor compressed to ~700-900 m of corridor in the sample)",
+    "tunnel_depth_blocks": 6,
+    "tunnel_corridor_width_blocks": 3,
+    "tunnel_corridor_height_blocks": 3,
+    "tunnel_food_court_width_blocks": 4,
+    "tunnel_food_court_height_blocks": 4,
+    "compressed_block_size_m": 20,
+    "street_width_m": 3,
+    "block_unit_m": 23
+  },
+  "y_levels": {
+    "street_level": 64,
+    "underside_of_street": 63,
+    "tunnel_ceiling_structural": 62,
+    "tunnel_ceiling_dropped_corridor": 61,
+    "tunnel_ceiling_food_court_open": 62,
+    "tunnel_floor": 58,
+    "skybridge_level": 68,
+    "generic_tower_cornice_min": 80,
+    "generic_tower_cornice_max": 84,
+    "subtropolis_public_shaft_min": 64,
+    "cheyenne_service_tunnel_y": -86
+  },
+  "city_block_count": {
+    "tunnel_sample": 24,
+    "above_ground_total": 36,
+    "above_ground_buffer": 12
+  },
+  "build_extent": {
+    "above_ground": {
+      "x_min": 0,
+      "x_max": 138,
+      "z_min": -138,
+      "z_max": 0
+    },
+    "tunnel_sample": {
+      "x_min": 0,
+      "x_max": 92,
+      "z_min": -138,
+      "z_max": 0
+    }
+  },
+  "world_origin": {
+    "x": 0,
+    "y": 64,
+    "z": 0,
+    "description": "Wells Fargo Plaza street entrance, at the SE corner of the build, on the south face of the Wells Fargo tower, on the sidewalk of Louisiana Street, at street level. T-marker plaque is at this coordinate."
+  },
+  "compass_orientation_detail": {
+    "north": "-z",
+    "south": "+z",
+    "east": "+x",
+    "west": "-x",
+    "up": "+y",
+    "down": "-y"
+  },
+  "street_grid": {
+    "north_south_streets": [
+      { "name": "Main", "centerline_x": 1.5, "position": "eastmost" },
+      { "name": "Fannin", "centerline_x": 21.5, "position": "interior" },
+      { "name": "Travis", "centerline_x": 44.5, "position": "interior" },
+      { "name": "Louisiana", "centerline_x": 67.5, "position": "interior" },
+      { "name": "Walker", "centerline_x": 90.5, "position": "interior" },
+      { "name": "Capitol", "centerline_x": 113.5, "position": "westmost" }
+    ],
+    "east_west_streets": [
+      { "name": "Lamar", "centerline_z": -20.5, "position": "southmost" },
+      { "name": "Dallas", "centerline_z": -43.5, "position": "interior" },
+      { "name": "McKinney", "centerline_z": -66.5, "position": "interior" },
+      { "name": "Rusk", "centerline_z": -89.5, "position": "northmost" }
+    ]
+  },
+  "compressed_block_centers": {
+    "tunnel_grid": {
+      "col_1": { "name": "Main-Fannin", "center_x": 11.5 },
+      "col_2": { "name": "Fannin-Travis", "center_x": 33 },
+      "col_3": { "name": "Travis-Louisiana", "center_x": 56 },
+      "col_4": { "name": "Louisiana-Walker", "center_x": 79 },
+      "row_1": { "name": "south of Lamar", "center_z": -9.5 },
+      "row_2": { "name": "Lamar-Dallas", "center_z": -32 },
+      "row_3": { "name": "Dallas-McKinney", "center_z": -55 },
+      "row_4": { "name": "McKinney-Rusk", "center_z": -78 },
+      "row_5": { "name": "north of Rusk", "center_z": -101 },
+      "row_6": { "name": "far north", "center_z": -124 }
+    }
+  },
+  "build_block_identifiers_cameron_2015": [
+    { "build_block": "(Col 1, Row 1)", "cameron_label": "A-15", "center": { "x": 11.5, "y": null, "z": -9.5 }, "notes": "SE corner, near Wells Fargo entry" },
+    { "build_block": "(Col 1, Row 2)", "cameron_label": "A-17", "center": { "x": 11.5, "y": null, "z": -32 } },
+    { "build_block": "(Col 1, Row 3)", "cameron_label": "A-19", "center": { "x": 11.5, "y": null, "z": -55 } },
+    { "build_block": "(Col 1, Row 4)", "cameron_label": "A-21", "center": { "x": 11.5, "y": null, "z": -78 }, "notes": "McKinney Place food court" },
+    { "build_block": "(Col 1, Row 5)", "cameron_label": "A-23", "center": { "x": 11.5, "y": null, "z": -101 } },
+    { "build_block": "(Col 1, Row 6)", "cameron_label": "A-25", "center": { "x": 11.5, "y": null, "z": -124 }, "notes": "Harris County edge" },
+    { "build_block": "(Col 2, Row 1)", "cameron_label": "B-16", "center": { "x": 33, "y": null, "z": -9.5 }, "notes": "1001 Fannin food court" },
+    { "build_block": "(Col 2, Row 2)", "cameron_label": "B-18", "center": { "x": 33, "y": null, "z": -32 } },
+    { "build_block": "(Col 2, Row 3)", "cameron_label": "B-20", "center": { "x": 33, "y": null, "z": -55 } },
+    { "build_block": "(Col 2, Row 4)", "cameron_label": "B-22", "center": { "x": 33, "y": null, "z": -78 } },
+    { "build_block": "(Col 2, Row 5)", "cameron_label": "B-24", "center": { "x": 33, "y": null, "z": -101 } },
+    { "build_block": "(Col 2, Row 6)", "cameron_label": "B-26", "center": { "x": 33, "y": null, "z": -124 }, "notes": "JPMorgan Chase Tower area" },
+    { "build_block": "(Col 3, Row 1)", "cameron_label": "C-17", "center": { "x": 56, "y": null, "z": -9.5 } },
+    { "build_block": "(Col 3, Row 2)", "cameron_label": "C-19", "center": { "x": 56, "y": null, "z": -32 } },
+    { "build_block": "(Col 3, Row 3)", "cameron_label": "C-21", "center": { "x": 56, "y": null, "z": -55 }, "notes": "Esperson food court (archetype)" },
+    { "build_block": "(Col 3, Row 4)", "cameron_label": "C-23", "center": { "x": 56, "y": null, "z": -78 } },
+    { "build_block": "(Col 3, Row 5)", "cameron_label": "C-25", "center": { "x": 56, "y": null, "z": -101 } },
+    { "build_block": "(Col 3, Row 6)", "cameron_label": "C-27", "center": { "x": 56, "y": null, "z": -124 } },
+    { "build_block": "(Col 4, Row 1)", "cameron_label": "D-18", "center": { "x": 79, "y": null, "z": -9.5 } },
+    { "build_block": "(Col 4, Row 2)", "cameron_label": "D-20", "center": { "x": 79, "y": null, "z": -32 } },
+    { "build_block": "(Col 4, Row 3)", "cameron_label": "D-22", "center": { "x": 79, "y": null, "z": -55 }, "notes": "Pennzoil Place food court (densest)" },
+    { "build_block": "(Col 4, Row 4)", "cameron_label": "D-24", "center": { "x": 79, "y": null, "z": -78 } },
+    { "build_block": "(Col 4, Row 5)", "cameron_label": "D-26", "center": { "x": 79, "y": null, "z": -101 } },
+    { "build_block": "(Col 4, Row 6)", "cameron_label": "D-28", "center": { "x": 79, "y": null, "z": -124 }, "notes": "Theater District stub" }
+  ],
+  "key_locations": {
+    "world_origin_wells_fargo_street_entrance": {
+      "x": 0, "y": 64, "z": 0,
+      "description": "T-marker plaque on the sidewalk at the Wells Fargo Plaza street entrance"
+    },
+    "wells_fargo_plaza_tower_center": {
+      "x": 10, "y": 76, "z": -10,
+      "description": "24 stories (y = 64 to 88), glass-and-granite office tower"
+    },
+    "wells_fargo_revolving_door": {
+      "x": 10, "y": 64, "z": 0,
+      "description": "Glass revolving door on south face, on Louisiana Street sidewalk"
+    },
+    "wells_fargo_floodgate_tunnel_level": {
+      "x": 10, "y": 58, "z": 0,
+      "description": "Iron door at tunnel-level entry, slots into brackets"
+    },
+    "wells_fargo_1930s_dual_origin_plaque": {
+      "x": 10, "y": 65, "z": -3,
+      "description": "Lobby wall plaque: 'Houston Tunnel System — Established 1930s. First tunnel: Ross Sterling under Fannin (1931) and Will Horwitz under Capitol (1935). Inspired by the Rockefeller Center underground concourse.'"
+    },
+    "wells_fargo_95plus_6mi_200k_panel": {
+      "x": 10, "y": 65, "z": -3,
+      "description": "Lobby wall interpretive panel: '95+ city blocks / 6 mi / 200,000 daily users'"
+    },
+    "wells_fargo_200k_main_sign": {
+      "x": 10, "y": 67, "z": 0,
+      "description": "Large '200,000 daily users' sign above the Wells Fargo entrance"
+    },
+    "mckinney_garage_tower_center": {
+      "x": 10, "y": 70, "z": -82.5,
+      "description": "4-6 stories, parking garage (y = 64 to 76)"
+    },
+    "mckinney_garage_direct_access": {
+      "x": 10, "y": 64, "z": -90,
+      "description": "North face of McKinney Garage, on Rusk Street sidewalk"
+    },
+    "mckinney_place_food_court": {
+      "x": 10, "y": 58, "z": -82.5,
+      "description": "Tier 1 food court, parking-garage archetype"
+    },
+    "mckinney_garage_t_marker": {
+      "x": 10, "y": 64, "z": -90,
+      "description": "T-marker plaque on the sidewalk"
+    },
+    "1001_fannin_tower_center": {
+      "x": 33, "y": 76, "z": -10,
+      "description": "24 stories (y = 64 to 88)"
+    },
+    "1001_fannin_lamar_tunnel_food_court": {
+      "x": 33, "y": 58, "z": -10,
+      "description": "Tier 1 food court, modern refresh (dark ceiling, polished porcelain, frameless glass)"
+    },
+    "esperson_tower_center": {
+      "x": 56, "y": 72, "z": -55,
+      "description": "16 stories (y = 64 to 80), Art Deco twins"
+    },
+    "esperson_food_court_808_travis": {
+      "x": 56, "y": 58, "z": -55,
+      "description": "Tier 1 food court, archetype (long narrow corridor, single row of storefronts, fluorescent tubes, beige terrazzo)"
+    },
+    "esperson_sandra_lord_plaque": {
+      "x": 56, "y": 60, "z": -55,
+      "description": "Wall plaque in the Esperson food court: 'Sandra Lord has led walking tours of the Houston tunnel system since 1991.'"
+    },
+    "pennzoil_place_tower_center": {
+      "x": 79, "y": 74, "z": -55,
+      "description": "20 stories (y = 64 to 84), two mirrored Philip Johnson trapezoidal towers"
+    },
+    "pennzoil_place_underground_food_court": {
+      "x": 79, "y": 58, "z": -55,
+      "description": "Tier 1 food court, densest (10-12 packed storefronts under mirrored Philip Johnson towers)"
+    },
+    "pennzoil_hines_27_building_marker": {
+      "x": 79, "y": 60, "z": -55,
+      "description": "Wall marker: 'The modern tunnel system was assembled 1960s-1980s by developer Gerald D. Hines, who added 27 major buildings to downtown Houston.'"
+    },
+    "jpmorgan_chase_tower_center": {
+      "x": 33, "y": 76, "z": -110,
+      "description": "24 stories (y = 64 to 88), originally the 1935 Will Horwitz Uptown Theater site"
+    },
+    "jpmorgan_chase_basement_1950s_corridor": {
+      "x": 33, "y": 58, "z": -110,
+      "description": "Tier 2 signature: 1950s minimal corridor segment, bare concrete walls, older fluorescent, no drop ceiling"
+    },
+    "1956_system_idea_plaque": {
+      "x": 33, "y": 60, "z": -110,
+      "description": "Wall plaque: '1956 — Bank of the Southwest linked to 1010 Garage and Mellie Esperson Building. The first intentional system connection.'"
+    },
+    "subtropolis_public_shaft_landing_plaza": {
+      "x": -12.5, "y": 64, "z": -55,
+      "description": "Beyond Main Street, 'Combined Complex Transit Hub' plaza with glass-and-steel canopy, stair down, turnstile, security guard booth"
+    },
+    "subtropolis_public_shaft_opening": {
+      "x": -12.5, "y": 58, "z": -55,
+      "description": "5x5 cross-section shaft opening at tunnel level"
+    },
+    "cheyenne_service_tunnel_terminus": {
+      "x": 40, "y": -86, "z": -134,
+      "description": "Service sub-basement at 150+ ft below grade, 6x5 cross-section, security gate, 'Service Tunnel — Cheyenne Mountain Complex — Authorized Vehicles Only' sign"
+    },
+    "tunnel_band_sign_first": {
+      "x": 11.5, "y": 61, "z": -32,
+      "description": "First 'Tunnel' backlit band sign at the first intersection south of Wells Fargo"
+    },
+    "climate_control_72F_sign": {
+      "x": 33, "y": 60, "z": -32,
+      "description": "Small sign: 'Climate Controlled — 72 °F Year-Round'"
+    },
+    "theater_district_stub_corridor": {
+      "x": 79, "y": 58, "z": -124,
+      "description": "Tier 2 signature: stub corridor with 'Tonight: Performance 7:30 PM' sign and darkened section beyond"
+    },
+    "harris_county_edge_sign": {
+      "x": 50, "y": 64, "z": -138,
+      "description": "Faded reference: 'Harris County Tunnel — 10 blocks north — not connected'"
+    },
+    "st_joseph_skywalks_edge_sign": {
+      "x": 130, "y": 64, "z": -50,
+      "description": "Faded reference: 'St. Joseph Skywalks — 6 blocks southeast — not connected'"
+    },
+    "after_hours_shutdown_scene": {
+      "x": 56, "y": 58, "z": -101,
+      "description": "Tier 3 flavor: dimmed lights, cleaning cart, security-locked elevator bank, 'Tunnel Closed 6:00 PM' sign"
+    }
+  },
+  "food_court_clusters": [
+    {
+      "name": "Esperson",
+      "address": "808 Travis",
+      "position": { "x": 56, "y": 58, "z": -55 },
+      "archetype": "long narrow corridor, single row of storefronts, white dropped ceiling, fluorescent tubes, beige terrazzo",
+      "tier": "Tier 1",
+      "build_block": "(Col 3, Row 3)",
+      "cameron_label": "C-21",
+      "above_ground_anchor": "Esperson (Art Deco twins) at (56, 72, -55)"
+    },
+    {
+      "name": "Pennzoil Place underground",
+      "address": "711 Louisiana",
+      "position": { "x": 79, "y": 58, "z": -55 },
+      "archetype": "wider node, 10-12 packed storefronts, mirrored Philip Johnson towers above, kitchen-exhaust grilles",
+      "tier": "Tier 1",
+      "build_block": "(Col 4, Row 3)",
+      "cameron_label": "D-22",
+      "above_ground_anchor": "Pennzoil Place (two mirrored trapezoids) at (79, 74, -55)"
+    },
+    {
+      "name": "1001 Fannin / Lamar Tunnel",
+      "address": "1001 Fannin",
+      "position": { "x": 33, "y": 58, "z": -10 },
+      "archetype": "dark ceiling, polished porcelain floor, frameless-glass storefronts, LED panel lighting, modern refresh",
+      "tier": "Tier 1",
+      "build_block": "(Col 2, Row 1)",
+      "cameron_label": "B-16",
+      "above_ground_anchor": "1001 Fannin (One Fannin) at (33, 76, -10)"
+    },
+    {
+      "name": "McKinney Place / 930 Main concourse",
+      "address": "930 Main",
+      "position": { "x": 10, "y": 58, "z": -82.5 },
+      "archetype": "under a parking garage, mixed retail and services, longer linear concourse",
+      "tier": "Tier 1",
+      "build_block": "(Col 1, Row 4)",
+      "cameron_label": "A-21",
+      "above_ground_anchor": "McKinney Garage (parking garage) at (10, 70, -82.5)"
+    }
+  ],
+  "above_ground_buildings": [
+    {
+      "name": "Wells Fargo Plaza",
+      "address": "1000 Louisiana",
+      "position": { "x": 10, "y": 64, "z": -10 },
+      "tower_top_y": 88,
+      "approximate_height_blocks": 24,
+      "real_height_stories": 71,
+      "role": "anchor (entry only, no food court)",
+      "tag": "[D] documented building"
+    },
+    {
+      "name": "JPMorgan Chase Tower",
+      "address": "600 Travis",
+      "position": { "x": 33, "y": 64, "z": -110 },
+      "tower_top_y": 88,
+      "approximate_height_blocks": 24,
+      "real_height_stories": 75,
+      "role": "anchor (1950s minimal corridor, Horwitz origin)",
+      "tag": "[D] documented building"
+    },
+    {
+      "name": "Pennzoil Place",
+      "address": "711 Louisiana",
+      "position": { "x": 79, "y": 64, "z": -55 },
+      "tower_top_y": 84,
+      "approximate_height_blocks": 20,
+      "real_height_stories": 36,
+      "role": "anchor (densest food court)",
+      "tag": "[D] documented building, two mirrored towers"
+    },
+    {
+      "name": "Esperson (Mellie Esperson)",
+      "address": "808 Travis / 815 Walker",
+      "position": { "x": 56, "y": 64, "z": -55 },
+      "tower_top_y": 80,
+      "approximate_height_blocks": 16,
+      "real_height_stories": 28,
+      "role": "anchor (archetype food court)",
+      "tag": "[D] documented building, Art Deco twins"
+    },
+    {
+      "name": "1001 Fannin (One Fannin)",
+      "address": "1001 Fannin",
+      "position": { "x": 33, "y": 64, "z": -10 },
+      "tower_top_y": 88,
+      "approximate_height_blocks": 24,
+      "real_height_stories": 30,
+      "role": "secondary (modern food court refresh)",
+      "tag": "[D] documented building"
+    },
+    {
+      "name": "McKinney Garage on Main",
+      "address": "930 Main",
+      "position": { "x": 10, "y": 64, "z": -82.5 },
+      "tower_top_y": 76,
+      "approximate_height_blocks": 12,
+      "real_height_stories": 6,
+      "role": "secondary (parking garage, second public entry)",
+      "tag": "[D] documented building"
+    },
+    {
+      "name": "Generic downtown towers (8-10)",
+      "address": "various, buffer blocks",
+      "position": { "x": null, "y": 64, "z": null },
+      "tower_top_y_range": [80, 84],
+      "approximate_height_blocks_range": [16, 20],
+      "role": "filler, uniform cornice line",
+      "tag": "[X] designer fills in",
+      "count": "8-10"
+    },
+    {
+      "name": "Generic parking garages (1-2)",
+      "address": "various, buffer blocks",
+      "position": { "x": null, "y": 64, "z": null },
+      "tower_top_y_range": [72, 76],
+      "approximate_height_blocks_range": [8, 12],
+      "role": "filler, parking-garage typology",
+      "tag": "[X] designer fills in",
+      "count": "1-2"
+    }
+  ],
+  "skybridge_connections": [
+    {
+      "name": "McKinney Street skybridge",
+      "street_crossed": "McKinney (E-W)",
+      "span": { "x_min": 0, "x_max": 23, "z": -66.5 },
+      "y_level": 68,
+      "connects": "McKinney Garage (south) to generic tower (north)",
+      "tag": "[D] documented skywalk"
+    },
+    {
+      "name": "Travis Street skybridge",
+      "street_crossed": "Travis (N-S)",
+      "span": { "x": 44.5, "z_min": 0, "z_max": -110 },
+      "y_level": 68,
+      "connects": "1001 Fannin (east) to JPMorgan Chase (west)",
+      "tag": "[X] generic connector"
+    },
+    {
+      "name": "Louisiana Street skybridge",
+      "street_crossed": "Louisiana (N-S)",
+      "span": { "x": 67.5, "z_min": -45, "z_max": -65 },
+      "y_level": 68,
+      "connects": "Esperson (east) to Pennzoil (west) - the most famous one",
+      "tag": "[D] documented skywalk"
+    },
+    {
+      "name": "Walker Street skybridge",
+      "street_crossed": "Walker (N-S)",
+      "span": { "x": 90.5, "z_min": -45, "z_max": -65 },
+      "y_level": 68,
+      "connects": "Esperson (east) to generic connector (west)",
+      "tag": "[X] generic connector"
+    }
+  ],
+  "connections_to_other_builds": {
+    "public_shaft_from_subtropolis": {
+      "type": "public_shaft",
+      "tag": "[X] project fiction",
+      "from": { "x": -12.5, "y": 64, "z": -55, "description": "Combined Complex Transit Hub plaza, beyond Main Street" },
+      "to": { "x": null, "y": null, "z": null, "description": "SubTropolis grid (north of the river)" },
+      "cross_section": "5x5 blocks",
+      "travel_time_minutes": 10,
+      "in_world_signage": "Combined Complex Transit Hub - SubTropolis Public Access. SubTropolis is a 270-million-year-old limestone mine north of the river; the public shaft connects downtown to the SubTropolis grid. Travel time: ~10 minutes by elevator."
+    },
+    "service_tunnel_from_cheyenne_mountain": {
+      "type": "service_tunnel",
+      "tag": "[X] project fiction",
+      "from": { "x": 40, "y": -86, "z": -134, "description": "Service sub-basement at the north edge of the city" },
+      "to": { "x": null, "y": null, "z": null, "description": "Cheyenne Mountain Complex" },
+      "cross_section": "6x5 blocks",
+      "depth_below_grade_blocks": 150,
+      "in_world_signage": "Service Tunnel - Cheyenne Mountain Complex - Authorized Vehicles Only",
+      "note": "Does not connect to the Houston tunnel system. Runs at 150+ ft depth, separate from Houston tunnels at 20 ft depth."
+    }
+  },
+  "named_segments_represented": [
+    { "name": "Downtown Tunnel Loop", "in_build_location": "spans the center of the build (Q2/Q3 boundary, rows 3-4)", "status": "represented" },
+    { "name": "W. Walker Tunnel", "in_build_location": "west edge of tunnel sample, around col 4 row 1-2", "status": "represented" },
+    { "name": "N. Louisiana Tunnel", "in_build_location": "col 4, rows 3-4, around Pennzoil Place", "status": "represented" },
+    { "name": "N. Travis Tunnel", "in_build_location": "col 2-3, rows 4-6, around 1950s corridor and JPMorgan Chase basement", "status": "represented" },
+    { "name": "Lamar Tunnel", "in_build_location": "south edge, around 1001 Fannin food court", "status": "represented" },
+    { "name": "E. McKinney Tunnel", "in_build_location": "col 1, rows 4-5, around McKinney Place food court", "status": "represented" }
+  ],
+  "binding_decisions_respected": [
+    { "id": "D1", "topic": "Sample footprint", "decision": "6 blocks N-S x 4 blocks E-W = 24 compressed city blocks (~92m x 138m at 4:1 linear compression)" },
+    { "id": "D1", "topic": "Long-axis orientation", "decision": "N-S along Main / Fannin / Travis / Louisiana / Walker / Capitol. E-W cross streets: Rusk, McKinney, Dallas, Lamar" },
+    { "id": "D1", "topic": "Compression", "decision": "4:1 on city-block footprint, 1:1 on corridor cross-section (3-block-wide interior), 1:1 vertical, 1:4 by linear length" },
+    { "id": "D1", "topic": "Named-segment preservation", "decision": "5 of 6 documented named segments (all 6 represented in this build, exceeding the minimum)" },
+    { "id": "D1", "topic": "Effective player time", "decision": "2-3 minutes from Wells Fargo entry to farthest food court (McKinney Place at row 4)" },
+    { "id": "D2", "topic": "Tier 1 must-haves", "decision": "Descent from 1970s lobby; 4 food courts (Esperson/Pennzoil/1001 Fannin/McKinney); Wells Fargo + McKinney direct entries; standard corridor; skybridge" },
+    { "id": "D2", "topic": "Tier 2 signature", "decision": "Tunnel backlit wayfinding band; floodgate + Allison marker; 1950s minimal corridor (in JPMorgan Chase basement); Theater District disconnected stub" },
+    { "id": "D2", "topic": "Tier 3 flavor", "decision": "After-hours shutdown scene; 95+ blocks / 6 mi / 200,000 daily users interpretive panel at Wells Fargo entry" },
+    { "id": "D2", "topic": "Cuts", "decision": "Harris County as full build (one sign); St. Joseph skywalks as full build (one sign); full multi-tenant directory (10-12 picks); separate lunch rush; flooded corridor scene; Esperson tower exteriors in full detail" },
+    { "id": "D3", "topic": "Block count", "decision": "95+ blocks (per downtownhouston.org phrasing), the '+' is honored" },
+    { "id": "D3", "topic": "Tunnel length", "decision": "6 mi (not 7)" },
+    { "id": "D3", "topic": "Daily users", "decision": "200,000 (not 150,000 or 250,000+)" },
+    { "id": "D3", "topic": "Founding", "decision": "1930s, dual origin (Sterling 1931 + Horwitz 1935) - one combined plaque at Wells Fargo entry" },
+    { "id": "D3", "topic": "Depth", "decision": "20 ft (6 blocks below grade at 1:1 vertical)" },
+    { "id": "D3", "topic": "Climate", "decision": "72 F year-round inside the tunnel" },
+    { "id": "D3", "topic": "Hours", "decision": "Weekday 6 a.m. - 6 p.m." },
+    { "id": "D4", "topic": "Master plan legend", "decision": "[D] documented / [I] inferred from archetype / [X] invented. Standard of invention: Esperson bar - if a former downtown Houston office worker walked in, they would not laugh." },
+    { "id": "D5", "topic": "Prominent easter eggs", "decision": "200,000 daily users main entry sign at Wells Fargo; 95+ / 6 mi / 20 ft interpretive panel; Wells Fargo direct-access sign; Esperson food court signage; Tunnel backlit wayfinding bands at every intersection; T-marker entrance signs at both public entries" },
+    { "id": "D5", "topic": "Subtle / faded", "decision": "1930s dual-origin plaque at Wells Fargo; Hines 27-building marker at Pennzoil; Sandra Lord plaque at Esperson; floodgate + Allison marker at Wells Fargo; 72 F climate sign; Theater District performance-night sign; Harris County and St. Joseph edge signs; Vacant / For Lease bays" },
+    { "id": "D5", "topic": "Out", "decision": "No subway / transit imagery; no mall contamination; no generic underground / dungeon; no fictional lore not in documented history; no NYC / London / Tokyo / Montreal recognition" },
+    { "id": "D6", "topic": "Above-ground footprint", "decision": "6 x 6 = 36 compressed blocks (24 tunnel sample + 12 buffer), 138m x 138m" },
+    { "id": "D6", "topic": "Named buildings", "decision": "Wells Fargo Plaza; JPMorgan Chase Tower; Pennzoil Place; Esperson. Plus 1001 Fannin and McKinney Garage as secondary." },
+    { "id": "D6", "topic": "Generic towers", "decision": "8-10 generic downtown towers, 15-20 stories each (y = 64 to 80-84), uniform cornice line" },
+    { "id": "D6", "topic": "Parking garages", "decision": "1-2 additional, plus the named McKinney Garage" },
+    { "id": "D6", "topic": "Street grid", "decision": "Houston CBD names: Main / Fannin / Travis / Louisiana / Walker / Capitol (N-S); Lamar / Dallas / McKinney / Rusk (E-W)" },
+    { "id": "D6", "topic": "Skywalk network", "decision": "4 skybridges, one per quadrant crossing over a named street" },
+    { "id": "D7", "topic": "Above-ground city is primary", "decision": "The city is the primary layer of the Houston site; the tunnel system is a feature of the city" },
+    { "id": "D7", "topic": "SubTropolis public shaft", "decision": "[X] project fiction. Lands at 'Combined Complex Transit Hub' plaza at the east edge of the above-ground city (beyond Main Street, at x = -12.5, z = -55). Cross-section 5x5 blocks. Does not connect to Houston tunnels." },
+    { "id": "D7", "topic": "Cheyenne Mountain service tunnel", "decision": "[X] project fiction. Runs under the city at 150+ ft depth (y = -86), separate from Houston tunnels at 20 ft depth. Cross-section 6x5 blocks. Houston-side terminus at the north edge (x = 40, z = -134). Does not connect to Houston tunnels." },
+    { "id": "D7", "topic": "Combined-complex coordination", "decision": "SubTropolis public shaft, Cheyenne service tunnel, and Houston tunnels are physically separate. The above-ground city is sized to receive the public-shaft transit hub." }
+  ],
+  "build_block_legend": {
+    "naming_convention": "Cameron 2015 grid labels (A-15 through P-29)",
+    "letter_axis": "south-to-north (A=South, B=south+1, ... D=North in 4-col sample)",
+    "number_axis": "east-to-west (15=East, 16=East+1, ... 28=West in 4-col sample)",
+    "purpose": "build-block identifiers in master plan, downstream contractor, and any in-build signage"
+  }
+}

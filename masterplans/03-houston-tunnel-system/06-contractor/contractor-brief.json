@@ -1,0 +1,1210 @@
+{
+  "build_name": "Houston Tunnel System",
+  "build_id": "03-houston-tunnel-system",
+  "version": "1.0",
+  "world_origin": {
+    "x": 0,
+    "y": 64,
+    "z": 0,
+    "description": "Wells Fargo Plaza street entrance, on the south face of the Wells Fargo tower, on the Louisiana Street sidewalk. T-marker plaque is at this coordinate."
+  },
+  "compass_orientation": "north=-z, east=+x, up=+y",
+  "scale": {
+    "horizontal_compression": "4:1 on city block footprint (real 80m x 80m block compressed to 20m x 20m)",
+    "vertical_compression": "1:1 (tunnel sits 20 ft below street level)",
+    "linear_length_compression": "1:4 (real 6 mi of corridor compressed to ~1.5 mi of corridor in the sample)",
+    "tunnel_depth_blocks": 6,
+    "tunnel_corridor_width_blocks": 3,
+    "tunnel_corridor_height_blocks": 3,
+    "tunnel_food_court_width_blocks": 4,
+    "tunnel_food_court_height_blocks": 4,
+    "compressed_block_size_m": 20,
+    "street_width_m": 3,
+    "block_unit_m": 23
+  },
+  "city_block_count": {
+    "tunnel_sample": 24,
+    "above_ground_total": 36,
+    "above_ground_buffer": 12
+  },
+  "build_extent": {
+    "above_ground": {
+      "x_min": 0,
+      "x_max": 138,
+      "z_min": -138,
+      "z_max": 0
+    },
+    "tunnel_sample": {
+      "x_min": 0,
+      "x_max": 92,
+      "z_min": -138,
+      "z_max": 0
+    }
+  },
+  "y_levels": {
+    "street_level": 64,
+    "underside_of_street": 63,
+    "tunnel_ceiling_structural": 62,
+    "tunnel_ceiling_dropped_corridor": 61,
+    "tunnel_ceiling_food_court_open": 62,
+    "tunnel_floor": 58,
+    "skybridge_level": 68,
+    "generic_tower_cornice_min": 80,
+    "generic_tower_cornice_max": 84,
+    "tower_top_wells_fargo": 88,
+    "tower_top_jpmorgan_chase": 88,
+    "tower_top_pennzoil": 84,
+    "tower_top_esperson": 80,
+    "tower_top_1001_fannin": 88,
+    "tower_top_mckinney_garage": 76,
+    "cheyenne_service_tunnel_y": -86
+  },
+  "block_palette": {
+    "tower_shell_1980s": {
+      "primary": "quartz_block",
+      "secondary": "light_gray_concrete"
+    },
+    "tower_shell_1990s_2020s": {
+      "primary": "white_concrete",
+      "secondary": "gray_concrete"
+    },
+    "tower_window": {
+      "primary": "light_gray_stained_glass_pane",
+      "secondary": "gray_stained_glass_pane"
+    },
+    "pennzoil_mirrored_glass": {
+      "primary": "black_stained_glass_pane",
+      "secondary": "gray_stained_glass_pane"
+    },
+    "street_surface": {
+      "primary": "gray_concrete",
+      "secondary": "stone_bricks"
+    },
+    "sidewalk": {
+      "primary": "smooth_stone_slab",
+      "secondary": "stone_bricks"
+    },
+    "curb": {
+      "primary": "stone_brick_stairs",
+      "secondary": "stone_brick_slab"
+    },
+    "plaza_paver": {
+      "primary": "bricks",
+      "secondary": "polished_andesite"
+    },
+    "parking_garage_exterior": {
+      "primary": "gray_concrete",
+      "secondary": "stone_bricks"
+    },
+    "tunnel_wall_1970s_default": {
+      "primary": "white_concrete",
+      "secondary": "light_gray_concrete"
+    },
+    "tunnel_wall_1950s_minimal": {
+      "primary": "smooth_stone",
+      "secondary": "stone_bricks"
+    },
+    "tunnel_wall_1990s_refresh": {
+      "primary": "light_gray_concrete"
+    },
+    "tunnel_wall_2010s_led": {
+      "primary": "gray_concrete",
+      "secondary": "black_concrete"
+    },
+    "tunnel_floor_1970s_vct": {
+      "primary": "white_wool",
+      "secondary": "polished_andesite"
+    },
+    "tunnel_floor_1990s_vct": {
+      "primary": "gray_wool",
+      "secondary": "smooth_stone_slab"
+    },
+    "tunnel_floor_2010s_porcelain": {
+      "primary": "gray_wool",
+      "secondary": "black_concrete"
+    },
+    "tunnel_floor_1950s_bare_concrete": {
+      "primary": "smooth_stone_slab"
+    },
+    "tunnel_floor_1970s_terrazzo": {
+      "primary": "polished_andesite",
+      "secondary": "smooth_stone_slab"
+    },
+    "ceiling_dropped_1970s": {
+      "primary": "smooth_stone_slab",
+      "secondary": "quartz_slab"
+    },
+    "ceiling_dropped_1990s": {
+      "primary": "quartz_slab"
+    },
+    "ceiling_dropped_2010s": {
+      "primary": "black_concrete",
+      "secondary": "gray_concrete"
+    },
+    "lighting_1970s_fluorescent": {
+      "primary": "sea_lantern",
+      "secondary": "redstone_lamp"
+    },
+    "lighting_1990s_led": {
+      "primary": "redstone_lamp"
+    },
+    "lighting_2010s_led_panel": {
+      "primary": "redstone_lamp",
+      "secondary": "end_rod"
+    },
+    "lighting_1950s_tube": {
+      "primary": "redstone_lamp"
+    },
+    "tenant_storefront_frame": {
+      "primary": "iron_bars",
+      "secondary": "light_gray_concrete"
+    },
+    "tenant_storefront_glass": {
+      "primary": "glass_pane",
+      "secondary": "white_stained_glass_pane"
+    },
+    "tenant_awning_chick_fil_a": {
+      "primary": "white_wool"
+    },
+    "tenant_awning_potbelly": {
+      "primary": "orange_wool"
+    },
+    "tenant_counter": {
+      "primary": "quartz_slab",
+      "secondary": "iron_block"
+    },
+    "tenant_menu_board": {
+      "primary": "oak_sign",
+      "secondary": "item_frame"
+    },
+    "communal_table": {
+      "primary": "dark_oak_slab",
+      "secondary": "dark_oak_fence"
+    },
+    "communal_chair": {
+      "primary": "oak_stairs"
+    },
+    "restroom_wall": {
+      "primary": "quartz_block",
+      "secondary": "white_concrete"
+    },
+    "restroom_floor": {
+      "primary": "red_terracotta",
+      "secondary": "brown_terracotta"
+    },
+    "restroom_partition": {
+      "primary": "iron_bars",
+      "secondary": "white_concrete"
+    },
+    "sump_pump_room": {
+      "primary": "light_gray_concrete",
+      "secondary": "gray_concrete"
+    },
+    "floodgate_wells_fargo": {
+      "primary": "iron_door",
+      "secondary": "iron_block"
+    },
+    "floodgate_mckinney": {
+      "primary": "iron_door",
+      "secondary": "iron_block"
+    },
+    "t_marker": {
+      "post": "oak_fence",
+      "sign": "oak_sign",
+      "inlay": "oak_pressure_plate",
+      "background": "blue_concrete",
+      "circle": "light_blue_concrete",
+      "letter": "white_concrete"
+    },
+    "skybridge_wall": {
+      "primary": "glass_pane",
+      "secondary": "white_stained_glass_pane"
+    },
+    "skybridge_frame": {
+      "primary": "iron_bars",
+      "secondary": "light_gray_concrete"
+    },
+    "skybridge_floor": {
+      "primary": "white_wool",
+      "secondary": "smooth_stone_slab"
+    },
+    "skybridge_ceiling": {
+      "primary": "smooth_stone_slab",
+      "secondary": "quartz_slab"
+    },
+    "skybridge_daylight": {
+      "primary": "daylight_detector"
+    },
+    "lobby_floor": {
+      "primary": "polished_andesite",
+      "secondary": "polished_diorite"
+    },
+    "lobby_column": {
+      "primary": "quartz_pillar",
+      "secondary": "polished_andesite"
+    },
+    "lobby_ceiling": {
+      "primary": "quartz_slab",
+      "secondary": "smooth_stone_slab"
+    },
+    "elevator_bank": {
+      "primary": "iron_block",
+      "secondary": "iron_door"
+    },
+    "interior_stair": {
+      "primary": "polished_andesite_stairs",
+      "secondary": "smooth_stone_slab"
+    },
+    "escalator": {
+      "primary": "light_gray_concrete",
+      "secondary": "smooth_stone_slab",
+      "handrail_lighting": "redstone_lamp"
+    },
+    "revolving_door": {
+      "primary": "glass_pane",
+      "secondary": "iron_bars"
+    },
+    "security_turnstile": {
+      "primary": "iron_bars",
+      "secondary": "light_gray_concrete"
+    },
+    "building_directory": {
+      "primary": "item_frame",
+      "secondary": "oak_sign",
+      "wall": "polished_andesite"
+    },
+    "tunnel_arrow_sign": {
+      "primary": "blue_concrete",
+      "secondary": "white_concrete"
+    },
+    "wayfinding_band": {
+      "background": "blue_terracotta",
+      "letterforms": "white_concrete",
+      "backlight": "redstone_lamp"
+    },
+    "food_court_backlit_sign": {
+      "background": "blue_terracotta",
+      "letterforms": "white_concrete",
+      "backlight": "redstone_lamp"
+    },
+    "exit_sign": {
+      "primary": "lime_concrete",
+      "secondary": "white_concrete",
+      "backlight": "redstone_lamp"
+    },
+    "fire_alarm": {
+      "primary": "red_concrete",
+      "secondary": "oak_sign"
+    },
+    "cleaning_cart": {
+      "primary": "iron_bars",
+      "secondary": "white_wool",
+      "bucket": "oak_trapdoor"
+    },
+    "origin_plaque_base": {
+      "primary": "polished_andesite",
+      "secondary": "oak_sign"
+    },
+    "easter_egg_signs": {
+      "primary": "oak_sign"
+    },
+    "suspended_sign_chain": {
+      "primary": "chain"
+    },
+    "hvac_grille": {
+      "primary": "iron_trapdoor",
+      "secondary": "iron_bars"
+    },
+    "hvac_duct": {
+      "primary": "iron_block"
+    },
+    "sprinkler_riser": {
+      "primary": "red_concrete"
+    },
+    "tree_palm": {
+      "log": "jungle_log",
+      "leaves": "jungle_leaves"
+    },
+    "tree_live_oak": {
+      "log": "dark_oak_log",
+      "leaves": "dark_oak_leaves"
+    },
+    "streetlight": {
+      "pole": "iron_fence",
+      "lamp": "redstone_lamp"
+    },
+    "fire_hydrant": {
+      "primary": "cauldron"
+    },
+    "trash_can": {
+      "primary": "iron_bars"
+    },
+    "parking_meter": {
+      "primary": "item_frame",
+      "secondary": "oak_fence"
+    },
+    "plaza_edge_wall": {
+      "primary": "stone_brick_wall"
+    },
+    "atmospheric_water_stained_tile": {
+      "primary": "light_gray_wool",
+      "secondary": "gray_wool"
+    },
+    "back_of_house_door": {
+      "primary": "iron_door"
+    }
+  },
+  "buildings": [
+    {
+      "id": "wells_fargo_plaza",
+      "name": "Wells Fargo Plaza (1000 Louisiana)",
+      "type": "named_anchor",
+      "is_above_ground": true,
+      "is_named_secondary": false,
+      "position": { "x": 10, "y": 64, "z": -10 },
+      "tower_top_y": 88,
+      "height_blocks": 24,
+      "real_height_stories": 71,
+      "footprint_blocks": { "x": 20, "z": 20 },
+      "build_block": "A-15",
+      "cameron_label": "A-15",
+      "block_spec": {
+        "shell": "quartz_block",
+        "curtain_wall": "light_gray_stained_glass_pane",
+        "curtain_wall_grid": "3x5",
+        "base": "iron_block",
+        "plinth": "polished_andesite",
+        "cornice": "quartz_block",
+        "lobby_floor": "polished_andesite",
+        "lobby_columns": "quartz_pillar",
+        "lobby_ceiling": "quartz_slab"
+      },
+      "tier": 1,
+      "tag": "[D] documented building, direct street access, anchor only (no food court)",
+      "estimated_block_count": 5500,
+      "has_direct_street_entry": true,
+      "has_food_court": false
+    },
+    {
+      "id": "jpmorgan_chase_tower",
+      "name": "JPMorgan Chase Tower (600 Travis)",
+      "type": "named_anchor",
+      "is_above_ground": true,
+      "is_named_secondary": false,
+      "position": { "x": 33, "y": 64, "z": -110 },
+      "tower_top_y": 88,
+      "height_blocks": 24,
+      "real_height_stories": 75,
+      "footprint_blocks": { "x": 20, "z": 20 },
+      "build_block": "B-26",
+      "cameron_label": "B-26",
+      "block_spec": {
+        "shell": "white_concrete",
+        "curtain_wall": "gray_stained_glass_pane",
+        "tapered_roofline": "1-block setback every 5 stories for top 20 stories",
+        "plinth": "polished_andesite",
+        "lobby_floor": "polished_andesite",
+        "lobby_columns": "quartz_pillar"
+      },
+      "tier": 1,
+      "tag": "[D] documented building, 1935 Will Horwitz Uptown Theater site, 1950s minimal corridor in basement",
+      "estimated_block_count": 6000,
+      "has_direct_street_entry": false,
+      "has_food_court": false
+    },
+    {
+      "id": "pennzoil_place",
+      "name": "Pennzoil Place (711 Louisiana)",
+      "type": "named_anchor",
+      "is_above_ground": true,
+      "is_named_secondary": false,
+      "position": { "x": 79, "y": 64, "z": -55 },
+      "tower_top_y": 84,
+      "height_blocks": 20,
+      "real_height_stories": 36,
+      "footprint_blocks": { "x": 20, "z": 20, "towers": 2, "gap_blocks": 1 },
+      "build_block": "D-22",
+      "cameron_label": "D-22",
+      "block_spec": {
+        "shell": "black_concrete",
+        "curtain_wall": "black_stained_glass_pane",
+        "trapezoid_silhouette": "1-block setback every 4 stories",
+        "lobby_bridge": "glass_pane corridor at y=68"
+      },
+      "tier": 1,
+      "tag": "[D] documented building, two mirrored Philip Johnson trapezoidal towers, densest food court underground",
+      "estimated_block_count": 3500,
+      "has_direct_street_entry": false,
+      "has_food_court": true
+    },
+    {
+      "id": "esperson_808_travis",
+      "name": "Esperson (808 Travis)",
+      "type": "named_anchor",
+      "is_above_ground": true,
+      "is_named_secondary": false,
+      "position": { "x": 56, "y": 64, "z": -55 },
+      "tower_top_y": 80,
+      "height_blocks": 16,
+      "real_height_stories": 28,
+      "footprint_blocks": { "x": 15, "z": 18 },
+      "build_block": "C-21",
+      "cameron_label": "C-21",
+      "block_spec": {
+        "shell": "quartz_block",
+        "art_deco_ornamentation": "smooth_quartz_stairs",
+        "window_grid": "gray_stained_glass_pane",
+        "vertical_pilaster": "quartz_pillar",
+        "stepped_parapets": "1-block setbacks at roofline",
+        "recessed_entrance": "smooth_quartz_stairs"
+      },
+      "tier": 1,
+      "tag": "[D] documented building, Niels Esperson Art Deco twins, archetype food court underneath",
+      "estimated_block_count": 3000,
+      "has_direct_street_entry": false,
+      "has_food_court": true
+    },
+    {
+      "id": "esperson_815_walker",
+      "name": "Esperson (815 Walker)",
+      "type": "named_anchor",
+      "is_above_ground": true,
+      "is_named_secondary": false,
+      "position": { "x": 56, "y": 64, "z": -78 },
+      "tower_top_y": 80,
+      "height_blocks": 16,
+      "real_height_stories": 28,
+      "footprint_blocks": { "x": 15, "z": 18 },
+      "build_block": "C-23",
+      "cameron_label": "C-23",
+      "block_spec": {
+        "shell": "quartz_block",
+        "art_deco_ornamentation": "smooth_quartz_stairs",
+        "window_grid": "gray_stained_glass_pane",
+        "vertical_pilaster": "quartz_pillar",
+        "stepped_parapets": "1-block setbacks at roofline"
+      },
+      "tier": 1,
+      "tag": "[D] documented building, Niels Esperson Art Deco twins, secondary tower",
+      "estimated_block_count": 1500,
+      "has_direct_street_entry": false,
+      "has_food_court": false
+    },
+    {
+      "id": "1001_fannin",
+      "name": "1001 Fannin (One Fannin)",
+      "type": "named_secondary",
+      "is_above_ground": true,
+      "is_named_secondary": true,
+      "position": { "x": 33, "y": 64, "z": -10 },
+      "tower_top_y": 88,
+      "height_blocks": 24,
+      "real_height_stories": 30,
+      "footprint_blocks": { "x": 20, "z": 20 },
+      "build_block": "B-16",
+      "cameron_label": "B-16",
+      "block_spec": {
+        "shell": "white_concrete",
+        "curtain_wall": "light_gray_stained_glass_pane"
+      },
+      "tier": 1,
+      "tag": "[D] documented building, modern food court refresh (Lamar Tunnel)",
+      "estimated_block_count": 4000,
+      "has_direct_street_entry": false,
+      "has_food_court": true
+    },
+    {
+      "id": "mckinney_garage",
+      "name": "McKinney Garage on Main (930 Main)",
+      "type": "named_secondary",
+      "is_above_ground": true,
+      "is_named_secondary": true,
+      "position": { "x": 10, "y": 64, "z": -82.5 },
+      "tower_top_y": 76,
+      "height_blocks": 12,
+      "real_height_stories": 6,
+      "footprint_blocks": { "x": 20, "z": 20 },
+      "build_block": "A-21",
+      "cameron_label": "A-21",
+      "block_spec": {
+        "shell": "gray_concrete",
+        "open_deck_parking": true,
+        "lane_lines": "yellow_concrete",
+        "perimeter_railings": "iron_bars",
+        "ground_floor_concourse": "light_blue_concrete"
+      },
+      "tier": 1,
+      "tag": "[D] documented parking garage, second direct street entry, public-entry food court underneath",
+      "estimated_block_count": 2500,
+      "has_direct_street_entry": true,
+      "has_food_court": true
+    },
+    {
+      "id": "generic_downtown_tower",
+      "name": "Generic Downtown Tower (x8-10)",
+      "type": "generic_filler",
+      "is_above_ground": true,
+      "is_named_secondary": false,
+      "position": { "x": null, "y": 64, "z": null },
+      "tower_top_y_range": [80, 84],
+      "height_blocks_range": [16, 20],
+      "footprint_blocks": { "x": 20, "z": 20 },
+      "build_block": "various (buffer blocks)",
+      "cameron_label": "various",
+      "block_spec": {
+        "shell": "white_concrete",
+        "curtain_wall": "light_gray_stained_glass_pane",
+        "curtain_wall_grid": "3x5",
+        "ground_floor": "gray_concrete parking-garage plinth",
+        "roof": "gray_concrete",
+        "mechanical_penthouse": "iron_block",
+        "cornice": "quartz_block"
+      },
+      "tier": 2,
+      "tag": "[X] designer fills in, uniform cornice line, no tunnel access",
+      "estimated_block_count_min": 12000,
+      "estimated_block_count_max": 18000,
+      "count": "8-10",
+      "has_direct_street_entry": false,
+      "has_food_court": false
+    },
+    {
+      "id": "generic_parking_garage",
+      "name": "Generic Parking Garage (x1-2)",
+      "type": "generic_filler",
+      "is_above_ground": true,
+      "is_named_secondary": false,
+      "position": { "x": null, "y": 64, "z": null },
+      "tower_top_y_range": [72, 76],
+      "height_blocks_range": [8, 12],
+      "footprint_blocks": { "x": 20, "z": 20 },
+      "build_block": "various (buffer blocks)",
+      "cameron_label": "various",
+      "block_spec": {
+        "shell": "gray_concrete",
+        "open_deck_parking": true,
+        "lane_lines": "yellow_concrete",
+        "perimeter_railings": "iron_bars"
+      },
+      "tier": 2,
+      "tag": "[X] designer fills in",
+      "estimated_block_count": 4000,
+      "count": "1-2",
+      "has_direct_street_entry": false,
+      "has_food_court": false
+    }
+  ],
+  "food_courts": [
+    {
+      "id": "esperson",
+      "name": "Esperson Food Court",
+      "address": "808 Travis",
+      "signature": true,
+      "position": { "x": 56, "y": 58, "z": -55 },
+      "tier": "Tier 1",
+      "build_block": "C-21",
+      "cameron_label": "C-21",
+      "archetype": "long narrow corridor, single row of storefronts, white dropped ceiling, fluorescent tubes, beige terrazzo (THE ARCHETYPE)",
+      "dimensions": {
+        "length_blocks": 20,
+        "width_blocks": 5,
+        "height_blocks": 4
+      },
+      "block_spec": {
+        "walls": "white_concrete",
+        "accent_stripe": "light_gray_concrete",
+        "floor": "polished_andesite",
+        "floor_brass_strip": "smooth_stone_slab",
+        "ceiling": "smooth_stone_slab",
+        "lighting": "sea_lantern every 3 blocks",
+        "light_level": 12,
+        "kitchen_exhaust_grilles": "iron_trapdoor every 4 blocks",
+        "communal_tables": "dark_oak_slab with dark_oak_fence base"
+      },
+      "tenant_count": 15,
+      "named_tenants_count": 13,
+      "vacant_bays_count": 2,
+      "named_tenants": [
+        "Chick-fil-A",
+        "Mediterranean Grill House",
+        "Mona",
+        "Farro",
+        "Brown Bag Deli",
+        "Midtown Dentistry",
+        "Downtown Vision Source",
+        "La Taquiza",
+        "Hair Cutters",
+        "Schlotzsky's",
+        "Seaside Poke",
+        "Flip n Patties",
+        "Boomtown Coffee"
+      ],
+      "estimated_block_count": 3500,
+      "above_ground_anchor": "Esperson (Art Deco twins) at (56, 64, -55)"
+    },
+    {
+      "id": "pennzoil_place",
+      "name": "Pennzoil Place Underground",
+      "address": "711 Louisiana",
+      "signature": true,
+      "position": { "x": 79, "y": 58, "z": -55 },
+      "tier": "Tier 1",
+      "build_block": "D-22",
+      "cameron_label": "D-22",
+      "archetype": "wider, more congested food court, mirrored Philip Johnson towers above, kitchen-exhaust grilles (DENSEST)",
+      "dimensions": {
+        "length_blocks": 25,
+        "width_blocks": 7,
+        "height_blocks": 4
+      },
+      "block_spec": {
+        "walls": "white_concrete",
+        "floor": "polished_andesite with gray_wool patches (2010s refresh on west half)",
+        "ceiling": "smooth_stone_slab (east half) + black_concrete (west half) [time-staggered built-in]",
+        "lighting": "sea_lantern every 3 blocks",
+        "light_level": 12
+      },
+      "tenant_count": 12,
+      "named_tenants_count": 12,
+      "vacant_bays_count": 0,
+      "named_tenants": [
+        "Chick-fil-A (smaller)",
+        "Michael's Cookie Jar",
+        "Bodard Express",
+        "Which Wich",
+        "Paradise Gifts",
+        "Murphy's Deli",
+        "Salata",
+        "Otto's BBQ",
+        "Uncle Sharkii Poke Bar",
+        "Treebeards",
+        "Tunnel Newstand",
+        "Starbucks (1100 Louisiana)"
+      ],
+      "estimated_block_count": 3000,
+      "above_ground_anchor": "Pennzoil Place (two mirrored trapezoids) at (79, 64, -55)"
+    },
+    {
+      "id": "1001_fannin_lamar",
+      "name": "1001 Fannin / Lamar Tunnel Food Court",
+      "address": "1001 Fannin",
+      "signature": true,
+      "position": { "x": 33, "y": 58, "z": -10 },
+      "tier": "Tier 1",
+      "build_block": "B-16",
+      "cameron_label": "B-16",
+      "archetype": "dark ceiling, polished porcelain floor, frameless-glass storefronts, LED panel lighting (MODERN REFRESH)",
+      "dimensions": {
+        "length_blocks": 20,
+        "width_blocks": 5,
+        "height_blocks": 4
+      },
+      "block_spec": {
+        "walls": "gray_concrete with black_concrete base",
+        "floor": "gray_wool with black_concrete border",
+        "ceiling": "black_concrete",
+        "lighting": "end_rod every 4 blocks + redstone_lamp every 6 blocks",
+        "light_level": 13
+      },
+      "tenant_count": 12,
+      "named_tenants_count": 10,
+      "vacant_bays_count": 2,
+      "named_tenants": [
+        "Charlie's BBQ & Hamburgers",
+        "Blackwater Coffee Roasters",
+        "Baoz Dumplings + Boba",
+        "Lenny's Grill & Subs",
+        "Addict Tea Cafe",
+        "Glamours Variety",
+        "Red's Barber & Style Shop",
+        "811 Fitness",
+        "Boost Mobile / telecom",
+        "Vacant / For Lease"
+      ],
+      "estimated_block_count": 2800,
+      "above_ground_anchor": "1001 Fannin (One Fannin) at (33, 64, -10)"
+    },
+    {
+      "id": "mckinney_place",
+      "name": "McKinney Place / 930 Main Concourse",
+      "address": "930 Main",
+      "signature": true,
+      "position": { "x": 10, "y": 58, "z": -82.5 },
+      "tier": "Tier 1",
+      "build_block": "A-21",
+      "cameron_label": "A-21",
+      "archetype": "under parking garage, mixed retail and services, longer linear concourse (PUBLIC-ENTRY FOOD COURT)",
+      "dimensions": {
+        "length_blocks": 25,
+        "width_blocks": 5,
+        "height_blocks": 4
+      },
+      "block_spec": {
+        "walls": "light_gray_concrete (1990s refresh)",
+        "floor": "gray_wool with polished_andesite border",
+        "ceiling": "quartz_slab",
+        "lighting": "redstone_lamp every 5 blocks",
+        "light_level": 12
+      },
+      "tenant_count": 16,
+      "named_tenants_count": 15,
+      "vacant_bays_count": 2,
+      "named_tenants": [
+        "Deli Deluxe",
+        "Sparkle Dry Cleaners",
+        "Crest Printing",
+        "Shipley's Do-nuts",
+        "Behold the Beauty",
+        "Renato Jewelers",
+        "Saul Hair Studio",
+        "Star Chef",
+        "Taka Sushi",
+        "Top Taste Asian",
+        "Mayuri Express",
+        "Dr. Brian Clemons Chiropractor",
+        "Cassidy's Mesquite Chicken",
+        "Smoothie Factory",
+        "Platinum Parking office"
+      ],
+      "estimated_block_count": 3200,
+      "above_ground_anchor": "McKinney Garage (parking garage) at (10, 64, -82.5)"
+    }
+  ],
+  "skybridges": [
+    {
+      "id": "mckinney_street_skybridge",
+      "name": "McKinney Street Skybridge (canonical reference)",
+      "street_crossed": "McKinney (E-W)",
+      "span": { "x_min": 0, "x_max": 23, "z": -66.5 },
+      "y_level": 68,
+      "length_blocks": 6,
+      "width_blocks": 1,
+      "height_blocks": 2,
+      "connects": "McKinney Garage (south) to generic tower (north)",
+      "block_spec": {
+        "walls": "glass_pane + iron_bars mullions",
+        "frame": "iron_bars",
+        "corners": "light_gray_concrete",
+        "floor": "white_wool on smooth_stone_slab",
+        "ceiling": "quartz_slab",
+        "lighting": "redstone_lamp every 4 blocks + daylight_detector",
+        "light_level": 15
+      },
+      "tag": "[D] documented skywalk"
+    },
+    {
+      "id": "travis_street_skybridge",
+      "name": "Travis Street Skybridge",
+      "street_crossed": "Travis (N-S)",
+      "span": { "x": 44.5, "z_min": 0, "z_max": -110 },
+      "y_level": 68,
+      "length_blocks": 5,
+      "width_blocks": 1,
+      "height_blocks": 2,
+      "connects": "1001 Fannin (east) to JPMorgan Chase (west)",
+      "block_spec": {
+        "walls": "glass_pane + iron_bars mullions",
+        "frame": "iron_bars",
+        "corners": "light_gray_concrete",
+        "floor": "white_wool on smooth_stone_slab",
+        "ceiling": "quartz_slab",
+        "lighting": "redstone_lamp every 4 blocks + daylight_detector"
+      },
+      "tag": "[X] generic connector"
+    },
+    {
+      "id": "louisiana_street_skybridge",
+      "name": "Louisiana Street Skybridge (most famous)",
+      "street_crossed": "Louisiana (N-S)",
+      "span": { "x": 67.5, "z_min": -45, "z_max": -65 },
+      "y_level": 68,
+      "length_blocks": 7,
+      "width_blocks": 1,
+      "height_blocks": 2,
+      "connects": "Esperson (east) to Pennzoil (west)",
+      "block_spec": {
+        "walls": "glass_pane + iron_bars mullions",
+        "frame": "iron_bars",
+        "corners": "light_gray_concrete",
+        "floor": "white_wool on smooth_stone_slab",
+        "ceiling": "quartz_slab",
+        "lighting": "redstone_lamp every 4 blocks + daylight_detector"
+      },
+      "tag": "[D] documented skywalk"
+    },
+    {
+      "id": "walker_street_skybridge",
+      "name": "Walker Street Skybridge",
+      "street_crossed": "Walker (N-S)",
+      "span": { "x": 90.5, "z_min": -45, "z_max": -65 },
+      "y_level": 68,
+      "length_blocks": 4,
+      "width_blocks": 1,
+      "height_blocks": 2,
+      "connects": "Esperson (east) to generic tower (west)",
+      "block_spec": {
+        "walls": "glass_pane + iron_bars mullions",
+        "frame": "iron_bars",
+        "corners": "light_gray_concrete",
+        "floor": "white_wool on smooth_stone_slab",
+        "ceiling": "quartz_slab",
+        "lighting": "redstone_lamp every 4 blocks + daylight_detector"
+      },
+      "tag": "[X] generic connector"
+    }
+  ],
+  "phases": [
+    {
+      "id": 1,
+      "name": "Site Preparation",
+      "goal": "Clear build area, create terrain, mark 6x4 sample footprint, mark 12 buffer blocks, set tunnel airspace.",
+      "block_count": 10000,
+      "bot_time_hours_min": 2,
+      "bot_time_hours_max": 4,
+      "human_time_hours_min": 4,
+      "human_time_hours_max": 6,
+      "dependencies": []
+    },
+    {
+      "id": 2,
+      "name": "Above-Ground City Shell",
+      "goal": "Build 4 anchor tower shells, 8-10 generic downtown towers, 2-3 parking garages, street grid, 4 skybridge shells. Lobbies NOT built yet.",
+      "block_count": 50000,
+      "bot_time_hours_min": 8,
+      "bot_time_hours_max": 12,
+      "human_time_hours_min": 20,
+      "human_time_hours_max": 30,
+      "dependencies": [1]
+    },
+    {
+      "id": 3,
+      "name": "Tunnel Excavation",
+      "goal": "Excavate full 4-quadrant tunnel grid. All corridors, food-court nodes, tenant bays as hollow air space.",
+      "block_count_void": 18500,
+      "bot_time_hours_min": 4,
+      "bot_time_hours_max": 6,
+      "human_time_hours_min": 10,
+      "human_time_hours_max": 15,
+      "dependencies": [1]
+    },
+    {
+      "id": 4,
+      "name": "Tunnel Interior",
+      "goal": "Place walls, ceilings, floors, lighting, wayfinding. Establish time-staggered cross-section. Build lobby-to-basement descents.",
+      "block_count": 52000,
+      "bot_time_hours_min": 12,
+      "bot_time_hours_max": 18,
+      "human_time_hours_min": 30,
+      "human_time_hours_max": 45,
+      "dependencies": [2, 3]
+    },
+    {
+      "id": 5,
+      "name": "Tenant Zones",
+      "goal": "Build the 4 food courts and 6 supporting tenant zones. Highest-fidelity work in the build.",
+      "block_count": 24000,
+      "bot_time_hours_min": 10,
+      "bot_time_hours_max": 15,
+      "human_time_hours_min": 25,
+      "human_time_hours_max": 35,
+      "dependencies": [4]
+    },
+    {
+      "id": 6,
+      "name": "Skybridges + Wayfinding Finish",
+      "goal": "Build 4 skybridge interiors, 4 skybridge landings, final wayfinding sign system.",
+      "block_count": 2000,
+      "bot_time_hours_min": 3,
+      "bot_time_hours_max": 5,
+      "human_time_hours_min": 8,
+      "human_time_hours_max": 12,
+      "dependencies": [2, 4, 5]
+    },
+    {
+      "id": 7,
+      "name": "Finishing",
+      "goal": "Add 18+ easter eggs, final interpretive plaques, lighting tuning, time-of-day cycle, after-hours shutdown, NPCs, sound design, verification pass.",
+      "block_count": 1500,
+      "bot_time_hours_min": 4,
+      "bot_time_hours_max": 6,
+      "human_time_hours_min": 8,
+      "human_time_hours_max": 12,
+      "dependencies": [1, 2, 3, 4, 5, 6]
+    }
+  ],
+  "phases_summary": {
+    "total_placed_blocks_min": 139500,
+    "total_placed_blocks_max": 158000,
+    "total_void_blocks": 18500,
+    "total_bot_time_hours_min": 43,
+    "total_bot_time_hours_max": 66,
+    "total_human_time_hours_min": 105,
+    "total_human_time_hours_max": 155
+  },
+  "key_locations": {
+    "world_origin_wells_fargo_street_entrance": {
+      "x": 0, "y": 64, "z": 0,
+      "description": "T-marker plaque on the sidewalk at the Wells Fargo Plaza street entrance"
+    },
+    "wells_fargo_plaza_tower_center": {
+      "x": 10, "y": 76, "z": -10,
+      "description": "24 stories (y=64 to 88), glass-and-granite office tower"
+    },
+    "wells_fargo_revolving_door": {
+      "x": 10, "y": 64, "z": 0,
+      "description": "Glass revolving door on south face, on Louisiana Street sidewalk"
+    },
+    "wells_fargo_floodgate_tunnel_level": {
+      "x": 10, "y": 58, "z": 0,
+      "description": "Iron door at tunnel-level entry, 4 blocks tall x 4 blocks wide, slots into brackets"
+    },
+    "wells_fargo_1930s_dual_origin_plaque": {
+      "x": 10, "y": 65, "z": -3,
+      "description": "Lobby wall plaque: 'Houston Tunnel System - Established 1930s. First tunnel: Ross Sterling under Fannin (1931) and Will Horwitz under Capitol (1935). Inspired by the Rockefeller Center underground concourse.'"
+    },
+    "wells_fargo_95plus_6mi_200k_panel": {
+      "x": 10, "y": 65, "z": -3,
+      "description": "Lobby wall interpretive panel: '95+ city blocks / 6 mi / 200,000 daily users'"
+    },
+    "wells_fargo_200k_main_sign": {
+      "x": 10, "y": 67, "z": 0,
+      "description": "Large '200,000 daily users' sign above the Wells Fargo entrance"
+    },
+    "mckinney_garage_tower_center": {
+      "x": 10, "y": 70, "z": -82.5,
+      "description": "4-6 stories, parking garage (y=64 to 76)"
+    },
+    "mckinney_garage_direct_access": {
+      "x": 10, "y": 64, "z": -90,
+      "description": "North face of McKinney Garage, on Rusk Street sidewalk"
+    },
+    "mckinney_place_food_court": {
+      "x": 10, "y": 58, "z": -82.5,
+      "description": "Tier 1 food court, parking-garage archetype"
+    },
+    "mckinney_garage_t_marker": {
+      "x": 10, "y": 64, "z": -90,
+      "description": "T-marker plaque on the sidewalk"
+    },
+    "1001_fannin_tower_center": {
+      "x": 33, "y": 76, "z": -10,
+      "description": "24 stories (y=64 to 88)"
+    },
+    "1001_fannin_lamar_tunnel_food_court": {
+      "x": 33, "y": 58, "z": -10,
+      "description": "Tier 1 food court, modern refresh (dark ceiling, polished porcelain, frameless glass)"
+    },
+    "esperson_tower_center": {
+      "x": 56, "y": 72, "z": -55,
+      "description": "16 stories (y=64 to 80), Art Deco twins"
+    },
+    "esperson_food_court_808_travis": {
+      "x": 56, "y": 58, "z": -55,
+      "description": "Tier 1 food court, archetype (long narrow corridor, single row of storefronts, fluorescent tubes, beige terrazzo)"
+    },
+    "esperson_sandra_lord_plaque": {
+      "x": 56, "y": 60, "z": -55,
+      "description": "Wall plaque in the Esperson food court: 'Sandra Lord has led walking tours of the Houston tunnel system since 1991.'"
+    },
+    "pennzoil_place_tower_center": {
+      "x": 79, "y": 74, "z": -55,
+      "description": "20 stories (y=64 to 84), two mirrored Philip Johnson trapezoidal towers"
+    },
+    "pennzoil_place_underground_food_court": {
+      "x": 79, "y": 58, "z": -55,
+      "description": "Tier 1 food court, densest (10-12 packed storefronts under mirrored Philip Johnson towers)"
+    },
+    "pennzoil_hines_27_building_marker": {
+      "x": 79, "y": 60, "z": -55,
+      "description": "Wall marker: 'The modern tunnel system was assembled 1960s-1980s by developer Gerald D. Hines, who added 27 major buildings to downtown Houston.'"
+    },
+    "jpmorgan_chase_tower_center": {
+      "x": 33, "y": 76, "z": -110,
+      "description": "24 stories (y=64 to 88), originally the 1935 Will Horwitz Uptown Theater site"
+    },
+    "jpmorgan_chase_basement_1950s_corridor": {
+      "x": 33, "y": 58, "z": -110,
+      "description": "Tier 2 signature: 1950s minimal corridor segment, bare concrete walls, older fluorescent, no drop ceiling"
+    },
+    "climate_control_72F_sign": {
+      "x": 33, "y": 60, "z": -32,
+      "description": "Small sign: 'Climate Controlled - 72F Year-Round'"
+    },
+    "theater_district_stub_corridor": {
+      "x": 79, "y": 58, "z": -124,
+      "description": "Tier 2 signature: stub corridor with 'Tonight: Performance 7:30 PM' sign and darkened section beyond"
+    },
+    "harris_county_edge_sign": {
+      "x": 50, "y": 64, "z": -138,
+      "description": "Faded reference: 'Harris County Tunnel - 10 blocks north - not connected'"
+    },
+    "st_joseph_skywalks_edge_sign": {
+      "x": 130, "y": 64, "z": -50,
+      "description": "Faded reference: 'St. Joseph Skywalks - 6 blocks southeast - not connected'"
+    },
+    "after_hours_shutdown_scene": {
+      "x": 56, "y": 58, "z": -101,
+      "description": "Tier 3 flavor: dimmed lights, cleaning cart, security-locked elevator bank, 'Tunnel Closed 6:00 PM' sign"
+    },
+    "sump_pump_room": {
+      "x": 10, "y": 58, "z": -100,
+      "description": "McKinney quadrant utility room, 4x4x3, with cauldron pump + iron_bars piping"
+    },
+    "tunnel_band_sign_first": {
+      "x": 11.5, "y": 61, "z": -32,
+      "description": "First 'Tunnel' backlit band sign at the first intersection south of Wells Fargo"
+    }
+  },
+  "inter_site_connections": {
+    "public_shaft_from_subtropolis": {
+      "type": "public_shaft",
+      "tag": "[X] project fiction",
+      "from": { "x": -12.5, "y": 64, "z": -55, "description": "Combined Complex Transit Hub plaza, beyond Main Street" },
+      "to": { "x": null, "y": null, "z": null, "description": "SubTropolis grid (north of the river)" },
+      "cross_section": "5x5 blocks",
+      "travel_time_minutes": 10,
+      "in_world_signage": "Combined Complex Transit Hub - SubTropolis Public Access. SubTropolis is a 270-million-year-old limestone mine north of the river; the public shaft connects downtown to the SubTropolis grid. Travel time: ~10 minutes by elevator.",
+      "does_not_connect_to_houston_tunnels": true
+    },
+    "service_tunnel_from_cheyenne_mountain": {
+      "type": "service_tunnel",
+      "tag": "[X] project fiction",
+      "from": { "x": 40, "y": -86, "z": -134, "description": "Service sub-basement at the north edge of the city" },
+      "to": { "x": null, "y": null, "z": null, "description": "Cheyenne Mountain Complex" },
+      "cross_section": "6x5 blocks",
+      "depth_below_grade_blocks": 150,
+      "in_world_signage": "Service Tunnel - Cheyenne Mountain Complex - Authorized Vehicles Only",
+      "note": "Does not connect to the Houston tunnel system. Runs at 150+ ft depth, separate from Houston tunnels at 20 ft depth."
+    }
+  },
+  "easter_eggs": [
+    { "id": 1, "type": "prominent", "name": "200,000 daily users main entry sign", "location": "wells_fargo_lobby", "y": 67, "block": "oak_sign" },
+    { "id": 2, "type": "prominent", "name": "95+ city blocks / 6 mi / 20 ft below grade", "location": "wells_fargo_interpretive_panel", "block": "oak_sign x3 rows" },
+    { "id": 3, "type": "prominent", "name": "Wells Fargo Plaza - Direct Street Access", "location": "wells_fargo_entrance", "block": "oak_sign" },
+    { "id": 4, "type": "prominent", "name": "Esperson food court (808 Travis) entry signage", "location": "esperson_food_court_entry", "block": "blue_terracotta + white_concrete + redstone_lamp" },
+    { "id": 5, "type": "prominent", "name": "Tunnel backlit wayfinding bands", "location": "every_major_intersection", "count": 30, "block": "blue_terracotta + white_concrete + redstone_lamp" },
+    { "id": 6, "type": "prominent", "name": "T-marker entrance signs", "location": "wells_fargo_sidewalk + mckinney_sidewalk", "count": 2, "block": "oak_fence + oak_sign + blue_concrete + light_blue_concrete + white_concrete" },
+    { "id": 7, "type": "prominent", "name": "Tunnel capitalization", "location": "every_sign", "block": "typographic_convention" },
+    { "id": 8, "type": "prominent", "name": "Time-staggered visual cross-section", "location": "corridors across 4 quadrants", "block": "white_concrete / light_gray_concrete / gray_concrete / smooth_stone" },
+    { "id": 9, "type": "subtle", "name": "1930s origin plaque (Sterling + Horwitz)", "location": "wells_fargo_lobby_east_wall", "block": "polished_andesite + 3 rows of oak_sign" },
+    { "id": 10, "type": "subtle", "name": "Gerald D. Hines 27-building marker", "location": "pennzoil_place_underground_wall", "block": "oak_sign 2x1" },
+    { "id": 11, "type": "subtle", "name": "Sandra Lord Tunnel Lady plaque", "location": "esperson_food_court_entry_wall", "block": "oak_sign 3x2 on white_concrete" },
+    { "id": 12, "type": "subtle", "name": "Floodgate + Allison marker", "location": "wells_fargo_entry + mckinney_entry", "count": 2, "block": "oak_sign 2x1 next to iron_door" },
+    { "id": 13, "type": "subtle", "name": "Rockefeller Center inspiration", "location": "wells_fargo_origin_plaque_text", "block": "referenced_in_plaque" },
+    { "id": 14, "type": "subtle", "name": "72F climate control sign", "location": "corridor_intersection", "position": { "x": 33, "y": 60, "z": -32 }, "block": "oak_sign 1x1" },
+    { "id": 15, "type": "subtle", "name": "Theater District performance-night stub corridor", "location": "lamar_mckinney_end", "position": { "x": 79, "y": 58, "z": -124 }, "block": "stub_corridor + iron_door + oak_sign" },
+    { "id": 16, "type": "subtle", "name": "Harris County edge sign", "location": "build_north_edge", "position": { "x": 50, "y": 64, "z": -138 }, "block": "oak_sign 2x1" },
+    { "id": 17, "type": "subtle", "name": "St. Joseph skywalks edge sign", "location": "build_south_east_edge", "position": { "x": 130, "y": 64, "z": -50 }, "block": "oak_sign 2x1" },
+    { "id": 18, "type": "subtle", "name": "Vacant / For Lease bays", "location": "food_courts_and_corridors", "count_min": 8, "count_max": 10, "block": "light_gray_wool awning + white_concrete sign" },
+    { "id": 19, "type": "atmospheric", "name": "Time-of-day lighting cycle", "block": "redstone clock 0->6000->12000->18000" },
+    { "id": 20, "type": "atmospheric", "name": "1st Shift 06:00 / 2nd Shift 14:00 / 3rd Shift 22:00 sign", "block": "oak_sign on light_gray_concrete" },
+    { "id": 21, "type": "atmospheric", "name": "Water-stained dropped-ceiling tiles", "block": "light_gray_wool patches (1 in 50) in 1970s corridors" },
+    { "id": 22, "type": "atmospheric", "name": "After-hours shutdown in McKinney quadrant", "block": "redstone clock + redstone_lamp low state at Minecraft-time 12000" },
+    { "id": 23, "type": "atmospheric", "name": "Cave ambient sound", "block": "cave ambient category in tunnel segments" }
+  ],
+  "open_items": [
+    "T-marker sign design (verify the 'Tunnel Access - 6am-6pm' sub-sign is required)",
+    "SubTropolis public shaft landing plaza design (build in Phase 2 or Phase 7)",
+    "Cheyenne Mountain service tunnel terminus (depends on combined-complex report)",
+    "After-hours shutdown design (static scene vs time-of-day cycle; design plan uses time-of-day)",
+    "Theater District stub corridor terminus (blocked door vs real corridor beyond; design plan uses blocked)",
+    "1950s-era minimal corridor location (Lamar quadrant vs JPMorgan Chase basement; recommend JPMorgan Chase basement B-26)",
+    "NPC placement and behavior (name_tag-based for v0.1, player_head-based for v2.0)",
+    "Schematic library integration (no existing Houston schematics; 18 custom schematics to create)",
+    "Combined-complex coordination (SubTropolis and Cheyenne termini are [X] fictions; final wiring depends on combined-complex report)",
+    "Render-distance and performance tuning (verify at player's likely render distance 8-12 chunks)",
+    "HUD and player experience (vanilla vs shader; recommend vanilla for v0.1)",
+    "Time-of-day cycle scope (20-minute default with manual override lever)",
+    "Block budget overrun (hard cap at 200,000 blocks; simplify Phase 7 if exceeded)",
+    "Combined-complex report dependencies (Houston can proceed independently; inter-site connections wire up later)",
+    "Doc Writer and master plan PDF (this brief is the AI contractor-facing spec; master plan PDF is downstream)"
+  ],
+  "schematic_library_notes": {
+    "existing_library_path": "D:\\projects\\mc-fleet-bot\\schematics\\",
+    "existing_library_count": 110,
+    "directly_reusable_for_houston": 0,
+    "potentially_reusable_with_modification": [
+      "kitchen.schem",
+      "lantern.schem",
+      "shelf.schem",
+      "underground-base.schem",
+      "mushroom-house.schem",
+      "modern-apartment.schem",
+      "contemporary-house.schem",
+      "mushroom-cottage.schem"
+    ],
+    "custom_schematics_to_create": [
+      "houston-corridor-1970s-3x3x10.schem",
+      "houston-corridor-1970s-3x3x30.schem",
+      "houston-corridor-1990s-3x3x10.schem",
+      "houston-corridor-2010s-led-3x3x10.schem",
+      "houston-corridor-1950s-minimal-3x6x10.schem",
+      "houston-foodcourt-esperson-4x4x20.schem",
+      "houston-foodcourt-pennzoil-6x4x25.schem",
+      "houston-foodcourt-1001fannin-4x4x20.schem",
+      "houston-foodcourt-mckinney-4x4x25.schem",
+      "houston-tenant-bay-2x2x3.schem",
+      "houston-t-marker-1x1x4.schem",
+      "houston-floodgate-4x4x6.schem",
+      "houston-lobby-descent-wells-fargo-4x6x4.schem",
+      "houston-skybridge-mckinney-1x2x6.schem",
+      "houston-skybridge-louisiana-1x2x7.schem",
+      "houston-wayfinding-band-4x1.schem",
+      "houston-restroom-3x3x3.schem",
+      "houston-sump-pump-room-4x4x3.schem"
+    ],
+    "custom_schematics_save_path": "D:\\projects\\mc-fleet-bot\\schematics\\houston\\"
+  },
+  "bot_api_endpoints": [
+    "GET /api/status",
+    "GET /api/bots",
+    "POST /api/bots/:name/task",
+    "POST /api/build/fill",
+    "POST /api/schematic/save",
+    "POST /api/schematic/paste",
+    "POST /api/bots/:name/mode",
+    "GET /api/world",
+    "GET /api/activity"
+  ],
+  "v0_1_mvp": {
+    "name": "The Wells Fargo Entrance",
+    "theme": "Soul in miniature",
+    "included": [
+      "Wells Fargo Plaza tower shell (lobby only)",
+      "Wells Fargo lobby interior",
+      "Wells Fargo granite plaza",
+      "T-marker at the curb",
+      "Bank of elevators and interior stair",
+      "Floodgate at the lobby-to-basement transition",
+      "First 1-2 blocks of standard 1970s tunnel",
+      "1930s origin plaque",
+      "Wells Fargo Direct Street Access sign",
+      "200,000 daily users interpretive panel"
+    ],
+    "excluded": [
+      "Other 3 anchor towers",
+      "Other 3 food courts",
+      "Skybridges",
+      "McKinney Garage entry",
+      "1990s / 2010s / 1950s era segments",
+      "Most wayfinding bands",
+      "Time-of-day cycle",
+      "After-hours shutdown",
+      "Most other easter eggs"
+    ],
+    "block_count": 3000,
+    "bot_time_hours_min": 2,
+    "bot_time_hours_max": 3,
+    "human_time_hours_min": 4,
+    "human_time_hours_max": 6,
+    "play_experience": "Player spawns on the surface, sees the Wells Fargo tower, walks the granite plaza, notices the T-marker, enters the lobby, reads the interpretive panel and 1930s origin plaque, descends the interior stair past the floodgate, emerges into a fluorescent-lit 1970s corridor. The journey takes ~2 minutes. The player has just experienced the soul of the Houston tunnel system in miniature."
+  },
+  "named_segments_represented": [
+    { "name": "Downtown Tunnel Loop", "in_build_location": "spans the center of the build (Q2/Q3 boundary, rows 3-4)", "status": "represented" },
+    { "name": "W. Walker Tunnel", "in_build_location": "west edge of tunnel sample, around col 4 row 1-2", "status": "represented" },
+    { "name": "N. Louisiana Tunnel", "in_build_location": "col 4, rows 3-4, around Pennzoil Place", "status": "represented" },
+    { "name": "N. Travis Tunnel", "in_build_location": "col 2-3, rows 4-6, around 1950s corridor and JPMorgan Chase basement", "status": "represented" },
+    { "name": "Lamar Tunnel", "in_build_location": "south edge, around 1001 Fannin food court", "status": "represented" },
+    { "name": "E. McKinney Tunnel", "in_build_location": "col 1, rows 4-5, around McKinney Place food court", "status": "represented" }
+  ]
+}

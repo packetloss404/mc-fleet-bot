@@ -1,0 +1,390 @@
+{
+  "build_name": "Map Integration",
+  "build_id": "04-combined-complex-map-integration",
+  "description": "Macro site design for the integration of the new 1,500 x 1,500 Combined Complex world with the existing vanilla-384 bot world at (935, 60, 300). Adds the old town (30-35 schematics in 7 clusters), the Gateway station (two matching 7x7 pavilions), the Grand Avenue (425 blocks, 8 cross-section), the coastal-plain rail spur (960 blocks, 3 cross-section, 3 stations), the underground easter egg (the only existing underground schematic in the workspace), and the visitor journey (60-90 minutes of focused play). Respects all 7 binding decisions in discussion-notes.md.",
+  "scale": {
+    "global_block_size": "1 block = 1 meter",
+    "notes": "1:1 globally per discussion-notes Decision 1. New world requires 1,024+ build height (CubicWorld 2,048 recommended). Existing world is vanilla 384, preserved as-is."
+  },
+  "build_height_required_new_world": 1024,
+  "build_height_recommended_new_world": 2048,
+  "recommended_mod_new_world": "CubicWorld or similar with at least 2,048 block build height",
+  "worlds": {
+    "new_world": {
+      "footprint": { "width": 1500, "length": 1500, "height": 800 },
+      "build_height": 1024,
+      "build_height_recommended": 2048,
+      "mod_dependencies": ["CubicWorld 2,048 (recommended)"],
+      "origin": { "x": 0, "y": 0, "z": 0, "description": "Center of the new city, at street grade. Sea level reference." },
+      "compass_orientation": "north = -z, east = +x, up = +y",
+      "extent": {
+        "x_min": -750,
+        "x_max": 750,
+        "y_min": -100,
+        "y_max": 800,
+        "z_min": -750,
+        "z_max": 750
+      }
+    },
+    "existing_bot_world": {
+      "footprint": { "width": 200, "length": 200, "height": 384, "notes": "Approximate; only 3 explored chunks, not a complete world extent" },
+      "build_height": 384,
+      "mod_dependencies": [],
+      "origin": { "x": 935, "y": 60, "z": 300, "description": "Center of the existing bot base, where the 4 active bots (Lilly, Taylor, Marcus, Hazel) operate." },
+      "bot_base_extent": {
+        "x_min": 800,
+        "x_max": 995,
+        "y_min": 50,
+        "y_max": 71,
+        "z_min": 220,
+        "z_max": 380
+      }
+    }
+  },
+  "key_locations": {
+    "old_town_bounding_box": {
+      "x_min": -300,
+      "x_max": 300,
+      "y_min": -3,
+      "y_max": 6,
+      "z_min": 300,
+      "z_max": 700,
+      "description": "600 x 400 coastal-plain district, 2-floor height cap (with the underground easter egg at Y = -3 to +2)"
+    },
+    "old_town_center": {
+      "x": 0, "y": 0, "z": 500,
+      "description": "Center of the 600 x 400 old town. Home of the Cute House Plaza."
+    },
+    "cute_house_plaza": {
+      "x": 0, "y": 0, "z": 450,
+      "description": "10 x 10 stone-brick founding plaza, with 2 Cute house.schem placed at center. Sign crediting CuteHouse1/2."
+    },
+    "residential_cluster": {
+      "x": 0, "y": 0, "z": 480,
+      "description": "10 small houses + 2 Cute anchors + 1 victorian palace. 13 schematics total."
+    },
+    "castle_fortress_cluster": {
+      "x": 200, "y": 0, "z": 500,
+      "description": "3 builds (md castle 2, small medieval town hall, stone-fortress) on a low hill."
+    },
+    "temple_cluster": {
+      "x": -200, "y": 0, "z": 500,
+      "description": "3 builds (fantasy-temple-house, red-japanese-temple, japanese-pagoda) on a low hill."
+    },
+    "statue_ornament_cluster": {
+      "x": 0, "y": 0, "z": 600,
+      "description": "4 statues in the cluster (stone-statue, dragon-egg, giant-skull, snowman). 6 more along the Grand Avenue."
+    },
+    "theme_park_cluster": {
+      "x": 100, "y": 0, "z": 600,
+      "description": "1 build: Disneyland Space Mountain.schem at native scale. The old town's tourist attraction."
+    },
+    "underground_easter_egg_schematic_placement": {
+      "x": -50, "y_min": -3, "y_max": 2, "z": 550,
+      "description": "underground-base.schem placed with floor at Y = -3, roof at Y = +2. The only existing underground build in the workspace."
+    },
+    "underground_easter_egg_entrance": {
+      "x": -50, "y": 0, "z": 552,
+      "description": "1-block-wide entrance at the back of a residential house."
+    },
+    "underground_easter_egg_glass_window": {
+      "x": 0, "y": 0, "z": 500,
+      "description": "1 x 1 glass block in the floor of the old town central plaza, looking down into the underground-base."
+    },
+    "gateway_pavilion_existing_world": {
+      "x": 935, "y": 60, "z": 280,
+      "world": "existing_bot_world",
+      "description": "7 x 7 stone-brick pavilion with obsidian portal frame, glass roof, sign 'GATEWAY TO THE COMBINED COMPLEX', written book, bench. 3 blocks south of the existing bot base."
+    },
+    "gateway_shelter_new_world": {
+      "x": 0, "y": 0, "z": 700,
+      "world": "new_world",
+      "description": "7 x 7 wooden shelter with obsidian portal frame, oak sign 'YOU ARE IN THE COMBINED COMPLEX - CITY HUB', written book, minecart on rail, dirt path to Grand Avenue. Mirror of the existing-world Gateway."
+    },
+    "grand_avenue_start": {
+      "x": 0, "y": 0, "z": 500,
+      "description": "At the Cute House Plaza, north end of the old town center. Block 0 of 425."
+    },
+    "grand_avenue_milestone_1": {
+      "x": 0, "y": 0, "z": 400,
+      "description": "Block 100: 'OLD TOWN 1/4 MILE' sign."
+    },
+    "grand_avenue_midpoint": {
+      "x": 0, "y": 0, "z": 285,
+      "description": "Block 215: center of the Grand Avenue. Approximate midpoint of the 425-block Avenue. mkr_grand_avenue_center is here."
+    },
+    "grand_avenue_milestone_2": {
+      "x": 0, "y": 0, "z": 250,
+      "description": "Block 250: 'OLD TOWN CENTER - CUTE HOUSE PLAZA' sign."
+    },
+    "grand_avenue_milestone_3": {
+      "x": 0, "y": 0, "z": 150,
+      "description": "Block 350: 'CITY APPROACHING - STREAM CROSSING 100 m' sign."
+    },
+    "grand_avenue_stream_crossing": {
+      "x": 0, "y": 0, "z": 120,
+      "description": "Block 380: 5-block-wide stone-brick bridge over a 3-block-wide stream."
+    },
+    "grand_avenue_end": {
+      "x": 60, "y": 0, "z": 70,
+      "description": "Block 425: SE corner of the new city, where the city streets begin."
+    },
+    "rail_spur_new_world_gateway_station": {
+      "x": 0, "y": 0, "z": 700,
+      "description": "Terminus, mirror of the existing-world Gateway. 7 x 7 wooden shelter with minecart on rail."
+    },
+    "rail_spur_old_town_station": {
+      "x": 0, "y": 0, "z": 500,
+      "description": "Spur into the old town center, 50-block branch west from the main rail line at X = +50. Passengers disembark to walk the Cute House Plaza."
+    },
+    "rail_spur_city_approach_station": {
+      "x": 0, "y": 0, "z": 70,
+      "description": "Terminus on the city S edge, where the rail spur ends and the Grand Avenue begins. Passengers disembark to walk the Grand Avenue."
+    },
+    "rail_spur_main_line_bypass": {
+      "x": 50, "y": 0, "z_range_min": 70, "z_range_max": 700,
+      "description": "Main rail line runs at X = +50 (50 blocks east of the old town's center) to bypass the old town plaza."
+    }
+  },
+  "old_town_clusters": {
+    "residential": {
+      "count": 13,
+      "schematics": [
+        "birch house.schem",
+        "cozy-cabin.schem",
+        "cube-house.schem",
+        "classic-village-house.schem",
+        "mushroom-cottage.schem",
+        "simple-house.schem",
+        "wood-house.schem",
+        "rustic-farmhouse.schem",
+        "stilt-house.schem",
+        "mud-house.schem",
+        "Cute house.schem (x2, at Cute House Plaza)",
+        "victorian palace.schem"
+      ]
+    },
+    "castle_fortress": {
+      "count": 3,
+      "schematics": [
+        "md castle 2.schem",
+        "small medieval town hall.schem",
+        "stone-fortress.schem"
+      ]
+    },
+    "temple": {
+      "count": 3,
+      "schematics": [
+        "fantasy-temple-house.schem",
+        "red-japanese-temple.schem",
+        "japanese-pagoda.schem"
+      ]
+    },
+    "statue_ornament_in_cluster": {
+      "count": 4,
+      "schematics": [
+        "stone-statue.schem",
+        "dragon-egg.schem",
+        "giant-skull.schem",
+        "snowman.schem"
+      ]
+    },
+    "statue_ornament_along_grand_avenue": {
+      "count": 6,
+      "schematics": [
+        "teddy-bear.schem (block 70)",
+        "macaw-statue.schem (block 140)",
+        "parrot-statue.schem (block 210)",
+        "flying-eagle.schem (block 280)",
+        "villager-statue.schem (block 350)",
+        "enderman.schem (block 420, the 'boss')"
+      ]
+    },
+    "theme_park": {
+      "count": 1,
+      "schematics": ["Disneyland Space Mountain.schem (58 KB, the largest surface build in the library)"]
+    },
+    "underground_easter_egg": {
+      "count": 1,
+      "schematics": ["underground-base.schem (1,048 bytes, the only underground build in the library)"]
+    },
+    "cute_house_anchor": {
+      "count": 2,
+      "schematics": ["Cute house.schem (folded into the Residential cluster, at the Cute House Plaza)"]
+    },
+    "total_schematics": 33
+  },
+  "excluded_from_old_town": {
+    "deferred_to_attractions_zone": ["Pokemon Temple Arena.schem (63 KB, mojibake-encoded filename)"],
+    "no_water_in_coastal_plain": ["luxury-yacht.schem and other watercraft"],
+    "wrong_era": ["bbq-grill.schem and beach content"],
+    "used_in_rail_spur": ["holiday-express-train.schem (this is the rail spur's mode, not an old-town feature)"],
+    "used_in_new_city": ["any schematic already used in the new city's 138 x 138 downtown (per the 04-masterplan's 8-10 generic downtown towers)"]
+  },
+  "inter_world_connections": {
+    "gateway_portal": {
+      "from": { "x": 935, "y": 60, "z": 280, "world": "existing_bot_world" },
+      "to": { "x": 0, "y": 0, "z": 700, "world": "new_world" },
+      "portal_frame_dimensions": "4 x 5 obsidian-and-glowstone",
+      "mode": "/tp command block OR world-portal datapack (open question; see discussion Topic 3)",
+      "symmetric_pavilions": "Both worlds have a 7 x 7 pavilion with a matching obsidian portal frame, sign, and written book."
+    },
+    "coastal_plain_rail_spur": {
+      "from": { "x": 0, "y": 0, "z": 700, "world": "new_world" },
+      "to": { "x": 0, "y": 0, "z": 70, "world": "new_world" },
+      "cross_section": "3 blocks total (1 rail + 1 oak-plank walkway east + 1 grass/utility strip west)",
+      "gauge": "1-block (Minecraft standard, accepted for playability)",
+      "mode": "passenger minecart, powered rail every 8 blocks",
+      "material": "smooth stone slabs (1970s Houston-modern era discipline)",
+      "length_blocks": 960,
+      "stations": [
+        { "name": "new_world_gateway", "x": 0, "y": 0, "z": 700 },
+        { "name": "old_town", "x": 0, "y": 0, "z": 500 },
+        { "name": "city_approach", "x": 0, "y": 0, "z": 70 }
+      ],
+      "route_geometry": "Main line at X = +50 (bypasses old town on east side); short spur branches west at Z = 500 to the old town station.",
+      "continuity": "Interrupted at world boundary. Existing world's last rail block at the existing-world Gateway; new world's first rail block at the new-world Gateway."
+    },
+    "grand_avenue": {
+      "from": { "x": 0, "y": 0, "z": 500, "description": "Cute House Plaza" },
+      "to": { "x": 60, "y": 0, "z": 70, "description": "SE corner of the new city" },
+      "cross_section": "8 blocks total (4-block stone-brick road + 2-block oak-plank sidewalk each side; no planters)",
+      "length_blocks": 425,
+      "material": "stone brick for blocks 0-350, granite-and-glass for blocks 350-425",
+      "statues": "6 statues at 70-block intervals (teddy-bear at 70, macaw at 140, parrot at 210, eagle at 280, villager at 350, enderman at 420)",
+      "milestones": "3 milestones at blocks 100, 250, 350",
+      "stream_crossing": "5-block-wide stone-brick bridge at block 380 over a 3-block-wide stream"
+    }
+  },
+  "internal_connections_inherited_from_04_masterplan": {
+    "public_shaft": {
+      "from": { "x": 60, "y": 0, "z": -70 },
+      "to": { "x": 60, "y": -100, "z": -100 },
+      "cross_section": "7 x 7 (5 x 5 lift + 1 emergency stair + 1 service chase)",
+      "length_blocks": 100,
+      "mode": "mechanical lift + visible emergency stair",
+      "mid_landing": { "x": 60, "y": -50, "z": -70, "description": "G-Cans-style observation room with glass window" }
+    },
+    "service_tunnel": {
+      "from": { "x": -100, "y": 0, "z": -300 },
+      "to": { "x": 0, "y": 0, "z": -420 },
+      "cross_section": "6 x 6 (4 minecart rail + 2 utility strip)",
+      "length_blocks": 120,
+      "mode": "minecart rail (1-block gauge)",
+      "blast_door_position": { "x": 0, "y": 0, "z": -420, "description": "25-ton blast door at Cheyenne outer portal" },
+      "midpoint": { "x": 0, "y": -100, "z": -400, "description": "Under the stream; thrust-fault contact crossing" }
+    }
+  },
+  "named_markers_combined_complex_journey": {
+    "1_mkr_city_center": { "x": 0, "y": 0, "z": 0, "description": "Center of the new city. World origin." },
+    "2_mkr_public_shaft_top": { "x": 60, "y": 0, "z": -70, "description": "NE corner of the city, Combined Complex Transit Hub plaza." },
+    "3_mkr_subtropolis_chamber_center": { "x": 0, "y": -50, "z": -200, "description": "Center of the SubTropolis 200 x 200 chamber." },
+    "4_mkr_cheyenne_outer_portal": { "x": 0, "y": 0, "z": -420, "description": "25-ton blast door at the Cheyenne outer portal." },
+    "5_mkr_ravine_bottom": { "x": 0, "y": -90, "z": -400, "description": "At the bottom of the ravine, near the composite terrane plaque." },
+    "6_mkr_old_town_center": { "x": 0, "y": 0, "z": 500, "description": "Center of the old town, at the Cute House Plaza." }
+  },
+  "new_markers_added_by_map_integration": {
+    "mkr_gateway_existing_world": { "x": 935, "y": 60, "z": 280, "world": "existing_bot_world" },
+    "mkr_gateway_new_world": { "x": 0, "y": 0, "z": 700, "world": "new_world" },
+    "mkr_spur_new_world_gateway": { "x": 0, "y": 0, "z": 700, "world": "new_world" },
+    "mkr_spur_old_town": { "x": 0, "y": 0, "z": 500, "world": "new_world" },
+    "mkr_spur_city_approach": { "x": 0, "y": 0, "z": 70, "world": "new_world" },
+    "mkr_grand_avenue_center": { "x": 0, "y": 0, "z": 285, "world": "new_world" },
+    "mkr_old_town_underground_easter_egg": { "x": -50, "y": 0, "z": 550, "world": "new_world" },
+    "mkr_cheyenne_return_portal": { "x": 0, "y": 0, "z": -420, "world": "new_world" },
+    "total_new_markers": 8
+  },
+  "data_layer_changes": {
+    "markers_json": {
+      "before": "6 placeholder markers (empty tags, no names, no spatial coordinates)",
+      "after": "14 markers total (6 named from placeholders + 8 new from map integration)",
+      "named_from_placeholders": [
+        "mkr_city_center (0, 0, 0)",
+        "mkr_public_shaft_top (60, 0, -70)",
+        "mkr_subtropolis_chamber_center (0, -50, -200)",
+        "mkr_cheyenne_outer_portal (0, 0, -420)",
+        "mkr_ravine_bottom (0, -90, -400)",
+        "mkr_old_town_center (0, 0, 500)"
+      ]
+    },
+    "zones_json": {
+      "before": "2 placeholder 'Mining Area' zones (names without spatial extent)",
+      "after": "2 named zones: zne_subtropolis_chamber (-100, -50, -200) to (100, 0, -100) and zne_cheyenne_chamber (-40, 250, -580) to (40, 400, -500)"
+    },
+    "squads_json": {
+      "before": "6 empty squads",
+      "after": "6 named squads: sqd_che_outer_portal_guard, sqd_sub_chamber_patrol, sqd_pub_shaft_operator, sqd_svc_tunnel_maintenance (also covers rail spur), sqd_old_town_ranger, sqd_ravine_response"
+    },
+    "routes_json": {
+      "before": "Does not exist (no routes.json file)",
+      "after": "2 named routes: rte_coastal_plain_rail_spur, rte_visitor_journey_full"
+    },
+    "supply_chains_json": {
+      "before": "2-byte empty array",
+      "after": "1 supply chain: rail spur powered-rail maintenance (rails, powered rails, redstone, minecarts as recurring supplies)"
+    },
+    "missions_json": {
+      "before": "2 queued missions (birch house at (904, 79, 390), md castle 2 at (973, 1, 453))",
+      "after": "Re-targeted to the new world's old town: birch house to (0, 0, 480), md castle 2 to (200, 0, 500)"
+    },
+    "commands_json": {
+      "before": "1 walk_to_coords(100, 64, 200) for Lilly (2026-03-23, never followed up)",
+      "after": "Resolved: the destination was a half-formed plan for a build site; the actual build site is now the new world's old town at (0, 0, 500), so the command is marked as completed and re-targeted."
+    }
+  },
+  "binding_decisions_respected": [
+    {
+      "decision_number": 1,
+      "topic": "New World vs. Retrofit",
+      "binding_decision": "Build a new 1,500 x 1,500 world with 1,024+ build height, world origin (0, 0, 0). The existing vanilla-384 bot world is preserved; the two are connected by a Gateway portal.",
+      "site_plan_reflection": "Reflected in world_footprint, world_origin, and the gateway_portal inter-world connection. The existing world is preserved as-is; the new world is built fresh; the Gateway portal at (935, 60, 280) and (0, 0, 700) is the only piece of architecture that connects them."
+    },
+    {
+      "decision_number": 2,
+      "topic": "Old Town Composition",
+      "binding_decision": "7 clusters, 30-35 schematics in a 600 x 400 coastal-plain district centered at (0, 0, 500). 13 residential, 3 castle/fortress, 3 temple, 10 statue/ornament (4 in cluster + 6 along Grand Avenue), 1 theme-park (Space Mountain), 1 underground easter egg, 2 Cute house anchors (folded into residential). Excluded: Pokemon Temple Arena (deferred), watercraft, beach content, holiday-express-train.",
+      "site_plan_reflection": "Reflected in old_town_clusters (33 schematics total) and old_town_bounding_box (X = -300 to +300, Z = 300 to 700, Y = -3 to +6). All 7 clusters have specific coordinates and sign specifications."
+    },
+    {
+      "decision_number": 3,
+      "topic": "Gateway Station and Portal",
+      "binding_decision": "Two matching pavilions: existing-world 7 x 7 stone-brick pavilion at (935, 60, 280) with glass roof; new-world 7 x 7 wooden shelter at (0, 0, 700). Both have a 4 x 5 obsidian portal frame, a sign, a written book. The portal is visual; the transit is a /tp command block. 2 new markers.",
+      "site_plan_reflection": "Reflected in gateway_pavilion_existing_world, gateway_shelter_new_world, and gateway_portal. Both pavilions are 7 x 7 with matching 4 x 5 obsidian frames. The /tp mechanism is flagged as an open question for the bot team."
+    },
+    {
+      "decision_number": 4,
+      "topic": "Grand Avenue",
+      "binding_decision": "Straight, 425 blocks, 8-block cross-section (4-block road + 2-block sidewalk each side, no planters). Stone brick for blocks 0-350, granite-and-glass for 350-425. 6 statues at 70-block intervals, 3 milestones, 1 stream crossing (5-block arch at block 380). 1 new marker, 1 new named route.",
+      "site_plan_reflection": "Reflected in grand_avenue_start, grand_avenue_end, grand_avenue_milestone_1/2/3, grand_avenue_stream_crossing, and the 6 statue coordinates (teddy-bear at 70, macaw at 140, parrot at 210, eagle at 280, villager at 350, enderman at 420). Cross-section 8 blocks total, no planters."
+    },
+    {
+      "decision_number": 5,
+      "topic": "Coastal-Plain Rail Spur",
+      "binding_decision": "Passenger minecart, 1-block-gauge, 3-block cross-section (1 rail + 1 walkway + 1 utility strip), smooth stone slabs, powered rail every 8 blocks. 960 blocks, 3 named stations (new world Gateway, old town, city approach). Bypasses old town on east side with a spur. 1 new route, 3 new station markers, supply chain, squad.",
+      "site_plan_reflection": "Reflected in rail_spur_new_world_gateway_station, rail_spur_old_town_station, rail_spur_city_approach_station, and rail_spur_main_line_bypass. Cross-section 3 blocks (1 rail + 1 oak-plank walkway east + 1 grass/utility strip west). Material smooth stone slabs. Powered rail every 8 blocks. Bypass at X = +50."
+    },
+    {
+      "decision_number": 6,
+      "topic": "Underground Easter Egg",
+      "binding_decision": "One, only one. underground-base.schem placed at (-50, 0, 550), partially buried, with a historical sign, a 1-block entrance at the back of a residential house, an interior chest with a written book, and a 1 x 1 glass viewing window in the old town central plaza. Pre-build: schematic must be inspected for compatibility. 1 new marker.",
+      "site_plan_reflection": "Reflected in underground_easter_egg_schematic_placement (Y = -3 to +2), underground_easter_egg_entrance, underground_easter_egg_glass_window, and mkr_old_town_underground_easter_egg. Pre-build inspection flagged as an open question for the design team."
+    },
+    {
+      "decision_number": 7,
+      "topic": "Visitor Journey",
+      "binding_decision": "Default spawn: new world Gateway at (0, 0, 700). One-way descent 60-90 minutes through 6 named markers. Single return portal at the Cheyenne outer portal (visual, /tp to existing-world Gateway). Fast travel to 6 markers available only after the first descent. 1 new named route, 1 new return portal marker.",
+      "site_plan_reflection": "Reflected in named_markers_combined_complex_journey (6 fast-travel destinations) and mkr_cheyenne_return_portal (the return portal at (0, 0, -420)). Default spawn is the new world Gateway; existing world is a secondary visit. Fast travel only after the first descent."
+    }
+  ],
+  "open_questions_for_architectural_designer": [
+    "World-transit mechanism: /tp command block or world-portal datapack? (bot team call)",
+    "Schematic inspector for underground-base.schem: does the design team need to build one?",
+    "Legacy block ID risk: is there a sandbox world available, or should the design team create one?",
+    "New world's spawn point: superflat or default world type? (map integration is agnostic)",
+    "Existing world's relationship to the new world: should the 4 active bots migrate? (map integration default: stay in existing world)",
+    "Existing-world return path: returnable lobby, one-way vestibule, or bidirectional with side effects? (map integration default: returnable lobby)",
+    "Old town era discipline: how to handle the Space Mountain's 58 KB native scale vs. the 2-floor height cap? (clip, frame with hedges, or relax cap)",
+    "Data layer creation: should the design team create routes.json and supply_chains.json file shells?"
+  ],
+  "tension_acknowledged": "The culture-architecture-analysis.md describes the Grand Avenue as 4-block-wide with 1-block sidewalks and 1-block planters (total ~8 blocks), but the binding Decision 4 specifies the cross-section as 8 blocks total (4 road + 2 sidewalk each side, no planters). The binding Decision 4 takes precedence - the Grand Avenue is 8 blocks total, with no planters. The architectural designer should not add planters."
+}

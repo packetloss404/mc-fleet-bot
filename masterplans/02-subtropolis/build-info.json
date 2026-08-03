@@ -1,0 +1,27 @@
+{
+  "build_name": "SubTropolis",
+  "build_id": "02-subtropolis",
+  "version": "1.0",
+  "date": "2026-08-02",
+  "scale": {
+    "horizontal_compression": "~1:100 floor",
+    "vertical_compression": "1:1",
+    "ceiling_height_blocks": 5,
+    "pillar_size_blocks": "8x8"
+  },
+  "footprint": {
+    "width_blocks": 200,
+    "length_blocks": 200
+  },
+  "main_avenue_length_blocks": 350,
+  "block_budget_estimate": 550000,
+  "deliverables": {
+    "masterplan_pdf": "masterplan.pdf",
+    "contractor_brief_md": "06-contractor/contractor-brief.md",
+    "contractor_brief_json": "06-contractor/contractor-brief.json"
+  },
+  "open_questions_count": 13,
+  "rendering_count": 20,
+  "tenant_zones_count": 13,
+  "must_haves_tier_count": 3
+}

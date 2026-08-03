@@ -1,0 +1,1271 @@
+{
+  "build_name": "SubTropolis",
+  "build_id": "02-subtropolis",
+  "version": "1.0",
+  "compiled_by": "AI Contractor Writer",
+  "compiled_for": "mc-fleet-bot build contractor (AI or human)",
+  "sister_sites": [
+    { "id": "01-cheyenne-mountain", "relation": "north wall of ravine, ~400-600 blocks away" },
+    { "id": "03-houston-tunnels", "relation": "city in valley, accessed via public shaft + surface travel" }
+  ],
+  "minecraft_requirements": {
+    "version_min": "1.17",
+    "version_recommended": "1.18+",
+    "edition": "Java",
+    "mods_required": [],
+    "mods_recommended": ["WorldEdit"]
+  },
+  "scale": {
+    "horizontal_compression": "~1:100 floor area",
+    "vertical_compression": "1:1",
+    "ceiling_height_blocks": 5,
+    "pillar_size_blocks": "8x8",
+    "pillar_to_pillar_spacing_blocks": "30-40 at iconic intersections (relaxed from real 65-block spacing)",
+    "corridor_width_blocks": 12,
+    "no_big_cavern_rooms": true
+  },
+  "footprint": {
+    "width_blocks": 200,
+    "length_blocks": 200,
+    "x_range": [-100, 100],
+    "z_range": [-200, 0],
+    "y_floor": 20,
+    "y_ceiling": 25
+  },
+  "main_avenue_length_blocks": 350,
+  "main_avenue_description": "Entrance ramp ~100 blocks (Z=0 to Z=-100, Y=70 to Y=20) + main avenue ~200 blocks (Z=0 to Z=-200) + exit ramp ~50 blocks (X=0 to X=100, Y=20 to Y=70).",
+  "world_origin": {
+    "x": 0,
+    "y": 70,
+    "z": 0,
+    "description": "Main entrance portal at surface level, on the south face of the SubTropolis hill. Portal frame center at (0, 70, 0)."
+  },
+  "compass_orientation": {
+    "north": "-Z",
+    "south": "+Z",
+    "east": "+X",
+    "west": "-X",
+    "up": "+Y"
+  },
+  "y_levels": {
+    "sea_level": 64,
+    "main_entrance_portal_surface": 70,
+    "surface_plateau": 80,
+    "top_of_subtropolis_hill": 120,
+    "main_grid_floor": 20,
+    "main_grid_ceiling": 25,
+    "sub_basement_floor": 10,
+    "sub_basement_ceiling": 15,
+    "ravine_floor_min": 0,
+    "ravine_floor_max": 10,
+    "public_shaft_surface_exit": 90
+  },
+  "key_locations": {
+    "main_entrance_portal_surface": {
+      "x": 0,
+      "y": 70,
+      "z": 0,
+      "description": "World origin. 12x5 portal frame, branded marquee sign, SPEED LIMIT 15, security gate, guard booth.",
+      "tag": "D"
+    },
+    "main_grid_center": {
+      "x": 0,
+      "y": 20,
+      "z": -100,
+      "description": "Central plaza. Hunt Hall round room. Intersection of Hushpuckney Ave and Bethany Falls Blvd.",
+      "tag": "D"
+    },
+    "second_exit_portal_surface": {
+      "x": 100,
+      "y": 70,
+      "z": -100,
+      "description": "Second exit portal on the east face of the SubTropolis hill, perpendicular to the main entrance. 12x5 portal frame.",
+      "tag": "D"
+    },
+    "sub_basement_terminus": {
+      "x": -80,
+      "y": 10,
+      "z": -180,
+      "description": "Service sub-basement, service tunnel terminus. 20x20 block room, accessed from main grid by downward corridor.",
+      "tag": "X"
+    },
+    "public_access_lobby": {
+      "x": 60,
+      "y": 20,
+      "z": -180,
+      "description": "Public Access Lobby at grid edge. Security guard booth, turnstile, vertical shaft going up.",
+      "tag": "X"
+    },
+    "public_shaft_surface_lobby": {
+      "x": 60,
+      "y": 90,
+      "z": -180,
+      "description": "Surface lobby on SubTropolis hilltop. Players exit here to access the city.",
+      "tag": "X"
+    },
+    "visitor_center": {
+      "x": 20,
+      "y": 80,
+      "z": 20,
+      "description": "Hunt Midwest leasing office / visitor center. 8x10x6 block building on surface plateau.",
+      "tag": "D"
+    },
+    "ghost_mine_chamber": {
+      "x": -90,
+      "y": 20,
+      "z": -190,
+      "description": "Dark unfinished chamber behind barricade. No lighting except single soul lantern at barricade.",
+      "tag": "D"
+    },
+    "hunt_hall_round_room": {
+      "x": 0,
+      "y": 20,
+      "z": -100,
+      "description": "15-block-diameter round room at central plaza. Lamar Hunt plaque, mounted Chiefs arrowhead.",
+      "tag": "D"
+    }
+  },
+  "block_budget_estimate": {
+    "phase_1_site_prep_removed": 320000,
+    "phase_2_chamber_pillars_placed": 120000,
+    "phase_3_avenue_signage_placed": 3500,
+    "phase_4_tenant_fit_outs_placed_min": 50000,
+    "phase_4_tenant_fit_outs_placed_max": 80000,
+    "phase_5_climate_details_placed_min": 3000,
+    "phase_5_climate_details_placed_max": 5000,
+    "phase_6_surface_ramp_exit_placed_min": 25000,
+    "phase_6_surface_ramp_exit_placed_max": 30000,
+    "phase_7_easter_eggs_ghost_mine_inter_site_placed_min": 10000,
+    "phase_7_easter_eggs_ghost_mine_inter_site_placed_max": 15000,
+    "total_removed": 320000,
+    "total_placed_min": 211500,
+    "total_placed_max": 253500,
+    "grand_total_min": 531500,
+    "grand_total_max": 573500
+  },
+  "time_estimate_hours": {
+    "phase_1": "3-6",
+    "phase_2": "2-4",
+    "phase_3": "3-5",
+    "phase_4": "15-20",
+    "phase_5": "2-3",
+    "phase_6": "3-5",
+    "phase_7": "4-6",
+    "total_min": 32,
+    "total_max": 49
+  },
+  "block_palette": {
+    "limestone_shell": {
+      "primary": "minecraft:smooth_stone",
+      "secondary": "minecraft:calcite",
+      "tertiary": "minecraft:diorite",
+      "minor": "minecraft:tuff",
+      "veins": "minecraft:deepslate",
+      "default_unfinished": "minecraft:stone",
+      "rough_hewn": ["minecraft:stone", "minecraft:cobblestone", "minecraft:mossy_cobblestone"],
+      "proportions": {
+        "smooth_stone_pct": 70,
+        "calcite_pct": 15,
+        "diorite_pct": 10,
+        "tuff_pct": 5
+      },
+      "tag": "D"
+    },
+    "painted_pillars_ceiling": {
+      "pillar_body": "minecraft:white_concrete",
+      "pillar_paint_wear_band": "minecraft:light_gray_concrete",
+      "pillar_quartz_emphasis": "minecraft:smooth_quartz_block",
+      "plaza_medallion": "minecraft:quartz_block",
+      "ceiling_white": "minecraft:white_concrete",
+      "ceiling_rough_band": "minecraft:smooth_stone",
+      "painted_numbers": "minecraft:black_concrete",
+      "tag": "D"
+    },
+    "polished_floors": {
+      "primary": "minecraft:polished_andesite",
+      "data_center_only": "minecraft:polished_deepslate",
+      "unfinished_older": ["minecraft:stone", "minecraft:gravel"],
+      "lane_lines_center": "minecraft:yellow_concrete",
+      "lane_lines_edge": "minecraft:white_concrete",
+      "crosswalks": "minecraft:white_concrete",
+      "parking_bay_lines": "minecraft:white_concrete",
+      "tag": "D"
+    },
+    "painted_utility_lines": {
+      "fire_suppression": "minecraft:red_concrete",
+      "potable_water": "minecraft:blue_concrete",
+      "communications_fiber": "minecraft:yellow_concrete",
+      "data_low_voltage": "minecraft:green_concrete",
+      "stripe_height_y": 23,
+      "stripe_width_blocks": 1,
+      "tag": "D"
+    },
+    "tenant_brand_accents": {
+      "hunt_midwest": {
+        "primary": "minecraft:red_concrete",
+        "secondary": "minecraft:white_concrete",
+        "tertiary": "minecraft:black_concrete"
+      },
+      "usps": {
+        "primary": "minecraft:blue_concrete",
+        "secondary": "minecraft:red_concrete",
+        "tertiary": "minecraft:white_concrete"
+      },
+      "nara": {
+        "primary": "minecraft:orange_concrete",
+        "secondary": "minecraft:brown_concrete",
+        "tertiary": "minecraft:white_concrete"
+      },
+      "epa": {
+        "primary": "minecraft:blue_concrete",
+        "secondary": "minecraft:green_concrete",
+        "tertiary": "minecraft:white_concrete"
+      },
+      "stc": {
+        "primary": "minecraft:black_concrete",
+        "secondary": "minecraft:light_blue_concrete"
+      },
+      "grainger": {
+        "primary": "minecraft:orange_concrete",
+        "secondary": "minecraft:white_concrete",
+        "tertiary": "minecraft:gray_concrete"
+      },
+      "hallmark": {
+        "primary": "minecraft:yellow_concrete",
+        "secondary": "minecraft:red_concrete"
+      },
+      "russell_stover": {
+        "primary": "minecraft:brown_concrete",
+        "secondary": "minecraft:yellow_concrete"
+      },
+      "uvs": {
+        "primary": "minecraft:black_concrete",
+        "secondary": "minecraft:gray_concrete"
+      },
+      "lamar_hunt_chiefs": {
+        "primary": "minecraft:red_concrete",
+        "secondary": "minecraft:yellow_concrete"
+      }
+    },
+    "lighting": {
+      "main_avenue": {
+        "block": "minecraft:sea_lantern",
+        "every_n_blocks": 5,
+        "location": "ceiling"
+      },
+      "tenant_corridors": {
+        "block": "minecraft:glowstone",
+        "every_n_blocks": 6,
+        "location": "ceiling"
+      },
+      "nara_archive": {
+        "primary": "minecraft:end_rod",
+        "primary_position": "underside_of_shelf",
+        "ambient": "minecraft:lantern",
+        "door_light": "minecraft:soul_lantern"
+      },
+      "stc_data_center": {
+        "cold_aisle_underglow": "minecraft:shroomlight",
+        "rack_indicators": "minecraft:redstone_lamp",
+        "ceiling_vents": "minecraft:iron_bars"
+      },
+      "uvs_vault": {
+        "block": "minecraft:lantern",
+        "count": 1,
+        "position": "at_door"
+      },
+      "ghost_mine": {
+        "block": "minecraft:soul_lantern",
+        "count": 1,
+        "position": "at_barricade"
+      },
+      "sub_basement": {
+        "block": "minecraft:lantern",
+        "every_n_blocks": 8
+      },
+      "public_shaft_vertical": {
+        "block": "minecraft:lantern",
+        "every_n_blocks": 5
+      },
+      "hunt_hall": {
+        "block": "minecraft:lantern",
+        "count": 1,
+        "position": "behind_lamar_hunt_plaque"
+      }
+    },
+    "signage": {
+      "text_sign_block": "minecraft:oak_sign",
+      "sign_backing_street": "minecraft:green_concrete",
+      "sign_backing_speed": "minecraft:white_concrete",
+      "sign_post": "minecraft:fence",
+      "stop_sign_block": "minecraft:red_concrete",
+      "painted_pillar_numbers": "minecraft:black_concrete"
+    },
+    "functional": {
+      "tenant_doors": "minecraft:dark_oak_door",
+      "vault_door": "minecraft:iron_door",
+      "turnstile": "minecraft:oak_fence",
+      "turnstile_gate": "minecraft:oak_fence_gate",
+      "barricade": "minecraft:oak_fence",
+      "barricade_gate": "minecraft:oak_fence_gate",
+      "interior_partitions": "minecraft:white_concrete",
+      "conveyor_surface": "minecraft:polished_deepslate",
+      "rack_uprights": "minecraft:oak_fence",
+      "rack_shelves": "minecraft:oak_slab",
+      "archive_box": "minecraft:barrel",
+      "inventory_storage": "minecraft:chest",
+      "rail": "minecraft:rail",
+      "vehicle_prop": "minecraft:minecart",
+      "server_rack_front": "minecraft:obsidian",
+      "server_rack_sides": "minecraft:black_concrete",
+      "server_rack_top": "minecraft:smooth_stone_slab",
+      "redstone_lamp": "minecraft:redstone_lamp",
+      "redstone_clock": "minecraft:redstone_repeater",
+      "window": "minecraft:glass_pane",
+      "vent_grille": "minecraft:iron_bars",
+      "trapdoor": "minecraft:iron_trapdoor",
+      "vertical_climb": "minecraft:ladder",
+      "water_elevator_sand": "minecraft:soul_sand",
+      "water_elevator_liquid": "minecraft:water",
+      "hud_mob_suppress": "minecraft:carpet",
+      "interpretive_panel": "minecraft:item_frame",
+      "interpretive_paper": "minecraft:paper",
+      "decorative_bleacher": "minecraft:oak_stairs",
+      "coffee_station": "minecraft:cauldron",
+      "food_prep": "minecraft:crafting_table",
+      "radio": "minecraft:jukebox",
+      "training_desk": "minecraft:lectern",
+      "npc": "minecraft:villager",
+      "ambient_hum": "minecraft:note_block",
+      "spider_web_decor": "minecraft:cobweb",
+      "soul_light_dim": "minecraft:soul_lantern"
+    },
+    "surface_above_mine": {
+      "top_block": "minecraft:grass_block",
+      "subsoil": "minecraft:dirt",
+      "rock": "minecraft:stone",
+      "tree_trunk_oak": "minecraft:oak_log",
+      "tree_trunk_birch": "minecraft:birch_log",
+      "leaves_oak": "minecraft:oak_leaves",
+      "leaves_birch": "minecraft:birch_leaves",
+      "leaves_dark_oak": "minecraft:dark_oak_leaves",
+      "wildflower_red": "minecraft:poppy",
+      "wildflower_blue": "minecraft:azure_bluet",
+      "path": "minecraft:path",
+      "coarse_path": "minecraft:coarse_dirt",
+      "visitor_center_foundation": "minecraft:stone_brick_slab",
+      "worlds_of_fun_silhouette_post": "minecraft:dark_oak_fence",
+      "worlds_of_fun_silhouette_banner": "minecraft:white_banner"
+    },
+    "avoid": [
+      "minecraft:torch",
+      "minecraft:lava",
+      "minecraft:fire",
+      "minecraft:mob_spawner",
+      "minecraft:magenta_wool",
+      "minecraft:purple_concrete",
+      "minecraft:cyan_concrete",
+      "minecraft:saturated_color_blocks_in_large_surfaces"
+    ]
+  },
+  "tenant_zones": [
+    {
+      "id": "usps_distribution",
+      "name": "USPS National Requisition Center - Stamp Distribution",
+      "archetype": "package_logistics",
+      "position": { "x": -50, "y": 20, "z": -50 },
+      "footprint": { "x_min": -60, "x_max": -30, "y_min": 20, "y_max": 25, "z_min": -30, "z_max": -80 },
+      "approximate_sq_ft_real": 217114,
+      "block_spec": {
+        "walls": "minecraft:white_concrete",
+        "floor": "minecraft:polished_andesite",
+        "dock_doors": "minecraft:dark_oak_door",
+        "dock_door_count": 5,
+        "dock_door_labels": ["S1", "S2", "S3", "S4", "S5"],
+        "dock_door_number_color": "minecraft:yellow_concrete",
+        "rail_in_front": "minecraft:rail",
+        "trailer_prop": "minecraft:minecart",
+        "bollards": "minecraft:yellow_concrete",
+        "conveyor": "minecraft:polished_deepslate",
+        "interior_storage": ["minecraft:barrel", "minecraft:chest"],
+        "office_door": "minecraft:dark_oak_door",
+        "office_walls": "minecraft:white_concrete",
+        "office_window": "minecraft:glass_pane",
+        "tenant_sign_text": "USPS - National Requisition Center",
+        "tenant_sign_primary": "minecraft:blue_concrete",
+        "tenant_sign_background": "minecraft:white_concrete",
+        "easter_egg": {
+          "name": "2001 USPS Anthrax Scare",
+          "block": "minecraft:item_frame",
+          "content": "minecraft:paper",
+          "text": "2001 - USPS Anthrax Precautionary Testing - SubTropolis Shelter-in-Place",
+          "tag": "D"
+        },
+        "lighting": {
+          "primary": "minecraft:sea_lantern",
+          "every_n_blocks": 5,
+          "door_light": "minecraft:lantern"
+        }
+      },
+      "tag": "D"
+    },
+    {
+      "id": "usps_fulfillment",
+      "name": "USPS Stamp Fulfillment Center",
+      "archetype": "package_logistics",
+      "position": { "x": -30, "y": 20, "z": -50 },
+      "footprint": { "x_min": -30, "x_max": 0, "y_min": 20, "y_max": 25, "z_min": -30, "z_max": -80 },
+      "approximate_sq_ft_real": 311600,
+      "block_spec": {
+        "walls": "minecraft:white_concrete",
+        "floor": "minecraft:polished_andesite",
+        "conveyor": "minecraft:polished_deepslate",
+        "interior_storage": ["minecraft:barrel", "minecraft:chest"],
+        "lighting": { "primary": "minecraft:sea_lantern", "every_n_blocks": 5 }
+      },
+      "tag": "D"
+    },
+    {
+      "id": "nara",
+      "name": "NARA Federal Records Center",
+      "archetype": "records_archive",
+      "position": { "x": 50, "y": 20, "z": -150 },
+      "footprint": { "x_min": 40, "x_max": 60, "y_min": 20, "y_max": 25, "z_min": -140, "z_max": -160 },
+      "approximate_sq_ft_real": 372000,
+      "block_spec": {
+        "door": "minecraft:dark_oak_door",
+        "door_window": "minecraft:glass_pane",
+        "tenant_sign_text": "NARA - Federal Records Center",
+        "tenant_sign_primary": "minecraft:orange_concrete",
+        "tenant_sign_background": "minecraft:white_concrete",
+        "walls": "minecraft:white_concrete",
+        "floor": "minecraft:polished_andesite",
+        "shelving_height_blocks": 5,
+        "shelving_shelf": "minecraft:smooth_stone_slab",
+        "shelving_aisle_width_blocks": 1,
+        "shelving_inventory": "minecraft:barrel",
+        "shelving_optional": "minecraft:bookshelf",
+        "aisle_markers": "minecraft:oak_sign",
+        "shelf_lighting": {
+          "block": "minecraft:end_rod",
+          "position": "underside_of_shelf",
+          "count_per_shelf_run": 1
+        },
+        "ambient_fill": "minecraft:soul_lantern",
+        "door_light": "minecraft:lantern",
+        "climate_sign_text": "CLIMATE: 65F / 35% RH - CONSTANT",
+        "climate_sign": "minecraft:oak_sign",
+        "tag": "D"
+      },
+      "tag": "D"
+    },
+    {
+      "id": "stc_data_center",
+      "name": "SubTropolis Technology Center (STC)",
+      "archetype": "data_center",
+      "position": { "x": 70, "y": 20, "z": -150 },
+      "footprint": { "x_min": 60, "x_max": 80, "y_min": 20, "y_max": 25, "z_min": -140, "z_max": -160 },
+      "block_spec": {
+        "door_frame": "minecraft:black_concrete",
+        "door": "minecraft:dark_oak_door",
+        "door_window": "minecraft:glass_pane",
+        "tenant_sign_text": "SubTropolis Technology Center",
+        "tenant_sign_primary": "minecraft:light_blue_concrete",
+        "tenant_sign_background": "minecraft:black_concrete",
+        "biometric_pedestal": "minecraft:black_concrete",
+        "biometric_top": "minecraft:iron_trapdoor",
+        "biometric_indicator": "minecraft:redstone_lamp",
+        "biometric_sign_text": "BIOMETRIC HAND READER - 24/7 ARMED SECURITY",
+        "biometric_sign": "minecraft:oak_sign",
+        "walls": "minecraft:black_concrete",
+        "floor": "minecraft:polished_deepslate",
+        "rack_unit_w_h_d": [1, 2, 1],
+        "rack_count_per_row": 6,
+        "rack_row_count": 2,
+        "rack_sides": "minecraft:black_concrete",
+        "rack_front": "minecraft:obsidian",
+        "rack_top": "minecraft:smooth_stone_slab",
+        "rack_indicator": "minecraft:redstone_lamp",
+        "cold_aisle_width_blocks": 1,
+        "cold_aisle_underglow": "minecraft:shroomlight",
+        "cold_aisle_underglow_cover": "minecraft:polished_deepslate_slab",
+        "hot_aisle_ceiling_vents": "minecraft:iron_bars",
+        "hot_aisle_indicator": "minecraft:redstone_lamp",
+        "redstone_clock": "minecraft:redstone_repeater",
+        "redstone_clock_repeater_count": 4,
+        "dark_fiber_conduit": "minecraft:green_concrete",
+        "dark_fiber_sign_text": "DARK FIBER - 1102 GRAND",
+        "dark_fiber_sign": "minecraft:oak_sign",
+        "cold_aisle_sign_text": "COLD AISLE 65F",
+        "hot_aisle_sign_text": "HOT AISLE EXHAUST",
+        "tag": "D"
+      },
+      "tag": "D"
+    },
+    {
+      "id": "grainger",
+      "name": "W.W. Grainger Industrial Distribution",
+      "archetype": "general_industrial",
+      "position": { "x": 60, "y": 20, "z": -50 },
+      "footprint": { "x_min": 50, "x_max": 70, "y_min": 20, "y_max": 25, "z_min": -30, "z_max": -70 },
+      "block_spec": {
+        "walls": "minecraft:white_concrete",
+        "floor": "minecraft:polished_andesite",
+        "dock_doors": "minecraft:dark_oak_door",
+        "dock_door_count": 6,
+        "dock_door_labels": ["G1", "G2", "G3", "G4", "G5", "G6"],
+        "dock_door_number_color": "minecraft:orange_concrete",
+        "rail_in_front": "minecraft:rail",
+        "trailer_prop": "minecraft:minecart",
+        "bollards": "minecraft:white_concrete",
+        "rack_uprights": "minecraft:oak_fence",
+        "rack_shelves": "minecraft:oak_slab",
+        "rack_height_blocks": 4,
+        "rack_width_blocks": 2,
+        "interior_storage": ["minecraft:barrel", "minecraft:chest"],
+        "inventory_labels": ["HVAC FILTERS", "FASTENERS", "POWER TOOLS"],
+        "inventory_label_sign": "minecraft:oak_sign",
+        "office_door": "minecraft:dark_oak_door",
+        "tenant_sign_text": "W.W. GRAINGER - Industrial Distribution",
+        "tenant_sign_primary": "minecraft:orange_concrete",
+        "tenant_sign_background": "minecraft:white_concrete",
+        "lighting": { "primary": "minecraft:glowstone", "every_n_blocks": 6 }
+      },
+      "tag": "D"
+    },
+    {
+      "id": "epa",
+      "name": "EPA Region 7 Training & Logistics Center",
+      "archetype": "general_industrial_office",
+      "position": { "x": 30, "y": 20, "z": -50 },
+      "footprint": { "x_min": 20, "x_max": 35, "y_min": 20, "y_max": 25, "z_min": -40, "z_max": -60 },
+      "approximate_sq_ft_real": 43200,
+      "block_spec": {
+        "door": "minecraft:dark_oak_door",
+        "door_window": "minecraft:glass_pane",
+        "tenant_sign_text": "EPA Region 7 - Training & Logistics Center",
+        "tenant_sign_primary": "minecraft:blue_concrete",
+        "tenant_sign_background": "minecraft:white_concrete",
+        "walls": "minecraft:white_concrete",
+        "floor": "minecraft:polished_andesite",
+        "training_bleacher": "minecraft:oak_stairs",
+        "training_desk": "minecraft:lectern",
+        "wall_map": "minecraft:white_banner",
+        "emergency_sign_text": "EMERGENCY RESPONSE - 24/7",
+        "emergency_sign": "minecraft:oak_sign",
+        "lighting": { "primary": "minecraft:glowstone", "every_n_blocks": 6, "desk_light": "minecraft:lantern" }
+      },
+      "tag": "D"
+    },
+    {
+      "id": "hallmark_russell_stover",
+      "name": "Hallmark Cards / Russell Stover Consumer Goods Distribution",
+      "archetype": "general_industrial",
+      "position": { "x": -70, "y": 20, "z": -150 },
+      "footprint": { "x_min": -70, "x_max": -50, "y_min": 20, "y_max": 25, "z_min": -140, "z_max": -170 },
+      "block_spec": {
+        "walls": "minecraft:white_concrete",
+        "floor": "minecraft:polished_andesite",
+        "dock_doors": "minecraft:dark_oak_door",
+        "dock_door_count": 4,
+        "dock_door_labels": ["H1", "H2", "H3", "H4"],
+        "dock_door_number_color": "minecraft:yellow_concrete",
+        "rail_in_front": "minecraft:rail",
+        "hallmark_inventory": "minecraft:white_concrete",
+        "hallmark_accents": "minecraft:red_concrete",
+        "russell_stover_inventory": "minecraft:brown_concrete",
+        "russell_stover_wall": "minecraft:brown_concrete",
+        "russell_stover_sign_text": "KEEP COOL 65F",
+        "conveyor": "minecraft:polished_andesite",
+        "tenant_sign_text": "Hallmark / Russell Stover - Consumer Goods Distribution",
+        "tenant_sign_primary": "minecraft:yellow_concrete",
+        "tenant_sign_background": "minecraft:white_concrete",
+        "lighting": { "primary": "minecraft:glowstone", "every_n_blocks": 6 }
+      },
+      "tag": "D"
+    },
+    {
+      "id": "uvs_film_archive",
+      "name": "Underground Vaults & Storage (UV&S) - Film Archive",
+      "archetype": "records_archive",
+      "position": { "x": -50, "y": 20, "z": -180 },
+      "footprint": { "x_min": -50, "x_max": -40, "y_min": 20, "y_max": 25, "z_min": -170, "z_max": -190 },
+      "block_spec": {
+        "door": "minecraft:iron_door",
+        "door_sign_text": "UV&S - AUTHORIZED PERSONNEL ONLY",
+        "door_sign": "minecraft:oak_sign",
+        "shelving_uprights": "minecraft:iron_bars",
+        "shelving_shelves": "minecraft:iron_trapdoor",
+        "shelving_height_blocks": 3,
+        "shelving_inventory": ["minecraft:barrel", "minecraft:chest"],
+        "film_can_label_1": "GONE WITH THE WIND - INTERPOSITIVE",
+        "film_can_label_2": "WIZARD OF OZ - MASTER",
+        "film_can_block": "minecraft:barrel",
+        "film_can_label_sign": "minecraft:oak_sign",
+        "climate_sign_text": "CLIMATE-CONTROLLED FILM ARCHIVE - 38F / 35% RH",
+        "climate_sign": "minecraft:oak_sign",
+        "lighting": { "primary": "minecraft:lantern", "count": 1, "position": "at_door" }
+      },
+      "tag": "D faded"
+    },
+    {
+      "id": "ford_grainger_vehicles",
+      "name": "Ford / Grainger Historical Vehicle Storage",
+      "archetype": "general_industrial_vehicles",
+      "position": { "x": 40, "y": 20, "z": -185 },
+      "footprint": { "x_min": 30, "x_max": 50, "y_min": 20, "y_max": 25, "z_min": -170, "z_max": -195 },
+      "block_spec": {
+        "floor": "minecraft:polished_andesite",
+        "parking_bay_lines": "minecraft:white_concrete",
+        "center_lane": "minecraft:yellow_concrete",
+        "grainger_bay_marking": "minecraft:orange_concrete",
+        "vehicle_count": 8,
+        "vehicle_block": "minecraft:minecart",
+        "tenant_sign_text": "VEHICLE STORAGE - NO DRIVING BEYOND THIS POINT",
+        "tenant_sign_primary": "minecraft:white_concrete",
+        "tenant_sign_background": "minecraft:red_concrete",
+        "historical_plaque_text": "FORD MOTOR CO. - 25-ACRE VEHICLE LEASE, 1970s. CURRENTLY: W.W. GRAINGER, INDUSTRIAL DISTRIBUTION.",
+        "historical_plaque": "minecraft:oak_sign",
+        "lighting": { "primary": "minecraft:glowstone", "every_n_blocks": 6 }
+      },
+      "tag": "D"
+    },
+    {
+      "id": "leasing_office",
+      "name": "Leasing Office (Visitor Center Interior)",
+      "archetype": "interpretive",
+      "position": { "x": 20, "y": 20, "z": -10 },
+      "footprint": { "x_min": 15, "x_max": 25, "y_min": 20, "y_max": 25, "z_min": -10, "z_max": 10 },
+      "block_spec": {
+        "walls": "minecraft:white_concrete",
+        "floor": "minecraft:polished_andesite",
+        "door": "minecraft:dark_oak_door",
+        "interpretive_panels": "minecraft:item_frame",
+        "interpretive_paper": "minecraft:paper",
+        "limestone_sample": "minecraft:smooth_stone",
+        "tenant_listing_sign": "minecraft:oak_sign",
+        "tag": "D"
+      },
+      "tag": "D"
+    },
+    {
+      "id": "hunt_hall",
+      "name": "Hunt Hall (Round Room at Central Plaza)",
+      "archetype": "memorial",
+      "position": { "x": 0, "y": 20, "z": -100 },
+      "footprint": { "shape": "round", "diameter_blocks": 15 },
+      "block_spec": {
+        "walls": "minecraft:white_concrete",
+        "wall_trim": "minecraft:light_gray_concrete",
+        "floor": "minecraft:polished_andesite",
+        "floor_medallion": "minecraft:quartz_block",
+        "medallion_diameter_blocks": 3,
+        "portrait_frame": "minecraft:item_frame",
+        "portrait_content": "minecraft:paper",
+        "chiefs_arrowhead_primary": "minecraft:red_concrete",
+        "chiefs_arrowhead_secondary": "minecraft:yellow_concrete",
+        "plaque_text": "HUNT HALL - IN HONOR OF LAMAR HUNT (1932-2006), FOUNDER OF SUBTROPOLIS",
+        "plaque_sign": "minecraft:oak_sign",
+        "lighting": { "primary": "minecraft:lantern", "count": 1 }
+      },
+      "tag": "D"
+    },
+    {
+      "id": "employee_cafeteria",
+      "name": "Employee Cafeteria (faded reference)",
+      "archetype": "atmospheric",
+      "position": { "x": -20, "y": 20, "z": -30 },
+      "footprint": { "x_min": -24, "x_max": -16, "y_min": 20, "y_max": 25, "z_min": -26, "z_max": -18 },
+      "block_spec": {
+        "bleacher_seating": "minecraft:oak_stairs",
+        "lunch_tables": "minecraft:oak_fence",
+        "coffee_stations": "minecraft:cauldron",
+        "food_prep": "minecraft:crafting_table",
+        "radio": "minecraft:jukebox",
+        "tag": "X"
+      },
+      "tag": "X"
+    },
+    {
+      "id": "ghost_mine",
+      "name": "Ghost Mine (Unfinished Chamber)",
+      "archetype": "unfinished",
+      "position": { "x": -90, "y": 20, "z": -190 },
+      "footprint": { "x_min": -100, "x_max": -80, "y_min": 20, "y_max": 25, "z_min": -180, "z_max": -200 },
+      "block_spec": {
+        "approach_floor": "minecraft:stone",
+        "approach_walls": "minecraft:stone",
+        "approach_ceiling": "minecraft:stone",
+        "approach_ceiling_decor": "minecraft:cobweb",
+        "approach_lighting": { "primary": "minecraft:glowstone", "every_n_blocks": 10 },
+        "barricade_block": "minecraft:oak_fence",
+        "barricade_gate": "minecraft:oak_fence_gate",
+        "barricade_sign_text": "DANGER - ACTIVE MINING - HUNT MIDWEST MINING, INC.",
+        "barricade_sign_secondary": "NO UNAUTHORIZED ENTRY BEYOND THIS POINT.",
+        "barricade_sign": "minecraft:oak_sign",
+        "chamber_floor": ["minecraft:stone", "minecraft:gravel"],
+        "chamber_walls": "minecraft:smooth_stone",
+        "chamber_ceiling": "minecraft:smooth_stone",
+        "chamber_wall_veins": "minecraft:deepslate",
+        "chamber_lighting": { "primary": "minecraft:soul_lantern", "count": 1, "position": "at_barricade" },
+        "chamber_prop": { "block": "minecraft:minecart", "rail": "minecraft:rail" }
+      },
+      "tag": "D"
+    }
+  ],
+  "street_signs": [
+    {
+      "name": "Hushpuckney Ave",
+      "orientation": "N-S",
+      "path": "from (0, 20, 0) to (0, 20, -200)",
+      "sign_backing": "minecraft:green_concrete",
+      "sign_text": "minecraft:oak_sign",
+      "sign_post": "minecraft:fence",
+      "tag": "D"
+    },
+    {
+      "name": "Bethany Falls Blvd",
+      "orientation": "E-W",
+      "path": "from (-100, 20, -100) to (100, 20, -100)",
+      "sign_backing": "minecraft:green_concrete",
+      "sign_text": "minecraft:oak_sign",
+      "sign_post": "minecraft:fence",
+      "tag": "X"
+    },
+    {
+      "name": "Iola Ln",
+      "orientation": "N-S",
+      "path": "from (-30, 20, 0) to (-30, 20, -200)",
+      "tag": "X"
+    },
+    {
+      "name": "Muncie Dr",
+      "orientation": "N-S",
+      "path": "from (30, 20, 0) to (30, 20, -200)",
+      "tag": "X"
+    },
+    {
+      "name": "Galesburg Way",
+      "orientation": "E-W",
+      "path": "from (-100, 20, -30) to (100, 20, -30)",
+      "tag": "X"
+    },
+    {
+      "name": "Winterset Crossing",
+      "orientation": "E-W",
+      "path": "from (-100, 20, -140) to (100, 20, -140)",
+      "tag": "X"
+    }
+  ],
+  "speed_limit_signs": [
+    { "location": "main_entrance_portal_5_blocks_in", "x": 0, "y": 70, "z": -5, "speed_mph": 15, "sign_block": "minecraft:white_concrete", "number_block": "minecraft:black_concrete", "post": "minecraft:fence", "tag": "D" },
+    { "location": "second_exit_portal_5_blocks_out", "x": 100, "y": 70, "z": -100, "speed_mph": 15, "tag": "D" },
+    { "location": "main_grid_central_plaza", "x": 0, "y": 20, "z": -100, "speed_mph": 15, "tag": "D" },
+    { "location": "main_grid_intersection_w_iola", "x": -30, "y": 20, "z": -100, "speed_mph": 15, "tag": "D" },
+    { "location": "main_grid_intersection_e_muncie", "x": 30, "y": 20, "z": -100, "speed_mph": 15, "tag": "D" }
+  ],
+  "headline_signs": {
+    "marquee_at_entrance": {
+      "location": "above_main_entrance_portal",
+      "position": { "x": 0, "y": 73, "z": 0 },
+      "text": "WORLD'S LARGEST UNDERGROUND BUSINESS COMPLEX (R) - HUNT MIDWEST SUBTROPOLIS",
+      "size_blocks": [6, 2],
+      "background": "minecraft:red_concrete",
+      "text_color": "minecraft:white_concrete",
+      "tag": "D"
+    },
+    "leasing_office_plaque": {
+      "text": "14,000,000 SQ FT DEVELOPED",
+      "tag": "D"
+    },
+    "established_plaque_1964": {
+      "location": "central_plaza_pillar",
+      "text": "SUBTROPOLIS - EST. 1964",
+      "background": "minecraft:white_concrete",
+      "primary_text": "minecraft:red_concrete",
+      "secondary_text": "minecraft:black_concrete",
+      "size_blocks": [4, 3],
+      "tag": "D"
+    },
+    "foreign_trade_zone_sign": {
+      "text": "DESIGNATED U.S. FOREIGN-TRADE ZONE - LARGEST UNDER ONE ROOF",
+      "block": "minecraft:oak_sign",
+      "tag": "D"
+    },
+    "energy_star_certificate": {
+      "text": "ENERGY STAR 100 - 2012-",
+      "frame": "minecraft:item_frame",
+      "paper": "minecraft:paper",
+      "tag": "D"
+    },
+    "depth_interpretive": {
+      "text": "150 FT BELOW SURFACE (up to 160 ft maximum)",
+      "block": "minecraft:oak_sign",
+      "tag": "D"
+    },
+    "temperature_interpretive": {
+      "text": "68 F YEAR-ROUND (65-70 F range)",
+      "block": "minecraft:oak_sign",
+      "tag": "D"
+    },
+    "road_length_interpretive": {
+      "text": "8.2 MI OF PAVED ROAD",
+      "block": "minecraft:oak_sign",
+      "tag": "D"
+    },
+    "compressive_strength_interpretive": {
+      "text": "18,000-24,000 PSI COMPRESSIVE STRENGTH (6x concrete)",
+      "block": "minecraft:oak_sign",
+      "tag": "D"
+    },
+    "no_truck_idling": {
+      "text": "NO TRUCK IDLING",
+      "block": "minecraft:oak_sign",
+      "tag": "D"
+    },
+    "no_am_fm_reception": {
+      "text": "NO AM/FM RECEPTION - Above-Ground Relay Antenna",
+      "block": "minecraft:oak_sign",
+      "tag": "D"
+    },
+    "welcome_to_subtropolis": {
+      "text": "WELCOME TO SUBTROPOLIS",
+      "block": "minecraft:oak_sign",
+      "tag": "D"
+    },
+    "shift_change_signs": {
+      "text_set": ["FIRST SHIFT - 06:00", "SECOND SHIFT - 14:00", "THIRD SHIFT - 22:00"],
+      "block": "minecraft:oak_sign",
+      "tag": "D"
+    },
+    "groundhog_run_banner": {
+      "text": "Annual Groundhog Run - 10K Underground - 1st Saturday in February",
+      "block": "minecraft:white_banner",
+      "tag": "D"
+    }
+  },
+  "phases": [
+    {
+      "phase": 1,
+      "name": "Site Prep",
+      "goal": "Terrain, hillside, surface plateau, 200x200 chamber hollowed out as void, exit portal opening rough-cut, sub-basement carved.",
+      "block_budget_estimate": 320000,
+      "block_budget_unit": "blocks_removed",
+      "prerequisites": [
+        "Server render distance set to view-distance: 16+ simulation-distance: 12+",
+        "Contractor in creative mode"
+      ],
+      "steps": [
+        { "step": 1, "action": "Build 80x60 surface plateau at Y=80, grass + dirt + stone", "blocks": 14400, "verification": "Plateau visible from south (KC plain), with grass top, dirt subsoil" },
+        { "step": 2, "action": "Carve south ravine wall (vertical, ~50 blocks tall, stone+calcite+diorite+tuff mix)", "blocks": 120000, "verification": "Vertical face with visible rock-blend pattern" },
+        { "step": 3, "action": "Carve main portal opening 12x5 at (0, 70, 0)", "blocks": 60, "verification": "Portal frame visible as dark rectangular void" },
+        { "step": 4, "action": "Rough-cut exit portal opening 12x5 at (100, 70, -100)", "blocks": 60, "verification": "East-face opening visible" },
+        { "step": 5, "action": "Hollow main grid 200x200x5 (X:-100 to 100, Z:0 to -200, Y:20 to 25)", "blocks": 200000, "verification": "Chamber exists as a void, dark, raw stone" },
+        { "step": 6, "action": "Carve sub-basement 20x20x5 at (-80, 10, -180)", "blocks": 2000, "verification": "Sub-basement void exists below main grid" }
+      ]
+    },
+    {
+      "phase": 2,
+      "name": "Carve the Mine",
+      "goal": "Chamber shell finish (ceiling white, floor polished), 8x8 pillars on iconic-intersection grid, sub-basement interior finish.",
+      "block_budget_estimate": 120000,
+      "prerequisites": ["Phase 1 complete"],
+      "steps": [
+        { "step": 1, "action": "Replace Y=25 ceiling with white_concrete across 200x200 footprint", "blocks": 40000, "verification": "Ceiling uniformly white when viewed from chamber floor" },
+        { "step": 2, "action": "Replace Y=20 floor with polished_andesite across 200x200 footprint", "blocks": 40000, "verification": "Floor uniformly polished andesite" },
+        { "step": 3, "action": "Place 60-80 8x8x5 white_concrete pillars at iconic intersections (use pillar schematic paste via mc-fleet-bot mission script)", "blocks": 25000, "verification": "Pillars evenly spaced, identical in proportion, painted white with light gray top/bottom bands" },
+        { "step": 4, "action": "Sub-basement floor polished_andesite, walls white_concrete, ceiling stone", "blocks": 1200, "verification": "Sub-basement interior finished" },
+        { "step": 5, "action": "Sub-basement access: temporary ladder at (-80, 20, -180)", "blocks": 5, "verification": "Contractor can climb down to sub-basement for inspection" }
+      ]
+    },
+    {
+      "phase": 3,
+      "name": "Main Avenue + Street Signs",
+      "goal": "350-block main avenue has lane markings, street signs, stop signs, speed-limit signs, painted pillar numbers, central plaza.",
+      "block_budget_estimate": 3500,
+      "prerequisites": ["Phase 2 complete"],
+      "steps": [
+        { "step": 1, "action": "Yellow concrete center line on Hushpuckney (X=0, Y=20, Z=0 to -200)", "blocks": 200, "verification": "Continuous yellow line down center of main avenue" },
+        { "step": 2, "action": "White concrete edge lines on Hushpuckney (X=+-6, Y=20, Z=0 to -200)", "blocks": 400, "verification": "White lines on each side" },
+        { "step": 3, "action": "Crosswalks at every cross-avenue intersection (5 cross streets)", "blocks": 30, "verification": "White crosswalks at every intersection" },
+        { "step": 4, "action": "Street signs at every intersection (60-100 placements)", "blocks": 300, "verification": "Green concrete backing + oak sign text, fence post stem, readable from 10 blocks" },
+        { "step": 5, "action": "Stop signs at every iconic intersection (~50 placements)", "blocks": 100, "verification": "Red concrete squares on fence posts, 4 per intersection" },
+        { "step": 6, "action": "Speed Limit 15 signs at portals + central plaza + every iconic intersection (~12-15 placements)", "blocks": 60, "verification": "White concrete sign with black 15, fence post, readable" },
+        { "step": 7, "action": "Painted pillar numbers (black concrete) at every iconic-intersection pillar (12+ visible)", "blocks": 200, "verification": "Numbers readable from 10 blocks, format block-number.cross-street" },
+        { "step": 8, "action": "Central plaza: 20x20 circular quartz block plaza with 3-block-diameter quartz medallion at (0, 20, -100)", "blocks": 320, "verification": "Plaza visible at intersection of Hushpuckney and Bethany Falls" }
+      ]
+    },
+    {
+      "phase": 4,
+      "name": "Tenant Zones",
+      "goal": "6+ distinct tenant fit-outs along main avenue.",
+      "block_budget_estimate_min": 50000,
+      "block_budget_estimate_max": 80000,
+      "prerequisites": ["Phase 3 complete"],
+      "steps": [
+        { "step": 1, "action": "USPS Stamp Distribution + Fulfillment Center (package logistics archetype, 5 dock doors, conveyor, anthrax plaque)", "blocks": 8000 },
+        { "step": 2, "action": "NARA Federal Records Center (records archive archetype, floor-to-ceiling shelving, dim amber, climate sign)", "blocks": 6000 },
+        { "step": 3, "action": "SubTropolis Technology Center (data center archetype, 12 server racks, biometric, redstone clock, dark fiber)", "blocks": 12000 },
+        { "step": 4, "action": "W.W. Grainger Industrial Distribution (general industrial, 6 dock doors, pallet racks, orange branding)", "blocks": 8000 },
+        { "step": 5, "action": "EPA Region 7 Training & Logistics Center (general industrial/office, training bleacher, lectern, EPA signage)", "blocks": 3000 },
+        { "step": 6, "action": "Hallmark / Russell Stover Consumer Goods (general industrial, 4 dock doors, gold + brown accents)", "blocks": 6000 },
+        { "step": 7, "action": "Underground Vaults & Storage (records archive, iron door, 3 rows shelving, 2 labeled film cans, single lantern)", "blocks": 2500 },
+        { "step": 8, "action": "Ford / Grainger Historical Vehicle Storage (general industrial/vehicles, 8+ minecarts, historical plaque)", "blocks": 3500 }
+      ]
+    },
+    {
+      "phase": 5,
+      "name": "Climate-Controlled Zones",
+      "goal": "Climate-control details (vents, dim lighting, climate signage) and constant-climate feel.",
+      "block_budget_estimate_min": 3000,
+      "block_budget_estimate_max": 5000,
+      "prerequisites": ["Phase 4 complete"],
+      "steps": [
+        { "step": 1, "action": "STC hot-aisle ceiling vents (iron bars + redstone lamp indicators), signs", "blocks": 200 },
+        { "step": 2, "action": "STC redstone clock wiring test (4-repeater loop, drives 12 lamp indicators in staggered pattern)", "blocks": 50 },
+        { "step": 3, "action": "NARA end-rod verification (one per shelf run, on underside of shelf, emit horizontally)", "blocks": 0, "verification": "Each shelf run has 1 end-rod on underside, dim amber light" },
+        { "step": 4, "action": "NARA ambient fill (soul_lantern at door, plus lantern if needed)", "blocks": 5 },
+        { "step": 5, "action": "UV&S climate sign at door", "blocks": 1 },
+        { "step": 6, "action": "Climate-controlled signs at every climate-controlled door (NARA, STC, UV&S)", "blocks": 3 },
+        { "step": 7, "action": "Main avenue sea-lantern density tune (target: every 4-5 blocks)", "blocks": 0, "verification": "Walk at night, lighting feels uniform and fluorescent" }
+      ]
+    },
+    {
+      "phase": 6,
+      "name": "Surface Building + Entrance Ramp + Exit Portal",
+      "goal": "Surface plateau finish, visitor center, parking lot, entrance ramp with daylight-to-fluorescent transition, exit portal.",
+      "block_budget_estimate_min": 25000,
+      "block_budget_estimate_max": 30000,
+      "prerequisites": ["Phases 1-5 complete"],
+      "steps": [
+        { "step": 1, "action": "Surface plateau finish: grass + dirt, 6-8 oak trees + 2-3 birch trees, poppies + azure bluets", "blocks": 5000 },
+        { "step": 2, "action": "Hunt Midwest visitor center (8x10x6 block, white concrete facade, dark oak door, glass pane window, mounted sign)", "blocks": 500 },
+        { "step": 3, "action": "Marquee sign 6x2 over main portal (red concrete background, white concrete text)", "blocks": 12 },
+        { "step": 4, "action": "Tenant directory board 5x4 (dark oak fence + oak signs listing marquee tenants)", "blocks": 100 },
+        { "step": 5, "action": "Interpretive wall in visitor center (Bethany Falls sample, scale model, depth/temp/road/strength signs, ENERGY STAR certificate, FTZ sign, 1964 plaque)", "blocks": 200 },
+        { "step": 6, "action": "Parking lot 6 rows x 8 cars, gray concrete, white lines, parked minecarts, lantern per row on fence post", "blocks": 3500 },
+        { "step": 7, "action": "Lamar Hunt / KC Chiefs plaque (oak sign on post + red/yellow arrowhead)", "blocks": 10 },
+        { "step": 8, "action": "Worlds of Fun silhouette: dark_oak_fence post 15 blocks tall + white_banner on neighboring hilltop (~150 blocks away)", "blocks": 16 },
+        { "step": 9, "action": "Entrance ramp ~100 blocks of road descending from (0,70,0) to (0,20,-100), polished andesite with painted lines, smooth_stone+calcite walls first 20 blocks, white_concrete walls last 30 blocks, sea_lantern ceiling every 4-6 blocks in transition", "blocks": 12000 },
+        { "step": 10, "action": "Entrance ramp signage: SPEED LIMIT 15, NO TRUCK IDLING, NO AM/FM RECEPTION, WELCOME TO SUBTROPOLIS", "blocks": 20 },
+        { "step": 11, "action": "Exit portal: 12x5 frame, paved road, EXIT sign, YOU ARE LEAVING SUBTROPOLIS sign, security kiosk 3x3x3", "blocks": 1500 }
+      ]
+    },
+    {
+      "phase": 7,
+      "name": "Finishing: Easter Eggs, Ghost Mine, Inter-Site, Lighting",
+      "goal": "Off-path easter eggs, ghost mine chamber, inter-site connections, lighting tuning.",
+      "block_budget_estimate_min": 10000,
+      "block_budget_estimate_max": 15000,
+      "prerequisites": ["Phases 1-6 complete"],
+      "steps": [
+        { "step": 1, "action": "Hunt Hall round room: 15-block-diameter round room off central plaza, white concrete walls, quartz medallion, Lamar Hunt portrait, mounted Chiefs arrowhead, plaque", "blocks": 2000 },
+        { "step": 2, "action": "FTZ sign in leasing office", "blocks": 10 },
+        { "step": 3, "action": "ENERGY STAR 100 framed certificate on interpretive wall (item_frame + paper)", "blocks": 5 },
+        { "step": 4, "action": "Shift-change signage (3 oak signs at one major intersection)", "blocks": 30 },
+        { "step": 5, "action": "Employee cafeteria (8x8 break room, oak_stairs bleachers, oak_fence tables, cauldron coffee, crafting_table, jukebox)", "blocks": 500 },
+        { "step": 6, "action": "Groundhog Run banner (white_banner between two pillars)", "blocks": 5 },
+        { "step": 7, "action": "Side spur 1 (west) 100 blocks of stone corridor to ghost mine, with cobwebs and dim glowstone every 10 blocks", "blocks": 5000 },
+        { "step": 8, "action": "Ghost mine barricade: 3-block-tall oak fence with gate, 2 danger signs", "blocks": 50 },
+        { "step": 9, "action": "Ghost mine chamber 20x20 of rough smooth_stone + stone + gravel + deepslate veins, single soul_lantern at barricade, minecart on rail", "blocks": 1000 },
+        { "step": 10, "action": "Side spur 2 (east) 100 blocks for historical tenants corridor (Pillsbury flour, Russell Stover historical, 1964 first-tenant plaque)", "blocks": 3000 },
+        { "step": 11, "action": "Service tunnel sub-basement finish: downward corridor 8x5 from (-80,20,-180) to (-80,10,-180), security gate, rail loop turnaround, minecart service vehicle, signs", "blocks": 200 },
+        { "step": 12, "action": "Public Access Lobby at (60,20,-180) 12x12: dark_oak_door entrance, security guard booth 3x3x3, oak_fence turnstile, vertical shaft 5x5 with ladder column, lanterns every 5 blocks", "blocks": 1500 },
+        { "step": 13, "action": "Public shaft surface lobby at (60,90,-180) 8x8x4: white concrete + light gray trim, dark_oak_door, sign, villager ticket agent", "blocks": 500 },
+        { "step": 14, "action": "Optional: water elevator (soul_sand + water column) in public shaft for boat-ride access", "blocks": 100 },
+        { "step": 15, "action": "Optional: note_block in STC for data center hum, note_block at ramp for fluorescent hum", "blocks": 4 },
+        { "step": 16, "action": "Lighting tuning pass: walk full build at night, tune sea_lantern density, tune end_rod placement, tune shroomlight underglow", "blocks": 0, "verification": "All zones feel right at night" }
+      ]
+    }
+  ],
+  "pillar_grid_coordinates": {
+    "description": "8x8x5 white_concrete pillars at iconic intersections. Each pillar center is listed.",
+    "main_avenue_intersections_z_values": [-30, -60, -100, -140, -180],
+    "cross_streets_x_values": [-100, -60, -30, 0, 30, 60, 100],
+    "pillar_count_estimate_min": 60,
+    "pillar_count_estimate_max": 80,
+    "block_per_pillar": 320,
+    "note": "Use a pillar-placement script that reads coordinates from a configuration file. Never place pillars by hand."
+  },
+  "inter_site_connections": {
+    "service_tunnel_to_cheyenne": {
+      "type": "service_tunnel",
+      "tag": "X",
+      "fiction_note": "Project fiction - the real SubTropolis has no service tunnel to a sister facility.",
+      "from": { "x": -80, "y": 10, "z": -180, "description": "SubTropolis service sub-basement" },
+      "to": { "x": "cheyenne_sub_basement_TBD", "y": "TBD", "z": "TBD", "description": "Cheyenne Mountain maintenance sub-basement (designed by Cheyenne team)" },
+      "cross_section_w_h": [6, 5],
+      "path_description": "Horizontal, single-lane, running under the ravine floor at Y=4-9. SubTropolis side: 20x20 sub-basement with rail loop, security gate, minecart service vehicle, signs.",
+      "subtropolis_features": {
+        "sub_basement": "20x20 at (-80, 10, -180), polished_andesite floor, white_concrete walls, stone ceiling, rail loop, minecart, signs",
+        "downward_corridor": "8x5 from (-80, 20, -180) to (-80, 10, -180), 30 blocks long, with 1-block-per-5-blocks descending step, dark_oak_door at main-grid entrance with AUTHORIZED VEHICLES ONLY sign",
+        "security_gate": "oak_fence + oak_fence_gate with SECURITY CHECKPOINT - AUTHORIZED PERSONNEL ONLY sign",
+        "maintenance_bay": "crafting_table + chests (maintenance supplies)",
+        "signage": "SERVICE TUNNEL - COMBINED COMPLEX MAINTENANCE - AUTHORIZED VEHICLES ONLY (oak_sign)",
+        "lighting": "lantern every 8 blocks"
+      }
+    },
+    "public_shaft_to_city": {
+      "type": "public_shaft",
+      "tag": "X",
+      "fiction_note": "Project fiction - the real SubTropolis has no public shaft, no elevator, and is accessed by a private drive.",
+      "from": { "x": 60, "y": 20, "z": -180, "description": "Public Access Lobby at grid edge" },
+      "to": { "x": 60, "y": 90, "z": -180, "description": "Surface lobby on SubTropolis hilltop" },
+      "cross_section": "5x5 blocks",
+      "path_description": "Vertical, 5x5, running from grid Y=20 up through ravine wall to surface exit Y=90. Player-climbable with ladders, optional water elevator.",
+      "subtropolis_features": {
+        "lobby": "12x12 at (60, 20, -180), dark_oak_door entrance, security guard booth 3x3x3 (white concrete + dark_oak_door + lantern), oak_fence turnstile with oak_fence_gate, 5x5 vertical shaft opening in ceiling, ladder column going up, lanterns every 5 blocks in shaft",
+        "vertical_shaft": "5x5 from Y=20 to Y=90, ladder column, optional soul_sand + water bubble elevator",
+        "surface_lobby": "8x8x4 at (60, 90, -180), white concrete + light_gray_concrete trim, dark_oak_door, sign, villager ticket agent",
+        "signage": "PUBLIC TRANSIT - COMBINED COMPLEX - TICKETED VISITORS ONLY (oak_sign on lobby door), ELEVATOR / SHAFT TO SUBTROPOLIS - TICKETED VISITORS ONLY (oak_sign at surface lobby)",
+        "security_framing": "Clearly a checkpoint - guard booth + turnstile + ticketed visitors only sign"
+      }
+    }
+  },
+  "easter_eggs": [
+    {
+      "name": "1964 SubTropolis Founding Plaque",
+      "type": "main_path",
+      "position": { "x": 0, "y": 22, "z": -100 },
+      "location": "Pillar at central plaza",
+      "block_spec": "4x3 block sign on pillar face, white concrete background, red concrete SUBTROPOLIS, black concrete other text. Format: SUBTROPOLIS / Established 1964 / Hunt Midwest Real Estate Development / 55,000,000 sq ft of mined void - 14,000,000 sq ft developed / 55+ tenants - 2,500+ employees / The world's largest underground business complex (R)",
+      "tag": "D"
+    },
+    {
+      "name": "Lamar Hunt / KC Chiefs Arrowhead",
+      "type": "main_path",
+      "position": { "x": 0, "y": 22, "z": -100 },
+      "location": "Hunt Hall round room wall",
+      "block_spec": "Single mounted red_concrete + yellow_concrete arrowhead (Chiefs logo abstracted). Oak sign plaque: HUNT HALL - IN HONOR OF LAMAR HUNT (1932-2006), FOUNDER OF SUBTROPOLIS. NO Chiefs helmet, NO football imagery, NO stadium references.",
+      "tag": "D"
+    },
+    {
+      "name": "UV&S Gone With the Wind Film Can",
+      "type": "off_path",
+      "position": { "x": -45, "y": 21, "z": -180 },
+      "location": "UV&S vault, middle shelf",
+      "block_spec": "Single barrel with oak_sign label: GONE WITH THE WIND - INTERPOSITIVE. NO posters, NO display cases, NO green-ray imagery.",
+      "tag": "D"
+    },
+    {
+      "name": "UV&S Wizard of Oz Film Can",
+      "type": "off_path",
+      "position": { "x": -45, "y": 21, "z": -180 },
+      "location": "UV&S vault, middle shelf",
+      "block_spec": "Single barrel with oak_sign label: WIZARD OF OZ - MASTER. NO posters, NO display cases.",
+      "tag": "D"
+    },
+    {
+      "name": "2001 USPS Anthrax Precautionary Testing Plaque",
+      "type": "off_path",
+      "position": { "x": -50, "y": 21, "z": -50 },
+      "location": "USPS fit-out wall",
+      "block_spec": "item_frame with paper reading: 2001 - USPS Anthrax Precautionary Testing - SubTropolis Shelter-in-Place",
+      "tag": "D"
+    },
+    {
+      "name": "ENERGY STAR 100 Framed Certificate",
+      "type": "off_path",
+      "position": { "x": 20, "y": 22, "z": -10 },
+      "location": "Visitor center interpretive wall",
+      "block_spec": "item_frame with paper reading: ENERGY STAR 100 - 2012-",
+      "tag": "D"
+    },
+    {
+      "name": "Foreign-Trade Zone Sign",
+      "type": "off_path",
+      "position": { "x": 20, "y": 21, "z": -10 },
+      "location": "Visitor center interpretive wall",
+      "block_spec": "oak_sign reading: DESIGNATED U.S. FOREIGN-TRADE ZONE - LARGEST UNDER ONE ROOF",
+      "tag": "D"
+    },
+    {
+      "name": "Shift-Change Signage",
+      "type": "off_path",
+      "position": { "x": -30, "y": 22, "z": -100 },
+      "location": "Major intersection",
+      "block_spec": "3 oak signs: FIRST SHIFT - 06:00 / SECOND SHIFT - 14:00 / THIRD SHIFT - 22:00",
+      "tag": "D"
+    },
+    {
+      "name": "Annual Groundhog Run Banner",
+      "type": "off_path",
+      "position": { "x": 0, "y": 24, "z": -140 },
+      "location": "Between two pillars in corridor",
+      "block_spec": "white_banner reading: Annual Groundhog Run - 10K Underground - 1st Saturday in February",
+      "tag": "D"
+    },
+    {
+      "name": "Worlds of Fun Silhouette",
+      "type": "faded",
+      "position": { "x": 200, "y": 120, "z": 250 },
+      "location": "Neighboring hilltop, ~150 blocks from visitor center",
+      "block_spec": "Single dark_oak_fence post 15 blocks tall with white_banner on top. Optional schematic substitution: small-roller-coaster.schem or ferris-wheel.schem or clock-tower.schem from D:\\projects\\mc-fleet-bot\\schematics\\",
+      "tag": "D faded"
+    },
+    {
+      "name": "Lamar Hunt Founder Plaque (Surface)",
+      "type": "main_path",
+      "position": { "x": 50, "y": 81, "z": 30 },
+      "location": "Near parking lot, surface",
+      "block_spec": "oak_sign on fence post reading: LAMAR HUNT - FOUNDER - 1964. With red_concrete + yellow_concrete arrowhead (Chiefs logo abstracted) on a wall behind.",
+      "tag": "D"
+    },
+    {
+      "name": "Employee Cafeteria (faded atmospheric)",
+      "type": "off_path",
+      "position": { "x": -20, "y": 20, "z": -22 },
+      "location": "8x8 break room off main avenue",
+      "block_spec": "oak_stairs bleachers, oak_fence tables, cauldron coffee stations, crafting_table food-prep, jukebox silent SubTropolis Radio",
+      "tag": "X"
+    }
+  ],
+  "schematic_reuse": {
+    "library_path": "D:\\projects\\mc-fleet-bot\\schematics\\",
+    "format": "Sponge Schematic (.schem)",
+    "reusable": [
+      { "name": "black-truck.schem", "use": "Ford-era vehicle in Ford/Grainger historical chamber (substitute for minecart)" },
+      { "name": "orange-truck.schem", "use": "Grainger-era vehicle in Ford/Grainger chamber (substitute for minecart)" },
+      { "name": "shelf.schem", "use": "Optional NARA / UV&S shelving base" },
+      { "name": "lantern.schem", "use": "Optional decorative lantern" },
+      { "name": "small-roller-coaster.schem", "use": "Optional Worlds of Fun silhouette" },
+      { "name": "ferris-wheel.schem", "use": "Optional Worlds of Fun silhouette alternative" },
+      { "name": "clock-tower.schem", "use": "Optional Worlds of Fun silhouette alternative" },
+      { "name": "barrel-house.schem", "use": "Reference only - do not paste directly" },
+      { "name": "library.schem", "use": "Reference for NARA archive inspiration" },
+      { "name": "kitchen.schem", "use": "Reference for employee cafeteria inspiration" },
+      { "name": "dark-wall.schem", "use": "Optional ghost mine chamber wall accent" },
+      { "name": "cherry-tree.schem", "use": "Optional surface plateau tree" },
+      { "name": "underground-base.schem", "use": "Reference only - do not paste directly (would conflict with pillar layout)" }
+    ],
+    "must_create_custom": [
+      "pillar-8x8x5-white.schem",
+      "pillar-8x8x5-quartz.schem",
+      "usps-dock-doors.schem",
+      "grainger-dock-doors.schem",
+      "stc-rack.schem",
+      "marquee-sign.schem",
+      "1964-plaque.schem",
+      "ghost-mine-barricade.schem",
+      "speed-limit-15.schem",
+      "street-sign.schem",
+      "stop-sign.schem"
+    ]
+  },
+  "bot_api_endpoints": {
+    "base_url_default": "http://127.0.0.1:3001",
+    "primary_endpoints": {
+      "GET /api/status": "Server status",
+      "GET /api/bots": "List bots",
+      "POST /api/bots/:name/task": "Queue a task for a bot",
+      "POST /api/bots/:name/pause": "Pause voyager",
+      "POST /api/bots/:name/resume": "Resume voyager",
+      "POST /api/bots/:name/walkto": "Walk to coordinates",
+      "POST /api/commands": "Create command",
+      "GET /api/commands": "List commands",
+      "POST /api/commands/:id/cancel": "Cancel command",
+      "POST /api/missions": "Create mission (recommended for build operations)",
+      "POST /api/missions/:id/start": "Start mission",
+      "POST /api/missions/:id/cancel": "Cancel mission",
+      "POST /api/markers": "Create marker",
+      "POST /api/zones": "Create zone",
+      "POST /api/swarm": "Spawn multiple bots"
+    },
+    "vanilla_commands": {
+      "/fill": "Fill rectangular volume with a block (no setup required)",
+      "/setblock": "Set a single block at a coordinate",
+      "/clone": "Clone blocks from one region to another"
+    },
+    "worldedit_commands": {
+      "//pos1": "Set selection corner 1",
+      "//pos2": "Set selection corner 2",
+      "//walls": "Set walls of selection to a block",
+      "//faces": "Set walls + ceiling + floor to a block",
+      "//replace": "Replace one block type with another in selection",
+      "//schematic load": "Load a .schem file from the schematic library",
+      "//paste -a": "Paste loaded schematic at exact position"
+    },
+    "example_mission_chamber_carve": {
+      "method": "POST",
+      "url": "/api/missions",
+      "body": {
+        "name": "Carve main grid",
+        "type": "build",
+        "bot": "builder-bot-1",
+        "steps": [
+          { "action": "fill", "from": { "x": -100, "y": 20, "z": 0 }, "to": { "x": 100, "y": 25, "z": -200 }, "block": "minecraft:air" }
+        ]
+      }
+    },
+    "example_mission_pillar_placement": {
+      "method": "POST",
+      "url": "/api/missions",
+      "body": {
+        "name": "Place pillars at iconic intersections",
+        "type": "build",
+        "bot": "builder-bot-1",
+        "steps": [
+          { "action": "load_schematic", "path": "D:\\projects\\mc-fleet-bot\\schematics\\pillar-8x8x5-white.schem" },
+          { "action": "paste", "position": { "x": -8, "y": 20, "z": -32 }, "rotation": 0 },
+          { "action": "paste", "position": { "x": 8, "y": 20, "z": -32 }, "rotation": 0 },
+          { "action": "paste", "position": { "x": -8, "y": 20, "z": -24 }, "rotation": 0 },
+          { "action": "paste", "position": { "x": 8, "y": 20, "z": -24 }, "rotation": 0 }
+        ]
+      }
+    }
+  },
+  "server_settings_required": {
+    "view_distance": 16,
+    "simulation_distance": 12,
+    "file": "server.properties",
+    "rationale": "200x200 chamber is at the edge of standard render distance; default view-distance: 8 will chop the main avenue."
+  },
+  "legend": {
+    "D": "Documented in research report - cite upstream source",
+    "I": "Inferred from industry standard for the tenant type",
+    "X": "Project fiction or designer invention"
+  },
+  "binding_decisions_respected": [
+    "200x200 footprint, 1:1 vertical, 5-block ceiling, 8x8 pillars, 12-block corridor width",
+    "~350-block main avenue, two ~100-block side spurs, no big cavern rooms",
+    "Tier 1 must-haves: horizontal portal entrance, pillared corridor grid, second portal",
+    "Tier 2 must-haves: geology-themed street names (Hushpuckney + 5 invented companions), painted pillar numbers, 15 mph speed limit, 6+ tenant fit-outs, ghost mine chamber",
+    "Tier 3 must-haves: STC with biometric + dark fiber + redstone, constant-climate feel, surface plateau with visitor center",
+    "55M at marquee / 14M in leasing office / 16 ft ceiling / 150 ft depth / 55+ tenants / 1964 / 68 F / 8.2 mi road",
+    "Mandatory [D]/[I]/[X] legend",
+    "4 fit-out archetypes: records archive, package logistics, data center, general industrial",
+    "Service tunnel ~6x5, sub-basement, security gate, [X] project fiction",
+    "Public shaft ~5x5, Public Access Lobby with guard booth and turnstile, [X] project fiction",
+    "No Indiana Jones / Batcave / Bond contamination, no torches/lava/mob_spawners in developed zones, no fantasy contamination"
+  ],
+  "open_items": [
+    "Hunt Hall location confirmation (default: 15-block-diameter at central plaza, 0,20,-100)",
+    "Geology-themed street name companions (default: use all 6 names as listed in street_signs array)",
+    "Surface plateau size (default: 80x60 around visitor center)",
+    "Data center detail depth (default: 1x2x1 racks, 2 rows of 6, 12 racks total)",
+    "NARA high-bay shelving (default: floor-to-ceiling 5-block tall)",
+    "Worlds of Fun silhouette detail (default: single dark_oak_fence post + white_banner)",
+    "Hunt Hall arrowhead detail (default: single red+yellow concrete arrowhead, no helmet/football)",
+    "UV&S film can labels (default: GONE WITH THE WIND and WIZARD OF OZ)",
+    "Inter-site connection signage (default: as specified in headline_signs and inter_site_connections)",
+    "Combined-complex coordination: service tunnel and public shaft cross-sections must match at the Cheyenne/Houston ends",
+    "Ravine floor Y-level confirmation (default: Y=0-10, may need adjustment by combined-complex team)",
+    "Minecraft version confirmation (default: 1.18+ Java Edition)",
+    "Render distance flag: server.properties must have view-distance: 16+ and simulation-distance: 12+"
+  ],
+  "risk_register": [
+    { "id": 1, "name": "Render distance", "mitigation": "Set view-distance: 16+ in server.properties" },
+    { "id": 2, "name": "Pillar coordinate errors", "mitigation": "Use pillar-placement script with coordinate list, never hand-place" },
+    { "id": 3, "name": "Bedrock intersection", "mitigation": "Verify chamber floor at Y=20 is above bedrock before carving" },
+    { "id": 4, "name": "Mob spawning in unfinished chamber", "mitigation": "Place sea_lantern in chamber immediately after carving, or work in creative" },
+    { "id": 5, "name": "Sign text legibility", "mitigation": "Use oak_signs for text, test from 30 blocks away" },
+    { "id": 6, "name": "STC redstone clock instability", "mitigation": "Build clock in main chamber (always loaded), test by leaving chunk" },
+    { "id": 7, "name": "End rod placement", "mitigation": "Place on underside of shelf, not on top" },
+    { "id": 8, "name": "Lighting density tuning", "mitigation": "Walk build at night, target 4-5 block sea_lantern density" },
+    { "id": 9, "name": "Easter egg over-emphasis", "mitigation": "Restraint: 2 labeled cans, 1 arrowhead, 1 plaque" },
+    { "id": 10, "name": "Inter-site fiction ambiguity", "mitigation": "Signage clearly marks [X] fictions" },
+    { "id": 11, "name": "Indiana Jones / Batcave temptation", "mitigation": "No secret lairs, no torches in developed zones" },
+    { "id": 12, "name": "Build scope creep", "mitigation": "MVP cut v0.1 first, then phased delivery" },
+    { "id": 13, "name": "Minecraft version compatibility", "mitigation": "Target 1.18+ Java Edition" }
+  ]
+}

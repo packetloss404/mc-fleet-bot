@@ -1,0 +1,1257 @@
+{
+  "build_name": "Cheyenne Mountain Complex",
+  "build_id": "01-cheyenne-mountain",
+  "version": "1.0",
+  "scale": {
+    "vertical_compression": "2:1",
+    "horizontal_compression": "4:1",
+    "signature_detail_scaling": "2x local",
+    "notes": "1 block = 2 m vertical, 1 block = 4 m horizontal. Signature details (blast doors, springs, Battle Cab wall of displays) scaled up 2x in local context for visibility. Locked by discussion-notes.md Topic 1."
+  },
+  "build_height_required": 1550,
+  "build_height_with_buffer": 1550,
+  "recommended_mod": "CubicWorld or similar with at least 2,048 block build height",
+  "world_origin": {
+    "x": 0,
+    "y": 64,
+    "z": 0,
+    "description": "Sea level, centered on the mountain's vertical axis."
+  },
+  "compass_orientation": "north = -z",
+  "mountain": {
+    "base_elevation": 64,
+    "peak_elevation": 1514,
+    "peak_position": { "x": 0, "y": 1514, "z": 0 },
+    "center_position": { "x": 0, "y": 789, "z": 0 },
+    "footprint": {
+      "x_min": -300,
+      "x_max": 300,
+      "z_min": -800,
+      "z_max": 0
+    },
+    "footprint_dimensions": { "x": 600, "z": 800 },
+    "peaks": [
+      { "id": "north", "position": { "x": -100, "y": 1400, "z": -400 }, "antenna_count": 1 },
+      { "id": "central", "position": { "x": 0, "y": 1514, "z": 0 }, "antenna_count": 3 },
+      { "id": "south", "position": { "x": 100, "y": 1400, "z": 200 }, "antenna_count": 1 }
+    ],
+    "rock_cover_above_chamber_ceiling_blocks": 300,
+    "rock_cover_above_chamber_ceiling_real_feet": 2000
+  },
+  "above_ground": {
+    "public_entrance_gate": { "x": 0, "y": 80, "z": -900 },
+    "parking_lot_bounds": {
+      "x_min": -200,
+      "x_max": 200,
+      "y_min": 600,
+      "y_max": 620,
+      "z_min": -850,
+      "z_max": -780
+    },
+    "parking_lot_center": { "x": 0, "y": 610, "z": -815 },
+    "security_checkpoint_trailer": { "x": -50, "y": 605, "z": -800 },
+    "north_portal": {
+      "position": { "x": 0, "y": 1100, "z": -500 },
+      "arch_width": 7,
+      "arch_height": 5
+    },
+    "approach_road_main": {
+      "from": { "x": 0, "y": 80, "z": -900 },
+      "to": { "x": 0, "y": 600, "z": -815 },
+      "length_blocks": 600,
+      "elevation_gain_blocks": 520,
+      "surface": "minecraft:gravel"
+    },
+    "approach_road_final_switchback": {
+      "from": { "x": 0, "y": 600, "z": -815 },
+      "to": { "x": 0, "y": 1100, "z": -500 },
+      "length_blocks": 200,
+      "elevation_gain_blocks": 500,
+      "surface": "minecraft:smooth_stone"
+    },
+    "antennas": [
+      { "id": 1, "name": "Central peak N", "position": { "x": -50, "y": 1500, "z": 0 }, "height_blocks": 30 },
+      { "id": 2, "name": "Central peak E", "position": { "x": 50, "y": 1500, "z": 0 }, "height_blocks": 30 },
+      { "id": 3, "name": "Central peak S", "position": { "x": 0, "y": 1500, "z": 50 }, "height_blocks": 30 },
+      { "id": 4, "name": "North peak", "position": { "x": -100, "y": 1400, "z": -400 }, "height_blocks": 25 },
+      { "id": 5, "name": "South peak", "position": { "x": 100, "y": 1400, "z": 200 }, "height_blocks": 25 }
+    ],
+    "support_buildings": [
+      { "id": "generator_building", "position": { "x": -200, "y": 800, "z": -200 }, "dimensions": { "x": 10, "y": 6, "z": 12 } },
+      { "id": "pump_house", "position": { "x": 200, "y": 500, "z": -300 }, "dimensions": { "x": 8, "y": 5, "z": 10 } }
+    ]
+  },
+  "key_locations": {
+    "portal_entrance_interior": { "x": 0, "y": 1100, "z": -500, "description": "Build origin. Where the visitor steps into the tunnel." },
+    "tunnel_leg_1_end": { "x": 0, "y": 1180, "z": -300, "description": "End of Leg 1 (south, descending). ~200 blocks from portal." },
+    "blast_door_side_branch": { "x": -100, "y": 1170, "z": -250, "description": "Side-branch off Leg 1, ~250 blocks into tunnel. Cinematic reveal." },
+    "tunnel_bend_1": { "x": 0, "y": 1180, "z": -300, "description": "First J-curve bend, south to east." },
+    "tunnel_leg_2_end": { "x": 300, "y": 1196, "z": -300, "description": "End of Leg 2 (east). ~500 blocks from portal." },
+    "tunnel_bend_2": { "x": 300, "y": 1196, "z": -300, "description": "Second J-curve bend, east to south." },
+    "chamber_entry": { "x": 50, "y": 1196, "z": 200, "description": "Where the tunnel opens into the main chamber. ~860 blocks from portal." },
+    "main_chamber_center": { "x": 0, "y": 1205, "z": 50 },
+    "main_chamber_bounds": {
+      "x_min": -22,
+      "x_max": 23,
+      "y_min": 1196,
+      "y_max": 1214,
+      "z_min": 38,
+      "z_max": 63
+    },
+    "reservoir": {
+      "x_min": -315,
+      "x_max": -285,
+      "y_min": 1165,
+      "y_max": 1180,
+      "z_min": 40,
+      "z_max": 60
+    },
+    "reservoir_access_tunnel": {
+      "from": { "x": 0, "y": 1196, "z": 50 },
+      "to": { "x": -285, "y": 1185, "z": 50 },
+      "length_blocks": 30
+    },
+    "battle_cab": {
+      "building_id": 8,
+      "position": { "x": -2, "y": 1197, "z": 48 }
+    },
+    "power_plant_room": { "x": 0, "y": 1197, "z": 100 },
+    "diesel_reservoir_room": { "x": 0, "y": 1197, "z": 130 },
+    "air_intake_blast_valve": { "x": 0, "y": 1200, "z": 100 },
+    "emergency_egress_door": { "x": -315, "y": 1190, "z": 55 }
+  },
+  "tunnel_path": {
+    "total_length_blocks": 860,
+    "cross_section": { "width": 5, "height": 4 },
+    "legs": [
+      {
+        "id": "leg_1",
+        "from": { "x": 0, "y": 1100, "z": -500 },
+        "to": { "x": 0, "y": 1180, "z": -300 },
+        "length_blocks": 200,
+        "direction": "south",
+        "elevation_change_blocks": 80,
+        "wall_stage": 1,
+        "notes": "The visitor cannot see the far end. Blast door side-branch opens to the west at (-100, 1170, -250)."
+      },
+      {
+        "id": "bend_1",
+        "from": { "x": 0, "y": 1180, "z": -300 },
+        "to": { "x": 30, "y": 1180, "z": -300 },
+        "length_blocks": 30,
+        "direction": "south-to-east",
+        "wall_stage": 2
+      },
+      {
+        "id": "leg_2",
+        "from": { "x": 30, "y": 1180, "z": -300 },
+        "to": { "x": 300, "y": 1196, "z": -300 },
+        "length_blocks": 300,
+        "direction": "east",
+        "elevation_change_blocks": 16,
+        "wall_stage": 2
+      },
+      {
+        "id": "bend_2",
+        "from": { "x": 300, "y": 1196, "z": -300 },
+        "to": { "x": 300, "y": 1196, "z": -270 },
+        "length_blocks": 30,
+        "direction": "east-to-south",
+        "wall_stage": 3
+      },
+      {
+        "id": "leg_3",
+        "from": { "x": 300, "y": 1196, "z": -270 },
+        "to": { "x": 50, "y": 1196, "z": 200 },
+        "length_blocks": 500,
+        "direction": "south",
+        "elevation_change_blocks": 0,
+        "wall_stage": 3,
+        "notes": "The chamber becomes visible at the end."
+      }
+    ]
+  },
+  "blast_door_assembly": {
+    "location": { "x": -100, "y": 1170, "z": -250 },
+    "side_branch_dimensions": { "width": 4, "height": 4, "length": 10 },
+    "configuration": "Two 25-ton blast doors in sequence with an airlock chamber between. Both doors open (post-1992 status). Doors are 6x4 iron-block, scaled 2x in local context.",
+    "door_dimensions": { "width": 4, "height": 6, "thickness": 1 },
+    "airlock_dimensions": { "length": 12, "width": 8, "height": 6 },
+    "signage": [
+      "BLAST DOOR - 25 TONS - 30 MT @ 1.2 MI",
+      "BLAST VALVE TESTED DAILY",
+      "CLOSED 11 SEPTEMBER 2001",
+      "AIRLOCK - DOOR 1 OF 2",
+      "AIRLOCK - DOOR 2 OF 2 - CHAMBER ACCESS",
+      "POSITIVE PRESSURE - KEEP DOORS CLOSED IN ALERT",
+      "DURING COLD WAR: ONE DOOR ALWAYS CLOSED. CURRENTLY: BOTH OPEN.",
+      "DANGER - BLAST DOOR",
+      "25 TONS - DO NOT BLOCK",
+      "AUTHORIZED PERSONNEL ONLY"
+    ]
+  },
+  "buildings": [
+    {
+      "id": 1,
+      "name": "Air Defense Operations Center",
+      "type": "3-story",
+      "position": { "x": -18, "y": 1197, "z": 41 },
+      "dimensions": { "x": 6, "y": 9, "z": 5 },
+      "function": "ops_center",
+      "interior_priority": "high",
+      "interior_theme": "Radar-tracking screens on the wall, 3 operator consoles, 2 wall displays. Cooler color palette.",
+      "block_spec": {
+        "walls": "minecraft:light_gray_concrete",
+        "floor": "minecraft:light_gray_wool",
+        "ceiling": "minecraft:light_gray_concrete",
+        "fixtures": [
+          "minecraft:note_block (consoles x3)",
+          "minecraft:redstone_lamp (console indicators)",
+          "minecraft:lever (console keys)",
+          "minecraft:light_gray_wool (chairs x3)"
+        ]
+      },
+      "signage": ["B-01 / AIR DEFENSE OPERATIONS CENTER", "TRACKING 24/7 - BMEWS / PAVE PAWS / JSS"]
+    },
+    {
+      "id": 2,
+      "name": "Missile Warning Center",
+      "type": "3-story",
+      "position": { "x": -10, "y": 1197, "z": 41 },
+      "dimensions": { "x": 6, "y": 9, "z": 5 },
+      "function": "ops_center",
+      "interior_priority": "high",
+      "interior_theme": "Status panels, 3 consoles, 1 large wall screen. Optional 1979 false alarm plaque.",
+      "block_spec": {
+        "walls": "minecraft:light_gray_concrete",
+        "floor": "minecraft:light_gray_wool",
+        "ceiling": "minecraft:light_gray_concrete",
+        "fixtures": [
+          "minecraft:note_block (consoles x3)",
+          "minecraft:redstone_lamp (blinking alert)",
+          "minecraft:light_gray_wool (chairs x3)"
+        ]
+      },
+      "signage": ["B-02 / MISSILE WARNING CENTER", "DSP / SBIRS SATELLITE FEED - 22,000 MI ALTITUDE"]
+    },
+    {
+      "id": 3,
+      "name": "Space Control Center",
+      "type": "3-story",
+      "position": { "x": -2, "y": 1197, "z": 41 },
+      "dimensions": { "x": 6, "y": 9, "z": 5 },
+      "function": "ops_center",
+      "interior_priority": "high",
+      "interior_theme": "Orbital tracking. Star-map on ceiling (blue wool + white wool stars), 3 consoles, 2 wall screens with orbital paths.",
+      "block_spec": {
+        "walls": "minecraft:light_gray_concrete",
+        "floor": "minecraft:light_gray_wool",
+        "ceiling": "minecraft:light_gray_concrete",
+        "fixtures": [
+          "minecraft:blue_wool (ceiling star-map backing, 4x3)",
+          "minecraft:white_wool (stars, ~12 randomly placed)",
+          "minecraft:note_block (consoles x3)",
+          "minecraft:light_gray_wool (chairs x3)"
+        ]
+      },
+      "signage": ["B-03 / SPACE CONTROL CENTER", "SPACE SURVEILLANCE NETWORK - 24/7 ORBITAL TRACKING"]
+    },
+    {
+      "id": 4,
+      "name": "Combined Intelligence Watch",
+      "type": "3-story",
+      "position": { "x": 6, "y": 1197, "z": 41 },
+      "dimensions": { "x": 6, "y": 9, "z": 5 },
+      "function": "ops_center",
+      "interior_priority": "high",
+      "interior_theme": "Smaller briefing-style room. 2 consoles, 1 large wall screen, 1 briefing table.",
+      "block_spec": {
+        "walls": "minecraft:light_gray_concrete",
+        "floor": "minecraft:light_gray_wool",
+        "ceiling": "minecraft:light_gray_concrete",
+        "fixtures": [
+          "minecraft:note_block (consoles x2)",
+          "minecraft:oak_slab (briefing table, 3x2)",
+          "minecraft:light_gray_wool (chairs x4 around table)"
+        ]
+      },
+      "signage": ["B-04 / COMBINED INTELLIGENCE WATCH", "ALL-SOURCE INTELLIGENCE - 24/7 WATCH"]
+    },
+    {
+      "id": 5,
+      "name": "Support / Utility (Secure Comms)",
+      "type": "3-story",
+      "position": { "x": 14, "y": 1197, "z": 41 },
+      "dimensions": { "x": 6, "y": 9, "z": 5 },
+      "function": "support",
+      "interior_priority": "medium",
+      "interior_theme": "Server racks, radio equipment, secure comms room. Item-frame mosaic walls showing radio frequency maps.",
+      "block_spec": {
+        "walls": "minecraft:light_gray_concrete",
+        "floor": "minecraft:light_gray_wool",
+        "ceiling": "minecraft:light_gray_concrete",
+        "fixtures": [
+          "minecraft:chest (server rack rows)",
+          "minecraft:note_block (equipment)",
+          "minecraft:redstone_lamp (blinking indicators)"
+        ]
+      },
+      "signage": ["B-05 / SUPPORT / SECURE COMMS"]
+    },
+    {
+      "id": 6,
+      "name": "Communications / Operations Support",
+      "type": "3-story",
+      "position": { "x": -18, "y": 1197, "z": 48 },
+      "dimensions": { "x": 6, "y": 9, "z": 5 },
+      "function": "support",
+      "interior_priority": "medium",
+      "interior_theme": "Briefing rooms, planning tables, secure-document storage. Wooden tables (oak), chairs, a wall map.",
+      "block_spec": {
+        "walls": "minecraft:light_gray_concrete",
+        "floor": "minecraft:light_gray_wool",
+        "ceiling": "minecraft:light_gray_concrete",
+        "fixtures": [
+          "minecraft:oak_slab (planning tables)",
+          "minecraft:oak_stairs (chairs)",
+          "minecraft:chest (filing cabinets)"
+        ]
+      },
+      "signage": ["B-06 / COMMUNICATIONS"]
+    },
+    {
+      "id": 7,
+      "name": "Systems Center / Power Distribution",
+      "type": "3-story",
+      "position": { "x": -10, "y": 1197, "z": 48 },
+      "dimensions": { "x": 6, "y": 9, "z": 5 },
+      "function": "support",
+      "interior_priority": "high",
+      "interior_theme": "Power distribution, battery banks, 6 diesel generator control panels. THE CROSS-SECTION BUILDING (south wall removed to show spring array). The ambient sway animation is on this building.",
+      "block_spec": {
+        "walls": "minecraft:light_gray_concrete",
+        "floor": "minecraft:light_gray_wool",
+        "ceiling": "minecraft:light_gray_concrete",
+        "fixtures": [
+          "minecraft:piston (generator visuals x6)",
+          "minecraft:observer (generator visuals x6)",
+          "minecraft:redstone_repeater (battery bank wall)",
+          "minecraft:iron_block (generator frames)",
+          "minecraft:redstone_lamp (gauges)",
+          "south wall: REMOVED for cross-section view"
+        ],
+        "ambient_sway": {
+          "enabled": true,
+          "mechanism": "minecraft:slime_block + minecraft:piston + minecraft:observer",
+          "amplitude_blocks": 0.5,
+          "period_seconds": 45,
+          "trigger": "ambient (not player-triggered)"
+        }
+      },
+      "signage": [
+        "B-07 / SYSTEMS CENTER",
+        "1 INCH NORMAL MOVEMENT / 12 INCHES EXTREME EVENT"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Battle Cab (Command Center)",
+      "type": "3-story",
+      "position": { "x": -2, "y": 1197, "z": 48 },
+      "dimensions": { "x": 8, "y": 11, "z": 7 },
+      "function": "ops_center",
+      "interior_priority": "highest",
+      "interior_theme": "Centerpiece. U-shaped tiered consoles, wall of displays with world map, 8 time-zone clocks (ZULU / EXERCISE / HAWAII / PACIFIC / MOUNTAIN / CENTRAL / EASTERN / MOSCOW), 'WELCOME TO THE NORAD COMMAND CENTER' ticker, 1980 false alarm plaque on back wall. The climax of the build.",
+      "block_spec": {
+        "walls": "minecraft:light_gray_concrete",
+        "floor": "minecraft:blue_wool",
+        "ceiling": "minecraft:light_gray_concrete",
+        "fixtures": [
+          "minecraft:iron_block (wall display backing)",
+          "minecraft:item_frame + minecraft:filled_map (world map mosaic 5x2)",
+          "minecraft:item_frame + minecraft:filled_map (status panel mosaic 5x2)",
+          "minecraft:redstone_lamp (display backlight)",
+          "minecraft:red_concrete (WELCOME ticker background)",
+          "minecraft:light_gray_wool (WELCOME ticker letters)",
+          "minecraft:clock (time-zone clocks x8)",
+          "minecraft:oak_sign (time-zone labels x8)",
+          "minecraft:note_block (consoles x6 in U-shape: 2 center + 2 left + 2 right)",
+          "minecraft:lever (console keys x6)",
+          "minecraft:light_gray_wool_slab (chairs x6)",
+          "minecraft:soul_lantern (1980 plaque accent)",
+          "minecraft:redstone_lamp (1980 plaque alert indicator)",
+          "minecraft:light_gray_concrete (1980 plaque panel 3x2)",
+          "minecraft:black_wool (1980 plaque letterforms 3x5 per letter)",
+          "minecraft:black_concrete (1980 plaque border 1-block)",
+          "minecraft:oak_fence (mezzanine railings)"
+        ]
+      },
+      "signage": [
+        "B-08 / BATTLE CAB / COMMAND CENTER",
+        "WELCOME TO THE NORAD COMMAND CENTER (ticker)",
+        "ZULU",
+        "EXERCISE",
+        "HAWAII",
+        "PACIFIC",
+        "MOUNTAIN",
+        "CENTRAL",
+        "EASTERN",
+        "MOSCOW",
+        "CD - COMMAND DIRECTOR",
+        "SD - SENIOR DIRECTOR",
+        "WC - WEATHER COORD",
+        "WC2",
+        "DO - DIRECTOR OF OPERATIONS",
+        "BMC - BATTLE MANAGEMENT COORD"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Operations Support (Battle Staff)",
+      "type": "3-story",
+      "position": { "x": 6, "y": 1197, "z": 48 },
+      "dimensions": { "x": 6, "y": 9, "z": 5 },
+      "function": "support",
+      "interior_priority": "medium",
+      "interior_theme": "Battle Staff Support Center. Briefing rooms, planning tables.",
+      "block_spec": {
+        "walls": "minecraft:light_gray_concrete",
+        "floor": "minecraft:light_gray_wool",
+        "ceiling": "minecraft:light_gray_concrete",
+        "fixtures": [
+          "minecraft:oak_slab (planning tables)",
+          "minecraft:oak_stairs (chairs)"
+        ]
+      },
+      "signage": ["B-09 / BATTLE STAFF SUPPORT"]
+    },
+    {
+      "id": 10,
+      "name": "Weather Operations Center",
+      "type": "3-story",
+      "position": { "x": 14, "y": 1197, "z": 48 },
+      "dimensions": { "x": 6, "y": 9, "z": 5 },
+      "function": "support",
+      "interior_priority": "medium",
+      "interior_theme": "Weather data screens, synoptic charts, 2 operator consoles. A satellite-image banner on the wall.",
+      "block_spec": {
+        "walls": "minecraft:light_gray_concrete",
+        "floor": "minecraft:light_gray_wool",
+        "ceiling": "minecraft:light_gray_concrete",
+        "fixtures": [
+          "minecraft:note_block (consoles x2)",
+          "minecraft:blue_wool (satellite-image banner backing)",
+          "minecraft:white_wool (cloud shapes on banner)",
+          "minecraft:light_gray_wool (chairs x2)"
+        ]
+      },
+      "signage": ["B-10 / WEATHER OPERATIONS"]
+    },
+    {
+      "id": 11,
+      "name": "Chapel",
+      "type": "2-story",
+      "position": { "x": -18, "y": 1197, "z": 55 },
+      "dimensions": { "x": 6, "y": 6, "z": 5 },
+      "function": "human_space",
+      "interior_priority": "high",
+      "interior_theme": "Pews (oak stairs), altar (oak slab), single candle (soul lantern), shroomlight ceiling cluster. Stained-glass window cross. The only quiet room in the build.",
+      "block_spec": {
+        "walls_lower": "minecraft:spruce_planks",
+        "walls_upper": "minecraft:light_gray_concrete",
+        "floor": "minecraft:oak_planks",
+        "ceiling": "minecraft:spruce_planks",
+        "fixtures": [
+          "minecraft:oak_stairs (pews, 4 rows of 2x4)",
+          "minecraft:oak_slab (altar, 1x1x1)",
+          "minecraft:soul_lantern (single candle)",
+          "minecraft:oak_fence (cross)",
+          "minecraft:light_blue_stained_glass_pane (stained-glass window 2x3)",
+          "minecraft:white_stained_glass_pane (cross shape in window)",
+          "minecraft:shroomlight (ceiling cluster, warm)",
+          "minecraft:chest (storage on second floor, 3-4)"
+        ]
+      },
+      "signage": [
+        "B-11 / CHAPEL - NONDENOMINATIONAL - QUIET PLEASE",
+        "FOR USE BY ALL FAITHS - SCHEDULE ON DOOR"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Granite Inn (Bar)",
+      "type": "2-story",
+      "position": { "x": -10, "y": 1197, "z": 55 },
+      "dimensions": { "x": 6, "y": 6, "z": 5 },
+      "function": "human_space",
+      "interior_priority": "highest_human_space",
+      "interior_theme": "Bar counter (dark oak slab), stools (dark oak fence), bottles (potions), shroomlight ceiling (warm amber). The ONLY warm-lit room in the build. MrBeast sign on back wall. Hidden gold block behind a painting.",
+      "block_spec": {
+        "walls_lower": "minecraft:dark_oak_planks",
+        "walls_upper": "minecraft:light_gray_concrete",
+        "floor": "minecraft:oak_planks",
+        "ceiling": "minecraft:dark_oak_planks",
+        "fixtures": [
+          "minecraft:dark_oak_slab (bar counter, 6x1x1)",
+          "minecraft:dark_oak_fence (bar stools x4)",
+          "minecraft:potion (bottles x6, on shelf behind counter)",
+          "minecraft:oak_wall_sign (chalkboard: TODAY'S SPECIAL)",
+          "minecraft:oak_stairs (booth seats, 3-4)",
+          "minecraft:shroomlight (ceiling clusters, warm)",
+          "minecraft:oak_slab (dining tables 2x2, 3-4)",
+          "minecraft:oak_stairs (dining chairs x4 per table)",
+          "minecraft:gold_block (hidden, behind painting - MrBeast play button)",
+          "minecraft:painting (covering the gold block)"
+        ]
+      },
+      "signage": [
+        "B-12 / GRANITE INN - EST. 1967",
+        "FOR PSYCHOLOGICAL MAINTENANCE OF PERSONNEL - OFFICIAL USE",
+        "TODAY'S SPECIAL: $1 BEER / $2 BURGER / $3 STEAK (chalkboard)",
+        "DINING FACILITY - 24/7 FOR STAFFED SHIFTS",
+        "$1 vs $1,000,000,000,000 - THE NUCLEAR BUNKER - MrBeast (2025)"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Medical / Dental",
+      "type": "2-story",
+      "position": { "x": -2, "y": 1197, "z": 55 },
+      "dimensions": { "x": 6, "y": 6, "z": 5 },
+      "function": "support",
+      "interior_priority": "low",
+      "interior_theme": "Single nod, not full build. White bed, quartz stairs dental chair, oak slab counter.",
+      "block_spec": {
+        "walls": "minecraft:light_gray_concrete",
+        "floor": "minecraft:white_wool",
+        "ceiling": "minecraft:light_gray_concrete",
+        "fixtures": [
+          "minecraft:white_bed (medical bed)",
+          "minecraft:oak_slab (reception counter)",
+          "minecraft:quartz_stairs (dental chair)",
+          "minecraft:oak_stairs (waiting chair)",
+          "minecraft:chest (pharmacy storage, 4)",
+          "minecraft:brewing_stand (compounding)"
+        ]
+      },
+      "signage": ["B-13 / MEDICAL / DENTAL", "B-13 / DENTAL - BY APPOINTMENT"]
+    },
+    {
+      "id": 14,
+      "name": "Administrative / Utility",
+      "type": "2-story",
+      "position": { "x": 6, "y": 1197, "z": 55 },
+      "dimensions": { "x": 6, "y": 6, "z": 5 },
+      "function": "support",
+      "interior_priority": "low",
+      "interior_theme": "Office space. Desks (oak), chairs, filing cabinets (chest), small break area.",
+      "block_spec": {
+        "walls": "minecraft:light_gray_concrete",
+        "floor": "minecraft:oak_planks",
+        "ceiling": "minecraft:light_gray_concrete",
+        "fixtures": [
+          "minecraft:oak_slab (desks)",
+          "minecraft:oak_stairs (chairs)",
+          "minecraft:chest (filing cabinets)"
+        ]
+      },
+      "signage": ["B-14 / ADMINISTRATIVE"]
+    },
+    {
+      "id": 15,
+      "name": "Server Room (WOPR + Stargate Command Corridor)",
+      "type": "2-story",
+      "position": { "x": 14, "y": 1197, "z": 55 },
+      "dimensions": { "x": 6, "y": 6, "z": 5 },
+      "function": "support",
+      "interior_priority": "high",
+      "interior_theme": "Banks of servers (chest + note block rows), blinking redstone lamp indicators. The WOPR terminal is in a back corner. The Stargate Command door is in a back corridor. Behind the Stargate door: a 2x2 light gray concrete room with a single chest (mops) and a JANITORIAL sign.",
+      "block_spec": {
+        "walls": "minecraft:light_gray_concrete",
+        "floor": "minecraft:light_gray_wool",
+        "ceiling": "minecraft:light_gray_concrete",
+        "fixtures": [
+          "minecraft:chest (server rack rows)",
+          "minecraft:note_block (server equipment)",
+          "minecraft:redstone_lamp (blinking indicators)",
+          "minecraft:note_block (WOPR terminal)",
+          "minecraft:black_concrete (WOPR desk)",
+          "minecraft:redstone_lamp (WOPR screen)",
+          "minecraft:item_frame + minecraft:filled_map (WOPR chess-board map)",
+          "minecraft:green_wool (GREETINGS PROFESSOR FALKEN letterforms)",
+          "minecraft:dark_oak_door (Stargate Command door)",
+          "minecraft:chest (mops behind Stargate door)",
+          "minecraft:black_wool (STARGATE COMMAND letterforms 3x5 on light gray concrete)",
+          "minecraft:light_gray_concrete (Stargate room 2x2)"
+        ]
+      },
+      "signage": [
+        "B-15 / SERVER ROOM",
+        "GREETINGS PROFESSOR FALKEN (WOPR terminal, green wool)",
+        "WOPR - WAR OPERATION PLAN RESPONSE - Wargames (1983) movie reference",
+        "STARGATE COMMAND (above door)",
+        "AUTHORIZED PERSONNEL ONLY (next to Stargate door)",
+        "JANITORIAL (inside the Stargate room)"
+      ]
+    }
+  ],
+  "building_composition": {
+    "total": 15,
+    "three_story": 12,
+    "two_story": 3,
+    "source": "Locked by discussion-notes.md Topic 3 (Air & Space Forces Magazine, Air Force magazine of record). Three 2-story buildings are: #11 Chapel, #12 Granite Inn, #13 Medical/Dental."
+  },
+  "chamber_array": {
+    "form": "Single rectangular chamber with 15 free-standing buildings arranged in a 5x3 grid. Real complex has 3 parallel main tunnels intersected by 4 cross tunnels; in compressed scale this is rendered as one larger unified chamber.",
+    "ceiling": "Bare pink granite with rock bolts. One or more 6x6 light gray concrete dome patches (1962 fault repair).",
+    "floor": "Light gray concrete (polished andesite) main, iron trapdoors for service paths, black concrete for spring-display areas under each building.",
+    "clearance_to_walls_blocks": 1,
+    "clearance_real_inches": 18,
+    "cross_section_building_id": 7,
+    "ambient_sway_building_id": 7,
+    "signage": [
+      "1,319 SPRINGS - 1,000 LB EACH - INSTALLED 1964 - NEVER REPLACED",
+      "NORMAL SHOCK: 1 INCH BUILDING MOVEMENT. EXTREME EVENT: 12 INCHES.",
+      "MAIN CHAMBER - 4.5 ACRES (1967) - 3 MAIN TUNNELS x 4 CROSS TUNNELS",
+      "FEBRUARY 6, 1967 - FULLY OPERATIONAL (PRIMARY)",
+      "APRIL 20, 1966 - COMBAT OPERATIONS CENTER DECLARED OPERATIONAL (SECONDARY)",
+      "OPERATIONS CENTER INTERIORS - These rooms are designer interpretations based on declassified public information, 2006-2016 public photographs, and the 1978 GAO report on the five operating centers."
+    ]
+  },
+  "reservoir": {
+    "location": { "x": -300, "y": 1180, "z": 50 },
+    "bounds": {
+      "x_min": -315,
+      "x_max": -285,
+      "y_min": 1165,
+      "y_max": 1180,
+      "z_min": 40,
+      "z_max": 60
+    },
+    "water_level_y": 1175,
+    "walls": "minecraft:dark_prismarine",
+    "ceiling": "minecraft:dark_prismarine",
+    "floor": "minecraft:dark_prismarine with minecraft:gravel patches",
+    "causeway": {
+      "material": "minecraft:polished_andesite",
+      "width_blocks": 2,
+      "railings": "minecraft:iron_fence",
+      "length_blocks": 25
+    },
+    "lighting": "minecraft:soul_lantern at each structural rib (every 10 blocks)",
+    "boat": "minecraft:oak_boat",
+    "signage": [
+      "RESERVOIR - 1.5 MILLION GALLONS",
+      "WATER SUPPLY: NATURAL MOUNTAIN SPRINGS + STORED",
+      "BOAT: FOR AUTHORIZED INSPECTION ONLY",
+      "EMERGENCY EGRESS (faded reference, on locked iron door)"
+    ]
+  },
+  "phases": [
+    {
+      "phase": 1,
+      "name": "Site Prep & Mountain Shell",
+      "goal": "Forested multi-peaked mountain, 1,450 blocks tall, with a flat chamber ceiling 300 blocks below the peak.",
+      "block_budget_estimate": 250000,
+      "prerequisites": [
+        "Modded world with 2,048 build height loaded and verified (test block at Y=1514 places successfully)",
+        "World origin established at (0, 64, 0)",
+        "Bot roster online"
+      ],
+      "steps": [
+        { "step": 1, "action": "Verify build height: place test block at Y=1514", "blocks": 1, "verification": "Block places successfully" },
+        { "step": 2, "action": "Place chamber ceiling slab at Y=1214, X: -22 to +23, Z: 38 to 63", "blocks": 1125, "verification": "Flat granite slab visible from below" },
+        { "step": 3, "action": "Build mountain shell using WorldEdit sphere brushes (60% granite, 25% pink terracotta, 15% red terracotta)", "blocks": 232000000, "verification": "Three peaks visible, central at (0, 1514, 0)" },
+        { "step": 4, "action": "Add forest cover: 60% spruce, 30% oak, 10% dark oak, tree line at Y=1300", "blocks": 15000, "verification": "Forest extends 50-80 blocks from base" },
+        { "step": 5, "action": "Build 5 antenna arrays on ridgeline (3 on central peak, 1 each on north/south)", "blocks": 200, "verification": "Lightning rods visible from approach road" }
+      ]
+    },
+    {
+      "phase": 2,
+      "name": "Approach (Road, Portal, Parking Lot)",
+      "goal": "Switchback road, parking lot, and North Portal arch in the cliff face. The portal reads as a maintenance entrance to a state park.",
+      "block_budget_estimate": 4000,
+      "prerequisites": ["Phase 1 complete"],
+      "steps": [
+        { "step": 1, "action": "Carve switchback approach road from (0, 80, -900) to (0, 600, -815) with gravel surface", "blocks": 2400, "verification": "Road feels like a mountain road" },
+        { "step": 2, "action": "Carve final switchback from (0, 600, -815) to (0, 1100, -500) with smooth stone surface", "blocks": 800, "verification": "Road climbs 500 blocks of elevation" },
+        { "step": 3, "action": "Build parking lot at X: -200 to +200, Y: 600 to 620, Z: -850 to -780 (40x70 blocks)", "blocks": 280, "verification": "Cleared gravel area, security trailer visible" },
+        { "step": 4, "action": "Build North Portal arch at (0, 1100, -500): 7 wide x 5 tall, light gray concrete frame, iron block corner caps, black concrete void behind", "blocks": 200, "verification": "Portal is small, unassuming" },
+        { "step": 5, "action": "Build CHEYENNE MOUNTAIN COMPLEX lettering: 22 wide x 4 tall, black wool letterforms on light gray concrete", "blocks": 88, "verification": "Readable from parking lot" },
+        { "step": 6, "action": "Add signage: SPEED LIMIT 15, STOP, MANDATORY USE OF HEADLIGHTS", "blocks": 10, "verification": "All signs placed" },
+        { "step": 7, "action": "Build security perimeter: iron fence with chain on top (concertina wire), guardhouse 3x3 with glass panes", "blocks": 200, "verification": "Chain-link fence around parking lot" }
+      ]
+    },
+    {
+      "phase": 3,
+      "name": "J-Curve Tunnel",
+      "goal": "800-block curved tunnel from portal to chamber, with three wall-character stages (rough rock -> concrete-lined -> polished institutional).",
+      "block_budget_estimate": 100000,
+      "prerequisites": ["Phase 2 complete (portal interior facing in place)"],
+      "steps": [
+        { "step": 1, "action": "Carve tunnel Leg 1: (0, 1100, -500) to (0, 1180, -300), 200 blocks, descending 80 blocks, Stage 1 walls (granite + pink terracotta + red terracotta)", "blocks": 4000, "verification": "Cannot see far end" },
+        { "step": 2, "action": "Carve tunnel Bend 1: smooth 90-degree curve, 30 blocks, Stage 2 walls begin", "blocks": 600, "verification": "Smooth turn" },
+        { "step": 3, "action": "Carve tunnel Leg 2: (30, 1180, -300) to (300, 1196, -300), 300 blocks, Stage 2 walls (light gray concrete lower, granite above)", "blocks": 6000, "verification": "Stage 2 walls visible" },
+        { "step": 4, "action": "Carve tunnel Bend 2: smooth 90-degree curve, 30 blocks, Stage 3 walls begin", "blocks": 600, "verification": "Smooth turn, ceiling rises" },
+        { "step": 5, "action": "Carve tunnel Leg 3: (300, 1196, -270) to (50, 1196, 200), 500 blocks, Stage 3 walls (light gray concrete to ceiling)", "blocks": 10000, "verification": "Chamber visible at end" },
+        { "step": 6, "action": "Add tunnel details: rock bolts, pipe runs (green/red/yellow/blue concrete), cable trays (oak fence + chain), 16 side niches, fire doors every 100 blocks in Stage 3, DEAD AIR sign at ~400-block mark", "blocks": 5000, "verification": "Industrial infrastructure visible" },
+        { "step": 7, "action": "Add tunnel lighting: 1 redstone lamp every 30 blocks (Stage 1), every 15 blocks (Stage 2), end rod every 8 blocks (Stage 3)", "blocks": 100, "verification": "Dim but walkable" },
+        { "step": 8, "action": "Carve side-branch for blast doors at (-100, 1170, -250): 4 wide x 4 tall x 10 long, curving slightly", "blocks": 200, "verification": "Side-branch opens to west of Leg 1" }
+      ]
+    },
+    {
+      "phase": 4,
+      "name": "Blast Door Airlock",
+      "goal": "Two 2x-scaled iron doors in a side-branch, with an airlock chamber between them. The cinematic moment.",
+      "block_budget_estimate": 700,
+      "prerequisites": ["Phase 3 complete (side-branch carved)"],
+      "steps": [
+        { "step": 1, "action": "Build airlock chamber: 12 long x 8 wide x 6 tall, polished andesite floor, light gray concrete walls, 4 redstone lamps in ceiling", "blocks": 350, "verification": "Chamber brighter than tunnel" },
+        { "step": 2, "action": "Build Door 1: 6 tall x 4 wide x 1 thick, iron block face, black concrete frame, iron bars chevron bracing, chain hinges, chain + anvil hand-crank. Angled outward.", "blocks": 50, "verification": "Door looms larger than tunnel" },
+        { "step": 3, "action": "Build Door 2: identical to Door 1", "blocks": 50, "verification": "Identical" },
+        { "step": 4, "action": "Place both doors in OPEN state (gap = 4x6 blocks for visitor passage)", "blocks": 0, "verification": "Walkable" },
+        { "step": 5, "action": "Add all required signage: BLAST DOOR 25 TONS, BLAST VALVE TESTED DAILY, CLOSED 11 SEPTEMBER 2001, AIRLOCK DOOR 1 OF 2, AIRLOCK DOOR 2 OF 2, POSITIVE PRESSURE, COLD WAR NOTE", "blocks": 30, "verification": "All 10 signs placed" },
+        { "step": 6, "action": "Add airlock equipment: 2 chests (Pressure Equalization, Emergency Seals), 1 chain column at center", "blocks": 20, "verification": "Equipment visible" },
+        { "step": 7, "action": "Build chamber-side access tunnel: ~30 blocks long, re-entering main tunnel near Bend 2", "blocks": 200, "verification": "Visitor re-enters main tunnel" }
+      ]
+    },
+    {
+      "phase": 5,
+      "name": "Main Chamber (The Money Shot)",
+      "goal": "45x25x18 chamber array with 15 building shells on visible spring arrays under a single rock ceiling. The industrial cathedral.",
+      "block_budget_estimate": 50000,
+      "prerequisites": ["Phases 1-4 complete"],
+      "steps": [
+        { "step": 1, "action": "Carve chamber volume: X: -22 to +23, Y: 1196-1214, Z: 38-63 (45 wide x 18 tall x 25 deep)", "blocks": 20250, "verification": "Chamber space visible" },
+        { "step": 2, "action": "Build chamber floor: polished andesite main paths, iron trapdoors service paths, black concrete under each building (visible spring area), yellow concrete lines (main E-W axis, Battle Cab column)", "blocks": 1125, "verification": "Floor pattern visible" },
+        { "step": 3, "action": "Build chamber ceiling: granite + polished granite + pink terracotta, iron bar rock bolts every 8-10 blocks, 1962 fault repair dome (1-3 areas, 6x6 light gray concrete)", "blocks": 1125, "verification": "Bare rock ceiling visible" },
+        { "step": 4, "action": "Build chamber walls: granite + pink terracotta mix, color-coded pipe runs (green/red/yellow/blue concrete) along lower 2 blocks, oak fence cable trays upper wall, blast valve on south wall", "blocks": 900, "verification": "Pipes and cable trays visible" },
+        { "step": 5, "action": "Add chamber lighting: end rod ceiling strips every 6 blocks, redstone lamp clusters at cross-tunnel intersections, soul lantern walkway accents every 8 blocks", "blocks": 100, "verification": "Dim institutional lighting" },
+        { "step": 6, "action": "Build walkways: 1-block-wide iron trapdoor paths between buildings, iron fence railings", "blocks": 200, "verification": "Walkable between buildings" },
+        { "step": 7, "action": "Build 1,319 spring array: 4-6 visible spring columns per building (iron block base + 2-3 chain + anvil cap, 1-block air gap above)", "blocks": 700, "verification": "Springs visible under each building" },
+        { "step": 8, "action": "Place 1,319 master sign at chamber entrance (4-block-wide oak wall sign)", "blocks": 4, "verification": "Sign visible" },
+        { "step": 9, "action": "Remove south wall of Building #7 to create cross-section view of spring stack", "blocks": -30, "verification": "Spring stack fully visible" },
+        { "step": 10, "action": "Add ambient sway to Building #7: slime block + piston + observer, slow redstone clock, 0.5 block lateral shift every 30-60 seconds", "blocks": 30, "verification": "Subtle sway visible" },
+        { "step": 11, "action": "Build 12 three-story building shells: 6 wide x 5 deep x 9 tall, light gray concrete exterior, iron door, oak wall sign above", "blocks": 1800, "verification": "All 12 shells visible" },
+        { "step": 12, "action": "Build 3 two-story building shells (#11, #12, #13): 6 wide x 5 deep x 6 tall, same construction", "blocks": 450, "verification": "All 3 shells visible, visually distinct (shorter)" },
+        { "step": 13, "action": "Build Battle Cab shell (#8): 8 wide x 7 deep x 11 tall, larger than others", "blocks": 300, "verification": "Larger than other ops centers" },
+        { "step": 14, "action": "Place chamber entrance signage: 1,319 master sign, MAIN CHAMBER 4.5 ACRES sign, operational dates (Feb 6 1967 primary, April 20 1966 secondary), designer-interpretation placard", "blocks": 20, "verification": "All 6 signs visible" },
+        { "step": 15, "action": "Build power plant room at (0, 1197, 100): 6 piston/observer generator visuals in 2 rows of 3, redstone repeater battery bank wall", "blocks": 200, "verification": "Generators visible" },
+        { "step": 16, "action": "Build diesel reservoir room at (0, 1197, 130): sealed, black concrete walls, magma block floor, redstone lamp warning lights", "blocks": 100, "verification": "Sealed look" },
+        { "step": 17, "action": "Build air intake blast valve at (0, 1200, 100): 4x4x3 iron block structure, heavy iron door, AIR INTAKE sign, redstone lamp warning", "blocks": 50, "verification": "Visible on south chamber wall" }
+      ]
+    },
+    {
+      "phase": 6,
+      "name": "Building Interiors (Battle Cab First)",
+      "goal": "All 15 building interiors, with the Battle Cab as the visual climax.",
+      "block_budget_estimate": 7000,
+      "prerequisites": ["Phase 5 complete"],
+      "steps": [
+        { "step": 1, "action": "Battle Cab (#8) interior: blue wool floor, light gray concrete walls/ceiling, redstone lamp ceiling strips, iron door entrance, oak wall sign B-08 BATTLE CAB COMMAND CENTER", "blocks": 250, "verification": "Climactic room" },
+        { "step": 2, "action": "Battle Cab wall of displays: 2x2 grid of large display panels (5x2 each) on front wall. World map mosaic (10 item frames + filled maps) on left, status panel mosaic on right. Redstone lamp backlight behind. Below: red concrete ticker WELCOME TO THE NORAD COMMAND CENTER in light gray wool letterforms.", "blocks": 100, "verification": "Wall of displays dominates" },
+        { "step": 3, "action": "Battle Cab time-zone clocks: 8 clock blocks + 8 oak signs with labels ZULU / EXERCISE / HAWAII / PACIFIC / MOUNTAIN / CENTRAL / EASTERN / MOSCOW", "blocks": 16, "verification": "All 8 labels present" },
+        { "step": 4, "action": "Battle Cab U-shape consoles: 6 note blocks (2 center + 2 left + 2 right), 6 levers, 6 light gray wool slab chairs. Station signs on walls (CD, SD, WC, WC2, DO, BMC)", "blocks": 50, "verification": "U-shape clearly a U" },
+        { "step": 5, "action": "Battle Cab 1980 false alarm plaque: 3x2 light gray concrete panel on back wall, full text in black wool 3x5 letterforms, black concrete border, soul lantern accent, redstone lamp alert indicator", "blocks": 50, "verification": "Full text readable" },
+        { "step": 6, "action": "Ops center #1 (Air Defense): 2 wall screens (item frame mosaics with radar sweep + track table patterns), 3 note block consoles, 3 light gray wool chairs, B-01 sign, TRACKING 24/7 sign", "blocks": 60, "verification": "Radar theme" },
+        { "step": 7, "action": "Ops center #2 (Missile Warning): 1 large wall screen + 2 side screens (item frame mosaics), 3 consoles (1 with blinking redstone lamp), 3 chairs, B-02 sign, DSP/SBIRS sign, optional 1979 plaque (2x1 light gray concrete panel, full 6-line text)", "blocks": 80, "verification": "Missile status theme" },
+        { "step": 8, "action": "Ops center #3 (Space Control): blue wool + white wool star-map on 4x3 ceiling section, 3 consoles, 2 wall screens (orbital ring patterns), 3 chairs, B-03 sign, SPACE SURVEILLANCE NETWORK sign", "blocks": 100, "verification": "Star map visible" },
+        { "step": 9, "action": "Ops center #4 (Combined Intelligence Watch): 1 large wall screen (world situation map), central oak slab table 3x2, 4 chairs around table, 2 consoles, B-04 sign, ALL-SOURCE INTELLIGENCE sign", "blocks": 50, "verification": "Briefing theme" },
+        { "step": 10, "action": "Support buildings #5-7, #9-10: server racks, briefing rooms, planning tables, power distribution equipment (in #7 cross-section)", "blocks": 400, "verification": "Family resemblance" },
+        { "step": 11, "action": "Chapel #11: oak plank floor, spruce plank walls (lower), light gray concrete walls (upper), 4 rows of oak stair pews, oak slab altar, soul lantern candle, oak fence cross, light blue + white stained glass window, shroomlight cluster, B-11 sign, QUIET PLEASE sign, 3-4 chests on second floor", "blocks": 200, "verification": "Quiet warm room" },
+        { "step": 12, "action": "Granite Inn #12 ground floor: dark oak plank walls (lower), light gray concrete walls (upper), dark oak slab bar counter, dark oak fence stools, potion bottles on shelf, oak wall sign chalkboard, oak stair booths, shroomlight ceiling clusters (WARM), B-12 sign, EST. 1967 sign, MrBeast sign on back wall, hidden gold block behind painting", "blocks": 250, "verification": "ONLY warm-lit room" },
+        { "step": 13, "action": "Granite Inn #12 upper floor (dining): oak plank floor, dark oak plank walls, oak slab tables, oak stair chairs, shroomlight, DINING FACILITY 24/7 sign", "blocks": 100, "verification": "Dining area" },
+        { "step": 14, "action": "Medical/Dental #13: white wool floor, white bed, oak slab counter, quartz stairs dental chair, oak stairs waiting chair, 4 chests for pharmacy, brewing stand, B-13 sign", "blocks": 50, "verification": "Single nod" },
+        { "step": 15, "action": "Administrative #14: oak plank floor, oak slab desks, oak stair chairs, chests for files, B-14 sign", "blocks": 50, "verification": "Office" },
+        { "step": 16, "action": "Server room #15: light gray wool floor, chest + note block server racks, blinking redstone lamps, B-15 sign", "blocks": 100, "verification": "Server racks" },
+        { "step": 17, "action": "WOPR terminal in #15 back corner: note block terminal, black concrete desk, redstone lamp screen, item frame chess-board map, oak sign GREETINGS PROFESSOR FALKEN (green wool letterforms), smaller sign WOPR movie reference", "blocks": 30, "verification": "Movie reference labeled" },
+        { "step": 18, "action": "Stargate Command door in #15 back corridor: dark oak door, oak wall sign STARGATE COMMAND (black wool 3x5 letterforms on light gray concrete), AUTHORIZED PERSONNEL ONLY sign. Behind: 2x2 light gray concrete room with chest (mops) and JANITORIAL sign", "blocks": 30, "verification": "One door, one sign, nothing else Stargate" },
+        { "step": 19, "action": "Chrystal Palace sign in back corridor between #12 and #13: oak sign CHRYSTAL PALACE - ALTERNATE NORAD EXERCISE CODE NAME, c.1980s + REFERENCE: Wargames (1983)", "blocks": 2, "verification": "Off main path" }
+      ]
+    },
+    {
+      "phase": 7,
+      "name": "Reservoir, Finishing, Polish",
+      "goal": "Underground lake, final lighting tuning, signage review, the play-through.",
+      "block_budget_estimate": 3000,
+      "prerequisites": ["Phases 1-6 complete"],
+      "steps": [
+        { "step": 1, "action": "Carve reservoir at X: -315 to -285, Y: 1165-1180, Z: 40-60 (30x15x20 blocks)", "blocks": 9000, "verification": "Underground cavern" },
+        { "step": 2, "action": "Build reservoir walls/ceiling/floor: dark prismarine + polished andesite ribs + gravel patches", "blocks": 2000, "verification": "Carved rock feel" },
+        { "step": 3, "action": "Fill reservoir with water source blocks (lower 5 blocks, still/no current)", "blocks": 3000, "verification": "Still water" },
+        { "step": 4, "action": "Build causeway: 2-wide polished andesite along north wall, iron fence railings, 25 blocks long", "blocks": 75, "verification": "Walkable dock" },
+        { "step": 5, "action": "Build access stairway from chamber floor to causeway", "blocks": 30, "verification": "Connected" },
+        { "step": 6, "action": "Place oak boat in reservoir center (with optional chest)", "blocks": 1, "verification": "Boat visible" },
+        { "step": 7, "action": "Add reservoir lighting: soul lanterns at ceiling ribs (every 10 blocks) and causeway (every 8 blocks)", "blocks": 15, "verification": "Quietest lighting in build" },
+        { "step": 8, "action": "Place reservoir signage: 1.5 MILLION GALLONS, NATURAL SPRINGS, BOAT FOR AUTHORIZED INSPECTION", "blocks": 3, "verification": "All 3 signs" },
+        { "step": 9, "action": "Build emergency egress door (faded): locked iron door at (-315, 1190, 55), EMERGENCY EGRESS sign", "blocks": 5, "verification": "Faded reference" },
+        { "step": 10, "action": "Add 1980 secondary cross-reference in #2 server room: blinking redstone lamp with red concrete backing + MISSILE WARNING TEST 1980/06/03 sign", "blocks": 5, "verification": "Visible" },
+        { "step": 11, "action": "Add NORAD Tracks Santa seasonal banner above chamber entrance (year-round by default)", "blocks": 5, "verification": "Optional, swap for December" },
+        { "step": 12, "action": "Add DEW Line / BMEWS / PAVE PAWS signage throughout #1 and #2 (real sensor network references)", "blocks": 5, "verification": "Real history detail" },
+        { "step": 13, "action": "Lighting tuning pass: walk every zone, adjust redstone lamp / end rod / soul lantern density", "blocks": 50, "verification": "Dim institutional + warm contrast + deep underground feel" },
+        { "step": 14, "action": "Signage review pass: every oak sign readable from visitor's natural path", "blocks": 0, "verification": "All signs readable" },
+        { "step": 15, "action": "Spring count audit: 4-6 visible per building, master sign claims 1,319", "blocks": 0, "verification": "Honest count" },
+        { "step": 16, "action": "No-torches audit: confirm zero torches/campfires in the entire build", "blocks": 0, "verification": "No torches rule satisfied" },
+        { "step": 17, "action": "Warm-light audit: shroomlight/soul lantern only in chapel, Granite Inn, and the Battle Cab 1980 plaque accent", "blocks": 0, "verification": "Warm light rule satisfied" },
+        { "step": 18, "action": "Final play-through: approach road -> portal -> tunnel -> blast doors -> chamber -> Battle Cab -> 4 ops centers -> support rooms -> chapel -> Granite Inn -> reservoir", "blocks": 0, "verification": "20-30 minutes" }
+      ]
+    }
+  ],
+  "easter_eggs": [
+    {
+      "name": "1980 False Alarm Plaque",
+      "type": "main_path",
+      "position": { "x": -2, "y": 1197, "z": 48 },
+      "building_id": 8,
+      "location_in_building": "back wall to the right of entrance door",
+      "panel_size_blocks": { "x": 3, "y": 2 },
+      "letter_block": "minecraft:black_wool",
+      "letter_pattern": "3x5 blocks per letter",
+      "text": "JUNE 3, 1980. A 46-CENT COMPUTER CHIP FAILED IN THE MISSILE WARNING NETWORK. NORAD BRIEFLY REPORTED 2,200 SOVIET ICBMs INBOUND. BOMBER CREWS TOOK THEIR STATIONS. NATIONAL SECURITY ADVISOR ZBIGNIEW BRZEZINSKI WAS WOKEN AT 3:00 A.M. HE DID NOT WAKE HIS WIFE, CALCULATING SHE HAD MINUTES TO LIVE. THE ALERT WAS RESOLVED WHEN A THIRD CALL REPORTED NO RADAR OR SATELLITE CONFIRMATION. 'GOING TO WAR. AND IT CAME DAMN CLOSE TO TAKING THE COUNTRY WITH IT.' - OFFICE OF TECHNOLOGY ASSESSMENT",
+      "lighting": "minecraft:soul_lantern above + minecraft:redstone_lamp with minecraft:red_concrete next to"
+    },
+    {
+      "name": "1979 Test-Tape False Alarm Plaque",
+      "type": "main_path_optional",
+      "position": { "x": -10, "y": 1197, "z": 41 },
+      "building_id": 2,
+      "panel_size_blocks": { "x": 2, "y": 1 },
+      "text": "NOVEMBER 9, 1979. A 427M TEST PROGRAM WAS INADVERTENTLY UPLOADED TO THE LIVE WARNING SYSTEM. 1,400 SOVIET ICBMs REPORTED. RESOLVED IN 6 MINUTES."
+    },
+    {
+      "name": "Stargate Command Door",
+      "type": "off_main_path",
+      "building_id": 15,
+      "door_block": "minecraft:dark_oak_door",
+      "sign_text": "STARGATE COMMAND",
+      "secondary_sign": "AUTHORIZED PERSONNEL ONLY",
+      "behind_door": "2x2 minecraft:light_gray_concrete room with minecraft:chest (mops) and minecraft:oak_sign 'JANITORIAL'",
+      "discipline": "ONE door, ONE sign, nothing else Stargate. No iris, no gate, no Asgard."
+    },
+    {
+      "name": "WOPR Terminal (Wargames 1983)",
+      "type": "off_main_path",
+      "building_id": 15,
+      "location_in_building": "back corner behind server racks",
+      "terminal": "minecraft:note_block on minecraft:black_concrete desk",
+      "screen": "minecraft:redstone_lamp above",
+      "chess_board": "minecraft:item_frame + minecraft:filled_map with chess pattern",
+      "signs": ["GREETINGS PROFESSOR FALKEN (green wool letterforms)", "WOPR - WAR OPERATION PLAN RESPONSE - Wargames (1983) movie reference"]
+    },
+    {
+      "name": "Chrystal Palace Sign (Wargames code name)",
+      "type": "off_main_path",
+      "location": "back corridor between buildings 12 and 13",
+      "signs": ["CHRYSTAL PALACE - ALTERNATE NORAD EXERCISE CODE NAME, c.1980s", "REFERENCE: Wargames (1983)"]
+    },
+    {
+      "name": "MrBeast 2025 Sign",
+      "type": "off_main_path",
+      "building_id": 12,
+      "location_in_building": "back wall of ground floor (the bar)",
+      "sign": "$1 vs $1,000,000,000,000 - THE NUCLEAR BUNKER - MrBeast (2025)",
+      "hidden_detail": "minecraft:gold_block behind minecraft:painting (YouTube play button)"
+    },
+    {
+      "name": "DEAD AIR Sign (institutional humor)",
+      "type": "tunnel",
+      "location": "tunnel Stage 2, ~400-block mark, in a wall niche",
+      "sign": "DEAD AIR - 22 DAYS - NO RAIN, NO WIND, NO BIRDS"
+    },
+    {
+      "name": "NORAD Tracks Santa Banner (seasonal, optional)",
+      "type": "main_path",
+      "location": "above chamber entrance",
+      "build": "minecraft:red_wool + minecraft:white_wool banner or minecraft:oak_wall_sign",
+      "signs": ["NORAD TRACKS SANTA - DECEMBER 24 - SINCE 1955", "TRACK NORADSANTA.ORG ON CHRISTMAS EVE"],
+      "seasonal": true
+    },
+    {
+      "name": "1980 Missile Warning Test Cross-Reference",
+      "type": "off_main_path",
+      "building_id": 2,
+      "build": "single minecraft:redstone_lamp with minecraft:red_concrete backing blinking on/off",
+      "sign": "MISSILE WARNING TEST - 1980/06/03 - 02:26 HRS"
+    },
+    {
+      "name": "Emergency Egress Door (faded)",
+      "type": "faded",
+      "location": { "x": -315, "y": 1190, "z": 55 },
+      "build": "minecraft:iron_door (locked)",
+      "sign": "EMERGENCY EGRESS",
+      "discipline": "Not a buildable route. Single door, single sign."
+    },
+    {
+      "name": "DEW Line / BMEWS / PAVE PAWS Signage",
+      "type": "main_path_subtle",
+      "location": "throughout ops centers 1 and 2",
+      "build": "small minecraft:oak_sign blocks citing real sensor networks",
+      "examples": ["BMEWS (Fylingdales / Clear / Thule)", "PAVE PAWS (Beale / Cape Cod / Clear)", "JSS - JOINT SURVEILLANCE SYSTEM", "SBIRS GEO-1 / GEO-2 / GEO-3"]
+    }
+  ],
+  "block_palette": {
+    "exterior_granite": {
+      "primary": "minecraft:granite",
+      "secondary": "minecraft:pink_terracotta",
+      "tertiary": "minecraft:red_terracotta",
+      "accents": ["minecraft:polished_granite", "minecraft:stone"],
+      "mix": "60% granite, 25% pink_terracotta, 15% red_terracotta"
+    },
+    "interior_rock": {
+      "tunnel_walls_lower_stage_1": "minecraft:granite",
+      "tunnel_walls_lower_stage_2": "minecraft:light_gray_concrete",
+      "tunnel_walls_lower_stage_3": "minecraft:light_gray_concrete",
+      "tunnel_ceiling": "minecraft:stone",
+      "tunnel_floor_stage_1": "minecraft:gravel",
+      "tunnel_floor_stage_2_3": "minecraft:polished_andesite",
+      "chamber_floor": "minecraft:polished_andesite",
+      "chamber_floor_service": "minecraft:iron_trapdoor",
+      "chamber_floor_spring_area": "minecraft:black_concrete",
+      "rock_bolts": "minecraft:iron_bars"
+    },
+    "portal_and_lining": {
+      "arch_frame": "minecraft:light_gray_concrete",
+      "corner_caps": "minecraft:iron_block",
+      "tunnel_concrete_sections": "minecraft:smooth_stone",
+      "structural_metal": "minecraft:iron_block",
+      "pipes": ["minecraft:iron_bars", "minecraft:chain"]
+    },
+    "pipe_color_coding": {
+      "water": "minecraft:green_concrete",
+      "fire_suppression": "minecraft:red_concrete",
+      "fuel": "minecraft:yellow_concrete",
+      "compressed_air": "minecraft:blue_concrete"
+    },
+    "buildings": {
+      "exteriors": "minecraft:light_gray_concrete",
+      "trim_alternative": "minecraft:white_concrete",
+      "floors_corridors": "minecraft:polished_andesite",
+      "battle_cab_floor": "minecraft:blue_wool",
+      "ops_center_floor": "minecraft:light_gray_wool",
+      "ceiling": "minecraft:light_gray_concrete",
+      "doors": "minecraft:iron_door",
+      "structural": "minecraft:iron_block",
+      "console_machines": "minecraft:note_block",
+      "console_screens": "minecraft:item_frame + minecraft:filled_map",
+      "screen_backlight": "minecraft:redstone_lamp",
+      "console_keys": "minecraft:lever",
+      "ops_chairs": "minecraft:light_wool",
+      "carpet": ["minecraft:blue_wool", "minecraft:light_gray_wool"]
+    },
+    "lighting": {
+      "primary_fluorescent": "minecraft:redstone_lamp",
+      "linear_fluorescent": "minecraft:end_rod",
+      "cold_blue_reservoir": "minecraft:soul_lantern",
+      "warm_chapel_granite_inn": "minecraft:shroomlight",
+      "warm_iron_lantern_guardhouse": "minecraft:lantern",
+      "time_zones": "minecraft:clock"
+    },
+    "forbidden_lighting": ["minecraft:torch", "minecraft:campfire", "minecraft:soul_campfire"],
+    "springs": {
+      "base_plate": "minecraft:iron_block",
+      "coil": "minecraft:chain",
+      "coil_alternative": "minecraft:iron_bars",
+      "cap": "minecraft:anvil",
+      "air_gap_blocks": 1
+    },
+    "reservoir": {
+      "water": "minecraft:water",
+      "walls": "minecraft:dark_prismarine",
+      "ceiling": "minecraft:dark_prismarine",
+      "floor": "minecraft:dark_prismarine",
+      "causeway": "minecraft:polished_andesite",
+      "railings": "minecraft:iron_fence",
+      "lighting": "minecraft:soul_lantern",
+      "boat": "minecraft:oak_boat"
+    },
+    "forest": {
+      "ponderosa_pine": ["minecraft:spruce_log", "minecraft:spruce_leaves"],
+      "scrub_oak": ["minecraft:oak_log", "minecraft:oak_leaves"],
+      "mature_stands": ["minecraft:dark_oak_log", "minecraft:dark_oak_leaves"],
+      "undergrowth": ["minecraft:tall_grass", "minecraft:fern", "minecraft:poppy", "minecraft:azure_bluet", "minecraft:sweet_berry_bush"],
+      "floor": ["minecraft:coarse_dirt", "minecraft:podzol", "minecraft:grass_block", "minecraft:moss_block"]
+    },
+    "approach_road": {
+      "main_surface": "minecraft:gravel",
+      "edges": "minecraft:coarse_dirt",
+      "shoulders": "minecraft:path",
+      "parking_lot": "minecraft:gravel",
+      "final_switchback": "minecraft:smooth_stone",
+      "retaining_walls": "minecraft:cobblestone_wall",
+      "fence": "minecraft:iron_fence",
+      "concertina_wire": "minecraft:chain",
+      "jersey_barriers": "minecraft:smooth_stone_slab"
+    },
+    "antennas": {
+      "base": "minecraft:iron_block",
+      "mast": "minecraft:lightning_rod",
+      "cross_bracing": "minecraft:chain",
+      "equipment_shacks": "minecraft:oak_planks"
+    },
+    "human_spaces": {
+      "chapel_floor": "minecraft:oak_planks",
+      "chapel_walls": ["minecraft:spruce_planks", "minecraft:light_gray_concrete"],
+      "chapel_ceiling": "minecraft:spruce_planks",
+      "pews": "minecraft:oak_stairs",
+      "altar": "minecraft:oak_slab",
+      "candle": "minecraft:soul_lantern",
+      "cross": "minecraft:oak_fence",
+      "stained_glass": "minecraft:light_blue_stained_glass_pane",
+      "stained_glass_cross": "minecraft:white_stained_glass_pane",
+      "granite_inn_floor": "minecraft:oak_planks",
+      "granite_inn_walls": ["minecraft:dark_oak_planks", "minecraft:light_gray_concrete"],
+      "granite_inn_ceiling": "minecraft:dark_oak_planks",
+      "bar_counter": "minecraft:dark_oak_slab",
+      "bar_stools": "minecraft:dark_oak_fence",
+      "bottles": "minecraft:potion",
+      "dining_tables": "minecraft:oak_slab",
+      "dining_chairs": "minecraft:oak_stairs",
+      "hidden_gold_block": "minecraft:gold_block",
+      "hidden_painting": "minecraft:painting",
+      "medical_bed": "minecraft:white_bed",
+      "dental_chair": "minecraft:quartz_stairs",
+      "compounding": "minecraft:brewing_stand"
+    },
+    "power_plant": {
+      "generators": ["minecraft:piston", "minecraft:observer", "minecraft:iron_block"],
+      "gauges": "minecraft:redstone_lamp",
+      "battery_bank": "minecraft:redstone_repeater",
+      "diesel_walls": "minecraft:black_concrete",
+      "diesel_floor": "minecraft:magma_block"
+    },
+    "storage_and_props": {
+      "chests": "minecraft:chest",
+      "jukebox": "minecraft:jukebox",
+      "note_blocks_for_console": "minecraft:note_block",
+      "signage": ["minecraft:oak_sign", "minecraft:oak_wall_sign"],
+      "decorative_minecarts": "minecraft:minecart"
+    }
+  },
+  "color_palette_hex": {
+    "pink_granite_pikes_peak": "#B5566E to #8B3A3A",
+    "charcoal_grey": "#2C2C2C to #4A4A4A",
+    "brushed_steel": "#A8A8A8 to #888888",
+    "dark_blue_black": "#0A1628 to #1A1A2E",
+    "warning_red": "#B33A3A to #8B2C2C",
+    "fluorescent_white": "#E8E8E8 to #F0F0F0",
+    "warm_amber": "#D4A55A to #B8843A"
+  },
+  "binding_decisions": {
+    "vertical_compression_2_1": true,
+    "horizontal_compression_4_1": true,
+    "signature_detail_scaling_2x": true,
+    "mountain_height_1450_blocks": true,
+    "tunnel_length_800_blocks": true,
+    "chamber_dimensions_45x25x18": true,
+    "rock_cover_2000_ft_300_blocks": true,
+    "springs_1319": true,
+    "blast_doors_25_tons": true,
+    "buildings_12_3_story_plus_3_2_story": true,
+    "spring_movement_1_inch_normal_12_inch_extreme": true,
+    "operational_dates_feb_6_1967_primary_april_20_1966_secondary": true,
+    "visual_reference_era_2006_2016": true,
+    "1980_false_alarm_plaque_full_text": true,
+    "stargate_command_door_one_door_one_sign": true,
+    "mountain_anonymous_exterior": true,
+    "no_torches_anywhere": true,
+    "warm_light_only_chapel_granite_inn_battle_cab_plaque": true
+  },
+  "scale_verification": {
+    "build_height_required": 1550,
+    "vanilla_build_height": 384,
+    "vanilla_sufficient": false,
+    "modded_build_height_required": 1550,
+    "recommended_mod": "CubicWorld or similar with at least 2,048 block build height",
+    "mountain_footprint_blocks": 480000,
+    "mountain_volume_estimate_blocks": 232000000,
+    "tunnel_volume_blocks": 17200,
+    "chamber_volume_blocks": 20250,
+    "reservoir_volume_blocks": 9000,
+    "buildings_total_volume_blocks": 3780,
+    "estimated_hand_built_block_count": 50000,
+    "estimated_hand_built_block_count_max": 70000,
+    "tunnel_walk_time_minutes": "5-8",
+    "total_focused_play_minutes": "20-30",
+    "total_phase_blocks": 414700
+  },
+  "custom_schematics_needed": [
+    {
+      "name": "cheyenne-mountain-shell.schem",
+      "purpose": "1,450-block mountain mass",
+      "approximate_dimensions": { "x": 600, "y": 1450, "z": 800 }
+    },
+    {
+      "name": "cheyenne-portal-arch.schem",
+      "purpose": "North Portal exterior (arch + lettering)",
+      "approximate_dimensions": { "x": 22, "y": 4, "z": 5 }
+    },
+    {
+      "name": "cheyenne-blast-door.schem",
+      "purpose": "Single 2x-scaled blast door",
+      "approximate_dimensions": { "x": 6, "y": 4, "z": 1 }
+    },
+    {
+      "name": "cheyenne-battle-cab-shell.schem",
+      "purpose": "Battle Cab building shell",
+      "approximate_dimensions": { "x": 8, "y": 11, "z": 7 }
+    },
+    {
+      "name": "cheyenne-ops-center-shell.schem",
+      "purpose": "Generic 3-story ops center shell (6x9x5)",
+      "approximate_dimensions": { "x": 6, "y": 9, "z": 5 }
+    },
+    {
+      "name": "cheyenne-2story-shell.schem",
+      "purpose": "Generic 2-story support / human-space shell (6x6x5)",
+      "approximate_dimensions": { "x": 6, "y": 6, "z": 5 }
+    },
+    {
+      "name": "cheyenne-spring-mount.schem",
+      "purpose": "Single 2x-scaled spring column",
+      "approximate_dimensions": { "x": 1, "y": 4, "z": 1 }
+    },
+    {
+      "name": "cheyenne-antenna-large.schem",
+      "purpose": "30-block central-peak antenna",
+      "approximate_dimensions": { "x": 3, "y": 30, "z": 3 }
+    },
+    {
+      "name": "cheyenne-antenna-small.schem",
+      "purpose": "25-block side-peak antenna",
+      "approximate_dimensions": { "x": 2, "y": 25, "z": 2 }
+    }
+  ],
+  "connections_to_other_builds": {
+    "service_tunnel_to_subtropolis": {
+      "from": { "x": 0, "y": 1196, "z": 100 },
+      "to": { "x": 0, "y": 200, "z": 1200 },
+      "length_blocks": 1200,
+      "status": "flagged for combined-complex team; not in this build"
+    },
+    "public_shaft_to_city": {
+      "from": { "x": 0, "y": 1196, "z": 100 },
+      "to": { "x": 0, "y": 200, "z": 500 },
+      "length_blocks": 700,
+      "status": "flagged for combined-complex team; not in this build"
+    },
+    "ravine_north_wall_cheyenne_side": {
+      "z_min": 0,
+      "z_max": 400,
+      "x_min": -300,
+      "x_max": 300
+    },
+    "city_center_combined": {
+      "position": { "x": 0, "y": 150, "z": 500 }
+    },
+    "subtropolis_center_combined": {
+      "position": { "x": 0, "y": 200, "z": 1200 }
+    }
+  },
+  "open_items": [
+    {
+      "id": 1,
+      "category": "user_input_blocking",
+      "item": "Build height mod selection",
+      "default": "CubicWorld 2,048",
+      "alternatives": ["MCHigher", "Cylinder", "custom superflat with extended height"]
+    },
+    {
+      "id": 2,
+      "category": "user_input_blocking",
+      "item": "Portal signage text",
+      "default": "CHEYENNE MOUNTAIN COMPLEX (historically iconic)",
+      "alternatives": ["CHEYENNE MOUNTAIN SPACE FORCE STATION (current 2020+ name)"]
+    },
+    {
+      "id": 3,
+      "category": "user_input_blocking",
+      "item": "1980 plaque text length",
+      "default": "Full text (per Veteran and deliberation Topic 5)",
+      "alternatives": ["Concise 2-3 line excerpt"]
+    },
+    {
+      "id": 4,
+      "category": "user_input_blocking",
+      "item": "Stargate door text",
+      "default": "STARGATE COMMAND (literal, the real broom-closet joke)",
+      "alternatives": ["SGC - Authorized Personnel Only (more subtle)"]
+    },
+    {
+      "id": 5,
+      "category": "user_input_blocking",
+      "item": "1979 secondary plaque",
+      "default": "Include (cheap, 2-line plaque)",
+      "alternatives": ["Skip"]
+    },
+    {
+      "id": 6,
+      "category": "user_input_blocking",
+      "item": "MrBeast reference",
+      "default": "Include (small sign + hidden gold block)",
+      "alternatives": ["Skip"]
+    },
+    {
+      "id": 7,
+      "category": "user_input_blocking",
+      "item": "NORAD Tracks Santa banner timing",
+      "default": "Year-round sign",
+      "alternatives": ["December-only swap"]
+    },
+    {
+      "id": 8,
+      "category": "user_input_blocking",
+      "item": "Cross-section building choice",
+      "default": "Building 7 (Systems Center) on the main E-W axis",
+      "alternatives": ["Building 13 (Medical/Dental) per original design plan"]
+    },
+    {
+      "id": 9,
+      "category": "user_input_blocking",
+      "item": "Ambient sway building",
+      "default": "Building 7 (the cross-section building)",
+      "alternatives": ["None (skipped for safety)"]
+    },
+    {
+      "id": 10,
+      "category": "depends_on_combined_report",
+      "item": "Service tunnel to SubTropolis",
+      "status": "Connection point defined at (0, 1196, 100). 1,200-block tunnel is not in this build; flagged for the combined-complex team."
+    },
+    {
+      "id": 11,
+      "category": "depends_on_combined_report",
+      "item": "Public shaft to city in ravine",
+      "status": "Connection point defined at (0, 1196, 100). 700-block shaft is not in this build; flagged for the combined-complex team."
+    },
+    {
+      "id": 12,
+      "category": "depends_on_combined_report",
+      "item": "Deep ravine dimensions",
+      "status": "Defined as 300-400 blocks wide, ~200 blocks deep, south of the mountain. To be confirmed in the combined-complex report."
+    },
+    {
+      "id": 13,
+      "category": "depends_on_combined_report",
+      "item": "Rail connection (v2.0 feature)",
+      "status": "A minecraft:rail line from the chamber to SubTropolis and the Houston tunnel system. Deferred to v2.0; depends on combined-complex site plan."
+    },
+    {
+      "id": 14,
+      "category": "contractor_clarification",
+      "item": "Battle Cab U-shape console arrangement",
+      "notes": "Design plan specifies 2+2+2=6 stations. Exact arrangement is design intent, not mandated. Contractor can choose."
+    },
+    {
+      "id": 15,
+      "category": "contractor_clarification",
+      "item": "Number of visible springs per building",
+      "notes": "4-6 is the design range. Contractor should pick a consistent number (suggest 4) and use the 1,319 master sign to carry the honest count."
+    },
+    {
+      "id": 16,
+      "category": "contractor_clarification",
+      "item": "NORAD Tracks Santa placement",
+      "notes": "Default above chamber entrance. Contractor can place on chamber west wall if entrance is visually busy."
+    }
+  ]
+}

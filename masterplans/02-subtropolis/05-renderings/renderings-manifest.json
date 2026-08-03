@@ -1,0 +1,287 @@
+{
+  "build_name": "SubTropolis",
+  "build_id": "02-subtropolis",
+  "total_renderings": 20,
+  "required_renderings": 15,
+  "stretch_goal_renderings": 5,
+  "style": "Cinematic concept art with Minecraft blocky geometry rendered photorealistically. 1970s industrial beige palette per the culture-architecture analysis.",
+  "aspect_ratios": {
+    "16:9": "Wide exteriors, pillar grid, surface plateau, combined overview, cutaway, ghost mine, entrance ramp, second exit portal",
+    "4:3": "Interior detail shots: USPS, NARA, data center, Grainger, UV&S, 1973 Ford Mavericks, shift change, cafeteria",
+    "1:1": "Close-ups and sign details: Hunt Midwest marquee, pillar numbers detail, FTZ sign"
+  },
+  "resolution": "2K",
+  "renderings": [
+    {
+      "id": "01-exterior-entrance-approach",
+      "filename": "modules/01-exterior-entrance-approach.png",
+      "prompt": "Cinematic concept art of a Minecraft-style build showing the exterior of SubTropolis: a small modern visitor center building (white concrete and glass) set into the base of a tree-covered limestone bluff. A paved two-lane road descends into a horizontal portal cut into the rock face. A semi-truck passes through the entrance. Above the portal: a large red, white, and black marquee sign reading 'HUNT MIDWEST SUBTROPOLIS — WORLD'S LARGEST UNDERGROUND BUSINESS COMPLEX'. A clearance warning sign reads 'WARNING 13'-6\" CLEARANCE'. A security gate and guard booth stand at the entrance. International flags line the top of the portal. The bluff above is layered sedimentary limestone (cream, beige, and grey) with visible horizontal strata. Full daylight, clear sky. Wide-angle hero shot, cinematic lighting. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "16:9",
+      "resolution": "2K",
+      "intended_use": "Master plan section 5 (The Entrance & Access) — the exterior hero shot",
+      "source_references": [
+        "research-report.md (§5 Entrance & Access)",
+        "visual-assets.md (§1 Exterior & Approach)",
+        "site-plan.md (§3.1 Main entrance)",
+        "design-plan.md (§3.1 The main entrance)",
+        "commons-subtropolis-panorama.jpg"
+      ]
+    },
+    {
+      "id": "02-entrance-ramp-descent",
+      "filename": "modules/02-entrance-ramp-descent.png",
+      "prompt": "Cinematic concept art of a Minecraft-style build: the view from the cab of a vehicle descending a paved two-lane ramp into a limestone mine. Rough cream-and-beige limestone walls close in overhead, transitioning from full daylight at the top of the frame to fluorescent ceiling lighting further down. The road is polished grey with yellow lane lines and a white 'SPEED LIMIT 15' sign on a post. The ceiling is rough rock with sea-lantern-style strip lighting appearing. A 'NO TRUCK IDLING' sign on the wall. The atmosphere shifts from outside to interior. Driver's perspective, motion-blur effect, cinematic lighting, cool fluorescent tones meeting warm rock. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "16:9",
+      "resolution": "2K",
+      "intended_use": "Master plan section 5 (Visitor Flow — Stage 3 Descent); the canonical drive-into-a-hill moment",
+      "source_references": [
+        "research-report.md (§5.1, §7)",
+        "culture-architecture-analysis.md (§7 Stage 3)",
+        "design-plan.md (§4 Entrance ramp)",
+        "subtropolis-avenue-truck-pov.png"
+      ]
+    },
+    {
+      "id": "03-pillar-grid-reveal",
+      "filename": "modules/03-pillar-grid-reveal.png",
+      "prompt": "Epic cinematic concept art of a Minecraft-style build: the vast underground column grid of SubTropolis, a hall of white-painted 8x8 limestone pillars receding to infinity in a one-point perspective. Each pillar is 5 blocks tall (16 feet), painted bright white, stenciled with black numbers like 911.10, 911.11, 911.12 visible on their faces. The floor is polished grey concrete with yellow parking-grid lines. Exposed red, blue, yellow, and green painted utility conduit runs along the walls and ceiling. LED-style strip lights run continuously across the ceiling in continuous rows. The ceiling is rough limestone painted white. Bright, even, industrial overhead lighting — no shadows in the main avenue. The mood is utilitarian awe, the industrial cathedral of utility. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "16:9",
+      "resolution": "2K",
+      "intended_use": "Master plan section 4 (Layout & Architecture) — the money shot, the iconic pillar grid",
+      "source_references": [
+        "research-report.md (§4.1, §9, §10.3)",
+        "culture-architecture-analysis.md (§3.2, §4 #2)",
+        "design-plan.md (§5 Main chamber grid)",
+        "huntmidwest-hero-main.jpg"
+      ]
+    },
+    {
+      "id": "04-hushpuckney-avenue",
+      "filename": "modules/04-hushpuckney-avenue.png",
+      "prompt": "Cinematic concept art of a Minecraft-style build: a long straight underground avenue called 'Hushpuckney Avenue' (visible on a green street-name sign) inside the SubTropolis underground complex. A 'SPEED LIMIT 15' sign is mounted on a post. White-painted square pillars line both sides of the avenue, stenciled with black numbers. The avenue floor is polished concrete with yellow lane markings and white edge lines. At intersections, red stop signs are visible. Exposed conduit (red fire, blue water, yellow comms, green data) runs along the walls. Tenant entrances with dock doors branch off on either side. The avenue recedes into the distance for 350 blocks, the repetition of pillars emphasizing the vast scale. Industrial fluorescent lighting, utilitarian atmosphere. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "16:9",
+      "resolution": "2K",
+      "intended_use": "Master plan section 4.3 (The Main Avenue — Hushpuckney); the iconic drive-through experience",
+      "source_references": [
+        "research-report.md (§4.3, §5.3)",
+        "culture-architecture-analysis.md (§4 #4)",
+        "design-plan.md (§5.2, §5.4)",
+        "site-plan.md (§4.3)"
+      ]
+    },
+    {
+      "id": "05-usps-tenant-zone",
+      "filename": "modules/05-usps-tenant-zone.png",
+      "prompt": "Cinematic concept art of a Minecraft-style build: the USPS National Requisition Center inside SubTropolis. Five numbered dark-wood dock doors labeled S1-S5 with yellow numbers above. A minecart-with-chest (representing a backed-in semi-trailer) sits at one bay. Yellow bollards protect the white-painted limestone pillars. A white banner reads 'USPS NATIONAL REQUISITION CENTER'. Interior: white concrete walls, polished concrete floor with yellow striping, polished deepslate conveyor segments running the length, barrels and chests stacked in rows representing stamp and package inventory. A small commemorative-stamp display. A wall plaque reads '2001 ANTHRAX SCARE — 50 EMPLOYEES TESTED'. Industrial fluorescent lighting. Operations manager perspective, a working logistics facility. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "4:3",
+      "resolution": "2K",
+      "intended_use": "Master plan section 6.2 (Tenant Zones — Fit-out 1 USPS)",
+      "source_references": [
+        "research-report.md (§6.1)",
+        "culture-architecture-analysis.md (§4 #6)",
+        "design-plan.md (§6.2 Fit-out 1)",
+        "huntmidwest-dock-doors.jpg"
+      ]
+    },
+    {
+      "id": "06-nara-vault-zone",
+      "filename": "modules/06-nara-vault-zone.png",
+      "prompt": "Cinematic concept art of a Minecraft-style build: the NARA Federal Records Center inside SubTropolis, a climate-controlled archive vault. A door with a tan sign reads 'NARA — FEDERAL RECORDS CENTER' with a NARA eagle logo. Interior: rows of floor-to-ceiling high-bay shelving (5 blocks tall) made of slabs and barrels (representing archive boxes), narrow 1-block aisles, dim warm amber lighting from end-rods under each shelf run and a single lantern at the door. Polished andesite floor with white painted aisle lines. Oak signs at each aisle read 'A1', 'A2', 'A3'. A wall sign reads 'CLIMATE: 65°F / 35% RH — CONSTANT'. The mood is hushed, archival, the 'permanent record' feeling. No sky, fully sealed, no weather. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "4:3",
+      "resolution": "2K",
+      "intended_use": "Master plan section 6.2 (Fit-out 2 NARA); section 7 (Climate-Controlled Vault Zones)",
+      "source_references": [
+        "research-report.md (§6.1, §7)",
+        "culture-architecture-analysis.md (§4 #7)",
+        "design-plan.md (§6.2 Fit-out 2, §7)",
+        "discussion-notes.md (Topic 5 climate framing)"
+      ]
+    },
+    {
+      "id": "07-data-center",
+      "filename": "modules/07-data-center.png",
+      "prompt": "Cinematic concept art of a Minecraft-style build: the SubTropolis Technology Center (STC) data center, a sealed chamber inside a limestone mine. The door is black concrete with a 'SubTropolis Technology Center' sign in light blue. A black pedestal with a hand-reader prop at the entrance. Interior: rows of black concrete server racks with obsidian front faces and redstone-lamp-style red/green blinking status lights. A cool blue shroomlight underglow beneath the floor tiles of the cold-aisle between rack rows. Iron-bar vents in the ceiling with cool blue underglow. Polished deepslate floor with light blue painted aisle lines. A wall conduit run labeled 'DARK FIBER — 1102 GRAND'. Mood: dim, cool, modern, the 2010s hyperscale feel inside a 1960s mine. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "4:3",
+      "resolution": "2K",
+      "intended_use": "Master plan section 6.2 (Fit-out 3 STC); section 8 (The Data Center Hall)",
+      "source_references": [
+        "research-report.md (§6.3)",
+        "culture-architecture-analysis.md (§4 #8)",
+        "design-plan.md (§6.2 Fit-out 3, §8)"
+      ]
+    },
+    {
+      "id": "08-grainger-distribution",
+      "filename": "modules/08-grainger-distribution.png",
+      "prompt": "Cinematic concept art of a Minecraft-style build: W.W. Grainger industrial distribution warehouse inside SubTropolis. Six numbered dock doors labeled G1-G6 with orange (Grainger brand) numbers above. A rail in front. A 'W.W. GRAINGER — Industrial Distribution' sign in orange on white. Interior: standard warehouse with white concrete walls, polished andesite floor with yellow lane markings, white bollards. Pallet racking made of fence uprights and slab shelves, 4 blocks tall, holding barrels and chests representing inventory categories ('HVAC FILTERS', 'FASTENERS', 'POWER TOOLS'). A small white-box office in one corner with a 'Pick & Pack' door. Industrial fluorescent lighting, a working distribution center, a minecart with chest backed into one of the bays. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "4:3",
+      "resolution": "2K",
+      "intended_use": "Master plan section 6.2 (Fit-out 4 Grainger); section 6.4 (Logistics, e-commerce, light industrial)",
+      "source_references": [
+        "research-report.md (§6.3, §6.4)",
+        "culture-architecture-analysis.md (§4 #9)",
+        "design-plan.md (§6.2 Fit-out 4)",
+        "huntmidwest-pharma-zone.jpg"
+      ]
+    },
+    {
+      "id": "09-uvs-film-archive",
+      "filename": "modules/09-uvs-film-archive.png",
+      "prompt": "Cinematic concept art of a Minecraft-style build: the Underground Vaults & Storage (UV&S) film archive vault inside SubTropolis. A small secured room, dim and climate-controlled. Iron bars uprights, iron trapdoor shelves, 3 blocks tall, 3 rows of 4 shelves. Barrels and chests on the shelves representing film canisters. A single lantern at the door — the only light source. Two clearly labeled film canisters: one reads 'GONE WITH THE WIND — INTERPOSITIVE' and another reads 'WIZARD OF OZ — MASTER'. A wall sign reads 'CLIMATE-CONTROLLED FILM ARCHIVE — 38°F / 35% RH'. An 'AUTHORIZED PERSONNEL ONLY' sign above the iron door. The mood is dim, vault-like, archival. No posters, no movie imagery — just the labeled cans. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "4:3",
+      "resolution": "2K",
+      "intended_use": "Master plan section 6.2 (Commercial film & media archive); section 6.2 (Fit-out 7 UV&S)",
+      "source_references": [
+        "research-report.md (§6.2)",
+        "culture-architecture-analysis.md (§4 #10)",
+        "design-plan.md (§6.2 Fit-out 7)",
+        "ref-film-archive-storage-vault.jpg"
+      ]
+    },
+    {
+      "id": "10-ghost-mine",
+      "filename": "modules/10-ghost-mine.png",
+      "prompt": "Cinematic concept art of a Minecraft-style build: the unfinished 'ghost mine' chamber at the end of a side spur in SubTropolis. A dark, raw limestone chamber with rough un-painted walls, no lighting except a single soul lantern at the barricade. An oak fence gate barricade spans the corridor with a sign reading 'DANGER — ACTIVE MINING — HUNT MIDWEST MINING, INC.' in red on white. The chamber beyond: rough smooth stone walls, stone and gravel floor, deepslate veining, a single minecart on a short stretch of rail disappearing into the dark. Cobwebs hang from the ceiling. The mood is primordial, raw, contrast to the polished developed corridors. Dramatic shadows. The 'what SubTropolis looked like before it was a business park' feeling. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "16:9",
+      "resolution": "2K",
+      "intended_use": "Master plan section 6.3 (The dark, unfinished 'ghost mine' chamber); cultural-architecture #12",
+      "source_references": [
+        "research-report.md (§10.3 #8)",
+        "culture-architecture-analysis.md (§4 #12)",
+        "design-plan.md (§6.3)",
+        "commons-subtropolis-interior-02.jpg"
+      ]
+    },
+    {
+      "id": "11-surface-plateau-parking",
+      "filename": "modules/11-surface-plateau-parking.png",
+      "prompt": "Cinematic concept art of a Minecraft-style build: the surface plateau above the SubTropolis hill. A flat grass-and-dirt top of a hill with a small parking lot (4-6 rows of gray concrete parking spaces with white-painted lines, a few minecarts as parked cars). A small one-story modern Hunt Midwest leasing office building (white concrete with light gray accents, dark oak door). A security gate with a guard booth. Paved access road leading down to a portal mouth visible in the bluff at the bottom of frame. A few oak trees, poppies. A faded Worlds-of-Fun roller-coaster silhouette in the far distance (a single dark tower with a white banner). The mood: deliberately underwhelming — the largest underground business complex in the world, from the surface, is almost nothing. Full daylight, clear sky. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "16:9",
+      "resolution": "2K",
+      "intended_use": "Master plan section 2.2 (The surface above the mine); section 3.3 (Surface parking); the 'almost-invisible entrance paradox'",
+      "source_references": [
+        "research-report.md (§5.3, §10.4)",
+        "culture-architecture-analysis.md (§3.5)",
+        "site-plan.md (§3.3, §4.8)",
+        "design-plan.md (§3.1)"
+      ]
+    },
+    {
+      "id": "12-hunt-midwest-marquee",
+      "filename": "modules/12-hunt-midwest-marquee.png",
+      "prompt": "Cinematic concept art of a Minecraft-style build: the famous '55 MILLION SQ FT' Hunt Midwest SubTropolis marquee sign at the entrance. A large rectangular red-and-white sign above a horizontal portal cut into a limestone bluff. The sign reads 'HUNT MIDWEST SUBTROPOLIS — WORLD'S LARGEST UNDERGROUND BUSINESS COMPLEX' with a registered-trademark mark. A smaller plaque nearby reads '14 MILLION SQ FT DEVELOPED — EST. 1964'. Below the marquee, a paved road descends into the dark portal. The Hunt Midwest corporate red, white, and black color scheme. Daylight. The 'dramatic scale claim' of the world's largest underground business complex. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "1:1",
+      "resolution": "2K",
+      "intended_use": "Master plan section 3.5 (Signage); the trademarked marketing line as a hero image; section 8 (Public Facts vs. Myth)",
+      "source_references": [
+        "research-report.md (§8 — 55 M sq ft marketing line)",
+        "culture-architecture-analysis.md (§2.1, §4 #3)",
+        "site-plan.md (§3.5)",
+        "design-plan.md (§3.1)"
+      ]
+    },
+    {
+      "id": "13-combined-complex-overview",
+      "filename": "modules/13-combined-complex-overview.png",
+      "prompt": "Cinematic concept art of a Minecraft-style build: a wide overview of the combined-complex layout in a deep mountain ravine. On the left (north wall): the Cheyenne Mountain Complex — a bunker carved into a granite peak with military blast doors, antennas, and a security perimeter. On the right (south wall): SubTropolis — a horizontal portal cut into a limestone bluff with a small parking lot, security gate, and a paved road descending into a hillside. A ravine floor with a service tunnel entrance between them. A city visible in the broader valley below. Layered sedimentary limestone (cream/beige) and granite (gray) as two distinct rock types. Cinematic wide-angle overview, slightly elevated vantage point, daylight. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "16:9",
+      "resolution": "2K",
+      "intended_use": "Master plan section 6 (Combined-Complex Integration); the map-integration report cover; partial [X] project-fiction content for the service tunnel and the Cheyenne side",
+      "source_references": [
+        "site-plan.md (§6 Combined-Complex Integration)",
+        "discussion-notes.md (Topic 6)",
+        "culture-architecture-analysis.md (§5 vs. Cheyenne Mountain)",
+        "design-plan.md (§6.1)"
+      ]
+    },
+    {
+      "id": "14-cutaway-diagram",
+      "filename": "modules/14-cutaway-diagram.png",
+      "prompt": "Cinematic concept art of a Minecraft-style build: a cutaway cross-section diagram showing the entire SubTropolis underground complex. The hillside above with grass, dirt, and a parking lot on top. A small visitor center building. A paved road descending into a horizontal portal. The entrance ramp going down into the rock. The 200x200 main chamber with a regular grid of 8x8 white-painted pillars. A main avenue running through the center. Tenant zones visible as labeled chambers: 'USPS', 'NARA', 'STC', 'GRAINGER'. A second exit portal on a perpendicular face. A ghost-mine chamber with rough rock. A sub-basement service tunnel. The whole cross-section labeled with arrows pointing to 'Entrance ramp', 'Main grid', 'Pillar grid', 'Tenant zones', 'Service tunnel', 'Exit portal'. Educational diagram style, clean, with the rock shell visible. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "16:9",
+      "resolution": "2K",
+      "intended_use": "Master plan section 4 (Site Layout — Below-Ground); the cross-section page; AI contractor writer's blueprint reference",
+      "source_references": [
+        "site-plan.md (§4, §7 Master Coordinate Table)",
+        "design-plan.md (§5)",
+        "diagram-room-pillar-consol-energy.jpg"
+      ]
+    },
+    {
+      "id": "15-1973-ford-mavericks",
+      "filename": "modules/15-1973-ford-mavericks.png",
+      "prompt": "Cinematic concept art of a Minecraft-style build, styled as a vintage 1970s photograph: a long row of 1973 Ford Mavericks (yellow, red, and green vintage sedans) parked in a rough, unpainted SubTropolis limestone chamber. The pillars are rough and unpainted, the ceiling is dim, the space has the low-budget 1970s aesthetic. Fluorescent tubes hang from the ceiling. The cars are parked at angles in painted parking-bay lines on rough concrete. A small sign reads 'FORD MOTOR CO. — VEHICLE STORAGE — 1970s'. The mood is nostalgic, grainy, slightly yellowed photo with the unmistakable 'secret car cave' feel that made these images viral. The cars and the chamber are both clearly 1970s. Minecraft blocky geometry rendered in a vintage photo style.",
+      "aspect_ratio": "4:3",
+      "resolution": "2K",
+      "intended_use": "Master plan section 2.1 (History — Ford 25-acre lease, 1970s); the 'then-and-now' historical contrast piece",
+      "source_references": [
+        "research-report.md (§2.1, §2.2)",
+        "culture-architecture-analysis.md (§4 #9)",
+        "visual-assets.md (§2d jalopnik-1973-ford-mavericks.jpg)",
+        "jalopnik-1973-ford-mavericks.jpg"
+      ]
+    },
+    {
+      "id": "16-pillar-numbers-detail",
+      "filename": "modules/16-pillar-numbers-detail.png",
+      "prompt": "Cinematic close-up concept art of a Minecraft-style build: a single white-painted limestone pillar in the SubTropolis underground, stenciled with a large black painted number '911.10' on its face at human-readable height (3 blocks up). The number is built from black concrete blocks, 2 blocks tall, clearly legible. The pillar is white concrete with a 1-block band of light gray at the top and bottom. The surrounding context: a polished andesite floor, the next pillar visible in soft focus behind, exposed conduit (red, blue, yellow, green) running along the wall. Industrial fluorescent lighting. The 'this is a real, numbered address in a city under a hill' feel. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "1:1",
+      "resolution": "2K",
+      "intended_use": "Master plan section 5.3 (Painted pillar numbers); close-up detail reference for the build",
+      "source_references": [
+        "design-plan.md (§5.3)",
+        "research-report.md (§4.3, §5.3)",
+        "huntmidwest-hero-main.jpg"
+      ]
+    },
+    {
+      "id": "17-second-exit-portal",
+      "filename": "modules/17-second-exit-portal.png",
+      "prompt": "Cinematic concept art of a Minecraft-style build: the second exit portal of SubTropolis on a perpendicular (east) face of the hill. From inside the chamber, the player is walking toward an archway of growing daylight at the end of the main avenue. The exit portal is a 12-block wide x 5-block high rectangular opening in the ravine wall, framed by cream-and-beige limestone. Daylight pours in from outside, where a small exit kiosk and a 'YOU ARE LEAVING SUBTROPOLIS — DRIVE SAFELY' sign are visible. A single exit-only security booth. The transition feels like a relief after the long underground drive. The white-painted pillars and polished concrete avenue recede behind. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "16:9",
+      "resolution": "2K",
+      "intended_use": "Master plan section 4.1 (The second exit portal); section 5 (Visitor Flow — Stage 10)",
+      "source_references": [
+        "site-plan.md (§3.2, §4.1)",
+        "design-plan.md (§3.2)",
+        "discussion-notes.md (Topic 1 perpendicular face)"
+      ]
+    },
+    {
+      "id": "18-shift-change-signage",
+      "filename": "modules/18-shift-change-signage.png",
+      "prompt": "Cinematic concept art of a Minecraft-style build: a wall in the SubTropolis underground complex displaying shift-change signage. Three oak signs on a white concrete wall read: 'FIRST SHIFT — 06:00', 'SECOND SHIFT — 14:00', 'THIRD SHIFT — 22:00'. A small analog clock on the wall reads 13:45. Below the signs, a few workers (Minecraft villagers in work uniforms) are gathering their things. A small whiteboard reads 'SHIFT CHANGE — 14:00'. The mood is the daily rhythm of the working facility, a small human moment inside the industrial cathedral. Polished concrete floor, white-painted pillars in the background. Industrial fluorescent lighting. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "4:3",
+      "resolution": "2K",
+      "intended_use": "Master plan atmospheric easter eggs (Operations Manager contribution); section 4 climate-controlled vault zone atmosphere",
+      "source_references": [
+        "discussion-notes.md (Topic 5 atmospheric easter eggs)",
+        "culture-architecture-analysis.md (§7 Operations Manager perspective)"
+      ]
+    },
+    {
+      "id": "19-employee-cafeteria",
+      "filename": "modules/19-employee-cafeteria.png",
+      "prompt": "Cinematic concept art of a Minecraft-style build: the SubTropolis employee cafeteria, a small break room. A few oak tables and chairs, a coffee station with a brewing block and a stack of mugs, a vending machine block in the corner with a 'SNACKS' sign. White concrete walls, polished andesite floor, industrial fluorescent lighting. A few workers (Minecraft villagers in work uniforms) sit at tables, drinking coffee. A small wall poster reads 'SubTropolis Employee Cafeteria — OPEN 24/7'. A bulletin board with shift schedules and a 'Groundhog Run — 10K' charity race poster. The mood is mundane, warm, the human moment inside the mine. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "4:3",
+      "resolution": "2K",
+      "intended_use": "Master plan atmospheric easter eggs (faded reference)",
+      "source_references": [
+        "discussion-notes.md (Topic 5 atmospheric easter eggs)",
+        "research-report.md (§4 the Groundhog Run)"
+      ]
+    },
+    {
+      "id": "20-ftz-sign",
+      "filename": "modules/20-ftz-sign.png",
+      "prompt": "Cinematic concept art of a Minecraft-style build: a 'FOREIGN-TRADE ZONE' trademark sign mounted on a white concrete wall in the SubTropolis leasing office. A large blue-and-gold sign reads 'DESIGNATED U.S. FOREIGN-TRADE ZONE — LARGEST UNDER ONE ROOF' with a small US Customs seal. Below it: a small framed ENERGY STAR 100 certificate on the same wall. The leasing office has polished concrete floors, white painted pillars, a reception desk, and a small tenant directory on the wall. The mood is corporate, official, the marketing claim made tangible. Industrial fluorescent lighting. Minecraft blocky geometry rendered photorealistically.",
+      "aspect_ratio": "1:1",
+      "resolution": "2K",
+      "intended_use": "Master plan section 3.5 (Signage — FTZ + ENERGY STAR faded references)",
+      "source_references": [
+        "research-report.md (§6.5 Foreign-trade zone)",
+        "discussion-notes.md (Topic 5 FTZ sign + ENERGY STAR 100 certificate)"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,496 @@
+{
+  "build_name": "Combined Complex",
+  "build_id": "04-combined-complex",
+  "description": "Single Minecraft world integrating Cheyenne Mountain Complex (NORAD), SubTropolis (underground business park), and Houston Tunnel System (underground pedestrian network). One descent, three worlds, 800 million years of geology. NO-RAVINE REWORK: the V-shaped ravine has been dropped. The mountain is now one continuous range with a horizontal granite-limestone contact at Y=200.",
+  "rework_note": "2026 rework: V-shaped ravine dropped, replaced with one continuous mountain range. The horizontal granite-limestone contact at Y=200 separates upper granite (Y=200 to Y=800) from lower limestone (Y=0 to Y=200, with limestone continuing below the city to Y=-100 to host SubTropolis). The composite terrane plaque has moved from the ravine bottom to the service tunnel contact crossing, where it is geologically honest rather than narrative fiction. The Grand Avenue is a straight line in the coastal plain. The return route is funicular + road (no skybridge, no ravine to cross).",
+  "scale": {
+    "global_block_size": "1 block = 1 meter",
+    "notes": "1:1 globally per discussion-notes Decision 1. Mountain peak at Y=800 represents a 2:1 vertical compression of the real 2,915m Pikes Peak, consistent with the 01-masterplan's 1,450-block mountain. All other dimensions (SubTropolis chamber, public shaft length, service tunnel length, city footprint) are 1:1 against real-world references. The horizontal contact at Y=200 is real geology (granite plutons push up through limestone in mountain ranges worldwide)."
+  },
+  "build_height_required": 1024,
+  "build_height_recommended": 2048,
+  "recommended_mod": "CubicWorld or similar with at least 2,048 block build height (vanilla 384 is insufficient)",
+  "world_footprint": {
+    "width_blocks": 1500,
+    "length_blocks": 1500,
+    "height_blocks": 800,
+    "extends_below_y_zero": true,
+    "min_y": -100,
+    "max_y": 800
+  },
+  "world_origin": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "description": "Center of the city, at ground level. Y=0 is the city surface and the mountain base. Vanilla sea level convention is not used; Y=0 is the city street grade and the base of the mountain's south face."
+  },
+  "compass_orientation": "north = -z, east = +x, up = +y",
+  "mountain_range": {
+    "layout": "one continuous mountain range, no V-shaped ravine",
+    "single_peak": true,
+    "peak_position": { "x": 0, "y": 800, "z": -500 },
+    "granite_intrusion": {
+      "y_min": 200,
+      "y_max": 800,
+      "description": "Upper portion of the mountain. Pink-to-brick-red Pikes Peak syenogranite (1.08 Ga). Hosts the Cheyenne Mountain Complex chamber at Y=250-400."
+    },
+    "limestone_base": {
+      "y_min": 0,
+      "y_max": 200,
+      "description": "Lower portion of the mountain. Cream-to-grey Bethany Falls limestone (270 Ma). Visible on the south face. The limestone continues below the city to Y=-100 to host the SubTropolis chamber."
+    },
+    "horizontal_contact": {
+      "elevation": 200,
+      "description": "Horizontal granite-limestone contact at Y=200. Visible as a clear color line on the mountain's south face (800 blocks E-W). Exposed in the service tunnel walls at the contact crossing. Real geology: granite plutons push up through limestone in mountain ranges worldwide."
+    },
+    "footprint": {
+      "x_min": -400,
+      "x_max": 400,
+      "y_min": 0,
+      "y_max": 800,
+      "z_min": -800,
+      "z_max": -200
+    },
+    "asymmetry": "The granite intrusion forms the upper portion (the peak), the limestone forms the lower portion (the south-facing base). The asymmetry is geologically correct: granite erodes more slowly than limestone, so a range with both rock types will have the granite as the dominant summit.",
+    "no_ravine": true,
+    "ravine_dropped": "The V-shaped ravine from the previous design has been dropped. The mountain is a single continuous mass. Drainage from the mountain is via small seasonal streams on the south face that flow into the coastal plain."
+  },
+  "key_locations": {
+    "granite_peak_summit": {
+      "x": 0,
+      "y": 800,
+      "z": -500,
+      "description": "Single peak, apex of the granite intrusion. Pikes Peak-style triangle. 1,800+ ft (549+ blocks) of solid granite above the chamber at Y=250."
+    },
+    "granite_intrusion_center": {
+      "x": 0,
+      "y": 500,
+      "z": -500,
+      "description": "Vertical center of the granite mass (Y=200 to Y=800)."
+    },
+    "limestone_base_center": {
+      "x": 0,
+      "y": 100,
+      "z": -500,
+      "description": "Vertical center of the limestone mass on the south face (Y=0 to Y=200)."
+    },
+    "horizontal_contact_line": {
+      "x_range": "-400 to +400",
+      "y": 200,
+      "z_range": "-800 to -200",
+      "description": "The horizontal granite-limestone contact at Y=200, visible as a clear color line on the mountain's south face for the full 800-block E-W extent. The contact is also exposed inside the service tunnel at the contact crossing."
+    },
+    "mountain_south_face": {
+      "x_range": "-400 to +400",
+      "y_range": "0 to 800",
+      "z": -200,
+      "description": "The dramatic south face of the mountain, visible from the city. The contact at Y=200 is the visual signature of the face."
+    },
+    "city_center": {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "description": "Center of the 138m x 138m downtown in the wide flat valley at the mountain base. World origin."
+    },
+    "city_footprint": {
+      "x_min": -69,
+      "x_max": 69,
+      "y_min": 0,
+      "y_max": 80,
+      "z_min": -69,
+      "z_max": 69,
+      "description": "138m x 138m, with 80m-tall towers. In the wide flat valley between the mountain (north) and the coastal plain (south)."
+    },
+    "coastal_plain_south_edge": {
+      "x": 0,
+      "y": 0,
+      "z": 700,
+      "description": "Far south edge of the world, where the Grand Avenue terminates and the world-edge pier is located."
+    },
+    "coastal_plain_east_edge": {
+      "x": 750,
+      "y": 0,
+      "z": 0,
+      "description": "East edge of the world, where the Grand Avenue arrives from the east and the coastal-plain lake is located."
+    },
+    "grand_avenue_start": {
+      "x": 69,
+      "y": 0,
+      "z": 700,
+      "description": "South end of the Grand Avenue, at the world edge. The 'old town' section (stone brick, first 350 blocks)."
+    },
+    "grand_avenue_end": {
+      "x": 69,
+      "y": 0,
+      "z": 100,
+      "description": "North end of the Grand Avenue, at the city NE corner. The 'new city' section (granite-and-glass, final 75 blocks)."
+    },
+    "grand_avenue_material_transition": {
+      "x": 69,
+      "y": 0,
+      "z": 350,
+      "description": "Where the stone-brick 'old town' section transitions to the granite-and-glass 'new city' section. Marked by a 2-block-wide granite-and-glass arrival arch."
+    },
+    "public_shaft_top_pavilion": {
+      "x": 60,
+      "y": 0,
+      "z": -70,
+      "description": "NE corner of the city, 7x7 glass-and-steel pavilion. Guard booth, turnstile, T-marker, 'SubTropolis - Public Access' sign. Binding architectural object #4."
+    },
+    "public_shaft_mid_landing": {
+      "x": 60,
+      "y": -50,
+      "z": -70,
+      "description": "At Y=-50, the G-Cans observation room. 7x7 with a single glass window looking out at the city's underground utility corridor. Contains one labelled block of exposed limestone (270 Ma). Binding centerpiece #2."
+    },
+    "public_shaft_bottom_public_access_lobby": {
+      "x": 60,
+      "y": -100,
+      "z": -100,
+      "description": "SE corner of SubTropolis chamber, where the mechanical lift lands. Security gate, turnstile, 'Welcome to SubTropolis' channel-letter sign."
+    },
+    "service_tunnel_start_subtropolis_end": {
+      "x": -100,
+      "y": 0,
+      "z": -300,
+      "description": "NW corner of SubTropolis chamber, on the south face of the mountain, in the limestone at city level. Open entrance with 'U.S. Space Force - Authorized Personnel Only' sign, 1-block security gate, turnstile. 'Service Tunnel - Inspired by the Gotthard Base Tunnel' sign with SBB CFF FFS logo (Easter Egg #3). The minecart rail starts here and climbs to the contact elevation Y=200."
+    },
+    "service_tunnel_contact_crossing": {
+      "x": -40,
+      "y": 200,
+      "z": -360,
+      "description": "INSIDE THE SERVICE TUNNEL at the horizontal contact elevation Y=200, where the tunnel walls transition from cream limestone to pink granite. The COMPOSITE TERRANE PLAQUE is here (Binding centerpiece #3, Easter Egg #1). Thrust-fault breccia visible in the walls (Easter Egg #8). Plaque text: 'Thrust Fault Contact - Pikes Peak Granite (1.08 Ga) overthrust on Bethany Falls Limestone (270 Ma). The contact is exposed at the surface on the south face of the mountain at Y=200, and crossed by this tunnel.' This is the build's Telling Detail - a single carved stone that explains why two rocks 800 million years apart coexist in one mountain range. Geologically honest, not narrative fiction."
+    },
+    "service_tunnel_end_cheyenne_outer_portal": {
+      "x": 0,
+      "y": 200,
+      "z": -420,
+      "description": "On the south face of the mountain, in the granite, at the contact elevation Y=200. Concrete-and-granite frame, 25-ton blast door recessed in a 4-block side branch, 4-block concrete-and-granite checkpoint corridor, guard booth, 'U.S. Space Force - Authorized Personnel Only' sign (Easter Egg #6). Binding architectural object #6."
+    },
+    "blast_door_25_ton": {
+      "x": 0,
+      "y": 200,
+      "z": -420,
+      "description": "At the Cheyenne outer portal, service tunnel terminus. 3-ft-thick steel door, 20 ft tall, in a concrete-and-granite frame. Visible from the approaching minecart. Binding centerpiece #1."
+    },
+    "composite_terrane_plaque": {
+      "x": -40,
+      "y": 200,
+      "z": -360,
+      "description": "Inside the service tunnel at the contact crossing (NOT at a ravine bottom, since the ravine has been dropped). 1x2 block carved-stone plaque lit by a single redstone lamp. 1-2 blocks of thrust-fault breccia (mixed granite-and-limestone rubble) visible in the tunnel walls at the contact. Text: 'Thrust Fault Contact - Pikes Peak Granite (1.08 Ga) overthrust on Bethany Falls Limestone (270 Ma). The contact is exposed at the surface on the south face of the mountain at Y=200, and crossed by this tunnel.' Binding centerpiece #3 and easter egg #1. The build's Telling Detail."
+    },
+    "subtropolis_chamber_footprint": {
+      "x_min": -100,
+      "x_max": 100,
+      "y_min": -100,
+      "y_max": 0,
+      "z_min": -300,
+      "z_max": -100,
+      "description": "200 x 200 x 100 block chamber, owned by 02-masterplan. 8x8x5 block pillars on 65-block centers. In the limestone below the city."
+    },
+    "subtropolis_horizontal_portal": {
+      "x": 0,
+      "y": 0,
+      "z": -300,
+      "description": "4x5 block opening in the limestone hillside at the north face of the chamber, on the south face of the mountain, at city level. 'Hunt Midwest SubTropolis - Authorized Vehicles' sign (Easter Egg #5), vehicle gate, paved approach road. Binding architectural object #5."
+    },
+    "cheyenne_chamber_footprint": {
+      "x_min": -40,
+      "x_max": 40,
+      "y_min": 250,
+      "y_max": 400,
+      "z_min": -580,
+      "z_max": -500,
+      "description": "~80m x 80m x 150m chamber, 4.5 acres, owned by 01-masterplan. 1,319 half-ton coil springs under 15 spring-mounted buildings. In the granite intrusion, 1,800+ ft above to the summit."
+    },
+    "cheyenne_chamber_center": {
+      "x": 0,
+      "y": 325,
+      "z": -540,
+      "description": "Vertical center of the Cheyenne chamber."
+    },
+    "cheyenne_jcurve_start": {
+      "x": 0,
+      "y": 200,
+      "z": -420,
+      "description": "At the service tunnel terminus (Cheyenne outer portal). The 800-block curved access tunnel begins here, descending from Y=200 to the chamber approach at Y=250-300."
+    },
+    "cheyenne_jcurve_end": {
+      "x": 0,
+      "y": 300,
+      "z": -540,
+      "description": "At the chamber's south wall. The J-curve terminates here with the chamber's main entrance."
+    },
+    "funicular_start": {
+      "x": 0,
+      "y": 200,
+      "z": -420,
+      "description": "At the Cheyenne outer portal, where the funicular rail begins. Part of the 2-mode surface return route (funicular + road, no skybridge)."
+    },
+    "funicular_end_granite_summit": {
+      "x": 0,
+      "y": 800,
+      "z": -500,
+      "description": "At the granite summit. The 'Three Sites, One Mountain' sign (Easter Egg #2) and the rock identification chart (Easter Egg #9) are placed at the funicular station."
+    },
+    "paved_road_start_granite_summit": {
+      "x": 0,
+      "y": 800,
+      "z": -500,
+      "description": "At the granite summit, where the funicular arrives and the paved switchback down the south face begins."
+    },
+    "paved_road_end_city_center": {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "description": "At the Combined Complex Transit Hub plaza, where the road arrives at street level."
+    },
+    "combined_complex_transit_hub_plaza": {
+      "x": 60,
+      "y": 0,
+      "z": -70,
+      "description": "20x20 block plaza at the NE corner of the city, where the public shaft entrance is located. Stone brick and quartz accents, fountain, benches. The 7x7 glass-and-steel pavilion is at the center."
+    }
+  },
+  "individual_sites": {
+    "cheyenne_mountain": {
+      "world_position": {
+        "x_center": 0,
+        "y_range": "250 to 400 (chamber), 0 to 800 (mountain)",
+        "z_center": -540
+      },
+      "footprint": {
+        "x_min": -400,
+        "x_max": 400,
+        "y_min": 0,
+        "y_max": 800,
+        "z_min": -800,
+        "z_max": -200
+      },
+      "chamber_position": {
+        "x_min": -40,
+        "x_max": 40,
+        "y_min": 250,
+        "y_max": 400,
+        "z_min": -580,
+        "z_max": -500
+      },
+      "outer_portal_position": {
+        "x": 0,
+        "y": 200,
+        "z": -420,
+        "description": "On the south face of the mountain, in the granite, at the contact elevation Y=200. NEW: outer portal placement updated for the no-ravine rework (was at Y=0 in the ravine wall in the previous design)."
+      },
+      "j_curve_length_blocks": 800,
+      "reference": "D:\\projects\\mc-fleet-bot\\masterplans\\01-cheyenne-mountain-complex\\04-design\\site-plan.md",
+      "masterplan_pdf": "D:\\projects\\mc-fleet-bot\\masterplans\\01-cheyenne-mountain-complex\\masterplan.pdf",
+      "binding_notes": "Chamber geometry, spring layout, and J-curve internal detail are owned by 01-masterplan. Combined complex adds the outer portal placement at (0, 200, -420) on the south face of the mountain, the second 25-ton blast door at the service tunnel terminus, the funicular from outer portal to granite summit, and the 'U.S. Space Force' sign. The outer portal is at the contact elevation Y=200 (not at a ravine wall as in the previous design). No amendment to 01-masterplan required."
+    },
+    "subtropolis": {
+      "world_position": {
+        "x_center": 0,
+        "y_range": "-100 to 0 (chamber)",
+        "z_center": -200
+      },
+      "footprint": {
+        "x_min": -100,
+        "x_max": 100,
+        "y_min": -100,
+        "y_max": 0,
+        "z_min": -300,
+        "z_max": -100
+      },
+      "chamber_dimensions": "200 x 200 x 100 blocks (200x200 horizontal grid)",
+      "public_access_lobby_position": {
+        "x": 60,
+        "y": -100,
+        "z": -100
+      },
+      "horizontal_portal_position": {
+        "x": 0,
+        "y": 0,
+        "z": -300,
+        "description": "On the south face of the mountain, at city level. NEW: position unchanged from previous design, but the surrounding context is now the south face of the continuous mountain (not a ravine wall)."
+      },
+      "service_tunnel_entrance_position": {
+        "x": -100,
+        "y": 0,
+        "z": -300,
+        "description": "NW corner of the chamber, where the minecart rail exits to the service tunnel. The rail climbs from Y=0 to the contact elevation Y=200 over the first 60 blocks of the service tunnel."
+      },
+      "reference": "D:\\projects\\mc-fleet-bot\\masterplans\\02-subtropolis\\04-design\\site-plan.md",
+      "masterplan_pdf": "D:\\projects\\mc-fleet-bot\\masterplans\\02-subtropolis\\masterplan.pdf",
+      "binding_notes": "Chamber geometry and pillar grid are owned by 02-masterplan. The 5x5 spec is preserved as the public shaft lift core (the 7x7 is the architectural envelope). Combined complex adds the public shaft landing, the horizontal portal, and the service tunnel entrance. No amendment to 02-masterplan required."
+    },
+    "houston_tunnel": {
+      "world_position": {
+        "x_center": 0,
+        "y_range": "-6 to 0",
+        "z_center": 0
+      },
+      "footprint": {
+        "x_min": -12,
+        "x_max": 12,
+        "y_min": -6,
+        "y_max": 0,
+        "z_min": -12,
+        "z_max": 12
+      },
+      "sample_dimensions": "24-block diameter, 6 blocks below street grade",
+      "reference": "D:\\projects\\mc-fleet-bot\\masterplans\\03-houston-tunnel-system\\04-design\\site-plan.md",
+      "masterplan_pdf": "D:\\projects\\mc-fleet-bot\\masterplans\\03-houston-tunnel-system\\masterplan.pdf",
+      "binding_notes": "24-block sample owned by 03-masterplan. Combined complex adds the public shaft buffer block in the SE corner (already flagged in 03-masterplan) and the T-marker at the public shaft entrance. No amendment to 03-masterplan required."
+    }
+  },
+  "inter_site_connections": {
+    "public_shaft": {
+      "from": { "x": 60, "y": 0, "z": -70 },
+      "to": { "x": 60, "y": -100, "z": -100 },
+      "cross_section": "7x7 blocks (5x5 inner lift core + 1-block emergency stair + 1-block service chase)",
+      "length_blocks": 100,
+      "vertical_extent": "Y=0 to Y=-100",
+      "mode": "mechanical lift with visible emergency stair through glass wall",
+      "mid_landing": {
+        "x": 60,
+        "y": -50,
+        "z": -70,
+        "description": "7x7 G-Cans-style observation room with single glass window looking out at city's underground utility corridor. One labelled block of exposed limestone (270 Ma, Pennsylvanian)."
+      },
+      "binding_decision": "Discussion Topic 3, Decision 3. Cross-section 7x7 (5x5 lift + 2-block outer ring), mechanical lift primary, 100-block descent Y=0 to Y=-100, mid-level observation landing at Y=-50."
+    },
+    "service_tunnel": {
+      "from": { "x": -100, "y": 0, "z": -300 },
+      "to": { "x": 0, "y": 200, "z": -420 },
+      "cross_section": "6x6 blocks (4-block inner minecart rail + 2-block utility strip)",
+      "length_blocks": 120,
+      "vertical_extent": "Y=0 (SubTropolis end) to Y=200 (Cheyenne end), climbing through the mountain",
+      "mode": "minecart rail (1-block gauge, single track) with powered rails every 4-8 blocks in the climbing section",
+      "path_description": "From SubTropolis end (south face of mountain, Y=0, in the limestone) -> climbing through the mountain on a steep grade (3.33:1, powered rails) to the contact elevation Y=200 -> crossing the horizontal granite-limestone contact at the contact crossing (-40, 200, -360) where the composite terrane plaque is mounted -> continuing laterally in the granite at Y=200 -> arriving at the Cheyenne outer portal (0, 200, -420) with the 25-ton blast door.",
+      "climb_profile": {
+        "first_60_blocks": "Y=0 to Y=200 (3.33:1 grade, very steep, powered rails). Walls are cream limestone (below the contact).",
+        "last_60_blocks": "Lateral at Y=200. Walls transition from cream limestone to pink granite at the contact crossing (~60-65 blocks in). The remaining 55-60 blocks are in the granite."
+      },
+      "contact_crossing": {
+        "x": -40,
+        "y": 200,
+        "z": -360,
+        "description": "At the contact elevation Y=200, where the tunnel walls transition from cream limestone to pink granite. The composite terrane plaque is here. Thrust-fault breccia visible in the walls. The geological moment of the build, geologically honest (not narrative fiction).",
+        "plaque_text": "Thrust Fault Contact - Pikes Peak Granite (1.08 Ga) overthrust on Bethany Falls Limestone (270 Ma). The contact is exposed at the surface on the south face of the mountain at Y=200, and crossed by this tunnel."
+      },
+      "blast_door_position": {
+        "x": 0,
+        "y": 200,
+        "z": -420,
+        "description": "25-ton blast door at the Cheyenne outer portal, recessed in a 4-block side branch. NEW: position updated for the no-ravine rework (was at Y=0 in the ravine wall in the previous design, now at Y=200 on the south face of the mountain in the granite)."
+      },
+      "binding_decision": "Discussion Topic 4, Decision 4. Cross-section 6x6 (4-block minecart rail + 2-block utility strip), minecart rail mode, 80-120 blocks, 25-ton blast door at Cheyenne end, geological moment at the contact crossing. NEW: location updated for the no-ravine rework - the tunnel is now at the contact elevation in the mountain, not under a ravine."
+    }
+  },
+  "return_path": {
+    "stage_1_funicular": {
+      "from": { "x": 0, "y": 200, "z": -420 },
+      "to": { "x": 0, "y": 800, "z": -500 },
+      "elevation_gain_blocks": 600,
+      "lateral_distance_blocks": 400,
+      "grade_ratio": "1.5:1",
+      "mode": "funicular rail on the east or west face of the granite intrusion (steep climb)",
+      "description": "NEW: replaces the previous 'funicular + skybridge' 2-stage return. The funicular now goes directly from the outer portal to the granite summit; no skybridge crossing is needed because there is no ravine to span."
+    },
+    "stage_2_paved_road": {
+      "from": { "x": 0, "y": 800, "z": -500 },
+      "to": { "x": 0, "y": 0, "z": 0 },
+      "elevation_loss_blocks": 800,
+      "lateral_distance_blocks": 800,
+      "mode": "paved stone-brick road switchback down the south face of the mountain",
+      "switchbacks": 6,
+      "description": "Switchback down the south face of the mountain, through the limestone base, to the city. ~6 switchbacks, ~800 blocks of lateral distance, 800 blocks of elevation loss. Arrives at the Combined Complex Transit Hub plaza."
+    },
+    "skybridge_dropped": "The skybridge from the previous design has been dropped. There is no ravine to span, and the mountain is a single mass. The funicular + road return is the cleaner 2-mode resolution.",
+    "total_return_time_minutes": 13
+  },
+  "grand_avenue": {
+    "path": "Straight line in the coastal plain, running N-S from the world edge (Z=+700) to the city NE corner (Z=+100).",
+    "length_blocks": 425,
+    "cross_section_blocks": 8,
+    "x_alignment": 69,
+    "z_range": { "z_min": 100, "z_max": 700 },
+    "material_transitions": [
+      {
+        "z_range": "350 to 700",
+        "material": "stone brick",
+        "name": "old town section"
+      },
+      {
+        "z_range": "100 to 350",
+        "material": "granite and glass",
+        "name": "new city section"
+      }
+    ],
+    "features": [
+      "Old town waypoint at Z=+500 (gas station, diner, small inn)",
+      "Arrival arch at Z=+350 (2-block-wide granite-and-glass arch with 'Welcome to the New City' sign)",
+      "Streetlights every 15 blocks (sea lanterns on oak fences)",
+      "World-edge pier at Z=+720 (wooden dock with 'End of the world' sign)"
+    ],
+    "no_ravine_crossing": "The Grand Avenue is a straight line in flat terrain. No bridge, no span, no ravine crossing."
+  },
+  "binding_decisions_respected": [
+    {
+      "decision_number": 1,
+      "topic": "Global Scale",
+      "binding_decision": "1 block = 1 m globally, with granite peak at Y=800 (2:1 vertical compression on the real 2,915m Pikes Peak). Custom build height >= 1,024 blocks. Fully-built core samples per research section 10.5.",
+      "site_plan_reflection": "World footprint 1,500 x 1,500 x 800. All key dimensions (SubTropolis 200x200 chamber, public shaft 100-block descent, service tunnel 120 blocks) are 1:1 against real-world references. Only the mountain peak is 2:1 compressed vertically, consistent with the 01-masterplan."
+    },
+    {
+      "decision_number": 2,
+      "topic": "Mountain Range Layout (REWORKED for no-ravine)",
+      "binding_decision": "REWORKED: One continuous mountain range, no V-shaped ravine. Single peak at Y=800 (Pikes Peak-style triangle), with the granite intrusion forming the upper portion (Y=200 to Y=800) and the limestone forming the lower portion (Y=0 to Y=200, continuing below the city to Y=-100 to host SubTropolis). Horizontal granite-limestone contact at Y=200, visible on the south face as a clear color line. World footprint 800 x 600 blocks for the mountain range.",
+      "site_plan_reflection": "Granite peak at (0, 800, -500), 800x600 footprint (X=-400 to +400, Z=-800 to -200). Horizontal contact at Y=200, separating upper granite from lower limestone. SubTropolis at Y=-100 to Y=0 in the limestone below the city. Cheyenne at Y=250-400 in the granite intrusion. No ravine. The composite terrane plaque is at the service tunnel contact crossing, geologically honest."
+    },
+    {
+      "decision_number": 3,
+      "topic": "Public Shaft Design",
+      "binding_decision": "7x7 cross-section (5x5 inner lift + 2-block outer ring: 1-block emergency stair + 1-block service chase). Mechanical lift primary, visible emergency stair. 100-block descent Y=0 to Y=-100. Mid-level observation landing at Y=-50 (7x7 room, G-Cans-style glass window, labelled limestone block). Surface: 7x7 glass-and-steel pavilion. Bottom: security gate + 'Welcome to SubTropolis' sign.",
+      "site_plan_reflection": "Public shaft at (60, 0, -70) to (60, -100, -100), purely vertical, 100 blocks. Mid-landing at (60, -50, -70). 7x7 cross-section documented. Surface pavilion and bottom lobby detailed in site-plan section 7."
+    },
+    {
+      "decision_number": 4,
+      "topic": "Service Tunnel Design (REWORKED for no-ravine)",
+      "binding_decision": "6x6 cross-section (4-block minecart rail + 2-block utility strip). Minecart rail mode. 80-120 blocks, climbing from Y=0 (SubTropolis end, on the south face of the mountain) to Y=200 (Cheyenne end, at the contact elevation in the granite). 25-ton blast door at Cheyenne end. Geological moment at the contact crossing at Y=200 (composite terrane plaque, thrust-fault breccia, transition from limestone walls to granite walls). REWORKED: tunnel is now in the mountain at the contact elevation, not under a ravine. The climb from Y=0 to Y=200 is steep (3.33:1 grade) but acceptable in Minecraft with powered rails.",
+      "site_plan_reflection": "Service tunnel from (-100, 0, -300) to (0, 200, -420), 120 blocks, climbing through the mountain. Contact crossing at (-40, 200, -360) where the composite terrane plaque is mounted. 25-ton blast door at (0, 200, -420). Straight alignment with powered rails in the climbing section. No dipping under a stream (no ravine)."
+    },
+    {
+      "decision_number": 5,
+      "topic": "Visitor Journey (REWORKED for no-ravine)",
+      "binding_decision": "30-45 minutes focused play. 6-stage inbound: city -> Houston tunnel -> public shaft -> SubTropolis -> service tunnel -> Cheyenne. 2-mode surface return: funicular to granite summit + paved road to city. REWORKED: no skybridge (the previous design's skybridge across the ravine has been dropped). Dramatic arc: civilian -> industrial -> military -> civilian resolution.",
+      "site_plan_reflection": "6-stage inbound documented in site-plan section 11.1 (~36 min total). 2-stage 2-mode return documented in site-plan section 11.2 (~13 min, total inbound+return ~49 min). Stage coordinates provided. Dramatic arc narrative preserved. Geological arc: city -> limestone -> granite (vertical through the mountain), crossing the horizontal contact at Y=200 in the service tunnel."
+    },
+    {
+      "decision_number": 6,
+      "topic": "Inter-Site Connection Centerpieces (REWORKED for no-ravine)",
+      "binding_decision": "6 centerpieces: (1) 25-ton blast door at Cheyenne outer portal; (2) mid-level observation landing at Y=-50; (3) composite terrane plaque at the service tunnel contact crossing; (4) surface entrance to public shaft; (5) SubTropolis horizontal portal; (6) Cheyenne outer portal. REWORKED: centerpiece #3 (composite terrane plaque) is now at the service tunnel contact crossing (-40, 200, -360), NOT at a ravine bottom.",
+      "site_plan_reflection": "All 6 centerpieces documented in site-plan section 12.9 with exact coordinates. Locations: blast door (0, 200, -420); observation landing (60, -50, -70); plaque (-40, 200, -360); public shaft entrance (60, 0, -70); SubTropolis portal (0, 0, -300); Cheyenne outer portal (0, 200, -420)."
+    },
+    {
+      "decision_number": 7,
+      "topic": "Easter Eggs (REWORKED for no-ravine)",
+      "binding_decision": "9 easter eggs: composite terrane plaque (now at the service tunnel contact crossing); 'Three Sites, One Mountain' sign at granite summit; Gotthard-inspired sign at service tunnel; Helsinki-inspired sign at public shaft; 'World's Largest Underground Business Complex' at SubTropolis portal; 'U.S. Space Force' at Cheyenne portal; Houston T-marker (inherited); thrust-fault breccia strip (now at the service tunnel contact crossing, not at a ravine floor); rock identification chart at granite summit. REWORKED: easter eggs #1 (composite terrane plaque) and #8 (thrust-fault breccia strip) have moved from the ravine bottom to the service tunnel contact crossing. Count and meaning preserved.",
+      "site_plan_reflection": "All 9 easter eggs documented with exact coordinates. Easter eggs #1 and #8 are co-located at the service tunnel contact crossing (-40, 200, -360). Easter eggs #2 and #9 are co-located at the granite summit (0, 800, -500)."
+    }
+  ],
+  "no_ravine_summary": {
+    "ravine_dropped": "The V-shaped ravine from the previous design has been dropped. There is no gorge, no notch, no stream at the bottom of a ravine.",
+    "replacement": "The mountain is now one continuous mass with a horizontal granite-limestone contact at Y=200. The contact is visible on the south face of the mountain and is crossed by the service tunnel at the contact crossing.",
+    "geological_honesty": "The horizontal contact is real geology (granite plutons push up through limestone in mountain ranges worldwide). The composite terrane plaque is at the service tunnel contact crossing, where the tunnel walls visibly transition from cream limestone to pink granite.",
+    "what_changed": [
+      "Mountain range: one continuous range (was two peaks with ravine)",
+      "Contact: horizontal at Y=200 (was V-shaped gorge with two rock types on each wall)",
+      "Composite terrane plaque: at the service tunnel contact crossing (was at the ravine bottom)",
+      "Grand Avenue: straight line in the coastal plain (was a road spanning the ravine)",
+      "Return route: funicular + road (was funicular + skybridge + road)",
+      "Service tunnel: lateral at the contact elevation in the mountain (was under a ravine, dipping below a stream)",
+      "Cheyenne outer portal: at Y=200 on the south face of the mountain (was at Y=0 in the ravine wall)",
+      "SubTropolis horizontal portal: at Y=0 on the south face of the mountain (was at Y=0 in the ravine wall, similar position but different context)"
+    ]
+  }
+}

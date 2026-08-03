@@ -1,0 +1,23 @@
+{
+  "build_name": "Cheyenne Mountain Complex",
+  "build_id": "01-cheyenne-mountain",
+  "version": "1.0",
+  "date": "2026-08-02",
+  "scale": {
+    "vertical_compression": "2:1",
+    "horizontal_compression": "4:1",
+    "signature_detail_scaling": "2x"
+  },
+  "build_height_required": 1550,
+  "mod_dependencies": ["CubicWorld 2,048"],
+  "block_budget_estimate": 414700,
+  "deliverables": {
+    "masterplan_pdf": "masterplan.pdf",
+    "contractor_brief_md": "06-contractor/contractor-brief.md",
+    "contractor_brief_json": "06-contractor/contractor-brief.json"
+  },
+  "open_questions_count": 7,
+  "rendering_count": 16,
+  "buildings_count": 15,
+  "must_haves_count": 12
+}

@@ -1,0 +1,457 @@
+{
+  "build_name": "SubTropolis",
+  "build_id": "02-subtropolis",
+  "build_purpose": "Minecraft replica of Hunt Midwest SubTropolis, the world's largest underground business complex in Kansas City, Missouri. Carved into the south wall of a deep ravine/gorge in the same mountain range as Cheyenne Mountain Complex.",
+  "scale": {
+    "horizontal_compression": "~1:100 floor area (200x200 Minecraft blocks representing ~55 million sq ft mined void)",
+    "vertical_compression": "1:1 (5-block ceiling = 16 ft, 8x8 pillars, 50-block depth = 150 ft)",
+    "ceiling_height_blocks": 5,
+    "pillar_size_blocks": "8x8",
+    "pillar_to_pillar_spacing_blocks": "30-40 at iconic intersections (relaxed from real 65-block spacing for buildability)",
+    "corridor_width_blocks": 12
+  },
+  "footprint": {
+    "width_blocks": 200,
+    "length_blocks": 200,
+    "description": "Main underground grid: 200x200 blocks (X: -100 to +100, Z: 0 to -200). Centered on the build's coordinate space."
+  },
+  "main_avenue_length_blocks": 350,
+  "main_avenue_description": "Total length from south portal surface to east portal surface: ~140 blocks entrance ramp + ~200 blocks main avenue through grid + ~10 blocks exit ramp. Runs E-W along the long axis of the ravine wall.",
+  "world_origin": {
+    "x": 0,
+    "y": 70,
+    "z": 0,
+    "description": "Main entrance portal at surface level, on the south face of the SubTropolis hill. Y=70 is just above sea level (sea level = Y=64)."
+  },
+  "compass_orientation": {
+    "north": "-Z",
+    "south": "+Z",
+    "east": "+X",
+    "west": "-X",
+    "up": "+Y",
+    "description": "The mine extends into negative Z (north) from the south-face portal. The ravine is further north. Cheyenne Mountain is on the north wall of the ravine. The Kansas City plain is to the south (positive Z)."
+  },
+  "y_levels": {
+    "sea_level": 64,
+    "main_entrance_portal_surface": 70,
+    "surface_plateau": 80,
+    "top_of_subtropolis_hill": 120,
+    "main_grid_floor": 20,
+    "main_grid_ceiling": 25,
+    "sub_basement_floor": 10,
+    "sub_basement_ceiling": 15,
+    "ravine_floor": "0-10",
+    "public_shaft_surface_exit": 90
+  },
+  "key_locations": {
+    "main_entrance_portal_surface": {
+      "x": 0,
+      "y": 70,
+      "z": 0,
+      "description": "Main entrance portal at world origin, south face of SubTropolis hill. 12x5 portal frame, branded marquee sign, 'SPEED LIMIT 15' sign, security gate, guard booth.",
+      "tag": "D"
+    },
+    "main_entrance_ramp_grid_level": {
+      "x": 0,
+      "y": 20,
+      "z": -5,
+      "description": "Where the entrance ramp meets the main grid. South end of the main avenue.",
+      "tag": "D"
+    },
+    "main_avenue_start": {
+      "x": 0,
+      "y": 20,
+      "z": -5,
+      "description": "South end of the Hushpuckney main avenue, just inside the grid.",
+      "tag": "D"
+    },
+    "main_avenue_midpoint": {
+      "x": 0,
+      "y": 20,
+      "z": -100,
+      "description": "Central intersection of the main grid. Hunt Hall (round room, 30x30). Hushpuckney Ave runs N-S through this point; Bethany Falls Blvd runs E-W.",
+      "tag": "D"
+    },
+    "main_avenue_end": {
+      "x": 0,
+      "y": 20,
+      "z": -195,
+      "description": "North end of the main avenue, at the edge of the grid.",
+      "tag": "D"
+    },
+    "second_exit_portal_grid_level": {
+      "x": 95,
+      "y": 20,
+      "z": -100,
+      "description": "Where the exit ramp begins, at the east edge of the main intersection.",
+      "tag": "D"
+    },
+    "second_exit_portal_surface": {
+      "x": 100,
+      "y": 70,
+      "z": -100,
+      "description": "Second exit portal on the east face of the SubTropolis hill, perpendicular to the main entrance. 12x5 portal frame, smaller surface lot, exit-only security booth.",
+      "tag": "D"
+    },
+    "hunt_midwest_visitor_center": {
+      "x": 20,
+      "y": 80,
+      "z": 20,
+      "description": "Small modern office building on the surface plateau. Houses the leasing office, Lamar Hunt interpretive plaque, mounted Chiefs arrowhead, 'SubTropolis - Est. 1964' plaque, FTZ sign, ENERGY STAR 100 certificate.",
+      "tag": "D"
+    },
+    "parking_lot_stub": {
+      "x_range": [30, 70],
+      "y": 80,
+      "z_range": [15, 50],
+      "description": "4-6 row surface parking lot south of the visitor center. Compressed from the real 1,600+ spaces.",
+      "tag": "D faded"
+    },
+    "public_shaft_surface_exit": {
+      "x": 60,
+      "y": 90,
+      "z": -180,
+      "description": "Surface lobby for the public shaft, on top of the SubTropolis hill. Players exit here to access the city in the broader valley.",
+      "tag": "X"
+    },
+    "worlds_of_fun_silhouette": {
+      "x": -200,
+      "y": 120,
+      "z": 250,
+      "description": "Distant single tower or roller-coaster silhouette representing the Worlds of Fun amusement park that sits above the real SubTropolis. Faded reference only.",
+      "tag": "D faded"
+    }
+  },
+  "tenant_zones": [
+    {
+      "name": "USPS Stamp Distribution Center",
+      "position": { "x": -50, "y": 20, "z": -50 },
+      "approximate_sq_ft": 217114,
+      "description": "Multi-bay loading dock with dock doors, USPS livery, semi-trailer, dock leveler, small commemorative-stamp display. Visible from the main avenue.",
+      "tag": "D"
+    },
+    {
+      "name": "USPS Stamp Fulfillment Center",
+      "position": { "x": -30, "y": 20, "z": -50 },
+      "approximate_sq_ft": 311600,
+      "description": "Package conveyor layout, fulfillment operations. Adjacent to the Stamp Distribution Center.",
+      "tag": "D"
+    },
+    {
+      "name": "EPA Region 7 Training & Logistics Center",
+      "position": { "x": 30, "y": 20, "z": -50 },
+      "approximate_sq_ft": 43200,
+      "description": "Emergency-response signage, smaller fit-out. The 'mole people' aspect is here: the EPA chose SubTropolis for its climate stability.",
+      "tag": "D"
+    },
+    {
+      "name": "NARA Federal Records Center",
+      "position": { "x": 50, "y": 20, "z": -150 },
+      "approximate_sq_ft": 372000,
+      "description": "Climate-controlled archive with rows of archive boxes on industrial shelving, dim amber lighting, climate-control signage, NARA eagle logo on the door. The 2012 lease of 102,000 sq ft (with options to 372,000) was the largest single federal move into the complex.",
+      "tag": "D"
+    },
+    {
+      "name": "SubTropolis Technology Center (STC)",
+      "position": { "x": 70, "y": 20, "z": -150 },
+      "approximate_sq_ft": null,
+      "description": "Sealed data center chamber with server racks (redstone lamp props), red/green status lights, blue LED floor lighting, biometric hand-reader prop at the door, 'SubTropolis Technology Center' sign, visible 'DARK FIBER - 1102 GRAND' conduit run. ENERGY STAR 100 rated. Sleek, modern, visually distinct from surrounding 1960s industrial aesthetic.",
+      "tag": "D"
+    },
+    {
+      "name": "W.W. Grainger distribution",
+      "position": { "x": 60, "y": 20, "z": -50 },
+      "approximate_sq_ft": null,
+      "description": "Long chamber with rows of pallet racking, pick-and-pack station, shipping manifests on whiteboards. The 2026 expansion makes it the largest known underground distribution center in the world. Replaces the historical Ford 25-acre vehicle-storage lease.",
+      "tag": "D"
+    },
+    {
+      "name": "Hallmark / Russell Stover general industrial",
+      "position": { "x": -70, "y": 20, "z": -150 },
+      "approximate_sq_ft": null,
+      "description": "Packaging-line tenant fit-out. Hallmark Cards, Russell Stover, and Pillsbury are all early-tenants. General industrial archetype: pallet racking, conveyor, packaging.",
+      "tag": "D"
+    },
+    {
+      "name": "Underground Vaults & Storage (UV&S)",
+      "position": { "x": -50, "y": 20, "z": -180 },
+      "approximate_sq_ft": null,
+      "description": "Small secured vault with three rows of metal shelving, a few unlabeled film cans, and a single small label reading 'GONE WITH THE WIND - INTERPOSITIVE' or 'WIZARD OF OZ - MASTER'. UV&S is the 'distributor of last resort' for major American film studios. No movie posters, no green-ray imagery.",
+      "tag": "D faded"
+    },
+    {
+      "name": "Hunt Hall (central plaza)",
+      "position": { "x": 0, "y": 20, "z": -100 },
+      "approximate_sq_ft": null,
+      "description": "30x30 round room at the main intersection. Lamar Hunt interpretive plaque on the wall, mounted Chiefs arrowhead. No Chiefs helmet, no football imagery. The Hunt family ownership is the content; the Chiefs is one bullet point, not the theme.",
+      "tag": "D / X"
+    },
+    {
+      "name": "Leasing office (visitor center interior)",
+      "position": { "x": 20, "y": 20, "z": -30 },
+      "approximate_sq_ft": null,
+      "description": "Interior fit-out at the south end of the main avenue. Plaque reads '14,000,000 SQ FT DEVELOPED'. FTZ sign. ENERGY STAR 100 framed certificate. Tenant list. Hunt Midwest corporate signage.",
+      "tag": "D"
+    },
+    {
+      "name": "Visitor center interpretive wall",
+      "position": { "x": 10, "y": 20, "z": -10 },
+      "approximate_sq_ft": null,
+      "description": "Wall text: 150 ft below surface (with 'up to 160 ft' noted as maximum), 68 F year-round (65-70 F range noted), 1964 founding year, 8.2 mi of paved road, 18,000-24,000 psi compressive strength, ENERGY STAR 100 since 2012, 50-70% energy savings. Geology exhibit on Bethany Falls limestone.",
+      "tag": "D"
+    },
+    {
+      "name": "Employee cafeteria (faded)",
+      "position": { "x": -20, "y": 20, "z": -30 },
+      "approximate_sq_ft": null,
+      "description": "Small faded room with tables, a coffee station, a vending machine prop. An 'atmospheric easter egg' per the Operations Manager - the things that aren't in any press release but that workers remember.",
+      "tag": "X"
+    },
+    {
+      "name": "Ghost mine (unfinished chamber)",
+      "position": { "x": -90, "y": 20, "z": -190 },
+      "approximate_sq_ft": null,
+      "description": "Dark, raw rock, no paint, no lights, no paving. Blocked by a barricade with 'DANGER - ACTIVE MINING - HUNT MIDWEST MINING, INC.' sign. Parked mine cart or equipment prop. Deliberately unreachable. Conveys that most of the 55 M sq ft is unfinished.",
+      "tag": "D"
+    }
+  ],
+  "side_spurs": [
+    {
+      "name": "Side spur 1 (west)",
+      "from": { "x": -30, "y": 20, "z": -150 },
+      "to": { "x": -90, "y": 20, "z": -190 },
+      "length_blocks_approx": 70,
+      "description": "Branches west off the main avenue. Leads to the ghost mine chamber. Single-lane, vehicle-traversable.",
+      "tag": "D"
+    },
+    {
+      "name": "Side spur 2 (east)",
+      "from": { "x": 30, "y": 20, "z": -50 },
+      "to": { "x": 90, "y": 20, "z": -20 },
+      "length_blocks_approx": 70,
+      "description": "Branches east off the main avenue. Leads to the STC support zone and additional tenant space. Single-lane, vehicle-traversable.",
+      "tag": "D"
+    }
+  ],
+  "connections_to_other_builds": {
+    "service_tunnel_to_cheyenne": {
+      "from": { "x": -80, "y": 10, "z": -180 },
+      "to": { "x": "cheyenne_sub_basement", "y": "TBD", "z": "TBD" },
+      "from_description": "SubTropolis service sub-basement, below the main grid. Accessed by a downward corridor from (-80, 20, -180) to (-80, 10, -180).",
+      "to_description": "Cheyenne Mountain maintenance sub-basement (designed by the Cheyenne team).",
+      "cross_section": "6x5 blocks (6 wide, 5 high)",
+      "path_description": "Horizontal, single-lane, running under the ravine floor at Y=4-9 (sub-basement level). Connects a Cheyenne Mountain maintenance sub-basement to the SubTropolis service sub-basement. Tagged [X] as a project fiction - this tunnel does not exist in the real SubTropolis.",
+      "subtropolis_features": {
+        "sub_basement": "Service sub-basement at (-80, 10, -180): small vehicle turnaround, maintenance bay, signage 'SERVICE TUNNEL - COMBINED COMPLEX MAINTENANCE - AUTHORIZED VEHICLES ONLY'.",
+        "downward_corridor": "10-block vertical corridor from (-80, 20, -180) to (-80, 10, -180) with a security gate.",
+        "vehicle_support": "Minecart-compatible for the player. Visually designed for a small service vehicle (John Deere Gator, Cushman, mine-spec buggy).",
+        "security": "Security gate between the tunnel and the SubTropolis grid. SubTropolis is private property; the service tunnel connection is a real security concern."
+      },
+      "tag": "X"
+    },
+    "public_shaft_to_city": {
+      "from": { "x": 60, "y": 20, "z": -180 },
+      "to": { "x": 60, "y": 90, "z": -180 },
+      "from_description": "Public Access Lobby at the SubTropolis grid edge.",
+      "to_description": "Surface lobby on the SubTropolis hilltop, where players step out onto the plateau to access the city in the broader valley.",
+      "cross_section": "5x5 blocks",
+      "path_description": "Vertical shaft running from the SubTropolis grid at Y=20 up through the ravine wall to a surface exit at Y=90. Tagged [X] as a project fiction - the real SubTropolis has no public shaft; it is accessed by a private drive.",
+      "subtropolis_features": {
+        "lobby": "Public Access Lobby at (60, 20, -180): security guard booth, turnstile, 'PUBLIC TRANSIT - COMBINED COMPLEX' sign, visible vertical shaft (long vertical line that the player can see going up).",
+        "vertical_shaft": "5x5 blocks, 70 blocks vertical, from Y=20 to Y=90. Player-climbable with ladders or a Minecraft elevator.",
+        "surface_exit": "Surface lobby at (60, 90, -180) on the hilltop plateau. Players step out onto the surface and can navigate to the city in the broader valley (which connects to the Houston tunnel system in the combined-complex project).",
+        "security": "Staffed entry - a security guard booth and a turnstile. A facility that is normally access-controlled cannot have a public entrance without that."
+      },
+      "tag": "X"
+    }
+  },
+  "street_signs": [
+    {
+      "name": "Hushpuckney Ave",
+      "orientation": "N-S",
+      "path": "from (0, 20, 0) to (0, 20, -200)",
+      "description": "Geology-themed street name from the real SubTropolis (named after a local rock type, per the 2010 Atlantic and 2026 Axios reporting).",
+      "tag": "D"
+    },
+    {
+      "name": "Bethany Falls Blvd",
+      "orientation": "E-W",
+      "path": "from (-100, 20, -100) to (100, 20, -100)",
+      "description": "Invented companion to Hushpuckney, named after the Bethany Falls Limestone formation. Candidates for the architect to choose from: Iola, Winterset, Galesburg, Mound City, Drum, Chanute. Tagged [X] - not a documented street name but plausible per the deliberation's approval of 1-2 invented companions.",
+      "tag": "X"
+    }
+  ],
+  "speed_limit_signs": [
+    { "location": "main_entrance_portal", "x": 0, "y": 70, "z": 0, "speed_mph": 15, "tag": "D" },
+    { "location": "second_exit_portal", "x": 100, "y": 70, "z": -100, "speed_mph": 15, "tag": "D" },
+    { "location": "main_intersection", "x": 0, "y": 20, "z": -100, "speed_mph": 15, "tag": "D" }
+  ],
+  "headline_signs": {
+    "marquee_at_entrance": {
+      "location": "above_main_entrance_portal",
+      "text": "WORLD'S LARGEST UNDERGROUND BUSINESS COMPLEX (R) - HUNT MIDWEST SUBTROPOLIS",
+      "tag": "D"
+    },
+    "leasing_office_plaque": {
+      "location": "leasing_office_interior",
+      "text": "14,000,000 SQ FT DEVELOPED",
+      "tag": "D"
+    },
+    "established_plaque": {
+      "location": "visitor_center_entrance",
+      "text": "SUBTROPOLIS - EST. 1964",
+      "tag": "D"
+    },
+    "foreign_trade_zone_sign": {
+      "location": "leasing_office_interior",
+      "text": "DESIGNATED U.S. FOREIGN-TRADE ZONE - LARGEST UNDER ONE ROOF",
+      "tag": "D"
+    },
+    "energy_star_certificate": {
+      "location": "leasing_office_interior",
+      "text": "ENERGY STAR 100 - 2012-",
+      "tag": "D"
+    },
+    "depth_interpretive": {
+      "location": "visitor_center_interpretive_wall",
+      "text": "150 FT BELOW SURFACE (up to 160 ft maximum)",
+      "tag": "D"
+    },
+    "temperature_interpretive": {
+      "location": "visitor_center_interpretive_wall",
+      "text": "68 F YEAR-ROUND (65-70 F range)",
+      "tag": "D"
+    },
+    "road_length_interpretive": {
+      "location": "visitor_center_interpretive_wall",
+      "text": "8.2 MI OF PAVED ROAD",
+      "tag": "D"
+    },
+    "compressive_strength_interpretive": {
+      "location": "visitor_center_interpretive_wall",
+      "text": "18,000-24,000 PSI COMPRESSIVE STRENGTH (6x concrete)",
+      "tag": "D"
+    }
+  },
+  "block_palette": {
+    "exterior_limestone": {
+      "primary": ["smooth_stone", "calcite", "polished_calcite"],
+      "secondary": ["diorite", "tuff"],
+      "tertiary": ["deepslate"],
+      "strata_technique": "Alternating 1-2 block horizontal layers to convey sedimentary layering.",
+      "tag": "D"
+    },
+    "painted_pillars": {
+      "primary": ["quartz_block", "calcite"],
+      "painted_white": ["white_concrete", "white_terracotta", "white_wool"],
+      "stenciled_numbers": ["black_wool", "black_concrete_powder"],
+      "tag": "D"
+    },
+    "exposed_rock_walls": {
+      "rough_hewn": ["stone", "cobblestone", "mossy_cobblestone"],
+      "drill_marks": ["stone_stairs", "stone_slabs"],
+      "tag": "D / I"
+    },
+    "tenant_floors": {
+      "newer_sections": ["polished_andesite"],
+      "older_sections": ["stone", "gravel"],
+      "lane_lines": ["black_wool", "black_concrete"],
+      "parking_bay_markings": ["yellow_wool"],
+      "tag": "D"
+    },
+    "painted_utility_lines": {
+      "red_fire": "red_wool",
+      "blue_water": "blue_wool",
+      "yellow_comms": "yellow_wool",
+      "green_data": "green_wool",
+      "tag": "D"
+    },
+    "surface_above_mine": {
+      "natural": ["grass_block", "dirt", "path", "coarse_dirt", "gravel"],
+      "foliage": ["oak_leaves", "dark_oak_leaves", "vines"],
+      "roads": ["polished_andesite", "stone_bricks"],
+      "tag": "D"
+    },
+    "avoid": [
+      "torches",
+      "lava",
+      "mob_spawners",
+      "saturated_colors",
+      "glossy_surfaces_except_polished_andesite_floors"
+    ]
+  },
+  "combined_complex_notes": {
+    "subtropolis_position": "South wall of the ravine.",
+    "cheyenne_position": "North wall of the ravine, ~400-600 blocks away across the ravine floor.",
+    "houston_position": "In the city in the broader valley, beyond the SubTropolis hill. Connected via the public shaft (player travels up the shaft to the SubTropolis plateau, then south to the city).",
+    "geology_difference": "SubTropolis hill is Bethany Falls limestone (sedimentary, cream/beige, layered). Cheyenne Mountain is granite (igneous, gray, crystalline). Both in the same mountain range, but very different rocks.",
+    "service_tunnel_path": "Horizontal, 6x5 block cross-section, running under the ravine at Y=4-9.",
+    "public_shaft_path": "Vertical, 5x5 block cross-section, running from the SubTropolis grid at Y=20 up to the SubTropolis hilltop at Y=90.",
+    "public_accessibility_difference": "SubTropolis is the 'open to the public, mixed use' leg of the trilogy. Cheyenne is military / secure / single-use. Houston is pedestrian / downtown. The public shaft makes SubTropolis the most publicly accessible of the three."
+  },
+  "binding_decisions_respected": [
+    "55 million sq ft at the entrance marquee (research §3.3, deliberation D3)",
+    "14 million sq ft 'developed' reduced to a leasing-office plaque (research §3.3, deliberation D3)",
+    "16 ft ceiling (5 blocks at 1:1 vertical) (research §4.2, deliberation D1)",
+    "150 ft depth (50 blocks at 1:1) (research §3.3, deliberation D3)",
+    "55+ tenants (research §6, deliberation D3)",
+    "1964 opening year (research §2.1, deliberation D3)",
+    "68 F temperature (research §7, deliberation D3)",
+    "8.2 mi of road (research §4, deliberation D3)",
+    "1:1 vertical scale (research §10.2, deliberation D1)",
+    "~200x200 block footprint (research §10.2, deliberation D1)",
+    "8x8 pillars (research §4.1, deliberation D1)",
+    "5-block ceiling (research §4.2, deliberation D1)",
+    "350-block main avenue (deliberation D1)",
+    "12-block corridor width (research §10.1, deliberation D1)",
+    "No 'big cavern' rooms (deliberation D1)",
+    "Mandatory [D]/[I]/[X] legend (deliberation D4)",
+    "Two ~100-block side spurs (deliberation D1)",
+    "Horizontal portal entrance in a hillside (deliberation D2, Tier 1)",
+    "Second portal at the far end of the main avenue (deliberation D2, Tier 1)",
+    "Geology-themed street names (Hushpuckney + 1-2 invented companions) (deliberation D2, Tier 2)",
+    "Painted pillar numbers at every intersection (deliberation D2, Tier 2)",
+    "15 mph speed limit and stop signs (deliberation D2, Tier 2)",
+    "Multi-tenant variety: at least 6 visibly distinct tenant fit-outs (deliberation D2, Tier 2)",
+    "Unfinished 'ghost' mine chamber off a side spur (deliberation D2, Tier 2)",
+    "SubTropolis Technology Center with biometric entry, server racks, status lights (deliberation D2, Tier 3)",
+    "Constant-climate / no-weather / no-mob-deeper environmental feel (deliberation D2, Tier 3)",
+    "Surface plateau with Hunt Midwest visitor center, parking lot stub, Lamar Hunt / KC Chiefs plaque (deliberation D2, Tier 3)",
+    "Service tunnel (~6x5 blocks) with security gate, sub-basement terminus (deliberation D6, project fiction [X])",
+    "Public shaft (~5x5 blocks) with Public Access Lobby, guard booth, turnstile (deliberation D6, project fiction [X])"
+  ],
+  "deliberation_topic_references": {
+    "topic_1_scale": "200x200 footprint, 1:1 vertical, 8x8 pillars, 5-block ceiling, ~350-block main avenue, two ~100-block side spurs. Compression ~1:100 floor, 1:1 vertical. No 'big cavern' rooms.",
+    "topic_2_must_haves": "Tier 1: horizontal portal, pillared corridor grid, second portal. Tier 2: geology-themed street names, painted pillar numbers, 15 mph speed limit, multi-tenant variety (6+), ghost mine chamber. Tier 3: STC, constant-climate feel, surface plateau with Hunt Midwest visitor center.",
+    "topic_3_source_conflicts": "55M at marquee / 14M in leasing office / 16 ft ceiling / 150 ft depth / 55+ tenants / 1964 / 68 F / 8.2 mi road. Hierarchy of numbers: marketing at threshold, technical fact in back office.",
+    "topic_4_creative_license": "Mandatory [D]/[I]/[X] legend. Four fit-out archetypes: records archive, package logistics, data center, general industrial. 'Operationally plausible' inventions.",
+    "topic_5_easter_eggs": "Prominent: USPS (with dock-door scene), NARA, STC (with biometric + dark fiber), EPA, 'World's Largest Underground Business Complex' (R). Subtle: UV&S film archive (one labeled can), Hunt Hall (one plaque, one mounted arrowhead), FTZ sign, ENERGY STAR 100 certificate, employee cafeteria. Out: Indiana Jones, Batcave, Bond villain, torches, fake idols, mob spawners, movie posters, helmet imagery.",
+    "topic_6_combined_complex": "Service tunnel: 6x5, sub-basement, security gate, vehicle turnaround. Public shaft: 5x5, Public Access Lobby with guard booth and turnstile. Both tagged [X] as project fictions. Service tunnel runs under ravine to Cheyenne. Public shaft goes from grid up to hilltop."
+  },
+  "open_questions_for_architectural_designer": [
+    "Geology-themed street name companions: Iola, Bethany Falls, Winterset, Galesburg, Mound City, Drum, Chanute are candidates (per Topic 5 deliberation).",
+    "Surface plateau size: 100x100 around visitor center, or 200x200 matching mine footprint?",
+    "Hunt Hall exact location, size (30x30 suggested), and rotation.",
+    "Data center detail depth: rack depth, status light animation, biometric hand-reader prop.",
+    "NARA high-bay shelving: nearly-ceiling-height archive shelving (Operations Manager argued for this).",
+    "Inter-site coordination with Cheyenne Mountain and Houston tunnel-system teams: cross-section compatibility.",
+    "Rail spur detail: parked boxcar on a short track (faded reference).",
+    "Visitor center interpretive wall content: text layout, image panels.",
+    "Employee cafeteria design: tables, coffee station, vending machine prop.",
+    "Worlds of Fun silhouette: single tower/coaster in the distance, at what distance?",
+    "Service tunnel sub-basement access: location and integration with ghost mine chamber.",
+    "Public shaft lobby integration: on main avenue or side spur, security gate configuration."
+  ],
+  "metadata": {
+    "compiled_by": "Site Planner",
+    "document_type": "Site Plan (macro site design)",
+    "feeds_into": ["Architectural Designer", "AI Contractor Writer"],
+    "companion_documents": [
+      "01-research/research-report.md",
+      "01-research/references.md",
+      "02-visuals/visual-assets.md",
+      "03-discussion/culture-architecture-analysis.md",
+      "03-discussion/discussion-notes.md"
+    ]
+  }
+}

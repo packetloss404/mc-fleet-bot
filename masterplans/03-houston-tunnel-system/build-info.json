@@ -1,0 +1,22 @@
+{
+  "build_name": "Houston Tunnel System",
+  "build_id": "03-houston-tunnel-system",
+  "version": "1.0",
+  "date": "2026-08-02",
+  "scale": {
+    "horizontal_compression": "4:1",
+    "vertical_compression": "1:1",
+    "tunnel_depth_blocks": 7
+  },
+  "city_block_count": 24,
+  "block_budget_estimate": 176500,
+  "deliverables": {
+    "masterplan_pdf": "masterplan.pdf",
+    "contractor_brief_md": "06-contractor/contractor-brief.md",
+    "contractor_brief_json": "06-contractor/contractor-brief.json"
+  },
+  "open_questions_count": 10,
+  "rendering_count": 20,
+  "food_court_count": 4,
+  "must_haves_count": 8
+}
