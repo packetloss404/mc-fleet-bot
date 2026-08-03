@@ -25,6 +25,7 @@ classifiers = [
 ]
 dependencies = [
     "jsonschema>=4.21",
+    "litemapy>=0.11.0b0",
 ]
 
 [project.optional-dependencies]
@@ -32,10 +33,13 @@ dev = [
     "pytest>=8.0",
     "pytest-cov>=4.1",
 ]
-build = [
-    # added in v0.2 when the amulet-core writer lands
-    # "amulet-core>=1.0",
-    # "amulet-nbt>=2.0",
+amulet = [
+    # Opt-in. The build pipeline auto-detects amulet-core and uses it
+    # when available. Currently requires Python 3.11 or 3.12; the
+    # amulet-nbt 1.0.3.x series has a dataclass mutable-default
+    # incompatibility with Python 3.13.
+    "amulet-core>=1.6",
+    "amulet-nbt>=1.0.3",
 ]
 
 [project.scripts]
