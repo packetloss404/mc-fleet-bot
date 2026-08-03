@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-map-qa-v1",
+  "generatedAtUtc": "2026-08-03T21:46:54.000Z",
+  "status": "PASS_PLANNING_ARTIFACT",
+  "scope": "Mechanical validation of the planning map; not terrain or build clearance",
+  "input": {
+    "acceptedCurrentRaster": {
+      "path": "data/exports/box/town-expansion-r1-final-2026-07-28/media/maps/map-whole-world-overview.png",
+      "sha256": "ca62fa267913aff3e044277ac20ee0c9ceaebaa591080b410adea80cf92d769f",
+      "width": 2352,
+      "height": 2352,
+      "snapshotSha256": "c39d0d67c9dec737aa5807cf5fa56a84f3c3d38d4b13d0f82599d3eb30fa6751"
+    },
+    "coordinateRegistry": {
+      "path": "masterplans/05-combined-zones/site-coordinates.json",
+      "sha256": "3abbaee0c457038740153ad5bfe8fa7c6ce4a0ecd9499441a5fe5a704b086b59"
+    }
+  },
+  "outputs": {
+    "canonicalSvg": {
+      "path": "masterplans/05-combined-zones/maps/current-and-proposed-whole-world.svg",
+      "sha256": "5be176b69f6d8c1a5ebb14767ca79300107155bed1d45f24d622edd87d27400c",
+      "width": 2400,
+      "height": 1500
+    },
+    "renderedPng": {
+      "path": "masterplans/05-combined-zones/maps/current-and-proposed-whole-world.png",
+      "sha256": "ebe85258fdd5822c863852f340a3ed85b86b64b795451f7badf152656cb3ec9a",
+      "width": 2400,
+      "height": 1500
+    },
+    "verticalSectionSvg": {
+      "path": "masterplans/05-combined-zones/maps/vertical-zoning-section.svg",
+      "sha256": "1b275e6ec96937d7f2daf5ba27b8923653c79b6f59a95089f648aef2605e259d",
+      "width": 1600,
+      "height": 1050
+    },
+    "verticalSectionPng": {
+      "path": "masterplans/05-combined-zones/maps/vertical-zoning-section.png",
+      "sha256": "876bd122f2f96c38084a1e8977bd0065f2531f4bbd9da3357441e71ddc58023d",
+      "width": 1600,
+      "height": 1050
+    }
+  },
+  "checks": [
+    {
+      "id": "accepted-raster-bound",
+      "passed": true,
+      "detail": "The SVG references the stable terminal c39d whole-world raster."
+    },
+    {
+      "id": "north-up-projection",
+      "passed": true,
+      "detail": "Map X increases right; map Z increases down; north is -Z."
+    },
+    {
+      "id": "current-catalog-reservation-disjoint",
+      "passed": true,
+      "detail": "Current catalog maxX=1300; proposed reservation minX=1500; 200-block catalog separation."
+    },
+    {
+      "id": "unsurveyed-truth-label",
+      "passed": true,
+      "detail": "The proposed reservation is hatched and labeled NOT SURVEYED; the map makes no vacant-land claim."
+    },
+    {
+      "id": "current-vs-proposed-status-distinct",
+      "passed": true,
+      "detail": "Verified existing extent, proposed surface zones, underground projection, physical connector, and logical portal link use distinct patterns and line styles."
+    },
+    {
+      "id": "gateway-transform",
+      "passed": true,
+      "detail": "Local gateway (0,700) maps to world (1550,-300)."
+    },
+    {
+      "id": "city-transform",
+      "passed": true,
+      "detail": "Local origin (0,0) maps to world (2250,-300)."
+    },
+    {
+      "id": "contact-transform",
+      "passed": true,
+      "detail": "Local contact (-40,-360) maps to world (2610,-340)."
+    },
+    {
+      "id": "summit-transform",
+      "passed": true,
+      "detail": "Local summit (0,-500) maps to world (2750,-300)."
+    },
+    {
+      "id": "png-rendered",
+      "passed": true,
+      "detail": "Headless Chromium rendered the SVG at 2400x1500 with local-file access enabled."
+    }
+  ],
+  "limitations": [
+    "No fresh August 3 saved-world snapshot was taken.",
+    "No east-reserve terrain, ownership, entity, protected-feature, or world-border survey was performed.",
+    "No collision audit beyond the accepted durable feature union was performed.",
+    "No world edit, RCON operation, live route test, or portal activation was performed.",
+    "PASS_PLANNING_ARTIFACT does not authorize construction."
+  ]
+}

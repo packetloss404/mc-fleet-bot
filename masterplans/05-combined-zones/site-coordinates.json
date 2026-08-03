@@ -1,0 +1,253 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-east-reserve-study-v1",
+  "status": "SITING_STUDY_NOT_AUTHORIZED_FOR_WORLD_EDITS",
+  "world": "world",
+  "orientation": {
+    "north": "-z",
+    "east": "+x",
+    "up": "+y"
+  },
+  "acceptedBaseline": {
+    "snapshot": {
+      "path": "data/worldsnap-town-terminal-recovery-post-20260728T1839Z/region",
+      "sha256": "c39d0d67c9dec737aa5807cf5fa56a84f3c3d38d4b13d0f82599d3eb30fa6751",
+      "regionFileCount": 30,
+      "bytes": 134749182
+    },
+    "database": {
+      "path": "data/world-map.db",
+      "sha256": "71876a7ecf73e90475a9b5047938e14f39ea0a20381dea8c5286582059f95f8a",
+      "featureCount": 1215,
+      "activeFeatureCount": 1214,
+      "retiredFeatureCount": 1,
+      "featureUnion": {
+        "minX": -714,
+        "maxX": 1300,
+        "minY": -46,
+        "maxY": 319,
+        "minZ": -719,
+        "maxZ": 311.5
+      }
+    },
+    "topDownMap": {
+      "path": "data/exports/box/town-expansion-r1-final-2026-07-28/media/maps/map-whole-world-overview.png",
+      "sha256": "ca62fa267913aff3e044277ac20ee0c9ceaebaa591080b410adea80cf92d769f",
+      "widthPixels": 2352,
+      "heightPixels": 2352,
+      "blocksPerPixel": 1,
+      "renderBounds": {
+        "minX": -883,
+        "maxX": 1468,
+        "minZ": -1387,
+        "maxZ": 964
+      },
+      "pixelMapping": {
+        "pixelX": "worldX + 883",
+        "pixelY": "worldZ + 1387"
+      }
+    }
+  },
+  "sourcePrecedence": [
+    "accepted immutable snapshot and verified current database",
+    "masterplans/04-combined-complex v2 no-ravine root contractor brief and coordinates",
+    "individual masterplans 01, 02, and 03 for internal architectural detail",
+    "masterplan 04 map-integration material only where consistent with the first three",
+    "renderings for communication only"
+  ],
+  "studyReservation": {
+    "name": "east-reserve",
+    "bounds": {
+      "minX": 1500,
+      "maxX": 3050,
+      "minZ": -1050,
+      "maxZ": 450
+    },
+    "relationshipToCurrentCatalog": {
+      "currentMaxX": 1300,
+      "reservationMinX": 1500,
+      "catalogSeparationBlocks": 200,
+      "catalogIntersection": false,
+      "terrainClearanceProven": false
+    },
+    "truth": "Most of this envelope is outside the accepted rendered terrain. Unsurveyed does not mean vacant."
+  },
+  "transform": {
+    "localSystem": "normalized masterplan 04 no-ravine coordinates",
+    "localOriginInWorld": {
+      "x": 2250,
+      "provisionalY": 72,
+      "z": -300
+    },
+    "topDown": {
+      "worldX": "2250 - localZ",
+      "worldZ": "-300 + localX",
+      "rotationDegrees": 90,
+      "description": "local south (+Z) becomes world west (-X)"
+    },
+    "vertical": {
+      "status": "provisional",
+      "worldEnvelope": {
+        "minY": -64,
+        "maxY": 319
+      },
+      "streetY": 72,
+      "belowStreet": "worldY = 72 + 1.28 * localY for localY <= 0",
+      "aboveStreet": "worldY = 72 + 0.29 * localY for localY >= 0",
+      "mappedLevels": [
+        { "name": "design minimum", "localY": -100, "worldY": -56 },
+        { "name": "shaft observation landing", "localY": -50, "worldY": 8 },
+        { "name": "city street", "localY": 0, "worldY": 72 },
+        { "name": "granite-limestone contact", "localY": 200, "worldY": 130 },
+        { "name": "Cheyenne chamber low", "localY": 250, "worldY": 144.5 },
+        { "name": "Cheyenne chamber center", "localY": 325, "worldY": 166.25 },
+        { "name": "Cheyenne chamber high", "localY": 400, "worldY": 188 },
+        { "name": "summit", "localY": 800, "worldY": 304 }
+      ]
+    }
+  },
+  "zones": [
+    {
+      "id": "Z00",
+      "name": "East reserve",
+      "status": "study-only",
+      "bounds": { "minX": 1500, "maxX": 3050, "minZ": -1050, "maxZ": 450 }
+    },
+    {
+      "id": "Z01",
+      "name": "Gateway and arrival",
+      "status": "proposed",
+      "anchor": { "x": 1550, "y": null, "z": -300 },
+      "sourceLocalAnchor": { "x": 0, "y": 0, "z": 700 }
+    },
+    {
+      "id": "Z02",
+      "name": "Old town",
+      "status": "proposed",
+      "bounds": { "minX": 1550, "maxX": 1950, "minZ": -600, "maxZ": 0 },
+      "sourceLocalBounds": { "minX": -300, "maxX": 300, "minZ": 300, "maxZ": 700 }
+    },
+    {
+      "id": "Z03",
+      "name": "Grand Avenue",
+      "status": "proposed-centerline-study",
+      "from": { "x": 1750, "y": null, "z": -300 },
+      "to": { "x": 2180, "y": null, "z": -240 },
+      "directPlanDistanceBlocks": 434.17,
+      "crossSectionBlocks": 8
+    },
+    {
+      "id": "Z04",
+      "name": "Houston city",
+      "status": "proposed",
+      "bounds": { "minX": 2181, "maxX": 2319, "minZ": -369, "maxZ": -231 },
+      "streetY": 72
+    },
+    {
+      "id": "Z05",
+      "name": "Houston pedestrian tunnels",
+      "status": "proposed-underground",
+      "bounds": { "minX": 2181, "maxX": 2319, "minY": 64, "maxY": 72, "minZ": -369, "maxZ": -231 }
+    },
+    {
+      "id": "Z06",
+      "name": "Public shaft",
+      "status": "proposed-dogleg-unresolved",
+      "top": { "x": 2320, "y": 72, "z": -240 },
+      "observationLanding": { "x": 2320, "y": 8, "z": -240 },
+      "lowerLobbyStudy": { "x": 2350, "y": -56, "z": -240 },
+      "crossSection": "7x7"
+    },
+    {
+      "id": "Z07",
+      "name": "SubTropolis",
+      "status": "proposed-underground",
+      "bounds": { "minX": 2350, "maxX": 2550, "minY": -56, "maxY": 72, "minZ": -400, "maxZ": -200 }
+    },
+    {
+      "id": "Z08",
+      "name": "Service tunnel and contact",
+      "status": "proposed-centerline-study",
+      "from": { "x": 2550, "y": 72, "z": -400 },
+      "contact": { "x": 2610, "y": 130, "z": -340 },
+      "to": { "x": 2670, "y": 130, "z": -300 },
+      "directHorizontalDistanceBlocks": 156.2,
+      "riseBlocks": 58,
+      "crossSection": "6x6",
+      "centerlineSurveyRequired": true
+    },
+    {
+      "id": "Z09",
+      "name": "Continuous mountain",
+      "status": "proposed-surface-and-solid-volume",
+      "bounds": { "minX": 2450, "maxX": 3050, "minY": 72, "maxY": 304, "minZ": -700, "maxZ": 100 },
+      "noRavine": true,
+      "contactY": 130
+    },
+    {
+      "id": "Z10",
+      "name": "Cheyenne chamber",
+      "status": "proposed-underground",
+      "bounds": { "minX": 2750, "maxX": 2830, "minY": 144.5, "maxY": 188, "minZ": -340, "maxZ": -260 },
+      "center": { "x": 2790, "y": 166.25, "z": -300 },
+      "outerPortal": { "x": 2670, "y": 130, "z": -300 }
+    },
+    {
+      "id": "Z11",
+      "name": "Summit and return",
+      "status": "proposed-switchback-required",
+      "summit": { "x": 2750, "y": 304, "z": -300 },
+      "funicularStart": { "x": 2670, "y": 130, "z": -300 },
+      "minimumHorizontalRunBlocks": 174,
+      "directHorizontalRunBlocks": 80
+    }
+  ],
+  "connections": [
+    {
+      "id": "C1",
+      "name": "Data District east surface connection",
+      "status": "primary-study-interface",
+      "from": { "x": 1283, "y": null, "z": -300, "basis": "derived from current Data District road-network eastern bound" },
+      "to": { "x": 1550, "y": null, "z": -300, "basis": "transformed gateway anchor" },
+      "directPlanDistanceBlocks": 267,
+      "modes": ["road", "pedestrian", "utility", "rail-reservation"],
+      "surveyRequired": true
+    },
+    {
+      "id": "C2",
+      "name": "Optional owner portal-gallery transfer",
+      "status": "logical-link-not-active",
+      "from": { "x": 240, "y": null, "z": 155, "basis": "derived center of accepted portal-hub architecture" },
+      "to": { "x": 1550, "y": null, "z": -300 },
+      "physicalDistanceMeaningful": false,
+      "activationProven": false
+    },
+    {
+      "id": "C3",
+      "name": "Future PassageWay interchange",
+      "status": "reserved-endpoint-unset",
+      "from": null,
+      "to": { "x": 2350, "y": -56, "z": -240, "basis": "SubTropolis public lower-lobby study point" },
+      "constraints": [
+        "do not use contested C01 east arrival without closing ISSUE-002",
+        "do not treat a database centroid as an exact tunnel door",
+        "keep public circulation isolated from secure Cheyenne circulation"
+      ]
+    }
+  ],
+  "validationGates": [
+    "fresh immutable snapshot",
+    "expanded east terrain render",
+    "world border and chunk-generation survey",
+    "terrain, fluids, biome, structures, entities, and protected-feature census",
+    "current ownership and interface audit",
+    "final surface Y and piecewise vertical mapping approval",
+    "single normalized child-plan coordinate registry",
+    "schematic footprint, rotation, block-entity, and provenance inventory",
+    "rail, road, shaft, egress, and funicular route-grade validation",
+    "exact guarded forward and rollback packages",
+    "strict-noop parser and source-state preflight",
+    "live clearance and bidirectional route tests",
+    "immutable post snapshot, media QA, database import, and final acceptance"
+  ]
+}

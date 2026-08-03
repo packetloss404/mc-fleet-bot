@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050" role="img" aria-labelledby="title desc">
+  <title id="title">Combined Zones vanilla-height vertical zoning study</title>
+  <desc id="desc">Vertical section comparing the native Masterplan 04 height requirement with a provisional piecewise compression into the current vanilla Minecraft world height.</desc>
+  <defs>
+    <pattern id="lime" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="12" height="12" fill="#d8d1bb"/><line x1="0" y1="0" x2="0" y2="12" stroke="#a39a7e" stroke-width="2"/></pattern>
+    <pattern id="gran" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect width="12" height="12" fill="#d6a58f"/><line x1="0" y1="0" x2="0" y2="12" stroke="#a86852" stroke-width="2"/></pattern>
+    <pattern id="void" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#695989"/><line x1="0" y1="0" x2="0" y2="10" stroke="#b8a5db" stroke-width="2"/></pattern>
+  </defs>
+  <rect width="1600" height="1050" fill="#f5f2ec"/>
+  <rect width="1600" height="102" fill="#e9e3d8"/>
+  <text x="60" y="44" font-family="Helvetica,Arial,sans-serif" font-size="28" font-weight="700" letter-spacing="2.5" fill="#25282d">COMBINED ZONES · VERTICAL FEASIBILITY</text>
+  <text x="60" y="76" font-family="Helvetica,Arial,sans-serif" font-size="15" letter-spacing="1.6" fill="#5c6067">PROVISIONAL SAME-WORLD SECTION · VANILLA Y=-64…319 · STUDY ONLY</text>
+  <text x="1540" y="50" text-anchor="end" font-family="monospace" font-size="13" font-weight="700" fill="#a85b2e">NOT AN EXCAVATION OR BUILD SECTION</text>
+
+  <rect x="120" y="145" width="1000" height="705" fill="#fdfcf9" stroke="#a8a198" stroke-width="2"/>
+  <g stroke="#d4d0c9" stroke-width="1" font-family="monospace" font-size="11" fill="#646970">
+    <line x1="110" y1="850" x2="1120" y2="850"/><text x="98" y="854" text-anchor="end">Y -64</text>
+    <line x1="110" y1="732" x2="1120" y2="732"/><text x="98" y="736" text-anchor="end">Y 0</text>
+    <line x1="110" y1="599" x2="1120" y2="599"/><text x="98" y="603" text-anchor="end">Y 72</text>
+    <line x1="110" y1="492" x2="1120" y2="492"/><text x="98" y="496" text-anchor="end">Y 130</text>
+    <line x1="110" y1="382" x2="1120" y2="382"/><text x="98" y="386" text-anchor="end">Y 188</text>
+    <line x1="110" y1="169" x2="1120" y2="169"/><text x="98" y="173" text-anchor="end">Y 304</text>
+    <line x1="110" y1="145" x2="1120" y2="145"/><text x="98" y="149" text-anchor="end">Y 319</text>
+  </g>
+
+  <rect x="120" y="599" width="1000" height="251" fill="url(#lime)" stroke="#8d8469" stroke-width="1.5"/>
+  <text x="145" y="629" font-family="Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#615a48">LIMESTONE / BELOW-STREET BAND</text>
+  <text x="145" y="655" font-family="monospace" font-size="12" fill="#615a48">local Y -100…0 → world Y -56…72</text>
+
+  <rect x="120" y="169" width="1000" height="430" fill="url(#gran)" stroke="#a86852" stroke-width="1.5"/>
+  <text x="145" y="201" font-family="Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#684233">GRANITE / ABOVE-STREET MOUNTAIN BAND</text>
+  <text x="145" y="227" font-family="monospace" font-size="12" fill="#684233">local Y 0…800 → world Y 72…304</text>
+
+  <line x1="120" y1="599" x2="1120" y2="599" stroke="#425d5c" stroke-width="5"/>
+  <text x="1090" y="586" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#294746">CITY STREET / GATEWAY · Y≈72</text>
+  <line x1="120" y1="492" x2="1120" y2="492" stroke="#f0b83f" stroke-width="6" stroke-dasharray="14 8"/>
+  <text x="1090" y="479" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#815c12">GRANITE–LIMESTONE CONTACT · Y≈130</text>
+
+  <rect x="225" y="599" width="150" height="236" fill="url(#void)" stroke="#4e416a" stroke-width="3"/>
+  <text x="300" y="698" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">SUBTROPOLIS</text>
+  <text x="300" y="722" text-anchor="middle" font-family="monospace" font-size="12" fill="#efe8ff">Y -56…72</text>
+  <text x="300" y="746" text-anchor="middle" font-family="monospace" font-size="12" fill="#efe8ff">200×200 plan</text>
+
+  <rect x="430" y="589" width="42" height="246" fill="#f7f4ef" stroke="#6f6680" stroke-width="3" stroke-dasharray="7 5"/>
+  <text x="451" y="570" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#4e416a">PUBLIC SHAFT</text>
+  <circle cx="451" cy="717" r="8" fill="#f0b83f"/>
+  <text x="478" y="721" font-family="monospace" font-size="11" fill="#5d526e">mid-landing Y≈8</text>
+
+  <path d="M375,599 C520,599 600,515 710,492" fill="none" stroke="#8a6f4e" stroke-width="22" stroke-linecap="round"/>
+  <text x="560" y="548" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="700" fill="#5b452f">RAIL-VALID SERVICE CENTERLINE TO BE SURVEYED</text>
+
+  <rect x="700" y="382" width="210" height="81" fill="url(#void)" stroke="#4e416a" stroke-width="3"/>
+  <text x="805" y="415" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#fff">CHEYENNE CHAMBER</text>
+  <text x="805" y="440" text-anchor="middle" font-family="monospace" font-size="12" fill="#efe8ff">Y≈145…188</text>
+  <circle cx="670" cy="492" r="12" fill="#8e4b32" stroke="#ffd4c1" stroke-width="4"/>
+  <text x="670" y="525" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#65301f">BLAST DOOR</text>
+
+  <path d="M670,492 C760,450 930,340 985,169" fill="none" stroke="#f0b83f" stroke-width="8" stroke-dasharray="16 8"/>
+  <text x="939" y="305" text-anchor="middle" transform="rotate(-58 939 305)" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="700" fill="#815c12">SWITCHBACK FUNICULAR · ≥174 HORIZONTAL BLOCKS</text>
+  <circle cx="985" cy="169" r="12" fill="#f0b83f" stroke="#fff0bf" stroke-width="4"/>
+  <text x="985" y="153" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#684233">SUMMIT Y≈304</text>
+
+  <rect x="120" y="835" width="1000" height="15" fill="#292d34"/>
+  <text x="1090" y="830" text-anchor="end" font-family="monospace" font-size="11" fill="#5e6269">design floor Y=-56 leaves 8 blocks above world minimum</text>
+  <text x="1090" y="186" text-anchor="end" font-family="monospace" font-size="11" fill="#684233">summit Y=304 leaves 15 blocks below world maximum</text>
+
+  <g transform="translate(1180,145)">
+    <rect width="360" height="705" fill="#ffffff" stroke="#c8c1b7" stroke-width="2"/>
+    <text x="24" y="38" font-family="Helvetica,Arial,sans-serif" font-size="18" font-weight="700" fill="#25282d">WHY A REDESIGN IS REQUIRED</text>
+    <line x1="24" y1="54" x2="336" y2="54" stroke="#d4cec4"/>
+
+    <text x="24" y="94" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#7a4f3f">MASTERPLAN 04 NATIVE</text>
+    <rect x="48" y="115" width="66" height="356" fill="url(#gran)" stroke="#a86852" stroke-width="2"/>
+    <rect x="48" y="471" width="66" height="44" fill="url(#lime)" stroke="#8d8469" stroke-width="2"/>
+    <text x="126" y="124" font-family="monospace" font-size="12" fill="#5d6269">Y 800</text>
+    <text x="126" y="474" font-family="monospace" font-size="12" fill="#5d6269">Y 0</text>
+    <text x="126" y="515" font-family="monospace" font-size="12" fill="#5d6269">Y -100</text>
+    <text x="24" y="545" font-family="monospace" font-size="9.5" fill="#a85b2e">900-block vertical span</text>
+
+    <text x="198" y="94" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#365f62">CURRENT DIMENSION</text>
+    <rect x="205" y="245" width="66" height="270" fill="#d8e7e5" stroke="#4d8185" stroke-width="2"/>
+    <text x="283" y="254" font-family="monospace" font-size="12" fill="#5d6269">Y 319</text>
+    <text x="283" y="515" font-family="monospace" font-size="12" fill="#5d6269">Y -64</text>
+    <text x="198" y="562" font-family="monospace" font-size="9.5" fill="#365f62">383-block vertical span</text>
+
+    <rect x="24" y="572" width="312" height="108" fill="#fff3dc" stroke="#d3a751" stroke-width="2"/>
+    <text x="40" y="598" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#765513">PROVISIONAL PIECEWISE MAP</text>
+    <text x="40" y="623" font-family="monospace" font-size="11" fill="#765513">below 0: 72 + 1.28 × localY</text>
+    <text x="40" y="646" font-family="monospace" font-size="11" fill="#765513">above 0: 72 + 0.29 × localY</text>
+    <text x="40" y="669" font-family="Helvetica,Arial,sans-serif" font-size="11.5" fill="#765513">Owner approval + terrain survey required.</text>
+  </g>
+
+  <line x1="60" y1="925" x2="1540" y2="925" stroke="#c9c2b7"/>
+  <text x="60" y="956" font-family="monospace" font-size="12" fill="#60656c">The geological/material sequence is retained; vertical distance is explicitly compressed. Horizontal top-down geometry uses the separate 90° rotation/translation in site-coordinates.json.</text>
+  <text x="60" y="981" font-family="monospace" font-size="12" fill="#60656c">A native-height alternative remains possible only in a separate world/dimension with the required build-height platform.</text>
+  <text x="60" y="1006" font-family="monospace" font-size="12" fill="#a85b2e">STUDY ONLY — final Y levels must come from a fresh east-site terrain and section survey.</text>
+</svg>

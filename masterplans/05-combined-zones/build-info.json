@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "buildId": "05-combined-zones",
+  "title": "Combined Zones — Current World Integration Study",
+  "status": "SITING_STUDY_NOT_AUTHORIZED_FOR_WORLD_EDITS",
+  "generatedAtUtc": "2026-08-03T21:43:35.000Z",
+  "world": "world",
+  "physicalMutation": false,
+  "selectedStudy": {
+    "name": "east-reserve-rotated-vanilla-height",
+    "reservation": {
+      "minX": 1500,
+      "maxX": 3050,
+      "minZ": -1050,
+      "maxZ": 450
+    },
+    "localOriginInWorld": {
+      "x": 2250,
+      "provisionalY": 72,
+      "z": -300
+    },
+    "rotation": "90 degrees: local south becomes world west",
+    "verticalDesign": "piecewise compression into vanilla Y=-64..319; provisional until terrain and section surveys pass"
+  },
+  "acceptedBaseline": {
+    "snapshot": {
+      "path": "data/worldsnap-town-terminal-recovery-post-20260728T1839Z/region",
+      "sha256": "c39d0d67c9dec737aa5807cf5fa56a84f3c3d38d4b13d0f82599d3eb30fa6751"
+    },
+    "database": {
+      "path": "data/world-map.db",
+      "sha256": "71876a7ecf73e90475a9b5047938e14f39ea0a20381dea8c5286582059f95f8a",
+      "featureCount": 1215
+    },
+    "map": {
+      "path": "data/exports/box/town-expansion-r1-final-2026-07-28/media/maps/map-whole-world-overview.png",
+      "sha256": "ca62fa267913aff3e044277ac20ee0c9ceaebaa591080b410adea80cf92d769f",
+      "width": 2352,
+      "height": 2352,
+      "northUp": true
+    }
+  },
+  "deliverables": [
+    "README.md",
+    "MASTERPLAN.md",
+    "source-register.md",
+    "site-coordinates.json",
+    "map-qa.json",
+    "maps/current-and-proposed-whole-world.svg",
+    "maps/current-and-proposed-whole-world.png",
+    "maps/vertical-zoning-section.svg",
+    "maps/vertical-zoning-section.png"
+  ]
+}
