@@ -1,0 +1,1440 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "IMPLEMENTATION_READY_COORDINATE_SCHEDULE_NOT_A_LIVE_RELEASE",
+  "generatedUtc": "2026-07-28T04:56:03Z",
+  "liveWorldMutated": false,
+  "contentBoundary": "Fictional adults-only venue architecture, non-graphic. No explicit imagery, anatomy, or depicted sexual acts.",
+  "coordinateConvention": {
+    "north": "-Z",
+    "bounds": "inclusive",
+    "standingY": "one block above a listed finished floor",
+    "tunnelClearWidth": 5,
+    "tunnelClearHeight": 5
+  },
+  "evidence": {
+    "snapshot": {
+      "path": "data/worldsnap-town-expansion-expanded-baseline-20260728T0405Z/region",
+      "sha256": "e612b1feabcf8bd81e427804e0c5cdccea5aac79ef543cadbf2b05d360de7a5a"
+    },
+    "survey": "docs/redevelopment/2026-07-28-town-expansion/evidence/worker-town-theater-owner-tunnel-survey.json",
+    "memo": "docs/redevelopment/2026-07-28-town-expansion/worker-town-gilded-raven-theater-owner-tunnel-source-of-truth.md",
+    "surveyTool": "scripts/survey_worker_town_theater_owner_tunnel.mjs",
+    "worldDatabase": {
+      "path": "data/world-map.db",
+      "sha256AtSurvey": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+      "mode": "read-only"
+    },
+    "townDatabase": {
+      "path": "data/town.db",
+      "sha256AtSurvey": "15978d0c1416a779ef0fb165abb8a18cd06cc8c2f017d0d1f6f48d1cf25b7621",
+      "mode": "read-only"
+    },
+    "currentCatalog": {
+      "path": "data/exports/world-catalog-post-2026-07-27/features.json",
+      "sha256": "eae56b3ba39d11cd051f74f5d672fe83478fe392c0bb82ab11948f6f3c308b7e",
+      "theatreEnvelopeFeatureIntersections": 0
+    },
+    "plannedPackageCompared": "data/buildops/town-expansion-r1-wip2.txt",
+    "plannedPackageIntersectionConclusion": "Zero overlap for the theatre, marquee, entry court, deep owner corridor, suites, future-city reservation, sales office, descent, and detached ascent. The only overlap is 276 intentional interface cells where the arrival gallery joins the owner mega-mansion east wing at x269..270."
+  },
+  "theatre": {
+    "id": "RRCH-GILDED-RAVEN",
+    "name": "Gilded Raven Theatre House",
+    "identity": "Worker Town's most opulent traditional adults-only live-performance landmark",
+    "site": {
+      "buildingBounds": [
+        -34,
+        40,
+        -402,
+        18,
+        110,
+        -350
+      ],
+      "southFacingEntry": [
+        -17,
+        70,
+        -350
+      ],
+      "marqueeBounds": [
+        -17,
+        70,
+        -349,
+        1,
+        86,
+        -344
+      ],
+      "entryCourtBounds": [
+        -30,
+        64,
+        -349,
+        14,
+        82,
+        -340
+      ],
+      "streetRelationship": "The south marquee completes the open east side of Worker Town. The building starts at z=-402, leaving the pavilion south-pool and civic-ground edge untouched.",
+      "surfaceSurvey": {
+        "columns": 3721,
+        "surfaceY": {
+          "min": 61,
+          "p10": 70,
+          "median": 71,
+          "p90": 77,
+          "max": 83
+        },
+        "waterColumns": 0,
+        "buildingFluidCells": 0,
+        "buildingBlockEntities": 0,
+        "constructionHaloProtectedBlockEntities": [
+          [
+            "minecraft:bed",
+            -36,
+            70,
+            -348
+          ],
+          [
+            "minecraft:bed",
+            -36,
+            70,
+            -349
+          ]
+        ],
+        "rule": "The two beds sit outside every selected target and remain protected. No bulk rectangular grade operation may touch them."
+      }
+    },
+    "architecture": {
+      "style": "Original late-Victorian/Edwardian theatre-house composition with a brick-and-stone base, red terracotta, dark oak, copper, gilded accents, a tower marquee and an exuberant coffered ceiling",
+      "facadeRules": [
+        "The marquee is the primary south-street beacon and must remain centered on the public lobby, not on a service door.",
+        "Use a three-bay vertical composition, a tall central sign tower, projecting canopy, illuminated letter band, poster cases and sheltered ticket windows.",
+        "The stage house reads as a taller masonry volume behind the ornate public front; restaurants animate the side walls.",
+        "No blank temporary wall faces Worker Town."
+      ],
+      "palette": [
+        "bricks and red terracotta",
+        "polished granite and smooth stone base",
+        "dark oak and spruce joinery",
+        "cut copper, oxidized copper and gold accents",
+        "red, oxblood and purple textiles",
+        "warm lanterns, sea lanterns behind grilles and end-rod chandeliers"
+      ],
+      "levels": [
+        {
+          "id": "B2",
+          "floorY": 40,
+          "clearY": [
+            41,
+            50
+          ],
+          "program": "owner route, secure records, utilities and isolated tunnel vestibule"
+        },
+        {
+          "id": "B1",
+          "floorY": 52,
+          "clearY": [
+            53,
+            64
+          ],
+          "program": "five five-person salons, four one-to-one mini theatres, performer loop, dressing, green room, laundry and kitchens"
+        },
+        {
+          "id": "G",
+          "floorY": 70,
+          "clearY": [
+            71,
+            77
+          ],
+          "program": "marquee lobby, restaurants, stalls, central stage, open bowl circulation and public mystery promenade"
+        },
+        {
+          "id": "L2",
+          "floorY": 78,
+          "clearY": [
+            79,
+            85
+          ],
+          "program": "dress circle, private boxes, dining balconies and accessible foyer"
+        },
+        {
+          "id": "L3",
+          "floorY": 86,
+          "clearY": [
+            87,
+            93
+          ],
+          "program": "grand circle, owner box, technical control and upper foyer"
+        },
+        {
+          "id": "ROOF",
+          "floorY": 94,
+          "clearY": [
+            95,
+            105
+          ],
+          "program": "coffered/domed ceiling, chandelier crown, catwalks and screened plant"
+        }
+      ]
+    },
+    "mainHouse": {
+      "auditoriumBounds": [
+        -29,
+        70,
+        -397,
+        13,
+        98,
+        -362
+      ],
+      "stageBounds": [
+        -19,
+        70,
+        -401,
+        3,
+        84,
+        -390
+      ],
+      "apronBounds": [
+        -16,
+        70,
+        -389,
+        0,
+        76,
+        -385
+      ],
+      "capacity": {
+        "stalls": 96,
+        "dressCircle": 48,
+        "grandCircle": 24,
+        "mainHouseTotal": 168,
+        "fivePersonSalons": 25,
+        "oneToOneMiniTheatres": 4
+      },
+      "balconies": [
+        {
+          "id": "DRESS-CIRCLE",
+          "bounds": [
+            -29,
+            78,
+            -395,
+            13,
+            84,
+            -363
+          ],
+          "form": "horseshoe with open front, gilded balustrade and four two-to-six-person boxes"
+        },
+        {
+          "id": "GRAND-CIRCLE",
+          "bounds": [
+            -27,
+            86,
+            -393,
+            11,
+            92,
+            -365
+          ],
+          "form": "shallower U-shaped gallery with owner box and technical booth at the rear"
+        }
+      ],
+      "openBowlCirculation": {
+        "ringBounds": [
+          -31,
+          70,
+          -399,
+          15,
+          92,
+          -360
+        ],
+        "openVomitories": [
+          {
+            "id": "VOM-WEST-NORTH",
+            "bounds": [
+              -31,
+              71,
+              -388,
+              -28,
+              76,
+              -383
+            ]
+          },
+          {
+            "id": "VOM-WEST-SOUTH",
+            "bounds": [
+              -31,
+              71,
+              -377,
+              -28,
+              76,
+              -372
+            ]
+          },
+          {
+            "id": "VOM-EAST-NORTH",
+            "bounds": [
+              12,
+              71,
+              -388,
+              15,
+              76,
+              -383
+            ]
+          },
+          {
+            "id": "VOM-EAST-SOUTH",
+            "bounds": [
+              12,
+              71,
+              -377,
+              15,
+              76,
+              -372
+            ]
+          },
+          {
+            "id": "VOM-SOUTH-CENTER",
+            "bounds": [
+              -10,
+              71,
+              -364,
+              -4,
+              76,
+              -360
+            ]
+          }
+        ],
+        "rule": "These are broad open portals into a continuous balcony/foyer ring. Do not replace them with little doors into blind hallways."
+      },
+      "screenAndSightlineRule": "The stage, apron, backdrop and lighting frame are built before any fixed seat. Every seat row faces the stage and passes a centerline sight check."
+    },
+    "foodAndHospitality": [
+      {
+        "id": "GRT-RESTAURANT-WEST",
+        "bounds": [
+          -33,
+          70,
+          -395,
+          -30,
+          84,
+          -367
+        ],
+        "program": "two-level supper restaurant, balcony tables, bar pantry and stage-side service"
+      },
+      {
+        "id": "GRT-RESTAURANT-EAST",
+        "bounds": [
+          14,
+          70,
+          -395,
+          17,
+          84,
+          -367
+        ],
+        "program": "two-level dining gallery, balcony tables, dessert/service pantry and stage-side service"
+      },
+      {
+        "id": "GRT-RESTAURANT-SOUTHWEST",
+        "bounds": [
+          -33,
+          70,
+          -363,
+          -18,
+          77,
+          -351
+        ],
+        "program": "street-facing dining salon"
+      },
+      {
+        "id": "GRT-RESTAURANT-SOUTHEAST",
+        "bounds": [
+          2,
+          70,
+          -363,
+          17,
+          77,
+          -351
+        ],
+        "program": "street-facing dining salon"
+      }
+    ],
+    "smallPerformanceRooms": {
+      "fivePersonSalons": [
+        {
+          "id": "SALON-A",
+          "bounds": [
+            -32,
+            52,
+            -401,
+            -24,
+            64,
+            -391
+          ]
+        },
+        {
+          "id": "SALON-B",
+          "bounds": [
+            -21,
+            52,
+            -401,
+            -13,
+            64,
+            -391
+          ]
+        },
+        {
+          "id": "SALON-C",
+          "bounds": [
+            -10,
+            52,
+            -401,
+            -2,
+            64,
+            -391
+          ]
+        },
+        {
+          "id": "SALON-D",
+          "bounds": [
+            1,
+            52,
+            -401,
+            9,
+            64,
+            -391
+          ]
+        },
+        {
+          "id": "SALON-E",
+          "bounds": [
+            10,
+            52,
+            -401,
+            17,
+            64,
+            -391
+          ]
+        }
+      ],
+      "oneToOneMiniTheatres": [
+        {
+          "id": "ONE-A",
+          "bounds": [
+            -33,
+            52,
+            -388,
+            -27,
+            61,
+            -380
+          ]
+        },
+        {
+          "id": "ONE-B",
+          "bounds": [
+            -33,
+            52,
+            -377,
+            -27,
+            61,
+            -369
+          ]
+        },
+        {
+          "id": "ONE-C",
+          "bounds": [
+            11,
+            52,
+            -388,
+            17,
+            61,
+            -380
+          ]
+        },
+        {
+          "id": "ONE-D",
+          "bounds": [
+            11,
+            52,
+            -377,
+            17,
+            61,
+            -369
+          ]
+        }
+      ],
+      "roomStandard": [
+        "non-graphic stage or presentation platform",
+        "audience seating aimed at the platform",
+        "acoustic vestibule",
+        "accessible route and turning space",
+        "performer-side service door separate from audience entry",
+        "wash/cleanup point and closed storage",
+        "panic-release privacy latch; never part of required egress"
+      ]
+    },
+    "hiddenRoutes": [
+      {
+        "id": "GRT-PUBLIC-MYSTERY-PROMENADE",
+        "bounds": [
+          -31,
+          64,
+          -400,
+          15,
+          69,
+          -352
+        ],
+        "access": "discoverable bronze-panel doors from the main lobby and two bowl foyers",
+        "standard": "minimum three clear blocks wide, five clear high, no dead end longer than 20 blocks, returns to public foyer in three places"
+      },
+      {
+        "id": "GRT-PERFORMER-LOOP",
+        "bounds": [
+          -30,
+          52,
+          -400,
+          14,
+          59,
+          -365
+        ],
+        "access": "performer-only from dressing/green rooms and stage wings",
+        "standard": "three clear blocks wide, five clear high, two independent stairs to stage level, no public or owner door"
+      },
+      {
+        "id": "GRT-OWNER-ROUTE",
+        "bounds": [
+          -32,
+          40,
+          -400,
+          12,
+          50,
+          -365
+        ],
+        "access": "owner salon, two-door gilded vestibule and grand descent only",
+        "standard": "separate from both public and performer loops; no shared door, utility hatch or bypass"
+      }
+    ],
+    "buildingAccessibilityAndEgress": {
+      "publicLift": {
+        "bounds": [
+          10,
+          68,
+          -363,
+          17,
+          93,
+          -354
+        ],
+        "servedFloors": [
+          70,
+          78,
+          86
+        ]
+      },
+      "grandPublicStairs": [
+        {
+          "id": "WEST-GRAND-STAIR",
+          "bounds": [
+            -33,
+            68,
+            -363,
+            -13,
+            93,
+            -351
+          ]
+        },
+        {
+          "id": "EAST-GRAND-STAIR",
+          "bounds": [
+            -1,
+            68,
+            -363,
+            18,
+            93,
+            -351
+          ]
+        }
+      ],
+      "rules": [
+        "Every occupied floor, restaurant, main-house seating level, small salon and performer area has an accessible route.",
+        "The public lift sits with the grand stairs, not behind service rooms.",
+        "All fixed stairs use uniform 1-rise-per-2-run Minecraft geometry, closed risers, two rails, contrasting nosings, at least five clear headroom and seven-by-seven turn landings.",
+        "Public, performer and owner routes each retain two-way wayfinding and an independent route to a safe exterior or protected endpoint.",
+        "No ladder, alternating tread, trapdoor drop or one-block spiral is a primary route."
+      ]
+    }
+  },
+  "ownerTunnel": {
+    "id": "OWNER-CORRIDOR-GRT-OBS-01",
+    "identity": "New modern owner-only corridor; deliberately not T2B",
+    "floorY": -44,
+    "centerline": [
+      [
+        -10,
+        -44,
+        -390
+      ],
+      [
+        55,
+        -44,
+        -390
+      ],
+      [
+        55,
+        -44,
+        -230
+      ],
+      [
+        150,
+        -44,
+        -230
+      ],
+      [
+        150,
+        -44,
+        -80
+      ],
+      [
+        165,
+        -44,
+        -80
+      ],
+      [
+        165,
+        -44,
+        55
+      ],
+      [
+        363,
+        -44,
+        55
+      ],
+      [
+        363,
+        -44,
+        165
+      ]
+    ],
+    "lengthBlocks": 928,
+    "crossSection": {
+      "clearInterior": {
+        "width": 5,
+        "height": 5,
+        "floorY": -44,
+        "clearY": [
+          -43,
+          -39
+        ]
+      },
+      "constructionEnvelope": {
+        "lateralWidth": 9,
+        "minY": -46,
+        "maxY": -37
+      },
+      "assembly": [
+        "reinforced-deepslate or deepslate-brick outer liner",
+        "smooth-stone finished floor at y=-44",
+        "five-by-five obstruction-free walking volume",
+        "sealed side utility chases outside the five-block clear width",
+        "subfloor drainage/inspection tray at y=-46..-45",
+        "ceiling service band at y=-38..-37",
+        "replaceable wall panels; no exposed cave, gravel or raw cut"
+      ],
+      "grade": "level centerline; all vertical travel occurs in the two stair-and-lift halls"
+    },
+    "survey": {
+      "constructionEnvelopeCells": 85150,
+      "airCells": 3357,
+      "fluidCells": 0,
+      "faceHaloFluidCells": 0,
+      "gravityCells": 2102,
+      "blockEntities": 0,
+      "gravityRule": "Exact-list every gravel/sand/concrete-powder cell. Pre-support and replace it top-down behind a temporary bulkhead before opening adjacent air; never bulk-clear gravity pockets."
+    },
+    "lightingAndWayfinding": {
+      "normalLighting": "continuous warm ceiling rhythm at eight-block centers with brighter turn nodes",
+      "lowLevelLighting": "contrasting low wall lights at eight-block centers, staggered from ceiling lights",
+      "emergencyLighting": "independently switched alternate-color luminaires and illuminated exit-direction bands",
+      "directionSigns": "every 32 blocks and at every turn; state destination, direction and remaining distance",
+      "turnNodes": "eleven-by-eleven clear orientation chambers with a district-color floor compass",
+      "doors": "every controlled boundary uses two sequential metal doors with a minimum five-by-five-by-three clear interlock; doors release from the egress side"
+    },
+    "utilities": [
+      "separated normal and emergency lighting feeds",
+      "communications/intercom line",
+      "ventilation supply and return",
+      "drainage inspection tray",
+      "fire/medical cabinet niches",
+      "closed maintenance chase with no crawl-only bypass into protected rooms"
+    ],
+    "deprecationAndIsolation": {
+      "t2b": "T2B geometry and aesthetic are rejected and not reused. There is no physical connection. The old T2B pilot at x=-145..-136,z=177..187 is hundreds of blocks away in X.",
+      "ravensgate": "Ravensgate exclusion ends at x=-64; the owner-corridor construction envelope begins at x=-14, leaving 49 untouched X columns between them.",
+      "libraryGuildTunnel": "The civilian library–Guild passage is x=-110..-60,y=58..64,z=-442..-423. There is no 3D or network intersection.",
+      "ravenRock": "Known Raven Rock objects begin no lower than y=-14. The owner corridor ceiling/service band ends at y=-37, leaving 22 untouched vertical layers before y=-14.",
+      "portalHub": "Owner portal rooms are y=78..88,x=210..270,z=123..187. The corridor remains at y=-46..-37 and its mansion ascent is east at x=348..377.",
+      "oldC01": "The ascent is east of old C01's x<=300 envelope. The final gallery crosses back only at y=109..120, above the C01-east-road y=40..76 envelope.",
+      "networkRule": "No unlisted door, branch, shaft, crawlspace or utility chase may connect to T2B, Raven Rock, Ravensgate, the library–Guild passage, portal rooms, C01, natural caves or public/performer theatre routes."
+    }
+  },
+  "theatreGrandDescent": {
+    "id": "GRT-OWNER-GRAND-DESCENT",
+    "bounds": [
+      -34,
+      -46,
+      -400,
+      14,
+      67,
+      -383
+    ],
+    "survey": {
+      "cells": 100548,
+      "fluidCells": 0,
+      "faceHaloFluidCells": 0,
+      "gravityCells": 1595,
+      "blockEntities": 0
+    },
+    "upperCeremonialFlight": {
+      "from": [
+        -28,
+        70,
+        -370
+      ],
+      "to": [
+        -28,
+        64,
+        -382
+      ],
+      "clearWidth": 7,
+      "rise": 6,
+      "run": 12,
+      "geometry": "one rise per two run"
+    },
+    "switchbackFlights": [
+      {
+        "id": "T-F01",
+        "from": [
+          -31,
+          64,
+          -395
+        ],
+        "to": [
+          -7,
+          52,
+          -395
+        ]
+      },
+      {
+        "id": "T-F02",
+        "from": [
+          -7,
+          52,
+          -387
+        ],
+        "to": [
+          -31,
+          40,
+          -387
+        ]
+      },
+      {
+        "id": "T-F03",
+        "from": [
+          -31,
+          40,
+          -395
+        ],
+        "to": [
+          -7,
+          28,
+          -395
+        ]
+      },
+      {
+        "id": "T-F04",
+        "from": [
+          -7,
+          28,
+          -387
+        ],
+        "to": [
+          -31,
+          16,
+          -387
+        ]
+      },
+      {
+        "id": "T-F05",
+        "from": [
+          -31,
+          16,
+          -395
+        ],
+        "to": [
+          -7,
+          4,
+          -395
+        ]
+      },
+      {
+        "id": "T-F06",
+        "from": [
+          -7,
+          4,
+          -387
+        ],
+        "to": [
+          -31,
+          -8,
+          -387
+        ]
+      },
+      {
+        "id": "T-F07",
+        "from": [
+          -31,
+          -8,
+          -395
+        ],
+        "to": [
+          -7,
+          -20,
+          -395
+        ]
+      },
+      {
+        "id": "T-F08",
+        "from": [
+          -7,
+          -20,
+          -387
+        ],
+        "to": [
+          -31,
+          -32,
+          -387
+        ]
+      },
+      {
+        "id": "T-F09",
+        "from": [
+          -31,
+          -32,
+          -395
+        ],
+        "to": [
+          -7,
+          -44,
+          -395
+        ]
+      }
+    ],
+    "flightStandard": {
+      "clearWidth": 7,
+      "risePerFlight": 12,
+      "runPerFlight": 24,
+      "geometry": "one rise per two run",
+      "clearHeadroom": 6,
+      "closedRisers": true,
+      "rails": "continuous both sides",
+      "landingBounds": "west x=-34..-30 and east x=-8..-4, z=-398..-384; minimum seven clear blocks in direction of travel",
+      "visualContrast": "gold/copper nosing strip at the first and last tread of every flight",
+      "noWinders": true
+    },
+    "lift": {
+      "outerBounds": [
+        3,
+        -46,
+        -399,
+        12,
+        67,
+        -390
+      ],
+      "clearCar": "minimum six-by-six",
+      "servedLandings": [
+        -44,
+        -32,
+        -20,
+        -8,
+        4,
+        16,
+        28,
+        40,
+        52,
+        64
+      ],
+      "rule": "The lift and stairs share each visible landing. The accessible route is never hidden in a service corridor."
+    },
+    "finish": "Black stone, dark oak, patterned stone floors, copper rails, chandeliers at landings, framed district maps and a vaulted entrance rotunda. Hidden from the public salon, but extravagant once opened."
+  },
+  "restSuites": [
+    {
+      "id": "OWNER-REST-A",
+      "bounds": [
+        20,
+        -46,
+        -351,
+        48,
+        -34,
+        -331
+      ],
+      "redRoomAnnex": [
+        39,
+        -44,
+        -348,
+        47,
+        -36,
+        -334
+      ],
+      "gravityCells": 0
+    },
+    {
+      "id": "OWNER-REST-B",
+      "bounds": [
+        20,
+        -46,
+        -269,
+        48,
+        -34,
+        -249
+      ],
+      "redRoomAnnex": [
+        39,
+        -44,
+        -266,
+        47,
+        -36,
+        -252
+      ],
+      "gravityCells": 257
+    },
+    {
+      "id": "OWNER-REST-C",
+      "bounds": [
+        157,
+        -46,
+        -161,
+        186,
+        -34,
+        -141
+      ],
+      "redRoomAnnex": [
+        177,
+        -44,
+        -158,
+        185,
+        -36,
+        -144
+      ],
+      "gravityCells": 100
+    },
+    {
+      "id": "OWNER-REST-D",
+      "bounds": [
+        157,
+        -46,
+        -111,
+        186,
+        -34,
+        -91
+      ],
+      "redRoomAnnex": [
+        177,
+        -44,
+        -108,
+        185,
+        -36,
+        -94
+      ],
+      "gravityCells": 73
+    },
+    {
+      "id": "OWNER-REST-E",
+      "bounds": [
+        172,
+        -46,
+        30,
+        201,
+        -34,
+        50
+      ],
+      "redRoomAnnex": [
+        192,
+        -44,
+        33,
+        200,
+        -36,
+        47
+      ],
+      "gravityCells": 104
+    },
+    {
+      "id": "OWNER-REST-F",
+      "bounds": [
+        235,
+        -46,
+        62,
+        264,
+        -34,
+        82
+      ],
+      "redRoomAnnex": [
+        255,
+        -44,
+        65,
+        263,
+        -36,
+        79
+      ],
+      "gravityCells": 70
+    },
+    {
+      "id": "OWNER-REST-G",
+      "bounds": [
+        326,
+        -46,
+        90,
+        355,
+        -34,
+        110
+      ],
+      "redRoomAnnex": [
+        346,
+        -44,
+        93,
+        354,
+        -36,
+        107
+      ],
+      "gravityCells": 25
+    }
+  ],
+  "restSuiteStandard": {
+    "reference": "Private stadium-suite scale and hospitality program, translated to a private underground rest stop",
+    "requiredProgram": [
+      "owner lounge and dining/conference table",
+      "pantry and refreshment counter",
+      "single-user wash room",
+      "communications/status wall",
+      "medical cabinet and emergency intercom",
+      "quiet sleeping alcove",
+      "non-graphic adult red-room annex"
+    ],
+    "redRoomBoundary": [
+      "bed and lounge",
+      "closed accessory storage",
+      "decorative non-load-bearing swing/hammock frame",
+      "private wash and cleanup point",
+      "acoustic separation",
+      "two-step privacy vestibule",
+      "no explicit imagery or depicted act",
+      "never used as an egress route"
+    ],
+    "survey": "All seven suite envelopes contain zero fluids and zero block entities. Gravity counts are listed per suite and require the same pre-support sequence as the corridor."
+  },
+  "futureOwnerCity": {
+    "id": "OWNER-CITY-RESERVATION-01",
+    "status": "RESERVATION_ONLY_DO_NOT_EXCAVATE_CITY",
+    "bounds": [
+      65,
+      -38,
+      -280,
+      125,
+      -20,
+      -200
+    ],
+    "relationshipToTunnel": "The reservation sits directly above the x=55..150,z=-230 corridor leg. Only the sales office and its short branch are built now.",
+    "survey": {
+      "cells": 93879,
+      "airCells": 1200,
+      "fluidCells": 0,
+      "faceHaloFluidCells": 0,
+      "gravityCells": 1494,
+      "blockEntities": 0
+    },
+    "planningProgram": [
+      "future central owner square",
+      "future residence and guest court",
+      "future operations/concierge hall",
+      "future dining and recreation",
+      "future protected utility plant",
+      "future two-route egress and independent lift"
+    ],
+    "physicalMarkingNow": [
+      "OFFLINE / FUTURE OWNER CITY metal door at the sales-office model gallery",
+      "four corner coordinates on an in-office illuminated site model",
+      "district name, elevation and no-excavation notice",
+      "no cavern, street or room beyond the sales office"
+    ]
+  },
+  "salesOffice": {
+    "id": "OWNER-CITY-SALES-OFFICE-01",
+    "name": "Founders' Gallery Sales Office",
+    "bounds": [
+      78,
+      -46,
+      -227,
+      106,
+      -33,
+      -204
+    ],
+    "entryBranch": {
+      "from": [
+        90,
+        -44,
+        -230
+      ],
+      "to": [
+        90,
+        -44,
+        -227
+      ],
+      "doors": "two sequential metal doors and three-block interlock"
+    },
+    "survey": {
+      "cells": 9744,
+      "airCells": 33,
+      "fluidCells": 0,
+      "faceHaloFluidCells": 0,
+      "gravityCells": 220,
+      "blockEntities": 0
+    },
+    "program": [
+      "reception and concierge desk",
+      "large illuminated district model",
+      "parcel/status wall",
+      "materials gallery",
+      "private consultation room",
+      "small pantry and wash room",
+      "sealed future-city presentation doors"
+    ]
+  },
+  "mansionArrival": {
+    "deepAscent": {
+      "id": "OBS-OWNER-EAST-ASCENT",
+      "bounds": [
+        348,
+        -46,
+        150,
+        377,
+        112,
+        180
+      ],
+      "survey": {
+        "cells": 147870,
+        "airCells": 60107,
+        "fluidCells": 0,
+        "faceHaloFluidCells": 0,
+        "gravityCells": 1659,
+        "blockEntities": 0
+      },
+      "reasonForEastSiting": "Direct columns through the old bunker and west mansion contained water, trial/spawner features or protected inventory. This selected dry column is east of old C01 and does not intersect the new C01 road targets."
+    },
+    "switchbackFlights": [
+      {
+        "id": "M-F01",
+        "from": [
+          353,
+          -44,
+          177
+        ],
+        "to": [
+          353,
+          -32,
+          153
+        ]
+      },
+      {
+        "id": "M-F02",
+        "from": [
+          362,
+          -32,
+          153
+        ],
+        "to": [
+          362,
+          -20,
+          177
+        ]
+      },
+      {
+        "id": "M-F03",
+        "from": [
+          353,
+          -20,
+          177
+        ],
+        "to": [
+          353,
+          -8,
+          153
+        ]
+      },
+      {
+        "id": "M-F04",
+        "from": [
+          362,
+          -8,
+          153
+        ],
+        "to": [
+          362,
+          4,
+          177
+        ]
+      },
+      {
+        "id": "M-F05",
+        "from": [
+          353,
+          4,
+          177
+        ],
+        "to": [
+          353,
+          16,
+          153
+        ]
+      },
+      {
+        "id": "M-F06",
+        "from": [
+          362,
+          16,
+          153
+        ],
+        "to": [
+          362,
+          28,
+          177
+        ]
+      },
+      {
+        "id": "M-F07",
+        "from": [
+          353,
+          28,
+          177
+        ],
+        "to": [
+          353,
+          40,
+          153
+        ]
+      },
+      {
+        "id": "M-F08",
+        "from": [
+          362,
+          40,
+          153
+        ],
+        "to": [
+          362,
+          52,
+          177
+        ]
+      },
+      {
+        "id": "M-F09",
+        "from": [
+          353,
+          52,
+          177
+        ],
+        "to": [
+          353,
+          64,
+          153
+        ]
+      },
+      {
+        "id": "M-F10",
+        "from": [
+          362,
+          64,
+          153
+        ],
+        "to": [
+          362,
+          76,
+          177
+        ]
+      },
+      {
+        "id": "M-F11",
+        "from": [
+          353,
+          76,
+          177
+        ],
+        "to": [
+          353,
+          88,
+          153
+        ]
+      },
+      {
+        "id": "M-F12",
+        "from": [
+          362,
+          88,
+          153
+        ],
+        "to": [
+          362,
+          100,
+          177
+        ]
+      },
+      {
+        "id": "M-F13",
+        "from": [
+          353,
+          100,
+          177
+        ],
+        "to": [
+          353,
+          112,
+          153
+        ]
+      }
+    ],
+    "flightStandard": {
+      "clearWidth": 7,
+      "risePerFlight": 12,
+      "runPerFlight": 24,
+      "geometry": "one rise per two run",
+      "clearHeadroom": 6,
+      "landings": "north z=151..155 and south z=175..179, x=349..366; minimum seven clear blocks",
+      "closedRisers": true,
+      "rails": "continuous both sides",
+      "noWinders": true
+    },
+    "lift": {
+      "outerBounds": [
+        368,
+        -46,
+        153,
+        375,
+        112,
+        160
+      ],
+      "clearCar": "minimum six-by-six",
+      "servedLandings": [
+        -44,
+        -32,
+        -20,
+        -8,
+        4,
+        16,
+        28,
+        40,
+        52,
+        64,
+        76,
+        88,
+        100,
+        112
+      ]
+    },
+    "ceremonialGallery": {
+      "id": "OBS-OWNER-EAST-ARRIVAL-GALLERY",
+      "bounds": [
+        269,
+        109,
+        156,
+        348,
+        120,
+        174
+      ],
+      "survey": {
+        "cells": 18240,
+        "airCells": 18240,
+        "fluidCells": 0,
+        "faceHaloFluidCells": 0,
+        "gravityCells": 0,
+        "blockEntities": 0
+      },
+      "mansionInterface": "The gallery enters the implemented owner mega-mansion east wing at x269..270,y109..120,z156..174. The 276 planned-package overlap cells are intentional interface cells.",
+      "finish": "double-height art gallery with windows, telescope models, owner heraldry, seating and a direct grand door into the east-wing music/library sequence",
+      "prohibitions": [
+        "no door into the y78..88 portal gallery",
+        "no door into the shelter utility rooms",
+        "no public entrance from the C01 road",
+        "no exposed exterior tunnel portal"
+      ]
+    }
+  },
+  "researchSources": [
+    {
+      "title": "Theatre Spaces: An Introduction",
+      "publisher": "Theatres Trust",
+      "url": "https://www.theatrestrust.org.uk/assets/000/001/395/Theatre_Spaces_-_An_Introduction_FINAL_original.pdf?1565082480=",
+      "applied": "Auditorium, stage-house, front-of-house and back-of-house separation."
+    },
+    {
+      "title": "What spaces make up a theatre?",
+      "publisher": "Theatres Trust",
+      "url": "https://www.theatrestrust.org.uk/discover-theatres/theatre-faqs/171-what-spaces-make-up-a-theatre",
+      "applied": "Vomitories, stalls, circles, boxes, proscenium, wings, dressing and technical support."
+    },
+    {
+      "title": "How has the design of theatre buildings changed over time?",
+      "publisher": "Theatres Trust",
+      "url": "https://www.theatrestrust.org.uk/discover-theatres/theatre-faqs/172-how-has-the-design-of-theatre-buildings-changed-over-time",
+      "applied": "Horseshoe balconies, grand illuminated entrances, rich stairs and luxurious social rooms."
+    },
+    {
+      "title": "Historic theatre character-defining features",
+      "publisher": "U.S. National Park Service",
+      "url": "https://www.nps.gov/media/video/view.htm?id=D80BC409-7E9C-4870-8BA6-3F571F14DA93",
+      "applied": "Prominent marquee, entrance-lobby-auditorium progression, raked seating, balconies and proscenium."
+    },
+    {
+      "title": "Chapter 4: Accessible Routes",
+      "publisher": "U.S. Access Board",
+      "url": "https://www.access-board.gov/ada/guides/chapter-4-accessible-routes/",
+      "applied": "Accessible vertical circulation remains in the same area as stairs and connects all public, dining and performance spaces."
+    },
+    {
+      "title": "Chapter 5: Stairways",
+      "publisher": "U.S. Access Board",
+      "url": "https://www.access-board.gov/ada/guides/chapter-5-stairways/",
+      "applied": "Uniform closed risers/treads, rails, headroom and visual contrast; translated conservatively to one rise per two Minecraft blocks."
+    },
+    {
+      "title": "Recommended Emergency Preparedness Guidelines for Rail Transit Systems",
+      "publisher": "Federal Transit Administration",
+      "url": "https://www.transit.dot.gov/regulations-and-guidance/safety/recommended-emergency-preparedness-guidelines-rail-transit-systems",
+      "applied": "Dual lighting logic, low-level egress lighting, consistent graphics, unlocked egress side and no vertical ladders."
+    },
+    {
+      "title": "Road Tunnel Manual",
+      "publisher": "Federal Highway Administration",
+      "url": "https://www.fhwa.dot.gov/bridge/tunnel/pubs/nhi09010/tunnel_manual.pdf",
+      "applied": "Clear cross-section, lighting, ventilation, drainage, utilities, communications, signs and emergency equipment."
+    },
+    {
+      "title": "Learning from Underground Transportation Systems in Europe",
+      "publisher": "Federal Highway Administration",
+      "url": "https://www.fhwa.dot.gov/publications/focus/07may/03.cfm",
+      "applied": "Uniform wayfinding and periodic refuge/rest nodes."
+    },
+    {
+      "title": "Premium Seating",
+      "publisher": "U.S. Bank Stadium",
+      "url": "https://www.usbankstadium.com/events/premium-seating",
+      "applied": "Private-suite scale, concierge/hospitality and group-lounge precedent."
+    }
+  ],
+  "releaseGates": [
+    "Take a new same-moment immutable snapshot after every other town-expansion package is frozen.",
+    "Repeat the exact planned-target intersection test; only the 276-cell mansion interface may remain and it must be reconciled inside one model scope.",
+    "Generate exact one-cell source-state guards and exact rollback for every changed cell.",
+    "Recount fluids and all six face neighbors for the theatre descent, corridor, suites, city reservation, sales office, ascent and gallery; require zero.",
+    "Recount block entities in every target; require zero unless an explicit preserve-ledger entry exists.",
+    "List every gravity cell and use top-down pre-support micro-phases; no blind SET or large unmasked air carve.",
+    "Protect the two beds at x=-36,y70,z=-348/-349 and every existing town feature.",
+    "Build and verify screens/stages before seats; verify every main-house and small-room seat faces its stage.",
+    "Normal-walk test every stair flight and landing in both directions with digging, sprinting, flying and towering disabled.",
+    "Test both lifts at every served landing and prove the accessible route remains adjacent to the grand stairs.",
+    "Prove public, performer and owner hidden routes cannot cross or bypass their controlled vestibules.",
+    "Prove zero connection to T2B, Raven Rock, Ravensgate, the library–Guild tunnel, portal rooms, C01, natural caves or unlisted utilities.",
+    "Capture matched before/after exterior, lobby, bowl, stage, balcony, restaurants, small salons, all three hidden-route classes, both grand stair halls, representative tunnel sections, every rest suite, sales office, future-city sealed marker and mansion arrival."
+  ]
+}

@@ -1,0 +1,425 @@
+{
+  "schemaVersion": 1,
+  "artifactId": "TE-MSA-UNDERGROUND-WAREHOUSE-RV-DISTRICT-ENGINEERING-01",
+  "generatedAtUtc": "2026-07-28T03:48:39Z",
+  "state": "DESIGN_BASIS_ONLY_NO_LIVE_MUTATION",
+  "coordinateConvention": "Minecraft inclusive integer block bounds [minX,minY,minZ,maxX,maxY,maxZ]",
+  "source": {
+    "snapshot": {
+      "path": "data/worldsnap-town-expansion-complete-baseline-20260728T0315Z/region",
+      "sha256": "0bb1faa61ca69724816afe682080e3a517fa974ec1300c3651e399ea03505501",
+      "regionFileCount": 9,
+      "bytes": 59287653,
+      "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+    },
+    "database": {
+      "path": "data/world-map.db",
+      "mode": "read-only",
+      "sha256": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+      "bytes": 2547712,
+      "features": 875,
+      "scans": 23,
+      "observations": 1881
+    }
+  },
+  "researchSources": [
+    {
+      "authority": "U.S. Occupational Safety and Health Administration",
+      "title": "Warehousing — Hazards and Solutions",
+      "url": "https://www.osha.gov/warehousing/hazards-solutions",
+      "designUse": "marked clear aisles, pedestrian/forklift separation, charging ventilation, dock-edge warnings, unobstructed exits"
+    },
+    {
+      "authority": "U.S. Occupational Safety and Health Administration",
+      "title": "Powered Industrial Trucks — Narrow Aisles",
+      "url": "https://www.osha.gov/etools/powered-industrial-trucks/workplace/narrow-aisles",
+      "designUse": "conventional counterbalanced-truck rack aisles use approximately 12 feet; narrower aisles require specialized trucks"
+    },
+    {
+      "authority": "U.S. Occupational Safety and Health Administration",
+      "title": "Powered Industrial Trucks — Enclosed and Hazardous Areas",
+      "url": "https://www.osha.gov/etools/powered-industrial-trucks/workplace/enclosed-hazardous-areas",
+      "designUse": "enclosed vehicle areas require adequate ventilation and carbon-monoxide controls; the underground vehicle hall receives dedicated mechanical exhaust and monitoring"
+    },
+    {
+      "authority": "U.S. Occupational Safety and Health Administration",
+      "title": "1910.36 Design and construction requirements for exit routes",
+      "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.36",
+      "designUse": "at least two remote exits, permanent fire-separated exits, direct discharge, outward swing for higher occupant loads, minimum headroom and clear width"
+    },
+    {
+      "authority": "U.S. Occupational Safety and Health Administration",
+      "title": "1910.141 Sanitation",
+      "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.141",
+      "designUse": "dry sanitary workrooms, potable water, private toilet compartments, waste and vermin control"
+    },
+    {
+      "authority": "U.S. Access Board",
+      "title": "2010 ADA Standards — Chapter 4 Accessible Routes",
+      "url": "https://www.access-board.gov/ada/",
+      "designUse": "pedestrian ramp maximum 1:12, level landings, stable surfaces, edge protection, accessible route independent of vehicle ramp"
+    },
+    {
+      "authority": "Federal Highway Administration",
+      "title": "Truck Parking Development Handbook",
+      "url": "https://ops.fhwa.dot.gov/freight/infrastructure/truck_parking/docs/Truck_Parking_Development_Handbook.pdf",
+      "designUse": "WB-67 swept-path method, 53-foot trailer and 8.5-foot width reference, access/circulation/parking geometry"
+    },
+    {
+      "authority": "Federal Highway Administration",
+      "title": "Federal Lands Highway Design, Chapter 9",
+      "url": "https://highways.fhwa.dot.gov/federal-lands/pddm/Chapter_09.pdf",
+      "designUse": "select a design vehicle and test inside radii and encroachment rather than guessing at corner geometry"
+    },
+    {
+      "authority": "RV Industry Association",
+      "title": "Standards and Regulations",
+      "url": "https://www.rvia.org/standards-regulations",
+      "designUse": "walk-in display units remain temporary-living-quarter vehicles; safety, electrical, plumbing, heating and fire-life-safety systems must read as complete"
+    },
+    {
+      "authority": "National Fire Protection Association",
+      "title": "NFPA 30A extracts in NFPA 1 proposed text",
+      "url": "https://docinfofiles.nfpa.org/files/AboutTheCodes/1/NFPA_1_Proposed_TIA_1918_30A_extracts.pdf",
+      "designUse": "motor-fuel dispensing and repair areas are distinct special-purpose hazards with drainage, egress and suppression requirements"
+    },
+    {
+      "authority": "U.S. Environmental Protection Agency",
+      "title": "Release Prevention for Underground Storage Tanks",
+      "url": "https://www.epa.gov/ust/release-prevention-underground-storage-tanks-usts",
+      "designUse": "travel-center fuel area requires spill/overfill prevention and a mapped tank/transfer system; represented symbolically only in Minecraft"
+    },
+    {
+      "authority": "U.S. Food and Drug Administration",
+      "title": "2022 Food Code",
+      "url": "https://www.fda.gov/food/fda-food-code/food-code-2022",
+      "designUse": "commercial kitchens receive controlled food, warewashing, handwashing, waste and service paths isolated from repair, fuel and private-wellness zones"
+    },
+    {
+      "authority": "National Institute of Standards and Technology",
+      "title": "Key Findings and Recommendations — The Station Nightclub Fire",
+      "url": "https://www.nist.gov/el/key-findings-and-recommendations-improvement-nist-investigation-station-nightclub-fire",
+      "designUse": "nightclub uses sprinklers, remote redundant exits, distributed egress capacity, low-level wayfinding and no pyrotechnics or ignitable foam"
+    },
+    {
+      "authority": "U.S. Department of Defense Whole Building Design Guide",
+      "title": "Supply and Administration Warehouse Design Guide",
+      "url": "https://www.wbdg.org/FFC/AF/AFDG/ARCHIVES/supplyadministrationwarehouse.pdf",
+      "designUse": "organize receiving, distribution, counter service, administration, open warehouse and loading functions as a legible operational sequence"
+    }
+  ],
+  "undergroundWarehouse": {
+    "externalId": "TE-MSA-UW01",
+    "name": "MainStreet West Parking Subgrade Logistics and Vehicle Hall",
+    "status": "surveyed-design-basis-not-a-release",
+    "chamberBounds": [-112, 50, 181, -20, 61, 262],
+    "chamberVolumeCells": 91512,
+    "clearInteriorBounds": [-110, 51, 183, -22, 60, 260],
+    "surfaceContract": {
+      "parkingSurfaceY": 64,
+      "warehouseRoofY": 61,
+      "untouchedSupportCoursesY": [62, 63],
+      "rule": "No chamber operation may target y62, y63, y64 or any P01 parking child. Surface parking bay, aisle, crosswalk, canopy and light counts remain byte-for-byte and block-for-block unchanged."
+    },
+    "snapshotCensus": {
+      "chunksRead": 36,
+      "chunksMissing": 0,
+      "airOrCaveAirCells": 0,
+      "fullWaterBlocks": 0,
+      "lavaBlocks": 0,
+      "blockEntities": 0,
+      "waterloggedGlowLichenStates": 6,
+      "aquaticPlantBlocksPresent": true,
+      "interpretation": "The exact chamber is solid natural material but intersects six waterlogged decorative states and an old aquifer ecology; neighbor-fluid and drain-down preflight remains mandatory because source water is present below and west of the chamber."
+    },
+    "databaseCollision": {
+      "chamberKnown3dFeatureIntersections": 0,
+      "surfaceFeaturesAbove": "P01 and its parking children occupy y64 or higher and overlap only in x/z",
+      "verticalSeparations": [
+        {
+          "feature": "P01 parking surface",
+          "featureY": 64,
+          "warehouseMaxY": 61,
+          "untouchedCourses": 2
+        },
+        {
+          "feature": "RR-T2b Raven Rock personnel tunnel",
+          "featureYRange": [-10, 3],
+          "warehouseMinY": 50,
+          "minimumVerticalGapBlocks": 46
+        }
+      ],
+      "allowedSurfaceContextOnly": ["SITE", "DIV-A01", "FENCE:DIV-A01", "P01"],
+      "rule": "Broad district/property records are context only. Exact P01 children are protected, not allowed demolition."
+    },
+    "vehicleRamp": {
+      "externalId": "TE-MSA-UW01-RAMP",
+      "bounds": [-136, 50, 167, -108, 69, 248],
+      "relationship": "west-side earth-cut portal opposite the east-side C01 parking entrance",
+      "clearVehicleWidthBlocks": 10,
+      "clearVehicleHeightBlocks": 8,
+      "centerline": [
+        [-131, 64, 171],
+        [-131, 64, 176],
+        [-131, 58, 236],
+        [-125, 58, 244],
+        [-118, 58, 236],
+        [-118, 51, 173],
+        [-112, 51, 184]
+      ],
+      "runA": {
+        "horizontalBlocks": 60,
+        "fallBlocks": 6,
+        "gradePercent": 10.0
+      },
+      "runB": {
+        "horizontalBlocks": 63,
+        "fallBlocks": 7,
+        "gradePercent": 11.11
+      },
+      "details": [
+        "five-block transition zones at top, hairpin and bottom",
+        "guarded retaining walls and planted earth roof",
+        "raised three-block pedestrian refuge separated by barrier",
+        "drain trench and sump at the low threshold",
+        "height bars and destination signs before descent",
+        "WB-67/RV swept-path simulation required before generation"
+      ]
+    },
+    "levels": [
+      {
+        "id": "UW01-HIGH-BAY",
+        "floorY": 50,
+        "clearY": [51, 60],
+        "roofY": 61,
+        "clearHeightBlocks": 10
+      }
+    ],
+    "zones": [
+      {
+        "id": "UW01-RECEIVING",
+        "name": "receiving, inspection and staging",
+        "bounds": [-110, 51, 183, -82, 60, 200],
+        "details": ["ramp threshold", "quarantine stripe", "dock/staging pockets", "pedestrian refuge"]
+      },
+      {
+        "id": "UW01-RACK-HALL",
+        "name": "high-bay pallet rack hall",
+        "bounds": [-110, 51, 203, -52, 60, 260],
+        "rackRuns": [
+          [-108, 51, 205, -54, 59, 206],
+          [-108, 51, 219, -54, 59, 220],
+          [-108, 51, 233, -54, 59, 234],
+          [-108, 51, 247, -54, 59, 248],
+          [-108, 51, 259, -54, 59, 260]
+        ],
+        "aisleClearWidthBlocks": 12,
+        "details": ["heavy loads low", "end-of-aisle guards", "marked pedestrian spine", "no rack blocks an exit or fire equipment"]
+      },
+      {
+        "id": "UW01-VEHICLE-STORAGE",
+        "name": "indoor vehicle, RV and camper storage",
+        "bounds": [-79, 51, 183, -52, 60, 200],
+        "stalls": 8,
+        "stallClearWidthBlocks": 6,
+        "stallClearLengthBlocks": 22,
+        "details": ["no fueling", "engine-off storage", "ventilation detection zone", "battery isolation alcove"]
+      },
+      {
+        "id": "UW01-OFFICES",
+        "name": "dispatch, operations and administration",
+        "bounds": [-49, 51, 183, -24, 56, 207],
+        "rooms": ["dispatch", "manager", "open office", "meeting room", "records", "toilets"]
+      },
+      {
+        "id": "UW01-CAFETERIA",
+        "name": "staff cafeteria",
+        "bounds": [-49, 51, 210, -36, 56, 231],
+        "separation": "full-height compartment from vehicle/rack operations; positive clean-side route"
+      },
+      {
+        "id": "UW01-COMMERCIAL-KITCHEN",
+        "name": "commercial kitchen and warewashing",
+        "bounds": [-33, 51, 210, -24, 56, 231],
+        "rooms": ["receiving vestibule", "dry/cold store", "prep", "cook line", "warewash", "waste hold"],
+        "separation": "food deliveries never cross vehicle storage, repair, fuel, wellness or waste-return paths"
+      },
+      {
+        "id": "UW01-MECHANICAL",
+        "name": "ventilation, electrical, fire and sump plant",
+        "bounds": [-49, 51, 234, -36, 56, 247],
+        "details": ["outside-air and exhaust shafts", "CO/NO2 detection concept", "sprinkler riser", "sump and leak alarm", "battery charging exhaust"]
+      },
+      {
+        "id": "UW01-WELLNESS",
+        "name": "private adult wellness and relief suite",
+        "bounds": [-33, 51, 234, -24, 56, 260],
+        "nonGraphicProgram": ["privacy vestibule", "four lockable single-user relief rooms", "one larger accessible room", "wash/support room", "quiet recovery lounge"],
+        "separation": "two-door privacy vestibule, opaque walls, separate exhaust, separate sanitation route, no direct door to food, warehouse, loading or mechanical rooms"
+      }
+    ],
+    "egress": [
+      {
+        "id": "UW01-EXIT-NW",
+        "bounds": [-136, 50, 167, -127, 69, 181],
+        "type": "fire-separated stair beside but independent of vehicle ramp",
+        "surfaceDischarge": [-132, 65, 169]
+      },
+      {
+        "id": "UW01-EXIT-SW",
+        "bounds": [-134, 50, 258, -125, 69, 271],
+        "type": "remote fire-separated stair",
+        "surfaceDischarge": [-130, 65, 268]
+      },
+      {
+        "id": "UW01-EXIT-NE",
+        "bounds": [-19, 50, 167, -10, 69, 180],
+        "type": "remote fire-separated stair",
+        "surfaceDischarge": [-15, 65, 169]
+      }
+    ],
+    "buildPalette": {
+      "liner": ["reinforced-looking gray concrete", "deepslate structural ribs", "smooth-stone floors"],
+      "wayfinding": ["cyan receiving", "yellow vehicle", "blue office", "green food", "magenta wellness", "red egress"],
+      "detail": ["high-bay light trusses", "rack uprights", "guardrails", "bollards", "drains", "fire cabinets", "room signs"]
+    }
+  },
+  "rvSalesDistrict": {
+    "externalId": "TE-PAN-RV01",
+    "name": "Panorama RV Exchange and Roadhouse Campus",
+    "status": "surveyed-design-basis-not-a-release",
+    "districtBounds": [-350, 60, -380, -145, 112, -180],
+    "snapshotSurvey": {
+      "chunksMissing": 0,
+      "blockEntitiesInsideFinalCampus": 0,
+      "databaseExactFeaturesInsideFinalCampus": 0,
+      "databaseBroadContext": ["mainstreet-america:SITE", "raven-rock:DISTRICT"],
+      "surfaceCondition": "rolling peninsula with dry central/east upland, local water at low west/north edges, vegetation and exposed rock",
+      "surfaceYObservedAcrossPriorCandidate": {
+        "min": 62,
+        "median": 76,
+        "p90": 86,
+        "max": 95
+      },
+      "rule": "Terrace around retained high points; no blind mass grading or water fill. Exact final parcel requires a per-column surface/fluid/tree/protected-cell manifest."
+    },
+    "oasisRoadSpur": {
+      "externalId": "TE-PAN-RV01-ROAD",
+      "name": "Panorama Service Parkway",
+      "clearCarriageWidthBlocks": 12,
+      "shoulderBlocksEachSide": 3,
+      "centerline": [
+        [-230, 70, -474],
+        [-242, 69, -451],
+        [-256, 67, -428],
+        [-271, 72, -405],
+        [-286, 77, -381]
+      ],
+      "approximateCenterlineLengthBlocks": 112,
+      "entryGateBounds": [-299, 73, -391, -273, 84, -371],
+      "details": ["leave Oasis south forecourt", "avoid Westlight buildings", "causeway/bridge low wet crossings", "separate six-block pedestrian greenway", "60-block-diameter RV turning bulb at campus gate"]
+    },
+    "circulation": {
+      "designVehicle": "48-foot RV plus service/tow allowance; repair/service court also tested with FHWA WB-67 template",
+      "mainAislesClearWidthBlocks": 24,
+      "fireServiceLaneClearWidthBlocks": 20,
+      "turningBulbDiameterBlocks": 60,
+      "pedestrianPromenadeClearWidthBlocks": 6,
+      "rules": ["one-way display loops where practical", "no customer reversing across the main promenade", "repair deliveries bypass customer forecourt", "fuel circulation never crosses nightclub queue"]
+    },
+    "displayLot": {
+      "bounds": [-342, 74, -370, -246, 90, -212],
+      "scaleRule": "One longitudinal block represents approximately one foot so the named model lengths are exact; widths are enlarged to five or six blocks to permit walk-in interiors.",
+      "models": [
+        {"id": "RV29-A", "lengthFeet": 29, "bounds": [-338, 78, -360, -334, 83, -332]},
+        {"id": "RV29-B", "lengthFeet": 29, "bounds": [-326, 78, -360, -322, 83, -332]},
+        {"id": "RV29-C", "lengthFeet": 29, "bounds": [-314, 78, -360, -310, 83, -332]},
+        {"id": "RV29-D", "lengthFeet": 29, "bounds": [-302, 78, -360, -298, 83, -332]},
+        {"id": "RV39-A", "lengthFeet": 39, "bounds": [-338, 78, -321, -334, 84, -283]},
+        {"id": "RV39-B", "lengthFeet": 39, "bounds": [-326, 78, -321, -322, 84, -283]},
+        {"id": "RV39-C", "lengthFeet": 39, "bounds": [-314, 78, -321, -310, 84, -283]},
+        {"id": "RV39-D", "lengthFeet": 39, "bounds": [-302, 78, -321, -298, 84, -283]},
+        {"id": "RV48-A", "lengthFeet": 48, "bounds": [-338, 78, -272, -333, 85, -225]},
+        {"id": "RV48-B", "lengthFeet": 48, "bounds": [-325, 78, -272, -320, 85, -225]},
+        {"id": "RV48-C", "lengthFeet": 48, "bounds": [-312, 78, -272, -307, 85, -225]},
+        {"id": "RV48-D", "lengthFeet": 48, "bounds": [-299, 78, -272, -294, 85, -225]}
+      ],
+      "walkInDetails": ["driver cab or hitch nose", "entry steps", "galley", "dinette", "washroom", "sleeping zone", "storage", "roof equipment", "lights and model placard"],
+      "clearanceRule": "Every model has an unobstructed customer door, three-block interior passage where possible, and a separate display-aisle envelope."
+    },
+    "buildings": [
+      {
+        "id": "TE-PAN-RV01-CUSTOMER",
+        "name": "lavish customer and delivery center",
+        "bounds": [-238, 76, -370, -195, 101, -337],
+        "program": ["two-story atrium", "concierge", "customer lounge", "finance suites", "delivery theater", "hospitality cafe", "children/family room", "roof terrace", "toilets"]
+      },
+      {
+        "id": "TE-PAN-RV01-SALES",
+        "name": "separate sales building",
+        "bounds": [-238, 74, -330, -195, 94, -302],
+        "program": ["model gallery", "sales desks", "private consultation", "trade-in appraisal", "document room", "staff support"]
+      },
+      {
+        "id": "TE-PAN-RV01-REPAIR",
+        "name": "RV repair and service shop",
+        "bounds": [-238, 72, -294, -174, 101, -242],
+        "program": ["four through-capable repair bays", "parts", "tool room", "technician room", "waste/fluid hold", "service writer", "mechanical exhaust"],
+        "semiHeightDoors": [
+          {"id": "DOOR-1", "plane": "west", "bounds": [-238, 75, -292, -238, 90, -281], "clear": "12 wide x 16 high"},
+          {"id": "DOOR-2", "plane": "west", "bounds": [-238, 75, -279, -238, 90, -268], "clear": "12 wide x 16 high"},
+          {"id": "DOOR-3", "plane": "west", "bounds": [-238, 75, -266, -238, 90, -255], "clear": "12 wide x 16 high"},
+          {"id": "DOOR-4", "plane": "west", "bounds": [-238, 75, -253, -238, 90, -242], "clear": "12 wide x 16 high"}
+        ],
+        "serviceCourtBounds": [-298, 72, -299, -239, 90, -231]
+      },
+      {
+        "id": "TE-PAN-RV01-TRAVEL",
+        "name": "original upper-Midwest-style travel center",
+        "bounds": [-238, 72, -232, -195, 94, -190],
+        "program": ["market", "hot-food kitchen", "coffee/bakery", "seating", "driver lounge", "showers/toilets", "laundry", "dispatch kiosk", "separate receiving/waste"]
+      },
+      {
+        "id": "TE-PAN-RV01-FUEL",
+        "name": "travel-center fuel canopy and truck/RV lanes",
+        "bounds": [-296, 71, -226, -246, 86, -184],
+        "program": ["high-clear canopy", "pull-through RV lanes", "separate car islands", "emergency shutoff", "spill-control grading", "symbolic protected UST zone"]
+      },
+      {
+        "id": "TE-PAN-RV01-DIVE",
+        "name": "roadside dive bar",
+        "bounds": [-188, 72, -232, -155, 90, -207],
+        "program": ["bar", "booths", "small stage", "backbar", "toilets", "compact separate kitchen", "rear service door", "two remote exits"]
+      },
+      {
+        "id": "TE-PAN-RV01-CLUB",
+        "name": "private non-graphic adult nightclub",
+        "bounds": [-188, 72, -276, -150, 96, -239],
+        "program": ["discreet frontage", "age-control vestibule", "coat/check reception", "main lounge", "dance/performance room", "private non-graphic wellness rooms", "toilets", "staff/security", "separate service pantry", "three remote exits"],
+        "ageControlVestibuleBounds": [-188, 73, -260, -180, 81, -251],
+        "servicePathBounds": [-149, 72, -278, -145, 86, -232],
+        "rules": ["no explicit imagery or program", "no shared food path with patron queue", "no pyrotechnics", "sprinkler/fire-alarm concept", "main entrance plus two remote exits sized without assuming all remain available"]
+      }
+    ]
+  },
+  "releaseGates": [
+    "Freeze a new same-moment immutable snapshot and verify its aggregate hash equals the package source.",
+    "Generate exact one-cell source/desired/rollback records; no broad fill or unguarded excavation.",
+    "Prove zero changed cells at y62-y64 beneath P01 and zero changes to all 236 bays, aisles, crosswalks, canopies, lights and routes.",
+    "Repeat block-entity, container, inventory, fluid, waterlogged, gravity, cave and neighbor-fluid censuses over exact target plus a three-block halo.",
+    "Run database 3D intersection and concurrent-package target-cell audits; broad district overlap needs documented authorization and exact features need zero unapproved intersections.",
+    "Simulate ramp/RV/WB-67 swept paths, transitions, door clearances, turning bulbs, fire lanes and pedestrian crossings.",
+    "Provide at least two remote code-reviewed exits from every occupied warehouse/support space and every assembly building; nightclub receives three.",
+    "Provide independent ventilation/fire-separation review for underground vehicle storage, battery charging, repair, fuel, kitchen, cafeteria and private-wellness compartments.",
+    "Require entity/player clearance and a fixed atomic transaction order before live work.",
+    "Capture a post snapshot, exact installed-state and rollback proof, surface-parking identity proof, bidirectional normal-walk routes and vehicle-clearance simulation.",
+    "Import stable feature/room/route/media IDs only after physical and evidence acceptance; verify integrity and zero foreign-key violations.",
+    "Capture matched before/after regional, portal, ramp, high-bay, rack, vehicle, office, food, wellness, RV-row, repair-door, travel-center and nightlife evidence.",
+    "Regenerate atlas, catalog, PM PDF, owner-only Sites version and Box handoff; verify every final Box remote SHA-1."
+  ],
+  "limitations": [
+    "This is an architectural/operational Minecraft design basis, not a sealed real-world code design.",
+    "The cited standards control planning principles; the authority having jurisdiction must confirm adopted editions, occupancy, fire separation, suppression, ventilation and egress before any real-world application.",
+    "No live world, RCON, database, Sites or Box mutation was performed."
+  ]
+}

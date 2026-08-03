@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "id": "ianlan-nextgen-railway-migration-closeout-2026-07-28",
+  "generatedAtUtc": "2026-07-28T23:25:29Z",
+  "status": "RAILWAY_CUTOVER_VERIFIED_UNDERGROUND_PUBLISHED_SITES_DELETE_UNAVAILABLE",
+  "passed": true,
+  "scope": "Operate IANLAN NextGen on Railway, publish Master Plan and Underground Navigation as adjacent authenticated reports, update Box, and retire the superseded ChatGPT Sites deployment where the available control surface permits.",
+  "safety": {
+    "liveWorldMutated": false,
+    "databaseMutated": false,
+    "boxMutated": true,
+    "sitesRemoved": false,
+    "credentialsIncluded": false
+  },
+  "product": {
+    "name": "IANLAN NextGen",
+    "model": "Authenticate once, open a report library, and place each future job-specific report beside the existing Master Plan.",
+    "reports": [
+      {
+        "number": "01",
+        "name": "Master Plan",
+        "path": "/reports/master-plan",
+        "status": "ACCEPTED"
+      },
+      {
+        "number": "02",
+        "name": "Underground Navigation",
+        "path": "/reports/underground-navigation",
+        "status": "REPORT_COMPLETE",
+        "counts": {
+          "pdfPages": 97,
+          "maps": 18,
+          "undergroundNavigationRecords": 289,
+          "c01Spaces": 168,
+          "entranceAndAccessRecords": 22,
+          "publishedPageImages": 26
+        },
+        "truthBoundary": "The cataloged C01 east stack is explicitly contested under ISSUE-002; the report does not claim that the relocation, road, recovered parking, or sunken entrance exists."
+      }
+    ]
+  },
+  "railway": {
+    "workspace": {
+      "id": "db6787a4-d1f1-4b0e-84f6-3939cd79b67d",
+      "name": "FIFTY ELEVEN"
+    },
+    "project": {
+      "id": "5a2dd023-5da1-4fb9-adff-bd51caad4076",
+      "name": "IANLAN NextGen"
+    },
+    "service": {
+      "id": "381f60c7-5267-46bd-b563-979ec6456d1a",
+      "name": "IANLAN NextGen"
+    },
+    "environment": {
+      "id": "e7833950-bfa8-4d73-b168-1e000b898d04",
+      "name": "production"
+    },
+    "domain": "https://ianlan-nextgen-production.up.railway.app",
+    "deployment": {
+      "id": "c7925bf6-5abe-442c-9e8b-52d19275312b",
+      "status": "SUCCESS",
+      "sourceCommit": "3db9d0335b765b368fc54680975542aa664303c9",
+      "imageDigest": "sha256:8e1355a1fd471118b0be040fb0097e1798a43fd200a7a237f55f272db0bd065b",
+      "builder": "RAILPACK",
+      "startCommand": "npm run start",
+      "healthcheckPath": "/api/health",
+      "healthcheckTimeoutSeconds": 300,
+      "restartPolicy": "ON_FAILURE",
+      "restartMaxRetries": 3
+    }
+  },
+  "access": {
+    "pinDigits": 10,
+    "requestedPinConfigured": true,
+    "sessionSigningSecretConfigured": true,
+    "credentialValuesIncluded": false,
+    "localRecoveryRecord": {
+      "path": "/home/ianwalmsley/.config/ianlan-nextgen/credentials.env",
+      "mode": "0600"
+    },
+    "cookie": {
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "strict",
+      "ttlDays": 30
+    },
+    "failedLoginThrottle": {
+      "maximumFailedAttempts": 10,
+      "windowMinutes": 15,
+      "eleventhAttemptStatus": 429
+    }
+  },
+  "verification": {
+    "localProductionBuild": "PASS",
+    "desktopVisualReview": "PASS",
+    "mobileVisualReview": "PASS",
+    "productionVisualReview": "PASS",
+    "productionRuntimeDependencyAudit": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "productionHttp": {
+      "health": 200,
+      "anonymousLoginGate": 200,
+      "incorrectPin": 401,
+      "correctPin": 200,
+      "authenticatedReportLibrary": 200,
+      "authenticatedMasterPlan": 200,
+      "authenticatedUndergroundNavigation": 200,
+      "masterPlanPdfRange": 206,
+      "undergroundPdfRange": 206,
+      "undergroundSkywalkMap": 200,
+      "undergroundReportQa": 200,
+      "favicon": 200
+    },
+    "contentChecks": {
+      "ianlanBrand": true,
+      "masterPlanCard": true,
+      "undergroundNavigationCard": true,
+      "futureReportSlot": true,
+      "masterPlanAtlas": true,
+      "undergroundEntranceRows": 22,
+      "undergroundAreaMaps": 8,
+      "undergroundC01Maps": 8,
+      "publishedPageImagesLoaded": "26/26",
+      "issue002TruthBoundary": true
+    },
+    "securityHeaders": {
+      "cacheControlOnAuth": "no-store",
+      "referrerPolicy": "no-referrer",
+      "xContentTypeOptions": "nosniff",
+      "xFrameOptions": "DENY",
+      "permissionsPolicy": "camera=(), microphone=(), geolocation=()"
+    }
+  },
+  "sites": {
+    "url": "https://mc-fleet-world-atlas.ianwalmsley.chatgpt.site",
+    "status": "OWNER_AUTHORIZED_DELETE_CONTROL_UNAVAILABLE",
+    "anonymousHttpStatus": 401,
+    "ownerRemovalAuthorized": true,
+    "removalPerformed": false,
+    "accessMode": "OWNER_ONLY",
+    "blocker": "The connected ChatGPT Sites control surface exposes deployment, version, metadata, environment, domain, and access controls but no delete, unpublish, archive, or disable operation. It cannot truthfully remove this deployment."
+  },
+  "box": {
+    "status": "BOX_VERIFIED",
+    "remoteRoot": "exports/town-expansion-r1-final-2026-07-28",
+    "verifiedFiles": 637,
+    "failedFiles": 0,
+    "uploadedFiles": 1,
+    "updatedFiles": 4,
+    "unchangedFiles": 632,
+    "undergroundReportFiles": 48,
+    "verification": "docs/redevelopment/2026-07-28-town-expansion/box-upload-verification.json",
+    "receipt": "docs/redevelopment/2026-07-28-town-expansion/box-upload-verification-receipt.json",
+    "receiptStatus": "BOX_REPORT_VERIFIED",
+    "receiptBoxFileId": "2374452599782"
+  },
+  "issues": {
+    "path": "ISSUES.MD",
+    "openAtCloseout": 2,
+    "items": [
+      "ISSUE-001 — Town Expansion stairwells are visually poor",
+      "ISSUE-002 — Bunker relocation and arrival were not delivered"
+    ]
+  },
+  "decision": {
+    "railwayCutoverComplete": true,
+    "sitesRemovalAuthorized": true,
+    "sitesRemovalAutomated": false,
+    "nextAction": "Delete the legacy ChatGPT Sites project manually when a Sites UI/API with deletion authority is available. Do not alter the Railway service."
+  }
+}

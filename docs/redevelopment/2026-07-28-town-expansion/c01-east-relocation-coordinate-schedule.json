@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "INDEPENDENT_PLANNING_DECISION_NOT_A_BUILD_RELEASE",
+  "generatedUtc": "2026-07-28T07:45:00Z",
+  "liveWorldMutated": false,
+  "coordinateConvention": {"north": "-Z", "bounds": "inclusive"},
+  "evidence": {
+    "snapshot": {
+      "path": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region",
+      "sha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999"
+    },
+    "database": {
+      "path": "data/world-map.db",
+      "sha256AtSurvey": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+      "mode": "read-only"
+    },
+    "decisionRecord": "docs/redevelopment/2026-07-28-town-expansion/c01-east-relocation-independent-decision.md",
+    "map": "docs/redevelopment/2026-07-28-town-expansion/evidence/c01-east-relocation-current-map.png"
+  },
+  "existing": {
+    "c01": {
+      "bounds": [100, 300, 70, 235],
+      "name": "Earth-covered east operations complex"
+    },
+    "p01": {
+      "bounds": [-125, 125, 172, 305],
+      "requiredOutcome": "full uninterrupted parking footprint after old C01 decommissioning"
+    },
+    "portal": {
+      "bounds": [139, 147, 62, 69, 163, 201]
+    }
+  },
+  "alternatives": [
+    {
+      "id": "C01-EAST-A",
+      "vector": [400, 0],
+      "surfaceBounds": [500, 700, 70, 235],
+      "undergroundStudyBounds": [500, 700, 20, 60, 70, 235],
+      "surfaceColumns": 33366,
+      "surfaceWaterColumns": 673,
+      "fluidCellsY20To60": 28449,
+      "gravityCellsY20To60": 19256,
+      "blockEntitiesY20To100": 0,
+      "decision": "REJECT",
+      "reason": "Wet surface approach and 25 times more subsurface fluid than the selected east/north alternative."
+    },
+    {
+      "id": "C01-EAST-B-SELECTED-STUDY",
+      "vector": [600, -230],
+      "surfaceBounds": [700, 900, -160, 5],
+      "undergroundStudyBounds": [700, 900, 20, 60, -160, 5],
+      "surfaceColumns": 33366,
+      "surfaceWaterColumns": 0,
+      "fluidCellsY20To60": 1137,
+      "airCellsY20To60": 62967,
+      "gravityCellsY20To60": 18016,
+      "surfaceSupportY": {"min": 15, "p10": 63, "median": 66, "p90": 77, "max": 106},
+      "blockEntitiesY20To100": 0,
+      "databaseFeatureIntersections": 0,
+      "decision": "SELECT_FOR_MODULAR_REBUILD_AND_DETAILED_DESIGN",
+      "warning": "The full study envelope is not an excavation release. Use the proven dry core and preserve the north buffer."
+    }
+  ],
+  "selectedReservation": {
+    "id": "C01-EAST-REBUILD",
+    "planningVectorFromExisting": [600, 0, -230],
+    "studyEnvelope": [700, 900, 20, 60, -160, 5],
+    "campusSeparation": {
+      "dataCampusNearestRawEdgeZ": -180,
+      "c01RawStudyEdgeZ": -160,
+      "rawClearColumns": 19,
+      "mandatoryC01ModuleMinimumZ": -140,
+      "resultingClearColumnsToCampusParcel": 39,
+      "rule": "Keep z=-160..-141 as an unbuilt drainage, landscape and utility-separation buffer."
+    },
+    "provenDryCore": {
+      "bounds": [700, 900, 20, 60, -83, -21],
+      "cells": 519183,
+      "fluidCells": 0,
+      "blockEntities": 0,
+      "floorPlateCells": 12663,
+      "programStrategy": "Stack the preserved C01 program across three levels rather than copying the old horizontal shell."
+    },
+    "optionalDryNorthModule": {
+      "bounds": [797, 888, 20, 60, -140, -85],
+      "cells": 211232,
+      "fluidCells": 0,
+      "relationship": "isolatable northern service/plant module; stays south of the mandatory campus buffer"
+    },
+    "optionalDrySouthModule": {
+      "bounds": [701, 900, 20, 60, -18, -5],
+      "cells": 114800,
+      "fluidCells": 0,
+      "relationship": "isolatable logistics/storage module"
+    },
+    "levels": [
+      {"id": "C01-B3", "floorY": 21, "clearY": [22, 31], "program": "power, ventilation, water management, protected stores and maintenance"},
+      {"id": "C01-B2", "floorY": 34, "clearY": [35, 44], "program": "operations, communications, workshops, logistics and internal circulation"},
+      {"id": "C01-B1", "floorY": 47, "clearY": [48, 58], "program": "arrival, briefing, support, parking/loading interface and public-safe orientation"}
+    ],
+    "concealmentRule": "No concrete or liner may daylight. Require three solid terrain blocks above every roof cell after construction, with a five-block landscape transition at edges; low-cover cells are excluded or backfilled."
+  },
+  "access": {
+    "portalStudy": {
+      "id": "C01-EAST-PORTAL",
+      "bounds": [690, 712, 48, 74, -70, -36],
+      "relationship": "recessed west-facing entrance, physically separated from P01",
+      "status": "HOLD_FOR_EXACT_FLUID_COVER_AND_GRADE_CENSUS"
+    },
+    "roadStudy": {
+      "id": "C01-EAST-DESCENDING-ROAD",
+      "start": [126, 250],
+      "end": [690, -53],
+      "minimumWidthBlocks": 9,
+      "requiredCharacter": "landscaped descending east road with switchbacks, retaining walls, drainage and a portal forecourt hidden from P01",
+      "dryPathfindingResult": "NO_CONTINUOUS_NINE-WIDE_ZERO-WATER_ALIGNMENT_FOUND_WITH_RAW-TERRAIN_CONSTRAINTS",
+      "decision": "Do not force a direct road. Design surveyed bridge/causeway and retained-cut segments, then prove grade, drainage, headroom and bidirectional movement before release.",
+      "parkingSeparationRule": "The road begins outside x=125 and never occupies a P01 stall or circulation aisle."
+    }
+  },
+  "tunnelAndPackageConflicts": {
+    "catalogedFeaturesIntersectingSelectedStudy": [],
+    "ravenRock": "No cataloged Raven Rock route intersects x700..900,z-160..5. The district-level Raven Rock record ends at x300.",
+    "dataCampus": "No building overlap. Enforce the z=-160..-141 C01 no-build buffer against the campus whose nearest raw parcel edge is z=-180.",
+    "warehouse": "No spatial overlap; warehouse expansion occurs below recovered P01 at x32..125,z200..296.",
+    "crossPackageRule": "Re-run exact 3D target intersection against every operation file immediately before any coordinated release."
+  },
+  "migrationDecision": {
+    "method": "BUILD_COMMISSION_MIGRATE_DECOMMISSION",
+    "prohibitedMethod": "blind copy/translation of the old C01 block volume",
+    "sequence": [
+      "Freeze old C01 and preserve all routes/program records.",
+      "Build dry isolated modules at the selected east reservation with exact-state guards.",
+      "Commission utilities, two independent exits, portal road, internal routes and concealment.",
+      "Migrate program and inventory through a controlled ledger.",
+      "Verify new database objects and matched evidence.",
+      "Decommission old C01 only after acceptance.",
+      "Restore P01 as a continuous parking surface and commission the recovered warehouse wings.",
+      "Retain exact rollback packages for every phase."
+    ]
+  },
+  "p01Recovery": {
+    "bounds": [-125, 125, 172, 305],
+    "acceptance": [
+      "continuous stall and aisle geometry across the full recorded P01 bounds",
+      "no C01 portal, shell, road or construction staging within P01",
+      "surface support and drainage census after old C01 decommissioning",
+      "vehicle route QA in both directions",
+      "matched before/after map and screenshots"
+    ]
+  },
+  "warehouseRecoveredWings": [
+    {
+      "id": "MSA-P01-UWH-EAST-NORTH",
+      "bounds": [89, 108, 40, 60, 200, 245],
+      "cells": 19320,
+      "fluidCells": 0,
+      "gravityCells": 117,
+      "floorPlateCells": 920
+    },
+    {
+      "id": "MSA-P01-UWH-EAST-SOUTH",
+      "bounds": [89, 125, 40, 60, 246, 296],
+      "cells": 39627,
+      "fluidCells": 0,
+      "gravityCells": 785,
+      "floorPlateCells": 1887
+    }
+  ],
+  "warehouseExclusion": {
+    "bounds": [109, 125, 40, 60, 200, 245],
+    "knownSourceWater": [
+      [114, 48, 232], [114, 48, 233], [115, 48, 232], [115, 48, 233],
+      [116, 48, 232], [116, 48, 233], [117, 48, 232]
+    ],
+    "knownSourceLava": [
+      [125, 46, 232], [125, 46, 233], [125, 46, 234]
+    ],
+    "rule": "No open excavation. Preserve a minimum five-block review halo around all listed source cells and prove bulkhead separation."
+  },
+  "releaseGates": [
+    "new same-moment immutable snapshot",
+    "all exact before-state guards match",
+    "entity and player clearance",
+    "complete 3D feature, route and cross-package target intersection",
+    "repeated fluid and gravity census including one-cell and five-cell halos",
+    "ground-support and three-block-cover proof",
+    "portal and road hydrology/grade design",
+    "two independent egress routes",
+    "fixed transaction order and exact rollback",
+    "post snapshot and database import",
+    "bidirectional normal-walk and vehicle-route QA",
+    "matched concealment, portal, parking and warehouse evidence"
+  ]
+}

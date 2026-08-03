@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "generatedAtUtc": "2026-07-28T13:12:00Z",
+  "auditType": "five-bot-runtime-readiness-recheck",
+  "status": "SOURCE_READY_LIVE_ACTIVATION_BLOCKED_ON_POST_RELEASE_ROUTE",
+  "scope": {
+    "townId": "town_mrzgshth_9d12c17d",
+    "townName": "Ravensreach",
+    "citizens": {
+      "Architect": "builder",
+      "Mason": "miner",
+      "Scott": "lumberjack",
+      "Steward": "farmer",
+      "Surveyor": "guard"
+    }
+  },
+  "runtime": {
+    "service": "inactive",
+    "mainPid": 0,
+    "duplicateBackendOrMineflayerProcessObserved": false,
+    "voyagerConfiguredEnabled": true,
+    "ravensreachPersistedPaused": false,
+    "persistedLeashEntries": 5,
+    "persistedShifts": 5,
+    "currentAutonomousObservation": "PENDING",
+    "reason": "The atomic Town Expansion release owns the world; the old citizen route is directly changed by that package."
+  },
+  "behaviorImprovements": [
+    {
+      "id": 1,
+      "name": "exact identity and occupation",
+      "implementation": "Five exact alive resident names own five exact roles; Scout drift is removed.",
+      "offlineStatus": "PASS",
+      "liveStatus": "POST_START_CONFIRMATION_PENDING"
+    },
+    {
+      "id": 2,
+      "name": "productive daily rotation",
+      "implementation": "Role work rotates with non-destructive inspection; obsolete phase work and duplicate open work are suppressed.",
+      "offlineStatus": "PASS",
+      "liveStatus": "LOCAL_COMPLETION_PENDING"
+    },
+    {
+      "id": 3,
+      "name": "believable work-life rhythm",
+      "implementation": "Day/night schedules include productive, shelter, common-hall, reading, courtyard, patrol, and social routines.",
+      "offlineStatus": "PASS",
+      "liveStatus": "DAY_NIGHT_OBSERVATION_PENDING"
+    },
+    {
+      "id": 4,
+      "name": "work in MainStreet and return home",
+      "implementation": "Each role owns a version-2 exact outbound, destination-inspection, reverse, and home-confirmation shift.",
+      "offlineStatus": "PASS",
+      "liveStatus": "POST_RELEASE_ROUTE_AND_FIVE_ROUND_TRIPS_PENDING"
+    },
+    {
+      "id": 5,
+      "name": "stop standing and stuck churn",
+      "implementation": "Task-family backoff, one-open-role-task, stale-claim maintenance, resident-aware global work, and stationary-loop detection.",
+      "offlineStatus": "PASS",
+      "liveStatus": "POST_RESTART_OBSERVER_PENDING"
+    }
+  ],
+  "codeImprovements": [
+    {
+      "id": 1,
+      "name": "resident identity resolution",
+      "source": "src/town/ResidentIdentity.ts",
+      "status": "PASS",
+      "tests": "4/4"
+    },
+    {
+      "id": 2,
+      "name": "role-owned schedule rotation and family backoff",
+      "source": "src/town/ScheduleManager.ts + src/voyager/BlackboardManager.ts",
+      "status": "PASS",
+      "tests": "8/8"
+    },
+    {
+      "id": 3,
+      "name": "bounded LLM-independent civic round trips",
+      "source": "src/control/CivicMobility.ts + src/voyager/CivicShiftCode.ts + src/voyager/VoyagerLoop.ts",
+      "status": "PASS",
+      "tests": "13/13"
+    },
+    {
+      "id": 4,
+      "name": "generated-code sandbox parity",
+      "source": "src/voyager/CodeExecutor.ts",
+      "status": "PASS",
+      "tests": "4/4"
+    },
+    {
+      "id": 5,
+      "name": "worker generation and global lifecycle safety",
+      "source": "src/worker/WorkerHandle.ts + src/bot/BotManager.ts + src/index.ts",
+      "status": "PASS",
+      "tests": "3/3"
+    }
+  ],
+  "newFindingsClosed": [
+    {
+      "id": "CIT-RECHECK-001",
+      "finding": "Civic shift was outbound-only and ignored destination activity.",
+      "resolution": "Version-2 deterministic outbound/inspection/reverse/home executor; version-1 one-way tasks are rejected."
+    },
+    {
+      "id": "CIT-RECHECK-002",
+      "finding": "Observer accepted outward progress and did not prove destination plus return.",
+      "resolution": "Observer now requires sampled departure, destination, return, deterministic executor, and successful task outcome for each citizen."
+    },
+    {
+      "id": "CIT-RECHECK-003",
+      "finding": "Approved civic shifts were skipped when no ActionAgent/LLM existed and could enter semantic skill/rewrite paths.",
+      "resolution": "Civic code is selected before the ActionAgent guard and bypasses semantic skill lookup, save, and LLM retry rewriting."
+    },
+    {
+      "id": "CIT-RECHECK-004",
+      "finding": "A new worker generation could remain RUNNING forever before its first heartbeat.",
+      "resolution": "Startup generation age is measured from startedAt and participates in watchdog replacement."
+    },
+    {
+      "id": "CIT-RECHECK-005",
+      "finding": "The post-restart auditor embedded the old route hashes, preventing safe evidence-driven regeneration.",
+      "resolution": "It now validates the canonical report's internal SHA-256, exact path cardinality, every forward/reverse segment, hazards, and exact persisted activation."
+    }
+  ],
+  "routeReleaseInteraction": {
+    "status": "POST_RELEASE_ROUTE_REVALIDATION_REQUIRED",
+    "evidence": "data/runtime-audits/citizen-route-town-expansion-intersection-20260728T130825Z.json",
+    "oldExactPathCells": 498,
+    "uniqueOldRouteCellsTouched": 262,
+    "supportCellsTouched": 197,
+    "feetCellsTouched": 86,
+    "headCellsTouched": 22,
+    "secondHeadCellsTouched": 22,
+    "oldActivationMayBeUsedAfterRelease": false
+  },
+  "verification": {
+    "focusedFiles": 13,
+    "testsPassed": 60,
+    "testsFailed": 0,
+    "typescriptBuild": "PASS",
+    "databaseIntegrity": {
+      "data/town.db": "ok",
+      "data/world-map.db": "ok"
+    },
+    "mutations": {
+      "minecraft": false,
+      "service": false,
+      "config": false,
+      "database": false
+    }
+  },
+  "sourceSha256": {
+    "src/town/ScheduleManager.ts": "791eef3d6044ae3a358543dfcc221650616ab52177eb3ee5905c73aaffcbce8b",
+    "src/voyager/CivicShiftCode.ts": "e862e913c0021c8b3f6a15acaefec76733f22e203794b56cce0ff5771f61dd4f",
+    "src/voyager/VoyagerLoop.ts": "57fec774f4949a3222b976bf196b0cd5a9d4bb6964c202df00e112e967a0d77d",
+    "src/worker/WorkerHandle.ts": "dba6d74b2137c0152f5209302ca11ce7adbe5dd4940300f714227e8b3fd1262a",
+    "scripts/audit_citizen_post_restart.mjs": "6329c4dc226fb712a272ca09e27c2682e6ced8b8d0fbb85953b509b588779f30"
+  },
+  "requiredNextGate": [
+    "Accept or compensate the atomic Town Expansion transaction.",
+    "Capture the immutable post-release snapshot.",
+    "Regenerate and pass the internally hashed offline citizen route survey.",
+    "Pass the live no-dig bidirectional route audit.",
+    "Atomically refresh all five corridor and shift contracts.",
+    "Start only mc-fleet-bot.service through systemd.",
+    "Pass the read-only 45-minute post-restart observer."
+  ]
+}

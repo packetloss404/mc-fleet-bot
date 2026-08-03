@@ -1,0 +1,697 @@
+{
+  "schemaVersion": 2,
+  "id": "town-expansion-r1-post-release-qa",
+  "packageId": "town-expansion-r1-2026-07-28",
+  "generatedAtUtc": "2026-07-28T21:09:35.084Z",
+  "status": "PASS",
+  "passed": true,
+  "readOnly": true,
+  "liveWorldMutated": false,
+  "databaseMutated": false,
+  "artifacts": {
+    "forward": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.txt",
+      "bytes": 41485255,
+      "sha256": "1a10954b1ae6ae702dcc01cd92d39adbb3820e3feff5461f3caa1283a578b896"
+    },
+    "rollback": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.rollback.txt",
+      "bytes": 40855309,
+      "sha256": "1edf4d1004ce5ff59b5c15cb8f1d16ea9de04f52b47a68aad7f0828a58ab88de"
+    },
+    "designReport": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.report.json",
+      "bytes": 1681924,
+      "sha256": "d855d0072a213c27ebedc2b36ec53761363568e9de963650a8563a9179d81930"
+    },
+    "manifest": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.manifest.json",
+      "bytes": 24479,
+      "sha256": "3073ef269d07f720ef62708b1f673d179a5f641fd19856b61f19e2eae4e78510"
+    },
+    "transaction": {
+      "path": "data/world-review/town-expansion-r1-atomic-transaction-full-source-restored-retry-20260728.json",
+      "bytes": 4881332,
+      "sha256": "042f445b097f52fbba795e59072084df8cbe60527e85330b3b6e7cb3902d3ec3"
+    },
+    "liveEntityGate": {
+      "path": "data/world-review/town-expansion-r1-live-entity-gate-full-source-restored-retry-frozen-20260728.json",
+      "bytes": 3783799,
+      "sha256": "a3c6ecad77892968ef8f7b5c6c7e42575e12df1fa165d4853c199d283a4327d5"
+    },
+    "rollbackPoststatePreflight": {
+      "path": "data/world-review/town-expansion-r1-base-rollback-policy-preflight-carpet-recovered-logical-source-20260728.json",
+      "bytes": 1490021,
+      "sha256": "dbae24353312cc4dd24a34618975706c0cc002e239ae0f5f32d480c909c8d730"
+    },
+    "naturalStateTransitionPolicy": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.rollback-natural-transition-policy-carpet-recovered-logical-source.json",
+      "bytes": 320382,
+      "sha256": "d2d3529f9f7a932a843a8583136df83b5cd2ca33ab08830334e554ec807e858a"
+    },
+    "sourceEquivalencePreflight": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.prerelease-preflight.json",
+      "bytes": 5571,
+      "sha256": "f4b7c90d89445c1a474dfdcec504528794f982267b70d0dec6865ce7036a1b22"
+    },
+    "routeQa": {
+      "path": "data/world-review/town-expansion-terminal-as-built-route-qa-20260728T1839Z.json",
+      "bytes": 873832,
+      "sha256": "a3c16f23167c668e4c3833cc4662f0829c0c096fccf2f223a42bd9b4d1ac99e7"
+    },
+    "mediaReport": {
+      "path": "data/world-review/town-expansion-r1-post-release-media-2026-07-28.json",
+      "bytes": 1694089,
+      "sha256": "e9a287f9c2536ae81701604bd2232262ecb04a4567606da030baf833bfa01226"
+    }
+  },
+  "snapshots": {
+    "pre": {
+      "path": "data/worldsnap-town-expansion-full-rollback-recovered-20260728T153226Z/region",
+      "sha256": "d749007d669b1f16a9d1a75dafd55d3bb92cbcc61ca49027f7337198da65865f",
+      "regionFileCount": 30,
+      "bytes": 134679863
+    },
+    "post": {
+      "path": "data/worldsnap-town-terminal-recovery-post-20260728T1839Z/region",
+      "sha256": "c39d0d67c9dec737aa5807cf5fa56a84f3c3d38d4b13d0f82599d3eb30fa6751",
+      "regionFileCount": 30,
+      "bytes": 134749182
+    },
+    "baseAcceptedPost": {
+      "path": "data/worldsnap-town-accessibility-source-restored-20260728T1735Z/region",
+      "sha256": "0a74e06adf1b0520ad24433a459346f1d65105e40b0c92da222b94b356db3218",
+      "regionFileCount": 30,
+      "bytes": 134728702
+    }
+  },
+  "releaseIdentity": {
+    "schemaVersion": 1,
+    "algorithm": "sha256(JSON.stringify(releaseIdentityWithoutSha256))",
+    "packageId": "town-expansion-r1-2026-07-28",
+    "base": {
+      "key": "town-expansion-r1",
+      "transaction": {
+        "path": "data/world-review/town-expansion-r1-atomic-transaction-full-source-restored-retry-20260728.json",
+        "bytes": 4881332,
+        "sha256": "042f445b097f52fbba795e59072084df8cbe60527e85330b3b6e7cb3902d3ec3"
+      },
+      "forward": {
+        "path": "data/buildops/town-expansion-r1-2026-07-28.txt",
+        "bytes": 41485255,
+        "sha256": "1a10954b1ae6ae702dcc01cd92d39adbb3820e3feff5461f3caa1283a578b896"
+      },
+      "rollback": {
+        "path": "data/buildops/town-expansion-r1-2026-07-28.rollback.txt",
+        "bytes": 40855309,
+        "sha256": "1edf4d1004ce5ff59b5c15cb8f1d16ea9de04f52b47a68aad7f0828a58ab88de"
+      },
+      "rollbackPoststatePreflight": {
+        "path": "data/world-review/town-expansion-r1-base-rollback-policy-preflight-carpet-recovered-logical-source-20260728.json",
+        "bytes": 1490021,
+        "sha256": "dbae24353312cc4dd24a34618975706c0cc002e239ae0f5f32d480c909c8d730"
+      },
+      "naturalStateTransitionPolicy": {
+        "path": "data/buildops/town-expansion-r1-2026-07-28.rollback-natural-transition-policy-carpet-recovered-logical-source.json",
+        "bytes": 320382,
+        "sha256": "d2d3529f9f7a932a843a8583136df83b5cd2ca33ab08830334e554ec807e858a"
+      },
+      "sourceEquivalencePreflight": {
+        "path": "data/buildops/town-expansion-r1-2026-07-28.prerelease-preflight.json",
+        "bytes": 5571,
+        "sha256": "f4b7c90d89445c1a474dfdcec504528794f982267b70d0dec6865ce7036a1b22"
+      },
+      "acceptedPostSnapshot": {
+        "path": "data/worldsnap-town-accessibility-source-restored-20260728T1735Z/region",
+        "sha256": "0a74e06adf1b0520ad24433a459346f1d65105e40b0c92da222b94b356db3218",
+        "regionFileCount": 30,
+        "bytes": 134728702
+      }
+    },
+    "supplements": [
+      {
+        "index": 0,
+        "key": "town-expansion-r1-accessibility-repair",
+        "transaction": {
+          "path": "data/world-review/town-expansion-r1-accessibility-repair-atomic-transaction-attempt2-20260728.json",
+          "bytes": 1966,
+          "sha256": "06a4a66570d19f8a231a6adcb281b43ac957320cca1ccdcabc983bc989492cca"
+        },
+        "forward": {
+          "path": "data/buildops/town-expansion-r1-accessibility-repair-2026-07-28.txt",
+          "bytes": 199674,
+          "sha256": "b042a63f6947554b701db0a56e970ef9054e5941a7c979f8c3f761d93d11cc3b"
+        },
+        "rollback": {
+          "path": "data/buildops/town-expansion-r1-accessibility-repair-2026-07-28.rollback.txt",
+          "bytes": 137384,
+          "sha256": "7e0043ef2f15060a5c6f6abcf0abc14efbd46039b5ce8b5fc3a324eea5f558f9"
+        },
+        "execution": {
+          "path": "data/buildops/town-expansion-r1-accessibility-repair-attempt2-2026-07-28.execution.json",
+          "bytes": 1608958,
+          "sha256": "19f7e5d9df7710f7577d150611a867b8d5f53993d5c5974b24485bef85dba6f8"
+        },
+        "sourcePreflight": {
+          "path": "data/world-review/town-expansion-r1-accessibility-repair-independent-preflight-attempt2-20260728.json",
+          "bytes": 5639,
+          "sha256": "784a71570d33cc37fb8c26ca2525becbf50f416e97ca27766f5a94cb6bd47f65"
+        },
+        "liveEntityGate": {
+          "path": "data/world-review/town-expansion-r1-accessibility-repair-live-entity-gate-attempt2-20260728.json",
+          "bytes": 33537,
+          "sha256": "f1d7ad63ac499c2bc039a41328654587d9ea83d9b1fdca35f5d9e183934bd142"
+        },
+        "rollbackPoststatePreflight": {
+          "path": "data/world-review/town-expansion-r1-accessibility-repair-attempt2-rollback-poststate-preflight-20260728.json",
+          "bytes": 5653,
+          "sha256": "b1a8d23ec3668819c19f02671483a679709f7cab81c00f68a7c07a6d4f5edae4"
+        },
+        "sourceSnapshot": {
+          "path": "data/worldsnap-town-accessibility-source-restored-20260728T1735Z/region",
+          "sha256": "0a74e06adf1b0520ad24433a459346f1d65105e40b0c92da222b94b356db3218",
+          "regionFileCount": 30,
+          "bytes": 134728702
+        },
+        "postSnapshot": {
+          "path": "data/worldsnap-town-accessibility-postrelease-attempt2-20260728T1743Z/region",
+          "sha256": "16bd79f513dd4f93091fb2c9c669fae4bb126617d298035ee17462ca0a6b838a",
+          "regionFileCount": 30,
+          "bytes": 134728702
+        },
+        "operationCount": 1526,
+        "exactBijection": {
+          "passed": true,
+          "forwardReplGroups": 1526,
+          "rollbackReplGroups": 1526,
+          "forwardCommands": 0,
+          "rollbackCommands": 0,
+          "forwardCellSteps": 1526,
+          "rollbackCellSteps": 1526,
+          "uniqueTargetCells": 1526,
+          "repeatedForwardCellSteps": 0,
+          "failures": []
+        },
+        "checks": {
+          "committed": true,
+          "packageHashes": true,
+          "exactInverse": true,
+          "execution": true,
+          "sourcePreflight": true,
+          "entityGate": true,
+          "rollbackPreflight": true
+        }
+      },
+      {
+        "index": 1,
+        "key": "citizen-route-leaf-clearance",
+        "transaction": {
+          "path": "data/world-review/citizen-route-live-walk-leaf-clearance-atomic-transaction-20260728.json",
+          "bytes": 1819,
+          "sha256": "9a91d74795a940d47b5bbbd73efb9b3d8967ffbc6804e3523b8500cf8294599a"
+        },
+        "forward": {
+          "path": "data/buildops/citizen-route-live-walk-leaf-clearance-repair-2026-07-28.txt",
+          "bytes": 337,
+          "sha256": "9bc207d89c7243eccf50dfb1e1251c06411c85e1e1641c682afcae53792eb64b"
+        },
+        "rollback": {
+          "path": "data/buildops/citizen-route-live-walk-leaf-clearance-repair-2026-07-28.rollback.txt",
+          "bytes": 180,
+          "sha256": "969fe369ca64d2bfcd9aeb9e92504ef6f6125039ee45e42fc07d778bb778700c"
+        },
+        "execution": {
+          "path": "data/buildops/citizen-route-live-walk-leaf-clearance-repair-2026-07-28.execution.json",
+          "bytes": 11920,
+          "sha256": "9fe684586b1cbb6095cb93c2cf9dd86ba7f5541195303a4684b5d06cb94f09d3"
+        },
+        "sourcePreflight": {
+          "path": "data/world-review/citizen-route-live-walk-leaf-clearance-repair-preflight-postaccessibility-20260728.json",
+          "bytes": 5640,
+          "sha256": "6176e3db11ca666e382b3ca0cf1556a32cb8816add5635bce5abd4d27de9c751"
+        },
+        "liveEntityGate": {
+          "path": "data/world-review/citizen-route-live-walk-leaf-clearance-repair-entity-gate-postaccessibility-20260728.json",
+          "bytes": 14816,
+          "sha256": "d938279f7aab6e813d476bb262dd82a12f7773b5f302fbe4d4da6b58178a6ad6"
+        },
+        "rollbackPoststatePreflight": {
+          "path": "data/world-review/citizen-route-live-walk-leaf-clearance-repair-rollback-poststate-preflight-20260728.json",
+          "bytes": 5642,
+          "sha256": "8faf082225bb30c805ad29bf822d5c41600dd8e449e782c7222982987d3fb1c4"
+        },
+        "sourceSnapshot": {
+          "path": "data/worldsnap-town-accessibility-postrelease-attempt2-20260728T1743Z/region",
+          "sha256": "16bd79f513dd4f93091fb2c9c669fae4bb126617d298035ee17462ca0a6b838a",
+          "regionFileCount": 30,
+          "bytes": 134728702
+        },
+        "postSnapshot": {
+          "path": "data/worldsnap-town-accessibility-citizen-final-20260728T1745Z/region",
+          "sha256": "71f52acf04f4974557fcc23e7cb02d81d76ed17cbab41bcc78ff9846cba1045d",
+          "regionFileCount": 30,
+          "bytes": 134728702
+        },
+        "operationCount": 1,
+        "exactBijection": {
+          "passed": true,
+          "forwardReplGroups": 1,
+          "rollbackReplGroups": 1,
+          "forwardCommands": 0,
+          "rollbackCommands": 0,
+          "forwardCellSteps": 1,
+          "rollbackCellSteps": 1,
+          "uniqueTargetCells": 1,
+          "repeatedForwardCellSteps": 0,
+          "failures": []
+        },
+        "checks": {
+          "committed": true,
+          "packageHashes": true,
+          "exactInverse": true,
+          "execution": true,
+          "sourcePreflight": true,
+          "entityGate": true,
+          "rollbackPreflight": true
+        }
+      },
+      {
+        "index": 2,
+        "key": "town-expansion-terminal-provenance-and-ridge-recovery-atomic-2026-07-28",
+        "kind": "committed-atomic-supplemental-group",
+        "transaction": {
+          "path": "data/world-review/town-expansion-terminal-provenance-and-ridge-recovery-committed-supplement-20260728T1839Z.json",
+          "bytes": 4315,
+          "sha256": "b04ad4165449659d4233aa5e67c1490daf9a17ff6b65cbf41161b97532b584dc"
+        },
+        "atomicTransaction": {
+          "path": "data/world-review/town-expansion-terminal-provenance-and-ridge-recovery-atomic-transaction-20260728T1838Z.json",
+          "bytes": 54928,
+          "sha256": "26d6bf1f20d81c333ab18cd1662581f6e94dab283827dfb4683f879bb0b36267"
+        },
+        "provenanceBridge": {
+          "path": "data/world-review/town-expansion-terminal-recovery-source-provenance-bridge-20260728T1839Z.json",
+          "bytes": 2840,
+          "sha256": "d433d1cd04dbf42e3626cd5d0ce559411d996d49c8cf81552f7da529f3e40ee7"
+        },
+        "releaseManifest": {
+          "path": "data/buildops/town-expansion-terminal-provenance-and-ridge-recovery-2026-07-28.manifest.json",
+          "bytes": 621,
+          "sha256": "39775e6495a44892d04584176a3afa6d33d7c8c38e080fcd8501b50b76d64bd9"
+        },
+        "liveEntityGate": {
+          "path": "data/world-review/town-expansion-terminal-recovery-live-entity-gate-20260728T1838Z.json",
+          "bytes": 22590,
+          "sha256": "4c21b419ce53df6a112d1f5b6688b912c5616da4ce2d68248f481617a6990c78"
+        },
+        "sourceSnapshot": {
+          "path": "data/worldsnap-town-accessibility-citizen-final-20260728T1745Z/region",
+          "sha256": "71f52acf04f4974557fcc23e7cb02d81d76ed17cbab41bcc78ff9846cba1045d",
+          "regionFileCount": 30,
+          "bytes": 134728702
+        },
+        "physicalSourceSnapshot": {
+          "path": "data/worldsnap-town-terminal-recovery-pre-20260728T1837Z/region",
+          "sha256": "8d2a7816ce142db91f274320e5b4405b9d9a0a3ecd3ce2357f591f8fe6fce19b",
+          "regionFileCount": 30,
+          "bytes": 134749182
+        },
+        "postSnapshot": {
+          "path": "data/worldsnap-town-terminal-recovery-post-20260728T1839Z/region",
+          "sha256": "c39d0d67c9dec737aa5807cf5fa56a84f3c3d38d4b13d0f82599d3eb30fa6751",
+          "regionFileCount": 30,
+          "bytes": 134749182
+        },
+        "packageCount": 2,
+        "operationCount": 57,
+        "packages": [
+          {
+            "index": 0,
+            "key": "red-carpet-source-recovery",
+            "forward": {
+              "path": "data/buildops/town-expansion-r1-red-carpet-source-recovery-2026-07-28.txt",
+              "bytes": 3940,
+              "sha256": "bbbc0e74ebaa857d5a235535d68d069df73bd1b81516aef4495352fa54be4b16"
+            },
+            "rollback": {
+              "path": "data/buildops/town-expansion-r1-red-carpet-source-recovery-2026-07-28.rollback.txt",
+              "bytes": 3486,
+              "sha256": "e2f49273472cd0a16c34aba4407bde6ed0b2494eec38cd1c3b569cc260192a64"
+            },
+            "logicalSourcePreflight": {
+              "path": "data/world-review/town-expansion-r1-red-carpet-source-recovery-terminal-preflight-20260728.json",
+              "bytes": 5634,
+              "sha256": "f7cbd0d1be6330c255c3dd188cd8758953b1d84d859f4c6e6b2023584ee49a72"
+            },
+            "sourcePreflight": {
+              "path": "data/buildops/town-expansion-r1-red-carpet-source-recovery-2026-07-28.prerelease-preflight.json",
+              "bytes": 5692,
+              "sha256": "18621867d59a4a3735771350c1fe694ac8e0f61d521ce10375b107eb7e4fcc86"
+            },
+            "execution": {
+              "path": "data/buildops/town-expansion-r1-red-carpet-source-recovery-2026-07-28.execution.json",
+              "bytes": 56328,
+              "sha256": "214bb8c145ada4c1edd281dd15bbd983084c04a7e1dfa1ba0bf6a5f9bc0a65a0"
+            },
+            "rollbackPoststatePreflight": {
+              "path": "data/world-review/town-expansion-r1-red-carpet-source-recovery-rollback-poststate-preflight-20260728T1839Z.json",
+              "bytes": 5702,
+              "sha256": "bfb780723fd5fa30882bdbb1580253d28a7991764ab0d42613d0617130b75390"
+            },
+            "operationCount": 49,
+            "exactBijection": {
+              "passed": true,
+              "forwardReplGroups": 49,
+              "rollbackReplGroups": 49,
+              "forwardCommands": 0,
+              "rollbackCommands": 0,
+              "forwardCellSteps": 49,
+              "rollbackCellSteps": 49,
+              "uniqueTargetCells": 49,
+              "repeatedForwardCellSteps": 0,
+              "failures": []
+            },
+            "checks": {
+              "committed": true,
+              "packageHashes": true,
+              "exactInverse": true,
+              "operationCount": true,
+              "sourceEquivalence": true,
+              "execution": true,
+              "rollbackPreflight": true,
+              "entityGate": true,
+              "atomicPackage": true,
+              "manifestPackage": true,
+              "bridgePackage": true,
+              "noCrossPackageTargetOverlap": true
+            }
+          },
+          {
+            "index": 1,
+            "key": "citizen-ridge-stair-repair",
+            "forward": {
+              "path": "data/buildops/citizen-route-ridge-stair-repair-2026-07-28.txt",
+              "bytes": 1308,
+              "sha256": "3861a63b00ec0108fac133dec196eaf0b08807027bd461fcd7e2b2b012fef797"
+            },
+            "rollback": {
+              "path": "data/buildops/citizen-route-ridge-stair-repair-2026-07-28.rollback.txt",
+              "bytes": 1224,
+              "sha256": "2ca28368800ab72817251871ee65ff170f4a384de38948e4abbbe1009bc9f66b"
+            },
+            "logicalSourcePreflight": {
+              "path": "data/world-review/citizen-route-ridge-stair-repair-source-preflight-20260728.json",
+              "bytes": 5616,
+              "sha256": "caa41fc89948b823274325c80536715b09ed3f31243136ca45a25a142cc6b875"
+            },
+            "sourcePreflight": {
+              "path": "data/buildops/citizen-route-ridge-stair-repair-2026-07-28.prerelease-preflight.json",
+              "bytes": 5674,
+              "sha256": "458a5345f372545397ac4541d1c3697d01e7dbda3988edeab143e403570173e0"
+            },
+            "execution": {
+              "path": "data/buildops/citizen-route-ridge-stair-repair-2026-07-28.execution.json",
+              "bytes": 20426,
+              "sha256": "38002ca6fcbdae93540e57821b1cf8bf437a28a30e3e6374cf785c45cf284ef1"
+            },
+            "rollbackPoststatePreflight": {
+              "path": "data/world-review/citizen-route-ridge-stair-repair-rollback-poststate-preflight-20260728T1839Z.json",
+              "bytes": 5684,
+              "sha256": "6bc8d3dea2b897aa8ce338fdca29fe8dee3d32422fd165e1d444e23c8d001671"
+            },
+            "operationCount": 8,
+            "exactBijection": {
+              "passed": true,
+              "forwardReplGroups": 8,
+              "rollbackReplGroups": 8,
+              "forwardCommands": 0,
+              "rollbackCommands": 0,
+              "forwardCellSteps": 8,
+              "rollbackCellSteps": 8,
+              "uniqueTargetCells": 8,
+              "repeatedForwardCellSteps": 0,
+              "failures": []
+            },
+            "checks": {
+              "committed": true,
+              "packageHashes": true,
+              "exactInverse": true,
+              "operationCount": true,
+              "sourceEquivalence": true,
+              "execution": true,
+              "rollbackPreflight": true,
+              "entityGate": true,
+              "atomicPackage": true,
+              "manifestPackage": true,
+              "bridgePackage": true,
+              "noCrossPackageTargetOverlap": true
+            }
+          }
+        ],
+        "checks": {
+          "committed": true,
+          "sourceIdentities": true,
+          "declaredArtifactHashes": true,
+          "provenanceBridge": true,
+          "atomicTransaction": true,
+          "releaseManifest": true,
+          "entityGate": true
+        }
+      }
+    ],
+    "terminalPostSnapshot": {
+      "path": "data/worldsnap-town-terminal-recovery-post-20260728T1839Z/region",
+      "sha256": "c39d0d67c9dec737aa5807cf5fa56a84f3c3d38d4b13d0f82599d3eb30fa6751",
+      "regionFileCount": 30,
+      "bytes": 134749182
+    },
+    "sha256": "a5e61258c0c4348558f2cf46b8d09b380885e019108f2cbbf462300590d1d18a"
+  },
+  "totals": {
+    "packages": 5,
+    "supplementalPackages": 4,
+    "supplementalTransactions": 3,
+    "uniqueTargetCells": 3665580,
+    "forwardReplGroups": 483016,
+    "rollbackReplGroups": 483016,
+    "forwardCommands": 1660,
+    "rollbackCommands": 1619,
+    "forwardCellSteps": 3690342,
+    "rollbackCellSteps": 3690342,
+    "repeatedForwardCellSteps": 24762,
+    "routeTests": 22,
+    "mediaCaptures": 1178,
+    "mediaRequired": true
+  },
+  "exactBijection": {
+    "passed": true,
+    "forwardReplGroups": 483016,
+    "rollbackReplGroups": 483016,
+    "forwardCommands": 1660,
+    "rollbackCommands": 1619,
+    "forwardCellSteps": 3690342,
+    "rollbackCellSteps": 3690342,
+    "uniqueTargetCells": 3665580,
+    "repeatedForwardCellSteps": 24762,
+    "failures": []
+  },
+  "gates": [
+    {
+      "id": "design-report-and-manifest-hashes",
+      "passed": true,
+      "details": {
+        "manifestPackageId": "town-expansion-r1-2026-07-28",
+        "reportPackageId": "town-expansion-r1-2026-07-28",
+        "forwardSha256": "1a10954b1ae6ae702dcc01cd92d39adbb3820e3feff5461f3caa1283a578b896",
+        "rollbackSha256": "1edf4d1004ce5ff59b5c15cb8f1d16ea9de04f52b47a68aad7f0828a58ab88de",
+        "manifestChecks": 6,
+        "requiredDesignChecks": 8
+      }
+    },
+    {
+      "id": "exact-forward-rollback-target-bijection",
+      "passed": true,
+      "details": {
+        "uniqueTargetCells": 3665580,
+        "expectedTargetCells": 3665580,
+        "forwardReplGroups": 483016,
+        "rollbackReplGroups": 483016,
+        "repeatedForwardCellSteps": 24762,
+        "ownerTargetCells": 3665580,
+        "mismatchCount": 0
+      }
+    },
+    {
+      "id": "base-source-state-equivalence-bound",
+      "passed": true,
+      "details": {
+        "mode": "complete-source-equivalence-preflight",
+        "required": true,
+        "supplied": true,
+        "directSourceSnapshotIdentity": false,
+        "proofPassed": true,
+        "proofPath": "data/buildops/town-expansion-r1-2026-07-28.prerelease-preflight.json",
+        "proofSha256": "f4b7c90d89445c1a474dfdcec504528794f982267b70d0dec6865ce7036a1b22",
+        "transactionPreSha256": "d749007d669b1f16a9d1a75dafd55d3bb92cbcc61ca49027f7337198da65865f",
+        "transactionDeclaredPreSha256": null,
+        "designPreSha256": "de807a2d4a1cb597bd259d55d1d7c0cda8b710af5017497e75660c8a976603f5",
+        "manifestPreSha256": "de807a2d4a1cb597bd259d55d1d7c0cda8b710af5017497e75660c8a976603f5",
+        "operationCount": 483016,
+        "expectedOperationCount": 483016,
+        "passed": 483016,
+        "failed": 0,
+        "failurePointsComplete": true,
+        "partialMasks": 0,
+        "projectionDependencyFailures": 0,
+        "projectedSourceState": false,
+        "orderAwareProjection": true
+      }
+    },
+    {
+      "id": "immutable-snapshot-identities",
+      "passed": true,
+      "details": {
+        "preSha256": "d749007d669b1f16a9d1a75dafd55d3bb92cbcc61ca49027f7337198da65865f",
+        "basePostSha256": "0a74e06adf1b0520ad24433a459346f1d65105e40b0c92da222b94b356db3218",
+        "postSha256": "c39d0d67c9dec737aa5807cf5fa56a84f3c3d38d4b13d0f82599d3eb30fa6751",
+        "preRegionFiles": 30,
+        "basePostRegionFiles": 30,
+        "postRegionFiles": 30,
+        "transactionPostIdentityPresent": false,
+        "transactionPreIdentityExact": true,
+        "supplementalTransactions": 3,
+        "directSourceSnapshotIdentity": false,
+        "sourceEquivalenceRequired": true,
+        "sourceEquivalenceProofPassed": true
+      }
+    },
+    {
+      "id": "atomic-transaction-committed",
+      "passed": true,
+      "details": {
+        "transactionId": "town-expansion-r1-2026-07-28-fresh-snapshot",
+        "status": "committed-pending-post-qa",
+        "packageCount": 1,
+        "packageStatus": "committed",
+        "strictNoop": true,
+        "failedGroups": 0,
+        "failedCommands": 0,
+        "committedEvent": true
+      }
+    },
+    {
+      "id": "live-entity-gate-pass",
+      "passed": true,
+      "details": {
+        "schemaVersion": 2,
+        "status": "PASS",
+        "packageCount": 1,
+        "blockers": 0,
+        "queryErrors": 0,
+        "mutation": false,
+        "cleanupChecksPresent": 5,
+        "schemaTwoForceLoadPassed": true
+      }
+    },
+    {
+      "id": "rollback-natural-transition-policy-bound",
+      "passed": true,
+      "details": {
+        "policySha256": "d2d3529f9f7a932a843a8583136df83b5cd2ca33ab08830334e554ec807e858a",
+        "rollbackSha256": "1edf4d1004ce5ff59b5c15cb8f1d16ea9de04f52b47a68aad7f0828a58ab88de",
+        "snapshotSha256": "0a74e06adf1b0520ad24433a459346f1d65105e40b0c92da222b94b356db3218",
+        "expectedBasePostSha256": "0a74e06adf1b0520ad24433a459346f1d65105e40b0c92da222b94b356db3218",
+        "ruleCount": 61,
+        "declaredPointCount": 4529,
+        "observedTransitionCells": 4529,
+        "matchMode": "exact-declared-points",
+        "propertyPolicy": "identical"
+      }
+    },
+    {
+      "id": "rollback-guards-pass-against-post-snapshot",
+      "passed": true,
+      "details": {
+        "schemaVersion": 4,
+        "operationCount": 483016,
+        "passed": 483016,
+        "failed": 0,
+        "regions": "data/worldsnap-town-accessibility-source-restored-20260728T1735Z/region",
+        "snapshotHashPresent": true,
+        "schemaTwoRollbackIdentityPassed": true,
+        "schemaThreeRollbackPreflight": true,
+        "policySha256": "d2d3529f9f7a932a843a8583136df83b5cd2ca33ab08830334e554ec807e858a",
+        "declaredPointCount": 4529,
+        "acceptedTransitionCells": 4529,
+        "unmatchedDeclaredPoints": 0
+      }
+    },
+    {
+      "id": "rollback-logical-source-overlay-bound",
+      "passed": true,
+      "details": {
+        "overlayPresent": true,
+        "overlayOperationCount": 49,
+        "overlayPlanSha256": "605b121d9ec6afb52c1d955253a5ceaab2ae3b0d3ff05b56cde3ec053080ad71",
+        "materializedSupplementalPackages": 4,
+        "failures": []
+      }
+    },
+    {
+      "id": "supplemental-release-chain-bound",
+      "passed": true,
+      "details": {
+        "supplementalTransactions": 3,
+        "validatedSupplements": 3,
+        "packageKeys": [
+          "town-expansion-r1-accessibility-repair",
+          "citizen-route-leaf-clearance",
+          "town-expansion-terminal-provenance-and-ridge-recovery-atomic-2026-07-28"
+        ],
+        "releaseIdentitySha256": "a5e61258c0c4348558f2cf46b8d09b380885e019108f2cbbf462300590d1d18a",
+        "basePostSha256": "0a74e06adf1b0520ad24433a459346f1d65105e40b0c92da222b94b356db3218",
+        "terminalPostSha256": "c39d0d67c9dec737aa5807cf5fa56a84f3c3d38d4b13d0f82599d3eb30fa6751",
+        "failureCount": 0,
+        "failures": []
+      }
+    },
+    {
+      "id": "post-release-route-qa-pass",
+      "passed": true,
+      "details": {
+        "status": "PASS",
+        "acceptanceClass": "IMMUTABLE_POST_SNAPSHOT_OFFLINE_GEOMETRY_ACCEPTED_LIVE_OBSERVATION_PENDING",
+        "projectionAbsent": true,
+        "explicitlyComplete": true,
+        "readOnlyNoMutation": true,
+        "postSnapshotDirectory": "data/worldsnap-town-terminal-recovery-post-20260728T1839Z/region",
+        "postSnapshotSha256": "c39d0d67c9dec737aa5807cf5fa56a84f3c3d38d4b13d0f82599d3eb30fa6751",
+        "immutablePostIdentityBound": true,
+        "packageHashBound": true,
+        "matchedPackageHashes": [
+          "b042a63f6947554b701db0a56e970ef9054e5941a7c979f8c3f761d93d11cc3b"
+        ],
+        "routeCount": 22,
+        "passedRoutes": 22,
+        "failedSummary": 0
+      }
+    },
+    {
+      "id": "optional-post-release-media-pass",
+      "passed": true,
+      "details": {
+        "supplied": true,
+        "status": "PASS",
+        "postSnapshotSha256": "c39d0d67c9dec737aa5807cf5fa56a84f3c3d38d4b13d0f82599d3eb30fa6751",
+        "packageHashBound": true,
+        "captures": 1178,
+        "passedCaptures": 1178
+      }
+    }
+  ],
+  "failures": [],
+  "decision": {
+    "release": "ACCEPTED",
+    "rationale": "The canonical Town Expansion R1 transaction, ordered supplemental release chain, installed snapshot, rollback guards, entity clearance, route evidence, design hashes, and supplied media evidence all pass."
+  }
+}

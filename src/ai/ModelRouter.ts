@@ -185,6 +185,19 @@ export class ModelRouter implements LLMClient {
     this.onCall = fn;
   }
 
+  /**
+   * The model a route specifies, but ONLY for the provider that route names.
+   *
+   * A route's model string is provider-specific. Applying it to a fallback
+   * provider sends e.g. `claude-haiku-4-5` to the Gemini API, which 404s —
+   * and 404 is terminal in this router, so the fallback silently never fires
+   * and the safety net looks configured while being dead. Resolve per
+   * provider inside the retry loop, never once up front.
+   */
+  private routedModelFor(route: RouteConfig | undefined, providerName: string): string | undefined {
+    return route && route.provider === providerName ? route.model : undefined;
+  }
+
   private emitCall(event: LLMCallEvent): void {
     try { this.onCall?.(event); } catch { /* swallow listener errors */ }
   }
@@ -195,8 +208,9 @@ export class ModelRouter implements LLMClient {
     maxTokens?: number,
     options?: LLMCallOptions,
   ): Promise<LLMResponse> {
-    return this.dispatch('chat', options, (client, mTokens) =>
-      client.chat(systemPrompt, contents, mTokens),
+    return this.dispatch('chat', options, (client, mTokens, modelOverride) =>
+      client.chat(systemPrompt, contents, mTokens,
+        modelOverride ? { ...(options ?? {}), model: modelOverride } : options),
       maxTokens,
     );
   }
@@ -216,12 +230,13 @@ export class ModelRouter implements LLMClient {
         if (this.isThinkingCapable(client)) {
           return client.generateWithThinking(systemPrompt, userMessage, mTokens);
         }
-        return client.generate(systemPrompt, userMessage, mTokens);
+        return client.generate(systemPrompt, userMessage, mTokens, options);
       }, maxTokens);
     }
 
-    return this.dispatch('generate', options, (client, mTokens) =>
-      client.generate(systemPrompt, userMessage, mTokens),
+    return this.dispatch('generate', options, (client, mTokens, modelOverride) =>
+      client.generate(systemPrompt, userMessage, mTokens,
+        modelOverride ? { ...(options ?? {}), model: modelOverride } : options),
       maxTokens,
     );
   }
@@ -284,7 +299,7 @@ export class ModelRouter implements LLMClient {
         const inputTokens = missTexts.join(' ').split(/\s+/).length; // rough estimate
         this.ledger.record({
           provider: name,
-          model: route?.model ?? 'embedding',
+          model: this.routedModelFor(route, name) ?? client.getModelId?.() ?? 'embedding',
           taskType: 'embed',
           botName: '',
           inputTokens,
@@ -296,7 +311,7 @@ export class ModelRouter implements LLMClient {
           id: `llm-${++this.callSeq}`,
           taskType: 'embed',
           provider: name,
-          model: route?.model ?? 'embedding',
+          model: this.routedModelFor(route, name) ?? client.getModelId?.() ?? 'embedding',
           botName: '',
           startMs: start,
           endMs: end,
@@ -314,7 +329,7 @@ export class ModelRouter implements LLMClient {
           id: `llm-${++this.callSeq}`,
           taskType: 'embed',
           provider: name,
-          model: route?.model ?? 'embedding',
+          model: this.routedModelFor(route, name) ?? client.getModelId?.() ?? 'embedding',
           botName: '',
           startMs: start,
           endMs: end,
@@ -335,7 +350,7 @@ export class ModelRouter implements LLMClient {
   private async dispatch(
     method: 'chat' | 'generate',
     options: LLMCallOptions | undefined,
-    callFn: (client: LLMClient, maxTokens?: number) => Promise<LLMResponse>,
+    callFn: (client: LLMClient, maxTokens?: number, modelOverride?: string) => Promise<LLMResponse>,
     maxTokens?: number,
   ): Promise<LLMResponse> {
     this.assertEnabled();
@@ -382,17 +397,24 @@ export class ModelRouter implements LLMClient {
       for (let attempt = 0; attempt <= PER_PROVIDER_RETRIES; attempt++) {
         const start = Date.now();
         try {
-          const response = await callFn(client, effectiveMaxTokens);
+          const routedModel = this.routedModelFor(route, providerName);
+          const response = await callFn(client, effectiveMaxTokens, routedModel);
           const end = Date.now();
           const latencyMs = end - start;
 
           this.ledger.record({
             provider: providerName,
-            model: route?.model ?? this.defaultProvider,
+            // Fall back to the client's own model ID, never to a provider
+            // name — TokenLedger prices by model ID, so recording "gemini"
+            // here made every lookup miss and every call cost $0, which in
+            // turn made the daily budget cap a no-op.
+            model: this.routedModelFor(route, providerName) ?? client.getModelId?.() ?? providerName,
             taskType: taskType as TaskType | 'unknown',
             botName,
             inputTokens: response.inputTokens ?? 0,
             outputTokens: response.outputTokens ?? 0,
+            cacheCreationInputTokens: response.cacheCreationInputTokens,
+            cacheReadInputTokens: response.cacheReadInputTokens,
             latencyMs,
             success: true,
           });
@@ -401,7 +423,11 @@ export class ModelRouter implements LLMClient {
             id: `llm-${++this.callSeq}`,
             taskType: String(taskType),
             provider: providerName,
-            model: route?.model ?? this.defaultProvider,
+            // Fall back to the client's own model ID, never to a provider
+            // name — TokenLedger prices by model ID, so recording "gemini"
+            // here made every lookup miss and every call cost $0, which in
+            // turn made the daily budget cap a no-op.
+            model: this.routedModelFor(route, providerName) ?? client.getModelId?.() ?? providerName,
             botName,
             startMs: start,
             endMs: end,
@@ -420,7 +446,11 @@ export class ModelRouter implements LLMClient {
 
           this.ledger.record({
             provider: providerName,
-            model: route?.model ?? this.defaultProvider,
+            // Fall back to the client's own model ID, never to a provider
+            // name — TokenLedger prices by model ID, so recording "gemini"
+            // here made every lookup miss and every call cost $0, which in
+            // turn made the daily budget cap a no-op.
+            model: this.routedModelFor(route, providerName) ?? client.getModelId?.() ?? providerName,
             taskType: taskType as TaskType | 'unknown',
             botName,
             inputTokens: 0,
@@ -433,7 +463,11 @@ export class ModelRouter implements LLMClient {
             id: `llm-${++this.callSeq}`,
             taskType: String(taskType),
             provider: providerName,
-            model: route?.model ?? this.defaultProvider,
+            // Fall back to the client's own model ID, never to a provider
+            // name — TokenLedger prices by model ID, so recording "gemini"
+            // here made every lookup miss and every call cost $0, which in
+            // turn made the daily budget cap a no-op.
+            model: this.routedModelFor(route, providerName) ?? client.getModelId?.() ?? providerName,
             botName,
             startMs: start,
             endMs: end,

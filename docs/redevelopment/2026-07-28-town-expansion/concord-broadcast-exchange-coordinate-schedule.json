@@ -1,0 +1,522 @@
+{
+  "schemaVersion": 1,
+  "projectId": "CBE-001",
+  "title": "Concord Broadcast Exchange",
+  "status": "FROZEN_DESIGN_NOT_GENERATED_NOT_LIVE",
+  "preparedAtUtc": "2026-07-28T00:00:00Z",
+  "sourceOfTruth": "docs/redevelopment/2026-07-28-town-expansion/concord-broadcast-exchange-source-of-truth.md",
+  "designSources": [
+    "docs/redevelopment/2026-07-28-town-expansion/concord-data-district-service-town-source-of-truth.md",
+    "docs/redevelopment/2026-07-28-town-expansion/concord-broadcast-exchange-source-of-truth.md",
+    "https://www.wbdg.org/FFC/AF/AFMAN/141389_Television_Production_Facility.pdf",
+    "https://www.wbdg.org/api/documents/media/22d1a412-54f9-4435-a023-3336124ee38b/file",
+    "https://www.access-board.gov/ada/",
+    "https://www.access-board.gov/ada/guides/chapter-4-accessible-means-of-egress/",
+    "https://archive.cdc.gov/www_cdc_gov/tobacco/secondhand-smoke/protection/ventilation.htm",
+    "https://www.faa.gov/faq/what-are-requirements-aircraft-warning-lights-tall-structures",
+    "https://www.faa.gov/documentLibrary/media/Advisory_Circular/2024-10-28_AC_70-7460-1M_Change_1_Obstruction_Marking_and_Lighting_FINAL.pdf",
+    "https://www.osha.gov/communication-towers",
+    "https://www.nasa.gov/smallsat-institute/sst-soa/ground-data-systems-and-mission-operations/"
+  ],
+  "contentBoundary": {
+    "adultProgram": "Tasteful, non-graphic architecture and furniture silhouettes only; no figures, depicted acts, explicit images, body-part motifs, or explicit signs.",
+    "cannabisProgram": "Fictional botanical retail and placemaking only; no real license, product, sale, consumption instruction, or Iowa legality claim.",
+    "smokeControl": "All enclosed rooms are smoke-free. The only represented consumption place is the roofless, open-to-sky B1 sunken garden; no smoke, fire, or particle blocks are introduced."
+  },
+  "sourceSnapshot": {
+    "directory": "data/worldsnap-town-expansion-expanded-baseline-20260728T0405Z/region",
+    "sha256": "e612b1feabcf8bd81e427804e0c5cdccea5aac79ef543cadbf2b05d360de7a5a",
+    "readOnly": true,
+    "liveWorldMutated": false
+  },
+  "districtInterfaces": {
+    "concordProvisionalBounds": [650, 25, -425, 808, 100, -330],
+    "broadcastExchangeReservation": [680, 25, -425, 730, 150, -350],
+    "publicArrivalDirection": "west toward the x640 campus-road interface",
+    "serviceArrivalDirection": "east",
+    "independentEgressDirections": ["north", "south"],
+    "doNotConnect": [
+      "Ravensgate",
+      "Worker Town owner corridor",
+      "Gilded Raven owner corridor",
+      "inactive portal rooms",
+      "future owner-city reservation"
+    ],
+    "protectedConcordBeehiveCenter": [759, 69, -340],
+    "protectedConcordBeehiveNoTargetRadiusBlocks": 5,
+    "satelliteNoEntertainmentNoLodgingBuffer": [733, 60, -429, 773, 90, -386]
+  },
+  "survey": {
+    "main": {
+      "bounds": [680, 25, -425, 715, 100, -350],
+      "groundYRange": [56, 66],
+      "fluidCells": 0,
+      "lavaCells": 0,
+      "bubbleColumnCells": 0,
+      "blockEntities": 0,
+      "gravityCells": 1452
+    },
+    "tower": {
+      "bounds": [717, 25, -425, 730, 150, -411],
+      "groundYRange": [62, 64],
+      "fluidCells": 0,
+      "lavaCells": 0,
+      "bubbleColumnCells": 0,
+      "blockEntities": 0,
+      "gravityCells": 132
+    },
+    "openGarden": {
+      "bounds": [717, 25, -380, 730, 100, -352],
+      "groundYRange": [55, 64],
+      "fluidCells": 0,
+      "lavaCells": 0,
+      "bubbleColumnCells": 0,
+      "blockEntities": 0,
+      "gravityCells": 149
+    },
+    "satellitePad": {
+      "bounds": [737, 25, -425, 769, 100, -390],
+      "groundYRange": [63, 65],
+      "fluidCellsY25To100": 169,
+      "fullColumnWaterBounds": [737, 0, -404, 766, 45, -390],
+      "fullColumnWaterCells": 935,
+      "lavaCells": 0,
+      "bubbleColumnCells": 0,
+      "blockEntities": 0,
+      "gravityCells": 481,
+      "bindingRule": "Surface-only work at y62 or above. No basement, trench, deep footing, drain, or buried conduit."
+    }
+  },
+  "levelDatums": [
+    {"level": "B2", "floorY": 41, "clearY": [42, 51], "program": "non-graphic set labs and production support"},
+    {"level": "B1", "floorY": 53, "clearY": [54, 63], "program": "Night Market, cabaret halls, coffee/botanical rooms and open garden"},
+    {"level": "G0", "floorY": 65, "clearY": [66, 72], "program": "ordinary frontage, podcast and first production bank"},
+    {"level": "G1", "floorY": 74, "clearY": [75, 82], "program": "creator recreation and second production bank"},
+    {"level": "ROOF", "floorY": 83, "clearY": [84, 88], "program": "screened plant and cable gallery"},
+    {"level": "TOWER", "floorY": 64, "clearY": [65, 145], "program": "lattice tower and four maintenance decks"}
+  ],
+  "siteObjects": [
+    {
+      "objectId": "CBE-SHELL-001",
+      "name": "Broadcast Exchange main shell",
+      "bounds": [680, 38, -425, 715, 84, -350],
+      "program": "two stories over two basements",
+      "materials": ["red_brick", "brown_terracotta", "dressed_stone", "oxidized_copper", "dark_oak", "deepslate"],
+      "status": "planned",
+      "cameraIds": ["CBE-CAM-001", "CBE-CAM-018"]
+    },
+    {
+      "objectId": "CBE-SERVICE-001",
+      "name": "East service/loading lane",
+      "bounds": [716, 63, -410, 730, 68, -382],
+      "program": "loading, freight-lift interface and tower service",
+      "materials": ["stone_pavers", "brick_screen", "copper_canopy", "planted_buffer"],
+      "status": "planned",
+      "cameraIds": ["CBE-CAM-015"]
+    },
+    {
+      "objectId": "CBE-GARDEN-001",
+      "name": "Open-to-sky sunken garden",
+      "bounds": [717, 53, -380, 730, 64, -352],
+      "program": "roofless B1 seating garden",
+      "capacity": {"seats": 24, "staffStations": 0},
+      "materials": ["stone_terraces", "brick_retaining_walls", "planters", "warm_low_lights", "benches"],
+      "prohibited": ["roof", "smoke_particles", "fire", "campfire", "lava", "recirculating_air_claim"],
+      "status": "planned",
+      "cameraIds": ["CBE-CAM-010"]
+    },
+    {
+      "objectId": "CBE-TOWER-001",
+      "name": "Concord landmark broadcast tower",
+      "bounds": [717, 64, -425, 730, 145, -411],
+      "program": "lit fictional lattice broadcast landmark",
+      "materials": ["iron_lattice", "weathered_copper", "stone_base", "red_warning_light_analogue"],
+      "complianceBoundary": "Visual prompt only; no real FAA/FCC/RF compliance claim or operating frequency.",
+      "status": "planned",
+      "cameraIds": ["CBE-CAM-013", "CBE-CAM-018"]
+    },
+    {
+      "objectId": "CBE-SAT-001",
+      "name": "Concord satellite maintenance pad",
+      "bounds": [737, 62, -425, 769, 78, -390],
+      "program": "surface-only fenced nine-dish field, shelter and apron",
+      "materials": ["shallow_stone_apron", "iron_fence", "white_quartz_dishes", "copper_equipment_shelter"],
+      "protectedSubsurfaceWater": true,
+      "minimumTargetY": 62,
+      "status": "planned",
+      "cameraIds": ["CBE-CAM-014"]
+    }
+  ],
+  "verticalCirculation": [
+    {
+      "objectId": "CBE-CORE-NP-001",
+      "name": "North public stair/lift/refuge core",
+      "bounds": [692, 41, -424, 697, 83, -417],
+      "levels": ["B2", "B1", "G0", "G1", "ROOF"],
+      "clearWalkingWidthBlocks": 4,
+      "normalWalkNoJump": true,
+      "routeClasses": ["public", "creator", "night-event", "egress-north"]
+    },
+    {
+      "objectId": "CBE-CORE-SP-001",
+      "name": "South public stair/lift/refuge core",
+      "bounds": [692, 41, -358, 697, 83, -351],
+      "levels": ["B2", "B1", "G0", "G1", "ROOF"],
+      "clearWalkingWidthBlocks": 4,
+      "normalWalkNoJump": true,
+      "routeClasses": ["public", "creator", "night-event", "egress-south"]
+    },
+    {
+      "objectId": "CBE-CORE-NS-001",
+      "name": "North service/performer stair-lift core",
+      "bounds": [710, 41, -424, 715, 83, -417],
+      "levels": ["B2", "B1", "G0", "G1", "ROOF"],
+      "clearWalkingWidthBlocks": 4,
+      "normalWalkNoJump": true,
+      "routeClasses": ["performer", "service", "egress-north"]
+    },
+    {
+      "objectId": "CBE-CORE-SS-001",
+      "name": "South service/performer stair-lift core",
+      "bounds": [710, 41, -358, 715, 83, -351],
+      "levels": ["B2", "B1", "G0", "G1", "ROOF"],
+      "clearWalkingWidthBlocks": 4,
+      "normalWalkNoJump": true,
+      "routeClasses": ["performer", "service", "egress-south"]
+    },
+    {
+      "objectId": "CBE-CORE-FREIGHT-001",
+      "name": "Central scenery/equipment freight lift",
+      "bounds": [716, 41, -407, 720, 83, -398],
+      "levels": ["B2", "B1", "G0", "G1", "ROOF"],
+      "routeClasses": ["service"],
+      "publicUse": false
+    }
+  ],
+  "rooms": [
+    {"objectId":"CBE-G0-CAFE-001","level":"G0","name":"Concord Road café","bounds":[681,65,-424,690,72,-411],"program":"public cafe","capacity":20,"adultOnly":false,"cameraIds":["CBE-CAM-001","CBE-CAM-002"]},
+    {"objectId":"CBE-G0-LOBBY-001","level":"G0","name":"Reception and creator check-in","bounds":[681,65,-409,690,72,-398],"program":"public reception and controlled creator threshold","capacity":18,"adultOnly":false,"cameraIds":["CBE-CAM-002"]},
+    {"objectId":"CBE-G0-COWORK-001","level":"G0","name":"Cowork commons","bounds":[681,65,-396,690,72,-381],"program":"open cowork room","capacity":24,"adultOnly":false,"cameraIds":["CBE-CAM-002"]},
+    {"objectId":"CBE-G0-COMMONS-001","level":"G0","name":"Creator commons","bounds":[681,65,-379,690,72,-365],"program":"common room and informal production lounge","capacity":20,"adultOnly":false,"cameraIds":["CBE-CAM-002"]},
+    {"objectId":"CBE-G0-SHOWCASE-001","level":"G0","name":"Ordinary media showcase","bounds":[681,65,-363,690,72,-351],"program":"public exhibition and creator showcase","capacity":16,"adultOnly":false,"cameraIds":["CBE-CAM-001"]},
+
+    {"objectId":"CBE-G0-MCR-001","level":"G0","name":"Master control room","bounds":[699,65,-424,708,72,-415],"program":"broadcast master control","capacity":10,"adultOnly":false,"mustTouch":["CBE-G0-INGEST-001","CBE-GALLERY-001"],"cameraIds":["CBE-CAM-003"]},
+    {"objectId":"CBE-G0-INGEST-001","level":"G0","name":"Ingest and quality control","bounds":[699,65,-413,708,72,-407],"program":"media ingest/QC","capacity":6,"adultOnly":false,"mustTouch":["CBE-G0-MCR-001"],"cameraIds":["CBE-CAM-003"]},
+    {"objectId":"CBE-G0-EDIT-001","level":"G0","name":"Edit suite 1","bounds":[699,65,-405,703,72,-399],"program":"post-production edit","capacity":3,"adultOnly":false,"cameraIds":["CBE-CAM-003"]},
+    {"objectId":"CBE-G0-EDIT-002","level":"G0","name":"Edit suite 2","bounds":[705,65,-405,709,72,-399],"program":"post-production edit","capacity":3,"adultOnly":false,"cameraIds":["CBE-CAM-003"]},
+
+    {"objectId":"CBE-G0-POD-001","level":"G0","name":"Podcast room 1","bounds":[692,65,-397,696,72,-391],"program":"two-person podcast streaming","capacity":3,"adultOnly":false,"sharedControl":"CBE-G0-PODCTL-001","cameraIds":["CBE-CAM-004"]},
+    {"objectId":"CBE-G0-POD-002","level":"G0","name":"Podcast room 2","bounds":[698,65,-397,702,72,-391],"program":"two-person podcast streaming","capacity":3,"adultOnly":false,"sharedControl":"CBE-G0-PODCTL-001","cameraIds":["CBE-CAM-004"]},
+    {"objectId":"CBE-G0-PODCTL-001","level":"G0","name":"Podcast shared control 1","bounds":[704,65,-397,709,72,-391],"program":"audio/video control for podcast rooms 1 and 2","capacity":3,"adultOnly":false,"cameraIds":["CBE-CAM-004"]},
+    {"objectId":"CBE-G0-POD-003","level":"G0","name":"Podcast room 3","bounds":[692,65,-389,696,72,-383],"program":"two-person podcast streaming","capacity":3,"adultOnly":false,"sharedControl":"CBE-G0-PODCTL-002","cameraIds":["CBE-CAM-004"]},
+    {"objectId":"CBE-G0-POD-004","level":"G0","name":"Podcast room 4","bounds":[698,65,-389,702,72,-383],"program":"two-person podcast streaming","capacity":3,"adultOnly":false,"sharedControl":"CBE-G0-PODCTL-002","cameraIds":["CBE-CAM-004"]},
+    {"objectId":"CBE-G0-PODCTL-002","level":"G0","name":"Podcast shared control 2","bounds":[704,65,-389,709,72,-383],"program":"audio/video control for podcast rooms 3 and 4","capacity":3,"adultOnly":false,"cameraIds":["CBE-CAM-004"]},
+    {"objectId":"CBE-G0-POD-005","level":"G0","name":"Podcast room 5","bounds":[692,65,-381,696,72,-375],"program":"two-person podcast streaming","capacity":3,"adultOnly":false,"sharedControl":"CBE-G0-PODCTL-003","cameraIds":["CBE-CAM-004"]},
+    {"objectId":"CBE-G0-POD-006","level":"G0","name":"Podcast room 6","bounds":[698,65,-381,702,72,-375],"program":"two-person podcast streaming","capacity":3,"adultOnly":false,"sharedControl":"CBE-G0-PODCTL-003","cameraIds":["CBE-CAM-004"]},
+    {"objectId":"CBE-G0-PODCTL-003","level":"G0","name":"Podcast shared control 3","bounds":[704,65,-381,709,72,-375],"program":"audio/video control for podcast rooms 5 and 6","capacity":3,"adultOnly":false,"cameraIds":["CBE-CAM-004"]},
+
+    {"objectId":"CBE-G0-GAME-001","level":"G0","name":"Gaming stream mini 1","bounds":[692,65,-373,696,72,-367],"program":"gaming stream mini","capacity":2,"adultOnly":false,"cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G0-GAME-002","level":"G0","name":"Gaming stream mini 2","bounds":[698,65,-373,702,72,-367],"program":"gaming stream mini","capacity":2,"adultOnly":false,"cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G0-GAME-003","level":"G0","name":"Gaming stream mini 3","bounds":[692,65,-365,696,72,-359],"program":"gaming stream mini","capacity":2,"adultOnly":false,"cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G0-GAME-004","level":"G0","name":"Gaming stream mini 4","bounds":[698,65,-365,702,72,-359],"program":"gaming stream mini","capacity":2,"adultOnly":false,"cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G0-VAR-001","level":"G0","name":"Variety stream mini 1","bounds":[699,65,-357,703,72,-351],"program":"variety/lifestyle stream mini","capacity":3,"adultOnly":false,"cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G0-VAR-002","level":"G0","name":"Variety stream mini 2","bounds":[705,65,-357,709,72,-351],"program":"variety/lifestyle stream mini","capacity":3,"adultOnly":false,"cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G0-GEAR-001","level":"G0","name":"Production equipment checkout","bounds":[704,65,-365,709,72,-359],"program":"camera/audio/lighting checkout and return","capacity":4,"adultOnly":false,"cameraIds":["CBE-CAM-015"]},
+
+    {"objectId":"CBE-G0-OFFICE-001","level":"G0","name":"Focus office 1","bounds":[710,65,-415,715,72,-409],"program":"creator/producer focus office","capacity":3,"adultOnly":false},
+    {"objectId":"CBE-G0-OFFICE-002","level":"G0","name":"Focus office 2","bounds":[710,65,-407,715,72,-401],"program":"creator/producer focus office","capacity":3,"adultOnly":false},
+    {"objectId":"CBE-G0-OFFICE-003","level":"G0","name":"Focus office 3","bounds":[710,65,-399,715,72,-393],"program":"creator/producer focus office","capacity":3,"adultOnly":false},
+    {"objectId":"CBE-G0-OFFICE-004","level":"G0","name":"Focus office 4","bounds":[710,65,-391,715,72,-385],"program":"creator/producer focus office","capacity":3,"adultOnly":false},
+    {"objectId":"CBE-G0-WC-001","level":"G0","name":"Public toilet 1","bounds":[710,65,-383,712,72,-377],"program":"public toilet analogue","adultOnly":false},
+    {"objectId":"CBE-G0-WC-002","level":"G0","name":"Public toilet 2","bounds":[713,65,-383,715,72,-377],"program":"public toilet analogue","adultOnly":false},
+
+    {"objectId":"CBE-G1-ARCADE-001","level":"G1","name":"Creator arcade","bounds":[681,74,-424,690,82,-411],"program":"arcade room","capacity":20,"adultOnly":false,"cameraIds":["CBE-CAM-006"]},
+    {"objectId":"CBE-G1-BILLIARDS-001","level":"G1","name":"Billiards room 1","bounds":[681,74,-409,690,82,-398],"program":"two-table billiards room","capacity":12,"tableCount":2,"adultOnly":false,"cameraIds":["CBE-CAM-006"]},
+    {"objectId":"CBE-G1-BILLIARDS-002","level":"G1","name":"Billiards room 2","bounds":[681,74,-396,690,82,-385],"program":"two-table billiards room","capacity":12,"tableCount":2,"adultOnly":false,"cameraIds":["CBE-CAM-006"]},
+    {"objectId":"CBE-G1-LOUNGE-001","level":"G1","name":"Creator lounge","bounds":[681,74,-383,690,82,-369],"program":"creator common/recovery room","capacity":20,"adultOnly":false,"cameraIds":["CBE-CAM-006"]},
+    {"objectId":"CBE-G1-KITCHEN-001","level":"G1","name":"Demonstration kitchen studio","bounds":[681,74,-367,690,82,-351],"program":"ordinary food/lifestyle production studio","capacity":12,"adultOnly":false,"cameraIds":["CBE-CAM-005"]},
+
+    {"objectId":"CBE-G1-GAME-005","level":"G1","name":"Gaming stream mini 5","bounds":[692,74,-415,697,82,-409],"program":"gaming stream mini","capacity":2,"adultOnly":false,"technicalHub":"CBE-G1-TECH-001","cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G1-GAME-006","level":"G1","name":"Gaming stream mini 6","bounds":[699,74,-415,704,82,-409],"program":"gaming stream mini","capacity":2,"adultOnly":false,"technicalHub":"CBE-G1-TECH-001","cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G1-GAME-007","level":"G1","name":"Gaming stream mini 7","bounds":[706,74,-415,711,82,-409],"program":"gaming stream mini","capacity":2,"adultOnly":false,"technicalHub":"CBE-G1-TECH-001","cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G1-GAME-008","level":"G1","name":"Gaming stream mini 8","bounds":[692,74,-407,697,82,-401],"program":"gaming stream mini","capacity":2,"adultOnly":false,"technicalHub":"CBE-G1-TECH-001","cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G1-GAME-009","level":"G1","name":"Gaming stream mini 9","bounds":[699,74,-407,704,82,-401],"program":"gaming stream mini","capacity":2,"adultOnly":false,"technicalHub":"CBE-G1-TECH-001","cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G1-GAME-010","level":"G1","name":"Gaming stream mini 10","bounds":[706,74,-407,711,82,-401],"program":"gaming stream mini","capacity":2,"adultOnly":false,"technicalHub":"CBE-G1-TECH-001","cameraIds":["CBE-CAM-005"]},
+
+    {"objectId":"CBE-G1-VAR-003","level":"G1","name":"Variety stream mini 3","bounds":[692,74,-399,697,82,-393],"program":"variety/lifestyle stream mini","capacity":3,"adultOnly":false,"technicalHub":"CBE-G1-TECH-002","cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G1-VAR-004","level":"G1","name":"Variety stream mini 4","bounds":[699,74,-399,704,82,-393],"program":"variety/lifestyle stream mini","capacity":3,"adultOnly":false,"technicalHub":"CBE-G1-TECH-002","cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G1-VAR-005","level":"G1","name":"Variety stream mini 5","bounds":[706,74,-399,711,82,-393],"program":"variety/lifestyle stream mini","capacity":3,"adultOnly":false,"technicalHub":"CBE-G1-TECH-002","cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G1-VAR-006","level":"G1","name":"Variety stream mini 6","bounds":[692,74,-391,697,82,-385],"program":"variety/lifestyle stream mini","capacity":3,"adultOnly":false,"technicalHub":"CBE-G1-TECH-002","cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G1-VAR-007","level":"G1","name":"Variety stream mini 7","bounds":[699,74,-391,704,82,-385],"program":"variety/lifestyle stream mini","capacity":3,"adultOnly":false,"technicalHub":"CBE-G1-TECH-002","cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G1-VAR-008","level":"G1","name":"Variety stream mini 8","bounds":[706,74,-391,711,82,-385],"program":"variety/lifestyle stream mini","capacity":3,"adultOnly":false,"technicalHub":"CBE-G1-TECH-002","cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G1-VAR-009","level":"G1","name":"Variety stream mini 9","bounds":[692,74,-383,697,82,-377],"program":"variety/lifestyle stream mini","capacity":3,"adultOnly":false,"technicalHub":"CBE-G1-TECH-002","cameraIds":["CBE-CAM-005"]},
+
+    {"objectId":"CBE-G1-ADULT-001","level":"G1","name":"After-dark capture mini 1","bounds":[699,74,-383,704,82,-377],"program":"non-graphic adult-performance streaming mini","capacity":4,"adultOnly":true,"technicalHub":"CBE-G1-TECH-003","cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G1-ADULT-002","level":"G1","name":"After-dark capture mini 2","bounds":[706,74,-383,711,82,-377],"program":"non-graphic adult-performance streaming mini","capacity":4,"adultOnly":true,"technicalHub":"CBE-G1-TECH-003","cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G1-ADULT-003","level":"G1","name":"After-dark capture mini 3","bounds":[692,74,-375,697,82,-369],"program":"non-graphic adult-performance streaming mini","capacity":4,"adultOnly":true,"technicalHub":"CBE-G1-TECH-003","cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G1-ADULT-004","level":"G1","name":"After-dark capture mini 4","bounds":[699,74,-375,704,82,-369],"program":"non-graphic adult-performance streaming mini","capacity":4,"adultOnly":true,"technicalHub":"CBE-G1-TECH-003","cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G1-ADULT-005","level":"G1","name":"After-dark capture mini 5","bounds":[706,74,-375,711,82,-369],"program":"non-graphic adult-performance streaming mini","capacity":4,"adultOnly":true,"technicalHub":"CBE-G1-TECH-003","cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G1-ADULT-006","level":"G1","name":"After-dark capture mini 6","bounds":[692,74,-367,697,82,-361],"program":"non-graphic adult-performance streaming mini","capacity":4,"adultOnly":true,"technicalHub":"CBE-G1-TECH-003","cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G1-ADULT-007","level":"G1","name":"After-dark capture mini 7","bounds":[699,74,-367,704,82,-361],"program":"non-graphic adult-performance streaming mini","capacity":4,"adultOnly":true,"technicalHub":"CBE-G1-TECH-003","cameraIds":["CBE-CAM-005"]},
+    {"objectId":"CBE-G1-ADULT-008","level":"G1","name":"After-dark capture mini 8","bounds":[706,74,-367,711,82,-361],"program":"non-graphic adult-performance streaming mini","capacity":4,"adultOnly":true,"technicalHub":"CBE-G1-TECH-003","cameraIds":["CBE-CAM-005"]},
+
+    {"objectId":"CBE-G1-TECH-001","level":"G1","name":"Mini-studio technical hub 1","bounds":[712,74,-415,715,82,-406],"program":"gaming-bank technical support","capacity":3,"adultOnly":false},
+    {"objectId":"CBE-G1-TECH-002","level":"G1","name":"Mini-studio technical hub 2","bounds":[712,74,-404,715,82,-395],"program":"variety-bank technical support","capacity":3,"adultOnly":false},
+    {"objectId":"CBE-G1-TECH-003","level":"G1","name":"Mini-studio technical hub 3","bounds":[712,74,-393,715,82,-384],"program":"after-dark-bank technical support","capacity":3,"adultOnly":true},
+    {"objectId":"CBE-G1-WC-001","level":"G1","name":"Public toilet 1","bounds":[712,74,-382,715,82,-375],"program":"public toilet analogue","adultOnly":false},
+    {"objectId":"CBE-G1-WC-002","level":"G1","name":"Public toilet 2","bounds":[712,74,-373,715,82,-366],"program":"public toilet analogue","adultOnly":false},
+    {"objectId":"CBE-G1-QUIET-001","level":"G1","name":"Quiet recovery room 1","bounds":[699,74,-358,704,82,-351],"program":"quiet/recovery room","capacity":4,"adultOnly":false},
+    {"objectId":"CBE-G1-QUIET-002","level":"G1","name":"Quiet recovery room 2","bounds":[706,74,-358,709,82,-351],"program":"quiet/recovery room","capacity":3,"adultOnly":false},
+
+    {"objectId":"CBE-B1-HALL-001","level":"B1","name":"Belle Epoque-inspired Hall A","bounds":[681,53,-415,698,63,-390],"program":"original cabaret/exhibition/broadcast hall","capacity":{"totalAudiencePositions":84,"seatBlocks":80,"openBayAnalogues":4},"adultOnly":true,"stageBounds":[682,53,-414,697,59,-410],"screenBackdropBounds":[683,57,-415,696,62,-415],"controlRoom":"CBE-B1-HALLCTL-001","cameraIds":["CBE-CAM-007"]},
+    {"objectId":"CBE-B1-HALL-002","level":"B1","name":"Belle Epoque-inspired Hall B","bounds":[681,53,-388,698,63,-371],"program":"original intimate exhibition/broadcast salon","capacity":{"totalAudiencePositions":42,"seatBlocks":40,"openBayAnalogues":2},"adultOnly":true,"stageBounds":[682,53,-387,697,58,-384],"screenBackdropBounds":[683,56,-388,696,61,-388],"controlRoom":"CBE-B1-HALLCTL-002","cameraIds":["CBE-CAM-008"]},
+    {"objectId":"CBE-B1-HALLCTL-001","level":"B1","name":"Hall A control booth","bounds":[700,53,-415,706,63,-409],"program":"audio/video/lighting control","capacity":4,"adultOnly":true,"cameraIds":["CBE-CAM-016"]},
+    {"objectId":"CBE-B1-HALLCTL-002","level":"B1","name":"Hall B control booth","bounds":[700,53,-391,706,63,-385],"program":"audio/video/lighting control","capacity":4,"adultOnly":true,"cameraIds":["CBE-CAM-016"]},
+    {"objectId":"CBE-B1-GREEN-001","level":"B1","name":"Hall A green room","bounds":[708,53,-415,714,63,-409],"program":"performer green room","capacity":10,"adultOnly":true,"cameraIds":["CBE-CAM-016"]},
+    {"objectId":"CBE-B1-GREEN-002","level":"B1","name":"Hall B green room","bounds":[708,53,-391,714,63,-385],"program":"performer green room","capacity":8,"adultOnly":true,"cameraIds":["CBE-CAM-016"]},
+    {"objectId":"CBE-B1-WARDROBE-001","level":"B1","name":"Wardrobe and makeup 1","bounds":[700,53,-407,706,63,-401],"program":"wardrobe/makeup support","capacity":6,"adultOnly":true},
+    {"objectId":"CBE-B1-WARDROBE-002","level":"B1","name":"Wardrobe and makeup 2","bounds":[700,53,-383,706,63,-377],"program":"wardrobe/makeup support","capacity":6,"adultOnly":true},
+    {"objectId":"CBE-B1-DRESS-001","level":"B1","name":"Dressing room 1","bounds":[708,53,-407,714,63,-401],"program":"performer dressing","capacity":4,"adultOnly":true},
+    {"objectId":"CBE-B1-DRESS-002","level":"B1","name":"Dressing room 2","bounds":[700,53,-399,706,63,-393],"program":"performer dressing","capacity":4,"adultOnly":true},
+    {"objectId":"CBE-B1-DRESS-003","level":"B1","name":"Dressing room 3","bounds":[708,53,-399,714,63,-393],"program":"performer dressing","capacity":4,"adultOnly":true},
+    {"objectId":"CBE-B1-DRESS-004","level":"B1","name":"Dressing room 4","bounds":[708,53,-383,714,63,-377],"program":"performer dressing","capacity":4,"adultOnly":true},
+    {"objectId":"CBE-B1-DRESS-005","level":"B1","name":"Dressing room 5","bounds":[700,53,-375,706,63,-370],"program":"performer dressing","capacity":4,"adultOnly":true},
+    {"objectId":"CBE-B1-DRESS-006","level":"B1","name":"Dressing room 6","bounds":[708,53,-375,714,63,-370],"program":"performer dressing","capacity":4,"adultOnly":true},
+
+    {"objectId":"CBE-B1-COFFEE-001","level":"B1","name":"Night Market coffee room 1","bounds":[681,53,-368,689,63,-360],"program":"smoke-free coffee room","capacity":16,"adultOnly":true,"cameraIds":["CBE-CAM-009"]},
+    {"objectId":"CBE-B1-COFFEE-002","level":"B1","name":"Night Market coffee room 2","bounds":[691,53,-368,698,63,-360],"program":"smoke-free quiet coffee salon","capacity":14,"adultOnly":true,"cameraIds":["CBE-CAM-009"]},
+    {"objectId":"CBE-B1-BOTANICAL-001","level":"B1","name":"Fictional botanical boutique 1","bounds":[681,53,-358,689,63,-351],"program":"fictional smoke-free botanical retail room","capacity":10,"adultOnly":true,"cameraIds":["CBE-CAM-009"]},
+    {"objectId":"CBE-B1-BOTANICAL-002","level":"B1","name":"Fictional botanical boutique 2","bounds":[699,53,-360,709,63,-351],"program":"fictional smoke-free botanical retail room","capacity":10,"adultOnly":true,"cameraIds":["CBE-CAM-009"]},
+    {"objectId":"CBE-B1-CHECK-001","level":"B1","name":"Age, coat and event check-in","bounds":[700,53,-368,706,63,-363],"program":"age-control and coat-check room","capacity":10,"adultOnly":true,"cameraIds":["CBE-CAM-009"]},
+    {"objectId":"CBE-B1-LOUNGE-001","level":"B1","name":"After-show lounge","bounds":[708,53,-368,714,63,-362],"program":"smoke-free after-show common room","capacity":18,"adultOnly":true,"cameraIds":["CBE-CAM-009"]},
+    {"objectId":"CBE-B1-WC-001","level":"B1","name":"Public toilet 1","bounds":[700,53,-424,702,63,-417],"program":"public toilet analogue","adultOnly":true},
+    {"objectId":"CBE-B1-WC-002","level":"B1","name":"Public toilet 2","bounds":[704,53,-424,706,63,-417],"program":"public toilet analogue","adultOnly":true},
+    {"objectId":"CBE-B1-WC-003","level":"B1","name":"Staff and performer toilet","bounds":[708,53,-424,709,63,-417],"program":"staff/performer toilet analogue","adultOnly":true},
+    {"objectId":"CBE-B1-GARDENVEST-001","level":"B1","name":"Open-garden vestibule A","bounds":[716,53,-379,720,63,-376],"program":"first smoke-separation/weather vestibule","adultOnly":true,"cameraIds":["CBE-CAM-010"]},
+    {"objectId":"CBE-B1-GARDENVEST-002","level":"B1","name":"Open-garden vestibule B","bounds":[716,53,-369,720,63,-366],"program":"second smoke-separation/weather vestibule and independent garden egress","adultOnly":true,"cameraIds":["CBE-CAM-010"]},
+
+    {"objectId":"CBE-B2-SET-001","level":"B2","name":"Non-graphic themed set room 1","bounds":[681,41,-415,688,51,-407],"program":"non-graphic bondage-themed capture set","capacity":6,"adultOnly":true,"sharedControl":"CBE-B2-SETCTL-001","cameraIds":["CBE-CAM-011"]},
+    {"objectId":"CBE-B2-SET-002","level":"B2","name":"Non-graphic themed set room 2","bounds":[690,41,-415,697,51,-407],"program":"non-graphic bondage-themed capture set","capacity":6,"adultOnly":true,"sharedControl":"CBE-B2-SETCTL-001","cameraIds":["CBE-CAM-011"]},
+    {"objectId":"CBE-B2-SETCTL-001","level":"B2","name":"Set shared control 1","bounds":[699,41,-415,705,51,-407],"program":"control for set rooms 1 and 2","capacity":4,"adultOnly":true,"cameraIds":["CBE-CAM-011"]},
+    {"objectId":"CBE-B2-SET-003","level":"B2","name":"Non-graphic themed set room 3","bounds":[681,41,-405,688,51,-397],"program":"non-graphic bondage-themed capture set","capacity":6,"adultOnly":true,"sharedControl":"CBE-B2-SETCTL-002","cameraIds":["CBE-CAM-011"]},
+    {"objectId":"CBE-B2-SET-004","level":"B2","name":"Non-graphic themed set room 4","bounds":[690,41,-405,697,51,-397],"program":"non-graphic bondage-themed capture set","capacity":6,"adultOnly":true,"sharedControl":"CBE-B2-SETCTL-002","cameraIds":["CBE-CAM-011"]},
+    {"objectId":"CBE-B2-SETCTL-002","level":"B2","name":"Set shared control 2","bounds":[699,41,-405,705,51,-397],"program":"control for set rooms 3 and 4","capacity":4,"adultOnly":true,"cameraIds":["CBE-CAM-011"]},
+    {"objectId":"CBE-B2-SET-005","level":"B2","name":"Non-graphic themed set room 5","bounds":[681,41,-395,688,51,-387],"program":"non-graphic bondage-themed capture set","capacity":6,"adultOnly":true,"sharedControl":"CBE-B2-SETCTL-003","cameraIds":["CBE-CAM-011"]},
+    {"objectId":"CBE-B2-SET-006","level":"B2","name":"Non-graphic themed set room 6","bounds":[690,41,-395,697,51,-387],"program":"non-graphic bondage-themed capture set","capacity":6,"adultOnly":true,"sharedControl":"CBE-B2-SETCTL-003","cameraIds":["CBE-CAM-011"]},
+    {"objectId":"CBE-B2-SETCTL-003","level":"B2","name":"Set shared control 3","bounds":[699,41,-395,705,51,-387],"program":"control for set rooms 5 and 6","capacity":4,"adultOnly":true,"cameraIds":["CBE-CAM-011"]},
+    {"objectId":"CBE-B2-SET-007","level":"B2","name":"Non-graphic themed set room 7","bounds":[681,41,-385,688,51,-377],"program":"non-graphic bondage-themed capture set","capacity":6,"adultOnly":true,"sharedControl":"CBE-B2-SETCTL-004","cameraIds":["CBE-CAM-011"]},
+    {"objectId":"CBE-B2-SET-008","level":"B2","name":"Non-graphic themed set room 8","bounds":[690,41,-385,697,51,-377],"program":"non-graphic bondage-themed capture set","capacity":6,"adultOnly":true,"sharedControl":"CBE-B2-SETCTL-004","cameraIds":["CBE-CAM-011"]},
+    {"objectId":"CBE-B2-SETCTL-004","level":"B2","name":"Set shared control 4","bounds":[699,41,-385,705,51,-377],"program":"control for set rooms 7 and 8","capacity":4,"adultOnly":true,"cameraIds":["CBE-CAM-011"]},
+
+    {"objectId":"CBE-B2-STORE-001","level":"B2","name":"Clean storage room 1","bounds":[707,41,-415,715,51,-407],"program":"clean set/textile storage","adultOnly":true,"cameraIds":["CBE-CAM-017"]},
+    {"objectId":"CBE-B2-STORE-002","level":"B2","name":"Clean storage room 2","bounds":[707,41,-405,715,51,-397],"program":"clean camera/lighting storage","adultOnly":true,"cameraIds":["CBE-CAM-017"]},
+    {"objectId":"CBE-B2-ELEC-001","level":"B2","name":"Electrical and UPS visual plant","bounds":[707,41,-395,715,51,-387],"program":"fictional electrical/UPS plant","adultOnly":false,"cameraIds":["CBE-CAM-017"]},
+    {"objectId":"CBE-B2-MECH-001","level":"B2","name":"Mechanical and acoustic plant","bounds":[707,41,-385,715,51,-377],"program":"fictional mechanical/acoustic plant","adultOnly":false,"cameraIds":["CBE-CAM-017"]},
+    {"objectId":"CBE-B2-SCENERY-001","level":"B2","name":"Scenery workshop","bounds":[681,41,-375,690,51,-363],"program":"set construction and repair","capacity":8,"adultOnly":true,"cameraIds":["CBE-CAM-012"]},
+    {"objectId":"CBE-B2-PROP-001","level":"B2","name":"Prop store","bounds":[692,41,-375,699,51,-363],"program":"non-graphic prop and furniture storage","adultOnly":true,"cameraIds":["CBE-CAM-012"]},
+    {"objectId":"CBE-B2-GEAR-001","level":"B2","name":"Equipment cage","bounds":[701,41,-375,708,51,-363],"program":"camera/audio/lighting equipment cage","adultOnly":true,"cameraIds":["CBE-CAM-012"]},
+    {"objectId":"CBE-B2-EDIT-001","level":"B2","name":"Underground edit suite 1","bounds":[681,41,-361,689,51,-351],"program":"post-production edit","capacity":4,"adultOnly":true,"cameraIds":["CBE-CAM-012"]},
+    {"objectId":"CBE-B2-EDIT-002","level":"B2","name":"Underground edit suite 2","bounds":[691,41,-361,699,51,-359],"program":"post-production edit","capacity":4,"adultOnly":true,"cameraIds":["CBE-CAM-012"]},
+    {"objectId":"CBE-B2-GREEN-001","level":"B2","name":"Set-lab recovery room 1","bounds":[701,41,-361,706,51,-356],"program":"green/recovery room","capacity":6,"adultOnly":true,"cameraIds":["CBE-CAM-012"]},
+    {"objectId":"CBE-B2-GREEN-002","level":"B2","name":"Set-lab recovery room 2","bounds":[707,41,-361,709,51,-351],"program":"green/recovery room","capacity":4,"adultOnly":true,"cameraIds":["CBE-CAM-012"]},
+    {"objectId":"CBE-B2-WC-001","level":"B2","name":"Set-lab staff toilet","bounds":[701,41,-354,706,51,-351],"program":"staff toilet analogue","adultOnly":true}
+  ],
+  "specialComponents": [
+    {
+      "objectId": "CBE-GALLERY-001",
+      "name": "Master-control-to-tower cable gallery",
+      "bounds": [709,73,-423,718,78,-418],
+      "program": "glazed visual link and above-grade cable route",
+      "realTopologyDisclosed": false,
+      "cameraIds": ["CBE-CAM-003", "CBE-CAM-013"]
+    },
+    {
+      "objectId": "CBE-TOWER-BASE-001",
+      "name": "Tower base and maintenance shelter",
+      "bounds": [718,64,-425,730,72,-413],
+      "program": "fenced maintenance-only equipment base",
+      "cameraIds": ["CBE-CAM-013"]
+    },
+    {
+      "objectId": "CBE-TOWER-SHAFT-001",
+      "name": "Lattice tower shaft",
+      "bounds": [721,73,-422,727,144,-416],
+      "program": "seven-block-wide fictional lattice shaft",
+      "cameraIds": ["CBE-CAM-013", "CBE-CAM-018"]
+    },
+    {"objectId":"CBE-TOWER-DECK-001","name":"Tower maintenance deck y84","bounds":[719,83,-424,729,85,-414],"program":"rest/maintenance platform with red warning-light visual analogue","cameraIds":["CBE-CAM-013"]},
+    {"objectId":"CBE-TOWER-DECK-002","name":"Tower maintenance deck y104","bounds":[719,103,-424,729,105,-414],"program":"rest/maintenance platform with red warning-light visual analogue","cameraIds":["CBE-CAM-013"]},
+    {"objectId":"CBE-TOWER-DECK-003","name":"Tower maintenance deck y124","bounds":[719,123,-424,729,125,-414],"program":"rest/maintenance platform with red warning-light visual analogue","cameraIds":["CBE-CAM-013"]},
+    {"objectId":"CBE-TOWER-DECK-004","name":"Tower crown deck y144","bounds":[719,143,-424,729,145,-414],"program":"crown platform with red warning-light visual analogue","cameraIds":["CBE-CAM-013","CBE-CAM-018"]},
+
+    {
+      "objectId": "CBE-SAT-FENCE-001",
+      "name": "Satellite-pad fence and gate",
+      "bounds": [737,63,-425,769,68,-390],
+      "program": "maintenance perimeter with east service gate",
+      "minimumTargetY": 63,
+      "cameraIds": ["CBE-CAM-014"]
+    },
+    {
+      "objectId": "CBE-SAT-APRON-001",
+      "name": "Shallow dish apron",
+      "bounds": [739,63,-423,767,65,-397],
+      "program": "surface-only floating apron",
+      "minimumTargetY": 63,
+      "cameraIds": ["CBE-CAM-014"]
+    },
+    {
+      "objectId": "CBE-SAT-SHELTER-001",
+      "name": "Satellite equipment shelter",
+      "bounds": [739,64,-403,750,72,-392],
+      "program": "equipment, spares and maintenance desk",
+      "realTopologyDisclosed": false,
+      "cameraIds": ["CBE-CAM-014"]
+    },
+    {
+      "objectId": "CBE-SAT-SERVICE-001",
+      "name": "Satellite service apron and turning bay",
+      "bounds": [752,63,-405,767,65,-392],
+      "program": "maintenance vehicle and dish-parts handling",
+      "cameraIds": ["CBE-CAM-014"]
+    },
+    {"objectId":"CBE-SAT-DISH-L01","name":"Large dish analogue 1","bounds":[740,65,-423,750,78,-413],"scale":"large","operationalParametersRecorded":false,"cameraIds":["CBE-CAM-014"]},
+    {"objectId":"CBE-SAT-DISH-M01","name":"Medium dish analogue 1","bounds":[753,65,-423,759,73,-417],"scale":"medium","operationalParametersRecorded":false,"cameraIds":["CBE-CAM-014"]},
+    {"objectId":"CBE-SAT-DISH-M02","name":"Medium dish analogue 2","bounds":[761,65,-423,767,73,-417],"scale":"medium","operationalParametersRecorded":false,"cameraIds":["CBE-CAM-014"]},
+    {"objectId":"CBE-SAT-DISH-M03","name":"Medium dish analogue 3","bounds":[753,65,-415,759,73,-409],"scale":"medium","operationalParametersRecorded":false,"cameraIds":["CBE-CAM-014"]},
+    {"objectId":"CBE-SAT-DISH-M04","name":"Medium dish analogue 4","bounds":[761,65,-415,767,73,-409],"scale":"medium","operationalParametersRecorded":false,"cameraIds":["CBE-CAM-014"]},
+    {"objectId":"CBE-SAT-DISH-S01","name":"Small dish analogue 1","bounds":[740,65,-411,744,70,-407],"scale":"small","operationalParametersRecorded":false,"cameraIds":["CBE-CAM-014"]},
+    {"objectId":"CBE-SAT-DISH-S02","name":"Small dish analogue 2","bounds":[746,65,-411,750,70,-407],"scale":"small","operationalParametersRecorded":false,"cameraIds":["CBE-CAM-014"]},
+    {"objectId":"CBE-SAT-DISH-S03","name":"Small dish analogue 3","bounds":[740,65,-405,744,70,-401],"scale":"small","operationalParametersRecorded":false,"cameraIds":["CBE-CAM-014"]},
+    {"objectId":"CBE-SAT-DISH-S04","name":"Small dish analogue 4","bounds":[746,65,-405,750,70,-401],"scale":"small","operationalParametersRecorded":false,"cameraIds":["CBE-CAM-014"]}
+  ],
+  "routes": [
+    {"routeId":"CBE-ROUTE-PUBLIC-01","class":"public","sequence":["west forecourt","CBE-G0-LOBBY-001","CBE-G0-CAFE-001","CBE-G0-COWORK-001","CBE-G0-SHOWCASE-001"],"mustNotEnter":["production banks","B1 Night Market","B2 Set Lab","tower","satellite pad"]},
+    {"routeId":"CBE-ROUTE-CREATOR-01","class":"creator","sequence":["CBE-G0-LOBBY-001","CBE-G0-COMMONS-001","CBE-CORE-NP-001","G1 production spine"],"controlledThreshold":true},
+    {"routeId":"CBE-ROUTE-NIGHT-01","class":"adults-only-public","sequence":["CBE-G0-LOBBY-001","CBE-CORE-NP-001","CBE-B1-CHECK-001","B1 Night Market","CBE-B1-HALL-001","CBE-B1-HALL-002","CBE-GARDEN-001"],"mustNotEnter":["backstage","B2 Set Lab","loading","tower","satellite pad"]},
+    {"routeId":"CBE-ROUTE-PERFORMER-01","class":"performer","sequence":["east check-in","CBE-CORE-NS-001","B1 backstage spine","green rooms","wardrobe","dressing rooms","stage doors"],"crossesAudienceQueue":false},
+    {"routeId":"CBE-ROUTE-SERVICE-01","class":"service","sequence":["CBE-SERVICE-001","east loading","CBE-CORE-FREIGHT-001","B1 service spine","B2 service spine"],"crossesPublicLobby":false},
+    {"routeId":"CBE-ROUTE-EGRESS-N","class":"egress","sequence":["all occupied levels","CBE-CORE-NP-001 or CBE-CORE-NS-001","north exterior discharge"],"independentFrom":"CBE-ROUTE-EGRESS-S"},
+    {"routeId":"CBE-ROUTE-EGRESS-S","class":"egress","sequence":["all occupied levels","CBE-CORE-SP-001 or CBE-CORE-SS-001","south exterior discharge"],"independentFrom":"CBE-ROUTE-EGRESS-N"},
+    {"routeId":"CBE-ROUTE-TOWER-01","class":"maintenance","sequence":["CBE-SERVICE-001","tower fence gate","CBE-TOWER-BASE-001","CBE-TOWER-SHAFT-001","maintenance decks"],"publicAccess":false},
+    {"routeId":"CBE-ROUTE-SAT-01","class":"maintenance","sequence":["district service road","CBE-SAT-FENCE-001","CBE-SAT-SERVICE-001","dish walks","CBE-SAT-SHELTER-001"],"publicAccess":false},
+    {"routeId":"CBE-ROUTE-GARDEN-01","class":"adults-only-public","sequence":["B1 Night Market","CBE-B1-GARDENVEST-001","CBE-GARDEN-001","CBE-B1-GARDENVEST-002","independent exterior route"],"enclosedSmokingRoom":false}
+  ],
+  "cameraCandidates": [
+    {"cameraId":"CBE-CAM-001","position":[666,70,-387],"target":[684,69,-387],"objects":["CBE-SHELL-001","CBE-G0-CAFE-001","CBE-G0-COWORK-001"],"evidence":"ordinary Concord Road facade"},
+    {"cameraId":"CBE-CAM-002","position":[684,69,-404],"target":[689,68,-395],"objects":["CBE-G0-CAFE-001","CBE-G0-LOBBY-001","CBE-G0-COWORK-001"],"evidence":"cafe/lobby/cowork transition"},
+    {"cameraId":"CBE-CAM-003","position":[701,69,-412],"target":[704,69,-421],"objects":["CBE-G0-MCR-001","CBE-G0-INGEST-001","CBE-GALLERY-001"],"evidence":"master control and tower link"},
+    {"cameraId":"CBE-CAM-004","position":[704,69,-396],"target":[694,69,-396],"objects":["CBE-G0-POD-001","CBE-G0-POD-002","CBE-G0-PODCTL-001"],"evidence":"paired podcast rooms and control"},
+    {"cameraId":"CBE-CAM-005","position":[704,78,-405],"target":[693,78,-405],"objects":["CBE-G1-GAME-005","CBE-G1-GAME-008","CBE-G1-VAR-003","CBE-G1-ADULT-001"],"evidence":"G1 studio bank identity and wayfinding"},
+    {"cameraId":"CBE-CAM-006","position":[688,78,-395],"target":[686,78,-414],"objects":["CBE-G1-ARCADE-001","CBE-G1-BILLIARDS-001","CBE-G1-BILLIARDS-002"],"evidence":"creator recreation rooms"},
+    {"cameraId":"CBE-CAM-007","position":[689,58,-399],"target":[688,57,-419],"objects":["CBE-B1-HALL-001"],"evidence":"Hall A stage, screen, rake and 84 positions"},
+    {"cameraId":"CBE-CAM-008","position":[689,58,-381],"target":[688,57,-395],"objects":["CBE-B1-HALL-002"],"evidence":"Hall B stage, screen, rake and 42 positions"},
+    {"cameraId":"CBE-CAM-009","position":[696,58,-365],"target":[686,57,-365],"objects":["CBE-B1-COFFEE-001","CBE-B1-COFFEE-002","CBE-B1-BOTANICAL-001","CBE-B1-BOTANICAL-002"],"evidence":"Night Market storefront sequence"},
+    {"cameraId":"CBE-CAM-010","position":[720,58,-365],"target":[725,57,-365],"objects":["CBE-GARDEN-001","CBE-B1-GARDENVEST-001","CBE-B1-GARDENVEST-002"],"evidence":"roofless garden, terraces and vestibules"},
+    {"cameraId":"CBE-CAM-011","position":[700,46,-405],"target":[686,46,-405],"objects":["CBE-B2-SET-001","CBE-B2-SET-002","CBE-B2-SETCTL-001"],"evidence":"non-graphic set pair and shared control"},
+    {"cameraId":"CBE-CAM-012","position":[711,46,-367],"target":[696,46,-367],"objects":["CBE-B2-SCENERY-001","CBE-B2-PROP-001","CBE-B2-GEAR-001","CBE-B2-EDIT-001"],"evidence":"B2 support spine"},
+    {"cameraId":"CBE-CAM-013","position":[690,83,-407],"target":[724,112,-419],"objects":["CBE-TOWER-001","CBE-TOWER-SHAFT-001","CBE-TOWER-DECK-001","CBE-TOWER-DECK-004"],"evidence":"full tower silhouette and warning-light analogues"},
+    {"cameraId":"CBE-CAM-014","position":[730,72,-406],"target":[752,70,-407],"objects":["CBE-SAT-001","CBE-SAT-SHELTER-001","CBE-SAT-DISH-L01","CBE-SAT-DISH-M01","CBE-SAT-DISH-S01"],"evidence":"complete nine-dish field, fence, shelter and apron"},
+    {"cameraId":"CBE-CAM-015","position":[731,69,-395],"target":[716,68,-400],"objects":["CBE-SERVICE-001","CBE-CORE-FREIGHT-001"],"evidence":"east loading and route separation"},
+    {"cameraId":"CBE-CAM-016","position":[705,59,-410],"target":[699,58,-420],"objects":["CBE-B1-HALLCTL-001","CBE-B1-GREEN-001","CBE-B1-WARDROBE-001"],"evidence":"backstage route distinct from audience"},
+    {"cameraId":"CBE-CAM-017","position":[697,47,-370],"target":[710,46,-370],"objects":["CBE-B2-STORE-001","CBE-B2-ELEC-001","CBE-B2-MECH-001"],"evidence":"support/plant buffers and egress"},
+    {"cameraId":"CBE-CAM-018","position":[674,76,-408],"target":[724,105,-419],"objects":["CBE-SHELL-001","CBE-TOWER-001"],"evidence":"building/tower district identity"}
+  ],
+  "exactCounts": {
+    "podcastRooms": 6,
+    "podcastControlRooms": 3,
+    "gamingStreamMinis": 10,
+    "varietyStreamMinis": 9,
+    "adultPerformanceStreamMinis": 8,
+    "miniStudioTechnicalHubs": 3,
+    "masterControlRooms": 1,
+    "ingestQcRooms": 1,
+    "aboveGroundEditSuites": 2,
+    "arcades": 1,
+    "billiardsRooms": 2,
+    "billiardsTables": 4,
+    "creatorCommonRooms": 3,
+    "demonstrationKitchenStudios": 1,
+    "cabaretExhibitionHalls": 2,
+    "hallAAudiencePositions": 84,
+    "hallASeatBlocks": 80,
+    "hallAOpenBayAnalogues": 4,
+    "hallBAudiencePositions": 42,
+    "hallBSeatBlocks": 40,
+    "hallBOpenBayAnalogues": 2,
+    "coffeeRooms": 2,
+    "fictionalBotanicalBoutiques": 2,
+    "openSkyGardenSeats": 24,
+    "b1GreenRooms": 2,
+    "b1DressingRooms": 6,
+    "b1WardrobeMakeupRooms": 2,
+    "b2NonGraphicSetRooms": 8,
+    "b2SharedSetControlBooths": 4,
+    "b2UndergroundEditSuites": 2,
+    "b2GreenRecoveryRooms": 2,
+    "towerMaintenanceDecks": 4,
+    "largeDishAnalogues": 1,
+    "mediumDishAnalogues": 4,
+    "smallDishAnalogues": 4,
+    "totalDishAnalogues": 9,
+    "cameraCandidates": 18
+  },
+  "materials": {
+    "ordinaryFrontage": ["red_brick", "brown_terracotta", "dressed_stone", "oxidized_copper", "dark_oak", "warm_glass"],
+    "production": ["deepslate", "charcoal_concrete", "gray_wool", "carpet", "cyan_wayfinding", "amber_wayfinding", "dark_oak_desks"],
+    "nightMarket": ["plum_wool", "crimson_wool", "dark_oak", "gilded_copper", "patterned_blackstone", "patterned_terracotta", "warm_chandeliers"],
+    "setLab": ["pale_stone_liner", "black_gray_service_floor", "plum_cyan_identity_bands", "bright_task_lighting", "modular_frames", "fabric_panels"],
+    "tower": ["iron_lattice", "weathered_copper", "stone_base", "red_warning_light_analogue"],
+    "satellitePad": ["shallow_stone_apron", "iron_fence", "white_quartz_dishes", "copper_shelter"],
+    "garden": ["stone_terraces", "brick_retaining_walls", "planters", "benches", "warm_low_lights"]
+  },
+  "acceptance": {
+    "geometry": [
+      "All scheduled object IDs are generated or explicitly reported deferred.",
+      "Zero unreviewed cross-scope target collisions.",
+      "Fresh same-moment main/tower/garden fluid and block-entity census remains zero.",
+      "No satellite-pad target is below y62 or intersects protected water.",
+      "Gravity states are pre-supported/top-down handled and exact-listed.",
+      "Every forward state has an exact rollback partner."
+    ],
+    "routes": [
+      "Public, creator, night-event, performer, service, tower, satellite and garden routes remain distinct.",
+      "North and south egress routes are independent and pass bidirectionally.",
+      "No stair requires jumping; four-block-clear regular stairs and lifts serve the same circulation zones.",
+      "No Exchange route touches Ravensgate, owner corridors, portal rooms or the future owner-city reservation."
+    ],
+    "program": [
+      "All exactCounts values match the generated room/object census.",
+      "Every hall has a real stage and screen/backdrop before seating.",
+      "Open-bay analogues adjoin but do not overlap aisles.",
+      "The dish field contains exactly one large, four medium and four small dish analogues.",
+      "The tower contains exactly four maintenance decks and red warning-light visual analogues."
+    ],
+    "content": [
+      "No explicit image, figure, depicted act, body-part motif or explicit sign.",
+      "Adult rooms remain architectural and non-graphic.",
+      "Botanical shops are fictional and smoke-free.",
+      "No enclosed smoking room, fire, smoke particle, lava, bubble column or active portal.",
+      "The open garden remains roofless and separated from enclosed rooms by two vestibules."
+    ],
+    "terrainAndDistrict": [
+      "Compact benching, bridging, planted slopes and retained depressions replace any mega-pad.",
+      "The satellite-pad buried water seam remains unchanged.",
+      "Final collision report proves pad separation from lodging, Night Court, future entertainment, power and beehive reserves."
+    ],
+    "evidence": [
+      "All 18 cameras receive first-pass matched captures linked by object ID.",
+      "First-pass defect log is resolved or explicitly accepted.",
+      "All repaired objects receive same-camera second-pass recapture.",
+      "Only accepted second-pass media may enter Sites or the object-to-media catalog."
+    ]
+  },
+  "implementationHolds": [
+    "This schedule does not authorize live execution.",
+    "Reconcile all bounds with the final Concord town and data-district road/power generator.",
+    "Repeat exact survey from a new same-moment snapshot.",
+    "No below-grade work is permitted in the satellite-pad envelope.",
+    "Tower structural/fall-protection/aviation/RF, fire/life-safety, accessibility, acoustic and cannabis matters are not certified by this Minecraft plan.",
+    "Require exact guards, strict-noop dry-run report, entity/player clearance, atomic transaction, rollback, post snapshot, route QA and matched evidence."
+  ]
+}

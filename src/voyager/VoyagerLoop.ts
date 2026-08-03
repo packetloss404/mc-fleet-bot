@@ -11,6 +11,8 @@ import { logger } from '../util/logger';
 import { getProgressionState } from './Progression';
 import { buildTaskPlan, PlannedStep, replanTaskStep } from './TaskPlanner';
 import { StatsTracker } from './StatsTracker';
+import { buildApprovedCivicShiftCode } from './CivicShiftCode';
+import { retryBackoffMs } from './RetryPolicy';
 import { completeLongTermSubtask, goalSummary, LongTermGoal, longTermGoalToTask, makeLongTermGoal, popLongTermSubtask } from './LongTermGoal';
 import { countBlueprintMaterials, generateSimpleHouseBlueprint, getMissingBlueprintPlacements, validateBlueprint } from './Blueprint';
 import { placeBlock } from '../actions/placeBlock';
@@ -255,17 +257,26 @@ export class VoyagerLoop {
     );
     if (leashEntry) {
       this.leashHome = { x: leashEntry.x, z: leashEntry.z, radius: leashEntry.radius };
-      this.codeExecutor.setLeash({ x: leashEntry.x, z: leashEntry.z, radius: leashEntry.radius });
-      // A leashed `builder` becomes a HQ caretaker: it must not chase roaming
-      // swarm/DungeonMaster explore tasks (the leash would just reject the move
-      // and it thrashes). Instead it withdraws materials from a home chest and
-      // place-only expands the structure it's parked on. See proposeCaretakerTask.
-      this.isCaretakerBuilder = personality.toLowerCase() === 'builder';
+      this.codeExecutor.setLeash({
+        x: leashEntry.x,
+        z: leashEntry.z,
+        radius: leashEntry.radius,
+        destinations: leashEntry.destinations,
+        corridors: leashEntry.corridors,
+      });
+      // A leashed builder historically became an HQ caretaker automatically.
+      // Keep that default for existing entries, while allowing town residents
+      // to use the same hard movement boundary without abandoning their
+      // role-specific blackboard schedules.
+      this.isCaretakerBuilder = leashEntry.caretaker
+        ?? personality.toLowerCase() === 'builder';
       logger.info(
         {
           bot: botName,
           home: { x: leashEntry.x, z: leashEntry.z },
           radius: leashEntry.radius,
+          destinations: leashEntry.destinations?.map((destination) => destination.name) ?? [],
+          corridors: leashEntry.corridors?.map((corridor) => corridor.name) ?? [],
           caretaker: this.isCaretakerBuilder,
         },
         'VoyagerLoop: bot is leashed to a home boundary',
@@ -1255,7 +1266,11 @@ export class VoyagerLoop {
     const task = goalOverrideTask
       || goalTask
       || playerTask
-      || (blackboardTask ? { description: blackboardTask.description, keywords: blackboardTask.keywords } : null)
+      || (blackboardTask ? {
+        description: blackboardTask.description,
+        keywords: blackboardTask.keywords,
+        metadata: blackboardTask.metadata,
+      } : null)
       // Caretaker builders bypass the roaming Voyager curriculum entirely and
       // run the place-only home-expansion loop instead.
       || (this.isCaretakerBuilder ? this.proposeCaretakerTask() : null)
@@ -1574,19 +1589,37 @@ export class VoyagerLoop {
   }
 
   private async executeTaskStep(step: PlannedStep): Promise<boolean> {
-    const task: Task = { description: step.description, keywords: step.keywords, spec: step.spec };
+    const task: Task = {
+      description: step.description,
+      keywords: step.keywords,
+      spec: step.spec,
+      metadata: step.metadata,
+    };
     this.currentTask = task.description;
     this.blackboardManager?.postMessage(this.botName, 'progress', `Working on ${task.description}.`);
 
+    // Reviewed civic shifts have a deterministic, metadata-bound executor and
+    // do not need an LLM. Resolve that path before the ActionAgent availability
+    // guard so an LLM outage cannot strand citizens who already have an
+    // approved route contract.
+    const civicShiftCode = buildApprovedCivicShiftCode(task);
+
     // 2. Try the best existing skill first, then fall back to fresh generation
-    if (!this.actionAgent) {
+    if (!this.actionAgent && !civicShiftCode) {
       logger.info({ bot: this.botName }, 'No LLM available, skipping task');
       return false;
     }
 
     const query = task.keywords.join(' ') + ' ' + task.description;
-    const bestSkill = await this.skillLibrary.getBestMatch(query);
-    const composableSkills = await this.skillLibrary.getComposableMatches(query, 3);
+    // Exact civic routes must not consult the semantic skill library. Besides
+    // avoiding needless work, this prevents an old coordinate-bearing skill
+    // from becoming part of the route decision.
+    const bestSkill = civicShiftCode
+      ? null
+      : await this.skillLibrary.getBestMatch(query);
+    const composableSkills = civicShiftCode
+      ? []
+      : await this.skillLibrary.getComposableMatches(query, 3);
     const blockerSummary = this.curriculumAgent.getBlockerMemory().summarize(task);
     const worldMemorySummary = this.curriculumAgent.getWorldMemory().summary();
     // A confident direct-skill match reuses cached skill code WITHOUT an LLM call
@@ -1597,11 +1630,11 @@ export class VoyagerLoop {
     // Trust a strong direct match (getBestMatch already requires score ≥ 16;
     // ≥ 24 is a confident hit) regardless of how many weak composables co-matched.
     const STRONG_DIRECT_SKILL_SCORE = 24;
-    const useDirectSkill = !!bestSkill
+    const useDirectSkill = !civicShiftCode && !!bestSkill
       && (composableSkills.length <= 1 || bestSkill.score >= STRONG_DIRECT_SKILL_SCORE);
 
     // Try action templates as a middle tier between skill library and full code gen
-    const templateMatch = !useDirectSkill && this.actionTemplates
+    const templateMatch = !civicShiftCode && !useDirectSkill && this.actionTemplates
       ? this.actionTemplates.findTemplate(task.description, task.keywords)
       : null;
     const useTemplate = templateMatch && templateMatch.confidence >= 0.5;
@@ -1609,7 +1642,10 @@ export class VoyagerLoop {
     let generated: GeneratedCode;
     let codeSource: string;
 
-    if (useDirectSkill) {
+    if (civicShiftCode) {
+      generated = civicShiftCode;
+      codeSource = 'civic-shift';
+    } else if (useDirectSkill) {
       generated = this.skillToGeneratedCode(bestSkill);
       codeSource = 'skill-library';
     } else if (useTemplate && templateMatch) {
@@ -1626,7 +1662,7 @@ export class VoyagerLoop {
       };
       codeSource = 'action-template';
     } else {
-      generated = await this.actionAgent.generateCode(this.bot, task, this.skillLibrary, undefined, undefined, undefined, undefined, blockerSummary, worldMemorySummary);
+      generated = await this.actionAgent!.generateCode(this.bot, task, this.skillLibrary, undefined, undefined, undefined, undefined, blockerSummary, worldMemorySummary);
       codeSource = 'action-agent';
     }
 
@@ -1641,14 +1677,22 @@ export class VoyagerLoop {
       functionName: generated.functionName,
       codeLength: generated.functionCode.length,
       execCode: generated.execCode,
-    }, codeSource === 'skill-library' ? 'Reusing saved skill' : codeSource === 'action-template' ? 'Using action template' : 'Code generated by ActionAgent');
+    }, codeSource === 'civic-shift'
+      ? 'Using deterministic approved civic shift'
+      : codeSource === 'skill-library'
+        ? 'Reusing saved skill'
+        : codeSource === 'action-template'
+          ? 'Using action template'
+          : 'Code generated by ActionAgent');
 
     this.decisionTrace.record('skill_vs_codegen', task.description,
-      codeSource === 'skill-library' ? `Reusing skill "${bestSkill!.name}"`
+      codeSource === 'civic-shift' ? 'Following exact reviewed civic-shift waypoints'
+        : codeSource === 'skill-library' ? `Reusing skill "${bestSkill!.name}"`
         : codeSource === 'action-template' ? `Using template "${templateMatch!.template.name}" (${(templateMatch!.confidence * 100).toFixed(0)}%)`
         : `Generating fresh code`,
       codeSource, { functionName: generated.functionName, codeLength: generated.functionCode.length, composableCount: composableSkills.length },
       [
+        { label: 'civic-shift', chosen: codeSource === 'civic-shift', reason: civicShiftCode ? 'Exact reviewed route embedded in task contract' : 'Not a reviewed civic shift' },
         { label: 'skill-library', chosen: codeSource === 'skill-library', score: bestSkill?.score, reason: bestSkill ? `Match: "${bestSkill.name}"` : 'No match' },
         { label: 'action-template', chosen: codeSource === 'action-template', score: templateMatch?.confidence, reason: templateMatch ? `Template: "${templateMatch.template.name}"` : 'No match' },
         { label: 'action-agent', chosen: codeSource === 'action-agent', reason: 'Full code gen' },
@@ -1753,15 +1797,30 @@ export class VoyagerLoop {
         // Save the named function as a reusable skill
         const skillName = this.taskToSkillName(task);
         const quality = this.estimateSkillQuality(criticResult.reason, generated.functionCode);
-        if (quality >= 0.65) {
-          await this.skillLibrary.save(
+        if (useDirectSkill && bestSkill) {
+          // The task was solved by REUSING an existing skill — credit that
+          // skill and do not clone it.
+          //
+          // Saving here minted a fresh `_vN` on every success and credited the
+          // copy, while the skill that actually worked only ever absorbed
+          // failures (recorded below). A reused skill could therefore never be
+          // credited, which is what drove `_v35`-style duplicate families and,
+          // once the cap filled, a save/evict treadmill: 179 semantic families
+          // occupying 500 slots with 272 zero-success entries.
+          this.skillLibrary.recordOutcome(bestSkill.name, true);
+        } else if (codeSource !== 'civic-shift' && quality >= 0.65) {
+          // Freshly generated code — store it, and credit the name the library
+          // ACTUALLY stored it under. Collisions are versioned to `_vN`;
+          // recording against the base name credited a different (older) skill
+          // and left the new one at zero successes forever.
+          const savedName = await this.skillLibrary.save(
             skillName,
             task.description,
             task.keywords,
             generated.functionCode,
             quality
           );
-          this.skillLibrary.recordOutcome(skillName, true);
+          if (savedName) this.skillLibrary.recordOutcome(savedName, true);
         }
         this.curriculumAgent.updateProgress(task, true);
         this.curriculumAgent.getBlockerMemory().clearTask(task);
@@ -1784,7 +1843,12 @@ export class VoyagerLoop {
         try { this.planLibrary?.savePlan(task.description, [{ description: task.description, preconditions: [], postconditions: [], estimatedDurationMs: 0, failureRate: 0 }], task.keywords); } catch { /* ignore */ }
 
         this.decisionTrace.record('task_outcome', task.description, `Task succeeded on attempt ${attempt + 1}`, 'success',
-          { attempts: attempt + 1, source: codeSource, skillSaved: quality >= 0.65, skillQuality: quality });
+          {
+            attempts: attempt + 1,
+            source: codeSource,
+            skillSaved: codeSource !== 'civic-shift' && quality >= 0.65,
+            skillQuality: quality,
+          });
 
         return true;
       }
@@ -1856,9 +1920,7 @@ export class VoyagerLoop {
         // attempt 4 -> 8s, capped at 10s. In 0-indexed terms that simplifies to
         // 1000 * 2^(attempt + 1).
         const nextAttempt1Indexed = attempt + 2;
-        const backoffDelay = nextAttempt1Indexed === 1
-          ? 0
-          : Math.min(1000 * Math.pow(2, nextAttempt1Indexed - 1), 10000);
+        const backoffDelay = retryBackoffMs(nextAttempt1Indexed);
         if (backoffDelay > 0) {
           logger.info({ bot: this.botName, attempt: attempt + 1, backoffMs: backoffDelay },
             `Backing off ${backoffDelay}ms before retry ${attempt + 2}/${this.config.voyager.maxRetriesPerTask}`);
@@ -1875,22 +1937,33 @@ export class VoyagerLoop {
         this.decisionTrace.record('retry_decision', task.description,
           `Retrying (attempt ${attempt + 2}/${this.config.voyager.maxRetriesPerTask})${recovery ? ` [${recovery.pattern}]` : ''}`,
           'retry', { attempt: attempt + 1, error: lastError?.slice(0, 200), recoveryPattern: recovery?.pattern, recoveryHint: recovery?.hint?.slice(0, 200), critique: enrichedCritique?.slice(0, 200) });
-        generated = await this.actionAgent.generateCode(
-          this.bot, task, this.skillLibrary,
-          lastError, generated.functionCode, enrichedCritique, eventLog, blockerSummary, worldMemorySummary
-        );
-        logger.info({
-          bot: this.botName,
-          source: 'action-agent',
-          functionName: generated.functionName,
-          codeLength: generated.functionCode.length,
-          execCode: generated.execCode,
-        }, 'Code generated by ActionAgent');
-        logger.debug({
-          bot: this.botName,
-          functionName: generated.functionName,
-          code: generated.functionCode,
-        }, 'Retry generated code body');
+        if (civicShiftCode) {
+          // A retry may re-run the exact reviewed transaction, but it must
+          // never ask an LLM to rewrite route coordinates or safety behavior.
+          generated = civicShiftCode;
+          logger.info({
+            bot: this.botName,
+            source: 'civic-shift',
+            functionName: generated.functionName,
+          }, 'Retrying deterministic approved civic shift');
+        } else {
+          generated = await this.actionAgent!.generateCode(
+            this.bot, task, this.skillLibrary,
+            lastError, generated.functionCode, enrichedCritique, eventLog, blockerSummary, worldMemorySummary
+          );
+          logger.info({
+            bot: this.botName,
+            source: 'action-agent',
+            functionName: generated.functionName,
+            codeLength: generated.functionCode.length,
+            execCode: generated.execCode,
+          }, 'Code generated by ActionAgent');
+          logger.debug({
+            bot: this.botName,
+            functionName: generated.functionName,
+            code: generated.functionCode,
+          }, 'Retry generated code body');
+        }
       }
     }
 

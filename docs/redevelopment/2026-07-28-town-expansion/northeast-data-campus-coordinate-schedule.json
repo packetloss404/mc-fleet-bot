@@ -1,0 +1,333 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "PLANNING_COORDINATE_RESERVATION_NOT_A_BUILD_RELEASE",
+  "generatedUtc": "2026-07-28T07:30:00Z",
+  "liveWorldMutated": false,
+  "coordinateConvention": {
+    "north": "-Z",
+    "bounds": "inclusive"
+  },
+  "evidence": {
+    "snapshot": {
+      "path": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region",
+      "sha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999"
+    },
+    "database": {
+      "path": "data/world-map.db",
+      "sha256AtSurvey": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+      "mode": "read-only",
+      "featureIntersectionsInStudyArea": 0
+    },
+    "surveyReport": "docs/redevelopment/2026-07-28-town-expansion/evidence/northeast-data-campus-survey.json",
+    "map": "docs/redevelopment/2026-07-28-town-expansion/evidence/northeast-data-campus-current-map.png"
+  },
+  "authority": {
+    "rackRowRequirement": "Each completed DM hall contains 40 rack rows. This supersedes the earlier research-program interpretation of 40 rows total.",
+    "dm10Identity": "DM10 is a normal surface data hall.",
+    "undergroundIdentity": "IB-AMES-01 is a separate underground resilience/colocation annex; it is not DM10 and is not represented as affiliated with InfoBunker.",
+    "controlledSpaces": "Selected cages use NIST SP 800-171 Rev. 3 physical-access principles only as a fictional design basis. The project makes no ITAR, CUI, certification, accreditation, or compliance claim."
+  },
+  "studyArea": {
+    "bounds": {
+      "minX": 438,
+      "maxX": 1030,
+      "minZ": -720,
+      "maxZ": -180
+    },
+    "databaseFeatureIntersections": 0
+  },
+  "parcels": [
+    {
+      "id": "DC-NORTH",
+      "bounds": [675, 819, -648, -563],
+      "surfaceColumns": 12470,
+      "surfaceWaterColumns": 0,
+      "supportY": {"min": 61, "p10": 64, "median": 69, "p90": 77, "max": 100},
+      "blockEntities": [
+        {"id": "minecraft:beehive", "x": 702, "y": 68, "z": -621},
+        {"id": "minecraft:beehive", "x": 805, "y": 73, "z": -580}
+      ],
+      "rule": "Protect both beehive trees and a five-block horizontal root/canopy buffer. No release may move them without explicit ecological review."
+    },
+    {
+      "id": "DC-CENTRAL",
+      "bounds": [744, 862, -549, -414],
+      "surfaceColumns": 16184,
+      "surfaceWaterColumns": 0,
+      "supportY": {"min": 58, "p10": 63, "median": 66, "p90": 71, "max": 96},
+      "surfaceBlockEntitiesY40To120": 0,
+      "deepGeneratedFeatureNotice": {
+        "boundsChecked": [744, 862, 0, 19, -549, -414],
+        "objects": [
+          {"id": "minecraft:chest", "x": 797, "y": 11, "z": -504},
+          {"id": "minecraft:chest", "x": 796, "y": 11, "z": -508},
+          {"id": "minecraft:mob_spawner", "x": 794, "y": 11, "z": -505}
+        ],
+        "rule": "The annex floor stays at y20 or above; preserve the y11 generated feature and a review halo."
+      }
+    },
+    {
+      "id": "DC-EAST",
+      "bounds": [905, 1030, -434, -257],
+      "surfaceColumns": 22428,
+      "surfaceWaterColumns": 0,
+      "supportY": {"min": 58, "p10": 66, "median": 76, "p90": 87, "max": 99},
+      "surfaceBlockEntitiesY40To120": 0
+    },
+    {
+      "id": "DC-OUTER-LOGISTICS",
+      "bounds": [465, 563, -310, -180],
+      "surfaceColumns": 12969,
+      "surfaceWaterColumns": 0,
+      "supportY": {"min": 58, "p10": 68, "median": 74, "p90": 79, "max": 92},
+      "surfaceBlockEntitiesY40To120": 0,
+      "note": "The west edge was trimmed from x438 to x465 to avoid beehives at 446,76,-239 and 457,76,-246."
+    }
+  ],
+  "facilities": [
+    {
+      "id": "DC-POWER-01",
+      "name": "Screened substation and power yard",
+      "parcel": "DC-NORTH",
+      "bounds": [675, 719, -605, -569],
+      "program": ["diagrammatic A/B equipment bands", "service loop", "maintenance apron", "planted/acoustic screen"],
+      "publicationRule": "Show only public architectural relationships; do not publish real-world security or utility topology."
+    },
+    {
+      "id": "DM01",
+      "bounds": [724, 766, -648, -612],
+      "parcel": "DC-NORTH",
+      "rackRows": 40
+    },
+    {
+      "id": "DM02",
+      "bounds": [771, 813, -648, -612],
+      "parcel": "DC-NORTH",
+      "rackRows": 40
+    },
+    {
+      "id": "DM03",
+      "bounds": [724, 766, -605, -569],
+      "parcel": "DC-NORTH",
+      "rackRows": 40
+    },
+    {
+      "id": "DC-NORTH-FUTURE",
+      "bounds": [771, 813, -605, -569],
+      "parcel": "DC-NORTH",
+      "program": "marked construction/expansion reserve with protected beehive grove at 805,73,-580",
+      "buildStatus": "RESERVED_NOT_BUILT"
+    },
+    {
+      "id": "DM10",
+      "name": "Normal surface data hall",
+      "bounds": [744, 799, -549, -501],
+      "parcel": "DC-CENTRAL",
+      "rackRows": 40,
+      "rowArrangement": {
+        "floors": 2,
+        "rowsPerFloor": 20,
+        "thermalPairsPerFloor": 10,
+        "podsPerBuilding": 4,
+        "rowsPerPod": 10
+      },
+      "requiredCirculation": "Walk-through cold/service aisles, two transverse cross-aisles per floor, remote stairs, and public interpretation only from a separated gallery.",
+      "identityRule": "Never label or describe DM10 as InfoBunker."
+    },
+    {
+      "id": "DC-NOC-01",
+      "bounds": [805, 856, -549, -518],
+      "parcel": "DC-CENTRAL",
+      "program": ["large two-story NOC", "synthetic status wall", "incident room", "briefing room", "admin", "visitor overlook with fictional data only"]
+    },
+    {
+      "id": "DC-AUD-200",
+      "name": "Presentation and theater auditorium",
+      "bounds": [805, 829, -513, -478],
+      "parcel": "DC-CENTRAL",
+      "seats": 200,
+      "required": ["stage", "backstage", "green room", "lecture support", "rear and side audience doors"]
+    },
+    {
+      "id": "DC-CIN-200",
+      "name": "Movie theater",
+      "bounds": [832, 856, -513, -478],
+      "parcel": "DC-CENTRAL",
+      "seats": 200,
+      "required": ["screen wall", "projection/AV room", "raked seating", "rear and side doors"],
+      "prohibition": "No doorway on the screen wall and no seating facing an entrance."
+    },
+    {
+      "id": "DC-VENUE-BOH",
+      "bounds": [805, 856, -475, -460],
+      "parcel": "DC-CENTRAL",
+      "program": "shared back-of-house support only; both venues retain separate public doors and independent chambers"
+    },
+    {
+      "id": "DM04",
+      "bounds": [805, 856, -455, -420],
+      "parcel": "DC-CENTRAL",
+      "rackRows": 40
+    },
+    {
+      "id": "IB-AMES-01",
+      "name": "Separate underground resilience and colocation annex",
+      "bounds": [744, 799, 20, 48, -498, -435],
+      "parcel": "DC-CENTRAL",
+      "cells": 103936,
+      "fluidCells": 0,
+      "blockEntities": 0,
+      "gravitySensitiveCells": 2137,
+      "levels": [
+        {"id": "IB-B2", "floorY": 21, "clearY": [22, 32], "program": ["mechanical/power zones", "maintenance", "bulk storage", "water management"]},
+        {"id": "IB-B1", "floorY": 35, "clearY": [36, 47], "program": ["large hardened rooms", "colocation suites", "data rooms", "common areas", "NOC", "recovery rooms"]}
+      ],
+      "publicCharacter": "Fictional former-military-communications-bunker character inspired only by InfoBunker's public descriptions.",
+      "independenceRule": "Own exits and support zones; DM10 connector is optional convenience, never sole egress or shared life-support dependency."
+    },
+    {
+      "id": "DM10-IB-TRANSITION",
+      "bounds": [744, 799, 49, 66, -500, -499],
+      "program": "controlled rear DM10 vestibule, accessible descending transition, bulkhead separation and wayfinding",
+      "status": "VERTICAL_AND_FLUID_CENSUS_REQUIRED_BEFORE_RELEASE"
+    },
+    {
+      "id": "DM05",
+      "bounds": [910, 954, -430, -390],
+      "parcel": "DC-EAST",
+      "rackRows": 40
+    },
+    {
+      "id": "DM06",
+      "bounds": [980, 1024, -430, -390],
+      "parcel": "DC-EAST",
+      "rackRows": 40
+    },
+    {
+      "id": "DM07",
+      "bounds": [910, 954, -380, -340],
+      "parcel": "DC-EAST",
+      "rackRows": 40
+    },
+    {
+      "id": "DM08",
+      "bounds": [980, 1024, -380, -340],
+      "parcel": "DC-EAST",
+      "rackRows": 40
+    },
+    {
+      "id": "DM09",
+      "bounds": [910, 954, -330, -290],
+      "parcel": "DC-EAST",
+      "rackRows": 40,
+      "controlledCages": [
+        {"id": "DM09-CAGE-A", "designBasis": "NIST SP 800-171 Rev. 3 PE-family physical separation; fictional/public-safe only"},
+        {"id": "DM09-CAGE-B", "designBasis": "NIST SP 800-171 Rev. 3 PE-family physical separation; fictional/public-safe only"}
+      ],
+      "disclaimer": "ITAR-style is an architectural brief only. No actual ITAR/CUI/compliance claim."
+    },
+    {
+      "id": "DC-LODGE-01",
+      "name": "Training and resilience lodge",
+      "bounds": [980, 1024, -330, -290],
+      "parcel": "DC-EAST",
+      "beds": 48,
+      "program": ["24 twin rooms", "training rooms", "kitchen/dining", "lounge", "laundry", "showers", "planted court"]
+    },
+    {
+      "id": "DC-EAST-FUTURE",
+      "bounds": [910, 1024, -282, -262],
+      "parcel": "DC-EAST",
+      "program": "marked construction and expansion zone",
+      "buildStatus": "RESERVED_NOT_BUILT"
+    }
+  ],
+  "standardDataHall": {
+    "appliesTo": ["DM01", "DM02", "DM03", "DM04", "DM05", "DM06", "DM07", "DM08", "DM09", "DM10"],
+    "rackRowsPerBuilding": 40,
+    "floors": 2,
+    "rowsPerFloor": 20,
+    "arrangement": "ten front-to-front/back-to-back thermal pairs per floor with contained hot aisles, cold service aisles, and cross-aisles",
+    "visitorRule": "The public route remains outside operational white space; use glazed observation points and a demonstration aisle."
+  },
+  "outerComplex": [
+    {"id": "DC-OUTER-RUNWAY", "bounds": [470, 478, -302, -190], "program": "short symbolic small-aircraft strip; fictional/non-operational Minecraft element"},
+    {"id": "DC-OUTER-HELIPAD", "bounds": [487, 508, -298, -277], "program": "marked helipad with clear visual approach reserve; fictional Minecraft element"},
+    {"id": "DC-OUTER-TOWER-A", "bounds": [515, 528, -298, -280], "program": "operations/observation tower"},
+    {"id": "DC-OUTER-TOWER-B", "bounds": [542, 555, -298, -284], "program": "perimeter communications/wayfinding tower; no tactical security detail"},
+    {"id": "DC-OUTER-WH-A", "bounds": [487, 530, -266, -244], "program": "computer-equipment receiving warehouse"},
+    {"id": "DC-OUTER-WH-B", "bounds": [487, 530, -236, -214], "program": "computer-equipment spares and repair warehouse"},
+    {"id": "DC-OUTER-SUPPORT", "bounds": [535, 558, -266, -214], "program": "admin, crew welfare, maintenance and controlled transfer"}
+  ],
+  "roads": [
+    {
+      "id": "DC-DIRT-ROAD-RAVENSREACH-OUTER",
+      "status": "FEASIBILITY_ALIGNMENT_REQUIRES_FINAL_GRADE_DESIGN",
+      "widthBlocks": 7,
+      "start": [-35, 71, -400],
+      "end": [463, 70, -314],
+      "selectedKeyframes": [
+        [-35, 71, -400],
+        [-25, 70, -368],
+        [-9, 71, -340],
+        [13, 71, -318],
+        [13, 69, -300],
+        [31, 64, -256],
+        [101, 64, -256],
+        [149, 69, -236],
+        [213, 66, -224],
+        [249, 66, -232],
+        [313, 63, -250],
+        [351, 63, -250],
+        [397, 66, -260],
+        [421, 66, -278],
+        [463, 70, -314]
+      ],
+      "survey": {
+        "aStarNodes": 290,
+        "corridorColumns": 5077,
+        "surfaceWaterColumns": 0,
+        "supportY": {"min": 60, "p10": 63, "median": 66, "p90": 71, "max": 75},
+        "maximumRawCenterStepPerTwoHorizontalBlocks": 2
+      },
+      "gradeRule": "Cut/fill and retaining design must produce a continuous walkable/serviceable dirt road; the raw terrain centerline is not itself an as-built grade."
+    },
+    {
+      "id": "DC-DIRT-ROAD-OUTER-CAMPUS",
+      "status": "FEASIBILITY_ALIGNMENT_REQUIRES_FINAL_GRADE_DESIGN",
+      "widthBlocks": 7,
+      "start": [565, 82, -312],
+      "end": [745, 64, -432],
+      "keyframes": [
+        [565, 82, -312],
+        [583, 91, -320],
+        [605, 88, -328],
+        [629, 82, -350],
+        [655, 71, -354],
+        [707, 64, -406],
+        [739, 65, -430],
+        [745, 64, -432]
+      ],
+      "survey": {
+        "aStarNodes": 93,
+        "corridorColumns": 1947,
+        "surfaceWaterColumns": 0,
+        "supportY": {"min": 58, "p10": 62, "median": 67, "p90": 89, "max": 94},
+        "maximumRawCenterStepPerTwoHorizontalBlocks": 4
+      },
+      "gradeRule": "Use switchbacks/cuts/retaining at steep segments. Normal walking and vehicle simulation must pass in both directions before acceptance."
+    }
+  ],
+  "releaseGates": [
+    "fresh immutable snapshot and hash",
+    "coordinate-level database and cross-package overlap report",
+    "beehive and generated-feature preservation",
+    "full fluid, waterlogged, gravity, block-entity and entity census",
+    "final road grading and bidirectional normal-walk QA",
+    "independent auditorium and cinema door/sightline QA",
+    "DM10 and IB-AMES-01 separate database objects and media",
+    "all ten halls visibly contain 40 rows",
+    "exact-state forward and rollback package",
+    "matched before/after maps and screenshots"
+  ]
+}

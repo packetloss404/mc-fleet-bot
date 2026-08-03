@@ -1,0 +1,203 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "PLANNING_COORDINATE_RESERVATION_NOT_A_BUILD_RELEASE",
+  "generatedUtc": "2026-07-28T08:20:00Z",
+  "liveWorldMutated": false,
+  "coordinateConvention": {"north": "-Z", "bounds": "inclusive"},
+  "evidence": {
+    "snapshot": {
+      "path": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region",
+      "sha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999"
+    },
+    "database": {
+      "path": "data/world-map.db",
+      "sha256AtSurvey": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+      "mode": "read-only"
+    },
+    "map": "docs/redevelopment/2026-07-28-town-expansion/evidence/pavilion-east-grounds-current-map.png",
+    "sourceMemo": "docs/redevelopment/2026-07-28-town-expansion/pavilion-east-grounds-and-restricted-underground-source-of-truth.md"
+  },
+  "scopeCorrection": {
+    "ravensgateDistrictBoundaryFrozen": true,
+    "ravensgateDistrictBounds": [-148, -64, -562, -420],
+    "newWorkIdentity": "surface expansion of the existing civic pavilion ensemble and its outdoor grounds above/east of Ravensgate",
+    "prohibition": "Do not create or imply a Ravensgate district expansion."
+  },
+  "surfaceMasterplan": {
+    "overallGroundsReservation": [-110, 20, 67, 86, -480, -406],
+    "eastwardGroundsExtension": [-63, 20, 67, 86, -480, -406],
+    "eastwardGroundsBlockEntitiesY40To110": 0,
+    "treeLineLimitX": 20,
+    "rule": "The x=20 edge is a landscape transition. Preserve the existing woodland beyond it except for exact reviewed path connections."
+  },
+  "surfaceObjects": [
+    {
+      "id": "PAV-RU-01",
+      "name": "Central Russian-referenced civic pavilion",
+      "bounds": [-104, -72, 67, 84, -446, -426],
+      "relationship": "open, non-glass civic hinge: expanded library west; Great Guild Hall east",
+      "architecture": "original Minecraft adaptation using a symmetrical masonry arcade, steep metal roof, central lantern/cupola, patterned soffit and integrated statuary",
+      "route": {"fromLibrary": [-110, 68, -438], "through": [-88, 68, -438], "toGuildHall": [-59, 68, -439]},
+      "prohibition": "Do not rebuild the retired glass pavilion."
+    },
+    {
+      "id": "PAV-POOL-NORTH",
+      "name": "North reflecting pool",
+      "bounds": [-58, -32, 66, 68, -478, -466],
+      "waterSurfaceY": 68,
+      "rule": "Closed enumerated basin; no broad fill and no underground connection."
+    },
+    {
+      "id": "PAV-POOL-SOUTH",
+      "name": "South reflecting pool",
+      "bounds": [-58, -32, 66, 68, -417, -406],
+      "waterSurfaceY": 68,
+      "rule": "Closed enumerated basin; no broad fill and no underground connection."
+    },
+    {
+      "id": "PAV-BUCKINGHAM-FOUNTAIN",
+      "name": "Buckingham-Fountain-inspired civic fountain",
+      "bounds": [-20, 10, 67, 82, -478, -463],
+      "program": "large tiered sculptural basin, cardinal sculptural groups, timed-looking static jet composition and evening lighting",
+      "referenceRule": "Original adaptation of Beaux-Arts centerpiece and light/water-display principles; not a literal copy."
+    },
+    {
+      "id": "PAV-LINCOLN-MONUMENT",
+      "name": "Lincoln-Memorial-inspired civic monument",
+      "bounds": [-2, 18, 67, 88, -458, -436],
+      "program": "raised terrace, broad approach steps and ramps, restrained Doric colonnade, central seated civic figure and reciprocal axis",
+      "referenceRule": "Original commemorative design; do not reproduce inscriptions or represent the structure as the real Lincoln Memorial."
+    },
+    {
+      "id": "PAV-EAST-ALLEE",
+      "name": "Tree-line allée and flower walk",
+      "bounds": [11, 20, 67, 78, -480, -406],
+      "program": "paired trees, four-season flower beds, benches, banners, lighting and east-edge promenade"
+    },
+    {
+      "id": "PAV-STATUE-PROGRAM",
+      "name": "Pavilion and grounds statuary",
+      "stations": [
+        [-69, 68, -453], [-69, 68, -421],
+        [-28, 68, -456], [-28, 68, -428],
+        [8, 68, -461], [8, 68, -433]
+      ],
+      "rule": "Every plinth keeps five clear walking blocks and preserves the library–pavilion–Guild Hall axis."
+    }
+  ],
+  "protectedSurfaceInterfaces": [
+    {"id": "RRCH-LIBRARY", "bounds": [-144, -111, 46, 98, -448, -426]},
+    {"id": "TE-LIBRARY-04X", "bounds": [-178, -111, 46, 98, -448, -403]},
+    {"id": "RG-GARTH", "bounds": [-105, -65, 67, 78, -446, -426]},
+    {"id": "TE-GUILDHALL-01", "bounds": [-59, -7, 53, 93, -462, -418]},
+    {"id": "RG-LOGGIA", "bounds": [-111, -106, 68, 78, -447, -433]}
+  ],
+  "restrictedUnderground": {
+    "id": "RAVENSGATE-RESTRICTED-EXCLUSION",
+    "bounds": [-148, -64, -64, 35, -562, -420],
+    "cells": 1215500,
+    "survey": {
+      "fluidCells": 36192,
+      "airCells": 87975,
+      "gravityCells": 14124,
+      "blockEntities": [
+        ["minecraft:mob_spawner", -145, 30, -502],
+        ["minecraft:chest", -147, 30, -500],
+        ["minecraft:chest", -145, 30, -500]
+      ]
+    },
+    "verticalBuffer": {
+      "minY": 36,
+      "maxY": 43,
+      "rule": "No civilian room, library/Guild tunnel, portal route, utility or foundation penetration."
+    },
+    "horizontalReviewBuffer": {
+      "bounds": [-160, -52, -574, -408],
+      "appliesThroughY": 43,
+      "rule": "Any target in this buffer at y<=43 needs explicit restricted-facility conflict review."
+    },
+    "accessPolicy": "No authorized access point is confirmed in this package. The exclusion remains sealed. Any future deliberate access must be separately surveyed, named, and built with two sequential metal-door vestibules; it may not share the civilian tunnel.",
+    "reservedAccessStudyOnly": {
+      "id": "RG-ACCESS-A-STUDY",
+      "bounds": [-104, -96, 28, 43, -425, -407],
+      "status": "SEALED_NOT_AUTHORIZED_NOT_BUILT",
+      "airlockRequirement": [
+        {"id": "outer", "bounds": [-104, -96, 36, 43, -412, -407]},
+        {"id": "interlock", "bounds": [-104, -96, 30, 35, -419, -413]},
+        {"id": "innerThreshold", "bounds": [-104, -96, 28, 35, -425, -420]}
+      ]
+    }
+  },
+  "isolatedLibraryGuildTunnel": {
+    "id": "LIB-GUILD-SECRET-01",
+    "networkConnection": false,
+    "soleEndpoints": ["RRCH-LIBRARY", "TE-GUILDHALL-01"],
+    "mainGallery": {
+      "bounds": [-110, -60, 58, 64, -442, -436],
+      "cells": 2499,
+      "fluidCells": 0,
+      "gravityCells": 0,
+      "existingAirCells": 87,
+      "clearHeadroomTarget": 5
+    },
+    "rooms": [
+      {
+        "id": "LIB-ARCHIVE-CHALLENGED",
+        "name": "Restricted and challenged-materials archive",
+        "bounds": [-110, -93, 58, 64, -435, -423],
+        "fluidCells": 0,
+        "gravityCells": 0,
+        "program": "closed stacks, catalog desk, supervised reading table and conservation cabinet"
+      },
+      {
+        "id": "LIB-ARCHIVE-ADULT",
+        "name": "Private adult-literature archive",
+        "bounds": [-92, -78, 58, 64, -435, -423],
+        "fluidCells": 0,
+        "gravityCells": 30,
+        "program": "non-explicit adult collection, privacy vestibule, closed stacks and small reading room"
+      },
+      {
+        "id": "LIB-STATION-UA",
+        "name": "Ukrainian-metro-inspired ceremonial station chamber",
+        "bounds": [-77, -60, 58, 64, -435, -423],
+        "fluidCells": 0,
+        "gravityCells": 0,
+        "program": "small three-vault/pylon-inspired hall, symbolic island platform, white/gray stone and green accent, civic mosaic and destination board",
+        "prohibition": "Ceremonial room only: no rail, no active transit, no route beyond the Guild Hall/library tunnel."
+      }
+    ],
+    "entryConcealment": {
+      "library": "concealed behind a movable atlas cabinet in a staff-controlled lower-library room",
+      "guildHall": "concealed behind a guild-records screen in the B1/B2 circulation core"
+    },
+    "isolationRules": [
+      "No branch, shaft, portal, utility chase or doorway may enter the Ravensgate restricted exclusion.",
+      "No connection to Raven Rock, the owner-estate portal gallery, C01, natural caves or any other tunnel network.",
+      "Both endpoints require closable vestibules and independent public egress through their parent buildings.",
+      "The tunnel floor and ceiling remain above y57 and therefore above the restricted vertical buffer ending at y43."
+    ]
+  },
+  "conflictMatrix": [
+    {"pair": ["surface grounds", "Ravensgate district"], "result": "Surface overlay only; district boundary frozen and no underground-access expansion."},
+    {"pair": ["library/Guild tunnel", "restricted underground"], "result": "No 3D intersection: tunnel y58..64; exclusion y-64..35; vertical buffer y36..43."},
+    {"pair": ["library/Guild tunnel", "TE-LIBRARY-04X"], "result": "Intentional west endpoint; exact cell interface required."},
+    {"pair": ["library/Guild tunnel", "TE-GUILDHALL-01"], "result": "Intentional east endpoint; exact cell interface required."},
+    {"pair": ["surface water features", "restricted underground"], "result": "Potential vertical hydrology risk; closed basins, exact source cells, liner/leak test and post-fill neighbor-fluid census required."},
+    {"pair": ["pavilion grounds", "C01 east relocation"], "result": "No overlap."},
+    {"pair": ["pavilion grounds", "northeast data campus"], "result": "No overlap."},
+    {"pair": ["pavilion grounds", "observatory estate"], "result": "No overlap."}
+  ],
+  "releaseGates": [
+    "fresh same-moment snapshot and database export",
+    "exact surface land/water/vegetation and grade map",
+    "Ravensgate exclusion and buffers imported as protected 3D features",
+    "zero civilian target cells in exclusion or vertical buffer",
+    "closed-basin proof for both pools and fountain",
+    "two independent public routes around every water feature",
+    "library–pavilion–Guild Hall bidirectional route and sightline pass",
+    "secret tunnel exact fluid/gravity/block-entity and one-cell-halo preflight",
+    "zero network branches from the secret tunnel",
+    "matched before/after maps, elevations, sections and screenshots"
+  ]
+}

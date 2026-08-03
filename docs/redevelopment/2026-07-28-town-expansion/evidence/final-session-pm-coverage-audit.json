@@ -1,0 +1,929 @@
+{
+  "schemaVersion": 1,
+  "auditId": "REDEV-2026-07-28-FINAL-SESSION-PM-COVERAGE-AUDIT",
+  "generatedAtUtc": "2026-07-28T15:14:16Z",
+  "mode": "independent-read-only-evidence-audit",
+  "overallStatus": "NEW_CANONICAL_OFFLINE_AND_ENTITY_GATES_PASS_PRIOR_REPIN_ATTEMPT_FAILED_AND_RECOVERED_LIVE_RELEASE_UNCOMMITTED_CLOSEOUT_PENDING",
+  "worldMutationPerformed": false,
+  "databaseMutationPerformed": false,
+  "boxMutationPerformed": false,
+  "sitesMutationPerformed": false,
+  "truthPolicy": [
+    "Requested, designed, generated, preflighted, committed, verified, imported, rendered, published, and Box-verified are independent states.",
+    "Compiler coverage and passing offline gates do not prove that blocks exist in the live world.",
+    "Camera and map manifests are capture contracts, not rendered post-release evidence.",
+    "A predecessor Sites deployment or database release does not publish the current Town Expansion.",
+    "A failed or hash-stale transaction, entity gate, draft register, or draft dossier cannot close the current canonical package.",
+    "Successful bounded recovery of an executed prefix restores source-state evidence for that prior package but does not convert the failed transaction into a commit.",
+    "The current canonical package was regenerated after the recovered failed attempt; prior-repin live artifacts do not bind or authorize the new hashes."
+  ],
+  "canonicalPackage": {
+    "packageId": "town-expansion-r1-2026-07-28",
+    "status": "COMMISSION_STAGE_READY_C01_RETIREMENT_AND_P01_RECOVERY_DEFERRED",
+    "sourceSnapshot": {
+      "path": "data/worldsnap-town-expansion-frozen-rebase-20260728T141025Z/region",
+      "sha256": "de807a2d4a1cb597bd259d55d1d7c0cda8b710af5017497e75660c8a976603f5",
+      "regionFileCount": 30
+    },
+    "forward": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.txt",
+      "sha256": "1a10954b1ae6ae702dcc01cd92d39adbb3820e3feff5461f3caa1283a578b896"
+    },
+    "rollback": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.rollback.txt",
+      "sha256": "1edf4d1004ce5ff59b5c15cb8f1d16ea9de04f52b47a68aad7f0828a58ab88de"
+    },
+    "report": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.report.json",
+      "sha256": "d855d0072a213c27ebedc2b36ec53761363568e9de963650a8563a9179d81930"
+    },
+    "ownershipManifest": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.manifest.json",
+      "sha256": "3073ef269d07f720ef62708b1f673d179a5f641fd19856b61f19e2eae4e78510",
+      "status": "EXACT_MODULE_OWNERSHIP_MANIFEST",
+      "allSixChecksPassed": true
+    },
+    "counts": {
+      "operationGroups": 483016,
+      "guardedCommands": 1660,
+      "targetCells": 3665580,
+      "exactStateGuardedCells": 3665580,
+      "unguardedCells": 0,
+      "skippedCells": 0,
+      "scopeCount": 268
+    },
+    "compilerAcceptanceExceptions": {
+      "c01ExactSourceRetirementAccepted": false,
+      "c01FullParkingRecoveryAccepted": false,
+      "sourceRetirementScopeTargetCells": 0
+    },
+    "releaseState": {
+      "generated": true,
+      "offlineManifestQaPassed": true,
+      "globalCrossScopeGatePassed": true,
+      "sourcePreflightPassed": true,
+      "strictStreamingDryRunPassed": true,
+      "currentHashLiveEntityGatePresent": true,
+      "currentHashLiveEntityGatePassed": true,
+      "currentHashLiveTransactionPresent": false,
+      "priorRepinLiveAttemptFailed": true,
+      "priorRepinAttemptSuccessfulGroupsBeforeFailure": 123,
+      "priorRepinGenericRollbackFailed": true,
+      "boundedExecutedPrefixRecoveryPassed": true,
+      "executedPrefixSourceRestorationPreflightPassed": true,
+      "currentHashCommittedTransactionPassed": false,
+      "acceptedDistinctPostSnapshotPresent": false,
+      "independentPostReleaseQaPassed": false,
+      "postReleaseMediaQaPassed": false,
+      "databaseImportedAndVerified": false,
+      "currentExpansionSitesPublished": false,
+      "currentExpansionBoxVerified": false
+    }
+  },
+  "evidenceRegistry": {
+    "E01_FINAL_REPORT": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.report.json",
+      "sha256": "d855d0072a213c27ebedc2b36ec53761363568e9de963650a8563a9179d81930",
+      "status": "COMMISSION_STAGE_READY_C01_RETIREMENT_AND_P01_RECOVERY_DEFERRED",
+      "use": "Current canonical compile-time program, scope, operation, and acceptance facts."
+    },
+    "E02_OWNERSHIP_MANIFEST": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.manifest.json",
+      "sha256": "3073ef269d07f720ef62708b1f673d179a5f641fd19856b61f19e2eae4e78510",
+      "status": "EXACT_MODULE_OWNERSHIP_MANIFEST",
+      "use": "Current source snapshot and Manager Vale ownership/isolation checks."
+    },
+    "E03_GLOBAL_INTERFACE_GATE": {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/evidence/town-expansion-global-cross-scope-interface-audit.json",
+      "sha256": "86e296a462b72eb33822e73634a738d5fcae296bdd115d30a5c2234d41b2bd6c",
+      "status": "GLOBAL_CROSS_SCOPE_INTERFACE_GATE_PASS",
+      "facts": {
+        "canonicalOwnershipAssignments": 79,
+        "reviewedInterfaces": 13,
+        "observedInterfaces": 13,
+        "unreviewedInterfaces": 0,
+        "liveWorldMutated": false
+      }
+    },
+    "E04_ATOMIC_MANIFEST_QA": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.live-safety-final-atomic-manifest-qa.json",
+      "sha256": "09d5553fde76be28fe5230c0a859371cb2873f77690a0d7bef0417059cb11a85",
+      "status": "PASS",
+      "facts": {
+        "offline": true,
+        "passedPackages": 1,
+        "uniqueTargetCells": 3665580,
+        "crossPackageIntersectionCells": 0
+      }
+    },
+    "E05_SOURCE_PREFLIGHT": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.live-safety-final-prerelease-preflight.json",
+      "sha256": "7c72f683852255a0560ed6bdceb2328a9d27e88e001d630603a93ac65da61194",
+      "status": "PASS",
+      "facts": {
+        "operationCount": 483016,
+        "passed": 483016,
+        "failed": 0
+      }
+    },
+    "E06_STRICT_DRY_RUN": {
+      "path": "data/buildops/town-expansion-r1-2026-07-28.paper-strict-final-streaming-strict-dry-run.json",
+      "sha256": "4b38feb325ae2adda2322256d54781158e8ca6c715ce86ed2f1df25eaa12c29b",
+      "status": "dry_run",
+      "facts": {
+        "operationSha256": "1a10954b1ae6ae702dcc01cd92d39adbb3820e3feff5461f3caa1283a578b896",
+        "sourceOperationCount": 484676,
+        "sourceGroupCount": 484676,
+        "expandedCommandCount": 484690,
+        "failedGroups": 0,
+        "failedCommands": 0
+      }
+    },
+    "E07_STREAMING_RED_TEAM": {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/evidence/town-rcon-streaming-red-team-audit.paper-strict-final.json",
+      "sha256": "a0df49c479e5b2e7d497d2f281e99ccfd3c16099454aac55613fc23bc5e67200",
+      "status": "ACCEPTED_FOR_BOUNDED_STREAMING",
+      "facts": {
+        "worldReleaseAuthorized": false,
+        "worldMutationPerformed": false,
+        "operationSha256": "1a10954b1ae6ae702dcc01cd92d39adbb3820e3feff5461f3caa1283a578b896"
+      }
+    },
+    "E08_PRIOR_REPIN_FAILED_TRANSACTION": {
+      "path": "data/world-review/archive/town-expansion-r1-paper-strict-predecessor-failed-attempt-20260728T1451Z/town-expansion-r1-atomic-transaction-final-20260728.json",
+      "sha256": "78f9e4793c2992a82fb36e4f6e9bda50d49b372856d8c67e0ce59176fd21bf1c",
+      "status": "rollback-failed",
+      "facts": {
+        "forwardSha256": "4e8cb8fd17ac03d3d4da55d8cc3228c91aa97c17c631fcdec56133df238ede1e",
+        "rollbackSha256": "07f648600d7bd6a0941f9c88e13d083c2b746ff92ca56734b8af30bf6a4667bf",
+        "matchesCurrentCanonicalHashes": false,
+        "packageExecutionStatus": "failed",
+        "genericRollbackStatus": "failed"
+      },
+      "use": "Prior-repin live failure evidence only; it does not bind or commit the newly regenerated canonical package."
+    },
+    "E09_PRIOR_REPIN_ENTITY_GATE": {
+      "path": "data/world-review/town-expansion-r1-live-entity-gate-final-frozen-20260728.json",
+      "sha256": "95b9063fe623769f5614290c852a43a539258942f13340377f5cb365cb83ed47",
+      "status": "PASS",
+      "facts": {
+        "generatedAtUtc": "2026-07-28T14:48:24Z",
+        "operationSha256": "4e8cb8fd17ac03d3d4da55d8cc3228c91aa97c17c631fcdec56133df238ede1e",
+        "currentOperationSha256": "1a10954b1ae6ae702dcc01cd92d39adbb3820e3feff5461f3caa1283a578b896",
+        "matchesCurrentCanonicalHash": false,
+        "blockingEntityHits": 0,
+        "note": "This prior-hash gate preceded and was consumed by the failed live attempt; the regenerated current package requires a new same-moment gate."
+      }
+    },
+    "E10_MEDIA_CROSSWALK": {
+      "path": "data/exports/town-expansion-media-2026-07-28/object-media-database-crosswalk.json",
+      "sha256": "2a8b55c49cd56512295a457244133ac6625e20318073c8897aef7b44110ece2b",
+      "status": "POST_RELEASE_CAPTURE_PENDING",
+      "facts": {
+        "exactObjects": 340,
+        "reportScopes": 268,
+        "shots": 589,
+        "maps": 13,
+        "combinedCaptures": 1178,
+        "liveWorldMutated": false
+      }
+    },
+    "E11_CAPTURE_MANIFEST": {
+      "path": "data/exports/town-expansion-media-2026-07-28/capture-manifest.json",
+      "sha256": "798d9661b281153797c22e4a86cdb3952082ca463d7ec6928e806eabafde817d",
+      "status": "POST_RELEASE_CAPTURE_PENDING",
+      "facts": {
+        "pass1ManifestSha256": "e21eafdc2216575d76d4fbf9a6bad70e5fafaf7b50f2cea40ce876a669fe09c3",
+        "pass2ManifestSha256": "992dd10a2482b6e7098f3b44077a924ff05890acaf0bd8051a4329c2c8ff70e7",
+        "captureReportPresent": false
+      }
+    },
+    "E12_DATABASE_GAP": {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/evidence/town-expansion-database-publication-gap-audit.json",
+      "sha256": "24bff6ea245c9f696ed423f3d0556edb4bfc2c8052853175753b2e7901a08d82",
+      "status": "BASELINE_DATABASE_PRESENT_TOWN_EXPANSION_NOT_IMPORTED"
+    },
+    "E13_DRAFT_FINAL_GATE": {
+      "path": "data/world-review/town-expansion-artifact-manifest-2026-07-28.draft.json",
+      "sha256": "b137f382a99c696ba2655aead63dec7d37d718e0416a64a051900d04182c66e0",
+      "status": "DRAFT_NOT_AS_BUILT_REGISTER",
+      "facts": {
+        "finalGateStatus": "FAIL_FINAL_INPUTS_INCOMPLETE",
+        "finalGatePassed": false,
+        "failureCount": 7
+      }
+    },
+    "E14_BOX_SITES_AUDIT": {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/external-publication-audit.json",
+      "sha256": "939f3af849ede6f8c99ac1f9987d7df00776de42ff64ff641180465e33d57388",
+      "status": "MIXED",
+      "facts": {
+        "box": "PENDING_SYNC",
+        "sitesPredecessorVersion": 4,
+        "sitesPredecessorStatus": "HEALTHY_CURRENT_VERSION",
+        "sitesCurrentExpansionIncluded": false
+      }
+    },
+    "E15_MEDIA_FILE_AUDIT": {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/media-file-verification-audit.json",
+      "sha256": "de340f9bb4a9cf81bc2132b0846e2d716c29c1de21081512af418e7f788c2b9e",
+      "status": "POINT_IN_TIME_PRE_FINAL_EXPANSION",
+      "facts": {
+        "currentFiles": "PASS_STRUCTURAL_AND_DECODE_QA",
+        "finalTownExpansionMedia": "PENDING",
+        "boxHandoff": "PENDING_SYNC"
+      }
+    },
+    "E16_CITIZEN_AUDIT": {
+      "path": "docs/citizen-fleet/2026-07-28-five-bot-audit.json",
+      "sha256": "0214c0c4ffa233e2e89a8f093816137be629e3d681b45d5fcfe670dfa019ded5",
+      "status": "SOURCE_AND_PRE_EXPANSION_ROUTE_GATES_PASS_RUNTIME_OBSERVATION_PENDING"
+    },
+    "E17_CITIZEN_RECHECK": {
+      "path": "docs/citizen-fleet/2026-07-28-five-bot-runtime-readiness-recheck.json",
+      "sha256": "6d7483fda14481a3579308bfc55fcefca265dd73c6daa29cecb1b4e56f284966",
+      "status": "SOURCE_READY_LIVE_ACTIVATION_BLOCKED_ON_POST_RELEASE_ROUTE",
+      "facts": {
+        "service": "inactive",
+        "testsPassed": 60,
+        "testsFailed": 0,
+        "oldRouteCells": 498,
+        "uniqueOldRouteCellsTouchedByExpansion": 262
+      }
+    },
+    "E18_SESSION_DOSSIER": {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/session-pm-dossier.md",
+      "sha256": "249b1894bca6356e05a53ac3365f048d4ec8e78391df8656dca311089f202035",
+      "status": "LIVE_DOCUMENT_WITH_STALE_PRE_REPIN_HASHES",
+      "use": "Request/WBS chronology and truth vocabulary only; current package hashes come from E01-E07."
+    },
+    "E19_DRAFT_REQUIREMENTS": {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/requirements-status-matrix.draft.json",
+      "sha256": "f4c29bc24d180b6b6d4717d9307f9369dec9a09435083978f8ae93af332c9e3e",
+      "status": "DRAFT_NOT_AS_BUILT",
+      "facts": {
+        "generatedBeforeFinalRepin": true,
+        "finalGateStatus": "FAIL_FINAL_INPUTS_INCOMPLETE"
+      }
+    },
+    "E20_PREDECESSOR_SITES_QA": {
+      "path": "world-showcase/public/reports/post-deployment-qa.json",
+      "sha256": "0e3140f01614c21e4dfccad6613cbe0ae17bbf3f865cfbd1eaa2570106b4ba91",
+      "status": "PASS_FOR_PREDECESSOR_REDEVELOPMENT",
+      "facts": {
+        "generatedAtUtc": "2026-07-28T00:37:20.690Z",
+        "currentTownExpansionCovered": false
+      }
+    },
+    "E21_PRIOR_REPIN_EXECUTION": {
+      "path": "data/world-review/archive/town-expansion-r1-paper-strict-predecessor-failed-attempt-20260728T1451Z/town-expansion-r1-2026-07-28.execution.json",
+      "sha256": "14e3cf5896f528dd330e66a682e0bdcb0c232e07447c18a9e62ae5c0de0dac46",
+      "status": "failed",
+      "facts": {
+        "operationSha256": "4e8cb8fd17ac03d3d4da55d8cc3228c91aa97c17c631fcdec56133df238ede1e",
+        "strictNoop": true,
+        "successfulGroups": 123,
+        "failedGroups": 1,
+        "failure": "line 144: strict-noop (noop)",
+        "stoppedAtFirstFailedGroup": true,
+        "allTemporaryForceLoadsReleased": true
+      }
+    },
+    "E22_PRIOR_REPIN_GENERIC_ROLLBACK": {
+      "path": "data/world-review/archive/town-expansion-r1-paper-strict-predecessor-failed-attempt-20260728T1451Z/town-expansion-r1-2026-07-28.emergency-rollback.execution.json",
+      "sha256": "2632a397fe3da2583d987fd98a89b2af92862e1fd80793fb3cfd00680ab89a69",
+      "status": "failed",
+      "facts": {
+        "operationSha256": "07f648600d7bd6a0941f9c88e13d083c2b746ff92ca56734b8af30bf6a4667bf",
+        "successfulGroups": 0,
+        "failedGroups": 1,
+        "failure": "line 8: unknown-reply (unknown)"
+      }
+    },
+    "E23_PREFIX_RECOVERY": {
+      "path": "data/world-review/archive/town-expansion-r1-paper-strict-predecessor-failed-attempt-20260728T1451Z/town-expansion-r1-prefix123-recovery-execution-20260728.json",
+      "sha256": "729bb0722802302ead844be1e435c1d1c46889cb3596bbf26a1f59b72f919b9e",
+      "status": "complete",
+      "facts": {
+        "operationSha256": "44e5b242e467d16abb74c6e764c06c8ecd0e51ddb81fcafbc01ef0a5cd9c0996",
+        "sourceGroups": 123,
+        "successfulGroups": 123,
+        "failedGroups": 0,
+        "strictNoop": true
+      }
+    },
+    "E24_PREFIX_SOURCE_RESTORATION": {
+      "path": "data/world-review/archive/town-expansion-r1-paper-strict-predecessor-failed-attempt-20260728T1451Z/town-expansion-r1-prefix123-source-restoration-preflight-20260728.json",
+      "sha256": "0ac6738ff97b73e4c41df06dc54a964da5fc744db44d89a06864a654a459dc55",
+      "status": "PASS",
+      "facts": {
+        "operationCount": 123,
+        "passed": 123,
+        "failed": 0
+      }
+    },
+    "E25_EARLIER_OBSOLETE_FAILED_TRANSACTION": {
+      "path": "data/world-review/town-expansion-r1-atomic-transaction-20260728.json",
+      "sha256": "7265cdcd426b4bdd434620100a2dfc325dc4af4e19c43f5f0174f93402c12c57",
+      "status": "rollback-failed",
+      "facts": {
+        "forwardSha256": "540a71756e31b7fee76235083f877e85af7cecefabb476d2ff88b61a206e13c0",
+        "rollbackSha256": "46948f87dd0c7621d1c3b13a2ec45ebe338dd430530181b3a6935dcef930a532",
+        "matchesCurrentCanonicalHashes": false
+      }
+    },
+    "E26_CURRENT_OFFLINE_RELEASE_GATE": {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/evidence/town-expansion-frozen-canonical-offline-gate.json",
+      "sha256": "1264d84e26b6dac3e7722557eba615e249b2d070f85d5e0792143c9c53d88382",
+      "status": "PASS_OFFLINE_RELEASE_INTERFACES",
+      "facts": {
+        "forwardSha256": "1a10954b1ae6ae702dcc01cd92d39adbb3820e3feff5461f3caa1283a578b896",
+        "rollbackSha256": "1edf4d1004ce5ff59b5c15cb8f1d16ea9de04f52b47a68aad7f0828a58ab88de",
+        "reportSha256": "d855d0072a213c27ebedc2b36ec53761363568e9de963650a8563a9179d81930",
+        "ownershipManifestSha256": "3073ef269d07f720ef62708b1f673d179a5f641fd19856b61f19e2eae4e78510",
+        "snapshotSha256": "de807a2d4a1cb597bd259d55d1d7c0cda8b710af5017497e75660c8a976603f5",
+        "worldReleaseAuthorized": false,
+        "worldMutationPerformed": false,
+        "liveSystemsAccessed": false,
+        "focusedTestsPassed": 51,
+        "focusedTestsFailed": 0
+      },
+      "use": "Current-hash umbrella binding for frozen source preflight, atomic manifest, strict streaming, and focused offline tests; it is not live-release authorization."
+    },
+    "E27_CURRENT_ENTITY_GATE": {
+      "path": "data/world-review/town-expansion-r1-live-entity-gate-topdown-strict-final-frozen-20260728.json",
+      "sha256": "f4bb103f5c22e425bccfae0d58caedac7514600f49453e706ea93ac96460fcc8",
+      "status": "PASS",
+      "facts": {
+        "generatedAtUtc": "2026-07-28T15:12:39Z",
+        "operationSha256": "1a10954b1ae6ae702dcc01cd92d39adbb3820e3feff5461f3caa1283a578b896",
+        "onlinePlayers": 0,
+        "packagesPassed": 1,
+        "packagesFailed": 0,
+        "entitiesReturnedInEnvelopes": 35,
+        "blockingEntityHits": 0,
+        "requiredChunks": 2382,
+        "allTemporaryChunksReleased": true,
+        "finalForceLoadSetRestored": true,
+        "blockOrEntityMutation": false
+      },
+      "use": "Current canonical live entity/player clearance. It proves zero blockers at the recorded moment; it does not prove block execution or transaction commit."
+    }
+  },
+  "coverageMatrix": [
+    {
+      "id": "REQ-BUNKER-ESTATE",
+      "request": "Bunker and owner-estate program, including the oasis mini-bunker, rebuilt C01, observatory mega-estate, owner circulation, and parking recovery.",
+      "status": "PARTIAL_OFFLINE_COMMISSION_PACKAGE_PREFLIGHTED_RETIREMENT_AND_PARKING_RECOVERY_DEFERRED",
+      "state": {
+        "designed": true,
+        "generated": true,
+        "preflighted": true,
+        "committed": false,
+        "verifiedPostState": false
+      },
+      "supportedFacts": [
+        "The final report includes TE-OASIS-BUNKER-01, TE-OBS-OWNER-MEGA-ESTATE, TE-OBS-ESTATE-SOUTH-COURT, the Gilded Raven/owner corridor, five C01 ordinary levels, owner club arrival, owner residence, and c01_owner_tunnel_detour.",
+        "C01 compile coverage records 885022 classified cells, 165 occupied room/route objects, 24 secure-garage vehicles, five ordinary levels plus two owner levels, airlocked entrances, and minimum three-block natural cover.",
+        "The report explicitly marks C01 source retirement and full P01 parking recovery false/deferred; c01_source_exact_retirement has zero target cells."
+      ],
+      "evidenceIds": [
+        "E01_FINAL_REPORT",
+        "E03_GLOBAL_INTERFACE_GATE",
+        "E04_ATOMIC_MANIFEST_QA",
+        "E05_SOURCE_PREFLIGHT",
+        "E06_STRICT_DRY_RUN"
+      ],
+      "blockerIds": [
+        "B01",
+        "B02",
+        "B03",
+        "B04"
+      ]
+    },
+    {
+      "id": "REQ-CIVIC",
+      "request": "Fourfold civic library, monumental Guild Hall, Russian-referenced pavilion, terraces, gardens, pools, statues, monument, fountain, and library-Guild secret archive route.",
+      "status": "OFFLINE_GENERATED_AND_PREFLIGHTED_NOT_LIVE",
+      "state": {
+        "designed": true,
+        "generated": true,
+        "preflighted": true,
+        "committed": false,
+        "verifiedPostState": false
+      },
+      "supportedFacts": [
+        "The final report asserts the four-times library envelope, two-level library terrace, monumental Guild Hall, two basements, three stories, four kitchens, screens before seating, six garth statues, two reflecting pools, six pavilion statues, civic monument, fountain, and isolated secret route.",
+        "Exact scopes include TE-LIBRARY-04X, TE-LIBRARY-TERRACE, TE-GUILDHALL-01, TE-RUSSIAN-TEREM-PAVILION, TE-PAVILION-EAST-CIVIC-GROUNDS, four water/monument scopes, and TE-LIB-GUILD-SECRET-01."
+      ],
+      "evidenceIds": [
+        "E01_FINAL_REPORT",
+        "E03_GLOBAL_INTERFACE_GATE",
+        "E05_SOURCE_PREFLIGHT",
+        "E06_STRICT_DRY_RUN"
+      ],
+      "blockerIds": [
+        "B01",
+        "B02",
+        "B03"
+      ]
+    },
+    {
+      "id": "REQ-STADIUM-PIER-LAKE-PARKS",
+      "request": "Ceremonial stadium approach, billboards, intentional pier, rides, crater lake/quay/green space, facing dry and water parks, westward greenway, and lakeside housing.",
+      "status": "OFFLINE_GENERATED_AND_PREFLIGHTED_NOT_LIVE",
+      "state": {
+        "designed": true,
+        "generated": true,
+        "preflighted": true,
+        "committed": false,
+        "verifiedPostState": false
+      },
+      "supportedFacts": [
+        "Compile coverage records a widened stadium road, six billboards, amusement pier, Ferris wheel, roller coaster, steak house, shrimp house, and 1443 crater-lake columns.",
+        "Exact dry-park scopes run from TE-WL-RAVENCREST-GATE through TE-WL-RAVENCREST-MIDWAY; water-park scopes run from TE-WL-NORTHWIND through TE-WL-NORTHWIND-BATH.",
+        "TE-WL-PARKWAY-EXTENSION, TE-WL-CRATER-WEST-GREEN-LINK, TE-WL-HARBORLIGHT, and TE-WL-HL-A/B/C plus attached garages cover the greenway/public lake walk and Hampton-style housing package."
+      ],
+      "evidenceIds": [
+        "E01_FINAL_REPORT",
+        "E03_GLOBAL_INTERFACE_GATE",
+        "E05_SOURCE_PREFLIGHT",
+        "E10_MEDIA_CROSSWALK"
+      ],
+      "blockerIds": [
+        "B01",
+        "B02",
+        "B03",
+        "B06"
+      ]
+    },
+    {
+      "id": "REQ-MAINSTREET",
+      "request": "MainStreet housing/workforce link, every residential garage attached, large-house four/six-car garages, employee lounge, and expanded dry underground warehouse/full parking.",
+      "status": "PARTIAL_OFFLINE_GENERATED_AND_PREFLIGHTED_FULL_PARKING_RECOVERY_DEFERRED",
+      "state": {
+        "designed": true,
+        "generated": true,
+        "preflighted": true,
+        "committed": false,
+        "verifiedPostState": false
+      },
+      "supportedFacts": [
+        "The final report includes two southwest workforce-housing projects, shared court, staff path, and employee lounge.",
+        "All 18 TE-ATTACHED-GARAGE scopes are present; the Manager Vale module adds five attached garages and 24 garage bays inside its isolated 37584-cell module.",
+        "TE-MSA-UW01-DRY-CORE and TE-MSA-UW01-DRY-EAST-WINGS provide a 5529-cell dry-core floor plate, two remote egress cores, two dry east wings, and a 2807-cell east-wing floor plate while preserving the excluded aquifer/lava seam.",
+        "Full parking footprint recovery is explicitly false and deferred until new C01 commissioning and exact source retirement."
+      ],
+      "evidenceIds": [
+        "E01_FINAL_REPORT",
+        "E02_OWNERSHIP_MANIFEST",
+        "E03_GLOBAL_INTERFACE_GATE",
+        "E05_SOURCE_PREFLIGHT"
+      ],
+      "blockerIds": [
+        "B01",
+        "B02",
+        "B03",
+        "B04"
+      ]
+    },
+    {
+      "id": "REQ-TUNNELS",
+      "request": "Modern standardized tunnels, the separate library-Guild route, C01 owner tunnel, and long private Gilded Raven-observatory owner corridor.",
+      "status": "MIXED_PREDECESSOR_T2B_ACCEPTED_CURRENT_EXPANSION_TUNNELS_OFFLINE_ONLY",
+      "state": {
+        "predecessorAccepted": true,
+        "currentDesigned": true,
+        "currentGenerated": true,
+        "currentPreflighted": true,
+        "currentCommitted": false,
+        "currentVerifiedPostState": false
+      },
+      "supportedFacts": [
+        "The session dossier records the predecessor Wave 2 Raven Rock T2b release as accepted; that does not prove the current expansion.",
+        "Current scopes include TE-RR-MODERN-CORRIDOR-PILOT-01, TE-LIB-GUILD-SECRET-01, c01_owner_tunnel_detour, and TE-OWNER-CORRIDOR-GRT-OBS.",
+        "Compile coverage records a five-by-five modern pilot, a 19721-cell/356-centerline-cell C01 owner tunnel, and a 928-block, five-by-five owner corridor with seven rest suites."
+      ],
+      "evidenceIds": [
+        "E01_FINAL_REPORT",
+        "E18_SESSION_DOSSIER",
+        "E05_SOURCE_PREFLIGHT",
+        "E06_STRICT_DRY_RUN"
+      ],
+      "blockerIds": [
+        "B01",
+        "B02",
+        "B03"
+      ]
+    },
+    {
+      "id": "REQ-WESTLIGHT",
+      "request": "Coherent Westlight stadium island, three distinct venues, aligned pedestrian mall, freight/service support, pier restaurants/rides, venue basements, and retained infinity screen.",
+      "status": "MIXED_PREDECESSOR_SCREEN_ACCEPTED_CURRENT_WESTLIGHT_EXPANSION_OFFLINE_ONLY",
+      "state": {
+        "predecessorInfinityScreenAccepted": true,
+        "currentDesigned": true,
+        "currentGenerated": true,
+        "currentPreflighted": true,
+        "currentCommitted": false,
+        "currentVerifiedPostState": false
+      },
+      "supportedFacts": [
+        "The final report records three distinct venues, 40 studio seats, two truck bays, two basement levels, four Blue Drum served levels, the main pedestrian mall, intentional pier buildings, rides, restaurants, and crater-lake links.",
+        "The media crosswalk assigns 38 exact objects to the Westlight family.",
+        "The accepted predecessor screen remains separate historical evidence; no current-expansion post-state sightline or media proof exists."
+      ],
+      "evidenceIds": [
+        "E01_FINAL_REPORT",
+        "E10_MEDIA_CROSSWALK",
+        "E18_SESSION_DOSSIER"
+      ],
+      "blockerIds": [
+        "B01",
+        "B02",
+        "B03",
+        "B06"
+      ]
+    },
+    {
+      "id": "REQ-CONCORD",
+      "request": "Complete Concord service town, motel/night court, broadcast exchange, soundstages, satellite compound, and tasteful non-graphic adult-themed interiors.",
+      "status": "OFFLINE_GENERATED_AND_PREFLIGHTED_NOT_LIVE_OR_MEDIA_REVIEWED",
+      "state": {
+        "designed": true,
+        "generated": true,
+        "preflighted": true,
+        "committed": false,
+        "verifiedPostState": false,
+        "contentMediaReviewed": false
+      },
+      "supportedFacts": [
+        "The report records 25 motel rooms, three distinct age-control entries, no graphic content in the adults-only program, one broadcast tower, nine dish analogues, and 237 Concord broadcast publication objects.",
+        "Exact scopes include gas, post, bar, Broadcast Exchange, Soundstage Annex, satellite pad, theater, dance venue, motel, and the shared Concord public realm.",
+        "The compile-time non-graphic boundary does not substitute for post-state image/content review."
+      ],
+      "evidenceIds": [
+        "E01_FINAL_REPORT",
+        "E03_GLOBAL_INTERFACE_GATE",
+        "E10_MEDIA_CROSSWALK"
+      ],
+      "blockerIds": [
+        "B01",
+        "B02",
+        "B03",
+        "B06"
+      ]
+    },
+    {
+      "id": "REQ-DATACENTER-TOWN-GREENWAY",
+      "request": "DSM/data-center campus, completed Meta/Google/LightEdge campuses, separate InfoBunker annex, holdout home, Concord road/town, shared power, worker greenway/commons, and disc golf.",
+      "status": "OFFLINE_GENERATED_AND_PREFLIGHTED_NOT_LIVE",
+      "state": {
+        "designed": true,
+        "generated": true,
+        "preflighted": true,
+        "committed": false,
+        "verifiedPostState": false
+      },
+      "supportedFacts": [
+        "The report records 24 data-campus buildings with 40 rack rows each, a NOC, 48 staff-dorm beds, DM10 as a normal hall with a separate Info annex, and no invented DSM19-39.",
+        "It records 20 completed Meta/Google/LightEdge halls, three retained expansion reserves, shared grid infrastructure, completed worker commons, and an 18-hole/par-58 disc-golf course.",
+        "Exact scopes include TE-IA-DATA-DM01..18 and DM40..45, TE-IA-INFO-ANNEX, the holdout-home family, TE-IA-DISTRICT-* campus/road/grid/commons scopes, and Concord."
+      ],
+      "evidenceIds": [
+        "E01_FINAL_REPORT",
+        "E03_GLOBAL_INTERFACE_GATE",
+        "E05_SOURCE_PREFLIGHT",
+        "E10_MEDIA_CROSSWALK"
+      ],
+      "blockerIds": [
+        "B01",
+        "B02",
+        "B03",
+        "B06"
+      ]
+    },
+    {
+      "id": "REQ-FIVE-CITIZENS",
+      "request": "Five named citizens with exact identities/roles, useful daily schedules, safe MainStreet round trips, observed runtime behavior, and five upgraded homes.",
+      "status": "HOMES_OFFLINE_GENERATED_SOURCE_READY_RUNTIME_ACTIVATION_BLOCKED",
+      "state": {
+        "fiveHomeModuleDesigned": true,
+        "fiveHomeModuleGenerated": true,
+        "fiveHomeModuleCommitted": false,
+        "citizenSourceTestsPassed": true,
+        "preExpansionLiveRoutePassed": true,
+        "postExpansionRoutePassed": false,
+        "autonomousDayNightObservationPassed": false
+      },
+      "supportedFacts": [
+        "The isolated Manager Vale module owns five homes, five attached garages/24 bays, furnishings and private suites across 37584 exact cells with zero shared-target intersections; source retirement is excluded.",
+        "Citizen source/recheck evidence names Architect/builder, Mason/miner, Scott/lumberjack, Steward/farmer, and Surveyor/guard and records 60 focused tests passed.",
+        "A 498-cell pre-expansion route passed live bidirectionally, but the expansion touches 262 unique old-route cells; the service is inactive and the old activation may not be used after release."
+      ],
+      "evidenceIds": [
+        "E01_FINAL_REPORT",
+        "E02_OWNERSHIP_MANIFEST",
+        "E16_CITIZEN_AUDIT",
+        "E17_CITIZEN_RECHECK"
+      ],
+      "blockerIds": [
+        "B02",
+        "B03",
+        "B05"
+      ]
+    },
+    {
+      "id": "REQ-MAPS",
+      "request": "Detailed district/building maps and one large map of everything.",
+      "status": "THIRTEEN_MAP_CONTRACTS_GENERATED_POST_RELEASE_MAPS_NOT_RENDERED",
+      "state": {
+        "contractGenerated": true,
+        "renderedFromAcceptedPostSnapshot": false,
+        "mediaQaPassed": false
+      },
+      "supportedFacts": [
+        "The current crosswalk and paired camera manifests specify 13 maps.",
+        "The media directory contains manifests/crosswalk only; no Town Expansion capture report or accepted post-release media report is present."
+      ],
+      "evidenceIds": [
+        "E10_MEDIA_CROSSWALK",
+        "E11_CAPTURE_MANIFEST",
+        "E15_MEDIA_FILE_AUDIT"
+      ],
+      "blockerIds": [
+        "B03",
+        "B06"
+      ]
+    },
+    {
+      "id": "REQ-SCREENSHOTS",
+      "request": "Exact-object first/second-pass screenshots for buildings, routes, underground spaces, interiors, and defect-revealing views.",
+      "status": "CAMERA_CONTRACTS_GENERATED_ZERO_ACCEPTED_POST_RELEASE_CAPTURES_EVIDENCED",
+      "state": {
+        "crosswalkGenerated": true,
+        "cameraContractGenerated": true,
+        "rendered": false,
+        "pairedMediaQaPassed": false
+      },
+      "supportedFacts": [
+        "The crosswalk covers 340 exact objects, 589 stable shots, 254 authored-detail shots, and 1178 paired capture slots.",
+        "Both pass manifests are status POST_RELEASE_CAPTURE_PENDING and forbid final/as-built labels before an accepted distinct post snapshot."
+      ],
+      "evidenceIds": [
+        "E10_MEDIA_CROSSWALK",
+        "E11_CAPTURE_MANIFEST"
+      ],
+      "blockerIds": [
+        "B03",
+        "B06"
+      ]
+    },
+    {
+      "id": "REQ-DATABASE",
+      "request": "Import every accepted object/room/route/media relation atomically and publish a read-only database census.",
+      "status": "CROSSWALK_READY_BASELINE_READ_ONLY_TOWN_EXPANSION_NOT_IMPORTED",
+      "state": {
+        "crosswalkGenerated": true,
+        "baselineReadOnlyBindingPresent": true,
+        "atomicImportPassed": false,
+        "readOnlyPublicationReportPassed": false
+      },
+      "supportedFacts": [
+        "The media contract binds read-only data/world-map.db SHA-256 1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503.",
+        "The database gap audit explicitly says BASELINE_DATABASE_PRESENT_TOWN_EXPANSION_NOT_IMPORTED.",
+        "No final Town Expansion database closeout/import ledger or accepted read-only publication report was found."
+      ],
+      "evidenceIds": [
+        "E10_MEDIA_CROSSWALK",
+        "E12_DATABASE_GAP",
+        "E13_DRAFT_FINAL_GATE"
+      ],
+      "blockerIds": [
+        "B03",
+        "B07"
+      ]
+    },
+    {
+      "id": "REQ-PDF",
+      "request": "Final detailed PM dossier PDF and final artifact/requirements registers.",
+      "status": "DRAFT_NOT_AS_BUILT_ONLY_FINAL_PDF_AND_REGISTERS_ABSENT",
+      "state": {
+        "draftHtmlPresent": true,
+        "draftRegisterPresent": true,
+        "draftRequirementsPresent": true,
+        "finalPdfPresent": false,
+        "finalRegisterPresent": false,
+        "finalRequirementsPresent": false
+      },
+      "supportedFacts": [
+        "The draft artifact manifest fails closed with seven incomplete final inputs.",
+        "The draft requirements matrix and dossier predate the final Manager Vale repin and contain stale package/scope status; they are planning evidence, not final truth."
+      ],
+      "evidenceIds": [
+        "E13_DRAFT_FINAL_GATE",
+        "E18_SESSION_DOSSIER",
+        "E19_DRAFT_REQUIREMENTS"
+      ],
+      "blockerIds": [
+        "B03",
+        "B06",
+        "B07",
+        "B08"
+      ]
+    },
+    {
+      "id": "REQ-BOX",
+      "request": "Upload and remotely verify every final PDF, screenshot, map, report, and supporting artifact in Box.",
+      "status": "CONNECTOR_READ_ONLY_CHECK_PASS_CURRENT_HANDOFF_PENDING_SYNC",
+      "state": {
+        "connectorReachable": true,
+        "currentExpansionUploaded": false,
+        "currentExpansionRemoteHashVerified": false
+      },
+      "supportedFacts": [
+        "The read-only Box audit validated the configured destination, but the durable sync ledger predates July 28 work.",
+        "Representative July 28 remote directories were absent and the decision is PENDING_SYNC."
+      ],
+      "evidenceIds": [
+        "E14_BOX_SITES_AUDIT",
+        "E15_MEDIA_FILE_AUDIT"
+      ],
+      "blockerIds": [
+        "B06",
+        "B07",
+        "B08",
+        "B10"
+      ]
+    },
+    {
+      "id": "REQ-SITES",
+      "request": "Publish the current Town Expansion maps, screenshots, plans, database objects, progress, and final PDF to the owner-only Sites atlas.",
+      "status": "PREDECESSOR_VERSION_4_HEALTHY_CURRENT_TOWN_EXPANSION_NOT_PUBLISHED",
+      "state": {
+        "predecessorVersionHealthy": true,
+        "currentExpansionSourceCommitted": false,
+        "currentExpansionVersionSaved": false,
+        "currentExpansionDeployed": false,
+        "currentExpansionProductionQaPassed": false
+      },
+      "supportedFacts": [
+        "Sites version 4 is healthy and owner-only, but its source commit predates the current Town Expansion closeout.",
+        "The predecessor post-deployment QA is dated 00:37 UTC and cannot prove the final package generated at 14:36 UTC.",
+        "The repository is dirty, so there is no evidenced exact committed current-expansion Sites source state."
+      ],
+      "evidenceIds": [
+        "E14_BOX_SITES_AUDIT",
+        "E20_PREDECESSOR_SITES_QA",
+        "E13_DRAFT_FINAL_GATE"
+      ],
+      "blockerIds": [
+        "B06",
+        "B07",
+        "B08",
+        "B09"
+      ]
+    }
+  ],
+  "blockers": [
+    {
+      "id": "B01",
+      "priority": 1,
+      "blocker": "The newly regenerated canonical forward hash has a passing live entity/player gate, but it still has no successful atomic transaction.",
+      "impact": "Zero live blockers at 15:12:39 UTC do not prove construction, commit, or installed state; if live state changes before execution the same-moment clearance must be refreshed."
+    },
+    {
+      "id": "B02",
+      "priority": 2,
+      "blocker": "No live transaction exists for the newly regenerated canonical hashes. The prior-repin attempt is rollback-failed: execution stopped after 123 successful groups at line 144 on strict-noop and generic rollback failed at line 8; bounded recovery and 123/123 source-restoration subsequently passed.",
+      "impact": "The current package has strong regenerated offline gates but no commit or installed-state claim; prior-hash recovery evidence is history, not current-package execution evidence."
+    },
+    {
+      "id": "B03",
+      "priority": 3,
+      "blocker": "No accepted distinct immutable post-release snapshot, rollback-poststate preflight, route QA, or independent Town Expansion post-release acceptance report exists.",
+      "impact": "Installed state, movement, exact rollback, and as-built truth are unverified."
+    },
+    {
+      "id": "B04",
+      "priority": 4,
+      "blocker": "C01 old-source retirement and full P01 parking recovery are intentionally absent/deferred in the current commission-stage package.",
+      "impact": "The bunker move/full-parking request remains incomplete even if the commission-stage package is later committed."
+    },
+    {
+      "id": "B05",
+      "priority": 5,
+      "blocker": "The Town Expansion intersects 262 cells of the old citizen route; the fleet service is inactive and post-release five-round-trip/day-night observation is pending.",
+      "impact": "The five citizens are not ready for autonomous activation after this release."
+    },
+    {
+      "id": "B06",
+      "priority": 6,
+      "blocker": "The 13-map/589-shot/1178-capture package is a manifest only; no accepted post-state renders, capture report, or post-release media QA exists.",
+      "impact": "No final map, screenshot, exact-object visual, or visual content-review claim is supportable."
+    },
+    {
+      "id": "B07",
+      "priority": 7,
+      "blocker": "Town Expansion database import and read-only publication reports are absent.",
+      "impact": "Object/room/route/media database completion is not evidenced."
+    },
+    {
+      "id": "B08",
+      "priority": 8,
+      "blocker": "Only draft/not-as-built documentation exists; the draft dossier/register/matrix predate the final repin and final PDF/register/matrix files are absent.",
+      "impact": "The PM closeout package is neither current nor final."
+    },
+    {
+      "id": "B09",
+      "priority": 9,
+      "blocker": "The repository has 35 modified and 109 untracked porcelain entries, and no committed/pushed Sites source bound to the current expansion is evidenced.",
+      "impact": "A reproducible current Town Expansion Sites version cannot yet be saved or deployed."
+    },
+    {
+      "id": "B10",
+      "priority": 10,
+      "blocker": "Box auto-sync is off, the durable ledger predates July 28, representative current directories were absent remotely, and no final remote-hash ledger exists.",
+      "impact": "The current handoff is not Box-verified."
+    }
+  ],
+  "orderedPmNextActions": [
+    {
+      "order": 1,
+      "action": "Preserve the prior-repin failed transaction, execution, generic rollback, bounded-prefix recovery, and source-restoration artifacts. Treat them as historical recovery evidence, not as a current-package transaction."
+    },
+    {
+      "order": 2,
+      "action": "Retain the regenerated canonical hashes and their passing current offline manifest, cross-scope, source-preflight, strict-dry-run, media-bind, and rollback-interface gates. Before live work, confirm the entire live target state—not only the recovered prior prefix—still matches the frozen source."
+    },
+    {
+      "order": 3,
+      "action": "Preserve the current PASS entity/player gate bound to forward 1a10954b…. If execution is not immediate or live state changes, rerun the same-moment clearance and again require zero blockers."
+    },
+    {
+      "order": 4,
+      "action": "Execute the bounded commission-stage package through the guarded atomic runner and require a new successful transaction ledger bound to the final forward/rollback hashes."
+    },
+    {
+      "order": 5,
+      "action": "Capture an immutable post-transaction snapshot distinct from the frozen prerequisite snapshot; preflight exact rollback against it and run independent installed-state, rollback, route, fluid, entity, and package-binding QA."
+    },
+    {
+      "order": 6,
+      "action": "After C01 commissioning and same-moment protected-NBT acceptance, generate and independently gate the deliberately deferred old-C01 retirement/P01 full-parking recovery scope; do not relabel the commission package as full completion."
+    },
+    {
+      "order": 7,
+      "action": "From the accepted final post state, regenerate the citizen route, pass live no-dig bidirectional walks and all five round trips, atomically refresh the five shift/corridor contracts, start only the systemd-owned service, and pass the 45-minute/day-night observer."
+    },
+    {
+      "order": 8,
+      "action": "Render all 13 maps and both 589-camera passes only from the accepted immutable final post snapshot; produce the capture report and pass the post-release media QA/content review."
+    },
+    {
+      "order": 9,
+      "action": "Atomically import the verified Town Expansion object/room/route/media crosswalk, then pass database integrity, foreign-key, row-count, snapshot-binding, and read-only publication reports."
+    },
+    {
+      "order": 10,
+      "action": "Regenerate the final artifact register, requirements matrix, HTML, and PDF in final/as-built mode using identical accepted evidence overrides; validate every referenced hash and file."
+    },
+    {
+      "order": 11,
+      "action": "Commit and push the exact Sites source state, save a Sites version from that state, deploy owner-only, and record production route/asset/Worker-log health for the new version."
+    },
+    {
+      "order": 12,
+      "action": "Perform the bounded Box sync of approved final artifacts and close only after the remote inventory and SHA-1 equality ledger reports zero missing, skipped, failed, or mismatched files."
+    }
+  ],
+  "repositoryState": {
+    "capturedBeforeWritingThisAudit": true,
+    "porcelainEntries": {
+      "modified": 35,
+      "added": 0,
+      "deleted": 0,
+      "untracked": 109,
+      "total": 144
+    },
+    "dirty": true,
+    "interpretation": "The working tree contains extensive user/session work. This audit makes no claim that the current source or world-showcase payload is committed, pushed, or reproducibly deployable."
+  },
+  "missingFinalArtifactsChecked": [
+    "data/world-review/town-expansion-r1-post-release-qa-2026-07-28.json",
+    "data/world-review/town-expansion-r1-post-release-media-2026-07-28.json",
+    "data/exports/town-expansion-media-2026-07-28/capture-report.json",
+    "docs/redevelopment/2026-07-28-town-expansion/master-plan.pdf",
+    "docs/redevelopment/2026-07-28-town-expansion/master-plan.html",
+    "docs/redevelopment/2026-07-28-town-expansion/artifact-register.md",
+    "docs/redevelopment/2026-07-28-town-expansion/requirements-status-matrix.json",
+    "data/world-review/town-expansion-artifact-manifest-2026-07-28.json"
+  ],
+  "conclusion": "The newly regenerated Manager Vale-integrated Town Expansion is a large, internally consistent, exact-state commission package with passing current-hash ownership, global interface, atomic-manifest, source-preflight, strict-streaming, focused-test, media-binding, and live entity/player gates. A prior-repin live attempt failed after 123 groups and its generic rollback failed; bounded 123-group recovery and source-restoration preflight then passed. Those historical live artifacts do not bind the new hashes. The current package has no transaction and is not evidenced as committed, post-state accepted, fully parking-complete, citizen-ready, rendered, database-imported, final-documented, Sites-published, or Box-verified.",
+  "validation": {
+    "jsonParsed": true,
+    "evidencePathsChecked": true,
+    "missingArtifactsExplicitlyChecked": true,
+    "reportHashesComputedAfterWrite": true
+  }
+}

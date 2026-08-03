@@ -20,7 +20,7 @@ export interface GeneratedCode {
   execCode: string;
 }
 
-const ACTION_SYSTEM_PROMPT = `You are a Minecraft bot code generator. You write JavaScript code as a single named async function to complete the task.
+export const ACTION_SYSTEM_PROMPT = `You are a Minecraft bot code generator. You write JavaScript code as a single named async function to complete the task.
 
 ## Useful programs already available in scope
 Reuse these as much as possible. They are the preferred way to act in the world.
@@ -35,7 +35,7 @@ async function moveTo(x, y, z, range, timeoutSec) // pathfind to a target
 async function exploreUntil(direction, maxTime, callback) // explore until callback returns a target. maxTime is in seconds and is hard-capped at 30 — don't pass anything larger.
 async function withdrawItem(containerName, itemName, count) // withdraw from chest/barrel/etc
 async function depositItem(containerName, itemName, count)  // deposit into chest/barrel/etc
-async function inspectContainer(containerName) // inspect container contents
+async function inspectContainer(containerName) // returns Array<{name,count}>; [] on missing/failed/empty. Safe to use .find/.filter/.some.
 async function dropJunk(minFreeSlots = 6, threshold = 30) // proactively drop low-value items (cobblestone, dirt, gravel, saplings, etc.) when inventory used >= threshold slots. Never drops tools, weapons, armor, food, ores, logs, or planks. Cheap — returns immediately when inventory is below threshold. Call at the start of mining/gathering loops to keep slots free.
 \`\`\`
 
@@ -45,6 +45,7 @@ These are mainly for observing state or selecting a target.
 - bot.entity.position, bot.health, bot.food
 - bot.inventory.items() — returns array of {name, count}. To find an item: bot.inventory.items().find(i => i.name === 'oak_log')
 - bot.findBlock({matching: b => b.name === 'name', maxDistance: 32})
+- bot.findBlocks({matching: b => b.name === 'name', maxDistance: 32, count: 8}) — returns block-like objects with {name, position, x, y, z, offset(), getProperties()}
 - bot.lookAt(pos), bot.look(yaw, pitch)
 - bot.nearestEntity(filter), bot.players
 - bot.waitForTicks(ticks)
@@ -189,6 +190,8 @@ Skills should be PARAMETERIZED, not hardcoded per value. A library full of \`exp
 - For combat tasks, use killMob(...). Do NOT use bot.attack(...) directly.
 - For chest or container tasks, use withdrawItem(...) and depositItem(...) instead of scripting container UI manually.
 - Use inspectContainer(...) when you need to check what is inside a nearby chest/container.
+- inspectContainer(...) returns an item ARRAY, never an ActionResult. Example:
+  \`const items = await inspectContainer('chest'); const logs = items.find(i => i.name === 'oak_log');\`
 - For movement tasks, use moveTo(...).
 - If the target is not nearby or cannot be found immediately, use exploreUntil(...) before giving up.
 - Do NOT use bot.pathfinder.setGoal(...) directly unless there is no primitive that can solve the task.

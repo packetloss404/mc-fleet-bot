@@ -1,0 +1,830 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedUtc": "2026-07-28T03:57:54Z",
+  "status": "RESEARCHED_PROGRAM_NOT_COORDINATE_RELEASE",
+  "liveWorldMutated": false,
+  "coordinateReleaseAuthorized": false,
+  "title": "Northeast Data-Center Megacampus Structured Program",
+  "scope": {
+    "campusType": "fictional Minecraft data-center megacampus",
+    "primaryObjectId": "DM10",
+    "primaryObjectIdMeaning": "internal Minecraft identifier only",
+    "undergroundAnnexId": "IB-ANNEX",
+    "undergroundAnnexMeaning": "fictional resilience annex inspired only by public InfoBunker descriptions",
+    "sitingPending": true,
+    "coordinates": null
+  },
+  "safety": {
+    "publicSourcesOnly": true,
+    "noNonPublicSecurityDetails": true,
+    "noSecurityInference": true,
+    "omittedTopics": [
+      "real access-control sequences",
+      "real surveillance coverage",
+      "real credentialing",
+      "real network topology",
+      "real utility entry points",
+      "real emergency response procedures",
+      "real protection specifications"
+    ],
+    "publicationLabel": "Fictional architectural interpretation; not affiliated with or a replica of Microsoft or InfoBunker."
+  },
+  "publicRecord": {
+    "greaterDesMoinesMicrosoftCampuses": {
+      "namedBuiltOrUnderConstruction": [
+        {
+          "ordinal": 1,
+          "name": "Mountain",
+          "sourceId": "WDM-2017-NAMES"
+        },
+        {
+          "ordinal": 2,
+          "name": "Alluvion",
+          "sourceId": "WDM-2017-NAMES"
+        },
+        {
+          "ordinal": 3,
+          "name": "Osmium",
+          "sourceId": "WDM-2017-NAMES"
+        },
+        {
+          "ordinal": 4,
+          "name": "Ginger East",
+          "sourceId": "WDM-FY2022"
+        },
+        {
+          "ordinal": 5,
+          "name": "Ginger West",
+          "sourceId": "WDM-FY2022"
+        }
+      ],
+      "latestReviewedPublicCount": {
+        "builtOrUnderConstruction": 5,
+        "proposed": 1,
+        "proposedPublicName": null,
+        "sourceId": "WDM-CED-2025"
+      },
+      "identifierWarning": "DSM14, DSM40, DSM44 and similar strings appear in municipal site-plan/building records. They must not be counted as separate metropolitan campuses without explicit primary-source support.",
+      "minecraftNamingRule": "DM10 remains an internal object ID and must not be presented as a real campus name."
+    }
+  },
+  "sources": [
+    {
+      "id": "WDM-2017-NAMES",
+      "organization": "City of West Des Moines",
+      "title": "Microsoft donates surplus funds to build an amphitheater and improve Great Western Trail",
+      "url": "https://www.wdm.iowa.gov/Home/Components/News/News/4727/384?arch=1",
+      "sourceClass": "municipal primary",
+      "usedFor": [
+        "Mountain, Alluvion and Osmium naming",
+        "first-through-third ordering"
+      ]
+    },
+    {
+      "id": "WDM-FY2022",
+      "organization": "City of West Des Moines",
+      "title": "Fiscal 2022 financial report",
+      "url": "https://www.wdm.iowa.gov/home/showpublisheddocument/38755/638150105216870000",
+      "sourceClass": "municipal primary",
+      "usedFor": [
+        "Ginger East and Ginger West naming",
+        "fourth-and-fifth ordering",
+        "public scale context"
+      ]
+    },
+    {
+      "id": "WDM-CED-2025",
+      "organization": "City of West Des Moines",
+      "title": "2025 Community and Economic Development Annual Report",
+      "url": "https://www.wdm.iowa.gov/home/showpublisheddocument/44690/639053787602700000",
+      "sourceClass": "municipal primary",
+      "usedFor": [
+        "five campuses built or under construction",
+        "sixth campus proposed",
+        "no reviewed public name for sixth proposal"
+      ]
+    },
+    {
+      "id": "WDM-PZ-2021",
+      "organization": "City of West Des Moines",
+      "title": "Planning and Zoning Commission agenda, 2021-06-14",
+      "url": "https://www.wdm.iowa.gov/home/showpublisheddocument/34254/637590299587870000",
+      "sourceClass": "municipal primary",
+      "usedFor": [
+        "Ginger East aka DSM14",
+        "DSM identifiers are planning/building labels"
+      ]
+    },
+    {
+      "id": "WDM-PZ-2024",
+      "organization": "City of West Des Moines",
+      "title": "Planning and Zoning Commission minutes, 2024-11-11",
+      "url": "https://www.wdm.iowa.gov/home/showpublisheddocument/42285/638678876877800000",
+      "sourceClass": "municipal primary",
+      "usedFor": [
+        "DSM44 described as fifth of six buildings on one campus",
+        "campus-count versus building-count distinction"
+      ]
+    },
+    {
+      "id": "MS-IOWA",
+      "organization": "Microsoft",
+      "title": "Microsoft Local - Iowa",
+      "url": "https://local.microsoft.com/communities/americas/greater-des-moines/",
+      "sourceClass": "corporate primary",
+      "usedFor": [
+        "Greater Des Moines operational presence",
+        "community-facing context"
+      ]
+    },
+    {
+      "id": "MS-GINGER-EAST",
+      "organization": "Microsoft",
+      "title": "Ginger East datacenter construction update",
+      "url": "https://local.microsoft.com/blog/ginger-east-datacenter-construction-update/",
+      "sourceClass": "corporate primary",
+      "usedFor": [
+        "public construction name",
+        "mid-2028 estimate",
+        "completion does not imply operation"
+      ]
+    },
+    {
+      "id": "MS-GINGER-WEST",
+      "organization": "Microsoft",
+      "title": "Ginger West datacenter construction update",
+      "url": "https://local.microsoft.com/blog/ginger-west-datacenter-construction-update/",
+      "sourceClass": "corporate primary",
+      "usedFor": [
+        "public construction name",
+        "summer-2028 estimate",
+        "completion does not imply operation"
+      ]
+    },
+    {
+      "id": "MS-TOUR",
+      "organization": "Microsoft",
+      "title": "We Live in the Cloud public datacenter tour",
+      "url": "https://datacenters.microsoft.com/tour/html-version/",
+      "sourceClass": "corporate primary",
+      "usedFor": [
+        "visitor-gallery subjects",
+        "operations-room functional categories"
+      ],
+      "securityHandling": "Only non-tactical functional categories retained."
+    },
+    {
+      "id": "MS-VIRTUAL-TOUR-FEATURE",
+      "organization": "Microsoft",
+      "title": "Microsoft's virtual datacenter grounds the cloud in reality",
+      "url": "https://news.microsoft.com/source/features/innovation/microsofts-virtual-datacenter-grounds-the-cloud-in-reality/",
+      "sourceClass": "corporate primary",
+      "usedFor": [
+        "hot-aisle/cold-aisle public explanation",
+        "separate digital visitor experience precedent"
+      ],
+      "securityHandling": "Security details in the source were not copied into the program."
+    },
+    {
+      "id": "DOE-DC-2024",
+      "organization": "U.S. Department of Energy",
+      "title": "Best Practices Guide for Energy-Efficient Data Center Design",
+      "url": "https://www.energy.gov/sites/default/files/2024-07/best-practice-guide-data-center-design.pdf",
+      "sourceClass": "federal primary guidance",
+      "usedFor": [
+        "front-to-back airflow",
+        "back-to-back racks",
+        "hot/cold aisle separation",
+        "blanking and containment"
+      ]
+    },
+    {
+      "id": "ASHRAE-CH20",
+      "organization": "ASHRAE",
+      "title": "ASHRAE Handbook Chapter 20 - Data Centers and Telecommunication Facilities",
+      "url": "https://handbook.ashrae.org/Handbooks/A19/IP/a19_ch20/a19_ch20_ip.aspx",
+      "sourceClass": "standards-body primary guidance",
+      "usedFor": [
+        "front-to-front/back-to-back arrangement",
+        "containment",
+        "future-load planning"
+      ]
+    },
+    {
+      "id": "INFOBUNKER-OVERVIEW",
+      "organization": "InfoBunker",
+      "title": "Facility overview",
+      "url": "https://www.infobunker.com/overview.shtml",
+      "sourceClass": "operator primary public page",
+      "usedFor": [
+        "underground critical-system precedent",
+        "high-level resilient infrastructure precedent"
+      ],
+      "securityHandling": "Only high-level public characteristics retained; protection details omitted."
+    },
+    {
+      "id": "INFOBUNKER-HVAC",
+      "organization": "InfoBunker",
+      "title": "Data Center HVAC",
+      "url": "https://www.infobunker.com/hvac.shtml",
+      "sourceClass": "operator primary public page",
+      "usedFor": [
+        "segregated cooling-system concept",
+        "ASHRAE environmental reference"
+      ],
+      "securityHandling": "No real equipment layout reproduced."
+    },
+    {
+      "id": "INFOBUNKER-POWER",
+      "organization": "InfoBunker",
+      "title": "Data Center Power",
+      "url": "https://www.infobunker.com/power.shtml",
+      "sourceClass": "operator primary public page",
+      "usedFor": [
+        "diagrammatic A/B power concept",
+        "conditioned power concept"
+      ],
+      "securityHandling": "No real topology, route, capacity or protection specification reproduced."
+    },
+    {
+      "id": "INFOBUNKER-DR",
+      "organization": "InfoBunker",
+      "title": "On-Site Disaster Recovery",
+      "url": "https://www.infobunker.com/dr.shtml",
+      "sourceClass": "operator primary public page",
+      "usedFor": [
+        "three 30-person recovery suites",
+        "conference, kitchen, break and shower support"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "id": "DEC-001",
+      "topic": "40-row halls",
+      "inputConcept": "one or more undifferentiated 40-row walk-through halls",
+      "decision": "retain 40 rack rows in each completed data-hall building, divided into four 10-row pods over two walk-through floors",
+      "reason": "Improves orientation, maintenance zoning, phased construction, thermal-pair legibility and future expansion.",
+      "sources": [
+        "DOE-DC-2024",
+        "ASHRAE-CH20"
+      ]
+    },
+    {
+      "id": "DEC-002",
+      "topic": "public walk-through",
+      "inputConcept": "visitors walk through operational hall aisles",
+      "decision": "create a separate six-block-clear interpretive gallery with demonstration racks and controlled observation points",
+      "reason": "Microsoft's public model is an educational virtual tour; the physical architecture can expose concepts without mixing public and operational circulation.",
+      "sources": [
+        "MS-TOUR",
+        "MS-VIRTUAL-TOUR-FEATURE"
+      ]
+    },
+    {
+      "id": "DEC-003",
+      "topic": "NOC placement",
+      "inputConcept": "NOC associated with power yard",
+      "decision": "place NOC in the admin/operations block; keep power yard separate",
+      "reason": "The operations room coordinates power, cooling, network and hall state, while the power yard is an outdoor equipment/service district.",
+      "sources": [
+        "MS-TOUR"
+      ]
+    },
+    {
+      "id": "DEC-004",
+      "topic": "auditorium and cinema",
+      "inputConcept": "connected 200-seat auditorium plus separate 200-seat cinema",
+      "decision": "approve two independent bowls sharing a lobby and support spaces",
+      "reason": "Maintains distinct stage/lecture and screen/projection functions while correcting seating and doorway orientation.",
+      "sources": []
+    },
+    {
+      "id": "DEC-005",
+      "topic": "dorms",
+      "inputConcept": "dormitories inside the megacampus program",
+      "decision": "build a 48-bed training and resilience lodge at the campus edge",
+      "reason": "Reviewed sources support training/recovery amenities, not residential rooms in production white space.",
+      "sources": [
+        "INFOBUNKER-DR"
+      ]
+    },
+    {
+      "id": "DEC-006",
+      "topic": "DM10 to underground annex connector",
+      "inputConcept": "connector from DM10 to a separate underground InfoBunker",
+      "decision": "build a fictional, isolatable, accessible connector to an independent underground resilience annex",
+      "reason": "Preserves the requested spatial narrative while explicitly avoiding a false real-world linkage or single-point dependency.",
+      "sources": [
+        "INFOBUNKER-OVERVIEW",
+        "INFOBUNKER-HVAC",
+        "INFOBUNKER-POWER",
+        "INFOBUNKER-DR"
+      ]
+    }
+  ],
+  "campusProgram": {
+    "bandsInArrivalOrder": [
+      "CIVIC_VISITOR",
+      "OPERATIONS_SPINE",
+      "DATA_HALL_FIELD",
+      "UTILITY_SERVICE",
+      "RESILIENCE_AND_EXPANSION"
+    ],
+    "dataHalls": {
+      "hallCount": 4,
+      "hallIds": [
+        "DH-A",
+        "DH-B",
+        "DH-C",
+        "DH-D"
+      ],
+      "totalRackRowsInFourBuildingResearchPrototype": 160,
+      "rackRowsPerHall": 40,
+      "floorsPerHall": 2,
+      "rackRowsPerFloor": 20,
+      "podsPerHall": 4,
+      "rackRowsPerPod": 10,
+      "thermalPairsPerFloor": 10,
+      "representationalDimensionsBlocks": {
+        "whiteSpaceClear": {
+          "width": 52,
+          "length": 78,
+          "height": 10
+        },
+        "nominalRackRowRun": 64,
+        "coldAisleClearWidth": 3,
+        "containedHotAisleClearWidth": 2,
+        "perimeterServiceAisleClearWidth": 4,
+        "transverseCrossAisleClearWidth": 5,
+        "supportGalleryWidth": 10,
+        "visitorGalleryClearWidth": 6
+      },
+      "crossAisles": {
+        "perHall": 3,
+        "locations": [
+          "row-run start",
+          "row-run midpoint",
+          "row-run end"
+        ]
+      },
+      "orientationRules": [
+        "Rack fronts face cold aisles.",
+        "Rack backs face contained hot aisles.",
+        "Nonstandard visual equipment must not break the front-to-back airflow story.",
+        "Empty rack bays receive blanking-panel treatment.",
+        "Each hall gets a distinct material/color identifier and local map.",
+        "Public circulation remains outside the operational enclosure."
+      ]
+    },
+    "visitorExperience": {
+      "routeType": "separate external interpretive loop",
+      "clearWidthBlocks": 6,
+      "stops": [
+        {
+          "sequence": 1,
+          "topic": "cloud and server-room cutaway"
+        },
+        {
+          "sequence": 2,
+          "topic": "cold aisle and contained hot aisle demonstration"
+        },
+        {
+          "sequence": 3,
+          "topic": "fictional network concept display"
+        },
+        {
+          "sequence": 4,
+          "topic": "operations room with synthetic status data"
+        },
+        {
+          "sequence": 5,
+          "topic": "mechanical, cooling and innovation"
+        }
+      ],
+      "operationalHallEntryAllowed": false,
+      "securitySimulationAllowed": false
+    },
+    "operationsBuilding": {
+      "includes": [
+        "admin",
+        "NOC",
+        "training labs",
+        "repair and staging",
+        "spares",
+        "loading interface",
+        "staff commons"
+      ],
+      "noc": {
+        "dimensionsBlocks": {
+          "width": 32,
+          "length": 26
+        },
+        "program": [
+          "three stepped operator rows",
+          "synthetic status wall",
+          "incident collaboration table",
+          "briefing room",
+          "operations manager office",
+          "staff connection to central service spine",
+          "visitor overlook showing only a fictional campus model"
+        ],
+        "inPowerYard": false
+      }
+    },
+    "powerYard": {
+      "dimensionsBlocks": {
+        "width": 90,
+        "length": 54
+      },
+      "program": [
+        "two fictional A/B visual equipment bands",
+        "vehicle maintenance loop",
+        "service aprons",
+        "opaque architectural screen",
+        "planted berm",
+        "future utility reserve strips"
+      ],
+      "designIntent": "Communicate redundancy diagrammatically without reproducing any real facility topology.",
+      "publicRouteAllowed": false,
+      "adjacentToLodge": false,
+      "adjacentToTheaterExit": false
+    },
+    "publicAssembly": {
+      "sharedLobby": {
+        "dimensionsBlocks": {
+          "width": 28,
+          "length": 22
+        },
+        "sharedProgram": [
+          "arrival",
+          "restrooms",
+          "coat and storage",
+          "cafe service",
+          "outdoor court"
+        ]
+      },
+      "auditorium": {
+        "capacity": 200,
+        "seatLayout": {
+          "rows": 10,
+          "seatsPerRow": 20
+        },
+        "audienceChamberBlocks": {
+          "width": 30,
+          "length": 34
+        },
+        "stageBlocks": {
+          "width": 24,
+          "depth": 10
+        },
+        "program": [
+          "stage",
+          "side-stage access",
+          "green room",
+          "two dressing or ready rooms",
+          "lecture storage",
+          "rear and side audience entries",
+          "front and rear accessible seating platforms",
+          "acoustic vestibules"
+        ]
+      },
+      "cinema": {
+        "capacity": 200,
+        "seatLayout": {
+          "rows": 10,
+          "seatsPerRow": 20
+        },
+        "chamberBlocks": {
+          "width": 30,
+          "length": 36
+        },
+        "screenBlocks": {
+          "width": 22,
+          "height": 10
+        },
+        "program": [
+          "raked seating",
+          "projection and AV room",
+          "rear and side audience entries",
+          "acoustic vestibules",
+          "independent exit path"
+        ],
+        "doorOnScreenWallAllowed": false,
+        "seatingFacesScreen": true
+      },
+      "opensIntoOperationalDataHall": false
+    },
+    "trainingResilienceLodge": {
+      "bedCount": 48,
+      "stories": 2,
+      "dimensionsBlocks": {
+        "width": 64,
+        "length": 42
+      },
+      "level1": [
+        "reception",
+        "two training classrooms",
+        "shared kitchen and dining",
+        "lounge",
+        "laundry",
+        "showers",
+        "flexible team rooms"
+      ],
+      "level2": [
+        "24 twin rooms"
+      ],
+      "campusPosition": "public and staff edge",
+      "utilityYardBufferRequired": true,
+      "labelAsRealMicrosoftDormitory": false
+    },
+    "expansionReserve": {
+      "futureHallParcels": [
+        "FUTURE DH-E",
+        "FUTURE DH-F"
+      ],
+      "parcelDimensionsBlocksEach": {
+        "width": 72,
+        "length": 98
+      },
+      "utilityCirculationReserveWidthBlocks": 16,
+      "interimUses": [
+        "managed meadow",
+        "stormwater landscape",
+        "temporary training lawn"
+      ],
+      "randomStorageAllowed": false,
+      "showAsCompletedCapacity": false
+    },
+    "undergroundAnnex": {
+      "id": "IB-ANNEX",
+      "fictional": true,
+      "affiliatedWithInfoBunker": false,
+      "replicaOfRealFacility": false,
+      "levels": [
+        {
+          "id": "B1",
+          "name": "arrival and recovery",
+          "program": [
+            "reception",
+            "three 30-seat recovery suites",
+            "conference room",
+            "kitchen",
+            "break room",
+            "showers",
+            "medical or quiet room",
+            "stores",
+            "two independent surface exits"
+          ]
+        },
+        {
+          "id": "B2",
+          "name": "colocation and operations",
+          "program": [
+            "four compact equipment rooms",
+            "repair and staging",
+            "operations desk",
+            "spares",
+            "separated support galleries"
+          ]
+        },
+        {
+          "id": "B3",
+          "name": "plant and water management",
+          "program": [
+            "fictional A/B power rooms",
+            "cooling plant rooms",
+            "drainage collection",
+            "maintenance workshop",
+            "service lift and stair core"
+          ]
+        }
+      ],
+      "independentSystemsRequired": [
+        "power",
+        "cooling",
+        "network",
+        "drainage",
+        "surface egress"
+      ],
+      "connectorIsLifeSupportDependency": false
+    },
+    "dm10Connector": {
+      "from": "DM10 connector headhouse",
+      "to": "IB-ANNEX B1 arrival",
+      "structuralWidthBlocks": 9,
+      "clearWidthBlocks": 7,
+      "clearHeightBlocks": 6,
+      "maximumGrade": "1 block rise per 12 blocks run",
+      "landingMinimumLengthBlocks": 7,
+      "maximumRunBetweenLandingsBlocks": 36,
+      "requirements": [
+        "non-slip floor palette",
+        "continuous lighting",
+        "drainage channel and low-point sump",
+        "separate protected service chase",
+        "two-stage architectural vestibule at each end",
+        "isolation at both ends",
+        "no stair-only segment",
+        "no blind intersection",
+        "wayfinding every 24 blocks",
+        "independent surface egress from both connected facilities"
+      ],
+      "publicRoute": false,
+      "claimOfRealWorldConnection": false
+    }
+  },
+  "adjacency": {
+    "required": [
+      [
+        "visitor arrival",
+        "shared theater lobby"
+      ],
+      [
+        "shared theater lobby",
+        "datacenter gallery"
+      ],
+      [
+        "datacenter gallery",
+        "controlled hall observation points"
+      ],
+      [
+        "NOC",
+        "admin"
+      ],
+      [
+        "NOC",
+        "central operations spine"
+      ],
+      [
+        "repair and staging",
+        "loading interface"
+      ],
+      [
+        "each hall",
+        "its support galleries"
+      ],
+      [
+        "lodge",
+        "training and admin"
+      ],
+      [
+        "DM10",
+        "connector headhouse"
+      ],
+      [
+        "connector headhouse",
+        "IB-ANNEX"
+      ],
+      [
+        "future hall parcels",
+        "utility reserves and service road"
+      ]
+    ],
+    "forbidden": [
+      [
+        "public lobby",
+        "operational white space"
+      ],
+      [
+        "theater exits",
+        "power yard"
+      ],
+      [
+        "lodge",
+        "generator or mechanical screen"
+      ],
+      [
+        "NOC",
+        "power yard"
+      ],
+      [
+        "IB-ANNEX",
+        "connector as only exit"
+      ],
+      [
+        "DM10",
+        "IB-ANNEX shared single-point plant dependency"
+      ]
+    ]
+  },
+  "phases": [
+    {
+      "sequence": 1,
+      "id": "SURVEY",
+      "deliverables": [
+        "immutable terrain snapshot and hash",
+        "database feature query",
+        "parcel polygon",
+        "protected-feature overlay",
+        "grade sections",
+        "approach-road assessment"
+      ]
+    },
+    {
+      "sequence": 2,
+      "id": "CIVIC_OPERATIONS_CORE",
+      "deliverables": [
+        "visitor center",
+        "gallery shell",
+        "admin and NOC",
+        "auditorium",
+        "cinema",
+        "central service spine"
+      ]
+    },
+    {
+      "sequence": 3,
+      "id": "HALL_PAIR_1",
+      "deliverables": [
+        "DH-A",
+        "DH-B",
+        "support galleries",
+        "first utility band"
+      ]
+    },
+    {
+      "sequence": 4,
+      "id": "HALL_PAIR_2",
+      "deliverables": [
+        "DH-C",
+        "DH-D",
+        "remaining utility band",
+        "complete visitor gallery loop"
+      ]
+    },
+    {
+      "sequence": 5,
+      "id": "LODGE_LANDSCAPE",
+      "deliverables": [
+        "training and resilience lodge",
+        "staff courtyard",
+        "stormwater and meadow reserve",
+        "approach landscape"
+      ]
+    },
+    {
+      "sequence": 6,
+      "id": "UNDERGROUND_ANNEX",
+      "deliverables": [
+        "IB-ANNEX",
+        "independent surface exits",
+        "independent fictional support systems"
+      ],
+      "connectorBreakthroughAllowed": false
+    },
+    {
+      "sequence": 7,
+      "id": "CONNECTOR",
+      "deliverables": [
+        "DM10 headhouse",
+        "seven-block-clear accessible tunnel",
+        "drainage",
+        "walk QA"
+      ],
+      "prerequisite": "DM10 and IB-ANNEX both have independent safe routes"
+    },
+    {
+      "sequence": 8,
+      "id": "PUBLICATION",
+      "deliverables": [
+        "maps",
+        "floor plans",
+        "database object export",
+        "object-to-media crosswalk",
+        "matched screenshots",
+        "dossier and website updates"
+      ]
+    }
+  ],
+  "releaseGates": [
+    "fresh immutable snapshot and hash",
+    "database-feature intersection report",
+    "exact coordinate bounds for every phase",
+    "protected-object and fluid census",
+    "non-overlap with concurrent packages",
+    "before-map and matched before screenshots",
+    "exact-state forward and rollback operations",
+    "parser dry run and independent reconstruction",
+    "two-way walking route through every hall cross-aisle",
+    "auditorium seat count equals 200",
+    "cinema seat count equals 200",
+    "cinema screen exists and all seats face it",
+    "visitor route never enters operational white space",
+    "lodge has utility-yard buffer",
+    "IB-ANNEX has independent surface egress before connector opening",
+    "connector has seven-block clear width and six-block clear height",
+    "connector grade is no steeper than one block per twelve",
+    "post-build object-to-media crosswalk and matched captures",
+    "all public materials carry fictional-interpretation label"
+  ],
+  "unresolvedInputs": [
+    "northeast campus parcel bounds",
+    "existing DM10 object bounds",
+    "DM10 finished-floor elevation",
+    "distance and grade between DM10 and proposed annex",
+    "approach-road tie-in",
+    "fluid and protected-feature census",
+    "conflicts with pending town, stadium, crater-lake or tunnel packages"
+  ]
+}

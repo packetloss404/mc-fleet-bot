@@ -8,6 +8,19 @@ export interface SchematicInfo {
   size: { x: number; y: number; z: number };
   blockCount: number;
   /**
+   * True when the schematic could NOT be parsed and `size`/`blockCount` are
+   * placeholder zeros rather than measurements.
+   *
+   * This flag exists because the zeros are indistinguishable from real data:
+   * `{x:0,y:0,z:0}` is a truthy object, so every `if (!info.size)` guard passes
+   * and callers happily treat a failed parse as a zero-sized building. That
+   * propagates — a dimensionless row in the town registry makes SiteSelector's
+   * avoidRects zero-area, siting goes blind, and buildings get stacked on each
+   * other (the documented case: a well placed fully inside the town hall).
+   * Anything that sites or records a build MUST check this before trusting size.
+   */
+  parseFailed?: boolean;
+  /**
    * Optional per-block-type count map (block name → number of blocks of that
    * type in the schematic). Only populated for schematics small enough to
    * parse without estimation — large schematics (size-estimated or
@@ -135,7 +148,9 @@ export class SchematicStore {
       return { filename, size, blockCount: cached.blocks.length, palette };
     } catch (err: any) {
       logger.warn({ filename, err: err.message }, 'Failed to parse schematic');
-      return { filename, size: { x: 0, y: 0, z: 0 }, blockCount: 0 };
+      // Zeros are a placeholder, not a measurement — flag it so callers that site
+      // or record builds can refuse rather than trusting a fabricated size.
+      return { filename, size: { x: 0, y: 0, z: 0 }, blockCount: 0, parseFailed: true };
     }
   }
 }

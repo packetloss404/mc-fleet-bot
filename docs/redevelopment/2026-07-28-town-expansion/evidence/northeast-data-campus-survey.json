@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0.0",
+  "snapshot": {
+    "path": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region",
+    "sha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999"
+  },
+  "databaseReadOnly": {
+    "path": "data/world-map.db",
+    "sha256": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+    "queryBounds": [438, 1030, -720, -180],
+    "intersections": []
+  },
+  "surfaceParcels": {
+    "north": {"bounds": [675, 819, -648, -563], "columns": 12470, "water": 0, "supportY": [61, 64, 69, 77, 100]},
+    "central": {"bounds": [744, 862, -549, -414], "columns": 16184, "water": 0, "supportY": [58, 63, 66, 71, 96]},
+    "east": {"bounds": [905, 1030, -434, -257], "columns": 22428, "water": 0, "supportY": [58, 66, 76, 87, 99]},
+    "outer": {"bounds": [465, 563, -310, -180], "columns": 12969, "water": 0, "supportY": [58, 68, 74, 79, 92]}
+  },
+  "blockEntities": {
+    "northSurfaceY40To120": [
+      ["minecraft:beehive", 702, 68, -621],
+      ["minecraft:beehive", 805, 73, -580]
+    ],
+    "centralSurfaceY40To120": [],
+    "centralDeepY0To19": [
+      ["minecraft:chest", 797, 11, -504],
+      ["minecraft:chest", 796, 11, -508],
+      ["minecraft:mob_spawner", 794, 11, -505]
+    ],
+    "eastSurfaceY40To120": [],
+    "outerSurfaceY40To120": []
+  },
+  "undergroundAnnex": {
+    "id": "IB-AMES-01",
+    "bounds": [744, 799, 20, 48, -498, -435],
+    "cells": 103936,
+    "air": 650,
+    "fluid": 0,
+    "gravity": 2137,
+    "blockEntities": 0,
+    "topMaterials": {
+      "minecraft:stone": 77194,
+      "minecraft:andesite": 7372,
+      "minecraft:diorite": 5975,
+      "minecraft:granite": 5969,
+      "minecraft:dirt": 2267,
+      "minecraft:gravel": 2137
+    }
+  },
+  "routeSurveys": {
+    "ravensreachToOuter": {"width": 7, "columns": 5077, "water": 0, "supportY": [60, 63, 66, 71, 75], "maxStepPerTwo": 2},
+    "outerToCampus": {"width": 7, "columns": 1947, "water": 0, "supportY": [58, 62, 67, 89, 94], "maxStepPerTwo": 4}
+  },
+  "interpretation": "The parcels and routes are feasible reservations, not construction authorization. Raw terrain grades still require designed cuts, fills, retaining, drainage and bidirectional movement QA."
+}

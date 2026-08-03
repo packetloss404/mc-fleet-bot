@@ -149,4 +149,10 @@ export class OllamaClient implements LLMClient {
 
     return messages;
   }
+
+  /** Concrete model ID, for accurate TokenLedger cost attribution. */
+  getModelId(): string {
+    return this.chatModel;
+  }
+
 }

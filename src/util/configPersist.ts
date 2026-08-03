@@ -33,7 +33,7 @@ export function persistConfig(config: Config, configPath?: string): void {
  * outside this set is rejected with 400 — we do not want operators editing
  * `api`, `minecraft`, `bots`, `llm`, `skills`, or `logging` over HTTP.
  */
-export const PATCHABLE_SECTIONS = ['behavior', 'affinity', 'instincts', 'voyager', 'minecraft'] as const;
+export const PATCHABLE_SECTIONS = ['behavior', 'affinity', 'instincts', 'voyager', 'minecraft', 'mining'] as const;
 export type PatchableSection = (typeof PATCHABLE_SECTIONS)[number];
 
 /**
@@ -79,6 +79,10 @@ export const RESTART_REQUIRED_FIELDS: Record<PatchableSection, ReadonlySet<strin
   minecraft: new Set([
     'host', 'port', 'version', 'auth', 'loginFlow', 'loginPassword', 'selectClass',
   ]),
+  // The mining geofence is read through a module-level cache in
+  // actions/geofence.ts (`load()` memoises into `cached`), so a live worker
+  // keeps the values it booted with until the cache is reset.
+  mining: new Set(['minDigY']),
 };
 
 /**
@@ -86,7 +90,15 @@ export const RESTART_REQUIRED_FIELDS: Record<PatchableSection, ReadonlySet<strin
  * we persist the file. Returns null when the value is acceptable; otherwise
  * returns a human-readable error.
  */
-const FIELD_TYPES: Record<PatchableSection, Record<string, 'number' | 'boolean' | 'string'>> = {
+/**
+ * Field type descriptor. `enum:a|b|c` restricts a string field to a closed set —
+ * added for minecraft.loginFlow, where an unexpected value is a security bug
+ * (it switches the bot into the DyoAuth flow, which chats its password at a
+ * server that has no auth plugin) rather than a harmless typo.
+ */
+type FieldType = 'number' | 'boolean' | 'string' | `enum:${string}`;
+
+const FIELD_TYPES: Record<PatchableSection, Record<string, FieldType>> = {
   behavior: {
     headTrackingRange: 'number',
     wanderRadius: 'number',
@@ -125,9 +137,15 @@ const FIELD_TYPES: Record<PatchableSection, Record<string, 'number' | 'boolean' 
     port: 'number',
     version: 'string',
     auth: 'string',
-    loginFlow: 'string',
+    loginFlow: 'enum:none|dyoauth',
     loginPassword: 'string',
     selectClass: 'boolean',
+  },
+  mining: {
+    // Dig-depth floor. mineSite/protectedZones/routeToMineBlocks are nested
+    // objects and arrays, which this flat type-guard map cannot express, so
+    // only the scalar is patchable over HTTP; the rest stay file-edited.
+    minDigY: 'number',
   },
 };
 
@@ -170,6 +188,21 @@ export function validatePatch(
         errors.push(`field '${key}' must be a boolean, got ${JSON.stringify(raw)}`);
         return { ok: false, values: {}, errors };
       }
+    } else if (typeof expected === 'string' && expected.startsWith('enum:')) {
+      // Closed value set. Added for minecraft.loginFlow, where a free-text
+      // value is a security bug rather than a typo: any value other than the
+      // sentinel used to switch the bot into the DyoAuth flow, which chats its
+      // password on a server that has no auth plugin. The dashboard renders
+      // these as a free-text input, so the API is the only place this can be
+      // enforced.
+      const allowed = expected.slice(5).split('|');
+      if (typeof raw !== 'string' || !allowed.includes(raw)) {
+        errors.push(
+          `field '${key}' must be one of ${allowed.join(' | ')}, got ${JSON.stringify(raw)}`,
+        );
+        return { ok: false, values: {}, errors };
+      }
+      out[key] = raw;
     } else {
       if (typeof raw !== 'string') {
         errors.push(`field '${key}' must be a string, got ${typeof raw}`);

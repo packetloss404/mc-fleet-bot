@@ -1,0 +1,166 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "PLANNING_COORDINATE_RESERVATION_NOT_A_BUILD_RELEASE",
+  "generatedUtc": "2026-07-28T08:50:00Z",
+  "liveWorldMutated": false,
+  "coordinateConvention": {"north": "-Z", "bounds": "inclusive"},
+  "evidence": {
+    "snapshot": {
+      "path": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region",
+      "sha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999"
+    },
+    "worldDatabase": {
+      "path": "data/world-map.db",
+      "sha256AtSurvey": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+      "mode": "read-only"
+    },
+    "townDatabase": {
+      "path": "data/town.db",
+      "sha256AtSurvey": "c34f28ec29e002c2e6bac67f3641d1c4254d40a5c08470abeafc60c7ee220503",
+      "mode": "read-only"
+    },
+    "map": "docs/redevelopment/2026-07-28-town-expansion/evidence/worker-town-steward-current-map.png",
+    "memo": "docs/redevelopment/2026-07-28-town-expansion/worker-town-steward-mini-mansions-source-of-truth.md"
+  },
+  "inventoryConclusion": {
+    "worldMapMatches": 1,
+    "townDatabaseMatches": 1,
+    "authoritativeCurrentCottages": ["RRCH-STEWARD"],
+    "note": "Both databases identify the same single completed steward cottage. 'Every steward cottage' therefore means this one current object; future cottages must reuse the standard below."
+  },
+  "standard": {
+    "type": "mid-management mini-mansion",
+    "stories": "two occupied stories plus roof/attic expression",
+    "palette": ["local stone and cobble base", "muted lime/plaster walls", "dark oak and spruce frame", "slate/deepslate roof", "restrained copper accents", "warm lanterns"],
+    "setbackRule": "Keep the established cottage line, the five-column east lane and a landscape transition to the western slope.",
+    "requiredProgram": [
+      "steward public office and records room",
+      "entry hall and cloak room",
+      "great room",
+      "formal dining",
+      "family kitchen, pantry and scullery",
+      "manager library/study",
+      "primary suite",
+      "two guest/family bedrooms",
+      "private bath and shared wash room",
+      "laundry and linen",
+      "covered patio/outdoor room",
+      "garden court",
+      "separated tasteful non-graphic red room"
+    ],
+    "adultSuiteStandard": {
+      "name": "private red room",
+      "contentBoundary": "tasteful, adult-only and non-graphic; no explicit imagery or descriptive sexual detail",
+      "palette": "deep red, oxblood, dark wood, blackened metal and warm low lighting",
+      "program": [
+        "bed and lounge",
+        "concealed toy/storage cabinetry",
+        "decorative swing/hammock frame",
+        "private wash and cleanup",
+        "acoustic separation",
+        "lockable privacy vestibule"
+      ],
+      "safety": [
+        "decorative suspended frame remains non-load-bearing until independently engineered",
+        "privacy lock opens from inside without key, tool or special knowledge",
+        "suite is never part of a required exit route",
+        "clear circulation around bed/lounge and wash fixtures",
+        "cleanable finishes and dedicated closed storage",
+        "no sightline from public, staff or child/family rooms"
+      ]
+    }
+  },
+  "cottages": [
+    {
+      "id": "RRCH-STEWARD",
+      "name": "Steward House mini-mansion",
+      "townDatabaseId": "bld_handbuilt_3",
+      "current": {
+        "bounds": [-118, -106, 67, 77, -350, -340],
+        "rooms": [
+          {"id": "RRCH-STEWARD:ROOM:1:steward-living-room", "bounds": [-117, -113, 68, 73, -349, -341]},
+          {"id": "RRCH-STEWARD:ROOM:1:steward-office", "bounds": [-112, -107, 68, 73, -349, -341]}
+        ],
+        "blockEntities": [
+          ["minecraft:chest", -117, 68, -349],
+          ["minecraft:barrel", -115, 68, -349],
+          ["minecraft:bed", -116, 68, -348],
+          ["minecraft:bed", -115, 68, -348],
+          ["minecraft:barrel", -116, 68, -342],
+          ["minecraft:furnace", -108, 68, -342],
+          ["minecraft:lectern", -108, 68, -349],
+          ["minecraft:chiseled_bookshelf", -110, 68, -349],
+          ["minecraft:chest", -108, 68, -348]
+        ]
+      },
+      "reservation": {
+        "bounds": [-140, -106, 65, 88, -356, -324],
+        "surfaceSurvey": {
+          "columns": 1085,
+          "surfaceWaterColumns": 1,
+          "waterColumn": [-115, -336],
+          "supportY": {"min": 65, "p10": 67, "median": 68, "p90": 75, "max": 83},
+          "interpretation": "High values are primarily the existing cottage roof. Grade new occupied floors at y67/68 and use stepped stone plinths toward the west."
+        }
+      },
+      "massing": [
+        {"id": "STW-WEST-HALL", "bounds": [-138, -119, 67, 86, -356, -331], "program": "new principal two-story hall and bedroom wing"},
+        {"id": "STW-EAST-RETAINED", "bounds": [-118, -106, 67, 81, -350, -340], "program": "retain/refit cottage as steward office, records room and family service wing"},
+        {"id": "STW-GARDEN-GALLERY", "bounds": [-118, -106, 67, 78, -339, -331], "program": "glazed/timber garden gallery around preserved water court"},
+        {"id": "STW-PATIO", "bounds": [-138, -119, 67, 75, -330, -324], "program": "covered south patio, outdoor dining, hearth, benches and planted edge"},
+        {"id": "STW-WATER-COURT", "bounds": [-117, -113, 65, 72, -337, -335], "program": "preserve the surveyed wet column as a tiny lined rain/water garden; no structural target at -115,*, -336"},
+        {"id": "STW-SERVICE-YARD", "bounds": [-140, -139, 67, 74, -350, -331], "program": "screened bins, wood store and maintenance access"}
+      ],
+      "rooms": [
+        {"id": "STW-G-ENTRY", "bounds": [-136, -128, 68, 73, -354, -347], "program": "entry hall, bench, cloak and stair"},
+        {"id": "STW-G-GREAT", "bounds": [-127, -120, 68, 73, -354, -342], "program": "great room with hearth and west outlook"},
+        {"id": "STW-G-DINING", "bounds": [-136, -128, 68, 73, -346, -334], "program": "formal dining opening to patio axis"},
+        {"id": "STW-G-KITCHEN", "bounds": [-127, -120, 68, 73, -341, -332], "program": "family kitchen, pantry and scullery"},
+        {"id": "STW-G-OFFICE", "bounds": [-112, -107, 68, 73, -349, -341], "program": "retained steward office and public records counter"},
+        {"id": "STW-G-LIVING", "bounds": [-117, -113, 68, 73, -349, -341], "program": "refitted family sitting room"},
+        {"id": "STW-L2-PRIMARY", "bounds": [-136, -128, 75, 81, -354, -343], "program": "primary bedroom, dressing and private bath"},
+        {"id": "STW-L2-GUEST-A", "bounds": [-127, -120, 75, 81, -354, -346], "program": "guest/family bedroom"},
+        {"id": "STW-L2-GUEST-B", "bounds": [-127, -120, 75, 81, -345, -337], "program": "guest/family bedroom"},
+        {"id": "STW-L2-LIBRARY", "bounds": [-136, -128, 75, 81, -342, -332], "program": "manager library, budget desk and quiet reading"},
+        {
+          "id": "STW-L2-RED-ROOM",
+          "bounds": [-127, -120, 75, 81, -336, -332],
+          "program": "tasteful non-graphic private red room",
+          "features": ["red/dark palette", "bed/lounge", "concealed storage cabinetry", "decorative swing/hammock frame", "private wash/cleanup", "acoustic lining"]
+        },
+        {"id": "STW-L2-RED-VESTIBULE", "bounds": [-127, -124, 75, 81, -339, -337], "program": "lockable privacy vestibule; inside release always possible and no required egress crosses it"}
+      ],
+      "circulation": {
+        "publicEntry": [-106, 68, -345],
+        "eastLane": {"bounds": [-105, -101, 67, 75, -356, -326], "minimumClearWidth": 5, "rule": "Keep entirely clear between Steward House and Moot Hall."},
+        "patioRoute": [[-106, 68, -345], [-112, 68, -336], [-120, 68, -328], [-130, 68, -327]],
+        "remoteExit": [-138, 68, -344],
+        "stairs": "one main stair in the entry hall plus one remote enclosed stair at the west end"
+      },
+      "garageDecision": {
+        "applicable": false,
+        "reason": "The current Ravensreach cottage lane is a pedestrian/historic town route, not a proven vehicle street. An automotive garage would break the palette and consume the five-column neighbor lane.",
+        "substitute": "screened service yard, wood store and covered maintenance bay; a future garage requires a separately proven vehicle route"
+      },
+      "neighborSpacing": [
+        {"neighbor": "RRCH-MOOT", "neighborMinX": -100, "newHouseMaxX": -106, "clearColumns": 5, "protectedUse": "east pedestrian lane"},
+        {"neighbor": "RRCH-ARCHITECT", "neighborMaxZ": -370, "newHouseMinZ": -356, "clearColumns": 13, "protectedUse": "north garden/setback"},
+        {"neighbor": "Ravensreach south boundary", "boundaryZ": -324, "patioMaxZ": -324, "rule": "Patio may meet but not cross the recorded boundary."}
+      ],
+      "blockEntityRule": "Preserve all nine existing block entities/NBT contents until a reviewed move ledger assigns their final rooms.",
+      "status": "SELECTED_FOR_DETAILED_DESIGN"
+    }
+  ],
+  "futureCottageRule": "Any later database object named or role-assigned as a steward cottage receives a new per-site survey and the same program/privacy/safety standard; do not clone RRCH-STEWARD coordinates.",
+  "releaseGates": [
+    "fresh immutable snapshot and database inventory proving the complete steward-cottage count",
+    "exact terrain, wet-column, vegetation, block-entity and entity census",
+    "nine-item NBT move/preserve ledger",
+    "five-column east lane and thirteen-column north setback remain clear",
+    "normal-walk route from town street to office, household, patio and both exits",
+    "red-room privacy vestibule is not an exit path and opens from inside without special knowledge",
+    "suspended decorative frame independently reviewed or built as visibly non-load-bearing scenery",
+    "acoustic/privacy and wash/cleanup separation from kitchen, public office and family bedrooms",
+    "exact-state forward/rollback package and matched before/after media"
+  ]
+}

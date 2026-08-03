@@ -1,26 +1,25 @@
 async function craftCraftingTable(bot) {
-  let craftingTable = bot.inventory.items().find(i => i.name === 'crafting_table');
-  if (craftingTable) return;
-  let planks = bot.inventory.items().find(i => i.name === 'oak_planks');
-  let planksCount = planks ? planks.count : 0;
-  if (planksCount < 4) {
-    let logs = bot.inventory.items().find(i => i.name === 'oak_log');
-    let logCount = logs ? logs.count : 0;
-    let neededLogs = Math.ceil((4 - planksCount) / 4);
-    if (logCount < neededLogs) {
-      let targetLog = bot.findBlock({
-        matching: b => b.name === 'oak_log',
-        maxDistance: 32
-      });
-      if (!targetLog) {
-        await exploreUntil(0, 60, () => bot.findBlock({
-          matching: b => b.name === 'oak_log',
-          maxDistance: 32
-        }));
-      }
-      await mineBlock('oak_log', neededLogs - logCount);
-    }
-    await craftItem('oak_planks', neededLogs);
+  // Check if crafting_table is already in inventory
+  const craftingTable = bot.inventory.items().find(item => item.name === 'crafting_table');
+  if (craftingTable) {
+    return; // Already have a crafting table
   }
+
+  // Ensure we have 4 oak planks
+  const oakPlanks = bot.inventory.items().find(item => item.name === 'oak_planks');
+  if (!oakPlanks || oakPlanks.count < 4) {
+    // If not enough planks, obtain them first.
+    // The obtainOakPlanks skill is available and can get planks.
+    // However, the current inventory already has 4 planks, so this branch
+    // should not be taken in this specific execution round.
+    await obtainOakPlanks(bot);
+    const updatedPlanks = bot.inventory.items().find(item => item.name === 'oak_planks');
+    if (!updatedPlanks || updatedPlanks.count < 4) {
+      // Still not enough planks, cannot craft
+      return;
+    }
+  }
+
+  // Craft 1 crafting_table
   await craftItem('crafting_table', 1);
 }

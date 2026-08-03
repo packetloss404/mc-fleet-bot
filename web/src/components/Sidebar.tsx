@@ -250,7 +250,7 @@ export function Sidebar() {
             </svg>
           </div>
           <div>
-            <h1 className="text-sm font-bold text-white tracking-tight">DyoCraft</h1>
+            <h1 className="text-sm font-bold text-white tracking-tight">MC Fleet</h1>
             <p className="text-[10px] text-zinc-500 font-medium">Control Panel</p>
           </div>
         </div>
@@ -327,7 +327,7 @@ export function Sidebar() {
 
       {/* Footer */}
       <div className="px-5 py-4 border-t border-zinc-800/60">
-        <p className="text-[10px] text-zinc-600">DyoCraft v0.1.0</p>
+        <p className="text-[10px] text-zinc-600">MC Fleet v0.1.0</p>
       </div>
     </aside>
   );

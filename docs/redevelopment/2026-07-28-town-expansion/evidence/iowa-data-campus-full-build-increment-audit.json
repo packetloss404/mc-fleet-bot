@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "status": "FAIL_RUNTIME_AND_PROGRAM_GATES_DO_NOT_RELEASE",
+  "auditType": "offline --audit-data-campus-only execution plus static geometry review",
+  "liveWorldMutated": false,
+  "compiler": {
+    "path": "scripts/generate_town_expansion_r1.mjs",
+    "sha256": "a48ec29771fa1fb41a4e3360b69dc6b1567cd131d5238accf1262f6983bd7967",
+    "syntaxCheck": "PASS"
+  },
+  "execution": {
+    "command": "node scripts/generate_town_expansion_r1.mjs --audit-data-campus-only",
+    "result": "FAIL",
+    "error": "TE-IA-DISTRICT-WORKER-COMMONS-DISC-GOLF hole 1 enters void terrain",
+    "location": "modelWorkerCommonsDiscGolf line 2355",
+    "hole1TeeXZ": [
+      1290,
+      -540
+    ],
+    "hole1TeeTerrain": "VALID_PODZOL_Y63",
+    "firstFailedBasketXZ": [
+      1348,
+      -545
+    ],
+    "firstFailedBasketTerrain": "NO_NONIGNORED_TERRAIN_IN_Y_MINUS64_TO_140",
+    "measuredSolidTerrainEdge": "Approximately x1326 for z -570..-277; approximately x1230 at z -600",
+    "reportProduced": false
+  },
+  "findings": [
+    {
+      "id": "IA-FULL-001",
+      "severity": "BLOCKER",
+      "area": "disc golf site",
+      "finding": "Hole 1's tee at (1290,-540) is valid, but its basket at (1348,-545) is beyond the immutable snapshot's solid terrain. The proposed x1278..1490 course extends far past the measured edge near x1326.",
+      "requiredFix": "Re-site the entire course to fully surveyed land or create and hash a legitimately expanded immutable snapshot before modeling."
+    },
+    {
+      "id": "IA-FULL-002",
+      "severity": "BLOCKER",
+      "area": "data-hall circulation",
+      "finding": "Each completed hall reports two stair/lift cores, but both cores are solid polished-andesite boxes. There is no clear shaft, stair geometry, landing, or level door between the two floors.",
+      "requiredFix": "Build and verify contained no-jump stairs and lift analogues at both remote cores; route-test both floors and both exits."
+    },
+    {
+      "id": "IA-FULL-003",
+      "severity": "BLOCKER",
+      "area": "data-hall detail",
+      "finding": "The twelve Meta halls use 22-by-12 footprints. Each reported rack row is only about three blocks long. These are compact markers, not credible fully detailed walk-through data buildings.",
+      "requiredFix": "Enlarge or redesign the Meta hall program so entrance, long aisle, rack fields, transverse paths, utility gallery, tool/store, staff nook, and rear exit all exist as enterable final-state spaces."
+    },
+    {
+      "id": "IA-FULL-004",
+      "severity": "BLOCKER",
+      "area": "support-building walkability",
+      "finding": "Support venues start as hollow shells, then their two named program halves are emitted as solid glass and concrete volumes occupying most of the interior. They are not enterable NOC/operations, office, kitchen, or staff rooms.",
+      "requiredFix": "Model room shells, doors, clear floor/head volume, circulation and actual furnishings. Prove every named room identity from the final state."
+    },
+    {
+      "id": "IA-FULL-005",
+      "severity": "BLOCKER",
+      "area": "terrain support",
+      "finding": "Hall and support terrain is sampled on a four-block grid plus edges, while only sampled low points receive piers. unsupportedFoundationColumns is then hardcoded to zero without a full-column support or neighbor-fluid proof.",
+      "requiredFix": "Census every footprint/support column and relevant fluid/gravity halo; measure unsupported columns from final geometry and abort unless zero."
+    },
+    {
+      "id": "IA-FULL-006",
+      "severity": "BLOCKER",
+      "area": "worker pond",
+      "finding": "The modeled pond is a regular ellipse despite the binding requirement for an irregular drainage-informed shoreline with at least three concave bays. It has a sealed bed but no proven side containment or exact source-fluid disposition ledger.",
+      "requiredFix": "Use the binding shoreline schedule, preserve/record source water, add reviewed containment and stage water safely, then verify the post-state shoreline."
+    },
+    {
+      "id": "IA-FULL-007",
+      "severity": "BLOCKER",
+      "area": "shared trail",
+      "finding": "The route returns over the same west approach nodes, making an out-and-back lollipop rather than a continuous district loop. Two controlled road crossings are reported but not modeled or measured.",
+      "requiredFix": "Provide a distinct return leg and explicit crossing objects; measure length, grades, clear width, headroom, freight separation and bidirectional route success."
+    },
+    {
+      "id": "IA-FULL-008",
+      "severity": "BLOCKER",
+      "area": "disc golf safety",
+      "finding": "The course is nine paired parallel rows. Only tee and basket endpoints are surveyed. Flight corridors, landing zones and basket-to-next-tee routes are not scanned against paths, roads, buildings, utilities, shelters or water; safeFlightCorridors=18 and conflicts=0 are hardcoded.",
+      "requiredFix": "Generate 18 genuinely distinct routed holes and machine-test every buffered flight, landing and next-tee path against all protected geometries."
+    },
+    {
+      "id": "IA-FULL-009",
+      "severity": "BLOCKER",
+      "area": "disc golf evidence",
+      "finding": "The implementation provides four overview cameras, not the required tee and reverse-basket pair for every hole.",
+      "requiredFix": "Emit at least 36 hole-linked first-pass cameras plus matching second-pass records, then add course overview cameras."
+    },
+    {
+      "id": "IA-FULL-010",
+      "severity": "BLOCKER",
+      "area": "report acceptance",
+      "finding": "Worker commons and disc golf are returned by the model but have no dedicated coverage or acceptance predicates in the package report. The top-level READY_FOR_PREFLIGHT rule still depends only on protected block entities.",
+      "requiredFix": "Add measured commons/course/terrain/route/evidence gates and make report readiness require every acceptance predicate plus zero unapproved cross-scope overrides."
+    },
+    {
+      "id": "IA-FULL-011",
+      "severity": "BLOCKER",
+      "area": "database and evidence",
+      "finding": "The 20 campus halls, support buildings, commons, landscape groups and course objects are not included in the package's global publication object registry.",
+      "requiredFix": "Emit stable object IDs, exact bounds/routes, camera IDs and first/second-pass manifest entries for every release object before database import."
+    }
+  ],
+  "truthState": {
+    "researchAndBindingPlan": "PRESENT",
+    "compilerModel": "WIP_BLOCKED",
+    "operationReport": "NOT_PRODUCED_BY_AUDIT",
+    "liveBuild": "NOT_VERIFIED",
+    "databaseImport": "ABSENT",
+    "matchedScreenshots": "ABSENT",
+    "mapsAndSitesAsBuiltUpdate": "ABSENT"
+  }
+}

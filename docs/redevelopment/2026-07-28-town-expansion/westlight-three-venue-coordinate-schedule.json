@@ -1,0 +1,935 @@
+{
+  "schemaVersion": 1,
+  "status": "AUDIT_AND_COORDINATE_DESIGN_NOT_A_RELEASE",
+  "generatedAtUtc": "2026-07-28T06:55:00Z",
+  "coordinateConvention": {
+    "north": "-Z",
+    "bounds": "inclusive",
+    "coordinates": "Minecraft block coordinates",
+    "meaning": "Design reservations and QA contracts only; not build operations"
+  },
+  "evidence": {
+    "snapshot": {
+      "path": "data/worldsnap-town-expansion-complete-baseline-20260728T0315Z/region",
+      "sha256": "0bb1faa61ca69724816afe682080e3a517fa974ec1300c3651e399ea03505501",
+      "mode": "offline-read-only"
+    },
+    "database": {
+      "path": "data/world-map.db",
+      "sha256": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+      "mode": "read-only"
+    },
+    "authoredGeometry": "scripts/gen_westlight.py",
+    "screenRelease": "docs/redevelopment/2026-07-27/westlight-screen-release.md",
+    "waterfrontSchedule": "docs/redevelopment/2026-07-28-town-expansion/westlight-waterfront-coordinate-schedule.json",
+    "parksSchedule": "docs/redevelopment/2026-07-28-town-expansion/westward-paired-parks-masterplan.json",
+    "currentMedia": [
+      {
+        "path": "data/exports/world-catalog-wave2-post-2026-07-28/floorplans/06-westlight-venue-overview.png",
+        "sha256": "a6380d1001872304f9a897927300fe62058c5808d5b41d1e8000bd57b307c683"
+      },
+      {
+        "path": "data/exports/world-catalog-wave2-post-2026-07-28/floorplans/structures/westlight-venue-wl-theatre.png",
+        "sha256": "e55f97ea72d002c1834cd2a21d9b943817b568692d625dcd60fe2e16dc7d191a"
+      },
+      {
+        "path": "data/exports/redevelopment-media-wave2-2026-07-28/buildings/westlight-venue/wl-theatre--below-grade-theatre-and-lobbies.png",
+        "sha256": "bce66f88d17ec54be2a63601ae9ee17582803f7bc9070e8824beb3e76b85ba0a",
+        "finding": "Only current exact-object WL-THEATRE capture; lateral, dark and not centered on the stage"
+      },
+      {
+        "path": "data/exports/redevelopment-qa-2026-07-27/westlight/after",
+        "imageCount": 48,
+        "finding": "Accepted WL-INFINITY-SCREEN sightline evidence"
+      }
+    ]
+  },
+  "objectTruth": [
+    {
+      "databaseId": "WL-BOWL",
+      "proposedPublicIdentity": "Westlight Sky Bowl",
+      "currentType": "stadium-arena",
+      "performanceVenueNow": true,
+      "bounds": {
+        "minX": -429,
+        "maxX": -291,
+        "minY": 55,
+        "maxY": 91,
+        "minZ": -629,
+        "maxZ": -491
+      },
+      "floorsY": [58, 67, 75, 82],
+      "currentEntrance": [-359, 68, -498],
+      "decision": "preserve physical bowl, screen, field, concourses, vomitories, canopy and verified routes"
+    },
+    {
+      "databaseId": "WL-THEATRE",
+      "proposedPublicIdentity": "Blue Drum Theatre",
+      "currentType": "single-end-stage-theater",
+      "performanceVenueNow": true,
+      "bounds": {
+        "minX": -421,
+        "maxX": -299,
+        "minY": 18,
+        "maxY": 50,
+        "minZ": -613,
+        "maxZ": -498
+      },
+      "floorsY": [18, 29, 40],
+      "currentEntrance": [-354, 68, -498],
+      "decision": "retain one auditorium; orchestra, parterre and balcony are tiers, not separate theaters"
+    },
+    {
+      "databaseId": "WL-CLUB",
+      "proposedPublicIdentity": "Lantern Studio and Club",
+      "currentType": "members-club-private-box-lounge",
+      "performanceVenueNow": false,
+      "bounds": {
+        "minX": -417,
+        "maxX": -400,
+        "minY": 35,
+        "maxY": 44,
+        "minZ": -566,
+        "maxZ": -550
+      },
+      "floorsY": [35, 40],
+      "currentEntrance": [-408, 36, -560],
+      "decision": "retain WL-CLUB as hospitality parent; add WL-STUDIO child feature for a 40-60 seat cabaret-black-box room"
+    }
+  ],
+  "diagnosis": [
+    "WL-BOWL and WL-THEATRE share nearly the same south public arrival.",
+    "WL-CLUB has no independent exterior arrival.",
+    "The three structures are nested inside one stadium shell and share a similar palette.",
+    "Current floor-plan rectangles are broad functional database zones, not physical wall truth.",
+    "Only one exact-object WL-THEATRE screenshot exists and it does not show the stage-facing relationship.",
+    "The orchestra, parterre and balcony have been mistaken for separate theaters even though all serve one stage.",
+    "Backstage and freight functions are not legible as a complete working sequence."
+  ],
+  "protectedExisting": [
+    {
+      "id": "WL-DISTRICT",
+      "bounds": {
+        "minX": -443,
+        "maxX": -272,
+        "minY": 18,
+        "maxY": 91,
+        "minZ": -640,
+        "maxZ": -488
+      },
+      "rule": "Context and change-control envelope; detailed protected objects below govern."
+    },
+    {
+      "id": "WL-BOWL",
+      "bounds": {
+        "minX": -429,
+        "maxX": -291,
+        "minY": 55,
+        "maxY": 91,
+        "minZ": -629,
+        "maxZ": -491
+      },
+      "rule": "No bulk re-seat, shell excavation or route removal."
+    },
+    {
+      "id": "WL-INFINITY-SCREEN",
+      "bounds": {
+        "minX": -369,
+        "maxX": -351,
+        "minY": 74,
+        "maxY": 92,
+        "minZ": -568,
+        "maxZ": -552
+      },
+      "rule": "Preserve all 524 accepted target cells and four-face sightline function."
+    },
+    {
+      "id": "WL-PED-THROAT",
+      "bounds": {
+        "minX": -356,
+        "maxX": -353,
+        "minY": 67,
+        "maxY": 74,
+        "minZ": -506,
+        "maxZ": -471
+      },
+      "rule": "Preserve exactly; arena identity elements must flank, never occupy, this throat."
+    },
+    {
+      "id": "WL-THEATRE-EXISTING",
+      "bounds": {
+        "minX": -421,
+        "maxX": -299,
+        "minY": 18,
+        "maxY": 50,
+        "minZ": -613,
+        "maxZ": -498
+      },
+      "rule": "Retain the authored stage-facing fan geometry unless a row-level sightline failure is documented."
+    },
+    {
+      "id": "WL-CLUB-EXISTING",
+      "bounds": {
+        "minX": -417,
+        "maxX": -400,
+        "minY": 35,
+        "maxY": 44,
+        "minZ": -566,
+        "maxZ": -550
+      },
+      "rule": "Retain bar/lounge hospitality program while inserting a reversible studio layout."
+    }
+  ],
+  "identityAndArrival": [
+    {
+      "id": "WL-SKY-BOWL-SOUTH-WEST-IDENTITY",
+      "venue": "Westlight Sky Bowl",
+      "bounds": {
+        "minX": -378,
+        "maxX": -365,
+        "minY": 67,
+        "maxY": 78,
+        "minZ": -503,
+        "maxZ": -492
+      },
+      "program": ["sign pylon", "ticket-help counter", "event wayfinding"],
+      "census": "zero fluids, waterlogged states and block entities after narrowing west of the fountain",
+      "rule": "Surface/signage intervention only; exact survey must preserve the bowl fascia and the fountain at x=-364..-361."
+    },
+    {
+      "id": "WL-SKY-BOWL-SOUTH-EAST-IDENTITY",
+      "venue": "Westlight Sky Bowl",
+      "bounds": {
+        "minX": -352,
+        "maxX": -342,
+        "minY": 67,
+        "maxY": 78,
+        "minZ": -503,
+        "maxZ": -492
+      },
+      "program": ["sign pylon", "ticket-help counter", "event wayfinding"],
+      "rule": "Does not overlap the protected x=-356..-353 throat."
+    },
+    {
+      "id": "WL-BLUE-DRUM-WEST-PORTAL",
+      "venue": "Blue Drum Theatre",
+      "bounds": {
+        "minX": -443,
+        "maxX": -431,
+        "minY": 67,
+        "maxY": 78,
+        "minZ": -548,
+        "maxZ": -526
+      },
+      "program": ["marquee", "vestibule", "box office", "blue drum marker", "warm metal canopy"],
+      "style": ["blue concrete", "blue terracotta", "dark oak", "copper-brass analog", "warm light"],
+      "census": "zero fluids, waterlogged states, cave-air and block entities in combined portal-link volume"
+    },
+    {
+      "id": "WL-BLUE-DRUM-VERTICAL-CORE",
+      "venue": "Blue Drum Theatre",
+      "bounds": {
+        "minX": -441,
+        "maxX": -434,
+        "minY": 40,
+        "maxY": 70,
+        "minZ": -544,
+        "maxZ": -533
+      },
+      "program": ["public stair", "accessible lift analog", "three-level wayfinding"],
+      "routeLevelsY": [40, 29, 18]
+    },
+    {
+      "id": "WL-BLUE-DRUM-LOBBY-LINK",
+      "venue": "Blue Drum Theatre",
+      "bounds": {
+        "minX": -433,
+        "maxX": -418,
+        "minY": 40,
+        "maxY": 45,
+        "minZ": -542,
+        "maxZ": -536
+      },
+      "program": ["acoustical vestibule", "upper-lobby arrival"],
+      "rule": "Below WL-BOWL minimum Y=55; exact guards must preserve the existing theater shell and radial lobby."
+    },
+    {
+      "id": "WL-LANTERN-WEST-PORTAL",
+      "venue": "Lantern Studio and Club",
+      "bounds": {
+        "minX": -443,
+        "maxX": -431,
+        "minY": 67,
+        "maxY": 78,
+        "minZ": -589,
+        "maxZ": -568
+      },
+      "program": ["independent marquee", "small ticket desk", "club check-in", "studio wayfinding"],
+      "style": ["dark oak", "oxblood", "copper", "amber light"],
+      "census": "zero fluids, waterlogged states, cave-air and block entities in combined portal-club volume"
+    },
+    {
+      "id": "WL-LANTERN-VERTICAL-CORE",
+      "venue": "Lantern Studio and Club",
+      "bounds": {
+        "minX": -441,
+        "maxX": -434,
+        "minY": 35,
+        "maxY": 70,
+        "minZ": -585,
+        "maxZ": -574
+      },
+      "program": ["public stair", "accessible lift analog", "club-studio wayfinding"],
+      "routeLevelsY": [35, 40]
+    },
+    {
+      "id": "WL-LANTERN-CLUB-LINK",
+      "venue": "Lantern Studio and Club",
+      "bounds": {
+        "minX": -433,
+        "maxX": -417,
+        "minY": 35,
+        "maxY": 40,
+        "minZ": -580,
+        "maxZ": -558
+      },
+      "program": ["acoustical vestibule", "club-studio arrival", "coat and queue space"]
+    }
+  ],
+  "venuePrograms": [
+    {
+      "id": "WL-SKY-BOWL",
+      "venue": "Westlight Sky Bowl",
+      "focalTarget": [-360, 80, -560],
+      "seatingContract": {
+        "form": "existing all-around stadium bowl",
+        "screen": "existing four-sided center-hung display",
+        "decision": "preserve",
+        "futureRepairRule": "Only exact row-level accessibility or sightline repairs supported by a defect report; repeat the 48-view matrix."
+      },
+      "supportAdditions": [
+        "venue-specific gate naming",
+        "arena event wayfinding",
+        "accessible-position mapping by level",
+        "backstage route signs that do not send freight through the public throat"
+      ]
+    },
+    {
+      "id": "WL-BLUE-DRUM",
+      "venue": "Blue Drum Theatre",
+      "focalTarget": [-360, 22, -598],
+      "existingStage": {
+        "minX": -377,
+        "maxX": -343,
+        "minY": 18,
+        "maxY": 43,
+        "minZ": -607,
+        "maxZ": -590,
+        "audienceFacing": "north"
+      },
+      "seatingContract": {
+        "form": "retain fan-raked orchestra and cantilevered balcony",
+        "orientation": "every row faces focalTarget; no row may face a doorway or blank wall",
+        "aisles": "one center and two radial side aisles, all kept clear",
+        "accessibleTerraces": [
+          {
+            "level": "lower-orchestra",
+            "designReserve": {
+              "minX": -386,
+              "maxX": -377,
+              "minY": 19,
+              "maxY": 23,
+              "minZ": -566,
+              "maxZ": -552
+            }
+          },
+          {
+            "level": "parterre",
+            "designReserve": {
+              "minX": -374,
+              "maxX": -346,
+              "minY": 34,
+              "maxY": 36,
+              "minZ": -549,
+              "maxZ": -540
+            }
+          },
+          {
+            "level": "balcony",
+            "designReserve": {
+              "minX": -374,
+              "maxX": -346,
+              "minY": 40,
+              "maxY": 42,
+              "minZ": -535,
+              "maxZ": -526
+            }
+          }
+        ],
+        "gate": "All terrace bounds are reservations pending row-by-row state and sightline proof; no bulk carve is authorized."
+      },
+      "backOfHouse": [
+        {
+          "id": "WL-BDT-STAGE-LEFT",
+          "bounds": {
+            "minX": -390,
+            "maxX": -378,
+            "minY": 18,
+            "maxY": 33,
+            "minZ": -607,
+            "maxZ": -588
+          },
+          "program": ["wing", "quick-change", "prop hold"]
+        },
+        {
+          "id": "WL-BDT-STAGE-RIGHT",
+          "bounds": {
+            "minX": -342,
+            "maxX": -330,
+            "minY": 18,
+            "maxY": 33,
+            "minZ": -607,
+            "maxZ": -588
+          },
+          "program": ["wing", "quick-change", "freight-stage interface"]
+        },
+        {
+          "id": "WL-BDT-CROSSOVER",
+          "bounds": {
+            "minX": -389,
+            "maxX": -331,
+            "minY": 18,
+            "maxY": 23,
+            "minZ": -613,
+            "maxZ": -608
+          },
+          "program": ["full rear crossover", "performer circulation"]
+        },
+        {
+          "id": "WL-BDT-DRESSING-WEST",
+          "bounds": {
+            "minX": -410,
+            "maxX": -391,
+            "minY": 18,
+            "maxY": 28,
+            "minZ": -611,
+            "maxZ": -585
+          },
+          "program": ["two ensemble dressing rooms", "one accessible dressing room", "showers and toilets analog", "quick-change store"]
+        },
+        {
+          "id": "WL-BDT-GREEN-ROOM",
+          "bounds": {
+            "minX": -410,
+            "maxX": -391,
+            "minY": 29,
+            "maxY": 39,
+            "minZ": -611,
+            "maxZ": -594
+          },
+          "program": ["green room", "performer kitchenette", "stage monitor", "quiet room"]
+        },
+        {
+          "id": "WL-BDT-DRESSING-EAST",
+          "bounds": {
+            "minX": -329,
+            "maxX": -310,
+            "minY": 18,
+            "maxY": 28,
+            "minZ": -611,
+            "maxZ": -585
+          },
+          "program": ["principal dressing rooms", "wardrobe issue", "performer toilets analog"]
+        },
+        {
+          "id": "WL-BDT-REHEARSAL",
+          "bounds": {
+            "minX": -329,
+            "maxX": -304,
+            "minY": 29,
+            "maxY": 39,
+            "minZ": -611,
+            "maxZ": -585
+          },
+          "program": ["full rehearsal room", "music storage", "warm-up room"]
+        },
+        {
+          "id": "WL-BDT-CONTROL",
+          "bounds": {
+            "minX": -370,
+            "maxX": -350,
+            "minY": 40,
+            "maxY": 46,
+            "minZ": -528,
+            "maxZ": -512
+          },
+          "program": ["sound", "lighting", "video", "follow-spot analog"],
+          "rule": "Maintain a direct ray to focalTarget and acoustical separation from the audience."
+        }
+      ]
+    },
+    {
+      "id": "WL-STUDIO",
+      "databaseAction": "add child feature under WL-CLUB after post-state proof",
+      "venue": "Lantern Studio and Club",
+      "focalTarget": [-408, 37, -564],
+      "seatingContract": {
+        "form": "40-60 seat flexible cabaret-black-box",
+        "orientation": "default end-stage configuration faces north",
+        "stage": {
+          "minX": -415,
+          "maxX": -402,
+          "minY": 35,
+          "maxY": 39,
+          "minZ": -565,
+          "maxZ": -562
+        },
+        "audienceFloor": {
+          "minX": -415,
+          "maxX": -404,
+          "minY": 35,
+          "maxY": 39,
+          "minZ": -561,
+          "maxZ": -553
+        },
+        "barAndRearLounge": {
+          "minX": -408,
+          "maxX": -401,
+          "minY": 35,
+          "maxY": 39,
+          "minZ": -557,
+          "maxZ": -551
+        },
+        "rule": "No table, bar, seat or dance-floor object may block the two clear exit aisles."
+      },
+      "annex": {
+        "bounds": {
+          "minX": -429,
+          "maxX": -418,
+          "minY": 35,
+          "maxY": 44,
+          "minZ": -566,
+          "maxZ": -550
+        },
+        "program": ["acoustical vestibule", "green-dressing room", "small rehearsal-meeting room", "equipment store"],
+        "census": "zero fluids, waterlogged states, cave-air and block entities"
+      },
+      "galleryAndControl": {
+        "bounds": {
+          "minX": -416,
+          "maxX": -401,
+          "minY": 40,
+          "maxY": 44,
+          "minZ": -565,
+          "maxZ": -551
+        },
+        "program": ["private balcony retained", "lighting-sound control", "technical rail", "club seating"]
+      }
+    }
+  ],
+  "basementSupport": [
+    {
+      "id": "WL-B1-NORTH-SERVICE",
+      "level": "B1",
+      "bounds": {
+        "minX": -384,
+        "maxX": -336,
+        "minY": 7,
+        "maxY": 15,
+        "minZ": -611,
+        "maxZ": -595
+      },
+      "program": ["scene shop", "scene store", "receiving and breakdown", "large-prop hold"],
+      "census": {
+        "water": 0,
+        "lava": 0,
+        "waterlogged": 0,
+        "air": 0,
+        "caveAir": 0,
+        "blockEntities": 0
+      }
+    },
+    {
+      "id": "WL-B1-EAST-TECHNICAL",
+      "level": "B1",
+      "bounds": {
+        "minX": -362,
+        "maxX": -336,
+        "minY": 7,
+        "maxY": 15,
+        "minZ": -594,
+        "maxZ": -579
+      },
+      "program": ["wardrobe-laundry", "instrument-equipment store", "technical plant", "staff support"],
+      "census": {
+        "water": 0,
+        "lava": 0,
+        "waterlogged": 0,
+        "air": 0,
+        "caveAir": 0,
+        "blockEntities": 0
+      }
+    },
+    {
+      "id": "WL-B2-NORTH-SECURE",
+      "level": "B2",
+      "bounds": {
+        "minX": -384,
+        "maxX": -353,
+        "minY": -5,
+        "maxY": 3,
+        "minZ": -611,
+        "maxZ": -595
+      },
+      "program": ["secure prop and costume archive", "resilient plant", "records", "staff support"],
+      "census": {
+        "water": 0,
+        "lava": 0,
+        "waterlogged": 0,
+        "air": 0,
+        "caveAir": 0,
+        "blockEntities": 0
+      }
+    },
+    {
+      "id": "WL-B2-EAST-NARROW",
+      "level": "B2",
+      "bounds": {
+        "minX": -362,
+        "maxX": -352,
+        "minY": -5,
+        "maxY": 3,
+        "minZ": -594,
+        "maxZ": -579
+      },
+      "program": ["secure technical store", "maintenance shop", "B2 circulation"],
+      "census": {
+        "water": 0,
+        "lava": 0,
+        "waterlogged": 0,
+        "air": 0,
+        "caveAir": 0,
+        "blockEntities": 0
+      }
+    },
+    {
+      "id": "WL-B1-B2-CORE",
+      "bounds": {
+        "minX": -360,
+        "maxX": -353,
+        "minY": -5,
+        "maxY": 18,
+        "minZ": -603,
+        "maxZ": -596
+      },
+      "program": ["service stair", "freight lift analog", "protected riser"],
+      "census": {
+        "water": 0,
+        "lava": 0,
+        "waterlogged": 0,
+        "caveAir": 0,
+        "blockEntities": 0
+      }
+    }
+  ],
+  "freightSystem": {
+    "standardsBasis": [
+      "https://www.wbdg.org/space-types/loading-dock",
+      "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.26",
+      "https://www.gsa.gov/real-estate/facilities-standards-for-the-public-buildings-service"
+    ],
+    "surfaceServiceSpur": {
+      "centerline": [
+        [-224, 70, -496],
+        [-242, 70, -496],
+        [-247, 70, -510],
+        [-247, 70, -545],
+        [-250, 70, -568],
+        [-256, 69, -584]
+      ],
+      "overallWidth": 9,
+      "clearCarriageWidth": 7,
+      "design": "Separated signed service road with pile-causeway segments only where a fresh surface survey proves water; no bulk shoreline fill.",
+      "rule": "Stay east of x=-277 so it cannot enter WL-EGRESS-EAST."
+    },
+    "loadingCourt": {
+      "bounds": {
+        "minX": -271,
+        "maxX": -243,
+        "minY": 62,
+        "maxY": 76,
+        "minZ": -620,
+        "maxZ": -584
+      },
+      "program": ["two semi-truck positions", "turning and staging apron", "marked protected pedestrian strip", "wheel stops", "dock manager view"],
+      "censusVolume": {
+        "minX": -271,
+        "maxX": -243,
+        "minY": -16,
+        "maxY": 90,
+        "minZ": -620,
+        "maxZ": -584
+      },
+      "census": {
+        "water": 0,
+        "lava": 0,
+        "waterlogged": 0,
+        "blockEntities": 0
+      }
+    },
+    "dockWallAndStaging": {
+      "bounds": {
+        "minX": -271,
+        "maxX": -263,
+        "minY": 64,
+        "maxY": 76,
+        "minZ": -617,
+        "maxZ": -587
+      },
+      "truckDoorsFace": "east",
+      "truckBays": [
+        {
+          "id": "WL-DOCK-01",
+          "doorPlaneX": -262,
+          "minZ": -612,
+          "maxZ": -604
+        },
+        {
+          "id": "WL-DOCK-02",
+          "doorPlaneX": -262,
+          "minZ": -600,
+          "maxZ": -592
+        }
+      ],
+      "program": ["weather-protected staging", "dock office", "personnel door", "edge protection", "trailer restraint analog"]
+    },
+    "freightLift": {
+      "bounds": {
+        "minX": -271,
+        "maxX": -264,
+        "minY": 7,
+        "maxY": 72,
+        "minZ": -611,
+        "maxZ": -605
+      },
+      "rule": "Freight only; no public passenger-lobby connection."
+    },
+    "undergroundFreightCorridor": {
+      "bounds": {
+        "minX": -340,
+        "maxX": -264,
+        "minY": 7,
+        "maxY": 15,
+        "minZ": -611,
+        "maxZ": -605
+      },
+      "program": ["large-item route", "marked pedestrian refuge", "secure receiving path"],
+      "census": {
+        "water": 0,
+        "lava": 0,
+        "waterlogged": 0,
+        "air": 0,
+        "caveAir": 0,
+        "blockEntities": 0
+      }
+    },
+    "stageFreightLink": {
+      "bounds": {
+        "minX": -347,
+        "maxX": -340,
+        "minY": 7,
+        "maxY": 18,
+        "minZ": -611,
+        "maxZ": -600
+      },
+      "program": ["stage lift analog", "scene-store connection", "stage-right delivery"],
+      "census": {
+        "water": 0,
+        "lava": 0,
+        "waterlogged": 0,
+        "caveAir": 0,
+        "blockEntities": 0
+      }
+    }
+  },
+  "hardExclusions": [
+    {
+      "id": "WL-SOUTH-FORECOURT-FOUNTAIN",
+      "bounds": {
+        "minX": -364,
+        "maxX": -361,
+        "minY": 68,
+        "maxY": 68,
+        "minZ": -496,
+        "maxZ": -492
+      },
+      "finding": "19 exact minecraft:water[level=0] source cells; one corner of the rectangle is not water",
+      "rule": "Preserve every exact water-source cell and containment block; no arena identity element enters this box."
+    },
+    {
+      "id": "WL-B2-OLD-VOID-NORTH",
+      "bounds": {
+        "minX": -352,
+        "maxX": -336,
+        "minY": -5,
+        "maxY": 0,
+        "minZ": -611,
+        "maxZ": -601
+      },
+      "finding": "224 plain-air cells in the broader B2 north candidate",
+      "rule": "Treat as unregistered authored/excavated void until independently resolved; do not overwrite."
+    },
+    {
+      "id": "WL-B2-OLD-VOID-EAST",
+      "bounds": {
+        "minX": -351,
+        "maxX": -344,
+        "minY": -5,
+        "maxY": 0,
+        "minZ": -591,
+        "maxZ": -579
+      },
+      "finding": "127 plain-air cells in the broader B2 east candidate",
+      "rule": "Treat as unregistered authored/excavated void until independently resolved; do not overwrite."
+    },
+    {
+      "id": "WL-DUNGEON-SPAWNER-01",
+      "position": [-289, 23, -596],
+      "rule": "Protect."
+    },
+    {
+      "id": "WL-DUNGEON-SPAWNER-02",
+      "position": [-358, 38, -639],
+      "rule": "Protect."
+    },
+    {
+      "id": "WL-DUNGEON-SPAWNER-03",
+      "position": [-368, 42, -618],
+      "rule": "Protect."
+    }
+  ],
+  "crossPackageAudit": [
+    {
+      "package": "crater-lake-greenway",
+      "fixedBounds": {
+        "minX": -491,
+        "maxX": -447,
+        "minZ": -620,
+        "maxZ": -556
+      },
+      "result": "NO_OVERLAP",
+      "clearance": "West portals begin at x=-443, leaving x=-446..-444 intervening."
+    },
+    {
+      "package": "westlight-pier",
+      "fixedBounds": {
+        "minX": -428,
+        "maxX": -274,
+        "minZ": -445,
+        "maxZ": -318
+      },
+      "result": "NO_OVERLAP",
+      "clearance": "Dock and freight work remain north/east of the pier planning envelope."
+    },
+    {
+      "package": "stadium-to-pier-mall",
+      "fixedBounds": {
+        "minX": -362,
+        "maxX": -347,
+        "minZ": -470,
+        "maxZ": -318
+      },
+      "result": "NO_OVERLAP"
+    },
+    {
+      "package": "east-pier-egress",
+      "fixedBounds": {
+        "minX": -290,
+        "maxX": -278,
+        "minZ": -502,
+        "maxZ": -365
+      },
+      "result": "NO_OVERLAP",
+      "clearance": "Freight spur and court stay east of x=-277."
+    },
+    {
+      "package": "westward-parkway",
+      "fixedSouthEdgeZ": -652,
+      "result": "NO_OVERLAP",
+      "clearance": "Loading court north edge begins at z=-620, leaving a 31-cell intervening band."
+    },
+    {
+      "package": "accepted-stadium-screen",
+      "result": "PRESERVE",
+      "rule": "No proposed geometry touches WL-INFINITY-SCREEN."
+    }
+  ],
+  "sightlineAndRouteQa": {
+    "standardsBasis": [
+      "https://www.access-board.gov/ada/",
+      "https://www.access-board.gov/ada/guides/chapter-4-accessible-routes/",
+      "https://www.access-board.gov/ada/chapter/ch04/",
+      "https://www.wbdg.org/space-types/auditorium"
+    ],
+    "requirements": [
+      "Every seat group faces its venue focal target.",
+      "Wheelchair and companion positions are integral, horizontally and vertically dispersed and outside required aisles.",
+      "Seated-eye and standing-spectator rays are both tested where standing is an event condition.",
+      "Every performance area has a normal-walk route to dressing, green, rehearsal and freight support spaces.",
+      "Each named exterior portal has a normal-walk route to its own lobby and seat without entering another venue's queue.",
+      "No ladder is accepted as primary public or performer circulation."
+    ],
+    "mediaMinimum": {
+      "newImages": 42,
+      "exteriorAndArrival": 6,
+      "blueDrumSightlines": 24,
+      "lanternSightlines": 8,
+      "dockBackstageFreight": 4,
+      "additionalDrawings": [
+        "updated complex overview",
+        "one floor plan per occupied level",
+        "one dock-to-stage service section"
+      ]
+    }
+  },
+  "databaseHandoff": {
+    "retain": ["WL-BOWL", "WL-THEATRE", "WL-CLUB", "WL-INFINITY-SCREEN"],
+    "addAfterPostStateProof": [
+      "WL-STUDIO",
+      "venue-specific exterior entrances",
+      "dressing and green rooms",
+      "rehearsal room",
+      "control and technical rooms",
+      "B1 and B2 support rooms",
+      "loading court and dock",
+      "freight lift and corridor"
+    ],
+    "mediaRule": "Attach media by exact object ID and reviewed mapping; file discovery alone is not a relationship.",
+    "supersessionRule": "Do not retire broad functional floor zones until detailed post-state room geometries are accepted."
+  },
+  "releaseGates": [
+    "fresh immutable saved-world snapshot and canonical hash",
+    "fresh exact block and neighboring-fluid census",
+    "block-entity and protected-spawner register",
+    "cross-package lock for pier, crater greenway and parkway work",
+    "exact one-cell forward and rollback guards",
+    "player and entity clearance",
+    "same-camera before media",
+    "fixed atomic transaction order",
+    "immutable post snapshot",
+    "three entrance-to-seat bidirectional normal-walk tests",
+    "dock-to-stage freight route test",
+    "performer dressing-to-stage route test",
+    "Blue Drum and Lantern sightline matrices",
+    "48-view Sky Bowl screen regression",
+    "post-state database import",
+    "matched after media and independent verifier"
+  ],
+  "authorization": {
+    "liveMutation": false,
+    "rcon": false,
+    "worldEdit": false,
+    "operationFile": null,
+    "statement": "A passing audit/design package is not permission to build."
+  }
+}

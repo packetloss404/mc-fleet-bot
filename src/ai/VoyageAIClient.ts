@@ -58,4 +58,10 @@ export class VoyageAIClient implements LLMClient {
     const data: any[] = Array.isArray(json.data) ? json.data : [];
     return data.map((d) => d.embedding as number[]);
   }
+
+  /** Concrete model ID, for accurate TokenLedger cost attribution. */
+  getModelId(): string {
+    return this.model;
+  }
+
 }

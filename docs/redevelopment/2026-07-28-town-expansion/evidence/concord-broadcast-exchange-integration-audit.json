@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "status": "FAIL_NOT_INTEGRATED_DO_NOT_RELEASE",
+  "generatedAtUtc": "2026-07-28T05:30:44Z",
+  "auditType": "offline static source-to-binding comparison",
+  "liveWorldMutated": false,
+  "compiler": {
+    "path": "scripts/generate_town_expansion_r1.mjs",
+    "sha256": "2664a2a758cd1db2a08364224dd0afa255d13a0bd3ace57f10383c000c7ff85a",
+    "syntaxCheck": "PASS"
+  },
+  "bindingDesign": {
+    "schedule": "docs/redevelopment/2026-07-28-town-expansion/concord-broadcast-exchange-coordinate-schedule.json",
+    "scheduleSha256": "965411971a8414dd78ef88b92a55f5309be2b96966d0296bd1d50aef6ad9b0a0",
+    "narrative": "docs/redevelopment/2026-07-28-town-expansion/concord-broadcast-exchange-source-of-truth.md",
+    "narrativeSha256": "140a39aa33b16618669d44eaadae53c61407d6d41070f4b5d9e1fb44b6e6323a",
+    "status": "FROZEN_DESIGN_NOT_GENERATED_NOT_LIVE"
+  },
+  "findings": [
+    {
+      "id": "CBE-AUDIT-001",
+      "severity": "BLOCKER",
+      "area": "design authority",
+      "finding": "The compiler does not list either Concord Broadcast Exchange binding source in report.designSources and does not load or validate the coordinate schedule.",
+      "requiredFix": "Load the schedule, abort on coordinate/count drift, and include both binding files in designSources."
+    },
+    {
+      "id": "CBE-AUDIT-002",
+      "severity": "BLOCKER",
+      "area": "main envelope",
+      "finding": "The compiler uses a generic terraced venue through x680..730 while the binding main shell ends at x715 and reserves x716..730 for service, tower, and garden interfaces.",
+      "requiredFix": "Replace the generic venue with the exact five-object site schedule and prove zero cross-object collision except reviewed interfaces."
+    },
+    {
+      "id": "CBE-AUDIT-003",
+      "severity": "BLOCKER",
+      "area": "vertical datums",
+      "finding": "Compiler underground floor plates are y29 and y42 inside [682,28,-421,728,55,-354]. Binding floors are B2 y41, B1 y53, G0 y65, G1 y74, and roof y83.",
+      "requiredFix": "Use the frozen datums and exact room envelopes. Repeat dry, gravity, and block-entity census on the final target cells."
+    },
+    {
+      "id": "CBE-AUDIT-004",
+      "severity": "BLOCKER",
+      "area": "room program",
+      "finding": "The compiler models twelve repeated above-ground colored masses and four underground masses, not the schedule's individually bounded rooms and exact program counts. Several current room boxes are solid rather than enterable shells.",
+      "requiredFix": "Generate every scheduled object ID, preserve corridors and acoustic vestibules, and prove each exactCounts value from surviving final-state room identities."
+    },
+    {
+      "id": "CBE-AUDIT-005",
+      "severity": "BLOCKER",
+      "area": "assembly halls",
+      "finding": "The compiler has one generic cabaret mass and no independently counted 84-position Hall A or 42-position Hall B with stages, screens/backdrops, aisles, and open-bay analogues.",
+      "requiredFix": "Implement both exact halls and machine-check seat/open-bay counts, stage-before-seating orientation, sightline aisles, backstage routes, and two independent egress directions."
+    },
+    {
+      "id": "CBE-AUDIT-006",
+      "severity": "BLOCKER",
+      "area": "sunken garden",
+      "finding": "The compiler's alleged garden is at y30, x701..726 and is labeled open_to_sky_b1_smoking_garden. The binding garden is x717..730, y53..64, z-380..-352, roofless, smoke/fire-free, with 24 seats and two vestibules.",
+      "requiredFix": "Use the exact garden reservation, remove the smoking-room role, prove open sky and two-vestibule separation, and count exactly 24 seats."
+    },
+    {
+      "id": "CBE-AUDIT-007",
+      "severity": "BLOCKER",
+      "area": "circulation",
+      "finding": "The compiler reports two stair cores and one lift. The binding requires north/south public stair-lift-refuge cores, north/south service/performer stair-lift cores, and a central freight lift, all serving B2/B1/G0/G1/roof.",
+      "requiredFix": "Implement all five scheduled cores and pass no-jump, four-block-clear, level-landing, route-separation, and bidirectional egress QA."
+    },
+    {
+      "id": "CBE-AUDIT-008",
+      "severity": "BLOCKER",
+      "area": "tower",
+      "finding": "The compiler tower is centered near (660,-338), rises only about 46 blocks from a derived court elevation, and has no four counted maintenance decks. Binding tower bounds are [717,64,-425,730,145,-411].",
+      "requiredFix": "Move the tower to its reserved envelope, add exactly four maintenance decks and locked service access, then prove separation from public routes and the protected beehive."
+    },
+    {
+      "id": "CBE-AUDIT-009",
+      "severity": "BLOCKER",
+      "area": "satellite pad",
+      "finding": "The compiler pad is x610..640, z-345..-331 with three same-size dish masses. Binding pad is [737,62,-425,769,78,-390] with exactly one large, four medium, and four small dishes and no target below y62 over protected buried water.",
+      "requiredFix": "Implement the exact surface-only pad and nine-dish census. Abort on any y<62 target or protected-water intersection."
+    },
+    {
+      "id": "CBE-AUDIT-010",
+      "severity": "BLOCKER",
+      "area": "district interfaces",
+      "finding": "The generic Concord backstage/service route is drawn after the buildings at a fixed courtY and can erase north facade cells without named loading doors or thresholds.",
+      "requiredFix": "Reserve doors and loading thresholds first, use the exact east service lane, and reject all other road/building cross-scope overrides."
+    },
+    {
+      "id": "CBE-AUDIT-011",
+      "severity": "BLOCKER",
+      "area": "evidence and database",
+      "finding": "The binding has 18 object-linked cameras. The compiler exposes only four broad Concord cameras and publishes only Gilded Raven object records globally.",
+      "requiredFix": "Emit all scheduled CBE object records and 18 first/second-pass camera pairs into the database import and exact-object media manifest before publication."
+    }
+  ],
+  "bindingCounts": {
+    "podcastRooms": 6,
+    "podcastControlRooms": 3,
+    "gamingStreamMinis": 10,
+    "varietyStreamMinis": 9,
+    "adultPerformanceStreamMinis": 8,
+    "miniStudioTechnicalHubs": 3,
+    "cabaretExhibitionHalls": 2,
+    "hallAAudiencePositions": 84,
+    "hallBAudiencePositions": 42,
+    "b2NonGraphicSetRooms": 8,
+    "towerMaintenanceDecks": 4,
+    "totalDishAnalogues": 9,
+    "cameraCandidates": 18
+  },
+  "compilerObservedClaims": {
+    "aboveGroundStreamRoomMasses": 12,
+    "undergroundThemedRoomMasses": 4,
+    "cabaretMasses": 1,
+    "reportedStairCores": 2,
+    "reportedLiftCores": 1,
+    "towerMaintenanceDecks": 0,
+    "dishMasses": 3,
+    "cameraCandidates": 4,
+    "globalPublicationObjectRecordsForCbe": 0
+  },
+  "releaseDecision": {
+    "modelledToBindingDesign": false,
+    "databaseImported": false,
+    "firstPassCaptured": false,
+    "secondPassCaptured": false,
+    "liveBuilt": false,
+    "releaseAllowed": false
+  }
+}

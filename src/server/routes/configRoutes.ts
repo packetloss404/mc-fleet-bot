@@ -90,6 +90,21 @@ export function registerConfigRoutes(
       current[key] = value;
     }
 
+    // Do NOT rewrite config.yml when the patch was a no-op. validatePatch drops
+    // keys it doesn't recognise and still returns ok:true, so a PATCH carrying
+    // only unknown fields used to fall through to persistConfig — and
+    // persistConfig serialises through yaml.dump, which does not preserve
+    // comments. config.yml currently holds ~144 lines of incident archaeology
+    // (the 2026-07-24 repoint notes, the minY:43 offset explanation, the
+    // dig-floor rationale); one 200-OK no-op request would erase all of it.
+    if (Object.keys(validated.values).length === 0) {
+      logger.info(
+        { section },
+        'config PATCH matched no known fields; skipping persist to preserve comments',
+      );
+      return res.json({ ok: true, section, values: getSection(config, section), noop: true });
+    }
+
     try {
       persistConfig(config);
     } catch (err: any) {

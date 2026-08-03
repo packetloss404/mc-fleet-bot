@@ -1,0 +1,200 @@
+# =====================================================================================================
+# MainStreet America — MAP MARKER DEFINITION  (integration/map-marker.yaml)
+# =====================================================================================================
+# REQUIRED PLUGIN: Dynmap (Markers component / dynmap-marker API).
+# STATUS: STAGED, NOT ACTIVE — Dynmap/BlueMap is genuinely absent, as are Citizens and the mc-fleet-bot
+#   relay, so no web map or marker exists today. CORRECTED 2026-07-25: the side-claims were FALSE —
+#   **WorldGuard 7.0.16 and WorldEdit 7.4.0 ARE installed** and the **builder bots ARE opped (level 4)**;
+#   overworld name confirmed `world`. Apply only once Dynmap is installed — either by an importer that walks this
+#   file and calls the Marker API, or by hand via /dmarker addset & /dmarker add commands. This is NOT
+#   Dynmap's native markers.yml on-disk format (that file is machine-managed); it is a portable staging
+#   definition to recreate from.
+#
+# -----------------------------------------------------------------------------------------------------
+# PROVENANCE / HONESTY NOTE
+# -----------------------------------------------------------------------------------------------------
+# No brief / "section 17/18" exists in this repo (same gap as coordinates.yaml CONFLICT-02). The marker
+# set, labels and icons below are authored. Current arrival/parking/building anchors were reconciled
+# on 2026-07-26 against the as-built survey and world-map.db; untouched entries retain their declared
+# planning/coordinates.yaml provenance. Absolute XZ remains a creative reconstruction rather than a
+# surveyed real-world placement. Icon names are stock Dynmap marker icons.
+# =====================================================================================================
+
+schema_version: 1
+world_assumption: >-
+  'world' is the live overworld name confirmed by RCON on 2026-07-25; it matches
+  location.yaml / worldguard.yaml / warps.yaml.
+
+# --- The marker set (a toggleable layer on the Dynmap web UI) --------------------------------------
+markerset:
+  id: mainstreet_america
+  label: "MainStreet America"
+  hidden_by_default: false
+  layer_priority: 10
+  min_zoom: 0
+
+  # --- Primary marker: the whole site (the "marker definition" the task asks for) ------------------
+  primary_marker:
+    id: mainstreet_america_site
+    world: world
+    x: 0
+    y: 64
+    z: 0                     # world origin = site center
+    icon: building
+    label: "MainStreet America (reconstruction)"
+    # Dynmap supports HTML in marker descriptions when allowdescriptionhtml is true.
+    description: >-
+      <b>MainStreet America</b> — a Minecraft reconstruction of the former Design Tech Homes model-home
+      park at 18750 Interstate 45 N, Spring, TX (opened 2013; sold 2023; now closed).<br>
+      <i>Layout, building sizes and the 12-home roster are grounded in real sources. The buildings'
+      appearance — materials, roofs, colors — is our informed reconstruction, not documented fact
+      (manifest REF-019). A faithful map, not a photograph.</i>
+    confidence: verified            # the site's existence/identity; placement at origin is a build choice
+
+  # --- Boundary outline: the 600x600 protected envelope, drawn as a Dynmap area marker -------------
+  # Area markers are 2D polylines in the X/Z plane. Corners listed clockwise; y is cosmetic.
+  boundary_area:
+    id: mainstreet_america_boundary
+    world: world
+    corners_x: [-300, 300, 300, -300]
+    corners_z: [-300, -300, 300, 300]
+    y: 64
+    label: "MainStreet America — project envelope (600x600)"
+    line_color: "0xFFAA00"
+    line_opacity: 0.8
+    line_weight: 2
+    fill_color: "0xFFCC33"
+    fill_opacity: 0.10
+    boundary_note: >-
+      This is the WORLD envelope (~33 acres), NOT the real ~12.41-acre parcel line (coordinates.yaml
+      CONFLICT-04). Do not read it as a lot boundary.
+    confidence: creative approximation   # envelope size is a build convention
+
+  # --- Point-of-interest markers, reconciled to current as-built anchors where available ------------
+  poi_markers:
+    - id: msa_gateway
+      world: world
+      x: 0
+      y: 79
+      z: 305
+      icon: door
+      label: "South Gateway / Terraced Arrival"
+      confidence: high-confidence inference
+    - id: msa_billboard
+      world: world
+      x: 95
+      y: 72
+      z: 272
+      icon: star
+      label: "LED Monument Billboard"
+      confidence: high-confidence inference     # existence verified (REF-013); placement is build choice
+    - id: msa_parking
+      world: world
+      x: 0
+      y: 65
+      z: 220
+      icon: portal
+      label: "Parking & Arrival Gardens (236 spaces)"
+      confidence: high-confidence inference
+    - id: msa_guestcenter
+      world: world
+      x: 0
+      y: 65
+      z: 128
+      icon: building
+      label: "Guest Center (Building 1) — 44,019 SF, 2 story"   # verified size (REF-007)
+      confidence: verified                        # size verified; XZ placement creative approximation
+    - id: msa_homes
+      world: world
+      x: 0
+      y: 64
+      # REPOINTED to the as-built street mid-point. The surveyed lots run
+      # z+55 -> z-195 (6 lots, both sides), so z-70 is the centre of that run;
+      # was z25, which sat off the north end of the street as actually built.
+      z: -70
+      icon: house
+      label: "Showcase Homes — internal street (12 homes)"      # 12-home roster CONFIRMED as-built 2026-07-24
+      confidence: verified
+    - id: msa_cookingschool
+      world: world
+      x: -110
+      y: 65
+      z: -95
+      icon: building
+      label: "Cooking School & Retail (Building 2) — 8,342 SF"  # verified size (REF-009)
+      confidence: verified
+    - id: msa_culdesac
+      world: world
+      x: 0
+      y: 65
+      z: -235
+      icon: cross
+      label: "Cul-de-sac Terminus"
+      confidence: high-confidence inference
+    - id: msa_warehouse
+      world: world
+      x: 0
+      y: 64
+      z: -255
+      icon: hammer
+      label: "Warehouse (Building 3) — 8,944 SF"                # verified size (REF-010)
+      confidence: verified
+    - id: msa_pond
+      world: world
+      x: 190
+      y: 64
+      z: -250
+      icon: water
+      label: "Detention Pond"
+      confidence: moderate-confidence reconstruction            # unlabeled aerial read (REF-016)
+    - id: msa_mountain_entry
+      world: world
+      x: 116
+      y: 65
+      z: 172
+      icon: door
+      label: "Mountain Complex — Public Entry"
+      confidence: creative approximation
+    - id: msa_mountain_hangar
+      world: world
+      x: 150
+      y: 63
+      z: 110
+      icon: hammer
+      label: "Mountain Complex — Hangar"
+      confidence: creative approximation
+    - id: msa_mountain_arena
+      world: world
+      x: 225
+      y: 63
+      z: 110
+      icon: cross
+      label: "Mountain Complex — Training Arena"
+      confidence: creative approximation
+
+# =====================================================================================================
+# ASSUMPTIONS & CROSS-CHECK NOTES
+# =====================================================================================================
+assumptions:
+  - id: MK01
+    topic: Not Dynmap's native markers.yml
+    detail: >-
+      This is a portable staging definition, not the machine-managed
+      plugins/dynmap/markers.yml. Recreate via the Marker API or /dmarker at apply-time.
+    severity: low
+  - id: MK02
+    topic: Icon names
+    detail: >-
+      Icons (building, house, door, star, portal, water, hammer, cross) are stock Dynmap marker icon
+      ids; verify the exact icon set installed, and substitute if any are missing.
+    severity: low
+  - id: MK03
+    topic: World name
+    detail: "'world' confirmed by live RCON on 2026-07-25."
+    severity: low
+  - id: MK04
+    topic: Coordinates reconciled
+    detail: >-
+      Current visitor/parking/building anchors are reconciled to the as-built survey and agree with
+      warps.yaml and location.yaml. Absolute XZ remains a creative real-site reconstruction.
+    severity: low

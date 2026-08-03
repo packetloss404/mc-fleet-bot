@@ -1,0 +1,1986 @@
+{
+  "schemaVersion": 1,
+  "generatedAtUtc": "2026-07-28T15:03:21Z",
+  "mode": "offline-read-only-red-team",
+  "status": "ACCEPTED_FOR_BOUNDED_STREAMING",
+  "worldReleaseAuthorized": false,
+  "worldMutationPerformed": false,
+  "operations": "data/buildops/town-expansion-r1-2026-07-28.txt",
+  "operationSha256": "1a10954b1ae6ae702dcc01cd92d39adbb3820e3feff5461f3caa1283a578b896",
+  "runner": "scripts/rcon_runner.py",
+  "runnerSha256": "1e7a853d3043a22000469141cd0134b30b8d36260db424fff8536412c891c3f6",
+  "atomicWrapper": "scripts/run_redevelopment_atomic_release.py",
+  "atomicWrapperSha256": "175a9eb038bb2728fd3603a2d8ff6d76cd08f016edd896481c2df2d3f4432eeb",
+  "dryRunReport": {
+    "file": "data/buildops/town-expansion-r1-2026-07-28.live-safety-final-streaming-strict-dry-run.json",
+    "sha256": "6344ee5cfa0899692a5fe4855a36cb702519f08662a1a39266eebb2a54613e20",
+    "sourceGroupPlanSha256": "d2781e0791f57dd8f088bcfee58d9de45964106174094f8c2a42e5d2de313458",
+    "expandedCommandSha256": "2ade21390d48f3e8bb5e51061b0b19eff53df2436956a0dad976605307444ad4"
+  },
+  "census": {
+    "sourceOperations": 484676,
+    "sourceGroups": 484676,
+    "expandedCommands": 484690,
+    "leftoverOperations": 0,
+    "sourceKindCounts": {
+      "CMD": 1660,
+      "REPL": 483016
+    },
+    "executableKindCounts": {
+      "CMD": 1660,
+      "REPL": 483016
+    },
+    "exactPackageChunks": 2265,
+    "exactReplChunks": 2243,
+    "replChunkBounds": {
+      "minChunkX": -45,
+      "maxChunkX": 81,
+      "minChunkZ": -45,
+      "maxChunkZ": 18
+    },
+    "denseEnvelopeChunks": 8128,
+    "maximumSourceGroupChunks": 25,
+    "footprintHistogram": {
+      "1": 406918,
+      "2": 66437,
+      "3": 6516,
+      "4": 3824,
+      "5": 260,
+      "6": 443,
+      "7": 29,
+      "8": 101,
+      "9": 35,
+      "10": 9,
+      "12": 65,
+      "14": 4,
+      "15": 2,
+      "16": 19,
+      "18": 3,
+      "20": 5,
+      "22": 3,
+      "24": 1,
+      "25": 2
+    }
+  },
+  "capacityScenario": {
+    "serverLimit": 256,
+    "preExistingCount": 104,
+    "availableTemporaryChunks": 152
+  },
+  "checks": [
+    {
+      "id": "RCS-001",
+      "title": "Every source group has a complete exact chunk footprint",
+      "status": "PASS",
+      "evidence": {
+        "groups": 484676,
+        "cmdGroups": 1660,
+        "grammarErrors": []
+      }
+    },
+    {
+      "id": "RCS-002",
+      "title": "Each indivisible source group fits current temporary capacity",
+      "status": "PASS",
+      "evidence": {
+        "serverLimit": 256,
+        "preExistingCountScenario": 104,
+        "availableTemporaryChunks": 152,
+        "maximumSourceGroupChunks": 25
+      }
+    },
+    {
+      "id": "RCS-003",
+      "title": "Runner streams exact chunks instead of accumulating dense tiles",
+      "status": "PASS",
+      "evidence": {
+        "exactPackageChunks": 2265,
+        "denseEnvelopeChunks": 8128,
+        "implementation": {
+          "denseGlobalBoundsUsed": false,
+          "preExistingCapacityIsAccounted": true,
+          "commandsEvaluatedOnlyAfterWholeExecution": false,
+          "cmdCoordinatesIncludedInBounds": true,
+          "unknownOrPartialCmdGrammarFailsClosed": true,
+          "broadRectangleCleanupUsed": false,
+          "durablePerGroupJournalPresent": true,
+          "journalCheckpointsEveryGroup": true,
+          "interruptedJournalCollisionIsRejected": true,
+          "strictModeRejectsKeepLoaded": true,
+          "dryRunChecksUnsupportedOperationsBeforeSuccess": true,
+          "atomicWrapperAttemptsFailingPackageRollback": true,
+          "atomicWrapperHasCommittedPrefixRecovery": true,
+          "atomicWrapperBindsExecutionReportToOperation": true
+        }
+      }
+    },
+    {
+      "id": "RCS-004",
+      "title": "Source order is preserved and each group is evaluated immediately",
+      "status": "PASS",
+      "evidence": {
+        "planSourceOrderExact": true,
+        "delayedWholePackageEvaluation": false
+      }
+    },
+    {
+      "id": "RCS-005",
+      "title": "CMD reads and writes are included in chunk coverage",
+      "status": "PASS",
+      "evidence": {
+        "packageCmdGroupsFullyParsed": true,
+        "currentBoundsIncludesCmd": true,
+        "unknownOrPartialCmdGrammarFailsClosed": true
+      }
+    },
+    {
+      "id": "RCS-006",
+      "title": "Cleanup removes only owned exact chunks and verifies restoration",
+      "status": "PASS",
+      "evidence": {
+        "denseGlobalBoundsUsed": false,
+        "preExistingCapacityIsAccounted": true,
+        "commandsEvaluatedOnlyAfterWholeExecution": false,
+        "cmdCoordinatesIncludedInBounds": true,
+        "unknownOrPartialCmdGrammarFailsClosed": true,
+        "broadRectangleCleanupUsed": false,
+        "durablePerGroupJournalPresent": true,
+        "journalCheckpointsEveryGroup": true,
+        "interruptedJournalCollisionIsRejected": true,
+        "strictModeRejectsKeepLoaded": true,
+        "dryRunChecksUnsupportedOperationsBeforeSuccess": true,
+        "atomicWrapperAttemptsFailingPackageRollback": true,
+        "atomicWrapperHasCommittedPrefixRecovery": true,
+        "atomicWrapperBindsExecutionReportToOperation": true
+      }
+    },
+    {
+      "id": "RCS-007",
+      "title": "Crash-safe durable group journal and prefix recovery exist",
+      "status": "PASS",
+      "evidence": {
+        "denseGlobalBoundsUsed": false,
+        "preExistingCapacityIsAccounted": true,
+        "commandsEvaluatedOnlyAfterWholeExecution": false,
+        "cmdCoordinatesIncludedInBounds": true,
+        "unknownOrPartialCmdGrammarFailsClosed": true,
+        "broadRectangleCleanupUsed": false,
+        "durablePerGroupJournalPresent": true,
+        "journalCheckpointsEveryGroup": true,
+        "interruptedJournalCollisionIsRejected": true,
+        "strictModeRejectsKeepLoaded": true,
+        "dryRunChecksUnsupportedOperationsBeforeSuccess": true,
+        "atomicWrapperAttemptsFailingPackageRollback": true,
+        "atomicWrapperHasCommittedPrefixRecovery": true,
+        "atomicWrapperBindsExecutionReportToOperation": true
+      }
+    },
+    {
+      "id": "RCS-008",
+      "title": "Strict release cannot retain temporary force-loads",
+      "status": "PASS",
+      "evidence": {
+        "denseGlobalBoundsUsed": false,
+        "preExistingCapacityIsAccounted": true,
+        "commandsEvaluatedOnlyAfterWholeExecution": false,
+        "cmdCoordinatesIncludedInBounds": true,
+        "unknownOrPartialCmdGrammarFailsClosed": true,
+        "broadRectangleCleanupUsed": false,
+        "durablePerGroupJournalPresent": true,
+        "journalCheckpointsEveryGroup": true,
+        "interruptedJournalCollisionIsRejected": true,
+        "strictModeRejectsKeepLoaded": true,
+        "dryRunChecksUnsupportedOperationsBeforeSuccess": true,
+        "atomicWrapperAttemptsFailingPackageRollback": true,
+        "atomicWrapperHasCommittedPrefixRecovery": true,
+        "atomicWrapperBindsExecutionReportToOperation": true
+      }
+    },
+    {
+      "id": "RCS-009",
+      "title": "Canonical package has no unsupported live leftovers",
+      "status": "PASS",
+      "evidence": {
+        "leftoverOperations": 0,
+        "reason": null
+      }
+    },
+    {
+      "id": "RCS-010",
+      "title": "Dry-run applies the same executability gate as live mode",
+      "status": "PASS",
+      "evidence": {
+        "denseGlobalBoundsUsed": false,
+        "preExistingCapacityIsAccounted": true,
+        "commandsEvaluatedOnlyAfterWholeExecution": false,
+        "cmdCoordinatesIncludedInBounds": true,
+        "unknownOrPartialCmdGrammarFailsClosed": true,
+        "broadRectangleCleanupUsed": false,
+        "durablePerGroupJournalPresent": true,
+        "journalCheckpointsEveryGroup": true,
+        "interruptedJournalCollisionIsRejected": true,
+        "strictModeRejectsKeepLoaded": true,
+        "dryRunChecksUnsupportedOperationsBeforeSuccess": true,
+        "atomicWrapperAttemptsFailingPackageRollback": true,
+        "atomicWrapperHasCommittedPrefixRecovery": true,
+        "atomicWrapperBindsExecutionReportToOperation": true
+      }
+    },
+    {
+      "id": "RCS-011",
+      "title": "Canonical strict dry-run is exact and same-plan bound",
+      "status": "PASS",
+      "evidence": {
+        "report": "data/buildops/town-expansion-r1-2026-07-28.live-safety-final-streaming-strict-dry-run.json",
+        "reportSha256": "6344ee5cfa0899692a5fe4855a36cb702519f08662a1a39266eebb2a54613e20",
+        "header": {
+          "schemaVersion": 2,
+          "file": "data/buildops/town-expansion-r1-2026-07-28.txt",
+          "operationSha256": "1a10954b1ae6ae702dcc01cd92d39adbb3820e3feff5461f3caa1283a578b896",
+          "sourceGroupPlanSha256": "d2781e0791f57dd8f088bcfee58d9de45964106174094f8c2a42e5d2de313458",
+          "expandedCommandSha256": "2ade21390d48f3e8bb5e51061b0b19eff53df2436956a0dad976605307444ad4",
+          "status": "dry_run",
+          "dryRun": true,
+          "strictNoop": true,
+          "sourceOperationCount": 484676,
+          "sourceGroupCount": 484676,
+          "commandCount": 484690,
+          "expandedCommandCount": 484690,
+          "worldEditLeftoverCount": 0
+        },
+        "headerErrors": {}
+      }
+    }
+  ],
+  "failedChecks": [],
+  "acceptanceContract": {
+    "streamUnit": "one complete source group or one contiguous source-order window whose exact chunk union fits the measured capacity",
+    "order": "never reorder source groups; preserve expanded alternative order inside each group",
+    "evaluation": "evaluate and durably checkpoint a group before issuing any command from the next group; stop on the first failure",
+    "cmdPolicy": "extract every coordinate read or written; reject unknown, relative, local, or partially parsed CMD grammar before mutation",
+    "ownership": "journal exact planned additions before add, add/verify only missing chunks, remove/verify only owned chunks, preserve unowned concurrent additions, and report any final-set drift",
+    "crashPolicy": "create and fsync the report/journal before mutation, fsync each group transition, and compensate the exact committed prefix in reverse order after any failure or interrupted run"
+  },
+  "largestFootprints": [
+    {
+      "groupIndex": 384648,
+      "line": 388375,
+      "kind": "REPL",
+      "chunkCount": 25,
+      "chunks": [
+        [
+          -3,
+          -26
+        ],
+        [
+          -3,
+          -25
+        ],
+        [
+          -3,
+          -24
+        ],
+        [
+          -3,
+          -23
+        ],
+        [
+          -3,
+          -22
+        ],
+        [
+          -2,
+          -26
+        ],
+        [
+          -2,
+          -25
+        ],
+        [
+          -2,
+          -24
+        ],
+        [
+          -2,
+          -23
+        ],
+        [
+          -2,
+          -22
+        ],
+        [
+          -1,
+          -26
+        ],
+        [
+          -1,
+          -25
+        ],
+        [
+          -1,
+          -24
+        ],
+        [
+          -1,
+          -23
+        ],
+        [
+          -1,
+          -22
+        ],
+        [
+          0,
+          -26
+        ],
+        [
+          0,
+          -25
+        ],
+        [
+          0,
+          -24
+        ],
+        [
+          0,
+          -23
+        ],
+        [
+          0,
+          -22
+        ],
+        [
+          1,
+          -26
+        ],
+        [
+          1,
+          -25
+        ],
+        [
+          1,
+          -24
+        ],
+        [
+          1,
+          -23
+        ],
+        [
+          1,
+          -22
+        ]
+      ]
+    },
+    {
+      "groupIndex": 384649,
+      "line": 388377,
+      "kind": "REPL",
+      "chunkCount": 25,
+      "chunks": [
+        [
+          -3,
+          -26
+        ],
+        [
+          -3,
+          -25
+        ],
+        [
+          -3,
+          -24
+        ],
+        [
+          -3,
+          -23
+        ],
+        [
+          -3,
+          -22
+        ],
+        [
+          -2,
+          -26
+        ],
+        [
+          -2,
+          -25
+        ],
+        [
+          -2,
+          -24
+        ],
+        [
+          -2,
+          -23
+        ],
+        [
+          -2,
+          -22
+        ],
+        [
+          -1,
+          -26
+        ],
+        [
+          -1,
+          -25
+        ],
+        [
+          -1,
+          -24
+        ],
+        [
+          -1,
+          -23
+        ],
+        [
+          -1,
+          -22
+        ],
+        [
+          0,
+          -26
+        ],
+        [
+          0,
+          -25
+        ],
+        [
+          0,
+          -24
+        ],
+        [
+          0,
+          -23
+        ],
+        [
+          0,
+          -22
+        ],
+        [
+          1,
+          -26
+        ],
+        [
+          1,
+          -25
+        ],
+        [
+          1,
+          -24
+        ],
+        [
+          1,
+          -23
+        ],
+        [
+          1,
+          -22
+        ]
+      ]
+    },
+    {
+      "groupIndex": 283359,
+      "line": 285839,
+      "kind": "REPL",
+      "chunkCount": 24,
+      "chunks": [
+        [
+          -39,
+          -24
+        ],
+        [
+          -39,
+          -23
+        ],
+        [
+          -39,
+          -22
+        ],
+        [
+          -39,
+          -21
+        ],
+        [
+          -38,
+          -24
+        ],
+        [
+          -38,
+          -23
+        ],
+        [
+          -38,
+          -22
+        ],
+        [
+          -38,
+          -21
+        ],
+        [
+          -37,
+          -24
+        ],
+        [
+          -37,
+          -23
+        ],
+        [
+          -37,
+          -22
+        ],
+        [
+          -37,
+          -21
+        ],
+        [
+          -36,
+          -24
+        ],
+        [
+          -36,
+          -23
+        ],
+        [
+          -36,
+          -22
+        ],
+        [
+          -36,
+          -21
+        ],
+        [
+          -35,
+          -24
+        ],
+        [
+          -35,
+          -23
+        ],
+        [
+          -35,
+          -22
+        ],
+        [
+          -35,
+          -21
+        ],
+        [
+          -34,
+          -24
+        ],
+        [
+          -34,
+          -23
+        ],
+        [
+          -34,
+          -22
+        ],
+        [
+          -34,
+          -21
+        ]
+      ]
+    },
+    {
+      "groupIndex": 205524,
+      "line": 207021,
+      "kind": "REPL",
+      "chunkCount": 22,
+      "chunks": [
+        [
+          -37,
+          -42
+        ],
+        [
+          -36,
+          -42
+        ],
+        [
+          -35,
+          -42
+        ],
+        [
+          -34,
+          -42
+        ],
+        [
+          -33,
+          -42
+        ],
+        [
+          -32,
+          -42
+        ],
+        [
+          -31,
+          -42
+        ],
+        [
+          -30,
+          -42
+        ],
+        [
+          -29,
+          -42
+        ],
+        [
+          -28,
+          -42
+        ],
+        [
+          -27,
+          -42
+        ],
+        [
+          -26,
+          -42
+        ],
+        [
+          -25,
+          -42
+        ],
+        [
+          -24,
+          -42
+        ],
+        [
+          -23,
+          -42
+        ],
+        [
+          -22,
+          -42
+        ],
+        [
+          -21,
+          -42
+        ],
+        [
+          -20,
+          -42
+        ],
+        [
+          -19,
+          -42
+        ],
+        [
+          -18,
+          -42
+        ],
+        [
+          -17,
+          -42
+        ],
+        [
+          -16,
+          -42
+        ]
+      ]
+    },
+    {
+      "groupIndex": 205535,
+      "line": 207032,
+      "kind": "REPL",
+      "chunkCount": 22,
+      "chunks": [
+        [
+          -37,
+          -42
+        ],
+        [
+          -36,
+          -42
+        ],
+        [
+          -35,
+          -42
+        ],
+        [
+          -34,
+          -42
+        ],
+        [
+          -33,
+          -42
+        ],
+        [
+          -32,
+          -42
+        ],
+        [
+          -31,
+          -42
+        ],
+        [
+          -30,
+          -42
+        ],
+        [
+          -29,
+          -42
+        ],
+        [
+          -28,
+          -42
+        ],
+        [
+          -27,
+          -42
+        ],
+        [
+          -26,
+          -42
+        ],
+        [
+          -25,
+          -42
+        ],
+        [
+          -24,
+          -42
+        ],
+        [
+          -23,
+          -42
+        ],
+        [
+          -22,
+          -42
+        ],
+        [
+          -21,
+          -42
+        ],
+        [
+          -20,
+          -42
+        ],
+        [
+          -19,
+          -42
+        ],
+        [
+          -18,
+          -42
+        ],
+        [
+          -17,
+          -42
+        ],
+        [
+          -16,
+          -42
+        ]
+      ]
+    },
+    {
+      "groupIndex": 205543,
+      "line": 207040,
+      "kind": "REPL",
+      "chunkCount": 22,
+      "chunks": [
+        [
+          -37,
+          -42
+        ],
+        [
+          -36,
+          -42
+        ],
+        [
+          -35,
+          -42
+        ],
+        [
+          -34,
+          -42
+        ],
+        [
+          -33,
+          -42
+        ],
+        [
+          -32,
+          -42
+        ],
+        [
+          -31,
+          -42
+        ],
+        [
+          -30,
+          -42
+        ],
+        [
+          -29,
+          -42
+        ],
+        [
+          -28,
+          -42
+        ],
+        [
+          -27,
+          -42
+        ],
+        [
+          -26,
+          -42
+        ],
+        [
+          -25,
+          -42
+        ],
+        [
+          -24,
+          -42
+        ],
+        [
+          -23,
+          -42
+        ],
+        [
+          -22,
+          -42
+        ],
+        [
+          -21,
+          -42
+        ],
+        [
+          -20,
+          -42
+        ],
+        [
+          -19,
+          -42
+        ],
+        [
+          -18,
+          -42
+        ],
+        [
+          -17,
+          -42
+        ],
+        [
+          -16,
+          -42
+        ]
+      ]
+    },
+    {
+      "groupIndex": 108754,
+      "line": 109154,
+      "kind": "REPL",
+      "chunkCount": 20,
+      "chunks": [
+        [
+          42,
+          -31
+        ],
+        [
+          42,
+          -30
+        ],
+        [
+          42,
+          -29
+        ],
+        [
+          42,
+          -28
+        ],
+        [
+          42,
+          -27
+        ],
+        [
+          43,
+          -31
+        ],
+        [
+          43,
+          -30
+        ],
+        [
+          43,
+          -29
+        ],
+        [
+          43,
+          -28
+        ],
+        [
+          43,
+          -27
+        ],
+        [
+          44,
+          -31
+        ],
+        [
+          44,
+          -30
+        ],
+        [
+          44,
+          -29
+        ],
+        [
+          44,
+          -28
+        ],
+        [
+          44,
+          -27
+        ],
+        [
+          45,
+          -31
+        ],
+        [
+          45,
+          -30
+        ],
+        [
+          45,
+          -29
+        ],
+        [
+          45,
+          -28
+        ],
+        [
+          45,
+          -27
+        ]
+      ]
+    },
+    {
+      "groupIndex": 108755,
+      "line": 109156,
+      "kind": "REPL",
+      "chunkCount": 20,
+      "chunks": [
+        [
+          46,
+          -31
+        ],
+        [
+          46,
+          -30
+        ],
+        [
+          46,
+          -29
+        ],
+        [
+          46,
+          -28
+        ],
+        [
+          46,
+          -27
+        ],
+        [
+          47,
+          -31
+        ],
+        [
+          47,
+          -30
+        ],
+        [
+          47,
+          -29
+        ],
+        [
+          47,
+          -28
+        ],
+        [
+          47,
+          -27
+        ],
+        [
+          48,
+          -31
+        ],
+        [
+          48,
+          -30
+        ],
+        [
+          48,
+          -29
+        ],
+        [
+          48,
+          -28
+        ],
+        [
+          48,
+          -27
+        ],
+        [
+          49,
+          -31
+        ],
+        [
+          49,
+          -30
+        ],
+        [
+          49,
+          -29
+        ],
+        [
+          49,
+          -28
+        ],
+        [
+          49,
+          -27
+        ]
+      ]
+    },
+    {
+      "groupIndex": 206176,
+      "line": 207677,
+      "kind": "REPL",
+      "chunkCount": 20,
+      "chunks": [
+        [
+          -35,
+          -42
+        ],
+        [
+          -34,
+          -42
+        ],
+        [
+          -33,
+          -42
+        ],
+        [
+          -32,
+          -42
+        ],
+        [
+          -31,
+          -42
+        ],
+        [
+          -30,
+          -42
+        ],
+        [
+          -29,
+          -42
+        ],
+        [
+          -28,
+          -42
+        ],
+        [
+          -27,
+          -42
+        ],
+        [
+          -26,
+          -42
+        ],
+        [
+          -25,
+          -42
+        ],
+        [
+          -24,
+          -42
+        ],
+        [
+          -23,
+          -42
+        ],
+        [
+          -22,
+          -42
+        ],
+        [
+          -21,
+          -42
+        ],
+        [
+          -20,
+          -42
+        ],
+        [
+          -19,
+          -42
+        ],
+        [
+          -18,
+          -42
+        ],
+        [
+          -17,
+          -42
+        ],
+        [
+          -16,
+          -42
+        ]
+      ]
+    },
+    {
+      "groupIndex": 268077,
+      "line": 270432,
+      "kind": "REPL",
+      "chunkCount": 20,
+      "chunks": [
+        [
+          -38,
+          -24
+        ],
+        [
+          -38,
+          -23
+        ],
+        [
+          -38,
+          -22
+        ],
+        [
+          -38,
+          -21
+        ],
+        [
+          -37,
+          -24
+        ],
+        [
+          -37,
+          -23
+        ],
+        [
+          -37,
+          -22
+        ],
+        [
+          -37,
+          -21
+        ],
+        [
+          -36,
+          -24
+        ],
+        [
+          -36,
+          -23
+        ],
+        [
+          -36,
+          -22
+        ],
+        [
+          -36,
+          -21
+        ],
+        [
+          -35,
+          -24
+        ],
+        [
+          -35,
+          -23
+        ],
+        [
+          -35,
+          -22
+        ],
+        [
+          -35,
+          -21
+        ],
+        [
+          -34,
+          -24
+        ],
+        [
+          -34,
+          -23
+        ],
+        [
+          -34,
+          -22
+        ],
+        [
+          -34,
+          -21
+        ]
+      ]
+    },
+    {
+      "groupIndex": 326781,
+      "line": 330342,
+      "kind": "REPL",
+      "chunkCount": 20,
+      "chunks": [
+        [
+          -3,
+          -26
+        ],
+        [
+          -3,
+          -25
+        ],
+        [
+          -3,
+          -24
+        ],
+        [
+          -3,
+          -23
+        ],
+        [
+          -2,
+          -26
+        ],
+        [
+          -2,
+          -25
+        ],
+        [
+          -2,
+          -24
+        ],
+        [
+          -2,
+          -23
+        ],
+        [
+          -1,
+          -26
+        ],
+        [
+          -1,
+          -25
+        ],
+        [
+          -1,
+          -24
+        ],
+        [
+          -1,
+          -23
+        ],
+        [
+          0,
+          -26
+        ],
+        [
+          0,
+          -25
+        ],
+        [
+          0,
+          -24
+        ],
+        [
+          0,
+          -23
+        ],
+        [
+          1,
+          -26
+        ],
+        [
+          1,
+          -25
+        ],
+        [
+          1,
+          -24
+        ],
+        [
+          1,
+          -23
+        ]
+      ]
+    },
+    {
+      "groupIndex": 134971,
+      "line": 135646,
+      "kind": "REPL",
+      "chunkCount": 18,
+      "chunks": [
+        [
+          14,
+          7
+        ],
+        [
+          14,
+          8
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          14,
+          10
+        ],
+        [
+          14,
+          11
+        ],
+        [
+          14,
+          12
+        ],
+        [
+          15,
+          7
+        ],
+        [
+          15,
+          8
+        ],
+        [
+          15,
+          9
+        ],
+        [
+          15,
+          10
+        ],
+        [
+          15,
+          11
+        ],
+        [
+          15,
+          12
+        ],
+        [
+          16,
+          7
+        ],
+        [
+          16,
+          8
+        ],
+        [
+          16,
+          9
+        ],
+        [
+          16,
+          10
+        ],
+        [
+          16,
+          11
+        ],
+        [
+          16,
+          12
+        ]
+      ]
+    },
+    {
+      "groupIndex": 156527,
+      "line": 157389,
+      "kind": "REPL",
+      "chunkCount": 18,
+      "chunks": [
+        [
+          14,
+          7
+        ],
+        [
+          14,
+          8
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          14,
+          10
+        ],
+        [
+          14,
+          11
+        ],
+        [
+          14,
+          12
+        ],
+        [
+          15,
+          7
+        ],
+        [
+          15,
+          8
+        ],
+        [
+          15,
+          9
+        ],
+        [
+          15,
+          10
+        ],
+        [
+          15,
+          11
+        ],
+        [
+          15,
+          12
+        ],
+        [
+          16,
+          7
+        ],
+        [
+          16,
+          8
+        ],
+        [
+          16,
+          9
+        ],
+        [
+          16,
+          10
+        ],
+        [
+          16,
+          11
+        ],
+        [
+          16,
+          12
+        ]
+      ]
+    },
+    {
+      "groupIndex": 205554,
+      "line": 207051,
+      "kind": "REPL",
+      "chunkCount": 18,
+      "chunks": [
+        [
+          -37,
+          -42
+        ],
+        [
+          -36,
+          -42
+        ],
+        [
+          -35,
+          -42
+        ],
+        [
+          -34,
+          -42
+        ],
+        [
+          -33,
+          -42
+        ],
+        [
+          -32,
+          -42
+        ],
+        [
+          -31,
+          -42
+        ],
+        [
+          -30,
+          -42
+        ],
+        [
+          -29,
+          -42
+        ],
+        [
+          -28,
+          -42
+        ],
+        [
+          -27,
+          -42
+        ],
+        [
+          -26,
+          -42
+        ],
+        [
+          -25,
+          -42
+        ],
+        [
+          -24,
+          -42
+        ],
+        [
+          -23,
+          -42
+        ],
+        [
+          -22,
+          -42
+        ],
+        [
+          -21,
+          -42
+        ],
+        [
+          -20,
+          -42
+        ]
+      ]
+    },
+    {
+      "groupIndex": 60691,
+      "line": 60939,
+      "kind": "REPL",
+      "chunkCount": 16,
+      "chunks": [
+        [
+          50,
+          -42
+        ],
+        [
+          50,
+          -41
+        ],
+        [
+          50,
+          -40
+        ],
+        [
+          50,
+          -39
+        ],
+        [
+          51,
+          -42
+        ],
+        [
+          51,
+          -41
+        ],
+        [
+          51,
+          -40
+        ],
+        [
+          51,
+          -39
+        ],
+        [
+          52,
+          -42
+        ],
+        [
+          52,
+          -41
+        ],
+        [
+          52,
+          -40
+        ],
+        [
+          52,
+          -39
+        ],
+        [
+          53,
+          -42
+        ],
+        [
+          53,
+          -41
+        ],
+        [
+          53,
+          -40
+        ],
+        [
+          53,
+          -39
+        ]
+      ]
+    },
+    {
+      "groupIndex": 61578,
+      "line": 61827,
+      "kind": "REPL",
+      "chunkCount": 16,
+      "chunks": [
+        [
+          53,
+          -42
+        ],
+        [
+          53,
+          -41
+        ],
+        [
+          53,
+          -40
+        ],
+        [
+          53,
+          -39
+        ],
+        [
+          54,
+          -42
+        ],
+        [
+          54,
+          -41
+        ],
+        [
+          54,
+          -40
+        ],
+        [
+          54,
+          -39
+        ],
+        [
+          55,
+          -42
+        ],
+        [
+          55,
+          -41
+        ],
+        [
+          55,
+          -40
+        ],
+        [
+          55,
+          -39
+        ],
+        [
+          56,
+          -42
+        ],
+        [
+          56,
+          -41
+        ],
+        [
+          56,
+          -40
+        ],
+        [
+          56,
+          -39
+        ]
+      ]
+    },
+    {
+      "groupIndex": 75075,
+      "line": 75335,
+      "kind": "REPL",
+      "chunkCount": 16,
+      "chunks": [
+        [
+          50,
+          -23
+        ],
+        [
+          50,
+          -22
+        ],
+        [
+          50,
+          -21
+        ],
+        [
+          50,
+          -20
+        ],
+        [
+          51,
+          -23
+        ],
+        [
+          51,
+          -22
+        ],
+        [
+          51,
+          -21
+        ],
+        [
+          51,
+          -20
+        ],
+        [
+          52,
+          -23
+        ],
+        [
+          52,
+          -22
+        ],
+        [
+          52,
+          -21
+        ],
+        [
+          52,
+          -20
+        ],
+        [
+          53,
+          -23
+        ],
+        [
+          53,
+          -22
+        ],
+        [
+          53,
+          -21
+        ],
+        [
+          53,
+          -20
+        ]
+      ]
+    },
+    {
+      "groupIndex": 76188,
+      "line": 76449,
+      "kind": "REPL",
+      "chunkCount": 16,
+      "chunks": [
+        [
+          53,
+          -23
+        ],
+        [
+          53,
+          -22
+        ],
+        [
+          53,
+          -21
+        ],
+        [
+          53,
+          -20
+        ],
+        [
+          54,
+          -23
+        ],
+        [
+          54,
+          -22
+        ],
+        [
+          54,
+          -21
+        ],
+        [
+          54,
+          -20
+        ],
+        [
+          55,
+          -23
+        ],
+        [
+          55,
+          -22
+        ],
+        [
+          55,
+          -21
+        ],
+        [
+          55,
+          -20
+        ],
+        [
+          56,
+          -23
+        ],
+        [
+          56,
+          -22
+        ],
+        [
+          56,
+          -21
+        ],
+        [
+          56,
+          -20
+        ]
+      ]
+    },
+    {
+      "groupIndex": 107501,
+      "line": 107876,
+      "kind": "REPL",
+      "chunkCount": 16,
+      "chunks": [
+        [
+          47,
+          -42
+        ],
+        [
+          47,
+          -41
+        ],
+        [
+          47,
+          -40
+        ],
+        [
+          47,
+          -39
+        ],
+        [
+          48,
+          -42
+        ],
+        [
+          48,
+          -41
+        ],
+        [
+          48,
+          -40
+        ],
+        [
+          48,
+          -39
+        ],
+        [
+          49,
+          -42
+        ],
+        [
+          49,
+          -41
+        ],
+        [
+          49,
+          -40
+        ],
+        [
+          49,
+          -39
+        ],
+        [
+          50,
+          -42
+        ],
+        [
+          50,
+          -41
+        ],
+        [
+          50,
+          -40
+        ],
+        [
+          50,
+          -39
+        ]
+      ]
+    },
+    {
+      "groupIndex": 107504,
+      "line": 107882,
+      "kind": "REPL",
+      "chunkCount": 16,
+      "chunks": [
+        [
+          50,
+          -42
+        ],
+        [
+          50,
+          -41
+        ],
+        [
+          50,
+          -40
+        ],
+        [
+          50,
+          -39
+        ],
+        [
+          51,
+          -42
+        ],
+        [
+          51,
+          -41
+        ],
+        [
+          51,
+          -40
+        ],
+        [
+          51,
+          -39
+        ],
+        [
+          52,
+          -42
+        ],
+        [
+          52,
+          -41
+        ],
+        [
+          52,
+          -40
+        ],
+        [
+          52,
+          -39
+        ],
+        [
+          53,
+          -42
+        ],
+        [
+          53,
+          -41
+        ],
+        [
+          53,
+          -40
+        ],
+        [
+          53,
+          -39
+        ]
+      ]
+    }
+  ]
+}

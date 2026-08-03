@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "town-expansion-master-plan-web-publication",
+  "generatedAtUtc": "2026-07-28T21:33:24.448Z",
+  "status": "PASS_WEB_PDF_PREPARED",
+  "preservation": {
+    "sourceHtml": "docs/redevelopment/2026-07-28-town-expansion/master-plan.html",
+    "sourcePdf": {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/master-plan.pdf",
+      "bytes": 27408044,
+      "sha256": "da837041b1cfc4cc19f6f0c83b4f41fbcdc5d1e21b54586547474feceda65378"
+    },
+    "textualHtmlUnchanged": true,
+    "evidenceImageCount": 25,
+    "mapImages": 13,
+    "representativeExactObjectImages": 12
+  },
+  "publication": {
+    "path": "world-showcase/public/reports/master-plan.pdf",
+    "bytes": 22918316,
+    "sha256": "3a44e535cc6c1e2246b00302198f4629615fb3a0c6ce84067f64792024c4e723",
+    "platformAssetLimitBytes": 26214400,
+    "belowPlatformAssetLimit": true,
+    "imageFormat": "jpeg",
+    "imageMaxWidth": 1600,
+    "imageQuality": 76
+  }
+}

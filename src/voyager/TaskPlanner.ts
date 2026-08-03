@@ -8,6 +8,7 @@ export interface PlannedStep {
   description: string;
   keywords: string[];
   spec?: TaskSpec;
+  metadata?: Record<string, unknown>;
 }
 
 export interface TaskPlan {
@@ -40,7 +41,7 @@ export function buildTaskPlan(task: Task, progression: ProgressionState): TaskPl
       steps: [
         step('Mine 3 oak logs', ['mine', 'oak_log', 'wood'], { kind: 'harvest', target: 'oak_log', count: 3 }),
         step('Craft a wooden pickaxe', ['craft', 'pickaxe', 'wood'], { kind: 'craft', target: 'wooden_pickaxe', count: 1, prerequisites: ['oak_log', 'crafting_table'] }),
-        step(task.description, task.keywords, spec),
+        step(task.description, task.keywords, spec, task.metadata),
       ],
     };
   }
@@ -49,12 +50,12 @@ export function buildTaskPlan(task: Task, progression: ProgressionState): TaskPl
     return {
       steps: [
         step('Walk to the nearest farmland', ['walk', 'farm', 'crops'], { kind: 'movement', destination: 'farmland', target: 'farmland', count: 1 }),
-        step(task.description, task.keywords, spec),
+        step(task.description, task.keywords, spec, task.metadata),
       ],
     };
   }
 
-  return { steps: [step(task.description, task.keywords, spec)] };
+  return { steps: [step(task.description, task.keywords, spec, task.metadata)] };
 }
 
 export function replanTaskStep(task: Task, blockers: BlockerRecord[], worldMemory: WorldMemory): TaskPlan | null {
@@ -93,6 +94,11 @@ export function replanTaskStep(task: Task, blockers: BlockerRecord[], worldMemor
   return null;
 }
 
-function step(description: string, keywords: string[], spec?: TaskSpec): PlannedStep {
-  return { description, keywords, spec };
+function step(
+  description: string,
+  keywords: string[],
+  spec?: TaskSpec,
+  metadata?: Record<string, unknown>,
+): PlannedStep {
+  return { description, keywords, spec, metadata };
 }

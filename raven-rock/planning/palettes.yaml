@@ -1,0 +1,609 @@
+# Raven Rock Mountain Complex (Site R) — Minecraft Reconstruction: MATERIAL PALETTE DOCUMENT
+# Deliverable: raven-rock/planning/palettes.yaml
+# Author role: materials / palettes designer. Source of truth: ../references/manifest.yaml +
+#   ../references/README.md (READ FIRST). A sibling agent owns the spatial layout / coordinates;
+#   this file is keyed to building TYPE and ZONE, never to coordinates.
+#
+# ===================================================================================================
+# PROVENANCE / HONESTY NOTE  (read before trusting any block choice here)
+# ===================================================================================================
+# Raven Rock's INTERIOR IS CLASSIFIED (manifest REF-015, REF-016, REF-017). There is NO public floor
+# plan, no room list, no documented material, color, finish, or fixture for anything inside the
+# mountain — and since 2007 it has been DoD policy that making "any photograph, sketch, picture,
+# drawing, map or graphical representation" of RRMC is unlawful. This build is therefore an openly
+# labeled IMAGINATIVE interpretation of a public landmark's PUBLIC-RECORD history and geology, NOT a
+# claimed map of the real (secret) facility, and it makes no such claim.
+#
+# THE ONE EVIDENCE ANCHOR — geology (manifest REF-003, conflicts/"greenstone granite"):
+#   The mountain is Catoctin-Formation GREENSTONE — a chlorite/actinolite/epidote-rich METABASALT,
+#   dark and green, NOT a granite, despite the popular "greenstone granite" phrasing. This is the
+#   SINGLE material fact on the public record, and it governs the living-rock / cavern-shell palette
+#   below. Everything else — every concrete finish, blast-door motif, spring-isolation footing, tank,
+#   corridor lining, light fixture, hazard stripe — is a CREATIVE APPROXIMATION invented for the build.
+#
+# WHAT THE PUBLIC RECORD DOES support (used only as thematic scaffold, never as interior fact):
+#   - the greenstone/metabasalt mountain body (REF-003) ...................... VERIFIED (anchors rock)
+#   - freestanding multi-story buildings on giant steel SPRINGS, standing
+#     clear of the cavern walls inside blasted caverns (REF-005) ............. high-confidence inference
+#   - several hillside TUNNEL PORTALS, tunnels "curve gently" to blunt blast
+#     (REF-007, REF-017) .................................................... high-confidence inference
+#   - self-sufficiency systems: reservoirs, power, ventilation (REF-009) .... high-confidence inference
+#   - Cold-War construction era 1951-1953 (REF-004) ....................... verified (era/patina cue)
+#   The SPECIFIC blocks chosen to express any of the above are creative approximation.
+#
+# CONFIDENCE VOCABULARY (inherited from the manifest; NEVER upgraded):
+#   verified                           - primary/multi-source (here: ONLY the greenstone geology + era)
+#   high-confidence inference          - one good source / a strong read (the design CONCEPTS above)
+#   moderate-confidence reconstruction - assembled from snippets
+#   creative approximation             - no evidence; invented for the build (ALL interior materials)
+#
+# BLOCK-ID DISCIPLINE:
+#   Every block id below is a real, currently-existing Minecraft Java 1.21 block. No invented ids; no
+#   removed/renamed blocks. 1.21.0-era additions used here (tuff family: polished_tuff, tuff_bricks,
+#   chiseled_tuff, polished_tuff_stairs/slab/wall; copper build set: chiseled_copper, copper_grate,
+#   copper_bulb, copper_door, copper_trapdoor, cut_copper_stairs and weathered/exposed/oxidized
+#   variants) SHOULD be confirmed present on the target 1.21.x server. Blocks added in 1.21.4+
+#   (pale oak, resin, creaking family) are DELIBERATELY AVOIDED for compatibility.
+#
+# SITE CONDITIONS  (CORRECTED 2026-07-25 — the old "no plugins / not opped" text was false):
+#   WorldEdit 7.4.0 and WorldGuard 7.0.16 ARE installed; the builder bots ARE opped (level 4).
+#   Dynmap/BlueMap, EssentialsX and Citizens are absent. Every block listed is still placeable by
+#   plain block placement, so nothing in this palette *depends* on // commands or op. Region
+#   protection is partly active (`mob-spawning: deny`; see qa/oq3-worldguard.md) — which is the
+#   BACKSTOP for, not a replacement for, the OQ-3 lighting standard below. This subterranean build sits ~20 blocks
+#   beneath the MainStreet America surface plane (a build convention, NOT the real ~650 ft depth —
+#   manifest BUILD-SCALE NOTE).
+# ===================================================================================================
+
+meta:
+  subject: >-
+    Raven Rock Mountain Complex ("Site R" / the "underground Pentagon"), an underground Cold-War
+    continuity-of-government / Alternate National Military Command Center bunker inside a greenstone
+    (metabasalt) mountain near Blue Ridge Summit, Adams County, PA.
+  minecraft_version: "1.21.x"
+  block_palette_rule: vanilla-compatible only, no resource pack
+  keyed_by: building TYPE and ZONE (a sibling agent owns coordinates); never keyed to coordinates here
+  interior_confidence_blanket: >-
+    creative approximation — the interior is classified (REF-015/016/017). The ONLY evidence-anchored
+    material input is the greenstone/metabasalt geology (REF-003), which governs the cavern-shell rock
+    only. All concrete, steel, spring-footing, utility, corridor, and lighting materials are invented.
+  geology_handling: >-
+    Honored per REF-003 and the manifest 'geology terminology' conflict. The living rock reads as DARK
+    GREENISH HARD METABASALT (greenstone), NOT pink/gray granite. We deliberately do NOT use the
+    granite block family for the mountain body; green tint is carried by moss/mossy_cobblestone/tuff/
+    deepslate accents over a stone-and-deepslate base. Granite appears, if at all, only as a minor
+    detail accent and is labeled as a deviation from the correct geology.
+
+# ===================================================================================================
+# SITE KIT — the shared material family every zone/building below draws from, so the whole complex
+# reads as ONE coherent Cold-War-bunker world. Grouped by role. All ids verified to exist in 1.21.
+# Confidence: creative approximation throughout EXCEPT the greenstone rock group (evidence-anchored
+# to REF-003 for ROCK IDENTITY; the specific block mapping is still an approximation of that rock).
+# ===================================================================================================
+site_kit:
+  authored: true
+  confidence: creative approximation
+  geology_anchor_note: >-
+    The 'living_rock_greenstone' group is the one material family with an evidence anchor: the
+    mountain IS greenstone/metabasalt (REF-003, verified). The block CHOICES that render that rock are
+    still an approximation, but the GREEN, DARK, HARD, NON-GRANITE read is honoring documented geology.
+
+  # --- LIVING ROCK / CAVERN SHELL (evidence-anchored rock identity; REF-003) --------------------
+  living_rock_greenstone:
+    intent: >-
+      The blasted metabasalt mountain body — cavern walls, ceilings, pillars between caverns, raw
+      tunnel bores. Must read DARK and faintly GREEN (chlorite/epidote greenstone), never granite.
+    base_mass: [stone, deepslate, cobbled_deepslate, tuff]
+    darker_depth: [deepslate, cobbled_deepslate, polished_deepslate, deepslate_tiles]
+    andesite_greening: [andesite, polished_andesite]           # cool grey-green igneous read
+    greenstone_tint: [mossy_cobblestone, moss_block, mossy_stone_bricks]  # the chlorite-green nod
+    green_wash_detail: [moss_carpet, glow_lichen, vine]        # damp chlorite film on rock faces
+    dripstone_and_seep: [dripstone_block, pointed_dripstone, clay, gravel]
+    avoid: [granite, polished_granite, granite_stairs]          # WRONG geology — see geology_handling
+    confidence: verified   # ROCK IDENTITY only (greenstone/metabasalt, REF-003); block mapping approximates it
+    note: >-
+      Blend stone + deepslate + tuff for the hard dark mass, then STIPPLE mossy_cobblestone / moss /
+      glow_lichen across faces so the shell reads greenish — the honest, evidence-anchored metabasalt
+      look. Reserve smoother finishes (polished_deepslate/andesite) for machine-cut portal throats.
+
+  # --- STRUCTURAL CONCRETE (freestanding buildings; creative approximation) ----------------------
+  structural_concrete:
+    intent: the cast-concrete shells of the freestanding multi-story command/office buildings
+    field_grey: [gray_concrete, light_gray_concrete]
+    pale_form: [white_concrete, smooth_stone]
+    formliner_texture: [stone_bricks, smooth_stone, chiseled_stone_bricks]   # board-formed concrete read
+    cracked_aged: [cracked_stone_bricks, cobblestone]           # Cold-War-era weathering (REF-004 era)
+    precast_panel: [smooth_stone_slab, smooth_stone, light_gray_concrete]
+    confidence: creative approximation
+    note: >-
+      Gray/light_gray concrete = the dominant "1950s poured concrete" read; white_concrete + smooth
+      stone for cleaner command spaces; stone-brick families sub in as board-formed/precast texture.
+
+  # --- INDUSTRIAL STEEL & MACHINERY (creative approximation) -------------------------------------
+  industrial_steel:
+    intent: exposed steelwork, railings, catwalks, machinery, blast hardware, conduit
+    structural_steel: [iron_block, iron_bars, chain]
+    heavy_plate: [iron_block, cut_copper, oxidized_copper]      # riveted plate / patina
+    machinery_bodies: [copper_block, exposed_copper, weathered_copper, iron_block, cauldron, anvil]
+    fittings_valves: [cauldron, anvil, lightning_rod, tripwire_hook, lever]
+    conduit_and_cable: [chain, tripwire, iron_bars, lightning_rod]
+    grating_catwalk: [iron_bars, copper_grate, iron_trapdoor]   # copper_grate/iron_trapdoor = floor grate
+    confidence: creative approximation
+    note: >-
+      iron_block/iron_bars/chain carry the steel read; the copper family (block + grate + patina
+      stages) reads as machinery, bus-bars, and aged fittings; cauldron/anvil are detail props.
+
+  # --- GLAZING / TRANSPARENT (creative approximation) --------------------------------------------
+  glazing:
+    intent: interior windows, control-room glass, blast-vestibule vision panels, sealed portholes
+    clear: [glass, glass_pane]
+    control_tint: [gray_stained_glass, gray_stained_glass_pane, light_gray_stained_glass_pane]
+    armored_dark: [tinted_glass, black_stained_glass, black_stained_glass_pane]
+    hazard_tint: [yellow_stained_glass_pane, lime_stained_glass_pane]
+    confidence: creative approximation
+
+  # --- MARKINGS / HAZARD / SIGNAGE ACCENT (creative approximation) -------------------------------
+  markings_and_hazard:
+    intent: floor lane-marking, blast-door frames, hazard striping, zone color-coding, wayfinding
+    hazard_yellow: [yellow_concrete, yellow_terracotta, yellow_wool]
+    caution_black: [black_concrete, black_wool]
+    stop_red: [red_concrete, red_wool]
+    safe_lane_green: [lime_concrete, green_concrete]            # ties to the greenstone theme
+    utility_cyan: [cyan_concrete, light_blue_concrete]          # water / reservoir coding
+    signage: [oak_sign, dark_oak_sign, item_frame, white_glazed_terracotta]
+    confidence: creative approximation
+    note: >-
+      Alternate yellow+black full blocks in single-block runs for hazard chevrons at 1 block ≈ 2 ft.
+      MANDATORY use: an on-site disclosure sign stating this build is a creative approximation of a
+      public landmark, NOT a real interior map (REF-015). oak_sign / item_frame carry that text.
+
+# ===================================================================================================
+# ZONE & BUILDING-TYPE PALETTES
+# Keyed to TYPE/zone (not coordinates). Each gives role blocks for a bot to place. Every palette is
+# CREATIVE APPROXIMATION except where a group cites the geology anchor (REF-003) for rock identity.
+# ===================================================================================================
+zone_palettes:
+
+  # --- Z-ROCK: CAVERN SHELL (the blasted greenstone chamber that everything sits inside) ---------
+  - id: Z-ROCK
+    type: cavern_shell / living_rock
+    dominant_read: dark greenish blasted metabasalt cavern — walls, vaulted ceiling, dividing pillars
+    evidence: >-
+      Rock IDENTITY is VERIFIED greenstone/metabasalt (REF-003); the cavern EXISTENCE/concept is
+      high-confidence inference (REF-005); exact cavern size/shape is creative approximation (REF-017).
+    walls_and_ceiling: [stone, deepslate, cobbled_deepslate, tuff, andesite]
+    green_stipple: [mossy_cobblestone, moss_block, moss_carpet, glow_lichen, vine]   # the chlorite green
+    dividing_pillars: [deepslate, cobbled_deepslate, polished_deepslate, stone]      # rock pillars between caverns (REF-005)
+    floor_bedrock: [stone, andesite, gravel, tuff]
+    seepage_detail: [dripstone_block, pointed_dripstone, water, clay]
+    smooth_cut_faces: [polished_deepslate, polished_andesite, chiseled_deepslate]    # machine-scarred cut rock
+    confidence: creative approximation   # (rock IDENTITY within it is verified — see evidence)
+    note: >-
+      This is the greenstone-vs-granite decision made concrete: NO granite. Dark stone+deepslate mass,
+      greened with moss/glow_lichen. The vaulted ceiling and pillars keep the "buildings stand clear of
+      the walls" concept legible (REF-005).
+
+  # --- Z-TUNNEL: TUNNELS & PORTAL BORES (gently curving, blast-blunting) -------------------------
+  - id: Z-TUNNEL
+    type: tunnel / access_bore
+    dominant_read: curving rough-cut greenstone bore with a hardened concrete/steel liner and floor track
+    evidence: >-
+      Several portals + gently curving tunnels to blunt blast is high-confidence inference (REF-007,
+      REF-017); geometry/length is creative approximation.
+    bore_walls: [cobbled_deepslate, deepslate, stone, tuff]                 # raw greenstone bore
+    liner_ring: [stone_bricks, gray_concrete, chiseled_stone_bricks, smooth_stone]  # shotcrete/concrete liner
+    floor_track: [smooth_stone, gray_concrete, andesite]                    # roadway / rail bed
+    floor_center_line: [yellow_concrete, white_concrete]                    # lane / rail marking
+    utility_run_side: [iron_bars, chain, copper_block, cauldron]            # cable trays, pipe, valves along one wall
+    green_damp_accent: [moss_carpet, glow_lichen, mossy_cobblestone]
+    confidence: creative approximation
+    note: >-
+      Keep the tunnel curving (design cue, REF-017). Alternate raw-bore stretches with concrete-lined
+      hardened stretches leading into vestibules. Side utility run reinforces the "air-entrainment
+      tunnels / self-sufficiency" theme (REF-007/009) without claiming real routing.
+
+  # --- Z-PORTAL: HILLSIDE PORTAL FACE (surface mouth of a tunnel) --------------------------------
+  - id: Z-PORTAL
+    type: portal_face / adit_mouth
+    dominant_read: concrete headwall set into greenstone hillside, framing a heavy blast door
+    evidence: several portals exist, two visible on imagery (REF-007) — high-confidence inference; exact positions creative.
+    headwall: [gray_concrete, light_gray_concrete, stone_bricks, smooth_stone]
+    surround_rock: [stone, mossy_cobblestone, moss_block, andesite, tuff]    # greenstone reveal around the mouth
+    portal_door: [iron_block, iron_bars, iron_door]                          # see blast_door_motif detail set
+    lintel_and_frame: [chiseled_stone_bricks, polished_deepslate, iron_block]
+    hazard_frame: [yellow_concrete, black_concrete]
+    confidence: creative approximation
+    note: >-
+      Mates the surface (MainStreet America plane) to the subsurface build. The concrete headwall reads
+      man-made against the mossy greenstone hillside so a visitor sees "a portal into the mountain."
+
+  # --- Z-VESTIBULE: BLAST-DOOR VESTIBULE (airlock between tunnel and interior) -------------------
+  - id: Z-VESTIBULE
+    type: blast_door_vestibule / airlock
+    dominant_read: hardened concrete chamber with a massive steel blast door, hazard-striped and lit
+    blast_door_leaf: [iron_block, iron_door, iron_bars]         # the giant door itself (see blast_door_motif)
+    door_frame_massive: [iron_block, polished_deepslate, chiseled_stone_bricks, gray_concrete]
+    walls: [gray_concrete, stone_bricks, light_gray_concrete, smooth_stone]
+    floor: [smooth_stone, gray_concrete]
+    hazard_stripe: [yellow_concrete, black_concrete]            # chevron border around the door opening
+    hardware: [chain, iron_bars, lever, tripwire_hook, cauldron, anvil]      # hinges, wheel-locks, seals
+    vision_panel: [tinted_glass, gray_stained_glass, iron_bars]
+    confidence: creative approximation
+    note: >-
+      The signature "blast door" experience. Build the leaf as a 3x3+ (or larger) iron_block / iron_door
+      composite framed in yellow-black chevrons, with chains/levers as the locking gear. Purely a
+      creative representation of a hardened airlock — no real door is documented.
+
+  # --- Z-COMMAND: COMMAND BUILDING (freestanding, on springs) -----------------------------------
+  - id: Z-COMMAND
+    type: command_building (freestanding, multi-story, spring-isolated)
+    dominant_read: clean pale-concrete multi-story command block with steel detailing, standing clear of the rock
+    evidence: freestanding multi-story buildings on springs is high-confidence inference (REF-005); ANMCC mission verified (REF-010); ALL materials creative.
+    primary_wall: [light_gray_concrete, white_concrete]
+    secondary_wall: [gray_concrete, smooth_stone]
+    structure_and_trim: [iron_block, smooth_stone_slab, chiseled_stone_bricks]
+    floor_slabs: [smooth_stone, light_gray_concrete, smooth_stone_slab]
+    interior_partitions: [white_concrete, smooth_stone, gray_stained_glass]
+    control_room_glass: [gray_stained_glass, tinted_glass, glass_pane]
+    door: [iron_door, copper_door]
+    isolation_base: SEE spring_isolation_footing detail set (the building sits ON this)
+    accent: [copper_block, sea_lantern, redstone_lamp, iron_bars]
+    confidence: creative approximation
+    note: >-
+      The "war room" / ANMCC read: crisp, pale, well-lit, glassy control rooms, steel structure exposed
+      at edges. Building floats above the cavern floor on the spring footings so the isolation concept
+      (REF-005) is visible from below.
+
+  # --- Z-QUARTERS: QUARTERS / DINING / MEDICAL BUILDING (freestanding, on springs) --------------
+  - id: Z-QUARTERS
+    type: quarters_dining_medical_building (freestanding, multi-story, spring-isolated)
+    dominant_read: warmer institutional concrete block — dormitory / mess / infirmary, still spring-isolated
+    evidence: self-sufficient community (quarters, dining, medical) is high-confidence inference (REF-009); materials creative.
+    primary_wall: [light_gray_concrete, white_concrete, smooth_stone]
+    secondary_wall: [gray_concrete, stone_bricks]
+    warm_accent: [bricks, cut_copper, oxidized_copper]          # softer institutional touches
+    floor: [smooth_stone, light_gray_concrete]
+    partitions: [white_concrete, smooth_stone, white_stained_glass_pane]
+    door: [iron_door, oak_door]                                 # oak_door softens residential zones
+    fittings: [cauldron, anvil, campfire, chain]                # mess/kitchen/infirmary props
+    isolation_base: SEE spring_isolation_footing detail set
+    accent: [ochre_froglight, lantern, redstone_lamp, flower_pot]
+    confidence: creative approximation
+    note: >-
+      Distinguished from Z-COMMAND by warmer light and small brick/copper touches so the two building
+      TYPES don't read identically. Same spring-isolated massing.
+
+  # --- Z-POWER: POWER PLANT / MACHINERY HALL ----------------------------------------------------
+  - id: Z-POWER
+    type: power_plant / ventilation_machinery_hall
+    dominant_read: dense industrial machinery hall — generators, ducting, conduit, patinated copper plant
+    evidence: on-site power + ventilation exist in concept (REF-009) — high-confidence inference; layout/count creative.
+    walls: [gray_concrete, stone_bricks, iron_block]
+    floor: [smooth_stone, gray_concrete, copper_grate]          # copper_grate = machine-room floor grating
+    machinery_mass: [copper_block, exposed_copper, weathered_copper, iron_block]  # generators / plant bodies
+    ducting_and_pipe: [iron_bars, chain, copper_block, lightning_rod]
+    valves_and_tanks: [cauldron, anvil, iron_block]
+    redstone_hints: [redstone_lamp, redstone_block, lever, repeater, observer]     # "live machinery" cues
+    hazard: [yellow_concrete, black_concrete, red_concrete]
+    confidence: creative approximation
+    note: >-
+      The copper family across patina stages sells rows of generators and bus-bars; redstone lamps +
+      levers imply running plant. Purely evocative — no real power layout is documented.
+
+  # --- Z-RESERVOIR: WATER RESERVOIR / UTILITY TANKS ---------------------------------------------
+  - id: Z-RESERVOIR
+    type: reservoir / water_tank / utility
+    dominant_read: dark still underground water in a concrete/prismarine-lined basin, cyan-coded piping
+    evidence: underground reservoirs exist in concept (REF-009) — high-confidence inference; size/count creative.
+    water: [water]
+    basin_liner: [prismarine, prismarine_bricks, dark_prismarine, cyan_terracotta]
+    tank_walls: [gray_concrete, stone_bricks, iron_block]
+    tank_accent: [cyan_concrete, light_blue_concrete, cyan_terracotta]  # utility color-coding
+    piping: [iron_bars, chain, copper_block, cauldron]
+    underwater_glow: [sea_lantern, prismarine]                  # lit reservoir read
+    margin: [mossy_cobblestone, moss_carpet, clay, gravel]      # damp greenstone rim
+    confidence: creative approximation
+    note: >-
+      Prismarine + cyan carry the "clean stored water / cistern" read; sea_lantern sunk at the edges
+      lights the water. Cyan piping ties every water run across the complex together.
+
+  # --- Z-STORES: STORES / FUEL / SUPPLY CAVERN --------------------------------------------------
+  - id: Z-STORES
+    type: stores / supply / fuel_cavern
+    dominant_read: utilitarian racked storage cavern — crates, drums, fuel, concrete floor
+    walls: [gray_concrete, stone_bricks, cobbled_deepslate]     # part-lined, part-raw greenstone
+    floor: [smooth_stone, gray_concrete]
+    racking: [iron_bars, chain, oak_fence, stripped_oak_log]    # shelving / pallet racks
+    crates_and_drums: [barrel, chest, cauldron, copper_block, decorated_pot]
+    fuel_hint: [cauldron, black_concrete, iron_block]
+    hazard: [yellow_concrete, black_concrete, red_concrete]
+    confidence: creative approximation
+    note: barrel/chest/decorated_pot as stored supplies; the "sealed for months" self-sufficiency theme (REF-009).
+    mapping_note: >-
+      ORPHAN TYPE: no zone or building in the current layout (RR-Z1..Z5 / RR-B1..B4) is typed "stores."
+      Z-STORES is RESERVED for a future stores/fuel/supply cavern and is NOT currently instantiated; until
+      such a zone exists, its palette may dress RR-B4's fuel_and_switchgear / supply areas inside the
+      utility cavern (RR-Z3). See building_palette_bindings below.
+
+# ===================================================================================================
+# DETAIL SETS — reusable motif kits referenced by the zone palettes above. All creative approximation.
+# ===================================================================================================
+detail_sets:
+
+  # --- BLAST-DOOR MOTIF (referenced by Z-PORTAL, Z-VESTIBULE, Z-TUNNEL) --------------------------
+  blast_door_motif:
+    intent: the recurring giant hardened-door language of the complex
+    door_leaf_large: [iron_block, iron_door, iron_trapdoor]     # build oversized leaves from iron_block + iron_door
+    door_leaf_heavy_alt: [polished_deepslate, cut_copper, oxidized_copper]  # armored-plate look for the biggest doors
+    frame: [iron_block, chiseled_stone_bricks, polished_deepslate, gray_concrete]
+    locking_gear: [chain, iron_bars, lever, tripwire_hook, iron_trapdoor]   # wheel-locks, dogs, seals
+    hazard_chevron: [yellow_concrete, black_concrete]           # single-block-wide alternating border
+    vision_slit: [tinted_glass, gray_stained_glass, iron_bars]
+    warning_signage: [oak_sign, item_frame, red_concrete]
+    confidence: creative approximation
+    note: >-
+      For the true "blast door" set-pieces build the leaf larger than a vanilla door (a 3x3–5x5 field
+      of iron_block with an iron_door pair centered), rimmed in a 1-wide yellow/black chevron, with
+      chains + levers as the locking mechanism. A creative representation, not a documented door.
+
+  # --- SPRING / SHOCK-ISOLATION FOOTING (referenced by Z-COMMAND, Z-QUARTERS) --------------------
+  spring_isolation_footing:
+    intent: >-
+      Represent the design signature — freestanding buildings resting on giant steel springs, clear of
+      the cavern floor and walls (REF-005) — in blocks. This is the most build-relevant public concept
+      and also, in block form, a clearly creative representation.
+    footing_pad: [gray_concrete, stone_bricks, polished_deepslate, iron_block]   # the massive base pad on bedrock
+    spring_coil_read: [chain, iron_bars]                        # stacked chain / iron_bars = coil springs under the building
+    spring_alt_metallic: [copper_block, cut_copper, weathered_copper]            # patinated-metal spring/damper alt
+    pillar_footing: [iron_block, polished_deepslate, chiseled_stone_bricks]      # exposed pier where a leg lands
+    isolation_gap: [air]                                        # KEEP a visible gap between building underside and floor
+    tie_and_damper: [chain, lightning_rod, iron_bars]           # snubbers / lateral restraints
+    confidence: high-confidence inference   # the CONCEPT is inference (REF-005); the block rendering is creative
+    note: >-
+      Sit each freestanding building on a grid of concrete/iron footing pads, then show CHAIN or
+      iron_bars "coils" (optionally copper for a damper look) rising from pad to building underside,
+      leaving an AIR GAP so the "stands clear on springs" idea is readable from the cavern floor.
+      The concept is source-grounded (REF-005); this specific spring rendering is invented.
+
+  # --- CORRIDOR / INTERIOR LINING (referenced by all building types) ----------------------------
+  corridor_lining:
+    intent: the interior corridors, stairwells, and connective spaces inside/between buildings
+    walls: [light_gray_concrete, white_concrete, smooth_stone, stone_bricks]
+    floor: [smooth_stone, gray_concrete, light_gray_concrete]
+    floor_lane_coding: [yellow_concrete, lime_concrete, cyan_concrete, red_concrete]  # colored wayfinding lanes
+    ceiling: [smooth_stone_slab, light_gray_concrete, iron_bars]                      # slab ceiling / cable tray
+    conduit_and_pipe: [chain, iron_bars, copper_block, lightning_rod]
+    doors: [iron_door, copper_door]
+    trim: [iron_block, chiseled_stone_bricks, smooth_stone_slab]
+    confidence: creative approximation
+    note: >-
+      Colored floor lanes (Cold-War facility wayfinding) tie corridors to zone color-coding in
+      site_kit.markings_and_hazard. Entirely invented — no corridor plan is public (REF-016).
+
+# ===================================================================================================
+# UNDERGROUND DRESSING — the subterranean equivalent of "landscaping": how the raw rock, damp, and
+# machinery clutter are dressed so the caverns feel alive. All creative approximation (rock identity
+# anchored to REF-003 greenstone).
+# ===================================================================================================
+underground_dressing:
+  authored: true
+  confidence: creative approximation
+  rock_face_greening:
+    intent: chlorite-green damp film on the greenstone shell — the visible geology cue
+    blocks: [moss_carpet, moss_block, glow_lichen, vine, mossy_cobblestone]
+    confidence: creative approximation   # rock identity (greenstone) is verified (REF-003); the dressing is invented
+  seep_and_drip:
+    intent: groundwater seeping through blasted rock — puddles, stalactites, wet clay
+    blocks: [water, pointed_dripstone, dripstone_block, clay, gravel, mud]
+    confidence: creative approximation
+  rubble_and_spoil:
+    intent: leftover blasting spoil, loose scree at cavern edges (½-million cubic yards were hauled out, REF-004)
+    blocks: [gravel, cobbled_deepslate, cobblestone, tuff, andesite]
+    confidence: creative approximation
+  industrial_clutter:
+    intent: pipes, cable trays, drums, valves that fill a working bunker
+    blocks: [chain, iron_bars, copper_block, cauldron, barrel, decorated_pot, lightning_rod]
+    confidence: creative approximation
+  cavern_flora_sparse:
+    intent: the little that grows underground — pale fungal/lichen touches only (a bunker, not a garden)
+    blocks: [glow_lichen, brown_mushroom, red_mushroom, moss_carpet, hanging_roots]
+    confidence: creative approximation
+    note: keep DELIBERATELY sparse — this is a hardened facility; greenery is damp/lichen, not planting.
+  disclosure_signage:
+    intent: MANDATORY visitor-facing honesty signs (REF-015) — this build is a creative approximation
+    blocks: [oak_sign, dark_oak_sign, item_frame, white_glazed_terracotta]
+    confidence: creative approximation
+    note: >-
+      At every portal and vestibule, place signage stating this is an imaginative interpretation of a
+      public landmark's public-record history and geology, NOT a map of the real (classified) interior.
+
+# ===================================================================================================
+# LIGHTING PALETTE — bunker / industrial. Cool, hard, sparse — emergency-lit, not cozy. All light
+# sources placeable by un-opped bots. All ids verified to exist in 1.21. Creative approximation.
+# ===================================================================================================
+lighting_palette:
+  authored: true
+  confidence: creative approximation
+  general_cavern:
+    intent: dim ambient fill in the raw greenstone caverns — sparse, cold, pooled light
+    blocks: [glow_lichen, sea_lantern, soul_lantern]           # glow_lichen = natural cavern glow; soul = cold pools
+    reads_best: on rock faces and cavern edges, kept low so the darkness of the mountain reads
+    confidence: creative approximation
+  command_and_control:
+    intent: bright, clean, cool light in command / control rooms and clean corridors
+    blocks: [sea_lantern, redstone_lamp, pearlescent_froglight, glowstone]
+    reads_best: >-
+      sea_lantern for a crisp cool ceiling grid; redstone_lamp where a switchable/animated console glow
+      is wanted; pearlescent_froglight as a warm-white recessed fixture. The "war room" is the best-lit
+      space in the complex.
+    confidence: creative approximation
+  industrial_and_plant:
+    intent: harsh utility lighting in power/ventilation halls and machinery zones
+    blocks: [redstone_lamp, glowstone, sea_lantern, lantern]
+    reads_best: >-
+      redstone_lamp wired to levers reads as switchable plant lighting; bare glowstone as raw fixtures;
+      hung lantern on chains as caged work-lights over machinery.
+    confidence: creative approximation
+  quarters_and_dining:
+    intent: the ONLY warm light in the build — dormitory / mess / infirmary human spaces
+    blocks: [lantern, ochre_froglight, glowstone, redstone_lamp]
+    reads_best: ochre_froglight + lantern for a warmer institutional glow that contrasts the cold caverns
+    confidence: creative approximation
+  tunnels_and_portals:
+    intent: linear low-level guidance lighting along tunnel roadways and at blast doors
+    blocks: [lantern, soul_lantern, redstone_lamp, sea_lantern]
+    reads_best: >-
+      evenly spaced hung lantern/soul_lantern for a "tunnel string-light" run; redstone_lamp at
+      vestibule doors for an alarm/status light; sea_lantern to mark the portal mouth.
+    confidence: creative approximation
+  reservoir_and_water:
+    intent: underwater and margin lighting at reservoirs / tanks
+    blocks: [sea_lantern, prismarine, glow_lichen]
+    reads_best: sea_lantern sunk under and beside the water so the reservoir glows cyan-green in the dark
+    confidence: creative approximation
+  hazard_and_status:
+    intent: colored status / alarm / hazard lighting accents
+    blocks: [redstone_lamp, redstone_torch, "glowstone behind stained_glass", "sea_lantern behind stained_glass"]
+    color_method: "froglight/lantern/glowstone behind red/yellow/lime stained_glass = red alarm / amber caution / green safe"
+    controllable: redstone_lamp   # for switchable alarm states via lever/redstone
+    confidence: creative approximation
+    note: >-
+      Red glow at blast doors during a "sealed" state, amber caution in machinery zones, green "safe"
+      lanes in corridors — colored by stained_glass overlays over a light source. Evocative only.
+
+# ===================================================================================================
+# BUILDING/ZONE -> PALETTE BINDING MAP
+# This file is authored keyed to TYPE/zone (A03), so the join to the layout agent's building IDs was
+# left implicit. This table makes it EXPLICIT: it maps buildings.yaml's records (and their inline
+# palette_reference groups: institutional_concrete, spring_isolation, utilities) onto this file's Z-*
+# taxonomy + detail_sets, so a build agent has one unambiguous type->palette map. Coordinates still live
+# in coordinates.yaml; nothing here asserts a position. All bindings are creative approximation.
+# ===================================================================================================
+building_palette_bindings:
+  authored: true
+  confidence: creative approximation
+  note: >-
+    Joins buildings.yaml palette_reference groups (institutional_concrete -> the freestanding building
+    shells; spring_isolation -> the visible spring footings; utilities -> plant/reservoir machinery) to
+    this file's Z-* palettes and detail_sets. Type/zone binding only; the layout agent owns positions.
+  buildings:
+    - id: RR-B1
+      name: Command & Operations Center (ANMCC)
+      zone: RR-Z1
+      palette: Z-COMMAND
+      buildings_yaml_groups: [institutional_concrete, spring_isolation]
+      detail_sets: [spring_isolation_footing, corridor_lining]
+    - id: RR-B2
+      name: Signal & Communications Center
+      zone: RR-Z1
+      palette: Z-COMMAND
+      buildings_yaml_groups: [institutional_concrete, spring_isolation]
+      detail_sets: [spring_isolation_footing, corridor_lining]
+      note: comms accents (copper_block + lightning_rod rooftop masts) distinguish it from RR-B1 within the shared Z-COMMAND palette
+    - id: RR-B3
+      name: Quarters, Dining & Medical
+      zone: RR-Z2
+      palette: Z-QUARTERS
+      buildings_yaml_groups: [institutional_concrete, spring_isolation]
+      detail_sets: [spring_isolation_footing, corridor_lining]
+    - id: RR-B4
+      name: Power & Ventilation Plant
+      zone: RR-Z3
+      palette: Z-POWER
+      buildings_yaml_groups: [institutional_concrete, utilities, spring_isolation]
+      detail_sets: [corridor_lining]
+      companion_palettes: [Z-RESERVOIR]   # RR-B4 flanks the two reservoir basins (N7); dress them with Z-RESERVOIR
+  elements:
+    - element: cavern shells (RR-Z1/Z2/Z3 walls, ceilings, dividing pillars)
+      palette: Z-ROCK
+      note: the greenstone/metabasalt shell every building sits inside (REF-003)
+    - element: tunnels & inter-cavern corridors (T1-T4, C1-C2)
+      palette: Z-TUNNEL
+    - element: portal faces / mouths (N3/N4/N5/N6)
+      palette: Z-PORTAL
+      detail_sets: [blast_door_motif]
+    - element: blast-door vestibules (N1/N2)
+      palette: Z-VESTIBULE
+      detail_sets: [blast_door_motif]
+    - element: reservoirs (N7)
+      palette: Z-RESERVOIR
+    - element: RR-Z5 vertical access shaft + surface head-house N9
+      palette: Z-TUNNEL
+      note: raw bore lined like a tunnel; the y64 surface head-house N9 uses Z-PORTAL headwall language
+    - element: stores / fuel cavern
+      palette: Z-STORES
+      status: reserved   # not in the current layout; see Z-STORES.mapping_note
+
+# ===================================================================================================
+# ASSUMPTIONS & CROSS-CHECK NOTES  (for the agent collating everyone's files)
+# ===================================================================================================
+assumptions_and_notes:
+  - id: A01
+    topic: Interior is classified — the whole material scheme is invented
+    detail: >-
+      Per REF-015/016/017 there is NO public interior, layout, or material record. Every concrete
+      finish, steel motif, spring footing, corridor lining, tank, and light fixture here is a CREATIVE
+      APPROXIMATION authored from the manifest's public CONCEPTS, not transcribed from any source. This
+      is the single most important honesty flag in the file, and it must reach visitors via on-site
+      disclosure signage (underground_dressing.disclosure_signage).
+    severity: high
+  - id: A02
+    topic: Greenstone-vs-granite geology (the one evidence anchor)
+    detail: >-
+      REF-003 (verified) + the manifest 'geology terminology' conflict establish the mountain as
+      Catoctin GREENSTONE / metabasalt — dark, green, NOT granite. I honored this by (a) building the
+      cavern shell from stone + deepslate + tuff + andesite for a dark hard mass, (b) stippling
+      moss / mossy_cobblestone / glow_lichen across it for the chlorite-green read, and (c) explicitly
+      LISTING granite in an 'avoid' field for the rock (site_kit.living_rock_greenstone.avoid). Granite
+      is used nowhere in the mountain body. This is the only material choice with an evidence anchor;
+      even so, the specific block MAPPING approximates the rock, while its IDENTITY is verified.
+    severity: high
+  - id: A03
+    topic: Keyed to TYPE/zone, not coordinates
+    detail: >-
+      A sibling agent owns the spatial layout. Palettes are keyed to building TYPE and ZONE ids
+      (Z-ROCK, Z-TUNNEL, Z-PORTAL, Z-VESTIBULE, Z-COMMAND, Z-QUARTERS, Z-POWER, Z-RESERVOIR, Z-STORES)
+      plus reusable detail_sets (blast_door_motif, spring_isolation_footing, corridor_lining). The
+      layout agent maps these ids onto coordinates; nothing here presumes a position, count, or size.
+    severity: low
+  - id: A04
+    topic: Building count is a design choice (three vs five)
+    detail: >-
+      Sources disagree (REF-006 / conflicts: three vs five freestanding buildings). I provide building
+      TYPE palettes (command, quarters/dining/medical, power, etc.), not a fixed building roster, so the
+      layout agent can instantiate however many buildings it chooses without the palette asserting a count.
+    severity: medium
+  - id: A05
+    topic: Spring / shock-isolation is source-grounded CONCEPT, invented RENDERING
+    detail: >-
+      REF-005 (high-confidence inference) supports freestanding buildings on giant springs clear of the
+      walls — the most build-relevant public fact. spring_isolation_footing renders it with chain /
+      iron_bars "coils" (copper as a damper alt) and a deliberate AIR GAP. The CONCEPT carries the
+      inference label; the block rendering is creative approximation. Do not present the specific spring
+      look as documented.
+    severity: medium
+  - id: A06
+    topic: 1.21-era block ids to confirm on the target server
+    detail: >-
+      Tuff family (polished_tuff, tuff_bricks, chiseled_tuff and their stairs/slab/wall) and the copper
+      build set (copper_block/grate/bulb/door/trapdoor, chiseled_copper, cut_copper + weathered/exposed/
+      oxidized variants) are 1.21.0 additions used above — confirm present on the target 1.21.x Paper
+      server. Blocks added in 1.21.4+ (pale oak, resin, creaking family) were intentionally NOT used.
+      All light sources listed are placeable by un-opped bots; no // commands or op assumed.
+    severity: low
+  - id: A07
+    topic: Deliberate cold/sparse lighting and sparse flora
+    detail: >-
+      Lighting is intentionally cool and sparse (sea_lantern / soul_lantern / redstone_lamp dominant),
+      with warmth reserved for human quarters only, to read as an emergency-lit bunker rather than a
+      cozy interior. Underground flora is kept to damp lichen/moss, not planting — this is a hardened
+      facility. Both are style choices, not documented facts.
+    severity: low
+  - id: A08
+    topic: Mandatory visitor disclosure (REF-015)
+    detail: >-
+      Because DoD policy (2007) forbids depicting the real complex and the interior is classified, the
+      build MUST carry visitor-facing signage at portals/vestibules stating it is a creative
+      approximation of a public landmark's public history and geology, not a real interior map. Signage
+      blocks are provided in site_kit.markings_and_hazard and underground_dressing.disclosure_signage.
+    severity: high

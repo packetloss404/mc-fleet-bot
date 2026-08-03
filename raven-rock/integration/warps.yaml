@@ -1,0 +1,173 @@
+# =====================================================================================================
+# Raven Rock Mountain Complex (Site R) — WARP DEFINITIONS  (integration/warps.yaml)
+# =====================================================================================================
+# REQUIRED PLUGIN: EssentialsX (the /warp system). Any Essentials-compatible warp plugin will do.
+#
+# STATUS: STAGED, NOT ACTIVE. The current server reality, stated accurately:
+#   * The builder bots ARE now opped (level 4, confirmed in the server ops.json) — any earlier
+#     "bots are NOT opped" caveat in the planning/ files is OUTDATED here.
+#   * BUT EssentialsX is STILL ABSENT — no /warp works today, so this file really is dormant.
+#     CORRECTED 2026-07-25: the parenthetical "no WorldGuard / WorldEdit" was FALSE — **WorldEdit 7.4.0
+#     and WorldGuard 7.0.16 ARE installed** (see qa/oq3-worldguard.md). Still absent with EssentialsX:
+#     Dynmap/BlueMap, Citizens, relay plugin.
+#   * Apply only once EssentialsX exists. Overworld name IS now confirmed: **`world`**. Not live.
+#   NOTE ON LAYOUT: EssentialsX stores each warp as its own file at plugins/Essentials/warps/<name>.yml.
+#   This single file is a STAGING bundle of all warps for review; split it into per-warp files (keys
+#   under 'warps:' -> individual <name>.yml) at apply-time, or feed it to a small importer.
+#
+# -----------------------------------------------------------------------------------------------------
+# PROVENANCE / HONESTY NOTE
+# -----------------------------------------------------------------------------------------------------
+# Coordinates are drawn VERBATIM from planning/coordinates.yaml (notable_locations N-series + building
+# centroids) so every integration file collides against the same numbers. Raven Rock's interior is
+# classified (REF-015); every position here is creative approximation. The SEQUENCE the tour traces
+# (portal -> vestibule -> operations -> command/comms -> habitation -> utility) is a reasoned
+# front-of-house -> back-of-house circuit, high-confidence inference from the public concept.
+#
+# This is a SUBSURFACE site: warp Y values are underground (negative or low), NOT the y=64 surface. XZ
+# are centered on the block (+0.5) so players stand mid-block. Interior Y is set to (cavern-floor or
+# building-base) + 1 so a player materializes standing on the floor, not inside it. Verify against the
+# finished excavation before apply (see RR-WP01).
+#
+# Minecraft yaw reference for 'yaw': 0=+Z(South), 90=-X(West), 180=-Z(North), 270=+X(East). pitch: 0=level.
+# =====================================================================================================
+
+schema_version: 1
+world_assumption: >-
+  'world' is a placeholder for the overworld name (unconfirmed — confirm before apply). It must match
+  the world used in location.yaml / worldguard.yaml / map-marker.yaml.
+
+# The underground visitor tour, in order:
+#   1 rr_northportal -> 2 rr_vestibule -> 3 rr_operations -> 4 rr_command -> 5 rr_comms
+#   -> 6 rr_habitation -> 7 rr_utility     (plus 8 rr_shaft = the MSA-surface access down the shaft)
+warps:
+
+  # 1) Arrival — North Vehicle Portal, the largest portal and the main vehicle entrance in the rock face.
+  rr_northportal:
+    source_notable_location: N4 (North Vehicle Portal — mouth)
+    world: world
+    x: 0.5
+    y: 19.0              # portal floor y18 + 1
+    z: -285.5
+    yaw: 0.0             # face SOUTH (+Z), into the tunnel toward the complex
+    pitch: 0.0
+    label: "Raven Rock — North Vehicle Portal (Entrance)"
+    confidence: high-confidence inference   # ~four portals attested (REF-007); exact position creative
+
+  # 2) Blast Vestibule — the North Blast Vestibule (twin blast doors) on the North Vehicle Tunnel.
+  rr_vestibule:
+    source_notable_location: N1 (North Blast Vestibule)
+    world: world
+    x: 0.5
+    y: -5.0              # vestibule floor y-6 + 1
+    z: -120.5
+    yaw: 0.0             # face SOUTH, continuing inward toward Cavern A
+    pitch: 0.0
+    label: "Raven Rock — North Blast Vestibule"
+    confidence: creative approximation   # blast doors exist in concept; placement invented
+
+  # 3) Central Operations Cavern — the central junction rotunda, heart of Cavern A (RR-Z1).
+  rr_operations:
+    source_notable_location: N10 (Central Junction Rotunda, Cavern A)
+    world: world
+    x: 0.5
+    y: -11.0             # Cavern A floor y-12 + 1
+    z: 0.5
+    yaw: 180.0           # face NORTH (-Z), toward the two command buildings at z-15
+    pitch: 0.0
+    label: "Raven Rock — Central Operations Cavern"
+    confidence: creative approximation
+
+  # 4) Command & Operations Center (ANMCC) — RR-B1, freestanding on visible springs in Cavern A.
+  rr_command:
+    source_building: RR-B1 (Command & Operations Center / ANMCC)
+    world: world
+    x: -29.5             # centroid x-30 +0.5
+    y: -7.0              # building base y-8 + 1 (ground-floor slab)
+    z: -14.5             # centroid z-15 +0.5
+    yaw: 270.0           # face EAST (+X), toward the Signal & Comms Center / cavern center
+    pitch: 0.0
+    label: "Raven Rock — Command & Operations Center (ANMCC)"
+    confidence: creative approximation   # mission verified (REF-010); geometry invented
+
+  # 5) Signal & Communications Center — RR-B2, the comms building in Cavern A.
+  rr_comms:
+    source_building: RR-B2 (Signal & Communications Center)
+    world: world
+    x: 38.5              # centroid x38 +0.5
+    y: -7.0              # building base y-8 + 1
+    z: -14.5             # centroid z-15 +0.5
+    yaw: 90.0            # face WEST (-X), back toward the command building / cavern center
+    pitch: 0.0
+    label: "Raven Rock — Signal & Communications Center"
+    confidence: creative approximation   # comms tenancy verified (REF-011); geometry invented
+
+  # 6) Habitation & Support Cavern — RR-B3 Quarters/Dining/Medical, the sealed-for-months community (Cavern B).
+  rr_habitation:
+    source_building: RR-B3 (Quarters, Dining & Medical, Cavern B)
+    world: world
+    x: 0.5               # centroid x0 +0.5
+    y: -5.0              # building base y-6 + 1
+    z: 100.5             # centroid z100 +0.5
+    yaw: 180.0           # face NORTH (-Z), back toward Cavern A via the C1 corridor
+    pitch: 0.0
+    label: "Raven Rock — Habitation & Support Cavern"
+    confidence: creative approximation   # self-sufficiency inference (REF-009); geometry invented
+
+  # 7) Utility & Reservoir Cavern — RR-B4 Power & Ventilation Plant + the two reservoirs (Cavern C).
+  rr_utility:
+    source_building: RR-B4 (Power & Ventilation Plant, Cavern C)
+    world: world
+    x: -149.5            # centroid x-150 +0.5
+    y: -13.0             # building base y-14 + 1
+    z: -9.5              # centroid z-10 +0.5
+    yaw: 270.0           # face EAST (+X), toward the reservoir sumps and the C2 corridor to Cavern A
+    pitch: 0.0
+    label: "Raven Rock — Utility & Reservoir Cavern"
+    confidence: creative approximation   # utilities inference (REF-009); reservoir counts/positions invented
+
+  # 8) MSA-surface access — the Vertical Access Shaft head-house on the MainStreet America surface plane.
+  #    This is the "descend from the surface" warp: it lands you at the shaft head (N9) to go DOWN to
+  #    the complex. The shaft base connects to Cavern A's spur (S1) at (200, -12, -15).
+  rr_shaft:
+    source_notable_location: N9 (Vertical Access Shaft — Surface Head-House, RR-Z5)
+    world: world
+    x: 200.5             # centroid x200 +0.5 (relocated east per OQ-1; OUTSIDE MSA x[-70,+70] and east of every MSA planned surface element)
+    y: 65.0              # surface head y64 + 1 (stands on the MSA surface plane)
+    z: -14.5             # centroid z-15 +0.5
+    yaw: 90.0            # face WEST (-X), toward the MainStreet America surface build
+    pitch: 0.0
+    label: "Raven Rock — Access Shaft (from MSA surface)"
+    confidence: creative approximation   # deliberate-liberty link (coordinates.yaml GAP-05)
+
+# =====================================================================================================
+# ASSUMPTIONS & CROSS-CHECK NOTES
+# =====================================================================================================
+assumptions:
+  - id: RR-WP01
+    topic: Subsurface Y offset +1
+    detail: >-
+      Interior warp Y = (cavern floor or building base) + 1 so players stand on the floor. Portal warps
+      use portal-mouth floor y18/y10 + 1. If the finished excavation puts the walkable surface a block
+      higher/lower, adjust per warp before apply. These are underground coordinates, not the y=64 surface.
+    severity: low
+  - id: RR-WP02
+    topic: Tour selection
+    detail: >-
+      Eight warps trace a coherent portal -> vestibule -> operations -> command -> comms -> habitation
+      -> utility circuit, plus the MSA-surface shaft descent. Portals N3/N5/N6, vestibule N2, rotunda
+      duplicate, reservoirs N7 and spring array N8 were left as non-warp markers (see map-marker.yaml).
+      Swap freely if a different set is preferred.
+    severity: low
+  - id: RR-WP03
+    topic: World name + storage layout
+    detail: >-
+      'world' unconfirmed (see location.yaml RR-L02). EssentialsX expects per-warp files under
+      plugins/Essentials/warps/; split this bundle at apply-time.
+    severity: medium
+  - id: RR-WP04
+    topic: Plugin still absent
+    detail: >-
+      EssentialsX is not installed on the stock Paper server. Bots are opped now, but that does not add
+      the /warp system. Staged, inactive until EssentialsX is present.
+    severity: high

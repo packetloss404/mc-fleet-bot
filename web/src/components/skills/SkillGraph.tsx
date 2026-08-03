@@ -92,7 +92,7 @@ export function SkillGraph({ skills }: Props) {
 
   // Fetch aggregate stats once — used to show top performers list inside the drawer.
   useEffect(() => {
-    const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+    const base = process.env.NEXT_PUBLIC_API_URL || '';
     fetch(`${base}/api/skills/stats`)
       .then((r) => (r.ok ? r.json() : null))
       .then((data: SkillStatsResponse | null) => {
@@ -300,7 +300,7 @@ export function SkillGraph({ skills }: Props) {
       return;
     }
     setFullCode(null);
-    const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+    const base = process.env.NEXT_PUBLIC_API_URL || '';
     let cancelled = false;
     fetch(`${base}/api/skills/${selected}`)
       .then((r) => (r.ok ? r.json() : null))

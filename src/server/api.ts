@@ -18,6 +18,7 @@ import { CommanderService } from '../control/CommanderService';
 import { CommandCenter } from '../control/CommandCenter';
 import { MissionManager } from '../control/MissionManager';
 import { MarkerStore } from '../control/MarkerStore';
+import { WorldFeatureStore } from '../world/WorldFeatureStore';
 import { HighlightStream } from '../town/HighlightStream';
 import type { TownEvent } from '../town/Town';
 import { TOWN_ROLES, type TownRole } from '../town/RoleManager';
@@ -49,6 +50,8 @@ import { registerBuildRoutes } from './routes/buildRoutes';
 import { registerEventsRoutes } from './routes/eventsRoutes';
 import { registerBotRoutes } from './routes/botsRoutes';
 import { registerTownRoutes } from './routes/townRoutes';
+import { registerWorldFeatureRoutes } from './routes/worldFeatureRoutes';
+import { registerBoxIntegrationRoutes } from './routes/boxIntegrationRoutes';
 // createGrantHandler moved to ./routes/grantHandler; re-exported for back-compat
 // (auth.grant.test.ts imports it from this module).
 export { createGrantHandler } from './routes/grantHandler';
@@ -85,6 +88,7 @@ export interface APIServerResult {
   commandCenter: CommandCenter;
   missionManager: MissionManager;
   markerStore: MarkerStore;
+  worldFeatureStore: WorldFeatureStore;
   squadManager: SquadManager;
   roleManager: RoleManager;
   templateManager: TemplateManager;
@@ -357,6 +361,7 @@ export function createAPIServer(
 
   // ── Control platform: wire managers in dependency order ──
   const markerStore = new MarkerStore(io);
+  const worldFeatureStore = new WorldFeatureStore();
   // Phase 5-A — wire the marker store into Phoenix so Memorial Park can
   // place monuments. The chronicle leg was injected up above; this
   // completes the Phoenix dependency surface.
@@ -399,6 +404,7 @@ export function createAPIServer(
       try { eventLog.shutdown(); } catch (err: any) { logger.warn({ err: err?.message }, 'eventLog.shutdown failed during admin restart'); }
       try { chainCoordinator.shutdown(); } catch (err: any) { logger.warn({ err: err?.message }, 'chainCoordinator.shutdown failed during admin restart'); }
       try { campaignManager.shutdown(); } catch (err: any) { logger.warn({ err: err?.message }, 'campaignManager.shutdown failed during admin restart'); }
+      try { worldFeatureStore.close(); } catch (err: any) { logger.warn({ err: err?.message }, 'worldFeatureStore.close failed during admin restart'); }
       try {
         if (typeof (botManager as any).shutdownPersistence === 'function') {
           (botManager as any).shutdownPersistence();
@@ -478,6 +484,8 @@ export function createAPIServer(
   //  TERRAIN ENDPOINTS (extracted → routes/terrainRoutes.ts)
   // ═══════════════════════════════════════
   registerTerrainRoutes(app, { botManager });
+  registerWorldFeatureRoutes(app, { worldFeatureStore });
+  registerBoxIntegrationRoutes(app);
 
   // ═══════════════════════════════════════
   //  CONTROL PLATFORM ENDPOINTS
@@ -505,12 +513,10 @@ export function createAPIServer(
   /**
    * Phase 6-A mayor-only auth helper.
    *
-   * Followup #58 — the caller's identity is now sourced from the signed
-   * `pid` session cookie (POST /api/auth/login) instead of the
-   * honor-system body field `mayorPlayerName`. The legacy body-based
-   * path is still accepted when the request includes `?legacyAuth=true`,
-   * which exists purely to ease migration of any external scripts that
-   * haven't been updated to call /api/auth/login first.
+   * Followup #58 — the caller's identity is sourced from the signed
+   * `pid` session cookie (POST /api/auth/login). The legacy
+   * `?legacyAuth=true` + `mayorPlayerName` body-field fallback was
+   * removed 2026-07-24 after a clean week of production logs.
    *
    * Returns true when the caller is the mayor; otherwise sends a 403 with
    * a descriptive error and returns false. Routes should bail immediately
@@ -547,7 +553,7 @@ export function createAPIServer(
 
   return {
     app, httpServer, io, eventLog,
-    commanderService, commandCenter, missionManager, markerStore, squadManager, roleManager, templateManager, routineManager,
+    commanderService, commandCenter, missionManager, markerStore, worldFeatureStore, squadManager, roleManager, templateManager, routineManager,
     buildCoordinator, campaignManager, schematicMatcher, chainCoordinator,
     chronicleGenerator, chronicleScheduler,
     highlightStream: highlights,

@@ -421,11 +421,16 @@ Branch: `feature/town-builder` so it stays isolated from main dashboard work.
 
 ## 14. Open follow-ups (not blocking)
 
+Current triage and acceptance gates for the still-relevant optional items live
+in `docs/OPTIONAL-INITIATIVES-2026-07-26.md` (OPT-07 through OPT-09 and
+OPT-13). Inter-town allied trade is now implemented and is not a follow-up.
+
 - **Schematic packs for purchase**: see `BUYWITHMONEY.md`. Reality: paid Mid-Century Civic packs barely exist; LLM design path is realistically the primary source. Free / one-off PlanetMinecraft finds can still seed the early library.
 - **Bot personality drift**: as bots reflect, their personality may evolve. Do we want that? (Defer; revisit at Phase 4.)
 - **Player voting weight**: Mayor vote weight is configurable per-town. Default 1.0; could allow >1 for "executive override." (Defer; revisit at Phase 6.)
 - **Town treasury currency**: today it'd be aggregate inventory value. Future could mint a virtual currency (emeralds?) for narrative purposes. (Defer.)
-- **Inter-town trade once allied**: routes between towns, caravans, shared stockpile zones. (Phase 7.)
+- ~~**Inter-town trade once allied**~~: implemented through
+  `TradeRouteManager`, the town API, and the dashboard trade-routes surface.
 
 ## 15. Costs at steady state
 

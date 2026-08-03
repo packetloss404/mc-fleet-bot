@@ -4,6 +4,146 @@ All notable changes to DyoBot are documented in this file.
 
 ---
 
+## 2026-07-27
+
+### Features — MainStreet secure complex detail wave
+- **Parking-side bunker rebuilt as a complete facility** — added an enclosed,
+  two-wide primary stair serving lower operations, upper hangar/arena, shelter,
+  surface hangar, and office; rebuilt the lower theater and three conference
+  rooms; and fitted the hangar with aircraft, rotorcraft, rescue equipment, a
+  catwalk, and the arena with a response course, triage, and decontamination.
+- **Observatory given its own program and working visual identity** — divided
+  the public observatory into a foyer, instrument archive, optics workshops,
+  observation logs, lab, and photo-control rooms. All three domes now have open
+  roof apertures, bearing rings, telescope tubes, shutters, and distinct lenses.
+- **Hidden penthouse and secure stack completed** — separated the private
+  apartment from public observatory circulation and fitted its library salon,
+  twelve-monitor command room, dressing lounge, bedroom, living salon,
+  dining-kitchen, glass-and-marble spa, and safe suite. The concealed stair now
+  continues through a furnished fallout shelter to the dry three-level grand
+  vault, whose galleries have working stairs, rails, and loaded treasure stores.
+- **Secure-complex atlas and database refresh** — published five annotated map
+  sheets plus a combined PDF and recorded 41 authoritative feature
+  observations against the final post-build snapshot.
+
+### Bug Fixes — MainStreet secure complex
+- **Misleading surface route** — removed the public scaffold that crossed the
+  penthouse bedroom, capped and labeled the legacy U01 riser as maintenance
+  access, and installed clear level signs on the new primary stair.
+- **One-way and unfinished underground spaces** — repaired the shelter treasury
+  connection, restored the safe-room bulkhead, sealed raw cavern edges, added
+  real shelter beds and facilities, and installed rails across all three vault
+  levels.
+
+### Verification — MainStreet secure complex
+- **Saved-world proof** — 2,075/2,075 guarded build commands and 11/11 final
+  wayfinding commands succeeded live. The immutable post-sign snapshot
+  `8fbf6997638da3ef36f200ce73315e0becbea3746ffbc350817cb3d1b0de66ac`
+  passes 21/21 route and structural assertions, including fourteen
+  bidirectional route suites.
+
+### Features — worldwide interiors
+- **Whole-world room register and fit-out** — promoted 68 active structures and
+  236 named functional rooms into the spatial database, then furnished every
+  room that the snapshot census classified as empty or under-detailed.
+- **Ladder-free vertical circulation** — rebuilt Raven Rock building stairs,
+  RR-Z5's seventeen-level surface stair, the Ravensgate campanile, Westlight
+  upper floors, H11, and the six-level Ravensreach Library. The final census
+  reports zero cataloged ladders and zero multi-floor structures without stairs.
+- **First-class scan history** — seven final `region_snapshot` scans attach 335
+  observations and the authoritative snapshot hash to active-area buildings,
+  rooms, circulation records, and the approach road.
+
+### Bug Fixes — world
+- **Beacon Inn tower was solid** — excavated the advertised lower lounge,
+  authored three occupied tower levels and a continuous quartz spiral, and
+  removed a floor plate that allowed descent but blocked ascent to the lookout.
+- **Four C01 rooms were sealed** — connected the finished Bunk, Records, Comms,
+  and Fabrication rooms to the lower operations gallery with broad walkable
+  arches.
+- **Hidden room failures** — opened H09's sealed primary suite, replaced H11
+  scaffolding with a real four-floor stair, and removed 45 legacy ladders from
+  the Library, Market, and Grange.
+
+### Verification
+- **Saved-world proof after execution** — 4,340/4,340 commands succeeded across
+  four waves. A fresh 26-region snapshot passes 32/32 route suites and a final
+  census of 236/236 fitted rooms.
+
+---
+
+## 2026-07-26
+
+### Tooling — build verification
+- **Builds are now checked for traversability, not just placement** — `verify_ops.py`
+  scored the Moot Hall descent BUILT 5/5 while it was an unusable shaft: every sampled
+  block existed, and a corridor ceiling, a dome cap and a missing ladder made it a
+  staircase to nowhere. Added `scripts/reachability.mjs` (flood-fills player-occupiable
+  space; `--box` mode reports what fraction of a room's interior is reachable),
+  `builds/manifest.yaml` (every build unit, its ops files and its walk assertions), and
+  `scripts/build_status.py` (runs both checks over every unit, one table). Unlisted ops
+  files are flagged — an unchecked build is how things get forgotten.
+- **`both_ways` walk checks** — a player falls any distance but climbs one block, so a
+  one-way check passes on a hole in the floor. Every basement in Ravensreach passed
+  that way; the Moot Hall's were in fact completely sealed.
+- **`scripts/verify_ops.py`** — samples ops against the world instead of trusting a
+  runner's "issued" tally, and is ordering-aware so a later op legitimately overwriting
+  an earlier one is not reported as missing. It found that **seven ops files had never
+  run at all**.
+
+### Performance
+- **Build ops moved from WorldEdit-via-bot to RCON `/fill`** — measured **0.002 s per
+  command against ~1.5 s per op**; the 9,500-op Westlight programme went from a
+  projected four hours to **19 seconds**. `scripts/rcon_runner.py` handles the three
+  ways `/fill` fails silently: unloaded chunks (it force-loads the bounding box and
+  restores the operator's pinned chunks), the 32768-block cap, and the absence of random
+  patterns — geometry is laid flat and accents scattered in a few big `//replace` passes.
+
+### Features — world
+- **WESTLIGHT** — the stadium complex, relocated ~275 blocks west to (-360,-560): a
+  6,000-seat enclosed theatre at y18-46 inside a deep blue drum with a flat technical
+  sky grid, a transfer slab at y54-57, a 23-terrace bowl with its field nine blocks
+  below grade, and a canopy at radii 74x66 on columns at 70x62. The larger canopy is
+  what makes an honest ~10,800 capacity possible; the town site was capped at ~6,200 by
+  plan area inside its column ring. The old stadium at (-85,-513) was demolished and the
+  site returned to flat grass.
+- **The Sanctum** — a circular theatre-and-temple beneath the town, floor y26, domed to
+  y50, with tiered seating in a semicircle around a raised stage and a continuous
+  backlit screen around the perimeter wall.
+- **Moot Hall penthouse** — the roof void converted to an attic storey with dormers, a
+  railed terrace cut into the south slope, and a concealed door behind the bookcase.
+- **Moot Hall vertical core** — one shaft serving penthouse, ground, B1, B2 and the deep
+  corridor. Before it, the entire basement programme (three-screen multiplex, bowling
+  alley, two-level bar, arcade, bank, IT office) was **sealed**.
+- **Library, Amsterdam square, walkways, Market Hall and Grange Hall interiors** — the
+  six-storey library (three above, three below), klinker paving with two canals and a
+  stepped-gable terrace, a connected road network, and both Fable 5 interior plans
+  executed non-destructively (chest counts verified unchanged).
+
+### Bug Fixes
+- **Every door placed by a generator had silently vanished** — a door is two blocks with
+  *different* states, and setting a 2-tall selection to a door id writes two
+  `half=lower` halves, which pop off on load. 29 doors re-placed; all four generators
+  now carry a `door()` helper.
+- **The library's upper floors were unreachable** — the stair core built five straight
+  flights in one footprint, each a step short of its landing. Rebuilt as switchbacks.
+- **Both Ravensreach canals leaked** — dug with open ends, they put 23 blocks of water
+  inside a cottage and 107 more across the ground. Ends capped; irrigation channels
+  walled and their courts filled so `REPL air` gaps could not spread.
+- **The walkway generator cut through three cottages** — `road()` clears y68-71 to air.
+  Walls restored, fittings replaced, routes moved. Chest *contents* were unrecoverable.
+- **An audit check passed while finding a leak** — `contains` takes only a minimum, so
+  `max: 2` was ignored and nine blocks of escaped water read as green. Now `absent`.
+
+### Documentation
+- `HANDOFF-2026-07-26.md` — next steps in order of leverage, the sealed-build findings,
+  and a fresh-session checklist so nothing built today is missed.
+- `audits/ravensreach.yaml` grew 52 -> 65 checks (Amsterdam square, library, pavilion),
+  re-baselined the plaza paving and the Moot Hall roof, and retired the mine-apron check
+  with the evidence for why.
+
+---
+
 ## 2026-07-02
 
 ### Features — Rail & bunker

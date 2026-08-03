@@ -19,7 +19,12 @@ vi.mock('../../src/config', () => ({
   loadConfig: () => ({ mining: { protectedZones } }),
 }));
 
-import { isProtected, intersectsProtectedZone, _resetGeofenceCache } from '../../src/actions/geofence';
+import {
+  _resetGeofenceCache,
+  getPathfinderBreakExclusionCost,
+  intersectsProtectedZone,
+  isProtected,
+} from '../../src/actions/geofence';
 
 describe('geofence', () => {
   beforeEach(() => {
@@ -37,6 +42,20 @@ describe('geofence', () => {
     it('clears a point outside the zone', () => {
       expect(isProtected(99, 70, 110)).toBe(false);
       expect(isProtected(110, 81, 110)).toBe(false);
+    });
+
+    it('hard-excludes protected breaks during path planning', () => {
+      expect(getPathfinderBreakExclusionCost({
+        position: { x: 110.9, y: 70.8, z: 110.2 },
+      })).toBe(100);
+      expect(getPathfinderBreakExclusionCost({
+        position: { x: 90, y: 70, z: 90 },
+      })).toBe(0);
+    });
+
+    it('fails open for a malformed pathfinder block', () => {
+      expect(getPathfinderBreakExclusionCost(null)).toBe(0);
+      expect(getPathfinderBreakExclusionCost({ position: { x: Number.NaN, y: 70, z: 90 } })).toBe(0);
     });
   });
 

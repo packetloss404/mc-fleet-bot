@@ -69,6 +69,27 @@ const KEYWORD_PREFILTER_MIN_HITS = 5;
 const KEYWORD_MIN_LEN = 3;
 
 /**
+ * Max score a skill can gain from being used successfully, and lose from
+ * failing. Bounded on purpose — see the scoring block in findRelevant().
+ */
+const POPULARITY_WEIGHT = 6;
+const RELIABILITY_PENALTY = 8;
+/** Usage count at which half the popularity/penalty weight is reached. */
+const POPULARITY_HALF_LIFE = 5;
+
+/**
+ * Tokens that carry no retrieval signal. `KEYWORD_MIN_LEN` alone cannot filter
+ * these: raising the floor to 4 would also drop "oak", "log", "ore" — the very
+ * nouns that identify a task. `walk_to_the_nearest_shore` matched nearly every
+ * query because "the" is IN ITS NAME and passed the 3-char floor.
+ */
+const STOPWORDS = new Set([
+  'the', 'and', 'for', 'with', 'from', 'into', 'onto', 'that', 'this',
+  'your', 'you', 'get', 'got', 'use', 'using', 'make', 'made', 'via',
+  'near', 'nearest', 'some', 'any', 'all', 'out', 'off', 'per', 'its',
+]);
+
+/**
  * Bounded LRU access on a Map. Standard "Map insertion order = recency"
  * trick: read-or-touch deletes and re-sets the key so it lands at the tail;
  * eviction simply pops from the head until size <= cap.
@@ -196,8 +217,20 @@ export class SkillLibrary {
         score += this.cosineSimilarityDense(queryEmbedding, entry.embedding) * 25;
       }
       score += this.getQuality(entry) * 10;
-      score += (entry.successCount ?? 0) * 0.5;
-      score -= (entry.failureCount ?? 0) * 1.5;
+      // Popularity must NEVER outweigh relevance. These terms were unbounded:
+      // a skill with 522 successes scored +261 from usage alone, while every
+      // content signal combined (keywords + description + both embeddings)
+      // caps near +55. The result was one popular skill — `walk_to_the_nearest
+      // _shore` — ranking #1 for virtually every query with a lexical AND
+      // semantic score of 0.0, so the correct skill for "mine 1 oak log" sat
+      // at rank 38 and the bot regenerated it instead (hence `_v35`).
+      //
+      // Saturating instead of linear: it still breaks ties toward skills that
+      // actually work, but cannot dominate what the query is asking for.
+      const successes = entry.successCount ?? 0;
+      const failures = entry.failureCount ?? 0;
+      score += POPULARITY_WEIGHT * (successes / (successes + POPULARITY_HALF_LIFE));
+      score -= RELIABILITY_PENALTY * (failures / (failures + POPULARITY_HALF_LIFE));
 
       return { entry, score, matchedWords: matchedWords.length };
     });
@@ -233,10 +266,26 @@ export class SkillLibrary {
    *  Name collisions are versioned (skill_v2, _v3, ...) rather than overwriting the
    *  existing entry; blind overwrite would silently discard any history attached
    *  to the previous skill (success/failure counts, embedding, etc.). */
-  async save(name: string, description: string, keywords: string[], code: string, _quality = 0.8): Promise<boolean> {
+  /**
+   * Persist a skill and return the name it was ACTUALLY stored under, or null
+   * if it could not be saved.
+   *
+   * Returning the final name matters: collisions are versioned to `_vN`, and
+   * the previous `Promise<boolean>` signature threw that away. Callers then
+   * recorded success against the BASE name while failures landed on the
+   * versioned name — a one-way ratchet that left all 246 versioned skills at
+   * exactly 0 successes and 5,688 failures, so a freshly-saved skill could
+   * only ever sink in the rankings and never earn its way back.
+   */
+  async save(name: string, description: string, keywords: string[], code: string, _quality = 0.8): Promise<string | null> {
     if (this.index.length >= this.maxSkills) {
-      logger.warn({ name }, 'Skill library full, cannot save');
-      return false;
+      // Evict rather than reject. A hard cap silently stopped learning: the
+      // library sat at exactly maxSkills with 495 saves refused, so nothing
+      // new could ever be added no matter how good it was.
+      if (!this.evictWorst()) {
+        logger.warn({ name }, 'Skill library full and nothing evictable, cannot save');
+        return null;
+      }
     }
 
     // Resolve collision by appending _vN. Note: we intentionally do NOT match
@@ -277,6 +326,46 @@ export class SkillLibrary {
     this.saveIndex();
     this.rebuildIndexStats();
     logger.info({ name: finalName, keywords }, 'Skill saved to library');
+    return finalName;
+  }
+
+  /**
+   * Drop the least valuable skill to make room. Returns false if nothing is
+   * safe to evict.
+   *
+   * Ranking is worst-first: never-successful entries go before proven ones,
+   * then most-failed, then least-recently-updated. This targets exactly the
+   * duplicate-version sludge that filled the library (246 zero-success
+   * versioned entries occupying ~49% of the cap).
+   */
+  private evictWorst(): boolean {
+    if (this.index.length === 0) return false;
+    const ranked = [...this.index].sort((a, b) => {
+      const aProven = (a.successCount ?? 0) > 0 ? 1 : 0;
+      const bProven = (b.successCount ?? 0) > 0 ? 1 : 0;
+      if (aProven !== bProven) return aProven - bProven;          // unproven first
+      const fail = (b.failureCount ?? 0) - (a.failureCount ?? 0); // most-failed first
+      if (fail !== 0) return fail;
+      return (a.lastQualityUpdate ?? 0) - (b.lastQualityUpdate ?? 0); // stalest first
+    });
+    const victim = ranked[0];
+    if (!victim) return false;
+
+    this.index = this.index.filter((e) => e.name !== victim.name);
+    this.codeCache.delete(victim.name);
+    this.allSkillCodeCache = null;
+    // Deliberately does NOT unlink the .js file. Each of the 5 bot worker
+    // threads builds its OWN SkillLibrary over the same directory, so another
+    // worker's in-memory index may still reference this entry. Deleting the
+    // file would turn a harmless orphan into a dangling index entry whose
+    // getCode() returns null at execution time — the disk already carries 447
+    // orphan files and 24 dangling entries from this race. Dropping the index
+    // entry is enough to free the cap slot; a separate offline sweep can
+    // reclaim unreferenced files once the store is single-writer.
+    logger.info(
+      { evicted: victim.name, successCount: victim.successCount, failureCount: victim.failureCount },
+      'Skill library at cap; evicted lowest-value skill to make room',
+    );
     return true;
   }
 
@@ -496,7 +585,9 @@ export class SkillLibrary {
       .toLowerCase()
       .replace(/[^a-z0-9_\s]/g, ' ')
       .split(/\s+/)
-      .filter((token) => token.length > 2);
+      // Drop stopwords as well as short tokens. Length alone can't do it:
+      // "the" is 3 chars and so are "oak", "log", "ore".
+      .filter((token) => token.length > 2 && !STOPWORDS.has(token));
   }
 
   private buildVector(text: string): SparseVector {

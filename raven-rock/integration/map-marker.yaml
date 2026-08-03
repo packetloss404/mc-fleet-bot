@@ -1,0 +1,284 @@
+# =====================================================================================================
+# Raven Rock Mountain Complex (Site R) — MAP MARKER DEFINITION  (integration/map-marker.yaml)
+# =====================================================================================================
+# REQUIRED PLUGIN: Dynmap (Markers component / dynmap-marker API).
+#
+# STATUS: STAGED, NOT ACTIVE. The current server reality, stated accurately:
+#   * The builder bots ARE now opped (level 4, confirmed in the server ops.json) — any earlier
+#     "bots are NOT opped" caveat in the planning/ files is OUTDATED here.
+#   * BUT Dynmap is STILL ABSENT — that part is unchanged and this file really is dormant. No web map or
+#     marker exists today. CORRECTED 2026-07-25: the parenthetical "no WorldGuard / WorldEdit" was FALSE —
+#     **WorldEdit 7.4.0 and WorldGuard 7.0.16 ARE installed** (see qa/oq3-worldguard.md). Still absent
+#     alongside Dynmap: EssentialsX, Citizens, and the relay plugin.
+#   * The overworld name IS now confirmed: **`world`**. Apply once Dynmap is installed — either by an importer
+#     that walks this file and calls the Marker API, or by hand via /dmarker addset & /dmarker add. This
+#     is NOT Dynmap's native machine-managed markers.yml; it is a portable staging definition to recreate.
+#
+# -----------------------------------------------------------------------------------------------------
+# PROVENANCE / HONESTY NOTE
+# -----------------------------------------------------------------------------------------------------
+# The marker set, labels and icons are authored. All coordinates are drawn VERBATIM from
+# planning/coordinates.yaml (site anchored at origin; zones = zone bounds; POIs = notable_locations /
+# building centroids). Raven Rock's interior is classified (REF-015); every position is creative
+# approximation. Icon names are stock Dynmap marker icons.
+#
+# SUBSURFACE NOTE: This is an entirely UNDERGROUND site. Dynmap's 2D web map is a top-down projection, so
+# every marker below carries its real (negative / low) Y as well as XZ. The whole set sits beneath the
+# MainStreet America surface markers, which share the same XZ envelope at y64. Keep the Raven Rock
+# markerset as a SEPARATE toggleable layer so it does not visually collide with the MSA surface layer.
+# =====================================================================================================
+
+schema_version: 1
+world_assumption: >-
+  'world' is a placeholder for the overworld name (unconfirmed — confirm before apply); must match
+  location.yaml / worldguard.yaml / warps.yaml.
+
+# --- The marker set (a toggleable layer on the Dynmap web UI) --------------------------------------
+markerset:
+  id: raven_rock
+  label: "Raven Rock Mountain Complex (Site R) — subsurface"
+  hidden_by_default: true          # subsurface layer off by default so it doesn't overlap MSA surface markers
+  layer_priority: 11               # sits just above the MSA layer (priority 10) in the layer control
+  min_zoom: 0
+
+  # --- Primary marker: the whole site ---------------------------------------------------------------
+  primary_marker:
+    id: raven_rock_site
+    world: world
+    x: 0
+    y: -12                         # anchored at the central rotunda floor (subsurface), not the y64 surface
+    z: 0
+    icon: bunker
+    label: "Raven Rock Mountain Complex (Site R) — subsurface reconstruction"
+    # Dynmap supports HTML in marker descriptions when allowdescriptionhtml is true.
+    description: >-
+      <b>Raven Rock Mountain Complex ("Site R")</b> — a Minecraft reconstruction of the U.S.
+      government's underground continuity-of-government bunker near Blue Ridge Summit, PA (the
+      "underground Pentagon"), built BENEATH MainStreet America.<br>
+      <i>Raven Rock's interior is classified — no public floor plan exists, and DoD policy forbids any
+      map of it (manifest REF-015). Every cavern, building and tunnel here is our invented interpretation,
+      not documented fact. Real is only the concept: greenstone geology, buildings on shock-isolation
+      springs, several portals, self-sufficient utilities, and an alternate-command mission.</i><br>
+      <b>Subsurface:</b> ceilings y40, floors y-12 (deepest sump y-18); a solid greenstone buffer
+      (y41-y61) separates it from MSA above (y62-y79).
+    confidence: creative approximation   # site concept public; all geometry invented
+
+  # --- Envelope boundary: the 600x600 sub-surface envelope, drawn as a Dynmap area marker -----------
+  # Area markers are 2D polylines in the X/Z plane. Corners clockwise; y carries the subsurface plane.
+  boundary_area:
+    id: raven_rock_boundary
+    world: world
+    corners_x: [-300, 300, 300, -300]
+    corners_z: [-300, -300, 300, 300]
+    y: -12                          # subsurface envelope plane (cavern floor level)
+    label: "Raven Rock — subsurface envelope (600x600, y-18..y40)"
+    line_color: "0x2E5E3A"          # greenstone green (site palette), distinct from MSA's amber
+    line_opacity: 0.8
+    line_weight: 2
+    fill_color: "0x3C7A4A"
+    fill_opacity: 0.10
+    boundary_note: >-
+      The complex occupies the SUB-SURFACE volume of the same 600x600 envelope MSA sits on. This is a
+      world/planning boundary, not a lot line. Vertical extent: floors y-18 to ceilings y40.
+    confidence: creative approximation
+
+  # --- Zone / cavern area markers (drawn from planning/coordinates.yaml zone bounds) ----------------
+  # Each cavern box is [min_x, min_z, max_x, max_z]; corners listed clockwise; y = cavern floor.
+  zone_areas:
+    - id: rr_z1_cavern_a
+      world: world
+      corners_x: [-75, 75, 75, -75]
+      corners_z: [-45, -45, 15, 15]
+      y: -12                        # RR-Z1 floor y-12 (ceiling y40)
+      label: "RR-Z1 Central Operations Cavern (Cavern A) — floor y-12, ceiling y40"
+      line_color: "0x4A90D9"
+      fill_color: "0x4A90D9"
+      fill_opacity: 0.12
+      confidence: creative approximation
+    - id: rr_z2_cavern_b
+      world: world
+      corners_x: [-45, 45, 45, -45]
+      corners_z: [70, 70, 130, 130]
+      y: -10                        # RR-Z2 floor y-10 (ceiling y36)
+      label: "RR-Z2 Habitation & Support Cavern (Cavern B) — floor y-10, ceiling y36"
+      line_color: "0x50C878"
+      fill_color: "0x50C878"
+      fill_opacity: 0.12
+      confidence: creative approximation
+    - id: rr_z3_cavern_c
+      world: world
+      corners_x: [-185, -115, -115, -185]
+      corners_z: [-35, -35, 15, 15]
+      y: -18                        # RR-Z3 floor y-18 (deepest; ceiling y28)
+      label: "RR-Z3 Utility & Reservoir Cavern (Cavern C) — floor y-18, ceiling y28"
+      line_color: "0xD9A441"
+      fill_color: "0xD9A441"
+      fill_opacity: 0.12
+      confidence: creative approximation
+    - id: rr_z5_shaft
+      world: world
+      corners_x: [193, 207, 207, 193]
+      corners_z: [-22, -22, -8, -8]
+      y: -12                        # RR-Z5 shaft footprint; base y-12 rising to surface y64
+      label: "RR-Z5 Vertical Access Shaft — base y-12 up to MSA surface y64 (deliberate liberty)"
+      line_color: "0xB0B0B0"
+      fill_color: "0xB0B0B0"
+      fill_opacity: 0.15
+      confidence: creative approximation
+    # RR-Z4 (Portal & Blast-Vestibule Network) is distributed across the whole envelope rather than a
+    # single box, so it is represented by the portal/vestibule point markers below, not an area marker.
+
+  # --- Point-of-interest markers, drawn VERBATIM from planning/coordinates.yaml ----------------------
+  # Every marker carries its subsurface Y. Buildings, portals, vestibules, rotunda, reservoirs, shaft.
+  poi_markers:
+    # -- Four buildings --
+    - id: rr_b1_command
+      world: world
+      x: -30
+      y: -8
+      z: -15
+      icon: building
+      label: "RR-B1 Command & Operations Center (ANMCC) — Cavern A, 3 story"
+      confidence: creative approximation     # mission verified (REF-010); geometry invented
+    - id: rr_b2_comms
+      world: world
+      x: 38
+      y: -8
+      z: -15
+      icon: comment
+      label: "RR-B2 Signal & Communications Center — Cavern A, 3 story"
+      confidence: creative approximation     # comms tenancy verified (REF-011); geometry invented
+    - id: rr_b3_habitation
+      world: world
+      x: 0
+      y: -6
+      z: 100
+      icon: house
+      label: "RR-B3 Quarters, Dining & Medical — Cavern B, 3 story"
+      confidence: creative approximation
+    - id: rr_b4_utility
+      world: world
+      x: -150
+      y: -14
+      z: -10
+      icon: gear
+      label: "RR-B4 Power & Ventilation Plant — Cavern C, 2 story"
+      confidence: creative approximation
+    # -- Four portals (mouths in the rock face at the envelope edge) --
+    - id: rr_n4_north_portal
+      world: world
+      x: 0
+      y: 18
+      z: -285
+      icon: door
+      label: "North Vehicle Portal (N4) — main/vehicle entrance"
+      confidence: high-confidence inference  # ~four portals attested (REF-007); position creative
+    - id: rr_n3_south_portal
+      world: world
+      x: -150
+      y: 18
+      z: 285
+      icon: door
+      label: "South Personnel Portal (N3) — pedestrian entrance"
+      confidence: high-confidence inference
+    - id: rr_n5_east_portal
+      world: world
+      x: 285
+      y: 18
+      z: -30
+      icon: door
+      label: "East Portal (N5)"
+      confidence: high-confidence inference
+    - id: rr_n6_west_portal
+      world: world
+      x: -290
+      y: 10
+      z: 5
+      icon: door
+      label: "West Utility Portal (N6) — utility run"
+      confidence: high-confidence inference
+    # -- Blast-door vestibules --
+    - id: rr_n1_north_vestibule
+      world: world
+      x: 0
+      y: -6
+      z: -120
+      icon: warning
+      label: "North Blast Vestibule (N1) — twin blast doors"
+      confidence: creative approximation
+    - id: rr_n2_east_vestibule
+      world: world
+      x: 180
+      y: 0
+      z: -30
+      icon: warning
+      label: "East Blast Vestibule (N2)"
+      confidence: creative approximation
+    # -- Rotunda, reservoirs, spring array, shaft head --
+    - id: rr_n10_rotunda
+      world: world
+      x: 0
+      y: -12
+      z: 0
+      icon: star
+      label: "Central Junction Rotunda (N10) — heart of Cavern A"
+      confidence: creative approximation
+    - id: rr_n7_reservoirs
+      world: world
+      x: -150
+      y: -18
+      z: -30
+      icon: water
+      label: "Reservoir (N7) — single basin, deepest point y-18"   # amended 2026-07-25: one basin, not two
+      confidence: creative approximation     # counts are popular figures (REF-009), not authoritative
+    - id: rr_n8_springs
+      world: world
+      x: -30
+      y: -12
+      z: -15
+      icon: coil
+      label: "Central Spring-Isolation Array (N8) — under RR-B1"
+      confidence: high-confidence inference  # springs concept REF-005; exact array invented
+    - id: rr_n9_shaft_head
+      world: world
+      x: 120
+      y: 64
+      z: 60
+      icon: up
+      label: "Vertical Access Shaft — Surface Head-House (N9), on MSA surface"
+      confidence: creative approximation     # deliberate liberty (GAP-05); the one surface marker
+
+# =====================================================================================================
+# ASSUMPTIONS & CROSS-CHECK NOTES
+# =====================================================================================================
+assumptions:
+  - id: RR-MK01
+    topic: Not Dynmap's native markers.yml
+    detail: >-
+      Portable staging definition, not the machine-managed plugins/dynmap/markers.yml. Recreate via the
+      Marker API or /dmarker at apply-time.
+    severity: low
+  - id: RR-MK02
+    topic: Icon names
+    detail: >-
+      Icons (bunker, building, comment, house, gear, door, warning, star, water, coil, up) are stock
+      Dynmap marker icon ids; verify the installed icon set and substitute any that are missing (e.g.
+      'bunker'/'coil' may not exist in a default install — fall back to 'building'/'portal').
+    severity: low
+  - id: RR-MK03
+    topic: World name
+    detail: "'world' unconfirmed (see location.yaml RR-L02). Confirm before apply."
+    severity: medium
+  - id: RR-MK04
+    topic: Subsurface overlap with MSA layer
+    detail: >-
+      Raven Rock markers share the XZ envelope with MSA's surface markers. Kept in a separate,
+      hidden-by-default layer so the two do not visually collide on the top-down map. Every marker
+      carries its real subsurface Y (only N9 is at the surface, y64).
+    severity: low
+  - id: RR-MK05
+    topic: Coordinates inherited
+    detail: >-
+      All marker XZ/Y are copied verbatim from planning/coordinates.yaml so the map agrees with
+      warps.yaml and location.yaml. Absolute positions are creative approximation per that file.
+    severity: low

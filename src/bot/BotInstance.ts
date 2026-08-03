@@ -6,7 +6,13 @@ import { Vec3 } from 'vec3';
 import { BotState, BotMode } from './BotState';
 import { Config } from '../config';
 import { logger } from '../util/logger';
-import { isProtected } from '../actions/geofence';
+import {
+  getCarveCeiling,
+  getMinDigY,
+  isAboveCarveCeiling,
+  isBelowDigFloor,
+  isProtected,
+} from '../actions/geofence';
 import { LLMClient } from '../ai/LLMClient';
 import { AffinityManager } from '../personality/AffinityManager';
 import { ConversationManager } from '../personality/ConversationManager';
@@ -32,6 +38,11 @@ import { SharedWorldModel } from '../voyager/SharedWorldModel';
 import { SocialMemory } from '../social/SocialMemory';
 import { BotComms, BotMessage } from '../social/BotComms';
 import { parseBuildIntent } from '../control/BuildIntentResolver';
+import {
+  canMoveWithinCivicMobility,
+  getCivicStepExclusionCost,
+} from '../control/CivicMobility';
+import { applyPathfinderMovementSafety } from './PathfinderMovementPolicy';
 
 /**
  * Project Sid P3 (SHOULD-FIX #1) — minimal inter-bot comms surface BotInstance
@@ -89,6 +100,8 @@ export class BotInstance {
 
   private config: Config;
   private spawnLocation?: { x: number; y: number; z: number };
+  /** True once the one-time spawn teleport has run (see the spawn handler). */
+  private hasTeleportedToSpawn = false;
   private headTrackingInterval: NodeJS.Timeout | null = null;
   private wanderInterval: NodeJS.Timeout | null = null;
   private ambientChatTimeout: NodeJS.Timeout | null = null;
@@ -111,6 +124,22 @@ export class BotInstance {
   private pendingListeners: Array<() => void> = [];
   /** Counter for sampling the verbose path_update debug log (1 in 50). */
   private pathUpdateLogCounter = 0;
+  /** Ring buffer of recent SERVER messages (system output, not player chat).
+   *
+   *  Exists because commands issued through `POST /api/bots/:name/say` were
+   *  write-only: the command reached the server (verified in the server console as
+   *  "issued server command") but whatever the server said BACK — a WorldEdit
+   *  "3 blocks changed", a WorldGuard denial, a limit error — arrived as a system
+   *  message that nothing listened for. The only `message` listeners were the
+   *  transient ones inside the login/class-selection handshake.
+   *
+   *  That made every scripted command a blind write, which is precisely how this
+   *  project's worst incidents happened. Anything driving WorldEdit through a bot
+   *  MUST be able to read the reply, or a silently-refused operation is
+   *  indistinguishable from a successful one. */
+  private serverMessages: Array<{ t: number; text: string }> = [];
+  private static readonly SERVER_MESSAGE_CAP = 100;
+  private serverMessageListenerBound = false;
   private llmClient: LLMClient | null;
   private affinityManager: AffinityManager;
   private conversationManager: ConversationManager;
@@ -172,6 +201,12 @@ export class BotInstance {
   private statsTracker = new StatsTracker('./data');
   private static CHAT_COOLDOWN_MS = 3000;
   private lastPathResetLog: { reason: string; at: number; suppressed: number } | null = null;
+  private controlledWalkStatus: {
+    status: 'running' | 'succeeded' | 'failed';
+    target: { x: number; y: number; z: number; range: number };
+    updatedAt: number;
+    message?: string;
+  } | null = null;
 
   // ── Overnight-survival state ──
   /** Last time we evaluated the "am I hungry?" branch. Gated to ~10s. */
@@ -312,9 +347,119 @@ export class BotInstance {
             `dig blocked: (${Math.floor(p.x)},${Math.floor(p.y)},${Math.floor(p.z)}) is inside a protected build zone`,
           );
         }
+        // Excavation CEILING (Raven Rock OQ-4) — the mirror of the depth floor
+        // below, enforced at the same choke point and for the same reason:
+        // LLM-generated code calls bot.dig directly, so gating only mineBlock
+        // would leave the buffer unprotected. Off unless mining.carveCeiling
+        // is explicitly enabled, so this is a no-op for MSA/Worker Town work.
+        if (p && isAboveCarveCeiling(Math.floor(p.x), Math.floor(p.y), Math.floor(p.z))) {
+          const cc = getCarveCeiling();
+          logger.warn(
+            {
+              bot: this.name,
+              x: Math.floor(p.x), y: Math.floor(p.y), z: Math.floor(p.z),
+              maxY: cc?.maxY,
+            },
+            'dig blocked: above the excavation ceiling (protects the MSA buffer)',
+          );
+          throw new Error(
+            `dig blocked: (${Math.floor(p.x)},${Math.floor(p.y)},${Math.floor(p.z)}) is above the ` +
+            `excavation ceiling y${cc?.maxY} — the greenstone buffer under MainStreet America`,
+          );
+        }
+        // Depth floor, enforced HERE rather than only in mineBlock: this is the
+        // single choke point every dig passes through, including LLM-generated
+        // code calling bot.dig directly. Gating only mineBlock left generated
+        // code free to tunnel — which is how the fleet ended up at y13-y52 with
+        // solid blocks overhead, failing every surface task indefinitely.
+        if (p && isBelowDigFloor(Math.floor(p.x), Math.floor(p.y), Math.floor(p.z))) {
+          logger.warn(
+            { bot: this.name, x: Math.floor(p.x), y: Math.floor(p.y), z: Math.floor(p.z), minDigY: getMinDigY() },
+            'dig blocked: below the dig-depth floor',
+          );
+          throw new Error(
+            `dig blocked: y=${Math.floor(p.y)} is below the dig-depth floor (y=${getMinDigY()}). ` +
+            `Do not tunnel down — work at the surface, or go to the communal mine site to dig deep.`,
+          );
+        }
         return originalDig(block, ...rest);
       };
       b.__digGuarded = true;
+    });
+
+    // Pathfinder depth + citizen-boundary guard, wrapped at the same
+    // choke-point level as the dig guard above. Guarding
+    // CodeExecutor.moveTo alone was not enough: raw
+    // `bot.pathfinder.setGoal` is exposed to generated code (CodeExecutor
+    // ~line 646) and is also called directly by moveHelper/craft/attack, so a
+    // bot blocked from digging down simply pathed down instead — the moveTo
+    // guard fired 4 times while 349 digs were blocked and bots still reached
+    // y13. Wrapping setGoal covers every one of those callers at once.
+    //
+    // Downward goals below the floor are refused; UPWARD goals are always
+    // allowed so a bot already underground can climb out, and clearing the
+    // goal (null) must always pass.
+    this.bot.once('spawn', () => {
+      const b = this.bot as any;
+      if (!b?.pathfinder || typeof b.pathfinder.setGoal !== 'function' || b.__depthGuarded) return;
+      const originalSetGoal = b.pathfinder.setGoal.bind(b.pathfinder);
+      const leash = this.config.leash?.find(
+        (entry) => entry.botName.toLowerCase() === this.name.toLowerCase(),
+      );
+      b.pathfinder.setGoal = (goal: any, dynamic?: boolean) => {
+        const floorY = getMinDigY();
+        const gy = goal?.y;
+        const entityGoal = goal?.entity?.position;
+        const current = (this.bot as any)?.entity?.position;
+        const gx = typeof goal?.x === 'number' ? goal.x : entityGoal?.x;
+        const gz = typeof goal?.z === 'number' ? goal.z : entityGoal?.z;
+        if (leash && goal && current
+            && typeof gx === 'number' && typeof gz === 'number') {
+          // Named destinations and surveyed corridors extend the citizen's
+          // home circle without enabling free roaming. Out-of-bounds recovery
+          // is still allowed when the target moves closer to an approved area.
+          if (!canMoveWithinCivicMobility(
+            leash,
+            { x: current.x, z: current.z },
+            { x: gx, z: gz },
+          )) {
+            logger.warn(
+              {
+                bot: this.name,
+                goal: { x: Math.floor(gx), z: Math.floor(gz) },
+                home: { x: leash.x, z: leash.z },
+                radius: leash.radius,
+                destinations: leash.destinations?.map((destination) => destination.name) ?? [],
+                corridors: leash.corridors?.map((corridor) => corridor.name) ?? [],
+              },
+              'pathfinder goal blocked: outside approved civic mobility areas',
+            );
+            return originalSetGoal(null, dynamic);
+          }
+        }
+        if (floorY !== null && goal && typeof gy === 'number') {
+          const depthX = typeof gx === 'number' ? gx : current?.x ?? 0;
+          const depthZ = typeof gz === 'number' ? gz : current?.z ?? 0;
+          if (isBelowDigFloor(Math.floor(depthX), Math.floor(gy), Math.floor(depthZ))
+              && current && gy <= current.y) {
+            logger.warn(
+              {
+                bot: this.name,
+                goalY: Math.floor(gy),
+                currentY: Math.floor(current.y),
+                minDigY: floorY,
+              },
+              'pathfinder goal blocked: below the dig-depth floor',
+            );
+            throw new Error(
+              `TOO DEEP: pathfinder goal y=${Math.floor(gy)} is below the dig-depth floor (y=${floorY}). ` +
+              `Stay at the surface; deep travel happens only at the communal mine site.`,
+            );
+          }
+        }
+        return originalSetGoal(goal, dynamic);
+      };
+      b.__depthGuarded = true;
     });
 
     // Forward player join/leave to the main thread. The gate skips the initial
@@ -356,18 +501,77 @@ export class BotInstance {
         // Set up pathfinder movements
         const mcData = require('minecraft-data')(this.bot.version);
         const movements = new Movements(this.bot);
-        movements.canDig = true; // Keep digging available to escape holes (matches original Voyager)
+        const civicBoundary = this.config.leash?.find(
+          (entry) => entry.botName.toLowerCase() === this.name.toLowerCase(),
+        );
+        const civicStepExclusion = civicBoundary
+          ? (block: any) => {
+              const current = this.bot?.entity?.position;
+              if (!current) return 0;
+              return getCivicStepExclusionCost(
+                civicBoundary,
+                { x: current.x, z: current.z },
+                block,
+              );
+            }
+          : undefined;
+        // Keep digging available to escape holes (matches original Voyager),
         // ...but make it expensive. With the library default digCost=1, pathfinder
         // treats tunnelling straight through terrain as the cheapest route, which
         // is the bulk of the "bots endlessly dig underground" behaviour. Raising it
         // makes the planner strongly prefer walking/going around; digging stays a
         // last resort (escaping a hole, no other path).
-        movements.digCost = 12;
-        // Don't pillar up 1x1 towers to reach goals — another source of pointless
-        // vertical mining/scaffolding on the way to surface build sites.
-        movements.allow1by1towers = false;
+        // forbid 1x1 towers, and teach A* the immutable dig boundaries enforced
+        // by the runtime wrapper. Cost >=100 is mineflayer-pathfinder's hard
+        // exclusion convention.
+        applyPathfinderMovementSafety(movements, civicStepExclusion);
+
+        // mineflayer-collectblock owns a second Movements instance and installs
+        // it before every collection task. It must carry the exact same policy
+        // or a saved farming/mining skill can silently replace the safe normal
+        // movements and hammer bot.dig against one protected obstacle.
+        const collectMovements = (this.bot as any).collectBlock?.movements as Movements | undefined;
+        if (collectMovements) {
+          applyPathfinderMovementSafety(collectMovements, civicStepExclusion);
+        }
         this.bot.pathfinder.setMovements(movements);
-        logger.info({ bot: this.name, canDig: movements.canDig, digCost: movements.digCost }, 'Pathfinder movements configured');
+
+        // BOUND THE SEARCH. digCost/allow1by1towers above shape the ROUTE the
+        // planner prefers; neither bounds the SEARCH itself. mineflayer-pathfinder
+        // ships `searchRadius = -1`, which makes `astar.js:51` compute
+        // `maxCost = -1`, and the pruning test at `astar.js:95` only fires when
+        // `maxCost > 0` — so with canDig the search explores an unbounded 3-D
+        // volume. Worse, `index.js:442` re-enters the SAME AStar context every tick
+        // while its status stays 'partial', and that context's closedDataSet /
+        // openHeap / openDataMap / visitedChunks have no eviction. An unreachable
+        // goal therefore grows one allocation set forever.
+        //
+        // That is the worker OOM, measured: 80 kills (62 at the old 512 MB cap, 18
+        // at 768 MB), 79 of them mid-execution and 65 while mining stone — goals the
+        // mining geofence makes permanently unreachable, since the bots stand inside
+        // the protected zone they are told to mine. Raising the cap never addressed
+        // it because the growth is unbounded, not merely large.
+        //
+        // maxCost becomes `startNode.h + searchRadius`, i.e. this is a DETOUR
+        // allowance rather than a range limit, so distant reachable goals still
+        // path; an impossible one now ends as 'noPath' in bounded memory.
+        const searchRadius = this.config.behavior?.pathfinderSearchRadius ?? 96;
+        // Cast: the field is real (index.js:41 sets it, index.js:75 reads it) but is
+        // missing from @types/mineflayer-pathfinder's Pathfinder interface.
+        (this.bot.pathfinder as any).searchRadius = searchRadius;
+        logger.info(
+          {
+            bot: this.name,
+            canDig: movements.canDig,
+            digCost: movements.digCost,
+            breakExclusions: movements.exclusionAreasBreak.length,
+            stepExclusions: movements.exclusionAreasStep.length,
+            collectBreakExclusions: collectMovements?.exclusionAreasBreak.length ?? 0,
+            collectStepExclusions: collectMovements?.exclusionAreasStep.length ?? 0,
+            searchRadius,
+          },
+          'Pathfinder movements configured',
+        );
 
         // Auto-dismount to prevent physicsTick from stopping (matches original Voyager)
         // Use once + re-register pattern to avoid accumulating listeners on respawn
@@ -381,9 +585,28 @@ export class BotInstance {
       // Auth with DyoAuth, then select class, before doing anything else
       this.handleAuth(() => {
         this.handleClassSelection(() => {
-          // Teleport to spawn location if specified
-          if (this.spawnLocation && this.bot) {
-            this.bot.chat(`/tp ${this.name} ${this.spawnLocation.x} ${this.spawnLocation.y} ${this.spawnLocation.z}`);
+          // Teleport to the configured spawn — ONCE per process, and never to
+          // a buried coordinate.
+          //
+          // This fired on EVERY spawn, including the respawn that follows a
+          // suffocation death. Combined with BotManager persisting the live
+          // position as `spawnLocation`, that was an infinite self-burying
+          // loop: tp into rock -> suffocate -> respawn at surface -> tp back.
+          // First-spawn-only breaks the cycle; the floor check refuses a spawn
+          // point that is already underground so a stale bots.json entry can't
+          // re-bury a bot on first join either.
+          if (this.spawnLocation && this.bot && !this.hasTeleportedToSpawn) {
+            const floorY = getMinDigY();
+            const buried = floorY !== null && this.spawnLocation.y < floorY;
+            if (buried) {
+              logger.warn(
+                { bot: this.name, spawnLocation: this.spawnLocation, minDigY: floorY },
+                'refusing to teleport to a spawn point below the dig floor — likely a stale buried position',
+              );
+            } else {
+              this.hasTeleportedToSpawn = true;
+              this.bot.chat(`/tp ${this.name} ${this.spawnLocation.x} ${this.spawnLocation.y} ${this.spawnLocation.z}`);
+            }
           }
 
           this.state = BotState.IDLE;
@@ -548,11 +771,22 @@ export class BotInstance {
       logger.warn({ bot: this.name, reason }, 'Bot disconnected');
       this.state = BotState.DISCONNECTED;
       this.stopAmbientBehaviors();
-      this.scheduleReconnect();
+      // Pass the end reason through so version-mismatch disconnects
+      // (`differentVersionError`) hit the slow-backoff branch even when no
+      // `kicked` event preceded them.
+      this.scheduleReconnect(reason);
     });
   }
 
-  private static BOT_PASSWORD = 'dyobot2026';
+  /**
+   * DyoAuth bot password. Sourced from MC_BOT_PASSWORD, falling back to
+   * config.minecraft.loginPassword at the call site. The literal was previously
+   * hardcoded here, which meant deleting the config key did NOT remove the
+   * credential — it just fell through to the constant. Empty default so a
+   * misconfigured DyoAuth flow fails to authenticate rather than broadcasting a
+   * real password; this path only runs when loginFlow is explicitly 'dyoauth'.
+   */
+  private static BOT_PASSWORD = process.env.MC_BOT_PASSWORD ?? '';
 
   private handleAuth(onReady: () => void): void {
     if (!this.bot) return;
@@ -561,8 +795,18 @@ export class BotInstance {
     // loginFlow: "none" — just join, no /login or /register. DyoCraft uses
     // "dyoauth" (the default). Skipping here also avoids the 15s auth-timeout
     // wait on servers that never send a login prompt.
-    if (this.config.minecraft.loginFlow === 'none') {
-      logger.info({ bot: this.name }, 'Auth: loginFlow=none, skipping login');
+    // OPT-IN, not opt-out. This was `=== 'none'` — an exact-match SKIP — and
+    // `loginFlow` is an optional key, so deleting it, misspelling it, or setting
+    // it to anything unexpected ran the full DyoAuth dance. On a stock Paper
+    // server `/login` is an unknown command, so the bot's PASSWORD would be
+    // echoed into PUBLIC CHAT by every bot on every join, followed by a 15s
+    // auth-timeout stall. Now only the literal string 'dyoauth' opts in, so any
+    // typo fails safe to "just join".
+    if (this.config.minecraft.loginFlow !== 'dyoauth') {
+      logger.info(
+        { bot: this.name, loginFlow: this.config.minecraft.loginFlow ?? '(unset)' },
+        'Auth: loginFlow is not "dyoauth", skipping login',
+      );
       onReady();
       return;
     }
@@ -643,8 +887,14 @@ export class BotInstance {
 
     // DyoClasses is a DyoCraft plugin; a vanilla/Paper server has no class
     // hotbar, so selectClass: false skips the dance entirely.
-    if (this.config.minecraft.selectClass === false) {
-      logger.info({ bot: this.name }, 'Class selection disabled (selectClass=false), skipping');
+    // OPT-IN for the same reason as loginFlow above: this was
+    // `selectClass === false`, so an absent or malformed key ran the DyoClasses
+    // hotbar dance against a server that has no such plugin.
+    if (this.config.minecraft.selectClass !== true) {
+      logger.info(
+        { bot: this.name, selectClass: this.config.minecraft.selectClass ?? '(unset)' },
+        'Class selection not explicitly enabled, skipping',
+      );
       onReady();
       return;
     }
@@ -750,6 +1000,21 @@ export class BotInstance {
     return /duplicate_login|logged in from another( location)?|you logged in from another/i.test(text);
   }
 
+  /**
+   * True when the disconnect is a client/server protocol-version mismatch —
+   * e.g. the server upgraded to a Minecraft version our protocol stack does
+   * not speak yet. Matches the vanilla/Paper kick ("Outdated client! Please
+   * use X"), mineflayer's `end` reason (`differentVersionError`), and the
+   * handshake error text ("This server is version X, you are using ...").
+   * Unlike a throttle kick this cannot resolve by retrying soon: it clears
+   * only when the server adds a compat layer (ViaBackwards) or our deps gain
+   * the server's version.
+   */
+  static parseVersionMismatchKick(reason: unknown): boolean {
+    const text = BotInstance.normalizeKickReason(reason);
+    return /outdated (client|server)|differentVersionError|this server is version/i.test(text);
+  }
+
   private static parseLoginThrottleHint(reason: unknown): number | null {
     const text = BotInstance.normalizeKickReason(reason);
     const specific = /wait\s+(\d+)\s+seconds?\s+before\s+logg/i.exec(text);
@@ -773,6 +1038,29 @@ export class BotInstance {
       logger.debug({ bot: this.name }, 'Reconnect already queued, skipping duplicate schedule');
       return;
     }
+
+    // Protocol-version mismatch is permanent until the server or our deps
+    // change — the normal 30s cadence just hammers the server (~2.5k kicks/
+    // day fleet-wide). Retry on a slow heartbeat instead, and don't consume
+    // reconnect attempts, so the fleet self-heals unattended whenever the
+    // server starts accepting our protocol version. Deliberately placed
+    // before the max-attempts gate: earlier fast-path churn must not strand
+    // the bot once we know why connects are failing.
+    if (BotInstance.parseVersionMismatchKick(kickReason)) {
+      const backoffSec = this.config.bots.versionMismatchBackoffSec ?? 900;
+      const spread = Math.random() * Math.max(1, this.config.bots.maxBots) * 4000;
+      const delay = Math.round(backoffSec * 1000 + spread);
+      logger.warn(
+        { bot: this.name, delay, backoffSec },
+        'Version mismatch with server — slow reconnect backoff (resolves only when server adds ViaBackwards or bot deps learn its version)',
+      );
+      this.pendingConnectTimeout = setTimeout(() => {
+        this.pendingConnectTimeout = null;
+        void this.connect();
+      }, delay);
+      return;
+    }
+
     if (this.reconnectAttempts >= this.config.bots.maxReconnectAttempts) {
       logger.error({ bot: this.name }, 'Max reconnect attempts reached');
       return;
@@ -956,9 +1244,42 @@ export class BotInstance {
 
   private chatListenerBound = false;
 
+  /** Capture server system messages into a ring buffer so scripted commands can be
+   *  verified rather than assumed. Bound once per bot, alongside the chat listener.
+   *
+   *  Deliberately captures EVERYTHING and filters at read time. A filter here would
+   *  have to guess which prefixes matter, and the failures worth catching are
+   *  exactly the unanticipated ones — a WorldGuard denial reads nothing like a
+   *  WorldEdit success. */
+  private startServerMessageListener(): void {
+    if (!this.bot || this.serverMessageListenerBound) return;
+    this.serverMessageListenerBound = true;
+
+    this.bot.on('message', (msg: any) => {
+      let text: string;
+      try {
+        text = typeof msg?.toString === 'function' ? msg.toString() : String(msg);
+      } catch {
+        return;
+      }
+      if (!text || !text.trim()) return;
+      this.serverMessages.push({ t: Date.now(), text });
+      if (this.serverMessages.length > BotInstance.SERVER_MESSAGE_CAP) {
+        this.serverMessages.splice(0, this.serverMessages.length - BotInstance.SERVER_MESSAGE_CAP);
+      }
+    });
+  }
+
+  /** Recent server messages, newest last. `since` filters by timestamp so a caller
+   *  can issue a command and read only what arrived afterwards. */
+  getServerMessages(since = 0): Array<{ t: number; text: string }> {
+    return this.serverMessages.filter((m) => m.t > since);
+  }
+
   private startChatListener(): void {
     if (!this.bot || this.chatListenerBound) return;
     this.chatListenerBound = true;
+    this.startServerMessageListener();
 
     this.bot.on('chat', async (username: string, message: string) => {
       // Ignore own messages and empty messages
@@ -1228,7 +1549,11 @@ export class BotInstance {
 
       // Queue task in Voyager loop if extracted (check hostility first)
       if ((goalDescription || taskDescription) && this.voyagerLoop) {
-        if (this.affinityManager.isHostile(this.name, playerName)) {
+        // MUST be awaited: inside a worker `affinityManager` is an
+        // AffinityProxy whose isHostile() is async, and an unawaited Promise is
+        // always truthy — so EVERY chat-issued task was refused fleet-wide with
+        // "I don't feel like helping you right now."
+        if (await this.affinityManager.isHostile(this.name, playerName)) {
           logger.warn({ bot: this.name, player: playerName }, 'Refusing task from hostile player');
           this.sendLongChat(`I don't feel like helping you right now.`);
         } else if (goalDescription) {
@@ -1318,6 +1643,22 @@ export class BotInstance {
 
   private startVoyagerIfCodegen(): void {
     if (this.mode !== BotMode.CODEGEN || !this.bot || !this.config.voyager.enabled) return;
+
+    // Stop any previous loop FIRST. This runs on every spawn — including every
+    // respawn and reconnect — and used to leak the old loop: 1,422 loops were
+    // started against only 446 stopped, leaving ~26 concurrent loops for 5
+    // bots. Each carries its own CurriculumAgent, SkillLibrary, WorldMemory and
+    // StatsTracker, so the fleet was doing ~5x the LLM work it should AND five
+    // writers were racing each other on the same JSON files (~17 GB/day of
+    // rewrites, and the source of the skills/index.json orphan rate).
+    if (this.voyagerLoop) {
+      try {
+        this.voyagerLoop.stop();
+      } catch (err: any) {
+        logger.warn({ bot: this.name, err: err?.message }, 'failed stopping previous voyager loop');
+      }
+      this.voyagerLoop = null;
+    }
 
     this.voyagerLoop = new VoyagerLoop(
       this.bot,
@@ -2049,6 +2390,30 @@ export class BotInstance {
     logger.info({ bot: this.name }, 'Bot disconnected and destroyed');
   }
 
+  /**
+   * This worker isolate's heap usage, rounded to MB, plus how close it is to its
+   * cap. `usedPct` is the number to watch: steady state on this fleet is ~200 MB
+   * against a 768 MB cap (~26%), and the OOM signature is a climb toward 100%
+   * during a single task rather than a slow drift across many.
+   */
+  private static readHeapStats(): { usedMb: number; totalMb: number; limitMb: number; usedPct: number } | null {
+    try {
+      const v8 = require('v8');
+      const s = v8.getHeapStatistics();
+      const mb = (n: number) => Math.round(n / 1024 / 1024);
+      const usedMb = mb(s.used_heap_size);
+      const limitMb = mb(s.heap_size_limit);
+      return {
+        usedMb,
+        totalMb: mb(s.total_heap_size),
+        limitMb,
+        usedPct: limitMb > 0 ? Math.round((usedMb / limitMb) * 100) : 0,
+      };
+    } catch {
+      return null; // telemetry must never break the status heartbeat
+    }
+  }
+
   getStatus() {
     return {
       name: this.name,
@@ -2060,6 +2425,22 @@ export class BotInstance {
       // a reconnect. null until the first connect() so a not-yet-spawned bot is
       // not flagged.
       inboundAgeMs: this.lastInboundPacketAt > 0 ? Date.now() - this.lastInboundPacketAt : null,
+      // Per-worker heap telemetry. getStatus() runs INSIDE the worker thread, and
+      // each worker is its own V8 isolate, so getHeapStatistics() reports THIS
+      // bot's heap and THIS bot's cap (the one MC_WORKER_HEAP_MB sets).
+      //
+      // This existed nowhere before. `POST /api/admin/heap-snapshot` snapshots the
+      // MAIN thread (~74 MB) and cannot see a worker isolate at all, so two
+      // successive cap changes (512 -> 768) were made with zero visibility into the
+      // heap that was actually dying. Surfacing it here means the next balloon is
+      // observable in the status heartbeat instead of only in an OOM exit code.
+      heap: BotInstance.readHeapStats(),
+      // Recent server system messages. Rides getStatus() rather than a new IPC
+      // request type because this path already crosses the worker boundary and is
+      // cached main-side; adding a bespoke round-trip for it would be more moving
+      // parts for no gain. Capped at 20 here so the status heartbeat stays small —
+      // the worker keeps 100.
+      serverMessages: this.serverMessages.slice(-20),
       position: this.bot?.entity?.position
         ? {
             x: Math.round(this.bot.entity.position.x),
@@ -2067,7 +2448,21 @@ export class BotInstance {
             z: Math.round(this.bot.entity.position.z),
           }
         : null,
+      // Exposed for controlled runtime gates and the dashboard. CommandCenter
+      // dispatch is intentionally asynchronous, so position alone can look
+      // close enough while the worker is still traversing the last node.
+      pathfinderMoving: Boolean(this.bot?.pathfinder?.isMoving?.()),
+      controlledWalkStatus: this.controlledWalkStatus,
     };
+  }
+
+  setControlledWalkStatus(status: {
+    status: 'running' | 'succeeded' | 'failed';
+    target: { x: number; y: number; z: number; range: number };
+    updatedAt: number;
+    message?: string;
+  }): void {
+    this.controlledWalkStatus = status;
   }
 
   getDetailedStatus() {

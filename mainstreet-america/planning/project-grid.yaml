@@ -1,0 +1,161 @@
+schema_version: 1
+id: mainstreet-america-project-grid
+as_built_date: 2026-07-26
+coordinate_system: Minecraft Java block coordinates; X east/west, Z south/north
+
+principles:
+  - SITE is the protected planning envelope, not a literal fence line.
+  - Every physical fence belongs to an inventoried division, block, or project.
+  - Public roads and sidewalks remain outside project fences and enter only at declared gates.
+  - Neighborhood fences must be land-only; water plinths and anonymous gaps are forbidden.
+  - Subsurface Raven Rock geometry never drives surface property boundaries.
+
+site:
+  id: SITE
+  bounds: {min_x: -300, min_y: 62, min_z: -300, max_x: 300, max_y: 319, max_z: 300}
+  worldguard_region: mainstreet_america
+
+roads:
+  - {id: R01, name: Main Street, centerline: [[0, -290], [0, 285]], width: 9}
+  - {id: R02, name: West Lane, centerline: [[-82, -218], [-82, 84]], width: 3}
+  - {id: R03, name: East Avenue, centerline: [[84, -218], [84, 70]], width: 5}
+  - {id: R04, name: South Cross, centerline: [[-142, 84], [90, 84]], width: 5}
+  - {id: R05, name: Garden Cross, centerline: [[-82, 17], [84, 17]], width: 3}
+  - {id: R06, name: Brick Cross, centerline: [[-83, -83], [4, -83]], width: 3}
+  - {id: R07, name: Service Cross, centerline: [[-84, -218], [220, -218]], width: 3}
+
+boundaries:
+  - id: DIV-A01
+    name: Arrival and Visitor Campus
+    kind: division
+    parent: SITE
+    vertices: [[-135, 75], [135, 75], [135, 285], [80, 285], [80, 270], [14, 270], [14, 305], [-14, 305], [-14, 270], [-135, 270]]
+    gates:
+      - {id: GATE-A01-SOUTH, axis: x, fixed: 305, min: -10, max: 10, road: R01}
+      - {id: GATE-A01-NORTH, axis: x, fixed: 75, min: -6, max: 6, road: R01}
+      - {id: GATE-A01-R02, axis: x, fixed: 75, min: -84, max: -80, road: R02}
+      - {id: GATE-A01-R04-WEST, axis: z, fixed: -135, min: 81, max: 87, road: R04}
+      - {id: GATE-A01-EAST, axis: z, fixed: 135, min: 168, max: 176, road: ARRIVAL-DRIVE}
+
+  - id: BLK-WS
+    name: West South Homes
+    kind: block
+    parent: SITE
+    vertices: [[-80, 20], [-8, 20], [-8, 76], [-80, 76]]
+    gates:
+      - {id: GATE-WS-MAIN, axis: z, fixed: -8, min: 53, max: 57, road: R01}
+      - {id: GATE-WS-LANE, axis: z, fixed: -80, min: 28, max: 32, road: R02}
+      - {id: GATE-WS-R02-SOUTH, axis: z, fixed: -80, min: 74, max: 76, road: R02}
+
+  - id: BLK-ES
+    name: East South Homes
+    kind: block
+    parent: SITE
+    vertices: [[8, 20], [80, 20], [80, 76], [8, 76]]
+    gates:
+      - {id: GATE-ES-MAIN, axis: z, fixed: 8, min: 53, max: 57, road: R01}
+      - {id: GATE-ES-AVE, axis: z, fixed: 80, min: 28, max: 32, road: R03}
+
+  - id: BLK-WM
+    name: West Middle Homes
+    kind: block
+    parent: SITE
+    vertices: [[-80, -80], [-8, -80], [-8, 14], [-80, 14]]
+    gates:
+      - {id: GATE-WM-H02, axis: z, fixed: -8, min: 3, max: 7, road: R01}
+      - {id: GATE-WM-H03, axis: z, fixed: -8, min: -47, max: -43, road: R01}
+      - {id: GATE-WM-LANE, axis: z, fixed: -80, min: -72, max: -68, road: R02}
+
+  - id: BLK-EM
+    name: East Middle Homes
+    kind: block
+    parent: SITE
+    vertices: [[8, -80], [80, -80], [80, 14], [8, 14]]
+    gates:
+      - {id: GATE-EM-H08, axis: z, fixed: 8, min: 3, max: 7, road: R01}
+      - {id: GATE-EM-H09, axis: z, fixed: 8, min: -47, max: -43, road: R01}
+      - {id: GATE-EM-AVE, axis: z, fixed: 80, min: -72, max: -68, road: R03}
+
+  - id: BLK-WN
+    name: West North Homes
+    kind: block
+    parent: SITE
+    vertices: [[-80, -216], [-8, -216], [-8, -86], [-80, -86]]
+    gates:
+      - {id: GATE-WN-H04, axis: z, fixed: -8, min: -97, max: -93, road: R01}
+      - {id: GATE-WN-H05, axis: z, fixed: -8, min: -147, max: -143, road: R01}
+      - {id: GATE-WN-H06, axis: z, fixed: -8, min: -197, max: -193, road: R01}
+      - {id: GATE-WN-LANE, axis: z, fixed: -80, min: -172, max: -168, road: R02}
+
+  - id: BLK-EN
+    name: East North Homes
+    kind: block
+    parent: SITE
+    vertices: [[8, -216], [80, -216], [80, -86], [8, -86]]
+    gates:
+      - {id: GATE-EN-H10, axis: z, fixed: 8, min: -97, max: -93, road: R01}
+      - {id: GATE-EN-H11, axis: z, fixed: 8, min: -147, max: -143, road: R01}
+      - {id: GATE-EN-H12, axis: z, fixed: 8, min: -197, max: -193, road: R01}
+      - {id: GATE-EN-AVE, axis: z, fixed: 80, min: -172, max: -168, road: R03}
+
+  - id: PRJ-B02
+    name: Culinary Pavilion
+    kind: project
+    parent: SITE
+    vertices: [[-140, -125], [-84, -125], [-84, -66], [-140, -66]]
+    gates:
+      - {id: GATE-B02-EAST, axis: z, fixed: -84, min: -98, max: -92, road: R02}
+
+  - id: PRJ-B03
+    name: Service and Warehouse Compound
+    kind: project
+    parent: SITE
+    vertices: [[-30, -286], [30, -286], [30, -224], [-30, -224], [-30, -260], [-24, -260], [-24, -274], [-30, -274]]
+    gates:
+      - {id: GATE-B03-NORTH, axis: x, fixed: -224, min: -6, max: 6, road: SERVICE-DRIVE}
+    wall_segments:
+      - {from: [-24, -260], to: [-24, -274], description: existing warehouse wall is the boundary}
+
+  - id: PRJ-L01
+    name: Detention Pond and Ecology Walk
+    kind: project
+    parent: SITE
+    vertices: [[160, -280], [220, -280], [220, -220], [160, -220]]
+    gates:
+      - {id: GATE-L01-WEST, axis: z, fixed: 160, min: -252, max: -248, road: ECOLOGY-WALK}
+      - {id: GATE-L01-EAST, axis: z, fixed: 220, min: -254, max: -246, road: ECOLOGY-WALK}
+
+  - id: DIV-C01-SURFACE
+    name: Mountain Surface Operations
+    kind: division
+    parent: SITE
+    vertices: [[90, 135], [294, 135], [294, 231], [90, 231]]
+    gates:
+      - {id: GATE-C01-WEST, axis: z, fixed: 90, min: 168, max: 176, road: ARRIVAL-DRIVE}
+      - {id: GATE-C01-WEST-PUBLIC, axis: z, fixed: 90, min: 196, max: 204, road: ARRIVAL-DRIVE}
+
+  - id: GRID-W2
+    name: Design Lab and Maker Commons
+    kind: project
+    parent: SITE
+    future_project: false
+    vertices: [[-140, -60], [-84, -60], [-84, 15], [-140, 15]]
+    gates:
+      - {id: GATE-W2-EAST, axis: z, fixed: -84, min: -27, max: -20, road: R02}
+
+  - id: GRID-E2
+    name: Neighborhood Clubhouse and Walled Garden
+    kind: project
+    parent: SITE
+    future_project: false
+    vertices: [[88, -60], [140, -60], [140, 15], [88, 15]]
+    gates:
+      - {id: GATE-E2-WEST, axis: z, fixed: 88, min: -25, max: -20, road: R03}
+
+appearance:
+  field_block: minecraft:birch_fence
+  post_block: minecraft:smooth_quartz
+  post_cap: minecraft:smooth_quartz_slab
+  post_spacing: 8
+  gate_light: minecraft:sea_lantern
+  water_policy: reject

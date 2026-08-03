@@ -1,0 +1,194 @@
+# =====================================================================================================
+# Raven Rock Mountain Complex (Site R) — WORLDGUARD REGION DEFINITION  (integration/worldguard.yaml)
+# =====================================================================================================
+# REQUIRED PLUGIN: WorldGuard (with WorldEdit, its hard dependency).
+#
+# STATUS (rewritten 2026-07-25): **PARTLY APPLIED.** Live on the server right now, in world `world`:
+#
+#     region  raven_rock         x[-300,300] y[-64,61] z[-300,300]   priority 11   mob-spawning: deny
+#     region  raven_rock_shaft   x[193,207]  y[-12,64] z[-22,-8]     priority 20   mob-spawning: deny
+#
+#   Bounds are EXACTLY as defined below — the y61 cap and the shaft sub-region were adopted unchanged.
+#   ONLY `mob-spawning: deny` is set (OQ-3's second half). Every other flag below — build, block-break,
+#   block-place, the explosion/fire family, greeting/farewell — is STILL UNSET **deliberately**: the bots
+#   hold op, op bypasses WorldGuard build protection, so setting them now would protect nothing while
+#   making the site look guarded. They are the OQ-2 step and go on AFTER the de-op.
+#   The overworld name is confirmed `world` (resolves RR-WG02). See qa/oq3-worldguard.md.
+#
+# ORIGINAL STATUS NOTE (retained; its "WorldGuard is STILL ABSENT" claim is FALSE as of 2026-07-25):
+#   * The builder bots ARE now opped (level 4, confirmed in the server ops.json) — the earlier
+#     "bots are NOT opped" caveat in the planning/ files is OUTDATED. This matters here: opped players
+#     BYPASS WorldGuard build protection by default, so 'build: deny' will NOT lock out the opped
+#     builder bots (see RR-WG03).
+#   * PROTECTION MODEL — DECIDED (planning/open-questions OQ-2): builder bots stay opped DURING
+#     construction, then are DE-OPPED once the build completes, after which this region's 'build: deny'
+#     protects the museum normally. The de-op is a post-build operational step, NOT yet performed. The
+#     same decision applies to MSA (shared walk-through-museum profile).
+#   * BUT WorldGuard (and WorldEdit / Dynmap / EssentialsX / relay) is STILL ABSENT. The target server is
+#     stock Paper 1.21.x. This region protects NOTHING today — the "protected envelope" is a planning
+#     boundary only (site-plan.md §1).
+#   * Apply only once WorldGuard is installed AND the overworld name is confirmed. To load: merge into
+#     plugins/WorldGuard/worlds/<world>/regions.yml (or recreate via //commands), then reload.
+#
+# -----------------------------------------------------------------------------------------------------
+# PROVENANCE / HONESTY NOTE  (read before trusting the flags)
+# -----------------------------------------------------------------------------------------------------
+# The flag set is AUTHORED to mirror the MainStreet America (MSA) worldguard profile: a "walk-through
+# museum/showcase" — visitors may enter and use doors, but cannot build/grief, and the environment is
+# kept calm (no PvP, no explosions, no hostile mobs). All flag NAMES and VALUES are real WorldGuard 7.x
+# state flags. Region bounds are drawn VERBATIM from planning/coordinates.yaml; Raven Rock's interior is
+# classified (REF-015) so all geometry is creative approximation.
+#
+# SUBSURFACE Y-RANGE: Unlike MSA (a surface build), Raven Rock is entirely UNDERGROUND. Its geometry
+# occupies y-18 (deepest reservoir sump) to y40 (cavern ceilings). The main region below covers the
+# subsurface column from the world floor up to y61 — the top of the greenstone rock buffer, one block
+# BELOW MSA's y62 foundation — so it protects the caverns and the rock roof over them WITHOUT reaching
+# into MSA's y62->y79 surface band. The single deliberate-liberty vertical access shaft (which rises to
+# the surface at y64) is a nested higher-priority sub-region so its narrow column is covered up to the
+# head-house without extending the whole envelope into the surface band.
+# =====================================================================================================
+
+regions:
+
+  # --- Main region: the sub-surface envelope (caverns + rock buffer), below MSA's foundation ---------
+  raven_rock:
+    type: cuboid
+    priority: 11                 # just above MSA's region (priority 10) so RR flags win in the subsurface overlap
+    min:
+      x: -300
+      y: -64                     # 1.21 world floor
+      z: -300
+    max:
+      x: 300
+      y: 61                      # top of the greenstone rock buffer; ONE BELOW MSA's y62 foundation (no surface overlap)
+      z: 300
+
+    # --- FLAGS (authored; mirrors the MSA walk-through-museum profile) -----------------------------
+    # Intent: visitors may enter the complex, move freely, and operate doors/gates, but cannot alter the
+    # build; explosions, fire spread and hostile mobs are suppressed so the reconstruction is preserved.
+    flags:
+      # Build / grief protection
+      build: deny                # non-members cannot place or break anything (opped bots bypass — see RR-WG03)
+      block-break: deny
+      block-place: deny
+      interact: allow            # visitors CAN use doors, blast-door gates, buttons, trapdoors
+      chest-access: deny         # no container looting
+      use: allow                 # levers/buttons/doors usable by visitors
+      item-frame-rotation: deny
+      # Combat / safety
+      pvp: deny
+      mob-damage: deny           # ambient mobs cannot hurt visitors
+      damage-animals: deny
+      # Environment preservation (critical in a sealed underground build — no natural light)
+      mob-spawning: deny         # keep the dark caverns clear of hostile spawns
+      creeper-explosion: deny
+      other-explosion: deny
+      tnt: deny
+      ghast-fireball: deny
+      wither-damage: deny
+      enderman-grief: deny
+      fire-spread: deny
+      lava-fire: deny
+      lighter: deny              # no flint-and-steel ignition
+      ice-form: deny
+      ice-melt: deny
+      snow-fall: deny
+      snow-melt: deny
+      vine-growth: deny
+      # Movement / presence
+      entry: allow
+      exit: allow
+      passthrough: allow
+      # Signage shown at the boundary (honest framing for visitors)
+      greeting: "&2Welcome to &aRaven Rock Mountain Complex (Site R)&2 — the subsurface 'underground Pentagon' reconstruction beneath MainStreet America. &7Site R's interior is classified: every cavern & building here is our invented interpretation, not a real map."
+      farewell: "&7Leaving Raven Rock. Thanks for visiting an imaginative reconstruction of a public landmark."
+
+    # No owners/members are pre-seeded. Note: the builder bots are now OPPED (level 4), so they already
+    # bypass this region and 'build: deny' will NOT lock them out. Still seed the human build crew's and
+    # admins' UUIDs at apply-time so non-op editors are not blocked. (See RR-WG03.)
+    owners:
+      unique-ids: []
+      groups: []
+    members:
+      unique-ids: []
+      groups: []
+
+  # --- Nested sub-region: the Vertical Access Shaft column (RR-Z5), up to the surface head-house ------
+  # Covers the narrow shaft up to y64 without extending the whole envelope into MSA's surface band. The
+  # shaft sits at x[193,207], z[-22,-8] — OUTSIDE MSA's x-footprint [-70,+70] and east of every MSA planned
+  # surface element (relocated from the former (120,60) per planning/open-questions OQ-1) — so it pierces
+  # only rock/greenbelt.
+  raven_rock_shaft:
+    type: cuboid
+    priority: 20                 # higher than the main region and MSA so the shaft column resolves to RR flags
+    min:
+      x: 193
+      y: -12                     # shaft base (connects Cavern A spur)
+      z: -22
+    max:
+      x: 207
+      y: 64                      # surface head-house N9 at the MSA surface plane
+      z: -8
+    flags:
+      build: deny
+      block-break: deny
+      block-place: deny
+      interact: allow
+      use: allow
+      pvp: deny
+      mob-spawning: deny
+      other-explosion: deny
+      creeper-explosion: deny
+      tnt: deny
+      fire-spread: deny
+      entry: allow
+      exit: allow
+      passthrough: allow
+    owners:
+      unique-ids: []
+      groups: []
+    members:
+      unique-ids: []
+      groups: []
+
+# =====================================================================================================
+# ASSUMPTIONS & CROSS-CHECK NOTES
+# =====================================================================================================
+assumptions:
+  - id: RR-WG01
+    topic: Flags authored (mirror MSA profile)
+    detail: >-
+      The flag set is a reasoned "walk-through museum" profile mirroring MSA's worldguard.yaml, not a
+      transcription of any canonical brief. If a real brief later specifies exact flags, replace wholesale.
+    severity: medium
+  - id: RR-WG02
+    topic: World name + region file path
+    detail: >-
+      RESOLVED 2026-07-25. The overworld IS named 'world'; both regions now live in
+      plugins/WorldGuard/worlds/world/regions.yml on the Paper host at 10.80.13.14.
+    severity: resolved
+  - id: RR-WG03
+    topic: Opped bots bypass protection; empty owners/members
+    detail: >-
+      UPDATED for current reality: the builder bots are now opped (level 4, per ops.json), and opped
+      players bypass WorldGuard region protection by default — so 'build: deny' will NOT lock the bots
+      out (the opposite of the old un-opped concern). The remaining risk is NON-op human editors: seed
+      the build crew's + admins' UUIDs into members/owners at apply-time, or leave the region unapplied
+      until the build is finished. Consider setting the bots' op back to a lower level, or relying on
+      members instead of op, if strict region enforcement is later wanted.
+    severity: medium
+  - id: RR-WG04
+    topic: Subsurface Y-bounds (no MSA overlap)
+    detail: >-
+      Main region caps at y61 (one below MSA's y62 foundation) so it protects the caverns (y-18..y40) and
+      the rock buffer without reaching MSA's y62..y79 surface band. The shaft sub-region carries the one
+      column that legitimately reaches the surface (up to y64). This mirrors the vertical-stacking
+      discipline in site-plan.md §1.1 — the two builds never overlap in Y.
+    severity: low
+  - id: RR-WG05
+    topic: Overlap with the MSA region in the subsurface
+    detail: >-
+      If MSA's region (full column y-64..320, priority 10) is also applied, it overlaps Raven Rock in the
+      subsurface. RR is priority 11 (shaft 20) so RR flags win there; both deny build regardless. Harmless,
+      but recorded.
+    severity: low

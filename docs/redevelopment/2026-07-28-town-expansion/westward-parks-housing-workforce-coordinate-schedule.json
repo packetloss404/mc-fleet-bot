@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 1,
+  "status": "SURVEY_MASTERPLAN_NOT_A_RELEASE",
+  "generatedAtUtc": "2026-07-28T06:40:00Z",
+  "coordinateConvention": {
+    "north": "-Z",
+    "bounds": "inclusive",
+    "surfaceSupport": "highest non-air support cell in the immutable snapshot"
+  },
+  "evidence": {
+    "snapshot": {
+      "path": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region",
+      "sha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999"
+    },
+    "database": {
+      "path": "data/world-map.db",
+      "sha256AtSurvey": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+      "mode": "read-only"
+    },
+    "maps": [
+      "docs/redevelopment/2026-07-28-town-expansion/evidence/westlight-west-parks-current-map.png",
+      "docs/redevelopment/2026-07-28-town-expansion/evidence/southwest-ravensreach-current-map.png"
+    ]
+  },
+  "westlightPairedParks": {
+    "sharedBoulevard": {
+      "id": "WL-WEST-BOULEVARD",
+      "bounds": {
+        "minX": -640,
+        "maxX": -429,
+        "minZ": -479,
+        "maxZ": -471
+      },
+      "role": "nine-block ceremonial extension of High Street with a seven-block clear carriageway and distinct pedestrian/greenway edge",
+      "releaseGate": "Fresh exact grade, protected-object, fluid and normal-walk survey; this is an alignment envelope, not permission to flatten terrain."
+    },
+    "sharedArrival": {
+      "id": "WL-PARKS-ARRIVAL",
+      "bounds": {
+        "minX": -605,
+        "maxX": -555,
+        "minZ": -479,
+        "maxZ": -463
+      },
+      "surfaceSurvey": {
+        "columns": 867,
+        "waterColumns": 6,
+        "supportY": {
+          "p10": 62,
+          "median": 66,
+          "p90": 69,
+          "max": 70
+        }
+      },
+      "rule": "One orientation court, two visibly independent gates, no shared queue that can block either park's emergency return."
+    },
+    "dryPark": {
+      "id": "WL-DRY-PARK",
+      "bounds": {
+        "minX": -640,
+        "maxX": -520,
+        "minZ": -550,
+        "maxZ": -480
+      },
+      "surfaceSurveyStep": 2,
+      "sampleCount": 2196,
+      "missingSamples": 0,
+      "waterSamples": 2,
+      "waterPercent": 0.1,
+      "supportY": {
+        "p10": 69,
+        "median": 76,
+        "p90": 99,
+        "max": 115
+      },
+      "decision": "Use the grade as a hillside park. No district-scale flat pad.",
+      "program": [
+        "south-facing gate street",
+        "terrain-following signature coaster",
+        "family ride grove",
+        "indoor all-weather attraction hall",
+        "performance lawn and food court",
+        "crater overlook",
+        "screened maintenance loop",
+        "independent emergency gate"
+      ]
+    },
+    "waterPark": {
+      "id": "WL-WATER-PARK",
+      "bounds": {
+        "minX": -640,
+        "maxX": -520,
+        "minZ": -462,
+        "maxZ": -360
+      },
+      "surfaceSurveyStep": 2,
+      "sampleCount": 3172,
+      "missingSamples": 0,
+      "waterSamples": 2080,
+      "waterPercent": 65.6,
+      "supportY": {
+        "p10": 61,
+        "median": 62,
+        "p90": 64,
+        "max": 72
+      },
+      "decision": "Pile-supported decks and independently contained attraction vessels only; natural water is landscape, not a compliant pool.",
+      "program": [
+        "north-facing gate and changing building",
+        "contained wave basin",
+        "contained lazy-river circuit",
+        "two slide towers with explicit runouts",
+        "children's splash garden",
+        "cabanas and shaded deck",
+        "first aid and family support",
+        "isolated filtration and maintenance yard",
+        "independent emergency gate"
+      ]
+    }
+  },
+  "craterHousing": {
+    "publicEdgeRule": "Keep the complete crater quay/green loop public. Housing front doors face a public street or mews; no private lot reaches the water.",
+    "southNeighborhood": {
+      "id": "WL-HAMPTON-SOUTH",
+      "bounds": {
+        "minX": -520,
+        "maxX": -475,
+        "minZ": -550,
+        "maxZ": -515
+      },
+      "columns": 1656,
+      "waterColumns": 0,
+      "vegetatedColumns": 1640,
+      "supportY": {
+        "min": 58,
+        "p10": 69,
+        "median": 73,
+        "p90": 75,
+        "max": 76
+      },
+      "type": "three-story shingle-style courtyard and terrace buildings",
+      "parking": "attached rear-loaded garages subject to the controlling attached-garage standard"
+    },
+    "westNeighborhoodStudy": {
+      "id": "WL-HAMPTON-WEST-STUDY",
+      "bounds": {
+        "minX": -540,
+        "maxX": -500,
+        "minZ": -620,
+        "maxZ": -555
+      },
+      "columns": 2706,
+      "waterColumns": 208,
+      "supportY": {
+        "p10": 63,
+        "median": 69,
+        "p90": 73,
+        "max": 75
+      },
+      "status": "NO_BUILD_UNTIL_DRY_SUBPARCELS_ARE_EXACTLY_CUT",
+      "rule": "Do not use the rectangular study envelope as a building pad. Subdivide around the 208 wet columns and preserve the crater green edge."
+    }
+  },
+  "southwestRavensreachHousing": {
+    "projectA": {
+      "id": "RR-AFFORDABLE-NORTH",
+      "bounds": {
+        "minX": -306,
+        "maxX": -259,
+        "minZ": -298,
+        "maxZ": -275
+      },
+      "columns": 1152,
+      "waterColumns": 0,
+      "vegetatedColumns": 1023,
+      "supportY": {
+        "min": 75,
+        "p10": 78,
+        "median": 84,
+        "p90": 87,
+        "max": 90
+      },
+      "type": "stepped three-to-four-story courtyard block"
+    },
+    "sharedCourt": {
+      "id": "RR-AFFORDABLE-CENTRAL-COURT",
+      "bounds": {
+        "minX": -306,
+        "maxX": -259,
+        "minZ": -274,
+        "maxZ": -259
+      },
+      "columns": 768,
+      "waterColumns": 0,
+      "vegetatedColumns": 754,
+      "supportY": {
+        "min": 73,
+        "p10": 78,
+        "median": 82,
+        "p90": 85,
+        "max": 89
+      },
+      "designSupportY": 82,
+      "program": [
+        "shared play and event lawn",
+        "community room threshold",
+        "visible entries from both projects",
+        "seating and shade",
+        "accessible switchback route",
+        "service access kept outside the court"
+      ]
+    },
+    "projectB": {
+      "id": "RR-AFFORDABLE-SOUTH",
+      "bounds": {
+        "minX": -306,
+        "maxX": -259,
+        "minZ": -258,
+        "maxZ": -235
+      },
+      "columns": 1152,
+      "waterColumns": 0,
+      "mudColumns": 390,
+      "supportY": {
+        "min": 60,
+        "p10": 64,
+        "median": 76,
+        "p90": 81,
+        "max": 82
+      },
+      "type": "two terraced wings stepping down the natural slope",
+      "releaseGate": "Geotechnical/retaining-wall design and a bidirectional accessible path are mandatory; a flat slab is rejected."
+    }
+  },
+  "staffConnection": {
+    "id": "RR-MSA-STAFF-CONNECTION",
+    "status": "PROVISIONAL_DRY_CONTOUR_ALIGNMENT",
+    "widthBlocks": 5,
+    "keyframes": [
+      [-111, 68, -332],
+      [-110, 68, -317],
+      [-94, 68, -305],
+      [-74, 68, -294],
+      [-63, 68, -279],
+      [-63, 68, -261],
+      [-81, 68, -249],
+      [-81, 65, -219],
+      [-82, 65, -219]
+    ],
+    "existingRoadContinuation": {
+      "name": "MainStreet West Lane",
+      "from": [-82, 65, -219],
+      "to": [-82, 65, 85]
+    },
+    "releaseGate": "Fresh exact five-block corridor/halo survey, protected-feature comparison, lighting plan and live normal-walk test in both directions."
+  },
+  "staffLounge": {
+    "id": "MSA-B01-STAFF-LOUNGE",
+    "bounds": {
+      "minX": -94,
+      "maxX": -73,
+      "minY": 64,
+      "maxY": 76,
+      "minZ": 90,
+      "maxZ": 121
+    },
+    "relationship": "Attached northwest pavilion to B01 Guest & Design Center; preserves the existing B01 room program.",
+    "pathDoor": [-82, 65, 90],
+    "internalConnectionCandidate": [-72, 65, 104],
+    "surfaceSurvey": {
+      "waterColumns": 0,
+      "dominantSupport": "minecraft:dirt",
+      "supportY": {
+        "p10": 63,
+        "median": 63,
+        "p90": 68,
+        "max": 69
+      }
+    },
+    "program": [
+      "breakroom",
+      "staff kitchen",
+      "lockers and showers",
+      "quiet room",
+      "dispatch desk",
+      "secure staff vestibule"
+    ]
+  }
+}

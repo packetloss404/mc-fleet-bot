@@ -1,0 +1,107 @@
+# Raven Rock Mountain Complex (Site R) — Minecraft Reconstruction: DEFECT REGISTER
+# Deliverable: qa/defects.yaml
+# Companion to: qa/qa-report.md  (PC/BU/SP/CL/GE/DS inspection items + definition-of-done gates)
+#
+# ---------------------------------------------------------------------------------------------------
+# STATE: EMPTY / nothing built yet.
+#        The planning set is complete (references/ + planning/site-plan.md [master] + coordinates.yaml
+#        + buildings.yaml + palettes.yaml), but NO block of Raven Rock has been placed. A build defect is
+#        an AS-BUILT deviation; with nothing built, there is nothing to record. This register stays empty
+#        until construction begins, then inspections append records using the schema below.
+# ---------------------------------------------------------------------------------------------------
+#
+# PURPOSE
+#   A build defect is any as-built deviation found by a qa-report.md §5 inspection item (PC/BU/SP/CL/GE/DS)
+#   or the §6 acceptance matrix. Each defect is one record with the schema below. Definition-of-done gate
+#   DoD-03 requires zero open blocker/major defects to ship.
+#
+#   NOTE: pre-build PLANNING notes are NOT build defects and are NOT recorded here. Unlike MSA — whose
+#   planning set carried a GRID/OVAL coordinate fork that needed reconciliation — Raven Rock used a SINGLE
+#   spatial owner (site-plan.md is master; coordinates.yaml and buildings.yaml restate and AGREE with it).
+#   The qa-report.md §3 internal-consistency audit CONFIRMED that agreement (no fork), so there is no
+#   open planning inconsistency to log. Any future planning inconsistency is tracked as an open PC item in
+#   qa-report.md §3/§8 — never here. This register is for AS-BUILT findings only.
+#
+# ---------------------------------------------------------------------------------------------------
+# THE CATEGORY-ERROR GUARD (why this register will never hold certain "defects")
+#   Raven Rock's interior is CLASSIFIED and legally undocumentable since 2007 (references/manifest.yaml
+#   REF-015/016/017). There is NO public interior ground truth. A record must therefore NEVER be a
+#   "fails historical interior accuracy" finding — no such fact exists to fail against, and pretending one
+#   does would be dishonest. Valid defects are: planning-consistency-on-the-as-built (PC), buildability
+#   (BU), spatial integrity / envelope / Y-range / MSA-buffer (SP), confidence-labeling integrity (CL),
+#   geology fidelity (GE — the one evidence-anchored fidelity family), and disclosure signage (DS).
+# ---------------------------------------------------------------------------------------------------
+#
+# RECORD SCHEMA (every field required unless marked optional)
+#
+#   id:          string  - unique, format "DEF-###" (zero-padded, assigned in discovery order).
+#   building:    string  - the structure/element the defect is in. Use a canonical id from buildings.yaml
+#                          /coordinates.yaml (RR-B1..RR-B4, or a zone RR-Z1..RR-Z5), or "SITE" for
+#                          site-wide / circulation / signage / buffer-level defects, or "MULTI" if it
+#                          spans several structures.
+#   family:      enum    - which qa-report.md §5 family the defect belongs to:
+#                            PC (planning-consistency) | BU (buildability) | SP (spatial-integrity) |
+#                            CL (confidence-labeling)  | GE (geology)      | DS (disclosure-signage).
+#   severity:    enum    - one of: blocker | major | minor | cosmetic
+#                            blocker  = violates a VERIFIED fact (e.g. granite in the rock body), breaks
+#                                       walkability, breaches the envelope, enters MSA's y62->y79 band,
+#                                       breaches the ~20-block buffer, is non-vanilla / op-only, or omits
+#                                       mandatory disclosure signage — i.e. fails a DoD gate.
+#                            major    = clear failure of a §5 item; must fix before ship.
+#                            minor    = small deviation within a forgiving item; fix if time allows.
+#                            cosmetic = visual nitpick with no functional/accuracy/honesty impact.
+#   description: string  - what is wrong, where (coords), and which qa-report item it fails
+#                          (e.g. "fails SP-02 / PC-01"). Be concrete and coordinate-anchored. NEVER phrase
+#                          a defect as a failure of undocumentable interior history (see category-error guard).
+#   found_by:    string  - who/what found it: a reviewer/agent name, or a verification method tag from
+#                          qa-report.md §4 (M1 F3 | M2 human-op fly | M3 terrain-scan API | M4 world-model |
+#                          M5 bot walkability | M6 prismarine-viewer | M7 tape).
+#   status:      enum    - one of: pending | open | in_progress | fixed | verified | wontfix | deferred
+#                            pending     = logged, not yet triaged.
+#                            open        = triaged, awaiting fix.
+#                            in_progress = fix underway.
+#                            fixed       = fix applied, awaiting re-inspection.
+#                            verified    = re-inspected and confirmed resolved (closes the defect).
+#                            wontfix     = accepted as-is with reviewer sign-off.
+#                            deferred    = postponed with reviewer sign-off (see resolution).
+#   resolution:  string  - how it was/will be resolved; empty string "" while unresolved.
+#
+# ---------------------------------------------------------------------------------------------------
+# TEMPLATE (copy for each new defect once construction begins). Every newly logged defect starts at
+# status: pending. Example record shown commented-out below:
+#
+#   - id: DEF-001
+#     building: RR-B1              # Command & Operations Center (ANMCC)
+#     family: SP
+#     severity: blocker
+#     description: >-
+#       A block scans into MSA's protected band at (x, 63..70, z) above Cavern A — Raven Rock geometry
+#       must never enter y62..y79. Fails SP-02 (no block in MSA's vertical band). Buffer breach.
+#     found_by: M3 terrain-scan API
+#     status: pending
+#     resolution: ""
+# ---------------------------------------------------------------------------------------------------
+
+schema_version: "1.0"
+
+# Enumerations (authoritative; validators may key off these).
+enums:
+  family:   [PC, BU, SP, CL, GE, DS]
+  severity: [blocker, major, minor, cosmetic]
+  status:   [pending, open, in_progress, fixed, verified, wontfix, deferred]
+  building_ids:
+    - RR-B1   # Command & Operations Center (ANMCC)
+    - RR-B2   # Signal & Communications Center
+    - RR-B3   # Quarters, Dining & Medical
+    - RR-B4   # Power & Ventilation Plant
+    - RR-Z1   # Central Operations Cavern (Cavern A) + rotunda N10 + spring array N8
+    - RR-Z2   # Habitation & Support Cavern (Cavern B)
+    - RR-Z3   # Utility & Reservoir Cavern (Cavern C) + reservoirs N7
+    - RR-Z4   # Portal & Blast-Vestibule Network (T1-T4, C1-C2, N1/N2)
+    - RR-Z5   # Vertical Access Shaft + head-house N9 (deliberate liberty)
+    - SITE    # site-wide / circulation / signage / buffer / envelope
+    - MULTI   # spans several structures
+
+# The register. EMPTY — nothing has been built, so there are no as-built defects to record.
+# Populate on the first inspection after construction begins; each record cites a qa-report.md §5 item.
+defects: []

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "id": "ianlan-poi-coordinate-directory-qa-2026-07-29",
+  "generatedAt": "2026-07-29T00:36:45.119Z",
+  "status": "PASS",
+  "checks": {
+    "sourceCount": true,
+    "allSourceRecordsPresent": true,
+    "uniqueIds": true,
+    "categoryPartition": true,
+    "allCategoryGroupsPresent": true,
+    "allTpCommandsCopyReady": true,
+    "relativeYIsExplicit": true,
+    "portalCount": true,
+    "csvCount": true,
+    "htmlIsSearchable": true,
+    "sourceSnapshotBound": true,
+    "pdfPresent": true,
+    "pdfPagesPresent": true
+  },
+  "counts": {
+    "records": 1215,
+    "active": 1214,
+    "retired": 1,
+    "exactOrAuthoredReferences": 202,
+    "derivedReferences": 1013,
+    "relativeYCommands": 85,
+    "projects": 8,
+    "kinds": 14,
+    "categories": 6,
+    "byCategory": {
+      "surface-builds": 109,
+      "remote-sites": 26,
+      "passageway-access": 299,
+      "route-station-infrastructure": 713,
+      "anomalies-controls": 66,
+      "candidate-parcels": 2
+    },
+    "byProject": {
+      "approach-road": 2,
+      "mainstreet-america": 631,
+      "raven-rock": 81,
+      "ravensgate": 13,
+      "ravensreach": 63,
+      "town-expansion-r1": 340,
+      "westlight-district": 59,
+      "westlight-venue": 26
+    },
+    "byKind": {
+      "building": 75,
+      "custom": 392,
+      "district": 19,
+      "driveway": 6,
+      "fence": 14,
+      "landmark": 33,
+      "landscape": 13,
+      "lighting": 55,
+      "parking": 242,
+      "property": 1,
+      "road": 29,
+      "room": 322,
+      "sidewalk": 12,
+      "utility": 2
+    },
+    "pdfPages": 135
+  },
+  "truthBoundary": {
+    "source": "Every durable world_features record in data/world-map.db.",
+    "tp": "Copy-ready /tp commands use catalog entrances or exact points where available, path starts for routes, and clearly labeled derived centers for area geometry. They are references, not safety-validated arrivals.",
+    "missingY": "When the catalog has no narrow usable Y value, the command uses ~ to retain the operator current elevation instead of inventing one.",
+    "worldEdits": "None. This report is read-only.",
+    "passageWay": "PassageWay is the proper name of the IANLAN underground tunnel system."
+  }
+}

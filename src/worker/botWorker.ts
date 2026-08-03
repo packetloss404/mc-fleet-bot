@@ -14,6 +14,9 @@ import { PlayerIntentModelProxy } from './proxies/PlayerIntentModelProxy';
 import { CultureProxy } from './proxies/CultureProxy';
 import { BotCommsProxy } from './proxies/BotCommsProxy';
 import { logger } from '../util/logger';
+import { walkTo } from '../actions/walkTo';
+import { followPlayer } from '../actions/followPlayer';
+import { getNearestProtectedCenter } from '../actions/geofence';
 
 interface WorkerData {
   botName: string;
@@ -264,6 +267,119 @@ ipc.onCommand((type, cmdData) => {
       }
       break;
     }
+
+    // --- Movement commands -------------------------------------------------
+    // These were dispatched by CommandCenter but had NO case here, and the
+    // switch had no `default`, so they were silently discarded: the HTTP layer
+    // returned {"success":true,"status":"succeeded"} and the bot never moved.
+    // Verified live before the fix — POST /api/bots/Scout/walkto completed in
+    // 5ms and Scout did not move.
+    case 'walkTo': {
+      const { x, y, z } = cmdData || {};
+      if (x == null || y == null || z == null) {
+        logger.warn({ bot: data.botName, cmdData }, 'walkTo ignored: missing coordinate');
+        break;
+      }
+      const range = cmdData?.range == null ? 2 : Number(cmdData.range);
+      if (!Number.isFinite(range) || range < 0 || range > 4) {
+        logger.warn({ bot: data.botName, cmdData }, 'walkTo ignored: invalid range');
+        break;
+      }
+      const bot = (instance as any).bot;
+      if (!bot) { logger.warn({ bot: data.botName }, 'walkTo ignored: no bot'); break; }
+      const target = {
+        x: Number(x),
+        y: Number(y),
+        z: Number(z),
+        range,
+      };
+      instance.setControlledWalkStatus({
+        status: 'running',
+        target,
+        updatedAt: Date.now(),
+      });
+      walkTo(bot, Number(x), Number(y), Number(z), range)
+        .then((r) => {
+          instance.setControlledWalkStatus({
+            status: r?.success ? 'succeeded' : 'failed',
+            target,
+            updatedAt: Date.now(),
+            message: r?.message,
+          });
+          logger.info({ bot: data.botName, x, y, z, range, ok: r?.success }, 'walkTo finished');
+        })
+        .catch((err) => {
+          instance.setControlledWalkStatus({
+            status: 'failed',
+            target,
+            updatedAt: Date.now(),
+            message: err?.message ?? 'walkTo failed',
+          });
+          logger.warn({ bot: data.botName, err: err?.message }, 'walkTo failed');
+        });
+      break;
+    }
+    case 'follow': {
+      const playerName = cmdData?.playerName;
+      const bot = (instance as any).bot;
+      if (!playerName || !bot) {
+        logger.warn({ bot: data.botName, cmdData }, 'follow ignored: missing playerName or bot');
+        break;
+      }
+      followPlayer(bot, playerName)
+        .then((r) => logger.info({ bot: data.botName, playerName, ok: r?.success }, 'follow finished'))
+        .catch((err) => logger.warn({ bot: data.botName, err: err?.message }, 'follow failed'));
+      break;
+    }
+    case 'returnToBase': {
+      const bot = (instance as any).bot;
+      if (!bot) { logger.warn({ bot: data.botName }, 'returnToBase ignored: no bot'); break; }
+      // "Base" is the nearest shelter-flagged protected zone — the same anchor
+      // GoalGenerator uses as the night muster point, so return-to-base and
+      // dusk homing agree on where home is.
+      const p = bot.entity?.position;
+      const home = p ? getNearestProtectedCenter(Math.floor(p.x), Math.floor(p.z)) : null;
+      if (!home) {
+        logger.warn(
+          { bot: data.botName },
+          'returnToBase ignored: no shelter-flagged protectedZone configured',
+        );
+        break;
+      }
+      walkTo(bot, home.x, home.y, home.z)
+        .then((r) => logger.info({ bot: data.botName, home, ok: r?.success }, 'returnToBase finished'))
+        .catch((err) => logger.warn({ bot: data.botName, err: err?.message }, 'returnToBase failed'));
+      break;
+    }
+    case 'unstuck': {
+      const bot = (instance as any).bot;
+      if (!bot) { logger.warn({ bot: data.botName }, 'unstuck ignored: no bot'); break; }
+      try {
+        bot.pathfinder?.stop();
+        bot.clearControlStates();
+        // Short jump-forward nudge to break out of a corner or a 1-block lip.
+        bot.setControlState('jump', true);
+        bot.setControlState('forward', true);
+        setTimeout(() => {
+          try { bot.clearControlStates(); } catch {}
+        }, 600);
+        logger.info({ bot: data.botName }, 'unstuck nudge issued');
+      } catch (err: any) {
+        logger.warn({ bot: data.botName, err: err?.message }, 'unstuck failed');
+      }
+      break;
+    }
+
+    default:
+      // The absence of this default is what let walkTo/follow/returnToBase/
+      // unstuck/equipBest/depositInventory disappear without a trace. Anything
+      // still unimplemented (equipBest, depositInventory) now says so in the
+      // log instead of being silently swallowed.
+      logger.warn(
+        { bot: data.botName, type },
+        'Worker received a command with no handler — ignoring',
+      );
+      break;
   }
 });
 

@@ -38,3 +38,8 @@ diagnostics/
 
 # Generated town schematics (per-town runtime artifacts)
 schematics/town_*/
+
+# Python bytecode from scripts/
+__pycache__/
+*.pyc
+data/buildops/

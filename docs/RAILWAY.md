@@ -175,11 +175,14 @@ bot there first (e.g. an explorer), then re-scan.
   at the x1664/x1666 crossings, and the hub-east cells (x1701–1702 @z180) and palace
   cells (x1687, z181–182) are walkway slabs. Carts require a walk-transfer at every
   junction. A junction-rework job is needed if through-carting is ever wanted.
-- **Undocumented N-S rail line at x1665** (Y52 on stone_bricks, powered at z120/z128,
-  spans at least z105→z133), crossing the z117/z126/z133 spokes. Its west aisle is
-  **flooded** (water at Y52, x1664 z108–117, spilling into the z117 spoke's north
-  walkway). Ceiling is sealed; source is inside the tunnel north of z114. Needs a
-  separate drain+seal job. Pre-existing — not caused by the cleanup.
+- **x1665 N-S line: REMOVED (2026-07-02 second pass; see docs/STEALTH-SURFACE.md).**
+  It was flooded from its north mouth, which opened into a surface pond bottom at
+  z100–104. The whole orphaned spur (x1663–1667, Y52–57, z103–176) was
+  displacement-filled with stone, the sub-floor water pocket (Y44–51) stoned out, and
+  the pond mouth sealed. A 3-cell stub alcove (z177–179) remains on the west trunk's
+  north wall. The orphan ladder shaft head at (1656,257) was capped and grassed.
+  Still standing (orphaned, removal-safe later): west trunk z180 (x1610–1699) and the
+  x1610 distributor.
 - **Registry/docs drift (in-world truth):** gnomo statue spans west to **x1642**;
   villager statue ~(1627–1630, z111–115); totem pole ~(1629–1631, z124–132); the
   parrot statue is **absent** at (1691,75,180) — its riser was replaced by the

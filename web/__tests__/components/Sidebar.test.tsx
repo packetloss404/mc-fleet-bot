@@ -2,31 +2,42 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { Sidebar } from '@/components/Sidebar';
 import { usePathname } from 'next/navigation';
+import { useBotStore } from '@/lib/store';
 
 // Mock the store
 vi.mock('@/lib/store', () => ({
-  useBotStore: vi.fn((selector: any) => {
+  useBotStore: vi.fn(),
+  useControlStore: vi.fn((selector: any) => {
     const state = {
-      connected: true,
-      botList: [{ name: 'Bot1' }, { name: 'Bot2' }],
-      playerList: [
-        { name: 'Steve', isOnline: true },
-        { name: 'Alex', isOnline: false },
-      ],
-      unreadChats: 0,
+      selectedBotIds: new Set<string>(),
     };
     return selector(state);
   }),
 }));
 
+const defaultBotState = {
+  connected: true,
+  botList: [{ name: 'Bot1' }, { name: 'Bot2' }],
+  playerList: [
+    { name: 'Steve', isOnline: true },
+    { name: 'Alex', isOnline: false },
+  ],
+  unreadChats: 0,
+};
+
+const mockBotStore = (state: typeof defaultBotState) => {
+  (useBotStore as any).mockImplementation((selector: any) => selector(state));
+};
+
 describe('Sidebar', () => {
   beforeEach(() => {
     vi.mocked(usePathname).mockReturnValue('/');
+    mockBotStore(defaultBotState);
   });
 
-  it('renders the DyoCraft brand', () => {
+  it('renders the MC Fleet brand', () => {
     render(<Sidebar />);
-    expect(screen.getByText('DyoCraft')).toBeInTheDocument();
+    expect(screen.getByText('MC Fleet')).toBeInTheDocument();
     expect(screen.getByText('Control Panel')).toBeInTheDocument();
   });
 
@@ -44,16 +55,7 @@ describe('Sidebar', () => {
   });
 
   it('shows Offline when disconnected', () => {
-    const { useBotStore } = require('@/lib/store');
-    useBotStore.mockImplementation((selector: any) => {
-      const state = {
-        connected: false,
-        botList: [],
-        playerList: [],
-        unreadChats: 0,
-      };
-      return selector(state);
-    });
+    mockBotStore({ connected: false, botList: [], playerList: [], unreadChats: 0 });
     render(<Sidebar />);
     expect(screen.getByText('Offline')).toBeInTheDocument();
   });
@@ -79,38 +81,20 @@ describe('Sidebar', () => {
   });
 
   it('shows unread chat badge when unreadChats > 0', () => {
-    const { useBotStore } = require('@/lib/store');
-    useBotStore.mockImplementation((selector: any) => {
-      const state = {
-        connected: true,
-        botList: [],
-        playerList: [],
-        unreadChats: 5,
-      };
-      return selector(state);
-    });
+    mockBotStore({ connected: true, botList: [], playerList: [], unreadChats: 5 });
     render(<Sidebar />);
     expect(screen.getByText('5')).toBeInTheDocument();
   });
 
   it('caps unread badge display at 9+', () => {
-    const { useBotStore } = require('@/lib/store');
-    useBotStore.mockImplementation((selector: any) => {
-      const state = {
-        connected: true,
-        botList: [],
-        playerList: [],
-        unreadChats: 15,
-      };
-      return selector(state);
-    });
+    mockBotStore({ connected: true, botList: [], playerList: [], unreadChats: 15 });
     render(<Sidebar />);
     expect(screen.getByText('9+')).toBeInTheDocument();
   });
 
   it('renders version in footer', () => {
     render(<Sidebar />);
-    expect(screen.getByText('DyoCraft v0.1.0')).toBeInTheDocument();
+    expect(screen.getByText('MC Fleet v0.1.0')).toBeInTheDocument();
   });
 
   it('navigates to correct paths', () => {

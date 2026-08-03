@@ -1,0 +1,675 @@
+# MainStreet America (Spring, TX) — Minecraft Reconstruction: MATERIAL PALETTE DOCUMENT
+# Deliverable: planning/palettes.yaml
+# Author role: planning engineer. Source of truth: ../references/manifest.yaml (READ FIRST).
+#
+# ===================================================================================================
+# PROVENANCE / HONESTY NOTE  (read before trusting any block choice here)
+# ===================================================================================================
+# The task cited "the luxury residential material list in section 11", "section 13" (landscaping) and
+# "section 15" (lighting) of a brief. NO brief file exists in this repository — only
+# ../references/manifest.yaml and ../references/README.md (confirmed; the same gap the coordinates.yaml
+# and site-plan.md authors recorded as CONFLICT-02 / the "no brief / section 17" note). There is no
+# "section 11/13/15" to transcribe. I therefore AUTHORED the section-11 master material list, the
+# section-13 landscaping palette and the section-15 lighting palette below, reasoned from the verified
+# manifest. Another agent cross-checking against a real brief should treat these palettes as my
+# reasoned construction, not a shared canonical list.
+#
+# THE GOVERNING TRUTH — REF-019 and the manifest unknowns:
+#   NO retrieved source documents the facade material, color, roof form, or window pattern of the
+#   Guest Center OR of any of the 12 homes. Only building SIZES, STORY COUNTS and STYLE NAMES are
+#   verified (REF-007, REF-009, REF-010, REF-017). Therefore EVERY block id assigned to a wall, roof,
+#   trim, window, door, foundation or accent below is a CREATIVE APPROXIMATION. The architectural
+#   STYLE NAME each palette is keyed to is verified (REF-017); the MATERIALS chosen to express that
+#   style are invented. A visitor sign must say so. Do not present any facade here as documented fact.
+#
+# CONFIDENCE VOCABULARY (inherited from the manifest; never upgraded):
+#   verified                           - primary/multi-source (here: only the STYLE NAMES / SIZES)
+#   high-confidence inference          - one good source / a strong read
+#   moderate-confidence reconstruction - assembled from snippets
+#   creative approximation             - no evidence; invented for the build (ALL facade materials)
+#
+# BLOCK-ID DISCIPLINE:
+#   Every block id used below was checked to be a real, currently-existing Minecraft Java 1.21 block.
+#   No invented ids; no removed/renamed blocks (e.g. "grass" the plant is written "short_grass", its
+#   1.20.3+ name). 1.21-era additions used here (verify present on the target 1.21.x server): the tuff
+#   family (polished_tuff, tuff_bricks), the copper build set (chiseled_copper, copper_grate,
+#   copper_bulb, copper_door, copper_trapdoor, cut_copper_stairs and weathered/exposed/oxidized
+#   variants). Blocks from 1.21.4+ (pale oak, resin) are DELIBERATELY AVOIDED for compatibility.
+# ===================================================================================================
+
+meta:
+  subject: MainStreet America home-design attraction, 18750 Interstate 45 N, Spring, TX 77373 (closed)
+  minecraft_version: "1.21.x"
+  block_palette_rule: vanilla-compatible only, no resource pack
+  site_conditions: >-
+    CORRECTED 2026-07-25 — the previous "no plugins / bots NOT opped" text was false. WorldEdit 7.4.0 and
+    WorldGuard 7.0.16 ARE installed; the bots ARE opped (level 4). Dynmap/BlueMap and Citizens are absent.
+    This remains a material manifest for bot-driven placement and nothing in it *depends* on // commands
+    or op. Region protection is partly active: `mainstreet_america` carries `mob-spawning: deny`; build
+    flags are not set (see ../../raven-rock/qa/oq3-worldguard.md).
+  facade_confidence_blanket: >-
+    creative approximation — REF-019. Style names & sizes verified (REF-017); all materials invented.
+  building_set_note: >-
+    The "fourteen buildings" are keyed to coordinates.yaml's `buildings:` set exactly: Guest Center
+    (B01) + Retail/Cooking School (B02) + the 12 showcase homes (H01–H12) = 14. The Warehouse (N01)
+    is classified in coordinates.yaml under notable_locations, not buildings (see its CONFLICT-01), so
+    it is NOT one of the fourteen; I still provide its palette at the end as a flagged extra so a
+    builder is not left without materials for a real, verified structure.
+
+# ===================================================================================================
+# GENERAL SITE PALETTE  (the six items given by the project owner, "exactly as given")
+# These cover paving, edges and ground cover across ALL zones; individual buildings override locally.
+# ===================================================================================================
+site_palette:
+  asphalt:
+    intent: dark roadway paving — the frontage road, entrance drive, service route, loop carriageway
+    primary: black_concrete
+    alternates: [gray_concrete, cyan_terracotta]   # gray_concrete for sun-faded lanes
+    confidence: creative approximation
+    note: >-
+      Real drives were asphalt (dark). Distinct from the PARKING FIELD, which the sources describe as
+      "concrete" (pale) — see sidewalks/curbs below and coordinates.yaml zone 2. Use light_gray_concrete
+      or smooth_stone for the ~100,000 SF concrete parking apron, black_concrete for the asphalt roads.
+  curbs:
+    intent: raised edge between paving and planting / between road and sidewalk
+    primary: smooth_stone_slab
+    alternates: [stone_slab, light_gray_concrete, smooth_stone]
+    confidence: creative approximation
+  sidewalks:
+    intent: pedestrian walks, forecourt plaza, loop-side promenade, parking-field concrete apron
+    primary: smooth_stone
+    alternates: [light_gray_concrete, stone, andesite]   # light_gray_concrete = the concrete parking field
+    confidence: creative approximation
+  lane_markings:
+    intent: parking stall lines, drive centerlines, crosswalks
+    primary: white_concrete            # stall lines, edge lines, crosswalk bars
+    secondary: yellow_concrete         # drive centerlines / no-park hatching
+    confidence: creative approximation
+    note: full blocks read as paint stripes at 1 block ≈ 2 ft scale; use single-block-wide runs.
+  grass:
+    intent: lawns, event lawn (Z09), greenbelt turf (Z08), median planting
+    primary: grass_block
+    cover: [short_grass, tall_grass, fern]              # short_grass = the 1.20.3+ name for the plant "grass"
+    confidence: creative approximation
+  mulch:
+    intent: planting beds, tree rings, foundation borders around every building
+    primary: coarse_dirt
+    alternates: [rooted_dirt, podzol]                   # rooted_dirt reads as bark-mulch; podzol as pine-straw
+    confidence: creative approximation
+    note: >-
+      Texas Gulf-Coast beds are typically pine-straw or hardwood mulch; coarse_dirt is the closest
+      neutral brown. podzol edges evoke pine straw near the pines/cypress in the landscape palette.
+
+# ===================================================================================================
+# SECTION 11 — LUXURY RESIDENTIAL MATERIAL MASTER LIST  (authored; see provenance note)
+# A curated vanilla-1.21 kit for high-end residential/hospitality architecture. Every building palette
+# below draws ONLY from this master list, so the site reads as one coherent material family.
+# Grouped by role. All ids verified to exist in 1.21.
+# ===================================================================================================
+section_11_master_material_list:
+  authored: true
+  confidence: creative approximation
+  stone_and_masonry:
+    limestone_cream: [smooth_sandstone, cut_sandstone, chiseled_sandstone, sandstone]
+    whitestone_classical: [quartz_block, smooth_quartz, quartz_bricks, quartz_pillar, chiseled_quartz_block, calcite]
+    fieldstone_grey: [stone_bricks, mossy_stone_bricks, cracked_stone_bricks, chiseled_stone_bricks, cobblestone, mossy_cobblestone]
+    dressed_grey: [smooth_stone, andesite, polished_andesite, polished_diorite]
+    dark_stone: [polished_deepslate, deepslate_bricks, deepslate_tiles, polished_blackstone, polished_blackstone_bricks]
+    warm_stone: [granite, polished_granite, tuff_bricks, polished_tuff]
+    fired_clay_masonry: [bricks, mud_bricks, packed_mud]
+    creamstone_accent: [end_stone_bricks]
+  render_and_stucco:      # painted stucco / plaster fields via terracotta (matte, not glossy glazed)
+    warm_earth: [orange_terracotta, brown_terracotta, yellow_terracotta]
+    cool_neutral: [white_terracotta, light_gray_terracotta]
+    coastal_soft: [light_blue_terracotta]
+    craftsman_earth: [green_terracotta]
+  concrete_modern:
+    [white_concrete, light_gray_concrete, gray_concrete, black_concrete]
+  timber_and_siding:
+    natural_wood_trim: [stripped_oak_log, stripped_spruce_log, stripped_dark_oak_log, stripped_birch_log]
+    painted_siding: [spruce_planks, oak_planks, birch_planks]     # read as clapboard runs
+  metal_and_copper:
+    copper_roof_and_clad: [cut_copper, exposed_cut_copper, weathered_cut_copper, oxidized_cut_copper, chiseled_copper, copper_grate, copper_block]
+    wrought_iron: [iron_bars, iron_block]
+  roofing_stairs:         # pitched roofs are built from stairs; role-tagged by the hue they read as
+    clay_tile_deep_red: [brick_stairs, nether_brick_stairs]
+    clay_tile_terracotta: [granite_stairs, acacia_stairs]
+    slate_grey: [deepslate_tile_stairs, polished_deepslate_stairs, polished_andesite_stairs]
+    wood_shingle: [spruce_stairs, dark_oak_stairs]
+    metal_standing_seam: [cut_copper_stairs, exposed_cut_copper_stairs, weathered_cut_copper_stairs, oxidized_cut_copper_stairs]
+    stone_and_cream: [smooth_sandstone_stairs, quartz_stairs, smooth_quartz_stairs, end_stone_brick_stairs, stone_brick_stairs, mud_brick_stairs]
+  flat_roof_and_slab:
+    [smooth_stone_slab, smooth_quartz_slab, smooth_sandstone_slab, mud_brick_slab]   # + full concrete for parapets
+  glazing:
+    clear: [glass, glass_pane]
+    framed_tint: [white_stained_glass_pane, light_gray_stained_glass_pane, gray_stained_glass_pane, brown_stained_glass_pane, light_blue_stained_glass_pane, black_stained_glass_pane]
+    curtain_wall: [tinted_glass, black_stained_glass, gray_stained_glass_pane]
+  shutters_trapdoors:     # window shutters, dormer louvers, vents
+    [dark_oak_trapdoor, spruce_trapdoor, birch_trapdoor, oak_trapdoor, copper_trapdoor, iron_trapdoor]
+  doors:
+    [dark_oak_door, spruce_door, oak_door, birch_door, copper_door, iron_door]
+  railings_walls_fences:
+    [cobblestone_wall, stone_brick_wall, brick_wall, sandstone_wall, spruce_fence, oak_fence]
+  accents_and_detail:
+    [chiseled_sandstone, chiseled_stone_bricks, chiseled_quartz_block, chiseled_copper, gilded_blackstone, dripstone_block, flower_pot]
+
+# ===================================================================================================
+# BUILDING PALETTES — the FOURTEEN buildings (B01, B02, H01–H12)
+# Each palette gives the 8 requested roles: primary_wall, secondary_wall, trim, roof, foundation,
+# window_treatment, door, accent. Style names are VERIFIED (REF-017 unless noted); materials CREATIVE.
+# Each is deliberately DISTINCT in dominant hue + roof so no two facades repeat.
+# ===================================================================================================
+building_palettes:
+
+  # --- CORE COMMERCIAL (2) ------------------------------------------------------------------------
+
+  - id: B01
+    name: Guest Center (Building 1)
+    style: "Tuscan-style stucco welcome center"
+    style_confidence: high-confidence inference   # the "Tuscan stucco welcome center" descriptor is
+                                                  # source-grounded (REF-018; REF-017 Villa Lago note),
+                                                  # but the specific materials are creative approximation
+    palette_confidence: creative approximation
+    dominant_read: warm cream stucco + terracotta tile — grand two-story "mansion" anchor
+    # REPOINTED TO AS-BUILT 2026-07-25 (MSA Q2, docs/DECISIONS-2026-07-25.md).
+    # The world was built in white_terracotta / smooth_stone, not the sandstone/brick
+    # planned below. Ratified decision: ACCEPT AS-BUILT and repoint this file, rather
+    # than re-skin a finished 145x76 building. The point is not cosmetic - every audit
+    # measures against this file, so leaving the planned values here manufactures a
+    # fresh "palette defect" on every future pass. The planned values are retained
+    # under `planned_*` as design intent, not as a target.
+    primary_wall: white_terracotta      # AS-BUILT
+    secondary_wall: smooth_stone        # AS-BUILT
+    planned_primary_wall: smooth_sandstone
+    planned_secondary_wall: cut_sandstone
+    trim: smooth_quartz            # limestone quoins, cornices, string courses
+    roof: smooth_stone             # AS-BUILT: flat deck at y76 (the y78 stacked roof was removed 2026-07-25)
+    planned_roof: brick_stairs     # deep-red clay barrel tile (distinct from H07/H09 tile hues)
+    foundation: stone_bricks
+    window_treatment: light_gray_stained_glass_pane framed with dark_oak_trapdoor shutters
+    door: dark_oak_door            # grand double-leaf entry, south face (coordinates.yaml N03)
+    accent: [chiseled_sandstone, polished_granite, copper_bulb, lantern]
+    note: >-
+      Anchor at the south front; 44,019 SF / 2-story VERIFIED (REF-007). Massing only is documented
+      ("mansion"); this Tuscan-stucco expression is approximation. polished_granite = entry columns.
+
+  - id: B02
+    name: Retail & Cooking School (Building 2)
+    style: "Retail storefront w/ culinary school (style undocumented)"
+    style_confidence: creative approximation      # only "8,342 SF retail w/ cooking school" is known
+    palette_confidence: creative approximation
+    dominant_read: warm red-brick market hall + patinated copper roof (culinary/hospitality cue)
+    primary_wall: bricks
+    secondary_wall: white_terracotta       # plaster upper band / storefront cladding
+    trim: stripped_dark_oak_log
+    roof: weathered_cut_copper_stairs      # green-patina standing-seam metal, distinct from all homes
+    foundation: cobblestone
+    window_treatment: glass_pane storefront in a light_gray_stained_glass_pane frame
+    door: copper_door                      # 1.21 — verify present on server
+    accent: [copper_block, chiseled_copper, campfire, lantern]
+    note: >-
+      8,342 SF, 1-story VERIFIED (REF-009). campfire reads as demonstration-kitchen smoke. Copper theme
+      deliberately ties it to the hospitality program and keeps it distinct from the Guest Center.
+
+  # --- THE TWELVE SHOWCASE HOMES (12) — roster & styles VERIFIED (REF-017); materials CREATIVE -----
+
+  - id: H01
+    name: The Alexandria
+    style: Greek Revival
+    style_confidence: verified
+    palette_confidence: creative approximation
+    dominant_read: all-white classical temple front — columns, pediment, slate roof (the 6,011 SF flagship)
+    primary_wall: white_concrete
+    secondary_wall: smooth_quartz
+    trim: quartz_block                     # entablature, cornice, corner pilasters
+    roof: smooth_quartz                    # AS-BUILT: quartz, ridge y87-88. REPOINTED 2026-07-25 (MSA Q2)
+    planned_roof: polished_deepslate_stairs  # grey slate, low pitch
+    # MSA Q3 ratified: KEEP the tall roof. The quartz ridge sits 7 courses over the wall
+    # top - off-formula, but it reads well for the flagship and it is intact and correct.
+    # A separate light_gray_concrete shell (in nobody's palette) once hung around it, the
+    # remains of the pre-scaling generic footprint; that was removed 2026-07-25.
+    foundation: smooth_stone
+    window_treatment: white_stained_glass_pane, tall, framed; dark_oak_trapdoor louvered shutters
+    door: dark_oak_door with quartz surround + glass sidelights
+    accent: [quartz_pillar, chiseled_quartz_block, sea_lantern, lantern]
+    note: >-
+      Largest home, 3-story VERIFIED (REF-017); the baseline "Greek Revival mansion" — confirmed.
+      quartz_pillar = fluted portico columns; chiseled_quartz_block = pediment tympanum.
+
+  - id: H02
+    name: The Cape Pointe
+    style: Coastal Beach House
+    style_confidence: verified
+    palette_confidence: creative approximation
+    dominant_read: pale white-and-blue clapboard on pilings, sea-green metal roof (the smallest, 1,815 SF)
+    primary_wall: white_concrete
+    secondary_wall: light_blue_terracotta
+    trim: stripped_birch_log
+    roof: weathered_cut_copper_stairs      # coastal sea-green metal roof (shares hue w/ B02 but far apart on site)
+    foundation: stripped_spruce_log        # pier-and-beam pilings
+    window_treatment: light_blue_stained_glass_pane, white frame, birch_trapdoor shutters
+    door: birch_door
+    accent: [sea_lantern, spruce_fence, lantern]      # spruce_fence = deck/porch railing
+    note: >-
+      "Coastal Beach House" is VERIFIED; the baseline words "Galveston-style / elevated / pier-and-beam"
+      are PARAPHRASE, NOT verified (REF-017). The piling foundation honors the paraphrase but is labeled
+      as such — treat the raised look as a design choice, not a documented fact.
+
+  - id: H03
+    name: The Ashby Manor
+    style: Old World
+    style_confidence: verified
+    palette_confidence: creative approximation
+    dominant_read: aged grey fieldstone + dark timber, weathered dark-clay roof (Old-World Mediterranean read)
+    primary_wall: stone_bricks
+    secondary_wall: smooth_sandstone       # stucco infill panels between stone
+    trim: stripped_dark_oak_log            # exposed timber framing
+    roof: nether_brick_stairs              # dark, aged clay tile
+    foundation: mossy_cobblestone
+    window_treatment: brown_stained_glass_pane, leaded look, dark_oak_trapdoor shutters
+    door: dark_oak_door
+    accent: [mossy_stone_bricks, cracked_stone_bricks, cobblestone_wall, lantern]
+    note: >-
+      "Old World" VERIFIED; likely the "Old World Mediterranean" CultureMap style (REF-017). Story count
+      is NULL in the source (REF-017 / CONFLICT-06) — footprint assumes 2 stories; palette is roof-form
+      agnostic. Weathering blocks (mossy/cracked) sell the "aged" read.
+
+  - id: H04
+    name: The Centennial
+    style: Craftsman
+    style_confidence: verified
+    palette_confidence: creative approximation
+    dominant_read: earthy brown/green bungalow — natural wood, stone porch piers, low wood-shingle gable
+    primary_wall: spruce_planks
+    secondary_wall: green_terracotta       # iconic Craftsman muted-green upper field
+    trim: stripped_oak_log
+    roof: spruce_stairs                     # wood shingle, wide overhang; exposed-rafter look
+    foundation: cobblestone                 # stone porch piers
+    window_treatment: brown_stained_glass_pane upper sash over glass_pane lower, framed
+    door: oak_door                          # part-glazed Craftsman door
+    accent: [stripped_spruce_log, cobblestone_wall, mud_bricks, lantern]
+    note: >-
+      Craftsman VERIFIED (2-story; "bungalow" in secondary coverage). stripped_spruce_log = rafter tails
+      / tapered porch columns on cobblestone piers — the defining Craftsman detail.
+
+  - id: H05
+    name: The Timbergrove
+    style: Classic Stone & Siding
+    style_confidence: verified
+    palette_confidence: creative approximation
+    dominant_read: grey stone base + light horizontal siding, grey shingle roof (transitional traditional)
+    primary_wall: stone_bricks              # stone base / first floor
+    secondary_wall: light_gray_terracotta   # siding gables & upper walls
+    trim: stripped_birch_log
+    roof: deepslate_tile_stairs             # medium-grey composite shingle
+    foundation: cobblestone
+    window_treatment: glass_pane, light_gray_stained_glass_pane frame, spruce_trapdoor shutters
+    door: dark_oak_door
+    accent: [chiseled_stone_bricks, andesite, lantern]
+    note: >-
+      "Classic Stone & Siding" VERIFIED (1-story, covered rear porch). The name literally dictates the
+      two-material split used here: stone below, siding above.
+
+  - id: H06
+    name: The Wakefield
+    style: Traditional Brick
+    style_confidence: verified
+    palette_confidence: creative approximation
+    dominant_read: classic red brick + white trim, grey roof — the energy/technology showcase home
+    primary_wall: bricks
+    secondary_wall: white_terracotta        # painted trim boards, gable field
+    trim: smooth_quartz                     # white quoins, window surrounds
+    roof: polished_deepslate_stairs         # grey architectural shingle
+    foundation: bricks
+    window_treatment: glass_pane, white frame, dark_oak_trapdoor shutters
+    door: dark_oak_door with quartz surround
+    accent: [brick_wall, daylight_detector, lantern]
+    note: >-
+      "Traditional Brick" VERIFIED; the NRG/energy showcase home (geothermal HVAC, air-sealing —
+      REF-017). daylight_detector on the roof is a deliberate, honest nod to the VERIFIED energy theme
+      (reads as a solar/efficiency panel), not a claim about the real roof.
+
+  - id: H07
+    name: The Villa Lago
+    style: Italian Mediterranean
+    style_confidence: verified
+    palette_confidence: creative approximation
+    dominant_read: warm ochre stucco, arches, orange clay-tile roof (the 5,979 SF Italian villa)
+    primary_wall: smooth_sandstone
+    secondary_wall: orange_terracotta       # warm ochre accent walls
+    trim: cut_sandstone
+    roof: acacia_stairs                      # orange clay barrel tile (distinct from B01 deep-red, H09 pink-red)
+    foundation: cut_sandstone
+    window_treatment: glass_pane in smooth_sandstone arched openings, light_gray_stained_glass_pane frame
+    door: dark_oak_door under a sandstone arch
+    accent: [chiseled_sandstone, polished_granite, copper_bulb, lantern]
+    note: >-
+      "Italian Mediterranean" VERIFIED (2-story, 3-car garage, expansive outdoor living — REF-017). The
+      manifest is explicit that the "Tuscan" descriptor belongs to the Guest Center, NOT this home; this
+      is labeled "Italian Mediterranean" accordingly. polished_granite = loggia columns.
+
+  - id: H08
+    name: The Calais
+    style: French Hill Country
+    style_confidence: verified
+    palette_confidence: creative approximation
+    dominant_read: cream limestone with a STEEP dark-slate hipped roof + dormers, copper turret (French château)
+    primary_wall: smooth_sandstone          # Texas limestone
+    secondary_wall: chiseled_sandstone
+    trim: stripped_dark_oak_log             # cedar timber accents
+    roof: deepslate_tile_stairs             # steep dark slate hip (the defining French silhouette)
+    foundation: cobblestone
+    window_treatment: tall glass_pane French casements + dormers, dark_oak_trapdoor shutters
+    door: dark_oak_door (double / French)
+    accent: [weathered_cut_copper, cobblestone_wall, chiseled_sandstone, lantern]
+    note: >-
+      "French Hill Country" VERIFIED (2-story, large game room — REF-017). Distinguished from the
+      Mediterranean/limestone homes by its STEEP dark roof and a weathered_cut_copper turret roof.
+
+  - id: H09
+    name: The Casa Lana
+    style: Spanish Courtyard
+    style_confidence: verified
+    palette_confidence: creative approximation
+    dominant_read: white stucco, wrought iron, red barrel-tile, one-story courtyard home w/ casita
+    # AS-BUILT 2026-07-25 — THE COURTYARD TYPOLOGY WAS NEVER BUILT. Read this before
+    # planning anything against the "Spanish Courtyard" description above.
+    # The world has ONE ENCLOSED RECTANGULAR ROOM: 28x29 outer / 26x27 interior at
+    # x[18,45] z[-31,-59], with a complete oak_plank floor at y64 (812/812 cells solid -
+    # no void anywhere), complete wall courses y65-y70, a glazing course at y67, and a
+    # STEPPED red_terracotta parapet (y70 ring at the outer edge, y71 ring inset one).
+    # There are no legs, no partitions, no courtyard and no detached casita.
+    # It was also FURNISHED AND IN USE while standing open to the sky - bed at
+    # (20-21,65,-57), chest at (43,65,-33), lantern at (32,67,-57).
+    # MSA Q5 was originally answered as "roof the U-plan legs, keep the courtyard open",
+    # against a building that does not exist; it was RE-ASKED against the measured
+    # geometry and answered "roof the whole interior". Deck laid at y70,
+    # `fill 19 70 -32 44 70 -58 red_terracotta replace air` = 702 blocks.
+    # y70, not flush at y71: roofing flush would have sealed the whole y70 interior as a
+    # void layer under the deck - the exact stacked-roof pathology just removed from B01
+    # at a cost of 17,637 blocks. Decking at y70 also SUPPORTS the y71 ring, which was
+    # floating (carried only by its corner connections).
+    primary_wall: white_terracotta          # white stucco
+    secondary_wall: smooth_sandstone
+    trim: cut_sandstone
+    roof: red_terracotta                    # AS-BUILT flat deck at y70 + stepped parapet y70/y71
+    planned_roof: granite_stairs            # red-pink clay barrel tile (distinct hue from B01/H07)
+    foundation: cut_sandstone
+    window_treatment: glass_pane behind iron_bars (reja / wrought-iron grilles), brown frame
+    door: dark_oak_door with an iron_bars courtyard gate
+    accent: [iron_bars, chiseled_sandstone, flower_pot, lantern]
+    note: >-
+      "Spanish Courtyard" VERIFIED (1-story + detached casita — REF-017). iron_bars = the wrought-iron
+      window grilles and courtyard gate that define the style. flower_pot rings the courtyard.
+
+  - id: H10
+    name: The Cross Creek
+    style: Texas Hill Country
+    style_confidence: verified
+    palette_confidence: creative approximation
+    dominant_read: rough native limestone + cedar posts + rusted-copper metal roof, big porch (rustic-elegant)
+    primary_wall: cobblestone               # chopped/irregular native limestone
+    secondary_wall: cut_sandstone
+    trim: stripped_spruce_log               # cedar porch posts & beams
+    roof: cut_copper_stairs                  # raw/rusted standing-seam metal (Corten look) — a Hill Country signature
+    foundation: cobblestone
+    window_treatment: large glass_pane (porch/view walls), stripped_spruce_log framing
+    door: spruce_door (part-glazed, cedar)
+    accent: [mossy_cobblestone, spruce_fence, campfire, lantern]
+    note: >-
+      "Texas Hill Country" VERIFIED (1-story, expansive rear porch — REF-017). spruce_fence = deep porch
+      railing; the raw-copper roof is the rustic-metal cue that separates it from the grey-stone homes.
+
+  - id: H11
+    name: The Midtown
+    style: Contemporary Townhome
+    style_confidence: verified
+    palette_confidence: creative approximation
+    dominant_read: crisp modern 4-story townhome — white+charcoal concrete volumes, flat roof, glass curtain wall
+    primary_wall: light_gray_concrete
+    secondary_wall: black_concrete          # contrasting charcoal accent volume
+    trim: smooth_quartz
+    roof: smooth_stone_slab                 # FLAT parapet roof (the only flat-roofed home besides H12)
+    # RESTORED 2026-07-25 (MSA Q1, docs/DECISIONS-2026-07-25.md). Commit 79193d9's
+    # "All 12 given pitched roofs" DID hit this home, which is a flat-roof design: it
+    # had acquired a stepped hip cap in black_concrete y85-91, shrinking 4 blocks per
+    # course. Removed (246 black_concrete + 24 polished_blackstone_stairs - and all 246
+    # black_concrete in the whole building were in that cap, so the cut was provably
+    # exactly the roof). Rebuilt as designed: smooth_stone_slab deck at y85 with a
+    # 2-course light_gray_concrete parapet at y85-86. Verified y85=156, y86=46, y87=0.
+    as_built_roof: {deck_y: 85, parapet_y: [85, 86], parapet: light_gray_concrete}
+    foundation: polished_blackstone
+    window_treatment: tinted_glass / gray_stained_glass_pane floor-to-ceiling curtain wall
+    door: iron_door                         # clean modern flush door
+    accent: [sea_lantern, copper_bulb, black_stained_glass]
+    note: >-
+      "Contemporary Townhome" VERIFIED (4-story, tall & narrow — REF-017). Deliberately the ONLY
+      hard-modern palette (concrete + glass + flat roof) so it reads as the outlier it was.
+
+  - id: H12
+    name: The Valencia
+    style: Southwestern Mediterranean
+    style_confidence: verified
+    palette_confidence: creative approximation
+    dominant_read: earthy adobe (mud-brick) pueblo — flat parapet roof, projecting vigas, one story
+    primary_wall: red_terracotta             # AS-BUILT (walls y65-70); planned mud_bricks below
+    planned_primary_wall: mud_bricks         # adobe — the defining Southwestern material
+    secondary_wall: orange_terracotta        # AS-BUILT
+    planned_secondary_wall: smooth_sandstone
+    trim: stripped_spruce_log                # protruding vigas (roof beams) — BUILT 2026-07-25, 12 ends
+    roof: smooth_sandstone_slab              # flat adobe parapet roof — RESTORED 2026-07-25
+    # RESTORED 2026-07-25 (MSA Q1). Like H11 this is a FLAT-roof design that had been
+    # given a pitch: a gable running along x with its ridge at z=-195, rings shrinking
+    # 1 in z per course from y71 to y78. On a "1 story" home that roof was most of the
+    # visible mass, which no block count made obvious — the render is what settled it.
+    # Removed (682 red_terracotta + 28 brick_stairs) and rebuilt to the design:
+    # smooth_sandstone_slab deck at y71 (418), 2-course mud_bricks parapet (86/level),
+    # and 12 stripped_spruce_log viga ends projecting from the long walls.
+    # Verified y70=98, y71=504, y72=86, y73=0.
+    # Walls were left as-built per Q2 (accept as-built, do not re-skin); only the roof
+    # form was a ratified change, so the deck and parapet use the DESIGN materials while
+    # the walls keep theirs.
+    as_built_roof: {deck_y: 71, parapet_y: [71, 72], parapet: mud_bricks, vigas_y: 70}
+    foundation: cut_sandstone
+    window_treatment: small deep-set glass_pane openings, orange_terracotta reveals, spruce_trapdoor shutters
+    door: spruce_door under a sandstone arch
+    accent: [chiseled_red_sandstone, orange_terracotta, mud_brick_stairs, lantern]
+    note: >-
+      "Southwestern Mediterranean" VERIFIED (1-story, efficient plan — REF-017). mud_bricks + exposed
+      stripped_spruce_log vigas + flat parapet = the adobe/pueblo read; distinct from every other home.
+
+# ===================================================================================================
+# WAREHOUSE (Building 3 / N01) — NOT one of the fourteen; provided as a flagged extra (see building_set_note)
+# ===================================================================================================
+warehouse_palette:
+  id: N01
+  name: Warehouse (Building 3)
+  style: "Utilitarian back-of-house (no style documented)"
+  size_confidence: verified          # 8,944 SF, rear service end (REF-010)
+  palette_confidence: creative approximation
+  dominant_read: plain metal-panel + concrete service shed, screened from visitors
+  primary_wall: light_gray_concrete   # metal wall panel
+  secondary_wall: gray_concrete
+  trim: smooth_stone
+  roof: smooth_stone_slab             # low-slope grey metal
+  foundation: gray_concrete
+  window_treatment: gray_stained_glass_pane clerestory / iron_bars
+  door: iron_door + copper_door (large service openings; iron_bars roll-up)
+  accent: [copper_block, iron_bars, lantern]
+  note: Intentionally the plainest palette on site — it is back-of-house and screened by Z08 planting.
+
+# ===================================================================================================
+# SECTION 13 — LANDSCAPING PALETTE (authored; humid-subtropical Texas / USDA zone 9a Gulf Coast)
+# Plants approximated with vanilla 1.21 flora. Species intent is real Greater-Houston horticulture;
+# the block choices are creative approximation. All ids verified to exist in 1.21.
+# ===================================================================================================
+section_13_landscaping_palette:
+  authored: true
+  confidence: creative approximation
+  climate_intent: >-
+    Humid subtropical Gulf Coast (Spring/Houston TX): live oaks, Southern magnolia, loblolly pine,
+    bald cypress at the water, crepe myrtle & azalea as flowering understory, sabal palms as accents,
+    St. Augustine/Bermuda turf. Lush, broadleaf-evergreen dominant, seasonal pink/white bloom.
+  ground_and_beds:
+    lawn_turf: {blocks: [grass_block, short_grass, tall_grass, fern], intent: St. Augustine / Bermuda lawn}
+    planting_bed_mulch: {blocks: [coarse_dirt, rooted_dirt, podzol], intent: hardwood mulch / pine straw}
+    bare_and_path_edge: {blocks: [dirt_path, gravel], intent: informal path shoulders}   # dirt_path verified 1.21
+    wetland_soil: {blocks: [mud, packed_mud, moss_block, moss_carpet], intent: pond margins / cypress flat}
+  canopy_trees:
+    southern_live_oak:
+      trunk: oak_log
+      canopy: oak_leaves
+      form: wide low-branching spreading canopy — the signature Gulf-Coast shade tree
+      confidence: creative approximation
+    southern_magnolia:
+      trunk: dark_oak_log
+      canopy: dark_oak_leaves
+      accent: white_tulip / lily_of_the_valley at base   # stands in for large white blooms
+      form: dense dark-green evergreen pyramid
+      confidence: creative approximation
+    loblolly_pine:
+      trunk: spruce_log
+      canopy: spruce_leaves
+      form: tall bare-trunk conifer clustered in the Z08 greenbelt
+      confidence: creative approximation
+    bald_cypress:
+      trunk: [spruce_log, mangrove_log]
+      canopy: [spruce_leaves, mangrove_leaves]
+      knees_and_roots: mangrove_roots
+      form: at the Z07 detention pond / water edge; mangrove_roots read as cypress "knees"
+      confidence: creative approximation
+  understory_and_palms:
+    crepe_myrtle:
+      trunk: [cherry_log, birch_log]         # smooth pale multi-trunk
+      canopy: cherry_leaves                   # pink summer bloom — the iconic Houston street tree
+      under_planting: pink_petals
+      confidence: creative approximation
+      note: no true crepe-myrtle block exists; cherry foliage is the closest pink-flowering stand-in.
+    sabal_palmetto_palm:
+      trunk: jungle_log
+      fronds: jungle_leaves
+      form: single-stem fan palm; accent at the entrance & Guest Center forecourt
+      confidence: creative approximation
+    azalea_and_shrubs:
+      blocks: [azalea, flowering_azalea, azalea_leaves, flowering_azalea_leaves, sweet_berry_bush]
+      intent: clipped flowering foundation shrubs (azalea = spring pink/white bloom)
+      confidence: creative approximation
+    ornamental_grass_and_bamboo:
+      blocks: [large_fern, fern, bamboo]
+      intent: muhly/fountain grass + screening bamboo clumps
+      confidence: creative approximation
+  seasonal_color_and_annuals:
+    bed_flowers: [poppy, red_tulip, orange_tulip, pink_tulip, white_tulip, oxeye_daisy, cornflower, azure_bluet, allium]
+    massed_showpieces: [rose_bush, peony, lilac, sunflower]   # entrance & event-lawn (Z09) beds
+    porch_and_courtyard_pots: [flower_pot]                    # potted color on home porches / Casa Lana courtyard
+    confidence: creative approximation
+  water_and_pond_planting:   # Z07 detention pond (RECONSTRUCTION per REF-016; planting is CREATIVE)
+    water: water
+    aquatic: [lily_pad, seagrass, big_dripleaf, small_dripleaf]
+    margin: [sugar_cane, tall_grass, mangrove_propagule, moss_carpet]
+    confidence: creative approximation
+    note: >-
+      The pond itself is a moderate-confidence read of an unlabeled aerial feature (REF-016); ALL of its
+      planting is invented. Reeds/cypress evoke a naturalized Texas detention basin.
+  vertical_and_ground_detail:
+    [vine, glow_lichen, spore_blossom, moss_carpet, pink_petals]
+    # vine/glow_lichen soften walls; spore_blossom under live-oak canopies for hanging color
+
+# ===================================================================================================
+# SECTION 15 — LIGHTING PALETTE (authored). All light sources are placeable by un-opped bots.
+# Warm (lantern/glowstone) for traditional zones; cool (soul/sea_lantern/copper_bulb) for modern.
+# All ids verified to exist in 1.21.
+# ===================================================================================================
+section_15_lighting_palette:
+  authored: true
+  confidence: creative approximation
+  parking_and_roadway:
+    intent: tall pole lights over the 236-space concrete field and the entrance/loop drives
+    pole: [cobblestone_wall, stone_brick_wall, oak_fence]     # stacked as the pole shaft
+    luminaire: [lantern, sea_lantern, end_rod]                # end_rod = crisp cobra-head style
+    modern_option: copper_bulb                                # 1.21 — dimmable "LED" cobra-head
+    confidence: creative approximation
+  pedestrian_and_path:
+    intent: bollard / low path lighting along sidewalks, forecourt plaza, loop promenade
+    blocks: [lantern, soul_lantern, torch, campfire]          # soul_lantern = cool bollard accent
+    confidence: creative approximation
+  building_facade_accent:
+    intent: warm up-lighting and porch/entry fixtures per building
+    traditional_warm: [lantern, glowstone, ochre_froglight]   # homes B01,H01-H10,H12
+    modern_cool: [soul_lantern, sea_lantern, copper_bulb, pearlescent_froglight]  # H11 Midtown, B02
+    porch_and_carriage: [lantern, soul_lantern]               # hung by doors / on posts
+    hidden_glow_behind_glass: [glowstone, ochre_froglight, sea_lantern, redstone_lamp]
+    confidence: creative approximation
+  landscape_and_water:
+    intent: subtle up-lighting in beds, moonlit pond, tree wash
+    blocks: [glow_lichen, sea_lantern, soul_lantern, ochre_froglight]
+    underwater: sea_lantern                                    # sunk at Z07 pond edges
+    confidence: creative approximation
+  monument_billboard:      # the "largest electronic billboard in Harris County" (REF-013), SW frontage
+    intent: a large emissive LED sign face + illuminated monument base
+    sign_face_emissive: [sea_lantern, glowstone, shroomlight, ochre_froglight, verdant_froglight, pearlescent_froglight]
+    controllable_led: redstone_lamp                            # for an animated/switchable face
+    colored_led_effect: "froglights + stained_glass overlay (ochre=amber, verdant=green, pearlescent=white)"
+    lightning_rod: lightning_rod                               # copper mast detail atop the monument
+    confidence: high-confidence inference                       # the billboard's EXISTENCE is verified; its lit
+                                                               # rendering is creative approximation
+  ambience_and_events:     # Z09 event lawn — weddings / market / "Christmas on MainStreet" (REF-008)
+    intent: festive string-light & seasonal glow for the verified event programming
+    blocks: [lantern, soul_lantern, candle, jack_o_lantern, campfire, soul_campfire]
+    confidence: creative approximation
+    note: >-
+      That events happened at the venue is VERIFIED (REF-008); a dedicated lit event lawn is a placement
+      choice (site-plan.md Z09, tagged CREATIVE). jack_o_lantern/candles support "Christmas on MainStreet".
+
+# ===================================================================================================
+# ASSUMPTIONS & CROSS-CHECK NOTES  (for the agent collating everyone's files)
+# ===================================================================================================
+assumptions_and_notes:
+  - id: A01
+    topic: No brief / no sections 11, 13, 15
+    detail: >-
+      As with coordinates.yaml (CONFLICT-02) and site-plan.md, no brief with numbered sections exists in
+      the repo. The section-11 master list, section-13 landscaping and section-15 lighting palettes are
+      AUTHORED from the manifest, not transcribed. Treat the palette SET as reasoned, not canonical.
+    severity: high
+  - id: A02
+    topic: Every facade material is creative approximation (REF-019)
+    detail: >-
+      Style NAMES and SIZES are verified (REF-017); NO source documents any material, color, roof form,
+      or window pattern. All wall/roof/trim/window/door/foundation/accent block choices are invented and
+      must be labeled as such to visitors. This is the single most important honesty flag in the file.
+    severity: high
+  - id: A03
+    topic: The fourteen buildings = B01 + B02 + H01-H12 (warehouse excluded)
+    detail: >-
+      I keyed the fourteen palettes to coordinates.yaml's `buildings:` set for cross-check consistency.
+      That file classifies the Warehouse under notable_locations (its CONFLICT-01), so it is the 15th
+      structure, not one of the fourteen. I still supply warehouse_palette so no verified building lacks
+      materials. If a real brief defines a different set of 14, reconcile the membership then.
+    severity: medium
+  - id: A04
+    topic: 1.21-era block ids to confirm on the target server
+    detail: >-
+      Copper build-set (copper_door, copper_trapdoor, copper_bulb, chiseled_copper, cut_copper_stairs +
+      weathered/exposed/oxidized variants) and the tuff family are 1.21.0 additions used above. dirt_path
+      is the 1.17+ renamed "grass_path". short_grass is the 1.20.3+ name of the plant "grass". All are
+      valid on stock 1.21.x. Blocks added in 1.21.4+ (pale oak, resin) were intentionally NOT used.
+    severity: low
+  - id: A05
+    topic: Distinctness discipline
+    detail: >-
+      No two of the fourteen share a dominant wall+roof combination. Roof hues are spread deliberately:
+      deep-red clay (B01), patina-copper (B02, H02), grey slate (H01, H05, H06, H08), wood shingle (H04),
+      orange clay (H07), pink-red clay (H09), raw-copper metal (H10), flat grey slab (H11), flat adobe
+      slab (H12). This is a design choice, not a documented fact.
+  - id: A06
+    topic: Baseline "Galveston-style / elevated" beach house
+    detail: >-
+      H02 Cape Pointe's piling foundation honors the baseline paraphrase, but REF-017 confirms only
+      "Coastal Beach House" — "Galveston / elevated / pier-and-beam" are NOT verified. Flagged so no one
+      upgrades the raised look to fact.
+  - id: A07
+    topic: Ashby Manor unknown story count
+    detail: >-
+      Story count is NULL in the source (REF-017 / coordinates CONFLICT-06). H03's palette is roof-form
+      agnostic and works at 1 or 2 stories.

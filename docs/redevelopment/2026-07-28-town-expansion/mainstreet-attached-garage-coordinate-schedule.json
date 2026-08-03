@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "status": "SURVEY_REDESIGN_BASIS_NOT_A_RELEASE",
+  "requirement": {
+    "sourceOfTruth": "Every residential garage is physically attached to its parent house.",
+    "largeHouseRule": {
+      "sixCar": "verified area >= 5500 square feet",
+      "fourCar": "verified area >= 3000 and < 5500 square feet",
+      "twoCar": "verified area < 3000 square feet or unverified cottage-scale house"
+    },
+    "detachedGarageDisposition": "nonconforming; exact-state retire only after the replacement attached garage and route pass post-state QA"
+  },
+  "evidence": {
+    "snapshot": {
+      "path": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region",
+      "sha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999"
+    },
+    "database": {
+      "path": "data/world-map.db",
+      "sha256AtSurvey": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503"
+    },
+    "priorDesign": "mainstreet-america/planning/redevelopment-r4-r5.yaml",
+    "priorAsBuiltReport": "data/buildops/mainstreet-redevelopment-r4-r5-runtime-safe-2026-07-27.report.json",
+    "currentMap": "docs/redevelopment/2026-07-28-town-expansion/evidence/mainstreet-current-garage-map.png"
+  },
+  "coordinateConvention": {
+    "north": "-Z",
+    "bounds": "inclusive",
+    "houseGroundFloorSupportY": 64,
+    "houseStandingY": 65
+  },
+  "protectedCirculation": [
+    {"id": "R01", "name": "Main Street", "minX": -4, "maxX": 4},
+    {"id": "R02", "name": "West Lane", "minX": -83, "maxX": -81},
+    {"id": "R03", "name": "East Avenue", "minX": 83, "maxX": 85},
+    {"id": "ALLEY-W", "name": "West rear alley", "minX": -60, "maxX": -58, "minZ": -218, "maxZ": 70},
+    {"id": "ALLEY-E", "name": "East rear alley", "nominalMinX": 57, "nominalMaxX": 59, "minZ": -218, "maxZ": 37},
+    {"id": "R05", "name": "Garden Cross", "crossStreet": true},
+    {"id": "R06", "name": "Brick Cross", "crossStreet": true},
+    {"id": "R07", "name": "Service Cross", "crossStreet": true}
+  ],
+  "garageModules": {
+    "twoCar": {
+      "arrangement": "two single-depth bays",
+      "minimumExteriorDepth": 8,
+      "minimumExteriorWidth": 11,
+      "portalCount": 2,
+      "portalClearWidth": 3,
+      "clearHeadroom": 3
+    },
+    "fourCar": {
+      "arrangement": "two double-depth bays",
+      "minimumExteriorDepth": 13,
+      "minimumExteriorWidth": 11,
+      "portalCount": 2,
+      "portalClearWidth": 3,
+      "clearHeadroom": 3
+    },
+    "sixCar": {
+      "arrangement": "three double-depth bays",
+      "minimumExteriorDepth": 13,
+      "minimumExteriorWidth": 15,
+      "portalCount": 3,
+      "portalClearWidth": 3,
+      "clearHeadroom": 3
+    }
+  },
+  "houses": [
+    {
+      "house": "H01",
+      "name": "The Alexandria",
+      "verifiedSqft": 6011,
+      "capacity": 6,
+      "houseBounds": [-46, -23, 44, 65],
+      "floorsY": [64, 69, 74],
+      "currentDetached": {"id": "R4-GAR-H01", "bounds": [-55, -49, 51, 57], "floorY": 64},
+      "proposedAttached": {"bounds": [-58, -46, 48, 62], "floorY": 64, "sharedWall": {"x": -46, "doorCandidateZ": 55}},
+      "protectedRoomsAtAttachment": ["formal living", "formal dining", "second-floor library"],
+      "access": "ALLEY-W"
+    },
+    {
+      "house": "H02",
+      "name": "The Cape Pointe",
+      "verifiedSqft": 1815,
+      "capacity": 2,
+      "houseBounds": [-41, -27, -2, 12],
+      "floorsY": [64, 69],
+      "currentDetached": {"id": "R4-GAR-H02", "bounds": [-55, -49, 1, 7], "floorY": 64},
+      "proposedAttached": {"bounds": [-48, -41, -2, 8], "floorY": 64, "sharedWall": {"x": -41, "doorCandidateZ": 5}},
+      "protectedRoomsAtAttachment": ["great room", "kitchen dining"],
+      "access": "ALLEY-W via retained driveway"
+    },
+    {
+      "house": "H03",
+      "name": "The Ashby Manor",
+      "verifiedSqft": 4138,
+      "capacity": 4,
+      "houseBounds": [-46, -23, -56, -34],
+      "floorsY": [64, 69],
+      "currentDetached": {"id": "R4-GAR-H03", "bounds": [-55, -49, -51, -45], "floorY": 64},
+      "proposedAttached": {"bounds": [-58, -46, -55, -45], "floorY": 64, "sharedWall": {"x": -46, "doorCandidateZ": -48}},
+      "protectedRoomsAtAttachment": ["great hall", "ground-floor library", "primary suite above"],
+      "access": "ALLEY-W"
+    },
+    {
+      "house": "H04",
+      "name": "The Centennial",
+      "verifiedSqft": 2715,
+      "capacity": 2,
+      "houseBounds": [-43, -25, -104, -86],
+      "floorsY": [64, 69],
+      "currentDetached": {"id": "R4-GAR-H04", "bounds": [-55, -49, -101, -95], "floorY": 64},
+      "proposedAttached": {"bounds": [-50, -43, -101, -91], "floorY": 64, "sharedWall": {"x": -43, "doorCandidateZ": -92}},
+      "protectedRoomsAtAttachment": ["living hearth", "kitchen dining", "primary suite above"],
+      "access": "ALLEY-W via retained driveway"
+    },
+    {
+      "house": "H05",
+      "name": "The Timbergrove",
+      "verifiedSqft": 2321,
+      "capacity": 2,
+      "houseBounds": [-46, -22, -157, -133],
+      "floorsY": [64],
+      "currentDetached": {"id": "R4-GAR-H05", "bounds": [-55, -49, -152, -146], "floorY": 64},
+      "proposedAttached": {"bounds": [-53, -46, -154, -144], "floorY": 64, "sharedWall": {"x": -46, "doorCandidateZ": -149}},
+      "protectedRoomsAtAttachment": ["kitchen dining"],
+      "access": "ALLEY-W via short driveway"
+    },
+    {
+      "house": "H06",
+      "name": "The Wakefield",
+      "verifiedSqft": 2622,
+      "capacity": 2,
+      "houseBounds": [-47, -22, -207, -183],
+      "floorsY": [64],
+      "currentDetached": {"id": "R4-GAR-H06", "bounds": [-56, -50, -202, -196], "floorY": 64},
+      "proposedAttached": {"bounds": [-54, -47, -201, -191], "floorY": 64, "sharedWall": {"x": -47, "doorCandidateZ": -195}},
+      "protectedRoomsAtAttachment": ["formal dining", "formal living"],
+      "access": "ALLEY-W via short driveway"
+    },
+    {
+      "house": "H07",
+      "name": "The Villa Lago",
+      "verifiedSqft": 5979,
+      "capacity": 6,
+      "houseBounds": [18, 45, 42, 68],
+      "floorsY": [64, 69],
+      "currentDetached": {"id": "R4-GAR-H07", "bounds": [46, 52, 21, 27], "floorY": 72},
+      "proposedAttached": {"bounds": [45, 58, 42, 56], "floorY": 72, "sharedWall": {"x": 45, "doorCandidateZ": 53}, "verticalTransition": "enclosed three-rise mudroom stair to floor Y69"},
+      "protectedRoomsAtAttachment": ["great room", "guest gallery above"],
+      "access": "extend ALLEY-E north from its current terminal without removing the existing terminal connection"
+    },
+    {
+      "house": "H08",
+      "name": "The Calais",
+      "verifiedSqft": 4101,
+      "capacity": 4,
+      "houseBounds": [20, 43, -5, 15],
+      "floorsY": [64, 69],
+      "currentDetached": {"id": "R4-GAR-H08", "bounds": [53, 59, 0, 6], "floorY": 71},
+      "proposedAttached": {"bounds": [43, 59, -3, 7], "floorY": 71, "sharedWall": {"x": 43, "doorCandidateZ": 5}, "verticalTransition": "enclosed two-rise mudroom stair to floor Y69"},
+      "protectedRoomsAtAttachment": ["salon", "kitchen", "guest suite above"],
+      "access": "ALLEY-E"
+    },
+    {
+      "house": "H09",
+      "name": "The Casa Lana",
+      "verifiedSqft": 3240,
+      "capacity": 4,
+      "houseBounds": [18, 46, -59, -31],
+      "floorsY": [64],
+      "currentDetached": {"id": "R4-GAR-H09", "bounds": [53, 59, -55, -49], "floorY": 77},
+      "proposedAttached": {"bounds": [46, 59, -56, -46], "floorY": 77, "sharedWall": {"x": 46, "doorCandidateZ": -51}, "verticalTransition": "full-height enclosed side wing with internal stair to floor Y64; do not bridge as a detached skywalk"},
+      "protectedRoomsAtAttachment": ["kitchen dining", "accepted full red-terracotta roof deck"],
+      "access": "ALLEY-E upper terrace"
+    },
+    {
+      "house": "H10",
+      "name": "The Cross Creek",
+      "verifiedSqft": 3223,
+      "capacity": 4,
+      "houseBounds": [18, 45, -109, -81],
+      "floorsY": [64],
+      "currentDetached": {"id": "R4-GAR-H10", "bounds": [48, 54, -104, -98], "floorY": 64},
+      "proposedAttached": {"bounds": [45, 57, -106, -96], "floorY": 64, "sharedWall": {"x": 45, "doorCandidateZ": -101}},
+      "protectedRoomsAtAttachment": ["kitchen dining"],
+      "access": "ALLEY-E"
+    },
+    {
+      "house": "H11",
+      "name": "The Midtown",
+      "verifiedSqft": 2417,
+      "capacity": 2,
+      "houseBounds": [26, 38, -151, -140],
+      "floorsY": [64, 69, 74, 79],
+      "currentDetached": {"id": "R4-GAR-H11", "bounds": [48, 54, -151, -145], "floorY": 64},
+      "proposedAttached": {"bounds": [38, 45, -151, -141], "floorY": 64, "sharedWall": {"x": 38, "doorCandidateZ": -146}},
+      "protectedRoomsAtAttachment": ["lobby studio", "three upper stacked rooms", "continuous four-level stair"],
+      "access": "ALLEY-E via retained driveway"
+    },
+    {
+      "house": "H12",
+      "name": "The Valencia",
+      "verifiedSqft": 1881,
+      "capacity": 2,
+      "houseBounds": [21, 42, -205, -185],
+      "floorsY": [64],
+      "currentDetached": {"id": "R4-GAR-H12", "bounds": [47, 53, -194, -188], "floorY": 64},
+      "proposedAttached": {"bounds": [42, 49, -199, -189], "floorY": 64, "sharedWall": {"x": 42, "doorCandidateZ": -194}},
+      "protectedRoomsAtAttachment": ["kitchen dining", "guest suite"],
+      "access": "ALLEY-E via retained driveway"
+    },
+    {
+      "house": "C02",
+      "name": "West Garden Villa",
+      "capacity": 2,
+      "houseBounds": [-78, -62, 21, 39],
+      "floorsY": [64],
+      "currentDetached": {"id": "R4-GAR-C02", "bounds": [-79, -73, 6, 12], "floorY": 68},
+      "proposedAttached": {"bounds": [-78, -68, 13, 21], "floorY": 68, "sharedWall": {"z": 21}, "verticalTransition": "enclosed four-rise stair"},
+      "access": "R02"
+    },
+    {
+      "house": "C03",
+      "name": "East Garden Villa",
+      "capacity": 2,
+      "houseBounds": [62, 78, 21, 39],
+      "floorsY": [64],
+      "currentDetached": {"id": "R4-GAR-C03", "bounds": [73, 79, 45, 51], "floorY": 78},
+      "proposedAttached": {"bounds": [68, 78, 39, 47], "floorY": 78, "sharedWall": {"z": 39}, "verticalTransition": "full-height attached stair wing; ten-rise grade difference requires section validation"},
+      "access": "R03"
+    },
+    {
+      "house": "C04",
+      "name": "West Brick Courtyard Home",
+      "capacity": 2,
+      "houseBounds": [-78, -62, -79, -61],
+      "floorsY": [64],
+      "currentDetached": {"id": "R4-GAR-C04", "bounds": [-79, -73, -58, -52], "floorY": 64},
+      "proposedAttached": {"bounds": [-78, -68, -61, -53], "floorY": 64, "sharedWall": {"z": -61}},
+      "access": "R02"
+    },
+    {
+      "house": "C05",
+      "name": "East Brick Courtyard Home",
+      "capacity": 2,
+      "houseBounds": [62, 78, -79, -61],
+      "floorsY": [64],
+      "currentDetached": {"id": "R4-GAR-C05", "bounds": [73, 79, -57, -51], "floorY": 79},
+      "proposedAttached": {"bounds": [68, 78, -61, -53], "floorY": 79, "sharedWall": {"z": -61}, "verticalTransition": "full-height attached stair wing; fifteen-rise grade difference is a high-risk section"},
+      "access": "R03"
+    },
+    {
+      "house": "C06",
+      "name": "West Timber Lodge",
+      "capacity": 2,
+      "houseBounds": [-78, -62, -179, -161],
+      "floorsY": [64],
+      "currentDetached": {"id": "R4-GAR-C06", "bounds": [-79, -73, -202, -196], "floorY": 64},
+      "proposedAttached": {"bounds": [-78, -68, -188, -179], "floorY": 64, "sharedWall": {"z": -179}},
+      "access": "R02 via retained drive extension"
+    },
+    {
+      "house": "C07",
+      "name": "East Timber Lodge",
+      "capacity": 2,
+      "houseBounds": [62, 78, -179, -161],
+      "floorsY": [64],
+      "currentDetached": {"id": "R4-GAR-C07", "bounds": [70, 76, -151, -145], "floorY": 64},
+      "proposedAttached": {"bounds": [68, 78, -161, -153], "floorY": 64, "sharedWall": {"z": -161}},
+      "access": "R03"
+    }
+  ],
+  "hardGates": [
+    "The proposed bounds are design envelopes, not executable fills.",
+    "No current detached garage is removed before its attached replacement, internal house connection and vehicle route pass.",
+    "Only a two-block shared-wall doorway may alter an accepted house shell; its source states and affected room must be enumerated.",
+    "No accepted room furnishing, floor plate, main stair, principal facade, front garden, road, alley or cross-street may be overwritten.",
+    "C03, C05, H07, H08 and H09 require authored vertical sections because their current garage grades do not match the parent ground-floor Y64.",
+    "Every forward cell requires a fresh-snapshot exact guard and exact rollback; strict-noop execution is mandatory.",
+    "Run bidirectional normal-walk QA from each house interior through the garage to its serving alley/road.",
+    "Capture one exterior context, one portal, one interior-to-house threshold and one route image per accepted attached garage."
+  ]
+}

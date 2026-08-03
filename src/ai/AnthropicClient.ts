@@ -1,4 +1,5 @@
 import { LLMClient, LLMResponse } from './LLMClient';
+import type { LLMCallOptions } from './TaskType';
 import { Semaphore } from '../util/Semaphore';
 
 type GeminiLikeContent = {
@@ -7,14 +8,42 @@ type GeminiLikeContent = {
 };
 
 /**
- * Anthropic charges cached input tokens at ~10% of the regular rate (the
- * exact ratio depends on TTL — ephemeral 5-min cache is 0.1x). Stable
- * prefixes above ~1024 tokens are cacheable on Sonnet/Opus; below that
- * threshold the server silently ignores cache_control. We use 4096 chars
- * (~1024 tokens at avg English density) as the floor so we don't waste
- * one of the four cache breakpoints on a short prompt.
+ * Minimum cacheable prefix, in TOKENS, per model. Below its model's minimum
+ * the server silently ignores `cache_control` — no error, just no caching and
+ * one of the four breakpoints wasted.
+ *
+ * This is NOT uniform and NOT monotonic across generations: Opus 5 caches from
+ * 512 tokens while Haiku 4.5 needs 4096. A single global threshold is wrong in
+ * both directions — too conservative on Opus 5 (missing real savings) and too
+ * permissive on Haiku 4.5 (marking prompts that will never cache).
  */
-const CACHEABLE_SYSTEM_THRESHOLD_CHARS = 4096;
+const CACHE_MIN_TOKENS: Array<[RegExp, number]> = [
+  [/claude-(opus-5|fable-5|mythos-5)/i, 512],
+  [/claude-(opus-4-8|sonnet-5|sonnet-4-6|sonnet-4-5|opus-4-1|opus-4-0|sonnet-4)/i, 1024],
+  [/claude-(opus-4-7|mythos-preview|haiku-3-5)/i, 2048],
+  [/claude-(opus-4-6|opus-4-5|haiku-4-5)/i, 4096],
+];
+
+/**
+ * Chars per token, measured against THIS repo's actual prompts (2.59), not the
+ * ~4 rule of thumb for English prose — code-heavy system prompts tokenise far
+ * denser than prose.
+ *
+ * The direction of error matters and 4 had it backwards. Too HIGH demands more
+ * characters than the model actually needs, so genuinely cacheable prompts are
+ * never marked — that is real money on every call. Too LOW merely wastes one of
+ * four cache breakpoints on a prompt the server ignores, and this client uses
+ * only one. So bias low: 2.5 sits just under the measured 2.59.
+ */
+const CHARS_PER_TOKEN = 2.5;
+
+/** Fallback for unrecognised models — the most common minimum. */
+const DEFAULT_CACHE_MIN_TOKENS = 1024;
+
+function cacheThresholdChars(model: string): number {
+  const hit = CACHE_MIN_TOKENS.find(([re]) => re.test(model));
+  return (hit ? hit[1] : DEFAULT_CACHE_MIN_TOKENS) * CHARS_PER_TOKEN;
+}
 
 export class AnthropicClient implements LLMClient {
   private apiKey: string;
@@ -32,7 +61,7 @@ export class AnthropicClient implements LLMClient {
     this.semaphore = new Semaphore(opts.maxConcurrentRequests ?? 3);
   }
 
-  async chat(systemPrompt: string, contents: GeminiLikeContent[], maxTokens?: number): Promise<LLMResponse> {
+  async chat(systemPrompt: string, contents: GeminiLikeContent[], maxTokens?: number, options?: LLMCallOptions): Promise<LLMResponse> {
     await this.semaphore.acquire();
     try {
       // Prompt caching: when the system prompt is long enough to benefit
@@ -41,7 +70,10 @@ export class AnthropicClient implements LLMClient {
       // ~10% of normal input cost. Stable system prompts in this codebase
       // (ACTION_SYSTEM_PROMPT, curriculum/critic templates) easily clear
       // the threshold and repeat verbatim across every call.
-      const useCache = systemPrompt.length >= CACHEABLE_SYSTEM_THRESHOLD_CHARS;
+      // A route may override the model per call — the cache threshold is
+      // model-specific, so resolve the model FIRST.
+      const effectiveModel = options?.model ?? this.model;
+      const useCache = systemPrompt.length >= cacheThresholdChars(effectiveModel);
       const systemField = useCache
         ? [
             {
@@ -53,27 +85,28 @@ export class AnthropicClient implements LLMClient {
         : systemPrompt;
 
       const body: Record<string, any> = {
-        model: this.model,
+        model: effectiveModel,
         system: systemField,
         max_tokens: maxTokens || this.defaultMaxTokens,
         messages: this.toAnthropicMessages(contents),
       };
-      // Opus 4.6+ / Fable reasoning models reject a custom `temperature` (HTTP
-      // 400, which is terminal in ModelRouter — so the codegen/critic fallback to
-      // claude-opus-4-8 silently died on every call). Only send temperature for
-      // models that accept it (Sonnet/Haiku and older Opus).
-      const rejectsTemperature = /claude-(opus-4-(6|7|8|9)|fable|mythos)/i.test(this.model);
+      // Opus 4.6+ / Sonnet 5 / Fable reasoning models reject a custom
+      // `temperature` (HTTP 400, which is terminal in ModelRouter — so the
+      // codegen/critic fallback to claude-opus-4-8 silently died on every
+      // call). Only send temperature for models that accept it (Sonnet 4.x,
+      // Haiku, and older Opus).
+      //
+      // The `-5`+ branch matters: temperature is rejected on claude-opus-5 and
+      // claude-sonnet-5 too, and matching only `opus-4-*` meant selecting
+      // either one bricked every call the same way 4.6 originally did.
+      const rejectsTemperature = /claude-(opus-4-(6|7|8|9)|(opus|sonnet)-[5-9]|fable|mythos)/i.test(effectiveModel);
       if (!rejectsTemperature) {
         body.temperature = this.temperature;
       }
 
       const resp = await fetch(this.baseUrl, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': this.apiKey,
-          'anthropic-version': '2023-06-01',
-        },
+        headers: this.authHeaders(),
         body: JSON.stringify(body),
         signal: AbortSignal.timeout(60000),
       });
@@ -97,8 +130,8 @@ export class AnthropicClient implements LLMClient {
     }
   }
 
-  async generate(systemPrompt: string, userMessage: string, maxTokens?: number): Promise<LLMResponse> {
-    return this.chat(systemPrompt, [{ role: 'user', parts: [{ text: userMessage }] }], maxTokens);
+  async generate(systemPrompt: string, userMessage: string, maxTokens?: number, options?: LLMCallOptions): Promise<LLMResponse> {
+    return this.chat(systemPrompt, [{ role: 'user', parts: [{ text: userMessage }] }], maxTokens, options);
   }
 
   private toAnthropicMessages(contents: GeminiLikeContent[]): Array<{ role: 'user' | 'assistant'; content: string }> {
@@ -141,4 +174,40 @@ export class AnthropicClient implements LLMClient {
 
     return text;
   }
+
+  /**
+   * Auth headers, chosen by credential shape.
+   *
+   * Anthropic accepts two credential types on the same endpoint and they are
+   * NOT interchangeable in how they're sent:
+   *   - API keys (`sk-ant-api...`) go in `x-api-key`.
+   *   - OAuth access tokens (`sk-ant-oat...`, e.g. from `ant auth login` /
+   *     `ant auth print-credentials --access-token`) go in
+   *     `Authorization: Bearer` AND require the `oauth-2025-04-20` beta
+   *     header. Sending an OAuth token as `x-api-key` is a 401.
+   *
+   * Detecting by prefix means an operator can paste either credential into the
+   * same provider field and it just works — no config-schema or dashboard
+   * change. OAuth tokens are short-lived and are not auto-refreshed here, so
+   * an API key remains the right choice for unattended fleet operation.
+   */
+  private authHeaders(): Record<string, string> {
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+      'anthropic-version': '2023-06-01',
+    };
+    if (/^sk-ant-oat/i.test(this.apiKey)) {
+      headers['Authorization'] = `Bearer ${this.apiKey}`;
+      headers['anthropic-beta'] = 'oauth-2025-04-20';
+    } else {
+      headers['x-api-key'] = this.apiKey;
+    }
+    return headers;
+  }
+
+  /** Concrete model ID, for accurate TokenLedger cost attribution. */
+  getModelId(): string {
+    return this.model;
+  }
+
 }

@@ -1,0 +1,192 @@
+# MainStreet America — authored model-home floor plans
+#
+# These plans fit the measured 2026-07-26 shells. Room placement and circulation
+# are creative reconstruction; home names, styles, area, and story counts retain
+# the confidence labels in buildings.yaml. Bounds are inclusive Minecraft blocks.
+
+schema_version: 1
+world: world
+project_id: mainstreet-america
+design_elevation: 64
+status: built_and_audited
+
+rules:
+  - Preserve the accepted roof decisions in docs/DECISIONS-2026-07-25.md.
+  - Keep a two-block-clear route from every exterior door to the principal stair.
+  - Ground partitions occupy y65..68; upper partitions start one block above each floor slab.
+  - Exterior walls and floor slabs are outside every room bound below.
+  - Room labels describe architectural intent; Minecraft furniture is representative, not a code claim.
+
+homes:
+  - id: H01
+    name: The Alexandria
+    style: Greek Revival
+    shell: {min_x: -46, max_x: -23, min_z: 44, max_z: 65, floors_y: [64, 69, 74]}
+    street_face: east
+    plan_concept: "A formal cross-axis hall with paired public rooms and a private upper procession."
+    rooms:
+      - {name: grand_foyer, floor: 1, bounds: [-34, 53, -24, 57]}
+      - {name: formal_living, floor: 1, bounds: [-45, 45, -35, 52]}
+      - {name: formal_dining, floor: 1, bounds: [-45, 58, -35, 64]}
+      - {name: kitchen_breakfast, floor: 1, bounds: [-33, 45, -24, 52]}
+      - {name: library, floor: 2, bounds: [-45, 45, -35, 55]}
+      - {name: primary_suite, floor: 2, bounds: [-34, 45, -24, 64]}
+      - {name: media_bonus, floor: 3, bounds: [-45, 45, -24, 64]}
+    circulation: "east portico -> grand foyer -> west cross hall -> centered stair"
+
+  - id: H02
+    name: The Cape Pointe
+    style: Coastal Beach House
+    shell: {min_x: -41, max_x: -27, min_z: -2, max_z: 12, floors_y: [64, 69]}
+    street_face: east
+    plan_concept: "Compact open coastal living downstairs with a loft bridge above."
+    rooms:
+      - {name: entry_porch, floor: 1, bounds: [-31, 3, -28, 7]}
+      - {name: great_room, floor: 1, bounds: [-40, 4, -32, 11]}
+      - {name: kitchen_dining, floor: 1, bounds: [-40, -1, -32, 3]}
+      - {name: guest_bedroom, floor: 1, bounds: [-31, 8, -28, 11]}
+      - {name: primary_loft, floor: 2, bounds: [-40, -1, -28, 11]}
+    circulation: "east porch -> open great room -> north-wall stair -> loft bridge"
+
+  - id: H03
+    name: The Ashby Manor
+    style: Old World
+    shell: {min_x: -46, max_x: -23, min_z: -56, max_z: -34, floors_y: [64, 69]}
+    street_face: east
+    plan_concept: "A timbered great hall with offset library and service passage."
+    rooms:
+      - {name: stone_entry, floor: 1, bounds: [-32, -48, -24, -43]}
+      - {name: great_hall, floor: 1, bounds: [-45, -55, -33, -43]}
+      - {name: library, floor: 1, bounds: [-45, -42, -36, -35]}
+      - {name: kitchen_scullery, floor: 1, bounds: [-32, -55, -24, -49]}
+      - {name: primary_suite, floor: 2, bounds: [-45, -55, -35, -35]}
+      - {name: guest_gallery, floor: 2, bounds: [-34, -55, -24, -35]}
+    circulation: "east entry -> double-height hall -> west stair tower -> upper gallery"
+
+  - id: H04
+    name: The Centennial
+    style: Craftsman
+    shell: {min_x: -43, max_x: -25, min_z: -104, max_z: -86, floors_y: [64, 69]}
+    street_face: east
+    plan_concept: "A broad hearth-centered living room with built-ins and an efficient bedroom floor."
+    rooms:
+      - {name: covered_entry, floor: 1, bounds: [-30, -98, -26, -92]}
+      - {name: living_hearth, floor: 1, bounds: [-42, -103, -32, -94]}
+      - {name: kitchen_dining, floor: 1, bounds: [-42, -93, -32, -87]}
+      - {name: study, floor: 1, bounds: [-31, -103, -26, -99]}
+      - {name: primary_suite, floor: 2, bounds: [-42, -103, -34, -87]}
+      - {name: secondary_bedrooms, floor: 2, bounds: [-33, -103, -26, -87]}
+    circulation: "east porch -> entry inglenook -> living hall -> compact rear stair"
+
+  - id: H05
+    name: The Timbergrove
+    style: Classic Stone & Siding
+    shell: {min_x: -46, max_x: -22, min_z: -157, max_z: -133, floors_y: [64]}
+    street_face: east
+    plan_concept: "Single-level split-bedroom plan around a central vaulted family room."
+    rooms:
+      - {name: foyer, floor: 1, bounds: [-29, -149, -23, -141]}
+      - {name: family_room, floor: 1, bounds: [-38, -152, -30, -138]}
+      - {name: kitchen_dining, floor: 1, bounds: [-45, -156, -39, -134]}
+      - {name: primary_suite, floor: 1, bounds: [-29, -156, -23, -150]}
+      - {name: guest_wing, floor: 1, bounds: [-38, -137, -23, -134]}
+    circulation: "east foyer -> vaulted family room -> private wings north/south"
+
+  - id: H06
+    name: The Wakefield
+    style: Traditional Brick
+    shell: {min_x: -47, max_x: -22, min_z: -207, max_z: -183, floors_y: [64]}
+    street_face: east
+    plan_concept: "A traditional center hall with formal front rooms and a deep family kitchen."
+    rooms:
+      - {name: center_hall, floor: 1, bounds: [-33, -206, -23, -184]}
+      - {name: formal_living, floor: 1, bounds: [-46, -206, -34, -196]}
+      - {name: formal_dining, floor: 1, bounds: [-46, -195, -34, -184]}
+      - {name: family_kitchen, floor: 1, bounds: [-32, -206, -23, -194]}
+      - {name: primary_suite, floor: 1, bounds: [-32, -193, -23, -184]}
+    circulation: "east fanlight entry -> center hall -> rear family room"
+
+  - id: H07
+    name: The Villa Lago
+    style: Italian Mediterranean
+    shell: {min_x: 18, max_x: 45, min_z: 42, max_z: 68, floors_y: [64, 69]}
+    street_face: west
+    plan_concept: "Rooms wrap a tiled light court and connect to a rear loggia."
+    rooms:
+      - {name: arched_foyer, floor: 1, bounds: [19, 52, 25, 58]}
+      - {name: tiled_court, floor: 1, bounds: [26, 51, 34, 59]}
+      - {name: great_room, floor: 1, bounds: [35, 43, 44, 59]}
+      - {name: kitchen_dining, floor: 1, bounds: [19, 60, 44, 67]}
+      - {name: primary_suite, floor: 2, bounds: [19, 43, 32, 67]}
+      - {name: guest_gallery, floor: 2, bounds: [33, 43, 44, 67]}
+    circulation: "west loggia -> foyer -> light court loop -> east stair"
+
+  - id: H08
+    name: The Calais
+    style: French Hill Country
+    shell: {min_x: 20, max_x: 43, min_z: -5, max_z: 15, floors_y: [64, 69]}
+    street_face: west
+    plan_concept: "A symmetrical salon axis with a compact service spine and upper gallery."
+    rooms:
+      - {name: vestibule, floor: 1, bounds: [21, 3, 28, 8]}
+      - {name: salon, floor: 1, bounds: [29, -4, 42, 8]}
+      - {name: dining, floor: 1, bounds: [21, 9, 32, 14]}
+      - {name: kitchen, floor: 1, bounds: [33, 9, 42, 14]}
+      - {name: primary_suite, floor: 2, bounds: [21, -4, 32, 14]}
+      - {name: guest_suite, floor: 2, bounds: [33, -4, 42, 14]}
+    circulation: "west vestibule -> central salon -> curved stair/galleried landing"
+
+  - id: H09
+    name: The Casa Lana
+    style: Southwestern
+    shell: {min_x: 18, max_x: 46, min_z: -59, max_z: -31, floors_y: [64]}
+    street_face: west
+    plan_concept: "A one-level hacienda sequence around an interior tiled sala; the accepted full roof remains."
+    rooms:
+      - {name: zaguan_entry, floor: 1, bounds: [19, -49, 25, -41]}
+      - {name: central_sala, floor: 1, bounds: [26, -52, 37, -38]}
+      - {name: kitchen_dining, floor: 1, bounds: [38, -58, 45, -45]}
+      - {name: primary_suite, floor: 1, bounds: [19, -58, 31, -53]}
+      - {name: guest_wing, floor: 1, bounds: [19, -37, 45, -32]}
+    circulation: "west zaguan -> tiled sala -> perimeter room loop"
+
+  - id: H10
+    name: The Cross Creek
+    style: Texas Hill Country
+    shell: {min_x: 18, max_x: 45, min_z: -109, max_z: -81, floors_y: [64]}
+    street_face: west
+    plan_concept: "A deep ranch great room opens between stone bedroom and service wings."
+    rooms:
+      - {name: stone_foyer, floor: 1, bounds: [19, -99, 25, -91]}
+      - {name: great_room, floor: 1, bounds: [26, -103, 37, -87]}
+      - {name: kitchen_dining, floor: 1, bounds: [38, -108, 44, -88]}
+      - {name: primary_suite, floor: 1, bounds: [19, -108, 32, -104]}
+      - {name: guest_wing, floor: 1, bounds: [19, -86, 44, -82]}
+    circulation: "west porch -> foyer -> great-room axis -> rear covered living"
+
+  - id: H11
+    name: The Midtown
+    style: Urban Contemporary
+    shell: {min_x: 26, max_x: 38, min_z: -151, max_z: -140, floors_y: [64, 69, 74, 79]}
+    street_face: west
+    plan_concept: "A vertical townhouse: lobby/work studio, living floor, bedroom floor, roof lounge."
+    rooms:
+      - {name: lobby_studio, floor: 1, bounds: [27, -150, 37, -142]}
+      - {name: living_kitchen, floor: 2, bounds: [27, -150, 37, -142]}
+      - {name: bedroom_suite, floor: 3, bounds: [27, -150, 37, -142]}
+      - {name: roof_lounge, floor: 4, bounds: [27, -150, 37, -142]}
+    circulation: "west stoop -> continuous east-wall stair -> stacked open rooms"
+
+  - id: H12
+    name: The Valencia
+    style: Spanish Colonial
+    shell: {min_x: 21, max_x: 42, min_z: -205, max_z: -185, floors_y: [64]}
+    street_face: west
+    plan_concept: "An intimate Spanish plan organized around a tiled sala and rear garden doors."
+    rooms:
+      - {name: arched_entry, floor: 1, bounds: [22, -198, 27, -192]}
+      - {name: tiled_sala, floor: 1, bounds: [28, -203, 35, -188]}
+      - {name: kitchen_dining, floor: 1, bounds: [36, -204, 41, -193]}
+      - {name: primary_suite, floor: 1, bounds: [22, -204, 35, -199]}
+      - {name: guest_suite, floor: 1, bounds: [22, -191, 41, -186]}
+    circulation: "west arch -> tiled sala -> bedrooms north/south -> rear garden"

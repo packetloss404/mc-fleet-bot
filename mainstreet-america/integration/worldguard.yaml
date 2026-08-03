@@ -1,0 +1,80 @@
+# MainStreet America — live WorldGuard policy
+#
+# Verified and applied 2026-07-26. This file records the live regions; it is no
+# longer a speculative flag profile. WorldGuard protects region geometry by
+# membership even when the explicit `build` flag is unset. Keeping `build`
+# unset is intentional: an unconditional build-deny flag would also block the
+# five named builders. PacketCraft's parcel/build zones add a second layer for
+# scheduled fleet construction.
+
+status: applied
+world: world
+plugins:
+  worldedit: 7.4.0
+  worldguard: 7.0.16
+
+regions:
+  mainstreet_america:
+    type: cuboid
+    priority: 10
+    min: {x: -300, y: -64, z: -300}
+    max: {x: 300, y: 319, z: 300}
+    flags:
+      mob-spawning: deny
+    owner:
+      name: packetloss404
+      uuid: dac51b37-928d-35f5-b87a-0fcabb26752a
+    members:
+      # UUIDs are the durable live values. Names are retained for operations.
+      - {name: Architect, uuid: c12cc45b-0377-32a5-8fa0-d0f7cc95b22c}
+      - {name: Mason, uuid: 5f8c8e1b-c0df-3f13-9235-316eebfa3c01}
+      - {name: Steward, uuid: a24c913a-a70e-32b9-a631-2c491f7bd863}
+      - {name: Surveyor, uuid: 45b61cfc-f8fc-35e2-9dbd-d05d666b59f6}
+      - {name: Scout, uuid: 274eb56c-e054-365b-af9f-d464a7f210e0}
+
+  # `raven_rock` has priority 11 across the whole subsurface. This child region
+  # gives the non-Raven-Rock MainStreet mountain complex its own higher-priority
+  # edit domain without granting access to the rest of Raven Rock.
+  msa_mountain_sub:
+    type: cuboid
+    priority: 12
+    min: {x: 90, y: -64, z: 70}
+    max: {x: 294, y: 61, z: 240}
+    flags:
+      mob-spawning: deny
+    owner:
+      name: packetloss404
+      uuid: dac51b37-928d-35f5-b87a-0fcabb26752a
+    members:
+      - {name: Architect, uuid: c12cc45b-0377-32a5-8fa0-d0f7cc95b22c}
+      - {name: Mason, uuid: 5f8c8e1b-c0df-3f13-9235-316eebfa3c01}
+      - {name: Steward, uuid: a24c913a-a70e-32b9-a631-2c491f7bd863}
+      - {name: Surveyor, uuid: 45b61cfc-f8fc-35e2-9dbd-d05d666b59f6}
+      - {name: Scout, uuid: 274eb56c-e054-365b-af9f-d464a7f210e0}
+
+operator_policy:
+  operators:
+    - packetloss404
+  deopped_builders:
+    - Architect
+    - Mason
+    - Steward
+    - Surveyor
+    - Scout
+
+acceptance:
+  - Full property region verified at `(-300,-64,-300) -> (300,319,300)`.
+  - MainStreet mountain child verified at `(90,-64,70) -> (294,61,240)`.
+  - Owner and five builder UUIDs are persisted in both applicable edit domains.
+  - `ops.json` contains only packetloss404; operator bypass is no longer the
+    fleet's normal construction path.
+  - A live WorldGuard debug test allowed the member past WorldGuard and reached
+    PacketCraft's parcel policy; after temporarily removing that membership, the
+    same non-opped player received WorldGuard's block-break denial. Membership
+    was restored immediately.
+
+notes:
+  - Dynmap, BlueMap, EssentialsX, and Citizens are not live server plugins.
+    BlueMap is used only as an offline snapshot QA renderer.
+  - Visitor interaction, chest, combat, fire, and greeting flags from the old
+    authored museum profile were never applied and are not represented as live.

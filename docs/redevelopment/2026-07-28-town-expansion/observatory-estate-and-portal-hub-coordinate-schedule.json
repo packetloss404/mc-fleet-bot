@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "PLANNING_COORDINATE_RESERVATION_NOT_A_BUILD_RELEASE",
+  "generatedUtc": "2026-07-28T08:25:00Z",
+  "liveWorldMutated": false,
+  "coordinateConvention": {"north": "-Z", "bounds": "inclusive"},
+  "evidence": {
+    "snapshot": {
+      "path": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region",
+      "sha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999"
+    },
+    "database": {
+      "path": "data/world-map.db",
+      "sha256AtSurvey": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+      "mode": "read-only"
+    },
+    "map": "docs/redevelopment/2026-07-28-town-expansion/evidence/observatory-estate-current-map.png",
+    "sourceMemo": "docs/redevelopment/2026-07-28-town-expansion/observatory-estate-and-inactive-portal-gallery-source-of-truth.md"
+  },
+  "currentObjects": [
+    {"id": "OBS-S01", "bounds": [175, 235, 119, 136, 137, 182], "name": "Griffith-inspired roof observatory"},
+    {"id": "APT-S01", "bounds": [178, 225, 105, 114, 139, 180], "name": "Concealed one-bedroom penthouse"},
+    {"id": "ROUTE:APT-SHELTER", "bounds": [184, 207, 81, 104, 146, 146], "name": "Penthouse safe room to private shelter"},
+    {"id": "C01", "bounds": [100, 300, 45, 105, 70, 235], "relationship": "Existing observatory/penthouse is supported by the old C01 roof and cannot survive blind C01 demolition."}
+  ],
+  "estateReservation": {
+    "id": "OBS-ESTATE-01",
+    "bounds": [145, 275, 75, 150, 100, 225],
+    "dependency": "Engineer an independent retained podium/foundation before old C01 decommissioning. P01 ends at x125, so the estate remains outside the recovered parking bounds.",
+    "subsurfaceSurveyY75To104": {
+      "bounds": [145, 275, 75, 104, 100, 225],
+      "cells": 495180,
+      "fluidCells": 0,
+      "gravityCells": 0,
+      "airCells": 219365,
+      "blockEntities": 784,
+      "rule": "The block entities are existing C01/estate inventory and fixtures. No bulk clear; every NBT object needs a preserve/move/retire ledger."
+    }
+  },
+  "massing": [
+    {"id": "OBS-RETAINED-CROWN", "bounds": [175, 235, 119, 150, 137, 182], "program": "retain and enrich central copper dome, twin telescope domes, planetarium gallery and roof terraces"},
+    {"id": "OBS-WEST-WING", "bounds": [150, 177, 105, 126, 125, 195], "program": "guest suites, art gallery, conservatory, owner offices and staff stair"},
+    {"id": "OBS-EAST-WING", "bounds": [233, 270, 105, 126, 125, 195], "program": "grand library, music salon, dining room, show kitchen, family kitchen and private stair"},
+    {"id": "OBS-SOUTH-COURT", "bounds": [178, 232, 104, 118, 183, 215], "program": "arcaded arrival court, reflecting rill, porte-cochere, sculpture and terrace stairs"},
+    {"id": "OBS-NORTH-TERRACE", "bounds": [175, 235, 118, 124, 110, 136], "program": "night-sky terrace, wind screens, seating niches and dome approach"},
+    {"id": "OBS-DISH-FARM", "bounds": [240, 270, 105, 132, 100, 122], "program": "five small sculptural radio-dish pads, service walk and interpretive signs; fictional instruments"},
+    {"id": "OBS-OWNER-SPA", "bounds": [150, 177, 105, 116, 196, 220], "program": "pool, spa bath, gym, massage/quiet rooms and planted winter court"}
+  ],
+  "safeRoomAndShelter": {
+    "id": "OBS-SHL-EXPANDED",
+    "bounds": [240, 270, 93, 104, 170, 215],
+    "fluidCellsInBroaderY75To104Study": 0,
+    "blockEntitiesY75To104": 0,
+    "program": ["safe room", "independent air/utility room", "water and food store", "sanitation", "communications", "medical/quiet room", "two remote egress routes"],
+    "isolation": "Independent shutoffs and protected support routes; no connection to selected east C01, Ravensgate restricted underground or portal rooms.",
+    "publicationRule": "Show room program and exits diagrammatically; omit security-vulnerability detail."
+  },
+  "hiddenPortalGallery": {
+    "id": "OBS-PORTAL-GALLERY",
+    "overallBounds": [210, 270, 75, 92, 123, 190],
+    "survey": {"cells": 74664, "fluidCells": 0, "gravityCells": 0, "airCells": 8550, "blockEntities": [["minecraft:sign", 237, 91, 187]]},
+    "hiddenEntry": {
+      "id": "OBS-PORTAL-SECRET-ENTRY",
+      "bounds": [211, 219, 104, 114, 145, 155],
+      "feature": "a large working-looking armillary sphere and constellation bookcase in the owner library; the discoverable celestial alignment reveals the door",
+      "rule": "Fun architectural discovery, not a real security mechanism."
+    },
+    "descendingPassage": {
+      "bounds": [218, 232, 88, 105, 145, 155],
+      "clearWidth": 5,
+      "clearHeadroom": 5,
+      "landings": "minimum five-block landing at each turn",
+      "isolation": "No branch to C01, shelter, Raven Rock, Ravensgate, natural caves or utilities."
+    },
+    "centralHub": {
+      "id": "PORTAL-HUB-CENTRAL",
+      "bounds": [230, 250, 78, 88, 145, 165],
+      "program": "generous circulation ring, floor-map mosaic, district compass, destination directory, seating and inactive-frame status board"
+    },
+    "rooms": [
+      {"id": "PORTAL-MAINSTREET", "bounds": [251, 270, 78, 88, 145, 160], "theme": "MainStreet limestone, garage-grid mosaic and boulevard map"},
+      {"id": "PORTAL-RAVENROCK", "bounds": [251, 270, 78, 88, 162, 177], "theme": "restrained concrete, route-section mosaic and mountain profile"},
+      {"id": "PORTAL-RAVENSREACH", "bounds": [230, 245, 78, 88, 167, 187], "theme": "stone arcade, library/guild map and heraldic ceiling"},
+      {"id": "PORTAL-WESTLIGHT", "bounds": [210, 229, 78, 88, 167, 187], "theme": "theater red, waterline bands, stadium/pier orientation map"},
+      {"id": "PORTAL-PANORAMA", "bounds": [210, 229, 78, 88, 145, 165], "theme": "desert stone, toll-oasis canopy motif and bunker-free public map"},
+      {"id": "PORTAL-DATACAMPUS", "bounds": [230, 245, 78, 88, 123, 143], "theme": "cool metal, 40-row hall diagram and campus/outer-complex map"},
+      {"id": "PORTAL-SPARE-A", "bounds": [247, 258, 78, 88, 123, 143], "theme": "unassigned"},
+      {"id": "PORTAL-SPARE-B", "bounds": [260, 270, 78, 88, 123, 143], "theme": "unassigned"}
+    ],
+    "roomStandard": {
+      "minimumClearHeadroom": 7,
+      "orientation": "Each room has its own floor map, district silhouette, destination name and return-to-hub arrow.",
+      "inactiveFrame": "Decorative complete frame only. No nether_portal, end_portal, end_gateway or other active portal block/state.",
+      "uncommissionedVestibule": "Two sequential metal doors with a three-block-clear holding vestibule; doors remain closed and destination sign reads OFFLINE.",
+      "scalability": "Spare rooms use the same hub-facing module and may only expand east/north after a new conflict survey."
+    }
+  },
+  "conflictMatrix": [
+    {"pair": ["estate", "old C01"], "result": "Major dependency/overlap. Preserve independent support podium before C01 decommission; no broad clear because 784 BEs/NBT objects occupy the study volume."},
+    {"pair": ["estate", "P01"], "result": "No overlap; P01 maxX=125 and estate minX=145, leaving 19 clear columns."},
+    {"pair": ["estate", "selected east C01"], "result": "No overlap; selected C01 begins x700."},
+    {"pair": ["estate", "northeast data campus"], "result": "No overlap."},
+    {"pair": ["estate", "pavilion east grounds"], "result": "No overlap."},
+    {"pair": ["portal gallery", "old C01"], "result": "Occupies old C01 volume and is sequenced only after decommission/independent support works; one existing sign at 237,91,187 requires NBT review."},
+    {"pair": ["portal gallery", "all tunnel networks"], "result": "No connection permitted. Inactive architectural rooms only."},
+    {"pair": ["safe room", "portal gallery"], "result": "Separated vertically and by closed construction; no shared door or utility dependency."}
+  ],
+  "releaseGates": [
+    "fresh immutable snapshot and exact DB export",
+    "independent structural support/podium design before old C01 demolition",
+    "complete preserve/move/retire ledger for all 784 block entities in the broad study",
+    "zero target collision with P01 recovery and C01 relocation packages",
+    "safe-room utilities and two egress routes independently commissioned",
+    "all portal rooms remain inactive and contain zero active portal blocks",
+    "every uncommissioned portal room has closed two-door metal vestibule and OFFLINE sign",
+    "hidden passage has five-block headroom/landings and no branch",
+    "bidirectional normal-walk QA for estate, shelter and portal gallery",
+    "matched maps, exterior/terrace/dome/dish/shelter/portal screenshots and database crosswalk"
+  ]
+}

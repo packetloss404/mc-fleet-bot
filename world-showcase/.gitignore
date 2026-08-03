@@ -1,0 +1,13 @@
+node_modules/
+.next/
+.open-next/
+.openai/
+.sites-worker-bundle/
+.wrangler/
+*.tgz
+*.tsbuildinfo
+
+# The root fleet repo ignores every directory named data/. This site has one
+# generated, public JSON input that must remain in Railway upload bundles.
+!public/data/
+!public/data/**

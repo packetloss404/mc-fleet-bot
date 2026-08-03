@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 1,
+  "status": "SUPERSEDED_HISTORICAL_POINT_IN_TIME_PROPOSAL",
+  "purpose": "Historical default-deny proposal retained to document the unsafe point-in-time overlap inventory. It is not the current approval source.",
+  "successor": {
+    "contract": "docs/redevelopment/2026-07-28-town-expansion/town-expansion-cross-scope-interface-contracts.json",
+    "machineAudit": "docs/redevelopment/2026-07-28-town-expansion/evidence/town-expansion-global-cross-scope-interface-audit.json",
+    "markdownAudit": "docs/redevelopment/2026-07-28-town-expansion/town-expansion-global-cross-scope-interface-audit.md",
+    "policy": "Canonical single-owner refactors first; exact direction, count, bounds, cell hash, and connected-component contracts only for residual physical seams."
+  },
+  "pointInTimeAudit": {
+    "path": "docs/redevelopment/2026-07-28-town-expansion/evidence/redevelopment-cross-scope-point-in-time-audit.json",
+    "worldSnapshotSha256": "e612b1feabcf8bd81e427804e0c5cdccea5aac79ef543cadbf2b05d360de7a5a",
+    "compilerSha256AtAuditRun": null,
+    "laterObservedCompilerSha256": "2664a2a758cd1db2a08364224dd0afa255d13a0bd3ace57f10383c000c7ff85a",
+    "stale": true,
+    "reason": "The exact compiler hash at the bypass audit run was not captured and the compiler changed afterward. Counts below are diagnostic only until regenerated from a pinned final compiler."
+  },
+  "enforcement": {
+    "default": "DENY",
+    "wildcardsAllowed": false,
+    "scopeDirectionMustMatch": true,
+    "reverseDirectionRequiresSeparateEntry": true,
+    "fromRolesMustMatch": true,
+    "toRolesMustMatch": true,
+    "fromStatesMustMatch": true,
+    "toStatesMustMatch": true,
+    "inclusiveBoundsMustMatch": true,
+    "exactCellCountMustMatch": true,
+    "sortedCellSetSha256MustMatch": true,
+    "approvalRequiresFinalCompilerSha256": true,
+    "approvalRequiresIndependentReview": true,
+    "driftAction": "ABORT_GENERATION",
+    "releaseStatusWhenUnapprovedOverridesExist": "BLOCKED_UNAPPROVED_CROSS_SCOPE_OVERRIDES"
+  },
+  "requiredApprovedEntryShape": {
+    "id": "stable interface identifier",
+    "status": "APPROVED",
+    "finalCompilerSha256": "64-character SHA-256",
+    "fromScope": "exact source scope",
+    "toScope": "exact destination scope",
+    "fromRoles": [
+      "one or more exact source roles"
+    ],
+    "toRoles": [
+      "one or more exact destination roles"
+    ],
+    "allowedStateTransitions": [
+      {
+        "from": "exact normalized block state",
+        "to": "exact normalized block state"
+      }
+    ],
+    "inclusiveBounds": {
+      "minX": 0,
+      "minY": 0,
+      "minZ": 0,
+      "maxX": 0,
+      "maxY": 0,
+      "maxZ": 0
+    },
+    "exactCellCount": 1,
+    "sortedCellSetSha256": "SHA-256 of newline-separated x,y,z tuples sorted y,z,x",
+    "purpose": "named physical threshold, joint, bulkhead, or controlled attachment",
+    "routeOrContainmentProof": "path to a machine-readable QA artifact",
+    "reviewedBy": [
+      "design owner",
+      "independent release auditor"
+    ]
+  },
+  "approvedInterfaces": [],
+  "nonIowaCandidates": [
+    {
+      "fromScope": "TE-WL-PARKWAY-EXTENSION",
+      "toScope": "TE-PAN-RV01-ROAD",
+      "stalePointInTimeCells": 3169,
+      "classification": "DUPLICATE_LONGITUDINAL_ROAD_OWNERSHIP",
+      "requiredResolution": "Refactor the shared corridor to one canonical road scope. Do not allowlist a multi-thousand-cell last-writer-wins repaving."
+    },
+    {
+      "fromScope": "TE-WL-FREIGHT",
+      "toScope": "TE-WL-PARKWAY-EXTENSION",
+      "stalePointInTimeCells": 1581,
+      "classification": "DUPLICATE_LONGITUDINAL_ROAD_OWNERSHIP",
+      "requiredResolution": "Refactor the shared approach to one canonical road scope and retain only a small, hashed junction interface."
+    },
+    {
+      "fromScope": "TE-WL-RAVENCREST-GATE",
+      "toScope": "TE-WL-RAVENCREST",
+      "stalePointInTimeCells": 1020,
+      "classification": "PARENT_CHILD_PROGRAM_OVERWRITE",
+      "requiredResolution": "Use one scope for the gate shell and interior, or regenerate an exact shell-to-room contract proving enclosure, thresholds, headroom, and final walkability."
+    },
+    {
+      "fromScope": "TE-WL-ADVENTURE-EXCHANGE",
+      "toScope": "TE-WL-RAVENCREST-GATE",
+      "stalePointInTimeCells": 1002,
+      "classification": "COMPETING_GATE_ENVELOPES",
+      "requiredResolution": "Select one gate envelope. A separate park gate may meet the exchange only through a deliberately bounded threshold."
+    },
+    {
+      "fromScope": "TE-WL-FREIGHT",
+      "toScope": "TE-PAN-RV01-ROAD",
+      "stalePointInTimeCells": 682,
+      "classification": "DUPLICATE_LONGITUDINAL_ROAD_OWNERSHIP",
+      "requiredResolution": "Consolidate the shared roadway and separately prove freight turning geometry and pedestrian separation."
+    },
+    {
+      "fromScope": "TE-WESTLIGHT-CRATER-LAKE",
+      "toScope": "TE-WL-CRATER-WEST-GREEN-LINK",
+      "stalePointInTimeCells": 602,
+      "classification": "LANDSCAPE_PATH_ATTACHMENT_CANDIDATE",
+      "requiredResolution": "Regenerate as one landscape owner or admit only exact path-to-promenade seam cells after hydrology, headroom, grade, and retaining-edge QA."
+    },
+    {
+      "fromScope": "TE-WESTLIGHT-CRATER-LAKE",
+      "toScope": "TE-WL-HARBORLIGHT",
+      "stalePointInTimeCells": 497,
+      "classification": "QUAY_HOUSING_INTERFACE_CANDIDATE",
+      "requiredResolution": "Make the lake walk and Bayberry Lane one public-realm scope, or bind a small exact promenade junction that does not erase quay containment."
+    },
+    {
+      "fromScope": "TE-ROAD-01",
+      "toScope": "TE-OASIS-01",
+      "stalePointInTimeCells": 491,
+      "classification": "OASIS_OVER_ROAD_INTERFACE_CANDIDATE",
+      "requiredResolution": "Prove the tollway passes under or through the Oasis with continuous deck, support, six-block vehicle clearance, and two-way route QA; contract only the exact structural/threshold cells."
+    },
+    {
+      "fromScope": "TE-ROAD-01",
+      "toScope": "TE-WL-FREIGHT",
+      "stalePointInTimeCells": 481,
+      "classification": "DUPLICATE_LONGITUDINAL_ROAD_OWNERSHIP",
+      "requiredResolution": "Use one canonical road owner before the freight spur diverges."
+    },
+    {
+      "fromScope": "TE-OASIS-01",
+      "toScope": "TE-WL-FREIGHT",
+      "stalePointInTimeCells": 398,
+      "classification": "ROAD_BUILDING_CONFLICT_PENDING_REDESIGN",
+      "requiredResolution": "Redesign the freight alignment around the Oasis or expose a named service threshold; do not approve broad headroom or wall erasure."
+    },
+    {
+      "fromScope": "TE-WL-VENUE-BASEMENTS",
+      "toScope": "TE-WL-FREIGHT",
+      "stalePointInTimeCells": 374,
+      "classification": "BACKSTAGE_FREIGHT_ATTACHMENT_CANDIDATE",
+      "requiredResolution": "Bind only a named fire-rated bulkhead, freight-lift landing, and clear large-item route after final enclosure and egress QA."
+    },
+    {
+      "fromScope": "TE-WL-ADVENTURE-EXCHANGE",
+      "toScope": "TE-WL-NORTHWIND-BATH",
+      "stalePointInTimeCells": 327,
+      "classification": "COMPETING_WATER_PARK_GATE_ENVELOPES",
+      "requiredResolution": "Move or reshape the bathhouse and gate so they meet at one accessible entrance instead of overwriting a building edge."
+    },
+    {
+      "fromScope": "TE-OASIS-01",
+      "toScope": "TE-PAN-RV01-ROAD",
+      "stalePointInTimeCells": 304,
+      "classification": "RV_ROAD_OASIS_INTERFACE_CANDIDATE",
+      "requiredResolution": "Use a single approach-road owner and preserve only an exact Oasis exit threshold."
+    },
+    {
+      "fromScope": "TE-WL-PARKWAY-EXTENSION",
+      "toScope": "TE-WL-ADVENTURE-EXCHANGE",
+      "stalePointInTimeCells": 90,
+      "classification": "ROAD_ORIENTATION_COURT_JUNCTION_CANDIDATE",
+      "requiredResolution": "Eligible for a small exact junction contract after grade, crosswalk, curb, and path-continuity QA."
+    },
+    {
+      "fromScope": "TE-ROAD-01",
+      "toScope": "TE-WL-PARKWAY-EXTENSION",
+      "stalePointInTimeCells": 89,
+      "classification": "ROAD_JUNCTION_CANDIDATE",
+      "requiredResolution": "Eligible only as one exact, hashed road junction after duplicate segments are removed."
+    },
+    {
+      "fromScope": "TE-WL-ADVENTURE-EXCHANGE",
+      "toScope": "TE-WL-NORTHWIND",
+      "stalePointInTimeCells": 88,
+      "classification": "WATER_PARK_GATE_PATH_INTERFACE_CANDIDATE",
+      "requiredResolution": "Bind a single accessible gate-to-loop threshold and prove the containment system is untouched."
+    },
+    {
+      "fromScope": "TE-WL-CRATER-WEST-GREEN-LINK",
+      "toScope": "TE-WL-HL-A",
+      "stalePointInTimeCells": 81,
+      "classification": "PATH_FACADE_COLLISION",
+      "requiredResolution": "Shift the green link clear of the HL-A building envelope; zero cross-scope overwrite is expected."
+    },
+    {
+      "fromScope": "TE-C01-EAST-ROAD",
+      "toScope": "TE-MSA-P01-FULL-RECOVERY",
+      "stalePointInTimeCells": 55,
+      "classification": "PARKING_ROAD_JUNCTION_CANDIDATE",
+      "requiredResolution": "Eligible for an exact parking-lot exit seam only after lane markings, recovered parking, and bidirectional vehicle route QA."
+    },
+    {
+      "fromScope": "TE-ROAD-01",
+      "toScope": "TE-WL-SKY-BOWL-IDENTITY",
+      "stalePointInTimeCells": 43,
+      "classification": "ARRIVAL_PLAZA_JUNCTION_CANDIDATE",
+      "requiredResolution": "Bind only the exact road-to-plaza threshold and prove the identity structure does not obstruct the vehicle route."
+    },
+    {
+      "fromScope": "TE-OASIS-01",
+      "toScope": "TE-WL-PARKWAY-EXTENSION",
+      "stalePointInTimeCells": 38,
+      "classification": "ROAD_JUNCTION_CANDIDATE",
+      "requiredResolution": "Consolidate the approach-road ownership, then retain at most one exact junction."
+    },
+    {
+      "fromScope": "TE-WL-BLUE-DRUM",
+      "toScope": "TE-WL-FREIGHT",
+      "stalePointInTimeCells": 32,
+      "classification": "STAGE_FREIGHT_LIFT_ATTACHMENT_CANDIDATE",
+      "requiredResolution": "Eligible for an exact stage freight-lift landing contract after shaft enclosure, door, level, and egress QA."
+    },
+    {
+      "fromScope": "TE-ROAD-01",
+      "toScope": "TE-PAN-RV01-ROAD",
+      "stalePointInTimeCells": 23,
+      "classification": "ROAD_JUNCTION_CANDIDATE",
+      "requiredResolution": "Eligible only as a single exact branch threshold after all co-linear duplicate road ownership is removed."
+    },
+    {
+      "fromScope": "TE-WESTLIGHT-CRATER-LAKE",
+      "toScope": "TE-WL-LANTERN-STUDIO",
+      "stalePointInTimeCells": 12,
+      "classification": "QUAY_BUILDING_SUPPORT_INTERFACE_CANDIDATE",
+      "requiredResolution": "Prove a pile-supported pier/building joint that preserves lake containment; bind only the exact support cells and dry envelope."
+    }
+  ]
+}

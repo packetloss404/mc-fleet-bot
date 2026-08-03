@@ -2,8 +2,9 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useToast } from '@/components/Toast';
-
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+// Import the shared base rather than re-deriving it — this file used to carry
+// its own `|| 'http://localhost:3001'` copy, which broke remote browsers.
+import { API_BASE } from '@/lib/api';
 
 // ─── Types ────────────────────────────────────────────────────────────────
 

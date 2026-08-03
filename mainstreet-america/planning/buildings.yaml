@@ -1,0 +1,832 @@
+# MainStreet America (Spring, TX) — Building Manifest
+# Minecraft Java 1.21.x reconstruction. Planning-engineer deliverable.
+# Cross-checked against: references/manifest.yaml (source record) and planning/site-plan.md (zones/centroids).
+#
+# ---------------------------------------------------------------------------------------------------
+# CONFIDENCE DISCIPLINE (never upgraded; mirrors references/manifest.yaml)
+#   verified                 - primary/multi-source fact (e.g. home names, styles, sqft, building sizes)
+#   high_confidence_inference- arithmetic on verified data (e.g. footprint blocks derived from verified sqft)
+#   moderate_reconstruction  - assembled from weak/unlabeled evidence
+#   creative_approximation   - no evidence; this build invents it (all facades, palettes, lot ordering, coords)
+# When prose polish and a tag disagree, trust the tag. A reconstruction with honest gaps is the goal.
+#
+# ---------------------------------------------------------------------------------------------------
+# ASSUMPTIONS & DEVIATIONS THE READER MUST KNOW (see also: full report to the orchestrator)
+#
+#   A1. NO LITERAL BRIEF RECOVERED. The task references "the brief" with an MSA-00..MSA-13 table and
+#       numbered "section 14" (minimum interior program) and "section 20" (building_record schema).
+#       That document is NOT present in this repo. Only the system-prompt baseline, manifest.yaml, and
+#       site-plan.md were available. The id->structure mapping, the section-14 room program, and the
+#       section-20 field set below are RECONSTRUCTED from those sources + the field list enumerated in
+#       the task. If a canonical brief exists, it wins; reconcile against it.
+#
+#   A2. 15 VERIFIED STRUCTURES vs 14 REQUESTED IDS. The verified program is: Guest & Design Center +
+#       Cooking School/Retail (Bldg 2) + Warehouse (Bldg 3) + 12 model homes = 15 buildings. MSA-00..
+#       MSA-13 is only 14 ids. I did NOT drop a verified structure. I resolved the off-by-one with the
+#       ONE merge that has documentary support: the cooking school. Promotional sources (manifest
+#       REF-008) place the culinary school "housed inside" the Guest Center; the Colliers survey
+#       (REF-009 / site-plan Z05) isolates it as a separate 8,342 SF Building 2. I model it as an
+#       EMBEDDED ANNEX of MSA-00 while preserving its separate site-plan footprint/centroid (−112,−7)
+#       inside MSA-00 so a cross-check agent can still find a building there — or split it back out to
+#       its own pad. This is a documented conflict, recorded both ways, not silently merged.
+#
+#   A3. ORIENTATION IS ROTATED (from site-plan.md flag 1). Real parcel fronts I-45 on its WEST; the
+#       project constants mandate the entrance on the SOUTH (+Z). The whole west->east functional
+#       gradient is rotated 90 deg CW: real-west/front -> build-south/+Z; real-east/rear -> build-north/-Z.
+#       Ordering of functions is faithful; the compass bearing is a build convention, not a survey.
+#
+#   A4. THE STREET IS AN OVAL BY DIRECTIVE (site-plan.md flag 2). The real homes lined ONE straight
+#       dead-end cul-de-sac, homes on both sides (VERIFIED, REF-015). The build renders a graceful oval
+#       ring. Homes-on-both-sides is honored (8 on the outer ring, 4 on an inner island). The curved
+#       geometry is a creative deviation.
+#
+#   A5. WHICH NAMED HOME SITS ON WHICH LOT IS UNKNOWN (REF-015 / manifest unknowns). No site plan
+#       mapped home->lot. The MSA-01..MSA-12 id assignment AND every home coordinate below are
+#       creative_approximation. Ordering is the builder's choice; another agent may reshuffle freely.
+#
+#   A6. EVERY FACADE/PALETTE/ROOF IS CREATIVE (REF-019). No source documents any building's exterior
+#       material, color, or roof form. Style NAMES are verified; the block choices that render them are
+#       creative_approximation and must be labeled as such to visitors.
+#
+#   A7. SITE CONDITION — CORRECTED 2026-07-25 (the old "NO-OP / no plugins" text was false).
+#       WorldEdit 7.4.0 + WorldGuard 7.0.16 ARE installed; all five bots ARE opped (level 4).
+#       Absent: Dynmap/BlueMap, EssentialsX, Citizens. All coordinates remain plain world coordinates
+#       buildable by plain block placement. Region protection is now PARTLY active: region
+#       `mainstreet_america` carries `mob-spawning: deny` (see ../../raven-rock/qa/oq3-worldguard.md);
+#       build/grief flags are NOT set and would be inert while the bots hold op (OQ-2).
+# ---------------------------------------------------------------------------------------------------
+
+schema_version: "reconstructed-1.0"   # see A1: section-20 schema reconstructed from the task field list
+
+site_reference:
+  world_origin: [0, 64, 0]
+  base_build_elevation_y: 64
+  envelope: { x_min: -300, x_max: 300, z_min: -300, z_max: 300 }
+  compass: { north: "-Z", south: "+Z", east: "+X", west: "-X" }
+  principal_entrance_side: "SOUTH (+Z)"   # creative convention (A3)
+  scale: "1 horizontal block ~= 2 real feet; 1 block^2 ~= 4 sq ft"
+  minecraft_edition: "Java 1.21.x, vanilla-compatible blocks only, no resource pack"
+  zone_source: "planning/site-plan.md sections 2-3 (Z01-Z09)"
+
+# Legend for per-record fields (reconstructed section-20 schema):
+#   category           - guest_center | model_home | service
+#   style              - verified architectural style (homes) or building class (non-homes)
+#   verified_spec      - the primary-sourced numbers this record must honor (with manifest REF)
+#   location_center    - [x, y, z] footprint centroid (creative_approximation; cross-check target)
+#   building_record:
+#     status           - historical design-phase value only; do not use as current build state.
+#                        Current status/condition lives in data/world-map.db and the 2026-07-26 audit.
+#     confidence        - per-aspect tags (program/size vs placement vs appearance)
+#     footprint        - {width_x, depth_z, area_blocks} ground-floor plate in blocks
+#     floors           - integer story count (verified where sourced)
+#     entrance_coordinate - [x,y,z] of the front door, 1 block outside the facing wall
+#     palette          - vanilla 1.21 blocks, ALL creative_approximation (A6)
+#     rooms            - interior program (reconstructed section-14 minimum + size-scaled additions)
+#     completion (5 booleans) - footprint_staked, exterior_shell_complete, roof_complete,
+#                               interior_complete, palette_and_detailing_complete  (all false)
+#     defects          - open issues / known reconstruction gaps
+#     notes            - DISTINCT massing/roofline/entry concept + confidence commentary
+
+buildings:
+
+  # =================================================================================================
+  # MSA-00 — GUEST & DESIGN CENTER (Building 1) — the anchor. Cooking-school annex embedded (A2).
+  # =================================================================================================
+  - id: MSA-00
+    name: "Guest & Design Center"
+    category: guest_center
+    style: "Class A office 'mansion' massing (exterior undocumented — REF-019)"
+    verified_spec: "44,019 SF, 2-story, Class A, built 2011 (REF-007); primary entrance facility with
+      MAIN Restaurant, event hall, furniture showroom, T.E.D. distribution, ~10,000 SF design studio
+      (REF-008/REF-018). Cooking school 'housed inside' per promotional sources (REF-008), isolated as
+      a separate 8,342 SF Building 2 by Colliers (REF-009) — see defects."
+    location_center: [0, 64, 128]   # REPOINTED to as-built: x[-72,72] z[90,165], 145x76 (was OVAL [0,64,88] 90x60)
+    building_record:
+      status: not_started
+      confidence:
+        program_and_size: verified          # 44,019 SF / 2-story / functions (REF-007/008/018)
+        placement: creative_approximation    # rotated centroid; site-plan Z03 = (0,+88)
+        appearance: creative_approximation    # no facade/material/roof source (REF-019)
+      footprint: { width_x: 90, depth_z: 60, area_blocks: 5400 }   # 5400 x 2 floors = 10,800 blk ~= 43,200 SF ~ 44,019
+      floors: 2
+      entrance_coordinate: [0, 64, 119]        # south face (+Z), on the axial arrival drive
+      palette:
+        walls: "smooth_quartz (stucco field) with bricks wainscot and quoins"
+        secondary_walls: "white_terracotta"
+        roof: "polished_deepslate / deepslate_tile_stairs (low hip)"
+        trim: "stripped_dark_oak_wood"
+        columns_portico: "quartz_pillar"
+        glass: "glass_pane (large storefront bays on the south forecourt face)"
+        ground_plaza: "smooth_stone + stone_bricks"
+        note: "creative_approximation (A6) — 'mansion' is a marketing vibe, not a spec."
+      rooms:
+        - orientation_lobby            # arrival / ticketing
+        - ted_distribution_desk        # Nexus-7 "T.E.D." tablet handout (verified program, REF-002)
+        - furniture_showroom
+        - design_studio                # ~10,000 SF sub-space (REF-008/REF-018) ~= 2,500 blk
+        - main_restaurant_dining
+        - restaurant_kitchen
+        - event_hall_ballroom          # weddings / markets / "Christmas on MainStreet" (REF-008)
+        - cooking_school_demo_kitchen  # EMBEDDED ANNEX — see A2 / defects (separate-building alt exists)
+        - retail_display_gallery
+        - administrative_offices
+        - public_restrooms
+        - back_of_house_service
+      completion:
+        footprint_staked: false
+        exterior_shell_complete: false
+        roof_complete: false
+        interior_complete: false
+        palette_and_detailing_complete: false
+      defects:
+        - "COOKING-SCHOOL CONFLICT (A2): modeled here as an embedded demonstration-kitchen annex per
+           promotional sources (REF-008). Colliers/site-plan Z05 instead isolates it as a SEPARATE
+           8,342 SF Building 2 at center (-112, 64, -7), footprint ~45x46, 1 floor. Cross-check agent:
+           either keep it embedded or split it to that pad. Do not double-count its 8,342 SF."
+        - "Facade, roof form, window pattern, materials all undocumented (REF-019) — invented."
+      notes: >-
+        MASSING/ROOFLINE/ENTRY (distinct): a broad two-story symmetric mansion block, long face to the
+        SOUTH parking forecourt, terminating the axial arrival sightline. Central projecting entry
+        pavilion with a shallow quartz-pillar portico and a pediment gable, flanked by long low hipped
+        wings (polished-deepslate hip roof) with storefront glass bays lighting the showroom/studio.
+        This "central-pavilion-plus-hipped-wings" concept is used ONLY here and is deliberately distinct
+        from all 12 home rooflines. Guest Center faces the drop-off loop (~(0,+135)) and the Z09 event
+        lawn on its east flank.
+
+  # =================================================================================================
+  # MSA-01 .. MSA-12 — THE TWELVE SHOWCASE HOMES (roster verified, REF-017; lot assignment creative, A5)
+  # Footprint blocks = round(verified_sqft / 4 / floors); floors from verified story counts.
+  # Layout: outer oval ring (west flank 3, east flank 4) + inner island (5). Non-overlap verified.
+  # =================================================================================================
+
+  - id: MSA-01
+    name: "The Alexandria"
+    category: model_home
+    style: "Greek Revival"
+    verified_spec: "6,011 SF, 4 bed / 3 bath / 3 story — LARGEST of the 12; oversized media room (REF-017)."
+    location_center: [-34, 64, 55]   # REPOINTED to as-built (west row, lot z+55); was OVAL
+    building_record:
+      status: not_started
+      confidence:
+        program_and_size: verified           # name/style/sqft/beds/baths/stories (REF-017)
+        footprint_math: high_confidence_inference   # 6011/4/3 ~= 501 blk/floor -> 24x22
+        placement: creative_approximation
+        appearance: creative_approximation
+      footprint: { width_x: 24, depth_z: 22, area_blocks: 528 }   # 528 x 3 = 1,584 blk ~ 6,011 SF
+      floors: 3
+      entrance_coordinate: [-105, 64, -125]   # east face (+X), toward the loop carriageway
+      palette:
+        walls: "smooth_quartz + white_concrete"
+        columns: "quartz_pillar (full-height portico)"
+        roof: "deepslate_tiles (low hip behind the pediment)"
+        trim: "white_terracotta"
+        accent: "chiseled_quartz_block (pediment tympanum)"
+        foundation: "stone_bricks"
+        note: creative_approximation
+      rooms:
+        - grand_foyer
+        - formal_living_great_room
+        - formal_dining
+        - gourmet_kitchen
+        - breakfast_nook
+        - walk_in_pantry
+        - primary_suite_bedroom
+        - primary_bath
+        - bedroom_2
+        - bedroom_3
+        - bedroom_4
+        - full_bath_2
+        - full_bath_3
+        - powder_room
+        - study_library          # size-scaled addition
+        - media_room             # VERIFIED feature (REF-017)
+        - upper_loft_bonus       # top (3rd) floor bonus
+        - utility_laundry
+        - two_car_garage
+      completion: { footprint_staked: false, exterior_shell_complete: false, roof_complete: false, interior_complete: false, palette_and_detailing_complete: false }
+      defects:
+        - "Facade/material/roof invented (REF-019). Lot position creative (A5)."
+      notes: >-
+        MASSING/ROOFLINE/ENTRY (distinct): a formal temple-front — full-height TETRASTYLE PORTICO of
+        four white columns carrying a triangular central PEDIMENT, perfectly symmetric, a low hipped
+        roof hidden behind. Tallest home at 3 stories reads as a white civic mansion. Entry: grand
+        double doors dead-centered under the portico. Concept ("columned pedimented temple-front") is
+        unique to this home.
+
+  - id: MSA-02
+    name: "The Villa Lago"
+    category: model_home
+    style: "Italian Mediterranean"
+    verified_spec: "5,979 SF, 5 bed / 4 bath / 2 story — expansive outdoor living, 3-car garage (REF-017).
+      NOTE: this is the baseline 'Tuscan/Italian estate'; official label is 'Italian Mediterranean,' NOT
+      'Tuscan' (the Tuscan descriptor belongs to the welcome center)."
+    location_center: [32, 64, 55]   # REPOINTED to as-built (east row, lot z+55); was OVAL
+    building_record:
+      status: not_started
+      confidence:
+        program_and_size: verified
+        footprint_math: high_confidence_inference   # 5979/4/2 ~= 747 -> 28x27
+        placement: creative_approximation
+        appearance: creative_approximation
+      footprint: { width_x: 28, depth_z: 27, area_blocks: 756 }   # 756 x 2 = 1,512 blk ~ 5,979 SF
+      floors: 2
+      entrance_coordinate: [-103, 64, -88]
+      palette:
+        walls: "smooth_sandstone (stucco) with orange_terracotta accents"
+        roof: "terracotta + red_sandstone_stairs (low-pitch clay-tile hips)"
+        beams: "stripped_oak_wood"
+        accent: "smooth_red_sandstone (arched loggia surrounds)"
+        foundation: "cut_sandstone"
+        note: creative_approximation
+      rooms:
+        - foyer
+        - great_room
+        - formal_dining
+        - gourmet_kitchen
+        - walk_in_pantry
+        - breakfast_area
+        - primary_suite_bedroom
+        - primary_bath
+        - bedroom_2
+        - bedroom_3
+        - bedroom_4
+        - bedroom_5
+        - full_bath_2
+        - full_bath_3
+        - full_bath_4
+        - study
+        - game_media_room
+        - covered_outdoor_living     # VERIFIED feature (REF-017)
+        - powder_room
+        - utility_laundry
+        - three_car_garage           # VERIFIED feature (REF-017)
+      completion: { footprint_staked: false, exterior_shell_complete: false, roof_complete: false, interior_complete: false, palette_and_detailing_complete: false }
+      defects:
+        - "Facade invented (REF-019). 5,979 SF vs Chief-Outsiders '6,000+' — verified figure used."
+      notes: >-
+        MASSING/ROOFLINE/ENTRY (distinct): a sprawling two-story STEPPED-VOLUME estate under LOW-PITCH
+        TERRACOTTA HIP roofs at varied heights, an ARCADED LOGGIA of round arches forming the entry, a
+        projecting 3-car garage wing, and a rear pergola/outdoor-living terrace. Horizontal, earth-toned,
+        arch-driven — the antithesis of the vertical white Alexandria. Concept ("arcaded loggia + stepped
+        terracotta hips") is unique to this home.
+
+  - id: MSA-03
+    name: "The Cape Pointe"
+    category: model_home
+    style: "Coastal Beach House"
+    verified_spec: "1,815 SF, 3 bed / 2 bath / 2 story — SMALLEST of the 12; two-story with loft (REF-017).
+      Baseline 'Galveston-style / elevated' is paraphrase, NOT verified — official says only 'Coastal'."
+    location_center: [-34, 64, 5]   # REPOINTED to as-built (west row, lot z+5); was OVAL
+    building_record:
+      status: not_started
+      confidence:
+        program_and_size: verified
+        footprint_math: high_confidence_inference   # 1815/4/2 ~= 227 -> 15x15
+        placement: creative_approximation
+        appearance: creative_approximation
+      footprint: { width_x: 15, depth_z: 15, area_blocks: 225 }   # 225 x 2 = 450 blk ~ 1,815 SF
+      floors: 2
+      entrance_coordinate: [-47, 64, -100]     # west face, toward the west carriageway
+      palette:
+        walls: "white_concrete + light_blue_terracotta (board-and-batten)"
+        siding_trim: "spruce_planks / stripped_spruce"
+        roof: "waxed_weathered_copper (sea-green standing-seam metal)"
+        accent: "white_terracotta"
+        foundation: "stripped_spruce_log (pier/stilt expression)"
+        note: creative_approximation
+      rooms:
+        - entry_porch
+        - great_room
+        - kitchen
+        - dining
+        - primary_bedroom
+        - primary_bath
+        - bedroom_2
+        - bedroom_3
+        - full_bath_2
+        - loft                       # VERIFIED feature (REF-017)
+        - covered_porch
+        - utility_laundry
+        - one_car_garage
+      completion: { footprint_staked: false, exterior_shell_complete: false, roof_complete: false, interior_complete: false, palette_and_detailing_complete: false }
+      defects:
+        - "'Elevated/Galveston/pier-and-beam' is unverified paraphrase — pier expression here is creative."
+        - "Facade invented (REF-019)."
+      notes: >-
+        MASSING/ROOFLINE/ENTRY (distinct): a compact raised COASTAL COTTAGE — steep front GABLE with a
+        light metal shed-porch, board-and-batten light-blue-and-white siding, a dormered LOFT under the
+        ridge, and an EXTERIOR FRONT STAIR climbing to a covered porch entry (nodding to raised beach
+        construction, tagged creative). Smallest footprint; vertical gable + external stair make it
+        unmistakable against the low ranch homes. Concept ("gabled raised cottage w/ external porch
+        stair") is unique.
+
+  - id: MSA-04
+    name: "The Calais"
+    category: model_home
+    style: "French Hill Country"
+    verified_spec: "4,101 SF, 4 bed / 4 bath / 2 story — large game room (REF-017)."
+    location_center: [32, 64, 5]   # REPOINTED to as-built (east row, lot z+5); was OVAL
+    building_record:
+      status: not_started
+      confidence:
+        program_and_size: verified
+        footprint_math: high_confidence_inference   # 4101/4/2 ~= 513 -> 24x21
+        placement: creative_approximation
+        appearance: creative_approximation
+      footprint: { width_x: 24, depth_z: 21, area_blocks: 504 }   # 504 x 2 = 1,008 blk ~ 4,101 SF
+      floors: 2
+      entrance_coordinate: [-103, 64, -52]
+      palette:
+        walls: "cobblestone base + smooth_sandstone/white_terracotta (cream stucco upper)"
+        roof: "deepslate_tiles (steep hip, French proportions)"
+        accent: "polished_andesite (dressed-stone surrounds)"
+        turret_spire: "cut_copper"
+        foundation: "cobbled_deepslate"
+        note: creative_approximation
+      rooms:
+        - foyer
+        - great_room
+        - formal_dining
+        - kitchen
+        - walk_in_pantry
+        - breakfast_room
+        - primary_suite_bedroom
+        - primary_bath
+        - bedroom_2
+        - bedroom_3
+        - bedroom_4
+        - full_bath_2
+        - full_bath_3
+        - full_bath_4
+        - study
+        - large_game_room           # VERIFIED feature (REF-017)
+        - powder_room
+        - utility_laundry
+        - two_car_garage
+      completion: { footprint_staked: false, exterior_shell_complete: false, roof_complete: false, interior_complete: false, palette_and_detailing_complete: false }
+      defects:
+        - "Facade invented (REF-019). dth.com catalog lists a different 'Calais' at 4,093 SF — used official 4,101."
+      notes: >-
+        MASSING/ROOFLINE/ENTRY (distinct): a tall French country manor with a STEEPLY PITCHED HIP roof
+        (near-mansard proportions), ARCHED EYEBROW DORMERS, stone-and-cream-stucco walls, a central
+        chimney, and a small round STAIR TURRET beside a ROUND-ARCH entry door with a copper spire cap.
+        Steep-hip-plus-turret verticality distinguishes it from the low-hip Alexandria and the
+        terracotta Villa Lago. Concept ("steep French hip + corner stair turret") is unique.
+
+  - id: MSA-05
+    name: "The Ashby Manor"
+    category: model_home
+    style: "Old World"
+    verified_spec: "4,138 SF, 4 bed / 3 bath / story count UNLISTED (assumed 2); private garden (REF-017).
+      Likely the 'Old World Mediterranean' style CultureMap listed."
+    location_center: [-34, 64, -45]   # REPOINTED to as-built (west row, lot z-45); was OVAL
+    building_record:
+      status: not_started
+      confidence:
+        program_and_size: verified            # sqft/beds/baths verified; stories NULL in source
+        stories_assumption: high_confidence_inference   # assumed 2 (peer Old-World homes) — flagged
+        footprint_math: high_confidence_inference   # 4138/4/2 ~= 517 -> 24x22
+        placement: creative_approximation
+        appearance: creative_approximation
+      footprint: { width_x: 24, depth_z: 22, area_blocks: 528 }   # 528 x 2 = 1,056 blk ~ 4,138 SF
+      floors: 2                               # ASSUMED — source lists stories as null (REF-017)
+      entrance_coordinate: [105, 64, -120]     # west face, toward the east carriageway
+      palette:
+        walls: "bricks + mossy_cobblestone + mossy_stone_bricks (mixed old masonry)"
+        timber: "dark_oak_log / stripped_dark_oak_wood"
+        roof: "deepslate + brown_terracotta accents (steep cross-gables)"
+        accent: "cobblestone_wall (garden wall)"
+        garden: "oak_leaves, flowering plants, stone paths"
+        note: creative_approximation
+      rooms:
+        - foyer
+        - great_room
+        - formal_dining
+        - kitchen
+        - breakfast_area
+        - primary_suite_bedroom
+        - primary_bath
+        - bedroom_2
+        - bedroom_3
+        - bedroom_4
+        - full_bath_2
+        - full_bath_3
+        - study
+        - private_garden_courtyard   # VERIFIED feature (REF-017)
+        - powder_room
+        - utility_laundry
+        - two_car_garage
+      completion: { footprint_staked: false, exterior_shell_complete: false, roof_complete: false, interior_complete: false, palette_and_detailing_complete: false }
+      defects:
+        - "STORY COUNT ASSUMED = 2 (source lists null). If a story count surfaces, refactor floors/footprint."
+        - "Facade invented (REF-019). dth.com catalog lists a different 'Ashby Manor' at 4,507 SF."
+      notes: >-
+        MASSING/ROOFLINE/ENTRY (distinct): an ASYMMETRIC Old-World composition — interlocking STEEP
+        CROSS-GABLES of unequal height, walls of mixed brick, mossy fieldstone and half-timber, and a
+        heavy timber-and-stone ARCHED ENTRY PORCH set off-center. A walled PRIVATE GARDEN courtyard
+        wraps one side. Deliberate irregularity (no symmetry, mixed masonry) sets it apart from every
+        symmetric home. Concept ("asymmetric mixed-masonry cross-gables + walled garden") is unique.
+
+  - id: MSA-06
+    name: "The Casa Lana"
+    category: model_home
+    style: "Spanish Courtyard"
+    verified_spec: "3,240 SF, 3 bed / 3 bath / 1 story — with an additional casita (REF-017)."
+    location_center: [32, 64, -45]   # REPOINTED to as-built (east row, lot z-45); was OVAL
+    building_record:
+      status: not_started
+      confidence:
+        program_and_size: verified
+        footprint_math: high_confidence_inference   # 3240/4/1 = 810 -> 28x29
+        placement: creative_approximation             # central island lot is a design choice
+        appearance: creative_approximation
+      footprint: { width_x: 28, depth_z: 29, area_blocks: 812 }   # 812 x 1 = 812 blk ~ 3,240 SF (incl. courtyard void + casita)
+      floors: 1
+      entrance_coordinate: [0, 64, -39]        # south face (+Z), reached by a garden path (creative)
+      palette:
+        walls: "smooth_sandstone / white_terracotta (white stucco)"
+        roof: "terracotta + red_sandstone_stairs (red barrel tile, low)"
+        beams: "spruce_log (exposed)"
+        accent: "smooth_red_sandstone"
+        courtyard: "sandstone paving, water, flowering plants"
+        note: creative_approximation
+      rooms:
+        - entry_portal
+        - great_room
+        - dining
+        - kitchen
+        - primary_suite_bedroom
+        - primary_bath
+        - bedroom_2
+        - bedroom_3
+        - full_bath_2
+        - full_bath_3
+        - central_courtyard          # organizing void of the U-plan (concept)
+        - detached_casita_guest_suite # VERIFIED feature (REF-017)
+        - covered_patio
+        - utility_laundry
+        - two_car_garage
+      completion: { footprint_staked: false, exterior_shell_complete: false, roof_complete: false, interior_complete: false, palette_and_detailing_complete: false }
+      defects:
+        - "CENTRAL-ISLAND LOT: placed at the oval island center with no adjacent carriageway; reached by a
+           pedestrian garden path. Thematically fits an introverted courtyard home but is a creative choice —
+           cross-check may relocate to a ring lot."
+        - "Facade invented (REF-019)."
+      notes: >-
+        MASSING/ROOFLINE/ENTRY (distinct): a single-story U-PLAN wrapped around an OPEN CENTRAL
+        COURTYARD, white stucco under a low red BARREL-TILE roof, an ARCADED courtyard walk, and a
+        detached CASITA at the courtyard mouth. Entry is a recessed arched portal that reveals the
+        courtyard beyond. The only inward-facing courtyard scheme; distinct from the outward-facing
+        ranch homes. Concept ("U-plan courtyard + detached casita") is unique.
+
+  - id: MSA-07
+    name: "The Centennial"
+    category: model_home
+    style: "Craftsman"
+    verified_spec: "2,715 SF, 3 bed / 2 bath / 2 story — Craftsman (a 'bungalow' in some coverage) (REF-017)."
+    location_center: [-34, 64, -95]   # REPOINTED to as-built (west row, lot z-95); was OVAL
+    building_record:
+      status: not_started
+      confidence:
+        program_and_size: verified
+        footprint_math: high_confidence_inference   # 2715/4/2 ~= 339 -> 19x18
+        placement: creative_approximation
+        appearance: creative_approximation
+      footprint: { width_x: 19, depth_z: 18, area_blocks: 342 }   # 342 x 2 = 684 blk ~ 2,715 SF
+      floors: 2
+      entrance_coordinate: [49, 64, -100]      # east face, toward the east carriageway
+      palette:
+        walls: "green_terracotta + spruce_planks (shingle/siding)"
+        piers: "cobblestone (battered porch piers)"
+        roof: "brown_terracotta / dark_oak_stairs (low front gable, deep eaves)"
+        trim: "stripped_dark_oak_wood (exposed rafter tails)"
+        foundation: "cobblestone"
+        note: creative_approximation
+      rooms:
+        - foyer
+        - great_room
+        - dining
+        - kitchen
+        - primary_bedroom
+        - primary_bath
+        - bedroom_2
+        - bedroom_3
+        - full_bath_2
+        - study_den
+        - upper_bonus_loft
+        - covered_front_porch
+        - utility_laundry
+        - two_car_garage
+      completion: { footprint_staked: false, exterior_shell_complete: false, roof_complete: false, interior_complete: false, palette_and_detailing_complete: false }
+      defects:
+        - "Facade invented (REF-019)."
+      notes: >-
+        MASSING/ROOFLINE/ENTRY (distinct): a classic Craftsman — LOW-SLOPE FRONT GABLE with DEEP
+        OVERHANGING EAVES and EXPOSED RAFTER TAILS, a full-width COVERED PORCH carried on TAPERED
+        (battered) columns set on stone piers, earth-green shingle-and-siding walls. Horizontal,
+        hand-crafted, porch-forward — nothing else in the roster uses tapered porch piers under a broad
+        front gable. Concept ("gabled Craftsman porch on battered stone piers") is unique.
+
+  - id: MSA-08
+    name: "The Cross Creek"
+    category: model_home
+    style: "Texas Hill Country"
+    verified_spec: "3,223 SF, 4 bed / 4 bath / 1 story — rustic-elegant; expansive rear porch (REF-017)."
+    location_center: [32, 64, -95]   # REPOINTED to as-built (east row, lot z-95); was OVAL
+    building_record:
+      status: not_started
+      confidence:
+        program_and_size: verified
+        footprint_math: high_confidence_inference   # 3223/4/1 ~= 806 -> 28x29
+        placement: creative_approximation
+        appearance: creative_approximation
+      footprint: { width_x: 28, depth_z: 29, area_blocks: 812 }   # 812 x 1 = 812 blk ~ 3,223 SF
+      floors: 1
+      entrance_coordinate: [101, 64, -80]      # west face, toward the east carriageway
+      palette:
+        walls: "calcite / diorite (native limestone) + stripped_spruce (board-and-batten)"
+        roof: "smooth_stone_slab + iron accents (light standing-seam metal gable)"
+        porch: "spruce_planks / stripped_spruce"
+        accent: "cobblestone"
+        foundation: "cobblestone"
+        note: creative_approximation
+      rooms:
+        - foyer
+        - great_room
+        - dining
+        - kitchen
+        - walk_in_pantry
+        - primary_suite_bedroom
+        - primary_bath
+        - bedroom_2
+        - bedroom_3
+        - bedroom_4
+        - full_bath_2
+        - full_bath_3
+        - full_bath_4
+        - study
+        - game_room
+        - expansive_covered_rear_porch   # VERIFIED feature (REF-017)
+        - utility_laundry
+        - two_car_garage
+      completion: { footprint_staked: false, exterior_shell_complete: false, roof_complete: false, interior_complete: false, palette_and_detailing_complete: false }
+      defects:
+        - "Facade invented (REF-019)."
+      notes: >-
+        MASSING/ROOFLINE/ENTRY (distinct): a long, low single-story HILL COUNTRY spread — a linear stone
+        spine under a LIGHT STANDING-SEAM METAL GABLE, native-limestone base with board-and-batten
+        infill, and a DOG-TROT BREEZEWAY entry that frames a view straight through to the deep EXPANSIVE
+        REAR PORCH running the building's full length. Rustic-metal-and-limestone horizontality with a
+        pass-through breezeway; unlike any other. Concept ("limestone dog-trot + full-length rear porch")
+        is unique.
+
+  - id: MSA-09
+    name: "The Midtown"
+    category: model_home
+    style: "Contemporary Townhome"
+    verified_spec: "2,417 SF, 3 bed / 3 bath / 4 story — tallest by stories; SF revised to 2,553 in 2017
+      capture (REF-017). Used official 2013 value 2,417."
+    location_center: [32, 64, -145]   # REPOINTED to as-built (east row, lot z-145); was OVAL
+    building_record:
+      status: not_started
+      confidence:
+        program_and_size: verified
+        footprint_math: high_confidence_inference   # 2417/4/4 ~= 151 -> 13x12
+        placement: creative_approximation
+        appearance: creative_approximation
+      footprint: { width_x: 13, depth_z: 12, area_blocks: 156 }   # 156 x 4 = 624 blk ~ 2,417 SF
+      floors: 4
+      entrance_coordinate: [48, 64, -45]       # east face, ground-level tuck-under entry
+      palette:
+        walls: "light_gray_concrete + gray_concrete + black_concrete"
+        glass: "tinted_glass / gray_stained_glass_pane (floor-to-ceiling curtain wall)"
+        roof: "gray_concrete (flat rooftop terrace)"
+        accent: "stripped_oak_wood (warm cladding bands)"
+        foundation: "smooth_stone"
+        note: creative_approximation
+      rooms:
+        - entry_foyer               # floor 1
+        - tuck_under_garage         # floor 1
+        - great_room                # floor 2 (living up)
+        - kitchen                   # floor 2
+        - dining                    # floor 2
+        - primary_suite_bedroom     # floor 3
+        - primary_bath              # floor 3
+        - home_office               # floor 3
+        - bedroom_2                 # floor 4
+        - bedroom_3                 # floor 4
+        - full_bath_2
+        - full_bath_3
+        - rooftop_terrace           # floor 4 roof
+        - utility_laundry
+      completion: { footprint_staked: false, exterior_shell_complete: false, roof_complete: false, interior_complete: false, palette_and_detailing_complete: false }
+      defects:
+        - "SF conflict: 2,417 (2013) vs 2,553 (2017). Used 2,417. Facade invented (REF-019)."
+      notes: >-
+        MASSING/ROOFLINE/ENTRY (distinct): a tall, narrow FOUR-STORY modern TOWER — stacked, slightly
+        CANTILEVERED volumes, a FLAT ROOF with a rooftop terrace, a floor-to-ceiling GLASS CURTAIN WALL,
+        and a ground-level TUCK-UNDER garage/entry with vertical stair circulation. The only flat-roofed
+        vertical tower and the only glass curtain wall in the roster; maximal contrast to the ranch homes.
+        Concept ("cantilevered glass tower, living-up") is unique.
+
+  - id: MSA-10
+    name: "The Timbergrove"
+    category: model_home
+    style: "Classic Stone & Siding"
+    verified_spec: "2,321 SF, 3 bed / 2 bath / 1 story — covered rear porch (REF-017). Three figures exist
+      (official 2,321; OutSmart 2,231; dth 2,344) — used official 2,321."
+    location_center: [-34, 64, -145]   # REPOINTED to as-built (west row, lot z-145); was OVAL
+    building_record:
+      status: not_started
+      confidence:
+        program_and_size: verified
+        footprint_math: high_confidence_inference   # 2321/4/1 ~= 580 -> 24x24
+        placement: creative_approximation
+        appearance: creative_approximation
+      footprint: { width_x: 24, depth_z: 24, area_blocks: 576 }   # 576 x 1 = 576 blk ~ 2,321 SF
+      floors: 1
+      entrance_coordinate: [103, 64, -2]       # west face, toward the east carriageway
+      palette:
+        walls: "cobblestone base + white_terracotta / stripped_birch (lap siding)"
+        roof: "dark_oak_stairs / deepslate (cross-gable)"
+        trim: "dark_oak_wood"
+        accent: "stone_bricks"
+        foundation: "cobblestone"
+        note: creative_approximation
+      rooms:
+        - foyer
+        - great_room
+        - dining
+        - kitchen
+        - primary_bedroom
+        - primary_bath
+        - bedroom_2
+        - bedroom_3
+        - full_bath_2
+        - covered_rear_porch         # VERIFIED feature (REF-017)
+        - utility_laundry
+        - two_car_garage
+      completion: { footprint_staked: false, exterior_shell_complete: false, roof_complete: false, interior_complete: false, palette_and_detailing_complete: false }
+      defects:
+        - "Three published SF values; used official 2,321. Facade invented (REF-019)."
+      notes: >-
+        MASSING/ROOFLINE/ENTRY (distinct): an approachable single-story COTTAGE mixing a STONE-CLAD base
+        gable with lighter LAP-SIDING wings under an intersecting CROSS-GABLE roof, entered through a
+        small GABLE-PORTICO STOOP. A modest covered rear porch caps the back. Its stone/siding material
+        SPLIT (heavy stone gable vs light siding wings) is the signature; simpler and cozier than the
+        grand homes. Concept ("stone-gable + lap-siding cross-gable cottage") is unique.
+
+  - id: MSA-11
+    name: "The Valencia"
+    category: model_home
+    style: "Southwestern Mediterranean"
+    verified_spec: "1,881 SF, 4 bed / 2 bath / 1 story — efficient plan with a bonus 4th bedroom (REF-017)."
+    location_center: [32, 64, -195]   # REPOINTED to as-built (east row, lot z-195); was OVAL
+    building_record:
+      status: not_started
+      confidence:
+        program_and_size: verified
+        footprint_math: high_confidence_inference   # 1881/4/1 ~= 470 -> 22x21
+        placement: creative_approximation
+        appearance: creative_approximation
+      footprint: { width_x: 22, depth_z: 21, area_blocks: 462 }   # 462 x 1 = 462 blk ~ 1,881 SF
+      floors: 1
+      entrance_coordinate: [-52, 64, -45]      # west face, toward the west carriageway
+      palette:
+        walls: "smooth_red_sandstone / orange_terracotta (warm earth stucco)"
+        parapet: "red_sandstone_wall"
+        roof: "flat — red_sandstone_slab (no visible pitch)"
+        vigas: "spruce_log (projecting beam ends)"
+        accent: "terracotta"
+        foundation: "cut_sandstone"
+        note: creative_approximation
+      rooms:
+        - foyer
+        - great_room
+        - dining
+        - kitchen
+        - primary_bedroom
+        - primary_bath
+        - bedroom_2
+        - bedroom_3
+        - bonus_bedroom_4            # VERIFIED feature (REF-017)
+        - full_bath_2
+        - utility_laundry
+        - two_car_garage
+      completion: { footprint_staked: false, exterior_shell_complete: false, roof_complete: false, interior_complete: false, palette_and_detailing_complete: false }
+      defects:
+        - "Facade invented (REF-019). dth.com catalog lists a 'Valencia' at 1,896 SF — used official 1,881."
+      notes: >-
+        MASSING/ROOFLINE/ENTRY (distinct): a compact FLAT-ROOF Southwestern block — a low PARAPET
+        roofline with canale scuppers, warm earth-toned stucco, projecting VIGA beam ends, and a
+        recessed ARCHED PORTAL entry. The only PARAPET/FLAT masonry home (distinct from Midtown's glass
+        flat-roof tower and from every pitched roof). Concept ("pueblo-adjacent parapet stucco with
+        vigas") is unique.
+
+  - id: MSA-12
+    name: "The Wakefield"
+    category: model_home
+    style: "Traditional Brick"
+    verified_spec: "2,622 SF, 4 bed / 3 bath / 1 story — the ENERGY/TECHNOLOGY showcase home (geothermal
+      HVAC, air-sealing, efficient appliances); 2017 site calls it 'an NRG home' (REF-017)."
+    location_center: [-34, 64, -195]   # REPOINTED to as-built (west row, lot z-195); was OVAL
+    building_record:
+      status: not_started
+      confidence:
+        program_and_size: verified
+        footprint_math: high_confidence_inference   # 2622/4/1 ~= 655 -> 26x25
+        placement: creative_approximation
+        appearance: creative_approximation
+      footprint: { width_x: 26, depth_z: 25, area_blocks: 650 }   # 650 x 1 = 650 blk ~ 2,622 SF
+      floors: 1
+      entrance_coordinate: [102, 64, -40]      # west face, toward the east carriageway
+      palette:
+        walls: "bricks (red brick field)"
+        trim: "white_terracotta / quartz (crisp white trim + door sidelights)"
+        roof: "deepslate_tiles (hip)"
+        tech_accents: "sea_lantern + daylight_detector (roof PV array), waxed_copper_block"
+        foundation: "stone_bricks"
+        note: creative_approximation
+      rooms:
+        - foyer
+        - great_room
+        - dining
+        - kitchen
+        - primary_suite_bedroom
+        - primary_bath
+        - bedroom_2
+        - bedroom_3
+        - bedroom_4
+        - full_bath_2
+        - full_bath_3
+        - study
+        - energy_tech_showcase_mechanical_room   # VERIFIED feature — geothermal/NRG (REF-017)
+        - utility_laundry
+        - two_car_garage
+      completion: { footprint_staked: false, exterior_shell_complete: false, roof_complete: false, interior_complete: false, palette_and_detailing_complete: false }
+      defects:
+        - "Facade invented (REF-019). dth.com catalog lists a 'Wakefield' at 2,601 SF — used official 2,622."
+      notes: >-
+        MASSING/ROOFLINE/ENTRY (distinct): a trim, SYMMETRIC single-story TRADITIONAL BRICK home under a
+        simple HIP roof, a centered classical door with SIDELIGHTS and a small pediment stoop — the
+        conservative "control" facade — but overlaid with a visible ROOFTOP SOLAR ARRAY and glowing
+        efficiency accents that read as the technology/NRG demonstration. Symmetric red-brick restraint
+        + overt rooftop tech is its signature; no other home pairs those. Concept ("formal brick +
+        rooftop solar tech-demo") is unique.
+
+  # =================================================================================================
+  # MSA-13 — SERVICE WAREHOUSE (Building 3). Far rear (build-north) service terminus.
+  # =================================================================================================
+  - id: MSA-13
+    name: "Service Warehouse"
+    category: service
+    style: "Utilitarian metal warehouse (exterior undocumented — REF-019)"
+    verified_spec: "8,944 SF warehouse at the far service end, behind the last homes (REF-010)."
+    location_center: [-96, 64, -206]
+    building_record:
+      status: not_started
+      confidence:
+        program_and_size: verified            # 8,944 SF warehouse (REF-010)
+        placement: creative_approximation      # rotated rear centroid; site-plan Z06 = (-96,-206)
+        appearance: creative_approximation
+      footprint: { width_x: 47, depth_z: 47, area_blocks: 2209 }   # 2,209 blk ~ 8,836 SF ~ 8,944 SF, 1 floor
+      floors: 1
+      entrance_coordinate: [-96, 64, -182]     # south face (+Z), onto the service yard / loading apron
+      palette:
+        walls: "light_gray_concrete + iron_block ribs (pre-engineered metal building)"
+        roof: "smooth_stone_slab (low-slope)"
+        doors: "iron_block / oak_planks (roll-up loading doors)"
+        foundation: "smooth_stone"
+        note: creative_approximation
+      rooms:
+        - loading_bay
+        - bulk_storage_racks
+        - staging_area
+        - small_office
+        - restroom
+      completion: { footprint_staked: false, exterior_shell_complete: false, roof_complete: false, interior_complete: false, palette_and_detailing_complete: false }
+      defects:
+        - "Back-of-house only — NOT on the visitor pedestrian network (site-plan section 3). Reached by the
+           discreet west-edge service route."
+        - "Facade invented (REF-019)."
+      notes: >-
+        MASSING/ROOFLINE/ENTRY (distinct): a plain, wide, low-slope METAL SHED — a single big-box mass
+        with roll-up loading doors on its south (service-yard) face, screened from all visitor areas by
+        the Z08 greenbelt. Intentionally the least ornamented structure on site; its blunt utilitarian
+        box is distinct from every guest-facing building. Serves as the site's service terminus.
+
+# ---------------------------------------------------------------------------------------------------
+# CROSS-CHECK CHECKLIST (collision + envelope, for the reviewing agent)
+#   * Historical design-phase records retain status not_started and false completion booleans.
+#     They are not current operational state; use data/world-map.db and qa/audit-2026-07-26.md.
+#   * Homes MSA-01..MSA-12 verified non-overlapping (min inter-home gap ~10 blocks) and inside Z04 box
+#     X in [-145,+145], Z in [-150,+40]. Extremes: Alexandria north face Z=-136 (> -150); east homes
+#     max X=+130 (< +145); west homes min X=-132 (> -145); Casa Lana / Timbergrove south faces <= +40.
+#   * Homes clear the cooking-school annex footprint (X[-135,-90], Z[-30,+16]): west homes all north of
+#     Z=-41; inner homes all east of X=-51.
+#   * Guest Center (0,+88) clears homes (nearest home south face ~+10; gap ~48).
+#   * Warehouse (-96,-206) clears homes (nearest home north face -136; gap ~47).
+#   * DISCREPANCIES TO RECONCILE: (a) 14 ids vs 15 verified structures — cooking school embedded in
+#     MSA-00 (A2); (b) Ashby Manor floors assumed 2 (source null); (c) home->lot ordering is creative
+#     and freely reshufflable (A5); (d) Midtown SF 2,417 vs 2,553.
+# ---------------------------------------------------------------------------------------------------

@@ -1,0 +1,371 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "town-expansion-database-registry.schema.json",
+  "title": "Town Expansion R1 exact object/media/database registry",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "packageId",
+    "sourceReport",
+    "releasePackage",
+    "prereleaseSnapshot",
+    "counts",
+    "objects",
+    "mapShots"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "id": {
+      "const": "town-expansion-r1-object-media-database-crosswalk"
+    },
+    "packageId": {
+      "const": "town-expansion-r1-2026-07-28"
+    },
+    "sourceReport": {
+      "$ref": "#/$defs/artifact"
+    },
+    "releasePackage": {
+      "type": "object",
+      "required": [
+        "forwardPath",
+        "forwardSha256"
+      ],
+      "properties": {
+        "forwardPath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "forwardSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "prereleaseSnapshot": {
+      "type": "object",
+      "required": [
+        "directory",
+        "sha256"
+      ],
+      "properties": {
+        "directory": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "exactObjects",
+        "shots",
+        "maps",
+        "pass1Captures",
+        "pass2Captures",
+        "combinedCaptures"
+      ],
+      "properties": {
+        "exactObjects": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "shots": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "maps": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pass1Captures": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pass2Captures": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "combinedCaptures": {
+          "type": "integer",
+          "minimum": 2
+        }
+      }
+    },
+    "objects": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/object"
+      }
+    },
+    "mapShots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "shotId",
+          "primaryFeatureId",
+          "objectIds"
+        ],
+        "properties": {
+          "shotId": {
+            "type": "string",
+            "pattern": "^MAP-"
+          },
+          "primaryFeatureId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "objectIds": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "artifact": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "bounds": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "integer"
+        }
+      ],
+      "items": false,
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "truth": {
+      "type": "object",
+      "required": [
+        "requestedState",
+        "releaseState",
+        "importAsBuiltKind",
+        "plannedOnly",
+        "physicalClaim",
+        "finalCertificationRequired"
+      ],
+      "properties": {
+        "requestedState": {
+          "type": "string",
+          "minLength": 1
+        },
+        "releaseState": {
+          "const": "GENERATED_OFFLINE_NOT_YET_VERIFIED"
+        },
+        "importAsBuiltKind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "plannedOnly": {
+          "const": false
+        },
+        "physicalClaim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "finalCertificationRequired": {
+          "const": "VERIFIED_POST_STATE"
+        }
+      }
+    },
+    "capturePair": {
+      "type": "object",
+      "required": [
+        "shotId",
+        "pass1CameraId",
+        "pass2CameraId"
+      ],
+      "properties": {
+        "shotId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pass1CameraId": {
+          "type": "string",
+          "pattern": "-PASS-1$"
+        },
+        "pass2CameraId": {
+          "type": "string",
+          "pattern": "-PASS-2$"
+        }
+      }
+    },
+    "object": {
+      "type": "object",
+      "required": [
+        "objectId",
+        "name",
+        "kind",
+        "bounds",
+        "familyIds",
+        "provenance",
+        "sourceScope",
+        "roles",
+        "attributes",
+        "truth",
+        "database",
+        "shotIds",
+        "capturePairs"
+      ],
+      "properties": {
+        "objectId": {
+          "type": "string",
+          "minLength": 1,
+          "not": {
+            "pattern": "^(whole-world-overview|district-)"
+          }
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bounds": {
+          "$ref": "#/$defs/bounds"
+        },
+        "familyIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "required": [
+            "type",
+            "file",
+            "jsonPointer"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "minLength": 1
+            },
+            "file": {
+              "type": "string",
+              "minLength": 1
+            },
+            "jsonPointer": {
+              "type": "string",
+              "pattern": "^/"
+            }
+          }
+        },
+        "sourceScope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "targetCells": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "attributes": {
+          "type": "object"
+        },
+        "truth": {
+          "$ref": "#/$defs/truth"
+        },
+        "database": {
+          "type": "object",
+          "required": [
+            "lookupKey",
+            "fabricatedRelationship"
+          ],
+          "properties": {
+            "lookupKey": {
+              "type": "object",
+              "required": [
+                "externalId"
+              ],
+              "properties": {
+                "externalId": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "fabricatedRelationship": {
+              "const": false
+            }
+          }
+        },
+        "shotIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "capturePairs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/capturePair"
+          }
+        }
+      }
+    }
+  }
+}

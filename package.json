@@ -1,11 +1,12 @@
 {
-  "name": "dyobot",
+  "name": "mc-fleet-bot",
   "version": "1.0.0",
-  "description": "Voyager-style Mineflayer AI bot sidecar for DyoCraft",
+  "description": "Voyager-style Mineflayer AI bot fleet sidecar for Minecraft (DyoCraft)",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/index.ts",
+    "render:media:batched": "node scripts/render_redevelopment_camera_manifest_batched.mjs",
     "start": "node dist/index.js",
     "test": "vitest run"
   },
@@ -16,6 +17,7 @@
     "@types/better-sqlite3": "^7.6.13",
     "@types/multer": "^2.1.0",
     "better-sqlite3": "^12.10.0",
+    "canvas": "^3.2.3",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "drizzle-orm": "^0.45.2",
@@ -28,6 +30,7 @@
     "multer": "^2.1.1",
     "pino": "^9.5.0",
     "pino-pretty": "^13.0.0",
+    "prismarine-block": "^1.22.0",
     "prismarine-schematic": "^1.2.3",
     "prismarine-viewer": "^1.33.0",
     "socket.io": "^4.8.3",

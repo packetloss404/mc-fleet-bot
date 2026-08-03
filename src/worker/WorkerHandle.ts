@@ -14,6 +14,44 @@ import type { CultureManager } from '../social/CultureManager';
 import type { BotComms } from '../social/BotComms';
 import { logger } from '../util/logger';
 
+/**
+ * Per-worker V8 old-generation heap cap, in MB.
+ *
+ * Why this exists: `new Worker()` was previously constructed with NO
+ * `resourceLimits`, so every bot worker inherited the process-wide V8 default —
+ * a ~2 GB heap ceiling on this host. Five bots each believing they may grow to
+ * 2 GB oversubscribes a 7 GB box by more than 3x, and on 2026-07-24 three
+ * workers died inside two minutes with:
+ *
+ *     Worker terminated due to reaching memory limit: JS heap out of memory
+ *
+ * (Scout twice, Architect once.) Those crashes are also what makes the fleet
+ * *look* like it is leaking VoyagerLoops: each crash restarts the worker with a
+ * fresh BotInstance, so the teardown guard in `startVoyagerIfCodegen` sees a
+ * null loop and logs another "Voyager loop started" with no matching "stopped".
+ * The loops are not leaking — the threads are dying.
+ *
+ * Why 512: measured steady state is ~200 MB per worker (process RSS ~1.0 GB
+ * across five workers while the main thread's own heap is only ~37 MB, so
+ * essentially all of it is worker heap). 512 MB is ~2.5x that — generous room
+ * for the join-time spike when a bot loads chunks and its own copy of the
+ * minecraft-data registry, while keeping 5 x 512 MB + main well inside 7 GB.
+ *
+ * The honest caveat: a worker that genuinely needs more than 512 MB will now be
+ * killed *sooner* than before. That is the intended trade — an explicit,
+ * contained, restartable single-worker failure beats an unpredictable one that
+ * can drag the whole box toward swap. But note the crashing worker reached
+ * ~2 GB, a 10x spike over steady state, which looks like a runaway allocation
+ * rather than normal chunk loading — capping bounds the blast radius, it does
+ * not explain the spike. Finding that cause is separate follow-up work.
+ *
+ * Override with MC_WORKER_HEAP_MB when tuning or after adding RAM.
+ */
+const WORKER_HEAP_MB = Math.max(
+  128,
+  Number(process.env.MC_WORKER_HEAP_MB) || 512,
+);
+
 export interface WorkerBotData {
   botName: string;
   personality: string;
@@ -40,6 +78,45 @@ export interface WorkerBotData {
  */
 export type WorkerState = 'IDLE' | 'RUNNING' | 'STOPPING' | 'DEAD' | 'RESTARTING';
 
+/**
+ * Worker events are only authoritative for the exact worker generation that
+ * currently owns the handle. Kept as a pure helper so the stale-exit
+ * regression can be tested without starting real Minecraft workers.
+ */
+export function isCurrentWorkerGeneration(
+  activeGeneration: number,
+  eventGeneration: number,
+  activeWorker: Worker | null,
+  eventWorker: Worker,
+): boolean {
+  return activeGeneration === eventGeneration && activeWorker === eventWorker;
+}
+
+/**
+ * Age of the current generation's liveness signal.
+ *
+ * Before the first status heartbeat, the generation start time is the only
+ * evidence available. Falling back to it prevents a worker that wedges during
+ * startup from remaining RUNNING forever merely because it never emitted the
+ * first heartbeat. Once a heartbeat arrives, its timestamp becomes the
+ * authoritative baseline.
+ */
+export function getWorkerHeartbeatAgeMs(
+  now: number,
+  startedAt: number,
+  lastStatusReceivedAt: number,
+): number {
+  const baseline = lastStatusReceivedAt > 0 ? lastStatusReceivedAt : startedAt;
+  if (
+    !Number.isFinite(now)
+    || !Number.isFinite(baseline)
+    || baseline <= 0
+  ) {
+    return 0;
+  }
+  return Math.max(0, now - baseline);
+}
+
 export class WorkerHandle {
   readonly botName: string;
   readonly personality: string;
@@ -53,6 +130,14 @@ export class WorkerHandle {
   private crashCount = 0;
   private crashWindowStart = 0;
   private state: WorkerState = 'IDLE';
+  /** Monotonic ownership token for worker/IPC callbacks. */
+  private generation = 0;
+  /** Wall-clock time the current generation started, used by watchdog grace. */
+  private startedAt = 0;
+  /** Coalesce concurrent watchdog/admin restart attempts into one replacement. */
+  private forceRestartPromise: Promise<void> | null = null;
+  /** Cancel a scheduled crash restart when the handle is intentionally stopped. */
+  private restartTimer: NodeJS.Timeout | null = null;
 
   // Cached state pushed by the worker
   lastStatus: any = null;
@@ -170,8 +255,20 @@ export class WorkerHandle {
   }
 
   start(): void {
+    if (this.worker) {
+      logger.warn(
+        { bot: this.botName, generation: this.generation, state: this.state },
+        'Worker start skipped: an active generation already owns the handle',
+      );
+      return;
+    }
+    if (this.restartTimer) {
+      clearTimeout(this.restartTimer);
+      this.restartTimer = null;
+    }
+
     const workerPath = path.join(__dirname, 'botWorker.js');
-    this.worker = new Worker(workerPath, {
+    const worker = new Worker(workerPath, {
       workerData: {
         botName: this.botName,
         personality: this.personality,
@@ -179,26 +276,48 @@ export class WorkerHandle {
         spawnLocation: this.spawnLocation,
         workerSlotIndex: this.workerSlotIndex,
       },
+      resourceLimits: {
+        maxOldGenerationSizeMb: WORKER_HEAP_MB,
+      },
     });
-
-    this.ipc = new IPCChannel(this.worker);
+    const ipc = new IPCChannel(worker);
+    const generation = ++this.generation;
+    this.worker = worker;
+    this.ipc = ipc;
+    this.intentionalShutdown = false;
+    this.startedAt = Date.now();
+    this.lastStatusReceivedAt = 0;
+    this.lastStatus = {
+      name: this.botName,
+      personality: this.personality,
+      mode: this.mode,
+      state: 'SPAWNING',
+      position: this.spawnLocation || null,
+    };
+    this.lastDetailedStatus = null;
+    this.lastDiagnostics = null;
     this.state = 'RUNNING';
-    this.setupIPC();
-    this.setupWorkerEvents();
+    this.setupIPC(worker, ipc, generation);
+    this.setupWorkerEvents(worker, ipc, generation);
 
-    logger.info({ bot: this.botName }, 'Worker thread started');
+    logger.info(
+      { bot: this.botName, heapCapMb: WORKER_HEAP_MB, generation },
+      'Worker thread started',
+    );
   }
 
-  private setupIPC(): void {
-    if (!this.ipc) return;
-
+  private setupIPC(worker: Worker, ipc: IPCChannel, generation: number): void {
     // Handle requests from worker → main (LLM, blackboard, affinity, conversation)
-    this.ipc.onRequest(async (type, args) => {
+    ipc.onRequest(async (type, args) => {
+      if (!isCurrentWorkerGeneration(this.generation, generation, this.worker, worker)) {
+        throw new Error(`Stale worker generation ${generation}`);
+      }
       return this.routeRequest(type, args);
     });
 
     // Handle notifications from worker
-    this.ipc.onNotify((type, data) => {
+    ipc.onNotify((type, data) => {
+      if (!isCurrentWorkerGeneration(this.generation, generation, this.worker, worker)) return;
       this.routeNotification(type, data);
     });
   }
@@ -405,30 +524,51 @@ export class WorkerHandle {
     if (type === 'sharedWorld.updateServerState') { this.sharedWorldModel.updateServerState(data[0], data[1]); return; }
   }
 
-  private setupWorkerEvents(): void {
-    if (!this.worker) return;
-
-    this.worker.on('error', (err) => {
-      logger.error({ bot: this.botName, err: err.message }, 'Worker thread error');
+  private setupWorkerEvents(worker: Worker, ipc: IPCChannel, generation: number): void {
+    worker.on('error', (err) => {
+      logger.error(
+        { bot: this.botName, err: err.message, generation },
+        'Worker thread error',
+      );
     });
 
-    this.worker.on('exit', (code) => {
-      logger.info({ bot: this.botName, code, intentional: this.intentionalShutdown }, 'Worker thread exited');
+    worker.on('exit', (code) => {
+      const current = isCurrentWorkerGeneration(
+        this.generation,
+        generation,
+        this.worker,
+        worker,
+      );
+      logger.info(
+        {
+          bot: this.botName,
+          code,
+          generation,
+          current,
+          intentional: this.intentionalShutdown,
+        },
+        'Worker thread exited',
+      );
+      // Always retire the channel owned by the exiting generation. Never use
+      // this.ipc here: it may already belong to a replacement worker.
+      ipc.destroy();
+      if (!current) return;
+
       // Flip to DEAD before destroying IPC so any concurrent sendRequest()
       // that races between the worker dying and us seeing the exit event
       // will reject through the gate rather than posting to a dead port.
       this.state = 'DEAD';
-      this.ipc?.destroy();
       this.ipc = null;
       this.worker = null;
 
       if (!this.intentionalShutdown) {
-        this.maybeRestart();
+        this.maybeRestart(generation);
       }
     });
   }
 
-  private maybeRestart(): void {
+  private maybeRestart(exitedGeneration: number): void {
+    if (this.generation !== exitedGeneration || this.worker) return;
     const now = Date.now();
     if (now - this.crashWindowStart > 60000) {
       this.crashCount = 0;
@@ -449,8 +589,13 @@ export class WorkerHandle {
     this.state = 'RESTARTING';
     const delay = 5000 * this.crashCount;
     logger.warn({ bot: this.botName, crashCount: this.crashCount, delayMs: delay }, 'Scheduling worker restart');
-    setTimeout(() => {
-      if (!this.intentionalShutdown) {
+    this.restartTimer = setTimeout(() => {
+      this.restartTimer = null;
+      if (
+        !this.intentionalShutdown
+        && !this.worker
+        && this.generation === exitedGeneration
+      ) {
         this.start();
       }
     }, delay);
@@ -588,6 +733,11 @@ export class WorkerHandle {
   /** Current lifecycle state — exposed primarily for diagnostics/testing. */
   getState(): WorkerState {
     return this.state;
+  }
+
+  /** Start time for the current generation; 0 before the first start. */
+  getStartedAt(): number {
+    return this.startedAt;
   }
 
   // ── Build coordinator helpers (forward to worker via IPC) ──
@@ -775,37 +925,70 @@ export class WorkerHandle {
    *  can't process it. terminate() escalates to worker.terminate() after a 5s
    *  grace period, which kills even a fully blocked worker. */
   async forceRestart(): Promise<void> {
-    await this.terminate();
-    // terminate() leaves us in DEAD with intentionalShutdown=true; reset so a
-    // fresh worker can come up and so the crash backoff doesn't suppress it.
-    this.intentionalShutdown = false;
-    this.crashCount = 0;
-    this.lastStatusReceivedAt = 0;
-    this.start();
+    if (this.forceRestartPromise) return this.forceRestartPromise;
+    const restart = (async () => {
+      await this.terminate();
+      // terminate() leaves us in DEAD with intentionalShutdown=true; reset so
+      // exactly one fresh generation can come up.
+      this.intentionalShutdown = false;
+      this.crashCount = 0;
+      this.lastStatusReceivedAt = 0;
+      this.start();
+    })();
+    this.forceRestartPromise = restart;
+    try {
+      await restart;
+    } finally {
+      if (this.forceRestartPromise === restart) this.forceRestartPromise = null;
+    }
   }
 
   async terminate(): Promise<void> {
     this.intentionalShutdown = true;
-    if (this.worker) {
+    if (this.restartTimer) {
+      clearTimeout(this.restartTimer);
+      this.restartTimer = null;
+    }
+    const worker = this.worker;
+    const ipc = this.ipc;
+    const generation = this.generation;
+    if (worker) {
       // Mark STOPPING before posting the disconnect so any in-flight call
       // sites see a non-RUNNING state and bail out of sendRequest() early.
       this.state = 'STOPPING';
-      this.sendCommand('disconnect');
+      ipc?.command('disconnect', {});
       // Wait for graceful exit, then force terminate
       await new Promise<void>((resolve) => {
-        const timeout = setTimeout(() => {
-          this.worker?.terminate();
-          resolve();
-        }, 5000);
-        this.worker?.once('exit', () => {
+        let settled = false;
+        const finish = () => {
+          if (settled) return;
+          settled = true;
           clearTimeout(timeout);
           resolve();
-        });
+        };
+        const timeout = setTimeout(() => {
+          void worker.terminate()
+            .catch((err: any) => {
+              logger.warn(
+                { bot: this.botName, generation, err: err?.message },
+                'Forced worker termination failed',
+              );
+            })
+            .finally(finish);
+        }, 5000);
+        worker.once('exit', finish);
       });
     }
-    this.state = 'DEAD';
-    this.ipc?.destroy();
-    this.ipc = null;
-    this.worker = null;
+    // The exit handler normally performs this cleanup. Keep a same-generation
+    // fallback for environments where terminate() resolves before 'exit'.
+    if (
+      this.generation === generation
+      && (!this.worker || this.worker === worker)
+    ) {
+      this.state = 'DEAD';
+      ipc?.destroy();
+      if (this.ipc === ipc) this.ipc = null;
+      if (this.worker === worker) this.worker = null;
+    }
   }
 }

@@ -1,25 +1,33 @@
-async function mine_1_oak_log(bot) {
-  // World memory shows oak_log at 801,62,134 - move closer first
-  await moveTo(801, 62, 134, 3, 15);
-
-  // Now find and mine the oak_log
-  const oakLogBlock = bot.findBlock({
-    matching: b => b.name === 'oak_log',
-    maxDistance: 5
+async function mine1OakLog(bot) {
+  const OAK_LOG = 'oak_log';
+  let oakLogBlock = bot.findBlock({
+    matching: b => b.name === OAK_LOG,
+    maxDistance: 32
   });
   if (!oakLogBlock) {
-    // Explore a bit to find it nearby
-    await exploreUntil('north', 30, () => bot.findBlock({
-      matching: b => b.name === 'oak_log',
-      maxDistance: 5
-    }));
+    // Explore for oak_log, max 30 seconds
+    const pos = await exploreUntil('north', 30, () => {
+      const b = bot.findBlock({
+        matching: b => b.name === OAK_LOG,
+        maxDistance: 32
+      });
+      if (!b) { console.log("Block not found"); return; }
+      return b ? b.position : null;
+    });
+    if (!pos) {
+      // If exploreUntil didn't find anything, return cleanly
+      return;
+    }
+
+    // After exploring, try to find the block again as we might have moved closer
+    oakLogBlock = bot.findBlock({
+      matching: b => b.name === OAK_LOG,
+      maxDistance: 32
+    });
   }
-  const target = bot.findBlock({
-    matching: b => b.name === 'oak_log',
-    maxDistance: 5
-  });
-  if (!target) {
-    throw new Error('Could not find oak_log nearby after moving.');
+  if (oakLogBlock) {
+    await mineBlock(OAK_LOG, 1);
   }
-  await mineBlock('oak_log', 1);
+  // If oakLogBlock is still null here, it means it wasn't found even after exploring,
+  // and the function will return without error, allowing the task to retry.
 }

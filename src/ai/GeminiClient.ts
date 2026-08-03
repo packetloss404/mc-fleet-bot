@@ -1,4 +1,5 @@
 import { LLMClient, LLMResponse } from './LLMClient';
+import type { LLMCallOptions } from './TaskType';
 import { logger } from '../util/logger';
 import { Semaphore } from '../util/Semaphore';
 
@@ -18,10 +19,11 @@ export class GeminiClient implements LLMClient {
     this.semaphore = new Semaphore(opts.maxConcurrentRequests ?? 3);
   }
 
-  async chat(systemPrompt: string, contents: any[], maxTokens?: number): Promise<LLMResponse> {
+  async chat(systemPrompt: string, contents: any[], maxTokens?: number, options?: LLMCallOptions): Promise<LLMResponse> {
     await this.semaphore.acquire();
     try {
-      const url = `${this.baseUrl}${this.model}:generateContent?key=${this.apiKey}`;
+      const effectiveModel = options?.model ?? this.model;
+      const url = this.endpoint(`${effectiveModel}:generateContent`);
 
       const body: any = {
         systemInstruction: { parts: [{ text: systemPrompt }] },
@@ -37,7 +39,7 @@ export class GeminiClient implements LLMClient {
 
       const resp = await fetch(url, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: this.authHeaders(),
         body: JSON.stringify(body),
         signal: AbortSignal.timeout(60000),
       });
@@ -73,7 +75,7 @@ export class GeminiClient implements LLMClient {
   async generateWithThinking(systemPrompt: string, userMessage: string, maxTokens?: number): Promise<LLMResponse> {
     await this.semaphore.acquire();
     try {
-      const url = `${this.baseUrl}${this.model}:generateContent?key=${this.apiKey}`;
+      const url = this.endpoint(`${this.model}:generateContent`);
 
       const body = {
         systemInstruction: { parts: [{ text: systemPrompt }] },
@@ -89,7 +91,7 @@ export class GeminiClient implements LLMClient {
 
       const resp = await fetch(url, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: this.authHeaders(),
         body: JSON.stringify(body),
         signal: AbortSignal.timeout(120000),
       });
@@ -117,7 +119,7 @@ export class GeminiClient implements LLMClient {
     if (texts.length === 0) return [];
     await this.semaphore.acquire();
     try {
-      const url = `${this.baseUrl}gemini-embedding-001:batchEmbedContents?key=${this.apiKey}`;
+      const url = this.endpoint('gemini-embedding-001:batchEmbedContents');
       const requests = texts.map((text) => ({
         model: 'models/gemini-embedding-001',
         content: { parts: [{ text }] },
@@ -126,7 +128,7 @@ export class GeminiClient implements LLMClient {
       }));
       const resp = await fetch(url, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: this.authHeaders(),
         body: JSON.stringify({ requests }),
         signal: AbortSignal.timeout(30000),
       });
@@ -173,4 +175,37 @@ export class GeminiClient implements LLMClient {
     }
     return contentParts.map((p: any) => p.text || '').join('').trim();
   }
+
+
+  /**
+   * Google accepts two credential types, sent differently:
+   *   - AI Studio API keys go in the `?key=` query parameter.
+   *   - OAuth access tokens (`ya29....`, from `gcloud auth`/ADC or a service
+   *     account) go in an `Authorization: Bearer` header and must NOT appear
+   *     in the query string.
+   * Detecting by prefix lets an operator paste either into the same provider
+   * field. OAuth tokens are short-lived and are not refreshed here, so an API
+   * key remains the right choice for unattended fleet operation.
+   */
+  private isOAuthCredential(): boolean {
+    return /^ya29\./.test(this.apiKey);
+  }
+
+  private endpoint(pathAndMethod: string): string {
+    return this.isOAuthCredential()
+      ? `${this.baseUrl}${pathAndMethod}`
+      : `${this.baseUrl}${pathAndMethod}?key=${this.apiKey}`;
+  }
+
+  private authHeaders(): Record<string, string> {
+    const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+    if (this.isOAuthCredential()) headers['Authorization'] = `Bearer ${this.apiKey}`;
+    return headers;
+  }
+
+  /** Concrete model ID, for accurate TokenLedger cost attribution. */
+  getModelId(): string {
+    return this.model;
+  }
+
 }

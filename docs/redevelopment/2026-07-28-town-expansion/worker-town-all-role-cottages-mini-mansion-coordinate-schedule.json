@@ -1,0 +1,848 @@
+{
+  "schemaVersion": "3.0.0",
+  "status": "IMPLEMENTATION_READY_COORDINATE_DESIGN_NOT_A_BUILD_RELEASE",
+  "generatedUtc": "2026-07-28T11:25:00Z",
+  "liveWorldMutated": false,
+  "supersedes": {
+    "schedule": "docs/redevelopment/2026-07-28-town-expansion/worker-town-steward-mini-mansions-coordinate-schedule.json",
+    "scope": "inventory conclusion and single-cottage coverage only",
+    "retainedDesign": "The prior RRCH-STEWARD west-hall and garden-water-court concept is incorporated."
+  },
+  "coordinateConvention": {
+    "north": "-Z",
+    "bounds": "inclusive [minX,minY,minZ,maxX,maxY,maxZ]",
+    "standingY": "one block above finished-floor support Y",
+    "minimumPublicLaneWidth": 5,
+    "minimumOccupiedHeadroom": 2
+  },
+  "evidence": {
+    "snapshot": {
+      "path": "data/worldsnap-town-expansion-prerelease-20260728T0930Z/region",
+      "sha256": "f9a6a21ec115bd556d7626a9b18151b38d1d4f145226c9e3f741de636528eb8e",
+      "regionFiles": 26,
+      "mode": "read-only"
+    },
+    "worldDatabase": {
+      "path": "data/world-map.db",
+      "sha256AtSurvey": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+      "mode": "read-only"
+    },
+    "townDatabase": {
+      "path": "data/town.db",
+      "sha256AtSurvey": "1ca3a94bd357d3fed181d47a0de16d646b749ecd5b568fccf979698e96138133",
+      "mode": "read-only"
+    },
+    "addendum": "docs/redevelopment/2026-07-28-town-expansion/worker-town-all-role-cottages-mini-mansion-addendum.md",
+    "districtMap": {
+      "path": "data/exports/box/town-expansion-baseline-2026-07-28/team-a/01-ravensreach-core-and-old-town.png",
+      "sha256": "322462b6468394df3720fdd15f1670eee202c2213be10323c62a2d9d80b7403f"
+    },
+    "sourceMediaManifest": "data/exports/redevelopment-media-wave2-2026-07-28/capture-manifest.json",
+    "sourceFloorplanRoot": "data/exports/world-catalog-wave2-post-2026-07-28/floorplans/structures"
+  },
+  "inventoryConclusion": {
+    "authoritativeCount": 5,
+    "authoritativeCurrentCottages": [
+      "RRCH-ARCHITECT",
+      "RRCH-MASON",
+      "RRCH-SURVEYOR",
+      "RRCH-STEWARD",
+      "RRCH-SCOUT"
+    ],
+    "townDatabaseHouseCount": 5,
+    "worldDatabaseCottageCount": 5,
+    "matchedSourceScreenshotCount": 5,
+    "matchedSourceFloorplanCount": 5,
+    "protectedBlockEntityCount": 41,
+    "decision": "The plural owner request means all five same-generation Worker Town role cottages used by mid-level management, not only the cottage whose literal name contains Steward."
+  },
+  "districtRules": {
+    "architecture": {
+      "type": "town-blended mid-management mini-mansion",
+      "palette": [
+        "local stone and cobble stepped plinth",
+        "muted lime/plaster wall fields",
+        "dark oak and spruce framing",
+        "steep deepslate roof",
+        "restrained copper accents",
+        "warm lantern groups"
+      ],
+      "antiCloneRules": [
+        "vary roof break, entry bay, patio side and role-room window rhythm",
+        "retain recognizable original role room or documented object lineage",
+        "follow measured terrain with stepped plinths and planted retaining edges; no full-reservation flatten"
+      ]
+    },
+    "garageDecision": {
+      "automotiveGaragesRequired": 5,
+      "automotiveGaragesProvided": 5,
+      "automotiveGarageBaysRequired": 24,
+      "automotiveGarageBaysProvided": 24,
+      "capacityByHouse": {
+        "RRCH-ARCHITECT": 6,
+        "RRCH-STEWARD": 6,
+        "RRCH-MASON": 4,
+        "RRCH-SURVEYOR": 4,
+        "RRCH-SCOUT": 4
+      },
+      "attachmentRule": "Each garage shares a physical wall plane with its occupied house component and has a scheduled fire-lobby/house door; a carriage or service room never counts as an automotive bay.",
+      "bayRule": "One declared interior bay rectangle, one clear exterior door opening and an unobstructed maneuver from that opening to the street are required for every counted bay.",
+      "sitingDecision": "All five residences relocate to Manager Vale. The old parcels cannot simultaneously hold the requested house, attached garage capacity, apron, turning envelope, safe pedestrian entry and a coherent vehicle street without damaging Market Hall, Grange Hall, canals, documented water or civic lanes."
+    },
+    "privateAdultSuite": {
+      "requiredPerHouse": 1,
+      "contentBoundary": "adult-only and non-graphic; architecture and furniture only; no figures, explicit imagery, anatomy or depicted acts",
+      "requiredZones": [
+        "privacy vestibule",
+        "bed platform",
+        "lounge or chaise",
+        "dressing screen",
+        "closed prop/storage cabinetry",
+        "private wash/cleanup niche",
+        "decorative non-load-bearing frame or canopy"
+      ],
+      "safety": [
+        "not part of required egress",
+        "inside release without key, tool or special knowledge",
+        "no direct sightline from role office, kitchen, family bedrooms or public lane",
+        "two-block-clear circulation around primary furniture",
+        "cleanable finishes and closed storage"
+      ]
+    },
+    "managerValeVehicleNetwork": {
+      "id": "RRCH-MANAGER-VALE-VEHICLE-NETWORK",
+      "upperStreet": {
+        "id": "RRCH-MV-UPPER-STREET",
+        "bounds": [-145, 45, -317, -49, 100, -311],
+        "centerline": [[-145, 69, -314], [-133, 69, -314], [-121, 68, -314], [-109, 68, -314], [-97, 69, -314], [-85, 70, -314], [-73, 70, -314], [-61, 70, -314], [-52, 70, -314]],
+        "carriagewayWidth": 7,
+        "surfaceSurvey": {"minY": 64, "p10Y": 68, "medianY": 70, "p90Y": 70, "maxY": 71, "surfaceWaterColumns": 0, "protectedBlockEntities": 0}
+      },
+      "eastConnector": {
+        "id": "RRCH-MV-EAST-CONNECTOR",
+        "bounds": [-55, 45, -310, -49, 100, -215],
+        "centerline": [[-52, 70, -310], [-52, 69, -300], [-52, 67, -290], [-52, 65, -280], [-52, 65, -270], [-52, 64, -260], [-52, 64, -240], [-52, 64, -218]],
+        "carriagewayWidth": 7,
+        "maximumDesignedGrade": "1:5 with ten-block transition runs; exact cell compiler may lengthen but may not steepen",
+        "surfaceSurvey": {"minY": 63, "p10Y": 64, "medianY": 64, "p90Y": 69, "maxY": 70, "surfaceWaterColumns": 0, "protectedBlockEntities": 0}
+      },
+      "r07WestExtension": {
+        "id": "RRCH-MV-R07-WEST",
+        "bounds": [-132, 45, -221, -84, 100, -215],
+        "centerline": [[-132, 64, -218], [-120, 64, -218], [-108, 64, -218], [-96, 64, -218], [-84, 64, -218]],
+        "carriagewayWidth": 7,
+        "tieIn": {"existingRoad": "R07", "name": "Service Cross", "coordinate": [-84, 64, -218]},
+        "surfaceSurvey": {"minY": 63, "p10Y": 64, "medianY": 64, "p90Y": 64, "maxY": 65, "surfaceWaterColumns": 0, "protectedBlockEntities": 0}
+      },
+      "upperGarageCourt": {
+        "id": "RRCH-MV-UPPER-GARAGE-COURT",
+        "bounds": [-105, 45, -310, -92, 100, -282],
+        "width": 14,
+        "serves": ["RRCH-ARCHITECT", "RRCH-STEWARD"],
+        "rule": "Shared slow-speed court; Architect doors face east and Steward doors face west. A raised north entry table separates the pedestrian crossing from vehicle maneuvering."
+      },
+      "constructionRule": "Build to the declared grade nodes with short landscaped retaining transitions, preserve natural contours outside explicit carriageway/apron cells, and prohibit whole-reservation slab leveling."
+    }
+  },
+  "knownSitingConflicts": [
+    {
+      "id": "SCOUT-MARKET-EXISTING",
+      "severity": "BLOCKING_UNTIL_CELL_ATTRIBUTION",
+      "firstObject": "RRCH-SCOUT",
+      "secondObject": "RRCH-MARKET",
+      "intersectionXZ": [-64, -344, -52, -340],
+      "intersectingColumns": 65,
+      "resolution": "Relocate Scout. Decommission only cells independently attributed to Scout; preserve Market-owned and ambiguous cells."
+    },
+    {
+      "id": "SURVEYOR-CIVIC-PINCH",
+      "severity": "BLOCKING_FOR_IN_PLACE_MANSION",
+      "firstObject": "RRCH-SURVEYOR",
+      "neighbors": ["RRCH-STOREHOUSE", "RRCH-MOOT", "public paving"],
+      "resolution": "Relocate Surveyor to Manager Vale and convert the old shell to a small nonresidential map pavilion after NBT reconciliation."
+    },
+    {
+      "id": "MASON-CANAL-WEST",
+      "severity": "SOURCE_SITE_PRESERVATION",
+      "waterXZ": {"minX": -63, "maxX": -60, "zSamples": [-391, -390, -389, -383, -382, -381, -380, -378, -377, -376, -374, -373]},
+      "resolution": "Relocate Mason to Manager Vale. Preserve the source canal, coping and walk without targets; adapt the reconciled old shell only after exact ownership and NBT audits."
+    },
+    {
+      "id": "MASON-GRANGE-SHARED-SOUTH-EDGE",
+      "severity": "CELL_ATTRIBUTION_REQUIRED",
+      "intersectionXZ": [-58, -370, -46, -370],
+      "resolution": "Relocation eliminates new mansion work at the shared edge. Audit old z=-371/-370 cells and preserve every Grange-owned or ambiguous cell during any source-shell adaptation."
+    },
+    {
+      "id": "ARCHITECT-WATER-DETAIL",
+      "severity": "SOURCE_SITE_PRESERVATION",
+      "coordinate": [-121, 67, -366],
+      "resolution": "Relocate Architect; retain this source water column and its containment in the old design-archive garden. Do not bulk fill."
+    },
+    {
+      "id": "STEWARD-WATER-COURT",
+      "severity": "SOURCE_SITE_PRESERVATION",
+      "coordinate": [-115, 67, -336],
+      "resolution": "Relocate Steward; retain this source water column as the records-cottage garden court. Do not target the column."
+    },
+    {
+      "id": "IN_PLACE-GARAGE-NETWORK-FAILURE",
+      "severity": "DESIGN_DECISION",
+      "objects": ["RRCH-ARCHITECT", "RRCH-MASON", "RRCH-SURVEYOR", "RRCH-STEWARD", "RRCH-SCOUT"],
+      "resolution": "Relocate all five to the dry, block-entity-free Manager Vale parcels so the exact 24 attached bays, five turning envelopes and one connected street system are physically credible."
+    }
+  ],
+  "cottages": [
+    {
+      "id": "RRCH-ARCHITECT",
+      "nameAfter": "Architect House mini-mansion",
+      "action": "RELOCATE_TO_MANAGER_VALE_WITH_ATTACHED_6_CAR_GARAGE",
+      "source": {
+        "worldFeatureId": "wft_220824ed60db1af7",
+        "townBuildingId": "bld_handbuilt_0",
+        "name": "Architect cottage",
+        "bounds": [-124, 67, -380, -112, 77, -370],
+        "entrance": [-112, 68, -375],
+        "roomIds": [
+          "RRCH-ARCHITECT:ROOM:1:architect-living-room",
+          "RRCH-ARCHITECT:ROOM:1:architect-studio"
+        ],
+        "screenshot": {
+          "path": "data/exports/redevelopment-media-wave2-2026-07-28/buildings/ravensreach/rrch-architect--architect-cottage.png",
+          "sha256": "38b5551b5e83e2019d32b2d35fd133932b4f253978ed909ea850c768a21cebf9"
+        },
+        "floorplan": {
+          "path": "data/exports/world-catalog-wave2-post-2026-07-28/floorplans/structures/ravensreach-rrch-architect.png",
+          "sha256": "db892a7c02069c8b4de6ca3a1697d6ba22e4164bf87a0b51150a4636376c2b24"
+        },
+        "protectedBlockEntities": [
+          ["minecraft:barrel", -116, 68, -379],
+          ["minecraft:bed", -122, 68, -378],
+          ["minecraft:bed", -121, 68, -378],
+          ["minecraft:chest", -114, 68, -378],
+          ["minecraft:lectern", -121, 68, -372],
+          ["minecraft:furnace", -114, 68, -372],
+          ["minecraft:lectern", -118, 68, -371]
+        ],
+        "decommissionRule": "Move/preserve all seven NBT objects first. Retain the water detail at (-121,67,-366); adapt the reconciled shell as the Architect design archive only through exact guarded, reversible cell changes."
+      },
+      "site": {
+        "reservation": [-145, 45, -310, -99, 110, -282],
+        "buildingShell": [-144, 69, -309, -106, 96, -283],
+        "houseWing": [-144, 69, -309, -118, 96, -283],
+        "floorSupportsY": [69, 77],
+        "grossOccupiedFloorArea": 1458,
+        "surfaceSurvey": {"minY": 63, "p10Y": 69, "medianY": 74, "p90Y": 84, "maxY": 88, "surfaceWaterColumns": 0, "protectedBlockEntities": 0},
+        "terrainRule": "The garage/court remains on the north/east y=69 datum; the house steps into the western rise with planted stone plinths and a south garden terrace. No whole-parcel flattening.",
+        "coveredPatio": [-144, 73, -282, -126, 82, -278],
+        "attachedGarage": {
+          "id": "ARC-GARAGE-6",
+          "capacity": 6,
+          "bounds": [-118, 69, -309, -106, 76, -284],
+          "sharedWall": [-118, 69, -309, -118, 76, -284],
+          "houseAccessDoor": [-118, 70, -286],
+          "fireLobby": [-120, 70, -288, -118, 75, -284],
+          "doorFace": "east",
+          "doorOpenings": [
+            [-106, 70, -308, -106, 73, -306],
+            [-106, 70, -304, -106, 73, -302],
+            [-106, 70, -300, -106, 73, -298],
+            [-106, 70, -296, -106, 73, -294],
+            [-106, 70, -292, -106, 73, -290],
+            [-106, 70, -288, -106, 73, -286]
+          ],
+          "bays": [
+            {"id": "ARC-BAY-01", "bounds": [-117, 70, -308, -107, 75, -305]},
+            {"id": "ARC-BAY-02", "bounds": [-117, 70, -304, -107, 75, -301]},
+            {"id": "ARC-BAY-03", "bounds": [-117, 70, -300, -107, 75, -297]},
+            {"id": "ARC-BAY-04", "bounds": [-117, 70, -296, -107, 75, -293]},
+            {"id": "ARC-BAY-05", "bounds": [-117, 70, -292, -107, 75, -289]},
+            {"id": "ARC-BAY-06", "bounds": [-117, 70, -288, -107, 75, -285]}
+          ],
+          "apron": [-105, 68, -310, -99, 76, -283],
+          "turningEnvelope": [-105, 68, -310, -92, 76, -282],
+          "streetRoute": [[-106, 70, -307], [-101, 69, -307], [-101, 69, -314], [-97, 69, -314]]
+        }
+      },
+      "rooms": [
+        {"id": "ARC-G-ENTRY", "level": "G", "bounds": [-143, 70, -308, -137, 75, -301], "program": "entry, cloak and stair reception"},
+        {"id": "ARC-G-STUDIO", "level": "G", "bounds": [-135, 70, -308, -126, 75, -298], "program": "architect drafting/model studio"},
+        {"id": "ARC-G-OFFICE", "level": "G", "bounds": [-124, 70, -308, -119, 75, -298], "program": "client office and plan archive"},
+        {"id": "ARC-G-GREAT", "level": "G", "bounds": [-143, 70, -296, -133, 75, -284], "program": "great room and hearth"},
+        {"id": "ARC-G-DINING", "level": "G", "bounds": [-131, 70, -296, -126, 75, -284], "program": "formal dining"},
+        {"id": "ARC-G-KITCHEN", "level": "G", "bounds": [-124, 70, -296, -119, 75, -284], "program": "kitchen, pantry and scullery"},
+        {"id": "ARC-L2-PRIMARY", "level": "L2", "bounds": [-143, 78, -308, -134, 83, -299], "program": "primary bedroom, dressing and bath"},
+        {"id": "ARC-L2-DESIGN-LIBRARY", "level": "L2", "bounds": [-132, 78, -308, -125, 83, -299], "program": "design library and budget desk"},
+        {"id": "ARC-L2-GUEST-A", "level": "L2", "bounds": [-123, 78, -308, -119, 83, -299], "program": "guest/family bedroom"},
+        {"id": "ARC-L2-GUEST-B", "level": "L2", "bounds": [-143, 78, -297, -134, 83, -284], "program": "guest/family bedroom"},
+        {"id": "ARC-L2-RED-SUITE", "level": "L2", "bounds": [-132, 78, -297, -119, 83, -284], "program": "adult-only, non-graphic furnished private red suite"}
+      ],
+      "circulation": {
+        "publicEntry": [-140, 70, -309],
+        "pedestrianEntryRoute": [[-140, 70, -314], [-140, 70, -310], [-140, 70, -309]],
+        "mainStair": [-143, 70, -308, -139, 83, -301],
+        "remoteStair": [-144, 69, -291, -141, 84, -284],
+        "garageHouseDoor": [-118, 70, -286],
+        "patioRoute": [[-140, 70, -309], [-140, 70, -286], [-136, 74, -280]]
+      },
+      "privateSuiteFixtures": [
+        {"id": "ARC-RED-VESTIBULE", "bounds": [-132, 78, -297, -129, 83, -294]},
+        {"id": "ARC-RED-CANOPY-BED", "bounds": [-128, 78, -296, -124, 80, -292]},
+        {"id": "ARC-RED-CHAISE", "bounds": [-123, 78, -296, -120, 80, -293]},
+        {"id": "ARC-RED-RATED-SUSPENDED-LOUNGE", "anchor": [-120, 80, -288], "structuralStatus": "independently rated frame; not structural egress"},
+        {"id": "ARC-RED-CLOSED-TOY-STORAGE", "bounds": [-132, 78, -290, -130, 81, -287]},
+        {"id": "ARC-RED-DRESSING-VANITY", "bounds": [-129, 78, -290, -127, 81, -287]},
+        {"id": "ARC-RED-WASH", "bounds": [-126, 78, -290, -124, 81, -287]}
+      ],
+      "capacity": {"householdBedrooms": 3, "householdSleepCapacity": 6, "privateSuiteAdultCapacity": 4, "patioSeats": 8, "attachedGarageBays": 6},
+      "furnishingMinimums": {"householdBeds": 3, "privateSuiteBeds": 1, "seats": 20, "workstations": 5, "tables": 6, "storageUnits": 16, "washFixtures": 4, "hearthAndCookingFixtures": 5, "lightingGroups": 14, "privateThemedSilhouettes": 6, "total": 80},
+      "cameraCandidates": [
+        {"id": "ARC-SOURCE-BEFORE", "eye": [-142, 84, -375], "lookAt": [-118, 72.72, -375], "fov": 64, "role": "old-cottage-before"},
+        {"id": "ARC-SOURCE-AFTER", "eye": [-142, 84, -375], "lookAt": [-118, 72.72, -375], "fov": 64, "role": "old-design-archive-and-water-preservation-after"},
+        {"id": "ARC-DESTINATION-BEFORE", "eye": [-136, 91, -326], "lookAt": [-122, 73, -297], "fov": 64, "role": "new-parcel-before"},
+        {"id": "ARC-DESTINATION-AFTER", "eye": [-136, 91, -326], "lookAt": [-122, 73, -297], "fov": 64, "role": "new-parcel-after"},
+        {"id": "ARC-AFTER-GARAGE", "eye": [-96, 75, -297], "lookAt": [-112, 72, -297], "fov": 72, "role": "six-doors-apron-and-shared-wall"},
+        {"id": "ARC-AFTER-PATIO", "eye": [-136, 92, -269], "lookAt": [-136, 76, -288], "fov": 64, "role": "terraced-patio-and-stepped-plinth"},
+        {"id": "ARC-AFTER-GROUND", "eye": [-142, 72, -294], "lookAt": [-121, 72, -294], "fov": 72, "role": "great-room-to-service"},
+        {"id": "ARC-AFTER-UPPER", "eye": [-142, 80, -303], "lookAt": [-121, 80, -303], "fov": 72, "role": "bedroom-gallery"},
+        {"id": "ARC-AFTER-PRIVATE", "eye": [-131, 80, -286], "lookAt": [-123, 80, -293], "fov": 72, "role": "non-graphic-adult-suite-furniture-context"}
+      ]
+    },
+    {
+      "id": "RRCH-MASON",
+      "nameAfter": "Mason House mini-mansion",
+      "action": "RELOCATE_TO_MANAGER_VALE_WITH_ATTACHED_4_CAR_GARAGE",
+      "source": {
+        "worldFeatureId": "wft_fdb1a03cd6ec1b4a",
+        "townBuildingId": "bld_handbuilt_1",
+        "name": "Mason cottage",
+        "bounds": [-58, 67, -380, -46, 77, -370],
+        "entrance": [-58, 68, -375],
+        "roomIds": ["RRCH-MASON:ROOM:1:mason-living-room", "RRCH-MASON:ROOM:1:mason-workshop"],
+        "screenshot": {
+          "path": "data/exports/redevelopment-media-wave2-2026-07-28/buildings/ravensreach/rrch-mason--mason-cottage.png",
+          "sha256": "f0a55b043b75bff1f5813b12b892d22d0b5731876f600309ef08a77232d6a284"
+        },
+        "floorplan": {
+          "path": "data/exports/world-catalog-wave2-post-2026-07-28/floorplans/structures/ravensreach-rrch-mason.png",
+          "sha256": "fa3824383d3838931fa71282e43b925219346324ca143a7b0d582af64f4ec2d7"
+        },
+        "protectedBlockEntities": [
+          ["minecraft:barrel", -52, 68, -379],
+          ["minecraft:chest", -50, 68, -379],
+          ["minecraft:bed", -56, 68, -378],
+          ["minecraft:bed", -55, 68, -378],
+          ["minecraft:bed", -54, 68, -378],
+          ["minecraft:chest", -48, 68, -378],
+          ["minecraft:chest", -56, 68, -372],
+          ["minecraft:barrel", -55, 68, -372],
+          ["minecraft:furnace", -48, 68, -372],
+          ["minecraft:furnace", -56, 68, -371]
+        ],
+        "decommissionRule": "Move/preserve all ten NBT objects first. Preserve canal water/coping and every Grange-owned or ambiguous shared-edge cell; adapt only independently attributed Mason fabric as a canal tool lodge."
+      },
+      "site": {
+        "reservation": [-130, 45, -214, -94, 110, -174],
+        "buildingShell": [-129, 64, -203, -95, 88, -175],
+        "houseWing": [-129, 64, -191, -95, 88, -175],
+        "floorSupportsY": [64, 72],
+        "grossOccupiedFloorArea": 1190,
+        "surfaceSurvey": {"minY": 64, "p10Y": 64, "medianY": 64, "p90Y": 64, "maxY": 64, "surfaceWaterColumns": 0, "protectedBlockEntities": 0},
+        "terrainRule": "Keep the surveyed y=64 datum under the building and road, then restore shallow planted swales, specimen trees and a two-step rear garden so the parcel does not read as a featureless slab.",
+        "coveredPatio": [-129, 63, -174, -110, 72, -169],
+        "attachedGarage": {
+          "id": "MAS-GARAGE-4",
+          "capacity": 4,
+          "bounds": [-129, 64, -203, -112, 71, -191],
+          "sharedWall": [-129, 64, -191, -112, 71, -191],
+          "houseAccessDoor": [-116, 65, -191],
+          "fireLobby": [-119, 65, -193, -113, 70, -191],
+          "doorFace": "north",
+          "doorOpenings": [
+            [-128, 65, -203, -126, 68, -203],
+            [-124, 65, -203, -122, 68, -203],
+            [-120, 65, -203, -118, 68, -203],
+            [-116, 65, -203, -114, 68, -203]
+          ],
+          "bays": [
+            {"id": "MAS-BAY-01", "bounds": [-128, 65, -202, -125, 70, -192]},
+            {"id": "MAS-BAY-02", "bounds": [-124, 65, -202, -121, 70, -192]},
+            {"id": "MAS-BAY-03", "bounds": [-120, 65, -202, -117, 70, -192]},
+            {"id": "MAS-BAY-04", "bounds": [-116, 65, -202, -113, 70, -192]}
+          ],
+          "apron": [-130, 63, -214, -111, 71, -204],
+          "turningEnvelope": [-132, 63, -214, -108, 71, -204],
+          "streetRoute": [[-121, 64, -203], [-121, 64, -210], [-121, 64, -214], [-121, 64, -218]]
+        }
+      },
+      "rooms": [
+        {"id": "MAS-G-ENTRY", "level": "G", "bounds": [-128, 65, -190, -122, 70, -183], "program": "side entry and cloak"},
+        {"id": "MAS-G-STAIR-LOBBY", "level": "G", "bounds": [-120, 65, -190, -114, 70, -183], "program": "broad main stair lobby"},
+        {"id": "MAS-G-WORKSHOP", "level": "G", "bounds": [-112, 65, -190, -96, 70, -183], "program": "clean masonry studio and samples"},
+        {"id": "MAS-G-GREAT", "level": "G", "bounds": [-128, 65, -181, -117, 70, -176], "program": "great room and hearth"},
+        {"id": "MAS-G-DINING", "level": "G", "bounds": [-115, 65, -181, -107, 70, -176], "program": "dining"},
+        {"id": "MAS-G-KITCHEN", "level": "G", "bounds": [-105, 65, -181, -96, 70, -176], "program": "kitchen, pantry and scullery"},
+        {"id": "MAS-L2-PRIMARY", "level": "L2", "bounds": [-128, 73, -190, -114, 78, -183], "program": "primary bedroom, dressing and bath"},
+        {"id": "MAS-L2-GUEST-A", "level": "L2", "bounds": [-112, 73, -190, -96, 78, -183], "program": "guest/family bedroom"},
+        {"id": "MAS-L2-GUEST-B", "level": "L2", "bounds": [-128, 73, -181, -114, 78, -176], "program": "guest/family bedroom and sample library"},
+        {"id": "MAS-L2-RED-SUITE", "level": "L2", "bounds": [-112, 73, -181, -96, 78, -176], "program": "adult-only, non-graphic furnished private red suite"}
+      ],
+      "circulation": {
+        "publicEntry": [-95, 65, -186],
+        "pedestrianEntryRoute": [[-103, 64, -218], [-93, 64, -218], [-93, 64, -186], [-95, 65, -186]],
+        "mainStair": [-120, 65, -190, -116, 78, -183],
+        "remoteStair": [-128, 64, -182, -125, 80, -175],
+        "garageHouseDoor": [-116, 65, -191],
+        "patioRoute": [[-95, 65, -186], [-108, 65, -176], [-119, 65, -171]]
+      },
+      "privateSuiteFixtures": [
+        {"id": "MAS-RED-VESTIBULE", "bounds": [-112, 73, -181, -108, 78, -179]},
+        {"id": "MAS-RED-CANOPY-BED", "bounds": [-107, 73, -181, -103, 75, -178]},
+        {"id": "MAS-RED-CHAISE", "bounds": [-102, 73, -181, -99, 75, -179]},
+        {"id": "MAS-RED-RATED-SUSPENDED-LOUNGE", "anchor": [-99, 75, -177], "structuralStatus": "independently rated frame; not structural egress"},
+        {"id": "MAS-RED-CLOSED-TOY-STORAGE", "bounds": [-112, 73, -177, -109, 76, -176]},
+        {"id": "MAS-RED-DRESSING-VANITY", "bounds": [-108, 73, -177, -105, 76, -176]},
+        {"id": "MAS-RED-WASH", "bounds": [-104, 73, -177, -101, 76, -176]}
+      ],
+      "capacity": {"householdBedrooms": 3, "householdSleepCapacity": 6, "privateSuiteAdultCapacity": 3, "patioSeats": 6, "attachedGarageBays": 4},
+      "furnishingMinimums": {"householdBeds": 3, "privateSuiteBeds": 1, "seats": 16, "workstations": 4, "tables": 5, "storageUnits": 14, "washFixtures": 4, "hearthAndCookingFixtures": 6, "lightingGroups": 12, "privateThemedSilhouettes": 6, "total": 71},
+      "cameraCandidates": [
+        {"id": "MAS-SOURCE-BEFORE", "eye": [-52, 84, -399], "lookAt": [-52, 72.72, -375], "fov": 64, "role": "old-cottage-before"},
+        {"id": "MAS-SOURCE-AFTER", "eye": [-52, 84, -399], "lookAt": [-52, 72.72, -375], "fov": 64, "role": "old-canal-tool-lodge-after"},
+        {"id": "MAS-DESTINATION-BEFORE", "eye": [-121, 89, -231], "lookAt": [-112, 69, -190], "fov": 64, "role": "new-parcel-before"},
+        {"id": "MAS-DESTINATION-AFTER", "eye": [-121, 89, -231], "lookAt": [-112, 69, -190], "fov": 64, "role": "new-parcel-after"},
+        {"id": "MAS-AFTER-GARAGE", "eye": [-121, 70, -211], "lookAt": [-121, 68, -198], "fov": 72, "role": "four-doors-apron-and-r07-tie"},
+        {"id": "MAS-AFTER-PATIO", "eye": [-119, 86, -158], "lookAt": [-119, 70, -180], "fov": 64, "role": "rear-patio-landscape"},
+        {"id": "MAS-AFTER-GROUND", "eye": [-127, 67, -179], "lookAt": [-98, 67, -187], "fov": 72, "role": "great-room-to-workshop"},
+        {"id": "MAS-AFTER-UPPER", "eye": [-127, 75, -187], "lookAt": [-98, 75, -187], "fov": 72, "role": "bedroom-gallery"},
+        {"id": "MAS-AFTER-PRIVATE", "eye": [-111, 75, -178], "lookAt": [-101, 75, -180], "fov": 72, "role": "non-graphic-adult-suite-furniture-context"}
+      ]
+    },
+    {
+      "id": "RRCH-SURVEYOR",
+      "nameAfter": "Surveyor House mini-mansion",
+      "action": "RELOCATE_TO_MANAGER_VALE_WITH_ATTACHED_4_CAR_GARAGE",
+      "source": {
+        "worldFeatureId": "wft_930a8db31b6cb14e",
+        "townBuildingId": "bld_handbuilt_2",
+        "name": "Surveyor cottage",
+        "bounds": [-91, 67, -407, -79, 77, -400],
+        "entrance": [-85, 68, -400],
+        "roomIds": ["RRCH-SURVEYOR:ROOM:1:surveyor-living-room", "RRCH-SURVEYOR:ROOM:1:map-office"],
+        "screenshot": {
+          "path": "data/exports/redevelopment-media-wave2-2026-07-28/buildings/ravensreach/rrch-surveyor--surveyor-cottage.png",
+          "sha256": "e585a7bf830f1319110e334c656f17291c1db0c2af0d6ae2a659150fa91525be"
+        },
+        "floorplan": {
+          "path": "data/exports/world-catalog-wave2-post-2026-07-28/floorplans/structures/ravensreach-rrch-surveyor.png",
+          "sha256": "0cd166a2092fe51ff96ccf55ee29fc6c2db826ebc63d8c244572ac4addf5fdfc"
+        },
+        "protectedBlockEntities": [
+          ["minecraft:chest", -90, 68, -406],
+          ["minecraft:barrel", -88, 68, -406],
+          ["minecraft:chest", -81, 68, -405],
+          ["minecraft:bed", -89, 68, -404],
+          ["minecraft:bed", -88, 68, -404],
+          ["minecraft:furnace", -81, 68, -402]
+        ],
+        "decommissionRule": "Move/preserve all six NBT objects first. Reclassify the old shell as RRCH-SURVEYOR-MAP-PAVILION only after exact guarded refit and database revision."
+      },
+      "site": {
+        "reservation": [-130, 45, -259, -94, 110, -222],
+        "buildingShell": [-129, 64, -258, -95, 88, -233],
+        "houseNorthWing": [-129, 64, -258, -95, 88, -245],
+        "houseEastWing": [-111, 64, -245, -95, 88, -233],
+        "floorSupportsY": [64, 72],
+        "grossOccupiedFloorArea": 1358,
+        "surfaceSurvey": {"minY": 63, "p10Y": 64, "medianY": 64, "p90Y": 66, "maxY": 87, "surfaceWaterColumns": 0, "protectedBlockEntities": 0},
+        "terrainRule": "The occupied and garage datum follows the broad y=64 bench. The isolated north-west rise remains a planted lookout mound linked by garden stairs; it is not cut into a flat pad.",
+        "terracedPatioAndGarden": [-130, 63, -269, -95, 78, -260],
+        "attachedGarage": {
+          "id": "SUR-GARAGE-4",
+          "capacity": 4,
+          "bounds": [-129, 64, -245, -112, 71, -233],
+          "sharedWall": [-129, 64, -245, -112, 71, -245],
+          "houseAccessDoor": [-114, 65, -245],
+          "fireLobby": [-117, 65, -245, -112, 70, -243],
+          "doorFace": "south",
+          "doorOpenings": [
+            [-128, 65, -233, -126, 68, -233],
+            [-124, 65, -233, -122, 68, -233],
+            [-120, 65, -233, -118, 68, -233],
+            [-116, 65, -233, -114, 68, -233]
+          ],
+          "bays": [
+            {"id": "SUR-BAY-01", "bounds": [-128, 65, -244, -125, 70, -234]},
+            {"id": "SUR-BAY-02", "bounds": [-124, 65, -244, -121, 70, -234]},
+            {"id": "SUR-BAY-03", "bounds": [-120, 65, -244, -117, 70, -234]},
+            {"id": "SUR-BAY-04", "bounds": [-116, 65, -244, -113, 70, -234]}
+          ],
+          "apron": [-130, 63, -232, -111, 71, -222],
+          "turningEnvelope": [-132, 63, -232, -108, 71, -222],
+          "streetRoute": [[-121, 64, -233], [-121, 64, -226], [-121, 64, -222], [-121, 64, -218]]
+        }
+      },
+      "rooms": [
+        {"id": "SUR-G-MAP-STUDIO", "level": "G", "bounds": [-128, 65, -257, -119, 70, -247], "program": "survey map room and plotting tables"},
+        {"id": "SUR-G-FIELD-OFFICE", "level": "G", "bounds": [-117, 65, -257, -108, 70, -247], "program": "field office, archives and equipment counter"},
+        {"id": "SUR-G-STAIR-LOBBY", "level": "G", "bounds": [-106, 65, -257, -96, 70, -247], "program": "entry and broad main stair"},
+        {"id": "SUR-G-GREAT", "level": "G", "bounds": [-110, 65, -244, -105, 70, -234], "program": "great room and hearth"},
+        {"id": "SUR-G-DINING", "level": "G", "bounds": [-103, 65, -244, -100, 70, -234], "program": "formal dining"},
+        {"id": "SUR-G-KITCHEN", "level": "G", "bounds": [-98, 65, -244, -96, 70, -234], "program": "kitchen, pantry and scullery"},
+        {"id": "SUR-L2-PRIMARY", "level": "L2", "bounds": [-128, 73, -257, -117, 78, -247], "program": "primary bedroom, dressing and bath"},
+        {"id": "SUR-L2-CHART-LIBRARY", "level": "L2", "bounds": [-115, 73, -257, -105, 78, -247], "program": "chart library and reading desk"},
+        {"id": "SUR-L2-GUEST-A", "level": "L2", "bounds": [-103, 73, -257, -96, 78, -247], "program": "guest/family bedroom"},
+        {"id": "SUR-L2-GUEST-B", "level": "L2", "bounds": [-128, 73, -244, -117, 78, -234], "program": "guest/family bedroom"},
+        {"id": "SUR-L2-RED-SUITE", "level": "L2", "bounds": [-115, 73, -244, -104, 78, -234], "program": "adult-only, non-graphic furnished private red suite"},
+        {"id": "SUR-L2-SITTING", "level": "L2", "bounds": [-102, 73, -244, -96, 78, -234], "program": "upper sitting room and linen"}
+      ],
+      "circulation": {
+        "publicEntry": [-95, 65, -251],
+        "pedestrianEntryRoute": [[-108, 64, -218], [-92, 64, -218], [-92, 64, -251], [-95, 65, -251]],
+        "mainStair": [-106, 65, -257, -102, 78, -247],
+        "remoteStair": [-129, 64, -252, -126, 80, -245],
+        "garageHouseDoor": [-114, 65, -245],
+        "patioRoute": [[-95, 65, -251], [-112, 65, -258], [-121, 66, -264]]
+      },
+      "privateSuiteFixtures": [
+        {"id": "SUR-RED-VESTIBULE", "bounds": [-115, 73, -244, -112, 78, -241]},
+        {"id": "SUR-RED-CANOPY-BED", "bounds": [-111, 73, -243, -107, 75, -239]},
+        {"id": "SUR-RED-CHAISE", "bounds": [-106, 73, -243, -104, 75, -240]},
+        {"id": "SUR-RED-RATED-SUSPENDED-LOUNGE", "anchor": [-105, 75, -236], "structuralStatus": "independently rated frame; not structural egress"},
+        {"id": "SUR-RED-CLOSED-TOY-STORAGE", "bounds": [-115, 73, -237, -113, 76, -234]},
+        {"id": "SUR-RED-DRESSING-VANITY", "bounds": [-112, 73, -237, -110, 76, -234]},
+        {"id": "SUR-RED-WASH", "bounds": [-109, 73, -237, -107, 76, -234]}
+      ],
+      "capacity": {"householdBedrooms": 3, "householdSleepCapacity": 6, "privateSuiteAdultCapacity": 4, "patioSeats": 10, "attachedGarageBays": 4},
+      "furnishingMinimums": {"householdBeds": 3, "privateSuiteBeds": 1, "seats": 20, "workstations": 6, "tables": 7, "storageUnits": 18, "washFixtures": 4, "hearthAndCookingFixtures": 5, "lightingGroups": 16, "privateThemedSilhouettes": 6, "total": 86},
+      "cameraCandidates": [
+        {"id": "SUR-SOURCE-BEFORE", "eye": [-109, 84, -403.5], "lookAt": [-85, 72.72, -403.5], "fov": 64, "role": "old-cottage-source-before"},
+        {"id": "SUR-SOURCE-AFTER", "eye": [-109, 84, -403.5], "lookAt": [-85, 72.72, -403.5], "fov": 64, "role": "old-site-map-pavilion-after"},
+        {"id": "SUR-DESTINATION-BEFORE", "eye": [-121, 91, -211], "lookAt": [-112, 69, -245], "fov": 64, "role": "new-parcel-before"},
+        {"id": "SUR-DESTINATION-AFTER", "eye": [-121, 91, -211], "lookAt": [-112, 69, -245], "fov": 64, "role": "new-parcel-after"},
+        {"id": "SUR-AFTER-GARAGE", "eye": [-121, 70, -225], "lookAt": [-121, 68, -239], "fov": 72, "role": "four-doors-apron-and-r07-extension"},
+        {"id": "SUR-AFTER-TERRACES", "eye": [-121, 91, -275], "lookAt": [-121, 71, -253], "fov": 64, "role": "lookout-mound-and-garden"},
+        {"id": "SUR-AFTER-GROUND", "eye": [-127, 67, -252], "lookAt": [-97, 67, -252], "fov": 72, "role": "map-room-to-office"},
+        {"id": "SUR-AFTER-UPPER", "eye": [-127, 75, -252], "lookAt": [-97, 75, -252], "fov": 72, "role": "bedroom-and-chart-gallery"},
+        {"id": "SUR-AFTER-PRIVATE", "eye": [-114, 75, -236], "lookAt": [-106, 75, -241], "fov": 72, "role": "non-graphic-adult-suite-furniture-context"}
+      ]
+    },
+    {
+      "id": "RRCH-STEWARD",
+      "nameAfter": "Steward House mini-mansion",
+      "action": "RELOCATE_TO_MANAGER_VALE_WITH_ATTACHED_6_CAR_GARAGE",
+      "source": {
+        "worldFeatureId": "wft_82ac911e83071c18",
+        "townBuildingId": "bld_handbuilt_3",
+        "name": "Steward cottage",
+        "bounds": [-118, 67, -350, -106, 77, -340],
+        "entrance": [-112, 68, -350],
+        "roomIds": ["RRCH-STEWARD:ROOM:1:steward-living-room", "RRCH-STEWARD:ROOM:1:steward-office"],
+        "screenshot": {
+          "path": "data/exports/redevelopment-media-wave2-2026-07-28/buildings/ravensreach/rrch-steward--steward-cottage.png",
+          "sha256": "94cfd146b334be27767914f80a08ac76ee565306ad0eccba8efe24d8a904252a"
+        },
+        "floorplan": {
+          "path": "data/exports/world-catalog-wave2-post-2026-07-28/floorplans/structures/ravensreach-rrch-steward.png",
+          "sha256": "72bf03a41ddac680f6891886bd64d66fb541af7705f36e79f2acc69dbde2ff03"
+        },
+        "protectedBlockEntities": [
+          ["minecraft:chest", -117, 68, -349],
+          ["minecraft:barrel", -115, 68, -349],
+          ["minecraft:chiseled_bookshelf", -110, 68, -349],
+          ["minecraft:lectern", -108, 68, -349],
+          ["minecraft:bed", -116, 68, -348],
+          ["minecraft:bed", -115, 68, -348],
+          ["minecraft:chest", -108, 68, -348],
+          ["minecraft:barrel", -116, 68, -342],
+          ["minecraft:furnace", -108, 68, -342]
+        ],
+        "decommissionRule": "Move/preserve all nine NBT objects first. Retain the source water court and adapt the reconciled old shell as a records/household-services cottage through exact guarded, reversible changes."
+      },
+      "site": {
+        "reservation": [-92, 45, -310, -49, 110, -282],
+        "buildingShell": [-91, 69, -309, -58, 92, -283],
+        "houseWing": [-79, 69, -309, -58, 92, -283],
+        "floorSupportsY": [69, 77],
+        "grossOccupiedFloorArea": 1188,
+        "surfaceSurvey": {"minY": 63, "p10Y": 64, "medianY": 68, "p90Y": 71, "maxY": 78, "surfaceWaterColumns": 0, "protectedBlockEntities": 0},
+        "terrainRule": "Keep garage and front rooms on y=69, terrace the modest south rise into a planted rear court, and preserve irregular grade outside explicit building/apron cells.",
+        "coveredPatio": [-78, 67, -282, -59, 76, -277],
+        "attachedGarage": {
+          "id": "STW-GARAGE-6",
+          "capacity": 6,
+          "bounds": [-91, 69, -309, -79, 76, -284],
+          "sharedWall": [-79, 69, -309, -79, 76, -284],
+          "houseAccessDoor": [-79, 70, -286],
+          "fireLobby": [-79, 70, -288, -77, 75, -284],
+          "doorFace": "west",
+          "doorOpenings": [
+            [-91, 70, -308, -91, 73, -306],
+            [-91, 70, -304, -91, 73, -302],
+            [-91, 70, -300, -91, 73, -298],
+            [-91, 70, -296, -91, 73, -294],
+            [-91, 70, -292, -91, 73, -290],
+            [-91, 70, -288, -91, 73, -286]
+          ],
+          "bays": [
+            {"id": "STW-BAY-01", "bounds": [-90, 70, -308, -80, 75, -305]},
+            {"id": "STW-BAY-02", "bounds": [-90, 70, -304, -80, 75, -301]},
+            {"id": "STW-BAY-03", "bounds": [-90, 70, -300, -80, 75, -297]},
+            {"id": "STW-BAY-04", "bounds": [-90, 70, -296, -80, 75, -293]},
+            {"id": "STW-BAY-05", "bounds": [-90, 70, -292, -80, 75, -289]},
+            {"id": "STW-BAY-06", "bounds": [-90, 70, -288, -80, 75, -285]}
+          ],
+          "apron": [-98, 68, -310, -92, 76, -283],
+          "turningEnvelope": [-105, 68, -310, -92, 76, -282],
+          "streetRoute": [[-91, 70, -307], [-95, 69, -307], [-95, 69, -314], [-85, 70, -314]]
+        }
+      },
+      "rooms": [
+        {"id": "STW-G-ENTRY", "level": "G", "bounds": [-78, 70, -308, -73, 75, -300], "program": "entry, cloak and stair"},
+        {"id": "STW-G-OFFICE", "level": "G", "bounds": [-71, 70, -308, -65, 75, -299], "program": "steward office and records counter"},
+        {"id": "STW-G-GREAT", "level": "G", "bounds": [-63, 70, -308, -59, 75, -299], "program": "great room and hearth"},
+        {"id": "STW-G-DINING", "level": "G", "bounds": [-78, 70, -297, -72, 75, -284], "program": "formal dining"},
+        {"id": "STW-G-KITCHEN", "level": "G", "bounds": [-70, 70, -297, -65, 75, -284], "program": "kitchen, pantry and scullery"},
+        {"id": "STW-G-LIVING", "level": "G", "bounds": [-63, 70, -297, -59, 75, -284], "program": "household sitting and service room"},
+        {"id": "STW-L2-PRIMARY", "level": "L2", "bounds": [-78, 78, -308, -71, 83, -299], "program": "primary bedroom, dressing and bath"},
+        {"id": "STW-L2-GUEST-A", "level": "L2", "bounds": [-69, 78, -308, -65, 83, -299], "program": "guest/family bedroom"},
+        {"id": "STW-L2-GUEST-B", "level": "L2", "bounds": [-63, 78, -308, -59, 83, -299], "program": "guest/family bedroom"},
+        {"id": "STW-L2-LIBRARY", "level": "L2", "bounds": [-78, 78, -297, -70, 83, -284], "program": "manager library and budget desk"},
+        {"id": "STW-L2-RED-SUITE", "level": "L2", "bounds": [-68, 78, -297, -59, 83, -284], "program": "adult-only, non-graphic furnished private red suite"}
+      ],
+      "circulation": {
+        "publicEntry": [-75, 70, -309],
+        "pedestrianEntryRoute": [[-75, 70, -314], [-75, 70, -310], [-75, 70, -309]],
+        "mainStair": [-78, 70, -308, -74, 83, -300],
+        "remoteStair": [-63, 69, -291, -60, 85, -284],
+        "garageHouseDoor": [-79, 70, -286],
+        "patioRoute": [[-75, 70, -309], [-64, 70, -286], [-68, 69, -279]]
+      },
+      "privateSuiteFixtures": [
+        {"id": "STW-RED-VESTIBULE", "bounds": [-68, 78, -297, -65, 83, -294]},
+        {"id": "STW-RED-CANOPY-BED", "bounds": [-64, 78, -296, -60, 80, -292]},
+        {"id": "STW-RED-CHAISE", "bounds": [-68, 78, -291, -65, 80, -288]},
+        {"id": "STW-RED-RATED-SUSPENDED-LOUNGE", "anchor": [-60, 80, -288], "structuralStatus": "independently rated frame; not structural egress"},
+        {"id": "STW-RED-CLOSED-TOY-STORAGE", "bounds": [-68, 78, -287, -66, 81, -284]},
+        {"id": "STW-RED-DRESSING-VANITY", "bounds": [-65, 78, -287, -63, 81, -284]},
+        {"id": "STW-RED-WASH", "bounds": [-62, 78, -287, -60, 81, -284]}
+      ],
+      "capacity": {"householdBedrooms": 3, "householdSleepCapacity": 6, "privateSuiteAdultCapacity": 3, "patioSeats": 10, "attachedGarageBays": 6},
+      "furnishingMinimums": {"householdBeds": 3, "privateSuiteBeds": 1, "seats": 22, "workstations": 5, "tables": 7, "storageUnits": 18, "washFixtures": 4, "hearthAndCookingFixtures": 5, "lightingGroups": 16, "privateThemedSilhouettes": 6, "total": 87},
+      "cameraCandidates": [
+        {"id": "STW-SOURCE-BEFORE", "eye": [-128.97, 84, -328.03], "lookAt": [-112, 72.72, -345], "fov": 64, "role": "old-cottage-before"},
+        {"id": "STW-SOURCE-AFTER", "eye": [-128.97, 84, -328.03], "lookAt": [-112, 72.72, -345], "fov": 64, "role": "old-records-cottage-and-water-court-after"},
+        {"id": "STW-DESTINATION-BEFORE", "eye": [-73, 91, -326], "lookAt": [-74, 73, -297], "fov": 64, "role": "new-parcel-before"},
+        {"id": "STW-DESTINATION-AFTER", "eye": [-73, 91, -326], "lookAt": [-74, 73, -297], "fov": 64, "role": "new-parcel-after"},
+        {"id": "STW-AFTER-GARAGE", "eye": [-102, 75, -297], "lookAt": [-85, 72, -297], "fov": 72, "role": "six-doors-apron-and-shared-wall"},
+        {"id": "STW-AFTER-PATIO", "eye": [-68, 88, -267], "lookAt": [-68, 73, -286], "fov": 64, "role": "rear-patio-and-landscape"},
+        {"id": "STW-AFTER-GROUND", "eye": [-77, 72, -294], "lookAt": [-60, 72, -294], "fov": 72, "role": "entry-to-great-room"},
+        {"id": "STW-AFTER-UPPER", "eye": [-77, 80, -303], "lookAt": [-60, 80, -303], "fov": 72, "role": "bedroom-and-library-gallery"},
+        {"id": "STW-AFTER-PRIVATE", "eye": [-67, 80, -286], "lookAt": [-61, 80, -293], "fov": 72, "role": "non-graphic-adult-suite-furniture-context"}
+      ]
+    },
+    {
+      "id": "RRCH-SCOUT",
+      "nameAfter": "Scott House mini-mansion",
+      "action": "RELOCATE_TO_MANAGER_VALE_WITH_ATTACHED_4_CAR_GARAGE_AND_RESOLVE_MARKET_OVERLAP",
+      "identityMigration": {
+        "occupantFacingName": "Scott House",
+        "residentDisplayName": "Scott",
+        "historicalExternalIdAlias": "RRCH-SCOUT",
+        "rule": "Keep RRCH-SCOUT as the stable historical/external ID alias until all cottage, room, resident, media and route foreign keys are atomically crosswalked. New signage and occupant-facing labels say Scott; never create a second resident or orphan the old object."
+      },
+      "source": {
+        "worldFeatureId": "wft_a15eecb25e08cc19",
+        "townBuildingId": "bld_handbuilt_4",
+        "name": "Scout cottage",
+        "bounds": [-64, 67, -350, -52, 77, -340],
+        "entrance": [-58, 68, -350],
+        "roomIds": ["RRCH-SCOUT:ROOM:1:scout-living-room", "RRCH-SCOUT:ROOM:1:field-gear-room"],
+        "screenshot": {
+          "path": "data/exports/redevelopment-media-wave2-2026-07-28/buildings/ravensreach/rrch-scout--scout-cottage.png",
+          "sha256": "bbd170b709a8fdfb5fcea51a6f2564f5112f06e51ce403f57f470372a3f994fc"
+        },
+        "floorplan": {
+          "path": "data/exports/world-catalog-wave2-post-2026-07-28/floorplans/structures/ravensreach-rrch-scout.png",
+          "sha256": "f2295a2ea5a74572d7fd22719bfdae884bcd31af09ddfd40557568adc8039f9d"
+        },
+        "protectedBlockEntities": [
+          ["minecraft:barrel", -58, 68, -349],
+          ["minecraft:chest", -56, 68, -349],
+          ["minecraft:chest", -62, 68, -348],
+          ["minecraft:furnace", -61, 68, -348],
+          ["minecraft:barrel", -58, 68, -347],
+          ["minecraft:bed", -61, 68, -346],
+          ["minecraft:bed", -60, 68, -346],
+          ["minecraft:barrel", -62, 68, -343],
+          ["minecraft:furnace", -54, 68, -341]
+        ],
+        "marketOverlap": {
+          "marketObject": "RRCH-MARKET",
+          "intersectionXZ": [-64, -344, -52, -340],
+          "columns": 65,
+          "protectedScoutEntitiesInsideIntersection": [
+            ["minecraft:barrel", -62, 68, -343],
+            ["minecraft:furnace", -54, 68, -341]
+          ]
+        },
+        "decommissionRule": "Move/preserve all nine NBT objects first. Cell-attribute the complete old envelope. Remove only Scout-owned cells; preserve Market-owned and ambiguous cells."
+      },
+      "site": {
+        "reservation": [-82, 45, -259, -57, 110, -222],
+        "buildingShell": [-81, 64, -258, -58, 88, -233],
+        "houseNorthWing": [-81, 64, -258, -58, 88, -245],
+        "houseEastWing": [-63, 64, -245, -58, 88, -233],
+        "floorSupportsY": [64, 72],
+        "grossOccupiedFloorArea": 1320,
+        "surfaceSurvey": {"minY": 63, "p10Y": 64, "medianY": 64, "p90Y": 68, "maxY": 75, "surfaceWaterColumns": 0, "protectedBlockEntities": 0},
+        "terrainRule": "Keep the occupied bench at y=64, retain the higher north/east contour as a planted scouting garden, and use short landscape steps rather than leveling the reservation.",
+        "terracedPatioAndGarden": [-82, 63, -269, -58, 76, -260],
+        "attachedGarage": {
+          "id": "SCO-GARAGE-4",
+          "capacity": 4,
+          "bounds": [-81, 64, -245, -64, 71, -233],
+          "sharedWall": [-81, 64, -245, -64, 71, -245],
+          "houseAccessDoor": [-66, 65, -245],
+          "fireLobby": [-69, 65, -245, -64, 70, -243],
+          "doorFace": "south",
+          "doorOpenings": [
+            [-80, 65, -233, -78, 68, -233],
+            [-76, 65, -233, -74, 68, -233],
+            [-72, 65, -233, -70, 68, -233],
+            [-68, 65, -233, -66, 68, -233]
+          ],
+          "bays": [
+            {"id": "SCO-BAY-01", "bounds": [-80, 65, -244, -77, 70, -234]},
+            {"id": "SCO-BAY-02", "bounds": [-76, 65, -244, -73, 70, -234]},
+            {"id": "SCO-BAY-03", "bounds": [-72, 65, -244, -69, 70, -234]},
+            {"id": "SCO-BAY-04", "bounds": [-68, 65, -244, -65, 70, -234]}
+          ],
+          "apron": [-82, 63, -232, -63, 71, -222],
+          "turningEnvelope": [-84, 63, -232, -60, 71, -222],
+          "streetRoute": [[-73, 64, -233], [-73, 64, -226], [-73, 64, -222], [-73, 64, -218]]
+        }
+      },
+      "rooms": [
+        {"id": "SCO-G-FIELD-GEAR", "level": "G", "bounds": [-80, 65, -257, -74, 70, -247], "program": "field gear, drying and equipment room"},
+        {"id": "SCO-G-STAIR-LOBBY", "level": "G", "bounds": [-72, 65, -257, -66, 70, -247], "program": "entry and broad main stair"},
+        {"id": "SCO-G-ROUTE-OFFICE", "level": "G", "bounds": [-64, 65, -257, -59, 70, -247], "program": "route-planning office and briefing table"},
+        {"id": "SCO-G-GREAT", "level": "G", "bounds": [-62, 65, -244, -59, 70, -239], "program": "great room and hearth"},
+        {"id": "SCO-G-KITCHEN-DINING", "level": "G", "bounds": [-62, 65, -237, -59, 70, -234], "program": "dining, kitchen, pantry and scullery"},
+        {"id": "SCO-L2-PRIMARY", "level": "L2", "bounds": [-80, 73, -257, -73, 78, -247], "program": "primary bedroom, dressing and bath"},
+        {"id": "SCO-L2-GUEST-A", "level": "L2", "bounds": [-71, 73, -257, -65, 78, -247], "program": "guest/family bedroom"},
+        {"id": "SCO-L2-BRIEFING-LIBRARY", "level": "L2", "bounds": [-63, 73, -257, -59, 78, -247], "program": "briefing library and route archive"},
+        {"id": "SCO-L2-GUEST-B", "level": "L2", "bounds": [-80, 73, -244, -72, 78, -234], "program": "guest/family bedroom"},
+        {"id": "SCO-L2-RED-SUITE", "level": "L2", "bounds": [-70, 73, -244, -64, 78, -234], "program": "adult-only, non-graphic furnished private red suite"},
+        {"id": "SCO-L2-SITTING", "level": "L2", "bounds": [-62, 73, -244, -59, 78, -234], "program": "upper sitting room and linen"}
+      ],
+      "circulation": {
+        "publicEntry": [-81, 65, -251],
+        "pedestrianEntryRoute": [[-88, 64, -218], [-84, 64, -218], [-84, 64, -251], [-81, 65, -251]],
+        "mainStair": [-72, 65, -257, -68, 78, -247],
+        "remoteStair": [-63, 64, -252, -60, 80, -245],
+        "garageHouseDoor": [-66, 65, -245],
+        "patioRoute": [[-81, 65, -251], [-70, 65, -258], [-67, 66, -264]]
+      },
+      "privateSuiteFixtures": [
+        {"id": "SCO-RED-VESTIBULE", "bounds": [-70, 73, -244, -68, 78, -241]},
+        {"id": "SCO-RED-CANOPY-BED", "bounds": [-67, 73, -243, -64, 75, -240]},
+        {"id": "SCO-RED-CHAISE", "bounds": [-70, 73, -239, -67, 75, -237]},
+        {"id": "SCO-RED-RATED-SUSPENDED-LOUNGE", "anchor": [-65, 75, -238], "structuralStatus": "independently rated frame; not structural egress"},
+        {"id": "SCO-RED-CLOSED-TOY-STORAGE", "bounds": [-70, 73, -236, -68, 76, -234]},
+        {"id": "SCO-RED-DRESSING-VANITY", "bounds": [-67, 73, -236, -66, 76, -234]},
+        {"id": "SCO-RED-WASH", "bounds": [-65, 73, -236, -64, 76, -234]}
+      ],
+      "capacity": {"householdBedrooms": 3, "householdSleepCapacity": 6, "privateSuiteAdultCapacity": 5, "patioSeats": 8, "attachedGarageBays": 4},
+      "furnishingMinimums": {"householdBeds": 3, "privateSuiteBeds": 1, "seats": 20, "workstations": 5, "tables": 6, "storageUnits": 17, "washFixtures": 4, "hearthAndCookingFixtures": 5, "lightingGroups": 14, "privateThemedSilhouettes": 7, "total": 82},
+      "cameraCandidates": [
+        {"id": "SCO-SOURCE-BEFORE", "eye": [-58, 120, -310], "lookAt": [-58, 72, -345], "fov": 64, "role": "old-cottage-and-market-conflict-before"},
+        {"id": "SCO-SOURCE-AFTER", "eye": [-58, 120, -310], "lookAt": [-58, 72, -345], "fov": 64, "role": "old-site-market-preservation-after"},
+        {"id": "SCO-DESTINATION-BEFORE", "eye": [-73, 91, -211], "lookAt": [-64, 69, -245], "fov": 64, "role": "new-parcel-before"},
+        {"id": "SCO-DESTINATION-AFTER", "eye": [-73, 91, -211], "lookAt": [-64, 69, -245], "fov": 64, "role": "Scott House new-parcel-after"},
+        {"id": "SCO-AFTER-GARAGE", "eye": [-73, 70, -225], "lookAt": [-73, 68, -239], "fov": 72, "role": "four-doors-apron-and-r07"},
+        {"id": "SCO-AFTER-GARDEN", "eye": [-65, 89, -274], "lookAt": [-65, 70, -253], "fov": 64, "role": "terraced-garden-and-rear"},
+        {"id": "SCO-AFTER-GROUND", "eye": [-79, 67, -252], "lookAt": [-50, 67, -252], "fov": 72, "role": "field-gear-to-route-office"},
+        {"id": "SCO-AFTER-UPPER", "eye": [-79, 75, -252], "lookAt": [-50, 75, -252], "fov": 72, "role": "bedroom-and-briefing-gallery"},
+        {"id": "SCO-AFTER-PRIVATE", "eye": [-67, 75, -236], "lookAt": [-55, 75, -241], "fov": 72, "role": "non-graphic-adult-suite-furniture-context"}
+      ]
+    }
+  ],
+  "aggregateCounts": {
+    "cottages": 5,
+    "expandedInPlace": 0,
+    "relocated": 5,
+    "protectedBlockEntities": 41,
+    "householdBedrooms": 15,
+    "householdSleepCapacity": 30,
+    "privateAdultSuites": 5,
+    "privateAdultCapacity": 19,
+    "attachedAutomotiveGarages": 5,
+    "attachedAutomotiveGarageBays": 24,
+    "serviceOrCarriageBaysCountedAsAutomotive": 0,
+    "garageTurningEnvelopes": 5,
+    "garageStreetRoutes": 5,
+    "mainStairs": 5,
+    "remoteStairs": 5,
+    "namedRooms": 55,
+    "cameraCandidates": 45,
+    "sourceSiteCameraPairsForRelocations": 5,
+    "destinationSiteCameraPairsForRelocations": 5,
+    "furnishingMinimumTotal": 406
+  },
+  "databaseRevisionContract": {
+    "projectId": "ravensreach",
+    "preserveWorldFeatureIdsForInPlace": [],
+    "revisionRelocatedObjects": ["wft_220824ed60db1af7", "wft_fdb1a03cd6ec1b4a", "wft_930a8db31b6cb14e", "wft_82ac911e83071c18", "wft_a15eecb25e08cc19"],
+    "historicalExternalIdAliases": {"RRCH-SCOUT": "Scott House"},
+    "residentIdentityPolicy": "Occupant-facing labels and signage use Scott. RRCH-SCOUT remains the historical/external ID alias until a single atomic migration updates cottage, room, resident, media and route references; do not create a second resident record.",
+    "roomPolicy": "Retire the ten legacy room objects only after the new 55-room import succeeds; maintain old/new external-ID crosswalks.",
+    "statusPolicy": "No house or room may be complete before post-snapshot geometry, route, furnishing and media evidence pass.",
+    "mediaPolicy": "Exact links come from reviewed evidence attributes; filename discovery alone does not establish an object relationship."
+  },
+  "designValidation": {
+    "status": "PASS_COORDINATE_DESIGN_ONLY",
+    "validatedAgainst": "data/worldsnap-town-expansion-prerelease-20260728T0930Z/region",
+    "checks": {
+      "cottageCount": 5,
+      "relocationCount": 5,
+      "protectedBlockEntitiesEnumerated": 41,
+      "destinationSurfaceWaterColumns": 0,
+      "destinationProtectedBlockEntities": 0,
+      "attachedGarageCount": 5,
+      "garageBayCount": 24,
+      "garageCapacityByHouse": {"RRCH-ARCHITECT": 6, "RRCH-STEWARD": 6, "RRCH-MASON": 4, "RRCH-SURVEYOR": 4, "RRCH-SCOUT": 4},
+      "garageSharedWallCount": 5,
+      "garageHouseAccessDoorCount": 5,
+      "garageTurningEnvelopeCount": 5,
+      "garageStreetRouteCount": 5,
+      "namedRoomCount": 55,
+      "cameraCandidateCount": 45,
+      "duplicateRoomIds": 0,
+      "duplicateBayIds": 0,
+      "sameLevelRoomIntersections": 0
+    },
+    "limit": "This is a schedule validation, not a claim that roads, buildings, inventories, databases or media were changed."
+  },
+  "releaseGates": [
+    {"id": "CENSUS-5", "passCondition": "Fresh snapshot and both databases reconcile to exactly five source cottage objects."},
+    {"id": "BE-41", "passCondition": "All 41 source block entities have exact coordinate, full NBT, destination, before hash and after hash; no loss or duplicate."},
+    {"id": "EXACT-ROLLBACK", "passCondition": "Every changed cell has an exact source-state forward guard and exact rollback pair; strict-noop preflight passes."},
+    {"id": "SCOUT-MARKET", "passCondition": "Cell-level attribution reports zero removal of Market-owned or ambiguous cells inside the 65-column overlap."},
+    {"id": "SURVEYOR-OLD-SITE", "passCondition": "Old Surveyor shell is nonresidential, fully reconciled and does not narrow the Storehouse-to-Moot public route."},
+    {"id": "CANAL", "passCondition": "Mason canal water, containment and canal-side walk remain continuous and leak-free."},
+    {"id": "GRANGE", "passCondition": "Zero Grange-owned or ambiguous shared-edge cells are altered."},
+    {"id": "WATER-COURTS", "passCondition": "Architect and Steward documented water columns remain contained and integrated; zero unplanned fluid targets."},
+    {"id": "VEHICLE-NETWORK", "passCondition": "Upper Street, East Connector and R07 West Extension form one connected route; carriageways are seven blocks wide, the East Connector is no steeper than 1:5 and all 24 bays pass door-to-street vehicle sweeps."},
+    {"id": "GARAGES-24", "passCondition": "Exactly five physically attached automotive garages provide exactly 24 usable bays (Architect 6, Steward 6, Mason 4, Surveyor 4, Scott/RRCH-SCOUT 4), five shared walls, five fire-lobby doors, five aprons and five turning envelopes; service/carriage spaces count as zero."},
+    {"id": "PEDESTRIAN-ENTRIES", "passCondition": "Every public entry has an independently walkable, two-block-headroom pedestrian route protected from garage backing paths by a raised crossing or side walk."},
+    {"id": "ROOM-GEOMETRY", "passCondition": "Zero same-level room intersections outside declared transitions; every room is inside its building envelope."},
+    {"id": "STAIRS", "passCondition": "Ten stair systems reach both occupied levels with two-block headroom, usable landings and no ladders as primary routes."},
+    {"id": "PRIVATE-SUITES", "passCondition": "Five non-graphic adult suites contain the scheduled canopy bed, chaise, independently rated suspended lounge, closed storage, dressing and wash zones; they remain outside required egress and have no public sightline."},
+    {"id": "FURNISHINGS", "passCondition": "At least 406 scheduled furnishings/lighting groups exist with every per-house category minimum met."},
+    {"id": "CAMERAS", "passCondition": "All 45 camera candidates are collision-free; all five source and five destination before/after pairs preserve eye, lookAt, FOV, time and weather, and every garage has a door/apron evidence view."},
+    {"id": "SCOTT-IDENTITY", "passCondition": "Signage and occupant-facing records say Scott House/Scott while RRCH-SCOUT remains a traceable historical alias; resident and cottage references reconcile one-to-one with no duplicate or orphan."},
+    {"id": "CROSS-SCOPE", "passCondition": "Zero unreviewed intersection with current features, Gilded Raven, new civic work, employee path, streets, farms or protected routes."},
+    {"id": "POST-STATE", "passCondition": "Post snapshot, DB import, route QA, floorplans, object-media links and second-pass visual defect report all pass before publication."}
+  ]
+}

@@ -1,7 +1,7 @@
 import { Bot } from 'mineflayer';
 import { ActionResult } from './types';
 import { moveNearWithCleanup } from './moveHelper';
-import { isProtected, getMineSite, shouldRouteToMine } from './geofence';
+import { isProtected, getMineSite, shouldRouteToMine, isBelowDigFloor, getMinDigY } from './geofence';
 
 const PICKAXE_TIERS = ['netherite', 'diamond', 'iron', 'stone', 'golden', 'wooden'];
 const AXE_TIERS = ['netherite', 'diamond', 'iron', 'stone', 'golden', 'wooden'];
@@ -115,6 +115,25 @@ export async function mineBlock(bot: Bot, blockType: string, count = 1): Promise
     (pos: any) => !isProtected(Math.floor(pos.x), Math.floor(pos.y), Math.floor(pos.z)),
   );
 
+  // Dig-depth floor: refuse to tunnel below the configured Y outside the
+  // communal mine. Checked separately from protected zones so the failure
+  // message tells the bot WHY, and so the two can be tuned independently.
+  const aboveFloor = fencedPositions.filter(
+    (pos: any) => !isBelowDigFloor(Math.floor(pos.x), Math.floor(pos.y), Math.floor(pos.z)),
+  );
+  if (fencedPositions.length > 0 && aboveFloor.length === 0) {
+    const site = getMineSite();
+    return {
+      success: false,
+      message:
+        `All nearby ${blockType} is below the dig-depth floor (y=${getMinDigY()}) — refusing to tunnel underground. ` +
+        (site
+          ? `Travel to the communal mine at ${site.x},${site.y},${site.z} to dig deep, or find ${blockType} at the surface.`
+          : `Find ${blockType} at or above the surface instead of digging down.`),
+      data: { mined: 0 },
+    };
+  }
+
   if (fencedPositions.length === 0) {
     return {
       success: false,
@@ -123,7 +142,9 @@ export async function mineBlock(bot: Bot, blockType: string, count = 1): Promise
     };
   }
 
-  const targets = fencedPositions
+  // aboveFloor, not fencedPositions — otherwise the depth floor is computed
+  // and then ignored when picking what to actually dig.
+  const targets = aboveFloor
     .slice(0, count)
     .map((pos: any) => bot.blockAt(pos))
     .filter((block: any) => block);

@@ -43,10 +43,11 @@ interface UsageMetrics {
   byTaskType: Record<string, { calls: number; tokens: number; cost: number }>;
 }
 
-type TabId = 'ai' | 'server' | 'behavior' | 'affinity' | 'instincts' | 'voyager';
+type TabId = 'ai' | 'integrations' | 'server' | 'behavior' | 'affinity' | 'instincts' | 'voyager';
 
 const TABS: ReadonlyArray<SettingsTabDef<TabId>> = [
   { id: 'ai', label: 'AI' },
+  { id: 'integrations', label: 'Integrations' },
   { id: 'server', label: 'Server' },
   { id: 'behavior', label: 'Behavior' },
   { id: 'affinity', label: 'Affinity' },
@@ -55,7 +56,7 @@ const TABS: ReadonlyArray<SettingsTabDef<TabId>> = [
 ];
 
 function isTabId(s: string | null): s is TabId {
-  return s === 'ai' || s === 'server' || s === 'behavior' || s === 'affinity' || s === 'instincts' || s === 'voyager';
+  return s === 'ai' || s === 'integrations' || s === 'server' || s === 'behavior' || s === 'affinity' || s === 'instincts' || s === 'voyager';
 }
 
 // Per-field labels + hints for the Minecraft server section. The generic
@@ -126,7 +127,7 @@ function SettingsPageInner() {
         <div>
           <h1 className="text-2xl font-bold">Settings</h1>
           <p className="text-zinc-400 text-sm mt-1">
-            Configure providers, the target Minecraft server, behavior tuning, affinity rules, instincts, and Voyager loop options.
+            Configure AI, external integrations, the Minecraft server, behavior tuning, affinity rules, instincts, and Voyager loop options.
           </p>
         </div>
 
@@ -139,6 +140,9 @@ function SettingsPageInner() {
 
         <div>
           {activeTab === 'ai' && <AiProviderTab onDirtyChange={makeDirtyHandler('ai')} />}
+          {activeTab === 'integrations' && (
+            <BoxIntegrationTab onDirtyChange={makeDirtyHandler('integrations')} />
+          )}
           {activeTab === 'server' && (
             <SettingsSection
               section="minecraft"
@@ -228,20 +232,26 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
 
   // Known model IDs per provider — surfaced in a datalist so users get a dropdown
   // but can still type any custom model ID (vendors release new ones constantly).
-  // Canonical model IDs verified against each vendor's API docs (April 2026).
+  // Canonical model IDs verified against each vendor's API docs (July 2026).
   // Lists are ordered current → legacy. Users can also type any custom ID.
   const MODEL_CATALOG: Record<string, string[]> = {
     gemini: [
-      'gemini-2.5-flash-preview-05-20',
+      // Gemini 3.5 launched at Google I/O 2026 (May 19). Note 3.5-flash is
+      // NOT priced like 2.5-flash — it is $1.50/$9.00, ~10x the old Flash rate.
+      'gemini-3.5-flash',
+      'gemini-3.5-pro',
+      'gemini-3.1-pro',
+      'gemini-2.5-flash',
       'gemini-2.5-pro',
       'gemini-2.0-flash',
     ],
     anthropic: [
       // Current
+      'claude-opus-5',
       'claude-fable-5',
+      'claude-sonnet-5',
       'claude-opus-4-8',
       'claude-opus-4-7',
-      'claude-sonnet-5',
       'claude-sonnet-4-6',
       'claude-haiku-4-5',
       // Legacy but still callable
@@ -251,7 +261,12 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
       'claude-opus-4-1',
     ],
     openai: [
-      // Frontier (gpt-5.5 — GA; size variants are still 5.4 tier)
+      // GPT-5.6 family (2026-07-09). Three variants; bare `gpt-5.6` aliases
+      // to Sol. All use breakpoint pricing above 272K input tokens.
+      'gpt-5.6-sol',
+      'gpt-5.6-terra',
+      'gpt-5.6-luna',
+      // Previous frontier
       'gpt-5.5',
       'gpt-5.5-pro',
       'gpt-5.3-codex',     // most capable agentic coding model
@@ -300,7 +315,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
 
   const fetchSettings = useCallback(async () => {
     try {
-      const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+      const base = process.env.NEXT_PUBLIC_API_URL || '';
       const [settingsRes, usageRes, enabledRes, budgetRes] = await Promise.all([
         fetch(`${base}/api/llm/providers`).then((r) => r.json()),
         fetch(`${base}/api/llm/usage`).then((r) => r.json()),
@@ -329,7 +344,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
     const newValue = !aiEnabled;
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/llm/enabled`,
+        `${process.env.NEXT_PUBLIC_API_URL || ''}/api/llm/enabled`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -353,7 +368,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
   const patchBudget = async (patch: Partial<typeof budget>, successMsg?: string) => {
     setSavingBudget(true);
     try {
-      const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+      const base = process.env.NEXT_PUBLIC_API_URL || '';
       const res = await fetch(`${base}/api/llm/budget`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -385,7 +400,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
   useEffect(() => { fetchSettings(); }, [fetchSettings]);
   // Refresh today's spend every 20s so the readout tracks live burn.
   useEffect(() => {
-    const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+    const base = process.env.NEXT_PUBLIC_API_URL || '';
     const id = setInterval(() => {
       fetch(`${base}/api/llm/budget`).then((r) => r.json()).then((d) => {
         if (d?.spendTodayUsd) setSpendToday(d.spendTodayUsd);
@@ -430,7 +445,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
     }
     setSaving(true);
     try {
-      const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+      const base = process.env.NEXT_PUBLIC_API_URL || '';
       const res = await fetch(`${base}/api/llm/providers`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -476,7 +491,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
 
   const removeProvider = async (name: string) => {
     try {
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/llm/providers/${name}`, { method: 'DELETE' });
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/llm/providers/${name}`, { method: 'DELETE' });
       await fetchSettings();
       showFeedback('success', `Removed ${name}`);
     } catch {
@@ -486,7 +501,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
 
   const toggleProvider = async (provider: Provider) => {
     try {
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/llm/providers`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/llm/providers`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...provider, enabled: !provider.enabled }),
@@ -500,7 +515,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
   const saveRoutes = async () => {
     setSaving(true);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/llm/routes`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/llm/routes`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ routes: editRoutes, defaultProvider: settings?.defaultProvider }),
@@ -522,7 +537,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
   const reloadRouter = async () => {
     setSaving(true);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/llm/reload`, { method: 'POST' });
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/llm/reload`, { method: 'POST' });
       const data = await res.json();
       if (data.success) {
         showFeedback('success', `Router reloaded with providers: ${data.providers.join(', ')}`);
@@ -1014,6 +1029,473 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
           )}
         </section>
       )}
+    </div>
+  );
+}
+
+// ─── External integrations tab ─────────────────────────────────────────
+
+type BoxArtifactCategory = 'maps' | 'screenshots' | 'documents' | 'outputs';
+
+interface BoxSettings {
+  enabled: boolean;
+  authMode: 'access_token' | 'client_credentials';
+  clientId: string;
+  subjectType: 'enterprise' | 'user';
+  subjectId: string;
+  folderId: string;
+  folderName: string;
+  autoSync: boolean;
+  autoSyncIntervalMinutes: number;
+  categories: Record<BoxArtifactCategory, boolean>;
+  accessTokenConfigured: boolean;
+  accessTokenMasked: string;
+  clientSecretConfigured: boolean;
+  clientSecretMasked: string;
+}
+
+interface BoxIntegrationResponse {
+  settings: BoxSettings;
+  lastSync: {
+    completedAt: string;
+    uploaded: number;
+    updated: number;
+    unchanged: number;
+    failed: number;
+  } | null;
+  artifacts: {
+    total: number;
+    bytes: number;
+    uploadable: number;
+    byCategory: Record<BoxArtifactCategory, number>;
+  };
+}
+
+interface BoxIntegrationTabProps {
+  onDirtyChange?: (dirty: boolean) => void;
+}
+
+const BOX_CATEGORY_LABELS: Record<BoxArtifactCategory, { title: string; description: string }> = {
+  maps: {
+    title: 'Maps & PDF maps',
+    description: 'Rendered maps, site plans, BlueMap captures, and generated PDF copies.',
+  },
+  screenshots: {
+    title: 'Troubleshooting screenshots',
+    description: 'Build evidence, before/after captures, and bot look screenshots.',
+  },
+  documents: {
+    title: 'Plans & audit documents',
+    description: 'Markdown, YAML, JSON, SVG, and audit records from approved project folders.',
+  },
+  outputs: {
+    title: 'Build outputs',
+    description: 'Build-operation reports, manifests, and other generated output artifacts.',
+  },
+};
+
+function BoxIntegrationTab({ onDirtyChange }: BoxIntegrationTabProps) {
+  const [data, setData] = useState<BoxIntegrationResponse | null>(null);
+  const [form, setForm] = useState<BoxSettings | null>(null);
+  const [baseline, setBaseline] = useState('');
+  const [accessToken, setAccessToken] = useState('');
+  const [clientSecret, setClientSecret] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [busy, setBusy] = useState<'save' | 'test' | 'pdf' | 'sync' | null>(null);
+  const [feedback, setFeedback] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+  const lastDirtyRef = useRef(false);
+
+  const showFeedback = (type: 'success' | 'error', message: string) => {
+    setFeedback({ type, message });
+    setTimeout(() => setFeedback(null), 6000);
+  };
+
+  const load = useCallback(async () => {
+    try {
+      const base = process.env.NEXT_PUBLIC_API_URL || '';
+      const response = await fetch(`${base}/api/integrations/box`, { credentials: 'include' });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.error || 'Failed to load Box integration');
+      setData(payload);
+      setForm(payload.settings);
+      setBaseline(stableStringify(payload.settings));
+    } catch (err) {
+      showFeedback('error', err instanceof Error ? err.message : 'Failed to load Box integration');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    void load();
+  }, [load]);
+
+  const dirty = useMemo(() => (
+    Boolean(form)
+    && (
+      stableStringify(form) !== baseline
+      || accessToken.trim().length > 0
+      || clientSecret.trim().length > 0
+    )
+  ), [accessToken, baseline, clientSecret, form]);
+
+  useEffect(() => {
+    if (lastDirtyRef.current === dirty) return;
+    lastDirtyRef.current = dirty;
+    onDirtyChange?.(dirty);
+  }, [dirty, onDirtyChange]);
+
+  useEffect(() => () => {
+    if (lastDirtyRef.current) onDirtyChange?.(false);
+  }, [onDirtyChange]);
+
+  const persist = async (): Promise<boolean> => {
+    if (!form) return false;
+    const base = process.env.NEXT_PUBLIC_API_URL || '';
+    const response = await fetch(`${base}/api/integrations/box`, {
+      method: 'PUT',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ...form,
+        ...(accessToken.trim() ? { accessToken: accessToken.trim() } : {}),
+        ...(clientSecret.trim() ? { clientSecret: clientSecret.trim() } : {}),
+      }),
+    });
+    const payload = await response.json();
+    if (!response.ok) {
+      showFeedback('error', payload.error || 'Failed to save Box integration');
+      return false;
+    }
+    setForm(payload.settings);
+    setBaseline(stableStringify(payload.settings));
+    setAccessToken('');
+    setClientSecret('');
+    setData((current) => current ? { ...current, settings: payload.settings } : current);
+    return true;
+  };
+
+  const save = async () => {
+    setBusy('save');
+    try {
+      if (await persist()) showFeedback('success', 'Box integration settings saved');
+    } catch (err) {
+      showFeedback('error', err instanceof Error ? err.message : 'Failed to save Box integration');
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  const test = async () => {
+    setBusy('test');
+    try {
+      if (dirty && !(await persist())) return;
+      const base = process.env.NEXT_PUBLIC_API_URL || '';
+      const response = await fetch(`${base}/api/integrations/box/test`, {
+        method: 'POST',
+        credentials: 'include',
+      });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.error || 'Box connection test failed');
+      showFeedback(
+        'success',
+        `Connected as ${payload.connection.user.login}; folder ${payload.connection.folder.name} (${payload.connection.folder.id}) is reachable.`,
+      );
+    } catch (err) {
+      showFeedback('error', err instanceof Error ? err.message : 'Box connection test failed');
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  const generatePdfs = async () => {
+    setBusy('pdf');
+    try {
+      const base = process.env.NEXT_PUBLIC_API_URL || '';
+      const response = await fetch(`${base}/api/integrations/box/pdf-maps`, {
+        method: 'POST',
+        credentials: 'include',
+      });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.error || 'PDF map generation failed');
+      showFeedback('success', `Generated or refreshed ${payload.generated} PDF map copies.`);
+      await load();
+    } catch (err) {
+      showFeedback('error', err instanceof Error ? err.message : 'PDF map generation failed');
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  const sync = async () => {
+    setBusy('sync');
+    try {
+      if (dirty && !(await persist())) return;
+      const base = process.env.NEXT_PUBLIC_API_URL || '';
+      const response = await fetch(`${base}/api/integrations/box/sync`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: '{}',
+      });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.error || 'Box sync failed');
+      const report = payload.report;
+      showFeedback(
+        report.failed > 0 ? 'error' : 'success',
+        `Box sync: ${report.uploaded} new, ${report.updated} updated, ${report.unchanged} unchanged, ${report.failed} failed.`,
+      );
+      await load();
+    } catch (err) {
+      showFeedback('error', err instanceof Error ? err.message : 'Box sync failed');
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  if (loading || !form) {
+    return <div className="p-6 text-zinc-400">Loading integrations…</div>;
+  }
+
+  const inputClass = 'bg-zinc-800 border border-zinc-700 rounded px-3 py-2 text-sm w-full focus:outline-none focus:border-emerald-600';
+
+  return (
+    <div
+      id="settings-panel-integrations"
+      role="tabpanel"
+      aria-labelledby="settings-tab-integrations"
+      className="space-y-5"
+    >
+      {feedback && (
+        <div className={`rounded border px-4 py-3 text-sm ${
+          feedback.type === 'success'
+            ? 'border-emerald-700 bg-emerald-950/50 text-emerald-300'
+            : 'border-red-800 bg-red-950/50 text-red-300'
+        }`}>
+          {feedback.message}
+        </div>
+      )}
+
+      <section className="bg-zinc-900 rounded-lg border border-zinc-800 p-5">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <h2 className="text-lg font-semibold">Box artifact archive</h2>
+            <p className="text-zinc-400 text-xs mt-1 max-w-2xl">
+              Mirror world maps, PDF map copies, troubleshooting screenshots, project plans, audits, and build outputs into the Box folder while preserving their local hierarchy.
+            </p>
+          </div>
+          <label className="flex items-center gap-2 text-sm whitespace-nowrap">
+            <input
+              type="checkbox"
+              checked={form.enabled}
+              onChange={(event) => setForm((current) => current && ({ ...current, enabled: event.target.checked }))}
+            />
+            Enabled
+          </label>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-4 mt-5">
+          <label className="text-xs text-zinc-400">
+            Authentication mode
+            <select
+              value={form.authMode}
+              onChange={(event) => setForm((current) => current && ({
+                ...current,
+                authMode: event.target.value as BoxSettings['authMode'],
+              }))}
+              className={`${inputClass} mt-1`}
+            >
+              <option value="access_token">Access / app token</option>
+              <option value="client_credentials">Client credentials (unattended)</option>
+            </select>
+          </label>
+
+          {form.authMode === 'access_token' ? (
+            <label className="text-xs text-zinc-400">
+              Access or app token
+              <input
+                type="password"
+                value={accessToken}
+                onChange={(event) => setAccessToken(event.target.value)}
+                placeholder={form.accessTokenConfigured ? `Keep existing (${form.accessTokenMasked})` : 'Paste Box bearer token'}
+                autoComplete="new-password"
+                className={`${inputClass} mt-1`}
+              />
+              <span className="block text-[10px] text-zinc-500 mt-1">
+                Developer tokens expire after about an hour. Use client credentials or a suitable app token for unattended sync.
+              </span>
+            </label>
+          ) : (
+            <>
+              <label className="text-xs text-zinc-400">
+                Client ID
+                <input
+                  value={form.clientId}
+                  onChange={(event) => setForm((current) => current && ({ ...current, clientId: event.target.value }))}
+                  className={`${inputClass} mt-1`}
+                />
+              </label>
+              <label className="text-xs text-zinc-400">
+                Client secret
+                <input
+                  type="password"
+                  value={clientSecret}
+                  onChange={(event) => setClientSecret(event.target.value)}
+                  placeholder={form.clientSecretConfigured ? `Keep existing (${form.clientSecretMasked})` : 'Paste Box client secret'}
+                  autoComplete="new-password"
+                  className={`${inputClass} mt-1`}
+                />
+              </label>
+              <label className="text-xs text-zinc-400">
+                Subject type
+                <select
+                  value={form.subjectType}
+                  onChange={(event) => setForm((current) => current && ({
+                    ...current,
+                    subjectType: event.target.value as BoxSettings['subjectType'],
+                  }))}
+                  className={`${inputClass} mt-1`}
+                >
+                  <option value="enterprise">Enterprise</option>
+                  <option value="user">User</option>
+                </select>
+              </label>
+              <label className="text-xs text-zinc-400">
+                Subject ID
+                <input
+                  value={form.subjectId}
+                  onChange={(event) => setForm((current) => current && ({ ...current, subjectId: event.target.value }))}
+                  placeholder="Enterprise or Box user ID"
+                  className={`${inputClass} mt-1`}
+                />
+              </label>
+            </>
+          )}
+
+          <label className="text-xs text-zinc-400">
+            Destination folder name
+            <input
+              value={form.folderName}
+              onChange={(event) => setForm((current) => current && ({ ...current, folderName: event.target.value }))}
+              placeholder="mc-fleet-bot"
+              className={`${inputClass} mt-1`}
+            />
+          </label>
+          <label className="text-xs text-zinc-400">
+            Folder ID (recommended)
+            <input
+              value={form.folderId}
+              onChange={(event) => setForm((current) => current && ({ ...current, folderId: event.target.value }))}
+              placeholder="From app.box.com/folder/123…; blank resolves by name"
+              className={`${inputClass} mt-1`}
+            />
+          </label>
+        </div>
+      </section>
+
+      <section className="bg-zinc-900 rounded-lg border border-zinc-800 p-5">
+        <h2 className="text-lg font-semibold">Archive contents</h2>
+        <p className="text-zinc-400 text-xs mt-1">
+          Secrets and arbitrary workspace files are never eligible. Only approved artifact roots and media/document extensions are discovered.
+        </p>
+        <div className="grid md:grid-cols-2 gap-3 mt-4">
+          {(Object.keys(BOX_CATEGORY_LABELS) as BoxArtifactCategory[]).map((category) => {
+            const details = BOX_CATEGORY_LABELS[category];
+            const count = data?.artifacts.byCategory[category] ?? 0;
+            return (
+              <label key={category} className="flex gap-3 rounded border border-zinc-800 bg-zinc-950/40 p-3">
+                <input
+                  type="checkbox"
+                  className="mt-1"
+                  checked={form.categories[category]}
+                  onChange={(event) => setForm((current) => current && ({
+                    ...current,
+                    categories: { ...current.categories, [category]: event.target.checked },
+                  }))}
+                />
+                <span>
+                  <span className="block text-sm font-medium">{details.title} <span className="text-zinc-500">({count})</span></span>
+                  <span className="block text-[11px] text-zinc-500 mt-0.5">{details.description}</span>
+                </span>
+              </label>
+            );
+          })}
+        </div>
+
+        <div className="flex flex-wrap items-center gap-4 mt-5 border-t border-zinc-800 pt-4">
+          <label className="flex items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={form.autoSync}
+              onChange={(event) => setForm((current) => current && ({ ...current, autoSync: event.target.checked }))}
+            />
+            Automatic sync
+          </label>
+          <label className="flex items-center gap-2 text-xs text-zinc-400">
+            Every
+            <input
+              type="number"
+              min={5}
+              max={10080}
+              value={form.autoSyncIntervalMinutes}
+              onChange={(event) => setForm((current) => current && ({
+                ...current,
+                autoSyncIntervalMinutes: Number(event.target.value) || 60,
+              }))}
+              className="w-24 bg-zinc-800 border border-zinc-700 rounded px-2 py-1.5"
+            />
+            minutes
+          </label>
+          <span className="text-xs text-zinc-500">
+            {data?.artifacts.total ?? 0} files · {((data?.artifacts.bytes ?? 0) / 1024 / 1024).toFixed(1)} MB · {data?.artifacts.uploadable ?? 0} directly uploadable
+          </span>
+        </div>
+      </section>
+
+      <section className="bg-zinc-900 rounded-lg border border-zinc-800 p-5">
+        <h2 className="text-lg font-semibold">Connection & sync</h2>
+        {data?.lastSync ? (
+          <p className="text-xs text-zinc-400 mt-1">
+            Last sync {new Date(data.lastSync.completedAt).toLocaleString()}: {data.lastSync.uploaded} new, {data.lastSync.updated} updated, {data.lastSync.unchanged} unchanged, {data.lastSync.failed} failed.
+          </p>
+        ) : (
+          <p className="text-xs text-zinc-500 mt-1">No Box sync has completed yet.</p>
+        )}
+        <div className="flex flex-wrap gap-3 mt-4">
+          <button
+            type="button"
+            onClick={save}
+            disabled={busy !== null}
+            className="px-4 py-2 bg-emerald-700 hover:bg-emerald-600 rounded text-sm font-medium disabled:opacity-50"
+          >
+            {busy === 'save' ? 'Saving…' : 'Save Box settings'}
+          </button>
+          <button
+            type="button"
+            onClick={test}
+            disabled={busy !== null}
+            className="px-4 py-2 bg-blue-700 hover:bg-blue-600 rounded text-sm font-medium disabled:opacity-50"
+          >
+            {busy === 'test' ? 'Testing…' : 'Test connection'}
+          </button>
+          <button
+            type="button"
+            onClick={generatePdfs}
+            disabled={busy !== null}
+            className="px-4 py-2 bg-amber-700 hover:bg-amber-600 rounded text-sm font-medium disabled:opacity-50"
+          >
+            {busy === 'pdf' ? 'Generating…' : 'Generate PDF maps'}
+          </button>
+          <button
+            type="button"
+            onClick={sync}
+            disabled={busy !== null || !form.enabled}
+            className="px-4 py-2 bg-violet-700 hover:bg-violet-600 rounded text-sm font-medium disabled:opacity-50"
+          >
+            {busy === 'sync' ? 'Syncing…' : 'Sync artifacts now'}
+          </button>
+        </div>
+      </section>
     </div>
   );
 }

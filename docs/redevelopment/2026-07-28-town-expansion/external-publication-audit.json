@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "auditId": "REDEV-2026-07-28-SESSION-PUBLICATION-AUDIT-01",
+  "auditedAtUtc": "2026-07-28T03:08:35Z",
+  "scope": "Read-only evidence review of the configured Box handoff and the MC Fleet World Atlas Sites publication.",
+  "safety": {
+    "liveWorldMutated": false,
+    "databaseMutated": false,
+    "boxMutated": false,
+    "sitesMutated": false,
+    "credentialsIncluded": false
+  },
+  "box": {
+    "mechanism": "src/integrations/BoxIntegration.ts",
+    "mode": "real Box API connector using client credentials",
+    "enabled": true,
+    "autoSync": false,
+    "credentialConfigured": true,
+    "configuredFolder": true,
+    "readOnlyConnectionTest": {
+      "status": "PASS",
+      "folderIdMatchedConfiguration": true,
+      "folderNameMatchedConfiguration": true
+    },
+    "durableSyncLedger": {
+      "path": "data/box-sync-state.json",
+      "sha256": "dccb85839f92baf789e6561a630a9e2f2884dc099e898a82a9c0a4afddb5cced",
+      "startedAtUtc": "2026-07-27T04:25:14.891Z",
+      "completedAtUtc": "2026-07-27T04:25:16.826Z",
+      "discovered": 1,
+      "uploaded": 0,
+      "updated": 1,
+      "unchanged": 0,
+      "skipped": 0,
+      "failed": 0,
+      "bytesUploaded": 9751
+    },
+    "localApprovedRootCensus": {
+      "allDiscovered": 701,
+      "allBytes": 175826622,
+      "createdOrModifiedAfterDurableLedger": 242,
+      "postLedgerBytes": 84285976,
+      "postLedgerByCategory": {
+        "documents": 39,
+        "maps": 24,
+        "screenshots": 47,
+        "outputs": 132
+      },
+      "postLedgerFilesOverDirectUploadLimit": 0
+    },
+    "readOnlyRemoteSha1Checks": [
+      {
+        "remotePath": "exports/redevelopment-atlas-wave2-baseline-2026-07-28",
+        "localPath": "data/exports/box/redevelopment-atlas-wave2-baseline-2026-07-28",
+        "localFiles": 10,
+        "remoteDirectoryExists": false,
+        "matchingFiles": 0
+      },
+      {
+        "remotePath": "exports/redevelopment-atlas-wave2-post-2026-07-28",
+        "localPath": "data/exports/box/redevelopment-atlas-wave2-post-2026-07-28",
+        "localFiles": 10,
+        "remoteDirectoryExists": false,
+        "matchingFiles": 0
+      },
+      {
+        "remotePath": "exports/town-expansion-baseline-2026-07-28",
+        "localPath": "data/exports/box/town-expansion-baseline-2026-07-28",
+        "localFiles": 10,
+        "remoteDirectoryExists": false,
+        "matchingFiles": 0
+      },
+      {
+        "remotePath": "docs/redevelopment/2026-07-28-wave2",
+        "localPath": "docs/redevelopment/2026-07-28-wave2",
+        "localFiles": 11,
+        "remoteDirectoryExists": false,
+        "matchingFiles": 0
+      }
+    ],
+    "decision": {
+      "status": "PENDING_SYNC",
+      "rationale": "The live connector and target folder are valid, but the durable ledger predates the July 28 work and four representative July 28 directories do not exist remotely."
+    }
+  },
+  "sites": {
+    "projectId": "appgprj_6a67cce1a3848191bfb86ef2ef8ab567",
+    "title": "MC Fleet World Atlas",
+    "productionUrl": "https://mc-fleet-world-atlas.ianwalmsley.chatgpt.site",
+    "access": {
+      "mode": "custom",
+      "ownerOnly": true,
+      "allowedUsers": 1,
+      "allowedGroups": 0
+    },
+    "currentVersion": {
+      "versionNumber": 4,
+      "versionId": "appgprj_6a67cce1a3848191bfb86ef2ef8ab567~appgver_33afceee942c8191a33e8cbd53b5420a",
+      "sourceCommit": "7777e20566f888d5ff66f5e290821eba0ef5bac3",
+      "archiveSha256": "14c029631b5b7e37b14469471fe69128688f8d2cb7626e7d69e4b92e367e868b",
+      "archiveBytes": 79247360,
+      "archiveFiles": 410,
+      "siteUpdatedAtUtc": "2026-07-28T03:02:56.356727Z"
+    },
+    "versionHistory": [
+      {
+        "versionNumber": 1,
+        "sourceCommit": "eff5518cc920aed7bb69103ca051a5e033ff7fd5",
+        "purpose": "Initial accepted R1 atlas publication"
+      },
+      {
+        "versionNumber": 2,
+        "sourceCommit": "a6f29995cd49553e457028e1556c32a49a671869",
+        "purpose": "R1 publication-record rollup"
+      },
+      {
+        "versionNumber": 3,
+        "sourceCommit": "316903cb85b5faa989a888f400279256dec27619",
+        "purpose": "Accepted Wave 2 atlas and evidence publication",
+        "runtimeOutcome": "FAILED_AT_RUNTIME",
+        "reportedRayId": "a2209982e8a31497",
+        "reportedAtUtc": "2026-07-28T02:54:31Z"
+      },
+      {
+        "versionNumber": 4,
+        "sourceCommit": "7777e20566f888d5ff66f5e290821eba0ef5bac3",
+        "purpose": "Bundle the OpenNext worker to remove the unsupported runtime require()"
+      }
+    ],
+    "postFixRuntimeEvidence": {
+      "rootRequest": {
+        "timestampUtc": "2026-07-28T03:03:26.568Z",
+        "route": "/",
+        "method": "GET",
+        "status": 200,
+        "outcome": "ok",
+        "rayId": "a220a6915909f4e6",
+        "cpuTimeMs": 388,
+        "wallTimeMs": 400
+      },
+      "faviconRequest": {
+        "route": "/favicon.ico",
+        "status": 404,
+        "outcome": "ok",
+        "interpretation": "Non-fatal missing favicon, not a Worker exception."
+      }
+    },
+    "decision": {
+      "status": "HEALTHY_CURRENT_VERSION",
+      "rationale": "Sites reports version 4 as current, owner-only access is unchanged, and production Worker logs contain successful root requests after the fix."
+    }
+  },
+  "limitations": [
+    "The Box audit did not upload, update, delete, or create any remote object.",
+    "The Box local census is a point-in-time count and will increase as town-expansion teams finish new evidence.",
+    "Sites deployment IDs are not inferred when they are not returned by the read-only site/version interfaces.",
+    "No credential, bypass token, user email, or remote account identity is retained in this artifact."
+  ]
+}

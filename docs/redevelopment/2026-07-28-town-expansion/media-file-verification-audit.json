@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "auditId": "REDEV-2026-07-28-MEDIA-FILE-QA-01",
+  "auditedAtUtc": "2026-07-28T03:29:10Z",
+  "state": "POINT_IN_TIME_PRE_FINAL_EXPANSION",
+  "scope": {
+    "modifiedAtOrAfterUtc": "2026-07-28T00:00:00Z",
+    "roots": [
+      "docs",
+      "data/exports"
+    ],
+    "sitesPublicDuplicatesExcluded": true,
+    "note": "The final town-expansion PDF and post-construction media do not yet exist and require a new audit."
+  },
+  "pdf": {
+    "files": 6,
+    "recognizedAsPdf": 6,
+    "zeroPageFiles": 0,
+    "method": "Filesystem `file` signature/version/page census; this is structural validation, not a full raster review of every page.",
+    "artifacts": [
+      {
+        "path": "data/exports/world-catalog-wave2-2026-07-28/floorplans/c01-recessed-public-portal-floorplan.pdf",
+        "bytes": 246724,
+        "pages": 1,
+        "pdfVersion": "1.5",
+        "sha256": "87dc7d8e0335ca0256c06ad3384db5f411cf0dfe9278477a7d352af10f88f94f"
+      },
+      {
+        "path": "data/exports/world-catalog-wave2-2026-07-28/floorplans/worldwide-interior-floorplan-atlas.pdf",
+        "bytes": 5179255,
+        "pages": 76,
+        "pdfVersion": "1.5",
+        "sha256": "ee8c7d2be68e85d262fcfba1299e53f8e95c92f76216a49774f91f5cdfac4c2b"
+      },
+      {
+        "path": "data/exports/world-catalog-wave2-post-2026-07-28/floorplans/c01-recessed-public-portal-floorplan.pdf",
+        "bytes": 246724,
+        "pages": 1,
+        "pdfVersion": "1.5",
+        "sha256": "87dc7d8e0335ca0256c06ad3384db5f411cf0dfe9278477a7d352af10f88f94f"
+      },
+      {
+        "path": "data/exports/world-catalog-wave2-post-2026-07-28/floorplans/worldwide-interior-floorplan-atlas.pdf",
+        "bytes": 5179255,
+        "pages": 76,
+        "pdfVersion": "1.5",
+        "sha256": "ee8c7d2be68e85d262fcfba1299e53f8e95c92f76216a49774f91f5cdfac4c2b"
+      },
+      {
+        "path": "docs/redevelopment/2026-07-27/master-plan.pdf",
+        "bytes": 6652288,
+        "pages": 8,
+        "pdfVersion": "1.4",
+        "sha256": "3a9e8b49f7ee6aab8f59f92eb0f596dc2d5009e9f6b11e473469b223815acc3d"
+      },
+      {
+        "path": "docs/redevelopment/2026-07-28-wave2/master-plan.pdf",
+        "bytes": 3490574,
+        "pages": 8,
+        "pdfVersion": "1.4",
+        "sha256": "d26d810d90e6fec0218f6015cfc712f184a70f3e4609a7713c78a1c0d42c4a80"
+      }
+    ]
+  },
+  "images": {
+    "files": 399,
+    "decoded": 399,
+    "failed": 0,
+    "method": "Node canvas loadImage decode of every in-scope PNG/JPEG/WebP.",
+    "dimensionCensus": {
+      "1792x2176": 5,
+      "805x885": 5,
+      "725x965": 5,
+      "964x324": 5,
+      "900x1028": 5,
+      "1395x1107": 5,
+      "1282x1282": 5,
+      "1280x720": 164,
+      "1024x576": 33,
+      "800x800": 2,
+      "900x900": 3,
+      "1600x1100": 154,
+      "880x880": 1,
+      "1440x900": 5,
+      "780x780": 1,
+      "960x960": 1
+    },
+    "exactFileRegisters": [
+      {
+        "path": "data/world-review/redevelopment-artifact-manifest-2026-07-28-wave2.json",
+        "sha256": "2b0d026fb1ffab6dc23e606a61bf4613e0314e03614dc8dc43be48784e03d0a3"
+      },
+      {
+        "path": "data/world-review/world-media-wave2-2026-07-28.qa.json",
+        "sha256": "5825b4d8f231e78780f6d7b105ef65762e0bc1bbc1b481e3bed7c93bb04621c5"
+      }
+    ],
+    "currentExpansionEvidenceAtAudit": [
+      {
+        "path": "docs/redevelopment/2026-07-28-town-expansion/evidence/approach-corridor-current-map.png",
+        "sha256": "37c956b2311c4e494eaba1db290bf1a7a7f98629600382c7308a0770054357c3"
+      },
+      {
+        "path": "docs/redevelopment/2026-07-28-town-expansion/evidence/library-garth-west-oblique.png",
+        "sha256": "f1344dc4d2791dac0793ad39ccfbd6155783d71b1371248f1a878d9c3cc02352"
+      },
+      {
+        "path": "docs/redevelopment/2026-07-28-town-expansion/evidence/mainstreet-current-garage-map.png",
+        "sha256": "831afe41389f43f80119097f55cfefc7e71bacb4158d50f76637d81a0a57222b"
+      },
+      {
+        "path": "docs/redevelopment/2026-07-28-town-expansion/evidence/mainstreet-east-row-garages-current.png",
+        "sha256": "ad1f1fed33a6735cac9c7b8671ad908339217e97c6e32fe165d7dbe6c02d644c"
+      },
+      {
+        "path": "docs/redevelopment/2026-07-28-town-expansion/evidence/mainstreet-west-row-garages-current.png",
+        "sha256": "3320c85a374edacdb35b2601bf300c57fc594f5b095d9a4347d69d9a4d398956"
+      },
+      {
+        "path": "docs/redevelopment/2026-07-28-town-expansion/evidence/moot-penthouse-south-oblique.png",
+        "sha256": "17e822c23dff9b276761b9390eb068a42dc26cee2a3553303028a4a71efdf880"
+      },
+      {
+        "path": "docs/redevelopment/2026-07-28-town-expansion/evidence/panorama-oasis-site-north-oblique.png",
+        "sha256": "e9dee4fbdb00f00bc6703e695e3f74bac6930922cabf9a57547627a7bb36b016"
+      },
+      {
+        "path": "docs/redevelopment/2026-07-28-town-expansion/evidence/ravensreach-civic-current-map.png",
+        "sha256": "6a7f371edbdaad346d238fde09b9776d4b22a8bfd3d82a593a53bd4cbf7f93d8"
+      },
+      {
+        "path": "docs/redevelopment/2026-07-28-town-expansion/evidence/westlight-waterfront-current-map.png",
+        "sha256": "135fbc929943246c3f37f5fba96f85b0517cc632ebecba0796c1553a3f06209f"
+      }
+    ]
+  },
+  "box": {
+    "localFileValidation": "PASS",
+    "cloudTransferValidation": "PENDING_SYNC",
+    "reason": "The Box connector works, but the durable ledger predates these files and representative July 28 remote directories are absent."
+  },
+  "decision": {
+    "currentFiles": "PASS_STRUCTURAL_AND_DECODE_QA",
+    "finalTownExpansionMedia": "PENDING",
+    "boxHandoff": "PENDING_SYNC"
+  }
+}

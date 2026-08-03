@@ -18,6 +18,8 @@ export interface Task {
   keywords: string[];
   guidance?: string[];
   spec?: TaskSpec;
+  /** Structured execution contract carried by trusted internal producers. */
+  metadata?: Record<string, unknown>;
   /** Player name who requested this task, if any. Used for bot voice acknowledgments. */
   requestedBy?: string;
 }

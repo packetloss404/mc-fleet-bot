@@ -534,12 +534,19 @@ export class CommandCenter {
     }
 
     switch (type) {
+      // These sent `setMode {pause:true}` — but botWorker's setMode case reads
+      // `cmdData.mode`, not `cmdData.pause`, so the ternary fell through to
+      // PRIMITIVE and "pause" silently DOWNGRADED the bot's mode instead of
+      // pausing it (and "resume" did the same). Confirmed live: pausing three
+      // bots flipped all three from codegen to primitive. The correct
+      // pauseVoyager/resumeVoyager worker commands already existed and were
+      // simply unreachable over HTTP.
       case 'pause_voyager':
-        worker.sendCommand('setMode', { pause: true });
+        worker.sendCommand('pauseVoyager', { reason: params.reason || 'operator' });
         return { paused: true };
 
       case 'resume_voyager':
-        worker.sendCommand('setMode', { pause: false });
+        worker.sendCommand('resumeVoyager', {});
         return { resumed: true };
 
       case 'stop_movement':
@@ -560,8 +567,12 @@ export class CommandCenter {
         if (x == null || y == null || z == null) {
           throw { code: 'MISSING_PARAM', message: 'x, y, z coordinates are required' } as CommandError;
         }
-        worker.sendCommand('walkTo', { x, y, z });
-        return { walkingTo: { x, y, z } };
+        const range = params.range == null ? 2 : Number(params.range);
+        if (!Number.isFinite(range) || range < 0 || range > 4) {
+          throw { code: 'INVALID_PARAM', message: 'range must be between 0 and 4' } as CommandError;
+        }
+        worker.sendCommand('walkTo', { x, y, z, range });
+        return { walkingTo: { x, y, z, range } };
       }
 
       case 'move_to_marker': {

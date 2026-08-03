@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 1,
+  "status": "FEASIBILITY_SURVEY_NOT_A_RELEASE",
+  "generatedAtUtc": "2026-07-28T06:40:00Z",
+  "coordinateConvention": {
+    "north": "-Z",
+    "bounds": "inclusive"
+  },
+  "evidence": {
+    "snapshot": {
+      "path": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region",
+      "sha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999"
+    },
+    "database": {
+      "path": "data/world-map.db",
+      "sha256AtSurvey": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+      "mode": "read-only"
+    },
+    "census": "docs/redevelopment/2026-07-28-town-expansion/evidence/mainstreet-underground-warehouse-census.txt"
+  },
+  "protectedContext": {
+    "parking": {
+      "id": "P01",
+      "bounds": {
+        "minX": -125,
+        "maxX": 125,
+        "minZ": 172,
+        "maxZ": 305
+      }
+    },
+    "bunkerPortal": {
+      "id": "C01-PUBLIC-PORTAL-RECESSED-PHASE2",
+      "bounds": {
+        "minX": 139,
+        "maxX": 147,
+        "minY": 62,
+        "maxY": 69,
+        "minZ": 163,
+        "maxZ": 201
+      }
+    },
+    "ravenRockTunnelConflict": {
+      "id": "RR-T2b",
+      "bounds": {
+        "minX": -152.5,
+        "maxX": -42.5,
+        "minZ": 127.5,
+        "maxZ": 192.5
+      },
+      "rule": "Warehouse construction starts at z=200 or south; no excavation may enter the route protection halo."
+    }
+  },
+  "rejectedFullEnvelope": {
+    "bounds": {
+      "minX": -118,
+      "maxX": 88,
+      "minY": 35,
+      "maxY": 60,
+      "minZ": 180,
+      "maxZ": 296
+    },
+    "cells": 629694,
+    "nonAirCells": 622379,
+    "hazards": {
+      "waterSourceCells": 10958,
+      "lavaSourceCells": 36,
+      "additionalWaterAndLavaStates": true,
+      "bubbleColumnCells": 101,
+      "seagrassCells": 989,
+      "kelpCells": 464,
+      "magmaCells": 55,
+      "waterloggedLichenCells": 14
+    },
+    "decision": "REJECTED_AS_ONE_OPEN_EXCAVATION",
+    "reason": "The requested full parking-footprint box intersects extensive aquifer/cave systems and the north edge intersects the protected Raven Rock route."
+  },
+  "preferredDryHighBay": {
+    "id": "MSA-P01-UWH-DRY-CORE",
+    "bounds": {
+      "minX": 32,
+      "maxX": 88,
+      "minY": 40,
+      "maxY": 60,
+      "minZ": 200,
+      "maxZ": 296
+    },
+    "cells": 116109,
+    "floorPlateCells": 5529,
+    "fluidCells": 0,
+    "existingAirCells": 2789,
+    "verticalDesign": {
+      "foundationY": [40, 41],
+      "finishedFloorY": 42,
+      "clearHighBayY": [43, 58],
+      "roofY": [59, 60],
+      "minimumNaturalCoverBelowParking": "three solid blocks, to be re-proven against the release snapshot"
+    },
+    "materialTopCounts": {
+      "stone": 78296,
+      "andesite": 9464,
+      "granite": 8955,
+      "diorite": 7407,
+      "dirt": 4894,
+      "gravel": 2270
+    }
+  },
+  "programZones": [
+    {
+      "id": "UWH-RECEIVING",
+      "bounds": [32, 63, 43, 58, 200, 218],
+      "program": "receiving, inspection, marshalling and inbound staging"
+    },
+    {
+      "id": "UWH-MECHANICAL",
+      "bounds": [32, 45, 43, 58, 219, 239],
+      "program": "fire-water, electrical, ventilation, pumps, maintenance and protected utility access"
+    },
+    {
+      "id": "UWH-RACK-HALL",
+      "bounds": [46, 88, 43, 58, 219, 264],
+      "program": "high-bay pallet and parts racks with marked pedestrian spine, lift aisles and cross aisles"
+    },
+    {
+      "id": "UWH-VEHICLE-HALL",
+      "bounds": [32, 69, 43, 58, 265, 296],
+      "program": "cars, fleet vehicles, campers and RVs with wheel stops, charging isolation and exhaust extraction"
+    },
+    {
+      "id": "UWH-ADMIN-MEZZANINE",
+      "bounds": [70, 88, 50, 58, 200, 239],
+      "program": "offices, dispatch, training, records and overlook"
+    },
+    {
+      "id": "UWH-CAFETERIA",
+      "bounds": [70, 88, 43, 49, 240, 263],
+      "program": "cafeteria, commercial kitchen, dry/cold stores and wash-up; fire and air separated from vehicle/storage hall"
+    },
+    {
+      "id": "UWH-WELLNESS",
+      "bounds": [70, 88, 43, 49, 270, 293],
+      "program": "private adult staff wellness/relief rooms, expressed non-graphically, with a privacy vestibule, independent exhaust, cleanable finishes, wash support and separation from food/work circulation"
+    }
+  ],
+  "westAccessStudy": {
+    "userIntent": "A drivable ramp opposite the east C01 bunker portal.",
+    "simpleRampRule": "x[-125,-117], z200..296, floorY=40+floor((z-200)/4), seven clear blocks above each floor",
+    "simpleRampResult": {
+      "targetCells": 6111,
+      "directFluidCells": 156,
+      "uniqueFluidHaloCells": 290,
+      "gravityTargetCells": 293,
+      "decision": "REJECTED"
+    },
+    "adaptiveRampResult": {
+      "searchBandX": [-160, -100],
+      "z": [209, 305],
+      "floorRule": "40+floor((z-209)/4)",
+      "clearSection": "nine blocks wide, seven blocks high, one-cell halo",
+      "result": "NO_CONTINUOUS_FLUID_FREE_ALIGNMENT",
+      "failureZ": 267
+    },
+    "deepTransferResult": {
+      "status": "FLUID_FREE_ROUTE_FOUND_AT_SELECTED_SECTION_LEVEL",
+      "centerlineY": 40,
+      "clearanceModel": "three blocks wide, nine blocks across z including halo, y35..45",
+      "keyframes": [
+        [-125, 40, 209],
+        [-121, 40, 210],
+        [-119, 40, 211],
+        [-117, 40, 213],
+        [-116, 40, 214],
+        [-115, 40, 216],
+        [-114, 40, 219],
+        [-113, 40, 221],
+        [-112, 40, 224],
+        [-111, 40, 227],
+        [-110, 40, 228],
+        [-108, 40, 232],
+        [-107, 40, 236],
+        [-106, 40, 240],
+        [-105, 40, 243],
+        [-95, 40, 244],
+        [-93, 40, 245],
+        [-91, 40, 248],
+        [32, 40, 248]
+      ],
+      "warning": "This proves a dry deep transfer, not a dry surface ramp. It cannot be released until a safe surface portal or a reviewed watertight/cofferdam design is selected."
+    }
+  },
+  "postC01ParkingRecoveryEastWings": {
+    "dependency": "Old C01 is decommissioned, P01 is reconstructed and accepted as one uninterrupted surface parking object, and the new east C01 is commissioned.",
+    "northWing": {
+      "id": "MSA-P01-UWH-EAST-NORTH",
+      "bounds": {
+        "minX": 89,
+        "maxX": 108,
+        "minY": 40,
+        "maxY": 60,
+        "minZ": 200,
+        "maxZ": 245
+      },
+      "cells": 19320,
+      "floorPlateCells": 920,
+      "fluidCells": 0,
+      "gravityCells": 117,
+      "program": "isolatable receiving, service-parts and pallet-storage wing"
+    },
+    "southWing": {
+      "id": "MSA-P01-UWH-EAST-SOUTH",
+      "bounds": {
+        "minX": 89,
+        "maxX": 125,
+        "minY": 40,
+        "maxY": 60,
+        "minZ": 246,
+        "maxZ": 296
+      },
+      "cells": 39627,
+      "floorPlateCells": 1887,
+      "fluidCells": 0,
+      "gravityCells": 785,
+      "program": "isolatable fleet, camper/RV and bulk-storage wing"
+    },
+    "bulkheadConnectors": {
+      "rule": "Each east wing receives its own two-stage bulkhead vestibule at the x88/x89 core boundary. Exact connector cells and one-cell fluid/gravity halos must be re-proven on the release snapshot.",
+      "northPlanningBand": [86, 91, 42, 51, 208, 220],
+      "southPlanningBand": [86, 91, 42, 51, 256, 268]
+    },
+    "excludedAquiferAndLavaSeam": {
+      "reviewBounds": [109, 125, 40, 60, 200, 245],
+      "sourceWaterCells": [
+        [114, 48, 232],
+        [114, 48, 233],
+        [115, 48, 232],
+        [115, 48, 233],
+        [116, 48, 232],
+        [116, 48, 233],
+        [117, 48, 232]
+      ],
+      "sourceLavaCells": [
+        [125, 46, 232],
+        [125, 46, 233],
+        [125, 46, 234]
+      ],
+      "rule": "No open excavation. Preserve a minimum five-block review halo and prove that both wing bulkheads isolate the warehouse from the seam."
+    },
+    "surfaceProtection": "Maintain a minimum three-solid-block cover proof below every P01 driving and stall cell after excavation; settlement, support and drainage are acceptance gates.",
+    "status": "FEASIBILITY_RESERVATION_NOT_A_RELEASE"
+  },
+  "requiredEgress": [
+    "two remote protected stair/shaft discharges independent of the vehicle ramp",
+    "unobstructed illuminated exit spine separated from racks and vehicle hazards",
+    "refuge/fire compartments sized by the licensed life-safety design",
+    "no exit through the private wellness suite, kitchen, mechanical room or a lockable cage"
+  ],
+  "releaseDecision": "HOLD_FOR_ACCESS_AND_HYDROGEOLOGY_REDESIGN"
+}

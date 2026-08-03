@@ -1,0 +1,1593 @@
+{
+  "schemaVersion": 1,
+  "id": "town-expansion-requirements-status-matrix",
+  "packageId": "town-expansion-r1-2026-07-28",
+  "generatedAtUtc": "2026-07-28T21:25:52.702Z",
+  "mode": "final",
+  "status": "FINAL_AS_BUILT_INPUTS_ACCEPTED",
+  "finalGate": {
+    "schemaVersion": 1,
+    "profile": "town-expansion",
+    "status": "PASS_FINAL_INPUTS_ACCEPTED",
+    "passed": true,
+    "packageId": "town-expansion-r1-2026-07-28",
+    "truthBoundary": "Inputs satisfy the final documentation gate.",
+    "paths": {
+      "designReport": "data/buildops/town-expansion-r1-2026-07-28.report.json",
+      "ownershipManifest": "data/buildops/town-expansion-r1-2026-07-28.manifest.json",
+      "forward": "data/buildops/town-expansion-r1-2026-07-28.txt",
+      "transaction": "data/world-review/town-expansion-r1-atomic-transaction-full-source-restored-retry-20260728.json",
+      "postQa": "data/world-review/town-expansion-r1-post-release-qa-2026-07-28.json",
+      "mediaQa": "data/world-review/town-expansion-r1-post-release-media-2026-07-28.json",
+      "databaseImport": "data/world-review/town-expansion-r1-database-closeout-2026-07-28.json",
+      "databasePublication": "data/world-review/town-expansion-r1-database-publication-report-2026-07-28.json",
+      "mediaManifest": "data/exports/town-expansion-media-2026-07-28/capture-manifest.json",
+      "mediaCrosswalk": "data/exports/town-expansion-media-2026-07-28/object-media-database-crosswalk.json",
+      "worldDatabase": "data/world-map.db",
+      "frozenScope": "docs/redevelopment/2026-07-28-town-expansion/session-frozen-scope-register.json",
+      "postSnapshot": "data/worldsnap-town-terminal-recovery-post-20260728T1839Z/region"
+    },
+    "artifacts": {
+      "design": {
+        "path": "data/buildops/town-expansion-r1-2026-07-28.report.json",
+        "exists": true,
+        "bytes": 1681924,
+        "sha256": "d855d0072a213c27ebedc2b36ec53761363568e9de963650a8563a9179d81930"
+      },
+      "ownership": {
+        "path": "data/buildops/town-expansion-r1-2026-07-28.manifest.json",
+        "exists": true,
+        "bytes": 24479,
+        "sha256": "3073ef269d07f720ef62708b1f673d179a5f641fd19856b61f19e2eae4e78510"
+      },
+      "forward": {
+        "path": "data/buildops/town-expansion-r1-2026-07-28.txt",
+        "exists": true,
+        "bytes": 41485255,
+        "sha256": "1a10954b1ae6ae702dcc01cd92d39adbb3820e3feff5461f3caa1283a578b896"
+      },
+      "transaction": {
+        "path": "data/world-review/town-expansion-r1-atomic-transaction-full-source-restored-retry-20260728.json",
+        "exists": true,
+        "bytes": 4881332,
+        "sha256": "042f445b097f52fbba795e59072084df8cbe60527e85330b3b6e7cb3902d3ec3"
+      },
+      "postQa": {
+        "path": "data/world-review/town-expansion-r1-post-release-qa-2026-07-28.json",
+        "exists": true,
+        "bytes": 28658,
+        "sha256": "7200a6d23e838d80f1c21fb5585a72434103056c71793073d68918885f083672"
+      },
+      "mediaQa": {
+        "path": "data/world-review/town-expansion-r1-post-release-media-2026-07-28.json",
+        "exists": true,
+        "bytes": 1694089,
+        "sha256": "e9a287f9c2536ae81701604bd2232262ecb04a4567606da030baf833bfa01226"
+      },
+      "databaseImport": {
+        "path": "data/world-review/town-expansion-r1-database-closeout-2026-07-28.json",
+        "exists": true,
+        "bytes": 15865,
+        "sha256": "b6e61582e8806d965e2e2c5a521b4b11c68136aee5f96f24ff7689ab695ec646"
+      },
+      "databasePublication": {
+        "path": "data/world-review/town-expansion-r1-database-publication-report-2026-07-28.json",
+        "exists": true,
+        "bytes": 2484,
+        "sha256": "131cee67ad5bc4177f980ca8e7d79ccfa25dde952250faf27b7447e3a034031c"
+      },
+      "mediaManifest": {
+        "path": "data/exports/town-expansion-media-2026-07-28/capture-manifest.json",
+        "exists": true,
+        "bytes": 2279545,
+        "sha256": "006d10c081dfb961ee0b2e1f234d960a7ee260de4918d4c5efb440b52398912c"
+      },
+      "mediaCrosswalk": {
+        "path": "data/exports/town-expansion-media-2026-07-28/object-media-database-crosswalk.json",
+        "exists": true,
+        "bytes": 1172491,
+        "sha256": "63c7ea13c688f6c40b6700902065cc5ba23e51fae5db0ef3968aa8b35a16cfd2"
+      },
+      "worldDatabase": {
+        "path": "data/world-map.db",
+        "exists": true,
+        "bytes": 6733824,
+        "sha256": "71876a7ecf73e90475a9b5047938e14f39ea0a20381dea8c5286582059f95f8a"
+      }
+    },
+    "postSnapshot": {
+      "path": "data/worldsnap-town-terminal-recovery-post-20260728T1839Z/region",
+      "sha256": "c39d0d67c9dec737aa5807cf5fa56a84f3c3d38d4b13d0f82599d3eb30fa6751",
+      "regionFileCount": 30,
+      "bytes": 134749182,
+      "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+    },
+    "gates": [
+      {
+        "id": "canonical-package-inputs",
+        "label": "Canonical compiler report, ownership manifest and forward package exist and agree",
+        "passed": true,
+        "details": {
+          "designReport": "data/buildops/town-expansion-r1-2026-07-28.report.json",
+          "ownershipManifest": "data/buildops/town-expansion-r1-2026-07-28.manifest.json",
+          "forward": "data/buildops/town-expansion-r1-2026-07-28.txt",
+          "forwardSha256": "1a10954b1ae6ae702dcc01cd92d39adbb3820e3feff5461f3caa1283a578b896"
+        }
+      },
+      {
+        "id": "committed-transaction",
+        "label": "One canonical transaction is committed with strict-noop success",
+        "passed": true,
+        "details": {
+          "path": "data/world-review/town-expansion-r1-atomic-transaction-full-source-restored-retry-20260728.json",
+          "status": "committed-pending-post-qa",
+          "packageCount": 1
+        }
+      },
+      {
+        "id": "distinct-accepted-post-snapshot",
+        "label": "Immutable post snapshot exists, differs from prerelease and matches post QA",
+        "passed": true,
+        "details": {
+          "prereleaseSha256": "de807a2d4a1cb597bd259d55d1d7c0cda8b710af5017497e75660c8a976603f5",
+          "postSnapshot": {
+            "path": "data/worldsnap-town-terminal-recovery-post-20260728T1839Z/region",
+            "sha256": "c39d0d67c9dec737aa5807cf5fa56a84f3c3d38d4b13d0f82599d3eb30fa6751",
+            "regionFileCount": 30,
+            "bytes": 134749182,
+            "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+          }
+        }
+      },
+      {
+        "id": "live-entity-clearance",
+        "label": "Bound live entity/player clearance report passed without mutation",
+        "passed": true,
+        "details": {
+          "path": "data/world-review/town-expansion-r1-live-entity-gate-full-source-restored-retry-frozen-20260728.json",
+          "status": "PASS",
+          "blockers": 0
+        }
+      },
+      {
+        "id": "post-release-qa",
+        "label": "Independent post-release QA reports PASS and ACCEPTED",
+        "passed": true,
+        "details": {
+          "path": "data/world-review/town-expansion-r1-post-release-qa-2026-07-28.json",
+          "status": "PASS",
+          "decision": "ACCEPTED"
+        }
+      },
+      {
+        "id": "paired-media-qa",
+        "label": "Paired post media passed, binds post/package/crosswalk, and supplies 13 maps",
+        "passed": true,
+        "details": {
+          "path": "data/world-review/town-expansion-r1-post-release-media-2026-07-28.json",
+          "status": "PASS",
+          "captures": 1178,
+          "mapShots": 13,
+          "mapPass1": 13,
+          "mapPass2": 13
+        }
+      },
+      {
+        "id": "database-import",
+        "label": "Atomic database closeout imported every verified registry object",
+        "passed": true,
+        "details": {
+          "path": "data/world-review/town-expansion-r1-database-closeout-2026-07-28.json",
+          "status": "PASS_DATABASE_IMPORTED",
+          "registryObjects": 340
+        }
+      },
+      {
+        "id": "database-publication-report",
+        "label": "Read-only database publication census passed against the accepted post state",
+        "passed": true,
+        "details": {
+          "path": "data/world-review/town-expansion-r1-database-publication-report-2026-07-28.json",
+          "status": "PASS",
+          "databaseSha256": "71876a7ecf73e90475a9b5047938e14f39ea0a20381dea8c5286582059f95f8a"
+        }
+      }
+    ],
+    "failures": []
+  },
+  "source": {
+    "path": "docs/redevelopment/2026-07-28-town-expansion/session-frozen-scope-register.json",
+    "sha256": "35f1fab25f798ced62f0e0243440f1e18a20f3884c7fe518604149116facbd36",
+    "requirementCount": 98
+  },
+  "truthBoundary": "Frozen requirement language is preserved. Effective state is advanced only by a named passing closeout gate; draft output is not as-built.",
+  "summary": {
+    "requirements": 98,
+    "states": [
+      {
+        "state": "ACCEPTED_PREDECESSOR_WITH_NEW_INTERFACE_PENDING",
+        "count": 1
+      },
+      {
+        "state": "CONCEPT_PROGRAM_AND_RESERVATION_DEFINED_FUTURE_MASTERPLAN_PENDING",
+        "count": 1
+      },
+      {
+        "state": "CONTROLLING_REQUIREMENT",
+        "count": 1
+      },
+      {
+        "state": "CORRECTED_REGISTER_PENDING_MACHINE_EVIDENCE",
+        "count": 1
+      },
+      {
+        "state": "DESIGNED",
+        "count": 1
+      },
+      {
+        "state": "DESIGNED_AND_MODELED_BLOCKED",
+        "count": 25
+      },
+      {
+        "state": "DESIGNED_AND_OFFLINE_PASS",
+        "count": 1
+      },
+      {
+        "state": "DESIGNED_COORDINATES_PENDING",
+        "count": 7
+      },
+      {
+        "state": "DESIGNED_PARTIAL",
+        "count": 12
+      },
+      {
+        "state": "FINAL_DOSSIER_INPUTS_ACCEPTED",
+        "count": 1
+      },
+      {
+        "state": "GUILD_MODELED_BLOCKED_OWNER_AND_THEATER_IMPLEMENTATION_READY_COORDINATE_PLAN",
+        "count": 1
+      },
+      {
+        "state": "IMPLEMENTATION_READY_COORDINATE_PLAN_NOT_GENERATED",
+        "count": 5
+      },
+      {
+        "state": "IMPLEMENTATION_READY_RESERVATION_PLAN_DO_NOT_EXCAVATE",
+        "count": 1
+      },
+      {
+        "state": "IMPLEMENTED_MODEL_ONLY_VALIDATED",
+        "count": 1
+      },
+      {
+        "state": "IMPLEMENTED_MODEL_ONLY_VALIDATED_PENDING_GENERATION_AND_INDEPENDENT_QA",
+        "count": 1
+      },
+      {
+        "state": "IN_PROGRESS",
+        "count": 1
+      },
+      {
+        "state": "MODELED_BLOCKED",
+        "count": 7
+      },
+      {
+        "state": "MODELED_BLOCKED_AND_REBASE_REQUIRED",
+        "count": 1
+      },
+      {
+        "state": "PENDING_BOX_VERIFICATION",
+        "count": 1
+      },
+      {
+        "state": "PENDING_CLOSEOUT",
+        "count": 1
+      },
+      {
+        "state": "REQUESTED",
+        "count": 1
+      },
+      {
+        "state": "REQUESTED_EVIDENCE_PENDING",
+        "count": 1
+      },
+      {
+        "state": "RESEARCHED",
+        "count": 1
+      },
+      {
+        "state": "RESEARCHED_AND_DESIGNED_COORDINATES_PENDING",
+        "count": 3
+      },
+      {
+        "state": "RESEARCHED_AND_PLANNED_PHASE_0",
+        "count": 2
+      },
+      {
+        "state": "RESEARCHED_AND_PLANNED_UNBUILT",
+        "count": 4
+      },
+      {
+        "state": "RESEARCHED_DESIGNED_AND_MODELED_BLOCKED",
+        "count": 7
+      },
+      {
+        "state": "RESEARCHED_DESIGNED_AND_PARTLY_MODELED_BLOCKED",
+        "count": 1
+      },
+      {
+        "state": "RESEARCHED_PARTIAL",
+        "count": 1
+      },
+      {
+        "state": "TARGET_CORRECTED_COORDINATES_AND_GENERATION_PENDING",
+        "count": 1
+      },
+      {
+        "state": "VERIFIED_13_MAP_SET",
+        "count": 1
+      },
+      {
+        "state": "VERIFIED_DATABASE_REPORT",
+        "count": 1
+      },
+      {
+        "state": "VERIFIED_EXACT_OBJECT_RELATIONS",
+        "count": 1
+      },
+      {
+        "state": "VERIFIED_POST_STATE",
+        "count": 2
+      }
+    ],
+    "finalGatePassed": true
+  },
+  "requirements": [
+    {
+      "id": "DOC-001",
+      "district": "Documentation",
+      "requirement": "Generate more detailed maps for every district and major building cluster.",
+      "frozenState": "PENDING_CLOSEOUT",
+      "effectiveState": "VERIFIED_POST_STATE",
+      "evidence": [
+        "data/exports/box/town-expansion-baseline-2026-07-28/team-a/atlas-manifest.json",
+        "Existing evidence maps under docs/redevelopment/2026-07-28-town-expansion/evidence/"
+      ],
+      "truthNote": "Existing maps are baseline/design evidence, not town-expansion as-built maps.",
+      "acceptance": "Post-state district sheets have scale, north arrow, bounds, legend, object IDs, route overlays, source snapshot hash and image SHA-256."
+    },
+    {
+      "id": "DOC-002",
+      "district": "Documentation",
+      "requirement": "Produce one large map of everything.",
+      "frozenState": "PENDING_CLOSEOUT",
+      "effectiveState": "VERIFIED_13_MAP_SET",
+      "evidence": [
+        "Baseline atlas exists; no accepted all-expansion post-state overview exists."
+      ],
+      "truthNote": "Must span every in-scope district without clipping or silently omitting distant campuses.",
+      "acceptance": "One georeferenced overview covers the full accepted feature extent and links every district inset."
+    },
+    {
+      "id": "DOC-003",
+      "district": "Documentation",
+      "requirement": "Create more screenshots of buildings, routes and underground spaces.",
+      "frozenState": "PENDING_CLOSEOUT",
+      "effectiveState": "VERIFIED_POST_STATE",
+      "evidence": [
+        "Wave 2 exact-object media is an accepted predecessor.",
+        "media-file-verification-audit.json is point-in-time and predates final town expansion."
+      ],
+      "truthNote": "No current-expansion after screenshots exist because there is no accepted post-state.",
+      "acceptance": "Each new object has required exterior, interior, route and defect-revealing views captured from accepted post-state."
+    },
+    {
+      "id": "DOC-004",
+      "district": "Documentation",
+      "requirement": "Report what is in the world and town databases.",
+      "frozenState": "PENDING_CLOSEOUT",
+      "effectiveState": "VERIFIED_DATABASE_REPORT",
+      "evidence": [
+        "Wave 2 accepted database census is preserved in session-control-manifest.json.",
+        "Current expansion has no import ledger."
+      ],
+      "truthNote": "Report must separate preexisting, retired, superseded, proposed and accepted objects.",
+      "acceptance": "Read-only census includes tables, row counts, schema, integrity result, features, observations, media relations and snapshot identity."
+    },
+    {
+      "id": "DOC-005",
+      "district": "Documentation",
+      "requirement": "Match screenshots and floor plans to the exact object in the database.",
+      "frozenState": "PENDING_CLOSEOUT",
+      "effectiveState": "VERIFIED_EXACT_OBJECT_RELATIONS",
+      "evidence": [
+        "Wave 2 predecessor catalog achieved exact screenshot/floor-plan coverage for its accepted objects."
+      ],
+      "truthNote": "A PNG discovered in a directory is not evidence of an object relationship.",
+      "acceptance": "Every relation names object ID, media ID, camera ID, view class, source snapshot, path, dimensions and SHA-256; orphan and ambiguity counts are zero."
+    },
+    {
+      "id": "DOC-006",
+      "district": "Documentation",
+      "requirement": "Build and publish a Sites website showing maps, screenshots, floor plans, database objects and progress.",
+      "frozenState": "PENDING_CLOSEOUT",
+      "effectiveState": "PENDING_CLOSEOUT",
+      "evidence": [
+        "Sites version 4 is a healthy predecessor publication at https://mc-fleet-world-atlas.ianwalmsley.chatgpt.site."
+      ],
+      "truthNote": "The current production site does not prove this town expansion is published.",
+      "acceptance": "Exact committed source is saved as a Sites version, deployed to production, owner access checked, root/object/report routes return 200 and Worker logs show outcome ok."
+    },
+    {
+      "id": "DOC-007",
+      "district": "Documentation",
+      "requirement": "Create a highly detailed PM-style PDF covering all evidenced sessions today.",
+      "frozenState": "PENDING_CLOSEOUT",
+      "effectiveState": "FINAL_DOSSIER_INPUTS_ACCEPTED",
+      "evidence": [
+        "session-pm-dossier.md is an interim source document.",
+        "session-frozen-scope-register.md and this JSON are the frozen-scope closeout spine."
+      ],
+      "truthNote": "The PDF must not promote requested, researched, designed or modeled work to live status.",
+      "acceptance": "PDF renders without broken images/links, includes chronology, WBS, requirements matrix, maps, screenshots, risks, decisions, release ledgers, database report, Sites record and Box verification."
+    },
+    {
+      "id": "DOC-008",
+      "district": "Documentation",
+      "requirement": "Move and verify every new PDF, screenshot, map, report and material in Box.",
+      "frozenState": "PENDING_BOX_VERIFICATION",
+      "effectiveState": "PENDING_BOX_VERIFICATION",
+      "evidence": [
+        "box-handoff-audit.md",
+        "external-publication-audit.json"
+      ],
+      "truthNote": "Connector reachability is PASS but the July 28 handoff is not remotely present/verified.",
+      "acceptance": "Final manifest has remote Box path, Box file ID, bytes, SHA-256, uploadedAt and verifiedAt for every required file, with zero missing or mismatched entries."
+    },
+    {
+      "id": "DOC-009",
+      "district": "Documentation",
+      "requirement": "Deep-research city grids and use a written research paper as the engineering source of truth.",
+      "frozenState": "RESEARCHED",
+      "effectiveState": "RESEARCHED",
+      "evidence": [
+        "town-architecture-siting-survey.md",
+        "District change controls and engineering sources in this directory."
+      ],
+      "truthNote": "Research precedents guide original design; named real or fictional examples are not copy targets.",
+      "acceptance": "Research paper states principles, citations, chosen standards, rejected alternatives and how they control parcel, street, block and wayfinding decisions."
+    },
+    {
+      "id": "DOC-010",
+      "district": "Documentation",
+      "requirement": "Document future plans and plots like a real development.",
+      "frozenState": "DESIGNED_PARTIAL",
+      "effectiveState": "DESIGNED_PARTIAL",
+      "evidence": [
+        "coordinate-schedule.json",
+        "District coordinate schedules and master-plan artifacts."
+      ],
+      "truthNote": "The future mini-city reservation is now frozen at coordinate-plan level and must remain unexcavated; its detailed parcel/utilities/phasing master plan remains future work.",
+      "acceptance": "Development plan includes parcels, setbacks, frontages, roads, utilities, protected reservations, phases, object IDs and future camera/DB placeholders."
+    },
+    {
+      "id": "DOC-011",
+      "district": "Documentation",
+      "requirement": "Use PM management and traceability for every request.",
+      "frozenState": "IN_PROGRESS",
+      "effectiveState": "IN_PROGRESS",
+      "evidence": [
+        "session-pm-dossier.md",
+        "session-control-manifest.json",
+        "session-frozen-scope-register.md",
+        "session-frozen-scope-register.json"
+      ],
+      "truthNote": "The final closeout must supersede interim status without erasing history.",
+      "acceptance": "Every owner request maps to district, state, evidence, blocker, next action and acceptance proof."
+    },
+    {
+      "id": "URB-001",
+      "district": "Program-wide",
+      "requirement": "Correct spacing and legibility so turns reveal understandable places rather than unexplained clutter.",
+      "frozenState": "DESIGNED_PARTIAL",
+      "effectiveState": "DESIGNED_PARTIAL",
+      "evidence": [
+        "town-architecture-siting-survey.md",
+        "coordinate-schedule.json"
+      ],
+      "truthNote": "Modeled density is not sufficient; field-of-view and walking evidence are required.",
+      "acceptance": "Named arrivals, landmark hierarchy, view corridors, frontage rhythm, corner reveals and route signs pass fixed-camera and normal-walk review."
+    },
+    {
+      "id": "URB-002",
+      "district": "Program-wide",
+      "requirement": "Fill town gaps so the settlement reads as blocks, courts, areas and coherent streets.",
+      "frozenState": "MODELED_BLOCKED",
+      "effectiveState": "MODELED_BLOCKED",
+      "evidence": [
+        "Town architecture/siting survey",
+        "WIP2 scope coverage and infill model"
+      ],
+      "truthNote": "Do not fill protected views, access lanes or future utility reservations merely to increase density.",
+      "acceptance": "Block-face plan shows continuous but varied frontage, explicit courtyards/service gaps, protected views and complete walk network."
+    },
+    {
+      "id": "TUN-001",
+      "district": "Program-wide underground",
+      "requirement": "Standardize tunnel profiles, junctions, finishes, signage, lighting, drainage and access control.",
+      "frozenState": "RESEARCHED_PARTIAL",
+      "effectiveState": "RESEARCHED_PARTIAL",
+      "evidence": [
+        "Accepted Raven Rock S1 and T2b predecessor engineering documents",
+        "modern-underground-corridor-standard.md",
+        "Pavilion and owner-tunnel planning artifacts"
+      ],
+      "truthNote": "The new owner tunnel is a separate modern system and must not inherit the T2b identity.",
+      "acceptance": "Tunnel standard schedule defines clear width/height, floor, wall, ceiling, lighting interval, junction language, drainage, refuge, egress and camera stations."
+    },
+    {
+      "id": "TUN-002",
+      "district": "Program-wide underground",
+      "requirement": "Make every stair and stairwell easy to walk.",
+      "frozenState": "DESIGNED_PARTIAL",
+      "effectiveState": "DESIGNED_PARTIAL",
+      "evidence": [
+        "WIP2 includes normal-walk stair/headroom roles in several modeled scopes."
+      ],
+      "truthNote": "Block roles do not prove bidirectional normal walking.",
+      "acceptance": "Every stair has consistent rhythm, adequate headroom, landings, guard edges and two-direction normal-walk QA without jumping, digging or pathfinding hacks."
+    },
+    {
+      "id": "TUN-003",
+      "district": "Owner underground",
+      "requirement": "Create a dedicated modern owner tunnel that is explicitly not T2b.",
+      "frozenState": "IMPLEMENTATION_READY_COORDINATE_PLAN_NOT_GENERATED",
+      "effectiveState": "IMPLEMENTATION_READY_COORDINATE_PLAN_NOT_GENERATED",
+      "evidence": [
+        "worker-town-gilded-raven-theater-owner-tunnel-source-of-truth.md",
+        "worker-town-gilded-raven-theater-owner-tunnel-coordinate-schedule.json",
+        "evidence/worker-town-theater-owner-tunnel-survey.json"
+      ],
+      "truthNote": "The 928-block y=-44 corridor and face halo are dry and block-entity-free, but gravity cells require pre-support and no final operations package includes this scope yet.",
+      "acceptance": "Final route has independent object/system ID, no T2b reuse or intersection, dry face halo, zero protected block entities, two egress paths and complete access-control/wayfinding plan."
+    },
+    {
+      "id": "TUN-004",
+      "district": "Owner underground",
+      "requirement": "Provide high-finish owner rest nodes and extravagant stair/lift circulation.",
+      "frozenState": "IMPLEMENTATION_READY_COORDINATE_PLAN_NOT_GENERATED",
+      "effectiveState": "IMPLEMENTATION_READY_COORDINATE_PLAN_NOT_GENERATED",
+      "evidence": [
+        "Seven frozen rest suites, theater descent, mansion ascent and paired lift standards in the Gilded Raven coordinate schedule."
+      ],
+      "truthNote": "All selected envelopes and face halos are dry and block-entity-free; exact gravity pre-support and movement testing remain pending.",
+      "acceptance": "Dry conflict-free node and ascent envelopes include paired circulation, landing lobbies, refuge/egress, luxury materials, backup stair, lift-core visual language and bidirectional route tests."
+    },
+    {
+      "id": "TUN-005",
+      "district": "Owner underground",
+      "requirement": "Keep owner underground movement private, secure, legible and independently escapable.",
+      "frozenState": "REQUESTED",
+      "effectiveState": "REQUESTED",
+      "evidence": [
+        "Access and egress principles in observatory and pavilion source documents."
+      ],
+      "truthNote": "Endpoint alignment and access tiers are not yet frozen.",
+      "acceptance": "Access matrix, vestibules, emergency bypass, surface muster points, signage and two independent egress routes are modeled and walked."
+    },
+    {
+      "id": "CIRC-003",
+      "district": "Major civic/owner buildings",
+      "requirement": "Use extravagant but usable stairs and lifts in the Guild Hall, owner estate, adult theater and owner tunnel nodes.",
+      "frozenState": "GUILD_MODELED_BLOCKED_OWNER_AND_THEATER_IMPLEMENTATION_READY_COORDINATE_PLAN",
+      "effectiveState": "GUILD_MODELED_BLOCKED_OWNER_AND_THEATER_IMPLEMENTATION_READY_COORDINATE_PLAN",
+      "evidence": [
+        "Guild Hall WIP stairs are modeled.",
+        "Gilded Raven plan defines theater 9 full flights plus one ceremonial flight, mansion 13 full flights, seven-clear stairs, six headroom and adjacent minimum six-by-six lifts."
+      ],
+      "truthNote": "Grandeur may not reduce headroom, landing depth, redundancy or route clarity.",
+      "acceptance": "Each major level has a ceremonial route and an accessible/redundant route, both with complete envelope, lighting, landing, egress and movement evidence."
+    },
+    {
+      "id": "MSA-001",
+      "district": "MainStreet America",
+      "requirement": "Bring far-flung added buildings, warehouse and cooking school into a coherent compact development.",
+      "frozenState": "DESIGNED_PARTIAL",
+      "effectiveState": "DESIGNED_PARTIAL",
+      "evidence": [
+        "Town master planning and MainStreet engineering artifacts."
+      ],
+      "truthNote": "Do not move accepted objects without exact preservation/retirement records.",
+      "acceptance": "Parcel plan and normal-walk review prove useful distances, coherent frontages and no isolated leftover structures."
+    },
+    {
+      "id": "MSA-002",
+      "district": "MainStreet America",
+      "requirement": "Complete the roads and place homes on one coherent street or on two properly fronted streets.",
+      "frozenState": "DESIGNED_PARTIAL",
+      "effectiveState": "DESIGNED_PARTIAL",
+      "evidence": [
+        "Attached-garage and coordinate schedules."
+      ],
+      "truthNote": "Front doors, garages and street address orientation must agree.",
+      "acceptance": "Roads are continuous, drivable/walkable, signed and connected; every house fronts a named street and has an unobstructed driveway."
+    },
+    {
+      "id": "MSA-003",
+      "district": "MainStreet America",
+      "requirement": "Attach a garage to every residential house.",
+      "frozenState": "MODELED_BLOCKED",
+      "effectiveState": "MODELED_BLOCKED",
+      "evidence": [
+        "attached-garage-requirement-supersession.md",
+        "mainstreet-attached-garage-engineering-schedule.json",
+        "WIP2 models 18 attached garages."
+      ],
+      "truthNote": "R1 detached garages remain historical evidence and require explicit supersession/retirement.",
+      "acceptance": "All 18 parent houses have physically enclosed attached connections, usable bays, doors, driveway clearance, route evidence and corrected database relations."
+    },
+    {
+      "id": "MSA-004",
+      "district": "MainStreet America",
+      "requirement": "Give every large house a four-car or six-car attached garage.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "Engineering schedule proposes two six-car and four four-car candidates."
+      ],
+      "truthNote": "Classification of remaining houses requires same-moment survey.",
+      "acceptance": "Large-house register is complete and each classified large house has counted clear bays, operable doors and turning/driveway evidence."
+    },
+    {
+      "id": "MSA-005",
+      "district": "MainStreet America",
+      "requirement": "Integrate warehouse and cooking-school/service buildings with the street grid.",
+      "frozenState": "DESIGNED_PARTIAL",
+      "effectiveState": "DESIGNED_PARTIAL",
+      "evidence": [
+        "Town siting and MainStreet logistics documents."
+      ],
+      "truthNote": "Exact relocation/consolidation package is not independently accepted.",
+      "acceptance": "Objects have coherent frontage/service access, protected loading, walk routes and non-conflicting parcel envelopes."
+    },
+    {
+      "id": "MSA-006",
+      "district": "MainStreet America B01",
+      "requirement": "Create Guest Services with reception/orientation, coworking, food/social functions and outdoor connections.",
+      "frozenState": "IMPLEMENTED_MODEL_ONLY_VALIDATED",
+      "effectiveState": "IMPLEMENTED_MODEL_ONLY_VALIDATED",
+      "evidence": [
+        "mainstreet-guest-services-rooftop-wellness-design-review.md",
+        "mainstreet-guest-services-rooftop-wellness-design-review.json",
+        "Source modelGuestServicesDestination in scripts/generate_town_expansion_r1.mjs; not yet emitted into an accepted operations package."
+      ],
+      "truthNote": "Model-only validation reports 15 protected kitchen block entities with zero targeted, four broad stairs, two lifts and two remote routes. Selected design snapshot did not contain the planned employee lounge/greenway, so same-moment generation/rebase is still mandatory.",
+      "acceptance": "Final generated report preserves all 15 kitchen block entities, reconciles the staff connection to one source state, and proves all public/service/stair/lift/remote-exit paths."
+    },
+    {
+      "id": "MSA-007",
+      "district": "MainStreet America B01",
+      "requirement": "Add patios, roof gardens, hot tubs, rooftop pool/bar and separated adults-only wellness/private areas.",
+      "frozenState": "IMPLEMENTED_MODEL_ONLY_VALIDATED_PENDING_GENERATION_AND_INDEPENDENT_QA",
+      "effectiveState": "IMPLEMENTED_MODEL_ONLY_VALIDATED_PENDING_GENERATION_AND_INDEPENDENT_QA",
+      "evidence": [
+        "B01 rooftop-wellness design review."
+      ],
+      "truthNote": "The source model reports 45 adjusted dry support positions and 3,813 modeled water cells at latest priority 990, but it has not produced an accepted operations package or independent load-path QA.",
+      "acceptance": "Final generated report and independent QA prove dry supports, 3,813 contained water states, secondary containment, safe edges, two lifts/four broad stairs/two remote routes, privacy, cleanup and non-graphic room program."
+    },
+    {
+      "id": "MSA-008",
+      "district": "MainStreet America/Worker link",
+      "requirement": "Build a direct Ravensreach-to-rear-MainStreet staff path and employee lounge.",
+      "frozenState": "MODELED_BLOCKED_AND_REBASE_REQUIRED",
+      "effectiveState": "MODELED_BLOCKED_AND_REBASE_REQUIRED",
+      "evidence": [
+        "WIP2 coverage claims a modeled staff path and employee lounge.",
+        "B01 review did not find the planned lounge/greenway in its selected snapshot."
+      ],
+      "truthNote": "The cross-artifact state mismatch must be resolved on one immutable baseline.",
+      "acceptance": "Same-moment source contains one coordinated route/lounge design; bidirectional walk, door, lighting, grade and camera evidence pass."
+    },
+    {
+      "id": "MSA-009",
+      "district": "MainStreet subsurface",
+      "requirement": "Expand the underground warehouse while recovering the full parking footprint.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "mainstreet-underground-warehouse-rv-district-engineering.md",
+        "mainstreet-underground-warehouse-coordinate-schedule.json",
+        "WIP2 full-parking-warehouse coverage."
+      ],
+      "truthNote": "Wet-state authority, egress and protected-state gates remain unresolved.",
+      "acceptance": "Dry contained warehouse, loading/service routes, two egress paths, parking count/geometry and protected inventory checks pass."
+    },
+    {
+      "id": "MSA-010",
+      "district": "MainStreet subsurface",
+      "requirement": "Create an RV sales/customer district with support, pantry/club and tasteful private adult option if retained.",
+      "frozenState": "DESIGNED",
+      "effectiveState": "DESIGNED",
+      "evidence": [
+        "mainstreet-underground-warehouse-rv-district-engineering.md",
+        "mainstreet-underground-warehouse-rv-district-engineering.json"
+      ],
+      "truthNote": "Design basis only; no live mutation or accepted generator package.",
+      "acceptance": "Sales floor, display/turning envelopes, service, egress, food/club support and any age-controlled non-graphic room are complete and independently routed."
+    },
+    {
+      "id": "C01-001",
+      "district": "C01/P01",
+      "requirement": "Move the entire bunker east far enough to restore the complete parking lot.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "c01-east-relocation-coordinate-schedule.json",
+        "northeast-datacenter-c01-relocation-engineering.json",
+        "WIP2 modeled main module bounds [797,20,-140,888,52,-85]."
+      ],
+      "truthNote": "Competing coordinate bases must be reconciled; WIP coverage is not a release.",
+      "acceptance": "One authoritative schedule proves old-object retirement, full new functional rebuild, recovered parking count/footprint and zero package conflicts."
+    },
+    {
+      "id": "C01-002",
+      "district": "C01/P01",
+      "requirement": "Create a high-quality terrain-following road down the mountain side.",
+      "frozenState": "DESIGNED_PARTIAL",
+      "effectiveState": "DESIGNED_PARTIAL",
+      "evidence": [
+        "C01 relocation engineering and coordinate schedules."
+      ],
+      "truthNote": "Independent audit did not accept road/access geometry.",
+      "acceptance": "Stationed road has acceptable grade, width, headroom, retaining/drainage treatment, turnouts, portal arrival and bidirectional walking/driving evidence."
+    },
+    {
+      "id": "C01-003",
+      "district": "C01/P01",
+      "requirement": "Move and recess the bunker entrance.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "C01 engineering package",
+        "WIP2 claims airlocked entrances."
+      ],
+      "truthNote": "Portal camera and cover proofs are pending.",
+      "acceptance": "Recessed threshold, weather/sightline shielding, airlock, wayfinding and two independent egress routes pass."
+    },
+    {
+      "id": "C01-004",
+      "district": "C01/P01",
+      "requirement": "Keep the entire bunker underground with no concrete shell showing.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "C01 engineering package",
+        "WIP2 claims minimum three-block natural cover."
+      ],
+      "truthNote": "Minimum cover must be proven across the entire shell, not sampled.",
+      "acceptance": "Cellwise cover census shows required natural cover on every non-portal shell face; prescribed exterior cameras show zero exposed concrete."
+    },
+    {
+      "id": "C01-005",
+      "district": "C01/P01",
+      "requirement": "Preserve/rebuild the complete bunker program, routes and independent egress.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "Northeast C01 engineering defines 12 broad program rooms.",
+        "WIP2 claims two independent egress routes."
+      ],
+      "truthNote": "No accepted room census, route QA or data migration ledger exists.",
+      "acceptance": "Room-by-room old/new crosswalk, capacity, utilities, access control, two egress paths, database migration and matched-media evidence pass."
+    },
+    {
+      "id": "C01-006",
+      "district": "C01/P01",
+      "requirement": "Hide all visible structural blocks in the mountain landscape.",
+      "frozenState": "DESIGNED_PARTIAL",
+      "effectiveState": "DESIGNED_PARTIAL",
+      "evidence": [
+        "C01 concealment engineering criteria."
+      ],
+      "truthNote": "This is stricter than a three-block minimum at selected sample points.",
+      "acceptance": "360-degree exterior view audit, terrain section sheets and block census show no unintended shell exposure, seams or unnatural cliff projections."
+    },
+    {
+      "id": "RRCH-001",
+      "district": "Ravensreach",
+      "requirement": "Recheck, redesign and finish the penthouse on the town building.",
+      "frozenState": "MODELED_BLOCKED",
+      "effectiveState": "MODELED_BLOCKED",
+      "evidence": [
+        "WIP2 scope TE-PENTHOUSE-01."
+      ],
+      "truthNote": "Offline target roles include salon, dining, kitchen, library, suite and roof/terrace details; no live result exists.",
+      "acceptance": "Complete exterior crown, weather-tight envelope, usable interior program, safe roof/terrace access, skyline views and matched interior/exterior screenshots."
+    },
+    {
+      "id": "RRCH-002",
+      "district": "Ravensreach",
+      "requirement": "Replace the Amsterdam buildings with a longhouse appropriate to the town period.",
+      "frozenState": "RESEARCHED_DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "RESEARCHED_DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "town-architecture-siting-survey.md",
+        "WIP2 scope TE-LONGHOUSE-01."
+      ],
+      "truthNote": "Replacement must preserve/retire affected objects explicitly.",
+      "acceptance": "Period rationale, old/new object crosswalk, complete longhouse structure/program, frontage, courtyard relation, walk routes and media all pass."
+    },
+    {
+      "id": "RRCH-003",
+      "district": "Ravensreach",
+      "requirement": "Create a designed courtyard around the longhouse and civic ensemble.",
+      "frozenState": "MODELED_BLOCKED",
+      "effectiveState": "MODELED_BLOCKED",
+      "evidence": [
+        "WIP2 scope TE-COURT-01."
+      ],
+      "truthNote": "Court must work as a place, not leftover paving.",
+      "acceptance": "Enclosure ratio, thresholds, drainage, rain garden, seating/dais, statue, lighting and through-route evidence pass."
+    },
+    {
+      "id": "RRCH-004",
+      "district": "Ravensreach",
+      "requirement": "Make the library four times as big.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "WIP2 scope TE-LIBRARY-04X."
+      ],
+      "truthNote": "Four-times claim must be stated against a measured baseline gross floor area and usable program area.",
+      "acceptance": "Baseline/current area schedule proves at least 4x usable library program with complete stacks, reading, service, accessibility and egress."
+    },
+    {
+      "id": "RRCH-005",
+      "district": "Ravensreach",
+      "requirement": "Add a two-level concrete walk-out patio/terrace from the library down into the pavilion.",
+      "frozenState": "MODELED_BLOCKED",
+      "effectiveState": "MODELED_BLOCKED",
+      "evidence": [
+        "WIP2 scope TE-LIBRARY-TERRACE."
+      ],
+      "truthNote": "Concrete expression and walkability must be confirmed in final materials and route tests.",
+      "acceptance": "Two distinct terrace levels, direct library door, pavilion connection, safe edges, drainage, headroom and bidirectional normal walking pass."
+    },
+    {
+      "id": "RRCH-006",
+      "district": "Ravensreach",
+      "requirement": "Build a larger-than-life Guild Hall opposite the library across the pavilion.",
+      "frozenState": "RESEARCHED_DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "RESEARCHED_DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "guild-hall-and-bar-source-of-truth.md",
+        "guild-hall-program.json",
+        "WIP2 scope TE-GUILDHALL-01."
+      ],
+      "truthNote": "Guild wealth is expressed through craft, scale, procession and material hierarchy, not unusable ornament.",
+      "acceptance": "Civic composition, five-level program, exterior monumentality, pavilion connection, accessibility, egress, room count, operational routes and media pass."
+    },
+    {
+      "id": "RRCH-007",
+      "district": "Ravensreach",
+      "requirement": "Give the Guild Hall two basement levels, three stories, dormitories, four kitchens, living spaces, theater, lecture hall, dance hall and bar.",
+      "frozenState": "RESEARCHED_DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "RESEARCHED_DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "Guild Hall program and WIP2 coverage: two basements, three stories, four kitchens."
+      ],
+      "truthNote": "Modeled roles must be independently counted as usable rooms; theater/lecture seating must face actual screens/stages.",
+      "acceptance": "Level-by-level room schedule, four distinct functional kitchens, dorm beds, living areas, theater, lecture, dance and bar all have clear areas, routes, services and egress."
+    },
+    {
+      "id": "RRCH-008",
+      "district": "Ravensreach",
+      "requirement": "Research and create a guildhouse bar that looks expensively commissioned.",
+      "frozenState": "RESEARCHED_DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "RESEARCHED_DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "guild-hall-and-bar-source-of-truth.md",
+        "guild-hall-program.json",
+        "WIP2 bar roles."
+      ],
+      "truthNote": "Specialist research is the design basis; no live bar exists.",
+      "acceptance": "Bar has arrival sequence, long counter, backbar, booths, service return, storage, wash, lighting, acoustic separation and bespoke material/detail schedule."
+    },
+    {
+      "id": "RRCH-009",
+      "district": "Ravensreach",
+      "requirement": "Blend library, pavilion and Guild Hall into one civic composition and add statues.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "Russian pavilion change control",
+        "Pavilion-east source documents",
+        "WIP2 claims six garth statues and six pavilion-ground statues."
+      ],
+      "truthNote": "Independent audit identified overlap risks among pavilion pools/statues/monument/tunnel rooms.",
+      "acceptance": "One non-overlapping civic plan preserves the library-pavilion-Guild axis, accessible paths, views and protected underground zones."
+    },
+    {
+      "id": "RRCH-010",
+      "district": "Ravensreach",
+      "requirement": "Make the pavilion grounds more monumental with gardens, pools, statues and civic features.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "pavilion-east-grounds-and-ravensgate-exclusion-coordinate-schedule.json",
+        "WIP2 pavilion, reflecting-pool, civic-monument and fountain scopes."
+      ],
+      "truthNote": "Hydrology, overlap and supervised-water barriers require independent closure.",
+      "acceptance": "Grounds plan has contained water, non-overlapping structures, complete accessible circulation, views, lighting and post-state water-flow QA."
+    },
+    {
+      "id": "RRCH-011",
+      "district": "Ravensreach underground",
+      "requirement": "Provide a separate library-to-Guild Hall secret tunnel with challenged-materials archive, private adult literature archive and ceremonial room.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "Pavilion/restricted-underground source documents",
+        "WIP2 scope TE-LIB-GUILD-SECRET-01."
+      ],
+      "truthNote": "Adult archive remains non-graphic; audit flagged sealed/route concerns.",
+      "acceptance": "Isolated route, both endpoint vestibules, archives, ceremonial room, access control, egress, headroom, dry envelope and bidirectional walk pass."
+    },
+    {
+      "id": "RRCH-012",
+      "district": "Ravensreach underground",
+      "requirement": "Keep civilian pavilion/library/Guild tunnels out of the restricted Ravensgate underground volume.",
+      "frozenState": "DESIGNED_AND_OFFLINE_PASS",
+      "effectiveState": "DESIGNED_AND_OFFLINE_PASS",
+      "evidence": [
+        "pavilion-east-grounds-and-ravensgate-exclusion-coordinate-schedule.json",
+        "Independent audit records the planned y-separation as its limited passing finding.",
+        "WIP2 reports zero civilian targets in restricted volume."
+      ],
+      "truthNote": "Offline separation still requires final-source and post-state confirmation.",
+      "acceptance": "Cellwise no-intersection proof on final ops and accepted post snapshot shows zero civilian targets in restricted bounds."
+    },
+    {
+      "id": "STAD-001",
+      "district": "Town-to-stadium",
+      "requirement": "Make the road to the stadium bigger and more over the top.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "WIP2 scope TE-ROAD-01."
+      ],
+      "truthNote": "Ceremonial scale must preserve grade, drainage and normal walking.",
+      "acceptance": "Continuous widened cross-section, foundations, headroom, lighting, landscape, arrival hierarchy and bidirectional route QA pass."
+    },
+    {
+      "id": "STAD-002",
+      "district": "Town-to-stadium",
+      "requirement": "Place billboards along the stadium road.",
+      "frozenState": "MODELED_BLOCKED",
+      "effectiveState": "MODELED_BLOCKED",
+      "evidence": [
+        "WIP2 claims six billboards."
+      ],
+      "truthNote": "Billboards must aid sequence/wayfinding and avoid road/headroom/view conflicts.",
+      "acceptance": "Six or approved final count have foundations, readable faces, safe setbacks, progressive messages and matched day/night cameras."
+    },
+    {
+      "id": "STAD-003",
+      "district": "Westlight stadium",
+      "requirement": "Ensure stadium seating faces a real screen rather than a doorway or blank wall.",
+      "frozenState": "DESIGNED_PARTIAL",
+      "effectiveState": "DESIGNED_PARTIAL",
+      "evidence": [
+        "westlight-three-venue-audit-and-redesign.md",
+        "westlight-three-venue-coordinate-schedule.json",
+        "Accepted predecessor Westlight screen."
+      ],
+      "truthNote": "Every current/new seating bank needs a ray-tested screen/stage, not merely a screen somewhere in the venue.",
+      "acceptance": "Seat-to-screen sightline matrix, obstruction test, prescribed cameras and normal entry route all pass."
+    },
+    {
+      "id": "STAD-004",
+      "district": "Westlight stadium",
+      "requirement": "Make the stadium easy to find.",
+      "frozenState": "DESIGNED_PARTIAL",
+      "effectiveState": "DESIGNED_PARTIAL",
+      "evidence": [
+        "Stadium-road/billboard and Westlight coordinate plans."
+      ],
+      "truthNote": "Map labels do not substitute for in-world wayfinding.",
+      "acceptance": "Town departure, each decision point, oasis, island arrival and stadium entrance have visible landmarks/signs confirmed by normal-walk cameras."
+    },
+    {
+      "id": "OASIS-001",
+      "district": "Town-to-stadium",
+      "requirement": "Build a halfway oasis inspired by Chicago tollway oases.",
+      "frozenState": "RESEARCHED_DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "RESEARCHED_DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "Town master-plan research",
+        "WIP2 scope TE-OASIS-01."
+      ],
+      "truthNote": "Inspiration controls bridge-hall/service logic; the result remains original.",
+      "acceptance": "Midpoint relation, road access, bridge hall, food/market, panoramic connection, two surface/lift routes, rest/service support and route evidence pass."
+    },
+    {
+      "id": "OASIS-002",
+      "district": "Town-to-stadium",
+      "requirement": "Build an original mini-bunker at the oasis with a GTA V–evocative feel.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "WIP2 mini-bunker coverage."
+      ],
+      "truthNote": "Fictional precedent is mood/program inspiration only; do not copy protected layouts/assets.",
+      "acceptance": "Original plan has concealed but discoverable entrance, operations/support program, two egress routes, dry shell, access control and matched exterior/interior media."
+    },
+    {
+      "id": "WL-001",
+      "district": "Westlight",
+      "requirement": "Make the stadium complex and island read as one coherent destination.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "westlight-island-and-russian-pavilion-change-control.md",
+        "westlight-waterfront-coordinate-schedule.json"
+      ],
+      "truthNote": "Venue, pier and waterfront interfaces require final non-overlap proof.",
+      "acceptance": "Aligned arrival, mall, venue, pier and shoreline axes pass master-plan, sightline and walking review."
+    },
+    {
+      "id": "WL-002",
+      "district": "Westlight",
+      "requirement": "Add intentional buildings along the pier.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "Westlight waterfront schedule",
+        "WIP2 coverage."
+      ],
+      "truthNote": "Buildings must have program, doors, service and relationship to the promenade.",
+      "acceptance": "Every pier object has named use, complete envelope/interior, accessible promenade frontage, service path, DB object and camera set."
+    },
+    {
+      "id": "WL-003",
+      "district": "Westlight",
+      "requirement": "Create a researched original amusement pier.",
+      "frozenState": "RESEARCHED_DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "RESEARCHED_DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "Westlight and westward change controls",
+        "WIP2 coverage."
+      ],
+      "truthNote": "Precedents are not copy targets.",
+      "acceptance": "Pier has coherent midway, attractions, queue/egress, railings, service access, water edge safety, lighting and route evidence."
+    },
+    {
+      "id": "WL-004",
+      "district": "Westlight",
+      "requirement": "Add a Ferris wheel and roller coaster.",
+      "frozenState": "MODELED_BLOCKED",
+      "effectiveState": "MODELED_BLOCKED",
+      "evidence": [
+        "WIP2 coverage claims both structures."
+      ],
+      "truthNote": "Silhouette alone is insufficient; bases, paths, queues and safety envelopes matter.",
+      "acceptance": "Both attractions have complete visible structure, foundations, approach/queue/exit, clear envelopes, non-conflicting sightlines and prescribed cameras."
+    },
+    {
+      "id": "WL-005",
+      "district": "Westlight",
+      "requirement": "Add paired steak and shrimp/seafood houses.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "Westlight waterfront schedule",
+        "WIP2 coverage."
+      ],
+      "truthNote": "Restaurants require real kitchen/service/dining and waterfront access.",
+      "acceptance": "Each has distinct identity, complete kitchen, dining, service/loading, accessible entrance, waterfront terrace if planned and matched media."
+    },
+    {
+      "id": "WL-006",
+      "district": "Westlight",
+      "requirement": "Align the main district, pier and stadium pedestrian malls/streets.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "Westlight coordinate schedules and WIP2 coverage."
+      ],
+      "truthNote": "Alignment must be experienced continuously at grade.",
+      "acceptance": "One surveyed centerline and continuous walk path connects all three, with widths, grades, landmarks and decision-point cameras."
+    },
+    {
+      "id": "WL-007",
+      "district": "Westlight",
+      "requirement": "Create a contained crater lake with quay and green space.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "Westlight/westward plans",
+        "WIP2 claims 1,443 crater-lake columns plus quay/green space."
+      ],
+      "truthNote": "Active water requires containment and post-state flow proof.",
+      "acceptance": "Closed basin, shoreline profile, quay, continuous public edge, drainage/flow QA, safe routes and overview/detail cameras pass."
+    },
+    {
+      "id": "WL-008",
+      "district": "Westlight",
+      "requirement": "Preserve and integrate the accepted Westlight infinity screen.",
+      "frozenState": "ACCEPTED_PREDECESSOR_WITH_NEW_INTERFACE_PENDING",
+      "effectiveState": "ACCEPTED_PREDECESSOR_WITH_NEW_INTERFACE_PENDING",
+      "evidence": [
+        "R1 accepted Westlight screen.",
+        "Westlight three-venue audit."
+      ],
+      "truthNote": "New construction may not obscure, conflict with or falsely replace the accepted object.",
+      "acceptance": "Final intersection and sightline audits show the accepted screen remains intact, visible and correctly paired with seating."
+    },
+    {
+      "id": "WEST-001",
+      "district": "Westward",
+      "requirement": "Build paired facing dry and water parks informed by named precedents but original in design.",
+      "frozenState": "RESEARCHED_DESIGNED_AND_PARTLY_MODELED_BLOCKED",
+      "effectiveState": "RESEARCHED_DESIGNED_AND_PARTLY_MODELED_BLOCKED",
+      "evidence": [
+        "westward-paired-parks-engineering.md",
+        "westward-paired-parks-masterplan.json",
+        "westward-parks-housing-workforce-coordinate-schedule.json"
+      ],
+      "truthNote": "Independent audit questioned park completeness/hydrology; later coverage must be reconciled.",
+      "acceptance": "Both parks have complete attraction lists, entries, queues, service/egress, shared orientation, original forms, and water park has contained-water QA."
+    },
+    {
+      "id": "WEST-002",
+      "district": "Westward",
+      "requirement": "Extend the road west and integrate it with the crater-lake greenbelt.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "Westward masterplan and WIP2 parkway extension."
+      ],
+      "truthNote": "Road and public waterfront must not sever one another.",
+      "acceptance": "Continuous road, greenway, crossings, headroom, grades, shoreline access and bidirectional route evidence pass."
+    },
+    {
+      "id": "WEST-003",
+      "district": "Westward",
+      "requirement": "Create Hampton-style medium-density lakeside housing with continuous public waterfront relationship.",
+      "frozenState": "DESIGNED_PARTIAL",
+      "effectiveState": "DESIGNED_PARTIAL",
+      "evidence": [
+        "Westward masterplan and coordinate schedule."
+      ],
+      "truthNote": "Style is a researched influence, not a copy; private parcels may not block the public edge.",
+      "acceptance": "Housing type/parcel schedule, street fronts, services, water views, continuous public path and database/media plan are complete."
+    },
+    {
+      "id": "WEST-004",
+      "district": "Southwest Ravensreach",
+      "requirement": "Build two connected, dignified workforce/affordable housing projects centered on useful outdoor space.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "Westward workforce change control",
+        "WIP2 claims two projects and one shared court."
+      ],
+      "truthNote": "Economic program does not lower safety, completeness, dignity or evidence standards.",
+      "acceptance": "Two distinct projects, complete units/common spaces, shared court, services, transit/walk links, lighting, egress and representative media pass."
+    },
+    {
+      "id": "WORK-001",
+      "district": "Worker Town",
+      "requirement": "Upgrade steward cottages into mini-mansions, including the current cottage.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "worker-town-steward-mini-mansions-source-of-truth.md",
+        "worker-town-steward-mini-mansions-coordinate-schedule.json",
+        "WIP2 found/upgraded one steward cottage."
+      ],
+      "truthNote": "WIP2 is blocked at this scope by a protected chest; nine retained block entities are also reported.",
+      "acceptance": "Protected inventory is preserved, complete residence program and lane access exist, routes pass and old/new database objects are reconciled."
+    },
+    {
+      "id": "WORK-002",
+      "district": "Worker Town",
+      "requirement": "Add an architecturally rich adult theater/cabaret with non-graphic programming.",
+      "frozenState": "IMPLEMENTATION_READY_COORDINATE_PLAN_NOT_GENERATED",
+      "effectiveState": "IMPLEMENTATION_READY_COORDINATE_PLAN_NOT_GENERATED",
+      "evidence": [
+        "worker-town-gilded-raven-theater-owner-tunnel-source-of-truth.md",
+        "worker-town-gilded-raven-theater-owner-tunnel-coordinate-schedule.json",
+        "evidence/worker-town-theater-owner-tunnel-survey.json"
+      ],
+      "truthNote": "Frozen plan is the non-graphic 168-seat Gilded Raven Theatre House plus five five-person salons and four one-to-one mini theaters. Building/descent are dry and block-entity-free; two nearby beds remain outside all targets and protected.",
+      "acceptance": "Final package preserves the beds; builds real stage before seats; verifies 168 main-house seats plus small rooms, five open vomitories, restaurants, age-controlled/privacy vestibules, accessible route, dressing/green rooms, BOH, acoustic shell, two egress paths and matched cameras."
+    },
+    {
+      "id": "WORK-003",
+      "district": "Worker Town",
+      "requirement": "Give the adult theater extravagant stairs/lifts and high-end arrival/detail.",
+      "frozenState": "IMPLEMENTATION_READY_COORDINATE_PLAN_NOT_GENERATED",
+      "effectiveState": "IMPLEMENTATION_READY_COORDINATE_PLAN_NOT_GENERATED",
+      "evidence": [
+        "Frozen theater descent and mansion ascent in the Gilded Raven coordinate schedule."
+      ],
+      "truthNote": "Theater descent is dry with nine 12-rise/24-run flights plus a 6-rise ceremonial flight, seven-clear stairs, six headroom and adjacent six-by-six lift; it is not yet generated.",
+      "acceptance": "Ceremonial stair and accessible lift routes are exact-generated, independently pre-supported, connect every listed landing and pass bidirectional normal-walk/lift QA."
+    },
+    {
+      "id": "DATA-001",
+      "district": "Northeast data campus",
+      "requirement": "Maintain a corrected 24-slot public-record-supported DSM campus register and distinguish built, approved and planned status; never infer 45 completed facilities from numbering jumps.",
+      "frozenState": "CORRECTED_REGISTER_PENDING_MACHINE_EVIDENCE",
+      "effectiveState": "CORRECTED_REGISTER_PENDING_MACHINE_EVIDENCE",
+      "evidence": [
+        "northeast-datacenter-megacampus-source-of-truth.md",
+        "northeast-data-campus-coordinate-schedule.json",
+        "Owner/PM correction: 24 slots across DSM1-4, DSM5-8, DSM9-13, DSM14-18 and DSM40-45.",
+        "WIP2 separately models ten DM01-DM10 halls with forty rows each; that older modeled package does not establish the corrected 24-slot status register."
+      ],
+      "truthNote": "Slot identifiers and number jumps are not completed-building counts. Existing, approved and planned entries must be individually sourced and labeled.",
+      "acceptance": "Machine register contains exactly 24 unique slots with source, status, object relation and no false claim of 45 facilities; any physically modeled hall is independently counted and tied to its own release state."
+    },
+    {
+      "id": "DATA-002",
+      "district": "Northeast data campus",
+      "requirement": "Provide NOC, power/support, 48-bed dorms, aviation and computer-logistics compound.",
+      "frozenState": "RESEARCHED_DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "RESEARCHED_DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "Megacampus program/source",
+        "WIP2 coverage."
+      ],
+      "truthNote": "Warehouse, hydrology and circulation findings remain open.",
+      "acceptance": "Each function has named object/bounds, complete usable rooms, access/service/egress and independent room/capacity counts."
+    },
+    {
+      "id": "DATA-003",
+      "district": "Northeast data campus",
+      "requirement": "Create separate 200-seat presentation auditorium and 200-seat cinema with seats facing actual screens.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "Megacampus program",
+        "WIP2 claims 200 seats in each independent venue."
+      ],
+      "truthNote": "Counts and sightlines require independent verification.",
+      "acceptance": "Two distinct objects each have 200 counted usable seats, actual screen/stage, clear aisles/exits, projection/BOH and seat-to-screen sightline proof."
+    },
+    {
+      "id": "DATA-004",
+      "district": "Northeast data campus",
+      "requirement": "Keep DM10 a normal surface data hall and place a separate InfoBunker-inspired annex.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "Megacampus source",
+        "WIP2 coverage."
+      ],
+      "truthNote": "The annex must remain original and functionally distinct.",
+      "acceptance": "Object/geometry crosswalk proves DM10 normal program and separate annex bounds, entries, services, egress and database IDs."
+    },
+    {
+      "id": "DATA-005",
+      "district": "Northeast data campus holdout parcel",
+      "requirement": "Preserve a medium older personal home beside the campus road while the data district grows; add an attached four-car garage, backyard pool/treehouse, fallout shelter, first-floor tasteful non-graphic adult suite/service kitchen/bedroom-viewing salon/private room, and two-room office/lounge.",
+      "frozenState": "REQUESTED_EVIDENCE_PENDING",
+      "effectiveState": "REQUESTED_EVIDENCE_PENDING",
+      "evidence": [
+        "Owner/PM frozen-scope correction; data-team survey evidence pending."
+      ],
+      "truthNote": "The home is an intentional holdout and may not be demolished, absorbed into a campus envelope or visually erased by Phase 0 work. Adult program remains non-graphic.",
+      "acceptance": "Fresh survey fixes parent-home bounds and protected contents; attached four-bay garage is physically usable; pool/treehouse/shelter and named rooms are complete; campus road/perimeters preserve access, privacy, views and two egress paths."
+    },
+    {
+      "id": "DATA-006",
+      "district": "Iowa Data District Phase 0",
+      "requirement": "Tonight, extend district roads and build only construction perimeters, low future-wall/foundation outlines, walkable gates and block-art project billboards for three future precincts.",
+      "frozenState": "RESEARCHED_AND_PLANNED_PHASE_0",
+      "effectiveState": "RESEARCHED_AND_PLANNED_PHASE_0",
+      "evidence": [
+        "iowa-data-district-phase0-source-of-truth.md"
+      ],
+      "truthNote": "No completed, roofed, fitted or operational data hall belongs in Phase 0; Sites/maps/PM/Box must label every envelope PLANNED / PHASE 0.",
+      "acceptance": "Road continuity reaches all three parcels; perimeters have legible gates; low outlines and billboards exist; interiors remain empty/unbuilt; zero protected/live entities and zero active water/lava are introduced; exact rollback covers every target."
+    },
+    {
+      "id": "DATA-007",
+      "district": "Iowa Data District Phase 0 — Meta Altoona-inspired",
+      "requirement": "Reserve twelve future hall envelopes in three four-building neighborhoods with operations green, service loop, staff walk, prairie and utility reservations.",
+      "frozenState": "RESEARCHED_AND_PLANNED_UNBUILT",
+      "effectiveState": "RESEARCHED_AND_PLANNED_UNBUILT",
+      "evidence": [
+        "iowa-data-district-phase0-source-of-truth.md"
+      ],
+      "truthNote": "Twelve is supported as a public planning precedent; it is not a claim that the Minecraft halls are built tonight.",
+      "acceptance": "Exactly twelve empty future envelopes, road/gate/perimeter, labeled reserve areas and META ALTOONA — FUTURE CAMPUS block-art billboard are present and reported unbuilt."
+    },
+    {
+      "id": "DATA-008",
+      "district": "Iowa Data District Phase 0 — Google Council Bluffs-inspired",
+      "requirement": "Reserve six fictional future halls, two utility envelopes, operations/staging support, separate gates, stormwater demonstration outline and expansion reserve.",
+      "frozenState": "RESEARCHED_AND_PLANNED_UNBUILT",
+      "effectiveState": "RESEARCHED_AND_PLANNED_UNBUILT",
+      "evidence": [
+        "iowa-data-district-phase0-source-of-truth.md"
+      ],
+      "truthNote": "Six is this fictional project’s design choice and must not be presented as an authoritative current real-world Council Bluffs building count.",
+      "acceptance": "Six empty hall outlines plus planned support envelopes, road/gate/perimeter, dry stormwater/expansion outlines and GOOGLE IOWA — FUTURE CAMPUS billboard are present and labeled unbuilt."
+    },
+    {
+      "id": "DATA-009",
+      "district": "Iowa Data District Phase 0 — LightEdge EdgeBCC Altoona-inspired",
+      "requirement": "Reserve two future EdgeBCC buildings with four quadrants each, recovery/admin outline and compact service court.",
+      "frozenState": "RESEARCHED_AND_PLANNED_UNBUILT",
+      "effectiveState": "RESEARCHED_AND_PLANNED_UNBUILT",
+      "evidence": [
+        "iowa-data-district-phase0-source-of-truth.md"
+      ],
+      "truthNote": "Use EdgeBCC, not EdgeConneX. Two buildings are the user-directed fictional plan informed by the public LightEdge precedent.",
+      "acceptance": "Exactly two empty four-quadrant outlines, recovery/admin and service-court outlines, road/gate/perimeter and EDGEBCC ALTOONA — FUTURE CAMPUS billboard are present and labeled unbuilt."
+    },
+    {
+      "id": "DATA-010",
+      "district": "Iowa Data District Phase 0 — terrain and long-range structure",
+      "requirement": "Continue a coherent district spine beyond all three precincts with future junctions, a green/utility reserve and at least two unassigned future-campus parcels; grade with contour-following terraces and classify water before altering it.",
+      "frozenState": "RESEARCHED_AND_PLANNED_UNBUILT",
+      "effectiveState": "RESEARCHED_AND_PLANNED_UNBUILT",
+      "evidence": [
+        "iowa-data-district-phase0-source-of-truth.md"
+      ],
+      "truthNote": "A giant flat slab, exposed vertical cut, blind fluid replacement or road that dead-ends at the third precinct fails the master plan.",
+      "acceptance": "Spine and future junctions remain buildable; two unassigned parcels are protected; cut/fill sections show terraced benches, planted transitions and limited retaining edges; every surveyed water cell has a preserve, detention/dam or isolated-drain decision."
+    },
+    {
+      "id": "DATA-011",
+      "district": "Iowa Data District Phase 0 — shared power backbone",
+      "requirement": "Build a legible fictional district-energy Phase 0 with one shared switching yard, two independent-looking transmission corridors, one substation yard/reservation per Meta/Google/EdgeBCC precinct, a continuing utility corridor and marked future storage/operations capacity.",
+      "frozenState": "RESEARCHED_AND_PLANNED_PHASE_0",
+      "effectiveState": "RESEARCHED_AND_PLANNED_PHASE_0",
+      "evidence": [
+        "iowa-data-district-phase0-source-of-truth.md"
+      ],
+      "truthNote": "The visible hierarchy is a fictional Minecraft master-plan diagram; it must not reproduce or claim real line routes, voltages, protection schemes, controls, entries or security.",
+      "acceptance": "Switching yard, two tower corridors, three substations, service roads/clearances/fencing, continuing reserve, operations shell and unfinished storage pads are present; planted/firebreak separation protects holdout home, public courts, staff buildings, pools and detention water."
+    },
+    {
+      "id": "DATA-012",
+      "district": "Microsoft/DSM-inspired data campus",
+      "requirement": "Expand the fictional completed-hall target from the old ten-hall WIP to exactly 24 DSM slots, while keeping public-source built/approved/planned status separate from Minecraft completion state.",
+      "frozenState": "TARGET_CORRECTED_COORDINATES_AND_GENERATION_PENDING",
+      "effectiveState": "TARGET_CORRECTED_COORDINATES_AND_GENERATION_PENDING",
+      "evidence": [
+        "Data-team frozen count control; final 24-hall coordinates and generator report are pending.",
+        "WIP2 only models the superseded ten-hall DM01-DM10 program."
+      ],
+      "truthNote": "Do not freeze the preexisting ten-hall coordinates as the 24-hall solution and do not infer 45 halls from DSM numbering.",
+      "acceptance": "Final machine schedule has exactly 24 unique DSM slot IDs in the five controlled groups, each with source-status and Minecraft-state fields; accepted post-state independently proves exactly 24 complete halls and zero phantom range entries."
+    },
+    {
+      "id": "OBS-001",
+      "district": "Observatory",
+      "requirement": "Build an over-the-top owner mega-estate around the observatory.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "observatory-estate-and-inactive-portal-gallery-source-of-truth.md",
+        "observatory-estate-and-portal-hub-coordinate-schedule.json",
+        "WIP2 owner-estate coverage."
+      ],
+      "truthNote": "Independent audit flagged implementation and NBT/interface risks.",
+      "acceptance": "Estate preserves observatory function/views, has complete residential/guest/service/landscape program, safe routes and matched media."
+    },
+    {
+      "id": "OBS-002",
+      "district": "Observatory",
+      "requirement": "Expand the owner safe room and shelter.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "Observatory source documents and WIP2 coverage."
+      ],
+      "truthNote": "Secure program still requires egress and route proof.",
+      "acceptance": "Dry secure envelope, life-support/storage program, two independent egress routes, access control and post-state movement evidence pass."
+    },
+    {
+      "id": "OBS-003",
+      "district": "Observatory",
+      "requirement": "Create owner portal rooms/gallery while keeping every portal entirely inactive.",
+      "frozenState": "DESIGNED_AND_MODELED_BLOCKED",
+      "effectiveState": "DESIGNED_AND_MODELED_BLOCKED",
+      "evidence": [
+        "Observatory source documents",
+        "WIP2 claims eight rooms and zero active portal blocks."
+      ],
+      "truthNote": "No live activation; NBT/block-state verification is mandatory.",
+      "acceptance": "Post-state census proves zero active portal blocks and zero activation materials in prohibited arrangement; all rooms remain accessible and documented."
+    },
+    {
+      "id": "OBS-004",
+      "district": "Observatory",
+      "requirement": "Include owner wellness, pool and tasteful private non-graphic red-room program.",
+      "frozenState": "DESIGNED_PARTIAL",
+      "effectiveState": "DESIGNED_PARTIAL",
+      "evidence": [
+        "Observatory source documents."
+      ],
+      "truthNote": "Privacy and non-graphic content boundary applies.",
+      "acceptance": "Separated access, acoustic/privacy vestibules, wash/cleanup, safe contained water, egress and non-graphic furnishings/material plan pass."
+    },
+    {
+      "id": "CITY-001",
+      "district": "Future owner underground city",
+      "requirement": "Reserve protected space for a future mini-city.",
+      "frozenState": "IMPLEMENTATION_READY_RESERVATION_PLAN_DO_NOT_EXCAVATE",
+      "effectiveState": "IMPLEMENTATION_READY_RESERVATION_PLAN_DO_NOT_EXCAVATE",
+      "evidence": [
+        "Frozen reservation [65,-38,-280,125,-20,-200] in the Gilded Raven source and coordinate schedule."
+      ],
+      "truthNote": "Selected reservation and face halo are dry and block-entity-free. It is a protected future plan and must not be excavated; only the sales office may be built.",
+      "acceptance": "Final model preserves the entire reservation as no-excavation, records its four corners/elevation/program, builds no streets or city rooms, and keeps exact package/protected-state separation."
+    },
+    {
+      "id": "CITY-002",
+      "district": "Future owner underground city",
+      "requirement": "Build a future-city reservations/sales office.",
+      "frozenState": "IMPLEMENTATION_READY_COORDINATE_PLAN_NOT_GENERATED",
+      "effectiveState": "IMPLEMENTATION_READY_COORDINATE_PLAN_NOT_GENERATED",
+      "evidence": [
+        "Founders' Gallery Sales Office [78,-46,-227,106,-33,-204] in the Gilded Raven source and schedule; dry, dry-halo and zero block entities."
+      ],
+      "truthNote": "Office relation to the owner corridor is frozen; it remains ungenerated and the presentation door beyond it stays sealed/offline.",
+      "acceptance": "Office has public/owner arrival, reception, model/map room, parcel sales desks, closing room, records, staff/service, accessible route, egress and future parcel database links."
+    },
+    {
+      "id": "CITY-003",
+      "district": "Future owner underground city",
+      "requirement": "Plan the mini-city like a development with plots, utilities, phases and sales inventory.",
+      "frozenState": "CONCEPT_PROGRAM_AND_RESERVATION_DEFINED_FUTURE_MASTERPLAN_PENDING",
+      "effectiveState": "CONCEPT_PROGRAM_AND_RESERVATION_DEFINED_FUTURE_MASTERPLAN_PENDING",
+      "evidence": [
+        "Gilded Raven plan defines a reserved central square, residence/guest court, operations/concierge, dining/recreation, utility plant and future two-route egress/lift program."
+      ],
+      "truthNote": "No final master plan or saleable parcel inventory exists.",
+      "acceptance": "Approved development plan defines blocks/parcels, rights-of-way, utilities, transit, civic space, phases, reservations, object IDs and sales-office inventory relations."
+    },
+    {
+      "id": "ADULT-001",
+      "district": "Program-wide adult spaces",
+      "requirement": "Keep every adult-design component tasteful, private, age-controlled and non-graphic.",
+      "frozenState": "CONTROLLING_REQUIREMENT",
+      "effectiveState": "CONTROLLING_REQUIREMENT",
+      "evidence": [
+        "B01 design review",
+        "Guild/archive, observatory and Worker Town program notes.",
+        "Concord service-town source of truth."
+      ],
+      "truthNote": "Applies to Worker Town adult theater, Concord night court/theater/dance venue, B01 wellness/private areas, owner red rooms and private adult archive.",
+      "acceptance": "Programs use non-graphic names/furnishings, privacy/access/acoustic/wash/egress requirements are explicit, and no media contains explicit content."
+    },
+    {
+      "id": "CONC-001",
+      "district": "Concord",
+      "requirement": "Build a complete compact two-street service town along the data road; unlike the data-hall Phase 0 precincts, Concord is a full-build target.",
+      "frozenState": "RESEARCHED_AND_DESIGNED_COORDINATES_PENDING",
+      "effectiveState": "RESEARCHED_AND_DESIGNED_COORDINATES_PENDING",
+      "evidence": [
+        "concord-data-district-service-town-source-of-truth.md"
+      ],
+      "truthNote": "No coordinates, generated operations or live town exist yet.",
+      "acceptance": "Selected parcel survey, complete enclosed/walkable buildings, continuous roads/sidewalks, exact guarded operations/rollback, post-state routes, database objects and matched media all pass."
+    },
+    {
+      "id": "CONC-002",
+      "district": "Concord ordinary frontage",
+      "requirement": "Create an ordinary legible road face with Concord Fuel & General, Concord Community Post, The Last Relay bar, motel sign, planted edge and no blank backs.",
+      "frozenState": "RESEARCHED_AND_DESIGNED_COORDINATES_PENDING",
+      "effectiveState": "RESEARCHED_AND_DESIGNED_COORDINATES_PENDING",
+      "evidence": [
+        "Concord source of truth."
+      ],
+      "truthNote": "The practical frontage reveals town identity without making the adult court explicit from the highway.",
+      "acceptance": "Gas, post and roughly 40-seat bar are complete, front-facing, serviced and walkable; gas circulation is separated from the night-court pedestrian core."
+    },
+    {
+      "id": "CONC-003",
+      "district": "Concord nightlife economy",
+      "requirement": "Make consensual adult nightlife the defining off-shift economy/hobby for neighboring data-center workers, expressed purposefully but non-graphically.",
+      "frozenState": "RESEARCHED_AND_DESIGNED_COORDINATES_PENDING",
+      "effectiveState": "RESEARCHED_AND_DESIGNED_COORDINATES_PENDING",
+      "evidence": [
+        "Concord source of truth."
+      ],
+      "truthNote": "Architecture, stages, furniture, access zoning and service programming communicate the use; no explicit imagery, figures or acts.",
+      "acceptance": "Age-control thresholds, privacy, accessible public routes, distinct performer/service routes, wash/toilet support, acoustic control, two-way egress and non-graphic media pass."
+    },
+    {
+      "id": "CONC-004",
+      "district": "Concord Night Court",
+      "requirement": "Build the Concord Motor Lodge with exactly 25 rooms facing the shared court.",
+      "frozenState": "DESIGNED_COORDINATES_PENDING",
+      "effectiveState": "DESIGNED_COORDINATES_PENDING",
+      "evidence": [
+        "Concord source of truth."
+      ],
+      "truthNote": "Required split is 13 ground and 12 upper rooms, including two same-quality ground-floor mobility analogues.",
+      "acceptance": "Independent count proves exactly 25 complete rooms, broad stairs/lifts at opposite ends, lobby/office, manager office/lounge, breakfast, laundry/linen/housekeeping, staff/service and court-facing routes."
+    },
+    {
+      "id": "CONC-005",
+      "district": "Concord Night Court",
+      "requirement": "Build the non-graphic Gilded Raven Annex opposite the motel with exactly 72 main-room seats, three five-seat salons and two single-guest salons.",
+      "frozenState": "DESIGNED_COORDINATES_PENDING",
+      "effectiveState": "DESIGNED_COORDINATES_PENDING",
+      "evidence": [
+        "Concord source of truth."
+      ],
+      "truthNote": "The annex is a smaller local theater and has no connection to the Worker Town owner tunnel or Ravensgate.",
+      "acceptance": "Real stage/proscenium precedes seats; exact seat/salon counts, two balcony tiers, open bowl circulation, restaurants/bar, dressing/green/rehearsal/loading, public discovery route, ordinary signed route and isolated management/service passage pass."
+    },
+    {
+      "id": "CONC-006",
+      "district": "Concord Night Court",
+      "requirement": "Build a separate non-graphic dance/strip-club venue.",
+      "frozenState": "DESIGNED_COORDINATES_PENDING",
+      "effectiveState": "DESIGNED_COORDINATES_PENDING",
+      "evidence": [
+        "Concord source of truth."
+      ],
+      "truthNote": "The venue is separate from the annex theater and is represented without explicit content.",
+      "acceptance": "Age-control lobby, central stage and sightlines, booths, bar, kitchen, coat/toilets, two dressing rooms, green room, wardrobe, office/count, storage, rear loading and egress pass."
+    },
+    {
+      "id": "CONC-007",
+      "district": "Concord worker services",
+      "requirement": "Provide a marked shift-change shuttle stop, waiting lounge and late-night food/hospitality for data workers.",
+      "frozenState": "DESIGNED_COORDINATES_PENDING",
+      "effectiveState": "DESIGNED_COORDINATES_PENDING",
+      "evidence": [
+        "Concord source of truth."
+      ],
+      "truthNote": "Worker services are core town infrastructure, not decorative props.",
+      "acceptance": "Shuttle/loading area, safe sidewalk, weather-protected lounge, food service and night-lit route connect ordinary frontage to motel/night court without service conflicts."
+    },
+    {
+      "id": "CONC-008",
+      "district": "Concord Night Court",
+      "requirement": "Make the motel and theater face one real shared pedestrianized parking court with planted center walk and separate rear service lane.",
+      "frozenState": "DESIGNED_COORDINATES_PENDING",
+      "effectiveState": "DESIGNED_COORDINATES_PENDING",
+      "evidence": [
+        "Concord source of truth."
+      ],
+      "truthNote": "Parking, drop-off, pedestrian, service and performer movement must remain legible and non-conflicting.",
+      "acceptance": "Marked perimeter circulation, protected center walk, planted islands, accessible-route analogues, direct public entrances, screened but legible service lane and route tests pass."
+    },
+    {
+      "id": "CONC-009",
+      "district": "Concord future growth",
+      "requirement": "Reserve two graded/landscaped future entertainment parcels with completed sidewalk and utility stubs and an extendable planted turning court.",
+      "frozenState": "DESIGNED_COORDINATES_PENDING",
+      "effectiveState": "DESIGNED_COORDINATES_PENDING",
+      "evidence": [
+        "Concord source of truth."
+      ],
+      "truthNote": "No temporary clutter or parking may force demolition for future growth.",
+      "acceptance": "Two empty protected parcels, future street/utility stubs, landscape/setback controls and database/map planned status are explicit."
+    },
+    {
+      "id": "CONC-010",
+      "district": "Concord terrain and network isolation",
+      "requirement": "Fit Concord to terraced terrain, preserve useful drainage and green buffers, and keep theater/club routes isolated from owner corridor, Ravensgate and inactive portals.",
+      "frozenState": "DESIGNED_COORDINATES_PENDING",
+      "effectiveState": "DESIGNED_COORDINATES_PENDING",
+      "evidence": [
+        "Concord source of truth."
+      ],
+      "truthNote": "No mega-pad, blind drainage, power-yard adjacency or hidden underground cross-connection is allowed.",
+      "acceptance": "Terrain/fluid survey, planted benches, detention decision, town/power buffer, zero forbidden network intersections, zero active portal/lava/bubble/aquatic introductions and exact rollback pass."
+    }
+  ]
+}

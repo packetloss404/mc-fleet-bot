@@ -38,6 +38,8 @@ interface ScheduleEntry {
   keywords: string[];
   /** Optional override of the default 'normal' priority. */
   priority?: 'low' | 'normal' | 'high' | 'critical';
+  /** Trusted structured contract consumed by deterministic executors. */
+  metadata?: Record<string, unknown>;
 }
 
 /**
@@ -53,11 +55,21 @@ const SCHEDULES: Record<TownRole, Record<SchedulePhase, ScheduleEntry[]>> = {
         description: 'chop nearby trees and stockpile logs',
         keywords: ['wood', 'log', 'tree', 'chop', 'lumberjack'],
       },
+      {
+        description: 'inspect the lumber stockpile, nursery, and civic trail for supply needs without breaking or placing blocks',
+        keywords: ['inspect', 'stockpile', 'nursery', 'trail', 'lumberjack', 'non-destructive'],
+        priority: 'low',
+      },
     ],
     night: [
       {
         description: 'seek shelter and rest until dawn',
         keywords: ['shelter', 'sleep', 'night', 'rest'],
+      },
+      {
+        description: 'walk the approved cottage-to-common-hall route, socialize briefly, and return home without editing blocks',
+        keywords: ['walk', 'social', 'common-hall', 'night', 'lumberjack', 'non-destructive'],
+        priority: 'low',
       },
     ],
   },
@@ -67,11 +79,21 @@ const SCHEDULES: Record<TownRole, Record<SchedulePhase, ScheduleEntry[]>> = {
         description: 'mine cobblestone and ore from nearby exposed stone',
         keywords: ['stone', 'cobblestone', 'mine', 'ore', 'miner'],
       },
+      {
+        description: 'inspect the approved mine approach, tool store, and ore stockpile without digging inside town',
+        keywords: ['inspect', 'mine', 'tools', 'stockpile', 'miner', 'non-destructive'],
+        priority: 'low',
+      },
     ],
     night: [
       {
         description: 'continue mining underground or shelter at the surface',
         keywords: ['mine', 'shelter', 'night', 'miner'],
+      },
+      {
+        description: 'return by the approved mine route, visit the common hall, and rest without editing blocks',
+        keywords: ['walk', 'social', 'shelter', 'night', 'miner', 'non-destructive'],
+        priority: 'low',
       },
     ],
   },
@@ -81,11 +103,21 @@ const SCHEDULES: Record<TownRole, Record<SchedulePhase, ScheduleEntry[]>> = {
         description: 'tend crops, plant seeds, and harvest mature food',
         keywords: ['farm', 'crop', 'harvest', 'plant', 'wheat', 'farmer'],
       },
+      {
+        description: 'inspect crop beds, irrigation edges, kitchen stores, and compost supplies without breaking protected landscaping',
+        keywords: ['inspect', 'farm', 'kitchen', 'supplies', 'farmer', 'non-destructive'],
+        priority: 'low',
+      },
     ],
     night: [
       {
         description: 'seek shelter and sleep through the night',
         keywords: ['shelter', 'sleep', 'night', 'rest'],
+      },
+      {
+        description: 'deliver a non-destructive food-store status check, visit the common hall, and return to the cottage',
+        keywords: ['inspect', 'social', 'food', 'night', 'farmer', 'non-destructive'],
+        priority: 'low',
       },
     ],
   },
@@ -95,11 +127,21 @@ const SCHEDULES: Record<TownRole, Record<SchedulePhase, ScheduleEntry[]>> = {
         description: 'smelt iron and craft tools or armor at the furnace',
         keywords: ['smelt', 'furnace', 'iron', 'craft', 'blacksmith', 'tool'],
       },
+      {
+        description: 'inspect the forge, tool racks, furnace fuel, and repair queue without changing protected structures',
+        keywords: ['inspect', 'forge', 'tools', 'blacksmith', 'non-destructive'],
+        priority: 'low',
+      },
     ],
     night: [
       {
         description: 'work at the forge or shelter until dawn',
         keywords: ['shelter', 'sleep', 'night', 'forge'],
+      },
+      {
+        description: 'close the forge shift, walk to the common hall, and return by the approved route without editing blocks',
+        keywords: ['walk', 'social', 'forge', 'night', 'blacksmith', 'non-destructive'],
+        priority: 'low',
       },
     ],
   },
@@ -109,11 +151,21 @@ const SCHEDULES: Record<TownRole, Record<SchedulePhase, ScheduleEntry[]>> = {
         description: 'progress the active town build job or repair damage',
         keywords: ['build', 'place', 'construct', 'repair', 'builder'],
       },
+      {
+        description: 'survey façades, roads, stairs, doors, and lighting for maintenance issues without breaking or placing blocks',
+        keywords: ['survey', 'inspect', 'roads', 'stairs', 'builder', 'non-destructive'],
+        priority: 'low',
+      },
     ],
     night: [
       {
         description: 'seek shelter and rest until morning',
         keywords: ['shelter', 'sleep', 'night', 'rest'],
+      },
+      {
+        description: 'walk the approved civic courtyard loop, read in the common hall, and return home without editing blocks',
+        keywords: ['walk', 'courtyard', 'read', 'night', 'builder', 'non-destructive'],
+        priority: 'low',
       },
     ],
   },
@@ -124,12 +176,22 @@ const SCHEDULES: Record<TownRole, Record<SchedulePhase, ScheduleEntry[]>> = {
         keywords: ['patrol', 'guard', 'defend', 'watch'],
         priority: 'normal',
       },
+      {
+        description: 'inspect civic checkpoints, wayfinding signs, doors, and public paths without altering blocks',
+        keywords: ['inspect', 'checkpoint', 'wayfinding', 'guard', 'non-destructive'],
+        priority: 'low',
+      },
     ],
     night: [
       {
         description: 'patrol aggressively and fight hostile mobs near town',
         keywords: ['patrol', 'guard', 'fight', 'mob', 'zombie', 'skeleton'],
         priority: 'high',
+      },
+      {
+        description: 'walk the approved lit night checkpoint loop and file a safety report without changing blocks',
+        keywords: ['walk', 'checkpoint', 'night', 'guard', 'non-destructive'],
+        priority: 'normal',
       },
     ],
   },
@@ -139,11 +201,21 @@ const SCHEDULES: Record<TownRole, Record<SchedulePhase, ScheduleEntry[]>> = {
         description: 'gather miscellaneous resources the town is low on',
         keywords: ['gather', 'collect', 'town', 'supply', 'gatherer'],
       },
+      {
+        description: 'inspect shared storage and public work areas, then report the next safe supply need without editing blocks',
+        keywords: ['inspect', 'storage', 'supply', 'gatherer', 'non-destructive'],
+        priority: 'low',
+      },
     ],
     night: [
       {
         description: 'shelter and resume gathering at dawn',
         keywords: ['shelter', 'sleep', 'night', 'rest'],
+      },
+      {
+        description: 'visit the common hall by the approved route, socialize, and return home without changing blocks',
+        keywords: ['walk', 'social', 'night', 'gatherer', 'non-destructive'],
+        priority: 'low',
       },
     ],
   },
@@ -175,6 +247,8 @@ export class ScheduleManager {
    * swallowed + logged.
    */
   private readonly lastEmittedPhase: Map<string, SchedulePhase> = new Map();
+  /** Next routine index per (town, role, phase), advanced after each emission. */
+  private readonly nextRoutineIndex: Map<string, number> = new Map();
   /** Per-town hydration set so we only load each town's slice once. */
   private readonly loadedTowns: Set<string> = new Set();
   /**
@@ -212,9 +286,8 @@ export class ScheduleManager {
       .filter((r) => r.status === 'alive' || r.status == null);
     if (residents.length === 0) return;
 
-    // Group residents by role so we emit at most one task per (role, phase)
-    // window. The task itself is plain swarm-priority; the role keyword lets
-    // role-tagged bots claim it via the existing scorer.
+    // Group residents by role. emitForRole performs open-task deduplication,
+    // so each active role has one current schedule job without duplicates.
     const rolesPresent = new Set<TownRole>();
     for (const r of residents) {
       const role = this.roleOf(r);
@@ -225,11 +298,22 @@ export class ScheduleManager {
     for (const role of rolesPresent) {
       const key = `${townId}::${role}`;
       const last = this.lastEmittedPhase.get(key);
-      // Phase didn't flip AND we've already emitted once → skip.
-      if (last === phase) continue;
+      if (last && last !== phase) {
+        this.blackboard.discardPendingWithKeywords?.(
+          ['town', `town:${townId}`, 'phase', last, role],
+          'swarm',
+        );
+      }
+      // Always offer the current schedule. emitForRole skips it while an
+      // identical pending/claimed task exists, but re-emits after completion.
+      // This matches the class contract above: phase flip OR no matching open
+      // task. The old early-continue left every resident permanently idle
+      // after completing one job until the next day/night transition.
       this.emitForRole(townId, role, phase);
-      this.lastEmittedPhase.set(key, phase);
-      mutated = true;
+      if (last !== phase) {
+        this.lastEmittedPhase.set(key, phase);
+        mutated = true;
+      }
     }
     if (mutated) this.persistTown(townId);
   }
@@ -384,10 +468,99 @@ export class ScheduleManager {
     }
   }
 
+  private entriesForRole(
+    townId: string,
+    role: TownRole,
+    phase: SchedulePhase,
+  ): ScheduleEntry[] {
+    const shiftEntries: ScheduleEntry[] = [];
+    const town = this.townManager.getTown?.(townId);
+    for (const shift of town?.config?.citizenRoutine?.shifts ?? []) {
+      if (!shift || typeof shift !== 'object') continue;
+      if (shift.role !== role || shift.phase !== phase) continue;
+      if (
+        typeof shift.id !== 'string'
+        || !/^[a-z0-9][a-z0-9_-]{0,63}$/i.test(shift.id)
+        || !Array.isArray(shift.waypoints)
+        || shift.waypoints.length < 2
+        || shift.waypoints.length > 64
+      ) continue;
+      const rawWaypoints = shift.waypoints as unknown[];
+      if (rawWaypoints.some((candidate) => {
+        if (!candidate || typeof candidate !== 'object') return true;
+        const point = candidate as Record<string, unknown>;
+        return typeof point.x !== 'number' || !Number.isFinite(point.x)
+          || typeof point.y !== 'number' || !Number.isFinite(point.y)
+          || typeof point.z !== 'number' || !Number.isFinite(point.z);
+      })) continue;
+      const waypoints = rawWaypoints.map((candidate) => {
+        const point = candidate as Record<string, number>;
+        return {
+          x: Math.floor(point.x),
+          y: Math.floor(point.y),
+          z: Math.floor(point.z),
+        };
+      });
+      if (waypoints.some((point) => !Number.isSafeInteger(point.x)
+        || !Number.isSafeInteger(point.y)
+        || !Number.isSafeInteger(point.z)
+        || point.y < -64
+        || point.y > 320)) continue;
+      const route = waypoints
+        .map((point) => `(${point.x},${point.y},${point.z})`)
+        .join(' -> ');
+      const safety = shift.nonDestructive === false
+        ? ''
+        : ' Do not break or place blocks; if any waypoint is unreachable, return safely.';
+      shiftEntries.push({
+        description:
+          `work the approved ${shift.destination} civic shift: follow waypoints ${route}; ` +
+          `${shift.activity}.${safety}`,
+        keywords: [
+          'civic-shift',
+          `shift:${shift.id}`,
+          role,
+          shift.nonDestructive === false ? 'work' : 'non-destructive',
+        ],
+        priority: 'low',
+        metadata: {
+          kind: 'civic-shift',
+          version: 2,
+          shiftId: shift.id,
+          waypoints,
+          roundTrip: true,
+          destinationActivity: shift.activity,
+        },
+      });
+    }
+    // Reviewed cross-city shifts are an operator-authored exact route contract,
+    // so offer them before generic semantic schedules after activation. Fleet
+    // login is already staggered by 45 seconds, which also staggers departures
+    // through any surveyed narrow section. Subsequent emissions rotate into
+    // ordinary productive and local-life routines.
+    return [...shiftEntries, ...(SCHEDULES[role]?.[phase] ?? [])];
+  }
+
   private emitForRole(townId: string, role: TownRole, phase: SchedulePhase): void {
-    const entries = SCHEDULES[role]?.[phase] ?? [];
-    for (const entry of entries) {
+    const entries = this.entriesForRole(townId, role, phase);
+    if (entries.length === 0) return;
+    const requiredKeywords = [`town:${townId}`, phase, role];
+    if (this.blackboard.existsOpenWithKeywords?.(requiredKeywords, 'swarm')) {
+      return;
+    }
+
+    const cursorKey = `${townId}::${role}::${phase}`;
+    const start = this.nextRoutineIndex.get(cursorKey) ?? 0;
+    for (let offset = 0; offset < entries.length; offset++) {
+      const index = (start + offset) % entries.length;
+      const entry = entries[index];
       try {
+        // Put the town and role contract in the description, not only in
+        // score-boosting keywords. BlackboardManager treats the
+        // `(requesting role: …)` tag as an exclusive claim constraint, so a
+        // fast-polling guard can no longer steal the farmer's or miner's work.
+        const description =
+          `town:${townId} ${entry.description} (requesting role: ${role}).`;
         // Followup #41 — skip the push if an open (pending or claimed)
         // swarm-source task with the same description is already on the
         // board. Phase-flip cadence means duplicate descriptions otherwise
@@ -395,10 +568,17 @@ export class ScheduleManager {
         // — see BlackboardManager.existsOpenWithDescription — so the
         // schedule can still re-emit once the previous instance completes
         // or is GC'd.
-        if (this.blackboard.existsOpenWithDescription?.(entry.description, 'swarm')) {
+        if (this.blackboard.existsOpenWithDescription?.(description, 'swarm')) {
           logger.debug(
-            { townId, role, phase, description: entry.description },
+            { townId, role, phase, description },
             'ScheduleManager: skipping duplicate emit (open swarm task exists)',
+          );
+          continue;
+        }
+        if (this.blackboard.isTaskFamilyBackedOff?.(description, 'swarm')) {
+          logger.debug(
+            { townId, role, phase, description },
+            'ScheduleManager: rotating past task family in failure backoff',
           );
           continue;
         }
@@ -407,11 +587,15 @@ export class ScheduleManager {
         // also what the demand-loop uses — keep them consistent.
         const keywords = ['town', `town:${townId}`, 'phase', phase, role, ...entry.keywords];
         this.blackboard.addTask(
-          { description: entry.description, keywords },
+          { description, keywords },
           'swarm',
           undefined,
           entry.priority ?? 'normal',
+          undefined,
+          entry.metadata,
         );
+        this.nextRoutineIndex.set(cursorKey, (index + 1) % entries.length);
+        return;
       } catch (err: any) {
         logger.warn(
           { err: err?.message, townId, role, phase },

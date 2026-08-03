@@ -1,6 +1,6 @@
 # Project Sid → DyoBot: Implementation Roadmap
 
-Design plans for porting concepts from *Project Sid: Many-agent simulations toward AI civilization* (arXiv:2411.00114) into DyoBot. **Status: design only — review before any code.**
+Design plans for porting concepts from *Project Sid: Many-agent simulations toward AI civilization* (arXiv:2411.00114) into DyoBot. **Status: implemented — kept as design reference.**
 
 ## Thesis
 
@@ -123,6 +123,9 @@ All new behavior gates behind a config flag (extend the `security`-style section
 - **Broadcast** the decision: feed `conditioningForTalk` into both `handleChat` and `ProactiveCommunicator` so all speech is conditioned on the same current decision — fixes "say one thing, do another" and stops chat + proactive announcements contradicting each other.
 
 ### P4-C: Continuous Action Awareness (effort M; optional)
+
+This remains the one deliberately optional Project Sid follow-up and is
+tracked as OPT-10 in `docs/OPTIONAL-INITIATIVES-2026-07-26.md`.
 - Record expected vs. observed effect (inventory/position delta) per primitive step; write a "drift" signal into AgentState; feed the Critic + early-abort. Catches the hallucinated-progress / stuck-loop failure mode (Sid Fig-5A ablation showed this matters).
 
 **Files:** `src/bot/BotInstance.ts` (new `perceptionInterval`); `src/voyager/VoyagerLoop.ts` (read cached state, delegate selection); new `voyager/CognitiveController.ts`; `voyager/ProactiveCommunicator.ts` + `BotInstance.handleChat` (consume broadcast); new `voyager/ActionAwareness.ts` + `CodeExecutor.ts` hooks (P4-C). **Effort: M.** **Risk: most invasive — touches the core loop; do behind a flag with the old path as fallback.**

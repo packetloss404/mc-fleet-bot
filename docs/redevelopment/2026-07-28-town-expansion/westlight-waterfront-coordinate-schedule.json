@@ -1,0 +1,365 @@
+{
+  "schemaVersion": 1,
+  "status": "SURVEY_MASTERPLAN_NOT_A_RELEASE",
+  "generatedAtUtc": "2026-07-28T05:40:00Z",
+  "coordinateConvention": {
+    "north": "-Z",
+    "bounds": "inclusive",
+    "districtDeckSupportY": 67,
+    "districtStandingY": 68,
+    "naturalWaterSurfaceBlockY": 62,
+    "naturalWaterStandingY": 63
+  },
+  "evidence": {
+    "snapshot": {
+      "path": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region",
+      "sha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999"
+    },
+    "database": {
+      "path": "data/world-map.db",
+      "sha256AtSurvey": "1bd71512b9246b67b25a7fff91cd0745eb47d089e66fa15ee7ab23a41b21a503",
+      "mode": "read-only"
+    },
+    "currentMap": "docs/redevelopment/2026-07-28-town-expansion/evidence/westlight-waterfront-current-map.png",
+    "measuredSurvey": "docs/redevelopment/2026-07-28-town-expansion/evidence/westlight-waterfront-survey.json"
+  },
+  "protectedExisting": [
+    {
+      "id": "WL-STADIUM-AREA",
+      "name": "Westlight Theatre / Stadium district",
+      "bounds": {
+        "minX": -443,
+        "maxX": -272,
+        "minY": 18,
+        "maxY": 91,
+        "minZ": -640,
+        "maxZ": -488
+      },
+      "source": "data/world-map.db:westlight-venue:DISTRICT",
+      "rule": "Preserve the accepted bowl, theatre, members club, center-hung display, four public levels and every verified bidirectional stair route."
+    },
+    {
+      "id": "WL-BOWL",
+      "name": "Stadium bowl and concourses",
+      "bounds": {
+        "minX": -429,
+        "maxX": -291,
+        "minY": 55,
+        "maxY": 91,
+        "minZ": -629,
+        "maxZ": -491
+      },
+      "floorsY": [58, 67, 75, 82],
+      "publicEntrance": [-359, 68, -498],
+      "source": "data/world-map.db:WL-BOWL"
+    },
+    {
+      "id": "WL-MAIN-AREA",
+      "name": "Existing Westlight main district and shore threshold",
+      "bounds": {
+        "minX": -429,
+        "maxX": -260,
+        "minY": 62,
+        "maxY": 108,
+        "minZ": -556,
+        "maxZ": -445
+      },
+      "source": "data/world-map.db:westlight-district:DISTRICT"
+    }
+  ],
+  "pierBuildingAudit": [
+    {
+      "id": "WD-BREW",
+      "name": "Malt & Lantern brew-barn",
+      "bounds": [-352, -326, -468, -446],
+      "currentFoundation": "solid stone y62..66",
+      "waterInFiveBlockRingAtY62": {"cells": 425, "ringCells": 600, "percent": 70.8},
+      "decision": "mandatory-pier-retrofit",
+      "design": "Preserve rooms and two floors; expose a pile-and-cap undercroft, add a continuous south waterside deck, fenders, service landing and two shore-side egress doors."
+    },
+    {
+      "id": "WD-SHOP-A-G",
+      "name": "Seven High Street shophouses",
+      "bounds": [-404, -353, -470, -448],
+      "individualIds": ["WD-SHOP-A", "WD-SHOP-B", "WD-SHOP-C", "WD-SHOP-D", "WD-SHOP-E", "WD-SHOP-F", "WD-SHOP-G"],
+      "currentFoundation": "seven solid stone y62..66 pads visually read as one blunt seawall",
+      "waterInFiveBlockRingRangeAtY62Percent": [11.3, 29.3],
+      "decision": "mandatory-pier-house-retrofit",
+      "design": "Keep varied shop fronts, apartments and stairs; replace visible waterside fill only with a regular pile grid, transverse caps, a continuous rear pier walk and short service bridges."
+    },
+    {
+      "id": "WD-FERRY",
+      "name": "Ferry Bell House",
+      "bounds": [-316, -302, -482, -466],
+      "currentFoundation": "solid stone y62..66",
+      "waterInFiveBlockRingAtY62": {"cells": 75, "ringCells": 420, "percent": 17.9},
+      "decision": "pier-gateway-retrofit",
+      "design": "Retain the bell room and street door; author an east-side ticket loggia, pile-supported waiting deck and a guarded gangway landing."
+    },
+    {
+      "id": "WD-INN",
+      "name": "Beacon Inn",
+      "bounds": [-428, -408, -496, -464],
+      "currentFoundation": "solid stone y62..66",
+      "waterInFiveBlockRingAtY62": {"cells": 109, "ringCells": 640, "percent": 17.0},
+      "decision": "quay-edge-not-pier",
+      "design": "Keep the accepted six-floor inn and tower stair; articulate its south/west base as a stepped stone quay instead of opening the building foundation."
+    },
+    {
+      "id": "WD-SKIFF",
+      "name": "Skiff House",
+      "bounds": [-286, -274, -512, -502],
+      "currentFoundation": "dark-oak pile block y62..66",
+      "waterInFiveBlockRingAtY62": {"cells": 52, "ringCells": 340, "percent": 15.3},
+      "decision": "retain-and-connect",
+      "design": "This is already the district's credible pile-building precedent; preserve it and extend its gangway language into the east secondary egress."
+    },
+    {
+      "id": "WL-LAND-BUILDINGS",
+      "name": "Field House, Lantern Hall and Gatehead House",
+      "individualIds": ["WD-FIELD", "WD-LANTERN", "WD-GATEHEAD"],
+      "decision": "retain-as-land-and-plaza-buildings",
+      "design": "Do not force a pier expression onto the stadium forecourt; maintain them as the landward civic threshold."
+    }
+  ],
+  "masterplanParcels": [
+    {
+      "id": "WL-PIER-AREA",
+      "name": "Westlight amusement pier planning envelope",
+      "status": "preferred-masterplan-envelope",
+      "bounds": {
+        "minX": -428,
+        "maxX": -274,
+        "minY": 62,
+        "maxY": 110,
+        "minZ": -445,
+        "maxZ": -318
+      },
+      "deckRule": "This rectangle is a zoning envelope, not a solid platform. Water slots remain open between pile-supported deck ribbons and buildings."
+    },
+    {
+      "id": "WL-PED-THROAT",
+      "name": "Protected stadium entrance throat",
+      "bounds": {
+        "minX": -356,
+        "maxX": -353,
+        "minY": 67,
+        "maxY": 74,
+        "minZ": -506,
+        "maxZ": -471
+      },
+      "source": "scripts/gen_w4.py:phase_westlight_ground",
+      "rule": "Do not widen through the bowl fascia or fountain. Preserve the current four-block opening exactly."
+    },
+    {
+      "id": "WL-PED-MALL-PRIMARY",
+      "name": "Stadium-to-pier axial pedestrian mall",
+      "bounds": {
+        "minX": -362,
+        "maxX": -347,
+        "minY": 62,
+        "maxY": 74,
+        "minZ": -470,
+        "maxZ": -318
+      },
+      "supportY": 67,
+      "clearWalkingWidth": 12,
+      "edgeZones": 2,
+      "alignment": "centered on the existing x=-354.5 stadium throat"
+    },
+    {
+      "id": "WL-PED-MALL-CROSS",
+      "name": "Outer pier east-west pedestrian mall",
+      "bounds": {
+        "minX": -418,
+        "maxX": -286,
+        "minY": 62,
+        "maxY": 74,
+        "minZ": -379,
+        "maxZ": -364
+      },
+      "supportY": 67,
+      "clearWalkingWidth": 10,
+      "edgeZones": 3
+    },
+    {
+      "id": "WL-EGRESS-WEST",
+      "name": "Beacon-to-outer-pier independent west route",
+      "bounds": {
+        "minX": -428,
+        "maxX": -417,
+        "minY": 62,
+        "maxY": 74,
+        "minZ": -464,
+        "maxZ": -365
+      },
+      "supportY": 67,
+      "rule": "Must remain independent of the primary axis through the full construction sequence."
+    },
+    {
+      "id": "WL-EGRESS-EAST",
+      "name": "Skiff-to-outer-pier independent east route",
+      "bounds": {
+        "minX": -290,
+        "maxX": -278,
+        "minY": 62,
+        "maxY": 74,
+        "minZ": -502,
+        "maxZ": -365
+      },
+      "supportY": 67,
+      "rule": "Tie into the accepted Skiff gangway without severing its current approach."
+    },
+    {
+      "id": "WL-COASTER",
+      "name": "Westlight shoreline roller coaster",
+      "bounds": {
+        "minX": -428,
+        "maxX": -367,
+        "minY": 62,
+        "maxY": 100,
+        "minZ": -438,
+        "maxZ": -382
+      },
+      "queue": [-421, -405, -436, -420],
+      "maintenance": [-390, -369, -436, -420],
+      "rule": "Track, support, queue and evacuation walk are one engineered object; no track may overfly a public mall without a protected soffit/clearance envelope."
+    },
+    {
+      "id": "WL-FERRIS-WHEEL",
+      "name": "Westlight observation wheel",
+      "bounds": {
+        "minX": -334,
+        "maxX": -298,
+        "minY": 63,
+        "maxY": 110,
+        "minZ": -412,
+        "maxZ": -408
+      },
+      "hub": [-316, 87, -410],
+      "queueAndService": [-340, -292, -437, -382],
+      "rule": "Preserve an unobstructed wheel clearance envelope, a separate maintenance enclosure and two paths from load platform to the cross mall."
+    },
+    {
+      "id": "WL-STEAK-HOUSE",
+      "name": "Outer-end steak house",
+      "bounds": {
+        "minX": -405,
+        "maxX": -369,
+        "minY": 67,
+        "maxY": 84,
+        "minZ": -359,
+        "maxZ": -334
+      },
+      "floorsY": [67, 74],
+      "program": ["open-hearth dining hall", "show kitchen", "bar", "private dining", "waterside terrace", "service stair"]
+    },
+    {
+      "id": "WL-SHRIMP-HOUSE",
+      "name": "Outer-end shrimp house",
+      "bounds": {
+        "minX": -340,
+        "maxX": -304,
+        "minY": 67,
+        "maxY": 84,
+        "minZ": -359,
+        "maxZ": -334
+      },
+      "floorsY": [67, 74],
+      "program": ["seafood hall", "boil kitchen", "raw bar", "private dining", "waterside terrace", "service stair"]
+    },
+    {
+      "id": "WL-OUTER-QUAY",
+      "name": "Outer-end public quay and viewing terrace",
+      "bounds": {
+        "minX": -418,
+        "maxX": -286,
+        "minY": 62,
+        "maxY": 74,
+        "minZ": -333,
+        "maxZ": -318
+      },
+      "supportY": 67,
+      "rule": "Maintain at least twelve clear blocks between restaurant walls and the seaward guard edge."
+    },
+    {
+      "id": "WL-WATER-TAXI-WEST",
+      "name": "West ferry and emergency landing",
+      "bounds": {
+        "minX": -434,
+        "maxX": -429,
+        "minY": 62,
+        "maxY": 70,
+        "minZ": -398,
+        "maxZ": -346
+      },
+      "connection": "WL-EGRESS-WEST"
+    },
+    {
+      "id": "WL-WATER-TAXI-EAST",
+      "name": "East water-taxi and service landing",
+      "bounds": {
+        "minX": -273,
+        "maxX": -268,
+        "minY": 62,
+        "maxY": 70,
+        "minZ": -398,
+        "maxZ": -346
+      },
+      "connection": "WL-EGRESS-EAST"
+    }
+  ],
+  "craterPlan": {
+    "id": "WL-WEST-CRATER-LAGOON",
+    "name": "Westlight West Quarry Lagoon",
+    "measuredLowComponent": {
+      "bounds": {
+        "minX": -491,
+        "maxX": -447,
+        "minZ": -620,
+        "maxZ": -556
+      },
+      "columnsBelowWaterLevel": 1507,
+      "minSupportY": 46,
+      "maxSupportY": 61,
+      "targetWaterBlockY": 62,
+      "grossFillCells": 12288,
+      "exactSourceStates": {
+        "minecraft:air": 11746,
+        "minecraft:grass_block": 523,
+        "minecraft:short_grass": 19
+      }
+    },
+    "quayEnvelope": {
+      "minX": -499,
+      "maxX": -441,
+      "minZ": -628,
+      "maxZ": -548,
+      "supportY": 63,
+      "note": "Irregular ring only; never fill this full rectangle."
+    },
+    "greenSpaceEnvelopes": {
+      "west": [-520, -492, -628, -548],
+      "north": [-491, -447, -634, -621],
+      "south": [-491, -447, -555, -542]
+    },
+    "stadiumConnection": {
+      "from": [-446, 64, -590],
+      "to": [-430, 68, -590],
+      "mode": "graded overlook bridge and stair-free return route"
+    },
+    "releaseRule": "The 12,288-cell figure is a measured design volume, not permission for a bulk SET. Every water and landscape change requires exact one-cell guards, cave/leak isolation, entity clearance, reversible vegetation handling and a post-fill shoreline/walk audit."
+  },
+  "hardGates": [
+    "No live mutation is authorized by this schedule.",
+    "A fresh immutable snapshot and database digest are mandatory before engineering.",
+    "Do not replay or erase the accepted stadium, theatre, screen, members club, room plans or vertical circulation.",
+    "The pier planning envelope must remain hydraulically open; never replace it with a solid stone rectangle.",
+    "Every over-water occupied building, ride and deck requires a pile/cap/load-path schedule and protected undercroft.",
+    "The coaster and wheel require ride-specific clearance, maintenance, control, queue and emergency-evacuation plans.",
+    "Maintain the primary, west and east pedestrian routes as independently walkable paths.",
+    "Use one-cell exact-state forward and rollback operations; no unmasked demolition or water SET boxes.",
+    "Run fluid-neighbor, waterlogged, gravity, block-entity, free-entity, player and cave-leak censuses before release.",
+    "Capture matched before/after maps and obliques, and require normal-walk QA in both directions for every public route."
+  ]
+}

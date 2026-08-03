@@ -1,0 +1,691 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-07-27",
+  "status": "design-audit-no-live-construction-authority",
+  "baseline": {
+    "snapshotPath": "data/worldsnap/region",
+    "snapshotSha256": "c9e2bf0a2c8d3072d356b8db5c765622a9d367577bc4e09d077bbc58c4310654",
+    "frozenSnapshotPath": "data/worldsnap-redevelopment-c9e2bf0a-20260727/region",
+    "databasePath": "data/world-map.db",
+    "databaseMode": "read-only"
+  },
+  "limitations": [
+    "Reachability proves connected standable cells, not comfort, legibility, accessibility, lighting, grade, or safety.",
+    "Cross-section widths are contiguous standable-cell diagnostics near the planned floor; natural caves and junctions can inflate width.",
+    "All proposed portal, road, and display coordinates are concepts that require collision and saved-world validation.",
+    "Real-world source dimensions are references, not claims of legal or code compliance in Minecraft."
+  ],
+  "databaseGaps": [
+    {
+      "area": "raven-rock",
+      "currentRecordCount": 39,
+      "missingTypes": [
+        "tunnel-segment",
+        "decision-node",
+        "portal",
+        "vestibule",
+        "rotunda",
+        "bulkhead",
+        "stair-flight",
+        "landing",
+        "sign",
+        "cross-section-sample",
+        "walk-test"
+      ]
+    },
+    {
+      "area": "westlight-stadium",
+      "missingTypes": [
+        "screen",
+        "scoreboard",
+        "event-mode",
+        "seat-sector",
+        "row",
+        "aisle",
+        "vomitory",
+        "accessible-view-position",
+        "focal-target",
+        "sightline-ray"
+      ]
+    },
+    {
+      "area": "c01",
+      "missingTypes": [
+        "portal-alternative",
+        "road-grade-station",
+        "concealment-surface",
+        "shell-visibility-test",
+        "wayfinding-node",
+        "camera-relation"
+      ]
+    },
+    {
+      "area": "media",
+      "missingTypes": [
+        "media-record",
+        "feature-media-relation",
+        "camera-pose",
+        "before-after-pair",
+        "snapshot-provenance"
+      ]
+    }
+  ],
+  "ravenRock": {
+    "routePlan": [
+      {
+        "id": "RR-T1",
+        "class": "public-primary-spine",
+        "polyline": [
+          [0, 18, -285],
+          [0, -6, -120],
+          [0, -12, -45]
+        ]
+      },
+      {
+        "id": "RR-T2",
+        "class": "public-primary-spine",
+        "polyline": [
+          [-150, 18, 285],
+          [-150, 2, 190],
+          [-45, -10, 130]
+        ]
+      },
+      {
+        "id": "RR-T3",
+        "class": "public-primary-spine",
+        "polyline": [
+          [285, 18, -30],
+          [180, 0, -30],
+          [75, -12, -15]
+        ]
+      },
+      {
+        "id": "RR-T4",
+        "class": "service-emergency-dead-end",
+        "polyline": [
+          [-290, 10, 5],
+          [-185, -18, -10]
+        ],
+        "constraint": "Keep the aquifer bulkhead at x=-278/-277; do not represent this as a surface exit."
+      },
+      {
+        "id": "RR-C1",
+        "class": "public-primary-spine",
+        "polyline": [
+          [0, -12, 15],
+          [0, -10, 70]
+        ]
+      },
+      {
+        "id": "RR-C2",
+        "class": "operational-secondary",
+        "polyline": [
+          [-75, -12, -15],
+          [-115, -18, -10]
+        ]
+      },
+      {
+        "id": "RR-S1",
+        "class": "public-primary-spine",
+        "polyline": [
+          [75, -12, -15],
+          [200, -12, -15]
+        ],
+        "authoredTarget": {
+          "clearWidth": 7,
+          "clearHeight": 8
+        }
+      }
+    ],
+    "reachability": [
+      {
+        "id": "RR-T1",
+        "from": [0, 19, -285],
+        "to": [0, -11, 0],
+        "reachable": true,
+        "standableCells": 7110,
+        "chunks": 58,
+        "absentChunks": 0
+      },
+      {
+        "id": "RR-T2",
+        "from": [-150, 19, 285],
+        "to": [0, -11, 0],
+        "reachable": true,
+        "standableCells": 93195,
+        "chunks": 190,
+        "absentChunks": 0
+      },
+      {
+        "id": "RR-T3",
+        "from": [285, 19, -30],
+        "to": [0, -11, 0],
+        "reachable": true,
+        "standableCells": 21100,
+        "chunks": 109,
+        "absentChunks": 0
+      },
+      {
+        "id": "RR-S1-RR-Z5",
+        "from": [194, 65, -15],
+        "to": [0, -11, 0],
+        "reachable": true,
+        "standableCells": 10916,
+        "chunks": 71,
+        "absentChunks": 0
+      }
+    ],
+    "crossSectionFindings": [
+      {
+        "id": "RR-S1",
+        "stationAxis": "x",
+        "stationRange": [100, 192],
+        "stationCount": 93,
+        "missingStations": 0,
+        "width": {
+          "minimum": 5,
+          "median": 7,
+          "maximum": 17,
+          "belowTargetStations": 32,
+          "exactTargetStations": 37,
+          "distribution": {
+            "5": 26,
+            "6": 6,
+            "7": 37,
+            "8": 3,
+            "11": 1,
+            "12": 14,
+            "14": 5,
+            "17": 1
+          }
+        },
+        "centerlineDeviationMaximum": 0,
+        "diagnosis": "Aligned but sectionally irregular; compressed five- and six-block stations alternate with oversized cave or merge voids.",
+        "prescription": "Normalize with a controlled seven-wide by eight-high liner and guard or screen oversized voids; do not use unconstrained enlargement."
+      },
+      {
+        "id": "RR-T2B",
+        "stationAxis": "x",
+        "stationRange": [-150, -48],
+        "stationCount": 103,
+        "missingStations": 0,
+        "width": {
+          "minimum": 7,
+          "median": 14,
+          "maximum": 24,
+          "width14Stations": 75
+        },
+        "centerlineDeviationMaximum": 2,
+        "diagnosis": "The route is not too narrow; its identity is lost in oversized cave-adjacent voids.",
+        "prescription": "Build a five-wide tunnel-within-cavern path with authored cave windows, edge, ceiling, light rhythm, and deliberate thresholds."
+      }
+    ],
+    "routeStandard": {
+      "publicPrimarySpine": {
+        "minimumClearWidth": 5,
+        "minimumClearHeight": 4
+      },
+      "operationalSecondary": {
+        "minimumClearWidth": 3,
+        "minimumClearHeight": 3
+      },
+      "serviceOnly": {
+        "minimumClearWidth": 2,
+        "minimumClearHeight": 3
+      },
+      "majorDecisionNode": {
+        "nominalClearWidth": 7,
+        "nominalClearLength": 7
+      },
+      "decisionSignSequence": [
+        "advance-before-choice",
+        "direction-at-choice",
+        "confirmation-5-to-10-blocks-after"
+      ],
+      "reassuranceIntervalBlocks": {
+        "minimum": 50,
+        "maximum": 75
+      },
+      "routeFamilies": [
+        {
+          "code": "O",
+          "color": "blue",
+          "texture": "smooth-stone-band",
+          "destination": "Operations / Cavern A"
+        },
+        {
+          "code": "H",
+          "color": "amber",
+          "texture": "brick-band",
+          "destination": "Habitation / Cavern B"
+        },
+        {
+          "code": "U",
+          "color": "cyan",
+          "texture": "deepslate-band",
+          "destination": "Utilities / Cavern C"
+        },
+        {
+          "code": "P",
+          "color": "white",
+          "texture": "quartz-band",
+          "destination": "Portals / Surface"
+        },
+        {
+          "code": "S",
+          "color": "green",
+          "texture": "copper-band",
+          "destination": "Surface Shaft / RR-Z5"
+        }
+      ]
+    }
+  },
+  "westlight": {
+    "features": [
+      {
+        "id": "WL-BOWL",
+        "bounds": {
+          "min": [-429, 55, -629],
+          "max": [-291, 91, -491]
+        },
+        "entrance": [-359, 68, -498],
+        "floors": [58, 67, 75, 82]
+      },
+      {
+        "id": "WL-THEATRE",
+        "bounds": {
+          "min": [-421, 18, -613],
+          "max": [-299, 50, -498]
+        },
+        "entrance": [-354, 68, -498],
+        "floors": [18, 29, 40]
+      },
+      {
+        "id": "WL-CLUB",
+        "bounds": {
+          "min": [-417, 35, -566],
+          "max": [-400, 40, -550]
+        },
+        "floors": [35, 40]
+      }
+    ],
+    "finding": "WL-BOWL has a field and concentric seating but no recorded or visible interior screen/scoreboard. The south/north opening or aisle becomes the apparent focal object.",
+    "preferredConcept": {
+      "type": "four-faced-center-hung-scoreboard-display",
+      "conceptCenter": [-360, null, -560],
+      "finalYApproved": false,
+      "requiredStudies": [
+        "canopy-clearance",
+        "high-ball-clearance",
+        "support-collision",
+        "all-sector-field-sightline",
+        "all-sector-screen-sightline",
+        "egress",
+        "lighting"
+      ]
+    },
+    "rejectedAlternatives": [
+      {
+        "type": "rotate-whole-bowl-to-one-wall",
+        "reason": "Destroys the sports/multi-use field-bowl relationship and creates poor side and rear sectors."
+      },
+      {
+        "type": "twin-end-screens-as-only-display",
+        "reason": "Creates under-screen and behind-screen visibility failures and does not reliably correct entry dominance."
+      },
+      {
+        "type": "north-end-stage-as-default",
+        "reason": "Appropriate only for a separately declared concert or presentation mode."
+      }
+    ],
+    "sectorProgram": {
+      "sectors": ["A", "B", "C", "D", "E", "F", "G", "H"],
+      "elevations": ["low", "middle", "upper"],
+      "eventModes": ["sports", "concert"],
+      "minimumRecordedViews": 48,
+      "targets": [
+        "field-center",
+        "near-goal",
+        "far-goal",
+        "scoreboard-display",
+        "concert-stage"
+      ]
+    }
+  },
+  "c01": {
+    "features": [
+      {
+        "id": "C01",
+        "bounds": {
+          "min": [100, 45, 70],
+          "max": [300, 105, 235]
+        },
+        "publicEntry": [116, 65, 172]
+      },
+      {
+        "id": "C01-PUBLIC-ENTRY",
+        "bounds": {
+          "min": [90, 64, 171],
+          "max": [130, 80, 205]
+        }
+      },
+      {
+        "id": "HGR-S01",
+        "bounds": {
+          "min": [176, 88, 138],
+          "max": [234, 120, 181]
+        }
+      },
+      {
+        "id": "OBS-S01",
+        "bounds": {
+          "min": [175, 119, 137],
+          "max": [235, 136, 182]
+        }
+      },
+      {
+        "id": "SHL-S01",
+        "bounds": {
+          "min": [148, 81, 143],
+          "max": [188, 91, 180]
+        }
+      },
+      {
+        "id": "VLT-G01",
+        "bounds": {
+          "min": [230, 44, 184],
+          "max": [262, 76, 226]
+        }
+      },
+      {
+        "id": "C01-STAIR-CORE-PRIMARY",
+        "bounds": {
+          "min": [204, 50, 152],
+          "max": [216, 110, 164]
+        },
+        "yBoundsApproximate": true
+      },
+      {
+        "id": "P01",
+        "bounds": {
+          "min": [-125, 64, 172],
+          "max": [125, 100, 305]
+        }
+      }
+    ],
+    "parking": {
+      "verifiedStalls": 236,
+      "byType": {
+        "standard": 205,
+        "accessible": 8,
+        "ev": 14,
+        "premium": 9
+      },
+      "driveAisles": 3,
+      "poleLights": 23,
+      "flushLights": 32,
+      "solarStyleCanopies": 2,
+      "desiredCells": 41809,
+      "policy": "Preserve the verified count unless the owner explicitly approves a new program; reconcile every category and aisle."
+    },
+    "wholeComplexTranslation": {
+      "decision": "rejected",
+      "reasons": [
+        "C01 already reaches the practical eastern property/river edge at x=300.",
+        "Translation would require simultaneous reconstruction of the hangar, observatory, shelter, vault, service shaft, stair core, and internal route network.",
+        "Protected loaded block entities exist in the shelter/vault area.",
+        "Moving the deep complex is not required to correct the parking edge or exposed portal."
+      ]
+    },
+    "preferredPortalConcept": {
+      "status": "concept-requires-collision-study",
+      "center": [144, 66, 194],
+      "studyEnvelope": {
+        "min": [130, 64, 184],
+        "max": [158, 76, 206]
+      },
+      "roadCenterline": [
+        [122, 64, 250],
+        [136, 64, 236],
+        [146, 65, 220],
+        [146, 65, 205],
+        [144, 66, 194]
+      ],
+      "road": {
+        "clearCarriagewayWidth": 7,
+        "shoulderWidthEachSide": 2,
+        "preferredMaximumRunningGrade": "1:20",
+        "absoluteMaximumByException": "1:12"
+      },
+      "phasingConstraint": "Keep the old portal operational until the new connector, portal, road, return route, and rollback all pass."
+    },
+    "observatoryDecisionRequired": [
+      {
+        "option": "one-landmark-exception",
+        "description": "Retain OBS-S01 as the sole deliberate surface landmark and conceal/recess the portal, hangar base, and all other classified shell surfaces.",
+        "preferred": true
+      },
+      {
+        "option": "literal-zero-visible-complex",
+        "description": "Relocate or rebuild OBS-S01 and HGR-S01 and restore a fully natural mountain profile.",
+        "preferred": false
+      }
+    ],
+    "wayfinding": {
+      "levels": [
+        {
+          "code": "L1",
+          "name": "Lower Operations"
+        },
+        {
+          "code": "L2",
+          "name": "Operations"
+        },
+        {
+          "code": "L3",
+          "name": "Upper Operations"
+        },
+        {
+          "code": "S",
+          "name": "Surface"
+        },
+        {
+          "code": "R",
+          "name": "Restricted"
+        }
+      ],
+      "canonicalArenaName": "Training Arena",
+      "requiredAtEveryDecision": [
+        "advance-destination",
+        "direction-and-level-at-node",
+        "confirmation-after-node",
+        "return-to-public-exit"
+      ]
+    }
+  },
+  "packages": [
+    {
+      "id": "INF-DB-01",
+      "scope": "Register missing infrastructure route, node, sightline, and media records.",
+      "liveAuthorized": false
+    },
+    {
+      "id": "INF-RR-01",
+      "scope": "S1 controlled section pilot at x=138..148.",
+      "liveAuthorized": false
+    },
+    {
+      "id": "INF-RR-02",
+      "scope": "T2b tunnel-within-cavern liner pilot at x=-145..-135.",
+      "liveAuthorized": false
+    },
+    {
+      "id": "INF-RR-03",
+      "scope": "One RR-Z5 flight and adjacent landing pilot.",
+      "liveAuthorized": false
+    },
+    {
+      "id": "INF-RR-04",
+      "scope": "Accepted Raven Rock section, node, light, and sign family rollout.",
+      "liveAuthorized": false
+    },
+    {
+      "id": "INF-WL-01",
+      "scope": "Register and capture the 48-view Westlight sightline baseline.",
+      "liveAuthorized": false
+    },
+    {
+      "id": "INF-WL-02",
+      "scope": "Reversible center display and south-entry mockup.",
+      "liveAuthorized": false
+    },
+    {
+      "id": "INF-WL-03",
+      "scope": "Permanent accepted display, vomitory, seating, and sign rollout.",
+      "liveAuthorized": false
+    },
+    {
+      "id": "INF-C01-01",
+      "scope": "Portal, road, earth-cover, fluid, inventory, and visual feasibility.",
+      "liveAuthorized": false
+    },
+    {
+      "id": "INF-C01-02",
+      "scope": "New connector and recessed portal while retaining the old route.",
+      "liveAuthorized": false
+    },
+    {
+      "id": "INF-C01-03",
+      "scope": "South-flank road, drainage, retaining, and P01 edge reconciliation.",
+      "liveAuthorized": false
+    },
+    {
+      "id": "INF-C01-04",
+      "scope": "Old portal earth closure and same-camera concealment acceptance.",
+      "liveAuthorized": false
+    },
+    {
+      "id": "INF-C01-05",
+      "scope": "Hangar and observatory surface treatment following the owner decision.",
+      "liveAuthorized": false
+    }
+  ],
+  "qaCameras": [
+    {
+      "id": "RR-S1-X100-E",
+      "featureId": "RR-S1",
+      "position": [100, -9, -15],
+      "direction": "east",
+      "role": "defect-before-after",
+      "positionNeedsStandableValidation": true
+    },
+    {
+      "id": "RR-S1-X140-E",
+      "featureId": "RR-S1",
+      "position": [140, -9, -15],
+      "direction": "east",
+      "role": "pilot-defect-before-after",
+      "positionNeedsStandableValidation": true
+    },
+    {
+      "id": "RR-S1-X170-E",
+      "featureId": "RR-S1",
+      "position": [170, -9, -15],
+      "direction": "east",
+      "role": "defect-before-after",
+      "positionNeedsStandableValidation": true
+    },
+    {
+      "id": "WL-CENTER-OVERVIEW",
+      "featureId": "WL-BOWL",
+      "position": [-360, 64, -560],
+      "lookAt": [-360, 75, -560],
+      "role": "field-and-display-overview",
+      "positionNeedsStandableValidation": true
+    },
+    {
+      "id": "WL-SOUTH-LOW",
+      "featureId": "WL-BOWL",
+      "position": [-360, 70, -510],
+      "lookAt": [-360, 64, -560],
+      "role": "sightline-before-after",
+      "positionNeedsStandableValidation": true
+    },
+    {
+      "id": "WL-NORTH-LOW",
+      "featureId": "WL-BOWL",
+      "position": [-360, 70, -610],
+      "lookAt": [-360, 64, -560],
+      "role": "sightline-before-after",
+      "positionNeedsStandableValidation": true
+    },
+    {
+      "id": "WL-WEST-MID",
+      "featureId": "WL-BOWL",
+      "position": [-410, 75, -560],
+      "lookAt": [-360, 64, -560],
+      "role": "sightline-before-after",
+      "positionNeedsStandableValidation": true
+    },
+    {
+      "id": "WL-EAST-MID",
+      "featureId": "WL-BOWL",
+      "position": [-310, 75, -560],
+      "lookAt": [-360, 64, -560],
+      "role": "sightline-before-after",
+      "positionNeedsStandableValidation": true
+    }
+  ],
+  "riskControls": [
+    {
+      "risk": "fluid-or-aquifer-breach",
+      "control": "Keep T4 bulkhead; scan fluid neighbors; execute bounded bands; stop on unexpected fluid."
+    },
+    {
+      "risk": "natural-cave-overfill",
+      "control": "Use tube-bounded route geometry and exact section pilots."
+    },
+    {
+      "risk": "gravity-block-collapse",
+      "control": "Inventory gravel and sand; temporary support; after-build dry-volume test."
+    },
+    {
+      "risk": "protected-inventory-loss",
+      "control": "Export and checksum tile-entity NBT and exclude every target cell before C01 operations."
+    },
+    {
+      "risk": "parking-regression",
+      "control": "Reconcile every stall by type and test all three drive aisles."
+    },
+    {
+      "risk": "display-obstruction",
+      "control": "Use a reversible mockup and all-sector sightline, support, canopy, high-ball, and egress tests."
+    },
+    {
+      "risk": "false-concealment",
+      "control": "Require fixed public cameras and four-sided oblique aerials, not tight portal crops."
+    }
+  ],
+  "sourceUrls": [
+    "https://www.access-board.gov/ada/guides/chapter-5-stairways/",
+    "https://www.access-board.gov/ada/guides/chapter-4-ramps-and-curb-ramps/",
+    "https://www.access-board.gov/ada/guides/chapter-4-accessible-routes/",
+    "https://www.fhwa.dot.gov/bridge/tunnel/pubs/nhi09010/tunnel_manual.pdf",
+    "https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM_1110-2-2901.pdf",
+    "https://mutcd.fhwa.dot.gov/pdfs/11th_Edition/Chapter2d.pdf",
+    "https://publications.fifa.com/de/football-stadiums-guidelines/general-process-guidelines/design/stadium-bowl/",
+    "https://publications.fifa.com/fr/football-stadiums-guidelines/technical-guideline/stadium-guidelines/information-technology/",
+    "https://publications.fifa.com/fr/football-stadiums-guidelines/technical-guideline/stadium-guidelines/signage/",
+    "https://sgsa.org.uk/wp-content/uploads/2023/12/Accessible-Stadia.pdf",
+    "https://www.nps.gov/subjects/scenicviews/best-practices.htm",
+    "https://bsesc.energy.gov/energy-basics/building-enclosure-building-science-intro-moisture-flow",
+    "https://www.fema.gov/sites/default/files/documents/fema_safe-rooms-for-tornadoes-and-hurricanes_p-361.pdf",
+    "https://rosap.ntl.bts.gov/view/dot/34136"
+  ],
+  "authorization": {
+    "liveWorldEdited": false,
+    "databaseWritten": false,
+    "rconUsed": false,
+    "servicesRestarted": false
+  }
+}

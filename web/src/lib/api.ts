@@ -1,4 +1,23 @@
-export const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+/**
+ * Base URL for API calls. Defaults to the EMPTY STRING, i.e. same-origin
+ * relative paths (`/api/health`), which is what makes the dashboard work from
+ * a remote browser.
+ *
+ * Why not `http://localhost:3001`: `NEXT_PUBLIC_*` is inlined into the browser
+ * bundle at build time, so a hardcoded localhost sends every remote visitor's
+ * fetches to THEIR OWN machine. The bot API is bound to loopback on the server
+ * (see config.yml `api.host`) and must stay that way — every `/api/*` route is
+ * unauthenticated. Instead, `next.config.ts` rewrites `/api/*` to
+ * 127.0.0.1:3001 server-side, so a relative base lands on the right process.
+ *
+ * `NEXT_PUBLIC_API_URL` remains an escape hatch for setups that serve the
+ * dashboard from a different origin than the API (set it to an absolute URL).
+ */
+export const API_BASE = process.env.NEXT_PUBLIC_API_URL || '';
+
+/** Human-readable label for the API target, for error messages only.
+ *  `API_BASE` is '' in the normal same-origin case, which reads badly. */
+const API_BASE_LABEL = API_BASE || 'this site (proxied to the bot API)';
 
 /** Hard cap on every API request — prevents the dashboard from hanging on a
  *  wedged backend. Anything that legitimately takes longer should stream or
@@ -65,9 +84,9 @@ async function fetchJSON<T>(path: string, options?: RequestInit): Promise<T> {
   } catch (err) {
     // Surface a clear operator-facing message instead of a bare fetch error.
     if (err instanceof DOMException && err.name === 'AbortError') {
-      throw new Error(`Request to ${path} timed out — is the backend at ${API_BASE} responding?`);
+      throw new Error(`Request to ${path} timed out — is the backend at ${API_BASE_LABEL} responding?`);
     }
-    throw new Error(`Cannot reach backend at ${API_BASE} — is the server running?`);
+    throw new Error(`Cannot reach backend at ${API_BASE_LABEL} — is the server running?`);
   }
   if (res.status === 401) {
     handleUnauthorized();
@@ -885,7 +904,17 @@ export const api = {
       originMode?: BuildOriginMode;
     },
   ) => {
-    const body: Record<string, unknown> = { filename, botNames, cleanupBotNames, ...options };
+    // The backend reads `{ schematicFile, origin, botNames, options }`
+    // (buildRoutes.ts:19). This sent `filename` and spread the options FLAT,
+    // so every "Start Build" was rejected with HTTP 400 ("schematicFile and
+    // botNames[] are required") and all five build toggles were dropped even
+    // once the name was right. Starting a build has never worked from the UI.
+    const body: Record<string, unknown> = {
+      schematicFile: filename,
+      botNames,
+      cleanupBotNames,
+      ...(options ? { options } : {}),
+    };
     if (origin) body.origin = origin;
     return fetchJSON<{ build: BuildRecord }>('/api/builds', {
       method: 'POST',

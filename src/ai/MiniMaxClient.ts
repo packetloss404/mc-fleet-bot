@@ -1,4 +1,5 @@
 import { LLMClient, LLMResponse } from './LLMClient';
+import type { LLMCallOptions } from './TaskType';
 import { Semaphore } from '../util/Semaphore';
 import { logger } from '../util/logger';
 
@@ -36,7 +37,7 @@ export class MiniMaxClient implements LLMClient {
     this.semaphore = new Semaphore(opts.maxConcurrentRequests ?? 3);
   }
 
-  async chat(systemPrompt: string, contents: GeminiLikeContent[], maxTokens?: number): Promise<LLMResponse> {
+  async chat(systemPrompt: string, contents: GeminiLikeContent[], maxTokens?: number, options?: LLMCallOptions): Promise<LLMResponse> {
     await this.semaphore.acquire();
     try {
       const messages: Array<{ role: 'system' | 'user' | 'assistant'; content: string }> = [];
@@ -51,7 +52,11 @@ export class MiniMaxClient implements LLMClient {
       }
 
       const body = {
-        model: this.model,
+        // A route may override the model per call (e.g. MiniMax-M2.5 for a
+        // cheap task while the provider default stays MiniMax-M3). Without
+        // this the ledger recorded the routed model while the request used
+        // the constructor model — the same mis-pricing fixed for Anthropic.
+        model: options?.model ?? this.model,
         messages,
         temperature: this.temperature,
         max_tokens: maxTokens || this.defaultMaxTokens,
@@ -104,7 +109,13 @@ export class MiniMaxClient implements LLMClient {
     }
   }
 
-  async generate(systemPrompt: string, userMessage: string, maxTokens?: number): Promise<LLMResponse> {
-    return this.chat(systemPrompt, [{ role: 'user', parts: [{ text: userMessage }] }], maxTokens);
+  async generate(systemPrompt: string, userMessage: string, maxTokens?: number, options?: LLMCallOptions): Promise<LLMResponse> {
+    return this.chat(systemPrompt, [{ role: 'user', parts: [{ text: userMessage }] }], maxTokens, options);
   }
+
+  /** Concrete model ID, for accurate TokenLedger cost attribution. */
+  getModelId(): string {
+    return this.model;
+  }
+
 }

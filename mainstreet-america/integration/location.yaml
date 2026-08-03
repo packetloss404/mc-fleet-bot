@@ -1,0 +1,184 @@
+# =====================================================================================================
+# MainStreet America — BOT-READABLE LOCATION RECORD  (integration/location.yaml)
+# =====================================================================================================
+# REQUIRED PLUGIN / CONSUMER: the mc-fleet-bot server-side event-relay plugin (the DyoCraft <-> bot
+#   bridge). This file is the location/world-knowledge registry the bots read so they can recognize,
+#   name, and speak about the site when a player asks. (A Citizens guide-NPC or hologram could load the
+#   same record as a secondary consumer.)
+# STATUS: STAGED, NOT ACTIVE — but for the right reason. The mc-fleet-bot relay plugin is NOT installed,
+#   nor are Dynmap/BlueMap, EssentialsX or Citizens, so nothing here is live and this file waits on the
+#   relay plugin. CORRECTED 2026-07-25: two side-claims above were FALSE — **WorldEdit 7.4.0 and
+#   WorldGuard 7.0.16 ARE installed**, and the **builder bots ARE opped (level 4)**. Overworld name is
+#   confirmed `world`. See ../../raven-rock/qa/oq3-worldguard.md.
+#
+# -----------------------------------------------------------------------------------------------------
+# PROVENANCE / HONESTY NOTE  (read before trusting this file)
+# -----------------------------------------------------------------------------------------------------
+# The task cited "the full bot-readable location record from section 17 including every alias phrase
+# listed." NO brief and NO "section 17" exist in this repository — only ../references/manifest.yaml,
+# ../references/README.md and the planning/ files. This is the SAME gap the coordinates.yaml author
+# recorded as CONFLICT-02 and the palettes.yaml author recorded as A01. I therefore AUTHORED this record
+# (including the alias set) from the verified manifest and planning/coordinates.yaml, rather than
+# transcribing a section that does not exist. "Every alias phrase listed" here means every alias I list
+# below; there was no external list to copy. A cross-checking agent should treat the alias SET and the
+# spoken copy as reasoned construction, not a canonical transcription.
+#
+# CONFIDENCE VOCABULARY (inherited from the manifest; never upgraded):
+#   verified                           - primary/multi-source
+#   high-confidence inference          - one good source / a strong read
+#   moderate-confidence reconstruction - assembled from snippets
+#   creative approximation             - no evidence; invented for the build
+# Current visitor anchors were reconciled on 2026-07-26 against measured as-built geometry and
+# world-map.db. Untouched planning positions retain their declared creative-approximation confidence;
+# the front-to-back sequence remains a high-confidence inference.
+# =====================================================================================================
+
+schema_version: 1
+
+location:
+  id: mainstreet_america
+  display_name: MainStreet America
+  short_name: MainStreet America
+  category: attraction_reconstruction
+
+  # --- What this place really was (all VERIFIED unless tagged) ---------------------------------------
+  real_world:
+    subject: >-
+      A now-closed home-design attraction / model-home park — a self-styled "home-improvement theme
+      park" — developed by Mike & Barbara Feigin / Design Tech Homes.
+    address: 18750 Interstate 45 N, Spring, Texas 77373 (Greater Houston, Harris County)
+    opened: "February 2013 (structures built 2011)"     # verified (manifest REF-003)
+    closed: "Sold 2023; business closed. Buildings standing but vacant/vandalized as of Oct 2025."  # REF-020/021
+    developer: "Mike & Barbara Feigin / Design Tech Homes"   # verified (REF-001)
+    concept: >-
+      12 uninhabited model homes doubling as retail showrooms, plus a ~44,019 SF two-story guest
+      center (restaurant, event hall, furniture showroom, ~10,000 SF design studio), a cooking school,
+      and a warehouse. Visitors paid admission (~$10) and carried "T.E.D." tablets that scanned RFID
+      product tags.
+    subject_confidence: verified                          # REF-001/002/003/007/017
+    disambiguation: >-
+      NOT the national "Main Street America" preservation program, and NOT the Main Street America
+      insurance group. This is the Spring, TX model-home attraction only (manifest REF-023).
+
+  # --- Where it is in THIS Minecraft world ----------------------------------------------------------
+  world_placement:
+    world: world                       # confirmed live overworld name, 2026-07-25
+    origin: {x: 0, y: 64, z: 0}
+    build_plane_y: 64
+    boundary:
+      min: {x: -300, z: -300}
+      max: {x: 300, z: 300}
+      size_blocks: {x: 600, z: 600}
+    orientation:
+      north: "-Z"
+      south: "+Z"
+      east: "+X"
+      west: "-X"
+      principal_entrance_side: south   # project constant
+    orientation_note: >-
+      REORIENTED. The REAL parcel fronts I-45 on its WEST side (verified, REF-014). The project
+      constant mandates the entrance on the SOUTH (+Z) side of the envelope, so planning/coordinates.yaml
+      rotated the whole real west->east functional gradient to run south(front)->north(rear). Compass
+      bearings in this build are a convention, NOT the surveyed azimuth. (coordinates.yaml CONFLICT-03.)
+    boundary_note: >-
+      The 600x600 envelope (~33 acres) is a WORLD boundary, not the real ~12.41-acre parcel line
+      (verified acreage, REF-005). The developed core is a central long-narrow strip; the surplus is
+      landscaped greenbelt buffer. Do not read the boundary as a lot line. (coordinates.yaml CONFLICT-04.)
+
+  # --- Key coordinates (reconciled to 2026-07-26 as-built geometry) -----------------------------------
+  # These are the canonical visitor anchors a bot should use. world-map.db remains authoritative for
+  # full bounds, routes, hierarchy, condition, and scan history.
+  key_coordinates:
+    site_center:            {x: 0,    y: 64, z: 0}      # world origin
+    site_gateway:           {x: 0,    y: 79, z: 305}    # built SOUTH gate and terraced approach
+    parking_field_centroid: {x: 0,    y: 65, z: 220}    # as-built x[-125,125] z[172,268]
+    guest_center:           {x: 0,    y: 64, z: 128}    # B01 centroid, REPOINTED to as-built (145x76, x[-72,72] z[90,165]); was z75 GRID. 44,019 SF, 2 story (verified)
+    guest_center_entrance:  {x: 0,    y: 65, z: 166}    # formal south entry added in 2026-07-26 repair
+    internal_street_south:  {x: 0,    y: 65, z: 80}     # as-built south end of the model-home street
+    culdesac_terminus:      {x: 0,    y: 65, z: -235}   # built turning circle
+    cooking_school:         {x: -110, y: 65, z: -95}    # as-built Building 2 centroid
+    warehouse:              {x: 0,    y: 64, z: -255}   # coordinates.yaml N01 (Building 3); 8,944 SF (verified)
+    detention_pond:         {x: 190,  y: 64, z: -250}   # coordinates.yaml N08 (moderate-confidence read)
+    led_monument_billboard: {x: 95,   y: 72, z: 272}    # as-built frontage monument
+    mountain_public_entry:  {x: 116,  y: 65, z: 172}    # authored public lobby portal
+    mountain_hangar:        {x: 150,  y: 63, z: 110}    # west end of lit arena-to-hangar ribbon
+    mountain_arena:         {x: 225,  y: 63, z: 110}    # east end of operations complex
+    coordinate_confidence: >-
+      Building SIZES/roster are verified; absolute XZ placement is creative approximation (no survey).
+      The south->north SEQUENCE is high-confidence inference from the Colliers aerial.
+
+  # --- What a bot may TELL a visitor (honest spoken copy) --------------------------------------------
+  spoken:
+    one_line: >-
+      MainStreet America — a Minecraft reconstruction of the former Design Tech Homes model-home park
+      on I-45 in Spring, Texas (opened 2013, now closed).
+    honesty_disclaimer: >-
+      The LAYOUT, building sizes and the roster of 12 homes are grounded in real sources. The way the
+      buildings LOOK — every wall material, roof and color — is our informed reconstruction, not
+      documented fact (manifest REF-019). The curved home loop stands in for a real straight cul-de-sac,
+      and the south-facing entrance is a build convention (the real site faced west). Enjoy it as a
+      faithful map, not a photograph.
+    spoken_confidence: high-confidence inference   # facts verified; exact wording authored
+
+  # --- ALIASES  (AUTHORED — no external "section 17" list existed; see provenance note) --------------
+  # Every phrase a player might type/say that should resolve to this location. Matching should be
+  # case-insensitive and whitespace/punctuation-insensitive. All are creative approximation as a SET.
+  alias_confidence: creative approximation
+  aliases:
+    - mainstreet america
+    - main street america
+    - mainstreet
+    - main street
+    - msa
+    - mainstreet usa
+    - main street usa
+    - the model home park
+    - model home park
+    - model homes
+    - the model homes
+    - showcase homes
+    - the showcase homes
+    - showcase of homes
+    - home design park
+    - home design attraction
+    - home improvement theme park
+    - the home theme park
+    - design tech homes park
+    - design tech homes
+    - the guest center
+    - guest center
+    - the 12 homes
+    - twelve model homes
+    - 18750 i-45
+    - 18750 interstate 45
+    - 18750 interstate 45 north
+    - spring texas model homes
+    - the i-45 model homes
+    - mountain complex
+    - mountain hangar
+    - the hangar
+    - operations hangar
+    - training arena
+
+# =====================================================================================================
+# ASSUMPTIONS & CROSS-CHECK NOTES
+# =====================================================================================================
+assumptions:
+  - id: L01
+    topic: No brief / no "section 17"
+    detail: >-
+      The location record and its alias set are authored from the manifest + coordinates.yaml, not
+      transcribed from a section 17 (which does not exist). Same gap as coordinates.yaml CONFLICT-02.
+    severity: high
+  - id: L02
+    topic: World name confirmed
+    detail: >-
+      Live RCON confirmed the overworld name as 'world' on 2026-07-25. Integration files now use that
+      confirmed value.
+    severity: low
+  - id: L03
+    topic: Coordinates reconciled
+    detail: >-
+      Arrival, parking, Guest Center, street, service-building, and billboard anchors were reconciled
+      against the as-built survey. world-map.db is authoritative for complete extents and routes.
+    severity: low
