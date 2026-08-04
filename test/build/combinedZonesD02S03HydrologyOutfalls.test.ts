@@ -221,13 +221,12 @@ describe('Combined Zones D02-S03 C1 hydrology and outfalls', () => {
         },
       },
     });
-    expect(report.sourceBindings).toHaveLength(6);
+    expect(report.sourceBindings).toHaveLength(5);
     expect(report.sourceBindings.map((binding) => binding.path)).toEqual([
       'masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
       'masterplans/05-combined-zones/phase1-c1-civil-design.json',
       'masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
       'masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
-      'masterplans/05-combined-zones/phase1-autonomous-design-selections.json',
       'masterplans/05-combined-zones/phase0-survey-evidence.json',
     ]);
     expect(report.sourceBindings.every((binding) => (

@@ -31,12 +31,12 @@
   "authorityBindings": [
     {
       "path": "masterplans/04-combined-complex/authority-reconciliation.json",
-      "sha256": "191775541b8d7bd84de81040122c1f8b97a5cb0cbd8c6ae392f5bf424a5788d3",
+      "sha256": "fbaf5b92e91cabe2104fa20711b7b52d67c87977051844bbd55d30a824275875",
       "role": "normalized child-plan architecture and field-scoped authority bridge"
     },
     {
       "path": "masterplans/05-combined-zones/MASTERPLAN.md",
-      "sha256": "609bb9ee5675c4a8b66c89e235ff77310c66359918740862f8b3b6c136526ce2",
+      "sha256": "7a250bfbd76e4ee74d7bf30bd0f51fdd06d0310e8b015680b159311feda1361f",
       "role": "plan to develop"
     },
     {
@@ -66,42 +66,42 @@
     },
     {
       "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
-      "sha256": "c7ab48f2733f1c45eee63e23459859e9536c79fef675c58bd1b8f1dbc0397f6c",
+      "sha256": "7fdf416f0ee00cb2a48d6581df638e6f809012f2438bffc7f83985ddfd182292",
       "role": "rational vertical transforms and coordination-envelope semantics only"
     },
     {
       "path": "masterplans/05-combined-zones/phase1-design-decisions.json",
-      "sha256": "d2e7d91b2ed237bf70ed00bd0f5e546df42786e90e3748c884e0f8fc6b8c9158",
+      "sha256": "05b0031d5ae0d31e744f830316c4b06225f33b977baf2890ba43474cd813756b",
       "role": "machine-readable D01-D07 decision ledger"
     },
     {
       "path": "masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
-      "sha256": "0d41b771c5a5aaefde6fed8721c85e1004a075b90d132b16cb58bb2c97d56c17",
+      "sha256": "77a7b94653d745e378a7ce017d6a43a23d9bbd0fe99288b4b50f23c54d793229",
       "role": "immutable relic census and zero-margin default-deny core sets"
     },
     {
       "path": "masterplans/05-combined-zones/phase1-c1-pilot-coordination.json",
-      "sha256": "7ee7d9138872217752cf0e7a5ae79be3d48826dad41e47851e3c3995565778f8",
+      "sha256": "c882995169174e09af1c37919746d95278b325edeab1cc691e0a50c70599e543",
       "role": "bounded C1 coordination candidate and rail-reservation setout only"
     },
     {
       "path": "masterplans/05-combined-zones/phase1-c1-civil-design.json",
-      "sha256": "2db37ea77c7aa8f841266111d2a85c8b4284649f22633e541a8dadd9fd51ed4b",
+      "sha256": "82cce3ca769ef4da556b1c2555f02bfd00c01b99ba62342155f8bb85c4b4bd0e",
       "role": "exact C1 civil coordination design and D02 blocker ledger"
     },
     {
       "path": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
-      "sha256": "0665092d0936198a544dbd2ec7421dcad8797b191d0ad5d97952842ea5d900e7",
+      "sha256": "8ec1927298d3dd7ca685166e42019f1a7f31e0bd59b86c9f7e1ba891698acd10",
       "role": "full-height hydrology baseline and unreviewed exact relic adjacency candidates"
     },
     {
       "path": "masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
-      "sha256": "8520e55072815d8ab27c5a79e2bb97453aa0ca6c270dd49d3cea9f1713057730",
+      "sha256": "b2faa5455b79b00442241fb7fb782c6458130005349349a0e5ced9a09b32b66f",
       "role": "D06 exact internal design and D07 fact-checked wording/C2 omission"
     },
     {
       "path": "masterplans/05-combined-zones/phase1-site-gate-audit.json",
-      "sha256": "d3b3395fffa2d104ba4d6248f77091fd39cb34b26a6cbcbae2c166c4bbb59a85",
+      "sha256": "3fa4cf7df43ab0373cf7d2b284dab56062a07fa1ece3843812483d74cbc4466c",
       "role": "read-only Phase 1 site-readiness blocker matrix"
     }
   ],
@@ -138,7 +138,7 @@
       "requirement": "Select same-world current-map placement with Masterplan 05 vertical adaptation or a separate-world design. Exact per-owner integer construction setout remains independently required by G03.",
       "machineEvidence": {
         "path": "masterplans/05-combined-zones/phase1-design-decisions.json",
-        "sha256": "d2e7d91b2ed237bf70ed00bd0f5e546df42786e90e3748c884e0f8fc6b8c9158",
+        "sha256": "05b0031d5ae0d31e744f830316c4b06225f33b977baf2890ba43474cd813756b",
         "decisionId": "D01"
       }
     },
@@ -154,7 +154,7 @@
       "requirement": "Bind a dry surveyed MainStreet East L2 gate or remove L2 from the design.",
       "machineEvidence": {
         "path": "masterplans/05-combined-zones/phase1-design-decisions.json",
-        "sha256": "d2e7d91b2ed237bf70ed00bd0f5e546df42786e90e3748c884e0f8fc6b8c9158",
+        "sha256": "05b0031d5ae0d31e744f830316c4b06225f33b977baf2890ba43474cd813756b",
         "decisionId": "D03"
       }
     },
@@ -164,7 +164,7 @@
       "requirement": "Decide whether passenger rail is built with C1 or preserved as an exact clear-spanned, empty rail reservation.",
       "machineEvidence": {
         "path": "masterplans/05-combined-zones/phase1-design-decisions.json",
-        "sha256": "d2e7d91b2ed237bf70ed00bd0f5e546df42786e90e3748c884e0f8fc6b8c9158",
+        "sha256": "05b0031d5ae0d31e744f830316c4b06225f33b977baf2890ba43474cd813756b",
         "decisionId": "D04"
       }
     },
@@ -186,7 +186,7 @@
       "requirement": "Approve factual architectural-composite geology wording and either select or explicitly omit the optional C2 visitor portal mechanism.",
       "machineEvidence": {
         "path": "masterplans/05-combined-zones/phase1-design-decisions.json",
-        "sha256": "d2e7d91b2ed237bf70ed00bd0f5e546df42786e90e3748c884e0f8fc6b8c9158",
+        "sha256": "05b0031d5ae0d31e744f830316c4b06225f33b977baf2890ba43474cd813756b",
         "decisionId": "D07"
       }
     }
@@ -788,7 +788,7 @@
     "D02, D05, and D06 remain unresolved; D07 wording is fact-checked and C2 is omitted.",
     "site-coordinates.json blockRoundingPolicy is null and vertical.activeForBuild is false; the rational coordination transform is not a construction setout.",
     "Planning envelopes have not been compiled into exact integer owner/interaction cell sets; the Phase 1 geometry artifact emits zero operation cells.",
-    "Zero-margin default-deny relic cores and one-cell adjacency candidates exist, but reviewed positive buffers, east-igloo disposition, complete construction-volume clearance, and poststate preservation do not.",
+    "Zero-margin default-deny relic cores, one-cell adjacency candidates, and a reserved-in-place/no-reuse east-igloo disposition exist, but reviewed positive buffers, complete construction-volume clearance, and poststate preservation do not.",
     "Exact C1 civil coordination and Empty Eight internal reservations exist, but the pre-R00 geotechnical/structural/outfall/C01, hydrology/relic, and external life-safety design acceptances do not.",
     "R01 physical target cells, guarded operations, preflight, authorization, bidirectional route QA, rollback, and post-state acceptance evidence do not exist; these are G03-G19 blockers and cannot resolve G02.",
     "No Combined Zones compiler, ownership manifest, interface contract set, or global cross-scope audit exists.",

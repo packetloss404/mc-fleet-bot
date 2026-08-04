@@ -8,7 +8,7 @@ This audit evaluates only the nonphysical R00 design-freeze gates G01-G07. It do
 
 The evidence graph is cycle-free: **PASS**. The required order is D01-D07 design acceptance → R00 freeze → R01 physical validation → R02 eligibility.
 
-The owner-delegated ledger freezes **14** conservative planning choices. No additional human decision-makers are required. The remaining holds are technical evidence, exact-cell compilation, independent checks, ownership/interface cellsets, and later release authorization.
+The owner-delegated ledger freezes **20** conservative planning choices. No additional human decision-makers are required. The remaining holds are technical evidence, exact-cell compilation, independent checks, ownership/interface cellsets, and later release authorization.
 
 ## R00 gates
 
@@ -26,10 +26,10 @@ G01 is ready from the current hash-bound authority chain. G02-G07 remain fail-cl
 
 ## Blocking evidence
 
-- **EXTERNAL_EVIDENCE · R00-G02-D02-EXTERNAL-ACCEPTANCE:** Supply one complete immutable copied save with region/entities/poi/level.dat, then finish D02-S01/S02 entity/POI/world identity. D02-S03 proves zero acceptable current outfall candidates, so exact constructed drainage/inverts/pipes/culverts/sumps/pumps, future fluid accounting, receiver ownership/interfaces, capacity rules, typologies, and quantities remain.
-- **EXTERNAL_EVIDENCE · R00-G02-D05-EXTERNAL-ACCEPTANCE:** Satisfy the D05-S02 future-state compiler contract: close its geometry, ownership, interface, hydrology/geotechnical, and implementation dependencies, then emit and check all 12 exact future-state/influence families. It currently emits zero cells by design.
-- **EXTERNAL_EVIDENCE · R00-G02-D06-EXTERNAL-ACCEPTANCE:** Compile and accept the exact smoke, ventilation, lift, barrier, emergency-circuit, drainage, fire/service, outlet, ownership, and interface mechanism cellsets. Both dry exterior endpoints and the conservative D06 design basis are already frozen.
-- **EXTERNAL_EVIDENCE · R00-G03-DESIGN-AUTHORITY-CHOICES:** Close the 5 remaining geometry blockers (P1-B03-CHEYENNE-JCURVE, P1-B07-PUBLIC-SHAFT-DOGLEG, P1-B09-FUNICULAR-CENTERLINE, P1-B10-MOUNTAIN-SOLID-AND-RELIC-VOIDS, P1-B11-EXTERNAL-INTERFACES) without inferring null elevations, routes, solids, or interfaces. Five conservative geometry choices are already owner-delegated and frozen.
+- **EXTERNAL_EVIDENCE · R00-G02-D02-EXTERNAL-ACCEPTANCE:** Supply one complete immutable copied save with region/entities/poi/level.dat, then finish D02-S01/S02 identity and safety census. The selected S04 basis freezes 10 capped-sump candidates and one explicit no-build low run, but inflow/storage/freeboard/failure criteria, future fluid accounting, receiver ownership/interfaces, capacity, structure/geotechnical review, and complete technical acceptance remain.
+- **EXTERNAL_EVIDENCE · R00-G02-D05-EXTERNAL-ACCEPTANCE:** Develop the selected compact east-face analytic planning surface into canonical material states and accepted construction/influence cellsets. Close support gaps, hydrology/geotechnical review, relic influence kernels, owners, interfaces, maintenance/egress, stations, and mechanisms; accepted future-state cells remain zero.
+- **EXTERNAL_EVIDENCE · R00-G02-D06-EXTERNAL-ACCEPTANCE:** Technically develop and accept the frozen fail-closed D06 reservations: stairs/lifts, smoke and barrier mechanisms, emergency circuits, capped drainage, four local vent risers, fire/service access, outlets, ownership, and exact interfaces. Every opening and discharge remains sealed and uncommissioned.
+- **EXTERNAL_EVIDENCE · R00-G03-DESIGN-AUTHORITY-CHOICES:** Close the 1 remaining geometry blocker (P1-B11-EXTERNAL-INTERFACES) without inferring null elevations, routes, solids, or interfaces. 10 conservative geometry choices are already owner-delegated and frozen.
 - **OFFLINE_ACTION · R00-G03-CANONICAL-INTEGER-COMPILER:** Implement the canonical integer setout compiler after the missing design-authority choices are accepted.
 - **EXTERNAL_EVIDENCE · R00-G04-OWNER-ACCEPTANCE:** Accept one canonical owner for every proposed construction and interaction cell, including C01, hydrology, egress, surface, and sealed-interface scopes.
 - **OFFLINE_ACTION · R00-G04-OWNERSHIP-AUDIT:** Implement the one-owner/no-overlap ownership audit over the accepted exact setout.

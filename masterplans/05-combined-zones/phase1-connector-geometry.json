@@ -17,8 +17,8 @@
     },
     "reconciliation": {
       "path": "masterplans/04-combined-complex/authority-reconciliation.json",
-      "bytes": 13180,
-      "sha256": "191775541b8d7bd84de81040122c1f8b97a5cb0cbd8c6ae392f5bf424a5788d3",
+      "bytes": 13547,
+      "sha256": "fbaf5b92e91cabe2104fa20711b7b52d67c87977051844bbd55d30a824275875",
       "role": "01+02+03 to 04 to 05 authority boundary"
     },
     "coordinates05": {
@@ -36,19 +36,19 @@
     "phase1Geometry": {
       "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
       "bytes": 35526,
-      "sha256": "c7ab48f2733f1c45eee63e23459859e9536c79fef675c58bd1b8f1dbc0397f6c",
+      "sha256": "7fdf416f0ee00cb2a48d6581df638e6f809012f2438bffc7f83985ddfd182292",
       "role": "binding transformed anchors and blocker definitions"
     },
     "protectedRelics": {
       "path": "masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
       "bytes": 30460,
-      "sha256": "0d41b771c5a5aaefde6fed8721c85e1004a075b90d132b16cb58bb2c97d56c17",
+      "sha256": "77a7b94653d745e378a7ce017d6a43a23d9bbd0fe99288b4b50f23c54d793229",
       "role": "exact default-deny protected cores"
     },
     "d05Baseline": {
       "path": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
       "bytes": 3250959,
-      "sha256": "0665092d0936198a544dbd2ec7421dcad8797b191d0ad5d97952842ea5d900e7",
+      "sha256": "8ec1927298d3dd7ca685166e42019f1a7f31e0bd59b86c9f7e1ba891698acd10",
       "role": "unreviewed one-cell relic-buffer candidates and hydrology baseline"
     },
     "immutablePhase0PostSnapshot": {

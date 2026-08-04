@@ -17,39 +17,63 @@
   "sourceBindings": {
     "d02": {
       "path": "masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json",
-      "sha256": "ce593f69aa1cacac32082c63b2acaff086773f3adf2638de69ea0ff4de70bf35",
+      "sha256": "b5df821aa38ee52eaec9aaafb91a42528f66ea37c993b7393c4cdd919de8875c",
       "bytes": 19771,
       "role": "D02 offline recommendation evidence"
     },
     "d02RegionEvidence": {
       "path": "masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json",
-      "sha256": "703fa2cb33b69f30067ffcbfda0169e641c6fca772c572e3f20e73f85331c6bc",
+      "sha256": "f640b543c94204642ffbc24f3224f98ea02c2346736377657d252f5cdef27579",
       "bytes": 99968,
       "role": "D02REGIONEVIDENCE offline recommendation evidence"
     },
+    "d02ClosedDrainage": {
+      "path": "masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json",
+      "sha256": "69fad782aae8dfdf5201d83ea8e18c1cf07db44875c02eab39d8d8a9abe4a05d",
+      "bytes": 2564085,
+      "role": "D02CLOSEDDRAINAGE offline recommendation evidence"
+    },
     "d05": {
       "path": "masterplans/05-combined-zones/phase1-d05-conservative-defaults.json",
-      "sha256": "d95dede53a4316cf628ead196ca49b0c930909473c16a6a9329aa05d3f85ea7f",
+      "sha256": "a4f72a07774df5a73dfb67b5cf7b8548691cff6f3808883853bafd7e0a78bd48",
       "bytes": 17420,
       "role": "D05 offline recommendation evidence"
     },
     "d05RelicSurvey": {
       "path": "masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json",
-      "sha256": "32ce0b791957a17a2cb4801cfe55bda7c5210a4138bcf6924934919116fdab8f",
+      "sha256": "679daac044ac74aa328dc7de9489720fb8a3b82d150e678b1c22fd7575bddc14",
       "bytes": 120795,
       "role": "D05RELICSURVEY offline recommendation evidence"
     },
+    "d05FutureMountain": {
+      "path": "masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json",
+      "sha256": "b4f3b92e644dd359f66ac7512aa55096bae247c19acbfa8e89526b19c1b06331",
+      "bytes": 47414,
+      "role": "D05FUTUREMOUNTAIN offline recommendation evidence"
+    },
     "d06": {
       "path": "masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json",
-      "sha256": "e54c80bf5fa1d59d47c89c25e1b866f456b1f44296929eaf7821758ebe7e8a39",
+      "sha256": "b355aae4b6632fe6e0de6f7b95cd100906ca700ad4db9cdfa8cd27b534cd2615",
       "bytes": 13680,
       "role": "D06 offline recommendation evidence"
     },
+    "d06LifeSafety": {
+      "path": "masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+      "sha256": "2cdf82e2896fbf41bba52f90c8e6fd9d8bc741d8019964f623c171bf332bc120",
+      "bytes": 171048,
+      "role": "D06LIFESAFETY offline recommendation evidence"
+    },
     "connectorGeometry": {
       "path": "masterplans/05-combined-zones/phase1-connector-geometry.json",
-      "sha256": "5fa14cd76a615cdaa9529ebb3e524511d4eb3307fa6e8d6a142a68e319ba4c38",
+      "sha256": "9a9521422075d499326b761a8d85bbfcfea83ec582dbc29538fae0600d8bc012",
       "bytes": 458505,
       "role": "CONNECTORGEOMETRY offline recommendation evidence"
+    },
+    "cheyenneJcurve": {
+      "path": "masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json",
+      "sha256": "a72ac9bdf12c1364cab027202d28c5c67b954a870e39dc0454047996b92fe557",
+      "bytes": 2757426,
+      "role": "CHEYENNEJCURVE offline recommendation evidence"
     }
   },
   "selections": [
@@ -114,6 +138,48 @@
       "scope": "P1-B08-SERVICE-TUNNEL-CENTERLINE",
       "selection": "EAST_RAMP_THEN_NORTH_LEVEL_THROUGH_CONTACT_THEN_EAST_LEVEL",
       "effect": "The exact 220-step east-ramp, north-level-contact, east-level route and declared 6x6 bias control later ownership and technical design; lining, drainage, escape, source, and commissioning remain open.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-D02-S04-CLOSED-DRAINAGE",
+      "scope": "D02-S04-closed-drainage",
+      "selection": "ALT-D02-S04-D-HYBRID-CAPPED-SUMPS-WITH-AQUATIC-NO-BUILD-HOLD",
+      "effect": "Ten strict-clear capped sump candidates are the planning basis; water-interacting ROAD-LOW-001 remains an explicit no-build hold and no receiver/outfall is selected.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-P1-B03-CHEYENNE-JCURVE",
+      "scope": "P1-B03-CHEYENNE-JCURVE",
+      "selection": "EXACT_800_STEP_TWO_BEND_EAST_NORTH_WEST_BAFFLE",
+      "effect": "The exact 800-step east-north-west two-bend baffle controls later ownership and technical design; all lining, drainage, utilities, egress, and future-mountain acceptance remains open.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-P1-B07-PUBLIC-SHAFT-DOGLEG",
+      "scope": "P1-B07-PUBLIC-SHAFT-DOGLEG",
+      "selection": "Adopt B07-C-WEST-2 as the exact public-shaft planning centerline and interaction envelope.",
+      "effect": "The two-block west dogleg is the planning basis because its excavation and interaction sets clear the mineshaft bound; fluid, mechanism, structural, smoke, drainage, and egress acceptance remains open.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-P1-B09-FUNICULAR-CENTERLINE",
+      "scope": "P1-B09-FUNICULAR-CENTERLINE",
+      "selection": "FM-01-COMPACT-EAST-FACE exact B09 centerline and route shell",
+      "effect": "The east-face cardinal rail candidate controls later planning; maintenance/egress, station, mechanism, hydrology, support, ownership, and interface acceptance remains open.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-P1-B10-MOUNTAIN-SOLID-AND-RELIC-VOIDS",
+      "scope": "P1-B10-MOUNTAIN-SOLID-AND-RELIC-VOIDS",
+      "selection": "Adopt FM-01-COMPACT-EAST-FACE as the analytic future-mountain planning surface with exact minimum relic voids.",
+      "effect": "The compact east-face analytic surface and exact core-plus-one-cell relic exclusions become the future-mountain planning basis; no future material cell or expert influence kernel is accepted.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-D06-FAIL-CLOSED-MECHANISM-RESERVATIONS",
+      "scope": "D06-mechanism-reservations",
+      "selection": "Preserve frozen stair/lift layouts; use four independent capped local vent risers, capped platform/smoke bays, eight sealed sump caps, and sealed EG-B fire-service review interface.",
+      "effect": "Exact fail-closed reservations control technical development, but no opening, mechanism, discharge, external route, compliance, or commissioning is accepted.",
       "technicalAcceptanceClaimed": false
     },
     {
@@ -189,14 +255,42 @@
       "b08ExcavationCells": 7878,
       "b08Selected": true,
       "b09FaceSelected": false
+    },
+    "d02ClosedDrainage": {
+      "status": "PARTIAL_PASS_PREFERRED_CLOSED_SUMP_PLANNING_GEOMETRY_D02_HOLD",
+      "preferredAlternativeId": "ALT-D02-S04-D-HYBRID-CAPPED-SUMPS-WITH-AQUATIC-NO-BUILD-HOLD",
+      "candidateCellCount": 432,
+      "noBuildLowRunCount": 1
+    },
+    "d05FutureMountain": {
+      "status": "PARTIAL_PASS_EXACT_FUTURE_MOUNTAIN_ALTERNATIVES_RECOMMENDATION_ONLY_D05_G02_HOLD",
+      "recommendedAlternativeId": "FM-01-COMPACT-EAST-FACE",
+      "recommendationSelectedByThisLedger": true,
+      "futureCellCount": 0
+    },
+    "d06LifeSafety": {
+      "status": "PARTIAL_PASS_FAIL_CLOSED_B07_D06_ALTERNATIVES_FROZEN_ALL_RELEASE_AND_COMMISSIONING_HOLD",
+      "recommendedB07CandidateId": "B07-C-WEST-2",
+      "ventAlternativeId": "VENT-A-FOUR-INDEPENDENT-LOCAL-RISERS"
+    },
+    "cheyenneJcurve": {
+      "status": "PARTIAL_PASS_EXACT_JCURVE_PLANNING_GEOMETRY_P1_B03_TECHNICAL_HOLD",
+      "horizontalSteps": 800,
+      "excavationCells": 15972,
+      "selectedByThisLedger": true
     }
   },
   "disposition": {
-    "selectionCount": 14,
+    "selectionCount": 20,
     "selectedSubjectiveChoices": [
       "D02-B05",
       "D05 conservative planning controls",
       "D06 egress and system design basis",
+      "D02 capped-sump/no-build drainage basis",
+      "D05 compact east-face future-mountain basis",
+      "D06/B07 fail-closed route and mechanism reservations",
+      "P1-B03 exact Cheyenne J-curve",
+      "P1-B09 exact east-face funicular planning route",
       "P1-B01-VERTICAL-AUTHORITY-ACTIVATION",
       "P1-B02-CHEYENNE-INTERNAL-FIT",
       "P1-B04-SUBTROPOLIS-NORMALIZATION",
@@ -206,11 +300,12 @@
     "remainingTechnicalWork": [
       "D02-S01 complete immutable full-save C1 census",
       "D02-S02 current C01/ISSUE-002 interface survey",
-      "D02-S03 exact hydrology and outfall evidence",
       "D02-S04 option-specific construction quantities",
-      "D05 exact future mountain and influence cellsets plus technical review",
-      "D06 exact mechanism, discharge, ownership, and interface cellsets",
-      "P1-B03, P1-B07, P1-B09, P1-B10, and the unfinished part of P1-B11"
+      "D02 closed-drainage inflow/storage/failure criteria, future states, technical review, owners, and interfaces",
+      "D05 exact canonical future material states, expert influence kernels, support treatment, technical review, owners, and interfaces",
+      "D06 mechanism engineering, external discharge/access, technical review, owners, and interfaces",
+      "P1-B03, P1-B07, P1-B09, and P1-B10 technical acceptance after their planning geometry selections",
+      "P1-B11 exact Grand Avenue/PassageWay/external interface points, profiles, owners, and contracts"
     ],
     "d02Resolved": false,
     "d05Resolved": false,

@@ -40,7 +40,7 @@ const PATHS = Object.freeze({
 // Updating an authority source requires explicit review of this pin. A stale
 // compiler must fail before it writes an apparently current coordination file.
 const EXPECTED_RECONCILIATION_SHA256 =
-  '191775541b8d7bd84de81040122c1f8b97a5cb0cbd8c6ae392f5bf424a5788d3';
+  'fbaf5b92e91cabe2104fa20711b7b52d67c87977051844bbd55d30a824275875';
 
 function absolute(relativePath) {
   return path.join(ROOT, relativePath);

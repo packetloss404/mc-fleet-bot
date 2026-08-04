@@ -39,15 +39,19 @@ const INPUTS = Object.freeze({
   d02AuthorityPacket: 'masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json',
   d02RegionEvidence: 'masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
   d02HydrologyOutfalls: 'masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json',
+  d02ClosedDrainage: 'masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json',
   geometryCoordination: 'masterplans/05-combined-zones/phase1-geometry-coordination.json',
   protectedRelicClearance: 'masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
   d05HydrologyRelicDesign: 'masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
   d05ConservativeDefaults: 'masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
   d05RelicSurvey: 'masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json',
   d05FutureStateContract: 'masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json',
+  d05FutureMountain: 'masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json',
   emptyEightGeologyDesign: 'masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
   d06EgressGeometryDesign: 'masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
+  d06LifeSafety: 'masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
   connectorGeometry: 'masterplans/05-combined-zones/phase1-connector-geometry.json',
+  cheyenneJcurve: 'masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json',
   autonomousDesignSelections: 'masterplans/05-combined-zones/phase1-autonomous-design-selections.json',
   siteGateAudit: 'masterplans/05-combined-zones/phase1-site-gate-audit.json',
 });
@@ -91,9 +95,13 @@ const d05 = readJson(INPUTS.d05HydrologyRelicDesign);
 const d06 = readJson(INPUTS.emptyEightGeologyDesign);
 const d02RegionEvidence = readJson(INPUTS.d02RegionEvidence);
 const d02HydrologyOutfalls = readJson(INPUTS.d02HydrologyOutfalls);
+const d02ClosedDrainage = readJson(INPUTS.d02ClosedDrainage);
 const d05RelicSurvey = readJson(INPUTS.d05RelicSurvey);
 const d05FutureStateContract = readJson(INPUTS.d05FutureStateContract);
+const d05FutureMountain = readJson(INPUTS.d05FutureMountain);
+const d06LifeSafety = readJson(INPUTS.d06LifeSafety);
 const connectorGeometry = readJson(INPUTS.connectorGeometry);
+const cheyenneJcurve = readJson(INPUTS.cheyenneJcurve);
 const delegatedSelections = readJson(INPUTS.autonomousDesignSelections);
 const site = readJson(INPUTS.siteGateAudit);
 
@@ -109,6 +117,20 @@ const delegatedSelectionsValid = delegatedSelections.status
   && delegatedSelections.disposition?.selectionCount === delegatedSelections.selections?.length
   && delegatedSelections.safetyBoundary?.worldEditAuthorized === false
   && delegatedSelections.safetyBoundary?.operationCellCount === 0;
+const preferredDrainage = d02ClosedDrainage.alternatives?.find(
+  ({ id }) => id === d02ClosedDrainage.preferredPlanningAlternative?.alternativeId,
+);
+const recommendedMountain = d05FutureMountain.alternatives?.find(
+  ({ modelId }) => modelId === d05FutureMountain.b09FaceComparison?.recommendedAlternativeId,
+);
+const recommendedB07 = d06LifeSafety.b07PublicShaftTransfer?.candidates?.find(
+  ({ id }) => id === d06LifeSafety.b07PublicShaftTransfer?.recommendedCandidateId,
+);
+const recommendedVent = d06LifeSafety.d06EmptyEightLifeSafety
+  ?.ventilationOutletAlternatives?.alternatives?.find(
+    ({ id }) => id === d06LifeSafety.d06EmptyEightLifeSafety
+      ?.ventilationOutletAlternatives?.recommendedAlternativeId,
+  );
 
 const authorityBindingChecks = (contract.authorityBindings ?? []).map((expected) => {
   const filename = absolute(expected.path);
@@ -191,27 +213,30 @@ const gates = [
     evidence: [sources.designDecisions, sources.c1CivilDesign,
       sources.d02AuthorityPacket, sources.d05HydrologyRelicDesign,
       sources.d02RegionEvidence, sources.d02HydrologyOutfalls,
+      sources.d02ClosedDrainage,
       sources.d05ConservativeDefaults, sources.d05RelicSurvey,
-      sources.d05FutureStateContract, sources.emptyEightGeologyDesign,
-      sources.d06EgressGeometryDesign, sources.autonomousDesignSelections],
+      sources.d05FutureStateContract, sources.d05FutureMountain,
+      sources.emptyEightGeologyDesign, sources.d06EgressGeometryDesign,
+      sources.d06LifeSafety, sources.cheyenneJcurve,
+      sources.autonomousDesignSelections],
     blockers: decisionsPassed ? [] : [
       blocker(
         'R00-G02-D02-EXTERNAL-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'Supply one complete immutable copied save with region/entities/poi/level.dat, then finish D02-S01/S02 entity/POI/world identity. D02-S03 proves zero acceptable current outfall candidates, so exact constructed drainage/inverts/pipes/culverts/sumps/pumps, future fluid accounting, receiver ownership/interfaces, capacity rules, typologies, and quantities remain.',
-        INPUTS.d02HydrologyOutfalls,
+        'Supply one complete immutable copied save with region/entities/poi/level.dat, then finish D02-S01/S02 identity and safety census. The selected S04 basis freezes 10 capped-sump candidates and one explicit no-build low run, but inflow/storage/freeboard/failure criteria, future fluid accounting, receiver ownership/interfaces, capacity, structure/geotechnical review, and complete technical acceptance remain.',
+        INPUTS.d02ClosedDrainage,
       ),
       blocker(
         'R00-G02-D05-EXTERNAL-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'Satisfy the D05-S02 future-state compiler contract: close its geometry, ownership, interface, hydrology/geotechnical, and implementation dependencies, then emit and check all 12 exact future-state/influence families. It currently emits zero cells by design.',
-        INPUTS.d05FutureStateContract,
+        'Develop the selected compact east-face analytic planning surface into canonical material states and accepted construction/influence cellsets. Close support gaps, hydrology/geotechnical review, relic influence kernels, owners, interfaces, maintenance/egress, stations, and mechanisms; accepted future-state cells remain zero.',
+        INPUTS.d05FutureMountain,
       ),
       blocker(
         'R00-G02-D06-EXTERNAL-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'Compile and accept the exact smoke, ventilation, lift, barrier, emergency-circuit, drainage, fire/service, outlet, ownership, and interface mechanism cellsets. Both dry exterior endpoints and the conservative D06 design basis are already frozen.',
-        INPUTS.d06EgressGeometryDesign,
+        'Technically develop and accept the frozen fail-closed D06 reservations: stairs/lifts, smoke and barrier mechanisms, emergency circuits, capped drainage, four local vent risers, fire/service access, outlets, ownership, and exact interfaces. Every opening and discharge remains sealed and uncommissioned.',
+        INPUTS.d06LifeSafety,
       ),
       ...(!descendantEvidenceCycleFree ? [
         blocker(
@@ -228,12 +253,14 @@ const gates = [
     status: 'HOLD',
     evidence: [sources.coordinateRegistry, sources.geometryCoordination,
       sources.d06EgressGeometryDesign, sources.connectorGeometry,
-      sources.d05FutureStateContract, sources.autonomousDesignSelections],
+      sources.cheyenneJcurve, sources.d05FutureMountain,
+      sources.d06LifeSafety, sources.d05FutureStateContract,
+      sources.autonomousDesignSelections],
     blockers: [
       blocker(
         'R00-G03-DESIGN-AUTHORITY-CHOICES',
         'EXTERNAL_EVIDENCE',
-        `Close the ${remainingGeometryIds.length} remaining geometry blockers (${remainingGeometryIds.join(', ')}) without inferring null elevations, routes, solids, or interfaces. Five conservative geometry choices are already owner-delegated and frozen.`,
+        `Close the ${remainingGeometryIds.length} remaining geometry blocker (${remainingGeometryIds.join(', ')}) without inferring null elevations, routes, solids, or interfaces. ${selectedGeometryIds.length} conservative geometry choices are already owner-delegated and frozen.`,
         INPUTS.geometryCoordination,
       ),
       blocker(
@@ -248,7 +275,8 @@ const gates = [
     id: 'G04_OWNERSHIP',
     status: 'HOLD',
     evidence: [sources.geometryCoordination, sources.d05FutureStateContract,
-      sources.siteGateAudit],
+      sources.d02ClosedDrainage, sources.d05FutureMountain,
+      sources.d06LifeSafety, sources.siteGateAudit],
     blockers: [
       blocker(
         'R00-G04-OWNER-ACCEPTANCE',
@@ -268,7 +296,8 @@ const gates = [
     id: 'G05_INTERFACES',
     status: 'HOLD',
     evidence: [sources.geometryCoordination, sources.d05FutureStateContract,
-      sources.siteGateAudit],
+      sources.d02ClosedDrainage, sources.d05FutureMountain,
+      sources.d06LifeSafety, sources.siteGateAudit],
     blockers: [
       blocker(
         'R00-G05-INTERFACE-ACCEPTANCE',
@@ -289,6 +318,7 @@ const gates = [
     status: relics.g06Disposition?.status === 'PASS' ? 'PASS' : 'HOLD',
     evidence: [sources.protectedRelicClearance, sources.phase0Evidence,
       sources.d05ConservativeDefaults, sources.d05RelicSurvey,
+      sources.d05FutureMountain, sources.cheyenneJcurve,
       sources.autonomousDesignSelections],
     blockers: relics.g06Disposition?.status === 'PASS' ? [] : [
       blocker(
@@ -310,11 +340,12 @@ const gates = [
     status: 'HOLD',
     evidence: [sources.c1CivilDesign, sources.d02AuthorityPacket,
       sources.d02RegionEvidence, sources.d02HydrologyOutfalls,
+      sources.d02ClosedDrainage,
       sources.d05HydrologyRelicDesign,
       sources.d05ConservativeDefaults, sources.d05RelicSurvey,
-      sources.d05FutureStateContract, sources.emptyEightGeologyDesign,
-      sources.d06EgressGeometryDesign,
-      sources.connectorGeometry,
+      sources.d05FutureStateContract, sources.d05FutureMountain,
+      sources.emptyEightGeologyDesign, sources.d06EgressGeometryDesign,
+      sources.d06LifeSafety, sources.connectorGeometry, sources.cheyenneJcurve,
       sources.autonomousDesignSelections],
     blockers: [
       blocker(
@@ -398,20 +429,42 @@ const report = {
     copiedSaveCandidatesAudited: d02RegionEvidence.copiedSaveCompletenessAudit?.candidateCount ?? 0,
     completeCopiedSaveCandidates: d02RegionEvidence.copiedSaveCompletenessAudit?.completeCandidateCount ?? 0,
     d05S01SurveyComplete: d05RelicSurvey.status === 'D05_S01_OFFLINE_SURVEY_COMPLETE_D05_G06_HOLD',
+    b03ExactRouteSelected: selectedGeometryIds.includes('P1-B03-CHEYENNE-JCURVE'),
+    b03HorizontalStepCount: cheyenneJcurve.design?.centerline?.horizontalStepCount ?? 0,
+    b07ExactRouteSelected: selectedGeometryIds.includes('P1-B07-PUBLIC-SHAFT-DOGLEG'),
+    b07SelectedExcavationStructureConflictCellCount: recommendedB07
+      ?.immutableSnapshotAudit?.generatedStructureExcavationIntersections?.reduce(
+        (sum, item) => sum + item.intersection.cellCount,
+        0,
+      ) ?? 0,
+    b07SelectedExcavationWaterCellCount: recommendedB07
+      ?.immutableSnapshotAudit?.excavationStateCensus?.waterCellCount ?? 0,
     b08ExactRouteSelected: selectedGeometryIds.includes('P1-B08-SERVICE-TUNNEL-CENTERLINE'),
-    b07ConflictCellCount: connectorGeometry.publicShaftDogleg
+    b07CenteredBaselineConflictCellCount: connectorGeometry.publicShaftDogleg
       ?.snapshotAndIntersectionAudit?.generatedStructureExcavationIntersections?.reduce(
         (sum, item) => sum + item.intersection.cellCount,
         0,
       ) ?? 0,
     d02AcceptableOutfallCandidateCount: d02HydrologyOutfalls.receiverEvaluation
       ?.acceptedReceiverCount ?? 0,
+    d02PreferredDrainageCandidateCellCount: preferredDrainage?.candidateCellManifest?.cellCount ?? 0,
+    d02HeldLowRunCount: preferredDrainage?.noBuildPreservationHoldCount ?? 0,
     d05FutureStateContractPassed: d05FutureStateContract
       .readinessDisposition?.contractSchemaPassed === true,
     d05FutureStateCellCount: d05FutureStateContract.futureCellCount ?? 0,
+    d05SelectedPlanningAlternativeId: d05FutureMountain.b09FaceComparison
+      ?.recommendedAlternativeId ?? null,
+    d05CandidateAddedSolidCellCount: recommendedMountain
+      ?.sparseAddedSolidIntervals?.candidateAddedSolidCellCount ?? 0,
+    d05BelowCoordinationSupportGapCellCount: recommendedMountain
+      ?.belowCoordinationSupportGap?.cellCount ?? 0,
+    b09ExactRouteSelected: selectedGeometryIds.includes('P1-B09-FUNICULAR-CENTERLINE'),
+    b10AnalyticSurfaceSelected: selectedGeometryIds
+      .includes('P1-B10-MOUNTAIN-SOLID-AND-RELIC-VOIDS'),
+    d06CappedVentRiserCount: recommendedVent?.risers?.length ?? 0,
     autonomousOfflineWorkMayContinue: true,
     autonomousOfflineWorkCanCompleteR00: false,
-    nextAutonomousArtifact: 'Complete-save audit, exact D02/D05/D06 surveys, and remaining geometry compilers before T01/T02',
+    nextAutonomousArtifact: 'P1-B11 exact external-interface compiler, complete-save audit, and D02/D05/D06 technical development before T01/T02',
     externalEvidenceStillRequired: true,
   },
 };

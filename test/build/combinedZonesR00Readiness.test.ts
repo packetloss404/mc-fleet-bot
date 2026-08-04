@@ -60,11 +60,24 @@ interface Report {
     copiedSaveCandidatesAudited: number;
     completeCopiedSaveCandidates: number;
     d05S01SurveyComplete: boolean;
+    b03ExactRouteSelected: boolean;
+    b03HorizontalStepCount: number;
+    b07ExactRouteSelected: boolean;
+    b07SelectedExcavationStructureConflictCellCount: number;
+    b07SelectedExcavationWaterCellCount: number;
     b08ExactRouteSelected: boolean;
-    b07ConflictCellCount: number;
+    b07CenteredBaselineConflictCellCount: number;
     d02AcceptableOutfallCandidateCount: number;
+    d02PreferredDrainageCandidateCellCount: number;
+    d02HeldLowRunCount: number;
     d05FutureStateContractPassed: boolean;
     d05FutureStateCellCount: number;
+    d05SelectedPlanningAlternativeId: string;
+    d05CandidateAddedSolidCellCount: number;
+    d05BelowCoordinationSupportGapCellCount: number;
+    b09ExactRouteSelected: boolean;
+    b10AnalyticSurfaceSelected: boolean;
+    d06CappedVentRiserCount: number;
     autonomousOfflineWorkMayContinue: boolean;
     autonomousOfflineWorkCanCompleteR00: boolean;
     externalEvidenceStillRequired: boolean;
@@ -128,17 +141,30 @@ describe('Combined Zones R00 readiness audit', () => {
         holdCount: 6,
         r00Ready: false,
         delegatedSelectionsValid: true,
-        ownerDelegatedSelectionCount: 14,
+        ownerDelegatedSelectionCount: 20,
         additionalHumanDecisionMakersRequired: false,
-        remainingGeometryBlockerCount: 5,
+        remainingGeometryBlockerCount: 1,
         copiedSaveCandidatesAudited: 56,
         completeCopiedSaveCandidates: 0,
         d05S01SurveyComplete: true,
+        b03ExactRouteSelected: true,
+        b03HorizontalStepCount: 800,
+        b07ExactRouteSelected: true,
+        b07SelectedExcavationStructureConflictCellCount: 0,
+        b07SelectedExcavationWaterCellCount: 38,
         b08ExactRouteSelected: true,
-        b07ConflictCellCount: 217,
+        b07CenteredBaselineConflictCellCount: 217,
         d02AcceptableOutfallCandidateCount: 0,
+        d02PreferredDrainageCandidateCellCount: 432,
+        d02HeldLowRunCount: 1,
         d05FutureStateContractPassed: true,
         d05FutureStateCellCount: 0,
+        d05SelectedPlanningAlternativeId: 'FM-01-COMPACT-EAST-FACE',
+        d05CandidateAddedSolidCellCount: 14768553,
+        d05BelowCoordinationSupportGapCellCount: 754224,
+        b09ExactRouteSelected: true,
+        b10AnalyticSurfaceSelected: true,
+        d06CappedVentRiserCount: 4,
         autonomousOfflineWorkMayContinue: true,
         autonomousOfflineWorkCanCompleteR00: false,
         externalEvidenceStillRequired: true,

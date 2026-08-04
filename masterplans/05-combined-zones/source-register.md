@@ -61,14 +61,16 @@ Masterplan 05 is the current-world placement and delivery authority. It may adap
 ## Binding v2 design decisions retained
 
 - One continuous mountain; no V-shaped ravine.
-- Limestone below the contact and granite above it.
+- Limestone-style material below the authored transition and granite-style material above it; this is architectural contrast, not a factual geology claim.
 - The authored contact is local `Y=200`.
-- Composite terrane plaque at local `(-40, 200, -360)`.
+- Composite terrane plaque anchor at local `(-40, 200, -360)`; Masterplan 05 D07 controls final copy.
 - Cheyenne outer portal and blast door at local `(0, 200, -420)`.
 - Return route is funicular plus summit road; there is no combined-complex return skybridge.
 - The Houston downtown remains 138×138; “24 blocks” in older text is a sample/compressed block logic, not the city envelope.
 - Houston-local skybridges remain allowed. The no-skybridge decision applies only to the mountain return route.
 - The public shaft, SubTropolis, service tunnel, Cheyenne chamber, Gateway Approach, Grand Avenue, gateway, and summit remain the principal sequence.
+
+Masterplan 05 D07 supersedes every legacy Masterplan 04 claim that the authored material transition is a natural contact, thrust/overthrust, laccolith, “geologically honest,” or evidence for a `270 Ma` Bethany Falls age. Those terms must not enter signage, compiler output, or release evidence.
 
 ## Old Town identity clarification
 

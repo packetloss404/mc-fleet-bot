@@ -1808,13 +1808,18 @@ node scripts/generate_combined_zones_d02_authority_packet.mjs
 node --expose-gc --max-old-space-size=4096 \
   scripts/audit_combined_zones_d02_s01_s02_region_evidence.mjs
 node scripts/generate_combined_zones_d05_conservative_defaults.mjs
-node scripts/audit_combined_zones_d05_relic_condition_access.mjs
 node scripts/compile_combined_zones_d06_egress_geometry.mjs
 node scripts/compile_combined_zones_phase1_connector_geometry.mjs
-node scripts/generate_combined_zones_autonomous_selections.mjs
+node scripts/audit_combined_zones_d05_relic_condition_access.mjs
+node scripts/compile_combined_zones_d05_future_state_contract.mjs
+node scripts/compile_combined_zones_cheyenne_jcurve_geometry.mjs
+node scripts/compile_combined_zones_d06_life_safety_alternatives.mjs
+node --max-old-space-size=4096 \
+  scripts/compile_combined_zones_d05_future_mountain_alternatives.mjs
 node --expose-gc --max-old-space-size=4096 \
   scripts/audit_combined_zones_d02_s03_hydrology_outfalls.mjs
-node scripts/compile_combined_zones_d05_future_state_contract.mjs
+node scripts/compile_combined_zones_d02_s04_closed_drainage_alternatives.mjs
+node scripts/generate_combined_zones_autonomous_selections.mjs
 node scripts/audit_combined_zones_r00_readiness.mjs
 ```
 
@@ -1822,13 +1827,43 @@ node scripts/audit_combined_zones_r00_readiness.mjs
   acceptable receiver candidates means exact closed drainage, sumps/pumps, or
   an explicit hash-bound receiver/interface exception must be designed; it is
   never permission to invent an outfall.
+- D02-S04 compiles four exact closed-drainage alternatives. The selected
+  planning basis has 432 cells, ten strict-clear capped sumps, one no-build
+  hold at `ROAD-LOW-001`, and no receiver/outfall. It remains HOLD for complete
+  save, inflow/storage/failure criteria, sizing, technical acceptance,
+  ownership/interfaces, and construction quantities.
+- The Cheyenne J-curve compiler freezes the exact 800-step B03 planning route,
+  including both bends and its 5×4 reservation. It emits no operations and is
+  not excavation, structural, fire/life-safety, or construction acceptance.
+- The future-mountain compiler compares exact analytic B09/B10 planning
+  surfaces. `FM-01-COMPACT-EAST-FACE` is the selected planning basis with
+  14,768,553 candidate added-solid cells and 754,224 below-coordination support
+  gaps, but the accepted future/construction cell count remains zero.
+- The D06 life-safety alternatives select B07 west-two for planning because it
+  clears recorded generated structures. Its excavation still contains 38
+  current water cells. Four local vent risers and all smoke, gate, sump,
+  discharge, and fire/service systems remain capped or sealed pending accepted
+  mechanisms, owners/interfaces, and technical review.
 - D05-S02 defines twelve fail-closed future/direct/influence set families. A
   passing contract with zero emitted cells means the schema is ready while its
   geometry, mechanisms, ownership/interfaces, and accepted technical kernels
   are not. Never promote an unknown influence to an empty accepted set.
 - The connector compiler freezes review geometry only. B08's selected
-  220-step route is not commissioned; B07's mineshaft overlap and B09's absent
-  future mountain face remain hard HOLDs. All outputs contain zero operations.
+  220-step route is not commissioned. Later planning evidence selects the B07
+  west-two and B09 east-face alternatives, but their hydrology, support,
+  mechanism, technical, ownership, and interface gates remain HOLD. All
+  outputs contain zero operations.
+- The owner-delegated ledger currently freezes 20 planning choices; P1-B11
+  exact Grand Avenue/PassageWay/external interfaces is the only remaining
+  unselected geometry choice. Run the focused second-wave regressions with:
+
+```bash
+npx vitest run \
+  test/build/combinedZonesCheyenneJcurveGeometry.test.ts \
+  test/build/combinedZonesD02S04ClosedDrainageAlternatives.test.ts \
+  test/build/combinedZonesD05FutureMountainAlternatives.test.ts \
+  test/build/combinedZonesD06LifeSafetyAlternatives.test.ts
+```
 
 - R00 is the nonphysical G01-G07 design freeze. D02, D05, and D06 may resolve
   only from immutable pre-R00 design/external-acceptance evidence. Operations,

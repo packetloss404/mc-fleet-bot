@@ -31,10 +31,14 @@ const MARKDOWN = path.resolve(value(
 const INPUTS = Object.freeze({
   d02: 'masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json',
   d02RegionEvidence: 'masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
+  d02ClosedDrainage: 'masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json',
   d05: 'masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
   d05RelicSurvey: 'masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json',
+  d05FutureMountain: 'masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json',
   d06: 'masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
+  d06LifeSafety: 'masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
   connectorGeometry: 'masterplans/05-combined-zones/phase1-connector-geometry.json',
+  cheyenneJcurve: 'masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json',
 });
 
 function sha256(data) {
@@ -52,10 +56,14 @@ function binding(relativePath, role) {
 
 const d02 = readJson(INPUTS.d02);
 const d02RegionEvidence = readJson(INPUTS.d02RegionEvidence);
+const d02ClosedDrainage = readJson(INPUTS.d02ClosedDrainage);
 const d05 = readJson(INPUTS.d05);
 const d05RelicSurvey = readJson(INPUTS.d05RelicSurvey);
+const d05FutureMountain = readJson(INPUTS.d05FutureMountain);
 const d06 = readJson(INPUTS.d06);
+const d06LifeSafety = readJson(INPUTS.d06LifeSafety);
 const connectorGeometry = readJson(INPUTS.connectorGeometry);
+const cheyenneJcurve = readJson(INPUTS.cheyenneJcurve);
 
 const d02B05 = d02.recommendations.find(({ blockerId }) => blockerId === 'D02-B05');
 const readyGeometry = d06.soleAuthorityRecommendations.geometry.filter(
@@ -89,6 +97,31 @@ if (connectorGeometry.serviceTunnelCenterline?.status
   || connectorGeometry.serviceTunnelCenterline?.snapshotAndIntersectionAudit
     ?.generatedStructureExcavationIntersections?.length !== 0) {
   throw new Error('B08 connector candidate is not ready for delegated route selection');
+}
+if (d02ClosedDrainage.status
+    !== 'PARTIAL_PASS_PREFERRED_CLOSED_SUMP_PLANNING_GEOMETRY_D02_HOLD'
+  || d02ClosedDrainage.preferredPlanningAlternative?.alternativeId
+    !== 'ALT-D02-S04-D-HYBRID-CAPPED-SUMPS-WITH-AQUATIC-NO-BUILD-HOLD') {
+  throw new Error('D02 closed-drainage recommendation is not ready for delegated selection');
+}
+if (d05FutureMountain.status
+    !== 'PARTIAL_PASS_EXACT_FUTURE_MOUNTAIN_ALTERNATIVES_RECOMMENDATION_ONLY_D05_G02_HOLD'
+  || d05FutureMountain.b09FaceComparison?.recommendedAlternativeId
+    !== 'FM-01-COMPACT-EAST-FACE'
+  || d05FutureMountain.b09FaceComparison?.selectedAlternativeId !== null) {
+  throw new Error('D05/B09/B10 recommendation is not ready for delegated selection');
+}
+if (d06LifeSafety.status
+    !== 'PARTIAL_PASS_FAIL_CLOSED_B07_D06_ALTERNATIVES_FROZEN_ALL_RELEASE_AND_COMMISSIONING_HOLD'
+  || d06LifeSafety.b07PublicShaftTransfer?.recommendedCandidateId !== 'B07-C-WEST-2'
+  || d06LifeSafety.overallDisposition?.recommendationsRequireSoleAuthorityAcceptance !== true) {
+  throw new Error('D06/B07 recommendations are not ready for delegated selection');
+}
+if (cheyenneJcurve.status
+    !== 'PARTIAL_PASS_EXACT_JCURVE_PLANNING_GEOMETRY_P1_B03_TECHNICAL_HOLD'
+  || cheyenneJcurve.readiness?.exactIntegerCenterline !== 'PASS_PLANNING_GEOMETRY'
+  || cheyenneJcurve.readiness?.p1B03Resolved !== false) {
+  throw new Error('B03 J-curve recommendation is not ready for delegated selection');
 }
 
 const selections = [
@@ -153,6 +186,48 @@ const selections = [
     scope: 'P1-B08-SERVICE-TUNNEL-CENTERLINE',
     selection: connectorGeometry.serviceTunnelCenterline.selection,
     effect: 'The exact 220-step east-ramp, north-level-contact, east-level route and declared 6x6 bias control later ownership and technical design; lining, drainage, escape, source, and commissioning remain open.',
+    technicalAcceptanceClaimed: false,
+  },
+  {
+    id: 'SEL-D02-S04-CLOSED-DRAINAGE',
+    scope: 'D02-S04-closed-drainage',
+    selection: d02ClosedDrainage.preferredPlanningAlternative.alternativeId,
+    effect: 'Ten strict-clear capped sump candidates are the planning basis; water-interacting ROAD-LOW-001 remains an explicit no-build hold and no receiver/outfall is selected.',
+    technicalAcceptanceClaimed: false,
+  },
+  {
+    id: 'SEL-P1-B03-CHEYENNE-JCURVE',
+    scope: 'P1-B03-CHEYENNE-JCURVE',
+    selection: cheyenneJcurve.authorityBoundary.selectedPlanningBasis,
+    effect: 'The exact 800-step east-north-west two-bend baffle controls later ownership and technical design; all lining, drainage, utilities, egress, and future-mountain acceptance remains open.',
+    technicalAcceptanceClaimed: false,
+  },
+  {
+    id: 'SEL-P1-B07-PUBLIC-SHAFT-DOGLEG',
+    scope: 'P1-B07-PUBLIC-SHAFT-DOGLEG',
+    selection: `Adopt ${d06LifeSafety.b07PublicShaftTransfer.recommendedCandidateId} as the exact public-shaft planning centerline and interaction envelope.`,
+    effect: 'The two-block west dogleg is the planning basis because its excavation and interaction sets clear the mineshaft bound; fluid, mechanism, structural, smoke, drainage, and egress acceptance remains open.',
+    technicalAcceptanceClaimed: false,
+  },
+  {
+    id: 'SEL-P1-B09-FUNICULAR-CENTERLINE',
+    scope: 'P1-B09-FUNICULAR-CENTERLINE',
+    selection: 'FM-01-COMPACT-EAST-FACE exact B09 centerline and route shell',
+    effect: 'The east-face cardinal rail candidate controls later planning; maintenance/egress, station, mechanism, hydrology, support, ownership, and interface acceptance remains open.',
+    technicalAcceptanceClaimed: false,
+  },
+  {
+    id: 'SEL-P1-B10-MOUNTAIN-SOLID-AND-RELIC-VOIDS',
+    scope: 'P1-B10-MOUNTAIN-SOLID-AND-RELIC-VOIDS',
+    selection: `Adopt ${d05FutureMountain.b09FaceComparison.recommendedAlternativeId} as the analytic future-mountain planning surface with exact minimum relic voids.`,
+    effect: 'The compact east-face analytic surface and exact core-plus-one-cell relic exclusions become the future-mountain planning basis; no future material cell or expert influence kernel is accepted.',
+    technicalAcceptanceClaimed: false,
+  },
+  {
+    id: 'SEL-D06-FAIL-CLOSED-MECHANISM-RESERVATIONS',
+    scope: 'D06-mechanism-reservations',
+    selection: 'Preserve frozen stair/lift layouts; use four independent capped local vent risers, capped platform/smoke bays, eight sealed sump caps, and sealed EG-B fire-service review interface.',
+    effect: 'Exact fail-closed reservations control technical development, but no opening, mechanism, discharge, external route, compliance, or commissioning is accepted.',
     technicalAcceptanceClaimed: false,
   },
   ...readyGeometry.map((item) => ({
@@ -225,6 +300,32 @@ const report = {
       b09FaceSelected: connectorGeometry.funicularFaceComparison.disposition
         .exactRailCenterlineFrozen,
     },
+    d02ClosedDrainage: {
+      status: d02ClosedDrainage.status,
+      preferredAlternativeId: d02ClosedDrainage.preferredPlanningAlternative.alternativeId,
+      candidateCellCount: d02ClosedDrainage.alternatives.find(
+        ({ id }) => id === d02ClosedDrainage.preferredPlanningAlternative.alternativeId,
+      ).candidateCellManifest.cellCount,
+      noBuildLowRunCount: 1,
+    },
+    d05FutureMountain: {
+      status: d05FutureMountain.status,
+      recommendedAlternativeId: d05FutureMountain.b09FaceComparison.recommendedAlternativeId,
+      recommendationSelectedByThisLedger: true,
+      futureCellCount: d05FutureMountain.futureCellCount,
+    },
+    d06LifeSafety: {
+      status: d06LifeSafety.status,
+      recommendedB07CandidateId: d06LifeSafety.b07PublicShaftTransfer.recommendedCandidateId,
+      ventAlternativeId: d06LifeSafety.d06EmptyEightLifeSafety
+        .ventilationOutletAlternatives.recommendedAlternativeId,
+    },
+    cheyenneJcurve: {
+      status: cheyenneJcurve.status,
+      horizontalSteps: cheyenneJcurve.design.centerline.horizontalStepCount,
+      excavationCells: cheyenneJcurve.design.excavationReservation.cellCount,
+      selectedByThisLedger: true,
+    },
   },
   disposition: {
     selectionCount: selections.length,
@@ -232,16 +333,22 @@ const report = {
       'D02-B05',
       'D05 conservative planning controls',
       'D06 egress and system design basis',
+      'D02 capped-sump/no-build drainage basis',
+      'D05 compact east-face future-mountain basis',
+      'D06/B07 fail-closed route and mechanism reservations',
+      'P1-B03 exact Cheyenne J-curve',
+      'P1-B09 exact east-face funicular planning route',
       ...readyGeometry.map(({ blockerId }) => blockerId),
     ],
     remainingTechnicalWork: [
       'D02-S01 complete immutable full-save C1 census',
       'D02-S02 current C01/ISSUE-002 interface survey',
-      'D02-S03 exact hydrology and outfall evidence',
       'D02-S04 option-specific construction quantities',
-      'D05 exact future mountain and influence cellsets plus technical review',
-      'D06 exact mechanism, discharge, ownership, and interface cellsets',
-      'P1-B03, P1-B07, P1-B09, P1-B10, and the unfinished part of P1-B11',
+      'D02 closed-drainage inflow/storage/failure criteria, future states, technical review, owners, and interfaces',
+      'D05 exact canonical future material states, expert influence kernels, support treatment, technical review, owners, and interfaces',
+      'D06 mechanism engineering, external discharge/access, technical review, owners, and interfaces',
+      'P1-B03, P1-B07, P1-B09, and P1-B10 technical acceptance after their planning geometry selections',
+      'P1-B11 exact Grand Avenue/PassageWay/external interface points, profiles, owners, and contracts',
     ],
     d02Resolved: false,
     d05Resolved: false,

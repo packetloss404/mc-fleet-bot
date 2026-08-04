@@ -28,6 +28,7 @@ The planning model is compositional, not one undifferentiated precedence list:
 | Current-world transform, zones, stops, and interfaces | `05-combined-zones/site-coordinates.json` |
 | Terrain, biome, water, cover, and generated structures | the Phase 0 rerun post snapshot and `05-combined-zones/phase0-survey-evidence.json` |
 | Current-world build sequence and pending gates | `05-combined-zones/MASTERPLAN.md` |
+| Current-world factual geology labels and plaque copy | Masterplan 05 D07 in `05-combined-zones/phase1-design-decisions.json` and `05-combined-zones/phase1-empty-eight-geology-design.json`; Masterplan 04 retains only the local `Y=200` contact/plaque anchor and architectural material contrast |
 | Authoritative measured map | `05-combined-zones/maps/current-plus-proposed-phase0-overlay.png` |
 
 All other prose is explanatory or design-development history when it conflicts with this matrix. Renderings are communication assets, never measured geometry.
@@ -37,7 +38,7 @@ All other prose is explanatory or design-development history when it conflicts w
 Masterplan 04's normalized local geometry uses north `-Z`, east `+X`, and up `+Y`. The root coordinate registry and root contractor brief control conflicts elsewhere in 04:
 
 - one continuous mountain; no V-shaped ravine;
-- granite/limestone contact at local `Y=200`;
+- authored granite/limestone architectural material transition at local `Y=200`;
 - Houston/local origin at `(0,0,0)`;
 - public shaft head at `(60,0,-70)`, observation landing at `(60,-50,-70)`, and lower lobby study point at `(60,-100,-100)`;
 - SubTropolis envelope `X=-100…100`, `Y=-100…0`, `Z=-300…-100`;
@@ -47,6 +48,8 @@ Masterplan 04's normalized local geometry uses north `-Z`, east `+X`, and up `+Y
 - funicular plus summit road return, with no Combined Complex return skybridge.
 
 The `Y=100` values in `design-plan.md`, `development-plan.md`, and `working-plan.md`, and the `Y=400` deliberation value in `discussion-notes.md`, do not control. Those documents remain design-development records. The root registry and contractor brief fix the normalized datum at local `Y=200`.
+
+Masterplan 05 D07 controls factual interpretation and plaque copy. Legacy claims that this material transition is a natural contact, thrust/overthrust, laccolith, “geologically honest,” or proof of a `270 Ma` Bethany Falls age are superseded and must not enter signage, compiler output, or release evidence.
 
 ## Masterplan 04 to Masterplan 05 placement bridge
 
@@ -64,7 +67,7 @@ localY <= 0: worldY = 72 + 1.28 × localY
 localY >= 0: worldY = 72 + 0.29 × localY
 ```
 
-The vertical study is inactive for construction. It has no approved block-rounding policy, and exact child geometry has not yet been compiled through it.
+The vertical study is inactive for construction. It has no approved block-rounding policy, and the complete accepted, owned child setout has not yet been compiled through it.
 
 | 04 normalized anchor | Local | 05 world study |
 |---|---:|---:|
@@ -104,4 +107,4 @@ The plan to advance is `05-combined-zones/MASTERPLAN.md`, because it is the laye
 4. Phase 4 — fit-out;
 5. Phase 5 — transport and commissioning.
 
-This identifies the plan; it does not authorize it. Before any construction compiler can exist, Phase 1 must close the normalized child registry, inclusive-bound/cell-set convention, vertical rounding, service and funicular centerlines, hydrology and protected-relic ownership, exact interfaces, entity/ownership gates, forward and rollback operations, and separate user authorization.
+This identifies the plan; it does not authorize it. Before any construction compiler can exist, Phase 1 must close the normalized child registry, inclusive-bound/cell-set convention, vertical rounding, technical acceptance/ownership/interface binding of the selected service and funicular centerlines, hydrology and protected-relic ownership, exact interfaces, entity/ownership gates, forward and rollback operations, and separate user authorization.

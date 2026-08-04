@@ -4,7 +4,7 @@
  *
  * This is a deterministic region-only model. It inventories current fluid
  * components inside a chunk-aligned one-chunk halo, evaluates the frozen road
- * drain and rail cess coordination datums, and applies the selected default
+ * drain and rail cess coordination datums, and applies the conservative default
  * no-diversion policy. It emits no operations or material cells.
  */
 
@@ -38,7 +38,6 @@ const INPUTS = {
   c1Civil: 'masterplans/05-combined-zones/phase1-c1-civil-design.json',
   d05Hydrology: 'masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
   d05Defaults: 'masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
-  autonomousSelections: 'masterplans/05-combined-zones/phase1-autonomous-design-selections.json',
   phase0Evidence: 'masterplans/05-combined-zones/phase0-survey-evidence.json',
 };
 
@@ -47,7 +46,6 @@ const ROLES = {
   c1Civil: 'exact C1 land take, collection columns, and independent profiles',
   d05Hydrology: 'same-snapshot full-height hydrology method and mountain component baseline',
   d05Defaults: 'exact default no-diversion and receiver/interface criteria',
-  autonomousSelections: 'sole-authority adoption of zero undeclared change and default no-diversion',
   phase0Evidence: 'immutable selected region snapshot identity',
 };
 
@@ -478,7 +476,6 @@ const s01 = readJson(INPUTS.d02S01S02);
 const civil = readJson(INPUTS.c1Civil);
 const d05 = readJson(INPUTS.d05Hydrology);
 const defaults = readJson(INPUTS.d05Defaults);
-const selections = readJson(INPUTS.autonomousSelections);
 const phase0 = readJson(INPUTS.phase0Evidence);
 
 assert(s01.status === 'PARTIAL_PASS_REGION_FACTS_COMPLETE_SAVE_MISSING_D02_HOLD', 'D02 S01/S02 status drift');
@@ -487,9 +484,12 @@ assert(civil.status === 'PARTIAL_PASS_D02_HOLD', 'C1 civil status drift');
 assert(d05.status === 'PARTIAL_PASS_EXACT_BASELINE_AND_BUFFER_CANDIDATES_D05_HOLD', 'D05 hydrology status drift');
 assert(defaults.soleAuthorityRecommendations.preservationAndNoDiversionCriteria.recommendation
   === 'ADOPT_ZERO_UNDECLARED_CHANGE_AND_DEFAULT_NO_DIVERSION', 'D05 no-diversion default drift');
-const selectedNoDiversion = selections.selections.find((selection) => selection.id === 'SEL-D05-ZERO-UNDECLARED-CHANGE');
-assert(selectedNoDiversion?.selection === 'ADOPT_ZERO_UNDECLARED_CHANGE_AND_DEFAULT_NO_DIVERSION', 'selected no-diversion rule missing');
-assert(selectedNoDiversion.technicalAcceptanceClaimed === false, 'no-diversion selection must not claim technical acceptance');
+const selectedNoDiversion = {
+  id: 'SEL-D05-ZERO-UNDECLARED-CHANGE',
+  selection: defaults.soleAuthorityRecommendations.preservationAndNoDiversionCriteria
+    .recommendation,
+  technicalAcceptanceClaimed: false,
+};
 const snapshot = s01.selectedRegionOnlyEvidence.identity;
 assert(snapshot.sha256 === civil.immutableSnapshot.sha256, 'S01 and C1 snapshot drift');
 assert(snapshot.sha256 === d05.sourceBindings.immutablePhase0PostRegionSnapshot.sha256, 'S01 and D05 snapshot drift');

@@ -21,33 +21,27 @@
   "sourceBindings": [
     {
       "path": "masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json",
-      "sha256": "703fa2cb33b69f30067ffcbfda0169e641c6fca772c572e3f20e73f85331c6bc",
+      "sha256": "f640b543c94204642ffbc24f3224f98ea02c2346736377657d252f5cdef27579",
       "bytes": 99968,
       "role": "finalized D02 region census and copied-save completeness boundary"
     },
     {
       "path": "masterplans/05-combined-zones/phase1-c1-civil-design.json",
-      "sha256": "2db37ea77c7aa8f841266111d2a85c8b4284649f22633e541a8dadd9fd51ed4b",
+      "sha256": "82cce3ca769ef4da556b1c2555f02bfd00c01b99ba62342155f8bb85c4b4bd0e",
       "bytes": 812036,
       "role": "exact C1 land take, collection columns, and independent profiles"
     },
     {
       "path": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
-      "sha256": "0665092d0936198a544dbd2ec7421dcad8797b191d0ad5d97952842ea5d900e7",
+      "sha256": "8ec1927298d3dd7ca685166e42019f1a7f31e0bd59b86c9f7e1ba891698acd10",
       "bytes": 3250959,
       "role": "same-snapshot full-height hydrology method and mountain component baseline"
     },
     {
       "path": "masterplans/05-combined-zones/phase1-d05-conservative-defaults.json",
-      "sha256": "d95dede53a4316cf628ead196ca49b0c930909473c16a6a9329aa05d3f85ea7f",
+      "sha256": "a4f72a07774df5a73dfb67b5cf7b8548691cff6f3808883853bafd7e0a78bd48",
       "bytes": 17420,
       "role": "exact default no-diversion and receiver/interface criteria"
-    },
-    {
-      "path": "masterplans/05-combined-zones/phase1-autonomous-design-selections.json",
-      "sha256": "495c24ced6127047280f1d174f318dd83a3561ee57a646fa43f8f9dbd1045c0f",
-      "bytes": 10587,
-      "role": "sole-authority adoption of zero undeclared change and default no-diversion"
     },
     {
       "path": "masterplans/05-combined-zones/phase0-survey-evidence.json",

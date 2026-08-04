@@ -29,6 +29,10 @@ interface Report {
     d05S01: Record<string, unknown>;
     d06SurfaceEgress: Record<string, unknown>;
     connectorGeometry: Record<string, unknown>;
+    d02ClosedDrainage: Record<string, unknown>;
+    d05FutureMountain: Record<string, unknown>;
+    d06LifeSafety: Record<string, unknown>;
+    cheyenneJcurve: Record<string, unknown>;
   };
   selections: Array<{
     id: string;
@@ -87,10 +91,14 @@ describe('Combined Zones owner-delegated autonomous selections', () => {
     expect(Object.keys(report.sourceBindings)).toEqual([
       'd02',
       'd02RegionEvidence',
+      'd02ClosedDrainage',
       'd05',
       'd05RelicSurvey',
+      'd05FutureMountain',
       'd06',
+      'd06LifeSafety',
       'connectorGeometry',
+      'cheyenneJcurve',
     ]);
     for (const binding of Object.values(report.sourceBindings)) {
       const filename = path.join(ROOT, binding.path);
@@ -139,6 +147,29 @@ describe('Combined Zones owner-delegated autonomous selections', () => {
         b08Selected: true,
         b09FaceSelected: false,
       },
+      d02ClosedDrainage: {
+        status: 'PARTIAL_PASS_PREFERRED_CLOSED_SUMP_PLANNING_GEOMETRY_D02_HOLD',
+        preferredAlternativeId: 'ALT-D02-S04-D-HYBRID-CAPPED-SUMPS-WITH-AQUATIC-NO-BUILD-HOLD',
+        candidateCellCount: 432,
+        noBuildLowRunCount: 1,
+      },
+      d05FutureMountain: {
+        status: 'PARTIAL_PASS_EXACT_FUTURE_MOUNTAIN_ALTERNATIVES_RECOMMENDATION_ONLY_D05_G02_HOLD',
+        recommendedAlternativeId: 'FM-01-COMPACT-EAST-FACE',
+        recommendationSelectedByThisLedger: true,
+        futureCellCount: 0,
+      },
+      d06LifeSafety: {
+        status: 'PARTIAL_PASS_FAIL_CLOSED_B07_D06_ALTERNATIVES_FROZEN_ALL_RELEASE_AND_COMMISSIONING_HOLD',
+        recommendedB07CandidateId: 'B07-C-WEST-2',
+        ventAlternativeId: 'VENT-A-FOUR-INDEPENDENT-LOCAL-RISERS',
+      },
+      cheyenneJcurve: {
+        status: 'PARTIAL_PASS_EXACT_JCURVE_PLANNING_GEOMETRY_P1_B03_TECHNICAL_HOLD',
+        horizontalSteps: 800,
+        excavationCells: 15972,
+        selectedByThisLedger: true,
+      },
     });
   });
 
@@ -162,13 +193,19 @@ describe('Combined Zones owner-delegated autonomous selections', () => {
       'D06-egress',
       'D06-systems',
       'P1-B08-SERVICE-TUNNEL-CENTERLINE',
+      'D02-S04-closed-drainage',
+      'P1-B03-CHEYENNE-JCURVE',
+      'P1-B07-PUBLIC-SHAFT-DOGLEG',
+      'P1-B09-FUNICULAR-CENTERLINE',
+      'P1-B10-MOUNTAIN-SOLID-AND-RELIC-VOIDS',
+      'D06-mechanism-reservations',
       'P1-B01-VERTICAL-AUTHORITY-ACTIVATION',
       'P1-B02-CHEYENNE-INTERNAL-FIT',
       'P1-B04-SUBTROPOLIS-NORMALIZATION',
       'P1-B05-SUBTROPOLIS-PILLARS',
       'P1-B06-HOUSTON-GENERIC-PLACEMENT',
     ]);
-    expect(report.disposition.selectionCount).toBe(14);
+    expect(report.disposition.selectionCount).toBe(20);
     for (const selection of report.selections) {
       expect(selection.selection.length).toBeGreaterThan(30);
       expect(selection.effect.length).toBeGreaterThan(45);
@@ -184,7 +221,7 @@ describe('Combined Zones owner-delegated autonomous selections', () => {
       d06Resolved: false,
       r00G02Passed: false,
     });
-    expect(report.disposition.remainingTechnicalWork).toHaveLength(7);
+    expect(report.disposition.remainingTechnicalWork).toHaveLength(8);
     expect(report.safetyBoundary).toEqual({
       offlineOnly: true,
       operations: [],

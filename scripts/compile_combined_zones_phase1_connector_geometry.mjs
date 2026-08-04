@@ -1036,6 +1036,8 @@ ${funicularComparison.candidates.map((candidate) => `| ${candidate.id} | ${candi
 
 Both transects have more horizontal run than the transformed 174-block rise requires at the absolute Minecraft 1:1 rail limit. That does **not** select a face: the future mountain solid is absent, and the summit design anchor is ${funicularComparison.immutableEndpointSurfaceComparison.summit.designMinusSurfaceY} blocks above the immutable current surface at that X/Z. B09 remains HOLD pending an accepted future face, integer switchbacks with level curves, station throats, maintenance/egress, protected-feature clearance, hydrology, and ownership.
 
+This packet is the source-bound precursor comparison. Consult **phase1-d05-future-mountain-alternatives.json** and **phase1-autonomous-design-selections.json** for later planning-selection status; those downstream records do not alter this packet's historical input finding or authorize construction.
+
 ## Snapshot and release boundary
 
 - Immutable copied snapshot: \`${snapshot.path}\`
