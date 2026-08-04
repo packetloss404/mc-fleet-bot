@@ -1800,6 +1800,36 @@ node scripts/compile_combined_zones_empty_eight_geology_design.mjs
   guards, operations, preflight, pilot, rollback, and poststate QA belong to
   G03-G19; C2 remains omitted.
 
+- Reproduce the autonomous D02/D05/D06 and connector evidence wave in this
+  dependency order:
+
+```bash
+node scripts/generate_combined_zones_d02_authority_packet.mjs
+node --expose-gc --max-old-space-size=4096 \
+  scripts/audit_combined_zones_d02_s01_s02_region_evidence.mjs
+node scripts/generate_combined_zones_d05_conservative_defaults.mjs
+node scripts/audit_combined_zones_d05_relic_condition_access.mjs
+node scripts/compile_combined_zones_d06_egress_geometry.mjs
+node scripts/compile_combined_zones_phase1_connector_geometry.mjs
+node scripts/generate_combined_zones_autonomous_selections.mjs
+node --expose-gc --max-old-space-size=4096 \
+  scripts/audit_combined_zones_d02_s03_hydrology_outfalls.mjs
+node scripts/compile_combined_zones_d05_future_state_contract.mjs
+node scripts/audit_combined_zones_r00_readiness.mjs
+```
+
+- D02-S03 is a read-only 62,816,256-cell C1-plus-halo component audit. Zero
+  acceptable receiver candidates means exact closed drainage, sumps/pumps, or
+  an explicit hash-bound receiver/interface exception must be designed; it is
+  never permission to invent an outfall.
+- D05-S02 defines twelve fail-closed future/direct/influence set families. A
+  passing contract with zero emitted cells means the schema is ready while its
+  geometry, mechanisms, ownership/interfaces, and accepted technical kernels
+  are not. Never promote an unknown influence to an empty accepted set.
+- The connector compiler freezes review geometry only. B08's selected
+  220-step route is not commissioned; B07's mineshaft overlap and B09's absent
+  future mountain face remain hard HOLDs. All outputs contain zero operations.
+
 - R00 is the nonphysical G01-G07 design freeze. D02, D05, and D06 may resolve
   only from immutable pre-R00 design/external-acceptance evidence. Operations,
   source guards, manifests, preflights, live entity clearance, pilots,

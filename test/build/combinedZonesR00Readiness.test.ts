@@ -53,6 +53,18 @@ interface Report {
     holdCount: number;
     r00Ready: boolean;
     blockerCountsByClassification: Record<string, number>;
+    delegatedSelectionsValid: boolean;
+    ownerDelegatedSelectionCount: number;
+    additionalHumanDecisionMakersRequired: boolean;
+    remainingGeometryBlockerCount: number;
+    copiedSaveCandidatesAudited: number;
+    completeCopiedSaveCandidates: number;
+    d05S01SurveyComplete: boolean;
+    b08ExactRouteSelected: boolean;
+    b07ConflictCellCount: number;
+    d02AcceptableOutfallCandidateCount: number;
+    d05FutureStateContractPassed: boolean;
+    d05FutureStateCellCount: number;
     autonomousOfflineWorkMayContinue: boolean;
     autonomousOfflineWorkCanCompleteR00: boolean;
     externalEvidenceStillRequired: boolean;
@@ -115,6 +127,18 @@ describe('Combined Zones R00 readiness audit', () => {
         passCount: 1,
         holdCount: 6,
         r00Ready: false,
+        delegatedSelectionsValid: true,
+        ownerDelegatedSelectionCount: 14,
+        additionalHumanDecisionMakersRequired: false,
+        remainingGeometryBlockerCount: 5,
+        copiedSaveCandidatesAudited: 56,
+        completeCopiedSaveCandidates: 0,
+        d05S01SurveyComplete: true,
+        b08ExactRouteSelected: true,
+        b07ConflictCellCount: 217,
+        d02AcceptableOutfallCandidateCount: 0,
+        d05FutureStateContractPassed: true,
+        d05FutureStateCellCount: 0,
         autonomousOfflineWorkMayContinue: true,
         autonomousOfflineWorkCanCompleteR00: false,
         externalEvidenceStillRequired: true,

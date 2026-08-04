@@ -36,10 +36,19 @@ const INPUTS = Object.freeze({
   releaseContract: 'masterplans/05-combined-zones/phase1-release-contract.json',
   designDecisions: 'masterplans/05-combined-zones/phase1-design-decisions.json',
   c1CivilDesign: 'masterplans/05-combined-zones/phase1-c1-civil-design.json',
+  d02AuthorityPacket: 'masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json',
+  d02RegionEvidence: 'masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
+  d02HydrologyOutfalls: 'masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json',
   geometryCoordination: 'masterplans/05-combined-zones/phase1-geometry-coordination.json',
   protectedRelicClearance: 'masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
   d05HydrologyRelicDesign: 'masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
+  d05ConservativeDefaults: 'masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
+  d05RelicSurvey: 'masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json',
+  d05FutureStateContract: 'masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json',
   emptyEightGeologyDesign: 'masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
+  d06EgressGeometryDesign: 'masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
+  connectorGeometry: 'masterplans/05-combined-zones/phase1-connector-geometry.json',
+  autonomousDesignSelections: 'masterplans/05-combined-zones/phase1-autonomous-design-selections.json',
   siteGateAudit: 'masterplans/05-combined-zones/phase1-site-gate-audit.json',
 });
 
@@ -80,7 +89,26 @@ const geometry = readJson(INPUTS.geometryCoordination);
 const relics = readJson(INPUTS.protectedRelicClearance);
 const d05 = readJson(INPUTS.d05HydrologyRelicDesign);
 const d06 = readJson(INPUTS.emptyEightGeologyDesign);
+const d02RegionEvidence = readJson(INPUTS.d02RegionEvidence);
+const d02HydrologyOutfalls = readJson(INPUTS.d02HydrologyOutfalls);
+const d05RelicSurvey = readJson(INPUTS.d05RelicSurvey);
+const d05FutureStateContract = readJson(INPUTS.d05FutureStateContract);
+const connectorGeometry = readJson(INPUTS.connectorGeometry);
+const delegatedSelections = readJson(INPUTS.autonomousDesignSelections);
 const site = readJson(INPUTS.siteGateAudit);
+
+const selectedGeometryIds = delegatedSelections.selections
+  ?.map(({ scope }) => scope)
+  .filter((scope) => scope.startsWith('P1-B')) ?? [];
+const remainingGeometryIds = geometry.blockerMatrix
+  ?.map(({ id }) => id)
+  .filter((id) => !selectedGeometryIds.includes(id)) ?? [];
+const delegatedSelectionsValid = delegatedSelections.status
+    === 'PARTIAL_PASS_OWNER_DELEGATED_SELECTIONS_FROZEN_TECHNICAL_GATES_HOLD'
+  && delegatedSelections.authority?.additionalHumanDecisionMakersRequired === false
+  && delegatedSelections.disposition?.selectionCount === delegatedSelections.selections?.length
+  && delegatedSelections.safetyBoundary?.worldEditAuthorized === false
+  && delegatedSelections.safetyBoundary?.operationCellCount === 0;
 
 const authorityBindingChecks = (contract.authorityBindings ?? []).map((expected) => {
   const filename = absolute(expected.path);
@@ -161,25 +189,29 @@ const gates = [
     id: 'G02_DESIGN_DECISIONS',
     status: decisionsPassed ? 'PASS' : 'HOLD',
     evidence: [sources.designDecisions, sources.c1CivilDesign,
-      sources.d05HydrologyRelicDesign, sources.emptyEightGeologyDesign],
+      sources.d02AuthorityPacket, sources.d05HydrologyRelicDesign,
+      sources.d02RegionEvidence, sources.d02HydrologyOutfalls,
+      sources.d05ConservativeDefaults, sources.d05RelicSurvey,
+      sources.d05FutureStateContract, sources.emptyEightGeologyDesign,
+      sources.d06EgressGeometryDesign, sources.autonomousDesignSelections],
     blockers: decisionsPassed ? [] : [
       blocker(
         'R00-G02-D02-EXTERNAL-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'Accept all six D02 geotechnical, structural/C01, hydraulic/outfall, visual, and quantity design packages.',
-        INPUTS.c1CivilDesign,
+        'Supply one complete immutable copied save with region/entities/poi/level.dat, then finish D02-S01/S02 entity/POI/world identity. D02-S03 proves zero acceptable current outfall candidates, so exact constructed drainage/inverts/pipes/culverts/sumps/pumps, future fluid accounting, receiver ownership/interfaces, capacity rules, typologies, and quantities remain.',
+        INPUTS.d02HydrologyOutfalls,
       ),
       blocker(
         'R00-G02-D05-EXTERNAL-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'Accept reviewed relic buffers, east-igloo disposition, hydrology ownership/interfaces, future terrain/influence model, and expert civil/geotechnical criteria.',
-        INPUTS.d05HydrologyRelicDesign,
+        'Satisfy the D05-S02 future-state compiler contract: close its geometry, ownership, interface, hydrology/geotechnical, and implementation dependencies, then emit and check all 12 exact future-state/influence families. It currently emits zero cells by design.',
+        INPUTS.d05FutureStateContract,
       ),
       blocker(
         'R00-G02-D06-EXTERNAL-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'Survey and accept both exterior egress endpoints and the complete external life-safety, discharge, fire/service, and mechanism design.',
-        INPUTS.emptyEightGeologyDesign,
+        'Compile and accept the exact smoke, ventilation, lift, barrier, emergency-circuit, drainage, fire/service, outlet, ownership, and interface mechanism cellsets. Both dry exterior endpoints and the conservative D06 design basis are already frozen.',
+        INPUTS.d06EgressGeometryDesign,
       ),
       ...(!descendantEvidenceCycleFree ? [
         blocker(
@@ -194,12 +226,14 @@ const gates = [
   {
     id: 'G03_INTEGER_SET_OUT',
     status: 'HOLD',
-    evidence: [sources.coordinateRegistry, sources.geometryCoordination],
+    evidence: [sources.coordinateRegistry, sources.geometryCoordination,
+      sources.d06EgressGeometryDesign, sources.connectorGeometry,
+      sources.d05FutureStateContract, sources.autonomousDesignSelections],
     blockers: [
       blocker(
         'R00-G03-DESIGN-AUTHORITY-CHOICES',
         'EXTERNAL_EVIDENCE',
-        `Close the ${geometry.blockerMatrix?.length ?? 0} frozen geometry blockers without inferring null elevations, child transforms, routes, solids, or interfaces.`,
+        `Close the ${remainingGeometryIds.length} remaining geometry blockers (${remainingGeometryIds.join(', ')}) without inferring null elevations, routes, solids, or interfaces. Five conservative geometry choices are already owner-delegated and frozen.`,
         INPUTS.geometryCoordination,
       ),
       blocker(
@@ -213,7 +247,8 @@ const gates = [
   {
     id: 'G04_OWNERSHIP',
     status: 'HOLD',
-    evidence: [sources.geometryCoordination, sources.siteGateAudit],
+    evidence: [sources.geometryCoordination, sources.d05FutureStateContract,
+      sources.siteGateAudit],
     blockers: [
       blocker(
         'R00-G04-OWNER-ACCEPTANCE',
@@ -232,7 +267,8 @@ const gates = [
   {
     id: 'G05_INTERFACES',
     status: 'HOLD',
-    evidence: [sources.geometryCoordination, sources.siteGateAudit],
+    evidence: [sources.geometryCoordination, sources.d05FutureStateContract,
+      sources.siteGateAudit],
     blockers: [
       blocker(
         'R00-G05-INTERFACE-ACCEPTANCE',
@@ -251,13 +287,15 @@ const gates = [
   {
     id: 'G06_PROTECTED_FEATURES',
     status: relics.g06Disposition?.status === 'PASS' ? 'PASS' : 'HOLD',
-    evidence: [sources.protectedRelicClearance, sources.phase0Evidence],
+    evidence: [sources.protectedRelicClearance, sources.phase0Evidence,
+      sources.d05ConservativeDefaults, sources.d05RelicSurvey,
+      sources.autonomousDesignSelections],
     blockers: relics.g06Disposition?.status === 'PASS' ? [] : [
       blocker(
         'R00-G06-RELIC-REVIEW',
         'EXTERNAL_EVIDENCE',
-        'Accept reviewed positive buffers or evidence-backed zero-margin treatment, resolve the absent east igloo, and accept entrance/template treatment.',
-        INPUTS.protectedRelicClearance,
+        'Review the exact future design against the completed D05-S01 condition/access evidence and frozen core-plus-one-cell minimum exclusions; expand them wherever the evidence requires. Candidate observation routes authorize no access.',
+        INPUTS.d05RelicSurvey,
       ),
       blocker(
         'R00-G06-EXACT-DESIGN-CLEARANCE',
@@ -270,8 +308,14 @@ const gates = [
   {
     id: 'G07_CIVIL_HYDROLOGY_STRUCTURE',
     status: 'HOLD',
-    evidence: [sources.c1CivilDesign, sources.d05HydrologyRelicDesign,
-      sources.emptyEightGeologyDesign],
+    evidence: [sources.c1CivilDesign, sources.d02AuthorityPacket,
+      sources.d02RegionEvidence, sources.d02HydrologyOutfalls,
+      sources.d05HydrologyRelicDesign,
+      sources.d05ConservativeDefaults, sources.d05RelicSurvey,
+      sources.d05FutureStateContract, sources.emptyEightGeologyDesign,
+      sources.d06EgressGeometryDesign,
+      sources.connectorGeometry,
+      sources.autonomousDesignSelections],
     blockers: [
       blocker(
         'R00-G07-EXPERT-DESIGN-ACCEPTANCE',
@@ -347,9 +391,27 @@ const report = {
     holdCount,
     r00Ready: holdCount === 0,
     blockerCountsByClassification,
+    delegatedSelectionsValid,
+    ownerDelegatedSelectionCount: delegatedSelections.disposition?.selectionCount ?? 0,
+    additionalHumanDecisionMakersRequired: false,
+    remainingGeometryBlockerCount: remainingGeometryIds.length,
+    copiedSaveCandidatesAudited: d02RegionEvidence.copiedSaveCompletenessAudit?.candidateCount ?? 0,
+    completeCopiedSaveCandidates: d02RegionEvidence.copiedSaveCompletenessAudit?.completeCandidateCount ?? 0,
+    d05S01SurveyComplete: d05RelicSurvey.status === 'D05_S01_OFFLINE_SURVEY_COMPLETE_D05_G06_HOLD',
+    b08ExactRouteSelected: selectedGeometryIds.includes('P1-B08-SERVICE-TUNNEL-CENTERLINE'),
+    b07ConflictCellCount: connectorGeometry.publicShaftDogleg
+      ?.snapshotAndIntersectionAudit?.generatedStructureExcavationIntersections?.reduce(
+        (sum, item) => sum + item.intersection.cellCount,
+        0,
+      ) ?? 0,
+    d02AcceptableOutfallCandidateCount: d02HydrologyOutfalls.receiverEvaluation
+      ?.acceptedReceiverCount ?? 0,
+    d05FutureStateContractPassed: d05FutureStateContract
+      .readinessDisposition?.contractSchemaPassed === true,
+    d05FutureStateCellCount: d05FutureStateContract.futureCellCount ?? 0,
     autonomousOfflineWorkMayContinue: true,
     autonomousOfflineWorkCanCompleteR00: false,
-    nextAutonomousArtifact: 'T01/T02 compiler and ownership/interface audit scaffolds after this gate model',
+    nextAutonomousArtifact: 'Complete-save audit, exact D02/D05/D06 surveys, and remaining geometry compilers before T01/T02',
     externalEvidenceStillRequired: true,
   },
 };
@@ -359,6 +421,7 @@ const markdown = `# Combined Zones Phase 1 R00 readiness audit\n\n`
   + `This audit evaluates only the nonphysical R00 design-freeze gates G01-G07. It does not use R01 pilot, execution, rollback, route-QA, or post-state evidence to close a design decision.\n\n`
   + `## Sequencing result\n\n`
   + `The evidence graph is cycle-free: **${descendantEvidenceCycleFree ? 'PASS' : 'FAIL'}**. The required order is D01-D07 design acceptance → R00 freeze → R01 physical validation → R02 eligibility.\n\n`
+  + `The owner-delegated ledger freezes **${report.summary.ownerDelegatedSelectionCount}** conservative planning choices. No additional human decision-makers are required. The remaining holds are technical evidence, exact-cell compilation, independent checks, ownership/interface cellsets, and later release authorization.\n\n`
   + `## R00 gates\n\n`
   + `| Gate | Status | Current blockers |\n|---|---|---:|\n`
   + gates.map((gate) => `| ${gate.id} | **${gate.status}** | ${gate.blockers.length} |`).join('\n')

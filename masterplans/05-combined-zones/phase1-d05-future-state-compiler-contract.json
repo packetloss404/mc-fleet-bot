@@ -1,0 +1,982 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-d05-future-state-compiler-contract",
+  "generatedAtUtc": "2026-08-04T21:00:00Z",
+  "status": "CONTRACT_PASS_INPUT_READINESS_HOLD_ZERO_FUTURE_CELLS",
+  "worldEditAuthorized": false,
+  "constructionOwnershipAuthorized": false,
+  "futureStateAuthorized": false,
+  "operationCellCount": 0,
+  "materialCellCount": 0,
+  "futureCellCount": 0,
+  "constructionCellCount": 0,
+  "sourceBindings": {
+    "coordinateRegistry": {
+      "path": "masterplans/05-combined-zones/site-coordinates.json",
+      "bytes": 43946,
+      "sha256": "b825f3c1e5f5696284d17c64dd469ba8efa845f6846e76032cb91bff4d4fdf62"
+    },
+    "geometryCoordination": {
+      "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
+      "bytes": 35526,
+      "sha256": "c7ab48f2733f1c45eee63e23459859e9536c79fef675c58bd1b8f1dbc0397f6c"
+    },
+    "d05HydrologyBaseline": {
+      "path": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
+      "bytes": 3250959,
+      "sha256": "0665092d0936198a544dbd2ec7421dcad8797b191d0ad5d97952842ea5d900e7"
+    },
+    "d05ConservativeDefaults": {
+      "path": "masterplans/05-combined-zones/phase1-d05-conservative-defaults.json",
+      "bytes": 17420,
+      "sha256": "d95dede53a4316cf628ead196ca49b0c930909473c16a6a9329aa05d3f85ea7f"
+    },
+    "d05RelicConditionAccess": {
+      "path": "masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json",
+      "bytes": 120795,
+      "sha256": "32ce0b791957a17a2cb4801cfe55bda7c5210a4138bcf6924934919116fdab8f"
+    },
+    "d06EgressGeometry": {
+      "path": "masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json",
+      "bytes": 13680,
+      "sha256": "e54c80bf5fa1d59d47c89c25e1b866f456b1f44296929eaf7821758ebe7e8a39"
+    },
+    "immutablePhase0PostRegionSnapshot": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+      "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+      "regionFileCount": 51,
+      "bytes": 290946492,
+      "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+    }
+  },
+  "authorityBoundary": {
+    "permittedInputs": "coordinates, upstream geometry, D05 baseline/defaults/S01, D06 egress geometry, immutable copied region snapshot",
+    "excludedInputs": [
+      "autonomous design selections",
+      "R00 readiness or gate advancement",
+      "operations, manifests, preflight, live entities, execution, rollback, or post-state evidence"
+    ],
+    "planningEnvelopeIsMaterial": false,
+    "missingInputRule": "Emit a dependency HOLD and null set hashes; never infer an empty accepted set, mountain, route, owner, interface, kernel, outlet, or construction cell."
+  },
+  "planningScope": {
+    "coordinateRegistryZ09": {
+      "bounds": {
+        "minX": 1648,
+        "maxX": 2448,
+        "minY": 72,
+        "maxY": 304,
+        "minZ": -1128,
+        "maxZ": -528
+      },
+      "status": "proposed-surface-and-solid-volume",
+      "relicRule": "No-touch exhibit voids: preserve each generated structure in place, keep its exact blocks out of grading and shell ownership, and provide only separately approved observation access."
+    },
+    "compiledCoordinationEnvelope": {
+      "representation": "half-open-axis-aligned-box",
+      "bounds": {
+        "minXInclusive": 1648,
+        "maxXExclusive": 2448,
+        "minYInclusive": 72,
+        "maxYExclusive": 304,
+        "minZInclusive": -1128,
+        "maxZExclusive": -528
+      },
+      "dimensions": {
+        "x": 800,
+        "y": 232,
+        "z": 600
+      },
+      "cellCount": 111360000,
+      "purpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set"
+    },
+    "interpretation": "These bounds validate and limit future inputs. They own no block and cannot be filled to fabricate a mountain."
+  },
+  "deterministicCompilerContract": {
+    "contractId": "D05-S02-COMPILER-CONTRACT-V1",
+    "coordinateOrder": "numeric x, then y, then z",
+    "canonicalBlockState": "JSON object with Name first and Properties keys lexicographically sorted; complete properties required",
+    "coordinateSetHash": {
+      "algorithm": "SHA-256",
+      "preamble": "combined-zones-coordinate-cell-set-v1\\n",
+      "record": "x,y,z\\n"
+    },
+    "blockStateSetHash": {
+      "algorithm": "SHA-256",
+      "preamble": "combined-zones-block-state-cell-set-v1\\n",
+      "record": "x,y,z<TAB>canonical-state-json\\n"
+    },
+    "typedFamilyHash": {
+      "algorithm": "SHA-256",
+      "preamble": "combined-zones-d05-typed-family-v1\\n",
+      "record": "family-id<TAB>x,y,z<TAB>canonical-state-json<TAB>owner-id<TAB>role-id\\n"
+    },
+    "futureModelManifestHash": {
+      "algorithm": "SHA-256",
+      "preamble": "combined-zones-d05-future-model-manifest-v1\\n",
+      "orderedInputs": [
+        "contract identity",
+        "all source bindings",
+        "snapshot identity",
+        "coordinate/rounding contract",
+        "owner registry hash",
+        "interface-contract manifest hash",
+        "influence-kernel manifest hash",
+        "all twelve typed-family hashes in canonical order"
+      ]
+    },
+    "compilationOrder": [
+      "validate sources and immutable snapshot identity",
+      "validate activated exact coordinate/rounding contract",
+      "validate proposed-state registry and total directly-modelled column functions",
+      "derive mutually exclusive direct state families",
+      "compile explicit staging/access swept volumes",
+      "derive exact current hydrology/cryosphere intersections",
+      "apply accepted finite influence kernels and directed drainage graph",
+      "apply relic support/access exclusions without promoting S01 candidates",
+      "validate one-owner assignments and exact directional interfaces",
+      "run no-unreviewed-overlap, component accounting, boundary receiver, and family completeness gates",
+      "emit hashes only when every required input and readiness check passes"
+    ],
+    "overlapAndOwnershipRules": [
+      "Direct material/change families are mutually exclusive per exact cell.",
+      "A derived diagnostic interaction family may reference a direct cell but never transfers its canonical physical owner.",
+      "Every physical direct or influence cell has exactly one owner; zero-owner and multi-owner cells fail.",
+      "Every accepted owner-to-owner adjacency or transition is matched one-to-one by an exact directional interface contract.",
+      "No wildcard, range-only seam, envelope ownership, last-writer-wins, or silent clipping is accepted."
+    ]
+  },
+  "requiredInputSchemas": {
+    "proposedStateRegistry": {
+      "requiredFields": [
+        "modelId",
+        "modelVersion",
+        "sourceSnapshotSha256",
+        "coordinateContractSha256",
+        "scopeId",
+        "records",
+        "directlyModelledColumns"
+      ],
+      "recordFields": [
+        "x",
+        "y",
+        "z",
+        "expectedCurrentCanonicalState",
+        "futureCanonicalState",
+        "familyId",
+        "roleId",
+        "ownerId",
+        "sourceDesignId"
+      ],
+      "rules": [
+        "records are unique by coordinate and sorted x/y/z",
+        "every current state matches the immutable snapshot exactly",
+        "every changed record belongs to exactly one direct family",
+        "every directly modelled X/Z column has a deterministic future surface/solid function",
+        "unmodelled cells are unchanged, not implicitly air or fill"
+      ]
+    },
+    "ownershipRegistry": {
+      "requiredOwnerIds": [
+        "CZ05-PROTECTED-RELIC-CONTROL",
+        "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+        "CZ05-SCOPE-CONSTRUCTION-CONTROL"
+      ],
+      "requiredFields": [
+        "registryId",
+        "acceptedBy",
+        "acceptedAtUtc",
+        "cellAssignments",
+        "cellAssignmentManifestSha256"
+      ],
+      "rules": [
+        "exact coordinate assignments only",
+        "one canonical owner per physical direct or influence cell",
+        "coordination envelopes and diagnostic set membership never assign ownership",
+        "owner acceptance is external input; this compiler cannot self-accept"
+      ]
+    },
+    "interfaceContracts": {
+      "requiredFields": [
+        "contractId",
+        "fromOwnerId",
+        "toOwnerId",
+        "direction",
+        "interfaceCellSetSha256",
+        "transitionPairManifestSha256",
+        "beforeStateSetSha256",
+        "futureStateSetSha256",
+        "receiverId",
+        "acceptedBy"
+      ],
+      "rules": [
+        "each observed cross-owner adjacency/transition matches exactly one contract",
+        "direction and receiver are mandatory for fluid, discharge, access, and sealed boundaries",
+        "wildcards, bounding-box-only approval, broad overlaps, and last-writer-wins are invalid"
+      ]
+    },
+    "influenceKernelRegistry": {
+      "requiredFields": [
+        "kernelId",
+        "treatmentClass",
+        "integerOffsets",
+        "offsetSetSha256",
+        "seedSetSha256",
+        "boundaryRule",
+        "componentClosureRule",
+        "acceptedBy"
+      ],
+      "rules": [
+        "finite explicit integer offsets only",
+        "no inferred radius, wildcard, unbounded propagation, or boundary clipping",
+        "unknown influence is a HOLD and never an accepted empty set"
+      ]
+    }
+  },
+  "influenceExpansionRules": [
+    {
+      "id": "IR-DIRECT-NO-IMPLICIT-EXPANSION",
+      "appliesTo": [
+        "native-solid-retained",
+        "excavation-direct",
+        "fill-direct",
+        "liner-and-retaining-direct",
+        "surface-finish-direct"
+      ],
+      "rule": "Direct cells come only from canonical before/future state differences and typed future-state records. Apply no radius, shell, or envelope expansion.",
+      "requiredInput": "complete canonical proposed-state records for every direct cell"
+    },
+    {
+      "id": "IR-STAGING-SWEPT-VOLUME",
+      "appliesTo": [
+        "construction-staging-and-access"
+      ],
+      "rule": "Compile the explicit union of authored staging pads, access rasters, head/body clearance, temporary support, equipment sweep, and restoration cells; infer no corridor width.",
+      "requiredInput": "exact per-package swept-volume records and one owner per cell"
+    },
+    {
+      "id": "IR-CURRENT-FLUID-DIRECT-INTERSECTION",
+      "appliesTo": [
+        "water-and-lava-direct-interaction"
+      ],
+      "rule": "Intersect the union of direct/staging cells with exact current water and lava cells, then include the full current six-connected component identity as diagnostic context without transferring ownership.",
+      "requiredInput": "complete direct/staging union and bound D05 water/lava component manifests"
+    },
+    {
+      "id": "IR-CURRENT-CRYOSPHERE-DIRECT-INTERSECTION",
+      "appliesTo": [
+        "frozen-and-snow-direct-interaction"
+      ],
+      "rule": "Intersect the union of direct/staging cells with exact current frozen and snow cells. No melt, thermal, or flow behavior is inferred.",
+      "requiredInput": "complete direct/staging union and bound D05 frozen/snow sets"
+    },
+    {
+      "id": "IR-EXPERT-KERNEL-DEWATERING-SUMP",
+      "appliesTo": [
+        "dewatering-and-sump-influence"
+      ],
+      "rule": "Minkowski-expand only the declared dewatering/sump seed cells by an accepted finite integer-offset kernel, then union every explicitly treated current fluid component. Do not clip at scope boundaries.",
+      "requiredInput": "hash-bound anisotropic integer-offset kernel, seeds, component treatment, owner, and boundary receiver contracts"
+    },
+    {
+      "id": "IR-DIRECTED-DRAINAGE-DISCHARGE-GRAPH",
+      "appliesTo": [
+        "drainage-and-discharge-influence"
+      ],
+      "rule": "Raster exact directed collection, sump, conduit, outlet, receiver, overflow, maintenance, and one-cell face-interaction records from an accepted graph. Every terminal requires an exact receiver contract.",
+      "requiredInput": "directed node/edge graph, raster convention, terminals, receivers, and owners"
+    },
+    {
+      "id": "IR-EXPERT-KERNEL-GROUNDWATER-EROSION",
+      "appliesTo": [
+        "groundwater-infiltration-and-erosion-influence"
+      ],
+      "rule": "Expand accepted seeds with only an expert-authored finite integer-offset kernel by treatment class. Unknown, unbounded, wildcard, or narrative radii are invalid and block compilation.",
+      "requiredInput": "per-class exact offset kernels, seeds, boundary behavior, and acceptance thresholds"
+    },
+    {
+      "id": "IR-RELIC-SUPPORT-ACCESS-EXACT",
+      "appliesTo": [
+        "protected-relic-support-and-access-influence"
+      ],
+      "rule": "Union accepted protected cores/planning exclusions with separately authored support, fall, entrance, exhibit, observation, and emergency-access influence cells. D05-S01 route candidates are never promoted automatically.",
+      "requiredInput": "accepted relic policy plus exact expert-reviewed support/access cells and owner/interface contracts"
+    }
+  ],
+  "dependencyMatrix": [
+    {
+      "id": "DEP-SOURCE-CHAIN",
+      "classification": "MACHINE_EVIDENCE",
+      "status": "PASS",
+      "requirement": "All permitted upstream files exist at the exact bound hashes.",
+      "evidence": [
+        "masterplans/05-combined-zones/site-coordinates.json",
+        "masterplans/05-combined-zones/phase1-geometry-coordination.json",
+        "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
+        "masterplans/05-combined-zones/phase1-d05-conservative-defaults.json",
+        "masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json",
+        "masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json"
+      ]
+    },
+    {
+      "id": "DEP-IMMUTABLE-SNAPSHOT",
+      "classification": "MACHINE_EVIDENCE",
+      "status": "PASS",
+      "requirement": "D05, D05-S01, and D06 bind the same immutable copied snapshot.",
+      "evidence": [
+        "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region"
+      ]
+    },
+    {
+      "id": "DEP-D05-BASELINE",
+      "classification": "MACHINE_EVIDENCE",
+      "status": "PASS",
+      "requirement": "Exact current water, lava, frozen, snow, and component identities exist.",
+      "evidence": [
+        "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json"
+      ]
+    },
+    {
+      "id": "DEP-D05-S01-RELIC-SURVEY",
+      "classification": "MACHINE_EVIDENCE",
+      "status": "PASS",
+      "requirement": "All three protected records have exact local condition/access evidence.",
+      "evidence": [
+        "masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json"
+      ]
+    },
+    {
+      "id": "DEP-D06-EGRESS-RESERVATIONS",
+      "classification": "MACHINE_EVIDENCE",
+      "status": "PASS",
+      "requirement": "Two disjoint D06 external continuation reservations exist as reference inputs.",
+      "evidence": [
+        "masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json"
+      ]
+    },
+    {
+      "id": "DEP-VERTICAL-ACTIVATION",
+      "classification": "SOLE_AUTHORITY_ACCEPTANCE",
+      "status": "HOLD",
+      "requirement": "Activate one exact rational/rounding contract for every affected scope.",
+      "evidence": [
+        "P1-B01-VERTICAL-AUTHORITY-ACTIVATION"
+      ]
+    },
+    {
+      "id": "DEP-MOUNTAIN-SOLID-SURFACE",
+      "classification": "DEPENDENT_OFFLINE_DESIGN",
+      "status": "HOLD",
+      "requirement": "Provide a deterministic sparse proposed-state registry and total future surface/solid function for every directly modelled Z09 column.",
+      "evidence": [
+        "P1-B10-MOUNTAIN-SOLID-AND-RELIC-VOIDS"
+      ]
+    },
+    {
+      "id": "DEP-MOUNTAIN-ROUTE-GEOMETRY",
+      "classification": "DEPENDENT_OFFLINE_DESIGN",
+      "status": "HOLD",
+      "requirement": "Freeze exact J-curve, shaft dogleg, service tunnel, funicular, station, maintenance, and route swept volumes.",
+      "evidence": [
+        "P1-B03-CHEYENNE-JCURVE",
+        "P1-B07-PUBLIC-SHAFT-DOGLEG",
+        "P1-B08-SERVICE-TUNNEL-CENTERLINE",
+        "P1-B09-FUNICULAR-CENTERLINE"
+      ]
+    },
+    {
+      "id": "DEP-D06-MECHANISM-CELL-SETS",
+      "classification": "DEPENDENT_OFFLINE_DESIGN",
+      "status": "HOLD",
+      "requirement": "Freeze exact smoke, ventilation, lift, barrier, emergency, drainage, fire-service, and outlet cells; current D06 reservations are not mechanism sets.",
+      "evidence": [
+        "sole-authority acceptance of the recommended D06 design basis and ready geometry choices",
+        "exact smoke, ventilation, lift, barrier, emergency-circuit, drainage, fire-service, and surface-outlet mechanism cell sets",
+        "D05 hydrology ownership and accepted external discharge point",
+        "read-only funicular face survey and offline exact centerline designs for remaining route blockers",
+        "canonical ownership and interface contracts for every exact proposed cell"
+      ]
+    },
+    {
+      "id": "DEP-RELIC-POLICY-ACCEPTANCE",
+      "classification": "SOLE_AUTHORITY_ACCEPTANCE",
+      "status": "HOLD",
+      "requirement": "Accept the exact minimum planning exclusions and absent-east-site disposition without converting them into engineering buffers.",
+      "evidence": [
+        "masterplans/05-combined-zones/phase1-d05-conservative-defaults.json",
+        "masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json"
+      ]
+    },
+    {
+      "id": "DEP-OWNERSHIP-REGISTRY",
+      "classification": "SOLE_AUTHORITY_ACCEPTANCE",
+      "status": "HOLD",
+      "requirement": "Supply an accepted exact one-owner registry for every direct and physical influence cell.",
+      "evidence": [
+        "CZ05-PROTECTED-RELIC-CONTROL",
+        "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+        "CZ05-SCOPE-CONSTRUCTION-CONTROL"
+      ]
+    },
+    {
+      "id": "DEP-INTERFACE-CONTRACTS",
+      "classification": "SOLE_AUTHORITY_AND_DEPENDENT_DESIGN",
+      "status": "HOLD",
+      "requirement": "Supply exact directional owner-to-owner seam, receiver, outlet, sealed-boundary, and exception contracts.",
+      "evidence": [
+        "P1-B11-EXTERNAL-INTERFACES"
+      ]
+    },
+    {
+      "id": "DEP-HYDROLOGY-GEOTECHNICAL-CRITERIA",
+      "classification": "EXPERT_DESIGN_ACCEPTANCE",
+      "status": "HOLD",
+      "requirement": "Accept exact influence kernels and component treatment for groundwater, infiltration, snowmelt, erosion, dewatering, retaining, sumps, and discharge.",
+      "evidence": [
+        "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json"
+      ]
+    },
+    {
+      "id": "DEP-COMPILER-IMPLEMENTATION",
+      "classification": "DEPENDENT_OFFLINE_IMPLEMENTATION",
+      "status": "HOLD",
+      "requirement": "Implement this contract only after its geometry, ownership, interface, and expert input schemas pass.",
+      "evidence": [
+        "D05-S02-COMPILER-CONTRACT-V1"
+      ]
+    }
+  ],
+  "setFamilies": [
+    {
+      "id": "native-solid-retained",
+      "group": "DIRECT_STATE_CLASSIFICATION",
+      "ownerClass": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+      "purpose": "Current non-fluid present cells explicitly retained in the modelled future solid.",
+      "compilationRule": "baseline-present AND future-present AND canonical state/treatment marks retained",
+      "influenceRuleId": "IR-DIRECT-NO-IMPLICIT-EXPANSION",
+      "dependencies": [
+        "DEP-IMMUTABLE-SNAPSHOT",
+        "DEP-VERTICAL-ACTIVATION",
+        "DEP-MOUNTAIN-SOLID-SURFACE",
+        "DEP-OWNERSHIP-REGISTRY"
+      ],
+      "status": "HOLD_DEPENDENCIES",
+      "missingDependencyIds": [
+        "DEP-VERTICAL-ACTIVATION",
+        "DEP-MOUNTAIN-SOLID-SURFACE",
+        "DEP-OWNERSHIP-REGISTRY"
+      ],
+      "compiledSet": {
+        "emitted": false,
+        "cellCount": 0,
+        "coordinateSetSha256": null,
+        "blockStateSetSha256": null,
+        "ownerManifestSha256": null,
+        "reason": "No exact future/construction set is emitted while any required dependency is HOLD."
+      }
+    },
+    {
+      "id": "excavation-direct",
+      "group": "DIRECT_CHANGE",
+      "ownerClass": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+      "purpose": "Exact current present cells whose accepted future state removes or hollows material.",
+      "compilationRule": "baseline-present AND future-passable/air AND typed change=EXCAVATION",
+      "influenceRuleId": "IR-DIRECT-NO-IMPLICIT-EXPANSION",
+      "dependencies": [
+        "DEP-IMMUTABLE-SNAPSHOT",
+        "DEP-VERTICAL-ACTIVATION",
+        "DEP-MOUNTAIN-SOLID-SURFACE",
+        "DEP-MOUNTAIN-ROUTE-GEOMETRY",
+        "DEP-D06-MECHANISM-CELL-SETS",
+        "DEP-RELIC-POLICY-ACCEPTANCE",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-INTERFACE-CONTRACTS"
+      ],
+      "status": "HOLD_DEPENDENCIES",
+      "missingDependencyIds": [
+        "DEP-VERTICAL-ACTIVATION",
+        "DEP-MOUNTAIN-SOLID-SURFACE",
+        "DEP-MOUNTAIN-ROUTE-GEOMETRY",
+        "DEP-D06-MECHANISM-CELL-SETS",
+        "DEP-RELIC-POLICY-ACCEPTANCE",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-INTERFACE-CONTRACTS"
+      ],
+      "compiledSet": {
+        "emitted": false,
+        "cellCount": 0,
+        "coordinateSetSha256": null,
+        "blockStateSetSha256": null,
+        "ownerManifestSha256": null,
+        "reason": "No exact future/construction set is emitted while any required dependency is HOLD."
+      }
+    },
+    {
+      "id": "fill-direct",
+      "group": "DIRECT_CHANGE",
+      "ownerClass": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+      "purpose": "Exact current passable/air/fluid cells whose accepted future state adds solid material.",
+      "compilationRule": "baseline-passable/air/fluid AND future-present-solid AND typed change=FILL",
+      "influenceRuleId": "IR-DIRECT-NO-IMPLICIT-EXPANSION",
+      "dependencies": [
+        "DEP-IMMUTABLE-SNAPSHOT",
+        "DEP-VERTICAL-ACTIVATION",
+        "DEP-MOUNTAIN-SOLID-SURFACE",
+        "DEP-RELIC-POLICY-ACCEPTANCE",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-INTERFACE-CONTRACTS",
+        "DEP-HYDROLOGY-GEOTECHNICAL-CRITERIA"
+      ],
+      "status": "HOLD_DEPENDENCIES",
+      "missingDependencyIds": [
+        "DEP-VERTICAL-ACTIVATION",
+        "DEP-MOUNTAIN-SOLID-SURFACE",
+        "DEP-RELIC-POLICY-ACCEPTANCE",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-INTERFACE-CONTRACTS",
+        "DEP-HYDROLOGY-GEOTECHNICAL-CRITERIA"
+      ],
+      "compiledSet": {
+        "emitted": false,
+        "cellCount": 0,
+        "coordinateSetSha256": null,
+        "blockStateSetSha256": null,
+        "ownerManifestSha256": null,
+        "reason": "No exact future/construction set is emitted while any required dependency is HOLD."
+      }
+    },
+    {
+      "id": "liner-and-retaining-direct",
+      "group": "DIRECT_CHANGE",
+      "ownerClass": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+      "purpose": "Exact liner, wall, support, waterproofing, and retaining cells.",
+      "compilationRule": "future typed role in LINER/RETAINING/SUPPORT with canonical full state",
+      "influenceRuleId": "IR-DIRECT-NO-IMPLICIT-EXPANSION",
+      "dependencies": [
+        "DEP-VERTICAL-ACTIVATION",
+        "DEP-MOUNTAIN-SOLID-SURFACE",
+        "DEP-MOUNTAIN-ROUTE-GEOMETRY",
+        "DEP-D06-MECHANISM-CELL-SETS",
+        "DEP-RELIC-POLICY-ACCEPTANCE",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-HYDROLOGY-GEOTECHNICAL-CRITERIA"
+      ],
+      "status": "HOLD_DEPENDENCIES",
+      "missingDependencyIds": [
+        "DEP-VERTICAL-ACTIVATION",
+        "DEP-MOUNTAIN-SOLID-SURFACE",
+        "DEP-MOUNTAIN-ROUTE-GEOMETRY",
+        "DEP-D06-MECHANISM-CELL-SETS",
+        "DEP-RELIC-POLICY-ACCEPTANCE",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-HYDROLOGY-GEOTECHNICAL-CRITERIA"
+      ],
+      "compiledSet": {
+        "emitted": false,
+        "cellCount": 0,
+        "coordinateSetSha256": null,
+        "blockStateSetSha256": null,
+        "ownerManifestSha256": null,
+        "reason": "No exact future/construction set is emitted while any required dependency is HOLD."
+      }
+    },
+    {
+      "id": "surface-finish-direct",
+      "group": "DIRECT_CHANGE",
+      "ownerClass": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+      "purpose": "Exact exposed future terrain, landscape, road, path, portal, and finish cells.",
+      "compilationRule": "future typed role=SURFACE_FINISH and exact exposed-face classification",
+      "influenceRuleId": "IR-DIRECT-NO-IMPLICIT-EXPANSION",
+      "dependencies": [
+        "DEP-VERTICAL-ACTIVATION",
+        "DEP-MOUNTAIN-SOLID-SURFACE",
+        "DEP-MOUNTAIN-ROUTE-GEOMETRY",
+        "DEP-RELIC-POLICY-ACCEPTANCE",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-INTERFACE-CONTRACTS"
+      ],
+      "status": "HOLD_DEPENDENCIES",
+      "missingDependencyIds": [
+        "DEP-VERTICAL-ACTIVATION",
+        "DEP-MOUNTAIN-SOLID-SURFACE",
+        "DEP-MOUNTAIN-ROUTE-GEOMETRY",
+        "DEP-RELIC-POLICY-ACCEPTANCE",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-INTERFACE-CONTRACTS"
+      ],
+      "compiledSet": {
+        "emitted": false,
+        "cellCount": 0,
+        "coordinateSetSha256": null,
+        "blockStateSetSha256": null,
+        "ownerManifestSha256": null,
+        "reason": "No exact future/construction set is emitted while any required dependency is HOLD."
+      }
+    },
+    {
+      "id": "construction-staging-and-access",
+      "group": "DIRECT_TEMPORARY_AND_ACCESS",
+      "ownerClass": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+      "purpose": "Every temporary staging, access, equipment sweep, clearance, support, and restoration cell.",
+      "compilationRule": "explicit package records only; no bounding-box or route-width inference",
+      "influenceRuleId": "IR-STAGING-SWEPT-VOLUME",
+      "dependencies": [
+        "DEP-MOUNTAIN-ROUTE-GEOMETRY",
+        "DEP-D06-MECHANISM-CELL-SETS",
+        "DEP-RELIC-POLICY-ACCEPTANCE",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-INTERFACE-CONTRACTS"
+      ],
+      "status": "HOLD_DEPENDENCIES",
+      "missingDependencyIds": [
+        "DEP-MOUNTAIN-ROUTE-GEOMETRY",
+        "DEP-D06-MECHANISM-CELL-SETS",
+        "DEP-RELIC-POLICY-ACCEPTANCE",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-INTERFACE-CONTRACTS"
+      ],
+      "compiledSet": {
+        "emitted": false,
+        "cellCount": 0,
+        "coordinateSetSha256": null,
+        "blockStateSetSha256": null,
+        "ownerManifestSha256": null,
+        "reason": "No exact future/construction set is emitted while any required dependency is HOLD."
+      }
+    },
+    {
+      "id": "water-and-lava-direct-interaction",
+      "group": "DERIVED_DIAGNOSTIC_INTERACTION",
+      "ownerClass": "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+      "purpose": "Exact current water/lava cells directly touched by direct or staging sets.",
+      "compilationRule": "exact set intersection plus component-context reference; no ownership transfer",
+      "influenceRuleId": "IR-CURRENT-FLUID-DIRECT-INTERSECTION",
+      "dependencies": [
+        "DEP-D05-BASELINE",
+        "DEP-MOUNTAIN-SOLID-SURFACE",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-INTERFACE-CONTRACTS",
+        "DEP-HYDROLOGY-GEOTECHNICAL-CRITERIA"
+      ],
+      "status": "HOLD_DEPENDENCIES",
+      "missingDependencyIds": [
+        "DEP-MOUNTAIN-SOLID-SURFACE",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-INTERFACE-CONTRACTS",
+        "DEP-HYDROLOGY-GEOTECHNICAL-CRITERIA"
+      ],
+      "compiledSet": {
+        "emitted": false,
+        "cellCount": 0,
+        "coordinateSetSha256": null,
+        "blockStateSetSha256": null,
+        "ownerManifestSha256": null,
+        "reason": "No exact future/construction set is emitted while any required dependency is HOLD."
+      }
+    },
+    {
+      "id": "frozen-and-snow-direct-interaction",
+      "group": "DERIVED_DIAGNOSTIC_INTERACTION",
+      "ownerClass": "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+      "purpose": "Exact current frozen/snow cells directly touched by direct or staging sets.",
+      "compilationRule": "exact set intersection; no melt, flow, or thermal inference",
+      "influenceRuleId": "IR-CURRENT-CRYOSPHERE-DIRECT-INTERSECTION",
+      "dependencies": [
+        "DEP-D05-BASELINE",
+        "DEP-MOUNTAIN-SOLID-SURFACE",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-HYDROLOGY-GEOTECHNICAL-CRITERIA"
+      ],
+      "status": "HOLD_DEPENDENCIES",
+      "missingDependencyIds": [
+        "DEP-MOUNTAIN-SOLID-SURFACE",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-HYDROLOGY-GEOTECHNICAL-CRITERIA"
+      ],
+      "compiledSet": {
+        "emitted": false,
+        "cellCount": 0,
+        "coordinateSetSha256": null,
+        "blockStateSetSha256": null,
+        "ownerManifestSha256": null,
+        "reason": "No exact future/construction set is emitted while any required dependency is HOLD."
+      }
+    },
+    {
+      "id": "dewatering-and-sump-influence",
+      "group": "PHYSICAL_INFLUENCE",
+      "ownerClass": "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+      "purpose": "Exact cells influenced by accepted dewatering and sump treatments.",
+      "compilationRule": "seed/kernel expansion plus explicitly treated component closure",
+      "influenceRuleId": "IR-EXPERT-KERNEL-DEWATERING-SUMP",
+      "dependencies": [
+        "DEP-D05-BASELINE",
+        "DEP-D06-MECHANISM-CELL-SETS",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-INTERFACE-CONTRACTS",
+        "DEP-HYDROLOGY-GEOTECHNICAL-CRITERIA"
+      ],
+      "status": "HOLD_DEPENDENCIES",
+      "missingDependencyIds": [
+        "DEP-D06-MECHANISM-CELL-SETS",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-INTERFACE-CONTRACTS",
+        "DEP-HYDROLOGY-GEOTECHNICAL-CRITERIA"
+      ],
+      "compiledSet": {
+        "emitted": false,
+        "cellCount": 0,
+        "coordinateSetSha256": null,
+        "blockStateSetSha256": null,
+        "ownerManifestSha256": null,
+        "reason": "No exact future/construction set is emitted while any required dependency is HOLD."
+      }
+    },
+    {
+      "id": "drainage-and-discharge-influence",
+      "group": "PHYSICAL_INFLUENCE",
+      "ownerClass": "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+      "purpose": "Exact collection, conduit, sump, outlet, receiver, overflow, and maintenance interaction cells.",
+      "compilationRule": "accepted directed graph raster and exact receiver contracts",
+      "influenceRuleId": "IR-DIRECTED-DRAINAGE-DISCHARGE-GRAPH",
+      "dependencies": [
+        "DEP-D05-BASELINE",
+        "DEP-D06-MECHANISM-CELL-SETS",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-INTERFACE-CONTRACTS",
+        "DEP-HYDROLOGY-GEOTECHNICAL-CRITERIA"
+      ],
+      "status": "HOLD_DEPENDENCIES",
+      "missingDependencyIds": [
+        "DEP-D06-MECHANISM-CELL-SETS",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-INTERFACE-CONTRACTS",
+        "DEP-HYDROLOGY-GEOTECHNICAL-CRITERIA"
+      ],
+      "compiledSet": {
+        "emitted": false,
+        "cellCount": 0,
+        "coordinateSetSha256": null,
+        "blockStateSetSha256": null,
+        "ownerManifestSha256": null,
+        "reason": "No exact future/construction set is emitted while any required dependency is HOLD."
+      }
+    },
+    {
+      "id": "groundwater-infiltration-and-erosion-influence",
+      "group": "PHYSICAL_INFLUENCE",
+      "ownerClass": "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+      "purpose": "Exact expert-modelled subsurface and surface influence cells.",
+      "compilationRule": "accepted treatment-class seeds expanded by exact finite offset kernels",
+      "influenceRuleId": "IR-EXPERT-KERNEL-GROUNDWATER-EROSION",
+      "dependencies": [
+        "DEP-MOUNTAIN-SOLID-SURFACE",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-INTERFACE-CONTRACTS",
+        "DEP-HYDROLOGY-GEOTECHNICAL-CRITERIA"
+      ],
+      "status": "HOLD_DEPENDENCIES",
+      "missingDependencyIds": [
+        "DEP-MOUNTAIN-SOLID-SURFACE",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-INTERFACE-CONTRACTS",
+        "DEP-HYDROLOGY-GEOTECHNICAL-CRITERIA"
+      ],
+      "compiledSet": {
+        "emitted": false,
+        "cellCount": 0,
+        "coordinateSetSha256": null,
+        "blockStateSetSha256": null,
+        "ownerManifestSha256": null,
+        "reason": "No exact future/construction set is emitted while any required dependency is HOLD."
+      }
+    },
+    {
+      "id": "protected-relic-support-and-access-influence",
+      "group": "PHYSICAL_INFLUENCE",
+      "ownerClass": "CZ05-PROTECTED-RELIC-CONTROL",
+      "purpose": "Accepted protected cores/exclusions plus exact support, fall, entrance, exhibit, observation, and emergency-access influence cells.",
+      "compilationRule": "accepted exclusion union explicit expert support/access cells; never promote S01 candidates",
+      "influenceRuleId": "IR-RELIC-SUPPORT-ACCESS-EXACT",
+      "dependencies": [
+        "DEP-D05-S01-RELIC-SURVEY",
+        "DEP-RELIC-POLICY-ACCEPTANCE",
+        "DEP-MOUNTAIN-SOLID-SURFACE",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-INTERFACE-CONTRACTS",
+        "DEP-HYDROLOGY-GEOTECHNICAL-CRITERIA"
+      ],
+      "status": "HOLD_DEPENDENCIES",
+      "missingDependencyIds": [
+        "DEP-RELIC-POLICY-ACCEPTANCE",
+        "DEP-MOUNTAIN-SOLID-SURFACE",
+        "DEP-OWNERSHIP-REGISTRY",
+        "DEP-INTERFACE-CONTRACTS",
+        "DEP-HYDROLOGY-GEOTECHNICAL-CRITERIA"
+      ],
+      "compiledSet": {
+        "emitted": false,
+        "cellCount": 0,
+        "coordinateSetSha256": null,
+        "blockStateSetSha256": null,
+        "ownerManifestSha256": null,
+        "reason": "No exact future/construction set is emitted while any required dependency is HOLD."
+      }
+    }
+  ],
+  "d06ReferenceReservations": [
+    {
+      "id": "EG-A",
+      "status": "REFERENCE_RESERVATION_NOT_CONSTRUCTION_OR_HYDROLOGY_OWNERSHIP",
+      "externalContinuation": {
+        "bounds": {
+          "minX": 1649,
+          "maxX": 1655,
+          "minY": 55,
+          "maxY": 80,
+          "minZ": 145,
+          "maxZ": 151
+        },
+        "cellCount": 1274,
+        "coordinateSetSha256": "da0d3c3a2db61ea29efe64b55e13a977cc5c36a8773c1030af8cd91e856b2213"
+      },
+      "stairReservation": {
+        "bounds": {
+          "minX": 1649,
+          "maxX": 1651,
+          "minY": 55,
+          "maxY": 80,
+          "minZ": 145,
+          "maxZ": 151
+        },
+        "cellCount": 546,
+        "coordinateSetSha256": "d6fd81daf0e6928ba776dbf1b7fb8ac6e4edac7594a6a99c2e7ab262209c2897"
+      },
+      "accessibleLiftReservation": {
+        "bounds": {
+          "minX": 1653,
+          "maxX": 1655,
+          "minY": 55,
+          "maxY": 80,
+          "minZ": 147,
+          "maxZ": 149
+        },
+        "cellCount": 234,
+        "coordinateSetSha256": "a57d2822d52e819a59b0dd8c8438e5b7e4025145a1d53827c888672dd262bf88"
+      },
+      "sourceWaterCellCount": 0,
+      "sourceLavaCellCount": 0,
+      "physicalOpeningAuthorized": false,
+      "mechanismCommissioned": false
+    },
+    {
+      "id": "EG-B",
+      "status": "REFERENCE_RESERVATION_NOT_CONSTRUCTION_OR_HYDROLOGY_OWNERSHIP",
+      "externalContinuation": {
+        "bounds": {
+          "minX": 1849,
+          "maxX": 1855,
+          "minY": 55,
+          "maxY": 71,
+          "minZ": 145,
+          "maxZ": 151
+        },
+        "cellCount": 833,
+        "coordinateSetSha256": "8c5e784edcafe9355e0a4986616e5289264112b455e0b280962895a1a036c70a"
+      },
+      "stairReservation": {
+        "bounds": {
+          "minX": 1849,
+          "maxX": 1851,
+          "minY": 55,
+          "maxY": 71,
+          "minZ": 145,
+          "maxZ": 151
+        },
+        "cellCount": 357,
+        "coordinateSetSha256": "c9bfd785188c88f1f96ed0ad566d2cb755b9583d79a315a6a78638add29d7661"
+      },
+      "accessibleLiftReservation": {
+        "bounds": {
+          "minX": 1853,
+          "maxX": 1855,
+          "minY": 55,
+          "maxY": 71,
+          "minZ": 147,
+          "maxZ": 149
+        },
+        "cellCount": 153,
+        "coordinateSetSha256": "db34be7f105d35e4d8026ca33d678a49d3323fd767753e848bf9d9c5b5537332"
+      },
+      "sourceWaterCellCount": 0,
+      "sourceLavaCellCount": 0,
+      "physicalOpeningAuthorized": false,
+      "mechanismCommissioned": false
+    }
+  ],
+  "readinessChecks": [
+    {
+      "id": "S02-R01-PERMITTED-SOURCES-BOUND",
+      "status": "PASS",
+      "detail": "Only coordinates, geometry, D05 baseline/defaults/S01, D06 egress, and the immutable snapshot are bound."
+    },
+    {
+      "id": "S02-R02-FAMILY-CONTRACT-COMPLETE",
+      "status": "PASS",
+      "detail": "12/12 exact set-family contracts are declared in required order."
+    },
+    {
+      "id": "S02-R03-INFLUENCE-RULES-FAIL-CLOSED",
+      "status": "PASS",
+      "detail": "No influence family may infer a generic radius, wildcard, boundary clip, or empty unknown set."
+    },
+    {
+      "id": "S02-R04-GEOMETRY-INPUTS-COMPLETE",
+      "status": "HOLD",
+      "detail": "Vertical activation, future mountain state, and exact mountain route geometry are incomplete."
+    },
+    {
+      "id": "S02-R05-OWNERSHIP-INTERFACES-COMPLETE",
+      "status": "HOLD",
+      "detail": "Exact one-owner assignments and directional interface contracts do not exist."
+    },
+    {
+      "id": "S02-R06-HYDROLOGY-EXPERT-INPUTS-COMPLETE",
+      "status": "HOLD",
+      "detail": "Exact expert kernels, component treatment, receivers, and acceptance thresholds are missing."
+    },
+    {
+      "id": "S02-R07-ALL-FAMILIES-READY",
+      "status": "HOLD",
+      "detail": "0/12 families are ready."
+    },
+    {
+      "id": "S02-R08-ZERO-CELL-FAIL-CLOSED",
+      "status": "PASS",
+      "detail": "No future, direct-construction, staging, access, interaction, or influence cell set was emitted."
+    }
+  ],
+  "readinessDisposition": {
+    "contractSchemaPassed": true,
+    "inputsReady": false,
+    "readyToCompileFutureState": false,
+    "readyToEmitConstructionCells": false,
+    "readyToResolveD05": false,
+    "passedDependencyCount": 5,
+    "holdDependencyCount": 9,
+    "readyFamilyCount": 0,
+    "holdFamilyCount": 12,
+    "d05Resolved": false,
+    "g02Passed": false,
+    "g03Passed": false,
+    "g04Passed": false,
+    "g05Passed": false,
+    "g06Passed": false,
+    "g07Passed": false,
+    "operationCellCount": 0,
+    "materialCellCount": 0,
+    "futureCellCount": 0,
+    "constructionCellCount": 0,
+    "worldEditAuthorized": false
+  }
+}

@@ -1,0 +1,3667 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-d02-s01-s02-region-evidence",
+  "generatedAtUtc": "2026-08-04T21:56:58Z",
+  "status": "PARTIAL_PASS_REGION_FACTS_COMPLETE_SAVE_MISSING_D02_HOLD",
+  "purpose": "Deterministic copied-save completeness audit plus full-height C1 and C01/ISSUE-002 region-only evidence for D02-S01/S02.",
+  "safetyBoundary": {
+    "localFilesOnly": true,
+    "liveCallsPerformed": [],
+    "databasesOpened": [],
+    "operationCells": [],
+    "materialCells": [],
+    "operationCellCount": 0,
+    "worldEditAuthorized": false,
+    "physicalBuildAuthorized": false,
+    "d02Resolved": false,
+    "s01Complete": false,
+    "s02Complete": false
+  },
+  "sourceBindings": [
+    {
+      "path": "masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json",
+      "sha256": "ce593f69aa1cacac32082c63b2acaff086773f3adf2638de69ea0ff4de70bf35",
+      "bytes": 19771,
+      "role": "D02 conservative defaults and S01/S02 evidence contract"
+    },
+    {
+      "path": "masterplans/05-combined-zones/phase1-c1-civil-design.json",
+      "sha256": "2db37ea77c7aa8f841266111d2a85c8b4284649f22633e541a8dadd9fd51ed4b",
+      "bytes": 812036,
+      "role": "exact C1 land-take reconstruction and C01 comparison source"
+    },
+    {
+      "path": "masterplans/05-combined-zones/phase0-survey-evidence.json",
+      "sha256": "c0730cc039c756ac6331b9aed8ecb89af38426e19d588ccdd56ec17cd8e1309e",
+      "bytes": 58530,
+      "role": "selected immutable region-only snapshot identity and structure starts"
+    },
+    {
+      "path": "masterplans/05-combined-zones/corridor-clearance.json",
+      "sha256": "15504eb52401e4e80970076093cceeccf5cc740d033fbaadd0938e404bbb5078",
+      "bytes": 9381,
+      "role": "catalogued C01 feature bounds and contested truth boundary"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/c01-east-relocation-coordinate-schedule.json",
+      "sha256": "1b8d148ca4a6f595e979f9a6fe884eb7271164c697af112d428dddc616bf171f",
+      "bytes": 8638,
+      "role": "planned C01/P01/portal/road scopes and explicit release gates"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/northeast-datacenter-c01-relocation-engineering.json",
+      "sha256": "b57ed2c17e280f37d1c916528d363115753fb7273d88c089e59a85ee2bd5616b",
+      "bytes": 27487,
+      "role": "prior source census and competing relocation geometry"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/independent-release-geometry-safety-audit.md",
+      "sha256": "a43dfa40a1b9feb68d09af674a267f1749a054d0fc79eb1309f5719f16213dad",
+      "bytes": 15197,
+      "role": "independent finding that old C01 retirement and full parking recovery were absent"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/railway-migration-closeout.json",
+      "sha256": "9934e48fe400b687cd3cfdddba8280ad402ad51ae035d9cce8d1015551242855",
+      "bytes": 6059,
+      "role": "ISSUE-002 open-at-closeout identity"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-underground-navigation/underground-inventory.json",
+      "sha256": "3bd8480cb42b9aef57ee3450605046214eb467f4af7f84a99d87829e016d368e",
+      "bytes": 647470,
+      "role": "published contested C01 arrival truth boundary"
+    }
+  ],
+  "copiedSaveCompletenessAudit": {
+    "dataRoot": "data",
+    "discoveryRule": "Recursively group every parent of region/, entities/, poi/, or level.dat under data/. A complete candidate requires nonempty region, entities, and poi MCA sets plus level.dat.",
+    "candidateCount": 56,
+    "completeCandidateCount": 0,
+    "inventorySha256": "9bb0e7c9e8c23ce428372e19967ac2b56f15611a2f05602f2cbfe0a019fc5411",
+    "candidates": [
+      {
+        "root": "data/worldsnap",
+        "region": {
+          "present": true,
+          "mcaFileCount": 26,
+          "bytes": 123313802
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-citizen-route-fresh-20260728T0748Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 6,
+          "bytes": 51685798
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-citizen-route-livegate-20260728T1649Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 30,
+          "bytes": 134708008
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-combined-zones-phase0-final-post-20260804T001002Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 51,
+          "bytes": 290946492
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-combined-zones-phase0-post-20260803T235154Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 51,
+          "bytes": 216964314
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-combined-zones-phase0-pre-20260803T234132Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 30,
+          "bytes": 138571776
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 51,
+          "bytes": 290946492
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-combined-zones-phase0-rerun-pre-20260804T021237Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 51,
+          "bytes": 290946492
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-mainstreet-pre-repair-20260726",
+        "region": {
+          "present": true,
+          "mcaFileCount": 23,
+          "bytes": 88641117
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-mainstreet-secure-wave5-post-20260727",
+        "region": {
+          "present": true,
+          "mcaFileCount": 26,
+          "bytes": 122728317
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-moot-after-20260726",
+        "region": {
+          "present": true,
+          "mcaFileCount": 2,
+          "bytes": 18915328
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-moot-before-20260726",
+        "region": {
+          "present": true,
+          "mcaFileCount": 2,
+          "bytes": 18915328
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-moot-south-20260727",
+        "region": {
+          "present": true,
+          "mcaFileCount": 1,
+          "bytes": 9818112
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-parking-before",
+        "region": {
+          "present": true,
+          "mcaFileCount": 23,
+          "bytes": 89026483
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-postrelease-f8edf99494c023dd-20260728",
+        "region": {
+          "present": true,
+          "mcaFileCount": 26,
+          "bytes": 122744700
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-pre-landscape-20260726",
+        "region": {
+          "present": true,
+          "mcaFileCount": 1,
+          "bytes": 8553848
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-pre-surface-complex-20260726",
+        "region": {
+          "present": true,
+          "mcaFileCount": 1,
+          "bytes": 8541303
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-prerelease-f4a268cd0c5b4241-20260727",
+        "region": {
+          "present": true,
+          "mcaFileCount": 26,
+          "bytes": 122736507
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-prerelease2-42545b02f60fa881-20260727",
+        "region": {
+          "present": true,
+          "mcaFileCount": 26,
+          "bytes": 122744700
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-preremoval-20260725-1741",
+        "region": {
+          "present": true,
+          "mcaFileCount": 20,
+          "bytes": 71349701
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-ravensreach-final-20260727",
+        "region": {
+          "present": true,
+          "mcaFileCount": 9,
+          "bytes": 58454697
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-redevelopment-c9e2bf0a-20260727",
+        "region": {
+          "present": true,
+          "mcaFileCount": 26,
+          "bytes": 122736507
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-restore-20260725-flood",
+        "region": {
+          "present": true,
+          "mcaFileCount": 4,
+          "bytes": 32513968
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-rollbackcheck-64829086424cde6f-20260727",
+        "region": {
+          "present": true,
+          "mcaFileCount": 26,
+          "bytes": 122744700
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-accessibility-citizen-final-20260728T1745Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 30,
+          "bytes": 134728702
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-accessibility-partial566-20260728T1734Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 30,
+          "bytes": 134728702
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-accessibility-postrelease-attempt2-20260728T1743Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 30,
+          "bytes": 134728702
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-accessibility-prerelease-live-20260728T1732Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 30,
+          "bytes": 134728702
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-accessibility-source-restored-20260728T1735Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 30,
+          "bytes": 134728702
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-entity-sanctuary-20260728T1112Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 16,
+          "bytes": 86646008
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-entity-sanctuary-live-clearance15c-20260728T1258Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 4,
+          "bytes": 28660957
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-entity-sanctuary-live-clearance17a-20260728T1308Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 11,
+          "bytes": 59917472
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-entity-sanctuary-live-clearance18b-20260728T1356Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 4,
+          "bytes": 12331432
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-entity-sanctuary-postpreflight-20260728T1118Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 16,
+          "bytes": 87501037
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-entity-sanctuary-postpreflight2-20260728T1120Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 16,
+          "bytes": 88640116
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-expansion-baseline-20260728T0305Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 6,
+          "bytes": 40371380
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-expansion-complete-baseline-20260728T0315Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 9,
+          "bytes": 59287653
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-expansion-expanded-baseline-20260728T0405Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 24,
+          "bytes": 122538085
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-expansion-frozen-rebase-20260728T141025Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 30,
+          "bytes": 134667649
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-expansion-full-rollback-recovered-20260728T153226Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 30,
+          "bytes": 134679863
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-expansion-live-rebase-20260728T1332Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 30,
+          "bytes": 133927404
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-expansion-postrelease-fullsource-20260728T1601Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 30,
+          "bytes": 134704125
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-expansion-prefix10-recovered-20260728T1331Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 1,
+          "bytes": 8744960
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-expansion-prefix123-recovered-20260728T145415Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 30,
+          "bytes": 134667649
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-expansion-prefix13-recovered-20260728T140855Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 4,
+          "bytes": 36350288
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-expansion-prerelease-20260728T0930Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 26,
+          "bytes": 123492453
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-terminal-recovery-post-20260728T1839Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 30,
+          "bytes": 134749182
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-town-terminal-recovery-pre-20260728T1837Z",
+        "region": {
+          "present": true,
+          "mcaFileCount": 30,
+          "bytes": 134749182
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-wave2-baseline-4fca1ff3-20260728",
+        "region": {
+          "present": true,
+          "mcaFileCount": 26,
+          "bytes": 122744700
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728",
+        "region": {
+          "present": true,
+          "mcaFileCount": 26,
+          "bytes": 123313802
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-wave2-prerelease-b1356bca9fcbdc7a-20260728",
+        "region": {
+          "present": true,
+          "mcaFileCount": 26,
+          "bytes": 123279631
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-worldwide-interior-review-20260727",
+        "region": {
+          "present": true,
+          "mcaFileCount": 26,
+          "bytes": 122659497
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-worldwide-wave1-post-20260727",
+        "region": {
+          "present": true,
+          "mcaFileCount": 26,
+          "bytes": 122669183
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-worldwide-wave2-post-20260727",
+        "region": {
+          "present": true,
+          "mcaFileCount": 26,
+          "bytes": 122669183
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-worldwide-wave3-post-20260727",
+        "region": {
+          "present": true,
+          "mcaFileCount": 26,
+          "bytes": 122669183
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      },
+      {
+        "root": "data/worldsnap-worldwide-wave4-post-20260727",
+        "region": {
+          "present": true,
+          "mcaFileCount": 26,
+          "bytes": 122689749
+        },
+        "entities": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "poi": {
+          "present": false,
+          "mcaFileCount": 0,
+          "bytes": 0
+        },
+        "levelDat": {
+          "present": false,
+          "bytes": 0,
+          "sha256": null
+        },
+        "complete": false,
+        "completenessStatus": "INCOMPLETE_COPIED_SAVE"
+      }
+    ],
+    "conclusion": "NO_COMPLETE_COPIED_SAVE_AVAILABLE_UNDER_DATA"
+  },
+  "selectedRegionOnlyEvidence": {
+    "identity": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+      "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+      "regionFileCount": 51,
+      "bytes": 290946492,
+      "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+    },
+    "completeness": {
+      "region": true,
+      "entities": false,
+      "poi": false,
+      "levelDat": false,
+      "status": "INCOMPLETE_REGION_ONLY_TERRAIN_AND_BLOCK_ENTITY_EVIDENCE"
+    },
+    "permittedInferences": [
+      "block states and block entities stored in the selected region chunks",
+      "generated-structure starts stored and previously sealed from those region chunks",
+      "exact full-height region-state counts and hashes over declared scopes"
+    ],
+    "prohibitedInferences": [
+      "current entities or entity clearance",
+      "POI, resident, job-site, or route occupancy",
+      "world identity or gamerule/dimension metadata from level.dat",
+      "same-moment completeness across region/entities/poi",
+      "semantic commissioning, ownership, loading permission, or usable arrival"
+    ]
+  },
+  "d02S01": {
+    "status": "PARTIAL_PASS_EXACT_REGION_CENSUS_COMPLETE_SAVE_COMPONENTS_MISSING",
+    "c1FullHeight": {
+      "scope": {
+        "columnCount": 80363,
+        "columnSetSha256": "a236f24b9371f8fdedca66416109aacd11a2101ffe1c1a1b80117ab027909d70",
+        "bounds": {
+          "minX": 430,
+          "maxX": 1572,
+          "minZ": -291,
+          "maxZ": 111
+        },
+        "worldY": {
+          "min": -64,
+          "max": 319,
+          "inclusiveHeight": 384
+        },
+        "surveyedCellCount": 30859392,
+        "touchedChunkCount": 437,
+        "missingChunkCount": 0,
+        "missingChunks": []
+      },
+      "stateCensus": {
+        "stateStreamSha256": "f8de755a2ef320c0611420a8e857f77b9476509df03bf694749a1f4dd64e63eb",
+        "uniqueBlockNameCount": 115,
+        "uniqueExactStateCount": 384,
+        "airLikeCells": 18800690,
+        "nonAirCells": 12058702,
+        "waterCells": 70032,
+        "waterloggedCells": 537,
+        "lavaCells": 11178,
+        "gravitySensitiveCandidateCells": 179658,
+        "nonAirYRange": {
+          "min": -64,
+          "max": 135
+        },
+        "fluidYRange": {
+          "min": -62,
+          "max": 109
+        },
+        "topBlockNames": [
+          {
+            "id": "minecraft:air",
+            "count": 18795055
+          },
+          {
+            "id": "minecraft:stone",
+            "count": 4900641
+          },
+          {
+            "id": "minecraft:deepslate",
+            "count": 4325093
+          },
+          {
+            "id": "minecraft:andesite",
+            "count": 356781
+          },
+          {
+            "id": "minecraft:dirt",
+            "count": 355260
+          },
+          {
+            "id": "minecraft:tuff",
+            "count": 353839
+          },
+          {
+            "id": "minecraft:diorite",
+            "count": 347662
+          },
+          {
+            "id": "minecraft:granite",
+            "count": 312344
+          },
+          {
+            "id": "minecraft:bedrock",
+            "count": 240898
+          },
+          {
+            "id": "minecraft:gravel",
+            "count": 175765
+          },
+          {
+            "id": "minecraft:clay",
+            "count": 83095
+          },
+          {
+            "id": "minecraft:water",
+            "count": 69841
+          },
+          {
+            "id": "minecraft:copper_ore",
+            "count": 63711
+          },
+          {
+            "id": "minecraft:grass_block",
+            "count": 59479
+          },
+          {
+            "id": "minecraft:coal_ore",
+            "count": 55782
+          },
+          {
+            "id": "minecraft:pale_oak_leaves",
+            "count": 44457
+          },
+          {
+            "id": "minecraft:dripstone_block",
+            "count": 38663
+          },
+          {
+            "id": "minecraft:oak_leaves",
+            "count": 22717
+          },
+          {
+            "id": "minecraft:iron_ore",
+            "count": 18096
+          },
+          {
+            "id": "minecraft:pale_moss_block",
+            "count": 17132
+          },
+          {
+            "id": "minecraft:pale_oak_log",
+            "count": 16518
+          },
+          {
+            "id": "minecraft:moss_block",
+            "count": 14054
+          },
+          {
+            "id": "minecraft:dark_oak_leaves",
+            "count": 13238
+          },
+          {
+            "id": "minecraft:smooth_basalt",
+            "count": 12548
+          },
+          {
+            "id": "minecraft:birch_leaves",
+            "count": 12004
+          },
+          {
+            "id": "minecraft:leaf_litter",
+            "count": 11773
+          },
+          {
+            "id": "minecraft:lava",
+            "count": 11178
+          },
+          {
+            "id": "minecraft:deepslate_redstone_ore",
+            "count": 10498
+          },
+          {
+            "id": "minecraft:calcite",
+            "count": 10197
+          },
+          {
+            "id": "minecraft:deepslate_iron_ore",
+            "count": 8249
+          }
+        ],
+        "topExactStates": [
+          {
+            "id": "minecraft:air",
+            "count": 18795055
+          },
+          {
+            "id": "minecraft:stone",
+            "count": 4900641
+          },
+          {
+            "id": "minecraft:deepslate[axis=y]",
+            "count": 4325093
+          },
+          {
+            "id": "minecraft:andesite",
+            "count": 356781
+          },
+          {
+            "id": "minecraft:dirt",
+            "count": 355260
+          },
+          {
+            "id": "minecraft:tuff",
+            "count": 353839
+          },
+          {
+            "id": "minecraft:diorite",
+            "count": 347662
+          },
+          {
+            "id": "minecraft:granite",
+            "count": 312344
+          },
+          {
+            "id": "minecraft:bedrock",
+            "count": 240898
+          },
+          {
+            "id": "minecraft:gravel",
+            "count": 175765
+          },
+          {
+            "id": "minecraft:clay",
+            "count": 83095
+          },
+          {
+            "id": "minecraft:water[level=0]",
+            "count": 66943
+          },
+          {
+            "id": "minecraft:copper_ore",
+            "count": 63711
+          },
+          {
+            "id": "minecraft:grass_block[snowy=false]",
+            "count": 59479
+          },
+          {
+            "id": "minecraft:coal_ore",
+            "count": 55782
+          },
+          {
+            "id": "minecraft:dripstone_block",
+            "count": 38663
+          },
+          {
+            "id": "minecraft:iron_ore",
+            "count": 18096
+          },
+          {
+            "id": "minecraft:pale_moss_block",
+            "count": 17132
+          },
+          {
+            "id": "minecraft:pale_oak_log[axis=y]",
+            "count": 16518
+          },
+          {
+            "id": "minecraft:pale_oak_leaves[distance=2,persistent=false,waterlogged=false]",
+            "count": 16172
+          },
+          {
+            "id": "minecraft:moss_block",
+            "count": 14054
+          },
+          {
+            "id": "minecraft:pale_oak_leaves[distance=3,persistent=false,waterlogged=false]",
+            "count": 13572
+          },
+          {
+            "id": "minecraft:smooth_basalt",
+            "count": 12548
+          },
+          {
+            "id": "minecraft:pale_oak_leaves[distance=1,persistent=false,waterlogged=false]",
+            "count": 10998
+          },
+          {
+            "id": "minecraft:deepslate_redstone_ore[lit=false]",
+            "count": 10498
+          },
+          {
+            "id": "minecraft:lava[level=0]",
+            "count": 10346
+          },
+          {
+            "id": "minecraft:calcite",
+            "count": 10197
+          },
+          {
+            "id": "minecraft:deepslate_iron_ore",
+            "count": 8249
+          },
+          {
+            "id": "minecraft:short_grass",
+            "count": 8068
+          },
+          {
+            "id": "minecraft:amethyst_block",
+            "count": 7915
+          }
+        ],
+        "gravityRule": "Explicit name rule: sand, red_sand, gravel, dragon_egg, scaffolding, *_concrete_powder, and *_anvil."
+      },
+      "blockEntities": {
+        "count": 33,
+        "byType": [
+          {
+            "id": "minecraft:chest",
+            "count": 13
+          },
+          {
+            "id": "minecraft:creaking_heart",
+            "count": 10
+          },
+          {
+            "id": "minecraft:mob_spawner",
+            "count": 7
+          },
+          {
+            "id": "minecraft:beehive",
+            "count": 3
+          }
+        ],
+        "nbtSetSha256": "980227c3b44559c0b8bc0899666c5e70cbdca478992c3afbbf6e8339fe5ba98c",
+        "nbtContentsPublished": false
+      }
+    },
+    "relevantGeneratedStructureStarts": {
+      "count": 4,
+      "records": [
+        {
+          "id": "minecraft:trial_chambers",
+          "bounds": {
+            "minX": 1171,
+            "minY": -30,
+            "minZ": -49,
+            "maxX": 1295,
+            "maxY": 4,
+            "maxZ": 62
+          },
+          "sourceChunk": {
+            "x": 78,
+            "z": 2
+          },
+          "exactLandTakePlanOverlapColumnCount": 123
+        },
+        {
+          "id": "minecraft:mineshaft",
+          "bounds": {
+            "minX": 1184,
+            "minY": -56,
+            "minZ": -49,
+            "maxX": 1282,
+            "maxY": -37,
+            "maxZ": 33
+          },
+          "sourceChunk": {
+            "x": 76,
+            "z": -2
+          },
+          "exactLandTakePlanOverlapColumnCount": 99
+        },
+        {
+          "id": "minecraft:mineshaft",
+          "bounds": {
+            "minX": 1254,
+            "minY": -23,
+            "minZ": -134,
+            "maxX": 1369,
+            "maxY": -6,
+            "maxZ": 33
+          },
+          "sourceChunk": {
+            "x": 81,
+            "z": -3
+          },
+          "exactLandTakePlanOverlapColumnCount": 7856
+        },
+        {
+          "id": "minecraft:mineshaft",
+          "bounds": {
+            "minX": 1323,
+            "minY": 2,
+            "minZ": -99,
+            "maxX": 1449,
+            "maxY": 30,
+            "maxZ": 48
+          },
+          "sourceChunk": {
+            "x": 86,
+            "z": -2
+          },
+          "exactLandTakePlanOverlapColumnCount": 1673
+        }
+      ],
+      "interpretation": "Exact plan overlap with the C1 land-take columns; not an occupied-cell or clearance result."
+    },
+    "closedFacts": [
+      "The complete hash-bound 80-block C1 land take was reconstructed byte-deterministically.",
+      "Every land-take column was decoded for all 384 world levels with zero missing region chunks.",
+      "Exact block-state, fluid, gravity-candidate, block-entity, and generated-start facts are sealed."
+    ],
+    "remainingBlockers": [
+      "No same-moment entities, POI, or level.dat evidence exists in any copied-save candidate.",
+      "The region census does not select treatment typologies, foundations, future excavation/fill influence cells, or groundwater-like behavior.",
+      "Hydrology components and accepted outfalls remain D02-S03 work."
+    ]
+  },
+  "d02S02": {
+    "status": "PARTIAL_PASS_REGION_INTERFACE_FACTS_ISSUE_002_REMAINS_OPEN",
+    "c01CatalogFeatureVolumes": [
+      {
+        "feature": "C01 Owner Tunnel Detour",
+        "catalogLayer": "subsurface",
+        "catalogProject": "Town Expansion R1",
+        "exactLandTakePlanOverlapColumnCount": 7803,
+        "exactLandTakePlanGapBlocksChebyshev": 0,
+        "minimumSurfaceDatumSeparationAboveFeatureTop": 105,
+        "regionVolume": {
+          "id": "C01 Owner Tunnel Detour",
+          "bounds": {
+            "minX": 364,
+            "maxX": 718,
+            "minY": -45,
+            "maxY": -37,
+            "minZ": -46,
+            "maxZ": 58
+          },
+          "cellCount": 335475,
+          "touchedChunkCount": 161,
+          "missingChunkCount": 0,
+          "stateStreamSha256": "29faf80aebc1db8cdbe97675f04402d571030de880db3e1fff8f4c1045583a3d",
+          "airLikeCells": 15961,
+          "nonAirCells": 319514,
+          "waterCells": 173,
+          "waterloggedCells": 0,
+          "lavaCells": 104,
+          "gravitySensitiveCandidateCells": 3982,
+          "uniqueBlockNameCount": 26,
+          "uniqueExactStateCount": 42,
+          "topBlockNames": [
+            {
+              "id": "minecraft:deepslate",
+              "count": 280469
+            },
+            {
+              "id": "minecraft:tuff",
+              "count": 21753
+            },
+            {
+              "id": "minecraft:air",
+              "count": 15617
+            },
+            {
+              "id": "minecraft:reinforced_deepslate",
+              "count": 5948
+            },
+            {
+              "id": "minecraft:gravel",
+              "count": 3982
+            },
+            {
+              "id": "minecraft:smooth_stone",
+              "count": 2002
+            },
+            {
+              "id": "minecraft:polished_deepslate",
+              "count": 1732
+            },
+            {
+              "id": "minecraft:deepslate_redstone_ore",
+              "count": 798
+            },
+            {
+              "id": "minecraft:deepslate_iron_ore",
+              "count": 689
+            },
+            {
+              "id": "minecraft:deepslate_diamond_ore",
+              "count": 567
+            },
+            {
+              "id": "minecraft:deepslate_gold_ore",
+              "count": 369
+            },
+            {
+              "id": "minecraft:cave_air",
+              "count": 344
+            },
+            {
+              "id": "minecraft:infested_deepslate",
+              "count": 282
+            },
+            {
+              "id": "minecraft:cobblestone",
+              "count": 279
+            },
+            {
+              "id": "minecraft:water",
+              "count": 173
+            },
+            {
+              "id": "minecraft:deepslate_lapis_ore",
+              "count": 168
+            },
+            {
+              "id": "minecraft:mossy_cobblestone",
+              "count": 110
+            },
+            {
+              "id": "minecraft:lava",
+              "count": 104
+            },
+            {
+              "id": "minecraft:ochre_froglight",
+              "count": 44
+            },
+            {
+              "id": "minecraft:raw_iron_block",
+              "count": 15
+            }
+          ],
+          "blockEntities": {
+            "count": 4,
+            "byType": [
+              {
+                "id": "minecraft:chest",
+                "count": 2
+              },
+              {
+                "id": "minecraft:mob_spawner",
+                "count": 2
+              }
+            ],
+            "nbtSetSha256": "acf0b555885875e7b49af6636be82f6e1d696355b4fdfcdffd3dcf0344b94025",
+            "nbtContentsPublished": false
+          }
+        },
+        "acceptance": "REGION_STATE_EVIDENCE_ONLY_SEMANTIC_IDENTITY_OWNERSHIP_LOADING_AND_USABILITY_HOLD"
+      },
+      {
+        "feature": "C01 East L1 Security Garage",
+        "catalogLayer": "subsurface",
+        "catalogProject": "Town Expansion R1",
+        "exactLandTakePlanOverlapColumnCount": 0,
+        "exactLandTakePlanGapBlocksChebyshev": 11,
+        "minimumSurfaceDatumSeparationAboveFeatureTop": null,
+        "regionVolume": {
+          "id": "C01 East L1 Security Garage",
+          "bounds": {
+            "minX": 700,
+            "maxX": 900,
+            "minY": 42,
+            "maxY": 53,
+            "minZ": -140,
+            "maxZ": -5
+          },
+          "cellCount": 328032,
+          "touchedChunkCount": 126,
+          "missingChunkCount": 0,
+          "stateStreamSha256": "07efb65b3e335a8df8aa5ae0ee63ed23983e59b8009418d7b02a1359898b620f",
+          "airLikeCells": 141033,
+          "nonAirCells": 186999,
+          "waterCells": 186,
+          "waterloggedCells": 0,
+          "lavaCells": 0,
+          "gravitySensitiveCandidateCells": 2100,
+          "uniqueBlockNameCount": 43,
+          "uniqueExactStateCount": 63,
+          "topBlockNames": [
+            {
+              "id": "minecraft:air",
+              "count": 141033
+            },
+            {
+              "id": "minecraft:stone",
+              "count": 99737
+            },
+            {
+              "id": "minecraft:polished_deepslate",
+              "count": 20476
+            },
+            {
+              "id": "minecraft:light_blue_concrete",
+              "count": 13222
+            },
+            {
+              "id": "minecraft:diorite",
+              "count": 10928
+            },
+            {
+              "id": "minecraft:andesite",
+              "count": 9253
+            },
+            {
+              "id": "minecraft:granite",
+              "count": 7295
+            },
+            {
+              "id": "minecraft:polished_blackstone",
+              "count": 7254
+            },
+            {
+              "id": "minecraft:reinforced_deepslate",
+              "count": 6022
+            },
+            {
+              "id": "minecraft:dirt",
+              "count": 3567
+            },
+            {
+              "id": "minecraft:gravel",
+              "count": 2100
+            },
+            {
+              "id": "minecraft:coal_ore",
+              "count": 1213
+            },
+            {
+              "id": "minecraft:copper_ore",
+              "count": 1079
+            },
+            {
+              "id": "minecraft:tinted_glass",
+              "count": 765
+            },
+            {
+              "id": "minecraft:white_concrete",
+              "count": 525
+            },
+            {
+              "id": "minecraft:gray_concrete",
+              "count": 426
+            },
+            {
+              "id": "minecraft:grass_block",
+              "count": 372
+            },
+            {
+              "id": "minecraft:lime_concrete",
+              "count": 334
+            },
+            {
+              "id": "minecraft:yellow_concrete",
+              "count": 334
+            },
+            {
+              "id": "minecraft:blue_concrete",
+              "count": 324
+            }
+          ],
+          "blockEntities": {
+            "count": 99,
+            "byType": [
+              {
+                "id": "minecraft:barrel",
+                "count": 87
+              },
+              {
+                "id": "minecraft:sign",
+                "count": 12
+              }
+            ],
+            "nbtSetSha256": "66e8c217f59c2575f996e60a91ec01b2dc8f604f5208c0e25434e70b49a09f26",
+            "nbtContentsPublished": false
+          }
+        },
+        "acceptance": "REGION_STATE_EVIDENCE_ONLY_SEMANTIC_IDENTITY_OWNERSHIP_LOADING_AND_USABILITY_HOLD"
+      },
+      {
+        "feature": "C01 East L2 Living Adult",
+        "catalogLayer": "subsurface",
+        "catalogProject": "Town Expansion R1",
+        "exactLandTakePlanOverlapColumnCount": 0,
+        "exactLandTakePlanGapBlocksChebyshev": 11,
+        "minimumSurfaceDatumSeparationAboveFeatureTop": null,
+        "regionVolume": {
+          "id": "C01 East L2 Living Adult",
+          "bounds": {
+            "minX": 700,
+            "maxX": 900,
+            "minY": 33,
+            "maxY": 41,
+            "minZ": -140,
+            "maxZ": -5
+          },
+          "cellCount": 246024,
+          "touchedChunkCount": 126,
+          "missingChunkCount": 0,
+          "stateStreamSha256": "9fbdef3832c61b4005178c55cbff225b35cec151f624b8af610ea695a26619fd",
+          "airLikeCells": 121440,
+          "nonAirCells": 124584,
+          "waterCells": 119,
+          "waterloggedCells": 0,
+          "lavaCells": 0,
+          "gravitySensitiveCandidateCells": 1093,
+          "uniqueBlockNameCount": 68,
+          "uniqueExactStateCount": 91,
+          "topBlockNames": [
+            {
+              "id": "minecraft:air",
+              "count": 121440
+            },
+            {
+              "id": "minecraft:stone",
+              "count": 52718
+            },
+            {
+              "id": "minecraft:polished_deepslate",
+              "count": 20564
+            },
+            {
+              "id": "minecraft:polished_blackstone",
+              "count": 12192
+            },
+            {
+              "id": "minecraft:crimson_planks",
+              "count": 8270
+            },
+            {
+              "id": "minecraft:granite",
+              "count": 6181
+            },
+            {
+              "id": "minecraft:reinforced_deepslate",
+              "count": 5358
+            },
+            {
+              "id": "minecraft:andesite",
+              "count": 5071
+            },
+            {
+              "id": "minecraft:diorite",
+              "count": 4339
+            },
+            {
+              "id": "minecraft:dirt",
+              "count": 1217
+            },
+            {
+              "id": "minecraft:gravel",
+              "count": 1093
+            },
+            {
+              "id": "minecraft:copper_ore",
+              "count": 1005
+            },
+            {
+              "id": "minecraft:bookshelf",
+              "count": 629
+            },
+            {
+              "id": "minecraft:dripstone_block",
+              "count": 574
+            },
+            {
+              "id": "minecraft:tinted_glass",
+              "count": 558
+            },
+            {
+              "id": "minecraft:coal_ore",
+              "count": 524
+            },
+            {
+              "id": "minecraft:clay",
+              "count": 367
+            },
+            {
+              "id": "minecraft:dark_oak_fence",
+              "count": 312
+            },
+            {
+              "id": "minecraft:iron_ore",
+              "count": 285
+            },
+            {
+              "id": "minecraft:polished_blackstone_slab",
+              "count": 274
+            }
+          ],
+          "blockEntities": {
+            "count": 199,
+            "byType": [
+              {
+                "id": "minecraft:chiseled_bookshelf",
+                "count": 176
+              },
+              {
+                "id": "minecraft:lectern",
+                "count": 15
+              },
+              {
+                "id": "minecraft:bed",
+                "count": 7
+              },
+              {
+                "id": "minecraft:jukebox",
+                "count": 1
+              }
+            ],
+            "nbtSetSha256": "7e8a64d79ce635810c8609ff3e535ae194f2737ca989c1f4e9e78f6b9906adb7",
+            "nbtContentsPublished": false
+          }
+        },
+        "acceptance": "REGION_STATE_EVIDENCE_ONLY_SEMANTIC_IDENTITY_OWNERSHIP_LOADING_AND_USABILITY_HOLD"
+      },
+      {
+        "feature": "C01 East L3 Agriculture Water",
+        "catalogLayer": "subsurface",
+        "catalogProject": "Town Expansion R1",
+        "exactLandTakePlanOverlapColumnCount": 0,
+        "exactLandTakePlanGapBlocksChebyshev": 11,
+        "minimumSurfaceDatumSeparationAboveFeatureTop": null,
+        "regionVolume": {
+          "id": "C01 East L3 Agriculture Water",
+          "bounds": {
+            "minX": 700,
+            "maxX": 900,
+            "minY": 24,
+            "maxY": 32,
+            "minZ": -141,
+            "maxZ": -5
+          },
+          "cellCount": 247833,
+          "touchedChunkCount": 126,
+          "missingChunkCount": 0,
+          "stateStreamSha256": "6445d66881adf40cfbe0803837a57adc29cec2271c216daf18b67b54224aaa7a",
+          "airLikeCells": 124880,
+          "nonAirCells": 122953,
+          "waterCells": 5,
+          "waterloggedCells": 0,
+          "lavaCells": 5,
+          "gravitySensitiveCandidateCells": 1087,
+          "uniqueBlockNameCount": 52,
+          "uniqueExactStateCount": 76,
+          "topBlockNames": [
+            {
+              "id": "minecraft:air",
+              "count": 124880
+            },
+            {
+              "id": "minecraft:stone",
+              "count": 51071
+            },
+            {
+              "id": "minecraft:polished_deepslate",
+              "count": 20560
+            },
+            {
+              "id": "minecraft:polished_blackstone",
+              "count": 12750
+            },
+            {
+              "id": "minecraft:granite",
+              "count": 8011
+            },
+            {
+              "id": "minecraft:moss_block",
+              "count": 7941
+            },
+            {
+              "id": "minecraft:reinforced_deepslate",
+              "count": 5159
+            },
+            {
+              "id": "minecraft:diorite",
+              "count": 5139
+            },
+            {
+              "id": "minecraft:andesite",
+              "count": 3938
+            },
+            {
+              "id": "minecraft:copper_ore",
+              "count": 1279
+            },
+            {
+              "id": "minecraft:dirt",
+              "count": 1220
+            },
+            {
+              "id": "minecraft:gravel",
+              "count": 1087
+            },
+            {
+              "id": "minecraft:dripstone_block",
+              "count": 1053
+            },
+            {
+              "id": "minecraft:barrel",
+              "count": 657
+            },
+            {
+              "id": "minecraft:coal_ore",
+              "count": 509
+            },
+            {
+              "id": "minecraft:clay",
+              "count": 386
+            },
+            {
+              "id": "minecraft:iron_ore",
+              "count": 383
+            },
+            {
+              "id": "minecraft:oak_fence",
+              "count": 296
+            },
+            {
+              "id": "minecraft:smooth_basalt",
+              "count": 191
+            },
+            {
+              "id": "minecraft:pointed_dripstone",
+              "count": 179
+            }
+          ],
+          "blockEntities": {
+            "count": 757,
+            "byType": [
+              {
+                "id": "minecraft:barrel",
+                "count": 657
+              },
+              {
+                "id": "minecraft:conduit",
+                "count": 90
+              },
+              {
+                "id": "minecraft:blast_furnace",
+                "count": 8
+              },
+              {
+                "id": "minecraft:furnace",
+                "count": 1
+              },
+              {
+                "id": "minecraft:smoker",
+                "count": 1
+              }
+            ],
+            "nbtSetSha256": "b8c74397ec48c9964805a79cf2b76e3bfe25277673b0d7effb74a8ed6da83e22",
+            "nbtContentsPublished": false
+          }
+        },
+        "acceptance": "REGION_STATE_EVIDENCE_ONLY_SEMANTIC_IDENTITY_OWNERSHIP_LOADING_AND_USABILITY_HOLD"
+      },
+      {
+        "feature": "C01 Owner Residence",
+        "catalogLayer": "subsurface",
+        "catalogProject": "Town Expansion R1",
+        "exactLandTakePlanOverlapColumnCount": 0,
+        "exactLandTakePlanGapBlocksChebyshev": 16,
+        "minimumSurfaceDatumSeparationAboveFeatureTop": null,
+        "regionVolume": {
+          "id": "C01 Owner Residence",
+          "bounds": {
+            "minX": 714,
+            "maxX": 895,
+            "minY": -31,
+            "maxY": -18,
+            "minZ": -74,
+            "maxZ": -10
+          },
+          "cellCount": 165620,
+          "touchedChunkCount": 60,
+          "missingChunkCount": 0,
+          "stateStreamSha256": "f1e9f976c5fccae1b2d4f3179c68f49611225d281d92924003b5cd801a6be6f9",
+          "airLikeCells": 132640,
+          "nonAirCells": 32980,
+          "waterCells": 0,
+          "waterloggedCells": 0,
+          "lavaCells": 0,
+          "gravitySensitiveCandidateCells": 1,
+          "uniqueBlockNameCount": 28,
+          "uniqueExactStateCount": 32,
+          "topBlockNames": [
+            {
+              "id": "minecraft:air",
+              "count": 132640
+            },
+            {
+              "id": "minecraft:smooth_quartz",
+              "count": 12148
+            },
+            {
+              "id": "minecraft:polished_deepslate",
+              "count": 11686
+            },
+            {
+              "id": "minecraft:reinforced_deepslate",
+              "count": 5720
+            },
+            {
+              "id": "minecraft:deepslate",
+              "count": 1569
+            },
+            {
+              "id": "minecraft:bookshelf",
+              "count": 635
+            },
+            {
+              "id": "minecraft:tinted_glass",
+              "count": 396
+            },
+            {
+              "id": "minecraft:polished_blackstone_slab",
+              "count": 211
+            },
+            {
+              "id": "minecraft:tuff",
+              "count": 164
+            },
+            {
+              "id": "minecraft:polished_blackstone_stairs",
+              "count": 154
+            },
+            {
+              "id": "minecraft:chiseled_bookshelf",
+              "count": 88
+            },
+            {
+              "id": "minecraft:ochre_froglight",
+              "count": 32
+            },
+            {
+              "id": "minecraft:red_nether_bricks",
+              "count": 30
+            },
+            {
+              "id": "minecraft:red_bed",
+              "count": 26
+            },
+            {
+              "id": "minecraft:crimson_planks",
+              "count": 20
+            },
+            {
+              "id": "minecraft:light_blue_concrete",
+              "count": 18
+            },
+            {
+              "id": "minecraft:green_bed",
+              "count": 17
+            },
+            {
+              "id": "minecraft:dripstone_block",
+              "count": 15
+            },
+            {
+              "id": "minecraft:crimson_stairs",
+              "count": 12
+            },
+            {
+              "id": "minecraft:dark_oak_fence",
+              "count": 12
+            }
+          ],
+          "blockEntities": {
+            "count": 135,
+            "byType": [
+              {
+                "id": "minecraft:chiseled_bookshelf",
+                "count": 88
+              },
+              {
+                "id": "minecraft:bed",
+                "count": 46
+              },
+              {
+                "id": "minecraft:ender_chest",
+                "count": 1
+              }
+            ],
+            "nbtSetSha256": "615c9b7990f5ed985ceff07a9d4ee6932e18e66643f49d34816d846977c8552f",
+            "nbtContentsPublished": false
+          }
+        },
+        "acceptance": "REGION_STATE_EVIDENCE_ONLY_SEMANTIC_IDENTITY_OWNERSHIP_LOADING_AND_USABILITY_HOLD"
+      },
+      {
+        "feature": "C01 East L4 Command Medical",
+        "catalogLayer": "subsurface",
+        "catalogProject": "Town Expansion R1",
+        "exactLandTakePlanOverlapColumnCount": 0,
+        "exactLandTakePlanGapBlocksChebyshev": 40,
+        "minimumSurfaceDatumSeparationAboveFeatureTop": null,
+        "regionVolume": {
+          "id": "C01 East L4 Command Medical",
+          "bounds": {
+            "minX": 702,
+            "maxX": 854,
+            "minY": 15,
+            "maxY": 23,
+            "minZ": -70,
+            "maxZ": -19
+          },
+          "cellCount": 71604,
+          "touchedChunkCount": 44,
+          "missingChunkCount": 0,
+          "stateStreamSha256": "91af7fdfc6b74913346bd678cdbb3eed26d1dcb5c956a9b0103221d4d4cdeef0",
+          "airLikeCells": 39940,
+          "nonAirCells": 31664,
+          "waterCells": 6,
+          "waterloggedCells": 0,
+          "lavaCells": 0,
+          "gravitySensitiveCandidateCells": 182,
+          "uniqueBlockNameCount": 46,
+          "uniqueExactStateCount": 53,
+          "topBlockNames": [
+            {
+              "id": "minecraft:air",
+              "count": 39940
+            },
+            {
+              "id": "minecraft:stone",
+              "count": 8537
+            },
+            {
+              "id": "minecraft:polished_deepslate",
+              "count": 7361
+            },
+            {
+              "id": "minecraft:polished_blackstone",
+              "count": 5978
+            },
+            {
+              "id": "minecraft:reinforced_deepslate",
+              "count": 2419
+            },
+            {
+              "id": "minecraft:oxidized_cut_copper",
+              "count": 1949
+            },
+            {
+              "id": "minecraft:andesite",
+              "count": 1097
+            },
+            {
+              "id": "minecraft:granite",
+              "count": 595
+            },
+            {
+              "id": "minecraft:iron_bars",
+              "count": 489
+            },
+            {
+              "id": "minecraft:iron_block",
+              "count": 461
+            },
+            {
+              "id": "minecraft:diorite",
+              "count": 454
+            },
+            {
+              "id": "minecraft:copper_ore",
+              "count": 315
+            },
+            {
+              "id": "minecraft:bookshelf",
+              "count": 204
+            },
+            {
+              "id": "minecraft:gravel",
+              "count": 182
+            },
+            {
+              "id": "minecraft:copper_block",
+              "count": 165
+            },
+            {
+              "id": "minecraft:observer",
+              "count": 165
+            },
+            {
+              "id": "minecraft:lime_stained_glass",
+              "count": 156
+            },
+            {
+              "id": "minecraft:dirt",
+              "count": 155
+            },
+            {
+              "id": "minecraft:dripstone_block",
+              "count": 143
+            },
+            {
+              "id": "minecraft:tinted_glass",
+              "count": 127
+            }
+          ],
+          "blockEntities": {
+            "count": 114,
+            "byType": [
+              {
+                "id": "minecraft:beacon",
+                "count": 51
+              },
+              {
+                "id": "minecraft:brewing_stand",
+                "count": 39
+              },
+              {
+                "id": "minecraft:chest",
+                "count": 14
+              },
+              {
+                "id": "minecraft:lectern",
+                "count": 8
+              },
+              {
+                "id": "minecraft:ender_chest",
+                "count": 2
+              }
+            ],
+            "nbtSetSha256": "5e3c669485b61d6cb66e6438560facb1d85d1bd1324ccea1ec3dc06d57e80ee5",
+            "nbtContentsPublished": false
+          }
+        },
+        "acceptance": "REGION_STATE_EVIDENCE_ONLY_SEMANTIC_IDENTITY_OWNERSHIP_LOADING_AND_USABILITY_HOLD"
+      },
+      {
+        "feature": "C01 East L5 Power Escape",
+        "catalogLayer": "subsurface",
+        "catalogProject": "Town Expansion R1",
+        "exactLandTakePlanOverlapColumnCount": 0,
+        "exactLandTakePlanGapBlocksChebyshev": 41,
+        "minimumSurfaceDatumSeparationAboveFeatureTop": null,
+        "regionVolume": {
+          "id": "C01 East L5 Power Escape",
+          "bounds": {
+            "minX": 703,
+            "maxX": 854,
+            "minY": 6,
+            "maxY": 14,
+            "minZ": -68,
+            "maxZ": -20
+          },
+          "cellCount": 67032,
+          "touchedChunkCount": 44,
+          "missingChunkCount": 0,
+          "stateStreamSha256": "11730e431653f2a984c5717b0c37d642053cfc55ba0dbc47da5dcfd6c9808a41",
+          "airLikeCells": 40372,
+          "nonAirCells": 26660,
+          "waterCells": 0,
+          "waterloggedCells": 0,
+          "lavaCells": 0,
+          "gravitySensitiveCandidateCells": 154,
+          "uniqueBlockNameCount": 52,
+          "uniqueExactStateCount": 62,
+          "topBlockNames": [
+            {
+              "id": "minecraft:air",
+              "count": 40372
+            },
+            {
+              "id": "minecraft:polished_deepslate",
+              "count": 7325
+            },
+            {
+              "id": "minecraft:polished_blackstone",
+              "count": 5464
+            },
+            {
+              "id": "minecraft:stone",
+              "count": 5106
+            },
+            {
+              "id": "minecraft:reinforced_deepslate",
+              "count": 2686
+            },
+            {
+              "id": "minecraft:yellow_concrete",
+              "count": 1951
+            },
+            {
+              "id": "minecraft:granite",
+              "count": 588
+            },
+            {
+              "id": "minecraft:diorite",
+              "count": 542
+            },
+            {
+              "id": "minecraft:bookshelf",
+              "count": 510
+            },
+            {
+              "id": "minecraft:copper_block",
+              "count": 488
+            },
+            {
+              "id": "minecraft:andesite",
+              "count": 412
+            },
+            {
+              "id": "minecraft:dirt",
+              "count": 184
+            },
+            {
+              "id": "minecraft:redstone_lamp",
+              "count": 162
+            },
+            {
+              "id": "minecraft:gravel",
+              "count": 154
+            },
+            {
+              "id": "minecraft:polished_blackstone_stairs",
+              "count": 119
+            },
+            {
+              "id": "minecraft:barrel",
+              "count": 118
+            },
+            {
+              "id": "minecraft:copper_ore",
+              "count": 116
+            },
+            {
+              "id": "minecraft:tinted_glass",
+              "count": 99
+            },
+            {
+              "id": "minecraft:white_wool",
+              "count": 91
+            },
+            {
+              "id": "minecraft:dripstone_block",
+              "count": 52
+            }
+          ],
+          "blockEntities": {
+            "count": 198,
+            "byType": [
+              {
+                "id": "minecraft:barrel",
+                "count": 118
+              },
+              {
+                "id": "minecraft:beacon",
+                "count": 51
+              },
+              {
+                "id": "minecraft:chest",
+                "count": 14
+              },
+              {
+                "id": "minecraft:blast_furnace",
+                "count": 9
+              },
+              {
+                "id": "minecraft:bed",
+                "count": 4
+              },
+              {
+                "id": "minecraft:skull",
+                "count": 2
+              }
+            ],
+            "nbtSetSha256": "2fc057784dd72599d3f31795b64808921cf5f949ff9a139b40e15020e1016828",
+            "nbtContentsPublished": false
+          }
+        },
+        "acceptance": "REGION_STATE_EVIDENCE_ONLY_SEMANTIC_IDENTITY_OWNERSHIP_LOADING_AND_USABILITY_HOLD"
+      },
+      {
+        "feature": "C01 Owner Club Arrival",
+        "catalogLayer": "subsurface",
+        "catalogProject": "Town Expansion R1",
+        "exactLandTakePlanOverlapColumnCount": 0,
+        "exactLandTakePlanGapBlocksChebyshev": 43,
+        "minimumSurfaceDatumSeparationAboveFeatureTop": null,
+        "regionVolume": {
+          "id": "C01 Owner Club Arrival",
+          "bounds": {
+            "minX": 721,
+            "maxX": 850,
+            "minY": -14,
+            "maxY": 4,
+            "minZ": -64,
+            "maxZ": -22
+          },
+          "cellCount": 106210,
+          "touchedChunkCount": 27,
+          "missingChunkCount": 0,
+          "stateStreamSha256": "1c2f9c604f496e01563142a28881f144754a95139c8eea217950e24f087e4cfe",
+          "airLikeCells": 67397,
+          "nonAirCells": 38813,
+          "waterCells": 0,
+          "waterloggedCells": 0,
+          "lavaCells": 0,
+          "gravitySensitiveCandidateCells": 270,
+          "uniqueBlockNameCount": 62,
+          "uniqueExactStateCount": 68,
+          "topBlockNames": [
+            {
+              "id": "minecraft:air",
+              "count": 67397
+            },
+            {
+              "id": "minecraft:deepslate",
+              "count": 17728
+            },
+            {
+              "id": "minecraft:reinforced_deepslate",
+              "count": 5344
+            },
+            {
+              "id": "minecraft:red_nether_bricks",
+              "count": 4650
+            },
+            {
+              "id": "minecraft:polished_deepslate",
+              "count": 4311
+            },
+            {
+              "id": "minecraft:tuff",
+              "count": 1575
+            },
+            {
+              "id": "minecraft:stone",
+              "count": 1306
+            },
+            {
+              "id": "minecraft:bookshelf",
+              "count": 353
+            },
+            {
+              "id": "minecraft:tinted_glass",
+              "count": 325
+            },
+            {
+              "id": "minecraft:gravel",
+              "count": 270
+            },
+            {
+              "id": "minecraft:polished_blackstone_stairs",
+              "count": 206
+            },
+            {
+              "id": "minecraft:granite",
+              "count": 179
+            },
+            {
+              "id": "minecraft:andesite",
+              "count": 159
+            },
+            {
+              "id": "minecraft:deepslate_copper_ore",
+              "count": 149
+            },
+            {
+              "id": "minecraft:polished_blackstone_slab",
+              "count": 149
+            },
+            {
+              "id": "minecraft:dripstone_block",
+              "count": 148
+            },
+            {
+              "id": "minecraft:barrel",
+              "count": 144
+            },
+            {
+              "id": "minecraft:dirt",
+              "count": 136
+            },
+            {
+              "id": "minecraft:crimson_stairs",
+              "count": 132
+            },
+            {
+              "id": "minecraft:diorite",
+              "count": 131
+            }
+          ],
+          "blockEntities": {
+            "count": 144,
+            "byType": [
+              {
+                "id": "minecraft:barrel",
+                "count": 144
+              }
+            ],
+            "nbtSetSha256": "6ad5090a6d1c603d0db7fae0146e7777a34ec8969d8396055316c4f91d41064c",
+            "nbtContentsPublished": false
+          }
+        },
+        "acceptance": "REGION_STATE_EVIDENCE_ONLY_SEMANTIC_IDENTITY_OWNERSHIP_LOADING_AND_USABILITY_HOLD"
+      }
+    ],
+    "issue002RegionEvidence": {
+      "oldC01SourceVolume": {
+        "id": "ISSUE-002-OLD-C01-SOURCE-VOLUME",
+        "bounds": {
+          "minX": 90,
+          "minY": 44,
+          "minZ": 70,
+          "maxX": 300,
+          "maxY": 136,
+          "maxZ": 235
+        },
+        "cellCount": 3257418,
+        "touchedChunkCount": 154,
+        "missingChunkCount": 0,
+        "stateStreamSha256": "6597a28a97c5eeec785aa94dae8dcfa67aa6a1e1f9c7726d0bde243a8e80427e",
+        "airLikeCells": 1969904,
+        "nonAirCells": 1287514,
+        "waterCells": 4604,
+        "waterloggedCells": 1,
+        "lavaCells": 56,
+        "gravitySensitiveCandidateCells": 2380,
+        "uniqueBlockNameCount": 169,
+        "uniqueExactStateCount": 303,
+        "topBlockNames": [
+          {
+            "id": "minecraft:air",
+            "count": 1969803
+          },
+          {
+            "id": "minecraft:stone",
+            "count": 899939
+          },
+          {
+            "id": "minecraft:dirt",
+            "count": 99091
+          },
+          {
+            "id": "minecraft:smooth_quartz",
+            "count": 32640
+          },
+          {
+            "id": "minecraft:gray_concrete",
+            "count": 26977
+          },
+          {
+            "id": "minecraft:grass_block",
+            "count": 20060
+          },
+          {
+            "id": "minecraft:polished_deepslate",
+            "count": 18656
+          },
+          {
+            "id": "minecraft:reinforced_deepslate",
+            "count": 16860
+          },
+          {
+            "id": "minecraft:dark_oak_planks",
+            "count": 16110
+          },
+          {
+            "id": "minecraft:deepslate_bricks",
+            "count": 14793
+          },
+          {
+            "id": "minecraft:stone_bricks",
+            "count": 14602
+          },
+          {
+            "id": "minecraft:quartz_bricks",
+            "count": 9390
+          },
+          {
+            "id": "minecraft:quartz_block",
+            "count": 7711
+          },
+          {
+            "id": "minecraft:light_gray_concrete",
+            "count": 7668
+          },
+          {
+            "id": "minecraft:deepslate_tiles",
+            "count": 7406
+          },
+          {
+            "id": "minecraft:oxidized_cut_copper",
+            "count": 7163
+          },
+          {
+            "id": "minecraft:polished_blackstone",
+            "count": 7073
+          },
+          {
+            "id": "minecraft:iron_block",
+            "count": 5166
+          },
+          {
+            "id": "minecraft:water",
+            "count": 4604
+          },
+          {
+            "id": "minecraft:bookshelf",
+            "count": 4025
+          }
+        ],
+        "blockEntities": {
+          "count": 3505,
+          "byType": [
+            {
+              "id": "minecraft:barrel",
+              "count": 1680
+            },
+            {
+              "id": "minecraft:chiseled_bookshelf",
+              "count": 1461
+            },
+            {
+              "id": "minecraft:beacon",
+              "count": 102
+            },
+            {
+              "id": "minecraft:conduit",
+              "count": 90
+            },
+            {
+              "id": "minecraft:brewing_stand",
+              "count": 40
+            },
+            {
+              "id": "minecraft:bed",
+              "count": 36
+            },
+            {
+              "id": "minecraft:chest",
+              "count": 28
+            },
+            {
+              "id": "minecraft:lectern",
+              "count": 24
+            },
+            {
+              "id": "minecraft:blast_furnace",
+              "count": 17
+            },
+            {
+              "id": "minecraft:sign",
+              "count": 14
+            },
+            {
+              "id": "minecraft:ender_chest",
+              "count": 4
+            },
+            {
+              "id": "minecraft:jukebox",
+              "count": 3
+            },
+            {
+              "id": "minecraft:smoker",
+              "count": 3
+            },
+            {
+              "id": "minecraft:campfire",
+              "count": 1
+            },
+            {
+              "id": "minecraft:daylight_detector",
+              "count": 1
+            },
+            {
+              "id": "minecraft:furnace",
+              "count": 1
+            }
+          ],
+          "nbtSetSha256": "3a3d75113d3618e979b3095e454527a58feae689ec16a1b054e6244b4da02df1",
+          "nbtContentsPublished": false
+        }
+      },
+      "oldC01PriorSurveyBlockEntityCount": 1896,
+      "oldSourceRegionFinding": "NONEMPTY_WITH_BLOCK_ENTITIES_CONSISTENT_WITH_OLD_SOURCE_NOT_RETIRED",
+      "eastStudyVolume": {
+        "id": "ISSUE-002-C01-EAST-STUDY-ENVELOPE",
+        "bounds": {
+          "minX": 700,
+          "maxX": 900,
+          "minY": 20,
+          "maxY": 60,
+          "minZ": -160,
+          "maxZ": 5
+        },
+        "cellCount": 1368006,
+        "touchedChunkCount": 154,
+        "missingChunkCount": 0,
+        "stateStreamSha256": "f6cd9babad0309104f64efb2c8c03080a0d70981a8a416784aef0ec93556f0b7",
+        "airLikeCells": 425847,
+        "nonAirCells": 942159,
+        "waterCells": 1233,
+        "waterloggedCells": 3,
+        "lavaCells": 20,
+        "gravitySensitiveCandidateCells": 10985,
+        "uniqueBlockNameCount": 104,
+        "uniqueExactStateCount": 184,
+        "topBlockNames": [
+          {
+            "id": "minecraft:stone",
+            "count": 562039
+          },
+          {
+            "id": "minecraft:air",
+            "count": 425805
+          },
+          {
+            "id": "minecraft:polished_deepslate",
+            "count": 68961
+          },
+          {
+            "id": "minecraft:granite",
+            "count": 55356
+          },
+          {
+            "id": "minecraft:diorite",
+            "count": 52044
+          },
+          {
+            "id": "minecraft:andesite",
+            "count": 49570
+          },
+          {
+            "id": "minecraft:polished_blackstone",
+            "count": 32196
+          },
+          {
+            "id": "minecraft:dirt",
+            "count": 25445
+          },
+          {
+            "id": "minecraft:reinforced_deepslate",
+            "count": 17346
+          },
+          {
+            "id": "minecraft:light_blue_concrete",
+            "count": 13258
+          },
+          {
+            "id": "minecraft:gravel",
+            "count": 10985
+          },
+          {
+            "id": "minecraft:copper_ore",
+            "count": 8849
+          },
+          {
+            "id": "minecraft:moss_block",
+            "count": 8557
+          },
+          {
+            "id": "minecraft:crimson_planks",
+            "count": 8270
+          },
+          {
+            "id": "minecraft:coal_ore",
+            "count": 6252
+          },
+          {
+            "id": "minecraft:dripstone_block",
+            "count": 2728
+          },
+          {
+            "id": "minecraft:clay",
+            "count": 2621
+          },
+          {
+            "id": "minecraft:iron_ore",
+            "count": 2048
+          },
+          {
+            "id": "minecraft:grass_block",
+            "count": 1500
+          },
+          {
+            "id": "minecraft:tinted_glass",
+            "count": 1421
+          }
+        ],
+        "blockEntities": {
+          "count": 1055,
+          "byType": [
+            {
+              "id": "minecraft:barrel",
+              "count": 744
+            },
+            {
+              "id": "minecraft:chiseled_bookshelf",
+              "count": 176
+            },
+            {
+              "id": "minecraft:conduit",
+              "count": 90
+            },
+            {
+              "id": "minecraft:lectern",
+              "count": 15
+            },
+            {
+              "id": "minecraft:sign",
+              "count": 12
+            },
+            {
+              "id": "minecraft:blast_furnace",
+              "count": 8
+            },
+            {
+              "id": "minecraft:bed",
+              "count": 7
+            },
+            {
+              "id": "minecraft:furnace",
+              "count": 1
+            },
+            {
+              "id": "minecraft:jukebox",
+              "count": 1
+            },
+            {
+              "id": "minecraft:smoker",
+              "count": 1
+            }
+          ],
+          "nbtSetSha256": "f5b83c6fd3a5ae56535430e709b201f1bfc89d64774a0e7bdb2207abf8830851",
+          "nbtContentsPublished": false
+        }
+      },
+      "portalStudyVolume": {
+        "id": "ISSUE-002-C01-EAST-PORTAL-STUDY",
+        "bounds": {
+          "minX": 690,
+          "maxX": 712,
+          "minY": 48,
+          "maxY": 74,
+          "minZ": -70,
+          "maxZ": -36
+        },
+        "cellCount": 21735,
+        "touchedChunkCount": 6,
+        "missingChunkCount": 0,
+        "stateStreamSha256": "eff4bbcb83c8ac9dc15198b61d120600128e4609c6eb5793bb91445f42077783",
+        "airLikeCells": 5146,
+        "nonAirCells": 16589,
+        "waterCells": 0,
+        "waterloggedCells": 0,
+        "lavaCells": 0,
+        "gravitySensitiveCandidateCells": 492,
+        "uniqueBlockNameCount": 26,
+        "uniqueExactStateCount": 69,
+        "topBlockNames": [
+          {
+            "id": "minecraft:stone",
+            "count": 8586
+          },
+          {
+            "id": "minecraft:air",
+            "count": 5146
+          },
+          {
+            "id": "minecraft:dirt",
+            "count": 2779
+          },
+          {
+            "id": "minecraft:granite",
+            "count": 1408
+          },
+          {
+            "id": "minecraft:grass_block",
+            "count": 734
+          },
+          {
+            "id": "minecraft:gravel",
+            "count": 492
+          },
+          {
+            "id": "minecraft:andesite",
+            "count": 426
+          },
+          {
+            "id": "minecraft:diorite",
+            "count": 412
+          },
+          {
+            "id": "minecraft:polished_deepslate",
+            "count": 357
+          },
+          {
+            "id": "minecraft:oak_leaves",
+            "count": 286
+          },
+          {
+            "id": "minecraft:leaf_litter",
+            "count": 275
+          },
+          {
+            "id": "minecraft:coal_ore",
+            "count": 169
+          },
+          {
+            "id": "minecraft:dark_oak_log",
+            "count": 117
+          },
+          {
+            "id": "minecraft:red_mushroom_block",
+            "count": 102
+          },
+          {
+            "id": "minecraft:dark_oak_leaves",
+            "count": 99
+          },
+          {
+            "id": "minecraft:birch_leaves",
+            "count": 84
+          },
+          {
+            "id": "minecraft:reinforced_deepslate",
+            "count": 70
+          },
+          {
+            "id": "minecraft:copper_ore",
+            "count": 65
+          },
+          {
+            "id": "minecraft:short_grass",
+            "count": 34
+          },
+          {
+            "id": "minecraft:oak_log",
+            "count": 32
+          }
+        ],
+        "blockEntities": {
+          "count": 0,
+          "byType": [],
+          "nbtSetSha256": "1d1f8d2f8b40a110d4702b766219d4849a6c3a8ce4f9a8f40ca2ae3dd93d4493",
+          "nbtContentsPublished": false
+        }
+      },
+      "p01Surface": {
+        "id": "ISSUE-002-P01-RECOVERY-SURFACE",
+        "bounds": {
+          "minX": -125,
+          "maxX": 125,
+          "minZ": 172,
+          "maxZ": 305
+        },
+        "columnCount": 33634,
+        "surfaceStreamSha256": "b26f3227ca8e985b1dcc42397858b80b5311f8a94f5feb3bab73cde074bb0942",
+        "columnsWithoutTop": 0,
+        "minimumTopY": 60,
+        "maximumTopY": 112,
+        "waterTopColumns": 1280,
+        "lavaTopColumns": 0,
+        "uniqueTopBlockNameCount": 46,
+        "topBlockNames": [
+          {
+            "id": "minecraft:light_gray_concrete",
+            "count": 11320
+          },
+          {
+            "id": "minecraft:gray_concrete",
+            "count": 5151
+          },
+          {
+            "id": "minecraft:grass_block",
+            "count": 4775
+          },
+          {
+            "id": "minecraft:white_concrete",
+            "count": 2532
+          },
+          {
+            "id": "minecraft:smooth_stone",
+            "count": 2138
+          },
+          {
+            "id": "minecraft:short_grass",
+            "count": 1318
+          },
+          {
+            "id": "minecraft:water",
+            "count": 1280
+          },
+          {
+            "id": "minecraft:acacia_leaves",
+            "count": 484
+          },
+          {
+            "id": "minecraft:black_stained_glass",
+            "count": 468
+          },
+          {
+            "id": "minecraft:reinforced_deepslate",
+            "count": 417
+          },
+          {
+            "id": "minecraft:polished_andesite",
+            "count": 413
+          },
+          {
+            "id": "minecraft:stone_bricks",
+            "count": 392
+          },
+          {
+            "id": "minecraft:waxed_weathered_cut_copper",
+            "count": 332
+          },
+          {
+            "id": "minecraft:birch_fence",
+            "count": 315
+          },
+          {
+            "id": "minecraft:waxed_oxidized_cut_copper",
+            "count": 264
+          },
+          {
+            "id": "minecraft:polished_deepslate",
+            "count": 260
+          },
+          {
+            "id": "minecraft:blue_concrete",
+            "count": 251
+          },
+          {
+            "id": "minecraft:oak_leaves",
+            "count": 225
+          },
+          {
+            "id": "minecraft:polished_blackstone_bricks",
+            "count": 150
+          },
+          {
+            "id": "minecraft:smooth_quartz_slab",
+            "count": 144
+          }
+        ],
+        "topExactStates": [
+          {
+            "id": "minecraft:light_gray_concrete",
+            "count": 11320
+          },
+          {
+            "id": "minecraft:gray_concrete",
+            "count": 5151
+          },
+          {
+            "id": "minecraft:grass_block[snowy=false]",
+            "count": 4775
+          },
+          {
+            "id": "minecraft:white_concrete",
+            "count": 2532
+          },
+          {
+            "id": "minecraft:smooth_stone",
+            "count": 2138
+          },
+          {
+            "id": "minecraft:short_grass",
+            "count": 1318
+          },
+          {
+            "id": "minecraft:water[level=0]",
+            "count": 1252
+          },
+          {
+            "id": "minecraft:black_stained_glass",
+            "count": 468
+          },
+          {
+            "id": "minecraft:reinforced_deepslate",
+            "count": 417
+          },
+          {
+            "id": "minecraft:polished_andesite",
+            "count": 413
+          },
+          {
+            "id": "minecraft:stone_bricks",
+            "count": 392
+          },
+          {
+            "id": "minecraft:waxed_weathered_cut_copper",
+            "count": 332
+          },
+          {
+            "id": "minecraft:waxed_oxidized_cut_copper",
+            "count": 264
+          },
+          {
+            "id": "minecraft:polished_deepslate",
+            "count": 260
+          },
+          {
+            "id": "minecraft:blue_concrete",
+            "count": 251
+          },
+          {
+            "id": "minecraft:acacia_leaves[distance=3,persistent=false,waterlogged=false]",
+            "count": 217
+          },
+          {
+            "id": "minecraft:polished_blackstone_bricks",
+            "count": 150
+          },
+          {
+            "id": "minecraft:smooth_quartz_slab[type=bottom,waterlogged=false]",
+            "count": 144
+          },
+          {
+            "id": "minecraft:moss_block",
+            "count": 143
+          },
+          {
+            "id": "minecraft:yellow_concrete",
+            "count": 126
+          }
+        ],
+        "interpretation": "Highest non-air region block per column. This is not parking geometry, route clearance, an entity census, or ownership evidence."
+      },
+      "roadStudy": {
+        "start": [
+          126,
+          250
+        ],
+        "end": [
+          690,
+          -53
+        ],
+        "minimumWidthBlocks": 9,
+        "priorDryPathfindingResult": "NO_CONTINUOUS_NINE-WIDE_ZERO-WATER_ALIGNMENT_FOUND_WITH_RAW-TERRAIN_CONSTRAINTS",
+        "exactAcceptedRoadCellSetAvailable": false,
+        "status": "HOLD_NO_EXACT_ACCEPTED_ROAD_SET"
+      },
+      "authoritativeReleaseTruth": {
+        "railwayCloseoutIssue": "ISSUE-002 — Bunker relocation and arrival were not delivered",
+        "independentAuditFinding": "The old C01 is not actually moved; full old-program retirement and full P01 recovery were absent from the reviewed release geometry.",
+        "undergroundInventoryTruthBoundary": "The catalog and terminal media describe the east stack, but owner field observation reports that relocation, road, parking recovery, and the sunken entrance were not delivered. Those arrival claims remain contested under ISSUE-002."
+      }
+    },
+    "closedFacts": [
+      "Every catalogued C01 feature volume is state-hashed against the selected August 4 region snapshot.",
+      "The old-source, east-study, portal-study, and P01 surface scopes have exact region-only state identities.",
+      "The old C01 source scope remains nonempty and contains block entities in the selected region evidence.",
+      "The accepted documentary truth keeps ISSUE-002 open and says relocation/arrival were not delivered."
+    ],
+    "remainingBlockers": [
+      "No complete current copied save establishes entity, POI, level.dat, or same-moment identity.",
+      "Region blocks cannot establish semantic program migration, commissioning, usable road/entrance, full parking circulation, canonical ownership, or loading permission.",
+      "No exact accepted road cell set exists to survey.",
+      "ISSUE-002 requires explicit sole-authority disposition and must remain open in this artifact."
+    ]
+  },
+  "decisionImpact": {
+    "d02B01": "MATERIALLY_NARROWED_FULL_HEIGHT_REGION_STATE_KNOWN_TREATMENTS_AND_COMPLETE_SAVE_HOLD",
+    "d02B02": "MATERIALLY_NARROWED_C01_VOLUMES_HASHED_STRUCTURAL_AND_COMPLETE_SAVE_HOLD",
+    "d02B04": "NEGATIVE_EVIDENCE_STRENGTHENED_ISSUE_002_AND_OWNERSHIP_HOLD",
+    "d02Resolved": false,
+    "r00Ready": false
+  },
+  "nextAutonomousWork": [
+    "Use the sealed S01 region census to compile alternative treatment classes without operations.",
+    "Use the sealed C01 volume identities to draft exact default-deny interface/exclusion candidates.",
+    "Run D02-S03 hydrology/component/outfall modelling from the region snapshot, labelled region-only."
+  ],
+  "exactExternalRequirement": {
+    "missingArtifact": "A current immutable copied save containing region/, entities/, poi/, and level.dat from one frozen capture, with a whole-package identity manifest.",
+    "afterReceipt": "Regenerate this audit against that package, require identical or explicitly superseded region identity, then evaluate entities, POI, world metadata, semantic routes, and sole-authority ownership/ISSUE-002 acceptance."
+  },
+  "finalGate": {
+    "status": "HOLD_D02_S01_S02_INCOMPLETE_NO_WORLD_EDITS",
+    "worldEditAuthorized": false,
+    "reason": "Exact region facts are complete for the selected scopes, but no complete copied save exists and region evidence cannot close C01 semantics, ownership, or ISSUE-002."
+  }
+}

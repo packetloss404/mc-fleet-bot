@@ -1,0 +1,40 @@
+# D06 surface egress and R00 geometry recommendation
+
+Status: **PARTIAL_PASS_D06_SURFACE_ENDPOINTS_AND_ROUTE_RESERVATIONS_FROZEN — OFFLINE ONLY — ZERO OPERATIONS**
+
+This package reads the immutable Phase 0 copied world and freezes exact design evidence. It does not open a shaft, select a live release, or claim commissioning.
+
+## Surveyed egress endpoints
+
+| Core | Surface endpoint | 7×7 terrain | Dry | Structure intersections | Design result |
+|---|---|---|---|---:|---|
+| EG-A | `1652,80,148` | Y66…Y79 | yes | 0 | PASS_EXACT_DRY_SURFACE_ENDPOINT_AND_DISJOINT_ROUTE_RESERVATION |
+| EG-B | `1852,71,148` | Y62…Y70 | yes | 0 | PASS_EXACT_DRY_SURFACE_ENDPOINT_AND_DISJOINT_ROUTE_RESERVATION |
+
+The two exact 7×7 continuation sets are disjoint and preserve a protected stair plus a separately reserved accessible lift in each core. Surface opening and mechanisms remain unauthorized.
+
+## Sole-authority defaults
+
+- Preserve the two existing cores and surveyed surface landings.
+- Give each core a protected stair and accessible-lift reservation.
+- Keep smoke compartments and outlet groups independent.
+- Keep every future-line interface physically sealed.
+- Hold external drainage discharge until D05 ownership accepts it.
+
+## Geometry recommendations
+
+| Blocker | Recommendation | Disposition |
+|---|---|---|
+| P1-B01-VERTICAL-AUTHORITY-ACTIVATION | ADOPT_EXACT_RATIONAL_AND_ROUNDING_CONTRACT_PER_SCOPE_AFTER_CELLSET_REVIEW | READY_FOR_SOLE_AUTHORITY_ACCEPTANCE |
+| P1-B02-CHEYENNE-INTERNAL-FIT | PRESERVE_CHILD_DIMENSIONS_CENTER_ALIGNED_INSIDE_04_ENVELOPE | READY_FOR_SOLE_AUTHORITY_ACCEPTANCE |
+| P1-B03-CHEYENNE-JCURVE | AUTHOR_NEW_INTEGER_J_CURVE_WITHIN_Z09_Z10_PRESERVING_CHILD_CROSS_SECTION | OFFLINE_DESIGN_REQUIRED |
+| P1-B04-SUBTROPOLIS-NORMALIZATION | PRESERVE_ORIENTATION_AND_ADD_SEPARATELY_OWNED_200_BLOCK_PORTAL_ADAPTER | READY_FOR_SOLE_AUTHORITY_ACCEPTANCE |
+| P1-B05-SUBTROPOLIS-PILLARS | FREEZE_35_EXPLICIT_GRID_INTERSECTIONS_AND_OMIT_UNSPECIFIED_EXTRA_PILLARS | READY_FOR_SOLE_AUTHORITY_ACCEPTANCE |
+| P1-B06-HOUSTON-GENERIC-PLACEMENT | OMIT_UNPLACED_GENERIC_TOWERS_AND_GARAGES_RETAIN_NAMED_EXPLICIT_GEOMETRY | READY_FOR_SOLE_AUTHORITY_ACCEPTANCE |
+| P1-B07-PUBLIC-SHAFT-DOGLEG | PLACE_ONE_LEVEL_TRANSFER_AT_OBSERVATION_REFUGE_THEN_CONTINUE_NORTH | OFFLINE_DESIGN_REQUIRED |
+| P1-B08-SERVICE-TUNNEL-CENTERLINE | RASTER_THREE_AUTHORED_ANCHORS_WITH_CARDINAL_RUNS_AND_LEVEL_TURNS | OFFLINE_DESIGN_REQUIRED |
+| P1-B09-FUNICULAR-CENTERLINE | HOLD_FACE_SELECTION_FOR_READ_ONLY_EAST_WEST_TERRAIN_SURVEY | READ_ONLY_SURVEY_REQUIRED |
+| P1-B10-MOUNTAIN-SOLID-AND-RELIC-VOIDS | DEFAULT_DENY_DETERMINISTIC_SHELL_WITH_REVIEWED_RELIC_VOIDS_AND_D05_HYDROLOGY | D05_DESIGN_REQUIRED |
+| P1-B11-EXTERNAL-INTERFACES | FREEZE_ONLY_EXACT_SURVEYED_ENDPOINTS_AND_KEEP_ALL_OTHER_NULL_Y_INTERFACES_SEALED | PARTIAL_D06_SURVEY_PASS |
+
+D06 and G03/G07 remain HOLD on the listed mechanism, ownership, hydrology, and exact-route work. No live service was contacted.

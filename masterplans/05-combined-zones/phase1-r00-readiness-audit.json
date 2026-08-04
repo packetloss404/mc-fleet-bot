@@ -25,7 +25,7 @@
   "sourceBindings": {
     "authorityReconciliation": {
       "path": "masterplans/04-combined-complex/authority-reconciliation.json",
-      "sha256": "ad6ab25b19e12c405634d2a03dca547d4c92073a4dbf4f2caa9ba0995d949c4d",
+      "sha256": "191775541b8d7bd84de81040122c1f8b97a5cb0cbd8c6ae392f5bf424a5788d3",
       "bytes": 13180
     },
     "coordinateRegistry": {
@@ -40,7 +40,7 @@
     },
     "releaseContract": {
       "path": "masterplans/05-combined-zones/phase1-release-contract.json",
-      "sha256": "12669fd5dd0bd0416037fa0d731208487d96b14d7d8aa661265a98d86dc5f293",
+      "sha256": "0a402a7a687b2a5968582d4f990f793eb3ee8b21ef26842978e7687093b82d7d",
       "bytes": 32769
     },
     "designDecisions": {
@@ -50,32 +50,77 @@
     },
     "c1CivilDesign": {
       "path": "masterplans/05-combined-zones/phase1-c1-civil-design.json",
-      "sha256": "f5e0839d364cb02435ff72847fffb914781be1e18f8f813ddf2f8d5491bea5c1",
+      "sha256": "2db37ea77c7aa8f841266111d2a85c8b4284649f22633e541a8dadd9fd51ed4b",
       "bytes": 812036
+    },
+    "d02AuthorityPacket": {
+      "path": "masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json",
+      "sha256": "ce593f69aa1cacac32082c63b2acaff086773f3adf2638de69ea0ff4de70bf35",
+      "bytes": 19771
+    },
+    "d02RegionEvidence": {
+      "path": "masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json",
+      "sha256": "703fa2cb33b69f30067ffcbfda0169e641c6fca772c572e3f20e73f85331c6bc",
+      "bytes": 99968
+    },
+    "d02HydrologyOutfalls": {
+      "path": "masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json",
+      "sha256": "6377fe7136e28d3460b2d26ca68a5dfd9898240d9b914aff801546f59c8e59ba",
+      "bytes": 807823
     },
     "geometryCoordination": {
       "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
-      "sha256": "7065c8c8f1f20baab38e07834c8d7ec9d4120c09863aaf1f67b4357065258918",
+      "sha256": "c7ab48f2733f1c45eee63e23459859e9536c79fef675c58bd1b8f1dbc0397f6c",
       "bytes": 35526
     },
     "protectedRelicClearance": {
       "path": "masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
-      "sha256": "a983fab119749e8d34457d2754181b45f323f823de302c72f03974766f360c4d",
+      "sha256": "0d41b771c5a5aaefde6fed8721c85e1004a075b90d132b16cb58bb2c97d56c17",
       "bytes": 30460
     },
     "d05HydrologyRelicDesign": {
       "path": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
-      "sha256": "5a1b35520a55124a42496245b9bf30da184eb7c7eff1ee58c39ac096195c44ff",
+      "sha256": "0665092d0936198a544dbd2ec7421dcad8797b191d0ad5d97952842ea5d900e7",
       "bytes": 3250959
+    },
+    "d05ConservativeDefaults": {
+      "path": "masterplans/05-combined-zones/phase1-d05-conservative-defaults.json",
+      "sha256": "d95dede53a4316cf628ead196ca49b0c930909473c16a6a9329aa05d3f85ea7f",
+      "bytes": 17420
+    },
+    "d05RelicSurvey": {
+      "path": "masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json",
+      "sha256": "32ce0b791957a17a2cb4801cfe55bda7c5210a4138bcf6924934919116fdab8f",
+      "bytes": 120795
+    },
+    "d05FutureStateContract": {
+      "path": "masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json",
+      "sha256": "4bc66723245cce45e5df3d2032ed10f99df323578536037aa58ca4fc2c621470",
+      "bytes": 38201
     },
     "emptyEightGeologyDesign": {
       "path": "masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
-      "sha256": "dc23f5fe814180b45e5cd1bfc74ac90e3f6981c383d5b49a5bdb2ad7a5ca87e4",
+      "sha256": "8520e55072815d8ab27c5a79e2bb97453aa0ca6c270dd49d3cea9f1713057730",
       "bytes": 71152
+    },
+    "d06EgressGeometryDesign": {
+      "path": "masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json",
+      "sha256": "e54c80bf5fa1d59d47c89c25e1b866f456b1f44296929eaf7821758ebe7e8a39",
+      "bytes": 13680
+    },
+    "connectorGeometry": {
+      "path": "masterplans/05-combined-zones/phase1-connector-geometry.json",
+      "sha256": "5fa14cd76a615cdaa9529ebb3e524511d4eb3307fa6e8d6a142a68e319ba4c38",
+      "bytes": 458505
+    },
+    "autonomousDesignSelections": {
+      "path": "masterplans/05-combined-zones/phase1-autonomous-design-selections.json",
+      "sha256": "495c24ced6127047280f1d174f318dd83a3561ee57a646fa43f8f9dbd1045c0f",
+      "bytes": 10587
     },
     "siteGateAudit": {
       "path": "masterplans/05-combined-zones/phase1-site-gate-audit.json",
-      "sha256": "beacdbccca993a95d458944ec41118ba1887e81ee1601d079d07736fba89374c",
+      "sha256": "d3b3395fffa2d104ba4d6248f77091fd39cb34b26a6cbcbae2c166c4bbb59a85",
       "bytes": 20255
     }
   },
@@ -117,14 +162,14 @@
   "authorityBindingChecks": [
     {
       "path": "masterplans/04-combined-complex/authority-reconciliation.json",
-      "expectedSha256": "ad6ab25b19e12c405634d2a03dca547d4c92073a4dbf4f2caa9ba0995d949c4d",
-      "actualSha256": "ad6ab25b19e12c405634d2a03dca547d4c92073a4dbf4f2caa9ba0995d949c4d",
+      "expectedSha256": "191775541b8d7bd84de81040122c1f8b97a5cb0cbd8c6ae392f5bf424a5788d3",
+      "actualSha256": "191775541b8d7bd84de81040122c1f8b97a5cb0cbd8c6ae392f5bf424a5788d3",
       "passed": true
     },
     {
       "path": "masterplans/05-combined-zones/MASTERPLAN.md",
-      "expectedSha256": "c4bed39795237e8c361c19a106a0520b95c0f7a35c9c3431ff5a6da8f528cf30",
-      "actualSha256": "c4bed39795237e8c361c19a106a0520b95c0f7a35c9c3431ff5a6da8f528cf30",
+      "expectedSha256": "609bb9ee5675c4a8b66c89e235ff77310c66359918740862f8b3b6c136526ce2",
+      "actualSha256": "609bb9ee5675c4a8b66c89e235ff77310c66359918740862f8b3b6c136526ce2",
       "passed": true
     },
     {
@@ -159,8 +204,8 @@
     },
     {
       "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
-      "expectedSha256": "7065c8c8f1f20baab38e07834c8d7ec9d4120c09863aaf1f67b4357065258918",
-      "actualSha256": "7065c8c8f1f20baab38e07834c8d7ec9d4120c09863aaf1f67b4357065258918",
+      "expectedSha256": "c7ab48f2733f1c45eee63e23459859e9536c79fef675c58bd1b8f1dbc0397f6c",
+      "actualSha256": "c7ab48f2733f1c45eee63e23459859e9536c79fef675c58bd1b8f1dbc0397f6c",
       "passed": true
     },
     {
@@ -171,38 +216,38 @@
     },
     {
       "path": "masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
-      "expectedSha256": "a983fab119749e8d34457d2754181b45f323f823de302c72f03974766f360c4d",
-      "actualSha256": "a983fab119749e8d34457d2754181b45f323f823de302c72f03974766f360c4d",
+      "expectedSha256": "0d41b771c5a5aaefde6fed8721c85e1004a075b90d132b16cb58bb2c97d56c17",
+      "actualSha256": "0d41b771c5a5aaefde6fed8721c85e1004a075b90d132b16cb58bb2c97d56c17",
       "passed": true
     },
     {
       "path": "masterplans/05-combined-zones/phase1-c1-pilot-coordination.json",
-      "expectedSha256": "32ab97a2e2961f0bff72fdcf0dd11389f744cb93ba7254d579a02dc5741103f8",
-      "actualSha256": "32ab97a2e2961f0bff72fdcf0dd11389f744cb93ba7254d579a02dc5741103f8",
+      "expectedSha256": "7ee7d9138872217752cf0e7a5ae79be3d48826dad41e47851e3c3995565778f8",
+      "actualSha256": "7ee7d9138872217752cf0e7a5ae79be3d48826dad41e47851e3c3995565778f8",
       "passed": true
     },
     {
       "path": "masterplans/05-combined-zones/phase1-c1-civil-design.json",
-      "expectedSha256": "f5e0839d364cb02435ff72847fffb914781be1e18f8f813ddf2f8d5491bea5c1",
-      "actualSha256": "f5e0839d364cb02435ff72847fffb914781be1e18f8f813ddf2f8d5491bea5c1",
+      "expectedSha256": "2db37ea77c7aa8f841266111d2a85c8b4284649f22633e541a8dadd9fd51ed4b",
+      "actualSha256": "2db37ea77c7aa8f841266111d2a85c8b4284649f22633e541a8dadd9fd51ed4b",
       "passed": true
     },
     {
       "path": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
-      "expectedSha256": "5a1b35520a55124a42496245b9bf30da184eb7c7eff1ee58c39ac096195c44ff",
-      "actualSha256": "5a1b35520a55124a42496245b9bf30da184eb7c7eff1ee58c39ac096195c44ff",
+      "expectedSha256": "0665092d0936198a544dbd2ec7421dcad8797b191d0ad5d97952842ea5d900e7",
+      "actualSha256": "0665092d0936198a544dbd2ec7421dcad8797b191d0ad5d97952842ea5d900e7",
       "passed": true
     },
     {
       "path": "masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
-      "expectedSha256": "dc23f5fe814180b45e5cd1bfc74ac90e3f6981c383d5b49a5bdb2ad7a5ca87e4",
-      "actualSha256": "dc23f5fe814180b45e5cd1bfc74ac90e3f6981c383d5b49a5bdb2ad7a5ca87e4",
+      "expectedSha256": "8520e55072815d8ab27c5a79e2bb97453aa0ca6c270dd49d3cea9f1713057730",
+      "actualSha256": "8520e55072815d8ab27c5a79e2bb97453aa0ca6c270dd49d3cea9f1713057730",
       "passed": true
     },
     {
       "path": "masterplans/05-combined-zones/phase1-site-gate-audit.json",
-      "expectedSha256": "beacdbccca993a95d458944ec41118ba1887e81ee1601d079d07736fba89374c",
-      "actualSha256": "beacdbccca993a95d458944ec41118ba1887e81ee1601d079d07736fba89374c",
+      "expectedSha256": "d3b3395fffa2d104ba4d6248f77091fd39cb34b26a6cbcbae2c166c4bbb59a85",
+      "actualSha256": "d3b3395fffa2d104ba4d6248f77091fd39cb34b26a6cbcbae2c166c4bbb59a85",
       "passed": true
     }
   ],
@@ -213,12 +258,12 @@
       "evidence": [
         {
           "path": "masterplans/04-combined-complex/authority-reconciliation.json",
-          "sha256": "ad6ab25b19e12c405634d2a03dca547d4c92073a4dbf4f2caa9ba0995d949c4d",
+          "sha256": "191775541b8d7bd84de81040122c1f8b97a5cb0cbd8c6ae392f5bf424a5788d3",
           "bytes": 13180
         },
         {
           "path": "masterplans/05-combined-zones/phase1-release-contract.json",
-          "sha256": "12669fd5dd0bd0416037fa0d731208487d96b14d7d8aa661265a98d86dc5f293",
+          "sha256": "0a402a7a687b2a5968582d4f990f793eb3ee8b21ef26842978e7687093b82d7d",
           "bytes": 32769
         }
       ],
@@ -235,38 +280,78 @@
         },
         {
           "path": "masterplans/05-combined-zones/phase1-c1-civil-design.json",
-          "sha256": "f5e0839d364cb02435ff72847fffb914781be1e18f8f813ddf2f8d5491bea5c1",
+          "sha256": "2db37ea77c7aa8f841266111d2a85c8b4284649f22633e541a8dadd9fd51ed4b",
           "bytes": 812036
         },
         {
+          "path": "masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json",
+          "sha256": "ce593f69aa1cacac32082c63b2acaff086773f3adf2638de69ea0ff4de70bf35",
+          "bytes": 19771
+        },
+        {
           "path": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
-          "sha256": "5a1b35520a55124a42496245b9bf30da184eb7c7eff1ee58c39ac096195c44ff",
+          "sha256": "0665092d0936198a544dbd2ec7421dcad8797b191d0ad5d97952842ea5d900e7",
           "bytes": 3250959
         },
         {
+          "path": "masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json",
+          "sha256": "703fa2cb33b69f30067ffcbfda0169e641c6fca772c572e3f20e73f85331c6bc",
+          "bytes": 99968
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json",
+          "sha256": "6377fe7136e28d3460b2d26ca68a5dfd9898240d9b914aff801546f59c8e59ba",
+          "bytes": 807823
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d05-conservative-defaults.json",
+          "sha256": "d95dede53a4316cf628ead196ca49b0c930909473c16a6a9329aa05d3f85ea7f",
+          "bytes": 17420
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json",
+          "sha256": "32ce0b791957a17a2cb4801cfe55bda7c5210a4138bcf6924934919116fdab8f",
+          "bytes": 120795
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json",
+          "sha256": "4bc66723245cce45e5df3d2032ed10f99df323578536037aa58ca4fc2c621470",
+          "bytes": 38201
+        },
+        {
           "path": "masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
-          "sha256": "dc23f5fe814180b45e5cd1bfc74ac90e3f6981c383d5b49a5bdb2ad7a5ca87e4",
+          "sha256": "8520e55072815d8ab27c5a79e2bb97453aa0ca6c270dd49d3cea9f1713057730",
           "bytes": 71152
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json",
+          "sha256": "e54c80bf5fa1d59d47c89c25e1b866f456b1f44296929eaf7821758ebe7e8a39",
+          "bytes": 13680
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-autonomous-design-selections.json",
+          "sha256": "495c24ced6127047280f1d174f318dd83a3561ee57a646fa43f8f9dbd1045c0f",
+          "bytes": 10587
         }
       ],
       "blockers": [
         {
           "id": "R00-G02-D02-EXTERNAL-ACCEPTANCE",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "Accept all six D02 geotechnical, structural/C01, hydraulic/outfall, visual, and quantity design packages.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-c1-civil-design.json"
+          "requirement": "Supply one complete immutable copied save with region/entities/poi/level.dat, then finish D02-S01/S02 entity/POI/world identity. D02-S03 proves zero acceptable current outfall candidates, so exact constructed drainage/inverts/pipes/culverts/sumps/pumps, future fluid accounting, receiver ownership/interfaces, capacity rules, typologies, and quantities remain.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json"
         },
         {
           "id": "R00-G02-D05-EXTERNAL-ACCEPTANCE",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "Accept reviewed relic buffers, east-igloo disposition, hydrology ownership/interfaces, future terrain/influence model, and expert civil/geotechnical criteria.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json"
+          "requirement": "Satisfy the D05-S02 future-state compiler contract: close its geometry, ownership, interface, hydrology/geotechnical, and implementation dependencies, then emit and check all 12 exact future-state/influence families. It currently emits zero cells by design.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json"
         },
         {
           "id": "R00-G02-D06-EXTERNAL-ACCEPTANCE",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "Survey and accept both exterior egress endpoints and the complete external life-safety, discharge, fire/service, and mechanism design.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-empty-eight-geology-design.json"
+          "requirement": "Compile and accept the exact smoke, ventilation, lift, barrier, emergency-circuit, drainage, fire/service, outlet, ownership, and interface mechanism cellsets. Both dry exterior endpoints and the conservative D06 design basis are already frozen.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json"
         }
       ]
     },
@@ -281,15 +366,35 @@
         },
         {
           "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
-          "sha256": "7065c8c8f1f20baab38e07834c8d7ec9d4120c09863aaf1f67b4357065258918",
+          "sha256": "c7ab48f2733f1c45eee63e23459859e9536c79fef675c58bd1b8f1dbc0397f6c",
           "bytes": 35526
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json",
+          "sha256": "e54c80bf5fa1d59d47c89c25e1b866f456b1f44296929eaf7821758ebe7e8a39",
+          "bytes": 13680
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-connector-geometry.json",
+          "sha256": "5fa14cd76a615cdaa9529ebb3e524511d4eb3307fa6e8d6a142a68e319ba4c38",
+          "bytes": 458505
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json",
+          "sha256": "4bc66723245cce45e5df3d2032ed10f99df323578536037aa58ca4fc2c621470",
+          "bytes": 38201
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-autonomous-design-selections.json",
+          "sha256": "495c24ced6127047280f1d174f318dd83a3561ee57a646fa43f8f9dbd1045c0f",
+          "bytes": 10587
         }
       ],
       "blockers": [
         {
           "id": "R00-G03-DESIGN-AUTHORITY-CHOICES",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "Close the 11 frozen geometry blockers without inferring null elevations, child transforms, routes, solids, or interfaces.",
+          "requirement": "Close the 5 remaining geometry blockers (P1-B03-CHEYENNE-JCURVE, P1-B07-PUBLIC-SHAFT-DOGLEG, P1-B09-FUNICULAR-CENTERLINE, P1-B10-MOUNTAIN-SOLID-AND-RELIC-VOIDS, P1-B11-EXTERNAL-INTERFACES) without inferring null elevations, routes, solids, or interfaces. Five conservative geometry choices are already owner-delegated and frozen.",
           "evidencePath": "masterplans/05-combined-zones/phase1-geometry-coordination.json"
         },
         {
@@ -306,12 +411,17 @@
       "evidence": [
         {
           "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
-          "sha256": "7065c8c8f1f20baab38e07834c8d7ec9d4120c09863aaf1f67b4357065258918",
+          "sha256": "c7ab48f2733f1c45eee63e23459859e9536c79fef675c58bd1b8f1dbc0397f6c",
           "bytes": 35526
         },
         {
+          "path": "masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json",
+          "sha256": "4bc66723245cce45e5df3d2032ed10f99df323578536037aa58ca4fc2c621470",
+          "bytes": 38201
+        },
+        {
           "path": "masterplans/05-combined-zones/phase1-site-gate-audit.json",
-          "sha256": "beacdbccca993a95d458944ec41118ba1887e81ee1601d079d07736fba89374c",
+          "sha256": "d3b3395fffa2d104ba4d6248f77091fd39cb34b26a6cbcbae2c166c4bbb59a85",
           "bytes": 20255
         }
       ],
@@ -336,12 +446,17 @@
       "evidence": [
         {
           "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
-          "sha256": "7065c8c8f1f20baab38e07834c8d7ec9d4120c09863aaf1f67b4357065258918",
+          "sha256": "c7ab48f2733f1c45eee63e23459859e9536c79fef675c58bd1b8f1dbc0397f6c",
           "bytes": 35526
         },
         {
+          "path": "masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json",
+          "sha256": "4bc66723245cce45e5df3d2032ed10f99df323578536037aa58ca4fc2c621470",
+          "bytes": 38201
+        },
+        {
           "path": "masterplans/05-combined-zones/phase1-site-gate-audit.json",
-          "sha256": "beacdbccca993a95d458944ec41118ba1887e81ee1601d079d07736fba89374c",
+          "sha256": "d3b3395fffa2d104ba4d6248f77091fd39cb34b26a6cbcbae2c166c4bbb59a85",
           "bytes": 20255
         }
       ],
@@ -366,21 +481,36 @@
       "evidence": [
         {
           "path": "masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
-          "sha256": "a983fab119749e8d34457d2754181b45f323f823de302c72f03974766f360c4d",
+          "sha256": "0d41b771c5a5aaefde6fed8721c85e1004a075b90d132b16cb58bb2c97d56c17",
           "bytes": 30460
         },
         {
           "path": "masterplans/05-combined-zones/phase0-survey-evidence.json",
           "sha256": "c0730cc039c756ac6331b9aed8ecb89af38426e19d588ccdd56ec17cd8e1309e",
           "bytes": 58530
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d05-conservative-defaults.json",
+          "sha256": "d95dede53a4316cf628ead196ca49b0c930909473c16a6a9329aa05d3f85ea7f",
+          "bytes": 17420
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json",
+          "sha256": "32ce0b791957a17a2cb4801cfe55bda7c5210a4138bcf6924934919116fdab8f",
+          "bytes": 120795
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-autonomous-design-selections.json",
+          "sha256": "495c24ced6127047280f1d174f318dd83a3561ee57a646fa43f8f9dbd1045c0f",
+          "bytes": 10587
         }
       ],
       "blockers": [
         {
           "id": "R00-G06-RELIC-REVIEW",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "Accept reviewed positive buffers or evidence-backed zero-margin treatment, resolve the absent east igloo, and accept entrance/template treatment.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-protected-relic-clearance.json"
+          "requirement": "Review the exact future design against the completed D05-S01 condition/access evidence and frozen core-plus-one-cell minimum exclusions; expand them wherever the evidence requires. Candidate observation routes authorize no access.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json"
         },
         {
           "id": "R00-G06-EXACT-DESIGN-CLEARANCE",
@@ -396,18 +526,63 @@
       "evidence": [
         {
           "path": "masterplans/05-combined-zones/phase1-c1-civil-design.json",
-          "sha256": "f5e0839d364cb02435ff72847fffb914781be1e18f8f813ddf2f8d5491bea5c1",
+          "sha256": "2db37ea77c7aa8f841266111d2a85c8b4284649f22633e541a8dadd9fd51ed4b",
           "bytes": 812036
         },
         {
+          "path": "masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json",
+          "sha256": "ce593f69aa1cacac32082c63b2acaff086773f3adf2638de69ea0ff4de70bf35",
+          "bytes": 19771
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json",
+          "sha256": "703fa2cb33b69f30067ffcbfda0169e641c6fca772c572e3f20e73f85331c6bc",
+          "bytes": 99968
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json",
+          "sha256": "6377fe7136e28d3460b2d26ca68a5dfd9898240d9b914aff801546f59c8e59ba",
+          "bytes": 807823
+        },
+        {
           "path": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
-          "sha256": "5a1b35520a55124a42496245b9bf30da184eb7c7eff1ee58c39ac096195c44ff",
+          "sha256": "0665092d0936198a544dbd2ec7421dcad8797b191d0ad5d97952842ea5d900e7",
           "bytes": 3250959
         },
         {
+          "path": "masterplans/05-combined-zones/phase1-d05-conservative-defaults.json",
+          "sha256": "d95dede53a4316cf628ead196ca49b0c930909473c16a6a9329aa05d3f85ea7f",
+          "bytes": 17420
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json",
+          "sha256": "32ce0b791957a17a2cb4801cfe55bda7c5210a4138bcf6924934919116fdab8f",
+          "bytes": 120795
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json",
+          "sha256": "4bc66723245cce45e5df3d2032ed10f99df323578536037aa58ca4fc2c621470",
+          "bytes": 38201
+        },
+        {
           "path": "masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
-          "sha256": "dc23f5fe814180b45e5cd1bfc74ac90e3f6981c383d5b49a5bdb2ad7a5ca87e4",
+          "sha256": "8520e55072815d8ab27c5a79e2bb97453aa0ca6c270dd49d3cea9f1713057730",
           "bytes": 71152
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json",
+          "sha256": "e54c80bf5fa1d59d47c89c25e1b866f456b1f44296929eaf7821758ebe7e8a39",
+          "bytes": 13680
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-connector-geometry.json",
+          "sha256": "5fa14cd76a615cdaa9529ebb3e524511d4eb3307fa6e8d6a142a68e319ba4c38",
+          "bytes": 458505
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-autonomous-design-selections.json",
+          "sha256": "495c24ced6127047280f1d174f318dd83a3561ee57a646fa43f8f9dbd1045c0f",
+          "bytes": 10587
         }
       ],
       "blockers": [
@@ -450,9 +625,21 @@
       "EXTERNAL_EVIDENCE": 8,
       "DEFERRED_G08_G19": 2
     },
+    "delegatedSelectionsValid": true,
+    "ownerDelegatedSelectionCount": 14,
+    "additionalHumanDecisionMakersRequired": false,
+    "remainingGeometryBlockerCount": 5,
+    "copiedSaveCandidatesAudited": 56,
+    "completeCopiedSaveCandidates": 0,
+    "d05S01SurveyComplete": true,
+    "b08ExactRouteSelected": true,
+    "b07ConflictCellCount": 217,
+    "d02AcceptableOutfallCandidateCount": 0,
+    "d05FutureStateContractPassed": true,
+    "d05FutureStateCellCount": 0,
     "autonomousOfflineWorkMayContinue": true,
     "autonomousOfflineWorkCanCompleteR00": false,
-    "nextAutonomousArtifact": "T01/T02 compiler and ownership/interface audit scaffolds after this gate model",
+    "nextAutonomousArtifact": "Complete-save audit, exact D02/D05/D06 surveys, and remaining geometry compilers before T01/T02",
     "externalEvidenceStillRequired": true
   }
 }
