@@ -11,7 +11,7 @@
  * Usage:
  *   node scripts/generate_mainstreet_redevelopment_r4_r5.mjs
  *   node scripts/generate_mainstreet_redevelopment_r4_r5.mjs \
- *     --plan mainstreet-america/planning/redevelopment-r4-r5.yaml \
+ *     --plan docs/mainstreet-america/planning/redevelopment-r4-r5.yaml \
  *     --regions data/worldsnap-rollbackcheck-64829086424cde6f-20260727/region \
  *     --out data/buildops/mainstreet-redevelopment-r4-r5-runtime-safe-2026-07-27.txt \
  *     --report data/buildops/mainstreet-redevelopment-r4-r5-runtime-safe-2026-07-27.report.json \
@@ -28,7 +28,7 @@ import { pathToFileURL } from 'url';
 import yaml from 'js-yaml';
 import nbt from 'prismarine-nbt';
 
-const DEFAULT_PLAN = 'mainstreet-america/planning/redevelopment-r4-r5.yaml';
+const DEFAULT_PLAN = 'docs/mainstreet-america/planning/redevelopment-r4-r5.yaml';
 const DEFAULT_REGIONS = 'data/worldsnap-rollbackcheck-64829086424cde6f-20260727/region';
 const DEFAULT_OUTPUT = 'data/buildops/mainstreet-redevelopment-r4-r5-runtime-safe-2026-07-27.txt';
 const DEFAULT_ROLLBACK = 'data/buildops/mainstreet-redevelopment-r4-r5-runtime-safe-2026-07-27.rollback.txt';
@@ -2161,7 +2161,7 @@ function buildDatabaseFeatures({
     })),
   ];
   const sourceRefs = [
-    'mainstreet-america/planning/redevelopment-r4-r5.yaml',
+    'docs/mainstreet-america/planning/redevelopment-r4-r5.yaml',
     DEFAULT_OUTPUT,
     DEFAULT_ROLLBACK,
     DEFAULT_REPORT,

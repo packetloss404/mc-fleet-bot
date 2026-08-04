@@ -21,7 +21,7 @@ const BASE = path.resolve(
 );
 const PLAN_PATH = path.resolve(
   ROOT,
-  'mainstreet-america/planning/redevelopment-wave2-r08.yaml',
+  'docs/mainstreet-america/planning/redevelopment-wave2-r08.yaml',
 );
 const REPORT_PATH = `${BASE}.report.json`;
 const FORWARD_PATH = `${BASE}.txt`;

@@ -26,7 +26,7 @@ const opsPaths = [
   'data/buildops/mainstreet-parking-access-wayfinding-phase8b-2026-07-26.txt',
   'data/buildops/mainstreet-parking-low-lighting-phase8c-2026-07-26.txt',
 ];
-const recoveryRef = 'mainstreet-america/qa/parking-recovery-2026-07-26.md';
+const recoveryRef = 'docs/mainstreet-america/qa/parking-recovery-2026-07-26.md';
 const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
 const store = new WorldFeatureStore();
 const observedAt = Date.now();
@@ -434,9 +434,9 @@ try {
       auditChecksPassed: 66,
       auditChecksFailed: 0,
       images: [
-        'mainstreet-america/qa/msa-parking-bluemap-overview-after.png',
-        'mainstreet-america/qa/msa-parking-bluemap-arrival-after.png',
-        'mainstreet-america/qa/msa-parking-bluemap-night-after.png',
+        'docs/mainstreet-america/qa/msa-parking-bluemap-overview-after.png',
+        'docs/mainstreet-america/qa/msa-parking-bluemap-arrival-after.png',
+        'docs/mainstreet-america/qa/msa-parking-bluemap-night-after.png',
       ],
     },
     observedAt,

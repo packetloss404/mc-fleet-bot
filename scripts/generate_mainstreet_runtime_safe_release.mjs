@@ -53,7 +53,7 @@ const release = {
   source: {
     snapshotDirectory: 'data/worldsnap-rollbackcheck-64829086424cde6f-20260727/region',
     snapshotSha256: report.source.snapshot.sha256,
-    plan: artifact('mainstreet-america/planning/redevelopment-r4-r5.yaml'),
+    plan: artifact('docs/mainstreet-america/planning/redevelopment-r4-r5.yaml'),
     incident: {
       report: 'docs/redevelopment/2026-07-27/release-attempt-1-incident.md',
       compensatedExecution: (

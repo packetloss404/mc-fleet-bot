@@ -69,7 +69,7 @@ npm run sync:underground --prefix world-showcase
 ```
 
 The report is read-only. **No world edits were made.** ISSUE-001 and ISSUE-002
-remain open in `ISSUES.MD`. In particular, the C01 east-stack maps are marked
+remain open in `ISSUES.md`. In particular, the C01 east-stack maps are marked
 cataloged/contested: they do not prove that the complex was moved east or that
 the road, recovered parking, and sunken entrance exist. The legacy MainStreet
 C01 portal remains the reliable mapped public arrival.
@@ -94,11 +94,13 @@ operation, so it could not truthfully be removed. It remains owner-only at
 when an authorized Sites UI/API exposes that action; do not publish new
 versions there.
 
-> ### ⇒ For the current state of the WORLD, read `HANDOFF-2026-07-26.md` first.
-> That session relocated the stadium, built the Westlight complex, and — more useful —
-> established that **placement and traversability are different properties** and that we
-> had only ever checked placement. Three finished builds turned out to be completely
-> sealed. Start any world work with `python3 scripts/build_status.py`.
+> ### ⇒ Before any WORLD work, run `python3 scripts/build_status.py`.
+> The 2026-07-26 Westlight session relocated the stadium, built the Westlight complex,
+> and — more useful — established that **placement and traversability are different
+> properties**, and that we had only ever checked placement. Three finished builds
+> turned out to be completely sealed. That session's durable findings are merged into
+> this file: its build-tooling traps are §4 items 16–20, and the work it left
+> unverified is §9.
 >
 > This file remains correct for the platform, the hosts, and the 2026-07-25 audit.
 
@@ -222,9 +224,9 @@ write into production `data/`.
   contents; Guest Center zones are floored and partitioned, unfurnished)
 - Facade detailing beyond palette and massing
 - MSA signage lettering (the billboard has colour bands, not text)
-- ~~Regenerate `raven-rock/visuals/level-plans.svg` and `section.svg`~~ **DONE
+- ~~Regenerate `docs/raven-rock/visuals/level-plans.svg` and `section.svg`~~ **DONE
   2026-07-25.** Both now derive from `planning/coordinates.yaml` via
-  `raven-rock/visuals/generate_visuals.py`, and N3 renders at its post-OQ-8
+  `docs/raven-rock/visuals/generate_visuals.py`, and N3 renders at its post-OQ-8
   position. **The premise of the old note was false: there was never an "original
   generator."** The SVGs were hand-authored XML with hand-written `aria-label`
   prose — which is exactly why OQ-8 updated the manifest and the notes and left both
@@ -257,7 +259,7 @@ write into production `data/`.
   flags — **neither `integration/worldguard.yaml` had ever been applied.**
   `difficulty=peaceful` still masks the need, so the flag is untested in anger.
   Key insight: this did **not** need the OQ-2 de-op, because op bypasses `build`
-  but not `mob-spawning`. See `raven-rock/qa/oq3-worldguard.md`.
+  but not `mob-spawning`. See `docs/raven-rock/qa/oq3-worldguard.md`.
 - ~~**Phantom `well` row**~~ **DONE 2026-07-25**, and the note above was wrong: a
   **30-block red-canvas tent remnant** did exist, on the Town Hall's stone-brick
   apron, inside the protected plaza box — which is why the demolition pass never
@@ -399,6 +401,45 @@ write into production `data/`.
 15. **Dig no canal without capping both ends.** Both Ravensreach canals were cut with
     open ends and drained themselves across the town — 130 blocks of stray water, 23 of
     them inside a resident's cottage. Same class as the N1/N6 floods.
+
+16. **Build ops belong on RCON `/fill`, not on a bot's WorldEdit selection.** WorldEdit
+    needs a *player* selection, so `build_runner.py` drives an opped mineflayer bot and
+    spends three chat round-trips per op (`//pos1`, `//pos2`, `//set`) plus a reply
+    poll — measured **~1.5 s per op**, which is four hours for a 9,500-op build.
+    Vanilla `/fill` needs no selection: one command per box, measured **0.002 s** over
+    an already-open RCON channel. The same 9,500 ops took **19 seconds**. Use
+    `scripts/rcon_runner.py`. Three caveats it handles, all of which bite silently:
+    - `/fill` **refuses unloaded chunks** with `That position is not loaded` — the bots
+      never move (we place by coordinate), so nothing at a remote site is loaded. It
+      force-loads the ops' bounding box and restores any of the operator's ~281 pinned
+      chunks that its own `forceload remove` takes with it.
+    - `/fill` caps at **32768 blocks**; bigger boxes are split.
+    - `/fill` has **no random patterns**. Lay geometry down in flat single materials and
+      scatter accents afterwards in a handful of big WorldEdit `//replace` passes —
+      1,540 per-row mix ops cost ~38 min through a bot; four `//replace` cost seconds.
+
+17. **This server's command parser rejects `chain`.** `setblock <x> <y> <z> chain` and
+    `fill … chain` both answer `Unknown block type 'minecraft:chain'`, with or without
+    an explicit axis state, while WorldEdit places the same block happily. Also
+    **`smooth_basalt_slab` does not exist** in vanilla — smooth_basalt has no slab
+    variant, and an LLM design suggested it. The valid 1.21.11 registry name is
+    **`minecraft:iron_chain`**, which works directly through `/fill`; the 59 theatre
+    rigging placements were rebuilt that way and sampled 8/8. `rcon_runner.py` still
+    blocks the legacy id so old ops cannot lose blocks silently.
+
+18. **Carve vertical shafts LAST.** Three separate corridor ceilings each re-sealed the
+    Moot Hall shaft during a single repair. Any op laying a floor or ceiling across a
+    shaft's footprint will close it. Put the shaft carve at the end of the file and it
+    cannot be undone by its own build.
+19. **Doors need two ops.** A door is two blocks with *different* block states. Setting
+    a 2-tall selection to a door id writes two `half=lower` halves, which is invalid and
+    pops off on load. **Every door placed in the 2026-07-26 session vanished this way** —
+    29 of them, across the library, the canal houses, the Grange Hall, three cottages and
+    the penthouse. All four generators now carry a `door()` helper; use it.
+20. **Never wait on a `pgrep` that matches your own command line.** A sequencer waited on
+    `pgrep -f "buildops/ch2_bowl"` — which matched *itself*. It waited forever and **seven
+    ops files were never run**: the whole concert-hall fit-out and the entire members'
+    club. The runner logs looked healthy throughout; nobody noticed for hours.
 
 ---
 
@@ -627,25 +668,71 @@ that later siting decisions are derived from.
 - `SiteSelector` optimises for flatness with **no notion of "central to the town"**.
   Nothing stops the next building landing on the outskirts.
 
-16. **Build ops belong on RCON `/fill`, not on a bot's WorldEdit selection.** WorldEdit
-    needs a *player* selection, so `build_runner.py` drives an opped mineflayer bot and
-    spends three chat round-trips per op (`//pos1`, `//pos2`, `//set`) plus a reply
-    poll — measured **~1.5 s per op**, which is four hours for a 9,500-op build.
-    Vanilla `/fill` needs no selection: one command per box, measured **0.002 s** over
-    an already-open RCON channel. The same 9,500 ops took **19 seconds**. Use
-    `scripts/rcon_runner.py`. Three caveats it handles, all of which bite silently:
-    - `/fill` **refuses unloaded chunks** with `That position is not loaded` — the bots
-      never move (we place by coordinate), so nothing at a remote site is loaded. It
-      force-loads the ops' bounding box and restores any of the operator's ~281 pinned
-      chunks that its own `forceload remove` takes with it.
-    - `/fill` caps at **32768 blocks**; bigger boxes are split.
-    - `/fill` has **no random patterns**. Lay geometry down in flat single materials and
-      scatter accents afterwards in a handful of big WorldEdit `//replace` passes —
-      1,540 per-row mix ops cost ~38 min through a bot; four `//replace` cost seconds.
+---
 
-17. **This server's command parser rejects `chain`.** `setblock <x> <y> <z> chain` and
-    `fill … chain` both answer `Unknown block type 'minecraft:chain'`, with or without
-    an explicit axis state, while WorldEdit places the same block happily. Also
-    **`smooth_basalt_slab` does not exist** in vanilla — smooth_basalt has no slab
-    variant, and an LLM design suggested it. `rcon_runner.py` carries a `COMMAND_BLOCKED`
-    set that routes such ids to WorldEdit instead of losing them.
+## 9. Carried forward from the 2026-07-26 Westlight session
+
+That session's own handoff has been merged into this file and removed. Its completed
+build log is history and is not repeated here; what follows is only what it left
+**open, unverified, or dangerous to assume**.
+
+### 9.1 Fresh-session checklist — nothing built in a prior session may be skipped
+
+```bash
+# 1. Is anything still building or still waiting? Expect NOTHING — see trap 20.
+#    Three self-deadlocked waiters were killed at the end of that session, one of
+#    them still armed to build the members' club into a field already demolished.
+pgrep -af buildops || echo "clear"
+
+# 2. Fresh region snapshot. Every check below reads the snapshot, not the live world.
+#    A stale snapshot once reported a complete bowl as "only built to y75".
+
+# 3. The source of truth for build state:
+python3 scripts/build_status.py
+```
+
+### 9.2 Built earlier and never re-verified
+
+The Moot Hall basements are *reachable* (B1 97%, B2 99%), but reachability only says you
+can get there. **Nobody has confirmed the venues inside them still match what the docs
+claim**, and they were built before that session's tooling existed: three-screen
+multiplex, bowling alley, two-level bar with the grand staircase, arcade, bank, IT
+office, strip club, brothel, and on the upper storeys the courtroom and post office.
+
+Census each against `docs/ravensreach/design/RAVENSREACH-INTERIORS-2026-07-26.md` and
+treat that document as **unverified** — its basement floor levels are already known
+wrong.
+
+### 9.3 Assume nothing about these
+
+- **The Sanctum finished on the slow WorldEdit path** (1,904 ops) after the RCON runner
+  existed. It verified PLACED but was never re-run through the faster path, so its ops
+  file and the world may diverge if anyone regenerates it.
+- **`pav1.txt` (the old Central Pavilion) is retired and demolished.** Ravensgate now
+  owns the measured footprint at `x[-105,-65] z[-449,-425]`. **Never replay `pav1`.**
+- **The old town stadium site is bare graded grass** at `x[-155,-10] z[-570,-451]`, y67.
+  Deliberate — the Ravensgate design treats it as available parkland.
+- **Four background design agents' full reports exist only in that session's
+  transcript** — SoFi Stadium research, YouTube Theater research, the stacked-section
+  design, and the Westlight district design. The *decisions* survive in this file and in
+  `builds/manifest.yaml`; the reports do not. Re-run the agents if the detail is needed
+  rather than half-remembering them.
+- **Server-side state that session touched:** bots should all be `gameType 0` (survival)
+  — Architect was left in SPECTATOR (3) for hours. Force-loaded chunks should be back to
+  roughly the operator's own ~104 around the town.
+
+### 9.4 Ops files that ran but nobody is checking
+
+Nine early repair batches remain on disk as **one-shot migration history**. They are
+deliberately excluded from stray-unit reporting; their durable results are covered by
+the canonical units' final placement ops, bidirectional routes and structural audit.
+If a stray-unit check ever flags them, this is why:
+
+```
+dm1_oldstadium.txt   fix1_repairs.txt  fix2_cottage.txt  fix3_canals.txt
+fix4.txt             fix5.txt          fix6_irrigation.txt
+fix7_doors.txt       fix8_gaps.txt
+```
+
+`fix7_doors.txt` remains useful provenance — it re-placed the **29 doors** that had
+silently vanished (trap 19) — but it is not a separately rerunnable build unit.

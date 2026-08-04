@@ -25,7 +25,7 @@ const Database = require('better-sqlite3');
 const yaml = require('js-yaml');
 
 const ROOT = process.cwd();
-const DEFAULT_PLAN = 'mainstreet-america/planning/redevelopment-wave2-r08.yaml';
+const DEFAULT_PLAN = 'docs/mainstreet-america/planning/redevelopment-wave2-r08.yaml';
 const DEFAULT_BASE = 'data/buildops/mainstreet-wave2-r08-2026-07-28';
 const DEFAULT_DESIGN =
   'data/world-review/mainstreet-wave2-r08-design-2026-07-28.json';

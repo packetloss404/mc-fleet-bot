@@ -35,7 +35,7 @@ import { pathToFileURL } from 'url';
 import yaml from 'js-yaml';
 import nbt from 'prismarine-nbt';
 
-const DEFAULT_PLAN = 'mainstreet-america/planning/picket-fence.yaml';
+const DEFAULT_PLAN = 'docs/mainstreet-america/planning/picket-fence.yaml';
 const DEFAULT_REGIONS = 'data/worldsnap/region';
 const PILOT_RANGE = Object.freeze({
   side: 'south',

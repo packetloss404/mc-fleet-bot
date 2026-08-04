@@ -4,6 +4,58 @@ All notable changes to DyoBot are documented in this file.
 
 ---
 
+## 2026-08-03
+
+### Repository reorganisation
+
+Site design packages and historical review docs moved out of the repo root into
+`docs/`:
+
+- `mainstreet-america/`, `raven-rock/`, `ravensreach/`, `worker-town/`, `audits/`
+  → `docs/…`
+- `BUYWITHMONEY.md`, `REPO_REVIEW.md`, `REPO_REVIEW_NOTES.md`,
+  `TOWN_BUILDER_SPEC.md`, `barley-audit.md` → `docs/`
+
+Ravensreach material was consolidated from three locations into one:
+
+- `audits/ravensreach*.yaml` → `docs/ravensreach/audits/`
+- `docs/MASTERPLAN-RAVENSREACH-PUBLIC-REALM.md`, `docs/RAVENSREACH-*.md`
+  → `docs/ravensreach/design/`
+- `docs/INCIDENT-2026-07-25-ravensreach-structure-loss.md`
+  → `docs/ravensreach/qa/`
+
+The two handoffs were merged into a single `HANDOFF.md`:
+
+- `HANDOFF-2026-07-26.md` (Westlight session) was folded in and deleted. Its
+  completed build log is history and was dropped; its durable content survives as
+  §4 traps 16–20 (RCON vs bot, shafts last, doors need two ops, `iron_chain`,
+  `pgrep` self-match) and a new §9 covering the fresh-session checklist, the Moot
+  Hall basement venues that were never re-verified, and the nine one-shot repair
+  ops files that stray-unit checks will otherwise flag.
+- Fixed a pre-existing formatting bug: traps 16–17 had been appended to the end of
+  §8 instead of §4, so the trap list read 1–15 and then stopped. Now contiguous
+  1–20.
+
+Other moves:
+
+- `check_json.py`, `check_pdf.py` → `scripts/`
+- `ISSUES.MD` → `ISSUES.md` (extension case)
+- `CLAUDE.md` untracked (it was already listed in `.gitignore`, which does not
+  retroactively untrack; the file remains on disk)
+
+**183 path references were rewritten across 53 files** so the moved paths still
+resolve — 22 code files (`scripts/`, `src/integrations/BoxIntegration.ts`,
+`test/`, `builds/manifest.yaml`) and 31 docs. Several `scripts/*.mjs` carried the
+old locations as *default* argument values, so they would have failed only when
+run the way the docs describe.
+
+Deliberately **not** rewritten, to avoid falsifying dated records: entries above
+this line in this changelog, `docs/redevelopment/**`, `world-showcase/public/**`,
+and the sealed `masterplans/01-05` packages. Paths quoted there refer to the
+layout as it stood at the time.
+
+---
+
 ## 2026-07-27
 
 ### Features — MainStreet secure complex detail wave

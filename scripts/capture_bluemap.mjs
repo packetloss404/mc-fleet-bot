@@ -10,7 +10,7 @@
  * Usage:
  *   node scripts/capture_bluemap.mjs \
  *     --url 'http://127.0.0.1:18100/#overworld:0:155:320:0:0:0.7:0:0:free' \
- *     --out mainstreet-america/qa/parking.png
+ *     --out docs/mainstreet-america/qa/parking.png
  */
 
 import fs from 'fs';

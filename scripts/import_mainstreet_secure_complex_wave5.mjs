@@ -41,12 +41,12 @@ const reviewRefs = [
   'data/world-review/shelter-vault-detail-review-2026-07-27.json',
 ];
 const screenshots = [
-  'mainstreet-america/qa/msa-secure-wave5-observatory-exterior.png',
-  'mainstreet-america/qa/msa-secure-wave5-observatory-interior-wide.png',
-  'mainstreet-america/qa/msa-secure-wave5-penthouse.png',
-  'mainstreet-america/qa/msa-secure-wave5-grand-vault.png',
-  'mainstreet-america/qa/msa-secure-wave5-c01-hangar.png',
-  'mainstreet-america/qa/msa-secure-wave5-c01-arena.png',
+  'docs/mainstreet-america/qa/msa-secure-wave5-observatory-exterior.png',
+  'docs/mainstreet-america/qa/msa-secure-wave5-observatory-interior-wide.png',
+  'docs/mainstreet-america/qa/msa-secure-wave5-penthouse.png',
+  'docs/mainstreet-america/qa/msa-secure-wave5-grand-vault.png',
+  'docs/mainstreet-america/qa/msa-secure-wave5-c01-hangar.png',
+  'docs/mainstreet-america/qa/msa-secure-wave5-c01-arena.png',
 ];
 
 function snapshotHash(directory) {

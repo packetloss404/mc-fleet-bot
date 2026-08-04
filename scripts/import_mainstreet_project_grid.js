@@ -22,7 +22,7 @@ const root = path.resolve(__dirname, '..');
 const projectId = 'mainstreet-america';
 const world = 'world';
 const importerRef = 'scripts/import_mainstreet_project_grid.js';
-const planRef = 'mainstreet-america/planning/project-grid.yaml';
+const planRef = 'docs/mainstreet-america/planning/project-grid.yaml';
 const boundaryReportRef =
   'data/buildops/mainstreet-project-boundaries-2026-07-26.report.json';
 const gridReportRef =
@@ -52,8 +52,8 @@ const supplementaryRefs = [
   'data/buildops/mainstreet-private-stair-final-repair-2026-07-26.txt',
   'data/buildops/mainstreet-vault-aquifer-source-seal-2026-07-26.txt',
   'data/buildops/mainstreet-secure-roof-landscape-2026-07-26.report.json',
-  'mainstreet-america/integration/worldguard.yaml',
-  'mainstreet-america/qa/audit-closure-2026-07-26.json',
+  'docs/mainstreet-america/integration/worldguard.yaml',
+  'docs/mainstreet-america/qa/audit-closure-2026-07-26.json',
 ];
 
 function usage(message) {
@@ -320,7 +320,7 @@ function buildDefinitions(
         passed: 96,
         failed: 0,
         unknown: 0,
-        sourceRef: 'mainstreet-america/qa/audit-closure-2026-07-26.json',
+        sourceRef: 'docs/mainstreet-america/qa/audit-closure-2026-07-26.json',
       },
       protectedPlanningEnvelope: true,
       physicalOuterFence: false,
@@ -450,7 +450,7 @@ function buildDefinitions(
       status: complete ? 'complete' : 'partial',
       source: isR01 ? 'region_scan' : 'rcon',
       sourceRef: isR01
-        ? 'mainstreet-america/qa/audit-post-parking-2026-07-26.json'
+        ? 'docs/mainstreet-america/qa/audit-post-parking-2026-07-26.json'
         : roadReportRef,
       completionRatio: complete ? 1 : null,
       conditionScore: complete ? 100 : null,
@@ -1223,7 +1223,7 @@ function applyDefinitions(store, definitions) {
         finalAcceptance:
           'parent home and per-model partition/vertical-circulation assertions pass the final snapshot audit',
         materialAuditRef:
-          'mainstreet-america/qa/audit-closure-2026-07-26.json',
+          'docs/mainstreet-america/qa/audit-closure-2026-07-26.json',
       },
       observedAt: Date.now(),
     });

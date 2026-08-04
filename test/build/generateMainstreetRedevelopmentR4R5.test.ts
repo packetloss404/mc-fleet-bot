@@ -133,7 +133,7 @@ let plan: ReturnType<RedevelopmentModule['loadPlan']>;
 let report: GeneratedReport;
 
 const PLAN_PATH = path.resolve(
-  'mainstreet-america/planning/redevelopment-r4-r5.yaml',
+  'docs/mainstreet-america/planning/redevelopment-r4-r5.yaml',
 );
 const REPORT_PATH = path.resolve(
   'data/buildops/mainstreet-redevelopment-r4-r5-runtime-safe-2026-07-27.report.json',

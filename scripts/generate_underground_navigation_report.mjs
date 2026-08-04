@@ -1412,7 +1412,7 @@ const screenshotSources = [
   [
     'raven-rock-command-center.png',
     'data/exports/redevelopment-media-wave2-2026-07-28/buildings/'
-      + 'raven-rock/rr-b1--command-operations-center.png',
+      + 'docs/raven-rock/rr-b1--command-operations-center.png',
     'Raven Rock command and operations center',
   ],
   [

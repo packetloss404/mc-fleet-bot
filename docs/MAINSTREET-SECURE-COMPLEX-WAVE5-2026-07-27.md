@@ -231,12 +231,12 @@ data/exports/box/mainstreet-secure-complex-wave5-2026-07-27/
 
 Key visual inspections:
 
-- `mainstreet-america/qa/msa-secure-wave5-observatory-exterior.png`
-- `mainstreet-america/qa/msa-secure-wave5-observatory-interior-wide.png`
-- `mainstreet-america/qa/msa-secure-wave5-penthouse.png`
-- `mainstreet-america/qa/msa-secure-wave5-grand-vault.png`
-- `mainstreet-america/qa/msa-secure-wave5-c01-hangar.png`
-- `mainstreet-america/qa/msa-secure-wave5-c01-arena.png`
+- `docs/mainstreet-america/qa/msa-secure-wave5-observatory-exterior.png`
+- `docs/mainstreet-america/qa/msa-secure-wave5-observatory-interior-wide.png`
+- `docs/mainstreet-america/qa/msa-secure-wave5-penthouse.png`
+- `docs/mainstreet-america/qa/msa-secure-wave5-grand-vault.png`
+- `docs/mainstreet-america/qa/msa-secure-wave5-c01-hangar.png`
+- `docs/mainstreet-america/qa/msa-secure-wave5-c01-arena.png`
 
 All images passed the screenshot system’s nonblank, chunk-presence, color,
 variance, sky-fraction, and ray-hit checks.

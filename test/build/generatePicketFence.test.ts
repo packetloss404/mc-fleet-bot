@@ -11,7 +11,7 @@ beforeAll(async () => {
   // helpers; importing it does not run its CLI entrypoint.
   fence = await import('../../scripts/generate_picket_fence.mjs');
   plan = fence.loadFencePlan(
-    path.resolve('mainstreet-america/planning/picket-fence.yaml'),
+    path.resolve('docs/mainstreet-america/planning/picket-fence.yaml'),
   );
 });
 

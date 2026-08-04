@@ -27,7 +27,7 @@ the first live sync uploaded all 207 discovered artifacts with zero failures.
 
 | Program | Final state | Primary evidence |
 |---|---|---|
-| As-built audit | 96 passed, 0 failed, 0 unknown | `mainstreet-america/qa/audit-closure-2026-07-26.json` |
+| As-built audit | 96 passed, 0 failed, 0 unknown | `docs/mainstreet-america/qa/audit-closure-2026-07-26.json` |
 | Parking/arrival/gardens | 236 bays, accessible/EV/premium markings, canopies, lights, gardens, Discovery Court, connected south approach | `mainstreet-parking-arrival-gardens-2026-07-26.report.json`; parking audit group 10/10 |
 | Guest Center | Formal entry/portico, glazing, reception, restaurant, event, studio/distribution/office program | Guest Center audit group 5/5 |
 | Homes | 12 model homes with authored partitions, vertical circulation, differentiated floorplans/furnishings/façades | Home audit group 12/12; 65 named room records complete |
@@ -127,7 +127,7 @@ can be run manually from the dashboard.
 No credential should be pasted into chat or committed to the repository.
 
 > Scope note, 2026-07-27: this ledger closes the MainStreet America session.
-> Later Moot Hall/Ravensreach work is tracked by `audits/ravensreach.yaml`,
+> Later Moot Hall/Ravensreach work is tracked by `docs/ravensreach/audits/ravensreach.yaml`,
 > `builds/manifest.yaml`, and the Moot Hall completion export.
 
 ## Final residual work

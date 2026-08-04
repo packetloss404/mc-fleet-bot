@@ -23,7 +23,7 @@ import {
   isReplaceableBlock,
 } from './generate_picket_fence.mjs';
 
-const planPath = process.argv[2] ?? 'mainstreet-america/planning/project-grid.yaml';
+const planPath = process.argv[2] ?? 'docs/mainstreet-america/planning/project-grid.yaml';
 const regionDir = process.argv[3] ?? 'data/worldsnap/region';
 const outputPath = process.argv[4]
   ?? 'data/buildops/mainstreet-project-boundaries-2026-07-26.txt';

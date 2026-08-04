@@ -1219,7 +1219,7 @@ npx vitest run test/build/generateMainstreetRedevelopmentR4R5.test.ts
 
 ## MainStreet Picket Fence Workflow
 
-- The reviewed fence design is `mainstreet-america/planning/picket-fence.yaml`.
+- The reviewed fence design is `docs/mainstreet-america/planning/picket-fence.yaml`.
 - Refresh the local source data before generating fence operations:
 
 ```bash

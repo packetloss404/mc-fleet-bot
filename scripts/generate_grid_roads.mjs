@@ -32,9 +32,9 @@ import {
   isReplaceableBlock,
 } from './generate_picket_fence.mjs';
 
-const planPath = process.argv[2] ?? 'mainstreet-america/planning/project-grid.yaml';
+const planPath = process.argv[2] ?? 'docs/mainstreet-america/planning/project-grid.yaml';
 const regionDir = process.argv[3] ?? 'data/worldsnap/region';
-const featurePath = process.argv[4] ?? 'mainstreet-america/integration/world-features.json';
+const featurePath = process.argv[4] ?? 'docs/mainstreet-america/integration/world-features.json';
 const outputPath = process.argv[5]
   ?? 'data/buildops/mainstreet-grid-roads-2026-07-26.txt';
 const reportPath = outputPath.replace(/\.txt$/, '.report.json');

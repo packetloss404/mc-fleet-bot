@@ -509,22 +509,22 @@ export class BoxIntegration {
     return [
       {
         localPath: path.join(this.workspaceRoot, 'mainstreet-america', 'qa'),
-        remotePath: 'mainstreet-america/qa',
+        remotePath: 'docs/mainstreet-america/qa',
         defaultCategory: 'documents',
       },
       {
         localPath: path.join(this.workspaceRoot, 'mainstreet-america', 'visuals'),
-        remotePath: 'mainstreet-america/visuals',
+        remotePath: 'docs/mainstreet-america/visuals',
         defaultCategory: 'documents',
       },
       {
         localPath: path.join(this.workspaceRoot, 'mainstreet-america', 'planning'),
-        remotePath: 'mainstreet-america/planning',
+        remotePath: 'docs/mainstreet-america/planning',
         defaultCategory: 'documents',
       },
       {
         localPath: path.join(this.workspaceRoot, 'mainstreet-america', 'integration'),
-        remotePath: 'mainstreet-america/integration',
+        remotePath: 'docs/mainstreet-america/integration',
         defaultCategory: 'documents',
       },
       {

@@ -90,10 +90,10 @@ Example manifest row for the MainStreet America Guest Center:
     "maxZ": 165
   },
   "source": "manifest",
-  "sourceRef": "mainstreet-america/planning/coordinates.yaml#B01",
+  "sourceRef": "docs/mainstreet-america/planning/coordinates.yaml#B01",
   "attributes": {
     "stories": 2,
-    "floorplanRef": "mainstreet-america/planning/buildings.yaml#B01"
+    "floorplanRef": "docs/mainstreet-america/planning/buildings.yaml#B01"
   }
 }
 ```
@@ -134,7 +134,7 @@ Example manifest row for the MainStreet America Guest Center:
    database remain read-only with respect to Minecraft.
 
 For MainStreet America, the first feature seed should use the corrected as-built
-coordinates in `mainstreet-america/qa/as-built-survey.md`, not the older GRID or
+coordinates in `docs/mainstreet-america/qa/as-built-survey.md`, not the older GRID or
 OVAL assumptions. In particular: Guest Center `x[-72,72] z[90,165]`, parking
 `x[-125,125] z[172,268]`, service warehouse `x[-24,23] z[-278,-232]`, and the
 six paired home lots centered around west `x≈-34` / east `x≈32`.

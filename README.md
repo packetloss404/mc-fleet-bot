@@ -177,7 +177,7 @@ web/              # Next.js dashboard
 skills/           # Learned skills saved as JS modules (the library grows as bots run)
 scripts/          # World tooling — see below
 builds/           # manifest.yaml: every build unit and its completeness assertions
-audits/           # Declarative structural audits (ravensreach.yaml: 65 checks)
+docs/audits/           # Declarative structural audits (ravensreach.yaml: 65 checks)
 data/             # Persistent bot state and memory (gitignored)
 ```
 
@@ -201,7 +201,7 @@ running them against the server. Nothing here goes through the bots' Voyager loo
 
 ```bash
 python3 scripts/build_status.py          # is anything half-built or sealed?
-python3 scripts/audit.py audits/ravensreach.yaml --refresh
+python3 scripts/audit.py docs/ravensreach/audits/ravensreach.yaml --refresh
 ```
 
 **Why two kinds of check.** Placement and traversability are different properties. A

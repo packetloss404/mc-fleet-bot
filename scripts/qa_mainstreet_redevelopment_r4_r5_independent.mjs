@@ -43,7 +43,7 @@ const BASE = argument(
 );
 const PLAN = inputPath(
   '--plan',
-  'mainstreet-america/planning/redevelopment-r4-r5.yaml',
+  'docs/mainstreet-america/planning/redevelopment-r4-r5.yaml',
 );
 const FORWARD = inputPath('--forward', `${BASE}.txt`);
 const ROLLBACK = inputPath('--rollback', `${BASE}.rollback.txt`);

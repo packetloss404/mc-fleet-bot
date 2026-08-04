@@ -113,7 +113,7 @@ const r1Roots = [
   },
   {
     category: 'authored-master-plans',
-    directory: 'mainstreet-america/planning',
+    directory: 'docs/mainstreet-america/planning',
     include: /(?:redevelopment-r4-r5|picket-fence)/i,
   },
   {
@@ -165,7 +165,7 @@ const wave2Roots = [
   },
   {
     category: 'authored-master-plans',
-    directory: 'mainstreet-america/planning',
+    directory: 'docs/mainstreet-america/planning',
     include: /redevelopment-wave2-r08/i,
   },
   {

@@ -1,0 +1,81 @@
+# Post-execution assertions for data/buildops/
+# ravensreach-physical-regression-repair-2026-07-27.txt.
+#
+# This spec is intentionally red against the source snapshot. Run it only against
+# a fresh post-execution snapshot; do not lower any expectation to make it pass.
+#
+#   python3 scripts/audit.py \
+#     docs/ravensreach/audits/ravensreach-physical-regression-post-2026-07-27.yaml \
+#     --regions <fresh-post-snapshot>/region -v
+
+name: Ravensreach physical regression repair — post-execution
+snapshot:
+  near: "-85,-375"
+  radius: 96
+
+groups:
+  - name: Amsterdam south containment
+    checks:
+      - name: escaped sub-floor water is absent
+        type: absent
+        box: [-60, 66, -337, -60, 66, -337]
+        materials: [water]
+      - name: sub-floor containment plug is stone
+        type: count
+        box: [-60, 66, -337, -60, 66, -337]
+        materials: [stone]
+        expect: 1
+      - name: intentional irrigation source remains
+        type: count
+        box: [-61, 67, -340, -61, 67, -333]
+        materials: [water]
+        expect: 8
+
+  - name: Market terrace stair
+    checks:
+      - name: missing center stair is restored
+        type: count
+        box: [-68, 69, -340, -68, 69, -340]
+        materials: [spruce_stairs]
+        expect: 1
+      - name: complete three-wide rise remains
+        type: count
+        box: [-70, 69, -340, -68, 69, -340]
+        materials: [spruce_stairs]
+        expect: 3
+
+  - name: Ravensgate Garth paving
+    checks:
+      - name: northwest paving hole one is restored
+        type: count
+        box: [-94, 67, -445, -94, 67, -445]
+        materials: [stone_bricks]
+        expect: 1
+      - name: northwest paving hole two is restored
+        type: count
+        box: [-94, 67, -444, -94, 67, -444]
+        materials: [stone_bricks]
+        expect: 1
+      - name: northwest paving hole three is restored
+        type: count
+        box: [-93, 67, -445, -93, 67, -445]
+        materials: [stone_bricks]
+        expect: 1
+      - name: canonical Garth paving threshold is recovered
+        type: contains
+        box: [-105, 67, -446, -65, 67, -432]
+        materials: [stone_bricks, deepslate_tiles, polished_diorite, waxed_exposed_copper]
+        min: 615
+
+  - name: Preserved chest archives
+    checks:
+      - name: Market Hall chest block count is unchanged
+        type: count
+        box: [-73, 60, -344, -39, 92, -323]
+        materials: [chest]
+        expect: 33
+      - name: Grange Hall chest block count is unchanged
+        type: count
+        box: [-65, 60, -370, -41, 92, -352]
+        materials: [chest]
+        expect: 33

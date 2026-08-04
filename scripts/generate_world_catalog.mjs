@@ -472,9 +472,9 @@ const report = {
 };
 
 const allMediaRoots = [
-  path.join(root, 'mainstreet-america/qa'),
-  path.join(root, 'raven-rock/qa'),
-  path.join(root, 'ravensreach/qa'),
+  path.join(root, 'docs/mainstreet-america/qa'),
+  path.join(root, 'docs/raven-rock/qa'),
+  path.join(root, 'docs/ravensreach/qa'),
   path.join(root, 'data/looks'),
   screenshotDirectory,
   path.join(
@@ -711,46 +711,46 @@ for (const [filename, targets] of Object.entries(manualScreenshotLinks)) {
 }
 
 const exactFilenameLinks = {
-  'mainstreet-america/qa/msa-h03-after.png': ['mainstreet-america', 'H03'],
-  'mainstreet-america/qa/msa-h04-after.png': ['mainstreet-america', 'H04'],
-  'mainstreet-america/qa/msa-h08-after.png': ['mainstreet-america', 'H08'],
-  'mainstreet-america/qa/msa-secure-wave5-c01-hangar.png': [
+  'docs/mainstreet-america/qa/msa-h03-after.png': ['mainstreet-america', 'H03'],
+  'docs/mainstreet-america/qa/msa-h04-after.png': ['mainstreet-america', 'H04'],
+  'docs/mainstreet-america/qa/msa-h08-after.png': ['mainstreet-america', 'H08'],
+  'docs/mainstreet-america/qa/msa-secure-wave5-c01-hangar.png': [
     'mainstreet-america',
     'C01-HANGAR',
   ],
-  'mainstreet-america/qa/msa-secure-wave5-c01-arena.png': [
+  'docs/mainstreet-america/qa/msa-secure-wave5-c01-arena.png': [
     'mainstreet-america',
     'C01-ARENA',
   ],
-  'mainstreet-america/qa/msa-secure-wave5-observatory-exterior.png': [
+  'docs/mainstreet-america/qa/msa-secure-wave5-observatory-exterior.png': [
     'mainstreet-america',
     'OBS-S01',
   ],
-  'mainstreet-america/qa/msa-secure-wave5-observatory-interior.png': [
+  'docs/mainstreet-america/qa/msa-secure-wave5-observatory-interior.png': [
     'mainstreet-america',
     'OBS-S01',
   ],
-  'mainstreet-america/qa/msa-secure-wave5-observatory-interior-wide.png': [
+  'docs/mainstreet-america/qa/msa-secure-wave5-observatory-interior-wide.png': [
     'mainstreet-america',
     'OBS-S01',
   ],
-  'mainstreet-america/qa/msa-secure-wave5-penthouse.png': [
+  'docs/mainstreet-america/qa/msa-secure-wave5-penthouse.png': [
     'mainstreet-america',
     'APT-S01',
   ],
-  'mainstreet-america/qa/msa-secure-wave5-grand-vault.png': [
+  'docs/mainstreet-america/qa/msa-secure-wave5-grand-vault.png': [
     'mainstreet-america',
     'VLT-G01',
   ],
-  'mainstreet-america/qa/msa-east-hangar-final.png': [
+  'docs/mainstreet-america/qa/msa-east-hangar-final.png': [
     'mainstreet-america',
     'HGR-S01',
   ],
-  'mainstreet-america/qa/msa-observatory-exterior-after.png': [
+  'docs/mainstreet-america/qa/msa-observatory-exterior-after.png': [
     'mainstreet-america',
     'OBS-S01',
   ],
-  'mainstreet-america/qa/msa-grand-vault-stair-final.png': [
+  'docs/mainstreet-america/qa/msa-grand-vault-stair-final.png': [
     'mainstreet-america',
     'VLT-G01',
   ],

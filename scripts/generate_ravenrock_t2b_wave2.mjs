@@ -856,7 +856,7 @@ const inventory = {
   status: 'offline-inventory-complete',
   baseline: { regions: relative(regionsPath), ...digest },
   sources: {
-    plan: 'raven-rock/planning/coordinates.yaml',
+    plan: 'docs/raven-rock/planning/coordinates.yaml',
     standards:
       'docs/redevelopment/2026-07-27/infrastructure-standards.md',
     acceptedPilot:

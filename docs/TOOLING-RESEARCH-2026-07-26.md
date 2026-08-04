@@ -38,7 +38,7 @@ block". #3887 has gravity ceasing to apply after knockback. Both are barebones r
 with no plugins. Some real share of our stuck bots is upstream, not us.
 
 **On #5 — the one that stings.** CoreProtect would have reduced the destroyed-tower
-incident (`docs/INCIDENT-2026-07-25-ravensreach-structure-loss.md`) from four hours of
+incident (`docs/ravensreach/qa/INCIDENT-2026-07-25-ravensreach-structure-loss.md`) from four hours of
 snapshot diffing and a near-permanent loss to **one line**: `/co rollback u:<bot> t:2h r:100`.
 It would equally have covered the drained lake. If one item from this whole survey gets
 adopted, make it this.
