@@ -1651,3 +1651,64 @@ npx vitest run test/scripts/citizenRouteStagingDiagnosis.test.ts
   snapshot, exact-source preflight, live entity clearance, strict-noop guarded
   execution, immutable post snapshot, fresh offline route survey, and the
   complete no-dig forward/reverse live walk.
+
+## Combined Zones Phase 0 Terrain Survey
+
+- The re-sited Phase 0 package is in `masterplans/05-combined-zones/` and passes
+  all nine siting gates. It binds rerun pre-check snapshot
+  `fe7a3e5a...ab37` and post-check snapshot `05eebe12...271b`.
+- The first run's final generated atlas `979e7805...4ead` remains candidate-search
+  and negative-evidence source. The rerun needed no additional generation
+  because every revised target chunk was already `minecraft:full`.
+- The live box was generated in temporary 12x12-chunk tiles with:
+
+```bash
+python3 scripts/generate_phase0_survey_chunks.py \
+  --start <zero-based-tile-index> \
+  --count <bounded-batch-size>
+```
+
+- The helper requires the preserved live baseline of exactly 104 force-loaded
+  chunks, removes each exact temporary tile in a `finally` block, and refuses
+  baseline drift. Never substitute `forceload remove all`; those 104 tickets
+  belong to existing world systems.
+- Do not run the helper merely to reload chunks that the offline decoder already
+  proves are full. Generate only missing bounded target chunks.
+- Rank re-siting candidates from copied Anvil files with:
+
+```bash
+node --max-old-space-size=8192 \
+  scripts/analyze_combined_zones_resiting.mjs \
+  --regions \
+    data/worldsnap-combined-zones-phase0-final-post-20260804T001002Z/region \
+  --out masterplans/05-combined-zones/resiting-candidate-analysis.json
+```
+
+- Regenerate the read-only terrain probe, area/structure census, raw raster,
+  annotated current-plus-proposed map, and artifact hashes from immutable
+  copied Anvil files with:
+
+```bash
+node --max-old-space-size=4096 \
+  scripts/generate_combined_zones_phase0_survey.mjs \
+  --regions \
+    data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region \
+  --pre-regions \
+    data/worldsnap-combined-zones-phase0-rerun-pre-20260804T021237Z/region \
+  --out-dir masterplans/05-combined-zones
+```
+
+- The adopted normalized core origin is `(2048,-328)` at rotation 0. Gateway
+  Approach is a decoupled current-world adapter. The Empty Eight shell is
+  `x=1880..2220`, `z=-1008..-848`, `y=38..54`, with rail `y=40`.
+- The PASS is detailed-design evidence only. The corridor still discloses up to
+  36 blocks of cut and 23 of fill, and the two igloos plus shipwreck inside the
+  mountain envelope are mandatory no-touch constraints. No Phase 0 artifact
+  authorizes world edits.
+
+- Require `PASS_FULL_CHUNK_COVERAGE`, exactly 14,238 full atlas chunks and
+  9,310 full reserve chunks. The physical transform still fails siting: the
+  corridor natural surface is not rail-grade, the reserve is 26.14% water,
+  and only 35.60% of the proposed Empty Eight roof footprint has eight blocks
+  of dry solid cover. Do not turn surveyed terrain Y values into build setout
+  without a replacement transform and a new passing survey.

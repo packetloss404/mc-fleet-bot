@@ -2,796 +2,161 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Combined Zones — Current-World Integration Study (Masterplan 05)</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Combined Zones — Phase 0 Rerun Pass</title>
 <style>
-  /* === print color fidelity === */
-  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; box-sizing: border-box; }
-
-  /* === page geometry (A4) === */
-  @page { size: A4 portrait; margin: 22mm 20mm 22mm 20mm; }
-  @page :first { margin: 0; }
-
-  /* === screen preview of A4 pages === */
-  @media screen {
-    html { background: #d0d0d0; }
-    body { margin: 0; padding: 20px 0; }
-    body > section {
-      width: 210mm;
-      min-height: 297mm;
-      margin: 0 auto 20px;
-      background: #fff;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-      box-sizing: border-box;
-      overflow: hidden;
-    }
-  }
-
-  /* === design system === */
-  :root {
-    --granite: #8B3A3A; --study: #a85b2e; --verified: #2f6f5e;
-    --granite-deep: #5a2020;
-    --granite-soft: #c45e5e;
-    --limestone: #E8DCC4;
-    --limestone-deep: #b8a888;
-    --limestone-soft: #f5eede;
-    --city: #1A3D5C;
-    --city-soft: #B0C4D9;
-    --city-mid: #4a6f8f;
-    --tunnel: #F4F1E8;
-    --tunnel-deep: #c8c4b3;
-    --terrane: #3A3A3A;
-    --warm: #d6b48a;
-    --ink: #1a1a1a;
-    --rule: #d0c8b8;
-    --hushpuckney: #f8f4e6;
-    --contact: #6a5a48;
-  }
-
-  html, body {
-    margin: 0; padding: 0;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 10.5pt;
-    line-height: 1.55;
-    color: var(--ink);
-    background: #fff;
-  }
-
-  /* === running header/footer === */
-  @page {
-    @top-left { content: "COMBINED ZONES  ·  Current-World Integration Study"; font-size: 8.5pt; color: #555; font-weight: 600; letter-spacing: 0.06em; }
-    @top-right { content: "Build ID: 05-combined-zones"; font-size: 8.5pt; color: #555; }
-    @bottom-left { content: "McFleetBot Minecraft Architecture — 2026"; font-size: 8pt; color: #777; }
-    @bottom-right { content: "Page " counter(page) " of " counter(pages); font-size: 8pt; color: #777; }
-  }
-
-  section {
-    position: relative;
-    page-break-after: always;
-    padding: 0;
-  }
-  section:last-of-type { page-break-after: auto; }
-
-  .pagebreak { page-break-before: always; }
-
-  /* === typography === */
-  h1, h2, h3, h4 { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0 0 0.4em 0; color: var(--ink); }
-  h1 { font-size: 36pt; line-height: 1.05; letter-spacing: -0.02em; }
-  h2 { font-size: 22pt; line-height: 1.15; letter-spacing: -0.01em; }
-  h3 { font-size: 14pt; line-height: 1.2; color: var(--granite-deep); margin-top: 1.2em; }
-  h4 { font-size: 11pt; line-height: 1.2; color: var(--city); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 1em; }
-  p { margin: 0 0 0.7em 0; }
-  em { font-style: italic; }
-  strong { font-weight: 700; }
-  a { color: var(--city); }
-
-  /* === lead / hero / panel === */
-  .eyebrow { font-size: 9pt; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--granite); margin-bottom: 0.6em; display: block; }
-  .lead { font-size: 13pt; line-height: 1.5; color: #333; margin-bottom: 1.2em; }
-  .pull { font-size: 13pt; line-height: 1.5; font-style: italic; border-left: 3px solid var(--granite); padding: 0.4em 0 1em 1em; color: #444; margin: 1em 0 1.4em 0; }
-  .soul { font-size: 14pt; line-height: 1.45; font-style: italic; text-align: center; color: var(--granite-deep); background: var(--limestone-soft); border: 1px solid var(--limestone-deep); padding: 1em 1.4em; margin: 1.2em 0 1.4em 0; }
-  .center { text-align: center; }
-
-  /* === version badge (v2.0) === */
-  .v2-badge { display: inline-block; font-size: 9pt; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #fff; background: var(--granite); padding: 3pt 10pt; border-radius: 2pt; vertical-align: middle; }
-  .v2-strip { background: linear-gradient(90deg, var(--granite) 0%, var(--limestone-deep) 100%); color: #fff; font-size: 9pt; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 5pt 12pt; margin: 0 0 10pt 0; }
-
-  /* === cover page === */
-  .cover {
-    height: 297mm;
-    background: linear-gradient(180deg, #1a1f2c 0%, #2a2535 50%, #1a1a1a 100%);
-    color: #fff;
-    padding: 22mm 20mm 22mm 20mm;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    overflow: hidden;
-  }
-  .cover::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background:
-      radial-gradient(circle at 25% 35%, rgba(139,58,58,0.28) 0%, transparent 38%),
-      radial-gradient(circle at 75% 35%, rgba(232,220,196,0.20) 0%, transparent 38%),
-      radial-gradient(circle at 50% 65%, rgba(26,61,92,0.4) 0%, transparent 50%);
-    pointer-events: none;
-  }
-  .cover-mark { font-size: 8.5pt; letter-spacing: 0.3em; color: #c4b59a; font-weight: 700; text-transform: uppercase; }
-  .cover-title-block { position: relative; z-index: 1; }
-  .cover-title { font-size: 46pt; line-height: 1.0; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 10pt 0; color: #fff; }
-  .cover-subtitle { font-size: 13pt; line-height: 1.4; color: #c4b59a; font-weight: 400; max-width: 168mm; margin-bottom: 14pt; font-style: italic; }
-  .cover-meta { display: flex; flex-direction: column; gap: 3pt; font-size: 9.5pt; color: #c4b59a; }
-  .cover-meta strong { color: #fff; font-weight: 600; }
-  .cover-soul { position: relative; z-index: 1; font-size: 11.5pt; line-height: 1.5; color: #f4e8d4; font-style: italic; border-top: 1px solid rgba(196,181,154,0.4); border-bottom: 1px solid rgba(196,181,154,0.4); padding: 12pt 0; margin: 0; text-align: center; }
-  .cover-image-wrap { position: relative; z-index: 1; margin: 6pt 0 0 0; }
-  .cover-image-wrap img { display: block; width: 100%; max-height: 88mm; object-fit: cover; border: 1px solid rgba(196,181,154,0.3); }
-  .cover-image-cap { font-size: 7.5pt; color: #a89c84; text-align: center; margin-top: 4pt; font-style: italic; }
-  .cover-corner { position: absolute; bottom: 8mm; right: 8mm; font-size: 7.5pt; color: #6e6555; letter-spacing: 0.15em; }
-  .cover-version-strip { position: absolute; top: 0; left: 0; right: 0; background: var(--granite); color: #fff; font-size: 9pt; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 4pt 0; text-align: center; z-index: 2; }
-
-  /* === TOC === */
-  .toc-page { padding: 22mm 20mm; }
-  .toc-title { font-size: 28pt; margin: 0 0 4pt 0; }
-  .toc-sub { font-size: 10pt; color: #666; margin-bottom: 18pt; letter-spacing: 0.06em; text-transform: uppercase; }
-  .toc-list { list-style: none; padding: 0; margin: 0; }
-  .toc-list li { display: flex; align-items: baseline; padding: 6pt 0; border-bottom: 1px dotted var(--rule); }
-  .toc-list li.major { font-weight: 700; padding-top: 14pt; }
-  .toc-list li.major:first-child { padding-top: 0; }
-  .toc-num { flex: 0 0 32pt; font-variant-numeric: tabular-nums; color: var(--granite); font-weight: 700; font-size: 10pt; }
-  .toc-text { flex: 1; }
-  .toc-text a { color: var(--ink); text-decoration: none; }
-  .toc-text a:hover { color: var(--city); }
-  .toc-dots { flex: 1; border-bottom: 1px dotted #aaa; margin: 0 6pt; transform: translateY(-3pt); }
-  .toc-page-num { flex: 0 0 28pt; text-align: right; font-variant-numeric: tabular-nums; color: #555; font-size: 9.5pt; }
-
-  /* === content page base === */
-  .content { padding: 4mm 0 6mm 0; }
-  .section-head { margin-bottom: 12pt; padding-bottom: 8pt; border-bottom: 2px solid var(--limestone-deep); }
-  .section-head h2 { margin: 0; }
-  .section-head .eyebrow { margin-bottom: 4pt; }
-
-  /* === images / figures === */
-  figure { margin: 10pt 0 14pt 0; padding: 0; page-break-inside: avoid; }
-  figure img { display: block; width: 100%; height: auto; border: 1px solid #d0c8b8; }
-  figure.wide img { width: 100%; }
-  figcaption { font-size: 8.5pt; color: #666; font-style: italic; padding: 4pt 4pt 0 4pt; line-height: 1.35; }
-  .img-hero { width: 100%; margin: 0 0 12pt 0; }
-  .img-hero img { width: 100%; max-height: 130mm; object-fit: cover; }
-
-  /* === tables === */
-  table { border-collapse: collapse; width: 100%; margin: 8pt 0 14pt 0; font-size: 9.5pt; }
-  th, td { text-align: left; padding: 5pt 8pt; border-bottom: 1px solid #d8d0bf; vertical-align: top; }
-  th { background: var(--limestone); color: var(--terrane); font-weight: 700; text-transform: uppercase; font-size: 8.5pt; letter-spacing: 0.04em; }
-  tr:nth-child(even) td { background: #faf8f0; }
-  td.num { text-align: right; font-variant-numeric: tabular-nums; }
-  td.code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: 8.5pt; color: var(--granite); }
-
-  /* === two-column layout === */
-  .two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; }
-  .three-col-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10pt; }
-
-  /* === callouts === */
-  .callout { background: var(--limestone-soft); border-left: 4px solid var(--granite); padding: 10pt 14pt; margin: 10pt 0 12pt 0; page-break-inside: avoid; }
-  .callout.cream { background: #fffaf0; border-left-color: var(--warm); }
-  .callout.cool { background: #eaf0f6; border-left-color: var(--city); }
-  .callout.dark { background: #2a2535; color: #f4e8d4; border-left-color: var(--granite-soft); }
-  .callout.dark h4 { color: #c4b59a; }
-  .callout.contact { background: #f1ead8; border-left-color: var(--contact); }
-  .callout h4 { margin-top: 0; }
-  .callout p:last-child { margin-bottom: 0; }
-  .callout ul { margin: 4pt 0 0 0; padding-left: 18pt; }
-  .callout li { margin-bottom: 3pt; }
-
-  /* === decision card === */
-  .decision { background: #fff; border: 1px solid var(--limestone-deep); border-top: 4px solid var(--granite); padding: 12pt 14pt; margin: 10pt 0; page-break-inside: avoid; }
-  .decision h3 { color: var(--granite-deep); margin: 0 0 4pt 0; }
-  .decision .label { font-size: 8pt; color: var(--granite); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
-
-  /* === soul card === */
-  .soul-card { background: #fff; border: 1px solid var(--rule); padding: 12pt 14pt; margin: 8pt 0; page-break-inside: avoid; }
-  .soul-card h3 { margin: 0 0 4pt 0; }
-  .soul-card .site-tag { font-size: 8.5pt; color: #fff; background: var(--city); padding: 2pt 8pt; border-radius: 2pt; display: inline-block; letter-spacing: 0.05em; }
-  .soul-card.sub h3 { color: var(--limestone-deep); }
-  .soul-card.sub .site-tag { background: var(--limestone-deep); }
-  .soul-card.cheyenne h3 { color: var(--granite-deep); }
-  .soul-card.cheyenne .site-tag { background: var(--granite); }
-
-  /* === spec grid === */
-  .spec-grid { display: grid; grid-template-columns: 130pt 1fr; gap: 4pt 12pt; font-size: 10pt; margin: 6pt 0 10pt 0; }
-  .spec-grid .key { color: #555; font-weight: 700; }
-  .spec-grid .val { color: var(--ink); }
-
-  /* === cross-section diagram === */
-  .xsection { background: #faf8f0; border: 1px solid var(--rule); padding: 12pt 16pt; margin: 12pt 0; font-family: 'JetBrains Mono', Consolas, monospace; font-size: 8.5pt; line-height: 1.4; color: var(--ink); white-space: pre; overflow-x: auto; page-break-inside: avoid; }
-
-  /* === stage list === */
-  ol.stages { counter-reset: stage; list-style: none; padding: 0; margin: 8pt 0; }
-  ol.stages li { counter-increment: stage; padding: 8pt 0 8pt 36pt; position: relative; border-bottom: 1px dotted var(--rule); page-break-inside: avoid; }
-  ol.stages li::before { content: "STAGE " counter(stage); position: absolute; left: 0; top: 8pt; font-size: 8pt; font-weight: 700; color: var(--granite); letter-spacing: 0.1em; }
-  ol.stages li strong { display: block; font-size: 11pt; color: var(--ink); margin-bottom: 2pt; }
-  ol.stages li p { margin: 0; color: #444; font-size: 10pt; }
-
-  /* === centerpiece / easter egg cards === */
-  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8pt; margin: 8pt 0; }
-  .card { background: #fff; border: 1px solid var(--rule); padding: 8pt 10pt; page-break-inside: avoid; }
-  .card .num { font-size: 8.5pt; color: var(--granite); font-weight: 700; letter-spacing: 0.1em; }
-  .card h4 { margin: 2pt 0 4pt 0; color: var(--granite-deep); }
-  .card p { font-size: 9.5pt; color: #444; margin: 0 0 4pt 0; }
-  .card .coord { font-family: 'JetBrains Mono', Consolas, monospace; font-size: 8pt; color: var(--terrane); }
-  .card.new { border-left: 3px solid var(--granite); }
-
-  /* === contractor brief section === */
-  .contractor h2 { color: var(--granite-deep); }
-  .contractor .brief-block { background: var(--limestone-soft); border: 1px solid var(--limestone-deep); padding: 14pt 16pt; margin: 8pt 0 12pt 0; page-break-inside: avoid; }
-  .contractor h3 { color: var(--granite-deep); border-bottom: 1px solid var(--limestone-deep); padding-bottom: 4pt; margin-top: 18pt; }
-  .contractor h4 { color: var(--city); }
-  .contractor table th { background: var(--city); color: #fff; }
-  .contractor pre, .contractor code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: 8.5pt; background: #f4ede0; padding: 1pt 4pt; }
-  .contractor table { font-size: 9pt; }
-  .contractor th, .contractor td { padding: 4pt 7pt; }
-
-  /* === signoff block === */
-  .signoff { background: var(--city); color: #e8edf3; padding: 18pt 20pt; margin-top: 14pt; }
-  .signoff h2 { color: #fff; margin: 0 0 4pt 0; }
-  .signoff p { color: #c4d0e0; margin: 0; }
-
-  /* === avoid breaks inside === */
-  figure, table, .callout, .decision, .card, .spec-grid, .xsection { page-break-inside: avoid; }
-  h2, h3, h4 { page-break-after: avoid; }
-
-  /* === utility === */
-  .small { font-size: 9pt; color: #555; }
-  .muted { color: #666; }
-  .right { text-align: right; }
-  .nowrap { white-space: nowrap; }
-  .hr-thin { border: 0; border-top: 1px solid var(--rule); margin: 12pt 0; }
-  .kbd { font-family: 'JetBrains Mono', Consolas, monospace; font-size: 9pt; background: #f0e8d8; padding: 1pt 5pt; border: 1px solid var(--limestone-deep); border-radius: 2pt; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  :root { --ink:#16202b; --navy:#193653; --cream:#f3ead7; --amber:#e7ad3d; --cyan:#25cbd1; --purple:#9c79dc; --pink:#e46b96; --muted:#5f6d79; --green:#2f725d; }
+  @page { size: A4 portrait; margin: 16mm; }
+  body { margin:0; color:var(--ink); font:10.5pt/1.48 system-ui,-apple-system,"Segoe UI",sans-serif; background:#e8ebee; }
+  main { max-width:210mm; margin:0 auto; background:white; }
+  section { padding:16mm; page-break-after:always; min-height:265mm; }
+  section:last-child { page-break-after:auto; }
+  .cover { color:white; background:linear-gradient(150deg,#111923,#20364d 56%,#392a48); display:flex; flex-direction:column; justify-content:space-between; }
+  .eyebrow { text-transform:uppercase; letter-spacing:.16em; font-weight:800; font-size:8.5pt; color:#f0c76f; }
+  h1 { font-size:38pt; line-height:1; margin:8mm 0 5mm; }
+  h2 { font-size:22pt; color:var(--navy); margin:0 0 6mm; border-bottom:2px solid var(--amber); padding-bottom:3mm; }
+  h3 { color:var(--navy); margin:7mm 0 2mm; }
+  p { margin:0 0 4mm; }
+  .lead { font-size:14pt; max-width:165mm; color:#dce7ef; }
+  .status { display:inline-block; margin-top:5mm; padding:3mm 5mm; border:1px solid #90dbbe; background:#1d5e4b; color:white; font-weight:800; }
+  .hero { width:100%; border:1px solid #718294; margin-top:8mm; }
+  .caption { color:#aebdca; font-size:8.5pt; margin-top:2mm; }
+  .meta { border-top:1px solid #617181; padding-top:5mm; color:#cad5de; font-size:9pt; }
+  .callout { border-left:5px solid var(--green); background:#edf6f2; padding:5mm; margin:5mm 0; }
+  .warning { border-left-color:var(--amber); background:#fff7e7; }
+  table { width:100%; border-collapse:collapse; margin:4mm 0 7mm; font-size:9pt; }
+  th { text-align:left; background:var(--navy); color:white; }
+  th,td { padding:2.5mm 3mm; border-bottom:1px solid #d8dee3; vertical-align:top; }
+  tr:nth-child(even) td { background:#f7f8f9; }
+  code,pre { font-family:ui-monospace,SFMono-Regular,Consolas,monospace; }
+  pre { background:#172432; color:#f5f7f9; padding:5mm; overflow:auto; }
+  ul,ol { padding-left:6mm; }
+  li { margin-bottom:2mm; }
+  .legend { display:flex; gap:5mm; flex-wrap:wrap; font-size:8.5pt; margin:3mm 0; }
+  .swatch { display:inline-block; width:10mm; height:3mm; margin-right:2mm; vertical-align:middle; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:5mm; }
+  .card { border:1px solid #d4dbe1; padding:4mm; background:#fbfcfd; }
+  .card strong { color:var(--navy); }
+  .small { font-size:8.5pt; color:var(--muted); }
+  @media print { body { background:white; } main { max-width:none; } }
 </style>
 </head>
-<style>
-  .status-banner { background:#a85b2e; color:#fff; padding:7pt 12pt; font-size:9pt;
-    font-weight:700; letter-spacing:.09em; text-transform:uppercase; margin:0 0 12pt 0; }
-  .verified { background:#eef6f2; border-left:4px solid #2f6f5e; padding:10pt 14pt; margin:10pt 0 12pt; }
-  .verified h4 { color:#24594a; margin-top:0; }
-  .defect { background:#fdf0ee; border-left:4px solid #b23c3c; padding:10pt 14pt; margin:10pt 0 12pt; }
-  .defect h4 { color:#8f2b2b; margin-top:0; }
-  table.tight { font-size:8.8pt; }
-  table.tight td, table.tight th { padding:3pt 6pt; }
-  .num-r { text-align:right; font-family:'JetBrains Mono',Consolas,monospace; white-space:nowrap; }
-  figure.wide { margin:10pt 0 14pt; }
-  figure.wide img { width:100%; border:1px solid var(--rule); }
-  figure.wide figcaption { font-size:8.5pt; color:#555; margin-top:5pt; line-height:1.4; }
-  .srcs { font-size:8.6pt; line-height:1.5; }
-  .srcs td { vertical-align:top; }
-</style>
-<body>
-<section class="cover" id="cover">
-  <div class="cover-version-strip">Current-World Integration Study · 2026</div>
-  <div style="height:16pt;"></div>
-  <div class="cover-mark">McFleetBot &nbsp;·&nbsp; Minecraft Architecture Masterplan &nbsp;·&nbsp; Masterplan 05</div>
-  <div class="cover-title-block">
-    <h1 class="cover-title">COMBINED<br>ZONES</h1>
-    <p class="cover-subtitle">Placing the Combined Complex into the accepted current world — and connecting it with the <strong style="color:#e8dcc4;">East Corridor</strong>, a single reservation carrying highway, railway, footway and utilities.</p>
-    <div class="cover-meta">
-      <div><strong>Build ID:</strong> 05-combined-zones</div>
-      <div><strong>Status:</strong> SITING STUDY — NOT AUTHORIZED FOR WORLD EDITS &nbsp;·&nbsp; <strong>Date:</strong> 2026-08-03</div>
-      <div><strong>Scale:</strong> 1 block = 1 metre &nbsp;·&nbsp; vanilla Y=-64…319, stock Paper</div>
-      <div><strong>East reserve:</strong> x 1500…3050 · z -1050…450 &nbsp;·&nbsp; <strong>Corridor:</strong> 1,277 blocks</div>
-      <div><strong>Accepted baseline:</strong> 1,215 catalog records · snapshot c39d0d67…</div>
-    </div>
+<body><main>
+<section class="cover">
+  <div>
+    <div class="eyebrow">Masterplan 05 · Current-world integration · 2026-08-04</div>
+    <h1>Combined<br>Zones</h1>
+    <p class="lead">A re-sited north–south Combined Complex connected to the current world through Gateway Approach, with a hidden eight-track expansion terminal under a fully surveyed dry footprint.</p>
+    <div class="status">PHASE 0 RERUN PASS · DETAILED DESIGN ONLY · NO WORLD EDITS AUTHORIZED</div>
+    <img class="hero" src="maps/current-plus-proposed-phase0-overlay.png" alt="Current world and re-sited Combined Zones Phase 0 top-down map">
+    <p class="caption">North-up, one block per pixel. Cyan: accepted current feature union. Amber: corridor/reserve. Purple: mountain. Pink: urban core. Cyan-blue: Empty Eight.</p>
   </div>
-  <figure class="cover-image-wrap">
-    <img src="maps/current-and-proposed-whole-world.png" alt="Current baseline, east reserve and the East Corridor">
-    <div class="cover-image-cap">The accepted terminal snapshot as the base, with the proposed east reserve and the C1 East Corridor overlaid. Dark hatched land is <strong>unsurveyed</strong>, not vacant.</div>
-  </figure>
-  <p class="cover-soul">"A plan is not a permission. Every coordinate here is a coherent planning transform until a fresh survey says otherwise."</p>
-  <div class="cover-corner">05 — Combined Zones · Integration Study</div>
+  <div class="meta">Post-check snapshot SHA-256: 05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b · 14,238/14,238 atlas chunks full · no blocks placed or removed</div>
 </section>
-<section class="toc-page" id="toc">
-  <div class="eyebrow">Navigation</div>
-  <h1 class="toc-title">Table of Contents</h1>
-  <p class="toc-sub">Click any entry to jump to that section · Current-World Integration Study</p>
-  <ul class="toc-list">
-    <li class="major"><span class="toc-num">01</span><span class="toc-text"><a href="#cover">Cover</a></span><span class="toc-dots"></span><span class="toc-page-num">1</span></li>
-    <li class="major"><span class="toc-num">02</span><span class="toc-text"><a href="#toc">Table of Contents</a></span><span class="toc-dots"></span><span class="toc-page-num">2</span></li>
-    <li class="major"><span class="toc-num">03</span><span class="toc-text"><a href="#exec">Executive Summary</a></span><span class="toc-dots"></span><span class="toc-page-num">3</span></li>
-    <li class="major"><span class="toc-num">04</span><span class="toc-text"><a href="#baseline">What Exists Now — the Accepted Baseline</a></span><span class="toc-dots"></span><span class="toc-page-num">4</span></li>
-    <li class="major"><span class="toc-num">05</span><span class="toc-text"><a href="#decision">The Integration Decision and Coordinate System</a></span><span class="toc-dots"></span><span class="toc-page-num">5</span></li>
-    <li class="major"><span class="toc-num">06</span><span class="toc-text"><a href="#vertical">The Vanilla-Height Redesign</a></span><span class="toc-dots"></span><span class="toc-page-num">6</span></li>
-    <li class="major"><span class="toc-num">07</span><span class="toc-text"><a href="#zones">Zone Plan</a></span><span class="toc-dots"></span><span class="toc-page-num">7</span></li>
-    <li class="major"><span class="toc-num">08</span><span class="toc-text"><a href="#z02">Z02 — Gateway Approach and the Empty Eight</a></span><span class="toc-dots"></span><span class="toc-page-num">8</span></li>
-    <li class="major"><span class="toc-num">09</span><span class="toc-text"><a href="#corridor">C1 — The East Corridor</a></span><span class="toc-dots"></span><span class="toc-page-num">9</span></li>
-    <li class="major"><span class="toc-num">10</span><span class="toc-text"><a href="#interchange">C1a — Data District Interchange</a></span><span class="toc-dots"></span><span class="toc-page-num">10</span></li>
-    <li class="major"><span class="toc-num">11</span><span class="toc-text"><a href="#termini">C1b / C1c — The Two Termini</a></span><span class="toc-dots"></span><span class="toc-page-num">11</span></li>
-    <li class="major"><span class="toc-num">12</span><span class="toc-text"><a href="#rail">C1d — The Passenger Railway</a></span><span class="toc-dots"></span><span class="toc-page-num">12</span></li>
-    <li class="major"><span class="toc-num">13</span><span class="toc-text"><a href="#skew">C1e — The Grand Avenue Skew Defect</a></span><span class="toc-dots"></span><span class="toc-page-num">13</span></li>
-    <li class="major"><span class="toc-num">14</span><span class="toc-text"><a href="#otherconn">C2–C4 — Portal, PassageWay and Subway Provision</a></span><span class="toc-dots"></span><span class="toc-page-num">14</span></li>
-    <li class="major"><span class="toc-num">15</span><span class="toc-text"><a href="#journey">Visitor Sequence</a></span><span class="toc-dots"></span><span class="toc-page-num">15</span></li>
-    <li class="major"><span class="toc-num">16</span><span class="toc-text"><a href="#delivery">Delivery Sequence and Gates</a></span><span class="toc-dots"></span><span class="toc-page-num">16</span></li>
-    <li class="major"><span class="toc-num">17</span><span class="toc-text"><a href="#authorities">Design Authorities</a></span><span class="toc-dots"></span><span class="toc-page-num">17</span></li>
-    <li class="major"><span class="toc-num">18</span><span class="toc-text"><a href="#decisions">Decisions Still Required</a></span><span class="toc-dots"></span><span class="toc-page-num">18</span></li>
-    <li class="major"><span class="toc-num">19</span><span class="toc-text"><a href="#truth">Truth Boundaries</a></span><span class="toc-dots"></span><span class="toc-page-num">19</span></li>
+
+<section>
+  <h2>The decision</h2>
+  <p>The original `(2250,-300)`, 90-degree transform failed because Houston, the public shaft, and the summit met water, while only 35.60% of the proposed Empty Eight roof had eight dry solid blocks of cover. The program survives; that physical setout does not.</p>
+  <div class="callout"><strong>Adopted layout.</strong> Keep Ravensreach as the canonical Old Town. Keep Gateway Approach as a separate current-world adapter. Put the normalized Combined Complex at `(2048,-328)` with no top-down rotation, so Houston faces the arrival and the mountain extends north.</div>
+  <pre>worldX = 2048 + localX
+worldZ = -328 + localZ</pre>
+  <table>
+    <thead><tr><th>Program anchor</th><th>World X/Z</th><th>Phase 0 terrain</th></tr></thead>
+    <tbody>
+      <tr><td>Houston / local origin</td><td><code>2048,-328</code></td><td>dry Y88</td></tr>
+      <tr><td>Public shaft</td><td><code>2108,-398</code></td><td>dry Y63</td></tr>
+      <tr><td>SubTropolis</td><td><code>2048,-528</code></td><td>dry Y86</td></tr>
+      <tr><td>Cheyenne portal</td><td><code>2048,-748</code></td><td>dry Y83</td></tr>
+      <tr><td>Summit footprint</td><td><code>2048,-828</code></td><td>dry Y81</td></tr>
+    </tbody>
+  </table>
+  <h3>Survey result</h3>
+  <div class="grid">
+    <div class="card"><strong>Mountain</strong><br>481,401 columns<br>2.6167% water</div>
+    <div class="card"><strong>Urban core</strong><br>90,831 columns<br>2.7788% water</div>
+    <div class="card"><strong>Revised reserve</strong><br>x 1500…2550<br>z −1150…300</div>
+    <div class="card"><strong>Coverage</strong><br>14,238 atlas chunks<br>6,097 reserve chunks</div>
+  </div>
+  <div class="callout warning">Two igloos and one shipwreck lie inside the broad mountain envelope. They are mandatory no-touch exhibits, excluded from mountain-shell ownership. Phase 0 does not authorize relocation, burial, or removal.</div>
+</section>
+
+<section>
+  <h2>Connection to the current map</h2>
+  <p>The East Corridor is one 1,244-block multimodal reservation from MainStreet East to the dry Gateway interface. Highway, passenger rail, protected walking, drainage, and utilities are designed together in a 56-block cross-section with 12-block slope easements on both sides.</p>
+  <pre>(430,80) → (905,80) → (1065,-80) → (1330,-80) → (1550,-250)</pre>
+  <table>
+    <thead><tr><th>Rail result</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>Sample count</td><td>79 at 16-block intervals</td></tr>
+      <tr><td>Natural terrain</td><td>Y55…122; three water samples</td></tr>
+      <tr><td>Natural intervals over 1:8</td><td>39</td></tr>
+      <tr><td>Engineered rail range</td><td>Y63…114, starting and ending at Y68</td></tr>
+      <tr><td>Maximum engineered grade</td><td>0.125 — PASS 1:8</td></tr>
+      <tr><td>Disclosed earthwork</td><td>up to 36 blocks cut; 23 blocks fill</td></tr>
+    </tbody>
+  </table>
+  <p>Catalog X/Z clearance still passes, including the known C01 and owner-tunnel relationships. That does not approve structural loading: bridges, tunnels, retaining walls, drainage, road profile, and exact earthwork volumes remain Phase 1 design.</p>
+  <h3>Passenger stops</h3>
+  <table>
+    <thead><tr><th>Station</th><th>Coordinate</th><th>Role</th></tr></thead>
+    <tbody>
+      <tr><td>MS-1 MainStreet East</td><td><code>430,68,80</code></td><td>western terminus</td></tr>
+      <tr><td>DD-1 Data District</td><td><code>≈1240,77,-80</code></td><td>district access</td></tr>
+      <tr><td>GW-1 Gateway</td><td><code>1550,68,-250</code></td><td>current-world transfer</td></tr>
+      <tr><td>GA-S1 Gateway Gardens</td><td><code>1640,68,-250</code></td><td>future-use stop</td></tr>
+      <tr><td>GA-S2 Approach Commons</td><td><code>1920,68,-250</code></td><td>future-use stop</td></tr>
+    </tbody>
+  </table>
+  <p class="small">The proposed MainStreet East L2 campus gate remains unresolved: its study point is water and no matching cataloged gate exists. Survey a dry interface or delete L2.</p>
+</section>
+
+<section>
+  <h2>The hidden subway</h2>
+  <p>At Alpine Junction, a siding seems to disappear behind a landscaped retaining wall. A subtle marker reveals the branch. The discovery is hidden; safety is not.</p>
+  <pre>(1780,68,-250)  surface turnout
+(1780,64,-285)  concealed portal
+(1800,56,-445)  descending tunnel
+(1840,48,-685)  deep approach
+(1880,40,-928)  west terminal throat</pre>
+  <p>The steepest segment is 4 blocks over 35, or 0.1143. The branch descends 28 blocks over roughly 693 horizontal blocks.</p>
+  <h3>Gateway Expansion Terminal — “The Empty Eight”</h3>
+  <table>
+    <thead><tr><th>Element</th><th>Adopted definition</th></tr></thead>
+    <tbody>
+      <tr><td>Shell</td><td><code>x 1880…2220 · z −1008…−848 · Y 38…54</code></td></tr>
+      <tr><td>Cover</td><td>54,901/54,901 columns dry and at least eight blocks above roof Y54</td></tr>
+      <tr><td>Structure conflicts</td><td>zero generated-structure bounds intersect shell Y38…54</td></tr>
+      <tr><td>Rail</td><td>Y40; eight east–west tracks and eight assigned platforms</td></tr>
+      <tr><td>Tracks Z</td><td><code>−974, −961, −948, −935, −922, −909, −896, −883</code></td></tr>
+      <tr><td>Future interfaces</td><td>four line pairs; eight sealed east stubs at x2220</td></tr>
+      <tr><td>Mall</td><td>two monumental gallerias, mezzanine, four ticket-hall boxes, 24 capped retail shells</td></tr>
+      <tr><td>Life safety</td><td>two independent accessible egress routes, smoke separation, ventilation, emergency lighting, barriers, sumps</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">Late-Soviet-inspired civic monumentality without copying a specific station: deep vaults, long sightlines, stone, chandeliers, mosaics, and a fully finished but strangely empty mall built for future lines that may never arrive.</div>
+  <p>No initial link opens to PassageWay, SubTropolis, Houston's pedestrian tunnels, or secure Cheyenne circulation. All future openings are separate guarded releases.</p>
+</section>
+
+<section>
+  <h2>Delivery and controls</h2>
+  <ol>
+    <li><strong>Phase 0 — complete, PASS.</strong> Snapshots, chunk coverage, raster, candidate search, terrain/structure censuses, terminal cover, and sampled rail profile are sealed.</li>
+    <li><strong>Phase 1 — civil and interfaces.</strong> Freeze road/rail profiles, C01 structural checks, bridges/tunnels, hydrology, relic buffers, Z02 stops, subway shell, egress, ownership, and rollback boundaries.</li>
+    <li><strong>Phase 2 — deep shells.</strong> Build Empty Eight, shaft, SubTropolis, service/contact route, and Cheyenne shell before surface loads.</li>
+    <li><strong>Phase 3 — surface framework.</strong> Build the mountain around protected relic voids, Gateway Approach, Grand Avenue, Houston, stops, and summit switchbacks.</li>
+    <li><strong>Phase 4 — fit-out.</strong> Complete the terminal mall/platforms and internal city, industrial, secure, and summit programs.</li>
+    <li><strong>Phase 5 — commissioning.</strong> Bidirectional route tests, rail/minecart tests, doors, entities, rollback, immutable post snapshot, database import, and matched media.</li>
+  </ol>
+  <h3>Release rules</h3>
+  <ul>
+    <li>One canonical compiler and one owner per physical cell.</li>
+    <li>Generated structures and accepted features are default-deny.</li>
+    <li>Every physical package needs a fresh immutable source, exact guarded forward and rollback operations, strict-noop preflight, live clearance, and post-state acceptance.</li>
+    <li>Phase 0 PASS authorizes detailed design only. No world edits are authorized by this report.</li>
   </ul>
+  <div class="callout warning"><strong>Still to decide:</strong> same-world vertical compression; exact highway civil solution; the L2 gate; build-now versus reserve-only rail; mountain hydrology and relic buffers; Empty Eight palette/egress/future-line contracts; geological wording; optional portal mechanism.</div>
+  <p class="small">Controlling files: MASTERPLAN.md, site-coordinates.json, corridor-terrain-probe.json, phase0-survey-evidence.json, corridor-clearance.json, and map-qa.json.</p>
 </section>
-<section class="content" id="exec">
-  <div class="status-banner">Siting study — not build authorization</div>
-  <div class="section-head">
-    <span class="eyebrow">03 / Executive Summary</span>
-    <h2>One world, one reserve, one corridor that makes it real</h2>
-  </div>
-<p class="lead">Masterplan 05 places the Combined Complex — Cheyenne Mountain, SubTropolis and the Houston Tunnel System, integrated in Masterplan 04 — into the <strong>accepted current world</strong> rather than at an authored origin. It reserves an east-side study envelope beyond the current build, adapts the vertical design to the vanilla height envelope, and connects the whole thing to the existing map with a single multimodal corridor.</p>
-<p>The connection is the substance of this revision. What was previously a 267-block stub — whose current-world endpoint was a road-network bounding-box edge rather than a surveyed door — is now the <strong>East Corridor</strong>: 1,277 blocks from a terminal roundabout east of MainStreet America to the Gateway, carrying a four-lane divided highway, a double-track passenger railway, a protected pedestrian route and a utility reserve inside <strong>one 56-block reservation</strong>.</p>
-<figure class="wide"><img src="maps/east-corridor-plan.png" alt="East Corridor alignment and cross-section"><figcaption>Fig. 3.1 — The East Corridor. Alignment swinging south of the Data District, the single service interchange, both terminal roundabouts, and the 56-block cross-section with the railway on the north flank.</figcaption></figure>
-<h3>The seven binding decisions</h3>
-<div class="two-col-grid">
-<div class="decision"><div class="label">Placement</div><h3>East reserve, rotated 90°</h3><p>x 1500…3050, z -1050…450. Current cataloged features end at x=1300. The plan is rotated so its gateway faces west toward the existing world.</p></div>
-<div class="decision"><div class="label">Vertical</div><h3>Piecewise compression</h3><p>Masterplan 04 assumes Y=-100…800. Stock Paper gives Y=-64…319, so a verbatim insertion is impossible. Geology and sequence survive; vertical distance is acknowledged as compressed.</p></div>
-<div class="decision"><div class="label">Connection</div><h3>One corridor, not a stub</h3><p>1,277 blocks, 56-block reservation, 80-block land take including easements.</p></div>
-<div class="decision"><div class="label">Modes</div><h3>Designed together</h3><p>Highway and railway share one cross-section, one alignment and one survey. Staging them apart forecloses the rail permanently.</p></div>
-<div class="decision"><div class="label">Rail flank</div><h3>North, not median</h3><p>Platforms face the pedestrian route, so the district is reached at grade. Median running would need a vertical circulation core at every station.</p></div>
-<div class="decision"><div class="label">Interchange</div><h3>One, not two</h3><p>The district tangent is 265 blocks; minimum off-off/on-on gore spacing is 305. A second interchange is geometrically impossible, not merely tight.</p></div>
-<div class="decision"><div class="label">Old Town</div><h3>Ravensreach keeps the identity</h3><p>Masterplan 04's separate 33-schematic 'old town' is removed from this program. Z02 becomes the Gateway Approach instead.</p></div>
-</div>
-<p class="soul">The corridor is what turns an isolated attraction into part of the map. Everything else in this package is siting; this is arrival.</p>
-</section>
-<section class="content" id="baseline">
-  <div class="status-banner">Siting study — not build authorization</div>
-  <div class="section-head">
-    <span class="eyebrow">04 / What Exists Now</span>
-    <h2>The accepted baseline, and what it does and does not prove</h2>
-  </div>
-<p class="lead">The accepted current baseline is the terminal July 28 snapshot, SHA-256 <span class="kbd">c39d0d67…</span>. Its durable catalog contains 1,215 features over x -714…1300, y -46…319, z -719…311.5.</p>
-<h3>Major current systems</h3><ul>
-<li>MainStreet America and its mountain secure complex</li>
-<li>Raven Rock, its four primary portals and the Z5 headhouse</li>
-<li>Ravensreach, Ravensgate, Manager Vale and the civic/library/guild network</li>
-<li>Westlight, its venues, parkway, crater and western approach</li>
-<li>the east-side Data District, Concord, soundstage annex, worker commons and utility grid</li>
-<li>C01, the owner corridor, owner estate and portal-gallery architecture</li>
-<li>the current PassageWay and other cataloged underground systems</li>
-</ul>
-<div class="callout cool"><h4>There is no railway in this world</h4><p>The catalog holds 1,215 features and <strong>not one of them is track</strong>. The corridor's railway would be the first. The west end is therefore a true terminus, not a tie-in, and no existing line constrains its alignment. ("Railway" elsewhere in this repository refers to the PaaS host, not rail infrastructure.)</p></div>
-<div class="callout"><h4>What the baseline does not prove</h4><p>Black pixels and any map area beyond the raster are unloaded or absent from the accepted snapshot. They are <strong>not evidence of vacant land</strong>. The raster covers x -883…1468; the corridor's eastern terminus lies beyond that edge and has never been rendered.</p></div>
-</section>
-<section class="content" id="decision">
-  <div class="status-banner">Siting study — not build authorization</div>
-  <div class="section-head">
-    <span class="eyebrow">05 / The Integration Decision</span>
-    <h2>Build east, rotate 90 degrees, face the gateway west</h2>
-  </div>
-<p class="lead">Build the Combined Complex as a new east-side district of the current world — not at Masterplan 04's authored origin, and not at the obsolete (935,60,300) starter-base location that the older research assumed.</p>
-<ul>
-<li>Current cataloged features end at x=1300; the study reservation starts at x=1500.</li>
-<li>The landscaped Gateway Approach and gateway become the nearest proposed zones to the current world.</li>
-<li>The Data District becomes the physical arrival edge instead of an isolated portal-only jump.</li>
-<li>The mountain reads as an eastern horizon and does not cover MainStreet, Raven Rock, Ravensreach, Westlight, C01 or the owner estate.</li>
-<li>A 90-degree rotation is easier to audit than separately nudging every child zone.</li>
-</ul>
-<h3>Coordinate system</h3>
-<p>The current world remains north-up: north = <span class="kbd">-Z</span>, east = <span class="kbd">+X</span>, up = <span class="kbd">+Y</span>. For a local coordinate from the normalized Masterplan 04 no-ravine design:</p>
-<div class="code">worldX = 2250 - localZ<br>worldZ = -300 + localX</div>
-<table><thead><tr><th>Authored local point</th><th>Proposed world X/Z</th><th>Meaning</th></tr></thead><tbody>
-<tr><td class="">(0, 0, 700)</td><td class="">(1550, -300)</td><td class="">gateway arrival edge</td></tr>
-<tr><td class="">(0, 0, 500)</td><td class="">(1750, -300)</td><td class="">Gateway Approach / Grand Avenue origin</td></tr>
-<tr><td class="">(0, 0, 0)</td><td class="">(2250, -300)</td><td class="">combined city center</td></tr>
-<tr><td class="">(60, 0, -70)</td><td class="">(2320, -240)</td><td class="">public shaft head</td></tr>
-<tr><td class="">(-100, 0, -300)</td><td class="">(2550, -400)</td><td class="">SubTropolis service-tunnel end</td></tr>
-<tr><td class="">(-40, 200, -360)</td><td class="">(2610, -340)</td><td class="">contact and terrane plaque</td></tr>
-<tr><td class="">(0, 200, -420)</td><td class="">(2670, -300)</td><td class="">Cheyenne outer portal</td></tr>
-<tr><td class="">(0, 325, -540)</td><td class="">(2790, -300)</td><td class="">Cheyenne chamber center</td></tr>
-<tr><td class="">(0, 800, -500)</td><td class="">(2750, -300)</td><td class="">summit</td></tr>
-</tbody></table>
-<div class="callout cream"><p>Do not apply standalone child-plan coordinates directly. Cheyenne, SubTropolis and Houston each have their own local origins; their geometry must first be normalized into Masterplan 04 local space, then passed through the transform above.</p></div>
-</section>
-<section class="content" id="vertical">
-  <div class="status-banner">Siting study — not build authorization</div>
-  <div class="section-head">
-    <span class="eyebrow">06 / The Vanilla-Height Redesign</span>
-    <h2>Fitting an 900-block design into a 383-block envelope</h2>
-  </div>
-<p class="lead">Masterplan 04 assumes Y=-100…800 and a modded 1,024–2,048-block build height. The current server is stock Paper with the vanilla Y=-64…319 envelope. A verbatim insertion is impossible.</p>
-<div class="code">for localY &lt;= 0:  worldY = 72 + 1.28 × localY<br>for localY &gt;= 0:  worldY = 72 + 0.29 × localY</div>
-<table><thead><tr><th>Layer</th><th class="right">Authored local Y</th><th class="right">Provisional world Y</th></tr></thead><tbody>
-<tr><td class="">SubTropolis floor / design minimum</td><td class="num-r">-100</td><td class="num-r">-56</td></tr>
-<tr><td class="">public-shaft mid-landing</td><td class="num-r">-50</td><td class="num-r">8</td></tr>
-<tr><td class="">Z02-U1 subway rail plane</td><td class="num-r">site-specific</td><td class="num-r">48</td></tr>
-<tr><td class="">city street</td><td class="num-r">0</td><td class="num-r">72</td></tr>
-<tr><td class="">granite-limestone contact</td><td class="num-r">200</td><td class="num-r">130</td></tr>
-<tr><td class="">Cheyenne chamber</td><td class="num-r">250…400</td><td class="num-r">145…188</td></tr>
-<tr><td class="">summit</td><td class="num-r">800</td><td class="num-r">304</td></tr>
-</tbody></table>
-<p>The lower limit leaves an eight-block buffer above Y=-64; the summit leaves 15 blocks below Y=319. The geological ages, material transition, plaque and narrative sequence remain, but vertical distance is acknowledged as compressed.</p>
-<div class="callout"><p>The transformed funicular rise is about 174 blocks over only 80 blocks of direct plan distance, so it <strong>must</strong> use switchbacks with at least 174 blocks of horizontal run plus braking and landing length. The old direct/vertical funicular definitions are rejected.</p></div>
-<figure class="wide"><img src="maps/vertical-zoning-section.png" alt="Vertical zoning section"><figcaption>Fig. 6.1 — The vanilla-height redesign that makes a same-world version possible in principle.</figcaption></figure>
-</section>
-<section class="content" id="zones">
-  <div class="status-banner">Siting study — not build authorization</div>
-  <div class="section-head">
-    <span class="eyebrow">07 / Zone Plan</span>
-    <h2>Eleven zones plus the corridor that reaches them</h2>
-  </div>
-<p class="lead">All bounds below are inclusive study envelopes, not cleared build limits.</p>
-<table class="tight"><thead><tr><th>Zone</th><th>Proposed world envelope or anchor</th><th>Program</th></tr></thead><tbody>
-<tr><td class="">Z00 East reserve</td><td class="">x 1500…3050, z -1050…450</td><td class="">survey and coordination envelope; 50-block mountain overrun buffer</td></tr>
-<tr><td class=""><strong>C1 East Corridor</strong></td><td class="">(430,~,80) to (1550,~,-300), 56-block reservation</td><td class="">highway, railway, pedestrian route, utilities; two terminal roundabouts and one district interchange</td></tr>
-<tr><td class="">Z01 Gateway / arrival</td><td class="">anchor (1550,~,-300)</td><td class="">west-facing pavilion, visitor orientation, rail/road transfer</td></tr>
-<tr><td class="">Z02 Gateway Approach</td><td class="">x 1550…1950, z -600…0</td><td class="">landscaped arrival district, two surface stops, concealed Z02-U1 terminal</td></tr>
-<tr><td class="">Z03 Grand Avenue</td><td class="">(1750,~,-300) to (2180,~,-240)</td><td class="">8-block civic spine; centerline follows surveyed terrain</td></tr>
-<tr><td class="">Z04 Houston city</td><td class="">x 2181…2319, z -369…-231</td><td class="">138×138 downtown, towers, street grid, food courts, skybridges</td></tr>
-<tr><td class="">Z05 Houston tunnels</td><td class="">same plan envelope, approx Y 64…72</td><td class="">pedestrian city-in-a-city network, floodgates, wayfinding</td></tr>
-<tr><td class="">Z06 Public shaft</td><td class="">head (2320,~,-240) to lower lobby near Y=-56</td><td class="">7×7 lift/stair/service envelope with declared lower dogleg</td></tr>
-<tr><td class="">Z07 SubTropolis</td><td class="">x 2350…2550, z -400…-200, Y -56…72</td><td class="">200×200 pillar chamber, tenant zones, public and controlled interfaces</td></tr>
-<tr><td class="">Z08 Service / contact</td><td class="">(2550,72,-400) via (2610,130,-340) to (2670,130,-300)</td><td class="">6×6 rail/service route, rock transition, terrane plaque</td></tr>
-<tr><td class="">Z09 Mountain</td><td class="">x 2450…3050, z -700…100, Y 72…304</td><td class="">continuous no-ravine mountain, limestone base, granite upper mass</td></tr>
-<tr><td class="">Z10 Cheyenne</td><td class="">chamber x 2750…2830, z -340…-260, Y 145…188</td><td class="">J-curve experience, blast doors, 15 spring-mounted buildings, Battle Cab</td></tr>
-<tr><td class="">Z11 Summit / return</td><td class="">summit (2750,304,-300)</td><td class="">summit platform, rock chart, switchback funicular, surface return road</td></tr>
-</tbody></table>
-<p class="small muted">The mountain envelope projects over the underground zones on the map. This is intentional vertical overlap, not a scope collision.</p>
-</section>
-<section class="content" id="z02">
-  <div class="status-banner">Siting study — not build authorization</div>
-  <div class="section-head">
-    <span class="eyebrow">08 / Z02 — Gateway Approach and the Empty Eight</span>
-    <h2>The transition zone, and the terminal built for a city that does not exist yet</h2>
-  </div>
-<p class="lead">Ravensreach remains the current world's canonical historic town. The separate 33-schematic "old town" inherited from Masterplan 04 is removed from this program; no replica of Ravensreach is proposed. Z02 instead becomes the transition between the current world and the Combined Complex.</p>
-<figure class="wide"><img src="maps/gateway-approach-and-terminal-plan.png" alt="Z02 Gateway Approach and terminal plan"><figcaption>Fig. 8.1 — Layer-separated Z02 plan: the two surface stops, the concealed subway branch, and the eight-track expansion terminal.</figcaption></figure>
-<h3>Surface passenger rail</h3>
-<p>The study centerline runs east–west near z=-250 toward Houston. <strong>This is no longer the western end of the line</strong> — the East Corridor carries the railway west from the Gateway all the way to MainStreet East, so GA-S1 and GA-S2 are intermediate stops on a through route rather than the first two stations of an isolated shuttle.</p>
-<table><thead><tr><th>ID</th><th>Study center</th><th>Initial role</th></tr></thead><tbody>
-<tr><td class="">GA-S1 Gateway Gardens</td><td class="">(1640,~,-250)</td><td class="">first stop after the Gateway; landscape and future parcel access</td></tr>
-<tr><td class="">GA-S2 Approach Commons</td><td class="">(1920,~,-250)</td><td class="">eastern Z02 stop before Grand Avenue and Houston</td></tr>
-</tbody></table>
-<h3>Z02-U1 — the Gateway Expansion Terminal</h3>
-<p>Officially the <strong>Gateway Expansion Terminal</strong>; its in-world nickname, revealed only after entry, is <strong>The Empty Eight</strong> — a monumental, fully finished but initially quiet subway terminal built for a city larger than the one that exists.</p>
-<div class="spec-grid">
-<div class="key">Shell</div><div class="val">x 1600…1940, z -590…-430, Y 40…63; at least eight surveyed solid-cover blocks below the final surface</div>
-<div class="key">Rail plane</div><div class="val">eight north–south track centerlines at Y≈48; fan throat at z -430…-450</div>
-<div class="key">Platforms</div><div class="val">8, approximately 7×101 blocks over z -470…-570; one per track</div>
-<div class="key">Future network</div><div class="val">four paired line provisions; every north stub ends at a separately owned, sealed interface wall</div>
-<div class="key">Mall / concourse</div><div class="val">two oversized side gallerias, perimeter mezzanine, four ticket-hall boxes, 24 empty retail shells</div>
-<div class="key">Life safety</div><div class="val">two independent protected egress routes, smoke-separated stairs and lifts, ventilation, platform barriers</div>
-</div>
-<div class="callout cool"><p><strong>No Z02 tunnel connects to PassageWay, SubTropolis, Houston's pedestrian tunnels or Cheyenne in this release.</strong> Those systems keep separate ownership and security boundaries. A future project may open one or more terminal stubs only through an exact interface contract, fresh source snapshot, guarded operation, rollback and bidirectional route QA.</p></div>
-</section>
-<section class="content" id="corridor">
-  <div class="status-banner">Siting study — not build authorization</div>
-  <div class="section-head">
-    <span class="eyebrow">09 / C1 — The East Corridor</span>
-    <h2>One reservation, four modes, one survey</h2>
-  </div>
-<p class="lead">The primary connection is a single multimodal corridor <strong>1,277 blocks</strong> long, running from a terminal roundabout east of MainStreet America to the Gateway. Road and rail are designed together, in one cross-section, on one alignment, under one survey.</p>
-<p>The corridor deliberately <strong>swings south of the Data District</strong>. The district's southern boundary is z=-172 (<span class="kbd">Te Ia District Shared Grid</span>, x 1000…1300), with Worker Commons at z=-189 and the disc golf course at z=-201. Running south of those and returning north-east to the Gateway keeps the corridor clear of every cataloged surface feature while giving the district a proper interchange instead of a road that dead-ends against it.</p>
-<h3>Alignment</h3>
-<p>Only orthogonal legs and exact 45-degree diagonals are used — the only geometry that reads as engineered on a 1-block grid.</p>
-<table><thead><tr><th>Point</th><th>Coordinate</th><th>Role</th><th class="right">Curve radius</th></tr></thead><tbody>
-<tr><td class="">W-TERM</td><td class="">(430,~,80)</td><td class="">west terminal roundabout center</td><td class="num-r">—</td></tr>
-<tr><td class="">PI-1</td><td class="">(905,~,80)</td><td class="">northward deflection</td><td class="num-r">140</td></tr>
-<tr><td class="">PI-2</td><td class="">(1065,~,-80)</td><td class="">southward deflection</td><td class="num-r">120</td></tr>
-<tr><td class="">PI-3</td><td class="">(1330,~,-80)</td><td class="">northward deflection</td><td class="num-r">140</td></tr>
-<tr><td class="">E-TERM</td><td class="">(1550,~,-300)</td><td class="">Gateway terminal roundabout center</td><td class="num-r">—</td></tr>
-</tbody></table>
-<table><thead><tr><th>Leg</th><th class="right">Path length</th><th>Function</th></tr></thead><tbody>
-<tr><td class="">W-TERM → PI-1</td><td class="num-r">475</td><td class="">west tangent; carries the terminal speed transition</td></tr>
-<tr><td class="">PI-1 → PI-2</td><td class="num-r">226</td><td class="">45-degree descent past the C01 East stack</td></tr>
-<tr><td class="">PI-2 → PI-3</td><td class="num-r">265</td><td class="">district tangent; carries the Data District interchange</td></tr>
-<tr><td class="">PI-3 → E-TERM</td><td class="num-r">311</td><td class="">45-degree climb; 211 blocks of straight approach into the Gateway circle</td></tr>
-</tbody></table>
-<p>Three curve vertices against a budget of four. Each is chamfered with a spiral–arc–spiral staircase (<span class="kbd">1:16 -&gt; 1:12 -&gt; 1:8 -&gt; 1:6 -&gt; 1:8 -&gt; 1:12 -&gt; 1:16</span>), never a raw 45-degree kink. Vertices deflecting north put the railway on the inside of the curve, so those use R=140 to keep the rail radius at 120.</p>
-<h3 class="pagebreak">Cross-section</h3>
-<p>Offsets are from the highway median barrier centerline; north is -Z. The railway sits on the <strong>north flank</strong>, not in the median, so platforms face the pedestrian route and the district is reached at grade with no station structures.</p>
-<table class="tight"><thead><tr><th>Element</th><th class="right">Blocks</th><th>Offset</th></tr></thead><tbody>
-<tr><td>north boundary fence/hedge/ditch</td><td class="num-r">1</td><td class="num-r">-36</td></tr>
-<tr><td>protected pedestrian route</td><td class="num-r">3</td><td class="num-r">-35 … -33</td></tr>
-<tr><td>pedestrian/rail protective buffer</td><td class="num-r">2</td><td class="num-r">-32 … -31</td></tr>
-<tr><td>rail reservation, fenced</td><td class="num-r">13</td><td class="num-r">-30 … -18</td></tr>
-<tr><td>vehicle restraint system + verge <span class="small muted">— must be a barrier, not a boundary fence; clear zone is not met at this width</span></td><td class="num-r">3</td><td class="num-r">-17 … -15</td></tr>
-<tr><td>highway outside shoulder north</td><td class="num-r">3</td><td class="num-r">-14 … -12</td></tr>
-<tr><td>lane W2 westbound outer</td><td class="num-r">4</td><td class="num-r">-11 … -8</td></tr>
-<tr><td>lane W1 westbound inner</td><td class="num-r">4</td><td class="num-r">-7 … -4</td></tr>
-<tr><td>inside shoulder north</td><td class="num-r">2</td><td class="num-r">-3 … -2</td></tr>
-<tr><td>median + barrier</td><td class="num-r">3</td><td class="num-r">-1 … 1</td></tr>
-<tr><td>inside shoulder south</td><td class="num-r">2</td><td class="num-r">2 … 3</td></tr>
-<tr><td>lane E1 eastbound inner</td><td class="num-r">4</td><td class="num-r">4 … 7</td></tr>
-<tr><td>lane E2 eastbound outer</td><td class="num-r">4</td><td class="num-r">8 … 11</td></tr>
-<tr><td>highway outside shoulder south</td><td class="num-r">3</td><td class="num-r">12 … 14</td></tr>
-<tr><td>utility reserve</td><td class="num-r">3</td><td class="num-r">15 … 17</td></tr>
-<tr><td>drainage ditch / south boundary</td><td class="num-r">2</td><td class="num-r">18 … 19</td></tr>
-</tbody></table>
-<p>Reservation 56 blocks; slope and working easement a further 12 blocks each side; <strong>total land take 80 blocks</strong>. Both carriageways drain as a single southward crossfall — no crown — because the ditch is on the south side only. The rail formation drains north into its own cess drain.</p>
-<div class="callout"><h4>The barrier is not optional</h4><p>The 3-block band at offset -17…-15 must contain a <strong>vehicle restraint barrier, not a boundary fence</strong>. At 56 blocks the formal clear zone is not met on either flank, and a highway running beside a railway inside a shared reservation requires positive protection against vehicle incursion.</p></div>
-<h3>Design speed</h3>
-<p>Declared on the plan as <strong>mainline 85 km/h, connector roads 70 km/h</strong>. This is not a compromise. In-world travel speeds are horse ~52 km/h and minecart ~29 km/h, which lands in the "urban ≤50 mph" tier of real practice, so that tier is built at true 1:1 rather than scaled down from a motorway standard. Only storage and queueing elements — deceleration lanes, auxiliary lanes, weaving lengths — take a 0.6 longitudinal factor. Gores, noses, taper ratios and the cross-section take no factor at all.</p>
-<p>Sight distance is replaced by render distance: no curve, crest or structure may conceal the running surface within 128 blocks, and gore points must be visible from 160 blocks.</p>
-<h3>Verified clearance</h3>
-<div class="verified"><h4>Checked against every catalog record</h4><table class="tight"><tbody>
-<tr><td class="">Surface features intersecting the reservation</td><td class=""><strong>none</strong></td></tr>
-<tr><td class="">Nearest surface feature</td><td class="">Te Ia District Shared Grid — <strong>50 blocks</strong></td></tr>
-<tr><td class="">Nearest subsurface feature</td><td class="">C01 East L1–L3 — 18 blocks in plan, ~17 blocks below grade</td></tr>
-<tr><td class="">Crossed subsurface feature</td><td class="">C01 Owner Tunnel Detour — y -45…-37, ~110 blocks of cover</td></tr>
-<tr><td class="">Records tested</td><td class="">1,215</td></tr>
-</tbody></table><p class="small muted">Machine-generated record: <span class="kbd">corridor-clearance.json</span>. A database non-overlap check is not a terrain, hydrology, entity, ownership or chunk-generation clearance.</p></div>
-<div class="callout cream"><h4>Two load-bearing constraints</h4><ul>
-<li><strong>C01 East (x 700…900, z -140…-5, y 24…53) is contested under ISSUE-002.</strong> The corridor clears it by 18 blocks in plan and passes ~17 blocks above it. Highway embankment loading over a contested stack is not authorized by a non-overlap result; the west tangent's final grade needs an explicit structural review against whatever ISSUE-002 resolves to.</li>
-<li><strong>The C01 Owner Tunnel Detour is crossed, not avoided.</strong> Cover is ample, but the corridor sits directly over owner infrastructure for a long run of the west tangent.</li>
-</ul></div>
-</section>
-<section class="content" id="interchange">
-  <div class="status-banner">Siting study — not build authorization</div>
-  <div class="section-head">
-    <span class="eyebrow">10 / C1a — Data District Interchange</span>
-    <h2>One interchange, because two will not fit</h2>
-  </div>
-<p class="lead">The district tangent is 265 blocks. The minimum gore-to-gore spacing for an off-off or on-on pair is 305 blocks, so two independent interchanges are <strong>not a compressed design but a geometric impossibility</strong> — the whole tangent is shorter than the single separation those pairs require. The only spacing the tangent can satisfy is off-on at 152 blocks, which is precisely the signature of one interchange's own ramp pair.</p>
-<h3>Form: two-quadrant partial cloverleaf, all four ramps in the southern quadrants</h3>
-<p>With right-hand traffic the westbound carriageway is the northern one, so its right-side ramps would develop north into the railway and pedestrian route; sending all ramps south keeps the north flank undisturbed. Sending every ramp into the open southern quadrants keeps the north flank undisturbed, which is the entire reason the railway is on that flank.</p>
-<table><thead><tr><th>Element</th><th>Value</th></tr></thead><tbody>
-<tr><td class="">Crossroad bridge</td><td class="">x≈1180, clear-span the full 56-block reservation</td></tr>
-<tr><td class="">Ramp quadrants</td><td class="">all four, south of the mainline</td></tr>
-<tr><td class="">Structures</td><td class=""><strong>1</strong></td></tr>
-<tr><td class="">Exit taper</td><td class="">48 blocks at 1:12</td></tr>
-<tr><td class="">Painted nose → physical nose</td><td class="">12 blocks</td></tr>
-<tr><td class="">Nose length to a 3-block hatch</td><td class="">40 blocks</td></tr>
-<tr><td class="">Acceleration lane, built as a lane gain</td><td class="">80 blocks</td></tr>
-<tr><td class="">Accel : decel ratio</td><td class="">2:1 — preserve it</td></tr>
-<tr><td class="">Loop radius</td><td class="">25–30 blocks</td></tr>
-<tr><td class="">Exit number</td><td class="">EXIT 11</td></tr>
-</tbody></table>
-<div class="defect"><h4>The ramp chainage does not quite fit</h4><p>A full sequence needs about <strong>296 blocks</strong>; the district tangent is <strong>265</strong>. The acceleration lane runs onto the pi-3 curve rather than finishing on straight tangent. That is acceptable for a lane gain but it is a real 31-block shortfall, not a rounding error. Resolution: accept the auxiliary lane on the curve, or lengthen the tangent at PI-2 at detailed design.</p><p><strong>The gore spacings themselves must not be compressed to make it fit</strong> — 305 off-off/on-on, 152 off-on, 488 service-to-service weave. These are 1:1 values; shortening them is what makes an interchange read as amateur from above.</p></div>
-<h3>Signing and construction</h3>
-<p>Advance signing runs as a rhythm of gantries at <strong>128, 88, 48 blocks</strong> before the painted nose, with the gore sign standing inside the hatched triangle. Spacing must be identical in both directions and at every interchange — uniformity is what makes the corridor read as one road.</p>
-<p>Each taper is a repeating module of (r-1) straight blocks plus one diagonal, risers distributed evenly. Bunching two diagonals and then running twenty-two straight is visible instantly from above.</p>
-<p>North of the bridge, the district spine runs 56 blocks to the boundary at z=-172 and splits to serve 2 separate entry points into the shared grid — delivering two district access points from a single mainline access.</p>
-<div class="callout"><p><strong>No left-hand exits anywhere on the corridor.</strong></p></div>
-<p class="small muted">the sourced recommendation for a constrained NORTH-side interchange was a tight urban diamond plus a collector-distributor road, because only 32-52 blocks of cross-depth were assumed available. Moving the mainline south to z=-80 and sending all ramps into the uncataloged southern quadrants removes that constraint, which makes a two-quadrant partial cloverleaf viable and avoids the rail conflict. The two-district-access-point outcome of the C-D scheme is preserved by splitting the spine north of the bridge.</p>
-</section>
-<section class="content" id="termini">
-  <div class="status-banner">Siting study — not build authorization</div>
-  <div class="section-head">
-    <span class="eyebrow">11 / C1b / C1c — The Two Termini</span>
-    <h2>How the freeway ends, twice</h2>
-  </div>
-<h3>C1b — west terminus, MainStreet East</h3>
-<p class="lead">The freeway ends in a single terminal roundabout, inscribed circle diameter 60 blocks, <strong>zero structures</strong>, centered (430,~,80). Four legs sit roughly 47 blocks apart around the ring.</p>
-<div class="callout cream"><h4>The road class must step down, not fall off a cliff</h4><p>Freeway discharging straight into local streets skips two classes (expressway and collector); the most visible hierarchy error from above. The ladder is built inside the footprint already available:</p><div class="code">freeway (475-block approach) &rarr; arterialized section (last 120 blocks) &rarr; terminal roundabout &rarr; collector spine (100 blocks) &rarr; local streets</div><p>The last <strong>120 blocks</strong> of the approach drop to a 28–32 block arterial section. Kerb begins 120 blocks out — walk it and you should step up. That kerb is the single strongest threshold cue on the corridor.</p></div>
-<table class="tight"><thead><tr><th>Roundabout element</th><th class="right">Blocks</th></tr></thead><tbody>
-<tr><td class="">Inscribed circle diameter</td><td class="num-r">60</td></tr>
-<tr><td class="">Circulatory carriageway</td><td class="num-r">10</td></tr>
-<tr><td class="">Truck apron</td><td class="num-r">2</td></tr>
-<tr><td class="">Central island diameter</td><td class="num-r">36</td></tr>
-<tr><td class="">Entry deflection, over the last 20 blocks</td><td class="num-r">≥3</td></tr>
-<tr><td class="">Minimum angle between legs</td><td class="num-r">60°</td></tr>
-</tbody></table>
-<p class="small muted">Raised and mounded 3-5 blocks, planted; must fully block the sightline across the circle - a flat island defeats the junction. Deflection, not approach length, is the active ingredient in speed reduction.</p>
-<h4>The three local roads</h4>
-<table class="tight"><thead><tr><th>Road</th><th>Class</th><th>To</th><th>Basis</th></tr></thead><tbody>
-<tr><td>L1 — Ravensreach link</td><td>local street, 16b</td><td class="num-r">(470,~,-232)</td><td>✓ cataloged<br><span class="small muted">east end of cataloged Te Ia Ravensreach Dirt Road (x=130..470, z=-248..-217), continuing west to Service Cross (x=-84..220, z=-218, y=64)</span></td></tr>
-<tr><td>L2 — MainStreet East gate</td><td>collector, 22b</td><td class="num-r">(305,~,80)</td><td><strong>✗ provisional</strong><br><span class="small muted">PROVISIONAL - no cataloged gate exists on the campus east face; requires a new surveyed gate fronting the Earth-covered east operations complex (x=100..300, z=70..235)</span></td></tr>
-<tr><td>L3 — Observatory link</td><td>local street, 16b</td><td class="num-r">(362,~,165)</td><td>✓ cataloged<br><span class="small muted">cataloged Observatory Owner East Ascent (road, x=348..377, z=150..180, y=-46..112)</span></td></tr>
-</tbody></table>
-<div class="defect"><h4>Two open items at this terminus</h4><ul><li><strong>L2 has no cataloged gate.</strong> The campus east flank has gates at GATE-A01-EAST (135,64,172), GATE-L01-EAST (220,64,-250) and the C01 East Edge Road boundary gate — none on the face this road would meet. Do not treat the white picket campus fence at x=305 as an interface until a gate is surveyed and approved.</li><li><strong>Leg spacing.</strong> As drawn, L2 departs due west and L3 south-west, only about 40 degrees apart; roundabouts degrade below 60–70 degrees. L3 must leave the ring on a due-south bearing and bend west only after it clears the junction.</li></ul></div>
-<h3 class="pagebreak">C1c — Gateway terminus</h3>
-<p>The freeway dies into a second terminal roundabout, ICD 60, centered on the Gateway anchor (1550,~,-300), <strong>with the Gateway Pavilion standing in the central island</strong>. Zero structures.</p>
-<p>Legs: freeway from the south-west, Z02 spine east toward Grand Avenue, north landscape road, south leg to the rail station forecourt.</p>
-<div class="callout"><p>The 311-block diagonal from PI-3 is the speed-transition section, giving 211 blocks of straight approach into the circle. That is 39 blocks short of the 250-block preference. The approach is 39 blocks short of preference; close it at detailed design by lengthening the diagonal or starting the downgrade before pi-3.</p></div>
-<p class="small muted">the sourced primary recommendation for a three-leg end-of-route T was a compact trumpet with one structure. The roundabout is the sanctioned alternative where the terminus is a destination forecourt rather than a junction onto a continuing route, which is the case here: the freeway ends and Z02 continues as a civic street network, not a through road. It also costs zero structures and matches the west terminus. Revisit if Z02 ever becomes a through route.</p>
-</section>
-<section class="content" id="rail">
-  <div class="status-banner">Siting study — not build authorization</div>
-  <div class="section-head">
-    <span class="eyebrow">12 / C1d — The Passenger Railway</span>
-    <h2>The first railway in this world</h2>
-  </div>
-<p class="lead">The accepted catalog contains 1,215 features and no rail of any kind; the west end is a true terminus, not a tie-in. The line runs the full corridor on the north flank and continues east into Z02, joining the surface passenger alignment already defined there.</p>
-<table><thead><tr><th>Station</th><th>Coordinate</th><th>Platforms</th><th>Role</th></tr></thead><tbody>
-<tr><td><strong>MS-1</strong> MainStreet East</td><td class="num-r">(430,~,80)</td><td>2 side, 32b</td><td>terminus and road interchange</td></tr>
-<tr><td><strong>DD-1</strong> Data District</td><td class="num-r">(1240,~,-80)</td><td>2 side, 32b</td><td>at-grade district access with no highway crossing</td></tr>
-<tr><td><strong>GW-1</strong> Gateway</td><td class="num-r">(1550,~,-300)</td><td>2 side, 32b</td><td>Z01 road/rail transfer on the roundabout south leg</td></tr>
-<tr><td class="">GA-S1 Gateway Gardens</td><td class="">(1640,~,-250)</td><td class="">2 side, 48b</td><td class="">existing Z02 stop</td></tr>
-<tr><td class="">GA-S2 Approach Commons</td><td class="">(1920,~,-250)</td><td class="">2 side, 48b</td><td class="">existing Z02 stop</td></tr>
-<tr><td class="">Houston terminus</td><td class="">(2180,~,-250)</td><td class="">—</td><td class="">Z04 arrival</td></tr>
-</tbody></table>
-<div class="callout cool"><h4>Why the north flank, and not the median</h4><p>DD-1 is the whole argument. A median alignment would put the only station with a real catchment on the far side of two carriageways, forcing every district passenger to cross the highway, and would need a vertical circulation core at all three stations — six structures built purely to undo a decision that did not have to be made. On the north flank, DD-1's platform sits about 56 blocks of level, at-grade walk from the district frontage with no highway crossing at all.</p></div>
-<h3>Line standard</h3>
-<div class="spec-grid">
-<div class="key">Maximum gradient</div><div class="val">1:8</div>
-<div class="key">Preferred gradient</div><div class="val">1:12</div>
-<div class="key">Powered rails, flat</div><div class="val">1 per 38 blocks</div>
-<div class="key">Powered rails, climbing</div><div class="val">1 per 4 blocks</div>
-<div class="key">Station departure</div><div class="val">3 consecutive powered rails</div>
-<div class="key">Minimum station tangent</div><div class="val">62 blocks, dead straight</div>
-</div>
-<p><strong>Diagonals are built as a coarse staircase, never a fine sawtooth.</strong> A fine sawtooth cannot be powered at all because powered rails cannot be curved. Straight segments of four or more blocks between jogs both take powered rails and read as a broad-radius curve rather than a stair.</p>
-<div class="callout dark"><h4>Staged delivery — the rail is foreclosed by default</h4><p>If the highway is built first and these are not right on day one, the railway becomes unbuildable at that point permanently:</p><ul>
-<li>Reserve the 13-block rail strip at the north edge and leave it void for the whole 1,277 blocks</li>
-<li>Every structure crossing the corridor must clear-span the full rail reservation; no piers inside the envelope, ever <strong>(highest consequence)</strong></li>
-<li>Build those crossings to rail vertical clearance (7 blocks above the future rail plane to running surface), not road clearance <strong>(highest consequence)</strong></li>
-<li>Fix the highway barrier line at its ultimate offset now</li>
-<li>Grade the strip to final formation level and hold the rail vertical alignment across the whole corridor</li>
-<li>Lay the utility reserve and empty ductbank now</li>
-<li>Mark the reservation with a visible fence line during the interim</li>
-</ul><p>Items two and three are the highest-consequence entries in this masterplan. They are cheap now and unrecoverable later.</p></div>
-</section>
-<section class="content" id="skew">
-  <div class="status-banner">Siting study — not build authorization</div>
-  <div class="section-head">
-    <span class="eyebrow">13 / C1e — The Grand Avenue Skew</span>
-    <h2>A defect that only appears when you plan both modes together</h2>
-  </div>
-<div class="defect"><h4>Defect</h4><p>Grand Avenue (1750,-300)-&gt;(2180,-240) crosses the flat z=-250 rail at approximately (2108,-250) at a 7.9-degree skew; a deck spanning the 13-block rail reservation at that angle would be about 95 blocks long</p></div>
-<p class="lead">Planning the two modes together surfaced a defect in the existing Z03 alignment that neither the road plan nor the rail plan had caught on its own. A bridge deck spanning the rail reservation at 7.9 degrees would be about <strong>95 blocks long</strong>. That is not a crossing, it is a viaduct running alongside the railway.</p>
-<h3>Fix</h3><p>Insert an orthogonal crossing node - bring the avenue onto a north-south run for about 30 blocks centered on x=2108, cross at 90 degrees, resume the shallow diagonal either side. The kink is invisible on the ground and reads as a deliberate civic gesture — a square where the avenue meets the railway.</p>
-<table><thead><tr><th>Crossing angle</th><th class="right">Clear span over the 13-block reservation</th><th>Verdict</th></tr></thead><tbody>
-<tr><td class="">90 degrees</td><td class="num-r">17 blocks</td><td class=""><strong>adopt</strong></td></tr>
-<tr><td class="">45 degrees</td><td class="num-r">~23 blocks</td><td class="">acceptable</td></tr>
-<tr><td class="">7.9 degrees as currently drawn</td><td class="num-r">~95 blocks</td><td class="">do not build</td></tr>
-</tbody></table>
-<h3>Road over rail</h3><p>The railway is the through, gradient-constrained mode on a fixed plane; breaking it would cost 112+ blocks of rail ramp, create a 7-block sump, and destroy the flat rail plane.</p>
-<table><thead><tr><th>Level</th><th class="right">Y</th></tr></thead><tbody>
-<tr><td class="">Top of rail, held flat and unbroken</td><td class="num-r">72</td></tr>
-<tr><td class="">Clear air above rail</td><td class="num-r">73–77</td></tr>
-<tr><td class="">Bridge soffit</td><td class="num-r">78</td></tr>
-<tr><td class="">Avenue running surface</td><td class="num-r">79</td></tr>
-</tbody></table>
-<p>Approach embankments at 1:8 run 56 blocks each side, so the works occupy roughly x 2044…2172 along the avenue. The rail staircase must finish by x≈2060 so the structure sits on dead-straight tangent.</p>
-<div class="callout"><p><strong>Clear-span the whole reservation; no piers inside the rail envelope.</strong> A 17-block clear span is trivial to build and this is the one rule that, if broken, cannot be undone later.</p></div>
-</section>
-<section class="content" id="otherconn">
-  <div class="status-banner">Siting study — not build authorization</div>
-  <div class="section-head">
-    <span class="eyebrow">14 / C2–C4</span>
-    <h2>Portal, PassageWay and the concealed subway provision</h2>
-  </div>
-<div class="soul-card"><span class="site-tag">C2</span><h3>Optional visitor portal</h3><p>The current owner portal gallery around (240,~,155) can provide an optional fast visitor transfer to Z01. The gallery is accepted architecture, but its rooms are <strong>not evidence of active portals</strong>. Portal activation requires a selected mechanism, symmetric landing safety, permission review and a tested return path. The map shows this as a purple logical link, not physical distance.</p></div>
-<div class="soul-card"><span class="site-tag">C3</span><h3>Future PassageWay interchange</h3><p>Reserve, but do not build, an underground interchange between the existing eastern network and the SubTropolis public lobby. The exact current endpoint is intentionally unset: C01 east is contested under ISSUE-002, the Iowa annex coordinate is a centroid rather than a door, and no current feature should be treated as a tunnel interface without an exact survey. Public arrival goes to SubTropolis and Houston; Cheyenne remains behind its service checkpoint and blast-door sequence.</p></div>
-<div class="soul-card"><span class="site-tag">C4</span><h3>Gateway Approach subway provision</h3><p>The internal connection from the Z02 surface railway through GA-J1 to Z02-U1. It is an expansion seed, not a current regional subway. The branch, descent, terminal throat, eight track bays and sealed north stubs share one zone owner but remain separate release subscopes, so an underground failure cannot force rollback of the operating surface railway.</p></div>
-</section>
-<section class="content" id="journey">
-  <div class="status-banner">Siting study — not build authorization</div>
-  <div class="section-head">
-    <span class="eyebrow">15 / Visitor Sequence</span>
-    <h2>One continuous, understandable journey</h2>
-  </div>
-<ol class="stages">
-<li><strong>Join the East Corridor at MainStreet East</strong><p>By road from Ravensreach, the campus east gate or the Observatory link — or board the train at MS-1.</p></li>
-<li><strong>Run east past the Data District interchange</strong><p>Then north-east on the climb, arriving at the Gateway Pavilion standing in its terminal circle.</p></li>
-<li><strong>Walk or ride the landscaped Gateway Approach</strong><p>Using Gateway Gardens and Approach Commons as passenger stops.</p></li>
-<li><strong>Optionally discover the unadvertised siding</strong><p>And descend into the Empty Eight expansion terminal.</p></li>
-<li><strong>Follow Grand Avenue into the Houston-inspired city</strong><p>Crossing the railway on the new orthogonal bridge node.</p></li>
-<li><strong>Descend through the public shaft and observation landing</strong><p>To the SubTropolis chamber.</p></li>
-<li><strong>Enter SubTropolis and its tenant avenues</strong><p>Then transfer to the controlled service rail.</p></li>
-<li><strong>Cross the limestone/granite contact at the terrane plaque</strong><p>Where the wall material visibly changes.</p></li>
-<li><strong>Pass the 25-ton blast-door threshold into Cheyenne</strong><p>Through the J-curve and the spring-mounted buildings.</p></li>
-<li><strong>Ride the switchback funicular to the summit</strong><p>Then return by the mountain road to the city and gateway.</p></li>
-</ol>
-<p class="pull">The material progression is current-world history → landscaped arrival → monumental expansion terminal or Houston modern → limestone industrial → granite military → open summit.</p>
-</section>
-<section class="content" id="delivery">
-  <div class="status-banner">Siting study — not build authorization</div>
-  <div class="section-head">
-    <span class="eyebrow">16 / Delivery Sequence and Gates</span>
-    <h2>Six phases, each with an exit gate</h2>
-  </div>
-<h3>Phase 0 — prove the site</h3><ul>
-<li>Take a fresh immutable saved-world snapshot.</li>
-<li>Render a new top-down terrain atlas covering at least x 1200…3200, z -1200…600.</li>
-<li>Perform block, height, biome, water, tree, structure, entity, protected-feature, ownership and chunk-generation censuses.</li>
-<li>Confirm the proposed reservation is actually in the same dimension and world border.</li>
-<li>Freeze a single coordinate registry and local-to-world transform.</li>
-<li>Decide whether the vertical compression is acceptable; if not, switch to the separate-world fallback.</li>
-</ul>
-<p class="small"><strong>Exit gate:</strong> Selected survey report, zero undisclosed current-feature intersections, surveyed surface plane, and owner approval of the same-world vertical adaptation.</p>
-<h3>Phase 1 — interfaces and enabling works</h3><ul>
-<li>Design the exact C1 centerlines, the three curve chamfers and both terminal roundabouts.</li>
-<li><strong>Freeze the 56-block cross-section, including the 13-block rail reservation, before any earthwork.</strong> Every crossing structure must be sized to clear-span it at rail vertical clearance from the first build.</li>
-<li>Fix the Data District interchange crossroad bridge position and all four southern ramp quadrants.</li>
-<li>Resolve the L2 MainStreet east campus gate — survey and approve a real gate, or delete the road.</li>
-<li>Insert the orthogonal crossing node where Grand Avenue meets the railway near (2108,~,-250).</li>
-<li>Freeze the Z02 surface alignment, both stop footprints, GA-J1 and the subway release boundary.</li>
-<li>Compile the zone ownership/interface contract before any block operation.</li>
-</ul>
-<p class="small"><strong>Exit gate:</strong> Bidirectional normal-walk pilot, drainage and grade review, no protected conflicts, exact rollback, and matched before/after evidence.</p>
-<h3>Phase 2 — deep shells first</h3><ul>
-<li>Excavate and line the Z02-U1 terminal, branch, egress, ventilation and eight sealed future-line interfaces before placing the surface landscape above them.</li>
-<li>Excavate and line the public shaft lower works and SubTropolis chamber.</li>
-<li>Construct the service/contact route with rail-valid grades.</li>
-<li>Build the Cheyenne chamber shell and its independent construction access.</li>
-<li>Preserve solid buffers between public, tenant, utility and secure zones.</li>
-</ul>
-<p class="small"><strong>Exit gate:</strong> Structural envelopes, headroom, fluids, lighting, egress and route graphs pass offline and live review before surface loads are added.</p>
-<h3>Phase 3 — surface framework</h3><ul>
-<li>Form the continuous mountain and its drainage without a ravine.</li>
-<li>Build the corridor formation, both terminal roundabouts and the district interchange.</li>
-<li>Build the Gateway Approach landscape, GA-S1 and GA-S2, Grand Avenue, the Houston street grid and the gateway public realm.</li>
-<li>Build the summit return geometry as switchbacks, not the obsolete vertical line.</li>
-</ul>
-<p class="small"><strong>Exit gate:</strong> Terrain tie-ins, no unintended water diversion, surface route continuity, and verified non-intersection with all deep shells.</p>
-<h3>Phase 4 — fit-out and identity</h3><ul>
-<li>Fit out the Empty Eight's eight platforms, monumental concourse, mall shells, discovery sequence and life-safety systems.</li>
-<li>Fit out SubTropolis tenant zones and Houston food courts.</li>
-<li>Install Cheyenne's 15 spring-mounted buildings, Battle Cab, chapel, reservoir, inn, blast doors and signs.</li>
-<li>Install the terrane plaque only after its final geological wording is reviewed.</li>
-</ul>
-<p class="small"><strong>Exit gate:</strong> Every occupied floor has safe circulation, every access class is enforced, protected block entities are migrated transactionally.</p>
-<h3>Phase 5 — transport and commissioning</h3><ul>
-<li>Commission the East Corridor as one system: highway, both terminal roundabouts, the district interchange, the pedestrian route, and the railway with MS-1, DD-1 and GW-1.</li>
-<li><strong>Verify no structure anywhere on the corridor has a pier inside the rail envelope or a soffit below rail vertical clearance.</strong></li>
-<li>Commission both Z02 surface stops, then the concealed branch and terminal as a separate operational and rollback scope.</li>
-<li>Commission the public shaft, internal passenger rail, service rail, switchback funicular and return road.</li>
-<li>Optionally activate C2 only after portal safety and permissions pass. Keep C3 reserved.</li>
-</ul>
-<p class="small"><strong>Exit gate:</strong> Complete bidirectional no-dig/no-tower walks, powered-door tests, minecart/funicular tests, entity clearance, final immutable snapshot, exact rollback preflight, database import, maps and matched media.</p>
-<h3>Packaging and release rules</h3><ul>
-<li>One canonical compiler must own all transformed coordinates.</li>
-<li>Every physical cell has one canonical zone owner; shared seams require exact interface contracts.</li>
-<li>Generate exact one-cell guarded forward and rollback operations from a fresh immutable source snapshot.</li>
-<li>Use scripts/rcon_runner.py --strict-noop --report &lt;json&gt; for any separately authorized release.</li>
-<li>Do not replay accepted Town Expansion or redevelopment operation files.</li>
-<li>Release deep works, surface works, fit-out and transport as separately reviewable packages with an explicit ordered transaction ledger.</li>
-<li>A planned feature remains planned until immutable post-state verification, route QA, media QA and database import all pass.</li>
-<li>Never infer buildable land from absent database records, black map pixels or unloaded chunks.</li>
-</ul>
-</section>
-<section class="content" id="authorities">
-  <div class="status-banner">Siting study — not build authorization</div>
-  <div class="section-head">
-    <span class="eyebrow">17 / Design Authorities</span>
-    <h2>Where the corridor geometry comes from</h2>
-  </div>
-<p class="lead">The East Corridor geometry is derived from real published standards rather than invented. Where a figure is compressed, the compression rule is stated with it.</p>
-<table class="srcs"><thead><tr><th>Topic</th><th>Authority</th></tr></thead><tbody>
-<tr><td class="">Interchange spacing, ramp gore spacing, weaving minimums, C-D roads</td><td class="">WSDOT Design Manual M 22-01, Ch. 1360 (Exhibits 1360-2, 1360-3, 1360-26)</td></tr>
-<tr><td class="">Interchange type selection, LOS by form, cost and ROW ranking</td><td class="">VTRC 99-R15, <em>Guidelines for Preliminary Selection of the Optimum Interchange Type</em></td></tr>
-<tr><td class="">Interchange forms, frontage roads, DDI geometry</td><td class="">TxDOT Roadway Design Manual 14.10, 15.3, 15.3.2; TSP Manual 11.2.1</td></tr>
-<tr><td class="">Alternative intersections and interchanges</td><td class="">FHWA-HRT-09-060 (AIIR); DDI Informational Guide 2nd ed. (TRB)</td></tr>
-<tr><td class="">Roundabout geometry, entry flares, splitter islands</td><td class="">NCHRP Report 672</td></tr>
-<tr><td class="">Speed-change lanes, taper ratios, gore and nose geometry</td><td class="">AASHTO Green Book; Caltrans HDM 504; UK DMRB CD 122</td></tr>
-<tr><td class="">Advance signing sequence and exit numbering</td><td class="">MUTCD 11th ed. §2E</td></tr>
-<tr><td class="">Functional classification hierarchy, lane widths, access density</td><td class="">AASHTO Green Book; NACTO; Levinson on arterial spacing</td></tr>
-<tr><td class="">Freeway terminus and gateway threshold treatments</td><td class="">NCHRP Report 737</td></tr>
-<tr><td class="">Double-track reservation, track centers, cess, structure gauge</td><td class="">Sound Transit design criteria; UTA DCM §3.3–3.4, Table 8-1; TCRP 57 §3.4</td></tr>
-<tr><td class="">Rail-in-highway-median precedent and failure modes</td><td class="">CTA Blue/Red Line expressway-median branches; LA Metro C Line in the I-105 median</td></tr>
-<tr><td class="">Emergency egress from constrained rail corridors</td><td class="">NFPA 130</td></tr>
-</tbody></table>
-<div class="callout cool"><h4>Design speed is declared, not scaled</h4><p>The corridor is built to the "urban ≤50 mph" tier at true 1:1 because in-world travel speeds — horse ~52 km/h, minecart ~29 km/h — genuinely sit in that tier. A 0.6 longitudinal factor is applied only to storage and queueing elements. Gores, noses, taper ratios and the cross-section take no factor.</p></div>
-</section>
-<section class="content" id="decisions">
-  <div class="status-banner">Siting study — not build authorization</div>
-  <div class="section-head">
-    <span class="eyebrow">18 / Decisions Still Required</span>
-    <h2>What the owner must settle before Phase 0 closes</h2>
-  </div>
-<div class="card-grid">
-<div class="card"><div class="num">01</div><h4>Vertical strategy</h4><p>Accept the same-world vertical compression, or preserve Masterplan 04's native height in a separate world/dimension.</p></div>
-<div class="card"><div class="num">02</div><h4>The east reserve</h4><p>Approve or move it after the fresh terrain survey.</p></div>
-<div class="card"><div class="num">03</div><h4>The corridor reservation</h4><p>Accept or amend the 56-block reservation and its 80-block land take, and confirm the corridor may pass over the contested C01 East stack and the C01 Owner Tunnel Detour.</p></div>
-<div class="card"><div class="num">03a</div><h4>The MainStreet east gate</h4><p>Approve or replace the provisional L2 gate at (305,~,80), which has no cataloged counterpart.</p></div>
-<div class="card"><div class="num">03b</div><h4>Rail: built or reserved?</h4><p>Decide whether the railway is built with the highway or merely reserved — and if reserved, commit to the clear-span and vertical-clearance rules that keep it buildable.</p></div>
-<div class="card"><div class="num">04</div><h4>Portal mechanism</h4><p>Select the active portal mechanism, if any.</p></div>
-<div class="card"><div class="num">05</div><h4>Shaft and Z02 sections</h4><p>Resolve the public shaft dogleg and freeze the surface-rail, subway descent, throat and eight-platform cross-sections.</p></div>
-<div class="card"><div class="num">06</div><h4>Plaque wording</h4><p>Approve final geological wording for the contact plaque.</p></div>
-<div class="card"><div class="num">07</div><h4>Empty Eight identity</h4><p>Approve the final architectural palette, discovery cue, capped retail-shell schedule, egress design and sealed future-line interface contracts.</p></div>
-</div>
-<p class="soul">Until those decisions and the Phase 0 gates pass, the coordinates in this package are a coherent planning transform, not build coordinates.</p>
-</section>
-<section class="content" id="truth">
-  <div class="status-banner">Siting study — not build authorization</div>
-  <div class="section-head">
-    <span class="eyebrow">19 / Truth Boundaries</span>
-    <h2>What this package does not claim</h2>
-  </div>
-<div class="callout dark"><ul>
-<li>The east reserve is intentionally outside all cataloged feature bounds, but most of it is not present in the accepted rendered snapshot.</li>
-<li>The corridor clearance result is a plan-only separation test against cataloged footprints. It reports zero surface intersections and a 50-block nearest-surface clearance; it is not a terrain, hydrology, entity, ownership or chunk-generation clearance.</li>
-<li>The corridor passes over the contested C01 East stack with 18 blocks of plan clearance and roughly 17 blocks of vertical separation. ISSUE-002 must close before embankment loading there is designed.</li>
-<li>The corridor's eastern terminus lies beyond the accepted raster edge at x=1468; that segment has never been rendered.</li>
-<li>Nothing is cataloged south of the corridor along its whole length. That is an absence of records, not evidence of buildable land, and the southern ramp quadrants depend on it being surveyed.</li>
-<li>Derived centers in the POI directory are navigation references, not landing-safety claims.</li>
-<li>Z02 station, branch and terminal coordinates are coherent study geometry, not evidence of terrain cover, fluid clearance, safe grade or buildable underground volume.</li>
-<li>Offline geometry and maps do not authorize a live build.</li>
-</ul></div>
-<div class="signoff"><p><strong>No Minecraft, RCON, fleet API, systemd or live-world operation was used to create this package.</strong> All geometry was derived read-only from the sealed POI coordinate directory and the accepted snapshot hashes recorded in <span class="kbd">source-register.md</span>.</p></div>
-</section>
-</body>
+</main></body>
 </html>

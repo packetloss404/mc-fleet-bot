@@ -1,13 +1,25 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 4,
   "buildId": "05-combined-zones",
-  "title": "Combined Zones \u2014 Current World Integration Study",
-  "status": "SITING_STUDY_NOT_AUTHORIZED_FOR_WORLD_EDITS",
-  "generatedAtUtc": "2026-08-03T22:25:56.000Z",
+  "title": "Combined Zones — Current World Integration Study",
+  "status": "PHASE0_RERUN_PASS_REVISED_SITING_NOT_AUTHORIZED_FOR_WORLD_EDITS",
+  "generatedAtUtc": "2026-08-04T02:18:31.000Z",
   "world": "world",
-  "physicalMutation": false,
+  "physicalMutation": {
+    "blocksEdited": false,
+    "firstSurveyChunksGenerated": true,
+    "rerunChunksGenerated": false,
+    "generationBounds": {
+      "minX": 1200,
+      "maxX": 3200,
+      "minZ": -1200,
+      "maxZ": 600
+    },
+    "existingForceLoadTicketsBefore": 104,
+    "existingForceLoadTicketsAfter": 104
+  },
   "designRevision": {
-    "id": "east-corridor-highway-and-rail",
+    "id": "east-corridor-north-core-empty-eight-resiting",
     "canonicalOldTown": "Ravensreach",
     "z02": "Gateway Approach",
     "surfacePassengerStops": 2,
@@ -15,7 +27,7 @@
     "subwayPlatforms": 8,
     "futureInterfacesInitiallySealed": true,
     "eastCorridor": {
-      "planLengthBlocks": 1277,
+      "planLengthBlocks": 1244.303,
       "reservationBlocks": 56,
       "totalLandTakeBlocks": 80,
       "modesDesignedTogether": [
@@ -27,28 +39,62 @@
       "railFlank": "north",
       "terminalRoundabouts": 2,
       "serviceInterchanges": 1,
-      "gradeSeparationStructures": 1,
-      "railStations": 3,
+      "railStationsIncludingFutureZ02Stops": 5,
       "curveVertices": 3,
       "surfaceFeatureIntersections": 0,
-      "reportHtml": "combined-zones-report.html"
+      "engineeredRailProfile": {
+        "status": "PASS_ONE_IN_EIGHT",
+        "minimumY": 63,
+        "maximumY": 114,
+        "maximumGrade": 0.125,
+        "maximumCutBlocks": 36,
+        "maximumFillBlocks": 23
+      }
     }
   },
   "selectedStudy": {
-    "name": "east-reserve-rotated-vanilla-height",
+    "name": "east-reserve-north-core-vanilla-height",
     "reservation": {
       "minX": 1500,
-      "maxX": 3050,
-      "minZ": -1050,
-      "maxZ": 450
+      "maxX": 2550,
+      "minZ": -1150,
+      "maxZ": 300
     },
     "localOriginInWorld": {
-      "x": 2250,
-      "provisionalY": 72,
-      "z": -300
+      "x": 2048,
+      "provisionalStreetY": 72,
+      "z": -328
     },
-    "rotation": "90 degrees: local south becomes world west",
-    "verticalDesign": "piecewise compression into vanilla Y=-64..319; provisional until terrain and section surveys pass"
+    "rotationDegrees": 0,
+    "topDownTransform": {
+      "worldX": "2048 + localX",
+      "worldZ": "-328 + localZ"
+    },
+    "gatewayAdapterDecoupledFromCoreTransform": true,
+    "phase0Decision": "PASS_FOR_DETAILED_DESIGN_NOT_BUILD"
+  },
+  "phase0Survey": {
+    "status": "PASS_REVISED_SITING_PHASE0",
+    "preSnapshotSha256": "fe7a3e5a75bbf90104c73bf9f78115300fe66f82b300d2dde7cede9fd993ab37",
+    "postSnapshotSha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+    "additionalChunkGenerationRequired": false,
+    "atlasFullChunks": 14238,
+    "reserveFullChunks": 6097,
+    "corridorSamples": 79,
+    "corridorTerrainY": {
+      "min": 55,
+      "max": 122
+    },
+    "corridorWaterSamples": 3,
+    "corridorNaturalIntervalsExceedingOneInEight": 39,
+    "revisedReserveWaterFraction": 0.160852,
+    "mountainWaterFraction": 0.026167,
+    "urbanCoreWaterFraction": 0.027788,
+    "terminalEightBlockCoverFraction": 1,
+    "terminalVerticalStructureConflicts": 0,
+    "protectedSurfaceRelics": 3,
+    "allNineSitingGatesPassed": true,
+    "evidence": "phase0-survey-evidence.json"
   },
   "acceptedBaseline": {
     "snapshot": {
@@ -59,31 +105,21 @@
       "path": "data/world-map.db",
       "sha256": "71876a7ecf73e90475a9b5047938e14f39ea0a20381dea8c5286582059f95f8a",
       "featureCount": 1215
-    },
-    "map": {
-      "path": "data/exports/box/town-expansion-r1-final-2026-07-28/media/maps/map-whole-world-overview.png",
-      "sha256": "ca62fa267913aff3e044277ac20ee0c9ceaebaa591080b410adea80cf92d769f",
-      "width": 2352,
-      "height": 2352,
-      "northUp": true
     }
   },
   "deliverables": [
-    "combined-zones-report.html",
-    "phase0-survey-brief.md",
-    "README.md",
     "MASTERPLAN.md",
-    "source-register.md",
+    "README.md",
+    "phase0-survey-brief.md",
+    "phase0-survey-evidence.json",
+    "corridor-terrain-probe.json",
+    "resiting-candidate-analysis.json",
     "site-coordinates.json",
-    "map-qa.json",
-    "maps/current-and-proposed-whole-world.svg",
-    "maps/current-and-proposed-whole-world.png",
-    "maps/gateway-approach-and-terminal-plan.svg",
-    "maps/gateway-approach-and-terminal-plan.png",
-    "maps/vertical-zoning-section.svg",
-    "maps/vertical-zoning-section.png",
     "corridor-clearance.json",
-    "maps/east-corridor-plan.svg",
-    "maps/east-corridor-plan.png"
+    "source-register.md",
+    "map-qa.json",
+    "combined-zones-report.html",
+    "maps/current-plus-phase0-terrain.png",
+    "maps/current-plus-proposed-phase0-overlay.png"
   ]
 }

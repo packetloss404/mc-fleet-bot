@@ -1,210 +1,142 @@
-# Phase 0 Survey Brief — East Corridor
+# Phase 0 Survey Brief — Combined Zones Rerun
 
-Status: **ACTION LIST FOR A LIVE SERVER SESSION — READ BEFORE TELEPORTING**
+Status: **COMPLETED 2026-08-04 UTC — REVISED SITING PASS — PROCEDURE RETAINED FOR AUDIT**
 
-Masterplan 05 is a siting study built entirely offline from the sealed POI coordinate
-directory. Every `Y` value in the corridor is provisional. This brief is what turns it
-into something surveyed.
+## Outcome
 
-Nothing here authorizes a build. Chunk generation is the only world-affecting action
-described, and it is bounded and ordered below.
+The first live Phase 0 generated and sealed the complete `x=1200…3200`, `z=-1200…600` atlas, then correctly rejected the original `(2250,-300)`, 90-degree transform. The rerun used that immutable terrain to select a coupled replacement for Gateway, Empty Eight, Houston, the public shaft, SubTropolis, Cheyenne, and the mountain.
 
-## 0. The blocking question — confirm this first, it costs one teleport
+The rerun passed every declared siting gate. Nothing in either session placed or removed a block.
 
-**Does the world at `10.80.13.14` actually contain MainStreet America, Ravensreach and
-the Data District?**
+| Evidence | Result |
+|---|---|
+| First-run pre-generation snapshot | `data/worldsnap-combined-zones-phase0-pre-20260803T234132Z/region`; SHA-256 `72a10688ec9f10f80db98820433d251013ccc3f946428375ce7d8b1077d6e16d` |
+| Rejected patchy intermediate | `data/worldsnap-combined-zones-phase0-post-20260803T235154Z/region`; SHA-256 `d9f7fcefdd47ac865312369ebe969129ce30c89295c322f9938f6d9c9fe6f481` |
+| First-run final generated atlas | `data/worldsnap-combined-zones-phase0-final-post-20260804T001002Z/region`; SHA-256 `979e78052b1336e90be664dc7215b6df14962c4203a9cbce8b567ebb98e74ead` |
+| Rerun pre-check snapshot | `data/worldsnap-combined-zones-phase0-rerun-pre-20260804T021237Z/region`; SHA-256 `fe7a3e5a75bbf90104c73bf9f78115300fe66f82b300d2dde7cede9fd993ab37` |
+| Rerun post-check snapshot | `data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region`; SHA-256 `05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b` |
+| Chunk generation during rerun | none required; every revised target chunk was already `minecraft:full` |
+| Preserved live force-load baseline | exactly 104 before and after |
+| Rerun verdict | `PASS_REVISED_SITING_PHASE0` |
 
-`CLAUDE.md` records that the server moved to a stock Paper box on 2026-07-24 and that
-world-specific coordinates were emptied because they "describe nothing until this world
-gets built". The accepted snapshot is dated 2026-07-28 — after that move — so the built
-world probably is live. But this has never been verified from inside the game.
+## Adopted study geometry
 
-```
-/tp @s 1240 250 -400        # should be over the Data District shared grid
-/tp @s 0 250 0              # should be inside the MainStreet America campus
-```
+The current-world adapter ends at the dry Gateway interface `(1550,68,-250)`. The normalized Combined Complex uses:
 
-If those land in untouched wilderness, **stop**. The corridor is sited against a world
-that is not live, and that finding outranks every terrain detail in this brief.
-
-## 1. Ordering — snapshot before you generate
-
-Loading ungenerated chunks permanently writes region files. Terrain is deterministic
-from the seed, so nothing is *changed* — but the save grows and the accepted snapshot
-`c39d0d67…` stops describing the live world. Phase 0's own sequence:
-
-1. Take a fresh immutable saved-world snapshot. Record its SHA-256.
-2. Generate the chunks (section 2 or 3).
-3. Take a second snapshot. Record its SHA-256.
-4. Render the terrain atlas over the generated area.
-5. Run the terrain probe (section 4).
-
-Steps 1 and 3 are what make the generation auditable. Do not skip them.
-
-## 2. Preferred method — pregeneration, not manual teleporting
-
-If the server has **Chunky**:
-
-```
-/chunky world world
-/chunky center 1725 -300
-/chunky radius 1600
-/chunky start
+```text
+worldX = 2048 + localX
+worldZ = -328 + localZ
 ```
 
-Vanilla fallback, in slabs so nothing times out:
+The revised reserve is `x=1500…2550`, `z=-1150…300`. Gateway Approach is the larger adapter envelope `x=1500…2250`, `z=-1100…0`; it is deliberately decoupled from the normalized core transform.
 
-```
-/forceload add 1200 -1200 2200 -200
-/forceload add 2200 -1200 3200 -200
-/forceload add 1200 -200 2200 600
-/forceload add 2200 -200 3200 600
-/forceload query
+The retained East Corridor alignment is:
+
+```text
+(430,80) → (905,80) → (1065,-80) → (1330,-80) → (1550,-250)
 ```
 
-Remove the forceloads afterwards with `/forceload remove all` or the server will keep
-them ticking forever.
+It is sampled every 16 Euclidean blocks. The natural surface is not the proposed rail formation. The accepted Phase 0 rail study profile starts and ends at `Y=68`, ranges `Y=63…114`, and never exceeds 1:8.
 
-Manual teleporting is a fallback. It leaves patchy coverage, and patchy coverage is
-worse than none because it looks like data.
+## Passing gates
 
-## 3. Manual waypoints, if teleporting by hand
+| Gate | Result |
+|---|---|
+| Atlas coverage | PASS — 14,238/14,238 chunks full |
+| Revised reserve coverage | PASS — 6,097/6,097 chunks full |
+| Engineered passenger-rail grade | PASS — maximum `0.125` |
+| Critical core anchors | PASS — Houston, shaft, SubTropolis, Cheyenne portal, and summit all dry |
+| Mountain water exposure | PASS — 12,597/481,401 = 2.6167% |
+| Urban-core water exposure | PASS — 2,524/90,831 = 2.7788% |
+| Empty Eight footprint | PASS — 0/54,901 water columns |
+| Empty Eight cover | PASS — 54,901/54,901 columns provide at least eight blocks over roof `Y=54` |
+| Empty Eight structure clearance | PASS — zero generated-structure bounds intersect shell `Y=38…54` |
+| Surface generated structures | PASS as a planning constraint — two igloos and one shipwreck declared no-touch |
 
-Run in spectator so you cannot be hurt by, or interact with, unsurveyed terrain:
+The natural corridor profile still records three water samples, 39 intervals steeper than 1:8, up to 36 blocks of proposed cut, and up to 23 blocks of fill. A Phase 0 PASS does not price or authorize those works.
 
-```
-/gamemode spectator
-```
+## Empty Eight setout
 
-Every stop is `y=250` — above any terrain, below the build limit.
+The dry terminal shell is:
 
-### Scope A — corridor only (17 stops)
-
-Answers the vertical-profile question, which is the single biggest unknown. Covers a
-~336-block band centred on the corridor, which contains the 56-block reservation, both
-12-block easements, all four southern ramp quadrants and both terminal roundabouts.
-
-```
-# run in spectator: /gamemode spectator
-/tp @s 430 250 80    # corridor centreline 1
-/tp @s 670 250 80    # corridor centreline 2
-/tp @s 910 250 75    # corridor centreline 3
-/tp @s 1094 250 -80    # corridor centreline 4
-/tp @s 1334 250 -84    # corridor centreline 5
-/tp @s 1504 250 -254    # corridor centreline 6
-/tp @s 1550 250 -300    # corridor centreline 7
-# named nodes (interchange, stations, termini)
-/tp @s 430 250 80    # W-TERM roundabout
-/tp @s 905 250 80    # PI-1
-/tp @s 1065 250 -80    # PI-2
-/tp @s 1180 250 -80    # EXIT 11 bridge
-/tp @s 1240 250 -80    # DD-1 station
-/tp @s 1330 250 -80    # PI-3
-/tp @s 1550 250 -300    # E-TERM / Gateway
-# local road ends
-/tp @s 470 250 -232    # L1 Ravensreach link end
-/tp @s 305 250 80    # L2 MainStreet East gate end
-/tp @s 362 250 165    # L3 Observatory link end
+```text
+x = 1880…2220
+z = -1008…-848
+shell Y = 38…54
+rail Y = 40
 ```
 
-### Scope B — full Phase 0 atlas (42 stops)
+The concealed branch study centerline is:
 
-`x 1200…3200`, `z -1200…600` at 300-block spacing. This is the box Phase 0 actually
-requires, and it is the only thing that answers **whether the east reserve is buildable
-land at all** — the entire reserve is currently outside the rendered raster and could be
-ocean.
-
-```
-/tp @s 1350 250 -1050    # atlas 1
-/tp @s 1650 250 -1050    # atlas 2
-/tp @s 1950 250 -1050    # atlas 3
-/tp @s 2250 250 -1050    # atlas 4
-/tp @s 2550 250 -1050    # atlas 5
-/tp @s 2850 250 -1050    # atlas 6
-/tp @s 3150 250 -1050    # atlas 7
-/tp @s 1350 250 -750    # atlas 8
-/tp @s 1650 250 -750    # atlas 9
-/tp @s 1950 250 -750    # atlas 10
-/tp @s 2250 250 -750    # atlas 11
-/tp @s 2550 250 -750    # atlas 12
-/tp @s 2850 250 -750    # atlas 13
-/tp @s 3150 250 -750    # atlas 14
-/tp @s 1350 250 -450    # atlas 15
-/tp @s 1650 250 -450    # atlas 16
-/tp @s 1950 250 -450    # atlas 17
-/tp @s 2250 250 -450    # atlas 18
-/tp @s 2550 250 -450    # atlas 19
-/tp @s 2850 250 -450    # atlas 20
-/tp @s 3150 250 -450    # atlas 21
-/tp @s 1350 250 -150    # atlas 22
-/tp @s 1650 250 -150    # atlas 23
-/tp @s 1950 250 -150    # atlas 24
-/tp @s 2250 250 -150    # atlas 25
-/tp @s 2550 250 -150    # atlas 26
-/tp @s 2850 250 -150    # atlas 27
-/tp @s 3150 250 -150    # atlas 28
-/tp @s 1350 250 150    # atlas 29
-/tp @s 1650 250 150    # atlas 30
-/tp @s 1950 250 150    # atlas 31
-/tp @s 2250 250 150    # atlas 32
-/tp @s 2550 250 150    # atlas 33
-/tp @s 2850 250 150    # atlas 34
-/tp @s 3150 250 150    # atlas 35
-/tp @s 1350 250 450    # atlas 36
-/tp @s 1650 250 450    # atlas 37
-/tp @s 1950 250 450    # atlas 38
-/tp @s 2250 250 450    # atlas 39
-/tp @s 2550 250 450    # atlas 40
-/tp @s 2850 250 450    # atlas 41
-/tp @s 3150 250 450    # atlas 42
+```text
+(1780,68,-250)
+(1780,64,-285)
+(1800,56,-445)
+(1840,48,-685)
+(1880,40,-928)
 ```
 
-## 4. What to capture — a picture is the least useful output
+Its steepest segment is `4/35 = 0.1143`. Five mineshaft/trial-chamber starts intersect the terminal footprint in plan, but their recorded bounds remain below the shell; this is an exact vertical-clearance finding, not permission to disturb them.
 
-A rendered map is nice. Per-column terrain height is what the plan actually needs.
+## Retained live procedure
 
-With the fleet API running and a bot able to reach the corridor:
+Phase 0 ordering is mandatory whenever the target expands outside already-full chunks:
+
+1. Verify the live world identity and world border.
+2. Query and record the current force-load baseline.
+3. Take a fresh immutable saved-world pre snapshot.
+4. Decode the copied Anvil snapshot and identify missing target chunks.
+5. Generate only missing bounded chunks, one temporary tile at a time.
+6. Remove each exact temporary tile in a `finally` path; never use `forceload remove all`.
+7. Verify the force-load count exactly matches the initial baseline.
+8. Take a fresh immutable post snapshot.
+9. Run the full coverage, terrain, fluid, biome, structure, footprint, grade, map, and hash gates offline.
+
+The bounded first-run generator is:
 
 ```bash
-# single column
-curl -s "http://127.0.0.1:3001/api/terrain/height?x=430&z=80"
-
-# region scan around a node
-curl -s "http://127.0.0.1:3001/api/terrain?x=1180&y=72&z=-80&radius=48"
+python3 scripts/generate_phase0_survey_chunks.py \
+  --start <zero-based-tile-index> \
+  --count <bounded-batch-size>
 ```
 
-Probe the centreline at every 16 blocks from `(430,80)` to `(1550,-300)` following the
-polyline, and record: surface `Y`, whether the column is water, and the biome. That
-yields ~80 samples and would let this package answer:
+It requires the preserved 104-ticket baseline and refuses drift. Do not run it merely to reload chunks that are already full.
 
-| Question | Currently | After the probe |
-|---|---|---|
-| Corridor vertical profile | every `Y` is `~` | surveyed per column |
-| Water crossings | unknown — bridges unpriced | located and counted |
-| Rail 1:8 gradient achievable? | assumed | proven or disproven |
-| Cut/fill against the 12-block easements | unknown | computable |
-| C01 East cover depth | ~17 blocks, derived | measured |
-| Is the east reserve buildable? | unrendered, unknown | answered |
+Generate the sealed rerun evidence from copied Anvil files only:
 
-## 5. Hard limits for this session
+```bash
+node --max-old-space-size=4096 \
+  scripts/generate_combined_zones_phase0_survey.mjs \
+  --regions data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region \
+  --pre-regions data/worldsnap-combined-zones-phase0-rerun-pre-20260804T021237Z/region \
+  --out-dir masterplans/05-combined-zones
+```
 
-- **No block placement, no world edits, no RCON writes.** Chunk generation only.
-- Confirm the world border actually contains `x=3050` before generating scope B —
-  if the border is tighter, the east reserve is invalid as drawn.
-- Watch for existing generated structures (villages, ruined portals, trial chambers) in
-  the reserve and along the corridor. Any found are new constraints this package does
-  not know about.
-- If the corridor crosses significant water or a ravine, say so before anything is
-  designed further — the alignment is cheap to move now and expensive later.
+Rank candidate placements from an immutable copy with:
 
-## 6. Feeding results back
+```bash
+node --max-old-space-size=8192 \
+  scripts/analyze_combined_zones_resiting.mjs \
+  --regions data/worldsnap-combined-zones-phase0-final-post-20260804T001002Z/region \
+  --out masterplans/05-combined-zones/resiting-candidate-analysis.json
+```
 
-Land the outputs as:
+Both Node scripts are offline and read-only with respect to Minecraft. They open copied region files and write local evidence only.
 
-- `corridor-terrain-probe.json` — the per-column samples
-- a re-rendered whole-world raster covering the generated area
-- both snapshot SHA-256 values, before and after
+## Hard limits
 
-Then `corridor-clearance.json` gets regenerated against real terrain, the provisional
-`Y` values in `site-coordinates.json` get replaced, and the `~` placeholders come out of
-`MASTERPLAN.md`.
+- Phase 0 authorizes chunk generation only when required; it never authorizes block placement, excavation, grading, or construction.
+- Never start a second fleet instance to survey the world.
+- Never use `forceload remove all`; the 104 baseline tickets belong to existing systems.
+- A copied overworld region package is not a live entity census.
+- Structure-start records prove generated structure bounds, not present-day preservation or entrance safety.
+- Terrain Y, water, biome, and cover results are constraints. They are not landing-safety or ownership claims.
+- Phase 1 still requires exact current ownership/protected-feature audits, a live entity gate, detailed civil design, guarded forward/rollback packages, and route QA.
+
+## Outputs
+
+- [corridor-terrain-probe.json](corridor-terrain-probe.json) — natural samples plus the accepted sampled rail profile
+- [phase0-survey-evidence.json](phase0-survey-evidence.json) — snapshots, coverage, censuses, structure bounds, gates, and artifact hashes
+- [resiting-candidate-analysis.json](resiting-candidate-analysis.json) — exact dry-footprint and transform search
+- [maps/current-plus-phase0-terrain.png](maps/current-plus-phase0-terrain.png) — raw one-block-per-pixel terrain
+- [maps/current-plus-proposed-phase0-overlay.png](maps/current-plus-proposed-phase0-overlay.png) — current world and adopted revised layout

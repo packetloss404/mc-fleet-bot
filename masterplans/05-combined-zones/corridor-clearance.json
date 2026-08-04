@@ -1,13 +1,25 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 3,
   "id": "combined-zones-east-corridor-clearance",
-  "status": "STUDY_GEOMETRY_ONLY_NOT_A_TERRAIN_OR_OWNERSHIP_CLEARANCE",
-  "method": "Plan-only Chebyshev separation between the reservation band and each cataloged feature footprint, evaluated per shared X column. A database non-overlap check is not a terrain, entity, ownership, hydrology, chunk-generation, or protected-interface clearance.",
+  "status": "CATALOG_CLEARANCE_PASS_PHASE0_ENGINEERED_PROFILE_PASS",
+  "method": "Catalog separation remains the plan-only Chebyshev test against 1,215 durable feature footprints. Phase 0 adds a read-only Anvil terrain profile at 16-block spacing, full-chunk coverage, water, biome, vegetation, and generated-structure evidence. Neither result is an ownership, protected-interface, entity, or construction authorization.",
   "source": {
     "poiDirectory": "docs/redevelopment/2026-07-29-poi-coordinate-directory/poi-coordinate-directory.json",
     "poiSha256": "fbb9d44f683e087dacf7fa0f2cec0792c4cbef89b1165d4987ad4967b2e2a3e9",
     "recordsWithGeometry": 1215,
     "catalogRecords": 1215
+  },
+  "phase0Source": {
+    "preGenerationSnapshot": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-pre-20260804T021237Z/region",
+      "sha256": "fe7a3e5a75bbf90104c73bf9f78115300fe66f82b300d2dde7cede9fd993ab37"
+    },
+    "postGenerationSnapshot": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+      "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b"
+    },
+    "terrainProbe": "masterplans/05-combined-zones/corridor-terrain-probe.json",
+    "surveyEvidence": "masterplans/05-combined-zones/phase0-survey-evidence.json"
   },
   "alignment": {
     "pointsOfIntersection": [
@@ -41,7 +53,7 @@
       {
         "id": "E-TERM",
         "x": 1550,
-        "z": -300,
+        "z": -250,
         "role": "Gateway terminal roundabout centre"
       }
     ],
@@ -73,14 +85,14 @@
       {
         "from": "PI-3",
         "to": "E-TERM",
-        "bearing": "45-degree diagonal",
+        "bearing": "surveyed shallow diagonal",
         "deltaX": 220,
-        "deltaZ": -220,
-        "pathLengthBlocks": 311.1
+        "deltaZ": -170,
+        "pathLengthBlocks": 278.029
       }
     ],
-    "planLengthBlocks": 1277,
-    "geometryRule": "orthogonal legs and exact 45-degree diagonals only",
+    "planLengthBlocks": 1244.303,
+    "geometryRule": "orthogonal and exact 45-degree geometry through PI-3; the final re-sited approach uses its surveyed 220-by-170 bearing and requires a coarse buildable staircase",
     "curveVertices": 3,
     "curveVertexBudget": 4
   },
@@ -261,16 +273,56 @@
       }
     ]
   },
-  "truthBoundary": {
-    "offRasterPointsOfIntersection": [
-      "E-TERM"
+  "terrainSurvey": {
+    "status": "PASS_ENGINEERED_RAIL_PROFILE_NATURAL_SURFACE_REMAINS_CONSTRAINT",
+    "sampleCount": 79,
+    "sampleIntervalBlocks": 16,
+    "terrainMinY": 55,
+    "terrainMaxY": 122,
+    "terrainMeanY": 90.608,
+    "waterSampleCount": 3,
+    "waterColumns": [
+      { "x": 462, "z": 80 },
+      { "x": 1260, "z": -80 },
+      { "x": 1292, "z": -80 }
     ],
+    "maximumObservedNaturalSurfaceGrade": 1.625,
+    "intervalsExceedingOneInEight": 39,
+    "namedTerrainY": {
+      "W-TERM": 65,
+      "PI-1": 112,
+      "PI-2": 108,
+      "PI-3": 67,
+      "E-TERM": 71,
+      "DD-1": 63
+    },
+    "engineeredRailProfile": {
+      "status": "PASS_ONE_IN_EIGHT",
+      "startY": 68,
+      "endY": 68,
+      "railMinY": 63,
+      "railMaxY": 114,
+      "maximumGrade": 0.125,
+      "maximumCutBlocks": 36,
+      "maximumFillBlocks": 23
+    },
+    "interpretation": "The natural surface is not a usable rail formation. The sampled engineered profile passes 1:8, with the disclosed cuts, fills, water structures, and detailed civil design still required before any build authorization."
+  },
+  "truthBoundary": {
+    "offAcceptedRasterPointsOfIntersection": [],
     "acceptedRasterExtent": {
       "minX": -883,
       "maxX": 1468,
       "minZ": -1387,
       "maxZ": 964
     },
-    "note": "Corridor length east of x=1468 lies outside the accepted rendered raster. Absent records and unrendered map area are not evidence of buildable land."
+    "phase0Raster": "masterplans/05-combined-zones/maps/current-plus-phase0-terrain.png",
+    "phase0RasterBounds": {
+      "minX": -883,
+      "maxX": 3200,
+      "minZ": -1387,
+      "maxZ": 964
+    },
+    "note": "Phase 0 replaces the prior unrendered eastern gap with complete terrain evidence. It does not convert that terrain into cleared buildable land."
   }
 }

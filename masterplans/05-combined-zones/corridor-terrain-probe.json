@@ -1,0 +1,3671 @@
+{
+  "schemaVersion": 2,
+  "id": "combined-zones-east-corridor-phase0-terrain-probe",
+  "status": "PASS_REVISED_SITING_PHASE0",
+  "generatedAtUtc": "2026-08-04T02:18:31.852Z",
+  "method": "Read-only Anvil WORLD_SURFACE sampling with block-state and biome palette decoding; centerline sampled every 16 Euclidean blocks and rounded to integer columns.",
+  "snapshots": {
+    "preGeneration": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-pre-20260804T021237Z/region",
+      "sha256": "fe7a3e5a75bbf90104c73bf9f78115300fe66f82b300d2dde7cede9fd993ab37",
+      "regionFileCount": 51,
+      "bytes": 290946492,
+      "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+    },
+    "postGeneration": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+      "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+      "regionFileCount": 51,
+      "bytes": 290946492,
+      "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+    }
+  },
+  "bounds": {
+    "wholeMap": {
+      "minX": -883,
+      "maxX": 3200,
+      "minZ": -1387,
+      "maxZ": 964
+    },
+    "phase0Atlas": {
+      "minX": 1200,
+      "maxX": 3200,
+      "minZ": -1200,
+      "maxZ": 600
+    },
+    "proposedReserve": {
+      "minX": 1500,
+      "maxX": 2550,
+      "minZ": -1150,
+      "maxZ": 300
+    }
+  },
+  "chunkCoverage": {
+    "atlas": {
+      "minecraft:full": 14238
+    },
+    "reserve": {
+      "minecraft:full": 6097
+    },
+    "wholeRequested": 38036,
+    "wholePresent": 33599
+  },
+  "alignment": [
+    {
+      "id": "W-TERM",
+      "x": 430,
+      "z": 80
+    },
+    {
+      "id": "PI-1",
+      "x": 905,
+      "z": 80
+    },
+    {
+      "id": "PI-2",
+      "x": 1065,
+      "z": -80
+    },
+    {
+      "id": "PI-3",
+      "x": 1330,
+      "z": -80
+    },
+    {
+      "id": "E-TERM",
+      "x": 1550,
+      "z": -250
+    }
+  ],
+  "intervalBlocks": 16,
+  "sampleCount": 79,
+  "summary": {
+    "terrainMinY": 55,
+    "terrainMaxY": 122,
+    "terrainMeanY": 90.608,
+    "waterSampleCount": 3,
+    "lavaSampleCount": 0,
+    "vegetationSampleCount": 48,
+    "biomeCounts": {
+      "minecraft:forest": 24,
+      "minecraft:river": 4,
+      "minecraft:birch_forest": 6,
+      "minecraft:meadow": 12,
+      "minecraft:pale_garden": 24,
+      "minecraft:dark_forest": 8,
+      "minecraft:plains": 1
+    },
+    "maximumObservedNaturalSurfaceGrade": 1.625,
+    "naturalSurfaceSegmentsExceedingOneInEight": 39,
+    "engineeredRailMaximumGrade": 0.125,
+    "engineeredRailMaximumCutBlocks": 36,
+    "engineeredRailMaximumFillBlocks": 23,
+    "interpretation": "The natural surface remains a terrain constraint. The proposed sampled rail profile now proves the 1:8 gate, while disclosed cuts, fills, structures, and final civil design remain separate approvals."
+  },
+  "sitingGates": {
+    "fullAtlasChunkCoverage": true,
+    "engineeredPassengerRailOneInEight": true,
+    "criticalCoreAnchorsDry": true,
+    "emptyEightFootprintDry": true,
+    "emptyEightEightBlockCover": true,
+    "emptyEightVerticalStructureClearance": true,
+    "mountainWaterExposureBelowFivePercent": true,
+    "urbanCoreWaterExposureBelowFivePercent": true,
+    "surfaceRelicsDeclaredNoTouch": true
+  },
+  "waterRuns": [
+    {
+      "startSample": 2,
+      "endSample": 2,
+      "start": {
+        "x": 462,
+        "z": 80
+      },
+      "end": {
+        "x": 462,
+        "z": 80
+      }
+    },
+    {
+      "startSample": 56,
+      "endSample": 56,
+      "start": {
+        "x": 1260,
+        "z": -80
+      },
+      "end": {
+        "x": 1260,
+        "z": -80
+      }
+    },
+    {
+      "startSample": 58,
+      "endSample": 58,
+      "start": {
+        "x": 1292,
+        "z": -80
+      },
+      "end": {
+        "x": 1292,
+        "z": -80
+      }
+    }
+  ],
+  "gradeSegments": [
+    {
+      "fromSample": 0,
+      "toSample": 1,
+      "run": 16,
+      "rise": -2,
+      "absoluteGrade": 0.125,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 1,
+      "toSample": 2,
+      "run": 16,
+      "rise": -8,
+      "absoluteGrade": 0.5,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 2,
+      "toSample": 3,
+      "run": 16,
+      "rise": 13,
+      "absoluteGrade": 0.8125,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 3,
+      "toSample": 4,
+      "run": 16,
+      "rise": -1,
+      "absoluteGrade": 0.0625,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 4,
+      "toSample": 5,
+      "run": 16,
+      "rise": 6,
+      "absoluteGrade": 0.375,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 5,
+      "toSample": 6,
+      "run": 16,
+      "rise": 20,
+      "absoluteGrade": 1.25,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 6,
+      "toSample": 7,
+      "run": 16,
+      "rise": 25,
+      "absoluteGrade": 1.5625,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 7,
+      "toSample": 8,
+      "run": 16,
+      "rise": 0,
+      "absoluteGrade": 0,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 8,
+      "toSample": 9,
+      "run": 16,
+      "rise": -3,
+      "absoluteGrade": 0.1875,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 9,
+      "toSample": 10,
+      "run": 16,
+      "rise": 0,
+      "absoluteGrade": 0,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 10,
+      "toSample": 11,
+      "run": 16,
+      "rise": 1,
+      "absoluteGrade": 0.0625,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 11,
+      "toSample": 12,
+      "run": 16,
+      "rise": 0,
+      "absoluteGrade": 0,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 12,
+      "toSample": 13,
+      "run": 16,
+      "rise": 0,
+      "absoluteGrade": 0,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 13,
+      "toSample": 14,
+      "run": 16,
+      "rise": 0,
+      "absoluteGrade": 0,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 14,
+      "toSample": 15,
+      "run": 16,
+      "rise": -3,
+      "absoluteGrade": 0.1875,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 15,
+      "toSample": 16,
+      "run": 16,
+      "rise": 2,
+      "absoluteGrade": 0.125,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 16,
+      "toSample": 17,
+      "run": 16,
+      "rise": -4,
+      "absoluteGrade": 0.25,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 17,
+      "toSample": 18,
+      "run": 16,
+      "rise": -1,
+      "absoluteGrade": 0.0625,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 18,
+      "toSample": 19,
+      "run": 16,
+      "rise": 7,
+      "absoluteGrade": 0.4375,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 19,
+      "toSample": 20,
+      "run": 16,
+      "rise": 2,
+      "absoluteGrade": 0.125,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 20,
+      "toSample": 21,
+      "run": 16,
+      "rise": 3,
+      "absoluteGrade": 0.1875,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 21,
+      "toSample": 22,
+      "run": 16,
+      "rise": -4,
+      "absoluteGrade": 0.25,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 22,
+      "toSample": 23,
+      "run": 16,
+      "rise": -2,
+      "absoluteGrade": 0.125,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 23,
+      "toSample": 24,
+      "run": 16,
+      "rise": -3,
+      "absoluteGrade": 0.1875,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 24,
+      "toSample": 25,
+      "run": 16,
+      "rise": -2,
+      "absoluteGrade": 0.125,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 25,
+      "toSample": 26,
+      "run": 16,
+      "rise": -1,
+      "absoluteGrade": 0.0625,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 26,
+      "toSample": 27,
+      "run": 16,
+      "rise": -1,
+      "absoluteGrade": 0.0625,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 27,
+      "toSample": 28,
+      "run": 16,
+      "rise": 1,
+      "absoluteGrade": 0.0625,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 28,
+      "toSample": 29,
+      "run": 16,
+      "rise": 5,
+      "absoluteGrade": 0.3125,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 29,
+      "toSample": 30,
+      "run": 15.524,
+      "rise": -4,
+      "absoluteGrade": 0.257663,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 30,
+      "toSample": 31,
+      "run": 15.556,
+      "rise": -4,
+      "absoluteGrade": 0.25713,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 31,
+      "toSample": 32,
+      "run": 15.556,
+      "rise": -4,
+      "absoluteGrade": 0.25713,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 32,
+      "toSample": 33,
+      "run": 15.556,
+      "rise": -3,
+      "absoluteGrade": 0.192847,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 33,
+      "toSample": 34,
+      "run": 16.971,
+      "rise": -3,
+      "absoluteGrade": 0.176777,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 34,
+      "toSample": 35,
+      "run": 15.556,
+      "rise": 11,
+      "absoluteGrade": 0.707107,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 35,
+      "toSample": 36,
+      "run": 15.556,
+      "rise": 4,
+      "absoluteGrade": 0.25713,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 36,
+      "toSample": 37,
+      "run": 16.971,
+      "rise": 0,
+      "absoluteGrade": 0,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 37,
+      "toSample": 38,
+      "run": 15.556,
+      "rise": -6,
+      "absoluteGrade": 0.385695,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 38,
+      "toSample": 39,
+      "run": 15.556,
+      "rise": -1,
+      "absoluteGrade": 0.064282,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 39,
+      "toSample": 40,
+      "run": 16.971,
+      "rise": -2,
+      "absoluteGrade": 0.117851,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 40,
+      "toSample": 41,
+      "run": 15.556,
+      "rise": 2,
+      "absoluteGrade": 0.128565,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 41,
+      "toSample": 42,
+      "run": 15.556,
+      "rise": 2,
+      "absoluteGrade": 0.128565,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 42,
+      "toSample": 43,
+      "run": 16.971,
+      "rise": -1,
+      "absoluteGrade": 0.058926,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 43,
+      "toSample": 44,
+      "run": 15,
+      "rise": 6,
+      "absoluteGrade": 0.4,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 44,
+      "toSample": 45,
+      "run": 16,
+      "rise": -6,
+      "absoluteGrade": 0.375,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 45,
+      "toSample": 46,
+      "run": 16,
+      "rise": 6,
+      "absoluteGrade": 0.375,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 46,
+      "toSample": 47,
+      "run": 16,
+      "rise": -2,
+      "absoluteGrade": 0.125,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 47,
+      "toSample": 48,
+      "run": 16,
+      "rise": 0,
+      "absoluteGrade": 0,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 48,
+      "toSample": 49,
+      "run": 16,
+      "rise": -7,
+      "absoluteGrade": 0.4375,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 49,
+      "toSample": 50,
+      "run": 16,
+      "rise": -26,
+      "absoluteGrade": 1.625,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 50,
+      "toSample": 51,
+      "run": 16,
+      "rise": -15,
+      "absoluteGrade": 0.9375,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 51,
+      "toSample": 52,
+      "run": 16,
+      "rise": 4,
+      "absoluteGrade": 0.25,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 52,
+      "toSample": 53,
+      "run": 16,
+      "rise": -1,
+      "absoluteGrade": 0.0625,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 53,
+      "toSample": 54,
+      "run": 16,
+      "rise": -2,
+      "absoluteGrade": 0.125,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 54,
+      "toSample": 55,
+      "run": 16,
+      "rise": -1,
+      "absoluteGrade": 0.0625,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 55,
+      "toSample": 56,
+      "run": 16,
+      "rise": -3,
+      "absoluteGrade": 0.1875,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 56,
+      "toSample": 57,
+      "run": 16,
+      "rise": 3,
+      "absoluteGrade": 0.1875,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 57,
+      "toSample": 58,
+      "run": 16,
+      "rise": -1,
+      "absoluteGrade": 0.0625,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 58,
+      "toSample": 59,
+      "run": 16,
+      "rise": 5,
+      "absoluteGrade": 0.3125,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 59,
+      "toSample": 60,
+      "run": 16,
+      "rise": 2,
+      "absoluteGrade": 0.125,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 60,
+      "toSample": 61,
+      "run": 15.232,
+      "rise": -1,
+      "absoluteGrade": 0.065653,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 61,
+      "toSample": 62,
+      "run": 15.62,
+      "rise": 0,
+      "absoluteGrade": 0,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 62,
+      "toSample": 63,
+      "run": 16.401,
+      "rise": -1,
+      "absoluteGrade": 0.060971,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 63,
+      "toSample": 64,
+      "run": 15.811,
+      "rise": -2,
+      "absoluteGrade": 0.126491,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 64,
+      "toSample": 65,
+      "run": 15.62,
+      "rise": -1,
+      "absoluteGrade": 0.064018,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 65,
+      "toSample": 66,
+      "run": 16.401,
+      "rise": 0,
+      "absoluteGrade": 0,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 66,
+      "toSample": 67,
+      "run": 16.401,
+      "rise": 0,
+      "absoluteGrade": 0,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 67,
+      "toSample": 68,
+      "run": 15,
+      "rise": 1,
+      "absoluteGrade": 0.066667,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 68,
+      "toSample": 69,
+      "run": 16.401,
+      "rise": -2,
+      "absoluteGrade": 0.121942,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 69,
+      "toSample": 70,
+      "run": 16.401,
+      "rise": 7,
+      "absoluteGrade": 0.426798,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 70,
+      "toSample": 71,
+      "run": 15.62,
+      "rise": -1,
+      "absoluteGrade": 0.064018,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 71,
+      "toSample": 72,
+      "run": 16.401,
+      "rise": -5,
+      "absoluteGrade": 0.304855,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 72,
+      "toSample": 73,
+      "run": 15.811,
+      "rise": 2,
+      "absoluteGrade": 0.126491,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 73,
+      "toSample": 74,
+      "run": 15.62,
+      "rise": 3,
+      "absoluteGrade": 0.192055,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 74,
+      "toSample": 75,
+      "run": 16.401,
+      "rise": 0,
+      "absoluteGrade": 0,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 75,
+      "toSample": 76,
+      "run": 16.401,
+      "rise": 0,
+      "absoluteGrade": 0,
+      "exceedsOneInEight": false
+    },
+    {
+      "fromSample": 76,
+      "toSample": 77,
+      "run": 15,
+      "rise": 2,
+      "absoluteGrade": 0.133333,
+      "exceedsOneInEight": true
+    },
+    {
+      "fromSample": 77,
+      "toSample": 78,
+      "run": 12.806,
+      "rise": 1,
+      "absoluteGrade": 0.078087,
+      "exceedsOneInEight": false
+    }
+  ],
+  "engineeredRailProfile": {
+    "status": "PASS_ONE_IN_EIGHT",
+    "method": "Integer-Y dynamic program minimizing sampled cut/fill while constraining every sampled interval to an absolute grade of 1:8 or flatter.",
+    "startY": 68,
+    "endY": 68,
+    "railMinY": 63,
+    "railMaxY": 114,
+    "maximumGrade": 0.125,
+    "maximumCutBlocks": 36,
+    "maximumFillBlocks": 23,
+    "waterCrossingSamples": 3,
+    "profile": [
+      {
+        "sampleIndex": 0,
+        "distanceAlongCenterline": 0,
+        "x": 430,
+        "z": 80,
+        "terrainY": 65,
+        "waterColumn": false,
+        "proposedRailY": 68,
+        "cutFill": -3
+      },
+      {
+        "sampleIndex": 1,
+        "distanceAlongCenterline": 16,
+        "x": 446,
+        "z": 80,
+        "terrainY": 63,
+        "waterColumn": false,
+        "proposedRailY": 70,
+        "cutFill": -7
+      },
+      {
+        "sampleIndex": 2,
+        "distanceAlongCenterline": 32,
+        "x": 462,
+        "z": 80,
+        "terrainY": 55,
+        "waterColumn": true,
+        "proposedRailY": 72,
+        "cutFill": -17
+      },
+      {
+        "sampleIndex": 3,
+        "distanceAlongCenterline": 48,
+        "x": 478,
+        "z": 80,
+        "terrainY": 68,
+        "waterColumn": false,
+        "proposedRailY": 74,
+        "cutFill": -6
+      },
+      {
+        "sampleIndex": 4,
+        "distanceAlongCenterline": 64,
+        "x": 494,
+        "z": 80,
+        "terrainY": 67,
+        "waterColumn": false,
+        "proposedRailY": 76,
+        "cutFill": -9
+      },
+      {
+        "sampleIndex": 5,
+        "distanceAlongCenterline": 80,
+        "x": 510,
+        "z": 80,
+        "terrainY": 73,
+        "waterColumn": false,
+        "proposedRailY": 78,
+        "cutFill": -5
+      },
+      {
+        "sampleIndex": 6,
+        "distanceAlongCenterline": 96,
+        "x": 526,
+        "z": 80,
+        "terrainY": 93,
+        "waterColumn": false,
+        "proposedRailY": 80,
+        "cutFill": 13
+      },
+      {
+        "sampleIndex": 7,
+        "distanceAlongCenterline": 112,
+        "x": 542,
+        "z": 80,
+        "terrainY": 118,
+        "waterColumn": false,
+        "proposedRailY": 82,
+        "cutFill": 36
+      },
+      {
+        "sampleIndex": 8,
+        "distanceAlongCenterline": 128,
+        "x": 558,
+        "z": 80,
+        "terrainY": 118,
+        "waterColumn": false,
+        "proposedRailY": 84,
+        "cutFill": 34
+      },
+      {
+        "sampleIndex": 9,
+        "distanceAlongCenterline": 144,
+        "x": 574,
+        "z": 80,
+        "terrainY": 115,
+        "waterColumn": false,
+        "proposedRailY": 86,
+        "cutFill": 29
+      },
+      {
+        "sampleIndex": 10,
+        "distanceAlongCenterline": 160,
+        "x": 590,
+        "z": 80,
+        "terrainY": 115,
+        "waterColumn": false,
+        "proposedRailY": 88,
+        "cutFill": 27
+      },
+      {
+        "sampleIndex": 11,
+        "distanceAlongCenterline": 176,
+        "x": 606,
+        "z": 80,
+        "terrainY": 116,
+        "waterColumn": false,
+        "proposedRailY": 90,
+        "cutFill": 26
+      },
+      {
+        "sampleIndex": 12,
+        "distanceAlongCenterline": 192,
+        "x": 622,
+        "z": 80,
+        "terrainY": 116,
+        "waterColumn": false,
+        "proposedRailY": 92,
+        "cutFill": 24
+      },
+      {
+        "sampleIndex": 13,
+        "distanceAlongCenterline": 208,
+        "x": 638,
+        "z": 80,
+        "terrainY": 116,
+        "waterColumn": false,
+        "proposedRailY": 94,
+        "cutFill": 22
+      },
+      {
+        "sampleIndex": 14,
+        "distanceAlongCenterline": 224,
+        "x": 654,
+        "z": 80,
+        "terrainY": 116,
+        "waterColumn": false,
+        "proposedRailY": 96,
+        "cutFill": 20
+      },
+      {
+        "sampleIndex": 15,
+        "distanceAlongCenterline": 240,
+        "x": 670,
+        "z": 80,
+        "terrainY": 113,
+        "waterColumn": false,
+        "proposedRailY": 98,
+        "cutFill": 15
+      },
+      {
+        "sampleIndex": 16,
+        "distanceAlongCenterline": 256,
+        "x": 686,
+        "z": 80,
+        "terrainY": 115,
+        "waterColumn": false,
+        "proposedRailY": 100,
+        "cutFill": 15
+      },
+      {
+        "sampleIndex": 17,
+        "distanceAlongCenterline": 272,
+        "x": 702,
+        "z": 80,
+        "terrainY": 111,
+        "waterColumn": false,
+        "proposedRailY": 102,
+        "cutFill": 9
+      },
+      {
+        "sampleIndex": 18,
+        "distanceAlongCenterline": 288,
+        "x": 718,
+        "z": 80,
+        "terrainY": 110,
+        "waterColumn": false,
+        "proposedRailY": 104,
+        "cutFill": 6
+      },
+      {
+        "sampleIndex": 19,
+        "distanceAlongCenterline": 304,
+        "x": 734,
+        "z": 80,
+        "terrainY": 117,
+        "waterColumn": false,
+        "proposedRailY": 106,
+        "cutFill": 11
+      },
+      {
+        "sampleIndex": 20,
+        "distanceAlongCenterline": 320,
+        "x": 750,
+        "z": 80,
+        "terrainY": 119,
+        "waterColumn": false,
+        "proposedRailY": 108,
+        "cutFill": 11
+      },
+      {
+        "sampleIndex": 21,
+        "distanceAlongCenterline": 336,
+        "x": 766,
+        "z": 80,
+        "terrainY": 122,
+        "waterColumn": false,
+        "proposedRailY": 110,
+        "cutFill": 12
+      },
+      {
+        "sampleIndex": 22,
+        "distanceAlongCenterline": 352,
+        "x": 782,
+        "z": 80,
+        "terrainY": 118,
+        "waterColumn": false,
+        "proposedRailY": 112,
+        "cutFill": 6
+      },
+      {
+        "sampleIndex": 23,
+        "distanceAlongCenterline": 368,
+        "x": 798,
+        "z": 80,
+        "terrainY": 116,
+        "waterColumn": false,
+        "proposedRailY": 114,
+        "cutFill": 2
+      },
+      {
+        "sampleIndex": 24,
+        "distanceAlongCenterline": 384,
+        "x": 814,
+        "z": 80,
+        "terrainY": 113,
+        "waterColumn": false,
+        "proposedRailY": 113,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 25,
+        "distanceAlongCenterline": 400,
+        "x": 830,
+        "z": 80,
+        "terrainY": 111,
+        "waterColumn": false,
+        "proposedRailY": 111,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 26,
+        "distanceAlongCenterline": 416,
+        "x": 846,
+        "z": 80,
+        "terrainY": 110,
+        "waterColumn": false,
+        "proposedRailY": 110,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 27,
+        "distanceAlongCenterline": 432,
+        "x": 862,
+        "z": 80,
+        "terrainY": 109,
+        "waterColumn": false,
+        "proposedRailY": 109,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 28,
+        "distanceAlongCenterline": 448,
+        "x": 878,
+        "z": 80,
+        "terrainY": 110,
+        "waterColumn": false,
+        "proposedRailY": 110,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 29,
+        "distanceAlongCenterline": 464,
+        "x": 894,
+        "z": 80,
+        "terrainY": 115,
+        "waterColumn": false,
+        "proposedRailY": 109,
+        "cutFill": 6
+      },
+      {
+        "sampleIndex": 30,
+        "distanceAlongCenterline": 480,
+        "x": 909,
+        "z": 76,
+        "terrainY": 111,
+        "waterColumn": false,
+        "proposedRailY": 108,
+        "cutFill": 3
+      },
+      {
+        "sampleIndex": 31,
+        "distanceAlongCenterline": 496,
+        "x": 920,
+        "z": 65,
+        "terrainY": 107,
+        "waterColumn": false,
+        "proposedRailY": 107,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 32,
+        "distanceAlongCenterline": 512,
+        "x": 931,
+        "z": 54,
+        "terrainY": 103,
+        "waterColumn": false,
+        "proposedRailY": 106,
+        "cutFill": -3
+      },
+      {
+        "sampleIndex": 33,
+        "distanceAlongCenterline": 528,
+        "x": 942,
+        "z": 43,
+        "terrainY": 100,
+        "waterColumn": false,
+        "proposedRailY": 105,
+        "cutFill": -5
+      },
+      {
+        "sampleIndex": 34,
+        "distanceAlongCenterline": 544,
+        "x": 954,
+        "z": 31,
+        "terrainY": 97,
+        "waterColumn": false,
+        "proposedRailY": 107,
+        "cutFill": -10
+      },
+      {
+        "sampleIndex": 35,
+        "distanceAlongCenterline": 560,
+        "x": 965,
+        "z": 20,
+        "terrainY": 108,
+        "waterColumn": false,
+        "proposedRailY": 108,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 36,
+        "distanceAlongCenterline": 576,
+        "x": 976,
+        "z": 9,
+        "terrainY": 112,
+        "waterColumn": false,
+        "proposedRailY": 109,
+        "cutFill": 3
+      },
+      {
+        "sampleIndex": 37,
+        "distanceAlongCenterline": 592,
+        "x": 988,
+        "z": -3,
+        "terrainY": 112,
+        "waterColumn": false,
+        "proposedRailY": 107,
+        "cutFill": 5
+      },
+      {
+        "sampleIndex": 38,
+        "distanceAlongCenterline": 608,
+        "x": 999,
+        "z": -14,
+        "terrainY": 106,
+        "waterColumn": false,
+        "proposedRailY": 106,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 39,
+        "distanceAlongCenterline": 624,
+        "x": 1010,
+        "z": -25,
+        "terrainY": 105,
+        "waterColumn": false,
+        "proposedRailY": 105,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 40,
+        "distanceAlongCenterline": 640,
+        "x": 1022,
+        "z": -37,
+        "terrainY": 103,
+        "waterColumn": false,
+        "proposedRailY": 103,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 41,
+        "distanceAlongCenterline": 656,
+        "x": 1033,
+        "z": -48,
+        "terrainY": 105,
+        "waterColumn": false,
+        "proposedRailY": 103,
+        "cutFill": 2
+      },
+      {
+        "sampleIndex": 42,
+        "distanceAlongCenterline": 672,
+        "x": 1044,
+        "z": -59,
+        "terrainY": 107,
+        "waterColumn": false,
+        "proposedRailY": 102,
+        "cutFill": 5
+      },
+      {
+        "sampleIndex": 43,
+        "distanceAlongCenterline": 688,
+        "x": 1056,
+        "z": -71,
+        "terrainY": 106,
+        "waterColumn": false,
+        "proposedRailY": 100,
+        "cutFill": 6
+      },
+      {
+        "sampleIndex": 44,
+        "distanceAlongCenterline": 704,
+        "x": 1068,
+        "z": -80,
+        "terrainY": 112,
+        "waterColumn": false,
+        "proposedRailY": 99,
+        "cutFill": 13
+      },
+      {
+        "sampleIndex": 45,
+        "distanceAlongCenterline": 720,
+        "x": 1084,
+        "z": -80,
+        "terrainY": 106,
+        "waterColumn": false,
+        "proposedRailY": 97,
+        "cutFill": 9
+      },
+      {
+        "sampleIndex": 46,
+        "distanceAlongCenterline": 736,
+        "x": 1100,
+        "z": -80,
+        "terrainY": 112,
+        "waterColumn": false,
+        "proposedRailY": 95,
+        "cutFill": 17
+      },
+      {
+        "sampleIndex": 47,
+        "distanceAlongCenterline": 752,
+        "x": 1116,
+        "z": -80,
+        "terrainY": 110,
+        "waterColumn": false,
+        "proposedRailY": 93,
+        "cutFill": 17
+      },
+      {
+        "sampleIndex": 48,
+        "distanceAlongCenterline": 768,
+        "x": 1132,
+        "z": -80,
+        "terrainY": 110,
+        "waterColumn": false,
+        "proposedRailY": 91,
+        "cutFill": 19
+      },
+      {
+        "sampleIndex": 49,
+        "distanceAlongCenterline": 784,
+        "x": 1148,
+        "z": -80,
+        "terrainY": 103,
+        "waterColumn": false,
+        "proposedRailY": 89,
+        "cutFill": 14
+      },
+      {
+        "sampleIndex": 50,
+        "distanceAlongCenterline": 800,
+        "x": 1164,
+        "z": -80,
+        "terrainY": 77,
+        "waterColumn": false,
+        "proposedRailY": 87,
+        "cutFill": -10
+      },
+      {
+        "sampleIndex": 51,
+        "distanceAlongCenterline": 816,
+        "x": 1180,
+        "z": -80,
+        "terrainY": 62,
+        "waterColumn": false,
+        "proposedRailY": 85,
+        "cutFill": -23
+      },
+      {
+        "sampleIndex": 52,
+        "distanceAlongCenterline": 832,
+        "x": 1196,
+        "z": -80,
+        "terrainY": 66,
+        "waterColumn": false,
+        "proposedRailY": 83,
+        "cutFill": -17
+      },
+      {
+        "sampleIndex": 53,
+        "distanceAlongCenterline": 848,
+        "x": 1212,
+        "z": -80,
+        "terrainY": 65,
+        "waterColumn": false,
+        "proposedRailY": 81,
+        "cutFill": -16
+      },
+      {
+        "sampleIndex": 54,
+        "distanceAlongCenterline": 864,
+        "x": 1228,
+        "z": -80,
+        "terrainY": 63,
+        "waterColumn": false,
+        "proposedRailY": 79,
+        "cutFill": -16
+      },
+      {
+        "sampleIndex": 55,
+        "distanceAlongCenterline": 880,
+        "x": 1244,
+        "z": -80,
+        "terrainY": 62,
+        "waterColumn": false,
+        "proposedRailY": 77,
+        "cutFill": -15
+      },
+      {
+        "sampleIndex": 56,
+        "distanceAlongCenterline": 896,
+        "x": 1260,
+        "z": -80,
+        "terrainY": 59,
+        "waterColumn": true,
+        "proposedRailY": 75,
+        "cutFill": -16
+      },
+      {
+        "sampleIndex": 57,
+        "distanceAlongCenterline": 912,
+        "x": 1276,
+        "z": -80,
+        "terrainY": 62,
+        "waterColumn": false,
+        "proposedRailY": 73,
+        "cutFill": -11
+      },
+      {
+        "sampleIndex": 58,
+        "distanceAlongCenterline": 928,
+        "x": 1292,
+        "z": -80,
+        "terrainY": 61,
+        "waterColumn": true,
+        "proposedRailY": 71,
+        "cutFill": -10
+      },
+      {
+        "sampleIndex": 59,
+        "distanceAlongCenterline": 944,
+        "x": 1308,
+        "z": -80,
+        "terrainY": 66,
+        "waterColumn": false,
+        "proposedRailY": 69,
+        "cutFill": -3
+      },
+      {
+        "sampleIndex": 60,
+        "distanceAlongCenterline": 960,
+        "x": 1324,
+        "z": -80,
+        "terrainY": 68,
+        "waterColumn": false,
+        "proposedRailY": 68,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 61,
+        "distanceAlongCenterline": 976,
+        "x": 1338,
+        "z": -86,
+        "terrainY": 67,
+        "waterColumn": false,
+        "proposedRailY": 67,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 62,
+        "distanceAlongCenterline": 992,
+        "x": 1350,
+        "z": -96,
+        "terrainY": 67,
+        "waterColumn": false,
+        "proposedRailY": 67,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 63,
+        "distanceAlongCenterline": 1008,
+        "x": 1363,
+        "z": -106,
+        "terrainY": 66,
+        "waterColumn": false,
+        "proposedRailY": 65,
+        "cutFill": 1
+      },
+      {
+        "sampleIndex": 64,
+        "distanceAlongCenterline": 1024,
+        "x": 1376,
+        "z": -115,
+        "terrainY": 64,
+        "waterColumn": false,
+        "proposedRailY": 64,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 65,
+        "distanceAlongCenterline": 1040,
+        "x": 1388,
+        "z": -125,
+        "terrainY": 63,
+        "waterColumn": false,
+        "proposedRailY": 63,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 66,
+        "distanceAlongCenterline": 1056,
+        "x": 1401,
+        "z": -135,
+        "terrainY": 63,
+        "waterColumn": false,
+        "proposedRailY": 63,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 67,
+        "distanceAlongCenterline": 1072,
+        "x": 1414,
+        "z": -145,
+        "terrainY": 63,
+        "waterColumn": false,
+        "proposedRailY": 63,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 68,
+        "distanceAlongCenterline": 1088,
+        "x": 1426,
+        "z": -154,
+        "terrainY": 64,
+        "waterColumn": false,
+        "proposedRailY": 64,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 69,
+        "distanceAlongCenterline": 1104,
+        "x": 1439,
+        "z": -164,
+        "terrainY": 62,
+        "waterColumn": false,
+        "proposedRailY": 66,
+        "cutFill": -4
+      },
+      {
+        "sampleIndex": 70,
+        "distanceAlongCenterline": 1120,
+        "x": 1452,
+        "z": -174,
+        "terrainY": 69,
+        "waterColumn": false,
+        "proposedRailY": 68,
+        "cutFill": 1
+      },
+      {
+        "sampleIndex": 71,
+        "distanceAlongCenterline": 1136,
+        "x": 1464,
+        "z": -184,
+        "terrainY": 68,
+        "waterColumn": false,
+        "proposedRailY": 68,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 72,
+        "distanceAlongCenterline": 1152,
+        "x": 1477,
+        "z": -194,
+        "terrainY": 63,
+        "waterColumn": false,
+        "proposedRailY": 66,
+        "cutFill": -3
+      },
+      {
+        "sampleIndex": 73,
+        "distanceAlongCenterline": 1168,
+        "x": 1490,
+        "z": -203,
+        "terrainY": 65,
+        "waterColumn": false,
+        "proposedRailY": 67,
+        "cutFill": -2
+      },
+      {
+        "sampleIndex": 74,
+        "distanceAlongCenterline": 1184,
+        "x": 1502,
+        "z": -213,
+        "terrainY": 68,
+        "waterColumn": false,
+        "proposedRailY": 68,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 75,
+        "distanceAlongCenterline": 1200,
+        "x": 1515,
+        "z": -223,
+        "terrainY": 68,
+        "waterColumn": false,
+        "proposedRailY": 68,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 76,
+        "distanceAlongCenterline": 1216,
+        "x": 1528,
+        "z": -233,
+        "terrainY": 68,
+        "waterColumn": false,
+        "proposedRailY": 68,
+        "cutFill": 0
+      },
+      {
+        "sampleIndex": 77,
+        "distanceAlongCenterline": 1232,
+        "x": 1540,
+        "z": -242,
+        "terrainY": 70,
+        "waterColumn": false,
+        "proposedRailY": 69,
+        "cutFill": 1
+      },
+      {
+        "sampleIndex": 78,
+        "distanceAlongCenterline": 1244.303,
+        "x": 1550,
+        "z": -250,
+        "terrainY": 71,
+        "waterColumn": false,
+        "proposedRailY": 68,
+        "cutFill": 3
+      }
+    ],
+    "segments": [
+      {
+        "fromSample": 0,
+        "toSample": 1,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 1,
+        "toSample": 2,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 2,
+        "toSample": 3,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 3,
+        "toSample": 4,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 4,
+        "toSample": 5,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 5,
+        "toSample": 6,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 6,
+        "toSample": 7,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 7,
+        "toSample": 8,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 8,
+        "toSample": 9,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 9,
+        "toSample": 10,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 10,
+        "toSample": 11,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 11,
+        "toSample": 12,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 12,
+        "toSample": 13,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 13,
+        "toSample": 14,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 14,
+        "toSample": 15,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 15,
+        "toSample": 16,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 16,
+        "toSample": 17,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 17,
+        "toSample": 18,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 18,
+        "toSample": 19,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 19,
+        "toSample": 20,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 20,
+        "toSample": 21,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 21,
+        "toSample": 22,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 22,
+        "toSample": 23,
+        "run": 16,
+        "rise": 2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 23,
+        "toSample": 24,
+        "run": 16,
+        "rise": -1,
+        "absoluteGrade": 0.0625
+      },
+      {
+        "fromSample": 24,
+        "toSample": 25,
+        "run": 16,
+        "rise": -2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 25,
+        "toSample": 26,
+        "run": 16,
+        "rise": -1,
+        "absoluteGrade": 0.0625
+      },
+      {
+        "fromSample": 26,
+        "toSample": 27,
+        "run": 16,
+        "rise": -1,
+        "absoluteGrade": 0.0625
+      },
+      {
+        "fromSample": 27,
+        "toSample": 28,
+        "run": 16,
+        "rise": 1,
+        "absoluteGrade": 0.0625
+      },
+      {
+        "fromSample": 28,
+        "toSample": 29,
+        "run": 16,
+        "rise": -1,
+        "absoluteGrade": 0.0625
+      },
+      {
+        "fromSample": 29,
+        "toSample": 30,
+        "run": 15.524,
+        "rise": -1,
+        "absoluteGrade": 0.064416
+      },
+      {
+        "fromSample": 30,
+        "toSample": 31,
+        "run": 15.556,
+        "rise": -1,
+        "absoluteGrade": 0.064282
+      },
+      {
+        "fromSample": 31,
+        "toSample": 32,
+        "run": 15.556,
+        "rise": -1,
+        "absoluteGrade": 0.064282
+      },
+      {
+        "fromSample": 32,
+        "toSample": 33,
+        "run": 15.556,
+        "rise": -1,
+        "absoluteGrade": 0.064282
+      },
+      {
+        "fromSample": 33,
+        "toSample": 34,
+        "run": 16.971,
+        "rise": 2,
+        "absoluteGrade": 0.117851
+      },
+      {
+        "fromSample": 34,
+        "toSample": 35,
+        "run": 15.556,
+        "rise": 1,
+        "absoluteGrade": 0.064282
+      },
+      {
+        "fromSample": 35,
+        "toSample": 36,
+        "run": 15.556,
+        "rise": 1,
+        "absoluteGrade": 0.064282
+      },
+      {
+        "fromSample": 36,
+        "toSample": 37,
+        "run": 16.971,
+        "rise": -2,
+        "absoluteGrade": 0.117851
+      },
+      {
+        "fromSample": 37,
+        "toSample": 38,
+        "run": 15.556,
+        "rise": -1,
+        "absoluteGrade": 0.064282
+      },
+      {
+        "fromSample": 38,
+        "toSample": 39,
+        "run": 15.556,
+        "rise": -1,
+        "absoluteGrade": 0.064282
+      },
+      {
+        "fromSample": 39,
+        "toSample": 40,
+        "run": 16.971,
+        "rise": -2,
+        "absoluteGrade": 0.117851
+      },
+      {
+        "fromSample": 40,
+        "toSample": 41,
+        "run": 15.556,
+        "rise": 0,
+        "absoluteGrade": 0
+      },
+      {
+        "fromSample": 41,
+        "toSample": 42,
+        "run": 15.556,
+        "rise": -1,
+        "absoluteGrade": 0.064282
+      },
+      {
+        "fromSample": 42,
+        "toSample": 43,
+        "run": 16.971,
+        "rise": -2,
+        "absoluteGrade": 0.117851
+      },
+      {
+        "fromSample": 43,
+        "toSample": 44,
+        "run": 15,
+        "rise": -1,
+        "absoluteGrade": 0.066667
+      },
+      {
+        "fromSample": 44,
+        "toSample": 45,
+        "run": 16,
+        "rise": -2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 45,
+        "toSample": 46,
+        "run": 16,
+        "rise": -2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 46,
+        "toSample": 47,
+        "run": 16,
+        "rise": -2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 47,
+        "toSample": 48,
+        "run": 16,
+        "rise": -2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 48,
+        "toSample": 49,
+        "run": 16,
+        "rise": -2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 49,
+        "toSample": 50,
+        "run": 16,
+        "rise": -2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 50,
+        "toSample": 51,
+        "run": 16,
+        "rise": -2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 51,
+        "toSample": 52,
+        "run": 16,
+        "rise": -2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 52,
+        "toSample": 53,
+        "run": 16,
+        "rise": -2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 53,
+        "toSample": 54,
+        "run": 16,
+        "rise": -2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 54,
+        "toSample": 55,
+        "run": 16,
+        "rise": -2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 55,
+        "toSample": 56,
+        "run": 16,
+        "rise": -2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 56,
+        "toSample": 57,
+        "run": 16,
+        "rise": -2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 57,
+        "toSample": 58,
+        "run": 16,
+        "rise": -2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 58,
+        "toSample": 59,
+        "run": 16,
+        "rise": -2,
+        "absoluteGrade": 0.125
+      },
+      {
+        "fromSample": 59,
+        "toSample": 60,
+        "run": 16,
+        "rise": -1,
+        "absoluteGrade": 0.0625
+      },
+      {
+        "fromSample": 60,
+        "toSample": 61,
+        "run": 15.232,
+        "rise": -1,
+        "absoluteGrade": 0.065653
+      },
+      {
+        "fromSample": 61,
+        "toSample": 62,
+        "run": 15.62,
+        "rise": 0,
+        "absoluteGrade": 0
+      },
+      {
+        "fromSample": 62,
+        "toSample": 63,
+        "run": 16.401,
+        "rise": -2,
+        "absoluteGrade": 0.121942
+      },
+      {
+        "fromSample": 63,
+        "toSample": 64,
+        "run": 15.811,
+        "rise": -1,
+        "absoluteGrade": 0.063246
+      },
+      {
+        "fromSample": 64,
+        "toSample": 65,
+        "run": 15.62,
+        "rise": -1,
+        "absoluteGrade": 0.064018
+      },
+      {
+        "fromSample": 65,
+        "toSample": 66,
+        "run": 16.401,
+        "rise": 0,
+        "absoluteGrade": 0
+      },
+      {
+        "fromSample": 66,
+        "toSample": 67,
+        "run": 16.401,
+        "rise": 0,
+        "absoluteGrade": 0
+      },
+      {
+        "fromSample": 67,
+        "toSample": 68,
+        "run": 15,
+        "rise": 1,
+        "absoluteGrade": 0.066667
+      },
+      {
+        "fromSample": 68,
+        "toSample": 69,
+        "run": 16.401,
+        "rise": 2,
+        "absoluteGrade": 0.121942
+      },
+      {
+        "fromSample": 69,
+        "toSample": 70,
+        "run": 16.401,
+        "rise": 2,
+        "absoluteGrade": 0.121942
+      },
+      {
+        "fromSample": 70,
+        "toSample": 71,
+        "run": 15.62,
+        "rise": 0,
+        "absoluteGrade": 0
+      },
+      {
+        "fromSample": 71,
+        "toSample": 72,
+        "run": 16.401,
+        "rise": -2,
+        "absoluteGrade": 0.121942
+      },
+      {
+        "fromSample": 72,
+        "toSample": 73,
+        "run": 15.811,
+        "rise": 1,
+        "absoluteGrade": 0.063246
+      },
+      {
+        "fromSample": 73,
+        "toSample": 74,
+        "run": 15.62,
+        "rise": 1,
+        "absoluteGrade": 0.064018
+      },
+      {
+        "fromSample": 74,
+        "toSample": 75,
+        "run": 16.401,
+        "rise": 0,
+        "absoluteGrade": 0
+      },
+      {
+        "fromSample": 75,
+        "toSample": 76,
+        "run": 16.401,
+        "rise": 0,
+        "absoluteGrade": 0
+      },
+      {
+        "fromSample": 76,
+        "toSample": 77,
+        "run": 15,
+        "rise": 1,
+        "absoluteGrade": 0.066667
+      },
+      {
+        "fromSample": 77,
+        "toSample": 78,
+        "run": 12.806,
+        "rise": -1,
+        "absoluteGrade": 0.078087
+      }
+    ]
+  },
+  "namedPointSamples": [
+    {
+      "id": "W-TERM",
+      "x": 430,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 71,
+      "worldSurfaceBlock": "minecraft:birch_leaves",
+      "terrainY": 65,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "id": "PI-1",
+      "x": 905,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 120,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 112,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "id": "PI-2",
+      "x": 1065,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 119,
+      "worldSurfaceBlock": "minecraft:dark_oak_leaves",
+      "terrainY": 108,
+      "terrainBlock": "minecraft:dirt",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:dark_forest"
+    },
+    {
+      "id": "PI-3",
+      "x": 1330,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 68,
+      "worldSurfaceBlock": "minecraft:leaf_litter",
+      "terrainY": 67,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "id": "E-TERM",
+      "x": 1550,
+      "z": -250,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 71,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 71,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:forest"
+    },
+    {
+      "id": "EXIT-11",
+      "x": 1180,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 62,
+      "worldSurfaceBlock": "minecraft:stone",
+      "terrainY": 62,
+      "terrainBlock": "minecraft:stone",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:birch_forest"
+    },
+    {
+      "id": "DD-1",
+      "x": 1240,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 63,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 63,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:taiga"
+    },
+    {
+      "id": "L1",
+      "x": 470,
+      "z": -232,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 74,
+      "worldSurfaceBlock": "minecraft:coarse_dirt",
+      "terrainY": 74,
+      "terrainBlock": "minecraft:coarse_dirt",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:birch_forest"
+    },
+    {
+      "id": "L2",
+      "x": 305,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 62,
+      "worldSurfaceBlock": "minecraft:water",
+      "terrainY": 45,
+      "terrainBlock": "minecraft:gravel",
+      "waterColumn": true,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:plains"
+    },
+    {
+      "id": "L3",
+      "x": 362,
+      "z": 165,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 112,
+      "worldSurfaceBlock": "minecraft:reinforced_deepslate",
+      "terrainY": 112,
+      "terrainBlock": "minecraft:reinforced_deepslate",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:forest"
+    },
+    {
+      "id": "GATEWAY-WEST-STOP",
+      "x": 1550,
+      "z": -250,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 71,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 71,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:forest"
+    },
+    {
+      "id": "GATEWAY-CENTRAL-STOP",
+      "x": 1640,
+      "z": -250,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 65,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 65,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:forest"
+    },
+    {
+      "id": "ALPINE-JUNCTION-STOP",
+      "x": 1780,
+      "z": -250,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 63,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 63,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:forest"
+    },
+    {
+      "id": "HIDDEN-SUBWAY-PORTAL",
+      "x": 1780,
+      "z": -285,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 66,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 66,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:forest"
+    },
+    {
+      "id": "GATEWAY-FUTURE-EAST-STOP",
+      "x": 1920,
+      "z": -250,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 66,
+      "worldSurfaceBlock": "minecraft:oak_leaves",
+      "terrainY": 63,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "id": "GRAND-AVENUE-WEST",
+      "x": 1750,
+      "z": -300,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 78,
+      "worldSurfaceBlock": "minecraft:oak_leaves",
+      "terrainY": 62,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "id": "GRAND-AVENUE-CROSSING",
+      "x": 2108,
+      "z": -250,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 70,
+      "worldSurfaceBlock": "minecraft:snow",
+      "terrainY": 70,
+      "terrainBlock": "minecraft:snow",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:snowy_taiga"
+    },
+    {
+      "id": "HOUSTON-TERMINUS",
+      "x": 2048,
+      "z": -328,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 88,
+      "worldSurfaceBlock": "minecraft:snow",
+      "terrainY": 88,
+      "terrainBlock": "minecraft:snow",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:snowy_taiga"
+    },
+    {
+      "id": "LOCAL-ORIGIN",
+      "x": 2048,
+      "z": -328,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 88,
+      "worldSurfaceBlock": "minecraft:snow",
+      "terrainY": 88,
+      "terrainBlock": "minecraft:snow",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:snowy_taiga"
+    },
+    {
+      "id": "PUBLIC-SHAFT-HEAD",
+      "x": 2108,
+      "z": -398,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 63,
+      "worldSurfaceBlock": "minecraft:snow",
+      "terrainY": 63,
+      "terrainBlock": "minecraft:snow",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:snowy_taiga"
+    },
+    {
+      "id": "SUBTROPOLIS-CENTER",
+      "x": 2048,
+      "z": -528,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 86,
+      "worldSurfaceBlock": "minecraft:snow",
+      "terrainY": 86,
+      "terrainBlock": "minecraft:snow",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:snowy_plains"
+    },
+    {
+      "id": "CHEYENNE-PORTAL",
+      "x": 2048,
+      "z": -748,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 83,
+      "worldSurfaceBlock": "minecraft:snow",
+      "terrainY": 83,
+      "terrainBlock": "minecraft:snow",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:snowy_plains"
+    },
+    {
+      "id": "SUMMIT-FOOTPRINT",
+      "x": 2048,
+      "z": -828,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 81,
+      "worldSurfaceBlock": "minecraft:snow",
+      "terrainY": 81,
+      "terrainBlock": "minecraft:snow",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:snowy_plains"
+    },
+    {
+      "id": "EMPTY-EIGHT-WEST-THROAT",
+      "x": 1880,
+      "z": -928,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 73,
+      "worldSurfaceBlock": "minecraft:snow",
+      "terrainY": 73,
+      "terrainBlock": "minecraft:snow",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:snowy_taiga"
+    },
+    {
+      "id": "EMPTY-EIGHT-CONCOURSE",
+      "x": 2050,
+      "z": -928,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 72,
+      "worldSurfaceBlock": "minecraft:snow",
+      "terrainY": 72,
+      "terrainBlock": "minecraft:snow",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:snowy_taiga"
+    }
+  ],
+  "samples": [
+    {
+      "index": 0,
+      "distanceAlongCenterline": 0,
+      "x": 430,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 71,
+      "worldSurfaceBlock": "minecraft:birch_leaves",
+      "terrainY": 65,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 1,
+      "distanceAlongCenterline": 16,
+      "x": 446,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 67,
+      "worldSurfaceBlock": "minecraft:oak_leaves",
+      "terrainY": 63,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 2,
+      "distanceAlongCenterline": 32,
+      "x": 462,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 62,
+      "worldSurfaceBlock": "minecraft:water",
+      "terrainY": 55,
+      "terrainBlock": "minecraft:sand",
+      "waterColumn": true,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:river"
+    },
+    {
+      "index": 3,
+      "distanceAlongCenterline": 48,
+      "x": 478,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 73,
+      "worldSurfaceBlock": "minecraft:oak_leaves",
+      "terrainY": 68,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 4,
+      "distanceAlongCenterline": 64,
+      "x": 494,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 70,
+      "worldSurfaceBlock": "minecraft:oak_leaves",
+      "terrainY": 67,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 5,
+      "distanceAlongCenterline": 80,
+      "x": 510,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 79,
+      "worldSurfaceBlock": "minecraft:birch_leaves",
+      "terrainY": 73,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:birch_forest"
+    },
+    {
+      "index": 6,
+      "distanceAlongCenterline": 96,
+      "x": 526,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 93,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 93,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:birch_forest"
+    },
+    {
+      "index": 7,
+      "distanceAlongCenterline": 112,
+      "x": 542,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 118,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 118,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:meadow"
+    },
+    {
+      "index": 8,
+      "distanceAlongCenterline": 128,
+      "x": 558,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 118,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 118,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:meadow"
+    },
+    {
+      "index": 9,
+      "distanceAlongCenterline": 144,
+      "x": 574,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 116,
+      "worldSurfaceBlock": "minecraft:wildflowers",
+      "terrainY": 115,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:meadow"
+    },
+    {
+      "index": 10,
+      "distanceAlongCenterline": 160,
+      "x": 590,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 115,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 115,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:meadow"
+    },
+    {
+      "index": 11,
+      "distanceAlongCenterline": 176,
+      "x": 606,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 116,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 116,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:meadow"
+    },
+    {
+      "index": 12,
+      "distanceAlongCenterline": 192,
+      "x": 622,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 116,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 116,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:meadow"
+    },
+    {
+      "index": 13,
+      "distanceAlongCenterline": 208,
+      "x": 638,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 117,
+      "worldSurfaceBlock": "minecraft:dandelion",
+      "terrainY": 116,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:meadow"
+    },
+    {
+      "index": 14,
+      "distanceAlongCenterline": 224,
+      "x": 654,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 116,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 116,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:meadow"
+    },
+    {
+      "index": 15,
+      "distanceAlongCenterline": 240,
+      "x": 670,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 113,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 113,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:meadow"
+    },
+    {
+      "index": 16,
+      "distanceAlongCenterline": 256,
+      "x": 686,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 115,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 115,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:meadow"
+    },
+    {
+      "index": 17,
+      "distanceAlongCenterline": 272,
+      "x": 702,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 111,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 111,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:meadow"
+    },
+    {
+      "index": 18,
+      "distanceAlongCenterline": 288,
+      "x": 718,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 110,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 110,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:meadow"
+    },
+    {
+      "index": 19,
+      "distanceAlongCenterline": 304,
+      "x": 734,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 127,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 117,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 20,
+      "distanceAlongCenterline": 320,
+      "x": 750,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 127,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 119,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 21,
+      "distanceAlongCenterline": 336,
+      "x": 766,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 130,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 122,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 22,
+      "distanceAlongCenterline": 352,
+      "x": 782,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 126,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 118,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 23,
+      "distanceAlongCenterline": 368,
+      "x": 798,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 123,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 116,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 24,
+      "distanceAlongCenterline": 384,
+      "x": 814,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 119,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 113,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 25,
+      "distanceAlongCenterline": 400,
+      "x": 830,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 121,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 111,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 26,
+      "distanceAlongCenterline": 416,
+      "x": 846,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 120,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 110,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 27,
+      "distanceAlongCenterline": 432,
+      "x": 862,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 115,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 109,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 28,
+      "distanceAlongCenterline": 448,
+      "x": 878,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 120,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 110,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 29,
+      "distanceAlongCenterline": 464,
+      "x": 894,
+      "z": 80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 124,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 115,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 30,
+      "distanceAlongCenterline": 480,
+      "x": 909,
+      "z": 76,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 119,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 111,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 31,
+      "distanceAlongCenterline": 496,
+      "x": 920,
+      "z": 65,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 115,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 107,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 32,
+      "distanceAlongCenterline": 512,
+      "x": 931,
+      "z": 54,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 112,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 103,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 33,
+      "distanceAlongCenterline": 528,
+      "x": 942,
+      "z": 43,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 106,
+      "worldSurfaceBlock": "minecraft:dark_oak_leaves",
+      "terrainY": 100,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:dark_forest"
+    },
+    {
+      "index": 34,
+      "distanceAlongCenterline": 544,
+      "x": 954,
+      "z": 31,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 105,
+      "worldSurfaceBlock": "minecraft:dark_oak_leaves",
+      "terrainY": 97,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:dark_forest"
+    },
+    {
+      "index": 35,
+      "distanceAlongCenterline": 560,
+      "x": 965,
+      "z": 20,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 116,
+      "worldSurfaceBlock": "minecraft:dark_oak_leaves",
+      "terrainY": 108,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:dark_forest"
+    },
+    {
+      "index": 36,
+      "distanceAlongCenterline": 576,
+      "x": 976,
+      "z": 9,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 121,
+      "worldSurfaceBlock": "minecraft:dark_oak_leaves",
+      "terrainY": 112,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:dark_forest"
+    },
+    {
+      "index": 37,
+      "distanceAlongCenterline": 592,
+      "x": 988,
+      "z": -3,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 121,
+      "worldSurfaceBlock": "minecraft:dark_oak_leaves",
+      "terrainY": 112,
+      "terrainBlock": "minecraft:dirt",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:dark_forest"
+    },
+    {
+      "index": 38,
+      "distanceAlongCenterline": 608,
+      "x": 999,
+      "z": -14,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 106,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 106,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:dark_forest"
+    },
+    {
+      "index": 39,
+      "distanceAlongCenterline": 624,
+      "x": 1010,
+      "z": -25,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 112,
+      "worldSurfaceBlock": "minecraft:oak_leaves",
+      "terrainY": 105,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:dark_forest"
+    },
+    {
+      "index": 40,
+      "distanceAlongCenterline": 640,
+      "x": 1022,
+      "z": -37,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 111,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 103,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 41,
+      "distanceAlongCenterline": 656,
+      "x": 1033,
+      "z": -48,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 105,
+      "worldSurfaceBlock": "minecraft:pale_moss_block",
+      "terrainY": 105,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 42,
+      "distanceAlongCenterline": 672,
+      "x": 1044,
+      "z": -59,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 107,
+      "worldSurfaceBlock": "minecraft:pale_moss_block",
+      "terrainY": 107,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 43,
+      "distanceAlongCenterline": 688,
+      "x": 1056,
+      "z": -71,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 112,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 106,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 44,
+      "distanceAlongCenterline": 704,
+      "x": 1068,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 121,
+      "worldSurfaceBlock": "minecraft:dark_oak_leaves",
+      "terrainY": 112,
+      "terrainBlock": "minecraft:dirt",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 45,
+      "distanceAlongCenterline": 720,
+      "x": 1084,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 114,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 106,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 46,
+      "distanceAlongCenterline": 736,
+      "x": 1100,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 119,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 112,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 47,
+      "distanceAlongCenterline": 752,
+      "x": 1116,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 114,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 110,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 48,
+      "distanceAlongCenterline": 768,
+      "x": 1132,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 117,
+      "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+      "terrainY": 110,
+      "terrainBlock": "minecraft:pale_moss_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 49,
+      "distanceAlongCenterline": 784,
+      "x": 1148,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 103,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 103,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:pale_garden"
+    },
+    {
+      "index": 50,
+      "distanceAlongCenterline": 800,
+      "x": 1164,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 86,
+      "worldSurfaceBlock": "minecraft:birch_leaves",
+      "terrainY": 77,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:dark_forest"
+    },
+    {
+      "index": 51,
+      "distanceAlongCenterline": 816,
+      "x": 1180,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 62,
+      "worldSurfaceBlock": "minecraft:stone",
+      "terrainY": 62,
+      "terrainBlock": "minecraft:stone",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:birch_forest"
+    },
+    {
+      "index": 52,
+      "distanceAlongCenterline": 832,
+      "x": 1196,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 66,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 66,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:birch_forest"
+    },
+    {
+      "index": 53,
+      "distanceAlongCenterline": 848,
+      "x": 1212,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 65,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 65,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:birch_forest"
+    },
+    {
+      "index": 54,
+      "distanceAlongCenterline": 864,
+      "x": 1228,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 67,
+      "worldSurfaceBlock": "minecraft:birch_leaves",
+      "terrainY": 63,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:birch_forest"
+    },
+    {
+      "index": 55,
+      "distanceAlongCenterline": 880,
+      "x": 1244,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 62,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 62,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:river"
+    },
+    {
+      "index": 56,
+      "distanceAlongCenterline": 896,
+      "x": 1260,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 62,
+      "worldSurfaceBlock": "minecraft:water",
+      "terrainY": 59,
+      "terrainBlock": "minecraft:sand",
+      "waterColumn": true,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:river"
+    },
+    {
+      "index": 57,
+      "distanceAlongCenterline": 912,
+      "x": 1276,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 62,
+      "worldSurfaceBlock": "minecraft:sand",
+      "terrainY": 62,
+      "terrainBlock": "minecraft:sand",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:river"
+    },
+    {
+      "index": 58,
+      "distanceAlongCenterline": 928,
+      "x": 1292,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 62,
+      "worldSurfaceBlock": "minecraft:water",
+      "terrainY": 61,
+      "terrainBlock": "minecraft:dirt",
+      "waterColumn": true,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 59,
+      "distanceAlongCenterline": 944,
+      "x": 1308,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 72,
+      "worldSurfaceBlock": "minecraft:oak_leaves",
+      "terrainY": 66,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 60,
+      "distanceAlongCenterline": 960,
+      "x": 1324,
+      "z": -80,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 71,
+      "worldSurfaceBlock": "minecraft:oak_leaves",
+      "terrainY": 68,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 61,
+      "distanceAlongCenterline": 976,
+      "x": 1338,
+      "z": -86,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 68,
+      "worldSurfaceBlock": "minecraft:leaf_litter",
+      "terrainY": 67,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 62,
+      "distanceAlongCenterline": 992,
+      "x": 1350,
+      "z": -96,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 72,
+      "worldSurfaceBlock": "minecraft:birch_leaves",
+      "terrainY": 67,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 63,
+      "distanceAlongCenterline": 1008,
+      "x": 1363,
+      "z": -106,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 66,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 66,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 64,
+      "distanceAlongCenterline": 1024,
+      "x": 1376,
+      "z": -115,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 64,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 64,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 65,
+      "distanceAlongCenterline": 1040,
+      "x": 1388,
+      "z": -125,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 63,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 63,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 66,
+      "distanceAlongCenterline": 1056,
+      "x": 1401,
+      "z": -135,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 63,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 63,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:plains"
+    },
+    {
+      "index": 67,
+      "distanceAlongCenterline": 1072,
+      "x": 1414,
+      "z": -145,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 64,
+      "worldSurfaceBlock": "minecraft:leaf_litter",
+      "terrainY": 63,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 68,
+      "distanceAlongCenterline": 1088,
+      "x": 1426,
+      "z": -154,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 64,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 64,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 69,
+      "distanceAlongCenterline": 1104,
+      "x": 1439,
+      "z": -164,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 67,
+      "worldSurfaceBlock": "minecraft:oak_leaves",
+      "terrainY": 62,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 70,
+      "distanceAlongCenterline": 1120,
+      "x": 1452,
+      "z": -174,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 73,
+      "worldSurfaceBlock": "minecraft:oak_leaves",
+      "terrainY": 69,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 71,
+      "distanceAlongCenterline": 1136,
+      "x": 1464,
+      "z": -184,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 68,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 68,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 72,
+      "distanceAlongCenterline": 1152,
+      "x": 1477,
+      "z": -194,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 63,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 63,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 73,
+      "distanceAlongCenterline": 1168,
+      "x": 1490,
+      "z": -203,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 69,
+      "worldSurfaceBlock": "minecraft:oak_leaves",
+      "terrainY": 65,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 74,
+      "distanceAlongCenterline": 1184,
+      "x": 1502,
+      "z": -213,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 69,
+      "worldSurfaceBlock": "minecraft:leaf_litter",
+      "terrainY": 68,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 75,
+      "distanceAlongCenterline": 1200,
+      "x": 1515,
+      "z": -223,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 68,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 68,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 76,
+      "distanceAlongCenterline": 1216,
+      "x": 1528,
+      "z": -233,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 69,
+      "worldSurfaceBlock": "minecraft:leaf_litter",
+      "terrainY": 68,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 77,
+      "distanceAlongCenterline": 1232,
+      "x": 1540,
+      "z": -242,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 71,
+      "worldSurfaceBlock": "minecraft:leaf_litter",
+      "terrainY": 70,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": true,
+      "biome": "minecraft:forest"
+    },
+    {
+      "index": 78,
+      "distanceAlongCenterline": 1244.303,
+      "x": 1550,
+      "z": -250,
+      "chunkStatus": "minecraft:full",
+      "worldSurfaceY": 71,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 71,
+      "terrainBlock": "minecraft:grass_block",
+      "waterColumn": false,
+      "lavaColumn": false,
+      "vegetationAboveTerrain": false,
+      "biome": "minecraft:forest"
+    }
+  ]
+}

@@ -4,11 +4,12 @@
 
 Use these sources in this order:
 
-1. The accepted immutable snapshot and verified current database define what exists now.
-2. Masterplan 04's v2 no-ravine contractor brief and root coordinate file define the proposed Combined Complex concept.
-3. Masterplans 01, 02, and 03 define internal architectural programs, not current-world placement.
-4. Masterplan 04's map-integration package is historical input only where it conflicts with the sources above.
-5. Renderings are mood and communication assets, never measured geometry.
+1. The Phase 0 rerun immutable post snapshot and generated evidence define terrain, water, biome, cover, and generated-structure constraints for the revised site.
+2. The accepted immutable July 28 snapshot and verified current database define released construction and current-world identity.
+3. Masterplan 04's v2 no-ravine contractor brief and root coordinate file define the proposed Combined Complex concept.
+4. Masterplans 01, 02, and 03 define internal architectural programs, not current-world placement.
+5. Masterplan 04's map-integration package is historical input only where it conflicts with the sources above.
+6. Renderings are mood and communication assets, never measured geometry.
 
 ## Accepted current-world baseline
 
@@ -73,22 +74,22 @@ The following conflicts are normalized by this package:
 
 | Conflict in Masterplan 04 | Decision in Masterplan 05 |
 |---|---|
-| Native placement around world origin overlaps the current built world | Translate to the east reserve; current feature max `x=1300`, study reserve starts at `x=1500` |
-| Native vertical range `Y=-100…800` cannot fit vanilla `Y=-64…319` | Use a provisional piecewise vertical transform; retain the native geometry only as a separate-world fallback |
+| Native placement around world origin overlaps the current built world | Use the Phase 0-approved origin `(2048,-328)` and north–south transform inside a reserve beginning at `x=1500` |
+| Native vertical range `Y=-100…800` cannot fit vanilla `Y=-64…319` | Use the Phase 0 detailed-design piecewise vertical transform; retain native height only as a separate-world fallback |
 | Map-integration files retain a ravine marker and portal `Y=0` | Remove the ravine; retain the v2 contact and portal at local `Y=200` |
 | Service tunnel is called 120 blocks despite a much larger 3D separation | Use transformed endpoints and require a surveyed, rail-valid centerline |
 | Funicular endpoint definitions are vertical or too steep | Use a switchback centerline with horizontal run at least equal to vertical rise |
 | Public “vertical” shaft changes Z by 30 blocks | Treat it as a shaft with a declared lower dogleg, or align it during detailed design |
-| Grand Avenue is labeled 425 blocks but its endpoints are about 434 blocks apart | The endpoints control; remeasure the final centerline after terrain design |
+| Grand Avenue is labeled 425 blocks but its old endpoints are about 434 blocks apart | Re-site it to `(1750,-300)…(2048,-328)`; the new direct study distance is about 299 blocks |
 | Rail spur appears at both local `X=50` and `X=200` | Reserve a corridor only; freeze one surveyed centerline before operations |
 | Old gateway command lands 60 blocks above its architecture | New landing Y must be derived from the surveyed entrance floor |
 | Root summit and map-integration summit disagree | Root v2 local summit `(0,800,-500)` controls |
 | Portal-gallery rooms are treated like active portals | They are architectural destinations only; activation is a separate decision and test |
 | “Old town” was interpreted as a new 33-schematic district | Ravensreach remains the canonical Old Town; replace the duplicate with Z02 Gateway Approach and defer any schematic museum |
 | Z02 had no mature transit role beyond a reserved rail line | Add two complete future-use surface stops and a separately releasable concealed subway branch to an eight-track/eight-platform expansion terminal |
-| C1 was a 267-block stub whose current-world endpoint was a road-network bounding-box edge | Replace with the 1,277-block East Corridor from a terminal roundabout at `(430,~,80)` to the Gateway, swinging south of the Data District and ending in local roads that tie into cataloged existing roads |
-| C1 carried rail only as a "reserved centerline" with no alignment, no Y, and no station | Design road and rail together in one 56-block reservation with three stations, and state the clear-span and vertical-clearance rules that keep the rail buildable if the highway goes first |
-| Grand Avenue and the Z02 rail were planned independently | They cross at approximately `(2108,~,-250)` at a 7.9-degree skew needing a ~95-block deck; insert an orthogonal crossing node and carry the road over the rail |
+| C1 was a 267-block stub whose current-world endpoint was a road-network bounding-box edge | Replace it with the re-sited 1,244-block East Corridor from `(430,80)` to dry Gateway interface `(1550,-250)` |
+| C1 carried rail only as a "reserved centerline" with no alignment, no Y, and no station | Design road and rail together in one 56-block reservation; the sampled rail profile passes 1:8 and serves MS-1, DD-1, GW-1, plus two future Z02 stops |
+| Grand Avenue and the Z02 rail were planned independently | The first alignment's 7.9-degree skew defect is retired; revised Grand Avenue stays north of the `z=-250` rail and does not cross it |
 | The current world was assumed to have a railway | It does not. The catalog holds 1,215 features and no track of any kind; "Railway" elsewhere in this repository is the PaaS host, not rail infrastructure |
 
 ## Highway and rail design authorities
@@ -120,14 +121,15 @@ The East Corridor geometry is derived from real published standards rather than 
 - Cataloged C01 east arrival `(703,42,-80)` remains contested under ISSUE-002 and is not an approved connector.
 - Iowa information/continuity annex `(774,80,-473)` is a cataloged centroid; the exact door must be surveyed before using it as an interface.
 
-## Evidence limitations carried into the plan
+## Phase 0 evidence and remaining limitations
 
-- The east reserve is intentionally outside all cataloged feature bounds, but most of it is not present in the accepted rendered snapshot.
-- The East Corridor clearance result in `corridor-clearance.json` is a plan-only separation test against cataloged footprints. It reports zero surface intersections and a 50-block nearest-surface clearance; it is not a terrain, hydrology, entity, ownership, or chunk-generation clearance.
-- The corridor passes over the contested C01 East stack with 18 blocks of plan clearance and roughly 17 blocks of vertical separation. ISSUE-002 must close before embankment loading there is designed.
-- The corridor's eastern terminus lies beyond the accepted raster edge at `x=1468`; that segment has never been rendered.
-- Nothing is cataloged south of the corridor along its whole length. That is an absence of records, not evidence of buildable land, and the southern ramp quadrants depend on it being surveyed.
-- A database non-overlap check is not a terrain, entity, ownership, hydrology, chunk-generation, or protected-interface clearance.
-- Derived centers in the POI directory are navigation references, not landing-safety claims.
-- Z02 station, branch, and terminal coordinates are coherent study geometry, not evidence of terrain cover, fluid clearance, safe grade, or buildable underground volume.
-- Offline geometry and maps do not authorize a live build.
+- The accepted July 28 release baseline remains authoritative for released construction. The rerun binds fresh live pre/post check snapshots `fe7a3e5a…ab37` and `05eebe12…271b`; the original `979e7805…4ead` generated atlas remains negative/candidate-search evidence.
+- The revised reserve and approaches are fully rendered from 14,238 `minecraft:full` atlas chunks; 6,097 full chunks intersect the revised reserve.
+- The East Corridor still has zero cataloged surface intersections. Natural terrain spans `Y=55…122`, includes three water samples, and exceeds 1:8 on 39 sampled intervals; the explicit engineered rail profile now passes 1:8 with up to 36 blocks of cut and 23 of fill.
+- C01 and owner-tunnel X/Z findings remain constraints, not permission for embankment loading. ISSUE-002 and final road/rail structural design remain open.
+- The revised mountain and urban footprints are each below 3% water. The selected Empty Eight shell is fully dry, has eight-block cover over all 54,901 columns, and has zero vertical structure conflicts.
+- Two igloos and one shipwreck inside the broad mountain envelope are default-deny no-touch exhibits. Their presence is not permission to relocate, bury, or remove them.
+- A database non-overlap check is not an entity, ownership, hydrology, protected-interface, structural, or construction clearance.
+- Derived POI centers are navigation references, not landing-safety claims.
+- The copied overworld region snapshot excludes the separate entity-region files, so Phase 0 makes no live-entity census claim.
+- Offline geometry, maps, and a Phase 0 PASS authorize detailed design only, never a live build.

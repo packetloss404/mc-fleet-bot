@@ -1,9 +1,9 @@
 {
-  "schemaVersion": 2,
-  "id": "combined-zones-map-qa-v2",
-  "generatedAtUtc": "2026-08-03T22:25:56.000Z",
-  "status": "PASS_PLANNING_ARTIFACT",
-  "scope": "Mechanical validation of the planning map; not terrain or build clearance",
+  "schemaVersion": 4,
+  "id": "combined-zones-map-qa-v4-phase0-rerun",
+  "generatedAtUtc": "2026-08-04T02:18:31.000Z",
+  "status": "PASS_REVISED_SITING_PHASE0_MAP_EVIDENCE",
+  "scope": "Mechanical validation of the immutable Phase 0 rerun terrain/maps and revised planning geometry; not construction authorization",
   "input": {
     "acceptedCurrentRaster": {
       "path": "data/exports/box/town-expansion-r1-final-2026-07-28/media/maps/map-whole-world-overview.png",
@@ -14,183 +14,160 @@
     },
     "coordinateRegistry": {
       "path": "masterplans/05-combined-zones/site-coordinates.json",
-      "sha256": "f0e1eb9f0885b16fdf386f7b9838613fd9d6ad259769a9746ae51de546aa90e0"
+      "sha256": "67a9bbbca5f1fb0710e59e9adad6966fc0e8222e6e0fc956435b5e87874ab869"
+    },
+    "phase0PreSnapshot": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-pre-20260804T021237Z/region",
+      "sha256": "fe7a3e5a75bbf90104c73bf9f78115300fe66f82b300d2dde7cede9fd993ab37",
+      "regionFileCount": 51,
+      "bytes": 290946492
+    },
+    "phase0PostSnapshot": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+      "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+      "regionFileCount": 51,
+      "bytes": 290946492
     }
   },
   "outputs": {
-    "canonicalSvg": {
-      "path": "masterplans/05-combined-zones/maps/current-and-proposed-whole-world.svg",
-      "sha256": "2ed8253ecfd028b90304b438d7cfb5c6713671f29f5c313f0af08c71509e2f91",
-      "width": 2400,
-      "height": 1500
+    "phase0TerrainPng": {
+      "path": "masterplans/05-combined-zones/maps/current-plus-phase0-terrain.png",
+      "sha256": "72a47b37bdd082fc70e354c2beb38f41aa849b5f7247f16ce18fac00c0add9e3",
+      "width": 4084,
+      "height": 2352,
+      "blocksPerPixel": 1
     },
-    "renderedPng": {
-      "path": "masterplans/05-combined-zones/maps/current-and-proposed-whole-world.png",
-      "sha256": "ce5ba495f6d7595fc97d82eeb65a4444f849fabd5ba5339ef015705a24f112b3",
-      "width": 2400,
-      "height": 1500
+    "phase0OverlayPng": {
+      "path": "masterplans/05-combined-zones/maps/current-plus-proposed-phase0-overlay.png",
+      "sha256": "609cb7cab430b67e237762a6045ea0a726ac9ba05e840b071f10a18ec7728fb3",
+      "width": 4084,
+      "height": 2572,
+      "blocksPerPixel": 1
     },
-    "gatewayApproachSvg": {
-      "path": "masterplans/05-combined-zones/maps/gateway-approach-and-terminal-plan.svg",
-      "sha256": "536154b081a7ee51fb91bc96d88bcf8a4a184c879f80db309523b8ec8f47e975",
-      "width": 1800,
-      "height": 1200
+    "terrainProbe": {
+      "path": "masterplans/05-combined-zones/corridor-terrain-probe.json",
+      "sha256": "520bb81a9b25f35f7dbd689429b6bec1361e9a7ec566a0782a9626a5bc1acb1d"
     },
-    "gatewayApproachPng": {
-      "path": "masterplans/05-combined-zones/maps/gateway-approach-and-terminal-plan.png",
-      "sha256": "84448d024bb73d597b0d156e4bea464362f286a70a8b3f78ec0ebfa576a51160",
-      "width": 1800,
-      "height": 1200
+    "surveyEvidence": {
+      "path": "masterplans/05-combined-zones/phase0-survey-evidence.json",
+      "sha256": "2cdf13fd035ed876ccdc4325aa7009df42621b9767390db0658cf8d68a3440e3"
     },
-    "verticalSectionSvg": {
-      "path": "masterplans/05-combined-zones/maps/vertical-zoning-section.svg",
-      "sha256": "14636609ba3ad14b33ef9a34398fc36f9f61ec55911b883530b00fd39ae4a6e0",
-      "width": 1600,
-      "height": 1050
+    "candidateAnalysis": {
+      "path": "masterplans/05-combined-zones/resiting-candidate-analysis.json",
+      "sha256": "1c44ffcfa90a0ed4395a3f5466ddc13d22754547288310f637d2adbeef2d958a"
     },
-    "verticalSectionPng": {
-      "path": "masterplans/05-combined-zones/maps/vertical-zoning-section.png",
-      "sha256": "85a1dbdbd9001f14b88f4cebcee7d045447c400486b3300d536a6b37582fc300",
-      "width": 1600,
-      "height": 1050
-    },
-    "eastCorridorSvg": {
-      "path": "masterplans/05-combined-zones/maps/east-corridor-plan.svg",
-      "sha256": "21c92462a8b95a0fff3e30c9f5b30fcf0056f13ed07b971fefd4e5002c88b4b4",
-      "width": 2000,
-      "height": 1250
-    },
-    "eastCorridorPng": {
-      "path": "masterplans/05-combined-zones/maps/east-corridor-plan.png",
-      "sha256": "abe0c698a7000b48edcc37882ff9f13e8ada8cde4a1f60efe24e43f91e6d24a4",
-      "width": 2000,
-      "height": 1250
+    "corridorClearance": {
+      "path": "masterplans/05-combined-zones/corridor-clearance.json",
+      "sha256": "ebb24ed998d3fe2d5cbc2e0519e4dd96949207311caa414318f57944da7c81d6"
     },
     "reportHtml": {
       "path": "masterplans/05-combined-zones/combined-zones-report.html",
-      "sha256": "5d7618eec28576f09d092a675504b3417c3bde90db3519513729f0d2b8e0798f"
+      "sha256": "2ff4b9aca4f82fc2c13f9c326d6122714a58251b437c3a3bd4c275cf3f3eb0a2"
     }
   },
   "checks": [
     {
-      "id": "accepted-raster-bound",
+      "id": "north-up-one-block-projection",
       "passed": true,
-      "detail": "The SVG references the stable terminal c39d whole-world raster."
+      "detail": "Map X increases right, map Z increases down, north is -Z, and both terrain sheets use one pixel per block over X=-883..3200 and Z=-1387..964."
     },
     {
-      "id": "north-up-projection",
+      "id": "immutable-post-bound",
       "passed": true,
-      "detail": "Map X increases right; map Z increases down; north is -Z."
+      "detail": "Both rerun maps and all terrain/structure findings bind post-check snapshot 05eebe12...271b."
+    },
+    {
+      "id": "full-chunk-coverage",
+      "passed": true,
+      "detail": "All 14,238 atlas chunks and all 6,097 revised-reserve chunks are minecraft:full."
+    },
+    {
+      "id": "rerun-generation-noop",
+      "passed": true,
+      "detail": "The revised footprint required no additional chunk generation; no temporary force-load tile was added and the live 104-ticket baseline was preserved."
     },
     {
       "id": "current-catalog-reservation-disjoint",
       "passed": true,
-      "detail": "Current catalog maxX=1300; proposed reservation minX=1500; 200-block catalog separation."
-    },
-    {
-      "id": "unsurveyed-truth-label",
-      "passed": true,
-      "detail": "The proposed reservation is hatched and labeled NOT SURVEYED; the map makes no vacant-land claim."
-    },
-    {
-      "id": "current-vs-proposed-status-distinct",
-      "passed": true,
-      "detail": "Verified existing extent, proposed surface zones, underground projection, physical connector, and logical portal link use distinct patterns and line styles."
+      "detail": "Current catalog maxX=1300; revised reserve minX=1500; catalog separation is 200 blocks."
     },
     {
       "id": "canonical-old-town-identity",
       "passed": true,
-      "detail": "Ravensreach remains the accepted Old Town; Z02 is Gateway Approach and contains no duplicate 33-schematic town program."
+      "detail": "Ravensreach remains the accepted Old Town; Z02 is Gateway Approach and contains no duplicate schematic town."
     },
     {
-      "id": "z02-program-contained",
+      "id": "adopted-transform",
       "passed": true,
-      "detail": "Both surface stops, GA-J1, the branch study, and Z02-U1 remain within Z02 x=1550..1950, z=-600..0."
+      "detail": "Normalized local origin maps to (2048,-328) with rotation 0; local north remains world north."
+    },
+    {
+      "id": "critical-core-anchors-dry",
+      "passed": true,
+      "detail": "Houston, public shaft, SubTropolis, Cheyenne portal, and summit samples are all dry."
+    },
+    {
+      "id": "core-water-thresholds",
+      "passed": true,
+      "detail": "Mountain water fraction is 2.6167% and urban-core water fraction is 2.7788%, both below the declared 5% Phase 0 threshold."
+    },
+    {
+      "id": "surface-relic-default-deny",
+      "passed": true,
+      "detail": "Two igloos and one shipwreck inside the mountain envelope are enumerated as no-touch exhibit voids."
     },
     {
       "id": "surface-stop-contract",
       "passed": true,
-      "detail": "GA-S1 and GA-S2 each define two 48-block side platforms on the z=-250 passenger-rail study alignment."
+      "detail": "GA-S1 and GA-S2 each retain two 48-block side platforms on the dry z=-250, proposed Y68 passenger line."
+    },
+    {
+      "id": "subway-descent-grade",
+      "passed": true,
+      "detail": "GA-J1 to the west terminal throat descends 28 blocks over about 693 horizontal blocks; maximum proposed segment grade is 0.114286."
+    },
+    {
+      "id": "empty-eight-cover",
+      "passed": true,
+      "detail": "All 54,901 terminal columns are dry and provide at least eight blocks over roof Y54; minimum terrain is Y62."
+    },
+    {
+      "id": "empty-eight-vertical-structure-clearance",
+      "passed": true,
+      "detail": "Five generated structure starts intersect the terminal in plan, but zero recorded bounds intersect shell Y38..54."
     },
     {
       "id": "empty-eight-capacity",
       "passed": true,
-      "detail": "Z02-U1 declares exactly eight track centerlines, eight assigned platforms, four paired future lines, and eight sealed north interfaces."
+      "detail": "The registry defines eight east-west tracks, eight assigned platforms, four future line pairs, and eight sealed east interfaces."
     },
     {
-      "id": "subway-descent-study-grade",
+      "id": "east-corridor-catalog-clearance",
       "passed": true,
-      "detail": "The provisional Y=72 to Y=48 descent reserves at least 145 horizontal blocks for a 24-block change, no steeper than average 1:6; final rail geometry remains survey-gated."
+      "detail": "The revised 56-block reservation has zero cataloged surface-feature intersections; C01 and owner-tunnel findings remain disclosed structural constraints."
     },
     {
-      "id": "future-network-default-deny",
+      "id": "east-corridor-engineered-rail-profile",
       "passed": true,
-      "detail": "All eight north interfaces are sealed; initial links to PassageWay, Houston tunnels, SubTropolis, and Cheyenne are explicitly prohibited."
+      "detail": "The sampled rail profile starts/ends Y68, ranges Y63..114, reaches maximum grade 0.125, and discloses maximum cut 36 and fill 23."
     },
     {
-      "id": "gateway-transform",
+      "id": "grand-avenue-skew-retired",
       "passed": true,
-      "detail": "Local gateway (0,700) maps to world (1550,-300)."
+      "detail": "Revised Grand Avenue stays north of the z=-250 rail; the former 7.9-degree skew crossing no longer exists."
     },
     {
-      "id": "city-transform",
+      "id": "report-current-map",
       "passed": true,
-      "detail": "Local origin (0,0) maps to world (2250,-300)."
-    },
-    {
-      "id": "contact-transform",
-      "passed": true,
-      "detail": "Local contact (-40,-360) maps to world (2610,-340)."
-    },
-    {
-      "id": "summit-transform",
-      "passed": true,
-      "detail": "Local summit (0,-500) maps to world (2750,-300)."
-    },
-    {
-      "id": "png-rendered",
-      "passed": true,
-      "detail": "Headless Chromium rendered the whole-world, Z02 detail, and vertical SVGs at 2400x1500, 1800x1200, and 1600x1050 with local-file access enabled."
-    },
-    {
-      "id": "east-corridor-clearance",
-      "description": "East Corridor 56-block reservation tested against all 1,215 cataloged feature footprints",
-      "result": "PASS",
-      "detail": "zero surface-feature intersections; nearest surface feature Te Ia District Shared Grid at 50 blocks; nearest subsurface C01 East at 18 blocks plan with ~17 blocks vertical separation",
-      "record": "masterplans/05-combined-zones/corridor-clearance.json",
-      "limitation": "plan-only separation against cataloged footprints; not a terrain, hydrology, entity, ownership, or chunk-generation clearance"
-    },
-    {
-      "id": "east-corridor-45-degree-geometry",
-      "description": "Every corridor leg is orthogonal or an exact 45-degree diagonal",
-      "result": "PASS",
-      "detail": "asserted at generation time; 3 curve vertices against a budget of 4"
-    },
-    {
-      "id": "grand-avenue-rail-skew",
-      "description": "Grand Avenue crossing angle over the Z02 rail reservation",
-      "result": "FAIL_FIX_SPECIFIED",
-      "detail": "7.9-degree skew at approximately (2108,-250) would need a ~95-block deck; orthogonal crossing node specified in C1e"
-    },
-    {
-      "id": "whole-world-map-corridor-overlay",
-      "description": "Whole-world sheet regenerated with the C1 East Corridor, both terminal roundabouts, the district interchange, three rail stations and the three local roads",
-      "result": "PASS",
-      "detail": "corridor drawn from site-coordinates.json via the sheet's documented transform px=460+0.4444x, py=762.222+0.4444z; accepted raster base retained (sha256 ca62fa26... verified before render)"
-    },
-    {
-      "id": "report-html-figures-derived",
-      "description": "combined-zones-report.html figures are generated from site-coordinates.json and corridor-clearance.json rather than hand-typed",
-      "result": "PASS",
-      "detail": "prose cannot drift from the machine-checked numbers; 19 sections, 15 tables, 4 figures"
+      "detail": "The HTML report embeds the authoritative rerun overlay and identifies Phase 0 as detailed-design approval only."
     }
   ],
   "limitations": [
-    "No fresh August 3 saved-world snapshot was taken.",
-    "No east-reserve terrain, ownership, entity, protected-feature, or world-border survey was performed.",
-    "No Z02 underground-cover, groundwater, ventilation, smoke-control, egress, structural, or geotechnical survey was performed.",
-    "No collision audit beyond the accepted durable feature union was performed.",
-    "No world edit, RCON operation, live route test, or portal activation was performed.",
-    "PASS_PLANNING_ARTIFACT does not authorize construction."
+    "The copied overworld region snapshot excludes the separate entities region directory; no live-entity census is claimed.",
+    "No ownership, protected-interface, groundwater, ventilation, smoke-control, egress, structural, or geotechnical acceptance was performed.",
+    "Generated structure bounds are constraints and no-touch declarations, not preservation access or entrance-safety evidence.",
+    "The engineered rail profile is a sampled Phase 0 feasibility profile, not a compiled road/rail construction setout.",
+    "No block edit, build operation, live route test, or portal activation was performed.",
+    "PASS_REVISED_SITING_PHASE0_MAP_EVIDENCE does not authorize construction."
   ]
 }
