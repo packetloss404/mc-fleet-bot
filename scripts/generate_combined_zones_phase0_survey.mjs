@@ -31,7 +31,8 @@ const WHOLE = Object.freeze({ minX: -883, maxX: 3200, minZ: -1387, maxZ: 964 });
 const ATLAS = Object.freeze({ minX: 1200, maxX: 3200, minZ: -1200, maxZ: 600 });
 const RESERVE = Object.freeze({ minX: 1500, maxX: 2550, minZ: -1150, maxZ: 300 });
 const GATEWAY_APPROACH = Object.freeze({ minX: 1500, maxX: 2250, minZ: -1100, maxZ: 0 });
-const TERMINAL = Object.freeze({ minX: 1880, maxX: 2220, minZ: -1008, maxZ: -848 });
+const TERMINAL = Object.freeze({ minX: 1632, maxX: 1872, minZ: 40, maxZ: 160 });
+const TERMINAL_SHELL = Object.freeze({ minY: 38, maxY: 54, railY: 40 });
 const MOUNTAIN = Object.freeze({ minX: 1648, maxX: 2448, minZ: -1128, maxZ: -528 });
 const URBAN_CORE = Object.freeze({ minX: 1938, maxX: 2158, minZ: -648, maxZ: -238 });
 const EXISTING_UNION = Object.freeze({ minX: -714, maxX: 1300, minZ: -719, maxZ: 305 });
@@ -52,7 +53,7 @@ const NAMED_PROBE_POINTS = Object.freeze([
   { id: 'GATEWAY-WEST-STOP', x: 1550, z: -250 },
   { id: 'GATEWAY-CENTRAL-STOP', x: 1640, z: -250 },
   { id: 'ALPINE-JUNCTION-STOP', x: 1780, z: -250 },
-  { id: 'HIDDEN-SUBWAY-PORTAL', x: 1780, z: -285 },
+  { id: 'HIDDEN-SUBWAY-PORTAL', x: 1785, z: -215 },
   { id: 'GATEWAY-FUTURE-EAST-STOP', x: 1920, z: -250 },
   { id: 'GRAND-AVENUE-WEST', x: 1750, z: -300 },
   { id: 'GRAND-AVENUE-CROSSING', x: 2108, z: -250 },
@@ -62,8 +63,8 @@ const NAMED_PROBE_POINTS = Object.freeze([
   { id: 'SUBTROPOLIS-CENTER', x: 2048, z: -528 },
   { id: 'CHEYENNE-PORTAL', x: 2048, z: -748 },
   { id: 'SUMMIT-FOOTPRINT', x: 2048, z: -828 },
-  { id: 'EMPTY-EIGHT-WEST-THROAT', x: 1880, z: -928 },
-  { id: 'EMPTY-EIGHT-CONCOURSE', x: 2050, z: -928 },
+  { id: 'EMPTY-EIGHT-WEST-THROAT', x: 1632, z: 100 },
+  { id: 'EMPTY-EIGHT-CONCOURSE', x: 1752, z: 100 },
 ]);
 
 fs.mkdirSync(MAP_DIR, { recursive: true });
@@ -196,6 +197,11 @@ function isVegetation(name) {
   return /(_leaves|_log|_wood|_stem|_hyphae|_sapling)$/.test(name)
     || /^minecraft:(mangrove_roots|muddy_mangrove_roots|bamboo|vine|cocoa|short_grass|tall_grass|fern|large_fern|dead_bush|lily_pad|leaf_litter|seagrass|tall_seagrass|kelp|kelp_plant|sea_pickle|moss_carpet|pale_moss_carpet|pale_hanging_moss|pink_petals|wildflowers)$/.test(name)
     || /(_flower|_tulip|mushroom|dandelion|poppy|allium|azure_bluet|orchid|peony|sunflower|lilac|rose_bush|cornflower|lily_of_the_valley)$/.test(name);
+}
+
+
+function isColdBiome(name) {
+  return /snowy|frozen|ice_spikes/.test(name) || name === 'minecraft:grove';
 }
 
 function surfaceForColumn(chunk, x, z) {
@@ -360,6 +366,7 @@ function emptyAreaCensus(bounds, roofY = null) {
     columns: 0,
     waterColumns: 0,
     lavaColumns: 0,
+    coldBiomeColumns: 0,
     vegetationTopColumns: 0,
     terrainMinY: null,
     terrainMaxY: null,
@@ -377,6 +384,7 @@ function updateAreaCensus(census, surface) {
   census.columns++;
   if (surface.water) census.waterColumns++;
   if (surface.lava) census.lavaColumns++;
+  if (isColdBiome(surface.biome ?? '')) census.coldBiomeColumns++;
   if (surface.vegetation) census.vegetationTopColumns++;
   if (surface.biome) increment(census.biomes, surface.biome);
   census.terrainMinY = census.terrainMinY === null
@@ -404,7 +412,7 @@ const chunkCoverage = { atlas: {}, reserve: {}, wholeRequested: 0, wholePresent:
 const structures = [];
 const reserveCensus = emptyAreaCensus(RESERVE);
 const z02Census = emptyAreaCensus(GATEWAY_APPROACH);
-const terminalCensus = emptyAreaCensus(TERMINAL, 54);
+const terminalCensus = emptyAreaCensus(TERMINAL, TERMINAL_SHELL.maxY);
 const mountainCensus = emptyAreaCensus(MOUNTAIN);
 const urbanCoreCensus = emptyAreaCensus(URBAN_CORE);
 
@@ -733,8 +741,8 @@ for (const run of waterRuns) {
 const terminalVerticalStructureConflicts = structures.filter((structure) => (
   structure.intersectsTerminalFootprint
   && structure.bounds
-  && structure.bounds.maxY >= 38
-  && structure.bounds.minY <= 54
+  && structure.bounds.maxY >= TERMINAL_SHELL.minY
+  && structure.bounds.minY <= TERMINAL_SHELL.maxY
 ));
 const protectedSurfaceRelics = structures.filter((structure) => (
   structure.intersectsMountainFootprint
@@ -757,6 +765,8 @@ const sitingGates = {
   criticalCoreAnchorsDry: criticalAnchorSamples.length === criticalAnchorIds.size
     && criticalAnchorSamples.every((sample) => !sample.waterColumn),
   emptyEightFootprintDry: terminalCensus.waterColumns === 0,
+  emptyEightWhollySouthOfGatewayApproach: TERMINAL.minZ > GATEWAY_APPROACH.maxZ,
+  emptyEightColdBiomeColumnsZero: terminalCensus.coldBiomeColumns === 0,
   emptyEightEightBlockCover: terminalCensus.columnsMeetingEightBlockSolidCover
     === terminalCensus.columns,
   emptyEightVerticalStructureClearance: terminalVerticalStructureConflicts.length === 0,

@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "id": "combined-zones-east-corridor-phase0-terrain-probe",
   "status": "PASS_REVISED_SITING_PHASE0",
-  "generatedAtUtc": "2026-08-04T02:18:31.852Z",
+  "generatedAtUtc": "2026-08-04T03:50:24.998Z",
   "method": "Read-only Anvil WORLD_SURFACE sampling with block-state and biome palette decoding; centerline sampled every 16 Euclidean blocks and rounded to integer columns.",
   "snapshots": {
     "preGeneration": {
@@ -107,6 +107,8 @@
     "engineeredPassengerRailOneInEight": true,
     "criticalCoreAnchorsDry": true,
     "emptyEightFootprintDry": true,
+    "emptyEightWhollySouthOfGatewayApproach": true,
+    "emptyEightColdBiomeColumnsZero": true,
     "emptyEightEightBlockCover": true,
     "emptyEightVerticalStructureClearance": true,
     "mountainWaterExposureBelowFivePercent": true,
@@ -2314,17 +2316,17 @@
     },
     {
       "id": "HIDDEN-SUBWAY-PORTAL",
-      "x": 1780,
-      "z": -285,
+      "x": 1785,
+      "z": -215,
       "chunkStatus": "minecraft:full",
-      "worldSurfaceY": 66,
+      "worldSurfaceY": 62,
       "worldSurfaceBlock": "minecraft:grass_block",
-      "terrainY": 66,
+      "terrainY": 62,
       "terrainBlock": "minecraft:grass_block",
       "waterColumn": false,
       "lavaColumn": false,
       "vegetationAboveTerrain": false,
-      "biome": "minecraft:forest"
+      "biome": "minecraft:plains"
     },
     {
       "id": "GATEWAY-FUTURE-EAST-STOP",
@@ -2454,31 +2456,31 @@
     },
     {
       "id": "EMPTY-EIGHT-WEST-THROAT",
-      "x": 1880,
-      "z": -928,
+      "x": 1632,
+      "z": 100,
       "chunkStatus": "minecraft:full",
-      "worldSurfaceY": 73,
-      "worldSurfaceBlock": "minecraft:snow",
-      "terrainY": 73,
-      "terrainBlock": "minecraft:snow",
+      "worldSurfaceY": 91,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 91,
+      "terrainBlock": "minecraft:grass_block",
       "waterColumn": false,
       "lavaColumn": false,
       "vegetationAboveTerrain": false,
-      "biome": "minecraft:snowy_taiga"
+      "biome": "minecraft:cherry_grove"
     },
     {
       "id": "EMPTY-EIGHT-CONCOURSE",
-      "x": 2050,
-      "z": -928,
+      "x": 1752,
+      "z": 100,
       "chunkStatus": "minecraft:full",
-      "worldSurfaceY": 72,
-      "worldSurfaceBlock": "minecraft:snow",
-      "terrainY": 72,
-      "terrainBlock": "minecraft:snow",
+      "worldSurfaceY": 102,
+      "worldSurfaceBlock": "minecraft:grass_block",
+      "terrainY": 102,
+      "terrainBlock": "minecraft:grass_block",
       "waterColumn": false,
       "lavaColumn": false,
       "vegetationAboveTerrain": false,
-      "biome": "minecraft:snowy_taiga"
+      "biome": "minecraft:plains"
     }
   ],
   "samples": [

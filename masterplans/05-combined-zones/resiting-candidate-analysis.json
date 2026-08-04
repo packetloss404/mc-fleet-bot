@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-04T02:31:53.862Z",
+  "generatedAt": "2026-08-04T03:52:57.989Z",
   "mode": "READ_ONLY_COPIED_ANVIL_ANALYSIS",
   "sourceSnapshot": {
-    "path": "data/worldsnap-combined-zones-phase0-final-post-20260804T001002Z/region",
-    "sha256": "979e78052b1336e90be664dc7215b6df14962c4203a9cbce8b567ebb98e74ead",
+    "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+    "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
     "regionFileCount": 51,
     "bytes": 290946492
   },
@@ -12,41 +12,47 @@
     "minX": 1500,
     "maxX": 2800,
     "minZ": -1200,
-    "maxZ": 300
+    "maxZ": 600
   },
   "coverage": {
-    "minecraft:full": 7802
+    "minecraft:full": 9379
   },
   "adoptedSelection": {
     "terminal": {
       "orientation": "east-west",
-      "width": 341,
-      "depth": 161,
+      "width": 241,
+      "depth": 121,
+      "area": 29161,
       "bounds": {
-        "minX": 1880,
-        "maxX": 2220,
-        "minZ": -1008,
-        "maxZ": -848
+        "minX": 1632,
+        "maxX": 1872,
+        "minZ": 40,
+        "maxZ": 160
       },
       "exactWater": 0,
+      "planStructureIntersectionCount": 1,
       "sampled": {
-        "columns": 903,
+        "columns": 496,
         "waterColumns": 0,
         "waterFraction": 0,
+        "coldBiomeColumns": 0,
+        "coldBiomeFraction": 0,
         "minTerrainY": 62,
-        "maxTerrainY": 79,
-        "meanTerrainY": 64.864,
-        "relief": 17
+        "maxTerrainY": 128,
+        "meanTerrainY": 95.944,
+        "relief": 66
       },
-      "distanceFromPortal": 697.387,
+      "distanceFromPortal": 316.724,
       "exact": {
-        "columns": 54901,
+        "columns": 29161,
         "waterColumns": 0,
         "waterFraction": 0,
+        "coldBiomeColumns": 0,
+        "coldBiomeFraction": 0,
         "minTerrainY": 62,
-        "maxTerrainY": 88,
-        "meanTerrainY": 64.878,
-        "relief": 26
+        "maxTerrainY": 136,
+        "meanTerrainY": 96.954,
+        "relief": 74
       },
       "engineered": {
         "minimumSolidCoverBlocks": 8,
@@ -57,69 +63,17 @@
       },
       "structureIntersections": [
         {
-          "id": "minecraft:trial_chambers",
-          "bounds": {
-            "minX": 1820,
-            "minY": -48,
-            "minZ": -1099,
-            "maxX": 1939,
-            "maxY": -5,
-            "maxZ": -1007
-          },
-          "chunkX": 117,
-          "chunkZ": -68
-        },
-        {
           "id": "minecraft:mineshaft",
           "bounds": {
-            "minX": 1818,
-            "minY": -58,
-            "minZ": -1119,
-            "maxX": 1975,
-            "maxY": -45,
-            "maxZ": -986
+            "minX": 1780,
+            "minY": -16,
+            "minZ": -21,
+            "maxX": 1925,
+            "maxY": 3,
+            "maxZ": 134
           },
-          "chunkX": 118,
-          "chunkZ": -67
-        },
-        {
-          "id": "minecraft:mineshaft",
-          "bounds": {
-            "minX": 1758,
-            "minY": -49,
-            "minZ": -999,
-            "maxX": 1883,
-            "maxY": -21,
-            "maxZ": -840
-          },
-          "chunkX": 113,
-          "chunkZ": -58
-        },
-        {
-          "id": "minecraft:mineshaft",
-          "bounds": {
-            "minX": 1968,
-            "minY": -13,
-            "minZ": -948,
-            "maxX": 2081,
-            "maxY": 10,
-            "maxZ": -814
-          },
-          "chunkX": 125,
-          "chunkZ": -54
-        },
-        {
-          "id": "minecraft:trial_chambers",
-          "bounds": {
-            "minX": 2142,
-            "minY": -52,
-            "minZ": -922,
-            "maxX": 2257,
-            "maxY": -11,
-            "maxZ": -817
-          },
-          "chunkX": 136,
-          "chunkZ": -54
+          "chunkX": 115,
+          "chunkZ": 3
         }
       ],
       "verticalStructureConflicts": []
@@ -230,6 +184,8 @@
         "columns": 481401,
         "waterColumns": 12597,
         "waterFraction": 0.026167,
+        "coldBiomeColumns": 455949,
+        "coldBiomeFraction": 0.947129,
         "minTerrainY": 12,
         "maxTerrainY": 125,
         "meanTerrainY": 70.82,
@@ -239,6 +195,8 @@
         "columns": 90831,
         "waterColumns": 2524,
         "waterFraction": 0.027788,
+        "coldBiomeColumns": 84604,
+        "coldBiomeFraction": 0.931444,
         "minTerrainY": 33,
         "maxTerrainY": 96,
         "meanTerrainY": 72.113,
@@ -562,7 +520,7 @@
       ]
     },
     "rationale": [
-      "Terminal is completely dry, has exact minimum terrain Y62, supports roof Y54 with eight-block cover everywhere, and has zero vertical generated-structure conflicts at shell Y38..54.",
+      "Terminal is wholly south of Gateway Approach, completely dry, outside snowy/frozen biomes, supports at least eight blocks of cover, and has zero vertical generated-structure conflicts at shell Y38..54.",
       "Core keeps all five critical anchors dry while limiting mountain water to 2.6167% and urban-core water to 2.7788%.",
       "Three surface structures in the mountain envelope are retained as mandatory no-touch exhibit voids rather than treated as vacant land.",
       "The coupled placement keeps Gateway Approach inside the generated atlas and avoids any additional Phase 0 chunk generation."
@@ -570,10 +528,10 @@
   },
   "terminalSearch": {
     "bounds": {
-      "minX": 1550,
-      "maxX": 2250,
-      "minZ": -1100,
-      "maxZ": 0
+      "minX": 1500,
+      "maxX": 2550,
+      "minZ": 16,
+      "maxZ": 600
     },
     "shapes": [
       {
@@ -582,43 +540,99 @@
         "depth": 161
       },
       {
+        "orientation": "east-west",
+        "width": 321,
+        "depth": 145
+      },
+      {
+        "orientation": "east-west",
+        "width": 289,
+        "depth": 145
+      },
+      {
+        "orientation": "east-west",
+        "width": 257,
+        "depth": 129
+      },
+      {
+        "orientation": "east-west",
+        "width": 241,
+        "depth": 121
+      },
+      {
+        "orientation": "east-west",
+        "width": 225,
+        "depth": 113
+      },
+      {
         "orientation": "north-south",
         "width": 161,
         "depth": 341
+      },
+      {
+        "orientation": "north-south",
+        "width": 145,
+        "depth": 321
+      },
+      {
+        "orientation": "north-south",
+        "width": 145,
+        "depth": 289
+      },
+      {
+        "orientation": "north-south",
+        "width": 129,
+        "depth": 257
+      },
+      {
+        "orientation": "north-south",
+        "width": 121,
+        "depth": 241
+      },
+      {
+        "orientation": "north-south",
+        "width": 113,
+        "depth": 225
       }
     ],
-    "rankingRule": "zero water, zero vertical generated-structure conflicts, highest exact minimum terrain, lowest relief, shortest branch from (1780,-285)",
-    "candidatesEvaluated": 11770,
+    "rankingRule": "zero water, zero vertical generated-structure conflicts, zero snowy/frozen biome columns, largest viable hall, highest exact minimum terrain, lowest relief, shortest branch from the dry portal reference (1785,-215)",
+    "candidatesEvaluated": 59996,
     "topCandidates": [
       {
         "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
+        "width": 241,
+        "depth": 121,
+        "area": 29161,
         "bounds": {
-          "minX": 1880,
-          "maxX": 2220,
-          "minZ": -1008,
-          "maxZ": -848
+          "minX": 1632,
+          "maxX": 1872,
+          "minZ": 40,
+          "maxZ": 160
         },
         "exactWater": 0,
+        "planStructureIntersectionCount": 1,
         "sampled": {
-          "columns": 903,
+          "columns": 496,
           "waterColumns": 0,
           "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
           "minTerrainY": 62,
-          "maxTerrainY": 79,
-          "meanTerrainY": 64.864,
-          "relief": 17
+          "maxTerrainY": 128,
+          "meanTerrainY": 95.944,
+          "relief": 66
         },
-        "distanceFromPortal": 697.387,
+        "distanceFromPortal": 316.724,
         "exact": {
-          "columns": 54901,
+          "columns": 29161,
           "waterColumns": 0,
           "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
           "minTerrainY": 62,
-          "maxTerrainY": 88,
-          "meanTerrainY": 64.878,
-          "relief": 26
+          "maxTerrainY": 136,
+          "meanTerrainY": 96.954,
+          "relief": 74
         },
         "engineered": {
           "minimumSolidCoverBlocks": 8,
@@ -629,1551 +643,1016 @@
         },
         "structureIntersections": [
           {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 1820,
-              "minY": -48,
-              "minZ": -1099,
-              "maxX": 1939,
-              "maxY": -5,
-              "maxZ": -1007
-            },
-            "chunkX": 117,
-            "chunkZ": -68
-          },
-          {
             "id": "minecraft:mineshaft",
             "bounds": {
-              "minX": 1818,
-              "minY": -58,
-              "minZ": -1119,
-              "maxX": 1975,
-              "maxY": -45,
-              "maxZ": -986
+              "minX": 1780,
+              "minY": -16,
+              "minZ": -21,
+              "maxX": 1925,
+              "maxY": 3,
+              "maxZ": 134
             },
-            "chunkX": 118,
-            "chunkZ": -67
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1758,
-              "minY": -49,
-              "minZ": -999,
-              "maxX": 1883,
-              "maxY": -21,
-              "maxZ": -840
-            },
-            "chunkX": 113,
-            "chunkZ": -58
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
-            },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
+            "chunkX": 115,
+            "chunkZ": 3
           }
         ],
         "verticalStructureConflicts": []
       },
       {
         "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
+        "width": 241,
+        "depth": 121,
+        "area": 29161,
         "bounds": {
-          "minX": 1880,
-          "maxX": 2220,
-          "minZ": -1016,
-          "maxZ": -856
+          "minX": 1632,
+          "maxX": 1872,
+          "minZ": 48,
+          "maxZ": 168
         },
         "exactWater": 0,
+        "planStructureIntersectionCount": 1,
         "sampled": {
-          "columns": 903,
+          "columns": 496,
           "waterColumns": 0,
           "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
           "minTerrainY": 62,
-          "maxTerrainY": 79,
-          "meanTerrainY": 64.766,
-          "relief": 17
+          "maxTerrainY": 128,
+          "meanTerrainY": 93.907,
+          "relief": 66
         },
-        "distanceFromPortal": 704.77,
+        "distanceFromPortal": 324.681,
         "exact": {
-          "columns": 54901,
+          "columns": 29161,
           "waterColumns": 0,
           "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 88,
-          "meanTerrainY": 64.772,
-          "relief": 26
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 60,
+          "maxTerrainY": 136,
+          "meanTerrainY": 94.829,
+          "relief": 76
         },
         "engineered": {
           "minimumSolidCoverBlocks": 8,
-          "ceilingY": 54,
-          "stationFloorY": 40,
-          "shellMinY": 38,
-          "shellMaxY": 54
+          "ceilingY": 52,
+          "stationFloorY": 38,
+          "shellMinY": 36,
+          "shellMaxY": 52
         },
         "structureIntersections": [
           {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 1820,
-              "minY": -48,
-              "minZ": -1099,
-              "maxX": 1939,
-              "maxY": -5,
-              "maxZ": -1007
-            },
-            "chunkX": 117,
-            "chunkZ": -68
-          },
-          {
             "id": "minecraft:mineshaft",
             "bounds": {
-              "minX": 1818,
-              "minY": -58,
-              "minZ": -1119,
-              "maxX": 1975,
-              "maxY": -45,
-              "maxZ": -986
+              "minX": 1780,
+              "minY": -16,
+              "minZ": -21,
+              "maxX": 1925,
+              "maxY": 3,
+              "maxZ": 134
             },
-            "chunkX": 118,
-            "chunkZ": -67
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1758,
-              "minY": -49,
-              "minZ": -999,
-              "maxX": 1883,
-              "maxY": -21,
-              "maxZ": -840
-            },
-            "chunkX": 113,
-            "chunkZ": -58
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
-            },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
+            "chunkX": 115,
+            "chunkZ": 3
           }
         ],
         "verticalStructureConflicts": []
       },
       {
         "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
+        "width": 241,
+        "depth": 121,
+        "area": 29161,
         "bounds": {
-          "minX": 1880,
-          "maxX": 2220,
-          "minZ": -1024,
-          "maxZ": -864
+          "minX": 1632,
+          "maxX": 1872,
+          "minZ": 56,
+          "maxZ": 176
         },
         "exactWater": 0,
+        "planStructureIntersectionCount": 1,
         "sampled": {
-          "columns": 903,
+          "columns": 496,
           "waterColumns": 0,
           "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
           "minTerrainY": 62,
-          "maxTerrainY": 79,
-          "meanTerrainY": 64.695,
-          "relief": 17
+          "maxTerrainY": 128,
+          "meanTerrainY": 91.69,
+          "relief": 66
         },
-        "distanceFromPortal": 712.166,
+        "distanceFromPortal": 332.641,
         "exact": {
-          "columns": 54901,
+          "columns": 29161,
           "waterColumns": 0,
           "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 88,
-          "meanTerrainY": 64.709,
-          "relief": 26
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 60,
+          "maxTerrainY": 136,
+          "meanTerrainY": 92.545,
+          "relief": 76
         },
         "engineered": {
           "minimumSolidCoverBlocks": 8,
-          "ceilingY": 54,
-          "stationFloorY": 40,
-          "shellMinY": 38,
-          "shellMaxY": 54
-        },
-        "structureIntersections": [
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 1820,
-              "minY": -48,
-              "minZ": -1099,
-              "maxX": 1939,
-              "maxY": -5,
-              "maxZ": -1007
-            },
-            "chunkX": 117,
-            "chunkZ": -68
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1818,
-              "minY": -58,
-              "minZ": -1119,
-              "maxX": 1975,
-              "maxY": -45,
-              "maxZ": -986
-            },
-            "chunkX": 118,
-            "chunkZ": -67
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1758,
-              "minY": -49,
-              "minZ": -999,
-              "maxX": 1883,
-              "maxY": -21,
-              "maxZ": -840
-            },
-            "chunkX": 113,
-            "chunkZ": -58
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
-            },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
-          }
-        ],
-        "verticalStructureConflicts": []
-      },
-      {
-        "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
-        "bounds": {
-          "minX": 1904,
-          "maxX": 2244,
-          "minZ": -984,
-          "maxZ": -824
-        },
-        "exactWater": 0,
-        "sampled": {
-          "columns": 903,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 89,
-          "meanTerrainY": 65.894,
-          "relief": 27
-        },
-        "distanceFromPortal": 685.271,
-        "exact": {
-          "columns": 54901,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 89,
-          "meanTerrainY": 65.767,
-          "relief": 27
-        },
-        "engineered": {
-          "minimumSolidCoverBlocks": 8,
-          "ceilingY": 54,
-          "stationFloorY": 40,
-          "shellMinY": 38,
-          "shellMaxY": 54
+          "ceilingY": 52,
+          "stationFloorY": 38,
+          "shellMinY": 36,
+          "shellMaxY": 52
         },
         "structureIntersections": [
           {
             "id": "minecraft:mineshaft",
             "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
+              "minX": 1780,
+              "minY": -16,
+              "minZ": -21,
+              "maxX": 1925,
+              "maxY": 3,
+              "maxZ": 134
             },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
-          }
-        ],
-        "verticalStructureConflicts": []
-      },
-      {
-        "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
-        "bounds": {
-          "minX": 1904,
-          "maxX": 2244,
-          "minZ": -992,
-          "maxZ": -832
-        },
-        "exactWater": 0,
-        "sampled": {
-          "columns": 903,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 84,
-          "meanTerrainY": 65.45,
-          "relief": 22
-        },
-        "distanceFromPortal": 692.506,
-        "exact": {
-          "columns": 54901,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 89,
-          "meanTerrainY": 65.358,
-          "relief": 27
-        },
-        "engineered": {
-          "minimumSolidCoverBlocks": 8,
-          "ceilingY": 54,
-          "stationFloorY": 40,
-          "shellMinY": 38,
-          "shellMaxY": 54
-        },
-        "structureIntersections": [
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1818,
-              "minY": -58,
-              "minZ": -1119,
-              "maxX": 1975,
-              "maxY": -45,
-              "maxZ": -986
-            },
-            "chunkX": 118,
-            "chunkZ": -67
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
-            },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
-          }
-        ],
-        "verticalStructureConflicts": []
-      },
-      {
-        "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
-        "bounds": {
-          "minX": 1896,
-          "maxX": 2236,
-          "minZ": -1000,
-          "maxZ": -840
-        },
-        "exactWater": 0,
-        "sampled": {
-          "columns": 903,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 82,
-          "meanTerrainY": 65.083,
-          "relief": 20
-        },
-        "distanceFromPortal": 696.434,
-        "exact": {
-          "columns": 54901,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 89,
-          "meanTerrainY": 65.04,
-          "relief": 27
-        },
-        "engineered": {
-          "minimumSolidCoverBlocks": 8,
-          "ceilingY": 54,
-          "stationFloorY": 40,
-          "shellMinY": 38,
-          "shellMaxY": 54
-        },
-        "structureIntersections": [
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1818,
-              "minY": -58,
-              "minZ": -1119,
-              "maxX": 1975,
-              "maxY": -45,
-              "maxZ": -986
-            },
-            "chunkX": 118,
-            "chunkZ": -67
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
-            },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
-          }
-        ],
-        "verticalStructureConflicts": []
-      },
-      {
-        "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
-        "bounds": {
-          "minX": 1904,
-          "maxX": 2244,
-          "minZ": -1000,
-          "maxZ": -840
-        },
-        "exactWater": 0,
-        "sampled": {
-          "columns": 903,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 83,
-          "meanTerrainY": 65.147,
-          "relief": 21
-        },
-        "distanceFromPortal": 699.758,
-        "exact": {
-          "columns": 54901,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 89,
-          "meanTerrainY": 65.075,
-          "relief": 27
-        },
-        "engineered": {
-          "minimumSolidCoverBlocks": 8,
-          "ceilingY": 54,
-          "stationFloorY": 40,
-          "shellMinY": 38,
-          "shellMaxY": 54
-        },
-        "structureIntersections": [
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1818,
-              "minY": -58,
-              "minZ": -1119,
-              "maxX": 1975,
-              "maxY": -45,
-              "maxZ": -986
-            },
-            "chunkX": 118,
-            "chunkZ": -67
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
-            },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
-          }
-        ],
-        "verticalStructureConflicts": []
-      },
-      {
-        "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
-        "bounds": {
-          "minX": 1888,
-          "maxX": 2228,
-          "minZ": -1008,
-          "maxZ": -848
-        },
-        "exactWater": 0,
-        "sampled": {
-          "columns": 903,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 82,
-          "meanTerrainY": 64.87,
-          "relief": 20
-        },
-        "distanceFromPortal": 700.523,
-        "exact": {
-          "columns": 54901,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 89,
-          "meanTerrainY": 64.859,
-          "relief": 27
-        },
-        "engineered": {
-          "minimumSolidCoverBlocks": 8,
-          "ceilingY": 54,
-          "stationFloorY": 40,
-          "shellMinY": 38,
-          "shellMaxY": 54
-        },
-        "structureIntersections": [
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 1820,
-              "minY": -48,
-              "minZ": -1099,
-              "maxX": 1939,
-              "maxY": -5,
-              "maxZ": -1007
-            },
-            "chunkX": 117,
-            "chunkZ": -68
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1818,
-              "minY": -58,
-              "minZ": -1119,
-              "maxX": 1975,
-              "maxY": -45,
-              "maxZ": -986
-            },
-            "chunkX": 118,
-            "chunkZ": -67
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
-            },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
-          }
-        ],
-        "verticalStructureConflicts": []
-      },
-      {
-        "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
-        "bounds": {
-          "minX": 1896,
-          "maxX": 2236,
-          "minZ": -1008,
-          "maxZ": -848
-        },
-        "exactWater": 0,
-        "sampled": {
-          "columns": 903,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 82,
-          "meanTerrainY": 64.897,
-          "relief": 20
-        },
-        "distanceFromPortal": 703.736,
-        "exact": {
-          "columns": 54901,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 89,
-          "meanTerrainY": 64.866,
-          "relief": 27
-        },
-        "engineered": {
-          "minimumSolidCoverBlocks": 8,
-          "ceilingY": 54,
-          "stationFloorY": 40,
-          "shellMinY": 38,
-          "shellMaxY": 54
-        },
-        "structureIntersections": [
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 1820,
-              "minY": -48,
-              "minZ": -1099,
-              "maxX": 1939,
-              "maxY": -5,
-              "maxZ": -1007
-            },
-            "chunkX": 117,
-            "chunkZ": -68
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1818,
-              "minY": -58,
-              "minZ": -1119,
-              "maxX": 1975,
-              "maxY": -45,
-              "maxZ": -986
-            },
-            "chunkX": 118,
-            "chunkZ": -67
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
-            },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
-          }
-        ],
-        "verticalStructureConflicts": []
-      },
-      {
-        "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
-        "bounds": {
-          "minX": 1904,
-          "maxX": 2244,
-          "minZ": -1008,
-          "maxZ": -848
-        },
-        "exactWater": 0,
-        "sampled": {
-          "columns": 903,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 83,
-          "meanTerrainY": 64.945,
-          "relief": 21
-        },
-        "distanceFromPortal": 707.025,
-        "exact": {
-          "columns": 54901,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 89,
-          "meanTerrainY": 64.888,
-          "relief": 27
-        },
-        "engineered": {
-          "minimumSolidCoverBlocks": 8,
-          "ceilingY": 54,
-          "stationFloorY": 40,
-          "shellMinY": 38,
-          "shellMaxY": 54
-        },
-        "structureIntersections": [
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 1820,
-              "minY": -48,
-              "minZ": -1099,
-              "maxX": 1939,
-              "maxY": -5,
-              "maxZ": -1007
-            },
-            "chunkX": 117,
-            "chunkZ": -68
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1818,
-              "minY": -58,
-              "minZ": -1119,
-              "maxX": 1975,
-              "maxY": -45,
-              "maxZ": -986
-            },
-            "chunkX": 118,
-            "chunkZ": -67
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
-            },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
-          }
-        ],
-        "verticalStructureConflicts": []
-      },
-      {
-        "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
-        "bounds": {
-          "minX": 1888,
-          "maxX": 2228,
-          "minZ": -1016,
-          "maxZ": -856
-        },
-        "exactWater": 0,
-        "sampled": {
-          "columns": 903,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 82,
-          "meanTerrainY": 64.765,
-          "relief": 20
-        },
-        "distanceFromPortal": 707.874,
-        "exact": {
-          "columns": 54901,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 89,
-          "meanTerrainY": 64.739,
-          "relief": 27
-        },
-        "engineered": {
-          "minimumSolidCoverBlocks": 8,
-          "ceilingY": 54,
-          "stationFloorY": 40,
-          "shellMinY": 38,
-          "shellMaxY": 54
-        },
-        "structureIntersections": [
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 1820,
-              "minY": -48,
-              "minZ": -1099,
-              "maxX": 1939,
-              "maxY": -5,
-              "maxZ": -1007
-            },
-            "chunkX": 117,
-            "chunkZ": -68
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1818,
-              "minY": -58,
-              "minZ": -1119,
-              "maxX": 1975,
-              "maxY": -45,
-              "maxZ": -986
-            },
-            "chunkX": 118,
-            "chunkZ": -67
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
-            },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
-          }
-        ],
-        "verticalStructureConflicts": []
-      },
-      {
-        "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
-        "bounds": {
-          "minX": 1896,
-          "maxX": 2236,
-          "minZ": -1016,
-          "maxZ": -856
-        },
-        "exactWater": 0,
-        "sampled": {
-          "columns": 903,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 82,
-          "meanTerrainY": 64.78,
-          "relief": 20
-        },
-        "distanceFromPortal": 711.053,
-        "exact": {
-          "columns": 54901,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 89,
-          "meanTerrainY": 64.736,
-          "relief": 27
-        },
-        "engineered": {
-          "minimumSolidCoverBlocks": 8,
-          "ceilingY": 54,
-          "stationFloorY": 40,
-          "shellMinY": 38,
-          "shellMaxY": 54
-        },
-        "structureIntersections": [
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 1820,
-              "minY": -48,
-              "minZ": -1099,
-              "maxX": 1939,
-              "maxY": -5,
-              "maxZ": -1007
-            },
-            "chunkX": 117,
-            "chunkZ": -68
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1818,
-              "minY": -58,
-              "minZ": -1119,
-              "maxX": 1975,
-              "maxY": -45,
-              "maxZ": -986
-            },
-            "chunkX": 118,
-            "chunkZ": -67
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
-            },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
-          }
-        ],
-        "verticalStructureConflicts": []
-      },
-      {
-        "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
-        "bounds": {
-          "minX": 1904,
-          "maxX": 2244,
-          "minZ": -1016,
-          "maxZ": -856
-        },
-        "exactWater": 0,
-        "sampled": {
-          "columns": 903,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 83,
-          "meanTerrainY": 64.815,
-          "relief": 21
-        },
-        "distanceFromPortal": 714.309,
-        "exact": {
-          "columns": 54901,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 89,
-          "meanTerrainY": 64.748,
-          "relief": 27
-        },
-        "engineered": {
-          "minimumSolidCoverBlocks": 8,
-          "ceilingY": 54,
-          "stationFloorY": 40,
-          "shellMinY": 38,
-          "shellMaxY": 54
-        },
-        "structureIntersections": [
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 1820,
-              "minY": -48,
-              "minZ": -1099,
-              "maxX": 1939,
-              "maxY": -5,
-              "maxZ": -1007
-            },
-            "chunkX": 117,
-            "chunkZ": -68
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1818,
-              "minY": -58,
-              "minZ": -1119,
-              "maxX": 1975,
-              "maxY": -45,
-              "maxZ": -986
-            },
-            "chunkX": 118,
-            "chunkZ": -67
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
-            },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
-          }
-        ],
-        "verticalStructureConflicts": []
-      },
-      {
-        "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
-        "bounds": {
-          "minX": 1888,
-          "maxX": 2228,
-          "minZ": -1024,
-          "maxZ": -864
-        },
-        "exactWater": 0,
-        "sampled": {
-          "columns": 903,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 82,
-          "meanTerrainY": 64.679,
-          "relief": 20
-        },
-        "distanceFromPortal": 715.238,
-        "exact": {
-          "columns": 54901,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 89,
-          "meanTerrainY": 64.671,
-          "relief": 27
-        },
-        "engineered": {
-          "minimumSolidCoverBlocks": 8,
-          "ceilingY": 54,
-          "stationFloorY": 40,
-          "shellMinY": 38,
-          "shellMaxY": 54
-        },
-        "structureIntersections": [
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 1820,
-              "minY": -48,
-              "minZ": -1099,
-              "maxX": 1939,
-              "maxY": -5,
-              "maxZ": -1007
-            },
-            "chunkX": 117,
-            "chunkZ": -68
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1818,
-              "minY": -58,
-              "minZ": -1119,
-              "maxX": 1975,
-              "maxY": -45,
-              "maxZ": -986
-            },
-            "chunkX": 118,
-            "chunkZ": -67
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
-            },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
-          }
-        ],
-        "verticalStructureConflicts": []
-      },
-      {
-        "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
-        "bounds": {
-          "minX": 1896,
-          "maxX": 2236,
-          "minZ": -1024,
-          "maxZ": -864
-        },
-        "exactWater": 0,
-        "sampled": {
-          "columns": 903,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 82,
-          "meanTerrainY": 64.681,
-          "relief": 20
-        },
-        "distanceFromPortal": 718.385,
-        "exact": {
-          "columns": 54901,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 89,
-          "meanTerrainY": 64.657,
-          "relief": 27
-        },
-        "engineered": {
-          "minimumSolidCoverBlocks": 8,
-          "ceilingY": 54,
-          "stationFloorY": 40,
-          "shellMinY": 38,
-          "shellMaxY": 54
-        },
-        "structureIntersections": [
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 1820,
-              "minY": -48,
-              "minZ": -1099,
-              "maxX": 1939,
-              "maxY": -5,
-              "maxZ": -1007
-            },
-            "chunkX": 117,
-            "chunkZ": -68
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1818,
-              "minY": -58,
-              "minZ": -1119,
-              "maxX": 1975,
-              "maxY": -45,
-              "maxZ": -986
-            },
-            "chunkX": 118,
-            "chunkZ": -67
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
-            },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
-          }
-        ],
-        "verticalStructureConflicts": []
-      },
-      {
-        "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
-        "bounds": {
-          "minX": 1904,
-          "maxX": 2244,
-          "minZ": -1024,
-          "maxZ": -864
-        },
-        "exactWater": 0,
-        "sampled": {
-          "columns": 903,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 83,
-          "meanTerrainY": 64.702,
-          "relief": 21
-        },
-        "distanceFromPortal": 721.607,
-        "exact": {
-          "columns": 54901,
-          "waterColumns": 0,
-          "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 89,
-          "meanTerrainY": 64.658,
-          "relief": 27
-        },
-        "engineered": {
-          "minimumSolidCoverBlocks": 8,
-          "ceilingY": 54,
-          "stationFloorY": 40,
-          "shellMinY": 38,
-          "shellMaxY": 54
-        },
-        "structureIntersections": [
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 1820,
-              "minY": -48,
-              "minZ": -1099,
-              "maxX": 1939,
-              "maxY": -5,
-              "maxZ": -1007
-            },
-            "chunkX": 117,
-            "chunkZ": -68
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1818,
-              "minY": -58,
-              "minZ": -1119,
-              "maxX": 1975,
-              "maxY": -45,
-              "maxZ": -986
-            },
-            "chunkX": 118,
-            "chunkZ": -67
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
-            },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
+            "chunkX": 115,
+            "chunkZ": 3
           }
         ],
         "verticalStructureConflicts": []
       },
       {
         "orientation": "north-south",
-        "width": 161,
-        "depth": 341,
+        "width": 121,
+        "depth": 241,
+        "area": 29161,
         "bounds": {
-          "minX": 1952,
-          "maxX": 2112,
-          "minZ": -576,
-          "maxZ": -236
+          "minX": 1656,
+          "maxX": 1776,
+          "minZ": 40,
+          "maxZ": 280
         },
         "exactWater": 0,
+        "planStructureIntersectionCount": 1,
         "sampled": {
-          "columns": 903,
+          "columns": 496,
           "waterColumns": 0,
           "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 91,
-          "meanTerrainY": 73.673,
-          "relief": 29
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 58,
+          "maxTerrainY": 122,
+          "meanTerrainY": 86.573,
+          "relief": 64
         },
-        "distanceFromPortal": 279.544,
+        "distanceFromPortal": 381.295,
         "exact": {
-          "columns": 54901,
+          "columns": 29161,
           "waterColumns": 0,
           "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 95,
-          "meanTerrainY": 74.02,
-          "relief": 33
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 58,
+          "maxTerrainY": 128,
+          "meanTerrainY": 86.797,
+          "relief": 70
         },
         "engineered": {
           "minimumSolidCoverBlocks": 8,
-          "ceilingY": 54,
-          "stationFloorY": 40,
-          "shellMinY": 38,
-          "shellMaxY": 54
+          "ceilingY": 50,
+          "stationFloorY": 36,
+          "shellMinY": 34,
+          "shellMaxY": 50
         },
         "structureIntersections": [
           {
-            "id": "minecraft:mineshaft",
+            "id": "minecraft:trial_chambers",
             "bounds": {
-              "minX": 1998,
+              "minX": 1685,
               "minY": -31,
-              "minZ": -634,
-              "maxX": 2137,
-              "maxY": -9,
-              "maxZ": -511
+              "minZ": 177,
+              "maxX": 1799,
+              "maxY": 6,
+              "maxZ": 273
             },
-            "chunkX": 130,
-            "chunkZ": -35
-          },
-          {
-            "id": "minecraft:mineshaft",
-            "bounds": {
-              "minX": 2111,
-              "minY": -41,
-              "minZ": -478,
-              "maxX": 2203,
-              "maxY": -11,
-              "maxZ": -323
-            },
-            "chunkX": 135,
-            "chunkZ": -26
-          },
+            "chunkX": 108,
+            "chunkZ": 15
+          }
+        ],
+        "verticalStructureConflicts": []
+      },
+      {
+        "orientation": "north-south",
+        "width": 121,
+        "depth": 241,
+        "area": 29161,
+        "bounds": {
+          "minX": 1648,
+          "maxX": 1768,
+          "minZ": 40,
+          "maxZ": 280
+        },
+        "exactWater": 0,
+        "planStructureIntersectionCount": 1,
+        "sampled": {
+          "columns": 496,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 58,
+          "maxTerrainY": 122,
+          "meanTerrainY": 85.978,
+          "relief": 64
+        },
+        "distanceFromPortal": 382.824,
+        "exact": {
+          "columns": 29161,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 58,
+          "maxTerrainY": 128,
+          "meanTerrainY": 86.222,
+          "relief": 70
+        },
+        "engineered": {
+          "minimumSolidCoverBlocks": 8,
+          "ceilingY": 50,
+          "stationFloorY": 36,
+          "shellMinY": 34,
+          "shellMaxY": 50
+        },
+        "structureIntersections": [
           {
             "id": "minecraft:trial_chambers",
             "bounds": {
-              "minX": 1905,
-              "minY": -51,
-              "minZ": -399,
-              "maxX": 2028,
-              "maxY": 9,
-              "maxZ": -287
+              "minX": 1685,
+              "minY": -31,
+              "minZ": 177,
+              "maxX": 1799,
+              "maxY": 6,
+              "maxZ": 273
             },
-            "chunkX": 122,
-            "chunkZ": -21
-          },
+            "chunkX": 108,
+            "chunkZ": 15
+          }
+        ],
+        "verticalStructureConflicts": []
+      },
+      {
+        "orientation": "north-south",
+        "width": 121,
+        "depth": 241,
+        "area": 29161,
+        "bounds": {
+          "minX": 1656,
+          "maxX": 1776,
+          "minZ": 48,
+          "maxZ": 288
+        },
+        "exactWater": 0,
+        "planStructureIntersectionCount": 1,
+        "sampled": {
+          "columns": 496,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 58,
+          "maxTerrainY": 122,
+          "meanTerrainY": 85.323,
+          "relief": 64
+        },
+        "distanceFromPortal": 389.166,
+        "exact": {
+          "columns": 29161,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 58,
+          "maxTerrainY": 128,
+          "meanTerrainY": 85.483,
+          "relief": 70
+        },
+        "engineered": {
+          "minimumSolidCoverBlocks": 8,
+          "ceilingY": 50,
+          "stationFloorY": 36,
+          "shellMinY": 34,
+          "shellMaxY": 50
+        },
+        "structureIntersections": [
           {
-            "id": "minecraft:mineshaft",
+            "id": "minecraft:trial_chambers",
             "bounds": {
-              "minX": 1873,
-              "minY": -1,
-              "minZ": -393,
-              "maxX": 2011,
-              "maxY": 19,
-              "maxZ": -224
+              "minX": 1685,
+              "minY": -31,
+              "minZ": 177,
+              "maxX": 1799,
+              "maxY": 6,
+              "maxZ": 273
             },
-            "chunkX": 121,
-            "chunkZ": -20
+            "chunkX": 108,
+            "chunkZ": 15
+          }
+        ],
+        "verticalStructureConflicts": []
+      },
+      {
+        "orientation": "north-south",
+        "width": 121,
+        "depth": 241,
+        "area": 29161,
+        "bounds": {
+          "minX": 1648,
+          "maxX": 1768,
+          "minZ": 48,
+          "maxZ": 288
+        },
+        "exactWater": 0,
+        "planStructureIntersectionCount": 1,
+        "sampled": {
+          "columns": 496,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 58,
+          "maxTerrainY": 122,
+          "meanTerrainY": 84.758,
+          "relief": 64
+        },
+        "distanceFromPortal": 390.664,
+        "exact": {
+          "columns": 29161,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 58,
+          "maxTerrainY": 128,
+          "meanTerrainY": 84.949,
+          "relief": 70
+        },
+        "engineered": {
+          "minimumSolidCoverBlocks": 8,
+          "ceilingY": 50,
+          "stationFloorY": 36,
+          "shellMinY": 34,
+          "shellMaxY": 50
+        },
+        "structureIntersections": [
+          {
+            "id": "minecraft:trial_chambers",
+            "bounds": {
+              "minX": 1685,
+              "minY": -31,
+              "minZ": 177,
+              "maxX": 1799,
+              "maxY": 6,
+              "maxZ": 273
+            },
+            "chunkX": 108,
+            "chunkZ": 15
+          }
+        ],
+        "verticalStructureConflicts": []
+      },
+      {
+        "orientation": "north-south",
+        "width": 121,
+        "depth": 241,
+        "area": 29161,
+        "bounds": {
+          "minX": 1640,
+          "maxX": 1760,
+          "minZ": 40,
+          "maxZ": 280
+        },
+        "exactWater": 0,
+        "planStructureIntersectionCount": 1,
+        "sampled": {
+          "columns": 496,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 58,
+          "maxTerrainY": 128,
+          "meanTerrainY": 85.363,
+          "relief": 70
+        },
+        "distanceFromPortal": 384.513,
+        "exact": {
+          "columns": 29161,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 58,
+          "maxTerrainY": 136,
+          "meanTerrainY": 85.582,
+          "relief": 78
+        },
+        "engineered": {
+          "minimumSolidCoverBlocks": 8,
+          "ceilingY": 50,
+          "stationFloorY": 36,
+          "shellMinY": 34,
+          "shellMaxY": 50
+        },
+        "structureIntersections": [
+          {
+            "id": "minecraft:trial_chambers",
+            "bounds": {
+              "minX": 1685,
+              "minY": -31,
+              "minZ": 177,
+              "maxX": 1799,
+              "maxY": 6,
+              "maxZ": 273
+            },
+            "chunkX": 108,
+            "chunkZ": 15
+          }
+        ],
+        "verticalStructureConflicts": []
+      },
+      {
+        "orientation": "north-south",
+        "width": 121,
+        "depth": 241,
+        "area": 29161,
+        "bounds": {
+          "minX": 1632,
+          "maxX": 1752,
+          "minZ": 40,
+          "maxZ": 280
+        },
+        "exactWater": 0,
+        "planStructureIntersectionCount": 1,
+        "sampled": {
+          "columns": 496,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 58,
+          "maxTerrainY": 128,
+          "meanTerrainY": 84.482,
+          "relief": 70
+        },
+        "distanceFromPortal": 386.36,
+        "exact": {
+          "columns": 29161,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 58,
+          "maxTerrainY": 136,
+          "meanTerrainY": 84.698,
+          "relief": 78
+        },
+        "engineered": {
+          "minimumSolidCoverBlocks": 8,
+          "ceilingY": 50,
+          "stationFloorY": 36,
+          "shellMinY": 34,
+          "shellMaxY": 50
+        },
+        "structureIntersections": [
+          {
+            "id": "minecraft:trial_chambers",
+            "bounds": {
+              "minX": 1685,
+              "minY": -31,
+              "minZ": 177,
+              "maxX": 1799,
+              "maxY": 6,
+              "maxZ": 273
+            },
+            "chunkX": 108,
+            "chunkZ": 15
+          }
+        ],
+        "verticalStructureConflicts": []
+      },
+      {
+        "orientation": "north-south",
+        "width": 121,
+        "depth": 241,
+        "area": 29161,
+        "bounds": {
+          "minX": 1640,
+          "maxX": 1760,
+          "minZ": 48,
+          "maxZ": 288
+        },
+        "exactWater": 0,
+        "planStructureIntersectionCount": 1,
+        "sampled": {
+          "columns": 496,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 58,
+          "maxTerrainY": 128,
+          "meanTerrainY": 84.177,
+          "relief": 70
+        },
+        "distanceFromPortal": 392.319,
+        "exact": {
+          "columns": 29161,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 58,
+          "maxTerrainY": 136,
+          "meanTerrainY": 84.348,
+          "relief": 78
+        },
+        "engineered": {
+          "minimumSolidCoverBlocks": 8,
+          "ceilingY": 50,
+          "stationFloorY": 36,
+          "shellMinY": 34,
+          "shellMaxY": 50
+        },
+        "structureIntersections": [
+          {
+            "id": "minecraft:trial_chambers",
+            "bounds": {
+              "minX": 1685,
+              "minY": -31,
+              "minZ": 177,
+              "maxX": 1799,
+              "maxY": 6,
+              "maxZ": 273
+            },
+            "chunkX": 108,
+            "chunkZ": 15
+          }
+        ],
+        "verticalStructureConflicts": []
+      },
+      {
+        "orientation": "north-south",
+        "width": 121,
+        "depth": 241,
+        "area": 29161,
+        "bounds": {
+          "minX": 1632,
+          "maxX": 1752,
+          "minZ": 48,
+          "maxZ": 288
+        },
+        "exactWater": 0,
+        "planStructureIntersectionCount": 1,
+        "sampled": {
+          "columns": 496,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 58,
+          "maxTerrainY": 128,
+          "meanTerrainY": 83.331,
+          "relief": 70
+        },
+        "distanceFromPortal": 394.129,
+        "exact": {
+          "columns": 29161,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 58,
+          "maxTerrainY": 136,
+          "meanTerrainY": 83.501,
+          "relief": 78
+        },
+        "engineered": {
+          "minimumSolidCoverBlocks": 8,
+          "ceilingY": 50,
+          "stationFloorY": 36,
+          "shellMinY": 34,
+          "shellMaxY": 50
+        },
+        "structureIntersections": [
+          {
+            "id": "minecraft:trial_chambers",
+            "bounds": {
+              "minX": 1685,
+              "minY": -31,
+              "minZ": 177,
+              "maxX": 1799,
+              "maxY": 6,
+              "maxZ": 273
+            },
+            "chunkX": 108,
+            "chunkZ": 15
           }
         ],
         "verticalStructureConflicts": []
       },
       {
         "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
+        "width": 241,
+        "depth": 121,
+        "area": 29161,
         "bounds": {
-          "minX": 1904,
-          "maxX": 2244,
-          "minZ": -976,
-          "maxZ": -816
+          "minX": 1624,
+          "maxX": 1864,
+          "minZ": 160,
+          "maxZ": 280
         },
         "exactWater": 0,
+        "planStructureIntersectionCount": 1,
         "sampled": {
-          "columns": 903,
+          "columns": 496,
           "waterColumns": 0,
           "waterFraction": 0,
-          "minTerrainY": 62,
-          "maxTerrainY": 97,
-          "meanTerrainY": 66.477,
-          "relief": 35
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 48,
+          "maxTerrainY": 93,
+          "meanTerrainY": 68.05,
+          "relief": 45
         },
-        "distanceFromPortal": 678.054,
+        "distanceFromPortal": 436.928,
         "exact": {
-          "columns": 54901,
+          "columns": 29161,
           "waterColumns": 0,
           "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 42,
+          "maxTerrainY": 94,
+          "meanTerrainY": 68.015,
+          "relief": 52
+        },
+        "engineered": {
+          "minimumSolidCoverBlocks": 8,
+          "ceilingY": 34,
+          "stationFloorY": 20,
+          "shellMinY": 18,
+          "shellMaxY": 34
+        },
+        "structureIntersections": [
+          {
+            "id": "minecraft:trial_chambers",
+            "bounds": {
+              "minX": 1685,
+              "minY": -31,
+              "minZ": 177,
+              "maxX": 1799,
+              "maxY": 6,
+              "maxZ": 273
+            },
+            "chunkX": 108,
+            "chunkZ": 15
+          }
+        ],
+        "verticalStructureConflicts": []
+      },
+      {
+        "orientation": "east-west",
+        "width": 241,
+        "depth": 121,
+        "area": 29161,
+        "bounds": {
+          "minX": 1616,
+          "maxX": 1856,
+          "minZ": 160,
+          "maxZ": 280
+        },
+        "exactWater": 0,
+        "planStructureIntersectionCount": 1,
+        "sampled": {
+          "columns": 496,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 48,
+          "maxTerrainY": 93,
+          "meanTerrainY": 68.139,
+          "relief": 45
+        },
+        "distanceFromPortal": 437.751,
+        "exact": {
+          "columns": 29161,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 42,
+          "maxTerrainY": 94,
+          "meanTerrainY": 68.098,
+          "relief": 52
+        },
+        "engineered": {
+          "minimumSolidCoverBlocks": 8,
+          "ceilingY": 34,
+          "stationFloorY": 20,
+          "shellMinY": 18,
+          "shellMaxY": 34
+        },
+        "structureIntersections": [
+          {
+            "id": "minecraft:trial_chambers",
+            "bounds": {
+              "minX": 1685,
+              "minY": -31,
+              "minZ": 177,
+              "maxX": 1799,
+              "maxY": 6,
+              "maxZ": 273
+            },
+            "chunkX": 108,
+            "chunkZ": 15
+          }
+        ],
+        "verticalStructureConflicts": []
+      },
+      {
+        "orientation": "east-west",
+        "width": 225,
+        "depth": 113,
+        "area": 25425,
+        "bounds": {
+          "minX": 1928,
+          "maxX": 2152,
+          "minZ": 32,
+          "maxZ": 144
+        },
+        "exactWater": 0,
+        "planStructureIntersectionCount": 1,
+        "sampled": {
+          "columns": 435,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 63,
+          "maxTerrainY": 114,
+          "meanTerrainY": 89.637,
+          "relief": 51
+        },
+        "distanceFromPortal": 396.023,
+        "exact": {
+          "columns": 25425,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 63,
+          "maxTerrainY": 114,
+          "meanTerrainY": 90.491,
+          "relief": 51
+        },
+        "engineered": {
+          "minimumSolidCoverBlocks": 8,
+          "ceilingY": 55,
+          "stationFloorY": 41,
+          "shellMinY": 39,
+          "shellMaxY": 55
+        },
+        "structureIntersections": [
+          {
+            "id": "minecraft:mineshaft",
+            "bounds": {
+              "minX": 1929,
+              "minY": -37,
+              "minZ": 97,
+              "maxX": 2041,
+              "maxY": -14,
+              "maxZ": 252
+            },
+            "chunkX": 123,
+            "chunkZ": 11
+          }
+        ],
+        "verticalStructureConflicts": []
+      },
+      {
+        "orientation": "east-west",
+        "width": 225,
+        "depth": 113,
+        "area": 25425,
+        "bounds": {
+          "minX": 1936,
+          "maxX": 2160,
+          "minZ": 32,
+          "maxZ": 144
+        },
+        "exactWater": 0,
+        "planStructureIntersectionCount": 1,
+        "sampled": {
+          "columns": 435,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 63,
+          "maxTerrainY": 114,
+          "meanTerrainY": 90.009,
+          "relief": 51
+        },
+        "distanceFromPortal": 401.221,
+        "exact": {
+          "columns": 25425,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 63,
+          "maxTerrainY": 114,
+          "meanTerrainY": 90.862,
+          "relief": 51
+        },
+        "engineered": {
+          "minimumSolidCoverBlocks": 8,
+          "ceilingY": 55,
+          "stationFloorY": 41,
+          "shellMinY": 39,
+          "shellMaxY": 55
+        },
+        "structureIntersections": [
+          {
+            "id": "minecraft:mineshaft",
+            "bounds": {
+              "minX": 1929,
+              "minY": -37,
+              "minZ": 97,
+              "maxX": 2041,
+              "maxY": -14,
+              "maxZ": 252
+            },
+            "chunkX": 123,
+            "chunkZ": 11
+          }
+        ],
+        "verticalStructureConflicts": []
+      },
+      {
+        "orientation": "east-west",
+        "width": 225,
+        "depth": 113,
+        "area": 25425,
+        "bounds": {
+          "minX": 1928,
+          "maxX": 2152,
+          "minZ": 40,
+          "maxZ": 152
+        },
+        "exactWater": 0,
+        "planStructureIntersectionCount": 1,
+        "sampled": {
+          "columns": 435,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 63,
+          "maxTerrainY": 114,
+          "meanTerrainY": 90.069,
+          "relief": 51
+        },
+        "distanceFromPortal": 402.177,
+        "exact": {
+          "columns": 25425,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 63,
+          "maxTerrainY": 114,
+          "meanTerrainY": 90.949,
+          "relief": 51
+        },
+        "engineered": {
+          "minimumSolidCoverBlocks": 8,
+          "ceilingY": 55,
+          "stationFloorY": 41,
+          "shellMinY": 39,
+          "shellMaxY": 55
+        },
+        "structureIntersections": [
+          {
+            "id": "minecraft:mineshaft",
+            "bounds": {
+              "minX": 1929,
+              "minY": -37,
+              "minZ": 97,
+              "maxX": 2041,
+              "maxY": -14,
+              "maxZ": 252
+            },
+            "chunkX": 123,
+            "chunkZ": 11
+          }
+        ],
+        "verticalStructureConflicts": []
+      },
+      {
+        "orientation": "east-west",
+        "width": 225,
+        "depth": 113,
+        "area": 25425,
+        "bounds": {
+          "minX": 1936,
+          "maxX": 2160,
+          "minZ": 40,
+          "maxZ": 152
+        },
+        "exactWater": 0,
+        "planStructureIntersectionCount": 1,
+        "sampled": {
+          "columns": 435,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 63,
+          "maxTerrainY": 114,
+          "meanTerrainY": 90.467,
+          "relief": 51
+        },
+        "distanceFromPortal": 407.296,
+        "exact": {
+          "columns": 25425,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 63,
+          "maxTerrainY": 114,
+          "meanTerrainY": 91.345,
+          "relief": 51
+        },
+        "engineered": {
+          "minimumSolidCoverBlocks": 8,
+          "ceilingY": 55,
+          "stationFloorY": 41,
+          "shellMinY": 39,
+          "shellMaxY": 55
+        },
+        "structureIntersections": [
+          {
+            "id": "minecraft:mineshaft",
+            "bounds": {
+              "minX": 1929,
+              "minY": -37,
+              "minZ": 97,
+              "maxX": 2041,
+              "maxY": -14,
+              "maxZ": 252
+            },
+            "chunkX": 123,
+            "chunkZ": 11
+          }
+        ],
+        "verticalStructureConflicts": []
+      },
+      {
+        "orientation": "east-west",
+        "width": 225,
+        "depth": 113,
+        "area": 25425,
+        "bounds": {
+          "minX": 1928,
+          "maxX": 2152,
+          "minZ": 24,
+          "maxZ": 136
+        },
+        "exactWater": 0,
+        "planStructureIntersectionCount": 1,
+        "sampled": {
+          "columns": 435,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
           "minTerrainY": 62,
-          "maxTerrainY": 97,
-          "meanTerrainY": 66.328,
-          "relief": 35
+          "maxTerrainY": 114,
+          "meanTerrainY": 88.867,
+          "relief": 52
+        },
+        "distanceFromPortal": 389.936,
+        "exact": {
+          "columns": 25425,
+          "waterColumns": 0,
+          "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
+          "minTerrainY": 62,
+          "maxTerrainY": 114,
+          "meanTerrainY": 89.727,
+          "relief": 52
         },
         "engineered": {
           "minimumSolidCoverBlocks": 8,
@@ -2186,61 +1665,54 @@
           {
             "id": "minecraft:mineshaft",
             "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
+              "minX": 1929,
+              "minY": -37,
+              "minZ": 97,
+              "maxX": 2041,
+              "maxY": -14,
+              "maxZ": 252
             },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
+            "chunkX": 123,
+            "chunkZ": 11
           }
         ],
         "verticalStructureConflicts": []
       },
       {
         "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
+        "width": 225,
+        "depth": 113,
+        "area": 25425,
         "bounds": {
-          "minX": 1904,
-          "maxX": 2244,
-          "minZ": -968,
-          "maxZ": -808
+          "minX": 1936,
+          "maxX": 2160,
+          "minZ": 24,
+          "maxZ": 136
         },
         "exactWater": 0,
+        "planStructureIntersectionCount": 1,
         "sampled": {
-          "columns": 903,
+          "columns": 435,
           "waterColumns": 0,
           "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
           "minTerrainY": 62,
-          "maxTerrainY": 105,
-          "meanTerrainY": 67.309,
-          "relief": 43
+          "maxTerrainY": 114,
+          "meanTerrainY": 89.207,
+          "relief": 52
         },
-        "distanceFromPortal": 670.854,
+        "distanceFromPortal": 395.214,
         "exact": {
-          "columns": 54901,
+          "columns": 25425,
           "waterColumns": 0,
           "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
           "minTerrainY": 62,
-          "maxTerrainY": 105,
-          "meanTerrainY": 67.113,
-          "relief": 43
+          "maxTerrainY": 114,
+          "meanTerrainY": 90.069,
+          "relief": 52
         },
         "engineered": {
           "minimumSolidCoverBlocks": 8,
@@ -2253,61 +1725,54 @@
           {
             "id": "minecraft:mineshaft",
             "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
+              "minX": 1929,
+              "minY": -37,
+              "minZ": 97,
+              "maxX": 2041,
+              "maxY": -14,
+              "maxZ": 252
             },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
+            "chunkX": 123,
+            "chunkZ": 11
           }
         ],
         "verticalStructureConflicts": []
       },
       {
         "orientation": "east-west",
-        "width": 341,
-        "depth": 161,
+        "width": 225,
+        "depth": 113,
+        "area": 25425,
         "bounds": {
-          "minX": 1904,
-          "maxX": 2244,
-          "minZ": -960,
-          "maxZ": -800
+          "minX": 1648,
+          "maxX": 1872,
+          "minZ": 40,
+          "maxZ": 152
         },
         "exactWater": 0,
+        "planStructureIntersectionCount": 1,
         "sampled": {
-          "columns": 903,
+          "columns": 435,
           "waterColumns": 0,
           "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
           "minTerrainY": 62,
-          "maxTerrainY": 109,
-          "meanTerrainY": 68.275,
-          "relief": 47
+          "maxTerrainY": 123,
+          "meanTerrainY": 98.097,
+          "relief": 61
         },
-        "distanceFromPortal": 663.672,
+        "distanceFromPortal": 312.003,
         "exact": {
-          "columns": 54901,
+          "columns": 25425,
           "waterColumns": 0,
           "waterFraction": 0,
+          "coldBiomeColumns": 0,
+          "coldBiomeFraction": 0,
           "minTerrainY": 62,
-          "maxTerrainY": 109,
-          "meanTerrainY": 68.049,
-          "relief": 47
+          "maxTerrainY": 128,
+          "meanTerrainY": 99.054,
+          "relief": 66
         },
         "engineered": {
           "minimumSolidCoverBlocks": 8,
@@ -2320,31 +1785,209 @@
           {
             "id": "minecraft:mineshaft",
             "bounds": {
-              "minX": 1968,
-              "minY": -13,
-              "minZ": -948,
-              "maxX": 2081,
-              "maxY": 10,
-              "maxZ": -814
+              "minX": 1780,
+              "minY": -16,
+              "minZ": -21,
+              "maxX": 1925,
+              "maxY": 3,
+              "maxZ": 134
             },
-            "chunkX": 125,
-            "chunkZ": -54
-          },
-          {
-            "id": "minecraft:trial_chambers",
-            "bounds": {
-              "minX": 2142,
-              "minY": -52,
-              "minZ": -922,
-              "maxX": 2257,
-              "maxY": -11,
-              "maxZ": -817
-            },
-            "chunkX": 136,
-            "chunkZ": -54
+            "chunkX": 115,
+            "chunkZ": 3
           }
         ],
         "verticalStructureConflicts": []
+      }
+    ]
+  },
+  "subwayPortalSearch": {
+    "junction": {
+      "x": 1780,
+      "y": 68,
+      "z": -250
+    },
+    "proposedPortalY": 64,
+    "rule": "dry copied-snapshot surface column at least 35 horizontal blocks south of GA-J1; four-block descent no steeper than 1:8",
+    "topCandidates": [
+      {
+        "x": 1785,
+        "z": -215,
+        "terrainY": 62,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 35.355,
+        "gradeForFourBlockDescent": 0.113137
+      },
+      {
+        "x": 1790,
+        "z": -215,
+        "terrainY": 62,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 36.401,
+        "gradeForFourBlockDescent": 0.109888
+      },
+      {
+        "x": 1765,
+        "z": -215,
+        "terrainY": 62,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 38.079,
+        "gradeForFourBlockDescent": 0.105045
+      },
+      {
+        "x": 1795,
+        "z": -215,
+        "terrainY": 62,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 38.079,
+        "gradeForFourBlockDescent": 0.105045
+      },
+      {
+        "x": 1760,
+        "z": -215,
+        "terrainY": 62,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 40.311,
+        "gradeForFourBlockDescent": 0.099228
+      },
+      {
+        "x": 1800,
+        "z": -215,
+        "terrainY": 62,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 40.311,
+        "gradeForFourBlockDescent": 0.099228
+      },
+      {
+        "x": 1790,
+        "z": -210,
+        "terrainY": 62,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 41.231,
+        "gradeForFourBlockDescent": 0.097014
+      },
+      {
+        "x": 1795,
+        "z": -210,
+        "terrainY": 62,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 42.72,
+        "gradeForFourBlockDescent": 0.093633
+      },
+      {
+        "x": 1755,
+        "z": -215,
+        "terrainY": 62,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 43.012,
+        "gradeForFourBlockDescent": 0.092998
+      },
+      {
+        "x": 1805,
+        "z": -215,
+        "terrainY": 62,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 43.012,
+        "gradeForFourBlockDescent": 0.092998
+      },
+      {
+        "x": 1800,
+        "z": -210,
+        "terrainY": 62,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 44.721,
+        "gradeForFourBlockDescent": 0.089443
+      },
+      {
+        "x": 1810,
+        "z": -215,
+        "terrainY": 63,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 46.098,
+        "gradeForFourBlockDescent": 0.086772
+      },
+      {
+        "x": 1750,
+        "z": -215,
+        "terrainY": 62,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 46.098,
+        "gradeForFourBlockDescent": 0.086772
+      },
+      {
+        "x": 1805,
+        "z": -210,
+        "terrainY": 62,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 47.17,
+        "gradeForFourBlockDescent": 0.0848
+      },
+      {
+        "x": 1795,
+        "z": -205,
+        "terrainY": 62,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 47.434,
+        "gradeForFourBlockDescent": 0.084327
+      },
+      {
+        "x": 1800,
+        "z": -205,
+        "terrainY": 62,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 49.244,
+        "gradeForFourBlockDescent": 0.081228
+      },
+      {
+        "x": 1745,
+        "z": -215,
+        "terrainY": 63,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 49.497,
+        "gradeForFourBlockDescent": 0.080812
+      },
+      {
+        "x": 1815,
+        "z": -215,
+        "terrainY": 63,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 49.497,
+        "gradeForFourBlockDescent": 0.080812
+      },
+      {
+        "x": 1810,
+        "z": -210,
+        "terrainY": 63,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 50,
+        "gradeForFourBlockDescent": 0.08
+      },
+      {
+        "x": 1805,
+        "z": -205,
+        "terrainY": 63,
+        "waterColumn": false,
+        "biome": "minecraft:plains",
+        "runFromJunction": 51.478,
+        "gradeForFourBlockDescent": 0.077703
       }
     ]
   },
@@ -2385,7 +2028,7 @@
         }
       }
     },
-    "candidatesEvaluated": 5280,
+    "candidatesEvaluated": 7788,
     "rankingRule": "dry five anchors, zero surface generated-structure intersections, then lowest combined mountain and double-weighted urban water fraction; underground intersections and relief are reported as constraints",
     "topCandidates": [
       {
@@ -2481,6 +2124,8 @@
           "columns": 481401,
           "waterColumns": 15688,
           "waterFraction": 0.032588,
+          "coldBiomeColumns": 434845,
+          "coldBiomeFraction": 0.903291,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 72.764,
@@ -2490,6 +2135,8 @@
           "columns": 90831,
           "waterColumns": 13927,
           "waterFraction": 0.153329,
+          "coldBiomeColumns": 62332,
+          "coldBiomeFraction": 0.686241,
           "minTerrainY": 24,
           "maxTerrainY": 96,
           "meanTerrainY": 69.146,
@@ -2866,6 +2513,8 @@
           "columns": 481401,
           "waterColumns": 15604,
           "waterFraction": 0.032414,
+          "coldBiomeColumns": 436885,
+          "coldBiomeFraction": 0.907528,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 72.823,
@@ -2875,6 +2524,8 @@
           "columns": 90831,
           "waterColumns": 13982,
           "waterFraction": 0.153934,
+          "coldBiomeColumns": 62808,
+          "coldBiomeFraction": 0.691482,
           "minTerrainY": 24,
           "maxTerrainY": 96,
           "meanTerrainY": 69.151,
@@ -3251,6 +2902,8 @@
           "columns": 481401,
           "waterColumns": 15777,
           "waterFraction": 0.032773,
+          "coldBiomeColumns": 432933,
+          "coldBiomeFraction": 0.899319,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 72.687,
@@ -3260,6 +2913,8 @@
           "columns": 90831,
           "waterColumns": 13968,
           "waterFraction": 0.15378,
+          "coldBiomeColumns": 61696,
+          "coldBiomeFraction": 0.679239,
           "minTerrainY": 24,
           "maxTerrainY": 96,
           "meanTerrainY": 69.066,
@@ -3649,6 +3304,8 @@
           "columns": 481401,
           "waterColumns": 15505,
           "waterFraction": 0.032208,
+          "coldBiomeColumns": 438973,
+          "coldBiomeFraction": 0.911866,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 72.885,
@@ -3658,6 +3315,8 @@
           "columns": 90831,
           "waterColumns": 14045,
           "waterFraction": 0.154628,
+          "coldBiomeColumns": 63460,
+          "coldBiomeFraction": 0.69866,
           "minTerrainY": 24,
           "maxTerrainY": 96,
           "meanTerrainY": 69.08,
@@ -4047,6 +3706,8 @@
           "columns": 481401,
           "waterColumns": 15785,
           "waterFraction": 0.03279,
+          "coldBiomeColumns": 431085,
+          "coldBiomeFraction": 0.89548,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 72.572,
@@ -4056,6 +3717,8 @@
           "columns": 90831,
           "waterColumns": 14318,
           "waterFraction": 0.157633,
+          "coldBiomeColumns": 61056,
+          "coldBiomeFraction": 0.672193,
           "minTerrainY": 24,
           "maxTerrainY": 96,
           "meanTerrainY": 68.891,
@@ -4458,6 +4121,8 @@
           "columns": 481401,
           "waterColumns": 16030,
           "waterFraction": 0.033299,
+          "coldBiomeColumns": 434445,
+          "coldBiomeFraction": 0.90246,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 72.85,
@@ -4467,6 +4132,8 @@
           "columns": 90831,
           "waterColumns": 14819,
           "waterFraction": 0.163149,
+          "coldBiomeColumns": 60576,
+          "coldBiomeFraction": 0.666909,
           "minTerrainY": 24,
           "maxTerrainY": 96,
           "meanTerrainY": 68.819,
@@ -4843,6 +4510,8 @@
           "columns": 481401,
           "waterColumns": 15946,
           "waterFraction": 0.033124,
+          "coldBiomeColumns": 436549,
+          "coldBiomeFraction": 0.90683,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 72.906,
@@ -4852,6 +4521,8 @@
           "columns": 90831,
           "waterColumns": 14874,
           "waterFraction": 0.163755,
+          "coldBiomeColumns": 61112,
+          "coldBiomeFraction": 0.67281,
           "minTerrainY": 24,
           "maxTerrainY": 96,
           "meanTerrainY": 68.815,
@@ -5228,6 +4899,8 @@
           "columns": 481401,
           "waterColumns": 16119,
           "waterFraction": 0.033484,
+          "coldBiomeColumns": 432469,
+          "coldBiomeFraction": 0.898355,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 72.775,
@@ -5237,6 +4910,8 @@
           "columns": 90831,
           "waterColumns": 14860,
           "waterFraction": 0.163601,
+          "coldBiomeColumns": 59928,
+          "coldBiomeFraction": 0.659775,
           "minTerrainY": 24,
           "maxTerrainY": 96,
           "meanTerrainY": 68.752,
@@ -5626,6 +5301,8 @@
           "columns": 481401,
           "waterColumns": 15847,
           "waterFraction": 0.032919,
+          "coldBiomeColumns": 438701,
+          "coldBiomeFraction": 0.911301,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 72.965,
@@ -5635,6 +5312,8 @@
           "columns": 90831,
           "waterColumns": 14937,
           "waterFraction": 0.164448,
+          "coldBiomeColumns": 61828,
+          "coldBiomeFraction": 0.680693,
           "minTerrainY": 24,
           "maxTerrainY": 96,
           "meanTerrainY": 68.736,
@@ -6024,6 +5703,8 @@
           "columns": 481401,
           "waterColumns": 15785,
           "waterFraction": 0.03279,
+          "coldBiomeColumns": 429301,
+          "coldBiomeFraction": 0.891774,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 72.413,
@@ -6033,6 +5714,8 @@
           "columns": 90831,
           "waterColumns": 15051,
           "waterFraction": 0.165703,
+          "coldBiomeColumns": 60460,
+          "coldBiomeFraction": 0.665632,
           "minTerrainY": 29,
           "maxTerrainY": 95,
           "meanTerrainY": 68.611,
@@ -6435,6 +6118,8 @@
           "columns": 481401,
           "waterColumns": 16127,
           "waterFraction": 0.0335,
+          "coldBiomeColumns": 430557,
+          "coldBiomeFraction": 0.894383,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 72.661,
@@ -6444,6 +6129,8 @@
           "columns": 90831,
           "waterColumns": 15210,
           "waterFraction": 0.167454,
+          "coldBiomeColumns": 59288,
+          "coldBiomeFraction": 0.652729,
           "minTerrainY": 24,
           "maxTerrainY": 96,
           "meanTerrainY": 68.589,
@@ -6846,6 +6533,8 @@
           "columns": 481401,
           "waterColumns": 16335,
           "waterFraction": 0.033932,
+          "coldBiomeColumns": 433941,
+          "coldBiomeFraction": 0.901413,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 72.936,
@@ -6855,6 +6544,8 @@
           "columns": 90831,
           "waterColumns": 15431,
           "waterFraction": 0.169887,
+          "coldBiomeColumns": 58808,
+          "coldBiomeFraction": 0.647444,
           "minTerrainY": 24,
           "maxTerrainY": 96,
           "meanTerrainY": 68.54,
@@ -7218,6 +6909,8 @@
           "columns": 481401,
           "waterColumns": 16424,
           "waterFraction": 0.034117,
+          "coldBiomeColumns": 431901,
+          "coldBiomeFraction": 0.897175,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 72.863,
@@ -7227,6 +6920,8 @@
           "columns": 90831,
           "waterColumns": 15439,
           "waterFraction": 0.169975,
+          "coldBiomeColumns": 58160,
+          "coldBiomeFraction": 0.64031,
           "minTerrainY": 24,
           "maxTerrainY": 96,
           "meanTerrainY": 68.492,
@@ -7603,6 +7298,8 @@
           "columns": 481401,
           "waterColumns": 16251,
           "waterFraction": 0.033758,
+          "coldBiomeColumns": 436109,
+          "coldBiomeFraction": 0.905916,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 72.989,
@@ -7612,6 +7309,8 @@
           "columns": 90831,
           "waterColumns": 15511,
           "waterFraction": 0.170768,
+          "coldBiomeColumns": 59400,
+          "coldBiomeFraction": 0.653962,
           "minTerrainY": 24,
           "maxTerrainY": 96,
           "meanTerrainY": 68.521,
@@ -7975,6 +7674,8 @@
           "columns": 481401,
           "waterColumns": 16152,
           "waterFraction": 0.033552,
+          "coldBiomeColumns": 438325,
+          "coldBiomeFraction": 0.91052,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 73.046,
@@ -7984,6 +7685,8 @@
           "columns": 90831,
           "waterColumns": 15613,
           "waterFraction": 0.171891,
+          "coldBiomeColumns": 60180,
+          "coldBiomeFraction": 0.662549,
           "minTerrainY": 24,
           "maxTerrainY": 96,
           "meanTerrainY": 68.425,
@@ -8360,6 +8063,8 @@
           "columns": 481401,
           "waterColumns": 16432,
           "waterFraction": 0.034134,
+          "coldBiomeColumns": 429925,
+          "coldBiomeFraction": 0.89307,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 72.749,
@@ -8369,6 +8074,8 @@
           "columns": 90831,
           "waterColumns": 15789,
           "waterFraction": 0.173828,
+          "coldBiomeColumns": 57520,
+          "coldBiomeFraction": 0.633264,
           "minTerrainY": 24,
           "maxTerrainY": 96,
           "meanTerrainY": 68.342,
@@ -8758,6 +8465,8 @@
           "columns": 481401,
           "waterColumns": 15785,
           "waterFraction": 0.03279,
+          "coldBiomeColumns": 427597,
+          "coldBiomeFraction": 0.888235,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 72.237,
@@ -8767,6 +8476,8 @@
           "columns": 90831,
           "waterColumns": 15962,
           "waterFraction": 0.175733,
+          "coldBiomeColumns": 60008,
+          "coldBiomeFraction": 0.660656,
           "minTerrainY": 29,
           "maxTerrainY": 95,
           "meanTerrainY": 68.303,
@@ -9169,6 +8880,8 @@
           "columns": 481401,
           "waterColumns": 16127,
           "waterFraction": 0.0335,
+          "coldBiomeColumns": 428709,
+          "coldBiomeFraction": 0.890544,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 72.502,
@@ -9178,6 +8891,8 @@
           "columns": 90831,
           "waterColumns": 15943,
           "waterFraction": 0.175524,
+          "coldBiomeColumns": 58692,
+          "coldBiomeFraction": 0.646167,
           "minTerrainY": 29,
           "maxTerrainY": 95,
           "meanTerrainY": 68.322,
@@ -9580,6 +9295,8 @@
           "columns": 481401,
           "waterColumns": 16719,
           "waterFraction": 0.03473,
+          "coldBiomeColumns": 431169,
+          "coldBiomeFraction": 0.895655,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 72.944,
@@ -9589,6 +9306,8 @@
           "columns": 90831,
           "waterColumns": 15898,
           "waterFraction": 0.175028,
+          "coldBiomeColumns": 56392,
+          "coldBiomeFraction": 0.620845,
           "minTerrainY": 24,
           "maxTerrainY": 96,
           "meanTerrainY": 68.249,
@@ -9991,6 +9710,8 @@
           "columns": 481401,
           "waterColumns": 16630,
           "waterFraction": 0.034545,
+          "coldBiomeColumns": 433273,
+          "coldBiomeFraction": 0.900025,
           "minTerrainY": 20,
           "maxTerrainY": 125,
           "meanTerrainY": 73.014,
@@ -10000,6 +9721,8 @@
           "columns": 90831,
           "waterColumns": 15952,
           "waterFraction": 0.175623,
+          "coldBiomeColumns": 57040,
+          "coldBiomeFraction": 0.627979,
           "minTerrainY": 24,
           "maxTerrainY": 96,
           "meanTerrainY": 68.278,

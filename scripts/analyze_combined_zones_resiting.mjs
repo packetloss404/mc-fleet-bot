@@ -22,7 +22,7 @@ const value = (flag, fallback) => {
 
 const REGION_DIR = path.resolve(value(
   '--regions',
-  'data/worldsnap-combined-zones-phase0-final-post-20260804T001002Z/region',
+  'data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region',
 ));
 const OUTPUT = path.resolve(value(
   '--out',
@@ -30,11 +30,22 @@ const OUTPUT = path.resolve(value(
 ));
 const WORLD_MIN_Y = -64;
 const WORLD_MAX_Y = 319;
-const SEARCH = Object.freeze({ minX: 1500, maxX: 2800, minZ: -1200, maxZ: 300 });
-const TERMINAL_SEARCH = Object.freeze({ minX: 1550, maxX: 2250, minZ: -1100, maxZ: 0 });
+const SEARCH = Object.freeze({ minX: 1500, maxX: 2800, minZ: -1200, maxZ: 600 });
+const TERMINAL_SEARCH = Object.freeze({ minX: 1500, maxX: 2550, minZ: 16, maxZ: 600 });
+const SUBWAY_PORTAL_REFERENCE = Object.freeze({ x: 1785, z: -215 });
 const TERMINAL_SHAPES = Object.freeze([
   { orientation: 'east-west', width: 341, depth: 161 },
+  { orientation: 'east-west', width: 321, depth: 145 },
+  { orientation: 'east-west', width: 289, depth: 145 },
+  { orientation: 'east-west', width: 257, depth: 129 },
+  { orientation: 'east-west', width: 241, depth: 121 },
+  { orientation: 'east-west', width: 225, depth: 113 },
   { orientation: 'north-south', width: 161, depth: 341 },
+  { orientation: 'north-south', width: 145, depth: 321 },
+  { orientation: 'north-south', width: 145, depth: 289 },
+  { orientation: 'north-south', width: 129, depth: 257 },
+  { orientation: 'north-south', width: 121, depth: 241 },
+  { orientation: 'north-south', width: 113, depth: 225 },
 ]);
 const CORE_LOCAL = Object.freeze({
   mountain: { minX: -400, maxX: 400, minZ: -800, maxZ: -200 },
@@ -138,6 +149,10 @@ function isVegetation(name) {
   return /(_leaves|_log|_wood|_stem|_hyphae|_sapling)$/.test(name)
     || /^minecraft:(mangrove_roots|muddy_mangrove_roots|bamboo|vine|cocoa|short_grass|tall_grass|fern|large_fern|dead_bush|lily_pad|leaf_litter|seagrass|tall_seagrass|kelp|kelp_plant|sea_pickle|moss_carpet|pale_moss_carpet|pale_hanging_moss|pink_petals|wildflowers)$/.test(name)
     || /(_flower|_tulip|mushroom|dandelion|poppy|allium|azure_bluet|orchid|peony|sunflower|lilac|rose_bush|cornflower|lily_of_the_valley)$/.test(name);
+}
+
+function isColdBiome(name) {
+  return /snowy|frozen|ice_spikes/.test(name) || name === 'minecraft:grove';
 }
 
 function blockAt(sectionMap, x, y, z) {
@@ -304,6 +319,7 @@ function pointSample(x, z) {
 function areaCensus(bounds, step = 1) {
   let columns = 0;
   let waterColumns = 0;
+  let coldBiomeColumns = 0;
   let minTerrainY = null;
   let maxTerrainY = null;
   let terrainSum = 0;
@@ -313,6 +329,8 @@ function areaCensus(bounds, step = 1) {
       const y = terrain[target];
       columns++;
       waterColumns += water[target];
+      const biome = biomeNames[biomeIndex[target]] ?? '';
+      if (isColdBiome(biome)) coldBiomeColumns++;
       minTerrainY = minTerrainY === null ? y : Math.min(minTerrainY, y);
       maxTerrainY = maxTerrainY === null ? y : Math.max(maxTerrainY, y);
       terrainSum += y;
@@ -322,6 +340,8 @@ function areaCensus(bounds, step = 1) {
     columns,
     waterColumns,
     waterFraction: Number((waterColumns / columns).toFixed(6)),
+    coldBiomeColumns,
+    coldBiomeFraction: Number((coldBiomeColumns / columns).toFixed(6)),
     minTerrainY,
     maxTerrainY,
     meanTerrainY: Number((terrainSum / columns).toFixed(3)),
@@ -335,8 +355,8 @@ function intersections(bounds) {
 
 const approximateTerminals = [];
 for (const shape of TERMINAL_SHAPES) {
-  for (let minZ = -1096; minZ + shape.depth - 1 <= TERMINAL_SEARCH.maxZ; minZ += 8) {
-    for (let minX = 1552; minX + shape.width - 1 <= TERMINAL_SEARCH.maxX; minX += 8) {
+  for (let minZ = 16; minZ + shape.depth - 1 <= TERMINAL_SEARCH.maxZ; minZ += 8) {
+    for (let minX = 1504; minX + shape.width - 1 <= TERMINAL_SEARCH.maxX; minX += 8) {
       const bounds = {
         minX,
         maxX: minX + shape.width - 1,
@@ -349,15 +369,24 @@ for (const shape of TERMINAL_SHAPES) {
       const centerZ = (bounds.minZ + bounds.maxZ) / 2;
       approximateTerminals.push({
         ...shape,
+        area: shape.width * shape.depth,
         bounds,
         exactWater,
+        planStructureIntersectionCount: intersections(bounds).length,
         sampled,
-        distanceFromPortal: Number(Math.hypot(centerX - 1780, centerZ + 285).toFixed(3)),
+        distanceFromPortal: Number(Math.hypot(
+          centerX - SUBWAY_PORTAL_REFERENCE.x,
+          centerZ - SUBWAY_PORTAL_REFERENCE.z,
+        ).toFixed(3)),
       });
     }
   }
 }
-approximateTerminals.sort((a, b) => a.exactWater - b.exactWater
+approximateTerminals.sort((a, b) => Number(a.exactWater > 0) - Number(b.exactWater > 0)
+  || a.exactWater / a.area - b.exactWater / b.area
+  || a.planStructureIntersectionCount - b.planStructureIntersectionCount
+  || a.sampled.coldBiomeFraction - b.sampled.coldBiomeFraction
+  || b.area - a.area
   || b.sampled.minTerrainY - a.sampled.minTerrainY
   || a.sampled.relief - b.sampled.relief
   || a.distanceFromPortal - b.distanceFromPortal);
@@ -382,8 +411,11 @@ const terminalCandidates = approximateTerminals.slice(0, 80).map((candidate) => 
       && item.bounds.minY <= ceilingY),
   };
 });
-terminalCandidates.sort((a, b) => a.exact.waterColumns - b.exact.waterColumns
+terminalCandidates.sort((a, b) => Number(a.exact.waterColumns > 0) - Number(b.exact.waterColumns > 0)
+  || a.exact.waterFraction - b.exact.waterFraction
   || a.verticalStructureConflicts.length - b.verticalStructureConflicts.length
+  || a.exact.coldBiomeFraction - b.exact.coldBiomeFraction
+  || b.area - a.area
   || b.exact.minTerrainY - a.exact.minTerrainY
   || a.exact.relief - b.exact.relief
   || a.distanceFromPortal - b.distanceFromPortal);
@@ -475,12 +507,7 @@ exactCoreCandidates.sort((a, b) => a.score - b.score
   || a.mountainStructureIntersections.length - b.mountainStructureIntersections.length
   || a.mountain.relief - b.mountain.relief);
 
-const selectedTerminal = terminalCandidates.find((candidate) => (
-  candidate.bounds.minX === 1880
-  && candidate.bounds.maxX === 2220
-  && candidate.bounds.minZ === -1008
-  && candidate.bounds.maxZ === -848
-));
+const selectedTerminal = terminalCandidates[0];
 const selectedCoreSource = coreCandidates.find((candidate) => (
   candidate.origin.x === 2048
   && candidate.origin.z === -328
@@ -488,6 +515,22 @@ const selectedCoreSource = coreCandidates.find((candidate) => (
 ));
 if (!selectedTerminal || !selectedCoreSource) throw new Error('adopted candidate missing from search');
 const selectedCore = enrichCoreCandidate(selectedCoreSource);
+const subwayPortalCandidates = [];
+for (let z = -215; z <= -120; z += 5) {
+  for (let x = 1740; x <= 1820; x += 5) {
+    const sample = pointSample(x, z);
+    const runFromJunction = Math.hypot(x - 1780, z + 250);
+    if (!sample.waterColumn && runFromJunction >= 35) {
+      subwayPortalCandidates.push({
+        ...sample,
+        runFromJunction: Number(runFromJunction.toFixed(3)),
+        gradeForFourBlockDescent: Number((4 / runFromJunction).toFixed(6)),
+      });
+    }
+  }
+}
+subwayPortalCandidates.sort((a, b) => a.runFromJunction - b.runFromJunction
+  || b.terrainY - a.terrainY);
 
 const report = {
   schemaVersion: 1,
@@ -500,7 +543,7 @@ const report = {
     terminal: selectedTerminal,
     core: selectedCore,
     rationale: [
-      'Terminal is completely dry, has exact minimum terrain Y62, supports roof Y54 with eight-block cover everywhere, and has zero vertical generated-structure conflicts at shell Y38..54.',
+      'Terminal is wholly south of Gateway Approach, completely dry, outside snowy/frozen biomes, supports at least eight blocks of cover, and has zero vertical generated-structure conflicts at shell Y38..54.',
       'Core keeps all five critical anchors dry while limiting mountain water to 2.6167% and urban-core water to 2.7788%.',
       'Three surface structures in the mountain envelope are retained as mandatory no-touch exhibit voids rather than treated as vacant land.',
       'The coupled placement keeps Gateway Approach inside the generated atlas and avoids any additional Phase 0 chunk generation.',
@@ -509,9 +552,15 @@ const report = {
   terminalSearch: {
     bounds: TERMINAL_SEARCH,
     shapes: TERMINAL_SHAPES,
-    rankingRule: 'zero water, zero vertical generated-structure conflicts, highest exact minimum terrain, lowest relief, shortest branch from (1780,-285)',
+    rankingRule: 'zero water, zero vertical generated-structure conflicts, zero snowy/frozen biome columns, largest viable hall, highest exact minimum terrain, lowest relief, shortest branch from the dry portal reference (1785,-215)',
     candidatesEvaluated: approximateTerminals.length,
     topCandidates: terminalCandidates.slice(0, 20),
+  },
+  subwayPortalSearch: {
+    junction: { x: 1780, y: 68, z: -250 },
+    proposedPortalY: 64,
+    rule: 'dry copied-snapshot surface column at least 35 horizontal blocks south of GA-J1; four-block descent no steeper than 1:8',
+    topCandidates: subwayPortalCandidates.slice(0, 20),
   },
   coreSearch: {
     normalizedLocalProgram: CORE_LOCAL,

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050" role="img" aria-labelledby="title desc">
   <title id="title">Combined Zones vanilla-height vertical zoning study</title>
-  <desc id="desc">Vertical section comparing the native Masterplan 04 height requirement with a provisional piecewise compression into the current vanilla Minecraft world height, including the Z02 Empty Eight terminal near Y 48.</desc>
+  <desc id="desc">Vertical section comparing the native Masterplan 04 height requirement with a provisional piecewise compression into the current vanilla Minecraft world height, including the Z02 Empty Eight south-annex shell at Y 38 through 54.</desc>
   <defs>
     <pattern id="lime" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="12" height="12" fill="#d8d1bb"/><line x1="0" y1="0" x2="0" y2="12" stroke="#a39a7e" stroke-width="2"/></pattern>
     <pattern id="gran" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect width="12" height="12" fill="#d6a58f"/><line x1="0" y1="0" x2="0" y2="12" stroke="#a86852" stroke-width="2"/></pattern>
@@ -97,7 +97,7 @@
   </g>
 
   <line x1="60" y1="925" x2="1540" y2="925" stroke="#c9c2b7"/>
-  <text x="60" y="956" font-family="monospace" font-size="12" fill="#60656c">The geological/material sequence is retained; Z02-U1 sits provisionally near Y=48. Horizontal geometry uses the 90° transform in site-coordinates.json.</text>
+  <text x="60" y="956" font-family="monospace" font-size="12" fill="#60656c">The geological/material sequence is retained; Z02-U1 uses shell Y38…54 and rail Y40. Horizontal geometry uses the north-up transform in site-coordinates.json.</text>
   <text x="60" y="981" font-family="monospace" font-size="12" fill="#60656c">A native-height alternative remains possible only in a separate world/dimension with the required build-height platform.</text>
   <text x="60" y="1006" font-family="monospace" font-size="12" fill="#a85b2e">STUDY ONLY — final Y levels must come from a fresh east-site terrain and section survey.</text>
 </svg>

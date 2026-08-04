@@ -1,9 +1,9 @@
 {
-  "schemaVersion": 4,
-  "id": "combined-zones-map-qa-v4-phase0-rerun",
-  "generatedAtUtc": "2026-08-04T02:18:31.000Z",
-  "status": "PASS_REVISED_SITING_PHASE0_MAP_EVIDENCE",
-  "scope": "Mechanical validation of the immutable Phase 0 rerun terrain/maps and revised planning geometry; not construction authorization",
+  "schemaVersion": 5,
+  "id": "combined-zones-map-qa-v5-empty-eight-south-annex",
+  "generatedAtUtc": "2026-08-04T03:50:24.998Z",
+  "status": "PASS_EMPTY_EIGHT_SOUTH_ANNEX_PHASE0_MAP_EVIDENCE",
+  "scope": "Mechanical validation of the immutable Phase 0 rerun terrain/maps, the Empty Eight southern resite, and revised planning geometry; not construction authorization",
   "input": {
     "acceptedCurrentRaster": {
       "path": "data/exports/box/town-expansion-r1-final-2026-07-28/media/maps/map-whole-world-overview.png",
@@ -14,7 +14,7 @@
     },
     "coordinateRegistry": {
       "path": "masterplans/05-combined-zones/site-coordinates.json",
-      "sha256": "67a9bbbca5f1fb0710e59e9adad6966fc0e8222e6e0fc956435b5e87874ab869"
+      "sha256": "069f7dd47d71984d9bd7d83c78a3a0bf22d04bce365e3813a801ca731f13f163"
     },
     "phase0PreSnapshot": {
       "path": "data/worldsnap-combined-zones-phase0-rerun-pre-20260804T021237Z/region",
@@ -39,22 +39,22 @@
     },
     "phase0OverlayPng": {
       "path": "masterplans/05-combined-zones/maps/current-plus-proposed-phase0-overlay.png",
-      "sha256": "609cb7cab430b67e237762a6045ea0a726ac9ba05e840b071f10a18ec7728fb3",
+      "sha256": "e2092692e7374ea7f8de5ba2dd3fe2204aedccd78dc932f3662409c3cbb394bd",
       "width": 4084,
       "height": 2572,
       "blocksPerPixel": 1
     },
     "terrainProbe": {
       "path": "masterplans/05-combined-zones/corridor-terrain-probe.json",
-      "sha256": "520bb81a9b25f35f7dbd689429b6bec1361e9a7ec566a0782a9626a5bc1acb1d"
+      "sha256": "b8a570d97e80bbf047e61a276697de9291782dd09f151ac1ddca34275d1b3d1f"
     },
     "surveyEvidence": {
       "path": "masterplans/05-combined-zones/phase0-survey-evidence.json",
-      "sha256": "2cdf13fd035ed876ccdc4325aa7009df42621b9767390db0658cf8d68a3440e3"
+      "sha256": "9ee98b8f34de08b556be4bcca17f8d29eab94ef8a7d13b7dff798a013ede5ab8"
     },
     "candidateAnalysis": {
       "path": "masterplans/05-combined-zones/resiting-candidate-analysis.json",
-      "sha256": "1c44ffcfa90a0ed4395a3f5466ddc13d22754547288310f637d2adbeef2d958a"
+      "sha256": "3795fe4e4159a32e38502b3a2db77354f62628c97d8868ee25f8a4dba253d030"
     },
     "corridorClearance": {
       "path": "masterplans/05-combined-zones/corridor-clearance.json",
@@ -62,7 +62,7 @@
     },
     "reportHtml": {
       "path": "masterplans/05-combined-zones/combined-zones-report.html",
-      "sha256": "2ff4b9aca4f82fc2c13f9c326d6122714a58251b437c3a3bd4c275cf3f3eb0a2"
+      "sha256": "78c6a680bf14869c854945f8cf63a08341abb61633ef7a4d663c27dfcd2f27e6"
     }
   },
   "checks": [
@@ -124,17 +124,22 @@
     {
       "id": "subway-descent-grade",
       "passed": true,
-      "detail": "GA-J1 to the west terminal throat descends 28 blocks over about 693 horizontal blocks; maximum proposed segment grade is 0.114286."
+      "detail": "GA-J1 to the west terminal throat turns south and descends 28 blocks over about 387 horizontal blocks; maximum proposed segment grade is 0.113137."
+    },
+    {
+      "id": "empty-eight-south-annex",
+      "passed": true,
+      "detail": "Gateway Approach ends at z=0 and the terminal begins at z=40; all 29,161 terminal columns have zero surface water and zero snowy/frozen biome classification."
     },
     {
       "id": "empty-eight-cover",
       "passed": true,
-      "detail": "All 54,901 terminal columns are dry and provide at least eight blocks over roof Y54; minimum terrain is Y62."
+      "detail": "The shell is wholly south of Gateway Approach. All 29,161 terminal columns are dry, all have at least eight blocks over roof Y54, and none is in a snowy/frozen biome; minimum terrain is Y62."
     },
     {
       "id": "empty-eight-vertical-structure-clearance",
       "passed": true,
-      "detail": "Five generated structure starts intersect the terminal in plan, but zero recorded bounds intersect shell Y38..54."
+      "detail": "One mineshaft start intersects the terminal in plan at Y-16..3, but zero recorded bounds intersect shell Y38..54."
     },
     {
       "id": "empty-eight-capacity",
@@ -168,6 +173,6 @@
     "Generated structure bounds are constraints and no-touch declarations, not preservation access or entrance-safety evidence.",
     "The engineered rail profile is a sampled Phase 0 feasibility profile, not a compiled road/rail construction setout.",
     "No block edit, build operation, live route test, or portal activation was performed.",
-    "PASS_REVISED_SITING_PHASE0_MAP_EVIDENCE does not authorize construction."
+    "PASS_EMPTY_EIGHT_SOUTH_ANNEX_PHASE0_MAP_EVIDENCE does not authorize construction."
   ]
 }

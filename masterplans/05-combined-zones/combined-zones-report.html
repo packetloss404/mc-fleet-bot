@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Combined Zones — Phase 0 Rerun Pass</title>
+<title>Combined Zones — Phase 0 Southern Empty Eight Resite</title>
 <style>
   * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   :root { --ink:#16202b; --navy:#193653; --cream:#f3ead7; --amber:#e7ad3d; --cyan:#25cbd1; --purple:#9c79dc; --pink:#e46b96; --muted:#5f6d79; --green:#2f725d; }
@@ -47,18 +47,19 @@
   <div>
     <div class="eyebrow">Masterplan 05 · Current-world integration · 2026-08-04</div>
     <h1>Combined<br>Zones</h1>
-    <p class="lead">A re-sited north–south Combined Complex connected to the current world through Gateway Approach, with a hidden eight-track expansion terminal under a fully surveyed dry footprint.</p>
-    <div class="status">PHASE 0 RERUN PASS · DETAILED DESIGN ONLY · NO WORLD EDITS AUTHORIZED</div>
+    <p class="lead">A re-sited north–south Combined Complex connected through Gateway Approach, with the hidden eight-track expansion terminal moved to a fully surveyed dry, non-arctic footprint south of the gateway.</p>
+    <div class="status">PHASE 0 SOUTH ANNEX PASS · DETAILED DESIGN ONLY · NO WORLD EDITS AUTHORIZED</div>
     <img class="hero" src="maps/current-plus-proposed-phase0-overlay.png" alt="Current world and re-sited Combined Zones Phase 0 top-down map">
     <p class="caption">North-up, one block per pixel. Cyan: accepted current feature union. Amber: corridor/reserve. Purple: mountain. Pink: urban core. Cyan-blue: Empty Eight.</p>
   </div>
-  <div class="meta">Post-check snapshot SHA-256: 05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b · 14,238/14,238 atlas chunks full · no blocks placed or removed</div>
+  <div class="meta">Southern resite generated: 2026-08-04 03:50 UTC · Post-check snapshot SHA-256: 05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b · 14,238/14,238 atlas chunks full · no blocks placed or removed</div>
 </section>
 
 <section>
   <h2>The decision</h2>
   <p>The original `(2250,-300)`, 90-degree transform failed because Houston, the public shaft, and the summit met water, while only 35.60% of the proposed Empty Eight roof had eight dry solid blocks of cover. The program survives; that physical setout does not.</p>
   <div class="callout"><strong>Adopted layout.</strong> Keep Ravensreach as the canonical Old Town. Keep Gateway Approach as a separate current-world adapter. Put the normalized Combined Complex at `(2048,-328)` with no top-down rotation, so Houston faces the arrival and the mountain extends north.</div>
+  <div class="callout"><strong>Empty Eight correction.</strong> Retire the northern arctic setout and place the complete terminal at <code>x 1632…1872 · z 40…160</code>, wholly south of Gateway Approach. The same sealed snapshot proves zero water columns, zero snowy/frozen biome columns, full cover, and no vertical structure conflict.</div>
   <pre>worldX = 2048 + localX
 worldZ = -328 + localZ</pre>
   <table>
@@ -115,21 +116,22 @@ worldZ = -328 + localZ</pre>
   <h2>The hidden subway</h2>
   <p>At Alpine Junction, a siding seems to disappear behind a landscaped retaining wall. A subtle marker reveals the branch. The discovery is hidden; safety is not.</p>
   <pre>(1780,68,-250)  surface turnout
-(1780,64,-285)  concealed portal
-(1800,56,-445)  descending tunnel
-(1840,48,-685)  deep approach
-(1880,40,-928)  west terminal throat</pre>
-  <p>The steepest segment is 4 blocks over 35, or 0.1143. The branch descends 28 blocks over roughly 693 horizontal blocks.</p>
+(1785,64,-215)  dry concealed portal
+(1760,56,-130)  descending tunnel
+(1700,48,-20)   south-bound approach
+(1632,40,100)   west terminal throat</pre>
+  <p>The steepest segment is 4 blocks over 35.355, or 0.1131. The branch turns south and descends 28 blocks over roughly 387 horizontal blocks.</p>
   <h3>Gateway Expansion Terminal — “The Empty Eight”</h3>
   <table>
     <thead><tr><th>Element</th><th>Adopted definition</th></tr></thead>
     <tbody>
-      <tr><td>Shell</td><td><code>x 1880…2220 · z −1008…−848 · Y 38…54</code></td></tr>
-      <tr><td>Cover</td><td>54,901/54,901 columns dry and at least eight blocks above roof Y54</td></tr>
-      <tr><td>Structure conflicts</td><td>zero generated-structure bounds intersect shell Y38…54</td></tr>
-      <tr><td>Rail</td><td>Y40; eight east–west tracks and eight assigned platforms</td></tr>
-      <tr><td>Tracks Z</td><td><code>−974, −961, −948, −935, −922, −909, −896, −883</code></td></tr>
-      <tr><td>Future interfaces</td><td>four line pairs; eight sealed east stubs at x2220</td></tr>
+      <tr><td>Shell</td><td><code>x 1632…1872 · z 40…160 · Y 38…54</code></td></tr>
+      <tr><td>Surface relationship</td><td>wholly south of Gateway Approach; 39-block planning buffer after its z=0 boundary</td></tr>
+      <tr><td>Cover</td><td>29,161/29,161 columns dry and at least eight blocks above roof Y54; zero snowy/frozen biome columns</td></tr>
+      <tr><td>Structure conflicts</td><td>one mapped mineshaft lies at Y−16…3; zero bounds intersect shell Y38…54</td></tr>
+      <tr><td>Rail</td><td>Y40; eight east–west tracks and eight assigned 101-block platforms</td></tr>
+      <tr><td>Tracks Z</td><td><code>54, 67, 80, 93, 106, 119, 132, 145</code></td></tr>
+      <tr><td>Future interfaces</td><td>four line pairs; eight sealed east stubs at x1872</td></tr>
       <tr><td>Mall</td><td>two monumental gallerias, mezzanine, four ticket-hall boxes, 24 capped retail shells</td></tr>
       <tr><td>Life safety</td><td>two independent accessible egress routes, smoke separation, ventilation, emergency lighting, barriers, sumps</td></tr>
     </tbody>

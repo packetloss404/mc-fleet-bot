@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "id": "combined-zones-phase0-survey-evidence",
   "status": "PASS_REVISED_SITING_PHASE0",
-  "generatedAtUtc": "2026-08-04T02:18:31.852Z",
+  "generatedAtUtc": "2026-08-04T03:50:24.998Z",
   "snapshots": {
     "preGeneration": {
       "path": "data/worldsnap-combined-zones-phase0-rerun-pre-20260804T021237Z/region",
@@ -39,6 +39,8 @@
     "engineeredPassengerRailOneInEight": true,
     "criticalCoreAnchorsDry": true,
     "emptyEightFootprintDry": true,
+    "emptyEightWhollySouthOfGatewayApproach": true,
+    "emptyEightColdBiomeColumnsZero": true,
     "emptyEightEightBlockCover": true,
     "emptyEightVerticalStructureClearance": true,
     "mountainWaterExposureBelowFivePercent": true,
@@ -56,6 +58,7 @@
       "columns": 1525001,
       "waterColumns": 245299,
       "lavaColumns": 298,
+      "coldBiomeColumns": 885433,
       "vegetationTopColumns": 177307,
       "terrainMinY": 5,
       "terrainMaxY": 138,
@@ -98,6 +101,7 @@
       "columns": 826851,
       "waterColumns": 91550,
       "lavaColumns": 179,
+      "coldBiomeColumns": 481800,
       "vegetationTopColumns": 109505,
       "terrainMinY": 12,
       "terrainMaxY": 132,
@@ -124,28 +128,28 @@
     },
     "gatewayExpansionTerminalFootprint": {
       "bounds": {
-        "minX": 1880,
-        "maxX": 2220,
-        "minZ": -1008,
-        "maxZ": -848
+        "minX": 1632,
+        "maxX": 1872,
+        "minZ": 40,
+        "maxZ": 160
       },
-      "columns": 54901,
+      "columns": 29161,
       "waterColumns": 0,
       "lavaColumns": 0,
-      "vegetationTopColumns": 230,
+      "coldBiomeColumns": 0,
+      "vegetationTopColumns": 4334,
       "terrainMinY": 62,
-      "terrainMaxY": 88,
+      "terrainMaxY": 136,
       "biomes": {
-        "minecraft:snowy_plains": 25281,
-        "minecraft:frozen_river": 16272,
-        "minecraft:snowy_taiga": 13348
+        "minecraft:plains": 22073,
+        "minecraft:cherry_grove": 7088
       },
       "proposedRoofY": 54,
       "minimumTerrainAboveRoof": 8,
-      "maximumTerrainAboveRoof": 34,
-      "columnsMeetingEightBlockSolidCover": 54901,
+      "maximumTerrainAboveRoof": 82,
+      "columnsMeetingEightBlockSolidCover": 29161,
       "waterFraction": 0,
-      "vegetationFraction": 0.004189,
+      "vegetationFraction": 0.148623,
       "eightBlockSolidCoverFraction": 1
     },
     "mountainFootprint": {
@@ -158,6 +162,7 @@
       "columns": 481401,
       "waterColumns": 12597,
       "lavaColumns": 114,
+      "coldBiomeColumns": 455949,
       "vegetationTopColumns": 11464,
       "terrainMinY": 12,
       "terrainMaxY": 125,
@@ -185,6 +190,7 @@
       "columns": 90831,
       "waterColumns": 2524,
       "lavaColumns": 2,
+      "coldBiomeColumns": 84604,
       "vegetationTopColumns": 3314,
       "terrainMinY": 33,
       "terrainMaxY": 96,
@@ -402,7 +408,7 @@
       "chunkZ": -68,
       "intersectsReserve": true,
       "intersectsZ02": true,
-      "intersectsTerminalFootprint": true,
+      "intersectsTerminalFootprint": false,
       "intersectsMountainFootprint": true,
       "intersectsUrbanCore": false
     },
@@ -420,7 +426,7 @@
       "chunkZ": -67,
       "intersectsReserve": true,
       "intersectsZ02": true,
-      "intersectsTerminalFootprint": true,
+      "intersectsTerminalFootprint": false,
       "intersectsMountainFootprint": true,
       "intersectsUrbanCore": false
     },
@@ -564,7 +570,7 @@
       "chunkZ": -58,
       "intersectsReserve": true,
       "intersectsZ02": true,
-      "intersectsTerminalFootprint": true,
+      "intersectsTerminalFootprint": false,
       "intersectsMountainFootprint": true,
       "intersectsUrbanCore": false
     },
@@ -690,7 +696,7 @@
       "chunkZ": -54,
       "intersectsReserve": true,
       "intersectsZ02": true,
-      "intersectsTerminalFootprint": true,
+      "intersectsTerminalFootprint": false,
       "intersectsMountainFootprint": true,
       "intersectsUrbanCore": false
     },
@@ -708,7 +714,7 @@
       "chunkZ": -54,
       "intersectsReserve": true,
       "intersectsZ02": true,
-      "intersectsTerminalFootprint": true,
+      "intersectsTerminalFootprint": false,
       "intersectsMountainFootprint": true,
       "intersectsUrbanCore": false
     },
@@ -1716,7 +1722,7 @@
       "chunkZ": 3,
       "intersectsReserve": true,
       "intersectsZ02": true,
-      "intersectsTerminalFootprint": false,
+      "intersectsTerminalFootprint": true,
       "intersectsMountainFootprint": false,
       "intersectsUrbanCore": false
     },
@@ -2323,13 +2329,13 @@
     },
     {
       "path": "masterplans/05-combined-zones/maps/current-plus-proposed-phase0-overlay.png",
-      "bytes": 7814286,
-      "sha256": "609cb7cab430b67e237762a6045ea0a726ac9ba05e840b071f10a18ec7728fb3"
+      "bytes": 7781847,
+      "sha256": "e2092692e7374ea7f8de5ba2dd3fe2204aedccd78dc932f3662409c3cbb394bd"
     },
     {
       "path": "masterplans/05-combined-zones/corridor-terrain-probe.json",
-      "bytes": 88281,
-      "sha256": "520bb81a9b25f35f7dbd689429b6bec1361e9a7ec566a0782a9626a5bc1acb1d"
+      "bytes": 88401,
+      "sha256": "b8a570d97e80bbf047e61a276697de9291782dd09f151ac1ddca34275d1b3d1f"
     }
   ],
   "limitations": [

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 4,
-  "id": "combined-zones-east-reserve-study-v3",
-  "status": "PHASE0_RERUN_PASS_REVISED_SITING_NOT_AUTHORIZED_FOR_WORLD_EDITS",
+  "id": "combined-zones-east-reserve-study-v4",
+  "status": "PHASE0_SOUTH_ANNEX_RESITE_PASS_NOT_AUTHORIZED_FOR_WORLD_EDITS",
   "world": "world",
   "orientation": {
     "north": "-z",
@@ -55,7 +55,7 @@
     }
   },
   "phase0Survey": {
-    "status": "COMPLETE_REVISED_SITING_GATE_PASSED",
+    "status": "COMPLETE_SOUTH_ANNEX_SITING_GATE_PASSED",
     "preGenerationSnapshot": {
       "path": "data/worldsnap-combined-zones-phase0-rerun-pre-20260804T021237Z/region",
       "sha256": "fe7a3e5a75bbf90104c73bf9f78115300fe66f82b300d2dde7cede9fd993ab37",
@@ -107,11 +107,12 @@
       "protectedSurfaceRelics": 3
     },
     "gatewayExpansionTerminalFootprint": {
-      "columns": 54901,
+      "columns": 29161,
       "proposedRoofY": 54,
       "minimumTerrainAboveRoof": 8,
       "waterColumns": 0,
-      "columnsMeetingEightBlockSolidCover": 54901,
+      "coldBiomeColumns": 0,
+      "columnsMeetingEightBlockSolidCover": 29161,
       "eightBlockSolidCoverFraction": 1,
       "verticalStructureConflicts": 0,
       "coverGatePassed": true
@@ -271,7 +272,7 @@
     {
       "id": "Z02",
       "name": "Gateway Approach",
-      "status": "proposed-surface-and-underground-expansion-reserve",
+      "status": "proposed-surface-adapter-with-linked-south-underground-annex",
       "bounds": {
         "minX": 1500,
         "maxX": 2250,
@@ -340,6 +341,7 @@
       },
       "hiddenSubway": {
         "status": "proposed-easter-egg-expansion-seed",
+        "spatialRelationship": "The surface Gateway Approach ends at z=0. The Empty Eight shell begins at z=40, wholly south of the surface zone with a 39-block unowned planning buffer between inclusive bounds.",
         "junction": {
           "id": "GA-J1",
           "at": {
@@ -353,28 +355,29 @@
         },
         "branch": {
           "portalStudy": {
-            "x": 1780,
+            "x": 1785,
             "y": 64,
-            "z": -285,
-            "surveyedTerrainY": 66
+            "z": -215,
+            "surveyedTerrainY": 62,
+            "waterColumn": false
           },
           "terminalThroatStudy": {
-            "x": 1880,
+            "x": 1632,
             "y": 40,
-            "z": -928
+            "z": 100
           },
           "surveyedJunctionTerrainY": 63,
           "referenceVerticalChangeBlocks": 28,
-          "minimumHorizontalRunBlocks": 693,
-          "referenceAverageGrade": "1:24.8",
+          "minimumHorizontalRunBlocks": 387.183,
+          "referenceAverageGrade": "1:13.8",
           "proposedCenterline": [
             { "x": 1780, "y": 68, "z": -250 },
-            { "x": 1780, "y": 64, "z": -285 },
-            { "x": 1800, "y": 56, "z": -445 },
-            { "x": 1840, "y": 48, "z": -685 },
-            { "x": 1880, "y": 40, "z": -928 }
+            { "x": 1785, "y": 64, "z": -215 },
+            { "x": 1760, "y": 56, "z": -130 },
+            { "x": 1700, "y": 48, "z": -20 },
+            { "x": 1632, "y": 40, "z": 100 }
           ],
-          "maximumProposedGrade": 0.114286,
+          "maximumProposedGrade": 0.113137,
           "finalAlignmentRedesignRequired": false
         },
         "terminal": {
@@ -383,24 +386,26 @@
           "nickname": "The Empty Eight",
           "status": "PHASE0_SHELL_AND_COVER_PASSED_DETAILED_DESIGN_REQUIRED",
           "bounds": {
-            "minX": 1880,
-            "maxX": 2220,
+            "minX": 1632,
+            "maxX": 1872,
             "minY": 38,
             "maxY": 54,
-            "minZ": -1008,
-            "maxZ": -848
+            "minZ": 40,
+            "maxZ": 160
           },
+          "surfaceZoneRelationship": "wholly south of Gateway Approach; terminal minZ=40 and Gateway Approach maxZ=0",
           "minimumSolidCoverBlocks": 8,
           "phase0CoverSurvey": {
-            "columns": 54901,
+            "columns": 29161,
             "terrainMinY": 62,
-            "terrainMaxY": 88,
+            "terrainMaxY": 136,
             "waterColumns": 0,
+            "coldBiomeColumns": 0,
             "minimumTerrainAboveRoof": 8,
-            "maximumTerrainAboveRoof": 34,
-            "columnsMeetingEightBlockSolidCover": 54901,
+            "maximumTerrainAboveRoof": 82,
+            "columnsMeetingEightBlockSolidCover": 29161,
             "eightBlockSolidCoverFraction": 1,
-            "generatedStructureStartsIntersectingFootprintInPlan": 5,
+            "generatedStructureStartsIntersectingFootprintInPlan": 1,
             "verticalStructureConflicts": 0,
             "passed": true
           },
@@ -408,26 +413,26 @@
           "trackCount": 8,
           "platformCount": 8,
           "trackCenterlinesZ": [
-            -974,
-            -961,
-            -948,
-            -935,
-            -922,
-            -909,
-            -896,
-            -883
+            54,
+            67,
+            80,
+            93,
+            106,
+            119,
+            132,
+            145
           ],
           "trackExtentX": {
-            "minX": 1880,
-            "maxX": 2220
+            "minX": 1632,
+            "maxX": 1872
           },
           "platforms": {
             "count": 8,
             "assignedOnePerTrack": true,
             "widthBlocks": 7,
             "lengthBlocks": 101,
-            "minX": 1900,
-            "maxX": 2000,
+            "minX": 1652,
+            "maxX": 1752,
             "offsetFromAssignedTrackZ": {
               "min": 2,
               "max": 8,
@@ -465,8 +470,8 @@
             }
           ],
           "futureInterfaces": {
-            "eastStubX": 2220,
-            "westThroatX": 1880,
+            "eastStubX": 1872,
+            "westThroatX": 1632,
             "count": 8,
             "state": "sealed-owned-interface-walls",
             "openingRequiresSeparateGuardedRelease": true
@@ -485,16 +490,16 @@
             "egressStudyAnchors": [
               {
                 "id": "EG-A",
-                "x": 1900,
+                "x": 1652,
                 "y": null,
-                "z": -860,
+                "z": 148,
                 "position": "southwest"
               },
               {
                 "id": "EG-B",
-                "x": 2200,
+                "x": 1852,
                 "y": null,
-                "z": -860,
+                "z": 148,
                 "position": "southeast"
               }
             ],
@@ -1267,9 +1272,9 @@
         "basis": "GA-J1 surface passenger-rail turnout study point"
       },
       "to": {
-        "x": 1880,
+        "x": 1632,
         "y": 40,
-        "z": -928,
+        "z": 100,
         "basis": "Z02-U1 terminal throat study point"
       },
       "terminalId": "Z02-U1",
@@ -1278,7 +1283,7 @@
       "surfaceAndUndergroundRollbackSeparated": true,
       "surveyRequired": false,
       "phase0GradePassed": true,
-      "maximumProposedGrade": 0.114286
+      "maximumProposedGrade": 0.113137
     }
   ],
   "validationGates": [

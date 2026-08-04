@@ -1,6 +1,6 @@
 # Masterplan 05 — Combined Zones
 
-Status: **PHASE 0 RERUN PASSED — RE-SITED SCHEME APPROVED FOR DETAILED DESIGN — NOT AUTHORIZED FOR WORLD EDITS**
+Status: **PHASE 0 SOUTH ANNEX RESITE PASSED — REVISED SCHEME APPROVED FOR DETAILED DESIGN — NOT AUTHORIZED FOR WORLD EDITS**
 
 ## Decision
 
@@ -11,7 +11,9 @@ The adopted study geometry does four things together:
 - keeps **Ravensreach** as the current world's canonical historic town and Old Town;
 - keeps **Gateway Approach** as the landscaped transition from the current map, including two future-use passenger stops;
 - rotates the Combined Complex back to north–south and moves its local origin to `(2048,-328)`;
-- moves the hidden eight-track subway terminal north to a completely dry, cover-compliant footprint.
+- moves the hidden eight-track subway terminal wholly south of Gateway Approach to a dry, non-arctic, cover-compliant footprint.
+
+The former northern terminal at `x=1880…2220`, `z=-1008…-848` is retired. Its Phase 0 surface-water count was zero, but its snowy/frozen setting read as an arctic-water placement in-world. The adopted southern site preserves the program while removing that ambiguity.
 
 This is a master plan, not an execution package. It authorizes detailed design only. No excavation, grading, structure removal, protected-feature work, or construction is authorized.
 
@@ -24,13 +26,13 @@ The rerun completed on 2026-08-04 UTC with no block placement or world edits. Th
 | Fresh pre-check snapshot | `data/worldsnap-combined-zones-phase0-rerun-pre-20260804T021237Z/region`; SHA-256 `fe7a3e5a75bbf90104c73bf9f78115300fe66f82b300d2dde7cede9fd993ab37` |
 | Fresh post-check snapshot | `data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region`; SHA-256 `05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b` |
 | Coverage | PASS — all 14,238 atlas chunks and all 6,097 revised-reserve chunks are `minecraft:full` |
-| Revised siting gate | **PASS — all nine gates true** |
+| Revised siting gate | **PASS — all eleven gates true** |
 | Terrain and grade probe | [corridor-terrain-probe.json](corridor-terrain-probe.json) |
 | Full evidence | [phase0-survey-evidence.json](phase0-survey-evidence.json) |
 | Candidate search | [resiting-candidate-analysis.json](resiting-candidate-analysis.json) |
 | Whole-world top-down | [maps/current-plus-proposed-phase0-overlay.png](maps/current-plus-proposed-phase0-overlay.png) |
 
-The nine passing gates are full atlas coverage, a 1:8-or-flatter engineered passenger-rail profile, five dry core anchors, a dry Empty Eight footprint, eight-block cover across every terminal column, zero vertical structure conflicts in the terminal shell, under 5% water exposure in the mountain footprint, under 5% in the urban footprint, and explicit no-touch treatment for the three generated surface relics.
+The eleven passing gates are full atlas coverage, a 1:8-or-flatter engineered passenger-rail profile, five dry core anchors, a dry Empty Eight footprint, the terminal wholly south of Gateway Approach, zero snowy/frozen terminal columns, eight-block cover across every terminal column, zero vertical structure conflicts in the terminal shell, under 5% water exposure in the mountain footprint, under 5% in the urban footprint, and explicit no-touch treatment for the three generated surface relics.
 
 Passing Phase 0 does not mean the terrain is cheap. The corridor's natural surface still ranges from `Y=55…122`; 39 sampled intervals are naturally steeper than 1:8, and three samples are water. The engineered rail profile passes at a maximum grade of `0.125`, but requires as much as **36 blocks of cut** and **23 blocks of fill**. Those are disclosed civil-design inputs, not hidden contingencies.
 
@@ -100,7 +102,8 @@ All bounds are inclusive planning envelopes, not cleared construction limits.
 | Z00 Revised reserve | `x=1500…2550`, `z=-1150…300` | 1,525,001 surveyed columns; 16.09% water; coordination envelope only |
 | C1 East Corridor | `(430,80)` to `(1550,-250)` | 1,244-block multimodal corridor; catalog clearance PASS; sampled rail profile PASS |
 | Z01 Gateway | `(1550,68,-250)`, terrain `Y=71` | dry road/rail/forecourt interface replacing the failed meadow anchor |
-| Z02 Gateway Approach | `x=1500…2250`, `z=-1100…0` | landscape, utilities, passenger rail, two future stops, hidden subway branch, Empty Eight |
+| Z02 Gateway Approach | `x=1500…2250`, `z=-1100…0` | landscape, utilities, passenger rail, two future stops, and hidden subway branch |
+| Z02-U1 Empty Eight south annex | `x=1632…1872`, `z=40…160`, `Y=38…54` | dry eight-track terminal wholly south of Gateway Approach; linked operationally but outside its surface bounds |
 | Z03 Grand Avenue | `(1750,-300)` to `(2048,-328)` | civic approach entirely north of the `z=-250` surface rail; no skew crossing |
 | Z04 Houston | `x=1979…2117`, `z=-397…-259` | 138×138 downtown and public arrival core |
 | Z05 Houston tunnels | same X/Z as Z04, `Y=64…72` | pedestrian city-in-a-city network with flood control |
@@ -130,17 +133,17 @@ GA-S1 and GA-S2 are deliberately built for later demand. Each needs an accessibl
 
 At GA-J1, a siding appears to terminate behind a landscaped retaining wall. A subtle marker reveals the continuing tunnel. The easter egg is the discovery; egress and operational safety remain obvious once inside.
 
-The proposed descent is comfortably within 1:8:
+The branch turns south after the hidden turnout and remains comfortably within 1:8:
 
 ```text
 (1780,68,-250)  surface turnout
-(1780,64,-285)  concealed portal
-(1800,56,-445)  descending tunnel
-(1840,48,-685)  deep approach
-(1880,40,-928)  west terminal throat
+(1785,64,-215)  dry concealed portal
+(1760,56,-130)  descending tunnel
+(1700,48,-20)   south-bound approach
+(1632,40,100)   west terminal throat
 ```
 
-The first segment is the steepest at `4/35 = 0.1143`; the remaining segments are flatter. The branch descends 28 blocks over about 693 horizontal blocks.
+The first segment is the steepest at `4/35.355 = 0.1131`; the remaining segments are flatter. The branch descends 28 blocks over about 387 horizontal blocks. Its destination begins at `z=40`, leaving a 39-block planning buffer south of the inclusive Gateway Approach boundary at `z=0`.
 
 ### Z02-U1 Gateway Expansion Terminal
 
@@ -148,12 +151,13 @@ Official name: **Gateway Expansion Terminal**. In-world nickname: **The Empty Ei
 
 | Element | Adopted Phase 0 definition |
 |---|---|
-| Shell | `x=1880…2220`, `z=-1008…-848`, `Y=38…54` |
-| Cover | terrain `Y=62…88`; all 54,901 columns dry; all 54,901 provide at least eight blocks over roof `Y=54` |
-| Structure clearance | five generated structure starts intersect in X/Z, but all end below the shell; vertical conflicts = 0 |
+| Shell | `x=1632…1872`, `z=40…160`, `Y=38…54` |
+| Surface relationship | wholly south of Gateway Approach; no shell column lies in the arctic/frozen biome set |
+| Cover | terrain `Y=62…136`; all 29,161 columns dry; all 29,161 provide at least eight blocks over roof `Y=54` |
+| Structure clearance | one mineshaft start intersects in X/Z at `Y=-16…3`, wholly below the shell; vertical conflicts = 0 |
 | Rail plane | `Y=40` |
-| Tracks | 8 east–west tracks centered at `z=-974,-961,-948,-935,-922,-909,-896,-883` |
-| Track extent | `x=1880…2220`; west throat at `x=1880`; eight sealed future stubs at `x=2220` |
+| Tracks | 8 east–west tracks centered at `z=54,67,80,93,106,119,132,145` |
+| Track extent | `x=1632…1872`; west throat at `x=1632`; eight sealed future stubs at `x=1872` |
 | Platforms | 8, one assigned to each track; approximately 7×101 blocks |
 | Future network | four line pairs: 1–2, 3–4, 5–6, 7–8; every interface is sealed and separately owned |
 | Concourse/mall | two monumental side gallerias, perimeter mezzanine, four future ticket-hall boxes, 24 capped retail shells, plant, storage, toilets, and open atria |

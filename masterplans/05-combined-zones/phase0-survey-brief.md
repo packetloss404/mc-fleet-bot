@@ -1,10 +1,10 @@
 # Phase 0 Survey Brief — Combined Zones Rerun
 
-Status: **COMPLETED 2026-08-04 UTC — REVISED SITING PASS — PROCEDURE RETAINED FOR AUDIT**
+Status: **COMPLETED 2026-08-04 UTC — SOUTH ANNEX RESITE PASS — PROCEDURE RETAINED FOR AUDIT**
 
 ## Outcome
 
-The first live Phase 0 generated and sealed the complete `x=1200…3200`, `z=-1200…600` atlas, then correctly rejected the original `(2250,-300)`, 90-degree transform. The rerun used that immutable terrain to select a coupled replacement for Gateway, Empty Eight, Houston, the public shaft, SubTropolis, Cheyenne, and the mountain.
+The first live Phase 0 generated and sealed the complete `x=1200…3200`, `z=-1200…600` atlas, then correctly rejected the original `(2250,-300)`, 90-degree transform. The rerun used that immutable terrain to select a coupled replacement for Gateway, Houston, the public shaft, SubTropolis, Cheyenne, and the mountain. A subsequent owner-directed correction moved Empty Eight from the technically dry but arctic northern site to a fully dry, non-arctic site wholly south of Gateway Approach, using the same sealed snapshot and no live world mutation.
 
 The rerun passed every declared siting gate. Nothing in either session placed or removed a block.
 
@@ -48,8 +48,8 @@ It is sampled every 16 Euclidean blocks. The natural surface is not the proposed
 | Critical core anchors | PASS — Houston, shaft, SubTropolis, Cheyenne portal, and summit all dry |
 | Mountain water exposure | PASS — 12,597/481,401 = 2.6167% |
 | Urban-core water exposure | PASS — 2,524/90,831 = 2.7788% |
-| Empty Eight footprint | PASS — 0/54,901 water columns |
-| Empty Eight cover | PASS — 54,901/54,901 columns provide at least eight blocks over roof `Y=54` |
+| Empty Eight footprint | PASS — 0/29,161 water columns and 0/29,161 snowy/frozen biome columns |
+| Empty Eight cover | PASS — 29,161/29,161 columns provide at least eight blocks over roof `Y=54` |
 | Empty Eight structure clearance | PASS — zero generated-structure bounds intersect shell `Y=38…54` |
 | Surface generated structures | PASS as a planning constraint — two igloos and one shipwreck declared no-touch |
 
@@ -57,26 +57,28 @@ The natural corridor profile still records three water samples, 39 intervals ste
 
 ## Empty Eight setout
 
-The dry terminal shell is:
+The dry southern terminal shell is:
 
 ```text
-x = 1880…2220
-z = -1008…-848
+x = 1632…1872
+z = 40…160
 shell Y = 38…54
 rail Y = 40
 ```
+
+Gateway Approach ends at `z=0`, so every terminal column is south of the surface zone. The 241×121 shell retains eight east–west tracks, eight 101-block platforms, two mall wings, and sealed future-line interfaces.
 
 The concealed branch study centerline is:
 
 ```text
 (1780,68,-250)
-(1780,64,-285)
-(1800,56,-445)
-(1840,48,-685)
-(1880,40,-928)
+(1785,64,-215)
+(1760,56,-130)
+(1700,48,-20)
+(1632,40,100)
 ```
 
-Its steepest segment is `4/35 = 0.1143`. Five mineshaft/trial-chamber starts intersect the terminal footprint in plan, but their recorded bounds remain below the shell; this is an exact vertical-clearance finding, not permission to disturb them.
+Its steepest segment is `4/35.355 = 0.1131`. One mineshaft start intersects the terminal footprint in plan at recorded `Y=-16…3`, wholly below the shell; this is an exact vertical-clearance finding, not permission to disturb it.
 
 ## Retained live procedure
 
@@ -117,7 +119,7 @@ Rank candidate placements from an immutable copy with:
 ```bash
 node --max-old-space-size=8192 \
   scripts/analyze_combined_zones_resiting.mjs \
-  --regions data/worldsnap-combined-zones-phase0-final-post-20260804T001002Z/region \
+  --regions data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region \
   --out masterplans/05-combined-zones/resiting-candidate-analysis.json
 ```
 

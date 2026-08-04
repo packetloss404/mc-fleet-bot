@@ -32,7 +32,7 @@
   </g>
 
   <text x="85" y="182" font-family="Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#25282d">A · SURFACE / Z02 COORDINATE PLAN</text>
-  <text x="795" y="182" text-anchor="end" font-family="monospace" font-size="11" fill="#62666d">x=1550…1950 · z=-600…0 · NORTH UP</text>
+  <text x="795" y="182" text-anchor="end" font-family="monospace" font-size="11" fill="#62666d">SURFACE Z02 TO z=0 · SOUTH ANNEX BEYOND FRAME · NORTH UP</text>
   <rect x="120" y="205" width="640" height="840" fill="url(#surface)" stroke="#47756b" stroke-width="3" stroke-dasharray="10 6"/>
 
   <g stroke="#91a39a" stroke-width="1" opacity="0.65">
@@ -78,20 +78,17 @@
   </g>
   <text x="440" y="991" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#47756b">ARRIVAL LANDSCAPE · RAIN GARDENS · UTILITIES · FUTURE PARCELS</text>
 
-  <rect x="200" y="219" width="544" height="224" fill="url(#underground)" fill-opacity="0.72" stroke="#a892cf" stroke-width="3" stroke-dasharray="8 6"/>
-  <text x="225" y="246" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="700" fill="#f1eaff">UNDERGROUND PROJECTION · Z02-U1</text>
-  <text x="225" y="267" font-family="monospace" font-size="10.5" fill="#e0d7f3">x1600…1940 · z-590…-430 · Y40…63</text>
-
   <circle cx="488" cy="625" r="9" fill="#261f34" stroke="#d2c3f3" stroke-width="4"/>
-  <path d="M488,625 C488,575 488,500 488,443" fill="none" stroke="#b9a5df" stroke-width="7" stroke-dasharray="8 7"/>
-  <circle cx="488" cy="443" r="8" fill="#30293e" stroke="#d2c3f3" stroke-width="3"/>
-  <text x="510" y="596" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#574673">GA-J1 · CONCEALED TURNOUT</text>
-  <text x="510" y="616" font-family="monospace" font-size="10.5" fill="#574673">(1780, ~, -250) → throat Y≈48</text>
-  <rect x="470" y="569" width="36" height="17" fill="#748d76" stroke="#334b3c" stroke-width="2"/>
-  <text x="455" y="565" text-anchor="end" font-family="monospace" font-size="9.5" fill="#425448">landscaped portal</text>
+  <path d="M488,625 C495,690 560,820 705,1038" fill="none" stroke="#b9a5df" stroke-width="7" stroke-dasharray="8 7" marker-end="url(#arrow)"/>
+  <circle cx="496" cy="674" r="8" fill="#30293e" stroke="#d2c3f3" stroke-width="3"/>
+  <text x="510" y="596" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#574673">GA-J1 · SOUTH-BOUND CONCEALED TURNOUT</text>
+  <text x="510" y="616" font-family="monospace" font-size="10.5" fill="#574673">(1780,68,-250) → dry portal (1785,64,-215)</text>
+  <rect x="478" y="650" width="36" height="17" fill="#748d76" stroke="#334b3c" stroke-width="2"/>
+  <text x="525" y="672" font-family="monospace" font-size="9.5" fill="#425448">landscaped portal</text>
+  <text x="690" y="1015" text-anchor="end" font-family="monospace" font-size="10.5" fill="#574673">continues south to Z02-U1 · z40…160</text>
 
   <text x="885" y="182" font-family="Helvetica,Arial,sans-serif" font-size="20" font-weight="700" fill="#25282d">B · Z02-U1 TERMINAL / UNDERGROUND PLAN</text>
-  <text x="1715" y="182" text-anchor="end" font-family="monospace" font-size="11" fill="#62666d">RAIL Y≈48 · SHELL Y40…63 · NORTH UP</text>
+  <text x="1715" y="182" text-anchor="end" font-family="monospace" font-size="11" fill="#62666d">RAIL Y40 · SHELL Y38…54 · 241×121 · NORTH UP</text>
   <rect x="905" y="205" width="810" height="800" fill="#30293e" stroke="#695987" stroke-width="4"/>
 
   <rect x="930" y="235" width="170" height="700" fill="url(#concourse)" stroke="#c2aa83" stroke-width="3"/>
@@ -178,8 +175,8 @@
   </g>
 
   <line x1="55" y1="1110" x2="1745" y2="1110" stroke="#c8c1b7"/>
-  <text x="60" y="1142" font-family="monospace" font-size="11.5" fill="#60656c">SURFACE: two complete future-use request stops · protected walking route · landscape and utility reserve · exact rail Y and tie-ins unset</text>
-  <text x="60" y="1168" font-family="monospace" font-size="11.5" fill="#a85b2e">UNDERGROUND: coherent study geometry only · terminal cover, fluids, structure, entities, ventilation, egress, and ownership are NOT proven</text>
+  <text x="60" y="1142" font-family="monospace" font-size="11.5" fill="#60656c">SURFACE: two complete future-use request stops · protected walking route · landscape and utility reserve · passenger rail study Y68</text>
+  <text x="60" y="1168" font-family="monospace" font-size="11.5" fill="#a85b2e">UNDERGROUND: south-annex siting/cover/fluids/structure PASS · entities, ventilation, egress, ownership, and construction remain unproven</text>
   <text x="1740" y="1142" text-anchor="end" font-family="monospace" font-size="11.5" fill="#60656c">MASTERPLAN 05 · SITE-COORDINATES SCHEMA 2</text>
   <text x="1740" y="1168" text-anchor="end" font-family="monospace" font-size="11.5" fill="#60656c">NO LIVE-WORLD MUTATION</text>
 </svg>

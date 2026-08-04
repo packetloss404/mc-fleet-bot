@@ -123,11 +123,11 @@ The East Corridor geometry is derived from real published standards rather than 
 
 ## Phase 0 evidence and remaining limitations
 
-- The accepted July 28 release baseline remains authoritative for released construction. The rerun binds fresh live pre/post check snapshots `fe7a3e5a…ab37` and `05eebe12…271b`; the original `979e7805…4ead` generated atlas remains negative/candidate-search evidence.
+- The accepted July 28 release baseline remains authoritative for released construction. The rerun binds fresh live pre/post check snapshots `fe7a3e5a…ab37` and `05eebe12…271b`; the candidate search and adopted south-annex evidence now bind the rerun post snapshot, while the original `979e7805…4ead` generated atlas remains historical negative evidence.
 - The revised reserve and approaches are fully rendered from 14,238 `minecraft:full` atlas chunks; 6,097 full chunks intersect the revised reserve.
 - The East Corridor still has zero cataloged surface intersections. Natural terrain spans `Y=55…122`, includes three water samples, and exceeds 1:8 on 39 sampled intervals; the explicit engineered rail profile now passes 1:8 with up to 36 blocks of cut and 23 of fill.
 - C01 and owner-tunnel X/Z findings remain constraints, not permission for embankment loading. ISSUE-002 and final road/rail structural design remain open.
-- The revised mountain and urban footprints are each below 3% water. The selected Empty Eight shell is fully dry, has eight-block cover over all 54,901 columns, and has zero vertical structure conflicts.
+- The revised mountain and urban footprints are each below 3% water. The selected Empty Eight south-annex shell is fully dry, has zero snowy/frozen biome columns, has eight-block cover over all 29,161 columns, and has zero vertical structure conflicts. The superseded northern shell remains negative evidence only.
 - Two igloos and one shipwreck inside the broad mountain envelope are default-deny no-touch exhibits. Their presence is not permission to relocate, bury, or remove them.
 - A database non-overlap check is not an entity, ownership, hydrology, protected-interface, structural, or construction clearance.
 - Derived POI centers are navigation references, not landing-safety claims.
