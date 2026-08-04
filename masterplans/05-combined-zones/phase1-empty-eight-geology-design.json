@@ -1,0 +1,2333 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-empty-eight-geology-design",
+  "generatedAtUtc": "2026-08-04T16:18:57Z",
+  "status": "D06_INTERNAL_DESIGN_FROZEN_EXTERNAL_LIFE_SAFETY_HOLD_D07_WORDING_RESOLVED_C2_OMITTED",
+  "sourceBindings": [
+    {
+      "path": "masterplans/05-combined-zones/MASTERPLAN.md",
+      "sha256": "f28275ba640348ad52d570b67fa22c8338655a5c8452dac6435b4c14055fe203",
+      "bytes": 24725,
+      "role": "Masterplan 05 current-world intent and D06/D07 gates"
+    },
+    {
+      "path": "masterplans/05-combined-zones/site-coordinates.json",
+      "sha256": "b825f3c1e5f5696284d17c64dd469ba8efa845f6846e76032cb91bff4d4fdf62",
+      "bytes": 43946,
+      "role": "Masterplan 05 terminal setout and null external endpoints"
+    },
+    {
+      "path": "masterplans/04-combined-complex/02-design/site-coordinates.json",
+      "sha256": "2d8347e85951d8bc2945065f794350254d9940f1c7bbe1003bdf0f43da0e0754",
+      "bytes": 31784,
+      "role": "Masterplan 04 normalized composition"
+    },
+    {
+      "path": "masterplans/04-combined-complex/04-contractor/contractor-brief.json",
+      "sha256": "b0182e484991729f22b708cb94d87aee4f6e46f851b7da15f9a326defbbe58a2",
+      "bytes": 70067,
+      "role": "Masterplan 04 normalized architecture and open geology review"
+    }
+  ],
+  "authority": {
+    "chain": "01 + 02 + 03 -> 04 normalized architecture -> 05 current-world placement",
+    "planToDevelop": "masterplans/05-combined-zones/MASTERPLAN.md",
+    "role": "Phase 1 design freeze and factual-language decision; not a construction or release package",
+    "offlineOnly": true,
+    "worldEditAuthorized": false,
+    "constructionPackageExists": false,
+    "operationCellCount": 0,
+    "operationsEmitted": false
+  },
+  "d06": {
+    "status": "PARTIAL_RESOLUTION_INTERNAL_DESIGN_FROZEN_EXTERNAL_LIFE_SAFETY_INTERFACES_HOLD",
+    "exactDesignFrozen": true,
+    "commissionedLifeSafetySystem": false,
+    "shell": {
+      "id": "Z02-U1",
+      "officialName": "Gateway Expansion Terminal",
+      "nickname": "The Empty Eight",
+      "bounds": {
+        "minX": 1632,
+        "maxX": 1872,
+        "minY": 38,
+        "maxY": 54,
+        "minZ": 40,
+        "maxZ": 160
+      },
+      "railY": 40,
+      "coverEvidenceDisposition": "PHASE0_COVER_PASS_DOES_NOT_AUTHORIZE_EXCAVATION"
+    },
+    "architecturalLanguage": {
+      "selection": "LATE_SOVIET_INSPIRED_CIVIC_MONUMENTALITY_WITHOUT_COPYING_A_SPECIFIC_STATION",
+      "organizingPrinciples": [
+        "deep vault rhythm and long terminal sightlines",
+        "durable stone field with restrained red civic accents",
+        "oversized perimeter mall held as empty capped shells",
+        "high-contrast safety and accessible-route information visually outranks the easter egg"
+      ],
+      "palette": [
+        {
+          "id": "EE-P01",
+          "block": "minecraft:stone_bricks",
+          "role": "primary lined shell and smoke-rated wall field"
+        },
+        {
+          "id": "EE-P02",
+          "block": "minecraft:polished_andesite",
+          "role": "monumental columns, portals, and hard-wearing trim"
+        },
+        {
+          "id": "EE-P03",
+          "block": "minecraft:smooth_stone",
+          "role": "vault and mezzanine soffits"
+        },
+        {
+          "id": "EE-P04",
+          "block": "minecraft:light_gray_concrete",
+          "role": "quiet wall panels and retail-shell lining"
+        },
+        {
+          "id": "EE-P05",
+          "block": "minecraft:red_terracotta",
+          "role": "restrained civic accent and orientation band"
+        },
+        {
+          "id": "EE-P06",
+          "block": "minecraft:chiseled_stone_bricks",
+          "role": "discovery marker and threshold detail"
+        },
+        {
+          "id": "EE-P07",
+          "block": "minecraft:polished_blackstone",
+          "role": "platform edge and service datum"
+        },
+        {
+          "id": "EE-P08",
+          "block": "minecraft:yellow_concrete",
+          "role": "high-contrast platform warning band"
+        },
+        {
+          "id": "EE-P09",
+          "block": "minecraft:iron_bars",
+          "role": "platform-barrier structure and protected plant grille"
+        },
+        {
+          "id": "EE-P10",
+          "block": "minecraft:glass_pane",
+          "role": "platform-barrier vision panels"
+        },
+        {
+          "id": "EE-P11",
+          "block": "minecraft:sea_lantern",
+          "role": "normal and emergency-design lighting point"
+        },
+        {
+          "id": "EE-P12",
+          "block": "minecraft:deepslate_tiles",
+          "role": "drainage channels, sumps, and wet-service datum"
+        },
+        {
+          "id": "EE-P13",
+          "block": "minecraft:polished_deepslate",
+          "role": "default-closed future-interface cap"
+        },
+        {
+          "id": "EE-P14",
+          "block": "minecraft:blue_glazed_terracotta",
+          "role": "accessible-route and life-safety wayfinding field"
+        }
+      ]
+    },
+    "discoverySequence": {
+      "junction": {
+        "id": "GA-J1",
+        "at": {
+          "x": 1780,
+          "y": 68,
+          "z": -250,
+          "surveyedTerrainY": 63
+        },
+        "presentation": "maintenance siding behind landscaped retaining wall",
+        "discoveryNotHazard": true
+      },
+      "planningEnvelope": {
+        "minX": 1772,
+        "maxX": 1788,
+        "minY": 62,
+        "maxY": 70,
+        "minZ": -257,
+        "maxZ": -242,
+        "cellCount": 2448,
+        "cellSetSha256": "4e0c14fec3252338fc65d5dd5f724c3cc247e2d97057aaebda1c4328515a5a1f"
+      },
+      "exactCueCells": {
+        "bounds": {
+          "minX": 1779,
+          "maxX": 1781,
+          "minY": 68,
+          "maxY": 69,
+          "minZ": -244,
+          "maxZ": -242
+        },
+        "cellCount": 5,
+        "cellSetSha256": "5f0c749eda7bd62cb43d5946cbda7f837495658bd17c53e3abbeec953c9824ec"
+      },
+      "cue": "five-cell chiseled-stone continuation datum behind the landscaped apparent terminus",
+      "hazardControls": [
+        "cue is information only and never substitutes for an opening or route",
+        "retaining wall and branch remain closed until independently commissioned",
+        "life-safety signs, lighting, and barriers must remain conspicuous after entry"
+      ],
+      "sourceGuards": null,
+      "physicalCueAuthorized": false
+    },
+    "platforms": [
+      {
+        "id": "EE-PF-01",
+        "assignedTrack": 1,
+        "trackCenterlineZ": 54,
+        "surface": {
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 41,
+            "maxY": 41,
+            "minZ": 56,
+            "maxZ": 62
+          },
+          "cellCount": 707,
+          "cellSetSha256": "536f6ade0f044756337992b3e3e781ab5a4d32ef2805c3f4563f987cfb4e41f2"
+        },
+        "barrier": {
+          "edgeZ": 56,
+          "gateBayXRangesInclusive": [
+            {
+              "minX": 1664,
+              "maxX": 1666
+            },
+            {
+              "minX": 1688,
+              "maxX": 1690
+            },
+            {
+              "minX": 1712,
+              "maxX": 1714
+            },
+            {
+              "minX": 1736,
+              "maxX": 1738
+            }
+          ],
+          "closedBarrierDesign": {
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 56,
+              "maxZ": 56
+            },
+            "cellCount": 178,
+            "cellSetSha256": "19d71eb052ae8d5ddd0ce537d36ce95dbfa82b95addb034ea4107b19218821a9"
+          },
+          "gatesOperationallyAuthorized": false
+        },
+        "emergencyLightingDesign": {
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1748,
+            "minY": 46,
+            "maxY": 46,
+            "minZ": 62,
+            "maxZ": 62
+          },
+          "cellCount": 7,
+          "cellSetSha256": "c4e276c5989522b39288f437fd376781b2890ee16a251bb35cf7b7181068fc16"
+        }
+      },
+      {
+        "id": "EE-PF-02",
+        "assignedTrack": 2,
+        "trackCenterlineZ": 67,
+        "surface": {
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 41,
+            "maxY": 41,
+            "minZ": 69,
+            "maxZ": 75
+          },
+          "cellCount": 707,
+          "cellSetSha256": "beb4d6955b10ed6f79b7f490032e63223a6fa9bb8d0cec76befb2b5863aec671"
+        },
+        "barrier": {
+          "edgeZ": 69,
+          "gateBayXRangesInclusive": [
+            {
+              "minX": 1664,
+              "maxX": 1666
+            },
+            {
+              "minX": 1688,
+              "maxX": 1690
+            },
+            {
+              "minX": 1712,
+              "maxX": 1714
+            },
+            {
+              "minX": 1736,
+              "maxX": 1738
+            }
+          ],
+          "closedBarrierDesign": {
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 69,
+              "maxZ": 69
+            },
+            "cellCount": 178,
+            "cellSetSha256": "f172f3ec388c851c65d5da316d028bdd1b58a7afa7ecd7406391b48a080b2c9e"
+          },
+          "gatesOperationallyAuthorized": false
+        },
+        "emergencyLightingDesign": {
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1748,
+            "minY": 46,
+            "maxY": 46,
+            "minZ": 75,
+            "maxZ": 75
+          },
+          "cellCount": 7,
+          "cellSetSha256": "35ec2571a795f3b3c8583b177b5bc7267a05b831412b8155d0f8dcd659f5af2c"
+        }
+      },
+      {
+        "id": "EE-PF-03",
+        "assignedTrack": 3,
+        "trackCenterlineZ": 80,
+        "surface": {
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 41,
+            "maxY": 41,
+            "minZ": 82,
+            "maxZ": 88
+          },
+          "cellCount": 707,
+          "cellSetSha256": "2228126e4c17ad84433a3867a669390ef2f20b325c782b37797739a368c1d839"
+        },
+        "barrier": {
+          "edgeZ": 82,
+          "gateBayXRangesInclusive": [
+            {
+              "minX": 1664,
+              "maxX": 1666
+            },
+            {
+              "minX": 1688,
+              "maxX": 1690
+            },
+            {
+              "minX": 1712,
+              "maxX": 1714
+            },
+            {
+              "minX": 1736,
+              "maxX": 1738
+            }
+          ],
+          "closedBarrierDesign": {
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 82,
+              "maxZ": 82
+            },
+            "cellCount": 178,
+            "cellSetSha256": "5451fb2333ebcb7b7089e18ae7d94035fdc72683d3a26fa6a29c960d34314ec8"
+          },
+          "gatesOperationallyAuthorized": false
+        },
+        "emergencyLightingDesign": {
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1748,
+            "minY": 46,
+            "maxY": 46,
+            "minZ": 88,
+            "maxZ": 88
+          },
+          "cellCount": 7,
+          "cellSetSha256": "32a5a56117d6d5bb38c57e3e89befe0798497a8901dddecbb69ab7e52aad8b0d"
+        }
+      },
+      {
+        "id": "EE-PF-04",
+        "assignedTrack": 4,
+        "trackCenterlineZ": 93,
+        "surface": {
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 41,
+            "maxY": 41,
+            "minZ": 95,
+            "maxZ": 101
+          },
+          "cellCount": 707,
+          "cellSetSha256": "84b1dada854c121c619d033710ede61910b71beb626ffa2414e2ee948bc7c9ca"
+        },
+        "barrier": {
+          "edgeZ": 95,
+          "gateBayXRangesInclusive": [
+            {
+              "minX": 1664,
+              "maxX": 1666
+            },
+            {
+              "minX": 1688,
+              "maxX": 1690
+            },
+            {
+              "minX": 1712,
+              "maxX": 1714
+            },
+            {
+              "minX": 1736,
+              "maxX": 1738
+            }
+          ],
+          "closedBarrierDesign": {
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 95,
+              "maxZ": 95
+            },
+            "cellCount": 178,
+            "cellSetSha256": "227318da1417116d099a9cda3c398c4f2f816c97306d74fbd086d5f0dcdcf8d1"
+          },
+          "gatesOperationallyAuthorized": false
+        },
+        "emergencyLightingDesign": {
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1748,
+            "minY": 46,
+            "maxY": 46,
+            "minZ": 101,
+            "maxZ": 101
+          },
+          "cellCount": 7,
+          "cellSetSha256": "b51d2d52847daaf1a534c9951b6beb384ab91d4b3a8fa8db4bc3e41b9df2e588"
+        }
+      },
+      {
+        "id": "EE-PF-05",
+        "assignedTrack": 5,
+        "trackCenterlineZ": 106,
+        "surface": {
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 41,
+            "maxY": 41,
+            "minZ": 108,
+            "maxZ": 114
+          },
+          "cellCount": 707,
+          "cellSetSha256": "4d68a7ea2ff3e4b6ea70e5b3f05a9a90e9558788577652d160171de2aa620b3f"
+        },
+        "barrier": {
+          "edgeZ": 108,
+          "gateBayXRangesInclusive": [
+            {
+              "minX": 1664,
+              "maxX": 1666
+            },
+            {
+              "minX": 1688,
+              "maxX": 1690
+            },
+            {
+              "minX": 1712,
+              "maxX": 1714
+            },
+            {
+              "minX": 1736,
+              "maxX": 1738
+            }
+          ],
+          "closedBarrierDesign": {
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 108,
+              "maxZ": 108
+            },
+            "cellCount": 178,
+            "cellSetSha256": "dbdaf632ba47d59c0507992aef9c67e83373897ff5e1b6e7f5973151b198e020"
+          },
+          "gatesOperationallyAuthorized": false
+        },
+        "emergencyLightingDesign": {
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1748,
+            "minY": 46,
+            "maxY": 46,
+            "minZ": 114,
+            "maxZ": 114
+          },
+          "cellCount": 7,
+          "cellSetSha256": "8a898f82dde8ddc37979a4bbce1c25a5663845215e0b81bda22df59c0aefc1f5"
+        }
+      },
+      {
+        "id": "EE-PF-06",
+        "assignedTrack": 6,
+        "trackCenterlineZ": 119,
+        "surface": {
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 41,
+            "maxY": 41,
+            "minZ": 121,
+            "maxZ": 127
+          },
+          "cellCount": 707,
+          "cellSetSha256": "ff83d92cacbf136e8d584c844553ef522585d84ebe76588da7fa54c8784dc6d4"
+        },
+        "barrier": {
+          "edgeZ": 121,
+          "gateBayXRangesInclusive": [
+            {
+              "minX": 1664,
+              "maxX": 1666
+            },
+            {
+              "minX": 1688,
+              "maxX": 1690
+            },
+            {
+              "minX": 1712,
+              "maxX": 1714
+            },
+            {
+              "minX": 1736,
+              "maxX": 1738
+            }
+          ],
+          "closedBarrierDesign": {
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 121,
+              "maxZ": 121
+            },
+            "cellCount": 178,
+            "cellSetSha256": "d17b9f92017882360f16546e48b0bd036fcac39827465b0cf00b9e962b6dd677"
+          },
+          "gatesOperationallyAuthorized": false
+        },
+        "emergencyLightingDesign": {
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1748,
+            "minY": 46,
+            "maxY": 46,
+            "minZ": 127,
+            "maxZ": 127
+          },
+          "cellCount": 7,
+          "cellSetSha256": "740409cadfc4d3293d4e81871051733c1544a4da1b55f139df2f9d96c4dedd8d"
+        }
+      },
+      {
+        "id": "EE-PF-07",
+        "assignedTrack": 7,
+        "trackCenterlineZ": 132,
+        "surface": {
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 41,
+            "maxY": 41,
+            "minZ": 134,
+            "maxZ": 140
+          },
+          "cellCount": 707,
+          "cellSetSha256": "68244384035eea544632201f046e6b752d71b0d4dfc72833c5900d11802dccef"
+        },
+        "barrier": {
+          "edgeZ": 134,
+          "gateBayXRangesInclusive": [
+            {
+              "minX": 1664,
+              "maxX": 1666
+            },
+            {
+              "minX": 1688,
+              "maxX": 1690
+            },
+            {
+              "minX": 1712,
+              "maxX": 1714
+            },
+            {
+              "minX": 1736,
+              "maxX": 1738
+            }
+          ],
+          "closedBarrierDesign": {
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 134,
+              "maxZ": 134
+            },
+            "cellCount": 178,
+            "cellSetSha256": "2bfd4a0bfe6adbe32af907a9fd11e54d99d33bd3ce8c5268fc9149d96f22d7e1"
+          },
+          "gatesOperationallyAuthorized": false
+        },
+        "emergencyLightingDesign": {
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1748,
+            "minY": 46,
+            "maxY": 46,
+            "minZ": 140,
+            "maxZ": 140
+          },
+          "cellCount": 7,
+          "cellSetSha256": "4abd3d46e28f727f0d11f61dfb376da6cadb8268b342f4df0a679fec5b1cfbf9"
+        }
+      },
+      {
+        "id": "EE-PF-08",
+        "assignedTrack": 8,
+        "trackCenterlineZ": 145,
+        "surface": {
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 41,
+            "maxY": 41,
+            "minZ": 147,
+            "maxZ": 153
+          },
+          "cellCount": 707,
+          "cellSetSha256": "e6830cfc08f350de1af49e8225a02c3dd8911f53ebb58b01ea8dcd4ddb49abbc"
+        },
+        "barrier": {
+          "edgeZ": 147,
+          "gateBayXRangesInclusive": [
+            {
+              "minX": 1664,
+              "maxX": 1666
+            },
+            {
+              "minX": 1688,
+              "maxX": 1690
+            },
+            {
+              "minX": 1712,
+              "maxX": 1714
+            },
+            {
+              "minX": 1736,
+              "maxX": 1738
+            }
+          ],
+          "closedBarrierDesign": {
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 147,
+              "maxZ": 147
+            },
+            "cellCount": 178,
+            "cellSetSha256": "04c7ae285d0c7d453ee019acc13e860451d7af064fe3d4d29055bde12d45b8b5"
+          },
+          "gatesOperationallyAuthorized": false
+        },
+        "emergencyLightingDesign": {
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1748,
+            "minY": 46,
+            "maxY": 46,
+            "minZ": 153,
+            "maxZ": 153
+          },
+          "cellCount": 7,
+          "cellSetSha256": "bb463f50131bd4770f2a5e3cfa94104e7447bd0f86b092ccb64cca94dc103dca"
+        }
+      }
+    ],
+    "concourseAndRetail": {
+      "mallWingCount": 2,
+      "perimeterMezzanineDesignY": 48,
+      "openAtriaPreserved": true,
+      "retailShellCount": 24,
+      "retailShells": [
+        {
+          "id": "EE-R-N01",
+          "wing": "north galleria",
+          "ordinalInWing": 1,
+          "bounds": {
+            "minX": 1656,
+            "maxX": 1667,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 41,
+            "maxZ": 49
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 49,
+            "minX": 1656,
+            "maxX": 1667
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "dbf78d0c5a310a4cd92888cf3dcd9991b951ae0cd35dcc9ef5a7cb10b275bab5"
+        },
+        {
+          "id": "EE-R-N02",
+          "wing": "north galleria",
+          "ordinalInWing": 2,
+          "bounds": {
+            "minX": 1672,
+            "maxX": 1683,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 41,
+            "maxZ": 49
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 49,
+            "minX": 1672,
+            "maxX": 1683
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "db34fb4c52abc5cc58df0bf8f1491860bb4555b961a74fa75e434877f6b11e5c"
+        },
+        {
+          "id": "EE-R-N03",
+          "wing": "north galleria",
+          "ordinalInWing": 3,
+          "bounds": {
+            "minX": 1688,
+            "maxX": 1699,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 41,
+            "maxZ": 49
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 49,
+            "minX": 1688,
+            "maxX": 1699
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "8f86cd817e638862b43de149c619052b26713974cc894a93037cdaa63046709a"
+        },
+        {
+          "id": "EE-R-N04",
+          "wing": "north galleria",
+          "ordinalInWing": 4,
+          "bounds": {
+            "minX": 1704,
+            "maxX": 1715,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 41,
+            "maxZ": 49
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 49,
+            "minX": 1704,
+            "maxX": 1715
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "4c2785cfa86bc542e4bc7bdf0ae91a2cf76be4a54afeedcd32ed8365d9f688e9"
+        },
+        {
+          "id": "EE-R-N05",
+          "wing": "north galleria",
+          "ordinalInWing": 5,
+          "bounds": {
+            "minX": 1720,
+            "maxX": 1731,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 41,
+            "maxZ": 49
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 49,
+            "minX": 1720,
+            "maxX": 1731
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "5a2e08690f5706d62fe71410b64af2812a7eae8135f44245e5d8d260fe0e04ea"
+        },
+        {
+          "id": "EE-R-N06",
+          "wing": "north galleria",
+          "ordinalInWing": 6,
+          "bounds": {
+            "minX": 1736,
+            "maxX": 1747,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 41,
+            "maxZ": 49
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 49,
+            "minX": 1736,
+            "maxX": 1747
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "0a49d8759a05c01c6df7d29f17c9ea2205c75759273856b81fd3e25d9aaeaefe"
+        },
+        {
+          "id": "EE-R-N07",
+          "wing": "north galleria",
+          "ordinalInWing": 7,
+          "bounds": {
+            "minX": 1752,
+            "maxX": 1763,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 41,
+            "maxZ": 49
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 49,
+            "minX": 1752,
+            "maxX": 1763
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "a64643ac89ebcc4793f7523fe26e2f086fe58390c950451cd4b156bdfe750c99"
+        },
+        {
+          "id": "EE-R-N08",
+          "wing": "north galleria",
+          "ordinalInWing": 8,
+          "bounds": {
+            "minX": 1768,
+            "maxX": 1779,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 41,
+            "maxZ": 49
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 49,
+            "minX": 1768,
+            "maxX": 1779
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "7a6a44587abe2cb855f58a517220b307976772db7a71c9f657775c63f2f5d53d"
+        },
+        {
+          "id": "EE-R-N09",
+          "wing": "north galleria",
+          "ordinalInWing": 9,
+          "bounds": {
+            "minX": 1784,
+            "maxX": 1795,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 41,
+            "maxZ": 49
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 49,
+            "minX": 1784,
+            "maxX": 1795
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "f2f0adb37a825c92ef8497c08d2e185999790666d1fc59bb36252ec1899ee7b0"
+        },
+        {
+          "id": "EE-R-N10",
+          "wing": "north galleria",
+          "ordinalInWing": 10,
+          "bounds": {
+            "minX": 1800,
+            "maxX": 1811,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 41,
+            "maxZ": 49
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 49,
+            "minX": 1800,
+            "maxX": 1811
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "00111765d2a94e5acf84a66fd9bbefe986b62c5257ac7adb9be5e6ca6adaad36"
+        },
+        {
+          "id": "EE-R-N11",
+          "wing": "north galleria",
+          "ordinalInWing": 11,
+          "bounds": {
+            "minX": 1816,
+            "maxX": 1827,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 41,
+            "maxZ": 49
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 49,
+            "minX": 1816,
+            "maxX": 1827
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "d901aa17fda9b9c6ed63feb48ee4e3bdc31c5e672010a5651bac5872a2bc2ede"
+        },
+        {
+          "id": "EE-R-N12",
+          "wing": "north galleria",
+          "ordinalInWing": 12,
+          "bounds": {
+            "minX": 1832,
+            "maxX": 1843,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 41,
+            "maxZ": 49
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 49,
+            "minX": 1832,
+            "maxX": 1843
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "c12fef1ced45c50a3827aa5673ba15ef3710c0db6a80a4c1cd2109616cfe9d2a"
+        },
+        {
+          "id": "EE-R-S01",
+          "wing": "south galleria",
+          "ordinalInWing": 1,
+          "bounds": {
+            "minX": 1656,
+            "maxX": 1667,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 151,
+            "maxZ": 159
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 151,
+            "minX": 1656,
+            "maxX": 1667
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "2913599e708149577f83b828ed1006c184863b0bd5e4d7aa17fab5e4620d9055"
+        },
+        {
+          "id": "EE-R-S02",
+          "wing": "south galleria",
+          "ordinalInWing": 2,
+          "bounds": {
+            "minX": 1672,
+            "maxX": 1683,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 151,
+            "maxZ": 159
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 151,
+            "minX": 1672,
+            "maxX": 1683
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "0cc4f10c8524edf74303bba9ce81232262bc713de8130bf574d8bfe7d00853f0"
+        },
+        {
+          "id": "EE-R-S03",
+          "wing": "south galleria",
+          "ordinalInWing": 3,
+          "bounds": {
+            "minX": 1688,
+            "maxX": 1699,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 151,
+            "maxZ": 159
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 151,
+            "minX": 1688,
+            "maxX": 1699
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "3acda8ba63a65ac6be09bd7e1a41c80df63189f7caad7906b299e1cf48dabb7b"
+        },
+        {
+          "id": "EE-R-S04",
+          "wing": "south galleria",
+          "ordinalInWing": 4,
+          "bounds": {
+            "minX": 1704,
+            "maxX": 1715,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 151,
+            "maxZ": 159
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 151,
+            "minX": 1704,
+            "maxX": 1715
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "b5594055bf8f5a3ed56c8df57e7052229107de5078e5761fb563627bb139b51a"
+        },
+        {
+          "id": "EE-R-S05",
+          "wing": "south galleria",
+          "ordinalInWing": 5,
+          "bounds": {
+            "minX": 1720,
+            "maxX": 1731,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 151,
+            "maxZ": 159
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 151,
+            "minX": 1720,
+            "maxX": 1731
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "ff372a818782d9c86a42a698e51c33bb005e721c6dfa6628e4f2eb22f1801395"
+        },
+        {
+          "id": "EE-R-S06",
+          "wing": "south galleria",
+          "ordinalInWing": 6,
+          "bounds": {
+            "minX": 1736,
+            "maxX": 1747,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 151,
+            "maxZ": 159
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 151,
+            "minX": 1736,
+            "maxX": 1747
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "548b5327a85c235c2228c9be0a810357eeb2b50ebba260df82af1cb2e18736af"
+        },
+        {
+          "id": "EE-R-S07",
+          "wing": "south galleria",
+          "ordinalInWing": 7,
+          "bounds": {
+            "minX": 1752,
+            "maxX": 1763,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 151,
+            "maxZ": 159
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 151,
+            "minX": 1752,
+            "maxX": 1763
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "46648b6f887cb99e421da68546f6e1c322768ec70e300a45d6dccf02a0138ead"
+        },
+        {
+          "id": "EE-R-S08",
+          "wing": "south galleria",
+          "ordinalInWing": 8,
+          "bounds": {
+            "minX": 1768,
+            "maxX": 1779,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 151,
+            "maxZ": 159
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 151,
+            "minX": 1768,
+            "maxX": 1779
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "e3735c9743814199adf3c978fb3d2b11dd810bfb7f9837d110df994ba7d2330a"
+        },
+        {
+          "id": "EE-R-S09",
+          "wing": "south galleria",
+          "ordinalInWing": 9,
+          "bounds": {
+            "minX": 1784,
+            "maxX": 1795,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 151,
+            "maxZ": 159
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 151,
+            "minX": 1784,
+            "maxX": 1795
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "e12834a89eee7546a3e5e0a73e2da048b48a64eaebda19283a0d52e4aa1ff220"
+        },
+        {
+          "id": "EE-R-S10",
+          "wing": "south galleria",
+          "ordinalInWing": 10,
+          "bounds": {
+            "minX": 1800,
+            "maxX": 1811,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 151,
+            "maxZ": 159
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 151,
+            "minX": 1800,
+            "maxX": 1811
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "f20dcb51d177a0e27905c8bf785898e3a81dfe5dab4a6a021c8ef42fadda549e"
+        },
+        {
+          "id": "EE-R-S11",
+          "wing": "south galleria",
+          "ordinalInWing": 11,
+          "bounds": {
+            "minX": 1816,
+            "maxX": 1827,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 151,
+            "maxZ": 159
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 151,
+            "minX": 1816,
+            "maxX": 1827
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "32b625899a7a612066a7d17b894b73f4b6e9a5b00c09c7beeb7625d1dbad9465"
+        },
+        {
+          "id": "EE-R-S12",
+          "wing": "south galleria",
+          "ordinalInWing": 12,
+          "bounds": {
+            "minX": 1832,
+            "maxX": 1843,
+            "minY": 49,
+            "maxY": 52,
+            "minZ": 151,
+            "maxZ": 159
+          },
+          "entrancePlane": {
+            "y": 49,
+            "z": 151,
+            "minX": 1832,
+            "maxX": 1843
+          },
+          "state": "CAPPED_EMPTY_FUTURE_TENANT_SHELL",
+          "tenantFitOutAuthorized": false,
+          "cellCount": 432,
+          "cellSetSha256": "ad622beee136f1b6faa1d766615818d0c2cf4f4272c5a289896113bb11a9506a"
+        }
+      ],
+      "tenantFitOutAuthorized": false
+    },
+    "lifeSafety": {
+      "designBasisOnlyNotCodeCompliance": true,
+      "protectedInternalRouteCount": 2,
+      "accessibleInternalRouteReservationCount": 2,
+      "internalCoreReservationsDisjoint": true,
+      "minimumClearHorizontalCellsBetweenCoreEnvelopes": 193,
+      "egressCores": [
+        {
+          "id": "EG-A",
+          "anchor": {
+            "x": 1652,
+            "y": null,
+            "z": 148
+          },
+          "internalCoreReservation": {
+            "bounds": {
+              "minX": 1649,
+              "maxX": 1655,
+              "minY": 42,
+              "maxY": 54,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "cellCount": 637,
+            "cellSetSha256": "85318fb982399ffa8ad564e119b4aca0c36949e5a851f42004bc213560140aa5"
+          },
+          "stairReservation": {
+            "bounds": {
+              "minX": 1649,
+              "maxX": 1651,
+              "minY": 42,
+              "maxY": 54,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "cellCount": 273,
+            "cellSetSha256": "5eb178ad2f7bc6140b8fc45eb3c4c43b4fff1728250f8b06d691527ee064864b"
+          },
+          "accessibleLiftReservation": {
+            "bounds": {
+              "minX": 1653,
+              "maxX": 1655,
+              "minY": 42,
+              "maxY": 54,
+              "minZ": 147,
+              "maxZ": 149
+            },
+            "cellCount": 117,
+            "cellSetSha256": "5e69da71be55e1b3107b13d05bd24bec44d92773b367cf1d3da3fad4226c568f"
+          },
+          "internalRouteGraph": {
+            "nodes": [
+              {
+                "id": "EG-A-PLATFORM",
+                "x": 1652,
+                "y": 42,
+                "z": 148
+              },
+              {
+                "id": "EG-A-REFUGE",
+                "x": 1652,
+                "y": 48,
+                "z": 148
+              },
+              {
+                "id": "EG-A-ROOF-CAP",
+                "x": 1652,
+                "y": 54,
+                "z": 148
+              }
+            ],
+            "edges": [
+              {
+                "from": "EG-A-PLATFORM",
+                "to": "EG-A-REFUGE",
+                "modes": [
+                  "stairs",
+                  "reserved-lift"
+                ]
+              },
+              {
+                "from": "EG-A-REFUGE",
+                "to": "EG-A-ROOF-CAP",
+                "modes": [
+                  "stairs",
+                  "reserved-lift"
+                ]
+              }
+            ]
+          },
+          "sealedRoofCap": {
+            "bounds": {
+              "minX": 1649,
+              "maxX": 1655,
+              "minY": 54,
+              "maxY": 54,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "cellCount": 49,
+            "cellSetSha256": "b11a83fe366995680e1419223d74df8ef67ecb6b33d437dbb86596639889840f"
+          },
+          "surfaceEndpoint": null,
+          "externalContinuationStatus": "HOLD_UNSURVEYED_SURFACE_Y_SOURCE_OWNERSHIP_AND_ROUTE",
+          "commissionedEgress": false,
+          "commissionedAccessibleRoute": false
+        },
+        {
+          "id": "EG-B",
+          "anchor": {
+            "x": 1852,
+            "y": null,
+            "z": 148
+          },
+          "internalCoreReservation": {
+            "bounds": {
+              "minX": 1849,
+              "maxX": 1855,
+              "minY": 42,
+              "maxY": 54,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "cellCount": 637,
+            "cellSetSha256": "9357c7e30f6b444f24f72e7723a2167ebd88974c804f931ffbd8723989cdedec"
+          },
+          "stairReservation": {
+            "bounds": {
+              "minX": 1849,
+              "maxX": 1851,
+              "minY": 42,
+              "maxY": 54,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "cellCount": 273,
+            "cellSetSha256": "fb2ccecfc3e6cc4f5c65ea8fa3d3aa8383b9c86d5b0eda8fe4c6088bdcffc69a"
+          },
+          "accessibleLiftReservation": {
+            "bounds": {
+              "minX": 1853,
+              "maxX": 1855,
+              "minY": 42,
+              "maxY": 54,
+              "minZ": 147,
+              "maxZ": 149
+            },
+            "cellCount": 117,
+            "cellSetSha256": "6717f79fe1728db635780dbc5a6b72fdc2b6fa693425c7130e032cc3a48e0e80"
+          },
+          "internalRouteGraph": {
+            "nodes": [
+              {
+                "id": "EG-B-PLATFORM",
+                "x": 1852,
+                "y": 42,
+                "z": 148
+              },
+              {
+                "id": "EG-B-REFUGE",
+                "x": 1852,
+                "y": 48,
+                "z": 148
+              },
+              {
+                "id": "EG-B-ROOF-CAP",
+                "x": 1852,
+                "y": 54,
+                "z": 148
+              }
+            ],
+            "edges": [
+              {
+                "from": "EG-B-PLATFORM",
+                "to": "EG-B-REFUGE",
+                "modes": [
+                  "stairs",
+                  "reserved-lift"
+                ]
+              },
+              {
+                "from": "EG-B-REFUGE",
+                "to": "EG-B-ROOF-CAP",
+                "modes": [
+                  "stairs",
+                  "reserved-lift"
+                ]
+              }
+            ]
+          },
+          "sealedRoofCap": {
+            "bounds": {
+              "minX": 1849,
+              "maxX": 1855,
+              "minY": 54,
+              "maxY": 54,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "cellCount": 49,
+            "cellSetSha256": "f3ddd41d13ee99ddf5c937afbcc176e6a7008097f8b3d03761f7107318fb218d"
+          },
+          "surfaceEndpoint": null,
+          "externalContinuationStatus": "HOLD_UNSURVEYED_SURFACE_Y_SOURCE_OWNERSHIP_AND_ROUTE",
+          "commissionedEgress": false,
+          "commissionedAccessibleRoute": false
+        }
+      ],
+      "smokeBoundaries": [
+        {
+          "id": "EE-SMOKE-N",
+          "boundaryPlane": {
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1847,
+              "minY": 48,
+              "maxY": 54,
+              "minZ": 50,
+              "maxZ": 50
+            },
+            "cellCount": 1336,
+            "cellSetSha256": "87efa71ca611d44e00f146808c1af21891bc9a77db4d4760392392ec21cd35d2"
+          },
+          "smokeDoorOpeningReservations": {
+            "bounds": {
+              "minX": 1670,
+              "maxX": 1822,
+              "minY": 49,
+              "maxY": 51,
+              "minZ": 50,
+              "maxZ": 50
+            },
+            "cellCount": 36,
+            "cellSetSha256": "8605289b1bf8755d76998cc98333136080f7554138cd8289ce6a0943a49f86c4"
+          },
+          "smokeDoorMechanismAuthorized": false
+        },
+        {
+          "id": "EE-SMOKE-S",
+          "boundaryPlane": {
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1847,
+              "minY": 48,
+              "maxY": 54,
+              "minZ": 150,
+              "maxZ": 150
+            },
+            "cellCount": 1336,
+            "cellSetSha256": "af2d3e997dd60ffbcb4c0344adc27b0ca23c552a21deadbab189f51e830b7155"
+          },
+          "smokeDoorOpeningReservations": {
+            "bounds": {
+              "minX": 1670,
+              "maxX": 1822,
+              "minY": 49,
+              "maxY": 51,
+              "minZ": 150,
+              "maxZ": 150
+            },
+            "cellCount": 36,
+            "cellSetSha256": "c87d1b0b8ced3aa6a1dd875aab7d16252468f0aa037474ba521606a5b4419ac9"
+          },
+          "smokeDoorMechanismAuthorized": false
+        }
+      ],
+      "ventilation": {
+        "plantAndDuctReservations": [
+          {
+            "id": "EE-VENT-NW",
+            "plantReservation": {
+              "bounds": {
+                "minX": 1640,
+                "maxX": 1647,
+                "minY": 49,
+                "maxY": 54,
+                "minZ": 44,
+                "maxZ": 51
+              },
+              "cellCount": 384,
+              "cellSetSha256": "c6a389e94e58c95b9faed30921ccf3c1ba0d62c9e231dfa8eb1c7b28abeb6a7b"
+            },
+            "internalDuctCenterline": {
+              "bounds": {
+                "minX": 1640,
+                "maxX": 1647,
+                "minY": 53,
+                "maxY": 53,
+                "minZ": 52,
+                "maxZ": 52
+              },
+              "cellCount": 8,
+              "cellSetSha256": "3539acabf67c1d837ec2ad13a86b2bc2b7076b936dcca05e1eb477f0e92c40ac"
+            },
+            "exteriorOutlet": null,
+            "roofCapStatus": "SEALED_PENDING_SURVEY_AND_SMOKE_CONTROL_ENGINEERING",
+            "commissioned": false
+          },
+          {
+            "id": "EE-VENT-NE",
+            "plantReservation": {
+              "bounds": {
+                "minX": 1857,
+                "maxX": 1864,
+                "minY": 49,
+                "maxY": 54,
+                "minZ": 44,
+                "maxZ": 51
+              },
+              "cellCount": 384,
+              "cellSetSha256": "0fdfddb1f168fe88f7b2f315392f6b439dbcff6f53b3817ecf4ae00aef98a6dd"
+            },
+            "internalDuctCenterline": {
+              "bounds": {
+                "minX": 1857,
+                "maxX": 1864,
+                "minY": 53,
+                "maxY": 53,
+                "minZ": 52,
+                "maxZ": 52
+              },
+              "cellCount": 8,
+              "cellSetSha256": "66604db2bcfd728e6a5804d22dad480f4eeb8d048d863adacc4e7af6f4bc4ff0"
+            },
+            "exteriorOutlet": null,
+            "roofCapStatus": "SEALED_PENDING_SURVEY_AND_SMOKE_CONTROL_ENGINEERING",
+            "commissioned": false
+          },
+          {
+            "id": "EE-VENT-SW",
+            "plantReservation": {
+              "bounds": {
+                "minX": 1640,
+                "maxX": 1647,
+                "minY": 49,
+                "maxY": 54,
+                "minZ": 149,
+                "maxZ": 156
+              },
+              "cellCount": 384,
+              "cellSetSha256": "05415cc40d86b96739d19c3de88e9626e8a59feb0523acced5e5bf4b8cb47365"
+            },
+            "internalDuctCenterline": {
+              "bounds": {
+                "minX": 1640,
+                "maxX": 1647,
+                "minY": 53,
+                "maxY": 53,
+                "minZ": 148,
+                "maxZ": 148
+              },
+              "cellCount": 8,
+              "cellSetSha256": "5569d9e922916383e69cdf7bb86566aa50c8c08fef75deb0d26a7f54826b663d"
+            },
+            "exteriorOutlet": null,
+            "roofCapStatus": "SEALED_PENDING_SURVEY_AND_SMOKE_CONTROL_ENGINEERING",
+            "commissioned": false
+          },
+          {
+            "id": "EE-VENT-SE",
+            "plantReservation": {
+              "bounds": {
+                "minX": 1857,
+                "maxX": 1864,
+                "minY": 49,
+                "maxY": 54,
+                "minZ": 149,
+                "maxZ": 156
+              },
+              "cellCount": 384,
+              "cellSetSha256": "595fba9af6285880706433b08cd42fdf4c23fdf6672638b22e66cd36afd94247"
+            },
+            "internalDuctCenterline": {
+              "bounds": {
+                "minX": 1857,
+                "maxX": 1864,
+                "minY": 53,
+                "maxY": 53,
+                "minZ": 148,
+                "maxZ": 148
+              },
+              "cellCount": 8,
+              "cellSetSha256": "0c8bde2282362f99d94cf27251473b6bf8dc39a4f5c0fe53850ba147b94ffc34"
+            },
+            "exteriorOutlet": null,
+            "roofCapStatus": "SEALED_PENDING_SURVEY_AND_SMOKE_CONTROL_ENGINEERING",
+            "commissioned": false
+          }
+        ],
+        "exteriorOutletCount": 0,
+        "smokeModelValidated": false
+      },
+      "emergencyLighting": {
+        "exactPlatformFixtureCount": 56,
+        "fixtureBlock": "minecraft:sea_lantern",
+        "photometricOrEmergencyPowerValidation": false
+      },
+      "platformBarriers": {
+        "exactBarrierCount": 8,
+        "gateMechanismSelected": false,
+        "trainDoorAlignmentValidated": false,
+        "commissioned": false
+      },
+      "drainage": {
+        "trackDrainAndSumpReservations": [
+          {
+            "id": "EE-DRAIN-01",
+            "assignedTrack": 1,
+            "channel": {
+              "bounds": {
+                "minX": 1636,
+                "maxX": 1868,
+                "minY": 39,
+                "maxY": 39,
+                "minZ": 55,
+                "maxZ": 55
+              },
+              "cellCount": 233,
+              "cellSetSha256": "5943131305f8704fc79ee06aa29bb243319b184314176459007e03a3a8a6dc39"
+            },
+            "sumpReservation": {
+              "bounds": {
+                "minX": 1865,
+                "maxX": 1868,
+                "minY": 38,
+                "maxY": 38,
+                "minZ": 54,
+                "maxZ": 56
+              },
+              "cellCount": 12,
+              "cellSetSha256": "0d9c0640ecef0fe21f9af5d5d7e2bf8e0415500cfee9149570efff74c73ab6c7"
+            },
+            "pumpAndDischargeMechanism": null,
+            "commissioned": false
+          },
+          {
+            "id": "EE-DRAIN-02",
+            "assignedTrack": 2,
+            "channel": {
+              "bounds": {
+                "minX": 1636,
+                "maxX": 1868,
+                "minY": 39,
+                "maxY": 39,
+                "minZ": 68,
+                "maxZ": 68
+              },
+              "cellCount": 233,
+              "cellSetSha256": "5d1aa7a47bdb0c03335411c4cba015cb604ea81888272fae00c1f3d946254fc8"
+            },
+            "sumpReservation": {
+              "bounds": {
+                "minX": 1865,
+                "maxX": 1868,
+                "minY": 38,
+                "maxY": 38,
+                "minZ": 67,
+                "maxZ": 69
+              },
+              "cellCount": 12,
+              "cellSetSha256": "4fb525917e11d4d8183ff6f4196572453f7f82a2e521ea82534dcd0b31757451"
+            },
+            "pumpAndDischargeMechanism": null,
+            "commissioned": false
+          },
+          {
+            "id": "EE-DRAIN-03",
+            "assignedTrack": 3,
+            "channel": {
+              "bounds": {
+                "minX": 1636,
+                "maxX": 1868,
+                "minY": 39,
+                "maxY": 39,
+                "minZ": 81,
+                "maxZ": 81
+              },
+              "cellCount": 233,
+              "cellSetSha256": "9b541354e64b2e2291c2e234502568f3f703ac3853de79490ba991fd17a70e3a"
+            },
+            "sumpReservation": {
+              "bounds": {
+                "minX": 1865,
+                "maxX": 1868,
+                "minY": 38,
+                "maxY": 38,
+                "minZ": 80,
+                "maxZ": 82
+              },
+              "cellCount": 12,
+              "cellSetSha256": "ec3d57665de3aa95a1a3985bf678d1ab6237d08c15c9c5ef314cfa99fc68bd00"
+            },
+            "pumpAndDischargeMechanism": null,
+            "commissioned": false
+          },
+          {
+            "id": "EE-DRAIN-04",
+            "assignedTrack": 4,
+            "channel": {
+              "bounds": {
+                "minX": 1636,
+                "maxX": 1868,
+                "minY": 39,
+                "maxY": 39,
+                "minZ": 94,
+                "maxZ": 94
+              },
+              "cellCount": 233,
+              "cellSetSha256": "b99cacd1a334fdb718c3064074321adb2708373fb16dc086c013cbbe544aa56f"
+            },
+            "sumpReservation": {
+              "bounds": {
+                "minX": 1865,
+                "maxX": 1868,
+                "minY": 38,
+                "maxY": 38,
+                "minZ": 93,
+                "maxZ": 95
+              },
+              "cellCount": 12,
+              "cellSetSha256": "4f45d6f9af3a824b4483f96463d8c43caf052e4317104580498bd967dace82b4"
+            },
+            "pumpAndDischargeMechanism": null,
+            "commissioned": false
+          },
+          {
+            "id": "EE-DRAIN-05",
+            "assignedTrack": 5,
+            "channel": {
+              "bounds": {
+                "minX": 1636,
+                "maxX": 1868,
+                "minY": 39,
+                "maxY": 39,
+                "minZ": 107,
+                "maxZ": 107
+              },
+              "cellCount": 233,
+              "cellSetSha256": "98126dca35909b960eec299e81c03fab0ed281d361fa72f067558e1345e36922"
+            },
+            "sumpReservation": {
+              "bounds": {
+                "minX": 1865,
+                "maxX": 1868,
+                "minY": 38,
+                "maxY": 38,
+                "minZ": 106,
+                "maxZ": 108
+              },
+              "cellCount": 12,
+              "cellSetSha256": "b337a17981d1f0d21f82e72966500bef3c56e13864c521c1343833085d0896f0"
+            },
+            "pumpAndDischargeMechanism": null,
+            "commissioned": false
+          },
+          {
+            "id": "EE-DRAIN-06",
+            "assignedTrack": 6,
+            "channel": {
+              "bounds": {
+                "minX": 1636,
+                "maxX": 1868,
+                "minY": 39,
+                "maxY": 39,
+                "minZ": 120,
+                "maxZ": 120
+              },
+              "cellCount": 233,
+              "cellSetSha256": "449d1a4ba3fef9f837c6e7cbefccf510a656da8c02102dbf2517e28175a0e95b"
+            },
+            "sumpReservation": {
+              "bounds": {
+                "minX": 1865,
+                "maxX": 1868,
+                "minY": 38,
+                "maxY": 38,
+                "minZ": 119,
+                "maxZ": 121
+              },
+              "cellCount": 12,
+              "cellSetSha256": "fed11d6e097274cefe6911ea9b1da3df7b2e4a36b644e05f6dcd7a68463f750c"
+            },
+            "pumpAndDischargeMechanism": null,
+            "commissioned": false
+          },
+          {
+            "id": "EE-DRAIN-07",
+            "assignedTrack": 7,
+            "channel": {
+              "bounds": {
+                "minX": 1636,
+                "maxX": 1868,
+                "minY": 39,
+                "maxY": 39,
+                "minZ": 133,
+                "maxZ": 133
+              },
+              "cellCount": 233,
+              "cellSetSha256": "f4ea5d6ef642c9b733dcce55cb8e578b90152f74b78558bc08002ea67caaf0ec"
+            },
+            "sumpReservation": {
+              "bounds": {
+                "minX": 1865,
+                "maxX": 1868,
+                "minY": 38,
+                "maxY": 38,
+                "minZ": 132,
+                "maxZ": 134
+              },
+              "cellCount": 12,
+              "cellSetSha256": "f7e313d4d818d0cec66ab9463fa1e15f5ba10f93608c0f9ee0c15019b43f9b4a"
+            },
+            "pumpAndDischargeMechanism": null,
+            "commissioned": false
+          },
+          {
+            "id": "EE-DRAIN-08",
+            "assignedTrack": 8,
+            "channel": {
+              "bounds": {
+                "minX": 1636,
+                "maxX": 1868,
+                "minY": 39,
+                "maxY": 39,
+                "minZ": 146,
+                "maxZ": 146
+              },
+              "cellCount": 233,
+              "cellSetSha256": "997d85a1eea2f2018eaab8b0ab5fabc1cfd806eba07d2c4e5b0d9926adcb2da2"
+            },
+            "sumpReservation": {
+              "bounds": {
+                "minX": 1865,
+                "maxX": 1868,
+                "minY": 38,
+                "maxY": 38,
+                "minZ": 145,
+                "maxZ": 147
+              },
+              "cellCount": 12,
+              "cellSetSha256": "e3b5116856862e9d95a82a8c6cb03158e767dc4c1c90366e54e0f82e596de275"
+            },
+            "pumpAndDischargeMechanism": null,
+            "commissioned": false
+          }
+        ],
+        "internalDischargeHeader": {
+          "bounds": {
+            "minX": 1869,
+            "maxX": 1871,
+            "minY": 38,
+            "maxY": 38,
+            "minZ": 156,
+            "maxZ": 158
+          },
+          "cellCount": 9,
+          "cellSetSha256": "b1b7c881293af8f52a4d95fe0cbaee631dc4779fc6fd95fd7df6be7f20bd4cca"
+        },
+        "sealedBoundaryCap": {
+          "bounds": {
+            "minX": 1872,
+            "maxX": 1872,
+            "minY": 38,
+            "maxY": 40,
+            "minZ": 156,
+            "maxZ": 158
+          },
+          "cellCount": 9,
+          "cellSetSha256": "429a5ae51abea012fe57e04afab9b64e1fe3c29a19d685e5cf9bb542809af97e"
+        },
+        "externalDischargePoint": null,
+        "hydraulicModelValidated": false,
+        "commissioned": false
+      },
+      "fireAndServiceAccess": {
+        "internalSpineReservation": {
+          "bounds": {
+            "minX": 1844,
+            "maxX": 1848,
+            "minY": 48,
+            "maxY": 52,
+            "minZ": 40,
+            "maxZ": 160
+          },
+          "cellCount": 3025,
+          "cellSetSha256": "9a5bad6df86df5cfae8e1225a577a55550be7e114950211d9e48fcdbdd11aa95"
+        },
+        "externalConnection": null,
+        "emergencyServiceAcceptance": false
+      }
+    },
+    "futureInterfaces": {
+      "count": 8,
+      "pairing": [
+        {
+          "id": "GL-A",
+          "tracks": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": "GL-B",
+          "tracks": [
+            3,
+            4
+          ]
+        },
+        {
+          "id": "GL-C",
+          "tracks": [
+            5,
+            6
+          ]
+        },
+        {
+          "id": "GL-D",
+          "tracks": [
+            7,
+            8
+          ]
+        }
+      ],
+      "eastStubX": 1872,
+      "allSealCellSetsDisjoint": true,
+      "everyInterfaceSeparatelyOwned": true,
+      "interfaces": [
+        {
+          "id": "EE-FUTURE-01",
+          "owner": "Z02-U1-IF-01",
+          "assignedTrack": 1,
+          "futureLinePair": "GL-A",
+          "boundary": "EAST_STUB",
+          "sealMaterial": "minecraft:polished_deepslate",
+          "sealDesign": {
+            "bounds": {
+              "minX": 1872,
+              "maxX": 1872,
+              "minY": 39,
+              "maxY": 43,
+              "minZ": 52,
+              "maxZ": 56
+            },
+            "cellCount": 25,
+            "cellSetSha256": "465fb9b29c9fbfe3b3c1021b9f082cbcb738d06aa26bff46ff80619d58b11bb7"
+          },
+          "consumerOwner": null,
+          "sourceGuard": null,
+          "rollbackOperation": null,
+          "state": "DEFAULT_DENY_SEALED_DESIGN_CONTRACT",
+          "openingAuthorized": false
+        },
+        {
+          "id": "EE-FUTURE-02",
+          "owner": "Z02-U1-IF-02",
+          "assignedTrack": 2,
+          "futureLinePair": "GL-A",
+          "boundary": "EAST_STUB",
+          "sealMaterial": "minecraft:polished_deepslate",
+          "sealDesign": {
+            "bounds": {
+              "minX": 1872,
+              "maxX": 1872,
+              "minY": 39,
+              "maxY": 43,
+              "minZ": 65,
+              "maxZ": 69
+            },
+            "cellCount": 25,
+            "cellSetSha256": "286a25fa460a3368afedf75b5f0637465e95bf629a01db0655afd36c32fa0d90"
+          },
+          "consumerOwner": null,
+          "sourceGuard": null,
+          "rollbackOperation": null,
+          "state": "DEFAULT_DENY_SEALED_DESIGN_CONTRACT",
+          "openingAuthorized": false
+        },
+        {
+          "id": "EE-FUTURE-03",
+          "owner": "Z02-U1-IF-03",
+          "assignedTrack": 3,
+          "futureLinePair": "GL-B",
+          "boundary": "EAST_STUB",
+          "sealMaterial": "minecraft:polished_deepslate",
+          "sealDesign": {
+            "bounds": {
+              "minX": 1872,
+              "maxX": 1872,
+              "minY": 39,
+              "maxY": 43,
+              "minZ": 78,
+              "maxZ": 82
+            },
+            "cellCount": 25,
+            "cellSetSha256": "c5932e64660eceb4243bc3f46fa9ebdb7aed83d082b58f8793ecca45919c27a9"
+          },
+          "consumerOwner": null,
+          "sourceGuard": null,
+          "rollbackOperation": null,
+          "state": "DEFAULT_DENY_SEALED_DESIGN_CONTRACT",
+          "openingAuthorized": false
+        },
+        {
+          "id": "EE-FUTURE-04",
+          "owner": "Z02-U1-IF-04",
+          "assignedTrack": 4,
+          "futureLinePair": "GL-B",
+          "boundary": "EAST_STUB",
+          "sealMaterial": "minecraft:polished_deepslate",
+          "sealDesign": {
+            "bounds": {
+              "minX": 1872,
+              "maxX": 1872,
+              "minY": 39,
+              "maxY": 43,
+              "minZ": 91,
+              "maxZ": 95
+            },
+            "cellCount": 25,
+            "cellSetSha256": "fb4a9a5ced1ec05f11a0fcdcb021bec92f148e8f38fd88aa590be3c16d8addd8"
+          },
+          "consumerOwner": null,
+          "sourceGuard": null,
+          "rollbackOperation": null,
+          "state": "DEFAULT_DENY_SEALED_DESIGN_CONTRACT",
+          "openingAuthorized": false
+        },
+        {
+          "id": "EE-FUTURE-05",
+          "owner": "Z02-U1-IF-05",
+          "assignedTrack": 5,
+          "futureLinePair": "GL-C",
+          "boundary": "EAST_STUB",
+          "sealMaterial": "minecraft:polished_deepslate",
+          "sealDesign": {
+            "bounds": {
+              "minX": 1872,
+              "maxX": 1872,
+              "minY": 39,
+              "maxY": 43,
+              "minZ": 104,
+              "maxZ": 108
+            },
+            "cellCount": 25,
+            "cellSetSha256": "048bf8a2f886e5497fd95339ef4516fefb77cc7aa1b2e124cf53245d47e29acf"
+          },
+          "consumerOwner": null,
+          "sourceGuard": null,
+          "rollbackOperation": null,
+          "state": "DEFAULT_DENY_SEALED_DESIGN_CONTRACT",
+          "openingAuthorized": false
+        },
+        {
+          "id": "EE-FUTURE-06",
+          "owner": "Z02-U1-IF-06",
+          "assignedTrack": 6,
+          "futureLinePair": "GL-C",
+          "boundary": "EAST_STUB",
+          "sealMaterial": "minecraft:polished_deepslate",
+          "sealDesign": {
+            "bounds": {
+              "minX": 1872,
+              "maxX": 1872,
+              "minY": 39,
+              "maxY": 43,
+              "minZ": 117,
+              "maxZ": 121
+            },
+            "cellCount": 25,
+            "cellSetSha256": "6941dbcf5c6bcdad2ef335f775da10bc65b7c75334178f13134a89a44ecd63b7"
+          },
+          "consumerOwner": null,
+          "sourceGuard": null,
+          "rollbackOperation": null,
+          "state": "DEFAULT_DENY_SEALED_DESIGN_CONTRACT",
+          "openingAuthorized": false
+        },
+        {
+          "id": "EE-FUTURE-07",
+          "owner": "Z02-U1-IF-07",
+          "assignedTrack": 7,
+          "futureLinePair": "GL-D",
+          "boundary": "EAST_STUB",
+          "sealMaterial": "minecraft:polished_deepslate",
+          "sealDesign": {
+            "bounds": {
+              "minX": 1872,
+              "maxX": 1872,
+              "minY": 39,
+              "maxY": 43,
+              "minZ": 130,
+              "maxZ": 134
+            },
+            "cellCount": 25,
+            "cellSetSha256": "bcdcf17b6f76b0822c0d3e53e339f2aa8fa55174d7aca95a6b0f62cd010f33d8"
+          },
+          "consumerOwner": null,
+          "sourceGuard": null,
+          "rollbackOperation": null,
+          "state": "DEFAULT_DENY_SEALED_DESIGN_CONTRACT",
+          "openingAuthorized": false
+        },
+        {
+          "id": "EE-FUTURE-08",
+          "owner": "Z02-U1-IF-08",
+          "assignedTrack": 8,
+          "futureLinePair": "GL-D",
+          "boundary": "EAST_STUB",
+          "sealMaterial": "minecraft:polished_deepslate",
+          "sealDesign": {
+            "bounds": {
+              "minX": 1872,
+              "maxX": 1872,
+              "minY": 39,
+              "maxY": 43,
+              "minZ": 143,
+              "maxZ": 147
+            },
+            "cellCount": 25,
+            "cellSetSha256": "ed9d9dee5eee5ebba025c8a19e74577240b954cbfa5444d16b9ea254335db96c"
+          },
+          "consumerOwner": null,
+          "sourceGuard": null,
+          "rollbackOperation": null,
+          "state": "DEFAULT_DENY_SEALED_DESIGN_CONTRACT",
+          "openingAuthorized": false
+        }
+      ],
+      "prohibitedInitialConnections": [
+        "PassageWay",
+        "SubTropolis",
+        "Houston pedestrian tunnels",
+        "Cheyenne secure circulation"
+      ]
+    },
+    "remainingHoldGates": [
+      "survey exact dry surface endpoints for EG-A and EG-B without replacing null Y by inference",
+      "prove two complete independent accessible egress routes from occupied spaces to safe exterior endpoints",
+      "complete fire/smoke, ventilation, emergency-power/lighting, platform-barrier, drainage, and fire-service engineering",
+      "bind every cell to exact ownership, immutable source guards, one-cell forward/rollback operations, and a release manifest",
+      "pass bounded pilot, live entity clearance, full preflight, post-state QA, route QA, and rollback verification"
+    ]
+  },
+  "d07": {
+    "status": "RESOLVED_WORDING_ONLY_PORTAL_OMITTED",
+    "geologicalWordingStatus": "RESOLVED_AUTHORITATIVE_SOURCE_BACKED_ARCHITECTURAL_COMPOSITE",
+    "resolution": {
+      "interpretation": "The granite-above/limestone-below sequence is an authored architectural juxtaposition of geographically separate analogue units, not a claim that those named units form one natural contact.",
+      "approvedPlaquePanels": [
+        {
+          "order": 1,
+          "text": "DESIGN CONTACT"
+        },
+        {
+          "order": 2,
+          "text": "Pikes Peak Granite analogue"
+        },
+        {
+          "order": 3,
+          "text": "Colorado batholith • about 1.1 billion years"
+        },
+        {
+          "order": 4,
+          "text": "Bethany Falls Limestone analogue"
+        },
+        {
+          "order": 5,
+          "text": "Upper Pennsylvanian • Missourian • Kansas City region"
+        },
+        {
+          "order": 6,
+          "text": "Architectural composite • not one natural outcrop"
+        }
+      ],
+      "forbiddenClaims": [
+        "natural Pikes Peak Granite–Bethany Falls Limestone contact",
+        "thrust fault or overthrust between the named units",
+        "laccolithic contact between the named units",
+        "Bethany Falls Limestone is 270 million years old",
+        "the two named units occur at the same natural site"
+      ],
+      "retiredWordingDisposition": "Conflicting Masterplan 04 mechanism and age claims remain historical design record and are not approved interpretive copy.",
+      "sourceRetrievedAtUtc": "2026-08-04T00:00:00Z",
+      "sources": [
+        {
+          "id": "USGS-SMITH-1999",
+          "authority": "U.S. Geological Survey Publications Warehouse",
+          "kind": "official record for peer-reviewed original research",
+          "title": "Petrology and geochemistry of late-stage intrusions of the A-type, mid-Proterozoic Pikes Peak batholith (Central Colorado, USA): Implications for petrogenetic models",
+          "authors": "Smith, D.R., et al.",
+          "year": 1999,
+          "url": "https://www.usgs.gov/publications/petrology-and-geochemistry-late-stage-intrusions-a-type-mid-proterozoic-pikes-peak",
+          "supports": [
+            "The Pikes Peak batholith is in central Colorado.",
+            "The batholith is approximately 1.08 billion years old.",
+            "Pikes Peak granite includes coarse-grained syenogranites and minor monzogranites."
+          ]
+        },
+        {
+          "id": "USGS-OFR-01-0364",
+          "authority": "U.S. Geological Survey",
+          "kind": "official technical map report",
+          "title": "Preliminary Precambrian Basement Map of Colorado—A Geologic Interpretation of the Aeromagnetic Anomaly Map",
+          "authors": "Sims, P.K., et al.",
+          "year": 2001,
+          "url": "https://pubs.usgs.gov/of/2001/ofr-01-0364/colo_of_text.html",
+          "supports": [
+            "The Pikes Peak batholith is in the southern Front Range and has an age of about 1.1 billion years.",
+            "The report calls it an A-type example while preserving the broader scientific context around the term anorogenic."
+          ]
+        },
+        {
+          "id": "KGS-JOHNSON-COUNTY",
+          "authority": "Kansas Geological Survey",
+          "kind": "official geologic and hydrologic technical report",
+          "title": "Geology and Ground-Water Resources of Johnson County, Northeastern Kansas—Stratigraphy of Outcropping Rocks",
+          "authors": "O’Connor, H.G.",
+          "year": 1971,
+          "url": "https://www.kgs.ku.edu/General/Geology/Johnson/05_outcr.html",
+          "supports": [
+            "The Swope Limestone is in the Pennsylvanian System, Missourian Stage.",
+            "Bethany Falls Limestone is the upper member of the Swope Limestone.",
+            "The report documents Bethany Falls near the Kansas–Missouri state line."
+          ]
+        },
+        {
+          "id": "KGS-BULLETIN-206-1",
+          "authority": "Kansas Geological Survey",
+          "kind": "official original geologic research bulletin",
+          "title": "Carbonate Facies of the Swope Limestone Formation (Upper Pennsylvanian), Southeast Kansas",
+          "authors": "Mossler, J.H.",
+          "year": 1973,
+          "url": "https://www.kgs.ku.edu/Publications/Bulletins/206_1/index.html",
+          "supports": [
+            "The Swope Limestone is Upper Pennsylvanian.",
+            "Bethany Falls Limestone is the uppermost member of the Swope.",
+            "Bethany Falls has laterally varying carbonate facies; a single simplistic visual texture should not be presented as a complete natural section."
+          ]
+        }
+      ]
+    },
+    "c2Portal": {
+      "status": "NO_ACTIVE_C2_PORTAL",
+      "registryStatus": "logical-link-not-active",
+      "logicalFrom": {
+        "x": 240,
+        "y": null,
+        "z": 155,
+        "basis": "derived center of accepted portal-hub architecture"
+      },
+      "logicalTo": {
+        "x": 1550,
+        "y": null,
+        "z": -250
+      },
+      "activeMechanism": null,
+      "landingCoordinates": [],
+      "mechanismBlocks": [],
+      "commands": [],
+      "targetCellCount": 0,
+      "operationsEmitted": false,
+      "portalGalleryMeaning": "architectural destination only",
+      "reconsiderationGate": [
+        "selected permission-compatible mechanism",
+        "exact safe symmetric landing coordinates and immutable source evidence",
+        "tested outbound and return paths",
+        "owned guarded operations and exact rollback",
+        "separate reviewed release authorization"
+      ]
+    }
+  },
+  "gateDecision": {
+    "d06InternalDesignFreezePassed": true,
+    "d06CompleteLifeSafetyGatePassed": false,
+    "d07WordingGatePassed": true,
+    "c2ActivationGatePassed": false,
+    "phase1Exit": "HOLD",
+    "advanceToPhysicalPhase": false,
+    "liveBuildMayProceed": false,
+    "reason": "D06 external life-safety and every physical release gate remain open; this record emits zero operations."
+  }
+}

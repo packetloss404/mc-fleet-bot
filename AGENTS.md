@@ -1733,3 +1733,83 @@ npx vitest run test/build/masterplanAuthorityReconciliation.test.ts
 ```bash
 npm test
 ```
+
+## Combined Zones Phase 1 Coordination And Release Gate
+
+- Compile the deterministic, offline-only coordination record from the
+  reconciled Masterplans 01–05 authority chain with:
+
+```bash
+node scripts/compile_combined_zones_phase1_geometry.mjs \
+  --generated-at <stable-UTC-timestamp>
+```
+
+- The compiler writes
+  `masterplans/05-combined-zones/phase1-geometry-coordination.json`. It freezes
+  exact rational vertical transforms, per-scope boundary semantics, and
+  coordination-only cell envelopes. It deliberately emits zero operation and
+  material cells while any declared geometry blocker remains.
+- Validate the default-deny release graph and run every Combined Zones
+  authority/Phase 1 regression with:
+
+```bash
+node scripts/validate_combined_zones_release_contract.mjs
+npm run test:masterplans
+```
+
+- Reproduce the exact copied-snapshot relic census and default-deny core audit
+  with:
+
+```bash
+node scripts/audit_combined_zones_protected_relic_clearance.mjs
+node scripts/audit_combined_zones_c1_pilot.mjs
+node scripts/compile_combined_zones_c1_civil_design.mjs
+node --expose-gc --max-old-space-size=4096 \
+  scripts/audit_combined_zones_d05_hydrology_relic_buffers.mjs
+node scripts/compile_combined_zones_empty_eight_geology_design.mjs
+```
+
+- The relic audit may freeze the complete recorded structure-start bounds as a
+  zero-margin no-touch core, including air cells. It may not infer a positive
+  buffer, intact-template status, ownership, observation access, or
+  construction clearance. Require its G06 result to remain HOLD until reviewed
+  positive buffers, exact construction cells, all relevant generated starts,
+  and post-state preservation evidence pass.
+- The C1 pilot audit may freeze only its exact plan coordination envelope and
+  reserve-first rail study setout. It emits zero operations. Do not promote it
+  to a physical R01 target set while its highway profile, pale-garden/entity,
+  block-entity, complete structure, hydrology, ownership/interface, fresh
+  source, rollback, and authorization gates remain HOLD.
+- The C1 civil design may freeze exact coordination geometry, independent
+  grade-audited profiles, cross-sections, diagnostic quantities, drainage
+  collection, and geometric C01 comparisons. It emits no construction cells.
+  D02 remains HOLD until geotechnical, structural, outfall, ISSUE-002/ownership,
+  visual, and construction-quantity gates pass.
+- The D05 full-height audit is memory-intensive and must run with the declared
+  Node heap. Its fluid/cryosphere components, D8 routing, and one-cell relic
+  adjacency shells are exact copied-snapshot coordination evidence only.
+  Require reviewed buffers, future influence cells, canonical owners, expert
+  modelling, rollback, and poststate preservation before D05 may pass.
+- The Empty Eight/geology compiler freezes internal design reservations and
+  factual architectural-composite plaque wording. It does not claim building-
+  code compliance or commission a safety system. External egress, ventilation,
+  drainage, fire/service, mechanisms, source guards, and operations remain
+  HOLD; C2 remains omitted.
+
+- A valid contract may still report `CONTRACT_VALID_BUILD_BLOCKED`. Do not use
+  `--require-ready`, generate operations, take a live entity gate, or execute a
+  release until all design, ownership, interface, protected-feature, civil,
+  hydrology, compiler, fresh-snapshot, preflight, and authorization gates pass
+  against identical artifact hashes.
+- The validator checks resolved decisions against the bound decision ledger,
+  protected cores against the relic census, reviewed-buffer schema and hashes,
+  semantic PASS states in the decision/relic/C1/site artifacts, and explicit
+  hash-bound current evaluations for G01–G14. The present contract intentionally
+  has an empty `currentGateEvaluations` array and all R00–R13 nodes `BLOCKED`.
+  Advancing a node requires the missing project release tooling and a reviewed
+  contract-state transition; the current-state validator is not an execution
+  wrapper.
+- Phase advancement is exact and serial: G01–G14 precede a transaction, G15 is
+  journaled atomic execution, and G01–G19 precede acceptance. A PASS advances
+  to the next release node; HOLD triggers offline remediation and never a
+  narrative or manual waiver.

@@ -309,8 +309,8 @@ describe('Masterplans 01-03 -> 04 -> 05 authority reconciliation', () => {
       },
       planToDevelop: {
         path: 'masterplans/05-combined-zones/MASTERPLAN.md',
-        currentPhase: 'PHASE_0_COMPLETE_PASS_FOR_DETAILED_DESIGN_ONLY',
-        nextPhase: 'PHASE_1_FREEZE_INTERFACES_AND_CIVIL_DESIGN',
+        currentPhase: 'PHASE_1_COORDINATION_PARTIAL_PASS_BUILD_HOLD',
+        nextPhase: 'PHASE_1_CLOSE_GEOMETRY_SITE_AND_RELEASE_GATES',
         constructionPackageExists: false,
         worldEditAuthorized: false,
       },

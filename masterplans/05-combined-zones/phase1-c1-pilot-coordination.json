@@ -1,0 +1,1235 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-c1-pilot-coordination",
+  "generatedAtUtc": "2026-08-04T15:56:00Z",
+  "status": "COORDINATION_CANDIDATE_FROZEN_PHYSICAL_PILOT_HOLD",
+  "authority": {
+    "chain": "01 + 02 + 03 -> 04 normalized architecture -> 05 current-world placement",
+    "planToDevelop": "masterplans/05-combined-zones/MASTERPLAN.md",
+    "role": "bounded C1 coordination evidence; not construction ownership or a release manifest",
+    "offlineOnly": true,
+    "worldEditAuthorized": false,
+    "constructionPackageExists": false
+  },
+  "sourceBindings": [
+    {
+      "path": "masterplans/05-combined-zones/MASTERPLAN.md",
+      "sha256": "f28275ba640348ad52d570b67fa22c8338655a5c8452dac6435b4c14055fe203",
+      "bytes": 24725,
+      "role": "current-world plan and Phase 1 pilot requirement"
+    },
+    {
+      "path": "masterplans/05-combined-zones/site-coordinates.json",
+      "sha256": "b825f3c1e5f5696284d17c64dd469ba8efa845f6846e76032cb91bff4d4fdf62",
+      "bytes": 43946,
+      "role": "C1 alignment and cross-section"
+    },
+    {
+      "path": "masterplans/05-combined-zones/corridor-terrain-probe.json",
+      "sha256": "4e3f1b5f6750a5d18ae6e99b4a909471ea332b9ca290095f6236dbce1ea98f1c",
+      "bytes": 88397,
+      "role": "sampled terrain and accepted rail study profile"
+    },
+    {
+      "path": "masterplans/05-combined-zones/phase0-survey-evidence.json",
+      "sha256": "c0730cc039c756ac6331b9aed8ecb89af38426e19d588ccdd56ec17cd8e1309e",
+      "bytes": 58530,
+      "role": "immutable siting evidence and structure-inventory boundary"
+    },
+    {
+      "path": "masterplans/05-combined-zones/corridor-clearance.json",
+      "sha256": "15504eb52401e4e80970076093cceeccf5cc740d033fbaadd0938e404bbb5078",
+      "bytes": 9381,
+      "role": "catalog plan separation and truth boundary"
+    },
+    {
+      "path": "masterplans/05-combined-zones/phase1-design-decisions.json",
+      "sha256": "fbacbfc5fe3f4651310148c014b21127976c22c06fcaaee3dd8a33ccb961e40f",
+      "bytes": 14049,
+      "role": "reserve-first rail staging decision"
+    }
+  ],
+  "snapshot": {
+    "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+    "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+    "regionFileCount": 51,
+    "bytes": 290946492,
+    "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)",
+    "use": "historical Phase 0 terrain and coordination evidence only",
+    "usableAsReleaseSource": false,
+    "entitiesDirectoryPresent": false,
+    "poiDirectoryPresent": false,
+    "levelDatPresent": false
+  },
+  "candidate": {
+    "id": "C1-R01-TANGENT-A-S24-S28",
+    "rationale": "strongest bounded straight study window: five consecutive dry source samples with zero centerline rail cut/fill, outside curves, terminals, stations, interchanges, and known direct catalog intersections",
+    "sourceSampleRangeInclusive": {
+      "start": 24,
+      "end": 28
+    },
+    "chainage": {
+      "start": 384,
+      "end": 448,
+      "length": 64
+    },
+    "sourceSamples": [
+      {
+        "index": 24,
+        "distanceAlongCenterline": 384,
+        "x": 814,
+        "z": 80,
+        "chunkStatus": "minecraft:full",
+        "worldSurfaceY": 119,
+        "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+        "terrainY": 113,
+        "terrainBlock": "minecraft:pale_moss_block",
+        "waterColumn": false,
+        "lavaColumn": false,
+        "vegetationAboveTerrain": true,
+        "biome": "minecraft:pale_garden"
+      },
+      {
+        "index": 25,
+        "distanceAlongCenterline": 400,
+        "x": 830,
+        "z": 80,
+        "chunkStatus": "minecraft:full",
+        "worldSurfaceY": 121,
+        "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+        "terrainY": 111,
+        "terrainBlock": "minecraft:pale_moss_block",
+        "waterColumn": false,
+        "lavaColumn": false,
+        "vegetationAboveTerrain": true,
+        "biome": "minecraft:pale_garden"
+      },
+      {
+        "index": 26,
+        "distanceAlongCenterline": 416,
+        "x": 846,
+        "z": 80,
+        "chunkStatus": "minecraft:full",
+        "worldSurfaceY": 120,
+        "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+        "terrainY": 110,
+        "terrainBlock": "minecraft:grass_block",
+        "waterColumn": false,
+        "lavaColumn": false,
+        "vegetationAboveTerrain": true,
+        "biome": "minecraft:pale_garden"
+      },
+      {
+        "index": 27,
+        "distanceAlongCenterline": 432,
+        "x": 862,
+        "z": 80,
+        "chunkStatus": "minecraft:full",
+        "worldSurfaceY": 115,
+        "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+        "terrainY": 109,
+        "terrainBlock": "minecraft:grass_block",
+        "waterColumn": false,
+        "lavaColumn": false,
+        "vegetationAboveTerrain": true,
+        "biome": "minecraft:pale_garden"
+      },
+      {
+        "index": 28,
+        "distanceAlongCenterline": 448,
+        "x": 878,
+        "z": 80,
+        "chunkStatus": "minecraft:full",
+        "worldSurfaceY": 120,
+        "worldSurfaceBlock": "minecraft:pale_oak_leaves",
+        "terrainY": 110,
+        "terrainBlock": "minecraft:pale_moss_block",
+        "waterColumn": false,
+        "lavaColumn": false,
+        "vegetationAboveTerrain": true,
+        "biome": "minecraft:pale_garden"
+      }
+    ],
+    "sourceProfileAnchors": [
+      {
+        "x": 814,
+        "z": 80,
+        "y": 113,
+        "sampleIndex": 24,
+        "chainage": 384
+      },
+      {
+        "x": 830,
+        "z": 80,
+        "y": 111,
+        "sampleIndex": 25,
+        "chainage": 400
+      },
+      {
+        "x": 846,
+        "z": 80,
+        "y": 110,
+        "sampleIndex": 26,
+        "chainage": 416
+      },
+      {
+        "x": 862,
+        "z": 80,
+        "y": 109,
+        "sampleIndex": 27,
+        "chainage": 432
+      },
+      {
+        "x": 878,
+        "z": 80,
+        "y": 110,
+        "sampleIndex": 28,
+        "chainage": 448
+      }
+    ],
+    "outsideDeclaredPhase0Atlas": true,
+    "declaredPhase0Atlas": {
+      "minX": 1200,
+      "maxX": 3200,
+      "minZ": -1200,
+      "maxZ": 600
+    }
+  },
+  "integerSetout": {
+    "interpolation": "exact linear interpolation between 16-block rail-profile anchors; nearest integer with exact halves choosing the greater Y",
+    "referenceCenterline": {
+      "pointCount": 65,
+      "bounds": {
+        "minX": 814,
+        "maxX": 878,
+        "minY": 109,
+        "maxY": 113,
+        "minZ": 80,
+        "maxZ": 80
+      },
+      "cellSetSha256": "85103df39f7ec21b2295b282a7dafe7333dfaa8344c0ed0806dbe961cd1d780e",
+      "points": [
+        {
+          "x": 814,
+          "y": 113,
+          "z": 80
+        },
+        {
+          "x": 815,
+          "y": 113,
+          "z": 80
+        },
+        {
+          "x": 816,
+          "y": 113,
+          "z": 80
+        },
+        {
+          "x": 817,
+          "y": 113,
+          "z": 80
+        },
+        {
+          "x": 818,
+          "y": 113,
+          "z": 80
+        },
+        {
+          "x": 819,
+          "y": 112,
+          "z": 80
+        },
+        {
+          "x": 820,
+          "y": 112,
+          "z": 80
+        },
+        {
+          "x": 821,
+          "y": 112,
+          "z": 80
+        },
+        {
+          "x": 822,
+          "y": 112,
+          "z": 80
+        },
+        {
+          "x": 823,
+          "y": 112,
+          "z": 80
+        },
+        {
+          "x": 824,
+          "y": 112,
+          "z": 80
+        },
+        {
+          "x": 825,
+          "y": 112,
+          "z": 80
+        },
+        {
+          "x": 826,
+          "y": 112,
+          "z": 80
+        },
+        {
+          "x": 827,
+          "y": 111,
+          "z": 80
+        },
+        {
+          "x": 828,
+          "y": 111,
+          "z": 80
+        },
+        {
+          "x": 829,
+          "y": 111,
+          "z": 80
+        },
+        {
+          "x": 830,
+          "y": 111,
+          "z": 80
+        },
+        {
+          "x": 831,
+          "y": 111,
+          "z": 80
+        },
+        {
+          "x": 832,
+          "y": 111,
+          "z": 80
+        },
+        {
+          "x": 833,
+          "y": 111,
+          "z": 80
+        },
+        {
+          "x": 834,
+          "y": 111,
+          "z": 80
+        },
+        {
+          "x": 835,
+          "y": 111,
+          "z": 80
+        },
+        {
+          "x": 836,
+          "y": 111,
+          "z": 80
+        },
+        {
+          "x": 837,
+          "y": 111,
+          "z": 80
+        },
+        {
+          "x": 838,
+          "y": 111,
+          "z": 80
+        },
+        {
+          "x": 839,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 840,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 841,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 842,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 843,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 844,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 845,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 846,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 847,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 848,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 849,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 850,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 851,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 852,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 853,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 854,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 855,
+          "y": 109,
+          "z": 80
+        },
+        {
+          "x": 856,
+          "y": 109,
+          "z": 80
+        },
+        {
+          "x": 857,
+          "y": 109,
+          "z": 80
+        },
+        {
+          "x": 858,
+          "y": 109,
+          "z": 80
+        },
+        {
+          "x": 859,
+          "y": 109,
+          "z": 80
+        },
+        {
+          "x": 860,
+          "y": 109,
+          "z": 80
+        },
+        {
+          "x": 861,
+          "y": 109,
+          "z": 80
+        },
+        {
+          "x": 862,
+          "y": 109,
+          "z": 80
+        },
+        {
+          "x": 863,
+          "y": 109,
+          "z": 80
+        },
+        {
+          "x": 864,
+          "y": 109,
+          "z": 80
+        },
+        {
+          "x": 865,
+          "y": 109,
+          "z": 80
+        },
+        {
+          "x": 866,
+          "y": 109,
+          "z": 80
+        },
+        {
+          "x": 867,
+          "y": 109,
+          "z": 80
+        },
+        {
+          "x": 868,
+          "y": 109,
+          "z": 80
+        },
+        {
+          "x": 869,
+          "y": 109,
+          "z": 80
+        },
+        {
+          "x": 870,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 871,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 872,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 873,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 874,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 875,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 876,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 877,
+          "y": 110,
+          "z": 80
+        },
+        {
+          "x": 878,
+          "y": 110,
+          "z": 80
+        }
+      ]
+    },
+    "verticalChanges": {
+      "count": 5,
+      "locations": [
+        {
+          "x": 819,
+          "fromY": 113,
+          "toY": 112,
+          "deltaY": -1
+        },
+        {
+          "x": 827,
+          "fromY": 112,
+          "toY": 111,
+          "deltaY": -1
+        },
+        {
+          "x": 839,
+          "fromY": 111,
+          "toY": 110,
+          "deltaY": -1
+        },
+        {
+          "x": 855,
+          "fromY": 110,
+          "toY": 109,
+          "deltaY": -1
+        },
+        {
+          "x": 870,
+          "fromY": 109,
+          "toY": 110,
+          "deltaY": 1
+        }
+      ],
+      "minimumHorizontalRunBetweenChanges": 8,
+      "maximumAbsoluteSingleChange": 1
+    },
+    "reservedRailCenterlines": {
+      "staging": "RESERVE_FIRST_FULLY_CLEAR_SPANNED_RAIL_STRIP",
+      "trackConstructionAuthorized": false,
+      "zCoordinates": [
+        52,
+        56
+      ],
+      "pointCount": 130,
+      "cellSetSha256": "604f1842989255ee5cc6d47091b1f60635bd6b5683c49890c78b8e20031ebd37"
+    },
+    "independentHighwayProfile": null
+  },
+  "exactPlanCoordination": {
+    "coordinateSemantics": "inclusive integer block columns",
+    "normalRuleOnThisEastboundTangent": "worldZ = referenceZ + signed cross-section offset; negative offsets are north",
+    "sets": {
+      "referenceCenterline": {
+        "bounds": {
+          "minX": 814,
+          "maxX": 878,
+          "minZ": 80,
+          "maxZ": 80
+        },
+        "columnCount": 65,
+        "columnSetSha256": "ee8850c2bb1efb4a42da1867475e5db107b10bd3c349974008bbf70bc4b6ef47"
+      },
+      "reservation": {
+        "bounds": {
+          "minX": 814,
+          "maxX": 878,
+          "minZ": 44,
+          "maxZ": 99
+        },
+        "columnCount": 3640,
+        "columnSetSha256": "27e016ea61e94bc971b758c2816c0bea1a17e003e30d317269f18f1c3c054193"
+      },
+      "reservedRailStrip": {
+        "bounds": {
+          "minX": 814,
+          "maxX": 878,
+          "minZ": 50,
+          "maxZ": 62
+        },
+        "columnCount": 845,
+        "columnSetSha256": "7a905dcfb194171ade06568b849fa3061f56310c0159871ec84cc43e28aa7630"
+      },
+      "totalLandTake": {
+        "bounds": {
+          "minX": 814,
+          "maxX": 878,
+          "minZ": 32,
+          "maxZ": 111
+        },
+        "columnCount": 5200,
+        "columnSetSha256": "bca1874337eaa3f100b130b0a7d94474ae95cb91f29039ed179bd3f5c65961bd"
+      }
+    },
+    "crossSectionElements": [
+      {
+        "element": "north boundary fence/hedge/ditch",
+        "blocks": 1,
+        "offsetFrom": -36,
+        "offsetTo": -36,
+        "worldZFrom": 44,
+        "worldZTo": 44
+      },
+      {
+        "element": "protected pedestrian route",
+        "blocks": 3,
+        "offsetFrom": -35,
+        "offsetTo": -33,
+        "worldZFrom": 45,
+        "worldZTo": 47
+      },
+      {
+        "element": "pedestrian/rail protective buffer",
+        "blocks": 2,
+        "offsetFrom": -32,
+        "offsetTo": -31,
+        "worldZFrom": 48,
+        "worldZTo": 49
+      },
+      {
+        "element": "rail reservation, fenced",
+        "blocks": 13,
+        "offsetFrom": -30,
+        "offsetTo": -18,
+        "worldZFrom": 50,
+        "worldZTo": 62
+      },
+      {
+        "element": "vehicle restraint system + verge",
+        "blocks": 3,
+        "offsetFrom": -17,
+        "offsetTo": -15,
+        "note": "must be a barrier, not a boundary fence; clear zone is not met at this width",
+        "worldZFrom": 63,
+        "worldZTo": 65
+      },
+      {
+        "element": "highway outside shoulder north",
+        "blocks": 3,
+        "offsetFrom": -14,
+        "offsetTo": -12,
+        "worldZFrom": 66,
+        "worldZTo": 68
+      },
+      {
+        "element": "lane W2 westbound outer",
+        "blocks": 4,
+        "offsetFrom": -11,
+        "offsetTo": -8,
+        "worldZFrom": 69,
+        "worldZTo": 72
+      },
+      {
+        "element": "lane W1 westbound inner",
+        "blocks": 4,
+        "offsetFrom": -7,
+        "offsetTo": -4,
+        "worldZFrom": 73,
+        "worldZTo": 76
+      },
+      {
+        "element": "inside shoulder north",
+        "blocks": 2,
+        "offsetFrom": -3,
+        "offsetTo": -2,
+        "worldZFrom": 77,
+        "worldZTo": 78
+      },
+      {
+        "element": "median + barrier",
+        "blocks": 3,
+        "offsetFrom": -1,
+        "offsetTo": 1,
+        "worldZFrom": 79,
+        "worldZTo": 81
+      },
+      {
+        "element": "inside shoulder south",
+        "blocks": 2,
+        "offsetFrom": 2,
+        "offsetTo": 3,
+        "worldZFrom": 82,
+        "worldZTo": 83
+      },
+      {
+        "element": "lane E1 eastbound inner",
+        "blocks": 4,
+        "offsetFrom": 4,
+        "offsetTo": 7,
+        "worldZFrom": 84,
+        "worldZTo": 87
+      },
+      {
+        "element": "lane E2 eastbound outer",
+        "blocks": 4,
+        "offsetFrom": 8,
+        "offsetTo": 11,
+        "worldZFrom": 88,
+        "worldZTo": 91
+      },
+      {
+        "element": "highway outside shoulder south",
+        "blocks": 3,
+        "offsetFrom": 12,
+        "offsetTo": 14,
+        "worldZFrom": 92,
+        "worldZTo": 94
+      },
+      {
+        "element": "utility reserve",
+        "blocks": 3,
+        "offsetFrom": 15,
+        "offsetTo": 17,
+        "worldZFrom": 95,
+        "worldZTo": 97
+      },
+      {
+        "element": "drainage ditch / south boundary",
+        "blocks": 2,
+        "offsetFrom": 18,
+        "offsetTo": 19,
+        "worldZFrom": 98,
+        "worldZTo": 99
+      }
+    ],
+    "slopeEasements": {
+      "north": {
+        "minZ": 32,
+        "maxZ": 43
+      },
+      "south": {
+        "minZ": 100,
+        "maxZ": 111
+      },
+      "widthEachBlocks": 12
+    },
+    "physicalTargetCellSet": null,
+    "interactionCellSet": null
+  },
+  "immutableSnapshotCensus": {
+    "touchedChunkBounds": {
+      "minCx": 50,
+      "maxCx": 54,
+      "minCz": 2,
+      "maxCz": 6
+    },
+    "touchedChunkCount": 25,
+    "touchedChunks": [
+      {
+        "cx": 50,
+        "cz": 2,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 51,
+        "cz": 2,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 52,
+        "cz": 2,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 53,
+        "cz": 2,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 54,
+        "cz": 2,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 50,
+        "cz": 3,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 51,
+        "cz": 3,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 52,
+        "cz": 3,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 53,
+        "cz": 3,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 54,
+        "cz": 3,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 50,
+        "cz": 4,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 51,
+        "cz": 4,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 52,
+        "cz": 4,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 53,
+        "cz": 4,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 54,
+        "cz": 4,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 50,
+        "cz": 5,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 51,
+        "cz": 5,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 52,
+        "cz": 5,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 53,
+        "cz": 5,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 54,
+        "cz": 5,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 50,
+        "cz": 6,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 51,
+        "cz": 6,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 52,
+        "cz": 6,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 53,
+        "cz": 6,
+        "status": "minecraft:full"
+      },
+      {
+        "cx": 54,
+        "cz": 6,
+        "status": "minecraft:full"
+      }
+    ],
+    "allTouchedChunksFull": true,
+    "columns": 5200,
+    "terrain": {
+      "method": "top-down exact palette scan; ignore air, fluids, and enumerated organic surface features before selecting the first support block",
+      "minY": 92,
+      "maxY": 127,
+      "blockCounts": {
+        "minecraft:pale_moss_block": 3459,
+        "minecraft:grass_block": 1404,
+        "minecraft:dirt": 328,
+        "minecraft:stone": 9
+      },
+      "biomeCounts": {
+        "minecraft:pale_garden": 4844,
+        "minecraft:dark_forest": 356
+      },
+      "exactStateSetSha256": "75eb3433946dacda1c46dadb943ca49b2090f88e6532aea7909bb7e1da8d44b6"
+    },
+    "fluids": {
+      "surfaceWaterColumns": 0,
+      "surfaceLavaColumns": 0,
+      "fullColumnWorldYRange": {
+        "minY": -64,
+        "maxY": 319
+      },
+      "waterCells": 2671,
+      "lavaCells": 126,
+      "exactFluidStateSetSha256": "12bf051d30f2cb869078e4e33b4e1d6ccda6a71f7d98c48965bc6b8f75ab9939",
+      "groundToRailDatumSpan": {
+        "waterCells": 0,
+        "lavaCells": 0
+      },
+      "hydrologyDesignComplete": false
+    },
+    "naturalAndOrganicFeatures": {
+      "sensitiveBlockCounts": {
+        "minecraft:open_eyeblossom": 9,
+        "minecraft:creaking_heart": 2
+      },
+      "exactSensitiveStateSetSha256": "ae911ca343c4c806d3510d4e83f3c82a00d64998d29e88c976b40c361d83d725",
+      "organicCellsInGroundToRailDatumSpan": 3115,
+      "organicBlocksInGroundToRailDatumSpan": {
+        "minecraft:pale_oak_log": 644,
+        "minecraft:pale_oak_leaves": 578,
+        "minecraft:dark_oak_leaves": 571,
+        "minecraft:short_grass": 359,
+        "minecraft:pale_moss_carpet": 267,
+        "minecraft:pale_hanging_moss": 245,
+        "minecraft:dark_oak_log": 190,
+        "minecraft:tall_grass": 161,
+        "minecraft:leaf_litter": 98,
+        "minecraft:creaking_heart": 1,
+        "minecraft:mushroom_stem": 1
+      },
+      "preservationAndClearancePolicyFrozen": false
+    },
+    "crossSectionAgainstRailDatum": {
+      "maximumObservedCutBlocks": 17,
+      "maximumObservedFillBlocks": 17,
+      "interpretation": "These are diagnostic differences across the 80-block planning land take, not approved earthwork because the highway, crossfall, slopes, drainage, and retaining profiles are unset."
+    },
+    "blockEntities": {
+      "count": 6,
+      "records": [
+        {
+          "id": "minecraft:creaking_heart",
+          "x": 870,
+          "y": 109,
+          "z": 51
+        },
+        {
+          "id": "minecraft:mob_spawner",
+          "x": 831,
+          "y": 80,
+          "z": 82
+        },
+        {
+          "id": "minecraft:chest",
+          "x": 829,
+          "y": 80,
+          "z": 82
+        },
+        {
+          "id": "minecraft:chest",
+          "x": 830,
+          "y": 80,
+          "z": 80
+        },
+        {
+          "id": "minecraft:creaking_heart",
+          "x": 853,
+          "y": 116,
+          "z": 84
+        },
+        {
+          "id": "minecraft:mob_spawner",
+          "x": 815,
+          "y": 32,
+          "z": 99
+        }
+      ],
+      "boundary": "Block entities in region chunks are not the separate live entity census."
+    },
+    "generatedStructures": {
+      "startsRecordedInTouchedChunks": 0,
+      "touchedChunkStartsIntersectingCandidate": [],
+      "phase0RecordedStartsIntersectingCandidate": [],
+      "completeClearance": false,
+      "boundary": "The Phase 0 complete structure-start inventory was limited to its eastern atlas. Reading touched start chunks cannot exclude a structure whose start is stored in an adjacent chunk."
+    }
+  },
+  "catalogAndSubsurfaceCoordination": {
+    "corridorWideSurfaceFeatureIntersectionCount": 0,
+    "candidateC01CoordinateSeparations": [
+      {
+        "feature": "C01 Owner Tunnel Detour",
+        "layer": "subsurface",
+        "featureBaseY": -45,
+        "featureTopY": -37,
+        "extent": {
+          "minX": 364,
+          "maxX": 718,
+          "minZ": -46,
+          "maxZ": 58
+        },
+        "candidateTotalLandTakeCoordinateGap": 96,
+        "structuralAcceptance": false
+      },
+      {
+        "feature": "C01 East L1 Security Garage",
+        "layer": "subsurface",
+        "featureBaseY": 42,
+        "featureTopY": 53,
+        "extent": {
+          "minX": 700,
+          "maxX": 900,
+          "minZ": -140,
+          "maxZ": -5
+        },
+        "candidateTotalLandTakeCoordinateGap": 37,
+        "structuralAcceptance": false
+      },
+      {
+        "feature": "C01 East L2 Living Adult",
+        "layer": "subsurface",
+        "featureBaseY": 33,
+        "featureTopY": 41,
+        "extent": {
+          "minX": 700,
+          "maxX": 900,
+          "minZ": -140,
+          "maxZ": -5
+        },
+        "candidateTotalLandTakeCoordinateGap": 37,
+        "structuralAcceptance": false
+      },
+      {
+        "feature": "C01 East L3 Agriculture Water",
+        "layer": "subsurface",
+        "featureBaseY": 24,
+        "featureTopY": 32,
+        "extent": {
+          "minX": 700,
+          "maxX": 900,
+          "minZ": -141,
+          "maxZ": -5
+        },
+        "candidateTotalLandTakeCoordinateGap": 37,
+        "structuralAcceptance": false
+      },
+      {
+        "feature": "C01 Owner Residence",
+        "layer": "subsurface",
+        "featureBaseY": -31,
+        "featureTopY": -18,
+        "extent": {
+          "minX": 714,
+          "maxX": 895,
+          "minZ": -74,
+          "maxZ": -10
+        },
+        "candidateTotalLandTakeCoordinateGap": 42,
+        "structuralAcceptance": false
+      },
+      {
+        "feature": "C01 East L4 Command Medical",
+        "layer": "subsurface",
+        "featureBaseY": 15,
+        "featureTopY": 23,
+        "extent": {
+          "minX": 702,
+          "maxX": 854,
+          "minZ": -70,
+          "maxZ": -19
+        },
+        "candidateTotalLandTakeCoordinateGap": 51,
+        "structuralAcceptance": false
+      },
+      {
+        "feature": "C01 East L5 Power Escape",
+        "layer": "subsurface",
+        "featureBaseY": 6,
+        "featureTopY": 14,
+        "extent": {
+          "minX": 703,
+          "maxX": 854,
+          "minZ": -68,
+          "maxZ": -20
+        },
+        "candidateTotalLandTakeCoordinateGap": 52,
+        "structuralAcceptance": false
+      },
+      {
+        "feature": "C01 Owner Club Arrival",
+        "layer": "subsurface",
+        "featureBaseY": -14,
+        "featureTopY": 4,
+        "extent": {
+          "minX": 721,
+          "maxX": 850,
+          "minZ": -64,
+          "maxZ": -22
+        },
+        "candidateTotalLandTakeCoordinateGap": 54,
+        "structuralAcceptance": false
+      }
+    ],
+    "ownershipAccepted": false,
+    "structuralLoadingAccepted": false
+  },
+  "gates": [
+    {
+      "id": "source-bindings-and-snapshot-integrity",
+      "status": "PASS",
+      "basis": "All six local inputs are hash-bound and the copied Phase 0 post region identity exactly matches its declaration."
+    },
+    {
+      "id": "bounded-candidate-plan-selection",
+      "status": "PASS",
+      "basis": "The candidate is a 64-chainage-block east-west tangent bounded by five consecutive dry, zero-cut/fill source samples."
+    },
+    {
+      "id": "exact-integer-reference-and-rail-setout",
+      "status": "PASS_COORDINATION_ONLY",
+      "basis": "All 65 reference points and both reserved rail centerlines have deterministic integer X/Y/Z setout; this is not a target cell set."
+    },
+    {
+      "id": "exact-plan-cross-section",
+      "status": "PASS_COORDINATION_ONLY",
+      "basis": "The 56-block reservation, 13-block empty rail strip, and 80-block total land take have exact plan bounds, counts, and hashes."
+    },
+    {
+      "id": "candidate-touched-chunk-coverage",
+      "status": "PASS",
+      "basis": "25 touched chunks were decoded directly from the immutable snapshot."
+    },
+    {
+      "id": "limited-fluid-observation",
+      "status": "PASS_LIMITED",
+      "basis": "Surface-to-rail-datum spans contain 0 water and 0 lava cells, but the complete land-take columns contain 2671 water and 126 lava cells and no drainage model exists."
+    },
+    {
+      "id": "complete-generated-structure-clearance",
+      "status": "HOLD",
+      "basis": "Touched start chunks contain 0 intersecting starts, but the candidate is outside the Phase 0 atlas used for the complete structure-start inventory; adjacent start chunks can own structures crossing this envelope."
+    },
+    {
+      "id": "surface-catalog-plan-separation",
+      "status": "PASS_LIMITED",
+      "basis": "The corridor-wide catalog test reports zero surface-feature intersections; catalog separation is not ownership or loading acceptance."
+    },
+    {
+      "id": "pale-garden-and-live-entity-clearance",
+      "status": "HOLD",
+      "basis": "All five source samples are pale garden and the exact envelope contains 2 creaking-heart cells; copied entity-region evidence and a preservation policy are absent."
+    },
+    {
+      "id": "block-entity-and-dungeon-clearance",
+      "status": "HOLD",
+      "basis": "The copied candidate columns contain 6 block entities, including 2 mob spawners and 2 chests; no target or interaction volume exists to prove non-interference."
+    },
+    {
+      "id": "independent-highway-vertical-profile",
+      "status": "HOLD",
+      "basis": "The integer rail study datum cannot be silently reused as the highway profile; cross-section cut/fill reaches the values reported by this census."
+    },
+    {
+      "id": "soil-loading-retaining-and-slope-design",
+      "status": "HOLD",
+      "basis": "Block identities do not prove geotechnical capacity, settlement, retained slopes, structures, or C01 loading acceptance."
+    },
+    {
+      "id": "hydrology-and-drainage-design",
+      "status": "HOLD",
+      "basis": "No runoff, watershed, infiltration, culvert, ditch, snowmelt, sump, discharge, erosion, or unintended-diversion model is frozen."
+    },
+    {
+      "id": "ownership-and-interface-contracts",
+      "status": "HOLD",
+      "basis": "No exact candidate owner/interaction union or default-deny interface audit exists."
+    },
+    {
+      "id": "fresh-release-source-and-entity-identity",
+      "status": "HOLD",
+      "basis": "The Phase 0 snapshot is terrain evidence only, lacks entities/POI/level identity, and is not a future execution-moment source snapshot."
+    },
+    {
+      "id": "physical-pilot-cell-set",
+      "status": "HOLD",
+      "basis": "Missing civil, hydrology, protected-natural, structure, entity, ownership, source-guard, rollback, and authorization gates prohibit target-cell compilation."
+    }
+  ],
+  "decision": {
+    "coordinationEnvelopeMayBeFrozen": true,
+    "reservedRailSetoutMayBeFrozenForCoordination": true,
+    "independentHighwayProfileFrozen": false,
+    "physicalPilotTargetCellSetMayBeFrozen": false,
+    "operationCellCount": 0,
+    "operationsEmitted": false,
+    "phase1R01Status": "HOLD",
+    "liveBuildMayProceed": false
+  }
+}

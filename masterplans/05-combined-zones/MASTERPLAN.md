@@ -1,6 +1,6 @@
 # Masterplan 05 — Combined Zones
 
-Status: **PHASE 0 SOUTH ANNEX RESITE PASSED — REVISED SCHEME APPROVED FOR DETAILED DESIGN — NOT AUTHORIZED FOR WORLD EDITS**
+Status: **PHASE 1 COORDINATION PARTIAL PASS — BUILD HOLD — NOT AUTHORIZED FOR WORLD EDITS**
 
 ## Decision
 
@@ -18,6 +18,10 @@ The former northern terminal at `x=1880…2220`, `z=-1008…-848` is retired. It
 This is a master plan, not an execution package. It authorizes detailed design only. No excavation, grading, structure removal, protected-feature work, or construction is authorized.
 
 The authority chain is `01 + 02 + 03 -> 04 normalized architecture -> 05 current-world placement`. Masterplan 04's [authority reconciliation](../04-combined-complex/AUTHORITY.md) and [machine-readable bridge](../04-combined-complex/authority-reconciliation.json) control that boundary. Masterplan 05 does not replace child internals or normalized 04 architecture; it owns their placement, evidence constraints, adapters, additions, and gates.
+
+Phase advancement is controlled by the dedicated [Phase 1 release-engineering plan](PHASE1-RELEASE-ENGINEERING.md) and [machine-readable release contract](phase1-release-contract.json). They decompose the work into serial releases `R00…R13`: G01–G14 must pass before a physical transaction can start, G15 controls atomic execution, and G01–G19 must all pass before that release can become accepted. Missing, stale, partial, hash-drifting, or narratively equivalent evidence fails closed.
+
+The current offline design wave is recorded in the [exact C1 civil study](phase1-c1-civil-design.json), [mountain hydrology and relic-buffer audit](phase1-d05-hydrology-relic-buffer-design.json), and [Empty Eight/geology design](phase1-empty-eight-geology-design.json). D02, D05, and D06 remain HOLD on their declared external, expert, ownership, and release evidence. D07's factual wording is resolved as an explicitly architectural composite, and C2 remains omitted with no active mechanism or target cells. None of these records emits operations or authorizes world edits.
 
 ## Phase 0 rerun verdict
 
@@ -217,7 +221,7 @@ The world currently has no cataloged rail, so MS-1 is a true terminus. If the hi
 
 The Data District keeps one service interchange on the 265-block tangent. Two separate mainline interchanges do not fit the spacing. All four ramps remain in the southern quadrants so the north-flank railway is undisturbed.
 
-The west terminal's Ravensreach and Observatory links remain concepts tied to cataloged approaches. The proposed MainStreet East L2 gate is unresolved: its point `(305,80)` is water and no matching cataloged campus gate exists. Phase 1 must survey a real dry gate or delete L2.
+The west terminal's Ravensreach and Observatory links remain concepts tied to cataloged approaches. D03 deletes the proposed MainStreet East L2 gate from active scope because its point `(305,80)` is water and no matching cataloged campus gate exists. This planning deletion authorizes neither demolition nor a substitute connection; a later revision may restore L2 only after a real dry gate is surveyed and accepted.
 
 Grand Avenue no longer crosses the surface passenger rail. Its revised path from `(1750,-300)` to `(2048,-328)` stays north of the `z=-250` track, retiring the former 7.9-degree skew-crossing defect.
 
@@ -254,7 +258,7 @@ The material narrative is current-world history → landscaped arrival → monum
 - Compile exact C1 road and rail centerlines, curve staircases, bridges/tunnels, retaining walls, drainage, and earthwork volumes.
 - Re-run C01/owner-tunnel structural interfaces against both accepted vertical profiles.
 - Freeze the 56-block reservation and 13-block rail strip before any surface package.
-- Resolve or delete the L2 campus gate.
+- Enforce the D03 deletion of the unsurveyed L2 campus gate from active scope.
 - Freeze Z02 stops, GA-J1, subway descent, egress shafts, terminal cross-sections, protected relic buffers, and hydrology ownership.
 - Produce exact zone/interface contracts and a bounded visual pilot with rollback.
 
@@ -303,14 +307,14 @@ Exit gate: bidirectional no-dig/no-tower walks, powered-door and minecart tests,
 - Never replay accepted Town Expansion or redevelopment operation files.
 - A planned feature remains planned until post-state verification, route QA, media QA, and database import pass.
 
-## Decisions still required
+## Decision status
 
-1. Accept the same-world vertical compression or move the native-height concept to a separate world.
-2. Choose the C1 highway's exact bridge/tunnel/cut/fill solution around the passing rail profile.
-3. Survey a real dry MainStreet East gate for L2 or delete that road.
-4. Decide whether passenger rail is built with the highway or preserved as a fully clear-spanned reserved strip.
-5. Approve the mountain hydrology plan and exact no-touch buffers around the two igloos and shipwreck.
-6. Approve Empty Eight's palette, discovery cue, retail-shell schedule, egress, ventilation, and sealed future-line contracts.
-7. Approve the final geological wording and any optional portal mechanism.
+1. **D01 resolved:** use the current world with Masterplan 05 vertical adaptation. Exact per-owner integer construction setout remains a separate Phase 1 gate.
+2. **D02 HOLD:** the exact alignment, independent highway profile, cross-section, diagnostic quantities, and C01 geometric comparisons are frozen; geotechnical, structural, drainage-outfall, contested-ownership, visual-acceptance, and construction-quantity gates remain open.
+3. **D03 resolved:** delete the unsurveyed MainStreet East L2 proposal from active scope without authorizing demolition or a substitute coordinate.
+4. **D04 resolved:** preserve passenger rail as a fully clear-spanned empty reservation; track construction requires its own later release.
+5. **D05 HOLD:** the full-height copied-snapshot fluid/cryosphere census, connected components, surface-routing candidate, and one-cell relic adjacency candidates are frozen; reviewed buffers, future grading/influence cells, owners, expert modelling, and preservation QA remain open.
+6. **D06 HOLD:** the internal Empty Eight palette, cue, platforms, retail shells, safety reservations, and eight sealed future-line contracts are frozen; unsurveyed surface continuations, commissioned systems, source guards, and release evidence remain open.
+7. **D07 resolved:** use the fact-checked six-panel architectural-composite wording; do not claim a natural contact, thrust/overthrust, laccolith, or `270 Ma` date. The optional C2 visitor portal remains omitted from active construction scope.
 
-Until those decisions and the later release gates pass, every coordinate here remains a proposed design setout, not a build command.
+The machine-readable selections and closure requirements are in [phase1-design-decisions.json](phase1-design-decisions.json). Until D02, D05, D06 and every later release gate pass, every coordinate here remains a proposed design setout, not a build command.

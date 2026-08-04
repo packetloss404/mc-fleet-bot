@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-design-decisions",
+  "recordedAtUtc": "2026-08-04T16:38:50Z",
+  "status": "HOLD_THREE_OF_SEVEN_DECISIONS_UNRESOLVED",
+  "authority": {
+    "chain": "01 + 02 + 03 -> 04 normalized architecture -> 05 current-world placement",
+    "planToDevelop": "masterplans/05-combined-zones/MASTERPLAN.md",
+    "role": "standalone Phase 1 decision audit; it narrows scope but does not supersede the masterplans",
+    "userClarificationApplied": "Masterplan 04 combines Masterplans 01 through 03; Masterplan 05 places that combined design into the current map.",
+    "offlineOnly": true,
+    "worldEditAuthorized": false,
+    "constructionPackageExists": false
+  },
+  "sourceReferences": [
+    {
+      "path": "masterplans/01-cheyenne-mountain-complex/06-contractor/contractor-brief.json",
+      "relevance": "native Cheyenne scale, height dependency, and child-owned architecture"
+    },
+    {
+      "path": "masterplans/02-subtropolis/06-contractor/contractor-brief.json",
+      "relevance": "native SubTropolis program and combined-complex interface dependencies"
+    },
+    {
+      "path": "masterplans/03-houston-tunnel-system/06-contractor/contractor-brief.json",
+      "relevance": "native Houston program and combined-complex interface dependencies"
+    },
+    {
+      "path": "masterplans/04-combined-complex/04-contractor/contractor-brief.json",
+      "relevance": "normalized composition, non-executable local geometry, and open geological-text review"
+    },
+    {
+      "path": "masterplans/04-combined-complex/authority-reconciliation.json",
+      "relevance": "field-scoped authority and 04-to-05 placement bridge"
+    },
+    {
+      "path": "masterplans/05-combined-zones/MASTERPLAN.md",
+      "relevance": "current-world placement, D01-D07 decision questions, adopted intent, and Phase 1 gates"
+    },
+    {
+      "path": "masterplans/05-combined-zones/source-register.md",
+      "relevance": "retained design decisions, retired alternatives, current interfaces, and evidence limits"
+    },
+    {
+      "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
+      "relevance": "deterministic coordination transform and unresolved operation geometry"
+    },
+    {
+      "path": "masterplans/05-combined-zones/phase1-site-gate-audit.json",
+      "relevance": "current HOLD evidence for civil, hydrology, protected-structure, ownership, entity, and release gates"
+    },
+    {
+      "path": "masterplans/05-combined-zones/phase1-c1-civil-design.json",
+      "relevance": "exact partial D02 setout and evidence-backed civil blockers"
+    },
+    {
+      "path": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
+      "relevance": "full-height copied-snapshot census, hydrology coordination, and unreviewed relic buffer candidates"
+    },
+    {
+      "path": "masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+      "relevance": "D06 internal design freeze and D07 fact-checked wording/C2 omission"
+    }
+  ],
+  "decisionPolicy": {
+    "resolveRule": "Resolve only a choice compelled by user authority, an adopted Masterplan 05 statement, or a reversible fail-closed omission expressly allowed by that plan.",
+    "holdRule": "Keep a decision on HOLD when resolution would invent geometry, materials, safety engineering, factual wording, ownership, survey evidence, or release authority.",
+    "scopeOmissionMeaning": "Deleting or deferring an unbuilt proposal removes it from active construction scope; it never authorizes physical demolition."
+  },
+  "summary": {
+    "decisionCount": 7,
+    "resolvedDecisionIds": [
+      "D01",
+      "D03",
+      "D04",
+      "D07"
+    ],
+    "holdDecisionIds": [
+      "D02",
+      "D05",
+      "D06"
+    ],
+    "resolvedCount": 4,
+    "holdCount": 3,
+    "phase1DecisionGatePassed": false
+  },
+  "decisions": [
+    {
+      "id": "D01",
+      "topic": "world and vertical strategy",
+      "status": "RESOLVED",
+      "selection": "SAME_WORLD_CURRENT_MAP_WITH_MASTERPLAN05_VERTICAL_ADAPTATION",
+      "basis": [
+        "The user clarified that Masterplan 05 places the Masterplan 04 composition into the map.",
+        "Masterplan 05 expressly keeps the Combined Complex in the current world.",
+        "The authority reconciliation assigns current-world placement and terrain adaptation to Masterplan 05."
+      ],
+      "effects": [
+        "The native-height separate-world alternative is not the active delivery plan.",
+        "Masterplans 01 through 03 retain architectural authority through Masterplan 04; their native world coordinates are not executable current-world setout.",
+        "The Phase 1 coordination transform may be used for offline fit and ownership work only."
+      ],
+      "remainingImplementationGates": [
+        "activate only exact, owned construction cell sets after all required geometry and release gates pass",
+        "prove every transformed interface and route against current source evidence",
+        "retain worldEditAuthorized=false until a separate manifest-bound release authorization"
+      ]
+    },
+    {
+      "id": "D02",
+      "topic": "exact C1 highway civil solution",
+      "status": "HOLD",
+      "selection": null,
+      "conservativeDefault": "NO_HIGHWAY_CONSTRUCTION_OUTSIDE_A_BOUNDED_REVERSIBLE_PILOT",
+      "partialDesignEvidence": {
+        "path": "masterplans/05-combined-zones/phase1-c1-civil-design.json",
+        "status": "PARTIAL_PASS_D02_HOLD"
+      },
+      "knownInputs": [
+        "1216 exact integer reference stations and R140/R120/R140 curve rasters are frozen",
+        "the rail profile passes 1:8 and the independent highway profile passes 1:12",
+        "the exact 56-block reservation, 80-block total land take, and empty offsets -30 through -18 rail strip are frozen as coordination columns",
+        "diagnostic terrain quantities and eight C01 geometric comparisons exist, but structural loading, approved outfalls, geotechnics, contested ownership, visual acceptance, and construction quantities remain unresolved"
+      ],
+      "closureEvidenceRequired": [
+        "exact integer road centerline and vertical profile",
+        "bridge, tunnel, cut, fill, retaining, slope, and drainage cell sets",
+        "C01 structural and protected-interface acceptance",
+        "owned forward and rollback operations with source guards",
+        "successful bounded bidirectional pilot and post-state QA"
+      ]
+    },
+    {
+      "id": "D03",
+      "topic": "MainStreet East L2 gate",
+      "status": "RESOLVED",
+      "selection": "DELETE_UNSURVEYED_L2_FROM_ACTIVE_SCOPE",
+      "meaning": "This is a planning-scope deletion only. No physical road or world cells are authorized for removal.",
+      "basis": [
+        "The study point (305,80) is water.",
+        "No matching cataloged campus gate exists.",
+        "Masterplan 05 explicitly permits either surveying a real dry gate or deleting L2."
+      ],
+      "constraints": [
+        "No Phase 1 route, owner set, compiler, or release package may target the proposed L2 connection.",
+        "No substitute gate or coordinate may be inferred."
+      ],
+      "reintroductionGate": "A later plan revision may add L2 only after a real dry gate is surveyed, owned, structurally accepted, and bound to fresh source evidence."
+    },
+    {
+      "id": "D04",
+      "topic": "passenger-rail delivery staging",
+      "status": "RESOLVED",
+      "selection": "RESERVE_FIRST_FULLY_CLEAR_SPANNED_RAIL_STRIP",
+      "basis": [
+        "The current world has no cataloged railway.",
+        "Masterplan 05 expressly defines the clear-spanned reserved-strip option.",
+        "Reservation before track construction is reversible and prevents the highway from foreclosing rail."
+      ],
+      "frozenReservation": {
+        "widthBlocks": 13,
+        "flank": "north",
+        "centerlineOffsetsFromC1": [
+          -28,
+          -24
+        ],
+        "fullOffsetRangeInclusive": {
+          "from": -30,
+          "to": -18
+        }
+      },
+      "constraints": [
+        "The reserved strip remains empty until an exact rail release passes independently.",
+        "Every early highway crossing must clear-span the full strip and preserve clearance from the accepted rail profile.",
+        "This decision does not authorize highway, rail, station, or utility construction."
+      ],
+      "laterDelivery": "Track, stations, and systems may be commissioned only through their own exact owned package after the highway interfaces preserve the reservation."
+    },
+    {
+      "id": "D05",
+      "topic": "mountain hydrology and protected relic buffers",
+      "status": "HOLD",
+      "selection": null,
+      "resolvedInterimPolicy": "DEFAULT_DENY_NO_TOUCH",
+      "protectedRelicCount": 3,
+      "exactBufferCellSetsFrozen": false,
+      "hydrologyPlanApproved": false,
+      "partialDesignEvidence": {
+        "path": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
+        "status": "PARTIAL_PASS_EXACT_BASELINE_AND_BUFFER_CANDIDATES_D05_HOLD",
+        "reviewedBufferCount": 0,
+        "candidateBufferCount": 3
+      },
+      "constraints": [
+        "The three recorded structure-start extents remain default-deny and outside construction ownership; current preservation of the east igloo is unestablished because its exact 280-cell recorded extent is air in the bound census.",
+        "Observation access, relocation, burial, destruction, and bulk filling are not authorized.",
+        "The full-height copied-snapshot census and D8 routing candidate are not a future grading, groundwater, snowmelt, or Minecraft fluid model."
+      ],
+      "closureEvidenceRequired": [
+        "current exact relic block census and immutable identity",
+        "reviewed exact no-touch buffers and one-owner interface contracts",
+        "three-dimensional water, lava, drainage, snowmelt, sump, discharge, diversion, and retaining model",
+        "forward and rollback proofs that preserve every relic and prevent unintended fluid diversion"
+      ]
+    },
+    {
+      "id": "D06",
+      "topic": "Empty Eight architecture, life safety, and future interfaces",
+      "status": "HOLD",
+      "selection": null,
+      "partialDesignEvidence": {
+        "path": "masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+        "status": "PARTIAL_RESOLUTION_INTERNAL_DESIGN_FROZEN_EXTERNAL_LIFE_SAFETY_INTERFACES_HOLD"
+      },
+      "adoptedIntentNotConstructionDetail": {
+        "architecturalLanguage": "late-Soviet-inspired civic monumentality without copying a specific station",
+        "discoverySequence": "landscaped apparent terminus with a subtle continuing-tunnel marker; life safety remains obvious after entry",
+        "retailShellCount": 24,
+        "sealedFutureInterfaceCount": 8,
+        "futureLinePairs": [
+          "1-2",
+          "3-4",
+          "5-6",
+          "7-8"
+        ],
+        "lifeSafetyIntent": [
+          "two independent protected egress and accessible routes",
+          "smoke-separated stairs and lifts",
+          "ventilation",
+          "emergency lighting",
+          "platform barriers",
+          "drainage sumps",
+          "fire and service access"
+        ]
+      },
+      "exactInternalDesignFrozen": true,
+      "completeLifeSafetyDesignFrozen": false,
+      "constraints": [
+        "No shell excavation, fit-out, cue, retail, egress, ventilation, or future interface operation is authorized.",
+        "All eight future interfaces remain sealed, separately owned, and default-deny.",
+        "No initial connection opens to PassageWay, SubTropolis, Houston, or secure Cheyenne circulation."
+      ],
+      "closureEvidenceRequired": [
+        "surveyed, owned surface endpoints for both protected accessible egress cores",
+        "exterior ventilation outlets and validated smoke/control model",
+        "approved drainage discharge and fire/service surface connection",
+        "barrier/lift/emergency-power mechanisms and operational tests",
+        "source guards, rollback, and release evidence for every exact internal reservation and sealed interface"
+      ]
+    },
+    {
+      "id": "D07",
+      "topic": "geological wording and optional portal mechanism",
+      "status": "RESOLVED",
+      "selection": "FACT_CHECKED_ARCHITECTURAL_COMPOSITE_WORDING_AND_C2_OMISSION",
+      "machineEvidence": {
+        "path": "masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+        "record": "d07"
+      },
+      "resolvedPortalPolicy": "NO_ACTIVE_PORTAL_MECHANISM_IN_CURRENT_SCOPE",
+      "portalConstraints": [
+        "C2 remains a logical link only.",
+        "Portal-gallery rooms remain architectural destinations rather than active portals.",
+        "No portal blocks, commands, plugin mechanism, or landing coordinates may be inferred."
+      ],
+      "geologicalWordingStatus": "RESOLVED_FACT_CHECKED_ARCHITECTURAL_COMPOSITE",
+      "approvedPlaquePanels": [
+        "DESIGN CONTACT",
+        "Pikes Peak Granite analogue",
+        "Colorado batholith • about 1.1 billion years",
+        "Bethany Falls Limestone analogue",
+        "Upper Pennsylvanian • Missourian • Kansas City region",
+        "Architectural composite • not one natural outcrop"
+      ],
+      "forbiddenClaims": [
+        "natural Pikes Peak Granite/Bethany Falls Limestone contact",
+        "thrust or overthrust mechanism",
+        "laccolith mechanism",
+        "270 Ma Bethany Falls Limestone date"
+      ],
+      "remainingPortalActivationGates": [
+        "separate future approval",
+        "safe symmetric landings",
+        "permission review",
+        "return-path QA",
+        "guarded operations and rollback"
+      ]
+    }
+  ],
+  "gateDecision": {
+    "phase1OfflineDesignMayContinue": true,
+    "phase1Exit": "HOLD",
+    "advanceToPhysicalPhase": false,
+    "liveBuildMayProceed": false,
+    "reason": "D02, D05, and D06 remain unresolved, and separate ownership, entity, source-guard, rollback, pilot, and release gates are also required."
+  }
+}
