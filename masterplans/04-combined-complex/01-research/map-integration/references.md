@@ -1,5 +1,7 @@
 # References — Map Integration Research
 
+> **SUPERSEDED — HISTORICAL RESEARCH ONLY.** Any “binding” wording below describes the retired separate-world study, not current authority. Masterplan 05 is the sole current-world placement and development plan. See `../../AUTHORITY.md` and `../../../05-combined-zones/MASTERPLAN.md`.
+
 > Numbered, annotated list of all sources used in `research-report.md`. Companion to `sources.md` (the flat URL list).
 
 ---

@@ -1,6 +1,13 @@
 {
   "build_name": "Map Integration",
   "build_id": "04-combined-complex-map-integration",
+  "authority": {
+    "status": "SUPERSEDED_FOR_CURRENT_WORLD_PLACEMENT",
+    "role": "historical-placement-study-only",
+    "supersededBy": "masterplans/05-combined-zones/site-coordinates.json",
+    "reconciliation": "masterplans/04-combined-complex/authority-reconciliation.json",
+    "worldEditAuthorized": false
+  },
   "description": "Macro site design for the integration of the new 1,500 x 1,500 Combined Complex world with the existing vanilla-384 bot world at (935, 60, 300). Adds the old town (30-35 schematics in 7 clusters), the Gateway station (two matching 7x7 pavilions), the Grand Avenue (425 blocks, 8 cross-section), the coastal-plain rail spur (960 blocks, 3 cross-section, 3 stations), the underground easter egg (the only existing underground schematic in the workspace), and the visitor journey (60-90 minutes of focused play). Respects all 7 binding decisions in discussion-notes.md.",
   "scale": {
     "global_block_size": "1 block = 1 meter",

@@ -1,9 +1,10 @@
 {
-  "schemaVersion": 5,
-  "id": "combined-zones-map-qa-v5-empty-eight-south-annex",
+  "schemaVersion": 6,
+  "id": "combined-zones-map-qa-v6-authority-reconciled-south-annex",
   "generatedAtUtc": "2026-08-04T03:50:24.998Z",
   "status": "PASS_EMPTY_EIGHT_SOUTH_ANNEX_PHASE0_MAP_EVIDENCE",
   "scope": "Mechanical validation of the immutable Phase 0 rerun terrain/maps, the Empty Eight southern resite, and revised planning geometry; not construction authorization",
+  "validator": "test/build/masterplanAuthorityReconciliation.test.ts",
   "input": {
     "acceptedCurrentRaster": {
       "path": "data/exports/box/town-expansion-r1-final-2026-07-28/media/maps/map-whole-world-overview.png",
@@ -14,7 +15,11 @@
     },
     "coordinateRegistry": {
       "path": "masterplans/05-combined-zones/site-coordinates.json",
-      "sha256": "069f7dd47d71984d9bd7d83c78a3a0bf22d04bce365e3813a801ca731f13f163"
+      "sha256": "b825f3c1e5f5696284d17c64dd469ba8efa845f6846e76032cb91bff4d4fdf62"
+    },
+    "authorityReconciliation": {
+      "path": "masterplans/04-combined-complex/authority-reconciliation.json",
+      "sha256": "bba90b02917b87e2dffa82d23f089359ac44e44920c1d9dd737c120baba9ce11"
     },
     "phase0PreSnapshot": {
       "path": "data/worldsnap-combined-zones-phase0-rerun-pre-20260804T021237Z/region",
@@ -39,18 +44,19 @@
     },
     "phase0OverlayPng": {
       "path": "masterplans/05-combined-zones/maps/current-plus-proposed-phase0-overlay.png",
-      "sha256": "e2092692e7374ea7f8de5ba2dd3fe2204aedccd78dc932f3662409c3cbb394bd",
+      "sha256": "98292d37932eb5941d37df9a4f84575b341b1419df38e6ab7dfd0e001feecc01",
       "width": 4084,
       "height": 2572,
-      "blocksPerPixel": 1
+      "blocksPerPixel": 1,
+      "north": "-Z"
     },
     "terrainProbe": {
       "path": "masterplans/05-combined-zones/corridor-terrain-probe.json",
-      "sha256": "b8a570d97e80bbf047e61a276697de9291782dd09f151ac1ddca34275d1b3d1f"
+      "sha256": "4e3f1b5f6750a5d18ae6e99b4a909471ea332b9ca290095f6236dbce1ea98f1c"
     },
     "surveyEvidence": {
       "path": "masterplans/05-combined-zones/phase0-survey-evidence.json",
-      "sha256": "9ee98b8f34de08b556be4bcca17f8d29eab94ef8a7d13b7dff798a013ede5ab8"
+      "sha256": "c0730cc039c756ac6331b9aed8ecb89af38426e19d588ccdd56ec17cd8e1309e"
     },
     "candidateAnalysis": {
       "path": "masterplans/05-combined-zones/resiting-candidate-analysis.json",
@@ -58,7 +64,7 @@
     },
     "corridorClearance": {
       "path": "masterplans/05-combined-zones/corridor-clearance.json",
-      "sha256": "ebb24ed998d3fe2d5cbc2e0519e4dd96949207311caa414318f57944da7c81d6"
+      "sha256": "15504eb52401e4e80970076093cceeccf5cc740d033fbaadd0938e404bbb5078"
     },
     "reportHtml": {
       "path": "masterplans/05-combined-zones/combined-zones-report.html",
@@ -97,9 +103,19 @@
       "detail": "Ravensreach remains the accepted Old Town; Z02 is Gateway Approach and contains no duplicate schematic town."
     },
     {
+      "id": "field-scoped-authority-chain",
+      "passed": true,
+      "detail": "Masterplans 01-03 own child internals, Masterplan 04 owns normalized composition, and Masterplan 05 owns current-world placement, evidence constraints, adapters, additions, and delivery gates."
+    },
+    {
+      "id": "exact-catalog-union-bound",
+      "passed": true,
+      "detail": "The overlay generator consumes the coordinate registry's accepted union exactly, including maxZ=311.5; it no longer truncates the cyan outline at z=305."
+    },
+    {
       "id": "adopted-transform",
       "passed": true,
-      "detail": "Normalized local origin maps to (2048,-328) with rotation 0; local north remains world north."
+      "detail": "Normalized local origin maps to (2048,-328) with rotation 0; local north remains world north and the overlay labels the core as north-aligned at 0 degrees."
     },
     {
       "id": "critical-core-anchors-dry",
@@ -165,6 +181,11 @@
       "id": "report-current-map",
       "passed": true,
       "detail": "The HTML report embeds the authoritative rerun overlay and identifies Phase 0 as detailed-design approval only."
+    },
+    {
+      "id": "historical-diagrams-excluded",
+      "passed": true,
+      "detail": "The eight unsealed presentation PNG/SVG drafts are classified in maps/README.md and excluded from build-info deliverables and this QA output set."
     }
   ],
   "limitations": [
@@ -172,6 +193,8 @@
     "No ownership, protected-interface, groundwater, ventilation, smoke-control, egress, structural, or geotechnical acceptance was performed.",
     "Generated structure bounds are constraints and no-touch declarations, not preservation access or entrance-safety evidence.",
     "The engineered rail profile is a sampled Phase 0 feasibility profile, not a compiled road/rail construction setout.",
+    "Published min/max values are planning envelopes; exact integer cell-set and vertical-rounding rules remain a Phase 1 gate.",
+    "Eight older presentation PNG/SVG diagrams contain superseded geometry and are historical only; maps/README.md records the boundary.",
     "No block edit, build operation, live route test, or portal activation was performed.",
     "PASS_EMPTY_EIGHT_SOUTH_ANNEX_PHASE0_MAP_EVIDENCE does not authorize construction."
   ]

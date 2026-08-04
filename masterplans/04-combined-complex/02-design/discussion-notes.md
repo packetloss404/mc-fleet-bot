@@ -4,7 +4,9 @@
 **Document:** 04-combined-complex / 02-design / discussion-notes.md
 **Moderator role:** Discussion Moderator (deliberation, not design)
 **Date:** 2026
-**Status:** Binding decisions for the design team. Supersedes the previous ravine-based deliberation entirely.
+**Status:** Design deliberation. Binding themes are retained only where consistent with the reconciled normalized registry.
+
+> **Authority notice.** Read [../AUTHORITY.md](../AUTHORITY.md) before using this document. This deliberation contains a superseded local `Y=400` contact decision. The controlling Masterplan 04 root registry and contractor brief fix local `Y=200`; Masterplan 05 controls current-world placement. No world edits are authorized.
 
 > **Why this is a rework.** The previous deliberation assumed a V-shaped ravine splitting the mountain range into a granite north face and a limestone south face, with the composite terrane plaque at the ravine bottom. The user has dropped the ravine. The new design is **one continuous mountain range** with a **horizontal granite-limestone contact at a certain elevation** — granite pluton pushed up through overlying limestone, contact exposed in the mountain's flanks and inside the service tunnel. This is real geology (laccoliths, batholith roofs, contact aureoles), not the thrust-faulted composite terrane of the previous design. The composite terrane plaque moves **inside the service tunnel at the contact crossing**, where the walls transition from limestone to granite — geologically honest because that is where the contact actually is.
 >

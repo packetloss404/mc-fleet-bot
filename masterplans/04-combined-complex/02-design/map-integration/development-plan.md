@@ -4,8 +4,10 @@
 **Location:** Masterplan 04 — Combined Complex, Map Integration (5th and final deliverable)
 **Author role:** Architectural Designer (longer-term evolution)
 **Date prepared:** 2026-08-02
-**Status:** Forward-looking roadmap. Defines the MVP, the phased delivery, the future extensions, and the open items.
+**Status:** **SUPERSEDED FOR CURRENT-WORLD PLACEMENT — HISTORICAL ROADMAP ONLY**
 **Companion to:** `design-plan.md` (the architectural spec), `working-plan.md` (the construction sequence), `discussion-notes.md` (the binding deliberation)
+
+> **Authority notice.** This roadmap belongs to the retired separate-world integration scheme. The plan to develop is Masterplan 05 through [../../AUTHORITY.md](../../AUTHORITY.md). No world edits are authorized.
 
 > **Scope.** This document specifies the *longer-term evolution* of the map integration — the minimum viable product, the phased delivery from v0.1 to v2.0, the future extensions beyond v2.0, and the open items that require user input. It is the *roadmap* — the build team can use it to plan releases, the design team can use it to prioritize features, and the user can use it to decide what to build next.
 

@@ -4,7 +4,9 @@
 **Location:** Masterplan 04 — Combined Complex
 **Author role:** Architectural Designer (inter-site connections)
 **Date:** 2026
-**Status:** Construction sequence for the inter-site layer in the **no-ravine rework**. Inherits the spec in `design-plan.md` and the binding decisions in `discussion-notes.md`. The three individual site masterplans (01–03) already have their own working plans; this document is the *integration* working plan.
+**Status:** Historical native-world construction study; not the current-world build sequence.
+
+> **Authority notice.** Read [../AUTHORITY.md](../AUTHORITY.md) before using this document. Its `Y=100` contact, custom-world preparation, and executable wording are superseded. Masterplan 04's normalized root registry controls local composition at contact `Y=200`; Masterplan 05 controls current-world placement and delivery. No world edits are authorized.
 
 > **Scope reminder.** This document covers *how* the inter-site connections and the world envelope get built in the no-ravine design. The continuous mountain (granite cap + limestone body + horizontal contact at Y = 100) replaces the two-peak + V-shaped-ravine layout. The 6 centerpieces, the 9 easter eggs, and the public shaft are preserved. The service tunnel is now an *ascending inclined minecart bore* from the SubTropolis sub-basement up through the contact to the Cheyenne outer portal. The SubTropolis horizontal portal is on the south face of the mountain at the contact elevation (Y = 100), accessible by a switchback road. The return is funicular + road (no skybridge).
 

@@ -2,6 +2,26 @@
   "schemaVersion": 4,
   "id": "combined-zones-east-reserve-study-v4",
   "status": "PHASE0_SOUTH_ANNEX_RESITE_PASS_NOT_AUTHORIZED_FOR_WORLD_EDITS",
+  "authorityModel": {
+    "kind": "field-scoped-composition",
+    "reconciliation": "masterplans/04-combined-complex/authority-reconciliation.json",
+    "chain": "01 + 02 + 03 -> 04 normalized architecture -> 05 current-world placement",
+    "domains": {
+      "childInternals": [
+        "masterplans/01-cheyenne-mountain-complex/06-contractor/contractor-brief.json",
+        "masterplans/02-subtropolis/06-contractor/contractor-brief.json",
+        "masterplans/03-houston-tunnel-system/06-contractor/contractor-brief.json"
+      ],
+      "normalizedComposition": [
+        "masterplans/04-combined-complex/02-design/site-coordinates.json",
+        "masterplans/04-combined-complex/04-contractor/contractor-brief.json"
+      ],
+      "currentWorldPlacement": "this registry",
+      "masterplan05OwnedZones": ["Z00", "Z01", "Z02", "Z02-U1", "Z03"],
+      "masterplan04DerivedZones": ["Z04", "Z05", "Z06", "Z07", "Z08", "Z09", "Z10", "Z11"]
+    },
+    "worldEditAuthorized": false
+  },
   "world": "world",
   "orientation": {
     "north": "-z",
@@ -12,6 +32,9 @@
     "y": "Proposed engineered elevation only where explicitly set. Null remains deliberately unset; never substitute terrain Y as a build setout.",
     "surveyedTerrainY": "Top terrain support decoded from the immutable Phase 0 post-generation Anvil snapshot.",
     "surveyedWaterSurfaceY": "Top water surface at a surveyed water column.",
+    "planningBounds": "Published min/max bounds are inclusive planning-envelope references, not compiled cell sets.",
+    "blockRoundingPolicy": null,
+    "compilationRule": "Freeze exact integer cell sets, inclusive/half-open conversion, and vertical rounding per owned scope before generating any operation.",
     "statusRule": "The replacement transform and sampled rail profile passed Phase 0. They authorize detailed design only, not excavation, grading, structure removal, or construction."
   },
   "acceptedBaseline": {
@@ -127,12 +150,13 @@
     "topDownMap": "masterplans/05-combined-zones/maps/current-plus-proposed-phase0-overlay.png"
   },
   "sourcePrecedence": [
-    "Phase 0 rerun immutable post snapshot and revised siting evidence for terrain, water, biome, vegetation, and generated-structure facts",
-    "accepted immutable snapshot and verified current database",
-    "masterplans/04-combined-complex v2 no-ravine root contractor brief and coordinates",
-    "individual masterplans 01, 02, and 03 for internal architectural detail",
-    "masterplan 04 map-integration material only where consistent with the first three",
-    "renderings for communication only"
+    "Field-scoped authority applies: individual masterplans 01, 02, and 03 own internal architecture",
+    "masterplans/04-combined-complex v2 no-ravine root contractor brief and coordinates own normalized composition",
+    "this Masterplan 05 registry owns current-world placement, adapters, additions, and delivery gates",
+    "Phase 0 rerun evidence owns terrain, water, biome, vegetation, cover, and generated-structure facts and may veto siting",
+    "accepted immutable snapshot and verified current database own released construction and current-world identity",
+    "masterplan 04 map-integration material is historical placement input only",
+    "renderings are for communication only"
   ],
   "identityCorrections": {
     "canonicalOldTown": {
@@ -267,7 +291,7 @@
         "note": "Re-sited to the dry passenger-rail interface; proposed rail/forecourt plane is three blocks below terrain."
       },
       "sourceLocalAnchor": null,
-      "sourceRelationship": "Gateway Approach is the current-world adapter and is deliberately decoupled from the rotated normalized core."
+      "sourceRelationship": "Gateway Approach is the current-world adapter and is deliberately decoupled from the north-aligned normalized core at 0-degree adopted rotation."
     },
     {
       "id": "Z02",

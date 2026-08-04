@@ -25,24 +25,64 @@ const REGION_DIR = path.resolve(value('--regions', 'data/worldsnap/region'));
 const PRE_REGION_DIR = path.resolve(value('--pre-regions', 'data/worldsnap/region'));
 const OUTPUT_DIR = path.resolve(value('--out-dir', 'masterplans/05-combined-zones'));
 const MAP_DIR = path.join(OUTPUT_DIR, 'maps');
+const REGISTRY_PATH = path.resolve(value(
+  '--registry',
+  'masterplans/05-combined-zones/site-coordinates.json',
+));
+const CANDIDATE_ANALYSIS_PATH = path.resolve(value(
+  '--candidate-analysis',
+  'masterplans/05-combined-zones/resiting-candidate-analysis.json',
+));
+const GENERATED_AT = value('--generated-at', new Date().toISOString());
+const registry = JSON.parse(fs.readFileSync(REGISTRY_PATH, 'utf8'));
+const candidateAnalysis = JSON.parse(fs.readFileSync(CANDIDATE_ANALYSIS_PATH, 'utf8'));
+const zone = (id) => {
+  const result = registry.zones.find((candidate) => candidate.id === id);
+  if (!result) throw new Error(`coordinate registry is missing zone ${id}`);
+  return result;
+};
+const connection = (id) => {
+  const result = registry.connections.find((candidate) => candidate.id === id);
+  if (!result) throw new Error(`coordinate registry is missing connection ${id}`);
+  return result;
+};
 const WORLD_MIN_Y = -64;
 const WORLD_MAX_Y = 319;
 const WHOLE = Object.freeze({ minX: -883, maxX: 3200, minZ: -1387, maxZ: 964 });
 const ATLAS = Object.freeze({ minX: 1200, maxX: 3200, minZ: -1200, maxZ: 600 });
-const RESERVE = Object.freeze({ minX: 1500, maxX: 2550, minZ: -1150, maxZ: 300 });
-const GATEWAY_APPROACH = Object.freeze({ minX: 1500, maxX: 2250, minZ: -1100, maxZ: 0 });
-const TERMINAL = Object.freeze({ minX: 1632, maxX: 1872, minZ: 40, maxZ: 160 });
-const TERMINAL_SHELL = Object.freeze({ minY: 38, maxY: 54, railY: 40 });
-const MOUNTAIN = Object.freeze({ minX: 1648, maxX: 2448, minZ: -1128, maxZ: -528 });
-const URBAN_CORE = Object.freeze({ minX: 1938, maxX: 2158, minZ: -648, maxZ: -238 });
-const EXISTING_UNION = Object.freeze({ minX: -714, maxX: 1300, minZ: -719, maxZ: 305 });
-const ALIGNMENT = Object.freeze([
-  { id: 'W-TERM', x: 430, z: 80 },
-  { id: 'PI-1', x: 905, z: 80 },
-  { id: 'PI-2', x: 1065, z: -80 },
-  { id: 'PI-3', x: 1330, z: -80 },
-  { id: 'E-TERM', x: 1550, z: -250 },
-]);
+const RESERVE = Object.freeze({ ...zone('Z00').bounds });
+const GATEWAY_APPROACH = Object.freeze({ ...zone('Z02').bounds });
+const terminalDefinition = zone('Z02').hiddenSubway.terminal;
+const TERMINAL = Object.freeze({
+  minX: terminalDefinition.bounds.minX,
+  maxX: terminalDefinition.bounds.maxX,
+  minZ: terminalDefinition.bounds.minZ,
+  maxZ: terminalDefinition.bounds.maxZ,
+});
+const TERMINAL_SHELL = Object.freeze({
+  minY: terminalDefinition.bounds.minY,
+  maxY: terminalDefinition.bounds.maxY,
+  railY: terminalDefinition.railY,
+});
+const MOUNTAIN = Object.freeze({
+  minX: zone('Z09').bounds.minX,
+  maxX: zone('Z09').bounds.maxX,
+  minZ: zone('Z09').bounds.minZ,
+  maxZ: zone('Z09').bounds.maxZ,
+});
+const URBAN_CORE = Object.freeze({ ...candidateAnalysis.adoptedSelection.core.urbanBounds });
+const featureUnion = registry.acceptedBaseline.database.featureUnion;
+const EXISTING_UNION = Object.freeze({
+  minX: featureUnion.minX,
+  maxX: featureUnion.maxX,
+  minZ: featureUnion.minZ,
+  maxZ: featureUnion.maxZ,
+});
+const ALIGNMENT = Object.freeze(connection('C1').pointsOfIntersection.map((point) => ({
+  id: point.id,
+  x: point.x,
+  z: point.z,
+})));
 const NAMED_PROBE_POINTS = Object.freeze([
   ...ALIGNMENT,
   { id: 'EXIT-11', x: 1180, z: -80 },
@@ -56,7 +96,7 @@ const NAMED_PROBE_POINTS = Object.freeze([
   { id: 'HIDDEN-SUBWAY-PORTAL', x: 1785, z: -215 },
   { id: 'GATEWAY-FUTURE-EAST-STOP', x: 1920, z: -250 },
   { id: 'GRAND-AVENUE-WEST', x: 1750, z: -300 },
-  { id: 'GRAND-AVENUE-CROSSING', x: 2108, z: -250 },
+  { id: 'GRAND-AVENUE-EAST', x: 2048, z: -328 },
   { id: 'HOUSTON-TERMINUS', x: 2048, z: -328 },
   { id: 'LOCAL-ORIGIN', x: 2048, z: -328 },
   { id: 'PUBLIC-SHAFT-HEAD', x: 2108, z: -398 },
@@ -506,6 +546,9 @@ function renderTerrain() {
 
 function mapX(x) { return x - WHOLE.minX; }
 function mapZ(z) { return z - WHOLE.minZ; }
+function inclusiveSpan(min, max) {
+  return Number.isInteger(min) && Number.isInteger(max) ? max - min + 1 : max - min;
+}
 function drawRect(context, bounds, color, dash = []) {
   context.save();
   context.strokeStyle = color;
@@ -514,8 +557,8 @@ function drawRect(context, bounds, color, dash = []) {
   context.strokeRect(
     mapX(bounds.minX),
     mapZ(bounds.minZ),
-    bounds.maxX - bounds.minX,
-    bounds.maxZ - bounds.minZ,
+    inclusiveSpan(bounds.minX, bounds.maxX),
+    inclusiveSpan(bounds.minZ, bounds.maxZ),
   );
   context.restore();
 }
@@ -529,7 +572,12 @@ const overlay = createCanvas(width, height + footerHeight);
 const overlayContext = overlay.getContext('2d');
 overlayContext.drawImage(terrainCanvas, 0, 0);
 overlayContext.fillStyle = 'rgba(245, 166, 35, 0.14)';
-overlayContext.fillRect(mapX(RESERVE.minX), mapZ(RESERVE.minZ), RESERVE.maxX - RESERVE.minX, RESERVE.maxZ - RESERVE.minZ);
+overlayContext.fillRect(
+  mapX(RESERVE.minX),
+  mapZ(RESERVE.minZ),
+  inclusiveSpan(RESERVE.minX, RESERVE.maxX),
+  inclusiveSpan(RESERVE.minZ, RESERVE.maxZ),
+);
 drawRect(overlayContext, EXISTING_UNION, '#28d7d2');
 drawRect(overlayContext, RESERVE, '#ffbd45', [18, 12]);
 drawRect(overlayContext, GATEWAY_APPROACH, '#f7d154', [10, 8]);
@@ -558,7 +606,7 @@ const labels = [
   ['REVISED COMBINED-ZONES RESERVE', RESERVE.minX + 25, RESERVE.minZ + 45],
   ['Gateway Approach / E-TERM', 1550, -250],
   ['EMPTY EIGHT · 8 TRACKS / 8 PLATFORMS', TERMINAL.minX + 10, TERMINAL.minZ + 80],
-  ['ROTATED CORE', URBAN_CORE.minX + 10, URBAN_CORE.minZ + 45],
+  ['NORTH-ALIGNED CORE · 0°', URBAN_CORE.minX + 10, URBAN_CORE.minZ + 45],
   ['MOUNTAIN ENVELOPE', MOUNTAIN.minX + 20, MOUNTAIN.minZ + 45],
 ];
 for (const [label, x, z] of labels) {
@@ -781,7 +829,7 @@ const probe = {
   id: 'combined-zones-east-corridor-phase0-terrain-probe',
   status: revisedSitingPassed
     ? 'PASS_REVISED_SITING_PHASE0' : 'FAIL_REVISED_SITING_PHASE0',
-  generatedAtUtc: new Date().toISOString(),
+  generatedAtUtc: GENERATED_AT,
   method: 'Read-only Anvil WORLD_SURFACE sampling with block-state and biome palette decoding; centerline sampled every 16 Euclidean blocks and rounded to integer columns.',
   snapshots: { preGeneration: preSnapshot, postGeneration: postSnapshot },
   bounds: { wholeMap: WHOLE, phase0Atlas: ATLAS, proposedReserve: RESERVE },
@@ -836,6 +884,16 @@ const evidence = {
   status: probe.status,
   generatedAtUtc: probe.generatedAtUtc,
   snapshots: probe.snapshots,
+  authorityInputs: {
+    coordinateRegistry: {
+      path: path.relative(ROOT, REGISTRY_PATH),
+      sha256: sha256File(REGISTRY_PATH),
+    },
+    candidateAnalysis: {
+      path: path.relative(ROOT, CANDIDATE_ANALYSIS_PATH),
+      sha256: sha256File(CANDIDATE_ANALYSIS_PATH),
+    },
+  },
   rerunDisposition: {
     additionalChunkGenerationRequired: false,
     reason: 'Every chunk required by the re-sited reserve was already minecraft:full in the bounded Phase 0 atlas; no temporary force-load tile was added.',

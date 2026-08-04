@@ -1,5 +1,7 @@
 # Sources — Map Integration Research
 
+> **SUPERSEDED — HISTORICAL SOURCE LIST ONLY.** These sources support the retired map-integration annex and cannot override Masterplan 05 current-world placement. See `../../AUTHORITY.md`.
+
 > Flat list of every URL cited in `research-report.md` and `references.md`. One URL per line. Companion to `references.md` (the numbered, annotated list).
 
 ## Project-internal sources (workspace at `D:\projects\mc-fleet-bot\`)

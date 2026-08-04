@@ -2,6 +2,14 @@
   "build_name": "Map Integration (no ravine, no skybridge)",
   "build_id": "04-combined-complex-map-integration",
   "version": "2.0",
+  "authority": {
+    "status": "SUPERSEDED_FOR_CURRENT_WORLD_PLACEMENT",
+    "role": "historical-contractor-study-only",
+    "supersededBy": "masterplans/05-combined-zones/MASTERPLAN.md",
+    "reconciliation": "masterplans/04-combined-complex/authority-reconciliation.json",
+    "executableAsWritten": false,
+    "worldEditAuthorized": false
+  },
   "date_prepared": "2026-08-02",
   "supersedes": "1.0 (v1.0 assumed a V-shaped ravine, a skybridge return route, and mkr_ravine_bottom; v2.0 drops both and replaces the marker with mkr_service_tunnel_contact_crossing)",
   "description": "Build specification for the AI contractor. The Map Integration is the meta-build that connects the existing schematic library and the live bot world to the new 1,500 x 1,500 Combined Complex world. The 4 master plan PDFs (Cheyenne, SubTropolis, Houston, Combined Complex) and the Combined Complex master plan are already complete. This brief is the integration layer that wires them to the existing bot world. v2.0 reflects three upstream design updates: (1) the combined complex mountain is ONE CONTINUOUS mountain with a HORIZONTAL granite-limestone contact at Y=200, not a V-shaped ravine; (2) the return route from Cheyenne is funicular + summit road, no skybridge; (3) the composite terrane plaque is at the service tunnel contact crossing at (-40, 200, -360), not at a ravine bottom. The 6 named markers are mkr_city_center, mkr_public_shaft_top, mkr_subtropolis_chamber_center, mkr_service_tunnel_contact_crossing, mkr_cheyenne_outer_portal, mkr_old_town_center.",

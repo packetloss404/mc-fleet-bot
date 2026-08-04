@@ -4,8 +4,10 @@
 **Location:** Masterplan 04 — Combined Complex, Map Integration (5th and final deliverable)
 **Author role:** Architectural Designer (construction sequence)
 **Date prepared:** 2026-08-02
-**Status:** Binding for the build team. Phases, tools, quality checkpoints, and risk register.
+**Status:** **SUPERSEDED FOR CURRENT-WORLD PLACEMENT — HISTORICAL STUDY ONLY**
 **Companion to:** `design-plan.md` (the architectural spec), `discussion-notes.md` (the binding deliberation), `culture-architecture-analysis.md` (the soul), `research-report.md` (the workspace survey)
+
+> **Authority notice.** This separate-world/duplicate-Old-Town construction sequence is superseded by [../../AUTHORITY.md](../../AUTHORITY.md) and Masterplan 05's delivery sequence. It is not executable and authorizes no world edits.
 
 > **Scope.** This document specifies the *construction sequence* — the order in which the map integration's 6 major build elements (new world, old town, Grand Avenue, rail spur, Gateway pavilions, underground easter egg) are built, the tools used to build them, the quality checkpoints after each phase, and the risks that must be managed. It is the *bridge* between the architectural design and the AI contractor brief. It does not specify the *internal* construction of the Combined Complex itself (SubTropolis chamber, public shaft, service tunnel, Houston tunnel, Cheyenne chamber) — those live in the 04-masterplan and the four sub-masterplans.
 

@@ -1,5 +1,7 @@
 # Contractor Brief — Map Integration (v2.0)
 
+> **SUPERSEDED — DO NOT EXECUTE.** The separate-world portal, duplicate schematic Old Town, coastal rail spur, and direct data-layer mutations in this brief are historical. Current authority is [../../AUTHORITY.md](../../AUTHORITY.md) followed by Masterplan 05. No world edits are authorized.
+
 **Build name:** Map Integration (no ravine, no skybridge)
 **Build ID:** `04-combined-complex-map-integration`
 **Version:** 2.0

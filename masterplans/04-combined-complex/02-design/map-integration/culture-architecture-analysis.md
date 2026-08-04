@@ -7,6 +7,8 @@
 **Companion to:** `01-research/map-integration/research-report.md` and `01-research/map-integration/references.md`
 **Sibling deliverable:** `02-design/culture-architecture-analysis.md` (the *Combined Complex* culture analysis — this document is its map-integration companion, not a replacement)
 
+> **Authority notice.** This is cultural history for the retired separate-world/duplicate-Old-Town placement scheme. It is non-geometric and non-executable. See [../../AUTHORITY.md](../../AUTHORITY.md) and Masterplan 05 for the current plan.
+
 > **Scope.** This document is the *soul of the map integration* — how the new 1,500×1,500 Combined Complex world (Cheyenne + SubTropolis + Houston Tunnel) sits inside the existing `D:\projects\mc-fleet-bot\` workspace, how the existing 113 schematics and the live bot world become the *historical layer* of the new world, and how a visitor moves between old and new. It is not a build plan. The geometry, the block count, the placement coordinates, the cluster sizes, the rail-spur alignment, and the construction sequence live downstream. This document names the *feel*, the *stories*, and the *cultural touchstones* that the design team must protect when they build it.
 
 ---

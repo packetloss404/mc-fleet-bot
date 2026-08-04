@@ -4,7 +4,9 @@
 **Location:** Masterplan 04 — Combined Complex
 **Author role:** Architectural Designer (inter-site connections)
 **Date:** 2026
-**Status:** Longer-term evolution plan for the inter-site layer in the **no-ravine rework**. Inherits the spec in `design-plan.md` and the construction sequence in `working-plan.md`. The 7 binding decisions in `discussion-notes.md` are unchanged in spirit, with the mountain layout updated to a continuous-mountain design.
+**Status:** Historical evolution study for the inter-site layer. It is not the current-world delivery plan.
+
+> **Authority notice.** Read [../AUTHORITY.md](../AUTHORITY.md) before using this document. Its `Y=100` contact variant and native-world phases do not control. Masterplan 04's normalized root registry fixes local `Y=200`; Masterplan 05 owns placement, adaptation, and the only current delivery sequence. No world edits are authorized.
 
 > **Scope reminder.** This document covers *how the combined complex evolves over time* — from a minimum viable product (MVP) to the full v2.0 build, with future extensions and a list of open items for the user. The 5 versions (v0.1 → v2.0) are *phased deliveries* that build on each other. The future extensions are *additions* to the v2.0 build, not replacements. The open items are the *questions for the user* that the design team cannot answer alone.
 >

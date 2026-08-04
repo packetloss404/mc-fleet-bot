@@ -1,5 +1,7 @@
 # Map Integration Report — Where the Combined Complex Goes in the Existing Map
 
+> **SUPERSEDED — DO NOT DEVELOP OR EXECUTE.** This separate-world/duplicate-Old-Town study is retained for provenance only. Masterplan 05 places the reconciled Masterplan 04 composition into the accepted current-world map. See `../../AUTHORITY.md` and `../../../05-combined-zones/MASTERPLAN.md`.
+
 **Project:** mc-fleet-bot Minecraft architecture masterplan
 **Location:** Masterplan 04 — Combined Complex, Map Integration
 **Author role:** Research Lead (deep research only — no build design)

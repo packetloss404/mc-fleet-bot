@@ -4,9 +4,11 @@
 **Location:** Masterplan 04 — Combined Complex, Map Integration (5th and final deliverable)
 **Author role:** Architectural Designer (integration architecture only — not site planning)
 **Date prepared:** 2026-08-02
-**Status:** Binding for downstream AI contractor brief (out of scope for this document)
+**Status:** **SUPERSEDED FOR CURRENT-WORLD PLACEMENT — HISTORICAL STUDY ONLY**
 **Companion to:** `01-research/map-integration/research-report.md`, `02-design/map-integration/culture-architecture-analysis.md`, `02-design/map-integration/discussion-notes.md`
 **Inherits from:** `discussion-notes.md` §3 — the seven binding decisions
+
+> **Authority notice.** The separate new world, portal, duplicate schematic Old Town, coastal rail spur, and related data-layer mutations are retired for current-world placement. See [../../AUTHORITY.md](../../AUTHORITY.md) and Masterplan 05. No world edits are authorized.
 
 > **Scope.** This document specifies the *integration architecture*: the two Gateway pavilions, the Grand Avenue, the coastal-plain rail spur, the seven old town clusters, the underground easter egg, and the visitor journey. It does not specify the internal layout of the Combined Complex itself (SubTropolis chamber, public shaft, service tunnel, Houston Tunnel, Cheyenne chamber) — those live in the 04-masterplan and the four sub-masterplans. It also does not produce the contractor brief; that is a separate downstream task. This document is the *architectural contract* between the deliberation panel's decisions and the build team.
 

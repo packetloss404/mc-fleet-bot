@@ -5,7 +5,9 @@
 **Build ID:** `04-combined-complex-map-integration`
 **Author role:** Site Planner (macro site design only — no detailed building design)
 **Date prepared:** 2026-08-02
-**Status:** Macro site design. Binding for downstream architectural designer + bot team. Respects all 7 binding decisions in `discussion-notes.md` §3.
+**Status:** **SUPERSEDED FOR CURRENT-WORLD PLACEMENT — HISTORICAL STUDY ONLY**
+
+> **Authority notice.** This separate-world/duplicate-Old-Town placement proposal is superseded by [../../AUTHORITY.md](../../AUTHORITY.md) and Masterplan 05. It is not a build plan, current coordinate source, or world-edit authorization.
 
 > **Scope.** This document is the *macro site design* for the map integration — the world layout, the old town, the Gateway station, the Grand Avenue, the coastal-plain rail spur, the underground easter egg, the visitor flow, and the master coordinate table. It does **not** design individual buildings, interior decoration, schematic-internal layout, or block-by-block terrain shaping. Those are downstream. The 7 binding decisions in `discussion-notes.md` are the contract; this plan reflects them without re-deliberation.
 

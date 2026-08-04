@@ -4,7 +4,9 @@
 **Location:** Masterplan 04 — Combined Complex (Cheyenne Mountain + SubTropolis + Houston Tunnel System)
 **Author role:** Architectural Designer (inter-site connections)
 **Date:** 2026
-**Status:** Binding architectural spec for the inter-site connections. **Reworked for the no-ravine design.** Inherits the seven deliberation decisions in `discussion-notes.md` and the soul/identity in `culture-architecture-analysis.md`. Geometry of the three individual sites is inherited from the 01–03 masterplans.
+**Status:** Design-development record for the inter-site connections. The normalized root registry and contractor brief control geometry conflicts; Masterplan 05 controls current-world placement.
+
+> **Authority notice.** Read [../AUTHORITY.md](../AUTHORITY.md) before using this document. This file contains a superseded local `Y=100` contact variant and is not a coordinate or construction authority. The controlling Masterplan 04 contact is local `Y=200`; all current-world setout and delivery gates are in Masterplan 05. No world edits are authorized.
 
 > **Scope reminder.** This document is the *inter-site* architecture. It specifies the public shaft, the service tunnel, the contact crossing, the composite terrane plaque, the world envelope (continuous mountain, city, coastal plain), the material palette, the lighting, the 4-layer defense-in-depth cross-section, the 6 centerpieces, and the 9 easter eggs at the level a builder needs to place blocks. The geometry of Cheyenne itself, the SubTropolis chamber grid, and the Houston tunnel sample are inherited from the three individual masterplans and are not re-specified here.
 >

@@ -1,5 +1,7 @@
 # Map Integration — Renderings Catalog
 
+> **SUPERSEDED — HISTORICAL CONCEPT RENDERINGS.** These images depict the retired separate-world/duplicate-Old-Town proposal and are not measured current-world geometry. Develop `../../../../05-combined-zones/MASTERPLAN.md`; see `../../../AUTHORITY.md` for the authority boundary.
+
 **Project:** mc-fleet-bot Minecraft architecture masterplan
 **Deliverable:** Masterplan 04 (Combined Complex), 5th and final — Map Integration visual module
 **Compiled:** 2026-08-03

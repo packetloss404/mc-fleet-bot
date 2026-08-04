@@ -19,6 +19,16 @@
       "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
     }
   },
+  "authorityInputs": {
+    "coordinateRegistry": {
+      "path": "masterplans/05-combined-zones/site-coordinates.json",
+      "sha256": "b825f3c1e5f5696284d17c64dd469ba8efa845f6846e76032cb91bff4d4fdf62"
+    },
+    "candidateAnalysis": {
+      "path": "masterplans/05-combined-zones/resiting-candidate-analysis.json",
+      "sha256": "3795fe4e4159a32e38502b3a2db77354f62628c97d8868ee25f8a4dba253d030"
+    }
+  },
   "rerunDisposition": {
     "additionalChunkGenerationRequired": false,
     "reason": "Every chunk required by the re-sited reserve was already minecraft:full in the bounded Phase 0 atlas; no temporary force-load tile was added.",
@@ -2329,13 +2339,13 @@
     },
     {
       "path": "masterplans/05-combined-zones/maps/current-plus-proposed-phase0-overlay.png",
-      "bytes": 7781847,
-      "sha256": "e2092692e7374ea7f8de5ba2dd3fe2204aedccd78dc932f3662409c3cbb394bd"
+      "bytes": 7773648,
+      "sha256": "98292d37932eb5941d37df9a4f84575b341b1419df38e6ab7dfd0e001feecc01"
     },
     {
       "path": "masterplans/05-combined-zones/corridor-terrain-probe.json",
-      "bytes": 88401,
-      "sha256": "b8a570d97e80bbf047e61a276697de9291782dd09f151ac1ddca34275d1b3d1f"
+      "bytes": 88397,
+      "sha256": "4e3f1b5f6750a5d18ae6e99b4a909471ea332b9ca290095f6236dbce1ea98f1c"
     }
   ],
   "limitations": [

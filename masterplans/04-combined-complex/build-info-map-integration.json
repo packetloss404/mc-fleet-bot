@@ -2,6 +2,13 @@
   "build_name": "Map Integration Report",
   "build_id": "04-combined-complex-map-integration",
   "version": "2.0",
+  "authority": {
+    "status": "SUPERSEDED_FOR_CURRENT_WORLD_PLACEMENT",
+    "role": "historical-map-integration-metadata",
+    "supersededBy": "masterplans/05-combined-zones/MASTERPLAN.md",
+    "reconciliation": "masterplans/04-combined-complex/authority-reconciliation.json",
+    "worldEditAuthorized": false
+  },
   "date": "2026-08-02",
   "scale": {
     "global_block_size": "1 block = 1 meter"
@@ -14,7 +21,7 @@
   "inter_site_connections": ["public_shaft", "service_tunnel", "funicular", "summit_road"],
   "block_budget_estimate": 44000,
   "deliverables": {
-    "map_integration_pdf": "map-integration-report.pdf",
+    "map_integration_html": "map-integration-report.html",
     "contractor_brief_md": "04-contractor/map-integration/contractor-brief.md",
     "contractor_brief_json": "04-contractor/map-integration/contractor-brief.json"
   },

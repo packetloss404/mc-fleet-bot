@@ -3,8 +3,10 @@
 **Project:** mc-fleet-bot Minecraft architecture masterplan
 **Build ID:** `04-combined-complex`
 **Stage:** 02 — Site Planning (macro site design)
-**Status:** Binding for the Architectural Designer and AI Contractor Writer
+**Status:** Normalized Masterplan 04 site-composition source; local coordinates only
 **Companion to:** `01-research/research-report.md`, `02-design/culture-architecture-analysis.md`, `02-design/discussion-notes.md`
+
+> **Authority notice.** This plan is interpreted through [../AUTHORITY.md](../AUTHORITY.md) and the root `site-coordinates.json`. It controls normalized composition at local contact `Y=200`, not current-world setout. Masterplan 05 owns placement, vertical adaptation, interfaces, and delivery gates. No world edits are authorized.
 
 **REWORK NOTE (2026):** The V-shaped ravine has been dropped from the design. The mountain is now **one continuous range** with a **horizontal granite-limestone contact at Y=200** — a geologically honest configuration (granite plutons push up through limestone in mountain ranges worldwide). The composite terrane plaque has moved from the ravine bottom to the **service tunnel contact crossing**, where it is geologically defensible rather than narrative fiction. The Grand Avenue is a straight line in the coastal plain (no ravine to span). The return route is funicular + road (no skybridge, no ravine to cross). See §3 (Mountain Range), §8 (Service Tunnel), §9 (Grand Avenue), §10 (Return Route), and §12 (Site Coordinates) for the full rework.
 

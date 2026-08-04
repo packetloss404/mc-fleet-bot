@@ -2,7 +2,7 @@
 
 Status: **PHASE 0 SOUTH ANNEX RESITE PASS — REVISED SCHEME — NOT AUTHORIZED FOR WORLD EDITS**
 
-This package integrates Masterplans 01–04 with the accepted current world. It keeps Ravensreach as the canonical Old Town, uses Gateway Approach as the current-world adapter, rotates the Combined Complex north from a new origin at `(2048,-328)`, and places the hidden eight-track subway terminal on a fully dry, non-arctic footprint south of Gateway Approach.
+This package places Masterplan 04's normalized combination of Masterplans 01–03 into the accepted current world. It keeps Ravensreach as the canonical Old Town, uses Gateway Approach as the current-world adapter, adopts a north-aligned `0°` Combined Complex transform from origin `(2048,-328)`, and places the hidden eight-track subway terminal on a fully dry, non-arctic footprint south of Gateway Approach.
 
 Start here:
 
@@ -15,8 +15,10 @@ Start here:
 - [site-coordinates.json](site-coordinates.json) — machine-readable revised transform, zone bounds, stops, subway descent, terminal, and interfaces.
 - [corridor-clearance.json](corridor-clearance.json) — catalog separation and Phase 0 rail-profile result.
 - [source-register.md](source-register.md) — source precedence and inherited conflicts.
+- [../04-combined-complex/authority-reconciliation.json](../04-combined-complex/authority-reconciliation.json) — hash-bound `01 + 02 + 03 -> 04 -> 05` authority and coordinate crosswalk.
 - [map-qa.json](map-qa.json) — hashes and mechanical checks for the current rerun artifacts.
 - [combined-zones-report.html](combined-zones-report.html) — illustrated report; the Markdown/JSON evidence controls any stale pre-rerun body detail.
+- [maps/README.md](maps/README.md) — authoritative-map boundary and the eight retired presentation diagrams.
 
 Key result:
 

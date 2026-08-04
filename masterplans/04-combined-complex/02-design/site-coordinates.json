@@ -1,6 +1,13 @@
 {
   "build_name": "Combined Complex",
   "build_id": "04-combined-complex",
+  "authority": {
+    "role": "normalized-masterplan-04-architectural-composition",
+    "coordinateSpace": "local-not-current-world-setout",
+    "reconciliation": "masterplans/04-combined-complex/authority-reconciliation.json",
+    "currentWorldPlacementAuthority": "masterplans/05-combined-zones/site-coordinates.json",
+    "worldEditAuthorized": false
+  },
   "description": "Single Minecraft world integrating Cheyenne Mountain Complex (NORAD), SubTropolis (underground business park), and Houston Tunnel System (underground pedestrian network). One descent, three worlds, 800 million years of geology. NO-RAVINE REWORK: the V-shaped ravine has been dropped. The mountain is now one continuous range with a horizontal granite-limestone contact at Y=200.",
   "rework_note": "2026 rework: V-shaped ravine dropped, replaced with one continuous mountain range. The horizontal granite-limestone contact at Y=200 separates upper granite (Y=200 to Y=800) from lower limestone (Y=0 to Y=200, with limestone continuing below the city to Y=-100 to host SubTropolis). The composite terrane plaque has moved from the ravine bottom to the service tunnel contact crossing, where it is geologically honest rather than narrative fiction. The Grand Avenue is a straight line in the coastal plain. The return route is funicular + road (no skybridge, no ravine to cross).",
   "scale": {

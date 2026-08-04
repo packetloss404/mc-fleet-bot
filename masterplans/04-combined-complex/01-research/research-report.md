@@ -1,5 +1,7 @@
 # The Combined Complex — Research Report
 
+> **AUTHORITY NOTICE — RESEARCH HISTORY ONLY.** This report preserves early ravine-era reasoning. It does not control geometry. The reconciled no-ravine local composition is defined by `../02-design/site-coordinates.json` and `../04-contractor/contractor-brief.json`; current-world placement and the plan to develop are owned by `../../05-combined-zones/MASTERPLAN.md`. See `../AUTHORITY.md`.
+
 **Project:** mc-fleet-bot Minecraft architecture masterplan
 **Location:** Masterplan 04 — Combined Complex (Cheyenne Mountain + SubTropolis + Houston Tunnel System)
 **Research Lead:** General-purpose research agent

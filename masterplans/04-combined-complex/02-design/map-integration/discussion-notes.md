@@ -4,7 +4,9 @@
 **Deliverable:** Masterplan 04 (Combined Complex), 5th and final deliverable
 **Artifact:** `02-design/map-integration/discussion-notes.md` — binding deliberation between four perspectives
 **Date:** 2026-08-02
-**Status:** Binding for the design team. Decisions in §3 are the contract.
+**Status:** **SUPERSEDED FOR CURRENT-WORLD PLACEMENT — HISTORICAL DELIBERATION ONLY**
+
+> **Authority notice.** These decisions describe the retired separate-world integration proposal. They cannot override Masterplan 04's reconciled local composition or Masterplan 05's current-world placement. See [../../AUTHORITY.md](../../AUTHORITY.md). No world edits are authorized.
 
 ---
 

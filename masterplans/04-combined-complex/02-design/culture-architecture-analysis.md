@@ -6,6 +6,8 @@
 **Status:** Cultural/architectural identity for the downstream design team
 **Companion to:** `01-research/research-report.md` and `01-research/references.md`
 
+> **Authority notice.** This is cultural design history, not geometry. Ravine-era language is superseded by the reconciled one-mountain/no-ravine composition in [../AUTHORITY.md](../AUTHORITY.md). Masterplan 05 owns current-world placement. No world edits are authorized.
+
 > **Scope.** This document is the *soul* of the combined complex — what it is, why it is one thing and not three, what it means culturally, and what the design team must protect when they build it. It is not a build plan. The geometry, the block count, the build sequence, and the construction approach live downstream.
 
 ---

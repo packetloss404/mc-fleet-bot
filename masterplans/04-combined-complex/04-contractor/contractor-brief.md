@@ -1,5 +1,7 @@
 # Contractor Brief — The Combined Complex (No-Ravine Rework)
 
+> **Authority notice.** This brief controls normalized Masterplan 04 architectural intent and local anchors only, together with `../02-design/site-coordinates.json`. It is not executable as written in the current world. Apply [../AUTHORITY.md](../AUTHORITY.md), then use Masterplan 05 for placement, terrain adaptation, interfaces, and delivery gates. No world edits are authorized.
+
 **Project:** mc-fleet-bot Minecraft architecture masterplan
 **Build:** 04 — Combined Complex (Cheyenne Mountain Complex + SubTropolis + Houston Tunnel System)
 **Author role:** AI Contractor Writer
@@ -26,7 +28,7 @@
 | **Mod** | **CubicWorld** (or equivalent with ≥ 2,048-block build height). Vanilla 384 is **insufficient**. |
 | **Render distance** | view-distance 16 chunks, simulation-distance 12 chunks (recommended) |
 | **World type** | Custom (flat at Y = 0; mountain, city, and coastal plain carved in) |
-| **Predecessor briefs** | 3 individual site briefs exist at `01-cheyenne-mountain-complex/04-contractor/`, `02-subtropolis/04-contractor/`, `03-houston-tunnel-system/04-contractor/`. **This brief is the integration layer** — read the 3 predecessor briefs for in-site geometry, then use THIS brief for the world envelope, the inter-site connections, the centerpieces, and the easter eggs. |
+| **Predecessor briefs** | 3 individual site briefs exist at `01-cheyenne-mountain-complex/06-contractor/`, `02-subtropolis/06-contractor/`, `03-houston-tunnel-system/06-contractor/`. **This brief is the normalized integration layer** — read the 3 predecessor briefs for in-site geometry, then use this brief for local composition only and Masterplan 05 for current-world placement. |
 
 **This brief covers the integration layer only.** It is the *adhesive* between the 3 sites. Internal geometry of the Cheyenne chamber (1,319 springs, 15 buildings, J-curve), the SubTropolis pillar grid (200 × 200, 5×5 spec), and the Houston tunnel sample (24 blocks) is owned by the 01–03 briefs and is **not** re-specified here.
 
@@ -1050,4 +1052,4 @@ The 01-masterplan specifies the J-curve as **800 blocks long** with 3 character 
 
 ---
 
-*End of contractor brief. Read the 3 predecessor briefs (`01-cheyenne-mountain-complex/04-contractor/`, `02-subtropolis/04-contractor/`, `03-houston-tunnel-system/04-contractor/`) for the in-site geometry. Use this brief for the world envelope, the inter-site connections, the centerpieces, and the easter eggs. The contact is at Y = 200. The mountain is ONE continuous mountain with NO ravine.*
+*End of contractor brief. Read the 3 predecessor briefs (`01-cheyenne-mountain-complex/06-contractor/`, `02-subtropolis/06-contractor/`, `03-houston-tunnel-system/06-contractor/`) for in-site geometry. Use this brief only for normalized composition, then use Masterplan 05 for current-world placement and delivery gates. The local contact is at Y = 200. The mountain is ONE continuous mountain with NO ravine. No world edits are authorized.*

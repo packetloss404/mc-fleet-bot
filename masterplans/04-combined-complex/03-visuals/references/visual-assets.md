@@ -1,5 +1,7 @@
 # Combined Complex — Visual Asset Catalog
 
+> **AUTHORITY NOTICE — REFERENCE IMAGERY ONLY.** Ravine language and imagery below preserve discarded design history and do not control geometry. The no-ravine local composition is governed by `../../02-design/site-coordinates.json`; Masterplan 05 owns current-world placement. See `../../AUTHORITY.md`.
+
 **Project:** Minecraft architecture — high-fidelity replicas of real-world underground / mountain installations
 **Combined complex:** Cheyenne Mountain Complex (NORAD) + SubTropolis + Houston Tunnel System, integrated with mountain range, ravine, and city-in-valley
 **Catalog compiled:** 169 images across 12 categories (114 .jpg + 27 .png + 13 .jpeg + 13 .webp + 2 .gif)

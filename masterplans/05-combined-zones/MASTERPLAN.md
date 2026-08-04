@@ -10,12 +10,14 @@ The adopted study geometry does four things together:
 
 - keeps **Ravensreach** as the current world's canonical historic town and Old Town;
 - keeps **Gateway Approach** as the landscaped transition from the current map, including two future-use passenger stops;
-- rotates the Combined Complex back to north–south and moves its local origin to `(2048,-328)`;
+- adopts the north-aligned Combined Complex at `0°` rotation and moves its local origin to `(2048,-328)`;
 - moves the hidden eight-track subway terminal wholly south of Gateway Approach to a dry, non-arctic, cover-compliant footprint.
 
 The former northern terminal at `x=1880…2220`, `z=-1008…-848` is retired. Its Phase 0 surface-water count was zero, but its snowy/frozen setting read as an arctic-water placement in-world. The adopted southern site preserves the program while removing that ambiguity.
 
 This is a master plan, not an execution package. It authorizes detailed design only. No excavation, grading, structure removal, protected-feature work, or construction is authorized.
+
+The authority chain is `01 + 02 + 03 -> 04 normalized architecture -> 05 current-world placement`. Masterplan 04's [authority reconciliation](../04-combined-complex/AUTHORITY.md) and [machine-readable bridge](../04-combined-complex/authority-reconciliation.json) control that boundary. Masterplan 05 does not replace child internals or normalized 04 architecture; it owns their placement, evidence constraints, adapters, additions, and gates.
 
 ## Phase 0 rerun verdict
 

@@ -1654,8 +1654,12 @@ npx vitest run test/scripts/citizenRouteStagingDiagnosis.test.ts
 
 ## Combined Zones Phase 0 Terrain Survey
 
+- The authority chain is Masterplans 01–03 internal architecture -> Masterplan
+  04 normalized composition -> Masterplan 05 current-world placement, terrain,
+  adapters, additions, interfaces, and delivery gates. The exact reconciliation
+  is in `masterplans/04-combined-complex/authority-reconciliation.json`.
 - The re-sited Phase 0 package is in `masterplans/05-combined-zones/` and passes
-  all nine siting gates. It binds rerun pre-check snapshot
+  all eleven siting gates. It binds rerun pre-check snapshot
   `fe7a3e5a...ab37` and post-check snapshot `05eebe12...271b`.
 - The first run's final generated atlas `979e7805...4ead` remains candidate-search
   and negative-evidence source. The rerun needed no additional generation
@@ -1700,15 +1704,32 @@ node --max-old-space-size=4096 \
 
 - The adopted normalized core origin is `(2048,-328)` at rotation 0. Gateway
   Approach is a decoupled current-world adapter. The Empty Eight shell is
-  `x=1880..2220`, `z=-1008..-848`, `y=38..54`, with rail `y=40`.
+  `x=1632..1872`, `z=40..160`, `y=38..54`, with rail `y=40`. It is wholly
+  south of Gateway Approach, with eight east-west tracks and eight sealed east
+  interfaces.
 - The PASS is detailed-design evidence only. The corridor still discloses up to
   36 blocks of cut and 23 of fill, and the two igloos plus shipwreck inside the
   mountain envelope are mandatory no-touch constraints. No Phase 0 artifact
   authorizes world edits.
 
-- Require `PASS_FULL_CHUNK_COVERAGE`, exactly 14,238 full atlas chunks and
-  9,310 full reserve chunks. The physical transform still fails siting: the
-  corridor natural surface is not rail-grade, the reserve is 26.14% water,
-  and only 35.60% of the proposed Empty Eight roof footprint has eight blocks
-  of dry solid cover. Do not turn surveyed terrain Y values into build setout
-  without a replacement transform and a new passing survey.
+- Require exactly 14,238 full atlas chunks and 6,097 full revised-reserve
+  chunks. The adopted transform passes Phase 0 siting: all five core anchors
+  are dry, mountain and urban footprints are each below 3% water, and all
+  29,161 Empty Eight columns are dry, non-arctic, and provide at least eight
+  blocks of cover. The natural corridor is still not rail-grade; only the
+  sampled engineered rail profile passes, with up to 36 blocks of cut and 23
+  of fill. Do not turn surveyed terrain Y or fractional vertical-study values
+  into build setout before exact rounding, ownership, and Phase 1 design gates.
+
+- Validate the offline authority chain, exact 04-to-05 coordinate crosswalk,
+  source hashes, map bounds, and retired-diagram boundary with:
+
+```bash
+npx vitest run test/build/masterplanAuthorityReconciliation.test.ts
+```
+
+- Run that focused test with the full backend suite using:
+
+```bash
+npm test
+```

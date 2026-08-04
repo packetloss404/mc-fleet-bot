@@ -1,5 +1,7 @@
 # Map Integration — Visual Asset Catalog
 
+> **SUPERSEDED — HISTORICAL REFERENCES ONLY.** This catalog belongs to the retired map-integration annex. It is not a current placement or construction source. See `../../../AUTHORITY.md` and `../../../../05-combined-zones/MASTERPLAN.md`.
+
 **Project:** Combined Complex master plan, 5th deliverable
 **Scope:** How the new 1,500 × 1,500 × 800-block Combined Complex (Cheyenne + SubTropolis + Houston Tunnel) fits into the existing `D:\projects\mc-fleet-bot\` workspace — the existing schematic library, the live bot world, and how the service / public shafts connect to what is already there.
 **Catalog compiled:** 25 image files (16 PNG, 6 JPEG, 3 WEBP), 100% valid by magic-byte check

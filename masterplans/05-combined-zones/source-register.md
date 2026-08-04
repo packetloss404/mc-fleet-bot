@@ -1,15 +1,17 @@
 # Source Register and Reconciliation
 
-## Source precedence
+## Field-scoped authority
 
-Use these sources in this order:
+Authority is compositional, not one global last-writer-wins list:
 
-1. The Phase 0 rerun immutable post snapshot and generated evidence define terrain, water, biome, cover, and generated-structure constraints for the revised site.
-2. The accepted immutable July 28 snapshot and verified current database define released construction and current-world identity.
-3. Masterplan 04's v2 no-ravine contractor brief and root coordinate file define the proposed Combined Complex concept.
-4. Masterplans 01, 02, and 03 define internal architectural programs, not current-world placement.
-5. Masterplan 04's map-integration package is historical input only where it conflicts with the sources above.
+1. Masterplans 01, 02, and 03 own their internal architectural programs.
+2. Masterplan 04's reconciled v2 root contractor brief and coordinate file combine those programs in normalized local space.
+3. Masterplan 05 owns current-world placement, the X/Z transform, provisional vertical adaptation, external interfaces, additive zones, and delivery gates.
+4. The accepted snapshot/database own released-world identity; the Phase 0 rerun snapshot/evidence own terrain, water, biome, cover, and generated-structure facts for the revised site. Physical evidence may veto siting but does not silently redesign architecture.
+5. Masterplan 04's old `map-integration` annex is historical placement input only and cannot override items 1–4.
 6. Renderings are mood and communication assets, never measured geometry.
+
+The exact machine-readable bridge is `masterplans/04-combined-complex/authority-reconciliation.json`.
 
 ## Accepted current-world baseline
 
@@ -32,13 +34,13 @@ Black pixels and any map area beyond the raster are unloaded or absent from the 
 
 ## Masterplan authority
 
-The v2 Combined Complex authority is:
+The reconciled normalized Masterplan 04 authority is:
 
 - `masterplans/04-combined-complex/04-contractor/contractor-brief.json`
 - `masterplans/04-combined-complex/02-design/site-coordinates.json`
-- `masterplans/04-combined-complex/04-contractor/map-integration/contractor-brief.json`
 - `masterplans/04-combined-complex/build-info.json`
-- `masterplans/04-combined-complex/build-info-map-integration.json`
+- `masterplans/04-combined-complex/AUTHORITY.md`
+- `masterplans/04-combined-complex/authority-reconciliation.json`
 
 The child architectural authorities are:
 
@@ -47,6 +49,14 @@ The child architectural authorities are:
 - `masterplans/03-houston-tunnel-system/06-contractor/contractor-brief.json`
 
 The directory named `03-houston-tunnel-system` is the city-in-a-city layer: a 138×138 downtown above Houston-inspired pedestrian tunnels.
+
+The following are explicitly historical/deferred and are not active placement authority:
+
+- `masterplans/04-combined-complex/04-contractor/map-integration/contractor-brief.json`
+- `masterplans/04-combined-complex/build-info-map-integration.json`
+- the rest of Masterplan 04's `map-integration` annex and `overhead-map-same-world.png`
+
+Masterplan 05 is the current-world placement and delivery authority. It may adapt interfaces to surveyed terrain, but those adaptations remain provisional detailed design until accepted back into exact, owned geometry.
 
 ## Binding v2 design decisions retained
 

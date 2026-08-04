@@ -5,6 +5,14 @@
   "status": "PHASE0_SOUTH_ANNEX_RESITE_PASS_NOT_AUTHORIZED_FOR_WORLD_EDITS",
   "generatedAtUtc": "2026-08-04T03:50:24.998Z",
   "world": "world",
+  "authority": {
+    "kind": "field-scoped-composition",
+    "chain": "01 + 02 + 03 -> 04 normalized architecture -> 05 current-world placement",
+    "reconciliation": "masterplans/04-combined-complex/authority-reconciliation.json",
+    "planToDevelop": "masterplans/05-combined-zones/MASTERPLAN.md",
+    "constructionPackageExists": false,
+    "worldEditAuthorized": false
+  },
   "physicalMutation": {
     "blocksEdited": false,
     "firstSurveyChunksGenerated": true,
