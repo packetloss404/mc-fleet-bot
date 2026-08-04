@@ -18,8 +18,8 @@
     },
     "phase1GeometryCoordination": {
       "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
-      "bytes": 35204,
-      "sha256": "ad5893ae724b4662008e58f0b3bf2f54675ef548b305214e6f209b9b39ea160e"
+      "bytes": 35526,
+      "sha256": "7065c8c8f1f20baab38e07834c8d7ec9d4120c09863aaf1f67b4357065258918"
     },
     "immutablePhase0PostRegionSnapshot": {
       "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
@@ -653,11 +653,19 @@
       "no evidence-backed positive-margin relic buffer has been designed or approved",
       "igloo-east has zero present cells inside its recorded start bound; current relic preservation is not established",
       "the census does not prove vanilla-template integrity, entrance safety, or block attribution outside each start bound",
-      "no exact construction/material/operation cell set exists for clearance testing",
-      "the remaining 47 reserve-intersecting generated structure starts have not been tested against an exact construction set",
-      "no post-construction immutable snapshot or relic-preservation comparison exists"
+      "no exact proposed construction and interaction cell set exists for design-time clearance testing",
+      "the remaining 47 reserve-intersecting generated structure starts have not been tested against an exact construction set"
     ],
-    "passRule": "G06 may pass only after reviewed positive-margin policy or an explicit evidence-backed zero-margin acceptance, exact operation cells clear every protected core and all relevant structure starts, and post-state preservation checks are defined."
+    "passRule": "G06 may pass for R00 only after reviewed positive-margin policy or an explicit evidence-backed zero-margin acceptance and exact proposed construction/interaction cells clear every protected core and all relevant structure starts.",
+    "releaseLifecycleValidation": {
+      "gateRange": "G16-G19",
+      "resolvesG06ForR00": false,
+      "requirements": [
+        "immutable post-construction snapshot",
+        "exact protected-core and reviewed-buffer preservation comparison",
+        "final relic-preservation acceptance bound to the executed operation identities"
+      ]
+    }
   },
   "limitations": [
     "No entity-region data is read; entity clearance is a separate gate.",

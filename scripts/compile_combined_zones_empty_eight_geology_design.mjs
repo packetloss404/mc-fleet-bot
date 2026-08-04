@@ -667,13 +667,21 @@ const report = {
       interfaces: futureInterfaces,
       prohibitedInitialConnections: z02.hiddenSubway.prohibitedInitialConnections,
     },
-    remainingHoldGates: [
+    designClosureHoldGates: [
       'survey exact dry surface endpoints for EG-A and EG-B without replacing null Y by inference',
       'prove two complete independent accessible egress routes from occupied spaces to safe exterior endpoints',
       'complete fire/smoke, ventilation, emergency-power/lighting, platform-barrier, drainage, and fire-service engineering',
-      'bind every cell to exact ownership, immutable source guards, one-cell forward/rollback operations, and a release manifest',
-      'pass bounded pilot, live entity clearance, full preflight, post-state QA, route QA, and rollback verification',
+      'accept exterior vent, discharge, fire/service, barrier, lift, emergency-power, and sealed-interface mechanisms with exact owners, interfaces, and frozen commissioning criteria',
     ],
+    releaseLifecycleValidation: {
+      gateRange: 'G03-G19',
+      resolvesD06: false,
+      requirements: [
+        'bind every cell to exact ownership, immutable source guards, forward/rollback operations, and a release manifest',
+        'pass complete preflight, live entity clearance, and explicit authorization',
+        'pass bounded pilot, immutable post-state, functional and route QA, rollback verification, and final acceptance',
+      ],
+    },
   },
   d07: {
     status: 'RESOLVED_WORDING_ONLY_PORTAL_OMITTED',
@@ -747,7 +755,7 @@ plaquePanels.map(({ order, text: panelText }) => `${order}. ${panelText}`).join(
 geologySources.map((source) => `- [${source.authority}: ${source.title}](${source.url}) (${source.year}).`).join('\n') + '\n\n' +
 `C2 remains a logical link only. There is no active mechanism, no landing coordinate, no portal block, no command, and no target cell. Portal galleries remain architectural destinations unless a later separate evidence package proves safe symmetric landings, permissions, return-path QA, guarded operations, rollback, and release authorization.\n\n` +
 `## Gate\n\n` +
-`D06's internal design freeze passes, and D07's factual wording gate passes. Phase 1 and all physical work remain **HOLD** because complete external life-safety engineering and the ordinary ownership/source/release gates have not passed. See [the machine-readable record](phase1-empty-eight-geology-design.json) for exact hashes, bounds, contracts, and closure requirements.\n`;
+`D06's internal design freeze passes, and D07's factual wording gate passes. Phase 1 and all physical work remain **HOLD** because complete external life-safety engineering and the ordinary ownership/source/release gates have not passed. D06/G02 closes on accepted pre-R00 design evidence only; operations, preflight, pilot, rollback, and post-state QA remain G03-G19 validation. See [the machine-readable record](phase1-empty-eight-geology-design.json) for exact hashes, bounds, contracts, and closure requirements.\n`;
 
 fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
 fs.writeFileSync(OUTPUT, `${JSON.stringify(report, null, 2)}\n`);

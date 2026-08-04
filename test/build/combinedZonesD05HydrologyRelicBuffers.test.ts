@@ -94,7 +94,9 @@ interface Report {
   d05Disposition: {
     status: string;
     passedSubgates: string[];
-    holdSubgates: string[];
+    designClosureHoldSubgates: string[];
+    passRule: string;
+    releaseLifecycleValidation: { gateRange: string; resolvesD05: boolean };
   };
 }
 
@@ -271,6 +273,13 @@ describe('Combined Zones D05 hydrology and protected-relic buffer design', () =>
     expect(routing.columnCount).toBe(480_000);
     expect(report.d05Disposition.status).toBe('HOLD');
     expect(report.d05Disposition.passedSubgates).toHaveLength(5);
-    expect(report.d05Disposition.holdSubgates).toHaveLength(7);
+    expect(report.d05Disposition.designClosureHoldSubgates).toHaveLength(6);
+    expect(report.d05Disposition.passRule).not.toMatch(
+      /\b(operations?|source guards?|manifests?|preflights?|pilots?|rollbacks?|post[- ]state)\b/i,
+    );
+    expect(report.d05Disposition.releaseLifecycleValidation).toMatchObject({
+      gateRange: 'G03-G19',
+      resolvesD05: false,
+    });
   });
 });

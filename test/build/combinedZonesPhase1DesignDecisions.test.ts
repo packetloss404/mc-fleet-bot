@@ -139,7 +139,11 @@ describe('Combined Zones Phase 1 design decisions', () => {
     expect(decision(audit, 'D02')).toMatchObject({
       status: 'HOLD',
       selection: null,
-      conservativeDefault: 'NO_HIGHWAY_CONSTRUCTION_OUTSIDE_A_BOUNDED_REVERSIBLE_PILOT',
+      conservativeDefault: 'NO_C1_PHYSICAL_RELEASE_UNTIL_D02_RESOLVED_AND_R00_ACCEPTED',
+      releaseLifecycleValidation: {
+        releaseId: 'CZ-R01-PHASE1-BOUNDED-VISUAL-PILOT',
+        validationRole: 'POST_R00_VALIDATION_NOT_D02_OR_G02_CLOSURE_EVIDENCE',
+      },
     });
     expect(decision(audit, 'D05')).toMatchObject({
       status: 'HOLD',
@@ -163,6 +167,16 @@ describe('Combined Zones Phase 1 design decisions', () => {
       resolvedPortalPolicy: 'NO_ACTIVE_PORTAL_MECHANISM_IN_CURRENT_SCOPE',
       geologicalWordingStatus: 'RESOLVED_FACT_CHECKED_ARCHITECTURAL_COMPOSITE',
     });
+
+    expect((audit as any).decisionPolicy).toMatchObject({
+      g02ClosureBoundary: 'PRE_R00_DESIGN_ACCEPTANCE_ONLY',
+    });
+    const forbidden = /\b(operations?|source guards?|manifests?|preflights?|live[- ]entity|pilots?|execution|rollbacks?|route[- ]qa|post[- ]state)\b/i;
+    for (const id of ['D02', 'D05', 'D06']) {
+      const closure = decision(audit, id).closureEvidenceRequired as string[];
+      expect(closure, id).toBeInstanceOf(Array);
+      expect(closure.some((item) => forbidden.test(item)), id).toBe(false);
+    }
   });
 
   it('references every authority layer without treating any source as build authorization', () => {

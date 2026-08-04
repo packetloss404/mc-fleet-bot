@@ -23,6 +23,19 @@ function readJson(filename) {
   return JSON.parse(fs.readFileSync(filename, 'utf8'));
 }
 
+export function c1PilotCandidateIsReady(evidence) {
+  return evidence?.decision?.physicalPilotTargetCellSetMayBeFrozen === true
+    && Boolean(evidence?.exactPlanCoordination?.physicalTargetCellSet)
+    && Boolean(evidence?.exactPlanCoordination?.interactionCellSet)
+    && evidence?.decision?.operationCellCount > 0
+    && evidence?.decision?.operationsEmitted === true;
+}
+
+export function siteR01PretransactionIsReady(evidence) {
+  return evidence?.decision?.constructionReadiness === 'PASS'
+    && evidence?.decision?.liveBuildMayProceed === true;
+}
+
 function parseArgs(argv) {
   const options = {
     contract: DEFAULT_CONTRACT,
@@ -123,6 +136,39 @@ export function validateReleaseContract(contractPath = DEFAULT_CONTRACT) {
     }
   });
 
+  const r00 = releases.find((release) => release.id === 'CZ-R00-PHASE1-DESIGN-FREEZE');
+  const r01 = releases.find(
+    (release) => release.id === 'CZ-R01-PHASE1-BOUNDED-VISUAL-PILOT',
+  );
+  const r02 = releases.find(
+    (release) => release.id === 'CZ-R02-PHASE2-EMPTY-EIGHT-DEEP-SHELL',
+  );
+  if (!r00?.requiredGates?.includes('G02_DESIGN_DECISIONS')) {
+    errors.push('r00-must-require-g02-design-decisions');
+  }
+  if (JSON.stringify(r01?.dependsOn) !== JSON.stringify([r00?.id])) {
+    errors.push('r01-must-follow-r00');
+  }
+  if (JSON.stringify(r02?.dependsOn) !== JSON.stringify([r01?.id])) {
+    errors.push('r02-must-follow-r01');
+  }
+  if (
+    r01?.validationRole
+      !== 'POST_R00_VALIDATION_NOT_D02_D05_D06_OR_G02_CLOSURE_EVIDENCE'
+  ) {
+    errors.push('r01-validation-role-must-not-resolve-g02');
+  }
+  if (
+    contract.decisionResolutionBoundary?.g02Closure
+      !== 'PRE_R00_DESIGN_ACCEPTANCE_ONLY'
+    || contract.decisionResolutionBoundary?.descendantReleaseEvidenceMayResolveG02
+      !== false
+    || contract.globalInvariants?.decisionResolutionMayDependOnDescendantReleaseEvidence
+      !== false
+  ) {
+    errors.push('g02-pre-r00-design-boundary-required');
+  }
+
   const authorityBindingByPath = new Map(
     (contract.authorityBindings ?? []).map((binding) => [binding.path, binding]),
   );
@@ -203,6 +249,26 @@ export function validateReleaseContract(contractPath = DEFAULT_CONTRACT) {
   const decisionEvidence = getBoundJson(
     'masterplans/05-combined-zones/phase1-design-decisions.json',
   );
+  if (
+    decisionEvidence?.decisionPolicy?.g02ClosureBoundary
+      !== 'PRE_R00_DESIGN_ACCEPTANCE_ONLY'
+  ) {
+    errors.push('bound-decision-ledger-g02-boundary-invalid');
+  }
+  const forbiddenDecisionClosurePattern = /\b(operations?|source guards?|manifests?|preflights?|live[- ]entity|pilots?|execution|rollbacks?|route[- ]qa|post[- ]state)\b/i;
+  for (const decisionId of ['D02', 'D05', 'D06']) {
+    const decision = decisionEvidence?.decisions?.find(
+      (candidate) => candidate.id === decisionId,
+    );
+    if (
+      !Array.isArray(decision?.closureEvidenceRequired)
+      || decision.closureEvidenceRequired.some(
+        (requirement) => forbiddenDecisionClosurePattern.test(requirement),
+      )
+    ) {
+      errors.push(`bound-decision-closure-uses-descendant-evidence:${decisionId}`);
+    }
+  }
   if (decisionEvidence?.summary?.phase1DecisionGatePassed !== true) {
     semanticGateBlockers.push('bound-decision-ledger-not-pass');
   }
@@ -212,24 +278,21 @@ export function validateReleaseContract(contractPath = DEFAULT_CONTRACT) {
   const c1Evidence = getBoundJson(
     'masterplans/05-combined-zones/phase1-c1-pilot-coordination.json',
   );
-  if (
-    c1Evidence?.decision?.phase1R01Status !== 'PASS'
-    || !c1Evidence?.exactPlanCoordination?.physicalTargetCellSet
-    || !c1Evidence?.exactPlanCoordination?.interactionCellSet
-    || !(c1Evidence?.decision?.operationCellCount > 0)
-    || c1Evidence?.decision?.operationsEmitted !== true
-  ) {
-    semanticGateBlockers.push('bound-c1-physical-pilot-not-pass');
+  if (!c1PilotCandidateIsReady(c1Evidence)) {
+    semanticGateBlockers.push('bound-c1-pilot-candidate-not-compiled');
   }
   const siteGateEvidence = getBoundJson(
     'masterplans/05-combined-zones/phase1-site-gate-audit.json',
   );
-  if (
-    siteGateEvidence?.decision?.phase1Exit !== 'PASS'
-    || siteGateEvidence?.decision?.constructionReadiness !== 'PASS'
-    || siteGateEvidence?.decision?.liveBuildMayProceed !== true
-  ) {
-    semanticGateBlockers.push('bound-site-phase1-exit-not-pass');
+  if (!siteR01PretransactionIsReady(siteGateEvidence)) {
+    semanticGateBlockers.push('bound-site-r01-pretransaction-not-pass');
+  }
+  const postR01AdvanceBlockers = [];
+  if (c1Evidence?.decision?.phase1R01Status !== 'PASS') {
+    postR01AdvanceBlockers.push('bound-c1-r01-acceptance-not-pass');
+  }
+  if (siteGateEvidence?.decision?.phase1Exit !== 'PASS') {
+    postR01AdvanceBlockers.push('bound-site-phase1-exit-not-pass');
   }
 
   const currentGateEvaluations = contract.currentGateEvaluations ?? [];
@@ -286,6 +349,7 @@ export function validateReleaseContract(contractPath = DEFAULT_CONTRACT) {
     missingToolingIds,
     incompleteProtectedSubjects,
     semanticGateBlockers,
+    postR01AdvanceBlockers,
     incompleteGateEvaluationIds,
     blockerCount: blockers.length,
     blockers,

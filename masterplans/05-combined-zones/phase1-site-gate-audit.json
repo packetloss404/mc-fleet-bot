@@ -27,7 +27,7 @@
   "inputs": {
     "masterplan": {
       "path": "masterplans/05-combined-zones/MASTERPLAN.md",
-      "sha256": "f28275ba640348ad52d570b67fa22c8338655a5c8452dac6435b4c14055fe203"
+      "sha256": "c4bed39795237e8c361c19a106a0520b95c0f7a35c9c3431ff5a6da8f528cf30"
     },
     "coordinateRegistry": {
       "path": "masterplans/05-combined-zones/site-coordinates.json",
@@ -35,7 +35,7 @@
     },
     "authorityReconciliation": {
       "path": "masterplans/04-combined-complex/authority-reconciliation.json",
-      "sha256": "f26f4db255f4537b711ccdbeea38d075dc16914e8ec67dc3386c90f500adba9e"
+      "sha256": "ad6ab25b19e12c405634d2a03dca547d4c92073a4dbf4f2caa9ba0995d949c4d"
     },
     "phase0Evidence": {
       "path": "masterplans/05-combined-zones/phase0-survey-evidence.json",
@@ -100,43 +100,43 @@
   "subsequentRemediationEvidence": [
     {
       "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
-      "sha256": "ad5893ae724b4662008e58f0b3bf2f54675ef548b305214e6f209b9b39ea160e",
+      "sha256": "7065c8c8f1f20baab38e07834c8d7ec9d4120c09863aaf1f67b4357065258918",
       "status": "PHASE1_COORDINATION_PARTIAL_PASS_OPERATION_COMPILATION_BLOCKED",
       "effect": "Freezes rational vertical transforms and coordination-envelope semantics, but emits no construction cells."
     },
     {
       "path": "masterplans/05-combined-zones/phase1-design-decisions.json",
-      "sha256": "fbacbfc5fe3f4651310148c014b21127976c22c06fcaaee3dd8a33ccb961e40f",
+      "sha256": "d2e7d91b2ed237bf70ed00bd0f5e546df42786e90e3748c884e0f8fc6b8c9158",
       "status": "HOLD_THREE_OF_SEVEN_DECISIONS_UNRESOLVED",
       "effect": "Resolves D01, D03, D04, and D07; D02, D05, and D06 remain on HOLD."
     },
     {
       "path": "masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
-      "sha256": "fca0158c16bd8d30b5b562030364a4e04aadba49387c98225c64b191fa70405a",
+      "sha256": "a983fab119749e8d34457d2754181b45f323f823de302c72f03974766f360c4d",
       "status": "PARTIAL_PASS_G06_REMAINS_HOLD",
       "effect": "Freezes three zero-margin default-deny structure-start cores; reviewed positive buffers and complete construction-volume clearance remain absent."
     },
     {
       "path": "masterplans/05-combined-zones/phase1-c1-pilot-coordination.json",
-      "sha256": "e434c3754501df2a4805f0c5b97c19242ff1dc866c218e9f0cf0876922cd220a",
+      "sha256": "32ab97a2e2961f0bff72fdcf0dd11389f744cb93ba7254d579a02dc5741103f8",
       "status": "COORDINATION_CANDIDATE_FROZEN_PHYSICAL_PILOT_HOLD",
       "effect": "Freezes an exact bounded C1 coordination candidate and rail reservation setout; no physical target cells, operations, or physical pilot exists."
     },
     {
       "path": "masterplans/05-combined-zones/phase1-c1-civil-design.json",
-      "sha256": "202d12a7491bf30ae3a3ceb375613fa4cdd1f0aec00faf294910e655fb0e6515",
+      "sha256": "f5e0839d364cb02435ff72847fffb914781be1e18f8f813ddf2f8d5491bea5c1",
       "status": "PARTIAL_PASS_D02_HOLD",
       "effect": "Freezes the exact full C1 civil coordination setout and diagnostics; six geotechnical, structural, drainage, ownership, visual, and quantity blockers remain."
     },
     {
       "path": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
-      "sha256": "b79fd106208993fd67e8ca825c2ecfa2d3e93f3b0be57f589322ac9a1b3e7d65",
+      "sha256": "5a1b35520a55124a42496245b9bf30da184eb7c7eff1ee58c39ac096195c44ff",
       "status": "PARTIAL_PASS_EXACT_BASELINE_AND_BUFFER_CANDIDATES_D05_HOLD",
       "effect": "Freezes a full-height fluid/cryosphere census, components, routing candidate, and three exact one-cell adjacency candidates; no candidate is a reviewed buffer."
     },
     {
       "path": "masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
-      "sha256": "ee983ec15c4dc4c2da0c9d27f4a6b8226c96165b08a39035c5d9d8ce6c102bd0",
+      "sha256": "dc23f5fe814180b45e5cd1bfc74ac90e3f6981c383d5b49a5bdb2ad7a5ca87e4",
       "status": "D06_INTERNAL_DESIGN_FROZEN_EXTERNAL_LIFE_SAFETY_HOLD_D07_WORDING_RESOLVED_C2_OMITTED",
       "effect": "Freezes exact internal Empty Eight reservations and fact-checked D07 wording; external life-safety continuations and every physical operation remain on HOLD."
     }
@@ -385,7 +385,7 @@
       "order": 7,
       "phase": "pilot",
       "artifact": "bounded-visual-pilot-package",
-      "requirement": "Complete civil, hydrology, natural-feature, structure, entity, ownership, and source gates for the frozen C1 candidate, then compile a small disjoint pilot with exact one-cell forward/rollback plans, source guards, ownership manifest, immutable-source preflight, and bidirectional route QA."
+      "requirement": "After accepted R00, satisfy G01-G14 and compile a small disjoint R01 pilot with exact one-cell forward/rollback plans, source guards, ownership manifest, immutable-source preflight, and explicit authorization. Bidirectional route, media, rollback, and post-state QA remain R01 acceptance evidence under G16-G19 and cannot satisfy D02/D05/D06 or G02."
     },
     {
       "order": 8,
@@ -406,6 +406,14 @@
       "requirement": "Require complete source-state preflight, strict-noop parser report, exact rollback proof, post snapshot, route/media QA, database import, and final acceptance for each authorized package."
     }
   ],
+  "sequencingBoundary": {
+    "g02Closure": "PRE_R00_DESIGN_ACCEPTANCE_ONLY",
+    "r00Role": "FREEZE_ACCEPTED_D01_D07_DESIGN_AND_G01_G07_INTERFACES",
+    "r01Role": "POST_R00_PHYSICAL_VALIDATION_NOT_G02_CLOSURE_EVIDENCE",
+    "r01MayStartOnlyAfter": "CZ-R00-PHASE1-DESIGN-FREEZE_ACCEPTED_AND_G01_G14_PASS",
+    "r01AcceptanceRequires": "G01_G19_PASS",
+    "r02MayStartOnlyAfter": "CZ-R01-PHASE1-BOUNDED-VISUAL-PILOT_ACCEPTED"
+  },
   "decision": {
     "phase0SiteSelection": "PASS",
     "phase1DetailedDesignMayProceedOffline": true,

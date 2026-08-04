@@ -124,6 +124,18 @@ interface CivilDesign {
   decisionD02: {
     status: string;
     blockers: Array<{ id: string }>;
+    resolutionBoundary: {
+      scope: string;
+      requiresPhysicalPilot: boolean;
+      requiresForwardRollbackOperations: boolean;
+      requiresPostStateQa: boolean;
+    };
+    subsequentReleaseValidation: {
+      releaseId: string;
+      prerequisiteReleaseId: string;
+      requiredBeforeReleaseId: string;
+      validationRole: string;
+    };
   };
   finalGate: { status: string; worldEditAuthorized: boolean };
 }
@@ -287,6 +299,18 @@ describe('Combined Zones exact C1 civil design', () => {
     expect(report.decisionD02.status).toBe('PARTIAL_PASS_HOLD');
     expect(report.decisionD02.blockers.map((blocker) => blocker.id))
       .toEqual(['D02-B01', 'D02-B02', 'D02-B03', 'D02-B04', 'D02-B05', 'D02-B06']);
+    expect(report.decisionD02.resolutionBoundary).toMatchObject({
+      scope: 'PRE_R00_DESIGN_AND_EXTERNAL_ACCEPTANCE_ONLY',
+      requiresPhysicalPilot: false,
+      requiresForwardRollbackOperations: false,
+      requiresPostStateQa: false,
+    });
+    expect(report.decisionD02.subsequentReleaseValidation).toEqual({
+      releaseId: 'CZ-R01-PHASE1-BOUNDED-VISUAL-PILOT',
+      prerequisiteReleaseId: 'CZ-R00-PHASE1-DESIGN-FREEZE',
+      requiredBeforeReleaseId: 'CZ-R02-PHASE2-EMPTY-EIGHT-DEEP-SHELL',
+      validationRole: 'POST_R00_VALIDATION_NOT_D02_OR_G02_CLOSURE_EVIDENCE',
+    });
     expect(report.offlineSafetyBoundary).toEqual(expect.objectContaining({
       localInputsOnly: true,
       immutableCopiedAnvilOnly: true,

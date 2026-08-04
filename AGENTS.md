@@ -1754,6 +1754,7 @@ node scripts/compile_combined_zones_phase1_geometry.mjs \
 
 ```bash
 node scripts/validate_combined_zones_release_contract.mjs
+node scripts/audit_combined_zones_r00_readiness.mjs
 npm run test:masterplans
 ```
 
@@ -1773,8 +1774,9 @@ node scripts/compile_combined_zones_empty_eight_geology_design.mjs
   zero-margin no-touch core, including air cells. It may not infer a positive
   buffer, intact-template status, ownership, observation access, or
   construction clearance. Require its G06 result to remain HOLD until reviewed
-  positive buffers, exact construction cells, all relevant generated starts,
-  and post-state preservation evidence pass.
+  positive buffers or accepted zero-margin treatment, exact proposed
+  construction/interaction cells, and all relevant generated starts pass.
+  Post-state preservation is later G16-G19 validation and cannot close R00 G06.
 - The C1 pilot audit may freeze only its exact plan coordination envelope and
   reserve-first rail study setout. It emits zero operations. Do not promote it
   to a physical R01 target set while its highway profile, pale-garden/entity,
@@ -1789,12 +1791,25 @@ node scripts/compile_combined_zones_empty_eight_geology_design.mjs
   Node heap. Its fluid/cryosphere components, D8 routing, and one-cell relic
   adjacency shells are exact copied-snapshot coordination evidence only.
   Require reviewed buffers, future influence cells, canonical owners, expert
-  modelling, rollback, and poststate preservation before D05 may pass.
+  modelling, and frozen preservation/no-diversion criteria before D05 may pass
+  G02. Rollback and poststate proof belong to G03-G19.
 - The Empty Eight/geology compiler freezes internal design reservations and
   factual architectural-composite plaque wording. It does not claim building-
   code compliance or commission a safety system. External egress, ventilation,
-  drainage, fire/service, mechanisms, source guards, and operations remain
-  HOLD; C2 remains omitted.
+  drainage, fire/service, and mechanism design remain HOLD for D06. Source
+  guards, operations, preflight, pilot, rollback, and poststate QA belong to
+  G03-G19; C2 remains omitted.
+
+- R00 is the nonphysical G01-G07 design freeze. D02, D05, and D06 may resolve
+  only from immutable pre-R00 design/external-acceptance evidence. Operations,
+  source guards, manifests, preflights, live entity clearance, pilots,
+  execution, rollback, route QA, and post-state QA cannot satisfy G02. After
+  accepted R00, R01 is the bounded physical validation and must pass G01-G19
+  before R02 becomes eligible.
+- `audit_combined_zones_r00_readiness.mjs` binds the current authority and Phase
+  1 evidence, evaluates only G01-G07, classifies blockers as `OFFLINE_ACTION`,
+  `EXTERNAL_EVIDENCE`, or `DEFERRED_G08_G19`, and emits zero operations. Its
+  current result is G01 PASS, G02-G07 HOLD; it is not release authorization.
 
 - A valid contract may still report `CONTRACT_VALID_BUILD_BLOCKED`. Do not use
   `--require-ready`, generate operations, take a live entity gate, or execute a
@@ -1803,8 +1818,9 @@ node scripts/compile_combined_zones_empty_eight_geology_design.mjs
   against identical artifact hashes.
 - The validator checks resolved decisions against the bound decision ledger,
   protected cores against the relic census, reviewed-buffer schema and hashes,
-  semantic PASS states in the decision/relic/C1/site artifacts, and explicit
-  hash-bound current evaluations for G01–G14. The present contract intentionally
+  compiled R01 candidate readiness separately from completed R01/Phase 1
+  acceptance, and explicit hash-bound current evaluations for G01–G14. The
+  present contract intentionally
   has an empty `currentGateEvaluations` array and all R00–R13 nodes `BLOCKED`.
   Advancing a node requires the missing project release tooling and a reviewed
   contract-state transition; the current-state validator is not an execution

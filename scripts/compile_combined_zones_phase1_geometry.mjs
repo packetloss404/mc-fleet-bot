@@ -40,7 +40,7 @@ const PATHS = Object.freeze({
 // Updating an authority source requires explicit review of this pin. A stale
 // compiler must fail before it writes an apparently current coordination file.
 const EXPECTED_RECONCILIATION_SHA256 =
-  'f26f4db255f4537b711ccdbeea38d075dc16914e8ec67dc3386c90f500adba9e';
+  'ad6ab25b19e12c405634d2a03dca547d4c92073a4dbf4f2caa9ba0995d949c4d';
 
 function absolute(relativePath) {
   return path.join(ROOT, relativePath);
@@ -551,9 +551,18 @@ const blockers = [
     id: 'P1-B11-EXTERNAL-INTERFACES',
     scope: ['Z01', 'Z02', 'Z03', 'C1', 'C3', 'C4'],
     status: 'BLOCKING_OPERATION_COMPILATION',
-    conflict: 'Grand Avenue Y is null, the PassageWay endpoint is unset, current ownership/entity gates are absent, and the corridor remains detailed-civil-design only.',
+    conflict: 'Grand Avenue Y is null, the PassageWay endpoint is unset, current ownership and interface contracts are absent, and the corridor remains detailed-civil-design only.',
     conservativeDefault: 'Never substitute terrain Y for null setout and keep future interfaces sealed.',
-    closureEvidenceRequired: 'Exact interface points and Y profiles, ownership contracts, entity gate, and per-scope forward/rollback ownership.',
+    closureEvidenceRequired: 'Exact interface points and Y profiles plus accepted per-scope ownership and interface contracts.',
+    releaseLifecycleValidation: {
+      gateRange: 'G08-G19',
+      resolvesR00G03: false,
+      requirements: [
+        'package-bound live entity clearance',
+        'guarded per-scope forward and rollback operations',
+        'complete preflight, execution, and post-state acceptance',
+      ],
+    },
   },
 ];
 

@@ -127,6 +127,7 @@ interface Report {
     status: string;
     conservativeDefault: string;
     closureEvidenceRequired: string;
+    releaseLifecycleValidation?: { gateRange: string; resolvesR00G03: boolean };
   }>;
   gates: {
     sourceHashesMatch: boolean;
@@ -370,6 +371,21 @@ describe('Combined Zones Phase 1 geometry coordination', () => {
       expect(blocker.conservativeDefault, blocker.id).not.toBe('');
       expect(blocker.closureEvidenceRequired, blocker.id).not.toBe('');
     }
+    const externalInterfaces = report.blockerMatrix.find(
+      ({ id }) => id === 'P1-B11-EXTERNAL-INTERFACES',
+    );
+    expect(externalInterfaces?.closureEvidenceRequired).not.toMatch(
+      /\b(live[- ]entity|operations?|rollbacks?|preflights?|post[- ]state)\b/i,
+    );
+    expect(externalInterfaces?.releaseLifecycleValidation).toEqual({
+      gateRange: 'G08-G19',
+      resolvesR00G03: false,
+      requirements: [
+        'package-bound live entity clearance',
+        'guarded per-scope forward and rollback operations',
+        'complete preflight, execution, and post-state acceptance',
+      ],
+    });
   });
 
   it('passes coordination QA while denying operation compilation and world edits', () => {

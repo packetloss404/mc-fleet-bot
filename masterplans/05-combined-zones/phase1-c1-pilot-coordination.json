@@ -14,8 +14,8 @@
   "sourceBindings": [
     {
       "path": "masterplans/05-combined-zones/MASTERPLAN.md",
-      "sha256": "f28275ba640348ad52d570b67fa22c8338655a5c8452dac6435b4c14055fe203",
-      "bytes": 24725,
+      "sha256": "c4bed39795237e8c361c19a106a0520b95c0f7a35c9c3431ff5a6da8f528cf30",
+      "bytes": 25589,
       "role": "current-world plan and Phase 1 pilot requirement"
     },
     {
@@ -44,8 +44,8 @@
     },
     {
       "path": "masterplans/05-combined-zones/phase1-design-decisions.json",
-      "sha256": "fbacbfc5fe3f4651310148c014b21127976c22c06fcaaee3dd8a33ccb961e40f",
-      "bytes": 14049,
+      "sha256": "d2e7d91b2ed237bf70ed00bd0f5e546df42786e90e3748c884e0f8fc6b8c9158",
+      "bytes": 16507,
       "role": "reserve-first rail staging decision"
     }
   ],
@@ -1223,6 +1223,14 @@
     }
   ],
   "decision": {
+    "sequencingBoundary": {
+      "prerequisiteReleaseId": "CZ-R00-PHASE1-DESIGN-FREEZE",
+      "requiresAcceptedR00": true,
+      "resolvesD02": false,
+      "resolvesG02": false,
+      "requiredBeforeReleaseId": "CZ-R02-PHASE2-EMPTY-EIGHT-DEEP-SHELL",
+      "validationRole": "POST_R00_VALIDATION_NOT_D02_OR_G02_CLOSURE_EVIDENCE"
+    },
     "coordinationEnvelopeMayBeFrozen": true,
     "reservedRailSetoutMayBeFrozenForCoordination": true,
     "independentHighwayProfileFrozen": false,

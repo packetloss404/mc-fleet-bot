@@ -66,10 +66,10 @@ Catalog clearance also does not establish ownership. C1 crosses the C01 Owner Tu
 3. Produce the exact current ownership and interface audit, including C01 structural loading and enforcement of the L2 scope deletion.
 4. Cross-check exact 3D construction cells against all 50 reserve structure starts; retain the frozen relic cores, resolve the absent east-igloo condition, and approve exact positive buffers.
 5. Bind future exact construction/influence volumes to the full-height baseline, then assign hydrology owners and prove groundwater, drainage, snowmelt, retaining structures, sumps, discharge, and no unintended diversion.
-6. Close D02's geotechnical/structural/outfall/C01 gates and D06's surface egress/vent/discharge/fire-service, commissioned-mechanism, source-guard, and operational gates.
-7. Close the frozen C1 candidate's civil, hydrology, natural-feature, structure, entity, ownership, and source gates, then compile and validate a small disjoint visual pilot with exact forward/rollback operations and bidirectional route QA.
+6. Close D02's geotechnical/structural/outfall/C01 design gates and D06's surface egress/vent/discharge/fire-service and mechanism-design gates.
+7. After R00 accepts G01-G07, satisfy G01-G14 and compile a small disjoint R01 visual pilot with exact guarded forward/rollback operations and explicit authorization. Bidirectional route, media, rollback, and post-state QA remain R01 acceptance evidence under G16-G19.
 8. At release preparation, capture a fresh complete immutable region set and bind its world/catalog identity, world border, compiler inputs, and all exact target chunks.
 9. After exact operations exist and immediately before any separately authorized execution, run the package-bound same-moment live entity gate.
 10. Require strict-noop parser and source-state preflights, exact rollback, post snapshot, route/media QA, catalog import, and final acceptance.
 
-The machine-readable evidence and exact hashes are in [phase1-site-gate-audit.json](phase1-site-gate-audit.json). Offline detailed design may continue. Physical work remains prohibited until every applicable gate changes from `HOLD` to independently verified `PASS`.
+The machine-readable evidence and exact hashes are in [phase1-site-gate-audit.json](phase1-site-gate-audit.json). G02 closes on pre-R00 design acceptance only; R01 is post-R00 validation and cannot resolve D02, D05, D06, or G02. R02 remains blocked until R01 passes G01-G19. Offline detailed design may continue. Physical work remains prohibited until every applicable gate changes from `HOLD` to independently verified `PASS`.

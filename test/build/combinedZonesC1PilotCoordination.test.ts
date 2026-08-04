@@ -94,6 +94,14 @@ interface Report {
   };
   gates: Gate[];
   decision: {
+    sequencingBoundary: {
+      prerequisiteReleaseId: string;
+      requiresAcceptedR00: boolean;
+      resolvesD02: boolean;
+      resolvesG02: boolean;
+      requiredBeforeReleaseId: string;
+      validationRole: string;
+    };
     coordinationEnvelopeMayBeFrozen: boolean;
     reservedRailSetoutMayBeFrozenForCoordination: boolean;
     independentHighwayProfileFrozen: boolean;
@@ -242,6 +250,14 @@ describe('Combined Zones bounded C1 pilot coordination', () => {
     const report = readReport(COMMITTED_JSON);
 
     expect(report.decision).toEqual({
+      sequencingBoundary: {
+        prerequisiteReleaseId: 'CZ-R00-PHASE1-DESIGN-FREEZE',
+        requiresAcceptedR00: true,
+        resolvesD02: false,
+        resolvesG02: false,
+        requiredBeforeReleaseId: 'CZ-R02-PHASE2-EMPTY-EIGHT-DEEP-SHELL',
+        validationRole: 'POST_R00_VALIDATION_NOT_D02_OR_G02_CLOSURE_EVIDENCE',
+      },
       coordinationEnvelopeMayBeFrozen: true,
       reservedRailSetoutMayBeFrozenForCoordination: true,
       independentHighwayProfileFrozen: false,

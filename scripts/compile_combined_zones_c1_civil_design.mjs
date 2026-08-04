@@ -814,6 +814,19 @@ const report = {
   },
   decisionD02: {
     status: 'PARTIAL_PASS_HOLD',
+    resolutionBoundary: {
+      scope: 'PRE_R00_DESIGN_AND_EXTERNAL_ACCEPTANCE_ONLY',
+      worldEditAuthorized: false,
+      requiresPhysicalPilot: false,
+      requiresForwardRollbackOperations: false,
+      requiresPostStateQa: false,
+    },
+    subsequentReleaseValidation: {
+      releaseId: 'CZ-R01-PHASE1-BOUNDED-VISUAL-PILOT',
+      prerequisiteReleaseId: 'CZ-R00-PHASE1-DESIGN-FREEZE',
+      requiredBeforeReleaseId: 'CZ-R02-PHASE2-EMPTY-EIGHT-DEEP-SHELL',
+      validationRole: 'POST_R00_VALIDATION_NOT_D02_OR_G02_CLOSURE_EVIDENCE',
+    },
     passed: [
       'Exact integer horizontal reference setout and three exact-radius curve rasters are hash-bound.',
       'Independent exact highway and rail profiles are frozen and grade-audited.',
@@ -865,7 +878,7 @@ const markdown = `# Phase 1 C1 Civil Design — D02 Offline Remediation\n\n`
   + `Offsets -30..-18 are a 13-block empty reserve. At the Data District crossroad near X=${C1_DD_CROSSROAD_X}, all future structures must clear-span it with no piers, abutments, utilities, drainage, or temporary works inside. The exact exclusion envelope is hash-reproducible; structural design remains HOLD.\n\n`
   + `## D02 blockers\n\n`
   + report.decisionD02.blockers.map((item) => `- **${item.id}:** ${item.blocker} Closure: ${item.requiredClosure}`).join('\n')
-  + `\n\nUntil all six blockers close, D02 and all world edits remain **HOLD**.\n`;
+  + `\n\nUntil all six accepted design/external-evidence blockers close, D02 remains **HOLD**. Closing D02 alone authorizes no world edit; R01 is subsequent post-R00 physical validation and cannot resolve D02 or G02.\n`;
 
 fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
 fs.mkdirSync(path.dirname(MARKDOWN), { recursive: true });

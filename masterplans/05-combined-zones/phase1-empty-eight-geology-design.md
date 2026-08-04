@@ -36,4 +36,4 @@ C2 remains a logical link only. There is no active mechanism, no landing coordin
 
 ## Gate
 
-D06's internal design freeze passes, and D07's factual wording gate passes. Phase 1 and all physical work remain **HOLD** because complete external life-safety engineering and the ordinary ownership/source/release gates have not passed. See [the machine-readable record](phase1-empty-eight-geology-design.json) for exact hashes, bounds, contracts, and closure requirements.
+D06's internal design freeze passes, and D07's factual wording gate passes. Phase 1 and all physical work remain **HOLD** because complete external life-safety engineering and the ordinary ownership/source/release gates have not passed. D06/G02 closes on accepted pre-R00 design evidence only; operations, preflight, pilot, rollback, and post-state QA remain G03-G19 validation. See [the machine-readable record](phase1-empty-eight-geology-design.json) for exact hashes, bounds, contracts, and closure requirements.

@@ -48,4 +48,4 @@ All five source samples are `minecraft:pale_garden`. The exact envelope contains
 
 ## Decision
 
-The bounded coordinate envelope and reserved-rail setout may be frozen for offline coordination. A physical pilot cell set may **not** be frozen. R01 remains on HOLD until the independent highway profile, complete structure clearance, pale-garden and entity treatment, soil/loading/retaining design, hydrology/drainage, ownership/interfaces, fresh source snapshot, exact guarded forward/rollback package, and release authorization all pass against the same identities.
+The bounded coordinate envelope and reserved-rail setout may be frozen for offline coordination. A physical pilot cell set may **not** be frozen. R01 is post-R00 validation and cannot resolve D02 or G02. It remains on HOLD until R00 is accepted and the complete structure clearance, pale-garden and entity treatment, ownership/interfaces, fresh source snapshot, exact guarded forward/rollback package, and release authorization all pass against the same identities.

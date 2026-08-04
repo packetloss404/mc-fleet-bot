@@ -65,7 +65,9 @@
   "decisionPolicy": {
     "resolveRule": "Resolve only a choice compelled by user authority, an adopted Masterplan 05 statement, or a reversible fail-closed omission expressly allowed by that plan.",
     "holdRule": "Keep a decision on HOLD when resolution would invent geometry, materials, safety engineering, factual wording, ownership, survey evidence, or release authority.",
-    "scopeOmissionMeaning": "Deleting or deferring an unbuilt proposal removes it from active construction scope; it never authorizes physical demolition."
+    "scopeOmissionMeaning": "Deleting or deferring an unbuilt proposal removes it from active construction scope; it never authorizes physical demolition.",
+    "g02ClosureBoundary": "PRE_R00_DESIGN_ACCEPTANCE_ONLY",
+    "releaseEvidenceBoundary": "Operations, source guards, manifests, preflights, live-entity clearance, pilots, execution, rollback, route QA, and post-state QA belong to G03-G19 and cannot resolve a G02 design decision."
   },
   "summary": {
     "decisionCount": 7,
@@ -111,7 +113,7 @@
       "topic": "exact C1 highway civil solution",
       "status": "HOLD",
       "selection": null,
-      "conservativeDefault": "NO_HIGHWAY_CONSTRUCTION_OUTSIDE_A_BOUNDED_REVERSIBLE_PILOT",
+      "conservativeDefault": "NO_C1_PHYSICAL_RELEASE_UNTIL_D02_RESOLVED_AND_R00_ACCEPTED",
       "partialDesignEvidence": {
         "path": "masterplans/05-combined-zones/phase1-c1-civil-design.json",
         "status": "PARTIAL_PASS_D02_HOLD"
@@ -123,12 +125,24 @@
         "diagnostic terrain quantities and eight C01 geometric comparisons exist, but structural loading, approved outfalls, geotechnics, contested ownership, visual acceptance, and construction quantities remain unresolved"
       ],
       "closureEvidenceRequired": [
-        "exact integer road centerline and vertical profile",
-        "bridge, tunnel, cut, fill, retaining, slope, and drainage cell sets",
-        "C01 structural and protected-interface acceptance",
-        "owned forward and rollback operations with source guards",
-        "successful bounded bidirectional pilot and post-state QA"
-      ]
+        "accepted geotechnical, subsurface, groundwater, and foundation criteria bound to the exact integer road centerline and vertical profile",
+        "accepted structural basis, clearances, loading, spans, foundations, and independent check for bridge, tunnel, culvert, retaining, and Data District interfaces",
+        "accepted hydraulic design, drainage capacities, erosion controls, outfalls, ownership, and consent",
+        "authoritative C01 field survey plus ISSUE-002 ownership, protected-interface, exclusion, loading, and clearance acceptance",
+        "reviewed exact-radius curve and visual-staircase raster acceptance",
+        "accepted formation, slope, structure, unsuitable-material, quantity, and mass-haul criteria"
+      ],
+      "releaseLifecycleValidation": {
+        "startsAfter": "CZ-R00-PHASE1-DESIGN-FREEZE_ACCEPTED",
+        "releaseId": "CZ-R01-PHASE1-BOUNDED-VISUAL-PILOT",
+        "validationRole": "POST_R00_VALIDATION_NOT_D02_OR_G02_CLOSURE_EVIDENCE",
+        "requiredBefore": "CZ-R02-PHASE2-EMPTY-EIGHT-DEEP-SHELL",
+        "requirements": [
+          "exact owned target and interaction cell sets",
+          "guarded forward and rollback operations plus complete preflight",
+          "bounded bidirectional pilot, immutable post-state, route QA, rollback verification, and final acceptance"
+        ]
+      }
     },
     {
       "id": "D03",
@@ -199,9 +213,19 @@
       "closureEvidenceRequired": [
         "current exact relic block census and immutable identity",
         "reviewed exact no-touch buffers and one-owner interface contracts",
-        "three-dimensional water, lava, drainage, snowmelt, sump, discharge, diversion, and retaining model",
-        "forward and rollback proofs that preserve every relic and prevent unintended fluid diversion"
-      ]
+        "accepted deterministic future mountain terrain, grading, excavation, fill, retaining, drainage, and construction-influence model",
+        "accepted three-dimensional water, lava, groundwater, infiltration, snowmelt, sump, discharge, erosion, and diversion criteria",
+        "expert civil and geotechnical review plus frozen preservation, accounting, and no-unintended-diversion acceptance criteria"
+      ],
+      "releaseLifecycleValidation": {
+        "gateRange": "G03-G19",
+        "resolvesD05": false,
+        "requirements": [
+          "exact owned construction and physics-influence cell sets",
+          "guarded forward and rollback packages bound to one immutable source",
+          "before-and-after accounting, immutable post-state preservation, diversion QA, and rollback verification"
+        ]
+      }
     },
     {
       "id": "D06",
@@ -242,11 +266,20 @@
       ],
       "closureEvidenceRequired": [
         "surveyed, owned surface endpoints for both protected accessible egress cores",
-        "exterior ventilation outlets and validated smoke/control model",
-        "approved drainage discharge and fire/service surface connection",
-        "barrier/lift/emergency-power mechanisms and operational tests",
-        "source guards, rollback, and release evidence for every exact internal reservation and sealed interface"
-      ]
+        "accepted two independent accessible egress routes from every occupied space to safe exterior endpoints",
+        "accepted exterior ventilation outlets and fire, smoke, ventilation, and control design",
+        "accepted drainage discharge plus fire and service surface connections with exact owners and interfaces",
+        "accepted barrier, lift, emergency-power, lighting, and sealed-interface mechanisms with frozen commissioning criteria"
+      ],
+      "releaseLifecycleValidation": {
+        "gateRange": "G03-G19",
+        "resolvesD06": false,
+        "requirements": [
+          "exact owned cell sets, source guards, manifest, forward and rollback operations",
+          "complete preflight, live-entity clearance, and explicit authorization",
+          "bounded pilot, immutable post-state, functional and route QA, rollback verification, and final acceptance"
+        ]
+      }
     },
     {
       "id": "D07",

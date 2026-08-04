@@ -31,7 +31,7 @@ All other relic/envelope pairs have zero overlap. These are design conflicts aga
 
 ## G06 disposition
 
-The immutable snapshot identity, three complete bounded censuses, exact hashes, registry cross-check, minimum default-deny cores, and six-envelope comparison pass as subgates. G06 remains **HOLD** because no evidence-backed positive margin (or reviewed zero-margin acceptance), exact construction cell set, all-structure clearance test, template/entrance review, or post-state preservation contract exists.
+The immutable snapshot identity, three complete bounded censuses, exact hashes, registry cross-check, minimum default-deny cores, and six-envelope comparison pass as subgates. G06 remains **HOLD** because no evidence-backed positive margin (or reviewed zero-margin acceptance), exact proposed construction/interaction cell set, all-structure clearance test, or template/entrance review exists. Post-state preservation is separate G16-G19 validation and cannot satisfy R00 G06.
 
 Reproduce with:
 

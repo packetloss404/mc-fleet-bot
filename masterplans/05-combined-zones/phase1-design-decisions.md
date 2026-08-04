@@ -38,13 +38,15 @@ The C1 north-flank rail reservation remains 13 blocks wide, from offsets `-30…
 
 The [C1 civil design](phase1-c1-civil-design.json) freezes 1,216 exact reference stations, R140/R120/R140 curve rasters, independent grade-audited rail and highway profiles, the 56/80-block cross-section, D04's empty 13-block rail strip, diagnostic quantities, drainage collection, and eight C01 comparisons. It emits no material or operation cells. Geotechnical evidence, structural calculations, approved outfalls, ISSUE-002/ownership acceptance, curve visual acceptance, and construction quantity rules remain open.
 
+G02 is a **pre-R00 design-acceptance gate**. Those six accepted design and external evidence packages resolve D02. Operations, source guards, preflight, the bounded pilot, rollback, route QA, and post-state QA cannot resolve it. R01 instead validates the frozen design after R00 and must pass before R02.
+
 ### D05 — hydrology and relics
 
-The [D05 audit](phase1-d05-hydrology-relic-buffer-design.json) freezes the full-height copied-snapshot census: 1,929,621 water/waterlogged cells, 85,088 lava cells, 182,791 frozen cells, 359,830 snow cells, 5,234 water components, and 941 lava components. It also freezes a D8 surface-routing candidate and exact one-cell adjacency shells around all three default-deny records. Those shells are candidates, not reviewed buffers; the east igloo remains absent, and no future grading/influence cells, owners, expert model, operations, or preservation QA exists.
+The [D05 audit](phase1-d05-hydrology-relic-buffer-design.json) freezes the full-height copied-snapshot census: 1,929,621 water/waterlogged cells, 85,088 lava cells, 182,791 frozen cells, 359,830 snow cells, 5,234 water components, and 941 lava components. It also freezes a D8 surface-routing candidate and exact one-cell adjacency shells around all three default-deny records. Those shells are candidates, not reviewed buffers; the east igloo remains absent, and no accepted future grading/influence model, owners, expert hydrology criteria, or preservation criteria exist. D05 design acceptance is pre-R00; operation, rollback, and post-state proofs remain later G03-G19 validation.
 
 ### D06 — Empty Eight
 
-The [Empty Eight design](phase1-empty-eight-geology-design.json) freezes the internal 14-block palette, five-cell discovery datum, eight platform/barrier schedules, 24 capped retail shells, two disjoint internal stair/lift cores, smoke/vent/drain/fire-service reservations, and eight separately owned 25-cell east seals. It emits no operations. Fit-out remains on HOLD because surface egress endpoints, exterior vents, discharge, fire/service access, commissioned mechanisms, source guards, rollback, and operational evidence are absent.
+The [Empty Eight design](phase1-empty-eight-geology-design.json) freezes the internal 14-block palette, five-cell discovery datum, eight platform/barrier schedules, 24 capped retail shells, two disjoint internal stair/lift cores, smoke/vent/drain/fire-service reservations, and eight separately owned 25-cell east seals. It emits no operations. D06 remains on HOLD because the exterior endpoints are unsurveyed and the external egress, smoke, ventilation, drainage, fire/service, barrier, lift, emergency-power, and interface designs have not been accepted. Source guards, packages, preflight, live clearance, pilot, rollback, and operational QA remain later G03-G19 validation.
 
 ### D07 — wording and portal
 
@@ -52,4 +54,4 @@ No active portal mechanism belongs in the current build. C2 stays logical only, 
 
 ## Gate outcome
 
-Offline Phase 1 remediation may continue. Phase 1 does not pass, no physical phase may start, and no live build may proceed while D02, D05, D06—or the independent ownership, entity, source-guard, rollback, pilot, and release gates—remain open.
+Offline Phase 1 remediation may continue. Phase 1 does not pass, no physical phase may start, and no live build may proceed while D02, D05, D06—or the independent ownership, entity, source-guard, rollback, pilot, and release gates—remain open. The required sequence is design acceptance (G02), accepted R00 design freeze, R01 physical validation, then Phase 1 exit and R02 eligibility.

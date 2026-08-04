@@ -87,6 +87,12 @@ interface Report {
         openingAuthorized: boolean;
       }>;
     };
+    designClosureHoldGates: string[];
+    releaseLifecycleValidation: {
+      gateRange: string;
+      resolvesD06: boolean;
+      requirements: string[];
+    };
   };
   d07: {
     status: string;
@@ -295,5 +301,13 @@ describe('Combined Zones Empty Eight and geology design', () => {
       advanceToPhysicalPhase: false,
       liveBuildMayProceed: false,
     }));
+    expect(report.d06.designClosureHoldGates).toHaveLength(4);
+    expect(report.d06.designClosureHoldGates.join(' ')).not.toMatch(
+      /\b(operations?|source guards?|manifests?|preflights?|live[- ]entity|pilots?|rollbacks?|route[- ]qa|post[- ]state)\b/i,
+    );
+    expect(report.d06.releaseLifecycleValidation).toMatchObject({
+      gateRange: 'G03-G19',
+      resolvesD06: false,
+    });
   });
 });

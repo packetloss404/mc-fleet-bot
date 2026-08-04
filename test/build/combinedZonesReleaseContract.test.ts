@@ -4,7 +4,11 @@ import path from 'path';
 
 import { describe, expect, it } from 'vitest';
 
-import { validateReleaseContract } from '../../scripts/validate_combined_zones_release_contract.mjs';
+import {
+  c1PilotCandidateIsReady,
+  siteR01PretransactionIsReady,
+  validateReleaseContract,
+} from '../../scripts/validate_combined_zones_release_contract.mjs';
 
 const ROOT = process.cwd();
 const CONTRACT_PATH = path.join(
@@ -119,6 +123,56 @@ describe('Masterplan 05 deterministic release contract', () => {
         'ALL_PHYSICAL_RELEASE_LIFECYCLE_GATES',
       );
     }
+    expect(contract.decisionResolutionBoundary).toMatchObject({
+      g02Closure: 'PRE_R00_DESIGN_ACCEPTANCE_ONLY',
+      descendantReleaseEvidenceMayResolveG02: false,
+    });
+    expect(contract.globalInvariants.decisionResolutionMayDependOnDescendantReleaseEvidence)
+      .toBe(false);
+    expect(contract.releaseSequence[1]).toMatchObject({
+      id: 'CZ-R01-PHASE1-BOUNDED-VISUAL-PILOT',
+      dependsOn: ['CZ-R00-PHASE1-DESIGN-FREEZE'],
+      validationRole: 'POST_R00_VALIDATION_NOT_D02_D05_D06_OR_G02_CLOSURE_EVIDENCE',
+      requiredBeforeReleaseId: 'CZ-R02-PHASE2-EMPTY-EIGHT-DEEP-SHELL',
+    });
+  });
+
+  it('separates R01 start readiness from R01 and Phase 1 acceptance', () => {
+    expect(c1PilotCandidateIsReady({
+      exactPlanCoordination: {
+        physicalTargetCellSet: { cellCount: 1 },
+        interactionCellSet: { cellCount: 2 },
+      },
+      decision: {
+        phase1R01Status: 'HOLD',
+        physicalPilotTargetCellSetMayBeFrozen: true,
+        operationCellCount: 1,
+        operationsEmitted: true,
+      },
+    })).toBe(true);
+    expect(c1PilotCandidateIsReady({
+      exactPlanCoordination: {},
+      decision: {
+        phase1R01Status: 'PASS',
+        physicalPilotTargetCellSetMayBeFrozen: true,
+        operationCellCount: 1,
+        operationsEmitted: true,
+      },
+    })).toBe(false);
+    expect(siteR01PretransactionIsReady({
+      decision: {
+        phase1Exit: 'HOLD',
+        constructionReadiness: 'PASS',
+        liveBuildMayProceed: true,
+      },
+    })).toBe(true);
+    expect(siteR01PretransactionIsReady({
+      decision: {
+        phase1Exit: 'PASS',
+        constructionReadiness: 'HOLD',
+        liveBuildMayProceed: false,
+      },
+    })).toBe(false);
   });
 
   it('makes ownership, protected features, bijection and snapshot identity fail closed', () => {
@@ -192,7 +246,11 @@ describe('Masterplan 05 deterministic release contract', () => {
     expect(report.semanticGateBlockers).toEqual([
       'bound-decision-ledger-not-pass',
       'bound-protected-feature-gate-not-pass',
-      'bound-c1-physical-pilot-not-pass',
+      'bound-c1-pilot-candidate-not-compiled',
+      'bound-site-r01-pretransaction-not-pass',
+    ]);
+    expect(report.postR01AdvanceBlockers).toEqual([
+      'bound-c1-r01-acceptance-not-pass',
       'bound-site-phase1-exit-not-pass',
     ]);
     expect(report.incompleteGateEvaluationIds).toEqual(

@@ -19,18 +19,18 @@
     },
     "phase1GeometryCoordination": {
       "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
-      "bytes": 35204,
-      "sha256": "ad5893ae724b4662008e58f0b3bf2f54675ef548b305214e6f209b9b39ea160e"
+      "bytes": 35526,
+      "sha256": "7065c8c8f1f20baab38e07834c8d7ec9d4120c09863aaf1f67b4357065258918"
     },
     "phase1DesignDecisions": {
       "path": "masterplans/05-combined-zones/phase1-design-decisions.json",
-      "bytes": 14049,
-      "sha256": "fbacbfc5fe3f4651310148c014b21127976c22c06fcaaee3dd8a33ccb961e40f"
+      "bytes": 16507,
+      "sha256": "d2e7d91b2ed237bf70ed00bd0f5e546df42786e90e3748c884e0f8fc6b8c9158"
     },
     "protectedRelicClearance": {
       "path": "masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
-      "bytes": 30192,
-      "sha256": "fca0158c16bd8d30b5b562030364a4e04aadba49387c98225c64b191fa70405a"
+      "bytes": 30460,
+      "sha256": "a983fab119749e8d34457d2754181b45f323f823de302c72f03974766f360c4d"
     },
     "immutablePhase0PostRegionSnapshot": {
       "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
@@ -106191,16 +106191,24 @@
       "each relic has a reproducible one-cell adjacency-buffer candidate with exact coordinates and current block states",
       "the current copied-surface D8 routing relation and boundary-versus-sink partition are deterministic and hash-bound"
     ],
-    "holdSubgates": [
+    "designClosureHoldSubgates": [
       "the one-cell relic shells are candidates, not reviewed structural, hydrological, access, entrance-safety, or exhibit buffers",
       "the east igloo has no present cells in its recorded start bound and no present relic fabric is inferred",
       "no deterministic future mountain solid, grading, excavation, fill, retaining, or drainage geometry exists",
       "no exact construction or physics-influence cell set exists for before/after water-source, sink, diversion, and protected-buffer intersection proofs",
       "no canonical hydrology owner or cross-boundary interface contract is assigned",
-      "no expert-approved snowmelt, groundwater, infiltration, discharge, sump, erosion, or geotechnical model exists",
-      "no forward/rollback package or immutable post-state preservation and no-unintended-diversion QA exists"
+      "no expert-approved snowmelt, groundwater, infiltration, discharge, sump, erosion, or geotechnical model exists"
     ],
-    "passRule": "D05 may pass only after reviewed exact relic buffers, a deterministic future terrain/construction influence model, one-owner hydrology and interface contracts, complete before/after fluid accounting, expert civil/geotechnical review, exact rollback, and post-state preservation/diversion QA all bind the same source and operation identities."
+    "passRule": "D05 may pass G02 only after reviewed exact relic buffers, an accepted deterministic future terrain/construction influence model, accepted one-owner hydrology and interface contracts, frozen preservation/accounting/no-unintended-diversion acceptance criteria, and expert civil/geotechnical review bind the same immutable design identity.",
+    "releaseLifecycleValidation": {
+      "gateRange": "G03-G19",
+      "resolvesD05": false,
+      "requirements": [
+        "exact owned construction and physics-influence cell sets",
+        "guarded forward and rollback packages bound to one immutable source",
+        "before-and-after accounting, immutable post-state preservation, diversion QA, and rollback verification"
+      ]
+    }
   },
   "prohibitions": [
     "No present east-igloo preservation is inferred.",

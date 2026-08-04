@@ -21,7 +21,7 @@ The authority chain is `01 + 02 + 03 -> 04 normalized architecture -> 05 current
 
 Phase advancement is controlled by the dedicated [Phase 1 release-engineering plan](PHASE1-RELEASE-ENGINEERING.md) and [machine-readable release contract](phase1-release-contract.json). They decompose the work into serial releases `R00…R13`: G01–G14 must pass before a physical transaction can start, G15 controls atomic execution, and G01–G19 must all pass before that release can become accepted. Missing, stale, partial, hash-drifting, or narratively equivalent evidence fails closed.
 
-The current offline design wave is recorded in the [exact C1 civil study](phase1-c1-civil-design.json), [mountain hydrology and relic-buffer audit](phase1-d05-hydrology-relic-buffer-design.json), and [Empty Eight/geology design](phase1-empty-eight-geology-design.json). D02, D05, and D06 remain HOLD on their declared external, expert, ownership, and release evidence. D07's factual wording is resolved as an explicitly architectural composite, and C2 remains omitted with no active mechanism or target cells. None of these records emits operations or authorizes world edits.
+The current offline design wave is recorded in the [exact C1 civil study](phase1-c1-civil-design.json), [mountain hydrology and relic-buffer audit](phase1-d05-hydrology-relic-buffer-design.json), [Empty Eight/geology design](phase1-empty-eight-geology-design.json), and [R00 readiness audit](phase1-r00-readiness-audit.json). D02, D05, and D06 remain HOLD on pre-R00 external, expert, ownership, and design acceptance. G02 now explicitly excludes operations, source guards, manifests, preflight, entity clearance, pilots, execution, rollback, route QA, and post-state QA; those belong to G03-G19. D07's factual wording is resolved as an explicitly architectural composite, and C2 remains omitted with no active mechanism or target cells. None of these records emits operations or authorizes world edits.
 
 ## Phase 0 rerun verdict
 
@@ -260,9 +260,9 @@ The material narrative is current-world history → landscaped arrival → monum
 - Freeze the 56-block reservation and 13-block rail strip before any surface package.
 - Enforce the D03 deletion of the unsurveyed L2 campus gate from active scope.
 - Freeze Z02 stops, GA-J1, subway descent, egress shafts, terminal cross-sections, protected relic buffers, and hydrology ownership.
-- Produce exact zone/interface contracts and a bounded visual pilot with rollback.
+- Freeze complete accepted design and interfaces at R00, then produce the bounded reversible R01 visual pilot as post-R00 physical validation.
 
-Exit gate: current ownership audit, entity census, no protected conflicts, exact source guards, bidirectional pilot, drainage/grade review, and rollback.
+R00 gate: G01-G07 pass from design and external-acceptance evidence only. Phase 1 exit: after R00, R01 passes G01-G19, including ownership, entity clearance, protected-feature clearance, source guards, bidirectional validation, drainage/grade review, immutable post-state, and rollback proof.
 
 ### Phase 2 — deep shells first
 
@@ -310,11 +310,11 @@ Exit gate: bidirectional no-dig/no-tower walks, powered-door and minecart tests,
 ## Decision status
 
 1. **D01 resolved:** use the current world with Masterplan 05 vertical adaptation. Exact per-owner integer construction setout remains a separate Phase 1 gate.
-2. **D02 HOLD:** the exact alignment, independent highway profile, cross-section, diagnostic quantities, and C01 geometric comparisons are frozen; geotechnical, structural, drainage-outfall, contested-ownership, visual-acceptance, and construction-quantity gates remain open.
+2. **D02 HOLD:** the exact alignment, independent highway profile, cross-section, diagnostic quantities, and C01 geometric comparisons are frozen; six pre-R00 geotechnical, structural/C01, hydraulic/outfall, contested-ownership, visual-acceptance, and construction-quantity design packages remain open. Those accepted packages close D02; R01 subsequently validates the frozen design and cannot resolve D02 or G02.
 3. **D03 resolved:** delete the unsurveyed MainStreet East L2 proposal from active scope without authorizing demolition or a substitute coordinate.
 4. **D04 resolved:** preserve passenger rail as a fully clear-spanned empty reservation; track construction requires its own later release.
-5. **D05 HOLD:** the full-height copied-snapshot fluid/cryosphere census, connected components, surface-routing candidate, and one-cell relic adjacency candidates are frozen; reviewed buffers, future grading/influence cells, owners, expert modelling, and preservation QA remain open.
-6. **D06 HOLD:** the internal Empty Eight palette, cue, platforms, retail shells, safety reservations, and eight sealed future-line contracts are frozen; unsurveyed surface continuations, commissioned systems, source guards, and release evidence remain open.
+5. **D05 HOLD:** the full-height copied-snapshot fluid/cryosphere census, connected components, surface-routing candidate, and one-cell relic adjacency candidates are frozen; reviewed buffers, east-igloo disposition, accepted future grading/influence design, owners, expert modelling, and preservation/no-diversion acceptance criteria remain open. Operation, rollback, and post-state proof are later G03-G19 validation.
+6. **D06 HOLD:** the internal Empty Eight palette, cue, platforms, retail shells, safety reservations, and eight sealed future-line contracts are frozen; surveyed surface continuations and accepted egress, smoke/ventilation, drainage, fire/service, barrier, lift, emergency-power, and interface mechanisms remain open. Source guards, packaging, preflight, pilot, rollback, and operational QA are later G03-G19 validation.
 7. **D07 resolved:** use the fact-checked six-panel architectural-composite wording; do not claim a natural contact, thrust/overthrust, laccolith, or `270 Ma` date. The optional C2 visitor portal remains omitted from active construction scope.
 
 The machine-readable selections and closure requirements are in [phase1-design-decisions.json](phase1-design-decisions.json). Until D02, D05, D06 and every later release gate pass, every coordinate here remains a proposed design setout, not a build command.

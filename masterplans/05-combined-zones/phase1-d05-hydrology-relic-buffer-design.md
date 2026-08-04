@@ -39,7 +39,7 @@ This is a reproducible topographic partition only. It is not Minecraft fluid sim
 
 ## D05 disposition
 
-The immutable identity, exact current 3D hydrology/cryosphere census, fluid components and boundary contacts, relic adjacency candidates, and topographic routing candidate pass as offline evidence. D05 remains **HOLD** because reviewed relic buffers, future mountain geometry, construction influence cells, canonical owners/interfaces, expert civil and geotechnical review, before/after accounting, rollback, and post-state preservation/no-diversion QA do not exist.
+The immutable identity, exact current 3D hydrology/cryosphere census, fluid components and boundary contacts, relic adjacency candidates, and topographic routing candidate pass as offline evidence. D05 remains **HOLD** because reviewed relic buffers, an accepted future mountain model, accepted influence criteria, canonical owners/interfaces, expert civil and geotechnical review, and frozen preservation/no-diversion acceptance criteria do not exist. Operations, rollback, and post-state proof are later G03-G19 validation and cannot resolve D05 or G02.
 
 Reproduce with:
 

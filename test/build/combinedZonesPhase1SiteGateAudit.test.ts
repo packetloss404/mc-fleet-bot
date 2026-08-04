@@ -158,6 +158,14 @@ interface SiteGateAudit {
     artifact: string;
     requirement: string;
   }>;
+  sequencingBoundary: {
+    g02Closure: string;
+    r00Role: string;
+    r01Role: string;
+    r01MayStartOnlyAfter: string;
+    r01AcceptanceRequires: string;
+    r02MayStartOnlyAfter: string;
+  };
   decision: {
     phase0SiteSelection: string;
     phase1DetailedDesignMayProceedOffline: boolean;
@@ -395,6 +403,14 @@ describe('Combined Zones Phase 1 site-gate audit', () => {
     expect(audit.requiredEvidence.map((item) => item.order)).toEqual([
       1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
     ]);
+    expect(audit.sequencingBoundary).toEqual({
+      g02Closure: 'PRE_R00_DESIGN_ACCEPTANCE_ONLY',
+      r00Role: 'FREEZE_ACCEPTED_D01_D07_DESIGN_AND_G01_G07_INTERFACES',
+      r01Role: 'POST_R00_PHYSICAL_VALIDATION_NOT_G02_CLOSURE_EVIDENCE',
+      r01MayStartOnlyAfter: 'CZ-R00-PHASE1-DESIGN-FREEZE_ACCEPTED_AND_G01_G14_PASS',
+      r01AcceptanceRequires: 'G01_G19_PASS',
+      r02MayStartOnlyAfter: 'CZ-R01-PHASE1-BOUNDED-VISUAL-PILOT_ACCEPTED',
+    });
     expect(audit.decision).toMatchObject({
       phase0SiteSelection: 'PASS',
       phase1DetailedDesignMayProceedOffline: true,

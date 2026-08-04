@@ -16,8 +16,8 @@
   "sourceBindings": [
     {
       "path": "masterplans/05-combined-zones/MASTERPLAN.md",
-      "sha256": "f28275ba640348ad52d570b67fa22c8338655a5c8452dac6435b4c14055fe203",
-      "bytes": 24725,
+      "sha256": "c4bed39795237e8c361c19a106a0520b95c0f7a35c9c3431ff5a6da8f528cf30",
+      "bytes": 25589,
       "role": "current-world plan and D02 requirements"
     },
     {
@@ -35416,6 +35416,19 @@
   },
   "decisionD02": {
     "status": "PARTIAL_PASS_HOLD",
+    "resolutionBoundary": {
+      "scope": "PRE_R00_DESIGN_AND_EXTERNAL_ACCEPTANCE_ONLY",
+      "worldEditAuthorized": false,
+      "requiresPhysicalPilot": false,
+      "requiresForwardRollbackOperations": false,
+      "requiresPostStateQa": false
+    },
+    "subsequentReleaseValidation": {
+      "releaseId": "CZ-R01-PHASE1-BOUNDED-VISUAL-PILOT",
+      "prerequisiteReleaseId": "CZ-R00-PHASE1-DESIGN-FREEZE",
+      "requiredBeforeReleaseId": "CZ-R02-PHASE2-EMPTY-EIGHT-DEEP-SHELL",
+      "validationRole": "POST_R00_VALIDATION_NOT_D02_OR_G02_CLOSURE_EVIDENCE"
+    },
     "passed": [
       "Exact integer horizontal reference setout and three exact-radius curve rasters are hash-bound.",
       "Independent exact highway and rail profiles are frozen and grade-audited.",

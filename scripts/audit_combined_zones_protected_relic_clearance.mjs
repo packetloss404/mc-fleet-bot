@@ -507,11 +507,19 @@ const report = {
       'no evidence-backed positive-margin relic buffer has been designed or approved',
       ...emptyRelicBounds.map((key) => `${key} has zero present cells inside its recorded start bound; current relic preservation is not established`),
       'the census does not prove vanilla-template integrity, entrance safety, or block attribution outside each start bound',
-      'no exact construction/material/operation cell set exists for clearance testing',
+      'no exact proposed construction and interaction cell set exists for design-time clearance testing',
       'the remaining 47 reserve-intersecting generated structure starts have not been tested against an exact construction set',
-      'no post-construction immutable snapshot or relic-preservation comparison exists',
     ],
-    passRule: 'G06 may pass only after reviewed positive-margin policy or an explicit evidence-backed zero-margin acceptance, exact operation cells clear every protected core and all relevant structure starts, and post-state preservation checks are defined.',
+    passRule: 'G06 may pass for R00 only after reviewed positive-margin policy or an explicit evidence-backed zero-margin acceptance and exact proposed construction/interaction cells clear every protected core and all relevant structure starts.',
+    releaseLifecycleValidation: {
+      gateRange: 'G16-G19',
+      resolvesG06ForR00: false,
+      requirements: [
+        'immutable post-construction snapshot',
+        'exact protected-core and reviewed-buffer preservation comparison',
+        'final relic-preservation acceptance bound to the executed operation identities',
+      ],
+    },
   },
   limitations: [
     'No entity-region data is read; entity clearance is a separate gate.',
@@ -550,7 +558,7 @@ All other relic/envelope pairs have zero overlap. These are design conflicts aga
 
 ## G06 disposition
 
-The immutable snapshot identity, three complete bounded censuses, exact hashes, registry cross-check, minimum default-deny cores, and six-envelope comparison pass as subgates. G06 remains **HOLD** because no evidence-backed positive margin (or reviewed zero-margin acceptance), exact construction cell set, all-structure clearance test, template/entrance review, or post-state preservation contract exists.
+The immutable snapshot identity, three complete bounded censuses, exact hashes, registry cross-check, minimum default-deny cores, and six-envelope comparison pass as subgates. G06 remains **HOLD** because no evidence-backed positive margin (or reviewed zero-margin acceptance), exact proposed construction/interaction cell set, all-structure clearance test, or template/entrance review exists. Post-state preservation is separate G16-G19 validation and cannot satisfy R00 G06.
 
 Reproduce with:
 

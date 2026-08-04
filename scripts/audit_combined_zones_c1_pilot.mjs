@@ -824,6 +824,14 @@ const report = {
   },
   gates,
   decision: {
+    sequencingBoundary: {
+      prerequisiteReleaseId: 'CZ-R00-PHASE1-DESIGN-FREEZE',
+      requiresAcceptedR00: true,
+      resolvesD02: false,
+      resolvesG02: false,
+      requiredBeforeReleaseId: 'CZ-R02-PHASE2-EMPTY-EIGHT-DEEP-SHELL',
+      validationRole: 'POST_R00_VALIDATION_NOT_D02_OR_G02_CLOSURE_EVIDENCE',
+    },
     coordinationEnvelopeMayBeFrozen: true,
     reservedRailSetoutMayBeFrozenForCoordination: true,
     independentHighwayProfileFrozen: false,
@@ -861,7 +869,7 @@ function markdownFor(result) {
     + `## Gates\n\n`
     + `| Gate | Result | Basis |\n|---|---|---|\n${gateRows}\n\n`
     + `## Decision\n\n`
-    + `The bounded coordinate envelope and reserved-rail setout may be frozen for offline coordination. A physical pilot cell set may **not** be frozen. R01 remains on HOLD until the independent highway profile, complete structure clearance, pale-garden and entity treatment, soil/loading/retaining design, hydrology/drainage, ownership/interfaces, fresh source snapshot, exact guarded forward/rollback package, and release authorization all pass against the same identities.\n`;
+    + `The bounded coordinate envelope and reserved-rail setout may be frozen for offline coordination. A physical pilot cell set may **not** be frozen. R01 is post-R00 validation and cannot resolve D02 or G02. It remains on HOLD until R00 is accepted and the complete structure clearance, pale-garden and entity treatment, ownership/interfaces, fresh source snapshot, exact guarded forward/rollback package, and release authorization all pass against the same identities.\n`;
 }
 
 fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });

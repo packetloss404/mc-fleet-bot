@@ -6,8 +6,8 @@
   "sourceBindings": [
     {
       "path": "masterplans/05-combined-zones/MASTERPLAN.md",
-      "sha256": "f28275ba640348ad52d570b67fa22c8338655a5c8452dac6435b4c14055fe203",
-      "bytes": 24725,
+      "sha256": "c4bed39795237e8c361c19a106a0520b95c0f7a35c9c3431ff5a6da8f528cf30",
+      "bytes": 25589,
       "role": "Masterplan 05 current-world intent and D06/D07 gates"
     },
     {
@@ -2184,13 +2184,21 @@
         "Cheyenne secure circulation"
       ]
     },
-    "remainingHoldGates": [
+    "designClosureHoldGates": [
       "survey exact dry surface endpoints for EG-A and EG-B without replacing null Y by inference",
       "prove two complete independent accessible egress routes from occupied spaces to safe exterior endpoints",
       "complete fire/smoke, ventilation, emergency-power/lighting, platform-barrier, drainage, and fire-service engineering",
-      "bind every cell to exact ownership, immutable source guards, one-cell forward/rollback operations, and a release manifest",
-      "pass bounded pilot, live entity clearance, full preflight, post-state QA, route QA, and rollback verification"
-    ]
+      "accept exterior vent, discharge, fire/service, barrier, lift, emergency-power, and sealed-interface mechanisms with exact owners, interfaces, and frozen commissioning criteria"
+    ],
+    "releaseLifecycleValidation": {
+      "gateRange": "G03-G19",
+      "resolvesD06": false,
+      "requirements": [
+        "bind every cell to exact ownership, immutable source guards, forward/rollback operations, and a release manifest",
+        "pass complete preflight, live entity clearance, and explicit authorization",
+        "pass bounded pilot, immutable post-state, functional and route QA, rollback verification, and final acceptance"
+      ]
+    }
   },
   "d07": {
     "status": "RESOLVED_WORDING_ONLY_PORTAL_OMITTED",

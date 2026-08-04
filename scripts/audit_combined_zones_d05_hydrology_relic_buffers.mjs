@@ -1111,16 +1111,24 @@ const report = {
       'each relic has a reproducible one-cell adjacency-buffer candidate with exact coordinates and current block states',
       'the current copied-surface D8 routing relation and boundary-versus-sink partition are deterministic and hash-bound',
     ],
-    holdSubgates: [
+    designClosureHoldSubgates: [
       'the one-cell relic shells are candidates, not reviewed structural, hydrological, access, entrance-safety, or exhibit buffers',
       'the east igloo has no present cells in its recorded start bound and no present relic fabric is inferred',
       'no deterministic future mountain solid, grading, excavation, fill, retaining, or drainage geometry exists',
       'no exact construction or physics-influence cell set exists for before/after water-source, sink, diversion, and protected-buffer intersection proofs',
       'no canonical hydrology owner or cross-boundary interface contract is assigned',
       'no expert-approved snowmelt, groundwater, infiltration, discharge, sump, erosion, or geotechnical model exists',
-      'no forward/rollback package or immutable post-state preservation and no-unintended-diversion QA exists',
     ],
-    passRule: 'D05 may pass only after reviewed exact relic buffers, a deterministic future terrain/construction influence model, one-owner hydrology and interface contracts, complete before/after fluid accounting, expert civil/geotechnical review, exact rollback, and post-state preservation/diversion QA all bind the same source and operation identities.',
+    passRule: 'D05 may pass G02 only after reviewed exact relic buffers, an accepted deterministic future terrain/construction influence model, accepted one-owner hydrology and interface contracts, frozen preservation/accounting/no-unintended-diversion acceptance criteria, and expert civil/geotechnical review bind the same immutable design identity.',
+    releaseLifecycleValidation: {
+      gateRange: 'G03-G19',
+      resolvesD05: false,
+      requirements: [
+        'exact owned construction and physics-influence cell sets',
+        'guarded forward and rollback packages bound to one immutable source',
+        'before-and-after accounting, immutable post-state preservation, diversion QA, and rollback verification',
+      ],
+    },
   },
   prohibitions: [
     'No present east-igloo preservation is inferred.',
@@ -1166,7 +1174,7 @@ This is a reproducible topographic partition only. It is not Minecraft fluid sim
 
 ## D05 disposition
 
-The immutable identity, exact current 3D hydrology/cryosphere census, fluid components and boundary contacts, relic adjacency candidates, and topographic routing candidate pass as offline evidence. D05 remains **HOLD** because reviewed relic buffers, future mountain geometry, construction influence cells, canonical owners/interfaces, expert civil and geotechnical review, before/after accounting, rollback, and post-state preservation/no-diversion QA do not exist.
+The immutable identity, exact current 3D hydrology/cryosphere census, fluid components and boundary contacts, relic adjacency candidates, and topographic routing candidate pass as offline evidence. D05 remains **HOLD** because reviewed relic buffers, an accepted future mountain model, accepted influence criteria, canonical owners/interfaces, expert civil and geotechnical review, and frozen preservation/no-diversion acceptance criteria do not exist. Operations, rollback, and post-state proof are later G03-G19 validation and cannot resolve D05 or G02.
 
 Reproduce with:
 

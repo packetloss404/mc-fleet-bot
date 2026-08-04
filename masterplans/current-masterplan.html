@@ -290,8 +290,8 @@
           <span class="label">Design decisions resolved; D02, D05, and D06 remain HOLD</span>
         </article>
         <article class="card metric hold">
-          <span class="value">38</span>
-          <span class="label">Derived validator blocker entries; the contract itself declares 10 blocker strings</span>
+          <span class="value">1 / 7</span>
+          <span class="label">R00 gates pass: G01 authority passes; G02–G07 remain HOLD</span>
         </article>
         <article class="card metric blocked">
           <span class="value">0</span>
@@ -300,7 +300,7 @@
       </div>
 
       <div class="callout warning" style="margin-top: 1.5rem">
-        <p><strong>Review interpretation.</strong> “Partial pass” means the offline records are internally useful and validated. It does not mean part of the world may be built. The current release contract is valid precisely because it fails closed and keeps all <code>R00…R13</code> releases blocked.</p>
+        <p><strong>Review interpretation.</strong> “Partial pass” means the offline records are internally useful and validated. It does not mean part of the world may be built. The R00 audit is cycle-free and reports one of seven design-freeze gates passing; the whole-lifecycle validator still reports 39 blocker entries and keeps all <code>R00…R13</code> releases blocked.</p>
       </div>
     </section>
 
@@ -509,13 +509,13 @@
 
       <h3 style="margin: 2rem 0 1rem">On HOLD</h3>
       <div class="grid grid-3">
-        <article class="card decision"><span class="decision-id">D02</span><span class="pill hold">Hold</span><h3>C1 civil solution</h3><p><strong>Frozen:</strong> 1,216 reference stations, R140/R120/R140 curves, independent rail/highway profiles, 56/80-block section, drainage collection, and C01 comparisons.</p><p><strong>Missing:</strong> geotechnical, structural/C01, outfall, ownership, visual acceptance, and construction-quantity evidence. The controlling records also contain a pilot-ordering conflict described below.</p></article>
-        <article class="card decision"><span class="decision-id">D05</span><span class="pill hold">Hold</span><h3>Hydrology and relic buffers</h3><p><strong>Frozen:</strong> full-height fluid/cryosphere census, connected components, D8 routing candidate, and three one-cell recorded-core adjacency candidates. The east igloo’s 280-cell recorded core contains no present relic cells.</p><p><strong>Missing:</strong> east-igloo disposition, reviewed buffers, influence cells, owners, expert model, outfalls, rollback, and preservation QA.</p></article>
-        <article class="card decision"><span class="decision-id">D06</span><span class="pill hold">Hold</span><h3>Empty Eight external life safety</h3><p><strong>Frozen:</strong> internal palette, discovery cue, platforms, 24 retail shells, safety reservations, and eight sealed future-line contracts.</p><p><strong>Missing:</strong> surveyed surface egress, vents, discharge, fire/service access, commissioned systems, source guards, rollback, and operational QA.</p></article>
+        <article class="card decision"><span class="decision-id">D02</span><span class="pill hold">Hold</span><h3>C1 civil solution</h3><p><strong>Frozen:</strong> 1,216 reference stations, R140/R120/R140 curves, independent rail/highway profiles, 56/80-block section, drainage collection, and C01 comparisons.</p><p><strong>Missing for D02:</strong> six accepted geotechnical, structural/C01, outfall, ownership, visual, and construction-quantity design packages. R01 later validates the accepted design.</p></article>
+        <article class="card decision"><span class="decision-id">D05</span><span class="pill hold">Hold</span><h3>Hydrology and relic buffers</h3><p><strong>Frozen:</strong> full-height fluid/cryosphere census, connected components, D8 routing candidate, and three one-cell recorded-core adjacency candidates. The east igloo’s 280-cell recorded core contains no present relic cells.</p><p><strong>Missing for D05:</strong> east-igloo disposition, reviewed buffers, accepted influence model, owners, expert hydrology/civil criteria, and preservation/no-diversion criteria. Rollback and post-state proof follow under G03–G19.</p></article>
+        <article class="card decision"><span class="decision-id">D06</span><span class="pill hold">Hold</span><h3>Empty Eight external life safety</h3><p><strong>Frozen:</strong> internal palette, discovery cue, platforms, 24 retail shells, safety reservations, and eight sealed future-line contracts.</p><p><strong>Missing for D06:</strong> surveyed surface egress and accepted smoke, ventilation, discharge, fire/service, barrier, lift, emergency-power, and interface mechanisms. Packaging and operational QA follow under G03–G19.</p></article>
       </div>
 
-      <div class="callout danger" style="margin-top: 1.5rem">
-        <p><strong>D02 / R01 sequencing conflict to reconcile.</strong> The decision ledger requires a successful bounded bidirectional pilot and post-QA to close D02, while the current release graph makes R01 depend on R00 and makes R00’s G02 require every D01–D07 decision—including D02—to be resolved. The governing artifacts must be reconciled before D02 or a physical pilot can advance; this report does not choose a waiver.</p>
+      <div class="callout success" style="margin-top: 1.5rem">
+        <p><strong>Sequencing reconciled without a waiver.</strong> D02, D05, and D06 close only from accepted pre-R00 design and external evidence. R00 then freezes G01–G07. R01 is the subsequent bounded physical validation, must pass G01–G19, and cannot resolve a design decision. R02 remains blocked until R01 is accepted.</p>
       </div>
 
       <details>
@@ -539,7 +539,7 @@
 
       <div class="phase-rail" aria-label="Delivery phase status">
         <article class="phase pass"><b>Phase 0 · PASS</b><small>Site, snapshot, coverage, terrain, structures, terminal cover, and sampled rail feasibility.</small></article>
-        <article class="phase active"><b>Phase 1 · HOLD</b><small>Freeze civil design, ownership, interfaces, hydrology, relic buffers, life safety, and a bounded pilot.</small></article>
+        <article class="phase active"><b>Phase 1 · HOLD</b><small>R00: freeze accepted design and interfaces. Then R01: bounded reversible physical validation. Current R00 result is 1/7 gates PASS.</small></article>
         <article class="phase blocked"><b>Phase 2 · blocked</b><small>Deep shells: Empty Eight, shaft, SubTropolis, service/contact, Cheyenne.</small></article>
         <article class="phase blocked"><b>Phase 3 · blocked</b><small>Mountain, Gateway Approach, stops, Grand Avenue, Houston, summit return.</small></article>
         <article class="phase blocked"><b>Phase 4 · blocked</b><small>Terminal and inherited-program fit-out.</small></article>
@@ -553,7 +553,7 @@
       </div>
 
       <div class="callout warning" style="margin-top: 1.5rem">
-        <p><strong>Current next step:</strong> first reconcile the D02/R01 pilot-ordering conflict. Continue non-physical Phase 1 remediation for D02, D05, D06, ownership, exact interfaces, source/preflight evidence, and authorization boundaries. A physical pilot, D02 closure, Phase 2, and live construction remain blocked until the controlling graph is internally consistent and its applicable gates independently pass.</p>
+        <p><strong>Current next step:</strong> commission or supply the external evidence enumerated by the R00 audit: D02’s six civil acceptances, D05 relic/hydrology decisions, D06 surface and life-safety engineering, the eleven geometry choices, and canonical ownership/interface approvals. Offline compiler and audit scaffolding may continue, but it cannot complete R00 without those inputs. No physical pilot or live construction may start.</p>
       </div>
     </section>
 
@@ -571,7 +571,7 @@
             <li>Should the East Corridor carry all five systems together while rail remains reserved first?</li>
             <li>Does the visitor sequence and separation between public, tenant, utility, and secure circulation feel right?</li>
             <li>Does the Empty Eight’s finished-but-underused monumental character match the intended experience?</li>
-            <li>Should the bounded pilot close D02 before R00, or validate D02 after R00? The decision ledger and release graph currently disagree.</li>
+            <li>Confirm the reconciled order: accepted design evidence closes D02/D05/D06, R00 freezes G01–G07, and R01 then validates the design physically before R02.</li>
           </ul>
         </article>
         <article class="card">
@@ -600,6 +600,7 @@
           <li><a href="05-combined-zones/phase1-d05-hydrology-relic-buffer-design.md">Hydrology and relic-buffer record</a></li>
           <li><a href="05-combined-zones/phase1-empty-eight-geology-design.md">Empty Eight and geology record</a></li>
           <li><a href="05-combined-zones/phase1-site-gate-audit.md">Phase 1 site-gate audit</a></li>
+          <li><a href="05-combined-zones/phase1-r00-readiness-audit.md">R00 G01–G07 readiness audit</a></li>
           <li><a href="05-combined-zones/PHASE1-RELEASE-ENGINEERING.md">Release-engineering plan</a></li>
           <li><a href="05-combined-zones/phase1-release-contract.json">Machine release contract</a></li>
           <li><a href="05-combined-zones/maps/README.md">Map authority and retired-diagram boundary</a></li>

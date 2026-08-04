@@ -101,6 +101,8 @@ interface Report {
     status: string;
     passedSubgates: string[];
     holdSubgates: string[];
+    passRule: string;
+    releaseLifecycleValidation: { gateRange: string; resolvesG06ForR00: boolean };
   };
 }
 
@@ -259,10 +261,16 @@ describe('Combined Zones protected-relic clearance evidence', () => {
     expect(report.g06Disposition.holdSubgates).toEqual(expect.arrayContaining([
       expect.stringContaining('positive-margin'),
       expect.stringContaining('igloo-east has zero present cells'),
-      expect.stringContaining('no exact construction/material/operation cell set'),
+      expect.stringContaining('no exact proposed construction and interaction cell set'),
       expect.stringContaining('remaining 47'),
-      expect.stringContaining('no post-construction immutable snapshot'),
     ]));
+    expect(report.g06Disposition.passRule).not.toMatch(
+      /\b(operations?|rollbacks?|post[- ]state|post-construction)\b/i,
+    );
+    expect(report.g06Disposition.releaseLifecycleValidation).toMatchObject({
+      gateRange: 'G16-G19',
+      resolvesG06ForR00: false,
+    });
     expect(report.worldEditAuthorized).toBe(false);
   });
 });

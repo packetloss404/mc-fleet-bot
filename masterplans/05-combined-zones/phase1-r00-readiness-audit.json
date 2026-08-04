@@ -1,0 +1,458 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-r00-readiness-audit",
+  "generatedAtUtc": "2026-08-04T18:00:00Z",
+  "status": "R00_HOLD",
+  "executable": false,
+  "worldEditAuthorized": false,
+  "operationCellCount": 0,
+  "authorityChain": "01 + 02 + 03 -> 04 normalized architecture -> 05 current-world placement",
+  "releaseBoundary": {
+    "evaluatedReleaseId": "CZ-R00-PHASE1-DESIGN-FREEZE",
+    "evaluatedGates": [
+      "G01_AUTHORITY",
+      "G02_DESIGN_DECISIONS",
+      "G03_INTEGER_SET_OUT",
+      "G04_OWNERSHIP",
+      "G05_INTERFACES",
+      "G06_PROTECTED_FEATURES",
+      "G07_CIVIL_HYDROLOGY_STRUCTURE"
+    ],
+    "excludedAsDescendantEvidence": "G08-G19",
+    "nextPhysicalReleaseId": "CZ-R01-PHASE1-BOUNDED-VISUAL-PILOT",
+    "nextPhysicalReleaseMayStart": false
+  },
+  "sourceBindings": {
+    "authorityReconciliation": {
+      "path": "masterplans/04-combined-complex/authority-reconciliation.json",
+      "sha256": "ad6ab25b19e12c405634d2a03dca547d4c92073a4dbf4f2caa9ba0995d949c4d",
+      "bytes": 13180
+    },
+    "coordinateRegistry": {
+      "path": "masterplans/05-combined-zones/site-coordinates.json",
+      "sha256": "b825f3c1e5f5696284d17c64dd469ba8efa845f6846e76032cb91bff4d4fdf62",
+      "bytes": 43946
+    },
+    "phase0Evidence": {
+      "path": "masterplans/05-combined-zones/phase0-survey-evidence.json",
+      "sha256": "c0730cc039c756ac6331b9aed8ecb89af38426e19d588ccdd56ec17cd8e1309e",
+      "bytes": 58530
+    },
+    "releaseContract": {
+      "path": "masterplans/05-combined-zones/phase1-release-contract.json",
+      "sha256": "12669fd5dd0bd0416037fa0d731208487d96b14d7d8aa661265a98d86dc5f293",
+      "bytes": 32769
+    },
+    "designDecisions": {
+      "path": "masterplans/05-combined-zones/phase1-design-decisions.json",
+      "sha256": "d2e7d91b2ed237bf70ed00bd0f5e546df42786e90e3748c884e0f8fc6b8c9158",
+      "bytes": 16507
+    },
+    "c1CivilDesign": {
+      "path": "masterplans/05-combined-zones/phase1-c1-civil-design.json",
+      "sha256": "f5e0839d364cb02435ff72847fffb914781be1e18f8f813ddf2f8d5491bea5c1",
+      "bytes": 812036
+    },
+    "geometryCoordination": {
+      "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
+      "sha256": "7065c8c8f1f20baab38e07834c8d7ec9d4120c09863aaf1f67b4357065258918",
+      "bytes": 35526
+    },
+    "protectedRelicClearance": {
+      "path": "masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
+      "sha256": "a983fab119749e8d34457d2754181b45f323f823de302c72f03974766f360c4d",
+      "bytes": 30460
+    },
+    "d05HydrologyRelicDesign": {
+      "path": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
+      "sha256": "5a1b35520a55124a42496245b9bf30da184eb7c7eff1ee58c39ac096195c44ff",
+      "bytes": 3250959
+    },
+    "emptyEightGeologyDesign": {
+      "path": "masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+      "sha256": "dc23f5fe814180b45e5cd1bfc74ac90e3f6981c383d5b49a5bdb2ad7a5ca87e4",
+      "bytes": 71152
+    },
+    "siteGateAudit": {
+      "path": "masterplans/05-combined-zones/phase1-site-gate-audit.json",
+      "sha256": "beacdbccca993a95d458944ec41118ba1887e81ee1601d079d07736fba89374c",
+      "bytes": 20255
+    }
+  },
+  "sequencingValidation": {
+    "g02ClosureBoundary": "PRE_R00_DESIGN_ACCEPTANCE_ONLY",
+    "descendantEvidenceCycleFree": true,
+    "closureChecks": [
+      {
+        "scope": "D02.closureEvidenceRequired",
+        "descendantEvidenceMatches": []
+      },
+      {
+        "scope": "D05.closureEvidenceRequired",
+        "descendantEvidenceMatches": []
+      },
+      {
+        "scope": "D06.closureEvidenceRequired",
+        "descendantEvidenceMatches": []
+      },
+      {
+        "scope": "G06.passRule",
+        "descendantEvidenceMatches": []
+      },
+      {
+        "scope": "D05.passRule",
+        "descendantEvidenceMatches": []
+      },
+      {
+        "scope": "D06.designClosureHoldGates",
+        "descendantEvidenceMatches": []
+      },
+      {
+        "scope": "G03.geometryBlockerClosure",
+        "descendantEvidenceMatches": []
+      }
+    ],
+    "r01ValidationRole": "POST_R00_VALIDATION_NOT_D02_D05_D06_OR_G02_CLOSURE_EVIDENCE"
+  },
+  "authorityBindingChecks": [
+    {
+      "path": "masterplans/04-combined-complex/authority-reconciliation.json",
+      "expectedSha256": "ad6ab25b19e12c405634d2a03dca547d4c92073a4dbf4f2caa9ba0995d949c4d",
+      "actualSha256": "ad6ab25b19e12c405634d2a03dca547d4c92073a4dbf4f2caa9ba0995d949c4d",
+      "passed": true
+    },
+    {
+      "path": "masterplans/05-combined-zones/MASTERPLAN.md",
+      "expectedSha256": "c4bed39795237e8c361c19a106a0520b95c0f7a35c9c3431ff5a6da8f528cf30",
+      "actualSha256": "c4bed39795237e8c361c19a106a0520b95c0f7a35c9c3431ff5a6da8f528cf30",
+      "passed": true
+    },
+    {
+      "path": "masterplans/05-combined-zones/site-coordinates.json",
+      "expectedSha256": "b825f3c1e5f5696284d17c64dd469ba8efa845f6846e76032cb91bff4d4fdf62",
+      "actualSha256": "b825f3c1e5f5696284d17c64dd469ba8efa845f6846e76032cb91bff4d4fdf62",
+      "passed": true
+    },
+    {
+      "path": "masterplans/05-combined-zones/phase0-survey-evidence.json",
+      "expectedSha256": "c0730cc039c756ac6331b9aed8ecb89af38426e19d588ccdd56ec17cd8e1309e",
+      "actualSha256": "c0730cc039c756ac6331b9aed8ecb89af38426e19d588ccdd56ec17cd8e1309e",
+      "passed": true
+    },
+    {
+      "path": "masterplans/05-combined-zones/corridor-clearance.json",
+      "expectedSha256": "15504eb52401e4e80970076093cceeccf5cc740d033fbaadd0938e404bbb5078",
+      "actualSha256": "15504eb52401e4e80970076093cceeccf5cc740d033fbaadd0938e404bbb5078",
+      "passed": true
+    },
+    {
+      "path": "masterplans/05-combined-zones/corridor-terrain-probe.json",
+      "expectedSha256": "4e3f1b5f6750a5d18ae6e99b4a909471ea332b9ca290095f6236dbce1ea98f1c",
+      "actualSha256": "4e3f1b5f6750a5d18ae6e99b4a909471ea332b9ca290095f6236dbce1ea98f1c",
+      "passed": true
+    },
+    {
+      "path": "masterplans/05-combined-zones/resiting-candidate-analysis.json",
+      "expectedSha256": "3795fe4e4159a32e38502b3a2db77354f62628c97d8868ee25f8a4dba253d030",
+      "actualSha256": "3795fe4e4159a32e38502b3a2db77354f62628c97d8868ee25f8a4dba253d030",
+      "passed": true
+    },
+    {
+      "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
+      "expectedSha256": "7065c8c8f1f20baab38e07834c8d7ec9d4120c09863aaf1f67b4357065258918",
+      "actualSha256": "7065c8c8f1f20baab38e07834c8d7ec9d4120c09863aaf1f67b4357065258918",
+      "passed": true
+    },
+    {
+      "path": "masterplans/05-combined-zones/phase1-design-decisions.json",
+      "expectedSha256": "d2e7d91b2ed237bf70ed00bd0f5e546df42786e90e3748c884e0f8fc6b8c9158",
+      "actualSha256": "d2e7d91b2ed237bf70ed00bd0f5e546df42786e90e3748c884e0f8fc6b8c9158",
+      "passed": true
+    },
+    {
+      "path": "masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
+      "expectedSha256": "a983fab119749e8d34457d2754181b45f323f823de302c72f03974766f360c4d",
+      "actualSha256": "a983fab119749e8d34457d2754181b45f323f823de302c72f03974766f360c4d",
+      "passed": true
+    },
+    {
+      "path": "masterplans/05-combined-zones/phase1-c1-pilot-coordination.json",
+      "expectedSha256": "32ab97a2e2961f0bff72fdcf0dd11389f744cb93ba7254d579a02dc5741103f8",
+      "actualSha256": "32ab97a2e2961f0bff72fdcf0dd11389f744cb93ba7254d579a02dc5741103f8",
+      "passed": true
+    },
+    {
+      "path": "masterplans/05-combined-zones/phase1-c1-civil-design.json",
+      "expectedSha256": "f5e0839d364cb02435ff72847fffb914781be1e18f8f813ddf2f8d5491bea5c1",
+      "actualSha256": "f5e0839d364cb02435ff72847fffb914781be1e18f8f813ddf2f8d5491bea5c1",
+      "passed": true
+    },
+    {
+      "path": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
+      "expectedSha256": "5a1b35520a55124a42496245b9bf30da184eb7c7eff1ee58c39ac096195c44ff",
+      "actualSha256": "5a1b35520a55124a42496245b9bf30da184eb7c7eff1ee58c39ac096195c44ff",
+      "passed": true
+    },
+    {
+      "path": "masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+      "expectedSha256": "dc23f5fe814180b45e5cd1bfc74ac90e3f6981c383d5b49a5bdb2ad7a5ca87e4",
+      "actualSha256": "dc23f5fe814180b45e5cd1bfc74ac90e3f6981c383d5b49a5bdb2ad7a5ca87e4",
+      "passed": true
+    },
+    {
+      "path": "masterplans/05-combined-zones/phase1-site-gate-audit.json",
+      "expectedSha256": "beacdbccca993a95d458944ec41118ba1887e81ee1601d079d07736fba89374c",
+      "actualSha256": "beacdbccca993a95d458944ec41118ba1887e81ee1601d079d07736fba89374c",
+      "passed": true
+    }
+  ],
+  "gates": [
+    {
+      "id": "G01_AUTHORITY",
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "masterplans/04-combined-complex/authority-reconciliation.json",
+          "sha256": "ad6ab25b19e12c405634d2a03dca547d4c92073a4dbf4f2caa9ba0995d949c4d",
+          "bytes": 13180
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-release-contract.json",
+          "sha256": "12669fd5dd0bd0416037fa0d731208487d96b14d7d8aa661265a98d86dc5f293",
+          "bytes": 32769
+        }
+      ],
+      "blockers": []
+    },
+    {
+      "id": "G02_DESIGN_DECISIONS",
+      "status": "HOLD",
+      "evidence": [
+        {
+          "path": "masterplans/05-combined-zones/phase1-design-decisions.json",
+          "sha256": "d2e7d91b2ed237bf70ed00bd0f5e546df42786e90e3748c884e0f8fc6b8c9158",
+          "bytes": 16507
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-c1-civil-design.json",
+          "sha256": "f5e0839d364cb02435ff72847fffb914781be1e18f8f813ddf2f8d5491bea5c1",
+          "bytes": 812036
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
+          "sha256": "5a1b35520a55124a42496245b9bf30da184eb7c7eff1ee58c39ac096195c44ff",
+          "bytes": 3250959
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+          "sha256": "dc23f5fe814180b45e5cd1bfc74ac90e3f6981c383d5b49a5bdb2ad7a5ca87e4",
+          "bytes": 71152
+        }
+      ],
+      "blockers": [
+        {
+          "id": "R00-G02-D02-EXTERNAL-ACCEPTANCE",
+          "classification": "EXTERNAL_EVIDENCE",
+          "requirement": "Accept all six D02 geotechnical, structural/C01, hydraulic/outfall, visual, and quantity design packages.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-c1-civil-design.json"
+        },
+        {
+          "id": "R00-G02-D05-EXTERNAL-ACCEPTANCE",
+          "classification": "EXTERNAL_EVIDENCE",
+          "requirement": "Accept reviewed relic buffers, east-igloo disposition, hydrology ownership/interfaces, future terrain/influence model, and expert civil/geotechnical criteria.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json"
+        },
+        {
+          "id": "R00-G02-D06-EXTERNAL-ACCEPTANCE",
+          "classification": "EXTERNAL_EVIDENCE",
+          "requirement": "Survey and accept both exterior egress endpoints and the complete external life-safety, discharge, fire/service, and mechanism design.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-empty-eight-geology-design.json"
+        }
+      ]
+    },
+    {
+      "id": "G03_INTEGER_SET_OUT",
+      "status": "HOLD",
+      "evidence": [
+        {
+          "path": "masterplans/05-combined-zones/site-coordinates.json",
+          "sha256": "b825f3c1e5f5696284d17c64dd469ba8efa845f6846e76032cb91bff4d4fdf62",
+          "bytes": 43946
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
+          "sha256": "7065c8c8f1f20baab38e07834c8d7ec9d4120c09863aaf1f67b4357065258918",
+          "bytes": 35526
+        }
+      ],
+      "blockers": [
+        {
+          "id": "R00-G03-DESIGN-AUTHORITY-CHOICES",
+          "classification": "EXTERNAL_EVIDENCE",
+          "requirement": "Close the 11 frozen geometry blockers without inferring null elevations, child transforms, routes, solids, or interfaces.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-geometry-coordination.json"
+        },
+        {
+          "id": "R00-G03-CANONICAL-INTEGER-COMPILER",
+          "classification": "OFFLINE_ACTION",
+          "requirement": "Implement the canonical integer setout compiler after the missing design-authority choices are accepted.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-release-contract.json"
+        }
+      ]
+    },
+    {
+      "id": "G04_OWNERSHIP",
+      "status": "HOLD",
+      "evidence": [
+        {
+          "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
+          "sha256": "7065c8c8f1f20baab38e07834c8d7ec9d4120c09863aaf1f67b4357065258918",
+          "bytes": 35526
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-site-gate-audit.json",
+          "sha256": "beacdbccca993a95d458944ec41118ba1887e81ee1601d079d07736fba89374c",
+          "bytes": 20255
+        }
+      ],
+      "blockers": [
+        {
+          "id": "R00-G04-OWNER-ACCEPTANCE",
+          "classification": "EXTERNAL_EVIDENCE",
+          "requirement": "Accept one canonical owner for every proposed construction and interaction cell, including C01, hydrology, egress, surface, and sealed-interface scopes.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-site-gate-audit.json"
+        },
+        {
+          "id": "R00-G04-OWNERSHIP-AUDIT",
+          "classification": "OFFLINE_ACTION",
+          "requirement": "Implement the one-owner/no-overlap ownership audit over the accepted exact setout.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-release-contract.json"
+        }
+      ]
+    },
+    {
+      "id": "G05_INTERFACES",
+      "status": "HOLD",
+      "evidence": [
+        {
+          "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
+          "sha256": "7065c8c8f1f20baab38e07834c8d7ec9d4120c09863aaf1f67b4357065258918",
+          "bytes": 35526
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-site-gate-audit.json",
+          "sha256": "beacdbccca993a95d458944ec41118ba1887e81ee1601d079d07736fba89374c",
+          "bytes": 20255
+        }
+      ],
+      "blockers": [
+        {
+          "id": "R00-G05-INTERFACE-ACCEPTANCE",
+          "classification": "EXTERNAL_EVIDENCE",
+          "requirement": "Accept exact C01, PassageWay, surface, hydrology, egress, child-plan, and sealed future-line interface contracts.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-site-gate-audit.json"
+        },
+        {
+          "id": "R00-G05-GLOBAL-INTERFACE-GATE",
+          "classification": "OFFLINE_ACTION",
+          "requirement": "Implement the exact default-deny global cross-scope interface audit after accepted cell sets exist.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-release-contract.json"
+        }
+      ]
+    },
+    {
+      "id": "G06_PROTECTED_FEATURES",
+      "status": "HOLD",
+      "evidence": [
+        {
+          "path": "masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
+          "sha256": "a983fab119749e8d34457d2754181b45f323f823de302c72f03974766f360c4d",
+          "bytes": 30460
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase0-survey-evidence.json",
+          "sha256": "c0730cc039c756ac6331b9aed8ecb89af38426e19d588ccdd56ec17cd8e1309e",
+          "bytes": 58530
+        }
+      ],
+      "blockers": [
+        {
+          "id": "R00-G06-RELIC-REVIEW",
+          "classification": "EXTERNAL_EVIDENCE",
+          "requirement": "Accept reviewed positive buffers or evidence-backed zero-margin treatment, resolve the absent east igloo, and accept entrance/template treatment.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-protected-relic-clearance.json"
+        },
+        {
+          "id": "R00-G06-EXACT-DESIGN-CLEARANCE",
+          "classification": "OFFLINE_ACTION",
+          "requirement": "Intersect the final exact proposed construction/interaction sets against all 50 relevant structure starts and every accepted relic buffer.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-protected-relic-clearance.json"
+        }
+      ]
+    },
+    {
+      "id": "G07_CIVIL_HYDROLOGY_STRUCTURE",
+      "status": "HOLD",
+      "evidence": [
+        {
+          "path": "masterplans/05-combined-zones/phase1-c1-civil-design.json",
+          "sha256": "f5e0839d364cb02435ff72847fffb914781be1e18f8f813ddf2f8d5491bea5c1",
+          "bytes": 812036
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
+          "sha256": "5a1b35520a55124a42496245b9bf30da184eb7c7eff1ee58c39ac096195c44ff",
+          "bytes": 3250959
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+          "sha256": "dc23f5fe814180b45e5cd1bfc74ac90e3f6981c383d5b49a5bdb2ad7a5ca87e4",
+          "bytes": 71152
+        }
+      ],
+      "blockers": [
+        {
+          "id": "R00-G07-EXPERT-DESIGN-ACCEPTANCE",
+          "classification": "EXTERNAL_EVIDENCE",
+          "requirement": "Complete and accept the D02 civil/C01, D05 hydrology/relic, and D06 external life-safety engineering against one frozen design identity.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-site-gate-audit.json"
+        },
+        {
+          "id": "R00-G07-INTEGRATED-DESIGN-CHECK",
+          "classification": "OFFLINE_ACTION",
+          "requirement": "Run deterministic integrated civil, hydrology, structure, route-grade, and life-safety checks after the accepted design inputs exist.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-release-contract.json"
+        }
+      ]
+    }
+  ],
+  "deferredEvidence": [
+    {
+      "id": "R00-DEFERRED-G08-G14-PRERELEASE",
+      "classification": "DEFERRED_G08_G19",
+      "requirement": "Compiler reproducibility, manifest QA, fresh snapshot, preflight, strict parser checks, live entity clearance, and explicit authorization are required before R01 execution, not for R00 decision closure.",
+      "evidencePath": "masterplans/05-combined-zones/phase1-release-contract.json"
+    },
+    {
+      "id": "R00-DEFERRED-G15-G19-EXECUTION-ACCEPTANCE",
+      "classification": "DEFERRED_G08_G19",
+      "requirement": "Execution, immutable post/rollback preflight, functional and route QA, media/publication, and final acceptance validate R01 after R00 and cannot resolve G02.",
+      "evidencePath": "masterplans/05-combined-zones/phase1-release-contract.json"
+    }
+  ],
+  "summary": {
+    "gateCount": 7,
+    "passCount": 1,
+    "holdCount": 6,
+    "r00Ready": false,
+    "blockerCountsByClassification": {
+      "OFFLINE_ACTION": 5,
+      "EXTERNAL_EVIDENCE": 8,
+      "DEFERRED_G08_G19": 2
+    },
+    "autonomousOfflineWorkMayContinue": true,
+    "autonomousOfflineWorkCanCompleteR00": false,
+    "nextAutonomousArtifact": "T01/T02 compiler and ownership/interface audit scaffolds after this gate model",
+    "externalEvidenceStillRequired": true
+  }
+}

@@ -52,4 +52,4 @@ Offsets -30..-18 are a 13-block empty reserve. At the Data District crossroad ne
 - **D02-B05:** The authored 1:16→1:12→1:8→1:6 visual staircase sequence has not received final visual acceptance against the exact-radius raster. Closure: Reviewed raster visualization and explicit acceptance or a revised hash-bound staircase.
 - **D02-B06:** Earthwork values are surface-datum diagnostics, not construction quantities. Closure: Approved formation depths, side slopes, structures/voids, topsoil/unsuitable-material rules, and mass-haul model.
 
-Until all six blockers close, D02 and all world edits remain **HOLD**.
+Until all six accepted design/external-evidence blockers close, D02 remains **HOLD**. Closing D02 alone authorizes no world edit; R01 is subsequent post-R00 physical validation and cannot resolve D02 or G02.
