@@ -81,8 +81,12 @@ function renderOverview(data) {
           const lastLog =
             Array.isArray(job.logs) && job.logs.length > 0 ? job.logs[job.logs.length - 1] : null;
           const failureNote =
-            job.status === 'failed' && lastLog
+            (job.status === 'failed' || job.status === 'cancelled') && lastLog
               ? `<small class="failure-note" title="${escapeHtml(job.error ?? '')}">${escapeHtml(lastLog.message)}</small>`
+              : '';
+          const action =
+            job.status === 'queued' || job.status === 'running'
+              ? `<button class="ghost cancel-job" data-job="${escapeHtml(job.id)}">Cancel</button>`
               : '';
           return `
       <tr>
@@ -90,7 +94,7 @@ function renderOverview(data) {
         <td>${escapeHtml(job.serverId)} / ${escapeHtml(job.worldId)}</td>
         <td>${escapeHtml(formatDate(job.createdAt))}</td>
         <td><span class="status ${escapeHtml(job.status)}">${escapeHtml(job.status)}</span>${stepNote}${failureNote}</td>
-        <td>${job.reportUrl ? `<a class="artifact-link" href="${escapeHtml(job.reportUrl)}" target="_blank" rel="noreferrer">Open report ↗</a>` : job.error ? `<small title="${escapeHtml(job.error)}">See job error</small>` : '—'}</td>
+        <td>${job.reportUrl ? `<a class="artifact-link" href="${escapeHtml(job.reportUrl)}" target="_blank" rel="noreferrer">Open report ↗</a>` : job.status === 'failed' && job.error ? `<small title="${escapeHtml(job.error)}">See job error</small>` : action}</td>
       </tr>
     `;
         })
@@ -267,6 +271,22 @@ $('#cancel-dialog').addEventListener('click', () => $('#report-dialog').close())
 $('#recipe-grid').addEventListener('click', (event) => {
   const button = event.target.closest('.run-recipe');
   if (button) openDialog(button.dataset.recipe);
+});
+
+async function cancelJob(jobId) {
+  const response = await fetch(`/api/jobs/${encodeURIComponent(jobId)}/cancel`, {
+    method: 'POST',
+  });
+  if (!response.ok) {
+    const payload = await response.json().catch(() => ({}));
+    console.warn('cancel failed', payload);
+  }
+  await load();
+}
+
+$('#job-rows').addEventListener('click', (event) => {
+  const button = event.target.closest('.cancel-job');
+  if (button) void cancelJob(button.dataset.job);
 });
 
 load();

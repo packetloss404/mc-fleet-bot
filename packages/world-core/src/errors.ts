@@ -8,3 +8,10 @@ export class DevtoolsError extends Error {
     this.name = 'DevtoolsError';
   }
 }
+
+export class JobCancelledError extends Error {
+  constructor(readonly jobId: string) {
+    super(`Job ${jobId} was cancelled`);
+    this.name = 'JobCancelledError';
+  }
+}

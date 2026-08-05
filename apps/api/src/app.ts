@@ -141,6 +141,15 @@ export function createApp(context: AppContext): express.Express {
     }
   });
 
+  app.post('/api/jobs/:id/cancel', (request, response, next) => {
+    try {
+      const job = context.service.cancel(request.params.id);
+      response.json(publicJob(job, context.artifactRoot));
+    } catch (error) {
+      next(error);
+    }
+  });
+
   app.use(
     '/artifacts',
     express.static(context.artifactRoot, {

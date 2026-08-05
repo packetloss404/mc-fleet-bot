@@ -43,6 +43,39 @@ export class JobStore {
     return this.update(id, { logs: [...current.logs, entry] });
   }
 
+  /**
+   * Mark a queued or running job as cancelled. The running worker polls
+   * the persisted status between steps; when it observes the cancelled
+   * flag it aborts cleanly with `JobCancelledError`.
+   */
+  cancel(id: string): ReportJob {
+    const current = this.get(id);
+    if (
+      current.status === 'completed' ||
+      current.status === 'failed' ||
+      current.status === 'cancelled'
+    ) {
+      throw new DevtoolsError(
+        `Job ${id} is ${current.status} and cannot be cancelled`,
+        'JOB_NOT_CANCELLABLE',
+      );
+    }
+    return this.update(id, {
+      status: 'cancelled',
+      completedAt: new Date().toISOString(),
+      currentStep: undefined,
+      progress: undefined,
+      logs: [
+        ...current.logs,
+        {
+          at: new Date().toISOString(),
+          level: 'info',
+          message: 'Job cancelled by operator',
+        },
+      ],
+    });
+  }
+
   list(): ReportJob[] {
     return fs
       .readdirSync(this.directory)

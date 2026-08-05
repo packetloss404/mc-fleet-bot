@@ -35,7 +35,7 @@ export interface ResolvedWorld {
   databases: Record<string, string>;
 }
 
-export type JobStatus = 'queued' | 'running' | 'completed' | 'failed';
+export type JobStatus = 'queued' | 'running' | 'completed' | 'failed' | 'cancelled';
 
 export interface JobLogEntry {
   at: string;

@@ -6,6 +6,7 @@ import { censusSnapshot, diffSnapshots, summarizeSnapshot } from '@mc-fleet/anvi
 import { catalogDatabase, exportWorldFeatures } from '@mc-fleet/catalog';
 import {
   DevtoolsError,
+  JobCancelledError,
   ensureFreshDirectory,
   mediaTypeFor,
   resolveWorld,
@@ -87,6 +88,16 @@ export class ReportService {
     return [...this.recipes.values()].sort((left, right) => left.name.localeCompare(right.name));
   }
 
+  /**
+   * Mark a queued or running job as cancelled. The running worker aborts
+   * at the next step boundary (or the next region for the block-census
+   * step). Jobs that are already completed, failed, or cancelled are
+   * rejected with `JOB_NOT_CANCELLABLE`.
+   */
+  cancel(id: string): ReportJob {
+    return this.options.jobStore.cancel(id);
+  }
+
   submit(request: SubmitReportRequest): ReportJob {
     const recipe = this.getRecipe(request.recipeId);
     resolveWorld(this.options.registry, request.serverId, request.worldId);
@@ -122,6 +133,9 @@ export class ReportService {
 
   async run(id: string): Promise<ReportJob> {
     let job = this.options.jobStore.get(id);
+    if (job.status === 'cancelled') {
+      return job;
+    }
     if (job.status !== 'queued') {
       throw new DevtoolsError(`Job ${id} is ${job.status}, expected queued`, 'INVALID_JOB_STATE');
     }
@@ -135,9 +149,16 @@ export class ReportService {
     const results: Record<string, unknown> = {};
     const onStepProgress = (step: RecipeStep, progress: JobProgress): void => {
       this.options.jobStore.update(id, { currentStep: step.id, progress });
+      // Cancellation polling: the operator can cancel a running job; the
+      // worker aborts at the next step boundary (or the next region for
+      // the block-census step, which calls this on every region).
+      if (this.options.jobStore.get(id).status === 'cancelled') {
+        throw new JobCancelledError(id);
+      }
     };
     try {
       for (const step of recipe.steps) {
+        this.assertNotCancelled(id);
         job = this.options.jobStore.update(id, { currentStep: step.id });
         this.log(id, `Starting ${step.type}`, step.id);
         const result = await this.executeStep(step, recipe, job, resolved, results, onStepProgress);
@@ -173,6 +194,10 @@ export class ReportService {
       this.log(id, `Report completed with ${artifacts.length} artifacts`);
       return this.options.jobStore.get(id);
     } catch (error) {
+      if (error instanceof JobCancelledError) {
+        this.log(id, 'Job cancelled', undefined, 'error');
+        return this.options.jobStore.get(id);
+      }
       const message = error instanceof Error ? error.message : String(error);
       this.log(id, message, job.currentStep, 'error');
       return this.options.jobStore.update(id, {
@@ -365,6 +390,13 @@ export class ReportService {
       message,
       stepId,
     });
+  }
+
+  private assertNotCancelled(id: string): void {
+    const job = this.options.jobStore.get(id);
+    if (job.status === 'cancelled') {
+      throw new JobCancelledError(id);
+    }
   }
 
   private recoverInterruptedJobs(): void {

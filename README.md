@@ -188,6 +188,7 @@ CPU-, memory-, and disk-heavy world scans.
 | `GET` | `/api/jobs` | Persisted jobs |
 | `GET` | `/api/jobs/:id` | One job and its artifact link |
 | `POST` | `/api/jobs` | Validate and enqueue a report |
+| `POST` | `/api/jobs/:id/cancel` | Cancel a queued or running job |
 
 Example request:
 

@@ -22,6 +22,7 @@ Usage:
   mc-fleet-devtools report run --recipe <id> --server <id> --world <id> [--bounds x1,y1,z1,x2,y2,z2]
   mc-fleet-devtools job list
   mc-fleet-devtools job show <id>
+  mc-fleet-devtools job cancel <id>
 
 Environment:
   MC_FLEET_REGISTRY, MC_FLEET_RECIPES, MC_FLEET_JOBS, MC_FLEET_ARTIFACTS
@@ -141,6 +142,10 @@ async function main(): Promise<void> {
   }
   if (command === 'job' && action === 'show' && subject) {
     print(jobStore.get(subject));
+    return;
+  }
+  if (command === 'job' && action === 'cancel' && subject) {
+    print(service.cancel(subject));
     return;
   }
   throw new DevtoolsError('Unknown command', 'UNKNOWN_COMMAND', {
