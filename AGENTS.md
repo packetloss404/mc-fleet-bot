@@ -1908,6 +1908,20 @@ npx vitest run \
   test/build/combinedZonesOwnerReviewBundle.test.ts
 ```
 
+- Generate the human-readable, offline HTML5 owner-review report from the
+  bound bundle, packet, and R00 JSON evidence with:
+
+```bash
+node scripts/generate_combined_zones_owner_review_report.mjs
+npx vitest run test/build/combinedZonesOwnerReviewReport.test.ts
+```
+
+- The report is a review surface, not a new source of authority. Its bundle
+  hash, approval statement, exact figures, gate status, and safety boundary
+  must remain reproducible from the bound JSON. Concept images are labeled as
+  intent, maps remain planning views, and no report action authorizes a world
+  edit, construction, opening, discharge, commissioning, or release advance.
+
 Run the focused second-wave regressions with:
 
 ```bash
