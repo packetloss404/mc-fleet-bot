@@ -24,6 +24,10 @@ function openReadOnly(filename: string): Database.Database {
     fileMustExist: true,
   });
   database.pragma('query_only = ON');
+  // Return `bigint` for every INTEGER column so the catalog never
+  // silently truncates values that exceed `Number.MAX_SAFE_INTEGER`.
+  // `jsonValue` (below) stringifies them for JSON.
+  database.defaultSafeIntegers(true);
   return database;
 }
 
