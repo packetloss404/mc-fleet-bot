@@ -13,11 +13,20 @@ receipts stay in private server repositories or ignored local configuration.
 
 - identifies copied Anvil snapshots with deterministic SHA-256 hashes;
 - summarizes region coverage and snapshot metadata;
-- counts block states across a whole snapshot or an inclusive coordinate box;
-- inventories SQLite schemas without opening databases for writing;
+- compares two registered snapshots on the same server, classifying per-region
+  changes as added, removed, or changed;
+- counts block states across a whole snapshot or an inclusive coordinate box,
+  with per-region progress events so long runs don't go dark;
+- inventories SQLite schemas without opening databases for writing, with
+  safe-integer handling so big counts survive JSON;
 - exports records from a conventional `world_features` table;
-- executes validated YAML report recipes;
-- persists job state and structured logs;
+- executes validated YAML report recipes with typed parameters
+  (`string`, `integer`, `bounds`);
+- persists job state, structured logs, and the active step's progress;
+- supports clean cancellation of queued and running jobs from the API, CLI, or
+  dashboard;
+- caches `snapshot-summary` and `database-catalog` results so recipe changes
+  don't trigger unnecessary re-scans;
 - generates standalone HTML reports and hash-bound artifact manifests; and
 - exposes registered worlds, recipes, jobs, and reports through a responsive
   operator dashboard.
@@ -29,6 +38,7 @@ The included recipes are:
 | `snapshot-overview` | Snapshot identity, region coverage, and HTML summary |
 | `block-census` | Block-state counts, optionally constrained to bounds |
 | `world-catalog` | Snapshot identity, SQLite inventory, and world features |
+| `snapshot-diff` | Per-region SHA-256 comparison between two registered worlds |
 
 ## Safety boundary
 
@@ -121,6 +131,8 @@ npm run cli -- world list --server example
 npm run cli -- recipe list
 npm run cli -- snapshot inspect --server example --world overworld
 npm run cli -- job list
+npm run cli -- job show <id>
+npm run cli -- job cancel <id>
 ```
 
 Run a snapshot overview:
@@ -193,7 +205,7 @@ CPU-, memory-, and disk-heavy world scans.
 Example request:
 
 ```bash
-curl http://10.80.13.18:4310/api/jobs \
+curl http://localhost:4310/api/jobs \
   --header 'Content-Type: application/json' \
   --data '{
     "serverId": "example",
@@ -206,7 +218,7 @@ curl http://10.80.13.18:4310/api/jobs \
 ```
 
 Accepted requests return `202 Accepted`. The job can then be followed through
-`GET /api/jobs/:id`.
+`GET /api/jobs/:id` or cancelled with `POST /api/jobs/:id/cancel`.
 
 ## Repository layout
 
@@ -216,14 +228,15 @@ apps/
   cli/             terminal interface to the report service
   dashboard/       dependency-free browser interface
 packages/
-  world-core/      registry, domain records, path guards, jobs, and hashes
-  anvil/           read-only Anvil snapshot inspection and block census
+  world-core/      registry, domain records, path guards, jobs, hashes, paths
+  anvil/           read-only Anvil snapshot summary, block census, and diff
   catalog/         read-only SQLite census and world feature export
-  reporting/       recipe validation, execution, HTML, and manifests
+  reporting/       recipe validation, execution, HTML, manifests, cache
 recipes/           reusable server-neutral report definitions
 config/            committed example and ignored local registry
 docs/              architecture, recipes, extraction notes, and roadmap
-test/              synthetic Anvil, SQLite, registry, and reporting tests
+test/              synthetic Anvil, SQLite, registry, API, and reporting tests
+.github/workflows/ build, test, lint, and format check on push and PR
 ```
 
 The service layer is independent of Express, allowing the CLI and API to run
@@ -234,22 +247,27 @@ while artifact guards constrain new outputs to the configured artifact root.
 
 ```bash
 npm install
-npm run build
-npm test
-npm run check
+npm run check      # lint + build + test + format:check
+npm run dev        # start the API on port 4310
 ```
 
-TypeScript is strict, uses ESM, and targets Node.js 20. Tests build synthetic
+TypeScript is strict, uses ESM, and targets Node.js 20. The project is
+formatted with Prettier and linted with `tsc --noEmit`. Tests build synthetic
 region files and SQLite databases in temporary directories; they must never
-access a live server.
+access a live server. CI on GitHub Actions runs `npm run check` against every
+push and pull request to `main`.
 
 ## Project status
 
-The read-only reporting foundation is implemented. Mapping, reusable report
-layout, a visual design studio, and guarded release workflows are future phases.
-World-changing operations will remain separate from report recipes and will
-require immutable source identity, preview diffs, rollback artifacts, explicit
-approval, guarded execution, and post-release QA.
+The read-only reporting foundation is implemented: snapshot identity, block
+census, snapshot diff, SQLite census, typed recipes with parameter
+validation, cancellation, step result cache, hash-bound artifact manifests,
+a CLI, a REST API, and a dashboard. CI gates the repository.
+
+Mapping, a visual design studio, and guarded release workflows are future
+phases. World-changing operations will remain separate from report recipes
+and will require immutable source identity, preview diffs, rollback artifacts,
+explicit approval, guarded execution, and post-release QA.
 
 See [Architecture](docs/ARCHITECTURE.md),
 [Report recipes](docs/REPORT_RECIPES.md),

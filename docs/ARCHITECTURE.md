@@ -8,8 +8,10 @@ MC Fleet Devtools is organized around a small set of durable records:
 - **World** — a dimension and its registered read-only resources.
 - **Snapshot** — copied Anvil region files with a deterministic content identity.
 - **Catalog** — durable structured data, normally SQLite.
-- **Recipe** — a declarative sequence of allowed read-only report steps.
-- **Job** — one execution with state, logs, parameters, and an output directory.
+- **Recipe** — a declarative sequence of allowed read-only report steps with
+  typed parameters.
+- **Job** — one execution with state, logs, parameters, an output directory,
+  and an optional progress indicator.
 - **Artifact** — a produced file bound by path, size, media type, and SHA-256.
 
 Future versions add Design, Operation Plan, Release, and Issue without weakening
@@ -21,9 +23,11 @@ the current read-only boundary.
 Dashboard ─┐
            ├── REST / CLI ── ReportService ── validated recipe
 CLI ───────┘                         │
+                                    ├── parameter validator (type, range, required)
                                     ├── world-core registry + path guards
                                     ├── Anvil snapshot reader
                                     ├── SQLite catalog reader
+                                    ├── step result cache (snapshot-summary, database-catalog)
                                     └── fresh artifact directory + manifest
 ```
 
@@ -47,6 +51,33 @@ The API has no authentication in v0.1. It binds to `0.0.0.0` for trusted LAN
 access by default and can be restricted to loopback with
 `MC_FLEET_DEVTOOLS_HOST=127.0.0.1`. Public or untrusted-network exposure
 requires an authenticated reverse proxy or a future native auth layer.
+
+## Job lifecycle
+
+```text
+queued ──► running ──► completed
+            │   │
+            │   └─► failed
+            └────► cancelled
+```
+
+- `submit` validates parameters, creates the job record, and enqueues it.
+- `run` claims the job, sets `running`, walks the recipe steps. After each
+  step and after every region in the block-census step, it polls the
+  persisted status; if the operator set it to `cancelled`, the worker throws
+  `JobCancelledError` and aborts cleanly.
+- `cancel` is the operator-initiated transition from `queued` or `running`
+  to `cancelled`. Already-terminal jobs are rejected.
+- On API startup, any `running` job from a previous process is marked
+  `failed` with a "Worker stopped while this job was running" log entry.
+
+## Step result cache
+
+`snapshot-summary` and `database-catalog` results are persisted at
+`<artifactRoot>/.cache/<server>/<world>/<recipe>/<step>/<sha256>.json`, where
+the hash is the SHA-256 of the input file path. The next run of the same
+recipe on the same world reads the cache instead of re-scanning. Cache misses
+(missing file, unparseable JSON) fall through to a normal execution.
 
 ## Connector boundary
 

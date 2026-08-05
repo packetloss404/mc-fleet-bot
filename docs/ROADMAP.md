@@ -4,12 +4,18 @@
 
 - standalone npm workspace;
 - server/world registry and local connector;
-- deterministic Anvil snapshot identity;
-- bounded or whole-snapshot block census;
-- read-only SQLite catalog and world-feature export;
-- declarative recipe engine;
-- persistent job log and hash-bound artifact manifest;
+- deterministic Anvil snapshot identity, including handling of the pre-1.17
+  `Level` wrapper and the post-1.17 `Sections` casing;
+- bounded or whole-snapshot block census with per-region progress events;
+- per-region SHA-256 diff between two snapshots on the same server;
+- read-only SQLite catalog and world-feature export with safe-integer JSON;
+- declarative recipe engine with typed parameters (`string`, `integer`,
+  `bounds` with optional min/max);
+- persistent job log, hash-bound artifact manifest, and step result cache for
+  `snapshot-summary` and `database-catalog`;
 - CLI, REST API, serialized worker, and responsive dashboard;
+- job cancellation across API, CLI, and dashboard;
+- CI on push and PR against main (build, test, lint, format check);
 - ignored local IANLAN adapter and reusable example configuration.
 
 ## Phase 2 — report and mapping engine
@@ -18,7 +24,8 @@
 - reusable map layers, legends, labels, bounds, and vertical slices;
 - HTML section/layout components and Chromium PDF finalization;
 - screenshot/capture manifests and contact sheets;
-- report recipe dependencies and resumable step cache;
+- resume caches for `block-census` and `world-features` (cache layer exists;
+  per-step opt-in pending);
 - IANLAN preset for Master Plan and Underground Navigation;
 - publisher adapters for IANLAN NextGen and Box, kept outside report execution.
 
