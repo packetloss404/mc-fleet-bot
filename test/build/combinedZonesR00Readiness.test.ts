@@ -78,6 +78,14 @@ interface Report {
     b09ExactRouteSelected: boolean;
     b10AnalyticSurfaceSelected: boolean;
     d06CappedVentRiserCount: number;
+    ownerReviewBundleReady: boolean;
+    ownerReviewBundlePayloadSha256: string;
+    ownerReviewBundleAcceptanceRecorded: boolean;
+    d02OwnerPacketReady: boolean;
+    d05OwnerPacketReady: boolean;
+    d06OwnerPacketReady: boolean;
+    p1B11OwnerPacketReady: boolean;
+    p1B11GrandAvenueCenterlinePointCount: number;
     autonomousOfflineWorkMayContinue: boolean;
     autonomousOfflineWorkCanCompleteR00: boolean;
     externalEvidenceStillRequired: boolean;
@@ -165,6 +173,13 @@ describe('Combined Zones R00 readiness audit', () => {
         b09ExactRouteSelected: true,
         b10AnalyticSurfaceSelected: true,
         d06CappedVentRiserCount: 4,
+        ownerReviewBundleReady: true,
+        ownerReviewBundleAcceptanceRecorded: false,
+        d02OwnerPacketReady: true,
+        d05OwnerPacketReady: true,
+        d06OwnerPacketReady: true,
+        p1B11OwnerPacketReady: true,
+        p1B11GrandAvenueCenterlinePointCount: 299,
         autonomousOfflineWorkMayContinue: true,
         autonomousOfflineWorkCanCompleteR00: false,
         externalEvidenceStillRequired: true,

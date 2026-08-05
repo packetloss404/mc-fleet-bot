@@ -1820,6 +1820,11 @@ node --expose-gc --max-old-space-size=4096 \
   scripts/audit_combined_zones_d02_s03_hydrology_outfalls.mjs
 node scripts/compile_combined_zones_d02_s04_closed_drainage_alternatives.mjs
 node scripts/generate_combined_zones_autonomous_selections.mjs
+node scripts/generate_combined_zones_d02_owner_acceptance_packet.mjs
+node scripts/compile_combined_zones_d05_owner_acceptance_packet.mjs
+node scripts/compile_combined_zones_d06_owner_acceptance_packet.mjs
+node scripts/compile_combined_zones_b11_external_interfaces.mjs
+node scripts/compile_combined_zones_owner_review_bundle.mjs
 node scripts/audit_combined_zones_r00_readiness.mjs
 ```
 
@@ -1832,6 +1837,17 @@ node scripts/audit_combined_zones_r00_readiness.mjs
   hold at `ROAD-LOW-001`, and no receiver/outfall. It remains HOLD for complete
   save, inflow/storage/failure criteria, sizing, technical acceptance,
   ownership/interfaces, and construction quantities.
+- The D02 owner-acceptance packet must bind the ten exact capped-sump candidate
+  assets and `ROAD-LOW-001` no-build hold to the exact upstream source hashes.
+  “Capped” is a planning disposition, not a built or accepted sealed asset. Its
+  inflow/storage/freeboard/failure, future-fluid, receiver, capacity,
+  structural/geotechnical, owner/interface, and evidence-gap criteria are a
+  review checklist, not technical acceptance. Run its focused regression with:
+
+```bash
+npx vitest run test/build/combinedZonesD02OwnerAcceptancePacket.test.ts
+```
+
 - The Cheyenne J-curve compiler freezes the exact 800-step B03 planning route,
   including both bends and its 5×4 reservation. It emits no operations and is
   not excavation, structural, fire/life-safety, or construction acceptance.
@@ -1844,10 +1860,34 @@ node scripts/audit_combined_zones_r00_readiness.mjs
   current water cells. Four local vent risers and all smoke, gate, sump,
   discharge, and fire/service systems remain capped or sealed pending accepted
   mechanisms, owners/interfaces, and technical review.
+- The D06 owner-acceptance packet binds the selected B07, egress, vent,
+  smoke/barrier, emergency-lighting, capped-drainage, and fire/service planning
+  basis to exact source hashes and eleven explicit acceptance gates. Its
+  copyable sole-owner statement accepts only that planning basis/checklist;
+  it cannot pass a HOLD, open a cap, commission a system, or authorize work.
+  The current packet remains 2 bounded PASS / 9 HOLD, sealed, uncommissioned,
+  and zero-operation. Run its focused regression with:
+
+```bash
+npx vitest run test/build/combinedZonesD06OwnerAcceptancePacket.test.ts
+```
+
 - D05-S02 defines twelve fail-closed future/direct/influence set families. A
   passing contract with zero emitted cells means the schema is ready while its
   geometry, mechanisms, ownership/interfaces, and accepted technical kernels
   are not. Never promote an unknown influence to an empty accepted set.
+- The D05 owner-acceptance packet binds FM-01, its proposed deterministic
+  material policy, the exact support-gap/relic/B09 facts, and all default-deny
+  technical criteria to exact source and acceptance-payload hashes. Its
+  copyable sole-owner statement accepts only the conditional planning policy;
+  future/construction cells stay zero and every factual technical gap stays
+  HOLD. Validate it alone or with the complete masterplan suite:
+
+```bash
+npx vitest run test/build/combinedZonesD05OwnerAcceptancePacket.test.ts
+npm run test:masterplans
+```
+
 - The connector compiler freezes review geometry only. B08's selected
   220-step route is not commissioned. Later planning evidence selects the B07
   west-two and B09 east-face alternatives, but their hydrology, support,
@@ -1855,7 +1895,20 @@ node scripts/audit_combined_zones_r00_readiness.mjs
   outputs contain zero operations.
 - The owner-delegated ledger currently freezes 20 planning choices; P1-B11
   exact Grand Avenue/PassageWay/external interfaces is the only remaining
-  unselected geometry choice. Run the focused second-wave regressions with:
+  unselected geometry choice until its separate acceptance payload is recorded.
+  The B11 compiler proposes one exact 299-point Grand Avenue profile, compiles
+  the unevidenced PassageWay side to a zero-cell deferral, and keeps every
+  future-line wall sealed. The owner-review bundle binds D02, D05, D06, and
+  B11 under one copyable planning/checklist statement; accepting it cannot pass
+  a technical HOLD or authorize work. Run their focused regressions with:
+
+```bash
+npx vitest run \
+  test/build/combinedZonesB11ExternalInterfaces.test.ts \
+  test/build/combinedZonesOwnerReviewBundle.test.ts
+```
+
+Run the focused second-wave regressions with:
 
 ```bash
 npx vitest run \

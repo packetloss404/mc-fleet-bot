@@ -53,6 +53,11 @@ const INPUTS = Object.freeze({
   connectorGeometry: 'masterplans/05-combined-zones/phase1-connector-geometry.json',
   cheyenneJcurve: 'masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json',
   autonomousDesignSelections: 'masterplans/05-combined-zones/phase1-autonomous-design-selections.json',
+  d02OwnerAcceptance: 'masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
+  d05OwnerAcceptance: 'masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json',
+  d06OwnerAcceptance: 'masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json',
+  b11OwnerAcceptance: 'masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json',
+  ownerReviewBundle: 'masterplans/05-combined-zones/phase1-owner-review-bundle.json',
   siteGateAudit: 'masterplans/05-combined-zones/phase1-site-gate-audit.json',
 });
 
@@ -103,6 +108,11 @@ const d06LifeSafety = readJson(INPUTS.d06LifeSafety);
 const connectorGeometry = readJson(INPUTS.connectorGeometry);
 const cheyenneJcurve = readJson(INPUTS.cheyenneJcurve);
 const delegatedSelections = readJson(INPUTS.autonomousDesignSelections);
+const d02OwnerAcceptance = readJson(INPUTS.d02OwnerAcceptance);
+const d05OwnerAcceptance = readJson(INPUTS.d05OwnerAcceptance);
+const d06OwnerAcceptance = readJson(INPUTS.d06OwnerAcceptance);
+const b11OwnerAcceptance = readJson(INPUTS.b11OwnerAcceptance);
+const ownerReviewBundle = readJson(INPUTS.ownerReviewBundle);
 const site = readJson(INPUTS.siteGateAudit);
 
 const selectedGeometryIds = delegatedSelections.selections
@@ -218,25 +228,27 @@ const gates = [
       sources.d05FutureStateContract, sources.d05FutureMountain,
       sources.emptyEightGeologyDesign, sources.d06EgressGeometryDesign,
       sources.d06LifeSafety, sources.cheyenneJcurve,
-      sources.autonomousDesignSelections],
+      sources.autonomousDesignSelections, sources.d02OwnerAcceptance,
+      sources.d05OwnerAcceptance, sources.d06OwnerAcceptance,
+      sources.ownerReviewBundle],
     blockers: decisionsPassed ? [] : [
       blocker(
         'R00-G02-D02-EXTERNAL-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'Supply one complete immutable copied save with region/entities/poi/level.dat, then finish D02-S01/S02 identity and safety census. The selected S04 basis freezes 10 capped-sump candidates and one explicit no-build low run, but inflow/storage/freeboard/failure criteria, future fluid accounting, receiver ownership/interfaces, capacity, structure/geotechnical review, and complete technical acceptance remain.',
-        INPUTS.d02ClosedDrainage,
+        'The D02 owner packet is ready for planning-basis/checklist acceptance, but technical closure still requires one complete immutable copied save with region/entities/poi/level.dat, D02-S01/S02 identity and safety census, inflow/storage/freeboard/failure criteria, future fluid accounting, receiver ownership/interfaces, capacity, structure/geotechnical review, and complete technical acceptance.',
+        INPUTS.d02OwnerAcceptance,
       ),
       blocker(
         'R00-G02-D05-EXTERNAL-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'Develop the selected compact east-face analytic planning surface into canonical material states and accepted construction/influence cellsets. Close support gaps, hydrology/geotechnical review, relic influence kernels, owners, interfaces, maintenance/egress, stations, and mechanisms; accepted future-state cells remain zero.',
-        INPUTS.d05FutureMountain,
+        'The D05 conditional-policy packet is ready for owner review, but technical closure still requires the compact east-face analytic planning surface to compile into canonical material states and accepted construction/influence cellsets, with support gaps, hydrology/geotechnical review, relic influence kernels, owners, interfaces, maintenance/egress, stations, and mechanisms closed; accepted future-state cells remain zero.',
+        INPUTS.d05OwnerAcceptance,
       ),
       blocker(
         'R00-G02-D06-EXTERNAL-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'Technically develop and accept the frozen fail-closed D06 reservations: stairs/lifts, smoke and barrier mechanisms, emergency circuits, capped drainage, four local vent risers, fire/service access, outlets, ownership, and exact interfaces. Every opening and discharge remains sealed and uncommissioned.',
-        INPUTS.d06LifeSafety,
+        'The D06 fail-closed planning/checklist packet is ready for owner review, but technical closure still requires exact accepted stairs/lifts, smoke and barrier mechanisms, emergency circuits, capped drainage, four local vent risers, fire/service access, outlets, ownership, and interfaces. Every opening and discharge remains sealed and uncommissioned.',
+        INPUTS.d06OwnerAcceptance,
       ),
       ...(!descendantEvidenceCycleFree ? [
         blocker(
@@ -255,13 +267,14 @@ const gates = [
       sources.d06EgressGeometryDesign, sources.connectorGeometry,
       sources.cheyenneJcurve, sources.d05FutureMountain,
       sources.d06LifeSafety, sources.d05FutureStateContract,
-      sources.autonomousDesignSelections],
+      sources.autonomousDesignSelections, sources.b11OwnerAcceptance,
+      sources.ownerReviewBundle],
     blockers: [
       blocker(
         'R00-G03-DESIGN-AUTHORITY-CHOICES',
         'EXTERNAL_EVIDENCE',
-        `Close the ${remainingGeometryIds.length} remaining geometry blocker (${remainingGeometryIds.join(', ')}) without inferring null elevations, routes, solids, or interfaces. ${selectedGeometryIds.length} conservative geometry choices are already owner-delegated and frozen.`,
-        INPUTS.geometryCoordination,
+        `Record sole-owner acceptance of the hash-bound P1-B11 packet for the ${remainingGeometryIds.length} remaining geometry blocker (${remainingGeometryIds.join(', ')}). It proposes the exact Grand Avenue profile, preserves the unevidenced PassageWay side as a zero-cell deferral, and keeps future lines sealed; ${selectedGeometryIds.length} prior geometry choices remain frozen.`,
+        INPUTS.b11OwnerAcceptance,
       ),
       blocker(
         'R00-G03-CANONICAL-INTEGER-COMPILER',
@@ -276,7 +289,9 @@ const gates = [
     status: 'HOLD',
     evidence: [sources.geometryCoordination, sources.d05FutureStateContract,
       sources.d02ClosedDrainage, sources.d05FutureMountain,
-      sources.d06LifeSafety, sources.siteGateAudit],
+      sources.d06LifeSafety, sources.d02OwnerAcceptance,
+      sources.d05OwnerAcceptance, sources.d06OwnerAcceptance,
+      sources.b11OwnerAcceptance, sources.siteGateAudit],
     blockers: [
       blocker(
         'R00-G04-OWNER-ACCEPTANCE',
@@ -297,7 +312,9 @@ const gates = [
     status: 'HOLD',
     evidence: [sources.geometryCoordination, sources.d05FutureStateContract,
       sources.d02ClosedDrainage, sources.d05FutureMountain,
-      sources.d06LifeSafety, sources.siteGateAudit],
+      sources.d06LifeSafety, sources.d02OwnerAcceptance,
+      sources.d05OwnerAcceptance, sources.d06OwnerAcceptance,
+      sources.b11OwnerAcceptance, sources.siteGateAudit],
     blockers: [
       blocker(
         'R00-G05-INTERFACE-ACCEPTANCE',
@@ -319,7 +336,7 @@ const gates = [
     evidence: [sources.protectedRelicClearance, sources.phase0Evidence,
       sources.d05ConservativeDefaults, sources.d05RelicSurvey,
       sources.d05FutureMountain, sources.cheyenneJcurve,
-      sources.autonomousDesignSelections],
+      sources.autonomousDesignSelections, sources.d05OwnerAcceptance],
     blockers: relics.g06Disposition?.status === 'PASS' ? [] : [
       blocker(
         'R00-G06-RELIC-REVIEW',
@@ -346,7 +363,9 @@ const gates = [
       sources.d05FutureStateContract, sources.d05FutureMountain,
       sources.emptyEightGeologyDesign, sources.d06EgressGeometryDesign,
       sources.d06LifeSafety, sources.connectorGeometry, sources.cheyenneJcurve,
-      sources.autonomousDesignSelections],
+      sources.autonomousDesignSelections, sources.d02OwnerAcceptance,
+      sources.d05OwnerAcceptance, sources.d06OwnerAcceptance,
+      sources.ownerReviewBundle],
     blockers: [
       blocker(
         'R00-G07-EXPERT-DESIGN-ACCEPTANCE',
@@ -462,9 +481,22 @@ const report = {
     b10AnalyticSurfaceSelected: selectedGeometryIds
       .includes('P1-B10-MOUNTAIN-SOLID-AND-RELIC-VOIDS'),
     d06CappedVentRiserCount: recommendedVent?.risers?.length ?? 0,
+    ownerReviewBundleReady: ownerReviewBundle.disposition?.readyForSoleOwnerReview === true,
+    ownerReviewBundlePayloadSha256: ownerReviewBundle.authority?.bundlePayloadSha256 ?? null,
+    ownerReviewBundleAcceptanceRecorded: ownerReviewBundle
+      .disposition?.ownerAcceptanceRecorded === true,
+    d02OwnerPacketReady: d02OwnerAcceptance.copyableSoleOwnerAcceptance
+      ?.status === 'TEMPLATE_NOT_EXECUTED',
+    d05OwnerPacketReady: d05OwnerAcceptance.disposition?.ownerPacketContentComplete === true,
+    d06OwnerPacketReady: d06OwnerAcceptance.status
+      === 'READY_FOR_SOLE_OWNER_REVIEW_PLANNING_BASIS_BOUND_D06_AND_G02_HOLD',
+    p1B11OwnerPacketReady: b11OwnerAcceptance.disposition
+      ?.p1B11ReadyForOwnerApproval === true,
+    p1B11GrandAvenueCenterlinePointCount: b11OwnerAcceptance.acceptancePayload
+      ?.grandAvenue?.centerlinePointCount ?? 0,
     autonomousOfflineWorkMayContinue: true,
     autonomousOfflineWorkCanCompleteR00: false,
-    nextAutonomousArtifact: 'P1-B11 exact external-interface compiler, complete-save audit, and D02/D05/D06 technical development before T01/T02',
+    nextAutonomousArtifact: 'record the owner-review bundle, capture/audit one complete saved world, then continue exact D02/D05/D06 technical development before T01/T02',
     externalEvidenceStillRequired: true,
   },
 };
@@ -474,7 +506,7 @@ const markdown = `# Combined Zones Phase 1 R00 readiness audit\n\n`
   + `This audit evaluates only the nonphysical R00 design-freeze gates G01-G07. It does not use R01 pilot, execution, rollback, route-QA, or post-state evidence to close a design decision.\n\n`
   + `## Sequencing result\n\n`
   + `The evidence graph is cycle-free: **${descendantEvidenceCycleFree ? 'PASS' : 'FAIL'}**. The required order is D01-D07 design acceptance → R00 freeze → R01 physical validation → R02 eligibility.\n\n`
-  + `The owner-delegated ledger freezes **${report.summary.ownerDelegatedSelectionCount}** conservative planning choices. No additional human decision-makers are required. The remaining holds are technical evidence, exact-cell compilation, independent checks, ownership/interface cellsets, and later release authorization.\n\n`
+  + `The owner-delegated ledger freezes **${report.summary.ownerDelegatedSelectionCount}** conservative planning choices. Four exact review packets are now bound by owner-review payload \`${report.summary.ownerReviewBundlePayloadSha256}\`; acceptance remains pending and cannot pass a technical HOLD. No additional human decision-makers are required. The remaining holds are technical evidence, exact-cell compilation, independent checks, ownership/interface cellsets, and later release authorization.\n\n`
   + `## R00 gates\n\n`
   + `| Gate | Status | Current blockers |\n|---|---|---:|\n`
   + gates.map((gate) => `| ${gate.id} | **${gate.status}** | ${gate.blockers.length} |`).join('\n')

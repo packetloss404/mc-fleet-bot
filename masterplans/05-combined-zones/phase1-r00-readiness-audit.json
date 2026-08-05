@@ -138,6 +138,31 @@
       "sha256": "21502bc244a38f89e402c3a6e0916384171475deb1a313e14642f67849df69cb",
       "bytes": 16095
     },
+    "d02OwnerAcceptance": {
+      "path": "masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json",
+      "sha256": "0e0bea4324313766ddc70602e957ba14e9701905ae2210c89a2c3f13787a3793",
+      "bytes": 58613
+    },
+    "d05OwnerAcceptance": {
+      "path": "masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json",
+      "sha256": "3bf8c1955f8e10de12afad3048d202e0b4322f01c3c12b96fceded10f58db662",
+      "bytes": 62402
+    },
+    "d06OwnerAcceptance": {
+      "path": "masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json",
+      "sha256": "74911cc825447b3125a045f81453636401c8c6868f219aa3dc703022a3e66087",
+      "bytes": 69663
+    },
+    "b11OwnerAcceptance": {
+      "path": "masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json",
+      "sha256": "ae9655d5df6fe1e83cd74c077a4638117d81a4023047b27700de2400290429b8",
+      "bytes": 12571
+    },
+    "ownerReviewBundle": {
+      "path": "masterplans/05-combined-zones/phase1-owner-review-bundle.json",
+      "sha256": "3543371f24f6970cf8cafc7eec0990c755bdffa50fdda36a3a53b8cb52f52f1e",
+      "bytes": 5603
+    },
     "siteGateAudit": {
       "path": "masterplans/05-combined-zones/phase1-site-gate-audit.json",
       "sha256": "3fa4cf7df43ab0373cf7d2b284dab56062a07fa1ece3843812483d74cbc4466c",
@@ -372,26 +397,46 @@
           "path": "masterplans/05-combined-zones/phase1-autonomous-design-selections.json",
           "sha256": "21502bc244a38f89e402c3a6e0916384171475deb1a313e14642f67849df69cb",
           "bytes": 16095
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json",
+          "sha256": "0e0bea4324313766ddc70602e957ba14e9701905ae2210c89a2c3f13787a3793",
+          "bytes": 58613
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json",
+          "sha256": "3bf8c1955f8e10de12afad3048d202e0b4322f01c3c12b96fceded10f58db662",
+          "bytes": 62402
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json",
+          "sha256": "74911cc825447b3125a045f81453636401c8c6868f219aa3dc703022a3e66087",
+          "bytes": 69663
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-owner-review-bundle.json",
+          "sha256": "3543371f24f6970cf8cafc7eec0990c755bdffa50fdda36a3a53b8cb52f52f1e",
+          "bytes": 5603
         }
       ],
       "blockers": [
         {
           "id": "R00-G02-D02-EXTERNAL-ACCEPTANCE",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "Supply one complete immutable copied save with region/entities/poi/level.dat, then finish D02-S01/S02 identity and safety census. The selected S04 basis freezes 10 capped-sump candidates and one explicit no-build low run, but inflow/storage/freeboard/failure criteria, future fluid accounting, receiver ownership/interfaces, capacity, structure/geotechnical review, and complete technical acceptance remain.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json"
+          "requirement": "The D02 owner packet is ready for planning-basis/checklist acceptance, but technical closure still requires one complete immutable copied save with region/entities/poi/level.dat, D02-S01/S02 identity and safety census, inflow/storage/freeboard/failure criteria, future fluid accounting, receiver ownership/interfaces, capacity, structure/geotechnical review, and complete technical acceptance.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json"
         },
         {
           "id": "R00-G02-D05-EXTERNAL-ACCEPTANCE",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "Develop the selected compact east-face analytic planning surface into canonical material states and accepted construction/influence cellsets. Close support gaps, hydrology/geotechnical review, relic influence kernels, owners, interfaces, maintenance/egress, stations, and mechanisms; accepted future-state cells remain zero.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json"
+          "requirement": "The D05 conditional-policy packet is ready for owner review, but technical closure still requires the compact east-face analytic planning surface to compile into canonical material states and accepted construction/influence cellsets, with support gaps, hydrology/geotechnical review, relic influence kernels, owners, interfaces, maintenance/egress, stations, and mechanisms closed; accepted future-state cells remain zero.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json"
         },
         {
           "id": "R00-G02-D06-EXTERNAL-ACCEPTANCE",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "Technically develop and accept the frozen fail-closed D06 reservations: stairs/lifts, smoke and barrier mechanisms, emergency circuits, capped drainage, four local vent risers, fire/service access, outlets, ownership, and exact interfaces. Every opening and discharge remains sealed and uncommissioned.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json"
+          "requirement": "The D06 fail-closed planning/checklist packet is ready for owner review, but technical closure still requires exact accepted stairs/lifts, smoke and barrier mechanisms, emergency circuits, capped drainage, four local vent risers, fire/service access, outlets, ownership, and interfaces. Every opening and discharge remains sealed and uncommissioned.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json"
         }
       ]
     },
@@ -443,14 +488,24 @@
           "path": "masterplans/05-combined-zones/phase1-autonomous-design-selections.json",
           "sha256": "21502bc244a38f89e402c3a6e0916384171475deb1a313e14642f67849df69cb",
           "bytes": 16095
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json",
+          "sha256": "ae9655d5df6fe1e83cd74c077a4638117d81a4023047b27700de2400290429b8",
+          "bytes": 12571
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-owner-review-bundle.json",
+          "sha256": "3543371f24f6970cf8cafc7eec0990c755bdffa50fdda36a3a53b8cb52f52f1e",
+          "bytes": 5603
         }
       ],
       "blockers": [
         {
           "id": "R00-G03-DESIGN-AUTHORITY-CHOICES",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "Close the 1 remaining geometry blocker (P1-B11-EXTERNAL-INTERFACES) without inferring null elevations, routes, solids, or interfaces. 10 conservative geometry choices are already owner-delegated and frozen.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-geometry-coordination.json"
+          "requirement": "Record sole-owner acceptance of the hash-bound P1-B11 packet for the 1 remaining geometry blocker (P1-B11-EXTERNAL-INTERFACES). It proposes the exact Grand Avenue profile, preserves the unevidenced PassageWay side as a zero-cell deferral, and keeps future lines sealed; 10 prior geometry choices remain frozen.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json"
         },
         {
           "id": "R00-G03-CANONICAL-INTEGER-COMPILER",
@@ -488,6 +543,26 @@
           "path": "masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
           "sha256": "2cdf82e2896fbf41bba52f90c8e6fd9d8bc741d8019964f623c171bf332bc120",
           "bytes": 171048
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json",
+          "sha256": "0e0bea4324313766ddc70602e957ba14e9701905ae2210c89a2c3f13787a3793",
+          "bytes": 58613
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json",
+          "sha256": "3bf8c1955f8e10de12afad3048d202e0b4322f01c3c12b96fceded10f58db662",
+          "bytes": 62402
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json",
+          "sha256": "74911cc825447b3125a045f81453636401c8c6868f219aa3dc703022a3e66087",
+          "bytes": 69663
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json",
+          "sha256": "ae9655d5df6fe1e83cd74c077a4638117d81a4023047b27700de2400290429b8",
+          "bytes": 12571
         },
         {
           "path": "masterplans/05-combined-zones/phase1-site-gate-audit.json",
@@ -538,6 +613,26 @@
           "path": "masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
           "sha256": "2cdf82e2896fbf41bba52f90c8e6fd9d8bc741d8019964f623c171bf332bc120",
           "bytes": 171048
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json",
+          "sha256": "0e0bea4324313766ddc70602e957ba14e9701905ae2210c89a2c3f13787a3793",
+          "bytes": 58613
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json",
+          "sha256": "3bf8c1955f8e10de12afad3048d202e0b4322f01c3c12b96fceded10f58db662",
+          "bytes": 62402
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json",
+          "sha256": "74911cc825447b3125a045f81453636401c8c6868f219aa3dc703022a3e66087",
+          "bytes": 69663
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json",
+          "sha256": "ae9655d5df6fe1e83cd74c077a4638117d81a4023047b27700de2400290429b8",
+          "bytes": 12571
         },
         {
           "path": "masterplans/05-combined-zones/phase1-site-gate-audit.json",
@@ -598,6 +693,11 @@
           "path": "masterplans/05-combined-zones/phase1-autonomous-design-selections.json",
           "sha256": "21502bc244a38f89e402c3a6e0916384171475deb1a313e14642f67849df69cb",
           "bytes": 16095
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json",
+          "sha256": "3bf8c1955f8e10de12afad3048d202e0b4322f01c3c12b96fceded10f58db662",
+          "bytes": 62402
         }
       ],
       "blockers": [
@@ -698,6 +798,26 @@
           "path": "masterplans/05-combined-zones/phase1-autonomous-design-selections.json",
           "sha256": "21502bc244a38f89e402c3a6e0916384171475deb1a313e14642f67849df69cb",
           "bytes": 16095
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json",
+          "sha256": "0e0bea4324313766ddc70602e957ba14e9701905ae2210c89a2c3f13787a3793",
+          "bytes": 58613
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json",
+          "sha256": "3bf8c1955f8e10de12afad3048d202e0b4322f01c3c12b96fceded10f58db662",
+          "bytes": 62402
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json",
+          "sha256": "74911cc825447b3125a045f81453636401c8c6868f219aa3dc703022a3e66087",
+          "bytes": 69663
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-owner-review-bundle.json",
+          "sha256": "3543371f24f6970cf8cafc7eec0990c755bdffa50fdda36a3a53b8cb52f52f1e",
+          "bytes": 5603
         }
       ],
       "blockers": [
@@ -765,9 +885,17 @@
     "b09ExactRouteSelected": true,
     "b10AnalyticSurfaceSelected": true,
     "d06CappedVentRiserCount": 4,
+    "ownerReviewBundleReady": true,
+    "ownerReviewBundlePayloadSha256": "f0f5870c98bd2bc4aefda24d032538d4037e9a39c772c604c389883ebcbeb5b2",
+    "ownerReviewBundleAcceptanceRecorded": false,
+    "d02OwnerPacketReady": true,
+    "d05OwnerPacketReady": true,
+    "d06OwnerPacketReady": true,
+    "p1B11OwnerPacketReady": true,
+    "p1B11GrandAvenueCenterlinePointCount": 299,
     "autonomousOfflineWorkMayContinue": true,
     "autonomousOfflineWorkCanCompleteR00": false,
-    "nextAutonomousArtifact": "P1-B11 exact external-interface compiler, complete-save audit, and D02/D05/D06 technical development before T01/T02",
+    "nextAutonomousArtifact": "record the owner-review bundle, capture/audit one complete saved world, then continue exact D02/D05/D06 technical development before T01/T02",
     "externalEvidenceStillRequired": true
   }
 }

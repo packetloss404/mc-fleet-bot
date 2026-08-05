@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-owner-review-bundle",
+  "generatedAtUtc": "2026-08-04T23:50:00Z",
+  "status": "READY_FOR_SOLE_OWNER_REVIEW_BUNDLE_ACCEPTANCE_PENDING_ALL_TECHNICAL_HOLDS_RETAINED",
+  "authority": {
+    "decisionAuthority": "sole human project owner",
+    "additionalHumanDecisionMakersRequired": false,
+    "ownerAcceptanceRecorded": false,
+    "bundlePayloadSha256": "f0f5870c98bd2bc4aefda24d032538d4037e9a39c772c604c389883ebcbeb5b2",
+    "copyableStatement": "I, the sole owner, accept Combined Zones R00 owner-review bundle SHA-256 f0f5870c98bd2bc4aefda24d032538d4037e9a39c772c604c389883ebcbeb5b2 as the controlling planning-policy and technical-development checklist. I acknowledge every listed limitation and do not mark any current HOLD as PASS or authorize construction, operations, opening, discharge, commissioning, release advancement, or a world edit."
+  },
+  "sourceBindings": {
+    "d02": {
+      "path": "masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json",
+      "sha256": "0e0bea4324313766ddc70602e957ba14e9701905ae2210c89a2c3f13787a3793",
+      "bytes": 58613,
+      "role": "D02 sole-owner review packet"
+    },
+    "d05": {
+      "path": "masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json",
+      "sha256": "3bf8c1955f8e10de12afad3048d202e0b4322f01c3c12b96fceded10f58db662",
+      "bytes": 62402,
+      "role": "D05 sole-owner review packet"
+    },
+    "d06": {
+      "path": "masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json",
+      "sha256": "74911cc825447b3125a045f81453636401c8c6868f219aa3dc703022a3e66087",
+      "bytes": 69663,
+      "role": "D06 sole-owner review packet"
+    },
+    "b11": {
+      "path": "masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json",
+      "sha256": "ae9655d5df6fe1e83cd74c077a4638117d81a4023047b27700de2400290429b8",
+      "bytes": 12571,
+      "role": "B11 sole-owner review packet"
+    }
+  },
+  "packetSummary": [
+    {
+      "scope": "D02",
+      "packetStatus": "PARTIAL_PASS_CLASSIFIED_EVIDENCE_D02_G02_HOLD",
+      "decisionStatus": "HOLD_D02_AND_R00_G02_NO_WORLD_EDITS",
+      "approvedByBundle": false,
+      "remainingHoldCount": 11
+    },
+    {
+      "scope": "D05",
+      "packetStatus": "OWNER_ACCEPTANCE_PACKET_READY_POLICY_AND_TECHNICAL_D05_G02_HOLD",
+      "decisionStatus": "HOLD",
+      "approvedByBundle": false,
+      "remainingHoldCount": 8
+    },
+    {
+      "scope": "D06",
+      "packetStatus": "READY_FOR_SOLE_OWNER_REVIEW_PLANNING_BASIS_BOUND_D06_AND_G02_HOLD",
+      "decisionStatus": "HOLD",
+      "approvedByBundle": false,
+      "remainingHoldCount": 9
+    },
+    {
+      "scope": "P1-B11",
+      "packetStatus": "READY_FOR_SOLE_OWNER_REVIEW_P1_B11_HOLD_UNTIL_HASH_ACCEPTED",
+      "decisionStatus": "PENDING_OWNER_ACCEPTANCE",
+      "approvedByBundle": false,
+      "remainingHoldCount": 1
+    }
+  ],
+  "bundlePayload": {
+    "packetBindings": {
+      "d02": {
+        "id": "combined-zones-phase1-d02-owner-acceptance-packet",
+        "sha256": "0e0bea4324313766ddc70602e957ba14e9701905ae2210c89a2c3f13787a3793"
+      },
+      "d05": {
+        "id": "combined-zones-phase1-d05-owner-acceptance-packet",
+        "sha256": "3bf8c1955f8e10de12afad3048d202e0b4322f01c3c12b96fceded10f58db662"
+      },
+      "d06": {
+        "id": "combined-zones-phase1-d06-owner-acceptance-packet",
+        "sha256": "74911cc825447b3125a045f81453636401c8c6868f219aa3dc703022a3e66087"
+      },
+      "b11": {
+        "id": "combined-zones-phase1-b11-external-interface-acceptance",
+        "sha256": "ae9655d5df6fe1e83cd74c077a4638117d81a4023047b27700de2400290429b8"
+      }
+    },
+    "acceptedScope": [
+      "D02 evidence classification, selected exact raster and capped-sump/no-build planning basis, and the published D02 acceptance checklist",
+      "D05 conditional FM-01 material/support/hydrology/relic/transport/ownership policy and its default-deny acceptance checklist",
+      "D06/B07 fail-closed reservation basis and the D06-AC-01 through D06-AC-11 technical-development checklist",
+      "P1-B11 exact Grand Avenue 68-to-72 profile, exact evidenced anchors, sealed future lines, and zero-cell PassageWay deferral"
+    ],
+    "acceptanceNeverImplies": [
+      "that a current HOLD is PASS",
+      "that missing complete-save, future-state, mechanism, capacity, owner, interface, route, receiver, or technical evidence exists",
+      "D02, D05, D06, R00 G02, R00 G03, or any later release gate PASS",
+      "construction ownership, operations, opening, discharge, commissioning, release authorization, or a world edit"
+    ]
+  },
+  "approvalRecordTemplate": {
+    "requiredFields": [
+      "schemaVersion",
+      "id",
+      "decision",
+      "acceptedBy",
+      "acceptedAtUtc",
+      "bundlePath",
+      "bundleFileSha256",
+      "bundlePayloadSha256",
+      "copyableStatementAcceptedVerbatim"
+    ],
+    "allowedDecision": "ACCEPT_PLANNING_POLICY_AND_TECHNICAL_DEVELOPMENT_CHECKLIST",
+    "currentRecord": null
+  },
+  "safetyBoundary": {
+    "offlineOnly": true,
+    "liveCallsPerformed": [],
+    "operations": [],
+    "operationCellCount": 0,
+    "materialCellCount": 0,
+    "worldEditAuthorized": false,
+    "physicalBuildAuthorized": false
+  },
+  "disposition": {
+    "readyForSoleOwnerReview": true,
+    "ownerAcceptanceRecorded": false,
+    "packetCount": 4,
+    "p1B11MayFreezeAfterAcceptanceRecord": true,
+    "technicalHoldMayPassFromThisApproval": false,
+    "completeSavedWorldStillRequired": true,
+    "autonomousOfflineTechnicalDevelopmentMayContinue": true,
+    "r00Passed": false
+  }
+}
