@@ -1825,6 +1825,7 @@ node scripts/compile_combined_zones_d05_owner_acceptance_packet.mjs
 node scripts/compile_combined_zones_d06_owner_acceptance_packet.mjs
 node scripts/compile_combined_zones_b11_external_interfaces.mjs
 node scripts/compile_combined_zones_owner_review_bundle.mjs
+node scripts/record_combined_zones_owner_review_acceptance.mjs
 node scripts/audit_combined_zones_r00_readiness.mjs
 ```
 
@@ -1893,19 +1894,24 @@ npm run test:masterplans
   west-two and B09 east-face alternatives, but their hydrology, support,
   mechanism, technical, ownership, and interface gates remain HOLD. All
   outputs contain zero operations.
-- The owner-delegated ledger currently freezes 20 planning choices; P1-B11
-  exact Grand Avenue/PassageWay/external interfaces is the only remaining
-  unselected geometry choice until its separate acceptance payload is recorded.
+- The owner-delegated ledger freezes 20 planning choices. The separate,
+  hash-bound owner-acceptance record freezes P1-B11 exact Grand
+  Avenue/PassageWay/external interfaces as the planning basis, leaving zero
+  subjective geometry choices while the canonical exact-cell compiler remains
+  HOLD.
   The B11 compiler proposes one exact 299-point Grand Avenue profile, compiles
   the unevidenced PassageWay side to a zero-cell deferral, and keeps every
   future-line wall sealed. The owner-review bundle binds D02, D05, D06, and
-  B11 under one copyable planning/checklist statement; accepting it cannot pass
-  a technical HOLD or authorize work. Run their focused regressions with:
+  B11 under one copyable planning/checklist statement. Keep that bundle
+  immutable; the separate acceptance record binds its exact file and payload
+  hashes. Acceptance cannot pass a technical HOLD or authorize work. Run their
+  focused regressions with:
 
 ```bash
 npx vitest run \
   test/build/combinedZonesB11ExternalInterfaces.test.ts \
-  test/build/combinedZonesOwnerReviewBundle.test.ts
+  test/build/combinedZonesOwnerReviewBundle.test.ts \
+  test/build/combinedZonesOwnerReviewAcceptance.test.ts
 ```
 
 - Generate the human-readable, offline HTML5 owner-review report from the
@@ -1921,6 +1927,149 @@ npx vitest run test/build/combinedZonesOwnerReviewReport.test.ts
   must remain reproducible from the bound JSON. Concept images are labeled as
   intent, maps remain planning views, and no report action authorizes a world
   edit, construction, opening, discharge, commissioning, or release advance.
+
+- Validate a supplied complete saved-world root, or reproduce the current
+  region-only negative intake evidence, with:
+
+```bash
+node scripts/audit_combined_zones_complete_save.mjs \
+  --world-root <copied-world-root> \
+  --capture-manifest <server-export-capture-manifest.json> \
+  --out <intake-audit.json> \
+  --markdown <intake-audit.md>
+npx vitest run test/build/combinedZonesCompleteSaveIntake.test.ts
+```
+
+- A complete-save PASS requires nonempty `region/`, `entities/`, and `poi/`
+  MCA sets, nonempty `level.dat`, stable non-symlink files, and an exact
+  externally issued capture manifest proving the ordered frozen-copy protocol.
+  The intake tool is read-only and may not contact Minecraft or RCON, mutate a
+  supplied save, accept dependency samples, or infer same-moment identity.
+
+- Reproduce the post-approval D02 technical-development matrix and the P1-B12
+  Grand Avenue subsurface no-foreclosure alternatives with:
+
+```bash
+node scripts/compile_combined_zones_d02_technical_design.mjs
+node scripts/compile_combined_zones_d02_c01_ownership_loading_interface.mjs
+node scripts/compile_combined_zones_grand_avenue_subsurface_alternatives.mjs
+node scripts/compile_combined_zones_grand_avenue_passive_shell_candidate.mjs
+node scripts/compile_combined_zones_b11_surface_road_technical_proposal.mjs
+npx vitest run \
+  test/build/combinedZonesD02TechnicalDesign.test.ts \
+  test/build/combinedZonesD02C01OwnershipLoadingInterface.test.ts \
+  test/build/combinedZonesGrandAvenueSubsurfaceAlternatives.test.ts \
+  test/build/combinedZonesGrandAvenuePassiveShellCandidate.test.ts \
+  test/build/combinedZonesB11SurfaceRoadTechnicalProposal.test.ts
+```
+
+- P1-B12 reserves optionality only. A sealed rough shell is conditional on
+  complete pre-road technical acceptance; full fit-out is not recommended.
+  The nine-cell-wide route screen is not an excavation or owned construction
+  set. It has exact current fluid and Houston-overlap evidence but emits zero
+  future, construction, material, and operation cells.
+- The D02/C01 proposal is bounded to the exact terminal stack. Its one-owner
+  partition, loading precedence, and sealed adjacency pairs do not prove
+  structural capacity, settlement, ISSUE-002 field condition, hydraulics,
+  complete-save clearance, material states, or final D02/G03/G04/G05
+  acceptance. Keep the 45 withheld D02 cells default-deny and all accepted and
+  operation counts at zero.
+
+- Reproduce the post-approval D05 sparse future-state proposal and D06
+  reservation/failure/commissioning contracts with:
+
+```bash
+node scripts/compile_combined_zones_d05_future_state.mjs
+node scripts/compile_combined_zones_d05_support_material_design.mjs
+node scripts/compile_combined_zones_d06_mechanisms.mjs
+node scripts/compile_combined_zones_d06_detailed_mechanism_setout.mjs
+npx vitest run \
+  test/build/combinedZonesD05FutureState.test.ts \
+  test/build/combinedZonesD05SupportMaterialDesign.test.ts \
+  test/build/combinedZonesD06Mechanisms.test.ts \
+  test/build/combinedZonesD06DetailedMechanismSetout.test.ts
+```
+
+- The D05 compiler partitions every FM-01 candidate cell and classifies every
+  support gap, but its emitted cells remain proposals with zero accepted
+  future/construction state. The D06 compiler freezes exact reservations,
+  failure criteria, and non-executable commissioning contracts while every
+  physical opening, powered mechanism, receiver, material, and operation
+  remains zero. Neither artifact substitutes for a complete saved world,
+  technical acceptance, ownership/interface acceptance, or a release package.
+- The detailed D06 setout resolves internal proposal geometry and duplicate
+  precedence only. Carrier cells are not live circuits, caps are not outlets,
+  equipment bays are not working mechanisms, and test contracts are not
+  commissioning evidence. Keep external routes/receivers, functional states,
+  controls/failure logic, complete-save results, technical acceptance, and all
+  accepted/operation counts fail-closed.
+
+- Reproduce the canonical proposal-level G03 setout with:
+
+```bash
+node scripts/compile_combined_zones_g03_canonical_setout.mjs
+node scripts/audit_combined_zones_g06_proposed_clearance.mjs
+npx vitest run \
+  test/build/combinedZonesG03CanonicalSetout.test.ts \
+  test/build/combinedZonesG06ProposedClearance.test.ts
+```
+
+- The G03 artifact distinguishes exact proposed construction/interaction
+  domains from planning accommodations, reference ledgers, and null influence
+  domains. V2 consumes the exact B11 construction/interaction/influence
+  proposals and the D06 detailed interaction union while retaining every
+  functional or expert-physical unknown as null. Disclosed overlaps are
+  coordination findings, not accepted seams.
+  Never collapse a null domain to an empty set or use the proposal registry to
+  generate operations while G03 remains HOLD.
+- The G06 audit proves exact-zero protected-feature intersections only for the
+  non-null G03 proposal domains it evaluates. It separately discloses D05
+  support-status overlaps and preserves null domains as unknown. Do not promote
+  a zero-margin core clearance to positive-margin, expert-influence,
+  complete-save, accepted-contract, or final G06 evidence.
+
+- Reproduce the B09 funicular technical-reservation proposal with:
+
+```bash
+node scripts/compile_combined_zones_b09_funicular_technical_system.mjs
+npx vitest run test/build/combinedZonesB09FunicularTechnicalSystem.test.ts
+```
+
+- B09's station, guideway/support, maintenance/egress, rescue, power/control,
+  drainage, and sealed-interface cellsets are functional reservations only.
+  Carrier cells do not prove a circuit or flow path; observed-start clearance
+  does not replace a complete-save gate. Keep its accepted cell, owner,
+  interface, mechanism, material, and operation counts at zero until every
+  declared technical and acceptance HOLD closes.
+- The Grand Avenue passive shell is a conditional candidate only. Do not
+  excavate it merely because its geometry is exact. Its complete-save,
+  structural/road-load, hydrology, utility, D06 occupiable-use, owner/interface,
+  global cross-scope, and physical-release HOLDs must all pass before it could
+  precede the surface road. If any remains at road release, preserve the
+  no-foreclosure reservation and build no shell.
+- P1-B11's accepted centerline/profile remains immutable. The surface-road
+  proposal adds an unaccepted eight-wide side-bias, interaction union, and
+  load/drainage/utility reservations that coordinate exactly with P1-B12. Its
+  exact geometry does not select block states, settle road loads, accept the
+  Houston seam, or authorize construction. G03 v2 consumes those exact proposal
+  domains; regenerate G03 explicitly whenever B11, B12, D06, D02/C01, or the
+  release-contract identity changes.
+
+- Reproduce the proposal-level one-owner/default-deny interface registry with:
+
+```bash
+node scripts/compile_combined_zones_proposed_ownership_interface_registry.mjs
+npx vitest run \
+  test/build/combinedZonesProposedOwnershipInterfaceRegistry.test.ts
+```
+
+- The registry's exact precedence records eliminate known shared-cell ambiguity
+  without wildcard, last-writer-wins, or silent clipping. Its logical owners and
+  directional contracts are proposals, not additional human decision makers or
+  accepted physical authority. Null interfaces remain HOLD, and the registry
+  must not be converted into operations or used to pass G04/G05 until the
+  technical inputs, complete-save evidence, and one immutable final acceptance
+  identity exist.
 
 Run the focused second-wave regressions with:
 

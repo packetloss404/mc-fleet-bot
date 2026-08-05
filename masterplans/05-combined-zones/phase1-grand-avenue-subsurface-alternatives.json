@@ -1,0 +1,1177 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-grand-avenue-subsurface-alternatives",
+  "generatedAtUtc": "2026-08-05T01:30:00Z",
+  "status": "RESERVE_NOW_CONDITIONAL_SEALED_SHELL_BEFORE_ROAD_NO_FITOUT_ZERO_OPERATIONS",
+  "purpose": "Compare Grand Avenue subsurface no-foreclosure alternatives against exact route-specific immutable evidence without accepting a tunnel, construction cells, future states, ownership, or physical work.",
+  "authorityBoundary": {
+    "planningRecommendationPreparedAutonomously": true,
+    "soleOwnerApprovalRecordedHere": false,
+    "b11OwnerApprovalStatus": "PENDING",
+    "b11AcceptancePayloadSha256": "d1bcd9aa70fb5374407013cf87b6396083341057e61a45764f42622cc2706d28",
+    "masterplan04Role": "normalized architectural composition only",
+    "masterplan05Role": "current-world placement, additive zones, interfaces, and delivery gates"
+  },
+  "safetyBoundary": {
+    "offlineOnly": true,
+    "immutableCopiedAnvilOnly": true,
+    "liveCallsPerformed": [],
+    "proposedFutureStateRecords": [],
+    "operationCells": [],
+    "materialCells": [],
+    "operationCellCount": 0,
+    "materialCellCount": 0,
+    "constructionCellCount": 0,
+    "acceptedFutureCellCount": 0,
+    "canonicalOwnersAssigned": 0,
+    "acceptedInterfaceContracts": 0,
+    "executable": false,
+    "constructionAuthorized": false,
+    "worldEditAuthorized": false
+  },
+  "sourceBindings": {
+    "b11": {
+      "path": "masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json",
+      "sha256": "ae9655d5df6fe1e83cd74c077a4638117d81a4023047b27700de2400290429b8",
+      "bytes": 12571,
+      "role": "exact Grand Avenue profile and external-interface truth boundary"
+    },
+    "phase0": {
+      "path": "masterplans/05-combined-zones/phase0-survey-evidence.json",
+      "sha256": "c0730cc039c756ac6331b9aed8ecb89af38426e19d588ccdd56ec17cd8e1309e",
+      "bytes": 58530,
+      "role": "immutable terrain, generated-structure, and survey evidence"
+    },
+    "geometry": {
+      "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
+      "sha256": "7fdf416f0ee00cb2a48d6581df638e6f809012f2438bffc7f83985ddfd182292",
+      "bytes": 35526,
+      "role": "vertical contract and exact Houston sample coordination envelope"
+    },
+    "coordinates": {
+      "path": "masterplans/05-combined-zones/site-coordinates.json",
+      "sha256": "b825f3c1e5f5696284d17c64dd469ba8efa845f6846e76032cb91bff4d4fdf62",
+      "bytes": 43946,
+      "role": "Z02/Z03/Z05/C4/Empty Eight registry and future-line geometry"
+    },
+    "protectedRelics": {
+      "path": "masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
+      "sha256": "77a7b94653d745e378a7ce017d6a43a23d9bbd0fe99288b4b50f23c54d793229",
+      "bytes": 30460,
+      "role": "exact protected-core evidence and G06 limitations"
+    },
+    "d02": {
+      "path": "masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json",
+      "sha256": "0e0bea4324313766ddc70602e957ba14e9701905ae2210c89a2c3f13787a3793",
+      "bytes": 58613,
+      "role": "civil, geotechnical, hydrology, complete-save, and ownership limitations"
+    },
+    "d06": {
+      "path": "masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json",
+      "sha256": "74911cc825447b3125a045f81453636401c8c6868f219aa3dc703022a3e66087",
+      "bytes": 69663,
+      "role": "egress, ventilation, drainage, fire/service, mechanism, and commissioning limitations"
+    },
+    "releaseContract": {
+      "path": "masterplans/05-combined-zones/phase1-release-contract.json",
+      "sha256": "b71308a92f4cbaab10725bfc3e4ca47a989f14b437de4318baa1aa43310346e4",
+      "bytes": 32799,
+      "role": "G03-G07 design gates and deep-shell-before-surface sequence"
+    },
+    "immutablePhase0PostRegionSnapshot": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+      "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+      "regionFileCount": 51,
+      "bytes": 290946492,
+      "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+    }
+  },
+  "evidenceTaxonomy": {
+    "BOUND_FACT": "Copied directly from hash-bound input evidence or the immutable Anvil snapshot.",
+    "DETERMINISTIC_DERIVATION": "Recomputed from bound facts under the exact method recorded here.",
+    "PLANNING_RECOMMENDATION": "A no-foreclosure choice that is neither an observed fact nor technical acceptance.",
+    "SCREENING_GEOMETRY": "An exact conservative audit volume that is not a future shell, owned construction set, or operation set.",
+    "EVIDENCE_GAP": "A missing input that keeps physical work or fit-out on HOLD."
+  },
+  "b11SurfaceControl": {
+    "classification": "BOUND_FACT",
+    "owner": "Z03-GRAND-AVENUE",
+    "pointCount": 299,
+    "horizontalStepCount": 298,
+    "start": {
+      "station": 0,
+      "x": 1750,
+      "y": 68,
+      "z": -300
+    },
+    "end": {
+      "station": 298,
+      "x": 2048,
+      "y": 72,
+      "z": -328
+    },
+    "riseStations": [
+      {
+        "station": 38,
+        "x": 1788,
+        "y": 69,
+        "z": -304
+      },
+      {
+        "station": 112,
+        "x": 1862,
+        "y": 70,
+        "z": -311
+      },
+      {
+        "station": 187,
+        "x": 1937,
+        "y": 71,
+        "z": -318
+      },
+      {
+        "station": 261,
+        "x": 2011,
+        "y": 72,
+        "z": -325
+      }
+    ],
+    "crossSectionBlocks": 8,
+    "exactCrossSectionSideBiasAvailable": false,
+    "centerlineSha256": "e63b7779674ad46fd7ad9c4ae0aea8f618afa8b656d3a24aa4367057cf103ff4",
+    "qualification": "The accepted B11 artifact is pending sole-owner acceptance; its eight-block cross-section still has no exact lateral cell convention."
+  },
+  "exactRouteSpecificScreening": {
+    "method": {
+      "classification": "SCREENING_GEOMETRY",
+      "conservativeFootprintRule": "Union of all integer X/Z columns within Chebyshev radius four of every B11 centerline point.",
+      "footprintQualification": "The radius-four union is the smallest symmetric integer screening capture around an integer centerline for an unresolved authored eight-block section. It is deliberately one cell wider than eight and is not the eventual road or tunnel section.",
+      "fullHeightRule": "Read every cell at Y=-64…319 in every screening column.",
+      "shallowBandRule": "For each screening column, use the nearest B11 station (ties choose lower station) and screen roadY-8 through roadY-1 inclusive.",
+      "shallowBandQualification": "The eight-cell vertical band tests a possible shallow continuation into the exact eight-cell-high Houston sample. It is not a structural shell, clearance, lining, or excavation design.",
+      "stateCanonicalization": "JSON object with Name first and Properties keys lexicographically sorted.",
+      "terrainRule": "Highest non-air, non-organic, non-fluid block in each column; world surface separately retains the highest non-air state.",
+      "hashOrder": "columns: x,z; cells/states: x,y,z"
+    },
+    "chunkCoverage": {
+      "requiredChunkCount": 33,
+      "missingChunkCount": 0,
+      "missingChunks": []
+    },
+    "conservativeFootprint": {
+      "classification": "SCREENING_GEOMETRY",
+      "radiusBlocks": 4,
+      "columnCount": 2987,
+      "bounds": {
+        "minX": 1746,
+        "maxX": 2052,
+        "minZ": -332,
+        "maxZ": -296
+      },
+      "coordinateSetSha256": "5310b4bd3143d8eb7653b6ce87126f91de8f3256d20b12face0fcbe105d1a837",
+      "exactConstructionFootprintAccepted": false
+    },
+    "fullHeightCurrentStateCensus": {
+      "classification": "BOUND_FACT_AND_DETERMINISTIC_DERIVATION",
+      "minY": -64,
+      "maxY": 319,
+      "cellCount": 1147008,
+      "coordinateSetSha256": "644522074d77d913d7de7d77156b9b0b50b3bb07358cabe273b2610b03c9ab1a",
+      "blockStateSetSha256": "f831f3da242ee8704517634bd6c496155eda16e38c2f9e5c432c75136b485364",
+      "airCellCount": 767317,
+      "presentCellCount": 379691,
+      "gravitySensitiveCellCount": 6610,
+      "fluidCells": {
+        "water": 5197,
+        "lava": 227,
+        "waterlogged": 1,
+        "coordinateSetSha256": "6880860a13fc7f683d1ee2d882d5ce2c91d5dfd9db138aef26cdfaa4c5db5998",
+        "blockStateSetSha256": "bd170151ff941650d2f39b85daf9b3d798148dfae2cdb099e1b7a5ce2b2fc169"
+      },
+      "canonicalStateCounts": {
+        "{\"Name\":\"minecraft:air\"}": 766458,
+        "{\"Name\":\"minecraft:amethyst_block\"}": 375,
+        "{\"Name\":\"minecraft:amethyst_cluster\",\"Properties\":{\"facing\":\"down\",\"waterlogged\":\"false\"}}": 3,
+        "{\"Name\":\"minecraft:amethyst_cluster\",\"Properties\":{\"facing\":\"up\",\"waterlogged\":\"false\"}}": 1,
+        "{\"Name\":\"minecraft:andesite\"}": 13032,
+        "{\"Name\":\"minecraft:barrel\",\"Properties\":{\"facing\":\"up\",\"open\":\"false\"}}": 4,
+        "{\"Name\":\"minecraft:bedrock\"}": 9018,
+        "{\"Name\":\"minecraft:birch_leaves\",\"Properties\":{\"distance\":\"1\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 50,
+        "{\"Name\":\"minecraft:birch_leaves\",\"Properties\":{\"distance\":\"2\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 81,
+        "{\"Name\":\"minecraft:birch_leaves\",\"Properties\":{\"distance\":\"3\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 48,
+        "{\"Name\":\"minecraft:birch_leaves\",\"Properties\":{\"distance\":\"4\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 10,
+        "{\"Name\":\"minecraft:birch_log\",\"Properties\":{\"axis\":\"y\"}}": 25,
+        "{\"Name\":\"minecraft:black_bed\",\"Properties\":{\"facing\":\"west\",\"occupied\":\"false\",\"part\":\"foot\"}}": 1,
+        "{\"Name\":\"minecraft:black_bed\",\"Properties\":{\"facing\":\"west\",\"occupied\":\"false\",\"part\":\"head\"}}": 1,
+        "{\"Name\":\"minecraft:bubble_column\",\"Properties\":{\"drag\":\"true\"}}": 6,
+        "{\"Name\":\"minecraft:budding_amethyst\"}": 51,
+        "{\"Name\":\"minecraft:calcite\"}": 402,
+        "{\"Name\":\"minecraft:candle\",\"Properties\":{\"candles\":\"2\",\"lit\":\"false\",\"waterlogged\":\"false\"}}": 2,
+        "{\"Name\":\"minecraft:cave_air\"}": 859,
+        "{\"Name\":\"minecraft:chest\",\"Properties\":{\"facing\":\"west\",\"type\":\"single\",\"waterlogged\":\"false\"}}": 1,
+        "{\"Name\":\"minecraft:chiseled_tuff_bricks\"}": 690,
+        "{\"Name\":\"minecraft:chiseled_tuff\"}": 28,
+        "{\"Name\":\"minecraft:coal_ore\"}": 1023,
+        "{\"Name\":\"minecraft:cobweb\"}": 8,
+        "{\"Name\":\"minecraft:copper_ore\"}": 1368,
+        "{\"Name\":\"minecraft:decorated_pot\",\"Properties\":{\"cracked\":\"false\",\"facing\":\"east\",\"waterlogged\":\"false\"}}": 9,
+        "{\"Name\":\"minecraft:decorated_pot\",\"Properties\":{\"cracked\":\"false\",\"facing\":\"north\",\"waterlogged\":\"false\"}}": 3,
+        "{\"Name\":\"minecraft:decorated_pot\",\"Properties\":{\"cracked\":\"false\",\"facing\":\"west\",\"waterlogged\":\"false\"}}": 1,
+        "{\"Name\":\"minecraft:deepslate_coal_ore\"}": 20,
+        "{\"Name\":\"minecraft:deepslate_copper_ore\"}": 82,
+        "{\"Name\":\"minecraft:deepslate_diamond_ore\"}": 229,
+        "{\"Name\":\"minecraft:deepslate_gold_ore\"}": 269,
+        "{\"Name\":\"minecraft:deepslate_iron_ore\"}": 222,
+        "{\"Name\":\"minecraft:deepslate_lapis_ore\"}": 132,
+        "{\"Name\":\"minecraft:deepslate_redstone_ore\",\"Properties\":{\"lit\":\"false\"}}": 349,
+        "{\"Name\":\"minecraft:deepslate\",\"Properties\":{\"axis\":\"y\"}}": 142300,
+        "{\"Name\":\"minecraft:diamond_ore\"}": 7,
+        "{\"Name\":\"minecraft:diorite\"}": 13926,
+        "{\"Name\":\"minecraft:dirt\"}": 9105,
+        "{\"Name\":\"minecraft:dispenser\",\"Properties\":{\"facing\":\"north\",\"triggered\":\"false\"}}": 2,
+        "{\"Name\":\"minecraft:dispenser\",\"Properties\":{\"facing\":\"south\",\"triggered\":\"false\"}}": 3,
+        "{\"Name\":\"minecraft:fern\"}": 21,
+        "{\"Name\":\"minecraft:flower_pot\"}": 1,
+        "{\"Name\":\"minecraft:glow_lichen\",\"Properties\":{\"down\":\"false\",\"east\":\"false\",\"north\":\"false\",\"south\":\"false\",\"up\":\"false\",\"waterlogged\":\"false\",\"west\":\"true\"}}": 8,
+        "{\"Name\":\"minecraft:glow_lichen\",\"Properties\":{\"down\":\"false\",\"east\":\"false\",\"north\":\"false\",\"south\":\"false\",\"up\":\"true\",\"waterlogged\":\"false\",\"west\":\"false\"}}": 5,
+        "{\"Name\":\"minecraft:glow_lichen\",\"Properties\":{\"down\":\"false\",\"east\":\"false\",\"north\":\"false\",\"south\":\"false\",\"up\":\"true\",\"waterlogged\":\"false\",\"west\":\"true\"}}": 1,
+        "{\"Name\":\"minecraft:glow_lichen\",\"Properties\":{\"down\":\"false\",\"east\":\"false\",\"north\":\"false\",\"south\":\"true\",\"up\":\"false\",\"waterlogged\":\"false\",\"west\":\"false\"}}": 5,
+        "{\"Name\":\"minecraft:glow_lichen\",\"Properties\":{\"down\":\"false\",\"east\":\"false\",\"north\":\"false\",\"south\":\"true\",\"up\":\"false\",\"waterlogged\":\"true\",\"west\":\"false\"}}": 1,
+        "{\"Name\":\"minecraft:glow_lichen\",\"Properties\":{\"down\":\"false\",\"east\":\"false\",\"north\":\"true\",\"south\":\"false\",\"up\":\"false\",\"waterlogged\":\"false\",\"west\":\"false\"}}": 4,
+        "{\"Name\":\"minecraft:glow_lichen\",\"Properties\":{\"down\":\"false\",\"east\":\"true\",\"north\":\"false\",\"south\":\"false\",\"up\":\"false\",\"waterlogged\":\"false\",\"west\":\"false\"}}": 2,
+        "{\"Name\":\"minecraft:glow_lichen\",\"Properties\":{\"down\":\"false\",\"east\":\"true\",\"north\":\"true\",\"south\":\"false\",\"up\":\"false\",\"waterlogged\":\"false\",\"west\":\"false\"}}": 2,
+        "{\"Name\":\"minecraft:glow_lichen\",\"Properties\":{\"down\":\"true\",\"east\":\"false\",\"north\":\"false\",\"south\":\"false\",\"up\":\"false\",\"waterlogged\":\"false\",\"west\":\"false\"}}": 2,
+        "{\"Name\":\"minecraft:glow_lichen\",\"Properties\":{\"down\":\"true\",\"east\":\"true\",\"north\":\"false\",\"south\":\"false\",\"up\":\"false\",\"waterlogged\":\"false\",\"west\":\"false\"}}": 1,
+        "{\"Name\":\"minecraft:gold_ore\"}": 36,
+        "{\"Name\":\"minecraft:granite\"}": 13484,
+        "{\"Name\":\"minecraft:grass_block\",\"Properties\":{\"snowy\":\"false\"}}": 1890,
+        "{\"Name\":\"minecraft:grass_block\",\"Properties\":{\"snowy\":\"true\"}}": 378,
+        "{\"Name\":\"minecraft:gravel\"}": 4492,
+        "{\"Name\":\"minecraft:hopper\",\"Properties\":{\"enabled\":\"true\",\"facing\":\"down\"}}": 2,
+        "{\"Name\":\"minecraft:ice\"}": 300,
+        "{\"Name\":\"minecraft:iron_chain\",\"Properties\":{\"axis\":\"y\",\"waterlogged\":\"false\"}}": 3,
+        "{\"Name\":\"minecraft:iron_ore\"}": 552,
+        "{\"Name\":\"minecraft:ladder\",\"Properties\":{\"facing\":\"north\",\"waterlogged\":\"false\"}}": 20,
+        "{\"Name\":\"minecraft:lapis_ore\"}": 157,
+        "{\"Name\":\"minecraft:large_amethyst_bud\",\"Properties\":{\"facing\":\"down\",\"waterlogged\":\"false\"}}": 2,
+        "{\"Name\":\"minecraft:large_amethyst_bud\",\"Properties\":{\"facing\":\"south\",\"waterlogged\":\"false\"}}": 1,
+        "{\"Name\":\"minecraft:large_amethyst_bud\",\"Properties\":{\"facing\":\"up\",\"waterlogged\":\"false\"}}": 1,
+        "{\"Name\":\"minecraft:large_fern\",\"Properties\":{\"half\":\"lower\"}}": 7,
+        "{\"Name\":\"minecraft:large_fern\",\"Properties\":{\"half\":\"upper\"}}": 7,
+        "{\"Name\":\"minecraft:lava\",\"Properties\":{\"level\":\"0\"}}": 227,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"1\"}}": 23,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"2\"}}": 18,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"3\"}}": 38,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"4\"}}": 9,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"1\"}}": 17,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"2\"}}": 19,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"3\"}}": 28,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"4\"}}": 8,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"1\"}}": 20,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"2\"}}": 18,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"3\"}}": 28,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"4\"}}": 13,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"west\",\"segment_amount\":\"1\"}}": 27,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"west\",\"segment_amount\":\"2\"}}": 27,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"west\",\"segment_amount\":\"3\"}}": 23,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"west\",\"segment_amount\":\"4\"}}": 11,
+        "{\"Name\":\"minecraft:light_gray_stained_glass\"}": 37,
+        "{\"Name\":\"minecraft:magma_block\"}": 2,
+        "{\"Name\":\"minecraft:medium_amethyst_bud\",\"Properties\":{\"facing\":\"south\",\"waterlogged\":\"false\"}}": 1,
+        "{\"Name\":\"minecraft:medium_amethyst_bud\",\"Properties\":{\"facing\":\"up\",\"waterlogged\":\"false\"}}": 1,
+        "{\"Name\":\"minecraft:moss_block\"}": 4,
+        "{\"Name\":\"minecraft:mossy_cobblestone\"}": 6,
+        "{\"Name\":\"minecraft:oak_button\",\"Properties\":{\"face\":\"floor\",\"facing\":\"north\",\"powered\":\"false\"}}": 3,
+        "{\"Name\":\"minecraft:oak_button\",\"Properties\":{\"face\":\"floor\",\"facing\":\"south\",\"powered\":\"false\"}}": 2,
+        "{\"Name\":\"minecraft:oak_fence\",\"Properties\":{\"east\":\"false\",\"north\":\"false\",\"south\":\"false\",\"waterlogged\":\"false\",\"west\":\"false\"}}": 4,
+        "{\"Name\":\"minecraft:oak_fence\",\"Properties\":{\"east\":\"false\",\"north\":\"false\",\"south\":\"false\",\"waterlogged\":\"false\",\"west\":\"true\"}}": 18,
+        "{\"Name\":\"minecraft:oak_fence\",\"Properties\":{\"east\":\"false\",\"north\":\"true\",\"south\":\"false\",\"waterlogged\":\"false\",\"west\":\"false\"}}": 2,
+        "{\"Name\":\"minecraft:oak_fence\",\"Properties\":{\"east\":\"true\",\"north\":\"false\",\"south\":\"false\",\"waterlogged\":\"false\",\"west\":\"false\"}}": 20,
+        "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"1\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 168,
+        "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"2\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 286,
+        "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"3\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 220,
+        "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"4\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 74,
+        "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"5\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 17,
+        "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"6\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 2,
+        "{\"Name\":\"minecraft:oak_log\",\"Properties\":{\"axis\":\"x\"}}": 1,
+        "{\"Name\":\"minecraft:oak_log\",\"Properties\":{\"axis\":\"y\"}}": 58,
+        "{\"Name\":\"minecraft:oak_planks\"}": 39,
+        "{\"Name\":\"minecraft:oxidized_cut_copper\"}": 3,
+        "{\"Name\":\"minecraft:packed_ice\"}": 10,
+        "{\"Name\":\"minecraft:polished_andesite\"}": 4,
+        "{\"Name\":\"minecraft:polished_tuff\"}": 1358,
+        "{\"Name\":\"minecraft:poppy\"}": 1,
+        "{\"Name\":\"minecraft:potted_dead_bush\"}": 1,
+        "{\"Name\":\"minecraft:powder_snow\"}": 3,
+        "{\"Name\":\"minecraft:rail\",\"Properties\":{\"shape\":\"north_south\",\"waterlogged\":\"false\"}}": 20,
+        "{\"Name\":\"minecraft:raw_copper_block\"}": 3,
+        "{\"Name\":\"minecraft:redstone_ore\",\"Properties\":{\"lit\":\"false\"}}": 11,
+        "{\"Name\":\"minecraft:rose_bush\",\"Properties\":{\"half\":\"lower\"}}": 1,
+        "{\"Name\":\"minecraft:rose_bush\",\"Properties\":{\"half\":\"upper\"}}": 1,
+        "{\"Name\":\"minecraft:sand\"}": 2118,
+        "{\"Name\":\"minecraft:sandstone\"}": 1691,
+        "{\"Name\":\"minecraft:short_grass\"}": 24,
+        "{\"Name\":\"minecraft:small_amethyst_bud\",\"Properties\":{\"facing\":\"down\",\"waterlogged\":\"false\"}}": 1,
+        "{\"Name\":\"minecraft:small_amethyst_bud\",\"Properties\":{\"facing\":\"south\",\"waterlogged\":\"false\"}}": 2,
+        "{\"Name\":\"minecraft:small_amethyst_bud\",\"Properties\":{\"facing\":\"up\",\"waterlogged\":\"false\"}}": 1,
+        "{\"Name\":\"minecraft:smooth_basalt\"}": 545,
+        "{\"Name\":\"minecraft:snow\",\"Properties\":{\"layers\":\"1\"}}": 1219,
+        "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"1\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 577,
+        "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"2\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 702,
+        "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"3\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 624,
+        "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"4\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 153,
+        "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"5\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 80,
+        "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"6\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 1,
+        "{\"Name\":\"minecraft:spruce_log\",\"Properties\":{\"axis\":\"y\"}}": 233,
+        "{\"Name\":\"minecraft:stone\"}": 122965,
+        "{\"Name\":\"minecraft:trial_spawner\",\"Properties\":{\"ominous\":\"false\",\"trial_spawner_state\":\"waiting_for_players\"}}": 7,
+        "{\"Name\":\"minecraft:tuff_bricks\"}": 9823,
+        "{\"Name\":\"minecraft:tuff\"}": 13737,
+        "{\"Name\":\"minecraft:vault\",\"Properties\":{\"facing\":\"east\",\"ominous\":\"false\",\"vault_state\":\"inactive\"}}": 2,
+        "{\"Name\":\"minecraft:vault\",\"Properties\":{\"facing\":\"north\",\"ominous\":\"false\",\"vault_state\":\"inactive\"}}": 2,
+        "{\"Name\":\"minecraft:vault\",\"Properties\":{\"facing\":\"west\",\"ominous\":\"false\",\"vault_state\":\"inactive\"}}": 2,
+        "{\"Name\":\"minecraft:wall_torch\",\"Properties\":{\"facing\":\"south\"}}": 1,
+        "{\"Name\":\"minecraft:water\",\"Properties\":{\"level\":\"0\"}}": 5104,
+        "{\"Name\":\"minecraft:water\",\"Properties\":{\"level\":\"1\"}}": 10,
+        "{\"Name\":\"minecraft:water\",\"Properties\":{\"level\":\"2\"}}": 10,
+        "{\"Name\":\"minecraft:water\",\"Properties\":{\"level\":\"3\"}}": 10,
+        "{\"Name\":\"minecraft:water\",\"Properties\":{\"level\":\"4\"}}": 11,
+        "{\"Name\":\"minecraft:water\",\"Properties\":{\"level\":\"5\"}}": 13,
+        "{\"Name\":\"minecraft:water\",\"Properties\":{\"level\":\"6\"}}": 13,
+        "{\"Name\":\"minecraft:water\",\"Properties\":{\"level\":\"7\"}}": 11,
+        "{\"Name\":\"minecraft:water\",\"Properties\":{\"level\":\"8\"}}": 8,
+        "{\"Name\":\"minecraft:waxed_chiseled_copper\"}": 38,
+        "{\"Name\":\"minecraft:waxed_copper_block\"}": 1178,
+        "{\"Name\":\"minecraft:waxed_copper_bulb\",\"Properties\":{\"lit\":\"true\",\"powered\":\"false\"}}": 38,
+        "{\"Name\":\"minecraft:waxed_copper_grate\",\"Properties\":{\"waterlogged\":\"false\"}}": 174,
+        "{\"Name\":\"minecraft:waxed_cut_copper_slab\",\"Properties\":{\"type\":\"bottom\",\"waterlogged\":\"false\"}}": 28,
+        "{\"Name\":\"minecraft:waxed_cut_copper\"}": 18,
+        "{\"Name\":\"minecraft:waxed_exposed_copper_bulb\",\"Properties\":{\"lit\":\"true\",\"powered\":\"false\"}}": 12,
+        "{\"Name\":\"minecraft:waxed_oxidized_copper_bulb\",\"Properties\":{\"lit\":\"true\",\"powered\":\"false\"}}": 6,
+        "{\"Name\":\"minecraft:waxed_oxidized_copper_door\",\"Properties\":{\"facing\":\"south\",\"half\":\"lower\",\"hinge\":\"left\",\"open\":\"false\",\"powered\":\"false\"}}": 2,
+        "{\"Name\":\"minecraft:waxed_oxidized_copper_door\",\"Properties\":{\"facing\":\"south\",\"half\":\"upper\",\"hinge\":\"left\",\"open\":\"false\",\"powered\":\"false\"}}": 2,
+        "{\"Name\":\"minecraft:waxed_oxidized_copper_grate\",\"Properties\":{\"waterlogged\":\"false\"}}": 9,
+        "{\"Name\":\"minecraft:waxed_oxidized_copper\"}": 1009,
+        "{\"Name\":\"minecraft:waxed_oxidized_cut_copper_stairs\",\"Properties\":{\"facing\":\"east\",\"half\":\"bottom\",\"shape\":\"straight\",\"waterlogged\":\"false\"}}": 21,
+        "{\"Name\":\"minecraft:waxed_oxidized_cut_copper_stairs\",\"Properties\":{\"facing\":\"south\",\"half\":\"bottom\",\"shape\":\"straight\",\"waterlogged\":\"false\"}}": 15,
+        "{\"Name\":\"minecraft:waxed_oxidized_cut_copper_stairs\",\"Properties\":{\"facing\":\"west\",\"half\":\"bottom\",\"shape\":\"straight\",\"waterlogged\":\"false\"}}": 16,
+        "{\"Name\":\"minecraft:waxed_oxidized_cut_copper\"}": 188,
+        "{\"Name\":\"minecraft:waxed_weathered_copper_bulb\",\"Properties\":{\"lit\":\"true\",\"powered\":\"false\"}}": 28,
+        "{\"Name\":\"minecraft:white_bed\",\"Properties\":{\"facing\":\"east\",\"occupied\":\"false\",\"part\":\"foot\"}}": 1,
+        "{\"Name\":\"minecraft:white_bed\",\"Properties\":{\"facing\":\"east\",\"occupied\":\"false\",\"part\":\"head\"}}": 1
+      },
+      "blockEntities": {
+        "count": 42,
+        "manifestSha256": "7689cb15dbef75b2feedc16d205f036c1c227a81a70c471e6dabfeb946615456",
+        "records": [
+          {
+            "x": 1908,
+            "y": -26,
+            "z": -316,
+            "id": "minecraft:trial_spawner"
+          },
+          {
+            "x": 1917,
+            "y": -32,
+            "z": -313,
+            "id": "minecraft:barrel"
+          },
+          {
+            "x": 1917,
+            "y": -31,
+            "z": -313,
+            "id": "minecraft:hopper"
+          },
+          {
+            "x": 1919,
+            "y": -31,
+            "z": -320,
+            "id": "minecraft:trial_spawner"
+          },
+          {
+            "x": 1953,
+            "y": -29,
+            "z": -323,
+            "id": "minecraft:barrel"
+          },
+          {
+            "x": 1955,
+            "y": -29,
+            "z": -320,
+            "id": "minecraft:decorated_pot"
+          },
+          {
+            "x": 1955,
+            "y": -19,
+            "z": -316,
+            "id": "minecraft:dispenser"
+          },
+          {
+            "x": 1956,
+            "y": -24,
+            "z": -320,
+            "id": "minecraft:decorated_pot"
+          },
+          {
+            "x": 1958,
+            "y": -29,
+            "z": -323,
+            "id": "minecraft:decorated_pot"
+          },
+          {
+            "x": 1958,
+            "y": -4,
+            "z": -319,
+            "id": "minecraft:chest"
+          },
+          {
+            "x": 1959,
+            "y": -29,
+            "z": -320,
+            "id": "minecraft:decorated_pot"
+          },
+          {
+            "x": 1959,
+            "y": -24,
+            "z": -324,
+            "id": "minecraft:decorated_pot"
+          },
+          {
+            "x": 1961,
+            "y": -29,
+            "z": -320,
+            "id": "minecraft:decorated_pot"
+          },
+          {
+            "x": 1965,
+            "y": -19,
+            "z": -316,
+            "id": "minecraft:dispenser"
+          },
+          {
+            "x": 1966,
+            "y": -24,
+            "z": -324,
+            "id": "minecraft:barrel"
+          },
+          {
+            "x": 1967,
+            "y": -25,
+            "z": -316,
+            "id": "minecraft:barrel"
+          },
+          {
+            "x": 1967,
+            "y": -24,
+            "z": -316,
+            "id": "minecraft:hopper"
+          },
+          {
+            "x": 1969,
+            "y": -31,
+            "z": -325,
+            "id": "minecraft:decorated_pot"
+          },
+          {
+            "x": 1969,
+            "y": -29,
+            "z": -320,
+            "id": "minecraft:decorated_pot"
+          },
+          {
+            "x": 1970,
+            "y": -29,
+            "z": -320,
+            "id": "minecraft:decorated_pot"
+          },
+          {
+            "x": 1970,
+            "y": -24,
+            "z": -320,
+            "id": "minecraft:decorated_pot"
+          },
+          {
+            "x": 1970,
+            "y": -19,
+            "z": -316,
+            "id": "minecraft:dispenser"
+          },
+          {
+            "x": 1970,
+            "y": -12,
+            "z": -324,
+            "id": "minecraft:dispenser"
+          },
+          {
+            "x": 1970,
+            "y": -11,
+            "z": -325,
+            "id": "minecraft:vault"
+          },
+          {
+            "x": 1971,
+            "y": -24,
+            "z": -320,
+            "id": "minecraft:decorated_pot"
+          },
+          {
+            "x": 1975,
+            "y": -12,
+            "z": -324,
+            "id": "minecraft:dispenser"
+          },
+          {
+            "x": 1975,
+            "y": -2,
+            "z": -326,
+            "id": "minecraft:trial_spawner"
+          },
+          {
+            "x": 1980,
+            "y": -11,
+            "z": -325,
+            "id": "minecraft:vault"
+          },
+          {
+            "x": 1983,
+            "y": -31,
+            "z": -326,
+            "id": "minecraft:bed"
+          },
+          {
+            "x": 1984,
+            "y": -31,
+            "z": -326,
+            "id": "minecraft:bed"
+          },
+          {
+            "x": 1986,
+            "y": -31,
+            "z": -326,
+            "id": "minecraft:bed"
+          },
+          {
+            "x": 1987,
+            "y": -31,
+            "z": -326,
+            "id": "minecraft:bed"
+          },
+          {
+            "x": 1997,
+            "y": -44,
+            "z": -325,
+            "id": "minecraft:trial_spawner"
+          },
+          {
+            "x": 1997,
+            "y": -18,
+            "z": -322,
+            "id": "minecraft:vault"
+          },
+          {
+            "x": 2004,
+            "y": -44,
+            "z": -325,
+            "id": "minecraft:decorated_pot"
+          },
+          {
+            "x": 2004,
+            "y": -44,
+            "z": -324,
+            "id": "minecraft:decorated_pot"
+          },
+          {
+            "x": 2004,
+            "y": -43,
+            "z": -320,
+            "id": "minecraft:vault"
+          },
+          {
+            "x": 2010,
+            "y": -12,
+            "z": -326,
+            "id": "minecraft:trial_spawner"
+          },
+          {
+            "x": 2010,
+            "y": -12,
+            "z": -323,
+            "id": "minecraft:trial_spawner"
+          },
+          {
+            "x": 2013,
+            "y": -12,
+            "z": -326,
+            "id": "minecraft:trial_spawner"
+          },
+          {
+            "x": 2023,
+            "y": -13,
+            "z": -327,
+            "id": "minecraft:vault"
+          },
+          {
+            "x": 2026,
+            "y": -13,
+            "z": -322,
+            "id": "minecraft:vault"
+          }
+        ],
+        "qualification": "The copied region contains block entities but no entity-region, POI, or level.dat evidence."
+      }
+    },
+    "centerlineTerrainProfile": {
+      "classification": "BOUND_FACT_AND_DETERMINISTIC_DERIVATION",
+      "pointCount": 299,
+      "minimumTerrainY": 52,
+      "maximumTerrainY": 94,
+      "minimumRoadMinusTerrain": -23,
+      "maximumRoadMinusTerrain": 16,
+      "fillReferencePointCount": 101,
+      "atTerrainReferencePointCount": 22,
+      "cutReferencePointCount": 176,
+      "fullHeightCenterlineWaterCellCount": 576,
+      "fullHeightCenterlineLavaCellCount": 23,
+      "manifestSha256": "1b04c38736289585653851c4ff47d793072ab4b55c44b0de8329596f5e152edb",
+      "endpoints": [
+        {
+          "station": 0,
+          "x": 1750,
+          "y": 68,
+          "z": -300,
+          "worldSurfaceY": 78,
+          "worldSurfaceState": "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"2\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}",
+          "terrainY": 62,
+          "terrainState": "{\"Name\":\"minecraft:grass_block\",\"Properties\":{\"snowy\":\"false\"}}",
+          "biome": "minecraft:forest",
+          "roadMinusTerrain": 6,
+          "waterCellCount": 0,
+          "lavaCellCount": 0
+        },
+        {
+          "station": 298,
+          "x": 2048,
+          "y": 72,
+          "z": -328,
+          "worldSurfaceY": 88,
+          "worldSurfaceState": "{\"Name\":\"minecraft:snow\",\"Properties\":{\"layers\":\"1\"}}",
+          "terrainY": 88,
+          "terrainState": "{\"Name\":\"minecraft:snow\",\"Properties\":{\"layers\":\"1\"}}",
+          "biome": "minecraft:snowy_taiga",
+          "roadMinusTerrain": -16,
+          "waterCellCount": 0,
+          "lavaCellCount": 0
+        }
+      ],
+      "qualification": "This is exact present-state terrain screening, not accepted road earthwork, groundwater, loading, or retaining design."
+    },
+    "shallowHoustonCompatibleScreeningBand": {
+      "classification": "SCREENING_GEOMETRY",
+      "verticalRule": "nearest-station roadY-8 through roadY-1 inclusive",
+      "minY": 60,
+      "maxY": 71,
+      "cellCount": 23896,
+      "bounds": {
+        "minX": 1746,
+        "maxX": 2052,
+        "minZ": -332,
+        "maxZ": -296,
+        "minY": 60,
+        "maxY": 71
+      },
+      "coordinateSetSha256": "040c0cf059f13bd409c4c2c969f23438da8dfe56b029a635eb38dc66335039f2",
+      "blockStateSetSha256": "8e0e6499049848b039e7bc83cc39d1d085ced7c1149d75d55aa5e7d562053518",
+      "airCellCount": 5621,
+      "presentCellCount": 18275,
+      "gravitySensitiveCellCount": 534,
+      "fluidCells": {
+        "water": 11,
+        "lava": 0,
+        "waterlogged": 0
+      },
+      "canonicalStateCounts": {
+        "{\"Name\":\"minecraft:air\"}": 5621,
+        "{\"Name\":\"minecraft:andesite\"}": 343,
+        "{\"Name\":\"minecraft:coal_ore\"}": 120,
+        "{\"Name\":\"minecraft:copper_ore\"}": 113,
+        "{\"Name\":\"minecraft:diorite\"}": 391,
+        "{\"Name\":\"minecraft:dirt\"}": 2087,
+        "{\"Name\":\"minecraft:fern\"}": 3,
+        "{\"Name\":\"minecraft:grass_block\",\"Properties\":{\"snowy\":\"false\"}}": 416,
+        "{\"Name\":\"minecraft:grass_block\",\"Properties\":{\"snowy\":\"true\"}}": 21,
+        "{\"Name\":\"minecraft:gravel\"}": 27,
+        "{\"Name\":\"minecraft:ice\"}": 299,
+        "{\"Name\":\"minecraft:iron_ore\"}": 11,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"1\"}}": 2,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"2\"}}": 2,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"3\"}}": 1,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"4\"}}": 2,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"2\"}}": 2,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"3\"}}": 3,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"1\"}}": 1,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"2\"}}": 2,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"4\"}}": 2,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"west\",\"segment_amount\":\"2\"}}": 2,
+        "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"west\",\"segment_amount\":\"3\"}}": 1,
+        "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"1\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 3,
+        "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"2\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 4,
+        "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"3\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 2,
+        "{\"Name\":\"minecraft:oak_log\",\"Properties\":{\"axis\":\"y\"}}": 2,
+        "{\"Name\":\"minecraft:rose_bush\",\"Properties\":{\"half\":\"lower\"}}": 1,
+        "{\"Name\":\"minecraft:sand\"}": 507,
+        "{\"Name\":\"minecraft:sandstone\"}": 298,
+        "{\"Name\":\"minecraft:short_grass\"}": 1,
+        "{\"Name\":\"minecraft:snow\",\"Properties\":{\"layers\":\"1\"}}": 182,
+        "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"1\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 107,
+        "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"2\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 99,
+        "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"3\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 74,
+        "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"4\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 6,
+        "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"5\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 4,
+        "{\"Name\":\"minecraft:spruce_log\",\"Properties\":{\"axis\":\"y\"}}": 55,
+        "{\"Name\":\"minecraft:stone\"}": 13068,
+        "{\"Name\":\"minecraft:water\",\"Properties\":{\"level\":\"0\"}}": 11
+      },
+      "minimumTerrainMinusCandidateRoof": -18,
+      "maximumTerrainMinusCandidateRoof": 25,
+      "columnsWithCandidateRoofAtOrAboveTerrain": 1047,
+      "exactShellGeometryAccepted": false,
+      "acceptedFutureStateCellCount": 0,
+      "qualification": "An exact current-state audit band only. It does not choose a mode, internal clearance, structure, lining, material, portal, station, utility, drainage, ownership, or future state."
+    },
+    "houstonSampleCoordination": {
+      "classification": "BOUND_FACT_AND_DETERMINISTIC_DERIVATION",
+      "exactHalfOpenEnvelope": {
+        "minXInclusive": 2036,
+        "maxXExclusive": 2060,
+        "minYInclusive": 64,
+        "maxYExclusive": 72,
+        "minZInclusive": -340,
+        "maxZExclusive": -316
+      },
+      "envelopeCellCount": 4608,
+      "centerlinePointCountInsideXZ": 13,
+      "centerlineStationRange": {
+        "first": 286,
+        "last": 298
+      },
+      "shallowScreeningBandIntersectionCellCount": 1296,
+      "intersectionCoordinateSetSha256": "8840f4d7bc4bf01231eb25853a327691c004b245a6b91927fa6b12ca5c66586f",
+      "intersectionBlockStateSetSha256": "80e9f6299a16e5746a6e021d066e90387a69fc5f68b5018efeb6b2fe1b18c73d",
+      "exactPhysicalSeamAccepted": false,
+      "qualification": "The overlap is an intentional coordination warning. The Houston sample is not empty ground, and neither artifact assigns seam ownership or future states."
+    },
+    "generatedStructureScreening": {
+      "phase0GeneratedStartCount": 114,
+      "reportedNearOrIntersectingStartCount": 3,
+      "shallowBandBoundingIntersectionCellCount": 0,
+      "records": [
+        {
+          "id": "minecraft:mineshaft",
+          "bounds": {
+            "minX": 1873,
+            "minY": -1,
+            "minZ": -393,
+            "maxX": 2011,
+            "maxY": 19,
+            "maxZ": -224
+          },
+          "startChunk": {
+            "x": 121,
+            "z": -20
+          },
+          "footprintColumnIntersectionCount": 1356,
+          "shallowScreeningBandIntersectionCellCount": 0,
+          "centerlineStationRange": {
+            "first": 123,
+            "last": 261
+          },
+          "nearestCenterlinePlanDistanceBlocks": 0,
+          "qualification": "A generated structure-start bound is a coordination constraint, not proof of present fabric or a reviewed construction-influence distance."
+        },
+        {
+          "id": "minecraft:trial_chambers",
+          "bounds": {
+            "minX": 1905,
+            "minY": -51,
+            "minZ": -399,
+            "maxX": 2028,
+            "maxY": 9,
+            "maxZ": -287
+          },
+          "startChunk": {
+            "x": 122,
+            "z": -21
+          },
+          "footprintColumnIntersectionCount": 1208,
+          "shallowScreeningBandIntersectionCellCount": 0,
+          "centerlineStationRange": {
+            "first": 155,
+            "last": 278
+          },
+          "nearestCenterlinePlanDistanceBlocks": 0,
+          "qualification": "A generated structure-start bound is a coordination constraint, not proof of present fabric or a reviewed construction-influence distance."
+        },
+        {
+          "id": "minecraft:mineshaft",
+          "bounds": {
+            "minX": 1655,
+            "minY": 12,
+            "minZ": -458,
+            "maxX": 1822,
+            "maxY": 30,
+            "maxZ": -320
+          },
+          "startChunk": {
+            "x": 108,
+            "z": -26
+          },
+          "footprintColumnIntersectionCount": 0,
+          "shallowScreeningBandIntersectionCellCount": 0,
+          "centerlineStationRange": null,
+          "nearestCenterlinePlanDistanceBlocks": 13,
+          "qualification": "A generated structure-start bound is a coordination constraint, not proof of present fabric or a reviewed construction-influence distance."
+        }
+      ],
+      "exactPresentFabricClearanceAccepted": false
+    },
+    "protectedRelicScreening": {
+      "declaredRelicCount": 3,
+      "screeningFootprintIntersectionColumnCount": 0,
+      "records": [
+        {
+          "key": "igloo-east",
+          "structureId": "minecraft:igloo",
+          "declaredInclusiveBounds": {
+            "minX": 2304,
+            "minY": 90,
+            "minZ": -1024,
+            "maxX": 2310,
+            "maxY": 94,
+            "maxZ": -1017
+          },
+          "defaultDenyCoreCellCount": 280,
+          "defaultDenyCoreCoordinateSetSha256": "45e77afc9f46aa6663c5830f75a26539740a73085ce7d10e27ff14bc2426e326",
+          "positiveMarginStatus": "HOLD_NOT_FROZEN",
+          "screeningFootprintIntersectionColumnCount": 0,
+          "nearestCenterlinePlanDistanceBlocks": 735.021768
+        },
+        {
+          "key": "igloo-west",
+          "structureId": "minecraft:igloo",
+          "declaredInclusiveBounds": {
+            "minX": 1790,
+            "minY": 62,
+            "minZ": -926,
+            "maxX": 1797,
+            "maxY": 66,
+            "maxZ": -920
+          },
+          "defaultDenyCoreCellCount": 280,
+          "defaultDenyCoreCoordinateSetSha256": "9ec8b536822c1f6cb794fd0f7cdd14063daddbb650e6dd6f70ed9b0c15c40d72",
+          "positiveMarginStatus": "HOLD_NOT_FROZEN",
+          "screeningFootprintIntersectionColumnCount": 0,
+          "nearestCenterlinePlanDistanceBlocks": 612.458978
+        },
+        {
+          "key": "shipwreck",
+          "structureId": "minecraft:shipwreck",
+          "declaredInclusiveBounds": {
+            "minX": 2072,
+            "minY": 69,
+            "minZ": -661,
+            "maxX": 2099,
+            "maxY": 77,
+            "maxZ": -653
+          },
+          "defaultDenyCoreCellCount": 2268,
+          "defaultDenyCoreCoordinateSetSha256": "715792eef84d4c3029a5750b0683adef6e0c5447b918512539c0d96f82cd2ee6",
+          "positiveMarginStatus": "HOLD_NOT_FROZEN",
+          "screeningFootprintIntersectionColumnCount": 0,
+          "nearestCenterlinePlanDistanceBlocks": 325.884949
+        }
+      ],
+      "finalConstructionInfluenceClearanceAccepted": false
+    }
+  },
+  "futureNetworkAndInterfaceContext": {
+    "c4": {
+      "junction": {
+        "x": 1780,
+        "y": 68,
+        "z": -250,
+        "basis": "GA-J1 surface passenger-rail turnout study point"
+      },
+      "nearestGrandAvenueCenterline": {
+        "station": 26,
+        "x": 1776,
+        "y": 68,
+        "z": -302,
+        "distance": 52.153619
+      },
+      "concealedPortal": {
+        "x": 1785,
+        "y": 64,
+        "z": -215,
+        "surveyedTerrainY": 62,
+        "waterColumn": false
+      },
+      "nearestGrandAvenueToPortal": {
+        "station": 26,
+        "x": 1776,
+        "y": 68,
+        "z": -302,
+        "distance": 87.464278
+      },
+      "openingState": "SEALED"
+    },
+    "emptyEight": {
+      "bounds": {
+        "minX": 1632,
+        "maxX": 1872,
+        "minY": 38,
+        "maxY": 54,
+        "minZ": 40,
+        "maxZ": 160
+      },
+      "railY": 40,
+      "nearestPlanDistanceFromGrandAvenueBlocks": 340,
+      "nearestSealedFutureWall": {
+        "point": {
+          "x": 1872,
+          "y": 40,
+          "z": 54
+        },
+        "nearest": {
+          "station": 90,
+          "x": 1840,
+          "y": 69,
+          "z": -308,
+          "distance": 363.411612
+        }
+      },
+      "futureInterfaceState": "sealed-owned-interface-walls"
+    },
+    "passageWay": {
+      "combinedZonesEndpoint": {
+        "x": 2108,
+        "y": -56,
+        "z": -428,
+        "basis": "SubTropolis public lower-lobby study point"
+      },
+      "passageWayEndpoint": null,
+      "proposedRouteCellCount": 0,
+      "state": "DEFAULT_DENY_UNEVIDENCED"
+    },
+    "conclusion": "The under-avenue option protects Houston/Gateway optionality but is not required by, aligned to, or authorized as an opening for C4, Empty Eight future lines, or PassageWay."
+  },
+  "inheritedTechnicalLimitations": {
+    "d02": {
+      "status": "HOLD",
+      "openEvidenceGapCount": 8,
+      "openEvidenceGaps": [
+        {
+          "id": "GAP-D02-001-COMPLETE-SAVE",
+          "missing": "One immutable same-moment copied save with nonempty region, entities, POI, and level.dat."
+        },
+        {
+          "id": "GAP-D02-002-GEOTECHNICAL",
+          "missing": "Accepted Minecraft-domain excavation stability, void/fluid behavior, foundation, retaining, lining, and treatment criteria bound to exact runs and influence cells."
+        },
+        {
+          "id": "GAP-D02-003-STRUCTURAL",
+          "missing": "Accepted spans, clearances, loading/exclusion rules, foundations, caps, crossings, and independent structural recomputation."
+        },
+        {
+          "id": "GAP-D02-004-HYDRAULIC-CRITERIA",
+          "missing": "Accepted inflow, storage duration, freeboard, capacity, erosion, failure, recovery, pump, control, and alarm criteria."
+        },
+        {
+          "id": "GAP-D02-005-FUTURE-FLUID-ACCOUNTING",
+          "missing": "Exact future excavation, lining, cap, backfill, access, influence, and before/after fluid-component accounting."
+        },
+        {
+          "id": "GAP-D02-006-OWNERSHIP-INTERFACES",
+          "missing": "Accepted canonical owners and exact collection, drainage, road, rail, maintenance, power/control, emergency, overflow, receiver, and outfall interfaces."
+        },
+        {
+          "id": "GAP-D02-007-C01-ISSUE-002",
+          "missing": "Authoritative current C01 field evidence and explicit ISSUE-002 relocation, road, parking, entrance, protection, loading, exclusion, clearance, and ownership dispositions."
+        },
+        {
+          "id": "GAP-D02-008-QUANTITIES-MASS-HAUL",
+          "missing": "Accepted formation, slopes, structures/voids, unsuitable-material, spoil/borrow, exact construction quantities, and conservative mass-haul rules."
+        }
+      ],
+      "applicability": "The same complete-save, geotechnical, structural, hydraulic, future-fluid, ownership/interface, and quantity disciplines apply to an under-road shell; D02 evidence does not technically accept this route."
+    },
+    "d06": {
+      "status": "HOLD",
+      "holdCriterionCount": 9,
+      "holdCriteria": [
+        {
+          "id": "D06-AC-03",
+          "subject": "B07 west-two hydrology, lining, transfer, ownership, and technical design",
+          "holdReason": "Structure-bound clearance passes, but 38 current water cells and every technical mechanism remain unresolved."
+        },
+        {
+          "id": "D06-AC-04",
+          "subject": "two independent protected stair and accessible-lift routes",
+          "holdReason": "The packet binds exact reservations and caps only; no complete stair, lift, or accessible route is commissioned."
+        },
+        {
+          "id": "D06-AC-05",
+          "subject": "smoke compartments and four local vent risers",
+          "holdReason": "Four dry, structure-clear riser reservations pass geometry review, but no outlet, smoke model, mechanism, or commissioning exists."
+        },
+        {
+          "id": "D06-AC-06",
+          "subject": "platform barriers and smoke-opening mechanisms",
+          "holdReason": "The exact 192 platform-gate and 72 smoke-opening cap cells are fail-closed reservations, not working systems."
+        },
+        {
+          "id": "D06-AC-07",
+          "subject": "normal and redundant emergency lighting/power circuits",
+          "holdReason": "Fixture points are exact, but circuit paths, sources, redundancy, performance, and commissioning evidence do not exist."
+        },
+        {
+          "id": "D06-AC-08",
+          "subject": "eight capped local drainage interfaces",
+          "holdReason": "Eight three-cell local caps remain sealed; no hydraulic model, pump, receiver, or external discharge is accepted."
+        },
+        {
+          "id": "D06-AC-09",
+          "subject": "fire/service access and exterior approach",
+          "holdReason": "EG-B is selected only as the minimum-geometry review interface; the external route is null and all interfaces remain closed."
+        },
+        {
+          "id": "D06-AC-10",
+          "subject": "canonical owners and exact cross-scope interface contracts",
+          "holdReason": "The packet deliberately records null owner and interface IDs instead of inventing authority."
+        },
+        {
+          "id": "D06-AC-11",
+          "subject": "independent technical acceptance and D06 resolution",
+          "holdReason": "Planning selections are frozen, but technical acceptance, ownership/interfaces, and mechanisms are incomplete."
+        }
+      ],
+      "applicability": "Any occupiable or operational tunnel requires exact egress/accessibility, smoke/ventilation, barriers, emergency power, drainage, fire/service, ownership/interface, and commissioning evidence; D06 reservations do not commission this route."
+    },
+    "completeSaveAvailable": false,
+    "copiedRegionIncludesEntitiesPoiAndLevelDat": false
+  },
+  "alternatives": [
+    {
+      "id": "GA-U0-RESERVE-ONLY-NO-FORECLOSURE",
+      "classification": "PLANNING_RECOMMENDATION",
+      "status": "SELECTED_CONTROLLING_RECOMMENDATION_NOW",
+      "action": "Protect subsurface optionality beneath the exact B11 alignment and prohibit incompatible foundations, utilities, or ownership assumptions until exact tunnel design exists.",
+      "exactEvidence": {
+        "b11CenterlineSha256": "e63b7779674ad46fd7ad9c4ae0aea8f618afa8b656d3a24aa4367057cf103ff4",
+        "screeningFootprintCoordinateSetSha256": "5310b4bd3143d8eb7653b6ce87126f91de8f3256d20b12face0fcbe105d1a837",
+        "screeningFootprintColumnCount": 2987
+      },
+      "physicalReservationCellsAccepted": false,
+      "operationCellCount": 0,
+      "worldEditAuthorized": false,
+      "rationale": "Reservation preserves a costly-to-recover option while the future use, vertical profile, and interfaces remain unknown."
+    },
+    {
+      "id": "GA-U1-SEALED-ROUGH-SHELL-BEFORE-ROAD",
+      "classification": "PLANNING_RECOMMENDATION_WITH_SCREENING_GEOMETRY",
+      "status": "CONDITIONAL_HOLD_NOT_AUTHORIZED",
+      "action": "If every technical gate closes before Phase 3 Grand Avenue work, construct a separately reversible sealed, dry rough shell in the earlier Phase 2 deep-shell window; otherwise leave the reservation unexcavated.",
+      "exactScreeningEvidence": {
+        "shallowBandCoordinateSetSha256": "040c0cf059f13bd409c4c2c969f23438da8dfe56b029a635eb38dc66335039f2",
+        "shallowBandCellCount": 23896,
+        "houstonIntersectionCellCount": 1296
+      },
+      "requiredBeforeSelection": [
+        "accepted purpose, endpoints, cross-section, vertical profile, internal clearance, portals/knockouts, and construction-influence cells",
+        "complete immutable save with region, entities, POI, and level.dat plus exact current-state and entity clearance",
+        "accepted geotechnical, structural, road-loading, retaining, settlement, lining, and waterproofing design",
+        "accepted inflow, sump/pump, power, overflow, receiver/outfall, failure/recovery, and future-fluid accounting",
+        "exact utilities and crossings, including separation from any Grand Avenue ductbank or foundations",
+        "one canonical owner per cell and exact Z02/Z03/Z04/Z05/Houston directional interface contracts",
+        "final clearance against all generated starts and accepted protected-feature influence sets",
+        "life-safety and commissioning criteria if any occupancy or operational use is proposed"
+      ],
+      "exactShellGeometryAccepted": false,
+      "acceptedFutureStateCellCount": 0,
+      "operationCellCount": 0,
+      "worldEditAuthorized": false,
+      "rationale": "A shell could avoid reopening a finished civic avenue, but the current screening band is not a design and the Houston overlap is unresolved."
+    },
+    {
+      "id": "GA-U2-FULL-FITOUT-NOW",
+      "classification": "PLANNING_RECOMMENDATION",
+      "status": "NOT_RECOMMENDED_HOLD",
+      "action": "Do not fit out or commission a tunnel now.",
+      "exactFitoutGeometry": null,
+      "selectedMode": null,
+      "acceptedEndpointCount": 0,
+      "commissionedConnectionCount": 0,
+      "acceptedFutureStateCellCount": 0,
+      "operationCellCount": 0,
+      "worldEditAuthorized": false,
+      "rationale": "No accepted service, demand, west portal, Houston seam, PassageWay door, Empty Eight continuation, utility program, life-safety design, ownership, or commissioning identity exists."
+    }
+  ],
+  "controllingPlanningRecommendation": {
+    "reserveCorridorNow": true,
+    "reserveMeaning": "Nonphysical no-foreclosure policy bound to the exact B11 centerline and conservative screening footprint; it assigns no cell ownership.",
+    "roughShellDuringAvenueWorks": "CONDITIONAL_ONLY_IF_COMPLETE_TECHNICAL_ACCEPTANCE_PRECEDES_THE_ROAD",
+    "preferredSequence": "Phase 2 sealed deep shell before Phase 3 surface avenue, never reopen the road merely to satisfy a planning preference.",
+    "fullyFitOutNow": false,
+    "ifEvidenceIsNotReady": "Build no tunnel; retain the no-foreclosure reservation and keep Houston/C4/future-line interfaces sealed."
+  },
+  "passHoldMatrix": [
+    {
+      "id": "GA-U-G01-B11-PROFILE",
+      "status": "PASS",
+      "basis": "The 299-point B11 profile regenerates to its bound SHA-256."
+    },
+    {
+      "id": "GA-U-G02-IMMUTABLE-CURRENT-SCREEN",
+      "status": "PASS_QUALIFIED_REGION_ONLY",
+      "basis": "Every full-height screening cell is read from the bound immutable copied region; entities/POI/level.dat remain absent."
+    },
+    {
+      "id": "GA-U-G03-RESERVE-POLICY",
+      "status": "PASS_RECOMMENDATION_ONLY",
+      "basis": "The exact no-foreclosure footprint is reproducible and creates no physical or owned cells."
+    },
+    {
+      "id": "GA-U-G04-EXACT-SHELL-DESIGN",
+      "status": "HOLD",
+      "basis": "The shallow band is screening geometry, not an accepted shell."
+    },
+    {
+      "id": "GA-U-G05-STRUCTURE-HYDROLOGY-UTILITIES",
+      "status": "HOLD",
+      "basis": "Technical inputs and complete future-state influence accounting are absent."
+    },
+    {
+      "id": "GA-U-G06-OWNERSHIP-INTERFACES",
+      "status": "HOLD",
+      "basis": "No owner or exact Houston/Z02/Z03/Z04/Z05 seam contract is accepted."
+    },
+    {
+      "id": "GA-U-G07-LIFE-SAFETY-FITOUT",
+      "status": "HOLD",
+      "basis": "No occupiable-system design or commissioning identity exists."
+    },
+    {
+      "id": "GA-U-G08-PHYSICAL-WORK",
+      "status": "HOLD",
+      "basis": "No operations, source guards, rollback package, preflight, release, or world-edit authorization exists."
+    }
+  ],
+  "limitations": [
+    "The radius-four footprint and roadY-8…roadY-1 band are conservative screening geometry, not an authored tunnel, road cross-section, construction envelope, or property right.",
+    "Current region block facts do not replace entities, POI, level.dat, live clearance, future-state, groundwater, hydraulic, structural, or construction-influence evidence.",
+    "Generated structure-start bounds do not prove current present fabric, structural influence, safe clearance, or ownership.",
+    "Zero shallow-band intersection with generated-start bounds or protected cores is not technical clearance because influence kernels and exact future work are absent.",
+    "The Houston coordination overlap is neither a collision approval nor an accepted connection.",
+    "No recommendation in this packet opens C4, Empty Eight future walls, PassageWay, Houston, drainage, utilities, or any other interface."
+  ]
+}

@@ -78,13 +78,22 @@ interface Report {
     b09ExactRouteSelected: boolean;
     b10AnalyticSurfaceSelected: boolean;
     d06CappedVentRiserCount: number;
+    d06DetailedProposalLayerCount: number;
+    d06DetailedCanonicalProposalCellCount: number;
+    d02C01TerminalDatumCellCount: number;
+    d02C01LoadingPrecedenceWithheldCellCount: number;
+    d02C01ProposedTerminalCapCellCount: number;
     ownerReviewBundleReady: boolean;
     ownerReviewBundlePayloadSha256: string;
     ownerReviewBundleAcceptanceRecorded: boolean;
+    ownerReviewAcceptanceValid: boolean;
+    ownerReviewAcceptanceRecordSha256: string;
+    ownerReviewAcceptancePayloadSha256: string;
     d02OwnerPacketReady: boolean;
     d05OwnerPacketReady: boolean;
     d06OwnerPacketReady: boolean;
     p1B11OwnerPacketReady: boolean;
+    p1B11PlanningBasisAccepted: boolean;
     p1B11GrandAvenueCenterlinePointCount: number;
     autonomousOfflineWorkMayContinue: boolean;
     autonomousOfflineWorkCanCompleteR00: boolean;
@@ -151,7 +160,7 @@ describe('Combined Zones R00 readiness audit', () => {
         delegatedSelectionsValid: true,
         ownerDelegatedSelectionCount: 20,
         additionalHumanDecisionMakersRequired: false,
-        remainingGeometryBlockerCount: 1,
+        remainingGeometryBlockerCount: 0,
         copiedSaveCandidatesAudited: 56,
         completeCopiedSaveCandidates: 0,
         d05S01SurveyComplete: true,
@@ -173,12 +182,19 @@ describe('Combined Zones R00 readiness audit', () => {
         b09ExactRouteSelected: true,
         b10AnalyticSurfaceSelected: true,
         d06CappedVentRiserCount: 4,
+        d06DetailedProposalLayerCount: 31,
+        d06DetailedCanonicalProposalCellCount: 9065,
+        d02C01TerminalDatumCellCount: 7803,
+        d02C01LoadingPrecedenceWithheldCellCount: 45,
+        d02C01ProposedTerminalCapCellCount: 9,
         ownerReviewBundleReady: true,
-        ownerReviewBundleAcceptanceRecorded: false,
+        ownerReviewBundleAcceptanceRecorded: true,
+        ownerReviewAcceptanceValid: true,
         d02OwnerPacketReady: true,
         d05OwnerPacketReady: true,
         d06OwnerPacketReady: true,
         p1B11OwnerPacketReady: true,
+        p1B11PlanningBasisAccepted: true,
         p1B11GrandAvenueCenterlinePointCount: 299,
         autonomousOfflineWorkMayContinue: true,
         autonomousOfflineWorkCanCompleteR00: false,
@@ -194,6 +210,13 @@ describe('Combined Zones R00 readiness audit', () => {
       ['G06_PROTECTED_FEATURES', 'HOLD'],
       ['G07_CIVIL_HYDROLOGY_STRUCTURE', 'HOLD'],
     ]);
+    expect(report.gates.find(({ id }) => id === 'G03_INTEGER_SET_OUT')?.blockers)
+      .toMatchObject([
+        {
+          id: 'R00-G03-CANONICAL-INTEGER-COMPILER',
+          classification: 'OFFLINE_ACTION',
+        },
+      ]);
   });
 
   it('proves G02 cycle-free and classifies current versus deferred evidence', () => {
@@ -208,12 +231,34 @@ describe('Combined Zones R00 readiness audit', () => {
     )).toBe(true);
     expect(report.summary.blockerCountsByClassification).toEqual({
       OFFLINE_ACTION: 5,
-      EXTERNAL_EVIDENCE: 8,
+      EXTERNAL_EVIDENCE: 7,
       DEFERRED_G08_G19: 2,
     });
     expect(report.deferredEvidence).toHaveLength(2);
     expect(report.deferredEvidence.every(
       ({ classification }) => classification === 'DEFERRED_G08_G19',
     )).toBe(true);
+  });
+
+  it('validates the separate acceptance record against the immutable bundle', () => {
+    const report = readReport();
+    const acceptance = JSON.parse(fs.readFileSync(
+      path.join(
+        ROOT,
+        'masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
+      ),
+      'utf8',
+    )) as {
+      bundleFileSha256: string;
+      bundlePayloadSha256: string;
+      acceptanceRecordPayloadSha256: string;
+    };
+    const bundleSource = report.sourceBindings.ownerReviewBundle;
+    expect(acceptance.bundleFileSha256).toBe(bundleSource.sha256);
+    expect(acceptance.bundlePayloadSha256).toBe(report.summary.ownerReviewBundlePayloadSha256);
+    expect(report.summary.ownerReviewAcceptanceRecordSha256)
+      .toBe(report.sourceBindings.ownerReviewAcceptance.sha256);
+    expect(report.summary.ownerReviewAcceptancePayloadSha256)
+      .toBe(acceptance.acceptanceRecordPayloadSha256);
   });
 });

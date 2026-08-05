@@ -13,11 +13,39 @@ const outputPath = process.argv[2]
 
 const readJson = (filename) => JSON.parse(readFileSync(join(reportDirectory, filename), 'utf8'));
 const bundle = readJson('phase1-owner-review-bundle.json');
+const acceptance = readJson('phase1-owner-review-acceptance.json');
 const d02 = readJson('phase1-d02-owner-acceptance-packet.json');
 const d05 = readJson('phase1-d05-owner-acceptance-packet.json');
 const d06 = readJson('phase1-d06-owner-acceptance-packet.json');
+const d02Technical = readJson('phase1-d02-technical-design.json');
+const d02C01 = readJson('phase1-d02-c01-ownership-loading-interface-proposal.json');
+const d05Future = readJson('phase1-d05-future-state.json');
+const d05Support = readJson('phase1-d05-support-material-design.json');
+const d06Mechanisms = readJson('phase1-d06-mechanisms.json');
+const d06Detailed = readJson('phase1-d06-detailed-mechanism-setout.json');
+const b09Technical = readJson('phase1-b09-funicular-technical-system.json');
 const b11 = readJson('phase1-b11-external-interface-acceptance.json');
+const b11Technical = readJson('phase1-b11-surface-road-technical-proposal.json');
+const b12Alternatives = readJson('phase1-grand-avenue-subsurface-alternatives.json');
+const b12Shell = readJson('phase1-grand-avenue-passive-shell-candidate.json');
+const completeSave = readJson('phase1-complete-save-intake-audit.json');
+const ownershipInterfaces = readJson('phase1-proposed-ownership-interface-registry.json');
+const g03Setout = readJson('phase1-g03-canonical-setout.json');
+const g06Clearance = readJson('phase1-g06-proposed-clearance-audit.json');
 const r00 = readJson('phase1-r00-readiness-audit.json');
+
+if (acceptance.bundleFileSha256 !== r00.sourceBindings.ownerReviewBundle.sha256
+  || acceptance.bundlePayloadSha256 !== bundle.authority.bundlePayloadSha256
+  || acceptance.copyableStatementAcceptedVerbatim !== false
+  || acceptance.bundleStatementIncorporatedByReference !== true
+  || acceptance.bundleCopyableStatement !== bundle.authority.copyableStatement
+  || acceptance.disposition?.allTechnicalHoldsRetained !== true
+  || acceptance.effectivePlanningDisposition?.technicalHoldPassedCount !== 0
+  || r00.summary?.ownerReviewAcceptanceValid !== true
+  || r00.summary?.ownerReviewAcceptanceRecordSha256
+    !== r00.sourceBindings.ownerReviewAcceptance.sha256) {
+  throw new Error('Owner-review acceptance binding is invalid; refusing accepted report');
+}
 
 const escapeHtml = (value) => String(value)
   .replaceAll('&', '&amp;')
@@ -103,9 +131,8 @@ const profilePath = [
   'L 928 75',
 ].join(' ');
 
-const d05HoldCount = d05.passHoldMatrix.filter((item) => item.status === 'HOLD').length;
-const d06PassCount = d06.acceptanceCriteria.filter((item) => item.status === 'PASS').length;
-const d06HoldCount = d06.acceptanceCriteria.filter((item) => item.status === 'HOLD').length;
+const d02TechnicalPassCount = d02Technical.technicalDevelopmentPayload.acceptanceMatrix.filter((item) => item.result === 'PASS').length;
+const d02TechnicalHoldCount = d02Technical.technicalDevelopmentPayload.acceptanceMatrix.filter((item) => item.result === 'HOLD').length;
 const reportHrefPrefix = relative(dirname(outputPath), reportDirectory).replaceAll('\\', '/');
 const reportLink = (path) => reportHrefPrefix ? `${reportHrefPrefix}/${path}` : path;
 const conceptImage = reportLink('../04-combined-complex/03-visuals/modules/map-integration/11-grand-avenue-overview.png');
@@ -270,18 +297,18 @@ const html = `<!doctype html>
       <div>
         <div class="kicker">Combined Zones · R00 · Sole-owner review</div>
         <h1>Review the plan before it becomes a build.</h1>
-        <p class="lede">This report turns the four source-bound packets into one human review surface. It shows the exact planning choices, their maps and concept imagery, every retained HOLD, and the single statement that can be accepted now.</p>
+        <p class="lede">This report turns the four source-bound packets and their recorded acceptance into one human review surface. It shows the exact planning choices, their maps and concept imagery, every retained HOLD, the owner's actual approval words, and the controlling bundle statement incorporated by reference.</p>
       </div>
       <aside class="hero-status" aria-label="Current review status">
         <div class="status-line">
-          <span class="pill pill--pass">Review ready</span>
-          <span class="pill pill--hold">Approval pending</span>
+          <span class="pill pill--pass">Owner accepted</span>
+          <span class="pill pill--hold">Technical HOLDs retained</span>
           <span class="pill pill--zero">0 operations</span>
         </div>
         <p class="hash-label">Controlling bundle payload SHA-256</p>
         <code class="hash" id="bundle-hash">${escapeHtml(bundle.authority.bundlePayloadSha256)}</code>
         <div class="actions screen-only">
-          <button class="button button--primary" type="button" data-copy="#approval-statement">Copy approval statement</button>
+          <a class="button button--primary" href="phase1-owner-review-acceptance.md">Open acceptance record</a>
           <button class="button" type="button" onclick="window.print()">Print / save PDF</button>
         </div>
       </aside>
@@ -294,6 +321,7 @@ const html = `<!doctype html>
       <a href="#scope">Scope</a>
       <a href="#maps">Maps</a>
       <a href="#b11">Grand Avenue</a>
+      <a href="#b12">Tunnel option</a>
       <a href="#technical">Technical packets</a>
       <a href="#gates">R00 gates</a>
       <a href="#next">Next sequence</a>
@@ -306,11 +334,11 @@ const html = `<!doctype html>
     <section id="decision">
       <div class="shell">
         <div class="section-head">
-          <div><div class="eyebrow">The decision in one minute</div><h2>Accept the planning basis, keep every technical gate closed.</h2></div>
-          <p>Your acceptance gives the autonomous design work one controlling checklist and freezes P1-B11’s remaining geometry choice. It does not make the design buildable.</p>
+          <div><div class="eyebrow">The decision in one minute</div><h2>Planning basis accepted. Every technical gate stays closed.</h2></div>
+          <p>The recorded acceptance gives the autonomous design work one controlling checklist and freezes P1-B11’s former remaining geometry choice. It does not make the design buildable.</p>
         </div>
         <div class="decision-banner">
-          <strong>Recommended review disposition:</strong> accept the hash-bound planning policy and technical-development checklist. The current record is still absent, R00 remains HOLD, and the complete saved world is still required.
+          <strong>Recorded disposition:</strong> the sole owner accepted the hash-bound planning policy and technical-development checklist at ${escapeHtml(acceptance.acceptedAtUtc)}. R00 remains HOLD, zero technical HOLDs passed, and the complete saved world is still required.
         </div>
         <div class="packet-grid">${packetCards}</div>
       </div>
@@ -361,7 +389,7 @@ const html = `<!doctype html>
     <section id="b11">
       <div class="shell">
         <div class="section-head">
-          <div><div class="eyebrow">The remaining geometry choice · P1-B11</div><h2>Grand Avenue rises four blocks across 298 horizontal steps.</h2></div>
+          <div><div class="eyebrow">Accepted planning basis · P1-B11</div><h2>Grand Avenue rises four blocks across 298 horizontal steps.</h2></div>
           <p>The profile is exact planning geometry: 299 unique, eight-connected centerline points, no terrain-Y substitution, and a maximum one-block vertical step.</p>
         </div>
         <div class="map-grid">
@@ -396,6 +424,53 @@ const html = `<!doctype html>
           <div class="stat"><strong>0</strong><span>PassageWay route cells</span></div>
         </div>
         <p class="notice">The PassageWay endpoint is not evidenced, so its proposed route and interaction sets are empty. All 16 future-line wall reference points remain sealed. Exact physical seam cells still require the later G04/G05 audits.</p>
+        <div class="approval" style="margin-top: 1rem">
+          <span class="pill pill--hold">Exact road proposal · technical HOLD</span>
+          <h2>The eight-wide surface setout now matches the tunnel convention.</h2>
+          <p>The proposed <code>-3…+4</code> Z-offset creates ${formatInteger(b11Technical.exactCellSets.proposedRoadConstruction.cellCount)} road cells, ${formatInteger(b11Technical.exactCellSets.candidateInteractionUnion.cellCount)} interaction cells, and ${formatInteger(b11Technical.exactCellSets.candidateInfluenceReservationUnion.cellCount)} load/drainage/utility reservation cells. This removes three geometry-null domains for a later G03 regeneration, projecting its unresolved count from ${b11Technical.g03ProposalImpact.currentCommittedUnresolvedRequiredDomainCount} to ${b11Technical.g03ProposalImpact.projectedRemainingGeometryNullDomainsIfConsumedByNextG03Compilation} without self-passing the gate.</p>
+          <p class="notice">The B12 shared load set is ${formatInteger(b11Technical.p1B12Coordination.roadLoadCellCount)} cells; Houston coordination is ${formatInteger(b11Technical.houstonZ03Z05Coordination.exactCellSets.candidateInteractionOverlap.cellCount)} cells. Materials, earthwork, drainage hydraulics, utilities, road loading, geotechnical design, complete-save clearance, ownership/interfaces, and physical release remain HOLD.</p>
+          <div class="link-row"><a href="phase1-b11-surface-road-technical-proposal.md">Read road proposal</a><a href="phase1-b11-surface-road-technical-proposal.json">Source JSON</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="b12">
+      <div class="shell">
+        <div class="section-head">
+          <div><div class="eyebrow">Post-approval option study · P1-B12</div><h2>Reserve the tunnel now; build only a sealed rough shell if every pre-road gate passes.</h2></div>
+          <p>This resolves the sequencing question without pretending the tunnel is construction-ready. A future excavation would be much more disruptive after Grand Avenue is complete, so the exact option is preserved now. Fit-out, openings, and public use remain out of scope.</p>
+        </div>
+        <div class="profile-card">
+          <svg viewBox="0 0 1000 430" role="img" aria-labelledby="shell-title shell-description">
+            <title id="shell-title">Conditional Grand Avenue passive-shell cross section</title>
+            <desc id="shell-description">An eight-block-wide by six-block-high sealed shell candidate is centered six blocks below Grand Avenue, with two road-load separation layers and a six-by-four retained void.</desc>
+            <rect width="1000" height="430" rx="16" fill="#0d1519" />
+            <path d="M90 100H910" stroke="#806a4b" stroke-width="58" />
+            <path d="M90 84H910" stroke="#f1bd60" stroke-width="7" />
+            <text x="112" y="61" fill="#f5d58d" font-size="19" font-weight="700">P1-B11 GRAND AVENUE · ACCEPTED 299-POINT PROFILE</text>
+            <path d="M280 149H720" stroke="#d8a254" stroke-width="44" opacity=".3" />
+            <text x="350" y="154" fill="#f1bd60" font-size="15">TWO ROAD-LOAD SEPARATION LAYERS</text>
+            <rect x="285" y="188" width="430" height="174" rx="4" fill="#647079" />
+            <rect x="332" y="235" width="336" height="108" fill="#0b1110" />
+            <path d="M332 288H668" stroke="#78b9d7" stroke-width="4" stroke-dasharray="13 9" />
+            <path d="M390 235V343M610 235V343" stroke="#a187dc" stroke-width="4" stroke-dasharray="9 8" />
+            <path d="M285 188V362M715 188V362" stroke="#ee7d72" stroke-width="10" />
+            <text x="374" y="276" fill="#dce8ed" font-size="17">SEALED, NONOCCUPIABLE VOID</text>
+            <text x="360" y="318" fill="#b9a9e5" font-size="14">utility · drainage · access reservations only</text>
+            <text x="748" y="232" fill="#cad0d3" font-size="15">8 × 6 outer</text>
+            <text x="748" y="260" fill="#cad0d3" font-size="15">6 × 4 inner</text>
+            <text x="748" y="288" fill="#cad0d3" font-size="15">road Y − 6</text>
+            <text x="112" y="399" fill="#f19b92" font-size="16">SEALED CAPS + 32-STATION BULKHEADS · NO FIT-OUT · NO OPEN INTERFACE</text>
+          </svg>
+        </div>
+        <div class="stat-grid">
+          <div class="stat"><strong>${formatInteger(b12Shell.exactGeometricQuantities.outerEnvelopeCells)}</strong><span>outer-envelope cells</span></div>
+          <div class="stat"><strong>${formatInteger(b12Shell.exactGeometricQuantities.candidateInfluenceUnionCells)}</strong><span>influence cells</span></div>
+          <div class="stat"><strong>${formatInteger(b12Shell.houstonZ03Z05Coordination.exactCellSets.exactZ03Z05CoordinationOverlap.cellCount)}</strong><span>Houston overlap cells</span></div>
+          <div class="stat"><strong>${formatInteger(b12Shell.exactGeometricQuantities.currentFluidCellsInOuterEnvelope)}</strong><span>current fluid cells</span></div>
+        </div>
+        <p class="notice"><strong>Decision rule:</strong> ${escapeHtml(b12Shell.decision.ifAnyHoldRemainsAtRoadRelease)} The exact candidate still has ${b12Shell.retainedHolds.length} HOLDs, zero accepted construction/material/owner/interface/operation cells, and zero permission to excavate. The broader shallow-screen recommendation remains <code>${escapeHtml(b12Alternatives.status)}</code>.</p>
+        <div class="link-row"><a href="phase1-grand-avenue-subsurface-alternatives.md">Read alternatives</a><a href="phase1-grand-avenue-passive-shell-candidate.md">Read exact shell candidate</a><a href="phase1-grand-avenue-passive-shell-candidate.json">Source JSON</a></div>
       </div>
     </section>
 
@@ -409,39 +484,51 @@ const html = `<!doctype html>
           <article class="technical-card">
             <span class="eyebrow">D02 · Civil and drainage</span>
             <h3>Hybrid capped-sump basis</h3>
-            <p>Ten exact candidates serve the strict-clear low runs; ROAD-LOW-001 stays unserved under a no-build preservation hold.</p>
+            <p>Ten exact candidates serve the strict-clear low runs; ROAD-LOW-001 stays unserved under a no-build preservation hold. The post-approval technical matrix now distinguishes developed geometry from missing design evidence.</p>
+            <p>The bounded C01 stack proposal partitions ${formatInteger(d02C01.proposalPayload.oneOwnerPrecedence.exactConflictAccounting.terminalDatumCellCount)} terminal cells with zero unassigned and withholds ${d02C01.proposalPayload.oneOwnerPrecedence.exactConflictAccounting.d02CellsWithheldByLoadingSeparation.cellCount} of ${d02C01.proposalPayload.oneOwnerPrecedence.exactConflictAccounting.d02CandidateCellCountAtStack} local drainage cells under exact load-path precedence.</p>
             <dl>
               <dt>Candidate cells</dt><dd>${formatInteger(d02.selectedClosedDrainageBasis.aggregateCandidateCellManifest.cellCount)}</dd>
               <dt>Capped sumps</dt><dd>${d02.selectedClosedDrainageBasis.selectedSumpCandidates.length}</dd>
-              <dt>Open evidence gaps</dt><dd>${d02.acceptanceSummary.openEvidenceGapCount}</dd>
-              <dt>Packet HOLDs</dt><dd>${bundle.packetSummary.find((item) => item.scope === 'D02').remainingHoldCount}</dd>
+              <dt>Technical PASS / HOLD</dt><dd>${d02TechnicalPassCount} / ${d02TechnicalHoldCount}</dd>
+              <dt>Accepted receiver / ops</dt><dd>0 / 0</dd>
             </dl>
-            <code class="identity" title="D02 planning-basis SHA-256">Basis ${shortHash(d02.acceptanceBasisIdentity.sha256)}</code>
+            <code class="identity" title="D02 technical-development payload SHA-256">Technical ${shortHash(d02Technical.technicalDevelopmentPayloadSha256)}</code>
           </article>
           <article class="technical-card">
             <span class="eyebrow">D05 · Future mountain</span>
             <h3>FM-01 compact east face</h3>
-            <p>The analytic surface and sparse intervals are exact proposals. Canonical materials, support treatment, influence sets, and owners remain absent.</p>
+            <p>The analytic surface is now a complete sparse material proposal, and every support gap has exactly one status. Treatments, owners, and acceptance remain absent.</p>
             <dl>
-              <dt>Candidate added solids</dt><dd>${formatInteger(d05.selectedFm01PlanningBasis.candidateAddedSolidIntervals.candidateAddedSolidCellCount)}</dd>
-              <dt>Support-gap cells</dt><dd>${formatInteger(d05.belowCoordinationSupportGapPlan.exactGap.cellCount)}</dd>
-              <dt>Accepted future cells</dt><dd>${d05.selectedFm01PlanningBasis.acceptedFutureCellCount}</dd>
-              <dt>Packet HOLDs</dt><dd>${d05HoldCount}</dd>
+              <dt>Proposed cells</dt><dd>${formatInteger(d05Future.sparseCanonicalFutureStateProposal.candidateAddedSolidCellCount)}</dd>
+              <dt>Bulk / exposed finish</dt><dd>${formatInteger(d05Future.sparseCanonicalFutureStateProposal.canonicalCandidateStateCounts['minecraft:stone'])} / ${formatInteger(d05Future.sparseCanonicalFutureStateProposal.canonicalCandidateStateCounts['minecraft:smooth_stone'] + d05Future.sparseCanonicalFutureStateProposal.canonicalCandidateStateCounts['minecraft:polished_diorite'])}</dd>
+              <dt>Support classified / missing</dt><dd>${formatInteger(d05Future.supportGapStatusLedger.classifiedCellCount)} / ${d05Future.supportGapStatusLedger.unclassifiedCellCount}</dd>
+              <dt>Treatment class / null</dt><dd>${formatInteger(d05Support.summary.supportTreatmentClassProposedCellCount)} / ${formatInteger(d05Support.summary.supportTreatmentClassNullCellCount)}</dd>
+              <dt>Accepted future cells</dt><dd>${d05Future.disposition.acceptedFutureCellCount}</dd>
             </dl>
-            <code class="identity" title="D05 acceptance-payload SHA-256">Payload ${shortHash(d05.ownerAcceptanceRecordTemplate.acceptancePayloadSha256)}</code>
+            <code class="identity" title="D05 future-state report identity SHA-256">Proposal ${shortHash(d05Future.reportIdentitySha256)}</code>
           </article>
           <article class="technical-card">
             <span class="eyebrow">D06 · External life safety</span>
             <h3>Fail-closed B07 + Empty Eight</h3>
-            <p>West-two avoids recorded structures but crosses current water. Vents, drainage, barriers, egress, fire/service access, power, and controls stay capped or reserved.</p>
+            <p>West-two avoids recorded structures but crosses current water. Exact internal equipment/carrier proposals now exist; functional states, external routes/receivers, commissioning, and openings stay null, capped, or sealed.</p>
             <dl>
-              <dt>B07 water cells</dt><dd>${d06.acceptanceCriteria.find((item) => item.id === 'D06-AC-03').currentEvidence.excavationWaterCellCount}</dd>
-              <dt>Local vent risers</dt><dd>${d06.acceptanceCriteria.find((item) => item.id === 'D06-AC-05').currentEvidence.exactLocalVentRiserCount}</dd>
-              <dt>Criteria PASS / HOLD</dt><dd>${d06PassCount} / ${d06HoldCount}</dd>
-              <dt>Commissioned routes</dt><dd>0</dd>
+              <dt>Detailed layers / cells</dt><dd>${d06Detailed.deterministicSetoutContract.proposalLayerCount} / ${formatInteger(d06Detailed.exactDetailedProposalLayers.canonicalProposalCellCountAfterPrecedence)}</dd>
+              <dt>Precedence records</dt><dd>${d06Detailed.internalDuplicateAndPrecedenceAudit.precedenceRecordCount}</dd>
+              <dt>Residual HOLD classes</dt><dd>${d06Detailed.genuineResidualBlockers.length}</dd>
+              <dt>Commissioning contracts</dt><dd>${d06Mechanisms.summary.commissioningTestContractCount}</dd>
             </dl>
-            <code class="identity" title="D06 acceptance-basis SHA-256">Basis ${shortHash(d06.acceptanceBasisSha256)}</code>
+            <code class="identity" title="D06 detailed-setout report identity SHA-256">Setout ${shortHash(d06Detailed.reportIdentitySha256)}</code>
           </article>
+        </div>
+        <div class="approval" style="margin-top: 1.5rem">
+          <span class="pill pill--hold">Proposal exact · acceptance HOLD</span>
+          <h2>One-owner and interface ambiguity is now explicit.</h2>
+          <p>The registry assigns ${formatInteger(ownershipInterfaces.proposalAccounting.knownCrossScopeProposedCellCount)} known proposal/reference cells to ${ownershipInterfaces.proposedOwnerRegistry.proposedOwnerRecordCount} logical owner records after ${ownershipInterfaces.proposedOwnershipAdjudications.recordCount} exact precedence adjudications. It compiles ${ownershipInterfaces.proposedDirectionalInterfaceRegistry.contractCount} directional, default-deny contracts: ${ownershipInterfaces.proposedDirectionalInterfaceRegistry.exactInterfaceCellSetCount} have exact cell sets, ${ownershipInterfaces.proposedDirectionalInterfaceRegistry.exactTransitionPairManifestCount} have transition-pair hashes, and ${ownershipInterfaces.proposedDirectionalInterfaceRegistry.nullInterfaceCellSetCount} remain null/HOLD.</p>
+          <p class="notice">No wildcard, bidirectional, shared-owner, silent-clipping, or last-writer-wins rule is allowed. Accepted owners and interfaces remain zero until the technical gaps close and the sole owner accepts one final immutable registry identity.</p>
+          <p>The canonical G03 setout independently normalizes ${g03Setout.gate.exactScopeCount} scopes and ${g03Setout.gate.exactExpandedScopeDomainCount} expanded exact domains. It discloses ${g03Setout.gate.disclosedOverlapCount} cross-scope overlaps and leaves ${g03Setout.gate.unresolvedRequiredDomainCount} required domains explicit null/HOLD; therefore G03 remains <strong>${escapeHtml(g03Setout.gate.result)}</strong>.</p>
+          <p>B09 now has an exact ${formatInteger(b09Technical.deterministicGeometryContract.minimumPlanningAccommodation.cellCount)}-cell funicular envelope with ${b09Technical.exactTechnicalReservationProposals.proposalLayerCount} station, guideway/support, maintenance/egress, rescue, power/control, and drainage reservation layers. Its ${b09Technical.exactSealedInterfaceProposals.exactInterfaceCount} interfaces remain sealed, and ${b09Technical.genuineResidualBlockers.length} system/acceptance classes remain HOLD.</p>
+          <p>G06 checks all ${g06Clearance.gate.exactNonNullG03DomainCount} non-null G03 domains against ${g06Clearance.gate.generatedStartCount} generated starts and ${g06Clearance.gate.protectedCoreCount} protected cores. All ${formatInteger(g06Clearance.gate.generatedStartDomainEvaluationCount + g06Clearance.gate.protectedCoreDomainEvaluationCount)} exact evaluations are zero-overlap. The separate D05 support-status stream still intersects the shipwreck core in ${g06Clearance.supportEvidenceAudit.protectedCores.overlapCellCount} unaccepted cells, and null domains/expert margins keep G06 HOLD.</p>
+          <div class="link-row"><a href="phase1-proposed-ownership-interface-registry.md">Read registry</a><a href="phase1-proposed-ownership-interface-registry.json">Source JSON</a></div>
         </div>
       </div>
     </section>
@@ -464,14 +551,14 @@ const html = `<!doctype html>
     <section id="next">
       <div class="shell">
         <div class="section-head">
-          <div><div class="eyebrow">Controlled next sequence</div><h2>Approval removes one human-policy blocker, then exact offline work resumes.</h2></div>
+          <div><div class="eyebrow">Controlled next sequence</div><h2>The human-policy blocker is resolved; exact offline work resumes.</h2></div>
           <p>The order matters because cell ownership and global interface checks cannot be credible until the technical inputs and canonical integer sets exist.</p>
         </div>
         <div class="timeline">
-          <article><div><h3>Record this exact bundle acceptance</h3><p>Bind the accepted-by identity, UTC time, bundle file hash, payload hash, and verbatim statement. This can freeze P1-B11; it cannot pass a technical HOLD.</p></div></article>
-          <article><div><h3>Capture and audit one complete immutable saved world</h3><p>Include region, entities, POI, and level.dat. The current audit checked 56 copied-save candidates and found zero complete copies.</p></div></article>
-          <article><div><h3>Develop D02, D05, and D06 to exact technical identities</h3><p>Resolve drainage capacity and receivers; compile canonical future materials and support treatment; author exact egress, smoke, vent, barrier, power, drainage, fire/service, owner, and interface mechanisms.</p></div></article>
-          <article><div><h3>Compile canonical integer sets, ownership, and interfaces</h3><p>Emit exact proposed construction and interaction sets, assign exactly one owner per cell, and run the default-deny global cross-scope interface audit.</p></div></article>
+          <article><div><h3>Preserve the exact acceptance identity</h3><p>The record binds the actual approval words, accepted-by identity, UTC time, bundle file hash, payload hash, and controlling statement incorporated by reference. It freezes P1-B11 while passing no technical HOLD.</p></div></article>
+          <article><div><h3>Capture and audit one complete immutable saved world</h3><p>Include region, entities, POI, and level.dat from one frozen copy. The dedicated intake validator finds ${completeSave.summary.regionFileCount} region files but zero entity and POI files and no level.dat, so it fails closed.</p></div></article>
+          <article><div><h3>Finish technical acceptance of exact proposals</h3><p>D02 now has a ${d02TechnicalPassCount}-PASS/${d02TechnicalHoldCount}-HOLD matrix; D05 partitions all candidate and support-gap cells; D06 binds 29 non-executable commissioning contracts. Capacity, treatment, powered systems, receivers, complete-save evidence, and independent technical acceptance remain.</p></div></article>
+          <article><div><h3>Close null setout and interface domains</h3><p>The proposal registry already covers all known cells without shared ownership, and G03 normalizes every currently exact scope. Finish its ${g03Setout.gate.unresolvedRequiredDomainCount} null/planning-only domains and ${ownershipInterfaces.proposedDirectionalInterfaceRegistry.nullInterfaceCellSetCount} null interfaces, add before/future state transitions, then bind technical and final owner/interface acceptance to one identity.</p></div></article>
           <article><div><h3>Rerun R00 G01–G07</h3><p>Only an all-PASS audit can move planning toward the separate bounded pilot release. Forward/rollback operations, source guards, authorization, execution, and post-QA remain later gates.</p></div></article>
         </div>
       </div>
@@ -480,11 +567,14 @@ const html = `<!doctype html>
     <section id="approve">
       <div class="shell">
         <div class="approval">
-          <span class="pill pill--hold">Owner record not yet present</span>
-          <h2>Copyable acceptance statement</h2>
+          <span class="pill pill--pass">Owner acceptance recorded</span>
+          <h2>Actual approval + incorporated statement</h2>
+          <p>The owner's exact approval utterance was:</p>
+          <blockquote id="approval-utterance">${escapeHtml(acceptance.actualApprovalText)}</blockquote>
+          <p>The canonical bundle statement was not recited verbatim; it was incorporated by reference from the immediately preceding hash-bound explanation:</p>
           <blockquote id="approval-statement">${escapeHtml(bundle.authority.copyableStatement)}</blockquote>
-          <p class="notice">Allowed decision: <code>${escapeHtml(bundle.approvalRecordTemplate.allowedDecision)}</code>. Acceptance is limited to the bound planning policy and technical-development checklist.</p>
-          <div class="actions screen-only"><button class="button button--primary" type="button" data-copy="#approval-statement">Copy exact statement</button><a class="button" href="phase1-owner-review-bundle.md">Open readable bundle</a><a class="button" href="phase1-owner-review-bundle.json">Open source JSON</a></div>
+          <p class="notice">Recorded decision: <code>${escapeHtml(acceptance.decision)}</code>. Acceptance-record payload SHA-256: <code>${escapeHtml(acceptance.acceptanceRecordPayloadSha256)}</code>. Acceptance is limited to the bound planning policy and technical-development checklist.</p>
+          <div class="actions screen-only"><button class="button button--primary" type="button" data-copy="#approval-statement">Copy controlling statement</button><a class="button" href="phase1-owner-review-acceptance.md">Open readable record</a><a class="button" href="phase1-owner-review-acceptance.json">Open acceptance JSON</a><a class="button" href="phase1-owner-review-bundle.json">Open source bundle</a></div>
         </div>
       </div>
     </section>
@@ -492,8 +582,8 @@ const html = `<!doctype html>
     <section id="evidence">
       <div class="shell">
         <div class="section-head">
-          <div><div class="eyebrow">Evidence identities</div><h2>The four inputs bound by this bundle.</h2></div>
-          <p>The complete 64-character hashes are shown for independent review. The bundle payload hash binds these packet identities and accepted limitations.</p>
+          <div><div class="eyebrow">Evidence identities</div><h2>The accepted inputs, acceptance identity, and post-approval engineering.</h2></div>
+          <p>The complete 64-character packet hashes below are the immutable owner-review inputs. The linked post-approval compilers are separate derivative evidence and do not alter that accepted bundle.</p>
         </div>
         <div class="table-wrap">
           <table class="evidence-table">
@@ -501,14 +591,14 @@ const html = `<!doctype html>
             <tbody>${sourceRows}</tbody>
           </table>
         </div>
-        <p><a href="phase1-r00-readiness-audit.md">Readable R00 audit</a> · <a href="phase1-r00-readiness-audit.json">R00 source JSON</a> · <a href="README.md">Combined Zones evidence index</a> · <a href="../current-masterplan.html">Current master plan report</a></p>
+        <p><a href="phase1-owner-review-acceptance.md">Readable acceptance record</a> · <a href="phase1-owner-review-acceptance.json">Acceptance source JSON</a> · <a href="phase1-d02-technical-design.md">D02 technical matrix</a> · <a href="phase1-d02-c01-ownership-loading-interface-proposal.md">D02/C01 bounded proposal</a> · <a href="phase1-d05-future-state.md">D05 future state</a> · <a href="phase1-d05-support-material-design.md">D05 support/materials</a> · <a href="phase1-b09-funicular-technical-system.md">B09 funicular</a> · <a href="phase1-b11-surface-road-technical-proposal.md">B11 surface road</a> · <a href="phase1-d06-mechanisms.md">D06 contracts</a> · <a href="phase1-d06-detailed-mechanism-setout.md">D06 detailed setout</a> · <a href="phase1-g03-canonical-setout.md">G03 setout</a> · <a href="phase1-g06-proposed-clearance-audit.md">G06 clearance</a> · <a href="phase1-proposed-ownership-interface-registry.md">ownership/interfaces</a> · <a href="phase1-complete-save-intake-audit.md">complete-save intake</a> · <a href="phase1-r00-readiness-audit.md">Readable R00 audit</a> · <a href="README.md">Combined Zones evidence index</a> · <a href="../current-masterplan.html">Current master plan report</a></p>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="shell">
-      <p>Generated from committed, offline evidence dated <time datetime="${escapeHtml(bundle.generatedAtUtc)}">${escapeHtml(bundle.generatedAtUtc)}</time>. Bundle payload SHA-256 <code>${escapeHtml(bundle.authority.bundlePayloadSha256)}</code>.</p>
+      <p>Generated from committed, offline evidence. Bundle dated <time datetime="${escapeHtml(bundle.generatedAtUtc)}">${escapeHtml(bundle.generatedAtUtc)}</time>; owner acceptance recorded <time datetime="${escapeHtml(acceptance.acceptedAtUtc)}">${escapeHtml(acceptance.acceptedAtUtc)}</time>. Bundle payload SHA-256 <code>${escapeHtml(bundle.authority.bundlePayloadSha256)}</code>; acceptance-record payload SHA-256 <code>${escapeHtml(acceptance.acceptanceRecordPayloadSha256)}</code>.</p>
       <p>No live calls, database writes, Minecraft operations, construction cells, material cells, or world edits were performed or authorized by this report.</p>
     </div>
   </footer>

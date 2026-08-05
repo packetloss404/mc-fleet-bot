@@ -40,6 +40,9 @@ const INPUTS = Object.freeze({
   d02RegionEvidence: 'masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
   d02HydrologyOutfalls: 'masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json',
   d02ClosedDrainage: 'masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json',
+  d02TechnicalDesign: 'masterplans/05-combined-zones/phase1-d02-technical-design.json',
+  d02C01OwnershipLoadingInterface: 'masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json',
+  completeSaveIntake: 'masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
   geometryCoordination: 'masterplans/05-combined-zones/phase1-geometry-coordination.json',
   protectedRelicClearance: 'masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
   d05HydrologyRelicDesign: 'masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
@@ -47,9 +50,13 @@ const INPUTS = Object.freeze({
   d05RelicSurvey: 'masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json',
   d05FutureStateContract: 'masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json',
   d05FutureMountain: 'masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json',
+  d05FutureState: 'masterplans/05-combined-zones/phase1-d05-future-state.json',
+  d05SupportMaterialDesign: 'masterplans/05-combined-zones/phase1-d05-support-material-design.json',
   emptyEightGeologyDesign: 'masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
   d06EgressGeometryDesign: 'masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
   d06LifeSafety: 'masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
+  d06Mechanisms: 'masterplans/05-combined-zones/phase1-d06-mechanisms.json',
+  d06DetailedSetout: 'masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json',
   connectorGeometry: 'masterplans/05-combined-zones/phase1-connector-geometry.json',
   cheyenneJcurve: 'masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json',
   autonomousDesignSelections: 'masterplans/05-combined-zones/phase1-autonomous-design-selections.json',
@@ -57,7 +64,15 @@ const INPUTS = Object.freeze({
   d05OwnerAcceptance: 'masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json',
   d06OwnerAcceptance: 'masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json',
   b11OwnerAcceptance: 'masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json',
+  b09TechnicalSystem: 'masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json',
+  b11SurfaceRoadTechnical: 'masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.json',
+  b12SubsurfaceAlternatives: 'masterplans/05-combined-zones/phase1-grand-avenue-subsurface-alternatives.json',
+  b12PassiveShell: 'masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json',
+  proposedOwnershipInterfaces: 'masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json',
+  g03CanonicalSetout: 'masterplans/05-combined-zones/phase1-g03-canonical-setout.json',
+  g06ProposedClearance: 'masterplans/05-combined-zones/phase1-g06-proposed-clearance-audit.json',
   ownerReviewBundle: 'masterplans/05-combined-zones/phase1-owner-review-bundle.json',
+  ownerReviewAcceptance: 'masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
   siteGateAudit: 'masterplans/05-combined-zones/phase1-site-gate-audit.json',
 });
 
@@ -101,10 +116,19 @@ const d06 = readJson(INPUTS.emptyEightGeologyDesign);
 const d02RegionEvidence = readJson(INPUTS.d02RegionEvidence);
 const d02HydrologyOutfalls = readJson(INPUTS.d02HydrologyOutfalls);
 const d02ClosedDrainage = readJson(INPUTS.d02ClosedDrainage);
+const d02TechnicalDesign = readJson(INPUTS.d02TechnicalDesign);
+const d02C01OwnershipLoadingInterface = readJson(
+  INPUTS.d02C01OwnershipLoadingInterface,
+);
+const completeSaveIntake = readJson(INPUTS.completeSaveIntake);
 const d05RelicSurvey = readJson(INPUTS.d05RelicSurvey);
 const d05FutureStateContract = readJson(INPUTS.d05FutureStateContract);
 const d05FutureMountain = readJson(INPUTS.d05FutureMountain);
+const d05FutureState = readJson(INPUTS.d05FutureState);
+const d05SupportMaterialDesign = readJson(INPUTS.d05SupportMaterialDesign);
 const d06LifeSafety = readJson(INPUTS.d06LifeSafety);
+const d06Mechanisms = readJson(INPUTS.d06Mechanisms);
+const d06DetailedSetout = readJson(INPUTS.d06DetailedSetout);
 const connectorGeometry = readJson(INPUTS.connectorGeometry);
 const cheyenneJcurve = readJson(INPUTS.cheyenneJcurve);
 const delegatedSelections = readJson(INPUTS.autonomousDesignSelections);
@@ -112,21 +136,110 @@ const d02OwnerAcceptance = readJson(INPUTS.d02OwnerAcceptance);
 const d05OwnerAcceptance = readJson(INPUTS.d05OwnerAcceptance);
 const d06OwnerAcceptance = readJson(INPUTS.d06OwnerAcceptance);
 const b11OwnerAcceptance = readJson(INPUTS.b11OwnerAcceptance);
+const b09TechnicalSystem = readJson(INPUTS.b09TechnicalSystem);
+const b11SurfaceRoadTechnical = readJson(INPUTS.b11SurfaceRoadTechnical);
+const b12SubsurfaceAlternatives = readJson(INPUTS.b12SubsurfaceAlternatives);
+const b12PassiveShell = readJson(INPUTS.b12PassiveShell);
+const proposedOwnershipInterfaces = readJson(INPUTS.proposedOwnershipInterfaces);
+const g03CanonicalSetout = readJson(INPUTS.g03CanonicalSetout);
+const g06ProposedClearance = readJson(INPUTS.g06ProposedClearance);
 const ownerReviewBundle = readJson(INPUTS.ownerReviewBundle);
+const ownerReviewAcceptance = readJson(INPUTS.ownerReviewAcceptance);
 const site = readJson(INPUTS.siteGateAudit);
 
 const selectedGeometryIds = delegatedSelections.selections
   ?.map(({ scope }) => scope)
   .filter((scope) => scope.startsWith('P1-B')) ?? [];
-const remainingGeometryIds = geometry.blockerMatrix
-  ?.map(({ id }) => id)
-  .filter((id) => !selectedGeometryIds.includes(id)) ?? [];
 const delegatedSelectionsValid = delegatedSelections.status
     === 'PARTIAL_PASS_OWNER_DELEGATED_SELECTIONS_FROZEN_TECHNICAL_GATES_HOLD'
   && delegatedSelections.authority?.additionalHumanDecisionMakersRequired === false
   && delegatedSelections.disposition?.selectionCount === delegatedSelections.selections?.length
   && delegatedSelections.safetyBoundary?.worldEditAuthorized === false
   && delegatedSelections.safetyBoundary?.operationCellCount === 0;
+const recomputedOwnerReviewBundlePayloadSha256 = sha256(
+  `${JSON.stringify(ownerReviewBundle.bundlePayload)}\n`,
+);
+const recomputedOwnerReviewAcceptancePayloadSha256 = sha256(
+  `${JSON.stringify(ownerReviewAcceptance.acceptanceRecordPayload)}\n`,
+);
+const acceptancePayloadMirrorsTopLevel = [
+  'id',
+  'decision',
+  'acceptedBy',
+  'acceptedAtUtc',
+  'acceptanceAuthority',
+  'actualApprovalText',
+  'subsequentInstructionText',
+  'copyableStatementAcceptedVerbatim',
+  'bundleStatementIncorporatedByReference',
+  'bundleBinding',
+  'bundleCopyableStatement',
+  'acceptedScope',
+  'acceptanceNeverImplies',
+  'effectivePlanningDisposition',
+  'retainedTechnicalHolds',
+  'safetyBoundary',
+  'disposition',
+].every((key) => JSON.stringify(ownerReviewAcceptance[key])
+  === JSON.stringify(ownerReviewAcceptance.acceptanceRecordPayload?.[key]));
+const ownerReviewAcceptanceValid = ownerReviewAcceptance.status
+    === 'OWNER_ACCEPTANCE_RECORDED_PLANNING_POLICY_FROZEN_ALL_TECHNICAL_HOLDS_RETAINED'
+  && ownerReviewAcceptance.decision
+    === 'ACCEPT_PLANNING_POLICY_AND_TECHNICAL_DEVELOPMENT_CHECKLIST'
+  && ownerReviewAcceptance.acceptedBy === 'sole human project owner'
+  && ownerReviewAcceptance.acceptanceAuthority
+    ?.additionalHumanDecisionMakersRequired === false
+  && ownerReviewAcceptance.bundlePath === INPUTS.ownerReviewBundle
+  && ownerReviewAcceptance.bundleFileSha256 === sources.ownerReviewBundle.sha256
+  && ownerReviewAcceptance.bundlePayloadSha256
+    === ownerReviewBundle.authority?.bundlePayloadSha256
+  && ownerReviewAcceptance.bundlePayloadSha256
+    === recomputedOwnerReviewBundlePayloadSha256
+  && ownerReviewAcceptance.copyableStatementAcceptedVerbatim === false
+  && ownerReviewAcceptance.bundleStatementIncorporatedByReference === true
+  && ownerReviewAcceptance.bundleCopyableStatement
+    === ownerReviewBundle.authority?.copyableStatement
+  && ownerReviewAcceptance.actualApprovalText
+    === 'yes I approve then, please continue to engineer and fan out into teams if you need to. Also does it make sense to put a tunnel under grandave now and add to it later than try to add it later?'
+  && ownerReviewAcceptance.subsequentInstructionText
+    === 'also fan out teams of subagents to remove all BLOCKS AND HOLDS'
+  && ownerReviewAcceptance.bundleBinding?.path === INPUTS.ownerReviewBundle
+  && ownerReviewAcceptance.bundleBinding?.fileSha256 === sources.ownerReviewBundle.sha256
+  && ownerReviewAcceptance.bundleBinding?.bytes === sources.ownerReviewBundle.bytes
+  && ownerReviewAcceptance.bundleBinding?.payloadSha256
+    === ownerReviewBundle.authority?.bundlePayloadSha256
+  && ownerReviewAcceptance.bundleBinding?.id === ownerReviewBundle.id
+  && ownerReviewAcceptance.bundleBinding?.status === ownerReviewBundle.status
+  && ownerReviewAcceptance.acceptanceRecordPayload?.decision
+    === ownerReviewAcceptance.decision
+  && ownerReviewAcceptance.acceptanceRecordPayload?.acceptedBy
+    === ownerReviewAcceptance.acceptedBy
+  && ownerReviewAcceptance.acceptanceRecordPayload?.acceptedAtUtc
+    === ownerReviewAcceptance.acceptedAtUtc
+  && ownerReviewAcceptance.acceptanceRecordPayloadSha256
+    === recomputedOwnerReviewAcceptancePayloadSha256
+  && acceptancePayloadMirrorsTopLevel
+  && ownerReviewAcceptance.effectivePlanningDisposition
+    ?.p1B11PlanningBasisAccepted === true
+  && ownerReviewAcceptance.effectivePlanningDisposition
+    ?.clearedOwnerChoiceIds?.includes('P1-B11-EXTERNAL-INTERFACES')
+  && ownerReviewAcceptance.effectivePlanningDisposition
+    ?.technicalHoldPassedCount === 0
+  && ownerReviewAcceptance.disposition?.ownerAcceptanceRecorded === true
+  && ownerReviewAcceptance.disposition?.allTechnicalHoldsRetained === true
+  && ownerReviewAcceptance.disposition?.g02Passed === false
+  && ownerReviewAcceptance.disposition?.g03Passed === false
+  && ownerReviewAcceptance.disposition?.r00Passed === false
+  && ownerReviewAcceptance.safetyBoundary?.operationCellCount === 0
+  && ownerReviewAcceptance.safetyBoundary?.materialCellCount === 0
+  && ownerReviewAcceptance.safetyBoundary?.worldEditAuthorized === false
+  && ownerReviewAcceptance.safetyBoundary?.physicalBuildAuthorized === false;
+const effectiveSelectedGeometryIds = ownerReviewAcceptanceValid
+  ? [...selectedGeometryIds, 'P1-B11-EXTERNAL-INTERFACES']
+  : selectedGeometryIds;
+const remainingGeometryIds = geometry.blockerMatrix
+  ?.map(({ id }) => id)
+  .filter((id) => !effectiveSelectedGeometryIds.includes(id)) ?? [];
 const preferredDrainage = d02ClosedDrainage.alternatives?.find(
   ({ id }) => id === d02ClosedDrainage.preferredPlanningAlternative?.alternativeId,
 );
@@ -223,32 +336,38 @@ const gates = [
     evidence: [sources.designDecisions, sources.c1CivilDesign,
       sources.d02AuthorityPacket, sources.d05HydrologyRelicDesign,
       sources.d02RegionEvidence, sources.d02HydrologyOutfalls,
-      sources.d02ClosedDrainage,
+      sources.d02ClosedDrainage, sources.d02TechnicalDesign,
+      sources.d02C01OwnershipLoadingInterface,
+      sources.completeSaveIntake,
       sources.d05ConservativeDefaults, sources.d05RelicSurvey,
       sources.d05FutureStateContract, sources.d05FutureMountain,
+      sources.d05FutureState, sources.d05SupportMaterialDesign,
       sources.emptyEightGeologyDesign, sources.d06EgressGeometryDesign,
-      sources.d06LifeSafety, sources.cheyenneJcurve,
+      sources.d06LifeSafety, sources.d06Mechanisms, sources.d06DetailedSetout,
+      sources.b09TechnicalSystem, sources.b11SurfaceRoadTechnical,
+      sources.b12SubsurfaceAlternatives, sources.b12PassiveShell,
+      sources.cheyenneJcurve,
       sources.autonomousDesignSelections, sources.d02OwnerAcceptance,
       sources.d05OwnerAcceptance, sources.d06OwnerAcceptance,
-      sources.ownerReviewBundle],
+      sources.ownerReviewBundle, sources.ownerReviewAcceptance],
     blockers: decisionsPassed ? [] : [
       blocker(
         'R00-G02-D02-EXTERNAL-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'The D02 owner packet is ready for planning-basis/checklist acceptance, but technical closure still requires one complete immutable copied save with region/entities/poi/level.dat, D02-S01/S02 identity and safety census, inflow/storage/freeboard/failure criteria, future fluid accounting, receiver ownership/interfaces, capacity, structure/geotechnical review, and complete technical acceptance.',
-        INPUTS.d02OwnerAcceptance,
+        'The D02 planning basis now has an exact 6-PASS/11-HOLD technical matrix, but closure still requires one complete immutable copied save with region/entities/poi/level.dat, accepted inflow/storage/freeboard/failure criteria, future-fluid accounting, receiver ownership/interfaces, capacity, structure/geotechnical/loading/quantity evidence, and complete technical acceptance.',
+        INPUTS.d02TechnicalDesign,
       ),
       blocker(
         'R00-G02-D05-EXTERNAL-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'The D05 conditional-policy packet is ready for owner review, but technical closure still requires the compact east-face analytic planning surface to compile into canonical material states and accepted construction/influence cellsets, with support gaps, hydrology/geotechnical review, relic influence kernels, owners, interfaces, maintenance/egress, stations, and mechanisms closed; accepted future-state cells remain zero.',
-        INPUTS.d05OwnerAcceptance,
+        'The D05 proposal now partitions all 14,768,553 direct cells and all 754,224 support-gap cells; 17,997 support cells have treatment-class proposals while 736,227 remain treatment-null and all support canonical states remain null. Closure still requires complete-save evidence, accepted hydrology/cryosphere/geotechnical and relic influence, B09 mechanisms/egress, maintenance/staging, owners/interfaces, and independent technical acceptance.',
+        INPUTS.d05SupportMaterialDesign,
       ),
       blocker(
         'R00-G02-D06-EXTERNAL-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'The D06 fail-closed planning/checklist packet is ready for owner review, but technical closure still requires exact accepted stairs/lifts, smoke and barrier mechanisms, emergency circuits, capped drainage, four local vent risers, fire/service access, outlets, ownership, and interfaces. Every opening and discharge remains sealed and uncommissioned.',
-        INPUTS.d06OwnerAcceptance,
+        'The D06 proposal now compiles 31 exact detailed layers into 9,065 canonical proposal cells and retains 29 commissioning contracts, but closure still requires external egress/discharge/fire routes, functional mechanisms and controls/failure logic, independent circuit sources, hydraulic receivers, structural/material acceptance, complete-save evidence, owners/interfaces, technical acceptance, and all commissioning results.',
+        INPUTS.d06DetailedSetout,
       ),
       ...(!descendantEvidenceCycleFree ? [
         blocker(
@@ -268,19 +387,25 @@ const gates = [
       sources.cheyenneJcurve, sources.d05FutureMountain,
       sources.d06LifeSafety, sources.d05FutureStateContract,
       sources.autonomousDesignSelections, sources.b11OwnerAcceptance,
-      sources.ownerReviewBundle],
+      sources.d05FutureState, sources.d06DetailedSetout,
+      sources.d02C01OwnershipLoadingInterface,
+      sources.b09TechnicalSystem, sources.b11SurfaceRoadTechnical,
+      sources.b12PassiveShell, sources.g03CanonicalSetout,
+      sources.ownerReviewBundle, sources.ownerReviewAcceptance],
     blockers: [
-      blocker(
+      ...(!ownerReviewAcceptanceValid ? [blocker(
         'R00-G03-DESIGN-AUTHORITY-CHOICES',
         'EXTERNAL_EVIDENCE',
         `Record sole-owner acceptance of the hash-bound P1-B11 packet for the ${remainingGeometryIds.length} remaining geometry blocker (${remainingGeometryIds.join(', ')}). It proposes the exact Grand Avenue profile, preserves the unevidenced PassageWay side as a zero-cell deferral, and keeps future lines sealed; ${selectedGeometryIds.length} prior geometry choices remain frozen.`,
         INPUTS.b11OwnerAcceptance,
-      ),
+      )] : []),
       blocker(
         'R00-G03-CANONICAL-INTEGER-COMPILER',
         'OFFLINE_ACTION',
-        'Implement the canonical integer setout compiler after the missing design-authority choices are accepted.',
-        INPUTS.releaseContract,
+        ownerReviewAcceptanceValid
+          ? `Complete every remaining null construction/interaction/influence domain in the canonical v2 setout. The committed compiler currently normalizes ${g03CanonicalSetout.gate?.exactScopeCount ?? 0} scopes, expands ${g03CanonicalSetout.gate?.exactExpandedScopeDomainCount ?? 0} exact domains, and retains ${g03CanonicalSetout.gate?.unresolvedRequiredDomainCount ?? 0} unresolved required domains; exact proposals are not accepted construction authority.`
+          : 'Implement the canonical integer setout compiler after the missing design-authority choices are accepted.',
+        INPUTS.g03CanonicalSetout,
       ),
     ],
   },
@@ -291,19 +416,22 @@ const gates = [
       sources.d02ClosedDrainage, sources.d05FutureMountain,
       sources.d06LifeSafety, sources.d02OwnerAcceptance,
       sources.d05OwnerAcceptance, sources.d06OwnerAcceptance,
-      sources.b11OwnerAcceptance, sources.siteGateAudit],
+      sources.b11OwnerAcceptance, sources.ownerReviewAcceptance,
+      sources.proposedOwnershipInterfaces, sources.g03CanonicalSetout,
+      sources.d02C01OwnershipLoadingInterface,
+      sources.siteGateAudit],
     blockers: [
       blocker(
         'R00-G04-OWNER-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'Accept one canonical owner for every proposed construction and interaction cell, including C01, hydrology, egress, surface, and sealed-interface scopes.',
-        INPUTS.siteGateAudit,
+        'After the technical/null-domain work closes, bind sole-owner acceptance to one complete immutable registry identity. The current proposal has 21 logical owner records and zero accepted owner records.',
+        INPUTS.proposedOwnershipInterfaces,
       ),
       blocker(
         'R00-G04-OWNERSHIP-AUDIT',
         'OFFLINE_ACTION',
-        'Implement the one-owner/no-overlap ownership audit over the accepted exact setout.',
-        INPUTS.releaseContract,
+        'Regenerate the proposed one-owner partition over the completed G03 setout and prove exactly one owner for every required cell, including every newly compiled domain and precedence adjudication.',
+        INPUTS.proposedOwnershipInterfaces,
       ),
     ],
   },
@@ -314,19 +442,22 @@ const gates = [
       sources.d02ClosedDrainage, sources.d05FutureMountain,
       sources.d06LifeSafety, sources.d02OwnerAcceptance,
       sources.d05OwnerAcceptance, sources.d06OwnerAcceptance,
-      sources.b11OwnerAcceptance, sources.siteGateAudit],
+      sources.b11OwnerAcceptance, sources.ownerReviewAcceptance,
+      sources.proposedOwnershipInterfaces, sources.g03CanonicalSetout,
+      sources.d02C01OwnershipLoadingInterface,
+      sources.siteGateAudit],
     blockers: [
       blocker(
         'R00-G05-INTERFACE-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'Accept exact C01, PassageWay, surface, hydrology, egress, child-plan, and sealed future-line interface contracts.',
-        INPUTS.siteGateAudit,
+        'Close every null technical counterpart and accept one immutable set of exact directional contracts. The current proposal has 71 default-deny contracts, 59 exact interface cell sets, and 12 null/HOLD interfaces.',
+        INPUTS.proposedOwnershipInterfaces,
       ),
       blocker(
         'R00-G05-GLOBAL-INTERFACE-GATE',
         'OFFLINE_ACTION',
-        'Implement the exact default-deny global cross-scope interface audit after accepted cell sets exist.',
-        INPUTS.releaseContract,
+        'Regenerate the default-deny global cross-scope audit after G03 completion; require exact transitions/states and zero undeclared seams with no wildcard, shared owner, silent clipping, or last-writer-wins rule.',
+        INPUTS.proposedOwnershipInterfaces,
       ),
     ],
   },
@@ -336,19 +467,21 @@ const gates = [
     evidence: [sources.protectedRelicClearance, sources.phase0Evidence,
       sources.d05ConservativeDefaults, sources.d05RelicSurvey,
       sources.d05FutureMountain, sources.cheyenneJcurve,
-      sources.autonomousDesignSelections, sources.d05OwnerAcceptance],
+      sources.autonomousDesignSelections, sources.d05OwnerAcceptance,
+      sources.d05SupportMaterialDesign, sources.g03CanonicalSetout,
+      sources.g06ProposedClearance],
     blockers: relics.g06Disposition?.status === 'PASS' ? [] : [
       blocker(
         'R00-G06-RELIC-REVIEW',
         'EXTERNAL_EVIDENCE',
-        'Review the exact future design against the completed D05-S01 condition/access evidence and frozen core-plus-one-cell minimum exclusions; expand them wherever the evidence requires. Candidate observation routes authorize no access.',
-        INPUTS.d05RelicSurvey,
+        `Review and accept positive-margin structural, hydrology, access, staging, settlement, erosion, and construction-method influence kernels. The current audit proves all ${g06ProposedClearance.gate?.exactNonNullG03DomainCount ?? 0} non-null G03 domains exact-zero against observed starts/cores, but keeps ${g06ProposedClearance.gate?.nullUnknownDomainCount ?? 0} null domains unknown and discloses a 126-cell shipwreck support-status intersection.`,
+        INPUTS.g06ProposedClearance,
       ),
       blocker(
         'R00-G06-EXACT-DESIGN-CLEARANCE',
         'OFFLINE_ACTION',
-        'Intersect the final exact proposed construction/interaction sets against all 50 relevant structure starts and every accepted relic buffer.',
-        INPUTS.protectedRelicClearance,
+        'After G03/null-domain completion and a complete save, rerun the exact all-start/entity/POI clearance against every accepted protected core/buffer and the complete proposed construction/interaction/influence union.',
+        INPUTS.g06ProposedClearance,
       ),
     ],
   },
@@ -357,26 +490,33 @@ const gates = [
     status: 'HOLD',
     evidence: [sources.c1CivilDesign, sources.d02AuthorityPacket,
       sources.d02RegionEvidence, sources.d02HydrologyOutfalls,
-      sources.d02ClosedDrainage,
+      sources.d02ClosedDrainage, sources.d02TechnicalDesign,
+      sources.d02C01OwnershipLoadingInterface,
+      sources.completeSaveIntake,
       sources.d05HydrologyRelicDesign,
       sources.d05ConservativeDefaults, sources.d05RelicSurvey,
       sources.d05FutureStateContract, sources.d05FutureMountain,
+      sources.d05FutureState, sources.d05SupportMaterialDesign,
       sources.emptyEightGeologyDesign, sources.d06EgressGeometryDesign,
-      sources.d06LifeSafety, sources.connectorGeometry, sources.cheyenneJcurve,
+      sources.d06LifeSafety, sources.d06Mechanisms, sources.d06DetailedSetout,
+      sources.connectorGeometry, sources.cheyenneJcurve,
+      sources.b09TechnicalSystem, sources.b11SurfaceRoadTechnical,
+      sources.b12PassiveShell, sources.proposedOwnershipInterfaces,
+      sources.g03CanonicalSetout, sources.g06ProposedClearance,
       sources.autonomousDesignSelections, sources.d02OwnerAcceptance,
       sources.d05OwnerAcceptance, sources.d06OwnerAcceptance,
-      sources.ownerReviewBundle],
+      sources.ownerReviewBundle, sources.ownerReviewAcceptance],
     blockers: [
       blocker(
         'R00-G07-EXPERT-DESIGN-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'Complete and accept the D02 civil/C01, D05 hydrology/relic, and D06 external life-safety engineering against one frozen design identity.',
+        'Complete and independently accept the remaining D02 civil/C01, D05 hydrology/geotechnical/relic, B09, Grand Avenue/B12, and D06 functional life-safety engineering against one complete saved-world and design identity.',
         INPUTS.siteGateAudit,
       ),
       blocker(
         'R00-G07-INTEGRATED-DESIGN-CHECK',
         'OFFLINE_ACTION',
-        'Run deterministic integrated civil, hydrology, structure, route-grade, and life-safety checks after the accepted design inputs exist.',
+        'Regenerate the deterministic integrated civil, hydrology, structure, route-grade, setout, ownership/interface, protected-feature, and life-safety checks after every accepted design input exists.',
         INPUTS.releaseContract,
       ),
     ],
@@ -447,6 +587,11 @@ const report = {
     remainingGeometryBlockerCount: remainingGeometryIds.length,
     copiedSaveCandidatesAudited: d02RegionEvidence.copiedSaveCompletenessAudit?.candidateCount ?? 0,
     completeCopiedSaveCandidates: d02RegionEvidence.copiedSaveCompletenessAudit?.completeCandidateCount ?? 0,
+    completeSaveIntakePassed: completeSaveIntake.summary?.passed === true,
+    completeSaveIntakeRegionFileCount: completeSaveIntake.summary?.regionFileCount ?? 0,
+    completeSaveIntakeEntityFileCount: completeSaveIntake.summary?.entityFileCount ?? 0,
+    completeSaveIntakePoiFileCount: completeSaveIntake.summary?.poiFileCount ?? 0,
+    completeSaveIntakeLevelDatPresent: completeSaveIntake.summary?.levelDatPresent === true,
     d05S01SurveyComplete: d05RelicSurvey.status === 'D05_S01_OFFLINE_SURVEY_COMPLETE_D05_G06_HOLD',
     b03ExactRouteSelected: selectedGeometryIds.includes('P1-B03-CHEYENNE-JCURVE'),
     b03HorizontalStepCount: cheyenneJcurve.design?.centerline?.horizontalStepCount ?? 0,
@@ -468,6 +613,8 @@ const report = {
       ?.acceptedReceiverCount ?? 0,
     d02PreferredDrainageCandidateCellCount: preferredDrainage?.candidateCellManifest?.cellCount ?? 0,
     d02HeldLowRunCount: preferredDrainage?.noBuildPreservationHoldCount ?? 0,
+    d02TechnicalPassCount: d02TechnicalDesign.summary?.passCount ?? 0,
+    d02TechnicalHoldCount: d02TechnicalDesign.summary?.holdCount ?? 0,
     d05FutureStateContractPassed: d05FutureStateContract
       .readinessDisposition?.contractSchemaPassed === true,
     d05FutureStateCellCount: d05FutureStateContract.futureCellCount ?? 0,
@@ -477,14 +624,40 @@ const report = {
       ?.sparseAddedSolidIntervals?.candidateAddedSolidCellCount ?? 0,
     d05BelowCoordinationSupportGapCellCount: recommendedMountain
       ?.belowCoordinationSupportGap?.cellCount ?? 0,
+    d05FutureStateProposalCellCount: d05FutureState
+      .sparseCanonicalFutureStateProposal?.candidateAddedSolidCellCount ?? 0,
+    d05SupportTreatmentClassProposedCellCount: d05SupportMaterialDesign
+      .summary?.supportTreatmentClassProposedCellCount ?? 0,
+    d05SupportTreatmentClassNullCellCount: d05SupportMaterialDesign
+      .summary?.supportTreatmentClassNullCellCount ?? 0,
     b09ExactRouteSelected: selectedGeometryIds.includes('P1-B09-FUNICULAR-CENTERLINE'),
     b10AnalyticSurfaceSelected: selectedGeometryIds
       .includes('P1-B10-MOUNTAIN-SOLID-AND-RELIC-VOIDS'),
     d06CappedVentRiserCount: recommendedVent?.risers?.length ?? 0,
+    d06DetailedProposalLayerCount: d06DetailedSetout
+      .deterministicSetoutContract?.proposalLayerCount ?? 0,
+    d06DetailedCanonicalProposalCellCount: d06DetailedSetout
+      .exactDetailedProposalLayers?.canonicalProposalCellCountAfterPrecedence ?? 0,
+    d02C01TerminalDatumCellCount: d02C01OwnershipLoadingInterface
+      .proposalPayload?.oneOwnerPrecedence?.exactConflictAccounting
+      ?.terminalDatumCellCount ?? 0,
+    d02C01LoadingPrecedenceWithheldCellCount: d02C01OwnershipLoadingInterface
+      .proposalPayload?.oneOwnerPrecedence?.exactConflictAccounting
+      ?.d02CellsWithheldByLoadingSeparation?.cellCount ?? 0,
+    d02C01ProposedTerminalCapCellCount: d02C01OwnershipLoadingInterface
+      .proposalPayload?.oneOwnerPrecedence?.exactConflictAccounting
+      ?.d02TerminalCellsRemainingAfterLoadingPrecedence?.cellCount ?? 0,
+    b09TechnicalReservationLayerCount: b09TechnicalSystem
+      .exactTechnicalReservationProposals?.proposalLayerCount ?? 0,
+    b09TechnicalResidualHoldClassCount: b09TechnicalSystem
+      .genuineResidualBlockers?.length ?? 0,
     ownerReviewBundleReady: ownerReviewBundle.disposition?.readyForSoleOwnerReview === true,
     ownerReviewBundlePayloadSha256: ownerReviewBundle.authority?.bundlePayloadSha256 ?? null,
-    ownerReviewBundleAcceptanceRecorded: ownerReviewBundle
-      .disposition?.ownerAcceptanceRecorded === true,
+    ownerReviewBundleAcceptanceRecorded: ownerReviewAcceptanceValid,
+    ownerReviewAcceptanceValid,
+    ownerReviewAcceptanceRecordSha256: sources.ownerReviewAcceptance.sha256,
+    ownerReviewAcceptancePayloadSha256: ownerReviewAcceptance
+      .acceptanceRecordPayloadSha256 ?? null,
     d02OwnerPacketReady: d02OwnerAcceptance.copyableSoleOwnerAcceptance
       ?.status === 'TEMPLATE_NOT_EXECUTED',
     d05OwnerPacketReady: d05OwnerAcceptance.disposition?.ownerPacketContentComplete === true,
@@ -492,11 +665,31 @@ const report = {
       === 'READY_FOR_SOLE_OWNER_REVIEW_PLANNING_BASIS_BOUND_D06_AND_G02_HOLD',
     p1B11OwnerPacketReady: b11OwnerAcceptance.disposition
       ?.p1B11ReadyForOwnerApproval === true,
+    p1B11PlanningBasisAccepted: ownerReviewAcceptanceValid,
     p1B11GrandAvenueCenterlinePointCount: b11OwnerAcceptance.acceptancePayload
       ?.grandAvenue?.centerlinePointCount ?? 0,
+    p1B11SurfaceRoadProposalCellCount: b11SurfaceRoadTechnical
+      .exactCellSets?.proposedRoadConstruction?.cellCount ?? 0,
+    p1B11ProjectedG03UnresolvedDomainCount: b11SurfaceRoadTechnical
+      .g03ProposalImpact?.projectedRemainingGeometryNullDomainsIfConsumedByNextG03Compilation ?? null,
+    p1B12PassiveShellInfluenceCellCount: b12PassiveShell
+      .exactGeometricQuantities?.candidateInfluenceUnionCells ?? 0,
+    proposedLogicalOwnerCount: proposedOwnershipInterfaces
+      .proposedOwnerRegistry?.proposedOwnerRecordCount ?? 0,
+    proposedDirectionalInterfaceCount: proposedOwnershipInterfaces
+      .proposedDirectionalInterfaceRegistry?.contractCount ?? 0,
+    proposedNullInterfaceCount: proposedOwnershipInterfaces
+      .proposedDirectionalInterfaceRegistry?.nullInterfaceCellSetCount ?? 0,
+    g03CanonicalExactScopeCount: g03CanonicalSetout.gate?.exactScopeCount ?? 0,
+    g03CanonicalUnresolvedDomainCount: g03CanonicalSetout
+      .gate?.unresolvedRequiredDomainCount ?? 0,
+    g06NonNullDomainCount: g06ProposedClearance.gate?.exactNonNullG03DomainCount ?? 0,
+    g06NullUnknownDomainCount: g06ProposedClearance.gate?.nullUnknownDomainCount ?? 0,
+    g06SupportShipwreckOverlapCellCount: g06ProposedClearance
+      .supportEvidenceAudit?.protectedCores?.overlapCellCount ?? 0,
     autonomousOfflineWorkMayContinue: true,
     autonomousOfflineWorkCanCompleteR00: false,
-    nextAutonomousArtifact: 'record the owner-review bundle, capture/audit one complete saved world, then continue exact D02/D05/D06 technical development before T01/T02',
+    nextAutonomousArtifact: 'complete the remaining G03 null domains and technical systems; keep the v2 one-owner/interface and G06 audits synchronized; capture and audit one complete saved world before final technical/owner acceptance',
     externalEvidenceStillRequired: true,
   },
 };
@@ -506,7 +699,7 @@ const markdown = `# Combined Zones Phase 1 R00 readiness audit\n\n`
   + `This audit evaluates only the nonphysical R00 design-freeze gates G01-G07. It does not use R01 pilot, execution, rollback, route-QA, or post-state evidence to close a design decision.\n\n`
   + `## Sequencing result\n\n`
   + `The evidence graph is cycle-free: **${descendantEvidenceCycleFree ? 'PASS' : 'FAIL'}**. The required order is D01-D07 design acceptance → R00 freeze → R01 physical validation → R02 eligibility.\n\n`
-  + `The owner-delegated ledger freezes **${report.summary.ownerDelegatedSelectionCount}** conservative planning choices. Four exact review packets are now bound by owner-review payload \`${report.summary.ownerReviewBundlePayloadSha256}\`; acceptance remains pending and cannot pass a technical HOLD. No additional human decision-makers are required. The remaining holds are technical evidence, exact-cell compilation, independent checks, ownership/interface cellsets, and later release authorization.\n\n`
+  + `The owner-delegated ledger freezes **${report.summary.ownerDelegatedSelectionCount}** conservative planning choices. The sole owner accepted four exact review packets under owner-review payload \`${report.summary.ownerReviewBundlePayloadSha256}\`, bound by acceptance-record payload \`${report.summary.ownerReviewAcceptancePayloadSha256}\`. The acceptance freezes P1-B11 and the planning policies/checklists but passes zero technical HOLDs. No additional human decision-makers are required. The remaining holds are technical evidence, exact-cell compilation, independent checks, ownership/interface cellsets, and later release authorization.\n\n`
   + `## R00 gates\n\n`
   + `| Gate | Status | Current blockers |\n|---|---|---:|\n`
   + gates.map((gate) => `| ${gate.id} | **${gate.status}** | ${gate.blockers.length} |`).join('\n')

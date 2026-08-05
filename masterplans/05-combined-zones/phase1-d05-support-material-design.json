@@ -1,0 +1,975 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-d05-support-material-design",
+  "generatedAtUtc": "2026-08-05T02:30:00Z",
+  "status": "PARTIAL_PASS_EXACT_D05_SUPPORT_MATERIAL_PROPOSAL_UNRESOLVED_TREATMENTS_D05_G02_HOLD",
+  "purpose": "Bind every exact FM-01 direct proposal and support-gap status family to an explicit proposed treatment/material record wherever current evidence permits, while retaining null states for support, hydrology, cryosphere, relic, influence, and access cases that require complete-save or engineering acceptance.",
+  "executable": false,
+  "sourceBindings": {
+    "ownerAcceptance": {
+      "path": "masterplans/05-combined-zones/phase1-owner-review-acceptance.json",
+      "sha256": "9d5d7ea17a189b7a1017236e6ae7a9b8483bf0ffe4515f12e62fb90b9f7291f0",
+      "bytes": 8748,
+      "role": "sole-owner D05 planning-policy acceptance with technical HOLDs retained"
+    },
+    "d05FutureState": {
+      "path": "masterplans/05-combined-zones/phase1-d05-future-state.json",
+      "sha256": "7a00d74a14ffa2c35610d5291a98cd417153bff50749f9a4de675908662c2bec",
+      "bytes": 39721,
+      "role": "exact FM-01 sparse material proposal and exhaustive support-gap classification"
+    },
+    "d05OwnerPacket": {
+      "path": "masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json",
+      "sha256": "3bf8c1955f8e10de12afad3048d202e0b4322f01c3c12b96fceded10f58db662",
+      "bytes": 62402,
+      "role": "canonical material policy, support classes, technical criteria, and owner/interface contracts"
+    },
+    "d05FutureMountain": {
+      "path": "masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json",
+      "sha256": "b4f3b92e644dd359f66ac7512aa55096bae247c19acbfa8e89526b19c1b06331",
+      "bytes": 47414,
+      "role": "selected FM-01 alternative and route/relic material boundary"
+    },
+    "d05HydrologyRelic": {
+      "path": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
+      "sha256": "8ec1927298d3dd7ca685166e42019f1a7f31e0bd59b86c9f7e1ba891698acd10",
+      "bytes": 3250959,
+      "role": "immutable fluid/cryosphere census and three exact protected cores"
+    },
+    "d05ConservativeDefaults": {
+      "path": "masterplans/05-combined-zones/phase1-d05-conservative-defaults.json",
+      "sha256": "a4f72a07774df5a73dfb67b5cf7b8548691cff6f3808883853bafd7e0a78bd48",
+      "bytes": 17420,
+      "role": "no-diversion, relic-preservation, and unknown-influence default-deny policy"
+    },
+    "d05RelicSurvey": {
+      "path": "masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json",
+      "sha256": "679daac044ac74aa328dc7de9489720fb8a3b82d150e678b1c22fd7575bddc14",
+      "bytes": 120795,
+      "role": "current relic condition and access evidence with no observation access authorization"
+    },
+    "connectorGeometry": {
+      "path": "masterplans/05-combined-zones/phase1-connector-geometry.json",
+      "sha256": "9a9521422075d499326b761a8d85bbfcfea83ec582dbc29538fae0600d8bc012",
+      "bytes": 458505,
+      "role": "exact B09 planning profile and construction HOLD"
+    },
+    "d06Egress": {
+      "path": "masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json",
+      "sha256": "b355aae4b6632fe6e0de6f7b95cd100906ca700ad4db9cdfa8cd27b534cd2615",
+      "bytes": 13680,
+      "role": "two exact dry/disjoint external continuation reservations"
+    },
+    "d06Mechanisms": {
+      "path": "masterplans/05-combined-zones/phase1-d06-mechanisms.json",
+      "sha256": "1c90d284ab16d443daf4b8a3e00b4ae12e23c3a47f1378ae328796ef67693030",
+      "bytes": 179829,
+      "role": "exact D06 full protected-core reservations and all-mechanism HOLD"
+    },
+    "completeSaveAudit": {
+      "path": "masterplans/05-combined-zones/phase1-complete-save-intake-audit.json",
+      "sha256": "2ce69f861cf979275c3972d3297ed25e9301c5352b48ed056a81a53ff40039cf",
+      "bytes": 27091,
+      "role": "complete-save intake result and exact missing members"
+    }
+  },
+  "supportMaterialDesignPayload": {
+    "acceptedPlanningIdentity": {
+      "ownerAcceptanceFileSha256": "9d5d7ea17a189b7a1017236e6ae7a9b8483bf0ffe4515f12e62fb90b9f7291f0",
+      "ownerAcceptancePayloadSha256": "3bf35dfe9cce1eac463d8dc77899c61e8d89f1be686908ab347bd47e23353225",
+      "d05PlanningPolicyAccepted": true,
+      "technicalHoldPassedCount": 0,
+      "d05FutureStateReportIdentitySha256": "acf06949a267b2cc3e4da25a0aab3267dc18149fa373534389230d2961b5de2f",
+      "modelId": "FM-01-COMPACT-EAST-FACE",
+      "modelIdentitySha256": "735b69b38c5c2ea840388039b5beb957671fe3e243ec7943c440649edcff36a6",
+      "independentTechnicalAcceptanceRecorded": false
+    },
+    "immutableEvidenceIdentity": {
+      "regionOnlySha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+      "completeSameMomentSavedWorldAvailable": false
+    },
+    "referenceIndexedSparseOverlayContract": {
+      "meaning": "Each overlay record binds one exact upstream sparse coordinate family by source hash and assigns uniform or source-preserved proposal metadata to every cell in that family. It is not an accepted typed-family or operation manifest.",
+      "directMaterialOverlayManifest": {
+        "algorithm": "SHA-256",
+        "preamble": "combined-zones-d05-direct-material-overlay-v1\n",
+        "record": "canonical JSON object with lexicographically sorted keys; one newline-terminated record per exact source sparse family",
+        "recordCount": 2,
+        "sha256": "59d5f47bff01013e26d73f28cd855b1b45791e1e4708c40d76dd607cd6711ce8"
+      },
+      "supportTreatmentOverlayManifest": {
+        "algorithm": "SHA-256",
+        "preamble": "combined-zones-d05-support-treatment-overlay-v1\n",
+        "record": "canonical JSON object with lexicographically sorted keys; one newline-terminated record per exact source sparse family",
+        "recordCount": 9,
+        "sha256": "6e6160b80b990374467653e89d5336b135ef12ec6c03cb1d4fdfcdc9f1345b46"
+      }
+    },
+    "directMaterialFamilies": [
+      {
+        "id": "D05-MAT-BULK-STRUCTURAL-FILL-PROPOSAL",
+        "sourceFamilyId": "fill-direct",
+        "sourceProposalSparseManifestSha256": "5fc31ddc0e2d85297430534857ba78d1c7dc824a4168608d9dbef80d006ae350",
+        "exactProposalCellCount": 14580291,
+        "exactProposalColumnRecordCount": 187797,
+        "exactProposalIntervalCount": 189814,
+        "proposedTreatmentClass": "MOUNTAIN-BULK-FILL",
+        "proposedCanonicalStateCounts": {
+          "minecraft:stone": 14580291
+        },
+        "proposedMaterialClassIds": [
+          "MAT-BULK-STRUCTURAL-FILL-CANDIDATE"
+        ],
+        "proposedOwnerClass": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+        "influenceAssumptionId": "INF-D05-DIRECT-NO-IMPLICIT-EXPANSION",
+        "maintenanceAccessAssumptionId": "ACC-D05-NONE-INFERRED",
+        "acceptedCellCount": 0,
+        "acceptedMaterialStateManifestSha256": null,
+        "status": "PASS_EXACT_PROPOSAL_ONLY_TECHNICAL_ACCEPTANCE_HOLD",
+        "referenceIndexedOverlayRecordSha256": "54972759dd2d55142d8671fd1a1a92c5b9bc5de10736cc874a453f55284f53a1"
+      },
+      {
+        "id": "D05-MAT-EXPOSED-SURFACE-FINISH-PROPOSAL",
+        "sourceFamilyId": "surface-finish-direct",
+        "sourceProposalSparseManifestSha256": "942f7a83c7f360309d68c27d3c7f56bec78eb4ad2d4716f0a1024908529be567",
+        "exactProposalCellCount": 188262,
+        "exactProposalColumnRecordCount": 188262,
+        "exactProposalIntervalCount": 188262,
+        "proposedTreatmentClass": "MOUNTAIN-EXPOSED-ARCHITECTURAL-FINISH",
+        "proposedCanonicalStateCounts": {
+          "minecraft:smooth_stone": 77395,
+          "minecraft:polished_diorite": 110867
+        },
+        "proposedMaterialClassIds": [
+          "MAT-LOWER-ARCHITECTURAL-FINISH-CANDIDATE",
+          "MAT-UPPER-ARCHITECTURAL-FINISH-CANDIDATE"
+        ],
+        "deterministicStateRule": "Y < 130 -> minecraft:smooth_stone; Y >= 130 -> minecraft:polished_diorite, exactly as already encoded in the bound source sparse proposal.",
+        "cryosphereLandscapeSurfaceCapState": null,
+        "proposedOwnerClass": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+        "influenceAssumptionId": "INF-D05-DIRECT-NO-IMPLICIT-EXPANSION",
+        "maintenanceAccessAssumptionId": "ACC-D05-NONE-INFERRED",
+        "acceptedCellCount": 0,
+        "acceptedMaterialStateManifestSha256": null,
+        "status": "PASS_EXACT_PROPOSAL_ONLY_CRYOSPHERE_AND_TECHNICAL_ACCEPTANCE_HOLD",
+        "referenceIndexedOverlayRecordSha256": "9ad01580bdfb86b88b1ab196e98ee461767f2242e53326366b63e73d3cf916ae"
+      }
+    ],
+    "proposedMaterialRegistry": {
+      "sourcePlanId": "CZ05-FM01-CANONICAL-MATERIAL-STATE-PLAN-V1",
+      "architecturalTransitionWorldStudyY": 130,
+      "directProposalClasses": [
+        {
+          "id": "MAT-BULK-STRUCTURAL-FILL-CANDIDATE",
+          "classification": "OWNER_POLICY_CHOICE_REQUIRES_TECHNICAL_ACCEPTANCE",
+          "appliesWhen": "an exact accepted fill cell is internal, non-finish, non-liner, and non-support-special",
+          "futureCanonicalState": "minecraft:stone",
+          "status": "PROPOSED_NOT_ASSIGNABLE",
+          "qualification": "A deterministic candidate state only; geotechnical acceptance and exact cell records are absent."
+        },
+        {
+          "id": "MAT-LOWER-ARCHITECTURAL-FINISH-CANDIDATE",
+          "classification": "OWNER_POLICY_CHOICE_REQUIRES_TECHNICAL_ACCEPTANCE",
+          "appliesWhen": "an exact accepted exposed finish cell lies below world-study Y=130",
+          "futureCanonicalState": "minecraft:smooth_stone",
+          "status": "PROPOSED_NOT_ASSIGNABLE",
+          "qualification": "Architectural limestone-style contrast only; it is not a natural-contact or age claim."
+        },
+        {
+          "id": "MAT-UPPER-ARCHITECTURAL-FINISH-CANDIDATE",
+          "classification": "OWNER_POLICY_CHOICE_REQUIRES_TECHNICAL_ACCEPTANCE",
+          "appliesWhen": "an exact accepted exposed finish cell lies at or above world-study Y=130",
+          "futureCanonicalState": "minecraft:polished_diorite",
+          "status": "PROPOSED_NOT_ASSIGNABLE",
+          "qualification": "Architectural granite-style contrast only; it is not a natural-contact or age claim."
+        }
+      ],
+      "supportAndSurfaceTechnicalGapClasses": [
+        {
+          "id": "MAT-SUPPORT-LINER-RETAINING",
+          "classification": "TECHNICAL_GAP",
+          "appliesWhen": "a cell performs support, waterproofing, lining, foundation, bridge, or retaining work",
+          "futureCanonicalState": null,
+          "status": "HOLD_NO_ACCEPTED_STATE",
+          "qualification": "State selection follows exact geotechnical/hydrology treatment, never a bulk-fill default."
+        },
+        {
+          "id": "MAT-SURFACE-CAP-CRYOSPHERE-LANDSCAPE",
+          "classification": "TECHNICAL_GAP",
+          "appliesWhen": "a cell is an exposed cap, soil, vegetation, snow/ice, drainage, or erosion-control finish",
+          "futureCanonicalState": null,
+          "status": "HOLD_NO_ACCEPTED_STATE",
+          "qualification": "Current adjacency counts do not authorize a future snow, ice, soil, or drainage state."
+        }
+      ],
+      "canonicalDirectProposalStateCounts": {
+        "minecraft:stone": 14580291,
+        "minecraft:smooth_stone": 77395,
+        "minecraft:polished_diorite": 110867
+      },
+      "supportCanonicalStateCount": 0,
+      "acceptedMaterialClassCount": 0,
+      "acceptedStateRecordCount": 0,
+      "acceptedCoordinateSetSha256": null,
+      "acceptedBlockStateSetSha256": null,
+      "qualification": "Stone, smooth-stone, and polished-diorite states are exact direct proposal states already encoded in the bound sparse future-state proposal. No state is accepted, and no support/liner/retaining or cryosphere/landscape state is assigned."
+    },
+    "supportGapTreatmentLedger": {
+      "sourceBoundIntervalManifestSha256": "31664bc00e7a1d361567fb878e8653c2a4018045169d54900ca9ad15bddd7171",
+      "sourceCoordinateSetSha256": "f007560fafa7eceed438c4ade36981fe16461c7dad35b55f4f29bf729e86bde6",
+      "exactCellCount": 754224,
+      "exactColumnCount": 107345,
+      "familyCount": 9,
+      "classifiedCellCount": 754224,
+      "unclassifiedCellCount": 0,
+      "multiplyClassifiedCellCount": 0,
+      "treatmentClassProposedCellCount": 17997,
+      "treatmentClassNullCellCount": 736227,
+      "proposedCanonicalStateCellCount": 0,
+      "acceptedTreatmentCellCount": 0,
+      "acceptedMaterialStateCellCount": 0,
+      "families": [
+        {
+          "id": "D05-TREAT-SUPPORT-STATUS-RELIC-PRESERVE",
+          "sourceSupportStatusFamilyId": "SUPPORT-STATUS-RELIC-PRESERVE",
+          "sourcePrecedence": 1,
+          "sourceClassificationBasis": "exact relic preserve-current-state set",
+          "exactCellCount": 363,
+          "exactColumnCount": 96,
+          "exactBounds": {
+            "minX": 2071,
+            "maxX": 2100,
+            "minY": 68,
+            "maxY": 71,
+            "minZ": -662,
+            "maxZ": -652
+          },
+          "exactCoordinateSetSha256": "00d700cbfc8347081dd3f1aa1e5fa4f561c86de2ee2a776953c54826549c197f",
+          "sourceSparseIntervalRecordCount": 96,
+          "sourceSparseIntervalManifestSha256": "68dd7937b05b4d3371476903b341fcd0872937a27ee9ce3431d48dafbb47d420",
+          "proposedTreatmentClass": "SUPPORT-RETAIN-VOID",
+          "proposedMaterialClassId": "MAT-CURRENT-STATE-RETAINED",
+          "proposedCanonicalState": null,
+          "proposalDecision": "PROPOSE_RETAIN_VOID_PRESERVE_CURRENT_STATE_TOKEN_STATE_REQUIRES_COMPLETE_SAVE",
+          "reason": "The exact relic-planning-exclusion intersection remains unchanged; no support, fill, access, or expert influence is inferred.",
+          "influenceAssumptionId": "INF-D05-RELIC-EXPERT-SUPPORT-ACCESS-NULL",
+          "maintenanceAccessAssumptionId": "ACC-D05-NONE-INFERRED",
+          "acceptedTreatment": false,
+          "acceptedCellCount": 0,
+          "acceptedCanonicalStateManifestSha256": null,
+          "acceptedOwnerAssignmentCount": 0,
+          "status": "PROPOSE_RETAIN_VOID_PRESERVE_CURRENT_STATE_TOKEN_STATE_REQUIRES_COMPLETE_SAVE_NOT_ACCEPTED",
+          "referenceIndexedOverlayRecordSha256": "ad46e5de85793745b4ae061e081213d5507ad3bfbbc43217dd98eb17443677f3"
+        },
+        {
+          "id": "D05-TREAT-SUPPORT-STATUS-B08-RESERVATION",
+          "sourceSupportStatusFamilyId": "SUPPORT-STATUS-B08-RESERVATION",
+          "sourcePrecedence": 2,
+          "sourceClassificationBasis": "exact B08 interaction reservation",
+          "exactCellCount": 0,
+          "exactColumnCount": 0,
+          "exactBounds": null,
+          "exactCoordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+          "sourceSparseIntervalRecordCount": 0,
+          "sourceSparseIntervalManifestSha256": "f1cdeec5de110b4a6b9e0a3e5253a6cc30c3a0f73b339533266829a85085b2bb",
+          "proposedTreatmentClass": "SUPPORT-RETAIN-VOID",
+          "proposedMaterialClassId": "MAT-ROUTE-PASSABLE-CANDIDATE",
+          "proposedCanonicalState": null,
+          "proposalDecision": "PROPOSE_RETAIN_VOID_ZERO_CURRENT_SUPPORT_GAP_CELLS",
+          "reason": "B08 is an exact planning reservation only; lining, support, and passable states remain separate technical work.",
+          "influenceAssumptionId": "INF-D05-GEOTECH-HYDROLOGY-KERNELS-NULL",
+          "maintenanceAccessAssumptionId": "ACC-D05-NONE-INFERRED",
+          "acceptedTreatment": false,
+          "acceptedCellCount": 0,
+          "acceptedCanonicalStateManifestSha256": null,
+          "acceptedOwnerAssignmentCount": 0,
+          "status": "PROPOSE_RETAIN_VOID_ZERO_CURRENT_SUPPORT_GAP_CELLS_NOT_ACCEPTED",
+          "referenceIndexedOverlayRecordSha256": "bf1b2886cd587f3a258d9f71de7ec50ccb8f1ce36053734df0e6a292813ebd02"
+        },
+        {
+          "id": "D05-TREAT-SUPPORT-STATUS-B09-RESERVATION",
+          "sourceSupportStatusFamilyId": "SUPPORT-STATUS-B09-RESERVATION",
+          "sourcePrecedence": 3,
+          "sourceClassificationBasis": "exact B09 minimum planning accommodation",
+          "exactCellCount": 0,
+          "exactColumnCount": 0,
+          "exactBounds": null,
+          "exactCoordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+          "sourceSparseIntervalRecordCount": 0,
+          "sourceSparseIntervalManifestSha256": "f1cdeec5de110b4a6b9e0a3e5253a6cc30c3a0f73b339533266829a85085b2bb",
+          "proposedTreatmentClass": "SUPPORT-RETAIN-VOID",
+          "proposedMaterialClassId": "MAT-B09-GUIDEWAY-STATION-MECHANISM",
+          "proposedCanonicalState": null,
+          "proposalDecision": "PROPOSE_RETAIN_VOID_ZERO_CURRENT_SUPPORT_GAP_CELLS",
+          "reason": "B09 planning accommodation remains withheld from fill; its guideway, station, support, and maintenance systems are null.",
+          "influenceAssumptionId": "INF-D05-GEOTECH-HYDROLOGY-KERNELS-NULL",
+          "maintenanceAccessAssumptionId": "ACC-D05-NONE-INFERRED",
+          "acceptedTreatment": false,
+          "acceptedCellCount": 0,
+          "acceptedCanonicalStateManifestSha256": null,
+          "acceptedOwnerAssignmentCount": 0,
+          "status": "PROPOSE_RETAIN_VOID_ZERO_CURRENT_SUPPORT_GAP_CELLS_NOT_ACCEPTED",
+          "referenceIndexedOverlayRecordSha256": "a3879052eb5032857b792704a86aea5e2de54d994dc64b6c37ea5b12e70ffb9a"
+        },
+        {
+          "id": "D05-TREAT-SUPPORT-STATUS-D06-RESERVATION",
+          "sourceSupportStatusFamilyId": "SUPPORT-STATUS-D06-RESERVATION",
+          "sourcePrecedence": 4,
+          "sourceClassificationBasis": "exact D06 external continuation reservation",
+          "exactCellCount": 0,
+          "exactColumnCount": 0,
+          "exactBounds": null,
+          "exactCoordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+          "sourceSparseIntervalRecordCount": 0,
+          "sourceSparseIntervalManifestSha256": "f1cdeec5de110b4a6b9e0a3e5253a6cc30c3a0f73b339533266829a85085b2bb",
+          "proposedTreatmentClass": "SUPPORT-RETAIN-VOID",
+          "proposedMaterialClassId": "MAT-ROUTE-PASSABLE-CANDIDATE",
+          "proposedCanonicalState": null,
+          "proposalDecision": "PROPOSE_RETAIN_VOID_ZERO_CURRENT_SUPPORT_GAP_CELLS",
+          "reason": "D06 external continuations remain closed reference reservations with no mechanism or lining state.",
+          "influenceAssumptionId": "INF-D05-GEOTECH-HYDROLOGY-KERNELS-NULL",
+          "maintenanceAccessAssumptionId": "ACC-D05-NONE-INFERRED",
+          "acceptedTreatment": false,
+          "acceptedCellCount": 0,
+          "acceptedCanonicalStateManifestSha256": null,
+          "acceptedOwnerAssignmentCount": 0,
+          "status": "PROPOSE_RETAIN_VOID_ZERO_CURRENT_SUPPORT_GAP_CELLS_NOT_ACCEPTED",
+          "referenceIndexedOverlayRecordSha256": "77b3d7c1a14034f052150dd4e0e20a4d5cd62dee17341b0daefa335b8a6cfdbf"
+        },
+        {
+          "id": "D05-TREAT-SUPPORT-STATUS-WATER-ADJACENT",
+          "sourceSupportStatusFamilyId": "SUPPORT-STATUS-WATER-ADJACENT",
+          "sourcePrecedence": 5,
+          "sourceClassificationBasis": "immutable current top-surface family water",
+          "exactCellCount": 63368,
+          "exactColumnCount": 7043,
+          "exactBounds": {
+            "minX": 2076,
+            "maxX": 2281,
+            "minY": 52,
+            "maxY": 71,
+            "minZ": -1062,
+            "maxZ": -588
+          },
+          "exactCoordinateSetSha256": "7dd6b5c95bfacdbfe5b08e35063a2d5c053c2c17d6b39d992715320236334f50",
+          "sourceSparseIntervalRecordCount": 7043,
+          "sourceSparseIntervalManifestSha256": "755694c6347ce934dad5584b22b7692ffb0756074ad1d23db5ce2b349a52cbc6",
+          "proposedTreatmentClass": null,
+          "proposedMaterialClassId": "MAT-SUPPORT-LINER-RETAINING",
+          "proposedCanonicalState": null,
+          "proposalDecision": "HOLD_NULL_HYDROLOGY_AND_GEOTECHNICAL_TREATMENT",
+          "reason": "Current water adjacency is not a groundwater, dewatering, capacity, receiver, or component-treatment model.",
+          "influenceAssumptionId": "INF-D05-GEOTECH-HYDROLOGY-KERNELS-NULL",
+          "maintenanceAccessAssumptionId": "ACC-D05-NONE-INFERRED",
+          "acceptedTreatment": false,
+          "acceptedCellCount": 0,
+          "acceptedCanonicalStateManifestSha256": null,
+          "acceptedOwnerAssignmentCount": 0,
+          "status": "HOLD_NULL_HYDROLOGY_AND_GEOTECHNICAL_TREATMENT",
+          "referenceIndexedOverlayRecordSha256": "c2511302dc8a6ce1be93fc5472a4b7b84261691568545be1491880277c1c5455"
+        },
+        {
+          "id": "D05-TREAT-SUPPORT-STATUS-LAVA-ADJACENT",
+          "sourceSupportStatusFamilyId": "SUPPORT-STATUS-LAVA-ADJACENT",
+          "sourcePrecedence": 6,
+          "sourceClassificationBasis": "immutable current top-surface family lava",
+          "exactCellCount": 0,
+          "exactColumnCount": 0,
+          "exactBounds": null,
+          "exactCoordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+          "sourceSparseIntervalRecordCount": 0,
+          "sourceSparseIntervalManifestSha256": "f1cdeec5de110b4a6b9e0a3e5253a6cc30c3a0f73b339533266829a85085b2bb",
+          "proposedTreatmentClass": null,
+          "proposedMaterialClassId": "MAT-SUPPORT-LINER-RETAINING",
+          "proposedCanonicalState": null,
+          "proposalDecision": "HOLD_NULL_HYDROLOGY_THERMAL_AND_GEOTECHNICAL_TREATMENT",
+          "reason": "A zero-cell current family remains explicitly typed but does not create a reusable treatment default.",
+          "influenceAssumptionId": "INF-D05-GEOTECH-HYDROLOGY-KERNELS-NULL",
+          "maintenanceAccessAssumptionId": "ACC-D05-NONE-INFERRED",
+          "acceptedTreatment": false,
+          "acceptedCellCount": 0,
+          "acceptedCanonicalStateManifestSha256": null,
+          "acceptedOwnerAssignmentCount": 0,
+          "status": "HOLD_NULL_HYDROLOGY_THERMAL_AND_GEOTECHNICAL_TREATMENT",
+          "referenceIndexedOverlayRecordSha256": "5af6aa6bc5f0228a803e97274d59c42cca7b07ec80df1c2292cf3964bb658c3b"
+        },
+        {
+          "id": "D05-TREAT-SUPPORT-STATUS-FROZEN-ADJACENT",
+          "sourceSupportStatusFamilyId": "SUPPORT-STATUS-FROZEN-ADJACENT",
+          "sourcePrecedence": 7,
+          "sourceClassificationBasis": "immutable current top-surface family frozen",
+          "exactCellCount": 384445,
+          "exactColumnCount": 43600,
+          "exactBounds": {
+            "minX": 1948,
+            "maxX": 2368,
+            "minY": 56,
+            "maxY": 71,
+            "minZ": -1068,
+            "maxZ": -588
+          },
+          "exactCoordinateSetSha256": "787f934e22cbc0520319965da39b0ad8324bc3038f915fb112c0efe392e20b0b",
+          "sourceSparseIntervalRecordCount": 43600,
+          "sourceSparseIntervalManifestSha256": "ac7b73ae84e08a41c330a4fa532528bf3f8c9894094b371a86e6bc89afc925ba",
+          "proposedTreatmentClass": null,
+          "proposedMaterialClassId": "MAT-SURFACE-CAP-CRYOSPHERE-LANDSCAPE",
+          "proposedCanonicalState": null,
+          "proposalDecision": "HOLD_NULL_CRYOSPHERE_AND_GEOTECHNICAL_TREATMENT",
+          "reason": "Frozen adjacency does not authorize melt, replacement, retaining, drainage, or future cap state.",
+          "influenceAssumptionId": "INF-D05-GEOTECH-HYDROLOGY-KERNELS-NULL",
+          "maintenanceAccessAssumptionId": "ACC-D05-NONE-INFERRED",
+          "acceptedTreatment": false,
+          "acceptedCellCount": 0,
+          "acceptedCanonicalStateManifestSha256": null,
+          "acceptedOwnerAssignmentCount": 0,
+          "status": "HOLD_NULL_CRYOSPHERE_AND_GEOTECHNICAL_TREATMENT",
+          "referenceIndexedOverlayRecordSha256": "5898035ba32642608221f4d6414e3aff796509cd1c870ba5543dc61450089789"
+        },
+        {
+          "id": "D05-TREAT-SUPPORT-STATUS-SNOW-ADJACENT",
+          "sourceSupportStatusFamilyId": "SUPPORT-STATUS-SNOW-ADJACENT",
+          "sourcePrecedence": 8,
+          "sourceClassificationBasis": "immutable current top-surface family snow",
+          "exactCellCount": 288414,
+          "exactColumnCount": 53911,
+          "exactBounds": {
+            "minX": 1948,
+            "maxX": 2368,
+            "minY": 38,
+            "maxY": 71,
+            "minZ": -1068,
+            "maxZ": -588
+          },
+          "exactCoordinateSetSha256": "873f0c2fce2369990d68c08bfaad4444c622a35fad326ff5224cb41b1b037294",
+          "sourceSparseIntervalRecordCount": 53911,
+          "sourceSparseIntervalManifestSha256": "f275a0b41d2a08ae40b2071d86815e071cc0ce97d1205f20535bd1b1deb85e56",
+          "proposedTreatmentClass": null,
+          "proposedMaterialClassId": "MAT-SURFACE-CAP-CRYOSPHERE-LANDSCAPE",
+          "proposedCanonicalState": null,
+          "proposalDecision": "HOLD_NULL_CRYOSPHERE_AND_GEOTECHNICAL_TREATMENT",
+          "reason": "Snow adjacency does not authorize melt, removal, load, erosion, drainage, or future cap state.",
+          "influenceAssumptionId": "INF-D05-GEOTECH-HYDROLOGY-KERNELS-NULL",
+          "maintenanceAccessAssumptionId": "ACC-D05-NONE-INFERRED",
+          "acceptedTreatment": false,
+          "acceptedCellCount": 0,
+          "acceptedCanonicalStateManifestSha256": null,
+          "acceptedOwnerAssignmentCount": 0,
+          "status": "HOLD_NULL_CRYOSPHERE_AND_GEOTECHNICAL_TREATMENT",
+          "referenceIndexedOverlayRecordSha256": "fd1acc2cd4b28f72fc91017132fbc1504c5f9449aafb3ef4931f7ab2bd55a4ce"
+        },
+        {
+          "id": "D05-TREAT-SUPPORT-STATUS-OTHER-SURFACE",
+          "sourceSupportStatusFamilyId": "SUPPORT-STATUS-OTHER-SURFACE",
+          "sourcePrecedence": 9,
+          "sourceClassificationBasis": "immutable current top-surface family other",
+          "exactCellCount": 17634,
+          "exactColumnCount": 2778,
+          "exactBounds": {
+            "minX": 1948,
+            "maxX": 2365,
+            "minY": 60,
+            "maxY": 71,
+            "minZ": -1068,
+            "maxZ": -588
+          },
+          "exactCoordinateSetSha256": "7c5bd9a1de8b592830936dbbd489d1ef8e0d269473efaab301615b55f1f9bb99",
+          "sourceSparseIntervalRecordCount": 2778,
+          "sourceSparseIntervalManifestSha256": "5cd6a5f981e99eef9de9b0df6bb77507c6ae293638f934dbc51445557846f404",
+          "proposedTreatmentClass": "SUPPORT-ENGINEERED-FILL",
+          "proposedMaterialClassId": "MAT-SUPPORT-LINER-RETAINING",
+          "proposedCanonicalState": null,
+          "proposalDecision": "PROPOSE_TREATMENT_CLASS_STATE_NULL_GEOTECHNICAL_ACCEPTANCE_HOLD",
+          "reason": "The exact non-fluid/non-cryosphere family supports an engineered-fill design branch, but the owner material policy forbids assigning bulk stone to support work without geotechnical acceptance.",
+          "influenceAssumptionId": "INF-D05-GEOTECH-HYDROLOGY-KERNELS-NULL",
+          "maintenanceAccessAssumptionId": "ACC-D05-NONE-INFERRED",
+          "acceptedTreatment": false,
+          "acceptedCellCount": 0,
+          "acceptedCanonicalStateManifestSha256": null,
+          "acceptedOwnerAssignmentCount": 0,
+          "status": "PROPOSE_TREATMENT_CLASS_STATE_NULL_GEOTECHNICAL_ACCEPTANCE_HOLD_NOT_ACCEPTED",
+          "referenceIndexedOverlayRecordSha256": "7224d2611385e3df11341fefebc8a1fd4ab21783f1f21b7f8ec0e8074433f744"
+        }
+      ]
+    },
+    "influenceAndMaintenanceAccessAssumptions": {
+      "influenceAssumptions": [
+        {
+          "id": "INF-D05-DIRECT-NO-IMPLICIT-EXPANSION",
+          "appliesTo": [
+            "bulk structural fill proposal",
+            "exposed surface finish proposal"
+          ],
+          "exactInfluenceCellManifest": null,
+          "rule": "Direct proposal cells create no inferred buffer; groundwater, infiltration, erosion, settlement, surcharge, retaining, and cryosphere influence remain unknown and nonzero-by-default.",
+          "status": "HOLD_EXPERT_FINITE_KERNELS_NOT_AVAILABLE"
+        },
+        {
+          "id": "INF-D05-GEOTECH-HYDROLOGY-KERNELS-NULL",
+          "appliesTo": [
+            "all support-gap families except relic preserve"
+          ],
+          "exactInfluenceCellManifest": null,
+          "rule": "No narrative radius, adjacency count, generic buffer, boundary clip, or empty unknown set may substitute for accepted finite treatment-class kernels and component closure.",
+          "status": "HOLD_EXPERT_FINITE_KERNELS_NOT_AVAILABLE"
+        },
+        {
+          "id": "INF-D05-RELIC-EXPERT-SUPPORT-ACCESS-NULL",
+          "appliesTo": [
+            "SUPPORT-STATUS-RELIC-PRESERVE",
+            "three exact protected cores"
+          ],
+          "exactInfluenceCellManifest": null,
+          "rule": "The 4,890-cell minimum planning exclusion is a default-deny planning control, not an expert structural, groundwater, staging, equipment, or access influence set.",
+          "status": "HOLD_RELIC_EXPERT_INFLUENCE_NOT_AVAILABLE"
+        }
+      ],
+      "maintenanceAndStagingAccess": {
+        "exactMaintenanceAccessCellManifest": null,
+        "exactConstructionStagingCellManifest": null,
+        "exactEquipmentSweptVolumeManifest": null,
+        "exactRestorationCellManifest": null,
+        "widthOrRouteInferencePermitted": false,
+        "relicObservationAccessAuthorized": false,
+        "b09MaintenanceAndRescueSystemAccepted": false,
+        "status": "HOLD_NO_EXACT_MAINTENANCE_STAGING_EQUIPMENT_OR_RESTORATION_SETS"
+      },
+      "acceptedInfluenceCellCount": 0,
+      "acceptedMaintenanceAccessCellCount": 0
+    },
+    "protectedRelics": {
+      "exactProtectedCores": [
+        {
+          "relicKey": "igloo-east",
+          "exactProtectedCore": {
+            "bounds": {
+              "minX": 2304,
+              "minY": 90,
+              "minZ": -1024,
+              "maxX": 2310,
+              "maxY": 94,
+              "maxZ": -1017
+            },
+            "cellCount": 280,
+            "coordinateSetSha256": "45e77afc9f46aa6663c5830f75a26539740a73085ce7d10e27ff14bc2426e326"
+          }
+        },
+        {
+          "relicKey": "igloo-west",
+          "exactProtectedCore": {
+            "bounds": {
+              "minX": 1790,
+              "minY": 62,
+              "minZ": -926,
+              "maxX": 1797,
+              "maxY": 66,
+              "maxZ": -920
+            },
+            "cellCount": 280,
+            "coordinateSetSha256": "9ec8b536822c1f6cb794fd0f7cdd14063daddbb650e6dd6f70ed9b0c15c40d72"
+          }
+        },
+        {
+          "relicKey": "shipwreck",
+          "exactProtectedCore": {
+            "bounds": {
+              "minX": 2072,
+              "minY": 69,
+              "minZ": -661,
+              "maxX": 2099,
+              "maxY": 77,
+              "maxZ": -653
+            },
+            "cellCount": 2268,
+            "coordinateSetSha256": "715792eef84d4c3029a5750b0683adef6e0c5447b918512539c0d96f82cd2ee6"
+          }
+        }
+      ],
+      "minimumPlanningExclusion": {
+        "cellCount": 4890,
+        "coordinateSetSha256": "5dcbcaca22ee39ee9309e1fc5139eb3fbff052bb114ae00d20a723c045eab26b",
+        "excludedFromCandidateFill": true,
+        "acceptedAsExpertInfluenceDistance": false
+      },
+      "expertInfluenceCellManifest": null,
+      "observationAccessAuthorized": false,
+      "acceptedSupportOrAccessCellCount": 0
+    },
+    "preservationAndNoDiversionContract": {
+      "policy": "ZERO_UNDECLARED_CHANGE_AND_DEFAULT_NO_DIVERSION",
+      "currentWaterLavaFrozenSnowCellsDirectlyReplacedByProposal": 0,
+      "noDiversionTechnicallyAccepted": false,
+      "acceptedReceiverCount": 0,
+      "acceptedOutfallCount": 0,
+      "acceptedDischargeExceptionCellCount": 0,
+      "futureComponentAccountingManifest": null,
+      "futureSnowIceLandscapeCapManifest": null,
+      "defaultRule": "UNKNOWN_INFLUENCE_IS_HOLD_NEVER_ZERO; NO_RECEIVER_OR_DISCHARGE_IS_INFERRED"
+    },
+    "conflictAndReservationChecks": [
+      {
+        "id": "CONFLICT-D05-PROTECTED-RELIC-EXCLUSION",
+        "result": "PASS_PLANNING_SUBTRACTION_ONLY",
+        "exactProtectedCoreCount": 3,
+        "exactMinimumPlanningExclusionCellCount": 4890,
+        "withheldCandidateFillCellCount": 1977,
+        "classifiedSupportPreserveCellCount": 363,
+        "proposedDirectConflictCellCount": 0,
+        "qualification": "The exact minimum planning exclusion was subtracted before the direct proposal; expert support/access influence remains null."
+      },
+      {
+        "id": "CONFLICT-D05-B08-RESERVATION",
+        "result": "PASS_PLANNING_SUBTRACTION_ONLY",
+        "exactReservationCellCount": 15096,
+        "withheldCandidateFillCellCount": 11358,
+        "supportGapIntersectionCellCount": 0,
+        "proposedDirectConflictCellCount": 0,
+        "qualification": "B08 reservation cells were withheld; technical lining/support/interface states remain null."
+      },
+      {
+        "id": "CONFLICT-D05-B09-RESERVATION",
+        "result": "PASS_PLANNING_SUBTRACTION_ONLY",
+        "exactReservationCellCount": 7800,
+        "withheldCandidateFillCellCount": 4245,
+        "supportGapIntersectionCellCount": 0,
+        "proposedDirectConflictCellCount": 0,
+        "connectorConstructionAuthorized": false,
+        "qualification": "The 7,800-cell minimum accommodation is withheld planning geometry, not an accepted guideway, support, station, or maintenance system."
+      },
+      {
+        "id": "CONFLICT-D05-D06-EGRESS-AND-PROTECTED-CORES",
+        "result": "PASS_EXACT_DISJOINT_BOUNDS_AND_ZERO_SUPPORT_INTERSECTION",
+        "fm01Bounds": {
+          "minX": 1948,
+          "maxX": 2368,
+          "minY": 72,
+          "maxY": 303,
+          "minZ": -1068,
+          "maxZ": -588
+        },
+        "d06ExternalContinuationCount": 2,
+        "d06FullProtectedCoreCount": 2,
+        "d06FullProtectedCores": [
+          {
+            "id": "EG-A",
+            "bounds": {
+              "minX": 1649,
+              "maxX": 1655,
+              "minY": 42,
+              "maxY": 80,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "cellCount": 1911,
+            "coordinateSetSha256": "a166e3326d919ada46b43e985de9a98b2a0d98465334cf261a6e41df4709b02f"
+          },
+          {
+            "id": "EG-B",
+            "bounds": {
+              "minX": 1849,
+              "maxX": 1855,
+              "minY": 42,
+              "maxY": 71,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "cellCount": 1470,
+            "coordinateSetSha256": "289b8f020397d992d304bec1bae5675c4c79581088b3656b6b03bc4ea0f37ff6"
+          }
+        ],
+        "supportGapIntersectionCellCount": 0,
+        "proposedDirectConflictCellCount": 0,
+        "physicalOpeningAuthorized": false,
+        "qualification": "D06 cores and continuations are west of FM-01 and remain closed; disjointness does not commission D06."
+      },
+      {
+        "id": "CONFLICT-D05-CURRENT-FLUID-CRYOSPHERE-DIRECT-REPLACEMENT",
+        "result": "PASS_ZERO_DIRECT_REPLACEMENT_ONLY",
+        "proposedDirectConflictCellCount": 0,
+        "currentWaterLavaFrozenSnowCellsDirectlyReplacedByProposal": 0,
+        "topSurfaceAdjacencyDiagnostic": {
+          "water": 7046,
+          "lava": 78,
+          "frozen": 44441,
+          "snow": 134645
+        },
+        "noDiversionTechnicallyAccepted": false,
+        "qualification": "Zero direct replacement is not zero influence; all hydrology, component, cryosphere, erosion, and surface-cap effects remain HOLD."
+      }
+    ],
+    "completeSaveDependency": {
+      "status": "HOLD_INCOMPLETE_OR_UNBOUND_SAVE",
+      "regionFileCount": 51,
+      "entityFileCount": 0,
+      "poiFileCount": 0,
+      "levelDatPresent": false,
+      "captureManifestValid": false,
+      "completeSaveSha256": null,
+      "blockers": [
+        {
+          "id": "CS03-UNAMBIGUOUS-WORLD-ROOT",
+          "detail": "The supplied directory is not the direct unambiguous world root; nested candidates: 0."
+        },
+        {
+          "id": "CS04-ENTITIES-MCA-SET",
+          "detail": "entities/ is absent, non-directory, or a symlink."
+        },
+        {
+          "id": "CS04-POI-MCA-SET",
+          "detail": "poi/ is absent, non-directory, or a symlink."
+        },
+        {
+          "id": "CS05-LEVEL-DAT",
+          "detail": "level.dat is absent, empty, non-regular, or a symlink."
+        },
+        {
+          "id": "CS09-CAPTURE-MANIFEST",
+          "detail": "Capture manifest is absent."
+        },
+        {
+          "id": "CS10-SAME-MOMENT-CAPTURE-PROTOCOL",
+          "detail": "Capture manifest is absent."
+        },
+        {
+          "id": "CS11-MANIFEST-INVENTORY-EXACT",
+          "detail": "1 inventory difference(s) found."
+        },
+        {
+          "id": "CS12-COMPLETE-SAVE-IDENTITY",
+          "detail": "A complete saved-world identity cannot be sealed while any preceding check is HOLD."
+        }
+      ],
+      "currentResult": "HOLD_NO_COMPLETE_SAME_MOMENT_SAVED_WORLD_IDENTITY"
+    },
+    "technicalAmbiguityDisposition": {
+      "removedByThisArtifact": [
+        "Every one of the 14,768,553 exact direct proposal cells is bound to the existing bulk or exposed-finish sparse material proposal and owner-policy material class.",
+        "Every one of the 754,224 exact support-gap cells has one reference-indexed treatment/material record tied to its coordinate and sparse-interval hashes.",
+        "Exactly 17,997 support cells have a proposed treatment class: 363 relic-preserve retain-void cells and 17,634 other-surface engineered-fill candidate cells.",
+        "Exactly 736,227 water/frozen/snow-classified support cells retain null treatment; the zero-cell lava family is also explicit and cannot become a default.",
+        "No support cell receives a canonical material state; bulk stone is not silently reused for support, liner, retaining, cryosphere, or landscape work.",
+        "D06 egress/full cores are exactly disjoint, and B08/B09/relic planning reservations remain explicitly subtracted from the direct proposal."
+      ],
+      "genuinelyRequiresCompleteSave": [
+        "One same-moment world root containing region/, entities/, poi/, level.dat, and a valid exact capture manifest.",
+        "Entity, POI, world-metadata, and full-state source guards for every future support, access, staging, and construction record."
+      ],
+      "genuinelyRequiresEngineeringAcceptance": [
+        "Geotechnical treatment, canonical support/liner/retaining states, load/stability/foundation criteria, and exact influence cells for all support families.",
+        "Groundwater, infiltration, dewatering, sump, erosion, drainage, discharge, receiver, snow/ice, and component-accounting rules for the 736,227 hydrology/cryosphere-adjacent support cells and all exposed finishes.",
+        "Expert structural, groundwater, staging, equipment-sweep, maintenance, and observation-access influence cells for the three protected relic records.",
+        "Exact B09 guideway/station/support/maintenance/rescue design and accepted D06 mechanisms/interfaces.",
+        "Exact construction staging, maintenance access, equipment-swept-volume, restoration, owner assignments, and directional interface contracts.",
+        "Independent technical acceptance and a separate sole-owner acceptance of one immutable complete technical identity."
+      ]
+    },
+    "acceptanceMatrix": [
+      {
+        "id": "D05-SM-01-SOURCE-BINDINGS",
+        "result": "PASS",
+        "scope": "source identity",
+        "evidence": "All eleven direct inputs are hash and byte-count bound.",
+        "passRule": "Every direct input exists and matches its binding.",
+        "currentDisposition": null
+      },
+      {
+        "id": "D05-SM-02-OWNER-PLANNING-POLICY",
+        "result": "PASS",
+        "scope": "planning policy only",
+        "evidence": "The owner accepted D05 planning policy while passing zero technical HOLDs.",
+        "passRule": "Planning acceptance remains distinct from technical/material acceptance.",
+        "currentDisposition": null
+      },
+      {
+        "id": "D05-SM-03-FM01-DIRECT-PROPOSAL-IDENTITY",
+        "result": "PASS",
+        "scope": "exact proposal accounting",
+        "evidence": "The 14,768,553-cell direct proposal and its exact source sparse identity reproduce.",
+        "passRule": "The bulk and exposed proposal counts exactly partition the bound candidate cells.",
+        "currentDisposition": null
+      },
+      {
+        "id": "D05-SM-04-BULK-MATERIAL-PROPOSAL",
+        "result": "PASS_PROPOSAL_ONLY",
+        "scope": "direct proposal material",
+        "evidence": "14,580,291 bulk cells retain the exact proposed minecraft:stone sparse family.",
+        "passRule": "Source sparse hash, counts, treatment class, and owner-policy class reproduce; acceptance remains zero.",
+        "currentDisposition": null
+      },
+      {
+        "id": "D05-SM-05-EXPOSED-FINISH-PROPOSAL",
+        "result": "PASS_PROPOSAL_ONLY",
+        "scope": "direct proposal material",
+        "evidence": "188,262 exposed cells retain 77,395 smooth-stone and 110,867 polished-diorite proposals.",
+        "passRule": "The Y=130 rule and exact source sparse manifest reproduce; cryosphere/landscape cap stays null.",
+        "currentDisposition": null
+      },
+      {
+        "id": "D05-SM-06-SUPPORT-CLASSIFICATION",
+        "result": "PASS_CLASSIFICATION_ONLY",
+        "scope": "support accounting",
+        "evidence": "All 754,224 support-gap cells are uniquely classified with zero gap or overlap.",
+        "passRule": "The nine exact family counts/hashes reproduce the bound support-gap identity.",
+        "currentDisposition": null
+      },
+      {
+        "id": "D05-SM-07-SUPPORT-OVERLAY-CONTRACT",
+        "result": "PASS_PROPOSAL_ONLY",
+        "scope": "treatment overlay",
+        "evidence": "Nine reference-indexed records assign an explicit proposed class or null HOLD to every exact family.",
+        "passRule": "Each overlay binds the exact coordinate/sparse hashes, count, material class, influence, and access assumptions.",
+        "currentDisposition": null
+      },
+      {
+        "id": "D05-SM-08-RESERVATION-CONFLICTS",
+        "result": "PASS_PLANNING_ONLY",
+        "scope": "relic/B08/B09/D06 conflicts",
+        "evidence": "Direct proposal conflict count is zero by exact subtraction or exact disjoint bounds; support intersections are explicit.",
+        "passRule": "All withheld counts and disjointness checks reproduce without creating technical clearance.",
+        "currentDisposition": null
+      },
+      {
+        "id": "D05-SM-09-ZERO-DIRECT-FLUID-CRYOSPHERE-REPLACEMENT",
+        "result": "PASS_BOUNDED_ONLY",
+        "scope": "preservation control",
+        "evidence": "The direct proposal replaces zero current water/lava/frozen/snow cells.",
+        "passRule": "Zero direct replacement reproduces and is never represented as no-influence acceptance.",
+        "currentDisposition": null
+      },
+      {
+        "id": "D05-SM-10-HYDROLOGY-CRYOSPHERE-SUPPORT",
+        "result": "HOLD",
+        "scope": "736,227 support cells",
+        "evidence": "Water, frozen, snow, and zero-cell lava families retain null treatment and state.",
+        "passRule": "Accept exact treatment, future components, receiver, drainage, erosion, snow/ice, and failure criteria.",
+        "currentDisposition": "HOLD_HYDROLOGY_CRYOSPHERE_TREATMENTS_NULL"
+      },
+      {
+        "id": "D05-SM-11-OTHER-SURFACE-SUPPORT-STATE",
+        "result": "HOLD",
+        "scope": "17,634 support cells",
+        "evidence": "SUPPORT-ENGINEERED-FILL is proposed, but canonical state, support criteria, and ownership are null.",
+        "passRule": "Accept exact geotechnical treatment and canonical state without defaulting to bulk stone.",
+        "currentDisposition": "HOLD_SUPPORT_ENGINEERED_FILL_STATE_NULL"
+      },
+      {
+        "id": "D05-SM-12-RELIC-SUPPORT-ACCESS",
+        "result": "HOLD",
+        "scope": "363 support cells and expert influence",
+        "evidence": "Retain-void is proposed for the exact relic intersection; complete current states and expert access/influence are absent.",
+        "passRule": "Bind complete-save states and accept exact structural, groundwater, access, staging, and equipment influence.",
+        "currentDisposition": "HOLD_RELIC_EXPERT_SUPPORT_ACCESS_INFLUENCE_NULL"
+      },
+      {
+        "id": "D05-SM-13-EXPOSED-CAP-CRYOSPHERE-LANDSCAPE",
+        "result": "HOLD",
+        "scope": "future exposed surfaces",
+        "evidence": "Architectural finish is exact as a proposal, but future snow/ice/soil/drainage/erosion cap state is null.",
+        "passRule": "Accept complete exposed-cap and cryosphere/landscape behavior against exact component evidence.",
+        "currentDisposition": "HOLD_FUTURE_SURFACE_CAP_AND_CRYOSPHERE_STATE_NULL"
+      },
+      {
+        "id": "D05-SM-14-INFLUENCE-KERNELS",
+        "result": "HOLD",
+        "scope": "physics influence",
+        "evidence": "Groundwater, infiltration, dewatering, erosion, settlement, surcharge, retaining, and relic kernels are null.",
+        "passRule": "Accept exact finite offsets, seeds, closure rules, boundaries, owners, and tests.",
+        "currentDisposition": "HOLD_UNKNOWN_INFLUENCE_NOT_ZERO"
+      },
+      {
+        "id": "D05-SM-15-MAINTENANCE-STAGING-ACCESS",
+        "result": "HOLD",
+        "scope": "temporary and operational access",
+        "evidence": "Maintenance, construction staging, equipment sweep, and restoration manifests are null.",
+        "passRule": "Compile exact cells without width, route, or bounding-box inference.",
+        "currentDisposition": "HOLD_NO_EXACT_MAINTENANCE_STAGING_EQUIPMENT_OR_RESTORATION_SETS"
+      },
+      {
+        "id": "D05-SM-16-OWNERS-INTERFACES",
+        "result": "HOLD",
+        "scope": "canonical authority",
+        "evidence": "Owner classes are proposal labels; accepted exact assignments and interface contracts remain zero.",
+        "passRule": "Assign one owner per cell and one exact directional contract per seam/receiver.",
+        "currentDisposition": "HOLD_OWNER_CLASSES_ARE_NOT_CELL_ASSIGNMENTS"
+      },
+      {
+        "id": "D05-SM-17-COMPLETE-SAVE",
+        "result": "HOLD",
+        "scope": "source completeness",
+        "evidence": "entities/, poi/, level.dat, capture manifest, and complete-save identity are absent.",
+        "passRule": "Provide and bind one same-moment complete saved-world package.",
+        "currentDisposition": "HOLD_NO_COMPLETE_SAME_MOMENT_SAVED_WORLD_IDENTITY"
+      },
+      {
+        "id": "D05-SM-18-TECHNICAL-MATERIAL-ACCEPTANCE",
+        "result": "HOLD",
+        "scope": "acceptance identity",
+        "evidence": "Proposed states/treatments are exact where evidence permits, but accepted treatment/material cell count is zero.",
+        "passRule": "All technical rows pass, independent reviewers accept them, and the sole owner separately accepts the full identity.",
+        "currentDisposition": "HOLD_NO_TECHNICAL_OR_COMPLETE_IDENTITY_OWNER_ACCEPTANCE"
+      },
+      {
+        "id": "D05-SM-19-D05-G02-CLOSURE",
+        "result": "HOLD",
+        "scope": "release gate",
+        "evidence": "D05 and R00 G02 remain unresolved with zero accepted future/construction cells.",
+        "passRule": "D05-SM-10 through D05-SM-18 all pass against one immutable identity.",
+        "currentDisposition": "HOLD_D05_AND_R00_G02"
+      }
+    ]
+  },
+  "supportMaterialDesignPayloadSha256": "0920fa7e9f3c3be29c26eff087ea01ea8632935fd7be0b9e845351845afebc98",
+  "summary": {
+    "acceptanceCriterionCount": 19,
+    "passCount": 9,
+    "holdCount": 10,
+    "directProposalCellCount": 14768553,
+    "bulkStructuralFillProposalCellCount": 14580291,
+    "exposedFinishProposalCellCount": 188262,
+    "smoothStoneProposalCellCount": 77395,
+    "polishedDioriteProposalCellCount": 110867,
+    "supportGapCellCount": 754224,
+    "supportStatusFamilyCount": 9,
+    "supportTreatmentClassProposedCellCount": 17997,
+    "supportTreatmentClassNullCellCount": 736227,
+    "supportCanonicalStateProposedCellCount": 0,
+    "hydrologyCryosphereAdjacentSupportCellCount": 736227,
+    "relicPreserveSupportCellCount": 363,
+    "otherSurfaceSupportCellCount": 17634,
+    "proposedDirectConflictCellCount": 0,
+    "acceptedTreatmentCellCount": 0,
+    "acceptedMaterialStateCellCount": 0,
+    "acceptedInfluenceCellCount": 0,
+    "acceptedMaintenanceAccessCellCount": 0,
+    "acceptedFutureCellCount": 0,
+    "acceptedConstructionCellCount": 0,
+    "operationCellCount": 0,
+    "materialCellCount": 0,
+    "acceptedOwnerAssignmentCount": 0,
+    "acceptedInterfaceContractCount": 0,
+    "completeSavedWorldAccepted": false,
+    "d05Resolved": false,
+    "r00G02Passed": false,
+    "realWorldEngineeringOrComplianceClaimed": false
+  },
+  "safetyBoundary": {
+    "offlineOnly": true,
+    "liveCallsPerformed": [],
+    "databasesOpened": [],
+    "operations": [],
+    "operationCellCount": 0,
+    "materialCells": [],
+    "materialCellCount": 0,
+    "acceptedFutureCells": [],
+    "acceptedFutureCellCount": 0,
+    "acceptedConstructionCells": [],
+    "acceptedConstructionCellCount": 0,
+    "receiverInvented": false,
+    "outfallInvented": false,
+    "dischargeInvented": false,
+    "hydrologyAccepted": false,
+    "geotechnicalAccepted": false,
+    "constructionAuthorized": false,
+    "physicalBuildAuthorized": false,
+    "worldEditAuthorized": false
+  }
+}

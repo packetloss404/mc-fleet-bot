@@ -1,0 +1,619 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-b09-funicular-technical-system-proposal",
+  "generatedAtUtc": "2026-08-05T02:40:00Z",
+  "status": "PARTIAL_PASS_EXACT_B09_TECHNICAL_RESERVATION_PROPOSAL_MECHANISMS_AND_ACCEPTANCE_HOLD",
+  "purpose": "Remove B09 geometry ambiguity with exact bounded proposal reservations while preserving complete-save, hydrology, geotechnical, mechanism, life-safety, expert, owner, and interface acceptance gates.",
+  "sourceBindings": {
+    "autonomousSelections": {
+      "path": "masterplans/05-combined-zones/phase1-autonomous-design-selections.json",
+      "bytes": 16095,
+      "sha256": "21502bc244a38f89e402c3a6e0916384171475deb1a313e14642f67849df69cb",
+      "role": "selected planning authority; technical acceptance remains false"
+    },
+    "connectorGeometry": {
+      "path": "masterplans/05-combined-zones/phase1-connector-geometry.json",
+      "bytes": 458505,
+      "sha256": "9a9521422075d499326b761a8d85bbfcfea83ec582dbc29538fae0600d8bc012",
+      "role": "B08 exact geometry and original B09 endpoint evidence"
+    },
+    "d05FutureMountain": {
+      "path": "masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json",
+      "bytes": 47414,
+      "sha256": "b4f3b92e644dd359f66ac7512aa55096bae247c19acbfa8e89526b19c1b06331",
+      "role": "selected FM-01 centerline and minimum-accommodation identity"
+    },
+    "d05FutureState": {
+      "path": "masterplans/05-combined-zones/phase1-d05-future-state.json",
+      "bytes": 39721,
+      "sha256": "7a00d74a14ffa2c35610d5291a98cd417153bff50749f9a4de675908662c2bec",
+      "role": "current D05 future/support withholding evidence"
+    },
+    "d06Mechanisms": {
+      "path": "masterplans/05-combined-zones/phase1-d06-mechanisms.json",
+      "bytes": 179829,
+      "sha256": "1c90d284ab16d443daf4b8a3e00b4ae12e23c3a47f1378ae328796ef67693030",
+      "role": "current D06 egress/mechanism reservation evidence"
+    },
+    "protectedRelicClearance": {
+      "path": "masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
+      "bytes": 30460,
+      "sha256": "77a7b94653d745e378a7ce017d6a43a23d9bbd0fe99288b4b50f23c54d793229",
+      "role": "exact generated-start protected-core evidence"
+    },
+    "phase0Survey": {
+      "path": "masterplans/05-combined-zones/phase0-survey-evidence.json",
+      "bytes": 58530,
+      "sha256": "c0730cc039c756ac6331b9aed8ecb89af38426e19d588ccdd56ec17cd8e1309e",
+      "role": "observed generated-structure-start inventory"
+    },
+    "completeSaveAudit": {
+      "path": "masterplans/05-combined-zones/phase1-complete-save-intake-audit.json",
+      "bytes": 27091,
+      "sha256": "2ce69f861cf979275c3972d3297ed25e9301c5352b48ed056a81a53ff40039cf",
+      "role": "current complete-save evidence boundary"
+    }
+  },
+  "authorityBoundary": {
+    "selectedPlanningAlternative": "FM-01-COMPACT-EAST-FACE",
+    "delegatedPlanningSelectionPreserved": true,
+    "technicalAcceptanceClaimed": false,
+    "ownerAcceptanceClaimed": false,
+    "interfaceAcceptanceClaimed": false,
+    "mechanismAcceptanceClaimed": false,
+    "constructionOrOperationAuthorityClaimed": false
+  },
+  "deterministicGeometryContract": {
+    "coordinateOrder": "numeric x, then y, then z",
+    "coordinateSetPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+    "centerlinePreamble": "combined-zones-ordered-centerline-v1\\n",
+    "selectedModelIdentitySha256": "735b69b38c5c2ea840388039b5beb957671fe3e243ec7943c440649edcff36a6",
+    "selectedModelFormulaSha256": "cd8f6d396f477407263aee4984a50766dff0298a046bb1f348a2c6d139cf6cd6",
+    "orderedCenterlineSha256": "e8905742a77148d13d799362da7d65e9b02bcf96455d580fbee27367b2d24221",
+    "centerlinePointCount": 561,
+    "horizontalStepCount": 560,
+    "curveIndices": [
+      240,
+      260,
+      500
+    ],
+    "throat": {
+      "x": 2288,
+      "y": 130,
+      "z": -748,
+      "climbZ": -768
+    },
+    "stationSeedPointCountPerEnd": 9,
+    "minimumPlanningAccommodation": {
+      "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+      "derivation": "two-cell rail/headroom seed plus exact one-cell Chebyshev shell; not an engineering, structural, evacuation, or vehicle-clearance buffer",
+      "cellCount": 7800,
+      "bounds": {
+        "minX": 2047,
+        "maxX": 2289,
+        "minY": 129,
+        "maxY": 306,
+        "minZ": -829,
+        "maxZ": -747
+      },
+      "coordinateSetSha256": "e9e2e116f363e999151a41e4fee2ef32d2f96c1184f6432128ff31e8d9a118ca",
+      "proposalAccepted": false,
+      "acceptedCellCount": 0
+    },
+    "technicalReservationManifestSha256": "ccaa3493bd0da9dfbec88d010232f760ff37c62a87ae4c1de0f512f519882d41"
+  },
+  "exactTechnicalReservationProposals": {
+    "status": "PASS_EXACT_PROPOSAL_ONLY_TECHNICAL_ACCEPTANCE_HOLD",
+    "proposalLayerCount": 9,
+    "proposalLayers": {
+      "lowerStationEnvelope": {
+        "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+        "derivation": "Chebyshev-one shell around rail/headroom seeds for selected centerline indices 0..8.",
+        "cellCount": 132,
+        "bounds": {
+          "minX": 2047,
+          "maxX": 2057,
+          "minY": 129,
+          "maxY": 132,
+          "minZ": -749,
+          "maxZ": -747
+        },
+        "coordinateSetSha256": "d13426cafb5f9cb53de702653532111ef18588af1c28c0f3d8e7cb2956e0801b",
+        "proposalAccepted": false,
+        "acceptedCellCount": 0,
+        "proposalRole": "LOWER_STATION_AND_B08_TRANSFER_ENVELOPE"
+      },
+      "summitStationEnvelope": {
+        "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+        "derivation": "Chebyshev-one shell around rail/headroom seeds for selected centerline indices 552..560.",
+        "cellCount": 180,
+        "bounds": {
+          "minX": 2047,
+          "maxX": 2049,
+          "minY": 295,
+          "maxY": 306,
+          "minZ": -829,
+          "maxZ": -819
+        },
+        "coordinateSetSha256": "99d28f072ae6055d394a9690c125b4e0de58b09192cc3fd166302060f3bb9599",
+        "proposalAccepted": false,
+        "acceptedCellCount": 0,
+        "proposalRole": "SUMMIT_STATION_AND_Z11_TRANSFER_ENVELOPE"
+      },
+      "combinedStationEnvelope": {
+        "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+        "derivation": "Exact union of the disjoint lower and summit station proposal envelopes.",
+        "cellCount": 312,
+        "bounds": {
+          "minX": 2047,
+          "maxX": 2057,
+          "minY": 129,
+          "maxY": 306,
+          "minZ": -829,
+          "maxZ": -747
+        },
+        "coordinateSetSha256": "0b6e428af369217693c25da890328d0abfe06489443587822cc7fb520cf16f3f",
+        "proposalAccepted": false,
+        "acceptedCellCount": 0,
+        "proposalRole": "STATIONS"
+      },
+      "runningGuidewayAndSupportEnvelope": {
+        "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+        "derivation": "Exact minimum planning accommodation after subtracting the two proposed station envelopes.",
+        "cellCount": 7488,
+        "bounds": {
+          "minX": 2047,
+          "maxX": 2289,
+          "minY": 129,
+          "maxY": 297,
+          "minZ": -820,
+          "maxZ": -747
+        },
+        "coordinateSetSha256": "d9de4b923a8002dbd302116f4c928b6794d824ea616811d0ab2a3988ad32bb1f",
+        "proposalAccepted": false,
+        "acceptedCellCount": 0,
+        "proposalRole": "GUIDEWAY_SUPPORT_AND_SEPARATION_SHELL"
+      },
+      "railDatumReservation": {
+        "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+        "derivation": "One exact rail-datum cell for every selected ordered centerline point.",
+        "cellCount": 561,
+        "bounds": {
+          "minX": 2048,
+          "maxX": 2288,
+          "minY": 130,
+          "maxY": 304,
+          "minZ": -828,
+          "maxZ": -748
+        },
+        "coordinateSetSha256": "91b5174e01bde419175c68997f199f01b04ee38cbde13304ab4dd9a0d0d979b8",
+        "proposalAccepted": false,
+        "acceptedCellCount": 0,
+        "proposalRole": "GUIDEWAY_RAIL_DATUM"
+      },
+      "maintenanceAndEgressReservation": {
+        "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+        "derivation": "Two-cell-high one-block side reservations on both perpendicular sides of every local cardinal tangent; curve cells use the union of entering and leaving tangents.",
+        "cellCount": 2250,
+        "bounds": {
+          "minX": 2047,
+          "maxX": 2289,
+          "minY": 130,
+          "maxY": 305,
+          "minZ": -828,
+          "maxZ": -747
+        },
+        "coordinateSetSha256": "352ad477cd96fc6ff9d460847c1e756d448bda4c899e77ade258d4dc63a5a4d5",
+        "proposalAccepted": false,
+        "acceptedCellCount": 0,
+        "proposalRole": "MAINTENANCE_AND_UNCOMMISSIONED_EGRESS"
+      },
+      "rescueTransferReservation": {
+        "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+        "derivation": "Exact union of both station envelopes, reserved only as candidate rescue-transfer space; no rescue route or capacity is credited.",
+        "cellCount": 312,
+        "bounds": {
+          "minX": 2047,
+          "maxX": 2057,
+          "minY": 129,
+          "maxY": 306,
+          "minZ": -829,
+          "maxZ": -747
+        },
+        "coordinateSetSha256": "0b6e428af369217693c25da890328d0abfe06489443587822cc7fb520cf16f3f",
+        "proposalAccepted": false,
+        "acceptedCellCount": 0,
+        "proposalRole": "ENDPOINT_RESCUE_TRANSFER"
+      },
+      "powerAndControlCarrierReservation": {
+        "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+        "derivation": "One overhead carrier cell at rail Y+2 for each selected centerline point.",
+        "cellCount": 561,
+        "bounds": {
+          "minX": 2048,
+          "maxX": 2288,
+          "minY": 132,
+          "maxY": 306,
+          "minZ": -828,
+          "maxZ": -748
+        },
+        "coordinateSetSha256": "ae9f694b971ce807fd8138d961950ac3838aa4d0f8f07f0c2e8df79bc0e7468c",
+        "proposalAccepted": false,
+        "acceptedCellCount": 0,
+        "proposalRole": "POWER_AND_CONTROL_CARRIER_ONLY"
+      },
+      "drainageCarrierReservation": {
+        "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+        "derivation": "One under-rail carrier cell at rail Y-1 for each selected centerline point.",
+        "cellCount": 561,
+        "bounds": {
+          "minX": 2048,
+          "maxX": 2288,
+          "minY": 129,
+          "maxY": 303,
+          "minZ": -828,
+          "maxZ": -748
+        },
+        "coordinateSetSha256": "81eaaf855e832281af1cf8eca2f884f2f67795ff9478d9ae38ca7e136fdd9255",
+        "proposalAccepted": false,
+        "acceptedCellCount": 0,
+        "proposalRole": "DRAINAGE_CARRIER_ONLY_NO_FLOW_OR_RECEIVER"
+      }
+    },
+    "proposalEnvelopeUniqueCellCount": 7800,
+    "acceptedTechnicalCellCount": 0,
+    "acceptedOwnerAssignmentCount": 0
+  },
+  "exactSealedInterfaceProposals": {
+    "status": "PASS_EXACT_SEALED_PROPOSAL_ONLY_INTERFACE_ACCEPTANCE_HOLD",
+    "exactInterfaceCount": 2,
+    "interfaces": [
+      {
+        "interfaceId": "IF-B08-B09-PORTAL",
+        "fromScope": "B08-SERVICE-TUNNEL",
+        "toScope": "B09-FUNICULAR",
+        "direction": "B08_TO_B09",
+        "defaultDeny": true,
+        "wildcard": false,
+        "lastWriterWins": false,
+        "sealedByDefault": true,
+        "exactCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact intersection of the bound B08 interaction reservation and selected B09 minimum accommodation.",
+          "cellCount": 36,
+          "bounds": {
+            "minX": 2047,
+            "maxX": 2049,
+            "minY": 129,
+            "maxY": 132,
+            "minZ": -749,
+            "maxZ": -747
+          },
+          "coordinateSetSha256": "b28a975b44296fc43739a8af0743066ca58a2c33a99e13da6c2edf89142b33e3",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0
+        },
+        "interfaceAccepted": false,
+        "acceptedInterfaceCellCount": 0
+      },
+      {
+        "interfaceId": "IF-B09-Z11-SUMMIT",
+        "fromScope": "B09-FUNICULAR",
+        "toScope": "Z11-SUMMIT",
+        "direction": "B09_TO_Z11",
+        "defaultDeny": true,
+        "wildcard": false,
+        "lastWriterWins": false,
+        "sealedByDefault": true,
+        "exactCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Twelve-cell exterior cap one block north of the final summit-interface rail/headroom seed.",
+          "cellCount": 12,
+          "bounds": {
+            "minX": 2047,
+            "maxX": 2049,
+            "minY": 303,
+            "maxY": 306,
+            "minZ": -829,
+            "maxZ": -829
+          },
+          "coordinateSetSha256": "d1d52260f2285abff8bbb97c56a1bd738eb78d6a54abcec6567e8d0b55260093",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0
+        },
+        "interfaceAccepted": false,
+        "acceptedInterfaceCellCount": 0
+      }
+    ],
+    "acceptedInterfaceCount": 0,
+    "acceptedInterfaceCellCount": 0
+  },
+  "conflictAudit": {
+    "b08": {
+      "status": "PASS_EXACT_NONZERO_INTERFACE_DEFAULT_DENY",
+      "sourceReservationCellCount": 15096,
+      "exactIntersection": {
+        "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+        "derivation": "Recomputed exact B08/B09 reservation intersection.",
+        "cellCount": 36,
+        "bounds": {
+          "minX": 2047,
+          "maxX": 2049,
+          "minY": 129,
+          "maxY": 132,
+          "minZ": -749,
+          "maxZ": -747
+        },
+        "coordinateSetSha256": "b28a975b44296fc43739a8af0743066ca58a2c33a99e13da6c2edf89142b33e3",
+        "proposalAccepted": false,
+        "acceptedCellCount": 0
+      },
+      "proposedRoleIntersectionCounts": {
+        "combinedStationEnvelope": 36,
+        "drainageCarrierReservation": 2,
+        "lowerStationEnvelope": 36,
+        "maintenanceAndEgressReservation": 8,
+        "powerAndControlCarrierReservation": 2,
+        "railDatumReservation": 2,
+        "rescueTransferReservation": 36,
+        "runningGuidewayAndSupportEnvelope": 0,
+        "summitStationEnvelope": 0
+      },
+      "resolution": "The exact 36-cell overlap is retained as a sealed B08-to-B09 proposal interface; neither scope receives accepted ownership or opening authority."
+    },
+    "d05MountainAndSupport": {
+      "status": "PASS_EXACT_WITHHOLDING_AND_ZERO_SUPPORT_GAP_INTERSECTION_TECHNICAL_HOLD",
+      "rawFutureMountainFillConflictCellCount": 4245,
+      "selectedFutureMountainCandidateConflictAfterWithholdingCellCount": 0,
+      "supportGapIntersectionCellCount": 0,
+      "minimumAccommodationCurrentCensus": {
+        "status": "PASS_EXACT_IMMUTABLE_SNAPSHOT_CENSUS_NOT_A_SOURCE_GUARD",
+        "cellCount": 7800,
+        "bounds": {
+          "minX": 2047,
+          "maxX": 2289,
+          "minY": 129,
+          "maxY": 306,
+          "minZ": -829,
+          "maxZ": -747
+        },
+        "coordinateSetSha256": "e9e2e116f363e999151a41e4fee2ef32d2f96c1184f6432128ff31e8d9a118ca",
+        "blockStateSetSha256": "f76fcf522b393e6b3dbf70d42e54d81c3fed4c5c7a2f50fc44f29f3213c6b82a",
+        "airCellCount": 7800,
+        "presentCellCount": 0,
+        "hydrologyAndCryosphereCellCounts": {
+          "water": 0,
+          "lava": 0,
+          "frozen": 0,
+          "snow": 0
+        },
+        "materialCounts": {
+          "minecraft:air": 7800
+        }
+      },
+      "qualification": "The exact planning reservation removes the known raw fill conflict. It does not provide liner, foundation, load-transfer, hydrology, or construction-influence acceptance."
+    },
+    "d06Egress": {
+      "status": "PASS_EXACT_CURRENT_RESERVATIONS_DISJOINT_RECEIVER_HOLD",
+      "comparedReservationCount": 3,
+      "exactIntersection": {
+        "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+        "derivation": "Bounds-disjoint proof against EG-A, EG-B, and B07 exact interaction reservations.",
+        "cellCount": 0,
+        "bounds": null,
+        "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+        "proposalAccepted": false,
+        "acceptedCellCount": 0
+      },
+      "safeExteriorOrProtectedReceiverAccepted": false
+    },
+    "protectedRelicCores": {
+      "status": "PASS_EXACT_GENERATED_START_CORES_DISJOINT_EXPERT_INFLUENCE_HOLD",
+      "comparedCoreCount": 3,
+      "comparedCoreCellCount": 2828,
+      "exactIntersection": {
+        "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+        "derivation": "Intersection with all three frozen generated-start protected cores.",
+        "cellCount": 0,
+        "bounds": null,
+        "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+        "proposalAccepted": false,
+        "acceptedCellCount": 0
+      },
+      "positiveMarginAndExpertInfluenceAccepted": false
+    },
+    "observedGeneratedStarts": {
+      "status": "PASS_OBSERVED_START_BOUNDS_DISJOINT_COMPLETE_SAVE_ALL_START_HOLD",
+      "comparedStartRecordCount": 114,
+      "overlappingStartRecordCount": 0,
+      "overlappingStartRecords": [],
+      "completeSaveAllStartCensusAccepted": false,
+      "qualification": "The observed Phase 0 starts are clear. The incomplete save cannot prove that the inventory is a final all-start/entity/POI source guard."
+    }
+  },
+  "nullHeldSystemsAndInterfaces": [
+    {
+      "id": "B09-NULL-01-LINER-FOUNDATION-AND-GROUND-SUPPORT",
+      "kind": "TECHNICAL_STATE_AND_INFLUENCE_SET",
+      "exactCellSet": null,
+      "status": "HOLD_GEOTECHNICAL_AND_COMPLETE_SAVE",
+      "requirement": "Accepted loads, liner/foundation states, deformation limits, construction influence, and complete-save source guards."
+    },
+    {
+      "id": "B09-NULL-02-DRIVE-BRAKE-VEHICLE-AND-BARRIER-MECHANISMS",
+      "kind": "MECHANISM_CELL_SET",
+      "exactCellSet": null,
+      "status": "HOLD_MECHANISM_ENGINEERING_AND_EXPERT_ACCEPTANCE",
+      "requirement": "Drive, cable/haul, braking, overspeed, vehicle, platform-barrier, failure-state, and commissioning designs."
+    },
+    {
+      "id": "B09-NULL-03-INTERMEDIATE-REFUGE-PASSING-AND-RESCUE-ROUTE",
+      "kind": "LIFE_SAFETY_AND_RESCUE_CELL_SET",
+      "exactCellSet": null,
+      "status": "HOLD_LIFE_SAFETY_EXPERT_ACCEPTANCE",
+      "requirement": "Passing/refuge spacing, protected route, assisted rescue, accessibility, smoke separation, and exterior discharge acceptance."
+    },
+    {
+      "id": "B09-NULL-04-POWER-FEED-CIRCUITS-EQUIPMENT-AND-CONTROL-LOGIC",
+      "kind": "POWER_CONTROL_MECHANISM_AND_INTERFACE_SET",
+      "exactCellSet": null,
+      "status": "HOLD_MECHANISM_AND_ELECTRICAL_ACCEPTANCE",
+      "requirement": "Normal/emergency feeds, independent circuits, equipment rooms, controls, fire mode, and failure behavior."
+    },
+    {
+      "id": "B09-NULL-05-SUMPS-FLOW-PATHS-OUTFALL-AND-RECEIVER",
+      "kind": "HYDROLOGY_AND_DIRECTIONAL_INTERFACE_SET",
+      "exactCellSet": null,
+      "status": "HOLD_HYDROLOGY_GEOTECHNICAL_AND_RECEIVER_ACCEPTANCE",
+      "requirement": "Inflow, groundwater, snowmelt, erosion, sump capacity, pumped/gravity flow, discharge state, outfall, and receiver contract."
+    },
+    {
+      "id": "B09-NULL-06-D05-GUIDEWAY-MOUNTAIN-SUPPORT-INTERFACE",
+      "kind": "DIRECTIONAL_INTERFACE_AND_TRANSITION_STATE_SET",
+      "exactCellSet": null,
+      "status": "HOLD_GEOTECHNICAL_HYDROLOGY_AND_OWNER_ACCEPTANCE",
+      "requirement": "Exact exterior liner/support boundary, transition states, load transfer, water control, construction influence, and directional owner acceptance."
+    },
+    {
+      "id": "B09-NULL-07-D06-PROTECTED-EGRESS-RECEIVER",
+      "kind": "DIRECTIONAL_LIFE_SAFETY_INTERFACE_SET",
+      "exactCellSet": null,
+      "status": "HOLD_ROUTE_GEOMETRY_MECHANISM_AND_EXPERT_ACCEPTANCE",
+      "requirement": "An exact protected egress continuation from B09 to a safe exterior or independently accepted D06 receiver."
+    },
+    {
+      "id": "B09-NULL-08-COMPLETE-SAVE-ALL-START-ENTITY-POI-GATE",
+      "kind": "SOURCE_GUARD_AND_INFLUENCE_SET",
+      "exactCellSet": null,
+      "status": "HOLD_COMPLETE_SAVE",
+      "requirement": "One same-moment region/entities/POI/level.dat package and a rerun of all-start/entity/POI conflicts against every proposed influence set."
+    }
+  ],
+  "passHoldMatrix": [
+    {
+      "id": "B09-TS-G01-SOURCE-AND-SELECTION-CHAIN",
+      "status": "PASS",
+      "result": "The owner-delegated FM-01 planning selection and every consumed exact artifact are byte/hash bound; technical acceptance remains false."
+    },
+    {
+      "id": "B09-TS-G02-CENTERLINE-AND-MINIMUM-ACCOMMODATION",
+      "status": "PASS_EXACT_PROPOSAL_ONLY",
+      "result": "Reproduced 561 centerline points and all 7,800 minimum-accommodation cells exactly."
+    },
+    {
+      "id": "B09-TS-G03-FUNCTIONAL-RESERVATION-LAYERS",
+      "status": "PASS_EXACT_PROPOSAL_ONLY",
+      "result": "9 deterministic station/guideway/maintenance/rescue/power/drainage proposal layers remain entirely inside the selected minimum accommodation."
+    },
+    {
+      "id": "B09-TS-G04-B08-INTERFACE",
+      "status": "PASS_EXACT_SEALED_PROPOSAL_ONLY",
+      "result": "The known 36-cell B08/B09 overlap is isolated as an exact sealed default-deny proposal interface."
+    },
+    {
+      "id": "B09-TS-G05-D05-MOUNTAIN-AND-SUPPORT",
+      "status": "PASS_EXACT_CONFLICT_WITHHELD_TECHNICAL_HOLD",
+      "result": "4,245 raw D05 fill cells are withheld by the B09 reservation; selected fill and below-Y72 support-gap intersections are zero."
+    },
+    {
+      "id": "B09-TS-G06-D06-EGRESS-AND-PROTECTED-RELIC",
+      "status": "PASS_EXACT_CURRENT_GEOMETRY_EXPERT_HOLD",
+      "result": "B09 is disjoint from current D06 egress/B07 reservations and all three protected generated-start cores; no egress receiver or positive expert influence is inferred."
+    },
+    {
+      "id": "B09-TS-G07-OBSERVED-GENERATED-STARTS",
+      "status": "PASS_OBSERVED_COMPLETE_SAVE_HOLD",
+      "result": "All 114 observed generated-start bounds are disjoint, but complete-save all-start/entity/POI clearance remains unproven."
+    },
+    {
+      "id": "B09-TS-G08-MECHANISMS-HYDROLOGY-GEOTECHNICAL-LIFE-SAFETY",
+      "status": "HOLD",
+      "result": "8 technical systems/interfaces remain explicit null/HOLD; carrier reservations are not mechanism, flow, support, or commissioning designs."
+    },
+    {
+      "id": "B09-TS-G09-ACCEPTANCE-AND-RELEASE",
+      "status": "HOLD",
+      "result": "Accepted cells, owners, interfaces, mechanisms, material states, operations, and build authority all remain zero."
+    }
+  ],
+  "ambiguityRemoved": [
+    "The selected east-face route is reproduced as one exact 561-point ordered centerline rather than a narrative face choice.",
+    "The complete 7,800-cell minimum accommodation is exact and hash-bound.",
+    "Two station ends, the running guideway/support shell, side maintenance/egress lanes, endpoint rescue-transfer space, an overhead power/control carrier, and an under-rail drainage carrier now have exact proposal cells.",
+    "The 36-cell B08 portal seam and 12-cell summit cap are exact, directional, sealed, default-deny proposals.",
+    "The known D05 raw-fill conflict is quantified and withheld; current D06, protected-core, and observed generated-start geometry is conflict-free."
+  ],
+  "genuineResidualBlockers": [
+    {
+      "id": "B09-NULL-01-LINER-FOUNDATION-AND-GROUND-SUPPORT",
+      "status": "HOLD_GEOTECHNICAL_AND_COMPLETE_SAVE",
+      "requirement": "Accepted loads, liner/foundation states, deformation limits, construction influence, and complete-save source guards."
+    },
+    {
+      "id": "B09-NULL-02-DRIVE-BRAKE-VEHICLE-AND-BARRIER-MECHANISMS",
+      "status": "HOLD_MECHANISM_ENGINEERING_AND_EXPERT_ACCEPTANCE",
+      "requirement": "Drive, cable/haul, braking, overspeed, vehicle, platform-barrier, failure-state, and commissioning designs."
+    },
+    {
+      "id": "B09-NULL-03-INTERMEDIATE-REFUGE-PASSING-AND-RESCUE-ROUTE",
+      "status": "HOLD_LIFE_SAFETY_EXPERT_ACCEPTANCE",
+      "requirement": "Passing/refuge spacing, protected route, assisted rescue, accessibility, smoke separation, and exterior discharge acceptance."
+    },
+    {
+      "id": "B09-NULL-04-POWER-FEED-CIRCUITS-EQUIPMENT-AND-CONTROL-LOGIC",
+      "status": "HOLD_MECHANISM_AND_ELECTRICAL_ACCEPTANCE",
+      "requirement": "Normal/emergency feeds, independent circuits, equipment rooms, controls, fire mode, and failure behavior."
+    },
+    {
+      "id": "B09-NULL-05-SUMPS-FLOW-PATHS-OUTFALL-AND-RECEIVER",
+      "status": "HOLD_HYDROLOGY_GEOTECHNICAL_AND_RECEIVER_ACCEPTANCE",
+      "requirement": "Inflow, groundwater, snowmelt, erosion, sump capacity, pumped/gravity flow, discharge state, outfall, and receiver contract."
+    },
+    {
+      "id": "B09-NULL-06-D05-GUIDEWAY-MOUNTAIN-SUPPORT-INTERFACE",
+      "status": "HOLD_GEOTECHNICAL_HYDROLOGY_AND_OWNER_ACCEPTANCE",
+      "requirement": "Exact exterior liner/support boundary, transition states, load transfer, water control, construction influence, and directional owner acceptance."
+    },
+    {
+      "id": "B09-NULL-07-D06-PROTECTED-EGRESS-RECEIVER",
+      "status": "HOLD_ROUTE_GEOMETRY_MECHANISM_AND_EXPERT_ACCEPTANCE",
+      "requirement": "An exact protected egress continuation from B09 to a safe exterior or independently accepted D06 receiver."
+    },
+    {
+      "id": "B09-NULL-08-COMPLETE-SAVE-ALL-START-ENTITY-POI-GATE",
+      "status": "HOLD_COMPLETE_SAVE",
+      "requirement": "One same-moment region/entities/POI/level.dat package and a rerun of all-start/entity/POI conflicts against every proposed influence set."
+    }
+  ],
+  "disposition": {
+    "exactCenterlineReproduced": true,
+    "exactMinimumAccommodationReproduced": true,
+    "exactTechnicalReservationLayersCompiled": true,
+    "currentExactConflictAuditPassed": true,
+    "completeSaveAllStartGatePassed": false,
+    "geotechnicalAndHydrologyAccepted": false,
+    "mechanismsAccepted": false,
+    "lifeSafetyAndRescueAccepted": false,
+    "ownerAndInterfacesAccepted": false,
+    "b09TechnicallyAccepted": false,
+    "b09ConstructionReady": false,
+    "r00Passed": false
+  },
+  "safetyBoundary": {
+    "offlineOnly": true,
+    "liveCallsPerformed": [],
+    "operations": [],
+    "operationCellCount": 0,
+    "materialCellCount": 0,
+    "futureCellCount": 0,
+    "constructionCellCount": 0,
+    "acceptedCellCount": 0,
+    "acceptedOwnerAssignmentCount": 0,
+    "acceptedInterfaceCellCount": 0,
+    "acceptedMechanismCellCount": 0,
+    "worldEditAuthorized": false,
+    "physicalBuildAuthorized": false,
+    "executable": false
+  },
+  "reportIdentitySha256": "e4140d2193fec084e8e17ae8e1e071683e62d7cbea20a32ebcf1edc290a523e7"
+}

@@ -40,7 +40,7 @@
     },
     "releaseContract": {
       "path": "masterplans/05-combined-zones/phase1-release-contract.json",
-      "sha256": "b71308a92f4cbaab10725bfc3e4ca47a989f14b437de4318baa1aa43310346e4",
+      "sha256": "fe025928e17cc2350a0ff277538ef4e6365faa8b894d0f2d2fa2b99053c734d7",
       "bytes": 32799
     },
     "designDecisions": {
@@ -72,6 +72,21 @@
       "path": "masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json",
       "sha256": "69fad782aae8dfdf5201d83ea8e18c1cf07db44875c02eab39d8d8a9abe4a05d",
       "bytes": 2564085
+    },
+    "d02TechnicalDesign": {
+      "path": "masterplans/05-combined-zones/phase1-d02-technical-design.json",
+      "sha256": "a9c8890ecbfb3a37232cc8a7d158067782750695169d9de0bccb0caa5350e2fc",
+      "bytes": 140203
+    },
+    "d02C01OwnershipLoadingInterface": {
+      "path": "masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json",
+      "sha256": "0ae59e92c4566e918bb9fcae1a04b8bc0d0cb76bd36e9441ebc71127fffc8400",
+      "bytes": 2905501
+    },
+    "completeSaveIntake": {
+      "path": "masterplans/05-combined-zones/phase1-complete-save-intake-audit.json",
+      "sha256": "2ce69f861cf979275c3972d3297ed25e9301c5352b48ed056a81a53ff40039cf",
+      "bytes": 27091
     },
     "geometryCoordination": {
       "path": "masterplans/05-combined-zones/phase1-geometry-coordination.json",
@@ -108,6 +123,16 @@
       "sha256": "b4f3b92e644dd359f66ac7512aa55096bae247c19acbfa8e89526b19c1b06331",
       "bytes": 47414
     },
+    "d05FutureState": {
+      "path": "masterplans/05-combined-zones/phase1-d05-future-state.json",
+      "sha256": "7a00d74a14ffa2c35610d5291a98cd417153bff50749f9a4de675908662c2bec",
+      "bytes": 39721
+    },
+    "d05SupportMaterialDesign": {
+      "path": "masterplans/05-combined-zones/phase1-d05-support-material-design.json",
+      "sha256": "f7da3e1595ad91ba082353aa1d4b9abeaf8d4c368c13b793c7600a543fa019db",
+      "bytes": 49305
+    },
     "emptyEightGeologyDesign": {
       "path": "masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
       "sha256": "b2faa5455b79b00442241fb7fb782c6458130005349349a0e5ced9a09b32b66f",
@@ -122,6 +147,16 @@
       "path": "masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
       "sha256": "2cdf82e2896fbf41bba52f90c8e6fd9d8bc741d8019964f623c171bf332bc120",
       "bytes": 171048
+    },
+    "d06Mechanisms": {
+      "path": "masterplans/05-combined-zones/phase1-d06-mechanisms.json",
+      "sha256": "1c90d284ab16d443daf4b8a3e00b4ae12e23c3a47f1378ae328796ef67693030",
+      "bytes": 179829
+    },
+    "d06DetailedSetout": {
+      "path": "masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json",
+      "sha256": "320763a96fd4858777d03d24bfea9de1879cc665d23147967c234301ab60eb59",
+      "bytes": 95874
     },
     "connectorGeometry": {
       "path": "masterplans/05-combined-zones/phase1-connector-geometry.json",
@@ -158,10 +193,50 @@
       "sha256": "ae9655d5df6fe1e83cd74c077a4638117d81a4023047b27700de2400290429b8",
       "bytes": 12571
     },
+    "b09TechnicalSystem": {
+      "path": "masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json",
+      "sha256": "e740109f6d6fa8d097097b21422d0614018048cf5dc3209e5e16f9039a990f5e",
+      "bytes": 26763
+    },
+    "b11SurfaceRoadTechnical": {
+      "path": "masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.json",
+      "sha256": "c0684a46f488638e3efb06a621ae0482d60f7e343a8948047e4f02d9f0bdeb6d",
+      "bytes": 175007
+    },
+    "b12SubsurfaceAlternatives": {
+      "path": "masterplans/05-combined-zones/phase1-grand-avenue-subsurface-alternatives.json",
+      "sha256": "077ec3de3c2e7694d1856b1c97ffe3e853c37dee3b838d232af67dc6eaf3a2d5",
+      "bytes": 57522
+    },
+    "b12PassiveShell": {
+      "path": "masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json",
+      "sha256": "62dbf9a561c17c922067aa94f10e1f4776e167e19d24490a28df5fc585e8ef0e",
+      "bytes": 254897
+    },
+    "proposedOwnershipInterfaces": {
+      "path": "masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json",
+      "sha256": "8ac79d83f7f0ed58f128d07bbd556dbad22584ac9060497efb60b36bc7d81575",
+      "bytes": 253948
+    },
+    "g03CanonicalSetout": {
+      "path": "masterplans/05-combined-zones/phase1-g03-canonical-setout.json",
+      "sha256": "c02373a16af0b31f4d77c7284812d00b1bc91e3b2af41294187a79cc51a4b4c5",
+      "bytes": 163806
+    },
+    "g06ProposedClearance": {
+      "path": "masterplans/05-combined-zones/phase1-g06-proposed-clearance-audit.json",
+      "sha256": "5c237bb2a1570ee8b50ae95a60ec934ab2149df5a4ae7e35d0571770f52a87bb",
+      "bytes": 1583376
+    },
     "ownerReviewBundle": {
       "path": "masterplans/05-combined-zones/phase1-owner-review-bundle.json",
       "sha256": "3543371f24f6970cf8cafc7eec0990c755bdffa50fdda36a3a53b8cb52f52f1e",
       "bytes": 5603
+    },
+    "ownerReviewAcceptance": {
+      "path": "masterplans/05-combined-zones/phase1-owner-review-acceptance.json",
+      "sha256": "9d5d7ea17a189b7a1017236e6ae7a9b8483bf0ffe4515f12e62fb90b9f7291f0",
+      "bytes": 8748
     },
     "siteGateAudit": {
       "path": "masterplans/05-combined-zones/phase1-site-gate-audit.json",
@@ -213,8 +288,8 @@
     },
     {
       "path": "masterplans/05-combined-zones/MASTERPLAN.md",
-      "expectedSha256": "7a250bfbd76e4ee74d7bf30bd0f51fdd06d0310e8b015680b159311feda1361f",
-      "actualSha256": "7a250bfbd76e4ee74d7bf30bd0f51fdd06d0310e8b015680b159311feda1361f",
+      "expectedSha256": "682e06bd8eb46003625abcf500542534e26b26e3955b56af59500867c64ce88a",
+      "actualSha256": "682e06bd8eb46003625abcf500542534e26b26e3955b56af59500867c64ce88a",
       "passed": true
     },
     {
@@ -308,7 +383,7 @@
         },
         {
           "path": "masterplans/05-combined-zones/phase1-release-contract.json",
-          "sha256": "b71308a92f4cbaab10725bfc3e4ca47a989f14b437de4318baa1aa43310346e4",
+          "sha256": "fe025928e17cc2350a0ff277538ef4e6365faa8b894d0f2d2fa2b99053c734d7",
           "bytes": 32799
         }
       ],
@@ -354,6 +429,21 @@
           "bytes": 2564085
         },
         {
+          "path": "masterplans/05-combined-zones/phase1-d02-technical-design.json",
+          "sha256": "a9c8890ecbfb3a37232cc8a7d158067782750695169d9de0bccb0caa5350e2fc",
+          "bytes": 140203
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json",
+          "sha256": "0ae59e92c4566e918bb9fcae1a04b8bc0d0cb76bd36e9441ebc71127fffc8400",
+          "bytes": 2905501
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-complete-save-intake-audit.json",
+          "sha256": "2ce69f861cf979275c3972d3297ed25e9301c5352b48ed056a81a53ff40039cf",
+          "bytes": 27091
+        },
+        {
           "path": "masterplans/05-combined-zones/phase1-d05-conservative-defaults.json",
           "sha256": "a4f72a07774df5a73dfb67b5cf7b8548691cff6f3808883853bafd7e0a78bd48",
           "bytes": 17420
@@ -374,6 +464,16 @@
           "bytes": 47414
         },
         {
+          "path": "masterplans/05-combined-zones/phase1-d05-future-state.json",
+          "sha256": "7a00d74a14ffa2c35610d5291a98cd417153bff50749f9a4de675908662c2bec",
+          "bytes": 39721
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d05-support-material-design.json",
+          "sha256": "f7da3e1595ad91ba082353aa1d4b9abeaf8d4c368c13b793c7600a543fa019db",
+          "bytes": 49305
+        },
+        {
           "path": "masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
           "sha256": "b2faa5455b79b00442241fb7fb782c6458130005349349a0e5ced9a09b32b66f",
           "bytes": 71152
@@ -387,6 +487,36 @@
           "path": "masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
           "sha256": "2cdf82e2896fbf41bba52f90c8e6fd9d8bc741d8019964f623c171bf332bc120",
           "bytes": 171048
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d06-mechanisms.json",
+          "sha256": "1c90d284ab16d443daf4b8a3e00b4ae12e23c3a47f1378ae328796ef67693030",
+          "bytes": 179829
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json",
+          "sha256": "320763a96fd4858777d03d24bfea9de1879cc665d23147967c234301ab60eb59",
+          "bytes": 95874
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json",
+          "sha256": "e740109f6d6fa8d097097b21422d0614018048cf5dc3209e5e16f9039a990f5e",
+          "bytes": 26763
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.json",
+          "sha256": "c0684a46f488638e3efb06a621ae0482d60f7e343a8948047e4f02d9f0bdeb6d",
+          "bytes": 175007
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-grand-avenue-subsurface-alternatives.json",
+          "sha256": "077ec3de3c2e7694d1856b1c97ffe3e853c37dee3b838d232af67dc6eaf3a2d5",
+          "bytes": 57522
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json",
+          "sha256": "62dbf9a561c17c922067aa94f10e1f4776e167e19d24490a28df5fc585e8ef0e",
+          "bytes": 254897
         },
         {
           "path": "masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json",
@@ -417,26 +547,31 @@
           "path": "masterplans/05-combined-zones/phase1-owner-review-bundle.json",
           "sha256": "3543371f24f6970cf8cafc7eec0990c755bdffa50fdda36a3a53b8cb52f52f1e",
           "bytes": 5603
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-owner-review-acceptance.json",
+          "sha256": "9d5d7ea17a189b7a1017236e6ae7a9b8483bf0ffe4515f12e62fb90b9f7291f0",
+          "bytes": 8748
         }
       ],
       "blockers": [
         {
           "id": "R00-G02-D02-EXTERNAL-ACCEPTANCE",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "The D02 owner packet is ready for planning-basis/checklist acceptance, but technical closure still requires one complete immutable copied save with region/entities/poi/level.dat, D02-S01/S02 identity and safety census, inflow/storage/freeboard/failure criteria, future fluid accounting, receiver ownership/interfaces, capacity, structure/geotechnical review, and complete technical acceptance.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json"
+          "requirement": "The D02 planning basis now has an exact 6-PASS/11-HOLD technical matrix, but closure still requires one complete immutable copied save with region/entities/poi/level.dat, accepted inflow/storage/freeboard/failure criteria, future-fluid accounting, receiver ownership/interfaces, capacity, structure/geotechnical/loading/quantity evidence, and complete technical acceptance.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-d02-technical-design.json"
         },
         {
           "id": "R00-G02-D05-EXTERNAL-ACCEPTANCE",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "The D05 conditional-policy packet is ready for owner review, but technical closure still requires the compact east-face analytic planning surface to compile into canonical material states and accepted construction/influence cellsets, with support gaps, hydrology/geotechnical review, relic influence kernels, owners, interfaces, maintenance/egress, stations, and mechanisms closed; accepted future-state cells remain zero.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json"
+          "requirement": "The D05 proposal now partitions all 14,768,553 direct cells and all 754,224 support-gap cells; 17,997 support cells have treatment-class proposals while 736,227 remain treatment-null and all support canonical states remain null. Closure still requires complete-save evidence, accepted hydrology/cryosphere/geotechnical and relic influence, B09 mechanisms/egress, maintenance/staging, owners/interfaces, and independent technical acceptance.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-d05-support-material-design.json"
         },
         {
           "id": "R00-G02-D06-EXTERNAL-ACCEPTANCE",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "The D06 fail-closed planning/checklist packet is ready for owner review, but technical closure still requires exact accepted stairs/lifts, smoke and barrier mechanisms, emergency circuits, capped drainage, four local vent risers, fire/service access, outlets, ownership, and interfaces. Every opening and discharge remains sealed and uncommissioned.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json"
+          "requirement": "The D06 proposal now compiles 31 exact detailed layers into 9,065 canonical proposal cells and retains 29 commissioning contracts, but closure still requires external egress/discharge/fire routes, functional mechanisms and controls/failure logic, independent circuit sources, hydraulic receivers, structural/material acceptance, complete-save evidence, owners/interfaces, technical acceptance, and all commissioning results.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json"
         }
       ]
     },
@@ -495,23 +630,57 @@
           "bytes": 12571
         },
         {
+          "path": "masterplans/05-combined-zones/phase1-d05-future-state.json",
+          "sha256": "7a00d74a14ffa2c35610d5291a98cd417153bff50749f9a4de675908662c2bec",
+          "bytes": 39721
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json",
+          "sha256": "320763a96fd4858777d03d24bfea9de1879cc665d23147967c234301ab60eb59",
+          "bytes": 95874
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json",
+          "sha256": "0ae59e92c4566e918bb9fcae1a04b8bc0d0cb76bd36e9441ebc71127fffc8400",
+          "bytes": 2905501
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json",
+          "sha256": "e740109f6d6fa8d097097b21422d0614018048cf5dc3209e5e16f9039a990f5e",
+          "bytes": 26763
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.json",
+          "sha256": "c0684a46f488638e3efb06a621ae0482d60f7e343a8948047e4f02d9f0bdeb6d",
+          "bytes": 175007
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json",
+          "sha256": "62dbf9a561c17c922067aa94f10e1f4776e167e19d24490a28df5fc585e8ef0e",
+          "bytes": 254897
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-g03-canonical-setout.json",
+          "sha256": "c02373a16af0b31f4d77c7284812d00b1bc91e3b2af41294187a79cc51a4b4c5",
+          "bytes": 163806
+        },
+        {
           "path": "masterplans/05-combined-zones/phase1-owner-review-bundle.json",
           "sha256": "3543371f24f6970cf8cafc7eec0990c755bdffa50fdda36a3a53b8cb52f52f1e",
           "bytes": 5603
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-owner-review-acceptance.json",
+          "sha256": "9d5d7ea17a189b7a1017236e6ae7a9b8483bf0ffe4515f12e62fb90b9f7291f0",
+          "bytes": 8748
         }
       ],
       "blockers": [
         {
-          "id": "R00-G03-DESIGN-AUTHORITY-CHOICES",
-          "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "Record sole-owner acceptance of the hash-bound P1-B11 packet for the 1 remaining geometry blocker (P1-B11-EXTERNAL-INTERFACES). It proposes the exact Grand Avenue profile, preserves the unevidenced PassageWay side as a zero-cell deferral, and keeps future lines sealed; 10 prior geometry choices remain frozen.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json"
-        },
-        {
           "id": "R00-G03-CANONICAL-INTEGER-COMPILER",
           "classification": "OFFLINE_ACTION",
-          "requirement": "Implement the canonical integer setout compiler after the missing design-authority choices are accepted.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-release-contract.json"
+          "requirement": "Complete every remaining null construction/interaction/influence domain in the canonical v2 setout. The committed compiler currently normalizes 10 scopes, expands 8 exact domains, and retains 15 unresolved required domains; exact proposals are not accepted construction authority.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-g03-canonical-setout.json"
         }
       ]
     },
@@ -565,6 +734,26 @@
           "bytes": 12571
         },
         {
+          "path": "masterplans/05-combined-zones/phase1-owner-review-acceptance.json",
+          "sha256": "9d5d7ea17a189b7a1017236e6ae7a9b8483bf0ffe4515f12e62fb90b9f7291f0",
+          "bytes": 8748
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json",
+          "sha256": "8ac79d83f7f0ed58f128d07bbd556dbad22584ac9060497efb60b36bc7d81575",
+          "bytes": 253948
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-g03-canonical-setout.json",
+          "sha256": "c02373a16af0b31f4d77c7284812d00b1bc91e3b2af41294187a79cc51a4b4c5",
+          "bytes": 163806
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json",
+          "sha256": "0ae59e92c4566e918bb9fcae1a04b8bc0d0cb76bd36e9441ebc71127fffc8400",
+          "bytes": 2905501
+        },
+        {
           "path": "masterplans/05-combined-zones/phase1-site-gate-audit.json",
           "sha256": "3fa4cf7df43ab0373cf7d2b284dab56062a07fa1ece3843812483d74cbc4466c",
           "bytes": 20607
@@ -574,14 +763,14 @@
         {
           "id": "R00-G04-OWNER-ACCEPTANCE",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "Accept one canonical owner for every proposed construction and interaction cell, including C01, hydrology, egress, surface, and sealed-interface scopes.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-site-gate-audit.json"
+          "requirement": "After the technical/null-domain work closes, bind sole-owner acceptance to one complete immutable registry identity. The current proposal has 21 logical owner records and zero accepted owner records.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json"
         },
         {
           "id": "R00-G04-OWNERSHIP-AUDIT",
           "classification": "OFFLINE_ACTION",
-          "requirement": "Implement the one-owner/no-overlap ownership audit over the accepted exact setout.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-release-contract.json"
+          "requirement": "Regenerate the proposed one-owner partition over the completed G03 setout and prove exactly one owner for every required cell, including every newly compiled domain and precedence adjudication.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json"
         }
       ]
     },
@@ -635,6 +824,26 @@
           "bytes": 12571
         },
         {
+          "path": "masterplans/05-combined-zones/phase1-owner-review-acceptance.json",
+          "sha256": "9d5d7ea17a189b7a1017236e6ae7a9b8483bf0ffe4515f12e62fb90b9f7291f0",
+          "bytes": 8748
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json",
+          "sha256": "8ac79d83f7f0ed58f128d07bbd556dbad22584ac9060497efb60b36bc7d81575",
+          "bytes": 253948
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-g03-canonical-setout.json",
+          "sha256": "c02373a16af0b31f4d77c7284812d00b1bc91e3b2af41294187a79cc51a4b4c5",
+          "bytes": 163806
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json",
+          "sha256": "0ae59e92c4566e918bb9fcae1a04b8bc0d0cb76bd36e9441ebc71127fffc8400",
+          "bytes": 2905501
+        },
+        {
           "path": "masterplans/05-combined-zones/phase1-site-gate-audit.json",
           "sha256": "3fa4cf7df43ab0373cf7d2b284dab56062a07fa1ece3843812483d74cbc4466c",
           "bytes": 20607
@@ -644,14 +853,14 @@
         {
           "id": "R00-G05-INTERFACE-ACCEPTANCE",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "Accept exact C01, PassageWay, surface, hydrology, egress, child-plan, and sealed future-line interface contracts.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-site-gate-audit.json"
+          "requirement": "Close every null technical counterpart and accept one immutable set of exact directional contracts. The current proposal has 71 default-deny contracts, 59 exact interface cell sets, and 12 null/HOLD interfaces.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json"
         },
         {
           "id": "R00-G05-GLOBAL-INTERFACE-GATE",
           "classification": "OFFLINE_ACTION",
-          "requirement": "Implement the exact default-deny global cross-scope interface audit after accepted cell sets exist.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-release-contract.json"
+          "requirement": "Regenerate the default-deny global cross-scope audit after G03 completion; require exact transitions/states and zero undeclared seams with no wildcard, shared owner, silent clipping, or last-writer-wins rule.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json"
         }
       ]
     },
@@ -698,20 +907,35 @@
           "path": "masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json",
           "sha256": "3bf8c1955f8e10de12afad3048d202e0b4322f01c3c12b96fceded10f58db662",
           "bytes": 62402
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d05-support-material-design.json",
+          "sha256": "f7da3e1595ad91ba082353aa1d4b9abeaf8d4c368c13b793c7600a543fa019db",
+          "bytes": 49305
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-g03-canonical-setout.json",
+          "sha256": "c02373a16af0b31f4d77c7284812d00b1bc91e3b2af41294187a79cc51a4b4c5",
+          "bytes": 163806
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-g06-proposed-clearance-audit.json",
+          "sha256": "5c237bb2a1570ee8b50ae95a60ec934ab2149df5a4ae7e35d0571770f52a87bb",
+          "bytes": 1583376
         }
       ],
       "blockers": [
         {
           "id": "R00-G06-RELIC-REVIEW",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "Review the exact future design against the completed D05-S01 condition/access evidence and frozen core-plus-one-cell minimum exclusions; expand them wherever the evidence requires. Candidate observation routes authorize no access.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json"
+          "requirement": "Review and accept positive-margin structural, hydrology, access, staging, settlement, erosion, and construction-method influence kernels. The current audit proves all 15 non-null G03 domains exact-zero against observed starts/cores, but keeps 15 null domains unknown and discloses a 126-cell shipwreck support-status intersection.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-g06-proposed-clearance-audit.json"
         },
         {
           "id": "R00-G06-EXACT-DESIGN-CLEARANCE",
           "classification": "OFFLINE_ACTION",
-          "requirement": "Intersect the final exact proposed construction/interaction sets against all 50 relevant structure starts and every accepted relic buffer.",
-          "evidencePath": "masterplans/05-combined-zones/phase1-protected-relic-clearance.json"
+          "requirement": "After G03/null-domain completion and a complete save, rerun the exact all-start/entity/POI clearance against every accepted protected core/buffer and the complete proposed construction/interaction/influence union.",
+          "evidencePath": "masterplans/05-combined-zones/phase1-g06-proposed-clearance-audit.json"
         }
       ]
     },
@@ -745,6 +969,21 @@
           "bytes": 2564085
         },
         {
+          "path": "masterplans/05-combined-zones/phase1-d02-technical-design.json",
+          "sha256": "a9c8890ecbfb3a37232cc8a7d158067782750695169d9de0bccb0caa5350e2fc",
+          "bytes": 140203
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json",
+          "sha256": "0ae59e92c4566e918bb9fcae1a04b8bc0d0cb76bd36e9441ebc71127fffc8400",
+          "bytes": 2905501
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-complete-save-intake-audit.json",
+          "sha256": "2ce69f861cf979275c3972d3297ed25e9301c5352b48ed056a81a53ff40039cf",
+          "bytes": 27091
+        },
+        {
           "path": "masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
           "sha256": "8ec1927298d3dd7ca685166e42019f1a7f31e0bd59b86c9f7e1ba891698acd10",
           "bytes": 3250959
@@ -770,6 +1009,16 @@
           "bytes": 47414
         },
         {
+          "path": "masterplans/05-combined-zones/phase1-d05-future-state.json",
+          "sha256": "7a00d74a14ffa2c35610d5291a98cd417153bff50749f9a4de675908662c2bec",
+          "bytes": 39721
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d05-support-material-design.json",
+          "sha256": "f7da3e1595ad91ba082353aa1d4b9abeaf8d4c368c13b793c7600a543fa019db",
+          "bytes": 49305
+        },
+        {
           "path": "masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
           "sha256": "b2faa5455b79b00442241fb7fb782c6458130005349349a0e5ced9a09b32b66f",
           "bytes": 71152
@@ -785,6 +1034,16 @@
           "bytes": 171048
         },
         {
+          "path": "masterplans/05-combined-zones/phase1-d06-mechanisms.json",
+          "sha256": "1c90d284ab16d443daf4b8a3e00b4ae12e23c3a47f1378ae328796ef67693030",
+          "bytes": 179829
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json",
+          "sha256": "320763a96fd4858777d03d24bfea9de1879cc665d23147967c234301ab60eb59",
+          "bytes": 95874
+        },
+        {
           "path": "masterplans/05-combined-zones/phase1-connector-geometry.json",
           "sha256": "9a9521422075d499326b761a8d85bbfcfea83ec582dbc29538fae0600d8bc012",
           "bytes": 458505
@@ -793,6 +1052,36 @@
           "path": "masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json",
           "sha256": "a72ac9bdf12c1364cab027202d28c5c67b954a870e39dc0454047996b92fe557",
           "bytes": 2757426
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json",
+          "sha256": "e740109f6d6fa8d097097b21422d0614018048cf5dc3209e5e16f9039a990f5e",
+          "bytes": 26763
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.json",
+          "sha256": "c0684a46f488638e3efb06a621ae0482d60f7e343a8948047e4f02d9f0bdeb6d",
+          "bytes": 175007
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json",
+          "sha256": "62dbf9a561c17c922067aa94f10e1f4776e167e19d24490a28df5fc585e8ef0e",
+          "bytes": 254897
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json",
+          "sha256": "8ac79d83f7f0ed58f128d07bbd556dbad22584ac9060497efb60b36bc7d81575",
+          "bytes": 253948
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-g03-canonical-setout.json",
+          "sha256": "c02373a16af0b31f4d77c7284812d00b1bc91e3b2af41294187a79cc51a4b4c5",
+          "bytes": 163806
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-g06-proposed-clearance-audit.json",
+          "sha256": "5c237bb2a1570ee8b50ae95a60ec934ab2149df5a4ae7e35d0571770f52a87bb",
+          "bytes": 1583376
         },
         {
           "path": "masterplans/05-combined-zones/phase1-autonomous-design-selections.json",
@@ -818,19 +1107,24 @@
           "path": "masterplans/05-combined-zones/phase1-owner-review-bundle.json",
           "sha256": "3543371f24f6970cf8cafc7eec0990c755bdffa50fdda36a3a53b8cb52f52f1e",
           "bytes": 5603
+        },
+        {
+          "path": "masterplans/05-combined-zones/phase1-owner-review-acceptance.json",
+          "sha256": "9d5d7ea17a189b7a1017236e6ae7a9b8483bf0ffe4515f12e62fb90b9f7291f0",
+          "bytes": 8748
         }
       ],
       "blockers": [
         {
           "id": "R00-G07-EXPERT-DESIGN-ACCEPTANCE",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "Complete and accept the D02 civil/C01, D05 hydrology/relic, and D06 external life-safety engineering against one frozen design identity.",
+          "requirement": "Complete and independently accept the remaining D02 civil/C01, D05 hydrology/geotechnical/relic, B09, Grand Avenue/B12, and D06 functional life-safety engineering against one complete saved-world and design identity.",
           "evidencePath": "masterplans/05-combined-zones/phase1-site-gate-audit.json"
         },
         {
           "id": "R00-G07-INTEGRATED-DESIGN-CHECK",
           "classification": "OFFLINE_ACTION",
-          "requirement": "Run deterministic integrated civil, hydrology, structure, route-grade, and life-safety checks after the accepted design inputs exist.",
+          "requirement": "Regenerate the deterministic integrated civil, hydrology, structure, route-grade, setout, ownership/interface, protected-feature, and life-safety checks after every accepted design input exists.",
           "evidencePath": "masterplans/05-combined-zones/phase1-release-contract.json"
         }
       ]
@@ -857,15 +1151,20 @@
     "r00Ready": false,
     "blockerCountsByClassification": {
       "OFFLINE_ACTION": 5,
-      "EXTERNAL_EVIDENCE": 8,
+      "EXTERNAL_EVIDENCE": 7,
       "DEFERRED_G08_G19": 2
     },
     "delegatedSelectionsValid": true,
     "ownerDelegatedSelectionCount": 20,
     "additionalHumanDecisionMakersRequired": false,
-    "remainingGeometryBlockerCount": 1,
+    "remainingGeometryBlockerCount": 0,
     "copiedSaveCandidatesAudited": 56,
     "completeCopiedSaveCandidates": 0,
+    "completeSaveIntakePassed": false,
+    "completeSaveIntakeRegionFileCount": 51,
+    "completeSaveIntakeEntityFileCount": 0,
+    "completeSaveIntakePoiFileCount": 0,
+    "completeSaveIntakeLevelDatPresent": false,
     "d05S01SurveyComplete": true,
     "b03ExactRouteSelected": true,
     "b03HorizontalStepCount": 800,
@@ -877,25 +1176,52 @@
     "d02AcceptableOutfallCandidateCount": 0,
     "d02PreferredDrainageCandidateCellCount": 432,
     "d02HeldLowRunCount": 1,
+    "d02TechnicalPassCount": 6,
+    "d02TechnicalHoldCount": 11,
     "d05FutureStateContractPassed": true,
     "d05FutureStateCellCount": 0,
     "d05SelectedPlanningAlternativeId": "FM-01-COMPACT-EAST-FACE",
     "d05CandidateAddedSolidCellCount": 14768553,
     "d05BelowCoordinationSupportGapCellCount": 754224,
+    "d05FutureStateProposalCellCount": 14768553,
+    "d05SupportTreatmentClassProposedCellCount": 17997,
+    "d05SupportTreatmentClassNullCellCount": 736227,
     "b09ExactRouteSelected": true,
     "b10AnalyticSurfaceSelected": true,
     "d06CappedVentRiserCount": 4,
+    "d06DetailedProposalLayerCount": 31,
+    "d06DetailedCanonicalProposalCellCount": 9065,
+    "d02C01TerminalDatumCellCount": 7803,
+    "d02C01LoadingPrecedenceWithheldCellCount": 45,
+    "d02C01ProposedTerminalCapCellCount": 9,
+    "b09TechnicalReservationLayerCount": 9,
+    "b09TechnicalResidualHoldClassCount": 8,
     "ownerReviewBundleReady": true,
     "ownerReviewBundlePayloadSha256": "f0f5870c98bd2bc4aefda24d032538d4037e9a39c772c604c389883ebcbeb5b2",
-    "ownerReviewBundleAcceptanceRecorded": false,
+    "ownerReviewBundleAcceptanceRecorded": true,
+    "ownerReviewAcceptanceValid": true,
+    "ownerReviewAcceptanceRecordSha256": "9d5d7ea17a189b7a1017236e6ae7a9b8483bf0ffe4515f12e62fb90b9f7291f0",
+    "ownerReviewAcceptancePayloadSha256": "3bf35dfe9cce1eac463d8dc77899c61e8d89f1be686908ab347bd47e23353225",
     "d02OwnerPacketReady": true,
     "d05OwnerPacketReady": true,
     "d06OwnerPacketReady": true,
     "p1B11OwnerPacketReady": true,
+    "p1B11PlanningBasisAccepted": true,
     "p1B11GrandAvenueCenterlinePointCount": 299,
+    "p1B11SurfaceRoadProposalCellCount": 2392,
+    "p1B11ProjectedG03UnresolvedDomainCount": 16,
+    "p1B12PassiveShellInfluenceCellCount": 19136,
+    "proposedLogicalOwnerCount": 27,
+    "proposedDirectionalInterfaceCount": 78,
+    "proposedNullInterfaceCount": 14,
+    "g03CanonicalExactScopeCount": 10,
+    "g03CanonicalUnresolvedDomainCount": 15,
+    "g06NonNullDomainCount": 15,
+    "g06NullUnknownDomainCount": 15,
+    "g06SupportShipwreckOverlapCellCount": 126,
     "autonomousOfflineWorkMayContinue": true,
     "autonomousOfflineWorkCanCompleteR00": false,
-    "nextAutonomousArtifact": "record the owner-review bundle, capture/audit one complete saved world, then continue exact D02/D05/D06 technical development before T01/T02",
+    "nextAutonomousArtifact": "complete the remaining G03 null domains and technical systems; keep the v2 one-owner/interface and G06 audits synchronized; capture and audit one complete saved world before final technical/owner acceptance",
     "externalEvidenceStillRequired": true
   }
 }
