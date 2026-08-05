@@ -1,7 +1,12 @@
 import type { FleetRegistry, JobStore, ReportJob } from '@mc-fleet/world-core';
 
 export type RecipeStepType =
-  'snapshot-summary' | 'database-catalog' | 'world-features' | 'block-census' | 'html-report';
+  | 'snapshot-summary'
+  | 'snapshot-diff'
+  | 'database-catalog'
+  | 'world-features'
+  | 'block-census'
+  | 'html-report';
 
 export type RecipeParameterType = 'string' | 'integer' | 'bounds';
 

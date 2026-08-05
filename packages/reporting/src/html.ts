@@ -40,17 +40,53 @@ function summarizeResult(id: string, result: unknown): string {
     ['Complete', record.complete],
   ].filter((entry): entry is [string, unknown] => entry[1] !== undefined);
   const metrics = explicitMetrics ?? heuristic;
+  const diffBlock = record.type === 'snapshot-diff' ? renderDiffBlock(record) : '';
   return `
     <section>
       <div class="section-head"><h2>${escapeHtml(id)}</h2><span>${escapeHtml(
         String(record.type ?? 'result'),
       )}</span></div>
       ${metrics.length > 0 ? `<div class="metrics">${metrics.map(([label, value]) => metric(label, value)).join('')}</div>` : ''}
+      ${diffBlock}
       <details>
         <summary>Structured result</summary>
         <pre>${escapeHtml(JSON.stringify(result, null, 2))}</pre>
       </details>
     </section>
+  `;
+}
+
+function renderDiffBlock(record: Record<string, unknown>): string {
+  const added = Array.isArray(record['added'])
+    ? (record['added'] as Array<{ filename: string }>)
+    : [];
+  const removed = Array.isArray(record['removed'])
+    ? (record['removed'] as Array<{ filename: string }>)
+    : [];
+  const changed = Array.isArray(record['changed'])
+    ? (record['changed'] as Array<{ filename: string; bytesDelta: number }>)
+    : [];
+  const list = (items: Array<{ filename: string }>): string =>
+    items.length === 0
+      ? '<p class="diff-empty">None.</p>'
+      : `<ul class="diff-list">${items
+          .map((item) => `<li>${escapeHtml(item.filename)}</li>`)
+          .join('')}</ul>`;
+  const listChanged = (items: Array<{ filename: string; bytesDelta: number }>): string =>
+    items.length === 0
+      ? '<p class="diff-empty">None.</p>'
+      : `<ul class="diff-list">${items
+          .map(
+            (item) =>
+              `<li>${escapeHtml(item.filename)} <small>(${item.bytesDelta >= 0 ? '+' : ''}${item.bytesDelta} bytes)</small></li>`,
+          )
+          .join('')}</ul>`;
+  return `
+    <div class="diff-grid">
+      <div><h3>Added</h3>${list(added)}</div>
+      <div><h3>Removed</h3>${list(removed)}</div>
+      <div><h3>Changed</h3>${listChanged(changed)}</div>
+    </div>
   `;
 }
 
@@ -91,6 +127,13 @@ export function writeHtmlReport(
     .metric strong { display:block; margin-top:6px; color:var(--gold); font-size:19px; overflow-wrap:anywhere; }
     details { margin-top:18px; } summary { cursor:pointer; color:var(--accent); }
     pre { overflow:auto; padding:16px; border-radius:12px; background:#050a0f; color:#c6d7df; font:12px/1.5 ui-monospace,SFMono-Regular,monospace; }
+    .diff-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:18px; }
+    .diff-grid > div { background:#09141f; border:1px solid #1b3041; border-radius:12px; padding:14px 16px; }
+    .diff-grid h3 { margin:0 0 10px; font-size:14px; color:var(--muted); text-transform:uppercase; letter-spacing:.07em; }
+    .diff-list { margin:0; padding-left:18px; color:var(--ink); font:12px/1.5 ui-monospace,SFMono-Regular,monospace; }
+    .diff-list li { margin:2px 0; }
+    .diff-list small { color:var(--muted); margin-left:6px; }
+    .diff-empty { margin:0; color:var(--muted); font-size:12px; }
     footer { color:var(--muted); padding:28px 4px; font-size:12px; }
   </style>
 </head>

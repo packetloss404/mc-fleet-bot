@@ -1,0 +1,16 @@
+version: 1
+id: snapshot-diff
+name: Snapshot Diff
+description: Per-region SHA-256 comparison between two registered worlds on the same server.
+parameters:
+  other:
+    type: string
+    description: World id (on the same server) to compare against.
+    required: true
+steps:
+  - id: diff
+    type: snapshot-diff
+  - id: report
+    type: html-report
+    options:
+      title: Snapshot Diff

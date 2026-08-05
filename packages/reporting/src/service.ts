@@ -2,7 +2,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 
-import { censusSnapshot, summarizeSnapshot } from '@mc-fleet/anvil';
+import { censusSnapshot, diffSnapshots, summarizeSnapshot } from '@mc-fleet/anvil';
 import { catalogDatabase, exportWorldFeatures } from '@mc-fleet/catalog';
 import {
   DevtoolsError,
@@ -204,6 +204,37 @@ export class ReportService {
             { label: 'Region files', value: summary.regionFileCount },
             { label: 'Declared chunks', value: summary.declaredChunkCount },
             { label: 'Bytes', value: summary.bytes },
+          ],
+        };
+      }
+      case 'snapshot-diff': {
+        const otherWorldId = job.parameters['other'];
+        if (typeof otherWorldId !== 'string' || otherWorldId.length === 0) {
+          throw new DevtoolsError(
+            `Step ${step.id} requires a string "other" parameter naming the world to diff against`,
+            'INVALID_STEP_OPTION',
+          );
+        }
+        const otherResolved = resolveWorld(this.options.registry, job.serverId, otherWorldId);
+        const diff = diffSnapshots(resolved.snapshotDirectory, otherResolved.snapshotDirectory);
+        return {
+          ...diff,
+          thisWorld: { id: resolved.world.id, name: resolved.world.name },
+          otherWorld: { id: otherResolved.world.id, name: otherResolved.world.name },
+          metrics: [
+            {
+              label: 'This snapshot',
+              value: `${resolved.world.id} (${diff.thisSnapshot.regionFileCount} regions)`,
+            },
+            {
+              label: 'Other snapshot',
+              value: `${otherResolved.world.id} (${diff.otherSnapshot.regionFileCount} regions)`,
+            },
+            { label: 'Identical', value: diff.identical ? 'yes' : 'no' },
+            { label: 'Unchanged regions', value: diff.unchanged },
+            { label: 'Added regions', value: diff.added.length },
+            { label: 'Removed regions', value: diff.removed.length },
+            { label: 'Changed regions', value: diff.changed.length },
           ],
         };
       }

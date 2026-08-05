@@ -16,6 +16,7 @@ import type {
 
 const STEP_TYPES = new Set<RecipeStepType>([
   'snapshot-summary',
+  'snapshot-diff',
   'database-catalog',
   'world-features',
   'block-census',
