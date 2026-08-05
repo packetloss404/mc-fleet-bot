@@ -21,11 +21,13 @@ import type {
 
 import { writeHtmlReport } from './html.js';
 import type {
+  CoercedParameters,
   RecipeStep,
   ReportRecipe,
   ReportServiceOptions,
   SubmitReportRequest,
 } from './types.js';
+import { validateAndCoerceParameters } from './recipes.js';
 
 function jobId(): string {
   const stamp = new Date().toISOString()
@@ -33,42 +35,6 @@ function jobId(): string {
     .replaceAll(':', '')
     .replace(/\.\d{3}Z$/, 'Z');
   return `${stamp}-${crypto.randomBytes(3).toString('hex')}`;
-}
-
-function parseBounds(value: unknown): {
-  minX: number;
-  minY: number;
-  minZ: number;
-  maxX: number;
-  maxY: number;
-  maxZ: number;
-} | null {
-  if (value === undefined || value === null || value === '') return null;
-  const entries = Array.isArray(value)
-    ? value.map(Number)
-    : String(value).split(',').map((entry) => Number(entry.trim()));
-  if (entries.length !== 6 || entries.some((entry) => !Number.isInteger(entry))) {
-    throw new DevtoolsError(
-      'bounds must contain six comma-separated integers',
-      'INVALID_BOUNDS',
-    );
-  }
-  const [x1, y1, z1, x2, y2, z2] = entries as [
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-  ];
-  return {
-    minX: Math.min(x1, x2),
-    minY: Math.min(y1, y2),
-    minZ: Math.min(z1, z2),
-    maxX: Math.max(x1, x2),
-    maxY: Math.max(y1, y2),
-    maxZ: Math.max(z1, z2),
-  };
 }
 
 function optionString(
@@ -86,7 +52,10 @@ function optionString(
   return value;
 }
 
-function optionLimit(step: RecipeStep): number {
+function optionLimit(step: RecipeStep, parameters: Record<string, unknown>): number {
+  if (typeof parameters['limit'] === 'number') {
+    return parameters['limit'] as number;
+  }
   const value = Number(step.options?.limit ?? 100_000);
   if (!Number.isInteger(value)) {
     throw new DevtoolsError(
@@ -133,24 +102,7 @@ export class ReportService {
   submit(request: SubmitReportRequest): ReportJob {
     const recipe = this.getRecipe(request.recipeId);
     resolveWorld(this.options.registry, request.serverId, request.worldId);
-    const parameters = request.parameters ?? {};
-    const allowed = new Set(Object.keys(recipe.parameters ?? {}));
-    for (const key of Object.keys(parameters)) {
-      if (!allowed.has(key)) {
-        throw new DevtoolsError(
-          `Recipe ${recipe.id} does not declare parameter ${key}`,
-          'UNKNOWN_PARAMETER',
-        );
-      }
-    }
-    for (const [key, definition] of Object.entries(recipe.parameters ?? {})) {
-      if (definition.required && parameters[key] === undefined) {
-        throw new DevtoolsError(
-          `Recipe ${recipe.id} requires parameter ${key}`,
-          'MISSING_PARAMETER',
-        );
-      }
-    }
+    const parameters = validateAndCoerceParameters(recipe, request.parameters);
     const id = jobId();
     const outputDirectory = path.join(
       this.options.artifactRoot,
@@ -280,14 +232,14 @@ export class ReportService {
         return {
           type: step.type,
           databaseKey: optionString(step, 'database', 'world'),
-          ...exportWorldFeatures(databaseFor(resolved, step), optionLimit(step)),
+          ...exportWorldFeatures(databaseFor(resolved, step), optionLimit(step, job.parameters)),
         };
       case 'block-census':
         return {
           type: step.type,
           ...await censusSnapshot(
             resolved.snapshotDirectory,
-            parseBounds(job.parameters.bounds),
+            (job.parameters['bounds'] as CoercedParameters['bounds'] | undefined) ?? null,
           ),
         };
       case 'html-report': {

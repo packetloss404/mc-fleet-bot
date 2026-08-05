@@ -4,6 +4,7 @@ name: Block Census
 description: Counts block states in copied Anvil files, optionally inside bounds.
 parameters:
   bounds:
+    type: bounds
     description: Optional inclusive x1,y1,z1,x2,y2,z2 box.
     required: false
 steps:

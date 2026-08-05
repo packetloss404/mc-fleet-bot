@@ -74,10 +74,44 @@ describe('recipe parser', () => {
     const recipe = parseRecipe({
       ...baseRecipe,
       parameters: {
-        bounds: { description: 'Inclusive box', required: false },
+        bounds: { type: 'bounds', description: 'Inclusive box', required: false },
       },
     });
     expect(recipe.parameters?.['bounds']?.description).toBe('Inclusive box');
+    expect(recipe.parameters?.['bounds']?.type).toBe('bounds');
+  });
+
+  it('rejects parameter entries without a type', () => {
+    expect(() => parseRecipe({
+      ...baseRecipe,
+      parameters: {
+        bounds: { description: 'No type' },
+      },
+    })).toThrow(/parameter bounds.type must be one of/);
+  });
+
+  it('rejects unknown parameter types', () => {
+    expect(() => parseRecipe({
+      ...baseRecipe,
+      parameters: {
+        bad: { type: 'enum', description: 'x' },
+      },
+    })).toThrow(/parameter bad.type must be one of/);
+  });
+
+  it('validates integer min/max bounds', () => {
+    expect(() => parseRecipe({
+      ...baseRecipe,
+      parameters: {
+        limit: { type: 'integer', description: 'x', min: '100' },
+      },
+    })).toThrow(/parameter limit.min must be an integer/);
+    expect(() => parseRecipe({
+      ...baseRecipe,
+      parameters: {
+        limit: { type: 'integer', description: 'x', min: 100, max: 50 },
+      },
+    })).toThrow(/min must not exceed max/);
   });
 
   it('rejects parameter keys that are not identifiers', () => {

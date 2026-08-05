@@ -7,10 +7,34 @@ export type RecipeStepType =
   | 'block-census'
   | 'html-report';
 
+export type RecipeParameterType = 'string' | 'integer' | 'bounds';
+
 export interface RecipeParameter {
+  type: RecipeParameterType;
   description: string;
   required?: boolean;
+  /** Optional inclusive minimum for `integer` parameters. */
+  min?: number;
+  /** Optional inclusive maximum for `integer` parameters. */
+  max?: number;
 }
+
+export interface CoercedBounds {
+  minX: number;
+  minY: number;
+  minZ: number;
+  maxX: number;
+  maxY: number;
+  maxZ: number;
+}
+
+export type CoercedParameterValue = string | number | CoercedBounds | null;
+
+export type CoercedParameters = {
+  string: string;
+  integer: number;
+  bounds: CoercedBounds | null;
+};
 
 export interface RecipeStep {
   id: string;
