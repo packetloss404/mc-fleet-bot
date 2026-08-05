@@ -25,14 +25,12 @@ export function summarizeSnapshot(directory: string): SnapshotSummary {
       'SNAPSHOT_NOT_FOUND',
     );
   }
-  const filenames = fs.readdirSync(resolved)
+  const filenames = fs
+    .readdirSync(resolved)
     .filter((filename) => REGION_PATTERN.test(filename))
     .sort();
   if (filenames.length === 0) {
-    throw new DevtoolsError(
-      `Snapshot has no Anvil region files: ${resolved}`,
-      'EMPTY_SNAPSHOT',
-    );
+    throw new DevtoolsError(`Snapshot has no Anvil region files: ${resolved}`, 'EMPTY_SNAPSHOT');
   }
   const aggregate = crypto.createHash('sha256');
   const members: SnapshotMember[] = [];
@@ -65,14 +63,15 @@ export function summarizeSnapshot(directory: string): SnapshotSummary {
     regionFileCount: members.length,
     declaredChunkCount: members.reduce((sum, member) => sum + member.declaredChunks, 0),
     bytes: members.reduce((sum, member) => sum + member.bytes, 0),
-    regionBounds: members.length > 0
-      ? {
-          minRegionX: Math.min(...xs),
-          maxRegionX: Math.max(...xs),
-          minRegionZ: Math.min(...zs),
-          maxRegionZ: Math.max(...zs),
-        }
-      : null,
+    regionBounds:
+      members.length > 0
+        ? {
+            minRegionX: Math.min(...xs),
+            maxRegionX: Math.max(...xs),
+            minRegionZ: Math.min(...zs),
+            maxRegionZ: Math.max(...zs),
+          }
+        : null,
     members,
   };
 }

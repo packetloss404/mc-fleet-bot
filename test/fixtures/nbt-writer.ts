@@ -126,12 +126,17 @@ function writePayload(value: NbtValue): Buffer {
 
 function tagTypeCode(value: NbtValue): number {
   switch (value.type) {
-    case 'byte': return TAG_BYTE;
-    case 'short': return TAG_SHORT;
-    case 'int': return TAG_INT;
+    case 'byte':
+      return TAG_BYTE;
+    case 'short':
+      return TAG_SHORT;
+    case 'int':
+      return TAG_INT;
     case 'long':
-    case 'longBigint': return TAG_LONG;
-    case 'string': return TAG_STRING;
+    case 'longBigint':
+      return TAG_LONG;
+    case 'string':
+      return TAG_STRING;
     case 'byteArray':
     case 'intArray':
     case 'longArray': {
@@ -139,8 +144,10 @@ function tagTypeCode(value: NbtValue): number {
       if (value.type === 'intArray') return TAG_INT_ARRAY;
       return TAG_LONG_ARRAY;
     }
-    case 'list': return TAG_LIST;
-    case 'compound': return TAG_COMPOUND;
+    case 'list':
+      return TAG_LIST;
+    case 'compound':
+      return TAG_COMPOUND;
   }
 }
 
@@ -150,11 +157,7 @@ export function writeNamedRootCompound(name: string, value: NbtValue): Buffer {
   }
   const tagHeader = Buffer.alloc(1);
   tagHeader.writeInt8(TAG_COMPOUND, 0);
-  return Buffer.concat([
-    tagHeader,
-    writeShortString(name),
-    writePayload(value),
-  ]);
+  return Buffer.concat([tagHeader, writeShortString(name), writePayload(value)]);
 }
 
 export const NbtTag = {
@@ -166,7 +169,10 @@ export const NbtTag = {
   string: (value: string): NbtValue => ({ type: 'string', value }),
   byteArray: (value: number[]): NbtValue => ({ type: 'byteArray', value }),
   intArray: (value: number[]): NbtValue => ({ type: 'intArray', value }),
-  longArray: (value: Array<[number, number]> | bigint[]): NbtValue => ({ type: 'longArray', value }),
+  longArray: (value: Array<[number, number]> | bigint[]): NbtValue => ({
+    type: 'longArray',
+    value,
+  }),
   list: (childType: number, value: NbtValue[]): NbtValue => ({ type: 'list', childType, value }),
   compound: (value: Array<[string, NbtValue]>): NbtValue => ({ type: 'compound', value }),
 };

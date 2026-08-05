@@ -79,42 +79,46 @@ async function main(): Promise<void> {
     return;
   }
   if (command === 'server' && action === 'list') {
-    print(registry.servers.map((server) => ({
-      id: server.id,
-      name: server.name,
-      worlds: server.worlds.length,
-    })));
+    print(
+      registry.servers.map((server) => ({
+        id: server.id,
+        name: server.name,
+        worlds: server.worlds.length,
+      })),
+    );
     return;
   }
   if (command === 'world' && action === 'list') {
     const serverFilter = flag('server');
-    print(registry.servers
-      .filter((server) => !serverFilter || server.id === serverFilter)
-      .flatMap((server) => server.worlds.map((world) => ({
-        serverId: server.id,
-        id: world.id,
-        name: world.name,
-        dimension: world.dimension,
-        databaseKeys: Object.keys(world.databases ?? {}),
-      }))));
+    print(
+      registry.servers
+        .filter((server) => !serverFilter || server.id === serverFilter)
+        .flatMap((server) =>
+          server.worlds.map((world) => ({
+            serverId: server.id,
+            id: world.id,
+            name: world.name,
+            dimension: world.dimension,
+            databaseKeys: Object.keys(world.databases ?? {}),
+          })),
+        ),
+    );
     return;
   }
   if (command === 'recipe' && action === 'list') {
-    print(service.listRecipes().map((recipe) => ({
-      id: recipe.id,
-      name: recipe.name,
-      description: recipe.description,
-      parameters: recipe.parameters ?? {},
-      steps: recipe.steps.map((step) => step.type),
-    })));
+    print(
+      service.listRecipes().map((recipe) => ({
+        id: recipe.id,
+        name: recipe.name,
+        description: recipe.description,
+        parameters: recipe.parameters ?? {},
+        steps: recipe.steps.map((step) => step.type),
+      })),
+    );
     return;
   }
   if (command === 'snapshot' && action === 'inspect') {
-    const world = resolveWorld(
-      registry,
-      requiredFlag('server'),
-      requiredFlag('world'),
-    );
+    const world = resolveWorld(registry, requiredFlag('server'), requiredFlag('world'));
     print(summarizeSnapshot(world.snapshotDirectory));
     return;
   }

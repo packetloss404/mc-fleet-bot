@@ -36,7 +36,11 @@ export function resolvePaths(options: ResolvePathsOptions): ResolvedPaths {
   const fallbackRegistry = options.exampleRegistryDirectory
     ? path.join(options.exampleRegistryDirectory, 'registry.example.yml')
     : path.join(root, 'config', 'registry.example.yml');
-  const localRegistry = fromRoot(root, env['MC_FLEET_REGISTRY'], path.join(root, 'config', 'registry.local.yml'));
+  const localRegistry = fromRoot(
+    root,
+    env['MC_FLEET_REGISTRY'],
+    path.join(root, 'config', 'registry.local.yml'),
+  );
   const registryFile = exists(localRegistry) ? localRegistry : fallbackRegistry;
   return {
     root,

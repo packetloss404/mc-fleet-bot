@@ -44,7 +44,8 @@ export class JobStore {
   }
 
   list(): ReportJob[] {
-    return fs.readdirSync(this.directory)
+    return fs
+      .readdirSync(this.directory)
       .filter((filename) => filename.endsWith('.json'))
       .map((filename) => {
         try {

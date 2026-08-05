@@ -13,11 +13,7 @@ import {
   walkFiles,
   writeJsonAtomic,
 } from '@mc-fleet/world-core';
-import type {
-  ArtifactManifest,
-  ReportJob,
-  ResolvedWorld,
-} from '@mc-fleet/world-core';
+import type { ArtifactManifest, ReportJob, ResolvedWorld } from '@mc-fleet/world-core';
 
 import { writeHtmlReport } from './html.js';
 import type {
@@ -30,18 +26,15 @@ import type {
 import { validateAndCoerceParameters } from './recipes.js';
 
 function jobId(): string {
-  const stamp = new Date().toISOString()
+  const stamp = new Date()
+    .toISOString()
     .replaceAll('-', '')
     .replaceAll(':', '')
     .replace(/\.\d{3}Z$/, 'Z');
   return `${stamp}-${crypto.randomBytes(3).toString('hex')}`;
 }
 
-function optionString(
-  step: RecipeStep,
-  key: string,
-  fallback?: string,
-): string {
+function optionString(step: RecipeStep, key: string, fallback?: string): string {
   const value = step.options?.[key] ?? fallback;
   if (typeof value !== 'string' || value.trim() === '') {
     throw new DevtoolsError(
@@ -58,18 +51,12 @@ function optionLimit(step: RecipeStep, parameters: Record<string, unknown>): num
   }
   const value = Number(step.options?.limit ?? 100_000);
   if (!Number.isInteger(value)) {
-    throw new DevtoolsError(
-      `Step ${step.id} limit must be an integer`,
-      'INVALID_STEP_OPTION',
-    );
+    throw new DevtoolsError(`Step ${step.id} limit must be an integer`, 'INVALID_STEP_OPTION');
   }
   return value;
 }
 
-function databaseFor(
-  resolved: ResolvedWorld,
-  step: RecipeStep,
-): string {
+function databaseFor(resolved: ResolvedWorld, step: RecipeStep): string {
   const key = optionString(step, 'database', 'world');
   const filename = resolved.databases[key];
   if (!filename) {
@@ -122,28 +109,23 @@ export class ReportService {
       outputDirectory,
       parameters,
       artifacts: [],
-      logs: [{
-        at: new Date().toISOString(),
-        level: 'info',
-        message: 'Report job queued',
-      }],
+      logs: [
+        {
+          at: new Date().toISOString(),
+          level: 'info',
+          message: 'Report job queued',
+        },
+      ],
     });
   }
 
   async run(id: string): Promise<ReportJob> {
     let job = this.options.jobStore.get(id);
     if (job.status !== 'queued') {
-      throw new DevtoolsError(
-        `Job ${id} is ${job.status}, expected queued`,
-        'INVALID_JOB_STATE',
-      );
+      throw new DevtoolsError(`Job ${id} is ${job.status}, expected queued`, 'INVALID_JOB_STATE');
     }
     const recipe = this.getRecipe(job.recipeId);
-    const resolved = resolveWorld(
-      this.options.registry,
-      job.serverId,
-      job.worldId,
-    );
+    const resolved = resolveWorld(this.options.registry, job.serverId, job.worldId);
     ensureFreshDirectory(job.outputDirectory, this.options.artifactRoot);
     job = this.options.jobStore.update(id, {
       status: 'running',
@@ -154,19 +136,10 @@ export class ReportService {
       for (const step of recipe.steps) {
         job = this.options.jobStore.update(id, { currentStep: step.id });
         this.log(id, `Starting ${step.type}`, step.id);
-        const result = await this.executeStep(
-          step,
-          recipe,
-          job,
-          resolved,
-          results,
-        );
+        const result = await this.executeStep(step, recipe, job, resolved, results);
         results[step.id] = result;
         if (step.type !== 'html-report') {
-          writeJsonAtomic(
-            path.join(job.outputDirectory, 'results', `${step.id}.json`),
-            result,
-          );
+          writeJsonAtomic(path.join(job.outputDirectory, 'results', `${step.id}.json`), result);
         }
         this.log(id, `Completed ${step.type}`, step.id);
       }
@@ -181,10 +154,7 @@ export class ReportService {
         results,
       });
       const manifest = this.createManifest(job, resolved, results);
-      writeJsonAtomic(
-        path.join(job.outputDirectory, 'artifact-manifest.json'),
-        manifest,
-      );
+      writeJsonAtomic(path.join(job.outputDirectory, 'artifact-manifest.json'), manifest);
       const artifacts = [
         ...manifest.artifacts.map((artifact) => artifact.path),
         'artifact-manifest.json',
@@ -237,20 +207,14 @@ export class ReportService {
       case 'block-census':
         return {
           type: step.type,
-          ...await censusSnapshot(
+          ...(await censusSnapshot(
             resolved.snapshotDirectory,
             (job.parameters['bounds'] as CoercedParameters['bounds'] | undefined) ?? null,
-          ),
+          )),
         };
       case 'html-report': {
         const title = optionString(step, 'title', recipe.name);
-        const filename = writeHtmlReport(
-          job.outputDirectory,
-          recipe,
-          job,
-          results,
-          title,
-        );
+        const filename = writeHtmlReport(job.outputDirectory, recipe, job, results, title);
         return {
           type: step.type,
           title,
@@ -265,11 +229,12 @@ export class ReportService {
     resolved: ResolvedWorld,
     results: Record<string, unknown>,
   ): ArtifactManifest {
-    const snapshotResult = Object.values(results).find((value) => (
-      value
-      && typeof value === 'object'
-      && (value as Record<string, unknown>).type === 'snapshot-summary'
-    )) as Record<string, unknown> | undefined;
+    const snapshotResult = Object.values(results).find(
+      (value) =>
+        value &&
+        typeof value === 'object' &&
+        (value as Record<string, unknown>).type === 'snapshot-summary',
+    ) as Record<string, unknown> | undefined;
     return {
       schemaVersion: 1,
       jobId: job.id,
@@ -279,9 +244,8 @@ export class ReportService {
         serverId: job.serverId,
         worldId: job.worldId,
         snapshotDirectory: resolved.snapshotDirectory,
-        snapshotSha256: typeof snapshotResult?.sha256 === 'string'
-          ? snapshotResult.sha256
-          : undefined,
+        snapshotSha256:
+          typeof snapshotResult?.sha256 === 'string' ? snapshotResult.sha256 : undefined,
       },
       artifacts: walkFiles(job.outputDirectory)
         .filter((filename) => path.basename(filename) !== 'artifact-manifest.json')

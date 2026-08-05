@@ -11,8 +11,10 @@
     "build": "npm run build:packages && npm run build:apps",
     "build:packages": "npm run build -w @mc-fleet/world-core && npm run build -w @mc-fleet/anvil && npm run build -w @mc-fleet/catalog && npm run build -w @mc-fleet/reporting",
     "build:apps": "npm run build -w @mc-fleet/cli && npm run build -w @mc-fleet/api && npm run build -w @mc-fleet/dashboard",
-    "check": "npm run build && npm run test",
+    "check": "npm run build && npm run test && npm run format:check",
     "test": "vitest run",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "dev": "npm run build:packages && tsx apps/api/src/index.ts",
     "start": "node apps/api/dist/index.js",
     "cli": "npm run build:packages --silent && tsx apps/cli/src/index.ts"
@@ -31,6 +33,7 @@
     "@types/express": "^5.0.0",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^22.0.0",
+    "prettier": "^3.9.6",
     "tsx": "^4.19.0",
     "typescript": "^5.7.0",
     "vitest": "^3.1.1"

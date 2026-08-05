@@ -3,12 +3,13 @@ const state = {
 };
 
 const $ = (selector) => document.querySelector(selector);
-const escapeHtml = (value) => String(value ?? '')
-  .replaceAll('&', '&amp;')
-  .replaceAll('<', '&lt;')
-  .replaceAll('>', '&gt;')
-  .replaceAll('"', '&quot;')
-  .replaceAll("'", '&#039;');
+const escapeHtml = (value) =>
+  String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
 
 function formatDate(value) {
   if (!value) return '—';
@@ -22,9 +23,9 @@ function formatDate(value) {
 
 function renderOverview(data) {
   state.overview = data;
-  const worlds = data.servers.flatMap((server) => (
-    server.worlds.map((world) => ({ ...world, serverId: server.id, serverName: server.name }))
-  ));
+  const worlds = data.servers.flatMap((server) =>
+    server.worlds.map((world) => ({ ...world, serverId: server.id, serverName: server.name })),
+  );
   $('#server-count').textContent = String(data.servers.length);
   $('#world-count').textContent = String(worlds.length);
   $('#recipe-count').textContent = String(data.recipes.length);
@@ -38,7 +39,9 @@ function renderOverview(data) {
       : 'The serialized report worker is idle and ready.';
 
   $('#world-grid').innerHTML = worlds.length
-    ? worlds.map((world) => `
+    ? worlds
+        .map(
+          (world) => `
       <article class="world-card">
         <p class="eyebrow">${escapeHtml(world.serverName)}</p>
         <h3>${escapeHtml(world.name)}</h3>
@@ -48,22 +51,30 @@ function renderOverview(data) {
           <span>${world.databaseKeys.length} database${world.databaseKeys.length === 1 ? '' : 's'}</span>
         </div>
       </article>
-    `).join('')
+    `,
+        )
+        .join('')
     : '<p>No worlds are registered.</p>';
 
   $('#recipe-grid').innerHTML = data.recipes.length
-    ? data.recipes.map((recipe) => `
+    ? data.recipes
+        .map(
+          (recipe) => `
       <article class="recipe-card">
         <p class="eyebrow">${recipe.steps.length} step${recipe.steps.length === 1 ? '' : 's'}</p>
         <h3>${escapeHtml(recipe.name)}</h3>
         <p>${escapeHtml(recipe.description)}</p>
         <button class="ghost run-recipe" data-recipe="${escapeHtml(recipe.id)}">Run recipe</button>
       </article>
-    `).join('')
+    `,
+        )
+        .join('')
     : '<p>No recipes were found.</p>';
 
   $('#job-rows').innerHTML = data.jobs.length
-    ? data.jobs.map((job) => `
+    ? data.jobs
+        .map(
+          (job) => `
       <tr>
         <td><strong>${escapeHtml(job.recipeName)}</strong><small>${escapeHtml(job.id)}</small></td>
         <td>${escapeHtml(job.serverId)} / ${escapeHtml(job.worldId)}</td>
@@ -71,7 +82,9 @@ function renderOverview(data) {
         <td><span class="status ${escapeHtml(job.status)}">${escapeHtml(job.status)}</span>${job.currentStep ? `<small>${escapeHtml(job.currentStep)}</small>` : ''}</td>
         <td>${job.reportUrl ? `<a class="artifact-link" href="${escapeHtml(job.reportUrl)}" target="_blank" rel="noreferrer">Open report ↗</a>` : job.error ? `<small title="${escapeHtml(job.error)}">See job error</small>` : '—'}</td>
       </tr>
-    `).join('')
+    `,
+        )
+        .join('')
     : '<tr><td colspan="5">No report jobs yet.</td></tr>';
 
   fillDialog();
@@ -82,18 +95,18 @@ function fillDialog(preselectedRecipe) {
   if (!data) return;
   const serverSelect = $('#server-select');
   const previousServer = serverSelect.value;
-  serverSelect.innerHTML = data.servers.map((server) => (
-    `<option value="${escapeHtml(server.id)}">${escapeHtml(server.name)}</option>`
-  )).join('');
+  serverSelect.innerHTML = data.servers
+    .map((server) => `<option value="${escapeHtml(server.id)}">${escapeHtml(server.name)}</option>`)
+    .join('');
   if (data.servers.some((server) => server.id === previousServer)) {
     serverSelect.value = previousServer;
   }
   fillWorlds();
   const recipeSelect = $('#recipe-select');
   const previousRecipe = preselectedRecipe || recipeSelect.value;
-  recipeSelect.innerHTML = data.recipes.map((recipe) => (
-    `<option value="${escapeHtml(recipe.id)}">${escapeHtml(recipe.name)}</option>`
-  )).join('');
+  recipeSelect.innerHTML = data.recipes
+    .map((recipe) => `<option value="${escapeHtml(recipe.id)}">${escapeHtml(recipe.name)}</option>`)
+    .join('');
   if (data.recipes.some((recipe) => recipe.id === previousRecipe)) {
     recipeSelect.value = previousRecipe;
   }
@@ -104,9 +117,9 @@ function fillWorlds() {
   const data = state.overview;
   if (!data) return;
   const server = data.servers.find((candidate) => candidate.id === $('#server-select').value);
-  $('#world-select').innerHTML = (server?.worlds || []).map((world) => (
-    `<option value="${escapeHtml(world.id)}">${escapeHtml(world.name)}</option>`
-  )).join('');
+  $('#world-select').innerHTML = (server?.worlds || [])
+    .map((world) => `<option value="${escapeHtml(world.id)}">${escapeHtml(world.name)}</option>`)
+    .join('');
 }
 
 function toggleParameters() {

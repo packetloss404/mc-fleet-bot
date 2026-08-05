@@ -21,11 +21,13 @@ describe('anvil census decoder', () => {
     fs.writeFileSync(
       path.join(directory, 'r.0.0.mca'),
       buildRegion({
-        sections: [{
-          y: 0,
-          palette: [{ Name: 'minecraft:stone' }, { Name: 'minecraft:dirt' }],
-          blocks,
-        }],
+        sections: [
+          {
+            y: 0,
+            palette: [{ Name: 'minecraft:stone' }, { Name: 'minecraft:dirt' }],
+            blocks,
+          },
+        ],
       }),
     );
     const summary = summarizeSnapshot(directory);
@@ -47,17 +49,23 @@ describe('anvil census decoder', () => {
     fs.writeFileSync(
       path.join(directory, 'r.0.0.mca'),
       buildRegion({
-        sections: [{
-          y: 4,
-          palette: [{ Name: 'minecraft:stone' }],
-        }],
+        sections: [
+          {
+            y: 4,
+            palette: [{ Name: 'minecraft:stone' }],
+          },
+        ],
       }),
     );
     // Chunk is at (0,0), so its world XZ range is 0..15. With bounds
     // X [-5, 5] and Z [-5, 5] the intersection is 6 × 16 × 6 = 576.
     const census = await censusSnapshot(directory, {
-      minX: -5, minY: 0, minZ: -5,
-      maxX: 5, maxY: 200, maxZ: 5,
+      minX: -5,
+      minY: 0,
+      minZ: -5,
+      maxX: 5,
+      maxY: 200,
+      maxZ: 5,
     });
     expect(census.complete).toBe(true);
     expect(census.sectionsDecoded).toBe(1);
@@ -69,15 +77,21 @@ describe('anvil census decoder', () => {
     fs.writeFileSync(
       path.join(directory, 'r.0.0.mca'),
       buildRegion({
-        sections: [{
-          y: 0,
-          palette: [{ Name: 'minecraft:stone' }],
-        }],
+        sections: [
+          {
+            y: 0,
+            palette: [{ Name: 'minecraft:stone' }],
+          },
+        ],
       }),
     );
     const census = await censusSnapshot(directory, {
-      minX: -100, minY: 200, minZ: -100,
-      maxX: 100, maxY: 300, maxZ: 100,
+      minX: -100,
+      minY: 200,
+      minZ: -100,
+      maxX: 100,
+      maxY: 300,
+      maxZ: 100,
     });
     expect(census.sectionsDecoded).toBe(0);
     expect(census.blocksCounted).toBe(0);

@@ -10,7 +10,5 @@ if (!Number.isInteger(port) || port < 1 || port > 65535) {
 const context = createContext();
 const app = createApp(context);
 app.listen(port, host, () => {
-  process.stdout.write(
-    `MC Fleet Devtools listening on http://${host}:${port} (read-only)\n`,
-  );
+  process.stdout.write(`MC Fleet Devtools listening on http://${host}:${port} (read-only)\n`);
 });

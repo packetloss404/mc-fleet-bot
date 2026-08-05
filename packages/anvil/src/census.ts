@@ -40,12 +40,7 @@ function asBigInt(value: unknown): bigint {
     const low = Number(value[1]) >>> 0;
     return (BigInt(high) << 32n) | BigInt(low);
   }
-  if (
-    value
-    && typeof value === 'object'
-    && 'high' in value
-    && 'low' in value
-  ) {
+  if (value && typeof value === 'object' && 'high' in value && 'low' in value) {
     const pair = value as { high: number; low: number };
     return (BigInt(pair.high | 0) << 32n) | BigInt(pair.low >>> 0);
   }
@@ -54,11 +49,16 @@ function asBigInt(value: unknown): bigint {
 
 function decompress(type: number, payload: Buffer): Buffer {
   switch (type) {
-    case 1: return zlib.gunzipSync(payload);
-    case 2: return zlib.inflateSync(payload);
-    case 3: return payload;
-    case 4: return zlib.brotliDecompressSync(payload);
-    default: throw new Error(`Unsupported Anvil compression type ${type}`);
+    case 1:
+      return zlib.gunzipSync(payload);
+    case 2:
+      return zlib.inflateSync(payload);
+    case 3:
+      return payload;
+    case 4:
+      return zlib.brotliDecompressSync(payload);
+    default:
+      throw new Error(`Unsupported Anvil compression type ${type}`);
   }
 }
 
@@ -71,13 +71,14 @@ function blockLabel(entry: PaletteEntry | undefined): string {
 }
 
 function inside(bounds: BlockBounds | null, x: number, y: number, z: number): boolean {
-  return !bounds || (
-    x >= bounds.minX
-    && x <= bounds.maxX
-    && y >= bounds.minY
-    && y <= bounds.maxY
-    && z >= bounds.minZ
-    && z <= bounds.maxZ
+  return (
+    !bounds ||
+    (x >= bounds.minX &&
+      x <= bounds.maxX &&
+      y >= bounds.minY &&
+      y <= bounds.maxY &&
+      z >= bounds.minZ &&
+      z <= bounds.maxZ)
   );
 }
 
@@ -87,11 +88,7 @@ function validateBounds(bounds: BlockBounds | null): void {
   if (!values.every(Number.isInteger)) {
     throw new DevtoolsError('Census bounds must be integers', 'INVALID_BOUNDS');
   }
-  if (
-    bounds.minX > bounds.maxX
-    || bounds.minY > bounds.maxY
-    || bounds.minZ > bounds.maxZ
-  ) {
+  if (bounds.minX > bounds.maxX || bounds.minY > bounds.maxY || bounds.minZ > bounds.maxZ) {
     throw new DevtoolsError('Census minimum bounds must not exceed maximums', 'INVALID_BOUNDS');
   }
 }
@@ -151,10 +148,7 @@ function countSection(
   return counted;
 }
 
-async function parseChunk(
-  region: Buffer,
-  slot: number,
-): Promise<SimplifiedChunk | null> {
+async function parseChunk(region: Buffer, slot: number): Promise<SimplifiedChunk | null> {
   const headerOffset = slot * 4;
   const sectorOffset = region.readUIntBE(headerOffset, 3);
   const sectorCount = region[headerOffset + 3] ?? 0;
@@ -176,9 +170,10 @@ async function parseChunk(
   const root = nbt.simplify(parsed.parsed) as Record<string, unknown>;
   // Pre-1.17 Anvil wraps the chunk in a `Level` compound; 1.17+ stores the
   // chunk fields directly on the root. Accept both shapes.
-  const inner = (root['Level'] && typeof root['Level'] === 'object'
-    ? root['Level'] as Record<string, unknown>
-    : root);
+  const inner =
+    root['Level'] && typeof root['Level'] === 'object'
+      ? (root['Level'] as Record<string, unknown>)
+      : root;
   return inner as SimplifiedChunk;
 }
 
@@ -215,13 +210,11 @@ export async function censusSnapshot(
       const chunkX = member.regionX * 32 + localX;
       const chunkZ = member.regionZ * 32 + localZ;
       if (
-        bounds
-        && (
-          chunkX * 16 > bounds.maxX
-          || chunkX * 16 + 15 < bounds.minX
-          || chunkZ * 16 > bounds.maxZ
-          || chunkZ * 16 + 15 < bounds.minZ
-        )
+        bounds &&
+        (chunkX * 16 > bounds.maxX ||
+          chunkX * 16 + 15 < bounds.minX ||
+          chunkZ * 16 > bounds.maxZ ||
+          chunkZ * 16 + 15 < bounds.minZ)
       ) {
         continue;
       }
@@ -232,10 +225,7 @@ export async function censusSnapshot(
         chunksDecoded += 1;
         for (const section of chunk.Sections ?? chunk.sections ?? []) {
           const y = Number(section.Y) * 16;
-          if (
-            bounds
-            && (y > bounds.maxY || y + 15 < bounds.minY)
-          ) {
+          if (bounds && (y > bounds.maxY || y + 15 < bounds.minY)) {
             continue;
           }
           if (!section.block_states?.palette?.length) continue;

@@ -4,11 +4,7 @@ import path from 'node:path';
 import { DevtoolsError, sha256File } from '@mc-fleet/world-core';
 import Database from 'better-sqlite3';
 
-import type {
-  DatabaseCatalog,
-  DatabaseObjectSchema,
-  WorldFeatureExport,
-} from './types.js';
+import type { DatabaseCatalog, DatabaseObjectSchema, WorldFeatureExport } from './types.js';
 
 function quoteIdentifier(value: string): string {
   return `"${value.replaceAll('"', '""')}"`;
@@ -47,19 +43,23 @@ export function catalogDatabase(filename: string): DatabaseCatalog {
   const resolved = path.resolve(filename);
   const database = openReadOnly(resolved);
   try {
-    const schema = database.prepare(`
+    const schema = database
+      .prepare(
+        `
       SELECT name, type, sql
       FROM sqlite_master
       WHERE type IN ('table', 'view')
         AND name NOT LIKE 'sqlite_%'
       ORDER BY type, name
-    `).all() as DatabaseObjectSchema[];
+    `,
+      )
+      .all() as DatabaseObjectSchema[];
     const tableCounts: Record<string, number> = {};
     for (const item of schema) {
       if (item.type !== 'table') continue;
-      const row = database.prepare(
-        `SELECT COUNT(*) AS count FROM ${quoteIdentifier(item.name)}`,
-      ).get() as { count: number | bigint };
+      const row = database
+        .prepare(`SELECT COUNT(*) AS count FROM ${quoteIdentifier(item.name)}`)
+        .get() as { count: number | bigint };
       tableCounts[item.name] = Number(row.count);
     }
     const checks = database.pragma('quick_check') as Array<Record<string, unknown>>;
@@ -76,10 +76,7 @@ export function catalogDatabase(filename: string): DatabaseCatalog {
   }
 }
 
-export function exportWorldFeatures(
-  filename: string,
-  limit = 100_000,
-): WorldFeatureExport {
+export function exportWorldFeatures(filename: string, limit = 100_000): WorldFeatureExport {
   if (!Number.isInteger(limit) || limit < 1 || limit > 1_000_000) {
     throw new DevtoolsError(
       'Feature export limit must be an integer from 1 to 1,000,000',
@@ -89,11 +86,15 @@ export function exportWorldFeatures(
   const resolved = path.resolve(filename);
   const database = openReadOnly(resolved);
   try {
-    const exists = database.prepare(`
+    const exists = database
+      .prepare(
+        `
       SELECT 1 AS present
       FROM sqlite_master
       WHERE type = 'table' AND name = 'world_features'
-    `).get() as { present: number } | undefined;
+    `,
+      )
+      .get() as { present: number } | undefined;
     if (!exists) {
       throw new DevtoolsError(
         'Database does not contain a world_features table',
@@ -104,13 +105,13 @@ export function exportWorldFeatures(
       name: string;
     }>;
     const columns = columnRows.map((row) => row.name);
-    const count = database.prepare(
-      'SELECT COUNT(*) AS count FROM world_features',
-    ).get() as { count: number | bigint };
+    const count = database.prepare('SELECT COUNT(*) AS count FROM world_features').get() as {
+      count: number | bigint;
+    };
     const total = Number(count.count);
-    const rows = database.prepare(
-      'SELECT * FROM world_features ORDER BY rowid LIMIT ?',
-    ).all(limit) as Array<Record<string, unknown>>;
+    const rows = database
+      .prepare('SELECT * FROM world_features ORDER BY rowid LIMIT ?')
+      .all(limit) as Array<Record<string, unknown>>;
     return {
       database: resolved,
       table: 'world_features',
@@ -118,9 +119,9 @@ export function exportWorldFeatures(
       total,
       truncated: total > rows.length,
       columns,
-      records: rows.map((row) => Object.fromEntries(
-        Object.entries(row).map(([key, value]) => [key, jsonValue(value)]),
-      )),
+      records: rows.map((row) =>
+        Object.fromEntries(Object.entries(row).map(([key, value]) => [key, jsonValue(value)])),
+      ),
     };
   } finally {
     database.close();

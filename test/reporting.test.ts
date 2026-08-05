@@ -14,17 +14,21 @@ describe('recipe-driven reports', () => {
     fs.writeFileSync(path.join(snapshot, 'r.0.0.mca'), Buffer.alloc(8192));
     const registry = parseRegistry({
       version: 1,
-      servers: [{
-        id: 'demo',
-        name: 'Demo',
-        connector: { kind: 'local', root },
-        worlds: [{
-          id: 'main',
-          name: 'Main',
-          dimension: 'minecraft:overworld',
-          snapshot: 'snapshots/latest/region',
-        }],
-      }],
+      servers: [
+        {
+          id: 'demo',
+          name: 'Demo',
+          connector: { kind: 'local', root },
+          worlds: [
+            {
+              id: 'main',
+              name: 'Main',
+              dimension: 'minecraft:overworld',
+              snapshot: 'snapshots/latest/region',
+            },
+          ],
+        },
+      ],
     });
     const recipe = parseRecipe({
       version: 1,
@@ -52,10 +56,9 @@ describe('recipe-driven reports', () => {
     expect(completed.status).toBe('completed');
     expect(completed.artifacts).toContain('report.html');
     expect(completed.artifacts).toContain('artifact-manifest.json');
-    const manifest = JSON.parse(fs.readFileSync(
-      path.join(completed.outputDirectory, 'artifact-manifest.json'),
-      'utf8',
-    )) as { source: { snapshotSha256: string }; artifacts: unknown[] };
+    const manifest = JSON.parse(
+      fs.readFileSync(path.join(completed.outputDirectory, 'artifact-manifest.json'), 'utf8'),
+    ) as { source: { snapshotSha256: string }; artifacts: unknown[] };
     expect(manifest.source.snapshotSha256).toMatch(/^[a-f0-9]{64}$/);
     expect(manifest.artifacts.length).toBeGreaterThan(1);
   });
@@ -67,18 +70,22 @@ describe('recipe-driven reports', () => {
     fs.writeFileSync(path.join(snapshot, 'r.0.0.mca'), Buffer.alloc(8192));
     const registry = parseRegistry({
       version: 1,
-      servers: [{
-        id: 'demo',
-        name: 'Demo',
-        connector: { kind: 'local', root },
-        worlds: [{
-          id: 'main',
-          name: 'Main',
-          dimension: 'minecraft:overworld',
-          snapshot: 'snapshots/latest/region',
-          databases: { world: 'missing.db' },
-        }],
-      }],
+      servers: [
+        {
+          id: 'demo',
+          name: 'Demo',
+          connector: { kind: 'local', root },
+          worlds: [
+            {
+              id: 'main',
+              name: 'Main',
+              dimension: 'minecraft:overworld',
+              snapshot: 'snapshots/latest/region',
+              databases: { world: 'missing.db' },
+            },
+          ],
+        },
+      ],
     });
     const recipe = parseRecipe({
       version: 1,

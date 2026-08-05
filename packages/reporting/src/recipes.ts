@@ -40,56 +40,62 @@ function parseParameters(input: unknown, filename: string): Record<string, Recip
   if (!input || typeof input !== 'object' || Array.isArray(input)) {
     throw new DevtoolsError(`${filename}: parameters must be a map`, 'INVALID_RECIPE');
   }
-  return Object.fromEntries(Object.entries(input).map(([key, value]) => {
-    assertIdentifier(key, 'recipe parameter');
-    if (!value || typeof value !== 'object' || Array.isArray(value)) {
-      throw new DevtoolsError(
-        `${filename}: parameter ${key} must be an object`,
-        'INVALID_RECIPE',
-      );
-    }
-    const record = value as Record<string, unknown>;
-    const typeValue = record['type'];
-    if (typeof typeValue !== 'string' || !PARAMETER_TYPES.has(typeValue as RecipeParameterType)) {
-      throw new DevtoolsError(
-        `${filename}: parameter ${key}.type must be one of string, integer, bounds`,
-        'INVALID_RECIPE',
-      );
-    }
-    const parameter: RecipeParameter = {
-      type: typeValue as RecipeParameterType,
-      description: requiredString(
-        record.description,
-        `${filename}: parameters.${key}.description`,
-      ),
-      required: record.required === true,
-    };
-    if (record['min'] !== undefined) {
-      if (typeof record['min'] !== 'number' || !Number.isInteger(record['min'])) {
+  return Object.fromEntries(
+    Object.entries(input).map(([key, value]) => {
+      assertIdentifier(key, 'recipe parameter');
+      if (!value || typeof value !== 'object' || Array.isArray(value)) {
         throw new DevtoolsError(
-          `${filename}: parameter ${key}.min must be an integer`,
+          `${filename}: parameter ${key} must be an object`,
           'INVALID_RECIPE',
         );
       }
-      parameter.min = record['min'] as number;
-    }
-    if (record['max'] !== undefined) {
-      if (typeof record['max'] !== 'number' || !Number.isInteger(record['max'])) {
+      const record = value as Record<string, unknown>;
+      const typeValue = record['type'];
+      if (typeof typeValue !== 'string' || !PARAMETER_TYPES.has(typeValue as RecipeParameterType)) {
         throw new DevtoolsError(
-          `${filename}: parameter ${key}.max must be an integer`,
+          `${filename}: parameter ${key}.type must be one of string, integer, bounds`,
           'INVALID_RECIPE',
         );
       }
-      parameter.max = record['max'] as number;
-    }
-    if (parameter.min !== undefined && parameter.max !== undefined && parameter.min > parameter.max) {
-      throw new DevtoolsError(
-        `${filename}: parameter ${key}.min must not exceed max`,
-        'INVALID_RECIPE',
-      );
-    }
-    return [key, parameter];
-  }));
+      const parameter: RecipeParameter = {
+        type: typeValue as RecipeParameterType,
+        description: requiredString(
+          record.description,
+          `${filename}: parameters.${key}.description`,
+        ),
+        required: record.required === true,
+      };
+      if (record['min'] !== undefined) {
+        if (typeof record['min'] !== 'number' || !Number.isInteger(record['min'])) {
+          throw new DevtoolsError(
+            `${filename}: parameter ${key}.min must be an integer`,
+            'INVALID_RECIPE',
+          );
+        }
+        parameter.min = record['min'] as number;
+      }
+      if (record['max'] !== undefined) {
+        if (typeof record['max'] !== 'number' || !Number.isInteger(record['max'])) {
+          throw new DevtoolsError(
+            `${filename}: parameter ${key}.max must be an integer`,
+            'INVALID_RECIPE',
+          );
+        }
+        parameter.max = record['max'] as number;
+      }
+      if (
+        parameter.min !== undefined &&
+        parameter.max !== undefined &&
+        parameter.min > parameter.max
+      ) {
+        throw new DevtoolsError(
+          `${filename}: parameter ${key}.min must not exceed max`,
+          'INVALID_RECIPE',
+        );
+      }
+      return [key, parameter];
+    }),
+  );
 }
 
 export function parseRecipe(input: unknown, filename = '<memory>'): ReportRecipe {
@@ -108,10 +114,7 @@ export function parseRecipe(input: unknown, filename = '<memory>'): ReportRecipe
   const stepIds = new Set<string>();
   const steps: RecipeStep[] = value.steps.map((inputStep, index) => {
     if (!inputStep || typeof inputStep !== 'object' || Array.isArray(inputStep)) {
-      throw new DevtoolsError(
-        `${filename}: steps[${index}] must be an object`,
-        'INVALID_RECIPE',
-      );
+      throw new DevtoolsError(`${filename}: steps[${index}] must be an object`, 'INVALID_RECIPE');
     }
     const step = inputStep as Record<string, unknown>;
     const stepId = requiredString(step.id, `${filename}: steps[${index}].id`);
@@ -120,19 +123,13 @@ export function parseRecipe(input: unknown, filename = '<memory>'): ReportRecipe
       throw new DevtoolsError(`${filename}: duplicate step ${stepId}`, 'INVALID_RECIPE');
     }
     stepIds.add(stepId);
-    const type = requiredString(
-      step.type,
-      `${filename}: steps[${index}].type`,
-    ) as RecipeStepType;
+    const type = requiredString(step.type, `${filename}: steps[${index}].type`) as RecipeStepType;
     if (!STEP_TYPES.has(type)) {
-      throw new DevtoolsError(
-        `${filename}: unsupported step type ${type}`,
-        'UNSUPPORTED_STEP',
-      );
+      throw new DevtoolsError(`${filename}: unsupported step type ${type}`, 'UNSUPPORTED_STEP');
     }
     if (
-      step.options !== undefined
-      && (!step.options || typeof step.options !== 'object' || Array.isArray(step.options))
+      step.options !== undefined &&
+      (!step.options || typeof step.options !== 'object' || Array.isArray(step.options))
     ) {
       throw new DevtoolsError(
         `${filename}: steps[${index}].options must be a map`,
@@ -161,7 +158,8 @@ export function loadRecipes(directory: string): ReportRecipe[] {
   if (!fs.existsSync(resolved) || !fs.statSync(resolved).isDirectory()) {
     throw new DevtoolsError(`Recipe directory not found: ${resolved}`, 'RECIPES_NOT_FOUND');
   }
-  const recipes = fs.readdirSync(resolved)
+  const recipes = fs
+    .readdirSync(resolved)
     .filter((filename) => /\.ya?ml$/i.test(filename))
     .sort()
     .map((filename) => {
@@ -255,14 +253,12 @@ export function validateAndCoerceParameters(
   return coerced;
 }
 
-function parseBoundsParameter(
-  recipeId: string,
-  key: string,
-  value: unknown,
-): CoercedBounds {
+function parseBoundsParameter(recipeId: string, key: string, value: unknown): CoercedBounds {
   const entries = Array.isArray(value)
     ? value.map((entry) => Number(entry))
-    : String(value).split(',').map((entry) => Number(entry.trim()));
+    : String(value)
+        .split(',')
+        .map((entry) => Number(entry.trim()));
   if (entries.length !== 6 || entries.some((entry) => !Number.isInteger(entry))) {
     throw new DevtoolsError(
       `Recipe ${recipeId} parameter ${key} must contain six comma-separated integers`,

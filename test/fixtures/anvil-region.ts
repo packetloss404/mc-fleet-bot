@@ -41,9 +41,10 @@ export function buildRegion(spec: RegionSpec): Buffer {
     throw new Error(`slot must be in 0..1023 (got ${slot})`);
   }
   const chunkRoot = NbtTag.compound([
-    ['Level', NbtTag.compound([
-      ['Sections', NbtTag.list(0x0a, spec.sections.map(buildSectionCompound))],
-    ])],
+    [
+      'Level',
+      NbtTag.compound([['Sections', NbtTag.list(0x0a, spec.sections.map(buildSectionCompound))]]),
+    ],
   ]);
   const nbtBuffer = writeNamedRootCompound('', chunkRoot);
   const compressed = zlib.deflateSync(nbtBuffer);
@@ -71,9 +72,10 @@ function buildSectionCompound(section: SectionSpec): NbtValue {
   if (section.palette.length === 1) {
     return NbtTag.compound([
       ['Y', NbtTag.byte(section.y)],
-      ['block_states', NbtTag.compound([
-        ['palette', NbtTag.list(0x0a, [paletteToCompound(section.palette[0]!)])],
-      ])],
+      [
+        'block_states',
+        NbtTag.compound([['palette', NbtTag.list(0x0a, [paletteToCompound(section.palette[0]!)])]]),
+      ],
     ]);
   }
   const blocks = section.blocks ?? new Array<number>(4096).fill(0);
@@ -88,16 +90,19 @@ function buildSectionCompound(section: SectionSpec): NbtValue {
   for (let blockIndex = 0; blockIndex < 4096; blockIndex += 1) {
     const longIndex = Math.floor(blockIndex / valuesPerLong);
     const shift = BigInt((blockIndex % valuesPerLong) * bits);
-    const next = (longs[longIndex]! & ~(mask << shift))
-      | (BigInt(blocks[blockIndex]!) & mask) << shift;
+    const next =
+      (longs[longIndex]! & ~(mask << shift)) | ((BigInt(blocks[blockIndex]!) & mask) << shift);
     longs[longIndex] = next;
   }
   return NbtTag.compound([
     ['Y', NbtTag.byte(section.y)],
-    ['block_states', NbtTag.compound([
-      ['palette', NbtTag.list(0x0a, section.palette.map(paletteToCompound))],
-      ['data', NbtTag.longArray(longs)],
-    ])],
+    [
+      'block_states',
+      NbtTag.compound([
+        ['palette', NbtTag.list(0x0a, section.palette.map(paletteToCompound))],
+        ['data', NbtTag.longArray(longs)],
+      ]),
+    ],
   ]);
 }
 

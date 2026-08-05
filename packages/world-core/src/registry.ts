@@ -4,17 +4,9 @@ import yaml from 'js-yaml';
 
 import { DevtoolsError } from './errors.js';
 import { assertIdentifier, resolveInside } from './files.js';
-import type {
-  FleetRegistry,
-  ResolvedWorld,
-  ServerDefinition,
-  WorldDefinition,
-} from './types.js';
+import type { FleetRegistry, ResolvedWorld, ServerDefinition, WorldDefinition } from './types.js';
 
-function requireString(
-  value: unknown,
-  field: string,
-): asserts value is string {
+function requireString(value: unknown, field: string): asserts value is string {
   if (typeof value !== 'string' || value.trim() === '') {
     throw new DevtoolsError(`${field} must be a non-empty string`, 'INVALID_REGISTRY');
   }
@@ -71,10 +63,7 @@ function parseServer(input: unknown, field: string): ServerDefinition {
   }
   requireString(connector.root, `${field}.connector.root`);
   if (!path.isAbsolute(connector.root)) {
-    throw new DevtoolsError(
-      `${field}.connector.root must be absolute`,
-      'INVALID_REGISTRY',
-    );
+    throw new DevtoolsError(`${field}.connector.root must be absolute`, 'INVALID_REGISTRY');
   }
   if (!Array.isArray(value.worlds) || value.worlds.length === 0) {
     throw new DevtoolsError(`${field}.worlds must be a non-empty list`, 'INVALID_REGISTRY');
@@ -124,11 +113,9 @@ export function parseRegistry(input: unknown): FleetRegistry {
 export function loadRegistry(filename: string): FleetRegistry {
   const resolved = path.resolve(filename);
   if (!fs.existsSync(resolved)) {
-    throw new DevtoolsError(
-      `Registry file not found: ${resolved}`,
-      'REGISTRY_NOT_FOUND',
-      { filename: resolved },
-    );
+    throw new DevtoolsError(`Registry file not found: ${resolved}`, 'REGISTRY_NOT_FOUND', {
+      filename: resolved,
+    });
   }
   return parseRegistry(yaml.load(fs.readFileSync(resolved, 'utf8')));
 }
@@ -144,10 +131,7 @@ export function resolveWorld(
   }
   const world = server.worlds.find((candidate) => candidate.id === worldId);
   if (!world) {
-    throw new DevtoolsError(
-      `Unknown world ${worldId} on server ${serverId}`,
-      'WORLD_NOT_FOUND',
-    );
+    throw new DevtoolsError(`Unknown world ${worldId} on server ${serverId}`, 'WORLD_NOT_FOUND');
   }
   const root = server.connector.root;
   const databases = Object.fromEntries(

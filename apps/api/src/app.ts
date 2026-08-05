@@ -6,10 +6,14 @@ import express from 'express';
 
 import type { AppContext } from './context.js';
 
-function publicJob(job: ReportJob, artifactRoot: string): ReportJob & {
+function publicJob(
+  job: ReportJob,
+  artifactRoot: string,
+): ReportJob & {
   reportUrl?: string;
 } {
-  const relative = path.relative(artifactRoot, job.outputDirectory)
+  const relative = path
+    .relative(artifactRoot, job.outputDirectory)
     .split(path.sep)
     .map(encodeURIComponent)
     .join('/');
@@ -84,16 +88,18 @@ export function createApp(context: AppContext): express.Express {
   });
 
   app.get('/api/servers', (_request, response) => {
-    response.json(context.registry.servers.map((server) => ({
-      id: server.id,
-      name: server.name,
-      worlds: server.worlds.map((world) => ({
-        id: world.id,
-        name: world.name,
-        dimension: world.dimension,
-        databaseKeys: Object.keys(world.databases ?? {}),
+    response.json(
+      context.registry.servers.map((server) => ({
+        id: server.id,
+        name: server.name,
+        worlds: server.worlds.map((world) => ({
+          id: world.id,
+          name: world.name,
+          dimension: world.dimension,
+          databaseKeys: Object.keys(world.databases ?? {}),
+        })),
       })),
-    })));
+    );
   });
 
   app.get('/api/recipes', (_request, response) => {
@@ -101,17 +107,12 @@ export function createApp(context: AppContext): express.Express {
   });
 
   app.get('/api/jobs', (_request, response) => {
-    response.json(
-      context.jobStore.list().map((job) => publicJob(job, context.artifactRoot)),
-    );
+    response.json(context.jobStore.list().map((job) => publicJob(job, context.artifactRoot)));
   });
 
   app.get('/api/jobs/:id', (request, response, next) => {
     try {
-      response.json(publicJob(
-        context.jobStore.get(request.params.id),
-        context.artifactRoot,
-      ));
+      response.json(publicJob(context.jobStore.get(request.params.id), context.artifactRoot));
     } catch (error) {
       next(error);
     }
@@ -123,13 +124,10 @@ export function createApp(context: AppContext): express.Express {
       const recipeId = typeof body.recipeId === 'string' ? body.recipeId : '';
       const serverId = typeof body.serverId === 'string' ? body.serverId : '';
       const worldId = typeof body.worldId === 'string' ? body.worldId : '';
-      const parameters = (
-        body.parameters
-        && typeof body.parameters === 'object'
-        && !Array.isArray(body.parameters)
-      )
-        ? body.parameters as Record<string, unknown>
-        : {};
+      const parameters =
+        body.parameters && typeof body.parameters === 'object' && !Array.isArray(body.parameters)
+          ? (body.parameters as Record<string, unknown>)
+          : {};
       const job = context.service.submit({
         recipeId,
         serverId,
@@ -143,35 +141,42 @@ export function createApp(context: AppContext): express.Express {
     }
   });
 
-  app.use('/artifacts', express.static(context.artifactRoot, {
-    dotfiles: 'deny',
-    fallthrough: false,
-    index: false,
-  }));
-  app.use(express.static(context.dashboardDirectory, {
-    dotfiles: 'deny',
-    index: 'index.html',
-  }));
+  app.use(
+    '/artifacts',
+    express.static(context.artifactRoot, {
+      dotfiles: 'deny',
+      fallthrough: false,
+      index: false,
+    }),
+  );
+  app.use(
+    express.static(context.dashboardDirectory, {
+      dotfiles: 'deny',
+      index: 'index.html',
+    }),
+  );
 
-  app.use((
-    error: unknown,
-    _request: express.Request,
-    response: express.Response,
-    _next: express.NextFunction,
-  ) => {
-    if (error instanceof DevtoolsError) {
-      response.status(error.code.endsWith('_NOT_FOUND') ? 404 : 400).json({
-        error: error.message,
-        code: error.code,
-        details: error.details,
+  app.use(
+    (
+      error: unknown,
+      _request: express.Request,
+      response: express.Response,
+      _next: express.NextFunction,
+    ) => {
+      if (error instanceof DevtoolsError) {
+        response.status(error.code.endsWith('_NOT_FOUND') ? 404 : 400).json({
+          error: error.message,
+          code: error.code,
+          details: error.details,
+        });
+        return;
+      }
+      const message = error instanceof Error ? error.message : String(error);
+      response.status(500).json({
+        error: message,
+        code: 'INTERNAL_ERROR',
       });
-      return;
-    }
-    const message = error instanceof Error ? error.message : String(error);
-    response.status(500).json({
-      error: message,
-      code: 'INTERNAL_ERROR',
-    });
-  });
+    },
+  );
   return app;
 }

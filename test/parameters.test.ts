@@ -29,8 +29,12 @@ describe('parameter validation', () => {
     expect(coerced['title']).toBe('Custom');
     expect(coerced['limit']).toBe(50);
     expect(coerced['bounds']).toEqual({
-      minX: 0, minY: 0, minZ: 0,
-      maxX: 16, maxY: 16, maxZ: 16,
+      minX: 0,
+      minY: 0,
+      minZ: 0,
+      maxX: 16,
+      maxY: 16,
+      maxZ: 16,
     });
   });
 
@@ -54,8 +58,9 @@ describe('parameter validation', () => {
         title: { type: 'string', description: 'x' },
       },
     });
-    expect(() => validateAndCoerceParameters(recipe, { extra: 'x' }))
-      .toThrow(/does not declare parameter extra/);
+    expect(() => validateAndCoerceParameters(recipe, { extra: 'x' })).toThrow(
+      /does not declare parameter extra/,
+    );
   });
 
   it('rejects missing required parameters', () => {
@@ -66,8 +71,7 @@ describe('parameter validation', () => {
         name: { type: 'string', description: 'x', required: true },
       },
     });
-    expect(() => validateAndCoerceParameters(recipe, {}))
-      .toThrow(/requires parameter name/);
+    expect(() => validateAndCoerceParameters(recipe, {})).toThrow(/requires parameter name/);
   });
 
   it('rejects values that fail type or range checks', () => {
@@ -79,12 +83,15 @@ describe('parameter validation', () => {
         box: { type: 'bounds', description: 'x' },
       },
     });
-    expect(() => validateAndCoerceParameters(recipe, { count: 99 }))
-      .toThrow(/parameter count must be <= 10/);
-    expect(() => validateAndCoerceParameters(recipe, { count: 1.5 }))
-      .toThrow(/parameter count must be an integer/);
-    expect(() => validateAndCoerceParameters(recipe, { box: '1,2,3' }))
-      .toThrow(/six comma-separated integers/);
+    expect(() => validateAndCoerceParameters(recipe, { count: 99 })).toThrow(
+      /parameter count must be <= 10/,
+    );
+    expect(() => validateAndCoerceParameters(recipe, { count: 1.5 })).toThrow(
+      /parameter count must be an integer/,
+    );
+    expect(() => validateAndCoerceParameters(recipe, { box: '1,2,3' })).toThrow(
+      /six comma-separated integers/,
+    );
   });
 
   it('throws DevtoolsError with INVALID_PARAMETER code on bad input', () => {

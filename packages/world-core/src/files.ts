@@ -40,11 +40,9 @@ export function ensureFreshDirectory(directory: string, allowedRoot: string): vo
     );
   }
   if (fs.existsSync(resolved)) {
-    throw new DevtoolsError(
-      'Refusing to overwrite an existing report directory',
-      'OUTPUT_EXISTS',
-      { directory: resolved },
-    );
+    throw new DevtoolsError('Refusing to overwrite an existing report directory', 'OUTPUT_EXISTS', {
+      directory: resolved,
+    });
   }
   fs.mkdirSync(resolved, { recursive: true });
 }
@@ -75,12 +73,19 @@ export function walkFiles(directory: string): string[] {
 
 export function mediaTypeFor(filename: string): string {
   switch (path.extname(filename).toLowerCase()) {
-    case '.html': return 'text/html';
-    case '.json': return 'application/json';
-    case '.md': return 'text/markdown';
-    case '.png': return 'image/png';
-    case '.pdf': return 'application/pdf';
-    case '.csv': return 'text/csv';
-    default: return 'application/octet-stream';
+    case '.html':
+      return 'text/html';
+    case '.json':
+      return 'application/json';
+    case '.md':
+      return 'text/markdown';
+    case '.png':
+      return 'image/png';
+    case '.pdf':
+      return 'application/pdf';
+    case '.csv':
+      return 'text/csv';
+    default:
+      return 'application/octet-stream';
   }
 }
