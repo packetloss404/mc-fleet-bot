@@ -2,7 +2,13 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 
-import { censusSnapshot, diffSnapshots, summarizeSnapshot } from '@mc-fleet/anvil';
+import {
+  type BlockCensus,
+  type SnapshotSummary,
+  censusSnapshot,
+  diffSnapshots,
+  summarizeSnapshot,
+} from '@mc-fleet/anvil';
 import { catalogDatabase, exportWorldFeatures } from '@mc-fleet/catalog';
 import {
   DevtoolsError,
@@ -220,8 +226,17 @@ export class ReportService {
   ): Promise<unknown> {
     switch (step.type) {
       case 'snapshot-summary': {
+        const cached = this.loadCachedStep<SnapshotSummary & { type: string; metrics: unknown[] }>(
+          job,
+          step,
+          `snapshot:${resolved.snapshotDirectory}`,
+        );
+        if (cached) {
+          this.log(job.id, `Reused cached snapshot summary`, step.id);
+          return cached;
+        }
         const summary = summarizeSnapshot(resolved.snapshotDirectory);
-        return {
+        const result = {
           type: step.type,
           ...summary,
           metrics: [
@@ -231,6 +246,8 @@ export class ReportService {
             { label: 'Bytes', value: summary.bytes },
           ],
         };
+        this.saveCachedStep(job, step, `snapshot:${resolved.snapshotDirectory}`, result);
+        return result;
       }
       case 'snapshot-diff': {
         const otherWorldId = job.parameters['other'];
@@ -265,8 +282,16 @@ export class ReportService {
       }
       case 'database-catalog': {
         const databaseKey = optionString(step, 'database', 'world');
-        const catalog = catalogDatabase(databaseFor(resolved, step));
-        return {
+        const filename = databaseFor(resolved, step);
+        const cached = this.loadCachedStep<
+          Record<string, unknown> & { type: string; metrics: unknown[] }
+        >(job, step, `database:${filename}`);
+        if (cached) {
+          this.log(job.id, `Reused cached database catalog`, step.id);
+          return cached;
+        }
+        const catalog = catalogDatabase(filename);
+        const result = {
           type: step.type,
           databaseKey,
           ...catalog,
@@ -278,6 +303,8 @@ export class ReportService {
             { label: 'Quick check', value: catalog.quickCheck.join(', ') || 'unknown' },
           ],
         };
+        this.saveCachedStep(job, step, `database:${filename}`, result);
+        return result;
       }
       case 'world-features': {
         const databaseKey = optionString(step, 'database', 'world');
@@ -397,6 +424,46 @@ export class ReportService {
     if (job.status === 'cancelled') {
       throw new JobCancelledError(id);
     }
+  }
+
+  /**
+   * Look up a previously-cached step result. The cache lives under
+   * `<artifactRoot>/.cache/<server>/<world>/<recipe>/<step>/<hash>.json`.
+   * The `cacheKey` is a step-supplied string naming the inputs that
+   * determine the result (typically a path). Missing or unreadable
+   * cache entries return null and the caller re-runs the step.
+   */
+  private loadCachedStep<T>(job: ReportJob, step: RecipeStep, cacheKey: string): T | null {
+    const path = this.cachePath(job, step, cacheKey);
+    if (!fs.existsSync(path)) return null;
+    try {
+      return JSON.parse(fs.readFileSync(path, 'utf8')) as T;
+    } catch {
+      return null;
+    }
+  }
+
+  private saveCachedStep(
+    job: ReportJob,
+    step: RecipeStep,
+    cacheKey: string,
+    result: unknown,
+  ): void {
+    const cacheFile = this.cachePath(job, step, cacheKey);
+    writeJsonAtomic(cacheFile, result);
+  }
+
+  private cachePath(job: ReportJob, step: RecipeStep, cacheKey: string): string {
+    const hash = crypto.createHash('sha256').update(cacheKey).digest('hex');
+    return path.join(
+      this.options.artifactRoot,
+      '.cache',
+      job.serverId,
+      job.worldId,
+      job.recipeId,
+      step.id,
+      `${hash}.json`,
+    );
   }
 
   private recoverInterruptedJobs(): void {
