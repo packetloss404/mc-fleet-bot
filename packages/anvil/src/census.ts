@@ -24,6 +24,11 @@ interface ChunkSection {
 }
 
 interface SimplifiedChunk {
+  /**
+   * Modern Anvil uses `Sections`; pre-1.17 used `sections` (or wrapped in
+   * `Level`). The decoder normalises both spellings.
+   */
+  Sections?: ChunkSection[];
   sections?: ChunkSection[];
 }
 
@@ -168,7 +173,13 @@ async function parseChunk(
   const payload = region.subarray(offset + 5, offset + 4 + length);
   const raw = decompress(compressionByte, payload);
   const parsed = await nbt.parse(raw);
-  return nbt.simplify(parsed.parsed) as SimplifiedChunk;
+  const root = nbt.simplify(parsed.parsed) as Record<string, unknown>;
+  // Pre-1.17 Anvil wraps the chunk in a `Level` compound; 1.17+ stores the
+  // chunk fields directly on the root. Accept both shapes.
+  const inner = (root['Level'] && typeof root['Level'] === 'object'
+    ? root['Level'] as Record<string, unknown>
+    : root);
+  return inner as SimplifiedChunk;
 }
 
 export async function censusSnapshot(
@@ -219,7 +230,7 @@ export async function censusSnapshot(
         const chunk = await parseChunk(region, slot);
         if (!chunk) continue;
         chunksDecoded += 1;
-        for (const section of chunk.sections ?? []) {
+        for (const section of chunk.Sections ?? chunk.sections ?? []) {
           const y = Number(section.Y) * 16;
           if (
             bounds
