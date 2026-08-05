@@ -136,11 +136,7 @@
         <label>Server<select id="server-select" required></select></label>
         <label>World<select id="world-select" required></select></label>
         <label>Report recipe<select id="recipe-select" required></select></label>
-        <label id="bounds-field" hidden
-          >Optional bounds
-          <input id="bounds-input" placeholder="-128,-64,-128,128,319,128" />
-          <small>Inclusive x1,y1,z1,x2,y2,z2</small>
-        </label>
+        <div id="parameter-fields" class="parameter-fields" hidden></div>
         <div id="form-message" role="status"></div>
         <div class="dialog-actions">
           <button type="button" class="ghost" id="cancel-dialog">Cancel</button>

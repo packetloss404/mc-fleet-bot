@@ -526,6 +526,10 @@ label small {
   color: var(--muted);
   font-weight: 400;
 }
+.parameter-fields {
+  display: grid;
+  gap: 4px;
+}
 .dialog-actions {
   display: flex;
   justify-content: flex-end;

@@ -145,7 +145,66 @@ function toggleParameters() {
   const recipe = state.overview?.recipes.find(
     (candidate) => candidate.id === $('#recipe-select').value,
   );
-  $('#bounds-field').hidden = !recipe?.parameters?.bounds;
+  renderParameterFields(recipe);
+}
+
+function renderParameterFields(recipe) {
+  const container = $('#parameter-fields');
+  const parameters = recipe?.parameters ?? {};
+  const keys = Object.keys(parameters);
+  if (keys.length === 0) {
+    container.hidden = true;
+    container.innerHTML = '';
+    return;
+  }
+  container.hidden = false;
+  container.innerHTML = keys
+    .map((key) => {
+      const definition = parameters[key];
+      const label = definition.description || key;
+      if (definition.type === 'integer') {
+        const minAttr = typeof definition.min === 'number' ? ` min="${definition.min}"` : '';
+        const maxAttr = typeof definition.max === 'number' ? ` max="${definition.max}"` : '';
+        const requiredAttr = definition.required ? ' required' : '';
+        return `<label>${escapeHtml(label)}
+          <input type="number" step="1" data-parameter="${escapeHtml(key)}" placeholder="${escapeHtml(key)}"${minAttr}${maxAttr}${requiredAttr}>
+          <small>${escapeHtml(definition.required ? 'required' : 'optional')}${typeof definition.min === 'number' || typeof definition.max === 'number' ? ` (${definition.min ?? ''}..${definition.max ?? ''})` : ''}</small>
+        </label>`;
+      }
+      if (definition.type === 'bounds') {
+        return `<label>${escapeHtml(label)}
+          <input type="text" data-parameter="${escapeHtml(key)}" placeholder="x1,y1,z1,x2,y2,z2">
+          <small>inclusive x1,y1,z1,x2,y2,z2 — ${escapeHtml(definition.required ? 'required' : 'optional')}</small>
+        </label>`;
+      }
+      return `<label>${escapeHtml(label)}
+        <input type="text" data-parameter="${escapeHtml(key)}" placeholder="${escapeHtml(key)}">
+        <small>${escapeHtml(definition.required ? 'required' : 'optional')}</small>
+      </label>`;
+    })
+    .join('');
+}
+
+function readParameterValues(recipe) {
+  const parameters = {};
+  const definitions = recipe?.parameters ?? {};
+  for (const [key, definition] of Object.entries(definitions)) {
+    const input = document.querySelector(`[data-parameter="${key}"]`);
+    if (!input) continue;
+    const raw = input.value.trim();
+    if (!raw) {
+      if (definition.required) {
+        throw new Error(`${definition.description || key} is required`);
+      }
+      continue;
+    }
+    if (definition.type === 'integer') {
+      parameters[key] = Number(raw);
+    } else {
+      parameters[key] = raw;
+    }
+  }
+  return parameters;
 }
 
 async function load() {
@@ -170,9 +229,12 @@ async function submitReport(event) {
   const recipe = state.overview?.recipes.find(
     (candidate) => candidate.id === $('#recipe-select').value,
   );
-  const parameters = {};
-  if (recipe?.parameters?.bounds && $('#bounds-input').value.trim()) {
-    parameters.bounds = $('#bounds-input').value.trim();
+  let parameters = {};
+  try {
+    parameters = readParameterValues(recipe);
+  } catch (error) {
+    $('#form-message').textContent = error instanceof Error ? error.message : 'Invalid parameters.';
+    return;
   }
   $('#form-message').textContent = 'Queuing…';
   const response = await fetch('/api/jobs', {
