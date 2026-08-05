@@ -19,15 +19,15 @@ const value = (flag, fallback) => {
 const ACCEPTED_AT = value('--accepted-at', '2026-08-05T00:55:00Z');
 const BUNDLE_PATH = value(
   '--bundle',
-  'masterplans/05-combined-zones/phase1-owner-review-bundle.json',
+  'docs/masterplans/05-combined-zones/phase1-owner-review-bundle.json',
 );
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
+  'docs/masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-owner-review-acceptance.md',
+  'docs/masterplans/05-combined-zones/phase1-owner-review-acceptance.md',
 ));
 
 const EXPECTED_BUNDLE_STATUS

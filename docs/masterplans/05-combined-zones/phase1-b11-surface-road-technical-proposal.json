@@ -1,0 +1,4321 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-b11-surface-road-technical-proposal",
+  "proposalId": "P1-B11-GRAND-AVENUE-SURFACE-ROAD-PROPOSAL-01",
+  "generatedAtUtc": "2026-08-05T03:35:00Z",
+  "status": "EXACT_SURFACE_ROAD_SET_OUT_PROPOSAL_READY_ALL_TECHNICAL_AND_PHYSICAL_GATES_HOLD",
+  "purpose": "Remove P1-B11 construction/interaction/influence geometry nulls for review without changing accepted profile authority or accepting any technical design, future state, ownership, interface, material, or operation.",
+  "authorityBoundary": {
+    "b11PlanningProfileAcceptedBySoleOwner": true,
+    "b11AcceptancePayloadSha256": "d1bcd9aa70fb5374407013cf87b6396083341057e61a45764f42622cc2706d28",
+    "acceptedProfileAmended": false,
+    "eightWideSideBiasProposedByThisArtifact": true,
+    "eightWideSideBiasAcceptedByOwner": false,
+    "technicalDesignAccepted": false,
+    "canonicalOwnershipAccepted": false,
+    "interfaceContractsAccepted": false,
+    "physicalReleaseAuthorized": false
+  },
+  "safetyBoundary": {
+    "offlineOnly": true,
+    "immutableCopiedRegionOnly": true,
+    "liveCallsPerformed": [],
+    "proposedBlockStatePalette": [],
+    "proposedFutureStateRecords": [],
+    "operations": [],
+    "acceptedFutureStateCellCount": 0,
+    "acceptedConstructionCellCount": 0,
+    "acceptedMaterialCellCount": 0,
+    "acceptedInfluenceCellCount": 0,
+    "operationCellCount": 0,
+    "executable": false,
+    "constructionAuthorized": false,
+    "materialSelectionAuthorized": false,
+    "worldEditAuthorized": false
+  },
+  "sourceBindings": {
+    "b11": {
+      "path": "docs/masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json",
+      "sha256": "d65b94f0301c703fd4e22b13fe674a90fa16ba580bfced0e2143476133742ed2",
+      "bytes": 12601,
+      "role": "immutable 299-point owner-accepted Grand Avenue planning profile"
+    },
+    "ownerAcceptance": {
+      "path": "docs/masterplans/05-combined-zones/phase1-owner-review-acceptance.json",
+      "sha256": "a8afb64c009ffb4427d904d7d5eee9dfeb866e9aa0ccb5a62dcc0c59daab5889",
+      "bytes": 8763,
+      "role": "sole-owner planning acceptance with every technical HOLD retained"
+    },
+    "b12": {
+      "path": "docs/masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json",
+      "sha256": "7fd10ad811bf9aa36be7895de01ef42eb19382d3896bf5fee5ac47bb75e21a4e",
+      "bytes": 254942,
+      "role": "exact unaccepted passive-shell side-bias and road-load coordination precedent"
+    },
+    "houstonGeometry": {
+      "path": "docs/masterplans/05-combined-zones/phase1-geometry-coordination.json",
+      "sha256": "b2284622f95f51af76cc13e8056a70cf4a82e0af058496eee77d5a82f631553f",
+      "bytes": 35601,
+      "role": "exact half-open Houston coordination envelope"
+    },
+    "currentRegionEvidence": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json",
+      "sha256": "c28a35e79f4af496325b53b4e53b54b35cbe6a663358518af84139febe3044ac",
+      "bytes": 99988,
+      "role": "selected immutable region-only current-state evidence and completeness limits"
+    },
+    "phase0": {
+      "path": "docs/masterplans/05-combined-zones/phase0-survey-evidence.json",
+      "sha256": "8de9be6c1ca081cb5fb885a160f7b5062004bd1a493e59bfd2eea5582177344c",
+      "bytes": 58555,
+      "role": "114 generated-structure start bounds and immutable snapshot identity"
+    },
+    "protectedRelics": {
+      "path": "docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
+      "sha256": "1739502e8bf19283cabfe9930f26011dba97c11e6328da27ee0b7f651f7a0a22",
+      "bytes": 30505,
+      "role": "three evidence-backed default-deny relic cores"
+    },
+    "c1": {
+      "path": "docs/masterplans/05-combined-zones/phase1-c1-civil-design.json",
+      "sha256": "7776e243dc24b03fa7903ecb93ec8f05e6e0cbd81aa3749e2fb52435b7dc2442",
+      "bytes": 812066,
+      "role": "exact C1 corridor setout and east extent"
+    },
+    "completeSave": {
+      "path": "docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit.json",
+      "sha256": "4e4209b424a36b466789c0ea50cf75d0c72b23758cc85491b67ca1baff3f6f45",
+      "bytes": 27091,
+      "role": "complete-save intake HOLD and missing evidence boundary"
+    },
+    "immutableSelectedRegionSnapshot": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+      "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+      "regionFileCount": 51,
+      "bytes": 290946492,
+      "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+    }
+  },
+  "exactAcceptedReferenceProfile": {
+    "classification": "OWNER_ACCEPTED_B11_PLANNING_PROFILE_UNCHANGED",
+    "pointCount": 299,
+    "start": {
+      "station": 0,
+      "x": 1750,
+      "y": 68,
+      "z": -300
+    },
+    "end": {
+      "station": 298,
+      "x": 2048,
+      "y": 72,
+      "z": -328
+    },
+    "orderedCoordinateSha256": "e63b7779674ad46fd7ad9c4ae0aea8f618afa8b656d3a24aa4367057cf103ff4",
+    "riseStations": [
+      {
+        "station": 38,
+        "x": 1788,
+        "y": 69,
+        "z": -304
+      },
+      {
+        "station": 112,
+        "x": 1862,
+        "y": 70,
+        "z": -311
+      },
+      {
+        "station": 187,
+        "x": 1937,
+        "y": 71,
+        "z": -318
+      },
+      {
+        "station": 261,
+        "x": 2011,
+        "y": 72,
+        "z": -325
+      }
+    ],
+    "crossSectionBlocks": 8,
+    "acceptedProfileAmendedByThisArtifact": false
+  },
+  "proposedEightWideSetout": {
+    "classification": "DETERMINISTIC_EXACT_INTEGER_PROPOSAL_NOT_ACCEPTED_FUTURE_STATE",
+    "orientationConvention": "station slices are X-constant and lateral offsets are global Z; B11 advances +X with Z unchanged or -1",
+    "referenceLatticePosition": "lower-Z central lattice column",
+    "roadZOffsetsInclusive": {
+      "min": -3,
+      "max": 4
+    },
+    "extraCellSide": "positive-Z",
+    "precedent": "Matches the exact P1-B12 even-width convention so the B11 two-layer load reservation is identical to the B12 road-load separation set.",
+    "materialOrBlockStateSelected": false,
+    "formationDepthSelected": false,
+    "earthworkExtentsSelected": false,
+    "retainingExtentsSelected": false,
+    "accepted": false
+  },
+  "exactCellSets": {
+    "proposedRoadConstruction": {
+      "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+      "reconstructionRule": "at each accepted B11 station, roadY with global Z offsets -3…+4",
+      "cellCount": 2392,
+      "bounds": {
+        "minX": 1750,
+        "maxX": 2048,
+        "minY": 68,
+        "maxY": 72,
+        "minZ": -331,
+        "maxZ": -296
+      },
+      "coordinateSetSha256": "dc75445cbbb40c951ee65e476c2be271412ef5682439394e29ce7370a323d80c",
+      "componentCount": 5,
+      "largestComponentCellCount": 600,
+      "componentSizeMultisetSha256": "394efef34e99d31689badf8fef67a6dcc49bc17f3225bb24b92666bc61db3754",
+      "accepted": false,
+      "operationAuthorization": false
+    },
+    "candidateInteractionUnion": {
+      "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+      "reconstructionRule": "at each accepted B11 station, global Z offsets -4…+5 and Y offsets roadY-2…roadY+1",
+      "cellCount": 11960,
+      "bounds": {
+        "minX": 1750,
+        "maxX": 2048,
+        "minY": 66,
+        "maxY": 73,
+        "minZ": -332,
+        "maxZ": -295
+      },
+      "coordinateSetSha256": "ee6163e6f975bf78d5acad718732aa951bebf8a756f20ef9a7f6b94020493a17",
+      "componentCount": 1,
+      "largestComponentCellCount": 11960,
+      "componentSizeMultisetSha256": "1ebdac4a52e00635d970b8c24c719984444cfaaa640fd5155479d0bb7f001491",
+      "accepted": false,
+      "operationAuthorization": false
+    },
+    "interactionShellExcludingConstruction": {
+      "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+      "reconstructionRule": "candidate interaction union minus proposed road construction geometry",
+      "cellCount": 9568,
+      "bounds": {
+        "minX": 1750,
+        "maxX": 2048,
+        "minY": 66,
+        "maxY": 73,
+        "minZ": -332,
+        "maxZ": -295
+      },
+      "coordinateSetSha256": "9522d539da2a7f61ef86c28fcdd972b1e0188b4099000148af02b60401ff9899",
+      "componentCount": 1,
+      "largestComponentCellCount": 9568,
+      "componentSizeMultisetSha256": "0695477d4999a18530083ce2446e40462f7c9243531c5a330cc704a27cb5be56",
+      "accepted": false,
+      "operationAuthorization": false
+    },
+    "roadLoadInfluenceReservation": {
+      "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+      "reconstructionRule": "at each accepted B11 station, road Z offsets -3…+4 at roadY-2 and roadY-1",
+      "cellCount": 4784,
+      "bounds": {
+        "minX": 1750,
+        "maxX": 2048,
+        "minY": 66,
+        "maxY": 71,
+        "minZ": -331,
+        "maxZ": -296
+      },
+      "coordinateSetSha256": "295a922eb72f1c58141884fa9752984227b2528d67c5d8607a836c99b5a8f10b",
+      "componentCount": 1,
+      "largestComponentCellCount": 4784,
+      "componentSizeMultisetSha256": "9103c99827d2a2038d0cdb44d82fada18dce2a742d0f021c38cccd1a9ec8e47a",
+      "accepted": false,
+      "operationAuthorization": false
+    },
+    "bilateralDrainageReservation": {
+      "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+      "reconstructionRule": "at each accepted B11 station, roadside Z offsets -4 and +5 at roadY-1",
+      "cellCount": 598,
+      "bounds": {
+        "minX": 1750,
+        "maxX": 2048,
+        "minY": 67,
+        "maxY": 71,
+        "minZ": -332,
+        "maxZ": -295
+      },
+      "coordinateSetSha256": "17c870544e9ee649b53ce0d58bd7d38f84c150f977e88e980aafa9169429ef60",
+      "componentCount": 58,
+      "largestComponentCellCount": 11,
+      "componentSizeMultisetSha256": "e933246985d5e6804fc39bfccc8f8449b288f14877d9b1b82bee1e0ada2af2fc",
+      "accepted": false,
+      "operationAuthorization": false
+    },
+    "dryUtilityReservation": {
+      "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+      "reconstructionRule": "at each accepted B11 station, negative-Z roadside offset -4 at roadY-2",
+      "cellCount": 299,
+      "bounds": {
+        "minX": 1750,
+        "maxX": 2048,
+        "minY": 66,
+        "maxY": 70,
+        "minZ": -332,
+        "maxZ": -304
+      },
+      "coordinateSetSha256": "48e7d71aabcb9c5a14a794ca1e4c1d4535789ce64f46f55e14b3ec9390778f41",
+      "componentCount": 29,
+      "largestComponentCellCount": 11,
+      "componentSizeMultisetSha256": "2a91f6fb2801fd8b967a35dc9915a97e38dcf616b81f10e7faa8eaae1bd64285",
+      "accepted": false,
+      "operationAuthorization": false
+    },
+    "wetUtilityReservation": {
+      "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+      "reconstructionRule": "at each accepted B11 station, positive-Z roadside offset +5 at roadY-2",
+      "cellCount": 299,
+      "bounds": {
+        "minX": 1750,
+        "maxX": 2048,
+        "minY": 66,
+        "maxY": 70,
+        "minZ": -323,
+        "maxZ": -295
+      },
+      "coordinateSetSha256": "303e13906af53c5171291741db40862436e227023538e839f301c5bb94391aab",
+      "componentCount": 29,
+      "largestComponentCellCount": 11,
+      "componentSizeMultisetSha256": "2a91f6fb2801fd8b967a35dc9915a97e38dcf616b81f10e7faa8eaae1bd64285",
+      "accepted": false,
+      "operationAuthorization": false
+    },
+    "utilityReservationUnion": {
+      "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+      "reconstructionRule": "disjoint dry and wet roadside utility reservation union",
+      "cellCount": 598,
+      "bounds": {
+        "minX": 1750,
+        "maxX": 2048,
+        "minY": 66,
+        "maxY": 70,
+        "minZ": -332,
+        "maxZ": -295
+      },
+      "coordinateSetSha256": "02e57faf3f2b9be5a384852c4a7fa92b4c30d1c5427dea99f3e98e2cc95f4a71",
+      "componentCount": 58,
+      "largestComponentCellCount": 11,
+      "componentSizeMultisetSha256": "e933246985d5e6804fc39bfccc8f8449b288f14877d9b1b82bee1e0ada2af2fc",
+      "accepted": false,
+      "operationAuthorization": false
+    },
+    "candidateInfluenceReservationUnion": {
+      "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+      "reconstructionRule": "road-load, bilateral drainage, and dry/wet utility reservation union",
+      "cellCount": 5980,
+      "bounds": {
+        "minX": 1750,
+        "maxX": 2048,
+        "minY": 66,
+        "maxY": 71,
+        "minZ": -332,
+        "maxZ": -295
+      },
+      "coordinateSetSha256": "c4a6c43350246703545cfeab7f4a896baea666f6cc010e173a576180aabfb401",
+      "componentCount": 1,
+      "largestComponentCellCount": 5980,
+      "componentSizeMultisetSha256": "0c71b2030ebd280f34b98f545f82418d6bc1de6ffed068bcc5906c907ff1000e",
+      "accepted": false,
+      "operationAuthorization": false
+    }
+  },
+  "reservationDesign": {
+    "classification": "EXACT_COORDINATION_RESERVATIONS_NOT_ACCEPTED_ENGINEERED_SYSTEMS",
+    "roadLoad": {
+      "verticalLayersBelowRoadDatum": [
+        -2,
+        -1
+      ],
+      "exactMatchToB12TwoLayerRoadLoadSeparation": true,
+      "b12BoundCoordinateSetSha256": "bd510ae1e1fdd4888aaed37290700c0edde54fb2cf041835d79d857d6d106df6",
+      "structuralLoadModel": null,
+      "accepted": false
+    },
+    "drainage": {
+      "sides": [
+        "negative-Z",
+        "positive-Z"
+      ],
+      "crossfall": null,
+      "catchments": null,
+      "capacity": null,
+      "receiver": null,
+      "outfall": null,
+      "futureFluidState": null,
+      "accepted": false
+    },
+    "utilities": {
+      "drySide": "negative-Z",
+      "wetSide": "positive-Z",
+      "dryWetCellSetsDisjoint": true,
+      "serviceTypes": null,
+      "capacities": null,
+      "crossingDetails": null,
+      "commissioning": null,
+      "accepted": false
+    },
+    "expertConstructionInfluenceKernel": null,
+    "expertConstructionInfluenceAccepted": false
+  },
+  "exactCurrentStateCensus": {
+    "requiredChunkCount": 34,
+    "missingChunkCount": 0,
+    "sets": {
+      "proposedRoadConstruction": {
+        "classification": "IMMUTABLE_REGION_CURRENT_STATE_NOT_FUTURE_STATE",
+        "cellCount": 2392,
+        "coordinateSetSha256": "dc75445cbbb40c951ee65e476c2be271412ef5682439394e29ce7370a323d80c",
+        "blockStateSetSha256": "ada2d4157de00580894481ec893500cd0918da238985792c5db1f1fe5722a16c",
+        "airCellCount": 791,
+        "presentCellCount": 1601,
+        "waterCellCount": 0,
+        "waterloggedCellCount": 0,
+        "lavaCellCount": 0,
+        "gravitySensitiveCellCount": 20,
+        "canonicalStateCounts": {
+          "{\"Name\":\"minecraft:air\"}": 791,
+          "{\"Name\":\"minecraft:birch_log\",\"Properties\":{\"axis\":\"y\"}}": 1,
+          "{\"Name\":\"minecraft:coal_ore\"}": 18,
+          "{\"Name\":\"minecraft:copper_ore\"}": 5,
+          "{\"Name\":\"minecraft:dirt\"}": 421,
+          "{\"Name\":\"minecraft:grass_block\",\"Properties\":{\"snowy\":\"false\"}}": 118,
+          "{\"Name\":\"minecraft:grass_block\",\"Properties\":{\"snowy\":\"true\"}}": 5,
+          "{\"Name\":\"minecraft:gravel\"}": 3,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"1\"}}": 2,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"2\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"3\"}}": 3,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"4\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"1\"}}": 3,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"3\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"4\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"1\"}}": 2,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"2\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"3\"}}": 2,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"4\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"west\",\"segment_amount\":\"1\"}}": 3,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"west\",\"segment_amount\":\"2\"}}": 3,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"west\",\"segment_amount\":\"3\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"west\",\"segment_amount\":\"4\"}}": 1,
+          "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"1\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 5,
+          "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"2\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 4,
+          "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"3\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 4,
+          "{\"Name\":\"minecraft:oak_log\",\"Properties\":{\"axis\":\"y\"}}": 1,
+          "{\"Name\":\"minecraft:rose_bush\",\"Properties\":{\"half\":\"upper\"}}": 1,
+          "{\"Name\":\"minecraft:sand\"}": 17,
+          "{\"Name\":\"minecraft:sandstone\"}": 7,
+          "{\"Name\":\"minecraft:snow\",\"Properties\":{\"layers\":\"1\"}}": 15,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"1\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 12,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"2\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 11,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"3\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 14,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"4\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 10,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"5\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 8,
+          "{\"Name\":\"minecraft:spruce_log\",\"Properties\":{\"axis\":\"y\"}}": 5,
+          "{\"Name\":\"minecraft:stone\"}": 890
+        }
+      },
+      "candidateInteractionUnion": {
+        "classification": "IMMUTABLE_REGION_CURRENT_STATE_NOT_FUTURE_STATE",
+        "cellCount": 11960,
+        "coordinateSetSha256": "ee6163e6f975bf78d5acad718732aa951bebf8a756f20ef9a7f6b94020493a17",
+        "blockStateSetSha256": "4708ce9ecbb54f9b0e40d13ced5371f08995b669b0cba3acc38c85a435b7c52f",
+        "airCellCount": 3887,
+        "presentCellCount": 8073,
+        "waterCellCount": 0,
+        "waterloggedCellCount": 0,
+        "lavaCellCount": 0,
+        "gravitySensitiveCellCount": 134,
+        "canonicalStateCounts": {
+          "{\"Name\":\"minecraft:air\"}": 3887,
+          "{\"Name\":\"minecraft:andesite\"}": 5,
+          "{\"Name\":\"minecraft:birch_log\",\"Properties\":{\"axis\":\"y\"}}": 2,
+          "{\"Name\":\"minecraft:coal_ore\"}": 92,
+          "{\"Name\":\"minecraft:copper_ore\"}": 56,
+          "{\"Name\":\"minecraft:diorite\"}": 15,
+          "{\"Name\":\"minecraft:dirt\"}": 2078,
+          "{\"Name\":\"minecraft:fern\"}": 1,
+          "{\"Name\":\"minecraft:grass_block\",\"Properties\":{\"snowy\":\"false\"}}": 460,
+          "{\"Name\":\"minecraft:grass_block\",\"Properties\":{\"snowy\":\"true\"}}": 21,
+          "{\"Name\":\"minecraft:gravel\"}": 19,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"1\"}}": 5,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"2\"}}": 5,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"3\"}}": 8,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"4\"}}": 3,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"1\"}}": 4,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"2\"}}": 2,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"3\"}}": 7,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"4\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"1\"}}": 8,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"2\"}}": 4,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"3\"}}": 3,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"4\"}}": 4,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"west\",\"segment_amount\":\"1\"}}": 4,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"west\",\"segment_amount\":\"2\"}}": 7,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"west\",\"segment_amount\":\"3\"}}": 4,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"west\",\"segment_amount\":\"4\"}}": 1,
+          "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"1\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 18,
+          "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"2\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 24,
+          "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"3\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 20,
+          "{\"Name\":\"minecraft:oak_log\",\"Properties\":{\"axis\":\"y\"}}": 6,
+          "{\"Name\":\"minecraft:poppy\"}": 1,
+          "{\"Name\":\"minecraft:rose_bush\",\"Properties\":{\"half\":\"lower\"}}": 1,
+          "{\"Name\":\"minecraft:rose_bush\",\"Properties\":{\"half\":\"upper\"}}": 1,
+          "{\"Name\":\"minecraft:sand\"}": 115,
+          "{\"Name\":\"minecraft:sandstone\"}": 37,
+          "{\"Name\":\"minecraft:short_grass\"}": 5,
+          "{\"Name\":\"minecraft:snow\",\"Properties\":{\"layers\":\"1\"}}": 86,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"1\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 70,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"2\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 92,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"3\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 68,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"4\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 19,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"5\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 8,
+          "{\"Name\":\"minecraft:spruce_log\",\"Properties\":{\"axis\":\"y\"}}": 28,
+          "{\"Name\":\"minecraft:stone\"}": 4655
+        }
+      },
+      "candidateInfluenceReservation": {
+        "classification": "IMMUTABLE_REGION_CURRENT_STATE_NOT_FUTURE_STATE",
+        "cellCount": 5980,
+        "coordinateSetSha256": "c4a6c43350246703545cfeab7f4a896baea666f6cc010e173a576180aabfb401",
+        "blockStateSetSha256": "65eb081366d8405dd13ec794db6458d56a4095949041f6936045b21ef095bc87",
+        "airCellCount": 1799,
+        "presentCellCount": 4181,
+        "waterCellCount": 0,
+        "waterloggedCellCount": 0,
+        "lavaCellCount": 0,
+        "gravitySensitiveCellCount": 87,
+        "canonicalStateCounts": {
+          "{\"Name\":\"minecraft:air\"}": 1799,
+          "{\"Name\":\"minecraft:andesite\"}": 5,
+          "{\"Name\":\"minecraft:coal_ore\"}": 67,
+          "{\"Name\":\"minecraft:copper_ore\"}": 33,
+          "{\"Name\":\"minecraft:diorite\"}": 15,
+          "{\"Name\":\"minecraft:dirt\"}": 1000,
+          "{\"Name\":\"minecraft:grass_block\",\"Properties\":{\"snowy\":\"false\"}}": 156,
+          "{\"Name\":\"minecraft:grass_block\",\"Properties\":{\"snowy\":\"true\"}}": 4,
+          "{\"Name\":\"minecraft:gravel\"}": 10,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"1\"}}": 2,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"2\"}}": 2,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"3\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"4\"}}": 2,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"1\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"2\"}}": 2,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"3\"}}": 3,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"1\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"2\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"4\"}}": 2,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"west\",\"segment_amount\":\"2\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"west\",\"segment_amount\":\"3\"}}": 1,
+          "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"1\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 3,
+          "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"2\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 5,
+          "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"3\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 3,
+          "{\"Name\":\"minecraft:oak_log\",\"Properties\":{\"axis\":\"y\"}}": 2,
+          "{\"Name\":\"minecraft:rose_bush\",\"Properties\":{\"half\":\"lower\"}}": 1,
+          "{\"Name\":\"minecraft:sand\"}": 77,
+          "{\"Name\":\"minecraft:sandstone\"}": 19,
+          "{\"Name\":\"minecraft:short_grass\"}": 1,
+          "{\"Name\":\"minecraft:snow\",\"Properties\":{\"layers\":\"1\"}}": 50,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"1\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 32,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"2\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 39,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"3\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 20,
+          "{\"Name\":\"minecraft:spruce_log\",\"Properties\":{\"axis\":\"y\"}}": 15,
+          "{\"Name\":\"minecraft:stone\"}": 2605
+        }
+      },
+      "roadLoadReservation": {
+        "classification": "IMMUTABLE_REGION_CURRENT_STATE_NOT_FUTURE_STATE",
+        "cellCount": 4784,
+        "coordinateSetSha256": "295a922eb72f1c58141884fa9752984227b2528d67c5d8607a836c99b5a8f10b",
+        "blockStateSetSha256": "a2b9db6d7b2d6672430f9c5fa16ccf8a2b933ef44d2c6f317309a9802c414750",
+        "airCellCount": 1440,
+        "presentCellCount": 3344,
+        "waterCellCount": 0,
+        "waterloggedCellCount": 0,
+        "lavaCellCount": 0,
+        "gravitySensitiveCellCount": 68,
+        "canonicalStateCounts": {
+          "{\"Name\":\"minecraft:air\"}": 1440,
+          "{\"Name\":\"minecraft:andesite\"}": 2,
+          "{\"Name\":\"minecraft:coal_ore\"}": 54,
+          "{\"Name\":\"minecraft:copper_ore\"}": 22,
+          "{\"Name\":\"minecraft:diorite\"}": 10,
+          "{\"Name\":\"minecraft:dirt\"}": 804,
+          "{\"Name\":\"minecraft:grass_block\",\"Properties\":{\"snowy\":\"false\"}}": 124,
+          "{\"Name\":\"minecraft:grass_block\",\"Properties\":{\"snowy\":\"true\"}}": 4,
+          "{\"Name\":\"minecraft:gravel\"}": 3,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"1\"}}": 2,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"2\"}}": 2,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"3\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"4\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"2\"}}": 2,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"3\"}}": 3,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"1\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"2\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"4\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"west\",\"segment_amount\":\"3\"}}": 1,
+          "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"1\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 2,
+          "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"2\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 4,
+          "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"3\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 2,
+          "{\"Name\":\"minecraft:rose_bush\",\"Properties\":{\"half\":\"lower\"}}": 1,
+          "{\"Name\":\"minecraft:sand\"}": 65,
+          "{\"Name\":\"minecraft:sandstone\"}": 14,
+          "{\"Name\":\"minecraft:snow\",\"Properties\":{\"layers\":\"1\"}}": 40,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"1\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 23,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"2\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 32,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"3\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 16,
+          "{\"Name\":\"minecraft:spruce_log\",\"Properties\":{\"axis\":\"y\"}}": 11,
+          "{\"Name\":\"minecraft:stone\"}": 2096
+        }
+      },
+      "drainageReservation": {
+        "classification": "IMMUTABLE_REGION_CURRENT_STATE_NOT_FUTURE_STATE",
+        "cellCount": 598,
+        "coordinateSetSha256": "17c870544e9ee649b53ce0d58bd7d38f84c150f977e88e980aafa9169429ef60",
+        "blockStateSetSha256": "6e728b7559cea8d92f3f7851800f93b74a0348aa849784a0fef4e554d2fe0486",
+        "airCellCount": 186,
+        "presentCellCount": 412,
+        "waterCellCount": 0,
+        "waterloggedCellCount": 0,
+        "lavaCellCount": 0,
+        "gravitySensitiveCellCount": 10,
+        "canonicalStateCounts": {
+          "{\"Name\":\"minecraft:air\"}": 186,
+          "{\"Name\":\"minecraft:coal_ore\"}": 3,
+          "{\"Name\":\"minecraft:copper_ore\"}": 4,
+          "{\"Name\":\"minecraft:dirt\"}": 118,
+          "{\"Name\":\"minecraft:grass_block\",\"Properties\":{\"snowy\":\"false\"}}": 12,
+          "{\"Name\":\"minecraft:gravel\"}": 5,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"east\",\"segment_amount\":\"4\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"north\",\"segment_amount\":\"1\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"south\",\"segment_amount\":\"4\"}}": 1,
+          "{\"Name\":\"minecraft:leaf_litter\",\"Properties\":{\"facing\":\"west\",\"segment_amount\":\"2\"}}": 1,
+          "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"1\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 1,
+          "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"2\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 1,
+          "{\"Name\":\"minecraft:oak_leaves\",\"Properties\":{\"distance\":\"3\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 1,
+          "{\"Name\":\"minecraft:oak_log\",\"Properties\":{\"axis\":\"y\"}}": 1,
+          "{\"Name\":\"minecraft:sand\"}": 5,
+          "{\"Name\":\"minecraft:sandstone\"}": 3,
+          "{\"Name\":\"minecraft:short_grass\"}": 1,
+          "{\"Name\":\"minecraft:snow\",\"Properties\":{\"layers\":\"1\"}}": 2,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"1\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 5,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"2\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 4,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"3\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 3,
+          "{\"Name\":\"minecraft:spruce_log\",\"Properties\":{\"axis\":\"y\"}}": 2,
+          "{\"Name\":\"minecraft:stone\"}": 237
+        }
+      },
+      "dryUtilityReservation": {
+        "classification": "IMMUTABLE_REGION_CURRENT_STATE_NOT_FUTURE_STATE",
+        "cellCount": 299,
+        "coordinateSetSha256": "48e7d71aabcb9c5a14a794ca1e4c1d4535789ce64f46f55e14b3ec9390778f41",
+        "blockStateSetSha256": "3babbda83b5616c944f6f5bd1a36a11a7722070dd5a2a236f61069a7263fe967",
+        "airCellCount": 68,
+        "presentCellCount": 231,
+        "waterCellCount": 0,
+        "waterloggedCellCount": 0,
+        "lavaCellCount": 0,
+        "gravitySensitiveCellCount": 4,
+        "canonicalStateCounts": {
+          "{\"Name\":\"minecraft:air\"}": 68,
+          "{\"Name\":\"minecraft:andesite\"}": 3,
+          "{\"Name\":\"minecraft:coal_ore\"}": 4,
+          "{\"Name\":\"minecraft:copper_ore\"}": 7,
+          "{\"Name\":\"minecraft:diorite\"}": 5,
+          "{\"Name\":\"minecraft:dirt\"}": 44,
+          "{\"Name\":\"minecraft:grass_block\",\"Properties\":{\"snowy\":\"false\"}}": 2,
+          "{\"Name\":\"minecraft:sand\"}": 4,
+          "{\"Name\":\"minecraft:sandstone\"}": 1,
+          "{\"Name\":\"minecraft:snow\",\"Properties\":{\"layers\":\"1\"}}": 6,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"1\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 2,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"2\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 2,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"3\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 1,
+          "{\"Name\":\"minecraft:stone\"}": 150
+        }
+      },
+      "wetUtilityReservation": {
+        "classification": "IMMUTABLE_REGION_CURRENT_STATE_NOT_FUTURE_STATE",
+        "cellCount": 299,
+        "coordinateSetSha256": "303e13906af53c5171291741db40862436e227023538e839f301c5bb94391aab",
+        "blockStateSetSha256": "2044a53f601f1b9c576fc712f0122013c83367f1f3a4a06de2339feb941c13cb",
+        "airCellCount": 105,
+        "presentCellCount": 194,
+        "waterCellCount": 0,
+        "waterloggedCellCount": 0,
+        "lavaCellCount": 0,
+        "gravitySensitiveCellCount": 5,
+        "canonicalStateCounts": {
+          "{\"Name\":\"minecraft:air\"}": 105,
+          "{\"Name\":\"minecraft:coal_ore\"}": 6,
+          "{\"Name\":\"minecraft:dirt\"}": 34,
+          "{\"Name\":\"minecraft:grass_block\",\"Properties\":{\"snowy\":\"false\"}}": 18,
+          "{\"Name\":\"minecraft:gravel\"}": 2,
+          "{\"Name\":\"minecraft:oak_log\",\"Properties\":{\"axis\":\"y\"}}": 1,
+          "{\"Name\":\"minecraft:sand\"}": 3,
+          "{\"Name\":\"minecraft:sandstone\"}": 1,
+          "{\"Name\":\"minecraft:snow\",\"Properties\":{\"layers\":\"1\"}}": 2,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"1\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 2,
+          "{\"Name\":\"minecraft:spruce_leaves\",\"Properties\":{\"distance\":\"2\",\"persistent\":\"false\",\"waterlogged\":\"false\"}}": 1,
+          "{\"Name\":\"minecraft:spruce_log\",\"Properties\":{\"axis\":\"y\"}}": 2,
+          "{\"Name\":\"minecraft:stone\"}": 122
+        }
+      },
+      "houstonInteractionOverlap": {
+        "classification": "IMMUTABLE_REGION_CURRENT_STATE_NOT_FUTURE_STATE",
+        "cellCount": 260,
+        "coordinateSetSha256": "a2e9f0b8b59190d17e36af15700a0c8d141f947614ccdcba8cb8807c7a0548f8",
+        "blockStateSetSha256": "a35672eae9177f60c79b69199aeacf25989600e49bc90465c5799325e381c408",
+        "airCellCount": 0,
+        "presentCellCount": 260,
+        "waterCellCount": 0,
+        "waterloggedCellCount": 0,
+        "lavaCellCount": 0,
+        "gravitySensitiveCellCount": 0,
+        "canonicalStateCounts": {
+          "{\"Name\":\"minecraft:copper_ore\"}": 6,
+          "{\"Name\":\"minecraft:dirt\"}": 30,
+          "{\"Name\":\"minecraft:stone\"}": 224
+        }
+      }
+    },
+    "fluidFinding": {
+      "interactionWaterOrWaterloggedCellCount": 0,
+      "interactionWaterloggedCellCount": 0,
+      "interactionLavaCellCount": 0,
+      "hydraulicOrGroundwaterInferenceAllowed": false
+    },
+    "qualification": "Exact current block/fluid states in the immutable copied region only; not excavation, earthwork, retaining, groundwater, drainage, structural, utility, or future-state evidence."
+  },
+  "generatedStructureAudit": {
+    "sourceRecordCount": 114,
+    "sourceRegistrySha256": "077cef4df8c8e02011da5fd082453eeda89331b2900cada8b5c2ab6acaf136f4",
+    "evaluatedRecordCount": 114,
+    "recordsWithCandidateInteractionIntersection": 0,
+    "records": [
+      {
+        "sourceIndex": 0,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 165,
+          "z": -75
+        },
+        "inclusiveBounds": {
+          "minX": 2602,
+          "minY": 2,
+          "minZ": -1271,
+          "maxX": 2713,
+          "maxY": 25,
+          "maxZ": -1119
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[0] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "c9d393c8d850965a35108b9d24bd8b30869b39329765157831a336d78e884c22",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 1,
+        "id": "minecraft:ocean_ruin_cold",
+        "startChunk": {
+          "x": 182,
+          "z": -75
+        },
+        "inclusiveBounds": {
+          "minX": 2898,
+          "minY": 47,
+          "minZ": -1211,
+          "maxX": 2939,
+          "maxY": 62,
+          "maxZ": -1172
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[1] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "ec46d4d51ab3f252d208b8bff1df38b6dcc923569f5ce021fa2128449976f6bd",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 2,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 198,
+          "z": -75
+        },
+        "inclusiveBounds": {
+          "minX": 3101,
+          "minY": 17,
+          "minZ": -1275,
+          "maxX": 3256,
+          "maxY": 37,
+          "maxZ": -1123
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[2] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "5f23d4b84612d508fdff8f5374e0db9a5a9e7451fd2754f6dad82adae3a7f6a4",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 3,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 144,
+          "z": -73
+        },
+        "inclusiveBounds": {
+          "minX": 2240,
+          "minY": 11,
+          "minZ": -1224,
+          "maxX": 2390,
+          "maxY": 32,
+          "maxZ": -1089
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[3] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "214ae6c19e5baf0948f2d8f862aebb9efc2cbf4c6429452d73bf0f1240ab6534",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 4,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 164,
+          "z": -72
+        },
+        "inclusiveBounds": {
+          "minX": 2538,
+          "minY": -44,
+          "minZ": -1227,
+          "maxX": 2700,
+          "maxY": -15,
+          "maxZ": -1071
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[4] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "34a8b0788d5ed7246b4f4385fe93e07e957e5cf579aa65f91036ea151f774479",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 5,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 132,
+          "z": -70
+        },
+        "inclusiveBounds": {
+          "minX": 2066,
+          "minY": -30,
+          "minZ": -1170,
+          "maxX": 2179,
+          "maxY": -12,
+          "maxZ": -1066
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[5] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "cac74b8b224bb912edf3421622437d6e9a73fe2d4c13500c713dbd2ab4a01853",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 6,
+        "id": "minecraft:ruined_portal_ocean",
+        "startChunk": {
+          "x": 179,
+          "z": -69
+        },
+        "inclusiveBounds": {
+          "minX": 2854,
+          "minY": 43,
+          "minZ": -1104,
+          "maxX": 2864,
+          "maxY": 58,
+          "maxZ": -1089
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[6] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "9d1419e66a7cdc1498ca9b2125cba0fac666c6ad1ebb0f4b48b8e47dc54231ae",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 7,
+        "id": "minecraft:trial_chambers",
+        "startChunk": {
+          "x": 117,
+          "z": -68
+        },
+        "inclusiveBounds": {
+          "minX": 1820,
+          "minY": -48,
+          "minZ": -1099,
+          "maxX": 1939,
+          "maxY": -5,
+          "maxZ": -1007
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[7] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "852274ac6a5e02de5d2635716116276eee97534be682433886842701efc73b5c",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 8,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 118,
+          "z": -67
+        },
+        "inclusiveBounds": {
+          "minX": 1818,
+          "minY": -58,
+          "minZ": -1119,
+          "maxX": 1975,
+          "maxY": -45,
+          "maxZ": -986
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[8] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "bb2cab6f1ec2c8a919c0011b38f2331f18b120c5096b122e16fb2af5884ceb45",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 9,
+        "id": "minecraft:trial_chambers",
+        "startChunk": {
+          "x": 177,
+          "z": -66
+        },
+        "inclusiveBounds": {
+          "minX": 2785,
+          "minY": -45,
+          "minZ": -1067,
+          "maxX": 2903,
+          "maxY": 18,
+          "maxZ": -976
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[9] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "6ca148c84bdcaf87f29abc3ec660a430aaf10f5222cbc06c653fa0288cf34128",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 10,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 98,
+          "z": -65
+        },
+        "inclusiveBounds": {
+          "minX": 1523,
+          "minY": 18,
+          "minZ": -1113,
+          "maxX": 1643,
+          "maxY": 39,
+          "maxZ": -958
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[10] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "d2e1487485fff836479620ed885837328e81139e98473c0540ae62dcfa016dce",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 11,
+        "id": "minecraft:shipwreck",
+        "startChunk": {
+          "x": 177,
+          "z": -65
+        },
+        "inclusiveBounds": {
+          "minX": 2821,
+          "minY": 81,
+          "minZ": -1029,
+          "maxX": 2848,
+          "maxY": 101,
+          "maxZ": -1021
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[11] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "d312a99e0075d41fc8471dc26ee5d66c3833b0d59446ecccb7c57ac0cc0f7031",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 12,
+        "id": "minecraft:igloo",
+        "startChunk": {
+          "x": 144,
+          "z": -64
+        },
+        "inclusiveBounds": {
+          "minX": 2304,
+          "minY": 90,
+          "minZ": -1024,
+          "maxX": 2310,
+          "maxY": 94,
+          "maxZ": -1017
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[12] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "c0a3dca2d2d8a6112eda4c2244995ca3335032e22158aeb8d0c04547a2625cc1",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 13,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 78,
+          "z": -62
+        },
+        "inclusiveBounds": {
+          "minX": 1206,
+          "minY": -20,
+          "minZ": -1039,
+          "maxX": 1316,
+          "maxY": -4,
+          "maxZ": -914
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[13] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "b820614bdd203152db08fc3e3714ecc95039238db5fff50877a06e6e11050ff4",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 14,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 107,
+          "z": -59
+        },
+        "inclusiveBounds": {
+          "minX": 1649,
+          "minY": -48,
+          "minZ": -997,
+          "maxX": 1794,
+          "maxY": -30,
+          "maxZ": -865
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[14] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "ad1b06081c9c9313ce159f871b7f0584dd58848957b5f0fa0dda5191fbbac051",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 15,
+        "id": "minecraft:igloo",
+        "startChunk": {
+          "x": 112,
+          "z": -58
+        },
+        "inclusiveBounds": {
+          "minX": 1790,
+          "minY": 62,
+          "minZ": -926,
+          "maxX": 1797,
+          "maxY": 66,
+          "maxZ": -920
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[15] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "2e39cc7696e9dca03d8e250896d5df954390601cc5c3bac3802a99e4539e6851",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 16,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 113,
+          "z": -58
+        },
+        "inclusiveBounds": {
+          "minX": 1758,
+          "minY": -49,
+          "minZ": -999,
+          "maxX": 1883,
+          "maxY": -21,
+          "maxZ": -840
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[16] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "3e3bf584e2b8a48b61a9e70fd2b5f3990260ef28b874c862956161be194c0f21",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 17,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 200,
+          "z": -58
+        },
+        "inclusiveBounds": {
+          "minX": 3146,
+          "minY": 17,
+          "minZ": -1002,
+          "maxX": 3297,
+          "maxY": 34,
+          "maxZ": -889
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[17] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "9fea69bd046289c95ed4ec387de04b1caa0a254c3859266ed93f7001cb6f3478",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 18,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 157,
+          "z": -57
+        },
+        "inclusiveBounds": {
+          "minX": 2467,
+          "minY": 16,
+          "minZ": -961,
+          "maxX": 2590,
+          "maxY": 30,
+          "maxZ": -833
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[18] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "5e2858152382da8011da37f8c82af1ed84d50488ea8cd433155b350114a74363",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 19,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 162,
+          "z": -56
+        },
+        "inclusiveBounds": {
+          "minX": 2536,
+          "minY": -9,
+          "minZ": -938,
+          "maxX": 2659,
+          "maxY": 6,
+          "maxZ": -838
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[19] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "ef321c6d23bf2e8aae782af6661ffb88ea3109c7e1e67ef939a9bb9009fbdc71",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 20,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 193,
+          "z": -56
+        },
+        "inclusiveBounds": {
+          "minX": 3035,
+          "minY": -15,
+          "minZ": -973,
+          "maxX": 3172,
+          "maxY": 4,
+          "maxZ": -836
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[20] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "790e4089c56563a6b61dfa078c646d1ba19447097c4b16f69387d0c489e0962c",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 21,
+        "id": "minecraft:village_snowy",
+        "startChunk": {
+          "x": 159,
+          "z": -55
+        },
+        "inclusiveBounds": {
+          "minX": 2476,
+          "minY": 62,
+          "minZ": -932,
+          "maxX": 2628,
+          "maxY": 86,
+          "maxZ": -819
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[21] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "00d9dcf3b52813a15dbbf130a2136f31e4963e23a6b8faa52f44a90e432fb444",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 22,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 193,
+          "z": -55
+        },
+        "inclusiveBounds": {
+          "minX": 3010,
+          "minY": -6,
+          "minZ": -945,
+          "maxX": 3109,
+          "maxY": 17,
+          "maxZ": -780
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[22] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "0849d2f293c440f7804174d421c8e1b88e45e230045c9cfbf6b3e9896de14151",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 23,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 125,
+          "z": -54
+        },
+        "inclusiveBounds": {
+          "minX": 1968,
+          "minY": -13,
+          "minZ": -948,
+          "maxX": 2081,
+          "maxY": 10,
+          "maxZ": -814
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[23] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "3b26dfe75cfeb6b40ff5de913f5724c3f752090aad7b49f2bdd3f2cb64253fe8",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 24,
+        "id": "minecraft:trial_chambers",
+        "startChunk": {
+          "x": 136,
+          "z": -54
+        },
+        "inclusiveBounds": {
+          "minX": 2142,
+          "minY": -52,
+          "minZ": -922,
+          "maxX": 2257,
+          "maxY": -11,
+          "maxZ": -817
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[24] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "47cc35e4ce074ea18e037a3c1519a7f98e4e03d677e6eb9ec575ff073bcbd745",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 25,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 180,
+          "z": -52
+        },
+        "inclusiveBounds": {
+          "minX": 2817,
+          "minY": -15,
+          "minZ": -912,
+          "maxX": 2973,
+          "maxY": 8,
+          "maxZ": -756
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[25] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "c4de129e78a95015c1070088d0c05b9a934c1a22f47486e2416f2141f6904dcd",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 26,
+        "id": "minecraft:ocean_ruin_cold",
+        "startChunk": {
+          "x": 169,
+          "z": -51
+        },
+        "inclusiveBounds": {
+          "minX": 2698,
+          "minY": 48,
+          "minZ": -816,
+          "maxX": 2704,
+          "maxY": 54,
+          "maxZ": -811
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[26] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "67a442d17f425faf7ee154fecb75ffbc36ee5454075fa67cb82cec946f03d77a",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 27,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 171,
+          "z": -51
+        },
+        "inclusiveBounds": {
+          "minX": 2658,
+          "minY": -51,
+          "minZ": -895,
+          "maxX": 2813,
+          "maxY": -29,
+          "maxZ": -742
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[27] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "85b040b4bccf6222624305b3a21fa78ceb9f9798752963c81e610bedaceefdee",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 28,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 146,
+          "z": -50
+        },
+        "inclusiveBounds": {
+          "minX": 2273,
+          "minY": -21,
+          "minZ": -863,
+          "maxX": 2415,
+          "maxY": 1,
+          "maxZ": -758
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[28] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "40a4777749745207312da977ec7daf4d7fc0143327082eb6dabc164db23d8d06",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 29,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 81,
+          "z": -48
+        },
+        "inclusiveBounds": {
+          "minX": 1239,
+          "minY": -7,
+          "minZ": -831,
+          "maxX": 1378,
+          "maxY": 8,
+          "maxZ": -676
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[29] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "983aa72eafd80a704c49fbb063f31d3b2db0b5f1f983b5180ce54786521c7aab",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 30,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 84,
+          "z": -47
+        },
+        "inclusiveBounds": {
+          "minX": 1278,
+          "minY": 14,
+          "minZ": -830,
+          "maxX": 1424,
+          "maxY": 36,
+          "maxZ": -710
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[30] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "9bdcec5b28d955d3df66a1d29f730079b4ffa51267790c7a4fec47c56b06913c",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 31,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 98,
+          "z": -46
+        },
+        "inclusiveBounds": {
+          "minX": 1475,
+          "minY": -7,
+          "minZ": -815,
+          "maxX": 1652,
+          "maxY": 17,
+          "maxZ": -665
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[31] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "9c19d3de92f6294d887e477af8484c614387d36a8e113912aabccaf46c19942a",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 32,
+        "id": "minecraft:shipwreck",
+        "startChunk": {
+          "x": 199,
+          "z": -45
+        },
+        "inclusiveBounds": {
+          "minX": 3173,
+          "minY": 47,
+          "minZ": -709,
+          "maxX": 3188,
+          "maxY": 55,
+          "maxZ": -701
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[32] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "9968bd00290e1935eb01893abc5cdf901eb6e6c2754d90b2cf4587498e7fee0b",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 33,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 97,
+          "z": -44
+        },
+        "inclusiveBounds": {
+          "minX": 1483,
+          "minY": 17,
+          "minZ": -757,
+          "maxX": 1634,
+          "maxY": 49,
+          "maxZ": -635
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[33] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "007a0b786f352a7b2d8528cd9964b60bac8dd9e8562a8baf6d72b83d4c417ccd",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 34,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 123,
+          "z": -44
+        },
+        "inclusiveBounds": {
+          "minX": 1890,
+          "minY": 24,
+          "minZ": -768,
+          "maxX": 2041,
+          "maxY": 44,
+          "maxZ": -640
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[34] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "1c6c1515ae46afdfd21503f6d9e323c0780ab4714b21a705b0bbd1ed51998958",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 35,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 97,
+          "z": -43
+        },
+        "inclusiveBounds": {
+          "minX": 1494,
+          "minY": 5,
+          "minZ": -762,
+          "maxX": 1574,
+          "maxY": 15,
+          "maxZ": -634
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[35] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "51c8b3d6745c95db871ab0b62e87e4b029ef64322eee38c76c81ff07acd899e2",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 36,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 194,
+          "z": -43
+        },
+        "inclusiveBounds": {
+          "minX": 3057,
+          "minY": -59,
+          "minZ": -718,
+          "maxX": 3188,
+          "maxY": -38,
+          "maxZ": -620
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[36] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "39f06697581ec1e6a8d5f4c2fbe55d748093ab8a16662649d525c704adeec968",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 37,
+        "id": "minecraft:shipwreck",
+        "startChunk": {
+          "x": 130,
+          "z": -42
+        },
+        "inclusiveBounds": {
+          "minX": 2072,
+          "minY": 69,
+          "minZ": -661,
+          "maxX": 2099,
+          "maxY": 77,
+          "maxZ": -653
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[37] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "579ef3de1292759b1754088512e2960da90164776b5518fc60c4357ea7ce0856",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 38,
+        "id": "minecraft:ruined_portal_ocean",
+        "startChunk": {
+          "x": 173,
+          "z": -40
+        },
+        "inclusiveBounds": {
+          "minX": 2776,
+          "minY": 48,
+          "minZ": -640,
+          "maxX": 2783,
+          "maxY": 56,
+          "maxZ": -632
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[38] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "e1f2772c4ca4a62898328d12b1585b5fc8fbdfc67a2c5b7e5805c8a40b0b6a63",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 39,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 155,
+          "z": -39
+        },
+        "inclusiveBounds": {
+          "minX": 2433,
+          "minY": -50,
+          "minZ": -691,
+          "maxX": 2532,
+          "maxY": -32,
+          "maxZ": -548
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[39] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "39f8478f1a2f3915f0966e977ef04ce0572a379c38b4fd7209c3bde7a7c3a9d0",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 40,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 109,
+          "z": -35
+        },
+        "inclusiveBounds": {
+          "minX": 1711,
+          "minY": -25,
+          "minZ": -624,
+          "maxX": 1831,
+          "maxY": -6,
+          "maxZ": -466
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[40] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "48600241e8c564b8275083ad03c0e3dfbe81a1d42700618d8ec55746fec0e1d1",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 41,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 130,
+          "z": -35
+        },
+        "inclusiveBounds": {
+          "minX": 1998,
+          "minY": -31,
+          "minZ": -634,
+          "maxX": 2137,
+          "maxY": -9,
+          "maxZ": -511
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[41] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "37a598d716620fe2310b61685cd94e8ccbff75d1d9247a7750316866c34b76d2",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 42,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 88,
+          "z": -34
+        },
+        "inclusiveBounds": {
+          "minX": 1322,
+          "minY": -41,
+          "minZ": -622,
+          "maxX": 1471,
+          "maxY": -15,
+          "maxZ": -453
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[42] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "5e1bc64134c74c98cf5889cdebb00284ccab00e30b712d555eba1f76be225dcf",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 43,
+        "id": "minecraft:trial_chambers",
+        "startChunk": {
+          "x": 180,
+          "z": -33
+        },
+        "inclusiveBounds": {
+          "minX": 2833,
+          "minY": -51,
+          "minZ": -534,
+          "maxX": 2932,
+          "maxY": 21,
+          "maxZ": -448
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[43] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "20d7fc2da9ade5d844365c53c5f36592b8019bd7c3f5abcf8c58abf293657303",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 44,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 108,
+          "z": -31
+        },
+        "inclusiveBounds": {
+          "minX": 1669,
+          "minY": -33,
+          "minZ": -575,
+          "maxX": 1798,
+          "maxY": -14,
+          "maxZ": -451
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[44] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "1596df7f871b1b1ec346808c0450003cadeb145b54ab4111fd16173aa6b0b4fa",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 45,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 102,
+          "z": -30
+        },
+        "inclusiveBounds": {
+          "minX": 1554,
+          "minY": -21,
+          "minZ": -534,
+          "maxX": 1727,
+          "maxY": 5,
+          "maxZ": -384
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[45] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "ffc509a9ab0b410fcb381cc0962753dce0107b4a76592076ed7d95e2166fbe3a",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 46,
+        "id": "minecraft:ocean_ruin_cold",
+        "startChunk": {
+          "x": 181,
+          "z": -29
+        },
+        "inclusiveBounds": {
+          "minX": 2891,
+          "minY": 59,
+          "minZ": -470,
+          "maxX": 2896,
+          "maxY": 65,
+          "maxZ": -464
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[46] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "db103e938890968cc9cea235980a3bdca795fb3213b02b3ec621f122e1c72f5f",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 47,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 76,
+          "z": -28
+        },
+        "inclusiveBounds": {
+          "minX": 1184,
+          "minY": -50,
+          "minZ": -482,
+          "maxX": 1285,
+          "maxY": -36,
+          "maxZ": -384
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[47] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "6d4d0577dacfd8fb5d307be6c9d3665dcfa39337270a092017f4d8daec62a506",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 48,
+        "id": "minecraft:ruined_portal",
+        "startChunk": {
+          "x": 82,
+          "z": -28
+        },
+        "inclusiveBounds": {
+          "minX": 1312,
+          "minY": 62,
+          "minZ": -432,
+          "maxX": 1327,
+          "maxY": 77,
+          "maxZ": -417
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[48] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "de65969b61c691adb4b908ba029c585ca48b44abe4e25cf5145a379cffc6c268",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 49,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 173,
+          "z": -28
+        },
+        "inclusiveBounds": {
+          "minX": 2720,
+          "minY": -61,
+          "minZ": -537,
+          "maxX": 2834,
+          "maxY": -46,
+          "maxZ": -395
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[49] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "4b9dff204f75e76078afd9faf182f7492d97a2dee99c1728d0b71312feff8299",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 50,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 108,
+          "z": -26
+        },
+        "inclusiveBounds": {
+          "minX": 1655,
+          "minY": 12,
+          "minZ": -458,
+          "maxX": 1822,
+          "maxY": 30,
+          "maxZ": -320
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[50] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "73b1a389c2df0ad891ac4afd5467314d1e30edd9f73790b12e082df054156771",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 51,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 135,
+          "z": -26
+        },
+        "inclusiveBounds": {
+          "minX": 2111,
+          "minY": -41,
+          "minZ": -478,
+          "maxX": 2203,
+          "maxY": -11,
+          "maxZ": -323
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[51] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "e3761962c62838772280ff1ddbf539fb4b5700ec0aa852c2cf58368063e0fa78",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 52,
+        "id": "minecraft:ruined_portal",
+        "startChunk": {
+          "x": 142,
+          "z": -24
+        },
+        "inclusiveBounds": {
+          "minX": 2272,
+          "minY": 62,
+          "minZ": -384,
+          "maxX": 2281,
+          "maxY": 71,
+          "maxZ": -378
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[52] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "ccd953a457315362d4f4c3662a11a64b14404d11babdfbc0d58a1d20d08ffa25",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 53,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 194,
+          "z": -23
+        },
+        "inclusiveBounds": {
+          "minX": 3049,
+          "minY": -38,
+          "minZ": -408,
+          "maxX": 3148,
+          "maxY": -12,
+          "maxZ": -300
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[53] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "9eab4a27f46e41ec558ab24d7463419f98e480b8e3c469e6fd291240895fb5ae",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 54,
+        "id": "minecraft:trial_chambers",
+        "startChunk": {
+          "x": 122,
+          "z": -21
+        },
+        "inclusiveBounds": {
+          "minX": 1905,
+          "minY": -51,
+          "minZ": -399,
+          "maxX": 2028,
+          "maxY": 9,
+          "maxZ": -287
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[54] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "77870fcc3a0626630f29afce1cf8e4b4434a68ddfc5d745e410d2166a2c27e9f",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 55,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 121,
+          "z": -20
+        },
+        "inclusiveBounds": {
+          "minX": 1873,
+          "minY": -1,
+          "minZ": -393,
+          "maxX": 2011,
+          "maxY": 19,
+          "maxZ": -224
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[55] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "3ac3f52550724bceb6e7be104481e1cc44fc0e6e5d41f9be140d021d65e128ec",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 56,
+        "id": "minecraft:shipwreck",
+        "startChunk": {
+          "x": 182,
+          "z": -20
+        },
+        "inclusiveBounds": {
+          "minX": 2912,
+          "minY": 48,
+          "minZ": -305,
+          "maxX": 2920,
+          "maxY": 56,
+          "maxZ": -290
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[56] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "ea312e092cef3c76cc8230ed65083db9a643df28f9d19d11514e5befde8c1cbc",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 57,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 176,
+          "z": -18
+        },
+        "inclusiveBounds": {
+          "minX": 2743,
+          "minY": -61,
+          "minZ": -352,
+          "maxX": 2874,
+          "maxY": -40,
+          "maxZ": -231
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[57] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "b7340b727ddfacead50afcc12c8e2076b2c40f94cb1e45da8321d6faaf1fc7f5",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 58,
+        "id": "minecraft:ocean_ruin_cold",
+        "startChunk": {
+          "x": 167,
+          "z": -16
+        },
+        "inclusiveBounds": {
+          "minX": 2636,
+          "minY": 40,
+          "minZ": -273,
+          "maxX": 2683,
+          "maxY": 60,
+          "maxZ": -228
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[58] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "a84b2a580f3c143cea74de6ff384f32fdbed63335201a91454648999f8d74562",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 59,
+        "id": "minecraft:trail_ruins",
+        "startChunk": {
+          "x": 79,
+          "z": -15
+        },
+        "inclusiveBounds": {
+          "minX": 1250,
+          "minY": 48,
+          "minZ": -281,
+          "maxX": 1275,
+          "maxY": 69,
+          "maxZ": -230
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[59] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "e6a0462ac72ed57370557da1b22885bd16dd1a64709834faa71db1039d740df4",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 60,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 158,
+          "z": -15
+        },
+        "inclusiveBounds": {
+          "minX": 2488,
+          "minY": 13,
+          "minZ": -300,
+          "maxX": 2611,
+          "maxY": 33,
+          "maxZ": -197
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[60] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "a1d1b6174871959742007742a976094fa63cf965d3328728d0e472c2c2e13f3e",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 61,
+        "id": "minecraft:shipwreck",
+        "startChunk": {
+          "x": 159,
+          "z": -15
+        },
+        "inclusiveBounds": {
+          "minX": 2544,
+          "minY": 47,
+          "minZ": -240,
+          "maxX": 2552,
+          "maxY": 55,
+          "maxZ": -217
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[61] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "8f9366201b56141a9afad5990bcc25dbda331e3e8134c65929540314cad53ec4",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 62,
+        "id": "minecraft:trial_chambers",
+        "startChunk": {
+          "x": 147,
+          "z": -13
+        },
+        "inclusiveBounds": {
+          "minX": 2289,
+          "minY": -44,
+          "minZ": -284,
+          "maxX": 2399,
+          "maxY": -4,
+          "maxZ": -160
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[62] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "581ac21c44a438bb00282950afeb555a66275776ed218471925307088c36d58e",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 63,
+        "id": "minecraft:ocean_ruin_cold",
+        "startChunk": {
+          "x": 190,
+          "z": -12
+        },
+        "inclusiveBounds": {
+          "minX": 3040,
+          "minY": 47,
+          "minZ": -192,
+          "maxX": 3045,
+          "maxY": 53,
+          "maxZ": -186
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[63] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "ac39508b05150d32e6f5236c3b7d8fac1a7a5ffa8b585a69a252e55d84f9d19a",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 64,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 167,
+          "z": -11
+        },
+        "inclusiveBounds": {
+          "minX": 2608,
+          "minY": -19,
+          "minZ": -245,
+          "maxX": 2736,
+          "maxY": 15,
+          "maxZ": -98
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[64] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "bcba9a14a502ce51db0a2cfa21daea87b5601d7a23cf1b13c616a728197fb534",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 65,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 161,
+          "z": -8
+        },
+        "inclusiveBounds": {
+          "minX": 2503,
+          "minY": -34,
+          "minZ": -172,
+          "maxX": 2604,
+          "maxY": -15,
+          "maxZ": -40
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[65] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "a80d14f40c3df5d35fa408433a202fb06a950004f636249424bc8d3f619e219e",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 66,
+        "id": "minecraft:buried_treasure",
+        "startChunk": {
+          "x": 129,
+          "z": -5
+        },
+        "inclusiveBounds": {
+          "minX": 2073,
+          "minY": 69,
+          "minZ": -71,
+          "maxX": 2073,
+          "maxY": 69,
+          "maxZ": -71
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[66] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "2a64c6c6a6359f0289551679eb38ab4caf5819d25e1529477cc7a70a0d6e3c3c",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 67,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 81,
+          "z": -3
+        },
+        "inclusiveBounds": {
+          "minX": 1254,
+          "minY": -23,
+          "minZ": -134,
+          "maxX": 1369,
+          "maxY": -6,
+          "maxZ": 33
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[67] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "c5b1525bba0bc44fdb46befecf676e1e557e955e5b0384f88702c26900cbe3bb",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 68,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 106,
+          "z": -3
+        },
+        "inclusiveBounds": {
+          "minX": 1642,
+          "minY": 14,
+          "minZ": -126,
+          "maxX": 1771,
+          "maxY": 32,
+          "maxZ": 30
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[68] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "2a8da0ff7ad74ae55196956855a34458587004e5c444e76c51bc37f26a222707",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 69,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 194,
+          "z": -3
+        },
+        "inclusiveBounds": {
+          "minX": 3040,
+          "minY": 12,
+          "minZ": -99,
+          "maxX": 3187,
+          "maxY": 36,
+          "maxZ": 19
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[69] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "88c65f23cddd3e4925f1412355812f90d4ebd67c3500136450b8c8059ff7f564",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 70,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 76,
+          "z": -2
+        },
+        "inclusiveBounds": {
+          "minX": 1184,
+          "minY": -56,
+          "minZ": -49,
+          "maxX": 1282,
+          "maxY": -37,
+          "maxZ": 33
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[70] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "29b197fbeec6868de79563f891925c090f494147ffba28ad1381930c110edd23",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 71,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 86,
+          "z": -2
+        },
+        "inclusiveBounds": {
+          "minX": 1323,
+          "minY": 2,
+          "minZ": -99,
+          "maxX": 1449,
+          "maxY": 30,
+          "maxZ": 48
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[71] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "fe04bfee0f36b9af3d54d283872bb76806584082f6966de9fd5901f0f90ae67e",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 72,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 96,
+          "z": -2
+        },
+        "inclusiveBounds": {
+          "minX": 1473,
+          "minY": -5,
+          "minZ": -118,
+          "maxX": 1587,
+          "maxY": 19,
+          "maxZ": 34
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[72] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "47c2495283c3d1f69b8803089a1890ac35955d3f0857a854b7cacc40416a40d2",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 73,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 150,
+          "z": -2
+        },
+        "inclusiveBounds": {
+          "minX": 2351,
+          "minY": -11,
+          "minZ": -83,
+          "maxX": 2480,
+          "maxY": 14,
+          "maxZ": 65
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[73] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "429cbb3f5f0b17254261462197e32e7aa4fc0731bcb9f51f2f26b3eea74d3c03",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 74,
+        "id": "minecraft:ruined_portal",
+        "startChunk": {
+          "x": 130,
+          "z": 1
+        },
+        "inclusiveBounds": {
+          "minX": 2079,
+          "minY": 95,
+          "minZ": 17,
+          "maxX": 2085,
+          "maxY": 101,
+          "maxZ": 21
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[74] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "e6c345a2656d6d6a64025962c9a1b1195a36062f0b215a3142727199b2ac423a",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 75,
+        "id": "minecraft:ocean_ruin_cold",
+        "startChunk": {
+          "x": 167,
+          "z": 1
+        },
+        "inclusiveBounds": {
+          "minX": 2672,
+          "minY": 50,
+          "minZ": 16,
+          "maxX": 2677,
+          "maxY": 56,
+          "maxZ": 22
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[75] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "599d22180ea35bccf6ab0911bed1ae2967ba083fcf4a1cf283fbb16cb79423ad",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 76,
+        "id": "minecraft:trial_chambers",
+        "startChunk": {
+          "x": 78,
+          "z": 2
+        },
+        "inclusiveBounds": {
+          "minX": 1171,
+          "minY": -30,
+          "minZ": -49,
+          "maxX": 1295,
+          "maxY": 4,
+          "maxZ": 62
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[76] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "9313244279b869ad319caf15ae9c86c2ef77aab24afc92f8129abf60564ed4b2",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 77,
+        "id": "minecraft:trial_chambers",
+        "startChunk": {
+          "x": 142,
+          "z": 2
+        },
+        "inclusiveBounds": {
+          "minX": 2191,
+          "minY": -53,
+          "minZ": -16,
+          "maxX": 2306,
+          "maxY": -7,
+          "maxZ": 104
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[77] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "5cda4ca6b93d716d11c197f31f641f76fbb6cb54ea25fe54bcfc69cb6d4d4b30",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 78,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 150,
+          "z": 2
+        },
+        "inclusiveBounds": {
+          "minX": 2354,
+          "minY": 25,
+          "minZ": -54,
+          "maxX": 2499,
+          "maxY": 43,
+          "maxZ": 112
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[78] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "072b18bec044fdc7747b7f77d688e5d03580bc640b20fde010f5dd136ec2b9e6",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 79,
+        "id": "minecraft:buried_treasure",
+        "startChunk": {
+          "x": 190,
+          "z": 2
+        },
+        "inclusiveBounds": {
+          "minX": 3049,
+          "minY": 60,
+          "minZ": 41,
+          "maxX": 3049,
+          "maxY": 60,
+          "maxZ": 41
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[79] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "f0dcfaa4c25b3b595211c3f020c492d9b044e49d0ea0877544108a859432e419",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 80,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 115,
+          "z": 3
+        },
+        "inclusiveBounds": {
+          "minX": 1780,
+          "minY": -16,
+          "minZ": -21,
+          "maxX": 1925,
+          "maxY": 3,
+          "maxZ": 134
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[80] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "2774c06c22a50ec4fbf032902e650eee2467d5cfdf1399fea02f9c2ee5df257b",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 81,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 189,
+          "z": 4
+        },
+        "inclusiveBounds": {
+          "minX": 2981,
+          "minY": -39,
+          "minZ": -4,
+          "maxX": 3114,
+          "maxY": -20,
+          "maxZ": 136
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[81] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "6a248acfb3f6578db1c33d35f7578ee86e152a07893ab4b7ff8210581242b58a",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 82,
+        "id": "minecraft:shipwreck",
+        "startChunk": {
+          "x": 161,
+          "z": 6
+        },
+        "inclusiveBounds": {
+          "minX": 2579,
+          "minY": 51,
+          "minZ": 107,
+          "maxX": 2595,
+          "maxY": 59,
+          "maxZ": 115
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[82] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "3076296870b54ea91e74761791c0bbc986fd617468a7457fc30821ff1b4e1aa0",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 83,
+        "id": "minecraft:trial_chambers",
+        "startChunk": {
+          "x": 171,
+          "z": 6
+        },
+        "inclusiveBounds": {
+          "minX": 2688,
+          "minY": -41,
+          "minZ": 85,
+          "maxX": 2808,
+          "maxY": -6,
+          "maxZ": 177
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[83] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "9a41c27b9d3b8bf2e0d204962ec84c483defec1c2267f5a5b280466b4e67e6c3",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 84,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 184,
+          "z": 7
+        },
+        "inclusiveBounds": {
+          "minX": 2857,
+          "minY": 4,
+          "minZ": 27,
+          "maxX": 3016,
+          "maxY": 30,
+          "maxZ": 183
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[84] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "c9d9807984092f8b4fafd57e434510ca8b76c5ba9ecb9a31f052438e6ae27fb4",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 85,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 200,
+          "z": 9
+        },
+        "inclusiveBounds": {
+          "minX": 3176,
+          "minY": -30,
+          "minZ": 72,
+          "maxX": 3269,
+          "maxY": -9,
+          "maxZ": 197
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[85] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "b935cb30e93dc61b6f5e630d0b77a91e19fae648cf061645f0a3db91eaf5e296",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 86,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 78,
+          "z": 10
+        },
+        "inclusiveBounds": {
+          "minX": 1187,
+          "minY": 13,
+          "minZ": 89,
+          "maxX": 1331,
+          "maxY": 32,
+          "maxZ": 250
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[86] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "bdbd01014a111ef5abcf8459ef503c35aa3fd87aa7d38e570c2d7d1d330e20dd",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 87,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 164,
+          "z": 10
+        },
+        "inclusiveBounds": {
+          "minX": 2572,
+          "minY": -6,
+          "minZ": 81,
+          "maxX": 2678,
+          "maxY": 24,
+          "maxZ": 258
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[87] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "7d014f9e28b9a7e7d6694909458b1a9fa315bbb84cb752a5f4af35a8c252eb6e",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 88,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 123,
+          "z": 11
+        },
+        "inclusiveBounds": {
+          "minX": 1929,
+          "minY": -37,
+          "minZ": 97,
+          "maxX": 2041,
+          "maxY": -14,
+          "maxZ": 252
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[88] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "f22e79172afe483a0c5520a3ad533087c20d3cd349e971ad3c1c67137fd7365a",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 89,
+        "id": "minecraft:ocean_ruin_cold",
+        "startChunk": {
+          "x": 141,
+          "z": 11
+        },
+        "inclusiveBounds": {
+          "minX": 2250,
+          "minY": 47,
+          "minZ": 176,
+          "maxX": 2256,
+          "maxY": 53,
+          "maxZ": 181
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[89] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "c9c0fb212e8138fe61f7db111ab7263b8de261ec94b8cbfdfeccc2c880c628dd",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 90,
+        "id": "minecraft:ruined_portal",
+        "startChunk": {
+          "x": 173,
+          "z": 13
+        },
+        "inclusiveBounds": {
+          "minX": 2768,
+          "minY": 67,
+          "minZ": 208,
+          "maxX": 2776,
+          "maxY": 73,
+          "maxZ": 216
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[90] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "b9079c66e52ddd8316dba4bafc4c5877de561831b4af47392dc906bffd274cc7",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 91,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 95,
+          "z": 14
+        },
+        "inclusiveBounds": {
+          "minX": 1457,
+          "minY": -22,
+          "minZ": 146,
+          "maxX": 1610,
+          "maxY": 5,
+          "maxZ": 309
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[91] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "f244db25db859d445b2a8bb65f64f1bed111911ac100f0d2eace72c0d2632b82",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 92,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 167,
+          "z": 14
+        },
+        "inclusiveBounds": {
+          "minX": 2615,
+          "minY": -55,
+          "minZ": 145,
+          "maxX": 2745,
+          "maxY": -33,
+          "maxZ": 278
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[92] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "4e2cdd2ae8aea66781ab2176bc501bb25379b63873ebcded1230d23b6d4b5cbd",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 93,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 182,
+          "z": 14
+        },
+        "inclusiveBounds": {
+          "minX": 2842,
+          "minY": 7,
+          "minZ": 196,
+          "maxX": 2976,
+          "maxY": 39,
+          "maxZ": 290
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[93] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "36bb15d1dd46b5401ded7dc06f90b717f626f967a4f2b6a5d44b65c9d5fa132c",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 94,
+        "id": "minecraft:trial_chambers",
+        "startChunk": {
+          "x": 108,
+          "z": 15
+        },
+        "inclusiveBounds": {
+          "minX": 1685,
+          "minY": -31,
+          "minZ": 177,
+          "maxX": 1799,
+          "maxY": 6,
+          "maxZ": 273
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[94] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "0a051663d2a828be4fce2adc869786f4f2dbd551bc66990c39dee7fb4399e02c",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 95,
+        "id": "minecraft:shipwreck_beached",
+        "startChunk": {
+          "x": 181,
+          "z": 15
+        },
+        "inclusiveBounds": {
+          "minX": 2896,
+          "minY": 57,
+          "minZ": 247,
+          "maxX": 2904,
+          "maxY": 65,
+          "maxZ": 270
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[95] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "83c7cee88e0c6537d9e7183490249d9dfd898a287b2ef183c1189a5c00d94486",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 96,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 146,
+          "z": 16
+        },
+        "inclusiveBounds": {
+          "minX": 2274,
+          "minY": 7,
+          "minZ": 193,
+          "maxX": 2397,
+          "maxY": 25,
+          "maxZ": 348
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[96] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "a05ac4d28a443f3a562877f55c098e01efe2adfd33996d0f295470af0c195c7a",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 97,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 171,
+          "z": 17
+        },
+        "inclusiveBounds": {
+          "minX": 2661,
+          "minY": -51,
+          "minZ": 202,
+          "maxX": 2820,
+          "maxY": -34,
+          "maxZ": 350
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[97] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "e0835ec161e739759e3e88e2909ec68f53dd32dc34dd3bf98de6b51fec8c04c4",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 98,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 157,
+          "z": 19
+        },
+        "inclusiveBounds": {
+          "minX": 2421,
+          "minY": 1,
+          "minZ": 217,
+          "maxX": 2590,
+          "maxY": 14,
+          "maxZ": 350
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[98] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "20994b661926edd6eea9e71de1876af897952b8f9680d6387a361f0c0e56bfc5",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 99,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 97,
+          "z": 21
+        },
+        "inclusiveBounds": {
+          "minX": 1473,
+          "minY": -41,
+          "minZ": 256,
+          "maxX": 1609,
+          "maxY": -20,
+          "maxZ": 416
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[99] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "d647314edc95647cda462845a8fb506e7e0720849c7b1ddc3f80c8e69b452f20",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 100,
+        "id": "minecraft:ruined_portal",
+        "startChunk": {
+          "x": 95,
+          "z": 23
+        },
+        "inclusiveBounds": {
+          "minX": 1521,
+          "minY": 62,
+          "minZ": 377,
+          "maxX": 1529,
+          "maxY": 69,
+          "maxZ": 386
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[100] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "3b6bcabce2d4a1d74914f2cde5ba8c6c1a774391fc121bf392a2bd5671ca3e9b",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 101,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 77,
+          "z": 26
+        },
+        "inclusiveBounds": {
+          "minX": 1175,
+          "minY": -42,
+          "minZ": 333,
+          "maxX": 1294,
+          "maxY": -17,
+          "maxZ": 486
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[101] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "1a70cc1c799412bd55d1b9afb17521e38c37f40584f18cc9ccae8a809bfd322e",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 102,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 76,
+          "z": 27
+        },
+        "inclusiveBounds": {
+          "minX": 1160,
+          "minY": -55,
+          "minZ": 340,
+          "maxX": 1287,
+          "maxY": -34,
+          "maxZ": 526
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[102] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "d56e08eb33cd1ab4022d4992d1c0ac19627928ddcd694bb4405fc9c109587f9c",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 103,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 134,
+          "z": 27
+        },
+        "inclusiveBounds": {
+          "minX": 2090,
+          "minY": -32,
+          "minZ": 364,
+          "maxX": 2226,
+          "maxY": -7,
+          "maxZ": 518
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[103] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "fd98c4f0b76672b0566dab268fa3d99e39104ed4b21ff573f2bb2ea677ec4df8",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 104,
+        "id": "minecraft:ocean_ruin_cold",
+        "startChunk": {
+          "x": 144,
+          "z": 28
+        },
+        "inclusiveBounds": {
+          "minX": 2299,
+          "minY": 48,
+          "minZ": 442,
+          "maxX": 2304,
+          "maxY": 54,
+          "maxZ": 448
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[104] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "7a4f340f85c31eddf5a3cbdf91087edf1dd6d1fb0aa5a520f56dab89d781e6a9",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 105,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 159,
+          "z": 29
+        },
+        "inclusiveBounds": {
+          "minX": 2492,
+          "minY": 14,
+          "minZ": 393,
+          "maxX": 2599,
+          "maxY": 40,
+          "maxZ": 510
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[105] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "ac236e4db16af63054fdbc0518a096948b5742621dd26062ed0c4fb69ec1c081",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 106,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 194,
+          "z": 29
+        },
+        "inclusiveBounds": {
+          "minX": 3048,
+          "minY": -7,
+          "minZ": 389,
+          "maxX": 3187,
+          "maxY": 13,
+          "maxZ": 559
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[106] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "259e75964d5e492615f4bb1fa221a82dfce9214a59247acf9e8857a8c062f05a",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 107,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 99,
+          "z": 30
+        },
+        "inclusiveBounds": {
+          "minX": 1544,
+          "minY": -56,
+          "minZ": 423,
+          "maxX": 1667,
+          "maxY": -40,
+          "maxZ": 531
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[107] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "7dfbbf6ae9c8c0243d32e4fb6957e4d7c48d95f67330d3ae4bdfb9a84dfe0a04",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 108,
+        "id": "minecraft:ocean_ruin_cold",
+        "startChunk": {
+          "x": 161,
+          "z": 30
+        },
+        "inclusiveBounds": {
+          "minX": 2547,
+          "minY": 43,
+          "minZ": 454,
+          "maxX": 2587,
+          "maxY": 58,
+          "maxZ": 486
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[108] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "5dee27f8c3dbf8dc9103a4c777dea76f7a2c13457bad73da0376c0b9d5c347b7",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 109,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 99,
+          "z": 31
+        },
+        "inclusiveBounds": {
+          "minX": 1515,
+          "minY": 23,
+          "minZ": 414,
+          "maxX": 1673,
+          "maxY": 50,
+          "maxZ": 579
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[109] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "602fc1315cc94d588fb9a74425a2030e198b1a6a3a6e01b8c141121100cdecf8",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 110,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 79,
+          "z": 32
+        },
+        "inclusiveBounds": {
+          "minX": 1191,
+          "minY": 25,
+          "minZ": 437,
+          "maxX": 1358,
+          "maxY": 46,
+          "maxZ": 608
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[110] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "cea660f4b08b9809a69815dbd3e9b81a55922e03a7143dea3ef087f1ed81efbe",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 111,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 138,
+          "z": 33
+        },
+        "inclusiveBounds": {
+          "minX": 2161,
+          "minY": 23,
+          "minZ": 465,
+          "maxX": 2244,
+          "maxY": 45,
+          "maxZ": 616
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[111] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "a5fd410e29127ba17d9c61e50ba32d71b4989b48b503e975ee4888b30213248b",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 112,
+        "id": "minecraft:trial_chambers",
+        "startChunk": {
+          "x": 83,
+          "z": 37
+        },
+        "inclusiveBounds": {
+          "minX": 1280,
+          "minY": -42,
+          "minZ": 581,
+          "maxX": 1399,
+          "maxY": 18,
+          "maxZ": 672
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[112] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "f36ab53e17ebb41dc50fe27b2e66a1ad27dbe9f71920040caf44adcca63f5418",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "sourceIndex": 113,
+        "id": "minecraft:mineshaft",
+        "startChunk": {
+          "x": 120,
+          "z": 37
+        },
+        "inclusiveBounds": {
+          "minX": 1875,
+          "minY": 20,
+          "minZ": 500,
+          "maxX": 1993,
+          "maxY": 42,
+          "maxZ": 678
+        },
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with Phase 0 generatedStructureStarts[113] inclusive bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "8624c476ba025e08925d739d2fa35bfcd96ffad3d7826dc7fcb4184d618090d6",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      }
+    ],
+    "exactPresentFabricClearanceAccepted": false,
+    "constructionInfluenceMarginAccepted": false,
+    "qualification": "Every Phase 0 start bound is intersected exactly; bounds do not prove present fabric or a positive construction margin."
+  },
+  "protectedRelicAudit": {
+    "sourceCoreCount": 3,
+    "evaluatedCoreCount": 3,
+    "coresWithCandidateInteractionIntersection": 0,
+    "records": [
+      {
+        "key": "igloo-east",
+        "structureId": "minecraft:igloo",
+        "inclusiveBounds": {
+          "minX": 2304,
+          "minY": 90,
+          "minZ": -1024,
+          "maxX": 2310,
+          "maxY": 94,
+          "maxZ": -1017
+        },
+        "boundCoreCellCount": 280,
+        "boundCoreCoordinateSetSha256": "45e77afc9f46aa6663c5830f75a26539740a73085ce7d10e27ff14bc2426e326",
+        "positiveMarginStatus": "HOLD_NOT_FROZEN",
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with protectedRelics.relics[igloo-east] inclusive core bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "b15984317520101b88c92b91fa517d884ad87a51476228a5d5667ee818b277e8",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "key": "igloo-west",
+        "structureId": "minecraft:igloo",
+        "inclusiveBounds": {
+          "minX": 1790,
+          "minY": 62,
+          "minZ": -926,
+          "maxX": 1797,
+          "maxY": 66,
+          "maxZ": -920
+        },
+        "boundCoreCellCount": 280,
+        "boundCoreCoordinateSetSha256": "9ec8b536822c1f6cb794fd0f7cdd14063daddbb650e6dd6f70ed9b0c15c40d72",
+        "positiveMarginStatus": "HOLD_NOT_FROZEN",
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with protectedRelics.relics[igloo-west] inclusive core bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "68dc229bc5c42b85c3ec22785221a4b63847565121fbf3bf5bbfbba47794ae7a",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      },
+      {
+        "key": "shipwreck",
+        "structureId": "minecraft:shipwreck",
+        "inclusiveBounds": {
+          "minX": 2072,
+          "minY": 69,
+          "minZ": -661,
+          "maxX": 2099,
+          "maxY": 77,
+          "maxZ": -653
+        },
+        "boundCoreCellCount": 2268,
+        "boundCoreCoordinateSetSha256": "715792eef84d4c3029a5750b0683adef6e0c5447b918512539c0d96f82cd2ee6",
+        "positiveMarginStatus": "HOLD_NOT_FROZEN",
+        "candidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "exact intersection with protectedRelics.relics[shipwreck] inclusive core bounds",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "d250e1b34ece7b5b6cb4d8437f7678e218d61f7409ca138653bbe4475de23133",
+          "componentCount": 0,
+          "largestComponentCellCount": 0,
+          "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "accepted": false,
+          "operationAuthorization": false
+        }
+      }
+    ],
+    "finalPositiveMarginClearanceAccepted": false
+  },
+  "p1B12Coordination": {
+    "b12CandidateId": "P1-B12-GA-PASSIVE-SHELL-CANDIDATE-01",
+    "b12CandidateAccepted": false,
+    "exactRoadLoadSetsIdentical": true,
+    "roadLoadCellCount": 4784,
+    "b12BoundRoadLoadCoordinateSetSha256": "bd510ae1e1fdd4888aaed37290700c0edde54fb2cf041835d79d857d6d106df6",
+    "proposedRoadConstructionVsB12OuterEnvelope": {
+      "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+      "reconstructionRule": "proposed road construction intersect reconstructed exact P1-B12 outer envelope",
+      "cellCount": 0,
+      "bounds": null,
+      "coordinateSetSha256": "eae7b608589a28e9f570ee29ebfe7065390309cb02458d970dd6e9f5bb775ab6",
+      "componentCount": 0,
+      "largestComponentCellCount": 0,
+      "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "accepted": false,
+      "operationAuthorization": false
+    },
+    "candidateInteractionVsB12Influence": {
+      "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+      "reconstructionRule": "candidate interaction union intersect reconstructed exact P1-B12 candidate influence union",
+      "cellCount": 4784,
+      "bounds": {
+        "minX": 1750,
+        "maxX": 2048,
+        "minY": 66,
+        "maxY": 71,
+        "minZ": -331,
+        "maxZ": -296
+      },
+      "coordinateSetSha256": "0544a015cc320ec47c196c08e12d5fd2799c03d79ee78363b737de314abc10ff",
+      "componentCount": 1,
+      "largestComponentCellCount": 4784,
+      "componentSizeMultisetSha256": "9103c99827d2a2038d0cdb44d82fada18dce2a742d0f021c38cccd1a9ec8e47a",
+      "accepted": false,
+      "operationAuthorization": false
+    },
+    "roadSurfaceToB12UpperLoadLayer": {
+      "relationship": "VERTICALLY_ADJACENT_AT_EVERY_ROAD_CELL",
+      "transitionPairCount": 2392,
+      "transitionPairSha256": "4b6290b6e32d7e0999f54e47b27f1c13d75ab8f8d50c7ead886ff2039ea213b1",
+      "accepted": false
+    },
+    "canonicalSharedOwnerAccepted": false,
+    "structuralTransferAccepted": false,
+    "physicalSeamAccepted": false
+  },
+  "houstonZ03Z05Coordination": {
+    "exactHalfOpenHoustonSampleEnvelope": {
+      "minXInclusive": 2036,
+      "maxXExclusive": 2060,
+      "minYInclusive": 64,
+      "maxYExclusive": 72,
+      "minZInclusive": -340,
+      "maxZExclusive": -316
+    },
+    "houstonSampleEnvelopeCellCount": 4608,
+    "exactCellSets": {
+      "proposedRoadConstructionOverlap": {
+        "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "reconstructionRule": "proposed road construction intersect exact half-open Houston sample envelope",
+        "cellCount": 0,
+        "bounds": null,
+        "coordinateSetSha256": "dd7ebb4193bfed1fb53cf38a01fb58ba60221ddca002e941bdbf49dddddf80ef",
+        "componentCount": 0,
+        "largestComponentCellCount": 0,
+        "componentSizeMultisetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "accepted": false,
+        "operationAuthorization": false
+      },
+      "candidateInteractionOverlap": {
+        "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "reconstructionRule": "candidate interaction union intersect exact half-open Houston sample envelope",
+        "cellCount": 260,
+        "bounds": {
+          "minX": 2036,
+          "maxX": 2048,
+          "minY": 70,
+          "maxY": 71,
+          "minZ": -332,
+          "maxZ": -322
+        },
+        "coordinateSetSha256": "a2e9f0b8b59190d17e36af15700a0c8d141f947614ccdcba8cb8807c7a0548f8",
+        "componentCount": 1,
+        "largestComponentCellCount": 260,
+        "componentSizeMultisetSha256": "a4a144adfc7753e93682285733402c2cc2afa2af9cd933aa06ea5f39d33fa6b8",
+        "accepted": false,
+        "operationAuthorization": false
+      },
+      "candidateInfluenceReservationOverlap": {
+        "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "reconstructionRule": "candidate influence reservation union intersect exact half-open Houston sample envelope",
+        "cellCount": 260,
+        "bounds": {
+          "minX": 2036,
+          "maxX": 2048,
+          "minY": 70,
+          "maxY": 71,
+          "minZ": -332,
+          "maxZ": -322
+        },
+        "coordinateSetSha256": "2893c6c5d88a3065cc9d4cebe56847518b0b7ea29d4dd7f5246fcb2a085a1263",
+        "componentCount": 1,
+        "largestComponentCellCount": 260,
+        "componentSizeMultisetSha256": "a4a144adfc7753e93682285733402c2cc2afa2af9cd933aa06ea5f39d33fa6b8",
+        "accepted": false,
+        "operationAuthorization": false
+      },
+      "roadLoadReservationOverlap": {
+        "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "reconstructionRule": "road-load reservation intersect exact half-open Houston sample envelope",
+        "cellCount": 208,
+        "bounds": {
+          "minX": 2036,
+          "maxX": 2048,
+          "minY": 70,
+          "maxY": 71,
+          "minZ": -331,
+          "maxZ": -323
+        },
+        "coordinateSetSha256": "40a0039ec9e9b28f9e483776a511b9934382620a9b718bb9ee71fda84d1e2310",
+        "componentCount": 1,
+        "largestComponentCellCount": 208,
+        "componentSizeMultisetSha256": "23c9dbf723bbdcf3bba5611781271d754e74269c6c5b066e12ccd9405cd9b7e4",
+        "accepted": false,
+        "operationAuthorization": false
+      },
+      "drainageReservationOverlap": {
+        "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "reconstructionRule": "bilateral drainage reservation intersect exact half-open Houston sample envelope",
+        "cellCount": 26,
+        "bounds": {
+          "minX": 2036,
+          "maxX": 2048,
+          "minY": 71,
+          "maxY": 71,
+          "minZ": -332,
+          "maxZ": -322
+        },
+        "coordinateSetSha256": "2301082c7e5d819b5b501910ec874157cabf823031cea21527d17b7d22c12f07",
+        "componentCount": 4,
+        "largestComponentCellCount": 7,
+        "componentSizeMultisetSha256": "cfedee8dc60aa70a6206f420874054749901df6fa9040ea2f6eb6c73da665ef1",
+        "accepted": false,
+        "operationAuthorization": false
+      },
+      "utilityReservationOverlap": {
+        "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "reconstructionRule": "dry/wet utility reservation union intersect exact half-open Houston sample envelope",
+        "cellCount": 26,
+        "bounds": {
+          "minX": 2036,
+          "maxX": 2048,
+          "minY": 70,
+          "maxY": 70,
+          "minZ": -332,
+          "maxZ": -322
+        },
+        "coordinateSetSha256": "1ed1eea8690f4ccd2fea5bb9279b7d5ce7b823ba3982dff86f03a450bc33da32",
+        "componentCount": 4,
+        "largestComponentCellCount": 7,
+        "componentSizeMultisetSha256": "cfedee8dc60aa70a6206f420874054749901df6fa9040ea2f6eb6c73da665ef1",
+        "accepted": false,
+        "operationAuthorization": false
+      }
+    },
+    "interpretation": "Surface geometry is above the half-open sample, while the proposed road-load, drainage, and utility influence reservations overlap it at the east end.",
+    "sameCoordinateOverlapRequiresCanonicalOwnerAdjudication": true,
+    "physicalSeamAccepted": false,
+    "connectionOpened": false
+  },
+  "c1AndOtherScopeAudit": {
+    "c1": {
+      "sourceExactColumnSetSha256": "a236f24b9371f8fdedca66416109aacd11a2101ffe1c1a1b80117ab027909d70",
+      "sourceBounds2d": {
+        "minX": 430,
+        "maxX": 1572,
+        "minZ": -291,
+        "maxZ": 111
+      },
+      "b11CandidateInteractionBounds3d": {
+        "minX": 1750,
+        "maxX": 2048,
+        "minY": 66,
+        "maxY": 73,
+        "minZ": -332,
+        "maxZ": -295
+      },
+      "classification": "BOUNDS_DISJOINT",
+      "clearIntermediateXColumnCount": 177,
+      "physicalSeamAccepted": false
+    },
+    "g03OtherScopes": [
+      {
+        "scopeId": "P1-B12",
+        "classification": "EXACT_INTERSECTION_COMPILED",
+        "exactCandidateInteractionIntersection": {
+          "representation": "SPARSE_DERIVED_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "B11 candidate interaction union intersect reconstructed exact P1-B12 candidate influence union",
+          "cellCount": 4784,
+          "bounds": {
+            "minX": 1750,
+            "maxX": 2048,
+            "minY": 66,
+            "maxY": 71,
+            "minZ": -331,
+            "maxZ": -296
+          },
+          "coordinateSetSha256": "0544a015cc320ec47c196c08e12d5fd2799c03d79ee78363b737de314abc10ff",
+          "componentCount": 1,
+          "largestComponentCellCount": 4784,
+          "componentSizeMultisetSha256": "9103c99827d2a2038d0cdb44d82fada18dce2a742d0f021c38cccd1a9ec8e47a",
+          "accepted": false,
+          "operationAuthorization": false
+        },
+        "acceptedInterface": false
+      }
+    ],
+    "knownBoundsIntersectionRequiringExactFollowupCount": 0,
+    "unknownCanonicalScopeCount": 0,
+    "otherScopesDeferredToDownstreamCanonicalAudits": true,
+    "qualification": "Only the independently reconstructed B12 seam is evaluated here. Remaining cross-scope comparisons are deferred to downstream G03/G04/G05 so this upstream proposal stays acyclic."
+  },
+  "g03ProposalImpact": {
+    "currentCommittedG03ArtifactModified": false,
+    "currentCommittedG03Result": null,
+    "currentCommittedUnresolvedRequiredDomainCount": null,
+    "descendantG03Consumed": false,
+    "historicalMigrationBaselineSchemaVersion": 1,
+    "historicalUnresolvedRequiredDomainCount": 19,
+    "p1B11GeometryNullDomainsBefore": [
+      "construction",
+      "interaction",
+      "influence"
+    ],
+    "p1B11GeometryNullDomainsRemovedByThisProposal": [
+      "construction",
+      "interaction",
+      "influence"
+    ],
+    "proposalGeometryNullDomainRemovalCount": 3,
+    "projectedRemainingGeometryNullDomainsIfConsumedByNextG03Compilation": 16,
+    "p1B11AcceptedDomainCount": 0,
+    "canonicalG03Passed": false,
+    "reason": "The three P1-B11 domains have exact upstream proposal sets. This compiler does not consume or pass descendant G03, and none is accepted construction/influence authority."
+  },
+  "nullTechnicalDesignAndRetainedHolds": [
+    {
+      "id": "P1-B11-H01-MATERIAL-AND-FUTURE-STATE",
+      "status": "HOLD",
+      "selectedMaterialPalette": null,
+      "acceptedFutureStateManifest": null,
+      "basis": "Setout geometry selects no block, pavement, marking, edge, or replacement state."
+    },
+    {
+      "id": "P1-B11-H02-EARTHWORK-AND-RETAINING",
+      "status": "HOLD",
+      "excavationManifest": null,
+      "fillManifest": null,
+      "retainingManifest": null,
+      "basis": "Formation depth, cut/fill, side slopes, unsuitable material, mass haul, and retaining systems are unselected."
+    },
+    {
+      "id": "P1-B11-H03-DRAINAGE",
+      "status": "HOLD",
+      "hydraulicDesign": null,
+      "receiverAndOutfall": null,
+      "basis": "Exact roadside cells are reservation geometry only; catchment, capacity, crossfall, receiver, outfall, failure, and future-fluid states are null."
+    },
+    {
+      "id": "P1-B11-H04-UTILITIES",
+      "status": "HOLD",
+      "utilityDesign": null,
+      "basis": "Exact dry/wet cells are reservations only; services, capacities, separations, crossings, owners, and commissioning are null."
+    },
+    {
+      "id": "P1-B11-H05-STRUCTURAL-AND-ROAD-LOAD",
+      "status": "HOLD",
+      "structuralDesign": null,
+      "loadModel": null,
+      "basis": "The exact two-layer overlap with B12 is coordination geometry, not cover, bearing, settlement, foundation, lining, or load-transfer acceptance."
+    },
+    {
+      "id": "P1-B11-H06-GEOTECHNICAL",
+      "status": "HOLD",
+      "geotechnicalDesignBasis": null,
+      "basis": "No accepted geology, groundwater, bearing, settlement, excavation-stability, or ground-improvement basis exists."
+    },
+    {
+      "id": "P1-B11-H07-COMPLETE-SAVE-AND-ENTITY-CLEARANCE",
+      "status": "HOLD",
+      "completeSameMomentSave": null,
+      "exactEntityClearance": null,
+      "basis": "The selected evidence is region-only; entities, POI, and level.dat are absent."
+    },
+    {
+      "id": "P1-B11-H08-OWNERSHIP-INTERFACES-AND-TECHNICAL-ACCEPTANCE",
+      "status": "HOLD",
+      "canonicalOwnership": null,
+      "acceptedInterfaceContracts": null,
+      "independentTechnicalAcceptance": null,
+      "basis": "The side bias, exact sets, B12/Houston seams, and systems remain proposals with no self-acceptance."
+    },
+    {
+      "id": "P1-B11-H09-PHYSICAL-COMPILER-AND-RELEASE",
+      "status": "HOLD",
+      "operationPlan": null,
+      "rollbackPlan": null,
+      "preflight": null,
+      "releaseLedger": null,
+      "basis": "No operations, source guards, rollback, preflight, release ledger, or physical authorization exists."
+    }
+  ],
+  "decision": {
+    "exactSurfaceRoadSetoutPreparedForReview": true,
+    "acceptedB11ProfilePreservedByteForByte": true,
+    "sideBiasResolvedAsProposalOnly": true,
+    "exactConstructionInteractionAndInfluenceGeometryPrepared": true,
+    "materialOrFutureStateAccepted": false,
+    "technicalDesignAccepted": false,
+    "buildNow": false,
+    "emitOperations": false
+  },
+  "limitations": [
+    "The one-cell road surface set is a datum/control geometry, not a pavement thickness, material schedule, or final road future state.",
+    "The interaction prism and load/drainage/utility sets are exact coordination reservations, not expert physical influence kernels or commissioned systems.",
+    "Region-only current states omit entities, POI, level.dat, same-moment completeness, groundwater models, and future interactions.",
+    "Generated-start bounds and protected cores provide exact default-deny comparisons but no accepted positive construction-influence margin.",
+    "P1-B12 and Houston overlaps disclose coordination conflicts; they do not accept owners, structural transfers, physical seams, or connections.",
+    "The descendant G03 artifact is neither consumed nor edited by this bounded upstream proposal."
+  ]
+}

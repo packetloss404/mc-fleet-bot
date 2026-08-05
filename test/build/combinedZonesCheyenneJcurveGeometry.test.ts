@@ -9,11 +9,11 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 const ROOT = process.cwd();
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json',
+  'docs/masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.md',
+  'docs/masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.md',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-jcurve-'));
 const regeneratedJson = path.join(tempDir, 'jcurve.json');

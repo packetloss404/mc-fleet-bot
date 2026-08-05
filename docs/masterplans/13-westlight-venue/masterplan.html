@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Westlight Venue — Masterplan 13</title>
+  <style>
+    :root { --ink:#e9eef5; --muted:#aeb9c7; --bg:#081018; --panel:#101c29; --line:#29394a; --cyan:#35b7c7; --amber:#f0a943; --pink:#cf668e; --pale:#f5f8fb; --darkink:#15202c; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--bg); font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif; }
+    header { min-height:520px; display:grid; align-items:end; padding:5rem max(5vw,1.2rem) 3.8rem; background:linear-gradient(100deg,rgba(5,11,18,.96),rgba(5,11,18,.52)),url('../../../data/exports/redevelopment-qa-2026-07-27/westlight/after/east-middle-sports.png') center/cover; }
+    header .inner,main,footer { max-width:1180px; width:100%; margin:auto; }
+    .eyebrow { margin:0 0 .6rem; color:var(--cyan); letter-spacing:.15em; text-transform:uppercase; font-size:.8rem; font-weight:900; }
+    h1 { margin:0; font:700 clamp(2.7rem,6vw,5.8rem)/.96 Georgia,serif; }
+    .lede { max-width:800px; color:#edf5fb; font-size:1.18rem; }
+    nav { position:sticky; top:0; z-index:5; padding:.7rem max(5vw,1.2rem); border-bottom:1px solid var(--line); background:rgba(8,16,24,.95); backdrop-filter:blur(10px); }
+    nav div { max-width:1180px; margin:auto; display:flex; gap:1rem; overflow:auto; }
+    nav a { color:var(--cyan); white-space:nowrap; text-decoration:none; font-weight:800; }
+    main { padding:2.7rem max(5vw,1.2rem) 5rem; }
+    section { margin-bottom:3.8rem; scroll-margin-top:4rem; }
+    h2 { margin:0 0 1rem; font:700 clamp(1.8rem,3vw,2.55rem)/1.1 Georgia,serif; }
+    h3 { margin:1.5rem 0 .5rem; color:var(--cyan); }
+    a { color:#67d6e2; }
+    code { color:#fde5b9; background:#1c2a37; padding:.12rem .3rem; border-radius:4px; }
+    .notice { padding:1rem 1.2rem; border-left:5px solid var(--amber); background:#2b2115; }
+    .metrics { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:.85rem; margin:1.3rem 0; }
+    .metric,.card { background:var(--panel); border:1px solid var(--line); border-radius:15px; box-shadow:0 10px 28px rgba(0,0,0,.22); }
+    .metric { padding:1.05rem; }
+    .metric b { display:block; color:var(--amber); font:700 2rem/1 Georgia,serif; }
+    .metric span { display:block; margin-top:.35rem; color:var(--muted); font-size:.82rem; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
+    .card { padding:1.25rem; }
+    .card h3 { margin-top:0; }
+    .gallery { display:grid; grid-template-columns:1.15fr .85fr; gap:1rem; }
+    figure { margin:0; overflow:hidden; background:#020609; border:1px solid var(--line); border-radius:16px; }
+    figure img { width:100%; height:100%; min-height:300px; max-height:650px; object-fit:contain; display:block; }
+    figcaption { padding:.75rem 1rem; color:var(--muted); font-size:.87rem; }
+    .levels { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+    .level { padding:1.1rem; border-radius:14px; color:var(--darkink); background:var(--pale); }
+    .level h3 { color:#235566; margin-top:0; }
+    .table-wrap { overflow:auto; border:1px solid var(--line); border-radius:12px; background:var(--panel); }
+    table { width:100%; min-width:720px; border-collapse:collapse; }
+    th,td { padding:.8rem .9rem; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { background:#173845; color:white; }
+    tr:last-child td { border-bottom:0; }
+    .phase { margin:1rem 0; padding:.25rem 0 .7rem 1rem; border-left:4px solid var(--cyan); }
+    .phase.next { border-color:var(--amber); } .phase.hold { border-color:var(--pink); }
+    .pill { display:inline-block; margin:.15rem .25rem .15rem 0; padding:.22rem .56rem; border-radius:99px; background:#176170; color:white; font-size:.76rem; font-weight:900; }
+    footer { padding:2rem max(5vw,1.2rem) 4rem; color:var(--muted); border-top:1px solid var(--line); }
+    @media(max-width:850px) { .metrics { grid-template-columns:repeat(3,1fr); } .gallery,.levels { grid-template-columns:1fr; } }
+    @media(max-width:560px) { .metrics,.grid { grid-template-columns:1fr; } header { min-height:420px; } }
+    @media print { nav { display:none; } body { background:white; color:#111; } header { min-height:auto; background:#132b38; } .metric,.card,.table-wrap { color:#111; background:white; box-shadow:none; } h2 { color:#132b38; } .levels { break-inside:avoid; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="inner">
+      <p class="eyebrow">Masterplan 13 · Venue operations and preservation</p>
+      <h1>Westlight Venue</h1>
+      <p class="lede">A vertically stacked stadium bowl, below-grade theatre and members club, anchored by an accepted four-sided focal display and evidence-based event-mode QA.</p>
+    </div>
+  </header>
+  <nav aria-label="Report sections"><div>
+    <a href="#summary">Summary</a><a href="#map">Maps</a><a href="#program">Program</a><a href="#built">Built vs proposed</a><a href="#interfaces">Interfaces</a><a href="#holds">Holds</a><a href="#roadmap">Roadmap</a><a href="#evidence">Evidence</a>
+  </div></nav>
+  <main>
+    <section id="summary">
+      <h2>Decision summary</h2>
+      <p class="notice"><strong>Accepted historical baseline:</strong> all 26 current durable features are complete, including the accepted focal display. This report made no live-world inspection. New work is held pending a saved-world condition survey, exact 3D ownership and current route/life-safety proof.</p>
+      <div class="metrics">
+        <div class="metric"><b>26</b><span>durable features</span></div>
+        <div class="metric"><b>3</b><span>primary structures</span></div>
+        <div class="metric"><b>18</b><span>programmed rooms</span></div>
+        <div class="metric"><b>9</b><span>cataloged occupied levels</span></div>
+        <div class="metric"><b>48</b><span>accepted display views</span></div>
+      </div>
+      <div class="grid">
+        <article class="card"><h3>Exact district</h3><p>X <code>-443..-272</code>, Z <code>-640..-488</code>. The vertical stack reaches from theatre Y18 to focal-display Y92.</p></article>
+        <article class="card"><h3>Scope boundary</h3><p>The venue is separate from Westlight District, PassageWay, the Western Approach Road and later Town Expansion Westlight modules.</p></article>
+      </div>
+    </section>
+
+    <section id="map">
+      <h2>Venue maps and matched evidence</h2>
+      <div class="gallery">
+        <figure><img src="../../../data/exports/world-catalog-wave2-post-2026-07-28/floorplans/06-westlight-venue-overview.png" alt="Catalog overview of Westlight Venue"><figcaption>Catalog-derived structure and floor overview.</figcaption></figure>
+        <figure><img src="../../../data/exports/redevelopment-media-wave2-2026-07-28/buildings/westlight-venue/wl-club--members-club.png" alt="Members club in Westlight Venue"><figcaption>Object-linked members-club evidence.</figcaption></figure>
+      </div>
+      <div style="height:1rem"></div>
+      <figure><img src="../../redevelopment/2026-07-28-underground-navigation/maps/07-westlight-underground-venues.png" alt="Map of Westlight underground venues"><figcaption>Underground navigation map. It catalogs the stack but does not transfer PassageWay ownership to the venue.</figcaption></figure>
+    </section>
+
+    <section id="program">
+      <h2>Program by structure</h2>
+      <div class="levels">
+        <article class="level"><h3>WL-BOWL · four levels</h3><p><strong>Y58</strong> Field Level, Service Ring<br><strong>Y67</strong> Main Concourse, South Vomitory<br><strong>Y75</strong> Members Terrace, Upper Concourse<br><strong>Y82</strong> Crown Walk, Press Gallery</p><p>Bounds X -429..-291, Y55..91, Z -629..-491.</p></article>
+        <article class="level"><h3>WL-THEATRE · three levels</h3><p><strong>Y18</strong> Lower Lobby, Backstage Service<br><strong>Y29</strong> Orchestra Lobby, Auditorium Parterre<br><strong>Y40</strong> Upper Lobby, Balcony</p><p>Bounds X -421..-299, Y18..50, Z -613..-498.</p></article>
+        <article class="level"><h3>WL-CLUB · two levels</h3><p><strong>Y35</strong> Members Lounge, Bar and Dance Floor<br><strong>Y40</strong> Club Landing, Private Balcony</p><p>Bounds X -417..-400, Y35..44, Z -566..-550.</p></article>
+      </div>
+      <h3>Accepted focal display</h3>
+      <div class="grid">
+        <figure><img src="../../../data/exports/redevelopment-qa-2026-07-27/westlight/after/east-middle-sports.png" alt="Westlight focal display from the east middle seating area in sports mode"><figcaption>One accepted view from the 8-sector × 3-height × 2-mode matrix.</figcaption></figure>
+        <article class="card"><h3>VEN-WL-01 controls</h3><p>524 guarded forward groups and 524 target cells; zero failed groups and zero unexpected no-ops; exact rollback; 48 post views. Current durable display bounds are X <code>-369..-351</code>, Y <code>74..92</code>, Z <code>-568..-552</code>, condition 95.</p><p>The durable/as-built record governs future work when prose design dimensions differ.</p></article>
+      </div>
+    </section>
+
+    <section id="built">
+      <h2>Built versus proposed</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Domain</th><th>Accepted / cataloged</th><th>Proposed control</th></tr></thead>
+        <tbody>
+          <tr><td>Bowl</td><td>Four levels, eight functional room zones</td><td>Fresh seat, aisle, vomitory, accessibility and egress census</td></tr>
+          <tr><td>Theatre</td><td>Three levels, six room zones</td><td>Event-mode, lighting, backstage and audience-route regression</td></tr>
+          <tr><td>Members club</td><td>Two levels, four room zones</td><td>Public/private/service interface and condition review</td></tr>
+          <tr><td>Vertical circulation</td><td>Three stair objects; primary ladder count zero</td><td>Snapshot-bound bidirectional route proof</td></tr>
+          <tr><td>Display</td><td>Accepted guarded release and 48-view matrix</td><td>Repeat views after any sightline-affecting change</td></tr>
+          <tr><td>Regional arrival</td><td>District and structure entrances cataloged</td><td>Exact arrival contracts with approach road and district</td></tr>
+        </tbody>
+      </table></div>
+      <p><span class="pill">CATALOGED COMPLETE</span><span class="pill" style="background:#8b3558">NEW WORK HELD</span></p>
+    </section>
+
+    <section id="interfaces">
+      <h2>Interfaces and event dependencies</h2>
+      <div class="grid">
+        <article class="card"><h3>Westlight District</h3><p>Surrounding roads, high street, buildings and later attractions retain separate owners. The venue cannot claim them through broad bounds.</p></article>
+        <article class="card"><h3>Western Approach Road</h3><p>Gatehead at <code>(-344, 68, -486)</code> is near the venue north edge, but proximity is not a shared-cell contract.</p></article>
+        <article class="card"><h3>PassageWay</h3><p>PassageWay is the proper name of the shared underground tunnel system. Navigation evidence does not transfer tunnel ownership to Westlight Venue.</p></article>
+        <article class="card"><h3>Event modes</h3><p>Sports, concert and theatre modes require distinct focal, public/service/restricted route, lighting, emergency-return and sightline definitions.</p></article>
+      </div>
+    </section>
+
+    <section id="holds">
+      <h2>Planning holds for new work</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>ID</th><th>Issue</th><th>What closes it</th></tr></thead>
+        <tbody>
+          <tr><td>WLV-H01</td><td>Current live condition unknown</td><td>Fresh immutable saved-world and visual condition survey</td></tr>
+          <tr><td>WLV-H02</td><td>External arrival lacks an exact contract here</td><td>Reviewed approach-road/district/venue shared-cell set</td></tr>
+          <tr><td>WLV-H03</td><td>Life safety needs current evidence</td><td>Stairs, headroom, landings, egress, accessibility and lighting QA</td></tr>
+          <tr><td>WLV-H04</td><td>Sightlines are mode-sensitive</td><td>Repeat representative views for each affected mode</td></tr>
+          <tr><td>WLV-H05</td><td>Stacked scopes can collide</td><td>Exact 3D owner and transition contracts</td></tr>
+          <tr><td>WLV-H06</td><td>Later Westlight program can blur this scope</td><td>Preserve publication identity; reconcile only exact interfaces</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="roadmap">
+      <h2>Phased roadmap</h2>
+      <div class="phase"><h3>WLV-0 · Retroactive baseline</h3><p>Complete for planning: bind 26 durable objects, the accepted display and exact venue structure/level/entrance records.</p></div>
+      <div class="phase next"><h3>WLV-1 · Read-only condition survey</h3><p>Next: snapshot and census shells, rooms, stairs, doors, seating, vomitories, lighting, stage/field, display, signs, utilities and every transition.</p></div>
+      <div class="phase"><h3>WLV-2 · Mode and life-safety engineering</h3><p>Define operating layouts, prove all route classes, rerun display/theatre views and establish exact owner/interface contracts.</p></div>
+      <div class="phase hold"><h3>WLV-3 · Human review and guarded release</h3><p>Authority required: maps, sections, event layouts, routes, visual simulations, exact targets, preflight, rollback and acceptance matrix.</p></div>
+      <div class="phase"><h3>WLV-4 · Acceptance</h3><p>Exact post-state/inverse proof, mode, life-safety, arrival and PassageWay transition QA, then catalog/media refresh.</p></div>
+    </section>
+
+    <section id="evidence">
+      <h2>Evidence provenance</h2>
+      <p>The AI/source plan is <a href="MASTERPLAN.md">MASTERPLAN.md</a>. Primary evidence is the read-only <a href="../../../data/world-map.db">world map database</a>, <a href="../../../data/world-review/active-interior-register-2026-07-27.json">active-interior register</a>, <a href="../../../data/world-review/worldwide-interior-programs-2026-07-27.json">interior programs</a>, <a href="../../redevelopment/2026-07-27/as-built-release-completion.md">redevelopment completion record</a>, <a href="../../../data/world-review/redevelopment-post-deployment-qa-2026-07-27.json">machine QA</a>, <a href="../../../data/buildops/westlight-infinity-screen-2026-07-27.report.json">screen report</a> and the linked matched media.</p>
+      <p><strong>Derived:</strong> current feature counts and conservative interface interpretation. <strong>Not performed:</strong> internet research, live calls, fleet/API access, RCON, systemd operations, database writes or world mutation.</p>
+    </section>
+  </main>
+  <footer>Human companion to Masterplan 13 · Evidence cutoff 2026-08-05 · Historical acceptance does not replace a current condition survey.</footer>
+</body>
+</html>

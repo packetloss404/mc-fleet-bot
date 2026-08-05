@@ -1652,13 +1652,32 @@ npx vitest run test/scripts/citizenRouteStagingDiagnosis.test.ts
   execution, immutable post snapshot, fresh offline route survey, and the
   complete no-dig forward/reverse live walk.
 
+## Masterplan Documentation Library
+
+- `docs/masterplans/` is the only canonical masterplan root. Do not recreate a
+  repository-root `masterplans/` directory.
+- `docs/masterplans/README.md` is the area index and
+  `docs/masterplans/current-masterplan.html` is the human-facing current-plan
+  report. Keep both current when adding or renaming an area.
+- Every durable `world_features.project_id` area must have a numbered directory
+  with an AI-readable `MASTERPLAN.md` and a human-readable `masterplan.html`.
+  Historical plans 01–05 retain their established filenames, with direct links
+  from the library index and current-plan report.
+- Treat `project_id + external_id` as the durable feature key. External IDs can
+  repeat across projects, and broad X/Z envelopes are evidence bounds rather
+  than ownership or collision proof.
+- Use repository-relative links and images in Markdown/HTML. Do not add Windows
+  drive paths or `file:///` asset URLs. Before sealing a documentation update,
+  verify every local link, render each touched HTML report in headless Chromium,
+  and run `git diff --check`.
+
 ## Combined Zones Phase 0 Terrain Survey
 
 - The authority chain is Masterplans 01–03 internal architecture -> Masterplan
   04 normalized composition -> Masterplan 05 current-world placement, terrain,
   adapters, additions, interfaces, and delivery gates. The exact reconciliation
-  is in `masterplans/04-combined-complex/authority-reconciliation.json`.
-- The re-sited Phase 0 package is in `masterplans/05-combined-zones/` and passes
+  is in `docs/masterplans/04-combined-complex/authority-reconciliation.json`.
+- The re-sited Phase 0 package is in `docs/masterplans/05-combined-zones/` and passes
   all eleven siting gates. It binds rerun pre-check snapshot
   `fe7a3e5a...ab37` and post-check snapshot `05eebe12...271b`.
 - The first run's final generated atlas `979e7805...4ead` remains candidate-search
@@ -1685,7 +1704,7 @@ node --max-old-space-size=8192 \
   scripts/analyze_combined_zones_resiting.mjs \
   --regions \
     data/worldsnap-combined-zones-phase0-final-post-20260804T001002Z/region \
-  --out masterplans/05-combined-zones/resiting-candidate-analysis.json
+  --out docs/masterplans/05-combined-zones/resiting-candidate-analysis.json
 ```
 
 - Regenerate the read-only terrain probe, area/structure census, raw raster,
@@ -1699,7 +1718,7 @@ node --max-old-space-size=4096 \
     data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region \
   --pre-regions \
     data/worldsnap-combined-zones-phase0-rerun-pre-20260804T021237Z/region \
-  --out-dir masterplans/05-combined-zones
+  --out-dir docs/masterplans/05-combined-zones
 ```
 
 - The adopted normalized core origin is `(2048,-328)` at rotation 0. Gateway
@@ -1745,7 +1764,7 @@ node scripts/compile_combined_zones_phase1_geometry.mjs \
 ```
 
 - The compiler writes
-  `masterplans/05-combined-zones/phase1-geometry-coordination.json`. It freezes
+  `docs/masterplans/05-combined-zones/phase1-geometry-coordination.json`. It freezes
   exact rational vertical transforms, per-scope boundary semantics, and
   coordination-only cell envelopes. It deliberately emits zero operation and
   material cells while any declared geometry blocker remains.
@@ -1934,7 +1953,6 @@ npx vitest run test/build/combinedZonesOwnerReviewReport.test.ts
 ```bash
 node scripts/audit_combined_zones_complete_save.mjs \
   --world-root <copied-world-root> \
-  --capture-manifest <server-export-capture-manifest.json> \
   --out <intake-audit.json> \
   --markdown <intake-audit.md>
 npx vitest run test/build/combinedZonesCompleteSaveIntake.test.ts
@@ -1942,9 +1960,25 @@ npx vitest run test/build/combinedZonesCompleteSaveIntake.test.ts
 
 - A complete-save PASS requires nonempty `region/`, `entities/`, and `poi/`
   MCA sets, nonempty `level.dat`, stable non-symlink files, and an exact
-  externally issued capture manifest proving the ordered frozen-copy protocol.
+  in-root `combined-zones-complete-save-capture-manifest.json` proving the
+  ordered frozen-copy protocol.
   The intake tool is read-only and may not contact Minecraft or RCON, mutate a
   supplied save, accept dependency samples, or infer same-moment identity.
+- The separately authorized capture workflow is split across
+  `scripts/capture_combined_zones_complete_save.py` and the root-owned,
+  hash-bound `scripts/packetcraft_complete_save_capture_helper.py`. The local
+  workflow may invoke only the helper's fixed `--preflight` and `--stream`
+  commands through `sudo -n`; the helper owns the bounded RCON save-off,
+  save-all flush, archive, save-on, and deadman restoration sequence. Never
+  install the helper, change sudoers, contact the live server, run RCON, or
+  capture a live save without explicit human authority for those external
+  actions. The destination must be new, immutable after capture, and accepted
+  by the read-only intake auditor. Run the offline workflow regressions with:
+
+```bash
+python3 test/scripts/test_capture_combined_zones_complete_save.py
+python3 test/scripts/test_packetcraft_complete_save_capture_helper.py
+```
 
 - Reproduce the post-approval D02 technical-development matrix and the P1-B12
   Grand Avenue subsurface no-foreclosure alternatives with:
@@ -2007,26 +2041,34 @@ npx vitest run \
 - Reproduce the canonical proposal-level G03 setout with:
 
 ```bash
+node scripts/compile_combined_zones_residual_surface_connector_domains.mjs
+node scripts/compile_combined_zones_civil_life_safety_domain_closure.mjs
 node scripts/compile_combined_zones_g03_canonical_setout.mjs
 node scripts/audit_combined_zones_g06_proposed_clearance.mjs
 npx vitest run \
+  test/build/combinedZonesResidualSurfaceConnectorDomains.test.ts \
+  test/build/combinedZonesCivilLifeSafetyDomainClosure.test.ts \
   test/build/combinedZonesG03CanonicalSetout.test.ts \
   test/build/combinedZonesG06ProposedClearance.test.ts
 ```
 
 - The G03 artifact distinguishes exact proposed construction/interaction
-  domains from planning accommodations, reference ledgers, and null influence
-  domains. V2 consumes the exact B11 construction/interaction/influence
-  proposals and the D06 detailed interaction union while retaining every
-  functional or expert-physical unknown as null. Disclosed overlaps are
-  coordination findings, not accepted seams.
-  Never collapse a null domain to an empty set or use the proposal registry to
-  generate operations while G03 remains HOLD.
-- The G06 audit proves exact-zero protected-feature intersections only for the
-  non-null G03 proposal domains it evaluates. It separately discloses D05
-  support-status overlaps and preserves null domains as unknown. Do not promote
-  a zero-margin core clearance to positive-margin, expert-influence,
-  complete-save, accepted-contract, or final G06 evidence.
+  domains from planning accommodations and reference ledgers. V3 consumes all
+  30 required exact proposal domains, with zero unresolved geometry domains,
+  after the standalone residual surface/connector and civil/life-safety
+  compilers close the former nulls. G03 is therefore a proposal-geometry PASS,
+  while every accepted construction, material, future-state, operation, and
+  world-edit authority count remains zero. Disclosed overlaps are coordination
+  findings, not accepted seams. Never use the proposal registry to generate
+  operations or treat G03 PASS as physical authority.
+- The G06 audit evaluates all 30 G03-v3 domains against 114 generated starts
+  and three protected cores. It discloses the exact 126-cell P1-B10 influence
+  overlap with the shipwreck core (the same cells already present in the D05
+  support evidence). G06 remains HOLD until that conflict has an accepted exact
+  treatment/clearance contract, positive expert margins are frozen, complete
+  same-moment save evidence exists, ownership/interfaces are accepted, and the
+  final gate is accepted. Do not promote zero-margin or proposal-level evidence
+  to expert-influence, complete-save, accepted-contract, or release authority.
 
 - Reproduce the B09 funicular technical-reservation proposal with:
 
@@ -2051,9 +2093,9 @@ npx vitest run test/build/combinedZonesB09FunicularTechnicalSystem.test.ts
   proposal adds an unaccepted eight-wide side-bias, interaction union, and
   load/drainage/utility reservations that coordinate exactly with P1-B12. Its
   exact geometry does not select block states, settle road loads, accept the
-  Houston seam, or authorize construction. G03 v2 consumes those exact proposal
-  domains; regenerate G03 explicitly whenever B11, B12, D06, D02/C01, or the
-  release-contract identity changes.
+  Houston seam, or authorize construction. G03 v3 consumes those exact proposal
+  domains; regenerate the standalone domain closures and G03 explicitly
+  whenever B11, B12, D06, D02/C01, or the release-contract identity changes.
 
 - Reproduce the proposal-level one-owner/default-deny interface registry with:
 

@@ -25,18 +25,18 @@ function value(flag, fallback) {
 const GENERATED_AT = value('--generated-at', '2026-08-04T22:44:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json',
+  'docs/masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.md',
+  'docs/masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.md',
 ));
 
 const INPUTS = {
-  s03: 'masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json',
-  s01s02: 'masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
-  civil: 'masterplans/05-combined-zones/phase1-c1-civil-design.json',
-  defaults: 'masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
+  s03: 'docs/masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json',
+  s01s02: 'docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
+  civil: 'docs/masterplans/05-combined-zones/phase1-c1-civil-design.json',
+  defaults: 'docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
 };
 
 const ROLES = {

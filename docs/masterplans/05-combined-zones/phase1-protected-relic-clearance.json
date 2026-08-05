@@ -1,0 +1,675 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-protected-relic-clearance",
+  "status": "PARTIAL_PASS_G06_REMAINS_HOLD",
+  "worldEditAuthorized": false,
+  "operationCellCount": 0,
+  "materialCellCount": 0,
+  "sourceBindings": {
+    "phase0SurveyEvidence": {
+      "path": "docs/masterplans/05-combined-zones/phase0-survey-evidence.json",
+      "bytes": 58555,
+      "sha256": "8de9be6c1ca081cb5fb885a160f7b5062004bd1a493e59bfd2eea5582177344c"
+    },
+    "coordinateRegistry": {
+      "path": "docs/masterplans/05-combined-zones/site-coordinates.json",
+      "bytes": 44006,
+      "sha256": "4ec96165c1b4af92d766af4d7e79cb296fba0e362e8b43f6a1053c2a20bf0081"
+    },
+    "phase1GeometryCoordination": {
+      "path": "docs/masterplans/05-combined-zones/phase1-geometry-coordination.json",
+      "bytes": 35601,
+      "sha256": "b2284622f95f51af76cc13e8056a70cf4a82e0af058496eee77d5a82f631553f"
+    },
+    "immutablePhase0PostRegionSnapshot": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+      "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+      "regionFileCount": 51,
+      "bytes": 290946492,
+      "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+    }
+  },
+  "method": {
+    "access": "read-only copied Anvil region files and local planning evidence only",
+    "coordinateOrderForHashes": "numeric x, then y, then z",
+    "coordinateSetHashPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+    "blockStateSetHashPreamble": "combined-zones-block-state-cell-set-v1\\n",
+    "blockStateCanonicalization": "JSON object with Name first and Properties keys lexicographically sorted",
+    "defaultDenyRule": "The complete recorded structure-start bounding volume, including air cells, is the minimum frozen no-touch core. No positive-margin buffer is inferred without design evidence.",
+    "coordinationRule": "A coordination-envelope intersection is a protected design conflict to resolve; it is not an operation-cell or ownership claim."
+  },
+  "relics": [
+    {
+      "key": "igloo-east",
+      "structureId": "minecraft:igloo",
+      "structureStartChunk": {
+        "x": 144,
+        "z": -64
+      },
+      "observedGeneratedStructureStart": {
+        "status": "PASS_ONE_EXACT_START_RECORD",
+        "nbtKey": "minecraft:igloo",
+        "childPieceCount": 1,
+        "unionBounds": {
+          "minX": 2304,
+          "minY": 90,
+          "minZ": -1024,
+          "maxX": 2310,
+          "maxY": 94,
+          "maxZ": -1017
+        },
+        "phase0BoundsMatch": true
+      },
+      "declaredInclusiveBounds": {
+        "minX": 2304,
+        "minY": 90,
+        "minZ": -1024,
+        "maxX": 2310,
+        "maxY": 94,
+        "maxZ": -1017
+      },
+      "declaredVolumeCellCount": 280,
+      "coordinateRegistryPlanMatch": true,
+      "observedSnapshotCensus": {
+        "status": "PASS_EXACT_BOUNDING_VOLUME_CENSUS",
+        "finding": "NO_PRESENT_CELLS_IN_DECLARED_BOUNDING_VOLUME",
+        "presenceDefinition": "block name is not minecraft:air, minecraft:cave_air, or minecraft:void_air",
+        "totalCellCount": 280,
+        "presentCellCount": 0,
+        "airCellCount": 280,
+        "materialCounts": {},
+        "presentCoordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+        "presentBlockStateSetSha256": "976f4a1b5229d4299fc2a9e3948f433849c90e6a0eb6942771bb016cec69b449",
+        "fullVolumeBlockStateSetSha256": "07f62b685669b3c23441c2867483cdf632defd3aaf1854d0ffe3a631841d71ea"
+      },
+      "evidenceBackedDefaultDenyCore": {
+        "status": "FROZEN_OFFLINE_CONSTRAINT",
+        "representation": "inclusive-axis-aligned-structure-start-bounding-box",
+        "positiveMarginBlocks": 0,
+        "cellCount": 280,
+        "coordinateSetSha256": "45e77afc9f46aa6663c5830f75a26539740a73085ce7d10e27ff14bc2426e326",
+        "basis": "The immutable snapshot and Phase 0 structure-start record support this complete bounding volume. Air cells inside it remain default-deny so future work cannot hollow through a recorded structure extent.",
+        "operationOwnership": false
+      },
+      "positiveMarginBuffer": {
+        "status": "HOLD_NOT_FROZEN",
+        "reason": "No structural, hydrological, access, entrance-safety, or exhibit-design evidence establishes a defensible positive margin outside the generated structure-start bounds."
+      },
+      "coordinationEnvelopeComparisons": [
+        {
+          "envelopeId": "houston-city",
+          "envelopePurpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+          "relationship": "CLEAR_OF_COORDINATION_ENVELOPE",
+          "protectedCoreIntersection": {
+            "bounds": null,
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          },
+          "observedPresentCellIntersection": {
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "blockStateSetSha256": "976f4a1b5229d4299fc2a9e3948f433849c90e6a0eb6942771bb016cec69b449"
+          }
+        },
+        {
+          "envelopeId": "houston-tunnel-sample",
+          "envelopePurpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+          "relationship": "CLEAR_OF_COORDINATION_ENVELOPE",
+          "protectedCoreIntersection": {
+            "bounds": null,
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          },
+          "observedPresentCellIntersection": {
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "blockStateSetSha256": "976f4a1b5229d4299fc2a9e3948f433849c90e6a0eb6942771bb016cec69b449"
+          }
+        },
+        {
+          "envelopeId": "subtropolis",
+          "envelopePurpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+          "relationship": "CLEAR_OF_COORDINATION_ENVELOPE",
+          "protectedCoreIntersection": {
+            "bounds": null,
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          },
+          "observedPresentCellIntersection": {
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "blockStateSetSha256": "976f4a1b5229d4299fc2a9e3948f433849c90e6a0eb6942771bb016cec69b449"
+          }
+        },
+        {
+          "envelopeId": "continuous-mountain",
+          "envelopePurpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+          "relationship": "PROTECTED_CORE_OVERLAPS_COORDINATION_ENVELOPE",
+          "protectedCoreIntersection": {
+            "bounds": {
+              "minX": 2304,
+              "maxX": 2310,
+              "minY": 90,
+              "maxY": 94,
+              "minZ": -1024,
+              "maxZ": -1017
+            },
+            "cellCount": 280,
+            "coordinateSetSha256": "45e77afc9f46aa6663c5830f75a26539740a73085ce7d10e27ff14bc2426e326"
+          },
+          "observedPresentCellIntersection": {
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "blockStateSetSha256": "976f4a1b5229d4299fc2a9e3948f433849c90e6a0eb6942771bb016cec69b449"
+          }
+        },
+        {
+          "envelopeId": "cheyenne-chamber",
+          "envelopePurpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+          "relationship": "CLEAR_OF_COORDINATION_ENVELOPE",
+          "protectedCoreIntersection": {
+            "bounds": null,
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          },
+          "observedPresentCellIntersection": {
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "blockStateSetSha256": "976f4a1b5229d4299fc2a9e3948f433849c90e6a0eb6942771bb016cec69b449"
+          }
+        },
+        {
+          "envelopeId": "empty-eight-shell",
+          "envelopePurpose": "coordination-only-not-a-material-or-operation-set",
+          "relationship": "CLEAR_OF_COORDINATION_ENVELOPE",
+          "protectedCoreIntersection": {
+            "bounds": null,
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          },
+          "observedPresentCellIntersection": {
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "blockStateSetSha256": "976f4a1b5229d4299fc2a9e3948f433849c90e6a0eb6942771bb016cec69b449"
+          }
+        }
+      ],
+      "integrityQualification": "The census proves current block states inside the recorded bounds, not vanilla-template completeness, attribution of every present block to the generated structure, entrance safety, or preservation outside the bounds."
+    },
+    {
+      "key": "igloo-west",
+      "structureId": "minecraft:igloo",
+      "structureStartChunk": {
+        "x": 112,
+        "z": -58
+      },
+      "observedGeneratedStructureStart": {
+        "status": "PASS_ONE_EXACT_START_RECORD",
+        "nbtKey": "minecraft:igloo",
+        "childPieceCount": 1,
+        "unionBounds": {
+          "minX": 1790,
+          "minY": 62,
+          "minZ": -926,
+          "maxX": 1797,
+          "maxY": 66,
+          "maxZ": -920
+        },
+        "phase0BoundsMatch": true
+      },
+      "declaredInclusiveBounds": {
+        "minX": 1790,
+        "minY": 62,
+        "minZ": -926,
+        "maxX": 1797,
+        "maxY": 66,
+        "maxZ": -920
+      },
+      "declaredVolumeCellCount": 280,
+      "coordinateRegistryPlanMatch": true,
+      "observedSnapshotCensus": {
+        "status": "PASS_EXACT_BOUNDING_VOLUME_CENSUS",
+        "finding": "PRESENT_CELLS_OBSERVED_IN_DECLARED_BOUNDING_VOLUME",
+        "presenceDefinition": "block name is not minecraft:air, minecraft:cave_air, or minecraft:void_air",
+        "totalCellCount": 280,
+        "presentCellCount": 187,
+        "airCellCount": 93,
+        "materialCounts": {
+          "minecraft:crafting_table": 1,
+          "minecraft:dirt": 11,
+          "minecraft:furnace": 1,
+          "minecraft:grass_block": 16,
+          "minecraft:ice": 2,
+          "minecraft:light_gray_carpet": 3,
+          "minecraft:red_bed": 2,
+          "minecraft:redstone_torch": 1,
+          "minecraft:short_grass": 1,
+          "minecraft:snow": 45,
+          "minecraft:snow_block": 95,
+          "minecraft:white_carpet": 9
+        },
+        "presentCoordinateSetSha256": "960dc310f44bdcc24af2fea84a7c4424e4c62f176adc07857aac4f87e4c9b5c9",
+        "presentBlockStateSetSha256": "7dc51fa6d179d11beb8f69000f18b13f8a93d018b6ae172bca691ba8910c9955",
+        "fullVolumeBlockStateSetSha256": "6af1283026495b56bb5227dd3f413bc1218cf737d179ee7323357501e72b7f0c"
+      },
+      "evidenceBackedDefaultDenyCore": {
+        "status": "FROZEN_OFFLINE_CONSTRAINT",
+        "representation": "inclusive-axis-aligned-structure-start-bounding-box",
+        "positiveMarginBlocks": 0,
+        "cellCount": 280,
+        "coordinateSetSha256": "9ec8b536822c1f6cb794fd0f7cdd14063daddbb650e6dd6f70ed9b0c15c40d72",
+        "basis": "The immutable snapshot and Phase 0 structure-start record support this complete bounding volume. Air cells inside it remain default-deny so future work cannot hollow through a recorded structure extent.",
+        "operationOwnership": false
+      },
+      "positiveMarginBuffer": {
+        "status": "HOLD_NOT_FROZEN",
+        "reason": "No structural, hydrological, access, entrance-safety, or exhibit-design evidence establishes a defensible positive margin outside the generated structure-start bounds."
+      },
+      "coordinationEnvelopeComparisons": [
+        {
+          "envelopeId": "houston-city",
+          "envelopePurpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+          "relationship": "CLEAR_OF_COORDINATION_ENVELOPE",
+          "protectedCoreIntersection": {
+            "bounds": null,
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          },
+          "observedPresentCellIntersection": {
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "blockStateSetSha256": "976f4a1b5229d4299fc2a9e3948f433849c90e6a0eb6942771bb016cec69b449"
+          }
+        },
+        {
+          "envelopeId": "houston-tunnel-sample",
+          "envelopePurpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+          "relationship": "CLEAR_OF_COORDINATION_ENVELOPE",
+          "protectedCoreIntersection": {
+            "bounds": null,
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          },
+          "observedPresentCellIntersection": {
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "blockStateSetSha256": "976f4a1b5229d4299fc2a9e3948f433849c90e6a0eb6942771bb016cec69b449"
+          }
+        },
+        {
+          "envelopeId": "subtropolis",
+          "envelopePurpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+          "relationship": "CLEAR_OF_COORDINATION_ENVELOPE",
+          "protectedCoreIntersection": {
+            "bounds": null,
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          },
+          "observedPresentCellIntersection": {
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "blockStateSetSha256": "976f4a1b5229d4299fc2a9e3948f433849c90e6a0eb6942771bb016cec69b449"
+          }
+        },
+        {
+          "envelopeId": "continuous-mountain",
+          "envelopePurpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+          "relationship": "CLEAR_OF_COORDINATION_ENVELOPE",
+          "protectedCoreIntersection": {
+            "bounds": null,
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          },
+          "observedPresentCellIntersection": {
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "blockStateSetSha256": "976f4a1b5229d4299fc2a9e3948f433849c90e6a0eb6942771bb016cec69b449"
+          }
+        },
+        {
+          "envelopeId": "cheyenne-chamber",
+          "envelopePurpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+          "relationship": "CLEAR_OF_COORDINATION_ENVELOPE",
+          "protectedCoreIntersection": {
+            "bounds": null,
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          },
+          "observedPresentCellIntersection": {
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "blockStateSetSha256": "976f4a1b5229d4299fc2a9e3948f433849c90e6a0eb6942771bb016cec69b449"
+          }
+        },
+        {
+          "envelopeId": "empty-eight-shell",
+          "envelopePurpose": "coordination-only-not-a-material-or-operation-set",
+          "relationship": "CLEAR_OF_COORDINATION_ENVELOPE",
+          "protectedCoreIntersection": {
+            "bounds": null,
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          },
+          "observedPresentCellIntersection": {
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "blockStateSetSha256": "976f4a1b5229d4299fc2a9e3948f433849c90e6a0eb6942771bb016cec69b449"
+          }
+        }
+      ],
+      "integrityQualification": "The census proves current block states inside the recorded bounds, not vanilla-template completeness, attribution of every present block to the generated structure, entrance safety, or preservation outside the bounds."
+    },
+    {
+      "key": "shipwreck",
+      "structureId": "minecraft:shipwreck",
+      "structureStartChunk": {
+        "x": 130,
+        "z": -42
+      },
+      "observedGeneratedStructureStart": {
+        "status": "PASS_ONE_EXACT_START_RECORD",
+        "nbtKey": "minecraft:shipwreck",
+        "childPieceCount": 1,
+        "unionBounds": {
+          "minX": 2072,
+          "minY": 69,
+          "minZ": -661,
+          "maxX": 2099,
+          "maxY": 77,
+          "maxZ": -653
+        },
+        "phase0BoundsMatch": true
+      },
+      "declaredInclusiveBounds": {
+        "minX": 2072,
+        "minY": 69,
+        "minZ": -661,
+        "maxX": 2099,
+        "maxY": 77,
+        "maxZ": -653
+      },
+      "declaredVolumeCellCount": 2268,
+      "coordinateRegistryPlanMatch": true,
+      "observedSnapshotCensus": {
+        "status": "PASS_EXACT_BOUNDING_VOLUME_CENSUS",
+        "finding": "PRESENT_CELLS_OBSERVED_IN_DECLARED_BOUNDING_VOLUME",
+        "presenceDefinition": "block name is not minecraft:air, minecraft:cave_air, or minecraft:void_air",
+        "totalCellCount": 2268,
+        "presentCellCount": 1118,
+        "airCellCount": 1150,
+        "materialCounts": {
+          "minecraft:chest": 3,
+          "minecraft:dark_oak_fence": 30,
+          "minecraft:dark_oak_planks": 116,
+          "minecraft:dark_oak_slab": 19,
+          "minecraft:dark_oak_stairs": 28,
+          "minecraft:packed_ice": 515,
+          "minecraft:snow": 5,
+          "minecraft:spruce_fence": 4,
+          "minecraft:spruce_log": 10,
+          "minecraft:spruce_planks": 219,
+          "minecraft:spruce_slab": 2,
+          "minecraft:spruce_stairs": 153,
+          "minecraft:spruce_trapdoor": 14
+        },
+        "presentCoordinateSetSha256": "87c356ae6562eb2deca5d30c0ac414c39969e91f77a9761f265f023c52fafc1b",
+        "presentBlockStateSetSha256": "9214943e9ef3bf1ee6cd73201b6d06916194ca03ea76a2cb10e26f075c6bb9ac",
+        "fullVolumeBlockStateSetSha256": "e35f3a26817ac3464d4722429a1d3d68001f8ab92f058c72a315dfe94b88f8bb"
+      },
+      "evidenceBackedDefaultDenyCore": {
+        "status": "FROZEN_OFFLINE_CONSTRAINT",
+        "representation": "inclusive-axis-aligned-structure-start-bounding-box",
+        "positiveMarginBlocks": 0,
+        "cellCount": 2268,
+        "coordinateSetSha256": "715792eef84d4c3029a5750b0683adef6e0c5447b918512539c0d96f82cd2ee6",
+        "basis": "The immutable snapshot and Phase 0 structure-start record support this complete bounding volume. Air cells inside it remain default-deny so future work cannot hollow through a recorded structure extent.",
+        "operationOwnership": false
+      },
+      "positiveMarginBuffer": {
+        "status": "HOLD_NOT_FROZEN",
+        "reason": "No structural, hydrological, access, entrance-safety, or exhibit-design evidence establishes a defensible positive margin outside the generated structure-start bounds."
+      },
+      "coordinationEnvelopeComparisons": [
+        {
+          "envelopeId": "houston-city",
+          "envelopePurpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+          "relationship": "CLEAR_OF_COORDINATION_ENVELOPE",
+          "protectedCoreIntersection": {
+            "bounds": null,
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          },
+          "observedPresentCellIntersection": {
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "blockStateSetSha256": "976f4a1b5229d4299fc2a9e3948f433849c90e6a0eb6942771bb016cec69b449"
+          }
+        },
+        {
+          "envelopeId": "houston-tunnel-sample",
+          "envelopePurpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+          "relationship": "CLEAR_OF_COORDINATION_ENVELOPE",
+          "protectedCoreIntersection": {
+            "bounds": null,
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          },
+          "observedPresentCellIntersection": {
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "blockStateSetSha256": "976f4a1b5229d4299fc2a9e3948f433849c90e6a0eb6942771bb016cec69b449"
+          }
+        },
+        {
+          "envelopeId": "subtropolis",
+          "envelopePurpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+          "relationship": "CLEAR_OF_COORDINATION_ENVELOPE",
+          "protectedCoreIntersection": {
+            "bounds": null,
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          },
+          "observedPresentCellIntersection": {
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "blockStateSetSha256": "976f4a1b5229d4299fc2a9e3948f433849c90e6a0eb6942771bb016cec69b449"
+          }
+        },
+        {
+          "envelopeId": "continuous-mountain",
+          "envelopePurpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+          "relationship": "PROTECTED_CORE_OVERLAPS_COORDINATION_ENVELOPE",
+          "protectedCoreIntersection": {
+            "bounds": {
+              "minX": 2072,
+              "maxX": 2099,
+              "minY": 72,
+              "maxY": 77,
+              "minZ": -661,
+              "maxZ": -653
+            },
+            "cellCount": 1512,
+            "coordinateSetSha256": "34c78f12d04a43a8bcad298a90cd364607b6b50cfb2a5850ca9e8d909e37b3a4"
+          },
+          "observedPresentCellIntersection": {
+            "cellCount": 698,
+            "coordinateSetSha256": "8030d0776d6dff41b9fdfb489626db44a9b2eec48d325bbf30038ce83852e75a",
+            "blockStateSetSha256": "001dbc209884977b19b3250d77ba7929d8321395a24d62bb0a8197edf24607cc"
+          }
+        },
+        {
+          "envelopeId": "cheyenne-chamber",
+          "envelopePurpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+          "relationship": "CLEAR_OF_COORDINATION_ENVELOPE",
+          "protectedCoreIntersection": {
+            "bounds": null,
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          },
+          "observedPresentCellIntersection": {
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "blockStateSetSha256": "976f4a1b5229d4299fc2a9e3948f433849c90e6a0eb6942771bb016cec69b449"
+          }
+        },
+        {
+          "envelopeId": "empty-eight-shell",
+          "envelopePurpose": "coordination-only-not-a-material-or-operation-set",
+          "relationship": "CLEAR_OF_COORDINATION_ENVELOPE",
+          "protectedCoreIntersection": {
+            "bounds": null,
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          },
+          "observedPresentCellIntersection": {
+            "cellCount": 0,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "blockStateSetSha256": "976f4a1b5229d4299fc2a9e3948f433849c90e6a0eb6942771bb016cec69b449"
+          }
+        }
+      ],
+      "integrityQualification": "The census proves current block states inside the recorded bounds, not vanilla-template completeness, attribution of every present block to the generated structure, entrance safety, or preservation outside the bounds."
+    }
+  ],
+  "coordinationSummary": {
+    "frozenEnvelopeCountCompared": 6,
+    "envelopes": [
+      {
+        "id": "houston-city",
+        "sourcePath": "docs/masterplans/04-combined-complex/02-design/site-coordinates.json#key_locations.city_footprint",
+        "purpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+        "bounds": {
+          "minX": 1979,
+          "maxX": 2116,
+          "minY": 72,
+          "maxY": 95,
+          "minZ": -397,
+          "maxZ": -260
+        }
+      },
+      {
+        "id": "houston-tunnel-sample",
+        "sourcePath": "docs/masterplans/04-combined-complex/02-design/site-coordinates.json#individual_sites.houston_tunnel.footprint",
+        "purpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+        "bounds": {
+          "minX": 2036,
+          "maxX": 2059,
+          "minY": 64,
+          "maxY": 71,
+          "minZ": -340,
+          "maxZ": -317
+        }
+      },
+      {
+        "id": "subtropolis",
+        "sourcePath": "docs/masterplans/04-combined-complex/02-design/site-coordinates.json#individual_sites.subtropolis.footprint",
+        "purpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+        "bounds": {
+          "minX": 1948,
+          "maxX": 2147,
+          "minY": -56,
+          "maxY": 71,
+          "minZ": -628,
+          "maxZ": -429
+        }
+      },
+      {
+        "id": "continuous-mountain",
+        "sourcePath": "docs/masterplans/04-combined-complex/02-design/site-coordinates.json#mountain_range.footprint",
+        "purpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+        "bounds": {
+          "minX": 1648,
+          "maxX": 2447,
+          "minY": 72,
+          "maxY": 303,
+          "minZ": -1128,
+          "maxZ": -529
+        }
+      },
+      {
+        "id": "cheyenne-chamber",
+        "sourcePath": "docs/masterplans/04-combined-complex/02-design/site-coordinates.json#individual_sites.cheyenne_mountain.chamber_position",
+        "purpose": "ownership-and-fit-coordination-only-not-a-material-or-operation-set",
+        "bounds": {
+          "minX": 2008,
+          "maxX": 2087,
+          "minY": 144,
+          "maxY": 187,
+          "minZ": -908,
+          "maxZ": -829
+        }
+      },
+      {
+        "id": "empty-eight-shell",
+        "sourcePath": "docs/masterplans/05-combined-zones/site-coordinates.json#zones.Z02.hiddenSubway.terminal.bounds",
+        "purpose": "coordination-only-not-a-material-or-operation-set",
+        "bounds": {
+          "minX": 1632,
+          "maxX": 1872,
+          "minY": 38,
+          "maxY": 54,
+          "minZ": 40,
+          "maxZ": 160
+        }
+      }
+    ],
+    "overlappingComparisons": [
+      {
+        "relicKey": "igloo-east",
+        "envelopeId": "continuous-mountain",
+        "protectedCoreCellCount": 280,
+        "observedPresentCellCount": 0
+      },
+      {
+        "relicKey": "shipwreck",
+        "envelopeId": "continuous-mountain",
+        "protectedCoreCellCount": 1512,
+        "observedPresentCellCount": 698
+      }
+    ],
+    "interpretation": "The overlaps veto unqualified future material compilation in those cells. The planning/coordination envelopes themselves do not own or authorize any cell."
+  },
+  "preservationFindings": {
+    "declaredRelicCount": 3,
+    "relicBoundsWithPresentCells": 2,
+    "relicBoundsWithoutPresentCells": [
+      "igloo-east"
+    ],
+    "status": "HOLD_ONE_OR_MORE_DECLARED_RELIC_BOUNDS_EMPTY",
+    "interpretation": "An empty recorded bound is negative evidence for current preservation. It does not authorize reuse: the generated structure-start extent remains default-deny until separately reviewed."
+  },
+  "g06Disposition": {
+    "gateId": "generated-and-protected-structure-clearance",
+    "status": "HOLD",
+    "passedSubgates": [
+      "immutable Phase 0 post snapshot identity matches its sealed declaration",
+      "all three declared structure-start bounding volumes have a complete current block-state census",
+      "present coordinate sets, present state sets, full volume state sets, and no-touch core cell sets are hash-bound",
+      "the Phase 0 relic records and current coordinate-registry X/Z records agree one-to-one",
+      "all three protected cores are compared exactly against the six currently compiled coordination envelopes",
+      "the recorded bounding volumes are frozen as minimum default-deny no-touch cores with zero operation ownership"
+    ],
+    "holdSubgates": [
+      "no evidence-backed positive-margin relic buffer has been designed or approved",
+      "igloo-east has zero present cells inside its recorded start bound; current relic preservation is not established",
+      "the census does not prove vanilla-template integrity, entrance safety, or block attribution outside each start bound",
+      "no exact proposed construction and interaction cell set exists for design-time clearance testing",
+      "the remaining 47 reserve-intersecting generated structure starts have not been tested against an exact construction set"
+    ],
+    "passRule": "G06 may pass for R00 only after reviewed positive-margin policy or an explicit evidence-backed zero-margin acceptance and exact proposed construction/interaction cells clear every protected core and all relevant structure starts.",
+    "releaseLifecycleValidation": {
+      "gateRange": "G16-G19",
+      "resolvesG06ForR00": false,
+      "requirements": [
+        "immutable post-construction snapshot",
+        "exact protected-core and reviewed-buffer preservation comparison",
+        "final relic-preservation acceptance bound to the executed operation identities"
+      ]
+    }
+  },
+  "limitations": [
+    "No entity-region data is read; entity clearance is a separate gate.",
+    "No live system is contacted and no world edit is authorized.",
+    "Generated structure-start records and bounded block censuses do not establish ownership of surrounding planning space."
+  ]
+}

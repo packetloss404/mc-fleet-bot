@@ -24,13 +24,13 @@ function value(flag, fallback) {
 }
 
 const GENERATED_AT = value('--generated-at', '2026-08-04T16:22:57Z');
-const MASTERPLAN = path.resolve(value('--masterplan', 'masterplans/05-combined-zones/MASTERPLAN.md'));
-const COORDINATES = path.resolve(value('--coordinates', 'masterplans/05-combined-zones/site-coordinates.json'));
-const TERRAIN_PROBE = path.resolve(value('--terrain-probe', 'masterplans/05-combined-zones/corridor-terrain-probe.json'));
-const PHASE0_EVIDENCE = path.resolve(value('--phase0-evidence', 'masterplans/05-combined-zones/phase0-survey-evidence.json'));
-const CLEARANCE = path.resolve(value('--clearance', 'masterplans/05-combined-zones/corridor-clearance.json'));
-const OUTPUT = path.resolve(value('--out', 'masterplans/05-combined-zones/phase1-c1-civil-design.json'));
-const MARKDOWN = path.resolve(value('--markdown', 'masterplans/05-combined-zones/phase1-c1-civil-design.md'));
+const MASTERPLAN = path.resolve(value('--masterplan', 'docs/masterplans/05-combined-zones/MASTERPLAN.md'));
+const COORDINATES = path.resolve(value('--coordinates', 'docs/masterplans/05-combined-zones/site-coordinates.json'));
+const TERRAIN_PROBE = path.resolve(value('--terrain-probe', 'docs/masterplans/05-combined-zones/corridor-terrain-probe.json'));
+const PHASE0_EVIDENCE = path.resolve(value('--phase0-evidence', 'docs/masterplans/05-combined-zones/phase0-survey-evidence.json'));
+const CLEARANCE = path.resolve(value('--clearance', 'docs/masterplans/05-combined-zones/corridor-clearance.json'));
+const OUTPUT = path.resolve(value('--out', 'docs/masterplans/05-combined-zones/phase1-c1-civil-design.json'));
+const MARKDOWN = path.resolve(value('--markdown', 'docs/masterplans/05-combined-zones/phase1-c1-civil-design.md'));
 
 const WORLD_MIN_Y = -64;
 const WORLD_MAX_Y = 319;

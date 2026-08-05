@@ -23,15 +23,15 @@ const value = (flag, fallback) => {
 
 const REGION_DIR = path.resolve(value('--regions', 'data/worldsnap/region'));
 const PRE_REGION_DIR = path.resolve(value('--pre-regions', 'data/worldsnap/region'));
-const OUTPUT_DIR = path.resolve(value('--out-dir', 'masterplans/05-combined-zones'));
+const OUTPUT_DIR = path.resolve(value('--out-dir', 'docs/masterplans/05-combined-zones'));
 const MAP_DIR = path.join(OUTPUT_DIR, 'maps');
 const REGISTRY_PATH = path.resolve(value(
   '--registry',
-  'masterplans/05-combined-zones/site-coordinates.json',
+  'docs/masterplans/05-combined-zones/site-coordinates.json',
 ));
 const CANDIDATE_ANALYSIS_PATH = path.resolve(value(
   '--candidate-analysis',
-  'masterplans/05-combined-zones/resiting-candidate-analysis.json',
+  'docs/masterplans/05-combined-zones/resiting-candidate-analysis.json',
 ));
 const GENERATED_AT = value('--generated-at', new Date().toISOString());
 const registry = JSON.parse(fs.readFileSync(REGISTRY_PATH, 'utf8'));

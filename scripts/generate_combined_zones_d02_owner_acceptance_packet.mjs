@@ -23,22 +23,22 @@ function value(flag, fallback) {
 const GENERATED_AT = value('--generated-at', '2026-08-04T23:55:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
+  'docs/masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.md',
+  'docs/masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.md',
 ));
 
 const INPUTS = Object.freeze({
-  authorityReconciliation: 'masterplans/04-combined-complex/authority-reconciliation.json',
-  designDecisions: 'masterplans/05-combined-zones/phase1-design-decisions.json',
-  c1CivilDesign: 'masterplans/05-combined-zones/phase1-c1-civil-design.json',
-  civilAuthorityPacket: 'masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json',
-  regionEvidence: 'masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
-  hydrologyOutfalls: 'masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json',
-  closedDrainage: 'masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json',
-  delegatedSelections: 'masterplans/05-combined-zones/phase1-autonomous-design-selections.json',
+  authorityReconciliation: 'docs/masterplans/04-combined-complex/authority-reconciliation.json',
+  designDecisions: 'docs/masterplans/05-combined-zones/phase1-design-decisions.json',
+  c1CivilDesign: 'docs/masterplans/05-combined-zones/phase1-c1-civil-design.json',
+  civilAuthorityPacket: 'docs/masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json',
+  regionEvidence: 'docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
+  hydrologyOutfalls: 'docs/masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json',
+  closedDrainage: 'docs/masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json',
+  delegatedSelections: 'docs/masterplans/05-combined-zones/phase1-autonomous-design-selections.json',
 });
 
 const SOURCE_ROLES = Object.freeze({
@@ -52,7 +52,7 @@ const SOURCE_ROLES = Object.freeze({
   delegatedSelections: 'owner-delegated B05 and S04 planning selections',
 });
 
-const OUTPUT_RELATIVE = 'masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json';
+const OUTPUT_RELATIVE = 'docs/masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json';
 const PREFERRED_ALTERNATIVE_ID =
   'ALT-D02-S04-D-HYBRID-CAPPED-SUMPS-WITH-AQUATIC-NO-BUILD-HOLD';
 const EXPECTED_BLOCKER_IDS = [
@@ -776,7 +776,7 @@ const report = {
     packetPath: OUTPUT_RELATIVE,
     directInputs: sourceBindings,
     prohibitedDownstreamInputs: [
-      'masterplans/05-combined-zones/phase1-r00-readiness-audit.json',
+      'docs/masterplans/05-combined-zones/phase1-r00-readiness-audit.json',
       'R01 or later source guards, operations, manifests, preflights, pilots, executions, rollback evidence, route QA, or post-state QA',
     ],
     cycleFree: true,

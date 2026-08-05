@@ -22,18 +22,18 @@ function value(flag, fallback) {
 const GENERATED_AT = value('--generated-at', '2026-08-04T23:30:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json',
+  'docs/masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.md',
+  'docs/masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.md',
 ));
 
 const INPUTS = Object.freeze({
-  emptyEight: 'masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
-  egress: 'masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
-  lifeSafety: 'masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
-  selections: 'masterplans/05-combined-zones/phase1-autonomous-design-selections.json',
+  emptyEight: 'docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
+  egress: 'docs/masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
+  lifeSafety: 'docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
+  selections: 'docs/masterplans/05-combined-zones/phase1-autonomous-design-selections.json',
 });
 
 function assert(condition, message) {

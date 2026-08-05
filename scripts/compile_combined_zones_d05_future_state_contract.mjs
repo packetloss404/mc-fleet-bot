@@ -23,24 +23,24 @@ function value(flag, fallback) {
 const GENERATED_AT = value('--generated-at', '2026-08-04T21:00:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json',
+  'docs/masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.md',
+  'docs/masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.md',
 ));
 
 const INPUTS = Object.freeze({
-  coordinateRegistry: 'masterplans/05-combined-zones/site-coordinates.json',
-  geometryCoordination: 'masterplans/05-combined-zones/phase1-geometry-coordination.json',
+  coordinateRegistry: 'docs/masterplans/05-combined-zones/site-coordinates.json',
+  geometryCoordination: 'docs/masterplans/05-combined-zones/phase1-geometry-coordination.json',
   d05HydrologyBaseline:
-    'masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
+    'docs/masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
   d05ConservativeDefaults:
-    'masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
+    'docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
   d05RelicConditionAccess:
-    'masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json',
+    'docs/masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json',
   d06EgressGeometry:
-    'masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
+    'docs/masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
 });
 
 function absolute(relativePath) {

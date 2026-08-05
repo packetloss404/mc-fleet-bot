@@ -12,11 +12,11 @@ const SCRIPT = path.join(
 );
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-grand-avenue-subsurface-alternatives.json',
+  'docs/masterplans/05-combined-zones/phase1-grand-avenue-subsurface-alternatives.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-grand-avenue-subsurface-alternatives.md',
+  'docs/masterplans/05-combined-zones/phase1-grand-avenue-subsurface-alternatives.md',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-grand-avenue-'));
 const regeneratedJson = path.join(tempDir, 'subsurface-alternatives.json');

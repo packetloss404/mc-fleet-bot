@@ -1,6 +1,6 @@
 import pypdf
 
-r = pypdf.PdfReader('/mnt/d/projects/mc-fleet-bot/masterplans/03-houston-tunnel-system/masterplan.pdf')
+r = pypdf.PdfReader('/mnt/d/projects/mc-fleet-bot/docs/masterplans/03-houston-tunnel-system/masterplan.pdf')
 print(f'Pages: {len(r.pages)}')
 
 total_links = 0

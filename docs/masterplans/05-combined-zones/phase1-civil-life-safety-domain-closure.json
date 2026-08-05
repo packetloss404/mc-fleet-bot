@@ -1,0 +1,421 @@
+{
+  "schemaVersion": 1,
+  "id": "COMBINED-ZONES-PHASE1-CIVIL-LIFE-SAFETY-DOMAIN-CLOSURE-V1",
+  "generatedAtUtc": "2026-08-05T05:20:00Z",
+  "status": "PASS_EIGHT_SOURCE_LIMITED_PROPOSAL_DOMAINS_EXACT_ALL_FUNCTIONAL_AND_RELEASE_GATES_HOLD",
+  "purpose": "Replace eight geometry-null G03 proposal domains with exact source-limited unions while retaining every technical, functional, complete-save, ownership, acceptance, commissioning, and release HOLD.",
+  "immutableSnapshot": {
+    "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+    "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+    "regionFileCount": 51,
+    "bytes": 290946492,
+    "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+  },
+  "sourceBindings": {
+    "d02Technical": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d02-technical-design.json",
+      "bytes": 140238,
+      "sha256": "22ecc64bd01224a91c8a534f448c5de0e31fb99d6e5452ddf0f75a8e7fc9f93e",
+      "role": "ten exact D02 candidate envelopes, inlet references, and ROAD-LOW-001 no-build set"
+    },
+    "d02C01": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json",
+      "bytes": 2902378,
+      "sha256": "f56606839df4306631db282a731c56b7fe8ca27d2f4411f42f7254f125be3d2f",
+      "role": "exact bounded C01 loading/D02 precedence and sealed directional interface"
+    },
+    "d06LifeSafety": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+      "bytes": 171078,
+      "sha256": "c23eb313426f122e4d905cfe2a1d3407263186be80c167cfc1b169288eb11c76",
+      "role": "selected B07 and fail-closed D06 reservation geometry"
+    },
+    "d06Mechanisms": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-mechanisms.json",
+      "bytes": 180609,
+      "sha256": "c713d30f0a085131875e71a5d02ad391330755fb68252f771ea9ed40222261da",
+      "role": "73-reference D06 source ledger and retained functional HOLDs"
+    },
+    "d06Detailed": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json",
+      "bytes": 95894,
+      "sha256": "9cf30ba33d2b62383c0512877553ef961c9782df54840c74ae8a30003ebb362a",
+      "role": "31-layer exact D06 detailed proposal and precedence identity"
+    },
+    "emptyEight": {
+      "path": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+      "bytes": 71177,
+      "sha256": "2e6e3f3c5c5514909dd20b9a87d1278036ad8afafd3592eb60e756825655a14a",
+      "role": "frozen fixture, barrier, core, drainage, and fire/service source geometry"
+    },
+    "immutableRegionEvidence": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json",
+      "bytes": 99988,
+      "sha256": "c28a35e79f4af496325b53b4e53b54b35cbe6a663358518af84139febe3044ac",
+      "role": "immutable region-only audit and complete-save limitation"
+    },
+    "completeSaveAudit": {
+      "path": "docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit.json",
+      "bytes": 27091,
+      "sha256": "4e4209b424a36b466789c0ea50cf75d0c72b23758cc85491b67ca1baff3f6f45",
+      "role": "current same-moment complete-save intake result"
+    }
+  },
+  "proposalDomains": {
+    "P1-B07": {
+      "influence": {
+        "status": "PASS_EXACT_SOURCE_LIMITED_PROPOSAL_GEOMETRY_UNACCEPTED",
+        "representation": "EXACT_DETERMINISTIC_INTEGER_CELL_SET_HASH_ONLY",
+        "derivation": "Exact selected B07-C-WEST-2 interaction union, independently reproduced from the three frozen anchors and 7x7 dogleg primitives.",
+        "semantics": "SOURCE_LIMITED_COORDINATION_INFLUENCE_RESERVATION_EQUALS_KNOWN_INTERACTION_UNION_NOT_AN_EXPERT_MARGIN",
+        "cellCount": 13608,
+        "bounds": {
+          "minX": 2102,
+          "maxX": 2112,
+          "minY": -60,
+          "maxY": 73,
+          "minZ": -432,
+          "maxZ": -394
+        },
+        "coordinatePreamble": "combined-zones-civil-life-safety-domain-closure-cell-set-v1\n",
+        "coordinateSetSha256": "4a72c3dae60c49e09e7585de17b3475b17f5247a0b75c850ac4303c81581696a",
+        "componentCount": 1,
+        "largestComponentCellCount": 13608,
+        "componentSizeMultisetSha256": "766222d7d2ecb7629aa020947882553656c6ddcd07fa8aed490ad340ecea0f7c",
+        "sourceIdentities": {
+          "sourceCoordinateSetSha256": "dd2cc387b0e5f6517ec48176c820e05f5fef5ff9793c74d32d4a5262582e5a8d"
+        },
+        "accepted": false,
+        "acceptedConstructionCellCount": 0,
+        "acceptedInfluenceCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "operationCellCount": 0
+      }
+    },
+    "D02": {
+      "interaction": {
+        "status": "PASS_EXACT_SOURCE_LIMITED_PROPOSAL_GEOMETRY_UNACCEPTED",
+        "representation": "EXACT_DETERMINISTIC_INTEGER_CELL_SET_HASH_ONLY",
+        "derivation": "Union of all ten exact candidate envelopes, all ten exact inlet references, and the exact bounded C01 loading-to-D02 vertical interface cells.",
+        "semantics": "WHOLE_D02_KNOWN_INTERACTION_PROPOSAL_NO_GENERIC_HALO_FLOW_OR_LOADING_CREDIT",
+        "cellCount": 432,
+        "bounds": {
+          "minX": 432,
+          "maxX": 1535,
+          "minY": 57,
+          "maxY": 109,
+          "minZ": -276,
+          "maxZ": 58
+        },
+        "coordinatePreamble": "combined-zones-civil-life-safety-domain-closure-cell-set-v1\n",
+        "coordinateSetSha256": "f671e5f2828825e7b1017043f2cfda67bbcfdbc27cad3294bef1810f12e5390d",
+        "componentCount": 42,
+        "largestComponentCellCount": 54,
+        "componentSizeMultisetSha256": "5f07c7f35dd7f18a73e405fbbf0ca85e74bbca5e533ae1dba74c17238df98de5",
+        "sourceIdentities": {
+          "candidateEnvelopeSha256": "d43dca6357175d4802658e32bdf3c8c1617ab642919ac74e169a389140108a98",
+          "c01InterfaceSha256": "52a4150cf307e8412fbb89d861849be8ac545f7148ad45bf1d17a266b7863108"
+        },
+        "accepted": false,
+        "acceptedConstructionCellCount": 0,
+        "acceptedInfluenceCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "operationCellCount": 0
+      },
+      "influence": {
+        "status": "PASS_EXACT_SOURCE_LIMITED_PROPOSAL_GEOMETRY_UNACCEPTED",
+        "representation": "EXACT_DETERMINISTIC_INTEGER_CELL_SET_HASH_ONLY",
+        "derivation": "Known D02 interaction proposal plus the exact ROAD-LOW-001 24-cell no-build preservation reservation.",
+        "semantics": "SOURCE_LIMITED_COORDINATION_INFLUENCE_RESERVATION_NOT_HYDRAULIC_STRUCTURAL_OR_GEOTECHNICAL_KERNEL",
+        "cellCount": 456,
+        "bounds": {
+          "minX": 430,
+          "maxX": 1535,
+          "minY": 57,
+          "maxY": 109,
+          "minZ": -276,
+          "maxZ": 99
+        },
+        "coordinatePreamble": "combined-zones-civil-life-safety-domain-closure-cell-set-v1\n",
+        "coordinateSetSha256": "b028679e8db88801bff71bc6be20f889aa0fb508a5496a64076040fc1c2c4d78",
+        "componentCount": 43,
+        "largestComponentCellCount": 54,
+        "componentSizeMultisetSha256": "77e42a0b0f51d778774ef449c85071c44eea97709c561e7b3d2698aac9241c43",
+        "sourceIdentities": {
+          "roadLow001NoBuildSha256": "5715e0b77bfd13698e229ee43f62d7609d7b88bf1aa4f40bc0b2726f974d378b"
+        },
+        "accepted": false,
+        "acceptedConstructionCellCount": 0,
+        "acceptedInfluenceCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "operationCellCount": 0
+      }
+    },
+    "D06-RESERVATIONS": {
+      "construction": {
+        "status": "PASS_EXACT_SOURCE_LIMITED_PROPOSAL_GEOMETRY_UNACCEPTED",
+        "representation": "EXACT_DETERMINISTIC_INTEGER_CELL_SET_HASH_ONLY",
+        "derivation": "Canonical union of the exact D06 source references except the explicit B07 interaction-union reference; duplicates merge by coordinate.",
+        "semantics": "RESERVATION_AND_CAP_CONSTRUCTION_DOMAIN_PROPOSAL_NOT_PHYSICAL_CONSTRUCTION_TARGETS",
+        "cellCount": 19836,
+        "bounds": {
+          "minX": 1643,
+          "maxX": 2111,
+          "minY": -59,
+          "maxY": 102,
+          "minZ": -431,
+          "maxZ": 160
+        },
+        "coordinatePreamble": "combined-zones-civil-life-safety-domain-closure-cell-set-v1\n",
+        "coordinateSetSha256": "98fbedb97343de4217a7e206287e23374761a6c404b9571f9d5abda03d955e8a",
+        "componentCount": 78,
+        "largestComponentCellCount": 9290,
+        "componentSizeMultisetSha256": "55459896cd98d53ab051f36e5d49a1cca40007274c52edcb373fe6e5a3dfe73b",
+        "sourceIdentities": {
+          "exactReferenceCount": 73,
+          "excludedInteractionOnlyReferenceCount": 1
+        },
+        "accepted": false,
+        "acceptedConstructionCellCount": 0,
+        "acceptedInfluenceCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "operationCellCount": 0
+      },
+      "interaction": {
+        "status": "PASS_EXACT_SOURCE_LIMITED_PROPOSAL_GEOMETRY_UNACCEPTED",
+        "representation": "EXACT_DETERMINISTIC_INTEGER_CELL_SET_HASH_ONLY",
+        "derivation": "Canonical coordinate union of all 73 independently reproduced D06 reservation references, including the selected B07 interaction union.",
+        "semantics": "SOURCE_REFERENCE_INTERACTION_PROPOSAL_DUPLICATES_MERGED_NO_FUNCTIONAL_CREDIT",
+        "cellCount": 25310,
+        "bounds": {
+          "minX": 1643,
+          "maxX": 2112,
+          "minY": -60,
+          "maxY": 102,
+          "minZ": -432,
+          "maxZ": 160
+        },
+        "coordinatePreamble": "combined-zones-civil-life-safety-domain-closure-cell-set-v1\n",
+        "coordinateSetSha256": "1576d6833c6b27a3301980ac4605c6e3e084ae1b484f00304abcf130f6e5892a",
+        "componentCount": 78,
+        "largestComponentCellCount": 13608,
+        "componentSizeMultisetSha256": "4e988d56ad86fb867b413be187d89d9973d59be22d03969acd64d94ce1218fa8",
+        "sourceIdentities": {
+          "exactReferenceCount": 73
+        },
+        "accepted": false,
+        "acceptedConstructionCellCount": 0,
+        "acceptedInfluenceCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "operationCellCount": 0
+      },
+      "influence": {
+        "status": "PASS_EXACT_SOURCE_LIMITED_PROPOSAL_GEOMETRY_UNACCEPTED",
+        "representation": "EXACT_DETERMINISTIC_INTEGER_CELL_SET_HASH_ONLY",
+        "derivation": "The exact 73-reference interaction union reused as the strongest source-limited influence reservation; no cell margin is added.",
+        "semantics": "SOURCE_LIMITED_COORDINATION_INFLUENCE_RESERVATION_NOT_LIFE_SAFETY_SMOKE_FIRE_LIFT_POWER_OR_DRAINAGE_KERNEL",
+        "cellCount": 25310,
+        "bounds": {
+          "minX": 1643,
+          "maxX": 2112,
+          "minY": -60,
+          "maxY": 102,
+          "minZ": -432,
+          "maxZ": 160
+        },
+        "coordinatePreamble": "combined-zones-civil-life-safety-domain-closure-cell-set-v1\n",
+        "coordinateSetSha256": "1576d6833c6b27a3301980ac4605c6e3e084ae1b484f00304abcf130f6e5892a",
+        "componentCount": 78,
+        "largestComponentCellCount": 13608,
+        "componentSizeMultisetSha256": "4e988d56ad86fb867b413be187d89d9973d59be22d03969acd64d94ce1218fa8",
+        "sourceIdentities": {
+          "exactReferenceCount": 73,
+          "addedUnevidencedMarginCellCount": 0
+        },
+        "accepted": false,
+        "acceptedConstructionCellCount": 0,
+        "acceptedInfluenceCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "operationCellCount": 0
+      }
+    },
+    "D06-MECHANISMS": {
+      "construction": {
+        "status": "PASS_EXACT_SOURCE_LIMITED_PROPOSAL_GEOMETRY_UNACCEPTED",
+        "representation": "EXACT_DETERMINISTIC_INTEGER_CELL_SET_HASH_ONLY",
+        "derivation": "Canonical union of all 31 exact detailed proposal layers before functional precedence; every raw layer identity is independently reproduced.",
+        "semantics": "DETAILED_FUNCTIONAL_CONSTRUCTION_DOMAIN_PROPOSAL_NOT_ACCEPTED_MECHANISM_OR_BUILD_TARGET",
+        "cellCount": 9065,
+        "bounds": {
+          "minX": 1643,
+          "maxX": 1872,
+          "minY": 38,
+          "maxY": 102,
+          "minZ": 40,
+          "maxZ": 160
+        },
+        "coordinatePreamble": "combined-zones-civil-life-safety-domain-closure-cell-set-v1\n",
+        "coordinateSetSha256": "9a5f1af375293b7cb3bfa06f81f9abd940415656b930a64e386bd123fbe44d8e",
+        "componentCount": 56,
+        "largestComponentCellCount": 3996,
+        "componentSizeMultisetSha256": "afdcc08366a08cfab402b9ae1f75ea7d07d406de7a570dbfa2695316dfad22e6",
+        "sourceIdentities": {
+          "detailedSetoutManifestSha256": "697a9b522789e557185ec1855e037fe81b3f96af1b93b78eae22d01d38c6ac80"
+        },
+        "accepted": false,
+        "acceptedConstructionCellCount": 0,
+        "acceptedInfluenceCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "operationCellCount": 0
+      },
+      "influence": {
+        "status": "PASS_EXACT_SOURCE_LIMITED_PROPOSAL_GEOMETRY_UNACCEPTED",
+        "representation": "EXACT_DETERMINISTIC_INTEGER_CELL_SET_HASH_ONLY",
+        "derivation": "The exact detailed proposal union reused as the strongest source-limited influence reservation; no expert margin is added.",
+        "semantics": "SOURCE_LIMITED_COORDINATION_INFLUENCE_RESERVATION_NOT_SMOKE_FIRE_LIFT_VENT_DRAINAGE_LIGHTING_OR_POWER_KERNEL",
+        "cellCount": 9065,
+        "bounds": {
+          "minX": 1643,
+          "maxX": 1872,
+          "minY": 38,
+          "maxY": 102,
+          "minZ": 40,
+          "maxZ": 160
+        },
+        "coordinatePreamble": "combined-zones-civil-life-safety-domain-closure-cell-set-v1\n",
+        "coordinateSetSha256": "9a5f1af375293b7cb3bfa06f81f9abd940415656b930a64e386bd123fbe44d8e",
+        "componentCount": 56,
+        "largestComponentCellCount": 3996,
+        "componentSizeMultisetSha256": "afdcc08366a08cfab402b9ae1f75ea7d07d406de7a570dbfa2695316dfad22e6",
+        "sourceIdentities": {
+          "addedUnevidencedMarginCellCount": 0
+        },
+        "accepted": false,
+        "acceptedConstructionCellCount": 0,
+        "acceptedInfluenceCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "operationCellCount": 0
+      }
+    }
+  },
+  "referenceUnionAudit": {
+    "exactReferenceCount": 73,
+    "reproducedReferenceCount": 73,
+    "rawMembershipCount": 41644,
+    "uniqueInteractionCellCount": 25310,
+    "duplicateCoordinateCount": 16001
+  },
+  "detailedLayerAudit": {
+    "layerCount": 31,
+    "rawMembershipCount": 9464,
+    "uniqueProposalCellCount": 9065,
+    "sourceSetoutManifestSha256": "697a9b522789e557185ec1855e037fe81b3f96af1b93b78eae22d01d38c6ac80"
+  },
+  "closureAccounting": {
+    "requestedDomainCount": 8,
+    "exactSourceLimitedProposalDomainCount": 8,
+    "geometryNullDomainCountAfterThisCompiler": 0,
+    "expertInfluenceKernelAcceptedCount": 0,
+    "acceptedPhysicalSystemCount": 0,
+    "acceptedConstructionCellCount": 0,
+    "acceptedMaterialCellCount": 0,
+    "operationCellCount": 0,
+    "geometricallyClosedDomains": [
+      {
+        "scopeId": "P1-B07",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "D02",
+        "domain": "interaction"
+      },
+      {
+        "scopeId": "D02",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "D06-RESERVATIONS",
+        "domain": "construction"
+      },
+      {
+        "scopeId": "D06-RESERVATIONS",
+        "domain": "interaction"
+      },
+      {
+        "scopeId": "D06-RESERVATIONS",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "D06-MECHANISMS",
+        "domain": "construction"
+      },
+      {
+        "scopeId": "D06-MECHANISMS",
+        "domain": "influence"
+      }
+    ]
+  },
+  "genuineExternalHolds": [
+    {
+      "id": "CLS-H01-COMPLETE-SAME-MOMENT-SAVE",
+      "status": "HOLD_EXTERNAL_EVIDENCE",
+      "exactProposalDomain": null,
+      "requirement": "A same-moment save containing region, entities, poi, level.dat, and an ordered capture manifest, followed by entity/POI/block-entity/fluid/generated-start clearance against every final influence set."
+    },
+    {
+      "id": "CLS-H02-D02-HYDRAULIC-STORAGE-RECEIVER-AND-OUTFALL",
+      "status": "HOLD_EXTERNAL_TECHNICAL_EVIDENCE",
+      "exactProposalDomain": null,
+      "requirement": "Accepted source/future fluid accounting, catchments, peak storage/freeboard, recovery, pump/control states, receiver, outfall, and directional flow interfaces."
+    },
+    {
+      "id": "CLS-H03-STRUCTURAL-GEOTECHNICAL-AND-MATERIAL-DESIGN",
+      "status": "HOLD_EXTERNAL_TECHNICAL_EVIDENCE",
+      "exactProposalDomain": null,
+      "requirement": "Accepted loads, lining/support, foundations, penetrations, geotechnical margins, material/future states, quantities, and construction method."
+    },
+    {
+      "id": "CLS-H04-D06-LIFE-SAFETY-FUNCTIONAL-ENGINEERING",
+      "status": "HOLD_EXTERNAL_TECHNICAL_EVIDENCE",
+      "exactProposalDomain": null,
+      "requirement": "Accepted egress endpoints, lift/stair behavior, smoke model, ventilation mode/capacity, barriers, fire-service access, controls, failure logic, and emergency-service review."
+    },
+    {
+      "id": "CLS-H05-POWER-DRAINAGE-RECEIVERS-AND-COMMISSIONING",
+      "status": "HOLD_EXTERNAL_TECHNICAL_EVIDENCE",
+      "exactProposalDomain": null,
+      "requirement": "Before R00, accept independent sources, loads, circuits, drainage hydraulics/receiver, mechanism design states, all 29 commissioning test methods and pass criteria, and common-cause analysis. Actual commissioning results are post-build G17/G19 evidence and cannot close G02."
+    },
+    {
+      "id": "CLS-H06-OWNER-INTERFACE-AND-IMMUTABLE-TECHNICAL-ACCEPTANCE",
+      "status": "HOLD_ACCEPTANCE_AFTER_TECHNICAL_EVIDENCE",
+      "exactProposalDomain": null,
+      "requirement": "Final one-owner cell assignments, direction-specific interfaces, independent technical review, and sole-owner acceptance of one immutable technical identity."
+    }
+  ],
+  "authorityBoundary": {
+    "reservationGeometryIsConstructionAcceptance": false,
+    "sourceLimitedInfluenceReservationIsExpertInfluenceKernel": false,
+    "receiverInferred": false,
+    "flowInferred": false,
+    "powerSourceInferred": false,
+    "functionalStateInferred": false,
+    "expertMarginInferred": false,
+    "technicalAcceptanceClaimed": false,
+    "ownerAcceptanceClaimed": false,
+    "commissioningClaimed": false
+  },
+  "safetyBoundary": {
+    "offlineOnly": true,
+    "liveCallsPerformed": [],
+    "operations": [],
+    "operationCellCount": 0,
+    "acceptedConstructionCellCount": 0,
+    "acceptedMaterialCellCount": 0,
+    "acceptedFutureCellCount": 0,
+    "physicalBuildAuthorized": false,
+    "worldEditAuthorized": false,
+    "executable": false
+  },
+  "canonicalPayloadSha256": "8fb2d3425bcd002fa8e782fae40a5d9eb591e9583535037b5471f009fe103459"
+}

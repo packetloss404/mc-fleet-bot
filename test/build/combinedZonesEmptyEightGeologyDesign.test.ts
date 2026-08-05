@@ -8,11 +8,11 @@ const ROOT = path.resolve(__dirname, '../..');
 const GENERATED_AT = '2026-08-04T16:18:57Z';
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
+  'docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-empty-eight-geology-design.md',
+  'docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.md',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-empty-eight-'));
 const regeneratedJson = path.join(tempDir, 'design.json');

@@ -210,10 +210,10 @@ interface Phase0Evidence {
 
 describe('Combined Zones Phase 1 site-gate audit', () => {
   const audit = readJson<SiteGateAudit>(
-    'masterplans/05-combined-zones/phase1-site-gate-audit.json',
+    'docs/masterplans/05-combined-zones/phase1-site-gate-audit.json',
   );
   const phase0 = readJson<Phase0Evidence>(
-    'masterplans/05-combined-zones/phase0-survey-evidence.json',
+    'docs/masterplans/05-combined-zones/phase0-survey-evidence.json',
   );
 
   it('binds every source artifact and immutable region identity exactly', () => {
@@ -384,7 +384,7 @@ describe('Combined Zones Phase 1 site-gate audit', () => {
     expect(audit.status).toBe('HOLD_PHASE1_EXIT_NOT_SATISFIED');
     expect(audit.worldEditAuthorized).toBe(false);
     expect(audit.scope.planToDevelop).toBe(
-      'masterplans/05-combined-zones/MASTERPLAN.md',
+      'docs/masterplans/05-combined-zones/MASTERPLAN.md',
     );
     expect(statuses).toEqual({
       'phase0-terrain-siting': 'PASS',

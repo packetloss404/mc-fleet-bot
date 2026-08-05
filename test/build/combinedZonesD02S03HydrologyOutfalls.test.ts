@@ -9,11 +9,11 @@ const ROOT = path.resolve(__dirname, '../..');
 const GENERATED_AT = '2026-08-04T22:12:00Z';
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json',
+  'docs/masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.md',
+  'docs/masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.md',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-d02-s03-'));
 const regeneratedJson = path.join(tempDir, 'hydrology.json');
@@ -223,11 +223,11 @@ describe('Combined Zones D02-S03 C1 hydrology and outfalls', () => {
     });
     expect(report.sourceBindings).toHaveLength(5);
     expect(report.sourceBindings.map((binding) => binding.path)).toEqual([
-      'masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
-      'masterplans/05-combined-zones/phase1-c1-civil-design.json',
-      'masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
-      'masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
-      'masterplans/05-combined-zones/phase0-survey-evidence.json',
+      'docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
+      'docs/masterplans/05-combined-zones/phase1-c1-civil-design.json',
+      'docs/masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
+      'docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
+      'docs/masterplans/05-combined-zones/phase0-survey-evidence.json',
     ]);
     expect(report.sourceBindings.every((binding) => (
       !binding.path.endsWith('.md')
@@ -278,7 +278,7 @@ describe('Combined Zones D02-S03 C1 hydrology and outfalls', () => {
     ))).toBe(true);
 
     const s01 = JSON.parse(fs.readFileSync(
-      path.join(ROOT, 'masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json'),
+      path.join(ROOT, 'docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json'),
       'utf8',
     )) as { d02S01: { c1FullHeight: { stateCensus: { waterCells: number; waterloggedCells: number; lavaCells: number } } } };
     expect(report.currentFluidComponents.landTakeIntersections.waterCellCount)

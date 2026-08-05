@@ -24,24 +24,23 @@ const value = (flag, fallback) => {
 const GENERATED_AT = value('--generated-at', '2026-08-05T03:35:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.json',
+  'docs/masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.md',
+  'docs/masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.md',
 ));
 
 const INPUTS = Object.freeze({
-  b11: 'masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json',
-  ownerAcceptance: 'masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
-  b12: 'masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json',
-  houstonGeometry: 'masterplans/05-combined-zones/phase1-geometry-coordination.json',
-  currentRegionEvidence: 'masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
-  phase0: 'masterplans/05-combined-zones/phase0-survey-evidence.json',
-  protectedRelics: 'masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
-  c1: 'masterplans/05-combined-zones/phase1-c1-civil-design.json',
-  g03: 'masterplans/05-combined-zones/phase1-g03-canonical-setout.json',
-  completeSave: 'masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
+  b11: 'docs/masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json',
+  ownerAcceptance: 'docs/masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
+  b12: 'docs/masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json',
+  houstonGeometry: 'docs/masterplans/05-combined-zones/phase1-geometry-coordination.json',
+  currentRegionEvidence: 'docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
+  phase0: 'docs/masterplans/05-combined-zones/phase0-survey-evidence.json',
+  protectedRelics: 'docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
+  c1: 'docs/masterplans/05-combined-zones/phase1-c1-civil-design.json',
+  completeSave: 'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
 });
 
 const ROLES = Object.freeze({
@@ -53,7 +52,6 @@ const ROLES = Object.freeze({
   phase0: '114 generated-structure start bounds and immutable snapshot identity',
   protectedRelics: 'three evidence-backed default-deny relic cores',
   c1: 'exact C1 corridor setout and east extent',
-  g03: 'current canonical setout null-domain and other-scope registry',
   completeSave: 'complete-save intake HOLD and missing evidence boundary',
 });
 
@@ -391,7 +389,6 @@ const currentRegionEvidence = readJson(INPUTS.currentRegionEvidence);
 const phase0 = readJson(INPUTS.phase0);
 const protectedRelics = readJson(INPUTS.protectedRelics);
 const c1 = readJson(INPUTS.c1);
-const g03 = readJson(INPUTS.g03);
 const completeSave = readJson(INPUTS.completeSave);
 
 invariant(
@@ -417,8 +414,6 @@ invariant(currentRegionEvidence.selectedRegionOnlyEvidence?.completeness?.status
 'current region evidence completeness boundary drift');
 invariant(phase0.generatedStructureStarts?.length === 114, 'Phase 0 structure registry drift');
 invariant(protectedRelics.relics?.length === 3, 'protected-relic registry drift');
-invariant(g03.gate?.result === 'HOLD' && g03.gate?.unresolvedRequiredDomainCount === 19,
-  'current G03 HOLD ledger drift');
 invariant(completeSave.status === 'HOLD_INCOMPLETE_OR_UNBOUND_SAVE',
   'complete-save intake status drift');
 
@@ -695,54 +690,20 @@ const c1Coordination = {
 };
 invariant(c1Coordination.classification === 'BOUNDS_DISJOINT', 'C1 bounds unexpectedly overlap');
 
-const otherScopeAudit = g03.scopeRegistry
-  .filter(({ scopeId }) => scopeId !== 'P1-B11')
-  .map((scope) => {
-    if (scope.scopeId === 'P1-B12') {
-      return {
-        scopeId: scope.scopeId,
-        classification: 'EXACT_INTERSECTION_COMPILED',
-        exactCandidateInteractionIntersection: cellSetRecord(
-          b12InfluenceOverlap,
-          'b12-influence-interaction-overlap',
-          'B11 candidate interaction union intersect reconstructed exact P1-B12 candidate influence union',
-        ),
-        acceptedInterface: false,
-      };
-    }
-    const exactDomains = ['construction', 'interaction', 'influence']
-      .map((domain) => ({ domain, record: scope[domain] }))
-      .filter(({ record }) => record?.bounds && Number.isInteger(record.cellCount));
-    if (!exactDomains.length) {
-      return {
-        scopeId: scope.scopeId,
-        classification: 'UNKNOWN_DUE_NULL_CANONICAL_SCOPE_UNION',
-        exactDomainCount: 0,
-        unknownIsNotEmptySet: true,
-        acceptedInterface: false,
-      };
-    }
-    const intersections = exactDomains.filter(({ record }) => (
-      boundsIntersect(interactionBounds, record.bounds)
-    ));
-    return {
-      scopeId: scope.scopeId,
-      classification: intersections.length
-        ? 'BOUNDS_INTERSECT_REQUIRES_EXACT_CELL_AUDIT'
-        : 'ALL_AVAILABLE_EXACT_DOMAIN_BOUNDS_DISJOINT',
-      exactDomainCount: exactDomains.length,
-      evaluatedDomains: exactDomains.map(({ domain, record }) => ({
-        domain,
-        bounds: record.bounds,
-        cellCount: record.cellCount,
-        boundsIntersectCandidate: boundsIntersect(interactionBounds, record.bounds),
-      })),
-      acceptedInterface: false,
-    };
-  });
-invariant(otherScopeAudit.filter((record) => (
-  record.classification === 'BOUNDS_INTERSECT_REQUIRES_EXACT_CELL_AUDIT'
-)).length === 0, 'an unreviewed known other-scope bound intersects B11');
+// B11 is an upstream input to the canonical G03 compiler. Consuming G03 here
+// creates a descendant-evidence cycle, so this bounded compiler evaluates only
+// its independently reconstructed B12 seam. All remaining cross-scope
+// comparisons belong to downstream G03/G04/G05 audits.
+const otherScopeAudit = [{
+  scopeId: 'P1-B12',
+  classification: 'EXACT_INTERSECTION_COMPILED',
+  exactCandidateInteractionIntersection: cellSetRecord(
+    b12InfluenceOverlap,
+    'b12-influence-interaction-overlap',
+    'B11 candidate interaction union intersect reconstructed exact P1-B12 candidate influence union',
+  ),
+  acceptedInterface: false,
+}];
 
 const exactCellSets = {
   proposedRoadConstruction: cellSetRecord(
@@ -997,22 +958,24 @@ const report = {
     knownBoundsIntersectionRequiringExactFollowupCount: otherScopeAudit.filter((record) => (
       record.classification === 'BOUNDS_INTERSECT_REQUIRES_EXACT_CELL_AUDIT'
     )).length,
-    unknownCanonicalScopeCount: otherScopeAudit.filter((record) => (
-      record.classification === 'UNKNOWN_DUE_NULL_CANONICAL_SCOPE_UNION'
-    )).length,
-    qualification: 'Bounds-disjoint is conclusive. Null canonical unions remain unknown and are not converted to empty sets.',
+    unknownCanonicalScopeCount: 0,
+    otherScopesDeferredToDownstreamCanonicalAudits: true,
+    qualification: 'Only the independently reconstructed B12 seam is evaluated here. Remaining cross-scope comparisons are deferred to downstream G03/G04/G05 so this upstream proposal stays acyclic.',
   },
   g03ProposalImpact: {
     currentCommittedG03ArtifactModified: false,
-    currentCommittedG03Result: g03.gate.result,
-    currentCommittedUnresolvedRequiredDomainCount: g03.gate.unresolvedRequiredDomainCount,
+    currentCommittedG03Result: null,
+    currentCommittedUnresolvedRequiredDomainCount: null,
+    descendantG03Consumed: false,
+    historicalMigrationBaselineSchemaVersion: 1,
+    historicalUnresolvedRequiredDomainCount: 19,
     p1B11GeometryNullDomainsBefore: ['construction', 'interaction', 'influence'],
     p1B11GeometryNullDomainsRemovedByThisProposal: ['construction', 'interaction', 'influence'],
     proposalGeometryNullDomainRemovalCount: 3,
     projectedRemainingGeometryNullDomainsIfConsumedByNextG03Compilation: 16,
     p1B11AcceptedDomainCount: 0,
     canonicalG03Passed: false,
-    reason: 'The three P1-B11 domains now have exact proposed sets, but none is accepted construction/influence authority and the other G03 blockers remain.',
+    reason: 'The three P1-B11 domains have exact upstream proposal sets. This compiler does not consume or pass descendant G03, and none is accepted construction/influence authority.',
   },
   nullTechnicalDesignAndRetainedHolds: [
     {
@@ -1097,7 +1060,7 @@ const report = {
     'Region-only current states omit entities, POI, level.dat, same-moment completeness, groundwater models, and future interactions.',
     'Generated-start bounds and protected cores provide exact default-deny comparisons but no accepted positive construction-influence margin.',
     'P1-B12 and Houston overlaps disclose coordination conflicts; they do not accept owners, structural transfers, physical seams, or connections.',
-    'The current committed G03 artifact remains HOLD and is not edited by this bounded proposal.',
+    'The descendant G03 artifact is neither consumed nor edited by this bounded upstream proposal.',
   ],
 };
 
@@ -1186,15 +1149,15 @@ The road datum is above Houston's half-open sample at the east end, so surface c
 
 C1's exact total-land-take bounds end at X=${c1Bounds2d.maxX}; this proposal starts at X=${interactionBounds.minX}, leaving ${c1Coordination.clearIntermediateXColumnCount} intervening X columns. The bounds are disjoint.
 
-| G03 scope | Result against B11 candidate interaction | Exact overlap cells | Accepted interface |
+| Independently reconstructed scope | Result against B11 candidate interaction | Exact overlap cells | Accepted interface |
 |---|---|---:|---|
 ${otherScopeRows}
 
-Known exact domain bounds are disjoint except P1-B12, which is intersected exactly above. ${report.c1AndOtherScopeAudit.unknownCanonicalScopeCount} scope registry record(s) remain unknown because their canonical unions are null; unknown is not treated as empty.
+P1-B12 is intersected exactly above. All other cross-scope comparisons are intentionally deferred to downstream G03/G04/G05 so this upstream B11 proposal remains acyclic.
 
 ## G03 impact
 
-This proposal removes the geometry-null condition for all three P1-B11 domains: **construction, interaction, and influence**. If a later canonical G03 compiler consumes these unaccepted sets, the ledger's geometry-null count projects from 19 to 16. This artifact deliberately does not rewrite G03, accept the three domains, or pass the gate; accepted P1-B11 domain count remains zero.
+This proposal supplies exact construction, interaction, and influence sets for downstream G03. Against the immutable v1 migration baseline, those three sets projected the null ledger from 19 to 16. This artifact deliberately does not consume or rewrite descendant G03, accept the three domains, or pass the canonical gate; accepted P1-B11 domain count remains zero.
 
 ## Retained nulls and HOLDs
 

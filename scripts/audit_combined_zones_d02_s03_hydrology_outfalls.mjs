@@ -26,19 +26,19 @@ function value(flag, fallback) {
 const GENERATED_AT = value('--generated-at', '2026-08-04T22:12:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json',
+  'docs/masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.md',
+  'docs/masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.md',
 ));
 
 const INPUTS = {
-  d02S01S02: 'masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
-  c1Civil: 'masterplans/05-combined-zones/phase1-c1-civil-design.json',
-  d05Hydrology: 'masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
-  d05Defaults: 'masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
-  phase0Evidence: 'masterplans/05-combined-zones/phase0-survey-evidence.json',
+  d02S01S02: 'docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
+  c1Civil: 'docs/masterplans/05-combined-zones/phase1-c1-civil-design.json',
+  d05Hydrology: 'docs/masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
+  d05Defaults: 'docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
+  phase0Evidence: 'docs/masterplans/05-combined-zones/phase0-survey-evidence.json',
 };
 
 const ROLES = {

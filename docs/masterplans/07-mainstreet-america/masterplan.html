@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MainStreet America — Masterplan 07</title>
+  <style>
+    :root { --ink:#1d2025; --muted:#626871; --paper:#f3f0e8; --card:#fffefa; --line:#d4d0c5; --navy:#18334c; --red:#9b3b31; --sky:#3e7693; --gold:#b57b2b; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif; }
+    header { min-height:480px; display:grid; align-items:end; color:white; background:linear-gradient(100deg,rgba(18,37,54,.96),rgba(18,37,54,.7)),url('../../mainstreet-america/qa/msa-final-campus-map.png') center/cover; padding:5rem max(5vw,1.25rem) 3.5rem; }
+    header .inner, main, footer { max-width:1200px; margin:auto; width:100%; }
+    .eyebrow { margin:0 0 .6rem; color:#cfe2ed; text-transform:uppercase; letter-spacing:.14em; font-weight:850; font-size:.8rem; }
+    h1 { margin:0; max-width:900px; font:700 clamp(2.7rem,6vw,5.7rem)/.96 Georgia,serif; }
+    .lede { max-width:820px; font-size:1.18rem; color:#f1f5f7; }
+    nav { position:sticky; top:0; z-index:4; padding:.7rem max(5vw,1.25rem); background:rgba(255,254,250,.96); border-bottom:1px solid var(--line); backdrop-filter:blur(9px); }
+    nav div { max-width:1200px; margin:auto; display:flex; gap:1rem; overflow:auto; }
+    nav a { color:var(--navy); text-decoration:none; white-space:nowrap; font-weight:800; }
+    main { padding:2.6rem max(5vw,1.25rem) 5rem; }
+    section { margin-bottom:3.8rem; scroll-margin-top:4rem; }
+    h2 { margin:0 0 1rem; font:700 clamp(1.8rem,3vw,2.6rem)/1.1 Georgia,serif; color:var(--navy); }
+    h3 { margin:1.5rem 0 .5rem; }
+    a { color:#166286; }
+    code { background:#e8e5dc; padding:.12rem .3rem; border-radius:4px; }
+    .notice { padding:1rem 1.2rem; border-left:5px solid var(--gold); background:#fff4da; }
+    .metrics { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:.85rem; margin:1.3rem 0; }
+    .metric,.card { background:var(--card); border:1px solid var(--line); border-radius:14px; box-shadow:0 8px 25px rgba(30,35,39,.06); }
+    .metric { padding:1rem; }
+    .metric b { display:block; color:var(--red); font:700 1.9rem/1 Georgia,serif; }
+    .metric span { display:block; margin-top:.3rem; color:var(--muted); font-size:.82rem; }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+    .card { padding:1.2rem; }
+    .card h3 { color:var(--navy); margin-top:0; }
+    .gallery { display:grid; grid-template-columns:2fr 1fr; gap:1rem; }
+    figure { margin:0; background:#101b24; border-radius:15px; overflow:hidden; box-shadow:0 11px 29px rgba(20,30,38,.18); }
+    figure img { display:block; width:100%; height:100%; min-height:260px; max-height:660px; object-fit:contain; }
+    figcaption { padding:.75rem 1rem; color:#eef4f7; font-size:.88rem; }
+    .table-wrap { overflow:auto; border:1px solid var(--line); border-radius:12px; background:var(--card); }
+    table { width:100%; min-width:720px; border-collapse:collapse; }
+    th,td { padding:.8rem .9rem; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { color:white; background:var(--navy); }
+    tr:last-child td { border-bottom:0; }
+    .stack { display:grid; grid-template-columns:1fr 1fr 1fr; gap:.75rem; }
+    .stack div { padding:1rem; color:white; border-radius:12px; background:var(--navy); }
+    .stack div:nth-child(2) { background:var(--red); } .stack div:nth-child(3) { background:#496550; }
+    .phase { margin:1rem 0; padding:.25rem 0 .7rem 1rem; border-left:4px solid var(--sky); }
+    .phase.next { border-color:var(--gold); } .phase.hold { border-color:var(--red); }
+    .tag { display:inline-block; margin:.15rem .25rem .15rem 0; padding:.22rem .55rem; border-radius:99px; color:white; background:var(--navy); font-size:.76rem; font-weight:850; }
+    footer { padding:2rem max(5vw,1.25rem) 4rem; color:var(--muted); border-top:1px solid var(--line); }
+    @media(max-width:900px) { .metrics { grid-template-columns:repeat(3,1fr); } .grid { grid-template-columns:1fr 1fr; } .gallery { grid-template-columns:1fr; } }
+    @media(max-width:600px) { .metrics,.grid,.stack { grid-template-columns:1fr; } header { min-height:400px; } }
+    @media print { nav { display:none; } body { background:white; } .card,.metric,figure { box-shadow:none; break-inside:avoid; } header { min-height:auto; background:var(--navy); } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="inner">
+      <p class="eyebrow">Masterplan 07 · Accepted campus control layer</p>
+      <h1>MainStreet America</h1>
+      <p class="lede">A 600×600-block reconstructed campus at world origin: visitor arrival, model-home streets, civic and service buildings, plus a vertically integrated east-mountain operations complex.</p>
+    </div>
+  </header>
+  <nav aria-label="Report sections"><div>
+    <a href="#summary">Summary</a><a href="#map">Maps</a><a href="#framework">Framework</a><a href="#built">Built vs proposed</a><a href="#interfaces">Interfaces</a><a href="#holds">Holds</a><a href="#roadmap">Roadmap</a><a href="#evidence">Evidence</a>
+  </div></nav>
+  <main>
+    <section id="summary">
+      <h2>Decision summary</h2>
+      <p class="notice"><strong>Accepted as-built baseline.</strong> Repository evidence records physical closure and successful QA. This report made no live-world call, so new work starts with a saved-world condition refresh and a defect- or proposal-specific review packet.</p>
+      <div class="metrics">
+        <div class="metric"><b>631</b><span>durable features</span></div>
+        <div class="metric"><b>630</b><span>complete</span></div>
+        <div class="metric"><b>1</b><span>removed historical fence</span></div>
+        <div class="metric"><b>32</b><span>buildings</span></div>
+        <div class="metric"><b>126</b><span>rooms</span></div>
+      </div>
+      <div class="grid">
+        <article class="card"><h3>Canonical envelope</h3><p>SITE X/Z <code>-300..300</code>, Y <code>62..319</code>. The larger catalog union reflects a retired outer fence and south-arrival geometry.</p></article>
+        <article class="card"><h3>As-built posture</h3><p>Preserve accepted assets. Future scope is maintenance, accessibility, interpretation or separately approved redevelopment—not blanket rebuilding.</p></article>
+        <article class="card"><h3>Honest reconstruction</h3><p>Real-world program evidence and creative Minecraft architecture remain separately labeled. Exact Minecraft appearance is not historical fact.</p></article>
+      </div>
+    </section>
+
+    <section id="map">
+      <h2>Maps and accepted views</h2>
+      <div class="gallery">
+        <figure><img src="../../../data/exports/world-catalog-wave2-post-2026-07-28/floorplans/01-mainstreet-america-overview.png" alt="Catalog overview of MainStreet America"><figcaption>Wave 2 post-release catalog overview.</figcaption></figure>
+        <figure><img src="../../mainstreet-america/qa/msa-final-arrival.png" alt="Final MainStreet America south arrival"><figcaption>Accepted south-arrival evidence.</figcaption></figure>
+      </div>
+      <div style="height:1rem"></div>
+      <figure><img src="../../mainstreet-america/qa/msa-final-surface-and-grid-audit.png" alt="Final surface and grid audit of MainStreet America"><figcaption>Surface and grid audit view; use with the machine QA, not as sole acceptance evidence.</figcaption></figure>
+    </section>
+
+    <section id="framework">
+      <h2>As-built spatial framework</h2>
+      <div class="stack">
+        <div><strong>South · Arrival</strong><br>DIV-A01, 236-space parking program, Guest &amp; Design Center, south carriage and monument.</div>
+        <div><strong>Center / north · Neighborhood</strong><br>R01–R08, West/East lanes, cross streets, twelve named homes, six infill homes, civic and service projects.</div>
+        <div><strong>East · Mountain stack</strong><br>C01 public portal, operations, hangar, observatory, residence, shelter and grand vault.</div>
+      </div>
+      <h3>Key exact anchors</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Anchor</th><th>Catalog bounds</th><th>State</th></tr></thead>
+        <tbody>
+          <tr><td>Guest &amp; Design Center B01</td><td>X -72..72, Z 90..165</td><td>complete</td></tr>
+          <tr><td>Main Street R01</td><td>X -4.5..4.5, Z -294.5..289.5</td><td>complete</td></tr>
+          <tr><td>C01 operations complex</td><td>X 100..300, Z 70..235</td><td>complete</td></tr>
+          <tr><td>Public entry</td><td>X 90..130, Z 171..205</td><td>complete</td></tr>
+          <tr><td>Surface hangar / observatory</td><td>X 176..234 / 175..235, Z 138..181 / 137..182</td><td>complete, vertically stacked</td></tr>
+          <tr><td>Shelter / grand vault</td><td>X 148..188 / 230..262, Z 143..180 / 184..226</td><td>complete</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="built">
+      <h2>Built versus proposed</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Domain</th><th>Accepted / cataloged</th><th>Proposed control</th></tr></thead>
+        <tbody>
+          <tr><td>Hierarchy</td><td>SITE, 13 districts and successor boundaries</td><td>Periodic audit; retain removed F01 as history</td></tr>
+          <tr><td>Roads and arrival</td><td>Connected local network, parking, alleys and garage links</td><td>Fresh route, lighting and accessibility regression</td></tr>
+          <tr><td>Buildings/interiors</td><td>32 buildings, 126 rooms, multiple accepted QA waves</td><td>Condition survey and defect-only maintenance</td></tr>
+          <tr><td>Mountain complex</td><td>Public and private vertical program cataloged</td><td>Preserve exact 3D interfaces; survey before expansion</td></tr>
+          <tr><td>Media</td><td>Campus maps, matched captures and floorplans</td><td>Same-camera condition views for future releases</td></tr>
+          <tr><td>Historical interpretation</td><td>Confidence-labeled evidence set</td><td>Retain labels whenever visitor content changes</td></tr>
+        </tbody>
+      </table></div>
+      <p><span class="tag">ACCEPTED BASELINE</span><span class="tag" style="background:var(--red)">NO NEW PHYSICAL AUTHORITY</span></p>
+    </section>
+
+    <section id="interfaces">
+      <h2>Critical dependencies</h2>
+      <div class="grid">
+        <article class="card"><h3>PassageWay / Raven Rock</h3><p>PassageWay is the proper name of the shared underground tunnel system. MainStreet rooms, portals and shared route infrastructure must retain explicit exact owners.</p></article>
+        <article class="card"><h3>Westlight and regional roads</h3><p>R08 wayfinding points toward Westlight. Signs and names are not ownership; external connections need exact endpoint contracts and end-to-end route QA.</p></article>
+        <article class="card"><h3>Town Expansion</h3><p>Later dry-complex, portal and regional programs remain separate scopes unless a reviewed migration assigns exact cells.</p></article>
+        <article class="card"><h3>Stacked geometry</h3><p>Two-dimensional bounds overlap throughout C01. Collision and ownership are governed by exact three-dimensional cells.</p></article>
+        <article class="card"><h3>Protection state</h3><p>Historical WorldGuard and operator notes may be stale. Verify current state only through an explicitly authorized read-only workflow.</p></article>
+        <article class="card"><h3>Release discipline</h3><p>Every change requires immutable pre-state, exact guards, container/entity protection, strict no-op semantics, exact inverse and post-state QA.</p></article>
+      </div>
+    </section>
+
+    <section id="holds">
+      <h2>Planning holds for new work</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>ID</th><th>Issue</th><th>Closure</th></tr></thead>
+        <tbody>
+          <tr><td>MSA-H01</td><td>Live condition not surveyed for this plan</td><td>New immutable saved-world census and condition report</td></tr>
+          <tr><td>MSA-H02</td><td>Superseded plans coexist with as-built records</td><td>Use durable catalog/latest QA; label historical geometry</td></tr>
+          <tr><td>MSA-H03</td><td>Stacked ownership is complex</td><td>Exact 3D owner/interface audit for every candidate target</td></tr>
+          <tr><td>MSA-H04</td><td>External routes have separate owners</td><td>Exact interface contracts and bidirectional route QA</td></tr>
+          <tr><td>MSA-H05</td><td>Maintenance can become redesign</td><td>Evidence-backed defect register and scope-specific approval</td></tr>
+          <tr><td>MSA-H06</td><td>Current protection state unknown here</td><td>Authorized read-only configuration verification</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="roadmap">
+      <h2>Phased roadmap</h2>
+      <div class="phase"><h3>MSA-0 · Authority consolidation</h3><p>Complete for planning: SITE is the envelope; catalog and latest accepted QA outrank superseded coordinates; reconstruction confidence labels remain binding.</p></div>
+      <div class="phase next"><h3>MSA-1 · Read-only condition refresh</h3><p>Next: bind a complete saved world, repeat feature/material/route/parking/portal checks and publish a delta against the latest accepted immutable snapshot.</p></div>
+      <div class="phase"><h3>MSA-2 · Interface and maintenance design</h3><p>Exact 3D owners, evidence-backed defects, matched views, protected entities/containers and rollback design.</p></div>
+      <div class="phase hold"><h3>MSA-3 · Human review and guarded release</h3><p>Authority required: plan, sections, visual simulations, route impact, hashes, preflight, rollback and acceptance matrix.</p></div>
+      <div class="phase"><h3>MSA-4 · Acceptance and publication</h3><p>Exact post-state/inverse proof, full regression, proven catalog import, preserved prior scans and refreshed maps/media.</p></div>
+    </section>
+
+    <section id="evidence">
+      <h2>Evidence provenance</h2>
+      <p>The AI/source plan is <a href="MASTERPLAN.md">MASTERPLAN.md</a>. Primary evidence: read-only <a href="../../../data/world-map.db">world map database</a>, the <a href="../../mainstreet-america/README.md">project front door</a>, <a href="../../mainstreet-america/planning/site-plan.md">historical site plan</a>, <a href="../../mainstreet-america/qa/audit-closure-2026-07-26.json">closure audit</a>, <a href="../../redevelopment/2026-07-27/as-built-release-completion.md">redevelopment completion record</a> and <a href="../../../data/world-review/redevelopment-post-deployment-qa-2026-07-27.json">machine QA</a>.</p>
+      <p><strong>Derived:</strong> current database counts, catalog union and property-union explanation. <strong>Not performed:</strong> live calls, internet research, RCON, systemd operations, database writes or world mutation.</p>
+    </section>
+  </main>
+  <footer>Human companion to Masterplan 07 · Evidence cutoff 2026-08-05 · Accepted history is preserved; present condition must be re-proven before new work.</footer>
+</body>
+</html>

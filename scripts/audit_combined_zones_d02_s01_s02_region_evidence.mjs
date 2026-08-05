@@ -27,18 +27,18 @@ const GENERATED_AT = value('--generated-at', '2026-08-04T21:56:58Z');
 const DATA_ROOT = path.resolve(value('--data-root', 'data'));
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
+  'docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.md',
+  'docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.md',
 ));
 
 const INPUTS = {
-  authorityPacket: 'masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json',
-  c1Civil: 'masterplans/05-combined-zones/phase1-c1-civil-design.json',
-  phase0Evidence: 'masterplans/05-combined-zones/phase0-survey-evidence.json',
-  corridorClearance: 'masterplans/05-combined-zones/corridor-clearance.json',
+  authorityPacket: 'docs/masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json',
+  c1Civil: 'docs/masterplans/05-combined-zones/phase1-c1-civil-design.json',
+  phase0Evidence: 'docs/masterplans/05-combined-zones/phase0-survey-evidence.json',
+  corridorClearance: 'docs/masterplans/05-combined-zones/corridor-clearance.json',
   relocationSchedule: 'docs/redevelopment/2026-07-28-town-expansion/c01-east-relocation-coordinate-schedule.json',
   relocationEngineering: 'docs/redevelopment/2026-07-28-town-expansion/northeast-datacenter-c01-relocation-engineering.json',
   releaseGeometryAudit: 'docs/redevelopment/2026-07-28-town-expansion/independent-release-geometry-safety-audit.md',

@@ -1,0 +1,1739 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-d06-owner-acceptance-packet",
+  "generatedAtUtc": "2026-08-04T23:30:00Z",
+  "status": "READY_FOR_SOLE_OWNER_REVIEW_PLANNING_BASIS_BOUND_D06_AND_G02_HOLD",
+  "authority": {
+    "chain": "01 + 02 + 03 -> 04 normalized architecture -> 05 current-world placement",
+    "soleHumanAuthority": true,
+    "additionalHumanDecisionMakerRequired": false,
+    "planningSelectionsAlreadyDelegatedAndRecorded": true,
+    "technicalAcceptanceRecorded": false,
+    "executable": false,
+    "constructionAuthorized": false,
+    "worldEditAuthorized": false,
+    "operationCellCount": 0,
+    "materialCellCount": 0,
+    "commissioned": false,
+    "codeComplianceClaimed": false
+  },
+  "sourceBindings": {
+    "emptyEight": {
+      "path": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+      "sha256": "2e6e3f3c5c5514909dd20b9a87d1278036ad8afafd3592eb60e756825655a14a",
+      "bytes": 71177,
+      "role": "exact internal D06 reservations and sealed-state facts"
+    },
+    "egress": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json",
+      "sha256": "25a1d65c6fd076abd2842f2800b5d721a5557b546f70a6f18806235535279beb",
+      "bytes": 13700,
+      "role": "exact surveyed egress endpoints and selected system basis"
+    },
+    "lifeSafety": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+      "sha256": "c23eb313426f122e4d905cfe2a1d3407263186be80c167cfc1b169288eb11c76",
+      "bytes": 171078,
+      "role": "exact B07 and D06 fail-closed alternatives"
+    },
+    "selections": {
+      "path": "docs/masterplans/05-combined-zones/phase1-autonomous-design-selections.json",
+      "sha256": "805f89629d63f74a773f7e27b575a4b28f306a9b70a39073f21ddf4d2f757562",
+      "bytes": 16145,
+      "role": "owner-delegated planning selections without technical acceptance"
+    }
+  },
+  "acceptanceBasisSha256": "870e9334a5f80ee949ea2c44153fc92e1e64dc5fecea3fb992a8b1c8a3a56317",
+  "evidenceClassification": {
+    "immutableFacts": [
+      "source file hashes, exact copied-snapshot block-state counts, surveyed endpoints, and source-emitted exact-set hashes"
+    ],
+    "deterministicDerivations": [
+      "set counts, bounds, intersections, disjointness, selected-alternative schedules, and current gate evaluations reproduced from bound sources"
+    ],
+    "ownerSelectedPlanningAssumptions": [
+      "two existing stair/lift core layouts, B07 west-two, four local capped vents, static barrier/smoke caps, eight local drainage caps, and EG-B fire-service review interface"
+    ],
+    "evidenceGaps": [
+      "mechanism cells and specifications, capacity/performance criteria, complete future states, canonical owners, interface contracts, independent technical acceptance, and commissioning evidence"
+    ],
+    "prohibition": "A planning assumption or evidence gap must never be serialized as an immutable fact, technical PASS, owner assignment, commissioned system, or release authorization."
+  },
+  "selectedPlanningBasis": {
+    "sourceSelectionIds": [
+      "SEL-D06-FAIL-CLOSED-MECHANISM-RESERVATIONS",
+      "SEL-D06-LIFE-SAFETY-BASIS",
+      "SEL-D06-TWO-EGRESS-ENDPOINTS",
+      "SEL-P1-B07-PUBLIC-SHAFT-DOGLEG"
+    ],
+    "ownerReviewMeaning": "Confirm that the already-delegated fail-closed planning basis controls further technical work.",
+    "ownerReviewDoesNotMean": [
+      "technical, expert, code, structural, hydraulic, accessibility, smoke, fire-service, or commissioning acceptance",
+      "assignment of a canonical owner or acceptance of any interface contract",
+      "permission to open a cap, generate operations, mutate the world, or advance R00"
+    ]
+  },
+  "soleOwnerAcceptanceStatementTemplate": {
+    "acceptanceBasisSha256": "870e9334a5f80ee949ea2c44153fc92e1e64dc5fecea3fb992a8b1c8a3a56317",
+    "copyableStatement": "I, the sole owner, accept D06/B07 planning and acceptance-criteria basis SHA-256 870e9334a5f80ee949ea2c44153fc92e1e64dc5fecea3fb992a8b1c8a3a56317 as the controlling fail-closed basis for continued technical development only. I do not mark any current HOLD as PASS, accept a missing mechanism, assign a missing owner or interface, open a cap, commission a system, authorize operations or construction, or authorize a world edit.",
+    "accepts": [
+      "the exact already-delegated fail-closed D06/B07 planning basis",
+      "the evidence classifications and D06-AC-01 through D06-AC-11 acceptance criteria as the controlling technical-development checklist"
+    ],
+    "doesNotAccept": [
+      "any current HOLD as PASS",
+      "technical, expert, code, structural, hydraulic, accessibility, smoke, fire-service, emergency-power, or commissioning acceptance",
+      "a missing mechanism, owner, interface contract, future state, receiver, route, performance criterion, or test result",
+      "opening, commissioning, operation generation, construction, release advancement, or world edits"
+    ],
+    "recordingBoundary": "Copying this statement records planning-basis/checklist acceptance only. A separate future statement bound to one complete accepted technical identity is required to resolve D06."
+  },
+  "b07WestTwo": {
+    "candidateId": "B07-C-WEST-2",
+    "anchors": {
+      "top": {
+        "x": 2108,
+        "y": 72,
+        "z": -398,
+        "surveyedTerrainY": 63
+      },
+      "observationLanding": {
+        "x": 2108,
+        "y": 8,
+        "z": -398
+      },
+      "lowerLobby": {
+        "x": 2108,
+        "y": -56,
+        "z": -428
+      }
+    },
+    "centerline": {
+      "pointCount": 163,
+      "orderedSha256": "58ad6b7fe2de1a24717d0d495b2530047866d5611cc5e20f945c87eabeff133e"
+    },
+    "crossSection": "7x7 on every vertical and horizontal segment; curve cells are exact segment unions",
+    "excavationReservation": {
+      "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+      "jsonPointer": "/b07PublicShaftTransfer/candidates/2/exactCellSets/excavationReservation",
+      "cellCount": 8134,
+      "bounds": {
+        "minX": 2103,
+        "maxX": 2111,
+        "minY": -59,
+        "maxY": 72,
+        "minZ": -431,
+        "maxZ": -395
+      },
+      "coordinateSetSha256": "d58f20c6ad6581487e2a6ba72754d40ce22d49981da7450b44ad5e37325e5e59"
+    },
+    "interactionUnion": {
+      "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+      "jsonPointer": "/b07PublicShaftTransfer/candidates/2/exactCellSets/interactionUnion",
+      "cellCount": 13608,
+      "bounds": {
+        "minX": 2102,
+        "maxX": 2112,
+        "minY": -60,
+        "maxY": 73,
+        "minZ": -432,
+        "maxZ": -394
+      },
+      "coordinateSetSha256": "dd2cc387b0e5f6517ec48176c820e05f5fef5ff9793c74d32d4a5262582e5a8d"
+    },
+    "immutableSnapshotFacts": {
+      "excavationWaterCellCount": 38,
+      "excavationWaterloggedCellCount": 1,
+      "excavationLavaCellCount": 0,
+      "interactionWaterCellCount": 109,
+      "interactionWaterloggedCellCount": 2,
+      "generatedStructureExcavationIntersectionCount": 0,
+      "generatedStructureInteractionIntersectionCount": 0,
+      "protectedRelicInteractionIntersectionCount": 0,
+      "blockEntityInteractionIntersectionCount": 0
+    },
+    "technicalDisposition": "HOLD_38_WATER_CELLS_AND_MECHANISMS_OWNERS_INTERFACES_UNACCEPTED"
+  },
+  "protectedEgressAndAccessibleLiftCores": {
+    "selectedLayouts": [
+      {
+        "coreId": "EG-A",
+        "surveyedSurfaceEndpoint": {
+          "x": 1652,
+          "y": 80,
+          "z": 148,
+          "naturalTerrainY": 72,
+          "terrainBlock": "minecraft:grass_block",
+          "displayY": 72,
+          "displayBlock": "minecraft:grass_block",
+          "biome": "minecraft:plains",
+          "dry": true,
+          "engineeredLandingBasis": "one block above the maximum terrain in the surveyed 7x7 core; exact grading remains G03/G07 work"
+        },
+        "selectedLayoutId": "EG-A-LAYOUT-A-PRESERVE-FROZEN",
+        "combinedProtectedCoreReservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/0/combinedProtectedCoreReservation",
+          "cellCount": 1911,
+          "bounds": {
+            "minX": 1649,
+            "maxX": 1655,
+            "minY": 42,
+            "maxY": 80,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "a166e3326d919ada46b43e985de9a98b2a0d98465334cf261a6e41df4709b02f"
+        },
+        "protectedStairReservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/0/layoutAlternatives/0/stairReservation",
+          "cellCount": 819,
+          "bounds": {
+            "minX": 1649,
+            "maxX": 1651,
+            "minY": 42,
+            "maxY": 80,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "a33e2ca05e93da0f96bc0a6da14decc80a18e0b2257e217600e3b11f59da6e40"
+        },
+        "accessibleLiftReservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/0/layoutAlternatives/0/accessibleLiftReservation",
+          "cellCount": 351,
+          "bounds": {
+            "minX": 1653,
+            "maxX": 1655,
+            "minY": 42,
+            "maxY": 80,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "coordinateSetSha256": "c1bc6c20f6f4aa6e3be3a91d0a5dd0e4fcbcb3285d6821498d9a700a2b208972"
+        },
+        "compartmentSeparatorCap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/0/compartmentSeparatorCap",
+          "cellCount": 273,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1652,
+            "minY": 42,
+            "maxY": 80,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "0fb716d5308a394290e14e7dda693659d95dc7ba9ae80456d620b447f35dc08e"
+        },
+        "roofTransitionCap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/0/retainedRoofTransitionCap",
+          "cellCount": 49,
+          "bounds": {
+            "minX": 1649,
+            "maxX": 1655,
+            "minY": 54,
+            "maxY": 54,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "8855b0c9cbae55fd1f5870788594dbc401f1b2aae0eaf4541e4afd931c78dad2"
+        },
+        "surfaceOutletCap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/0/retainedSurfaceOutletCap",
+          "cellCount": 49,
+          "bounds": {
+            "minX": 1649,
+            "maxX": 1655,
+            "minY": 80,
+            "maxY": 80,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "cd19c4a760aad1ad1610b1d5df91e301edae759542ec7bc8b7df83b10bd278e1"
+        },
+        "mechanismSelected": false,
+        "commissionedEgress": false,
+        "commissionedAccessibleRoute": false
+      },
+      {
+        "coreId": "EG-B",
+        "surveyedSurfaceEndpoint": {
+          "x": 1852,
+          "y": 71,
+          "z": 148,
+          "naturalTerrainY": 62,
+          "terrainBlock": "minecraft:grass_block",
+          "displayY": 62,
+          "displayBlock": "minecraft:grass_block",
+          "biome": "minecraft:plains",
+          "dry": true,
+          "engineeredLandingBasis": "one block above the maximum terrain in the surveyed 7x7 core; exact grading remains G03/G07 work"
+        },
+        "selectedLayoutId": "EG-B-LAYOUT-A-PRESERVE-FROZEN",
+        "combinedProtectedCoreReservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/1/combinedProtectedCoreReservation",
+          "cellCount": 1470,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1855,
+            "minY": 42,
+            "maxY": 71,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "289b8f020397d992d304bec1bae5675c4c79581088b3656b6b03bc4ea0f37ff6"
+        },
+        "protectedStairReservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/1/layoutAlternatives/0/stairReservation",
+          "cellCount": 630,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1851,
+            "minY": 42,
+            "maxY": 71,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "2b32e8434746485edb83672a27a013a9f58dfcdd4394df30a49999dd4ae8be94"
+        },
+        "accessibleLiftReservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/1/layoutAlternatives/0/accessibleLiftReservation",
+          "cellCount": 270,
+          "bounds": {
+            "minX": 1853,
+            "maxX": 1855,
+            "minY": 42,
+            "maxY": 71,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "coordinateSetSha256": "f901500ff0e8dc8f056a660334a255c5cdfb62cbf49713fbca0be7a262a62e08"
+        },
+        "compartmentSeparatorCap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/1/compartmentSeparatorCap",
+          "cellCount": 210,
+          "bounds": {
+            "minX": 1852,
+            "maxX": 1852,
+            "minY": 42,
+            "maxY": 71,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "d137519bad05adfb3acd0fb38cc737b68c3e4dff627077f2f91b25b8a97412bf"
+        },
+        "roofTransitionCap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/1/retainedRoofTransitionCap",
+          "cellCount": 49,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1855,
+            "minY": 54,
+            "maxY": 54,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "900747ce1bc8c00b56a1e6d324f8db325d63ed770b550f55268b1fe13d959a6e"
+        },
+        "surfaceOutletCap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/1/retainedSurfaceOutletCap",
+          "cellCount": 49,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1855,
+            "minY": 71,
+            "maxY": 71,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "8d48d1a51dba8a54a2c11ad41f97482664a001cc3d943073fce9756ee41ac365"
+        },
+        "mechanismSelected": false,
+        "commissionedEgress": false,
+        "commissionedAccessibleRoute": false
+      }
+    ],
+    "protectedCoreSetsDisjoint": true,
+    "mechanismSelectedCount": 0,
+    "commissionedEgressRouteCount": 0,
+    "commissionedAccessibleRouteCount": 0,
+    "technicalDisposition": "HOLD_EXACT_RESERVATIONS_AND_CAPS_ONLY"
+  },
+  "smokeVentilationAndBarriers": {
+    "localVentAlternativeId": "VENT-A-FOUR-INDEPENDENT-LOCAL-RISERS",
+    "localVentRisers": [
+      {
+        "id": "EE-VENT-NW",
+        "reservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/ventilationOutletAlternatives/alternatives/0/risers/0/riserReservation",
+          "cellCount": 279,
+          "bounds": {
+            "minX": 1643,
+            "maxX": 1645,
+            "minY": 55,
+            "maxY": 85,
+            "minZ": 47,
+            "maxZ": 49
+          },
+          "coordinateSetSha256": "4efe5a411b79bc1763d2727a9e0a0da6510d93026e4e4fd2df58051f79f01494"
+        },
+        "surveyedSurface": {
+          "landingY": 85,
+          "minimumTerrainY": 83,
+          "maximumTerrainY": 84,
+          "dryColumnCount": 9,
+          "columnCount": 9,
+          "biomes": [
+            "minecraft:plains"
+          ]
+        },
+        "currentSnapshotAudit": {
+          "waterCellCount": 0,
+          "waterloggedCellCount": 0,
+          "lavaCellCount": 0,
+          "generatedStructureExcavationIntersectionCount": 0,
+          "generatedStructureInteractionIntersectionCount": 0,
+          "blockEntityInteractionCount": 0
+        },
+        "exteriorOutletOpened": false,
+        "commissioned": false
+      },
+      {
+        "id": "EE-VENT-NE",
+        "reservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/ventilationOutletAlternatives/alternatives/0/risers/1/riserReservation",
+          "cellCount": 432,
+          "bounds": {
+            "minX": 1859,
+            "maxX": 1861,
+            "minY": 55,
+            "maxY": 102,
+            "minZ": 47,
+            "maxZ": 49
+          },
+          "coordinateSetSha256": "80d490ba63e7995c4bf51b8bb22fe1156916cf1e18d1498fd7fb7b54d45489b5"
+        },
+        "surveyedSurface": {
+          "landingY": 102,
+          "minimumTerrainY": 98,
+          "maximumTerrainY": 101,
+          "dryColumnCount": 9,
+          "columnCount": 9,
+          "biomes": [
+            "minecraft:plains"
+          ]
+        },
+        "currentSnapshotAudit": {
+          "waterCellCount": 0,
+          "waterloggedCellCount": 0,
+          "lavaCellCount": 0,
+          "generatedStructureExcavationIntersectionCount": 0,
+          "generatedStructureInteractionIntersectionCount": 0,
+          "blockEntityInteractionCount": 0
+        },
+        "exteriorOutletOpened": false,
+        "commissioned": false
+      },
+      {
+        "id": "EE-VENT-SW",
+        "reservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/ventilationOutletAlternatives/alternatives/0/risers/2/riserReservation",
+          "cellCount": 99,
+          "bounds": {
+            "minX": 1643,
+            "maxX": 1645,
+            "minY": 55,
+            "maxY": 65,
+            "minZ": 151,
+            "maxZ": 153
+          },
+          "coordinateSetSha256": "dee692ea4f624c9719eb0d4a063db5b6ecc72bfed18f85b821fdb2450115262e"
+        },
+        "surveyedSurface": {
+          "landingY": 65,
+          "minimumTerrainY": 64,
+          "maximumTerrainY": 64,
+          "dryColumnCount": 9,
+          "columnCount": 9,
+          "biomes": [
+            "minecraft:plains"
+          ]
+        },
+        "currentSnapshotAudit": {
+          "waterCellCount": 0,
+          "waterloggedCellCount": 0,
+          "lavaCellCount": 0,
+          "generatedStructureExcavationIntersectionCount": 0,
+          "generatedStructureInteractionIntersectionCount": 0,
+          "blockEntityInteractionCount": 0
+        },
+        "exteriorOutletOpened": false,
+        "commissioned": false
+      },
+      {
+        "id": "EE-VENT-SE",
+        "reservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/ventilationOutletAlternatives/alternatives/0/risers/3/riserReservation",
+          "cellCount": 90,
+          "bounds": {
+            "minX": 1859,
+            "maxX": 1861,
+            "minY": 55,
+            "maxY": 64,
+            "minZ": 151,
+            "maxZ": 153
+          },
+          "coordinateSetSha256": "9abc0cb37f032b9bbf7985d3f76fcb7623bf069035f23fa28cf200406c528e8c"
+        },
+        "surveyedSurface": {
+          "landingY": 64,
+          "minimumTerrainY": 62,
+          "maximumTerrainY": 63,
+          "dryColumnCount": 9,
+          "columnCount": 9,
+          "biomes": [
+            "minecraft:plains"
+          ]
+        },
+        "currentSnapshotAudit": {
+          "waterCellCount": 0,
+          "waterloggedCellCount": 0,
+          "lavaCellCount": 0,
+          "generatedStructureExcavationIntersectionCount": 0,
+          "generatedStructureInteractionIntersectionCount": 0,
+          "blockEntityInteractionCount": 0
+        },
+        "exteriorOutletOpened": false,
+        "commissioned": false
+      }
+    ],
+    "localVentUnion": {
+      "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+      "jsonPointer": "/d06EmptyEightLifeSafety/ventilationOutletAlternatives/alternatives/0/combinedReservation",
+      "cellCount": 900,
+      "bounds": {
+        "minX": 1643,
+        "maxX": 1861,
+        "minY": 55,
+        "maxY": 102,
+        "minZ": 47,
+        "maxZ": 153
+      },
+      "coordinateSetSha256": "f7cccb2106ac69157546711a7467c0d4d6b317a81b95f91c4a41f7567c789453"
+    },
+    "riserSetsPairwiseDisjoint": true,
+    "exteriorOutletCountOpened": 0,
+    "smokeModelValidated": false,
+    "mechanismSelected": false,
+    "commissioned": false,
+    "platformBarriers": [
+      {
+        "id": "EE-PF-01",
+        "retainedClosedBarrierReservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/0/retainedClosedBarrierReservation",
+          "cellCount": 178,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 56,
+            "maxZ": 56
+          },
+          "coordinateSetSha256": "f0618b3a493bcc6219573427a5c9ef1c0b3438d59fb136789010fd74ad9785ca"
+        },
+        "staticGateBayCap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/0/staticGateBayCap",
+          "cellCount": 24,
+          "bounds": {
+            "minX": 1664,
+            "maxX": 1738,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 56,
+            "maxZ": 56
+          },
+          "coordinateSetSha256": "cde4a40c1c0499843ed100a31330eb414b837bee53c747b610003808056f4ff1"
+        },
+        "completeFailClosedBarrier": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/0/completeFailClosedBarrier",
+          "cellCount": 202,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 56,
+            "maxZ": 56
+          },
+          "coordinateSetSha256": "d9b9b6fe0ee06d6e8dcd3bf6bdf65953e08c843659b6e042a265da9e6c4eef83"
+        },
+        "poweredGateMechanism": null,
+        "operationallyAuthorized": false
+      },
+      {
+        "id": "EE-PF-02",
+        "retainedClosedBarrierReservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/1/retainedClosedBarrierReservation",
+          "cellCount": 178,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 69,
+            "maxZ": 69
+          },
+          "coordinateSetSha256": "53096949eaad384fdc85a54baa867d45b5216116856e6c5f64e10dd19b798bcc"
+        },
+        "staticGateBayCap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/1/staticGateBayCap",
+          "cellCount": 24,
+          "bounds": {
+            "minX": 1664,
+            "maxX": 1738,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 69,
+            "maxZ": 69
+          },
+          "coordinateSetSha256": "e2059625df10bbdb411d1dd5d3767ac523832c1d0c6f2d5d493f266c16649519"
+        },
+        "completeFailClosedBarrier": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/1/completeFailClosedBarrier",
+          "cellCount": 202,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 69,
+            "maxZ": 69
+          },
+          "coordinateSetSha256": "9ef866929ae5134cd4c8e1cfc6cd9d60c05807e9140ec178300b2cb7cc877b07"
+        },
+        "poweredGateMechanism": null,
+        "operationallyAuthorized": false
+      },
+      {
+        "id": "EE-PF-03",
+        "retainedClosedBarrierReservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/2/retainedClosedBarrierReservation",
+          "cellCount": 178,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 82,
+            "maxZ": 82
+          },
+          "coordinateSetSha256": "43554c7f80857ba4e030ca2133d35d341586013b5e4a2bdda50de70e1a2a734e"
+        },
+        "staticGateBayCap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/2/staticGateBayCap",
+          "cellCount": 24,
+          "bounds": {
+            "minX": 1664,
+            "maxX": 1738,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 82,
+            "maxZ": 82
+          },
+          "coordinateSetSha256": "fac73c3c6033b3db8bb69cf4f5934c664c27ba07baf31b830a0491cdf1fde041"
+        },
+        "completeFailClosedBarrier": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/2/completeFailClosedBarrier",
+          "cellCount": 202,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 82,
+            "maxZ": 82
+          },
+          "coordinateSetSha256": "a7848049ca8d3c334b1e0072714321441d91adcafddd8dad09995735e692c94c"
+        },
+        "poweredGateMechanism": null,
+        "operationallyAuthorized": false
+      },
+      {
+        "id": "EE-PF-04",
+        "retainedClosedBarrierReservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/3/retainedClosedBarrierReservation",
+          "cellCount": 178,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 95,
+            "maxZ": 95
+          },
+          "coordinateSetSha256": "d8877e17f13798c74a35c0ffec39ecf796f7534dd97c689164145853b83f555f"
+        },
+        "staticGateBayCap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/3/staticGateBayCap",
+          "cellCount": 24,
+          "bounds": {
+            "minX": 1664,
+            "maxX": 1738,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 95,
+            "maxZ": 95
+          },
+          "coordinateSetSha256": "ef8c5bbb15b286402cf89225c73fbfe5e7cb7964953e95991a41f1bc8fde4b9b"
+        },
+        "completeFailClosedBarrier": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/3/completeFailClosedBarrier",
+          "cellCount": 202,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 95,
+            "maxZ": 95
+          },
+          "coordinateSetSha256": "1bcb0ba960a1a408f9c42f922446ed05c9af6b4ec4fe7b8da9a196428f06b60c"
+        },
+        "poweredGateMechanism": null,
+        "operationallyAuthorized": false
+      },
+      {
+        "id": "EE-PF-05",
+        "retainedClosedBarrierReservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/4/retainedClosedBarrierReservation",
+          "cellCount": 178,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 108,
+            "maxZ": 108
+          },
+          "coordinateSetSha256": "2ed8dbdf0c9d516d019a4749ee57829ec7228feb99ef3376dcfa56793e5bf7cc"
+        },
+        "staticGateBayCap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/4/staticGateBayCap",
+          "cellCount": 24,
+          "bounds": {
+            "minX": 1664,
+            "maxX": 1738,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 108,
+            "maxZ": 108
+          },
+          "coordinateSetSha256": "0cba330c1588f046e16427ea591062e24e537da275fc5f7756a2018458d28acb"
+        },
+        "completeFailClosedBarrier": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/4/completeFailClosedBarrier",
+          "cellCount": 202,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 108,
+            "maxZ": 108
+          },
+          "coordinateSetSha256": "54e710c3940828253c81a0e81fded91e9cb98d6ca29930fe518748979f98b676"
+        },
+        "poweredGateMechanism": null,
+        "operationallyAuthorized": false
+      },
+      {
+        "id": "EE-PF-06",
+        "retainedClosedBarrierReservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/5/retainedClosedBarrierReservation",
+          "cellCount": 178,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 121,
+            "maxZ": 121
+          },
+          "coordinateSetSha256": "9f909b819a17487998e7e2317b1747f6f20c33e9a9905b3486c8e07f7bce648c"
+        },
+        "staticGateBayCap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/5/staticGateBayCap",
+          "cellCount": 24,
+          "bounds": {
+            "minX": 1664,
+            "maxX": 1738,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 121,
+            "maxZ": 121
+          },
+          "coordinateSetSha256": "fb375ccd10e4d1018b1934a54c4e5d6986b4fc736bbf3db7a29f402c3fc70843"
+        },
+        "completeFailClosedBarrier": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/5/completeFailClosedBarrier",
+          "cellCount": 202,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 121,
+            "maxZ": 121
+          },
+          "coordinateSetSha256": "c588e894e35eb5ab27dade19abc3d78ae1b2671af91bd7ae88b25117011ccc93"
+        },
+        "poweredGateMechanism": null,
+        "operationallyAuthorized": false
+      },
+      {
+        "id": "EE-PF-07",
+        "retainedClosedBarrierReservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/6/retainedClosedBarrierReservation",
+          "cellCount": 178,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 134,
+            "maxZ": 134
+          },
+          "coordinateSetSha256": "28ce108deed957a7fdd0deece5c6338e58e4fa7f7b8f58d869411a1036f2c7f4"
+        },
+        "staticGateBayCap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/6/staticGateBayCap",
+          "cellCount": 24,
+          "bounds": {
+            "minX": 1664,
+            "maxX": 1738,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 134,
+            "maxZ": 134
+          },
+          "coordinateSetSha256": "5be821e0fdbaff53876f41c72160251e93ad23eae23385a8a326a142d6bb1729"
+        },
+        "completeFailClosedBarrier": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/6/completeFailClosedBarrier",
+          "cellCount": 202,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 134,
+            "maxZ": 134
+          },
+          "coordinateSetSha256": "c0135bb6459650bbf9b4d6be61075702ddf7edde9e445f7854d8469fbe8a2349"
+        },
+        "poweredGateMechanism": null,
+        "operationallyAuthorized": false
+      },
+      {
+        "id": "EE-PF-08",
+        "retainedClosedBarrierReservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/7/retainedClosedBarrierReservation",
+          "cellCount": 178,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 147,
+            "maxZ": 147
+          },
+          "coordinateSetSha256": "d497ab07a503874f94154d82cf1a2c566ad805d3bacfe81f1fd67903ef1157af"
+        },
+        "staticGateBayCap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/7/staticGateBayCap",
+          "cellCount": 24,
+          "bounds": {
+            "minX": 1664,
+            "maxX": 1738,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 147,
+            "maxZ": 147
+          },
+          "coordinateSetSha256": "79b8b4ec6783022fab1ce9e70e3a5286f2ca50865891536ed61ed6554df73759"
+        },
+        "completeFailClosedBarrier": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/7/completeFailClosedBarrier",
+          "cellCount": 202,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1752,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 147,
+            "maxZ": 147
+          },
+          "coordinateSetSha256": "b8b21200f7927b2310a9ea19cb9d52beafc2acedebee436e738782fc9eb8322c"
+        },
+        "poweredGateMechanism": null,
+        "operationallyAuthorized": false
+      }
+    ],
+    "smokeBoundaries": [
+      {
+        "id": "EE-SMOKE-N",
+        "retainedBoundaryPlane": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/smokeBoundaries/0/retainedBoundaryPlane",
+          "cellCount": 1336,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1847,
+            "minY": 48,
+            "maxY": 54,
+            "minZ": 50,
+            "maxZ": 50
+          },
+          "coordinateSetSha256": "e0f0a57420bb1dfb40414bd3e47149074b4d2a737497929a3b894ea723aa8ff6"
+        },
+        "staticOpeningCaps": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/smokeBoundaries/0/staticOpeningCaps",
+          "cellCount": 36,
+          "bounds": {
+            "minX": 1670,
+            "maxX": 1822,
+            "minY": 49,
+            "maxY": 51,
+            "minZ": 50,
+            "maxZ": 50
+          },
+          "coordinateSetSha256": "f26a93e1ef8c38f0ca79887eb0c59007615c096b201de2b6a0df3e6ef600d6ba"
+        },
+        "completeFailClosedBoundary": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/smokeBoundaries/0/completeFailClosedBoundary",
+          "cellCount": 1372,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1847,
+            "minY": 48,
+            "maxY": 54,
+            "minZ": 50,
+            "maxZ": 50
+          },
+          "coordinateSetSha256": "9999247e9ad7dd126a7c25ebdbb4603478463fd53f6f8b6208eff7a69b58bdf0"
+        },
+        "smokeDoorMechanism": null,
+        "operationallyAuthorized": false
+      },
+      {
+        "id": "EE-SMOKE-S",
+        "retainedBoundaryPlane": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/smokeBoundaries/1/retainedBoundaryPlane",
+          "cellCount": 1336,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1847,
+            "minY": 48,
+            "maxY": 54,
+            "minZ": 150,
+            "maxZ": 150
+          },
+          "coordinateSetSha256": "3e7f80c3a7a4c28a6fc21db4ef33a05db33274bf9c18b16e3b28f51d7f7140c1"
+        },
+        "staticOpeningCaps": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/smokeBoundaries/1/staticOpeningCaps",
+          "cellCount": 36,
+          "bounds": {
+            "minX": 1670,
+            "maxX": 1822,
+            "minY": 49,
+            "maxY": 51,
+            "minZ": 150,
+            "maxZ": 150
+          },
+          "coordinateSetSha256": "8f58b00782b9c2e71f5a6f0dd30aa2261d9508c426c48e43c0262b34be5cde24"
+        },
+        "completeFailClosedBoundary": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/smokeBoundaries/1/completeFailClosedBoundary",
+          "cellCount": 1372,
+          "bounds": {
+            "minX": 1652,
+            "maxX": 1847,
+            "minY": 48,
+            "maxY": 54,
+            "minZ": 150,
+            "maxZ": 150
+          },
+          "coordinateSetSha256": "7055645cb0c309d8f57ae81fba68e933ca64f7f038259ec501e8b8c21402796f"
+        },
+        "smokeDoorMechanism": null,
+        "operationallyAuthorized": false
+      }
+    ],
+    "totals": {
+      "platformStaticGateCapCells": 192,
+      "smokeOpeningCapCells": 72
+    },
+    "failClosedPrinciple": "STATIC_CAP_EVERY_RESERVED_OPENING_POWERED_MECHANISMS_UNSELECTED",
+    "technicalDisposition": "HOLD_RISERS_AND_OPENINGS_CAPPED_NO_SMOKE_MODEL_MECHANISM_OUTLET_OR_COMMISSIONING"
+  },
+  "emergencyLightingAndPower": {
+    "ownerSelectedRequirement": "SEA_LANTERN_NORMAL_LIGHTING_PLUS_SEPARATELY_SWITCHED_REDUNDANT_EMERGENCY_CIRCUITS",
+    "fixtureReservations": [
+      {
+        "platformId": "EE-PF-01",
+        "reservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+          "jsonPointer": "/d06/platforms/0/emergencyLightingDesign",
+          "cellCount": 7,
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1748,
+            "minY": 46,
+            "maxY": 46,
+            "minZ": 62,
+            "maxZ": 62
+          },
+          "coordinateSetSha256": "c4e276c5989522b39288f437fd376781b2890ee16a251bb35cf7b7181068fc16"
+        }
+      },
+      {
+        "platformId": "EE-PF-02",
+        "reservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+          "jsonPointer": "/d06/platforms/1/emergencyLightingDesign",
+          "cellCount": 7,
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1748,
+            "minY": 46,
+            "maxY": 46,
+            "minZ": 75,
+            "maxZ": 75
+          },
+          "coordinateSetSha256": "35ec2571a795f3b3c8583b177b5bc7267a05b831412b8155d0f8dcd659f5af2c"
+        }
+      },
+      {
+        "platformId": "EE-PF-03",
+        "reservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+          "jsonPointer": "/d06/platforms/2/emergencyLightingDesign",
+          "cellCount": 7,
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1748,
+            "minY": 46,
+            "maxY": 46,
+            "minZ": 88,
+            "maxZ": 88
+          },
+          "coordinateSetSha256": "32a5a56117d6d5bb38c57e3e89befe0798497a8901dddecbb69ab7e52aad8b0d"
+        }
+      },
+      {
+        "platformId": "EE-PF-04",
+        "reservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+          "jsonPointer": "/d06/platforms/3/emergencyLightingDesign",
+          "cellCount": 7,
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1748,
+            "minY": 46,
+            "maxY": 46,
+            "minZ": 101,
+            "maxZ": 101
+          },
+          "coordinateSetSha256": "b51d2d52847daaf1a534c9951b6beb384ab91d4b3a8fa8db4bc3e41b9df2e588"
+        }
+      },
+      {
+        "platformId": "EE-PF-05",
+        "reservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+          "jsonPointer": "/d06/platforms/4/emergencyLightingDesign",
+          "cellCount": 7,
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1748,
+            "minY": 46,
+            "maxY": 46,
+            "minZ": 114,
+            "maxZ": 114
+          },
+          "coordinateSetSha256": "8a898f82dde8ddc37979a4bbce1c25a5663845215e0b81bda22df59c0aefc1f5"
+        }
+      },
+      {
+        "platformId": "EE-PF-06",
+        "reservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+          "jsonPointer": "/d06/platforms/5/emergencyLightingDesign",
+          "cellCount": 7,
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1748,
+            "minY": 46,
+            "maxY": 46,
+            "minZ": 127,
+            "maxZ": 127
+          },
+          "coordinateSetSha256": "740409cadfc4d3293d4e81871051733c1544a4da1b55f139df2f9d96c4dedd8d"
+        }
+      },
+      {
+        "platformId": "EE-PF-07",
+        "reservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+          "jsonPointer": "/d06/platforms/6/emergencyLightingDesign",
+          "cellCount": 7,
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1748,
+            "minY": 46,
+            "maxY": 46,
+            "minZ": 140,
+            "maxZ": 140
+          },
+          "coordinateSetSha256": "4abd3d46e28f727f0d11f61dfb376da6cadb8268b342f4df0a679fec5b1cfbf9"
+        }
+      },
+      {
+        "platformId": "EE-PF-08",
+        "reservation": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+          "jsonPointer": "/d06/platforms/7/emergencyLightingDesign",
+          "cellCount": 7,
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1748,
+            "minY": 46,
+            "maxY": 46,
+            "minZ": 153,
+            "maxZ": 153
+          },
+          "coordinateSetSha256": "bb463f50131bd4770f2a5e3cfa94104e7447bd0f86b092ccb64cca94dc103dca"
+        }
+      }
+    ],
+    "exactFixtureReservationCount": 56,
+    "fixtureBlock": "minecraft:sea_lantern",
+    "normalCircuitReservation": null,
+    "emergencyCircuitAReservation": null,
+    "emergencyCircuitBReservation": null,
+    "emergencyPowerSource": null,
+    "transferAndFailureLogic": null,
+    "photometricOrEmergencyPowerValidation": false,
+    "commissioned": false,
+    "technicalDisposition": "HOLD_FIXTURE_POINTS_ONLY_CIRCUITS_SOURCES_FAILURE_LOGIC_AND_VALIDATION_MISSING"
+  },
+  "cappedDrainage": {
+    "selectedAlternativeId": "DRAIN-A-EIGHT-INDEPENDENT-LOCAL-CAPS",
+    "localSumpInterfaceCaps": [
+      {
+        "id": "EE-DRAIN-01-LOCAL-CAP",
+        "cap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/localSumpInterfaceCaps/0/cap",
+          "cellCount": 3,
+          "bounds": {
+            "minX": 1869,
+            "maxX": 1869,
+            "minY": 38,
+            "maxY": 38,
+            "minZ": 54,
+            "maxZ": 56
+          },
+          "coordinateSetSha256": "6b5c34914c98b9b20b9b9c87e93d23fea6a16216e81f18c1e0bb994d11dd812d"
+        }
+      },
+      {
+        "id": "EE-DRAIN-02-LOCAL-CAP",
+        "cap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/localSumpInterfaceCaps/1/cap",
+          "cellCount": 3,
+          "bounds": {
+            "minX": 1869,
+            "maxX": 1869,
+            "minY": 38,
+            "maxY": 38,
+            "minZ": 67,
+            "maxZ": 69
+          },
+          "coordinateSetSha256": "52cfc5a746a20a6387dcace32b85c356c05bdf771709b4b702017831fee4e977"
+        }
+      },
+      {
+        "id": "EE-DRAIN-03-LOCAL-CAP",
+        "cap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/localSumpInterfaceCaps/2/cap",
+          "cellCount": 3,
+          "bounds": {
+            "minX": 1869,
+            "maxX": 1869,
+            "minY": 38,
+            "maxY": 38,
+            "minZ": 80,
+            "maxZ": 82
+          },
+          "coordinateSetSha256": "0d6852bf550b19a20fe98f0d17c7cc8be8e4e596a344c96dd727fee93b926860"
+        }
+      },
+      {
+        "id": "EE-DRAIN-04-LOCAL-CAP",
+        "cap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/localSumpInterfaceCaps/3/cap",
+          "cellCount": 3,
+          "bounds": {
+            "minX": 1869,
+            "maxX": 1869,
+            "minY": 38,
+            "maxY": 38,
+            "minZ": 93,
+            "maxZ": 95
+          },
+          "coordinateSetSha256": "41464b943fda8cac75d9128715567c56648e24e798467b17f78f95649c3c4189"
+        }
+      },
+      {
+        "id": "EE-DRAIN-05-LOCAL-CAP",
+        "cap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/localSumpInterfaceCaps/4/cap",
+          "cellCount": 3,
+          "bounds": {
+            "minX": 1869,
+            "maxX": 1869,
+            "minY": 38,
+            "maxY": 38,
+            "minZ": 106,
+            "maxZ": 108
+          },
+          "coordinateSetSha256": "0454d303b36f28821d84a178a003277bbdc05a29eb3d83fea1125d404fdc09f8"
+        }
+      },
+      {
+        "id": "EE-DRAIN-06-LOCAL-CAP",
+        "cap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/localSumpInterfaceCaps/5/cap",
+          "cellCount": 3,
+          "bounds": {
+            "minX": 1869,
+            "maxX": 1869,
+            "minY": 38,
+            "maxY": 38,
+            "minZ": 119,
+            "maxZ": 121
+          },
+          "coordinateSetSha256": "3ed62dab2cc78ee7737187628204f85dce866cd1bff8a413e4f9e724ee29342d"
+        }
+      },
+      {
+        "id": "EE-DRAIN-07-LOCAL-CAP",
+        "cap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/localSumpInterfaceCaps/6/cap",
+          "cellCount": 3,
+          "bounds": {
+            "minX": 1869,
+            "maxX": 1869,
+            "minY": 38,
+            "maxY": 38,
+            "minZ": 132,
+            "maxZ": 134
+          },
+          "coordinateSetSha256": "8db8e861d30d93449444e6d4cc316ee0890078d6f65e1042575a09dfb3e5d193"
+        }
+      },
+      {
+        "id": "EE-DRAIN-08-LOCAL-CAP",
+        "cap": {
+          "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+          "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/localSumpInterfaceCaps/7/cap",
+          "cellCount": 3,
+          "bounds": {
+            "minX": 1869,
+            "maxX": 1869,
+            "minY": 38,
+            "maxY": 38,
+            "minZ": 145,
+            "maxZ": 147
+          },
+          "coordinateSetSha256": "3c7d92a053dc2f8b6b365fddec9fa68cb092366cd53410398b446e9ec3165b02"
+        }
+      }
+    ],
+    "capUnion": {
+      "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+      "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/capUnion",
+      "cellCount": 24,
+      "bounds": {
+        "minX": 1869,
+        "maxX": 1869,
+        "minY": 38,
+        "maxY": 38,
+        "minZ": 54,
+        "maxZ": 147
+      },
+      "coordinateSetSha256": "13d7cb94e6425be2d777f9aaea7f4d93ccddca180e64509624e2cb498773af8c"
+    },
+    "retainedUnconnectedHeaderReservation": {
+      "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+      "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/retainedUnconnectedHeaderReservation",
+      "cellCount": 9,
+      "bounds": {
+        "minX": 1869,
+        "maxX": 1871,
+        "minY": 38,
+        "maxY": 38,
+        "minZ": 156,
+        "maxZ": 158
+      },
+      "coordinateSetSha256": "3806b527089b8f8030e53e91b3e1405cc7a3d95e779f3006400cc734861ca075"
+    },
+    "retainedExternalBoundaryCap": {
+      "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+      "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/retainedExternalBoundaryCap",
+      "cellCount": 9,
+      "bounds": {
+        "minX": 1872,
+        "maxX": 1872,
+        "minY": 38,
+        "maxY": 40,
+        "minZ": 156,
+        "maxZ": 158
+      },
+      "coordinateSetSha256": "2ae30ba16c2313388765732e4a70a8a1406e777d89009967aa6c4a2cc49226dc"
+    },
+    "externalDischargePoint": null,
+    "pumpMechanismSelected": false,
+    "hydraulicModelValidated": false,
+    "commissioned": false,
+    "technicalDisposition": "HOLD_EIGHT_LOCAL_CAPS_SEALED_NO_PUMP_RECEIVER_DISCHARGE_OR_HYDRAULIC_ACCEPTANCE"
+  },
+  "fireAndServiceAccess": {
+    "selectedAlternativeId": "FIRE-EG-B",
+    "internalSpineReservation": {
+      "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+      "jsonPointer": "/d06EmptyEightLifeSafety/fireServiceAccessAlternatives/internalSpineReservation",
+      "cellCount": 3025,
+      "bounds": {
+        "minX": 1844,
+        "maxX": 1848,
+        "minY": 48,
+        "maxY": 52,
+        "minZ": 40,
+        "maxZ": 160
+      },
+      "coordinateSetSha256": "b3626dfd30c7c81aca2a6a4349e7273c1c760297ca736be9f869b1e2ec33dd2c"
+    },
+    "internalTransferReservation": {
+      "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+      "jsonPointer": "/d06EmptyEightLifeSafety/fireServiceAccessAlternatives/alternatives/1/internalTransferReservation",
+      "cellCount": 0,
+      "bounds": null,
+      "coordinateSetSha256": "6e0987687e1b2d1a47ab30f68e00c162911552d18208737f0a356bed6b09e9ee"
+    },
+    "normallyClosedSpineInterfaceCap": {
+      "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+      "jsonPointer": "/d06EmptyEightLifeSafety/fireServiceAccessAlternatives/alternatives/1/normallyClosedSpineInterfaceCap",
+      "cellCount": 35,
+      "bounds": {
+        "minX": 1849,
+        "maxX": 1849,
+        "minY": 48,
+        "maxY": 52,
+        "minZ": 145,
+        "maxZ": 151
+      },
+      "coordinateSetSha256": "bee777d91f2bb4bc5aa433c06ef35548d162e1df7440fe7804771d41d889a3d7"
+    },
+    "surfaceCompoundReservation": {
+      "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+      "jsonPointer": "/d06EmptyEightLifeSafety/fireServiceAccessAlternatives/alternatives/1/surfaceCompoundReservation",
+      "cellCount": 49,
+      "bounds": {
+        "minX": 1849,
+        "maxX": 1855,
+        "minY": 71,
+        "maxY": 71,
+        "minZ": 145,
+        "maxZ": 151
+      },
+      "coordinateSetSha256": "8d48d1a51dba8a54a2c11ad41f97482664a001cc3d943073fce9756ee41ac365"
+    },
+    "sealedSurfaceApproachInterface": {
+      "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+      "jsonPointer": "/d06EmptyEightLifeSafety/fireServiceAccessAlternatives/alternatives/1/sealedSurfaceApproachInterface",
+      "cellCount": 21,
+      "bounds": {
+        "minX": 1849,
+        "maxX": 1855,
+        "minY": 71,
+        "maxY": 73,
+        "minZ": 151,
+        "maxZ": 151
+      },
+      "coordinateSetSha256": "76aaafd48f38527dd5dd0eb3526c7b28c9b26ba7e82597d91ecea5d55b8eaba3"
+    },
+    "externalApproachRoute": null,
+    "emergencyServiceAcceptance": false,
+    "externalApproachRouteProven": false,
+    "commissioned": false,
+    "technicalDisposition": "HOLD_EG_B_REVIEW_INTERFACE_SEALED_EXTERNAL_APPROACH_NULL"
+  },
+  "ownershipAndInterfaces": {
+    "rule": "Every physical or interaction cell must have exactly one canonical owner; every cross-owner seam requires an exact accepted interface contract.",
+    "register": [
+      {
+        "slotId": "OWN-D06-EG-A",
+        "subject": "EG-A protected stair, lift, separator, roof, and surface cap",
+        "canonicalOwnerId": null,
+        "acceptedInterfaceContractIds": [],
+        "status": "HOLD_OWNER_AND_INTERFACES_UNASSIGNED"
+      },
+      {
+        "slotId": "OWN-D06-EG-B",
+        "subject": "EG-B protected stair, lift, separator, roof, and surface cap",
+        "canonicalOwnerId": null,
+        "acceptedInterfaceContractIds": [],
+        "status": "HOLD_OWNER_AND_INTERFACES_UNASSIGNED"
+      },
+      {
+        "slotId": "OWN-D06-VENT",
+        "subject": "four local vent risers, duct/fan mechanisms, controls, and exterior outlets",
+        "canonicalOwnerId": null,
+        "acceptedInterfaceContractIds": [],
+        "status": "HOLD_OWNER_AND_INTERFACES_UNASSIGNED"
+      },
+      {
+        "slotId": "OWN-D06-SMOKE",
+        "subject": "two smoke boundaries, doors, detectors/controls, and compartment interfaces",
+        "canonicalOwnerId": null,
+        "acceptedInterfaceContractIds": [],
+        "status": "HOLD_OWNER_AND_INTERFACES_UNASSIGNED"
+      },
+      {
+        "slotId": "OWN-D06-BARRIER",
+        "subject": "eight platform barriers, gate mechanisms, controls, and train interfaces",
+        "canonicalOwnerId": null,
+        "acceptedInterfaceContractIds": [],
+        "status": "HOLD_OWNER_AND_INTERFACES_UNASSIGNED"
+      },
+      {
+        "slotId": "OWN-D06-POWER",
+        "subject": "normal lighting plus two independent emergency circuits, sources, and controls",
+        "canonicalOwnerId": null,
+        "acceptedInterfaceContractIds": [],
+        "status": "HOLD_OWNER_AND_INTERFACES_UNASSIGNED"
+      },
+      {
+        "slotId": "OWN-D06-DRAIN",
+        "subject": "eight local sumps, channels, caps, headers, pumps/controls, and receiver/discharge",
+        "canonicalOwnerId": null,
+        "acceptedInterfaceContractIds": [],
+        "status": "HOLD_OWNER_AND_INTERFACES_UNASSIGNED"
+      },
+      {
+        "slotId": "OWN-D06-FIRE",
+        "subject": "internal service spine, EG-B interface, surface compound, and external approach",
+        "canonicalOwnerId": null,
+        "acceptedInterfaceContractIds": [],
+        "status": "HOLD_OWNER_AND_INTERFACES_UNASSIGNED"
+      },
+      {
+        "slotId": "OWN-B07",
+        "subject": "public shaft west-two excavation, lining, transfer, utilities, drainage, and endpoint seams",
+        "canonicalOwnerId": null,
+        "acceptedInterfaceContractIds": [],
+        "status": "HOLD_OWNER_AND_INTERFACES_UNASSIGNED"
+      }
+    ],
+    "acceptedCanonicalOwnerCount": 0,
+    "acceptedInterfaceContractCount": 0,
+    "technicalDisposition": "HOLD_NO_OWNER_OR_INTERFACE_ID_INVENTED"
+  },
+  "acceptanceCriteria": [
+    {
+      "id": "D06-AC-01",
+      "subject": "delegated planning basis and exact reservation identity",
+      "status": "PASS",
+      "currentEvidence": {
+        "requiredSelectionIdsPresent": true,
+        "exactSourceBindingsPresent": true,
+        "technicalAcceptanceClaimedBySelections": false
+      },
+      "passWhenAll": [
+        "all four required owner-delegated planning selections remain hash-bound",
+        "every exact reservation reference retains its source path, JSON pointer, cell count, bounds, and coordinate-set SHA-256"
+      ],
+      "holdReason": null
+    },
+    {
+      "id": "D06-AC-02",
+      "subject": "bounded current-snapshot geometry checks",
+      "status": "PASS",
+      "currentEvidence": {
+        "protectedCoreSetsDisjoint": true,
+        "ventRiserSetsDisjoint": true,
+        "localDrainCapsDisjoint": true,
+        "b07GeneratedStructureExcavationIntersections": 0,
+        "b07GeneratedStructureInteractionIntersections": 0
+      },
+      "passWhenAll": [
+        "bounded checks remain true against the source-bound immutable region evidence",
+        "PASS is represented only as geometry/collision evidence, never structural, code, route, or commissioning acceptance"
+      ],
+      "holdReason": null
+    },
+    {
+      "id": "D06-AC-03",
+      "subject": "B07 west-two hydrology, lining, transfer, ownership, and technical design",
+      "status": "HOLD",
+      "currentEvidence": {
+        "selectedCandidateId": "B07-C-WEST-2",
+        "excavationWaterCellCount": 38,
+        "excavationWaterloggedCellCount": 1,
+        "interactionWaterCellCount": 109,
+        "exactHydrologyTreatmentAccepted": false,
+        "exactLiningAndSupportAccepted": false,
+        "exactTransferMechanismsAccepted": false,
+        "exactOwnerAndInterfacesAccepted": false,
+        "independentTechnicalAcceptance": false
+      },
+      "passWhenAll": [
+        "all 38 water cells and the waterlogged state have an exact source-to-future disposition with no undeclared diversion",
+        "lining, support, observation-refuge transfer, stair/lift, smoke, drainage, owners, and both endpoint interfaces are exact and technically accepted"
+      ],
+      "holdReason": "Structure-bound clearance passes, but 38 current water cells and every technical mechanism remain unresolved."
+    },
+    {
+      "id": "D06-AC-04",
+      "subject": "two independent protected stair and accessible-lift routes",
+      "status": "HOLD",
+      "currentEvidence": {
+        "exactCoreReservations": true,
+        "exactDrySurfaceEndpoints": true,
+        "selectedMechanismCount": 0,
+        "commissionedEgressRouteCount": 0,
+        "commissionedAccessibleRouteCount": 0,
+        "independentTechnicalAcceptance": false
+      },
+      "passWhenAll": [
+        "each occupied-space-to-exterior stair route is continuous, exact, independently owned, fail-safe, and technically accepted",
+        "each reserved accessible-lift route has an exact mechanism, refuge/transfer treatment, emergency operation, power, controls, ownership, and independent technical acceptance",
+        "both routes remain independent under each declared single failure and have frozen commissioning tests"
+      ],
+      "holdReason": "The packet binds exact reservations and caps only; no complete stair, lift, or accessible route is commissioned."
+    },
+    {
+      "id": "D06-AC-05",
+      "subject": "smoke compartments and four local vent risers",
+      "status": "HOLD",
+      "currentEvidence": {
+        "exactLocalVentRiserCount": 4,
+        "exactLocalVentReservationCellCount": 900,
+        "exteriorOutletCountOpened": 0,
+        "smokeModelValidated": false,
+        "mechanismSelected": false,
+        "commissioned": false
+      },
+      "passWhenAll": [
+        "smoke design criteria, scenarios, control zones, flow direction, outlet separation, failure states, and acceptance thresholds are authored and independently accepted",
+        "every duct, fan/control mechanism, cap transition, exterior outlet, owner, interface, power source, and commissioning test is exact and hash-bound",
+        "the four presently capped risers remain sealed until all criteria pass"
+      ],
+      "holdReason": "Four dry, structure-clear riser reservations pass geometry review, but no outlet, smoke model, mechanism, or commissioning exists."
+    },
+    {
+      "id": "D06-AC-06",
+      "subject": "platform barriers and smoke-opening mechanisms",
+      "status": "HOLD",
+      "currentEvidence": {
+        "platformStaticGateCapCells": 192,
+        "smokeOpeningCapCells": 72,
+        "poweredPlatformMechanismCount": 0,
+        "smokeDoorMechanismCount": 0,
+        "operationallyAuthorizedCount": 0
+      },
+      "passWhenAll": [
+        "all barrier and smoke-door mechanism cells, controls, manual release, train-door alignment, failure state, owner, interface, and test criteria are exact and independently accepted",
+        "static caps remain in the source/future contract until the complete mechanisms pass"
+      ],
+      "holdReason": "The exact 192 platform-gate and 72 smoke-opening cap cells are fail-closed reservations, not working systems."
+    },
+    {
+      "id": "D06-AC-07",
+      "subject": "normal and redundant emergency lighting/power circuits",
+      "status": "HOLD",
+      "currentEvidence": {
+        "exactFixtureReservationCount": 56,
+        "fixtureBlock": "minecraft:sea_lantern",
+        "photometricValidation": false,
+        "exactNormalCircuitCellSetAccepted": false,
+        "exactEmergencyCircuitACellSetAccepted": false,
+        "exactEmergencyCircuitBCellSetAccepted": false,
+        "exactEmergencyPowerSourceAccepted": false,
+        "transferAndFailureLogicAccepted": false
+      },
+      "passWhenAll": [
+        "normal and two independent emergency circuit cellsets, sources, controls, transfer/failure behavior, owners, interfaces, and commissioning tests are exact and independently accepted",
+        "the 56 fixture reservations pass an accepted coverage/visibility criterion under normal and every declared emergency state"
+      ],
+      "holdReason": "Fixture points are exact, but circuit paths, sources, redundancy, performance, and commissioning evidence do not exist."
+    },
+    {
+      "id": "D06-AC-08",
+      "subject": "eight capped local drainage interfaces",
+      "status": "HOLD",
+      "currentEvidence": {
+        "exactLocalSumpCapCount": 8,
+        "exactLocalSumpCapCellCount": 24,
+        "externalDischargePoint": null,
+        "pumpMechanismSelected": false,
+        "hydraulicModelValidated": false,
+        "commissioned": false
+      },
+      "passWhenAll": [
+        "inflow, storage, freeboard, duration, failure, recovery, no-diversion, and future-fluid criteria are exact and accepted",
+        "each sump/channel, pump/control if any, retained header, external discharge if any, owner, interface, and failure test is exact and independently accepted",
+        "D05 accepts any external receiver/discharge ownership before a boundary cap may open"
+      ],
+      "holdReason": "Eight three-cell local caps remain sealed; no hydraulic model, pump, receiver, or external discharge is accepted."
+    },
+    {
+      "id": "D06-AC-09",
+      "subject": "fire/service access and exterior approach",
+      "status": "HOLD",
+      "currentEvidence": {
+        "selectedPlanningAlternativeId": "FIRE-EG-B",
+        "internalSpineReservationCellCount": 3025,
+        "normallyClosedSpineInterfaceCapCellCount": 35,
+        "surfaceCompoundReservationCellCount": 49,
+        "externalApproachRoute": null,
+        "emergencyServiceAcceptance": false,
+        "commissioned": false
+      },
+      "passWhenAll": [
+        "an exact external approach route, usable access criterion, surface compound, internal transfer, owner, interfaces, controls, and failure states are accepted",
+        "the relevant emergency-service technical review and frozen commissioning tests pass",
+        "the spine and surface caps remain sealed until all criteria pass"
+      ],
+      "holdReason": "EG-B is selected only as the minimum-geometry review interface; the external route is null and all interfaces remain closed."
+    },
+    {
+      "id": "D06-AC-10",
+      "subject": "canonical owners and exact cross-scope interface contracts",
+      "status": "HOLD",
+      "currentEvidence": {
+        "canonicalOwnerIdsAssigned": 0,
+        "acceptedInterfaceContractIds": 0,
+        "undeclaredSharedPhysicalCellsPermitted": 0
+      },
+      "passWhenAll": [
+        "every construction, interaction, mechanism, control, utility, route, cap, outlet, and future-state cell has exactly one canonical owner",
+        "every cross-owner seam has an exact, directioned, hash-bound interface contract and the global interface audit passes with zero undeclared seams"
+      ],
+      "holdReason": "The packet deliberately records null owner and interface IDs instead of inventing authority."
+    },
+    {
+      "id": "D06-AC-11",
+      "subject": "independent technical acceptance and D06 resolution",
+      "status": "HOLD",
+      "currentEvidence": {
+        "lifeSafetyAcceptance": false,
+        "accessibilityAndLiftAcceptance": false,
+        "smokeAndVentilationAcceptance": false,
+        "fireServiceAcceptance": false,
+        "barrierAcceptance": false,
+        "emergencyPowerAcceptance": false,
+        "hydraulicAcceptance": false,
+        "structuralAcceptance": false,
+        "d06Resolved": false,
+        "r00G02Passed": false
+      },
+      "passWhenAll": [
+        "D06-AC-03 through D06-AC-10 all PASS against the same source-bound design identity",
+        "the sole owner records acceptance of that complete technical identity without converting later release evidence into G02 evidence"
+      ],
+      "holdReason": "Planning selections are frozen, but technical acceptance, ownership/interfaces, and mechanisms are incomplete."
+    }
+  ],
+  "disposition": {
+    "passCount": 2,
+    "holdCount": 9,
+    "ownerPlanningBasisSelected": true,
+    "ownerTechnicalAcceptanceRecorded": false,
+    "d06Resolved": false,
+    "r00G02Passed": false,
+    "sealed": true,
+    "commissioned": false,
+    "operationCellCount": 0,
+    "materialCellCount": 0,
+    "worldEditAuthorized": false,
+    "nextOwnerReviewAction": "Review and retain the already-selected fail-closed planning basis; do not mark technical acceptance until D06-AC-03 through D06-AC-10 all pass against one hash-bound design identity."
+  },
+  "releaseBoundary": {
+    "preR00EvidenceOnly": true,
+    "laterEvidenceCannotCloseD06OrG02": [
+      "operations",
+      "source guards",
+      "preflight",
+      "entity clearance",
+      "pilot execution",
+      "rollback",
+      "route QA",
+      "post-state QA"
+    ],
+    "statement": "This packet is review and acceptance-criteria evidence only. It emits no operation, opens no cap, commissions no system, and authorizes no physical work."
+  }
+}

@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 3,
+  "id": "combined-zones-east-corridor-clearance",
+  "status": "CATALOG_CLEARANCE_PASS_PHASE0_ENGINEERED_PROFILE_PASS",
+  "method": "Catalog separation remains the plan-only Chebyshev test against 1,215 durable feature footprints. Phase 0 adds a read-only Anvil terrain profile at 16-block spacing, full-chunk coverage, water, biome, vegetation, and generated-structure evidence. Neither result is an ownership, protected-interface, entity, or construction authorization.",
+  "source": {
+    "poiDirectory": "docs/redevelopment/2026-07-29-poi-coordinate-directory/poi-coordinate-directory.json",
+    "poiSha256": "93d0266339740087b903adf1b0f900d43110f78a2cecd8fdbd1871fd819bff1e",
+    "recordsWithGeometry": 1215,
+    "catalogRecords": 1215
+  },
+  "phase0Source": {
+    "preGenerationSnapshot": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-pre-20260804T021237Z/region",
+      "sha256": "fe7a3e5a75bbf90104c73bf9f78115300fe66f82b300d2dde7cede9fd993ab37"
+    },
+    "postGenerationSnapshot": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+      "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b"
+    },
+    "terrainProbe": "docs/masterplans/05-combined-zones/corridor-terrain-probe.json",
+    "surveyEvidence": "docs/masterplans/05-combined-zones/phase0-survey-evidence.json"
+  },
+  "alignment": {
+    "pointsOfIntersection": [
+      {
+        "id": "W-TERM",
+        "x": 430,
+        "z": 80,
+        "role": "west terminal roundabout centre"
+      },
+      {
+        "id": "PI-1",
+        "x": 905,
+        "z": 80,
+        "role": "northward deflection",
+        "radius": 140
+      },
+      {
+        "id": "PI-2",
+        "x": 1065,
+        "z": -80,
+        "role": "southward deflection",
+        "radius": 120
+      },
+      {
+        "id": "PI-3",
+        "x": 1330,
+        "z": -80,
+        "role": "northward deflection",
+        "radius": 140
+      },
+      {
+        "id": "E-TERM",
+        "x": 1550,
+        "z": -250,
+        "role": "Gateway terminal roundabout centre"
+      }
+    ],
+    "legs": [
+      {
+        "from": "W-TERM",
+        "to": "PI-1",
+        "bearing": "east-west tangent",
+        "deltaX": 475,
+        "deltaZ": 0,
+        "pathLengthBlocks": 475.0
+      },
+      {
+        "from": "PI-1",
+        "to": "PI-2",
+        "bearing": "45-degree diagonal",
+        "deltaX": 160,
+        "deltaZ": -160,
+        "pathLengthBlocks": 226.3
+      },
+      {
+        "from": "PI-2",
+        "to": "PI-3",
+        "bearing": "east-west tangent",
+        "deltaX": 265,
+        "deltaZ": 0,
+        "pathLengthBlocks": 265.0
+      },
+      {
+        "from": "PI-3",
+        "to": "E-TERM",
+        "bearing": "surveyed shallow diagonal",
+        "deltaX": 220,
+        "deltaZ": -170,
+        "pathLengthBlocks": 278.029
+      }
+    ],
+    "planLengthBlocks": 1244.303,
+    "geometryRule": "orthogonal and exact 45-degree geometry through PI-3; the final re-sited approach uses its surveyed 220-by-170 bearing and requires a coarse buildable staircase",
+    "curveVertices": 3,
+    "curveVertexBudget": 4
+  },
+  "crossSection": {
+    "reservationBlocks": 56,
+    "northEdgeOffset": -36,
+    "southEdgeOffset": 19,
+    "slopeEasementEachSide": 12,
+    "totalLandTakeBlocks": 80
+  },
+  "results": {
+    "surfaceFeaturesIntersectingReservation": [],
+    "nearestSurfaceFeature": {
+      "feature": "Te Ia District Shared Grid",
+      "project": "Town Expansion R1",
+      "layer": "surface",
+      "featureTopY": 135,
+      "featureBaseY": 63,
+      "reservationPlanGapBlocks": 50,
+      "withEasementPlanGapBlocks": 26,
+      "extent": {
+        "minX": 1000,
+        "maxX": 1300,
+        "minZ": -620,
+        "maxZ": -172
+      }
+    },
+    "findings": [
+      {
+        "feature": "C01 Owner Tunnel Detour",
+        "project": "Town Expansion R1",
+        "layer": "subsurface",
+        "featureTopY": -37,
+        "featureBaseY": -45,
+        "reservationPlanGapBlocks": 0,
+        "withEasementPlanGapBlocks": 0,
+        "extent": {
+          "minX": 364,
+          "maxX": 718,
+          "minZ": -46,
+          "maxZ": 58
+        }
+      },
+      {
+        "feature": "C01 East L1 Security Garage",
+        "project": "Town Expansion R1",
+        "layer": "subsurface",
+        "featureTopY": 53,
+        "featureBaseY": 42,
+        "reservationPlanGapBlocks": 18,
+        "withEasementPlanGapBlocks": 0,
+        "extent": {
+          "minX": 700,
+          "maxX": 900,
+          "minZ": -140,
+          "maxZ": -5
+        }
+      },
+      {
+        "feature": "C01 East L2 Living Adult",
+        "project": "Town Expansion R1",
+        "layer": "subsurface",
+        "featureTopY": 41,
+        "featureBaseY": 33,
+        "reservationPlanGapBlocks": 18,
+        "withEasementPlanGapBlocks": 0,
+        "extent": {
+          "minX": 700,
+          "maxX": 900,
+          "minZ": -140,
+          "maxZ": -5
+        }
+      },
+      {
+        "feature": "C01 East L3 Agriculture Water",
+        "project": "Town Expansion R1",
+        "layer": "subsurface",
+        "featureTopY": 32,
+        "featureBaseY": 24,
+        "reservationPlanGapBlocks": 18,
+        "withEasementPlanGapBlocks": 0,
+        "extent": {
+          "minX": 700,
+          "maxX": 900,
+          "minZ": -141,
+          "maxZ": -5
+        }
+      },
+      {
+        "feature": "C01 Owner Residence",
+        "project": "Town Expansion R1",
+        "layer": "subsurface",
+        "featureTopY": -18,
+        "featureBaseY": -31,
+        "reservationPlanGapBlocks": 28,
+        "withEasementPlanGapBlocks": 4,
+        "extent": {
+          "minX": 714,
+          "maxX": 895,
+          "minZ": -74,
+          "maxZ": -10
+        }
+      },
+      {
+        "feature": "Te Ia District Shared Grid",
+        "project": "Town Expansion R1",
+        "layer": "surface",
+        "featureTopY": 135,
+        "featureBaseY": 63,
+        "reservationPlanGapBlocks": 50,
+        "withEasementPlanGapBlocks": 26,
+        "extent": {
+          "minX": 1000,
+          "maxX": 1300,
+          "minZ": -620,
+          "maxZ": -172
+        }
+      },
+      {
+        "feature": "C01 East L4 Command Medical",
+        "project": "Town Expansion R1",
+        "layer": "subsurface",
+        "featureTopY": 23,
+        "featureBaseY": 15,
+        "reservationPlanGapBlocks": 63,
+        "withEasementPlanGapBlocks": 51,
+        "extent": {
+          "minX": 702,
+          "maxX": 854,
+          "minZ": -70,
+          "maxZ": -19
+        }
+      },
+      {
+        "feature": "C01 East L5 Power Escape",
+        "project": "Town Expansion R1",
+        "layer": "subsurface",
+        "featureTopY": 14,
+        "featureBaseY": 6,
+        "reservationPlanGapBlocks": 64,
+        "withEasementPlanGapBlocks": 52,
+        "extent": {
+          "minX": 703,
+          "maxX": 854,
+          "minZ": -68,
+          "maxZ": -20
+        }
+      },
+      {
+        "feature": "C01 Owner Club Arrival",
+        "project": "Town Expansion R1",
+        "layer": "subsurface",
+        "featureTopY": 4,
+        "featureBaseY": -14,
+        "reservationPlanGapBlocks": 66,
+        "withEasementPlanGapBlocks": 54,
+        "extent": {
+          "minX": 721,
+          "maxX": 850,
+          "minZ": -64,
+          "maxZ": -22
+        }
+      },
+      {
+        "feature": "Te Ia District Worker Commons",
+        "project": "Town Expansion R1",
+        "layer": "surface",
+        "featureTopY": 97,
+        "featureBaseY": 43,
+        "reservationPlanGapBlocks": 73,
+        "withEasementPlanGapBlocks": 61,
+        "extent": {
+          "minX": 790,
+          "maxX": 1258,
+          "minZ": -544,
+          "maxZ": -189
+        }
+      }
+    ]
+  },
+  "terrainSurvey": {
+    "status": "PASS_ENGINEERED_RAIL_PROFILE_NATURAL_SURFACE_REMAINS_CONSTRAINT",
+    "sampleCount": 79,
+    "sampleIntervalBlocks": 16,
+    "terrainMinY": 55,
+    "terrainMaxY": 122,
+    "terrainMeanY": 90.608,
+    "waterSampleCount": 3,
+    "waterColumns": [
+      { "x": 462, "z": 80 },
+      { "x": 1260, "z": -80 },
+      { "x": 1292, "z": -80 }
+    ],
+    "maximumObservedNaturalSurfaceGrade": 1.625,
+    "intervalsExceedingOneInEight": 39,
+    "namedTerrainY": {
+      "W-TERM": 65,
+      "PI-1": 112,
+      "PI-2": 108,
+      "PI-3": 67,
+      "E-TERM": 71,
+      "DD-1": 63
+    },
+    "engineeredRailProfile": {
+      "status": "PASS_ONE_IN_EIGHT",
+      "startY": 68,
+      "endY": 68,
+      "railMinY": 63,
+      "railMaxY": 114,
+      "maximumGrade": 0.125,
+      "maximumCutBlocks": 36,
+      "maximumFillBlocks": 23
+    },
+    "interpretation": "The natural surface is not a usable rail formation. The sampled engineered profile passes 1:8, with the disclosed cuts, fills, water structures, and detailed civil design still required before any build authorization."
+  },
+  "truthBoundary": {
+    "offAcceptedRasterPointsOfIntersection": [],
+    "acceptedRasterExtent": {
+      "minX": -883,
+      "maxX": 1468,
+      "minZ": -1387,
+      "maxZ": 964
+    },
+    "phase0Raster": "docs/masterplans/05-combined-zones/maps/current-plus-phase0-terrain.png",
+    "phase0RasterBounds": {
+      "minX": -883,
+      "maxX": 3200,
+      "minZ": -1387,
+      "maxZ": 964
+    },
+    "note": "Phase 0 replaces the prior unrendered eastern gap with complete terrain evidence. It does not convert that terrain into cleared buildable land."
+  }
+}

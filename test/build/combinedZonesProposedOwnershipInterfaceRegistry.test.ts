@@ -8,11 +8,11 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 const ROOT = path.resolve(__dirname, '../..');
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json',
+  'docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.md',
+  'docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.md',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-owner-interface-'));
 const regeneratedJson = path.join(tempDir, 'registry.json');
@@ -72,6 +72,7 @@ interface Report {
   authorityBoundary: Record<string, boolean | string>;
   registryContract: {
     ownerRegistryManifestSha256: string;
+    g04PhysicalOwnerRegistryManifestSha256: string;
     interfaceRegistryManifestSha256: string;
     adjudicationRegistryManifestSha256: string;
     forbidden: string[];
@@ -90,6 +91,40 @@ interface Report {
     acceptedRecordCount: number;
     wildcardRecordCount: number;
     lastWriterWinsRecordCount: number;
+  };
+  g04PhysicalOwnership: {
+    status: string;
+    observedPhysicalUnionCellCount: number;
+    canonicalOwnerUnionCellCount: number;
+    unownedCellCount: number;
+    multiplyOwnedCellCount: number;
+    expandedCanonicalCellCount: number;
+    sparseB10CanonicalConstructionCellCount: number;
+    sparseB10CanonicalConstructionOwner: {
+      ownerId: string;
+      cellCount: number;
+      sparseIntervals: { intervalManifestSha256: string };
+      accepted: boolean;
+    };
+    expandedOwnerRecordCount: number;
+    precedenceRecordCount: number;
+    exactDirectionalAdjacencyContractCount: number;
+    exactExpandedDirectionalAdjacencyContractCount: number;
+    exactSparseB10DirectionalAdjacencyContractCount: number;
+    exactDirectionalAdjacencyPairCount: number;
+    g04PassedOffline: boolean;
+    finalOwnerAcceptanceRecorded: boolean;
+  };
+  g04InfluenceCoordinationStewardship: {
+    recordCount: number;
+    records: Array<{
+      scopeId: string;
+      stewardOwnerIds: string[];
+      physicalCellOwnershipClaimed: boolean;
+      accepted: boolean;
+    }>;
+    physicalCellOwnershipClaimed: boolean;
+    acceptedRecordCount: number;
   };
   proposedDirectionalInterfaceRegistry: {
     contractCount: number;
@@ -162,23 +197,25 @@ describe('Combined Zones proposed ownership and interface registry', () => {
       .toBe(true);
     const report = readReport();
     expect(report).toMatchObject({
-      schemaVersion: 2,
+      schemaVersion: 3,
       id: 'combined-zones-phase1-proposed-ownership-interface-registry',
       status:
-        'PARTIAL_PASS_EXACT_PROPOSED_OWNERSHIP_AND_DIRECTIONAL_INTERFACES_FINAL_ACCEPTANCE_HOLD',
+        'G04_PASS_OFFLINE_EXACT_ONE_OWNER_G05_EXTERNAL_ENDPOINTS_AND_STATES_HOLD',
       canonicalPayloadSha256:
-        '233fd08f0b9a1884447a50fb03c4600726c77db838d9016e163f867d513fb55b',
-      reportIdentitySha256: '969627cd61d1a98b905213ee5819456e6cdb1bb733ecfa28d74ac2022c626245',
+        '234e51bba55fb4bad08d351780b51e27647102f2fdf8b42ce9ed5357afa33cda',
+      reportIdentitySha256: '353ba295895eb736bda25e3f6ab53af23b5643843a1916f829e9e90331da4d95',
       registryContract: {
         ownerRegistryManifestSha256:
           '2d77b74a0ce8048471e6355e794bdc26474328ebd1e57d607efa2dd434951244',
+        g04PhysicalOwnerRegistryManifestSha256:
+          '6f1089ad74ad1cd8f378eeb20bddde8a3af524efbdb550ae1ad5ddf66264a192',
         interfaceRegistryManifestSha256:
-          '8774ad1483309dd4906787411d1e91094ef14562d4e5582566cc95a4d76dfc0c',
+          'd9a520819df53c297f5a998ef6690116f04f3b8ab453d692c8d6ddae7677df2a',
         adjudicationRegistryManifestSha256:
-          '40f165f16820ec12b4fb1950ef42fd02d4a9c2acc86c5323bceab9cb57671803',
+          '29f58dd0bc6a4d08a70b7d24f94b8331fae870e969f68b6a0d788f9cbc7e00d6',
       },
     });
-    expect(Object.keys(report.sourceBindings)).toHaveLength(15);
+    expect(Object.keys(report.sourceBindings)).toHaveLength(20);
     for (const source of Object.values(report.sourceBindings)) {
       const filename = path.join(ROOT, source.path);
       expect(fs.statSync(filename).size).toBe(source.bytes);
@@ -227,6 +264,10 @@ describe('Combined Zones proposed ownership and interface registry', () => {
         HoustonPrecedenceCellCount: 884,
       },
       knownCrossScopeProposedCellCount: 16_542_566,
+      g04ObservedConstructionInteractionUnionCellCount: 15_286_976,
+      g04CanonicalOwnerUnionCellCount: 15_286_976,
+      g04UnownedCellCount: 0,
+      g04MultiplyOwnedCellCount: 0,
       acceptedOwnerCellCount: 0,
     });
     expect(owner(report, 'OWN-D02-C1-DRAINAGE-CONTROL').proposedCellCount).toBe(387);
@@ -246,12 +287,48 @@ describe('Combined Zones proposed ownership and interface registry', () => {
     expect(report.proposedOwnerRegistry.ownerRecords.every((item) => (
       item.exactCellAssignmentAccepted === false && item.acceptedBy === null
     ))).toBe(true);
+    expect(report.g04PhysicalOwnership).toMatchObject({
+      status: 'PASS_OFFLINE_EXACT_ONE_OWNER_COVERAGE_FINAL_ACCEPTANCE_HOLD',
+      observedPhysicalUnionCellCount: 15_286_976,
+      canonicalOwnerUnionCellCount: 15_286_976,
+      unownedCellCount: 0,
+      multiplyOwnedCellCount: 0,
+      expandedCanonicalCellCount: 532_477,
+      sparseB10CanonicalConstructionCellCount: 14_754_499,
+      expandedOwnerRecordCount: 20,
+      precedenceRecordCount: 15,
+      exactDirectionalAdjacencyContractCount: 84,
+      exactExpandedDirectionalAdjacencyContractCount: 63,
+      exactSparseB10DirectionalAdjacencyContractCount: 21,
+      exactDirectionalAdjacencyPairCount: 352_931,
+      g04PassedOffline: true,
+      finalOwnerAcceptanceRecorded: false,
+    });
+    expect(report.g04PhysicalOwnership.sparseB10CanonicalConstructionOwner).toMatchObject({
+      ownerId: 'CZ05-SCOPE-CONSTRUCTION-CONTROL',
+      cellCount: 14_754_499,
+      sparseIntervals: {
+        intervalManifestSha256:
+          'eeaca2916a0cc7539996c5c6fa07cc9d8e38b3507d30c3453afe64e14a43d9e4',
+      },
+      accepted: false,
+    });
+    expect(report.g04InfluenceCoordinationStewardship).toMatchObject({
+      recordCount: 10,
+      physicalCellOwnershipClaimed: false,
+      acceptedRecordCount: 0,
+    });
+    expect(report.g04InfluenceCoordinationStewardship.records.every((item) => (
+      item.stewardOwnerIds.length > 0
+      && !item.physicalCellOwnershipClaimed
+      && !item.accepted
+    ))).toBe(true);
   });
 
   it('uses exact precedence records instead of shared or last-writer-wins ownership', () => {
     const report = readReport();
     expect(report.proposedOwnershipAdjudications).toMatchObject({
-      recordCount: 26,
+      recordCount: 41,
       acceptedRecordCount: 0,
       wildcardRecordCount: 0,
       lastWriterWinsRecordCount: 0,
@@ -278,6 +355,8 @@ describe('Combined Zones proposed ownership and interface registry', () => {
     expect(report.proposedOwnershipAdjudications.records
       .filter(({ scope }) => scope === 'D02/C01')
       .reduce((sum, item) => sum + item.exactConflictCellSet.cellCount, 0)).toBe(45);
+    expect(report.proposedOwnershipAdjudications.records
+      .filter(({ scope }) => scope === 'G04-GLOBAL-PHYSICAL')).toHaveLength(15);
     expect(report.crossScopeDisjointProof).toMatchObject({
       status: 'PASS_KNOWN_PROPOSAL_SCOPES_DISJOINT_BY_EXACT_COMPONENT_BOUNDS',
       observedCrossScopeOverlapPairCount: 0,
@@ -288,16 +367,16 @@ describe('Combined Zones proposed ownership and interface registry', () => {
     const report = readReport();
     const registry = report.proposedDirectionalInterfaceRegistry;
     expect(registry).toMatchObject({
-      contractCount: 78,
-      exactInterfaceCellSetCount: 64,
-      exactTransitionPairManifestCount: 25,
-      nullInterfaceCellSetCount: 14,
+      contractCount: 161,
+      exactInterfaceCellSetCount: 148,
+      exactTransitionPairManifestCount: 109,
+      nullInterfaceCellSetCount: 13,
       acceptedContractCount: 0,
       wildcardContractCount: 0,
       bidirectionalContractCount: 0,
       lastWriterWinsContractCount: 0,
     });
-    expect(new Set(registry.contracts.map(({ contractId }) => contractId)).size).toBe(78);
+    expect(new Set(registry.contracts.map(({ contractId }) => contractId)).size).toBe(161);
     expect(registry.contracts.every((item) => (
       item.direction.length > 0
       && !item.direction.includes('BIDIRECTIONAL')
@@ -378,18 +457,22 @@ describe('Combined Zones proposed ownership and interface registry', () => {
     expect(registry.contracts.filter(({ interfaceCellSet }) => interfaceCellSet === null)
       .every(({ status }) => status === 'HOLD_INTERFACE_GEOMETRY_MISSING_DEFAULT_DENY'))
       .toBe(true);
+    expect(registry.contracts.filter(({ interfaceCellSet }) => interfaceCellSet === null)
+      .every(({ toOwnerId }) => toOwnerId === null)).toBe(true);
+    expect(registry.contracts.filter(({ scope }) => scope.startsWith('G04-GLOBAL')))
+      .toHaveLength(84);
   });
 
   it('retains technical, complete-save, final-acceptance, release, and safety holds', () => {
     const report = readReport();
-    expect(report.remainingEvidenceHolds).toHaveLength(9);
+    expect(report.remainingEvidenceHolds).toHaveLength(8);
     expect(report.remainingEvidenceHolds.every(({ status }) => status === 'HOLD')).toBe(true);
     expect(report.sourceHoldRegistry).toMatchObject({
       status: 'HOLD_ALL_SOURCE_BLOCKERS_PRESERVED',
       sourceGroupCount: 6,
-      sourceHoldRecordCount: 58,
+      sourceHoldRecordCount: 46,
       sourceHoldManifestSha256:
-        '1f6e1b477532383ead3e468b2364a131e0c71490b6244bb053b528a4a1fa3ad8',
+        '56e6f5a842cd64cc5c89d9545c74de9b1721d252a1c256e1fcb7983db4d95804',
     });
     expect(report.disposition).toEqual({
       exactProposalOwnerRegistryCompiled: true,
@@ -397,6 +480,8 @@ describe('Combined Zones proposed ownership and interface registry', () => {
       directionalDefaultDenyInterfaceRegistryCompiled: true,
       p1B12GlobalProposalAuditCompiled: true,
       allKnownProposalCellsHaveOneProposedOwner: true,
+      g04OfflineExactOneOwnerGatePassed: true,
+      g05InterfaceAndStateGatePassed: false,
       allInterfacesExact: false,
       finalOwnerAcceptanceRecorded: false,
       finalInterfaceAcceptanceRecorded: false,
@@ -418,6 +503,6 @@ describe('Combined Zones proposed ownership and interface registry', () => {
       physicalBuildAuthorized: false,
       executable: false,
     });
-    expect(fs.statSync(COMMITTED_JSON).size).toBeLessThan(300_000);
+    expect(fs.statSync(COMMITTED_JSON).size).toBeLessThan(500_000);
   });
 });

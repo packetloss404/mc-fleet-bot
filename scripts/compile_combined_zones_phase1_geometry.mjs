@@ -22,25 +22,25 @@ function value(flag, fallback) {
 
 const OUTPUT_PATH = path.resolve(ROOT, value(
   '--out',
-  'masterplans/05-combined-zones/phase1-geometry-coordination.json',
+  'docs/masterplans/05-combined-zones/phase1-geometry-coordination.json',
 ));
 const GENERATED_AT = value('--generated-at', new Date().toISOString());
 
 const PATHS = Object.freeze({
-  child01: 'masterplans/01-cheyenne-mountain-complex/06-contractor/contractor-brief.json',
-  child02: 'masterplans/02-subtropolis/06-contractor/contractor-brief.json',
-  child03: 'masterplans/03-houston-tunnel-system/06-contractor/contractor-brief.json',
-  normalized04: 'masterplans/04-combined-complex/02-design/site-coordinates.json',
-  contractor04: 'masterplans/04-combined-complex/04-contractor/contractor-brief.json',
-  reconciliation: 'masterplans/04-combined-complex/authority-reconciliation.json',
-  registry05: 'masterplans/05-combined-zones/site-coordinates.json',
-  phase0Evidence: 'masterplans/05-combined-zones/phase0-survey-evidence.json',
+  child01: 'docs/masterplans/01-cheyenne-mountain-complex/06-contractor/contractor-brief.json',
+  child02: 'docs/masterplans/02-subtropolis/06-contractor/contractor-brief.json',
+  child03: 'docs/masterplans/03-houston-tunnel-system/06-contractor/contractor-brief.json',
+  normalized04: 'docs/masterplans/04-combined-complex/02-design/site-coordinates.json',
+  contractor04: 'docs/masterplans/04-combined-complex/04-contractor/contractor-brief.json',
+  reconciliation: 'docs/masterplans/04-combined-complex/authority-reconciliation.json',
+  registry05: 'docs/masterplans/05-combined-zones/site-coordinates.json',
+  phase0Evidence: 'docs/masterplans/05-combined-zones/phase0-survey-evidence.json',
 });
 
 // Updating an authority source requires explicit review of this pin. A stale
 // compiler must fail before it writes an apparently current coordination file.
 const EXPECTED_RECONCILIATION_SHA256 =
-  'fbaf5b92e91cabe2104fa20711b7b52d67c87977051844bbd55d30a824275875';
+  '7051b359e195b3c957cfa4ee77a56217643bebc60bccc108c20c0bea9a3bcdab';
 
 function absolute(relativePath) {
   return path.join(ROOT, relativePath);
@@ -574,7 +574,7 @@ const report = {
   authority: {
     chain: '01 + 02 + 03 -> 04 normalized architecture -> 05 current-world placement',
     role: 'derived-phase1-coordination-not-a-successor-authority-and-not-a-build-package',
-    planToDevelop: 'masterplans/05-combined-zones/MASTERPLAN.md',
+    planToDevelop: 'docs/masterplans/05-combined-zones/MASTERPLAN.md',
     authorityReconciliation: PATHS.reconciliation,
     offlineOnly: true,
     worldEditAuthorized: false,

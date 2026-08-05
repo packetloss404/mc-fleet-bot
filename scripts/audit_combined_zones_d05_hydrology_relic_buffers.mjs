@@ -26,31 +26,31 @@ function value(flag, fallback) {
 
 const PHASE0_EVIDENCE = path.resolve(value(
   '--phase0-evidence',
-  'masterplans/05-combined-zones/phase0-survey-evidence.json',
+  'docs/masterplans/05-combined-zones/phase0-survey-evidence.json',
 ));
 const COORDINATES = path.resolve(value(
   '--coordinates',
-  'masterplans/05-combined-zones/site-coordinates.json',
+  'docs/masterplans/05-combined-zones/site-coordinates.json',
 ));
 const GEOMETRY = path.resolve(value(
   '--geometry',
-  'masterplans/05-combined-zones/phase1-geometry-coordination.json',
+  'docs/masterplans/05-combined-zones/phase1-geometry-coordination.json',
 ));
 const DECISIONS = path.resolve(value(
   '--decisions',
-  'masterplans/05-combined-zones/phase1-design-decisions.json',
+  'docs/masterplans/05-combined-zones/phase1-design-decisions.json',
 ));
 const RELIC_CLEARANCE = path.resolve(value(
   '--relic-clearance',
-  'masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
+  'docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
 ));
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
+  'docs/masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.md',
+  'docs/masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.md',
 ));
 
 const WORLD_MIN_Y = -64;

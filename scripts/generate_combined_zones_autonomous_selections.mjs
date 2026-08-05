@@ -21,24 +21,24 @@ const value = (flag, fallback) => {
 const GENERATED_AT = value('--generated-at', '2026-08-04T22:10:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-autonomous-design-selections.json',
+  'docs/masterplans/05-combined-zones/phase1-autonomous-design-selections.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-autonomous-design-selections.md',
+  'docs/masterplans/05-combined-zones/phase1-autonomous-design-selections.md',
 ));
 
 const INPUTS = Object.freeze({
-  d02: 'masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json',
-  d02RegionEvidence: 'masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
-  d02ClosedDrainage: 'masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json',
-  d05: 'masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
-  d05RelicSurvey: 'masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json',
-  d05FutureMountain: 'masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json',
-  d06: 'masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
-  d06LifeSafety: 'masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
-  connectorGeometry: 'masterplans/05-combined-zones/phase1-connector-geometry.json',
-  cheyenneJcurve: 'masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json',
+  d02: 'docs/masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json',
+  d02RegionEvidence: 'docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
+  d02ClosedDrainage: 'docs/masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json',
+  d05: 'docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
+  d05RelicSurvey: 'docs/masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json',
+  d05FutureMountain: 'docs/masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json',
+  d06: 'docs/masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
+  d06LifeSafety: 'docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
+  connectorGeometry: 'docs/masterplans/05-combined-zones/phase1-connector-geometry.json',
+  cheyenneJcurve: 'docs/masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json',
 });
 
 function sha256(data) {

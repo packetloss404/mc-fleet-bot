@@ -8,15 +8,15 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 const ROOT = path.resolve(__dirname, '../..');
 const JSON_PATH = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d06-mechanisms.json',
+  'docs/masterplans/05-combined-zones/phase1-d06-mechanisms.json',
 );
 const MARKDOWN_PATH = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d06-mechanisms.md',
+  'docs/masterplans/05-combined-zones/phase1-d06-mechanisms.md',
 );
 const D05_CONTRACT_PATH = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json',
+  'docs/masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-d06-mechanisms-'));
 const regeneratedJson = path.join(tempDir, 'mechanisms.json');
@@ -250,7 +250,7 @@ describe('Combined Zones D06 candidate mechanism/reservation contract', () => {
     });
     expect(report.mechanismDevelopmentPayload.acceptedPlanningIdentity).toMatchObject({
       d06AcceptanceBasisSha256:
-        'c827566760f439ef5e4794dcb405f8a89bfe8f03370f033d49590f7039510d57',
+        '870e9334a5f80ee949ea2c44153fc92e1e64dc5fecea3fb992a8b1c8a3a56317',
       planningPolicyAccepted: true,
       technicalHoldPassedCount: 0,
       independentTechnicalAcceptanceRecorded: false,
@@ -269,8 +269,8 @@ describe('Combined Zones D06 candidate mechanism/reservation contract', () => {
     });
     expect(new Set(contract.references.map(({ logicalPath }) => logicalPath)).size).toBe(73);
     expect(new Set(contract.references.map(({ sourcePath }) => sourcePath))).toEqual(new Set([
-      'masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
-      'masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
+      'docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
+      'docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
     ]));
     for (const reference of contract.references) {
       const source = JSON.parse(

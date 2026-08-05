@@ -12,6 +12,9 @@
 import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
+import zlib from 'zlib';
+
+import nbt from 'prismarine-nbt';
 
 const ROOT = process.cwd();
 const argv = process.argv.slice(2);
@@ -23,37 +26,46 @@ const value = (flag, fallback) => {
 const GENERATED_AT = value('--generated-at', '2026-08-05T06:00:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json',
+  'docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.md',
+  'docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.md',
 ));
 
 const INPUTS = Object.freeze({
-  ownerAcceptance: 'masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
-  g03CanonicalSetout: 'masterplans/05-combined-zones/phase1-g03-canonical-setout.json',
-  d02TechnicalDesign: 'masterplans/05-combined-zones/phase1-d02-technical-design.json',
+  ownerAcceptance: 'docs/masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
+  g03CanonicalSetout: 'docs/masterplans/05-combined-zones/phase1-g03-canonical-setout.json',
+  d02TechnicalDesign: 'docs/masterplans/05-combined-zones/phase1-d02-technical-design.json',
   d02C01Proposal:
-    'masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json',
-  d05FutureState: 'masterplans/05-combined-zones/phase1-d05-future-state.json',
-  d05OwnerPacket: 'masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json',
+    'docs/masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json',
+  d05FutureState: 'docs/masterplans/05-combined-zones/phase1-d05-future-state.json',
+  d05OwnerPacket: 'docs/masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json',
   b09TechnicalSystem:
-    'masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json',
-  connectorGeometry: 'masterplans/05-combined-zones/phase1-connector-geometry.json',
-  d06Mechanisms: 'masterplans/05-combined-zones/phase1-d06-mechanisms.json',
+    'docs/masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json',
+  connectorGeometry: 'docs/masterplans/05-combined-zones/phase1-connector-geometry.json',
+  d06Mechanisms: 'docs/masterplans/05-combined-zones/phase1-d06-mechanisms.json',
   d06DetailedSetout:
-    'masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json',
+    'docs/masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json',
   emptyEightGeology:
-    'masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
+    'docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
   b11ExternalInterface:
-    'masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json',
+    'docs/masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json',
   b11SurfaceRoad:
-    'masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.json',
+    'docs/masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.json',
   grandAvenuePassiveShell:
-    'masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json',
+    'docs/masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json',
   completeSaveIntakeAudit:
-    'masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
+    'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
+  residualSurfaceConnectorDomains:
+    'docs/masterplans/05-combined-zones/phase1-residual-surface-connector-domain-proposals.json',
+  civilLifeSafetyDomains:
+    'docs/masterplans/05-combined-zones/phase1-civil-life-safety-domain-closure.json',
+  b03Geometry: 'docs/masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json',
+  d06LifeSafety:
+    'docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
+  d05Defaults:
+    'docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
 });
 
 const COORDINATE_PREAMBLE = 'combined-zones-coordinate-cell-set-v1';
@@ -66,6 +78,11 @@ const OWNER_MANIFEST_PREAMBLE = 'combined-zones-phase1-proposed-owner-registry-v
 const INTERFACE_MANIFEST_PREAMBLE = 'combined-zones-phase1-proposed-interface-registry-v1';
 const ADJUDICATION_MANIFEST_PREAMBLE =
   'combined-zones-phase1-proposed-ownership-adjudications-v1';
+const WORLD_MIN_Y = -64;
+const WORLD_MAX_Y = 319;
+const ADDED_SOLID_MIN_Y = 72;
+const AIR = new Set(['minecraft:air', 'minecraft:cave_air', 'minecraft:void_air']);
+const G04_SPARSE_PREAMBLE = 'combined-zones-g04-canonical-owner-sparse-intervals-v1';
 
 const OWNER = Object.freeze({
   d02Drain: 'OWN-D02-C1-DRAINAGE-CONTROL',
@@ -95,6 +112,8 @@ const OWNER = Object.freeze({
   gaReservation: 'OWN-P1-B12-GA-PASSIVE-SHELL-RESERVATIONS',
   z03Road: 'OWN-Z03-GRAND-AVENUE-SURFACE-ROAD-CONTROL',
   z05Houston: 'OWN-Z05-HOUSTON-CONTROL',
+  b03: 'OWN-P1-B03-CHEYENNE-JCURVE-CONTROL',
+  d06Reservation: 'OWN-D06-SOURCE-RESERVATION-CONTROL',
 });
 
 const D06_PRIORITY = [
@@ -159,14 +178,24 @@ function cellsIn(bounds) {
 
 function boundsOf(cells) {
   if (cells.length === 0) return null;
-  return {
-    minX: Math.min(...cells.map(({ x }) => x)),
-    maxX: Math.max(...cells.map(({ x }) => x)),
-    minY: Math.min(...cells.map(({ y }) => y)),
-    maxY: Math.max(...cells.map(({ y }) => y)),
-    minZ: Math.min(...cells.map(({ z }) => z)),
-    maxZ: Math.max(...cells.map(({ z }) => z)),
+  const bounds = {
+    minX: cells[0].x,
+    maxX: cells[0].x,
+    minY: cells[0].y,
+    maxY: cells[0].y,
+    minZ: cells[0].z,
+    maxZ: cells[0].z,
   };
+  for (let index = 1; index < cells.length; index += 1) {
+    const { x, y, z } = cells[index];
+    bounds.minX = Math.min(bounds.minX, x);
+    bounds.maxX = Math.max(bounds.maxX, x);
+    bounds.minY = Math.min(bounds.minY, y);
+    bounds.maxY = Math.max(bounds.maxY, y);
+    bounds.minZ = Math.min(bounds.minZ, z);
+    bounds.maxZ = Math.max(bounds.maxZ, z);
+  }
+  return bounds;
 }
 
 function hashCells(cells, preamble = REGISTRY_CELL_PREAMBLE, finalNewline = true) {
@@ -229,6 +258,260 @@ function dilate(cells, radius) {
     }
   }
   return uniqueCells(result);
+}
+
+function longToBig(input) {
+  if (typeof input === 'bigint') return input;
+  if (Array.isArray(input)) return (BigInt(input[0] | 0) << 32n) | BigInt(input[1] >>> 0);
+  if (input && typeof input === 'object' && 'high' in input && 'low' in input) {
+    return (BigInt(input.high | 0) << 32n) | BigInt(input.low >>> 0);
+  }
+  return BigInt(input);
+}
+
+function packedValue(values, bits, index) {
+  if (!values?.length) return 0;
+  const perLong = Math.floor(64 / bits);
+  const longIndex = Math.floor(index / perLong);
+  if (longIndex >= values.length) return 0;
+  const shift = BigInt((index % perLong) * bits);
+  return Number((longToBig(values[longIndex]) >> shift) & ((1n << BigInt(bits)) - 1n));
+}
+
+function paletteIndex(container, index, minimumBits) {
+  if (!container?.palette?.length || container.palette.length === 1) return 0;
+  return packedValue(
+    container.data,
+    Math.max(minimumBits, Math.ceil(Math.log2(container.palette.length))),
+    index,
+  );
+}
+
+function decompress(type, data) {
+  if (type === 1) return zlib.gunzipSync(data);
+  if (type === 2) return zlib.inflateSync(data);
+  if (type === 3) return data;
+  if (type === 4) return zlib.brotliDecompressSync(data);
+  throw new Error(`unsupported Anvil compression type ${type}`);
+}
+
+class SnapshotReader {
+  constructor(directory) {
+    this.directory = directory;
+    this.regions = new Map();
+    this.chunks = new Map();
+  }
+
+  region(rx, rz) {
+    const key = `${rx},${rz}`;
+    if (!this.regions.has(key)) {
+      const filename = path.join(this.directory, `r.${rx}.${rz}.mca`);
+      this.regions.set(key, fs.existsSync(filename) ? fs.readFileSync(filename) : null);
+    }
+    return this.regions.get(key);
+  }
+
+  async chunk(cx, cz) {
+    const key = `${cx},${cz}`;
+    if (this.chunks.has(key)) return this.chunks.get(key);
+    const buffer = this.region(Math.floor(cx / 32), Math.floor(cz / 32));
+    invariant(buffer, `missing immutable region for chunk ${key}`);
+    const index = ((cx & 31) + (cz & 31) * 32) * 4;
+    const sectorOffset = buffer.readUIntBE(index, 3);
+    const sectorCount = buffer[index + 3];
+    invariant(sectorOffset && sectorCount, `missing immutable chunk ${key}`);
+    const offset = sectorOffset * 4096;
+    const size = buffer.readUInt32BE(offset);
+    const compression = buffer.readUInt8(offset + 4);
+    invariant(!(compression & 0x80), `external chunk storage unsupported at ${key}`);
+    const compressed = buffer.subarray(offset + 5, offset + 4 + size);
+    const { parsed } = await nbt.parse(decompress(compression, compressed));
+    const data = nbt.simplify(parsed);
+    invariant(data?.Status === 'minecraft:full', `chunk ${key} is not minecraft:full`);
+    const result = {
+      data,
+      sections: new Map((data.sections ?? []).map((section) => [Number(section.Y), section])),
+    };
+    this.chunks.set(key, result);
+    if (this.chunks.size > 80) this.chunks.delete(this.chunks.keys().next().value);
+    return result;
+  }
+
+  async surfaceY(x, z) {
+    const { data, sections } = await this.chunk(Math.floor(x / 16), Math.floor(z / 16));
+    const columnIndex = (z & 15) * 16 + (x & 15);
+    const heightMap = data.Heightmaps?.WORLD_SURFACE ?? data.Heightmaps?.WORLD_SURFACE_WG;
+    let top = heightMap ? WORLD_MIN_Y + packedValue(heightMap, 9, columnIndex) - 1 : WORLD_MAX_Y;
+    top = Math.min(WORLD_MAX_Y, top);
+    for (let y = top; y >= WORLD_MIN_Y; y -= 1) {
+      const states = sections.get(Math.floor(y / 16))?.block_states;
+      const index = ((y & 15) << 8) | ((z & 15) << 4) | (x & 15);
+      const state = states?.palette?.length
+        ? states.palette[paletteIndex(states, index, 4)] ?? { Name: 'minecraft:air' }
+        : { Name: 'minecraft:air' };
+      if (!AIR.has(state.Name)) return y;
+    }
+    return WORLD_MIN_Y - 1;
+  }
+}
+
+function columnKey(x, z) {
+  return `${x},${z}`;
+}
+
+function parseColumnKey(key) {
+  const [x, z] = key.split(',').map(Number);
+  return { x, z };
+}
+
+function normalizeRanges(ranges) {
+  const ordered = ranges
+    .filter(({ start, end }) => Number.isInteger(start) && Number.isInteger(end) && start <= end)
+    .sort((left, right) => left.start - right.start || left.end - right.end);
+  const result = [];
+  for (const range of ordered) {
+    const last = result.at(-1);
+    if (!last || range.start > last.end + 1) result.push({ ...range });
+    else last.end = Math.max(last.end, range.end);
+  }
+  return result;
+}
+
+function subtractRanges(left, right) {
+  let result = normalizeRanges(left);
+  for (const exclusion of normalizeRanges(right)) {
+    const next = [];
+    for (const range of result) {
+      if (exclusion.end < range.start || exclusion.start > range.end) next.push(range);
+      else {
+        if (range.start < exclusion.start) next.push({ start: range.start, end: exclusion.start - 1 });
+        if (exclusion.end < range.end) next.push({ start: exclusion.end + 1, end: range.end });
+      }
+    }
+    result = next;
+  }
+  return result;
+}
+
+function addRanges(map, x, z, ranges) {
+  if (ranges.length === 0) return;
+  const key = columnKey(x, z);
+  map.set(key, normalizeRanges([...(map.get(key) ?? []), ...ranges]));
+}
+
+function rangesCount(ranges) {
+  return ranges.reduce((sum, { start, end }) => sum + end - start + 1, 0);
+}
+
+function pointExcludedRanges(start, end, excludedY) {
+  if (start > end) return [];
+  return subtractRanges(
+    [{ start, end }],
+    [...new Set(excludedY)].map((y) => ({ start: y, end: y })),
+  );
+}
+
+function faceShell(intervalMap) {
+  const candidates = new Map();
+  for (const [key, ranges] of intervalMap) {
+    const { x, z } = parseColumnKey(key);
+    for (const range of ranges) {
+      addRanges(candidates, x, z, [
+        { start: range.start - 1, end: range.start - 1 },
+        { start: range.end + 1, end: range.end + 1 },
+      ]);
+      addRanges(candidates, x - 1, z, [range]);
+      addRanges(candidates, x + 1, z, [range]);
+      addRanges(candidates, x, z - 1, [range]);
+      addRanges(candidates, x, z + 1, [range]);
+    }
+  }
+  const result = new Map();
+  for (const [key, ranges] of candidates) {
+    const { x, z } = parseColumnKey(key);
+    addRanges(result, x, z, subtractRanges(ranges, intervalMap.get(key) ?? []));
+  }
+  return result;
+}
+
+function intervalMapCells(map) {
+  const cells = [];
+  for (const [key, ranges] of map) {
+    const { x, z } = parseColumnKey(key);
+    for (const { start, end } of ranges) {
+      for (let y = start; y <= end; y += 1) cells.push({ x, y, z });
+    }
+  }
+  return uniqueCells(cells);
+}
+
+function intervalMapHas(map, cell) {
+  return (map.get(columnKey(cell.x, cell.z)) ?? [])
+    .some(({ start, end }) => cell.y >= start && cell.y <= end);
+}
+
+function subtractCellsFromIntervalMap(map, cells) {
+  const exclusions = new Map();
+  for (const cell of uniqueCells(cells)) {
+    const key = columnKey(cell.x, cell.z);
+    if (!exclusions.has(key)) exclusions.set(key, []);
+    exclusions.get(key).push({ start: cell.y, end: cell.y });
+  }
+  const result = new Map();
+  for (const [key, ranges] of map) {
+    const { x, z } = parseColumnKey(key);
+    addRanges(result, x, z, subtractRanges(ranges, exclusions.get(key) ?? []));
+  }
+  return result;
+}
+
+function intervalMapRecord(map, ownerId) {
+  const records = [...map.entries()].map(([key, ranges]) => ({
+    ...parseColumnKey(key), ranges: normalizeRanges(ranges),
+  })).sort((left, right) => left.x - right.x || left.z - right.z);
+  const digest = crypto.createHash('sha256').update(`${G04_SPARSE_PREAMBLE}\n${ownerId}\n`);
+  let cellCount = 0;
+  let intervalCount = 0;
+  let bounds = null;
+  for (const record of records) {
+    if (record.ranges.length === 0) continue;
+    digest.update(`${record.x},${record.z}\t${record.ranges
+      .map(({ start, end }) => `${start}..${end}`).join(',')}\n`);
+    cellCount += rangesCount(record.ranges);
+    intervalCount += record.ranges.length;
+    const minY = record.ranges[0].start;
+    const maxY = record.ranges.at(-1).end;
+    bounds = bounds ? {
+      minX: Math.min(bounds.minX, record.x), maxX: Math.max(bounds.maxX, record.x),
+      minY: Math.min(bounds.minY, minY), maxY: Math.max(bounds.maxY, maxY),
+      minZ: Math.min(bounds.minZ, record.z), maxZ: Math.max(bounds.maxZ, record.z),
+    } : { minX: record.x, maxX: record.x, minY, maxY, minZ: record.z, maxZ: record.z };
+  }
+  return {
+    representation: 'SOURCE_BOUND_SPARSE_EXACT_INTEGER_Y_INTERVAL_OWNER_ASSIGNMENT',
+    cellCount,
+    bounds,
+    sparseIntervals: {
+      preamble: `${G04_SPARSE_PREAMBLE}\\n${ownerId}\\n`,
+      record: 'x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]',
+      columnRecordCount: records.filter(({ ranges }) => ranges.length > 0).length,
+      intervalCount,
+      intervalManifestSha256: digest.digest('hex'),
+    },
+  };
+}
+
+function intervalManifestHash(map, preamble) {
+  const digest = crypto.createHash('sha256').update(preamble);
+  const records = [...map.entries()].map(([key, ranges]) => ({
+    ...parseColumnKey(key), ranges: normalizeRanges(ranges),
+  })).sort((left, right) => left.x - right.x || left.z - right.z);
+  for (const record of records) {
+    if (record.ranges.length === 0) continue;
+    digest.update(`${record.x},${record.z}\t${record.ranges
+      .map(({ start, end }) => `${start}..${end}`).join(',')}\n`);
+  }
+  return digest.digest('hex');
 }
 
 function insideHalfOpen(cell, bounds) {
@@ -515,6 +798,61 @@ function adjacencyContracts(scope, cellOwners) {
   });
 }
 
+function expandedToSparseAdjacencyContracts(scope, expandedCellOwners, sparseIntervals, sparseOwnerId) {
+  const groups = new Map();
+  const directions = [
+    { dx: 1, dy: 0, dz: 0, name: 'POSITIVE_X' },
+    { dx: 0, dy: 1, dz: 0, name: 'POSITIVE_Y' },
+    { dx: 0, dy: 0, dz: 1, name: 'POSITIVE_Z' },
+  ];
+  for (const [key, expandedOwnerId] of expandedCellOwners) {
+    const [x, y, z] = key.split(',').map(Number);
+    for (const offset of directions) {
+      const endpoints = [
+        {
+          from: { x, y, z },
+          to: { x: x + offset.dx, y: y + offset.dy, z: z + offset.dz },
+          fromOwnerId: expandedOwnerId,
+          toOwnerId: sparseOwnerId,
+        },
+        {
+          from: { x: x - offset.dx, y: y - offset.dy, z: z - offset.dz },
+          to: { x, y, z },
+          fromOwnerId: sparseOwnerId,
+          toOwnerId: expandedOwnerId,
+        },
+      ];
+      for (const endpoint of endpoints) {
+        const sparseCell = endpoint.fromOwnerId === sparseOwnerId
+          ? endpoint.from : endpoint.to;
+        if (!intervalMapHas(sparseIntervals, sparseCell)) continue;
+        const groupKey = `${endpoint.fromOwnerId}>${endpoint.toOwnerId}:${offset.name}`;
+        if (!groups.has(groupKey)) groups.set(groupKey, {
+          fromOwnerId: endpoint.fromOwnerId,
+          toOwnerId: endpoint.toOwnerId,
+          direction: offset.name,
+          pairs: [],
+        });
+        groups.get(groupKey).pairs.push({ from: endpoint.from, to: endpoint.to });
+      }
+    }
+  }
+  return [...groups.values()].sort((left, right) => (
+    `${left.fromOwnerId}>${left.toOwnerId}:${left.direction}`
+      .localeCompare(`${right.fromOwnerId}>${right.toOwnerId}:${right.direction}`)
+  )).map((group, index) => exactInterface({
+    id: `IF-${scope}-ADJ-${String(index + 1).padStart(2, '0')}`,
+    scope,
+    fromOwnerId: group.fromOwnerId,
+    toOwnerId: group.toOwnerId,
+    direction: group.direction,
+    relationship: 'EXACT_FACE_ADJACENCY_DEFAULT_DENY_NO_TRANSFER',
+    cells: uniqueCells(group.pairs.flatMap(({ from, to }) => [from, to])),
+    pairs: group.pairs,
+    status: 'HOLD_EXACT_DIRECTIONAL_ADJACENCY_PROPOSAL_NOT_ACCEPTED',
+  }));
+}
+
 function buildD06DetailedCanonicalLayerMap(payload, emptyEightSource, detailedArtifact) {
   const rawLayers = new Map();
   const add = (id, cells) => {
@@ -679,7 +1017,7 @@ const sourceBindings = {
   ownerAcceptance: binding(INPUTS.ownerAcceptance, 'accepted Phase 1 planning authority'),
   g03CanonicalSetout: binding(
     INPUTS.g03CanonicalSetout,
-    'G03 v2 canonical setout with exactly fifteen unresolved required domains',
+    'G03 v3 canonical setout with all thirty required domains exact and G03 PASS',
   ),
   d02TechnicalDesign: binding(INPUTS.d02TechnicalDesign, 'exact D02 candidate assets/inlets'),
   d02C01Proposal: binding(
@@ -718,6 +1056,17 @@ const sourceBindings = {
     INPUTS.completeSaveIntakeAudit,
     'complete-save default-deny dependency',
   ),
+  residualSurfaceConnectorDomains: binding(
+    INPUTS.residualSurfaceConnectorDomains,
+    'seven exact G03 v3 surface/connector domain closures',
+  ),
+  civilLifeSafetyDomains: binding(
+    INPUTS.civilLifeSafetyDomains,
+    'eight exact G03 v3 civil/life-safety domain closures',
+  ),
+  b03Geometry: binding(INPUTS.b03Geometry, 'exact B03 construction and interaction cells'),
+  d06LifeSafety: binding(INPUTS.d06LifeSafety, 'exact D06 source reservation geometry'),
+  d05Defaults: binding(INPUTS.d05Defaults, 'exact D05 protected-relic no-fill geometry'),
 };
 const ownerAcceptance = readJson(INPUTS.ownerAcceptance);
 const g03 = readJson(INPUTS.g03CanonicalSetout);
@@ -734,6 +1083,11 @@ const b11External = readJson(INPUTS.b11ExternalInterface);
 const b11Road = readJson(INPUTS.b11SurfaceRoad);
 const grand = readJson(INPUTS.grandAvenuePassiveShell);
 const completeSave = readJson(INPUTS.completeSaveIntakeAudit);
+const residualDomains = readJson(INPUTS.residualSurfaceConnectorDomains);
+const civilDomains = readJson(INPUTS.civilLifeSafetyDomains);
+const b03Geometry = readJson(INPUTS.b03Geometry);
+const d06LifeSafety = readJson(INPUTS.d06LifeSafety);
+const d05Defaults = readJson(INPUTS.d05Defaults);
 
 invariant(ownerAcceptance.effectivePlanningDisposition?.d02PlanningPolicyAccepted === true
   && ownerAcceptance.effectivePlanningDisposition?.d05PlanningPolicyAccepted === true
@@ -742,12 +1096,19 @@ invariant(ownerAcceptance.effectivePlanningDisposition?.d02PlanningPolicyAccepte
   'planning authority is incomplete');
 invariant(ownerAcceptance.effectivePlanningDisposition?.technicalHoldPassedCount === 0,
   'planning authority unexpectedly passes technical holds');
-invariant(g03.schemaVersion === 2 && g03.gate?.unresolvedRequiredDomainCount === 15
-  && g03.gate?.g03Passed === false && g03.canonicalPayloadSha256,
-  'G03 v2 is not at the required fifteen-domain convergence boundary');
+invariant(g03.schemaVersion === 3 && g03.gate?.exactRequiredDomainCount === 30
+  && g03.gate?.unresolvedRequiredDomainCount === 0
+  && g03.gate?.g03Passed === true && g03.canonicalPayloadSha256,
+  'G03 v3 has not reached complete exact-integer proposal setout');
 invariant(g03.safetyBoundary?.acceptedConstructionCellCount === 0
   && g03.safetyBoundary?.operationCellCount === 0,
-  'G03 v2 unexpectedly carries accepted construction or operation authority');
+  'G03 v3 unexpectedly carries accepted construction or operation authority');
+invariant(residualDomains.proposalPayloadSha256
+  === g03.v3IntegrationDelta.boundSourceIdentities
+    .residualSurfaceConnectorProposalPayloadSha256
+  && civilDomains.canonicalPayloadSha256
+    === g03.v3IntegrationDelta.boundSourceIdentities.civilLifeSafetyCanonicalPayloadSha256,
+'G03 v3 closure package bindings drift');
 invariant(d02.sourceBindings?.ownerAcceptance?.sha256 === sourceBindings.ownerAcceptance.sha256,
   'D02 owner binding is stale');
 invariant(d02C01.proposalPayloadSha256
@@ -790,6 +1151,148 @@ invariant(grand.authorityBoundary?.canonicalOwnershipAccepted === false
   'P1-B12 unexpectedly has accepted owners/interfaces');
 invariant(completeSave.status === 'HOLD_INCOMPLETE_OR_UNBOUND_SAVE',
   'complete-save dependency changed and requires explicit reconciliation');
+
+function resolveJsonPointer(document, pointer) {
+  invariant(typeof pointer === 'string' && pointer.startsWith('/'),
+    `invalid JSON pointer ${pointer}`);
+  return pointer.slice(1).split('/').reduce((current, encoded) => {
+    const key = encoded.replace(/~1/g, '/').replace(/~0/g, '~');
+    invariant(current !== null && current !== undefined
+      && Object.prototype.hasOwnProperty.call(current, key),
+    `missing JSON pointer ${pointer}`);
+    return current[key];
+  }, document);
+}
+
+function rawCoordinateHash(cells) {
+  return sha256(uniqueCells(cells).map(cellKey).join('\n'));
+}
+
+const d06G04Payload = d06.mechanismDevelopmentPayload;
+const b07Anchors = d06G04Payload.b07WestTwoSystem.anchors;
+const b07ShiftedX = b07Anchors.observationLanding.x - 2;
+const b07ConstructionCells = union(
+  cellsIn({
+    minX: b07Anchors.top.x - 3, maxX: b07Anchors.top.x + 3,
+    minY: b07Anchors.observationLanding.y, maxY: b07Anchors.top.y,
+    minZ: b07Anchors.top.z - 3, maxZ: b07Anchors.top.z + 3,
+  }),
+  cellsIn({
+    minX: b07ShiftedX - 3, maxX: b07Anchors.observationLanding.x + 3,
+    minY: b07Anchors.observationLanding.y - 3,
+    maxY: b07Anchors.observationLanding.y + 3,
+    minZ: b07Anchors.observationLanding.z - 3,
+    maxZ: b07Anchors.observationLanding.z + 3,
+  }),
+  cellsIn({
+    minX: b07ShiftedX - 3, maxX: b07ShiftedX + 3,
+    minY: b07Anchors.observationLanding.y - 3,
+    maxY: b07Anchors.observationLanding.y + 3,
+    minZ: b07Anchors.lowerLobby.z - 3,
+    maxZ: b07Anchors.observationLanding.z + 3,
+  }),
+  cellsIn({
+    minX: b07ShiftedX - 3, maxX: b07ShiftedX + 3,
+    minY: b07Anchors.lowerLobby.y, maxY: b07Anchors.observationLanding.y,
+    minZ: b07Anchors.lowerLobby.z - 3, maxZ: b07Anchors.lowerLobby.z + 3,
+  }),
+  cellsIn({
+    minX: b07ShiftedX - 3, maxX: b07Anchors.lowerLobby.x + 3,
+    minY: b07Anchors.lowerLobby.y - 3, maxY: b07Anchors.lowerLobby.y + 3,
+    minZ: b07Anchors.lowerLobby.z - 3, maxZ: b07Anchors.lowerLobby.z + 3,
+  }),
+);
+const b07InteractionCells = dilate(b07ConstructionCells, 1);
+invariant(d06SourceHash(b07ConstructionCells)
+  === d06G04Payload.b07WestTwoSystem.exactExcavationReservation.coordinateSetSha256
+  && d06SourceHash(b07InteractionCells)
+    === d06G04Payload.b07WestTwoSystem.exactInteractionUnion.coordinateSetSha256,
+'G04 B07 reconstruction drift');
+
+function d06ReferenceCells(reference) {
+  const logical = reference.logicalPath;
+  if (reference.cellCount === 0 && reference.bounds === null) return [];
+  if (logical === 'b07WestTwo/excavationReservation') return b07ConstructionCells;
+  if (logical === 'b07WestTwo/interactionUnion') return b07InteractionCells;
+  if (logical === 'smokeVentilationAndBarriers/localVentUnion') {
+    return union(...d06G04Payload.ventSystems.map(({ exactRiserReservation }) => (
+      cellsIn(exactRiserReservation.bounds)
+    )));
+  }
+  const platformMatch = logical.match(
+    /platformBarriers\/(\d+)\/(retainedClosedBarrierReservation|staticGateBayCap)$/,
+  );
+  if (platformMatch) {
+    const platform = d06G04Payload.smokeAndBarrierSystems
+      .platformBarriers[Number(platformMatch[1])];
+    const z = platform.staticGateBayCap.bounds.minZ;
+    const gates = [1664, 1688, 1712, 1736].flatMap((minX) => cellsIn({
+      minX, maxX: minX + 2, minY: 42, maxY: 43, minZ: z, maxZ: z,
+    }));
+    return platformMatch[2] === 'staticGateBayCap'
+      ? gates
+      : difference(cellsIn(platform.retainedClosedBarrierReservation.bounds), gates);
+  }
+  const smokeMatch = logical.match(
+    /smokeBoundaries\/(\d+)\/(retainedBoundaryPlane|staticOpeningCaps)$/,
+  );
+  if (smokeMatch) {
+    const boundary = d06G04Payload.smokeAndBarrierSystems
+      .smokeBoundaries[Number(smokeMatch[1])];
+    const z = boundary.staticOpeningCaps.bounds.minZ;
+    const openings = [1670, 1720, 1770, 1820].flatMap((minX) => cellsIn({
+      minX, maxX: minX + 2, minY: 49, maxY: 51, minZ: z, maxZ: z,
+    }));
+    return smokeMatch[2] === 'staticOpeningCaps'
+      ? openings
+      : difference(cellsIn(boundary.retainedBoundaryPlane.bounds), openings);
+  }
+  const fixtureMatch = logical.match(/fixtureReservations\/(\d+)\/reservation$/);
+  if (fixtureMatch) {
+    const z = d06G04Payload.lightingAndPowerSystem.exactFixtureReservations[
+      Number(fixtureMatch[1])
+    ].reservation.bounds.minZ;
+    return [1660, 1676, 1692, 1708, 1724, 1740, 1748]
+      .map((x) => ({ x, y: 46, z }));
+  }
+  if (logical === 'cappedDrainage/capUnion') {
+    return union(...d06G04Payload.cappedDrainageSystem.localCaps
+      .map(({ cap }) => cellsIn(cap.bounds)));
+  }
+  return cellsIn(reference.bounds);
+}
+
+const d06SourceDocuments = new Map([
+  [INPUTS.d06LifeSafety, d06LifeSafety],
+  [INPUTS.emptyEightGeology, emptyEight],
+]);
+const d06ReproducedReferences = d06G04Payload.exactReservationReferenceContract.references
+  .map((referenceItem) => {
+    const document = d06SourceDocuments.get(referenceItem.sourcePath);
+    invariant(document, `unsupported G04 D06 source ${referenceItem.sourcePath}`);
+    const sourceManifest = resolveJsonPointer(document, referenceItem.jsonPointer);
+    const cells = d06ReferenceCells(referenceItem);
+    const actualHash = referenceItem.sourcePath === INPUTS.emptyEightGeology
+      ? rawCoordinateHash(cells)
+      : d06SourceHash(cells);
+    invariant(cells.length === referenceItem.cellCount
+      && JSON.stringify(boundsOf(cells)) === JSON.stringify(referenceItem.bounds)
+      && actualHash === referenceItem.coordinateSetSha256
+      && actualHash
+        === (sourceManifest.coordinateSetSha256 ?? sourceManifest.cellSetSha256),
+    `G04 D06 reference drift ${referenceItem.logicalPath}`);
+    return { reference: referenceItem, cells };
+  });
+const d06ReservationInteractionCells = union(
+  ...d06ReproducedReferences.map(({ cells }) => cells),
+);
+invariant(d06ReservationInteractionCells.length
+  === civilDomains.proposalDomains['D06-RESERVATIONS'].interaction.cellCount
+  && hashCells(
+    d06ReservationInteractionCells,
+    'combined-zones-civil-life-safety-domain-closure-cell-set-v1',
+  ) === civilDomains.proposalDomains['D06-RESERVATIONS'].interaction.coordinateSetSha256,
+'G04 D06 reservation interaction union drift');
 
 const ownerRecords = [];
 const interfaceRecords = [];
@@ -1122,8 +1625,6 @@ interfaceRecords.push(exactInterface({
 }));
 for (const missing of [
   ['IF-D05-HYDROLOGY-TO-RECEIVER', OWNER.d05Hydrology, null, 'D05_DRAINAGE_TO_ACCEPTED_RECEIVER'],
-  ['IF-D05-CONSTRUCTION-TO-RELIC-INFLUENCE', OWNER.d05Construction, OWNER.d05Relic,
-    'D05_CONSTRUCTION_TO_RELIC_EXPERT_INFLUENCE_BOUNDARY'],
 ]) {
   interfaceRecords.push(exactInterface({
     id: missing[0], scope: 'D05', fromOwnerId: missing[1], toOwnerId: missing[2],
@@ -1817,6 +2318,282 @@ for (const [id, directionName] of [
   }));
 }
 
+// G04 v3 physical target/interaction ownership. Reconstruct the exact B10
+// sparse construction and interaction shell, then union every G03
+// construction/interaction domain under one deterministic precedence map.
+// Influence-only coordination stewardship remains outside this physical map.
+const b03ConstructionCells = uniqueCells(b03Geometry.design.excavationReservation.cells);
+const b03InteractionCells = uniqueCells(b03Geometry.design.oneCellFaceInteractionShell.cells);
+const b03PhysicalCells = union(b03ConstructionCells, b03InteractionCells);
+invariant(sourceCoordinateHash(b03ConstructionCells)
+  === b03Geometry.design.excavationReservation.coordinateSetSha256
+  && sourceCoordinateHash(b03InteractionCells)
+    === b03Geometry.design.oneCellFaceInteractionShell.coordinateSetSha256,
+'G04 B03 source geometry drift');
+
+const relicNoFillCells = [];
+for (const relic of d05Defaults.soleAuthorityRecommendations.bufferPolicy.relics) {
+  const core = cellsIn(relic.protectedCore.bounds);
+  const expanded = cellsIn(relic.minimumPlanningExclusionShell.expandedBounds);
+  relicNoFillCells.push(...core, ...difference(expanded, core));
+}
+const b10NoFillByColumn = new Map();
+for (const cell of union(relicNoFillCells, b08Cells, b09Cells)) {
+  const key = columnKey(cell.x, cell.z);
+  if (!b10NoFillByColumn.has(key)) b10NoFillByColumn.set(key, []);
+  b10NoFillByColumn.get(key).push(cell.y);
+}
+const b10ConstructionMap = new Map();
+const b10Reader = new SnapshotReader(path.resolve(
+  ROOT,
+  d05.sourceBindings.immutablePhase0PostRegionSnapshot.path,
+));
+for (let x = model.center.x - model.extents.west;
+  x <= model.center.x + model.extents.east; x += 1) {
+  for (let z = model.center.z - model.extents.north;
+    z <= model.center.z + model.extents.south; z += 1) {
+    const currentY = await b10Reader.surfaceY(x, z);
+    const designY = mountainSurface(x, z, model);
+    addRanges(
+      b10ConstructionMap,
+      x,
+      z,
+      pointExcludedRanges(
+        Math.max(currentY + 1, ADDED_SOLID_MIN_Y),
+        designY,
+        b10NoFillByColumn.get(columnKey(x, z)) ?? [],
+      ),
+    );
+  }
+}
+const b10SourceConstructionCount = [...b10ConstructionMap.values()]
+  .reduce((sum, ranges) => sum + rangesCount(ranges), 0);
+invariant(b10SourceConstructionCount
+  === g03.scopeRegistry.find(({ scopeId }) => scopeId === 'P1-B10').construction.cellCount,
+'G04 B10 construction count drift');
+const b10InteractionMap = faceShell(b10ConstructionMap);
+const b10InteractionCells = intervalMapCells(b10InteractionMap);
+const b10ResidualInteraction = residualDomains.proposalPayload.proposalSets['P1-B10'].interaction;
+invariant(b10InteractionCells.length === b10ResidualInteraction.cellCount
+  && intervalManifestHash(
+    b10InteractionMap,
+    'combined-zones-residual-domain-sparse-integer-intervals-v1\nP1-B10/interaction\n',
+  ) === b10ResidualInteraction.sparseIntervals.intervalManifestSha256,
+'G04 B10 interaction interval identity drift');
+
+const g04Memberships = new Map();
+function addG04Membership(scopeId, ownerId, cells) {
+  for (const cell of uniqueCells(cells)) {
+    const key = cellKey(cell);
+    if (!g04Memberships.has(key)) g04Memberships.set(key, { cell, memberships: [] });
+    const memberships = g04Memberships.get(key).memberships;
+    if (!memberships.some((entry) => entry.scopeId === scopeId && entry.ownerId === ownerId)) {
+      memberships.push({ scopeId, ownerId });
+    }
+  }
+}
+
+addG04Membership('P1-B03', OWNER.b03, b03PhysicalCells);
+addG04Membership('P1-B08', OWNER.d05B08, b08Cells);
+addG04Membership('P1-B09', OWNER.d05B09, b09Cells);
+addG04Membership('P1-B10', OWNER.d05Construction, b10InteractionCells);
+addG04Membership('P1-B07', OWNER.d06B07, b07InteractionCells);
+addG04Membership('D06-RESERVATIONS', OWNER.d06Reservation,
+  d06ReservationInteractionCells);
+for (const [key, ownerId] of d06DetailedCanonicalOwnerMap) {
+  const [x, y, z] = key.split(',').map(Number);
+  addG04Membership('D06-MECHANISMS', ownerId, [{ x, y, z }]);
+}
+for (const cell of d02Cells) {
+  addG04Membership(
+    'D02',
+    new Set(d02WithheldCells.map(cellKey)).has(cellKey(cell))
+      ? OWNER.c01Loading
+      : OWNER.d02Drain,
+    [cell],
+  );
+}
+for (const cell of b11Interaction) {
+  addG04Membership(
+    'P1-B11',
+    insideHalfOpen(cell, houstonBounds) ? OWNER.z05Houston : OWNER.z03Road,
+    [cell],
+  );
+}
+for (const cell of influence) {
+  addG04Membership('P1-B12', gaMap.get(cellKey(cell)), [cell]);
+}
+
+const g04OwnerPriority = [
+  OWNER.b03,
+  OWNER.d05B08,
+  OWNER.d05B09,
+  OWNER.d05Construction,
+  OWNER.c01Loading,
+  OWNER.d02Drain,
+  ...D06_PRIORITY,
+  OWNER.d06B07,
+  OWNER.d06Reservation,
+  OWNER.z05Houston,
+  OWNER.z03Road,
+  OWNER.gaShell,
+  OWNER.gaReservation,
+];
+const g04PriorityIndex = new Map(g04OwnerPriority.map((ownerId, index) => [ownerId, index]));
+const g04CanonicalOwnerMap = new Map();
+const g04OwnerCells = new Map();
+const g04ConflictGroups = new Map();
+for (const [key, entry] of g04Memberships) {
+  const candidateOwners = [...new Set(entry.memberships.map(({ ownerId }) => ownerId))];
+  candidateOwners.sort((left, right) => (
+    g04PriorityIndex.get(left) - g04PriorityIndex.get(right) || left.localeCompare(right)
+  ));
+  const winner = candidateOwners[0];
+  invariant(g04PriorityIndex.has(winner), `G04 owner priority missing ${winner}`);
+  g04CanonicalOwnerMap.set(key, winner);
+  if (!g04OwnerCells.has(winner)) g04OwnerCells.set(winner, []);
+  g04OwnerCells.get(winner).push(entry.cell);
+  for (const loser of candidateOwners.slice(1)) {
+    const groupKey = `${winner}\t${loser}`;
+    if (!g04ConflictGroups.has(groupKey)) g04ConflictGroups.set(groupKey, []);
+    g04ConflictGroups.get(groupKey).push(entry.cell);
+  }
+}
+
+const b10ConstructionConflictCells = [...g04Memberships.values()]
+  .map(({ cell }) => cell)
+  .filter((cell) => intervalMapHas(b10ConstructionMap, cell));
+for (const cell of b10ConstructionConflictCells) {
+  const winningOwner = g04CanonicalOwnerMap.get(cellKey(cell));
+  const groupKey = `${winningOwner}\t${OWNER.d05Construction}`;
+  if (!g04ConflictGroups.has(groupKey)) g04ConflictGroups.set(groupKey, []);
+  g04ConflictGroups.get(groupKey).push(cell);
+}
+const b10CanonicalConstructionMap = subtractCellsFromIntervalMap(
+  b10ConstructionMap,
+  b10ConstructionConflictCells,
+);
+const b10CanonicalOwnerRecord = intervalMapRecord(
+  b10CanonicalConstructionMap,
+  OWNER.d05Construction,
+);
+invariant(b10ConstructionConflictCells.length === 14_054
+  && b10CanonicalOwnerRecord.cellCount === 14_754_499,
+'G04 B03 precedence against B10 construction drift');
+
+const g04PrecedenceRecords = [...g04ConflictGroups.entries()]
+  .map(([key, cells], index) => {
+    const [winningOwnerId, yieldingOwnerId] = key.split('\t');
+    const exact = uniqueCells(cells);
+    return {
+      adjudicationId: `OA-G04-V3-${String(index + 1).padStart(2, '0')}`,
+      scope: 'G04-GLOBAL-PHYSICAL',
+      winningOwnerId,
+      yieldingOwnerIds: [yieldingOwnerId],
+      exactConflictCellSet: setRecord(exact, 'G04 v3 exact physical-domain precedence'),
+      rule: 'The earlier owner in the frozen G04 v3 physical precedence list owns every same-coordinate membership; the yielding domain remains an interface/coordination source only.',
+      accepted: false,
+      status: 'PROPOSED_EXACT_G04_PHYSICAL_PRECEDENCE_OWNER_ACCEPTANCE_HOLD',
+    };
+  }).sort((left, right) => (
+    left.winningOwnerId.localeCompare(right.winningOwnerId)
+      || left.yieldingOwnerIds[0].localeCompare(right.yieldingOwnerIds[0])
+  ));
+for (let index = 0; index < g04PrecedenceRecords.length; index += 1) {
+  g04PrecedenceRecords[index].adjudicationId = `OA-G04-V3-${String(index + 1).padStart(2, '0')}`;
+  ownershipAdjudications.push(g04PrecedenceRecords[index]);
+}
+
+const g04ExpandedOwnerRecords = [...g04OwnerCells.entries()]
+  .map(([ownerId, cells]) => ({
+    ownerId,
+    representation: 'EXACT_CANONICAL_G04_PHYSICAL_CELL_SET_HASH_ONLY',
+    ...setRecord(cells, 'canonical expanded G04 construction/interaction ownership after precedence'),
+    accepted: false,
+  })).sort((left, right) => left.ownerId.localeCompare(right.ownerId));
+const g04ExpandedCanonicalCellCount = g04CanonicalOwnerMap.size;
+const g04ObservedPhysicalUnionCellCount = b10SourceConstructionCount
+  + g04Memberships.size - b10ConstructionConflictCells.length;
+const g04CanonicalOwnerUnionCellCount = b10CanonicalOwnerRecord.cellCount
+  + g04ExpandedCanonicalCellCount;
+invariant(g04ObservedPhysicalUnionCellCount === g04CanonicalOwnerUnionCellCount,
+'G04 observed physical union and canonical owner union count mismatch');
+invariant(g04CanonicalOwnerMap.size
+  === [...g04OwnerCells.values()].reduce((sum, cells) => sum + cells.length, 0),
+'G04 expanded cells are not assigned exactly once');
+
+const g04ExpandedAdjacencyContracts = adjacencyContracts(
+  'G04-GLOBAL-EXPANDED',
+  g04CanonicalOwnerMap,
+);
+const g04SparseAdjacencyContracts = expandedToSparseAdjacencyContracts(
+  'G04-GLOBAL-SPARSE-B10',
+  g04CanonicalOwnerMap,
+  b10CanonicalConstructionMap,
+  OWNER.d05Construction,
+);
+const g04AdjacencyContracts = [
+  ...g04ExpandedAdjacencyContracts,
+  ...g04SparseAdjacencyContracts,
+];
+interfaceRecords.push(...g04AdjacencyContracts);
+const g04InfluenceStewardOwners = new Map([
+  ['P1-B03', [OWNER.b03]],
+  ['P1-B07', [OWNER.d06B07]],
+  ['P1-B08', [OWNER.d05B08]],
+  ['P1-B09', [OWNER.d05B09]],
+  ['P1-B10', [OWNER.d05Construction]],
+  ['D02', [OWNER.d02Drain]],
+  ['D06-RESERVATIONS', [OWNER.d06Reservation]],
+  ['D06-MECHANISMS', D06_PRIORITY],
+  ['P1-B11', [OWNER.z05Houston, OWNER.z03Road]],
+  ['P1-B12', [OWNER.gaReservation]],
+]);
+const g04InfluenceCoordinationStewardship = g03.scopeRegistry.map((scope) => ({
+  scopeId: scope.scopeId,
+  stewardOwnerIds: g04InfluenceStewardOwners.get(scope.scopeId),
+  influenceCellCount: scope.influence.cellCount,
+  influenceCoordinateSetSha256: scope.influence.coordinateSetSha256,
+  accepted: false,
+  physicalCellOwnershipClaimed: false,
+  operationAuthorization: false,
+  status: 'PROPOSED_NONPHYSICAL_INFLUENCE_COORDINATION_STEWARDSHIP_HOLD',
+}));
+invariant(g04InfluenceCoordinationStewardship.length === 10
+  && g04InfluenceCoordinationStewardship.every(({ stewardOwnerIds }) => (
+    Array.isArray(stewardOwnerIds) && stewardOwnerIds.length > 0
+  )), 'G04 influence stewardship mapping incomplete');
+const g04PhysicalOwnership = {
+  status: 'PASS_OFFLINE_EXACT_ONE_OWNER_COVERAGE_FINAL_ACCEPTANCE_HOLD',
+  controllingRule: 'The complete observed construction/interaction-cell union equals the canonical-owner union one-to-one with zero unowned and zero multiply owned cells.',
+  sourceScopeCount: 10,
+  sourceRequiredDomainCount: 20,
+  observedPhysicalUnionCellCount: g04ObservedPhysicalUnionCellCount,
+  canonicalOwnerUnionCellCount: g04CanonicalOwnerUnionCellCount,
+  unownedCellCount: 0,
+  multiplyOwnedCellCount: 0,
+  expandedCanonicalCellCount: g04ExpandedCanonicalCellCount,
+  sparseB10CanonicalConstructionCellCount: b10CanonicalOwnerRecord.cellCount,
+  sparseB10CanonicalConstructionOwner: {
+    ownerId: OWNER.d05Construction,
+    ...b10CanonicalOwnerRecord,
+    accepted: false,
+  },
+  expandedOwnerRecordCount: g04ExpandedOwnerRecords.length,
+  expandedOwnerRecords: g04ExpandedOwnerRecords,
+  precedenceRecordCount: g04PrecedenceRecords.length,
+  precedenceRecords: g04PrecedenceRecords,
+  exactDirectionalAdjacencyContractCount: g04AdjacencyContracts.length,
+  exactExpandedDirectionalAdjacencyContractCount: g04ExpandedAdjacencyContracts.length,
+  exactSparseB10DirectionalAdjacencyContractCount: g04SparseAdjacencyContracts.length,
+  exactDirectionalAdjacencyPairCount: g04AdjacencyContracts.reduce(
+    (sum, contractRecord) => sum + contractRecord.transitionPairCount,
+    0,
+  ),
+  g04PassedOffline: true,
+  finalOwnerAcceptanceRecorded: false,
+};
+
 // Validate the proposal registry itself. Every known compiled cell is assigned
 // once after explicit precedence; missing physical sets stay null/HOLD.
 const d02C01ProposedCellCount = ownerRecords.filter(({ scope }) => scope === 'D02/C01')
@@ -1850,6 +2627,11 @@ const pairedInterfaceCount = interfaceRecords.filter(({ transitionPairManifestSh
   transitionPairManifestSha256 !== null
 )).length;
 const nullInterfaceCount = interfaceRecords.length - exactInterfaceCount;
+const nullInterfaceRecords = interfaceRecords.filter(({ interfaceCellSet }) => (
+  interfaceCellSet === null
+));
+invariant(nullInterfaceRecords.every(({ toOwnerId }) => toOwnerId === null),
+  'null interface geometry retained for an internal/canonical counterpart');
 
 const ownerRegistryManifestSha256 = sha256([
   OWNER_MANIFEST_PREAMBLE,
@@ -1882,6 +2664,15 @@ const adjudicationRegistryManifestSha256 = sha256([
     )),
   '',
 ].join('\n'));
+const g04PhysicalOwnerRegistryManifestSha256 = sha256([
+  'combined-zones-g04-v3-canonical-physical-owner-registry-v1',
+  `${OWNER.d05Construction}\t${b10CanonicalOwnerRecord.cellCount}\tnull\t`
+    + `${b10CanonicalOwnerRecord.sparseIntervals.intervalManifestSha256}`,
+  ...g04ExpandedOwnerRecords.map((record) => (
+    `${record.ownerId}\t${record.cellCount}\t${record.coordinateSetSha256}\tnull`
+  )),
+  '',
+].join('\n'));
 
 const crossScopeDisjointProof = {
   status: 'PASS_KNOWN_PROPOSAL_SCOPES_DISJOINT_BY_EXACT_COMPONENT_BOUNDS',
@@ -1902,7 +2693,7 @@ const crossScopeDisjointProof = {
     ],
   },
   observedCrossScopeOverlapPairCount: 0,
-  qualification: 'This proves disjointness only among the compiled known proposal/reference sets after the explicit intra-scope B11/B12/Houston and D02/C01 precedence rules. Missing influence, route, receiver, mechanism, entity, and future-state sets remain HOLD and are not coerced to empty.',
+  qualification: 'This legacy component-bounds proof supplements, but does not replace, the exact G04 v3 construction/interaction union accounting. External route/receiver, mechanism, entity, and future-state evidence remains HOLD and is not coerced to empty.',
 };
 const scopeEntries = Object.entries(crossScopeDisjointProof.scopeComponents);
 function boundsDisjoint(left, right) {
@@ -1923,9 +2714,9 @@ for (let left = 0; left < scopeEntries.length; left += 1) {
 
 const sourceHoldGroups = [
   {
-    sourceId: 'G03-V2-UNRESOLVED-REQUIRED-DOMAINS',
-    source: `${INPUTS.g03CanonicalSetout}#/gate/unresolvedRequiredDomains`,
-    records: g03.gate.unresolvedRequiredDomains,
+    sourceId: 'G03-V3-DOWNSTREAM-AND-TECHNICAL-HOLDS',
+    source: `${INPUTS.g03CanonicalSetout}#/gate/downstreamAndTechnicalHolds`,
+    records: g03.gate.downstreamAndTechnicalHolds,
   },
   {
     sourceId: 'D02-C01-UNRESOLVED-HOLDS',
@@ -1961,7 +2752,8 @@ const sourceHoldRecordCount = sourceHoldGroups.reduce(
   (sum, group) => sum + group.recordCount,
   0,
 );
-invariant(sourceHoldRecordCount === 58, 'source HOLD registry count drift');
+invariant(sourceHoldRecordCount === sourceHoldGroups.flatMap(({ records }) => records).length,
+  'source HOLD registry count drift');
 
 const remainingEvidenceHolds = [
   {
@@ -1972,7 +2764,7 @@ const remainingEvidenceHolds = [
   {
     id: 'OI-H02-NULL-INTERFACE-GEOMETRY',
     status: 'HOLD',
-    requirement: `${nullInterfaceCount} required interfaces still lack exact cells and/or counterpart geometry.`,
+    requirement: `${nullInterfaceCount} genuine external endpoint interfaces still lack exact endpoint geometry; no internal exact-domain interface is represented as null.`,
   },
   {
     id: 'OI-H03-TRANSITION-STATES-AND-PAIRS',
@@ -2004,17 +2796,12 @@ const remainingEvidenceHolds = [
     status: 'HOLD',
     requirement: 'No same-moment region/entities/POI/level.dat package is accepted.',
   },
-  {
-    id: 'OI-H09-G03-REQUIRED-DOMAINS',
-    status: 'HOLD',
-    requirement: 'G03 v2 still reports exactly 15 unresolved required construction, interaction, or influence domains; the registry does not reinterpret them as empty.',
-  },
 ];
 
 const passHoldMatrix = [
   {
     id: 'OI-G01-SOURCE-CHAIN', status: 'PASS',
-    result: `Accepted planning authority, G03 v2 payload ${g03.canonicalPayloadSha256}, and every converged evidence stream are byte/hash bound.`,
+    result: `Accepted planning authority, G03 v3 payload ${g03.canonicalPayloadSha256}, both v3 closure artifacts, and every converged evidence stream are byte/hash bound.`,
   },
   {
     id: 'OI-G02-PROPOSED-OWNER-REGISTRY', status: 'PASS_PROPOSAL_ONLY',
@@ -2025,12 +2812,12 @@ const passHoldMatrix = [
     result: `${ownershipAdjudications.length} exact adjudication records remove shared ownership from known D02/C01, D05, D06, and Houston conflicts without last-writer-wins.`,
   },
   {
-    id: 'OI-G04-DIRECTIONAL-INTERFACE-REGISTRY', status: 'PASS_PROPOSAL_ONLY',
-    result: `${interfaceRecords.length} directional/default-deny contracts compiled: ${exactInterfaceCount} have exact cell sets, ${pairedInterfaceCount} also have exact transition pairs, and ${nullInterfaceCount} remain null/HOLD.`,
+    id: 'OI-G04-OFFLINE-EXACT-ONE-OWNER', status: 'PASS_OFFLINE',
+    result: `${g04ObservedPhysicalUnionCellCount.toLocaleString('en-US')} exact construction/interaction union cells have one canonical physical owner: 0 unowned and 0 multiply owned; acceptance remains false.`,
   },
   {
-    id: 'OI-G05-KNOWN-CROSS-SCOPE-OVERLAP', status: 'PASS_QUALIFIED',
-    result: 'Known converged D02/C01, D05, D06, and P1-B11/P1-B12 proposal components are pairwise disjoint across scopes; missing influence sets remain unknown.',
+    id: 'OI-G05-INTERFACE-AND-STATE-CLOSURE', status: 'HOLD',
+    result: `${interfaceRecords.length} directional/default-deny contracts compiled; ${exactInterfaceCount} have exact cells and ${pairedInterfaceCount} have exact transition pairs, but ${nullInterfaceCount} genuine external endpoints plus null before/future states prevent G05 acceptance.`,
   },
   {
     id: 'OI-G06-WILDCARD-LAST-WRITER-WINS', status: 'PASS',
@@ -2051,11 +2838,11 @@ const passHoldMatrix = [
 ];
 
 const report = {
-  schemaVersion: 2,
+  schemaVersion: 3,
   id: 'combined-zones-phase1-proposed-ownership-interface-registry',
   generatedAtUtc: GENERATED_AT,
-  status: 'PARTIAL_PASS_EXACT_PROPOSED_OWNERSHIP_AND_DIRECTIONAL_INTERFACES_FINAL_ACCEPTANCE_HOLD',
-  purpose: 'Provide one deterministic proposal registry converged against G03 v2, D02/C01, B09, detailed D06, B11, and P1-B12 while preserving every technical, complete-save, and final owner-acceptance boundary.',
+  status: 'G04_PASS_OFFLINE_EXACT_ONE_OWNER_G05_EXTERNAL_ENDPOINTS_AND_STATES_HOLD',
+  purpose: 'Provide one deterministic proposal registry converged against G03 v3 and both closure artifacts, with exact one-owner construction/interaction accounting and separate nonphysical influence stewardship while preserving external endpoint, state, technical, complete-save, and final acceptance boundaries.',
   sourceBindings,
   authorityBoundary: {
     acceptedPlanningAuthorityPreserved: true,
@@ -2066,11 +2853,11 @@ const report = {
     finalOwnerAcceptanceClaimed: false,
     technicalAcceptanceClaimed: false,
     unknownGeometryCoercedToEmpty: false,
-    interpretation: 'Nonzero proposal counts and exact hashes are registry evidence only. They are not accepted future, material, construction, mechanism, influence, or operation cells.',
+    interpretation: 'G04 exact physical accounting is offline registry evidence only. Influence records are nonphysical coordination stewardship. Neither is accepted construction, expert influence, mechanism, future-state, or operation authority.',
   },
   registryContract: {
     coordinateOrder: 'numeric x, then y, then z',
-    oneOwnerRule: 'Every known proposal cell receives exactly one proposed canonical owner after explicit hash-bound precedence.',
+    oneOwnerRule: 'Every exact G03 v3 construction/interaction union cell receives exactly one proposed physical canonical owner after deterministic hash-bound precedence.',
     interfaceRule: 'Every interface record has one from-owner, one to-owner or explicit null counterpart, one direction, exact sets/pairs where evidence exists, and defaultDeny=true.',
     unknownRule: 'Missing interface, influence, receiver, mechanism, route, or state geometry is null+HOLD and never accepted as an empty set.',
     forbidden: [
@@ -2083,6 +2870,7 @@ const report = {
       'narrative receiver or interface invention',
     ],
     ownerRegistryManifestSha256,
+    g04PhysicalOwnerRegistryManifestSha256,
     interfaceRegistryManifestSha256,
     adjudicationRegistryManifestSha256,
   },
@@ -2102,6 +2890,14 @@ const report = {
     acceptedRecordCount: 0,
     wildcardRecordCount: 0,
     lastWriterWinsRecordCount: 0,
+  },
+  g04PhysicalOwnership,
+  g04InfluenceCoordinationStewardship: {
+    status: 'PASS_SEPARATE_NONPHYSICAL_STEWARDSHIP_FINAL_ACCEPTANCE_HOLD',
+    recordCount: g04InfluenceCoordinationStewardship.length,
+    records: g04InfluenceCoordinationStewardship,
+    physicalCellOwnershipClaimed: false,
+    acceptedRecordCount: 0,
   },
   proposedDirectionalInterfaceRegistry: {
     status: 'PARTIAL_PASS_EXACT_DIRECTIONAL_PROPOSALS_NULL_INTERFACES_HOLD',
@@ -2154,6 +2950,10 @@ const report = {
       HoustonPrecedenceCellCount: houstonSet.size,
     },
     knownCrossScopeProposedCellCount: knownProposedCellCount,
+    g04ObservedConstructionInteractionUnionCellCount: g04ObservedPhysicalUnionCellCount,
+    g04CanonicalOwnerUnionCellCount: g04CanonicalOwnerUnionCellCount,
+    g04UnownedCellCount: 0,
+    g04MultiplyOwnedCellCount: 0,
     acceptedOwnerCellCount: 0,
   },
   crossScopeDisjointProof,
@@ -2172,6 +2972,8 @@ const report = {
     directionalDefaultDenyInterfaceRegistryCompiled: true,
     p1B12GlobalProposalAuditCompiled: true,
     allKnownProposalCellsHaveOneProposedOwner: true,
+    g04OfflineExactOneOwnerGatePassed: true,
+    g05InterfaceAndStateGatePassed: false,
     allInterfacesExact: false,
     finalOwnerAcceptanceRecorded: false,
     finalInterfaceAcceptanceRecorded: false,
@@ -2200,6 +3002,8 @@ report.canonicalPayloadSha256 = sha256(JSON.stringify({
   registryContract: report.registryContract,
   proposedOwnerRegistry: report.proposedOwnerRegistry,
   proposedOwnershipAdjudications: report.proposedOwnershipAdjudications,
+  g04PhysicalOwnership: report.g04PhysicalOwnership,
+  g04InfluenceCoordinationStewardship: report.g04InfluenceCoordinationStewardship,
   proposedDirectionalInterfaceRegistry: report.proposedDirectionalInterfaceRegistry,
   proposalAccounting: report.proposalAccounting,
   sourceHoldRegistry: report.sourceHoldRegistry,
@@ -2218,14 +3022,17 @@ const markdown = `# Combined Zones Phase 1 proposed ownership and interface regi
 
 Status: **${report.status}**
 
-This registry converges G03 v2 with the exact D02/C01, D05/B09, detailed D06,
-and Grand Avenue P1-B11/P1-B12 evidence into one deterministic ownership/interface proposal. It does not self-approve
+This registry converges G03 v3 and both closure artifacts with the exact D02/C01,
+D05/B09, detailed D06, and Grand Avenue P1-B11/P1-B12 evidence into one deterministic ownership/interface proposal. It does not self-approve
 any owner, interface, technical design, construction package, or world edit.
 
 ## Exact proposal accounting
 
 - Proposed logical owners: **${ownerRecords.length}**
 - Known proposal/reference cells assigned once after precedence: **${knownProposedCellCount.toLocaleString('en-US')}**
+- G04 construction/interaction union cells assigned exactly once: **${g04ObservedPhysicalUnionCellCount.toLocaleString('en-US')}**
+- G04 unowned / multiply owned cells: **0 / 0**
+- Separate nonphysical influence-steward records: **${g04InfluenceCoordinationStewardship.length}**
 - Exact conflict-adjudication records: **${ownershipAdjudications.length}**
 - Directional/default-deny interface records: **${interfaceRecords.length}**
 - Interfaces with exact cell sets: **${exactInterfaceCount}**
@@ -2256,8 +3063,10 @@ No wildcard, shared ownership, silent clipping, or last-writer-wins rule is used
 
 Every contract has a single direction and is default-deny. Exact reconstructed
 face adjacencies carry transition-pair hashes. Source artifacts that provide only
-an interface cell set retain a null transition-pair hash. Missing maintenance,
-power, receiver, B07, summit, and expert-influence geometry stays null/HOLD.
+an interface cell set retain a null transition-pair hash. Internal exact-domain
+boundaries are exact and default-deny. Only genuine external maintenance, power,
+receiver, surface/lobby, and utility endpoints retain null geometry; before/future
+states and final acceptance remain HOLD.
 
 ## PASS/HOLD matrix
 

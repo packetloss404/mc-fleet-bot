@@ -8,11 +8,11 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 const ROOT = path.resolve(__dirname, '../..');
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
+  'docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-protected-relic-clearance.md',
+  'docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.md',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-relic-clearance-'));
 const regeneratedJson = path.join(tempDir, 'clearance.json');

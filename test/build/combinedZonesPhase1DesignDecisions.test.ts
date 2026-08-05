@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest';
 const ROOT = path.resolve(__dirname, '../..');
 const DECISION_PATH = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-design-decisions.json',
+  'docs/masterplans/05-combined-zones/phase1-design-decisions.json',
 );
 
 interface Decision {
@@ -65,7 +65,7 @@ describe('Combined Zones Phase 1 design decisions', () => {
       status: 'HOLD_THREE_OF_SEVEN_DECISIONS_UNRESOLVED',
       authority: {
         chain: '01 + 02 + 03 -> 04 normalized architecture -> 05 current-world placement',
-        planToDevelop: 'masterplans/05-combined-zones/MASTERPLAN.md',
+        planToDevelop: 'docs/masterplans/05-combined-zones/MASTERPLAN.md',
         offlineOnly: true,
         worldEditAuthorized: false,
         constructionPackageExists: false,
@@ -183,11 +183,11 @@ describe('Combined Zones Phase 1 design decisions', () => {
     const audit = readAudit();
     const paths = audit.sourceReferences.map(({ path: sourcePath }) => sourcePath);
 
-    expect(paths.some((sourcePath) => sourcePath.startsWith('masterplans/01-'))).toBe(true);
-    expect(paths.some((sourcePath) => sourcePath.startsWith('masterplans/02-'))).toBe(true);
-    expect(paths.some((sourcePath) => sourcePath.startsWith('masterplans/03-'))).toBe(true);
-    expect(paths.some((sourcePath) => sourcePath.startsWith('masterplans/04-'))).toBe(true);
-    expect(paths.some((sourcePath) => sourcePath.startsWith('masterplans/05-'))).toBe(true);
+    expect(paths.some((sourcePath) => sourcePath.startsWith('docs/masterplans/01-'))).toBe(true);
+    expect(paths.some((sourcePath) => sourcePath.startsWith('docs/masterplans/02-'))).toBe(true);
+    expect(paths.some((sourcePath) => sourcePath.startsWith('docs/masterplans/03-'))).toBe(true);
+    expect(paths.some((sourcePath) => sourcePath.startsWith('docs/masterplans/04-'))).toBe(true);
+    expect(paths.some((sourcePath) => sourcePath.startsWith('docs/masterplans/05-'))).toBe(true);
 
     for (const sourcePath of paths) {
       expect(fs.existsSync(path.join(ROOT, sourcePath)), sourcePath).toBe(true);

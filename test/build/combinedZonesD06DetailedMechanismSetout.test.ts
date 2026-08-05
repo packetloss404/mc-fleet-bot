@@ -8,11 +8,11 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 const ROOT = path.resolve(__dirname, '../..');
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json',
+  'docs/masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.md',
+  'docs/masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.md',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-d06-setout-'));
 const regeneratedJson = path.join(tempDir, 'd06-setout.json');
@@ -170,7 +170,7 @@ describe('Combined Zones D06 detailed mechanism/circuit setout proposal', () => 
       status:
         'PARTIAL_PASS_EXACT_D06_DETAILED_MECHANISM_CIRCUIT_SETOUT_FUNCTIONAL_ACCEPTANCE_HOLD',
       reportIdentitySha256:
-        'd3c5db62435e6210f56139d3f76f221fbfb335e18fe9775ce8a5209e0e01e958',
+        '55eaab99b53aac1de53e81128026ff509de7a6efb9614b7e390c4f9cbe37c12f',
     });
     expect(Object.keys(report.sourceBindings)).toHaveLength(4);
     for (const source of Object.values(report.sourceBindings)) {

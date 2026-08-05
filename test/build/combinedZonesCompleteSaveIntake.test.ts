@@ -10,11 +10,11 @@ const ROOT = process.cwd();
 const SCRIPT = path.join(ROOT, 'scripts/audit_combined_zones_complete_save.mjs');
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
+  'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-complete-save-intake-audit.md',
+  'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit.md',
 );
 const CURRENT_PARTIAL_ROOT = path.join(
   ROOT,

@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Human-readable review of the current Combined Zones masterplan, its authority chain, maps, visual intent, decisions, gates, and next work.">
+  <title>Current Masterplan Review — Combined Zones</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --ink: #14202b;
+      --muted: #5d6a73;
+      --paper: #f7f4ed;
+      --panel: #fffdf8;
+      --line: #d8d1c5;
+      --night: #111a23;
+      --night-2: #1b2a37;
+      --cyan: #23cbd1;
+      --cyan-dark: #096c72;
+      --amber: #e5ac39;
+      --amber-dark: #875b06;
+      --purple: #9b7bd8;
+      --pink: #e16d95;
+      --green: #2c775d;
+      --red: #b64d43;
+      --shadow: 0 16px 45px rgba(17, 26, 35, .12);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font: 16px/1.62 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--cyan-dark); text-underline-offset: .18em; }
+    a:hover { color: #034b50; }
+    img { display: block; max-width: 100%; }
+    code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    code { font-size: .9em; background: #ebe7de; padding: .08em .32em; border-radius: .25rem; }
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      top: .5rem;
+      left: .5rem;
+      padding: .65rem 1rem;
+      color: white;
+      background: var(--night);
+      transform: translateY(-150%);
+    }
+    .skip-link:focus { transform: none; }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .topbar {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .72rem max(1rem, calc((100vw - 1280px) / 2));
+      color: white;
+      background: rgba(17, 26, 35, .96);
+      border-bottom: 1px solid rgba(255, 255, 255, .14);
+      backdrop-filter: blur(12px);
+    }
+    .topbar strong { white-space: nowrap; font-size: .86rem; letter-spacing: .08em; text-transform: uppercase; }
+    .topbar nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .2rem .85rem; }
+    .topbar a { color: #dce9ed; text-decoration: none; font-size: .82rem; }
+    .topbar a:hover { color: var(--cyan); }
+    .hero {
+      min-height: 72vh;
+      display: grid;
+      align-items: end;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(10, 17, 24, .96) 0%, rgba(10, 17, 24, .84) 44%, rgba(10, 17, 24, .2) 78%),
+        url("04-combined-complex/03-visuals/modules/01-combined-complex-overview.png") center / cover;
+    }
+    .hero-inner { width: min(1280px, 100%); margin: 0 auto; padding: clamp(3rem, 8vw, 7rem) 1.25rem 3.5rem; }
+    .eyebrow { margin: 0 0 .85rem; color: #f1ca70; font-size: .78rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    h1, h2, h3 { line-height: 1.13; letter-spacing: -.025em; }
+    h1 { max-width: 860px; margin: 0 0 1.15rem; font-size: clamp(3rem, 8vw, 6.7rem); }
+    h2 { margin: 0 0 1rem; font-size: clamp(2rem, 4vw, 3.4rem); }
+    h3 { margin: 0 0 .55rem; font-size: 1.22rem; }
+    .hero .lead { max-width: 800px; margin: 0 0 1.3rem; color: #d8e1e6; font-size: clamp(1.04rem, 2vw, 1.35rem); }
+    .status-banner {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: .55rem 1rem;
+      align-items: center;
+      max-width: 900px;
+      padding: .8rem 1rem;
+      color: #fff5dc;
+      background: rgba(145, 91, 4, .9);
+      border: 1px solid #f0c86c;
+      border-radius: .45rem;
+      font-weight: 800;
+    }
+    .status-banner small { font-weight: 500; color: #ffe9b7; }
+    .hero-note { margin: 1rem 0 0; max-width: 780px; color: #b9c8cf; font-size: .82rem; }
+    main { width: min(1280px, 100%); margin: 0 auto; padding: 0 1.25rem 5rem; }
+    section { scroll-margin-top: 5rem; padding: clamp(3.5rem, 8vw, 7rem) 0; border-bottom: 1px solid var(--line); }
+    section:last-child { border-bottom: 0; }
+    .section-kicker { margin: 0 0 .45rem; color: var(--amber-dark); font-size: .76rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .section-lead { max-width: 850px; margin: 0 0 2rem; color: var(--muted); font-size: 1.08rem; }
+    .grid { display: grid; gap: 1rem; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .card {
+      padding: 1.15rem;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: .65rem;
+      box-shadow: 0 8px 24px rgba(17, 26, 35, .04);
+    }
+    .card p:last-child { margin-bottom: 0; }
+    .metric { min-height: 132px; border-top: 4px solid var(--cyan-dark); }
+    .metric .value { display: block; margin: .05rem 0 .35rem; font-size: clamp(1.55rem, 3.4vw, 2.55rem); font-weight: 850; line-height: 1; }
+    .metric .label { color: var(--muted); font-size: .88rem; }
+    .metric.hold { border-top-color: var(--amber); }
+    .metric.blocked { border-top-color: var(--red); }
+    .callout { padding: 1rem 1.15rem; background: #edf6f4; border-left: 5px solid var(--green); border-radius: .25rem; }
+    .callout.warning { background: #fff5df; border-left-color: var(--amber); }
+    .callout.danger { background: #faece9; border-left-color: var(--red); }
+    .callout p:last-child { margin-bottom: 0; }
+    .authority-flow {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) auto minmax(0, 1fr) auto minmax(0, 1.25fr);
+      gap: .75rem;
+      align-items: stretch;
+      margin: 2rem 0;
+    }
+    .authority-box { display: grid; align-content: center; min-height: 150px; padding: 1rem; border: 1px solid var(--line); border-radius: .65rem; background: var(--panel); }
+    .authority-box.inputs { border-top: 5px solid var(--purple); }
+    .authority-box.normalized { border-top: 5px solid var(--amber); }
+    .authority-box.current { border-top: 5px solid var(--cyan); }
+    .arrow { display: grid; place-items: center; color: var(--muted); font-size: 2rem; }
+    .authority-box ol { margin: .4rem 0 0; padding-left: 1.25rem; }
+    figure { position: relative; margin: 0; background: var(--night); border-radius: .8rem; overflow: hidden; box-shadow: var(--shadow); }
+    figure > a { display: block; }
+    figure img { width: 100%; height: auto; }
+    figcaption { padding: .8rem 1rem 1rem; color: #dbe3e8; font-size: .88rem; }
+    figcaption strong { color: white; }
+    .figure-actions { display: inline-block; margin-top: .3rem; color: #7fe6ea; }
+    .map-legend { display: flex; flex-wrap: wrap; gap: .7rem 1.2rem; margin: 1rem 0 1.4rem; color: var(--muted); font-size: .85rem; }
+    .swatch { display: inline-block; width: 1.7rem; height: .65rem; margin-right: .35rem; vertical-align: middle; border: 1px solid rgba(0, 0, 0, .2); }
+    .measured-plan { padding: 1rem; background: var(--night); }
+    .measured-plan svg { width: 100%; height: auto; }
+    .visual-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .visual-grid figure img { aspect-ratio: 16 / 9; object-fit: cover; }
+    .concept-figure::before {
+      content: "MASTERPLAN 04 LOCAL DESIGN INTENT · NOT CURRENT SETOUT";
+      position: absolute;
+      z-index: 2;
+      top: .7rem;
+      left: .7rem;
+      padding: .38rem .55rem;
+      color: #2d1d00;
+      background: rgba(240, 199, 111, .94);
+      border-radius: .25rem;
+      font-size: .62rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+    .evidence-tag {
+      display: inline-block;
+      margin-right: .35rem;
+      padding: .14rem .45rem;
+      border-radius: 999px;
+      color: white;
+      background: var(--green);
+      font-size: .69rem;
+      font-weight: 850;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .evidence-tag.concept { color: #281b04; background: #f0c76f; }
+    .evidence-tag.constraint { background: var(--red); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: .65rem; background: var(--panel); }
+    table { width: 100%; border-collapse: collapse; min-width: 680px; }
+    th, td { padding: .78rem .9rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+    th { color: white; background: var(--night-2); font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; }
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:nth-child(even) td { background: #f4f0e8; }
+    .pill { display: inline-block; padding: .16rem .5rem; border-radius: 999px; font-size: .72rem; font-weight: 850; letter-spacing: .06em; white-space: nowrap; }
+    .pill.pass { color: white; background: var(--green); }
+    .pill.hold { color: #523400; background: #f2c869; }
+    .pill.blocked { color: white; background: var(--red); }
+    .decision { position: relative; padding-top: 1.35rem; }
+    .decision .decision-id { position: absolute; top: .6rem; right: .8rem; color: #8a918f; font: 700 .72rem ui-monospace, monospace; }
+    .phase-rail { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .55rem; margin: 2rem 0; }
+    .phase { min-height: 155px; padding: 1rem .85rem; background: var(--panel); border: 1px solid var(--line); border-top: 6px solid #97a1a7; border-radius: .55rem; }
+    .phase.pass { border-top-color: var(--green); }
+    .phase.active { border-top-color: var(--amber); }
+    .phase.blocked { opacity: .72; }
+    .phase b { display: block; margin-bottom: .45rem; }
+    .phase small { color: var(--muted); }
+    details { margin: .7rem 0; padding: .2rem 1rem; background: var(--panel); border: 1px solid var(--line); border-radius: .5rem; }
+    summary { cursor: pointer; padding: .75rem 0; font-weight: 750; }
+    details[open] summary { border-bottom: 1px solid var(--line); }
+    .source-list { columns: 2; column-gap: 2rem; padding-left: 1.2rem; }
+    .source-list li { break-inside: avoid; margin: .35rem 0; }
+    .review-list { padding-left: 1.25rem; }
+    .review-list li { margin-bottom: .65rem; }
+    footer { padding: 2.2rem 1.25rem; color: #cad5db; background: var(--night); }
+    footer .inner { width: min(1280px, 100%); margin: 0 auto; }
+    footer p { margin: .25rem 0; }
+    @media (max-width: 960px) {
+      .topbar { align-items: flex-start; }
+      .topbar nav { display: none; }
+      .grid-4, .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .authority-flow { grid-template-columns: 1fr; }
+      .arrow { transform: rotate(90deg); min-height: 30px; }
+      .phase-rail { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 660px) {
+      .grid-2, .grid-3, .grid-4, .visual-grid, .phase-rail { grid-template-columns: 1fr; }
+      .source-list { columns: 1; }
+      .hero { background-position: 62% center; }
+      .hero-inner { background: linear-gradient(0deg, rgba(10, 17, 24, .88), rgba(10, 17, 24, .35)); }
+    }
+    @media print {
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { background: white; font-size: 10pt; }
+      .topbar { position: static; }
+      .topbar nav { display: none; }
+      .hero { min-height: 250mm; break-after: page; }
+      section { padding: 12mm 0; break-inside: auto; }
+      figure, .card, .callout, .table-wrap, details { break-inside: avoid; box-shadow: none; }
+      details:not([open]) > :not(summary) { display: block !important; }
+      a { color: inherit; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to report</a>
+  <div class="topbar">
+    <strong>Current masterplan · 2026-08-05</strong>
+    <nav aria-label="Report sections">
+      <a href="#summary">Status</a>
+      <a href="#authority">Authority</a>
+      <a href="#map">Map</a>
+      <a href="#program">Program</a>
+      <a href="#visuals">Visuals</a>
+      <a href="#decisions">Decisions</a>
+      <a href="#delivery">Delivery</a>
+      <a href="#areas">Area plans</a>
+      <a href="#review">Review</a>
+    </nav>
+  </div>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Masterplan 05 · current-world placement of Masterplan 04</p>
+      <h1>Combined Zones</h1>
+      <p class="lead">The one plan to develop: Cheyenne, SubTropolis, and Houston combined in Masterplan 04, then placed east of the accepted current map by Masterplan 05.</p>
+      <div class="status-banner">
+        Phase 1 coordination partial pass · build hold
+        <small>No construction package · no world edits authorized</small>
+      </div>
+      <p class="hero-note"><span class="evidence-tag concept">Concept image</span> The cover communicates architectural intent from Masterplan 04. It is not a measured view of the adopted current-world site.</p>
+    </div>
+  </header>
+
+  <main id="content">
+    <section id="summary">
+      <p class="section-kicker">Current status</p>
+      <h2>The plan is selected. Construction is not released.</h2>
+      <p class="section-lead">Phase 0 proved the revised site suitable for detailed design. The sole owner has delegated autonomous research, design, and planning, allowing 20 conservative choices to be frozen. The second offline remediation wave fixed the planning basis for B03, B07, B09, B10, closed drainage, and fail-closed life-safety reservations; only B11’s exact external interfaces remain a geometry choice. Three design decisions and every physical release still wait on complete-save, future-cell, technical, ownership/interface, mechanism, and authorization evidence.</p>
+
+      <div class="grid grid-4">
+        <article class="card metric">
+          <span class="value">11 / 11</span>
+          <span class="label">Phase 0 siting gates pass — detailed design only</span>
+        </article>
+        <article class="card metric">
+          <span class="value">20</span>
+          <span class="label">Owner-delegated conservative planning selections frozen</span>
+        </article>
+        <article class="card metric hold">
+          <span class="value">2 / 7</span>
+          <span class="label">R00 gates pass: G01 authority and G03 setout pass; G02 and G04–G07 remain HOLD</span>
+        </article>
+        <article class="card metric blocked">
+          <span class="value">0</span>
+          <span class="label">Operation cells, material cells, and authorized world edits</span>
+        </article>
+      </div>
+
+      <div class="callout warning" style="margin-top: 1.5rem">
+        <p><strong>Review interpretation.</strong> “Partial pass” means the offline records are internally useful and validated. It does not mean part of the world may be built. The R00 audit is cycle-free and reports one of seven design-freeze gates passing; the whole-lifecycle validator still keeps all <code>R00…R13</code> releases blocked. There are no other project decision-makers: remaining outside inputs are evidence and later hash-bound release authorization.</p>
+      </div>
+    </section>
+
+    <section id="authority">
+      <p class="section-kicker">Authority reconciliation</p>
+      <h2>How the masterplans combine</h2>
+      <p class="section-lead">The plans are compositional. Masterplans 01–03 are not alternatives to 04, and Masterplan 04 is not an alternative to 05. Each owns a different layer of the same plan.</p>
+
+      <div class="authority-flow" role="img" aria-label="Masterplans 01, 02, and 03 combine into Masterplan 04, which is placed into the current world by Masterplan 05">
+        <div class="authority-box inputs">
+          <h3>01 + 02 + 03 · internal programs</h3>
+          <ol>
+            <li>Cheyenne Mountain complex</li>
+            <li>SubTropolis industrial cavern</li>
+            <li>Houston city and tunnel system</li>
+          </ol>
+        </div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="authority-box normalized">
+          <h3>04 · normalized composition</h3>
+          <p>Local anchors, continuous mountain, public shaft, service/contact sequence, and visitor narrative.</p>
+        </div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="authority-box current">
+          <h3>05 · current-world plan</h3>
+          <p>Surveyed placement, vanilla-height adaptation, East Corridor, Gateway Approach, Empty Eight, interfaces, and release gates.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card">
+          <h3>Masterplan 01 · Cheyenne</h3>
+          <p>Owns Cheyenne's internal architectural program, including the J-curve, secure chamber, spring-mounted buildings, and support spaces.</p>
+          <p><a href="01-cheyenne-mountain-complex/04-design/working-plan.md">AI working plan</a> · <a href="01-cheyenne-mountain-complex/masterplan.html">Human report</a></p>
+        </article>
+        <article class="card">
+          <h3>Masterplan 02 · SubTropolis</h3>
+          <p>Owns the industrial cavern, pillar grid, tenant program, circulation, surface approach, and supporting facilities.</p>
+          <p><a href="02-subtropolis/04-design/working-plan.md">AI working plan</a> · <a href="02-subtropolis/masterplan.html">Human report</a></p>
+        </article>
+        <article class="card">
+          <h3>Masterplan 03 · Houston</h3>
+          <p>Owns the compressed city-and-tunnel program, block sequence, entrances, wayfinding, and internal public-realm logic.</p>
+          <p><a href="03-houston-tunnel-system/04-design/working-plan.md">AI working plan</a> · <a href="03-houston-tunnel-system/masterplan.html">Human report</a></p>
+        </article>
+        <article class="card">
+          <h3>Masterplan 04 · Combined Complex</h3>
+          <p>A continuous no-ravine mountain and the program sequence: Houston → public shaft → SubTropolis → service/contact route → secure Cheyenne → summit. The return is funicular plus summit road, not a skybridge.</p>
+          <p><a href="04-combined-complex/AUTHORITY.md">AI authority reconciliation</a> · <a href="04-combined-complex/combined-complex-report.html">Human report</a></p>
+        </article>
+        <article class="card">
+          <h3>Masterplan 05 · Combined Zones</h3>
+          <p>The active world transform, current map adapters, exact planning envelopes, evidence constraints, additions, decision ledger, phase order, and physical release boundary.</p>
+          <p><a href="05-combined-zones/MASTERPLAN.md">AI plan of record</a> · <a href="05-combined-zones/combined-zones-report.html">Human report</a></p>
+        </article>
+      </div>
+
+      <div class="callout danger" style="margin-top: 1.5rem">
+        <p><strong>Coordinate warning.</strong> Masterplan 04 coordinates are architectural local coordinates, never direct world setout. Historical separate-world and duplicate-Old-Town material, including the old 04 map-integration annex, is superseded.</p>
+      </div>
+    </section>
+
+    <section id="map">
+      <p class="section-kicker">Current map placement</p>
+      <h2>The accepted world stays west; the new reserve starts east.</h2>
+      <p class="section-lead">Ravensreach remains the canonical Old Town. The revised Combined Zones reserve begins 200 blocks east of the catalog’s eastern edge. The adopted normalized core is north-aligned at zero degrees; the Empty Eight sits south of Gateway Approach.</p>
+
+      <div class="grid grid-4" style="margin-bottom: 1.5rem">
+        <article class="card metric"><span class="value mono">2048, −328</span><span class="label">Adopted local origin in world X/Z</span></article>
+        <article class="card metric"><span class="value">0°</span><span class="label">Top-down rotation; local north remains world north</span></article>
+        <article class="card metric"><span class="value">1,244</span><span class="label">Approximate C1 multimodal corridor length in blocks</span></article>
+        <article class="card metric"><span class="value">200</span><span class="label">Blocks between catalog max X=1300 and reserve min X=1500</span></article>
+      </div>
+
+      <div class="map-legend" aria-label="Map legend">
+        <span><i class="swatch" style="background:#23cbd1"></i>accepted catalog union</span>
+        <span><i class="swatch" style="background:#e5ac39"></i>corridor / reserve</span>
+        <span><i class="swatch" style="background:#9b7bd8"></i>mountain envelope</span>
+        <span><i class="swatch" style="background:#e16d95"></i>Houston core</span>
+        <span><i class="swatch" style="background:#4ed6dd"></i>Empty Eight</span>
+      </div>
+
+      <figure>
+        <a href="05-combined-zones/maps/current-plus-proposed-phase0-overlay.png" aria-label="Open authoritative current-world placement map at full resolution">
+          <img src="05-combined-zones/maps/current-plus-proposed-phase0-overlay.png" alt="North-up top-down terrain map showing the accepted current feature union, East Corridor, revised reserve, mountain envelope, Houston core, Gateway Approach, and Empty Eight" width="4084" height="2572">
+        </a>
+        <figcaption><span class="evidence-tag">Sealed map</span> <strong>Authoritative current-world placement overlay.</strong> One block per pixel, north is −Z, bound to the Phase 0 rerun post snapshot. Black/unloaded areas are not vacant-land evidence. <a class="figure-actions" href="05-combined-zones/maps/current-plus-proposed-phase0-overlay.png">Open full resolution ↗</a></figcaption>
+      </figure>
+
+      <div class="visual-grid" style="margin-top: 1rem">
+        <figure>
+          <a href="05-combined-zones/maps/current-plus-phase0-terrain.png"><img loading="lazy" src="05-combined-zones/maps/current-plus-phase0-terrain.png" alt="Raw one-block-per-pixel current world and Phase 0 survey terrain without planning overlays" width="4084" height="2352"></a>
+          <figcaption><span class="evidence-tag">Sealed map</span> <strong>Raw Phase 0 terrain.</strong> Immutable copied-Anvil evidence without proposed geometry. <a class="figure-actions" href="05-combined-zones/maps/current-plus-phase0-terrain.png">Open full resolution ↗</a></figcaption>
+        </figure>
+
+        <figure class="measured-plan">
+          <svg viewBox="0 0 960 555" role="img" aria-labelledby="plan-title plan-desc">
+            <title id="plan-title">Current Combined Zones planning schematic</title>
+            <desc id="plan-desc">Measured X/Z planning envelopes and route centerline, simplified for review and not construction setout.</desc>
+            <defs>
+              <pattern id="reserve-hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+                <line x1="0" y1="0" x2="0" y2="12" stroke="#e5ac39" stroke-width="3" opacity=".25"/>
+              </pattern>
+            </defs>
+            <rect width="960" height="555" rx="12" fill="#111a23"/>
+            <g stroke="#354653" stroke-width="1" opacity=".7">
+              <path d="M60 70H910M60 165H910M60 260H910M60 355H910M60 450H910"/>
+              <path d="M130 40V500M310 40V500M490 40V500M670 40V500M850 40V500"/>
+            </g>
+            <rect x="60" y="220" width="390" height="230" fill="#23cbd1" opacity=".12" stroke="#23cbd1" stroke-width="3" stroke-dasharray="10 8"/>
+            <text x="78" y="247" fill="#83edf0" font-size="18" font-weight="700">ACCEPTED CURRENT CATALOG ENVELOPE</text>
+            <rect x="520" y="55" width="370" height="405" fill="url(#reserve-hatch)" stroke="#e5ac39" stroke-width="3" stroke-dasharray="12 8"/>
+            <text x="538" y="83" fill="#f1c96f" font-size="18" font-weight="700">REVISED RESERVE</text>
+            <rect x="572" y="65" width="283" height="256" fill="#9b7bd8" opacity=".18" stroke="#9b7bd8" stroke-width="3" stroke-dasharray="9 7"/>
+            <text x="590" y="111" fill="#c8b7ed" font-size="17" font-weight="700">CONTINUOUS MOUNTAIN</text>
+            <rect x="689" y="337" width="49" height="60" fill="#e16d95" opacity=".42" stroke="#f1a2be" stroke-width="3"/>
+            <text x="747" y="370" fill="#f1a2be" font-size="16" font-weight="700">HOUSTON</text>
+            <rect x="566" y="421" width="86" height="34" fill="#23cbd1" opacity=".5" stroke="#83edf0" stroke-width="3"/>
+            <text x="663" y="445" fill="#83edf0" font-size="16" font-weight="700">EMPTY EIGHT</text>
+            <polyline points="245,432 414,432 471,387 566,387 644,342" fill="none" stroke="#f0be55" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity=".4"/>
+            <polyline points="245,432 414,432 471,387 566,387 644,342" fill="none" stroke="#f6d483" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="245" cy="432" r="8" fill="#f6d483"/>
+            <circle cx="566" cy="387" r="9" fill="#f6d483"/>
+            <text x="198" y="468" fill="#f7f4ed" font-size="15">MainStreet East</text>
+            <text x="523" y="416" fill="#f7f4ed" font-size="15">Gateway</text>
+            <line x1="80" y1="100" x2="80" y2="56" stroke="#f7f4ed" stroke-width="3"/>
+            <path d="M80 48L72 64H88Z" fill="#f7f4ed"/>
+            <text x="97" y="70" fill="#f7f4ed" font-size="14">NORTH · −Z</text>
+            <text x="60" y="530" fill="#91a1aa" font-size="14">Measured planning envelopes · simplified labels · no Y setout · not a construction drawing</text>
+          </svg>
+          <figcaption><span class="evidence-tag">Current schematic</span> <strong>Review-scale plan.</strong> Drawn from the adopted X/Z planning envelopes and route nodes; simplified, with no operation cells or build setout.</figcaption>
+        </figure>
+      </div>
+
+      <div class="callout" style="margin-top: 1.5rem">
+        <p><strong>Adopted transform.</strong> <code>worldX = 2048 + localX</code> and <code>worldZ = −328 + localZ</code>. The vertical adaptation remains a coordination study only; exact owner-specific integer rounding is not frozen for construction.</p>
+      </div>
+    </section>
+
+    <section id="program">
+      <p class="section-kicker">The physical idea</p>
+      <h2>One arrival sequence, three inherited programs, two new adapters.</h2>
+      <p class="section-lead">Visitors leave the accepted current world through the East Corridor, enter the landscaped Gateway Approach, then move into the combined architectural sequence. The concealed Empty Eight is a separate branch and separate release scope.</p>
+
+      <div class="table-wrap">
+        <table>
+          <caption class="sr-only">Current adopted Combined Zones program and planning anchors</caption>
+          <thead><tr><th scope="col">Element</th><th scope="col">Current adopted role</th><th scope="col">Planning anchor or envelope</th></tr></thead>
+          <tbody>
+            <tr><td>C1 East Corridor</td><td>Highway, passenger rail, protected walking, drainage, and utilities designed together; 13-block north rail strip remains empty first.</td><td><code>(430,80) → (1550,−250)</code>; 56-block reservation, 80-block land take</td></tr>
+            <tr><td>Gateway Approach</td><td>Landscaped current-world adapter with Gateway Gardens, Alpine Junction, and Approach Commons.</td><td><code>x=1500…2250, z=−1100…0</code></td></tr>
+            <tr><td>Empty Eight</td><td>Eight east–west tracks, eight platforms, monumental mall/concourse, 24 capped retail shells, eight sealed east interfaces.</td><td><code>x=1632…1872, y=38…54, z=40…160</code>; rail <code>Y=40</code></td></tr>
+            <tr><td>Houston + tunnels</td><td>Public arrival core and city-in-a-city pedestrian system.</td><td>Core <code>x=1979…2117, z=−397…−259</code></td></tr>
+            <tr><td>Public shaft + SubTropolis</td><td>Public descent into the 200×200 industrial cavern, then transfer to controlled circulation.</td><td>Head <code>(2108,72,−398)</code>; lower lobby near <code>(2108,−56,−428)</code></td></tr>
+            <tr><td>Service/contact + Cheyenne</td><td>Ascending service rail, architectural-composite geology story, blast-door threshold, secure chamber program.</td><td>Contact study near <code>(2008,130,−688)</code>; chamber <code>Y≈145…188</code></td></tr>
+            <tr><td>Mountain + summit</td><td>Continuous no-ravine envelope around nested programs, three recorded default-deny structure-start cores, funicular and return road. Present cells are observed only for the west igloo and shipwreck; the east-igloo core is entirely air in the copied snapshot and remains reserved in place without reconstruction, relocation, removal, access, or reuse.</td><td><code>x=1648…2448, z=−1128…−528</code>; summit study <code>(2048,304,−828)</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid grid-3" style="margin-top: 1.5rem">
+        <article class="card metric"><span class="value">29,161</span><span class="label">Empty Eight columns: all dry, non-arctic, and ≥8 blocks of cover</span></article>
+        <article class="card metric"><span class="value">1 : 8</span><span class="label">Passenger-rail maximum grade, with up to 36 cut / 23 fill disclosed</span></article>
+        <article class="card metric hold"><span class="value">3</span><span class="label">Recorded default-deny structure-start cores; east igloo absent and all positive buffers unreviewed</span></article>
+      </div>
+    </section>
+
+    <section id="visuals">
+      <p class="section-kicker">Maps, renders, and screenshots</p>
+      <h2>What exists, what is proposed, and what is only visual intent</h2>
+      <p class="section-lead">Each visual below is labeled by evidentiary role. Current-world screenshots show accepted context. Masterplan 04 renders communicate retained architectural language, not the adopted site’s surveyed shape or finished future state.</p>
+
+      <div class="callout warning" style="margin-bottom: 1.5rem">
+        <p><strong>No built-project screenshots exist.</strong> Combined Zones has not been physically constructed. The observed screenshots below show the accepted current world near planned interfaces; every image of the proposed complex is concept-only.</p>
+      </div>
+
+      <div class="visual-grid">
+        <figure>
+          <a href="../../data/exports/box/town-expansion-r1-final-2026-07-28/media/exact-object-screenshots/te-ia-district-google.png"><img loading="lazy" src="../../data/exports/box/town-expansion-r1-final-2026-07-28/media/exact-object-screenshots/te-ia-district-google.png" alt="Accepted-baseline screenshot of the current Data District Google campus among spruce forest" width="1280" height="720"></a>
+          <figcaption><span class="evidence-tag">Observed context</span> <strong>Data District.</strong> Accepted-baseline screenshot near the western half of the proposed East Corridor. It proves existing context, not C1 clearance or construction readiness.</figcaption>
+        </figure>
+        <figure>
+          <a href="../../data/exports/box/town-expansion-r1-final-2026-07-28/media/exact-object-screenshots/c01-owner-tunnel-detour.png"><img loading="lazy" src="../../data/exports/box/town-expansion-r1-final-2026-07-28/media/exact-object-screenshots/c01-owner-tunnel-detour.png" alt="Accepted-baseline screenshot looking through the C01 owner tunnel detour" width="1280" height="720"></a>
+          <figcaption><span class="evidence-tag constraint">Observed constraint</span> <strong>C01 owner tunnel detour.</strong> An existing interface beneath the corridor study. Structural loading and ISSUE-002 ownership acceptance remain open.</figcaption>
+        </figure>
+        <figure class="concept-figure">
+          <a href="04-combined-complex/03-visuals/modules/06-public-shaft-surface-pavilion.png"><img loading="lazy" src="04-combined-complex/03-visuals/modules/06-public-shaft-surface-pavilion.png" alt="Architectural concept render of the public shaft surface pavilion" width="2400" height="1792"></a>
+          <figcaption><span class="evidence-tag concept">Concept render</span> <strong>Public shaft pavilion.</strong> A civic surface threshold into the combined underground sequence; placement, structure, and egress remain current-world design work.</figcaption>
+        </figure>
+        <figure class="concept-figure">
+          <a href="04-combined-complex/03-visuals/modules/13-service-tunnel-25-ton-blast-door.png"><img loading="lazy" src="04-combined-complex/03-visuals/modules/13-service-tunnel-25-ton-blast-door.png" alt="Architectural concept render of the controlled service-route blast door" width="2400" height="1792"></a>
+          <figcaption><span class="evidence-tag concept">Concept render</span> <strong>Controlled service threshold.</strong> The inherited 25-ton blast-door idea marks the transition toward secure Cheyenne circulation.</figcaption>
+        </figure>
+        <figure class="concept-figure">
+          <a href="04-combined-complex/03-visuals/modules/14-cheyenne-portal-from-outside.png"><img loading="lazy" src="04-combined-complex/03-visuals/modules/14-cheyenne-portal-from-outside.png" alt="Architectural concept render of a secured Cheyenne mountain portal" width="2752" height="1536"></a>
+          <figcaption><span class="evidence-tag concept">Concept render</span> <strong>Cheyenne threshold.</strong> Security and granite identity are retained; exact terrain, signage, access, and exterior setout require Masterplan 05 design.</figcaption>
+        </figure>
+        <figure class="concept-figure">
+          <a href="04-combined-complex/03-visuals/modules/16-houston-tunnel-entrances.png"><img loading="lazy" src="04-combined-complex/03-visuals/modules/16-houston-tunnel-entrances.png" alt="Architectural concept render of Houston tunnel entrances" width="2400" height="1792"></a>
+          <figcaption><span class="evidence-tag concept">Concept render</span> <strong>Houston tunnel entrances.</strong> Public-facing city-in-a-city language; the current-world portal cells and flood controls are not yet compiled.</figcaption>
+        </figure>
+      </div>
+
+      <div class="callout danger" style="margin-top: 1.5rem">
+        <p><strong>Excluded visuals.</strong> The eight unsealed diagrams in <a href="05-combined-zones/maps/README.md">the map authority note</a> contain rejected transforms, retired corridor geometry, or the former northern terminal. The 04 map-integration annex depicts a separate-world/duplicate-Old-Town concept. None is used here as current evidence.</p>
+      </div>
+    </section>
+
+    <section id="decisions">
+      <p class="section-kicker">Decision ledger</p>
+      <h2>Twenty delegated choices are frozen; three decisions remain technical HOLDs.</h2>
+      <p class="section-lead">The sole owner authorized autonomous planning selections. The remaining holds are not waiting for a committee: they require complete source evidence, exact future cellsets, deterministic checks, ownership/interfaces, and later release authorization.</p>
+
+      <h3 style="margin-bottom: 1rem">Resolved</h3>
+      <div class="grid grid-2">
+        <article class="card decision"><span class="decision-id">D01</span><span class="pill pass">Resolved</span><h3>Build in the current world</h3><p>Use Masterplan 05’s vertical adaptation. The native-height separate-world alternative is not active. Exact construction rounding remains gated.</p></article>
+        <article class="card decision"><span class="decision-id">D03</span><span class="pill pass">Resolved</span><h3>Delete unsurveyed L2 from active scope</h3><p>The wet, uncataloged study point is omitted. This is a planning deletion—not demolition authority and not permission to invent a replacement.</p></article>
+        <article class="card decision"><span class="decision-id">D04</span><span class="pill pass">Resolved</span><h3>Reserve rail before building rail</h3><p>Keep the 13-block north-flank strip at offsets <code>−30…−18</code> empty. Early highway crossings must clear-span it.</p></article>
+        <article class="card decision"><span class="decision-id">D07</span><span class="pill pass">Resolved</span><h3>Fact-check the geology story; omit C2</h3><p>Use an explicit architectural-composite plaque. No natural-contact, thrust/overthrust, laccolith, or “270 Ma” claim. The optional portal has no landing, mechanism, command, or target cell.</p></article>
+      </div>
+
+      <h3 style="margin: 2rem 0 1rem">On HOLD</h3>
+      <div class="grid grid-3">
+        <article class="card decision"><span class="decision-id">D02</span><span class="pill hold">Hold</span><h3>C1 civil solution</h3><p><strong>Frozen:</strong> exact R140/R120/R140 raster, 1,216 stations, independent profiles, 56/80-block section, drainage collection, and 30,859,392 full-height region cells across 80,363 land-take columns.</p><p><strong>Post-approval development:</strong> ten strict-clear capped sumps partition an exact 432-cell candidate set. At the C01 stack, 7,803 terminal cells and a 944,298-cell vertical load-path reservation now have exact one-owner and sealed-directional proposals; loading precedence withholds 45 of 54 local D02 cells and leaves nine proposed terminal caps.</p><p><strong>Still missing:</strong> capacity/failure, structural/geotechnical and settlement acceptance, ISSUE-002 field condition, complete-save, hydraulics/receivers, materials, final ownership/interfaces, and technical acceptance.</p></article>
+        <article class="card decision"><span class="decision-id">D05</span><span class="pill hold">Hold</span><h3>Hydrology and protected relics</h3><p><strong>Frozen:</strong> full-height fluid census, core-plus-one-cell minimum exclusions, absent east-site reservation, logical controls, exact future-state schema, no-diversion rule, and D05-S01 condition/access facts.</p><p><strong>Post-approval compiler:</strong> all 14,768,553 FM-01 candidate cells are partitioned into 14,580,291 bulk-stone and 188,262 exposed-finish proposals. All 754,224 support gaps are classified exactly once. Treatment classes are proposed for 17,997 cells; 736,227 hydro/cryosphere cells and every support canonical state remain null.</p><p><strong>Still missing:</strong> accepted support states, hydrology/geotechnical and relic conclusions, B09 systems, ownership/interfaces, complete-save evidence, and technical acceptance. Accepted future and construction cells remain zero.</p></article>
+        <article class="card decision"><span class="decision-id">D06</span><span class="pill hold">Hold</span><h3>Empty Eight external life safety</h3><p><strong>Frozen:</strong> two independent dry 7×7 surface continuations and landings at <code>(1652,80,148)</code> and <code>(1852,71,148)</code>, plus protected stair/lift reserves and four independent capped local vent risers.</p><p><strong>Post-approval setout:</strong> all 73 exact references validate; 31 stair/lift, vent, smoke/barrier, power, drainage, and fire/service layers compile to 9,065 canonical proposal cells after 21 exact precedence records. Twenty-nine commissioning contracts remain non-executable.</p><p><strong>Still missing:</strong> accepted functional states, external routes/receivers, actual circuit sources and controls, structural/material design, ownership/interfaces, complete-save evidence, technical acceptance, and commissioning. Every opening remains sealed.</p></article>
+      </div>
+
+      <h3 style="margin: 2rem 0 1rem">This autonomous evidence update</h3>
+      <div class="grid grid-4">
+        <article class="card metric"><span class="value">800 / 15,972</span><span class="label">B03 horizontal J-curve steps / exact excavation reservation cells</span></article>
+        <article class="card metric"><span class="value">10 / 432</span><span class="label">D02 strict-clear capped sumps / exact candidate cells</span></article>
+        <article class="card metric hold"><span class="value">14,768,553 / 754,224</span><span class="label">FM-01 proposed cells / exactly classified support gaps; accepted cells remain zero</span></article>
+        <article class="card metric"><span class="value">10 / 15 / 29</span><span class="label">D06 mechanism criteria PASS / HOLD / non-executable commissioning contracts</span></article>
+      </div>
+
+      <div class="grid grid-4" style="margin-top: 1rem">
+        <article class="card"><h3>B03 · Cheyenne J-curve</h3><p>The exact 800-step, two-bend east–north–west baffle is selected for planning. Its symmetric 5×4 excavation reservation contains 15,972 cells; lining, drainage, utilities, egress, ownership, and construction acceptance remain HOLD.</p></article>
+        <article class="card"><h3>B07 · public shaft</h3><p><code>B07-C-WEST-2</code> is the first conservative dogleg candidate that clears both generated-structure excavation and interaction conflicts. Its excavation still contains 38 water cells, so hydrology, mechanism, smoke, drainage, and egress remain HOLD.</p></article>
+        <article class="card"><h3>B08 · service tunnel</h3><p>The selected route is exactly 220 horizontal steps with 58 rising and 162 level steps. Its 7,878-cell 6×6 reservation is clear of recorded structures, relics, and fluids; technical design remains HOLD.</p></article>
+        <article class="card"><h3>B09 + B10 · east-face system</h3><p>B09 now has a 561-point, 7,800-cell exact technical reservation with nine station, guideway/support, maintenance/egress, rescue, power, and drainage layers. The 36-cell B08 portal and 12-cell summit interfaces remain sealed. Eight mechanism/geotechnical/hydrology/life-safety/complete-save classes remain HOLD, and accepted cells stay zero.</p></article>
+      </div>
+
+      <div class="callout warning" style="margin-top: 1.5rem">
+        <p><strong>The subjective geometry-choice count is zero, and canonical G03 v3 now passes as proposal geometry.</strong> Ten scopes and all 30 required construction, interaction, and influence domains are exact. Zero required geometry domains remain unresolved. Six disclosed expanded-set overlaps remain coordination findings rather than accepted seams, and accepted construction/material/future/operation authority remains zero.</p>
+      </div>
+
+      <div class="callout success" style="margin-top: 1rem">
+        <p><strong>G04 physical ownership now passes offline at proposal level.</strong> All 15,286,976 construction/interaction-union cells have exactly one proposed owner, with zero unowned or multiply owned cells; influence remains ten separate nonphysical steward records. Forty-one precedence adjudications and 161 directional, default-deny interface contracts are compiled. Of those interfaces, 148 have exact cells and 109 have exact transition pairs. Thirteen genuine external endpoints remain null/HOLD; final owner and interface acceptance counts are still zero.</p>
+      </div>
+
+      <div class="callout" style="margin-top: 1rem">
+        <p><strong>G06 v3 audits every exact G03 domain and retains one real conflict.</strong> All 30 domains were checked against 114 generated starts and three frozen protected cores in 3,510 exact domain/subject evaluations. P1-B10 influence overlaps the shipwreck core in exactly 126 cells, matching the separate D05 support finding. G06 remains HOLD pending an accepted treatment/clearance contract, positive expert margins, a complete same-moment save, ownership/interface acceptance, and final acceptance.</p>
+      </div>
+
+      <figure class="measured-plan" style="margin-top: 1rem">
+        <svg viewBox="0 0 960 390" role="img" aria-labelledby="shell-title shell-desc">
+          <title id="shell-title">Conditional Grand Avenue passive-shell cross section</title>
+          <desc id="shell-desc">An eight-block-wide, six-block-high sealed rough-shell candidate sits six blocks below the accepted Grand Avenue reference line, with two road-load separation layers above it and all fit-out interfaces sealed.</desc>
+          <rect width="960" height="390" rx="12" fill="#111a23"/>
+          <path d="M90 92H870" stroke="#806a4b" stroke-width="54"/>
+          <path d="M90 79H870" stroke="#d0aa62" stroke-width="6"/>
+          <text x="110" y="64" fill="#f5ce78" font-size="17" font-weight="700">P1-B11 GRAND AVENUE · ACCEPTED PROFILE</text>
+          <path d="M276 132H684" stroke="#c7924f" stroke-width="42" opacity=".32"/>
+          <text x="330" y="138" fill="#f0c778" font-size="14">2 RESERVED ROAD-LOAD SEPARATION LAYERS</text>
+          <rect x="285" y="169" width="390" height="156" rx="3" fill="#55636b"/>
+          <rect x="327" y="211" width="306" height="96" fill="#10171d"/>
+          <path d="M327 257H633" stroke="#769db0" stroke-width="3" stroke-dasharray="12 8"/>
+          <path d="M380 211V307M580 211V307" stroke="#8a76b9" stroke-width="3" stroke-dasharray="8 7"/>
+          <text x="351" y="246" fill="#a7c5d4" font-size="15">SEALED, NONOCCUPIABLE VOID</text>
+          <text x="341" y="279" fill="#9a8bca" font-size="13">utility / drainage / access reservations only</text>
+          <path d="M285 169V325M675 169V325" stroke="#e87667" stroke-width="9"/>
+          <text x="110" y="356" fill="#ee8f84" font-size="15">END CAPS + 32-STATION BULKHEADS STAY CLOSED · NO FIT-OUT</text>
+          <text x="710" y="203" fill="#b8c1c7" font-size="14">8 × 6 outer</text>
+          <text x="710" y="228" fill="#b8c1c7" font-size="14">6 × 4 inner</text>
+          <text x="710" y="253" fill="#b8c1c7" font-size="14">Y = road − 6</text>
+        </svg>
+        <figcaption><span class="evidence-tag">Exact candidate geometry</span> <strong>Grand Avenue no-foreclosure option.</strong> The 299-station passive shell has 14,352 outer-envelope cells and a 19,136-cell influence union. It intersects eleven current water/waterlogged cells and 832 Houston coordination cells. Build it before the road only if every technical and release gate passes; otherwise retain the reservation and build no shell.</figcaption>
+      </figure>
+
+      <div class="callout" style="margin-top: 1rem">
+        <p><strong>The surface road now has exact proposal geometry too.</strong> Its 2,392 road cells use the same <code>-3…+4</code> Z-offset convention as the shell; the 11,960-cell interaction union and 5,980 load/drainage/utility reservation union are dry in the copied region evidence. The B12 load seam is 4,784 cells, Houston coordination is 260 cells, and all material, earthwork, retaining, hydraulics, utilities, structural, geotechnical, complete-save, ownership/interface, and release gates remain HOLD.</p>
+      </div>
+
+      <figure class="measured-plan" style="margin-top: 1rem">
+        <svg viewBox="0 0 960 300" role="img" aria-labelledby="egress-title egress-desc">
+          <title id="egress-title">Empty Eight egress reservation section</title>
+          <desc id="egress-desc">Two independently reserved seven by seven cores rise from the terminal roof to dry plains landings at Y80 and Y71.</desc>
+          <rect width="960" height="300" rx="12" fill="#111a23"/>
+          <path d="M95 236H865" stroke="#23cbd1" stroke-width="26" opacity=".3"/>
+          <text x="105" y="274" fill="#83edf0" font-size="15">EMPTY EIGHT ROOF CAP · Y54 · OPENINGS REMAIN SEALED</text>
+          <path d="M260 235V70" stroke="#e5ac39" stroke-width="50" opacity=".42"/>
+          <path d="M700 235V112" stroke="#e5ac39" stroke-width="50" opacity=".42"/>
+          <path d="M244 235V70M684 235V112" stroke="#f5ce78" stroke-width="5" stroke-dasharray="9 7"/>
+          <path d="M276 235V70M716 235V112" stroke="#9b7bd8" stroke-width="8"/>
+          <path d="M170 70H350M610 112H790" stroke="#6daf68" stroke-width="8"/>
+          <circle cx="260" cy="70" r="10" fill="#f5ce78"/>
+          <circle cx="700" cy="112" r="10" fill="#f5ce78"/>
+          <text x="170" y="40" fill="#f7f4ed" font-size="18" font-weight="700">EG-A · 1652,80,148</text>
+          <text x="610" y="82" fill="#f7f4ed" font-size="18" font-weight="700">EG-B · 1852,71,148</text>
+          <text x="170" y="94" fill="#9fcaa3" font-size="14">dry plains · 7×7 · no structure start</text>
+          <text x="610" y="136" fill="#9fcaa3" font-size="14">dry plains · 7×7 · no structure start</text>
+          <text x="330" y="196" fill="#91a1aa" font-size="14">193-block clear horizontal separation</text>
+        </svg>
+        <figcaption><span class="evidence-tag">Exact offline survey</span> <strong>D06 egress reservations.</strong> Gold dashed lines represent protected-stair reserves; purple lines represent accessible-lift reserves. This diagram summarizes hash-bound cells from the copied snapshot and is not an opening or commissioning record.</figcaption>
+      </figure>
+
+      <div class="callout success" style="margin-top: 1.5rem">
+        <p><strong>Sequencing reconciled without a waiver.</strong> D02, D05, and D06 close only from accepted pre-R00 design and external evidence. R00 then freezes G01–G07. R01 is the subsequent bounded physical validation, must pass G01–G19, and cannot resolve a design decision. R02 remains blocked until R01 is accepted.</p>
+      </div>
+
+      <details>
+        <summary>D07 plaque wording approved for design</summary>
+        <ol>
+          <li>DESIGN CONTACT</li>
+          <li>Pikes Peak Granite analogue</li>
+          <li>Colorado batholith · about 1.1 billion years</li>
+          <li>Bethany Falls Limestone analogue</li>
+          <li>Upper Pennsylvanian · Missourian · Kansas City region</li>
+          <li>Architectural composite · not one natural outcrop</li>
+        </ol>
+        <p>See <a href="05-combined-zones/phase1-empty-eight-geology-design.md">the geology design record and primary sources</a>.</p>
+      </details>
+    </section>
+
+    <section id="delivery">
+      <p class="section-kicker">Delivery and release</p>
+      <h2>Serial phases, fail-closed advancement</h2>
+      <p class="section-lead">Each phase advances only after its exit gate passes. Phase 0 passed for detailed design. Phase 1 remains active and blocked; therefore Phase 2 has not begun.</p>
+
+      <div class="phase-rail" aria-label="Delivery phase status">
+        <article class="phase pass"><b>Phase 0 · PASS</b><small>Site, snapshot, coverage, terrain, structures, terminal cover, and sampled rail feasibility.</small></article>
+        <article class="phase active"><b>Phase 1 · HOLD</b><small>R00: freeze accepted design and interfaces. Then R01: bounded reversible physical validation. Current R00 result is 2/7 gates PASS.</small></article>
+        <article class="phase blocked"><b>Phase 2 · blocked</b><small>Deep shells: Empty Eight, shaft, SubTropolis, service/contact, Cheyenne.</small></article>
+        <article class="phase blocked"><b>Phase 3 · blocked</b><small>Mountain, Gateway Approach, stops, Grand Avenue, Houston, summit return.</small></article>
+        <article class="phase blocked"><b>Phase 4 · blocked</b><small>Terminal and inherited-program fit-out.</small></article>
+        <article class="phase blocked"><b>Phase 5 · blocked</b><small>Transport, route tests, immutable post-state, import, maps, and acceptance.</small></article>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card"><h3>Before a transaction</h3><p>G01–G14 must independently pass against identical artifact hashes. Current evaluations are intentionally empty.</p></article>
+        <article class="card"><h3>During execution</h3><p>G15 requires journaled atomic execution. Exact forward/rollback packages and strict-noop source guards do not yet exist.</p></article>
+        <article class="card"><h3>Before acceptance</h3><p>G16–G19 add immutable post-state, route/media QA, catalog import, and final acceptance. No narrative waiver is allowed.</p></article>
+      </div>
+
+      <div class="callout warning" style="margin-top: 1.5rem">
+        <p><strong>Current next step:</strong> the offline geometry and ownership loop is complete: G03 has zero unresolved domains and G04 accounts for every construction/interaction cell exactly once. With explicit authority, install the hash-bound capture helper and capture one immutable saved-world package containing <code>region/</code>, <code>entities/</code>, <code>poi/</code>, and <code>level.dat</code>. Then resolve the exact 126-cell shipwreck treatment, 13 external interface endpoints and their before/future states, and the remaining technical/final acceptance against one identity. R00 has G01 and G03 PASS while G02 and G04–G07 remain HOLD; no physical pilot or live construction may start.</p>
+      </div>
+    </section>
+
+    <section id="areas">
+      <p class="section-kicker">Map-wide masterplan library</p>
+      <h2>Every durable catalog project now has an AI plan and a human report</h2>
+      <p class="section-lead">The eight retroactive area plans below map one-to-one to the durable <code>world_features.project_id</code> values. They are evidence-indexed baselines and stewardship roadmaps, not new construction authority. Older area documentation remains provenance.</p>
+      <div class="grid grid-4">
+        <article class="card"><h3>06 · Approach Road</h3><p>Two-feature route/district baseline; shoulders, bridge fabric, clearance, and exact interfaces remain thinly evidenced.</p><p><a href="06-approach-road/masterplan.html">Human report</a> · <a href="06-approach-road/MASTERPLAN.md">AI plan</a></p></article>
+        <article class="card"><h3>07 · MainStreet America</h3><p>630 complete catalog records plus retired F01, with accepted release evidence and future work held behind exact change controls.</p><p><a href="07-mainstreet-america/masterplan.html">Human report</a> · <a href="07-mainstreet-america/MASTERPLAN.md">AI plan</a></p></article>
+        <article class="card"><h3>08 · Raven Rock</h3><p>Catalog and interior baseline with wet-edge, traversal, comfort, and legibility holds retained.</p><p><a href="08-raven-rock/masterplan.html">Human report</a> · <a href="08-raven-rock/MASTERPLAN.md">AI plan</a></p></article>
+        <article class="card"><h3>09 · Ravensgate</h3><p>Frozen boundary and default-deny underground plan; proposed items are not promoted to built state.</p><p><a href="09-ravensgate/masterplan.html">Human report</a> · <a href="09-ravensgate/MASTERPLAN.md">AI plan</a></p></article>
+        <article class="card"><h3>10 · Ravensreach</h3><p>Catalog and terminal-route baseline; the related configuration patch remains proposed and unapplied.</p><p><a href="10-ravensreach/masterplan.html">Human report</a> · <a href="10-ravensreach/MASTERPLAN.md">AI plan</a></p></article>
+        <article class="card"><h3>11 · Town Expansion R1</h3><p>Accepted terminal release baseline with future physical changes held behind fresh snapshots and guarded operations.</p><p><a href="11-town-expansion-r1/masterplan.html">Human report</a> · <a href="11-town-expansion-r1/MASTERPLAN.md">AI plan</a></p></article>
+        <article class="card"><h3>12 · Westlight District</h3><p>Historical interior baseline requiring chronology reconciliation with later Town Expansion evidence.</p><p><a href="12-westlight-district/masterplan.html">Human report</a> · <a href="12-westlight-district/MASTERPLAN.md">AI plan</a></p></article>
+        <article class="card"><h3>13 · Westlight Venue</h3><p>Complete catalog baseline for the venue, structures, rooms, circulation, landmark, and district record.</p><p><a href="13-westlight-venue/masterplan.html">Human report</a> · <a href="13-westlight-venue/MASTERPLAN.md">AI plan</a></p></article>
+      </div>
+      <div class="callout warning" style="margin-top: 1.5rem"><p><strong>Interpretation boundary:</strong> overlapping X/Z envelopes do not establish collision or shared ownership. Use exact 3D/cell and interface evidence. Reused IDs—especially five <code>RRCH-*</code> identifiers across Ravensreach and Town Expansion—must be keyed by project plus external ID.</p></div>
+    </section>
+
+    <section id="review">
+      <p class="section-kicker">Review guide</p>
+      <h2>What is selected, and what evidence still has to exist</h2>
+      <p class="section-lead">The project has one decision-maker: you. Your autonomous-planning directive is now recorded. Review remains welcome, but the work is not waiting for a second approver.</p>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>Delegated selections now frozen</h3>
+          <ul class="review-list">
+            <li>The <code>01 + 02 + 03 → 04 → 05</code> composition and north-aligned current-world placement remain controlling.</li>
+            <li>The exact-radius C1 raster controls alignment; the authored staircase is non-controlling surface rhythm.</li>
+            <li>Relic cores plus one cell are minimum planning exclusions; the absent east site stays reserved without reconstruction or reuse.</li>
+            <li>Empty Eight uses two independent egress cores, protected stair plus lift reserves, separate smoke/outlet groups, fail-closed barriers, and sealed future interfaces.</li>
+            <li>D02 uses ten capped sump candidates across 432 cells; <code>ROAD-LOW-001</code> remains a no-build hold with no selected receiver.</li>
+            <li>D02/C01 now has an exact bounded loading/ownership/interface proposal; 45 local drainage cells remain withheld and nine terminal caps remain proposed only.</li>
+            <li>D05 now has an exact sparse proposal for all 14,768,553 candidate cells and a complete one-of classification for all 754,224 support gaps; acceptance remains zero.</li>
+            <li>D06 now has 31 exact detailed setout layers and 29 commissioning contracts; none is accepted/executable and every external opening remains sealed.</li>
+            <li>B09 now has exact station, guideway/support, maintenance/egress, rescue, power/control, and drainage reservations; its mechanisms and technical acceptance remain null/HOLD.</li>
+            <li>B03’s exact 800-step J-curve, B07 west-2 dogleg, B09 east-face centerline, and B10 <code>FM-01</code> compact-east envelope are frozen as planning bases.</li>
+            <li>P1-B11's exact 299-point Grand Avenue profile and default-deny external interfaces are owner-accepted; the PassageWay side remains a zero-cell deferral and future lines remain sealed.</li>
+            <li>P1-B11's eight-wide surface-road setout is now an exact proposal coordinated with P1-B12; its side bias and technical systems are not yet accepted construction.</li>
+            <li>P1-B12 reserves a precise passive shell below Grand Avenue. It is a conditional pre-road option, not accepted construction, and all caps/interfaces remain closed.</li>
+            <li>Five conservative vertical/child/pillar/omission geometry conventions are frozen for exact compilation.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Technical evidence still required</h3>
+          <ul class="review-list">
+            <li>One same-moment complete saved-world package; every repository candidate is region-only.</li>
+            <li>C01/ISSUE-002 ownership and loading disposition, exact civil typologies, hydrology/outfalls, and construction quantities.</li>
+            <li>Fifteen still-null or planning-only G03 domains, fourteen null interface geometries, state transitions, positive-margin/expert protected-feature review, and final acceptance of the compiled 27-owner/78-interface registry.</li>
+            <li>Technical acceptance of the FM-01 mountain, including its 754,224 support gaps, hydrology, relic support, all-structure clearance, materials, maintenance, and egress.</li>
+            <li>Technical acceptance of Empty Eight smoke, vent, lift, barrier, drainage, fire/service, emergency, outlet, ownership, and interface mechanisms; every opening remains sealed.</li>
+            <li>Only after R00: guarded operations, rollback, preflight, live clearance, exact manifest-bound release authorization, and post-state acceptance.</li>
+          </ul>
+        </article>
+      </div>
+
+      <details open>
+        <summary>Controlling source package</summary>
+        <ul class="source-list">
+          <li><a href="05-combined-zones/MASTERPLAN.md">Masterplan 05 — plan of record</a></li>
+          <li><a href="04-combined-complex/AUTHORITY.md">04→05 authority reconciliation</a></li>
+          <li><a href="04-combined-complex/authority-reconciliation.json">Machine authority bridge</a></li>
+          <li><a href="05-combined-zones/site-coordinates.json">Current coordinate registry</a></li>
+          <li><a href="05-combined-zones/phase0-survey-evidence.json">Phase 0 survey evidence</a></li>
+          <li><a href="05-combined-zones/map-qa.json">Authoritative map QA</a></li>
+          <li><a href="05-combined-zones/phase1-design-decisions.md">Phase 1 decision ledger</a></li>
+          <li><a href="05-combined-zones/phase1-c1-civil-design.md">C1 civil design record</a></li>
+          <li><a href="05-combined-zones/phase1-d02-civil-authority-packet.md">D02 sole-authority design packet</a></li>
+          <li><a href="05-combined-zones/phase1-d02-s01-s02-region-evidence.md">D02 full-height region and C01 evidence</a></li>
+          <li><a href="05-combined-zones/phase1-d02-s03-hydrology-outfalls.md">D02 hydrology and outfall audit</a></li>
+          <li><a href="05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.md">D02 closed-drainage alternatives</a> · <a href="05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json">machine packet</a></li>
+          <li><a href="05-combined-zones/phase1-d02-owner-acceptance-packet.md">D02 sole-owner acceptance packet</a> · <a href="05-combined-zones/phase1-d02-owner-acceptance-packet.json">hash-bound machine packet</a></li>
+          <li><a href="05-combined-zones/phase1-d02-technical-design.md">D02 post-approval technical-development matrix</a> · <a href="05-combined-zones/phase1-d02-technical-design.json">machine evidence</a></li>
+          <li><a href="05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.md">D02/C01 bounded loading and interface proposal</a> · <a href="05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json">machine evidence</a></li>
+          <li><a href="05-combined-zones/phase1-d05-hydrology-relic-buffer-design.md">Hydrology and relic-buffer record</a></li>
+          <li><a href="05-combined-zones/phase1-d05-conservative-defaults.md">D05 conservative planning controls</a></li>
+          <li><a href="05-combined-zones/phase1-d05-relic-condition-access-survey.md">D05 relic condition/access survey</a></li>
+          <li><a href="05-combined-zones/phase1-d05-future-state-compiler-contract.md">D05 future-state compiler contract</a></li>
+          <li><a href="05-combined-zones/phase1-d05-future-mountain-alternatives.md">D05/B09/B10 future-mountain alternatives</a> · <a href="05-combined-zones/phase1-d05-future-mountain-alternatives.json">machine packet</a></li>
+          <li><a href="05-combined-zones/phase1-d05-owner-acceptance-packet.md">D05 sole-owner conditional-policy packet</a> · <a href="05-combined-zones/phase1-d05-owner-acceptance-packet.json">hash-bound machine packet</a></li>
+          <li><a href="05-combined-zones/phase1-d05-future-state.md">D05 exact sparse future-state proposal</a> · <a href="05-combined-zones/phase1-d05-future-state.json">machine evidence</a></li>
+          <li><a href="05-combined-zones/phase1-d05-support-material-design.md">D05 support/material proposal</a> · <a href="05-combined-zones/phase1-d05-support-material-design.json">machine evidence</a></li>
+          <li><a href="05-combined-zones/phase1-empty-eight-geology-design.md">Empty Eight and geology record</a></li>
+          <li><a href="05-combined-zones/phase1-d06-egress-geometry-design.md">D06 egress and geometry record</a></li>
+          <li><a href="05-combined-zones/phase1-d06-life-safety-alternatives.md">D06/B07 life-safety alternatives</a> · <a href="05-combined-zones/phase1-d06-life-safety-alternatives.json">machine packet</a></li>
+          <li><a href="05-combined-zones/phase1-d06-owner-acceptance-packet.md">D06 sole-owner acceptance packet</a> · <a href="05-combined-zones/phase1-d06-owner-acceptance-packet.json">hash-bound machine packet</a></li>
+          <li><a href="05-combined-zones/phase1-d06-mechanisms.md">D06 mechanism and commissioning contracts</a> · <a href="05-combined-zones/phase1-d06-mechanisms.json">machine evidence</a></li>
+          <li><a href="05-combined-zones/phase1-d06-detailed-mechanism-setout.md">D06 detailed mechanism/circuit setout</a> · <a href="05-combined-zones/phase1-d06-detailed-mechanism-setout.json">machine evidence</a></li>
+          <li><a href="05-combined-zones/phase1-connector-geometry.md">B07/B08/B09 connector geometry</a></li>
+          <li><a href="05-combined-zones/phase1-b09-funicular-technical-system.md">B09 funicular technical-reservation proposal</a> · <a href="05-combined-zones/phase1-b09-funicular-technical-system.json">machine evidence</a></li>
+          <li><a href="05-combined-zones/phase1-cheyenne-jcurve-geometry.md">B03 exact Cheyenne J-curve geometry</a> · <a href="05-combined-zones/phase1-cheyenne-jcurve-geometry.json">machine packet</a></li>
+          <li><a href="05-combined-zones/phase1-autonomous-design-selections.md">Owner-delegated selection ledger</a></li>
+          <li><a href="05-combined-zones/phase1-b11-external-interface-acceptance.md">P1-B11 external-interface owner packet</a> · <a href="05-combined-zones/phase1-b11-external-interface-acceptance.json">hash-bound machine packet</a></li>
+          <li><a href="05-combined-zones/phase1-b11-surface-road-technical-proposal.md">P1-B11 surface-road technical proposal</a> · <a href="05-combined-zones/phase1-b11-surface-road-technical-proposal.json">machine evidence</a></li>
+          <li><a href="05-combined-zones/phase1-grand-avenue-subsurface-alternatives.md">P1-B12 subsurface alternatives</a> · <a href="05-combined-zones/phase1-grand-avenue-passive-shell-candidate.md">exact passive-shell candidate</a></li>
+          <li><a href="05-combined-zones/phase1-owner-review-report.html">Visual HTML5 owner-review report</a> · <a href="05-combined-zones/phase1-owner-review-acceptance.md">recorded owner acceptance</a> · <a href="05-combined-zones/phase1-owner-review-acceptance.json">acceptance identity</a> · <a href="05-combined-zones/phase1-owner-review-bundle.md">immutable owner-review bundle</a></li>
+          <li><a href="05-combined-zones/phase1-proposed-ownership-interface-registry.md">Proposed one-owner and directional-interface registry</a> · <a href="05-combined-zones/phase1-proposed-ownership-interface-registry.json">machine evidence</a></li>
+          <li><a href="05-combined-zones/phase1-g03-canonical-setout.md">Canonical G03 sparse setout</a> · <a href="05-combined-zones/phase1-g03-canonical-setout.json">machine evidence</a></li>
+          <li><a href="05-combined-zones/phase1-g06-proposed-clearance-audit.md">G06 proposed-set protected-feature clearance</a> · <a href="05-combined-zones/phase1-g06-proposed-clearance-audit.json">machine evidence</a></li>
+          <li><a href="05-combined-zones/phase1-site-gate-audit.md">Phase 1 site-gate audit</a></li>
+          <li><a href="05-combined-zones/phase1-r00-readiness-audit.md">R00 G01–G07 readiness audit</a></li>
+          <li><a href="05-combined-zones/PHASE1-RELEASE-ENGINEERING.md">Release-engineering plan</a></li>
+          <li><a href="05-combined-zones/phase1-release-contract.json">Machine release contract</a></li>
+          <li><a href="05-combined-zones/maps/README.md">Map authority and retired-diagram boundary</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Evidence identity and limitations</summary>
+        <p>The accepted construction baseline is snapshot <code>c39d0d67…fa6751</code>. The Phase 0 terrain rerun post snapshot is <code>05eebe12…271b</code> and is siting evidence, not a new accepted construction release. The durable catalog contains 1,215 records.</p>
+        <p>This review report is a human-readable companion. The linked Markdown/JSON artifacts remain controlling when a summary here is less precise. The report itself does not authorize an edit, create an owner, approve a buffer, or satisfy a release gate.</p>
+        <p>The HTML works offline from this repository checkout and uses repository-relative media links; it is not a single-file portable archive. Keep the repository layout intact when reviewing it.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="inner">
+      <p><strong>Current Masterplan Review · Combined Zones</strong></p>
+      <p>Updated 2026-08-05 UTC from the reconciled Masterplans 01–05 package and post-approval engineering evidence.</p>
+      <p>Plan of record: <span class="mono">docs/masterplans/05-combined-zones/MASTERPLAN.md</span> · status: BUILD HOLD · world edits authorized: NO.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -22,24 +22,22 @@ const value = (flag, fallback) => {
 const GENERATED_AT = value('--generated-at', '2026-08-05T06:20:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json',
+  'docs/masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.md',
+  'docs/masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.md',
 ));
 
 const INPUTS = Object.freeze({
-  c1Civil: 'masterplans/05-combined-zones/phase1-c1-civil-design.json',
-  d02Region: 'masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
-  d02Hydrology: 'masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json',
-  d02Technical: 'masterplans/05-combined-zones/phase1-d02-technical-design.json',
-  d02Authority: 'masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json',
-  d02Owner: 'masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
-  g03: 'masterplans/05-combined-zones/phase1-g03-canonical-setout.json',
-  ownership: 'masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json',
-  completeSave: 'masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
-  clearance: 'masterplans/05-combined-zones/corridor-clearance.json',
+  c1Civil: 'docs/masterplans/05-combined-zones/phase1-c1-civil-design.json',
+  d02Region: 'docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
+  d02Hydrology: 'docs/masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json',
+  d02Technical: 'docs/masterplans/05-combined-zones/phase1-d02-technical-design.json',
+  d02Authority: 'docs/masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json',
+  d02Owner: 'docs/masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
+  completeSave: 'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
+  clearance: 'docs/masterplans/05-combined-zones/corridor-clearance.json',
   c01Engineering:
     'docs/redevelopment/2026-07-28-town-expansion/northeast-datacenter-c01-relocation-engineering.json',
   issue002Closeout:
@@ -53,8 +51,6 @@ const ROLES = Object.freeze({
   d02Technical: 'selected 432-cell D02 capped-sump candidate envelope and technical HOLD matrix',
   d02Authority: 'D02 delegated planning boundary and conservative default-deny requirements',
   d02Owner: 'owner-selected D02 planning basis without technical or release acceptance',
-  g03: 'canonical setout registry retaining null D02 interaction and influence domains',
-  ownership: 'proposed global owner/interface registry with zero accepted owners and interfaces',
   completeSave: 'same-moment region/entities/POI/level.dat intake gate',
   clearance: 'catalogued C01 feature bounds and contested truth boundary',
   c01Engineering: 'design-review-only C01 relocation concept with null acceptance',
@@ -118,6 +114,15 @@ function bounds(cells) {
 function cellHash(cells) {
   const digest = crypto.createHash('sha256');
   digest.update(`${CELL_PREAMBLE}\n`);
+  for (const cell of [...cells].sort(compareCells)) {
+    digest.update(`${cell.x},${cell.y},${cell.z}\n`);
+  }
+  return digest.digest('hex');
+}
+
+function d02CoordinateHash(cells, preamble) {
+  const digest = crypto.createHash('sha256');
+  digest.update(`${preamble}-coordinates\n`);
   for (const cell of [...cells].sort(compareCells)) {
     digest.update(`${cell.x},${cell.y},${cell.z}\n`);
   }
@@ -235,12 +240,6 @@ function inExtent(point, extent) {
     && point.z >= extent.minZ && point.z <= extent.maxZ;
 }
 
-function selectOwner(records, ownerId) {
-  const record = records.find((candidate) => candidate.ownerId === ownerId);
-  invariant(record, `missing owner record ${ownerId}`);
-  return record;
-}
-
 const source = Object.fromEntries(Object.entries(INPUTS).map(([key, filename]) => [key, readJson(filename)]));
 const sourceBindings = Object.fromEntries(Object.entries(INPUTS).map(([key, filename]) => [
   key,
@@ -254,12 +253,6 @@ invariant(
 );
 invariant(source.d02Region.status.includes('COMPLETE_SAVE_MISSING'), 'D02 complete-save HOLD missing');
 invariant(source.completeSave.status === 'HOLD_INCOMPLETE_OR_UNBOUND_SAVE', 'complete-save gate changed');
-invariant(source.g03.gate?.g03Passed === false, 'G03 unexpectedly passed');
-invariant(source.ownership.proposedOwnerRegistry?.acceptedOwnerRecordCount === 0, 'owner accepted upstream');
-invariant(
-  source.ownership.proposedDirectionalInterfaceRegistry?.acceptedContractCount === 0,
-  'interface accepted upstream',
-);
 invariant(source.c01Engineering.state === 'DESIGN_REVIEW_ONLY_NO_LIVE_MUTATION', 'C01 design state changed');
 invariant(source.c01Engineering.acceptance == null, 'C01 engineering was accepted upstream');
 invariant(
@@ -351,9 +344,10 @@ const d02All = source.d02Technical.technicalDevelopmentPayload.selectedBasis
   .exactAggregateCandidateCellManifest.cells;
 invariant(d02All.length === 432, 'D02 aggregate candidate count drifted');
 invariant(
-  cellHash(d02All) === source.g03.scopeRegistry.find(({ scopeId }) => scopeId === 'D02')
-    .construction.coordinateSetSha256,
-  'D02 G03 canonical coordinate identity drifted',
+  d02CoordinateHash(d02All, 'combined-zones-d02-s04-alt-d')
+    === source.d02Technical.technicalDevelopmentPayload.selectedBasis
+      .exactAggregateCandidateCellManifest.coordinateSetSha256,
+  'D02 source coordinate identity drifted',
 );
 const d02StackCells = d02All.filter((cell) => inExtent(cell, ownerTunnel.extent));
 
@@ -452,10 +446,6 @@ const ownerAssignmentById = new Map(ownerAssignments.map((assignment) => [
   assignment.ownerId,
   assignment,
 ]));
-const ownerRecordSource = source.ownership.proposedOwnerRegistry.ownerRecords;
-const priorD02Owner = selectOwner(ownerRecordSource, 'OWN-D02-C1-DRAINAGE-CONTROL');
-const priorRailDrainOwner = selectOwner(ownerRecordSource, 'OWN-C1-RAIL-CESS-CONTROL');
-const priorRoadDrainOwner = selectOwner(ownerRecordSource, 'OWN-C1-ROAD-COLLECTION-CONTROL');
 
 const loadingManifest = intervalManifest(
   loadingIntervals,
@@ -592,15 +582,44 @@ const directionalInterfaces = [
   ),
 ];
 
-const priorRailInlet = source.ownership.proposedDirectionalInterfaceRegistry.contracts.find(
-  ({ contractId }) => contractId === 'IF-D02-RAIL-LOW-001-COLLECTION-INLET',
+const railLowAsset = source.d02Technical.technicalDevelopmentPayload.exactAssetDesigns.find(
+  ({ lowRunId }) => lowRunId === 'RAIL-LOW-001',
 );
-invariant(priorRailInlet, 'RAIL-LOW-001 inlet contract missing');
-invariant(priorRailInlet.interfaceCellSet?.cellCount === 2, 'RAIL-LOW-001 inlet identity drifted');
+invariant(railLowAsset?.collectionInlet?.cellManifest?.cellCount === 2,
+  'RAIL-LOW-001 source inlet identity drifted');
+const railLowInletManifest = railLowAsset.collectionInlet.cellManifest;
+invariant(d02CoordinateHash(
+  railLowInletManifest.cells,
+  'combined-zones-d02-s04-ALT-D02-S04-D-RAIL-LOW-001-inlet',
+) === railLowInletManifest.coordinateSetSha256,
+  'RAIL-LOW-001 source inlet coordinate identity drifted');
 
 const boundedCollectionInlet = {
-  ...priorRailInlet,
+  contractId: 'IF-D02-RAIL-LOW-001-COLLECTION-INLET',
+  scope: 'D02/C01',
+  fromOwnerId: 'OWN-C1-RAIL-CESS-CONTROL',
+  toOwnerId: 'OWN-D02-C1-DRAINAGE-CONTROL',
+  direction: 'UPSTREAM_COLLECTION_INTO_CAPPED_SUMP',
   relationship: 'EXACT_SHARED_BOUNDARY_INLET_DEFAULT_CLOSED_AND_SEALED_NO_FLOW_CREDIT',
+  interfaceCellSet: {
+    representation: 'BOUND_EXACT_SOURCE_CELL_SET',
+    cellCount: railLowInletManifest.cellCount,
+    bounds: railLowInletManifest.bounds,
+    coordinateSetSha256: railLowInletManifest.coordinateSetSha256,
+    source: `${INPUTS.d02Technical}#${railLowAsset.collectionInlet.interfaceId}`,
+  },
+  transitionPairCount: null,
+  transitionPairManifestSha256: null,
+  beforeStateSetSha256: null,
+  futureStateSetSha256: null,
+  receiverId: null,
+  ownershipSemantics: 'CANONICAL_OCCUPANT_OR_BOUNDARY_STEWARD',
+  defaultDeny: true,
+  wildcardAllowed: false,
+  lastWriterWinsAllowed: false,
+  accepted: false,
+  acceptedBy: null,
+  status: 'HOLD_EXACT_DIRECTIONAL_PROPOSAL_STATES_OR_COUNTERPART_ACCEPTANCE_MISSING',
   sealed: true,
   boundedStackQualification:
     'Both inlet cells are assigned to the D02 terminal owner by precedence, but the upstream collection boundary remains closed; no state, flow, storage, receiver, outfall, or acceptance is inferred.',
@@ -742,10 +761,10 @@ const proposalPayload = {
       oneOwnerPerTerminalCell: terminalDatumCells.length === terminalSeen.size,
     },
     upstreamRegistryContext: {
-      d02Owner: priorD02Owner,
-      railCollectionOwnerBeforeThisProposal: priorRailDrainOwner,
-      roadCollectionOwnerBeforeThisProposal: priorRoadDrainOwner,
-      acceptedOwnerRecordCount: source.ownership.proposedOwnerRegistry.acceptedOwnerRecordCount,
+      descendantRegistryConsumed: false,
+      reason: 'This bounded proposal is an upstream source for G03/G04/G05 and cannot hash-bind or derive from those descendant registries.',
+      proposedOwnerIds: scopedOwners.map(({ ownerId }) => ownerId),
+      acceptedOwnerRecordCount: 0,
     },
   },
   directionalSealedInterfaces: {

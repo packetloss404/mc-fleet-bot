@@ -250,13 +250,13 @@ interface MapQa {
 }
 
 const reconciliation = readJson<Reconciliation>(
-  'masterplans/04-combined-complex/authority-reconciliation.json',
+  'docs/masterplans/04-combined-complex/authority-reconciliation.json',
 );
 const masterplan04 = readJson<Masterplan04Coordinates>(
-  'masterplans/04-combined-complex/02-design/site-coordinates.json',
+  'docs/masterplans/04-combined-complex/02-design/site-coordinates.json',
 );
 const masterplan05 = readJson<Masterplan05Coordinates>(
-  'masterplans/05-combined-zones/site-coordinates.json',
+  'docs/masterplans/05-combined-zones/site-coordinates.json',
 );
 
 function zone(id: string): Zone {
@@ -308,7 +308,7 @@ describe('Masterplans 01-03 -> 04 -> 05 authority reconciliation', () => {
         composition: '01 + 02 + 03 -> 04 normalized architecture -> 05 current-world placement',
       },
       planToDevelop: {
-        path: 'masterplans/05-combined-zones/MASTERPLAN.md',
+        path: 'docs/masterplans/05-combined-zones/MASTERPLAN.md',
         currentPhase: 'PHASE_1_COORDINATION_PARTIAL_PASS_BUILD_HOLD',
         nextPhase: 'PHASE_1_CLOSE_GEOMETRY_SITE_AND_RELEASE_GATES',
         constructionPackageExists: false,
@@ -333,7 +333,7 @@ describe('Masterplans 01-03 -> 04 -> 05 authority reconciliation', () => {
     expect(masterplan04.authority).toMatchObject({
       role: 'normalized-masterplan-04-architectural-composition',
       coordinateSpace: 'local-not-current-world-setout',
-      currentWorldPlacementAuthority: 'masterplans/05-combined-zones/site-coordinates.json',
+      currentWorldPlacementAuthority: 'docs/masterplans/05-combined-zones/site-coordinates.json',
       worldEditAuthorized: false,
     });
     expect(masterplan05.authorityModel).toMatchObject({
@@ -350,15 +350,15 @@ describe('Masterplans 01-03 -> 04 -> 05 authority reconciliation', () => {
           {
             localY: 100,
             documents: [
-              'masterplans/04-combined-complex/02-design/design-plan.md',
-              'masterplans/04-combined-complex/02-design/development-plan.md',
-              'masterplans/04-combined-complex/02-design/working-plan.md',
+              'docs/masterplans/04-combined-complex/02-design/design-plan.md',
+              'docs/masterplans/04-combined-complex/02-design/development-plan.md',
+              'docs/masterplans/04-combined-complex/02-design/working-plan.md',
             ],
           },
           {
             localY: 400,
             documents: [
-              'masterplans/04-combined-complex/02-design/discussion-notes.md',
+              'docs/masterplans/04-combined-complex/02-design/discussion-notes.md',
             ],
           },
         ],
@@ -372,10 +372,10 @@ describe('Masterplans 01-03 -> 04 -> 05 authority reconciliation', () => {
       }
     }
     for (const childReport of [
-      'masterplans/01-cheyenne-mountain-complex/masterplan.html',
-      'masterplans/02-subtropolis/masterplan.html',
-      'masterplans/02-subtropolis/_build/masterplan.html',
-      'masterplans/03-houston-tunnel-system/masterplan.html',
+      'docs/masterplans/01-cheyenne-mountain-complex/masterplan.html',
+      'docs/masterplans/02-subtropolis/masterplan.html',
+      'docs/masterplans/02-subtropolis/_build/masterplan.html',
+      'docs/masterplans/03-houston-tunnel-system/masterplan.html',
     ]) {
       const report = fs.readFileSync(path.join(ROOT, childReport), 'utf8');
       expect(report, childReport).toContain('AUTHORITY NOTICE');
@@ -472,13 +472,13 @@ describe('Masterplans 01-03 -> 04 -> 05 authority reconciliation', () => {
 
     const childHouston = readJson<{
       build_extent: { above_ground: LocalBounds };
-    }>('masterplans/03-houston-tunnel-system/06-contractor/contractor-brief.json');
+    }>('docs/masterplans/03-houston-tunnel-system/06-contractor/contractor-brief.json');
     const houstonSource = childHouston.build_extent.above_ground;
     const houstonCenterX = (houstonSource.x_min + houstonSource.x_max) / 2;
     const houstonCenterZ = (houstonSource.z_min + houstonSource.z_max) / 2;
     expect(reconciliation.envelopeCrosswalk.find(({ id }) => id === 'houston-city'))
       .toMatchObject({
-        sourcePath: 'masterplans/03-houston-tunnel-system/06-contractor/contractor-brief.json#build_extent.above_ground',
+        sourcePath: 'docs/masterplans/03-houston-tunnel-system/06-contractor/contractor-brief.json#build_extent.above_ground',
         sourceLocal: {
           minX: houstonSource.x_min - houstonCenterX,
           maxX: houstonSource.x_max - houstonCenterX,
@@ -534,14 +534,14 @@ describe('Masterplans 01-03 -> 04 -> 05 authority reconciliation', () => {
   });
 
   it('binds the authoritative map to exact current registry data', () => {
-    const mapQa = readJson<MapQa>('masterplans/05-combined-zones/map-qa.json');
+    const mapQa = readJson<MapQa>('docs/masterplans/05-combined-zones/map-qa.json');
     const evidence = readJson<{
       authorityInputs: {
         coordinateRegistry: ArtifactBinding;
         candidateAnalysis: ArtifactBinding;
       };
       artifacts: ArtifactBinding[];
-    }>('masterplans/05-combined-zones/phase0-survey-evidence.json');
+    }>('docs/masterplans/05-combined-zones/phase0-survey-evidence.json');
     const mapBinding = reconciliation.canonicalSources.currentWorldPlacement.authoritativeMap;
     const registryBinding = reconciliation.canonicalSources.currentWorldPlacement.coordinateRegistry;
 
@@ -553,8 +553,8 @@ describe('Masterplans 01-03 -> 04 -> 05 authority reconciliation', () => {
     });
     expect(mapQa.input.coordinateRegistry).toEqual(registryBinding);
     expect(mapQa.input.authorityReconciliation).toEqual({
-      path: 'masterplans/04-combined-complex/authority-reconciliation.json',
-      sha256: sha256('masterplans/04-combined-complex/authority-reconciliation.json'),
+      path: 'docs/masterplans/04-combined-complex/authority-reconciliation.json',
+      sha256: sha256('docs/masterplans/04-combined-complex/authority-reconciliation.json'),
     });
     expect(mapQa.input.acceptedCurrentRaster.sha256)
       .toBe(sha256(mapQa.input.acceptedCurrentRaster.path));
@@ -585,32 +585,32 @@ describe('Masterplans 01-03 -> 04 -> 05 authority reconciliation', () => {
 
   it('keeps superseded diagrams and the 04 annex outside active deliverables', () => {
     const buildInfo = readJson<{ deliverables: string[] }>(
-      'masterplans/05-combined-zones/build-info.json',
+      'docs/masterplans/05-combined-zones/build-info.json',
     );
-    const mapQa = readJson<MapQa>('masterplans/05-combined-zones/map-qa.json');
+    const mapQa = readJson<MapQa>('docs/masterplans/05-combined-zones/map-qa.json');
     const mapReadme = fs.readFileSync(
-      path.join(ROOT, 'masterplans/05-combined-zones/maps/README.md'),
+      path.join(ROOT, 'docs/masterplans/05-combined-zones/maps/README.md'),
       'utf8',
     );
     const activeOutputPaths = Object.values(mapQa.outputs).map(({ path: outputPath }) => outputPath);
 
     const expectedRetiredPaths = [
-      'masterplans/04-combined-complex/01-research/map-integration',
-      'masterplans/04-combined-complex/02-design/map-integration',
-      'masterplans/04-combined-complex/03-visuals/modules/map-integration',
-      'masterplans/04-combined-complex/03-visuals/references/map-integration',
-      'masterplans/04-combined-complex/04-contractor/map-integration',
-      'masterplans/04-combined-complex/build-info-map-integration.json',
-      'masterplans/04-combined-complex/map-integration-report.html',
-      'masterplans/04-combined-complex/overhead-map-same-world.png',
-      'masterplans/05-combined-zones/maps/current-and-proposed-whole-world.png',
-      'masterplans/05-combined-zones/maps/current-and-proposed-whole-world.svg',
-      'masterplans/05-combined-zones/maps/east-corridor-plan.png',
-      'masterplans/05-combined-zones/maps/east-corridor-plan.svg',
-      'masterplans/05-combined-zones/maps/gateway-approach-and-terminal-plan.png',
-      'masterplans/05-combined-zones/maps/gateway-approach-and-terminal-plan.svg',
-      'masterplans/05-combined-zones/maps/vertical-zoning-section.png',
-      'masterplans/05-combined-zones/maps/vertical-zoning-section.svg',
+      'docs/masterplans/04-combined-complex/01-research/map-integration',
+      'docs/masterplans/04-combined-complex/02-design/map-integration',
+      'docs/masterplans/04-combined-complex/03-visuals/modules/map-integration',
+      'docs/masterplans/04-combined-complex/03-visuals/references/map-integration',
+      'docs/masterplans/04-combined-complex/04-contractor/map-integration',
+      'docs/masterplans/04-combined-complex/build-info-map-integration.json',
+      'docs/masterplans/04-combined-complex/map-integration-report.html',
+      'docs/masterplans/04-combined-complex/overhead-map-same-world.png',
+      'docs/masterplans/05-combined-zones/maps/current-and-proposed-whole-world.png',
+      'docs/masterplans/05-combined-zones/maps/current-and-proposed-whole-world.svg',
+      'docs/masterplans/05-combined-zones/maps/east-corridor-plan.png',
+      'docs/masterplans/05-combined-zones/maps/east-corridor-plan.svg',
+      'docs/masterplans/05-combined-zones/maps/gateway-approach-and-terminal-plan.png',
+      'docs/masterplans/05-combined-zones/maps/gateway-approach-and-terminal-plan.svg',
+      'docs/masterplans/05-combined-zones/maps/vertical-zoning-section.png',
+      'docs/masterplans/05-combined-zones/maps/vertical-zoning-section.svg',
     ];
     expect(reconciliation.supersededPlacementArtifacts.map(({ path: retiredPath }) => retiredPath))
       .toEqual(expectedRetiredPaths);
@@ -630,26 +630,26 @@ describe('Masterplans 01-03 -> 04 -> 05 authority reconciliation', () => {
     ]) {
       expect(mapReadme).toContain(filename);
       expect(buildInfo.deliverables).not.toContain(`maps/${filename}`);
-      expect(activeOutputPaths).not.toContain(`masterplans/05-combined-zones/maps/${filename}`);
+      expect(activeOutputPaths).not.toContain(`docs/masterplans/05-combined-zones/maps/${filename}`);
     }
 
     const historicalRegistry = readJson<{
       authority: { status: string; worldEditAuthorized: boolean };
-    }>('masterplans/04-combined-complex/02-design/map-integration/site-coordinates.json');
+    }>('docs/masterplans/04-combined-complex/02-design/map-integration/site-coordinates.json');
     const historicalContractor = readJson<{
       authority: { status: string; executableAsWritten: boolean };
-    }>('masterplans/04-combined-complex/04-contractor/map-integration/contractor-brief.json');
+    }>('docs/masterplans/04-combined-complex/04-contractor/map-integration/contractor-brief.json');
     const historicalBuildInfo = readJson<{
       authority: { status: string; worldEditAuthorized: boolean };
       deliverables: Record<string, string>;
-    }>('masterplans/04-combined-complex/build-info-map-integration.json');
+    }>('docs/masterplans/04-combined-complex/build-info-map-integration.json');
     const normalizedBuildInfo = readJson<{
       deliverables: Record<string, string>;
       report_metadata: { pdfPublished: boolean };
-    }>('masterplans/04-combined-complex/build-info.json');
+    }>('docs/masterplans/04-combined-complex/build-info.json');
     const historicalRenderingManifest = readJson<{
       authority: { status: string; worldEditAuthorized: boolean; measuredGeometry: boolean };
-    }>('masterplans/04-combined-complex/03-visuals/modules/map-integration/renderings-manifest.json');
+    }>('docs/masterplans/04-combined-complex/03-visuals/modules/map-integration/renderings-manifest.json');
     expect(historicalRegistry.authority).toMatchObject({
       status: 'SUPERSEDED_FOR_CURRENT_WORLD_PLACEMENT',
       worldEditAuthorized: false,
@@ -673,13 +673,13 @@ describe('Masterplans 01-03 -> 04 -> 05 authority reconciliation', () => {
       ...Object.values(historicalBuildInfo.deliverables),
     ]) {
       expect(
-        fs.existsSync(path.join(ROOT, 'masterplans/04-combined-complex', relativeDeliverable)),
+        fs.existsSync(path.join(ROOT, 'docs/masterplans/04-combined-complex', relativeDeliverable)),
         relativeDeliverable,
       ).toBe(true);
     }
     for (const reportPath of [
-      'masterplans/04-combined-complex/combined-complex-report.html',
-      'masterplans/04-combined-complex/map-integration-report.html',
+      'docs/masterplans/04-combined-complex/combined-complex-report.html',
+      'docs/masterplans/04-combined-complex/map-integration-report.html',
     ]) {
       const report = fs.readFileSync(path.join(ROOT, reportPath), 'utf8');
       expect(report, reportPath).not.toContain('combined-complex-report.pdf');
@@ -690,7 +690,7 @@ describe('Masterplans 01-03 -> 04 -> 05 authority reconciliation', () => {
   it('binds corridor clearance to the actual sealed POI directory', () => {
     const clearance = readJson<{
       source: { poiDirectory: string; poiSha256: string; catalogRecords: number };
-    }>('masterplans/05-combined-zones/corridor-clearance.json');
+    }>('docs/masterplans/05-combined-zones/corridor-clearance.json');
     expect(clearance.source).toMatchObject({
       poiDirectory: 'docs/redevelopment/2026-07-29-poi-coordinate-directory/poi-coordinate-directory.json',
       poiSha256: sha256(clearance.source.poiDirectory),
@@ -698,8 +698,8 @@ describe('Masterplans 01-03 -> 04 -> 05 authority reconciliation', () => {
     });
   });
 
-  it('parses every machine-readable artifact under masterplans', () => {
-    const files = jsonFiles(path.join(ROOT, 'masterplans'));
+  it('parses every machine-readable artifact under docs/masterplans', () => {
+    const files = jsonFiles(path.join(ROOT, 'docs', 'masterplans'));
     expect(files.length).toBeGreaterThanOrEqual(28);
     for (const filename of files) {
       expect(() => JSON.parse(fs.readFileSync(filename, 'utf8')), filename).not.toThrow();

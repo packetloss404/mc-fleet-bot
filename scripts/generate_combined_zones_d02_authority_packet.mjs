@@ -21,23 +21,23 @@ function value(flag, fallback) {
 const GENERATED_AT = value('--generated-at', '2026-08-04T21:45:58Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json',
+  'docs/masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-d02-civil-authority-packet.md',
+  'docs/masterplans/05-combined-zones/phase1-d02-civil-authority-packet.md',
 ));
 
 const INPUTS = {
-  authority: 'masterplans/04-combined-complex/authority-reconciliation.json',
-  decisions: 'masterplans/05-combined-zones/phase1-design-decisions.json',
-  c1Civil: 'masterplans/05-combined-zones/phase1-c1-civil-design.json',
-  c1Pilot: 'masterplans/05-combined-zones/phase1-c1-pilot-coordination.json',
-  phase0Evidence: 'masterplans/05-combined-zones/phase0-survey-evidence.json',
-  terrainProbe: 'masterplans/05-combined-zones/corridor-terrain-probe.json',
-  clearance: 'masterplans/05-combined-zones/corridor-clearance.json',
-  coordinates: 'masterplans/05-combined-zones/site-coordinates.json',
-  corridorMap: 'masterplans/05-combined-zones/maps/east-corridor-plan.svg',
+  authority: 'docs/masterplans/04-combined-complex/authority-reconciliation.json',
+  decisions: 'docs/masterplans/05-combined-zones/phase1-design-decisions.json',
+  c1Civil: 'docs/masterplans/05-combined-zones/phase1-c1-civil-design.json',
+  c1Pilot: 'docs/masterplans/05-combined-zones/phase1-c1-pilot-coordination.json',
+  phase0Evidence: 'docs/masterplans/05-combined-zones/phase0-survey-evidence.json',
+  terrainProbe: 'docs/masterplans/05-combined-zones/corridor-terrain-probe.json',
+  clearance: 'docs/masterplans/05-combined-zones/corridor-clearance.json',
+  coordinates: 'docs/masterplans/05-combined-zones/site-coordinates.json',
+  corridorMap: 'docs/masterplans/05-combined-zones/maps/east-corridor-plan.svg',
 };
 
 const ROLES = {

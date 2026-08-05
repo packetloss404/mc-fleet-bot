@@ -23,19 +23,19 @@ function value(flag, fallback) {
 const GENERATED_AT = value('--generated-at', '2026-08-05T03:05:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json',
+  'docs/masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.md',
+  'docs/masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.md',
 ));
 
 const INPUTS = Object.freeze({
-  d06Mechanisms: 'masterplans/05-combined-zones/phase1-d06-mechanisms.json',
-  d06LifeSafety: 'masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
-  emptyEight: 'masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
+  d06Mechanisms: 'docs/masterplans/05-combined-zones/phase1-d06-mechanisms.json',
+  d06LifeSafety: 'docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
+  emptyEight: 'docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
   completeSaveAudit:
-    'masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
+    'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
 });
 
 const CELL_HASH_PREAMBLE = 'combined-zones-d06-life-safety-cell-set-v1';

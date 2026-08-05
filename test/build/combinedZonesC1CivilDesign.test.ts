@@ -9,11 +9,11 @@ const ROOT = path.resolve(__dirname, '../..');
 const GENERATED_AT = '2026-08-04T16:22:57Z';
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-c1-civil-design.json',
+  'docs/masterplans/05-combined-zones/phase1-c1-civil-design.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-c1-civil-design.md',
+  'docs/masterplans/05-combined-zones/phase1-c1-civil-design.md',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-c1-civil-'));
 const regeneratedJson = path.join(tempDir, 'civil-design.json');

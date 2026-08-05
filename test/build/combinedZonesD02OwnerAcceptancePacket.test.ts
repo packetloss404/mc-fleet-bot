@@ -9,15 +9,15 @@ const ROOT = path.resolve(__dirname, '../..');
 const GENERATED_AT = '2026-08-04T23:55:00Z';
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
+  'docs/masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.md',
+  'docs/masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.md',
 );
 const CLOSED_DRAINAGE_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json',
+  'docs/masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-d02-owner-'));
 const regeneratedJson = path.join(tempDir, 'owner-acceptance.json');
@@ -240,7 +240,7 @@ describe('Combined Zones D02 owner-acceptance evidence packet', () => {
       status: 'PARTIAL_PASS_CLASSIFIED_EVIDENCE_D02_G02_HOLD',
       sourceGraph: {
         direction: 'BOUND_SOURCE_TO_PACKET_ONLY',
-        packetPath: 'masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
+        packetPath: 'docs/masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
         cycleFree: true,
       },
     });

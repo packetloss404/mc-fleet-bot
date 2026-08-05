@@ -23,26 +23,26 @@ function value(flag, fallback) {
 const GENERATED_AT = value('--generated-at', '2026-08-05T02:40:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json',
+  'docs/masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-b09-funicular-technical-system.md',
+  'docs/masterplans/05-combined-zones/phase1-b09-funicular-technical-system.md',
 ));
 
 const INPUTS = Object.freeze({
   autonomousSelections:
-    'masterplans/05-combined-zones/phase1-autonomous-design-selections.json',
-  connectorGeometry: 'masterplans/05-combined-zones/phase1-connector-geometry.json',
+    'docs/masterplans/05-combined-zones/phase1-autonomous-design-selections.json',
+  connectorGeometry: 'docs/masterplans/05-combined-zones/phase1-connector-geometry.json',
   d05FutureMountain:
-    'masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json',
-  d05FutureState: 'masterplans/05-combined-zones/phase1-d05-future-state.json',
-  d06Mechanisms: 'masterplans/05-combined-zones/phase1-d06-mechanisms.json',
+    'docs/masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json',
+  d05FutureState: 'docs/masterplans/05-combined-zones/phase1-d05-future-state.json',
+  d06Mechanisms: 'docs/masterplans/05-combined-zones/phase1-d06-mechanisms.json',
   protectedRelicClearance:
-    'masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
-  phase0Survey: 'masterplans/05-combined-zones/phase0-survey-evidence.json',
+    'docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
+  phase0Survey: 'docs/masterplans/05-combined-zones/phase0-survey-evidence.json',
   completeSaveAudit:
-    'masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
+    'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
 });
 
 const COORDINATE_PREAMBLE = 'combined-zones-coordinate-cell-set-v1';

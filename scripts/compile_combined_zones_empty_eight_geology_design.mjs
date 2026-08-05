@@ -22,27 +22,27 @@ function value(flag, fallback) {
 const GENERATED_AT = value('--generated-at', '2026-08-04T16:18:57Z');
 const MASTERPLAN = path.resolve(value(
   '--masterplan',
-  'masterplans/05-combined-zones/MASTERPLAN.md',
+  'docs/masterplans/05-combined-zones/MASTERPLAN.md',
 ));
 const COORDINATES = path.resolve(value(
   '--coordinates',
-  'masterplans/05-combined-zones/site-coordinates.json',
+  'docs/masterplans/05-combined-zones/site-coordinates.json',
 ));
 const NORMALIZED_COORDINATES = path.resolve(value(
   '--normalized-coordinates',
-  'masterplans/04-combined-complex/02-design/site-coordinates.json',
+  'docs/masterplans/04-combined-complex/02-design/site-coordinates.json',
 ));
 const NORMALIZED_BRIEF = path.resolve(value(
   '--normalized-brief',
-  'masterplans/04-combined-complex/04-contractor/contractor-brief.json',
+  'docs/masterplans/04-combined-complex/04-contractor/contractor-brief.json',
 ));
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
+  'docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-empty-eight-geology-design.md',
+  'docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.md',
 ));
 
 function assert(condition, message) {
@@ -554,7 +554,7 @@ const report = {
   ],
   authority: {
     chain: '01 + 02 + 03 -> 04 normalized architecture -> 05 current-world placement',
-    planToDevelop: 'masterplans/05-combined-zones/MASTERPLAN.md',
+    planToDevelop: 'docs/masterplans/05-combined-zones/MASTERPLAN.md',
     role: 'Phase 1 design freeze and factual-language decision; not a construction or release package',
     offlineOnly: true,
     worldEditAuthorized: false,

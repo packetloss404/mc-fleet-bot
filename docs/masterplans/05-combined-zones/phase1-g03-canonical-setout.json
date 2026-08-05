@@ -1,0 +1,4260 @@
+{
+  "schemaVersion": 3,
+  "id": "combined-zones-phase1-g03-canonical-setout",
+  "generatedAtUtc": "2026-08-05T07:30:00Z",
+  "status": "PASS_G03_V3_ALL_30_PROPOSAL_DOMAINS_EXACT_DOWNSTREAM_AND_PHYSICAL_AUTHORITY_HOLD",
+  "purpose": "One authoritative deterministic sparse/source-bound registry for all 30 exact Phase 1 proposal domains, explicit semantic ceilings, and disclosed cross-scope overlap uncertainty without construction, expert-influence, or release acceptance.",
+  "sourceBindings": {
+    "releaseContract": {
+      "path": "docs/masterplans/05-combined-zones/phase1-release-contract.json",
+      "sha256": "3b62d3f65c40a01d5f4eb66733b02c94104c03b3a5bab053ee82bcb08b7fd786",
+      "bytes": 33127,
+      "role": "controlling G03 pass rule and physical-release lifecycle boundary"
+    },
+    "b03": {
+      "path": "docs/masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json",
+      "sha256": "216ca18a7dd2a4e06b258dcc817c786b294ac8ebd992dfdb5ab5dba1f46829b1",
+      "bytes": 2757461,
+      "role": "frozen P1-B03 exact Cheyenne J-curve proposal"
+    },
+    "connectors": {
+      "path": "docs/masterplans/05-combined-zones/phase1-connector-geometry.json",
+      "sha256": "8bb2dd803c434667dfeee440ccdf8428a115962e21dd1b3b0e6955cce672dc4e",
+      "bytes": 458540,
+      "role": "frozen P1-B08 service-tunnel geometry and B09 interface anchors"
+    },
+    "d05Alternatives": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json",
+      "sha256": "1446c75cec504478130a8e9c5569c68c7a7569a29c4210e9b21ca5d804aeb2f3",
+      "bytes": 47454,
+      "role": "selected FM-01 B09 accommodation and B10 sparse proposal identity"
+    },
+    "d05FutureState": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-future-state.json",
+      "sha256": "14ec55e8d71a5fbccbb45fae9ff098c7e077ccb28a9b4d2bdd951ed7ce65c849",
+      "bytes": 39776,
+      "role": "frozen D05 selected planning identity and typed HOLD boundary"
+    },
+    "d05Defaults": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json",
+      "sha256": "14366d541b21675011e5dad32b08b51c4c23cf826bb37b0340b4699241429774",
+      "bytes": 17445,
+      "role": "exact protected-relic no-fill definitions used by D05"
+    },
+    "d02Technical": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d02-technical-design.json",
+      "sha256": "22ecc64bd01224a91c8a534f448c5de0e31fb99d6e5452ddf0f75a8e7fc9f93e",
+      "bytes": 140238,
+      "role": "selected exact D02 candidate geometry and technical HOLDs"
+    },
+    "d02C01Proposal": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json",
+      "sha256": "f56606839df4306631db282a731c56b7fe8ca27d2f4411f42f7254f125be3d2f",
+      "bytes": 2902378,
+      "role": "bounded C01-stack interaction subsets explicitly not a whole-D02 canonical union"
+    },
+    "d02Owner": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json",
+      "sha256": "1ed4d838fb6ff8e01a245f5232a5d98a4daa5630ead97865154a2b790c486594",
+      "bytes": 58663,
+      "role": "D02 owner-policy boundary retaining technical acceptance HOLD"
+    },
+    "d06LifeSafety": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+      "sha256": "c23eb313426f122e4d905cfe2a1d3407263186be80c167cfc1b169288eb11c76",
+      "bytes": 171078,
+      "role": "selected B07-C-WEST-2 exact proposal and D06 reservations"
+    },
+    "d06Mechanisms": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-mechanisms.json",
+      "sha256": "c713d30f0a085131875e71a5d02ad391330755fb68252f771ea9ed40222261da",
+      "bytes": 180609,
+      "role": "D06 exact reservation-reference ledger and null mechanism slots"
+    },
+    "d06Detailed": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json",
+      "sha256": "9cf30ba33d2b62383c0512877553ef961c9782df54840c74ae8a30003ebb362a",
+      "bytes": 95894,
+      "role": "exact D06 detailed functional setout and precedence proposal with zero accepted construction cells"
+    },
+    "emptyEight": {
+      "path": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+      "sha256": "2e6e3f3c5c5514909dd20b9a87d1278036ad8afafd3592eb60e756825655a14a",
+      "bytes": 71177,
+      "role": "frozen Empty Eight geometry needed to reproduce D06 detailed proposal carriers"
+    },
+    "b09Technical": {
+      "path": "docs/masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json",
+      "sha256": "f9b57fb317ff983acacbf98cb0a7776246c242025f583d9795594a6a799898c8",
+      "bytes": 26803,
+      "role": "exact B09 technical reservation layers explicitly not construction or expert influence"
+    },
+    "b11": {
+      "path": "docs/masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json",
+      "sha256": "d65b94f0301c703fd4e22b13fe674a90fa16ba580bfced0e2143476133742ed2",
+      "bytes": 12601,
+      "role": "owner-accepted Grand Avenue 299-point planning profile"
+    },
+    "b11SurfaceRoad": {
+      "path": "docs/masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.json",
+      "sha256": "324c275ef5120382f2b9a5510c4257259bd37f7ffe116350ae7959afb2534da6",
+      "bytes": 170181,
+      "role": "exact B11 road construction, interaction, and candidate influence reservation proposals"
+    },
+    "b12": {
+      "path": "docs/masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json",
+      "sha256": "7fd10ad811bf9aa36be7895de01ef42eb19382d3896bf5fee5ac47bb75e21a4e",
+      "bytes": 254942,
+      "role": "unaccepted P1-B12 passive-shell exact candidate geometry"
+    },
+    "residualSurfaceConnectorDomains": {
+      "path": "docs/masterplans/05-combined-zones/phase1-residual-surface-connector-domain-proposals.json",
+      "sha256": "4d460fcf21ef9de29a6266dae75aaea2b436e68dc50368cb47a77e2e70a59a11",
+      "bytes": 39522,
+      "role": "seven exact surface/connector construction and coordination-influence proposal domains"
+    },
+    "civilLifeSafetyDomains": {
+      "path": "docs/masterplans/05-combined-zones/phase1-civil-life-safety-domain-closure.json",
+      "sha256": "c1771bf10ca5ad850cc39e09a1a7c62ecad2fdcccc3e3702f2875bebc0348866",
+      "bytes": 18797,
+      "role": "eight exact source-limited civil/life-safety proposal domains"
+    }
+  },
+  "immutableSnapshot": {
+    "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+    "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+    "regionFileCount": 51,
+    "bytes": 290946492,
+    "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+  },
+  "canonicalContracts": {
+    "coordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+    "sparseIntervalPreamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\n<scope>/<domain>\\n",
+    "sparseIntervalRecord": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+    "integerLattice": "Every emitted exact coordinate is an integer block cell; bounds are inclusive.",
+    "largeSetRule": "Large exact sets may be represented by reconstruction formula plus source-bound sparse interval hash; no coordinate array is required.",
+    "nullRule": "All 30 required domains must have exact non-null count/bounds/hash identities; overlap uncertainty is never represented as an empty set."
+  },
+  "scopeRegistry": [
+    {
+      "scopeId": "P1-B03",
+      "selectedIdentity": "CHEYENNE-JCURVE-EXACT-PLANNING-GEOMETRY",
+      "disposition": "PROPOSAL_UNACCEPTED_G03_HOLD",
+      "construction": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 15972,
+        "bounds": {
+          "minX": 2048,
+          "maxX": 2390,
+          "minY": 130,
+          "maxY": 169,
+          "minZ": -870,
+          "maxZ": -746
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "82d5fd4e5bdc0f21f2c8b47bfd8d69b4f7f6aa097a641890b02a4c330fc8df15",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B03/construction\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 3993,
+          "intervalCount": 3993,
+          "intervalManifestSha256": "9a98fdc33ccec36e6757dfcc1e1effeaed758ec0c8be509377694ffc2502f6bb"
+        },
+        "componentCount": 1,
+        "largestComponentCellCount": 15972,
+        "componentSizeMultisetSha256": "fe72f2222c9ac46584cea9647e15a15b2e6c928c0892652925d560c05af46748",
+        "sourceCoordinateSetSha256": "82d5fd4e5bdc0f21f2c8b47bfd8d69b4f7f6aa097a641890b02a4c330fc8df15",
+        "sourceCoordinateHashPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "interaction": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 14418,
+        "bounds": {
+          "minX": 2047,
+          "maxX": 2391,
+          "minY": 129,
+          "maxY": 170,
+          "minZ": -871,
+          "maxZ": -745
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "3fea0d42c8f41dde895ac31258bfa06ed5cacea11f2d719e02551f3989a8966f",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B03/interaction\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 5601,
+          "intervalCount": 9594,
+          "intervalManifestSha256": "832cb3442a27711fe1970e68ce5d991d43707f365c4689b55f82e7746e22658c"
+        },
+        "componentCount": 82,
+        "largestComponentCellCount": 3156,
+        "componentSizeMultisetSha256": "2ef6e9388b5b5c05a9f42f8eef45f3ad74486cb2b90301517a4cefec0763ccc2",
+        "sourceCoordinateSetSha256": "3fea0d42c8f41dde895ac31258bfa06ed5cacea11f2d719e02551f3989a8966f",
+        "sourceCoordinateHashPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false,
+        "semantic": "EXTERNAL_ONE_CELL_FACE_INTERACTION_SHELL_EXCLUDES_CONSTRUCTION"
+      },
+      "influence": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 55216,
+        "bounds": {
+          "minX": 2046,
+          "maxX": 2392,
+          "minY": 128,
+          "maxY": 171,
+          "minZ": -872,
+          "maxZ": -744
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "a8879f11717f7be8c33bd1fc7cdcaf8ab5278b501e18a83bebfc678b01ba1ac6",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B03/influence\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 7225,
+          "intervalCount": 7225,
+          "intervalManifestSha256": "9829e9bd20ae856356890b6b2ccd04015c4ef394f5426c22aa1e64ee196f52bd"
+        },
+        "componentCount": 1,
+        "largestComponentCellCount": 55216,
+        "componentSizeMultisetSha256": "3439237f1c8b4788d533ce980f3f8659186ec5f4a7faa4856d9f369e86a09fc6",
+        "sourceCoordinateSetSha256": "a8879f11717f7be8c33bd1fc7cdcaf8ab5278b501e18a83bebfc678b01ba1ac6",
+        "sourceCoordinateHashPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "semantic": "EXACT_CONSTRUCTABILITY_MAINTENANCE_DRAINAGE_UTILITY_COORDINATION_RESERVATION_NOT_EXPERT_KERNEL",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      }
+    },
+    {
+      "scopeId": "P1-B07",
+      "selectedIdentity": "B07-C-WEST-2",
+      "disposition": "RECOMMENDED_PROPOSAL_UNACCEPTED_D06_G03_HOLD",
+      "construction": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 8134,
+        "bounds": {
+          "minX": 2103,
+          "maxX": 2111,
+          "minY": -59,
+          "maxY": 72,
+          "minZ": -431,
+          "maxZ": -395
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "0b10566ccb06664acb708970b33de49906a2bd558d6fa7c7b091728e6555edb5",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B07/construction\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 287,
+          "intervalCount": 287,
+          "intervalManifestSha256": "17e6772de0312079500f1dc6472ca3ec23c64a8929604d50dadeb2114dc51fc1"
+        },
+        "componentCount": 1,
+        "largestComponentCellCount": 8134,
+        "componentSizeMultisetSha256": "a7848d1e01a7182bc79a5c350f343beaef14b4451c78dbd6df899ef69e6ebfc9",
+        "sourceCoordinateSetSha256": "d58f20c6ad6581487e2a6ba72754d40ce22d49981da7450b44ad5e37325e5e59",
+        "sourceCoordinateHashPreamble": "combined-zones-d06-life-safety-cell-set-v1\\n",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "interaction": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 13608,
+        "bounds": {
+          "minX": 2102,
+          "maxX": 2112,
+          "minY": -60,
+          "maxY": 73,
+          "minZ": -432,
+          "maxZ": -394
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "49424a60ad7fb3aede4ead6efd5e324513462e00568326ad2c8b732bff7c67e9",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B07/interaction\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 387,
+          "intervalCount": 387,
+          "intervalManifestSha256": "4e95750f9d985e2c6364837194893467d6aba860687d0ce5da95c7d9070ae12f"
+        },
+        "componentCount": 1,
+        "largestComponentCellCount": 13608,
+        "componentSizeMultisetSha256": "766222d7d2ecb7629aa020947882553656c6ddcd07fa8aed490ad340ecea0f7c",
+        "sourceCoordinateSetSha256": "dd2cc387b0e5f6517ec48176c820e05f5fef5ff9793c74d32d4a5262582e5a8d",
+        "sourceCoordinateHashPreamble": "combined-zones-d06-life-safety-cell-set-v1\\n",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false,
+        "semantic": "INTERACTION_UNION_INCLUDES_CONSTRUCTION"
+      },
+      "influence": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 13608,
+        "bounds": {
+          "minX": 2102,
+          "maxX": 2112,
+          "minY": -60,
+          "maxY": 73,
+          "minZ": -432,
+          "maxZ": -394
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "49424a60ad7fb3aede4ead6efd5e324513462e00568326ad2c8b732bff7c67e9",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B07/influence\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 387,
+          "intervalCount": 387,
+          "intervalManifestSha256": "f8ea5fdec8ca1e66064efd79131874037a9f3e2e6ab22327eff2f9ce95359947"
+        },
+        "componentCount": 1,
+        "largestComponentCellCount": 13608,
+        "componentSizeMultisetSha256": "766222d7d2ecb7629aa020947882553656c6ddcd07fa8aed490ad340ecea0f7c",
+        "sourceCoordinateSetSha256": "4a72c3dae60c49e09e7585de17b3475b17f5247a0b75c850ac4303c81581696a",
+        "sourceCoordinateHashPreamble": "combined-zones-civil-life-safety-domain-closure-cell-set-v1\\n",
+        "semantic": "SOURCE_LIMITED_COORDINATION_RESERVATION_EQUALS_KNOWN_INTERACTION_NOT_EXPERT_MARGIN",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      }
+    },
+    {
+      "scopeId": "P1-B08",
+      "selectedIdentity": "SERVICE-TUNNEL-CENTERLINE-EXACT",
+      "disposition": "PROPOSAL_UNACCEPTED_G03_HOLD",
+      "construction": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 7878,
+        "bounds": {
+          "minX": 1948,
+          "maxX": 2048,
+          "minY": 71,
+          "maxY": 134,
+          "minZ": -750,
+          "maxZ": -625
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "967a9ddd39775cfc4cbc851fd51abc4726a1e20ab632b433b45d386393254882",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B08/construction\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 1313,
+          "intervalCount": 1313,
+          "intervalManifestSha256": "d3ab2f242cf26b1f64e97457e0b00e826d3c235986ce9669579cf757302da6bc"
+        },
+        "componentCount": 1,
+        "largestComponentCellCount": 7878,
+        "componentSizeMultisetSha256": "fa5f51b0cee09a1b6f18658ac641f3eebf5d0ef05d244a432c6a05a6d55d28f4",
+        "sourceCoordinateSetSha256": "967a9ddd39775cfc4cbc851fd51abc4726a1e20ab632b433b45d386393254882",
+        "sourceCoordinateHashPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "interaction": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 15096,
+        "bounds": {
+          "minX": 1947,
+          "maxX": 2049,
+          "minY": 70,
+          "maxY": 135,
+          "minZ": -751,
+          "maxZ": -624
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "ea3124fc7925dfb77b491c9685dbdad62714276a8a6c88fa3a60b35d20886f8e",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B08/interaction\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 1771,
+          "intervalCount": 1771,
+          "intervalManifestSha256": "e19050be2fcc915cf9b84a181fb7a70c40bf70c25ae70881410930ff54f1417d"
+        },
+        "componentCount": 1,
+        "largestComponentCellCount": 15096,
+        "componentSizeMultisetSha256": "7ab92e05102c06a00cf9675e8ebb68fddee2bb95183f20a5113628f69cfe199c",
+        "sourceCoordinateSetSha256": "ea3124fc7925dfb77b491c9685dbdad62714276a8a6c88fa3a60b35d20886f8e",
+        "sourceCoordinateHashPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false,
+        "semantic": "INTERACTION_UNION_INCLUDES_CONSTRUCTION"
+      },
+      "influence": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 24690,
+        "bounds": {
+          "minX": 1946,
+          "maxX": 2050,
+          "minY": 69,
+          "maxY": 136,
+          "minZ": -752,
+          "maxZ": -623
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "3c037ebe9bfffa3ca73cd42a27312b3d96eacf317006db0c9ba36e0c3b9337b2",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B08/influence\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 2237,
+          "intervalCount": 2237,
+          "intervalManifestSha256": "c0812d36893c66b40c9c15e13674fcd7bee0ae98a65ec0cc51cd456d30536fec"
+        },
+        "componentCount": 1,
+        "largestComponentCellCount": 24690,
+        "componentSizeMultisetSha256": "f1288c3cc2a1ca2760f5d2fd88b372d5a21662b7e0037a6266337a91a28f4353",
+        "sourceCoordinateSetSha256": "3c037ebe9bfffa3ca73cd42a27312b3d96eacf317006db0c9ba36e0c3b9337b2",
+        "sourceCoordinateHashPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "semantic": "EXACT_CONSTRUCTABILITY_MAINTENANCE_DRAINAGE_UTILITY_COORDINATION_RESERVATION_NOT_EXPERT_KERNEL",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      }
+    },
+    {
+      "scopeId": "P1-B09",
+      "selectedIdentity": "FM-01-COMPACT-EAST-FACE/east-face-funicular",
+      "disposition": "ALL_EXACT_PROPOSAL_DOMAINS_COMPILED_TECHNICAL_AND_ACCEPTANCE_HOLD",
+      "construction": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 7800,
+        "bounds": {
+          "minX": 2047,
+          "maxX": 2289,
+          "minY": 129,
+          "maxY": 306,
+          "minZ": -829,
+          "maxZ": -747
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "e9e2e116f363e999151a41e4fee2ef32d2f96c1184f6432128ff31e8d9a118ca",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B09/construction\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 1689,
+          "intervalCount": 1689,
+          "intervalManifestSha256": "42d7410d0275307673a2c05416b7390f98da32f0ddfb0622e3ab3699872c5b26"
+        },
+        "componentCount": 1,
+        "largestComponentCellCount": 7800,
+        "componentSizeMultisetSha256": "c061381b2aa04b79bd8c1cd939d181aefaa1643d89eb80873c364ffccec858c7",
+        "sourceCoordinateSetSha256": "e9e2e116f363e999151a41e4fee2ef32d2f96c1184f6432128ff31e8d9a118ca",
+        "sourceCoordinateHashPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "semantic": "MINIMUM_STATION_GUIDEWAY_SUPPORT_TARGET_ENVELOPE_NO_MATERIAL_OR_SYSTEM_ACCEPTANCE",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "interaction": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 7800,
+        "bounds": {
+          "minX": 2047,
+          "maxX": 2289,
+          "minY": 129,
+          "maxY": 306,
+          "minZ": -829,
+          "maxZ": -747
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "e9e2e116f363e999151a41e4fee2ef32d2f96c1184f6432128ff31e8d9a118ca",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B09/interaction\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 1689,
+          "intervalCount": 1689,
+          "intervalManifestSha256": "7eb5f8de1f4b58df25f213e4e073d10c43d3c588fc2642bfdfcde1709e8be869"
+        },
+        "componentCount": 1,
+        "largestComponentCellCount": 7800,
+        "componentSizeMultisetSha256": "c061381b2aa04b79bd8c1cd939d181aefaa1643d89eb80873c364ffccec858c7",
+        "sourceCoordinateSetSha256": "e9e2e116f363e999151a41e4fee2ef32d2f96c1184f6432128ff31e8d9a118ca",
+        "sourceCoordinateHashPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false,
+        "semantic": "MINIMUM_PLANNING_ACCOMMODATION_NOT_ENGINEERING_BUFFER",
+        "orderedCenterline": {
+          "pointCount": 561,
+          "sha256": "e8905742a77148d13d799362da7d65e9b02bcf96455d580fbee27367b2d24221"
+        }
+      },
+      "influence": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 20430,
+        "bounds": {
+          "minX": 2046,
+          "maxX": 2290,
+          "minY": 128,
+          "maxY": 307,
+          "minZ": -830,
+          "maxZ": -746
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "f10bbc071a09b24be7842065b3d5e1486af3b5af15d45733f9be2bce97d017ba",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B09/influence\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 2825,
+          "intervalCount": 2825,
+          "intervalManifestSha256": "e09d450ae2bc13095b1e2a8ff1eff55182dbc55cda49960d82f232d0cda9ed43"
+        },
+        "componentCount": 1,
+        "largestComponentCellCount": 20430,
+        "componentSizeMultisetSha256": "167690484ad7f23da94616eb12cb3da46faef36f7ef79ed5f34519d52bf5451d",
+        "sourceCoordinateSetSha256": "f10bbc071a09b24be7842065b3d5e1486af3b5af15d45733f9be2bce97d017ba",
+        "sourceCoordinateHashPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "semantic": "EXACT_CONSTRUCTION_MAINTENANCE_DRAINAGE_POWER_COORDINATION_RESERVATION_NOT_EXPERT_KERNEL",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "exactTechnicalReservationLedger": {
+        "status": "PASS_EXACT_PROPOSAL_ONLY_TECHNICAL_ACCEPTANCE_HOLD",
+        "reportIdentitySha256": "e8738f3932f2afc3ba71e35ccdebf0d5ef444ca7389e81ec31a18e48517d3eba",
+        "technicalReservationManifestSha256": "ccaa3493bd0da9dfbec88d010232f760ff37c62a87ae4c1de0f512f519882d41",
+        "layerCount": 9,
+        "layers": [
+          {
+            "layerId": "lowerStationEnvelope",
+            "proposalRole": "LOWER_STATION_AND_B08_TRANSFER_ENVELOPE",
+            "cellCount": 132,
+            "bounds": {
+              "minX": 2047,
+              "maxX": 2057,
+              "minY": 129,
+              "maxY": 132,
+              "minZ": -749,
+              "maxZ": -747
+            },
+            "coordinateSetSha256": "d13426cafb5f9cb53de702653532111ef18588af1c28c0f3d8e7cb2956e0801b",
+            "accepted": false
+          },
+          {
+            "layerId": "summitStationEnvelope",
+            "proposalRole": "SUMMIT_STATION_AND_Z11_TRANSFER_ENVELOPE",
+            "cellCount": 180,
+            "bounds": {
+              "minX": 2047,
+              "maxX": 2049,
+              "minY": 295,
+              "maxY": 306,
+              "minZ": -829,
+              "maxZ": -819
+            },
+            "coordinateSetSha256": "99d28f072ae6055d394a9690c125b4e0de58b09192cc3fd166302060f3bb9599",
+            "accepted": false
+          },
+          {
+            "layerId": "combinedStationEnvelope",
+            "proposalRole": "STATIONS",
+            "cellCount": 312,
+            "bounds": {
+              "minX": 2047,
+              "maxX": 2057,
+              "minY": 129,
+              "maxY": 306,
+              "minZ": -829,
+              "maxZ": -747
+            },
+            "coordinateSetSha256": "0b6e428af369217693c25da890328d0abfe06489443587822cc7fb520cf16f3f",
+            "accepted": false
+          },
+          {
+            "layerId": "runningGuidewayAndSupportEnvelope",
+            "proposalRole": "GUIDEWAY_SUPPORT_AND_SEPARATION_SHELL",
+            "cellCount": 7488,
+            "bounds": {
+              "minX": 2047,
+              "maxX": 2289,
+              "minY": 129,
+              "maxY": 297,
+              "minZ": -820,
+              "maxZ": -747
+            },
+            "coordinateSetSha256": "d9de4b923a8002dbd302116f4c928b6794d824ea616811d0ab2a3988ad32bb1f",
+            "accepted": false
+          },
+          {
+            "layerId": "railDatumReservation",
+            "proposalRole": "GUIDEWAY_RAIL_DATUM",
+            "cellCount": 561,
+            "bounds": {
+              "minX": 2048,
+              "maxX": 2288,
+              "minY": 130,
+              "maxY": 304,
+              "minZ": -828,
+              "maxZ": -748
+            },
+            "coordinateSetSha256": "91b5174e01bde419175c68997f199f01b04ee38cbde13304ab4dd9a0d0d979b8",
+            "accepted": false
+          },
+          {
+            "layerId": "maintenanceAndEgressReservation",
+            "proposalRole": "MAINTENANCE_AND_UNCOMMISSIONED_EGRESS",
+            "cellCount": 2250,
+            "bounds": {
+              "minX": 2047,
+              "maxX": 2289,
+              "minY": 130,
+              "maxY": 305,
+              "minZ": -828,
+              "maxZ": -747
+            },
+            "coordinateSetSha256": "352ad477cd96fc6ff9d460847c1e756d448bda4c899e77ade258d4dc63a5a4d5",
+            "accepted": false
+          },
+          {
+            "layerId": "rescueTransferReservation",
+            "proposalRole": "ENDPOINT_RESCUE_TRANSFER",
+            "cellCount": 312,
+            "bounds": {
+              "minX": 2047,
+              "maxX": 2057,
+              "minY": 129,
+              "maxY": 306,
+              "minZ": -829,
+              "maxZ": -747
+            },
+            "coordinateSetSha256": "0b6e428af369217693c25da890328d0abfe06489443587822cc7fb520cf16f3f",
+            "accepted": false
+          },
+          {
+            "layerId": "powerAndControlCarrierReservation",
+            "proposalRole": "POWER_AND_CONTROL_CARRIER_ONLY",
+            "cellCount": 561,
+            "bounds": {
+              "minX": 2048,
+              "maxX": 2288,
+              "minY": 132,
+              "maxY": 306,
+              "minZ": -828,
+              "maxZ": -748
+            },
+            "coordinateSetSha256": "ae9f694b971ce807fd8138d961950ac3838aa4d0f8f07f0c2e8df79bc0e7468c",
+            "accepted": false
+          },
+          {
+            "layerId": "drainageCarrierReservation",
+            "proposalRole": "DRAINAGE_CARRIER_ONLY_NO_FLOW_OR_RECEIVER",
+            "cellCount": 561,
+            "bounds": {
+              "minX": 2048,
+              "maxX": 2288,
+              "minY": 129,
+              "maxY": 303,
+              "minZ": -828,
+              "maxZ": -748
+            },
+            "coordinateSetSha256": "81eaaf855e832281af1cf8eca2f884f2f67795ff9478d9ae38ca7e136fdd9255",
+            "accepted": false
+          }
+        ],
+        "sealedInterfaceCount": 2,
+        "acceptedTechnicalCellCount": 0,
+        "interpretation": "Exact functional reservation detail only; it does not close B09 construction or expert influence."
+      }
+    },
+    {
+      "scopeId": "P1-B10",
+      "selectedIdentity": "FM-01-COMPACT-EAST-FACE",
+      "disposition": "ALL_EXACT_SOURCE_BOUND_SPARSE_PROPOSAL_DOMAINS_COMPILED_TECHNICAL_AND_ACCEPTANCE_HOLD",
+      "construction": {
+        "status": "EXACT_UNMATERIALIZED_PLANNING_INTERVALS_NOT_CONSTRUCTION_CELLS",
+        "representation": "SOURCE_BOUND_SPARSE_EXACT_INTEGER_Y_INTERVAL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 14768553,
+        "bounds": {
+          "minX": 1948,
+          "maxX": 2368,
+          "minY": 72,
+          "maxY": 303,
+          "minZ": -1068,
+          "maxZ": -588
+        },
+        "sparseIntervals": {
+          "preamble": "combined-zones-d05-sparse-solid-intervals-v1\\n",
+          "record": "x,z<TAB>current=Y<TAB>design=Y<TAB>add=start..end[,start..end] or -",
+          "raisedColumnCount": 190954,
+          "intervalManifestSha256": "ed95837647ab5f13699e93fcc17de691d4da5f08115c4be34734e238b19b4196"
+        },
+        "exactIntegerCellSetIdentitySha256": "ed95837647ab5f13699e93fcc17de691d4da5f08115c4be34734e238b19b4196",
+        "formula": {
+          "id": "D05-DIRECTIONAL-RATIONAL-PYRAMID-V1",
+          "domain": "inclusive X/Z footprint defined by center and four directional extents; outside columns remain immutable-current",
+          "dominantRatio": "max(abs(x-centerX)/directionalXExtent, abs(z-centerZ)/directionalZExtent), compared by exact cross multiplication",
+          "designSurfaceY": "71 + floor(232 * (denominator - numerator) / denominator)",
+          "directAddedSolidIntervals": "max(currentSurfaceY+1,72)..designSurfaceY minus exact relic, B08 interaction, and candidate B09 planning-reservation cells",
+          "supportGapRule": "any candidate support below Y=72 is counted and held; it is not silently filled outside the coordination envelope",
+          "currentStateRule": "all immutable current cells remain unchanged except that exact route cells may be future-passable planning reservations; no canonical block state is assigned here",
+          "center": {
+            "x": 2048,
+            "z": -828
+          },
+          "extents": {
+            "west": 100,
+            "east": 320,
+            "north": 240,
+            "south": 240
+          },
+          "baseSurfaceY": 71,
+          "peakSurfaceY": 303
+        },
+        "immutableSnapshot": {
+          "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+          "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+          "regionFileCount": 51,
+          "bytes": 290946492,
+          "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+        },
+        "exclusions": {
+          "protectedRelicWithheldFillCellCount": 1977,
+          "b08WithheldFillCellCount": 11358,
+          "b09WithheldFillCellCount": 4245
+        },
+        "canonicalMaterialState": null,
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "interaction": {
+        "status": "PROPOSED_EXACT_SOURCE_BOUND_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SOURCE_BOUND_SPARSE_EXACT_INTEGER_Y_INTERVAL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 433549,
+        "bounds": {
+          "minX": 1948,
+          "maxX": 2367,
+          "minY": 71,
+          "maxY": 303,
+          "minZ": -1067,
+          "maxZ": -589
+        },
+        "sparseIntervals": {
+          "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B10/interaction\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 191323,
+          "intervalCount": 383907,
+          "intervalManifestSha256": "9dcae3deeefc09f563a47955dd7d3fba75eac8e8ca74f44ab26b24d3a4535ba8"
+        },
+        "exactIntegerCellSetIdentitySha256": "9dcae3deeefc09f563a47955dd7d3fba75eac8e8ca74f44ab26b24d3a4535ba8",
+        "sourceDerivation": "Exact external six-face shell of the source-bound FM-01 candidate-added-solid interval set after protected-relic, B08, and B09 exclusions.",
+        "semantic": "EXACT_EXTERNAL_SIX_FACE_SHELL_OF_SOURCE_BOUND_FM01_INTERVALS",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "influence": {
+        "status": "PROPOSED_EXACT_SOURCE_BOUND_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SOURCE_BOUND_SPARSE_EXACT_INTEGER_Y_INTERVAL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 1082149,
+        "bounds": {
+          "minX": 1948,
+          "maxX": 2368,
+          "minY": 38,
+          "maxY": 303,
+          "minZ": -1068,
+          "maxZ": -588
+        },
+        "sparseIntervals": {
+          "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B10/influence\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 192024,
+          "intervalCount": 384655,
+          "intervalManifestSha256": "1a209dbae3552c0b49a7972f22c4838a30e09c8391bce8d20979a1b4f542447d"
+        },
+        "exactIntegerCellSetIdentitySha256": "1a209dbae3552c0b49a7972f22c4838a30e09c8391bce8d20979a1b4f542447d",
+        "sourceDerivation": "Exact union of the B10 external six-face coordination shell and the source-bound below-Y72 support-gap reservation; no groundwater, snowmelt, erosion, settlement, or discharge kernel is inferred.",
+        "semantic": "EXACT_EXTERNAL_SHELL_UNION_SOURCE_BOUND_SUPPORT_GAP_NOT_EXPERT_KERNEL",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "exactSupportGapEvidence": {
+        "status": "HOLD_EXACT_UNSUPPORTED_BELOW_Y72",
+        "cellCount": 754224,
+        "columnCount": 107345,
+        "intervalManifestSha256": "31664bc00e7a1d361567fb878e8653c2a4018045169d54900ca9ad15bddd7171",
+        "treatment": null,
+        "interpretation": "Exact unresolved support evidence; not reclassified as construction, interaction, or influence geometry."
+      }
+    },
+    {
+      "scopeId": "D02",
+      "selectedIdentity": "ALT-D02-S04-D-HYBRID-CAPPED-SUMPS-WITH-AQUATIC-NO-BUILD-HOLD",
+      "disposition": "ALL_EXACT_SOURCE_LIMITED_PROPOSAL_DOMAINS_COMPILED_D02_TECHNICAL_AND_ACCEPTANCE_HOLD",
+      "construction": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 432,
+        "bounds": {
+          "minX": 432,
+          "maxX": 1535,
+          "minY": 57,
+          "maxY": 109,
+          "minZ": -276,
+          "maxZ": 58
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "020c27307584d1dc756e9b336cb19c2dda686162a8e0823bd33a520a909a0fed",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nD02/construction\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 72,
+          "intervalCount": 72,
+          "intervalManifestSha256": "2bd369c8919197f32727db333a94b57d2b8c4813944cdb625686fef76d667069"
+        },
+        "componentCount": 42,
+        "largestComponentCellCount": 54,
+        "componentSizeMultisetSha256": "157661bfa176027965e76683d1b6e9b0e6d3bb381ec328f646d7e917c6ccdfbb",
+        "sourceCoordinateSetSha256": "d43dca6357175d4802658e32bdf3c8c1617ab642919ac74e169a389140108a98",
+        "sourceCoordinateHashPreamble": null,
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false,
+        "semantic": "CANDIDATE_EXCAVATION_AND_SEALED_CAP_ENVELOPES_NO_MATERIAL_OR_STORAGE_ACCEPTED",
+        "roleStreamSha256": "ec3dc5bf4d6bec30d470c1412780e80872e5ffd67f4a5f14623d7614cdf24303"
+      },
+      "interaction": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 432,
+        "bounds": {
+          "minX": 432,
+          "maxX": 1535,
+          "minY": 57,
+          "maxY": 109,
+          "minZ": -276,
+          "maxZ": 58
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "020c27307584d1dc756e9b336cb19c2dda686162a8e0823bd33a520a909a0fed",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nD02/interaction\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 72,
+          "intervalCount": 72,
+          "intervalManifestSha256": "3d17bcd545eaab50c2f3cd27bc25faa6e97a96e3556a771b50d1ddb0414bd64d"
+        },
+        "componentCount": 42,
+        "largestComponentCellCount": 54,
+        "componentSizeMultisetSha256": "157661bfa176027965e76683d1b6e9b0e6d3bb381ec328f646d7e917c6ccdfbb",
+        "sourceCoordinateSetSha256": "f671e5f2828825e7b1017043f2cfda67bbcfdbc27cad3294bef1810f12e5390d",
+        "sourceCoordinateHashPreamble": "combined-zones-civil-life-safety-domain-closure-cell-set-v1\\n",
+        "semantic": "WHOLE_KNOWN_D02_INTERACTION_PROPOSAL_NO_FLOW_LOADING_OR_GENERIC_HALO_CREDIT",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "influence": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 456,
+        "bounds": {
+          "minX": 430,
+          "maxX": 1535,
+          "minY": 57,
+          "maxY": 109,
+          "minZ": -276,
+          "maxZ": 99
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "f870407859b79aa6048b8c6d4411b5a58cdf2444e20858c04b7c5aa8ab98563f",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nD02/influence\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 96,
+          "intervalCount": 96,
+          "intervalManifestSha256": "4f32afd3ae09aceacbcca9cb8f5751aed34a546780651dc5493b4e63a1f5dae5"
+        },
+        "componentCount": 43,
+        "largestComponentCellCount": 54,
+        "componentSizeMultisetSha256": "27380e352e6c8b5109a3bbad46b3c64318849e6a6f44751c2b1d6edbf5cb35a2",
+        "sourceCoordinateSetSha256": "b028679e8db88801bff71bc6be20f889aa0fb508a5496a64076040fc1c2c4d78",
+        "sourceCoordinateHashPreamble": "combined-zones-civil-life-safety-domain-closure-cell-set-v1\\n",
+        "semantic": "KNOWN_D02_INTERACTION_PLUS_ROAD_LOW_001_PRESERVATION_NOT_EXPERT_KERNEL",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "exactInterfaceReferenceLedger": {
+        "inletInterfaceCount": 10,
+        "inletInterfaceCellCount": 16,
+        "acceptedInterfaceCount": 0,
+        "canonicalInteractionUnion": null
+      },
+      "boundedC01StackInteractionEvidence": {
+        "status": "PARTIAL_PASS_EXACT_BOUNDED_D02_C01_PROPOSAL_D02_G03_G04_G05_HOLD",
+        "proposalPayloadSha256": "eff111ab974e6457ab042ed7639e48ed3e170d346b32a74328aad53b7561ce94",
+        "exactSubsetCount": 7,
+        "exactSubsets": [
+          {
+            "subsetId": "c1LandTakeTerminalDatum",
+            "representation": "EXACT_INTEGER_CELL_SET_HASH_ONLY",
+            "cellCount": 7803,
+            "bounds": {
+              "minX": 430,
+              "maxX": 718,
+              "minY": 68,
+              "maxY": 102,
+              "minZ": 32,
+              "maxZ": 58
+            },
+            "coordinateSetSha256": "ca41d364eb1c9536550d6bb1d174a73b3b712772afec7407132085c81b0e9860",
+            "intervalManifestSha256": null,
+            "accepted": false
+          },
+          {
+            "subsetId": "c1RailFormation",
+            "representation": "EXACT_INTEGER_CELL_SET_HASH_ONLY",
+            "cellCount": 2601,
+            "bounds": {
+              "minX": 430,
+              "maxX": 718,
+              "minY": 68,
+              "maxY": 102,
+              "minZ": 50,
+              "maxZ": 58
+            },
+            "coordinateSetSha256": "7e396875244e5353bafc850208a000daa681f9ee91d7f7ce2eb098a3b66f4898",
+            "intervalManifestSha256": null,
+            "accepted": false
+          },
+          {
+            "subsetId": "c1RoadSurface",
+            "representation": "EXACT_INTEGER_CELL_SET_HASH_ONLY",
+            "cellCount": 0,
+            "bounds": null,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "intervalManifestSha256": null,
+            "accepted": false
+          },
+          {
+            "subsetId": "c1RailCollection",
+            "representation": "EXACT_INTEGER_CELL_SET_HASH_ONLY",
+            "cellCount": 578,
+            "bounds": {
+              "minX": 430,
+              "maxX": 718,
+              "minY": 68,
+              "maxY": 102,
+              "minZ": 50,
+              "maxZ": 51
+            },
+            "coordinateSetSha256": "aa00eb7a48249abf28244d881e691867751fd71f61edfb39d42c26812bd37b92",
+            "intervalManifestSha256": null,
+            "accepted": false
+          },
+          {
+            "subsetId": "c1RoadCollection",
+            "representation": "EXACT_INTEGER_CELL_SET_HASH_ONLY",
+            "cellCount": 0,
+            "bounds": null,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+            "intervalManifestSha256": null,
+            "accepted": false
+          },
+          {
+            "subsetId": "d02CappedSumpCandidate",
+            "representation": "EXACT_INTEGER_CELL_SET_HASH_ONLY",
+            "cellCount": 54,
+            "bounds": {
+              "minX": 432,
+              "maxX": 434,
+              "minY": 63,
+              "maxY": 68,
+              "minZ": 49,
+              "maxZ": 51
+            },
+            "coordinateSetSha256": "8d45d5e8e58be3cb4f127f225e6338b144bcefb04462759c2e099c7b5da38bbc",
+            "intervalManifestSha256": null,
+            "accepted": false
+          },
+          {
+            "subsetId": "loadingSeparationReservation",
+            "representation": "EXACT_INLINE_VERTICAL_INTEGER_INTERVALS",
+            "cellCount": 944298,
+            "bounds": {
+              "minX": 430,
+              "maxX": 718,
+              "minY": -36,
+              "maxY": 101,
+              "minZ": 32,
+              "maxZ": 58
+            },
+            "coordinateSetSha256": null,
+            "intervalManifestSha256": "1fa1a8295a1e48bee4f2e31506538674b759da07486a4a0d471c53f2ad9d02af",
+            "accepted": false
+          }
+        ],
+        "wholeD02CanonicalInteractionUnion": null,
+        "wholeD02CanonicalInfluenceUnion": null,
+        "interpretation": "Bounded C01-stack subsets remove local ambiguity only and are not promoted into whole-D02 canonical domains."
+      }
+    },
+    {
+      "scopeId": "D06-RESERVATIONS",
+      "selectedIdentity": "D06-EXACT-REFERENCE-LEDGER-V1",
+      "disposition": "ALL_EXACT_SOURCE_BOUND_REFERENCE_UNION_DOMAINS_COMPILED_FUNCTIONAL_AND_ACCEPTANCE_HOLD",
+      "construction": {
+        "status": "PROPOSED_EXACT_SOURCE_BOUND_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "EXACT_DETERMINISTIC_INTEGER_CELL_SET_HASH_ONLY",
+        "cellCount": 19836,
+        "bounds": {
+          "minX": 1643,
+          "maxX": 2111,
+          "minY": -59,
+          "maxY": 102,
+          "minZ": -431,
+          "maxZ": 160
+        },
+        "sourceCoordinateSetSha256": "98fbedb97343de4217a7e206287e23374761a6c404b9571f9d5abda03d955e8a",
+        "sourceCoordinateHashPreamble": "combined-zones-civil-life-safety-domain-closure-cell-set-v1\n",
+        "exactIntegerCellSetIdentitySha256": "98fbedb97343de4217a7e206287e23374761a6c404b9571f9d5abda03d955e8a",
+        "sourceDerivation": "Canonical union of the exact D06 source references except the explicit B07 interaction-union reference; duplicates merge by coordinate.",
+        "semantic": "RESERVATION_AND_CAP_CONSTRUCTION_DOMAIN_PROPOSAL_NOT_PHYSICAL_CONSTRUCTION_TARGETS",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "interaction": {
+        "status": "PROPOSED_EXACT_SOURCE_BOUND_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "EXACT_DETERMINISTIC_INTEGER_CELL_SET_HASH_ONLY",
+        "cellCount": 25310,
+        "bounds": {
+          "minX": 1643,
+          "maxX": 2112,
+          "minY": -60,
+          "maxY": 102,
+          "minZ": -432,
+          "maxZ": 160
+        },
+        "sourceCoordinateSetSha256": "1576d6833c6b27a3301980ac4605c6e3e084ae1b484f00304abcf130f6e5892a",
+        "sourceCoordinateHashPreamble": "combined-zones-civil-life-safety-domain-closure-cell-set-v1\n",
+        "exactIntegerCellSetIdentitySha256": "1576d6833c6b27a3301980ac4605c6e3e084ae1b484f00304abcf130f6e5892a",
+        "sourceDerivation": "Canonical coordinate union of all 73 independently reproduced D06 reservation references, including the selected B07 interaction union.",
+        "semantic": "SOURCE_REFERENCE_INTERACTION_PROPOSAL_DUPLICATES_MERGED_NO_FUNCTIONAL_CREDIT",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "influence": {
+        "status": "PROPOSED_EXACT_SOURCE_BOUND_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "EXACT_DETERMINISTIC_INTEGER_CELL_SET_HASH_ONLY",
+        "cellCount": 25310,
+        "bounds": {
+          "minX": 1643,
+          "maxX": 2112,
+          "minY": -60,
+          "maxY": 102,
+          "minZ": -432,
+          "maxZ": 160
+        },
+        "sourceCoordinateSetSha256": "1576d6833c6b27a3301980ac4605c6e3e084ae1b484f00304abcf130f6e5892a",
+        "sourceCoordinateHashPreamble": "combined-zones-civil-life-safety-domain-closure-cell-set-v1\n",
+        "exactIntegerCellSetIdentitySha256": "1576d6833c6b27a3301980ac4605c6e3e084ae1b484f00304abcf130f6e5892a",
+        "sourceDerivation": "The exact 73-reference interaction union reused as the strongest source-limited influence reservation; no cell margin is added.",
+        "semantic": "SOURCE_LIMITED_COORDINATION_INFLUENCE_RESERVATION_NOT_LIFE_SAFETY_SMOKE_FIRE_LIFT_POWER_OR_DRAINAGE_KERNEL",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "exactReservationReferenceLedger": {
+        "referenceCount": 73,
+        "passedReferenceCount": 73,
+        "failedReferenceCount": 0,
+        "allPassed": true,
+        "references": [
+          {
+            "logicalPath": "b07WestTwo/excavationReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/b07PublicShaftTransfer/candidates/2/exactCellSets/excavationReservation",
+            "cellCount": 8134,
+            "bounds": {
+              "minX": 2103,
+              "maxX": 2111,
+              "minY": -59,
+              "maxY": 72,
+              "minZ": -431,
+              "maxZ": -395
+            },
+            "coordinateSetSha256": "d58f20c6ad6581487e2a6ba72754d40ce22d49981da7450b44ad5e37325e5e59",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "b07WestTwo/interactionUnion",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/b07PublicShaftTransfer/candidates/2/exactCellSets/interactionUnion",
+            "cellCount": 13608,
+            "bounds": {
+              "minX": 2102,
+              "maxX": 2112,
+              "minY": -60,
+              "maxY": 73,
+              "minZ": -432,
+              "maxZ": -394
+            },
+            "coordinateSetSha256": "dd2cc387b0e5f6517ec48176c820e05f5fef5ff9793c74d32d4a5262582e5a8d",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "protectedEgressAndAccessibleLiftCores/selectedLayouts/0/combinedProtectedCoreReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/0/combinedProtectedCoreReservation",
+            "cellCount": 1911,
+            "bounds": {
+              "minX": 1649,
+              "maxX": 1655,
+              "minY": 42,
+              "maxY": 80,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "coordinateSetSha256": "a166e3326d919ada46b43e985de9a98b2a0d98465334cf261a6e41df4709b02f",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "protectedEgressAndAccessibleLiftCores/selectedLayouts/0/protectedStairReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/0/layoutAlternatives/0/stairReservation",
+            "cellCount": 819,
+            "bounds": {
+              "minX": 1649,
+              "maxX": 1651,
+              "minY": 42,
+              "maxY": 80,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "coordinateSetSha256": "a33e2ca05e93da0f96bc0a6da14decc80a18e0b2257e217600e3b11f59da6e40",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "protectedEgressAndAccessibleLiftCores/selectedLayouts/0/accessibleLiftReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/0/layoutAlternatives/0/accessibleLiftReservation",
+            "cellCount": 351,
+            "bounds": {
+              "minX": 1653,
+              "maxX": 1655,
+              "minY": 42,
+              "maxY": 80,
+              "minZ": 147,
+              "maxZ": 149
+            },
+            "coordinateSetSha256": "c1bc6c20f6f4aa6e3be3a91d0a5dd0e4fcbcb3285d6821498d9a700a2b208972",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "protectedEgressAndAccessibleLiftCores/selectedLayouts/0/compartmentSeparatorCap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/0/compartmentSeparatorCap",
+            "cellCount": 273,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1652,
+              "minY": 42,
+              "maxY": 80,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "coordinateSetSha256": "0fb716d5308a394290e14e7dda693659d95dc7ba9ae80456d620b447f35dc08e",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "protectedEgressAndAccessibleLiftCores/selectedLayouts/0/roofTransitionCap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/0/retainedRoofTransitionCap",
+            "cellCount": 49,
+            "bounds": {
+              "minX": 1649,
+              "maxX": 1655,
+              "minY": 54,
+              "maxY": 54,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "coordinateSetSha256": "8855b0c9cbae55fd1f5870788594dbc401f1b2aae0eaf4541e4afd931c78dad2",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "protectedEgressAndAccessibleLiftCores/selectedLayouts/0/surfaceOutletCap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/0/retainedSurfaceOutletCap",
+            "cellCount": 49,
+            "bounds": {
+              "minX": 1649,
+              "maxX": 1655,
+              "minY": 80,
+              "maxY": 80,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "coordinateSetSha256": "cd19c4a760aad1ad1610b1d5df91e301edae759542ec7bc8b7df83b10bd278e1",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "protectedEgressAndAccessibleLiftCores/selectedLayouts/1/combinedProtectedCoreReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/1/combinedProtectedCoreReservation",
+            "cellCount": 1470,
+            "bounds": {
+              "minX": 1849,
+              "maxX": 1855,
+              "minY": 42,
+              "maxY": 71,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "coordinateSetSha256": "289b8f020397d992d304bec1bae5675c4c79581088b3656b6b03bc4ea0f37ff6",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "protectedEgressAndAccessibleLiftCores/selectedLayouts/1/protectedStairReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/1/layoutAlternatives/0/stairReservation",
+            "cellCount": 630,
+            "bounds": {
+              "minX": 1849,
+              "maxX": 1851,
+              "minY": 42,
+              "maxY": 71,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "coordinateSetSha256": "2b32e8434746485edb83672a27a013a9f58dfcdd4394df30a49999dd4ae8be94",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "protectedEgressAndAccessibleLiftCores/selectedLayouts/1/accessibleLiftReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/1/layoutAlternatives/0/accessibleLiftReservation",
+            "cellCount": 270,
+            "bounds": {
+              "minX": 1853,
+              "maxX": 1855,
+              "minY": 42,
+              "maxY": 71,
+              "minZ": 147,
+              "maxZ": 149
+            },
+            "coordinateSetSha256": "f901500ff0e8dc8f056a660334a255c5cdfb62cbf49713fbca0be7a262a62e08",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "protectedEgressAndAccessibleLiftCores/selectedLayouts/1/compartmentSeparatorCap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/1/compartmentSeparatorCap",
+            "cellCount": 210,
+            "bounds": {
+              "minX": 1852,
+              "maxX": 1852,
+              "minY": 42,
+              "maxY": 71,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "coordinateSetSha256": "d137519bad05adfb3acd0fb38cc737b68c3e4dff627077f2f91b25b8a97412bf",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "protectedEgressAndAccessibleLiftCores/selectedLayouts/1/roofTransitionCap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/1/retainedRoofTransitionCap",
+            "cellCount": 49,
+            "bounds": {
+              "minX": 1849,
+              "maxX": 1855,
+              "minY": 54,
+              "maxY": 54,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "coordinateSetSha256": "900747ce1bc8c00b56a1e6d324f8db325d63ed770b550f55268b1fe13d959a6e",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "protectedEgressAndAccessibleLiftCores/selectedLayouts/1/surfaceOutletCap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/protectedEgressCoreLayouts/1/retainedSurfaceOutletCap",
+            "cellCount": 49,
+            "bounds": {
+              "minX": 1849,
+              "maxX": 1855,
+              "minY": 71,
+              "maxY": 71,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "coordinateSetSha256": "8d48d1a51dba8a54a2c11ad41f97482664a001cc3d943073fce9756ee41ac365",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/localVentRisers/0/reservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/ventilationOutletAlternatives/alternatives/0/risers/0/riserReservation",
+            "cellCount": 279,
+            "bounds": {
+              "minX": 1643,
+              "maxX": 1645,
+              "minY": 55,
+              "maxY": 85,
+              "minZ": 47,
+              "maxZ": 49
+            },
+            "coordinateSetSha256": "4efe5a411b79bc1763d2727a9e0a0da6510d93026e4e4fd2df58051f79f01494",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/localVentRisers/1/reservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/ventilationOutletAlternatives/alternatives/0/risers/1/riserReservation",
+            "cellCount": 432,
+            "bounds": {
+              "minX": 1859,
+              "maxX": 1861,
+              "minY": 55,
+              "maxY": 102,
+              "minZ": 47,
+              "maxZ": 49
+            },
+            "coordinateSetSha256": "80d490ba63e7995c4bf51b8bb22fe1156916cf1e18d1498fd7fb7b54d45489b5",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/localVentRisers/2/reservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/ventilationOutletAlternatives/alternatives/0/risers/2/riserReservation",
+            "cellCount": 99,
+            "bounds": {
+              "minX": 1643,
+              "maxX": 1645,
+              "minY": 55,
+              "maxY": 65,
+              "minZ": 151,
+              "maxZ": 153
+            },
+            "coordinateSetSha256": "dee692ea4f624c9719eb0d4a063db5b6ecc72bfed18f85b821fdb2450115262e",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/localVentRisers/3/reservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/ventilationOutletAlternatives/alternatives/0/risers/3/riserReservation",
+            "cellCount": 90,
+            "bounds": {
+              "minX": 1859,
+              "maxX": 1861,
+              "minY": 55,
+              "maxY": 64,
+              "minZ": 151,
+              "maxZ": 153
+            },
+            "coordinateSetSha256": "9abc0cb37f032b9bbf7985d3f76fcb7623bf069035f23fa28cf200406c528e8c",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/localVentUnion",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/ventilationOutletAlternatives/alternatives/0/combinedReservation",
+            "cellCount": 900,
+            "bounds": {
+              "minX": 1643,
+              "maxX": 1861,
+              "minY": 55,
+              "maxY": 102,
+              "minZ": 47,
+              "maxZ": 153
+            },
+            "coordinateSetSha256": "f7cccb2106ac69157546711a7467c0d4d6b317a81b95f91c4a41f7567c789453",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/0/retainedClosedBarrierReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/0/retainedClosedBarrierReservation",
+            "cellCount": 178,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 56,
+              "maxZ": 56
+            },
+            "coordinateSetSha256": "f0618b3a493bcc6219573427a5c9ef1c0b3438d59fb136789010fd74ad9785ca",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/0/staticGateBayCap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/0/staticGateBayCap",
+            "cellCount": 24,
+            "bounds": {
+              "minX": 1664,
+              "maxX": 1738,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 56,
+              "maxZ": 56
+            },
+            "coordinateSetSha256": "cde4a40c1c0499843ed100a31330eb414b837bee53c747b610003808056f4ff1",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/0/completeFailClosedBarrier",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/0/completeFailClosedBarrier",
+            "cellCount": 202,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 56,
+              "maxZ": 56
+            },
+            "coordinateSetSha256": "d9b9b6fe0ee06d6e8dcd3bf6bdf65953e08c843659b6e042a265da9e6c4eef83",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/1/retainedClosedBarrierReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/1/retainedClosedBarrierReservation",
+            "cellCount": 178,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 69,
+              "maxZ": 69
+            },
+            "coordinateSetSha256": "53096949eaad384fdc85a54baa867d45b5216116856e6c5f64e10dd19b798bcc",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/1/staticGateBayCap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/1/staticGateBayCap",
+            "cellCount": 24,
+            "bounds": {
+              "minX": 1664,
+              "maxX": 1738,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 69,
+              "maxZ": 69
+            },
+            "coordinateSetSha256": "e2059625df10bbdb411d1dd5d3767ac523832c1d0c6f2d5d493f266c16649519",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/1/completeFailClosedBarrier",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/1/completeFailClosedBarrier",
+            "cellCount": 202,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 69,
+              "maxZ": 69
+            },
+            "coordinateSetSha256": "9ef866929ae5134cd4c8e1cfc6cd9d60c05807e9140ec178300b2cb7cc877b07",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/2/retainedClosedBarrierReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/2/retainedClosedBarrierReservation",
+            "cellCount": 178,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 82,
+              "maxZ": 82
+            },
+            "coordinateSetSha256": "43554c7f80857ba4e030ca2133d35d341586013b5e4a2bdda50de70e1a2a734e",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/2/staticGateBayCap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/2/staticGateBayCap",
+            "cellCount": 24,
+            "bounds": {
+              "minX": 1664,
+              "maxX": 1738,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 82,
+              "maxZ": 82
+            },
+            "coordinateSetSha256": "fac73c3c6033b3db8bb69cf4f5934c664c27ba07baf31b830a0491cdf1fde041",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/2/completeFailClosedBarrier",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/2/completeFailClosedBarrier",
+            "cellCount": 202,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 82,
+              "maxZ": 82
+            },
+            "coordinateSetSha256": "a7848049ca8d3c334b1e0072714321441d91adcafddd8dad09995735e692c94c",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/3/retainedClosedBarrierReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/3/retainedClosedBarrierReservation",
+            "cellCount": 178,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 95,
+              "maxZ": 95
+            },
+            "coordinateSetSha256": "d8877e17f13798c74a35c0ffec39ecf796f7534dd97c689164145853b83f555f",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/3/staticGateBayCap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/3/staticGateBayCap",
+            "cellCount": 24,
+            "bounds": {
+              "minX": 1664,
+              "maxX": 1738,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 95,
+              "maxZ": 95
+            },
+            "coordinateSetSha256": "ef8c5bbb15b286402cf89225c73fbfe5e7cb7964953e95991a41f1bc8fde4b9b",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/3/completeFailClosedBarrier",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/3/completeFailClosedBarrier",
+            "cellCount": 202,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 95,
+              "maxZ": 95
+            },
+            "coordinateSetSha256": "1bcb0ba960a1a408f9c42f922446ed05c9af6b4ec4fe7b8da9a196428f06b60c",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/4/retainedClosedBarrierReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/4/retainedClosedBarrierReservation",
+            "cellCount": 178,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 108,
+              "maxZ": 108
+            },
+            "coordinateSetSha256": "2ed8dbdf0c9d516d019a4749ee57829ec7228feb99ef3376dcfa56793e5bf7cc",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/4/staticGateBayCap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/4/staticGateBayCap",
+            "cellCount": 24,
+            "bounds": {
+              "minX": 1664,
+              "maxX": 1738,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 108,
+              "maxZ": 108
+            },
+            "coordinateSetSha256": "0cba330c1588f046e16427ea591062e24e537da275fc5f7756a2018458d28acb",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/4/completeFailClosedBarrier",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/4/completeFailClosedBarrier",
+            "cellCount": 202,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 108,
+              "maxZ": 108
+            },
+            "coordinateSetSha256": "54e710c3940828253c81a0e81fded91e9cb98d6ca29930fe518748979f98b676",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/5/retainedClosedBarrierReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/5/retainedClosedBarrierReservation",
+            "cellCount": 178,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 121,
+              "maxZ": 121
+            },
+            "coordinateSetSha256": "9f909b819a17487998e7e2317b1747f6f20c33e9a9905b3486c8e07f7bce648c",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/5/staticGateBayCap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/5/staticGateBayCap",
+            "cellCount": 24,
+            "bounds": {
+              "minX": 1664,
+              "maxX": 1738,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 121,
+              "maxZ": 121
+            },
+            "coordinateSetSha256": "fb375ccd10e4d1018b1934a54c4e5d6986b4fc736bbf3db7a29f402c3fc70843",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/5/completeFailClosedBarrier",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/5/completeFailClosedBarrier",
+            "cellCount": 202,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 121,
+              "maxZ": 121
+            },
+            "coordinateSetSha256": "c588e894e35eb5ab27dade19abc3d78ae1b2671af91bd7ae88b25117011ccc93",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/6/retainedClosedBarrierReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/6/retainedClosedBarrierReservation",
+            "cellCount": 178,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 134,
+              "maxZ": 134
+            },
+            "coordinateSetSha256": "28ce108deed957a7fdd0deece5c6338e58e4fa7f7b8f58d869411a1036f2c7f4",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/6/staticGateBayCap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/6/staticGateBayCap",
+            "cellCount": 24,
+            "bounds": {
+              "minX": 1664,
+              "maxX": 1738,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 134,
+              "maxZ": 134
+            },
+            "coordinateSetSha256": "5be821e0fdbaff53876f41c72160251e93ad23eae23385a8a326a142d6bb1729",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/6/completeFailClosedBarrier",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/6/completeFailClosedBarrier",
+            "cellCount": 202,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 134,
+              "maxZ": 134
+            },
+            "coordinateSetSha256": "c0135bb6459650bbf9b4d6be61075702ddf7edde9e445f7854d8469fbe8a2349",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/7/retainedClosedBarrierReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/7/retainedClosedBarrierReservation",
+            "cellCount": 178,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 147,
+              "maxZ": 147
+            },
+            "coordinateSetSha256": "d497ab07a503874f94154d82cf1a2c566ad805d3bacfe81f1fd67903ef1157af",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/7/staticGateBayCap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/7/staticGateBayCap",
+            "cellCount": 24,
+            "bounds": {
+              "minX": 1664,
+              "maxX": 1738,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 147,
+              "maxZ": 147
+            },
+            "coordinateSetSha256": "79b8b4ec6783022fab1ce9e70e3a5286f2ca50865891536ed61ed6554df73759",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/platformBarriers/7/completeFailClosedBarrier",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/platformBarriers/7/completeFailClosedBarrier",
+            "cellCount": 202,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1752,
+              "minY": 42,
+              "maxY": 43,
+              "minZ": 147,
+              "maxZ": 147
+            },
+            "coordinateSetSha256": "b8b21200f7927b2310a9ea19cb9d52beafc2acedebee436e738782fc9eb8322c",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/smokeBoundaries/0/retainedBoundaryPlane",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/smokeBoundaries/0/retainedBoundaryPlane",
+            "cellCount": 1336,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1847,
+              "minY": 48,
+              "maxY": 54,
+              "minZ": 50,
+              "maxZ": 50
+            },
+            "coordinateSetSha256": "e0f0a57420bb1dfb40414bd3e47149074b4d2a737497929a3b894ea723aa8ff6",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/smokeBoundaries/0/staticOpeningCaps",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/smokeBoundaries/0/staticOpeningCaps",
+            "cellCount": 36,
+            "bounds": {
+              "minX": 1670,
+              "maxX": 1822,
+              "minY": 49,
+              "maxY": 51,
+              "minZ": 50,
+              "maxZ": 50
+            },
+            "coordinateSetSha256": "f26a93e1ef8c38f0ca79887eb0c59007615c096b201de2b6a0df3e6ef600d6ba",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/smokeBoundaries/0/completeFailClosedBoundary",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/smokeBoundaries/0/completeFailClosedBoundary",
+            "cellCount": 1372,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1847,
+              "minY": 48,
+              "maxY": 54,
+              "minZ": 50,
+              "maxZ": 50
+            },
+            "coordinateSetSha256": "9999247e9ad7dd126a7c25ebdbb4603478463fd53f6f8b6208eff7a69b58bdf0",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/smokeBoundaries/1/retainedBoundaryPlane",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/smokeBoundaries/1/retainedBoundaryPlane",
+            "cellCount": 1336,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1847,
+              "minY": 48,
+              "maxY": 54,
+              "minZ": 150,
+              "maxZ": 150
+            },
+            "coordinateSetSha256": "3e7f80c3a7a4c28a6fc21db4ef33a05db33274bf9c18b16e3b28f51d7f7140c1",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/smokeBoundaries/1/staticOpeningCaps",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/smokeBoundaries/1/staticOpeningCaps",
+            "cellCount": 36,
+            "bounds": {
+              "minX": 1670,
+              "maxX": 1822,
+              "minY": 49,
+              "maxY": 51,
+              "minZ": 150,
+              "maxZ": 150
+            },
+            "coordinateSetSha256": "8f58b00782b9c2e71f5a6f0dd30aa2261d9508c426c48e43c0262b34be5cde24",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "smokeVentilationAndBarriers/smokeBoundaries/1/completeFailClosedBoundary",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/failClosedBarriersAndSmokeInterfaces/smokeBoundaries/1/completeFailClosedBoundary",
+            "cellCount": 1372,
+            "bounds": {
+              "minX": 1652,
+              "maxX": 1847,
+              "minY": 48,
+              "maxY": 54,
+              "minZ": 150,
+              "maxZ": 150
+            },
+            "coordinateSetSha256": "7055645cb0c309d8f57ae81fba68e933ca64f7f038259ec501e8b8c21402796f",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "emergencyLightingAndPower/fixtureReservations/0/reservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+            "jsonPointer": "/d06/platforms/0/emergencyLightingDesign",
+            "cellCount": 7,
+            "bounds": {
+              "minX": 1660,
+              "maxX": 1748,
+              "minY": 46,
+              "maxY": 46,
+              "minZ": 62,
+              "maxZ": 62
+            },
+            "coordinateSetSha256": "c4e276c5989522b39288f437fd376781b2890ee16a251bb35cf7b7181068fc16",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "emergencyLightingAndPower/fixtureReservations/1/reservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+            "jsonPointer": "/d06/platforms/1/emergencyLightingDesign",
+            "cellCount": 7,
+            "bounds": {
+              "minX": 1660,
+              "maxX": 1748,
+              "minY": 46,
+              "maxY": 46,
+              "minZ": 75,
+              "maxZ": 75
+            },
+            "coordinateSetSha256": "35ec2571a795f3b3c8583b177b5bc7267a05b831412b8155d0f8dcd659f5af2c",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "emergencyLightingAndPower/fixtureReservations/2/reservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+            "jsonPointer": "/d06/platforms/2/emergencyLightingDesign",
+            "cellCount": 7,
+            "bounds": {
+              "minX": 1660,
+              "maxX": 1748,
+              "minY": 46,
+              "maxY": 46,
+              "minZ": 88,
+              "maxZ": 88
+            },
+            "coordinateSetSha256": "32a5a56117d6d5bb38c57e3e89befe0798497a8901dddecbb69ab7e52aad8b0d",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "emergencyLightingAndPower/fixtureReservations/3/reservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+            "jsonPointer": "/d06/platforms/3/emergencyLightingDesign",
+            "cellCount": 7,
+            "bounds": {
+              "minX": 1660,
+              "maxX": 1748,
+              "minY": 46,
+              "maxY": 46,
+              "minZ": 101,
+              "maxZ": 101
+            },
+            "coordinateSetSha256": "b51d2d52847daaf1a534c9951b6beb384ab91d4b3a8fa8db4bc3e41b9df2e588",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "emergencyLightingAndPower/fixtureReservations/4/reservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+            "jsonPointer": "/d06/platforms/4/emergencyLightingDesign",
+            "cellCount": 7,
+            "bounds": {
+              "minX": 1660,
+              "maxX": 1748,
+              "minY": 46,
+              "maxY": 46,
+              "minZ": 114,
+              "maxZ": 114
+            },
+            "coordinateSetSha256": "8a898f82dde8ddc37979a4bbce1c25a5663845215e0b81bda22df59c0aefc1f5",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "emergencyLightingAndPower/fixtureReservations/5/reservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+            "jsonPointer": "/d06/platforms/5/emergencyLightingDesign",
+            "cellCount": 7,
+            "bounds": {
+              "minX": 1660,
+              "maxX": 1748,
+              "minY": 46,
+              "maxY": 46,
+              "minZ": 127,
+              "maxZ": 127
+            },
+            "coordinateSetSha256": "740409cadfc4d3293d4e81871051733c1544a4da1b55f139df2f9d96c4dedd8d",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "emergencyLightingAndPower/fixtureReservations/6/reservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+            "jsonPointer": "/d06/platforms/6/emergencyLightingDesign",
+            "cellCount": 7,
+            "bounds": {
+              "minX": 1660,
+              "maxX": 1748,
+              "minY": 46,
+              "maxY": 46,
+              "minZ": 140,
+              "maxZ": 140
+            },
+            "coordinateSetSha256": "4abd3d46e28f727f0d11f61dfb376da6cadb8268b342f4df0a679fec5b1cfbf9",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "emergencyLightingAndPower/fixtureReservations/7/reservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+            "jsonPointer": "/d06/platforms/7/emergencyLightingDesign",
+            "cellCount": 7,
+            "bounds": {
+              "minX": 1660,
+              "maxX": 1748,
+              "minY": 46,
+              "maxY": 46,
+              "minZ": 153,
+              "maxZ": 153
+            },
+            "coordinateSetSha256": "bb463f50131bd4770f2a5e3cfa94104e7447bd0f86b092ccb64cca94dc103dca",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "cappedDrainage/localSumpInterfaceCaps/0/cap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/localSumpInterfaceCaps/0/cap",
+            "cellCount": 3,
+            "bounds": {
+              "minX": 1869,
+              "maxX": 1869,
+              "minY": 38,
+              "maxY": 38,
+              "minZ": 54,
+              "maxZ": 56
+            },
+            "coordinateSetSha256": "6b5c34914c98b9b20b9b9c87e93d23fea6a16216e81f18c1e0bb994d11dd812d",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "cappedDrainage/localSumpInterfaceCaps/1/cap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/localSumpInterfaceCaps/1/cap",
+            "cellCount": 3,
+            "bounds": {
+              "minX": 1869,
+              "maxX": 1869,
+              "minY": 38,
+              "maxY": 38,
+              "minZ": 67,
+              "maxZ": 69
+            },
+            "coordinateSetSha256": "52cfc5a746a20a6387dcace32b85c356c05bdf771709b4b702017831fee4e977",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "cappedDrainage/localSumpInterfaceCaps/2/cap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/localSumpInterfaceCaps/2/cap",
+            "cellCount": 3,
+            "bounds": {
+              "minX": 1869,
+              "maxX": 1869,
+              "minY": 38,
+              "maxY": 38,
+              "minZ": 80,
+              "maxZ": 82
+            },
+            "coordinateSetSha256": "0d6852bf550b19a20fe98f0d17c7cc8be8e4e596a344c96dd727fee93b926860",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "cappedDrainage/localSumpInterfaceCaps/3/cap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/localSumpInterfaceCaps/3/cap",
+            "cellCount": 3,
+            "bounds": {
+              "minX": 1869,
+              "maxX": 1869,
+              "minY": 38,
+              "maxY": 38,
+              "minZ": 93,
+              "maxZ": 95
+            },
+            "coordinateSetSha256": "41464b943fda8cac75d9128715567c56648e24e798467b17f78f95649c3c4189",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "cappedDrainage/localSumpInterfaceCaps/4/cap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/localSumpInterfaceCaps/4/cap",
+            "cellCount": 3,
+            "bounds": {
+              "minX": 1869,
+              "maxX": 1869,
+              "minY": 38,
+              "maxY": 38,
+              "minZ": 106,
+              "maxZ": 108
+            },
+            "coordinateSetSha256": "0454d303b36f28821d84a178a003277bbdc05a29eb3d83fea1125d404fdc09f8",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "cappedDrainage/localSumpInterfaceCaps/5/cap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/localSumpInterfaceCaps/5/cap",
+            "cellCount": 3,
+            "bounds": {
+              "minX": 1869,
+              "maxX": 1869,
+              "minY": 38,
+              "maxY": 38,
+              "minZ": 119,
+              "maxZ": 121
+            },
+            "coordinateSetSha256": "3ed62dab2cc78ee7737187628204f85dce866cd1bff8a413e4f9e724ee29342d",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "cappedDrainage/localSumpInterfaceCaps/6/cap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/localSumpInterfaceCaps/6/cap",
+            "cellCount": 3,
+            "bounds": {
+              "minX": 1869,
+              "maxX": 1869,
+              "minY": 38,
+              "maxY": 38,
+              "minZ": 132,
+              "maxZ": 134
+            },
+            "coordinateSetSha256": "8db8e861d30d93449444e6d4cc316ee0890078d6f65e1042575a09dfb3e5d193",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "cappedDrainage/localSumpInterfaceCaps/7/cap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/localSumpInterfaceCaps/7/cap",
+            "cellCount": 3,
+            "bounds": {
+              "minX": 1869,
+              "maxX": 1869,
+              "minY": 38,
+              "maxY": 38,
+              "minZ": 145,
+              "maxZ": 147
+            },
+            "coordinateSetSha256": "3c7d92a053dc2f8b6b365fddec9fa68cb092366cd53410398b446e9ec3165b02",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "cappedDrainage/capUnion",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/capUnion",
+            "cellCount": 24,
+            "bounds": {
+              "minX": 1869,
+              "maxX": 1869,
+              "minY": 38,
+              "maxY": 38,
+              "minZ": 54,
+              "maxZ": 147
+            },
+            "coordinateSetSha256": "13d7cb94e6425be2d777f9aaea7f4d93ccddca180e64509624e2cb498773af8c",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "cappedDrainage/retainedUnconnectedHeaderReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/retainedUnconnectedHeaderReservation",
+            "cellCount": 9,
+            "bounds": {
+              "minX": 1869,
+              "maxX": 1871,
+              "minY": 38,
+              "maxY": 38,
+              "minZ": 156,
+              "maxZ": 158
+            },
+            "coordinateSetSha256": "3806b527089b8f8030e53e91b3e1405cc7a3d95e779f3006400cc734861ca075",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "cappedDrainage/retainedExternalBoundaryCap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/drainageAlternatives/alternatives/0/retainedExternalBoundaryCap",
+            "cellCount": 9,
+            "bounds": {
+              "minX": 1872,
+              "maxX": 1872,
+              "minY": 38,
+              "maxY": 40,
+              "minZ": 156,
+              "maxZ": 158
+            },
+            "coordinateSetSha256": "2ae30ba16c2313388765732e4a70a8a1406e777d89009967aa6c4a2cc49226dc",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "fireAndServiceAccess/internalSpineReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/fireServiceAccessAlternatives/internalSpineReservation",
+            "cellCount": 3025,
+            "bounds": {
+              "minX": 1844,
+              "maxX": 1848,
+              "minY": 48,
+              "maxY": 52,
+              "minZ": 40,
+              "maxZ": 160
+            },
+            "coordinateSetSha256": "b3626dfd30c7c81aca2a6a4349e7273c1c760297ca736be9f869b1e2ec33dd2c",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "fireAndServiceAccess/internalTransferReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/fireServiceAccessAlternatives/alternatives/1/internalTransferReservation",
+            "cellCount": 0,
+            "bounds": null,
+            "coordinateSetSha256": "6e0987687e1b2d1a47ab30f68e00c162911552d18208737f0a356bed6b09e9ee",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "fireAndServiceAccess/normallyClosedSpineInterfaceCap",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/fireServiceAccessAlternatives/alternatives/1/normallyClosedSpineInterfaceCap",
+            "cellCount": 35,
+            "bounds": {
+              "minX": 1849,
+              "maxX": 1849,
+              "minY": 48,
+              "maxY": 52,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "coordinateSetSha256": "bee777d91f2bb4bc5aa433c06ef35548d162e1df7440fe7804771d41d889a3d7",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "fireAndServiceAccess/surfaceCompoundReservation",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/fireServiceAccessAlternatives/alternatives/1/surfaceCompoundReservation",
+            "cellCount": 49,
+            "bounds": {
+              "minX": 1849,
+              "maxX": 1855,
+              "minY": 71,
+              "maxY": 71,
+              "minZ": 145,
+              "maxZ": 151
+            },
+            "coordinateSetSha256": "8d48d1a51dba8a54a2c11ad41f97482664a001cc3d943073fce9756ee41ac365",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          },
+          {
+            "logicalPath": "fireAndServiceAccess/sealedSurfaceApproachInterface",
+            "sourcePath": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+            "jsonPointer": "/d06EmptyEightLifeSafety/fireServiceAccessAlternatives/alternatives/1/sealedSurfaceApproachInterface",
+            "cellCount": 21,
+            "bounds": {
+              "minX": 1849,
+              "maxX": 1855,
+              "minY": 71,
+              "maxY": 73,
+              "minZ": 151,
+              "maxZ": 151
+            },
+            "coordinateSetSha256": "76aaafd48f38527dd5dd0eb3526c7b28c9b26ba7e82597d91ecea5d55b8eaba3",
+            "result": "PASS_EXACT_REFERENCE_REPRODUCED",
+            "interpretation": "Candidate reservation/cap identity only; not a mechanism, construction set, or operation."
+          }
+        ],
+        "interpretation": "Exact source identities only; this ledger is not a set union, mechanism design, material manifest, or operation plan."
+      }
+    },
+    {
+      "scopeId": "D06-MECHANISMS",
+      "selectedIdentity": "D06-DETAILED-MECHANISM-CIRCUIT-SETOUT-PROPOSAL",
+      "disposition": "ALL_EXACT_DETAILED_FUNCTIONAL_PROPOSAL_DOMAINS_COMPILED_FUNCTIONAL_AND_ACCEPTANCE_HOLD",
+      "construction": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 9065,
+        "bounds": {
+          "minX": 1643,
+          "maxX": 1872,
+          "minY": 38,
+          "maxY": 102,
+          "minZ": 40,
+          "maxZ": 160
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "3d389f1d42a9a7261010e29e3f64ed130d46bdefdff5fb325dc9cebdb2bec436",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nD06-MECHANISMS/construction\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 1779,
+          "intervalCount": 2635,
+          "intervalManifestSha256": "43823742beb238513a9dae503f32b33ceb1c5f466d62077a070615e3b07faf26"
+        },
+        "componentCount": 56,
+        "largestComponentCellCount": 3996,
+        "componentSizeMultisetSha256": "a93cafa1874a86d6237ba5adb86beedc82ee07e98b9a9f81c20eed4c7dd7d9e9",
+        "sourceCoordinateSetSha256": "9a5f1af375293b7cb3bfa06f81f9abd940415656b930a64e386bd123fbe44d8e",
+        "sourceCoordinateHashPreamble": "combined-zones-civil-life-safety-domain-closure-cell-set-v1\\n",
+        "semantic": "DETAILED_FUNCTIONAL_TARGET_UNION_NOT_ACCEPTED_MECHANISM_OR_BUILD_STATE",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "interaction": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 9065,
+        "bounds": {
+          "minX": 1643,
+          "maxX": 1872,
+          "minY": 38,
+          "maxY": 102,
+          "minZ": 40,
+          "maxZ": 160
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "3d389f1d42a9a7261010e29e3f64ed130d46bdefdff5fb325dc9cebdb2bec436",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nD06-MECHANISMS/interaction\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 1779,
+          "intervalCount": 2635,
+          "intervalManifestSha256": "0cebac79256bb464294421d82ede9edfb95d47975c4aa5ccbc6e244a7194ff6c"
+        },
+        "componentCount": 56,
+        "largestComponentCellCount": 3996,
+        "componentSizeMultisetSha256": "a93cafa1874a86d6237ba5adb86beedc82ee07e98b9a9f81c20eed4c7dd7d9e9",
+        "sourceCoordinateSetSha256": "1ff4f48f25578769d5cafe2f1348903f54e562a6133680fa959087ad9bf4130b",
+        "sourceCoordinateHashPreamble": "combined-zones-d06-life-safety-cell-set-v1\\n",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false,
+        "semantic": "DETAILED_FUNCTIONAL_SET_OUT_UNION_NOT_CONSTRUCTION_OR_ACCEPTED_MECHANISM_STATE"
+      },
+      "influence": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 9065,
+        "bounds": {
+          "minX": 1643,
+          "maxX": 1872,
+          "minY": 38,
+          "maxY": 102,
+          "minZ": 40,
+          "maxZ": 160
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "3d389f1d42a9a7261010e29e3f64ed130d46bdefdff5fb325dc9cebdb2bec436",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nD06-MECHANISMS/influence\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 1779,
+          "intervalCount": 2635,
+          "intervalManifestSha256": "2f263f80124c70c39457a085b79f5f9238d2506737fe61262ac781f9c19d162c"
+        },
+        "componentCount": 56,
+        "largestComponentCellCount": 3996,
+        "componentSizeMultisetSha256": "a93cafa1874a86d6237ba5adb86beedc82ee07e98b9a9f81c20eed4c7dd7d9e9",
+        "sourceCoordinateSetSha256": "9a5f1af375293b7cb3bfa06f81f9abd940415656b930a64e386bd123fbe44d8e",
+        "sourceCoordinateHashPreamble": "combined-zones-civil-life-safety-domain-closure-cell-set-v1\\n",
+        "semantic": "SOURCE_LIMITED_FUNCTIONAL_COORDINATION_RESERVATION_NOT_EXPERT_KERNEL",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "nullSlotSummary": {
+        "acceptedMechanismManifestCount": 0,
+        "exactCircuitManifestCount": 0,
+        "physicalOpeningCount": 0,
+        "acceptedReceiverCount": 0,
+        "acceptedOwnerCount": 0,
+        "acceptedInterfaceContractCount": 0
+      },
+      "exactDetailedProposalLedger": {
+        "status": "PASS_EXACT_PROPOSAL_ONLY_FUNCTIONAL_AND_TECHNICAL_ACCEPTANCE_HOLD",
+        "reportIdentitySha256": "55eaab99b53aac1de53e81128026ff509de7a6efb9614b7e390c4f9cbe37c12f",
+        "proposalLayerCount": 31,
+        "setoutManifestSha256": "697a9b522789e557185ec1855e037fe81b3f96af1b93b78eae22d01d38c6ac80",
+        "precedenceManifestSha256": "4b3cc766d11185cd9ec8be9c11ac359452def3ec94bf016545ebfccbee3a2663",
+        "rawProposalMembershipCount": 9464,
+        "uniqueProposalCellCount": 9065,
+        "duplicateCoordinateCount": 242,
+        "layers": [
+          {
+            "layerId": "smokeDoorMechanismBays",
+            "priority": 1,
+            "group": "SMOKE_AND_BARRIERS",
+            "proposedFunction": "TWO_FAIL_CLOSED_SMOKE_DOOR_BAY_GROUPS",
+            "basis": "EXACT_SOURCE_REFERENCE",
+            "rawProposalCellCount": 72,
+            "rawProposalCoordinateSetSha256": "eb353fdc0ee1b8bb957fcd5a94d56c5b1c249005b93356c432e4e103692f1584",
+            "canonicalProposalCellCount": 72,
+            "canonicalProposalCoordinateSetSha256": "eb353fdc0ee1b8bb957fcd5a94d56c5b1c249005b93356c432e4e103692f1584",
+            "accepted": false
+          },
+          {
+            "layerId": "platformGateMechanismBays",
+            "priority": 2,
+            "group": "SMOKE_AND_BARRIERS",
+            "proposedFunction": "EIGHT_FAIL_CLOSED_PLATFORM_GATE_BAY_GROUPS",
+            "basis": "EXACT_SOURCE_REFERENCE",
+            "rawProposalCellCount": 192,
+            "rawProposalCoordinateSetSha256": "fa344e75b978961fc2c914e34f01e90cb8243a16be83f090999ba941c4b3e2b5",
+            "canonicalProposalCellCount": 192,
+            "canonicalProposalCoordinateSetSha256": "fa344e75b978961fc2c914e34f01e90cb8243a16be83f090999ba941c4b3e2b5",
+            "accepted": false
+          },
+          {
+            "layerId": "externalDrainBoundaryCap",
+            "priority": 3,
+            "group": "DRAINAGE",
+            "proposedFunction": "SEALED_EXTERNAL_DRAIN_BOUNDARY_CAP",
+            "basis": "EXACT_SOURCE_REFERENCE",
+            "rawProposalCellCount": 9,
+            "rawProposalCoordinateSetSha256": "2ae30ba16c2313388765732e4a70a8a1406e777d89009967aa6c4a2cc49226dc",
+            "canonicalProposalCellCount": 9,
+            "canonicalProposalCoordinateSetSha256": "2ae30ba16c2313388765732e4a70a8a1406e777d89009967aa6c4a2cc49226dc",
+            "accepted": false
+          },
+          {
+            "layerId": "fireSurfaceApproachCap",
+            "priority": 4,
+            "group": "FIRE_AND_SERVICE",
+            "proposedFunction": "SEALED_SURFACE_APPROACH_CAP",
+            "basis": "EXACT_SOURCE_REFERENCE",
+            "rawProposalCellCount": 21,
+            "rawProposalCoordinateSetSha256": "76aaafd48f38527dd5dd0eb3526c7b28c9b26ba7e82597d91ecea5d55b8eaba3",
+            "canonicalProposalCellCount": 21,
+            "canonicalProposalCoordinateSetSha256": "76aaafd48f38527dd5dd0eb3526c7b28c9b26ba7e82597d91ecea5d55b8eaba3",
+            "accepted": false
+          },
+          {
+            "layerId": "fireServiceInterfaceCap",
+            "priority": 5,
+            "group": "FIRE_AND_SERVICE",
+            "proposedFunction": "NORMALLY_CLOSED_SPINE_INTERFACE_CAP",
+            "basis": "EXACT_SOURCE_REFERENCE",
+            "rawProposalCellCount": 35,
+            "rawProposalCoordinateSetSha256": "bee777d91f2bb4bc5aa433c06ef35548d162e1df7440fe7804771d41d889a3d7",
+            "canonicalProposalCellCount": 35,
+            "canonicalProposalCoordinateSetSha256": "bee777d91f2bb4bc5aa433c06ef35548d162e1df7440fe7804771d41d889a3d7",
+            "accepted": false
+          },
+          {
+            "layerId": "egaLiftEquipmentCaps",
+            "priority": 6,
+            "group": "STAIR_LIFT_AND_TRANSFER",
+            "proposedFunction": "EG-A_LIFT_END_EQUIPMENT_RESERVATION",
+            "basis": "DERIVED_PROPOSAL",
+            "rawProposalCellCount": 18,
+            "rawProposalCoordinateSetSha256": "41aa9e385d03f5fc222489f7f8757ecde4aa6fe533725ba1c512a73121bd9f0c",
+            "canonicalProposalCellCount": 18,
+            "canonicalProposalCoordinateSetSha256": "41aa9e385d03f5fc222489f7f8757ecde4aa6fe533725ba1c512a73121bd9f0c",
+            "accepted": false
+          },
+          {
+            "layerId": "egbLiftEquipmentCaps",
+            "priority": 7,
+            "group": "STAIR_LIFT_AND_TRANSFER",
+            "proposedFunction": "EG-B_LIFT_END_EQUIPMENT_RESERVATION",
+            "basis": "DERIVED_PROPOSAL",
+            "rawProposalCellCount": 18,
+            "rawProposalCoordinateSetSha256": "7e4d1a166dfe205f850a20d837d0c8a1414fbe7bf223003a434b772d114f2a48",
+            "canonicalProposalCellCount": 18,
+            "canonicalProposalCoordinateSetSha256": "7e4d1a166dfe205f850a20d837d0c8a1414fbe7bf223003a434b772d114f2a48",
+            "accepted": false
+          },
+          {
+            "layerId": "egaStairEquipmentCaps",
+            "priority": 8,
+            "group": "STAIR_LIFT_AND_TRANSFER",
+            "proposedFunction": "EG-A_STAIR_END_EQUIPMENT_RESERVATION",
+            "basis": "DERIVED_PROPOSAL",
+            "rawProposalCellCount": 42,
+            "rawProposalCoordinateSetSha256": "3283a1b19354f55f41fdb16c0b53095bbb83592c424078aa608e25acc71a5fd5",
+            "canonicalProposalCellCount": 42,
+            "canonicalProposalCoordinateSetSha256": "3283a1b19354f55f41fdb16c0b53095bbb83592c424078aa608e25acc71a5fd5",
+            "accepted": false
+          },
+          {
+            "layerId": "egbStairEquipmentCaps",
+            "priority": 9,
+            "group": "STAIR_LIFT_AND_TRANSFER",
+            "proposedFunction": "EG-B_STAIR_END_EQUIPMENT_RESERVATION",
+            "basis": "DERIVED_PROPOSAL",
+            "rawProposalCellCount": 42,
+            "rawProposalCoordinateSetSha256": "f3e6521360fc685fb5392fad3f74547647a6dff4742047abb90e620831ab6806",
+            "canonicalProposalCellCount": 39,
+            "canonicalProposalCoordinateSetSha256": "949d25a294660f29ee6cdc5fda4c74f4bb61d1cce29fed7d269a0d623ea2cdd0",
+            "accepted": false
+          },
+          {
+            "layerId": "egaTransferLandings",
+            "priority": 10,
+            "group": "STAIR_LIFT_AND_TRANSFER",
+            "proposedFunction": "EG-A_LOWER_ROOF_AND_SURFACE_TRANSFER_LANDINGS",
+            "basis": "DERIVED_PROPOSAL",
+            "rawProposalCellCount": 147,
+            "rawProposalCoordinateSetSha256": "bab7600c03eab6cdc24686597662455b99e23ccf2c61d174d1c67f0f712838e1",
+            "canonicalProposalCellCount": 87,
+            "canonicalProposalCoordinateSetSha256": "5ba09413f1112887438b35f281322e023eeaa8eb36854d7c83d81afc09801938",
+            "accepted": false
+          },
+          {
+            "layerId": "egbTransferLandings",
+            "priority": 11,
+            "group": "STAIR_LIFT_AND_TRANSFER",
+            "proposedFunction": "EG-B_LOWER_ROOF_AND_SURFACE_TRANSFER_LANDINGS",
+            "basis": "DERIVED_PROPOSAL",
+            "rawProposalCellCount": 147,
+            "rawProposalCoordinateSetSha256": "eb70f4a796d72b122ac7fa649f573c2358658af6a93c2f7fde7747ed4d49260e",
+            "canonicalProposalCellCount": 83,
+            "canonicalProposalCoordinateSetSha256": "53b50f25895c615daf40c3d0a63f4f2e0f33c2e02db6e29f0bb26bf25f54e1f4",
+            "accepted": false
+          },
+          {
+            "layerId": "ventOutletCaps",
+            "priority": 12,
+            "group": "VENTILATION",
+            "proposedFunction": "FOUR_SEALED_EXTERIOR_OUTLET_CAPS",
+            "basis": "DERIVED_PROPOSAL",
+            "rawProposalCellCount": 36,
+            "rawProposalCoordinateSetSha256": "610aedaf18fe11bafc0480709a9edaef5c284aa20bfbf5b91e6e38320080c089",
+            "canonicalProposalCellCount": 36,
+            "canonicalProposalCoordinateSetSha256": "610aedaf18fe11bafc0480709a9edaef5c284aa20bfbf5b91e6e38320080c089",
+            "accepted": false
+          },
+          {
+            "layerId": "ventFanEquipmentBays",
+            "priority": 13,
+            "group": "VENTILATION",
+            "proposedFunction": "FOUR_LOCAL_FAN_EQUIPMENT_BAYS",
+            "basis": "DERIVED_PROPOSAL",
+            "rawProposalCellCount": 36,
+            "rawProposalCoordinateSetSha256": "88fdd3a4292ef37faa9b2d79337e0f9b8ca7235799da7ba467c8321a10a5fa18",
+            "canonicalProposalCellCount": 36,
+            "canonicalProposalCoordinateSetSha256": "88fdd3a4292ef37faa9b2d79337e0f9b8ca7235799da7ba467c8321a10a5fa18",
+            "accepted": false
+          },
+          {
+            "layerId": "fireServiceControlPanels",
+            "priority": 14,
+            "group": "FIRE_AND_SERVICE",
+            "proposedFunction": "EIGHT_INTERNAL_FIRE_SERVICE_CONTROL_PANEL_RESERVATIONS",
+            "basis": "DERIVED_PROPOSAL",
+            "rawProposalCellCount": 8,
+            "rawProposalCoordinateSetSha256": "91afbdec47cdb08b97114e7d54cf7f3a2459a6206325ee083ae0cc4b95d208d6",
+            "canonicalProposalCellCount": 8,
+            "canonicalProposalCoordinateSetSha256": "91afbdec47cdb08b97114e7d54cf7f3a2459a6206325ee083ae0cc4b95d208d6",
+            "accepted": false
+          },
+          {
+            "layerId": "normalCircuitEquipment",
+            "priority": 15,
+            "group": "POWER_AND_CONTROLS",
+            "proposedFunction": "NORMAL_LIGHTING_EQUIPMENT_RESERVATION",
+            "basis": "DERIVED_PROPOSAL",
+            "rawProposalCellCount": 9,
+            "rawProposalCoordinateSetSha256": "cfc0dbb63e4ffac0dbbd649937e802eaad2bf5eee56ec3ab141b75048e535373",
+            "canonicalProposalCellCount": 9,
+            "canonicalProposalCoordinateSetSha256": "cfc0dbb63e4ffac0dbbd649937e802eaad2bf5eee56ec3ab141b75048e535373",
+            "accepted": false
+          },
+          {
+            "layerId": "emergencyCircuitAEquipment",
+            "priority": 16,
+            "group": "POWER_AND_CONTROLS",
+            "proposedFunction": "INDEPENDENT_EMERGENCY_A_EQUIPMENT_RESERVATION",
+            "basis": "DERIVED_PROPOSAL",
+            "rawProposalCellCount": 9,
+            "rawProposalCoordinateSetSha256": "dd38ac9670650f3edd73836b00368065da60135037474b95e50aef6f95be4a2f",
+            "canonicalProposalCellCount": 9,
+            "canonicalProposalCoordinateSetSha256": "dd38ac9670650f3edd73836b00368065da60135037474b95e50aef6f95be4a2f",
+            "accepted": false
+          },
+          {
+            "layerId": "emergencyCircuitBEquipment",
+            "priority": 17,
+            "group": "POWER_AND_CONTROLS",
+            "proposedFunction": "INDEPENDENT_EMERGENCY_B_EQUIPMENT_RESERVATION",
+            "basis": "DERIVED_PROPOSAL",
+            "rawProposalCellCount": 9,
+            "rawProposalCoordinateSetSha256": "2f1f2e0a784514dd1f9787c287329f54770ab0fb5bbbc20c00ce9a606670a1ad",
+            "canonicalProposalCellCount": 9,
+            "canonicalProposalCoordinateSetSha256": "2f1f2e0a784514dd1f9787c287329f54770ab0fb5bbbc20c00ce9a606670a1ad",
+            "accepted": false
+          },
+          {
+            "layerId": "localSumpPumpEquipmentBays",
+            "priority": 18,
+            "group": "DRAINAGE",
+            "proposedFunction": "EIGHT_LOCAL_SUMP_PUMP_EQUIPMENT_BAYS",
+            "basis": "DERIVED_PROPOSAL",
+            "rawProposalCellCount": 72,
+            "rawProposalCoordinateSetSha256": "7bbdb56978cccd7cd3c22b23ba078d6309c787ad9f2ae698922f26593223514e",
+            "canonicalProposalCellCount": 72,
+            "canonicalProposalCoordinateSetSha256": "7bbdb56978cccd7cd3c22b23ba078d6309c787ad9f2ae698922f26593223514e",
+            "accepted": false
+          },
+          {
+            "layerId": "localDrainageInterfaceCaps",
+            "priority": 19,
+            "group": "DRAINAGE",
+            "proposedFunction": "EIGHT_SEALED_LOCAL_DRAINAGE_CAPS",
+            "basis": "EXACT_SOURCE_REFERENCE",
+            "rawProposalCellCount": 24,
+            "rawProposalCoordinateSetSha256": "13d7cb94e6425be2d777f9aaea7f4d93ccddca180e64509624e2cb498773af8c",
+            "canonicalProposalCellCount": 24,
+            "canonicalProposalCoordinateSetSha256": "13d7cb94e6425be2d777f9aaea7f4d93ccddca180e64509624e2cb498773af8c",
+            "accepted": false
+          },
+          {
+            "layerId": "lightingFixtureReservations",
+            "priority": 20,
+            "group": "POWER_AND_CONTROLS",
+            "proposedFunction": "FROZEN_NORMAL_AND_EMERGENCY_LIGHTING_FIXTURE_RESERVATIONS",
+            "basis": "EXACT_SOURCE_REFERENCE",
+            "rawProposalCellCount": 56,
+            "rawProposalCoordinateSetSha256": "07dc5dbdd641144c5fdffb8c3ad93d50a88c626e82333e97206f0afa79b15f22",
+            "canonicalProposalCellCount": 56,
+            "canonicalProposalCoordinateSetSha256": "07dc5dbdd641144c5fdffb8c3ad93d50a88c626e82333e97206f0afa79b15f22",
+            "accepted": false
+          },
+          {
+            "layerId": "egaLiftEnvelope",
+            "priority": 21,
+            "group": "STAIR_LIFT_AND_TRANSFER",
+            "proposedFunction": "EG-A_ACCESSIBLE_LIFT_ENVELOPE",
+            "basis": "EXACT_SOURCE_REFERENCE",
+            "rawProposalCellCount": 351,
+            "rawProposalCoordinateSetSha256": "c1bc6c20f6f4aa6e3be3a91d0a5dd0e4fcbcb3285d6821498d9a700a2b208972",
+            "canonicalProposalCellCount": 324,
+            "canonicalProposalCoordinateSetSha256": "d52c1a321627a5e658add76affc6540c5f7e892aa3ba923f268c54465134c508",
+            "accepted": false
+          },
+          {
+            "layerId": "egbLiftEnvelope",
+            "priority": 22,
+            "group": "STAIR_LIFT_AND_TRANSFER",
+            "proposedFunction": "EG-B_ACCESSIBLE_LIFT_ENVELOPE",
+            "basis": "EXACT_SOURCE_REFERENCE",
+            "rawProposalCellCount": 270,
+            "rawProposalCoordinateSetSha256": "f901500ff0e8dc8f056a660334a255c5cdfb62cbf49713fbca0be7a262a62e08",
+            "canonicalProposalCellCount": 243,
+            "canonicalProposalCoordinateSetSha256": "ee104f9e7853ca8f8e3e212b8e57cca6185249a7530fc38d13af486822fadb60",
+            "accepted": false
+          },
+          {
+            "layerId": "egaStairEnvelope",
+            "priority": 23,
+            "group": "STAIR_LIFT_AND_TRANSFER",
+            "proposedFunction": "EG-A_PROTECTED_STAIR_ENVELOPE",
+            "basis": "EXACT_SOURCE_REFERENCE",
+            "rawProposalCellCount": 819,
+            "rawProposalCoordinateSetSha256": "a33e2ca05e93da0f96bc0a6da14decc80a18e0b2257e217600e3b11f59da6e40",
+            "canonicalProposalCellCount": 756,
+            "canonicalProposalCoordinateSetSha256": "1fc849decb65c6e54e6b82b60536fafc8507be3434a6b83dc8434b8c152f9b4e",
+            "accepted": false
+          },
+          {
+            "layerId": "egbStairEnvelope",
+            "priority": 24,
+            "group": "STAIR_LIFT_AND_TRANSFER",
+            "proposedFunction": "EG-B_PROTECTED_STAIR_ENVELOPE",
+            "basis": "EXACT_SOURCE_REFERENCE",
+            "rawProposalCellCount": 630,
+            "rawProposalCoordinateSetSha256": "2b32e8434746485edb83672a27a013a9f58dfcdd4394df30a49999dd4ae8be94",
+            "canonicalProposalCellCount": 532,
+            "canonicalProposalCoordinateSetSha256": "77633a7e2c1e4f984f6ed8fa1e6352c8839787bcdecc8189c12b5d74485ddc78",
+            "accepted": false
+          },
+          {
+            "layerId": "ventDuctEnvelopes",
+            "priority": 25,
+            "group": "VENTILATION",
+            "proposedFunction": "FOUR_LOCAL_DUCT_ENVELOPES",
+            "basis": "DERIVED_PROPOSAL",
+            "rawProposalCellCount": 828,
+            "rawProposalCoordinateSetSha256": "d2164e53bc3d3bb3f0e1704928800ab7e06ce7ea92b1a22d453f233df3af1e30",
+            "canonicalProposalCellCount": 828,
+            "canonicalProposalCoordinateSetSha256": "d2164e53bc3d3bb3f0e1704928800ab7e06ce7ea92b1a22d453f233df3af1e30",
+            "accepted": false
+          },
+          {
+            "layerId": "normalCircuitCarrier",
+            "priority": 26,
+            "group": "POWER_AND_CONTROLS",
+            "proposedFunction": "NORMAL_LIGHTING_CARRIER",
+            "basis": "DERIVED_PROPOSAL",
+            "rawProposalCellCount": 827,
+            "rawProposalCoordinateSetSha256": "711107dd2fa9b434fe1fc10077702de3642097d52d121b8d5b46decc1f71bacb",
+            "canonicalProposalCellCount": 827,
+            "canonicalProposalCoordinateSetSha256": "711107dd2fa9b434fe1fc10077702de3642097d52d121b8d5b46decc1f71bacb",
+            "accepted": false
+          },
+          {
+            "layerId": "emergencyCircuitACarrier",
+            "priority": 27,
+            "group": "POWER_AND_CONTROLS",
+            "proposedFunction": "INDEPENDENT_EMERGENCY_A_CARRIER",
+            "basis": "DERIVED_PROPOSAL",
+            "rawProposalCellCount": 827,
+            "rawProposalCoordinateSetSha256": "860bda8c43c2c06c95d2f70fb0d7efa1b2a37d2ed299dc104668f5f53089f1a2",
+            "canonicalProposalCellCount": 827,
+            "canonicalProposalCoordinateSetSha256": "860bda8c43c2c06c95d2f70fb0d7efa1b2a37d2ed299dc104668f5f53089f1a2",
+            "accepted": false
+          },
+          {
+            "layerId": "emergencyCircuitBCarrier",
+            "priority": 28,
+            "group": "POWER_AND_CONTROLS",
+            "proposedFunction": "INDEPENDENT_EMERGENCY_B_CARRIER",
+            "basis": "DERIVED_PROPOSAL",
+            "rawProposalCellCount": 827,
+            "rawProposalCoordinateSetSha256": "8ff70324bb9c59ccde82c4a5048390f919b7d2aae91f9b8e1372ce0a6a031578",
+            "canonicalProposalCellCount": 827,
+            "canonicalProposalCoordinateSetSha256": "8ff70324bb9c59ccde82c4a5048390f919b7d2aae91f9b8e1372ce0a6a031578",
+            "accepted": false
+          },
+          {
+            "layerId": "unconnectedDrainHeaderReservation",
+            "priority": 29,
+            "group": "DRAINAGE",
+            "proposedFunction": "SEALED_UNCONNECTED_DRAIN_HEADER",
+            "basis": "EXACT_SOURCE_REFERENCE",
+            "rawProposalCellCount": 9,
+            "rawProposalCoordinateSetSha256": "3806b527089b8f8030e53e91b3e1405cc7a3d95e779f3006400cc734861ca075",
+            "canonicalProposalCellCount": 9,
+            "canonicalProposalCoordinateSetSha256": "3806b527089b8f8030e53e91b3e1405cc7a3d95e779f3006400cc734861ca075",
+            "accepted": false
+          },
+          {
+            "layerId": "fireSurfaceCompoundReservation",
+            "priority": 30,
+            "group": "FIRE_AND_SERVICE",
+            "proposedFunction": "SURFACE_COMPOUND_RESERVATION",
+            "basis": "EXACT_SOURCE_REFERENCE",
+            "rawProposalCellCount": 49,
+            "rawProposalCoordinateSetSha256": "8d48d1a51dba8a54a2c11ad41f97482664a001cc3d943073fce9756ee41ac365",
+            "canonicalProposalCellCount": 0,
+            "canonicalProposalCoordinateSetSha256": "6e0987687e1b2d1a47ab30f68e00c162911552d18208737f0a356bed6b09e9ee",
+            "accepted": false
+          },
+          {
+            "layerId": "fireServiceSpineReservation",
+            "priority": 31,
+            "group": "FIRE_AND_SERVICE",
+            "proposedFunction": "INTERNAL_FIRE_SERVICE_SPINE",
+            "basis": "EXACT_SOURCE_REFERENCE",
+            "rawProposalCellCount": 3025,
+            "rawProposalCoordinateSetSha256": "b3626dfd30c7c81aca2a6a4349e7273c1c760297ca736be9f869b1e2ec33dd2c",
+            "canonicalProposalCellCount": 3017,
+            "canonicalProposalCoordinateSetSha256": "aad361106fcd7b5cc62aab4626a702ef0c5e9cb00716380235844c2b33c4ff68",
+            "accepted": false
+          }
+        ],
+        "acceptedMechanismCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      }
+    },
+    {
+      "scopeId": "P1-B11",
+      "selectedIdentity": "P1-B11-GRAND-AVENUE-SURFACE-ROAD-PROPOSAL-01",
+      "disposition": "EXACT_SURFACE_ROAD_PROPOSAL_DOMAINS_COMPILED_TECHNICAL_ACCEPTANCE_G03_HOLD",
+      "construction": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 2392,
+        "bounds": {
+          "minX": 1750,
+          "maxX": 2048,
+          "minY": 68,
+          "maxY": 72,
+          "minZ": -331,
+          "maxZ": -296
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "0d63ddf8f385dcd9eb4af8de530f2e2124b7019dc150674828741ddf274d7b9c",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B11/construction\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 2392,
+          "intervalCount": 2392,
+          "intervalManifestSha256": "d0a6d3c772cbe9ecf2d6bd392380dfc06044c94c64f46136a7ee6169fe781915"
+        },
+        "componentCount": 5,
+        "largestComponentCellCount": 600,
+        "componentSizeMultisetSha256": "394efef34e99d31689badf8fef67a6dcc49bc17f3225bb24b92666bc61db3754",
+        "sourceCoordinateSetSha256": "dc75445cbbb40c951ee65e476c2be271412ef5682439394e29ce7370a323d80c",
+        "sourceCoordinateHashPreamble": "combined-zones-b11-surface-road-technical-proposal-cells-v1-road-surface\\n",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false,
+        "semantic": "ONE_CELL_ROAD_DATUM_CONTROL_GEOMETRY_NO_FORMATION_DEPTH_MATERIAL_OR_FUTURE_STATE"
+      },
+      "interaction": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 11960,
+        "bounds": {
+          "minX": 1750,
+          "maxX": 2048,
+          "minY": 66,
+          "maxY": 73,
+          "minZ": -332,
+          "maxZ": -295
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "2b24ccfdfef5905344afa7ec262890af47526beea66ec58efd88850cc5304fc5",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B11/interaction\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 2990,
+          "intervalCount": 2990,
+          "intervalManifestSha256": "ed46a3c19ed545ba3330775a59705be334cd7cf3de935f22c433a8ce57a78256"
+        },
+        "componentCount": 1,
+        "largestComponentCellCount": 11960,
+        "componentSizeMultisetSha256": "1ebdac4a52e00635d970b8c24c719984444cfaaa640fd5155479d0bb7f001491",
+        "sourceCoordinateSetSha256": "ee6163e6f975bf78d5acad718732aa951bebf8a756f20ef9a7f6b94020493a17",
+        "sourceCoordinateHashPreamble": "combined-zones-b11-surface-road-technical-proposal-cells-v1-interaction-prism\\n",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false,
+        "semantic": "TEN_WIDE_ROAD_Y_MINUS_2_TO_PLUS_1_COORDINATION_PRISM"
+      },
+      "influence": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 5980,
+        "bounds": {
+          "minX": 1750,
+          "maxX": 2048,
+          "minY": 66,
+          "maxY": 71,
+          "minZ": -332,
+          "maxZ": -295
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "cf8fe0a9de8ffe25771f72095a512a273b21acd2817a552220ec2eecf17751bc",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B11/influence\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 2990,
+          "intervalCount": 2990,
+          "intervalManifestSha256": "e4bf8e6cce63bb3044551c935ea0c48d91f5c20087d1fc9fe586f2217d71455a"
+        },
+        "componentCount": 1,
+        "largestComponentCellCount": 5980,
+        "componentSizeMultisetSha256": "0c71b2030ebd280f34b98f545f82418d6bc1de6ffed068bcc5906c907ff1000e",
+        "sourceCoordinateSetSha256": "c4a6c43350246703545cfeab7f4a896baea666f6cc010e173a576180aabfb401",
+        "sourceCoordinateHashPreamble": "combined-zones-b11-surface-road-technical-proposal-cells-v1-influence-reservation\\n",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false,
+        "semantic": "CANDIDATE_LOAD_DRAINAGE_AND_UTILITY_RESERVATION_UNION_NOT_EXPERT_PHYSICAL_INFLUENCE_KERNEL",
+        "expertConstructionInfluenceKernel": null,
+        "expertConstructionInfluenceAccepted": false
+      },
+      "exactReferenceProfile": {
+        "pointCount": 299,
+        "start": {
+          "station": 0,
+          "x": 1750,
+          "y": 68,
+          "z": -300
+        },
+        "end": {
+          "station": 298,
+          "x": 2048,
+          "y": 72,
+          "z": -328
+        },
+        "orderedCoordinateSha256": "e63b7779674ad46fd7ad9c4ae0aea8f618afa8b656d3a24aa4367057cf103ff4",
+        "acceptedConstructionSet": false
+      },
+      "proposalAuthorityBoundary": {
+        "acceptedProfileAmended": false,
+        "eightWideSideBiasAcceptedByOwner": false,
+        "technicalDesignAccepted": false,
+        "acceptedConstructionCellCount": 0,
+        "operationCellCount": 0
+      }
+    },
+    {
+      "scopeId": "P1-B12",
+      "selectedIdentity": "P1-B12-GA-PASSIVE-SHELL-CANDIDATE-01",
+      "disposition": "EXACT_PASSIVE_SHELL_CANDIDATE_UNACCEPTED_G03_HOLD",
+      "construction": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 7440,
+        "bounds": {
+          "minX": 1750,
+          "maxX": 2048,
+          "minY": 60,
+          "maxY": 69,
+          "minZ": -331,
+          "maxZ": -296
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "804f4a75667e792f6138c8afc0ea31e4953086f36f8e11a72ec72641921f5eea",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B12/construction\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 2392,
+          "intervalCount": 4120,
+          "intervalManifestSha256": "7bcff5e0a75db99acbd6abe57c1457412164272f43ddd19b580698a8a48da5f2"
+        },
+        "componentCount": 1,
+        "largestComponentCellCount": 7440,
+        "componentSizeMultisetSha256": "452cbbca38f4e07b1e485a8f9e888d0cb624fe1e35abd2bff9056c4ed3786ca7",
+        "sourceCoordinateSetSha256": "b97dc5ad02d2df252d4f2e66d44e819b1ae100ee1b98dcfc00390fac4713fc2b",
+        "sourceCoordinateHashPreamble": "combined-zones-grand-avenue-passive-shell-candidate-cells-v1-proposed-material-geometry\\n",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false,
+        "semantic": "PROPOSED_MATERIAL_GEOMETRY_WITH_NO MATERIAL OR BLOCK STATE SELECTED"
+      },
+      "interaction": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 19136,
+        "bounds": {
+          "minX": 1750,
+          "maxX": 2048,
+          "minY": 60,
+          "maxY": 71,
+          "minZ": -331,
+          "maxZ": -296
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "9c9aa035d23b63d1375b45fe096c4d68eedee75ff41c3cca2703cafa9960435b",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B12/interaction\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 2392,
+          "intervalCount": 2392,
+          "intervalManifestSha256": "482a61422d1a34a87f323655e42b26c7a33263063abce4172f10eee3baa35f21"
+        },
+        "componentCount": 1,
+        "largestComponentCellCount": 19136,
+        "componentSizeMultisetSha256": "f91c2d57faf82098fae82f42f0003bca62f58569e3e5a863a6d65ff70765a16e",
+        "sourceCoordinateSetSha256": "5624f283c56d3782c7ff67bf1a6a86f572b2d9f52e598010146a6549b7ae9a99",
+        "sourceCoordinateHashPreamble": "combined-zones-grand-avenue-passive-shell-candidate-cells-v1-influence-union\\n",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false,
+        "semantic": "CANDIDATE_INFLUENCE_UNION_USED_ONLY_AS_GEOMETRIC_INTERACTION_DOMAIN"
+      },
+      "influence": {
+        "status": "PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED",
+        "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+        "cellCount": 30732,
+        "bounds": {
+          "minX": 1749,
+          "maxX": 2049,
+          "minY": 59,
+          "maxY": 72,
+          "minZ": -332,
+          "maxZ": -295
+        },
+        "canonicalCoordinatePreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "coordinateSetSha256": "edc9d6816f8db8d0f96debe9a6c2e2a656e7710cd97a5f0aa86130f978eb30d2",
+        "sparseIntervals": {
+          "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B12/influence\\n",
+          "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+          "columnRecordCount": 3066,
+          "intervalCount": 3066,
+          "intervalManifestSha256": "2985febc31ee2a52dd869a3c941d72ec6a28086ef273f93e10f28c081fac0681"
+        },
+        "componentCount": 1,
+        "largestComponentCellCount": 30732,
+        "componentSizeMultisetSha256": "6551d392565cc7308a15251d1645b5693383f221d34132b17e4f1749ce4295c5",
+        "sourceCoordinateSetSha256": "edc9d6816f8db8d0f96debe9a6c2e2a656e7710cd97a5f0aa86130f978eb30d2",
+        "sourceCoordinateHashPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+        "semantic": "EXACT_CONSTRUCTION_MAINTENANCE_DRAINAGE_UTILITY_COORDINATION_RESERVATION_NOT_EXPERT_KERNEL",
+        "accepted": false,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "exactReferenceLine": {
+        "pointCount": 299,
+        "referenceLineSha256": "800738bca8b3f4c93f4b4a8ef4069a9b03e3a20d1c648bebe3c85be7cb007170",
+        "sparseRunCount": 57
+      }
+    }
+  ],
+  "overlapAudit": {
+    "status": "PASS_ALL_SCOPE_DOMAINS_EXACT_EXPANDED_AND_SOURCE_BOUND_OVERLAPS_AUDITED_ACCEPTANCE_HOLD",
+    "expandedDomainDefinitions": [
+      {
+        "scopeId": "P1-B03",
+        "definition": "all three exact domains bounded by conservative coordination influence proposal",
+        "cellCount": 55216,
+        "bounds": {
+          "minX": 2046,
+          "maxX": 2392,
+          "minY": 128,
+          "maxY": 171,
+          "minZ": -872,
+          "maxZ": -744
+        },
+        "coordinateSetSha256": "a8879f11717f7be8c33bd1fc7cdcaf8ab5278b501e18a83bebfc678b01ba1ac6"
+      },
+      {
+        "scopeId": "P1-B07",
+        "definition": "all three exact domains bounded by selected B07-C-WEST-2 interaction union",
+        "cellCount": 13608,
+        "bounds": {
+          "minX": 2102,
+          "maxX": 2112,
+          "minY": -60,
+          "maxY": 73,
+          "minZ": -432,
+          "maxZ": -394
+        },
+        "coordinateSetSha256": "49424a60ad7fb3aede4ead6efd5e324513462e00568326ad2c8b732bff7c67e9"
+      },
+      {
+        "scopeId": "P1-B08",
+        "definition": "all three exact domains bounded by conservative coordination influence proposal",
+        "cellCount": 24690,
+        "bounds": {
+          "minX": 1946,
+          "maxX": 2050,
+          "minY": 69,
+          "maxY": 136,
+          "minZ": -752,
+          "maxZ": -623
+        },
+        "coordinateSetSha256": "3c037ebe9bfffa3ca73cd42a27312b3d96eacf317006db0c9ba36e0c3b9337b2"
+      },
+      {
+        "scopeId": "P1-B09",
+        "definition": "all three exact domains bounded by conservative coordination influence proposal",
+        "cellCount": 20430,
+        "bounds": {
+          "minX": 2046,
+          "maxX": 2290,
+          "minY": 128,
+          "maxY": 307,
+          "minZ": -830,
+          "maxZ": -746
+        },
+        "coordinateSetSha256": "f10bbc071a09b24be7842065b3d5e1486af3b5af15d45733f9be2bce97d017ba"
+      },
+      {
+        "scopeId": "D02",
+        "definition": "all three exact domains bounded by D02 interaction plus ROAD-LOW-001 reservation",
+        "cellCount": 456,
+        "bounds": {
+          "minX": 430,
+          "maxX": 1535,
+          "minY": 57,
+          "maxY": 109,
+          "minZ": -276,
+          "maxZ": 99
+        },
+        "coordinateSetSha256": "f870407859b79aa6048b8c6d4411b5a58cdf2444e20858c04b7c5aa8ab98563f"
+      },
+      {
+        "scopeId": "D06-MECHANISMS",
+        "definition": "all three exact domains use the detailed functional proposal union",
+        "cellCount": 9065,
+        "bounds": {
+          "minX": 1643,
+          "maxX": 1872,
+          "minY": 38,
+          "maxY": 102,
+          "minZ": 40,
+          "maxZ": 160
+        },
+        "coordinateSetSha256": "3d389f1d42a9a7261010e29e3f64ed130d46bdefdff5fb325dc9cebdb2bec436"
+      },
+      {
+        "scopeId": "P1-B11",
+        "definition": "union of road construction, interaction, and candidate influence reservations",
+        "cellCount": 11960,
+        "bounds": {
+          "minX": 1750,
+          "maxX": 2048,
+          "minY": 66,
+          "maxY": 73,
+          "minZ": -332,
+          "maxZ": -295
+        },
+        "coordinateSetSha256": "2b24ccfdfef5905344afa7ec262890af47526beea66ec58efd88850cc5304fc5"
+      },
+      {
+        "scopeId": "P1-B12",
+        "definition": "all three exact domains bounded by conservative coordination influence proposal",
+        "cellCount": 30732,
+        "bounds": {
+          "minX": 1749,
+          "maxX": 2049,
+          "minY": 59,
+          "maxY": 72,
+          "minZ": -332,
+          "maxZ": -295
+        },
+        "coordinateSetSha256": "edc9d6816f8db8d0f96debe9a6c2e2a656e7710cd97a5f0aa86130f978eb30d2"
+      }
+    ],
+    "exactPairwiseOverlaps": [
+      {
+        "leftScopeId": "P1-B03",
+        "rightScopeId": "P1-B07",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B03",
+        "rightScopeId": "P1-B08",
+        "classification": "OVERLAP_DISCLOSED_HOLD",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 314,
+          "bounds": {
+            "minX": 2046,
+            "maxX": 2050,
+            "minY": 128,
+            "maxY": 135,
+            "minZ": -752,
+            "maxZ": -744
+          },
+          "coordinateSetSha256": "7161bfec6d7ea767937539c4aca095815faa4f5d2dc8f5ae7cfebd7ecc8780fb",
+          "sparseIntervals": {
+            "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B03__P1-B08/overlap\\n",
+            "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+            "columnRecordCount": 43,
+            "intervalCount": 43,
+            "intervalManifestSha256": "654374630484b326fa7f0da0f5178f9de6056ccbed7b4abafff7a3ab6aef9130"
+          }
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B03",
+        "rightScopeId": "P1-B09",
+        "classification": "OVERLAP_DISCLOSED_HOLD",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 610,
+          "bounds": {
+            "minX": 2046,
+            "maxX": 2078,
+            "minY": 128,
+            "maxY": 133,
+            "minZ": -750,
+            "maxZ": -746
+          },
+          "coordinateSetSha256": "3cc49597392aeddfa52367592c15a00104736538c1651b284366a679a596bb05",
+          "sparseIntervals": {
+            "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B03__P1-B09/overlap\\n",
+            "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+            "columnRecordCount": 165,
+            "intervalCount": 165,
+            "intervalManifestSha256": "daad4bdd63239888b9b3415a9e945c23089c0fa9a0e2db57bdf420fde68ca79d"
+          }
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B03",
+        "rightScopeId": "D02",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B03",
+        "rightScopeId": "D06-MECHANISMS",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B03",
+        "rightScopeId": "P1-B11",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B03",
+        "rightScopeId": "P1-B12",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B07",
+        "rightScopeId": "P1-B08",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B07",
+        "rightScopeId": "P1-B09",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B07",
+        "rightScopeId": "D02",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B07",
+        "rightScopeId": "D06-MECHANISMS",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B07",
+        "rightScopeId": "P1-B11",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B07",
+        "rightScopeId": "P1-B12",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B08",
+        "rightScopeId": "P1-B09",
+        "classification": "OVERLAP_DISCLOSED_HOLD",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 150,
+          "bounds": {
+            "minX": 2046,
+            "maxX": 2050,
+            "minY": 128,
+            "maxY": 133,
+            "minZ": -750,
+            "maxZ": -746
+          },
+          "coordinateSetSha256": "27d7f7339a6544cbc90d41bf4e6f079123f19c8f2a0a5a12a7f40c1a514f4a4c",
+          "sparseIntervals": {
+            "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B08__P1-B09/overlap\\n",
+            "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+            "columnRecordCount": 25,
+            "intervalCount": 25,
+            "intervalManifestSha256": "1af9629d47195be5ffbf4c5f7ad954c139d514b04d175c4a96a90c56b86649c2"
+          }
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B08",
+        "rightScopeId": "D02",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B08",
+        "rightScopeId": "D06-MECHANISMS",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B08",
+        "rightScopeId": "P1-B11",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B08",
+        "rightScopeId": "P1-B12",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B09",
+        "rightScopeId": "D02",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B09",
+        "rightScopeId": "D06-MECHANISMS",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B09",
+        "rightScopeId": "P1-B11",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B09",
+        "rightScopeId": "P1-B12",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "D02",
+        "rightScopeId": "D06-MECHANISMS",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "D02",
+        "rightScopeId": "P1-B11",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "D02",
+        "rightScopeId": "P1-B12",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "D06-MECHANISMS",
+        "rightScopeId": "P1-B11",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "D06-MECHANISMS",
+        "rightScopeId": "P1-B12",
+        "classification": "EXACT_DISJOINT",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B11",
+        "rightScopeId": "P1-B12",
+        "classification": "OVERLAP_DISCLOSED_HOLD",
+        "method": "EXACT_EXPANDED_INTEGER_SET_INTERSECTION",
+        "intersection": {
+          "cellCount": 9006,
+          "bounds": {
+            "minX": 1750,
+            "maxX": 2048,
+            "minY": 66,
+            "maxY": 72,
+            "minZ": -332,
+            "maxZ": -295
+          },
+          "coordinateSetSha256": "0ac7da02f5433b7a2b9a69ff1c2c79859fe364bd5ac689cdab6ae73a37813003",
+          "sparseIntervals": {
+            "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B11__P1-B12/overlap\\n",
+            "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+            "columnRecordCount": 2990,
+            "intervalCount": 2990,
+            "intervalManifestSha256": "fad990708fbe5046a55e99e5478b443e9af9b17cc77c61527e46ccf232df6f7e"
+          }
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      }
+    ],
+    "sourceBoundScopeDomains": [
+      {
+        "id": "P1-B10",
+        "bounds": {
+          "minX": 1948,
+          "maxX": 2368,
+          "minY": 38,
+          "maxY": 303,
+          "minZ": -1068,
+          "maxZ": -588
+        },
+        "exactSetIdentitySha256": "1a209dbae3552c0b49a7972f22c4838a30e09c8391bce8d20979a1b4f542447d",
+        "representation": "SOURCE_BOUND_SPARSE_INTERVALS"
+      },
+      {
+        "id": "D06-RESERVATIONS",
+        "bounds": {
+          "minX": 1643,
+          "maxX": 2112,
+          "minY": -60,
+          "maxY": 102,
+          "minZ": -432,
+          "maxZ": 160
+        },
+        "exactSetIdentitySha256": "1576d6833c6b27a3301980ac4605c6e3e084ae1b484f00304abcf130f6e5892a",
+        "representation": "SOURCE_BOUND_COORDINATE_HASH_ONLY"
+      }
+    ],
+    "sourceBoundPairwiseComparisons": [
+      {
+        "leftScopeId": "P1-B03",
+        "rightScopeId": "P1-B10",
+        "classification": "PARTIAL_EXACT_CONSTRUCTION_OVERLAP_FULL_SCOPE_INTERSECTION_UNKNOWN",
+        "method": "EXACT_B03_AGAINST_B10_CONSTRUCTION_INTERVALS_ONLY",
+        "intersection": {
+          "cellCount": 14054,
+          "bounds": {
+            "minX": 2047,
+            "maxX": 2238,
+            "minY": 129,
+            "maxY": 170,
+            "minZ": -871,
+            "maxZ": -745
+          },
+          "coordinateSetSha256": "9cb7e12e363a14f3343ddfa0bb441b33314d23396bec32e2d4d7fbd23cb521b0",
+          "sparseIntervals": {
+            "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B03__P1-B10/overlap\\n",
+            "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+            "columnRecordCount": 2657,
+            "intervalCount": 2657,
+            "intervalManifestSha256": "5550277ddfd768b910467fd2fa47bbadb1a62f4be026163d89a61e312cc2a089"
+          }
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false,
+        "fullScopeIntersectionUnknown": true,
+        "sourceBoundComparisonComplete": false,
+        "unknownReason": "B10 interaction and influence are exact source-bound interval identities not expanded in G03."
+      },
+      {
+        "leftScopeId": "P1-B10",
+        "rightScopeId": "P1-B07",
+        "classification": "EXACT_DISJOINT_BY_INCLUSIVE_BOUNDS",
+        "method": "INCLUSIVE_INTEGER_BOUNDS_SEPARATION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "sourceBoundComparisonComplete": true,
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B10",
+        "rightScopeId": "P1-B08",
+        "classification": "SOURCE_CERTIFIED_CONSTRUCTION_EXCLUSION_FULL_SCOPE_INTERSECTION_UNKNOWN",
+        "method": "B10_SOURCE_EXCLUSION_COUNTS_PLUS_UNEXPANDED_EXACT_INTERVAL_DOMAINS",
+        "constructionWithheldCellCount": 11358,
+        "intersection": {
+          "cellCount": null,
+          "bounds": null,
+          "coordinateSetSha256": null
+        },
+        "sourceBoundComparisonComplete": false,
+        "unknownReason": "The exact B10 interaction/influence interval streams are hash-bound but not materialized as inline cells.",
+        "unknownIsNotEmptySet": true,
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B10",
+        "rightScopeId": "P1-B09",
+        "classification": "SOURCE_CERTIFIED_CONSTRUCTION_EXCLUSION_FULL_SCOPE_INTERSECTION_UNKNOWN",
+        "method": "B10_SOURCE_EXCLUSION_COUNTS_PLUS_UNEXPANDED_EXACT_INTERVAL_DOMAINS",
+        "constructionWithheldCellCount": 4245,
+        "intersection": {
+          "cellCount": null,
+          "bounds": null,
+          "coordinateSetSha256": null
+        },
+        "sourceBoundComparisonComplete": false,
+        "unknownReason": "The exact B10 interaction/influence interval streams are hash-bound but not materialized as inline cells.",
+        "unknownIsNotEmptySet": true,
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B10",
+        "rightScopeId": "D02",
+        "classification": "EXACT_DISJOINT_BY_INCLUSIVE_BOUNDS",
+        "method": "INCLUSIVE_INTEGER_BOUNDS_SEPARATION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "sourceBoundComparisonComplete": true,
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B10",
+        "rightScopeId": "D06-MECHANISMS",
+        "classification": "EXACT_DISJOINT_BY_INCLUSIVE_BOUNDS",
+        "method": "INCLUSIVE_INTEGER_BOUNDS_SEPARATION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "sourceBoundComparisonComplete": true,
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B10",
+        "rightScopeId": "P1-B11",
+        "classification": "EXACT_DISJOINT_BY_INCLUSIVE_BOUNDS",
+        "method": "INCLUSIVE_INTEGER_BOUNDS_SEPARATION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "sourceBoundComparisonComplete": true,
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B10",
+        "rightScopeId": "P1-B12",
+        "classification": "EXACT_DISJOINT_BY_INCLUSIVE_BOUNDS",
+        "method": "INCLUSIVE_INTEGER_BOUNDS_SEPARATION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "sourceBoundComparisonComplete": true,
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "D06-RESERVATIONS",
+        "rightScopeId": "P1-B03",
+        "classification": "EXACT_DISJOINT_BY_INCLUSIVE_BOUNDS",
+        "method": "INCLUSIVE_INTEGER_BOUNDS_SEPARATION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "sourceBoundComparisonComplete": true,
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "D06-RESERVATIONS",
+        "rightScopeId": "P1-B07",
+        "classification": "EXACT_SOURCE_CONTAINMENT_OVERLAP_DISCLOSED_HOLD",
+        "method": "EXACT_SOURCE_REFERENCE_CONTAINMENT_OF_B07_INTERACTION_UNION",
+        "intersection": {
+          "cellCount": 13608,
+          "bounds": {
+            "minX": 2102,
+            "maxX": 2112,
+            "minY": -60,
+            "maxY": 73,
+            "minZ": -432,
+            "maxZ": -394
+          },
+          "coordinateSetSha256": "49424a60ad7fb3aede4ead6efd5e324513462e00568326ad2c8b732bff7c67e9",
+          "sparseIntervals": {
+            "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nD06-RESERVATIONS__P1-B07/overlap\\n",
+            "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+            "columnRecordCount": 387,
+            "intervalCount": 387,
+            "intervalManifestSha256": "b471cedc74bd1c81e0b19679f88de666a630ed8bedf96f510eb83d2a0d2a9a67"
+          }
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false,
+        "sourceBoundComparisonComplete": true
+      },
+      {
+        "leftScopeId": "D06-RESERVATIONS",
+        "rightScopeId": "P1-B08",
+        "classification": "EXACT_DISJOINT_BY_INCLUSIVE_BOUNDS",
+        "method": "INCLUSIVE_INTEGER_BOUNDS_SEPARATION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "sourceBoundComparisonComplete": true,
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "D06-RESERVATIONS",
+        "rightScopeId": "P1-B09",
+        "classification": "EXACT_DISJOINT_BY_INCLUSIVE_BOUNDS",
+        "method": "INCLUSIVE_INTEGER_BOUNDS_SEPARATION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "sourceBoundComparisonComplete": true,
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "D06-RESERVATIONS",
+        "rightScopeId": "D02",
+        "classification": "EXACT_DISJOINT_BY_INCLUSIVE_BOUNDS",
+        "method": "INCLUSIVE_INTEGER_BOUNDS_SEPARATION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "sourceBoundComparisonComplete": true,
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "D06-RESERVATIONS",
+        "rightScopeId": "D06-MECHANISMS",
+        "classification": "UNKNOWN_EXACT_SOURCE_BOUND_SET_NOT_EXPANDED",
+        "method": "SOURCE_BOUND_COORDINATE_HASH_ONLY",
+        "intersection": {
+          "cellCount": null,
+          "bounds": null,
+          "coordinateSetSha256": null
+        },
+        "sourceBoundComparisonComplete": false,
+        "unknownReason": "D06-RESERVATIONS is exact and hash-bound but lacks an expanded coordinate stream in this compiler.",
+        "unknownIsNotEmptySet": true,
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "D06-RESERVATIONS",
+        "rightScopeId": "P1-B11",
+        "classification": "UNKNOWN_EXACT_SOURCE_BOUND_SET_NOT_EXPANDED",
+        "method": "SOURCE_BOUND_COORDINATE_HASH_ONLY",
+        "intersection": {
+          "cellCount": null,
+          "bounds": null,
+          "coordinateSetSha256": null
+        },
+        "sourceBoundComparisonComplete": false,
+        "unknownReason": "D06-RESERVATIONS is exact and hash-bound but lacks an expanded coordinate stream in this compiler.",
+        "unknownIsNotEmptySet": true,
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "D06-RESERVATIONS",
+        "rightScopeId": "P1-B12",
+        "classification": "UNKNOWN_EXACT_SOURCE_BOUND_SET_NOT_EXPANDED",
+        "method": "SOURCE_BOUND_COORDINATE_HASH_ONLY",
+        "intersection": {
+          "cellCount": null,
+          "bounds": null,
+          "coordinateSetSha256": null
+        },
+        "sourceBoundComparisonComplete": false,
+        "unknownReason": "D06-RESERVATIONS is exact and hash-bound but lacks an expanded coordinate stream in this compiler.",
+        "unknownIsNotEmptySet": true,
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B10",
+        "rightScopeId": "D06-RESERVATIONS",
+        "classification": "EXACT_DISJOINT_BY_INCLUSIVE_BOUNDS",
+        "method": "INCLUSIVE_INTEGER_BOUNDS_SEPARATION",
+        "intersection": {
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+        },
+        "sourceBoundComparisonComplete": true,
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      }
+    ],
+    "b10CrossScopeChecks": [
+      {
+        "leftScopeId": "P1-B03",
+        "rightScopeId": "P1-B10",
+        "classification": "OVERLAP_DISCLOSED_HOLD",
+        "method": "EXACT_B03_EXPANSION_AGAINST_SOURCE_BOUND_B10_INTERVAL_MEMBERSHIP_RULE",
+        "intersection": {
+          "cellCount": 14054,
+          "bounds": {
+            "minX": 2047,
+            "maxX": 2238,
+            "minY": 129,
+            "maxY": 170,
+            "minZ": -871,
+            "maxZ": -745
+          },
+          "coordinateSetSha256": "9cb7e12e363a14f3343ddfa0bb441b33314d23396bec32e2d4d7fbd23cb521b0",
+          "sparseIntervals": {
+            "preamble": "combined-zones-g03-sparse-integer-cell-intervals-v1\\nP1-B03__P1-B10/overlap\\n",
+            "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+            "columnRecordCount": 2657,
+            "intervalCount": 2657,
+            "intervalManifestSha256": "5550277ddfd768b910467fd2fa47bbadb1a62f4be026163d89a61e312cc2a089"
+          }
+        },
+        "acceptedInterface": false,
+        "operationAuthorization": false
+      },
+      {
+        "leftScopeId": "P1-B08",
+        "rightScopeId": "P1-B10",
+        "classification": "SOURCE_CERTIFIED_WITHHELD_FROM_B10_FILL",
+        "exactWithheldCellCount": 11358,
+        "sourceInteractionCellCount": 15096,
+        "acceptedInterface": false
+      },
+      {
+        "leftScopeId": "P1-B09",
+        "rightScopeId": "P1-B10",
+        "classification": "SOURCE_CERTIFIED_WITHHELD_FROM_B10_FILL",
+        "exactWithheldCellCount": 4245,
+        "sourceInteractionCellCount": 7800,
+        "acceptedInterface": false
+      },
+      {
+        "leftScopeId": "P1-B07",
+        "rightScopeId": "P1-B10",
+        "classification": "BOUNDS_DISJOINT",
+        "acceptedInterface": false
+      },
+      {
+        "leftScopeId": "D02",
+        "rightScopeId": "P1-B10",
+        "classification": "BOUNDS_DISJOINT",
+        "acceptedInterface": false
+      },
+      {
+        "leftScopeId": "D06-MECHANISMS",
+        "rightScopeId": "P1-B10",
+        "classification": "BOUNDS_DISJOINT",
+        "acceptedInterface": false
+      },
+      {
+        "leftScopeId": "P1-B11",
+        "rightScopeId": "P1-B10",
+        "classification": "BOUNDS_DISJOINT",
+        "acceptedInterface": false
+      },
+      {
+        "leftScopeId": "P1-B12",
+        "rightScopeId": "P1-B10",
+        "classification": "BOUNDS_DISJOINT",
+        "acceptedInterface": false
+      },
+      {
+        "leftScopeId": "D06-RESERVATIONS",
+        "rightScopeId": "P1-B10",
+        "classification": "BOUNDS_DISJOINT_EXACT_SOURCE_BOUND_SCOPE_UNION",
+        "unknownIsNotEmptySet": false,
+        "acceptedInterface": false
+      }
+    ],
+    "disclosedOverlapCount": 6,
+    "unknownPairCount": 6,
+    "unknownDueNullDomainCount": 0,
+    "unknownDueExactSourceBoundUnexpandedCount": 6,
+    "allOverlapsResolvedAsAcceptedInterfaces": false
+  },
+  "v3IntegrationDelta": {
+    "originalV1UnresolvedRequiredDomainCount": 19,
+    "priorV2UnresolvedRequiredDomainCount": 15,
+    "currentUnresolvedRequiredDomainCount": 0,
+    "closedProposalGeometryDomainCount": 15,
+    "closedProposalGeometryDomains": [
+      {
+        "scopeId": "P1-B03",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "P1-B08",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "P1-B09",
+        "domain": "construction"
+      },
+      {
+        "scopeId": "P1-B09",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "P1-B10",
+        "domain": "interaction"
+      },
+      {
+        "scopeId": "P1-B10",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "P1-B12",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "P1-B07",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "D02",
+        "domain": "interaction"
+      },
+      {
+        "scopeId": "D02",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "D06-RESERVATIONS",
+        "domain": "construction"
+      },
+      {
+        "scopeId": "D06-RESERVATIONS",
+        "domain": "interaction"
+      },
+      {
+        "scopeId": "D06-RESERVATIONS",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "D06-MECHANISMS",
+        "domain": "construction"
+      },
+      {
+        "scopeId": "D06-MECHANISMS",
+        "domain": "influence"
+      }
+    ],
+    "boundSourceIdentities": {
+      "residualSurfaceConnectorProposalPayloadSha256": "b16a05525c4d68f3d3499d6db8a85ccd1eec44c89027ea1adca49dfed891af61",
+      "residualSurfaceConnectorFileSha256": "4d460fcf21ef9de29a6266dae75aaea2b436e68dc50368cb47a77e2e70a59a11",
+      "civilLifeSafetyCanonicalPayloadSha256": "8fb2d3425bcd002fa8e782fae40a5d9eb591e9583535037b5471f009fe103459",
+      "civilLifeSafetyFileSha256": "c1771bf10ca5ad850cc39e09a1a7c62ecad2fdcccc3e3702f2875bebc0348866",
+      "b09TechnicalReportIdentitySha256": "e8738f3932f2afc3ba71e35ccdebf0d5ef444ca7389e81ec31a18e48517d3eba",
+      "b11SurfaceRoadFileSha256": "324c275ef5120382f2b9a5510c4257259bd37f7ffe116350ae7959afb2534da6",
+      "d06DetailedReportIdentitySha256": "55eaab99b53aac1de53e81128026ff509de7a6efb9614b7e390c4f9cbe37c12f",
+      "d02C01ProposalPayloadSha256": "eff111ab974e6457ab042ed7639e48ed3e170d346b32a74328aad53b7561ce94"
+    },
+    "independentReconstruction": {
+      "exactCoordinateDomainCount": 24,
+      "sourceBoundHashOnlyDomainCount": 6,
+      "sourceBoundHashOnlyScopes": [
+        "P1-B10",
+        "D06-RESERVATIONS"
+      ],
+      "qualification": "The two scopes have exact count/bounds/hash domain identities but their large/reference-union coordinate streams are not expanded in G03."
+    },
+    "semanticNonPromotions": [
+      "Every construction-domain closure is an unaccepted target or source-limited reservation proposal with no selected material/future state.",
+      "Every influence-domain closure is a conservative coordination reservation, never an expert physical propagation kernel.",
+      "D06 detailed functional cells remain unaccepted mechanisms; the 73-reference union remains exact source-bound geometry with no functional credit.",
+      "D02 exact interaction/influence geometry does not supply hydraulics, flow, receiver, outfall, loading, or geotechnical acceptance.",
+      "B10 exact sparse interaction/influence identities do not accept support, groundwater, cryosphere, erosion, settlement, or material states."
+    ]
+  },
+  "gate": {
+    "id": "G03_INTEGER_SET_OUT",
+    "controllingPassRule": "Every release owner has an exact integer target/interaction cell set, rounding rule, bounds, count, and SHA-256; no null Y or fractional block coordinate remains.",
+    "result": "PASS",
+    "g03Passed": true,
+    "exactScopeCount": 10,
+    "exactRequiredDomainCount": 30,
+    "exactExpandedScopeDomainCount": 8,
+    "originalV1UnresolvedRequiredDomainCount": 19,
+    "priorUnresolvedRequiredDomainCount": 15,
+    "unresolvedRequiredDomainCount": 0,
+    "newlyClosedProposalGeometryDomains": [
+      {
+        "scopeId": "P1-B03",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "P1-B08",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "P1-B09",
+        "domain": "construction"
+      },
+      {
+        "scopeId": "P1-B09",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "P1-B10",
+        "domain": "interaction"
+      },
+      {
+        "scopeId": "P1-B10",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "P1-B12",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "P1-B07",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "D02",
+        "domain": "interaction"
+      },
+      {
+        "scopeId": "D02",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "D06-RESERVATIONS",
+        "domain": "construction"
+      },
+      {
+        "scopeId": "D06-RESERVATIONS",
+        "domain": "interaction"
+      },
+      {
+        "scopeId": "D06-RESERVATIONS",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "D06-MECHANISMS",
+        "domain": "construction"
+      },
+      {
+        "scopeId": "D06-MECHANISMS",
+        "domain": "influence"
+      }
+    ],
+    "newlyClosedProposalGeometryDomainCount": 15,
+    "unresolvedRequiredDomains": [],
+    "disclosedOverlapCount": 6,
+    "unknownOverlapPairCount": 6,
+    "passBasis": [
+      "All 30 required construction, interaction, and influence proposal domains have exact integer cell counts, inclusive bounds, deterministic reconstruction/source rules, and SHA-256 identities.",
+      "No required domain contains a null Y, fractional coordinate, or missing exact identity.",
+      "Overlap uncertainty is preserved only for exact source-bound coordinate streams that are not expanded inline; unknown is never treated as an empty set."
+    ],
+    "downstreamAndTechnicalHolds": [
+      "Every closure set remains an unaccepted planning or source-limited coordination proposal rather than accepted construction or expert influence authority.",
+      "G02 technical evidence, G04 ownership, G05 interfaces, G06 protected-feature clearance, G07 executable operations, and complete-save evidence remain separate gates.",
+      "Disclosed overlaps are coordination findings, not accepted interfaces."
+    ],
+    "eliminatedAmbiguities": [
+      "P1-B03 construction and external interaction-shell proposal are sparse, integer, bounded, counted, and hashed.",
+      "P1-B07 is pinned to B07-C-WEST-2 and its construction and interaction-union proposals are sparse, integer, bounded, counted, and hashed.",
+      "P1-B08 construction and interaction-union proposals are sparse, integer, bounded, counted, and hashed.",
+      "P1-B09 construction and coordination-influence proposals bind the minimum planning accommodation without accepting materials, mechanisms, structural design, or expert influence.",
+      "P1-B10 construction, interaction, and influence proposals are bound to exact sparse interval hashes and the immutable snapshot without expanding 16-million-scale coordinate streams inline.",
+      "D02 construction, whole-known interaction, and source-limited influence proposals are exact; hydraulics, flow, storage, receiver, outfall, loading, and expert influence remain unaccepted.",
+      "D06 retains exact construction, interaction, and influence identities for both the 73-reference reservation union and independently reproduced 9,065-cell detailed functional setout.",
+      "P1-B11 construction, interaction, and candidate load/drainage/utility influence reservations are independently reconstructed and hashed without accepting an expert physical influence kernel.",
+      "P1-B12 construction, interaction, and conservative coordination-influence proposals are reconstructed and hashed while expert influence remains unaccepted.",
+      "All pairwise overlaps among expanded exact scope unions are enumerated; source-bound comparisons are either proven by bounds/source containment or explicitly retained as unknown for unexpanded exact streams.",
+      "Seven surface/connector construction and coordination-influence domains are independently reconstructed or source-bound without promoting them to expert influence or construction acceptance.",
+      "Eight civil/life-safety domains are independently reconstructed where coordinate sources exist; exact D06 reservation unions remain source-bound hash-only identities.",
+      "All 30 required scope/domain records now have integer counts, inclusive bounds, and exact SHA-256 identities; no geometry null remains."
+    ],
+    "ambiguitiesRemaining": [
+      {
+        "id": "EXT-CONSTRUCTION-METHOD-AND-STAGING",
+        "status": "HOLD",
+        "requirement": "Accept scope-specific means, sequencing, equipment sweeps, temporary works, access, laydown, and reinstatement against the complete saved world."
+      },
+      {
+        "id": "EXT-GEOTECHNICAL-STRUCTURAL-LOADS",
+        "status": "HOLD",
+        "requirement": "Accept loads, settlement/deformation criteria, foundations, retaining, support, liner, transfer, and positive protected-feature margins."
+      },
+      {
+        "id": "EXT-HYDROLOGY-CRYOSPHERE-DRAINAGE",
+        "status": "HOLD",
+        "requirement": "Accept finite groundwater, infiltration, snowmelt, erosion, dewatering, sump, drainage, receiver, outfall, capacity, and no-diversion models."
+      },
+      {
+        "id": "EXT-UTILITIES-POWER-LIFE-SAFETY",
+        "status": "HOLD",
+        "requirement": "Accept service types, circuits, isolation, maintainability, rescue/egress, fire/smoke behavior, commissioning, and operational controls."
+      },
+      {
+        "id": "EXT-COMPLETE-SAVE-AND-PROTECTED-CLEARANCE",
+        "status": "HOLD",
+        "requirement": "Bind region/entities/POI/level.dat in one same-moment capture and rerun exact all-start, entity, POI, fabric, and protected-core comparisons."
+      },
+      {
+        "id": "EXT-OWNER-INTERFACE-AND-MATERIAL-ACCEPTANCE",
+        "status": "HOLD",
+        "requirement": "Accept one owner per physical cell, default-deny directional seams, materials/future states, technical evidence, and the final hash-bound package."
+      },
+      {
+        "id": "CLS-H01-COMPLETE-SAME-MOMENT-SAVE",
+        "status": "HOLD_EXTERNAL_EVIDENCE",
+        "exactProposalDomain": null,
+        "requirement": "A same-moment save containing region, entities, poi, level.dat, and an ordered capture manifest, followed by entity/POI/block-entity/fluid/generated-start clearance against every final influence set."
+      },
+      {
+        "id": "CLS-H02-D02-HYDRAULIC-STORAGE-RECEIVER-AND-OUTFALL",
+        "status": "HOLD_EXTERNAL_TECHNICAL_EVIDENCE",
+        "exactProposalDomain": null,
+        "requirement": "Accepted source/future fluid accounting, catchments, peak storage/freeboard, recovery, pump/control states, receiver, outfall, and directional flow interfaces."
+      },
+      {
+        "id": "CLS-H03-STRUCTURAL-GEOTECHNICAL-AND-MATERIAL-DESIGN",
+        "status": "HOLD_EXTERNAL_TECHNICAL_EVIDENCE",
+        "exactProposalDomain": null,
+        "requirement": "Accepted loads, lining/support, foundations, penetrations, geotechnical margins, material/future states, quantities, and construction method."
+      },
+      {
+        "id": "CLS-H04-D06-LIFE-SAFETY-FUNCTIONAL-ENGINEERING",
+        "status": "HOLD_EXTERNAL_TECHNICAL_EVIDENCE",
+        "exactProposalDomain": null,
+        "requirement": "Accepted egress endpoints, lift/stair behavior, smoke model, ventilation mode/capacity, barriers, fire-service access, controls, failure logic, and emergency-service review."
+      },
+      {
+        "id": "CLS-H05-POWER-DRAINAGE-RECEIVERS-AND-COMMISSIONING",
+        "status": "HOLD_EXTERNAL_TECHNICAL_EVIDENCE",
+        "exactProposalDomain": null,
+        "requirement": "Before R00, accept independent sources, loads, circuits, drainage hydraulics/receiver, mechanism design states, all 29 commissioning test methods and pass criteria, and common-cause analysis. Actual commissioning results are post-build G17/G19 evidence and cannot close G02."
+      },
+      {
+        "id": "CLS-H06-OWNER-INTERFACE-AND-IMMUTABLE-TECHNICAL-ACCEPTANCE",
+        "status": "HOLD_ACCEPTANCE_AFTER_TECHNICAL_EVIDENCE",
+        "exactProposalDomain": null,
+        "requirement": "Final one-owner cell assignments, direction-specific interfaces, independent technical review, and sole-owner acceptance of one immutable technical identity."
+      }
+    ],
+    "physicalReleaseAuthorized": false,
+    "operationGenerationAuthorized": false,
+    "worldEditAuthorized": false
+  },
+  "safetyBoundary": {
+    "acceptedConstructionCellCount": 0,
+    "acceptedMaterialCellCount": 0,
+    "acceptedFutureCellCount": 0,
+    "operationCellCount": 0,
+    "constructionOwnershipAuthorized": false,
+    "physicalReleaseAuthorized": false,
+    "operationGenerationAuthorized": false,
+    "worldEditAuthorized": false,
+    "executable": false
+  },
+  "canonicalPayloadSha256": "1e4609275a2fd6aed8aa8a3dac00e8bdadae97dc756ca222922ce57a2c9b0712"
+}

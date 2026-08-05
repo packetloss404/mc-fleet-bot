@@ -9,11 +9,11 @@ const ROOT = path.resolve(__dirname, '../..');
 const GENERATED_AT = '2026-08-04T22:44:00Z';
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json',
+  'docs/masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.md',
+  'docs/masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.md',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-d02-s04-'));
 const regeneratedJson = path.join(tempDir, 'alternatives.json');
@@ -222,10 +222,10 @@ describe('Combined Zones D02-S04 closed drainage planning alternatives', () => {
       },
     });
     expect(report.sourceBindings.map((binding) => binding.path)).toEqual([
-      'masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json',
-      'masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
-      'masterplans/05-combined-zones/phase1-c1-civil-design.json',
-      'masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
+      'docs/masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json',
+      'docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
+      'docs/masterplans/05-combined-zones/phase1-c1-civil-design.json',
+      'docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
     ]);
     expect(report.sourceBindings.every((binding) => (
       binding.path.endsWith('.json')

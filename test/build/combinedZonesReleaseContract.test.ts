@@ -13,7 +13,7 @@ import {
 const ROOT = process.cwd();
 const CONTRACT_PATH = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-release-contract.json',
+  'docs/masterplans/05-combined-zones/phase1-release-contract.json',
 );
 
 function sha256(filename: string): string {
@@ -78,7 +78,7 @@ describe('Masterplan 05 deterministic release contract', () => {
       expect(byId.get(id)).toMatchObject({
         state: 'RESOLVED',
         machineEvidence: {
-          path: 'masterplans/05-combined-zones/phase1-design-decisions.json',
+          path: 'docs/masterplans/05-combined-zones/phase1-design-decisions.json',
         },
       });
     }

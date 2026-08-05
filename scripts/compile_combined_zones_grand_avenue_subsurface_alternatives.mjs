@@ -24,22 +24,22 @@ const value = (flag, fallback) => {
 const GENERATED_AT = value('--generated-at', '2026-08-05T01:30:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-grand-avenue-subsurface-alternatives.json',
+  'docs/masterplans/05-combined-zones/phase1-grand-avenue-subsurface-alternatives.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-grand-avenue-subsurface-alternatives.md',
+  'docs/masterplans/05-combined-zones/phase1-grand-avenue-subsurface-alternatives.md',
 ));
 
 const INPUTS = Object.freeze({
-  b11: 'masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json',
-  phase0: 'masterplans/05-combined-zones/phase0-survey-evidence.json',
-  geometry: 'masterplans/05-combined-zones/phase1-geometry-coordination.json',
-  coordinates: 'masterplans/05-combined-zones/site-coordinates.json',
-  protectedRelics: 'masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
-  d02: 'masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
-  d06: 'masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json',
-  releaseContract: 'masterplans/05-combined-zones/phase1-release-contract.json',
+  b11: 'docs/masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json',
+  phase0: 'docs/masterplans/05-combined-zones/phase0-survey-evidence.json',
+  geometry: 'docs/masterplans/05-combined-zones/phase1-geometry-coordination.json',
+  coordinates: 'docs/masterplans/05-combined-zones/site-coordinates.json',
+  protectedRelics: 'docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
+  d02: 'docs/masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
+  d06: 'docs/masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json',
+  releaseContract: 'docs/masterplans/05-combined-zones/phase1-release-contract.json',
 });
 
 const WORLD_MIN_Y = -64;

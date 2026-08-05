@@ -1,0 +1,2356 @@
+{
+  "schemaVersion": 2,
+  "id": "combined-zones-phase0-survey-evidence",
+  "status": "PASS_REVISED_SITING_PHASE0",
+  "generatedAtUtc": "2026-08-04T03:50:24.998Z",
+  "snapshots": {
+    "preGeneration": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-pre-20260804T021237Z/region",
+      "sha256": "fe7a3e5a75bbf90104c73bf9f78115300fe66f82b300d2dde7cede9fd993ab37",
+      "regionFileCount": 51,
+      "bytes": 290946492,
+      "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+    },
+    "postGeneration": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+      "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+      "regionFileCount": 51,
+      "bytes": 290946492,
+      "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+    }
+  },
+  "authorityInputs": {
+    "coordinateRegistry": {
+      "path": "docs/masterplans/05-combined-zones/site-coordinates.json",
+      "sha256": "4ec96165c1b4af92d766af4d7e79cb296fba0e362e8b43f6a1053c2a20bf0081"
+    },
+    "candidateAnalysis": {
+      "path": "docs/masterplans/05-combined-zones/resiting-candidate-analysis.json",
+      "sha256": "0b215c19274065fc7a0db9c4adea685385c5b8a2e03ccbeaeb563c15d894ff8f"
+    }
+  },
+  "rerunDisposition": {
+    "additionalChunkGenerationRequired": false,
+    "reason": "Every chunk required by the re-sited reserve was already minecraft:full in the bounded Phase 0 atlas; no temporary force-load tile was added.",
+    "preservedLiveForceLoadBaseline": 104
+  },
+  "chunkCoverage": {
+    "atlas": {
+      "minecraft:full": 14238
+    },
+    "reserve": {
+      "minecraft:full": 6097
+    },
+    "wholeRequested": 38036,
+    "wholePresent": 33599
+  },
+  "sitingGates": {
+    "fullAtlasChunkCoverage": true,
+    "engineeredPassengerRailOneInEight": true,
+    "criticalCoreAnchorsDry": true,
+    "emptyEightFootprintDry": true,
+    "emptyEightWhollySouthOfGatewayApproach": true,
+    "emptyEightColdBiomeColumnsZero": true,
+    "emptyEightEightBlockCover": true,
+    "emptyEightVerticalStructureClearance": true,
+    "mountainWaterExposureBelowFivePercent": true,
+    "urbanCoreWaterExposureBelowFivePercent": true,
+    "surfaceRelicsDeclaredNoTouch": true
+  },
+  "areaCensuses": {
+    "revisedCombinedZonesReserve": {
+      "bounds": {
+        "minX": 1500,
+        "maxX": 2550,
+        "minZ": -1150,
+        "maxZ": 300
+      },
+      "columns": 1525001,
+      "waterColumns": 245299,
+      "lavaColumns": 298,
+      "coldBiomeColumns": 885433,
+      "vegetationTopColumns": 177307,
+      "terrainMinY": 5,
+      "terrainMaxY": 138,
+      "biomes": {
+        "minecraft:snowy_plains": 330960,
+        "minecraft:snowy_taiga": 206876,
+        "minecraft:plains": 179880,
+        "minecraft:taiga": 141016,
+        "minecraft:frozen_ocean": 124438,
+        "minecraft:frozen_river": 88708,
+        "minecraft:forest": 77672,
+        "minecraft:deep_frozen_ocean": 56635,
+        "minecraft:grove": 54224,
+        "minecraft:old_growth_spruce_taiga": 53079,
+        "minecraft:river": 50405,
+        "minecraft:cold_ocean": 39735,
+        "minecraft:old_growth_pine_taiga": 29672,
+        "minecraft:stony_shore": 22280,
+        "minecraft:snowy_beach": 19168,
+        "minecraft:beach": 15438,
+        "minecraft:meadow": 12416,
+        "minecraft:deep_cold_ocean": 8180,
+        "minecraft:cherry_grove": 7264,
+        "minecraft:frozen_peaks": 4424,
+        "minecraft:jagged_peaks": 1264,
+        "minecraft:lush_caves": 851,
+        "minecraft:flower_forest": 368,
+        "minecraft:dripstone_caves": 48
+      },
+      "waterFraction": 0.160852,
+      "vegetationFraction": 0.116267
+    },
+    "gatewayApproach": {
+      "bounds": {
+        "minX": 1500,
+        "maxX": 2250,
+        "minZ": -1100,
+        "maxZ": 0
+      },
+      "columns": 826851,
+      "waterColumns": 91550,
+      "lavaColumns": 179,
+      "coldBiomeColumns": 481800,
+      "vegetationTopColumns": 109505,
+      "terrainMinY": 12,
+      "terrainMaxY": 132,
+      "biomes": {
+        "minecraft:snowy_taiga": 181384,
+        "minecraft:snowy_plains": 176576,
+        "minecraft:taiga": 103384,
+        "minecraft:plains": 70964,
+        "minecraft:frozen_river": 69508,
+        "minecraft:forest": 53496,
+        "minecraft:frozen_ocean": 40976,
+        "minecraft:river": 32832,
+        "minecraft:old_growth_pine_taiga": 26144,
+        "minecraft:cold_ocean": 19936,
+        "minecraft:snowy_beach": 12884,
+        "minecraft:meadow": 12416,
+        "minecraft:beach": 10512,
+        "minecraft:stony_shore": 7964,
+        "minecraft:old_growth_spruce_taiga": 7403,
+        "minecraft:grove": 472
+      },
+      "waterFraction": 0.110721,
+      "vegetationFraction": 0.132436
+    },
+    "gatewayExpansionTerminalFootprint": {
+      "bounds": {
+        "minX": 1632,
+        "maxX": 1872,
+        "minZ": 40,
+        "maxZ": 160
+      },
+      "columns": 29161,
+      "waterColumns": 0,
+      "lavaColumns": 0,
+      "coldBiomeColumns": 0,
+      "vegetationTopColumns": 4334,
+      "terrainMinY": 62,
+      "terrainMaxY": 136,
+      "biomes": {
+        "minecraft:plains": 22073,
+        "minecraft:cherry_grove": 7088
+      },
+      "proposedRoofY": 54,
+      "minimumTerrainAboveRoof": 8,
+      "maximumTerrainAboveRoof": 82,
+      "columnsMeetingEightBlockSolidCover": 29161,
+      "waterFraction": 0,
+      "vegetationFraction": 0.148623,
+      "eightBlockSolidCoverFraction": 1
+    },
+    "mountainFootprint": {
+      "bounds": {
+        "minX": 1648,
+        "maxX": 2448,
+        "minZ": -1128,
+        "maxZ": -528
+      },
+      "columns": 481401,
+      "waterColumns": 12597,
+      "lavaColumns": 114,
+      "coldBiomeColumns": 455949,
+      "vegetationTopColumns": 11464,
+      "terrainMinY": 12,
+      "terrainMaxY": 125,
+      "biomes": {
+        "minecraft:snowy_plains": 257216,
+        "minecraft:snowy_taiga": 102200,
+        "minecraft:frozen_river": 51736,
+        "minecraft:frozen_ocean": 22080,
+        "minecraft:taiga": 18968,
+        "minecraft:grove": 16165,
+        "minecraft:snowy_beach": 6552,
+        "minecraft:stony_shore": 5220,
+        "minecraft:jagged_peaks": 1264
+      },
+      "waterFraction": 0.026167,
+      "vegetationFraction": 0.023814
+    },
+    "urbanCore": {
+      "bounds": {
+        "minX": 1938,
+        "maxX": 2158,
+        "minZ": -648,
+        "maxZ": -238
+      },
+      "columns": 90831,
+      "waterColumns": 2524,
+      "lavaColumns": 2,
+      "coldBiomeColumns": 84604,
+      "vegetationTopColumns": 3314,
+      "terrainMinY": 33,
+      "terrainMaxY": 96,
+      "biomes": {
+        "minecraft:snowy_taiga": 38392,
+        "minecraft:snowy_plains": 33260,
+        "minecraft:frozen_ocean": 5300,
+        "minecraft:snowy_beach": 4720,
+        "minecraft:taiga": 4088,
+        "minecraft:frozen_river": 2932,
+        "minecraft:stony_shore": 1425,
+        "minecraft:forest": 458,
+        "minecraft:beach": 248,
+        "minecraft:river": 8
+      },
+      "waterFraction": 0.027788,
+      "vegetationFraction": 0.036485
+    }
+  },
+  "protectedSurfaceRelics": [
+    {
+      "id": "minecraft:igloo",
+      "bounds": {
+        "minX": 2304,
+        "minY": 90,
+        "minZ": -1024,
+        "maxX": 2310,
+        "maxY": 94,
+        "maxZ": -1017
+      },
+      "chunkX": 144,
+      "chunkZ": -64,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:igloo",
+      "bounds": {
+        "minX": 1790,
+        "minY": 62,
+        "minZ": -926,
+        "maxX": 1797,
+        "maxY": 66,
+        "maxZ": -920
+      },
+      "chunkX": 112,
+      "chunkZ": -58,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:shipwreck",
+      "bounds": {
+        "minX": 2072,
+        "minY": 69,
+        "minZ": -661,
+        "maxX": 2099,
+        "maxY": 77,
+        "maxZ": -653
+      },
+      "chunkX": 130,
+      "chunkZ": -42,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    }
+  ],
+  "terminalVerticalStructureConflicts": [],
+  "generatedStructureStarts": [
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2602,
+        "minY": 2,
+        "minZ": -1271,
+        "maxX": 2713,
+        "maxY": 25,
+        "maxZ": -1119
+      },
+      "chunkX": 165,
+      "chunkZ": -75,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:ocean_ruin_cold",
+      "bounds": {
+        "minX": 2898,
+        "minY": 47,
+        "minZ": -1211,
+        "maxX": 2939,
+        "maxY": 62,
+        "maxZ": -1172
+      },
+      "chunkX": 182,
+      "chunkZ": -75,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 3101,
+        "minY": 17,
+        "minZ": -1275,
+        "maxX": 3256,
+        "maxY": 37,
+        "maxZ": -1123
+      },
+      "chunkX": 198,
+      "chunkZ": -75,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2240,
+        "minY": 11,
+        "minZ": -1224,
+        "maxX": 2390,
+        "maxY": 32,
+        "maxZ": -1089
+      },
+      "chunkX": 144,
+      "chunkZ": -73,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2538,
+        "minY": -44,
+        "minZ": -1227,
+        "maxX": 2700,
+        "maxY": -15,
+        "maxZ": -1071
+      },
+      "chunkX": 164,
+      "chunkZ": -72,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2066,
+        "minY": -30,
+        "minZ": -1170,
+        "maxX": 2179,
+        "maxY": -12,
+        "maxZ": -1066
+      },
+      "chunkX": 132,
+      "chunkZ": -70,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:ruined_portal_ocean",
+      "bounds": {
+        "minX": 2854,
+        "minY": 43,
+        "minZ": -1104,
+        "maxX": 2864,
+        "maxY": 58,
+        "maxZ": -1089
+      },
+      "chunkX": 179,
+      "chunkZ": -69,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:trial_chambers",
+      "bounds": {
+        "minX": 1820,
+        "minY": -48,
+        "minZ": -1099,
+        "maxX": 1939,
+        "maxY": -5,
+        "maxZ": -1007
+      },
+      "chunkX": 117,
+      "chunkZ": -68,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1818,
+        "minY": -58,
+        "minZ": -1119,
+        "maxX": 1975,
+        "maxY": -45,
+        "maxZ": -986
+      },
+      "chunkX": 118,
+      "chunkZ": -67,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:trial_chambers",
+      "bounds": {
+        "minX": 2785,
+        "minY": -45,
+        "minZ": -1067,
+        "maxX": 2903,
+        "maxY": 18,
+        "maxZ": -976
+      },
+      "chunkX": 177,
+      "chunkZ": -66,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1523,
+        "minY": 18,
+        "minZ": -1113,
+        "maxX": 1643,
+        "maxY": 39,
+        "maxZ": -958
+      },
+      "chunkX": 98,
+      "chunkZ": -65,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:shipwreck",
+      "bounds": {
+        "minX": 2821,
+        "minY": 81,
+        "minZ": -1029,
+        "maxX": 2848,
+        "maxY": 101,
+        "maxZ": -1021
+      },
+      "chunkX": 177,
+      "chunkZ": -65,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:igloo",
+      "bounds": {
+        "minX": 2304,
+        "minY": 90,
+        "minZ": -1024,
+        "maxX": 2310,
+        "maxY": 94,
+        "maxZ": -1017
+      },
+      "chunkX": 144,
+      "chunkZ": -64,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1206,
+        "minY": -20,
+        "minZ": -1039,
+        "maxX": 1316,
+        "maxY": -4,
+        "maxZ": -914
+      },
+      "chunkX": 78,
+      "chunkZ": -62,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1649,
+        "minY": -48,
+        "minZ": -997,
+        "maxX": 1794,
+        "maxY": -30,
+        "maxZ": -865
+      },
+      "chunkX": 107,
+      "chunkZ": -59,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:igloo",
+      "bounds": {
+        "minX": 1790,
+        "minY": 62,
+        "minZ": -926,
+        "maxX": 1797,
+        "maxY": 66,
+        "maxZ": -920
+      },
+      "chunkX": 112,
+      "chunkZ": -58,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1758,
+        "minY": -49,
+        "minZ": -999,
+        "maxX": 1883,
+        "maxY": -21,
+        "maxZ": -840
+      },
+      "chunkX": 113,
+      "chunkZ": -58,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 3146,
+        "minY": 17,
+        "minZ": -1002,
+        "maxX": 3297,
+        "maxY": 34,
+        "maxZ": -889
+      },
+      "chunkX": 200,
+      "chunkZ": -58,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2467,
+        "minY": 16,
+        "minZ": -961,
+        "maxX": 2590,
+        "maxY": 30,
+        "maxZ": -833
+      },
+      "chunkX": 157,
+      "chunkZ": -57,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2536,
+        "minY": -9,
+        "minZ": -938,
+        "maxX": 2659,
+        "maxY": 6,
+        "maxZ": -838
+      },
+      "chunkX": 162,
+      "chunkZ": -56,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 3035,
+        "minY": -15,
+        "minZ": -973,
+        "maxX": 3172,
+        "maxY": 4,
+        "maxZ": -836
+      },
+      "chunkX": 193,
+      "chunkZ": -56,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:village_snowy",
+      "bounds": {
+        "minX": 2476,
+        "minY": 62,
+        "minZ": -932,
+        "maxX": 2628,
+        "maxY": 86,
+        "maxZ": -819
+      },
+      "chunkX": 159,
+      "chunkZ": -55,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 3010,
+        "minY": -6,
+        "minZ": -945,
+        "maxX": 3109,
+        "maxY": 17,
+        "maxZ": -780
+      },
+      "chunkX": 193,
+      "chunkZ": -55,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1968,
+        "minY": -13,
+        "minZ": -948,
+        "maxX": 2081,
+        "maxY": 10,
+        "maxZ": -814
+      },
+      "chunkX": 125,
+      "chunkZ": -54,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:trial_chambers",
+      "bounds": {
+        "minX": 2142,
+        "minY": -52,
+        "minZ": -922,
+        "maxX": 2257,
+        "maxY": -11,
+        "maxZ": -817
+      },
+      "chunkX": 136,
+      "chunkZ": -54,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2817,
+        "minY": -15,
+        "minZ": -912,
+        "maxX": 2973,
+        "maxY": 8,
+        "maxZ": -756
+      },
+      "chunkX": 180,
+      "chunkZ": -52,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:ocean_ruin_cold",
+      "bounds": {
+        "minX": 2698,
+        "minY": 48,
+        "minZ": -816,
+        "maxX": 2704,
+        "maxY": 54,
+        "maxZ": -811
+      },
+      "chunkX": 169,
+      "chunkZ": -51,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2658,
+        "minY": -51,
+        "minZ": -895,
+        "maxX": 2813,
+        "maxY": -29,
+        "maxZ": -742
+      },
+      "chunkX": 171,
+      "chunkZ": -51,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2273,
+        "minY": -21,
+        "minZ": -863,
+        "maxX": 2415,
+        "maxY": 1,
+        "maxZ": -758
+      },
+      "chunkX": 146,
+      "chunkZ": -50,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1239,
+        "minY": -7,
+        "minZ": -831,
+        "maxX": 1378,
+        "maxY": 8,
+        "maxZ": -676
+      },
+      "chunkX": 81,
+      "chunkZ": -48,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1278,
+        "minY": 14,
+        "minZ": -830,
+        "maxX": 1424,
+        "maxY": 36,
+        "maxZ": -710
+      },
+      "chunkX": 84,
+      "chunkZ": -47,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1475,
+        "minY": -7,
+        "minZ": -815,
+        "maxX": 1652,
+        "maxY": 17,
+        "maxZ": -665
+      },
+      "chunkX": 98,
+      "chunkZ": -46,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:shipwreck",
+      "bounds": {
+        "minX": 3173,
+        "minY": 47,
+        "minZ": -709,
+        "maxX": 3188,
+        "maxY": 55,
+        "maxZ": -701
+      },
+      "chunkX": 199,
+      "chunkZ": -45,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1483,
+        "minY": 17,
+        "minZ": -757,
+        "maxX": 1634,
+        "maxY": 49,
+        "maxZ": -635
+      },
+      "chunkX": 97,
+      "chunkZ": -44,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1890,
+        "minY": 24,
+        "minZ": -768,
+        "maxX": 2041,
+        "maxY": 44,
+        "maxZ": -640
+      },
+      "chunkX": 123,
+      "chunkZ": -44,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": true
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1494,
+        "minY": 5,
+        "minZ": -762,
+        "maxX": 1574,
+        "maxY": 15,
+        "maxZ": -634
+      },
+      "chunkX": 97,
+      "chunkZ": -43,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 3057,
+        "minY": -59,
+        "minZ": -718,
+        "maxX": 3188,
+        "maxY": -38,
+        "maxZ": -620
+      },
+      "chunkX": 194,
+      "chunkZ": -43,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:shipwreck",
+      "bounds": {
+        "minX": 2072,
+        "minY": 69,
+        "minZ": -661,
+        "maxX": 2099,
+        "maxY": 77,
+        "maxZ": -653
+      },
+      "chunkX": 130,
+      "chunkZ": -42,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:ruined_portal_ocean",
+      "bounds": {
+        "minX": 2776,
+        "minY": 48,
+        "minZ": -640,
+        "maxX": 2783,
+        "maxY": 56,
+        "maxZ": -632
+      },
+      "chunkX": 173,
+      "chunkZ": -40,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2433,
+        "minY": -50,
+        "minZ": -691,
+        "maxX": 2532,
+        "maxY": -32,
+        "maxZ": -548
+      },
+      "chunkX": 155,
+      "chunkZ": -39,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1711,
+        "minY": -25,
+        "minZ": -624,
+        "maxX": 1831,
+        "maxY": -6,
+        "maxZ": -466
+      },
+      "chunkX": 109,
+      "chunkZ": -35,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1998,
+        "minY": -31,
+        "minZ": -634,
+        "maxX": 2137,
+        "maxY": -9,
+        "maxZ": -511
+      },
+      "chunkX": 130,
+      "chunkZ": -35,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": true
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1322,
+        "minY": -41,
+        "minZ": -622,
+        "maxX": 1471,
+        "maxY": -15,
+        "maxZ": -453
+      },
+      "chunkX": 88,
+      "chunkZ": -34,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:trial_chambers",
+      "bounds": {
+        "minX": 2833,
+        "minY": -51,
+        "minZ": -534,
+        "maxX": 2932,
+        "maxY": 21,
+        "maxZ": -448
+      },
+      "chunkX": 180,
+      "chunkZ": -33,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1669,
+        "minY": -33,
+        "minZ": -575,
+        "maxX": 1798,
+        "maxY": -14,
+        "maxZ": -451
+      },
+      "chunkX": 108,
+      "chunkZ": -31,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1554,
+        "minY": -21,
+        "minZ": -534,
+        "maxX": 1727,
+        "maxY": 5,
+        "maxZ": -384
+      },
+      "chunkX": 102,
+      "chunkZ": -30,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": true,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:ocean_ruin_cold",
+      "bounds": {
+        "minX": 2891,
+        "minY": 59,
+        "minZ": -470,
+        "maxX": 2896,
+        "maxY": 65,
+        "maxZ": -464
+      },
+      "chunkX": 181,
+      "chunkZ": -29,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1184,
+        "minY": -50,
+        "minZ": -482,
+        "maxX": 1285,
+        "maxY": -36,
+        "maxZ": -384
+      },
+      "chunkX": 76,
+      "chunkZ": -28,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:ruined_portal",
+      "bounds": {
+        "minX": 1312,
+        "minY": 62,
+        "minZ": -432,
+        "maxX": 1327,
+        "maxY": 77,
+        "maxZ": -417
+      },
+      "chunkX": 82,
+      "chunkZ": -28,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2720,
+        "minY": -61,
+        "minZ": -537,
+        "maxX": 2834,
+        "maxY": -46,
+        "maxZ": -395
+      },
+      "chunkX": 173,
+      "chunkZ": -28,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1655,
+        "minY": 12,
+        "minZ": -458,
+        "maxX": 1822,
+        "maxY": 30,
+        "maxZ": -320
+      },
+      "chunkX": 108,
+      "chunkZ": -26,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2111,
+        "minY": -41,
+        "minZ": -478,
+        "maxX": 2203,
+        "maxY": -11,
+        "maxZ": -323
+      },
+      "chunkX": 135,
+      "chunkZ": -26,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": true
+    },
+    {
+      "id": "minecraft:ruined_portal",
+      "bounds": {
+        "minX": 2272,
+        "minY": 62,
+        "minZ": -384,
+        "maxX": 2281,
+        "maxY": 71,
+        "maxZ": -378
+      },
+      "chunkX": 142,
+      "chunkZ": -24,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 3049,
+        "minY": -38,
+        "minZ": -408,
+        "maxX": 3148,
+        "maxY": -12,
+        "maxZ": -300
+      },
+      "chunkX": 194,
+      "chunkZ": -23,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:trial_chambers",
+      "bounds": {
+        "minX": 1905,
+        "minY": -51,
+        "minZ": -399,
+        "maxX": 2028,
+        "maxY": 9,
+        "maxZ": -287
+      },
+      "chunkX": 122,
+      "chunkZ": -21,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": true
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1873,
+        "minY": -1,
+        "minZ": -393,
+        "maxX": 2011,
+        "maxY": 19,
+        "maxZ": -224
+      },
+      "chunkX": 121,
+      "chunkZ": -20,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": true
+    },
+    {
+      "id": "minecraft:shipwreck",
+      "bounds": {
+        "minX": 2912,
+        "minY": 48,
+        "minZ": -305,
+        "maxX": 2920,
+        "maxY": 56,
+        "maxZ": -290
+      },
+      "chunkX": 182,
+      "chunkZ": -20,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2743,
+        "minY": -61,
+        "minZ": -352,
+        "maxX": 2874,
+        "maxY": -40,
+        "maxZ": -231
+      },
+      "chunkX": 176,
+      "chunkZ": -18,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:ocean_ruin_cold",
+      "bounds": {
+        "minX": 2636,
+        "minY": 40,
+        "minZ": -273,
+        "maxX": 2683,
+        "maxY": 60,
+        "maxZ": -228
+      },
+      "chunkX": 167,
+      "chunkZ": -16,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:trail_ruins",
+      "bounds": {
+        "minX": 1250,
+        "minY": 48,
+        "minZ": -281,
+        "maxX": 1275,
+        "maxY": 69,
+        "maxZ": -230
+      },
+      "chunkX": 79,
+      "chunkZ": -15,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2488,
+        "minY": 13,
+        "minZ": -300,
+        "maxX": 2611,
+        "maxY": 33,
+        "maxZ": -197
+      },
+      "chunkX": 158,
+      "chunkZ": -15,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:shipwreck",
+      "bounds": {
+        "minX": 2544,
+        "minY": 47,
+        "minZ": -240,
+        "maxX": 2552,
+        "maxY": 55,
+        "maxZ": -217
+      },
+      "chunkX": 159,
+      "chunkZ": -15,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:trial_chambers",
+      "bounds": {
+        "minX": 2289,
+        "minY": -44,
+        "minZ": -284,
+        "maxX": 2399,
+        "maxY": -4,
+        "maxZ": -160
+      },
+      "chunkX": 147,
+      "chunkZ": -13,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:ocean_ruin_cold",
+      "bounds": {
+        "minX": 3040,
+        "minY": 47,
+        "minZ": -192,
+        "maxX": 3045,
+        "maxY": 53,
+        "maxZ": -186
+      },
+      "chunkX": 190,
+      "chunkZ": -12,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2608,
+        "minY": -19,
+        "minZ": -245,
+        "maxX": 2736,
+        "maxY": 15,
+        "maxZ": -98
+      },
+      "chunkX": 167,
+      "chunkZ": -11,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2503,
+        "minY": -34,
+        "minZ": -172,
+        "maxX": 2604,
+        "maxY": -15,
+        "maxZ": -40
+      },
+      "chunkX": 161,
+      "chunkZ": -8,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:buried_treasure",
+      "bounds": {
+        "minX": 2073,
+        "minY": 69,
+        "minZ": -71,
+        "maxX": 2073,
+        "maxY": 69,
+        "maxZ": -71
+      },
+      "chunkX": 129,
+      "chunkZ": -5,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1254,
+        "minY": -23,
+        "minZ": -134,
+        "maxX": 1369,
+        "maxY": -6,
+        "maxZ": 33
+      },
+      "chunkX": 81,
+      "chunkZ": -3,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1642,
+        "minY": 14,
+        "minZ": -126,
+        "maxX": 1771,
+        "maxY": 32,
+        "maxZ": 30
+      },
+      "chunkX": 106,
+      "chunkZ": -3,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 3040,
+        "minY": 12,
+        "minZ": -99,
+        "maxX": 3187,
+        "maxY": 36,
+        "maxZ": 19
+      },
+      "chunkX": 194,
+      "chunkZ": -3,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1184,
+        "minY": -56,
+        "minZ": -49,
+        "maxX": 1282,
+        "maxY": -37,
+        "maxZ": 33
+      },
+      "chunkX": 76,
+      "chunkZ": -2,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1323,
+        "minY": 2,
+        "minZ": -99,
+        "maxX": 1449,
+        "maxY": 30,
+        "maxZ": 48
+      },
+      "chunkX": 86,
+      "chunkZ": -2,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1473,
+        "minY": -5,
+        "minZ": -118,
+        "maxX": 1587,
+        "maxY": 19,
+        "maxZ": 34
+      },
+      "chunkX": 96,
+      "chunkZ": -2,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2351,
+        "minY": -11,
+        "minZ": -83,
+        "maxX": 2480,
+        "maxY": 14,
+        "maxZ": 65
+      },
+      "chunkX": 150,
+      "chunkZ": -2,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:ruined_portal",
+      "bounds": {
+        "minX": 2079,
+        "minY": 95,
+        "minZ": 17,
+        "maxX": 2085,
+        "maxY": 101,
+        "maxZ": 21
+      },
+      "chunkX": 130,
+      "chunkZ": 1,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:ocean_ruin_cold",
+      "bounds": {
+        "minX": 2672,
+        "minY": 50,
+        "minZ": 16,
+        "maxX": 2677,
+        "maxY": 56,
+        "maxZ": 22
+      },
+      "chunkX": 167,
+      "chunkZ": 1,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:trial_chambers",
+      "bounds": {
+        "minX": 1171,
+        "minY": -30,
+        "minZ": -49,
+        "maxX": 1295,
+        "maxY": 4,
+        "maxZ": 62
+      },
+      "chunkX": 78,
+      "chunkZ": 2,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:trial_chambers",
+      "bounds": {
+        "minX": 2191,
+        "minY": -53,
+        "minZ": -16,
+        "maxX": 2306,
+        "maxY": -7,
+        "maxZ": 104
+      },
+      "chunkX": 142,
+      "chunkZ": 2,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2354,
+        "minY": 25,
+        "minZ": -54,
+        "maxX": 2499,
+        "maxY": 43,
+        "maxZ": 112
+      },
+      "chunkX": 150,
+      "chunkZ": 2,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:buried_treasure",
+      "bounds": {
+        "minX": 3049,
+        "minY": 60,
+        "minZ": 41,
+        "maxX": 3049,
+        "maxY": 60,
+        "maxZ": 41
+      },
+      "chunkX": 190,
+      "chunkZ": 2,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1780,
+        "minY": -16,
+        "minZ": -21,
+        "maxX": 1925,
+        "maxY": 3,
+        "maxZ": 134
+      },
+      "chunkX": 115,
+      "chunkZ": 3,
+      "intersectsReserve": true,
+      "intersectsZ02": true,
+      "intersectsTerminalFootprint": true,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2981,
+        "minY": -39,
+        "minZ": -4,
+        "maxX": 3114,
+        "maxY": -20,
+        "maxZ": 136
+      },
+      "chunkX": 189,
+      "chunkZ": 4,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:shipwreck",
+      "bounds": {
+        "minX": 2579,
+        "minY": 51,
+        "minZ": 107,
+        "maxX": 2595,
+        "maxY": 59,
+        "maxZ": 115
+      },
+      "chunkX": 161,
+      "chunkZ": 6,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:trial_chambers",
+      "bounds": {
+        "minX": 2688,
+        "minY": -41,
+        "minZ": 85,
+        "maxX": 2808,
+        "maxY": -6,
+        "maxZ": 177
+      },
+      "chunkX": 171,
+      "chunkZ": 6,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2857,
+        "minY": 4,
+        "minZ": 27,
+        "maxX": 3016,
+        "maxY": 30,
+        "maxZ": 183
+      },
+      "chunkX": 184,
+      "chunkZ": 7,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 3176,
+        "minY": -30,
+        "minZ": 72,
+        "maxX": 3269,
+        "maxY": -9,
+        "maxZ": 197
+      },
+      "chunkX": 200,
+      "chunkZ": 9,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1187,
+        "minY": 13,
+        "minZ": 89,
+        "maxX": 1331,
+        "maxY": 32,
+        "maxZ": 250
+      },
+      "chunkX": 78,
+      "chunkZ": 10,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2572,
+        "minY": -6,
+        "minZ": 81,
+        "maxX": 2678,
+        "maxY": 24,
+        "maxZ": 258
+      },
+      "chunkX": 164,
+      "chunkZ": 10,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1929,
+        "minY": -37,
+        "minZ": 97,
+        "maxX": 2041,
+        "maxY": -14,
+        "maxZ": 252
+      },
+      "chunkX": 123,
+      "chunkZ": 11,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:ocean_ruin_cold",
+      "bounds": {
+        "minX": 2250,
+        "minY": 47,
+        "minZ": 176,
+        "maxX": 2256,
+        "maxY": 53,
+        "maxZ": 181
+      },
+      "chunkX": 141,
+      "chunkZ": 11,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:ruined_portal",
+      "bounds": {
+        "minX": 2768,
+        "minY": 67,
+        "minZ": 208,
+        "maxX": 2776,
+        "maxY": 73,
+        "maxZ": 216
+      },
+      "chunkX": 173,
+      "chunkZ": 13,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1457,
+        "minY": -22,
+        "minZ": 146,
+        "maxX": 1610,
+        "maxY": 5,
+        "maxZ": 309
+      },
+      "chunkX": 95,
+      "chunkZ": 14,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2615,
+        "minY": -55,
+        "minZ": 145,
+        "maxX": 2745,
+        "maxY": -33,
+        "maxZ": 278
+      },
+      "chunkX": 167,
+      "chunkZ": 14,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2842,
+        "minY": 7,
+        "minZ": 196,
+        "maxX": 2976,
+        "maxY": 39,
+        "maxZ": 290
+      },
+      "chunkX": 182,
+      "chunkZ": 14,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:trial_chambers",
+      "bounds": {
+        "minX": 1685,
+        "minY": -31,
+        "minZ": 177,
+        "maxX": 1799,
+        "maxY": 6,
+        "maxZ": 273
+      },
+      "chunkX": 108,
+      "chunkZ": 15,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:shipwreck_beached",
+      "bounds": {
+        "minX": 2896,
+        "minY": 57,
+        "minZ": 247,
+        "maxX": 2904,
+        "maxY": 65,
+        "maxZ": 270
+      },
+      "chunkX": 181,
+      "chunkZ": 15,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2274,
+        "minY": 7,
+        "minZ": 193,
+        "maxX": 2397,
+        "maxY": 25,
+        "maxZ": 348
+      },
+      "chunkX": 146,
+      "chunkZ": 16,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2661,
+        "minY": -51,
+        "minZ": 202,
+        "maxX": 2820,
+        "maxY": -34,
+        "maxZ": 350
+      },
+      "chunkX": 171,
+      "chunkZ": 17,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2421,
+        "minY": 1,
+        "minZ": 217,
+        "maxX": 2590,
+        "maxY": 14,
+        "maxZ": 350
+      },
+      "chunkX": 157,
+      "chunkZ": 19,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1473,
+        "minY": -41,
+        "minZ": 256,
+        "maxX": 1609,
+        "maxY": -20,
+        "maxZ": 416
+      },
+      "chunkX": 97,
+      "chunkZ": 21,
+      "intersectsReserve": true,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:ruined_portal",
+      "bounds": {
+        "minX": 1521,
+        "minY": 62,
+        "minZ": 377,
+        "maxX": 1529,
+        "maxY": 69,
+        "maxZ": 386
+      },
+      "chunkX": 95,
+      "chunkZ": 23,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1175,
+        "minY": -42,
+        "minZ": 333,
+        "maxX": 1294,
+        "maxY": -17,
+        "maxZ": 486
+      },
+      "chunkX": 77,
+      "chunkZ": 26,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1160,
+        "minY": -55,
+        "minZ": 340,
+        "maxX": 1287,
+        "maxY": -34,
+        "maxZ": 526
+      },
+      "chunkX": 76,
+      "chunkZ": 27,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2090,
+        "minY": -32,
+        "minZ": 364,
+        "maxX": 2226,
+        "maxY": -7,
+        "maxZ": 518
+      },
+      "chunkX": 134,
+      "chunkZ": 27,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:ocean_ruin_cold",
+      "bounds": {
+        "minX": 2299,
+        "minY": 48,
+        "minZ": 442,
+        "maxX": 2304,
+        "maxY": 54,
+        "maxZ": 448
+      },
+      "chunkX": 144,
+      "chunkZ": 28,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2492,
+        "minY": 14,
+        "minZ": 393,
+        "maxX": 2599,
+        "maxY": 40,
+        "maxZ": 510
+      },
+      "chunkX": 159,
+      "chunkZ": 29,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 3048,
+        "minY": -7,
+        "minZ": 389,
+        "maxX": 3187,
+        "maxY": 13,
+        "maxZ": 559
+      },
+      "chunkX": 194,
+      "chunkZ": 29,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1544,
+        "minY": -56,
+        "minZ": 423,
+        "maxX": 1667,
+        "maxY": -40,
+        "maxZ": 531
+      },
+      "chunkX": 99,
+      "chunkZ": 30,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:ocean_ruin_cold",
+      "bounds": {
+        "minX": 2547,
+        "minY": 43,
+        "minZ": 454,
+        "maxX": 2587,
+        "maxY": 58,
+        "maxZ": 486
+      },
+      "chunkX": 161,
+      "chunkZ": 30,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1515,
+        "minY": 23,
+        "minZ": 414,
+        "maxX": 1673,
+        "maxY": 50,
+        "maxZ": 579
+      },
+      "chunkX": 99,
+      "chunkZ": 31,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1191,
+        "minY": 25,
+        "minZ": 437,
+        "maxX": 1358,
+        "maxY": 46,
+        "maxZ": 608
+      },
+      "chunkX": 79,
+      "chunkZ": 32,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 2161,
+        "minY": 23,
+        "minZ": 465,
+        "maxX": 2244,
+        "maxY": 45,
+        "maxZ": 616
+      },
+      "chunkX": 138,
+      "chunkZ": 33,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:trial_chambers",
+      "bounds": {
+        "minX": 1280,
+        "minY": -42,
+        "minZ": 581,
+        "maxX": 1399,
+        "maxY": 18,
+        "maxZ": 672
+      },
+      "chunkX": 83,
+      "chunkZ": 37,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    },
+    {
+      "id": "minecraft:mineshaft",
+      "bounds": {
+        "minX": 1875,
+        "minY": 20,
+        "minZ": 500,
+        "maxX": 1993,
+        "maxY": 42,
+        "maxZ": 678
+      },
+      "chunkX": 120,
+      "chunkZ": 37,
+      "intersectsReserve": false,
+      "intersectsZ02": false,
+      "intersectsTerminalFootprint": false,
+      "intersectsMountainFootprint": false,
+      "intersectsUrbanCore": false
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/masterplans/05-combined-zones/maps/current-plus-phase0-terrain.png",
+      "bytes": 7542042,
+      "sha256": "72a47b37bdd082fc70e354c2beb38f41aa849b5f7247f16ce18fac00c0add9e3"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/maps/current-plus-proposed-phase0-overlay.png",
+      "bytes": 7773648,
+      "sha256": "98292d37932eb5941d37df9a4f84575b341b1419df38e6ab7dfd0e001feecc01"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/corridor-terrain-probe.json",
+      "bytes": 88397,
+      "sha256": "4e3f1b5f6750a5d18ae6e99b4a909471ea332b9ca290095f6236dbce1ea98f1c"
+    }
+  ],
+  "limitations": [
+    "The copied overworld region snapshot does not include the separate entities region directory, so this is not a live-entity census.",
+    "Vanilla structure-start records identify generated structures but do not prove present-day preservation or entrance safety.",
+    "The planning overlay does not authorize excavation, grading, or construction."
+  ]
+}

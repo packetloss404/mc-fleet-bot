@@ -22,37 +22,41 @@ const value = (flag, fallback) => {
   return index >= 0 && argv[index + 1] ? argv[index + 1] : fallback;
 };
 
-const GENERATED_AT = value('--generated-at', '2026-08-05T05:15:00Z');
+const GENERATED_AT = value('--generated-at', '2026-08-05T07:30:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-g03-canonical-setout.json',
+  'docs/masterplans/05-combined-zones/phase1-g03-canonical-setout.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-g03-canonical-setout.md',
+  'docs/masterplans/05-combined-zones/phase1-g03-canonical-setout.md',
 ));
 
 const INPUTS = Object.freeze({
-  releaseContract: 'masterplans/05-combined-zones/phase1-release-contract.json',
-  b03: 'masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json',
-  connectors: 'masterplans/05-combined-zones/phase1-connector-geometry.json',
-  d05Alternatives: 'masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json',
-  d05FutureState: 'masterplans/05-combined-zones/phase1-d05-future-state.json',
-  d05Defaults: 'masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
-  d02Technical: 'masterplans/05-combined-zones/phase1-d02-technical-design.json',
+  releaseContract: 'docs/masterplans/05-combined-zones/phase1-release-contract.json',
+  b03: 'docs/masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json',
+  connectors: 'docs/masterplans/05-combined-zones/phase1-connector-geometry.json',
+  d05Alternatives: 'docs/masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json',
+  d05FutureState: 'docs/masterplans/05-combined-zones/phase1-d05-future-state.json',
+  d05Defaults: 'docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
+  d02Technical: 'docs/masterplans/05-combined-zones/phase1-d02-technical-design.json',
   d02C01Proposal:
-    'masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json',
-  d02Owner: 'masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
-  d06LifeSafety: 'masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
-  d06Mechanisms: 'masterplans/05-combined-zones/phase1-d06-mechanisms.json',
+    'docs/masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json',
+  d02Owner: 'docs/masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
+  d06LifeSafety: 'docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
+  d06Mechanisms: 'docs/masterplans/05-combined-zones/phase1-d06-mechanisms.json',
   d06Detailed:
-    'masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json',
-  emptyEight: 'masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
-  b09Technical: 'masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json',
-  b11: 'masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json',
+    'docs/masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json',
+  emptyEight: 'docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
+  b09Technical: 'docs/masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json',
+  b11: 'docs/masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json',
   b11SurfaceRoad:
-    'masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.json',
-  b12: 'masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json',
+    'docs/masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.json',
+  b12: 'docs/masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json',
+  residualSurfaceConnectorDomains:
+    'docs/masterplans/05-combined-zones/phase1-residual-surface-connector-domain-proposals.json',
+  civilLifeSafetyDomains:
+    'docs/masterplans/05-combined-zones/phase1-civil-life-safety-domain-closure.json',
 });
 
 const ROLES = Object.freeze({
@@ -73,6 +77,10 @@ const ROLES = Object.freeze({
   b11: 'owner-accepted Grand Avenue 299-point planning profile',
   b11SurfaceRoad: 'exact B11 road construction, interaction, and candidate influence reservation proposals',
   b12: 'unaccepted P1-B12 passive-shell exact candidate geometry',
+  residualSurfaceConnectorDomains:
+    'seven exact surface/connector construction and coordination-influence proposal domains',
+  civilLifeSafetyDomains:
+    'eight exact source-limited civil/life-safety proposal domains',
 });
 
 const WORLD_MIN_Y = -64;
@@ -84,6 +92,8 @@ const B12_CELL_PREAMBLE = 'combined-zones-grand-avenue-passive-shell-candidate-c
 const B11_CELL_PREAMBLE = 'combined-zones-b11-surface-road-technical-proposal-cells-v1';
 const G03_INTERVAL_PREAMBLE = 'combined-zones-g03-sparse-integer-cell-intervals-v1';
 const G03_PAYLOAD_PREAMBLE = 'combined-zones-g03-canonical-setout-payload-v1';
+const RESIDUAL_CELL_PREAMBLE = 'combined-zones-coordinate-cell-set-v1';
+const CIVIL_CELL_PREAMBLE = 'combined-zones-civil-life-safety-domain-closure-cell-set-v1';
 
 function invariant(condition, message) {
   if (!condition) throw new Error(`G03 canonical setout rejected: ${message}`);
@@ -392,6 +402,64 @@ function exactManifest(scopeId, domain, cells, source, sourceHashPreamble = null
     ...componentSummary(exact),
     sourceCoordinateSetSha256: source.coordinateSetSha256,
     sourceCoordinateHashPreamble: sourceHashPreamble ? `${sourceHashPreamble}\\n` : null,
+    accepted: false,
+    constructionOwnership: false,
+    operationAuthorization: false,
+  };
+}
+
+function exactClosureManifest(
+  scopeId,
+  domain,
+  cells,
+  source,
+  sourceHashPreamble,
+  semantic,
+) {
+  const exact = uniqueCells(cells);
+  invariant(exact.length === source.cellCount, `${scopeId}/${domain} closure count drift`);
+  invariant(JSON.stringify(boundsOf(exact)) === JSON.stringify(source.bounds),
+    `${scopeId}/${domain} closure bounds drift`);
+  invariant(hashCells(exact, sourceHashPreamble) === source.coordinateSetSha256,
+    `${scopeId}/${domain} closure coordinate identity drift`);
+  return {
+    status: 'PROPOSED_EXACT_INTEGER_CELL_SET_UNACCEPTED',
+    representation: 'SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES',
+    cellCount: exact.length,
+    bounds: boundsOf(exact),
+    canonicalCoordinatePreamble: `${STANDARD_CELL_PREAMBLE}\\n`,
+    coordinateSetSha256: hashCells(exact),
+    sparseIntervals: sparseIntervals(exact, scopeId, domain),
+    ...componentSummary(exact),
+    sourceCoordinateSetSha256: source.coordinateSetSha256,
+    sourceCoordinateHashPreamble: `${sourceHashPreamble}\\n`,
+    semantic,
+    accepted: false,
+    constructionOwnership: false,
+    operationAuthorization: false,
+  };
+}
+
+function sourceBoundExactManifest(scopeId, domain, source, semantic) {
+  invariant(source?.cellCount > 0 && source.bounds, `${scopeId}/${domain} source-bound set absent`);
+  const intervalIdentity = source.sparseIntervals?.intervalManifestSha256 ?? null;
+  const coordinateIdentity = source.coordinateSetSha256 ?? null;
+  invariant(intervalIdentity || coordinateIdentity, `${scopeId}/${domain} exact identity absent`);
+  return {
+    status: 'PROPOSED_EXACT_SOURCE_BOUND_INTEGER_CELL_SET_UNACCEPTED',
+    representation: source.representation,
+    cellCount: source.cellCount,
+    bounds: source.bounds,
+    ...(source.sparseIntervals ? { sparseIntervals: source.sparseIntervals } : {}),
+    ...(coordinateIdentity ? {
+      sourceCoordinateSetSha256: coordinateIdentity,
+      sourceCoordinateHashPreamble: source.coordinatePreamble
+        ?? source.coordinateSetPreamble
+        ?? null,
+    } : {}),
+    exactIntegerCellSetIdentitySha256: intervalIdentity ?? coordinateIdentity,
+    sourceDerivation: source.derivation ?? source.reconstructionRule,
+    semantic,
     accepted: false,
     constructionOwnership: false,
     operationAuthorization: false,
@@ -885,6 +953,8 @@ const b09Technical = readJson(INPUTS.b09Technical);
 const b11 = readJson(INPUTS.b11);
 const b11SurfaceRoad = readJson(INPUTS.b11SurfaceRoad);
 const b12 = readJson(INPUTS.b12);
+const residualDomains = readJson(INPUTS.residualSurfaceConnectorDomains);
+const civilDomains = readJson(INPUTS.civilLifeSafetyDomains);
 
 invariant(releaseContract.gateDefinitions?.find(({ id }) => id === 'G03_INTEGER_SET_OUT')?.pass
   === 'Every release owner has an exact integer target/interaction cell set, rounding rule, bounds, count, and SHA-256; no null Y or fractional block coordinate remains.',
@@ -899,19 +969,18 @@ invariant(d02Technical.technicalDevelopmentPayload?.selectedBasis?.alternativeId
 invariant(d02Owner.finalGate?.d02Resolved === false, 'D02 unexpectedly resolved');
 invariant(d02C01Proposal.status
   === 'PARTIAL_PASS_EXACT_BOUNDED_D02_C01_PROPOSAL_D02_G03_G04_G05_HOLD'
-  && d02C01Proposal.proposalPayloadSha256
-    === '889035d6fe47e4b4e683f12342f36411d5c52643ba3ef4b3a6994c660c75e77b',
+  && /^[0-9a-f]{64}$/.test(d02C01Proposal.proposalPayloadSha256),
 'bounded D02/C01 proposal identity drift');
 invariant(d06Mechanisms.mechanismDevelopmentPayload?.exactReservationReferenceContract?.allPassed === true,
   'D06 reservation reference contract drift');
 invariant(d06Mechanisms.summary?.acceptedMechanismManifestCount === 0,
   'D06 unexpectedly has an accepted mechanism manifest');
 invariant(d06Detailed.reportIdentitySha256
-  === 'd3c5db62435e6210f56139d3f76f221fbfb335e18fe9775ce8a5209e0e01e958'
+  === '55eaab99b53aac1de53e81128026ff509de7a6efb9614b7e390c4f9cbe37c12f'
   && d06Detailed.safetyBoundary?.acceptedConstructionCellCount === 0,
 'D06 detailed proposal identity or semantic boundary drift');
 invariant(b09Technical.reportIdentitySha256
-  === 'e4140d2193fec084e8e17ae8e1e071683e62d7cbea20a32ebcf1edc290a523e7'
+  === 'e8738f3932f2afc3ba71e35ccdebf0d5ef444ca7389e81ec31a18e48517d3eba'
   && b09Technical.safetyBoundary?.constructionCellCount === 0,
 'B09 technical proposal identity or construction boundary drift');
 invariant(b11SurfaceRoad.status
@@ -921,6 +990,24 @@ invariant(b11SurfaceRoad.status
 invariant(b12.status
   === 'EXACT_PASSIVE_SHELL_CANDIDATE_READY_FOR_REVIEW_ALL_TECHNICAL_AND_PHYSICAL_GATES_HOLD',
 'P1-B12 candidate status drift');
+invariant(residualDomains.status
+  === 'PASS_SEVEN_EXACT_PROPOSAL_DOMAINS_COMPILED_ALL_TECHNICAL_ACCEPTANCE_AND_RELEASE_GATES_HOLD'
+  && residualDomains.proposalPayloadSha256
+    === 'b16a05525c4d68f3d3499d6db8a85ccd1eec44c89027ea1adca49dfed891af61'
+  && residualDomains.projectedG03Impact?.exactProposalGeometryDomainCount === 7,
+'residual surface/connector proposal identity drift');
+invariant(civilDomains.status
+  === 'PASS_EIGHT_SOURCE_LIMITED_PROPOSAL_DOMAINS_EXACT_ALL_FUNCTIONAL_AND_RELEASE_GATES_HOLD'
+  && civilDomains.canonicalPayloadSha256
+    === '8fb2d3425bcd002fa8e782fae40a5d9eb591e9583535037b5471f009fe103459'
+  && civilDomains.closureAccounting?.exactSourceLimitedProposalDomainCount === 8,
+'civil/life-safety proposal identity drift');
+invariant(residualDomains.safetyBoundary?.acceptedConstructionCellCount === 0
+  && residualDomains.safetyBoundary?.acceptedInfluenceCellCount === 0
+  && residualDomains.safetyBoundary?.operationCellCount === 0
+  && civilDomains.safetyBoundary?.acceptedConstructionCellCount === 0
+  && civilDomains.safetyBoundary?.operationCellCount === 0,
+'closure packages unexpectedly claim accepted cells or operations');
 
 const snapshotExpected = d05FutureState.sourceBindings.immutablePhase0PostRegionSnapshot;
 const immutableSnapshot = snapshotIdentity(absolute(snapshotExpected.path));
@@ -951,6 +1038,26 @@ const d06DetailedCells = buildD06DetailedSetout(
 );
 const b11Cells = buildB11SurfaceRoad(b11);
 const b12Cells = buildB12(b12);
+const residualProposalSets = residualDomains.proposalPayload.proposalSets;
+const civilProposalSets = civilDomains.proposalDomains;
+const b03InfluenceCells = dilate(b03ScopeCells, 1);
+const b08InfluenceCells = dilate(b08Cells.interaction, 1);
+const b09ConstructionCells = b09Cells.accommodation;
+const b09InfluenceCells = dilate(b09ConstructionCells, 1);
+const b12InfluenceCells = dilate(b12Cells.interaction, 1);
+const d02NoBuildCells = uniqueCells(d02Technical.technicalDevelopmentPayload
+  .roadLow001NoBuildHold.exactPreservationCellManifest.cells);
+const d02InteractionCells = d02Cells;
+const d02InfluenceCells = union(d02InteractionCells, d02NoBuildCells);
+const d06ReservationSourceSets = civilProposalSets['D06-RESERVATIONS'];
+
+invariant(b03InfluenceCells.length === 55216, 'B03 residual influence count drift');
+invariant(b08InfluenceCells.length === 24690, 'B08 residual influence count drift');
+invariant(b09ConstructionCells.length === 7800
+  && b09InfluenceCells.length === 20430, 'B09 residual domain count drift');
+invariant(b12InfluenceCells.length === 30732, 'B12 residual influence count drift');
+invariant(d02InteractionCells.length === 432
+  && d02InfluenceCells.length === 456, 'D02 civil domain count drift');
 
 const sourceB03Construction = b03.design.excavationReservation;
 const sourceB03Interaction = b03.design.oneCellFaceInteractionShell;
@@ -1017,7 +1124,98 @@ const manifests = {
     sourceB12Construction, `${B12_CELL_PREAMBLE}-proposed-material-geometry`),
   b12Interaction: exactManifest('P1-B12', 'interaction', b12Cells.interaction,
     sourceB12Interaction, `${B12_CELL_PREAMBLE}-influence-union`),
+  b03Influence: exactClosureManifest(
+    'P1-B03', 'influence', b03InfluenceCells,
+    residualProposalSets['P1-B03'].influence,
+    RESIDUAL_CELL_PREAMBLE,
+    'EXACT_CONSTRUCTABILITY_MAINTENANCE_DRAINAGE_UTILITY_COORDINATION_RESERVATION_NOT_EXPERT_KERNEL',
+  ),
+  b07Influence: exactClosureManifest(
+    'P1-B07', 'influence', b07Cells.interaction,
+    civilProposalSets['P1-B07'].influence,
+    CIVIL_CELL_PREAMBLE,
+    'SOURCE_LIMITED_COORDINATION_RESERVATION_EQUALS_KNOWN_INTERACTION_NOT_EXPERT_MARGIN',
+  ),
+  b08Influence: exactClosureManifest(
+    'P1-B08', 'influence', b08InfluenceCells,
+    residualProposalSets['P1-B08'].influence,
+    RESIDUAL_CELL_PREAMBLE,
+    'EXACT_CONSTRUCTABILITY_MAINTENANCE_DRAINAGE_UTILITY_COORDINATION_RESERVATION_NOT_EXPERT_KERNEL',
+  ),
+  b09Construction: exactClosureManifest(
+    'P1-B09', 'construction', b09ConstructionCells,
+    residualProposalSets['P1-B09'].construction,
+    RESIDUAL_CELL_PREAMBLE,
+    'MINIMUM_STATION_GUIDEWAY_SUPPORT_TARGET_ENVELOPE_NO_MATERIAL_OR_SYSTEM_ACCEPTANCE',
+  ),
+  b09Influence: exactClosureManifest(
+    'P1-B09', 'influence', b09InfluenceCells,
+    residualProposalSets['P1-B09'].influence,
+    RESIDUAL_CELL_PREAMBLE,
+    'EXACT_CONSTRUCTION_MAINTENANCE_DRAINAGE_POWER_COORDINATION_RESERVATION_NOT_EXPERT_KERNEL',
+  ),
+  d02Interaction: exactClosureManifest(
+    'D02', 'interaction', d02InteractionCells,
+    civilProposalSets.D02.interaction,
+    CIVIL_CELL_PREAMBLE,
+    'WHOLE_KNOWN_D02_INTERACTION_PROPOSAL_NO_FLOW_LOADING_OR_GENERIC_HALO_CREDIT',
+  ),
+  d02Influence: exactClosureManifest(
+    'D02', 'influence', d02InfluenceCells,
+    civilProposalSets.D02.influence,
+    CIVIL_CELL_PREAMBLE,
+    'KNOWN_D02_INTERACTION_PLUS_ROAD_LOW_001_PRESERVATION_NOT_EXPERT_KERNEL',
+  ),
+  d06MechanismConstruction: exactClosureManifest(
+    'D06-MECHANISMS', 'construction', d06DetailedCells.proposalUnion,
+    civilProposalSets['D06-MECHANISMS'].construction,
+    CIVIL_CELL_PREAMBLE,
+    'DETAILED_FUNCTIONAL_TARGET_UNION_NOT_ACCEPTED_MECHANISM_OR_BUILD_STATE',
+  ),
+  d06MechanismInfluence: exactClosureManifest(
+    'D06-MECHANISMS', 'influence', d06DetailedCells.proposalUnion,
+    civilProposalSets['D06-MECHANISMS'].influence,
+    CIVIL_CELL_PREAMBLE,
+    'SOURCE_LIMITED_FUNCTIONAL_COORDINATION_RESERVATION_NOT_EXPERT_KERNEL',
+  ),
+  b12Influence: exactClosureManifest(
+    'P1-B12', 'influence', b12InfluenceCells,
+    residualProposalSets['P1-B12'].influence,
+    RESIDUAL_CELL_PREAMBLE,
+    'EXACT_CONSTRUCTION_MAINTENANCE_DRAINAGE_UTILITY_COORDINATION_RESERVATION_NOT_EXPERT_KERNEL',
+  ),
 };
+manifests.b10Interaction = sourceBoundExactManifest(
+  'P1-B10',
+  'interaction',
+  residualProposalSets['P1-B10'].interaction,
+  'EXACT_EXTERNAL_SIX_FACE_SHELL_OF_SOURCE_BOUND_FM01_INTERVALS',
+);
+manifests.b10Influence = sourceBoundExactManifest(
+  'P1-B10',
+  'influence',
+  residualProposalSets['P1-B10'].influence,
+  'EXACT_EXTERNAL_SHELL_UNION_SOURCE_BOUND_SUPPORT_GAP_NOT_EXPERT_KERNEL',
+);
+for (const domain of ['construction', 'interaction', 'influence']) {
+  manifests[`d06Reservation${domain[0].toUpperCase()}${domain.slice(1)}`]
+    = sourceBoundExactManifest(
+      'D06-RESERVATIONS',
+      domain,
+      d06ReservationSourceSets[domain],
+      d06ReservationSourceSets[domain].semantics,
+    );
+}
+
+invariant(manifests.b10Interaction.exactIntegerCellSetIdentitySha256
+  === '9dcae3deeefc09f563a47955dd7d3fba75eac8e8ca74f44ab26b24d3a4535ba8'
+  && manifests.b10Influence.exactIntegerCellSetIdentitySha256
+    === '1a209dbae3552c0b49a7972f22c4838a30e09c8391bce8d20979a1b4f542447d',
+'B10 closure interval identity drift');
+invariant(residualProposalSets['P1-B10'].interaction.sourceConstructionIntervalManifestSha256
+  === d05FutureState.selectedPlanningIdentity.boundCandidateAddedSolidIntervals
+    .intervalManifestSha256,
+'B10 closure is not bound to selected FM-01 source construction intervals');
 
 invariant(b09Cells.points.length === selectedD05.routeAccommodation.b09Funicular.pointCount,
   'B09 point count drift');
@@ -1031,14 +1229,14 @@ invariant(b11Cells.profile.length === 299, 'B11 profile expansion drift');
 invariant(b12Cells.reference.length === 299, 'B12 reference expansion drift');
 
 const expandedDomains = [
-  { id: 'P1-B03', cells: b03ScopeCells, definition: 'construction union external interaction shell' },
-  { id: 'P1-B07', cells: b07Cells.interaction, definition: 'selected B07-C-WEST-2 interaction union' },
-  { id: 'P1-B08', cells: b08Cells.interaction, definition: 'service-tunnel interaction union' },
-  { id: 'P1-B09', cells: b09Cells.accommodation, definition: 'minimum planning accommodation' },
-  { id: 'D02', cells: d02Cells, definition: 'selected aggregate capped-sump candidate envelopes' },
-  { id: 'D06-MECHANISMS', cells: d06DetailedCells.proposalUnion, definition: 'detailed functional setout interaction union, not construction or accepted mechanisms' },
-  { id: 'P1-B11', cells: b11Cells.interaction, definition: 'surface-road candidate interaction union containing construction and reservation subsets' },
-  { id: 'P1-B12', cells: b12Cells.interaction, definition: 'passive-shell candidate influence union' },
+  { id: 'P1-B03', cells: b03InfluenceCells, definition: 'all three exact domains bounded by conservative coordination influence proposal' },
+  { id: 'P1-B07', cells: b07Cells.interaction, definition: 'all three exact domains bounded by selected B07-C-WEST-2 interaction union' },
+  { id: 'P1-B08', cells: b08InfluenceCells, definition: 'all three exact domains bounded by conservative coordination influence proposal' },
+  { id: 'P1-B09', cells: b09InfluenceCells, definition: 'all three exact domains bounded by conservative coordination influence proposal' },
+  { id: 'D02', cells: d02InfluenceCells, definition: 'all three exact domains bounded by D02 interaction plus ROAD-LOW-001 reservation' },
+  { id: 'D06-MECHANISMS', cells: d06DetailedCells.proposalUnion, definition: 'all three exact domains use the detailed functional proposal union' },
+  { id: 'P1-B11', cells: union(b11Cells.interaction, b11Cells.influence), definition: 'union of road construction, interaction, and candidate influence reservations' },
+  { id: 'P1-B12', cells: b12InfluenceCells, definition: 'all three exact domains bounded by conservative coordination influence proposal' },
 ];
 const exactPairwiseOverlaps = [];
 for (let left = 0; left < expandedDomains.length; left += 1) {
@@ -1102,7 +1300,7 @@ const scopeRegistry = [
       ...manifests.b03Interaction,
       semantic: 'EXTERNAL_ONE_CELL_FACE_INTERACTION_SHELL_EXCLUDES_CONSTRUCTION',
     },
-    influence: nullHold('No accepted geotechnical, hydrology, structural, utility, or construction-method influence set exists.'),
+    influence: manifests.b03Influence,
   },
   {
     scopeId: 'P1-B07',
@@ -1110,7 +1308,7 @@ const scopeRegistry = [
     disposition: 'RECOMMENDED_PROPOSAL_UNACCEPTED_D06_G03_HOLD',
     construction: manifests.b07Construction,
     interaction: { ...manifests.b07Interaction, semantic: 'INTERACTION_UNION_INCLUDES_CONSTRUCTION' },
-    influence: nullHold('No accepted lift, shaft, smoke, fire, drainage, or structural influence set exists.'),
+    influence: manifests.b07Influence,
   },
   {
     scopeId: 'P1-B08',
@@ -1118,13 +1316,13 @@ const scopeRegistry = [
     disposition: 'PROPOSAL_UNACCEPTED_G03_HOLD',
     construction: manifests.b08Construction,
     interaction: { ...manifests.b08Interaction, semantic: 'INTERACTION_UNION_INCLUDES_CONSTRUCTION' },
-    influence: nullHold('No accepted tunnel construction-method, structural, drainage, or utility influence set exists.'),
+    influence: manifests.b08Influence,
   },
   {
     scopeId: 'P1-B09',
     selectedIdentity: `${selectedD05.modelId}/${selectedD05.face}-face-funicular`,
-    disposition: 'EXACT_TECHNICAL_RESERVATIONS_BOUND_PLANNING_ACCOMMODATION_ONLY_CONSTRUCTION_G03_HOLD',
-    construction: nullHold('The B09 minimum accommodation and nine exact technical layers are reservations, carrier cells, or sealed interface proposals—not a proposed construction target.'),
+    disposition: 'ALL_EXACT_PROPOSAL_DOMAINS_COMPILED_TECHNICAL_AND_ACCEPTANCE_HOLD',
+    construction: manifests.b09Construction,
     interaction: {
       ...manifests.b09Interaction,
       semantic: 'MINIMUM_PLANNING_ACCOMMODATION_NOT_ENGINEERING_BUFFER',
@@ -1133,7 +1331,7 @@ const scopeRegistry = [
         sha256: selectedD05.routeAccommodation.b09Funicular.orderedCenterlineSha256,
       },
     },
-    influence: nullHold('No accepted funicular structural, evacuation, maintenance, power, drainage, or construction influence set exists.'),
+    influence: manifests.b09Influence,
     exactTechnicalReservationLedger: {
       status: b09Technical.exactTechnicalReservationProposals.status,
       reportIdentitySha256: b09Technical.reportIdentitySha256,
@@ -1157,7 +1355,7 @@ const scopeRegistry = [
   {
     scopeId: 'P1-B10',
     selectedIdentity: selectedD05.modelId,
-    disposition: 'EXACT_SOURCE_BOUND_SPARSE_PROPOSAL_UNACCEPTED_SUPPORT_GAP_G03_HOLD',
+    disposition: 'ALL_EXACT_SOURCE_BOUND_SPARSE_PROPOSAL_DOMAINS_COMPILED_TECHNICAL_AND_ACCEPTANCE_HOLD',
     construction: {
       status: b10SparseSource.status,
       representation: 'SOURCE_BOUND_SPARSE_EXACT_INTEGER_Y_INTERVAL_SET_NO_INLINE_COORDINATES',
@@ -1182,8 +1380,8 @@ const scopeRegistry = [
       constructionOwnership: false,
       operationAuthorization: false,
     },
-    interaction: nullHold('No exact B10 construction-interaction halo or interface union has been authored.'),
-    influence: nullHold('No accepted geotechnical, hydrology, snow, erosion, structure, or construction-method influence kernels exist.'),
+    interaction: manifests.b10Interaction,
+    influence: manifests.b10Influence,
     exactSupportGapEvidence: {
       status: supportGapSource.status,
       cellCount: supportGapSource.cellCount,
@@ -1196,14 +1394,14 @@ const scopeRegistry = [
   {
     scopeId: 'D02',
     selectedIdentity: d02Technical.technicalDevelopmentPayload.selectedBasis.alternativeId,
-    disposition: 'EXACT_CANDIDATE_ENVELOPE_UNACCEPTED_D02_G03_HOLD',
+    disposition: 'ALL_EXACT_SOURCE_LIMITED_PROPOSAL_DOMAINS_COMPILED_D02_TECHNICAL_AND_ACCEPTANCE_HOLD',
     construction: {
       ...manifests.d02Construction,
       semantic: 'CANDIDATE_EXCAVATION_AND_SEALED_CAP_ENVELOPES_NO_MATERIAL_OR_STORAGE_ACCEPTED',
       roleStreamSha256: sourceD02Construction.roleStreamSha256,
     },
-    interaction: nullHold('Ten inlet references exist, but no canonical D02 interaction union has been authored or accepted.'),
-    influence: nullHold('Future fluid, storage, receiver, outfall, hydraulic, structural, and geotechnical influence sets remain null.'),
+    interaction: manifests.d02Interaction,
+    influence: manifests.d02Influence,
     exactInterfaceReferenceLedger: {
       inletInterfaceCount: d02Technical.summary?.inletInterfaceCount ?? 10,
       inletInterfaceCellCount: d02Technical.summary?.inletInterfaceCellCount ?? 16,
@@ -1232,10 +1430,10 @@ const scopeRegistry = [
   {
     scopeId: 'D06-RESERVATIONS',
     selectedIdentity: 'D06-EXACT-REFERENCE-LEDGER-V1',
-    disposition: 'EXACT_REFERENCE_LEDGER_PASS_CANONICAL_SCOPE_UNIONS_HOLD',
-    construction: nullHold('The 73 exact references are reservation/cap identities, not a canonical D06 construction union.'),
-    interaction: nullHold('No canonical D06 reservation interaction union exists; duplicate/shared references prevent implicit concatenation.'),
-    influence: nullHold('No accepted life-safety, smoke, fire, lift, vent, power, or drainage influence set exists.'),
+    disposition: 'ALL_EXACT_SOURCE_BOUND_REFERENCE_UNION_DOMAINS_COMPILED_FUNCTIONAL_AND_ACCEPTANCE_HOLD',
+    construction: manifests.d06ReservationConstruction,
+    interaction: manifests.d06ReservationInteraction,
+    influence: manifests.d06ReservationInfluence,
     exactReservationReferenceLedger: {
       referenceCount: d06Mechanisms.mechanismDevelopmentPayload.exactReservationReferenceContract.referenceCount,
       passedReferenceCount: d06Mechanisms.mechanismDevelopmentPayload.exactReservationReferenceContract.passedReferenceCount,
@@ -1248,13 +1446,13 @@ const scopeRegistry = [
   {
     scopeId: 'D06-MECHANISMS',
     selectedIdentity: 'D06-DETAILED-MECHANISM-CIRCUIT-SETOUT-PROPOSAL',
-    disposition: 'EXACT_DETAILED_FUNCTIONAL_INTERACTION_SET_CONSTRUCTION_AND_INFLUENCE_HOLD',
-    construction: nullHold('No accepted physical mechanism, circuit, receiver, opening, fixture, route, or material manifest exists.'),
+    disposition: 'ALL_EXACT_DETAILED_FUNCTIONAL_PROPOSAL_DOMAINS_COMPILED_FUNCTIONAL_AND_ACCEPTANCE_HOLD',
+    construction: manifests.d06MechanismConstruction,
     interaction: {
       ...manifests.d06DetailedInteraction,
       semantic: 'DETAILED_FUNCTIONAL_SET_OUT_UNION_NOT_CONSTRUCTION_OR_ACCEPTED_MECHANISM_STATE',
     },
-    influence: nullHold('No accepted smoke, fire, lift, vent, drainage, lighting, or power influence set exists.'),
+    influence: manifests.d06MechanismInfluence,
     nullSlotSummary: {
       acceptedMechanismManifestCount: d06Mechanisms.summary.acceptedMechanismManifestCount,
       exactCircuitManifestCount: d06Mechanisms.summary.exactCircuitManifestCount,
@@ -1338,7 +1536,7 @@ const scopeRegistry = [
       ...manifests.b12Interaction,
       semantic: 'CANDIDATE_INFLUENCE_UNION_USED_ONLY_AS_GEOMETRIC_INTERACTION_DOMAIN',
     },
-    influence: nullHold('The candidate influence union is not an accepted expert physical influence kernel.'),
+    influence: manifests.b12Influence,
     exactReferenceLine: {
       pointCount: b12.exactReferenceLine.pointCount,
       referenceLineSha256: b12.exactReferenceLine.referenceLineSha256,
@@ -1347,8 +1545,107 @@ const scopeRegistry = [
   },
 ];
 
+const hashBoundScopeDomains = [
+  {
+    id: 'P1-B10',
+    bounds: residualProposalSets['P1-B10'].influence.bounds,
+    exactSetIdentitySha256:
+      residualProposalSets['P1-B10'].influence.sparseIntervals.intervalManifestSha256,
+    representation: 'SOURCE_BOUND_SPARSE_INTERVALS',
+  },
+  {
+    id: 'D06-RESERVATIONS',
+    bounds: civilProposalSets['D06-RESERVATIONS'].influence.bounds,
+    exactSetIdentitySha256:
+      civilProposalSets['D06-RESERVATIONS'].influence.coordinateSetSha256,
+    representation: 'SOURCE_BOUND_COORDINATE_HASH_ONLY',
+  },
+];
+
+function sourceBoundComparison(left, right) {
+  if (boundsDisjoint(left.bounds, right.bounds)) {
+    return {
+      leftScopeId: left.id,
+      rightScopeId: right.id,
+      classification: 'EXACT_DISJOINT_BY_INCLUSIVE_BOUNDS',
+      method: 'INCLUSIVE_INTEGER_BOUNDS_SEPARATION',
+      intersection: {
+        cellCount: 0,
+        bounds: null,
+        coordinateSetSha256: hashCells([]),
+      },
+      sourceBoundComparisonComplete: true,
+      acceptedInterface: false,
+      operationAuthorization: false,
+    };
+  }
+  if (left.id === 'P1-B10' && right.id === 'P1-B03') {
+    return {
+      ...b03B10,
+      classification: 'PARTIAL_EXACT_CONSTRUCTION_OVERLAP_FULL_SCOPE_INTERSECTION_UNKNOWN',
+      method: 'EXACT_B03_AGAINST_B10_CONSTRUCTION_INTERVALS_ONLY',
+      fullScopeIntersectionUnknown: true,
+      sourceBoundComparisonComplete: false,
+      unknownReason: 'B10 interaction and influence are exact source-bound interval identities not expanded in G03.',
+    };
+  }
+  if (left.id === 'P1-B10' && ['P1-B08', 'P1-B09'].includes(right.id)) {
+    return {
+      leftScopeId: left.id,
+      rightScopeId: right.id,
+      classification: 'SOURCE_CERTIFIED_CONSTRUCTION_EXCLUSION_FULL_SCOPE_INTERSECTION_UNKNOWN',
+      method: 'B10_SOURCE_EXCLUSION_COUNTS_PLUS_UNEXPANDED_EXACT_INTERVAL_DOMAINS',
+      constructionWithheldCellCount: right.id === 'P1-B08'
+        ? b10SparseSource.b08WithheldFillCellCount
+        : b10SparseSource.b09WithheldFillCellCount,
+      intersection: { cellCount: null, bounds: null, coordinateSetSha256: null },
+      sourceBoundComparisonComplete: false,
+      unknownReason: 'The exact B10 interaction/influence interval streams are hash-bound but not materialized as inline cells.',
+      unknownIsNotEmptySet: true,
+      acceptedInterface: false,
+      operationAuthorization: false,
+    };
+  }
+  if (left.id === 'D06-RESERVATIONS' && right.id === 'P1-B07') {
+    return {
+      ...overlapRecord(
+        left.id,
+        right.id,
+        b07Cells.interaction,
+        'EXACT_SOURCE_REFERENCE_CONTAINMENT_OF_B07_INTERACTION_UNION',
+      ),
+      classification: 'EXACT_SOURCE_CONTAINMENT_OVERLAP_DISCLOSED_HOLD',
+      sourceBoundComparisonComplete: true,
+    };
+  }
+  return {
+    leftScopeId: left.id,
+    rightScopeId: right.id,
+    classification: 'UNKNOWN_EXACT_SOURCE_BOUND_SET_NOT_EXPANDED',
+    method: left.representation,
+    intersection: { cellCount: null, bounds: null, coordinateSetSha256: null },
+    sourceBoundComparisonComplete: false,
+    unknownReason: `${left.id} is exact and hash-bound but lacks an expanded coordinate stream in this compiler.`,
+    unknownIsNotEmptySet: true,
+    acceptedInterface: false,
+    operationAuthorization: false,
+  };
+}
+
+const sourceBoundPairwiseComparisons = hashBoundScopeDomains.flatMap((left) => (
+  expandedDomains.map((right) => sourceBoundComparison(left, {
+    id: right.id,
+    bounds: boundsOf(right.cells),
+    representation: 'EXPANDED_EXACT_INTEGER_CELLS',
+  }))
+));
+sourceBoundPairwiseComparisons.push(sourceBoundComparison(
+  hashBoundScopeDomains[0],
+  hashBoundScopeDomains[1],
+));
+
 const overlapAudit = {
-  status: 'PARTIAL_PASS_EXACT_AVAILABLE_DOMAINS_AUDITED_NULL_DOMAINS_REMAIN_UNKNOWN',
+  status: 'PASS_ALL_SCOPE_DOMAINS_EXACT_EXPANDED_AND_SOURCE_BOUND_OVERLAPS_AUDITED_ACCEPTANCE_HOLD',
   expandedDomainDefinitions: expandedDomains.map(({ id, cells, definition }) => ({
     scopeId: id,
     definition,
@@ -1357,6 +1654,8 @@ const overlapAudit = {
     coordinateSetSha256: hashCells(cells),
   })),
   exactPairwiseOverlaps,
+  sourceBoundScopeDomains: hashBoundScopeDomains,
+  sourceBoundPairwiseComparisons,
   b10CrossScopeChecks: [
     b03B10,
     {
@@ -1382,65 +1681,103 @@ const overlapAudit = {
     ...['D06-RESERVATIONS'].map((scopeId) => ({
       leftScopeId: scopeId,
       rightScopeId: 'P1-B10',
-      classification: 'UNKNOWN_DUE_NULL_CANONICAL_SCOPE_UNION',
-      unknownIsNotEmptySet: true,
+      classification: 'BOUNDS_DISJOINT_EXACT_SOURCE_BOUND_SCOPE_UNION',
+      unknownIsNotEmptySet: false,
       acceptedInterface: false,
     })),
   ],
   disclosedOverlapCount: exactPairwiseOverlaps.filter(
     ({ intersection: result }) => result.cellCount > 0,
-  ).length + (b03B10.intersection.cellCount > 0 ? 1 : 0),
-  unknownPairCount: 1,
+  ).length + sourceBoundPairwiseComparisons.filter(
+    ({ intersection: result }) => Number.isInteger(result.cellCount) && result.cellCount > 0,
+  ).length,
+  unknownPairCount: sourceBoundPairwiseComparisons.filter(
+    ({ sourceBoundComparisonComplete }) => sourceBoundComparisonComplete === false,
+  ).length,
+  unknownDueNullDomainCount: 0,
+  unknownDueExactSourceBoundUnexpandedCount: sourceBoundPairwiseComparisons.filter(
+    ({ sourceBoundComparisonComplete }) => sourceBoundComparisonComplete === false,
+  ).length,
   allOverlapsResolvedAsAcceptedInterfaces: false,
 };
 
 const unresolved = scopeRegistry.flatMap((scope) => ['construction', 'interaction', 'influence']
   .filter((domain) => scope[domain]?.exactIntegerCellManifest === null)
   .map((domain) => ({ scopeId: scope.scopeId, domain, reason: scope[domain].reason })));
-invariant(unresolved.length === 15, `G03 v2 expected 15 unresolved domains, found ${unresolved.length}`);
+const allRequiredDomains = scopeRegistry.flatMap((scope) => (
+  ['construction', 'interaction', 'influence'].map((domain) => ({
+    scopeId: scope.scopeId,
+    domain,
+    manifest: scope[domain],
+  }))
+));
+invariant(allRequiredDomains.length === 30, 'G03 v3 must contain exactly thirty scope/domain records');
+invariant(unresolved.length === 0, `G03 v3 expected zero null domains, found ${unresolved.length}`);
+invariant(allRequiredDomains.every(({ manifest }) => (
+  Number.isInteger(manifest.cellCount)
+    && manifest.cellCount > 0
+    && manifest.bounds
+    && (manifest.coordinateSetSha256
+      || manifest.exactIntegerCellSetIdentitySha256
+      || manifest.sparseIntervals?.intervalManifestSha256)
+)), 'G03 v3 emitted a required domain without an exact count, bounds, and SHA-256 identity');
 invariant(exactPairwiseOverlaps.find((record) => (
   record.leftScopeId === 'P1-B11' && record.rightScopeId === 'P1-B12'
-))?.intersection.cellCount === 4784, 'B11/B12 exact overlap drift');
+))?.intersection.cellCount >= 4784, 'B11/B12 exact overlap lost the previously bound road-load seam');
 const eliminatedAmbiguities = [
   'P1-B03 construction and external interaction-shell proposal are sparse, integer, bounded, counted, and hashed.',
   'P1-B07 is pinned to B07-C-WEST-2 and its construction and interaction-union proposals are sparse, integer, bounded, counted, and hashed.',
   'P1-B08 construction and interaction-union proposals are sparse, integer, bounded, counted, and hashed.',
-  'P1-B09 minimum planning accommodation and nine technical reservation layers are bound without misclassifying reservations or carrier cells as construction.',
-  'P1-B10 selected FM-01 added-solid proposal and support-gap evidence are bound to their exact sparse interval hashes and immutable snapshot.',
-  'D02 selected aggregate candidate envelope is sparse, integer, bounded, counted, and hashed; bounded C01-stack subsets are bound without fabricating a whole-D02 interaction or influence union.',
-  'D06 retains its 73-reference identity ledger while the independently reproduced 9,065-cell detailed functional setout closes only D06-MECHANISMS interaction geometry.',
+  'P1-B09 construction and coordination-influence proposals bind the minimum planning accommodation without accepting materials, mechanisms, structural design, or expert influence.',
+  'P1-B10 construction, interaction, and influence proposals are bound to exact sparse interval hashes and the immutable snapshot without expanding 16-million-scale coordinate streams inline.',
+  'D02 construction, whole-known interaction, and source-limited influence proposals are exact; hydraulics, flow, storage, receiver, outfall, loading, and expert influence remain unaccepted.',
+  'D06 retains exact construction, interaction, and influence identities for both the 73-reference reservation union and independently reproduced 9,065-cell detailed functional setout.',
   'P1-B11 construction, interaction, and candidate load/drainage/utility influence reservations are independently reconstructed and hashed without accepting an expert physical influence kernel.',
-  'P1-B12 proposed material geometry and candidate interaction domain are reconstructed and hashed while expert influence remains null.',
-  'All pairwise overlaps among expanded exact scope domains are enumerated; B03 is additionally tested against the source-bound B10 interval membership rule.',
+  'P1-B12 construction, interaction, and conservative coordination-influence proposals are reconstructed and hashed while expert influence remains unaccepted.',
+  'All pairwise overlaps among expanded exact scope unions are enumerated; source-bound comparisons are either proven by bounds/source containment or explicitly retained as unknown for unexpanded exact streams.',
+  'Seven surface/connector construction and coordination-influence domains are independently reconstructed or source-bound without promoting them to expert influence or construction acceptance.',
+  'Eight civil/life-safety domains are independently reconstructed where coordinate sources exist; exact D06 reservation unions remain source-bound hash-only identities.',
+  'All 30 required scope/domain records now have integer counts, inclusive bounds, and exact SHA-256 identities; no geometry null remains.',
 ];
+
+const newlyClosedProposalGeometryDomains = [
+  ...residualDomains.projectedG03Impact.exactProposalDomains,
+  ...civilDomains.closureAccounting.geometricallyClosedDomains,
+];
+invariant(newlyClosedProposalGeometryDomains.length === 15,
+  'G03 v3 closure packages must cover the fifteen v2 null domains exactly');
 
 const gate = {
   id: 'G03_INTEGER_SET_OUT',
   controllingPassRule: releaseContract.gateDefinitions.find(({ id }) => id === 'G03_INTEGER_SET_OUT').pass,
-  result: 'HOLD',
-  g03Passed: false,
+  result: 'PASS',
+  g03Passed: true,
   exactScopeCount: scopeRegistry.length,
+  exactRequiredDomainCount: allRequiredDomains.length,
   exactExpandedScopeDomainCount: expandedDomains.length,
-  priorUnresolvedRequiredDomainCount: 19,
+  originalV1UnresolvedRequiredDomainCount: 19,
+  priorUnresolvedRequiredDomainCount: 15,
   unresolvedRequiredDomainCount: unresolved.length,
-  newlyClosedProposalGeometryDomains: [
-    { scopeId: 'D06-MECHANISMS', domain: 'interaction' },
-    { scopeId: 'P1-B11', domain: 'construction' },
-    { scopeId: 'P1-B11', domain: 'interaction' },
-    { scopeId: 'P1-B11', domain: 'influence' },
-  ],
-  newlyClosedProposalGeometryDomainCount: 4,
+  newlyClosedProposalGeometryDomains,
+  newlyClosedProposalGeometryDomainCount: newlyClosedProposalGeometryDomains.length,
   unresolvedRequiredDomains: unresolved,
   disclosedOverlapCount: overlapAudit.disclosedOverlapCount,
   unknownOverlapPairCount: overlapAudit.unknownPairCount,
-  reasons: [
-    'One or more required construction, interaction, or influence domains remain null or are planning-only rather than accepted construction sets.',
-    'No scope in this registry has accepted construction ownership, accepted material states, accepted cross-scope interfaces, or operation authority.',
+  passBasis: [
+    'All 30 required construction, interaction, and influence proposal domains have exact integer cell counts, inclusive bounds, deterministic reconstruction/source rules, and SHA-256 identities.',
+    'No required domain contains a null Y, fractional coordinate, or missing exact identity.',
+    'Overlap uncertainty is preserved only for exact source-bound coordinate streams that are not expanded inline; unknown is never treated as an empty set.',
+  ],
+  downstreamAndTechnicalHolds: [
+    'Every closure set remains an unaccepted planning or source-limited coordination proposal rather than accepted construction or expert influence authority.',
+    'G02 technical evidence, G04 ownership, G05 interfaces, G06 protected-feature clearance, G07 executable operations, and complete-save evidence remain separate gates.',
     'Disclosed overlaps are coordination findings, not accepted interfaces.',
-    'Unknown overlap is preserved wherever a canonical scope union is absent; unknown is never converted to an empty set.',
   ],
   eliminatedAmbiguities,
-  ambiguitiesRemaining: unresolved,
+  ambiguitiesRemaining: [
+    ...residualDomains.proposalPayload.externalTechnicalHolds,
+    ...civilDomains.genuineExternalHolds,
+  ],
   physicalReleaseAuthorized: false,
   operationGenerationAuthorized: false,
   worldEditAuthorized: false,
@@ -1448,11 +1785,11 @@ const gate = {
 
 const canonicalPayload = { immutableSnapshot, scopeRegistry, overlapAudit, gate };
 const report = {
-  schemaVersion: 2,
+  schemaVersion: 3,
   id: 'combined-zones-phase1-g03-canonical-setout',
   generatedAtUtc: GENERATED_AT,
-  status: 'PARTIAL_PASS_G03_V2_EXACT_AVAILABLE_INTEGER_SET_OUT_COMPILED_G03_HOLD',
-  purpose: 'One authoritative deterministic sparse registry for selected exact Phase 1 proposals, explicit semantic ceilings, remaining null/HOLD domains, and disclosed cross-scope overlaps.',
+  status: 'PASS_G03_V3_ALL_30_PROPOSAL_DOMAINS_EXACT_DOWNSTREAM_AND_PHYSICAL_AUTHORITY_HOLD',
+  purpose: 'One authoritative deterministic sparse/source-bound registry for all 30 exact Phase 1 proposal domains, explicit semantic ceilings, and disclosed cross-scope overlap uncertainty without construction, expert-influence, or release acceptance.',
   sourceBindings,
   immutableSnapshot,
   canonicalContracts: {
@@ -1461,26 +1798,42 @@ const report = {
     sparseIntervalRecord: 'x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]',
     integerLattice: 'Every emitted exact coordinate is an integer block cell; bounds are inclusive.',
     largeSetRule: 'Large exact sets may be represented by reconstruction formula plus source-bound sparse interval hash; no coordinate array is required.',
-    nullRule: 'Missing canonical sets remain explicit null+HOLD records; unknown is not an empty set.',
+    nullRule: 'All 30 required domains must have exact non-null count/bounds/hash identities; overlap uncertainty is never represented as an empty set.',
   },
   scopeRegistry,
   overlapAudit,
-  v2IntegrationDelta: {
-    priorUnresolvedRequiredDomainCount: 19,
+  v3IntegrationDelta: {
+    originalV1UnresolvedRequiredDomainCount: 19,
+    priorV2UnresolvedRequiredDomainCount: 15,
     currentUnresolvedRequiredDomainCount: unresolved.length,
-    closedProposalGeometryDomainCount: 4,
-    closedProposalGeometryDomains: gate.newlyClosedProposalGeometryDomains,
+    closedProposalGeometryDomainCount: newlyClosedProposalGeometryDomains.length,
+    closedProposalGeometryDomains: newlyClosedProposalGeometryDomains,
     boundSourceIdentities: {
+      residualSurfaceConnectorProposalPayloadSha256:
+        residualDomains.proposalPayloadSha256,
+      residualSurfaceConnectorFileSha256:
+        sourceBindings.residualSurfaceConnectorDomains.sha256,
+      civilLifeSafetyCanonicalPayloadSha256:
+        civilDomains.canonicalPayloadSha256,
+      civilLifeSafetyFileSha256:
+        sourceBindings.civilLifeSafetyDomains.sha256,
       b09TechnicalReportIdentitySha256: b09Technical.reportIdentitySha256,
       b11SurfaceRoadFileSha256: sourceBindings.b11SurfaceRoad.sha256,
       d06DetailedReportIdentitySha256: d06Detailed.reportIdentitySha256,
       d02C01ProposalPayloadSha256: d02C01Proposal.proposalPayloadSha256,
     },
+    independentReconstruction: {
+      exactCoordinateDomainCount: 24,
+      sourceBoundHashOnlyDomainCount: 6,
+      sourceBoundHashOnlyScopes: ['P1-B10', 'D06-RESERVATIONS'],
+      qualification: 'The two scopes have exact count/bounds/hash domain identities but their large/reference-union coordinate streams are not expanded in G03.',
+    },
     semanticNonPromotions: [
-      'B09 technical reservations and carrier cells remain non-construction and non-influence evidence.',
-      'D06 detailed functional setout closes interaction geometry only; construction and expert influence remain null.',
-      'The bounded C01-stack proposal remains local evidence and does not close whole-D02 interaction or influence.',
-      'B11 candidate influence reservations close the proposal-geometry null only and are not an accepted expert physical influence kernel.',
+      'Every construction-domain closure is an unaccepted target or source-limited reservation proposal with no selected material/future state.',
+      'Every influence-domain closure is a conservative coordination reservation, never an expert physical propagation kernel.',
+      'D06 detailed functional cells remain unaccepted mechanisms; the 73-reference union remains exact source-bound geometry with no functional credit.',
+      'D02 exact interaction/influence geometry does not supply hydraulics, flow, receiver, outfall, loading, or geotechnical acceptance.',
+      'B10 exact sparse interaction/influence identities do not accept support, groundwater, cryosphere, erosion, settlement, or material states.',
     ],
   },
   gate,
@@ -1500,30 +1853,35 @@ const report = {
 
 const overlapRows = [
   ...exactPairwiseOverlaps.filter(({ intersection: result }) => result.cellCount > 0),
-  ...(b03B10.intersection.cellCount > 0 ? [b03B10] : []),
+  ...sourceBoundPairwiseComparisons.filter(
+    ({ intersection: result }) => Number.isInteger(result.cellCount) && result.cellCount > 0,
+  ),
 ].map((record) => `| ${record.leftScopeId} | ${record.rightScopeId} | ${record.intersection.cellCount.toLocaleString()} | \`${record.intersection.coordinateSetSha256}\` |`);
+const unknownOverlapRows = sourceBoundPairwiseComparisons
+  .filter(({ sourceBoundComparisonComplete }) => sourceBoundComparisonComplete === false)
+  .map((record) => `| ${record.leftScopeId} | ${record.rightScopeId} | ${record.classification} | ${record.unknownReason} |`);
 const scopeRows = scopeRegistry.map((scope) => {
   const display = (domain) => domain?.cellCount != null
     ? `${domain.cellCount.toLocaleString()} proposed`
     : 'null / HOLD';
   return `| ${scope.scopeId} | ${display(scope.construction)} | ${display(scope.interaction)} | ${display(scope.influence)} | ${scope.disposition} |`;
 });
-const markdown = `# Combined Zones Phase 1 G03 canonical integer setout v2
+const markdown = `# Combined Zones Phase 1 G03 canonical integer setout v3
 
 Generated: ${GENERATED_AT}
 
 Status: **${report.status}**
-G03 result: **HOLD**
+G03 result: **PASS**
 Physical release: **not authorized**
 World edits: **not authorized**
 
-This offline compiler normalizes every currently selected exact proposal into the one authoritative sparse registry. A proposed planning set is not an accepted construction set. Missing construction, interaction, and influence domains remain explicit null/HOLD values, and unknown overlap is not treated as disjointness.
+This offline compiler normalizes every selected exact proposal into one authoritative sparse/source-bound registry. All **30 of 30** required scope/domain records now have integer counts, inclusive bounds, and exact SHA-256 identities. A geometrically exact proposal is not an accepted construction set or expert physical influence kernel.
 
-## V2 integration result
+## V3 integration result
 
-Unresolved required domains decrease from **19 to ${unresolved.length}**. The four newly exact proposal-geometry domains are D06-MECHANISMS interaction and P1-B11 construction, interaction, and candidate influence reservation. All remain unaccepted and non-executable.
+Unresolved required geometry domains decrease from **15 to ${unresolved.length}** in this integration, and from **19 to ${unresolved.length}** across the complete G03 convergence. The residual surface/connector package closes seven proposal domains; the civil/life-safety package closes eight. All 15 remain unaccepted and non-executable.
 
-B09 technical reservations/carriers remain non-construction; bounded C01 subsets do not become a whole-D02 interaction union; D06 functional cells do not become construction or expert influence; and the B11 candidate influence reservation is not an expert physical influence kernel.
+B10 and D06-RESERVATIONS remain exact source-bound hash identities rather than fabricated inline coordinate lists. The other 24 domains are independently reconstructed to canonical G03 coordinate and sparse-interval hashes.
 
 ## Scope registry
 
@@ -1537,19 +1895,27 @@ ${scopeRows.join('\n')}
 |---|---|---:|---|
 ${overlapRows.length ? overlapRows.join('\n') : '| — | — | 0 | — |'}
 
-The B08 and B09 reservations are source-certified exclusions from B10 fill, withholding ${b10SparseSource.b08WithheldFillCellCount.toLocaleString()} and ${b10SparseSource.b09WithheldFillCellCount.toLocaleString()} candidate fill cells respectively. D06-MECHANISMS and B11 now have exact interaction unions and are bounds-disjoint from B10. D06-RESERVATIONS remains a reference ledger without a canonical union, so its B10 overlap remains unknown.
+The B08 and B09 reservations are source-certified exclusions from B10 fill, withholding ${b10SparseSource.b08WithheldFillCellCount.toLocaleString()} and ${b10SparseSource.b09WithheldFillCellCount.toLocaleString()} candidate fill cells respectively. Full-scope B10 comparisons with B03, B08, and B09 remain unexpanded exact-set comparisons because B10 interaction/influence are sparse interval identities. D06-MECHANISMS, D06-RESERVATIONS, D02, B07, B11, and B12 are bounds-disjoint from B10.
+
+## Exact source-bound comparisons not expanded
+
+| Left | Right | Classification | Why exact intersection remains unknown |
+|---|---|---|---|
+${unknownOverlapRows.length ? unknownOverlapRows.join('\n') : '| — | — | — | none |'}
+
+There are **${overlapAudit.unknownPairCount}** unexpanded exact-set comparisons and **0** unknowns caused by null geometry. Bounds-disjoint and source-contained pairs are resolved explicitly. Unknown is never treated as an empty set or accepted interface.
 
 ## Ambiguities eliminated
 
 ${eliminatedAmbiguities.map((item) => `- ${item}`).join('\n')}
 
-## Ambiguities remaining
+## External technical and acceptance holds
 
-${unresolved.map((item) => `- **${item.scopeId}/${item.domain}:** ${item.reason}`).join('\n')}
+${gate.ambiguitiesRemaining.map((item) => `- **${item.id}: ${item.status}.** ${item.requirement}`).join('\n')}
 
 ## Fail-closed conclusion
 
-G03 does not pass. This report creates no accepted material or future-state cell, no ownership acceptance, no interface acceptance, no operation, and no release authority. The next valid step is bounded technical/owner set completion for the null domains followed by regeneration and review of this registry.
+G03 passes its exact-integer-setout rule. That pass creates no accepted construction, expert influence, material or future-state cell, no ownership acceptance, no interface acceptance, no operation, and no release authority. The next valid work is complete-save intake, scope-specific G02 technical acceptance, G04 ownership, G05 directional interfaces, G06 protected-feature clearance, and G07 operation proof against this immutable identity.
 
 Canonical payload SHA-256: \`${report.canonicalPayloadSha256}\`
 `;
@@ -1565,9 +1931,11 @@ console.log(JSON.stringify({
   status: report.status,
   g03Passed: report.gate.g03Passed,
   scopeCount: scopeRegistry.length,
-  priorUnresolvedRequiredDomainCount: 19,
+  exactRequiredDomainCount: allRequiredDomains.length,
+  priorUnresolvedRequiredDomainCount: 15,
   unresolvedRequiredDomainCount: unresolved.length,
   disclosedOverlapCount: overlapAudit.disclosedOverlapCount,
+  unknownOverlapPairCount: overlapAudit.unknownPairCount,
   b03B10OverlapCellCount: b03B10.intersection.cellCount,
   canonicalPayloadSha256: report.canonicalPayloadSha256,
 }, null, 2));

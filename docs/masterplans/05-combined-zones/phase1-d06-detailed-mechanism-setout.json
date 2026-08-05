@@ -1,0 +1,2365 @@
+{
+  "schemaVersion": 2,
+  "id": "combined-zones-phase1-d06-detailed-mechanism-circuit-setout-proposal",
+  "generatedAtUtc": "2026-08-05T03:05:00Z",
+  "status": "PARTIAL_PASS_EXACT_D06_DETAILED_MECHANISM_CIRCUIT_SETOUT_FUNCTIONAL_ACCEPTANCE_HOLD",
+  "purpose": "Remove D06/G03 setout ambiguity with exact bounded mechanism, circuit-carrier, drainage, and control proposal layers while preserving every functional, external-route, complete-save, technical, owner/interface, and commissioning gate.",
+  "sourceBindings": {
+    "d06Mechanisms": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-mechanisms.json",
+      "bytes": 180609,
+      "sha256": "c713d30f0a085131875e71a5d02ad391330755fb68252f771ea9ed40222261da",
+      "role": "owner-bound exact D06 reservation, failure, and commissioning contract"
+    },
+    "d06LifeSafety": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+      "bytes": 171078,
+      "sha256": "c23eb313426f122e4d905cfe2a1d3407263186be80c167cfc1b169288eb11c76",
+      "role": "exact selected reservation and retained-cap references"
+    },
+    "emptyEight": {
+      "path": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+      "bytes": 71177,
+      "sha256": "2e6e3f3c5c5514909dd20b9a87d1278036ad8afafd3592eb60e756825655a14a",
+      "role": "frozen internal terminal geometry and fixture positions"
+    },
+    "completeSaveAudit": {
+      "path": "docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit.json",
+      "bytes": 27091,
+      "sha256": "4e4209b424a36b466789c0ea50cf75d0c72b23758cc85491b67ca1baff3f6f45",
+      "role": "current complete-save evidence boundary"
+    }
+  },
+  "authorityBoundary": {
+    "ownerAcceptedPlanningPolicyPreserved": true,
+    "technicalAcceptanceClaimed": false,
+    "mechanismAcceptanceClaimed": false,
+    "materialOrFutureStateAcceptanceClaimed": false,
+    "constructionAcceptanceClaimed": false,
+    "ownerOrInterfaceAcceptanceClaimed": false,
+    "commissioningClaimed": false,
+    "operationAuthorityClaimed": false
+  },
+  "deterministicSetoutContract": {
+    "coordinateOrder": "numeric x, then y, then z",
+    "coordinateSetPreamble": "combined-zones-d06-life-safety-cell-set-v1\\n",
+    "exactSourceReferenceCount": 73,
+    "exactSourceReferencePassCount": 73,
+    "proposalLayerCount": 31,
+    "priorityRule": "Explicit ordered functional precedence, highest first; never wildcard, shared canonical ownership, or last-writer-wins.",
+    "priority": [
+      "smokeDoorMechanismBays",
+      "platformGateMechanismBays",
+      "externalDrainBoundaryCap",
+      "fireSurfaceApproachCap",
+      "fireServiceInterfaceCap",
+      "egaLiftEquipmentCaps",
+      "egbLiftEquipmentCaps",
+      "egaStairEquipmentCaps",
+      "egbStairEquipmentCaps",
+      "egaTransferLandings",
+      "egbTransferLandings",
+      "ventOutletCaps",
+      "ventFanEquipmentBays",
+      "fireServiceControlPanels",
+      "normalCircuitEquipment",
+      "emergencyCircuitAEquipment",
+      "emergencyCircuitBEquipment",
+      "localSumpPumpEquipmentBays",
+      "localDrainageInterfaceCaps",
+      "lightingFixtureReservations",
+      "egaLiftEnvelope",
+      "egbLiftEnvelope",
+      "egaStairEnvelope",
+      "egbStairEnvelope",
+      "ventDuctEnvelopes",
+      "normalCircuitCarrier",
+      "emergencyCircuitACarrier",
+      "emergencyCircuitBCarrier",
+      "unconnectedDrainHeaderReservation",
+      "fireSurfaceCompoundReservation",
+      "fireServiceSpineReservation"
+    ],
+    "setoutManifestSha256": "697a9b522789e557185ec1855e037fe81b3f96af1b93b78eae22d01d38c6ac80",
+    "precedenceManifestSha256": "4b3cc766d11185cd9ec8be9c11ac359452def3ec94bf016545ebfccbee3a2663"
+  },
+  "exactDetailedProposalLayers": {
+    "status": "PASS_EXACT_PROPOSAL_ONLY_FUNCTIONAL_AND_TECHNICAL_ACCEPTANCE_HOLD",
+    "rawProposalMembershipCount": 9464,
+    "uniqueRawProposalCellCount": 9065,
+    "duplicateCoordinateCount": 242,
+    "extraMembershipCount": 399,
+    "canonicalProposalCellCountAfterPrecedence": 9065,
+    "proposalLayers": {
+      "smokeDoorMechanismBays": {
+        "layerId": "smokeDoorMechanismBays",
+        "priority": 1,
+        "group": "SMOKE_AND_BARRIERS",
+        "proposedFunction": "TWO_FAIL_CLOSED_SMOKE_DOOR_BAY_GROUPS",
+        "basis": "EXACT_SOURCE_REFERENCE",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact union of all retained static smoke-opening caps.",
+          "cellCount": 72,
+          "bounds": {
+            "minX": 1670,
+            "maxX": 1822,
+            "minY": 49,
+            "maxY": 51,
+            "minZ": 50,
+            "maxZ": 150
+          },
+          "coordinateSetSha256": "eb353fdc0ee1b8bb957fcd5a94d56c5b1c249005b93356c432e4e103692f1584",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 72,
+          "bounds": {
+            "minX": 1670,
+            "maxX": 1822,
+            "minY": 49,
+            "maxY": 51,
+            "minZ": 50,
+            "maxZ": 150
+          },
+          "coordinateSetSha256": "eb353fdc0ee1b8bb957fcd5a94d56c5b1c249005b93356c432e4e103692f1584",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "platformGateMechanismBays": {
+        "layerId": "platformGateMechanismBays",
+        "priority": 2,
+        "group": "SMOKE_AND_BARRIERS",
+        "proposedFunction": "EIGHT_FAIL_CLOSED_PLATFORM_GATE_BAY_GROUPS",
+        "basis": "EXACT_SOURCE_REFERENCE",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact union of all retained static platform gate-bay caps.",
+          "cellCount": 192,
+          "bounds": {
+            "minX": 1664,
+            "maxX": 1738,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 56,
+            "maxZ": 147
+          },
+          "coordinateSetSha256": "fa344e75b978961fc2c914e34f01e90cb8243a16be83f090999ba941c4b3e2b5",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 192,
+          "bounds": {
+            "minX": 1664,
+            "maxX": 1738,
+            "minY": 42,
+            "maxY": 43,
+            "minZ": 56,
+            "maxZ": 147
+          },
+          "coordinateSetSha256": "fa344e75b978961fc2c914e34f01e90cb8243a16be83f090999ba941c4b3e2b5",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "externalDrainBoundaryCap": {
+        "layerId": "externalDrainBoundaryCap",
+        "priority": 3,
+        "group": "DRAINAGE",
+        "proposedFunction": "SEALED_EXTERNAL_DRAIN_BOUNDARY_CAP",
+        "basis": "EXACT_SOURCE_REFERENCE",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact retained external drainage boundary cap.",
+          "cellCount": 9,
+          "bounds": {
+            "minX": 1872,
+            "maxX": 1872,
+            "minY": 38,
+            "maxY": 40,
+            "minZ": 156,
+            "maxZ": 158
+          },
+          "coordinateSetSha256": "2ae30ba16c2313388765732e4a70a8a1406e777d89009967aa6c4a2cc49226dc",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 9,
+          "bounds": {
+            "minX": 1872,
+            "maxX": 1872,
+            "minY": 38,
+            "maxY": 40,
+            "minZ": 156,
+            "maxZ": 158
+          },
+          "coordinateSetSha256": "2ae30ba16c2313388765732e4a70a8a1406e777d89009967aa6c4a2cc49226dc",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "fireSurfaceApproachCap": {
+        "layerId": "fireSurfaceApproachCap",
+        "priority": 4,
+        "group": "FIRE_AND_SERVICE",
+        "proposedFunction": "SEALED_SURFACE_APPROACH_CAP",
+        "basis": "EXACT_SOURCE_REFERENCE",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact sealed surface approach interface.",
+          "cellCount": 21,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1855,
+            "minY": 71,
+            "maxY": 73,
+            "minZ": 151,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "76aaafd48f38527dd5dd0eb3526c7b28c9b26ba7e82597d91ecea5d55b8eaba3",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 21,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1855,
+            "minY": 71,
+            "maxY": 73,
+            "minZ": 151,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "76aaafd48f38527dd5dd0eb3526c7b28c9b26ba7e82597d91ecea5d55b8eaba3",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "fireServiceInterfaceCap": {
+        "layerId": "fireServiceInterfaceCap",
+        "priority": 5,
+        "group": "FIRE_AND_SERVICE",
+        "proposedFunction": "NORMALLY_CLOSED_SPINE_INTERFACE_CAP",
+        "basis": "EXACT_SOURCE_REFERENCE",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact normally closed fire/service spine interface cap.",
+          "cellCount": 35,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1849,
+            "minY": 48,
+            "maxY": 52,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "bee777d91f2bb4bc5aa433c06ef35548d162e1df7440fe7804771d41d889a3d7",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 35,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1849,
+            "minY": 48,
+            "maxY": 52,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "bee777d91f2bb4bc5aa433c06ef35548d162e1df7440fe7804771d41d889a3d7",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "egaLiftEquipmentCaps": {
+        "layerId": "egaLiftEquipmentCaps",
+        "priority": 6,
+        "group": "STAIR_LIFT_AND_TRANSFER",
+        "proposedFunction": "EG-A_LIFT_END_EQUIPMENT_RESERVATION",
+        "basis": "DERIVED_PROPOSAL",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Bottom and top planes of the exact accessible-lift reservation.",
+          "cellCount": 18,
+          "bounds": {
+            "minX": 1653,
+            "maxX": 1655,
+            "minY": 42,
+            "maxY": 80,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "coordinateSetSha256": "41aa9e385d03f5fc222489f7f8757ecde4aa6fe533725ba1c512a73121bd9f0c",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 18,
+          "bounds": {
+            "minX": 1653,
+            "maxX": 1655,
+            "minY": 42,
+            "maxY": 80,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "coordinateSetSha256": "41aa9e385d03f5fc222489f7f8757ecde4aa6fe533725ba1c512a73121bd9f0c",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "egbLiftEquipmentCaps": {
+        "layerId": "egbLiftEquipmentCaps",
+        "priority": 7,
+        "group": "STAIR_LIFT_AND_TRANSFER",
+        "proposedFunction": "EG-B_LIFT_END_EQUIPMENT_RESERVATION",
+        "basis": "DERIVED_PROPOSAL",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Bottom and top planes of the exact accessible-lift reservation.",
+          "cellCount": 18,
+          "bounds": {
+            "minX": 1853,
+            "maxX": 1855,
+            "minY": 42,
+            "maxY": 71,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "coordinateSetSha256": "7e4d1a166dfe205f850a20d837d0c8a1414fbe7bf223003a434b772d114f2a48",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 18,
+          "bounds": {
+            "minX": 1853,
+            "maxX": 1855,
+            "minY": 42,
+            "maxY": 71,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "coordinateSetSha256": "7e4d1a166dfe205f850a20d837d0c8a1414fbe7bf223003a434b772d114f2a48",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "egaStairEquipmentCaps": {
+        "layerId": "egaStairEquipmentCaps",
+        "priority": 8,
+        "group": "STAIR_LIFT_AND_TRANSFER",
+        "proposedFunction": "EG-A_STAIR_END_EQUIPMENT_RESERVATION",
+        "basis": "DERIVED_PROPOSAL",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Bottom and top planes of the exact protected-stair reservation.",
+          "cellCount": 42,
+          "bounds": {
+            "minX": 1649,
+            "maxX": 1651,
+            "minY": 42,
+            "maxY": 80,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "3283a1b19354f55f41fdb16c0b53095bbb83592c424078aa608e25acc71a5fd5",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 42,
+          "bounds": {
+            "minX": 1649,
+            "maxX": 1651,
+            "minY": 42,
+            "maxY": 80,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "3283a1b19354f55f41fdb16c0b53095bbb83592c424078aa608e25acc71a5fd5",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "egbStairEquipmentCaps": {
+        "layerId": "egbStairEquipmentCaps",
+        "priority": 9,
+        "group": "STAIR_LIFT_AND_TRANSFER",
+        "proposedFunction": "EG-B_STAIR_END_EQUIPMENT_RESERVATION",
+        "basis": "DERIVED_PROPOSAL",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Bottom and top planes of the exact protected-stair reservation.",
+          "cellCount": 42,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1851,
+            "minY": 42,
+            "maxY": 71,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "f3e6521360fc685fb5392fad3f74547647a6dff4742047abb90e620831ab6806",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 39,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1851,
+            "minY": 42,
+            "maxY": 71,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "949d25a294660f29ee6cdc5fda4c74f4bb61d1cce29fed7d269a0d623ea2cdd0",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "egaTransferLandings": {
+        "layerId": "egaTransferLandings",
+        "priority": 10,
+        "group": "STAIR_LIFT_AND_TRANSFER",
+        "proposedFunction": "EG-A_LOWER_ROOF_AND_SURFACE_TRANSFER_LANDINGS",
+        "basis": "DERIVED_PROPOSAL",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Union of the frozen lower combined-core plane, roof-transition cap, and surface-outlet cap.",
+          "cellCount": 147,
+          "bounds": {
+            "minX": 1649,
+            "maxX": 1655,
+            "minY": 42,
+            "maxY": 80,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "bab7600c03eab6cdc24686597662455b99e23ccf2c61d174d1c67f0f712838e1",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 87,
+          "bounds": {
+            "minX": 1649,
+            "maxX": 1655,
+            "minY": 42,
+            "maxY": 80,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "5ba09413f1112887438b35f281322e023eeaa8eb36854d7c83d81afc09801938",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "egbTransferLandings": {
+        "layerId": "egbTransferLandings",
+        "priority": 11,
+        "group": "STAIR_LIFT_AND_TRANSFER",
+        "proposedFunction": "EG-B_LOWER_ROOF_AND_SURFACE_TRANSFER_LANDINGS",
+        "basis": "DERIVED_PROPOSAL",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Union of the frozen lower combined-core plane, roof-transition cap, and surface-outlet cap.",
+          "cellCount": 147,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1855,
+            "minY": 42,
+            "maxY": 71,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "eb70f4a796d72b122ac7fa649f573c2358658af6a93c2f7fde7747ed4d49260e",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 83,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1855,
+            "minY": 42,
+            "maxY": 71,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "53b50f25895c615daf40c3d0a63f4f2e0f33c2e02db6e29f0bb26bf25f54e1f4",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "ventOutletCaps": {
+        "layerId": "ventOutletCaps",
+        "priority": 12,
+        "group": "VENTILATION",
+        "proposedFunction": "FOUR_SEALED_EXTERIOR_OUTLET_CAPS",
+        "basis": "DERIVED_PROPOSAL",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Top 3x3 plane of each exact local vent riser.",
+          "cellCount": 36,
+          "bounds": {
+            "minX": 1643,
+            "maxX": 1861,
+            "minY": 64,
+            "maxY": 102,
+            "minZ": 47,
+            "maxZ": 153
+          },
+          "coordinateSetSha256": "610aedaf18fe11bafc0480709a9edaef5c284aa20bfbf5b91e6e38320080c089",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 36,
+          "bounds": {
+            "minX": 1643,
+            "maxX": 1861,
+            "minY": 64,
+            "maxY": 102,
+            "minZ": 47,
+            "maxZ": 153
+          },
+          "coordinateSetSha256": "610aedaf18fe11bafc0480709a9edaef5c284aa20bfbf5b91e6e38320080c089",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "ventFanEquipmentBays": {
+        "layerId": "ventFanEquipmentBays",
+        "priority": 13,
+        "group": "VENTILATION",
+        "proposedFunction": "FOUR_LOCAL_FAN_EQUIPMENT_BAYS",
+        "basis": "DERIVED_PROPOSAL",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Bottom 3x3 plane of each exact local vent riser.",
+          "cellCount": 36,
+          "bounds": {
+            "minX": 1643,
+            "maxX": 1861,
+            "minY": 55,
+            "maxY": 55,
+            "minZ": 47,
+            "maxZ": 153
+          },
+          "coordinateSetSha256": "88fdd3a4292ef37faa9b2d79337e0f9b8ca7235799da7ba467c8321a10a5fa18",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 36,
+          "bounds": {
+            "minX": 1643,
+            "maxX": 1861,
+            "minY": 55,
+            "maxY": 55,
+            "minZ": 47,
+            "maxZ": 153
+          },
+          "coordinateSetSha256": "88fdd3a4292ef37faa9b2d79337e0f9b8ca7235799da7ba467c8321a10a5fa18",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "fireServiceControlPanels": {
+        "layerId": "fireServiceControlPanels",
+        "priority": 14,
+        "group": "FIRE_AND_SERVICE",
+        "proposedFunction": "EIGHT_INTERNAL_FIRE_SERVICE_CONTROL_PANEL_RESERVATIONS",
+        "basis": "DERIVED_PROPOSAL",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "One control-panel cell in the frozen internal spine at each track centerline datum.",
+          "cellCount": 8,
+          "bounds": {
+            "minX": 1846,
+            "maxX": 1846,
+            "minY": 52,
+            "maxY": 52,
+            "minZ": 54,
+            "maxZ": 145
+          },
+          "coordinateSetSha256": "91afbdec47cdb08b97114e7d54cf7f3a2459a6206325ee083ae0cc4b95d208d6",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 8,
+          "bounds": {
+            "minX": 1846,
+            "maxX": 1846,
+            "minY": 52,
+            "maxY": 52,
+            "minZ": 54,
+            "maxZ": 145
+          },
+          "coordinateSetSha256": "91afbdec47cdb08b97114e7d54cf7f3a2459a6206325ee083ae0cc4b95d208d6",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "normalCircuitEquipment": {
+        "layerId": "normalCircuitEquipment",
+        "priority": 15,
+        "group": "POWER_AND_CONTROLS",
+        "proposedFunction": "NORMAL_LIGHTING_EQUIPMENT_RESERVATION",
+        "basis": "DERIVED_PROPOSAL",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Dedicated 3x3 equipment reservation at Y=44; source and control states remain null.",
+          "cellCount": 9,
+          "bounds": {
+            "minX": 1754,
+            "maxX": 1756,
+            "minY": 44,
+            "maxY": 44,
+            "minZ": 156,
+            "maxZ": 158
+          },
+          "coordinateSetSha256": "cfc0dbb63e4ffac0dbbd649937e802eaad2bf5eee56ec3ab141b75048e535373",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 9,
+          "bounds": {
+            "minX": 1754,
+            "maxX": 1756,
+            "minY": 44,
+            "maxY": 44,
+            "minZ": 156,
+            "maxZ": 158
+          },
+          "coordinateSetSha256": "cfc0dbb63e4ffac0dbbd649937e802eaad2bf5eee56ec3ab141b75048e535373",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "emergencyCircuitAEquipment": {
+        "layerId": "emergencyCircuitAEquipment",
+        "priority": 16,
+        "group": "POWER_AND_CONTROLS",
+        "proposedFunction": "INDEPENDENT_EMERGENCY_A_EQUIPMENT_RESERVATION",
+        "basis": "DERIVED_PROPOSAL",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Dedicated 3x3 equipment reservation at Y=45; source and control states remain null.",
+          "cellCount": 9,
+          "bounds": {
+            "minX": 1754,
+            "maxX": 1756,
+            "minY": 45,
+            "maxY": 45,
+            "minZ": 156,
+            "maxZ": 158
+          },
+          "coordinateSetSha256": "dd38ac9670650f3edd73836b00368065da60135037474b95e50aef6f95be4a2f",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 9,
+          "bounds": {
+            "minX": 1754,
+            "maxX": 1756,
+            "minY": 45,
+            "maxY": 45,
+            "minZ": 156,
+            "maxZ": 158
+          },
+          "coordinateSetSha256": "dd38ac9670650f3edd73836b00368065da60135037474b95e50aef6f95be4a2f",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "emergencyCircuitBEquipment": {
+        "layerId": "emergencyCircuitBEquipment",
+        "priority": 17,
+        "group": "POWER_AND_CONTROLS",
+        "proposedFunction": "INDEPENDENT_EMERGENCY_B_EQUIPMENT_RESERVATION",
+        "basis": "DERIVED_PROPOSAL",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Dedicated 3x3 equipment reservation at Y=47; source and control states remain null.",
+          "cellCount": 9,
+          "bounds": {
+            "minX": 1754,
+            "maxX": 1756,
+            "minY": 47,
+            "maxY": 47,
+            "minZ": 156,
+            "maxZ": 158
+          },
+          "coordinateSetSha256": "2f1f2e0a784514dd1f9787c287329f54770ab0fb5bbbc20c00ce9a606670a1ad",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 9,
+          "bounds": {
+            "minX": 1754,
+            "maxX": 1756,
+            "minY": 47,
+            "maxY": 47,
+            "minZ": 156,
+            "maxZ": 158
+          },
+          "coordinateSetSha256": "2f1f2e0a784514dd1f9787c287329f54770ab0fb5bbbc20c00ce9a606670a1ad",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "localSumpPumpEquipmentBays": {
+        "layerId": "localSumpPumpEquipmentBays",
+        "priority": 18,
+        "group": "DRAINAGE",
+        "proposedFunction": "EIGHT_LOCAL_SUMP_PUMP_EQUIPMENT_BAYS",
+        "basis": "DERIVED_PROPOSAL",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "One 3x1x3 equipment bay one block above and centered on each exact local cap.",
+          "cellCount": 72,
+          "bounds": {
+            "minX": 1868,
+            "maxX": 1870,
+            "minY": 39,
+            "maxY": 39,
+            "minZ": 54,
+            "maxZ": 147
+          },
+          "coordinateSetSha256": "7bbdb56978cccd7cd3c22b23ba078d6309c787ad9f2ae698922f26593223514e",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 72,
+          "bounds": {
+            "minX": 1868,
+            "maxX": 1870,
+            "minY": 39,
+            "maxY": 39,
+            "minZ": 54,
+            "maxZ": 147
+          },
+          "coordinateSetSha256": "7bbdb56978cccd7cd3c22b23ba078d6309c787ad9f2ae698922f26593223514e",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "localDrainageInterfaceCaps": {
+        "layerId": "localDrainageInterfaceCaps",
+        "priority": 19,
+        "group": "DRAINAGE",
+        "proposedFunction": "EIGHT_SEALED_LOCAL_DRAINAGE_CAPS",
+        "basis": "EXACT_SOURCE_REFERENCE",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact union of the eight retained local drainage caps.",
+          "cellCount": 24,
+          "bounds": {
+            "minX": 1869,
+            "maxX": 1869,
+            "minY": 38,
+            "maxY": 38,
+            "minZ": 54,
+            "maxZ": 147
+          },
+          "coordinateSetSha256": "13d7cb94e6425be2d777f9aaea7f4d93ccddca180e64509624e2cb498773af8c",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 24,
+          "bounds": {
+            "minX": 1869,
+            "maxX": 1869,
+            "minY": 38,
+            "maxY": 38,
+            "minZ": 54,
+            "maxZ": 147
+          },
+          "coordinateSetSha256": "13d7cb94e6425be2d777f9aaea7f4d93ccddca180e64509624e2cb498773af8c",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "lightingFixtureReservations": {
+        "layerId": "lightingFixtureReservations",
+        "priority": 20,
+        "group": "POWER_AND_CONTROLS",
+        "proposedFunction": "FROZEN_NORMAL_AND_EMERGENCY_LIGHTING_FIXTURE_RESERVATIONS",
+        "basis": "EXACT_SOURCE_REFERENCE",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact union of the eight frozen seven-cell fixture sets.",
+          "cellCount": 56,
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1748,
+            "minY": 46,
+            "maxY": 46,
+            "minZ": 62,
+            "maxZ": 153
+          },
+          "coordinateSetSha256": "07dc5dbdd641144c5fdffb8c3ad93d50a88c626e82333e97206f0afa79b15f22",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 56,
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1748,
+            "minY": 46,
+            "maxY": 46,
+            "minZ": 62,
+            "maxZ": 153
+          },
+          "coordinateSetSha256": "07dc5dbdd641144c5fdffb8c3ad93d50a88c626e82333e97206f0afa79b15f22",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "egaLiftEnvelope": {
+        "layerId": "egaLiftEnvelope",
+        "priority": 21,
+        "group": "STAIR_LIFT_AND_TRANSFER",
+        "proposedFunction": "EG-A_ACCESSIBLE_LIFT_ENVELOPE",
+        "basis": "EXACT_SOURCE_REFERENCE",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact selected accessible-lift reservation from the D06 contract.",
+          "cellCount": 351,
+          "bounds": {
+            "minX": 1653,
+            "maxX": 1655,
+            "minY": 42,
+            "maxY": 80,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "coordinateSetSha256": "c1bc6c20f6f4aa6e3be3a91d0a5dd0e4fcbcb3285d6821498d9a700a2b208972",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 324,
+          "bounds": {
+            "minX": 1653,
+            "maxX": 1655,
+            "minY": 43,
+            "maxY": 79,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "coordinateSetSha256": "d52c1a321627a5e658add76affc6540c5f7e892aa3ba923f268c54465134c508",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "egbLiftEnvelope": {
+        "layerId": "egbLiftEnvelope",
+        "priority": 22,
+        "group": "STAIR_LIFT_AND_TRANSFER",
+        "proposedFunction": "EG-B_ACCESSIBLE_LIFT_ENVELOPE",
+        "basis": "EXACT_SOURCE_REFERENCE",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact selected accessible-lift reservation from the D06 contract.",
+          "cellCount": 270,
+          "bounds": {
+            "minX": 1853,
+            "maxX": 1855,
+            "minY": 42,
+            "maxY": 71,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "coordinateSetSha256": "f901500ff0e8dc8f056a660334a255c5cdfb62cbf49713fbca0be7a262a62e08",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 243,
+          "bounds": {
+            "minX": 1853,
+            "maxX": 1855,
+            "minY": 43,
+            "maxY": 70,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "coordinateSetSha256": "ee104f9e7853ca8f8e3e212b8e57cca6185249a7530fc38d13af486822fadb60",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "egaStairEnvelope": {
+        "layerId": "egaStairEnvelope",
+        "priority": 23,
+        "group": "STAIR_LIFT_AND_TRANSFER",
+        "proposedFunction": "EG-A_PROTECTED_STAIR_ENVELOPE",
+        "basis": "EXACT_SOURCE_REFERENCE",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact selected protected-stair reservation from the D06 contract.",
+          "cellCount": 819,
+          "bounds": {
+            "minX": 1649,
+            "maxX": 1651,
+            "minY": 42,
+            "maxY": 80,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "a33e2ca05e93da0f96bc0a6da14decc80a18e0b2257e217600e3b11f59da6e40",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 756,
+          "bounds": {
+            "minX": 1649,
+            "maxX": 1651,
+            "minY": 43,
+            "maxY": 79,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "1fc849decb65c6e54e6b82b60536fafc8507be3434a6b83dc8434b8c152f9b4e",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "egbStairEnvelope": {
+        "layerId": "egbStairEnvelope",
+        "priority": 24,
+        "group": "STAIR_LIFT_AND_TRANSFER",
+        "proposedFunction": "EG-B_PROTECTED_STAIR_ENVELOPE",
+        "basis": "EXACT_SOURCE_REFERENCE",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact selected protected-stair reservation from the D06 contract.",
+          "cellCount": 630,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1851,
+            "minY": 42,
+            "maxY": 71,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "2b32e8434746485edb83672a27a013a9f58dfcdd4394df30a49999dd4ae8be94",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 532,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1851,
+            "minY": 43,
+            "maxY": 70,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "77633a7e2c1e4f984f6ed8fa1e6352c8839787bcdecc8189c12b5d74485ddc78",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "ventDuctEnvelopes": {
+        "layerId": "ventDuctEnvelopes",
+        "priority": 25,
+        "group": "VENTILATION",
+        "proposedFunction": "FOUR_LOCAL_DUCT_ENVELOPES",
+        "basis": "DERIVED_PROPOSAL",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact local vent risers after subtracting their bottom fan and top outlet planes.",
+          "cellCount": 828,
+          "bounds": {
+            "minX": 1643,
+            "maxX": 1861,
+            "minY": 56,
+            "maxY": 101,
+            "minZ": 47,
+            "maxZ": 153
+          },
+          "coordinateSetSha256": "d2164e53bc3d3bb3f0e1704928800ab7e06ce7ea92b1a22d453f233df3af1e30",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 828,
+          "bounds": {
+            "minX": 1643,
+            "maxX": 1861,
+            "minY": 56,
+            "maxY": 101,
+            "minZ": 47,
+            "maxZ": 153
+          },
+          "coordinateSetSha256": "d2164e53bc3d3bb3f0e1704928800ab7e06ce7ea92b1a22d453f233df3af1e30",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "normalCircuitCarrier": {
+        "layerId": "normalCircuitCarrier",
+        "priority": 26,
+        "group": "POWER_AND_CONTROLS",
+        "proposedFunction": "NORMAL_LIGHTING_CARRIER",
+        "basis": "DERIVED_PROPOSAL",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Dedicated Y=44 trunk, eight fixture rows, and a sealed equipment-bay approach.",
+          "cellCount": 827,
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1753,
+            "minY": 44,
+            "maxY": 44,
+            "minZ": 54,
+            "maxZ": 157
+          },
+          "coordinateSetSha256": "711107dd2fa9b434fe1fc10077702de3642097d52d121b8d5b46decc1f71bacb",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 827,
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1753,
+            "minY": 44,
+            "maxY": 44,
+            "minZ": 54,
+            "maxZ": 157
+          },
+          "coordinateSetSha256": "711107dd2fa9b434fe1fc10077702de3642097d52d121b8d5b46decc1f71bacb",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "emergencyCircuitACarrier": {
+        "layerId": "emergencyCircuitACarrier",
+        "priority": 27,
+        "group": "POWER_AND_CONTROLS",
+        "proposedFunction": "INDEPENDENT_EMERGENCY_A_CARRIER",
+        "basis": "DERIVED_PROPOSAL",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Dedicated Y=45 trunk, eight fixture rows, and a sealed equipment-bay approach.",
+          "cellCount": 827,
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1753,
+            "minY": 45,
+            "maxY": 45,
+            "minZ": 54,
+            "maxZ": 157
+          },
+          "coordinateSetSha256": "860bda8c43c2c06c95d2f70fb0d7efa1b2a37d2ed299dc104668f5f53089f1a2",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 827,
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1753,
+            "minY": 45,
+            "maxY": 45,
+            "minZ": 54,
+            "maxZ": 157
+          },
+          "coordinateSetSha256": "860bda8c43c2c06c95d2f70fb0d7efa1b2a37d2ed299dc104668f5f53089f1a2",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "emergencyCircuitBCarrier": {
+        "layerId": "emergencyCircuitBCarrier",
+        "priority": 28,
+        "group": "POWER_AND_CONTROLS",
+        "proposedFunction": "INDEPENDENT_EMERGENCY_B_CARRIER",
+        "basis": "DERIVED_PROPOSAL",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Dedicated Y=47 trunk, eight fixture rows, and a sealed equipment-bay approach.",
+          "cellCount": 827,
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1753,
+            "minY": 47,
+            "maxY": 47,
+            "minZ": 54,
+            "maxZ": 157
+          },
+          "coordinateSetSha256": "8ff70324bb9c59ccde82c4a5048390f919b7d2aae91f9b8e1372ce0a6a031578",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 827,
+          "bounds": {
+            "minX": 1660,
+            "maxX": 1753,
+            "minY": 47,
+            "maxY": 47,
+            "minZ": 54,
+            "maxZ": 157
+          },
+          "coordinateSetSha256": "8ff70324bb9c59ccde82c4a5048390f919b7d2aae91f9b8e1372ce0a6a031578",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "unconnectedDrainHeaderReservation": {
+        "layerId": "unconnectedDrainHeaderReservation",
+        "priority": 29,
+        "group": "DRAINAGE",
+        "proposedFunction": "SEALED_UNCONNECTED_DRAIN_HEADER",
+        "basis": "EXACT_SOURCE_REFERENCE",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact retained unconnected header reservation.",
+          "cellCount": 9,
+          "bounds": {
+            "minX": 1869,
+            "maxX": 1871,
+            "minY": 38,
+            "maxY": 38,
+            "minZ": 156,
+            "maxZ": 158
+          },
+          "coordinateSetSha256": "3806b527089b8f8030e53e91b3e1405cc7a3d95e779f3006400cc734861ca075",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 9,
+          "bounds": {
+            "minX": 1869,
+            "maxX": 1871,
+            "minY": 38,
+            "maxY": 38,
+            "minZ": 156,
+            "maxZ": 158
+          },
+          "coordinateSetSha256": "3806b527089b8f8030e53e91b3e1405cc7a3d95e779f3006400cc734861ca075",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "fireSurfaceCompoundReservation": {
+        "layerId": "fireSurfaceCompoundReservation",
+        "priority": 30,
+        "group": "FIRE_AND_SERVICE",
+        "proposedFunction": "SURFACE_COMPOUND_RESERVATION",
+        "basis": "EXACT_SOURCE_REFERENCE",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact frozen EG-B surface compound reservation.",
+          "cellCount": 49,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1855,
+            "minY": 71,
+            "maxY": 71,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "8d48d1a51dba8a54a2c11ad41f97482664a001cc3d943073fce9756ee41ac365",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 0,
+          "bounds": null,
+          "coordinateSetSha256": "6e0987687e1b2d1a47ab30f68e00c162911552d18208737f0a356bed6b09e9ee",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      },
+      "fireServiceSpineReservation": {
+        "layerId": "fireServiceSpineReservation",
+        "priority": 31,
+        "group": "FIRE_AND_SERVICE",
+        "proposedFunction": "INTERNAL_FIRE_SERVICE_SPINE",
+        "basis": "EXACT_SOURCE_REFERENCE",
+        "rawProposalCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact frozen internal fire/service spine reservation.",
+          "cellCount": 3025,
+          "bounds": {
+            "minX": 1844,
+            "maxX": 1848,
+            "minY": 48,
+            "maxY": 52,
+            "minZ": 40,
+            "maxZ": 160
+          },
+          "coordinateSetSha256": "b3626dfd30c7c81aca2a6a4349e7273c1c760297ca736be9f869b1e2ec33dd2c",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "canonicalProposalCellSetAfterPrecedence": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Raw proposal cell set after subtracting every exact higher-priority same-coordinate membership.",
+          "cellCount": 3017,
+          "bounds": {
+            "minX": 1844,
+            "maxX": 1848,
+            "minY": 48,
+            "maxY": 52,
+            "minZ": 40,
+            "maxZ": 160
+          },
+          "coordinateSetSha256": "aad361106fcd7b5cc62aab4626a702ef0c5e9cb00716380235844c2b33c4ff68",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "proposalAccepted": false,
+        "acceptedMechanismCellCount": 0,
+        "acceptedMaterialCellCount": 0,
+        "acceptedConstructionCellCount": 0
+      }
+    },
+    "acceptedMechanismCellCount": 0,
+    "acceptedMaterialCellCount": 0,
+    "acceptedConstructionCellCount": 0
+  },
+  "internalDuplicateAndPrecedenceAudit": {
+    "status": "PASS_EXACT_EXPLICIT_PRECEDENCE_PROPOSAL_ONLY",
+    "duplicateCoordinateCount": 242,
+    "extraMembershipCount": 399,
+    "precedenceRecordCount": 21,
+    "precedenceRecords": [
+      {
+        "precedenceId": "D06-PREC-egaLiftEquipmentCaps-OVER-egaLiftEnvelope",
+        "winningLayerId": "egaLiftEquipmentCaps",
+        "yieldingLayerId": "egaLiftEnvelope",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; egaLiftEquipmentCaps wins over egaLiftEnvelope under the frozen priority list.",
+          "cellCount": 18,
+          "bounds": {
+            "minX": 1653,
+            "maxX": 1655,
+            "minY": 42,
+            "maxY": 80,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "coordinateSetSha256": "41aa9e385d03f5fc222489f7f8757ecde4aa6fe533725ba1c512a73121bd9f0c",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-egaLiftEquipmentCaps-OVER-egaTransferLandings",
+        "winningLayerId": "egaLiftEquipmentCaps",
+        "yieldingLayerId": "egaTransferLandings",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; egaLiftEquipmentCaps wins over egaTransferLandings under the frozen priority list.",
+          "cellCount": 18,
+          "bounds": {
+            "minX": 1653,
+            "maxX": 1655,
+            "minY": 42,
+            "maxY": 80,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "coordinateSetSha256": "41aa9e385d03f5fc222489f7f8757ecde4aa6fe533725ba1c512a73121bd9f0c",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-egaStairEquipmentCaps-OVER-egaStairEnvelope",
+        "winningLayerId": "egaStairEquipmentCaps",
+        "yieldingLayerId": "egaStairEnvelope",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; egaStairEquipmentCaps wins over egaStairEnvelope under the frozen priority list.",
+          "cellCount": 42,
+          "bounds": {
+            "minX": 1649,
+            "maxX": 1651,
+            "minY": 42,
+            "maxY": 80,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "3283a1b19354f55f41fdb16c0b53095bbb83592c424078aa608e25acc71a5fd5",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-egaStairEquipmentCaps-OVER-egaTransferLandings",
+        "winningLayerId": "egaStairEquipmentCaps",
+        "yieldingLayerId": "egaTransferLandings",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; egaStairEquipmentCaps wins over egaTransferLandings under the frozen priority list.",
+          "cellCount": 42,
+          "bounds": {
+            "minX": 1649,
+            "maxX": 1651,
+            "minY": 42,
+            "maxY": 80,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "3283a1b19354f55f41fdb16c0b53095bbb83592c424078aa608e25acc71a5fd5",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-egaTransferLandings-OVER-egaLiftEnvelope",
+        "winningLayerId": "egaTransferLandings",
+        "yieldingLayerId": "egaLiftEnvelope",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; egaTransferLandings wins over egaLiftEnvelope under the frozen priority list.",
+          "cellCount": 9,
+          "bounds": {
+            "minX": 1653,
+            "maxX": 1655,
+            "minY": 54,
+            "maxY": 54,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "coordinateSetSha256": "d0efd93699d3d8ac61739679d68adbce95e5a4dc167055b89cbbae1c0566b3d2",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-egaTransferLandings-OVER-egaStairEnvelope",
+        "winningLayerId": "egaTransferLandings",
+        "yieldingLayerId": "egaStairEnvelope",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; egaTransferLandings wins over egaStairEnvelope under the frozen priority list.",
+          "cellCount": 21,
+          "bounds": {
+            "minX": 1649,
+            "maxX": 1651,
+            "minY": 54,
+            "maxY": 54,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "5f135b134d172c5a6e15577359404f4b1a2058d87456df037378d7d440b7d85a",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-egbLiftEquipmentCaps-OVER-egbLiftEnvelope",
+        "winningLayerId": "egbLiftEquipmentCaps",
+        "yieldingLayerId": "egbLiftEnvelope",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; egbLiftEquipmentCaps wins over egbLiftEnvelope under the frozen priority list.",
+          "cellCount": 18,
+          "bounds": {
+            "minX": 1853,
+            "maxX": 1855,
+            "minY": 42,
+            "maxY": 71,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "coordinateSetSha256": "7e4d1a166dfe205f850a20d837d0c8a1414fbe7bf223003a434b772d114f2a48",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-egbLiftEquipmentCaps-OVER-egbTransferLandings",
+        "winningLayerId": "egbLiftEquipmentCaps",
+        "yieldingLayerId": "egbTransferLandings",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; egbLiftEquipmentCaps wins over egbTransferLandings under the frozen priority list.",
+          "cellCount": 18,
+          "bounds": {
+            "minX": 1853,
+            "maxX": 1855,
+            "minY": 42,
+            "maxY": 71,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "coordinateSetSha256": "7e4d1a166dfe205f850a20d837d0c8a1414fbe7bf223003a434b772d114f2a48",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-egbLiftEquipmentCaps-OVER-fireSurfaceCompoundReservation",
+        "winningLayerId": "egbLiftEquipmentCaps",
+        "yieldingLayerId": "fireSurfaceCompoundReservation",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; egbLiftEquipmentCaps wins over fireSurfaceCompoundReservation under the frozen priority list.",
+          "cellCount": 9,
+          "bounds": {
+            "minX": 1853,
+            "maxX": 1855,
+            "minY": 71,
+            "maxY": 71,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "coordinateSetSha256": "2b3cd5462a92d4431fb0aebb55b56947f017953400b73382f276799e6d885659",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-egbStairEquipmentCaps-OVER-egbStairEnvelope",
+        "winningLayerId": "egbStairEquipmentCaps",
+        "yieldingLayerId": "egbStairEnvelope",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; egbStairEquipmentCaps wins over egbStairEnvelope under the frozen priority list.",
+          "cellCount": 39,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1851,
+            "minY": 42,
+            "maxY": 71,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "949d25a294660f29ee6cdc5fda4c74f4bb61d1cce29fed7d269a0d623ea2cdd0",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-egbStairEquipmentCaps-OVER-egbTransferLandings",
+        "winningLayerId": "egbStairEquipmentCaps",
+        "yieldingLayerId": "egbTransferLandings",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; egbStairEquipmentCaps wins over egbTransferLandings under the frozen priority list.",
+          "cellCount": 39,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1851,
+            "minY": 42,
+            "maxY": 71,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "949d25a294660f29ee6cdc5fda4c74f4bb61d1cce29fed7d269a0d623ea2cdd0",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-egbStairEquipmentCaps-OVER-fireSurfaceCompoundReservation",
+        "winningLayerId": "egbStairEquipmentCaps",
+        "yieldingLayerId": "fireSurfaceCompoundReservation",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; egbStairEquipmentCaps wins over fireSurfaceCompoundReservation under the frozen priority list.",
+          "cellCount": 18,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1851,
+            "minY": 71,
+            "maxY": 71,
+            "minZ": 145,
+            "maxZ": 150
+          },
+          "coordinateSetSha256": "4d22c2960d940579ccf2a58bc87cdcaf13b3376d273eeed292f913d7676b7107",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-egbTransferLandings-OVER-egbLiftEnvelope",
+        "winningLayerId": "egbTransferLandings",
+        "yieldingLayerId": "egbLiftEnvelope",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; egbTransferLandings wins over egbLiftEnvelope under the frozen priority list.",
+          "cellCount": 9,
+          "bounds": {
+            "minX": 1853,
+            "maxX": 1855,
+            "minY": 54,
+            "maxY": 54,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "coordinateSetSha256": "d368aae96bc71d73950ceaf8a76d7c499a119d51c2f58884615ed24256ea0727",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-egbTransferLandings-OVER-egbStairEnvelope",
+        "winningLayerId": "egbTransferLandings",
+        "yieldingLayerId": "egbStairEnvelope",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; egbTransferLandings wins over egbStairEnvelope under the frozen priority list.",
+          "cellCount": 21,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1851,
+            "minY": 54,
+            "maxY": 54,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "082e7746b1b8376d0274840c48863361e907e861bb1f13254f5ff3d51975e8c4",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-egbTransferLandings-OVER-fireSurfaceCompoundReservation",
+        "winningLayerId": "egbTransferLandings",
+        "yieldingLayerId": "fireSurfaceCompoundReservation",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; egbTransferLandings wins over fireSurfaceCompoundReservation under the frozen priority list.",
+          "cellCount": 15,
+          "bounds": {
+            "minX": 1852,
+            "maxX": 1855,
+            "minY": 71,
+            "maxY": 71,
+            "minZ": 145,
+            "maxZ": 150
+          },
+          "coordinateSetSha256": "f4e89a8850aad3113b8bc833181636c1c64b9fdf34b217d166c1006b140dfa1e",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-fireServiceControlPanels-OVER-fireServiceSpineReservation",
+        "winningLayerId": "fireServiceControlPanels",
+        "yieldingLayerId": "fireServiceSpineReservation",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; fireServiceControlPanels wins over fireServiceSpineReservation under the frozen priority list.",
+          "cellCount": 8,
+          "bounds": {
+            "minX": 1846,
+            "maxX": 1846,
+            "minY": 52,
+            "maxY": 52,
+            "minZ": 54,
+            "maxZ": 145
+          },
+          "coordinateSetSha256": "91afbdec47cdb08b97114e7d54cf7f3a2459a6206325ee083ae0cc4b95d208d6",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-fireServiceInterfaceCap-OVER-egbStairEnvelope",
+        "winningLayerId": "fireServiceInterfaceCap",
+        "yieldingLayerId": "egbStairEnvelope",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; fireServiceInterfaceCap wins over egbStairEnvelope under the frozen priority list.",
+          "cellCount": 35,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1849,
+            "minY": 48,
+            "maxY": 52,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "bee777d91f2bb4bc5aa433c06ef35548d162e1df7440fe7804771d41d889a3d7",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-fireSurfaceApproachCap-OVER-egbStairEnvelope",
+        "winningLayerId": "fireSurfaceApproachCap",
+        "yieldingLayerId": "egbStairEnvelope",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; fireSurfaceApproachCap wins over egbStairEnvelope under the frozen priority list.",
+          "cellCount": 3,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1851,
+            "minY": 71,
+            "maxY": 71,
+            "minZ": 151,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "5c879fe98694ead83c92f093cb1ccc99d51f51b85db9c22e6769107771d4e5db",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-fireSurfaceApproachCap-OVER-egbStairEquipmentCaps",
+        "winningLayerId": "fireSurfaceApproachCap",
+        "yieldingLayerId": "egbStairEquipmentCaps",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; fireSurfaceApproachCap wins over egbStairEquipmentCaps under the frozen priority list.",
+          "cellCount": 3,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1851,
+            "minY": 71,
+            "maxY": 71,
+            "minZ": 151,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "5c879fe98694ead83c92f093cb1ccc99d51f51b85db9c22e6769107771d4e5db",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-fireSurfaceApproachCap-OVER-egbTransferLandings",
+        "winningLayerId": "fireSurfaceApproachCap",
+        "yieldingLayerId": "egbTransferLandings",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; fireSurfaceApproachCap wins over egbTransferLandings under the frozen priority list.",
+          "cellCount": 7,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1855,
+            "minY": 71,
+            "maxY": 71,
+            "minZ": 151,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "062e08d158330393ffe53c780bea20f241acac199ab2fff7a0aacf32f075c429",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      },
+      {
+        "precedenceId": "D06-PREC-fireSurfaceApproachCap-OVER-fireSurfaceCompoundReservation",
+        "winningLayerId": "fireSurfaceApproachCap",
+        "yieldingLayerId": "fireSurfaceCompoundReservation",
+        "exactConflictCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact same-coordinate conflict; fireSurfaceApproachCap wins over fireSurfaceCompoundReservation under the frozen priority list.",
+          "cellCount": 7,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1855,
+            "minY": 71,
+            "maxY": 71,
+            "minZ": 151,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "062e08d158330393ffe53c780bea20f241acac199ab2fff7a0aacf32f075c429",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0,
+          "acceptedMechanismCellCount": 0
+        },
+        "rule": "EXPLICIT_FUNCTIONAL_PRECEDENCE_NO_LAST_WRITER_WINS",
+        "accepted": false
+      }
+    ],
+    "wildcardPrecedenceCount": 0,
+    "lastWriterWinsCount": 0,
+    "sharedCanonicalAssignmentCount": 0,
+    "acceptedPrecedenceRecordCount": 0
+  },
+  "exactCanonicalOwnerAdjacency": {
+    "status": "PASS_EXACT_FOUR_GROUPS_SEALED_TECHNICAL_ACCEPTANCE_HOLD",
+    "canonicalOwnerCellCount": 9065,
+    "contractCount": 4,
+    "transitionPairCount": 59,
+    "records": [
+      {
+        "interfaceId": "IF-D06-ADJ-01",
+        "fromOwnerId": "OWN-D06-EG-B",
+        "toOwnerId": "OWN-D06-FIRE",
+        "direction": "POSITIVE_Y",
+        "relationship": "EXACT_FACE_ADJACENCY_DEFAULT_DENY_NO_TRANSFER",
+        "exactInterfaceCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact endpoints of a canonical D06 detailed-owner face adjacency.",
+          "cellCount": 20,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1851,
+            "minY": 47,
+            "maxY": 71,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "ebedc4a2005abd746835bd389bb444ff6519ede042ce337a0128a1762f4ca270",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0
+        },
+        "transitionPairCount": 10,
+        "transitionPairManifestSha256": "efaffb09850d450d56778f32a6f0921e9c9d64accf320aee5db7ea7da81cb469",
+        "defaultDeny": true,
+        "wildcardAllowed": false,
+        "lastWriterWinsAllowed": false,
+        "accepted": false,
+        "acceptedBy": null,
+        "status": "HOLD_EXACT_DIRECTIONAL_ADJACENCY_PROPOSAL_NOT_ACCEPTED"
+      },
+      {
+        "interfaceId": "IF-D06-ADJ-02",
+        "fromOwnerId": "OWN-D06-EG-B",
+        "toOwnerId": "OWN-D06-FIRE",
+        "direction": "POSITIVE_Z",
+        "relationship": "EXACT_FACE_ADJACENCY_DEFAULT_DENY_NO_TRANSFER",
+        "exactInterfaceCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact endpoints of a canonical D06 detailed-owner face adjacency.",
+          "cellCount": 14,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1855,
+            "minY": 71,
+            "maxY": 71,
+            "minZ": 150,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "46ffbfea98ba6f6c64da479399f01ff6b2aaa64c742bcb6b8617b2c86cfb604f",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0
+        },
+        "transitionPairCount": 7,
+        "transitionPairManifestSha256": "a8ec9c372e1e00fa4f9d9b945bea80471541505a2b4eac6ab98610b312f3fb9b",
+        "defaultDeny": true,
+        "wildcardAllowed": false,
+        "lastWriterWinsAllowed": false,
+        "accepted": false,
+        "acceptedBy": null,
+        "status": "HOLD_EXACT_DIRECTIONAL_ADJACENCY_PROPOSAL_NOT_ACCEPTED"
+      },
+      {
+        "interfaceId": "IF-D06-ADJ-03",
+        "fromOwnerId": "OWN-D06-FIRE",
+        "toOwnerId": "OWN-D06-EG-B",
+        "direction": "POSITIVE_X",
+        "relationship": "EXACT_FACE_ADJACENCY_DEFAULT_DENY_NO_TRANSFER",
+        "exactInterfaceCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact endpoints of a canonical D06 detailed-owner face adjacency.",
+          "cellCount": 70,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1850,
+            "minY": 48,
+            "maxY": 52,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "8c1ac38a456840012561068a82d9b92cd3984c5305e7d0d912cf59b858b68502",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0
+        },
+        "transitionPairCount": 35,
+        "transitionPairManifestSha256": "86fa8755867325fc1bea7e602d3d2eab536c5702a5a24ec111d2cf7907ea7915",
+        "defaultDeny": true,
+        "wildcardAllowed": false,
+        "lastWriterWinsAllowed": false,
+        "accepted": false,
+        "acceptedBy": null,
+        "status": "HOLD_EXACT_DIRECTIONAL_ADJACENCY_PROPOSAL_NOT_ACCEPTED"
+      },
+      {
+        "interfaceId": "IF-D06-ADJ-04",
+        "fromOwnerId": "OWN-D06-FIRE",
+        "toOwnerId": "OWN-D06-EG-B",
+        "direction": "POSITIVE_Y",
+        "relationship": "EXACT_FACE_ADJACENCY_DEFAULT_DENY_NO_TRANSFER",
+        "exactInterfaceCellSet": {
+          "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+          "derivation": "Exact endpoints of a canonical D06 detailed-owner face adjacency.",
+          "cellCount": 14,
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1849,
+            "minY": 52,
+            "maxY": 53,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "coordinateSetSha256": "cdd088494ef0d4a1670f0bb54a6e3425d99e6d4c1d0ee8d18e71138acf662752",
+          "proposalAccepted": false,
+          "acceptedCellCount": 0
+        },
+        "transitionPairCount": 7,
+        "transitionPairManifestSha256": "57c8a5ca4de6ae9c6bd923aa695249d3f71c663a9ace35331d6fac614295800e",
+        "defaultDeny": true,
+        "wildcardAllowed": false,
+        "lastWriterWinsAllowed": false,
+        "accepted": false,
+        "acceptedBy": null,
+        "status": "HOLD_EXACT_DIRECTIONAL_ADJACENCY_PROPOSAL_NOT_ACCEPTED"
+      }
+    ],
+    "acceptedContractCount": 0,
+    "acceptedInterfaceCellCount": 0
+  },
+  "crossScopeAudit": {
+    "status": "PASS_KNOWN_CROSS_SCOPE_AND_B07_COMPONENTS_DISJOINT_BY_EXACT_BOUNDS",
+    "d06DetailedProposalUnion": {
+      "representation": "EXACT_DETERMINISTIC_CELL_SET_HASH_ONLY",
+      "derivation": "Exact union of all raw D06 detailed proposal layers before precedence.",
+      "cellCount": 9065,
+      "bounds": {
+        "minX": 1643,
+        "maxX": 1872,
+        "minY": 38,
+        "maxY": 102,
+        "minZ": 40,
+        "maxZ": 160
+      },
+      "coordinateSetSha256": "1ff4f48f25578769d5cafe2f1348903f54e562a6133680fa959087ad9bf4130b",
+      "proposalAccepted": false,
+      "acceptedCellCount": 0,
+      "acceptedMechanismCellCount": 0
+    },
+    "comparedExternalScopeCount": 3,
+    "comparedExternalComponentCount": 6,
+    "comparedExternalScopes": [
+      "D02/C01",
+      "D05",
+      "P1-B11/P1-B12"
+    ],
+    "separateB07ComponentCompared": true,
+    "observedKnownCrossScopeConflictCellCount": 0,
+    "externalScopeComponentManifestSha256": "3ee213decea2152f4867f494ecd5826a7661fefbfddb789201b082b08afd97e1",
+    "qualification": "This proves disjointness from the frozen D02/C01, D05, P1-B11/P1-B12, and B07 convergence bounds without binding the downstream registry back into this source artifact. Missing external routes, receivers, construction influence, and complete-save entities/POI/all-start sets remain unknown."
+  },
+  "nullHeldSystems": [
+    {
+      "id": "D06-SET-H01-EXTERNAL-EGRESS-AND-SAFE-ENDPOINTS",
+      "exactCellSet": null,
+      "status": "HOLD_EXTERNAL_ROUTE_AND_EXPERT_ACCEPTANCE",
+      "requirement": "Exact protected exterior routes, accessible discharge, refuge/rescue behavior, and accepted safe endpoints for EG-A and EG-B."
+    },
+    {
+      "id": "D06-SET-H02-VENT-EXTERIOR-DISCHARGE-AND-SMOKE-MODEL",
+      "exactCellSet": null,
+      "status": "HOLD_EXTERNAL_ROUTE_SMOKE_MODEL_AND_EXPERT_ACCEPTANCE",
+      "requirement": "Exterior outlet geometry beyond retained caps, supply/extract mode, capacity, smoke control, weather protection, and accepted discharge effects."
+    },
+    {
+      "id": "D06-SET-H03-ACTUAL-MECHANISM-STATES-CONTROLS-AND-FAILURE-LOGIC",
+      "exactCellSet": null,
+      "status": "HOLD_MECHANISM_ENGINEERING",
+      "requirement": "Exact block states and functional logic for stairs/lifts, fans, smoke doors, platform gates, manual releases, detectors, barriers, and reset/failure behavior."
+    },
+    {
+      "id": "D06-SET-H04-CIRCUIT-SOURCES-CONTROLS-TRANSFER-AND-INDEPENDENCE",
+      "exactCellSet": null,
+      "status": "HOLD_ELECTRICAL_AND_FAILURE_ENGINEERING",
+      "requirement": "Normal and two genuinely independent emergency sources, controls, transfer logic, state traces, protection, load/coverage results, and common-cause proof."
+    },
+    {
+      "id": "D06-SET-H05-DRAINAGE-HYDRAULICS-PUMP-STATES-AND-RECEIVER",
+      "exactCellSet": null,
+      "status": "HOLD_HYDROLOGY_D02_D05_AND_RECEIVER_ACCEPTANCE",
+      "requirement": "Catchments, source/future fluids, inflow, storage, freeboard, pump/control states, recovery, outfall, external discharge, and accepted receiver contract."
+    },
+    {
+      "id": "D06-SET-H06-EXTERNAL-FIRE-SERVICE-ROUTE-AND-EMERGENCY-SERVICE",
+      "exactCellSet": null,
+      "status": "HOLD_EXTERNAL_ROUTE_AND_EMERGENCY_SERVICE_ACCEPTANCE",
+      "requirement": "Exact exterior approach, vehicle/personnel access, internal transfer behavior, access controls, and emergency-service acceptance."
+    },
+    {
+      "id": "D06-SET-H07-STRUCTURAL-GEOTECHNICAL-AND-MATERIAL-STATES",
+      "exactCellSet": null,
+      "status": "HOLD_STRUCTURAL_GEOTECHNICAL_AND_MATERIAL_ACCEPTANCE",
+      "requirement": "Loads, support/lining, foundations, penetrations, material/future states, construction influence, quantities, and exact source guards."
+    },
+    {
+      "id": "D06-SET-H08-COMPLETE-SAVE-ENTITY-POI-ALL-START",
+      "exactCellSet": null,
+      "status": "HOLD_COMPLETE_SAVE",
+      "requirement": "One same-moment complete save and final entity, POI, block-entity, fluid, and generated-start clearance against every influence set."
+    },
+    {
+      "id": "D06-SET-H09-OWNER-INTERFACE-TECHNICAL-ACCEPTANCE-AND-COMMISSIONING",
+      "exactCellSet": null,
+      "status": "HOLD_OWNER_INTERFACE_TECHNICAL_ACCEPTANCE_AND_COMMISSIONING",
+      "requirement": "Accepted one-owner assignments, directional interfaces, technical review, all 29 commissioning results, and one immutable accepted D06 identity."
+    }
+  ],
+  "passHoldMatrix": [
+    {
+      "id": "D06-SET-G01-SOURCE-AND-REFERENCE-CONTRACT",
+      "status": "PASS",
+      "result": "The D06 contract and all 73 passed exact reservation references are hash-bound with technical acceptance retained as false."
+    },
+    {
+      "id": "D06-SET-G02-STAIR-LIFT-TRANSFER-EQUIPMENT",
+      "status": "PASS_EXACT_PROPOSAL_ONLY",
+      "result": "Both egress cores now have exact stair/lift envelopes, transfer landings, and end-equipment proposal caps."
+    },
+    {
+      "id": "D06-SET-G03-VENT-SMOKE-AND-PLATFORM-MECHANISMS",
+      "status": "PASS_EXACT_PROPOSAL_ONLY",
+      "result": "Four risers are partitioned into duct/fan/outlet proposals, and every smoke-door/platform-gate bay has an exact fail-closed mechanism reservation."
+    },
+    {
+      "id": "D06-SET-G04-NORMAL-AND-EMERGENCY-CIRCUITS",
+      "status": "PASS_EXACT_CARRIER_PROPOSAL_FUNCTIONAL_HOLD",
+      "result": "Three physically separated carrier/equipment proposals and all 56 fixture cells are exact; sources, controls, transfer, coverage, and independence remain unaccepted."
+    },
+    {
+      "id": "D06-SET-G05-DRAINAGE-AND-FIRE-SERVICE-CONTROLS",
+      "status": "PASS_EXACT_PROPOSAL_ONLY",
+      "result": "Eight local pump/cap bays, retained header/cap geometry, fire spine/caps, and eight internal control-panel reservations are exact."
+    },
+    {
+      "id": "D06-SET-G06-INTERNAL-DUPLICATE-PRECEDENCE",
+      "status": "PASS_EXACT_PROPOSAL_ONLY",
+      "result": "242 same-coordinate duplicate proposal cells are adjudicated by 21 exact layer-pair records with no wildcard or last-writer rule."
+    },
+    {
+      "id": "D06-SET-G07-CROSS-SCOPE-CONFLICT",
+      "status": "PASS_KNOWN_SCOPE_GEOMETRY_COMPLETE_SAVE_HOLD",
+      "result": "The detailed Empty Eight proposal is disjoint from known D02, D05, P1-B12, and separate B07 components; missing external/influence sets remain unknown."
+    },
+    {
+      "id": "D06-SET-G07A-CANONICAL-OWNER-ADJACENCY",
+      "status": "PASS_EXACT_PROPOSAL_ONLY",
+      "result": "4 canonical-owner adjacency groups and 59 face pairs are exact, directional, default-deny, and unaccepted."
+    },
+    {
+      "id": "D06-SET-G08-FUNCTIONAL-TECHNICAL-AND-COMMISSIONING",
+      "status": "HOLD",
+      "result": "9 functional/external/technical/complete-save/acceptance classes remain explicit null/HOLD."
+    },
+    {
+      "id": "D06-SET-G09-G03-D06-ACCEPTANCE",
+      "status": "HOLD",
+      "result": "G03/D06 proposal geometry is more complete, but accepted mechanism/material/construction/owner/interface/operation cells and commissioning results remain zero."
+    }
+  ],
+  "ambiguityRemoved": [
+    "Both egress cores now have exact proposed stair, lift, transfer-landing, and equipment-cap layers rather than four null mechanism slots.",
+    "Each local vent riser is exactly divided into duct, fan-equipment, and sealed outlet-cap cells.",
+    "All smoke-door and platform-gate mechanism bays are exact and remain fail-closed.",
+    "Normal, emergency A, and emergency B now have physically separated exact carrier and equipment proposal cells, while source/control/transfer/independence evidence remains null.",
+    "Eight local sump/pump equipment bays and caps, the retained drainage header/boundary cap, and internal fire/service control positions are exact.",
+    "Every internal same-coordinate duplicate has a deterministic exact precedence result, and known cross-scope components are conflict-free.",
+    "Four canonical logical-owner adjacency groups covering 59 exact face pairs are endpoint-validated, directional, sealed, and unaccepted."
+  ],
+  "genuineResidualBlockers": [
+    {
+      "id": "D06-SET-H01-EXTERNAL-EGRESS-AND-SAFE-ENDPOINTS",
+      "status": "HOLD_EXTERNAL_ROUTE_AND_EXPERT_ACCEPTANCE",
+      "requirement": "Exact protected exterior routes, accessible discharge, refuge/rescue behavior, and accepted safe endpoints for EG-A and EG-B."
+    },
+    {
+      "id": "D06-SET-H02-VENT-EXTERIOR-DISCHARGE-AND-SMOKE-MODEL",
+      "status": "HOLD_EXTERNAL_ROUTE_SMOKE_MODEL_AND_EXPERT_ACCEPTANCE",
+      "requirement": "Exterior outlet geometry beyond retained caps, supply/extract mode, capacity, smoke control, weather protection, and accepted discharge effects."
+    },
+    {
+      "id": "D06-SET-H03-ACTUAL-MECHANISM-STATES-CONTROLS-AND-FAILURE-LOGIC",
+      "status": "HOLD_MECHANISM_ENGINEERING",
+      "requirement": "Exact block states and functional logic for stairs/lifts, fans, smoke doors, platform gates, manual releases, detectors, barriers, and reset/failure behavior."
+    },
+    {
+      "id": "D06-SET-H04-CIRCUIT-SOURCES-CONTROLS-TRANSFER-AND-INDEPENDENCE",
+      "status": "HOLD_ELECTRICAL_AND_FAILURE_ENGINEERING",
+      "requirement": "Normal and two genuinely independent emergency sources, controls, transfer logic, state traces, protection, load/coverage results, and common-cause proof."
+    },
+    {
+      "id": "D06-SET-H05-DRAINAGE-HYDRAULICS-PUMP-STATES-AND-RECEIVER",
+      "status": "HOLD_HYDROLOGY_D02_D05_AND_RECEIVER_ACCEPTANCE",
+      "requirement": "Catchments, source/future fluids, inflow, storage, freeboard, pump/control states, recovery, outfall, external discharge, and accepted receiver contract."
+    },
+    {
+      "id": "D06-SET-H06-EXTERNAL-FIRE-SERVICE-ROUTE-AND-EMERGENCY-SERVICE",
+      "status": "HOLD_EXTERNAL_ROUTE_AND_EMERGENCY_SERVICE_ACCEPTANCE",
+      "requirement": "Exact exterior approach, vehicle/personnel access, internal transfer behavior, access controls, and emergency-service acceptance."
+    },
+    {
+      "id": "D06-SET-H07-STRUCTURAL-GEOTECHNICAL-AND-MATERIAL-STATES",
+      "status": "HOLD_STRUCTURAL_GEOTECHNICAL_AND_MATERIAL_ACCEPTANCE",
+      "requirement": "Loads, support/lining, foundations, penetrations, material/future states, construction influence, quantities, and exact source guards."
+    },
+    {
+      "id": "D06-SET-H08-COMPLETE-SAVE-ENTITY-POI-ALL-START",
+      "status": "HOLD_COMPLETE_SAVE",
+      "requirement": "One same-moment complete save and final entity, POI, block-entity, fluid, and generated-start clearance against every influence set."
+    },
+    {
+      "id": "D06-SET-H09-OWNER-INTERFACE-TECHNICAL-ACCEPTANCE-AND-COMMISSIONING",
+      "status": "HOLD_OWNER_INTERFACE_TECHNICAL_ACCEPTANCE_AND_COMMISSIONING",
+      "requirement": "Accepted one-owner assignments, directional interfaces, technical review, all 29 commissioning results, and one immutable accepted D06 identity."
+    }
+  ],
+  "disposition": {
+    "exactG03D06SetoutProposalCompiled": true,
+    "exactInternalDuplicatePrecedenceCompiled": true,
+    "exactCanonicalOwnerAdjacencyCompiled": true,
+    "knownCrossScopeConflictAuditPassed": true,
+    "externalRoutesAccepted": false,
+    "acceptedReceiverOrDischargePresent": false,
+    "functionalMechanismStatesAccepted": false,
+    "circuitsFunctionallyAccepted": false,
+    "controlsAndFailureLogicAccepted": false,
+    "completeSaveAccepted": false,
+    "technicalAcceptanceRecorded": false,
+    "commissioningPassed": false,
+    "d06Resolved": false,
+    "g03Accepted": false,
+    "r00Passed": false
+  },
+  "safetyBoundary": {
+    "offlineOnly": true,
+    "liveCallsPerformed": [],
+    "operations": [],
+    "operationCellCount": 0,
+    "acceptedMechanismCellCount": 0,
+    "acceptedMaterialCellCount": 0,
+    "acceptedFutureCellCount": 0,
+    "acceptedConstructionCellCount": 0,
+    "acceptedOwnerAssignmentCount": 0,
+    "acceptedInterfaceCellCount": 0,
+    "worldEditAuthorized": false,
+    "physicalBuildAuthorized": false,
+    "executable": false
+  },
+  "reportIdentitySha256": "55eaab99b53aac1de53e81128026ff509de7a6efb9614b7e390c4f9cbe37c12f"
+}

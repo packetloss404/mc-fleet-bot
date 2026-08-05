@@ -12,11 +12,11 @@ const SCRIPT = path.join(
 );
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.json',
+  'docs/masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.md',
+  'docs/masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.md',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-b11-road-'));
 const regeneratedJson = path.join(tempDir, 'proposal.json');
@@ -155,11 +155,15 @@ interface Report {
     }>;
     knownBoundsIntersectionRequiringExactFollowupCount: number;
     unknownCanonicalScopeCount: number;
+    otherScopesDeferredToDownstreamCanonicalAudits: boolean;
   };
   g03ProposalImpact: {
     currentCommittedG03ArtifactModified: boolean;
-    currentCommittedG03Result: string;
-    currentCommittedUnresolvedRequiredDomainCount: number;
+    currentCommittedG03Result: string | null;
+    currentCommittedUnresolvedRequiredDomainCount: number | null;
+    descendantG03Consumed: boolean;
+    historicalMigrationBaselineSchemaVersion: number;
+    historicalUnresolvedRequiredDomainCount: number;
     p1B11GeometryNullDomainsBefore: string[];
     p1B11GeometryNullDomainsRemovedByThisProposal: string[];
     proposalGeometryNullDomainRemovalCount: number;
@@ -319,7 +323,10 @@ describe('Combined Zones P1-B11 surface-road technical proposal', () => {
       physicalSeamAccepted: false,
     });
     expect(report.c1AndOtherScopeAudit.knownBoundsIntersectionRequiringExactFollowupCount).toBe(0);
-    expect(report.c1AndOtherScopeAudit.unknownCanonicalScopeCount).toBe(2);
+    expect(report.c1AndOtherScopeAudit).toMatchObject({
+      unknownCanonicalScopeCount: 0,
+      otherScopesDeferredToDownstreamCanonicalAudits: true,
+    });
   });
 
   it('discloses the exact B12 and Houston seams without accepting either', () => {
@@ -366,8 +373,11 @@ describe('Combined Zones P1-B11 surface-road technical proposal', () => {
     const report = readReport();
     expect(report.g03ProposalImpact).toEqual({
       currentCommittedG03ArtifactModified: false,
-      currentCommittedG03Result: 'HOLD',
-      currentCommittedUnresolvedRequiredDomainCount: 19,
+      currentCommittedG03Result: null,
+      currentCommittedUnresolvedRequiredDomainCount: null,
+      descendantG03Consumed: false,
+      historicalMigrationBaselineSchemaVersion: 1,
+      historicalUnresolvedRequiredDomainCount: 19,
       p1B11GeometryNullDomainsBefore: ['construction', 'interaction', 'influence'],
       p1B11GeometryNullDomainsRemovedByThisProposal: ['construction', 'interaction', 'influence'],
       proposalGeometryNullDomainRemovalCount: 3,
@@ -406,7 +416,6 @@ describe('Combined Zones P1-B11 surface-road technical proposal', () => {
       'phase0',
       'protectedRelics',
       'c1',
-      'g03',
       'completeSave',
       'immutableSelectedRegionSnapshot',
     ]);

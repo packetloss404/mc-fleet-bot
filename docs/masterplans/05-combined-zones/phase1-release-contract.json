@@ -1,0 +1,812 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-release-contract",
+  "title": "Masterplan 05 deterministic construction and release contract",
+  "status": "CONTRACT_VALID_BUILD_BLOCKED",
+  "executable": false,
+  "worldEditAuthorized": false,
+  "scope": "Offline release engineering only. This contract defines the evidence and transaction graph that must exist before any block placement; it is not an operation manifest.",
+  "decisionResolutionBoundary": {
+    "g02Closure": "PRE_R00_DESIGN_ACCEPTANCE_ONLY",
+    "descendantReleaseEvidenceMayResolveG02": false,
+    "forbiddenG02Evidence": [
+      "operations",
+      "source guards",
+      "release manifests",
+      "preflight",
+      "live entity clearance",
+      "physical pilot",
+      "execution",
+      "rollback",
+      "route QA",
+      "post-state QA"
+    ],
+    "sequence": [
+      "D01-D07 design acceptance",
+      "CZ-R00-PHASE1-DESIGN-FREEZE accepted",
+      "CZ-R01-PHASE1-BOUNDED-VISUAL-PILOT physical validation accepted",
+      "CZ-R02-PHASE2-EMPTY-EIGHT-DEEP-SHELL eligible"
+    ]
+  },
+  "authorityBindings": [
+    {
+      "path": "docs/masterplans/04-combined-complex/authority-reconciliation.json",
+      "sha256": "7051b359e195b3c957cfa4ee77a56217643bebc60bccc108c20c0bea9a3bcdab",
+      "role": "normalized child-plan architecture and field-scoped authority bridge"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/MASTERPLAN.md",
+      "sha256": "0fd3ed2d4d66a344f85b8bf4d58ad2be2f4533381b637b6a536dd9caec11c227",
+      "role": "plan to develop"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/site-coordinates.json",
+      "sha256": "4ec96165c1b4af92d766af4d7e79cb296fba0e362e8b43f6a1053c2a20bf0081",
+      "role": "current-world placement, planning envelopes, adapters, additions, and gates"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/phase0-survey-evidence.json",
+      "sha256": "8de9be6c1ca081cb5fb885a160f7b5062004bd1a493e59bfd2eea5582177344c",
+      "role": "Phase 0 siting evidence only"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/corridor-clearance.json",
+      "sha256": "0e76297ecdf86259ed5a4762f169dddb59e961f4184a794e03cdba4b4a6908b7",
+      "role": "catalog clearance evidence only"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/corridor-terrain-probe.json",
+      "sha256": "4e3f1b5f6750a5d18ae6e99b4a909471ea332b9ca290095f6236dbce1ea98f1c",
+      "role": "sampled corridor terrain and provisional rail profile"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/resiting-candidate-analysis.json",
+      "sha256": "0b215c19274065fc7a0db9c4adea685385c5b8a2e03ccbeaeb563c15d894ff8f",
+      "role": "selected siting candidate evidence only"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/phase1-geometry-coordination.json",
+      "sha256": "b2284622f95f51af76cc13e8056a70cf4a82e0af058496eee77d5a82f631553f",
+      "role": "rational vertical transforms and coordination-envelope semantics only"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/phase1-design-decisions.json",
+      "sha256": "b6cb8f06fcce4d6916538048594003d6e1fb2e505a3be0804e4d6df4d36182ff",
+      "role": "machine-readable D01-D07 decision ledger"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
+      "sha256": "1739502e8bf19283cabfe9930f26011dba97c11e6328da27ee0b7f651f7a0a22",
+      "role": "immutable relic census and zero-margin default-deny core sets"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/phase1-c1-pilot-coordination.json",
+      "sha256": "dd79f52ccf1f0c5e274ac0166fe964b2d42cb4b5bc1f71edf3a648e3454e09ea",
+      "role": "bounded C1 coordination candidate and rail-reservation setout only"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/phase1-c1-civil-design.json",
+      "sha256": "7776e243dc24b03fa7903ecb93ec8f05e6e0cbd81aa3749e2fb52435b7dc2442",
+      "role": "exact C1 civil coordination design and D02 blocker ledger"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
+      "sha256": "e3f86c5073a00e715cf0f4d01e2a76bc1fc416290ffd7a4972b1e8c7a2b8350c",
+      "role": "full-height hydrology baseline and unreviewed exact relic adjacency candidates"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
+      "sha256": "2e6e3f3c5c5514909dd20b9a87d1278036ad8afafd3592eb60e756825655a14a",
+      "role": "D06 exact internal design and D07 fact-checked wording/C2 omission"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/phase1-site-gate-audit.json",
+      "sha256": "4d349bf4d029651151db10303211e30db0a43e6514ee81a65febb63e3a0ffa69",
+      "role": "read-only Phase 1 site-readiness blocker matrix"
+    }
+  ],
+  "snapshotPolicy": {
+    "acceptedLineageBaseline": {
+      "path": "data/worldsnap-town-terminal-recovery-post-20260728T1839Z/region",
+      "sha256": "c39d0d67c9dec737aa5807cf5fa56a84f3c3d38d4b13d0f82599d3eb30fa6751",
+      "usableAsReleaseSource": false,
+      "reason": "It is the accepted construction lineage baseline, not proof of the saved-world state immediately before a future Combined Zones release."
+    },
+    "phase0PostSnapshot": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+      "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+      "usableAsReleaseSource": false,
+      "reason": "It is terrain/siting evidence and does not bind a future compiler or live execution moment."
+    },
+    "requiredForEveryPhysicalRelease": {
+      "freshImmutableSnapshot": true,
+      "completeRegionSet": true,
+      "snapshotSha256Required": true,
+      "compilerSourceSnapshotMustMatch": true,
+      "ownershipAuditSnapshotMustMatch": true,
+      "forwardPreflightSnapshotMustMatch": true,
+      "authorizationSnapshotMustMatch": true,
+      "transactionPreSnapshotMustMatch": true,
+      "partialOrScopedPreflightMaySatisfyFinalGate": false,
+      "newSnapshotRequiredAfterEveryCommitOrCompletedRollback": true
+    }
+  },
+  "designDecisions": [
+    {
+      "id": "D01_WORLD_VERTICAL_STRATEGY",
+      "state": "RESOLVED",
+      "requirement": "Select same-world current-map placement with Masterplan 05 vertical adaptation or a separate-world design. Exact per-owner integer construction setout remains independently required by G03.",
+      "machineEvidence": {
+        "path": "docs/masterplans/05-combined-zones/phase1-design-decisions.json",
+        "sha256": "b6cb8f06fcce4d6916538048594003d6e1fb2e505a3be0804e4d6df4d36182ff",
+        "decisionId": "D01"
+      }
+    },
+    {
+      "id": "D02_C1_CIVIL_ALIGNMENT",
+      "state": "UNRESOLVED",
+      "requirement": "Accept the exact C1 alignment/profile plus geotechnical, structural/C01, hydraulic/outfall, visual-raster, formation, quantity, and mass-haul design evidence before R00. R01 operations, pilot, rollback, route QA, and post-state QA are subsequent validation and cannot resolve D02 or G02.",
+      "machineEvidence": null
+    },
+    {
+      "id": "D03_MAINSTREET_L2_GATE",
+      "state": "RESOLVED",
+      "requirement": "Bind a dry surveyed MainStreet East L2 gate or remove L2 from the design.",
+      "machineEvidence": {
+        "path": "docs/masterplans/05-combined-zones/phase1-design-decisions.json",
+        "sha256": "b6cb8f06fcce4d6916538048594003d6e1fb2e505a3be0804e4d6df4d36182ff",
+        "decisionId": "D03"
+      }
+    },
+    {
+      "id": "D04_RAIL_DELIVERY",
+      "state": "RESOLVED",
+      "requirement": "Decide whether passenger rail is built with C1 or preserved as an exact clear-spanned, empty rail reservation.",
+      "machineEvidence": {
+        "path": "docs/masterplans/05-combined-zones/phase1-design-decisions.json",
+        "sha256": "b6cb8f06fcce4d6916538048594003d6e1fb2e505a3be0804e4d6df4d36182ff",
+        "decisionId": "D04"
+      }
+    },
+    {
+      "id": "D05_MOUNTAIN_HYDROLOGY_RELIC_BUFFERS",
+      "state": "UNRESOLVED",
+      "requirement": "Before R00, approve exact relic buffers, hydrology ownership/interfaces, an accepted future terrain/influence model, expert civil/geotechnical criteria, and frozen preservation/no-diversion acceptance criteria. Operations, rollback, and post-state proof belong to G03-G19.",
+      "machineEvidence": null
+    },
+    {
+      "id": "D06_EMPTY_EIGHT_DETAIL",
+      "state": "UNRESOLVED",
+      "requirement": "Before R00, accept the internal design plus surveyed exterior endpoints, two independent accessible egress routes, smoke/ventilation, drainage, fire/service, barrier, lift, emergency-power, and sealed-interface mechanisms. Operations, preflight, pilot, rollback, and post-state proof belong to G03-G19.",
+      "machineEvidence": null
+    },
+    {
+      "id": "D07_GEOLOGY_AND_OPTIONAL_PORTAL",
+      "state": "RESOLVED",
+      "requirement": "Approve factual architectural-composite geology wording and either select or explicitly omit the optional C2 visitor portal mechanism.",
+      "machineEvidence": {
+        "path": "docs/masterplans/05-combined-zones/phase1-design-decisions.json",
+        "sha256": "b6cb8f06fcce4d6916538048594003d6e1fb2e505a3be0804e4d6df4d36182ff",
+        "decisionId": "D07"
+      }
+    }
+  ],
+  "globalInvariants": {
+    "authorityChain": "01 + 02 + 03 -> 04 normalized architecture -> 05 current-world placement",
+    "oneCanonicalCompilerPerCoordinate": true,
+    "planningEnvelopeIsNotConstructionOwnership": true,
+    "integerTargetCellSetRequired": true,
+    "exactlyOneOwnerPerInteractionCell": true,
+    "unownedCellCountRequired": 0,
+    "multiplyOwnedCellCountRequired": 0,
+    "undeclaredCrossScopeInterfaceCountRequired": 0,
+    "crossPackageInteractionCellCountRequired": 0,
+    "protectedFeaturesDefaultDeny": true,
+    "generatedStructuresDefaultDeny": true,
+    "forwardRollbackTargetBijectionRequired": true,
+    "forwardRollbackTransitionInversionRequired": true,
+    "completeMinecraftBlockStatesRequired": true,
+    "finiteSourceUnionsOnly": true,
+    "wildcardSourceMasksAllowed": false,
+    "naturalTransitionPolicyAllowedForForward": false,
+    "strictNoopRequired": true,
+    "decisionResolutionMayDependOnDescendantReleaseEvidence": false,
+    "atomicFailurePolicy": "rollback the journal-proven applied prefix of the failing package, then rollback prior committed packages in reverse order",
+    "postFailureRule": "freeze the world, complete rollback, capture a new immutable snapshot, and restart all gates from source preflight",
+    "narrativeOverrideAllowed": false,
+    "partialEvidenceAllowed": false
+  },
+  "interfaceContractRequiredFields": [
+    "id",
+    "ownerA",
+    "ownerB",
+    "direction",
+    "bounds",
+    "cellCount",
+    "cellSetSha256",
+    "transitionCount",
+    "componentCount",
+    "largestComponentCellCount",
+    "componentSetSha256",
+    "allowedSourceStateSetSha256",
+    "allowedDesiredStateSetSha256"
+  ],
+  "protectedNoTouchSubjects": [
+    {
+      "id": "RELIC-IGLOO-WEST",
+      "planningBounds": {
+        "minX": 1790,
+        "maxX": 1797,
+        "minY": 62,
+        "maxY": 66,
+        "minZ": -926,
+        "maxZ": -920
+      },
+      "exactProtectedCoreCellSet": {
+        "cellCount": 280,
+        "coordinateSetSha256": "9ec8b536822c1f6cb794fd0f7cdd14063daddbb650e6dd6f70ed9b0c15c40d72",
+        "positiveMarginBlocks": 0,
+        "evidencePath": "docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
+        "evidenceSha256": "a983fab119749e8d34457d2754181b45f323f823de302c72f03974766f360c4d"
+      },
+      "exactReviewedBufferCellSet": null
+    },
+    {
+      "id": "RELIC-IGLOO-EAST",
+      "planningBounds": {
+        "minX": 2304,
+        "maxX": 2310,
+        "minY": 90,
+        "maxY": 94,
+        "minZ": -1024,
+        "maxZ": -1017
+      },
+      "exactProtectedCoreCellSet": {
+        "cellCount": 280,
+        "coordinateSetSha256": "45e77afc9f46aa6663c5830f75a26539740a73085ce7d10e27ff14bc2426e326",
+        "positiveMarginBlocks": 0,
+        "evidencePath": "docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
+        "evidenceSha256": "a983fab119749e8d34457d2754181b45f323f823de302c72f03974766f360c4d"
+      },
+      "exactReviewedBufferCellSet": null
+    },
+    {
+      "id": "RELIC-SHIPWRECK",
+      "planningBounds": {
+        "minX": 2072,
+        "maxX": 2099,
+        "minY": 69,
+        "maxY": 77,
+        "minZ": -661,
+        "maxZ": -653
+      },
+      "exactProtectedCoreCellSet": {
+        "cellCount": 2268,
+        "coordinateSetSha256": "715792eef84d4c3029a5750b0683adef6e0c5447b918512539c0d96f82cd2ee6",
+        "positiveMarginBlocks": 0,
+        "evidencePath": "docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
+        "evidenceSha256": "a983fab119749e8d34457d2754181b45f323f823de302c72f03974766f360c4d"
+      },
+      "exactReviewedBufferCellSet": null
+    }
+  ],
+  "gateDefinitions": [
+    {
+      "id": "G01_AUTHORITY",
+      "stage": "design",
+      "pass": "Every authority binding exists and matches its declared SHA-256; the 04-to-05 chain has no unresolved field owner."
+    },
+    {
+      "id": "G02_DESIGN_DECISIONS",
+      "stage": "design",
+      "pass": "Before R00 acceptance, every D01-D07 record is RESOLVED from immutable design/external-acceptance evidence only. Evidence from R01 or any G03-G19 operation, preflight, pilot, execution, rollback, route-QA, or post-state activity is forbidden."
+    },
+    {
+      "id": "G03_INTEGER_SET_OUT",
+      "stage": "design",
+      "pass": "Every release owner has an exact integer target/interaction cell set, rounding rule, bounds, count, and SHA-256; no null Y or fractional block coordinate remains."
+    },
+    {
+      "id": "G04_OWNERSHIP",
+      "stage": "design",
+      "pass": "The complete observed interaction-cell union equals the canonical-owner union one-to-one with zero unowned and zero multiply owned cells."
+    },
+    {
+      "id": "G05_INTERFACES",
+      "stage": "design",
+      "pass": "The complete global cross-scope audit matches exact declared interfaces one-to-one with zero unreviewed seams and all required field/hash/component checks equal."
+    },
+    {
+      "id": "G06_PROTECTED_FEATURES",
+      "stage": "design",
+      "pass": "Exact protected cell/buffer sets are frozen and have zero overlap with all release interaction cells unless an exact separately authorized contract exists."
+    },
+    {
+      "id": "G07_CIVIL_HYDROLOGY_STRUCTURE",
+      "stage": "design",
+      "pass": "Hydrology, earthwork, loading, retaining, C01/owner-tunnel separation, fluids, egress, ventilation, and route-grade checks required by the release all PASS against the same cell-set and snapshot identities."
+    },
+    {
+      "id": "G08_COMPILER_DETERMINISM",
+      "stage": "compile",
+      "pass": "Two clean offline compiler runs from the same source snapshot and frozen design inputs produce byte-identical forward, rollback, report, ownership, and interface artifacts."
+    },
+    {
+      "id": "G09_BIJECTION_MANIFEST_QA",
+      "stage": "compile",
+      "pass": "scripts/qa_guarded_release_manifest.mjs reports PASS, zero package intersections, complete block states, exact forward/rollback inversion, and hashes matching the candidate release manifest."
+    },
+    {
+      "id": "G10_FRESH_SOURCE_SNAPSHOT",
+      "stage": "prerelease",
+      "pass": "A fresh complete immutable saved-world region snapshot has a sealed SHA-256 shared by compiler, ownership/interface audits, preflight, authorization, and transaction inputs."
+    },
+    {
+      "id": "G11_COMPLETE_FORWARD_PREFLIGHT",
+      "stage": "prerelease",
+      "pass": "Every complete unscoped forward preflight reports PASS, zero failures, operationCount equal guarded group count, opsSha256 equal forward SHA-256, and exact snapshot path/SHA-256 match."
+    },
+    {
+      "id": "G12_STRICT_PARSER_DRY_RUNS",
+      "stage": "prerelease",
+      "pass": "Every forward and rollback operation passes scripts/rcon_runner.py --dry-run --strict-noop with explicit operation role and reports exact operation/plan hashes."
+    },
+    {
+      "id": "G13_LIVE_ENTITY_CLEARANCE",
+      "stage": "execute",
+      "pass": "The same-moment live entity gate is PASS, binds every forward SHA-256, reports no blockers, restores the exact force-load baseline, and is at most 300 seconds old when the transaction starts."
+    },
+    {
+      "id": "G14_EXPLICIT_AUTHORIZATION",
+      "stage": "execute",
+      "pass": "A non-self-issued authorization artifact binds the exact release-manifest SHA-256, source-snapshot SHA-256, package order, operation hashes, permitted world, and expiry; all values match at runner start."
+    },
+    {
+      "id": "G15_ATOMIC_EXECUTION",
+      "stage": "execute",
+      "pass": "A project-specific wrapper verifies G01-G14, then invokes the strict-noop journaled compensating transaction runner; every package has zero failures and zero no-ops or the complete applied prefix is rolled back."
+    },
+    {
+      "id": "G16_IMMUTABLE_POST_AND_ROLLBACK_PREFLIGHT",
+      "stage": "postrelease",
+      "pass": "A distinct immutable post snapshot is sealed and every exact rollback passes a complete post-state preflight against it."
+    },
+    {
+      "id": "G17_FUNCTIONAL_POST_QA",
+      "stage": "postrelease",
+      "pass": "All release-specific fluid, lighting, headroom, egress, access-class, protected-feature, powered-device, and bidirectional no-dig/no-tower route gates PASS."
+    },
+    {
+      "id": "G18_MEDIA_AND_PUBLICATION",
+      "stage": "postrelease",
+      "pass": "Matched media and map QA bind the accepted post snapshot; database import is transactional, exact, and independently verified."
+    },
+    {
+      "id": "G19_FINAL_ACCEPTANCE",
+      "stage": "postrelease",
+      "pass": "A read-only final verifier binds authority, design, compiler, ownership, interfaces, forward/rollback, source/post snapshots, authorization, entity gate, transaction, rollback preflight, functional QA, media, and database artifacts with zero failed gates."
+    }
+  ],
+  "physicalReleaseLifecycleGateSets": {
+    "mayStartTransaction": [
+      "G01_AUTHORITY",
+      "G02_DESIGN_DECISIONS",
+      "G03_INTEGER_SET_OUT",
+      "G04_OWNERSHIP",
+      "G05_INTERFACES",
+      "G06_PROTECTED_FEATURES",
+      "G07_CIVIL_HYDROLOGY_STRUCTURE",
+      "G08_COMPILER_DETERMINISM",
+      "G09_BIJECTION_MANIFEST_QA",
+      "G10_FRESH_SOURCE_SNAPSHOT",
+      "G11_COMPLETE_FORWARD_PREFLIGHT",
+      "G12_STRICT_PARSER_DRY_RUNS",
+      "G13_LIVE_ENTITY_CLEARANCE",
+      "G14_EXPLICIT_AUTHORIZATION"
+    ],
+    "execution": [
+      "G15_ATOMIC_EXECUTION"
+    ],
+    "mayBecomeAccepted": [
+      "G01_AUTHORITY",
+      "G02_DESIGN_DECISIONS",
+      "G03_INTEGER_SET_OUT",
+      "G04_OWNERSHIP",
+      "G05_INTERFACES",
+      "G06_PROTECTED_FEATURES",
+      "G07_CIVIL_HYDROLOGY_STRUCTURE",
+      "G08_COMPILER_DETERMINISM",
+      "G09_BIJECTION_MANIFEST_QA",
+      "G10_FRESH_SOURCE_SNAPSHOT",
+      "G11_COMPLETE_FORWARD_PREFLIGHT",
+      "G12_STRICT_PARSER_DRY_RUNS",
+      "G13_LIVE_ENTITY_CLEARANCE",
+      "G14_EXPLICIT_AUTHORIZATION",
+      "G15_ATOMIC_EXECUTION",
+      "G16_IMMUTABLE_POST_AND_ROLLBACK_PREFLIGHT",
+      "G17_FUNCTIONAL_POST_QA",
+      "G18_MEDIA_AND_PUBLICATION",
+      "G19_FINAL_ACCEPTANCE"
+    ]
+  },
+  "releaseSequence": [
+    {
+      "id": "CZ-R00-PHASE1-DESIGN-FREEZE",
+      "phase": 1,
+      "kind": "nonphysical-design-freeze",
+      "dependsOn": [],
+      "purpose": "Nonphysical freeze after D01-D07 design closure and acceptance of G01-G07; it cannot execute or validate a physical pilot.",
+      "canonicalOwners": [
+        "C1",
+        "C1a",
+        "C1b",
+        "Z01",
+        "Z02",
+        "Z02-U1",
+        "Z03",
+        "Z04",
+        "Z05",
+        "Z06",
+        "Z07",
+        "Z08",
+        "Z09",
+        "Z10",
+        "Z11"
+      ],
+      "requiredGates": [
+        "G01_AUTHORITY",
+        "G02_DESIGN_DECISIONS",
+        "G03_INTEGER_SET_OUT",
+        "G04_OWNERSHIP",
+        "G05_INTERFACES",
+        "G06_PROTECTED_FEATURES",
+        "G07_CIVIL_HYDROLOGY_STRUCTURE"
+      ],
+      "status": "BLOCKED"
+    },
+    {
+      "id": "CZ-R01-PHASE1-BOUNDED-VISUAL-PILOT",
+      "phase": 1,
+      "kind": "physical-pilot",
+      "dependsOn": [
+        "CZ-R00-PHASE1-DESIGN-FREEZE"
+      ],
+      "canonicalOwners": [
+        "C1"
+      ],
+      "purpose": "Bounded, independently reversible proof of the frozen civil palette, setout, drainage, and route geometry; it may not touch C01, the owner tunnel, generated relics, or any later permanent interface.",
+      "validationRole": "POST_R00_VALIDATION_NOT_D02_D05_D06_OR_G02_CLOSURE_EVIDENCE",
+      "requiredBeforeReleaseId": "CZ-R02-PHASE2-EMPTY-EIGHT-DEEP-SHELL",
+      "exactTargetCellSet": null,
+      "operationManifest": null,
+      "requiredGateLifecycle": "ALL_PHYSICAL_RELEASE_LIFECYCLE_GATES",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "CZ-R02-PHASE2-EMPTY-EIGHT-DEEP-SHELL",
+      "phase": 2,
+      "kind": "physical-atomic-transaction",
+      "dependsOn": [
+        "CZ-R01-PHASE1-BOUNDED-VISUAL-PILOT"
+      ],
+      "canonicalOwners": [
+        "Z02-BRANCH-SHELL",
+        "Z02-U1-PRIMARY-SHELL",
+        "Z02-U1-EGRESS-VENT-DRAINAGE",
+        "Z02-U1-SEALED-FUTURE-INTERFACES"
+      ],
+      "planningEnvelope": {
+        "terminal": {
+          "minX": 1632,
+          "maxX": 1872,
+          "minY": 38,
+          "maxY": 54,
+          "minZ": 40,
+          "maxZ": 160
+        },
+        "constructionOwnershipFrozen": false
+      },
+      "requiredGateLifecycle": "ALL_PHYSICAL_RELEASE_LIFECYCLE_GATES",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "CZ-R03-PHASE2-PUBLIC-DEEP-SHELLS",
+      "phase": 2,
+      "kind": "physical-atomic-transaction",
+      "dependsOn": [
+        "CZ-R02-PHASE2-EMPTY-EIGHT-DEEP-SHELL"
+      ],
+      "canonicalOwners": [
+        "Z06-PUBLIC-SHAFT",
+        "Z07-SUBTROPOLIS-SHELL"
+      ],
+      "requiredGateLifecycle": "ALL_PHYSICAL_RELEASE_LIFECYCLE_GATES",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "CZ-R04-PHASE2-SECURE-DEEP-SHELLS",
+      "phase": 2,
+      "kind": "physical-atomic-transaction",
+      "dependsOn": [
+        "CZ-R03-PHASE2-PUBLIC-DEEP-SHELLS"
+      ],
+      "canonicalOwners": [
+        "Z08-SERVICE-CONTACT-SHELL",
+        "Z10-CHEYENNE-SHELL",
+        "PHASE2-INDEPENDENT-CONSTRUCTION-ACCESS"
+      ],
+      "requiredGateLifecycle": "ALL_PHYSICAL_RELEASE_LIFECYCLE_GATES",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "CZ-R05-PHASE3-MOUNTAIN-HYDROLOGY-SHELL",
+      "phase": 3,
+      "kind": "physical-atomic-transaction",
+      "dependsOn": [
+        "CZ-R04-PHASE2-SECURE-DEEP-SHELLS"
+      ],
+      "canonicalOwners": [
+        "Z09-MOUNTAIN-SOLID",
+        "Z09-HYDROLOGY",
+        "Z09-RELIC-VOIDS"
+      ],
+      "requiredGateLifecycle": "ALL_PHYSICAL_RELEASE_LIFECYCLE_GATES",
+      "additionalHardGates": [
+        "all deep-shell post-load checks PASS",
+        "three exact protected relic cell/buffer sets have zero interaction overlap",
+        "water source/sink accounting and unintended diversion count equal zero"
+      ],
+      "status": "BLOCKED"
+    },
+    {
+      "id": "CZ-R06-PHASE3-GATEWAY-HOUSTON-SURFACE",
+      "phase": 3,
+      "kind": "physical-atomic-transaction",
+      "dependsOn": [
+        "CZ-R05-PHASE3-MOUNTAIN-HYDROLOGY-SHELL"
+      ],
+      "canonicalOwners": [
+        "Z01-GATEWAY",
+        "Z02-SURFACE-APPROACH",
+        "Z03-GRAND-AVENUE",
+        "Z04-HOUSTON-SURFACE",
+        "Z05-HOUSTON-TUNNELS-SHELL"
+      ],
+      "requiredGateLifecycle": "ALL_PHYSICAL_RELEASE_LIFECYCLE_GATES",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "CZ-R07-PHASE3-SUMMIT-RETURN-FRAMEWORK",
+      "phase": 3,
+      "kind": "physical-atomic-transaction",
+      "dependsOn": [
+        "CZ-R06-PHASE3-GATEWAY-HOUSTON-SURFACE"
+      ],
+      "canonicalOwners": [
+        "Z11-SUMMIT",
+        "Z11-SWITCHBACK-FUNICULAR-FRAMEWORK",
+        "Z11-RETURN-ROAD-FRAMEWORK"
+      ],
+      "requiredGateLifecycle": "ALL_PHYSICAL_RELEASE_LIFECYCLE_GATES",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "CZ-R08-PHASE4-EMPTY-EIGHT-FITOUT",
+      "phase": 4,
+      "kind": "physical-atomic-transaction",
+      "dependsOn": [
+        "CZ-R07-PHASE3-SUMMIT-RETURN-FRAMEWORK"
+      ],
+      "canonicalOwners": [
+        "Z02-U1-PLATFORMS",
+        "Z02-U1-CONCOURSE-MALL",
+        "Z02-U1-LIFE-SAFETY-FITOUT",
+        "Z02-U1-BLOCK-ENTITIES"
+      ],
+      "requiredGateLifecycle": "ALL_PHYSICAL_RELEASE_LIFECYCLE_GATES",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "CZ-R09-PHASE4-PUBLIC-CORE-FITOUT",
+      "phase": 4,
+      "kind": "physical-atomic-transaction",
+      "dependsOn": [
+        "CZ-R08-PHASE4-EMPTY-EIGHT-FITOUT"
+      ],
+      "canonicalOwners": [
+        "Z04-HOUSTON-FITOUT",
+        "Z05-PEDESTRIAN-TUNNEL-FITOUT",
+        "Z06-PUBLIC-SHAFT-FITOUT",
+        "Z07-SUBTROPOLIS-FITOUT"
+      ],
+      "requiredGateLifecycle": "ALL_PHYSICAL_RELEASE_LIFECYCLE_GATES",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "CZ-R10-PHASE4-SECURE-AND-SUMMIT-FITOUT",
+      "phase": 4,
+      "kind": "physical-atomic-transaction",
+      "dependsOn": [
+        "CZ-R09-PHASE4-PUBLIC-CORE-FITOUT"
+      ],
+      "canonicalOwners": [
+        "Z08-CONTACT-SEQUENCE-FITOUT",
+        "Z10-CHEYENNE-FITOUT",
+        "Z11-SUMMIT-FITOUT"
+      ],
+      "requiredGateLifecycle": "ALL_PHYSICAL_RELEASE_LIFECYCLE_GATES",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "CZ-R11-PHASE5-C1-MULTIMODAL-CORRIDOR",
+      "phase": 5,
+      "kind": "physical-atomic-transaction",
+      "dependsOn": [
+        "CZ-R10-PHASE4-SECURE-AND-SUMMIT-FITOUT"
+      ],
+      "canonicalOwners": [
+        "C1-HIGHWAY",
+        "C1-PASSENGER-RAIL-OR-SEALED-RESERVATION",
+        "C1-PEDESTRIAN",
+        "C1-UTILITIES-DRAINAGE",
+        "C1a-DATA-DISTRICT-INTERCHANGE",
+        "C1b-MAINSTREET-EAST-TERMINUS"
+      ],
+      "requiredGateLifecycle": "ALL_PHYSICAL_RELEASE_LIFECYCLE_GATES",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "CZ-R12-PHASE5-INTERNAL-TRANSPORT-COMMISSIONING",
+      "phase": 5,
+      "kind": "physical-atomic-transaction",
+      "dependsOn": [
+        "CZ-R11-PHASE5-C1-MULTIMODAL-CORRIDOR"
+      ],
+      "canonicalOwners": [
+        "GA-S1",
+        "GA-S2",
+        "GA-J1",
+        "Z02-CONCEALED-BRANCH-OPERATIONS",
+        "Z02-U1-TERMINAL-OPERATIONS",
+        "Z06-PUBLIC-SHAFT-OPERATIONS",
+        "Z07-INTERNAL-RAIL",
+        "Z08-SERVICE-RAIL",
+        "Z11-FUNICULAR-OPERATIONS",
+        "Z11-RETURN-ROAD-OPERATIONS"
+      ],
+      "prohibitedInitialConnections": [
+        "C2 visitor portal unless separately selected and released",
+        "C3 PassageWay",
+        "PassageWay direct terminal link",
+        "Houston pedestrian tunnels direct terminal link",
+        "Cheyenne secure circulation direct terminal link",
+        "all eight future Empty Eight line stubs"
+      ],
+      "requiredGateLifecycle": "ALL_PHYSICAL_RELEASE_LIFECYCLE_GATES",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "CZ-R13-FINAL-CONSOLIDATED-ACCEPTANCE",
+      "phase": 5,
+      "kind": "nonphysical-finalization",
+      "dependsOn": [
+        "CZ-R12-PHASE5-INTERNAL-TRANSPORT-COMMISSIONING"
+      ],
+      "canonicalOwners": [],
+      "requiredGates": [
+        "G16_IMMUTABLE_POST_AND_ROLLBACK_PREFLIGHT",
+        "G17_FUNCTIONAL_POST_QA",
+        "G18_MEDIA_AND_PUBLICATION",
+        "G19_FINAL_ACCEPTANCE"
+      ],
+      "status": "BLOCKED"
+    }
+  ],
+  "requiredProjectSpecificTooling": [
+    {
+      "id": "T01_COMBINED_ZONES_COMPILER",
+      "status": "MISSING",
+      "requirement": "Canonical compiler that consumes frozen 04 architecture, 05 placement, exact owner sets, design inputs, and a complete immutable source snapshot and emits exact forward/rollback operations plus provenance."
+    },
+    {
+      "id": "T02_GLOBAL_OWNERSHIP_INTERFACE_GATE",
+      "status": "MISSING",
+      "requirement": "Complete default-deny audit equivalent to the Town Expansion global cross-scope gate, including exact interface direction, counts, bounds, hashes, and components."
+    },
+    {
+      "id": "T03_PROJECT_RELEASE_WRAPPER",
+      "status": "MISSING",
+      "requirement": "Wrapper around the existing strict-noop atomic runner that verifies authority, manifest QA, ownership/interfaces, complete snapshot hashes, explicit hash-bound authorization, prerelease gates, and exact package order before mutation."
+    },
+    {
+      "id": "T04_POST_RELEASE_VERIFIER",
+      "status": "MISSING",
+      "requirement": "Read-only final verifier for transaction, distinct post snapshot, rollback post-state preflights, protected relics, hydrology, routes, media, and database import."
+    }
+  ],
+  "knownGenericToolingConstraints": [
+    {
+      "tool": "scripts/qa_guarded_release_manifest.mjs",
+      "usableFor": "complete block states, forward/rollback bijection, guarded block-data commands, and cross-package target/interaction overlap",
+      "notSufficientFor": [
+        "zone ownership",
+        "cross-scope interface authorization",
+        "protected-feature buffers",
+        "source snapshot freshness",
+        "construction authorization",
+        "post-release acceptance"
+      ]
+    },
+    {
+      "tool": "scripts/preflight_guarded_ops.mjs",
+      "usableFor": "exact source-state validation against copied Anvil regions",
+      "notSufficientFor": [
+        "live entity state",
+        "ownership",
+        "authorization",
+        "atomic execution",
+        "post-state QA"
+      ]
+    },
+    {
+      "tool": "scripts/redevelopment_live_entity_gate.py",
+      "usableFor": "same-moment entity clearance over exact operation halos and force-load restoration",
+      "notSufficientFor": [
+        "block source identity",
+        "ownership",
+        "construction authorization"
+      ]
+    },
+    {
+      "tool": "scripts/run_redevelopment_atomic_release.py",
+      "usableFor": "journaled fixed-order strict-noop execution with compensating reverse-order rollback",
+      "notSufficientFor": [
+        "Masterplan 05 ownership/interface gates",
+        "explicit manifest-and-snapshot-bound authorization",
+        "independent manifest QA binding",
+        "post-release verification"
+      ],
+      "hardeningRequired": [
+        "require preflight opsSha256 to equal the current forward SHA-256",
+        "require preflight snapshot SHA-256, not only its path",
+        "bind a passing guarded-manifest QA artifact",
+        "bind exact ownership/interface and authorization artifacts"
+      ]
+    },
+    {
+      "tool": "scripts/rcon_runner.py",
+      "usableFor": "strict-noop guarded operation execution and durable plan/journal hashes",
+      "notSufficientFor": [
+        "multi-package authorization",
+        "release ownership",
+        "post-release acceptance"
+      ]
+    }
+  ],
+  "currentGateEvaluations": [],
+  "currentBlockers": [
+    "D02, D05, and D06 remain unresolved; D07 wording is fact-checked and C2 is omitted.",
+    "site-coordinates.json blockRoundingPolicy is null and vertical.activeForBuild is false; the rational coordination transform is not a construction setout.",
+    "All 30 required proposal domains now have exact integer geometry, but no proposal has been promoted into an accepted construction owner set, accepted interface set, guarded operation set, or release authority.",
+    "Zero-margin default-deny relic cores, one-cell adjacency candidates, and a reserved-in-place/no-reuse east-igloo disposition exist, but reviewed positive buffers, complete construction-volume clearance, and poststate preservation do not.",
+    "Exact C1 civil coordination and Empty Eight internal reservations exist, but the pre-R00 geotechnical/structural/outfall/C01, hydrology/relic, and external life-safety design acceptances do not.",
+    "R01 physical target cells, guarded operations, preflight, authorization, bidirectional route QA, rollback, and post-state acceptance evidence do not exist; these are G03-G19 blockers and cannot resolve G02.",
+    "Proposal compilers and an offline exact-one-proposed-owner/interface registry exist, but no operation-emitting Combined Zones compiler, accepted release ownership manifest, accepted complete interface contract set, or release-grade global cross-scope gate exists.",
+    "No deterministic forward/rollback operation pair or guarded release manifest exists for any release unit.",
+    "No fresh immutable construction-source snapshot is bound to a candidate release.",
+    "No Combined Zones project release wrapper or post-release verifier exists.",
+    "No exact release-manifest-and-snapshot-bound construction authorization artifact exists."
+  ],
+  "advancementRule": {
+    "operator": "AND",
+    "allRequiredGatesMustPass": true,
+    "sameArtifactIdentitiesRequired": true,
+    "zeroFailedGatesRequired": true,
+    "zeroMissingGatesRequired": true,
+    "zeroStaleGatesRequired": true,
+    "allowManualOverride": false,
+    "allowNarrativeEquivalence": false,
+    "allowScopedEvidenceAsFinal": false,
+    "currentResult": "BLOCKED"
+  }
+}

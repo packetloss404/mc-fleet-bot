@@ -18,9 +18,9 @@ const SCRIPT_PATH = 'scripts/audit_combined_zones_complete_save.mjs';
 const DEFAULT_WORLD_ROOT =
   'data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z';
 const DEFAULT_JSON =
-  'masterplans/05-combined-zones/phase1-complete-save-intake-audit.json';
+  'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit.json';
 const DEFAULT_MARKDOWN =
-  'masterplans/05-combined-zones/phase1-complete-save-intake-audit.md';
+  'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit.md';
 const CAPTURE_MANIFEST_NAME = 'combined-zones-complete-save-capture.json';
 const REQUIRED_DIRECTORIES = Object.freeze(['region', 'entities', 'poi']);
 const DEPENDENCY_PATH_PARTS = new Set(['node_modules', '.pnpm', '.yarn', 'vendor']);

@@ -28,39 +28,39 @@ function value(flag, fallback) {
 const GENERATED_AT = value('--generated-at', '2026-08-04T22:00:00Z');
 const CONTRACTOR_04 = path.resolve(value(
   '--contractor-04',
-  'masterplans/04-combined-complex/04-contractor/contractor-brief.json',
+  'docs/masterplans/04-combined-complex/04-contractor/contractor-brief.json',
 ));
 const RECONCILIATION = path.resolve(value(
   '--reconciliation',
-  'masterplans/04-combined-complex/authority-reconciliation.json',
+  'docs/masterplans/04-combined-complex/authority-reconciliation.json',
 ));
 const COORDINATES = path.resolve(value(
   '--coordinates',
-  'masterplans/05-combined-zones/site-coordinates.json',
+  'docs/masterplans/05-combined-zones/site-coordinates.json',
 ));
 const PHASE0 = path.resolve(value(
   '--phase0',
-  'masterplans/05-combined-zones/phase0-survey-evidence.json',
+  'docs/masterplans/05-combined-zones/phase0-survey-evidence.json',
 ));
 const GEOMETRY = path.resolve(value(
   '--geometry',
-  'masterplans/05-combined-zones/phase1-geometry-coordination.json',
+  'docs/masterplans/05-combined-zones/phase1-geometry-coordination.json',
 ));
 const RELICS = path.resolve(value(
   '--relics',
-  'masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
+  'docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
 ));
 const D05 = path.resolve(value(
   '--d05',
-  'masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
+  'docs/masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
 ));
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-connector-geometry.json',
+  'docs/masterplans/05-combined-zones/phase1-connector-geometry.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-connector-geometry.md',
+  'docs/masterplans/05-combined-zones/phase1-connector-geometry.md',
 ));
 
 const WORLD_MIN_Y = -64;

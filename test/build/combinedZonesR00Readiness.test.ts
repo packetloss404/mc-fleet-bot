@@ -9,11 +9,11 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 const ROOT = process.cwd();
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-r00-readiness-audit.json',
+  'docs/masterplans/05-combined-zones/phase1-r00-readiness-audit.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-r00-readiness-audit.md',
+  'docs/masterplans/05-combined-zones/phase1-r00-readiness-audit.md',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-r00-'));
 const regeneratedJson = path.join(tempDir, 'audit.json');
@@ -154,8 +154,8 @@ describe('Combined Zones R00 readiness audit', () => {
       operationCellCount: 0,
       summary: {
         gateCount: 7,
-        passCount: 1,
-        holdCount: 6,
+        passCount: 2,
+        holdCount: 5,
         r00Ready: false,
         delegatedSelectionsValid: true,
         ownerDelegatedSelectionCount: 20,
@@ -204,19 +204,14 @@ describe('Combined Zones R00 readiness audit', () => {
     expect(report.gates.map(({ id, status }) => [id, status])).toEqual([
       ['G01_AUTHORITY', 'PASS'],
       ['G02_DESIGN_DECISIONS', 'HOLD'],
-      ['G03_INTEGER_SET_OUT', 'HOLD'],
+      ['G03_INTEGER_SET_OUT', 'PASS'],
       ['G04_OWNERSHIP', 'HOLD'],
       ['G05_INTERFACES', 'HOLD'],
       ['G06_PROTECTED_FEATURES', 'HOLD'],
       ['G07_CIVIL_HYDROLOGY_STRUCTURE', 'HOLD'],
     ]);
     expect(report.gates.find(({ id }) => id === 'G03_INTEGER_SET_OUT')?.blockers)
-      .toMatchObject([
-        {
-          id: 'R00-G03-CANONICAL-INTEGER-COMPILER',
-          classification: 'OFFLINE_ACTION',
-        },
-      ]);
+      .toEqual([]);
   });
 
   it('proves G02 cycle-free and classifies current versus deferred evidence', () => {
@@ -230,7 +225,7 @@ describe('Combined Zones R00 readiness audit', () => {
       ({ descendantEvidenceMatches }) => descendantEvidenceMatches.length === 0,
     )).toBe(true);
     expect(report.summary.blockerCountsByClassification).toEqual({
-      OFFLINE_ACTION: 5,
+      OFFLINE_ACTION: 3,
       EXTERNAL_EVIDENCE: 7,
       DEFERRED_G08_G19: 2,
     });
@@ -245,7 +240,7 @@ describe('Combined Zones R00 readiness audit', () => {
     const acceptance = JSON.parse(fs.readFileSync(
       path.join(
         ROOT,
-        'masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
+        'docs/masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
       ),
       'utf8',
     )) as {

@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 const ROOT = process.cwd();
 const DEFAULT_CONTRACT = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-release-contract.json',
+  'docs/masterplans/05-combined-zones/phase1-release-contract.json',
 );
 
 function sha256(filename) {
@@ -208,7 +208,7 @@ export function validateReleaseContract(contractPath = DEFAULT_CONTRACT) {
     .filter((tool) => tool.status !== 'COMPLETE')
     .map((tool) => tool.id);
 
-  const relicEvidencePath = 'masterplans/05-combined-zones/phase1-protected-relic-clearance.json';
+  const relicEvidencePath = 'docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json';
   const relicEvidence = getBoundJson(relicEvidencePath);
   const relicKeyBySubjectId = {
     'RELIC-IGLOO-WEST': 'igloo-west',
@@ -247,7 +247,7 @@ export function validateReleaseContract(contractPath = DEFAULT_CONTRACT) {
 
   const semanticGateBlockers = [];
   const decisionEvidence = getBoundJson(
-    'masterplans/05-combined-zones/phase1-design-decisions.json',
+    'docs/masterplans/05-combined-zones/phase1-design-decisions.json',
   );
   if (
     decisionEvidence?.decisionPolicy?.g02ClosureBoundary
@@ -276,13 +276,13 @@ export function validateReleaseContract(contractPath = DEFAULT_CONTRACT) {
     semanticGateBlockers.push('bound-protected-feature-gate-not-pass');
   }
   const c1Evidence = getBoundJson(
-    'masterplans/05-combined-zones/phase1-c1-pilot-coordination.json',
+    'docs/masterplans/05-combined-zones/phase1-c1-pilot-coordination.json',
   );
   if (!c1PilotCandidateIsReady(c1Evidence)) {
     semanticGateBlockers.push('bound-c1-pilot-candidate-not-compiled');
   }
   const siteGateEvidence = getBoundJson(
-    'masterplans/05-combined-zones/phase1-site-gate-audit.json',
+    'docs/masterplans/05-combined-zones/phase1-site-gate-audit.json',
   );
   if (!siteR01PretransactionIsReady(siteGateEvidence)) {
     semanticGateBlockers.push('bound-site-r01-pretransaction-not-pass');

@@ -20,30 +20,30 @@ const value = (flag, fallback) => {
 const GENERATED_AT = value('--generated-at', '2026-08-05T02:30:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-d05-support-material-design.json',
+  'docs/masterplans/05-combined-zones/phase1-d05-support-material-design.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-d05-support-material-design.md',
+  'docs/masterplans/05-combined-zones/phase1-d05-support-material-design.md',
 ));
 
 const INPUTS = Object.freeze({
-  ownerAcceptance: 'masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
-  d05FutureState: 'masterplans/05-combined-zones/phase1-d05-future-state.json',
-  d05OwnerPacket: 'masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json',
+  ownerAcceptance: 'docs/masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
+  d05FutureState: 'docs/masterplans/05-combined-zones/phase1-d05-future-state.json',
+  d05OwnerPacket: 'docs/masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json',
   d05FutureMountain:
-    'masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json',
+    'docs/masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json',
   d05HydrologyRelic:
-    'masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
+    'docs/masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
   d05ConservativeDefaults:
-    'masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
+    'docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
   d05RelicSurvey:
-    'masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json',
-  connectorGeometry: 'masterplans/05-combined-zones/phase1-connector-geometry.json',
-  d06Egress: 'masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
-  d06Mechanisms: 'masterplans/05-combined-zones/phase1-d06-mechanisms.json',
+    'docs/masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json',
+  connectorGeometry: 'docs/masterplans/05-combined-zones/phase1-connector-geometry.json',
+  d06Egress: 'docs/masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
+  d06Mechanisms: 'docs/masterplans/05-combined-zones/phase1-d06-mechanisms.json',
   completeSaveAudit:
-    'masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
+    'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
 });
 
 const ROLES = Object.freeze({
@@ -147,7 +147,7 @@ assert(future.status
   === 'PARTIAL_PASS_EXACT_SPARSE_FUTURE_STATE_PROPOSAL_AND_SUPPORT_CLASSIFICATION_D05_G02_HOLD',
 'D05 future-state status drift');
 assert(future.reportIdentitySha256
-  === 'acf06949a267b2cc3e4da25a0aab3267dc18149fa373534389230d2961b5de2f',
+  === 'ee688150305dd4cda34c56003054d7251bf2166e5ddfd5c8c494840eb31c614b',
 'D05 future-state report identity drift');
 assert(packet.status === 'OWNER_ACCEPTANCE_PACKET_READY_POLICY_AND_TECHNICAL_D05_G02_HOLD',
   'D05 owner-packet status drift');

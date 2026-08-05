@@ -8,15 +8,15 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 const ROOT = path.resolve(__dirname, '../..');
 const JSON_PATH = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
+  'docs/masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
 );
 const MARKDOWN_PATH = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-owner-review-acceptance.md',
+  'docs/masterplans/05-combined-zones/phase1-owner-review-acceptance.md',
 );
 const BUNDLE_PATH = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-owner-review-bundle.json',
+  'docs/masterplans/05-combined-zones/phase1-owner-review-bundle.json',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-owner-acceptance-'));
 const regeneratedJson = path.join(tempDir, 'acceptance.json');
@@ -94,7 +94,7 @@ describe('Combined Zones sole-owner review acceptance', () => {
       authority: { bundlePayloadSha256: string; copyableStatement: string };
     };
     expect(report.bundlePath).toBe(
-      'masterplans/05-combined-zones/phase1-owner-review-bundle.json',
+      'docs/masterplans/05-combined-zones/phase1-owner-review-bundle.json',
     );
     expect(report.bundleFileSha256).toBe(sha256(bundleBytes));
     expect(report.bundlePayloadSha256).toBe(sha256(`${JSON.stringify(bundle.bundlePayload)}\n`));

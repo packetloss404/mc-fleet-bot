@@ -204,7 +204,7 @@ describe('combined-zones bounded D02/C01 ownership, loading, and interface compi
     expect(second.jsonText).toBe(first.jsonText);
     expect(second.markdown).toBe(first.markdown);
     expect(first.json.proposalPayloadSha256).toBe(
-      '889035d6fe47e4b4e683f12342f36411d5c52643ba3ef4b3a6994c660c75e77b',
+      'eff111ab974e6457ab042ed7639e48ed3e170d346b32a74328aad53b7561ce94',
     );
   });
 });

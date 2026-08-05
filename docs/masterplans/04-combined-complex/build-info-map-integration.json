@@ -1,0 +1,33 @@
+{
+  "build_name": "Map Integration Report",
+  "build_id": "04-combined-complex-map-integration",
+  "version": "2.0",
+  "authority": {
+    "status": "SUPERSEDED_FOR_CURRENT_WORLD_PLACEMENT",
+    "role": "historical-map-integration-metadata",
+    "supersededBy": "docs/masterplans/05-combined-zones/MASTERPLAN.md",
+    "reconciliation": "docs/masterplans/04-combined-complex/authority-reconciliation.json",
+    "worldEditAuthorized": false
+  },
+  "date": "2026-08-02",
+  "scale": {
+    "global_block_size": "1 block = 1 meter"
+  },
+  "worlds": {
+    "new_world": { "build_height": 1024, "footprint": { "width": 1500, "length": 1500, "height": 800 } },
+    "existing_bot_world": { "build_height": 384, "footprint": { "width": 200, "length": 200, "height": 384 } }
+  },
+  "individual_sites": ["01-cheyenne-mountain-complex", "02-subtropolis", "03-houston-tunnel-system"],
+  "inter_site_connections": ["public_shaft", "service_tunnel", "funicular", "summit_road"],
+  "block_budget_estimate": 44000,
+  "deliverables": {
+    "map_integration_html": "map-integration-report.html",
+    "contractor_brief_md": "04-contractor/map-integration/contractor-brief.md",
+    "contractor_brief_json": "04-contractor/map-integration/contractor-brief.json"
+  },
+  "binding_decisions_count": 7,
+  "rendering_count": 24,
+  "old_town_schematic_count": 33,
+  "named_markers": 6,
+  "design_updates": ["no_ravine", "no_skybridge", "horizontal_contact_Y200", "funicular_return_route", "summit_observation_platform"]
+}

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Western Approach Road — Masterplan 06</title>
+  <style>
+    :root { --ink:#17231d; --muted:#59665f; --paper:#f4f1e8; --card:#fffdf7; --line:#ccd1c8; --green:#245b45; --gold:#b47b25; --hold:#9a482d; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif; }
+    header { color:white; background:linear-gradient(125deg,#132a20,#245b45 63%,#93702f); padding:4.5rem max(5vw,1.25rem) 3.5rem; }
+    header .inner, main, footer { max-width:1180px; margin:auto; }
+    .eyebrow { margin:0 0 .65rem; color:#d9e4d8; text-transform:uppercase; letter-spacing:.14em; font-weight:800; font-size:.8rem; }
+    h1 { max-width:900px; margin:0; font:700 clamp(2.4rem,6vw,5.3rem)/.98 Georgia,serif; }
+    .lede { max-width:780px; margin:1.3rem 0 0; font-size:1.16rem; color:#f0f4ef; }
+    nav { position:sticky; top:0; z-index:3; padding:.7rem max(5vw,1.25rem); background:rgba(255,253,247,.96); border-bottom:1px solid var(--line); backdrop-filter:blur(10px); }
+    nav div { max-width:1180px; margin:auto; display:flex; gap:1rem; overflow:auto; }
+    nav a { color:var(--green); text-decoration:none; white-space:nowrap; font-weight:750; }
+    main { padding:2.4rem max(5vw,1.25rem) 5rem; }
+    section { margin:0 0 3.5rem; scroll-margin-top:4rem; }
+    h2 { margin:0 0 1rem; font:700 clamp(1.7rem,3vw,2.45rem)/1.1 Georgia,serif; }
+    h3 { margin:1.7rem 0 .55rem; }
+    a { color:#135a73; }
+    .notice { padding:1rem 1.2rem; border-left:5px solid var(--gold); background:#fff6dd; }
+    .metrics { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1rem; margin:1.4rem 0; }
+    .metric, .card { background:var(--card); border:1px solid var(--line); border-radius:14px; box-shadow:0 8px 24px rgba(24,34,28,.06); }
+    .metric { padding:1.2rem; }
+    .metric b { display:block; color:var(--green); font:700 2rem/1 Georgia,serif; }
+    .metric span { color:var(--muted); font-size:.88rem; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.1rem; }
+    .card { padding:1.25rem; }
+    figure { margin:1.2rem 0; background:#101a15; border-radius:16px; overflow:hidden; box-shadow:0 12px 32px rgba(24,34,28,.16); }
+    figure img { display:block; width:100%; max-height:680px; object-fit:contain; }
+    figcaption { color:#e9efeb; padding:.8rem 1rem; font-size:.9rem; }
+    .table-wrap { overflow:auto; border:1px solid var(--line); border-radius:12px; background:var(--card); }
+    table { width:100%; border-collapse:collapse; min-width:680px; }
+    th,td { padding:.8rem .9rem; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { color:white; background:var(--green); }
+    tr:last-child td { border-bottom:0; }
+    code { background:#e7e8df; padding:.12rem .3rem; border-radius:4px; }
+    .route { display:grid; grid-template-columns:repeat(6,minmax(100px,1fr)); gap:.5rem; margin:1.2rem 0; }
+    .route div { position:relative; padding:.9rem .65rem; text-align:center; border-radius:10px; background:#dce8df; font-weight:750; }
+    .route div:not(:last-child)::after { content:"→"; position:absolute; right:-.48rem; top:.78rem; color:var(--gold); font-size:1.3rem; z-index:1; }
+    .phase { border-left:4px solid var(--green); padding:.15rem 0 .6rem 1rem; margin:1rem 0; }
+    .phase.next { border-color:var(--gold); }
+    .hold { border-color:var(--hold); }
+    .pill { display:inline-block; margin:.2rem .3rem .2rem 0; padding:.25rem .58rem; border-radius:99px; color:white; background:var(--green); font-size:.78rem; font-weight:800; }
+    footer { padding:2rem max(5vw,1.25rem) 4rem; color:var(--muted); border-top:1px solid var(--line); }
+    @media (max-width:800px) { .metrics,.grid { grid-template-columns:1fr 1fr; } .route { grid-template-columns:1fr; } .route div:not(:last-child)::after { content:"↓"; right:50%; top:auto; bottom:-1rem; } }
+    @media (max-width:520px) { .metrics,.grid { grid-template-columns:1fr; } }
+    @media print { nav { display:none; } body { background:white; } .card,.metric,figure { box-shadow:none; break-inside:avoid; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="inner">
+      <p class="eyebrow">Masterplan 06 · Retroactive as-built baseline</p>
+      <h1>Western Approach Road</h1>
+      <p class="lede">The seven-block-wide regional connector from Ravensgate through Millstone, Panorama and White Bridge to Gatehead—preserved as built, with an evidence-first maintenance roadmap.</p>
+    </div>
+  </header>
+  <nav aria-label="Report sections"><div>
+    <a href="#summary">Summary</a><a href="#map">Map</a><a href="#state">Current state</a><a href="#interfaces">Interfaces</a><a href="#holds">Holds</a><a href="#roadmap">Roadmap</a><a href="#evidence">Evidence</a>
+  </div></nav>
+  <main>
+    <section id="summary">
+      <h2>Decision summary</h2>
+      <p class="notice"><strong>Historical catalog state: complete.</strong> This report is read-only and did not inspect the live world. New construction remains on hold until a current immutable snapshot, exact ownership reconciliation and route proof exist.</p>
+      <div class="metrics">
+        <div class="metric"><b>2</b><span>durable catalog objects</span></div>
+        <div class="metric"><b>7</b><span>blocks authored road width</span></div>
+        <div class="metric"><b>6</b><span>3D centerline points</span></div>
+        <div class="metric"><b>5</b><span>named route anchors</span></div>
+      </div>
+      <div class="grid">
+        <article class="card"><h3>Exact area</h3><p>District X <code>-352..-148</code>, Z <code>-509..-484</code>. The path-width union is X <code>-352..-144.5</code>, Z <code>-509.5..-482.5</code>.</p></article>
+        <article class="card"><h3>Scope boundary</h3><p>This project is the legacy connector. Westlight Venue, Westlight District and later Town Expansion road packages retain separate publication and physical ownership until exact reconciliation.</p></article>
+      </div>
+    </section>
+
+    <section id="map">
+      <h2>Map and route</h2>
+      <figure><img src="../../../data/exports/world-catalog-wave2-post-2026-07-28/floorplans/05-approach-road-overview.png" alt="Catalog overview of the Western Approach Road"><figcaption>Catalog-derived overview, Wave 2 post-release export. This is evidence, not a new survey.</figcaption></figure>
+      <div class="route" aria-label="Authored route order">
+        <div>Ravensgate<br><small>-148, 68, -500</small></div><div>Millstone<br><small>-170, 72, -506</small></div><div>Panorama<br><small>-224, 70, -496</small></div><div>White Bridge<br><small>-305, 73, -497</small></div><div>Gatehead approach<br><small>-322, 68, -497</small></div><div>Gatehead<br><small>-344, 68, -486</small></div>
+      </div>
+      <figure><img src="../../../data/exports/redevelopment-media-wave2-2026-07-28/circulation/approach-road/approach-road-primary--ravensgate-to-westlight-approach-road.png" alt="Matched view of the Ravensgate to Westlight Approach Road"><figcaption>Matched circulation evidence linked to <code>APPROACH-ROAD:PRIMARY</code>; SHA-256 <code>459e288a…6f06d</code>.</figcaption></figure>
+    </section>
+
+    <section id="state">
+      <h2>Built versus proposed</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Domain</th><th>Built / cataloged</th><th>Proposed control</th></tr></thead>
+        <tbody>
+          <tr><td>Alignment</td><td>Six exact centerline points; width 7</td><td>Freeze exact surface, shoulder and clearance cells before repair</td></tr>
+          <tr><td>Regional role</td><td>Ravensgate-to-Westlight connector</td><td>Reconcile the later Town Expansion regional-road model</td></tr>
+          <tr><td>Travel</td><td>Cataloged complete on 2026-07-27</td><td>Repeat snapshot-bound bidirectional pedestrian/vehicle QA</td></tr>
+          <tr><td>Road assets</td><td>Bridge, grades and stopping-bay review named</td><td>Inventory them with signs, lights, barriers, drainage and furniture</td></tr>
+          <tr><td>Media</td><td>Overview and matched road capture</td><td>Repeat endpoint, bridge, grade, night and return views</td></tr>
+        </tbody>
+      </table></div>
+      <p><span class="pill">CATALOGED COMPLETE</span><span class="pill" style="background:#9a482d">NEW WORK HELD</span></p>
+    </section>
+
+    <section id="interfaces">
+      <h2>Interfaces that must be explicit</h2>
+      <div class="grid">
+        <article class="card"><h3>Ravensgate</h3><p>Exact authored endpoint <code>(-148, 68, -500)</code>. Preserve the connection and do not claim Ravensgate public realm through a broad road box.</p></article>
+        <article class="card"><h3>Gatehead / Westlight</h3><p>Exact endpoint <code>(-344, 68, -486)</code>. Proximity to the venue boundary is not an exact shared-cell contract.</p></article>
+        <article class="card"><h3>Town Expansion</h3><p>The later global interface audit names <code>TE-REGIONAL-APPROACH-ROAD</code> as canonical owner for four subscopes. It does not automatically absorb the legacy catalog object.</p></article>
+        <article class="card"><h3>Guarded execution</h3><p>Any future mutation needs immutable source identity, exact owners, strict-noop source guards, inverse operations and post-state route proof.</p></article>
+      </div>
+    </section>
+
+    <section id="holds">
+      <h2>Open holds</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>ID</th><th>Issue</th><th>What closes it</th></tr></thead>
+        <tbody>
+          <tr><td>AR-H01</td><td>Current live condition was not surveyed</td><td>Fresh immutable saved-world census and visual review</td></tr>
+          <tr><td>AR-H02</td><td>Centerline is not a complete engineering envelope</td><td>Exact surface, shoulder, bridge, furniture and clearance cell sets</td></tr>
+          <tr><td>AR-H03</td><td>Legacy and later regional ownership are unreconciled</td><td>One reviewed mapping with no duplicate physical owner</td></tr>
+          <tr><td>AR-H04</td><td>Current route acceptance is not proven here</td><td>Snapshot-bound bidirectional route QA</td></tr>
+          <tr><td>AR-H05</td><td>Bridge, stopping bay and accessibility lack detail</td><td>First-class asset census and pass criteria</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="roadmap">
+      <h2>Phased roadmap</h2>
+      <div class="phase"><h3>AR-0 · Baseline preservation</h3><p>Complete for planning. Bind the two durable objects, preserve the named route and keep later expansion scopes distinct.</p></div>
+      <div class="phase next"><h3>AR-1 · Read-only reconciliation</h3><p>Next. Census a fresh saved world, extract exact road assets and compare the legacy alignment with the Town Expansion regional-road model.</p></div>
+      <div class="phase"><h3>AR-2 · Mobility and life safety</h3><p>Define clearance, grade, landing, pedestrian separation, fall protection, lighting, stopping-bay operation and emergency return criteria.</p></div>
+      <div class="phase hold"><h3>AR-3 · Guarded release</h3><p>Authority required. Freeze source, forward/inverse operations and gates; fail closed on drift or overlap.</p></div>
+      <div class="phase"><h3>AR-4 · Acceptance</h3><p>Prove exact post-state and rollback, routes, grades, lighting, endpoint transitions and durable catalog/media refresh.</p></div>
+    </section>
+
+    <section id="evidence">
+      <h2>Evidence provenance</h2>
+      <p>The source plan is <a href="MASTERPLAN.md">MASTERPLAN.md</a>. Primary local evidence is the read-only <a href="../../../data/world-map.db">world map database</a>, <a href="../../../data/world-review/active-interior-register-2026-07-27.json">active-interior register</a>, <a href="../../../builds/manifest.yaml">build manifest</a>, the two images above, and the <a href="../../redevelopment/2026-07-28-town-expansion/town-expansion-global-cross-scope-interface-audit.md">Town Expansion cross-scope audit</a>.</p>
+      <p><strong>Derived:</strong> union bounds and interface interpretations. <strong>Not performed:</strong> internet research, live server calls, fleet/API access, RCON, systemd operations, database writes or world mutation.</p>
+    </section>
+  </main>
+  <footer>Generated as a human-readable companion to Masterplan 06 · Evidence cutoff 2026-08-05 · Historical acceptance is not a live condition warranty.</footer>
+</body>
+</html>

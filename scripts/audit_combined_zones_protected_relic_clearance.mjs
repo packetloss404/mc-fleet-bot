@@ -25,23 +25,23 @@ function value(flag, fallback) {
 
 const PHASE0_EVIDENCE = path.resolve(value(
   '--phase0-evidence',
-  'masterplans/05-combined-zones/phase0-survey-evidence.json',
+  'docs/masterplans/05-combined-zones/phase0-survey-evidence.json',
 ));
 const COORDINATES = path.resolve(value(
   '--coordinates',
-  'masterplans/05-combined-zones/site-coordinates.json',
+  'docs/masterplans/05-combined-zones/site-coordinates.json',
 ));
 const GEOMETRY = path.resolve(value(
   '--geometry',
-  'masterplans/05-combined-zones/phase1-geometry-coordination.json',
+  'docs/masterplans/05-combined-zones/phase1-geometry-coordination.json',
 ));
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
+  'docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-protected-relic-clearance.md',
+  'docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.md',
 ));
 
 function readJson(filename) {
@@ -329,7 +329,7 @@ const emptyEight = geometry.compiledCoordinationGeometry?.emptyEightShellCoordin
 if (emptyEight) {
   coordinationEnvelopes.push({
     id: 'empty-eight-shell',
-    sourcePath: 'masterplans/05-combined-zones/site-coordinates.json#zones.Z02.hiddenSubway.terminal.bounds',
+    sourcePath: 'docs/masterplans/05-combined-zones/site-coordinates.json#zones.Z02.hiddenSubway.terminal.bounds',
     purpose: 'coordination-only-not-a-material-or-operation-set',
     bounds: halfOpenToInclusive(emptyEight.bounds),
   });

@@ -23,27 +23,27 @@ const value = (flag, fallback) => {
 const GENERATED_AT = value('--generated-at', '2026-08-04T20:10:00Z');
 const COORDINATES = path.resolve(value(
   '--coordinates',
-  'masterplans/05-combined-zones/site-coordinates.json',
+  'docs/masterplans/05-combined-zones/site-coordinates.json',
 ));
 const PHASE0 = path.resolve(value(
   '--phase0',
-  'masterplans/05-combined-zones/phase0-survey-evidence.json',
+  'docs/masterplans/05-combined-zones/phase0-survey-evidence.json',
 ));
 const D06 = path.resolve(value(
   '--d06',
-  'masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
+  'docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
 ));
 const GEOMETRY = path.resolve(value(
   '--geometry',
-  'masterplans/05-combined-zones/phase1-geometry-coordination.json',
+  'docs/masterplans/05-combined-zones/phase1-geometry-coordination.json',
 ));
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
+  'docs/masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-d06-egress-geometry-design.md',
+  'docs/masterplans/05-combined-zones/phase1-d06-egress-geometry-design.md',
 ));
 
 const WORLD_MIN_Y = -64;

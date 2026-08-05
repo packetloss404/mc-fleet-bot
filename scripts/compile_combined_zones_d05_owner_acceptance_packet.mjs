@@ -23,30 +23,30 @@ function value(flag, fallback) {
 const GENERATED_AT = value('--generated-at', '2026-08-04T23:45:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json',
+  'docs/masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.md',
+  'docs/masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.md',
 ));
 
 const INPUTS = Object.freeze({
   authorityReconciliation:
-    'masterplans/04-combined-complex/authority-reconciliation.json',
+    'docs/masterplans/04-combined-complex/authority-reconciliation.json',
   d05HydrologyBaseline:
-    'masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
+    'docs/masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
   d05ConservativeDefaults:
-    'masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
+    'docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
   d05RelicConditionAccess:
-    'masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json',
+    'docs/masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json',
   d05FutureStateContract:
-    'masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json',
+    'docs/masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json',
   d05FutureMountain:
-    'masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json',
+    'docs/masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json',
   connectorGeometry:
-    'masterplans/05-combined-zones/phase1-connector-geometry.json',
+    'docs/masterplans/05-combined-zones/phase1-connector-geometry.json',
   autonomousSelections:
-    'masterplans/05-combined-zones/phase1-autonomous-design-selections.json',
+    'docs/masterplans/05-combined-zones/phase1-autonomous-design-selections.json',
 });
 
 function absolute(relativePath) {
@@ -107,7 +107,7 @@ invariant(authority.id === 'masterplan-04-to-05-authority-reconciliation',
   'unexpected authority reconciliation');
 invariant(authority.status === 'RECONCILED_FOR_DETAILED_DESIGN_NOT_AUTHORIZED_FOR_WORLD_EDITS',
   'authority reconciliation is not the detailed-design authority');
-invariant(authority.planToDevelop?.path === 'masterplans/05-combined-zones/MASTERPLAN.md',
+invariant(authority.planToDevelop?.path === 'docs/masterplans/05-combined-zones/MASTERPLAN.md',
   'Masterplan 05 is not the plan to develop');
 invariant(baseline.id === 'combined-zones-phase1-d05-hydrology-relic-buffer-design',
   'unexpected D05 baseline');

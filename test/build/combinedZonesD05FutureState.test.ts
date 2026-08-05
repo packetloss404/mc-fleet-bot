@@ -8,11 +8,11 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 const ROOT = path.resolve(__dirname, '../..');
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d05-future-state.json',
+  'docs/masterplans/05-combined-zones/phase1-d05-future-state.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d05-future-state.md',
+  'docs/masterplans/05-combined-zones/phase1-d05-future-state.md',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-d05-future-state-'));
 const regeneratedJson = path.join(tempDir, 'future-state.json');
@@ -175,7 +175,7 @@ describe('Combined Zones D05 sparse future-state engineering ledger', () => {
       id: 'combined-zones-phase1-d05-future-state',
       status:
         'PARTIAL_PASS_EXACT_SPARSE_FUTURE_STATE_PROPOSAL_AND_SUPPORT_CLASSIFICATION_D05_G02_HOLD',
-      reportIdentitySha256: 'acf06949a267b2cc3e4da25a0aab3267dc18149fa373534389230d2961b5de2f',
+      reportIdentitySha256: 'ee688150305dd4cda34c56003054d7251bf2166e5ddfd5c8c494840eb31c614b',
     });
     for (const [name, source] of Object.entries(report.sourceBindings)) {
       if (name === 'immutablePhase0PostRegionSnapshot') {

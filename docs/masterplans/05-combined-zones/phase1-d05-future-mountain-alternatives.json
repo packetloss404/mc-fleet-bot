@@ -1,0 +1,1218 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-d05-future-mountain-alternatives",
+  "generatedAtUtc": "2026-08-04T22:45:00Z",
+  "status": "PARTIAL_PASS_EXACT_FUTURE_MOUNTAIN_ALTERNATIVES_RECOMMENDATION_ONLY_D05_G02_HOLD",
+  "worldEditAuthorized": false,
+  "constructionOwnershipAuthorized": false,
+  "futureStateAuthorized": false,
+  "executable": false,
+  "operationCellCount": 0,
+  "materialCellCount": 0,
+  "futureCellCount": 0,
+  "constructionCellCount": 0,
+  "sourceBindings": {
+    "coordinateRegistry": {
+      "path": "docs/masterplans/05-combined-zones/site-coordinates.json",
+      "bytes": 44006,
+      "sha256": "4ec96165c1b4af92d766af4d7e79cb296fba0e362e8b43f6a1053c2a20bf0081"
+    },
+    "geometryCoordination": {
+      "path": "docs/masterplans/05-combined-zones/phase1-geometry-coordination.json",
+      "bytes": 35601,
+      "sha256": "b2284622f95f51af76cc13e8056a70cf4a82e0af058496eee77d5a82f631553f"
+    },
+    "d05HydrologyBaseline": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
+      "bytes": 3250984,
+      "sha256": "e3f86c5073a00e715cf0f4d01e2a76bc1fc416290ffd7a4972b1e8c7a2b8350c"
+    },
+    "d05ConservativeDefaults": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json",
+      "bytes": 17445,
+      "sha256": "14366d541b21675011e5dad32b08b51c4c23cf826bb37b0340b4699241429774"
+    },
+    "d05RelicConditionAccess": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json",
+      "bytes": 120815,
+      "sha256": "08ec0806cabd23854a34218b274ebcb26b52ccf9b0adc51464718e4ac6666130"
+    },
+    "d05FutureStateContract": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json",
+      "bytes": 38291,
+      "sha256": "72eeafc62edadd0f7a08a46ca3c65f2cfad12bc05bc4c084321e81f0190081b4"
+    },
+    "d06EgressGeometry": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json",
+      "bytes": 13700,
+      "sha256": "25a1d65c6fd076abd2842f2800b5d721a5557b546f70a6f18806235535279beb"
+    },
+    "connectorGeometry": {
+      "path": "docs/masterplans/05-combined-zones/phase1-connector-geometry.json",
+      "bytes": 458540,
+      "sha256": "8bb2dd803c434667dfeee440ccdf8428a115962e21dd1b3b0e6955cce672dc4e"
+    },
+    "immutablePhase0PostRegionSnapshot": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+      "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+      "regionFileCount": 51,
+      "bytes": 290946492,
+      "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+    }
+  },
+  "authorityBoundary": {
+    "permittedInputs": "reconciled Phase 1 geometry, D05 baseline/defaults/S01/S02, D06 reservations, connector geometry/profiles, coordinates, and immutable copied snapshot",
+    "excludedInputs": [
+      "autonomous selections and R00 gate state",
+      "unbound hydrology/geotechnical assumptions or generic influence radii",
+      "owner acceptance, interface acceptance, material acceptance, operations, preflight, execution, rollback, or post-state evidence"
+    ],
+    "interpretation": "Nonzero counts below are candidate planning geometry. They are not S02 future/construction cells, material quantities, ownership assignments, or operations."
+  },
+  "immutableCurrentSurface": {
+    "bounds": {
+      "minX": 1648,
+      "maxX": 2447,
+      "minZ": -1128,
+      "maxZ": -529
+    },
+    "columnCount": 480000,
+    "minimumY": 12,
+    "maximumY": 125,
+    "meanY": 71.317346,
+    "manifestSha256": "f4ef7ae28ed876c88e6c78832cd43c4b8d4b5a3fd28b305e0e37899ea66d5573",
+    "materialCounts": {
+      "minecraft:andesite": 38,
+      "minecraft:azalea_leaves": 11,
+      "minecraft:blue_ice": 10,
+      "minecraft:bush": 18,
+      "minecraft:chest": 1,
+      "minecraft:coal_ore": 21,
+      "minecraft:copper_ore": 12,
+      "minecraft:dandelion": 114,
+      "minecraft:dark_oak_fence": 3,
+      "minecraft:dark_oak_planks": 6,
+      "minecraft:dark_oak_stairs": 11,
+      "minecraft:diorite": 23,
+      "minecraft:dirt": 24,
+      "minecraft:fern": 756,
+      "minecraft:firefly_bush": 49,
+      "minecraft:flowering_azalea_leaves": 3,
+      "minecraft:granite": 2,
+      "minecraft:grass_block": 8653,
+      "minecraft:gravel": 612,
+      "minecraft:ice": 96122,
+      "minecraft:large_fern": 800,
+      "minecraft:lava": 114,
+      "minecraft:packed_ice": 4045,
+      "minecraft:poppy": 205,
+      "minecraft:powder_snow": 1846,
+      "minecraft:red_mushroom": 2,
+      "minecraft:sand": 42,
+      "minecraft:short_grass": 4880,
+      "minecraft:snow": 335929,
+      "minecraft:snow_block": 239,
+      "minecraft:spruce_leaves": 11069,
+      "minecraft:spruce_log": 2,
+      "minecraft:spruce_planks": 14,
+      "minecraft:spruce_stairs": 99,
+      "minecraft:spruce_trapdoor": 3,
+      "minecraft:stone": 1684,
+      "minecraft:sugar_cane": 44,
+      "minecraft:sweet_berry_bush": 19,
+      "minecraft:water": 12475
+    },
+    "biomeCounts": {
+      "minecraft:frozen_ocean": 22080,
+      "minecraft:frozen_river": 51600,
+      "minecraft:grove": 16048,
+      "minecraft:jagged_peaks": 1264,
+      "minecraft:snowy_beach": 6416,
+      "minecraft:snowy_plains": 256608,
+      "minecraft:snowy_taiga": 102032,
+      "minecraft:stony_shore": 5136,
+      "minecraft:taiga": 18816
+    }
+  },
+  "deterministicContracts": {
+    "coordinateOrder": "numeric x, then y, then z",
+    "columnOrder": "numeric x, then z",
+    "currentSurfaceManifest": {
+      "preamble": "combined-zones-d05-current-surface-v1\\n",
+      "record": "x,z<TAB>surfaceY<TAB>canonical-state-json<TAB>biome-or-null"
+    },
+    "designSurfaceManifest": {
+      "preamble": "combined-zones-d05-design-surface-v1\\n",
+      "record": "x,z<TAB>designSurfaceY"
+    },
+    "sparseSolidIntervalManifest": {
+      "preamble": "combined-zones-d05-sparse-solid-intervals-v1\\n",
+      "record": "x,z<TAB>current=Y<TAB>design=Y<TAB>add=start..end[,start..end] or -"
+    },
+    "supportGapManifest": {
+      "preamble": "combined-zones-d05-support-gap-intervals-v1\\n",
+      "record": "x,z<TAB>startY..endY"
+    },
+    "hashing": "SHA-256 over UTF-8 bytes with the exact preamble and newline-terminated records"
+  },
+  "protectedRelicVoidPolicy": {
+    "policyId": "CZ05-RELIC-MINIMUM-PLANNING-EXCLUSION-V1",
+    "status": "EXACT_MINIMUM_PLANNING_EXCLUSIONS_NOT_ENGINEERING_BUFFERS",
+    "union": {
+      "cellCount": 4890,
+      "bounds": {
+        "minX": 1789,
+        "maxX": 2311,
+        "minY": 61,
+        "maxY": 95,
+        "minZ": -1025,
+        "maxZ": -652
+      },
+      "coordinateSetSha256": "5dcbcaca22ee39ee9309e1fc5139eb3fbff052bb114ae00d20a723c045eab26b"
+    },
+    "relics": [
+      {
+        "relicKey": "igloo-east",
+        "currentFinding": "NO_PRESENT_CELLS_IN_DECLARED_BOUNDING_VOLUME",
+        "disposition": "ABSENT_FABRIC_RECORDED_SITE_RESERVED_IN_PLACE",
+        "protectedCore": {
+          "bounds": {
+            "minX": 2304,
+            "minY": 90,
+            "minZ": -1024,
+            "maxX": 2310,
+            "maxY": 94,
+            "maxZ": -1017
+          },
+          "cellCount": 280,
+          "coordinateSetSha256": "45e77afc9f46aa6663c5830f75a26539740a73085ce7d10e27ff14bc2426e326"
+        },
+        "exactOneCellMinimumPlanningExclusion": {
+          "positiveMarginBlocks": 1,
+          "expandedBounds": {
+            "minX": 2303,
+            "maxX": 2311,
+            "minY": 89,
+            "maxY": 95,
+            "minZ": -1025,
+            "maxZ": -1016
+          },
+          "cellCount": 350,
+          "coordinateSetSha256": "359fbd6462c5554a49f8c293df1f3645626f83dc286cc3dbf6973942090dc3aa"
+        },
+        "exactPreserveCurrentStateCellSet": {
+          "cellCount": 630,
+          "bounds": {
+            "minX": 2303,
+            "maxX": 2311,
+            "minY": 89,
+            "maxY": 95,
+            "minZ": -1025,
+            "maxZ": -1016
+          },
+          "coordinateSetSha256": "0bbbd9a7db98822cd71ef68078cd3f7bf60bb121c918a1d984a4fe729923e5f1"
+        },
+        "futureRule": "PRESERVE_EXACT_IMMUTABLE_CURRENT_STATE",
+        "engineeringQualification": "This is a minimum planning exclusion, not a structural, groundwater, entrance-safety, exhibit-access, or construction-influence distance.",
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      {
+        "relicKey": "igloo-west",
+        "currentFinding": "PRESENT_CELLS_OBSERVED_IN_DECLARED_BOUNDING_VOLUME",
+        "disposition": "PRESENT_RELIC_PRESERVE_IN_PLACE_NO_PUBLIC_ACCESS_COMMISSIONED",
+        "protectedCore": {
+          "bounds": {
+            "minX": 1790,
+            "minY": 62,
+            "minZ": -926,
+            "maxX": 1797,
+            "maxY": 66,
+            "maxZ": -920
+          },
+          "cellCount": 280,
+          "coordinateSetSha256": "9ec8b536822c1f6cb794fd0f7cdd14063daddbb650e6dd6f70ed9b0c15c40d72"
+        },
+        "exactOneCellMinimumPlanningExclusion": {
+          "positiveMarginBlocks": 1,
+          "expandedBounds": {
+            "minX": 1789,
+            "maxX": 1798,
+            "minY": 61,
+            "maxY": 67,
+            "minZ": -927,
+            "maxZ": -919
+          },
+          "cellCount": 350,
+          "coordinateSetSha256": "1b10c46805ad61b02194d171d8c89a6cbc0d0c9d85eb28dc015ed8ebda196d20"
+        },
+        "exactPreserveCurrentStateCellSet": {
+          "cellCount": 630,
+          "bounds": {
+            "minX": 1789,
+            "maxX": 1798,
+            "minY": 61,
+            "maxY": 67,
+            "minZ": -927,
+            "maxZ": -919
+          },
+          "coordinateSetSha256": "c3c6a1c34fb9906e65a1046191721372ae98de8b9f306937194a5e7d9a0e6013"
+        },
+        "futureRule": "PRESERVE_EXACT_IMMUTABLE_CURRENT_STATE",
+        "engineeringQualification": "This is a minimum planning exclusion, not a structural, groundwater, entrance-safety, exhibit-access, or construction-influence distance.",
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      {
+        "relicKey": "shipwreck",
+        "currentFinding": "PRESENT_CELLS_OBSERVED_IN_DECLARED_BOUNDING_VOLUME",
+        "disposition": "PRESENT_RELIC_PRESERVE_IN_PLACE_NO_PUBLIC_ACCESS_COMMISSIONED",
+        "protectedCore": {
+          "bounds": {
+            "minX": 2072,
+            "minY": 69,
+            "minZ": -661,
+            "maxX": 2099,
+            "maxY": 77,
+            "maxZ": -653
+          },
+          "cellCount": 2268,
+          "coordinateSetSha256": "715792eef84d4c3029a5750b0683adef6e0c5447b918512539c0d96f82cd2ee6"
+        },
+        "exactOneCellMinimumPlanningExclusion": {
+          "positiveMarginBlocks": 1,
+          "expandedBounds": {
+            "minX": 2071,
+            "maxX": 2100,
+            "minY": 68,
+            "maxY": 78,
+            "minZ": -662,
+            "maxZ": -652
+          },
+          "cellCount": 1362,
+          "coordinateSetSha256": "9e9a497cc8cac69eaa7ea9a173a953610a33638ec51ca2783f98e7ace3f21874"
+        },
+        "exactPreserveCurrentStateCellSet": {
+          "cellCount": 3630,
+          "bounds": {
+            "minX": 2071,
+            "maxX": 2100,
+            "minY": 68,
+            "maxY": 78,
+            "minZ": -662,
+            "maxZ": -652
+          },
+          "coordinateSetSha256": "79f1e788ceaff55b4c717b5b61b20987077b85f01caa2d1d9e76750598e7b856"
+        },
+        "futureRule": "PRESERVE_EXACT_IMMUTABLE_CURRENT_STATE",
+        "engineeringQualification": "This is a minimum planning exclusion, not a structural, groundwater, entrance-safety, exhibit-access, or construction-influence distance.",
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      }
+    ],
+    "automaticObservationRoutePromotion": false,
+    "reconstructionAuthorized": false,
+    "relocationAuthorized": false,
+    "removalAuthorized": false
+  },
+  "routeAndEgressBoundary": {
+    "b08ServiceTunnelInteraction": {
+      "cellCount": 15096,
+      "bounds": {
+        "minX": 1947,
+        "maxX": 2049,
+        "minY": 70,
+        "maxY": 135,
+        "minZ": -751,
+        "maxZ": -624
+      },
+      "coordinateSetSha256": "ea3124fc7925dfb77b491c9685dbdad62714276a8a6c88fa3a60b35d20886f8e",
+      "constructionOwnership": false,
+      "status": "EXACT_REFERENCE_WITHHELD_FROM_CANDIDATE_FILL_NO_OWNERSHIP"
+    },
+    "d06ExternalContinuations": [
+      {
+        "id": "EG-A",
+        "bounds": {
+          "minX": 1649,
+          "maxX": 1655,
+          "minY": 55,
+          "maxY": 80,
+          "minZ": 145,
+          "maxZ": 151
+        },
+        "cellCount": 1274,
+        "coordinateSetSha256": "da0d3c3a2db61ea29efe64b55e13a977cc5c36a8773c1030af8cd91e856b2213",
+        "surfaceLandingY": 80,
+        "stairReservation": {
+          "bounds": {
+            "minX": 1649,
+            "maxX": 1651,
+            "minY": 55,
+            "maxY": 80,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "cellCount": 546,
+          "coordinateSetSha256": "d6fd81daf0e6928ba776dbf1b7fb8ac6e4edac7594a6a99c2e7ab262209c2897"
+        },
+        "accessibleLiftReservation": {
+          "bounds": {
+            "minX": 1653,
+            "maxX": 1655,
+            "minY": 55,
+            "maxY": 80,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "cellCount": 234,
+          "coordinateSetSha256": "a57d2822d52e819a59b0dd8c8438e5b7e4025145a1d53827c888672dd262bf88"
+        },
+        "routeGraph": {
+          "nodes": [
+            {
+              "id": "EG-A-ROOF-CAP",
+              "x": 1652,
+              "y": 54,
+              "z": 148
+            },
+            {
+              "id": "EG-A-SURFACE-LANDING",
+              "x": 1652,
+              "y": 80,
+              "z": 148
+            },
+            {
+              "id": "EG-A-SAFE-EXTERIOR",
+              "x": 1652,
+              "y": 80,
+              "z": 151
+            }
+          ],
+          "edges": [
+            {
+              "from": "EG-A-ROOF-CAP",
+              "to": "EG-A-SURFACE-LANDING",
+              "modes": [
+                "protected-stairs",
+                "reserved-accessible-lift"
+              ]
+            },
+            {
+              "from": "EG-A-SURFACE-LANDING",
+              "to": "EG-A-SAFE-EXTERIOR",
+              "modes": [
+                "level-accessible-path"
+              ]
+            }
+          ]
+        },
+        "mountainCoordinationIntersectionCellCount": 0,
+        "physicalOpeningAuthorized": false,
+        "mechanismCommissioned": false
+      },
+      {
+        "id": "EG-B",
+        "bounds": {
+          "minX": 1849,
+          "maxX": 1855,
+          "minY": 55,
+          "maxY": 71,
+          "minZ": 145,
+          "maxZ": 151
+        },
+        "cellCount": 833,
+        "coordinateSetSha256": "8c5e784edcafe9355e0a4986616e5289264112b455e0b280962895a1a036c70a",
+        "surfaceLandingY": 71,
+        "stairReservation": {
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1851,
+            "minY": 55,
+            "maxY": 71,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "cellCount": 357,
+          "coordinateSetSha256": "c9bfd785188c88f1f96ed0ad566d2cb755b9583d79a315a6a78638add29d7661"
+        },
+        "accessibleLiftReservation": {
+          "bounds": {
+            "minX": 1853,
+            "maxX": 1855,
+            "minY": 55,
+            "maxY": 71,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "cellCount": 153,
+          "coordinateSetSha256": "db34be7f105d35e4d8026ca33d678a49d3323fd767753e848bf9d9c5b5537332"
+        },
+        "routeGraph": {
+          "nodes": [
+            {
+              "id": "EG-B-ROOF-CAP",
+              "x": 1852,
+              "y": 54,
+              "z": 148
+            },
+            {
+              "id": "EG-B-SURFACE-LANDING",
+              "x": 1852,
+              "y": 71,
+              "z": 148
+            },
+            {
+              "id": "EG-B-SAFE-EXTERIOR",
+              "x": 1852,
+              "y": 71,
+              "z": 151
+            }
+          ],
+          "edges": [
+            {
+              "from": "EG-B-ROOF-CAP",
+              "to": "EG-B-SURFACE-LANDING",
+              "modes": [
+                "protected-stairs",
+                "reserved-accessible-lift"
+              ]
+            },
+            {
+              "from": "EG-B-SURFACE-LANDING",
+              "to": "EG-B-SAFE-EXTERIOR",
+              "modes": [
+                "level-accessible-path"
+              ]
+            }
+          ]
+        },
+        "mountainCoordinationIntersectionCellCount": 0,
+        "physicalOpeningAuthorized": false,
+        "mechanismCommissioned": false
+      }
+    ],
+    "unresolved": "B09 maintenance/egress, passing loop, station throats, mechanism cells, barriers, drainage, fire service, and accepted owner interfaces remain HOLD."
+  },
+  "alternatives": [
+    {
+      "modelId": "FM-00-FULL-ENVELOPE-REFERENCE",
+      "label": "Full coordination-envelope rational mountain reference",
+      "classification": "REFERENCE_NOT_FACE_SELECTABLE",
+      "face": null,
+      "status": "PASS_EXACT_PLANNING_GEOMETRY_MATERIAL_HYDROLOGY_OWNERSHIP_HOLD",
+      "formula": {
+        "id": "D05-DIRECTIONAL-RATIONAL-PYRAMID-V1",
+        "domain": "inclusive X/Z footprint defined by center and four directional extents; outside columns remain immutable-current",
+        "dominantRatio": "max(abs(x-centerX)/directionalXExtent, abs(z-centerZ)/directionalZExtent), compared by exact cross multiplication",
+        "designSurfaceY": "71 + floor(232 * (denominator - numerator) / denominator)",
+        "directAddedSolidIntervals": "max(currentSurfaceY+1,72)..designSurfaceY minus exact relic, B08 interaction, and candidate B09 planning-reservation cells",
+        "supportGapRule": "any candidate support below Y=72 is counted and held; it is not silently filled outside the coordination envelope",
+        "currentStateRule": "all immutable current cells remain unchanged except that exact route cells may be future-passable planning reservations; no canonical block state is assigned here",
+        "center": {
+          "x": 2048,
+          "z": -828
+        },
+        "extents": {
+          "west": 400,
+          "east": 399,
+          "north": 300,
+          "south": 299
+        },
+        "baseSurfaceY": 71,
+        "peakSurfaceY": 303
+      },
+      "formulaSha256": "4651ac0aa0e05fe8f967339db6c95fff7849c7c335609be792cf3df438cf5dd0",
+      "directlyModelledColumnCount": 480000,
+      "designSurface": {
+        "minimumY": 71,
+        "maximumY": 303,
+        "columnManifestSha256": "20f2f7e7339a4f41aba62ea2c94e289c53955d20ef7fc6e98b844982feda822a"
+      },
+      "sparseAddedSolidIntervals": {
+        "status": "EXACT_UNMATERIALIZED_PLANNING_INTERVALS_NOT_CONSTRUCTION_CELLS",
+        "preamble": "combined-zones-d05-sparse-solid-intervals-v1\\n",
+        "record": "x,z<TAB>current=Y<TAB>design=Y<TAB>add=start..end[,start..end] or -",
+        "raisedColumnCount": 456572,
+        "rawAddedSolidCellCount": 36941342,
+        "candidateAddedSolidCellCount": 35008029,
+        "protectedRelicWithheldFillCellCount": 1977,
+        "b08WithheldFillCellCount": 14952,
+        "b09WithheldFillCellCount": 0,
+        "intervalManifestSha256": "ad4fc691169a3186e611e395cb4dfef5c4e55e25158dfac43b24ae81badcdf54",
+        "canonicalMaterialState": null,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "belowCoordinationSupportGap": {
+        "status": "HOLD_EXACT_UNSUPPORTED_BELOW_Y72",
+        "columnCount": 274759,
+        "cellCount": 1916384,
+        "intervalManifestSha256": "c445abf78a1426344df0e62491effea3e4051eceed6adfd02957c536b5ed8588",
+        "treatment": null,
+        "reason": "The coordination envelope begins at Y=72. A future solid may not silently fill lower air/water/terrain gaps without geotechnical, hydrology, ownership, and scope authority."
+      },
+      "exactCurrentSurfaceAdjacency": {
+        "raisedColumnSurfaceFamilyCounts": {
+          "water": 12475,
+          "lava": 114,
+          "frozen": 100175,
+          "snow": 316605
+        },
+        "qualification": "Exact current top-cell adjacency only; it is not a groundwater, infiltration, snowmelt, erosion, or drainage influence model."
+      },
+      "routeAccommodation": {
+        "b08ServiceTunnelInteractionReservation": {
+          "status": "EXACT_BOUND_REFERENCE_NO_OWNERSHIP",
+          "cellCount": 15096,
+          "bounds": {
+            "minX": 1947,
+            "maxX": 2049,
+            "minY": 70,
+            "maxY": 135,
+            "minZ": -751,
+            "maxZ": -624
+          },
+          "coordinateSetSha256": "ea3124fc7925dfb77b491c9685dbdad62714276a8a6c88fa3a60b35d20886f8e",
+          "constructionOwnership": false
+        },
+        "b09Funicular": {
+          "status": "NOT_INCLUDED_FULL_ENVELOPE_REFERENCE_HAS_NO_FACE_SELECTION"
+        },
+        "d06ExternalContinuations": [
+          {
+            "id": "EG-A",
+            "intersection": {
+              "cellCount": 0,
+              "bounds": null,
+              "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+            }
+          },
+          {
+            "id": "EG-B",
+            "intersection": {
+              "cellCount": 0,
+              "bounds": null,
+              "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+            }
+          }
+        ]
+      },
+      "protectedRelicVoidAccommodation": {
+        "status": "PASS_EXACT_CURRENT_STATE_PRESERVATION_PLANNING_EXCLUSIONS",
+        "exclusionCellCount": 4890,
+        "exclusionCoordinateSetSha256": "5dcbcaca22ee39ee9309e1fc5139eb3fbff052bb114ae00d20a723c045eab26b",
+        "futureRule": "PRESERVE_EXACT_IMMUTABLE_CURRENT_STATE",
+        "qualification": "The exact core plus one-cell shell is a minimum planning exclusion only. It is not an engineering, structural, groundwater, entrance, exhibit, or construction-influence buffer."
+      },
+      "modelIdentitySha256": "6f56e29fa22bded66cab34269908a397e6333208c4dcf4cb85dc4fad12e0a429"
+    },
+    {
+      "modelId": "FM-01-COMPACT-EAST-FACE",
+      "label": "Compact east-face rational mountain",
+      "classification": "COMPARABLE_CONSERVATIVE_PLANNING_ALTERNATIVE",
+      "face": "east",
+      "status": "PASS_EXACT_PLANNING_GEOMETRY_MATERIAL_HYDROLOGY_OWNERSHIP_HOLD",
+      "formula": {
+        "id": "D05-DIRECTIONAL-RATIONAL-PYRAMID-V1",
+        "domain": "inclusive X/Z footprint defined by center and four directional extents; outside columns remain immutable-current",
+        "dominantRatio": "max(abs(x-centerX)/directionalXExtent, abs(z-centerZ)/directionalZExtent), compared by exact cross multiplication",
+        "designSurfaceY": "71 + floor(232 * (denominator - numerator) / denominator)",
+        "directAddedSolidIntervals": "max(currentSurfaceY+1,72)..designSurfaceY minus exact relic, B08 interaction, and candidate B09 planning-reservation cells",
+        "supportGapRule": "any candidate support below Y=72 is counted and held; it is not silently filled outside the coordination envelope",
+        "currentStateRule": "all immutable current cells remain unchanged except that exact route cells may be future-passable planning reservations; no canonical block state is assigned here",
+        "center": {
+          "x": 2048,
+          "z": -828
+        },
+        "extents": {
+          "west": 100,
+          "east": 320,
+          "north": 240,
+          "south": 240
+        },
+        "baseSurfaceY": 71,
+        "peakSurfaceY": 303
+      },
+      "formulaSha256": "cd8f6d396f477407263aee4984a50766dff0298a046bb1f348a2c6d139cf6cd6",
+      "directlyModelledColumnCount": 202501,
+      "designSurface": {
+        "minimumY": 71,
+        "maximumY": 303,
+        "columnManifestSha256": "18f8a7eab678b862758bdb71733b0b91a5ba31a85bcb6d4920866461a4888f90"
+      },
+      "sparseAddedSolidIntervals": {
+        "status": "EXACT_UNMATERIALIZED_PLANNING_INTERVALS_NOT_CONSTRUCTION_CELLS",
+        "preamble": "combined-zones-d05-sparse-solid-intervals-v1\\n",
+        "record": "x,z<TAB>current=Y<TAB>design=Y<TAB>add=start..end[,start..end] or -",
+        "raisedColumnCount": 190954,
+        "rawAddedSolidCellCount": 15540321,
+        "candidateAddedSolidCellCount": 14768553,
+        "protectedRelicWithheldFillCellCount": 1977,
+        "b08WithheldFillCellCount": 11358,
+        "b09WithheldFillCellCount": 4245,
+        "intervalManifestSha256": "ed95837647ab5f13699e93fcc17de691d4da5f08115c4be34734e238b19b4196",
+        "canonicalMaterialState": null,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "belowCoordinationSupportGap": {
+        "status": "HOLD_EXACT_UNSUPPORTED_BELOW_Y72",
+        "columnCount": 107345,
+        "cellCount": 754224,
+        "intervalManifestSha256": "31664bc00e7a1d361567fb878e8653c2a4018045169d54900ca9ad15bddd7171",
+        "treatment": null,
+        "reason": "The coordination envelope begins at Y=72. A future solid may not silently fill lower air/water/terrain gaps without geotechnical, hydrology, ownership, and scope authority."
+      },
+      "exactCurrentSurfaceAdjacency": {
+        "raisedColumnSurfaceFamilyCounts": {
+          "water": 7046,
+          "lava": 78,
+          "frozen": 44441,
+          "snow": 134645
+        },
+        "qualification": "Exact current top-cell adjacency only; it is not a groundwater, infiltration, snowmelt, erosion, or drainage influence model."
+      },
+      "routeAccommodation": {
+        "b08ServiceTunnelInteractionReservation": {
+          "status": "EXACT_BOUND_REFERENCE_NO_OWNERSHIP",
+          "cellCount": 15096,
+          "bounds": {
+            "minX": 1947,
+            "maxX": 2049,
+            "minY": 70,
+            "maxY": 135,
+            "minZ": -751,
+            "maxZ": -624
+          },
+          "coordinateSetSha256": "ea3124fc7925dfb77b491c9685dbdad62714276a8a6c88fa3a60b35d20886f8e",
+          "constructionOwnership": false
+        },
+        "b09Funicular": {
+          "face": "east",
+          "throat": {
+            "x": 2288,
+            "y": 130,
+            "z": -748,
+            "climbZ": -768
+          },
+          "pointCount": 561,
+          "horizontalStepCount": 560,
+          "orderedCenterlineSha256": "e8905742a77148d13d799362da7d65e9b02bcf96455d580fbee27367b2d24221",
+          "curveIndices": [
+            240,
+            260,
+            500
+          ],
+          "ascendingStepCount": 174,
+          "levelStepCount": 386,
+          "descendingStepCount": 0,
+          "maximumAbsoluteRisePerHorizontalStep": 1,
+          "everyStepCardinalAndRailBuildable": true,
+          "everyCurveLevel": true,
+          "faceSurfaceClearance": {
+            "minimumRailMinusDesignSurfaceY": 1,
+            "minimumPoint": {
+              "point": {
+                "x": 2288,
+                "y": 130,
+                "z": -768,
+                "index": 260
+              },
+              "designSurfaceY": 129,
+              "railMinusDesignSurfaceY": 1
+            },
+            "maximumRailMinusDesignSurfaceY": 1,
+            "maximumPoint": {
+              "point": {
+                "x": 2288,
+                "y": 130,
+                "z": -768,
+                "index": 260
+              },
+              "designSurfaceY": 129,
+              "railMinusDesignSurfaceY": 1
+            },
+            "qualification": "Every face-ascent rail cell is exactly one block above the analytic design surface. The level station throat is a tunnel reservation; no structural or maintenance-egress clearance is inferred."
+          },
+          "minimumPlanningAccommodation": {
+            "derivation": "two-cell rail/headroom seed plus exact one-cell Chebyshev shell; not an engineering, structural, evacuation, or vehicle-clearance buffer",
+            "cellCount": 7800,
+            "bounds": {
+              "minX": 2047,
+              "maxX": 2289,
+              "minY": 129,
+              "maxY": 306,
+              "minZ": -829,
+              "maxZ": -747
+            },
+            "coordinateSetSha256": "e9e2e116f363e999151a41e4fee2ef32d2f96c1184f6432128ff31e8d9a118ca",
+            "constructionOwnership": false,
+            "operationAuthorization": false
+          },
+          "immutableSourceCensus": {
+            "status": "PASS_EXACT_IMMUTABLE_SNAPSHOT_CENSUS_NOT_A_SOURCE_GUARD",
+            "cellCount": 7800,
+            "bounds": {
+              "minX": 2047,
+              "maxX": 2289,
+              "minY": 129,
+              "maxY": 306,
+              "minZ": -829,
+              "maxZ": -747
+            },
+            "coordinateSetSha256": "e9e2e116f363e999151a41e4fee2ef32d2f96c1184f6432128ff31e8d9a118ca",
+            "blockStateSetSha256": "f76fcf522b393e6b3dbf70d42e54d81c3fed4c5c7a2f50fc44f29f3213c6b82a",
+            "airCellCount": 7800,
+            "presentCellCount": 0,
+            "hydrologyAndCryosphereCellCounts": {
+              "water": 0,
+              "lava": 0,
+              "frozen": 0,
+              "snow": 0
+            },
+            "materialCounts": {
+              "minecraft:air": 7800
+            }
+          },
+          "protectedRelicPlanningExclusionIntersection": {
+            "cellCount": 0,
+            "bounds": null,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          },
+          "b08PlanningInterfaceIntersection": {
+            "cellCount": 36,
+            "bounds": {
+              "minX": 2047,
+              "maxX": 2049,
+              "minY": 129,
+              "maxY": 132,
+              "minZ": -749,
+              "maxZ": -747
+            },
+            "coordinateSetSha256": "b28a975b44296fc43739a8af0743066ca58a2c33a99e13da6c2edf89142b33e3"
+          },
+          "d06ExternalContinuationIntersection": {
+            "cellCount": 0,
+            "bounds": null,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          }
+        },
+        "d06ExternalContinuations": [
+          {
+            "id": "EG-A",
+            "intersection": {
+              "cellCount": 0,
+              "bounds": null,
+              "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+            }
+          },
+          {
+            "id": "EG-B",
+            "intersection": {
+              "cellCount": 0,
+              "bounds": null,
+              "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+            }
+          }
+        ]
+      },
+      "protectedRelicVoidAccommodation": {
+        "status": "PASS_EXACT_CURRENT_STATE_PRESERVATION_PLANNING_EXCLUSIONS",
+        "exclusionCellCount": 4890,
+        "exclusionCoordinateSetSha256": "5dcbcaca22ee39ee9309e1fc5139eb3fbff052bb114ae00d20a723c045eab26b",
+        "futureRule": "PRESERVE_EXACT_IMMUTABLE_CURRENT_STATE",
+        "qualification": "The exact core plus one-cell shell is a minimum planning exclusion only. It is not an engineering, structural, groundwater, entrance, exhibit, or construction-influence buffer."
+      },
+      "modelIdentitySha256": "735b69b38c5c2ea840388039b5beb957671fe3e243ec7943c440649edcff36a6"
+    },
+    {
+      "modelId": "FM-02-COMPACT-WEST-FACE",
+      "label": "Compact west-face rational mountain",
+      "classification": "COMPARABLE_CONSERVATIVE_PLANNING_ALTERNATIVE",
+      "face": "west",
+      "status": "PASS_EXACT_PLANNING_GEOMETRY_MATERIAL_HYDROLOGY_OWNERSHIP_HOLD",
+      "formula": {
+        "id": "D05-DIRECTIONAL-RATIONAL-PYRAMID-V1",
+        "domain": "inclusive X/Z footprint defined by center and four directional extents; outside columns remain immutable-current",
+        "dominantRatio": "max(abs(x-centerX)/directionalXExtent, abs(z-centerZ)/directionalZExtent), compared by exact cross multiplication",
+        "designSurfaceY": "71 + floor(232 * (denominator - numerator) / denominator)",
+        "directAddedSolidIntervals": "max(currentSurfaceY+1,72)..designSurfaceY minus exact relic, B08 interaction, and candidate B09 planning-reservation cells",
+        "supportGapRule": "any candidate support below Y=72 is counted and held; it is not silently filled outside the coordination envelope",
+        "currentStateRule": "all immutable current cells remain unchanged except that exact route cells may be future-passable planning reservations; no canonical block state is assigned here",
+        "center": {
+          "x": 2048,
+          "z": -828
+        },
+        "extents": {
+          "west": 320,
+          "east": 100,
+          "north": 240,
+          "south": 240
+        },
+        "baseSurfaceY": 71,
+        "peakSurfaceY": 303
+      },
+      "formulaSha256": "02b5c9749ea54e1f94d9a003178e7d39fe9edb4565ebe77176bc56f2686ffc84",
+      "directlyModelledColumnCount": 202501,
+      "designSurface": {
+        "minimumY": 71,
+        "maximumY": 303,
+        "columnManifestSha256": "1b9a539325f6337ae5362450c6b6ef646ae89f2cbe6b3836a452d70ac1a19b26"
+      },
+      "sparseAddedSolidIntervals": {
+        "status": "EXACT_UNMATERIALIZED_PLANNING_INTERVALS_NOT_CONSTRUCTION_CELLS",
+        "preamble": "combined-zones-d05-sparse-solid-intervals-v1\\n",
+        "record": "x,z<TAB>current=Y<TAB>design=Y<TAB>add=start..end[,start..end] or -",
+        "raisedColumnCount": 198993,
+        "rawAddedSolidCellCount": 15702152,
+        "candidateAddedSolidCellCount": 14890017,
+        "protectedRelicWithheldFillCellCount": 1347,
+        "b08WithheldFillCellCount": 11576,
+        "b09WithheldFillCellCount": 4245,
+        "intervalManifestSha256": "a7e665c12bf75bcc9f6c5f2684bb67b98d3e4fcae6480290e1e3b1ae5dff4b80",
+        "canonicalMaterialState": null,
+        "constructionOwnership": false,
+        "operationAuthorization": false
+      },
+      "belowCoordinationSupportGap": {
+        "status": "HOLD_EXACT_UNSUPPORTED_BELOW_Y72",
+        "columnCount": 120446,
+        "cellCount": 795507,
+        "intervalManifestSha256": "1bba2e34bc677109cb5a7f377cb4aa7c1ba0bac9814d00acba7e29d60c9f05e4",
+        "treatment": null,
+        "reason": "The coordination envelope begins at Y=72. A future solid may not silently fill lower air/water/terrain gaps without geotechnical, hydrology, ownership, and scope authority."
+      },
+      "exactCurrentSurfaceAdjacency": {
+        "raisedColumnSurfaceFamilyCounts": {
+          "water": 3465,
+          "lava": 114,
+          "frozen": 37493,
+          "snow": 147218
+        },
+        "qualification": "Exact current top-cell adjacency only; it is not a groundwater, infiltration, snowmelt, erosion, or drainage influence model."
+      },
+      "routeAccommodation": {
+        "b08ServiceTunnelInteractionReservation": {
+          "status": "EXACT_BOUND_REFERENCE_NO_OWNERSHIP",
+          "cellCount": 15096,
+          "bounds": {
+            "minX": 1947,
+            "maxX": 2049,
+            "minY": 70,
+            "maxY": 135,
+            "minZ": -751,
+            "maxZ": -624
+          },
+          "coordinateSetSha256": "ea3124fc7925dfb77b491c9685dbdad62714276a8a6c88fa3a60b35d20886f8e",
+          "constructionOwnership": false
+        },
+        "b09Funicular": {
+          "face": "west",
+          "throat": {
+            "x": 1808,
+            "y": 130,
+            "z": -748,
+            "climbZ": -768
+          },
+          "pointCount": 561,
+          "horizontalStepCount": 560,
+          "orderedCenterlineSha256": "2cb28f7a91d34b941e13aa8025deceb2c592918e96f9763d0eb9c88dac24a523",
+          "curveIndices": [
+            240,
+            260,
+            500
+          ],
+          "ascendingStepCount": 174,
+          "levelStepCount": 386,
+          "descendingStepCount": 0,
+          "maximumAbsoluteRisePerHorizontalStep": 1,
+          "everyStepCardinalAndRailBuildable": true,
+          "everyCurveLevel": true,
+          "faceSurfaceClearance": {
+            "minimumRailMinusDesignSurfaceY": 1,
+            "minimumPoint": {
+              "point": {
+                "x": 1808,
+                "y": 130,
+                "z": -768,
+                "index": 260
+              },
+              "designSurfaceY": 129,
+              "railMinusDesignSurfaceY": 1
+            },
+            "maximumRailMinusDesignSurfaceY": 1,
+            "maximumPoint": {
+              "point": {
+                "x": 1808,
+                "y": 130,
+                "z": -768,
+                "index": 260
+              },
+              "designSurfaceY": 129,
+              "railMinusDesignSurfaceY": 1
+            },
+            "qualification": "Every face-ascent rail cell is exactly one block above the analytic design surface. The level station throat is a tunnel reservation; no structural or maintenance-egress clearance is inferred."
+          },
+          "minimumPlanningAccommodation": {
+            "derivation": "two-cell rail/headroom seed plus exact one-cell Chebyshev shell; not an engineering, structural, evacuation, or vehicle-clearance buffer",
+            "cellCount": 7800,
+            "bounds": {
+              "minX": 1807,
+              "maxX": 2049,
+              "minY": 129,
+              "maxY": 306,
+              "minZ": -829,
+              "maxZ": -747
+            },
+            "coordinateSetSha256": "79a50f6ed0297d7d8fdd1bb9da9b429f93aabc9fd6985180db0ada4d4200b6e8",
+            "constructionOwnership": false,
+            "operationAuthorization": false
+          },
+          "immutableSourceCensus": {
+            "status": "PASS_EXACT_IMMUTABLE_SNAPSHOT_CENSUS_NOT_A_SOURCE_GUARD",
+            "cellCount": 7800,
+            "bounds": {
+              "minX": 1807,
+              "maxX": 2049,
+              "minY": 129,
+              "maxY": 306,
+              "minZ": -829,
+              "maxZ": -747
+            },
+            "coordinateSetSha256": "79a50f6ed0297d7d8fdd1bb9da9b429f93aabc9fd6985180db0ada4d4200b6e8",
+            "blockStateSetSha256": "2619c846f92afafc80c133fa8879b8fc03f1d686f6085c7530384c480957b88c",
+            "airCellCount": 7800,
+            "presentCellCount": 0,
+            "hydrologyAndCryosphereCellCounts": {
+              "water": 0,
+              "lava": 0,
+              "frozen": 0,
+              "snow": 0
+            },
+            "materialCounts": {
+              "minecraft:air": 7800
+            }
+          },
+          "protectedRelicPlanningExclusionIntersection": {
+            "cellCount": 0,
+            "bounds": null,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          },
+          "b08PlanningInterfaceIntersection": {
+            "cellCount": 540,
+            "bounds": {
+              "minX": 2005,
+              "maxX": 2049,
+              "minY": 129,
+              "maxY": 132,
+              "minZ": -749,
+              "maxZ": -747
+            },
+            "coordinateSetSha256": "02d32a673cccd3f2362a96932566017ec005fb4524f290c1aaad6486e47a05ab"
+          },
+          "d06ExternalContinuationIntersection": {
+            "cellCount": 0,
+            "bounds": null,
+            "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+          }
+        },
+        "d06ExternalContinuations": [
+          {
+            "id": "EG-A",
+            "intersection": {
+              "cellCount": 0,
+              "bounds": null,
+              "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+            }
+          },
+          {
+            "id": "EG-B",
+            "intersection": {
+              "cellCount": 0,
+              "bounds": null,
+              "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4"
+            }
+          }
+        ]
+      },
+      "protectedRelicVoidAccommodation": {
+        "status": "PASS_EXACT_CURRENT_STATE_PRESERVATION_PLANNING_EXCLUSIONS",
+        "exclusionCellCount": 4890,
+        "exclusionCoordinateSetSha256": "5dcbcaca22ee39ee9309e1fc5139eb3fbff052bb114ae00d20a723c045eab26b",
+        "futureRule": "PRESERVE_EXACT_IMMUTABLE_CURRENT_STATE",
+        "qualification": "The exact core plus one-cell shell is a minimum planning exclusion only. It is not an engineering, structural, groundwater, entrance, exhibit, or construction-influence buffer."
+      },
+      "modelIdentitySha256": "420d7f5e528677aef1663ee1f72f4eaa1820e3b2ddb602a808bbb53edaf60dd3"
+    }
+  ],
+  "b09FaceComparison": {
+    "inheritedImmutableProfiles": [
+      {
+        "face": "east",
+        "profileId": "east-envelope-edge-profile",
+        "orderedSurfaceProfileSha256": "f0ffbe80504f90514d239d3eba27aafd2ac854d1b73ac5bb3e86270e0c36bb31",
+        "horizontalStepCount": 878,
+        "currentSurface": {
+          "minimumY": 63,
+          "maximumY": 103,
+          "meanY": 80.357224,
+          "maximumAdjacentStep": 6,
+          "materialCounts": {
+            "minecraft:short_grass": 11,
+            "minecraft:snow": 868
+          },
+          "biomeCounts": {
+            "minecraft:snowy_plains": 879
+          }
+        },
+        "generatedStructurePlanIntersectionColumnCount": 293,
+        "protectedRelicPlanIntersections": []
+      },
+      {
+        "face": "west",
+        "profileId": "west-envelope-edge-profile",
+        "orderedSurfaceProfileSha256": "ee782de56fcc2924801322d7bd1e804435601a9901ebddfda8c37a54149ae76e",
+        "horizontalStepCount": 880,
+        "currentSurface": {
+          "minimumY": 30,
+          "maximumY": 96,
+          "meanY": 72.366629,
+          "maximumAdjacentStep": 42,
+          "materialCounts": {
+            "minecraft:fern": 5,
+            "minecraft:grass_block": 1,
+            "minecraft:ice": 50,
+            "minecraft:large_fern": 3,
+            "minecraft:short_grass": 7,
+            "minecraft:snow": 810,
+            "minecraft:spruce_leaves": 5
+          },
+          "biomeCounts": {
+            "minecraft:frozen_river": 44,
+            "minecraft:snowy_plains": 290,
+            "minecraft:snowy_taiga": 547
+          }
+        },
+        "generatedStructurePlanIntersectionColumnCount": 305,
+        "protectedRelicPlanIntersections": []
+      }
+    ],
+    "frozenComparisonOrder": [
+      "zero protected-route intersections",
+      "zero D06-route intersections",
+      "smallest nonzero exact B08 portal-interface overlap",
+      "fewest below-Y72 support-gap cells",
+      "fewest candidate added-solid cells",
+      "fewest current route hydrology/cryosphere cells",
+      "lowest inherited face maximum adjacent terrain step",
+      "fewest inherited generated-structure plan-intersection columns",
+      "highest inherited mean current surface Y",
+      "lexicographic model ID tie-break"
+    ],
+    "scores": [
+      {
+        "modelId": "FM-01-COMPACT-EAST-FACE",
+        "protectedRouteIntersectionCellCount": 0,
+        "d06RouteIntersectionCellCount": 0,
+        "b08PortalInterfaceCellCount": 36,
+        "supportGapCellCount": 754224,
+        "candidateAddedSolidCellCount": 14768553,
+        "routeHydrologyCryosphereCellCount": 0,
+        "currentFaceMaximumAdjacentStep": 6,
+        "currentFaceGeneratedStructurePlanColumnCount": 293,
+        "currentFaceMeanSurfaceY": 80.357224
+      },
+      {
+        "modelId": "FM-02-COMPACT-WEST-FACE",
+        "protectedRouteIntersectionCellCount": 0,
+        "d06RouteIntersectionCellCount": 0,
+        "b08PortalInterfaceCellCount": 540,
+        "supportGapCellCount": 795507,
+        "candidateAddedSolidCellCount": 14890017,
+        "routeHydrologyCryosphereCellCount": 0,
+        "currentFaceMaximumAdjacentStep": 42,
+        "currentFaceGeneratedStructurePlanColumnCount": 305,
+        "currentFaceMeanSurfaceY": 72.366629
+      }
+    ],
+    "recommendedAlternativeId": "FM-01-COMPACT-EAST-FACE",
+    "selectedAlternativeId": null,
+    "recommendationStatus": "RECOMMENDED_FOR_NEXT_PLANNING_REVIEW_NOT_ACCEPTED_OR_AUTHORIZED",
+    "rationale": "The recommendation is deterministic under the published comparison order, clears exact relic/D06 route conflicts, and retains a nonzero exact B08 portal interface with less overlap than the other compact face. It remains a planning recommendation because support, hydrology, geotechnical, ownership, interfaces, materials, maintenance/egress, and human acceptance are absent."
+  },
+  "readinessChecks": [
+    {
+      "id": "D05-B09-B10-R01-EXACT-SOURCE-CHAIN",
+      "status": "PASS",
+      "result": "All permitted upstream geometry/D05/D06/connector inputs and the immutable snapshot are hash-bound."
+    },
+    {
+      "id": "D05-B09-B10-R02-DETERMINISTIC-SURFACE-AND-SPARSE-SOLID",
+      "status": "PASS",
+      "result": "3 exact analytic surfaces and sparse interval manifests compiled."
+    },
+    {
+      "id": "D05-B09-B10-R03-PROTECTED-RELIC-VOID-ACCOMMODATION",
+      "status": "PASS",
+      "result": "4890 exact core-plus-one-cell-shell current-state preservation cells are excluded from candidate fill."
+    },
+    {
+      "id": "D05-B09-B10-R04-B09-RAIL-BUILDABLE-CANDIDATES",
+      "status": "PASS",
+      "result": "East and west compact face candidates have exact cardinal <=1:1 centerlines and level curves."
+    },
+    {
+      "id": "D05-B09-B10-R05-B08-D06-ACCOMMODATION",
+      "status": "PASS",
+      "result": "The exact B08 interaction set is withheld from candidate fill; both D06 external continuations are disjoint from Z09."
+    },
+    {
+      "id": "D05-B09-B10-R06-CONSERVATIVE-PLANNING-RECOMMENDATION",
+      "status": "PASS_RECOMMENDATION_ONLY",
+      "result": "FM-01-COMPACT-EAST-FACE ranks first by the frozen fail-closed comparison order."
+    },
+    {
+      "id": "D05-B09-B10-R07-SUPPORT-GEOTECHNICAL-HYDROLOGY",
+      "status": "HOLD",
+      "result": "Below-Y72 support gaps, expert hydrology/geotechnical kernels, treatment classes, and acceptance thresholds remain unresolved."
+    },
+    {
+      "id": "D05-B09-B10-R08-OWNERSHIP-INTERFACES-MATERIAL-STATES",
+      "status": "HOLD",
+      "result": "No exact owner registry, directional interface contracts, accepted material palette, or complete canonical future-state registry exists."
+    },
+    {
+      "id": "D05-B09-B10-R09-B09-MAINTENANCE-EGRESS-ACCEPTANCE",
+      "status": "HOLD",
+      "result": "The one-cell route shell is planning accommodation only; maintenance, evacuation, stations, passing loop, mechanisms, and human acceptance remain absent."
+    },
+    {
+      "id": "D05-B09-B10-R10-D05-G02-CLOSURE",
+      "status": "HOLD",
+      "result": "Planning geometry cannot close B09, B10, D05, or G02 without the remaining accepted expert and authority inputs."
+    }
+  ],
+  "disposition": {
+    "exactPlanningAlternativesCompiled": true,
+    "exactB09FaceCandidatesCompiled": true,
+    "planningRecommendationAvailable": true,
+    "recommendationAccepted": false,
+    "b09Closed": false,
+    "b10Closed": false,
+    "d05Resolved": false,
+    "g02Passed": false,
+    "g03Passed": false,
+    "g04Passed": false,
+    "g05Passed": false,
+    "g06Passed": false,
+    "g07Passed": false,
+    "futureStateAuthorized": false,
+    "constructionOwnershipAuthorized": false,
+    "worldEditAuthorized": false,
+    "operationCellCount": 0,
+    "materialCellCount": 0,
+    "futureCellCount": 0,
+    "constructionCellCount": 0
+  }
+}

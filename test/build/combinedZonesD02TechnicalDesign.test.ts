@@ -8,15 +8,15 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 const ROOT = path.resolve(__dirname, '../..');
 const JSON_PATH = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d02-technical-design.json',
+  'docs/masterplans/05-combined-zones/phase1-d02-technical-design.json',
 );
 const MARKDOWN_PATH = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d02-technical-design.md',
+  'docs/masterplans/05-combined-zones/phase1-d02-technical-design.md',
 );
 const S04_PATH = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json',
+  'docs/masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-d02-technical-'));
 const regeneratedJson = path.join(tempDir, 'technical.json');

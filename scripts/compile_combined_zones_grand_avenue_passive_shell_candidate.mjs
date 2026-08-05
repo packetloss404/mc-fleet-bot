@@ -24,23 +24,23 @@ const value = (flag, fallback) => {
 const GENERATED_AT = value('--generated-at', '2026-08-05T01:45:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json',
+  'docs/masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.md',
+  'docs/masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.md',
 ));
 
 const INPUTS = Object.freeze({
-  alternatives: 'masterplans/05-combined-zones/phase1-grand-avenue-subsurface-alternatives.json',
-  b11: 'masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json',
-  phase0: 'masterplans/05-combined-zones/phase0-survey-evidence.json',
-  geometry: 'masterplans/05-combined-zones/phase1-geometry-coordination.json',
-  protectedRelics: 'masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
-  d02: 'masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
-  d06: 'masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json',
-  ownerReview: 'masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
-  siteGate: 'masterplans/05-combined-zones/phase1-site-gate-audit.json',
+  alternatives: 'docs/masterplans/05-combined-zones/phase1-grand-avenue-subsurface-alternatives.json',
+  b11: 'docs/masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json',
+  phase0: 'docs/masterplans/05-combined-zones/phase0-survey-evidence.json',
+  geometry: 'docs/masterplans/05-combined-zones/phase1-geometry-coordination.json',
+  protectedRelics: 'docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
+  d02: 'docs/masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
+  d06: 'docs/masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json',
+  ownerReview: 'docs/masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
+  siteGate: 'docs/masterplans/05-combined-zones/phase1-site-gate-audit.json',
 });
 
 const CELL_HASH_PREAMBLE = 'combined-zones-grand-avenue-passive-shell-candidate-cells-v1';

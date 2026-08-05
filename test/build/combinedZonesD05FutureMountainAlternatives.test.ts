@@ -8,11 +8,11 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 const ROOT = path.resolve(__dirname, '../..');
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json',
+  'docs/masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.md',
+  'docs/masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.md',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-d05-mountain-'));
 const regeneratedJson = path.join(tempDir, 'mountain.json');
@@ -184,20 +184,20 @@ interface Report {
 }
 
 const expectedSourcePaths = {
-  coordinateRegistry: 'masterplans/05-combined-zones/site-coordinates.json',
-  geometryCoordination: 'masterplans/05-combined-zones/phase1-geometry-coordination.json',
+  coordinateRegistry: 'docs/masterplans/05-combined-zones/site-coordinates.json',
+  geometryCoordination: 'docs/masterplans/05-combined-zones/phase1-geometry-coordination.json',
   d05HydrologyBaseline:
-    'masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
+    'docs/masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
   d05ConservativeDefaults:
-    'masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
+    'docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
   d05RelicConditionAccess:
-    'masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json',
+    'docs/masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json',
   d05FutureStateContract:
-    'masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json',
+    'docs/masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json',
   d06EgressGeometry:
-    'masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
+    'docs/masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
   connectorGeometry:
-    'masterplans/05-combined-zones/phase1-connector-geometry.json',
+    'docs/masterplans/05-combined-zones/phase1-connector-geometry.json',
   immutablePhase0PostRegionSnapshot:
     'data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region',
 };

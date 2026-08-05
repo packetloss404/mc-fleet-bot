@@ -19,18 +19,18 @@ const value = (flag, fallback) => {
 const GENERATED_AT = value('--generated-at', '2026-08-04T23:50:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-owner-review-bundle.json',
+  'docs/masterplans/05-combined-zones/phase1-owner-review-bundle.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-owner-review-bundle.md',
+  'docs/masterplans/05-combined-zones/phase1-owner-review-bundle.md',
 ));
 
 const INPUTS = Object.freeze({
-  d02: 'masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
-  d05: 'masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json',
-  d06: 'masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json',
-  b11: 'masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json',
+  d02: 'docs/masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
+  d05: 'docs/masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json',
+  d06: 'docs/masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json',
+  b11: 'docs/masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json',
 });
 
 function absolute(relativePath) {

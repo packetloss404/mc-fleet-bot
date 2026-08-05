@@ -9,11 +9,11 @@ const ROOT = path.resolve(__dirname, '../..');
 const SCRIPT = path.join(ROOT, 'scripts/compile_combined_zones_phase1_connector_geometry.mjs');
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-connector-geometry.json',
+  'docs/masterplans/05-combined-zones/phase1-connector-geometry.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-connector-geometry.md',
+  'docs/masterplans/05-combined-zones/phase1-connector-geometry.md',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-connectors-'));
 const regeneratedJson = path.join(tempDir, 'connectors.json');

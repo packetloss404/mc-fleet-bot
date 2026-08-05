@@ -20,20 +20,20 @@ const value = (flag, fallback) => {
 const GENERATED_AT = value('--generated-at', '2026-08-05T01:10:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-d02-technical-design.json',
+  'docs/masterplans/05-combined-zones/phase1-d02-technical-design.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-d02-technical-design.md',
+  'docs/masterplans/05-combined-zones/phase1-d02-technical-design.md',
 ));
 
 const INPUTS = Object.freeze({
-  ownerAcceptance: 'masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
-  d02OwnerPacket: 'masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
-  c1CivilDesign: 'masterplans/05-combined-zones/phase1-c1-civil-design.json',
-  d02RegionEvidence: 'masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
-  d02HydrologyOutfalls: 'masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json',
-  d02ClosedDrainage: 'masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json',
+  ownerAcceptance: 'docs/masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
+  d02OwnerPacket: 'docs/masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json',
+  c1CivilDesign: 'docs/masterplans/05-combined-zones/phase1-c1-civil-design.json',
+  d02RegionEvidence: 'docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
+  d02HydrologyOutfalls: 'docs/masterplans/05-combined-zones/phase1-d02-s03-hydrology-outfalls.json',
+  d02ClosedDrainage: 'docs/masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json',
 });
 
 const ROLES = Object.freeze({

@@ -26,7 +26,7 @@ const REGION_DIR = path.resolve(value(
 ));
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/resiting-candidate-analysis.json',
+  'docs/masterplans/05-combined-zones/resiting-candidate-analysis.json',
 ));
 const WORLD_MIN_Y = -64;
 const WORLD_MAX_Y = 319;

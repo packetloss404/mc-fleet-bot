@@ -1,0 +1,856 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-residual-surface-connector-domain-proposals",
+  "generatedAtUtc": "2026-08-05T07:00:00Z",
+  "status": "PASS_SEVEN_EXACT_PROPOSAL_DOMAINS_COMPILED_ALL_TECHNICAL_ACCEPTANCE_AND_RELEASE_GATES_HOLD",
+  "purpose": "Replace seven surface/connector geometry nulls with exact conservative proposal reservations while preserving every expert, complete-save, ownership, material, operation, and release HOLD.",
+  "sourceBindings": {
+    "b03": {
+      "path": "docs/masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json",
+      "sha256": "216ca18a7dd2a4e06b258dcc817c786b294ac8ebd992dfdb5ab5dba1f46829b1",
+      "bytes": 2757461,
+      "role": "exact P1-B03 construction and external interaction proposal"
+    },
+    "connectors": {
+      "path": "docs/masterplans/05-combined-zones/phase1-connector-geometry.json",
+      "sha256": "8bb2dd803c434667dfeee440ccdf8428a115962e21dd1b3b0e6955cce672dc4e",
+      "bytes": 458540,
+      "role": "exact P1-B08 construction/interaction geometry and B09 endpoints"
+    },
+    "d05FutureState": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-future-state.json",
+      "sha256": "14ec55e8d71a5fbccbb45fae9ff098c7e077ccb28a9b4d2bdd951ed7ce65c849",
+      "bytes": 39776,
+      "role": "source-bound FM-01 sparse construction and support-gap identities"
+    },
+    "d05Defaults": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json",
+      "sha256": "14366d541b21675011e5dad32b08b51c4c23cf826bb37b0340b4699241429774",
+      "bytes": 17445,
+      "role": "exact protected-relic no-fill cells"
+    },
+    "d05OwnerPacket": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json",
+      "sha256": "72b1d027a3f4f519a882dcf3ba2366bae642eae33da4b4fccdae80f6f9b6ef50",
+      "bytes": 62442,
+      "role": "selected B09 route and D05 planning-policy boundary"
+    },
+    "b09Technical": {
+      "path": "docs/masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json",
+      "sha256": "f9b57fb317ff983acacbf98cb0a7776246c242025f583d9795594a6a799898c8",
+      "bytes": 26803,
+      "role": "exact B09 reservation layers and zero-acceptance boundary"
+    },
+    "b12": {
+      "path": "docs/masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json",
+      "sha256": "7fd10ad811bf9aa36be7895de01ef42eb19382d3896bf5fee5ac47bb75e21a4e",
+      "bytes": 254942,
+      "role": "exact passive-shell construction and interaction proposal"
+    }
+  },
+  "immutableSnapshot": {
+    "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+    "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+    "regionFileCount": 51,
+    "bytes": 290946492,
+    "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+  },
+  "proposalPayload": {
+    "immutableSnapshot": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+      "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+      "regionFileCount": 51,
+      "bytes": 290946492,
+      "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+    },
+    "g03MigrationBaseline": {
+      "sourceSchemaVersion": 2,
+      "sourceCanonicalPayloadSha256": "4742c4d09dd490ccf0cfd89a3139f40bb49e6d3fb2e03ce5584c1c666bd25248",
+      "sourceUnresolvedRequiredDomainCount": 15,
+      "assignedNullDomainCount": 7,
+      "descendantCanonicalG03ConsumedAsInput": false,
+      "reason": "This proposal package is an upstream migration input to G03 and cannot hash-bind the descendant G03 artifact."
+    },
+    "proposalSets": {
+      "P1-B03": {
+        "influence": {
+          "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+          "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "B03 construction plus external one-face interaction, exact one-cell Chebyshev constructability/maintenance shell, and bottom/top drainage/utility carrier reservations.",
+          "cellCount": 55216,
+          "bounds": {
+            "minX": 2046,
+            "maxX": 2392,
+            "minY": 128,
+            "maxY": 171,
+            "minZ": -872,
+            "maxZ": -744
+          },
+          "coordinateSetPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+          "coordinateSetSha256": "a8879f11717f7be8c33bd1fc7cdcaf8ab5278b501e18a83bebfc678b01ba1ac6",
+          "sparseIntervals": {
+            "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B03/influence\\n",
+            "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+            "columnRecordCount": 7225,
+            "intervalCount": 7225,
+            "intervalManifestSha256": "0f71473f651315a78f1d39cb2603f21a93fccc8b07d2c283e7c800fa7dbcddcf"
+          },
+          "accepted": false,
+          "expertPhysicalInfluenceAccepted": false,
+          "constructionOwnershipAccepted": false,
+          "operationAuthorization": false,
+          "reservationFamilies": {
+            "boundConstructionAndInteraction": {
+              "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+              "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+              "reconstructionRule": "exact union of the bound B03 construction and external face-interaction sets",
+              "cellCount": 30390,
+              "bounds": {
+                "minX": 2047,
+                "maxX": 2391,
+                "minY": 129,
+                "maxY": 170,
+                "minZ": -871,
+                "maxZ": -745
+              },
+              "coordinateSetPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+              "coordinateSetSha256": "40b87fc5bd2ffba9e56a0ec8aa16c42e4eb15794bfd7f126affcd25ca8353aa2",
+              "sparseIntervals": {
+                "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B03/influence-base\\n",
+                "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+                "columnRecordCount": 5601,
+                "intervalCount": 5601,
+                "intervalManifestSha256": "8a1442eb80f122e36a6a8fd0f3b11f13e08cd68dd88c7d9a0f521bb411504f0e"
+              },
+              "accepted": false,
+              "expertPhysicalInfluenceAccepted": false,
+              "constructionOwnershipAccepted": false,
+              "operationAuthorization": false
+            },
+            "externalConstructionMaintenanceShell": {
+              "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+              "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+              "reconstructionRule": "exact Chebyshev-one shell outside the bound B03 base union",
+              "cellCount": 24826,
+              "bounds": {
+                "minX": 2046,
+                "maxX": 2392,
+                "minY": 128,
+                "maxY": 171,
+                "minZ": -872,
+                "maxZ": -744
+              },
+              "coordinateSetPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+              "coordinateSetSha256": "6e4386039a353848a9fec33fa2bab37056f0de61bb6fdc05a5a6a1c32b18c69b",
+              "sparseIntervals": {
+                "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B03/influence-maintenance\\n",
+                "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+                "columnRecordCount": 7225,
+                "intervalCount": 12826,
+                "intervalManifestSha256": "d537f75866284d552c18f8cb96c80809a3e52d1e350016261fa7a08099cfac6f"
+              },
+              "accepted": false,
+              "expertPhysicalInfluenceAccepted": false,
+              "constructionOwnershipAccepted": false,
+              "operationAuthorization": false
+            },
+            "candidateDrainageCarrier": {
+              "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+              "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+              "reconstructionRule": "minimum Y cell in every B03 construction X/Z column",
+              "cellCount": 3993,
+              "bounds": {
+                "minX": 2048,
+                "maxX": 2390,
+                "minY": 130,
+                "maxY": 166,
+                "minZ": -870,
+                "maxZ": -746
+              },
+              "coordinateSetPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+              "coordinateSetSha256": "c41535cc0a1660d421302245774c668df35e92051a4a2afc572a9e2c65faaf0b",
+              "sparseIntervals": {
+                "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B03/influence-drainage\\n",
+                "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+                "columnRecordCount": 3993,
+                "intervalCount": 3993,
+                "intervalManifestSha256": "0bbe2b8fc21293ef108f31b8f9df93af15932b09d6a8ffbaa57df280d7bd8bb5"
+              },
+              "accepted": false,
+              "expertPhysicalInfluenceAccepted": false,
+              "constructionOwnershipAccepted": false,
+              "operationAuthorization": false
+            },
+            "candidateUtilityInspectionCarrier": {
+              "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+              "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+              "reconstructionRule": "maximum Y cell in every B03 construction X/Z column",
+              "cellCount": 3993,
+              "bounds": {
+                "minX": 2048,
+                "maxX": 2390,
+                "minY": 133,
+                "maxY": 169,
+                "minZ": -870,
+                "maxZ": -746
+              },
+              "coordinateSetPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+              "coordinateSetSha256": "c30ce8fdf0044529732848986e105ad60bebf23e20d1aca65ed972657e3b65c9",
+              "sparseIntervals": {
+                "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B03/influence-utility\\n",
+                "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+                "columnRecordCount": 3993,
+                "intervalCount": 3993,
+                "intervalManifestSha256": "beec3eed42b76f0ab32a53e7255d643bee592ef76123cc070b7e04860a752244"
+              },
+              "accepted": false,
+              "expertPhysicalInfluenceAccepted": false,
+              "constructionOwnershipAccepted": false,
+              "operationAuthorization": false
+            }
+          }
+        }
+      },
+      "P1-B08": {
+        "influence": {
+          "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+          "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "B08 interaction union plus exact one-cell Chebyshev constructability/maintenance shell and bottom/top drainage/utility carrier reservations.",
+          "cellCount": 24690,
+          "bounds": {
+            "minX": 1946,
+            "maxX": 2050,
+            "minY": 69,
+            "maxY": 136,
+            "minZ": -752,
+            "maxZ": -623
+          },
+          "coordinateSetPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+          "coordinateSetSha256": "3c037ebe9bfffa3ca73cd42a27312b3d96eacf317006db0c9ba36e0c3b9337b2",
+          "sparseIntervals": {
+            "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B08/influence\\n",
+            "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+            "columnRecordCount": 2237,
+            "intervalCount": 2237,
+            "intervalManifestSha256": "2219895cb60f48aa8d0ec669227c8703fd8b3a3e56c2f0cccf175dd4668c1531"
+          },
+          "accepted": false,
+          "expertPhysicalInfluenceAccepted": false,
+          "constructionOwnershipAccepted": false,
+          "operationAuthorization": false,
+          "reservationFamilies": {
+            "boundInteraction": {
+              "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+              "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+              "reconstructionRule": "bound exact B08 interaction union",
+              "cellCount": 15096,
+              "bounds": {
+                "minX": 1947,
+                "maxX": 2049,
+                "minY": 70,
+                "maxY": 135,
+                "minZ": -751,
+                "maxZ": -624
+              },
+              "coordinateSetPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+              "coordinateSetSha256": "ea3124fc7925dfb77b491c9685dbdad62714276a8a6c88fa3a60b35d20886f8e",
+              "sparseIntervals": {
+                "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B08/influence-base\\n",
+                "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+                "columnRecordCount": 1771,
+                "intervalCount": 1771,
+                "intervalManifestSha256": "efbce56dcdce3f877e77e3032fac4f593b6aa06ec936498f27fe3eb8ddfbc29d"
+              },
+              "accepted": false,
+              "expertPhysicalInfluenceAccepted": false,
+              "constructionOwnershipAccepted": false,
+              "operationAuthorization": false
+            },
+            "externalConstructionMaintenanceShell": {
+              "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+              "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+              "reconstructionRule": "exact Chebyshev-one shell outside the B08 interaction union",
+              "cellCount": 9594,
+              "bounds": {
+                "minX": 1946,
+                "maxX": 2050,
+                "minY": 69,
+                "maxY": 136,
+                "minZ": -752,
+                "maxZ": -623
+              },
+              "coordinateSetPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+              "coordinateSetSha256": "5f8e0f9c0b98ff76793cae6e7e1f8a32007dd3ae2661c20cd309703065ee6a43",
+              "sparseIntervals": {
+                "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B08/influence-maintenance\\n",
+                "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+                "columnRecordCount": 2237,
+                "intervalCount": 4008,
+                "intervalManifestSha256": "d23c10ca7e9e4b6f7aa26793606fed8c9c4028051c07883f4847c7a2897a3344"
+              },
+              "accepted": false,
+              "expertPhysicalInfluenceAccepted": false,
+              "constructionOwnershipAccepted": false,
+              "operationAuthorization": false
+            },
+            "candidateDrainageCarrier": {
+              "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+              "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+              "reconstructionRule": "minimum Y cell in every B08 construction X/Z column",
+              "cellCount": 1313,
+              "bounds": {
+                "minX": 1948,
+                "maxX": 2048,
+                "minY": 71,
+                "maxY": 129,
+                "minZ": -750,
+                "maxZ": -625
+              },
+              "coordinateSetPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+              "coordinateSetSha256": "c18034929b96d221a8a85dfe3b72585e05218d98ee2065fbb278e42e504b0e26",
+              "sparseIntervals": {
+                "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B08/influence-drainage\\n",
+                "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+                "columnRecordCount": 1313,
+                "intervalCount": 1313,
+                "intervalManifestSha256": "11c42379d4244860fc837de03580d590e5507bbad9fcb4167bc35ac448deab7e"
+              },
+              "accepted": false,
+              "expertPhysicalInfluenceAccepted": false,
+              "constructionOwnershipAccepted": false,
+              "operationAuthorization": false
+            },
+            "candidateUtilityInspectionCarrier": {
+              "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+              "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+              "reconstructionRule": "maximum Y cell in every B08 construction X/Z column",
+              "cellCount": 1313,
+              "bounds": {
+                "minX": 1948,
+                "maxX": 2048,
+                "minY": 76,
+                "maxY": 134,
+                "minZ": -750,
+                "maxZ": -625
+              },
+              "coordinateSetPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+              "coordinateSetSha256": "d3a383683434ef541f54691f9d046e4eb62be6ba566e3d818faa5c64d9495d86",
+              "sparseIntervals": {
+                "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B08/influence-utility\\n",
+                "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+                "columnRecordCount": 1313,
+                "intervalCount": 1313,
+                "intervalManifestSha256": "25df183eed82c617288ea20a2f1cbc5cba13d4634b90525c4ce8b3e23d13d2de"
+              },
+              "accepted": false,
+              "expertPhysicalInfluenceAccepted": false,
+              "constructionOwnershipAccepted": false,
+              "operationAuthorization": false
+            }
+          }
+        }
+      },
+      "P1-B09": {
+        "construction": {
+          "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+          "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "Exact union of the lower/summit station envelopes and running guideway/support accommodation; target envelope only, with no block state or system acceptance.",
+          "cellCount": 7800,
+          "bounds": {
+            "minX": 2047,
+            "maxX": 2289,
+            "minY": 129,
+            "maxY": 306,
+            "minZ": -829,
+            "maxZ": -747
+          },
+          "coordinateSetPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+          "coordinateSetSha256": "e9e2e116f363e999151a41e4fee2ef32d2f96c1184f6432128ff31e8d9a118ca",
+          "sparseIntervals": {
+            "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B09/construction\\n",
+            "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+            "columnRecordCount": 1689,
+            "intervalCount": 1689,
+            "intervalManifestSha256": "5fef91c3f8e74c28ac4a9d1e536f54e7d2212ea17cf118633be72989eb743933"
+          },
+          "accepted": false,
+          "expertPhysicalInfluenceAccepted": false,
+          "constructionOwnershipAccepted": false,
+          "operationAuthorization": false,
+          "proposedMaterialStates": null,
+          "functionalMechanismsAccepted": false
+        },
+        "influence": {
+          "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+          "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "B09 proposed construction envelope plus exact one-cell Chebyshev construction-method, evacuation-maintenance, drainage, and power-coordination shell.",
+          "cellCount": 20430,
+          "bounds": {
+            "minX": 2046,
+            "maxX": 2290,
+            "minY": 128,
+            "maxY": 307,
+            "minZ": -830,
+            "maxZ": -746
+          },
+          "coordinateSetPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+          "coordinateSetSha256": "f10bbc071a09b24be7842065b3d5e1486af3b5af15d45733f9be2bce97d017ba",
+          "sparseIntervals": {
+            "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B09/influence\\n",
+            "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+            "columnRecordCount": 2825,
+            "intervalCount": 2825,
+            "intervalManifestSha256": "699ab7509a3263a11c99d6d3cc94268e32a6d8553ddeaaae16c1ec26fb8a3ad9"
+          },
+          "accepted": false,
+          "expertPhysicalInfluenceAccepted": false,
+          "constructionOwnershipAccepted": false,
+          "operationAuthorization": false,
+          "reservationFamilies": {
+            "boundConstructionTargetEnvelope": {
+              "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+              "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+              "reconstructionRule": "bound exact B09 planning accommodation promoted only to an unaccepted construction target envelope proposal",
+              "cellCount": 7800,
+              "bounds": {
+                "minX": 2047,
+                "maxX": 2289,
+                "minY": 129,
+                "maxY": 306,
+                "minZ": -829,
+                "maxZ": -747
+              },
+              "coordinateSetPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+              "coordinateSetSha256": "e9e2e116f363e999151a41e4fee2ef32d2f96c1184f6432128ff31e8d9a118ca",
+              "sparseIntervals": {
+                "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B09/influence-base\\n",
+                "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+                "columnRecordCount": 1689,
+                "intervalCount": 1689,
+                "intervalManifestSha256": "96138f39804e55e5e11e91c4f246db204373e89ff131155326a4694a2d9952e4"
+              },
+              "accepted": false,
+              "expertPhysicalInfluenceAccepted": false,
+              "constructionOwnershipAccepted": false,
+              "operationAuthorization": false
+            },
+            "externalConstructionMaintenanceDrainagePowerShell": {
+              "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+              "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+              "reconstructionRule": "exact Chebyshev-one external coordination shell; not a physical propagation kernel",
+              "cellCount": 12630,
+              "bounds": {
+                "minX": 2046,
+                "maxX": 2290,
+                "minY": 128,
+                "maxY": 307,
+                "minZ": -830,
+                "maxZ": -746
+              },
+              "coordinateSetPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+              "coordinateSetSha256": "19f91a54fd51d366edfb8d2be18f3256c65a1423d0d02944c9315d1029b1295b",
+              "sparseIntervals": {
+                "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B09/influence-external\\n",
+                "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+                "columnRecordCount": 2825,
+                "intervalCount": 4514,
+                "intervalManifestSha256": "621b2007941021cf0e6883fd838ca20ff93e845bdce3ac4cd09103eb70354411"
+              },
+              "accepted": false,
+              "expertPhysicalInfluenceAccepted": false,
+              "constructionOwnershipAccepted": false,
+              "operationAuthorization": false
+            }
+          }
+        }
+      },
+      "P1-B10": {
+        "interaction": {
+          "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+          "representation": "SOURCE_BOUND_SPARSE_EXACT_INTEGER_Y_INTERVAL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "Exact external six-face shell of the source-bound FM-01 candidate-added-solid interval set after protected-relic, B08, and B09 exclusions.",
+          "cellCount": 433549,
+          "bounds": {
+            "minX": 1948,
+            "maxX": 2367,
+            "minY": 71,
+            "maxY": 303,
+            "minZ": -1067,
+            "maxZ": -589
+          },
+          "sparseIntervals": {
+            "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B10/interaction\\n",
+            "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+            "columnRecordCount": 191323,
+            "intervalCount": 383907,
+            "intervalManifestSha256": "9dcae3deeefc09f563a47955dd7d3fba75eac8e8ca74f44ab26b24d3a4535ba8"
+          },
+          "accepted": false,
+          "expertPhysicalInfluenceAccepted": false,
+          "constructionOwnershipAccepted": false,
+          "operationAuthorization": false,
+          "sourceConstructionIntervalManifestSha256": "ed95837647ab5f13699e93fcc17de691d4da5f08115c4be34734e238b19b4196",
+          "includedConstructionCellCount": 0
+        },
+        "influence": {
+          "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+          "representation": "SOURCE_BOUND_SPARSE_EXACT_INTEGER_Y_INTERVAL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "Exact union of the B10 external six-face coordination shell and the source-bound below-Y72 support-gap reservation; no groundwater, snowmelt, erosion, settlement, or discharge kernel is inferred.",
+          "cellCount": 1082149,
+          "bounds": {
+            "minX": 1948,
+            "maxX": 2368,
+            "minY": 38,
+            "maxY": 303,
+            "minZ": -1068,
+            "maxZ": -588
+          },
+          "sparseIntervals": {
+            "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B10/influence\\n",
+            "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+            "columnRecordCount": 192024,
+            "intervalCount": 384655,
+            "intervalManifestSha256": "1a209dbae3552c0b49a7972f22c4838a30e09c8391bce8d20979a1b4f542447d"
+          },
+          "accepted": false,
+          "expertPhysicalInfluenceAccepted": false,
+          "constructionOwnershipAccepted": false,
+          "operationAuthorization": false,
+          "reservationFamilies": {
+            "externalConstructionMaintenanceDrainageUtilityShell": {
+              "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+              "representation": "SOURCE_BOUND_SPARSE_EXACT_INTEGER_Y_INTERVAL_SET_NO_INLINE_COORDINATES",
+              "reconstructionRule": "exact external six-face shell of candidate added-solid intervals",
+              "cellCount": 433549,
+              "bounds": {
+                "minX": 1948,
+                "maxX": 2367,
+                "minY": 71,
+                "maxY": 303,
+                "minZ": -1067,
+                "maxZ": -589
+              },
+              "sparseIntervals": {
+                "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B10/influence-external-shell\\n",
+                "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+                "columnRecordCount": 191323,
+                "intervalCount": 383907,
+                "intervalManifestSha256": "a3a51d84fe6bf29691d07c66d720d436b9730f4e4de59087c5f839556c96055b"
+              },
+              "accepted": false,
+              "expertPhysicalInfluenceAccepted": false,
+              "constructionOwnershipAccepted": false,
+              "operationAuthorization": false
+            },
+            "belowY72SupportAndGroundInterfaceReservation": {
+              "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+              "representation": "SOURCE_BOUND_SPARSE_EXACT_INTEGER_Y_INTERVAL_SET_NO_INLINE_COORDINATES",
+              "reconstructionRule": "source-bound exact support gap from current top + 1 through Y71 where design surface is higher",
+              "cellCount": 754224,
+              "bounds": {
+                "minX": 1948,
+                "maxX": 2368,
+                "minY": 38,
+                "maxY": 71,
+                "minZ": -1068,
+                "maxZ": -588
+              },
+              "sparseIntervals": {
+                "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B10/influence-support-gap\\n",
+                "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+                "columnRecordCount": 107345,
+                "intervalCount": 107345,
+                "intervalManifestSha256": "ce3c59d6b7891b244efef46f3634e7466fb545c4283ed7f4dc32e24c405e28c0"
+              },
+              "accepted": false,
+              "expertPhysicalInfluenceAccepted": false,
+              "constructionOwnershipAccepted": false,
+              "operationAuthorization": false
+            }
+          },
+          "sourceSupportGapIntervalManifestSha256": "31664bc00e7a1d361567fb878e8653c2a4018045169d54900ca9ad15bddd7171",
+          "expertGroundwaterKernel": null,
+          "expertCryosphereKernel": null,
+          "acceptedReceiver": null,
+          "acceptedOutfall": null
+        }
+      },
+      "P1-B12": {
+        "influence": {
+          "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+          "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+          "reconstructionRule": "Bound passive-shell interaction/load-separation union plus exact one-cell Chebyshev construction-method, maintenance, drainage, and utility-coordination shell.",
+          "cellCount": 30732,
+          "bounds": {
+            "minX": 1749,
+            "maxX": 2049,
+            "minY": 59,
+            "maxY": 72,
+            "minZ": -332,
+            "maxZ": -295
+          },
+          "coordinateSetPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+          "coordinateSetSha256": "edc9d6816f8db8d0f96debe9a6c2e2a656e7710cd97a5f0aa86130f978eb30d2",
+          "sparseIntervals": {
+            "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B12/influence\\n",
+            "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+            "columnRecordCount": 3066,
+            "intervalCount": 3066,
+            "intervalManifestSha256": "b5fc885ba1ab2af055f8c83e42241f4703ccf9f2da46798a1b2e76c59b8a98bd"
+          },
+          "accepted": false,
+          "expertPhysicalInfluenceAccepted": false,
+          "constructionOwnershipAccepted": false,
+          "operationAuthorization": false,
+          "reservationFamilies": {
+            "boundShellAndRoadLoadInteraction": {
+              "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+              "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+              "reconstructionRule": "bound outer shell envelope union two-layer road-load separation",
+              "cellCount": 19136,
+              "bounds": {
+                "minX": 1750,
+                "maxX": 2048,
+                "minY": 60,
+                "maxY": 71,
+                "minZ": -331,
+                "maxZ": -296
+              },
+              "coordinateSetPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+              "coordinateSetSha256": "9c9aa035d23b63d1375b45fe096c4d68eedee75ff41c3cca2703cafa9960435b",
+              "sparseIntervals": {
+                "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B12/influence-base\\n",
+                "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+                "columnRecordCount": 2392,
+                "intervalCount": 2392,
+                "intervalManifestSha256": "9dc338c0a4c06d6374c9a42dcdf033864874fb9e3878a1d3cb280490e946633c"
+              },
+              "accepted": false,
+              "expertPhysicalInfluenceAccepted": false,
+              "constructionOwnershipAccepted": false,
+              "operationAuthorization": false
+            },
+            "externalConstructionMaintenanceDrainageUtilityShell": {
+              "status": "PROPOSED_EXACT_COORDINATION_RESERVATION_UNACCEPTED",
+              "representation": "SPARSE_EXACT_INTEGER_CELL_SET_NO_INLINE_COORDINATES",
+              "reconstructionRule": "exact Chebyshev-one external coordination shell; not an expert influence radius",
+              "cellCount": 11596,
+              "bounds": {
+                "minX": 1749,
+                "maxX": 2049,
+                "minY": 59,
+                "maxY": 72,
+                "minZ": -332,
+                "maxZ": -295
+              },
+              "coordinateSetPreamble": "combined-zones-coordinate-cell-set-v1\\n",
+              "coordinateSetSha256": "6f5bcc5eade30051d530ef5e6e2dc0d71c3b163f178afc76fe7a97de3e571cba",
+              "sparseIntervals": {
+                "preamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B12/influence-external\\n",
+                "record": "x,z<TAB>inclusive-y-start..inclusive-y-end[,start..end]",
+                "columnRecordCount": 3066,
+                "intervalCount": 5458,
+                "intervalManifestSha256": "53b8de3beae39416827966d196b478c0a2c051ab1bbed3d659b2783cc68a93a9"
+              },
+              "accepted": false,
+              "expertPhysicalInfluenceAccepted": false,
+              "constructionOwnershipAccepted": false,
+              "operationAuthorization": false
+            }
+          }
+        }
+      }
+    },
+    "proposedDomains": [
+      {
+        "scopeId": "P1-B03",
+        "domain": "influence",
+        "cellCount": 55216,
+        "bounds": {
+          "minX": 2046,
+          "maxX": 2392,
+          "minY": 128,
+          "maxY": 171,
+          "minZ": -872,
+          "maxZ": -744
+        },
+        "exactSetIdentitySha256": "a8879f11717f7be8c33bd1fc7cdcaf8ab5278b501e18a83bebfc678b01ba1ac6"
+      },
+      {
+        "scopeId": "P1-B08",
+        "domain": "influence",
+        "cellCount": 24690,
+        "bounds": {
+          "minX": 1946,
+          "maxX": 2050,
+          "minY": 69,
+          "maxY": 136,
+          "minZ": -752,
+          "maxZ": -623
+        },
+        "exactSetIdentitySha256": "3c037ebe9bfffa3ca73cd42a27312b3d96eacf317006db0c9ba36e0c3b9337b2"
+      },
+      {
+        "scopeId": "P1-B09",
+        "domain": "construction",
+        "cellCount": 7800,
+        "bounds": {
+          "minX": 2047,
+          "maxX": 2289,
+          "minY": 129,
+          "maxY": 306,
+          "minZ": -829,
+          "maxZ": -747
+        },
+        "exactSetIdentitySha256": "e9e2e116f363e999151a41e4fee2ef32d2f96c1184f6432128ff31e8d9a118ca"
+      },
+      {
+        "scopeId": "P1-B09",
+        "domain": "influence",
+        "cellCount": 20430,
+        "bounds": {
+          "minX": 2046,
+          "maxX": 2290,
+          "minY": 128,
+          "maxY": 307,
+          "minZ": -830,
+          "maxZ": -746
+        },
+        "exactSetIdentitySha256": "f10bbc071a09b24be7842065b3d5e1486af3b5af15d45733f9be2bce97d017ba"
+      },
+      {
+        "scopeId": "P1-B10",
+        "domain": "interaction",
+        "cellCount": 433549,
+        "bounds": {
+          "minX": 1948,
+          "maxX": 2367,
+          "minY": 71,
+          "maxY": 303,
+          "minZ": -1067,
+          "maxZ": -589
+        },
+        "exactSetIdentitySha256": "9dcae3deeefc09f563a47955dd7d3fba75eac8e8ca74f44ab26b24d3a4535ba8"
+      },
+      {
+        "scopeId": "P1-B10",
+        "domain": "influence",
+        "cellCount": 1082149,
+        "bounds": {
+          "minX": 1948,
+          "maxX": 2368,
+          "minY": 38,
+          "maxY": 303,
+          "minZ": -1068,
+          "maxZ": -588
+        },
+        "exactSetIdentitySha256": "1a209dbae3552c0b49a7972f22c4838a30e09c8391bce8d20979a1b4f542447d"
+      },
+      {
+        "scopeId": "P1-B12",
+        "domain": "influence",
+        "cellCount": 30732,
+        "bounds": {
+          "minX": 1749,
+          "maxX": 2049,
+          "minY": 59,
+          "maxY": 72,
+          "minZ": -332,
+          "maxZ": -295
+        },
+        "exactSetIdentitySha256": "edc9d6816f8db8d0f96debe9a6c2e2a656e7710cd97a5f0aa86130f978eb30d2"
+      }
+    ],
+    "externalTechnicalHolds": [
+      {
+        "id": "EXT-CONSTRUCTION-METHOD-AND-STAGING",
+        "status": "HOLD",
+        "requirement": "Accept scope-specific means, sequencing, equipment sweeps, temporary works, access, laydown, and reinstatement against the complete saved world."
+      },
+      {
+        "id": "EXT-GEOTECHNICAL-STRUCTURAL-LOADS",
+        "status": "HOLD",
+        "requirement": "Accept loads, settlement/deformation criteria, foundations, retaining, support, liner, transfer, and positive protected-feature margins."
+      },
+      {
+        "id": "EXT-HYDROLOGY-CRYOSPHERE-DRAINAGE",
+        "status": "HOLD",
+        "requirement": "Accept finite groundwater, infiltration, snowmelt, erosion, dewatering, sump, drainage, receiver, outfall, capacity, and no-diversion models."
+      },
+      {
+        "id": "EXT-UTILITIES-POWER-LIFE-SAFETY",
+        "status": "HOLD",
+        "requirement": "Accept service types, circuits, isolation, maintainability, rescue/egress, fire/smoke behavior, commissioning, and operational controls."
+      },
+      {
+        "id": "EXT-COMPLETE-SAVE-AND-PROTECTED-CLEARANCE",
+        "status": "HOLD",
+        "requirement": "Bind region/entities/POI/level.dat in one same-moment capture and rerun exact all-start, entity, POI, fabric, and protected-core comparisons."
+      },
+      {
+        "id": "EXT-OWNER-INTERFACE-AND-MATERIAL-ACCEPTANCE",
+        "status": "HOLD",
+        "requirement": "Accept one owner per physical cell, default-deny directional seams, materials/future states, technical evidence, and the final hash-bound package."
+      }
+    ]
+  },
+  "proposalPayloadSha256": "b16a05525c4d68f3d3499d6db8a85ccd1eec44c89027ea1adca49dfed891af61",
+  "projectedG03Impact": {
+    "proposalCompilerMutatesCanonicalG03": false,
+    "migrationBaselineUnresolvedRequiredDomainCount": 15,
+    "exactProposalGeometryDomainCount": 7,
+    "projectedUnresolvedRequiredDomainCountIfConsumedWithoutOtherChanges": 8,
+    "exactProposalDomains": [
+      {
+        "scopeId": "P1-B03",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "P1-B08",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "P1-B09",
+        "domain": "construction"
+      },
+      {
+        "scopeId": "P1-B09",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "P1-B10",
+        "domain": "interaction"
+      },
+      {
+        "scopeId": "P1-B10",
+        "domain": "influence"
+      },
+      {
+        "scopeId": "P1-B12",
+        "domain": "influence"
+      }
+    ],
+    "migrationBaselineCanonicalG03Passed": false,
+    "reason": "At the v2 migration baseline these seven exact proposals reduced 15 null domains to eight. This upstream package does not inspect or self-accept its descendant canonical G03 result."
+  },
+  "safetyBoundary": {
+    "offlineOnly": true,
+    "immutableCopiedRegionOnly": true,
+    "liveCallsPerformed": [],
+    "databasesOpened": [],
+    "operations": [],
+    "proposedBlockStatePalette": [],
+    "acceptedConstructionCellCount": 0,
+    "acceptedInfluenceCellCount": 0,
+    "acceptedMaterialCellCount": 0,
+    "acceptedFutureCellCount": 0,
+    "acceptedOwnerAssignmentCount": 0,
+    "acceptedInterfaceContractCount": 0,
+    "operationCellCount": 0,
+    "constructionAuthorized": false,
+    "physicalReleaseAuthorized": false,
+    "operationGenerationAuthorized": false,
+    "worldEditAuthorized": false,
+    "executable": false
+  }
+}

@@ -22,21 +22,21 @@ function value(flag, fallback) {
 const GENERATED_AT = value('--generated-at', '2026-08-04T23:00:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json',
+  'docs/masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.md',
+  'docs/masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.md',
 ));
 
 const INPUTS = Object.freeze({
-  authorityReconciliation: 'masterplans/04-combined-complex/authority-reconciliation.json',
-  normalizedCoordinates: 'masterplans/04-combined-complex/02-design/site-coordinates.json',
-  coordinateRegistry: 'masterplans/05-combined-zones/site-coordinates.json',
-  phase0Evidence: 'masterplans/05-combined-zones/phase0-survey-evidence.json',
-  geometryCoordination: 'masterplans/05-combined-zones/phase1-geometry-coordination.json',
-  protectedRelicClearance: 'masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
-  connectorGeometry: 'masterplans/05-combined-zones/phase1-connector-geometry.json',
+  authorityReconciliation: 'docs/masterplans/04-combined-complex/authority-reconciliation.json',
+  normalizedCoordinates: 'docs/masterplans/04-combined-complex/02-design/site-coordinates.json',
+  coordinateRegistry: 'docs/masterplans/05-combined-zones/site-coordinates.json',
+  phase0Evidence: 'docs/masterplans/05-combined-zones/phase0-survey-evidence.json',
+  geometryCoordination: 'docs/masterplans/05-combined-zones/phase1-geometry-coordination.json',
+  protectedRelicClearance: 'docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
+  connectorGeometry: 'docs/masterplans/05-combined-zones/phase1-connector-geometry.json',
 });
 
 function absolute(relativePath) {
@@ -145,7 +145,7 @@ const geometry = readJson(INPUTS.geometryCoordination);
 const relics = readJson(INPUTS.protectedRelicClearance);
 const connector = readJson(INPUTS.connectorGeometry);
 
-invariant(authority.planToDevelop?.path === 'masterplans/05-combined-zones/MASTERPLAN.md',
+invariant(authority.planToDevelop?.path === 'docs/masterplans/05-combined-zones/MASTERPLAN.md',
   'unexpected plan of record');
 invariant(geometry.status === 'PHASE1_COORDINATION_PARTIAL_PASS_OPERATION_COMPILATION_BLOCKED',
   'unexpected geometry-coordination status');

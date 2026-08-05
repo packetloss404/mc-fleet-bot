@@ -22,20 +22,20 @@ const value = (flag, fallback) => {
 const GENERATED_AT = value('--generated-at', '2026-08-04T23:20:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json',
+  'docs/masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.md',
+  'docs/masterplans/05-combined-zones/phase1-b11-external-interface-acceptance.md',
 ));
 
 const INPUTS = Object.freeze({
-  coordinateRegistry: 'masterplans/05-combined-zones/site-coordinates.json',
-  geometryCoordination: 'masterplans/05-combined-zones/phase1-geometry-coordination.json',
-  c1CivilDesign: 'masterplans/05-combined-zones/phase1-c1-civil-design.json',
-  terrainProbe: 'masterplans/05-combined-zones/corridor-terrain-probe.json',
-  d06EgressGeometry: 'masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
-  releaseContract: 'masterplans/05-combined-zones/phase1-release-contract.json',
+  coordinateRegistry: 'docs/masterplans/05-combined-zones/site-coordinates.json',
+  geometryCoordination: 'docs/masterplans/05-combined-zones/phase1-geometry-coordination.json',
+  c1CivilDesign: 'docs/masterplans/05-combined-zones/phase1-c1-civil-design.json',
+  terrainProbe: 'docs/masterplans/05-combined-zones/corridor-terrain-probe.json',
+  d06EgressGeometry: 'docs/masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
+  releaseContract: 'docs/masterplans/05-combined-zones/phase1-release-contract.json',
 });
 
 function absolute(relativePath) {

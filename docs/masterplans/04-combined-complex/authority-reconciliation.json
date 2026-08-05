@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "id": "masterplan-04-to-05-authority-reconciliation",
+  "status": "RECONCILED_FOR_DETAILED_DESIGN_NOT_AUTHORIZED_FOR_WORLD_EDITS",
+  "worldEditAuthorized": false,
+  "authorityModel": {
+    "kind": "field-scoped-composition",
+    "composition": "01 + 02 + 03 -> 04 normalized architecture -> 05 current-world placement",
+    "rules": [
+      "Masterplans 01, 02, and 03 own their internal architectural programs.",
+      "Masterplan 04 owns normalized composition and inter-site local geometry.",
+      "Masterplan 05 owns current-world placement, terrain adaptation, external interfaces, additive zones, and delivery gates.",
+      "Masterplan 05 D07 owns current-world factual geology labels and plaque copy; Masterplan 04 retains only the local Y=200 contact/plaque anchor and architectural material contrast, and its legacy natural-contact, thrust/overthrust, laccolith, geologically-honest, and 270 Ma claims are superseded.",
+      "Observed snapshot and database evidence may veto siting but may not silently redesign architecture.",
+      "No planning or evidence artifact authorizes a world edit."
+    ]
+  },
+  "canonicalSources": {
+    "childArchitecture": [
+      {
+        "id": "01-cheyenne-mountain-complex",
+        "path": "docs/masterplans/01-cheyenne-mountain-complex/06-contractor/contractor-brief.json",
+        "sha256": "805ea091e0378a9c75e46cc5019fb7b530f4a134330dc774486b65e750f69b65"
+      },
+      {
+        "id": "02-subtropolis",
+        "path": "docs/masterplans/02-subtropolis/06-contractor/contractor-brief.json",
+        "sha256": "ef783d320f1d2a182b264eed46a926606c4ad974af32bcd2ff8f44c09aad3077"
+      },
+      {
+        "id": "03-houston-tunnel-system",
+        "path": "docs/masterplans/03-houston-tunnel-system/06-contractor/contractor-brief.json",
+        "sha256": "4a0cdc9bf3397ce512850116fac01d961b82e70a84f169f33c3309e36144f765"
+      }
+    ],
+    "normalizedComposition": {
+      "coordinateRegistry": {
+        "path": "docs/masterplans/04-combined-complex/02-design/site-coordinates.json",
+        "sha256": "28f215cbdb80f58d5120277e9b65f9cfb948fb90fb9eef16dc9f016c64fd4b08",
+        "coordinateSpace": "normalized-masterplan-04-local"
+      },
+      "contractorBrief": {
+        "path": "docs/masterplans/04-combined-complex/04-contractor/contractor-brief.json",
+        "sha256": "774e64736ca8250b25db270b0afe23b8a1213940dc5dd8e9d145f0428174336e",
+        "coordinateSpace": "normalized-masterplan-04-local"
+      }
+    },
+    "currentWorldPlacement": {
+      "masterplan": "docs/masterplans/05-combined-zones/MASTERPLAN.md",
+      "coordinateRegistry": {
+        "path": "docs/masterplans/05-combined-zones/site-coordinates.json",
+        "sha256": "4ec96165c1b4af92d766af4d7e79cb296fba0e362e8b43f6a1053c2a20bf0081"
+      },
+      "phase0Evidence": {
+        "path": "docs/masterplans/05-combined-zones/phase0-survey-evidence.json",
+        "sha256": "8de9be6c1ca081cb5fb885a160f7b5062004bd1a493e59bfd2eea5582177344c",
+        "postSnapshotSha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b"
+      },
+      "authoritativeMap": {
+        "path": "docs/masterplans/05-combined-zones/maps/current-plus-proposed-phase0-overlay.png",
+        "sha256": "98292d37932eb5941d37df9a4f84575b341b1419df38e6ab7dfd0e001feecc01",
+        "blocksPerPixel": 1,
+        "north": "-Z"
+      }
+    }
+  },
+  "normalizedMasterplan04": {
+    "coordinateRole": "architectural-local-not-world-setout",
+    "north": "-Z",
+    "east": "+X",
+    "up": "+Y",
+    "contactLocalY": 200,
+    "noRavine": true,
+    "returnRoute": "funicular-plus-summit-road-no-combined-complex-skybridge",
+    "conflictResolution": {
+      "controllingSources": [
+        "docs/masterplans/04-combined-complex/02-design/site-coordinates.json",
+        "docs/masterplans/04-combined-complex/04-contractor/contractor-brief.json"
+      ],
+      "nonControllingContactDatums": [
+        {
+          "localY": 100,
+          "documents": [
+            "docs/masterplans/04-combined-complex/02-design/design-plan.md",
+            "docs/masterplans/04-combined-complex/02-design/development-plan.md",
+            "docs/masterplans/04-combined-complex/02-design/working-plan.md"
+          ]
+        },
+        {
+          "localY": 400,
+          "documents": [
+            "docs/masterplans/04-combined-complex/02-design/discussion-notes.md"
+          ]
+        }
+      ]
+    }
+  },
+  "placementBridge": {
+    "status": "PHASE0_APPROVED_FOR_DETAILED_DESIGN_NOT_BUILD",
+    "topDown": {
+      "origin": {
+        "x": 2048,
+        "z": -328
+      },
+      "rotationDegrees": 0,
+      "worldX": "2048 + localX",
+      "worldZ": "-328 + localZ"
+    },
+    "verticalStudy": {
+      "activeForBuild": false,
+      "streetY": 72,
+      "belowStreet": "72 + 1.28 * localY",
+      "aboveStreet": "72 + 0.29 * localY",
+      "blockRoundingPolicy": null,
+      "roundingStatus": "UNRESOLVED_DETAILED_DESIGN_GATE"
+    },
+    "boundsSemantics": {
+      "planningEnvelopes": "inclusive min/max references",
+      "compiledCellSetsAuthorized": false,
+      "requiredBeforeCompilation": "freeze exact integer cell sets, half-open/inclusive conversion, and rounding per owned scope"
+    }
+  },
+  "coordinateCrosswalk": [
+    {
+      "id": "houston-origin",
+      "sourcePath": "key_locations.city_center",
+      "local": { "x": 0, "y": 0, "z": 0 },
+      "worldStudy": { "x": 2048, "y": 72, "z": -328 }
+    },
+    {
+      "id": "public-shaft-head",
+      "sourcePath": "key_locations.public_shaft_top_pavilion",
+      "local": { "x": 60, "y": 0, "z": -70 },
+      "worldStudy": { "x": 2108, "y": 72, "z": -398 }
+    },
+    {
+      "id": "public-shaft-observation-landing",
+      "sourcePath": "key_locations.public_shaft_mid_landing",
+      "local": { "x": 60, "y": -50, "z": -70 },
+      "worldStudy": { "x": 2108, "y": 8, "z": -398 }
+    },
+    {
+      "id": "public-shaft-lower-lobby",
+      "sourcePath": "key_locations.public_shaft_bottom_public_access_lobby",
+      "local": { "x": 60, "y": -100, "z": -100 },
+      "worldStudy": { "x": 2108, "y": -56, "z": -428 }
+    },
+    {
+      "id": "subtropolis-horizontal-portal",
+      "sourcePath": "key_locations.subtropolis_horizontal_portal",
+      "local": { "x": 0, "y": 0, "z": -300 },
+      "worldStudy": { "x": 2048, "y": 72, "z": -628 },
+      "registryStatus": "REQUIRED_IN_NORMALIZED_CHILD_REGISTRY_BEFORE_BUILD"
+    },
+    {
+      "id": "service-start",
+      "sourcePath": "key_locations.service_tunnel_start_subtropolis_end",
+      "local": { "x": -100, "y": 0, "z": -300 },
+      "worldStudy": { "x": 1948, "y": 72, "z": -628 }
+    },
+    {
+      "id": "service-contact",
+      "sourcePath": "key_locations.service_tunnel_contact_crossing",
+      "local": { "x": -40, "y": 200, "z": -360 },
+      "worldStudy": { "x": 2008, "y": 130, "z": -688 }
+    },
+    {
+      "id": "cheyenne-outer-portal",
+      "sourcePath": "key_locations.service_tunnel_end_cheyenne_outer_portal",
+      "local": { "x": 0, "y": 200, "z": -420 },
+      "worldStudy": { "x": 2048, "y": 130, "z": -748 }
+    },
+    {
+      "id": "cheyenne-chamber-center",
+      "sourcePath": "key_locations.cheyenne_chamber_center",
+      "local": { "x": 0, "y": 325, "z": -540 },
+      "worldStudy": { "x": 2048, "y": 166.25, "z": -868 }
+    },
+    {
+      "id": "summit",
+      "sourcePath": "key_locations.granite_peak_summit",
+      "local": { "x": 0, "y": 800, "z": -500 },
+      "worldStudy": { "x": 2048, "y": 304, "z": -828 }
+    }
+  ],
+  "envelopeCrosswalk": [
+    {
+      "id": "houston-city",
+      "sourcePath": "docs/masterplans/03-houston-tunnel-system/06-contractor/contractor-brief.json#build_extent.above_ground",
+      "sourceDerivation": "recenter the child X=0..138 and Z=-138..0 envelope on the Masterplan 04 local origin",
+      "sourceLocal": { "minX": -69, "maxX": 69, "minZ": -69, "maxZ": 69 },
+      "worldStudy": { "minX": 1979, "maxX": 2117, "minZ": -397, "maxZ": -259 },
+      "masterplan05Zone": "Z04"
+    },
+    {
+      "id": "subtropolis",
+      "sourcePath": "docs/masterplans/04-combined-complex/02-design/site-coordinates.json#individual_sites.subtropolis.footprint",
+      "sourceLocal": { "minX": -100, "maxX": 100, "minY": -100, "maxY": 0, "minZ": -300, "maxZ": -100 },
+      "worldStudy": { "minX": 1948, "maxX": 2148, "minY": -56, "maxY": 72, "minZ": -628, "maxZ": -428 },
+      "masterplan05Zone": "Z07"
+    },
+    {
+      "id": "continuous-mountain",
+      "sourcePath": "docs/masterplans/04-combined-complex/02-design/site-coordinates.json#mountain_range.footprint",
+      "sourceLocal": { "minX": -400, "maxX": 400, "minY": 0, "maxY": 800, "minZ": -800, "maxZ": -200 },
+      "worldStudy": { "minX": 1648, "maxX": 2448, "minY": 72, "maxY": 304, "minZ": -1128, "maxZ": -528 },
+      "masterplan05Zone": "Z09"
+    },
+    {
+      "id": "cheyenne-chamber",
+      "sourcePath": "docs/masterplans/04-combined-complex/02-design/site-coordinates.json#individual_sites.cheyenne_mountain.chamber_position",
+      "sourceLocal": { "minX": -40, "maxX": 40, "minY": 250, "maxY": 400, "minZ": -580, "maxZ": -500 },
+      "worldStudy": { "minX": 2008, "maxX": 2088, "minY": 144.5, "maxY": 188, "minZ": -908, "maxZ": -828 },
+      "masterplan05Zone": "Z10"
+    }
+  ],
+  "masterplan05OwnedPlacementAndAdditions": {
+    "zones": ["Z00", "Z01", "Z02", "Z02-U1", "Z03"],
+    "connections": ["C1", "C1a", "C1b", "C1c", "C1d", "C1e", "C2", "C3", "C4"],
+    "gateway": { "x": 1550, "y": 68, "z": -250 },
+    "grandAvenue": {
+      "from": { "x": 1750, "y": null, "z": -300 },
+      "to": { "x": 2048, "y": null, "z": -328 }
+    },
+    "emptyEight": {
+      "bounds": { "minX": 1632, "maxX": 1872, "minY": 38, "maxY": 54, "minZ": 40, "maxZ": 160 },
+      "railY": 40,
+      "trackCount": 8,
+      "platformCount": 8,
+      "trackOrientation": "east-west",
+      "sealedInterfaceDirection": "east",
+      "separateReleaseScope": true
+    }
+  },
+  "supersededPlacementArtifacts": [
+    {
+      "path": "docs/masterplans/04-combined-complex/01-research/map-integration",
+      "reason": "research for the retired separate-world and duplicate-Old-Town placement study"
+    },
+    {
+      "path": "docs/masterplans/04-combined-complex/02-design/map-integration",
+      "reason": "separate-world, duplicate-Old-Town placement study"
+    },
+    {
+      "path": "docs/masterplans/04-combined-complex/03-visuals/modules/map-integration",
+      "reason": "concept renderings for the retired separate-world and duplicate-Old-Town placement study"
+    },
+    {
+      "path": "docs/masterplans/04-combined-complex/03-visuals/references/map-integration",
+      "reason": "visual references collected for the retired map-integration annex"
+    },
+    {
+      "path": "docs/masterplans/04-combined-complex/04-contractor/map-integration",
+      "reason": "separate-world contractor study"
+    },
+    {
+      "path": "docs/masterplans/04-combined-complex/build-info-map-integration.json",
+      "reason": "historical map-integration metadata"
+    },
+    {
+      "path": "docs/masterplans/04-combined-complex/map-integration-report.html",
+      "reason": "historical map-integration report"
+    },
+    {
+      "path": "docs/masterplans/04-combined-complex/overhead-map-same-world.png",
+      "reason": "concept art depicting the superseded duplicate Old Town and gateway"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/maps/current-and-proposed-whole-world.png",
+      "reason": "rejected first transform retained as negative evidence"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/maps/current-and-proposed-whole-world.svg",
+      "reason": "mixed stale diagram retained as historical evidence"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/maps/east-corridor-plan.png",
+      "reason": "unsealed presentation sheet with superseded corridor geometry"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/maps/east-corridor-plan.svg",
+      "reason": "unsealed presentation sheet with superseded corridor geometry"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/maps/gateway-approach-and-terminal-plan.png",
+      "reason": "unsealed presentation sheet with superseded gateway and terminal geometry"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/maps/gateway-approach-and-terminal-plan.svg",
+      "reason": "unsealed presentation sheet with superseded gateway and terminal geometry"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/maps/vertical-zoning-section.png",
+      "reason": "unsealed presentation section with superseded vertical study geometry"
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/maps/vertical-zoning-section.svg",
+      "reason": "unsealed presentation section with superseded vertical study geometry"
+    }
+  ],
+  "planToDevelop": {
+    "path": "docs/masterplans/05-combined-zones/MASTERPLAN.md",
+    "sha256": "0fd3ed2d4d66a344f85b8bf4d58ad2be2f4533381b637b6a536dd9caec11c227",
+    "currentPhase": "PHASE_1_COORDINATION_PARTIAL_PASS_BUILD_HOLD",
+    "nextPhase": "PHASE_1_CLOSE_GEOMETRY_SITE_AND_RELEASE_GATES",
+    "constructionPackageExists": false,
+    "worldEditAuthorized": false,
+    "requiredBeforeConstructionPlanning": [
+      "single normalized child-plan coordinate registry",
+      "field-scoped ownership and exact interfaces",
+      "integer bound and vertical rounding rules",
+      "technical acceptance, ownership, and interface binding of the selected service and funicular centerlines",
+      "hydrology and protected-relic ownership",
+      "current ownership and entity gates",
+      "exact one-cell forward and rollback operations",
+      "strict-noop preflight and separate user authorization"
+    ]
+  }
+}

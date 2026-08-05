@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-autonomous-design-selections",
+  "generatedAtUtc": "2026-08-04T22:10:00Z",
+  "status": "PARTIAL_PASS_OWNER_DELEGATED_SELECTIONS_FROZEN_TECHNICAL_GATES_HOLD",
+  "authority": {
+    "decisionAuthority": "sole human project owner",
+    "delegationMode": "OWNER_DIRECTED_AUTONOMOUS_RESEARCH_DESIGN_AND_PLANNING",
+    "ownerDirective": "yes, please proceed autmously. if you need to research, design, and plan something, fan out subagents to help.",
+    "directiveDateUtc": "2026-08-04",
+    "additionalHumanDecisionMakersRequired": false,
+    "agentMaySelectReadyConservativePlanningDefaults": true,
+    "agentMayInventTechnicalEvidence": false,
+    "agentMayClaimExpertAcceptance": false,
+    "agentMayAuthorizeWorldEditsFromThisLedger": false
+  },
+  "sourceBindings": {
+    "d02": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json",
+      "sha256": "cdb6c02523c1c609a10c2d02b8eb743e21afcb47ce539263226a0b83de69d2e1",
+      "bytes": 19826,
+      "role": "D02 offline recommendation evidence"
+    },
+    "d02RegionEvidence": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json",
+      "sha256": "c28a35e79f4af496325b53b4e53b54b35cbe6a663358518af84139febe3044ac",
+      "bytes": 99988,
+      "role": "D02REGIONEVIDENCE offline recommendation evidence"
+    },
+    "d02ClosedDrainage": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d02-s04-closed-drainage-alternatives.json",
+      "sha256": "bae7cb7e67fe2d332951840395cdf55dcbbe5d4660781ec1862af68618010437",
+      "bytes": 2564105,
+      "role": "D02CLOSEDDRAINAGE offline recommendation evidence"
+    },
+    "d05": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json",
+      "sha256": "14366d541b21675011e5dad32b08b51c4c23cf826bb37b0340b4699241429774",
+      "bytes": 17445,
+      "role": "D05 offline recommendation evidence"
+    },
+    "d05RelicSurvey": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json",
+      "sha256": "08ec0806cabd23854a34218b274ebcb26b52ccf9b0adc51464718e4ac6666130",
+      "bytes": 120815,
+      "role": "D05RELICSURVEY offline recommendation evidence"
+    },
+    "d05FutureMountain": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json",
+      "sha256": "1446c75cec504478130a8e9c5569c68c7a7569a29c4210e9b21ca5d804aeb2f3",
+      "bytes": 47454,
+      "role": "D05FUTUREMOUNTAIN offline recommendation evidence"
+    },
+    "d06": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json",
+      "sha256": "25a1d65c6fd076abd2842f2800b5d721a5557b546f70a6f18806235535279beb",
+      "bytes": 13700,
+      "role": "D06 offline recommendation evidence"
+    },
+    "d06LifeSafety": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json",
+      "sha256": "c23eb313426f122e4d905cfe2a1d3407263186be80c167cfc1b169288eb11c76",
+      "bytes": 171078,
+      "role": "D06LIFESAFETY offline recommendation evidence"
+    },
+    "connectorGeometry": {
+      "path": "docs/masterplans/05-combined-zones/phase1-connector-geometry.json",
+      "sha256": "8bb2dd803c434667dfeee440ccdf8428a115962e21dd1b3b0e6955cce672dc4e",
+      "bytes": 458540,
+      "role": "CONNECTORGEOMETRY offline recommendation evidence"
+    },
+    "cheyenneJcurve": {
+      "path": "docs/masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json",
+      "sha256": "216ca18a7dd2a4e06b258dcc817c786b294ac8ebd992dfdb5ab5dba1f46829b1",
+      "bytes": 2757461,
+      "role": "CHEYENNEJCURVE offline recommendation evidence"
+    }
+  },
+  "selections": [
+    {
+      "id": "SEL-D02-B05-C1-RASTER",
+      "scope": "D02-B05",
+      "selection": "Accept the R140/R120/R140 exact-radius integer raster as the controlling C1 centerline. Retain the authored 1:16→1:12→1:8→1:6→1:8→1:12→1:16 sequence as a non-controlling surface-detail rhythm that may be fitted inside the frozen reservation without moving the centerline or rail strip.",
+      "effect": "The exact R140/R120/R140 raster controls C1 alignment; the staircase rhythm is non-controlling visual detail.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-D05-RELIC-MINIMUM-EXCLUSION",
+      "scope": "D05-buffer-policy",
+      "selection": "Adopt CZ05-RELIC-MINIMUM-PLANNING-EXCLUSION-V1 as the default-deny planning exclusion for all three recorded relic sites.",
+      "effect": "Core plus exact one-cell shell is frozen as a minimum planning exclusion, never represented as an engineering buffer.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-D05-EAST-IGLOO-DISPOSITION",
+      "scope": "D05-east-igloo",
+      "selection": "RESERVE_RECORDED_SITE_WITHOUT_RECONSTRUCTION_OR_EXHIBIT_CLAIM",
+      "effect": "The absent-fabric recorded site remains reserved in place; no reconstruction, relocation, removal, access, or reuse is authorized.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-D05-LOGICAL-CONTROL-MODEL",
+      "scope": "D05-ownership-interfaces",
+      "selection": "Adopt the three proposed logical control roles and fail-closed interface rules as the design-control model.",
+      "effect": "This selects role boundaries only; exact construction-cell ownership remains unfrozen and unauthorized.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-D05-FUTURE-STATE-SCHEMA",
+      "scope": "D05-future-model",
+      "selection": "Require the proposed exact-set future terrain and influence schema before D05 can close.",
+      "effect": "The schema is selected; no future-state or influence cellset is yet accepted.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-D05-ZERO-UNDECLARED-CHANGE",
+      "scope": "D05-preservation",
+      "selection": "ADOPT_ZERO_UNDECLARED_CHANGE_AND_DEFAULT_NO_DIVERSION",
+      "effect": "Zero undeclared hydrology/cryosphere change and default no-diversion become binding design criteria.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-D06-TWO-EGRESS-ENDPOINTS",
+      "scope": "D06-egress",
+      "selection": "ADOPT_TWO_EXISTING_DISJOINT_7X7_CORES_AND_SURVEYED_SURFACE_LANDINGS",
+      "effect": "The two exact disjoint 7x7 cores and surveyed landings are the D06 external egress basis; openings remain sealed.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-D06-LIFE-SAFETY-BASIS",
+      "scope": "D06-systems",
+      "selection": "Adopt every D06 system recommendation in the bound egress/geometry packet as the design basis.",
+      "effect": "Stairs/lifts, independent compartments/outlets, emergency circuits, barriers, capped drainage, service access, and sealed interfaces are selected as requirements; mechanism cellsets and commissioning remain open.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-P1-B08-SERVICE-TUNNEL-CENTERLINE",
+      "scope": "P1-B08-SERVICE-TUNNEL-CENTERLINE",
+      "selection": "EAST_RAMP_THEN_NORTH_LEVEL_THROUGH_CONTACT_THEN_EAST_LEVEL",
+      "effect": "The exact 220-step east-ramp, north-level-contact, east-level route and declared 6x6 bias control later ownership and technical design; lining, drainage, escape, source, and commissioning remain open.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-D02-S04-CLOSED-DRAINAGE",
+      "scope": "D02-S04-closed-drainage",
+      "selection": "ALT-D02-S04-D-HYBRID-CAPPED-SUMPS-WITH-AQUATIC-NO-BUILD-HOLD",
+      "effect": "Ten strict-clear capped sump candidates are the planning basis; water-interacting ROAD-LOW-001 remains an explicit no-build hold and no receiver/outfall is selected.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-P1-B03-CHEYENNE-JCURVE",
+      "scope": "P1-B03-CHEYENNE-JCURVE",
+      "selection": "EXACT_800_STEP_TWO_BEND_EAST_NORTH_WEST_BAFFLE",
+      "effect": "The exact 800-step east-north-west two-bend baffle controls later ownership and technical design; all lining, drainage, utilities, egress, and future-mountain acceptance remains open.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-P1-B07-PUBLIC-SHAFT-DOGLEG",
+      "scope": "P1-B07-PUBLIC-SHAFT-DOGLEG",
+      "selection": "Adopt B07-C-WEST-2 as the exact public-shaft planning centerline and interaction envelope.",
+      "effect": "The two-block west dogleg is the planning basis because its excavation and interaction sets clear the mineshaft bound; fluid, mechanism, structural, smoke, drainage, and egress acceptance remains open.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-P1-B09-FUNICULAR-CENTERLINE",
+      "scope": "P1-B09-FUNICULAR-CENTERLINE",
+      "selection": "FM-01-COMPACT-EAST-FACE exact B09 centerline and route shell",
+      "effect": "The east-face cardinal rail candidate controls later planning; maintenance/egress, station, mechanism, hydrology, support, ownership, and interface acceptance remains open.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-P1-B10-MOUNTAIN-SOLID-AND-RELIC-VOIDS",
+      "scope": "P1-B10-MOUNTAIN-SOLID-AND-RELIC-VOIDS",
+      "selection": "Adopt FM-01-COMPACT-EAST-FACE as the analytic future-mountain planning surface with exact minimum relic voids.",
+      "effect": "The compact east-face analytic surface and exact core-plus-one-cell relic exclusions become the future-mountain planning basis; no future material cell or expert influence kernel is accepted.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-D06-FAIL-CLOSED-MECHANISM-RESERVATIONS",
+      "scope": "D06-mechanism-reservations",
+      "selection": "Preserve frozen stair/lift layouts; use four independent capped local vent risers, capped platform/smoke bays, eight sealed sump caps, and sealed EG-B fire-service review interface.",
+      "effect": "Exact fail-closed reservations control technical development, but no opening, mechanism, discharge, external route, compliance, or commissioning is accepted.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-P1-B01-VERTICAL-AUTHORITY-ACTIVATION",
+      "scope": "P1-B01-VERTICAL-AUTHORITY-ACTIVATION",
+      "selection": "ADOPT_EXACT_RATIONAL_AND_ROUNDING_CONTRACT_PER_SCOPE_AFTER_CELLSET_REVIEW",
+      "effect": "The conservative geometry choice is frozen for subsequent exact-cell compilation and independent checks.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-P1-B02-CHEYENNE-INTERNAL-FIT",
+      "scope": "P1-B02-CHEYENNE-INTERNAL-FIT",
+      "selection": "PRESERVE_CHILD_DIMENSIONS_CENTER_ALIGNED_INSIDE_04_ENVELOPE",
+      "effect": "The conservative geometry choice is frozen for subsequent exact-cell compilation and independent checks.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-P1-B04-SUBTROPOLIS-NORMALIZATION",
+      "scope": "P1-B04-SUBTROPOLIS-NORMALIZATION",
+      "selection": "PRESERVE_ORIENTATION_AND_ADD_SEPARATELY_OWNED_200_BLOCK_PORTAL_ADAPTER",
+      "effect": "The conservative geometry choice is frozen for subsequent exact-cell compilation and independent checks.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-P1-B05-SUBTROPOLIS-PILLARS",
+      "scope": "P1-B05-SUBTROPOLIS-PILLARS",
+      "selection": "FREEZE_35_EXPLICIT_GRID_INTERSECTIONS_AND_OMIT_UNSPECIFIED_EXTRA_PILLARS",
+      "effect": "The conservative geometry choice is frozen for subsequent exact-cell compilation and independent checks.",
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "SEL-P1-B06-HOUSTON-GENERIC-PLACEMENT",
+      "scope": "P1-B06-HOUSTON-GENERIC-PLACEMENT",
+      "selection": "OMIT_UNPLACED_GENERIC_TOWERS_AND_GARAGES_RETAIN_NAMED_EXPLICIT_GEOMETRY",
+      "effect": "The conservative geometry choice is frozen for subsequent exact-cell compilation and independent checks.",
+      "technicalAcceptanceClaimed": false
+    }
+  ],
+  "technicalEvidenceAdvances": {
+    "d02S01S02": {
+      "status": "PARTIAL_PASS_REGION_FACTS_COMPLETE_SAVE_MISSING_D02_HOLD",
+      "copiedSaveCandidatesAudited": 56,
+      "completeCopiedSaveCandidates": 0,
+      "s01Complete": false,
+      "s02Complete": false
+    },
+    "d05S01": {
+      "status": "D05_S01_OFFLINE_SURVEY_COMPLETE_D05_G06_HOLD",
+      "relicCount": 3,
+      "presentFabricCells": {
+        "igloo-east": 0,
+        "igloo-west": 187,
+        "shipwreck": 1118
+      },
+      "observationCandidateRouteLengths": {
+        "igloo-east": 0,
+        "igloo-west": 14,
+        "shipwreck": 19
+      }
+    },
+    "d06SurfaceEgress": {
+      "status": "PARTIAL_PASS_D06_SURFACE_ENDPOINTS_AND_ROUTE_RESERVATIONS_FROZEN",
+      "exactEndpointCount": 2,
+      "routeSetsDisjoint": true
+    },
+    "connectorGeometry": {
+      "status": "PARTIAL_PASS_EXACT_B07_B08_CANDIDATES_B09_PROFILE_ALL_CONSTRUCTION_HOLD",
+      "b07Status": "PARTIAL_PASS_EXACT_OFFLINE_GEOMETRY_B07_LIFE_SAFETY_HOLD",
+      "b07ExcavationCells": 7791,
+      "b07WaterCells": 38,
+      "b08Status": "PARTIAL_PASS_EXACT_RAIL_BUILDABLE_CANDIDATE_B08_REVIEW_HOLD",
+      "b08HorizontalSteps": 220,
+      "b08ExcavationCells": 7878,
+      "b08Selected": true,
+      "b09FaceSelected": false
+    },
+    "d02ClosedDrainage": {
+      "status": "PARTIAL_PASS_PREFERRED_CLOSED_SUMP_PLANNING_GEOMETRY_D02_HOLD",
+      "preferredAlternativeId": "ALT-D02-S04-D-HYBRID-CAPPED-SUMPS-WITH-AQUATIC-NO-BUILD-HOLD",
+      "candidateCellCount": 432,
+      "noBuildLowRunCount": 1
+    },
+    "d05FutureMountain": {
+      "status": "PARTIAL_PASS_EXACT_FUTURE_MOUNTAIN_ALTERNATIVES_RECOMMENDATION_ONLY_D05_G02_HOLD",
+      "recommendedAlternativeId": "FM-01-COMPACT-EAST-FACE",
+      "recommendationSelectedByThisLedger": true,
+      "futureCellCount": 0
+    },
+    "d06LifeSafety": {
+      "status": "PARTIAL_PASS_FAIL_CLOSED_B07_D06_ALTERNATIVES_FROZEN_ALL_RELEASE_AND_COMMISSIONING_HOLD",
+      "recommendedB07CandidateId": "B07-C-WEST-2",
+      "ventAlternativeId": "VENT-A-FOUR-INDEPENDENT-LOCAL-RISERS"
+    },
+    "cheyenneJcurve": {
+      "status": "PARTIAL_PASS_EXACT_JCURVE_PLANNING_GEOMETRY_P1_B03_TECHNICAL_HOLD",
+      "horizontalSteps": 800,
+      "excavationCells": 15972,
+      "selectedByThisLedger": true
+    }
+  },
+  "disposition": {
+    "selectionCount": 20,
+    "selectedSubjectiveChoices": [
+      "D02-B05",
+      "D05 conservative planning controls",
+      "D06 egress and system design basis",
+      "D02 capped-sump/no-build drainage basis",
+      "D05 compact east-face future-mountain basis",
+      "D06/B07 fail-closed route and mechanism reservations",
+      "P1-B03 exact Cheyenne J-curve",
+      "P1-B09 exact east-face funicular planning route",
+      "P1-B01-VERTICAL-AUTHORITY-ACTIVATION",
+      "P1-B02-CHEYENNE-INTERNAL-FIT",
+      "P1-B04-SUBTROPOLIS-NORMALIZATION",
+      "P1-B05-SUBTROPOLIS-PILLARS",
+      "P1-B06-HOUSTON-GENERIC-PLACEMENT"
+    ],
+    "remainingTechnicalWork": [
+      "D02-S01 complete immutable full-save C1 census",
+      "D02-S02 current C01/ISSUE-002 interface survey",
+      "D02-S04 option-specific construction quantities",
+      "D02 closed-drainage inflow/storage/failure criteria, future states, technical review, owners, and interfaces",
+      "D05 exact canonical future material states, expert influence kernels, support treatment, technical review, owners, and interfaces",
+      "D06 mechanism engineering, external discharge/access, technical review, owners, and interfaces",
+      "P1-B03, P1-B07, P1-B09, and P1-B10 technical acceptance after their planning geometry selections",
+      "P1-B11 exact Grand Avenue/PassageWay/external interface points, profiles, owners, and contracts"
+    ],
+    "d02Resolved": false,
+    "d05Resolved": false,
+    "d06Resolved": false,
+    "r00G02Passed": false
+  },
+  "safetyBoundary": {
+    "offlineOnly": true,
+    "operations": [],
+    "operationCellCount": 0,
+    "materialCellCount": 0,
+    "liveCallsPerformed": [],
+    "worldEditAuthorized": false,
+    "physicalBuildAuthorized": false
+  }
+}

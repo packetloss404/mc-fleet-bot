@@ -12,11 +12,11 @@ const SCRIPT = path.join(
 );
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
+  'docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.md',
+  'docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.md',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-d06-life-safety-'));
 const regeneratedJson = path.join(tempDir, 'alternatives.json');

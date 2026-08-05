@@ -8,11 +8,11 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 const ROOT = path.resolve(__dirname, '../..');
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json',
+  'docs/masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-b09-funicular-technical-system.md',
+  'docs/masterplans/05-combined-zones/phase1-b09-funicular-technical-system.md',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-b09-technical-'));
 const regeneratedJson = path.join(tempDir, 'b09-technical.json');
@@ -146,7 +146,7 @@ describe('Combined Zones B09 funicular technical-system proposal', () => {
       status:
         'PARTIAL_PASS_EXACT_B09_TECHNICAL_RESERVATION_PROPOSAL_MECHANISMS_AND_ACCEPTANCE_HOLD',
       reportIdentitySha256:
-        'e4140d2193fec084e8e17ae8e1e071683e62d7cbea20a32ebcf1edc290a523e7',
+        'e8738f3932f2afc3ba71e35ccdebf0d5ef444ca7389e81ec31a18e48517d3eba',
     });
     expect(Object.keys(report.sourceBindings)).toHaveLength(8);
     for (const source of Object.values(report.sourceBindings)) {

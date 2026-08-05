@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-d05-conservative-defaults",
+  "generatedAtUtc": "2026-08-04T19:30:00Z",
+  "status": "RECOMMENDATION_READY_D05_AND_G06_HOLD",
+  "purpose": "A deterministic recommendation packet for the sole project authority; not an accepted design, expert certification, release gate, or construction package.",
+  "sourceBindings": {
+    "phase0Evidence": {
+      "path": "docs/masterplans/05-combined-zones/phase0-survey-evidence.json",
+      "bytes": 58555,
+      "sha256": "8de9be6c1ca081cb5fb885a160f7b5062004bd1a493e59bfd2eea5582177344c"
+    },
+    "designDecisions": {
+      "path": "docs/masterplans/05-combined-zones/phase1-design-decisions.json",
+      "bytes": 16652,
+      "sha256": "b6cb8f06fcce4d6916538048594003d6e1fb2e505a3be0804e4d6df4d36182ff"
+    },
+    "geometryCoordination": {
+      "path": "docs/masterplans/05-combined-zones/phase1-geometry-coordination.json",
+      "bytes": 35601,
+      "sha256": "b2284622f95f51af76cc13e8056a70cf4a82e0af058496eee77d5a82f631553f"
+    },
+    "protectedRelicClearance": {
+      "path": "docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
+      "bytes": 30505,
+      "sha256": "1739502e8bf19283cabfe9930f26011dba97c11e6328da27ee0b7f651f7a0a22"
+    },
+    "d05HydrologyRelicDesign": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
+      "bytes": 3250984,
+      "sha256": "e3f86c5073a00e715cf0f4d01e2a76bc1fc416290ffd7a4972b1e8c7a2b8350c"
+    }
+  },
+  "immutableEvidenceIdentity": {
+    "snapshot": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+      "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+      "regionFileCount": 51,
+      "bytes": 290946492,
+      "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+    },
+    "mountainCoordinationVolume": {
+      "sourceSemantics": "continuous-boundary-planes-min-inclusive-max-exclusive",
+      "representation": "inclusive integer cells converted from the compiled half-open coordination envelope",
+      "bounds": {
+        "minX": 1648,
+        "maxX": 2447,
+        "minY": 72,
+        "maxY": 303,
+        "minZ": -1128,
+        "maxZ": -529
+      },
+      "dimensions": {
+        "x": 800,
+        "y": 232,
+        "z": 600
+      },
+      "cellCount": 111360000,
+      "constructionOwnership": false
+    },
+    "fullHeightHydrologySurveyPrism": {
+      "representation": "full overworld build-height prism over the compiled mountain X/Z footprint",
+      "bounds": {
+        "minX": 1648,
+        "maxX": 2447,
+        "minY": -64,
+        "maxY": 319,
+        "minZ": -1128,
+        "maxZ": -529
+      },
+      "dimensions": {
+        "x": 800,
+        "y": 384,
+        "z": 600
+      },
+      "cellCount": 184320000,
+      "purpose": "current 3D fluid, frozen-water, snow-storage, and boundary-interface census",
+      "constructionOwnership": false
+    }
+  },
+  "machineProvableFacts": {
+    "protectedRelicRecordCount": 3,
+    "presentRelicFabricCount": 2,
+    "absentRecordedRelicSites": [
+      "igloo-east"
+    ],
+    "exactCurrentFamilies": {
+      "water": {
+        "cellCount": 1929621,
+        "coordinateSetSha256": "1c6e3d25121884eb4baba8da8f8713a014360643f78aa30686f8c9785127b04e",
+        "blockStateSetSha256": "be8c186b10aaa898812eee4ce551b57eb129219b51c31adc642ba8ab1e28cfed"
+      },
+      "lava": {
+        "cellCount": 85088,
+        "coordinateSetSha256": "6b414c16d0e5965d2c22c899a1fe2523de39f4564d775433745b983ba313ec18",
+        "blockStateSetSha256": "9b64f3ef5b63fa5dc31ba011b033fcb68888f06891d5857d35b198e8351fb927"
+      },
+      "frozen": {
+        "cellCount": 182791,
+        "coordinateSetSha256": "c230a0ed3582c466736101c7c209dda071070645a2c81381408a8a3bc496a071",
+        "blockStateSetSha256": "773c78254b317177ebf5aaae2ac673c56e0c06fc0f51d1ef05555d342fd48a4a"
+      },
+      "snow": {
+        "cellCount": 359830,
+        "coordinateSetSha256": "0a0af937ba1634ace4d925341465dfa1b1f0a017332744341f9a2cb1a25f4c9b",
+        "blockStateSetSha256": "b85622438fc9610c1c7a467ac17cd3e46a82e727368204a70bab5c88c671bc63"
+      }
+    },
+    "waterComponentCount": 5234,
+    "waterComponentManifestSha256": "827aa11b7e8b583949ad9d2f86bb8457417e3d46b2d4a58de0174bedf5018105",
+    "lavaComponentCount": 941,
+    "lavaComponentManifestSha256": "707b8be407c2c6492cdc34a79ec5401849058c363c004da4ae4cc05bf0d432f4",
+    "d8SurfaceRoutingCandidate": {
+      "columnCount": 480000,
+      "routingRelationSha256": "2f0bbb41cc52b8020a13c61c4aedf0a12a286515b2e5b6597dc2659c9f43ad7d",
+      "routesToBoundaryColumnCount": 988,
+      "routesToInternalSinkColumnCount": 479012,
+      "qualification": "A copied-surface topographic partition only; not rainfall, infiltration, groundwater, snowmelt, erosion, depression filling, or Minecraft fluid simulation."
+    }
+  },
+  "soleAuthorityRecommendations": {
+    "adoptionState": "PROPOSED_NOT_ACCEPTED",
+    "bufferPolicy": {
+      "id": "CZ05-RELIC-MINIMUM-PLANNING-EXCLUSION-V1",
+      "recommendation": "Adopt each exact recorded structure-start core plus its exact one-cell Chebyshev shell as the minimum planning exclusion.",
+      "relics": [
+        {
+          "relicKey": "igloo-east",
+          "structureId": "minecraft:igloo",
+          "currentFinding": "NO_PRESENT_CELLS_IN_DECLARED_BOUNDING_VOLUME",
+          "recommendedDisposition": "ABSENT_FABRIC_RECORDED_SITE_RESERVED_IN_PLACE",
+          "protectedCore": {
+            "bounds": {
+              "minX": 2304,
+              "minY": 90,
+              "minZ": -1024,
+              "maxX": 2310,
+              "maxY": 94,
+              "maxZ": -1017
+            },
+            "cellCount": 280,
+            "coordinateSetSha256": "45e77afc9f46aa6663c5830f75a26539740a73085ce7d10e27ff14bc2426e326"
+          },
+          "minimumPlanningExclusionShell": {
+            "positiveMarginBlocks": 1,
+            "expandedBounds": {
+              "minX": 2303,
+              "maxX": 2311,
+              "minY": 89,
+              "maxY": 95,
+              "minZ": -1025,
+              "maxZ": -1016
+            },
+            "cellCount": 350,
+            "coordinateSetSha256": "359fbd6462c5554a49f8c293df1f3645626f83dc286cc3dbf6973942090dc3aa"
+          },
+          "recommendedRule": "Reserve the union of the exact recorded core and exact one-cell shell. Do not construct, excavate, fill, stage, route access, or assign another scope inside it.",
+          "engineeringQualification": "This is a minimum planning exclusion, not a structural, groundwater, entrance-safety, exhibit-access, or construction-influence distance.",
+          "reconstructionAuthorized": false,
+          "relocationAuthorized": false,
+          "removalAuthorized": false,
+          "observationAccessAuthorized": false
+        },
+        {
+          "relicKey": "igloo-west",
+          "structureId": "minecraft:igloo",
+          "currentFinding": "PRESENT_CELLS_OBSERVED_IN_DECLARED_BOUNDING_VOLUME",
+          "recommendedDisposition": "PRESENT_RELIC_PRESERVE_IN_PLACE_NO_PUBLIC_ACCESS_COMMISSIONED",
+          "protectedCore": {
+            "bounds": {
+              "minX": 1790,
+              "minY": 62,
+              "minZ": -926,
+              "maxX": 1797,
+              "maxY": 66,
+              "maxZ": -920
+            },
+            "cellCount": 280,
+            "coordinateSetSha256": "9ec8b536822c1f6cb794fd0f7cdd14063daddbb650e6dd6f70ed9b0c15c40d72"
+          },
+          "minimumPlanningExclusionShell": {
+            "positiveMarginBlocks": 1,
+            "expandedBounds": {
+              "minX": 1789,
+              "maxX": 1798,
+              "minY": 61,
+              "maxY": 67,
+              "minZ": -927,
+              "maxZ": -919
+            },
+            "cellCount": 350,
+            "coordinateSetSha256": "1b10c46805ad61b02194d171d8c89a6cbc0d0c9d85eb28dc015ed8ebda196d20"
+          },
+          "recommendedRule": "Reserve the union of the exact recorded core and exact one-cell shell. Do not construct, excavate, fill, stage, route access, or assign another scope inside it.",
+          "engineeringQualification": "This is a minimum planning exclusion, not a structural, groundwater, entrance-safety, exhibit-access, or construction-influence distance.",
+          "reconstructionAuthorized": false,
+          "relocationAuthorized": false,
+          "removalAuthorized": false,
+          "observationAccessAuthorized": false
+        },
+        {
+          "relicKey": "shipwreck",
+          "structureId": "minecraft:shipwreck",
+          "currentFinding": "PRESENT_CELLS_OBSERVED_IN_DECLARED_BOUNDING_VOLUME",
+          "recommendedDisposition": "PRESENT_RELIC_PRESERVE_IN_PLACE_NO_PUBLIC_ACCESS_COMMISSIONED",
+          "protectedCore": {
+            "bounds": {
+              "minX": 2072,
+              "minY": 69,
+              "minZ": -661,
+              "maxX": 2099,
+              "maxY": 77,
+              "maxZ": -653
+            },
+            "cellCount": 2268,
+            "coordinateSetSha256": "715792eef84d4c3029a5750b0683adef6e0c5447b918512539c0d96f82cd2ee6"
+          },
+          "minimumPlanningExclusionShell": {
+            "positiveMarginBlocks": 1,
+            "expandedBounds": {
+              "minX": 2071,
+              "maxX": 2100,
+              "minY": 68,
+              "maxY": 78,
+              "minZ": -662,
+              "maxZ": -652
+            },
+            "cellCount": 1362,
+            "coordinateSetSha256": "9e9a497cc8cac69eaa7ea9a173a953610a33638ec51ca2783f98e7ace3f21874"
+          },
+          "recommendedRule": "Reserve the union of the exact recorded core and exact one-cell shell. Do not construct, excavate, fill, stage, route access, or assign another scope inside it.",
+          "engineeringQualification": "This is a minimum planning exclusion, not a structural, groundwater, entrance-safety, exhibit-access, or construction-influence distance.",
+          "reconstructionAuthorized": false,
+          "relocationAuthorized": false,
+          "removalAuthorized": false,
+          "observationAccessAuthorized": false
+        }
+      ],
+      "defaultForUnknownEngineeringInfluence": "DEFAULT_DENY. No larger distance is inferred; any physical package remains blocked until its exact expert-reviewed construction and physics-influence cells clear the planning exclusions.",
+      "replacesExpertBufferDesign": false
+    },
+    "eastIglooDisposition": {
+      "recommendation": "RESERVE_RECORDED_SITE_WITHOUT_RECONSTRUCTION_OR_EXHIBIT_CLAIM",
+      "rationale": "The immutable census proves that all 280 cells inside the recorded generated-start bound are air. Preserving the record and its one-cell planning exclusion avoids fabricating either a relic or permission to reuse the site.",
+      "futureConditionSurveyMayChangeDisposition": true,
+      "constructionAuthorized": false
+    },
+    "logicalOwnershipAndInterfaces": {
+      "recommendation": "ADOPT_LOGICAL_CONTROL_OWNERS_PENDING_EXACT_CELL_COMPILATION",
+      "owners": [
+        {
+          "ownerId": "CZ05-PROTECTED-RELIC-CONTROL",
+          "ownsWhenAccepted": "the three exact protected cores and minimum planning-exclusion shells",
+          "precedence": "VETO_OVER_CONSTRUCTION_AND_HYDROLOGY_INTERACTION"
+        },
+        {
+          "ownerId": "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+          "ownsWhenAccepted": "accepted current/future fluid, cryosphere, drainage, discharge, sump, retaining-water, erosion, dewatering, and hydrology-influence cell sets",
+          "precedence": "VETO_OVER_UNCONTRACTED_CONSTRUCTION_INTERACTION"
+        },
+        {
+          "ownerId": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+          "ownsWhenAccepted": "only exact direct construction cells assigned to each compiled scope",
+          "precedence": "MUST_YIELD_AT_RELIC_AND_HYDROLOGY_INTERFACES"
+        }
+      ],
+      "interfaceRules": [
+        "Every exact cell has at most one canonical owner; an interface contract never creates shared ownership.",
+        "Relic-control cells are default-deny and cannot be transferred by a broad envelope or last-writer-wins rule.",
+        "Every construction scope must submit direct, staging, access, and physics-influence sets to hydrology and relic control.",
+        "No cross-boundary water, lava, snowmelt, sump, or discharge path is accepted without an exact receiver/outfall contract.",
+        "An overlap is a HOLD requiring an exact redesign or explicitly accepted exception; it is never silently clipped."
+      ],
+      "exactCellOwnershipFrozen": false
+    },
+    "futureTerrainAndInfluenceModel": {
+      "modelId": "CZ05-FUTURE-MOUNTAIN-STATE-V1",
+      "recommendation": "Require one deterministic exact-cell pre/post mountain model after the remaining geometry decisions close.",
+      "requiredExactSetFamilies": [
+        "native-solid-retained",
+        "excavation-direct",
+        "fill-direct",
+        "liner-and-retaining-direct",
+        "surface-finish-direct",
+        "construction-staging-and-access",
+        "water-and-lava-direct-interaction",
+        "frozen-and-snow-direct-interaction",
+        "dewatering-and-sump-influence",
+        "drainage-and-discharge-influence",
+        "groundwater-infiltration-and-erosion-influence",
+        "protected-relic-support-and-access-influence"
+      ],
+      "rules": [
+        "Every set is an explicit sorted integer cell set with a SHA-256 identity and one canonical owner.",
+        "The proposed post-state solid function is total over every directly changed column; no rectangular coordination envelope is treated as material.",
+        "No generic radius, terrain elevation, D8 direction, or current fluid component is promoted into an influence cell without authored deterministic rules.",
+        "Unknown influence is default-deny and blocks compilation rather than becoming an empty set.",
+        "The union of all direct and influence sets is checked against every protected core, planning exclusion, hydrology family, boundary interface, and relevant generated start."
+      ],
+      "exactModelAvailable": false
+    },
+    "preservationAndNoDiversionCriteria": {
+      "recommendation": "ADOPT_ZERO_UNDECLARED_CHANGE_AND_DEFAULT_NO_DIVERSION",
+      "preR00DesignCriteria": [
+        "No proposed direct, staging, access, or influence cell intersects a protected core or minimum planning exclusion.",
+        "The default design changes zero current water, waterlogged, lava, frozen, or snow cells.",
+        "The default design creates, removes, merges, splits, reroutes, blocks, exposes, heats, freezes, or discharges no fluid or cryosphere component.",
+        "Every current boundary-touching component remains unmodified unless an exact receiver and interface contract is separately accepted.",
+        "Every intended exception is enumerated by exact before/after cell sets, component accounting, owner, receiver, and acceptance test before D05 can resolve.",
+        "Absence of evidence, an empty east-igloo bound, or a dry D8 candidate is never treated as construction clearance."
+      ],
+      "releaseLifecycleCriteria": [
+        "Later G03-G19 evidence must bind the accepted design identity, exact operations, immutable source/post snapshots, rollback, and post-state accounting.",
+        "Later execution and post-state evidence validates the accepted design but cannot retroactively resolve pre-R00 D05."
+      ],
+      "allowsNarrativeWaiver": false
+    }
+  },
+  "remainingReadOnlySurveyAndDesignEvidence": [
+    {
+      "id": "D05-S01-RELIC-CONDITION-AND-ACCESS",
+      "classification": "READ_ONLY_SURVEY",
+      "requirement": "Review the west igloo and shipwreck beyond their start bounds for template condition, support, entrances, surrounding voids, and any possible observation route; independently confirm the east recorded site remains fabric-absent.",
+      "canBeDerivedFromCurrentBoundedCensus": false
+    },
+    {
+      "id": "D05-S02-EXACT-FUTURE-MOUNTAIN-STATE",
+      "classification": "DEPENDENT_OFFLINE_DESIGN",
+      "requirement": "Compile the exact future terrain, excavation, fill, retaining, surface, staging, access, and influence sets after the eleven geometry choices and integer setout close.",
+      "canBeDerivedFromCurrentBoundedCensus": false
+    },
+    {
+      "id": "D05-S03-HYDROLOGY-AND-GEOTECHNICAL-REVIEW",
+      "classification": "EXPERT_DESIGN_ACCEPTANCE",
+      "requirement": "Review the exact future model for groundwater, infiltration, snowmelt, erosion, dewatering, sumps, retaining loads, discharge receivers, relic support, and no-diversion accounting.",
+      "canBeDerivedFromCurrentBoundedCensus": false
+    },
+    {
+      "id": "D05-S04-GLOBAL-EXACT-CLEARANCE",
+      "classification": "DEPENDENT_OFFLINE_AUDIT",
+      "requirement": "Intersect the final exact direct and influence sets with all accepted relic exclusions and all 50 relevant generated-structure starts.",
+      "canBeDerivedFromCurrentBoundedCensus": false
+    }
+  ],
+  "evidenceBoundary": {
+    "d05Resolved": false,
+    "g02Passed": false,
+    "g06Passed": false,
+    "g07Passed": false,
+    "ownerAcceptanceRecorded": false,
+    "expertAcceptanceRecorded": false,
+    "exactFutureInfluenceCellsAvailable": false,
+    "exactConstructionCellsAvailable": false,
+    "worldEditAuthorized": false,
+    "constructionOwnershipAuthorized": false,
+    "operationCellCount": 0,
+    "materialCellCount": 0
+  }
+}

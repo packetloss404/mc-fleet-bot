@@ -20,24 +20,24 @@ const value = (flag, fallback) => {
 const GENERATED_AT = value('--generated-at', '2026-08-05T02:05:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-d06-mechanisms.json',
+  'docs/masterplans/05-combined-zones/phase1-d06-mechanisms.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-d06-mechanisms.md',
+  'docs/masterplans/05-combined-zones/phase1-d06-mechanisms.md',
 ));
 
 const INPUTS = Object.freeze({
-  ownerAcceptance: 'masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
-  d06OwnerPacket: 'masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json',
-  d06LifeSafety: 'masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
-  d06Egress: 'masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
-  connectorGeometry: 'masterplans/05-combined-zones/phase1-connector-geometry.json',
-  emptyEight: 'masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
-  d02TechnicalDesign: 'masterplans/05-combined-zones/phase1-d02-technical-design.json',
-  d05FutureStateContract: 'masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json',
-  d05OwnerPacket: 'masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json',
-  immutableRegionEvidence: 'masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
+  ownerAcceptance: 'docs/masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
+  d06OwnerPacket: 'docs/masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json',
+  d06LifeSafety: 'docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
+  d06Egress: 'docs/masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json',
+  connectorGeometry: 'docs/masterplans/05-combined-zones/phase1-connector-geometry.json',
+  emptyEight: 'docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
+  d02TechnicalDesign: 'docs/masterplans/05-combined-zones/phase1-d02-technical-design.json',
+  d05FutureStateContract: 'docs/masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json',
+  d05OwnerPacket: 'docs/masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json',
+  immutableRegionEvidence: 'docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
 });
 
 const ROLES = Object.freeze({
@@ -163,7 +163,7 @@ assert(owner.safetyBoundary?.operationCellCount === 0
 assert(packet.status === 'READY_FOR_SOLE_OWNER_REVIEW_PLANNING_BASIS_BOUND_D06_AND_G02_HOLD',
   'D06 owner-packet status drift');
 assert(packet.acceptanceBasisSha256
-  === 'c827566760f439ef5e4794dcb405f8a89bfe8f03370f033d49590f7039510d57',
+  === '870e9334a5f80ee949ea2c44153fc92e1e64dc5fecea3fb992a8b1c8a3a56317',
 'D06 owner-packet acceptance identity drift');
 assert(packet.disposition?.passCount === 2 && packet.disposition?.holdCount === 9
   && packet.disposition?.ownerPlanningBasisSelected === true

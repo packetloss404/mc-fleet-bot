@@ -26,35 +26,35 @@ function value(flag, fallback) {
 const GENERATED_AT = value('--generated-at', '2026-08-04T15:56:00Z');
 const MASTERPLAN = path.resolve(value(
   '--masterplan',
-  'masterplans/05-combined-zones/MASTERPLAN.md',
+  'docs/masterplans/05-combined-zones/MASTERPLAN.md',
 ));
 const COORDINATES = path.resolve(value(
   '--coordinates',
-  'masterplans/05-combined-zones/site-coordinates.json',
+  'docs/masterplans/05-combined-zones/site-coordinates.json',
 ));
 const TERRAIN_PROBE = path.resolve(value(
   '--terrain-probe',
-  'masterplans/05-combined-zones/corridor-terrain-probe.json',
+  'docs/masterplans/05-combined-zones/corridor-terrain-probe.json',
 ));
 const PHASE0_EVIDENCE = path.resolve(value(
   '--phase0-evidence',
-  'masterplans/05-combined-zones/phase0-survey-evidence.json',
+  'docs/masterplans/05-combined-zones/phase0-survey-evidence.json',
 ));
 const CLEARANCE = path.resolve(value(
   '--clearance',
-  'masterplans/05-combined-zones/corridor-clearance.json',
+  'docs/masterplans/05-combined-zones/corridor-clearance.json',
 ));
 const DECISIONS = path.resolve(value(
   '--decisions',
-  'masterplans/05-combined-zones/phase1-design-decisions.json',
+  'docs/masterplans/05-combined-zones/phase1-design-decisions.json',
 ));
 const OUTPUT = path.resolve(value(
   '--out',
-  'masterplans/05-combined-zones/phase1-c1-pilot-coordination.json',
+  'docs/masterplans/05-combined-zones/phase1-c1-pilot-coordination.json',
 ));
 const MARKDOWN = path.resolve(value(
   '--markdown',
-  'masterplans/05-combined-zones/phase1-c1-pilot-coordination.md',
+  'docs/masterplans/05-combined-zones/phase1-c1-pilot-coordination.md',
 ));
 
 const WORLD_MIN_Y = -64;
@@ -686,7 +686,7 @@ const report = {
   status: 'COORDINATION_CANDIDATE_FROZEN_PHYSICAL_PILOT_HOLD',
   authority: {
     chain: '01 + 02 + 03 -> 04 normalized architecture -> 05 current-world placement',
-    planToDevelop: 'masterplans/05-combined-zones/MASTERPLAN.md',
+    planToDevelop: 'docs/masterplans/05-combined-zones/MASTERPLAN.md',
     role: 'bounded C1 coordination evidence; not construction ownership or a release manifest',
     offlineOnly: true,
     worldEditAuthorized: false,

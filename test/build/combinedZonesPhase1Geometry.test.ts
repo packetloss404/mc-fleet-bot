@@ -9,7 +9,7 @@ const ROOT = path.resolve(__dirname, '../..');
 const GENERATED_AT = '2026-08-04T04:30:00.000Z';
 const COMMITTED = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-geometry-coordination.json',
+  'docs/masterplans/05-combined-zones/phase1-geometry-coordination.json',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-phase1-geometry-'));
 const regeneratedPath = path.join(tempDir, 'phase1-geometry-coordination.json');

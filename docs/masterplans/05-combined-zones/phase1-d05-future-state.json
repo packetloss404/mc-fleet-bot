@@ -1,0 +1,980 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-d05-future-state",
+  "generatedAtUtc": "2026-08-05T01:20:00Z",
+  "status": "PARTIAL_PASS_EXACT_SPARSE_FUTURE_STATE_PROPOSAL_AND_SUPPORT_CLASSIFICATION_D05_G02_HOLD",
+  "purpose": "Materialize the strongest deterministic FM-01 sparse future-state proposal and exhaustive support-gap status ledger supported by accepted planning policy and immutable evidence.",
+  "sourceBindings": {
+    "ownerAcceptance": {
+      "path": "docs/masterplans/05-combined-zones/phase1-owner-review-acceptance.json",
+      "bytes": 8763,
+      "sha256": "a8afb64c009ffb4427d904d7d5eee9dfeb866e9aa0ccb5a62dcc0c59daab5889"
+    },
+    "ownerReviewBundle": {
+      "path": "docs/masterplans/05-combined-zones/phase1-owner-review-bundle.json",
+      "bytes": 5623,
+      "sha256": "cd1ab477c4d64b1d348538ee2014ad1324b38fff6e9809d1d74ba057edb21ab6"
+    },
+    "d05OwnerPacket": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json",
+      "bytes": 62442,
+      "sha256": "72b1d027a3f4f519a882dcf3ba2366bae642eae33da4b4fccdae80f6f9b6ef50"
+    },
+    "d05FutureMountain": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json",
+      "bytes": 47454,
+      "sha256": "1446c75cec504478130a8e9c5569c68c7a7569a29c4210e9b21ca5d804aeb2f3"
+    },
+    "d05FutureStateContract": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json",
+      "bytes": 38291,
+      "sha256": "72eeafc62edadd0f7a08a46ca3c65f2cfad12bc05bc4c084321e81f0190081b4"
+    },
+    "d05HydrologyBaseline": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
+      "bytes": 3250984,
+      "sha256": "e3f86c5073a00e715cf0f4d01e2a76bc1fc416290ffd7a4972b1e8c7a2b8350c"
+    },
+    "d05ConservativeDefaults": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json",
+      "bytes": 17445,
+      "sha256": "14366d541b21675011e5dad32b08b51c4c23cf826bb37b0340b4699241429774"
+    },
+    "d05RelicConditionAccess": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-relic-condition-access-survey.json",
+      "bytes": 120815,
+      "sha256": "08ec0806cabd23854a34218b274ebcb26b52ccf9b0adc51464718e4ac6666130"
+    },
+    "d06EgressGeometry": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json",
+      "bytes": 13700,
+      "sha256": "25a1d65c6fd076abd2842f2800b5d721a5557b546f70a6f18806235535279beb"
+    },
+    "connectorGeometry": {
+      "path": "docs/masterplans/05-combined-zones/phase1-connector-geometry.json",
+      "bytes": 458540,
+      "sha256": "8bb2dd803c434667dfeee440ccdf8428a115962e21dd1b3b0e6955cce672dc4e"
+    },
+    "completeSaveIntakeAudit": {
+      "path": "docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit.json",
+      "bytes": 27091,
+      "sha256": "4e4209b424a36b466789c0ea50cf75d0c72b23758cc85491b67ca1baff3f6f45"
+    },
+    "immutablePhase0PostRegionSnapshot": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+      "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+      "regionFileCount": 51,
+      "bytes": 290946492,
+      "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+    }
+  },
+  "authorityBoundary": {
+    "ownerPlanningPolicyAccepted": true,
+    "ownerAcceptanceDecision": "ACCEPT_PLANNING_POLICY_AND_TECHNICAL_DEVELOPMENT_CHECKLIST",
+    "ownerAcceptanceDoesNotPassTechnicalHolds": true,
+    "expertAcceptanceRecorded": false,
+    "exactOwnerAssignmentsAccepted": false,
+    "exactInterfaceContractsAccepted": false,
+    "completeSavedWorldAccepted": false,
+    "interpretation": "Every nonzero count is an exact proposal or immutable diagnostic. It is not an accepted construction/future cell set and cannot be executed."
+  },
+  "selectedPlanningIdentity": {
+    "modelId": "FM-01-COMPACT-EAST-FACE",
+    "modelIdentitySha256": "735b69b38c5c2ea840388039b5beb957671fe3e243ec7943c440649edcff36a6",
+    "formula": {
+      "id": "D05-DIRECTIONAL-RATIONAL-PYRAMID-V1",
+      "domain": "inclusive X/Z footprint defined by center and four directional extents; outside columns remain immutable-current",
+      "dominantRatio": "max(abs(x-centerX)/directionalXExtent, abs(z-centerZ)/directionalZExtent), compared by exact cross multiplication",
+      "designSurfaceY": "71 + floor(232 * (denominator - numerator) / denominator)",
+      "directAddedSolidIntervals": "max(currentSurfaceY+1,72)..designSurfaceY minus exact relic, B08 interaction, and candidate B09 planning-reservation cells",
+      "supportGapRule": "any candidate support below Y=72 is counted and held; it is not silently filled outside the coordination envelope",
+      "currentStateRule": "all immutable current cells remain unchanged except that exact route cells may be future-passable planning reservations; no canonical block state is assigned here",
+      "center": {
+        "x": 2048,
+        "z": -828
+      },
+      "extents": {
+        "west": 100,
+        "east": 320,
+        "north": 240,
+        "south": 240
+      },
+      "baseSurfaceY": 71,
+      "peakSurfaceY": 303
+    },
+    "directlyModelledColumnCount": 202501,
+    "designSurface": {
+      "minimumY": 71,
+      "maximumY": 303,
+      "columnManifestSha256": "18f8a7eab678b862758bdb71733b0b91a5ba31a85bcb6d4920866461a4888f90"
+    },
+    "boundCandidateAddedSolidIntervals": {
+      "status": "EXACT_UNMATERIALIZED_PLANNING_INTERVALS_NOT_CONSTRUCTION_CELLS",
+      "preamble": "combined-zones-d05-sparse-solid-intervals-v1\\n",
+      "record": "x,z<TAB>current=Y<TAB>design=Y<TAB>add=start..end[,start..end] or -",
+      "raisedColumnCount": 190954,
+      "rawAddedSolidCellCount": 15540321,
+      "candidateAddedSolidCellCount": 14768553,
+      "protectedRelicWithheldFillCellCount": 1977,
+      "b08WithheldFillCellCount": 11358,
+      "b09WithheldFillCellCount": 4245,
+      "intervalManifestSha256": "ed95837647ab5f13699e93fcc17de691d4da5f08115c4be34734e238b19b4196",
+      "canonicalMaterialState": null,
+      "constructionOwnership": false,
+      "operationAuthorization": false
+    },
+    "boundSupportGap": {
+      "status": "HOLD_EXACT_UNSUPPORTED_BELOW_Y72",
+      "columnCount": 107345,
+      "cellCount": 754224,
+      "intervalManifestSha256": "31664bc00e7a1d361567fb878e8653c2a4018045169d54900ca9ad15bddd7171",
+      "treatment": null,
+      "reason": "The coordination envelope begins at Y=72. A future solid may not silently fill lower air/water/terrain gaps without geotechnical, hydrology, ownership, and scope authority."
+    }
+  },
+  "deterministicSparseProposalContract": {
+    "status": "PASS_PROPOSAL_CONTRACT_ACCEPTED_TYPED_FAMILY_CONTRACT_NOT_EMITTED",
+    "coordinateOrder": "proposal sparse records: numeric x then z; cell expansion: numeric x then y then z",
+    "preamble": "combined-zones-d05-proposed-typed-sparse-family-v1\\n",
+    "record": "family-id<TAB>x,z<TAB>startY..endY[,startY..endY]<TAB>canonical-state-json<TAB>proposed-owner-class<TAB>role-id\\n",
+    "expansionRule": "Every inclusive Y interval expands to every integer coordinate (x,y,z); intervals in one record are disjoint and ascending.",
+    "hashing": "SHA-256 over UTF-8 bytes with the exact preamble and newline-terminated records.",
+    "acceptedTypedFamilyContract": {
+      "algorithm": "SHA-256",
+      "preamble": "combined-zones-d05-typed-family-v1\\n",
+      "record": "family-id<TAB>x,y,z<TAB>canonical-state-json<TAB>owner-id<TAB>role-id\\n"
+    },
+    "acceptedTypedFamilyQualification": "The contract typed-family hash remains null until states, exact owners, interfaces, and technical acceptance exist; a sparse proposal hash is never substituted for it."
+  },
+  "sparseCanonicalFutureStateProposal": {
+    "status": "PASS_EXACT_SPARSE_PROPOSAL_NOT_ACCEPTED_FUTURE_STATE",
+    "currentStateRule": "Every immutable current cell is retained. Candidate records start at current surface plus one, and exact relic/B08/B09 reservations are withheld.",
+    "candidateAddedSolidCellCount": 14768553,
+    "exactProposalPartitionCellCount": 14768553,
+    "partitionComplete": true,
+    "canonicalCandidateStateCounts": {
+      "minecraft:stone": 14580291,
+      "minecraft:smooth_stone": 77395,
+      "minecraft:polished_diorite": 110867
+    },
+    "classificationRules": [
+      "A candidate cell at the FM-01 analytic design surface is proposed as exposed surface finish.",
+      "Exposed finish below Y=130 is proposed smooth stone; at or above Y=130 it is proposed polished diorite.",
+      "Every other candidate added-solid cell is proposed as bulk structural stone.",
+      "Exact relic, B08, and B09 reservations remain withheld; no liner/support/mechanism state is inferred at their interfaces."
+    ],
+    "acceptedFutureCellCount": 0,
+    "acceptedConstructionCellCount": 0,
+    "acceptedFutureStateManifestSha256": null,
+    "acceptedOwnershipManifestSha256": null,
+    "proposalAccepted": false
+  },
+  "typedDirectAndInfluenceFamilies": [
+    {
+      "familyId": "native-solid-retained",
+      "group": "DIRECT_STATE_CLASSIFICATION",
+      "requiredOwnerClass": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+      "influenceRuleId": "IR-DIRECT-NO-IMPLICIT-EXPANSION",
+      "acceptedCellCount": 0,
+      "acceptedCoordinateSetSha256": null,
+      "acceptedTypedFamilySha256": null,
+      "acceptedOwnerAssignmentCount": 0,
+      "operationCellCount": 0,
+      "status": "HOLD_NO_EXACT_ACCEPTED_OR_PROPOSED_SET",
+      "proposalCellCount": null,
+      "unknownIsNotZero": true
+    },
+    {
+      "familyId": "excavation-direct",
+      "group": "DIRECT_CHANGE",
+      "requiredOwnerClass": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+      "influenceRuleId": "IR-DIRECT-NO-IMPLICIT-EXPANSION",
+      "acceptedCellCount": 0,
+      "acceptedCoordinateSetSha256": null,
+      "acceptedTypedFamilySha256": null,
+      "acceptedOwnerAssignmentCount": 0,
+      "operationCellCount": 0,
+      "status": "HOLD_NO_EXACT_ACCEPTED_OR_PROPOSED_SET",
+      "proposalCellCount": null,
+      "unknownIsNotZero": true
+    },
+    {
+      "familyId": "fill-direct",
+      "group": "DIRECT_CHANGE",
+      "requiredOwnerClass": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+      "influenceRuleId": "IR-DIRECT-NO-IMPLICIT-EXPANSION",
+      "acceptedCellCount": 0,
+      "acceptedCoordinateSetSha256": null,
+      "acceptedTypedFamilySha256": null,
+      "acceptedOwnerAssignmentCount": 0,
+      "operationCellCount": 0,
+      "status": "PASS_EXACT_SPARSE_PROPOSAL_TECHNICAL_AND_OWNER_ACCEPTANCE_HOLD",
+      "proposalCellCount": 14580291,
+      "proposalColumnRecordCount": 187797,
+      "proposalIntervalCount": 189814,
+      "proposalCanonicalStateCounts": {
+        "minecraft:stone": 14580291
+      },
+      "proposalOwnerClass": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+      "proposalSparseManifestSha256": "5fc31ddc0e2d85297430534857ba78d1c7dc824a4168608d9dbef80d006ae350",
+      "proposalAccepted": false
+    },
+    {
+      "familyId": "liner-and-retaining-direct",
+      "group": "DIRECT_CHANGE",
+      "requiredOwnerClass": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+      "influenceRuleId": "IR-DIRECT-NO-IMPLICIT-EXPANSION",
+      "acceptedCellCount": 0,
+      "acceptedCoordinateSetSha256": null,
+      "acceptedTypedFamilySha256": null,
+      "acceptedOwnerAssignmentCount": 0,
+      "operationCellCount": 0,
+      "status": "HOLD_NO_EXACT_ACCEPTED_OR_PROPOSED_SET",
+      "proposalCellCount": null,
+      "unknownIsNotZero": true
+    },
+    {
+      "familyId": "surface-finish-direct",
+      "group": "DIRECT_CHANGE",
+      "requiredOwnerClass": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+      "influenceRuleId": "IR-DIRECT-NO-IMPLICIT-EXPANSION",
+      "acceptedCellCount": 0,
+      "acceptedCoordinateSetSha256": null,
+      "acceptedTypedFamilySha256": null,
+      "acceptedOwnerAssignmentCount": 0,
+      "operationCellCount": 0,
+      "status": "PASS_EXACT_SPARSE_PROPOSAL_TECHNICAL_AND_OWNER_ACCEPTANCE_HOLD",
+      "proposalCellCount": 188262,
+      "proposalColumnRecordCount": 188262,
+      "proposalIntervalCount": 188262,
+      "proposalCanonicalStateCounts": {
+        "minecraft:smooth_stone": 77395,
+        "minecraft:polished_diorite": 110867
+      },
+      "proposalOwnerClass": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+      "proposalSparseManifestSha256": "942f7a83c7f360309d68c27d3c7f56bec78eb4ad2d4716f0a1024908529be567",
+      "proposalAccepted": false
+    },
+    {
+      "familyId": "construction-staging-and-access",
+      "group": "DIRECT_TEMPORARY_AND_ACCESS",
+      "requiredOwnerClass": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+      "influenceRuleId": "IR-STAGING-SWEPT-VOLUME",
+      "acceptedCellCount": 0,
+      "acceptedCoordinateSetSha256": null,
+      "acceptedTypedFamilySha256": null,
+      "acceptedOwnerAssignmentCount": 0,
+      "operationCellCount": 0,
+      "status": "HOLD_NO_EXACT_ACCEPTED_OR_PROPOSED_SET",
+      "proposalCellCount": null,
+      "unknownIsNotZero": true
+    },
+    {
+      "familyId": "water-and-lava-direct-interaction",
+      "group": "DERIVED_DIAGNOSTIC_INTERACTION",
+      "requiredOwnerClass": "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+      "influenceRuleId": "IR-CURRENT-FLUID-DIRECT-INTERSECTION",
+      "acceptedCellCount": 0,
+      "acceptedCoordinateSetSha256": null,
+      "acceptedTypedFamilySha256": null,
+      "acceptedOwnerAssignmentCount": 0,
+      "operationCellCount": 0,
+      "status": "HOLD_NO_ACCEPTED_INTERACTION_SET_ADJACENCY_DIAGNOSTIC_ONLY",
+      "proposalCellCount": null,
+      "immutableCurrentTopSurfaceAdjacencyDiagnostic": {
+        "waterCellCount": 7046,
+        "waterCoordinateSetSha256": "bf787a005c2f66e5a2956bc8d9598226607c8d9493efa325f5dad75ecb9e8948",
+        "lavaCellCount": 78,
+        "lavaCoordinateSetSha256": "7426dadfe27b7f3497098a632bc4ebaeb8fd00e4440c7963dccd93944b8fd825"
+      }
+    },
+    {
+      "familyId": "frozen-and-snow-direct-interaction",
+      "group": "DERIVED_DIAGNOSTIC_INTERACTION",
+      "requiredOwnerClass": "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+      "influenceRuleId": "IR-CURRENT-CRYOSPHERE-DIRECT-INTERSECTION",
+      "acceptedCellCount": 0,
+      "acceptedCoordinateSetSha256": null,
+      "acceptedTypedFamilySha256": null,
+      "acceptedOwnerAssignmentCount": 0,
+      "operationCellCount": 0,
+      "status": "HOLD_NO_ACCEPTED_INTERACTION_SET_ADJACENCY_DIAGNOSTIC_ONLY",
+      "proposalCellCount": null,
+      "immutableCurrentTopSurfaceAdjacencyDiagnostic": {
+        "frozenCellCount": 44441,
+        "frozenCoordinateSetSha256": "19fee3fee4c31dd7b1d32566e8815ee28c10abe90f9569ed793dbb4076b7d07c",
+        "snowCellCount": 134645,
+        "snowCoordinateSetSha256": "d85ba3e44f20d07224fd8b352602a17dc8adbedebb8b2f824ad0e7326ccc81f9"
+      }
+    },
+    {
+      "familyId": "dewatering-and-sump-influence",
+      "group": "PHYSICAL_INFLUENCE",
+      "requiredOwnerClass": "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+      "influenceRuleId": "IR-EXPERT-KERNEL-DEWATERING-SUMP",
+      "acceptedCellCount": 0,
+      "acceptedCoordinateSetSha256": null,
+      "acceptedTypedFamilySha256": null,
+      "acceptedOwnerAssignmentCount": 0,
+      "operationCellCount": 0,
+      "status": "HOLD_UNKNOWN_INFLUENCE_NOT_COERCED_TO_EMPTY_SET",
+      "proposalCellCount": null,
+      "unknownIsNotZero": true
+    },
+    {
+      "familyId": "drainage-and-discharge-influence",
+      "group": "PHYSICAL_INFLUENCE",
+      "requiredOwnerClass": "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+      "influenceRuleId": "IR-DIRECTED-DRAINAGE-DISCHARGE-GRAPH",
+      "acceptedCellCount": 0,
+      "acceptedCoordinateSetSha256": null,
+      "acceptedTypedFamilySha256": null,
+      "acceptedOwnerAssignmentCount": 0,
+      "operationCellCount": 0,
+      "status": "HOLD_UNKNOWN_INFLUENCE_NOT_COERCED_TO_EMPTY_SET",
+      "proposalCellCount": null,
+      "unknownIsNotZero": true
+    },
+    {
+      "familyId": "groundwater-infiltration-and-erosion-influence",
+      "group": "PHYSICAL_INFLUENCE",
+      "requiredOwnerClass": "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+      "influenceRuleId": "IR-EXPERT-KERNEL-GROUNDWATER-EROSION",
+      "acceptedCellCount": 0,
+      "acceptedCoordinateSetSha256": null,
+      "acceptedTypedFamilySha256": null,
+      "acceptedOwnerAssignmentCount": 0,
+      "operationCellCount": 0,
+      "status": "HOLD_UNKNOWN_INFLUENCE_NOT_COERCED_TO_EMPTY_SET",
+      "proposalCellCount": null,
+      "unknownIsNotZero": true
+    },
+    {
+      "familyId": "protected-relic-support-and-access-influence",
+      "group": "PHYSICAL_INFLUENCE",
+      "requiredOwnerClass": "CZ05-PROTECTED-RELIC-CONTROL",
+      "influenceRuleId": "IR-RELIC-SUPPORT-ACCESS-EXACT",
+      "acceptedCellCount": 0,
+      "acceptedCoordinateSetSha256": null,
+      "acceptedTypedFamilySha256": null,
+      "acceptedOwnerAssignmentCount": 0,
+      "operationCellCount": 0,
+      "status": "HOLD_EXPERT_INFLUENCE_UNKNOWN_MINIMUM_PLANNING_EXCLUSION_ONLY",
+      "proposalCellCount": null,
+      "minimumPlanningExclusionDiagnostic": {
+        "cellCount": 4890,
+        "coordinateSetSha256": "5dcbcaca22ee39ee9309e1fc5139eb3fbff052bb114ae00d20a723c045eab26b",
+        "acceptedAsExpertInfluenceSet": false
+      }
+    }
+  ],
+  "supportGapStatusLedger": {
+    "status": "PASS_EXACT_EXHAUSTIVE_STATUS_CLASSIFICATION_TREATMENT_ACCEPTANCE_HOLD",
+    "boundIntervalManifestSha256": "31664bc00e7a1d361567fb878e8653c2a4018045169d54900ca9ad15bddd7171",
+    "cellCount": 754224,
+    "columnCount": 107345,
+    "coordinateSetSha256": "f007560fafa7eceed438c4ade36981fe16461c7dad35b55f4f29bf729e86bde6",
+    "classifiedCellCount": 754224,
+    "unclassifiedCellCount": 0,
+    "multiplyClassifiedCellCount": 0,
+    "classificationPrecedence": [
+      {
+        "id": "SUPPORT-STATUS-RELIC-PRESERVE",
+        "precedence": 1
+      },
+      {
+        "id": "SUPPORT-STATUS-B08-RESERVATION",
+        "precedence": 2
+      },
+      {
+        "id": "SUPPORT-STATUS-B09-RESERVATION",
+        "precedence": 3
+      },
+      {
+        "id": "SUPPORT-STATUS-D06-RESERVATION",
+        "precedence": 4
+      },
+      {
+        "id": "SUPPORT-STATUS-WATER-ADJACENT",
+        "precedence": 5
+      },
+      {
+        "id": "SUPPORT-STATUS-LAVA-ADJACENT",
+        "precedence": 6
+      },
+      {
+        "id": "SUPPORT-STATUS-FROZEN-ADJACENT",
+        "precedence": 7
+      },
+      {
+        "id": "SUPPORT-STATUS-SNOW-ADJACENT",
+        "precedence": 8
+      },
+      {
+        "id": "SUPPORT-STATUS-OTHER-SURFACE",
+        "precedence": 9
+      }
+    ],
+    "families": [
+      {
+        "id": "SUPPORT-STATUS-RELIC-PRESERVE",
+        "precedence": 1,
+        "classificationBasis": "exact relic preserve-current-state set",
+        "cellCount": 363,
+        "columnCount": 96,
+        "bounds": {
+          "minX": 2071,
+          "maxX": 2100,
+          "minY": 68,
+          "maxY": 71,
+          "minZ": -662,
+          "maxZ": -652
+        },
+        "coordinateSetSha256": "00d700cbfc8347081dd3f1aa1e5fa4f561c86de2ee2a776953c54826549c197f",
+        "sparseIntervalRecordCount": 96,
+        "sparseIntervalManifestSha256": "68dd7937b05b4d3371476903b341fcd0872937a27ee9ce3431d48dafbb47d420",
+        "proposedTreatmentClass": "SUPPORT-RETAIN-VOID",
+        "treatmentAccepted": false,
+        "canonicalFutureState": null,
+        "exactOwnerAssignmentAccepted": false,
+        "ownerClassRequired": "CZ05-PROTECTED-RELIC-CONTROL",
+        "status": "PLANNING_POLICY_SELECTED_ENGINEERING_INFLUENCE_HOLD"
+      },
+      {
+        "id": "SUPPORT-STATUS-B08-RESERVATION",
+        "precedence": 2,
+        "classificationBasis": "exact B08 interaction reservation",
+        "cellCount": 0,
+        "columnCount": 0,
+        "bounds": null,
+        "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+        "sparseIntervalRecordCount": 0,
+        "sparseIntervalManifestSha256": "f1cdeec5de110b4a6b9e0a3e5253a6cc30c3a0f73b339533266829a85085b2bb",
+        "proposedTreatmentClass": "SUPPORT-RETAIN-VOID",
+        "treatmentAccepted": false,
+        "canonicalFutureState": null,
+        "exactOwnerAssignmentAccepted": false,
+        "ownerClassRequired": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+        "status": "PLANNING_RESERVATION_SELECTED_EXACT_INTERFACE_HOLD"
+      },
+      {
+        "id": "SUPPORT-STATUS-B09-RESERVATION",
+        "precedence": 3,
+        "classificationBasis": "exact B09 minimum planning accommodation",
+        "cellCount": 0,
+        "columnCount": 0,
+        "bounds": null,
+        "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+        "sparseIntervalRecordCount": 0,
+        "sparseIntervalManifestSha256": "f1cdeec5de110b4a6b9e0a3e5253a6cc30c3a0f73b339533266829a85085b2bb",
+        "proposedTreatmentClass": "SUPPORT-RETAIN-VOID",
+        "treatmentAccepted": false,
+        "canonicalFutureState": null,
+        "exactOwnerAssignmentAccepted": false,
+        "ownerClassRequired": "CZ05-Z11-FUNICULAR-CONTROL",
+        "status": "PLANNING_RESERVATION_SELECTED_SYSTEM_ACCEPTANCE_HOLD"
+      },
+      {
+        "id": "SUPPORT-STATUS-D06-RESERVATION",
+        "precedence": 4,
+        "classificationBasis": "exact D06 external continuation reservation",
+        "cellCount": 0,
+        "columnCount": 0,
+        "bounds": null,
+        "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+        "sparseIntervalRecordCount": 0,
+        "sparseIntervalManifestSha256": "f1cdeec5de110b4a6b9e0a3e5253a6cc30c3a0f73b339533266829a85085b2bb",
+        "proposedTreatmentClass": "SUPPORT-RETAIN-VOID",
+        "treatmentAccepted": false,
+        "canonicalFutureState": null,
+        "exactOwnerAssignmentAccepted": false,
+        "ownerClassRequired": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+        "status": "PLANNING_RESERVATION_SELECTED_D06_ACCEPTANCE_HOLD"
+      },
+      {
+        "id": "SUPPORT-STATUS-WATER-ADJACENT",
+        "precedence": 5,
+        "classificationBasis": "immutable current top-surface family water",
+        "cellCount": 63368,
+        "columnCount": 7043,
+        "bounds": {
+          "minX": 2076,
+          "maxX": 2281,
+          "minY": 52,
+          "maxY": 71,
+          "minZ": -1062,
+          "maxZ": -588
+        },
+        "coordinateSetSha256": "7dd6b5c95bfacdbfe5b08e35063a2d5c053c2c17d6b39d992715320236334f50",
+        "sparseIntervalRecordCount": 7043,
+        "sparseIntervalManifestSha256": "755694c6347ce934dad5584b22b7692ffb0756074ad1d23db5ce2b349a52cbc6",
+        "proposedTreatmentClass": null,
+        "treatmentAccepted": false,
+        "canonicalFutureState": null,
+        "exactOwnerAssignmentAccepted": false,
+        "ownerClassRequired": "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+        "status": "HOLD_HYDROLOGY_AND_GEOTECHNICAL_TREATMENT_UNRESOLVED"
+      },
+      {
+        "id": "SUPPORT-STATUS-LAVA-ADJACENT",
+        "precedence": 6,
+        "classificationBasis": "immutable current top-surface family lava",
+        "cellCount": 0,
+        "columnCount": 0,
+        "bounds": null,
+        "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+        "sparseIntervalRecordCount": 0,
+        "sparseIntervalManifestSha256": "f1cdeec5de110b4a6b9e0a3e5253a6cc30c3a0f73b339533266829a85085b2bb",
+        "proposedTreatmentClass": null,
+        "treatmentAccepted": false,
+        "canonicalFutureState": null,
+        "exactOwnerAssignmentAccepted": false,
+        "ownerClassRequired": "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+        "status": "HOLD_HYDROLOGY_THERMAL_AND_GEOTECHNICAL_TREATMENT_UNRESOLVED"
+      },
+      {
+        "id": "SUPPORT-STATUS-FROZEN-ADJACENT",
+        "precedence": 7,
+        "classificationBasis": "immutable current top-surface family frozen",
+        "cellCount": 384445,
+        "columnCount": 43600,
+        "bounds": {
+          "minX": 1948,
+          "maxX": 2368,
+          "minY": 56,
+          "maxY": 71,
+          "minZ": -1068,
+          "maxZ": -588
+        },
+        "coordinateSetSha256": "787f934e22cbc0520319965da39b0ad8324bc3038f915fb112c0efe392e20b0b",
+        "sparseIntervalRecordCount": 43600,
+        "sparseIntervalManifestSha256": "ac7b73ae84e08a41c330a4fa532528bf3f8c9894094b371a86e6bc89afc925ba",
+        "proposedTreatmentClass": null,
+        "treatmentAccepted": false,
+        "canonicalFutureState": null,
+        "exactOwnerAssignmentAccepted": false,
+        "ownerClassRequired": "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+        "status": "HOLD_CRYOSPHERE_AND_GEOTECHNICAL_TREATMENT_UNRESOLVED"
+      },
+      {
+        "id": "SUPPORT-STATUS-SNOW-ADJACENT",
+        "precedence": 8,
+        "classificationBasis": "immutable current top-surface family snow",
+        "cellCount": 288414,
+        "columnCount": 53911,
+        "bounds": {
+          "minX": 1948,
+          "maxX": 2368,
+          "minY": 38,
+          "maxY": 71,
+          "minZ": -1068,
+          "maxZ": -588
+        },
+        "coordinateSetSha256": "873f0c2fce2369990d68c08bfaad4444c622a35fad326ff5224cb41b1b037294",
+        "sparseIntervalRecordCount": 53911,
+        "sparseIntervalManifestSha256": "f275a0b41d2a08ae40b2071d86815e071cc0ce97d1205f20535bd1b1deb85e56",
+        "proposedTreatmentClass": null,
+        "treatmentAccepted": false,
+        "canonicalFutureState": null,
+        "exactOwnerAssignmentAccepted": false,
+        "ownerClassRequired": "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+        "status": "HOLD_CRYOSPHERE_AND_GEOTECHNICAL_TREATMENT_UNRESOLVED"
+      },
+      {
+        "id": "SUPPORT-STATUS-OTHER-SURFACE",
+        "precedence": 9,
+        "classificationBasis": "immutable current top-surface family other",
+        "cellCount": 17634,
+        "columnCount": 2778,
+        "bounds": {
+          "minX": 1948,
+          "maxX": 2365,
+          "minY": 60,
+          "maxY": 71,
+          "minZ": -1068,
+          "maxZ": -588
+        },
+        "coordinateSetSha256": "7c5bd9a1de8b592830936dbbd489d1ef8e0d269473efaab301615b55f1f9bb99",
+        "sparseIntervalRecordCount": 2778,
+        "sparseIntervalManifestSha256": "5cd6a5f981e99eef9de9b0df6bb77507c6ae293638f934dbc51445557846f404",
+        "proposedTreatmentClass": "SUPPORT-ENGINEERED-FILL",
+        "treatmentAccepted": false,
+        "canonicalFutureState": null,
+        "exactOwnerAssignmentAccepted": false,
+        "ownerClassRequired": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+        "status": "PROPOSED_ENGINEERED_FILL_TECHNICAL_STATE_AND_ACCEPTANCE_HOLD"
+      }
+    ],
+    "rawReservationOverlapDiagnosticsBeforePrecedence": {
+      "relic": 363,
+      "b08": 0,
+      "b09": 0,
+      "d06": 0,
+      "relicAndB08": 0,
+      "relicAndB09": 0,
+      "relicAndD06": 0,
+      "b08AndB09": 0,
+      "b08AndD06": 0,
+      "b09AndD06": 0,
+      "threeOrMore": 0
+    },
+    "treatmentAcceptance": {
+      "acceptedTreatmentRecordCount": 0,
+      "acceptedNoChangeRecordCount": 0,
+      "acceptedCanonicalStateCount": 0,
+      "acceptedOwnerAssignmentCount": 0,
+      "status": "HOLD",
+      "reason": "Exhaustive deterministic status classification closes the accounting gap but does not self-accept any support treatment."
+    }
+  },
+  "hydrologyAndRelicBoundary": {
+    "preservationPolicy": "ZERO_UNDECLARED_CHANGE_AND_DEFAULT_NO_DIVERSION",
+    "currentWaterLavaFrozenSnowCellsDirectlyReplacedByProposal": 0,
+    "noDiversionTechnicallyAccepted": false,
+    "influenceUnknownIsNotZero": true,
+    "protectedRelicMinimumPlanningExclusion": {
+      "cellCount": 4890,
+      "coordinateSetSha256": "5dcbcaca22ee39ee9309e1fc5139eb3fbff052bb114ae00d20a723c045eab26b",
+      "excludedFromCandidateFill": true,
+      "acceptedAsExpertInfluenceDistance": false
+    },
+    "unresolved": [
+      "finite groundwater, infiltration, erosion, settlement, and support kernels",
+      "exact dewatering/sump cells and capacities",
+      "exact drainage/discharge graph, receiver, outfall, and directional contracts",
+      "water/lava/frozen/snow component accounting after accepted support and route design",
+      "expert relic structure, groundwater, observation/emergency access, staging, and equipment-sweep influence cells"
+    ]
+  },
+  "exactReservationsAndInterfaces": {
+    "b08Interaction": {
+      "cellCount": 15096,
+      "bounds": {
+        "minX": 1947,
+        "maxX": 2049,
+        "minY": 70,
+        "maxY": 135,
+        "minZ": -751,
+        "maxZ": -624
+      },
+      "coordinateSetSha256": "ea3124fc7925dfb77b491c9685dbdad62714276a8a6c88fa3a60b35d20886f8e",
+      "constructionOwnership": false,
+      "supportGapRawIntersectionCellCount": 0,
+      "status": "EXACT_PLANNING_RESERVATION_INTERFACE_CONTRACT_HOLD"
+    },
+    "b09MinimumPlanningAccommodation": {
+      "derivation": "two-cell rail/headroom seed plus exact one-cell Chebyshev shell; not an engineering, structural, evacuation, or vehicle-clearance buffer",
+      "cellCount": 7800,
+      "bounds": {
+        "minX": 2047,
+        "maxX": 2289,
+        "minY": 129,
+        "maxY": 306,
+        "minZ": -829,
+        "maxZ": -747
+      },
+      "coordinateSetSha256": "e9e2e116f363e999151a41e4fee2ef32d2f96c1184f6432128ff31e8d9a118ca",
+      "constructionOwnership": false,
+      "operationAuthorization": false,
+      "supportGapRawIntersectionCellCount": 0,
+      "status": "EXACT_PLANNING_RESERVATION_SYSTEM_AND_INTERFACE_ACCEPTANCE_HOLD"
+    },
+    "d06ExternalContinuations": [
+      {
+        "id": "EG-A",
+        "bounds": {
+          "minX": 1649,
+          "maxX": 1655,
+          "minY": 55,
+          "maxY": 80,
+          "minZ": 145,
+          "maxZ": 151
+        },
+        "cellCount": 1274,
+        "coordinateSetSha256": "da0d3c3a2db61ea29efe64b55e13a977cc5c36a8773c1030af8cd91e856b2213",
+        "surfaceLandingY": 80,
+        "stairReservation": {
+          "bounds": {
+            "minX": 1649,
+            "maxX": 1651,
+            "minY": 55,
+            "maxY": 80,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "cellCount": 546,
+          "coordinateSetSha256": "d6fd81daf0e6928ba776dbf1b7fb8ac6e4edac7594a6a99c2e7ab262209c2897"
+        },
+        "accessibleLiftReservation": {
+          "bounds": {
+            "minX": 1653,
+            "maxX": 1655,
+            "minY": 55,
+            "maxY": 80,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "cellCount": 234,
+          "coordinateSetSha256": "a57d2822d52e819a59b0dd8c8438e5b7e4025145a1d53827c888672dd262bf88"
+        },
+        "routeGraph": {
+          "nodes": [
+            {
+              "id": "EG-A-ROOF-CAP",
+              "x": 1652,
+              "y": 54,
+              "z": 148
+            },
+            {
+              "id": "EG-A-SURFACE-LANDING",
+              "x": 1652,
+              "y": 80,
+              "z": 148
+            },
+            {
+              "id": "EG-A-SAFE-EXTERIOR",
+              "x": 1652,
+              "y": 80,
+              "z": 151
+            }
+          ],
+          "edges": [
+            {
+              "from": "EG-A-ROOF-CAP",
+              "to": "EG-A-SURFACE-LANDING",
+              "modes": [
+                "protected-stairs",
+                "reserved-accessible-lift"
+              ]
+            },
+            {
+              "from": "EG-A-SURFACE-LANDING",
+              "to": "EG-A-SAFE-EXTERIOR",
+              "modes": [
+                "level-accessible-path"
+              ]
+            }
+          ]
+        },
+        "fm01SupportGapIntersectionCellCount": 0,
+        "physicalOpeningAuthorized": false,
+        "mechanismCommissioned": false,
+        "status": "EXACT_REFERENCE_ONLY"
+      },
+      {
+        "id": "EG-B",
+        "bounds": {
+          "minX": 1849,
+          "maxX": 1855,
+          "minY": 55,
+          "maxY": 71,
+          "minZ": 145,
+          "maxZ": 151
+        },
+        "cellCount": 833,
+        "coordinateSetSha256": "8c5e784edcafe9355e0a4986616e5289264112b455e0b280962895a1a036c70a",
+        "surfaceLandingY": 71,
+        "stairReservation": {
+          "bounds": {
+            "minX": 1849,
+            "maxX": 1851,
+            "minY": 55,
+            "maxY": 71,
+            "minZ": 145,
+            "maxZ": 151
+          },
+          "cellCount": 357,
+          "coordinateSetSha256": "c9bfd785188c88f1f96ed0ad566d2cb755b9583d79a315a6a78638add29d7661"
+        },
+        "accessibleLiftReservation": {
+          "bounds": {
+            "minX": 1853,
+            "maxX": 1855,
+            "minY": 55,
+            "maxY": 71,
+            "minZ": 147,
+            "maxZ": 149
+          },
+          "cellCount": 153,
+          "coordinateSetSha256": "db34be7f105d35e4d8026ca33d678a49d3323fd767753e848bf9d9c5b5537332"
+        },
+        "routeGraph": {
+          "nodes": [
+            {
+              "id": "EG-B-ROOF-CAP",
+              "x": 1852,
+              "y": 54,
+              "z": 148
+            },
+            {
+              "id": "EG-B-SURFACE-LANDING",
+              "x": 1852,
+              "y": 71,
+              "z": 148
+            },
+            {
+              "id": "EG-B-SAFE-EXTERIOR",
+              "x": 1852,
+              "y": 71,
+              "z": 151
+            }
+          ],
+          "edges": [
+            {
+              "from": "EG-B-ROOF-CAP",
+              "to": "EG-B-SURFACE-LANDING",
+              "modes": [
+                "protected-stairs",
+                "reserved-accessible-lift"
+              ]
+            },
+            {
+              "from": "EG-B-SURFACE-LANDING",
+              "to": "EG-B-SAFE-EXTERIOR",
+              "modes": [
+                "level-accessible-path"
+              ]
+            }
+          ]
+        },
+        "fm01SupportGapIntersectionCellCount": 0,
+        "physicalOpeningAuthorized": false,
+        "mechanismCommissioned": false,
+        "status": "EXACT_REFERENCE_ONLY"
+      }
+    ],
+    "requiredDirectionalInterfaces": [
+      "IF-B08-B09-PORTAL",
+      "IF-B09-B10-GUIDEWAY-MOUNTAIN",
+      "IF-B09-Z11-SUMMIT",
+      "IF-B09-RELIC-D06-CLEARANCE",
+      "D05 hydrology receiver/outfall and cross-boundary component contracts",
+      "D05 relic-control veto/clearance contracts against final direct, staging, access, and influence sets"
+    ]
+  },
+  "ownersAndInterfacesRequired": {
+    "ownerRoles": [
+      {
+        "ownerId": "CZ05-PROTECTED-RELIC-CONTROL",
+        "role": "Canonical veto owner for accepted protected cores, minimum exclusions, and later expert support/access influence cells.",
+        "exactCellAssignmentsAccepted": false
+      },
+      {
+        "ownerId": "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+        "role": "Canonical owner for accepted direct fluid/cryosphere interactions, drainage/discharge, dewatering, and hydrology influence cells.",
+        "exactCellAssignmentsAccepted": false
+      },
+      {
+        "ownerId": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+        "role": "Owner class for accepted direct mountain, support, finish, staging, and access cells after relic/hydrology vetoes.",
+        "exactCellAssignmentsAccepted": false
+      },
+      {
+        "ownerId": "CZ05-Z11-FUNICULAR-CONTROL",
+        "role": "Proposed subordinate scope owner for B09 guideway, stations, maintenance/egress, and mechanisms under exact interfaces.",
+        "exactCellAssignmentsAccepted": false
+      }
+    ],
+    "exactCellAssignmentCount": 0,
+    "exactInterfaceContractCount": 0,
+    "ownerClassesInProposalAreNotAssignments": true,
+    "unownedAcceptedCellCount": 0,
+    "multiplyOwnedAcceptedCellCount": 0,
+    "unownedProposalCellCount": 14768553,
+    "multiplyOwnedProposalCellCount": null,
+    "undeclaredProposalInterfaceCount": null,
+    "accepted": false
+  },
+  "passHoldMatrix": [
+    {
+      "id": "D05-FS-01-SOURCE-AND-OWNER-ACCEPTANCE-CHAIN",
+      "status": "PASS",
+      "result": "The accepted owner record, bundle, D05 packet, compiler contract, design evidence, and immutable region evidence are hash-bound."
+    },
+    {
+      "id": "D05-FS-02-FM01-SURFACE-AND-CANDIDATE-INTERVALS",
+      "status": "PASS",
+      "result": "Reproduced 202,501 columns and 14,768,553 candidate added-solid cells under the accepted FM-01 planning identity."
+    },
+    {
+      "id": "D05-FS-03-SPARSE-CANONICAL-STATE-PROPOSAL",
+      "status": "PASS_PROPOSAL_ONLY",
+      "result": "Every FM-01 candidate added-solid cell is partitioned into an exact sparse bulk-fill or exposed-surface-finish proposal; none is accepted or owner-assigned."
+    },
+    {
+      "id": "D05-FS-04-SUPPORT-GAP-STATUS-CLASSIFICATION",
+      "status": "PASS_CLASSIFICATION_ONLY",
+      "result": "All 754,224 below-Y72 gap cells belong to exactly one deterministic status family and reproduce the bound gap manifest."
+    },
+    {
+      "id": "D05-FS-05-SUPPORT-TREATMENT-ACCEPTANCE",
+      "status": "HOLD",
+      "result": "Hydrology/cryosphere-adjacent families have no selected treatment, and no proposed treatment has accepted states, loads, stability criteria, owner assignments, or interfaces."
+    },
+    {
+      "id": "D05-FS-06-HYDROLOGY-NO-DIVERSION",
+      "status": "HOLD",
+      "result": "The proposal replaces zero current fluid/cryosphere cells, but adjacency, infiltration, drainage, discharge, snowmelt, erosion, and receiver effects remain unknown and default-deny."
+    },
+    {
+      "id": "D05-FS-07-PROTECTED-RELIC-CLEARANCE",
+      "status": "HOLD",
+      "result": "The 4,890-cell minimum preserve-current-state union is withheld, but expert structural, groundwater, access, staging, and all-start influence sets are absent."
+    },
+    {
+      "id": "D05-FS-08-OWNERSHIP-AND-DIRECTIONAL-INTERFACES",
+      "status": "HOLD",
+      "result": "Owner classes are proposed; exact assignments and one-to-one directional interface/receiver contracts remain absent."
+    },
+    {
+      "id": "D05-FS-09-B09-SYSTEM-AND-MECHANISMS",
+      "status": "HOLD",
+      "result": "The exact B09 planning reservation is withheld, but stations, support, guideway, maintenance/egress, mechanisms, rescue, drainage, and commissioning sets remain absent."
+    },
+    {
+      "id": "D05-FS-10-D06-RESERVATION-INDEPENDENCE",
+      "status": "PASS_REFERENCE_ONLY",
+      "result": "EG-A and EG-B remain exact dry/disjoint external reservation references with zero FM-01 support-gap intersection and no physical-opening authority."
+    },
+    {
+      "id": "D05-FS-11-COMPLETE-SAVED-WORLD",
+      "status": "HOLD",
+      "result": "The separate complete-save intake audit remains HOLD_INCOMPLETE_OR_UNBOUND_SAVE; this immutable region snapshot is valid design evidence but not a complete-save substitute."
+    },
+    {
+      "id": "D05-FS-12-D05-G02-CLOSURE",
+      "status": "HOLD",
+      "result": "Accepted future/construction cells remain zero until support, hydrology, relic, B09, ownership, interfaces, and complete-save criteria pass one identity."
+    }
+  ],
+  "disposition": {
+    "ownerPolicyAccepted": true,
+    "fm01GeometryReproduced": true,
+    "sparseCanonicalProposalCompleteForCandidateAddedSolidCells": true,
+    "supportGapStatusClassificationComplete": true,
+    "supportGapTreatmentAccepted": false,
+    "canonicalFutureStateAccepted": false,
+    "hydrologyAndGeotechnicalAccepted": false,
+    "protectedRelicExpertInfluenceAccepted": false,
+    "b09SystemAccepted": false,
+    "ownershipAndInterfacesAccepted": false,
+    "completeSavedWorldAccepted": false,
+    "acceptedFutureCellCount": 0,
+    "acceptedConstructionCellCount": 0,
+    "d05Resolved": false,
+    "r00G02Passed": false
+  },
+  "safetyBoundary": {
+    "offlineOnly": true,
+    "liveCallsPerformed": [],
+    "operations": [],
+    "operationCellCount": 0,
+    "materialCellCount": 0,
+    "futureCellCount": 0,
+    "constructionCellCount": 0,
+    "worldEditAuthorized": false,
+    "physicalBuildAuthorized": false,
+    "executable": false
+  },
+  "reportIdentitySha256": "ee688150305dd4cda34c56003054d7251bf2166e5ddfd5c8c494840eb31c614b"
+}

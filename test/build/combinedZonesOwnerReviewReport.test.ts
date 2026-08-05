@@ -4,7 +4,7 @@ import path from 'node:path';
 import { afterAll, describe, expect, it } from 'vitest';
 
 const repoRoot = path.resolve(__dirname, '../..');
-const reportDirectory = path.join(repoRoot, 'masterplans', '05-combined-zones');
+const reportDirectory = path.join(repoRoot, 'docs', 'masterplans', '05-combined-zones');
 const reportPath = path.join(reportDirectory, 'phase1-owner-review-report.html');
 const temporaryReportPath = path.join(reportDirectory, '.phase1-owner-review-report.test.html');
 const bundle = JSON.parse(readFileSync(path.join(reportDirectory, 'phase1-owner-review-bundle.json'), 'utf8'));
@@ -31,7 +31,7 @@ describe('Combined Zones owner review HTML5 report', () => {
       process.execPath,
       [
         'scripts/generate_combined_zones_owner_review_report.mjs',
-        'masterplans/05-combined-zones/.phase1-owner-review-report.test.html',
+        'docs/masterplans/05-combined-zones/.phase1-owner-review-report.test.html',
       ],
       { cwd: repoRoot },
     );
@@ -65,9 +65,9 @@ describe('Combined Zones owner review HTML5 report', () => {
     expect(html).toContain(`withholds ${d02C01.proposalPayload.oneOwnerPrecedence.exactConflictAccounting.d02CellsWithheldByLoadingSeparation.cellCount} of ${d02C01.proposalPayload.oneOwnerPrecedence.exactConflictAccounting.d02CandidateCellCountAtStack}`);
     expect(html).toContain(`${b09Technical.exactTechnicalReservationProposals.proposalLayerCount} station, guideway/support`);
     expect(html).toContain(b11Technical.exactCellSets.proposedRoadConstruction.cellCount.toLocaleString('en-US'));
-    expect(html).toContain(`${g03Setout.gate.unresolvedRequiredDomainCount} null/planning-only domains`);
+    expect(html).toContain(`all ${g03Setout.gate.exactRequiredDomainCount} required construction/interaction/influence domains`);
     expect(html).toContain(g06Clearance.supportEvidenceAudit.protectedCores.overlapCellCount.toString());
-    expect(html).toContain(ownershipInterfaces.proposalAccounting.knownCrossScopeProposedCellCount.toLocaleString('en-US'));
+    expect(html).toContain(ownershipInterfaces.g04PhysicalOwnership.observedPhysicalUnionCellCount.toLocaleString('en-US'));
 
     for (const packet of bundle.packetSummary) {
       expect(html).toContain(packet.scope);

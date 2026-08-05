@@ -1,0 +1,1328 @@
+{
+  "schemaVersion": 4,
+  "id": "combined-zones-east-reserve-study-v4",
+  "status": "PHASE0_SOUTH_ANNEX_RESITE_PASS_NOT_AUTHORIZED_FOR_WORLD_EDITS",
+  "authorityModel": {
+    "kind": "field-scoped-composition",
+    "reconciliation": "docs/masterplans/04-combined-complex/authority-reconciliation.json",
+    "chain": "01 + 02 + 03 -> 04 normalized architecture -> 05 current-world placement",
+    "domains": {
+      "childInternals": [
+        "docs/masterplans/01-cheyenne-mountain-complex/06-contractor/contractor-brief.json",
+        "docs/masterplans/02-subtropolis/06-contractor/contractor-brief.json",
+        "docs/masterplans/03-houston-tunnel-system/06-contractor/contractor-brief.json"
+      ],
+      "normalizedComposition": [
+        "docs/masterplans/04-combined-complex/02-design/site-coordinates.json",
+        "docs/masterplans/04-combined-complex/04-contractor/contractor-brief.json"
+      ],
+      "currentWorldPlacement": "this registry",
+      "masterplan05OwnedZones": ["Z00", "Z01", "Z02", "Z02-U1", "Z03"],
+      "masterplan04DerivedZones": ["Z04", "Z05", "Z06", "Z07", "Z08", "Z09", "Z10", "Z11"]
+    },
+    "worldEditAuthorized": false
+  },
+  "world": "world",
+  "orientation": {
+    "north": "-z",
+    "east": "+x",
+    "up": "+y"
+  },
+  "coordinateSemantics": {
+    "y": "Proposed engineered elevation only where explicitly set. Null remains deliberately unset; never substitute terrain Y as a build setout.",
+    "surveyedTerrainY": "Top terrain support decoded from the immutable Phase 0 post-generation Anvil snapshot.",
+    "surveyedWaterSurfaceY": "Top water surface at a surveyed water column.",
+    "planningBounds": "Published min/max bounds are inclusive planning-envelope references, not compiled cell sets.",
+    "blockRoundingPolicy": null,
+    "compilationRule": "Freeze exact integer cell sets, inclusive/half-open conversion, and vertical rounding per owned scope before generating any operation.",
+    "statusRule": "The replacement transform and sampled rail profile passed Phase 0. They authorize detailed design only, not excavation, grading, structure removal, or construction."
+  },
+  "acceptedBaseline": {
+    "snapshot": {
+      "path": "data/worldsnap-town-terminal-recovery-post-20260728T1839Z/region",
+      "sha256": "c39d0d67c9dec737aa5807cf5fa56a84f3c3d38d4b13d0f82599d3eb30fa6751",
+      "regionFileCount": 30,
+      "bytes": 134749182
+    },
+    "database": {
+      "path": "data/world-map.db",
+      "sha256": "71876a7ecf73e90475a9b5047938e14f39ea0a20381dea8c5286582059f95f8a",
+      "featureCount": 1215,
+      "activeFeatureCount": 1214,
+      "retiredFeatureCount": 1,
+      "featureUnion": {
+        "minX": -714,
+        "maxX": 1300,
+        "minY": -46,
+        "maxY": 319,
+        "minZ": -719,
+        "maxZ": 311.5
+      }
+    },
+    "topDownMap": {
+      "path": "data/exports/box/town-expansion-r1-final-2026-07-28/media/maps/map-whole-world-overview.png",
+      "sha256": "ca62fa267913aff3e044277ac20ee0c9ceaebaa591080b410adea80cf92d769f",
+      "widthPixels": 2352,
+      "heightPixels": 2352,
+      "blocksPerPixel": 1,
+      "renderBounds": {
+        "minX": -883,
+        "maxX": 1468,
+        "minZ": -1387,
+        "maxZ": 964
+      },
+      "pixelMapping": {
+        "pixelX": "worldX + 883",
+        "pixelY": "worldZ + 1387"
+      }
+    }
+  },
+  "phase0Survey": {
+    "status": "COMPLETE_SOUTH_ANNEX_SITING_GATE_PASSED",
+    "preGenerationSnapshot": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-pre-20260804T021237Z/region",
+      "sha256": "fe7a3e5a75bbf90104c73bf9f78115300fe66f82b300d2dde7cede9fd993ab37",
+      "regionFileCount": 51,
+      "bytes": 290946492
+    },
+    "postGenerationSnapshot": {
+      "path": "data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z/region",
+      "sha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b",
+      "regionFileCount": 51,
+      "bytes": 290946492
+    },
+    "generationDisposition": {
+      "additionalChunkGenerationRequired": false,
+      "reason": "The complete revised footprint lies inside the already-full Phase 0 atlas.",
+      "preservedForceLoadBaseline": 104
+    },
+    "coverage": {
+      "atlasFullChunks": 14238,
+      "reserveFullChunks": 6097,
+      "passed": true
+    },
+    "corridor": {
+      "sampleCount": 79,
+      "intervalBlocks": 16,
+      "terrainMinY": 55,
+      "terrainMaxY": 122,
+      "waterSampleCount": 3,
+      "intervalsExceedingOneInEight": 39,
+      "naturalSurfaceRailGradePassed": false,
+      "engineeredRailGradePassed": true,
+      "engineeredMaximumGrade": 0.125,
+      "engineeredRailMinY": 63,
+      "engineeredRailMaxY": 114,
+      "maximumCutBlocks": 36,
+      "maximumFillBlocks": 23
+    },
+    "revisedReserve": {
+      "columns": 1525001,
+      "waterColumns": 245299,
+      "waterFraction": 0.160852,
+      "terrainMinY": 5,
+      "terrainMaxY": 138
+    },
+    "coreFootprints": {
+      "mountainWaterFraction": 0.026167,
+      "urbanWaterFraction": 0.027788,
+      "allFiveCriticalAnchorsDry": true,
+      "protectedSurfaceRelics": 3
+    },
+    "gatewayExpansionTerminalFootprint": {
+      "columns": 29161,
+      "proposedRoofY": 54,
+      "minimumTerrainAboveRoof": 8,
+      "waterColumns": 0,
+      "coldBiomeColumns": 0,
+      "columnsMeetingEightBlockSolidCover": 29161,
+      "eightBlockSolidCoverFraction": 1,
+      "verticalStructureConflicts": 0,
+      "coverGatePassed": true
+    },
+    "sitingGatePassed": true,
+    "supersededFirstRun": {
+      "postSnapshotSha256": "979e78052b1336e90be664dc7215b6df14962c4203a9cbce8b567ebb98e74ead",
+      "result": "FAILED_ORIGINAL_TRANSFORM_RETAINED_AS_NEGATIVE_EVIDENCE"
+    },
+    "evidence": "docs/masterplans/05-combined-zones/phase0-survey-evidence.json",
+    "terrainProbe": "docs/masterplans/05-combined-zones/corridor-terrain-probe.json",
+    "topDownMap": "docs/masterplans/05-combined-zones/maps/current-plus-proposed-phase0-overlay.png"
+  },
+  "sourcePrecedence": [
+    "Field-scoped authority applies: individual masterplans 01, 02, and 03 own internal architecture",
+    "docs/masterplans/04-combined-complex v2 no-ravine root contractor brief and coordinates own normalized composition",
+    "this Masterplan 05 registry owns current-world placement, adapters, additions, and delivery gates",
+    "Phase 0 rerun evidence owns terrain, water, biome, vegetation, cover, and generated-structure facts and may veto siting",
+    "accepted immutable snapshot and verified current database own released construction and current-world identity",
+    "masterplan 04 map-integration material is historical placement input only",
+    "renderings are for communication only"
+  ],
+  "identityCorrections": {
+    "canonicalOldTown": {
+      "name": "Ravensreach",
+      "status": "accepted-current-world",
+      "oldTownBounds": {
+        "minX": -126,
+        "maxX": -45,
+        "minZ": -422,
+        "maxZ": -338
+      },
+      "replicaRequired": false
+    },
+    "supersededProposal": {
+      "name": "Masterplan 04 schematic-library old town",
+      "decision": "removed-from-combined-complex-core-program",
+      "futureOption": "separately approved Fleet Archive Park"
+    }
+  },
+  "studyReservation": {
+    "name": "east-reserve",
+    "bounds": {
+      "minX": 1500,
+      "maxX": 2550,
+      "minZ": -1150,
+      "maxZ": 300
+    },
+    "relationshipToCurrentCatalog": {
+      "currentMaxX": 1300,
+      "reservationMinX": 1500,
+      "catalogSeparationBlocks": 200,
+      "catalogIntersection": false,
+      "terrainSurveyComplete": true,
+      "terrainClearanceProven": true,
+      "currentTransformPassed": true
+    },
+    "truth": "The revised envelope is fully surveyed. It still contains 16.09% water and generated structures, but the selected mountain and urban footprints are each below 3% water and all critical anchors are dry."
+  },
+  "transform": {
+    "localSystem": "normalized masterplan 04 no-ravine coordinates",
+    "localOriginInWorld": {
+      "x": 2048,
+      "z": -328,
+      "surveyedTerrainY": 88,
+      "surveyedSurfaceBlock": "minecraft:snow",
+      "surveyedBiome": "minecraft:snowy_taiga",
+      "designY": 72
+    },
+    "topDown": {
+      "worldX": "2048 + localX",
+      "worldZ": "-328 + localZ",
+      "rotationDegrees": 0,
+      "description": "local north/south remains world north/south; the mountain extends north from Houston"
+    },
+    "vertical": {
+      "status": "PHASE0_APPROVED_FOR_DETAILED_DESIGN_NOT_BUILD",
+      "activeForBuild": false,
+      "worldEnvelope": {
+        "minY": -64,
+        "maxY": 319
+      },
+      "streetY": 72,
+      "belowStreet": "worldY = 72 + 1.28 * localY for localY <= 0",
+      "aboveStreet": "worldY = 72 + 0.29 * localY for localY >= 0",
+      "mappedLevels": [
+        {
+          "name": "design minimum",
+          "localY": -100,
+          "worldY": -56
+        },
+        {
+          "name": "shaft observation landing",
+          "localY": -50,
+          "worldY": 8
+        },
+        {
+          "name": "city street",
+          "localY": 0,
+          "worldY": 72
+        },
+        {
+          "name": "granite-limestone contact",
+          "localY": 200,
+          "worldY": 130
+        },
+        {
+          "name": "Cheyenne chamber low",
+          "localY": 250,
+          "worldY": 144.5
+        },
+        {
+          "name": "Cheyenne chamber center",
+          "localY": 325,
+          "worldY": 166.25
+        },
+        {
+          "name": "Cheyenne chamber high",
+          "localY": 400,
+          "worldY": 188
+        },
+        {
+          "name": "summit",
+          "localY": 800,
+          "worldY": 304
+        }
+      ]
+    }
+  },
+  "zones": [
+    {
+      "id": "Z00",
+      "name": "East reserve",
+      "status": "study-only",
+      "bounds": {
+        "minX": 1500,
+        "maxX": 2550,
+        "minZ": -1150,
+        "maxZ": 300
+      }
+    },
+    {
+      "id": "Z01",
+      "name": "Gateway and arrival",
+      "status": "proposed",
+      "anchor": {
+        "x": 1550,
+        "y": 68,
+        "z": -250,
+        "surveyedTerrainY": 71,
+        "surveyedSurfaceBlock": "minecraft:grass_block",
+        "surveyedBiome": "minecraft:forest",
+        "note": "Re-sited to the dry passenger-rail interface; proposed rail/forecourt plane is three blocks below terrain."
+      },
+      "sourceLocalAnchor": null,
+      "sourceRelationship": "Gateway Approach is the current-world adapter and is deliberately decoupled from the north-aligned normalized core at 0-degree adopted rotation."
+    },
+    {
+      "id": "Z02",
+      "name": "Gateway Approach",
+      "status": "proposed-surface-adapter-with-linked-south-underground-annex",
+      "bounds": {
+        "minX": 1500,
+        "maxX": 2250,
+        "minZ": -1100,
+        "maxZ": 0
+      },
+      "sourceLocalBounds": null,
+      "surfaceProgram": [
+        "gateway forecourt",
+        "tree and rain-garden bands",
+        "protected pedestrian route",
+        "utility reserve",
+        "surface passenger rail",
+        "future development parcels"
+      ],
+      "surfacePassengerRail": {
+        "status": "PHASE0_PROFILE_PASSED_DETAILED_DESIGN_REQUIRED",
+        "centerline": {
+          "from": {
+            "x": 1550,
+            "y": 68,
+            "z": -250,
+            "surveyedTerrainY": 71
+          },
+          "to": {
+            "x": 1920,
+            "y": 68,
+            "z": -250,
+            "surveyedTerrainY": 63,
+            "waterColumn": false
+          }
+        },
+        "surveyComplete": true,
+        "finalYAndTieInRedesignRequired": false,
+        "stops": [
+          {
+            "id": "GA-S1",
+            "name": "Gateway Gardens",
+            "center": {
+              "x": 1640,
+              "y": 68,
+              "z": -250,
+              "surveyedTerrainY": 65
+            },
+            "platformCount": 2,
+            "platformLengthBlocks": 48,
+            "platformType": "side",
+            "initialService": "future-use-request-stop"
+          },
+          {
+            "id": "GA-S2",
+            "name": "Approach Commons",
+            "center": {
+              "x": 1920,
+              "y": 68,
+              "z": -250,
+              "surveyedTerrainY": 63,
+              "surveyedTreeCanopyY": 66
+            },
+            "platformCount": 2,
+            "platformLengthBlocks": 48,
+            "platformType": "side",
+            "initialService": "future-use-request-stop"
+          }
+        ]
+      },
+      "hiddenSubway": {
+        "status": "proposed-easter-egg-expansion-seed",
+        "spatialRelationship": "The surface Gateway Approach ends at z=0. The Empty Eight shell begins at z=40, wholly south of the surface zone with a 39-block unowned planning buffer between inclusive bounds.",
+        "junction": {
+          "id": "GA-J1",
+          "at": {
+            "x": 1780,
+            "y": 68,
+            "z": -250,
+            "surveyedTerrainY": 63
+          },
+          "presentation": "maintenance siding behind landscaped retaining wall",
+          "discoveryNotHazard": true
+        },
+        "branch": {
+          "portalStudy": {
+            "x": 1785,
+            "y": 64,
+            "z": -215,
+            "surveyedTerrainY": 62,
+            "waterColumn": false
+          },
+          "terminalThroatStudy": {
+            "x": 1632,
+            "y": 40,
+            "z": 100
+          },
+          "surveyedJunctionTerrainY": 63,
+          "referenceVerticalChangeBlocks": 28,
+          "minimumHorizontalRunBlocks": 387.183,
+          "referenceAverageGrade": "1:13.8",
+          "proposedCenterline": [
+            { "x": 1780, "y": 68, "z": -250 },
+            { "x": 1785, "y": 64, "z": -215 },
+            { "x": 1760, "y": 56, "z": -130 },
+            { "x": 1700, "y": 48, "z": -20 },
+            { "x": 1632, "y": 40, "z": 100 }
+          ],
+          "maximumProposedGrade": 0.113137,
+          "finalAlignmentRedesignRequired": false
+        },
+        "terminal": {
+          "id": "Z02-U1",
+          "officialName": "Gateway Expansion Terminal",
+          "nickname": "The Empty Eight",
+          "status": "PHASE0_SHELL_AND_COVER_PASSED_DETAILED_DESIGN_REQUIRED",
+          "bounds": {
+            "minX": 1632,
+            "maxX": 1872,
+            "minY": 38,
+            "maxY": 54,
+            "minZ": 40,
+            "maxZ": 160
+          },
+          "surfaceZoneRelationship": "wholly south of Gateway Approach; terminal minZ=40 and Gateway Approach maxZ=0",
+          "minimumSolidCoverBlocks": 8,
+          "phase0CoverSurvey": {
+            "columns": 29161,
+            "terrainMinY": 62,
+            "terrainMaxY": 136,
+            "waterColumns": 0,
+            "coldBiomeColumns": 0,
+            "minimumTerrainAboveRoof": 8,
+            "maximumTerrainAboveRoof": 82,
+            "columnsMeetingEightBlockSolidCover": 29161,
+            "eightBlockSolidCoverFraction": 1,
+            "generatedStructureStartsIntersectingFootprintInPlan": 1,
+            "verticalStructureConflicts": 0,
+            "passed": true
+          },
+          "railY": 40,
+          "trackCount": 8,
+          "platformCount": 8,
+          "trackCenterlinesZ": [
+            54,
+            67,
+            80,
+            93,
+            106,
+            119,
+            132,
+            145
+          ],
+          "trackExtentX": {
+            "minX": 1632,
+            "maxX": 1872
+          },
+          "platforms": {
+            "count": 8,
+            "assignedOnePerTrack": true,
+            "widthBlocks": 7,
+            "lengthBlocks": 101,
+            "minX": 1652,
+            "maxX": 1752,
+            "offsetFromAssignedTrackZ": {
+              "min": 2,
+              "max": 8,
+              "side": "+z"
+            }
+          },
+          "futureLinePairs": [
+            {
+              "id": "GL-A",
+              "tracks": [
+                1,
+                2
+              ]
+            },
+            {
+              "id": "GL-B",
+              "tracks": [
+                3,
+                4
+              ]
+            },
+            {
+              "id": "GL-C",
+              "tracks": [
+                5,
+                6
+              ]
+            },
+            {
+              "id": "GL-D",
+              "tracks": [
+                7,
+                8
+              ]
+            }
+          ],
+          "futureInterfaces": {
+            "eastStubX": 1872,
+            "westThroatX": 1632,
+            "count": 8,
+            "state": "sealed-owned-interface-walls",
+            "openingRequiresSeparateGuardedRelease": true
+          },
+          "concourse": {
+            "style": "late-Soviet-inspired civic monumentality without copying a specific station",
+            "mallWings": 2,
+            "perimeterMezzanine": true,
+            "futureTicketHallBoxes": 4,
+            "emptyRetailShells": 24,
+            "openAtria": true
+          },
+          "lifeSafety": {
+            "independentEgressRoutes": 2,
+            "accessibleRoutes": 2,
+            "egressStudyAnchors": [
+              {
+                "id": "EG-A",
+                "x": 1652,
+                "y": null,
+                "z": 148,
+                "position": "southwest"
+              },
+              {
+                "id": "EG-B",
+                "x": 1852,
+                "y": null,
+                "z": 148,
+                "position": "southeast"
+              }
+            ],
+            "smokeSeparatedStairsAndLifts": true,
+            "ventilationRequired": true,
+            "emergencyLightingRequired": true,
+            "platformBarriersRequired": true,
+            "drainageSumpsRequired": true
+          }
+        },
+        "prohibitedInitialConnections": [
+          "PassageWay",
+          "SubTropolis",
+          "Houston pedestrian tunnels",
+          "Cheyenne secure circulation"
+        ]
+      }
+    },
+    {
+      "id": "Z03",
+      "name": "Grand Avenue",
+      "status": "re-sited-surface-link-study",
+      "from": {
+        "x": 1750,
+        "y": null,
+        "z": -300
+      },
+      "to": {
+        "x": 2048,
+        "y": null,
+        "z": -328
+      },
+      "directPlanDistanceBlocks": 299.31,
+      "crossSectionBlocks": 8
+    },
+    {
+      "id": "Z04",
+      "name": "Houston city",
+      "status": "proposed",
+      "bounds": {
+        "minX": 1979,
+        "maxX": 2117,
+        "minZ": -397,
+        "maxZ": -259
+      },
+      "streetY": 72
+    },
+    {
+      "id": "Z05",
+      "name": "Houston pedestrian tunnels",
+      "status": "proposed-underground",
+      "bounds": {
+        "minX": 1979,
+        "maxX": 2117,
+        "minY": 64,
+        "maxY": 72,
+        "minZ": -397,
+        "maxZ": -259
+      }
+    },
+    {
+      "id": "Z06",
+      "name": "Public shaft",
+      "status": "proposed-dogleg-phase0-anchor-dry",
+      "top": {
+        "x": 2108,
+        "y": 72,
+        "z": -398,
+        "surveyedTerrainY": 63
+      },
+      "observationLanding": {
+        "x": 2108,
+        "y": 8,
+        "z": -398
+      },
+      "lowerLobbyStudy": {
+        "x": 2108,
+        "y": -56,
+        "z": -428
+      },
+      "crossSection": "7x7"
+    },
+    {
+      "id": "Z07",
+      "name": "SubTropolis",
+      "status": "proposed-underground",
+      "bounds": {
+        "minX": 1948,
+        "maxX": 2148,
+        "minY": -56,
+        "maxY": 72,
+        "minZ": -628,
+        "maxZ": -428
+      }
+    },
+    {
+      "id": "Z08",
+      "name": "Service tunnel and contact",
+      "status": "proposed-centerline-study",
+      "from": {
+        "x": 1948,
+        "y": 72,
+        "z": -628
+      },
+      "contact": {
+        "x": 2008,
+        "y": 130,
+        "z": -688
+      },
+      "to": {
+        "x": 2048,
+        "y": 130,
+        "z": -748
+      },
+      "directHorizontalDistanceBlocks": 156.2,
+      "riseBlocks": 58,
+      "crossSection": "6x6",
+      "centerlineSurveyRequired": true
+    },
+    {
+      "id": "Z09",
+      "name": "Continuous mountain",
+      "status": "proposed-surface-and-solid-volume",
+      "bounds": {
+        "minX": 1648,
+        "maxX": 2448,
+        "minY": 72,
+        "maxY": 304,
+        "minZ": -1128,
+        "maxZ": -528
+      },
+      "noRavine": true,
+      "contactY": 130,
+      "phase0WaterFraction": 0.026167,
+      "protectedSurfaceRelics": [
+        { "id": "minecraft:igloo", "bounds": { "minX": 1790, "maxX": 1797, "minZ": -926, "maxZ": -920 } },
+        { "id": "minecraft:igloo", "bounds": { "minX": 2304, "maxX": 2310, "minZ": -1024, "maxZ": -1017 } },
+        { "id": "minecraft:shipwreck", "bounds": { "minX": 2072, "maxX": 2099, "minZ": -661, "maxZ": -653 } }
+      ],
+      "relicRule": "No-touch exhibit voids: preserve each generated structure in place, keep its exact blocks out of grading and shell ownership, and provide only separately approved observation access."
+    },
+    {
+      "id": "Z10",
+      "name": "Cheyenne chamber",
+      "status": "proposed-underground",
+      "bounds": {
+        "minX": 2008,
+        "maxX": 2088,
+        "minY": 144.5,
+        "maxY": 188,
+        "minZ": -908,
+        "maxZ": -828
+      },
+      "center": {
+        "x": 2048,
+        "y": 166.25,
+        "z": -868
+      },
+      "outerPortal": {
+        "x": 2048,
+        "y": 130,
+        "z": -748
+      }
+    },
+    {
+      "id": "Z11",
+      "name": "Summit and return",
+      "status": "proposed-switchback-required",
+      "summit": {
+        "x": 2048,
+        "y": 304,
+        "z": -828,
+        "surveyedTerrainY": 81
+      },
+      "funicularStart": {
+        "x": 2048,
+        "y": 130,
+        "z": -748
+      },
+      "minimumHorizontalRunBlocks": 174,
+      "directHorizontalRunBlocks": 80
+    }
+  ],
+  "connections": [
+    {
+      "id": "C1",
+      "name": "East Corridor",
+      "status": "PHASE0_PROFILE_PASS_DETAILED_CIVIL_DESIGN_REQUIRED",
+      "supersedes": "the 267-block Data District east surface stub; that endpoint was a road-network bounding-box edge, not a surveyed door",
+      "from": {
+        "x": 430,
+        "y": null,
+        "z": 80,
+        "basis": "west terminal roundabout center, east of the MainStreet America campus fence at x=305",
+        "surveyedTerrainY": 65
+      },
+      "to": {
+        "x": 1550,
+        "y": 68,
+        "z": -250,
+        "basis": "re-sited dry Gateway Approach rail/forecourt interface",
+        "surveyedTerrainY": 71
+      },
+      "planLengthBlocks": 1244.303,
+      "modes": [
+        "highway",
+        "passenger-rail",
+        "pedestrian",
+        "utility"
+      ],
+      "modesDesignedTogether": true,
+      "geometryRule": "orthogonal legs and exact 45-degree diagonals only",
+      "declaredDesignSpeed": {
+        "mainlineKph": 85,
+        "connectorKph": 70,
+        "basis": "in-world horse ~52 kph and minecart ~29 kph place this in the urban <=50 mph tier, built at true 1:1"
+      },
+      "pointsOfIntersection": [
+        {
+          "id": "W-TERM",
+          "x": 430,
+          "y": null,
+          "z": 80,
+          "surveyedTerrainY": 65,
+          "role": "west terminal roundabout center"
+        },
+        {
+          "id": "PI-1",
+          "x": 905,
+          "y": null,
+          "z": 80,
+          "surveyedTerrainY": 112,
+          "role": "northward deflection",
+          "curveRadiusBlocks": 140
+        },
+        {
+          "id": "PI-2",
+          "x": 1065,
+          "y": null,
+          "z": -80,
+          "surveyedTerrainY": 108,
+          "role": "southward deflection",
+          "curveRadiusBlocks": 120
+        },
+        {
+          "id": "PI-3",
+          "x": 1330,
+          "y": null,
+          "z": -80,
+          "surveyedTerrainY": 67,
+          "role": "northward deflection",
+          "curveRadiusBlocks": 140
+        },
+        {
+          "id": "E-TERM",
+          "x": 1550,
+          "y": 68,
+          "z": -250,
+          "surveyedTerrainY": 71,
+          "role": "Gateway terminal roundabout center"
+        }
+      ],
+      "legs": [
+        {
+          "from": "W-TERM",
+          "to": "PI-1",
+          "pathLengthBlocks": 475,
+          "function": "west tangent; carries the terminal speed transition"
+        },
+        {
+          "from": "PI-1",
+          "to": "PI-2",
+          "pathLengthBlocks": 226,
+          "function": "45-degree descent past the C01 East stack"
+        },
+        {
+          "from": "PI-2",
+          "to": "PI-3",
+          "pathLengthBlocks": 265,
+          "function": "district tangent; carries the Data District interchange"
+        },
+        {
+          "from": "PI-3",
+          "to": "E-TERM",
+          "pathLengthBlocks": 278.029,
+          "function": "re-sited diagonal approach into the dry Gateway interface"
+        }
+      ],
+      "curveTreatment": {
+        "vertices": 3,
+        "budget": 4,
+        "chamfer": "spiral-arc-spiral staircase 1:16 -> 1:12 -> 1:8 -> 1:6 -> 1:8 -> 1:12 -> 1:16",
+        "note": "northward vertices put the rail on the inside of the curve, so those use R=140 to hold a 120-block rail radius"
+      },
+      "crossSection": {
+        "reservationBlocks": 56,
+        "northEdgeOffset": -36,
+        "southEdgeOffset": 19,
+        "slopeEasementEachSide": 12,
+        "totalLandTakeBlocks": 80,
+        "railFlank": "north",
+        "railFlankRationale": "platforms face the pedestrian route so the district is reached at grade; median running would need a vertical circulation core at every station and force each district passenger across both carriageways",
+        "drainage": "single southward crossfall, no crown; rail formation drains north into its own cess drain",
+        "elements": [
+          {
+            "element": "north boundary fence/hedge/ditch",
+            "blocks": 1,
+            "offsetFrom": -36,
+            "offsetTo": -36
+          },
+          {
+            "element": "protected pedestrian route",
+            "blocks": 3,
+            "offsetFrom": -35,
+            "offsetTo": -33
+          },
+          {
+            "element": "pedestrian/rail protective buffer",
+            "blocks": 2,
+            "offsetFrom": -32,
+            "offsetTo": -31
+          },
+          {
+            "element": "rail reservation, fenced",
+            "blocks": 13,
+            "offsetFrom": -30,
+            "offsetTo": -18
+          },
+          {
+            "element": "vehicle restraint system + verge",
+            "blocks": 3,
+            "offsetFrom": -17,
+            "offsetTo": -15,
+            "note": "must be a barrier, not a boundary fence; clear zone is not met at this width"
+          },
+          {
+            "element": "highway outside shoulder north",
+            "blocks": 3,
+            "offsetFrom": -14,
+            "offsetTo": -12
+          },
+          {
+            "element": "lane W2 westbound outer",
+            "blocks": 4,
+            "offsetFrom": -11,
+            "offsetTo": -8
+          },
+          {
+            "element": "lane W1 westbound inner",
+            "blocks": 4,
+            "offsetFrom": -7,
+            "offsetTo": -4
+          },
+          {
+            "element": "inside shoulder north",
+            "blocks": 2,
+            "offsetFrom": -3,
+            "offsetTo": -2
+          },
+          {
+            "element": "median + barrier",
+            "blocks": 3,
+            "offsetFrom": -1,
+            "offsetTo": 1
+          },
+          {
+            "element": "inside shoulder south",
+            "blocks": 2,
+            "offsetFrom": 2,
+            "offsetTo": 3
+          },
+          {
+            "element": "lane E1 eastbound inner",
+            "blocks": 4,
+            "offsetFrom": 4,
+            "offsetTo": 7
+          },
+          {
+            "element": "lane E2 eastbound outer",
+            "blocks": 4,
+            "offsetFrom": 8,
+            "offsetTo": 11
+          },
+          {
+            "element": "highway outside shoulder south",
+            "blocks": 3,
+            "offsetFrom": 12,
+            "offsetTo": 14
+          },
+          {
+            "element": "utility reserve",
+            "blocks": 3,
+            "offsetFrom": 15,
+            "offsetTo": 17
+          },
+          {
+            "element": "drainage ditch / south boundary",
+            "blocks": 2,
+            "offsetFrom": 18,
+            "offsetTo": 19
+          }
+        ],
+        "railReservationDetail": [
+          {
+            "element": "north cess / emergency walkway",
+            "blocks": 2,
+            "offsetFrom": -30,
+            "offsetTo": -29
+          },
+          {
+            "element": "track 1 centerline (eastbound)",
+            "offset": -28
+          },
+          {
+            "element": "six-foot / mast line",
+            "blocks": 3,
+            "offsetFrom": -27,
+            "offsetTo": -25
+          },
+          {
+            "element": "track 2 centerline (westbound)",
+            "offset": -24
+          },
+          {
+            "element": "south cess / emergency walkway",
+            "blocks": 2,
+            "offsetFrom": -23,
+            "offsetTo": -22
+          },
+          {
+            "element": "rail boundary fence + ditch",
+            "blocks": 4,
+            "offsetFrom": -21,
+            "offsetTo": -18
+          }
+        ]
+      },
+      "clearanceRecord": "docs/masterplans/05-combined-zones/corridor-clearance.json",
+      "surveyRequired": false,
+      "engineeredRailProfile": {
+        "status": "PASS_ONE_IN_EIGHT",
+        "startY": 68,
+        "endY": 68,
+        "minimumY": 63,
+        "maximumY": 114,
+        "maximumGrade": 0.125,
+        "maximumCutBlocks": 36,
+        "maximumFillBlocks": 23,
+        "evidence": "docs/masterplans/05-combined-zones/corridor-terrain-probe.json"
+      },
+      "constraints": [
+        "passes over C01 East (x=700..900, z=-140..-5, y=24..53) with 18 blocks plan clearance and ~17 blocks of vertical separation; that stack is CONTESTED under ISSUE-002 and a non-overlap result does not authorize embankment loading over it",
+        "crosses C01 Owner Tunnel Detour (x=364..718, z=-46..58, y=-45..-37) with roughly 110 blocks of cover",
+        "the revised E-TERM is inside the fresh expanded terrain raster and sits on dry forest terrain at Y71",
+        "no left-hand exits anywhere on the corridor"
+      ]
+    },
+    {
+      "id": "C1a",
+      "name": "Data District interchange",
+      "status": "single-service-interchange-study",
+      "form": "two-quadrant partial cloverleaf, all four ramps in the southern quadrants",
+      "formRationale": "with right-hand traffic the westbound carriageway is the northern one, so its right-side ramps would develop north into the railway and pedestrian route; sending all ramps south keeps the north flank undisturbed",
+      "onTangent": {
+        "from": {
+          "x": 1065,
+          "z": -80
+        },
+        "to": {
+          "x": 1330,
+          "z": -80
+        },
+        "lengthBlocks": 265
+      },
+      "crossroadBridge": {
+        "x": 1180,
+        "requirement": "clear-span the full 56-block reservation"
+      },
+      "structures": 1,
+      "whyNotTwoInterchanges": "minimum gore-to-gore spacing for an off-off or on-on pair is 305 blocks; the entire tangent is 265 blocks, so two interchanges are geometrically impossible rather than merely compressed. The only spacing the tangent satisfies is off-on at 152 blocks, which is one interchange's own ramp pair.",
+      "rampGeometry": {
+        "exitTaperBlocks": 48,
+        "taperRatio": "1:12",
+        "paintedNoseToPhysicalNoseBlocks": 12,
+        "noseLengthBlocks": 40,
+        "accelerationLaneBlocks": 80,
+        "accelToDecelRatio": "2:1",
+        "loopRadiusBlocks": [
+          25,
+          30
+        ],
+        "buildRule": "each taper is a repeating module of (R-1) straight blocks plus one diagonal, risers distributed evenly"
+      },
+      "advanceSigningBlocksBeforePaintedNose": [
+        128,
+        88,
+        48
+      ],
+      "exitNumber": 11,
+      "districtAccess": {
+        "spineLengthToBoundaryBlocks": 56,
+        "boundaryZ": -172,
+        "entryPoints": 2
+      },
+      "chainageShortfall": {
+        "requiredBlocks": 296,
+        "availableTangentBlocks": 265,
+        "shortfallBlocks": 31,
+        "consequence": "the acceleration lane runs onto the PI-3 curve rather than finishing on straight tangent",
+        "resolution": "accept the auxiliary lane on the curve, or lengthen the tangent at PI-2 at detailed design",
+        "doNotCompress": {
+          "offOffOrOnOnBlocks": 305,
+          "offOnBlocks": 152,
+          "serviceToServiceWeaveBlocks": 488,
+          "reason": "these are 1:1 values; shortening them is what makes an interchange read as amateur from above"
+        }
+      },
+      "formSelectionNote": "the sourced recommendation for a constrained NORTH-side interchange was a tight urban diamond plus a collector-distributor road, because only 32-52 blocks of cross-depth were assumed available. Moving the mainline south to z=-80 and sending all ramps into the uncataloged southern quadrants removes that constraint, which makes a two-quadrant partial cloverleaf viable and avoids the rail conflict. The two-district-access-point outcome of the C-D scheme is preserved by splitting the spine north of the bridge."
+    },
+    {
+      "id": "C1b",
+      "name": "West terminus, MainStreet East",
+      "status": "SURVEYED_VERTICAL_ALIGNMENT_REDESIGN_REQUIRED",
+      "form": "single terminal roundabout",
+      "center": {
+        "x": 430,
+        "y": null,
+        "z": 80,
+        "surveyedTerrainY": 65
+      },
+      "inscribedCircleDiameterBlocks": 60,
+      "structures": 0,
+      "speedTransitionBlocks": 250,
+      "speedTransitionAvailableBlocks": 475,
+      "localRoads": [
+        {
+          "id": "L1",
+          "name": "Ravensreach link",
+          "to": {
+            "x": 470,
+            "y": null,
+            "z": -232,
+            "surveyedTerrainY": 74
+          },
+          "basis": "east end of cataloged Te Ia Ravensreach Dirt Road (x=130..470, z=-248..-217), continuing west to Service Cross (x=-84..220, z=-218, y=64)",
+          "tiesIntoExistingRoad": true,
+          "class": "local street",
+          "corridorWidthBlocks": 16,
+          "ringBearingDegrees": 0
+        },
+        {
+          "id": "L2",
+          "name": "MainStreet East gate",
+          "to": {
+            "x": 305,
+            "y": null,
+            "z": 80,
+            "surveyedTerrainY": 45,
+            "surveyedWaterSurfaceY": 62,
+            "waterColumn": true
+          },
+          "basis": "PROVISIONAL - no cataloged gate exists on the campus east face; requires a new surveyed gate fronting the Earth-covered east operations complex (x=100..300, z=70..235)",
+          "tiesIntoExistingRoad": false,
+          "class": "collector",
+          "corridorWidthBlocks": 22,
+          "runBeforeSplittingBlocks": 100,
+          "ringBearingDegrees": 270
+        },
+        {
+          "id": "L3",
+          "name": "Observatory link",
+          "to": {
+            "x": 362,
+            "y": null,
+            "z": 165,
+            "surveyedTerrainY": 112,
+            "surveyedSurfaceBlock": "minecraft:reinforced_deepslate"
+          },
+          "basis": "cataloged Observatory Owner East Ascent (road, x=348..377, z=150..180, y=-46..112)",
+          "tiesIntoExistingRoad": true,
+          "class": "local street",
+          "corridorWidthBlocks": 16,
+          "ringBearingDegrees": 180,
+          "openIssue": "as drawn L3 departs south-west, only ~40 degrees from L2; it must leave the ring due south and bend west after clearing the junction"
+        }
+      ],
+      "constraints": [
+        "cataloged east-flank gates are GATE-A01-EAST (135,64,172), GATE-L01-EAST (220,64,-250) and the C01 East Edge Road boundary gate near (120..125,~,231); none is on the face L2 would meet",
+        "do not treat the white picket campus fence line at x=305 as an interface until a gate is surveyed and approved",
+        "roundabout legs must be at least 60 degrees apart; do not cluster the three exits on one side"
+      ],
+      "functionalHierarchy": {
+        "problem": "freeway discharging straight into local streets skips two classes (expressway and collector); the most visible hierarchy error from above",
+        "ladder": [
+          "freeway (475-block approach)",
+          "arterialized section (last 120 blocks)",
+          "terminal roundabout",
+          "collector spine (100 blocks)",
+          "local streets"
+        ],
+        "arterializationBlocks": 120,
+        "arterialSectionBlocks": [
+          28,
+          32
+        ],
+        "kerbBeginsBlocksBeforeYieldLine": 120
+      },
+      "roundaboutInternals": {
+        "inscribedCircleDiameterBlocks": 60,
+        "circulatoryCarriagewayBlocks": 10,
+        "truckApronBlocks": 2,
+        "centralIslandDiameterBlocks": 36,
+        "centralIslandTreatment": "raised and mounded 3-5 blocks, planted; must fully block the sightline across the circle - a flat island defeats the junction",
+        "entryDeflectionBlocks": 3,
+        "entryDeflectionOverBlocks": 20,
+        "minimumAngleBetweenLegsDegrees": 60
+      }
+    },
+    {
+      "id": "C1c",
+      "name": "Gateway terminus",
+      "status": "PHASE0_RE_SITED_DRY_INTERFACE_PASS",
+      "form": "single terminal roundabout with the Gateway Pavilion in the central island",
+      "center": {
+        "x": 1550,
+        "y": 68,
+        "z": -250,
+        "surveyedTerrainY": 71,
+        "nearbyRailTerrainY": 71
+      },
+      "inscribedCircleDiameterBlocks": 60,
+      "structures": 0,
+      "legs": [
+        "freeway from the south-west",
+        "Z02 spine east toward Grand Avenue",
+        "north landscape road",
+        "south leg to the rail station forecourt"
+      ],
+      "straightApproachBlocks": 178,
+      "straightApproachPreferredBlocks": 250,
+      "openIssue": "the approach remains shorter than the 250-block preference; detailed civil design must preserve the accepted rail profile and resolve highway speed transition independently",
+      "formSelectionNote": "the sourced primary recommendation for a three-leg end-of-route T was a compact trumpet with one structure. The roundabout is the sanctioned alternative where the terminus is a destination forecourt rather than a junction onto a continuing route, which is the case here: the freeway ends and Z02 continues as a civic street network, not a through road. It also costs zero structures and matches the west terminus. Revisit if Z02 ever becomes a through route."
+    },
+    {
+      "id": "C1d",
+      "name": "East Corridor passenger railway",
+      "status": "PHASE0_ENGINEERED_PROFILE_PASS",
+      "note": "the accepted catalog contains 1,215 features and no rail of any kind; the west end is a true terminus, not a tie-in",
+      "flank": "north",
+      "lineStandard": {
+        "maxGradient": "1:8",
+        "preferredGradient": "1:12",
+        "poweredRailFlatSpacingBlocks": 38,
+        "poweredRailClimbSpacingBlocks": 4,
+        "stationDeparturePoweredRails": 3
+      },
+      "diagonalBuildRule": "coarse staircase with 4+ block straight segments between jogs; a fine sawtooth cannot be powered at all because powered rails cannot be curved",
+      "minimumStationTangentBlocks": 62,
+      "stations": [
+        {
+          "id": "MS-1",
+          "name": "MainStreet East",
+          "center": {
+            "x": 430,
+            "y": 68,
+            "z": 80,
+            "surveyedTerrainY": 65
+          },
+          "platforms": 2,
+          "platformType": "side",
+          "platformLengthBlocks": 32,
+          "role": "terminus and road interchange"
+        },
+        {
+          "id": "DD-1",
+          "name": "Data District",
+          "center": {
+            "x": 1240,
+            "y": 77,
+            "z": -80,
+            "surveyedTerrainY": 63
+          },
+          "platforms": 2,
+          "platformType": "side",
+          "platformLengthBlocks": 32,
+          "walkToDistrictFrontageBlocks": 56,
+          "role": "at-grade district access with no highway crossing"
+        },
+        {
+          "id": "GW-1",
+          "name": "Gateway",
+          "center": {
+            "x": 1550,
+            "y": 68,
+            "z": -250,
+            "surveyedTerrainY": 71
+          },
+          "platforms": 2,
+          "platformType": "side",
+          "platformLengthBlocks": 32,
+          "role": "Z01 road/rail transfer on the roundabout south leg"
+        }
+      ],
+      "stagedDeliveryRequirements": [
+        "reserve the 13-block rail strip at the north edge and leave it void for the whole 1,244-block alignment",
+        "every structure crossing the corridor must clear-span the full rail reservation; no piers inside the envelope, ever",
+        "build those crossings to rail vertical clearance (7 blocks above the future rail plane to running surface), not road clearance",
+        "fix the highway barrier line at its ultimate offset now",
+        "grade the strip to final formation level and hold the rail vertical alignment across the whole corridor",
+        "lay the utility reserve and empty ductbank now",
+        "mark the reservation with a visible fence line during the interim"
+      ],
+      "highestConsequenceItems": [
+        "clear-span requirement",
+        "rail vertical clearance requirement"
+      ]
+    },
+    {
+      "id": "C1e",
+      "name": "Grand Avenue / railway crossing",
+      "status": "RETIRED_BY_RE_SITING",
+      "defect": null,
+      "resolution": "The revised Grand Avenue remains north of the z=-250 passenger rail from Gateway Approach to Houston, so the former skew crossing does not exist.",
+      "at": null,
+      "separation": "not-required"
+    },
+    {
+      "id": "C2",
+      "name": "Optional owner portal-gallery transfer",
+      "status": "logical-link-not-active",
+      "from": {
+        "x": 240,
+        "y": null,
+        "z": 155,
+        "basis": "derived center of accepted portal-hub architecture"
+      },
+      "to": {
+        "x": 1550,
+        "y": null,
+        "z": -250
+      },
+      "physicalDistanceMeaningful": false,
+      "activationProven": false
+    },
+    {
+      "id": "C3",
+      "name": "Future PassageWay interchange",
+      "status": "reserved-endpoint-unset",
+      "from": null,
+      "to": {
+        "x": 2108,
+        "y": -56,
+        "z": -428,
+        "basis": "SubTropolis public lower-lobby study point"
+      },
+      "constraints": [
+        "do not use contested C01 east arrival without closing ISSUE-002",
+        "do not treat a database centroid as an exact tunnel door",
+        "keep public circulation isolated from secure Cheyenne circulation"
+      ]
+    },
+    {
+      "id": "C4",
+      "name": "Gateway Approach concealed subway provision",
+      "status": "internal-proposed-separate-release-subscope",
+      "from": {
+        "x": 1780,
+        "y": 68,
+        "z": -250,
+        "basis": "GA-J1 surface passenger-rail turnout study point"
+      },
+      "to": {
+        "x": 1632,
+        "y": 40,
+        "z": 100,
+        "basis": "Z02-U1 terminal throat study point"
+      },
+      "terminalId": "Z02-U1",
+      "trackCount": 8,
+      "platformCount": 8,
+      "surfaceAndUndergroundRollbackSeparated": true,
+      "surveyRequired": false,
+      "phase0GradePassed": true,
+      "maximumProposedGrade": 0.113137
+    }
+  ],
+  "validationGates": [
+    "fresh immutable snapshot",
+    "expanded east terrain render",
+    "world border and chunk-generation survey",
+    "terrain, fluids, biome, structures, entities, and protected-feature census",
+    "current ownership and interface audit",
+    "final surface Y and piecewise vertical mapping approval",
+    "single normalized child-plan coordinate registry",
+    "Z02 surface-rail, subway grade, terminal cover, fluids, egress, ventilation, and sealed-interface validation",
+    "rail, road, shaft, egress, and funicular route-grade validation",
+    "exact guarded forward and rollback packages",
+    "strict-noop parser and source-state preflight",
+    "live clearance and bidirectional route tests",
+    "immutable post snapshot, media QA, database import, and final acceptance"
+  ]
+}

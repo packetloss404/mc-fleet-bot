@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-owner-review-acceptance",
+  "decision": "ACCEPT_PLANNING_POLICY_AND_TECHNICAL_DEVELOPMENT_CHECKLIST",
+  "acceptedBy": "sole human project owner",
+  "acceptedAtUtc": "2026-08-05T00:55:00Z",
+  "acceptanceAuthority": {
+    "source": "explicit user approval in the current project conversation",
+    "additionalHumanDecisionMakersRequired": false
+  },
+  "actualApprovalText": "yes I approve then, please continue to engineer and fan out into teams if you need to. Also does it make sense to put a tunnel under grandave now and add to it later than try to add it later?",
+  "subsequentInstructionText": "also fan out teams of subagents to remove all BLOCKS AND HOLDS",
+  "copyableStatementAcceptedVerbatim": false,
+  "bundleStatementIncorporatedByReference": true,
+  "bundleBinding": {
+    "path": "docs/masterplans/05-combined-zones/phase1-owner-review-bundle.json",
+    "fileSha256": "cd1ab477c4d64b1d348538ee2014ad1324b38fff6e9809d1d74ba057edb21ab6",
+    "bytes": 5623,
+    "payloadSha256": "0247737584ed9287632a8b6a8c18e7428b44f7301b9574d91a9db11e14ca9fdc",
+    "id": "combined-zones-phase1-owner-review-bundle",
+    "status": "READY_FOR_SOLE_OWNER_REVIEW_BUNDLE_ACCEPTANCE_PENDING_ALL_TECHNICAL_HOLDS_RETAINED"
+  },
+  "bundleCopyableStatement": "I, the sole owner, accept Combined Zones R00 owner-review bundle SHA-256 0247737584ed9287632a8b6a8c18e7428b44f7301b9574d91a9db11e14ca9fdc as the controlling planning-policy and technical-development checklist. I acknowledge every listed limitation and do not mark any current HOLD as PASS or authorize construction, operations, opening, discharge, commissioning, release advancement, or a world edit.",
+  "acceptedScope": [
+    "D02 evidence classification, selected exact raster and capped-sump/no-build planning basis, and the published D02 acceptance checklist",
+    "D05 conditional FM-01 material/support/hydrology/relic/transport/ownership policy and its default-deny acceptance checklist",
+    "D06/B07 fail-closed reservation basis and the D06-AC-01 through D06-AC-11 technical-development checklist",
+    "P1-B11 exact Grand Avenue 68-to-72 profile, exact evidenced anchors, sealed future lines, and zero-cell PassageWay deferral"
+  ],
+  "acceptanceNeverImplies": [
+    "that a current HOLD is PASS",
+    "that missing complete-save, future-state, mechanism, capacity, owner, interface, route, receiver, or technical evidence exists",
+    "D02, D05, D06, R00 G02, R00 G03, or any later release gate PASS",
+    "construction ownership, operations, opening, discharge, commissioning, release authorization, or a world edit"
+  ],
+  "effectivePlanningDisposition": {
+    "d02PlanningPolicyAccepted": true,
+    "d05PlanningPolicyAccepted": true,
+    "d06PlanningPolicyAccepted": true,
+    "p1B11PlanningBasisAccepted": true,
+    "clearedOwnerChoiceIds": [
+      "P1-B11-EXTERNAL-INTERFACES"
+    ],
+    "remainingGeometryChoiceCount": 0,
+    "technicalHoldPassedCount": 0
+  },
+  "retainedTechnicalHolds": [
+    {
+      "scope": "D02",
+      "bundleReviewHoldCount": 11,
+      "retained": true,
+      "technicalHoldPassedByAcceptance": false
+    },
+    {
+      "scope": "D05",
+      "bundleReviewHoldCount": 8,
+      "retained": true,
+      "technicalHoldPassedByAcceptance": false
+    },
+    {
+      "scope": "D06",
+      "bundleReviewHoldCount": 9,
+      "retained": true,
+      "technicalHoldPassedByAcceptance": false
+    }
+  ],
+  "safetyBoundary": {
+    "offlineOnly": true,
+    "liveCallsPerformed": [],
+    "operations": [],
+    "operationCellCount": 0,
+    "materialCellCount": 0,
+    "worldEditAuthorized": false,
+    "physicalBuildAuthorized": false
+  },
+  "disposition": {
+    "ownerAcceptanceRecorded": true,
+    "planningPolicyFrozen": true,
+    "allTechnicalHoldsRetained": true,
+    "p1B11PlanningBasisFrozen": true,
+    "g02Passed": false,
+    "g03Passed": false,
+    "r00Passed": false,
+    "completeSavedWorldStillRequired": true,
+    "exactCellCompilerStillRequired": true,
+    "ownershipAndInterfaceAcceptanceStillRequired": true
+  },
+  "status": "OWNER_ACCEPTANCE_RECORDED_PLANNING_POLICY_FROZEN_ALL_TECHNICAL_HOLDS_RETAINED",
+  "bundlePath": "docs/masterplans/05-combined-zones/phase1-owner-review-bundle.json",
+  "bundleFileSha256": "cd1ab477c4d64b1d348538ee2014ad1324b38fff6e9809d1d74ba057edb21ab6",
+  "bundlePayloadSha256": "0247737584ed9287632a8b6a8c18e7428b44f7301b9574d91a9db11e14ca9fdc",
+  "acceptanceRecordPayload": {
+    "id": "combined-zones-phase1-owner-review-acceptance",
+    "decision": "ACCEPT_PLANNING_POLICY_AND_TECHNICAL_DEVELOPMENT_CHECKLIST",
+    "acceptedBy": "sole human project owner",
+    "acceptedAtUtc": "2026-08-05T00:55:00Z",
+    "acceptanceAuthority": {
+      "source": "explicit user approval in the current project conversation",
+      "additionalHumanDecisionMakersRequired": false
+    },
+    "actualApprovalText": "yes I approve then, please continue to engineer and fan out into teams if you need to. Also does it make sense to put a tunnel under grandave now and add to it later than try to add it later?",
+    "subsequentInstructionText": "also fan out teams of subagents to remove all BLOCKS AND HOLDS",
+    "copyableStatementAcceptedVerbatim": false,
+    "bundleStatementIncorporatedByReference": true,
+    "bundleBinding": {
+      "path": "docs/masterplans/05-combined-zones/phase1-owner-review-bundle.json",
+      "fileSha256": "cd1ab477c4d64b1d348538ee2014ad1324b38fff6e9809d1d74ba057edb21ab6",
+      "bytes": 5623,
+      "payloadSha256": "0247737584ed9287632a8b6a8c18e7428b44f7301b9574d91a9db11e14ca9fdc",
+      "id": "combined-zones-phase1-owner-review-bundle",
+      "status": "READY_FOR_SOLE_OWNER_REVIEW_BUNDLE_ACCEPTANCE_PENDING_ALL_TECHNICAL_HOLDS_RETAINED"
+    },
+    "bundleCopyableStatement": "I, the sole owner, accept Combined Zones R00 owner-review bundle SHA-256 0247737584ed9287632a8b6a8c18e7428b44f7301b9574d91a9db11e14ca9fdc as the controlling planning-policy and technical-development checklist. I acknowledge every listed limitation and do not mark any current HOLD as PASS or authorize construction, operations, opening, discharge, commissioning, release advancement, or a world edit.",
+    "acceptedScope": [
+      "D02 evidence classification, selected exact raster and capped-sump/no-build planning basis, and the published D02 acceptance checklist",
+      "D05 conditional FM-01 material/support/hydrology/relic/transport/ownership policy and its default-deny acceptance checklist",
+      "D06/B07 fail-closed reservation basis and the D06-AC-01 through D06-AC-11 technical-development checklist",
+      "P1-B11 exact Grand Avenue 68-to-72 profile, exact evidenced anchors, sealed future lines, and zero-cell PassageWay deferral"
+    ],
+    "acceptanceNeverImplies": [
+      "that a current HOLD is PASS",
+      "that missing complete-save, future-state, mechanism, capacity, owner, interface, route, receiver, or technical evidence exists",
+      "D02, D05, D06, R00 G02, R00 G03, or any later release gate PASS",
+      "construction ownership, operations, opening, discharge, commissioning, release authorization, or a world edit"
+    ],
+    "effectivePlanningDisposition": {
+      "d02PlanningPolicyAccepted": true,
+      "d05PlanningPolicyAccepted": true,
+      "d06PlanningPolicyAccepted": true,
+      "p1B11PlanningBasisAccepted": true,
+      "clearedOwnerChoiceIds": [
+        "P1-B11-EXTERNAL-INTERFACES"
+      ],
+      "remainingGeometryChoiceCount": 0,
+      "technicalHoldPassedCount": 0
+    },
+    "retainedTechnicalHolds": [
+      {
+        "scope": "D02",
+        "bundleReviewHoldCount": 11,
+        "retained": true,
+        "technicalHoldPassedByAcceptance": false
+      },
+      {
+        "scope": "D05",
+        "bundleReviewHoldCount": 8,
+        "retained": true,
+        "technicalHoldPassedByAcceptance": false
+      },
+      {
+        "scope": "D06",
+        "bundleReviewHoldCount": 9,
+        "retained": true,
+        "technicalHoldPassedByAcceptance": false
+      }
+    ],
+    "safetyBoundary": {
+      "offlineOnly": true,
+      "liveCallsPerformed": [],
+      "operations": [],
+      "operationCellCount": 0,
+      "materialCellCount": 0,
+      "worldEditAuthorized": false,
+      "physicalBuildAuthorized": false
+    },
+    "disposition": {
+      "ownerAcceptanceRecorded": true,
+      "planningPolicyFrozen": true,
+      "allTechnicalHoldsRetained": true,
+      "p1B11PlanningBasisFrozen": true,
+      "g02Passed": false,
+      "g03Passed": false,
+      "r00Passed": false,
+      "completeSavedWorldStillRequired": true,
+      "exactCellCompilerStillRequired": true,
+      "ownershipAndInterfaceAcceptanceStillRequired": true
+    }
+  },
+  "acceptanceRecordPayloadSha256": "45fab3ea31163b24d7242cfe7a262d80ae906c411422effe8756c75fb436ab7d"
+}

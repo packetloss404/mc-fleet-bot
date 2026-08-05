@@ -12,11 +12,11 @@ const SCRIPT = path.join(
 );
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json',
+  'docs/masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.md',
+  'docs/masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.md',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-passive-shell-'));
 const regeneratedJson = path.join(tempDir, 'candidate.json');

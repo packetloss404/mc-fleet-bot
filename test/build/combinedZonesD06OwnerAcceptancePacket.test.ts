@@ -10,11 +10,11 @@ const ROOT = path.resolve(__dirname, '../..');
 const SCRIPT = path.join(ROOT, 'scripts/compile_combined_zones_d06_owner_acceptance_packet.mjs');
 const COMMITTED_JSON = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json',
+  'docs/masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json',
 );
 const COMMITTED_MARKDOWN = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.md',
+  'docs/masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.md',
 );
 
 interface FileBinding {

@@ -8,11 +8,11 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 const ROOT = path.resolve(__dirname, '../..');
 const JSON_PATH = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d05-support-material-design.json',
+  'docs/masterplans/05-combined-zones/phase1-d05-support-material-design.json',
 );
 const MARKDOWN_PATH = path.join(
   ROOT,
-  'masterplans/05-combined-zones/phase1-d05-support-material-design.md',
+  'docs/masterplans/05-combined-zones/phase1-d05-support-material-design.md',
 );
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'combined-zones-d05-support-material-'));
 const regeneratedJson = path.join(tempDir, 'design.json');
@@ -197,7 +197,7 @@ describe('Combined Zones D05 support-treatment and material proposal', () => {
       d05PlanningPolicyAccepted: true,
       technicalHoldPassedCount: 0,
       d05FutureStateReportIdentitySha256:
-        'acf06949a267b2cc3e4da25a0aab3267dc18149fa373534389230d2961b5de2f',
+        'ee688150305dd4cda34c56003054d7251bf2166e5ddfd5c8c494840eb31c614b',
       modelId: 'FM-01-COMPACT-EAST-FACE',
       modelIdentitySha256:
         '735b69b38c5c2ea840388039b5beb957671fe3e243ec7943c440649edcff36a6',
