@@ -73,21 +73,34 @@ function renderOverview(data) {
 
   $('#job-rows').innerHTML = data.jobs.length
     ? data.jobs
-        .map(
-          (job) => `
+        .map((job) => {
+          const progress = renderProgress(job.progress);
+          const stepNote = job.currentStep
+            ? `<small>${escapeHtml(job.currentStep)}${progress ? ' — ' + progress : ''}</small>`
+            : '';
+          return `
       <tr>
         <td><strong>${escapeHtml(job.recipeName)}</strong><small>${escapeHtml(job.id)}</small></td>
         <td>${escapeHtml(job.serverId)} / ${escapeHtml(job.worldId)}</td>
         <td>${escapeHtml(formatDate(job.createdAt))}</td>
-        <td><span class="status ${escapeHtml(job.status)}">${escapeHtml(job.status)}</span>${job.currentStep ? `<small>${escapeHtml(job.currentStep)}</small>` : ''}</td>
+        <td><span class="status ${escapeHtml(job.status)}">${escapeHtml(job.status)}</span>${stepNote}</td>
         <td>${job.reportUrl ? `<a class="artifact-link" href="${escapeHtml(job.reportUrl)}" target="_blank" rel="noreferrer">Open report ↗</a>` : job.error ? `<small title="${escapeHtml(job.error)}">See job error</small>` : '—'}</td>
       </tr>
-    `,
-        )
+    `;
+        })
         .join('')
     : '<tr><td colspan="5">No report jobs yet.</td></tr>';
 
   fillDialog();
+}
+
+function renderProgress(progress) {
+  if (!progress) return '';
+  if (typeof progress.total === 'number' && progress.total > 0) {
+    const pct = Math.min(100, Math.round((progress.current / progress.total) * 100));
+    return `${progress.label} (${pct}%)`;
+  }
+  return progress.label;
 }
 
 function fillDialog(preselectedRecipe) {

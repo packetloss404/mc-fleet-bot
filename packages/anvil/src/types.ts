@@ -38,6 +38,17 @@ export interface BlockCount {
   count: number;
 }
 
+export interface BlockCensusProgress {
+  /** Number of regions scanned so far. */
+  regionsScanned: number;
+  /** Number of chunks visited so far (including those skipped or errored). */
+  chunksVisited: number;
+  /** Total regions in the snapshot, or null when the count is not yet known. */
+  totalRegions: number | null;
+}
+
+export type BlockCensusProgressCallback = (progress: BlockCensusProgress) => void;
+
 export interface BlockCensus {
   snapshotSha256: string;
   bounds: BlockBounds | null;

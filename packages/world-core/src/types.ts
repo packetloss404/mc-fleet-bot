@@ -44,6 +44,15 @@ export interface JobLogEntry {
   stepId?: string;
 }
 
+export interface JobProgress {
+  /** Number of units completed so far. */
+  current: number;
+  /** Total expected units. `null` when the count is unknown. */
+  total: number | null;
+  /** Human-readable description of what is being counted. */
+  label: string;
+}
+
 export interface ReportJob {
   id: string;
   recipeId: string;
@@ -57,6 +66,7 @@ export interface ReportJob {
   outputDirectory: string;
   parameters: Record<string, unknown>;
   currentStep?: string;
+  progress?: JobProgress;
   error?: string;
   artifacts: string[];
   logs: JobLogEntry[];

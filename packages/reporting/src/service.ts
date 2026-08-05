@@ -24,6 +24,7 @@ import type {
   SubmitReportRequest,
 } from './types.js';
 import { validateAndCoerceParameters } from './recipes.js';
+import type { JobProgress } from '@mc-fleet/world-core';
 
 function jobId(): string {
   const stamp = new Date()
@@ -132,11 +133,14 @@ export class ReportService {
       startedAt: new Date().toISOString(),
     });
     const results: Record<string, unknown> = {};
+    const onStepProgress = (step: RecipeStep, progress: JobProgress): void => {
+      this.options.jobStore.update(id, { currentStep: step.id, progress });
+    };
     try {
       for (const step of recipe.steps) {
         job = this.options.jobStore.update(id, { currentStep: step.id });
         this.log(id, `Starting ${step.type}`, step.id);
-        const result = await this.executeStep(step, recipe, job, resolved, results);
+        const result = await this.executeStep(step, recipe, job, resolved, results, onStepProgress);
         results[step.id] = result;
         if (step.type !== 'html-report') {
           writeJsonAtomic(path.join(job.outputDirectory, 'results', `${step.id}.json`), result);
@@ -163,6 +167,7 @@ export class ReportService {
         status: 'completed',
         completedAt: new Date().toISOString(),
         currentStep: undefined,
+        progress: undefined,
         artifacts,
       });
       this.log(id, `Report completed with ${artifacts.length} artifacts`);
@@ -174,6 +179,7 @@ export class ReportService {
         status: 'failed',
         completedAt: new Date().toISOString(),
         currentStep: undefined,
+        progress: undefined,
         error: message,
       });
     }
@@ -185,33 +191,83 @@ export class ReportService {
     job: ReportJob,
     resolved: ResolvedWorld,
     results: Record<string, unknown>,
+    onProgress: (step: RecipeStep, progress: JobProgress) => void,
   ): Promise<unknown> {
     switch (step.type) {
-      case 'snapshot-summary':
+      case 'snapshot-summary': {
+        const summary = summarizeSnapshot(resolved.snapshotDirectory);
         return {
           type: step.type,
-          ...summarizeSnapshot(resolved.snapshotDirectory),
+          ...summary,
+          metrics: [
+            { label: 'SHA-256', value: summary.sha256 },
+            { label: 'Region files', value: summary.regionFileCount },
+            { label: 'Declared chunks', value: summary.declaredChunkCount },
+            { label: 'Bytes', value: summary.bytes },
+          ],
         };
-      case 'database-catalog':
+      }
+      case 'database-catalog': {
+        const databaseKey = optionString(step, 'database', 'world');
+        const catalog = catalogDatabase(databaseFor(resolved, step));
         return {
           type: step.type,
-          databaseKey: optionString(step, 'database', 'world'),
-          ...catalogDatabase(databaseFor(resolved, step)),
+          databaseKey,
+          ...catalog,
+          metrics: [
+            { label: 'Database', value: databaseKey },
+            { label: 'SHA-256', value: catalog.sha256 },
+            { label: 'Bytes', value: catalog.bytes },
+            { label: 'Tables', value: Object.keys(catalog.tableCounts).length },
+            { label: 'Quick check', value: catalog.quickCheck.join(', ') || 'unknown' },
+          ],
         };
-      case 'world-features':
+      }
+      case 'world-features': {
+        const databaseKey = optionString(step, 'database', 'world');
+        const features = exportWorldFeatures(
+          databaseFor(resolved, step),
+          optionLimit(step, job.parameters),
+        );
         return {
           type: step.type,
-          databaseKey: optionString(step, 'database', 'world'),
-          ...exportWorldFeatures(databaseFor(resolved, step), optionLimit(step, job.parameters)),
+          databaseKey,
+          ...features,
+          metrics: [
+            { label: 'Database', value: databaseKey },
+            { label: 'Rows', value: features.total },
+            { label: 'Exported', value: features.records.length },
+            { label: 'Truncated', value: features.truncated ? 'yes' : 'no' },
+            { label: 'Limit', value: features.limit },
+          ],
         };
-      case 'block-census':
+      }
+      case 'block-census': {
+        const census = await censusSnapshot(
+          resolved.snapshotDirectory,
+          (job.parameters['bounds'] as CoercedParameters['bounds'] | undefined) ?? null,
+          (progress) => {
+            onProgress(step, {
+              current: progress.regionsScanned,
+              total: progress.totalRegions,
+              label: `Scanning regions (${progress.chunksVisited} chunks visited)`,
+            });
+          },
+        );
         return {
           type: step.type,
-          ...(await censusSnapshot(
-            resolved.snapshotDirectory,
-            (job.parameters['bounds'] as CoercedParameters['bounds'] | undefined) ?? null,
-          )),
+          ...census,
+          metrics: [
+            { label: 'Snapshot SHA-256', value: census.snapshotSha256 },
+            { label: 'Chunks visited', value: census.chunksVisited },
+            { label: 'Chunks decoded', value: census.chunksDecoded },
+            { label: 'Sections decoded', value: census.sectionsDecoded },
+            { label: 'Blocks counted', value: census.blocksCounted },
+            { label: 'Unique states', value: census.uniqueBlockStates },
+            { label: 'Complete', value: census.complete ? 'yes' : 'no' },
+          ],
         };
+      }
       case 'html-report': {
         const title = optionString(step, 'title', recipe.name);
         const filename = writeHtmlReport(job.outputDirectory, recipe, job, results, title);

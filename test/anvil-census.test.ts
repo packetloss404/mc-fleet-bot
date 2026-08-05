@@ -110,6 +110,23 @@ describe('anvil census decoder', () => {
     expect(census.snapshotSha256).toBe(summary.sha256);
   });
 
+  it('emits a progress callback for each scanned region', async () => {
+    const directory = tempSnapshotDirectory();
+    fs.writeFileSync(
+      path.join(directory, 'r.0.0.mca'),
+      buildRegion({ sections: [{ y: 0, palette: [{ Name: 'minecraft:stone' }] }] }),
+    );
+    fs.writeFileSync(
+      path.join(directory, 'r.1.0.mca'),
+      buildRegion({ sections: [{ y: 0, palette: [{ Name: 'minecraft:stone' }] }] }),
+    );
+    const events: number[] = [];
+    await censusSnapshot(directory, null, (progress) => {
+      events.push(progress.regionsScanned);
+    });
+    expect(events).toEqual([1, 2]);
+  });
+
   it('round-trips the section NBT through prismarine-nbt', async () => {
     // Sanity check: the fixture writer and the parser agree on the section
     // layout. This guards against future NBT writer drift.

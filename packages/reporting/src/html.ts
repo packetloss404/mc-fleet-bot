@@ -23,7 +23,13 @@ function summarizeResult(id: string, result: unknown): string {
     return `<section><h2>${escapeHtml(id)}</h2><pre>${escapeHtml(JSON.stringify(result, null, 2))}</pre></section>`;
   }
   const record = result as Record<string, unknown>;
-  const useful = [
+  const explicitMetrics = Array.isArray(record.metrics)
+    ? (record.metrics as Array<{ label?: unknown; value?: unknown }>)
+        .filter((entry) => entry && typeof entry === 'object')
+        .map((entry) => [String(entry.label ?? ''), entry.value] as const)
+        .filter(([label]) => label.length > 0)
+    : null;
+  const heuristic = [
     ['SHA-256', record.sha256 ?? record.snapshotSha256],
     ['Region files', record.regionFileCount],
     ['Declared chunks', record.declaredChunkCount],
@@ -32,13 +38,14 @@ function summarizeResult(id: string, result: unknown): string {
     ['Unique states', record.uniqueBlockStates],
     ['Rows', record.total],
     ['Complete', record.complete],
-  ].filter(([, value]) => value !== undefined);
+  ].filter((entry): entry is [string, unknown] => entry[1] !== undefined);
+  const metrics = explicitMetrics ?? heuristic;
   return `
     <section>
       <div class="section-head"><h2>${escapeHtml(id)}</h2><span>${escapeHtml(
         String(record.type ?? 'result'),
       )}</span></div>
-      ${useful.length > 0 ? `<div class="metrics">${useful.map(([label, value]) => metric(String(label), value)).join('')}</div>` : ''}
+      ${metrics.length > 0 ? `<div class="metrics">${metrics.map(([label, value]) => metric(label, value)).join('')}</div>` : ''}
       <details>
         <summary>Structured result</summary>
         <pre>${escapeHtml(JSON.stringify(result, null, 2))}</pre>

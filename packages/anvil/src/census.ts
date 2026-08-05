@@ -6,7 +6,7 @@ import { DevtoolsError } from '@mc-fleet/world-core';
 import nbt from 'prismarine-nbt';
 
 import { summarizeSnapshot } from './snapshot.js';
-import type { BlockBounds, BlockCensus } from './types.js';
+import type { BlockBounds, BlockCensus, BlockCensusProgressCallback } from './types.js';
 
 interface PaletteEntry {
   Name?: string;
@@ -180,6 +180,7 @@ async function parseChunk(region: Buffer, slot: number): Promise<SimplifiedChunk
 export async function censusSnapshot(
   directory: string,
   bounds: BlockBounds | null = null,
+  onProgress?: BlockCensusProgressCallback,
 ): Promise<BlockCensus> {
   validateBounds(bounds);
   const summary = summarizeSnapshot(directory);
@@ -189,8 +190,10 @@ export async function censusSnapshot(
   let chunksDecoded = 0;
   let sectionsDecoded = 0;
   let blocksCounted = 0;
+  const totalRegions = summary.members.length;
 
-  for (const member of summary.members) {
+  for (let regionIndex = 0; regionIndex < summary.members.length; regionIndex += 1) {
+    const member = summary.members[regionIndex]!;
     const filename = path.join(summary.directory, member.filename);
     const region = fs.readFileSync(filename);
     if (region.length < 8192) {
@@ -199,6 +202,11 @@ export async function censusSnapshot(
         chunkX: member.regionX * 32,
         chunkZ: member.regionZ * 32,
         message: 'Region file is shorter than the 8 KiB Anvil header',
+      });
+      onProgress?.({
+        regionsScanned: regionIndex + 1,
+        chunksVisited,
+        totalRegions,
       });
       continue;
     }
@@ -241,6 +249,11 @@ export async function censusSnapshot(
         });
       }
     }
+    onProgress?.({
+      regionsScanned: regionIndex + 1,
+      chunksVisited,
+      totalRegions,
+    });
   }
 
   return {
