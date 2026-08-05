@@ -78,12 +78,18 @@ function renderOverview(data) {
           const stepNote = job.currentStep
             ? `<small>${escapeHtml(job.currentStep)}${progress ? ' — ' + progress : ''}</small>`
             : '';
+          const lastLog =
+            Array.isArray(job.logs) && job.logs.length > 0 ? job.logs[job.logs.length - 1] : null;
+          const failureNote =
+            job.status === 'failed' && lastLog
+              ? `<small class="failure-note" title="${escapeHtml(job.error ?? '')}">${escapeHtml(lastLog.message)}</small>`
+              : '';
           return `
       <tr>
         <td><strong>${escapeHtml(job.recipeName)}</strong><small>${escapeHtml(job.id)}</small></td>
         <td>${escapeHtml(job.serverId)} / ${escapeHtml(job.worldId)}</td>
         <td>${escapeHtml(formatDate(job.createdAt))}</td>
-        <td><span class="status ${escapeHtml(job.status)}">${escapeHtml(job.status)}</span>${stepNote}</td>
+        <td><span class="status ${escapeHtml(job.status)}">${escapeHtml(job.status)}</span>${stepNote}${failureNote}</td>
         <td>${job.reportUrl ? `<a class="artifact-link" href="${escapeHtml(job.reportUrl)}" target="_blank" rel="noreferrer">Open report ↗</a>` : job.error ? `<small title="${escapeHtml(job.error)}">See job error</small>` : '—'}</td>
       </tr>
     `;

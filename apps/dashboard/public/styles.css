@@ -450,6 +450,14 @@ td small {
 .status.failed::before {
   background: var(--red);
 }
+.failure-note {
+  color: var(--red);
+  margin-top: 4px;
+  max-width: 38ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .artifact-link {
   color: var(--mint);
   text-decoration: none;
