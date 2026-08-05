@@ -1,5 +1,3 @@
-import type { ReportJob } from '@mc-fleet/world-core';
-
 import { ReportService } from './service.js';
 
 export class ReportQueue {
@@ -15,19 +13,6 @@ export class ReportQueue {
 
   state(): { active: boolean; queued: number } {
     return { active: this.active, queued: this.pending.length };
-  }
-
-  async runAndWait(jobId: string): Promise<ReportJob> {
-    while (this.active || this.pending.length > 0) {
-      await new Promise((resolve) => setTimeout(resolve, 20));
-    }
-    this.active = true;
-    try {
-      return await this.service.run(jobId);
-    } finally {
-      this.active = false;
-      void this.drain();
-    }
   }
 
   private async drain(): Promise<void> {

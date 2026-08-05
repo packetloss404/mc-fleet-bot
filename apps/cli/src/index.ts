@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import fs from 'node:fs';
 import path from 'node:path';
 
 import { summarizeSnapshot } from '@mc-fleet/anvil';
@@ -8,6 +7,7 @@ import {
   DevtoolsError,
   JobStore,
   loadRegistry,
+  resolvePaths,
   resolveWorld,
 } from '@mc-fleet/world-core';
 
@@ -42,35 +42,24 @@ function requiredFlag(name: string): string {
   return value;
 }
 
-function configuredPath(root: string, variable: string, fallback: string): string {
-  return path.resolve(root, process.env[variable] ?? fallback);
-}
-
 function print(value: unknown): void {
   process.stdout.write(`${JSON.stringify(value, null, 2)}\n`);
 }
 
 async function main(): Promise<void> {
   const root = process.cwd();
-  const localRegistry = configuredPath(
+  const paths = resolvePaths({
     root,
-    'MC_FLEET_REGISTRY',
-    'config/registry.local.yml',
-  );
-  const registryFile = fs.existsSync(localRegistry)
-    ? localRegistry
-    : path.join(root, 'config/registry.example.yml');
-  const recipesDirectory = configuredPath(root, 'MC_FLEET_RECIPES', 'recipes');
-  const jobsDirectory = configuredPath(root, 'MC_FLEET_JOBS', 'data/jobs');
-  const artifactRoot = configuredPath(root, 'MC_FLEET_ARTIFACTS', 'data/artifacts');
-  const registry = loadRegistry(registryFile);
-  const recipes = loadRecipes(recipesDirectory);
-  const jobStore = new JobStore(jobsDirectory);
+    exampleRegistryDirectory: path.join(path.resolve(root), 'config'),
+  });
+  const registry = loadRegistry(paths.registryFile);
+  const recipes = loadRecipes(paths.recipesDirectory);
+  const jobStore = new JobStore(paths.jobsDirectory);
   const service = new ReportService({
     registry,
     recipes,
     jobStore,
-    artifactRoot,
+    artifactRoot: paths.artifactRoot,
   });
 
   const [command, action, subject] = process.argv.slice(2);
@@ -82,7 +71,7 @@ async function main(): Promise<void> {
     print({
       ok: true,
       mode: 'read-only',
-      file: registryFile,
+      file: paths.registryFile,
       servers: registry.servers.length,
       worlds: registry.servers.reduce((sum, server) => sum + server.worlds.length, 0),
       recipes: recipes.length,

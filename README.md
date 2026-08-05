@@ -94,10 +94,9 @@ npm run cli -- registry check
 npm run dev
 ```
 
-Open `http://<host-ip>:4310`. On the current development host, the dashboard is
-available at [http://10.80.13.18:4310](http://10.80.13.18:4310). It lists
-registered worlds and recipes, queues reports, monitors the worker, and links
-to completed HTML artifacts.
+Open `http://<host-ip>:4310`. The dashboard lists registered worlds and
+recipes, queues reports, monitors the worker, and links to completed HTML
+artifacts.
 
 To use a different bind address or port:
 

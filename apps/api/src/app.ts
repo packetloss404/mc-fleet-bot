@@ -27,7 +27,17 @@ export function createApp(context: AppContext): express.Express {
   app.use((_request, response, next) => {
     response.setHeader(
       'Content-Security-Policy',
-      "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; frame-src 'self'",
+      [
+        "default-src 'self'",
+        "img-src 'self' data:",
+        "style-src 'self'",
+        "script-src 'self'",
+        "frame-src 'self'",
+        "connect-src 'self'",
+        "font-src 'self'",
+        "object-src 'none'",
+        "base-uri 'self'",
+      ].join('; '),
     );
     response.setHeader('X-Content-Type-Options', 'nosniff');
     response.setHeader('Referrer-Policy', 'no-referrer');

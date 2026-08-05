@@ -30,8 +30,8 @@ npm run cli -- registry check
 npm run dev
 ```
 
-The dashboard/API listens on port `4310` on all interfaces by default. On this
-host, use `http://10.80.13.18:4310`.
+The dashboard/API listens on port `4310` on all interfaces by default. Set
+`MC_FLEET_DEVTOOLS_HOST=127.0.0.1` to restrict access to the local machine.
 
 ## Repository layout
 

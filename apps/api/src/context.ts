@@ -1,8 +1,7 @@
-import fs from 'node:fs';
 import path from 'node:path';
 
 import { loadRecipes, ReportQueue, ReportService } from '@mc-fleet/reporting';
-import { JobStore, loadRegistry } from '@mc-fleet/world-core';
+import { JobStore, loadRegistry, resolvePaths } from '@mc-fleet/world-core';
 
 export interface AppContext {
   root: string;
@@ -17,50 +16,22 @@ export interface AppContext {
   jobStore: JobStore;
 }
 
-function fromRoot(root: string, value: string | undefined, fallback: string): string {
-  return path.resolve(root, value ?? fallback);
-}
-
 export function createContext(root = process.cwd()): AppContext {
-  const resolvedRoot = path.resolve(root);
-  const localRegistry = fromRoot(
-    resolvedRoot,
-    process.env.MC_FLEET_REGISTRY,
-    'config/registry.local.yml',
-  );
-  const registryFile = fs.existsSync(localRegistry)
-    ? localRegistry
-    : path.join(resolvedRoot, 'config/registry.example.yml');
-  const recipesDirectory = fromRoot(
-    resolvedRoot,
-    process.env.MC_FLEET_RECIPES,
-    'recipes',
-  );
-  const jobsDirectory = fromRoot(
-    resolvedRoot,
-    process.env.MC_FLEET_JOBS,
-    'data/jobs',
-  );
-  const artifactRoot = fromRoot(
-    resolvedRoot,
-    process.env.MC_FLEET_ARTIFACTS,
-    'data/artifacts',
-  );
-  const registry = loadRegistry(registryFile);
-  const jobStore = new JobStore(jobsDirectory);
+  const paths = resolvePaths({
+    root,
+    exampleRegistryDirectory: path.join(path.resolve(root), 'config'),
+  });
+  const registry = loadRegistry(paths.registryFile);
+  const jobStore = new JobStore(paths.jobsDirectory);
   const service = new ReportService({
     registry,
-    recipes: loadRecipes(recipesDirectory),
+    recipes: loadRecipes(paths.recipesDirectory),
     jobStore,
-    artifactRoot,
+    artifactRoot: paths.artifactRoot,
   });
   return {
-    root: resolvedRoot,
-    registryFile,
-    recipesDirectory,
-    jobsDirectory,
-    artifactRoot,
-    dashboardDirectory: path.join(resolvedRoot, 'apps/dashboard/public'),
+    ...paths,
+    dashboardDirectory: path.join(paths.root, 'apps/dashboard/public'),
     registry,
     service,
     queue: new ReportQueue(service),
