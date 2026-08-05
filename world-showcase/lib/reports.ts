@@ -56,6 +56,26 @@ export const reports: ReportDefinition[] = [
     ],
   },
   {
+    slug: 'masterplan-program',
+    number: '03',
+    title: 'Masterplan Program',
+    project: 'MC Fleet · Combined Complex & area baselines',
+    summary: (
+      'The thirteen-plan library: the 01–05 authority chain that places the '
+      + 'Combined Complex in the live world, the eight area baselines beside it, '
+      + 'and the gates still holding construction.'
+    ),
+    status: 'Build HOLD',
+    published: '5 August 2026',
+    image: '/masterplans/hero-phase0-overlay.webp',
+    href: '/reports/masterplan-program',
+    metrics: [
+      { value: '13', label: 'masterplans' },
+      { value: '2 / 7', label: 'R00 gates passed' },
+      { value: '30 / 30', label: 'G03 domains exact' },
+    ],
+  },
+  {
     slug: 'poi-coordinate-directory',
     number: '04',
     title: 'POI Coordinate Directory',

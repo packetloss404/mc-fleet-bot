@@ -4,6 +4,45 @@ All notable changes to DyoBot are documented in this file.
 
 ---
 
+## 2026-08-05
+
+### World Showcase — masterplan program report (v1.1.0)
+
+New **Report 03 · Masterplan Program** at `/reports/masterplan-program`, filling
+the gap the library had between reports 02 and 04. It surfaces all thirteen
+plans in `docs/masterplans/`:
+
+- The `01 + 02 + 03 → 04 → 05` authority chain, drawn as a flow so the
+  composition order is legible.
+- A filterable library of all thirteen plans — authority chain vs. area
+  baselines — each with its role, status, summary, and key figures.
+- The R00 readiness board: G01 and G03 pass; G02 and G04–G07 hold.
+- Six standing constraints, including that no masterplan artifact authorizes a
+  world edit and that broad 2D envelopes are not ownership claims.
+- Eleven design views downscaled from the 01–05 rendering and map sets.
+
+Plan figures are transcribed into `world-showcase/lib/masterplans.ts` from the
+committed `build-info.json` (plans 01–05) and `MASTERPLAN.md` front matter
+(plans 06–13). Cover and gallery art is generated into
+`world-showcase/public/masterplans/` (17 WebP files, 2.0 MB total).
+
+### World Showcase — cleanup
+
+The unused Cloudflare Workers deploy path was removed; Railway is now the single
+documented deployment. Deleted `wrangler.jsonc`, `open-next.config.ts`, and
+`scripts/prepare_sites_worker.mjs`; dropped the `build:worker`, `build:sites`,
+and `preview` scripts and the `@opennextjs/cloudflare` and `wrangler`
+devDependencies; pruned the stale ignore entries from `.gitignore` and
+`.railwayignore`.
+
+The Railway setup itself is unchanged — Railpack builder, `npm run build` /
+`npm run start`, `/api/health` check, restart-on-failure with three retries.
+
+`README.md` gains a World Showcase section covering the report library, the run
+and deploy commands, and the auth model.
+
+---
+
 ## 2026-08-03
 
 ### Repository reorganisation

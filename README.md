@@ -289,11 +289,52 @@ geometry passed, but the autonomous resident lifecycle observer remains an
 open, non-blocking troubleshooting item; do not report citizen lifecycle as
 accepted until the separate observer handoff is closed.
 
-The `world-showcase/` Sites app uses an application-level quick PIN gate.
-`SITE_PASSCODE` and `SITE_SESSION_SECRET` must be stored as secret production
-runtime variables in Sites and must never be committed to the repository. The
-signed HttpOnly session protects the homepage and direct atlas, screenshot, and
-report routes even though the Sites access mode is public.
+## World Showcase (`world-showcase/`)
+
+A private Next.js 15 report library — the human-facing surface for the world's
+maps, screenshots, catalogs, and masterplans. It is a standalone app with its
+own `package.json`; it does not share the root build.
+
+### Report library
+
+| # | Report | Route | Covers |
+|---|--------|-------|--------|
+| 01 | Master Plan | `/reports/master-plan` | Accepted Town Expansion R1 as-built record, atlas, object catalog, release QA |
+| 02 | Underground Navigation | `/reports/underground-navigation` | Tunnels, bunkers, vaults, below-grade venues, and known ways in |
+| 03 | Masterplan Program | `/reports/masterplan-program` | The thirteen plans in `docs/masterplans/` — the 01–05 authority chain, the 06–13 area baselines, and the R00 gates |
+| 04 | POI Coordinate Directory | `/reports/poi-coordinate-directory` | Every cataloged place with copy-ready teleport coordinates |
+
+Report 03 is transcribed from the committed plan evidence — the `build-info.json`
+files for plans 01–05 and the `MASTERPLAN.md` front matter for 06–13 — in
+`world-showcase/lib/masterplans.ts`. Re-transcribe that file when the underlying
+plans change; nothing regenerates it automatically. Its cover and gallery art is
+downscaled from the masterplan rendering sets into `public/masterplans/`.
+
+The masterplan HTML reports under `docs/masterplans/` are **not** served by the
+app. They reference the repository tree relatively (`../../data/exports/...`), so
+they stay repo-side and are read locally.
+
+### Run and deploy
+
+```bash
+cd world-showcase
+npm install
+npm run dev            # local, port 3000
+npm run build && npm start
+```
+
+Deployment is **Railway** (`railway.json`): Railpack builder, `npm run build`,
+`npm run start`, health check on `/api/health`, restart on failure with three
+retries. There is no Cloudflare Workers path — the OpenNext/wrangler build was
+removed in v1.1.0 as unused.
+
+### Auth
+
+The app uses an application-level ten-digit PIN gate. `SITE_PASSCODE` (exactly
+ten digits) and `SITE_SESSION_SECRET` (32+ characters) must be set as secret
+production runtime variables and must never be committed. The signed HttpOnly
+session protects every route except `/`, `/api/auth`, and `/api/health` —
+including direct atlas, screenshot, and report asset routes.
 
 ## Control Platform
 
