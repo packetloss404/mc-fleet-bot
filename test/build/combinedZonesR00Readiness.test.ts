@@ -59,6 +59,43 @@ interface Report {
     remainingGeometryBlockerCount: number;
     copiedSaveCandidatesAudited: number;
     completeCopiedSaveCandidates: number;
+    historicalCompleteSaveIntakePassed: boolean;
+    completeSaveIntakePassed: boolean;
+    acceptedCompleteSaveEvidenceCount: number;
+    completeSaveIntakeRegionFileCount: number;
+    completeSaveIntakeEntityFileCount: number;
+    completeSaveIntakePoiFileCount: number;
+    completeSaveIntakeLevelDatPresent: boolean;
+    completeSaveSha256: string;
+    completeSaveScopeClearanceValid: boolean;
+    completeSaveProjectScopeSourceEquivalent: boolean;
+    completeSaveGeneratedStartCensusSourceEquivalent: boolean;
+    completeSaveEntityConflictRecordCount: number;
+    completeSavePoiConflictRecordCount: number;
+    completeSaveScopeClearanceEstablished: boolean;
+    completeSaveDeferredG13EntityObservationCount: number;
+    completeSaveUnclassifiedEntityConflictRecordCount: number;
+    completeSavePersistentPoiTreatmentRequiredCount: number;
+    completeSavePreR00UnresolvedFindingCount: number;
+    d06BeeNestTreatmentValid: boolean;
+    d06BeeNestPlanningTreatmentSelected: boolean;
+    d06BeeNestSelectedAlternativeId: string;
+    d06BeeNestColonyMemberCount: number;
+    d06BeeNestDestinationSelected: boolean;
+    d06BeeNestTechnicalTreatmentAccepted: boolean;
+    d06BeeNestDestinationSurveyValid: boolean;
+    d06BeeNestDestinationCandidateSelected: boolean;
+    d06BeeNestDestinationCandidate: { x: number; y: number; z: number };
+    d06BeeNestDestinationCandidateCount: number;
+    d06BeeNestDestinationMinimumDomainBoundsClearance: number;
+    d06BeeNestDestinationMinimumPlanningZoneBoundsClearance: number;
+    d06BeeNestDestinationNearbyFlowerCount: number;
+    d06BeeNestDestinationCellAccepted: boolean;
+    d06BeeNestRelocationFixtureValid: boolean;
+    d06BeeNestSyntheticStateContractPassed: boolean;
+    d06BeeNestCurrentCaptureTransportEligible: boolean;
+    d06BeeNestLiveConsolidationRequired: boolean;
+    d06BeeNestRuntimeMechanicProven: boolean;
     d05S01SurveyComplete: boolean;
     b03ExactRouteSelected: boolean;
     b03HorizontalStepCount: number;
@@ -95,6 +132,16 @@ interface Report {
     p1B11OwnerPacketReady: boolean;
     p1B11PlanningBasisAccepted: boolean;
     p1B11GrandAvenueCenterlinePointCount: number;
+    shipwreckTreatmentContractValid: boolean;
+    shipwreckAttributedRemovalTargetCandidateCellCount: number;
+    shipwreckAcceptedRemovalTargetCellCount: number;
+    shipwreckCandidateDesiredStateCellCount: number;
+    shipwreckAcceptedDesiredStateCellCount: number;
+    shipwreckPreservedPackedIceCellCount: number;
+    shipwreckPreservedSnowCellCount: number;
+    shipwreckUnmaterializedLootChestCount: number;
+    shipwreckKnownInventoryContentCount: number;
+    shipwreckTreatmentTechnicallyAccepted: boolean;
     autonomousOfflineWorkMayContinue: boolean;
     autonomousOfflineWorkCanCompleteR00: boolean;
     externalEvidenceStillRequired: boolean;
@@ -116,7 +163,7 @@ beforeAll(() => {
       'scripts/audit_combined_zones_r00_readiness.mjs',
       '--out', regeneratedJson,
       '--markdown', regeneratedMarkdown,
-      '--generated-at', '2026-08-04T18:00:00Z',
+      '--generated-at', '2026-08-06T02:58:00Z',
     ],
     { cwd: ROOT, stdio: 'pipe' },
   );
@@ -163,6 +210,45 @@ describe('Combined Zones R00 readiness audit', () => {
         remainingGeometryBlockerCount: 0,
         copiedSaveCandidatesAudited: 56,
         completeCopiedSaveCandidates: 0,
+        historicalCompleteSaveIntakePassed: false,
+        completeSaveIntakePassed: true,
+        acceptedCompleteSaveEvidenceCount: 1,
+        completeSaveIntakeRegionFileCount: 51,
+        completeSaveIntakeEntityFileCount: 42,
+        completeSaveIntakePoiFileCount: 35,
+        completeSaveIntakeLevelDatPresent: true,
+        completeSaveSha256:
+          '1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26',
+        completeSaveScopeClearanceValid: true,
+        completeSaveProjectScopeSourceEquivalent: true,
+        completeSaveGeneratedStartCensusSourceEquivalent: true,
+        completeSaveEntityConflictRecordCount: 43,
+        completeSavePoiConflictRecordCount: 1,
+        completeSaveScopeClearanceEstablished: false,
+        completeSaveDeferredG13EntityObservationCount: 43,
+        completeSaveUnclassifiedEntityConflictRecordCount: 0,
+        completeSavePersistentPoiTreatmentRequiredCount: 1,
+        completeSavePreR00UnresolvedFindingCount: 1,
+        d06BeeNestTreatmentValid: true,
+        d06BeeNestPlanningTreatmentSelected: true,
+        d06BeeNestSelectedAlternativeId:
+          'D06-BEE-02-HUMANE-INTACT-RELOCATION',
+        d06BeeNestColonyMemberCount: 3,
+        d06BeeNestDestinationSelected: false,
+        d06BeeNestTechnicalTreatmentAccepted: false,
+        d06BeeNestDestinationSurveyValid: true,
+        d06BeeNestDestinationCandidateSelected: true,
+        d06BeeNestDestinationCandidate: { x: 1811, y: 67, z: 378 },
+        d06BeeNestDestinationCandidateCount: 921,
+        d06BeeNestDestinationMinimumDomainBoundsClearance: 218,
+        d06BeeNestDestinationMinimumPlanningZoneBoundsClearance: 78,
+        d06BeeNestDestinationNearbyFlowerCount: 16,
+        d06BeeNestDestinationCellAccepted: false,
+        d06BeeNestRelocationFixtureValid: true,
+        d06BeeNestSyntheticStateContractPassed: true,
+        d06BeeNestCurrentCaptureTransportEligible: false,
+        d06BeeNestLiveConsolidationRequired: true,
+        d06BeeNestRuntimeMechanicProven: false,
         d05S01SurveyComplete: true,
         b03ExactRouteSelected: true,
         b03HorizontalStepCount: 800,
@@ -199,6 +285,16 @@ describe('Combined Zones R00 readiness audit', () => {
         shipwreckRemovalPolicyValid: true,
         shipwreckPreserveOrRemoveOwnerChoiceResolved: true,
         shipwreckExactAttributedRemovalTargetCellCount: 0,
+        shipwreckTreatmentContractValid: true,
+        shipwreckAttributedRemovalTargetCandidateCellCount: 598,
+        shipwreckAcceptedRemovalTargetCellCount: 0,
+        shipwreckCandidateDesiredStateCellCount: 598,
+        shipwreckAcceptedDesiredStateCellCount: 0,
+        shipwreckPreservedPackedIceCellCount: 515,
+        shipwreckPreservedSnowCellCount: 5,
+        shipwreckUnmaterializedLootChestCount: 3,
+        shipwreckKnownInventoryContentCount: 0,
+        shipwreckTreatmentTechnicallyAccepted: false,
         shipwreckAcceptedTechnicalTreatmentContractCount: 0,
         shipwreckObservedChestCount: 3,
         autonomousOfflineWorkMayContinue: true,

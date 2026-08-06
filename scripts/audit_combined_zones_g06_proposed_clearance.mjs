@@ -37,7 +37,10 @@ const INPUTS = Object.freeze({
   releaseContract: 'docs/masterplans/05-combined-zones/phase1-release-contract.json',
   phase0: 'docs/masterplans/05-combined-zones/phase0-survey-evidence.json',
   relics: 'docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
-  completeSave: 'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
+  completeSave: value(
+    '--complete-save',
+    'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
+  ),
   shipwreckRemovalAuthorization:
     'docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json',
   b03: 'docs/masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json',
@@ -120,6 +123,16 @@ function relative(filename) {
 
 function sha256(data) {
   return crypto.createHash('sha256').update(data).digest('hex');
+}
+
+function canonicalize(valueToCanonicalize) {
+  if (Array.isArray(valueToCanonicalize)) return valueToCanonicalize.map(canonicalize);
+  if (valueToCanonicalize && typeof valueToCanonicalize === 'object') {
+    return Object.fromEntries(Object.keys(valueToCanonicalize).sort().map((key) => (
+      [key, canonicalize(valueToCanonicalize[key])]
+    )));
+  }
+  return valueToCanonicalize;
 }
 
 function readJson(relativePath) {
@@ -251,6 +264,540 @@ class SnapshotReader {
     this.surfaces.set(key, WORLD_MIN_Y - 1);
     return WORLD_MIN_Y - 1;
   }
+}
+
+class OptionalAnvilReader {
+  constructor(directory) {
+    this.directory = directory;
+    this.regions = new Map();
+  }
+
+  region(rx, rz) {
+    const key = `${rx},${rz}`;
+    if (!this.regions.has(key)) {
+      const filename = path.join(this.directory, `r.${rx}.${rz}.mca`);
+      this.regions.set(key, fs.existsSync(filename) ? fs.readFileSync(filename) : null);
+    }
+    return this.regions.get(key);
+  }
+
+  rawChunkPayload(cx, cz) {
+    const buffer = this.region(Math.floor(cx / 32), Math.floor(cz / 32));
+    if (!buffer) return null;
+    const index = ((cx & 31) + (cz & 31) * 32) * 4;
+    const sectorOffset = buffer.readUIntBE(index, 3);
+    const sectorCount = buffer[index + 3];
+    if (!sectorOffset || !sectorCount) return null;
+    const offset = sectorOffset * 4096;
+    invariant(offset + 5 <= buffer.length, `truncated Anvil chunk ${cx},${cz}`);
+    const size = buffer.readUInt32BE(offset);
+    invariant(size >= 1 && offset + 4 + size <= buffer.length,
+      `invalid Anvil chunk length at ${cx},${cz}`);
+    return buffer.subarray(offset + 4, offset + 4 + size);
+  }
+
+  async chunk(cx, cz) {
+    const payload = this.rawChunkPayload(cx, cz);
+    if (!payload) return null;
+    const compression = payload.readUInt8(0);
+    invariant(!(compression & 0x80), `external chunk storage unsupported at ${cx},${cz}`);
+    const { parsed } = await nbt.parse(decompress(compression, payload.subarray(1)));
+    return nbt.simplify(parsed);
+  }
+}
+
+function compareChunkKeys(left, right) {
+  const [leftX, leftZ] = left.split(',').map(Number);
+  const [rightX, rightZ] = right.split(',').map(Number);
+  return leftX - rightX || leftZ - rightZ;
+}
+
+function addBoundsChunks(target, bounds) {
+  for (let cx = Math.floor(bounds.minX / 16); cx <= Math.floor(bounds.maxX / 16); cx += 1) {
+    for (let cz = Math.floor(bounds.minZ / 16); cz <= Math.floor(bounds.maxZ / 16); cz += 1) {
+      target.add(`${cx},${cz}`);
+    }
+  }
+}
+
+function chunksExtent(keys) {
+  if (keys.length === 0) return null;
+  const coordinates = keys.map((key) => key.split(',').map(Number));
+  return {
+    minX: Math.min(...coordinates.map(([cx]) => cx * 16)),
+    maxX: Math.max(...coordinates.map(([cx]) => cx * 16 + 15)),
+    minZ: Math.min(...coordinates.map(([, cz]) => cz * 16)),
+    maxZ: Math.max(...coordinates.map(([, cz]) => cz * 16 + 15)),
+  };
+}
+
+function regionCoordinates(filename) {
+  const match = /^r\.(-?\d+)\.(-?\d+)\.mca$/.exec(filename);
+  invariant(match, `invalid Anvil region filename ${filename}`);
+  return { rx: Number(match[1]), rz: Number(match[2]) };
+}
+
+function compareRegionChunkPayloads(sourceDirectory, capturedDirectory, requiredChunkKeys) {
+  const sourceNames = fs.readdirSync(sourceDirectory)
+    .filter((name) => name.endsWith('.mca')).sort();
+  const capturedNames = fs.readdirSync(capturedDirectory)
+    .filter((name) => name.endsWith('.mca')).sort();
+  invariant(JSON.stringify(sourceNames) === JSON.stringify(capturedNames),
+    'source and captured region filename sets differ');
+  const sourceReader = new OptionalAnvilReader(sourceDirectory);
+  const capturedReader = new OptionalAnvilReader(capturedDirectory);
+  const globalChangedChunks = [];
+  const changedRegionFiles = new Set();
+  for (const name of sourceNames) {
+    const { rx, rz } = regionCoordinates(name);
+    for (let localZ = 0; localZ < 32; localZ += 1) {
+      for (let localX = 0; localX < 32; localX += 1) {
+        const cx = rx * 32 + localX;
+        const cz = rz * 32 + localZ;
+        const source = sourceReader.rawChunkPayload(cx, cz);
+        const captured = capturedReader.rawChunkPayload(cx, cz);
+        if ((source === null) !== (captured === null)
+            || (source && captured && !source.equals(captured))) {
+          const key = `${cx},${cz}`;
+          changedRegionFiles.add(name);
+          globalChangedChunks.push({
+            key,
+            chunkX: cx,
+            chunkZ: cz,
+            sourcePresent: source !== null,
+            capturedPresent: captured !== null,
+          });
+        }
+      }
+    }
+  }
+  globalChangedChunks.sort((left, right) => compareChunkKeys(left.key, right.key));
+  const scopedRecords = [...requiredChunkKeys].sort(compareChunkKeys).map((key) => {
+    const [cx, cz] = key.split(',').map(Number);
+    const source = sourceReader.rawChunkPayload(cx, cz);
+    const captured = capturedReader.rawChunkPayload(cx, cz);
+    return {
+      key,
+      sourcePresent: source !== null,
+      capturedPresent: captured !== null,
+      sourceSha256: source ? sha256(source) : null,
+      capturedSha256: captured ? sha256(captured) : null,
+      identical: (source === null && captured === null)
+        || Boolean(source && captured && source.equals(captured)),
+    };
+  });
+  const scopedDifferences = scopedRecords.filter(({ identical }) => !identical);
+  const changedKeys = globalChangedChunks.map(({ key }) => key);
+  return {
+    sourceRegionFileCount: sourceNames.length,
+    capturedRegionFileCount: capturedNames.length,
+    regionFilenameSetsExact: true,
+    changedRegionFileCount: changedRegionFiles.size,
+    changedRegionFiles: [...changedRegionFiles].sort(),
+    globalChangedChunkCount: globalChangedChunks.length,
+    globalChangedChunkBounds: chunksExtent(changedKeys),
+    globalChangedChunkSetSha256: sha256(`${changedKeys.join('\n')}${changedKeys.length ? '\n' : ''}`),
+    requiredChunkCount: scopedRecords.length,
+    requiredChunkBounds: chunksExtent(scopedRecords.map(({ key }) => key)),
+    requiredChunkSetSha256: sha256(
+      `${scopedRecords.map(({ key }) => key).join('\n')}${scopedRecords.length ? '\n' : ''}`,
+    ),
+    scopedDifferenceCount: scopedDifferences.length,
+    scopedDifferences,
+    scopedPayloadIdentitySha256: sha256(`${scopedRecords.map((record) => (
+      `${record.key}\t${record.sourceSha256}\t${record.capturedSha256}`
+    )).join('\n')}\n`),
+    projectScopeSourceEquivalent: scopedDifferences.length === 0,
+  };
+}
+
+function countBy(records, key) {
+  const counts = new Map();
+  for (const record of records) {
+    const value = record[key];
+    counts.set(value, (counts.get(value) ?? 0) + 1);
+  }
+  return Object.fromEntries([...counts.entries()].sort(([left], [right]) => (
+    left < right ? -1 : left > right ? 1 : 0
+  )));
+}
+
+async function scanCompleteSaveRecords(worldRoot, requiredChunkKeys) {
+  const entityReader = new OptionalAnvilReader(path.join(worldRoot, 'entities'));
+  const poiReader = new OptionalAnvilReader(path.join(worldRoot, 'poi'));
+  const entities = [];
+  const pois = [];
+  let entityChunkDocumentCount = 0;
+  let poiChunkDocumentCount = 0;
+  for (const key of [...requiredChunkKeys].sort(compareChunkKeys)) {
+    const [cx, cz] = key.split(',').map(Number);
+    const entityChunk = await entityReader.chunk(cx, cz);
+    if (entityChunk) {
+      entityChunkDocumentCount += 1;
+      const visit = (entity, recordPath) => {
+        const position = entity?.Pos;
+        if (Array.isArray(position) && position.length >= 3
+            && position.slice(0, 3).every(Number.isFinite)) {
+          const blockPosition = {
+            x: Math.floor(position[0]),
+            y: Math.floor(position[1]),
+            z: Math.floor(position[2]),
+          };
+          const identity = {
+            entityType: entity.id ?? 'unknown',
+            uuid: entity.UUID ?? null,
+            position: position.slice(0, 3),
+            sourceChunk: { x: cx, z: cz },
+            recordPath,
+          };
+          entities.push({
+            evidenceId: `ENTITY-${sha256(JSON.stringify(identity)).slice(0, 24)}`,
+            entityType: identity.entityType,
+            position: identity.position,
+            blockPosition,
+            sourceChunk: identity.sourceChunk,
+            homeHivePosition: Array.isArray(entity.HivePos)
+              ? entity.HivePos.slice(0, 3).map(Number)
+              : Array.isArray(entity.hive_pos)
+                ? entity.hive_pos.slice(0, 3).map(Number)
+                : null,
+            domainIds: new Set(),
+            protectedCoreIds: new Set(),
+          });
+        }
+        (entity?.Passengers ?? []).forEach((passenger, index) => (
+          visit(passenger, `${recordPath}/Passengers/${index}`)
+        ));
+      };
+      (entityChunk.Entities ?? []).forEach((entity, index) => visit(entity, `Entities/${index}`));
+    }
+    const poiChunk = await poiReader.chunk(cx, cz);
+    if (poiChunk) {
+      poiChunkDocumentCount += 1;
+      for (const [sectionY, section] of Object.entries(poiChunk.Sections ?? {}).sort()) {
+        (section.Records ?? []).forEach((record, index) => {
+          if (!Array.isArray(record.pos) || record.pos.length < 3) return;
+          const blockPosition = {
+            x: Number(record.pos[0]),
+            y: Number(record.pos[1]),
+            z: Number(record.pos[2]),
+          };
+          const identity = {
+            poiType: record.type ?? 'unknown',
+            blockPosition,
+            sourceChunk: { x: cx, z: cz },
+            sectionY,
+            index,
+          };
+          pois.push({
+            evidenceId: `POI-${sha256(JSON.stringify(identity)).slice(0, 24)}`,
+            poiType: identity.poiType,
+            blockPosition,
+            sourceChunk: identity.sourceChunk,
+            domainIds: new Set(),
+            protectedCoreIds: new Set(),
+          });
+        });
+      }
+    }
+  }
+  return {
+    entityChunkDocumentCount,
+    poiChunkDocumentCount,
+    entities,
+    pois,
+  };
+}
+
+function recordPointMap(records) {
+  const result = new Map();
+  for (const record of records) {
+    const key = cellKey(record.blockPosition);
+    if (!result.has(key)) result.set(key, []);
+    result.get(key).push(record);
+  }
+  return result;
+}
+
+function applyExpandedDomainMembership(domain, pointMap) {
+  for (const cell of domain.cells) {
+    for (const record of pointMap.get(cellKey(cell)) ?? []) record.domainIds.add(domain.domainId);
+  }
+}
+
+function applyIntervalDomainMembership(domain, records) {
+  for (const record of records) {
+    const point = record.blockPosition;
+    if (!inside(point, domain.bounds)) continue;
+    const ranges = domain._intervalMap.get(columnKey(point.x, point.z)) ?? [];
+    if (ranges.some(({ start, end }) => point.y >= start && point.y <= end)) {
+      record.domainIds.add(domain.domainId);
+    }
+  }
+}
+
+function publicCompleteSaveRecord(record) {
+  return {
+    evidenceId: record.evidenceId,
+    ...(record.entityType ? { entityType: record.entityType, position: record.position } : {}),
+    ...(record.poiType ? { poiType: record.poiType } : {}),
+    blockPosition: record.blockPosition,
+    sourceChunk: record.sourceChunk,
+    ...(record.homeHivePosition ? { homeHivePosition: record.homeHivePosition } : {}),
+    domainIds: [...record.domainIds].sort(),
+    protectedCoreIds: [...record.protectedCoreIds].sort(),
+  };
+}
+
+async function poiSourceStateEvidence(regionReader, position, scannedEntities) {
+  const chunk = await regionReader.chunk(
+    Math.floor(position.x / 16),
+    Math.floor(position.z / 16),
+  );
+  invariant(chunk, `missing terrain chunk for POI ${cellKey(position)}`);
+  const section = (chunk.sections ?? []).find(({ Y }) => (
+    Number(Y) === Math.floor(position.y / 16)
+  ));
+  const states = section?.block_states;
+  invariant(states?.palette?.length, `missing block-state palette for POI ${cellKey(position)}`);
+  const index = ((position.y & 15) << 8) | ((position.z & 15) << 4) | (position.x & 15);
+  const state = states.palette[paletteIndex(states, index, 4)] ?? { Name: 'minecraft:air' };
+  const normalizedState = {
+    name: state.Name,
+    properties: Object.fromEntries(Object.entries(state.Properties ?? {}).sort()),
+  };
+  const blockEntity = (chunk.block_entities ?? []).find((record) => (
+    Number(record.x) === position.x
+    && Number(record.y) === position.y
+    && Number(record.z) === position.z
+  ));
+  const embeddedOccupants = (blockEntity?.bees ?? []).map((occupant) => ({
+    entityType: occupant.entity_data?.id ?? 'unknown',
+    minTicksInHive: Number(occupant.min_ticks_in_hive ?? 0),
+    ticksInHive: Number(occupant.ticks_in_hive ?? 0),
+  }));
+  const linkedExternalEntities = scannedEntities.filter((entity) => (
+    entity.entityType === 'minecraft:bee'
+    && Array.isArray(entity.homeHivePosition)
+    && entity.homeHivePosition.length === 3
+    && entity.homeHivePosition.every((coordinate, coordinateIndex) => (
+      coordinate === [position.x, position.y, position.z][coordinateIndex]
+    ))
+  )).map(publicCompleteSaveRecord).sort((left, right) => (
+    left.evidenceId.localeCompare(right.evidenceId)
+  ));
+  const supportedBlockEntityFields = new Set([
+    'x', 'y', 'z', 'id', 'bees', 'keepPacked', 'components', 'Bukkit.MaxEntities',
+  ]);
+  const unmodeledBlockEntityFields = Object.keys(blockEntity ?? {})
+    .filter((field) => !supportedBlockEntityFields.has(field)).sort();
+  invariant(unmodeledBlockEntityFields.length === 0,
+    `unmodeled bee-nest block-entity fields: ${unmodeledBlockEntityFields.join(', ')}`);
+  const blockEntityPreservationProjection = canonicalize({
+    id: blockEntity?.id ?? null,
+    bees: blockEntity?.bees ?? [],
+    keepPacked: Number(blockEntity?.keepPacked ?? 0),
+    components: blockEntity?.components ?? {},
+    bukkitMaxEntities: Number(blockEntity?.['Bukkit.MaxEntities'] ?? 0),
+  });
+  const projection = {
+    blockState: normalizedState,
+    blockEntityId: blockEntity?.id ?? null,
+    blockEntityPreservationProjection,
+    unmodeledBlockEntityFields,
+    embeddedOccupants,
+    linkedExternalEntities,
+  };
+  return {
+    ...projection,
+    embeddedOccupantCount: embeddedOccupants.length,
+    linkedExternalEntityCount: linkedExternalEntities.length,
+    colonyMemberCount: embeddedOccupants.length + linkedExternalEntities.length,
+    sourceStateProjectionSha256: sha256(
+      `combined-zones-poi-source-state-v1\n${JSON.stringify(projection)}\n`,
+    ),
+  };
+}
+
+async function buildCompleteSaveScopeEvidence({
+  completeSave,
+  immutableSnapshot,
+  expandedDomains,
+  intervalDomains,
+  generatedSubjects,
+  protectedSubjects,
+}) {
+  const worldRoot = absolute(completeSave.input.suppliedWorldRoot);
+  const capturedRegion = path.join(worldRoot, 'region');
+  const requiredChunks = new Set();
+  const generatedStartChunks = new Set();
+  for (const domain of expandedDomains) {
+    for (const cell of domain.cells) requiredChunks.add(`${Math.floor(cell.x / 16)},${Math.floor(cell.z / 16)}`);
+  }
+  for (const domain of intervalDomains) {
+    for (const key of domain._intervalMap.keys()) {
+      const [x, z] = key.split(',').map(Number);
+      requiredChunks.add(`${Math.floor(x / 16)},${Math.floor(z / 16)}`);
+    }
+  }
+  for (const subject of generatedSubjects) {
+    addBoundsChunks(requiredChunks, subject.bounds);
+    addBoundsChunks(generatedStartChunks, subject.bounds);
+  }
+  for (const subject of protectedSubjects) addBoundsChunks(requiredChunks, subject.bounds);
+
+  const regionEquivalence = compareRegionChunkPayloads(
+    absolute(immutableSnapshot.path),
+    capturedRegion,
+    requiredChunks,
+  );
+  const sourceReader = new OptionalAnvilReader(absolute(immutableSnapshot.path));
+  const capturedReader = new OptionalAnvilReader(capturedRegion);
+  const generatedStartChunkDifferences = [...generatedStartChunks].sort(compareChunkKeys)
+    .filter((key) => {
+      const [cx, cz] = key.split(',').map(Number);
+      const source = sourceReader.rawChunkPayload(cx, cz);
+      const captured = capturedReader.rawChunkPayload(cx, cz);
+      return !source || !captured || !source.equals(captured);
+    });
+  const scanned = await scanCompleteSaveRecords(worldRoot, requiredChunks);
+  const allRecords = [...scanned.entities, ...scanned.pois];
+  const points = recordPointMap(allRecords);
+  for (const domain of expandedDomains) applyExpandedDomainMembership(domain, points);
+  for (const domain of intervalDomains) applyIntervalDomainMembership(domain, allRecords);
+  for (const record of allRecords) {
+    for (const subject of protectedSubjects) {
+      if (inside(record.blockPosition, subject.bounds)) {
+        record.protectedCoreIds.add(subject.relicKey ?? subject.subjectId);
+      }
+    }
+  }
+  const entityConflicts = scanned.entities.filter(({ domainIds }) => domainIds.size > 0)
+    .map(publicCompleteSaveRecord)
+    .sort((left, right) => left.evidenceId.localeCompare(right.evidenceId));
+  const capturedRegionReader = new OptionalAnvilReader(capturedRegion);
+  const poiConflicts = await Promise.all(scanned.pois
+    .filter(({ domainIds }) => domainIds.size > 0)
+    .map(async (record) => ({
+      ...publicCompleteSaveRecord(record),
+      sourceStateEvidence: await poiSourceStateEvidence(
+        capturedRegionReader,
+        record.blockPosition,
+        scanned.entities,
+      ),
+    })));
+  poiConflicts.sort((left, right) => left.evidenceId.localeCompare(right.evidenceId));
+  const protectedCoreEntities = scanned.entities.filter(({ protectedCoreIds }) => (
+    protectedCoreIds.size > 0
+  )).map(publicCompleteSaveRecord).sort((left, right) => (
+    left.evidenceId.localeCompare(right.evidenceId)
+  ));
+  const protectedCorePois = scanned.pois.filter(({ protectedCoreIds }) => (
+    protectedCoreIds.size > 0
+  )).map(publicCompleteSaveRecord).sort((left, right) => (
+    left.evidenceId.localeCompare(right.evidenceId)
+  ));
+  const entityDomainIntersectionCount = entityConflicts.reduce(
+    (sum, record) => sum + record.domainIds.length,
+    0,
+  );
+  const poiDomainIntersectionCount = poiConflicts.reduce(
+    (sum, record) => sum + record.domainIds.length,
+    0,
+  );
+  const exactEntityPoiClearanceEstablished = entityDomainIntersectionCount === 0
+    && poiDomainIntersectionCount === 0;
+  const g13TransientEntityTypes = new Set([
+    'minecraft:polar_bear',
+    'minecraft:rabbit',
+  ]);
+  const unclassifiedEntityConflicts = entityConflicts.filter(({ entityType }) => (
+    !g13TransientEntityTypes.has(entityType)
+  ));
+  const deferredG13EntityObservations = entityConflicts.filter(({ entityType }) => (
+    g13TransientEntityTypes.has(entityType)
+  ));
+  const findingDisposition = {
+    policy: 'R00 evaluates persistent design/source features. Transient living entities are observations only and require fresh package-bound clearance at execute-stage G13, no more than 300 seconds before transaction start.',
+    preR00ClassificationEstablished: unclassifiedEntityConflicts.length === 0,
+    transientEntityObservationCount: deferredG13EntityObservations.length,
+    deferredToG13EntityObservationCount: deferredG13EntityObservations.length,
+    unclassifiedEntityConflictRecordCount: unclassifiedEntityConflicts.length,
+    persistentPoiTreatmentRequiredCount: poiConflicts.length,
+    protectedCorePoiObservationCount: protectedCorePois.length,
+    protectedCorePoiProposalConflictCount: protectedCorePois.filter(({ domainIds }) => (
+      domainIds.length > 0
+    )).length,
+    preR00UnresolvedFindingCount: unclassifiedEntityConflicts.length + poiConflicts.length,
+    g13FreshLiveEntityGateStillRequired: true,
+    entityObservationDisposition:
+      'DEFER_TRANSIENT_RABBITS_AND_POLAR_BEARS_TO_FRESH_G13_LIVE_ENTITY_GATE_NO_OFFLINE_RELOCATION_OR_REMOVAL',
+    poiFindingDisposition:
+      'ONE_PERSISTENT_D06_BEE_NEST_SOURCE_FEATURE_REQUIRES_ACCEPTED_AVOIDANCE_OR_HUMANE_INTACT_RELOCATION_TREATMENT',
+    physicalActionAuthorized: false,
+    entityRemovalAuthorized: false,
+    blockOrPoiEditAuthorized: false,
+  };
+  const completeSaveEvidenceEstablished = completeSave.status
+      === 'PASS_COMPLETE_IMMUTABLE_SAME_MOMENT_SAVE'
+    && completeSave.summary?.passed === true
+    && completeSave.summary?.captureManifestValid === true
+    && completeSave.packageIdentity?.completeSaveSha256;
+  const projectScopeSourceEquivalent = regionEquivalence.projectScopeSourceEquivalent
+    && generatedStartChunkDifferences.length === 0;
+  const evidencePayload = {
+    completeSaveSha256: completeSave.packageIdentity.completeSaveSha256,
+    projectScopeSourceEquivalent,
+    regionEquivalence,
+    generatedStartChunkCount: generatedStartChunks.size,
+    generatedStartChunkDifferences,
+    entityConflictRecords: entityConflicts,
+    poiConflictRecords: poiConflicts,
+    protectedCoreEntityRecords: protectedCoreEntities,
+    protectedCorePoiRecords: protectedCorePois,
+    findingDisposition,
+  };
+  return {
+    status: completeSaveEvidenceEstablished && projectScopeSourceEquivalent
+      ? exactEntityPoiClearanceEstablished
+        ? 'PASS_COMPLETE_SAVE_SCOPE_EQUIVALENT_ENTITY_POI_CLEAR'
+        : unclassifiedEntityConflicts.length === 0
+          ? 'PASS_COMPLETE_SAVE_SCOPE_EQUIVALENT_TRANSIENT_ENTITIES_DEFERRED_ONE_PERSISTENT_POI_DISCLOSED'
+          : 'HOLD_COMPLETE_SAVE_SCOPE_EQUIVALENT_UNCLASSIFIED_ENTITY_OR_POI_FINDINGS'
+      : 'HOLD_COMPLETE_SAVE_SCOPE_EQUIVALENCE_OR_INVENTORY_FAILED',
+    completeSaveEvidenceEstablished: Boolean(completeSaveEvidenceEstablished),
+    projectScopeSourceEquivalent,
+    generatedStartCensusSourceEquivalent: generatedStartChunkDifferences.length === 0,
+    exactEntityPoiClearanceEstablished,
+    regionEquivalence,
+    generatedStartChunkCount: generatedStartChunks.size,
+    generatedStartChunkDifferences,
+    inventory: {
+      requiredChunkCount: requiredChunks.size,
+      entityChunkDocumentCount: scanned.entityChunkDocumentCount,
+      poiChunkDocumentCount: scanned.poiChunkDocumentCount,
+      entityRecordCount: scanned.entities.length,
+      poiRecordCount: scanned.pois.length,
+      entityTypeCounts: countBy(scanned.entities, 'entityType'),
+      poiTypeCounts: countBy(scanned.pois, 'poiType'),
+    },
+    intersections: {
+      entityConflictRecordCount: entityConflicts.length,
+      entityDomainIntersectionCount,
+      poiConflictRecordCount: poiConflicts.length,
+      poiDomainIntersectionCount,
+      protectedCoreEntityRecordCount: protectedCoreEntities.length,
+      protectedCorePoiRecordCount: protectedCorePois.length,
+      entityConflictRecords: entityConflicts,
+      poiConflictRecords: poiConflicts,
+      protectedCoreEntityRecords: protectedCoreEntities,
+      protectedCorePoiRecords: protectedCorePois,
+    },
+    findingDisposition,
+    evidencePayloadSha256: sha256(
+      `combined-zones-complete-save-scope-evidence-v1\n${JSON.stringify(evidencePayload)}\n`,
+    ),
+  };
 }
 
 function compareCells(left, right) {
@@ -1284,7 +1831,11 @@ invariant(phase0.generatedStructureStarts?.length === 114, 'Phase 0 generated-st
 invariant(relicReport.relics?.length === 3
   && relicReport.relics.every(({ positiveMarginBuffer }) => positiveMarginBuffer.status === 'HOLD_NOT_FROZEN'),
 'protected-core or positive-margin boundary drift');
-invariant(completeSave.status === 'HOLD_INCOMPLETE_OR_UNBOUND_SAVE',
+const completeSaveAccepted = completeSave.status
+  === 'PASS_COMPLETE_IMMUTABLE_SAME_MOMENT_SAVE'
+  && completeSave.summary?.passed === true
+  && completeSave.summary?.autonomousEngineeringMayUseAsCompleteSaveEvidence === true;
+invariant(completeSave.status === 'HOLD_INCOMPLETE_OR_UNBOUND_SAVE' || completeSaveAccepted,
 'complete-save gate unexpectedly changed');
 invariant(shipwreckRemovalAuthorization.schemaVersion === 1
   && shipwreckRemovalAuthorization.status === 'OWNER_POLICY_APPROVED_RELEASE_NOT_AUTHORIZED'
@@ -1579,6 +2130,17 @@ const b10ProtectedCoreAudits = b10IntervalDomains.map((identity) => (
   auditIntervalMapDomain(identity, protectedSubjects)
 ));
 
+const completeSaveScopeEvidence = completeSaveAccepted
+  ? await buildCompleteSaveScopeEvidence({
+    completeSave,
+    immutableSnapshot,
+    expandedDomains: domains,
+    intervalDomains: b10IntervalDomains,
+    generatedSubjects,
+    protectedSubjects,
+  })
+  : null;
+
 const supportSource = d05FutureState.supportGapStatusLedger;
 invariant(supportSource.cellCount === 754224
   && supportSource.coordinateSetSha256 === 'f007560fafa7eceed438c4ade36981fe16461c7dad35b55f4f29bf729e86bde6'
@@ -1722,7 +2284,7 @@ const removalDispositionLedger = [{
   acknowledgedCoordinationOverlap: acknowledgedShipwreckOverlap,
   acceptedTechnicalTreatmentContract: false,
   exactRemovalOperationCellCount: null,
-  completeSaveAccepted: false,
+  completeSaveAccepted,
   removalPackageAccepted: false,
   worldEditAuthorized: false,
 }];
@@ -1849,12 +2411,22 @@ const eliminatedUncertainty = [
   'Each evaluated domain/subject pair has an exact intersection count, inclusive bounds, and canonical coordinate SHA-256; exact zero is reported only after deterministic bounds or cell/interval evaluation.',
   'The D05 support-gap status stream is audited separately as exact unresolved evidence and is not reclassified as construction, interaction, influence, or an accepted treatment.',
   'All 30 required G03 geometry domains are exact; the null/unknown domain ledger is empty.',
+  ...(completeSaveScopeEvidence ? [
+    `Complete saved-world evidence is accepted and bound as ${completeSave.packageIdentity.completeSaveSha256}.`,
+    `All ${completeSaveScopeEvidence.regionEquivalence.requiredChunkCount} chunks needed by the 30 exact proposal domains, the Phase 0 generated-start census, and the protected cores are raw-payload equivalent to the reviewed Phase 0 region source.`,
+    `The accepted complete save supplies exact entity and POI record-position evidence for the bounded audit scope. All ${completeSaveScopeEvidence.findingDisposition.deferredToG13EntityObservationCount} rabbit/polar-bear observations are correctly deferred to the fresh execute-stage G13 live-entity gate; they are not pre-R00 design-treatment blockers.`,
+    `One persistent D06 bee-nest POI requires an accepted avoidance or humane intact-relocation treatment. Its exact source state contains ${completeSaveScopeEvidence.intersections.poiConflictRecords[0]?.sourceStateEvidence?.embeddedOccupantCount ?? 0} bees inside and ${completeSaveScopeEvidence.intersections.poiConflictRecords[0]?.sourceStateEvidence?.linkedExternalEntityCount ?? 0} linked bee outside.`,
+  ] : []),
 ];
 const remainingBlockers = [
   'No accepted expert structural, hydrology, groundwater, access, staging, equipment-sweep, settlement, erosion, or construction-method positive-margin kernels are frozen.',
   'The two preserved igloos lack accepted positive-margin buffers, and the shipwreck lacks accepted demolition influence, staging, attribution, salvage, and adjacent-feature margins.',
-  `The complete-save intake remains ${completeSave.status}; region-only evidence cannot establish entity, POI, level.dat, or all-start clearance.`,
-  'The owner resolved the shipwreck preserve-versus-remove choice, but the exact 126-cell overlap remains pending an attributed technical-treatment contract. Exact source-matching demolition, desired post states, three-chest inventory/salvage, rollback, entity/POI, ownership/interface, and post-state evidence remain uncompiled and unaccepted.',
+  completeSaveScopeEvidence
+    ? 'The accepted complete save closes the missing entity/POI/level.dat evidence dependency. The sole persistent new design finding is the occupied D06 bee nest; an exact accepted avoidance or humane intact-relocation treatment remains required before G06 can pass.'
+    : `The complete-save intake remains ${completeSave.status}; region-only evidence cannot establish entity, POI, level.dat, or all-start clearance.`,
+  completeSaveScopeEvidence
+    ? 'The owner resolved the shipwreck preserve-versus-remove choice, but the exact 126-cell overlap remains pending an attributed technical-treatment contract. Exact source-matching demolition, desired post states, three-chest inventory/salvage, rollback, ownership/interface, and post-state evidence remain uncompiled and unaccepted.'
+    : 'The owner resolved the shipwreck preserve-versus-remove choice, but the exact 126-cell overlap remains pending an attributed technical-treatment contract. Exact source-matching demolition, desired post states, three-chest inventory/salvage, rollback, entity/POI, ownership/interface, and post-state evidence remain uncompiled and unaccepted.',
   'Accepted owner and protected-feature interface contract counts remain zero.',
   'Before R00, commissioning designs, methods, pass criteria, failure stimuli, and evidence-capture contracts must be accepted; actual commissioning results are post-build G17/G19 evidence and are not a pre-R00 or G02 prerequisite.',
   'Final G06 acceptance must bind reviewed margin policy or explicit zero-margin acceptance and the complete accepted release interaction union.',
@@ -1905,7 +2477,29 @@ const gate = {
   acceptedRemovalTechnicalTreatmentContractCount: 0,
   shipwreckPhysicalRemovalPackageAccepted: false,
   positiveMarginClearanceEstablished: false,
-  completeSaveClearanceEstablished: false,
+  completeSaveClearanceEstablished:
+    completeSaveScopeEvidence?.exactEntityPoiClearanceEstablished ?? false,
+  ...(completeSaveScopeEvidence ? {
+    completeSaveEvidenceEstablished:
+      completeSaveScopeEvidence.completeSaveEvidenceEstablished,
+    completeSaveProjectScopeSourceEquivalent:
+      completeSaveScopeEvidence.projectScopeSourceEquivalent,
+    completeSaveGeneratedStartCensusSourceEquivalent:
+      completeSaveScopeEvidence.generatedStartCensusSourceEquivalent,
+    completeSaveEntityConflictRecordCount:
+      completeSaveScopeEvidence.intersections.entityConflictRecordCount,
+    completeSavePoiConflictRecordCount:
+      completeSaveScopeEvidence.intersections.poiConflictRecordCount,
+    completeSaveDeferredG13EntityObservationCount:
+      completeSaveScopeEvidence.findingDisposition
+        .deferredToG13EntityObservationCount,
+    completeSavePersistentPoiTreatmentRequiredCount:
+      completeSaveScopeEvidence.findingDisposition
+        .persistentPoiTreatmentRequiredCount,
+    completeSavePreR00FindingClassificationEstablished:
+      completeSaveScopeEvidence.findingDisposition
+        .preR00ClassificationEstablished,
+  } : {}),
   allInfluenceDomainsKnown: true,
   allProposalGeometryDomainsKnown: true,
   expertPositiveMarginClearanceEstablished: false,
@@ -1937,14 +2531,19 @@ const auditPayload = {
   positiveMarginLedger: marginHolds,
   removalDispositionLedger,
   ownershipContext,
+  ...(completeSaveScopeEvidence ? { completeSaveScopeEvidence } : {}),
   gate,
 };
 const report = {
   schemaVersion: 3,
   id: 'combined-zones-phase1-g06-proposed-clearance-audit',
   generatedAtUtc: GENERATED_AT,
-  status: 'PARTIAL_PASS_G03_V3_ALL_30_EXACT_PROPOSAL_DOMAINS_AUDITED_SHIPWRECK_OWNER_POLICY_RECORDED_TECHNICAL_TREATMENT_G06_HOLD',
-  purpose: 'Deterministic offline clearance of all 30 exact G03 v3 proposal domains against all Phase 0 generated starts and frozen evidence cores, with the shipwreck preserve-versus-remove policy resolved in favor of controlled-removal engineering while exact treatment and every physical-release safeguard remain on HOLD.',
+  status: completeSaveScopeEvidence
+    ? 'PARTIAL_PASS_COMPLETE_SAVE_SCOPE_BOUND_TRANSIENT_ENTITIES_DEFERRED_ONE_PERSISTENT_D06_POI_G06_HOLD'
+    : 'PARTIAL_PASS_G03_V3_ALL_30_EXACT_PROPOSAL_DOMAINS_AUDITED_SHIPWRECK_OWNER_POLICY_RECORDED_TECHNICAL_TREATMENT_G06_HOLD',
+  purpose: completeSaveScopeEvidence
+    ? 'Deterministic offline binding of the accepted complete saved world to all 30 exact G03 v3 proposal domains, the complete Phase 0 generated-start registry, frozen evidence cores, and exact entity/POI record-position intersections. Transient animal observations are assigned to the execute-stage G13 gate; the sole persistent D06 bee-nest treatment remains HOLD without changing proposal geometry, owner decisions, or physical authority.'
+    : 'Deterministic offline clearance of all 30 exact G03 v3 proposal domains against all Phase 0 generated starts and frozen evidence cores, with the shipwreck preserve-versus-remove policy resolved in favor of controlled-removal engineering while exact treatment and every physical-release safeguard remain on HOLD.',
   sourceBindings,
   immutableSnapshot,
   auditContract: {
@@ -1976,13 +2575,33 @@ const report = {
   removalDispositionLedger,
   convergenceDelta,
   ownershipContext,
+  ...(completeSaveScopeEvidence ? { completeSaveScopeEvidence } : {}),
   completeSaveContext: {
     status: completeSave.status,
-    acceptedCompleteSaveCandidateCount:
-      completeSave.summary?.acceptedCompleteSaveCandidateCount
-      ?? completeSave.completeSaveIntake?.acceptedCandidateCount
-      ?? 0,
-    clearanceEstablished: false,
+    acceptedCompleteSaveCandidateCount: completeSaveAccepted
+      ? 1
+      : completeSave.summary?.acceptedCompleteSaveCandidateCount
+        ?? completeSave.completeSaveIntake?.acceptedCandidateCount
+        ?? 0,
+    ...(completeSaveScopeEvidence ? {
+      completeSaveSha256: completeSave.packageIdentity.completeSaveSha256,
+      projectScopeSourceEquivalent:
+        completeSaveScopeEvidence.projectScopeSourceEquivalent,
+      generatedStartCensusSourceEquivalent:
+        completeSaveScopeEvidence.generatedStartCensusSourceEquivalent,
+      entityConflictRecordCount:
+        completeSaveScopeEvidence.intersections.entityConflictRecordCount,
+      poiConflictRecordCount:
+        completeSaveScopeEvidence.intersections.poiConflictRecordCount,
+      deferredG13EntityObservationCount:
+        completeSaveScopeEvidence.findingDisposition
+          .deferredToG13EntityObservationCount,
+      persistentPoiTreatmentRequiredCount:
+        completeSaveScopeEvidence.findingDisposition
+          .persistentPoiTreatmentRequiredCount,
+    } : {}),
+    clearanceEstablished:
+      completeSaveScopeEvidence?.exactEntityPoiClearanceEstablished ?? false,
   },
   gate,
   safetyBoundary: {
@@ -2027,7 +2646,9 @@ G06 result: **HOLD**
 Physical release: **not authorized**
 World edits: **not authorized**
 
-This is an offline proposed-set audit. It evaluates all 30 exact G03 v3 domains against all 114 Phase 0 generated starts and the three frozen evidence cores. The two igloos remain preservation subjects. The sole owner separately authorized the shipwreck as a controlled-removal scope; that planning disposition does not turn a proposal into accepted construction, convert a coordination reservation into an expert margin, freeze a positive margin, or substitute region-only evidence for a complete saved world.
+${completeSaveScopeEvidence
+    ? 'This is an offline proposed-set audit bound to an accepted complete saved world. It evaluates all 30 exact G03 v3 domains against all 114 Phase 0 generated starts, the three frozen evidence cores, and exact entity/POI record positions. The source-equivalence check avoids recompiling unchanged geometry. Transient animals remain an execute-stage G13 concern; the occupied D06 bee nest is the sole persistent new treatment finding. The two igloos remain preservation subjects. The sole owner separately authorized the shipwreck as a controlled-removal scope; that planning disposition does not turn a proposal into accepted construction, convert a coordination reservation into an expert margin, freeze a positive margin, or authorize physical work.'
+    : 'This is an offline proposed-set audit. It evaluates all 30 exact G03 v3 domains against all 114 Phase 0 generated starts and the three frozen evidence cores. The two igloos remain preservation subjects. The sole owner separately authorized the shipwreck as a controlled-removal scope; that planning disposition does not turn a proposal into accepted construction, convert a coordination reservation into an expert margin, freeze a positive margin, or substitute region-only evidence for a complete saved world.'}
 
 ## G03 v2 to v3 convergence
 
@@ -2066,7 +2687,25 @@ The exact ${supportSource.cellCount.toLocaleString()}-cell support-gap status st
 |---|---|---|---|---:|---|
 ${supportRows.length ? supportRows.join('\n') : '| — | — | — | — | 0 | — |'}
 
-## Offline uncertainty eliminated
+${completeSaveScopeEvidence ? `## Complete-save scope binding
+
+Accepted complete-save SHA-256: \`${completeSave.packageIdentity.completeSaveSha256}\`
+
+- Required source-equivalent chunks: **${completeSaveScopeEvidence.regionEquivalence.requiredChunkCount.toLocaleString()}**
+- Changed chunks anywhere in the captured region set: **${completeSaveScopeEvidence.regionEquivalence.globalChangedChunkCount.toLocaleString()}**
+- Changed chunks inside the bounded audit scope: **${completeSaveScopeEvidence.regionEquivalence.scopedDifferenceCount.toLocaleString()}**
+- Entity records scanned: **${completeSaveScopeEvidence.inventory.entityRecordCount.toLocaleString()}**
+- POI records scanned: **${completeSaveScopeEvidence.inventory.poiRecordCount.toLocaleString()}**
+- Entity records intersecting exact proposal domains: **${completeSaveScopeEvidence.intersections.entityConflictRecordCount.toLocaleString()}**
+- POI records intersecting exact proposal domains: **${completeSaveScopeEvidence.intersections.poiConflictRecordCount.toLocaleString()}**
+- Transient entity observations deferred to fresh G13 clearance: **${completeSaveScopeEvidence.findingDisposition.deferredToG13EntityObservationCount.toLocaleString()}**
+- Persistent POI treatments required before G06: **${completeSaveScopeEvidence.findingDisposition.persistentPoiTreatmentRequiredCount.toLocaleString()}**
+- Bees inside the D06 nest: **${completeSaveScopeEvidence.intersections.poiConflictRecords[0]?.sourceStateEvidence?.embeddedOccupantCount ?? 0}**
+- Linked bee outside the D06 nest: **${completeSaveScopeEvidence.intersections.poiConflictRecords[0]?.sourceStateEvidence?.linkedExternalEntityCount ?? 0}**
+
+The complete save closes the prior missing-evidence dependency. Rabbits and polar bears are not turned into 43 offline relocation tasks: G13 must evaluate the then-current live state against exact operations immediately before any separately authorized execution. The occupied bee nest is persistent source state and remains a single exact D06 design/treatment question. Neither disposition rewrites a proposal or authorizes an edit.
+
+` : ''}## Offline uncertainty eliminated
 
 ${eliminatedUncertainty.map((item) => `- ${item}`).join('\n')}
 
@@ -2076,7 +2715,9 @@ ${remainingBlockers.map((item) => `- ${item}`).join('\n')}
 
 ## Fail-closed conclusion
 
-G06 remains HOLD. All 30 proposal domains are exact and evaluated, and the shipwreck preserve-versus-remove policy is resolved in favor of controlled-removal engineering. The exact 126-cell treatment conflict is not technically accepted: the two preserved igloos still lack accepted positive margins, and the shipwreck lacks attributed removal/desired-state sets plus a complete-save-bound demolition/salvage/rollback package. The audit does not establish expert influence clearance, complete-save entity/POI clearance, accepted support treatment, accepted ownership/interfaces, construction safety, or final post-release acceptance.
+${completeSaveScopeEvidence
+    ? 'G06 remains HOLD. The accepted complete save is bound to source-equivalent proposal and generated-start scope. Forty-three transient animal observations are correctly deferred to fresh G13 live clearance and do not create pre-R00 treatment work. The occupied D06 bee nest remains one persistent treatment question. The exact 126-cell shipwreck conflict is not technically accepted; the two preserved igloos still lack accepted positive margins, and the shipwreck lacks attributed removal/desired-state sets plus a demolition/salvage/rollback package. The audit does not establish expert influence clearance, accepted bee-nest treatment, accepted support treatment, accepted ownership/interfaces, construction safety, or final post-release acceptance.'
+    : 'G06 remains HOLD. All 30 proposal domains are exact and evaluated, and the shipwreck preserve-versus-remove policy is resolved in favor of controlled-removal engineering. The exact 126-cell treatment conflict is not technically accepted: the two preserved igloos still lack accepted positive margins, and the shipwreck lacks attributed removal/desired-state sets plus a complete-save-bound demolition/salvage/rollback package. The audit does not establish expert influence clearance, complete-save entity/POI clearance, accepted support treatment, accepted ownership/interfaces, construction safety, or final post-release acceptance.'}
 
 Audit payload SHA-256: \`${report.auditPayloadSha256}\`
 

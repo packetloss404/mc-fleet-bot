@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "combined-zones-phase1-r00-readiness-audit",
-  "generatedAtUtc": "2026-08-04T18:00:00Z",
+  "generatedAtUtc": "2026-08-06T02:58:00Z",
   "status": "R00_HOLD",
   "executable": false,
   "worldEditAuthorized": false,
@@ -88,6 +88,11 @@
       "sha256": "4e4209b424a36b466789c0ea50cf75d0c72b23758cc85491b67ca1baff3f6f45",
       "bytes": 27091
     },
+    "acceptedCompleteSaveIntake": {
+      "path": "docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260806T014133Z.json",
+      "sha256": "7cd3718a59fbfa8b9006cb60337e6262a690a90f4abf5e06d527d900892be149",
+      "bytes": 58203
+    },
     "geometryCoordination": {
       "path": "docs/masterplans/05-combined-zones/phase1-geometry-coordination.json",
       "sha256": "b2284622f95f51af76cc13e8056a70cf4a82e0af058496eee77d5a82f631553f",
@@ -157,6 +162,21 @@
       "path": "docs/masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json",
       "sha256": "9cf30ba33d2b62383c0512877553ef961c9782df54840c74ae8a30003ebb362a",
       "bytes": 95894
+    },
+    "d06BeeNestTreatment": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-treatment.json",
+      "sha256": "86547e0529df4dee02b868605dd25c22055744e062a5d3717f68f77d233dfc8f",
+      "bytes": 7895
+    },
+    "d06BeeNestDestinationSurvey": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-destination-survey.json",
+      "sha256": "99e8822d875e4dbd137ef41a76f3ca63269a733dadcc4189f94a39f1fd286e53",
+      "bytes": 8112
+    },
+    "d06BeeNestRelocationFixture": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-relocation-fixture.json",
+      "sha256": "9f78a05ace55c7493f2e964ef3dc7c1d1f19a6a688398000fb9edc6a26d1768d",
+      "bytes": 15116
     },
     "connectorGeometry": {
       "path": "docs/masterplans/05-combined-zones/phase1-connector-geometry.json",
@@ -238,10 +258,20 @@
       "sha256": "9b192fdb16911eac7af4b67583b89db256b5761c660620d9690693186d26c2b2",
       "bytes": 3006191
     },
+    "g06CompleteSaveScopeClearance": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g06-complete-save-scope-clearance-20260806T014133Z.json",
+      "sha256": "cf17f96d4504ad070114146101e6626b6233eeb780372737a0abcf33c7bde72f",
+      "bytes": 3039191
+    },
     "shipwreckRemovalAuthorization": {
       "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json",
       "sha256": "a1f926b76ff80032d87cf495666b7c8438abfc4527ff95a619a594d1f327f3f3",
       "bytes": 12160
+    },
+    "shipwreckTreatmentContract": {
+      "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-treatment-contract.json",
+      "sha256": "73e507f27ca4442ece5ce6e8005df7c90b3bbd6c53f555e7830694d69af9c9d3",
+      "bytes": 473559
     },
     "ownerReviewBundle": {
       "path": "docs/masterplans/05-combined-zones/phase1-owner-review-bundle.json",
@@ -459,6 +489,11 @@
           "bytes": 27091
         },
         {
+          "path": "docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260806T014133Z.json",
+          "sha256": "7cd3718a59fbfa8b9006cb60337e6262a690a90f4abf5e06d527d900892be149",
+          "bytes": 58203
+        },
+        {
           "path": "docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json",
           "sha256": "14366d541b21675011e5dad32b08b51c4c23cf826bb37b0340b4699241429774",
           "bytes": 17445
@@ -489,6 +524,11 @@
           "bytes": 49360
         },
         {
+          "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-treatment-contract.json",
+          "sha256": "73e507f27ca4442ece5ce6e8005df7c90b3bbd6c53f555e7830694d69af9c9d3",
+          "bytes": 473559
+        },
+        {
           "path": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
           "sha256": "2e6e3f3c5c5514909dd20b9a87d1278036ad8afafd3592eb60e756825655a14a",
           "bytes": 71177
@@ -512,6 +552,21 @@
           "path": "docs/masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json",
           "sha256": "9cf30ba33d2b62383c0512877553ef961c9782df54840c74ae8a30003ebb362a",
           "bytes": 95894
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-treatment.json",
+          "sha256": "86547e0529df4dee02b868605dd25c22055744e062a5d3717f68f77d233dfc8f",
+          "bytes": 7895
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-destination-survey.json",
+          "sha256": "99e8822d875e4dbd137ef41a76f3ca63269a733dadcc4189f94a39f1fd286e53",
+          "bytes": 8112
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-relocation-fixture.json",
+          "sha256": "9f78a05ace55c7493f2e964ef3dc7c1d1f19a6a688398000fb9edc6a26d1768d",
+          "bytes": 15116
         },
         {
           "path": "docs/masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json",
@@ -573,20 +628,20 @@
         {
           "id": "R00-G02-D02-EXTERNAL-ACCEPTANCE",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "The D02 planning basis now has an exact 6-PASS/11-HOLD technical matrix, but closure still requires one complete immutable copied save with region/entities/poi/level.dat, accepted inflow/storage/freeboard/failure criteria, future-fluid accounting, receiver ownership/interfaces, capacity, structure/geotechnical/loading/quantity evidence, and complete technical acceptance.",
+          "requirement": "The D02 planning basis now has an exact 6-PASS/11-HOLD technical matrix and is bound to an accepted complete save. Closure still requires accepted inflow/storage/freeboard/failure criteria, future-fluid accounting, receiver ownership/interfaces, capacity, structure/geotechnical/loading/quantity evidence, and complete technical acceptance.",
           "evidencePath": "docs/masterplans/05-combined-zones/phase1-d02-technical-design.json"
         },
         {
           "id": "R00-G02-D05-EXTERNAL-ACCEPTANCE",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "The D05 proposal now partitions all 14,768,553 direct cells and all 754,224 support-gap cells; 17,997 support cells have treatment-class proposals while 736,227 remain treatment-null and all support canonical states remain null. Closure still requires complete-save evidence, accepted hydrology/cryosphere/geotechnical and relic influence, B09 mechanisms/egress, maintenance/staging, owners/interfaces, and independent technical acceptance.",
+          "requirement": "The D05 proposal now partitions all 14,768,553 direct cells and all 754,224 support-gap cells; 17,997 support cells have treatment-class proposals while 736,227 remain treatment-null and all support canonical states remain null. Accepted complete-save evidence is bound; closure still requires hydrology/cryosphere/geotechnical and relic influence acceptance, B09 mechanisms/egress, maintenance/staging, owners/interfaces, and independent technical acceptance.",
           "evidencePath": "docs/masterplans/05-combined-zones/phase1-d05-support-material-design.json"
         },
         {
           "id": "R00-G02-D06-EXTERNAL-ACCEPTANCE",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "The D06 proposal now compiles 31 exact detailed layers into 9,065 canonical proposal cells and retains 29 commissioning contracts, but pre-R00 closure still requires external egress/discharge/fire-route design, functional mechanisms and controls/failure logic, independent circuit sources, hydraulic receivers, structural/material acceptance, complete-save evidence, owners/interfaces, technical acceptance, and accepted commissioning methods/pass criteria. Actual commissioning results are post-build G17/G19 evidence and cannot close G02.",
-          "evidencePath": "docs/masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json"
+          "requirement": "The D06 proposal now compiles 31 exact detailed layers into 9,065 canonical proposal cells and retains 29 commissioning contracts. The exact occupied bee-nest source and three-member colony are bound, humane intact relocation is selected, and a stronger conflict-free forest destination candidate is surveyed at 1811,67,378 outside every bounded planning zone. A synthetic three-member state-conservation fixture passes, while correctly rejecting the captured two-embedded/one-external state as transport-ineligible. Closure still requires fresh live consolidation, a version-matched isolated runtime-mechanic proof, destination habitat/access/ownership acceptance, accepted relocation method/state/NBT preservation/guards/rollback, external egress/discharge/fire-route design, functional mechanisms and controls/failure logic, independent circuit sources, hydraulic receivers, structural/material acceptance, owners/interfaces, technical acceptance, and accepted commissioning methods/pass criteria. Actual commissioning results are post-build G17/G19 evidence and cannot close G02.",
+          "evidencePath": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-relocation-fixture.json"
         }
       ]
     },
@@ -966,23 +1021,53 @@
           "bytes": 3006191
         },
         {
+          "path": "docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260806T014133Z.json",
+          "sha256": "7cd3718a59fbfa8b9006cb60337e6262a690a90f4abf5e06d527d900892be149",
+          "bytes": 58203
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-g06-complete-save-scope-clearance-20260806T014133Z.json",
+          "sha256": "cf17f96d4504ad070114146101e6626b6233eeb780372737a0abcf33c7bde72f",
+          "bytes": 3039191
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-treatment.json",
+          "sha256": "86547e0529df4dee02b868605dd25c22055744e062a5d3717f68f77d233dfc8f",
+          "bytes": 7895
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-destination-survey.json",
+          "sha256": "99e8822d875e4dbd137ef41a76f3ca63269a733dadcc4189f94a39f1fd286e53",
+          "bytes": 8112
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-relocation-fixture.json",
+          "sha256": "9f78a05ace55c7493f2e964ef3dc7c1d1f19a6a688398000fb9edc6a26d1768d",
+          "bytes": 15116
+        },
+        {
           "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json",
           "sha256": "a1f926b76ff80032d87cf495666b7c8438abfc4527ff95a619a594d1f327f3f3",
           "bytes": 12160
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-treatment-contract.json",
+          "sha256": "73e507f27ca4442ece5ce6e8005df7c90b3bbd6c53f555e7830694d69af9c9d3",
+          "bytes": 473559
         }
       ],
       "blockers": [
         {
           "id": "R00-G06-RELIC-REVIEW",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "The owner resolved preserve-versus-remove for the shipwreck in favor of controlled-removal engineering, but this is not an accepted treatment contract. Review and accept positive-margin structural, hydrology, access, staging, settlement, erosion, attribution, salvage, and construction-method influence kernels. The current audit evaluates all 30 exact G03 domains with 0 null domains remaining and retains the exact 126-cell P1-B10 influence overlap pending technical treatment; the same cells remain visible as separate D05 support evidence.",
-          "evidencePath": "docs/masterplans/05-combined-zones/phase1-g06-proposed-clearance-audit.json"
+          "requirement": "The owner resolved preserve-versus-remove for the shipwreck in favor of controlled-removal engineering. The complete-save-bound treatment compiler now partitions the full 2,268-cell envelope exactly: 598 chest/dark-oak/spruce cells form one removal-target candidate, while 515 packed-ice cells, five snow cells, and 1,150 air cells remain preserved. Its exact all-air desired-state mapping is unaccepted, and all three chests still hold unmaterialized loot tables with zero known inventory contents. Independently accept attribution, structural/hydrology/neighbor effects, chest materialization and salvage custody, positive margins, access, staging, settlement, erosion, ownership/interfaces, and the construction method. The exact 126-cell P1-B10 influence overlap remains pending technical treatment.",
+          "evidencePath": "docs/masterplans/05-combined-zones/phase1-shipwreck-treatment-contract.json"
         },
         {
           "id": "R00-G06-EXACT-DESIGN-CLEARANCE",
           "classification": "OFFLINE_ACTION",
-          "requirement": "After G03/null-domain completion and a complete save, rerun the exact all-start/entity/POI clearance against every accepted protected core/buffer and the complete proposed construction/interaction/influence union.",
-          "evidencePath": "docs/masterplans/05-combined-zones/phase1-g06-proposed-clearance-audit.json"
+          "requirement": "The accepted complete save is source-equivalent across all 6701 bounded proposal/generated-start/protected-core chunks, so no geometry rebuild is required. The 43 rabbit/polar-bear positions are correctly deferred to fresh G13 and create no pre-R00 relocation work. Humane intact relocation is selected for the occupied D06 nest, with a deterministic air-over-grass forest candidate at 1811,67,378, 218 blocks from every proposal-domain bound, 78 blocks from every bounded planning zone, and 16 unique flower plants within 22 blocks. The synthetic conservation fixture passes only for an all-three-embedded precondition and correctly rejects the captured two-embedded/one-external state. Prove fresh live consolidation and the real intact-relocation mechanic on a disposable version-matched server, then accept destination habitat/access/ownership, state/NBT preservation, guards, rollback, and technical treatment before rerunning the bounded audit.",
+          "evidencePath": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-relocation-fixture.json"
         }
       ]
     },
@@ -1031,6 +1116,11 @@
           "bytes": 27091
         },
         {
+          "path": "docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260806T014133Z.json",
+          "sha256": "7cd3718a59fbfa8b9006cb60337e6262a690a90f4abf5e06d527d900892be149",
+          "bytes": 58203
+        },
+        {
           "path": "docs/masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json",
           "sha256": "e3f86c5073a00e715cf0f4d01e2a76bc1fc416290ffd7a4972b1e8c7a2b8350c",
           "bytes": 3250984
@@ -1066,6 +1156,11 @@
           "bytes": 49360
         },
         {
+          "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-treatment-contract.json",
+          "sha256": "73e507f27ca4442ece5ce6e8005df7c90b3bbd6c53f555e7830694d69af9c9d3",
+          "bytes": 473559
+        },
+        {
           "path": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
           "sha256": "2e6e3f3c5c5514909dd20b9a87d1278036ad8afafd3592eb60e756825655a14a",
           "bytes": 71177
@@ -1089,6 +1184,21 @@
           "path": "docs/masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json",
           "sha256": "9cf30ba33d2b62383c0512877553ef961c9782df54840c74ae8a30003ebb362a",
           "bytes": 95894
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-treatment.json",
+          "sha256": "86547e0529df4dee02b868605dd25c22055744e062a5d3717f68f77d233dfc8f",
+          "bytes": 7895
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-destination-survey.json",
+          "sha256": "99e8822d875e4dbd137ef41a76f3ca63269a733dadcc4189f94a39f1fd286e53",
+          "bytes": 8112
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-relocation-fixture.json",
+          "sha256": "9f78a05ace55c7493f2e964ef3dc7c1d1f19a6a688398000fb9edc6a26d1768d",
+          "bytes": 15116
         },
         {
           "path": "docs/masterplans/05-combined-zones/phase1-connector-geometry.json",
@@ -1141,6 +1251,11 @@
           "bytes": 3006191
         },
         {
+          "path": "docs/masterplans/05-combined-zones/phase1-g06-complete-save-scope-clearance-20260806T014133Z.json",
+          "sha256": "cf17f96d4504ad070114146101e6626b6233eeb780372737a0abcf33c7bde72f",
+          "bytes": 3039191
+        },
+        {
           "path": "docs/masterplans/05-combined-zones/phase1-autonomous-design-selections.json",
           "sha256": "805f89629d63f74a773f7e27b575a4b28f306a9b70a39073f21ddf4d2f757562",
           "bytes": 16145
@@ -1175,7 +1290,7 @@
         {
           "id": "R00-G07-EXPERT-DESIGN-ACCEPTANCE",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "Complete and independently accept the remaining D02 civil/C01, D05 hydrology/geotechnical/relic, B09, Grand Avenue/B12, and D06 functional life-safety engineering against one complete saved-world and design identity.",
+          "requirement": "Complete and independently accept the remaining D02 civil/C01, D05 hydrology/geotechnical/relic, B09, Grand Avenue/B12, and D06 functional life-safety engineering against the accepted captured-world identity and the unchanged exact proposal geometry.",
           "evidencePath": "docs/masterplans/05-combined-zones/phase1-site-gate-audit.json"
         },
         {
@@ -1217,11 +1332,47 @@
     "remainingGeometryBlockerCount": 0,
     "copiedSaveCandidatesAudited": 56,
     "completeCopiedSaveCandidates": 0,
-    "completeSaveIntakePassed": false,
+    "historicalCompleteSaveIntakePassed": false,
+    "completeSaveIntakePassed": true,
+    "acceptedCompleteSaveEvidenceCount": 1,
     "completeSaveIntakeRegionFileCount": 51,
-    "completeSaveIntakeEntityFileCount": 0,
-    "completeSaveIntakePoiFileCount": 0,
-    "completeSaveIntakeLevelDatPresent": false,
+    "completeSaveIntakeEntityFileCount": 42,
+    "completeSaveIntakePoiFileCount": 35,
+    "completeSaveIntakeLevelDatPresent": true,
+    "completeSaveSha256": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+    "completeSaveScopeClearanceValid": true,
+    "completeSaveProjectScopeSourceEquivalent": true,
+    "completeSaveGeneratedStartCensusSourceEquivalent": true,
+    "completeSaveEntityConflictRecordCount": 43,
+    "completeSavePoiConflictRecordCount": 1,
+    "completeSaveScopeClearanceEstablished": false,
+    "completeSaveDeferredG13EntityObservationCount": 43,
+    "completeSaveUnclassifiedEntityConflictRecordCount": 0,
+    "completeSavePersistentPoiTreatmentRequiredCount": 1,
+    "completeSavePreR00UnresolvedFindingCount": 1,
+    "d06BeeNestTreatmentValid": true,
+    "d06BeeNestPlanningTreatmentSelected": true,
+    "d06BeeNestSelectedAlternativeId": "D06-BEE-02-HUMANE-INTACT-RELOCATION",
+    "d06BeeNestColonyMemberCount": 3,
+    "d06BeeNestDestinationSelected": false,
+    "d06BeeNestTechnicalTreatmentAccepted": false,
+    "d06BeeNestDestinationSurveyValid": true,
+    "d06BeeNestDestinationCandidateSelected": true,
+    "d06BeeNestDestinationCandidate": {
+      "x": 1811,
+      "y": 67,
+      "z": 378
+    },
+    "d06BeeNestDestinationCandidateCount": 921,
+    "d06BeeNestDestinationMinimumDomainBoundsClearance": 218,
+    "d06BeeNestDestinationMinimumPlanningZoneBoundsClearance": 78,
+    "d06BeeNestDestinationNearbyFlowerCount": 16,
+    "d06BeeNestDestinationCellAccepted": false,
+    "d06BeeNestRelocationFixtureValid": true,
+    "d06BeeNestSyntheticStateContractPassed": true,
+    "d06BeeNestCurrentCaptureTransportEligible": false,
+    "d06BeeNestLiveConsolidationRequired": true,
+    "d06BeeNestRuntimeMechanicProven": false,
     "d05S01SurveyComplete": true,
     "b03ExactRouteSelected": true,
     "b03HorizontalStepCount": 800,
@@ -1280,11 +1431,21 @@
     "shipwreckRemovalPolicyValid": true,
     "shipwreckPreserveOrRemoveOwnerChoiceResolved": true,
     "shipwreckExactAttributedRemovalTargetCellCount": 0,
+    "shipwreckTreatmentContractValid": true,
+    "shipwreckAttributedRemovalTargetCandidateCellCount": 598,
+    "shipwreckAcceptedRemovalTargetCellCount": 0,
+    "shipwreckCandidateDesiredStateCellCount": 598,
+    "shipwreckAcceptedDesiredStateCellCount": 0,
+    "shipwreckPreservedPackedIceCellCount": 515,
+    "shipwreckPreservedSnowCellCount": 5,
+    "shipwreckUnmaterializedLootChestCount": 3,
+    "shipwreckKnownInventoryContentCount": 0,
+    "shipwreckTreatmentTechnicallyAccepted": false,
     "shipwreckAcceptedTechnicalTreatmentContractCount": 0,
     "shipwreckObservedChestCount": 3,
     "autonomousOfflineWorkMayContinue": true,
     "autonomousOfflineWorkCanCompleteR00": false,
-    "nextAutonomousArtifact": "maintain the guarded capture tooling and documentation package; obtain explicit live helper-install/capture authority before complete-save intake, then compile the exact attributed shipwreck removal/desired-state/chest-salvage contract and remaining technical/interface acceptance against one immutable identity",
+    "nextAutonomousArtifact": "continue the independent offline structural, support, hydrology, drainage, neighbor-update, influence-margin, ownership, and interface review of the exact 598-cell shipwreck target and all-air desired-state candidates; the bee runtime-mechanic proof is deferred and its treatment remains HOLD, while chest materialization/salvage and all operation compilation remain later gated work",
     "externalEvidenceStillRequired": true
   }
 }

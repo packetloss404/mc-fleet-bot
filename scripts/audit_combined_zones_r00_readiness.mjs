@@ -19,7 +19,7 @@ function value(flag, fallback) {
   return index >= 0 && argv[index + 1] ? argv[index + 1] : fallback;
 }
 
-const GENERATED_AT = value('--generated-at', '2026-08-04T18:00:00Z');
+const GENERATED_AT = value('--generated-at', '2026-08-06T02:58:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
   'docs/masterplans/05-combined-zones/phase1-r00-readiness-audit.json',
@@ -43,6 +43,8 @@ const INPUTS = Object.freeze({
   d02TechnicalDesign: 'docs/masterplans/05-combined-zones/phase1-d02-technical-design.json',
   d02C01OwnershipLoadingInterface: 'docs/masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json',
   completeSaveIntake: 'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
+  acceptedCompleteSaveIntake:
+    'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260806T014133Z.json',
   geometryCoordination: 'docs/masterplans/05-combined-zones/phase1-geometry-coordination.json',
   protectedRelicClearance: 'docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
   d05HydrologyRelicDesign: 'docs/masterplans/05-combined-zones/phase1-d05-hydrology-relic-buffer-design.json',
@@ -57,6 +59,12 @@ const INPUTS = Object.freeze({
   d06LifeSafety: 'docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
   d06Mechanisms: 'docs/masterplans/05-combined-zones/phase1-d06-mechanisms.json',
   d06DetailedSetout: 'docs/masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json',
+  d06BeeNestTreatment:
+    'docs/masterplans/05-combined-zones/phase1-d06-bee-nest-treatment.json',
+  d06BeeNestDestinationSurvey:
+    'docs/masterplans/05-combined-zones/phase1-d06-bee-nest-destination-survey.json',
+  d06BeeNestRelocationFixture:
+    'docs/masterplans/05-combined-zones/phase1-d06-bee-nest-relocation-fixture.json',
   connectorGeometry: 'docs/masterplans/05-combined-zones/phase1-connector-geometry.json',
   cheyenneJcurve: 'docs/masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json',
   autonomousDesignSelections: 'docs/masterplans/05-combined-zones/phase1-autonomous-design-selections.json',
@@ -75,8 +83,12 @@ const INPUTS = Object.freeze({
   proposedOwnershipInterfaces: 'docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json',
   g03CanonicalSetout: 'docs/masterplans/05-combined-zones/phase1-g03-canonical-setout.json',
   g06ProposedClearance: 'docs/masterplans/05-combined-zones/phase1-g06-proposed-clearance-audit.json',
+  g06CompleteSaveScopeClearance:
+    'docs/masterplans/05-combined-zones/phase1-g06-complete-save-scope-clearance-20260806T014133Z.json',
   shipwreckRemovalAuthorization:
     'docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json',
+  shipwreckTreatmentContract:
+    'docs/masterplans/05-combined-zones/phase1-shipwreck-treatment-contract.json',
   ownerReviewBundle: 'docs/masterplans/05-combined-zones/phase1-owner-review-bundle.json',
   ownerReviewAcceptance: 'docs/masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
   siteGateAudit: 'docs/masterplans/05-combined-zones/phase1-site-gate-audit.json',
@@ -127,6 +139,7 @@ const d02C01OwnershipLoadingInterface = readJson(
   INPUTS.d02C01OwnershipLoadingInterface,
 );
 const completeSaveIntake = readJson(INPUTS.completeSaveIntake);
+const acceptedCompleteSaveIntake = readJson(INPUTS.acceptedCompleteSaveIntake);
 const d05RelicSurvey = readJson(INPUTS.d05RelicSurvey);
 const d05FutureStateContract = readJson(INPUTS.d05FutureStateContract);
 const d05FutureMountain = readJson(INPUTS.d05FutureMountain);
@@ -135,6 +148,11 @@ const d05SupportMaterialDesign = readJson(INPUTS.d05SupportMaterialDesign);
 const d06LifeSafety = readJson(INPUTS.d06LifeSafety);
 const d06Mechanisms = readJson(INPUTS.d06Mechanisms);
 const d06DetailedSetout = readJson(INPUTS.d06DetailedSetout);
+const d06BeeNestTreatment = readJson(INPUTS.d06BeeNestTreatment);
+const d06BeeNestDestinationSurvey = readJson(INPUTS.d06BeeNestDestinationSurvey);
+const d06BeeNestRelocationFixture = readJson(
+  INPUTS.d06BeeNestRelocationFixture,
+);
 const connectorGeometry = readJson(INPUTS.connectorGeometry);
 const cheyenneJcurve = readJson(INPUTS.cheyenneJcurve);
 const delegatedSelections = readJson(INPUTS.autonomousDesignSelections);
@@ -149,10 +167,152 @@ const b12PassiveShell = readJson(INPUTS.b12PassiveShell);
 const proposedOwnershipInterfaces = readJson(INPUTS.proposedOwnershipInterfaces);
 const g03CanonicalSetout = readJson(INPUTS.g03CanonicalSetout);
 const g06ProposedClearance = readJson(INPUTS.g06ProposedClearance);
+const g06CompleteSaveScopeClearance = readJson(INPUTS.g06CompleteSaveScopeClearance);
 const shipwreckRemovalAuthorization = readJson(INPUTS.shipwreckRemovalAuthorization);
+const shipwreckTreatmentContract = readJson(INPUTS.shipwreckTreatmentContract);
 const ownerReviewBundle = readJson(INPUTS.ownerReviewBundle);
 const ownerReviewAcceptance = readJson(INPUTS.ownerReviewAcceptance);
 const site = readJson(INPUTS.siteGateAudit);
+
+const acceptedCompleteSaveIntakeValid = acceptedCompleteSaveIntake.status
+    === 'PASS_COMPLETE_IMMUTABLE_SAME_MOMENT_SAVE'
+  && acceptedCompleteSaveIntake.summary?.passed === true
+  && acceptedCompleteSaveIntake.summary?.captureManifestValid === true
+  && acceptedCompleteSaveIntake.summary
+    ?.autonomousEngineeringMayUseAsCompleteSaveEvidence === true
+  && acceptedCompleteSaveIntake.summary?.entityFileCount > 0
+  && acceptedCompleteSaveIntake.summary?.poiFileCount > 0
+  && acceptedCompleteSaveIntake.summary?.levelDatPresent === true
+  && typeof acceptedCompleteSaveIntake.packageIdentity?.completeSaveSha256 === 'string';
+const completeSaveScopeClearanceValid = acceptedCompleteSaveIntakeValid
+  && g06CompleteSaveScopeClearance.status
+    === 'PARTIAL_PASS_COMPLETE_SAVE_SCOPE_BOUND_TRANSIENT_ENTITIES_DEFERRED_ONE_PERSISTENT_D06_POI_G06_HOLD'
+  && g06CompleteSaveScopeClearance.sourceBindings?.completeSave?.sha256
+    === sources.acceptedCompleteSaveIntake.sha256
+  && g06CompleteSaveScopeClearance.completeSaveContext?.completeSaveSha256
+    === acceptedCompleteSaveIntake.packageIdentity?.completeSaveSha256
+  && g06CompleteSaveScopeClearance.completeSaveScopeEvidence
+    ?.completeSaveEvidenceEstablished === true
+  && g06CompleteSaveScopeClearance.completeSaveScopeEvidence
+    ?.projectScopeSourceEquivalent === true
+  && g06CompleteSaveScopeClearance.completeSaveScopeEvidence
+    ?.generatedStartCensusSourceEquivalent === true
+  && g06CompleteSaveScopeClearance.completeSaveScopeEvidence
+    ?.regionEquivalence?.scopedDifferenceCount === 0
+  && g06CompleteSaveScopeClearance.completeSaveScopeEvidence
+    ?.findingDisposition?.deferredToG13EntityObservationCount === 43
+  && g06CompleteSaveScopeClearance.completeSaveScopeEvidence
+    ?.findingDisposition?.unclassifiedEntityConflictRecordCount === 0
+  && g06CompleteSaveScopeClearance.completeSaveScopeEvidence
+    ?.findingDisposition?.persistentPoiTreatmentRequiredCount === 1
+  && g06CompleteSaveScopeClearance.completeSaveScopeEvidence
+    ?.findingDisposition?.preR00UnresolvedFindingCount === 1
+  && g06CompleteSaveScopeClearance.completeSaveScopeEvidence
+    ?.intersections?.poiConflictRecords?.[0]?.sourceStateEvidence
+    ?.blockState?.name === 'minecraft:bee_nest'
+  && g06CompleteSaveScopeClearance.completeSaveScopeEvidence
+    ?.intersections?.poiConflictRecords?.[0]?.sourceStateEvidence
+    ?.colonyMemberCount === 3
+  && g06CompleteSaveScopeClearance.gate?.physicalReleaseAuthorized === false
+  && g06CompleteSaveScopeClearance.gate?.worldEditAuthorized === false;
+const d06BeeNestTreatmentValid = d06BeeNestTreatment.status
+    === 'PARTIAL_PASS_EXACT_OCCUPIED_NEST_BOUND_HUMANE_INTACT_RELOCATION_SELECTED_TECHNICAL_AND_RELEASE_HOLD'
+  && d06BeeNestTreatment.sourceBindings?.completeSaveScope?.sha256
+    === sources.g06CompleteSaveScopeClearance.sha256
+  && d06BeeNestTreatment.treatmentPayload?.sourceCell?.cellCount === 1
+  && d06BeeNestTreatment.treatmentPayload?.sourceState?.colonyMemberCount === 3
+  && d06BeeNestTreatment.treatmentPayload?.selectedPlanningAlternativeId
+    === 'D06-BEE-02-HUMANE-INTACT-RELOCATION'
+  && d06BeeNestTreatment.treatmentPayload?.destinationCellSet === null
+  && d06BeeNestTreatment.disposition?.geometryRebuildRequired === false
+  && d06BeeNestTreatment.disposition?.technicalTreatmentAccepted === false
+  && d06BeeNestTreatment.safetyBoundary?.operationCellCount === 0
+  && d06BeeNestTreatment.safetyBoundary?.entityRelocationCount === 0
+  && d06BeeNestTreatment.safetyBoundary?.worldEditAuthorized === false;
+const d06BeeNestDestinationSurveyValid = d06BeeNestTreatmentValid
+  && d06BeeNestDestinationSurvey.status
+    === 'PARTIAL_PASS_EXACT_CONFLICT_FREE_DESTINATION_CANDIDATE_SELECTED_OWNERSHIP_HABITAT_METHOD_AND_RELEASE_HOLD'
+  && d06BeeNestDestinationSurvey.sourceBindings?.treatment?.sha256
+    === sources.d06BeeNestTreatment.sha256
+  && d06BeeNestDestinationSurvey.surveyPayload?.passingCandidateCount === 921
+  && d06BeeNestDestinationSurvey.surveyPayload?.selectedPlanningCandidate
+    ?.point?.x === 1811
+  && d06BeeNestDestinationSurvey.surveyPayload?.selectedPlanningCandidate
+    ?.point?.y === 67
+  && d06BeeNestDestinationSurvey.surveyPayload?.selectedPlanningCandidate
+    ?.point?.z === 378
+  && d06BeeNestDestinationSurvey.surveyPayload?.selectedPlanningCandidate
+    ?.minimumDomainBoundsClearance === 218
+  && d06BeeNestDestinationSurvey.surveyPayload?.selectedPlanningCandidate
+    ?.minimumProtectedCoreBoundsClearance === 1063.523389
+  && d06BeeNestDestinationSurvey.surveyPayload?.selectedPlanningCandidate
+    ?.minimumPlanningZoneBoundsClearance === 78
+  && d06BeeNestDestinationSurvey.surveyPayload?.selectedPlanningCandidate
+    ?.insideEastReserve === false
+  && d06BeeNestDestinationSurvey.surveyPayload?.selectedPlanningCandidate
+    ?.biome === 'minecraft:forest'
+  && d06BeeNestDestinationSurvey.surveyPayload?.selectedPlanningCandidate
+    ?.nearbyFlowerCount === 16
+  && d06BeeNestDestinationSurvey.surveyPayload?.selectedPlanningCandidate
+    ?.nearestFlowerDistance === 1
+  && d06BeeNestDestinationSurvey.surveyPayload?.selectedPlanningCandidate
+    ?.intersectedZoneBounds?.length === 0
+  && d06BeeNestDestinationSurvey.surveyPayload?.selectedPlanningCandidate
+    ?.destinationBlockEntityCount === 0
+  && d06BeeNestDestinationSurvey.surveyPayload?.selectedPlanningCandidate
+    ?.destinationPoiRecordCount === 0
+  && d06BeeNestDestinationSurvey.disposition
+    ?.destinationPlanningCandidateSelected === true
+  && d06BeeNestDestinationSurvey.disposition?.destinationCellAccepted === false
+  && d06BeeNestDestinationSurvey.safetyBoundary?.operationCellCount === 0
+  && d06BeeNestDestinationSurvey.safetyBoundary?.worldEditAuthorized === false;
+const d06BeeNestRelocationFixtureValid = d06BeeNestDestinationSurveyValid
+  && d06BeeNestRelocationFixture.status
+    === 'PASS_SYNTHETIC_THREE_MEMBER_STATE_ROUNDTRIP_CURRENT_CAPTURE_TRANSPORT_REJECTED_RUNTIME_MECHANIC_HOLD'
+  && d06BeeNestRelocationFixture.sourceBindings?.treatment?.sha256
+    === sources.d06BeeNestTreatment.sha256
+  && d06BeeNestRelocationFixture.sourceBindings?.destinationSurvey?.sha256
+    === sources.d06BeeNestDestinationSurvey.sha256
+  && d06BeeNestRelocationFixture.sourceBindings?.releaseContract?.sha256
+    === sources.releaseContract.sha256
+  && d06BeeNestRelocationFixture.fixturePayload?.capturedTransportEligibility
+    ?.passed === false
+  && d06BeeNestRelocationFixture.fixturePayload?.capturedTransportEligibility
+    ?.embeddedOccupantCount === 2
+  && d06BeeNestRelocationFixture.fixturePayload?.capturedTransportEligibility
+    ?.linkedExternalOccupantCount === 1
+  && d06BeeNestRelocationFixture.fixturePayload?.consolidatedTransportEligibility
+    ?.passed === true
+  && d06BeeNestRelocationFixture.fixturePayload?.consolidatedTransportEligibility
+    ?.embeddedOccupantCount === 3
+  && d06BeeNestRelocationFixture.fixturePayload?.consolidatedTransportEligibility
+    ?.linkedExternalOccupantCount === 0
+  && d06BeeNestRelocationFixture.fixturePayload?.destination?.x === 1811
+  && d06BeeNestRelocationFixture.fixturePayload?.destination?.y === 67
+  && d06BeeNestRelocationFixture.fixturePayload?.destination?.z === 378
+  && Object.values(d06BeeNestRelocationFixture.fixturePayload?.checks ?? {})
+    .length === 8
+  && Object.values(d06BeeNestRelocationFixture.fixturePayload?.checks ?? {})
+    .every((passed) => passed === true)
+  && d06BeeNestRelocationFixture.fixturePayload?.negativeFixtures?.length === 5
+  && d06BeeNestRelocationFixture.fixturePayload?.negativeFixtures
+    .every(({ rejected }) => rejected === true)
+  && d06BeeNestRelocationFixture.disposition?.syntheticStateContractPassed === true
+  && d06BeeNestRelocationFixture.disposition
+    ?.currentCapturedStateTransportEligible === false
+  && d06BeeNestRelocationFixture.disposition?.liveConsolidationRequired === true
+  && d06BeeNestRelocationFixture.disposition?.runtimeMechanicProven === false
+  && d06BeeNestRelocationFixture.disposition?.technicalTreatmentAccepted === false
+  && d06BeeNestRelocationFixture.disposition?.operationCompilationAuthorized === false
+  && d06BeeNestRelocationFixture.safetyBoundary?.operationCellCount === 0
+  && d06BeeNestRelocationFixture.safetyBoundary?.entityRelocationCount === 0
+  && d06BeeNestRelocationFixture.safetyBoundary?.blockEditCount === 0
+  && d06BeeNestRelocationFixture.safetyBoundary?.serverStarted === false
+  && d06BeeNestRelocationFixture.safetyBoundary?.liveWorldContacted === false
+  && d06BeeNestRelocationFixture.safetyBoundary?.physicalReleaseAuthorized === false
+  && d06BeeNestRelocationFixture.safetyBoundary?.entityRelocationAuthorized === false
+  && d06BeeNestRelocationFixture.safetyBoundary?.worldEditAuthorized === false
+  && d06BeeNestRelocationFixture.safetyBoundary?.executable === false;
 
 const shipwreckRemovalPolicyPayloadSha256 = sha256(
   `combined-zones-shipwreck-removal-authorization-v1\n${JSON.stringify(
@@ -177,6 +337,65 @@ const shipwreckRemovalPolicyValid = shipwreckRemovalAuthorization.schemaVersion 
     ?.terrainIceSnowAndSupportRemovalAuthorized === false
   && shipwreckRemovalAuthorization.safetyBoundary?.operationCellCount === 0
   && shipwreckRemovalAuthorization.safetyBoundary?.worldEditAuthorized === false;
+const shipwreckTreatmentContractValid = shipwreckRemovalPolicyValid
+  && shipwreckTreatmentContract.status
+    === 'PARTIAL_PASS_EXACT_598_FABRIC_TARGET_CANDIDATE_AND_AIR_MAPPING_THREE_LOOT_CHESTS_UNMATERIALIZED_TECHNICAL_AND_RELEASE_HOLD'
+  && shipwreckTreatmentContract.sourceBindings?.acceptedCompleteSaveIntake?.sha256
+    === sources.acceptedCompleteSaveIntake.sha256
+  && shipwreckTreatmentContract.sourceBindings?.completeSaveScopeClearance?.sha256
+    === sources.g06CompleteSaveScopeClearance.sha256
+  && shipwreckTreatmentContract.sourceBindings?.removalAuthorization?.sha256
+    === sources.shipwreckRemovalAuthorization.sha256
+  && shipwreckTreatmentContract.sourceBindings?.protectedRelicClearance?.sha256
+    === sources.protectedRelicClearance.sha256
+  && shipwreckTreatmentContract.sourceBindings?.releaseContract?.sha256
+    === sources.releaseContract.sha256
+  && shipwreckTreatmentContract.treatmentPayload?.subject?.completeSaveSha256
+    === acceptedCompleteSaveIntake.packageIdentity?.completeSaveSha256
+  && shipwreckTreatmentContract.treatmentPayload?.subject?.envelopeCellCount === 2268
+  && shipwreckTreatmentContract.treatmentPayload?.attributedRemovalTargetCandidate
+    ?.accepted === false
+  && shipwreckTreatmentContract.treatmentPayload?.attributedRemovalTargetCandidate
+    ?.cellCount === 598
+  && shipwreckTreatmentContract.treatmentPayload?.attributedRemovalTargetCandidate
+    ?.coordinateSetSha256
+      === '33e498b16e381872b2a52050561fcbd282441f323de2fe2a2e07a49ef9f29748'
+  && shipwreckTreatmentContract.treatmentPayload?.attributedRemovalTargetCandidate
+    ?.componentCount === 1
+  && shipwreckTreatmentContract.treatmentPayload?.preservedContext
+    ?.packedIceCellCount === 515
+  && shipwreckTreatmentContract.treatmentPayload?.preservedContext
+    ?.snowCellCount === 5
+  && shipwreckTreatmentContract.treatmentPayload?.preservedContext
+    ?.airCellCount === 1150
+  && shipwreckTreatmentContract.treatmentPayload?.preservedContext
+    ?.unattributedCellCount === 0
+  && shipwreckTreatmentContract.treatmentPayload?.candidateDesiredPostState
+    ?.accepted === false
+  && shipwreckTreatmentContract.treatmentPayload?.candidateDesiredPostState
+    ?.cellCount === 598
+  && shipwreckTreatmentContract.treatmentPayload?.chestSalvageContract
+    ?.accepted === false
+  && shipwreckTreatmentContract.treatmentPayload?.chestSalvageContract
+    ?.chestCount === 3
+  && shipwreckTreatmentContract.treatmentPayload?.chestSalvageContract
+    ?.lootTableUnmaterializedCount === 3
+  && shipwreckTreatmentContract.treatmentPayload?.chestSalvageContract
+    ?.knownInventoryContentCount === 0
+  && shipwreckTreatmentContract.disposition?.exactEnvelopePartitioned === true
+  && shipwreckTreatmentContract.disposition?.exactAttributionCandidateCompiled === true
+  && shipwreckTreatmentContract.disposition?.attributionTechnicallyAccepted === false
+  && shipwreckTreatmentContract.disposition?.technicalTreatmentAccepted === false
+  && shipwreckTreatmentContract.disposition?.operationCompilationAuthorized === false
+  && shipwreckTreatmentContract.safetyBoundary?.acceptedRemovalTargetCellCount === 0
+  && shipwreckTreatmentContract.safetyBoundary?.acceptedDesiredStateCellCount === 0
+  && shipwreckTreatmentContract.safetyBoundary?.operationCellCount === 0
+  && shipwreckTreatmentContract.safetyBoundary?.blockEditCount === 0
+  && shipwreckTreatmentContract.safetyBoundary?.inventoryMoveCount === 0
+  && shipwreckTreatmentContract.safetyBoundary?.serverStarted === false
+  && shipwreckTreatmentContract.safetyBoundary?.liveWorldContacted === false
+  && shipwreckTreatmentContract.safetyBoundary?.worldEditAuthorized === false
+  && shipwreckTreatmentContract.safetyBoundary?.executable === false;
 
 const selectedGeometryIds = delegatedSelections.selections
   ?.map(({ scope }) => scope)
@@ -382,12 +601,15 @@ const gates = [
       sources.d02RegionEvidence, sources.d02HydrologyOutfalls,
       sources.d02ClosedDrainage, sources.d02TechnicalDesign,
       sources.d02C01OwnershipLoadingInterface,
-      sources.completeSaveIntake,
+      sources.completeSaveIntake, sources.acceptedCompleteSaveIntake,
       sources.d05ConservativeDefaults, sources.d05RelicSurvey,
       sources.d05FutureStateContract, sources.d05FutureMountain,
       sources.d05FutureState, sources.d05SupportMaterialDesign,
+      sources.shipwreckTreatmentContract,
       sources.emptyEightGeologyDesign, sources.d06EgressGeometryDesign,
       sources.d06LifeSafety, sources.d06Mechanisms, sources.d06DetailedSetout,
+      sources.d06BeeNestTreatment, sources.d06BeeNestDestinationSurvey,
+      sources.d06BeeNestRelocationFixture,
       sources.b09TechnicalSystem, sources.b11SurfaceRoadTechnical,
       sources.b12SubsurfaceAlternatives, sources.b12PassiveShell,
       sources.cheyenneJcurve,
@@ -398,20 +620,20 @@ const gates = [
       blocker(
         'R00-G02-D02-EXTERNAL-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'The D02 planning basis now has an exact 6-PASS/11-HOLD technical matrix, but closure still requires one complete immutable copied save with region/entities/poi/level.dat, accepted inflow/storage/freeboard/failure criteria, future-fluid accounting, receiver ownership/interfaces, capacity, structure/geotechnical/loading/quantity evidence, and complete technical acceptance.',
+        'The D02 planning basis now has an exact 6-PASS/11-HOLD technical matrix and is bound to an accepted complete save. Closure still requires accepted inflow/storage/freeboard/failure criteria, future-fluid accounting, receiver ownership/interfaces, capacity, structure/geotechnical/loading/quantity evidence, and complete technical acceptance.',
         INPUTS.d02TechnicalDesign,
       ),
       blocker(
         'R00-G02-D05-EXTERNAL-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'The D05 proposal now partitions all 14,768,553 direct cells and all 754,224 support-gap cells; 17,997 support cells have treatment-class proposals while 736,227 remain treatment-null and all support canonical states remain null. Closure still requires complete-save evidence, accepted hydrology/cryosphere/geotechnical and relic influence, B09 mechanisms/egress, maintenance/staging, owners/interfaces, and independent technical acceptance.',
+        'The D05 proposal now partitions all 14,768,553 direct cells and all 754,224 support-gap cells; 17,997 support cells have treatment-class proposals while 736,227 remain treatment-null and all support canonical states remain null. Accepted complete-save evidence is bound; closure still requires hydrology/cryosphere/geotechnical and relic influence acceptance, B09 mechanisms/egress, maintenance/staging, owners/interfaces, and independent technical acceptance.',
         INPUTS.d05SupportMaterialDesign,
       ),
       blocker(
         'R00-G02-D06-EXTERNAL-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'The D06 proposal now compiles 31 exact detailed layers into 9,065 canonical proposal cells and retains 29 commissioning contracts, but pre-R00 closure still requires external egress/discharge/fire-route design, functional mechanisms and controls/failure logic, independent circuit sources, hydraulic receivers, structural/material acceptance, complete-save evidence, owners/interfaces, technical acceptance, and accepted commissioning methods/pass criteria. Actual commissioning results are post-build G17/G19 evidence and cannot close G02.',
-        INPUTS.d06DetailedSetout,
+        'The D06 proposal now compiles 31 exact detailed layers into 9,065 canonical proposal cells and retains 29 commissioning contracts. The exact occupied bee-nest source and three-member colony are bound, humane intact relocation is selected, and a stronger conflict-free forest destination candidate is surveyed at 1811,67,378 outside every bounded planning zone. A synthetic three-member state-conservation fixture passes, while correctly rejecting the captured two-embedded/one-external state as transport-ineligible. Closure still requires fresh live consolidation, a version-matched isolated runtime-mechanic proof, destination habitat/access/ownership acceptance, accepted relocation method/state/NBT preservation/guards/rollback, external egress/discharge/fire-route design, functional mechanisms and controls/failure logic, independent circuit sources, hydraulic receivers, structural/material acceptance, owners/interfaces, technical acceptance, and accepted commissioning methods/pass criteria. Actual commissioning results are post-build G17/G19 evidence and cannot close G02.',
+        INPUTS.d06BeeNestRelocationFixture,
       ),
       ...(!descendantEvidenceCycleFree ? [
         blocker(
@@ -522,19 +744,25 @@ const gates = [
       sources.civilLifeSafetyDomainClosure,
       sources.g03CanonicalSetout,
       sources.g06ProposedClearance,
-      sources.shipwreckRemovalAuthorization],
+      sources.acceptedCompleteSaveIntake,
+      sources.g06CompleteSaveScopeClearance,
+      sources.d06BeeNestTreatment,
+      sources.d06BeeNestDestinationSurvey,
+      sources.d06BeeNestRelocationFixture,
+      sources.shipwreckRemovalAuthorization,
+      sources.shipwreckTreatmentContract],
     blockers: relics.g06Disposition?.status === 'PASS' ? [] : [
       blocker(
         'R00-G06-RELIC-REVIEW',
         'EXTERNAL_EVIDENCE',
-        `The owner resolved preserve-versus-remove for the shipwreck in favor of controlled-removal engineering, but this is not an accepted treatment contract. Review and accept positive-margin structural, hydrology, access, staging, settlement, erosion, attribution, salvage, and construction-method influence kernels. The current audit evaluates all ${g06ProposedClearance.gate?.exactNonNullG03DomainCount ?? 0} exact G03 domains with ${g06ProposedClearance.gate?.nullUnknownDomainCount ?? 0} null domains remaining and retains the exact ${g06ProposedClearance.gate?.exactG03ProtectedCoreOverlapCellCount ?? 0}-cell P1-B10 influence overlap pending technical treatment; the same cells remain visible as separate D05 support evidence.`,
-        INPUTS.g06ProposedClearance,
+        `The owner resolved preserve-versus-remove for the shipwreck in favor of controlled-removal engineering. The complete-save-bound treatment compiler now partitions the full 2,268-cell envelope exactly: 598 chest/dark-oak/spruce cells form one removal-target candidate, while 515 packed-ice cells, five snow cells, and 1,150 air cells remain preserved. Its exact all-air desired-state mapping is unaccepted, and all three chests still hold unmaterialized loot tables with zero known inventory contents. Independently accept attribution, structural/hydrology/neighbor effects, chest materialization and salvage custody, positive margins, access, staging, settlement, erosion, ownership/interfaces, and the construction method. The exact ${g06CompleteSaveScopeClearance.gate?.exactG03ProtectedCoreOverlapCellCount ?? 0}-cell P1-B10 influence overlap remains pending technical treatment.`,
+        INPUTS.shipwreckTreatmentContract,
       ),
       blocker(
         'R00-G06-EXACT-DESIGN-CLEARANCE',
         'OFFLINE_ACTION',
-        'After G03/null-domain completion and a complete save, rerun the exact all-start/entity/POI clearance against every accepted protected core/buffer and the complete proposed construction/interaction/influence union.',
-        INPUTS.g06ProposedClearance,
+        `The accepted complete save is source-equivalent across all ${g06CompleteSaveScopeClearance.completeSaveScopeEvidence?.regionEquivalence?.requiredChunkCount ?? 0} bounded proposal/generated-start/protected-core chunks, so no geometry rebuild is required. The ${g06CompleteSaveScopeClearance.completeSaveScopeEvidence?.findingDisposition?.deferredToG13EntityObservationCount ?? 0} rabbit/polar-bear positions are correctly deferred to fresh G13 and create no pre-R00 relocation work. Humane intact relocation is selected for the occupied D06 nest, with a deterministic air-over-grass forest candidate at 1811,67,378, 218 blocks from every proposal-domain bound, 78 blocks from every bounded planning zone, and 16 unique flower plants within 22 blocks. The synthetic conservation fixture passes only for an all-three-embedded precondition and correctly rejects the captured two-embedded/one-external state. Prove fresh live consolidation and the real intact-relocation mechanic on a disposable version-matched server, then accept destination habitat/access/ownership, state/NBT preservation, guards, rollback, and technical treatment before rerunning the bounded audit.`,
+        INPUTS.d06BeeNestRelocationFixture,
       ),
     ],
   },
@@ -545,19 +773,23 @@ const gates = [
       sources.d02RegionEvidence, sources.d02HydrologyOutfalls,
       sources.d02ClosedDrainage, sources.d02TechnicalDesign,
       sources.d02C01OwnershipLoadingInterface,
-      sources.completeSaveIntake,
+      sources.completeSaveIntake, sources.acceptedCompleteSaveIntake,
       sources.d05HydrologyRelicDesign,
       sources.d05ConservativeDefaults, sources.d05RelicSurvey,
       sources.d05FutureStateContract, sources.d05FutureMountain,
       sources.d05FutureState, sources.d05SupportMaterialDesign,
+      sources.shipwreckTreatmentContract,
       sources.emptyEightGeologyDesign, sources.d06EgressGeometryDesign,
       sources.d06LifeSafety, sources.d06Mechanisms, sources.d06DetailedSetout,
+      sources.d06BeeNestTreatment, sources.d06BeeNestDestinationSurvey,
+      sources.d06BeeNestRelocationFixture,
       sources.connectorGeometry, sources.cheyenneJcurve,
       sources.b09TechnicalSystem, sources.b11SurfaceRoadTechnical,
       sources.b12PassiveShell, sources.proposedOwnershipInterfaces,
       sources.residualSurfaceConnectorDomains,
       sources.civilLifeSafetyDomainClosure,
       sources.g03CanonicalSetout, sources.g06ProposedClearance,
+      sources.g06CompleteSaveScopeClearance,
       sources.autonomousDesignSelections, sources.d02OwnerAcceptance,
       sources.d05OwnerAcceptance, sources.d06OwnerAcceptance,
       sources.ownerReviewBundle, sources.ownerReviewAcceptance],
@@ -565,7 +797,7 @@ const gates = [
       blocker(
         'R00-G07-EXPERT-DESIGN-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'Complete and independently accept the remaining D02 civil/C01, D05 hydrology/geotechnical/relic, B09, Grand Avenue/B12, and D06 functional life-safety engineering against one complete saved-world and design identity.',
+        'Complete and independently accept the remaining D02 civil/C01, D05 hydrology/geotechnical/relic, B09, Grand Avenue/B12, and D06 functional life-safety engineering against the accepted captured-world identity and the unchanged exact proposal geometry.',
         INPUTS.siteGateAudit,
       ),
       blocker(
@@ -642,11 +874,79 @@ const report = {
     remainingGeometryBlockerCount: remainingGeometryIds.length,
     copiedSaveCandidatesAudited: d02RegionEvidence.copiedSaveCompletenessAudit?.candidateCount ?? 0,
     completeCopiedSaveCandidates: d02RegionEvidence.copiedSaveCompletenessAudit?.completeCandidateCount ?? 0,
-    completeSaveIntakePassed: completeSaveIntake.summary?.passed === true,
-    completeSaveIntakeRegionFileCount: completeSaveIntake.summary?.regionFileCount ?? 0,
-    completeSaveIntakeEntityFileCount: completeSaveIntake.summary?.entityFileCount ?? 0,
-    completeSaveIntakePoiFileCount: completeSaveIntake.summary?.poiFileCount ?? 0,
-    completeSaveIntakeLevelDatPresent: completeSaveIntake.summary?.levelDatPresent === true,
+    historicalCompleteSaveIntakePassed: completeSaveIntake.summary?.passed === true,
+    completeSaveIntakePassed: acceptedCompleteSaveIntakeValid,
+    acceptedCompleteSaveEvidenceCount: acceptedCompleteSaveIntakeValid ? 1 : 0,
+    completeSaveIntakeRegionFileCount:
+      acceptedCompleteSaveIntake.summary?.regionFileCount ?? 0,
+    completeSaveIntakeEntityFileCount:
+      acceptedCompleteSaveIntake.summary?.entityFileCount ?? 0,
+    completeSaveIntakePoiFileCount:
+      acceptedCompleteSaveIntake.summary?.poiFileCount ?? 0,
+    completeSaveIntakeLevelDatPresent:
+      acceptedCompleteSaveIntake.summary?.levelDatPresent === true,
+    completeSaveSha256:
+      acceptedCompleteSaveIntake.packageIdentity?.completeSaveSha256 ?? null,
+    completeSaveScopeClearanceValid,
+    completeSaveProjectScopeSourceEquivalent: g06CompleteSaveScopeClearance
+      .completeSaveScopeEvidence?.projectScopeSourceEquivalent === true,
+    completeSaveGeneratedStartCensusSourceEquivalent: g06CompleteSaveScopeClearance
+      .completeSaveScopeEvidence?.generatedStartCensusSourceEquivalent === true,
+    completeSaveEntityConflictRecordCount: g06CompleteSaveScopeClearance
+      .completeSaveScopeEvidence?.intersections?.entityConflictRecordCount ?? 0,
+    completeSavePoiConflictRecordCount: g06CompleteSaveScopeClearance
+      .completeSaveScopeEvidence?.intersections?.poiConflictRecordCount ?? 0,
+    completeSaveScopeClearanceEstablished: g06CompleteSaveScopeClearance
+      .completeSaveScopeEvidence?.exactEntityPoiClearanceEstablished === true,
+    completeSaveDeferredG13EntityObservationCount: g06CompleteSaveScopeClearance
+      .completeSaveScopeEvidence?.findingDisposition
+      ?.deferredToG13EntityObservationCount ?? 0,
+    completeSaveUnclassifiedEntityConflictRecordCount: g06CompleteSaveScopeClearance
+      .completeSaveScopeEvidence?.findingDisposition
+      ?.unclassifiedEntityConflictRecordCount ?? 0,
+    completeSavePersistentPoiTreatmentRequiredCount: g06CompleteSaveScopeClearance
+      .completeSaveScopeEvidence?.findingDisposition
+      ?.persistentPoiTreatmentRequiredCount ?? 0,
+    completeSavePreR00UnresolvedFindingCount: g06CompleteSaveScopeClearance
+      .completeSaveScopeEvidence?.findingDisposition
+      ?.preR00UnresolvedFindingCount ?? 0,
+    d06BeeNestTreatmentValid,
+    d06BeeNestPlanningTreatmentSelected: d06BeeNestTreatment
+      .disposition?.planningTreatmentSelected === true,
+    d06BeeNestSelectedAlternativeId: d06BeeNestTreatment
+      .treatmentPayload?.selectedPlanningAlternativeId ?? null,
+    d06BeeNestColonyMemberCount: d06BeeNestTreatment
+      .treatmentPayload?.sourceState?.colonyMemberCount ?? 0,
+    d06BeeNestDestinationSelected: d06BeeNestTreatment
+      .disposition?.destinationSelected === true,
+    d06BeeNestTechnicalTreatmentAccepted: d06BeeNestTreatment
+      .disposition?.technicalTreatmentAccepted === true,
+    d06BeeNestDestinationSurveyValid,
+    d06BeeNestDestinationCandidateSelected: d06BeeNestDestinationSurvey
+      .disposition?.destinationPlanningCandidateSelected === true,
+    d06BeeNestDestinationCandidate: d06BeeNestDestinationSurvey
+      .surveyPayload?.selectedPlanningCandidate?.point ?? null,
+    d06BeeNestDestinationCandidateCount: d06BeeNestDestinationSurvey
+      .surveyPayload?.passingCandidateCount ?? 0,
+    d06BeeNestDestinationMinimumDomainBoundsClearance:
+      d06BeeNestDestinationSurvey.surveyPayload?.selectedPlanningCandidate
+        ?.minimumDomainBoundsClearance ?? null,
+    d06BeeNestDestinationMinimumPlanningZoneBoundsClearance:
+      d06BeeNestDestinationSurvey.surveyPayload?.selectedPlanningCandidate
+        ?.minimumPlanningZoneBoundsClearance ?? null,
+    d06BeeNestDestinationNearbyFlowerCount: d06BeeNestDestinationSurvey
+      .surveyPayload?.selectedPlanningCandidate?.nearbyFlowerCount ?? 0,
+    d06BeeNestDestinationCellAccepted: d06BeeNestDestinationSurvey
+      .disposition?.destinationCellAccepted === true,
+    d06BeeNestRelocationFixtureValid,
+    d06BeeNestSyntheticStateContractPassed: d06BeeNestRelocationFixture
+      .disposition?.syntheticStateContractPassed === true,
+    d06BeeNestCurrentCaptureTransportEligible: d06BeeNestRelocationFixture
+      .disposition?.currentCapturedStateTransportEligible === true,
+    d06BeeNestLiveConsolidationRequired: d06BeeNestRelocationFixture
+      .disposition?.liveConsolidationRequired === true,
+    d06BeeNestRuntimeMechanicProven: d06BeeNestRelocationFixture
+      .disposition?.runtimeMechanicProven === true,
     d05S01SurveyComplete: d05RelicSurvey.status === 'D05_S01_OFFLINE_SURVEY_COMPLETE_D05_G06_HOLD',
     b03ExactRouteSelected: selectedGeometryIds.includes('P1-B03-CHEYENNE-JCURVE'),
     b03HorizontalStepCount: cheyenneJcurve.design?.centerline?.horizontalStepCount ?? 0,
@@ -739,24 +1039,53 @@ const report = {
     g03CanonicalUnresolvedDomainCount: g03CanonicalSetout
       .gate?.unresolvedRequiredDomainCount ?? 0,
     g03CanonicalPassed: g03SetoutPassed,
-    g06NonNullDomainCount: g06ProposedClearance.gate?.exactNonNullG03DomainCount ?? 0,
-    g06NullUnknownDomainCount: g06ProposedClearance.gate?.nullUnknownDomainCount ?? 0,
-    g06SupportShipwreckOverlapCellCount: g06ProposedClearance
+    g06NonNullDomainCount:
+      g06CompleteSaveScopeClearance.gate?.exactNonNullG03DomainCount ?? 0,
+    g06NullUnknownDomainCount:
+      g06CompleteSaveScopeClearance.gate?.nullUnknownDomainCount ?? 0,
+    g06SupportShipwreckOverlapCellCount: g06CompleteSaveScopeClearance
       .supportEvidenceAudit?.protectedCores?.overlapCellCount ?? 0,
     shipwreckRemovalPolicyValid,
     shipwreckPreserveOrRemoveOwnerChoiceResolved:
       shipwreckRemovalPolicyValid
-      && g06ProposedClearance.gate?.shipwreckPreserveOrRemovePolicyResolved === true,
+      && g06CompleteSaveScopeClearance.gate
+        ?.shipwreckPreserveOrRemovePolicyResolved === true,
     shipwreckExactAttributedRemovalTargetCellCount:
       shipwreckRemovalAuthorization.subject?.exactAttributedRemovalTargetCellSet
         ?.cellCount ?? 0,
+    shipwreckTreatmentContractValid,
+    shipwreckAttributedRemovalTargetCandidateCellCount:
+      shipwreckTreatmentContract.treatmentPayload?.attributedRemovalTargetCandidate
+        ?.cellCount ?? 0,
+    shipwreckAcceptedRemovalTargetCellCount:
+      shipwreckTreatmentContract.safetyBoundary?.acceptedRemovalTargetCellCount ?? 0,
+    shipwreckCandidateDesiredStateCellCount:
+      shipwreckTreatmentContract.treatmentPayload?.candidateDesiredPostState
+        ?.cellCount ?? 0,
+    shipwreckAcceptedDesiredStateCellCount:
+      shipwreckTreatmentContract.safetyBoundary?.acceptedDesiredStateCellCount ?? 0,
+    shipwreckPreservedPackedIceCellCount:
+      shipwreckTreatmentContract.treatmentPayload?.preservedContext
+        ?.packedIceCellCount ?? 0,
+    shipwreckPreservedSnowCellCount:
+      shipwreckTreatmentContract.treatmentPayload?.preservedContext
+        ?.snowCellCount ?? 0,
+    shipwreckUnmaterializedLootChestCount:
+      shipwreckTreatmentContract.treatmentPayload?.chestSalvageContract
+        ?.lootTableUnmaterializedCount ?? 0,
+    shipwreckKnownInventoryContentCount:
+      shipwreckTreatmentContract.treatmentPayload?.chestSalvageContract
+        ?.knownInventoryContentCount ?? 0,
+    shipwreckTreatmentTechnicallyAccepted:
+      shipwreckTreatmentContract.disposition?.technicalTreatmentAccepted === true,
     shipwreckAcceptedTechnicalTreatmentContractCount:
-      g06ProposedClearance.gate?.acceptedRemovalTechnicalTreatmentContractCount ?? 0,
+      g06CompleteSaveScopeClearance.gate
+        ?.acceptedRemovalTechnicalTreatmentContractCount ?? 0,
     shipwreckObservedChestCount: shipwreckRemovalAuthorization.subject
       ?.observedPresentBaseline?.chestCount ?? 0,
     autonomousOfflineWorkMayContinue: true,
     autonomousOfflineWorkCanCompleteR00: false,
-    nextAutonomousArtifact: 'maintain the guarded capture tooling and documentation package; obtain explicit live helper-install/capture authority before complete-save intake, then compile the exact attributed shipwreck removal/desired-state/chest-salvage contract and remaining technical/interface acceptance against one immutable identity',
+    nextAutonomousArtifact: 'continue the independent offline structural, support, hydrology, drainage, neighbor-update, influence-margin, ownership, and interface review of the exact 598-cell shipwreck target and all-air desired-state candidates; the bee runtime-mechanic proof is deferred and its treatment remains HOLD, while chest materialization/salvage and all operation compilation remain later gated work',
     externalEvidenceStillRequired: true,
   },
 };
@@ -766,6 +1095,8 @@ const markdown = `# Combined Zones Phase 1 R00 readiness audit\n\n`
   + `This audit evaluates only the nonphysical R00 design-freeze gates G01-G07. It does not use R01 pilot, execution, rollback, route-QA, or post-state evidence to close a design decision.\n\n`
   + `## Sequencing result\n\n`
   + `The evidence graph is cycle-free: **${descendantEvidenceCycleFree ? 'PASS' : 'FAIL'}**. The required order is D01-D07 design acceptance → R00 freeze → R01 physical validation → R02 eligibility.\n\n`
+  + `Complete-save intake: **${acceptedCompleteSaveIntakeValid && completeSaveScopeClearanceValid ? 'PASS AND SCOPE-BOUND' : 'HOLD'}**. The accepted capture is source-equivalent across ${report.summary.completeSaveProjectScopeSourceEquivalent ? 'all required' : 'not all required'} proposal/generated-start/protected-core chunks. Its ${report.summary.completeSaveDeferredG13EntityObservationCount} rabbit/polar-bear observations are deferred to fresh G13. For the sole persistent D06 bee-nest finding, humane intact relocation is selected and a stronger conflict-free forest planning destination is surveyed at \`1811,67,378\`, outside every bounded planning zone. The synthetic state-conservation contract passes, but the captured two-embedded/one-external colony is transport-ineligible; fresh live consolidation, isolated version-matched runtime proof, habitat/access/ownership, and method/state/NBT/guard/rollback acceptance remain HOLD. This does not justify rebuilding unchanged geometry.\n\n`
+  + `Shipwreck treatment: **${shipwreckTreatmentContractValid ? 'EXACT CANDIDATE COMPILED' : 'HOLD'}**. The 2,268-cell GS-037 envelope is partitioned into ${report.summary.shipwreckAttributedRemovalTargetCandidateCellCount} candidate fabric cells, ${report.summary.shipwreckPreservedPackedIceCellCount} preserved packed-ice cells, ${report.summary.shipwreckPreservedSnowCellCount} preserved snow cells, and air. The all-air target mapping is candidate-only, all three loot chests are unmaterialized, accepted target/desired-state counts remain zero, and no operation is authorized.\n\n`
   + `The owner-delegated ledger freezes **${report.summary.ownerDelegatedSelectionCount}** conservative planning choices. The sole owner accepted four exact review packets under owner-review payload \`${report.summary.ownerReviewBundlePayloadSha256}\`, bound by acceptance-record payload \`${report.summary.ownerReviewAcceptancePayloadSha256}\`. The owner later resolved the shipwreck preserve-versus-remove choice in favor of controlled-removal engineering under payload \`${shipwreckRemovalAuthorization.authorizationPayloadSha256}\`. Neither acceptance passes a technical HOLD or authorizes a world edit. No additional human decision-makers are required. The remaining holds are technical evidence, exact-cell compilation, independent checks, ownership/interface cellsets, and later manifest-bound release authorization.\n\n`
   + `## R00 gates\n\n`
   + `| Gate | Status | Current blockers |\n|---|---|---:|\n`

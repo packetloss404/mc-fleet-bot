@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-d06-occupied-bee-nest-treatment",
+  "generatedAtUtc": "2026-08-06T03:15:00Z",
+  "status": "PARTIAL_PASS_EXACT_OCCUPIED_NEST_BOUND_HUMANE_INTACT_RELOCATION_SELECTED_TECHNICAL_AND_RELEASE_HOLD",
+  "purpose": "Select the least-destructive D06 planning treatment for the sole persistent complete-save POI finding without changing accepted proposal geometry or authorizing physical work.",
+  "sourceBindings": {
+    "completeSaveScope": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g06-complete-save-scope-clearance-20260806T014133Z.json",
+      "sha256": "cf17f96d4504ad070114146101e6626b6233eeb780372737a0abcf33c7bde72f",
+      "bytes": 3039191,
+      "role": "accepted complete-save source equivalence, exact D06 POI conflict, and colony state"
+    },
+    "egressGeometry": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-egress-geometry-design.json",
+      "sha256": "25a1d65c6fd076abd2842f2800b5d721a5557b546f70a6f18806235535279beb",
+      "bytes": 13700,
+      "role": "prior immutable-source D06 EG-B bee-nest census and protected-stair envelope"
+    },
+    "releaseContract": {
+      "path": "docs/masterplans/05-combined-zones/phase1-release-contract.json",
+      "sha256": "3b62d3f65c40a01d5f4eb66733b02c94104c03b3a5bab053ee82bcb08b7fd786",
+      "bytes": 33127,
+      "role": "controlling G06 persistent-feature and G13 fresh live-entity boundaries"
+    }
+  },
+  "releaseBoundary": {
+    "g06DesignTreatmentAccepted": false,
+    "g13FreshLiveEntityGateRequiredLater": true,
+    "g13MaximumAgeSecondsAtTransactionStart": 300
+  },
+  "treatmentPayload": {
+    "completeSaveSha256": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+    "sourcePoiEvidenceId": "POI-953c1e110beef5d24c9fa3a8",
+    "sourceCell": {
+      "cellCount": 1,
+      "bounds": {
+        "minX": 1849,
+        "maxX": 1849,
+        "minY": 66,
+        "maxY": 66,
+        "minZ": 145,
+        "maxZ": 145
+      },
+      "coordinateSetSha256": "6f6003da6bd4e00cad23fe28cdf0d1dc141f905ed63ddcc55504664950d271ba"
+    },
+    "sourceStateProjectionSha256": "1c6b21774842a2cea9825e637da2b47e2d2b10a38078056f073a4d5d39ad0814",
+    "sourceState": {
+      "blockState": {
+        "name": "minecraft:bee_nest",
+        "properties": {
+          "facing": "south",
+          "honey_level": "0"
+        }
+      },
+      "blockEntityId": "minecraft:beehive",
+      "blockEntityPreservationProjection": {
+        "bees": [
+          {
+            "entity_data": {
+              "id": "minecraft:bee"
+            },
+            "min_ticks_in_hive": 600,
+            "ticks_in_hive": 232
+          },
+          {
+            "entity_data": {
+              "id": "minecraft:bee"
+            },
+            "min_ticks_in_hive": 600,
+            "ticks_in_hive": 587
+          }
+        ],
+        "bukkitMaxEntities": 3,
+        "components": {},
+        "id": "minecraft:beehive",
+        "keepPacked": 0
+      },
+      "unmodeledBlockEntityFields": [],
+      "embeddedOccupants": [
+        {
+          "entityType": "minecraft:bee",
+          "minTicksInHive": 600,
+          "ticksInHive": 232
+        },
+        {
+          "entityType": "minecraft:bee",
+          "minTicksInHive": 600,
+          "ticksInHive": 587
+        }
+      ],
+      "linkedExternalEntities": [
+        {
+          "evidenceId": "ENTITY-561f42cca54dcaa1c774be93",
+          "entityType": "minecraft:bee",
+          "position": [
+            1848.8259622140454,
+            66.04498495987649,
+            147.11061313027483
+          ],
+          "blockPosition": {
+            "x": 1848,
+            "y": 66,
+            "z": 147
+          },
+          "sourceChunk": {
+            "x": 115,
+            "z": 9
+          },
+          "homeHivePosition": [
+            1849,
+            66,
+            145
+          ],
+          "domainIds": [],
+          "protectedCoreIds": []
+        }
+      ],
+      "embeddedOccupantCount": 2,
+      "linkedExternalEntityCount": 1,
+      "colonyMemberCount": 3,
+      "sourceStateProjectionSha256": "1c6b21774842a2cea9825e637da2b47e2d2b10a38078056f073a4d5d39ad0814"
+    },
+    "intersectedDomainIds": [
+      "D06-MECHANISMS/construction",
+      "D06-MECHANISMS/influence",
+      "D06-MECHANISMS/interaction",
+      "D06-RESERVATIONS/construction",
+      "D06-RESERVATIONS/influence",
+      "D06-RESERVATIONS/interaction"
+    ],
+    "egressRelationship": {
+      "egressId": "EG-B",
+      "insideExternalContinuation": true,
+      "insideProtectedStairReservation": true,
+      "insideAccessibleLiftReservation": false
+    },
+    "selectedPlanningAlternativeId": "D06-BEE-02-HUMANE-INTACT-RELOCATION",
+    "alternatives": [
+      {
+        "id": "D06-BEE-01-PRESERVE-IN-PLACE",
+        "disposition": "NOT_SELECTED_REQUIRES_EGRESS_GEOMETRY_REDESIGN",
+        "basis": "The occupied nest is inside the exact EG-B protected-stair envelope and six D06 proposal domains. Preservation in place would require a new continuous egress design and full G03/G04/G05/G06/G07 re-evaluation.",
+        "geometryMutationAuthorized": false
+      },
+      {
+        "id": "D06-BEE-02-HUMANE-INTACT-RELOCATION",
+        "disposition": "SELECTED_PLANNING_TREATMENT_TECHNICAL_ACCEPTANCE_HOLD",
+        "basis": "Retain the accepted egress geometry and develop one exact intact colony relocation to a surveyed destination outside every proposal domain, protected core/buffer, route, and interface. Preserve all three colony members and the nest state; do not derive an operation from this planning selection.",
+        "geometryMutationAuthorized": false
+      },
+      {
+        "id": "D06-BEE-03-DESTRUCTIVE-REMOVAL",
+        "disposition": "REJECTED_DEFAULT_DENY",
+        "basis": "The bound nest is occupied by two embedded bees and one linked external bee. Destructive handling is neither necessary nor authorized.",
+        "geometryMutationAuthorized": false
+      }
+    ],
+    "destinationCellSet": null,
+    "acceptedTechnicalTreatmentContract": null,
+    "exactForwardOperation": null,
+    "exactRollbackOperation": null,
+    "closureRequirements": [
+      "Survey and freeze one exact destination cell outside every G03 proposal domain, protected core/buffer, route, interface, and construction/staging influence set.",
+      "Accept habitat, access, ownership, chunk-loading, and non-interference evidence for the destination.",
+      "Define a humane intact-relocation method that preserves the nest block state, block-entity projection, two embedded occupants, one linked external bee, and colony membership.",
+      "Freeze exact source and destination desired states, guarded forward and rollback operations, source guards, inventory/NBT projections, and success/failure evidence.",
+      "Bind the final operation hash to a fresh package-bound G13 live-entity gate no more than 300 seconds before separately authorized execution.",
+      "Obtain technical acceptance and the later explicit manifest-bound release authorization; this proposal supplies neither."
+    ]
+  },
+  "disposition": {
+    "exactSourceAndColonyStateBound": true,
+    "transientAnimalRelocationWorkCreated": false,
+    "planningTreatmentSelected": true,
+    "destinationSelected": false,
+    "technicalTreatmentAccepted": false,
+    "geometryRebuildRequired": false,
+    "readyForDestinationSurveyAndTechnicalDevelopment": true
+  },
+  "safetyBoundary": {
+    "acceptedConstructionCellCount": 0,
+    "acceptedMaterialCellCount": 0,
+    "operationCellCount": 0,
+    "entityRelocationCount": 0,
+    "blockEditCount": 0,
+    "physicalReleaseAuthorized": false,
+    "entityRelocationAuthorized": false,
+    "worldEditAuthorized": false,
+    "executable": false
+  },
+  "treatmentPayloadSha256": "105e2e517d2b8a72c705b0b56deeccba2b0dc53e4a983cf0d37b8e44ef89e6fb",
+  "reportIdentitySha256": "5da120ff767269074beaee41870a6d019063d5bdbd00ba36a75e9d46a3c7648d"
+}

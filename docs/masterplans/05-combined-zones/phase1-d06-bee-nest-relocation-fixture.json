@@ -1,0 +1,483 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-d06-bee-nest-relocation-fixture",
+  "generatedAtUtc": "2026-08-06T03:35:00Z",
+  "status": "PASS_SYNTHETIC_THREE_MEMBER_STATE_ROUNDTRIP_CURRENT_CAPTURE_TRANSPORT_REJECTED_RUNTIME_MECHANIC_HOLD",
+  "purpose": "Prove the fail-closed relocation state contract and occupant bijection offline without claiming the current captured colony is transport-ready or that live server mechanics are validated.",
+  "sourceBindings": {
+    "treatment": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-treatment.json",
+      "sha256": "86547e0529df4dee02b868605dd25c22055744e062a5d3717f68f77d233dfc8f",
+      "bytes": 7895,
+      "role": "exact occupied source state and selected humane intact-relocation treatment"
+    },
+    "destinationSurvey": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-destination-survey.json",
+      "sha256": "99e8822d875e4dbd137ef41a76f3ca63269a733dadcc4189f94a39f1fd286e53",
+      "bytes": 8112,
+      "role": "improved conflict-free destination candidate and current destination state"
+    },
+    "releaseContract": {
+      "path": "docs/masterplans/05-combined-zones/phase1-release-contract.json",
+      "sha256": "3b62d3f65c40a01d5f4eb66733b02c94104c03b3a5bab053ee82bcb08b7fd786",
+      "bytes": 33127,
+      "role": "G13 fresh-live-state and later physical-release boundary"
+    }
+  },
+  "fixturePayload": {
+    "source": {
+      "x": 1849,
+      "y": 66,
+      "z": 145
+    },
+    "destination": {
+      "x": 1811,
+      "y": 67,
+      "z": 378
+    },
+    "capturedSourceState": {
+      "phase": "CAPTURED_SOURCE_NOT_TRANSPORT_ELIGIBLE",
+      "nestPosition": {
+        "x": 1849,
+        "y": 66,
+        "z": 145
+      },
+      "blockState": {
+        "name": "minecraft:bee_nest",
+        "properties": {
+          "facing": "south",
+          "honey_level": "0"
+        }
+      },
+      "blockEntityNonCoordinateProjection": {
+        "bees": [
+          {
+            "entity_data": {
+              "id": "minecraft:bee"
+            },
+            "min_ticks_in_hive": 600,
+            "ticks_in_hive": 232
+          },
+          {
+            "entity_data": {
+              "id": "minecraft:bee"
+            },
+            "min_ticks_in_hive": 600,
+            "ticks_in_hive": 587
+          }
+        ],
+        "bukkitMaxEntities": 3,
+        "components": {},
+        "id": "minecraft:beehive",
+        "keepPacked": 0
+      },
+      "embeddedOccupants": [
+        {
+          "fixtureId": "embedded-source-1",
+          "sourceClass": "EMBEDDED_SOURCE_NBT",
+          "preservedNbt": {
+            "entity_data": {
+              "id": "minecraft:bee"
+            },
+            "min_ticks_in_hive": 600,
+            "ticks_in_hive": 232
+          }
+        },
+        {
+          "fixtureId": "embedded-source-2",
+          "sourceClass": "EMBEDDED_SOURCE_NBT",
+          "preservedNbt": {
+            "entity_data": {
+              "id": "minecraft:bee"
+            },
+            "min_ticks_in_hive": 600,
+            "ticks_in_hive": 587
+          }
+        }
+      ],
+      "linkedExternalOccupants": [
+        {
+          "fixtureId": "linked-external-source-1",
+          "sourceClass": "LINKED_EXTERNAL_ENTITY_REQUIRES_LIVE_CONSOLIDATION",
+          "preservedNbt": {
+            "entityType": "minecraft:bee",
+            "sourceEvidenceId": "ENTITY-561f42cca54dcaa1c774be93",
+            "homeHivePosition": [
+              1849,
+              66,
+              145
+            ]
+          }
+        }
+      ]
+    },
+    "capturedTransportEligibility": {
+      "passed": false,
+      "embeddedOccupantCount": 2,
+      "linkedExternalOccupantCount": 1,
+      "uniqueOccupantCount": 3,
+      "destinationCurrentBlock": "minecraft:air"
+    },
+    "syntheticConsolidatedPrecondition": {
+      "phase": "SYNTHETIC_ALL_THREE_EMBEDDED_PRECONDITION",
+      "nestPosition": {
+        "x": 1849,
+        "y": 66,
+        "z": 145
+      },
+      "blockState": {
+        "name": "minecraft:bee_nest",
+        "properties": {
+          "facing": "south",
+          "honey_level": "0"
+        }
+      },
+      "blockEntityNonCoordinateProjection": {
+        "bees": [
+          {
+            "fixtureId": "embedded-source-1",
+            "sourceClass": "EMBEDDED_SOURCE_NBT",
+            "preservedNbt": {
+              "entity_data": {
+                "id": "minecraft:bee"
+              },
+              "min_ticks_in_hive": 600,
+              "ticks_in_hive": 232
+            }
+          },
+          {
+            "fixtureId": "embedded-source-2",
+            "sourceClass": "EMBEDDED_SOURCE_NBT",
+            "preservedNbt": {
+              "entity_data": {
+                "id": "minecraft:bee"
+              },
+              "min_ticks_in_hive": 600,
+              "ticks_in_hive": 587
+            }
+          },
+          {
+            "fixtureId": "linked-external-source-1",
+            "sourceClass": "LINKED_EXTERNAL_ENTITY_REQUIRES_LIVE_CONSOLIDATION",
+            "preservedNbt": {
+              "entityType": "minecraft:bee",
+              "sourceEvidenceId": "ENTITY-561f42cca54dcaa1c774be93",
+              "homeHivePosition": [
+                1849,
+                66,
+                145
+              ]
+            }
+          }
+        ],
+        "bukkitMaxEntities": 3,
+        "components": {},
+        "id": "minecraft:beehive",
+        "keepPacked": 0
+      },
+      "embeddedOccupants": [
+        {
+          "fixtureId": "embedded-source-1",
+          "sourceClass": "EMBEDDED_SOURCE_NBT",
+          "preservedNbt": {
+            "entity_data": {
+              "id": "minecraft:bee"
+            },
+            "min_ticks_in_hive": 600,
+            "ticks_in_hive": 232
+          }
+        },
+        {
+          "fixtureId": "embedded-source-2",
+          "sourceClass": "EMBEDDED_SOURCE_NBT",
+          "preservedNbt": {
+            "entity_data": {
+              "id": "minecraft:bee"
+            },
+            "min_ticks_in_hive": 600,
+            "ticks_in_hive": 587
+          }
+        },
+        {
+          "fixtureId": "linked-external-source-1",
+          "sourceClass": "LINKED_EXTERNAL_ENTITY_REQUIRES_LIVE_CONSOLIDATION",
+          "preservedNbt": {
+            "entityType": "minecraft:bee",
+            "sourceEvidenceId": "ENTITY-561f42cca54dcaa1c774be93",
+            "homeHivePosition": [
+              1849,
+              66,
+              145
+            ]
+          }
+        }
+      ],
+      "linkedExternalOccupants": []
+    },
+    "consolidatedTransportEligibility": {
+      "passed": true,
+      "embeddedOccupantCount": 3,
+      "linkedExternalOccupantCount": 0,
+      "uniqueOccupantCount": 3,
+      "destinationCurrentBlock": "minecraft:air"
+    },
+    "syntheticRelocatedState": {
+      "phase": "SYNTHETIC_RELOCATED",
+      "nestPosition": {
+        "x": 1811,
+        "y": 67,
+        "z": 378
+      },
+      "blockState": {
+        "name": "minecraft:bee_nest",
+        "properties": {
+          "facing": "south",
+          "honey_level": "0"
+        }
+      },
+      "blockEntityNonCoordinateProjection": {
+        "bees": [
+          {
+            "fixtureId": "embedded-source-1",
+            "sourceClass": "EMBEDDED_SOURCE_NBT",
+            "preservedNbt": {
+              "entity_data": {
+                "id": "minecraft:bee"
+              },
+              "min_ticks_in_hive": 600,
+              "ticks_in_hive": 232
+            }
+          },
+          {
+            "fixtureId": "embedded-source-2",
+            "sourceClass": "EMBEDDED_SOURCE_NBT",
+            "preservedNbt": {
+              "entity_data": {
+                "id": "minecraft:bee"
+              },
+              "min_ticks_in_hive": 600,
+              "ticks_in_hive": 587
+            }
+          },
+          {
+            "fixtureId": "linked-external-source-1",
+            "sourceClass": "LINKED_EXTERNAL_ENTITY_REQUIRES_LIVE_CONSOLIDATION",
+            "preservedNbt": {
+              "entityType": "minecraft:bee",
+              "sourceEvidenceId": "ENTITY-561f42cca54dcaa1c774be93",
+              "homeHivePosition": [
+                1849,
+                66,
+                145
+              ]
+            }
+          }
+        ],
+        "bukkitMaxEntities": 3,
+        "components": {},
+        "id": "minecraft:beehive",
+        "keepPacked": 0
+      },
+      "embeddedOccupants": [
+        {
+          "fixtureId": "embedded-source-1",
+          "sourceClass": "EMBEDDED_SOURCE_NBT",
+          "preservedNbt": {
+            "entity_data": {
+              "id": "minecraft:bee"
+            },
+            "min_ticks_in_hive": 600,
+            "ticks_in_hive": 232
+          }
+        },
+        {
+          "fixtureId": "embedded-source-2",
+          "sourceClass": "EMBEDDED_SOURCE_NBT",
+          "preservedNbt": {
+            "entity_data": {
+              "id": "minecraft:bee"
+            },
+            "min_ticks_in_hive": 600,
+            "ticks_in_hive": 587
+          }
+        },
+        {
+          "fixtureId": "linked-external-source-1",
+          "sourceClass": "LINKED_EXTERNAL_ENTITY_REQUIRES_LIVE_CONSOLIDATION",
+          "preservedNbt": {
+            "entityType": "minecraft:bee",
+            "sourceEvidenceId": "ENTITY-561f42cca54dcaa1c774be93",
+            "homeHivePosition": [
+              1849,
+              66,
+              145
+            ]
+          }
+        }
+      ],
+      "linkedExternalOccupants": []
+    },
+    "syntheticRollbackState": {
+      "phase": "SYNTHETIC_RELOCATED",
+      "nestPosition": {
+        "x": 1849,
+        "y": 66,
+        "z": 145
+      },
+      "blockState": {
+        "name": "minecraft:bee_nest",
+        "properties": {
+          "facing": "south",
+          "honey_level": "0"
+        }
+      },
+      "blockEntityNonCoordinateProjection": {
+        "bees": [
+          {
+            "fixtureId": "embedded-source-1",
+            "sourceClass": "EMBEDDED_SOURCE_NBT",
+            "preservedNbt": {
+              "entity_data": {
+                "id": "minecraft:bee"
+              },
+              "min_ticks_in_hive": 600,
+              "ticks_in_hive": 232
+            }
+          },
+          {
+            "fixtureId": "embedded-source-2",
+            "sourceClass": "EMBEDDED_SOURCE_NBT",
+            "preservedNbt": {
+              "entity_data": {
+                "id": "minecraft:bee"
+              },
+              "min_ticks_in_hive": 600,
+              "ticks_in_hive": 587
+            }
+          },
+          {
+            "fixtureId": "linked-external-source-1",
+            "sourceClass": "LINKED_EXTERNAL_ENTITY_REQUIRES_LIVE_CONSOLIDATION",
+            "preservedNbt": {
+              "entityType": "minecraft:bee",
+              "sourceEvidenceId": "ENTITY-561f42cca54dcaa1c774be93",
+              "homeHivePosition": [
+                1849,
+                66,
+                145
+              ]
+            }
+          }
+        ],
+        "bukkitMaxEntities": 3,
+        "components": {},
+        "id": "minecraft:beehive",
+        "keepPacked": 0
+      },
+      "embeddedOccupants": [
+        {
+          "fixtureId": "embedded-source-1",
+          "sourceClass": "EMBEDDED_SOURCE_NBT",
+          "preservedNbt": {
+            "entity_data": {
+              "id": "minecraft:bee"
+            },
+            "min_ticks_in_hive": 600,
+            "ticks_in_hive": 232
+          }
+        },
+        {
+          "fixtureId": "embedded-source-2",
+          "sourceClass": "EMBEDDED_SOURCE_NBT",
+          "preservedNbt": {
+            "entity_data": {
+              "id": "minecraft:bee"
+            },
+            "min_ticks_in_hive": 600,
+            "ticks_in_hive": 587
+          }
+        },
+        {
+          "fixtureId": "linked-external-source-1",
+          "sourceClass": "LINKED_EXTERNAL_ENTITY_REQUIRES_LIVE_CONSOLIDATION",
+          "preservedNbt": {
+            "entityType": "minecraft:bee",
+            "sourceEvidenceId": "ENTITY-561f42cca54dcaa1c774be93",
+            "homeHivePosition": [
+              1849,
+              66,
+              145
+            ]
+          }
+        }
+      ],
+      "linkedExternalOccupants": []
+    },
+    "conservedStateProjectionSha256": "d0f393011505455bb746e640559f1f01a97b8ed04e19247fc6b4de1a5aee5f33",
+    "checks": {
+      "currentCaptureCorrectlyRejectedForTransport": true,
+      "allThreeEmbeddedPreconditionAccepted": true,
+      "exactThreeMemberOccupantBijection": true,
+      "forwardNonCoordinateStateExact": true,
+      "rollbackNonCoordinateStateExact": true,
+      "sourceAndRollbackCoordinatesExact": true,
+      "destinationCoordinatesExact": true,
+      "everyNegativeFixtureRejected": true
+    },
+    "negativeFixtures": [
+      {
+        "id": "CURRENT_CAPTURE_ONE_BEE_EXTERNAL",
+        "rejected": true,
+        "reason": "Transport is forbidden until a fresh live observation proves all three colony members embedded and zero linked bees external."
+      },
+      {
+        "id": "MISSING_OCCUPANT",
+        "rejected": true,
+        "reason": "A two-member projection fails the exact three-member conservation rule."
+      },
+      {
+        "id": "DUPLICATED_OCCUPANT",
+        "rejected": true,
+        "reason": "Duplicate fixture identities fail the occupant bijection."
+      },
+      {
+        "id": "DESTINATION_NOT_AIR",
+        "rejected": true,
+        "reason": "A non-air destination fails the no-undeclared-replacement rule."
+      },
+      {
+        "id": "BLOCK_STATE_DRIFT",
+        "rejected": true,
+        "reason": "Facing or honey-level drift changes the preservation projection."
+      }
+    ],
+    "liveProofRequirements": [
+      "Use a disposable isolated server fixture matching the production Paper/Minecraft version; never use the live project world for method development.",
+      "Prove a fresh pre-transport state with exactly three embedded bees and zero linked external bees; the accepted complete save currently has only two embedded and one external.",
+      "Prove the chosen intact-relocation mechanism round-trips block state, every non-coordinate block-entity field, all three occupants, source/destination states, and rollback without loss or duplication.",
+      "Bind the proven runtime method and version identity into the technical-treatment contract before any operation is compiled."
+    ]
+  },
+  "disposition": {
+    "syntheticStateContractPassed": true,
+    "currentCapturedStateTransportEligible": false,
+    "liveConsolidationRequired": true,
+    "isolatedRuntimeMechanicProofRequired": true,
+    "runtimeMechanicProven": false,
+    "technicalTreatmentAccepted": false,
+    "operationCompilationAuthorized": false
+  },
+  "safetyBoundary": {
+    "operationCellCount": 0,
+    "entityRelocationCount": 0,
+    "blockEditCount": 0,
+    "serverStarted": false,
+    "liveWorldContacted": false,
+    "physicalReleaseAuthorized": false,
+    "entityRelocationAuthorized": false,
+    "worldEditAuthorized": false,
+    "executable": false
+  },
+  "fixturePayloadSha256": "d7d83bb565e383206a21409dfb010ca7c14f64506c077ca0711f6c81612165b3",
+  "reportIdentitySha256": "95ca9356a1cafb3c3773d2006e22d7a54101e157dff4d356e47d878b504f6818"
+}

@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-d06-bee-nest-destination-survey",
+  "generatedAtUtc": "2026-08-06T03:20:00Z",
+  "status": "PARTIAL_PASS_EXACT_CONFLICT_FREE_DESTINATION_CANDIDATE_SELECTED_OWNERSHIP_HABITAT_METHOD_AND_RELEASE_HOLD",
+  "purpose": "Select one deterministic, low-impact destination planning candidate from the accepted complete save without accepting habitat, ownership, method, or physical work.",
+  "sourceBindings": {
+    "treatment": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-treatment.json",
+      "sha256": "86547e0529df4dee02b868605dd25c22055744e062a5d3717f68f77d233dfc8f",
+      "bytes": 7895,
+      "role": "selected non-executable intact-relocation treatment"
+    },
+    "completeSaveIntake": {
+      "path": "docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260806T014133Z.json",
+      "sha256": "7cd3718a59fbfa8b9006cb60337e6262a690a90f4abf5e06d527d900892be149",
+      "bytes": 58203,
+      "role": "accepted complete-save identity and immutable world-root binding"
+    },
+    "completeSaveScope": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g06-complete-save-scope-clearance-20260806T014133Z.json",
+      "sha256": "cf17f96d4504ad070114146101e6626b6233eeb780372737a0abcf33c7bde72f",
+      "bytes": 3039191,
+      "role": "all exact proposal-domain bounds, protected cores, and source equivalence"
+    },
+    "coordinates": {
+      "path": "docs/masterplans/05-combined-zones/site-coordinates.json",
+      "sha256": "4ec96165c1b4af92d766af4d7e79cb296fba0e362e8b43f6a1053c2a20bf0081",
+      "bytes": 44006,
+      "role": "accepted reserve and zone context"
+    }
+  },
+  "surveyPayload": {
+    "completeSaveSha256": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+    "sourceTreatmentPayloadSha256": "105e2e517d2b8a72c705b0b56deeccba2b0dc53e4a983cf0d37b8e44ef89e6fb",
+    "searchContract": {
+      "bounds": {
+        "minX": 1700,
+        "maxX": 2000,
+        "minY": 55,
+        "maxY": 95,
+        "minZ": 301,
+        "maxZ": 500
+      },
+      "minimumDomainAndProtectedBoundsClearance": 64,
+      "minimumPlanningZoneBoundsClearance": 64,
+      "maximumSourceDistance": 450,
+      "flowerRadius": 22,
+      "minimumNearbyFlowers": 5,
+      "currentDestinationState": "minecraft:air",
+      "acceptedSupportStates": [
+        "minecraft:dirt",
+        "minecraft:grass_block"
+      ],
+      "requiredEntranceState": "minecraft:air",
+      "desiredFacing": "south",
+      "requiredOutsideEveryBoundedPlanningZone": true,
+      "ranking": "maximum flower count, nearest flower, maximum proposal-bound clearance, minimum source distance, then x/y/z"
+    },
+    "observedFlowerRecordCount": 69,
+    "passingCandidateCount": 921,
+    "passingCandidateManifestSha256": "6eb7645b833422ba73a7ee7cc996719ed6e716ce6289ae2de5ffb00cf599893f",
+    "selectedPlanningCandidate": {
+      "point": {
+        "x": 1811,
+        "y": 67,
+        "z": 378
+      },
+      "desiredFacing": "south",
+      "currentBlock": "minecraft:air",
+      "supportBlock": "minecraft:grass_block",
+      "southEntranceBlock": "minecraft:air",
+      "biome": "minecraft:forest",
+      "sourceDistance": 236.080495,
+      "minimumDomainBoundsClearance": 218,
+      "minimumProtectedCoreBoundsClearance": 1063.523389,
+      "minimumPlanningZoneBoundsClearance": 78,
+      "insideEastReserve": false,
+      "nearbyFlowerCount": 16,
+      "nearestFlowerDistance": 1,
+      "nearbyFlowers": [
+        {
+          "x": 1810,
+          "y": 67,
+          "z": 378,
+          "block": "minecraft:peony",
+          "distance": 1
+        },
+        {
+          "x": 1810,
+          "y": 67,
+          "z": 374,
+          "block": "minecraft:peony",
+          "distance": 4.123105625617661
+        },
+        {
+          "x": 1807,
+          "y": 68,
+          "z": 375,
+          "block": "minecraft:peony",
+          "distance": 5.0990195135927845
+        },
+        {
+          "x": 1808,
+          "y": 68,
+          "z": 374,
+          "block": "minecraft:peony",
+          "distance": 5.0990195135927845
+        },
+        {
+          "x": 1810,
+          "y": 67,
+          "z": 373,
+          "block": "minecraft:peony",
+          "distance": 5.099019513592785
+        },
+        {
+          "x": 1807,
+          "y": 68,
+          "z": 374,
+          "block": "minecraft:peony",
+          "distance": 5.744562646538029
+        },
+        {
+          "x": 1811,
+          "y": 66,
+          "z": 370,
+          "block": "minecraft:peony",
+          "distance": 8.06225774829855
+        },
+        {
+          "x": 1812,
+          "y": 65,
+          "z": 370,
+          "block": "minecraft:peony",
+          "distance": 8.306623862918075
+        },
+        {
+          "x": 1806,
+          "y": 68,
+          "z": 371,
+          "block": "minecraft:peony",
+          "distance": 8.660254037844386
+        },
+        {
+          "x": 1802,
+          "y": 69,
+          "z": 377,
+          "block": "minecraft:peony",
+          "distance": 9.273618495495704
+        },
+        {
+          "x": 1802,
+          "y": 68,
+          "z": 374,
+          "block": "minecraft:peony",
+          "distance": 9.899494936611665
+        },
+        {
+          "x": 1803,
+          "y": 68,
+          "z": 372,
+          "block": "minecraft:peony",
+          "distance": 10.04987562112089
+        },
+        {
+          "x": 1802,
+          "y": 68,
+          "z": 372,
+          "block": "minecraft:peony",
+          "distance": 10.862780491200215
+        },
+        {
+          "x": 1801,
+          "y": 68,
+          "z": 372,
+          "block": "minecraft:peony",
+          "distance": 11.704699910719626
+        },
+        {
+          "x": 1801,
+          "y": 68,
+          "z": 371,
+          "block": "minecraft:peony",
+          "distance": 12.24744871391589
+        },
+        {
+          "x": 1806,
+          "y": 66,
+          "z": 366,
+          "block": "minecraft:peony",
+          "distance": 13.038404810405298
+        }
+      ],
+      "intersectedZoneBounds": [],
+      "intersectedDomainBounds": [],
+      "intersectedProtectedCoreBounds": [],
+      "destinationBlockEntityCount": 0,
+      "destinationPoiRecordCount": 0,
+      "nearbyEntityRecordCount": 0,
+      "nearbyEntityRecords": []
+    },
+    "destinationCellSet": {
+      "cellCount": 1,
+      "bounds": {
+        "minX": 1811,
+        "maxX": 1811,
+        "minY": 67,
+        "maxY": 67,
+        "minZ": 378,
+        "maxZ": 378
+      },
+      "coordinateSetSha256": "ce498d68a599d99df587f9a7ad5e94861992d7e34195a9f144c1d2993b321c77"
+    },
+    "destinationAcceptance": null,
+    "exactRelocationMethod": null,
+    "exactForwardOperation": null,
+    "exactRollbackOperation": null
+  },
+  "disposition": {
+    "boundedSearchComplete": true,
+    "destinationPlanningCandidateSelected": true,
+    "destinationCellAccepted": false,
+    "habitatAccepted": false,
+    "ownershipAccepted": false,
+    "relocationMethodAccepted": false,
+    "technicalTreatmentAccepted": false,
+    "readyForMethodAndAcceptanceDevelopment": true
+  },
+  "remainingClosure": [
+    "Accept the destination habitat, access, ownership, and long-term non-interference basis.",
+    "Freeze the exact intact-relocation method and the source/destination block-state and NBT projections for all three colony members.",
+    "Compile guarded forward and rollback operations only after technical acceptance; require exact source guards and no undeclared cell or entity effects.",
+    "Run fresh G13 clearance and obtain explicit manifest-bound release authority immediately before any later execution."
+  ],
+  "safetyBoundary": {
+    "acceptedDestinationCellCount": 0,
+    "operationCellCount": 0,
+    "entityRelocationCount": 0,
+    "blockEditCount": 0,
+    "physicalReleaseAuthorized": false,
+    "entityRelocationAuthorized": false,
+    "worldEditAuthorized": false,
+    "executable": false
+  },
+  "surveyPayloadSha256": "22e1fd8d970befac70e09546ef74a431750505c798cecde13012e852aa6a8c7e",
+  "reportIdentitySha256": "72ee98dfc1508b1afb75c7c7e38cb7652e2a4bcd3176240cc86ba702802fea52"
+}

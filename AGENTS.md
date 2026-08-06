@@ -1960,7 +1960,7 @@ npx vitest run test/build/combinedZonesCompleteSaveIntake.test.ts
 
 - A complete-save PASS requires nonempty `region/`, `entities/`, and `poi/`
   MCA sets, nonempty `level.dat`, stable non-symlink files, and an exact
-  in-root `combined-zones-complete-save-capture-manifest.json` proving the
+  in-root `combined-zones-complete-save-capture.json` proving the
   ordered frozen-copy protocol.
   The intake tool is read-only and may not contact Minecraft or RCON, mutate a
   supplied save, accept dependency samples, or infer same-moment identity.
@@ -1979,6 +1979,71 @@ npx vitest run test/build/combinedZonesCompleteSaveIntake.test.ts
 python3 test/scripts/test_capture_combined_zones_complete_save.py
 python3 test/scripts/test_packetcraft_complete_save_capture_helper.py
 ```
+
+- Keep the historical region-only intake and default G06 audit unchanged.
+  After an authorized capture passes intake, bind it additively to the exact
+  proposal/generated-start/protected-core scope with:
+
+```bash
+node scripts/audit_combined_zones_complete_save.mjs \
+  --world-root <immutable-complete-save-root> \
+  --out <versioned-complete-save-audit.json> \
+  --markdown <versioned-complete-save-audit.md> \
+  --generated-at <stable-utc>
+node --max-old-space-size=8192 \
+  scripts/audit_combined_zones_g06_proposed_clearance.mjs \
+  --complete-save <versioned-complete-save-audit.json> \
+  --out <versioned-g06-complete-save-scope-audit.json> \
+  --markdown <versioned-g06-complete-save-scope-audit.md> \
+  --generated-at <stable-utc>
+```
+
+- The scoped G06 mode compares raw terrain-chunk payloads before reusing any
+  exact geometry. If every required chunk is source-equivalent, retain the
+  reviewed geometry and classify findings by their controlling stage. The 43
+  captured rabbit/polar-bear positions are transient observations deferred to
+  the fresh execute-stage G13 gate, not pre-R00 relocation work. The occupied
+  D06 bee-nest POI is persistent source state and requires a design treatment.
+  A complete-save PASS closes the missing-evidence dependency; it does not
+  accept a treatment, owner/interface, construction cell, operation, release,
+  or world edit.
+
+- Compile and validate the non-executable occupied-nest treatment with:
+
+```bash
+node scripts/compile_combined_zones_d06_bee_nest_treatment.mjs
+node scripts/survey_combined_zones_d06_bee_nest_destination.mjs
+node scripts/compile_combined_zones_d06_bee_nest_relocation_fixture.mjs
+npx vitest run \
+  test/build/combinedZonesD06BeeNestTreatment.test.ts \
+  test/build/combinedZonesD06BeeNestDestinationSurvey.test.ts \
+  test/build/combinedZonesD06BeeNestRelocationFixture.test.ts
+```
+
+- The compiler binds the exact nest cell, block state, two embedded bees, one
+  linked external bee, prior EG-B census, and all six intersected D06 domains.
+  It selects humane intact relocation as a planning treatment only. Destination
+  selection, habitat/access/ownership evidence, method and NBT preservation,
+  source/destination states, guards, rollback, technical acceptance, fresh G13
+  clearance, and explicit release authority remain default-deny. Never derive
+  an operation from the planning selection.
+- The destination survey searches only the accepted immutable complete save.
+  Its candidate at `1811,67,378` is air over grass in forest, has a clear south
+  entrance, 16 unique flower plants within 22 blocks, 218 blocks of clearance
+  from every proposal-domain bound, and 78 blocks of clearance from every
+  bounded planning zone. It has no existing POI/block entity/nearby entity and
+  zero protected-core intersection. It is not an accepted destination:
+  habitat, access, ownership, long-term non-interference, relocation method,
+  and all physical-release gates remain HOLD.
+- The relocation fixture is synthetic offline contract evidence only. It
+  accepts exactly three embedded occupants and zero external occupants, proves
+  modeled state conservation and rollback, and rejects the current captured
+  state because it has two embedded bees and one linked external bee. Never
+  promote the synthetic PASS to method or technical acceptance. First require
+  a fresh live gate to prove all three bees embedded, then prove the actual
+  intact-relocation mechanic on a disposable server fixture matching the
+  production Paper/Minecraft version. No server was available or started, and
+  the live project world must not be used for method development.
 
 - Reproduce the post-approval D02 technical-development matrix and the P1-B12
   Grand Avenue subsurface no-foreclosure alternatives with:
@@ -2070,16 +2135,20 @@ npx vitest run \
   2,268-cell bound and 1,118-cell non-air census are evidence/search sets, not
   demolition targets, and include 515 packed-ice cells, five snow cells and
   three chests. G06 remains HOLD until the conflict has an accepted exact
-  attributed treatment/clearance and chest-salvage contract, positive expert margins are frozen, complete
-  same-moment save evidence exists, ownership/interfaces are accepted, and the
-  final gate is accepted. Do not promote zero-margin or proposal-level evidence
-  to expert-influence, complete-save, accepted-contract, or release authority.
+  attributed treatment/clearance and chest-salvage contract, positive expert
+  margins are frozen, disclosed complete-save entity/POI intersections are
+  reconciled, ownership/interfaces are accepted, and the final gate is
+  accepted. Do not promote zero-margin or proposal-level evidence to
+  expert-influence, accepted-contract, or release authority.
 
 - Reproduce and validate the owner-policy overlay with:
 
 ```bash
 node scripts/record_combined_zones_shipwreck_removal_authorization.mjs
-npx vitest run test/build/combinedZonesShipwreckRemovalAuthorization.test.ts
+node scripts/compile_combined_zones_shipwreck_treatment_contract.mjs
+npx vitest run \
+  test/build/combinedZonesShipwreckRemovalAuthorization.test.ts \
+  test/build/combinedZonesShipwreckTreatmentContract.test.ts
 ```
 
 - The shipwreck policy emits zero operations and never substitutes for the
@@ -2087,6 +2156,15 @@ npx vitest run test/build/combinedZonesShipwreckRemovalAuthorization.test.ts
   attributed targets, desired states, salvage manifest, forward/rollback
   hashes, permitted world and expiry. Generated-start NBT remains historical
   evidence and is not directly edited.
+- The treatment compiler binds the accepted complete save and partitions all
+  2,268 GS-037 envelope cells. Only the 598 chest/dark-oak/spruce cells are an
+  attributed removal-target candidate; 515 packed-ice, five snow, and 1,150
+  air cells stay preserved. The exact 598-cell air mapping is a candidate, not
+  an accepted desired state. All three chests still carry unmaterialized loot
+  tables, so zero inventory contents are known and no chest is salvage-ready.
+  Do not materialize loot, move inventory, compile an operation, or promote the
+  candidate until the declared structural/hydrology/neighbor, salvage,
+  ownership/interface, margin, rollback, and later release gates pass.
 
 - Reproduce the B09 funicular technical-reservation proposal with:
 
