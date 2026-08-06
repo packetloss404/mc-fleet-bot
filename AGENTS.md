@@ -2064,11 +2064,29 @@ npx vitest run \
 - The G06 audit evaluates all 30 G03-v3 domains against 114 generated starts
   and three protected cores. It discloses the exact 126-cell P1-B10 influence
   overlap with the shipwreck core (the same cells already present in the D05
-  support evidence). G06 remains HOLD until that conflict has an accepted exact
-  treatment/clearance contract, positive expert margins are frozen, complete
+  support evidence). The sole owner's 2026-08-06 additive policy resolves
+  preserve-versus-remove in favor of controlled-removal engineering for the
+  shipwreck only. It is not an accepted technical-treatment contract: the
+  2,268-cell bound and 1,118-cell non-air census are evidence/search sets, not
+  demolition targets, and include 515 packed-ice cells, five snow cells and
+  three chests. G06 remains HOLD until the conflict has an accepted exact
+  attributed treatment/clearance and chest-salvage contract, positive expert margins are frozen, complete
   same-moment save evidence exists, ownership/interfaces are accepted, and the
   final gate is accepted. Do not promote zero-margin or proposal-level evidence
   to expert-influence, complete-save, accepted-contract, or release authority.
+
+- Reproduce and validate the owner-policy overlay with:
+
+```bash
+node scripts/record_combined_zones_shipwreck_removal_authorization.mjs
+npx vitest run test/build/combinedZonesShipwreckRemovalAuthorization.test.ts
+```
+
+- The shipwreck policy emits zero operations and never substitutes for the
+  later single-use G14 authorization bound to one complete save, exact
+  attributed targets, desired states, salvage manifest, forward/rollback
+  hashes, permitted world and expiry. Generated-start NBT remains historical
+  evidence and is not directly edited.
 
 - Reproduce the B09 funicular technical-reservation proposal with:
 

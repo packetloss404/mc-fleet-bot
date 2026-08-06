@@ -38,6 +38,8 @@ const INPUTS = Object.freeze({
   phase0: 'docs/masterplans/05-combined-zones/phase0-survey-evidence.json',
   relics: 'docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
   completeSave: 'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit.json',
+  shipwreckRemovalAuthorization:
+    'docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json',
   b03: 'docs/masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json',
   connectors: 'docs/masterplans/05-combined-zones/phase1-connector-geometry.json',
   d05Alternatives: 'docs/masterplans/05-combined-zones/phase1-d05-future-mountain-alternatives.json',
@@ -67,6 +69,8 @@ const ROLES = Object.freeze({
   phase0: 'complete 114-record generated-structure-start registry and snapshot identity',
   relics: 'three frozen zero-margin default-deny protected cores and positive-margin HOLDs',
   completeSave: 'complete-save default-deny dependency',
+  shipwreckRemovalAuthorization:
+    'sole-owner exact shipwreck controlled-removal planning disposition',
   b03: 'exact B03 construction and external interaction shell reconstruction source',
   connectors: 'exact B08 construction/interaction and B09 anchor reconstruction source',
   d05Alternatives: 'selected FM-01 B09/B10 formula and sparse proposal source',
@@ -1228,6 +1232,7 @@ const releaseContract = readJson(INPUTS.releaseContract);
 const phase0 = readJson(INPUTS.phase0);
 const relicReport = readJson(INPUTS.relics);
 const completeSave = readJson(INPUTS.completeSave);
+const shipwreckRemovalAuthorization = readJson(INPUTS.shipwreckRemovalAuthorization);
 const b03 = readJson(INPUTS.b03);
 const connectors = readJson(INPUTS.connectors);
 const d05Alternatives = readJson(INPUTS.d05Alternatives);
@@ -1281,6 +1286,25 @@ invariant(relicReport.relics?.length === 3
 'protected-core or positive-margin boundary drift');
 invariant(completeSave.status === 'HOLD_INCOMPLETE_OR_UNBOUND_SAVE',
 'complete-save gate unexpectedly changed');
+invariant(shipwreckRemovalAuthorization.schemaVersion === 1
+  && shipwreckRemovalAuthorization.status === 'OWNER_POLICY_APPROVED_RELEASE_NOT_AUTHORIZED'
+  && shipwreckRemovalAuthorization.actualApprovalText === '3: Shipwreck can be deleted'
+  && shipwreckRemovalAuthorization.relicEvidenceBinding?.fileSha256
+    === sourceBindings.relics.sha256
+  && shipwreckRemovalAuthorization.phase0EvidenceBinding?.fileSha256
+    === sourceBindings.phase0.sha256
+  && shipwreckRemovalAuthorization.subject?.censusAndAttributionSearchEnvelope?.cellCount === 2268
+  && shipwreckRemovalAuthorization.subject?.censusAndAttributionSearchEnvelope
+    ?.coordinateSetSha256
+      === '715792eef84d4c3029a5750b0683adef6e0c5447b918512539c0d96f82cd2ee6'
+  && shipwreckRemovalAuthorization.safetyBoundary?.operationCellCount === 0
+  && shipwreckRemovalAuthorization.safetyBoundary?.worldEditAuthorized === false,
+'shipwreck removal authorization identity or safety boundary drift');
+invariant(shipwreckRemovalAuthorization.authorizationPayloadSha256 === sha256(
+  `combined-zones-shipwreck-removal-authorization-v1\n${JSON.stringify(
+    shipwreckRemovalAuthorization.authorizationPayload,
+  )}\n`,
+), 'shipwreck removal authorization payload SHA-256 drift');
 invariant(d06Mechanisms.summary?.acceptedMechanismManifestCount === 0,
 'D06 unexpectedly has an accepted mechanism manifest');
 invariant(d06Detailed.reportIdentitySha256
@@ -1587,6 +1611,65 @@ const supportMapIdentity = {
 const supportGeneratedStartAudit = auditIntervalMapDomain(supportMapIdentity, generatedSubjects);
 const supportProtectedCoreAudit = auditIntervalMapDomain(supportMapIdentity, protectedSubjects);
 
+const acknowledgedShipwreckOverlap =
+  shipwreckRemovalAuthorization.acknowledgedKnownCoordinationOverlap;
+invariant(acknowledgedShipwreckOverlap?.domainId === 'P1-B10/influence'
+  && acknowledgedShipwreckOverlap.generatedStartSubjectId === 'GS-037'
+  && acknowledgedShipwreckOverlap.protectedCoreSubjectId === 'CORE-shipwreck'
+  && acknowledgedShipwreckOverlap.cellCount === 126
+  && acknowledgedShipwreckOverlap.coordinateSetSha256
+    === '77350225547fce64783a9d3d3d8953631b847a733e9bc060211c13b952df0e98',
+'acknowledged shipwreck overlap identity drift');
+const shipwreckSubjectDispositionReference = {
+  path: INPUTS.shipwreckRemovalAuthorization,
+  fileSha256: sourceBindings.shipwreckRemovalAuthorization.sha256,
+  authorizationPayloadSha256:
+    shipwreckRemovalAuthorization.authorizationPayloadSha256,
+  decision: shipwreckRemovalAuthorization.decision,
+  disposition: acknowledgedShipwreckOverlap.disposition,
+  acceptedTechnicalTreatmentContract: false,
+  worldEditAuthorized: false,
+};
+function applyShipwreckSubjectDisposition(audit, expectedDomainId, subjectId) {
+  const record = audit.records.find((candidate) => candidate.subjectId === subjectId);
+  invariant(record
+    && audit.domainId === expectedDomainId
+    && record.intersection.cellCount === acknowledgedShipwreckOverlap.cellCount
+    && record.intersection.coordinateSetSha256
+      === acknowledgedShipwreckOverlap.coordinateSetSha256
+    && JSON.stringify(record.intersection.bounds)
+      === JSON.stringify(acknowledgedShipwreckOverlap.inclusiveBounds),
+  `${expectedDomainId}/${subjectId} owner-disposition intersection drift`);
+  record.result = 'OVERLAP_DISCLOSED_HOLD';
+  record.ownerDispositionAuthorization = {
+    ...shipwreckSubjectDispositionReference,
+    evidenceClass: expectedDomainId === 'P1-B10/support-gap-status-evidence'
+      ? 'SUPPORT_TREATMENT_REMAINS_SEPARATE_HOLD'
+      : 'PRESERVE_OR_REMOVE_POLICY_RESOLVED_TECHNICAL_TREATMENT_REMAINS_HOLD',
+  };
+  record.separatelyAuthorizedContract = null;
+}
+applyShipwreckSubjectDisposition(
+  b10GeneratedStartAudits.find(({ domainId }) => domainId === 'P1-B10/influence'),
+  'P1-B10/influence',
+  acknowledgedShipwreckOverlap.generatedStartSubjectId,
+);
+applyShipwreckSubjectDisposition(
+  b10ProtectedCoreAudits.find(({ domainId }) => domainId === 'P1-B10/influence'),
+  'P1-B10/influence',
+  acknowledgedShipwreckOverlap.protectedCoreSubjectId,
+);
+applyShipwreckSubjectDisposition(
+  supportGeneratedStartAudit,
+  'P1-B10/support-gap-status-evidence',
+  acknowledgedShipwreckOverlap.generatedStartSubjectId,
+);
+applyShipwreckSubjectDisposition(
+  supportProtectedCoreAudit,
+  'P1-B10/support-gap-status-evidence',
+  acknowledgedShipwreckOverlap.protectedCoreSubjectId,
+);
+
 const generatedStartAudits = [...expandedGeneratedStartAudits, ...b10GeneratedStartAudits];
 const protectedCoreAudits = [...expandedProtectedCoreAudits, ...b10ProtectedCoreAudits];
 const g03NonNullDomainIds = g03.scopeRegistry.flatMap((scope) => (
@@ -1616,9 +1699,33 @@ const marginHolds = relicReport.relics.map((relic) => ({
   frozenCoreCoordinateSetSha256: relic.evidenceBackedDefaultDenyCore.coordinateSetSha256,
   positiveMarginBlocks: null,
   status: relic.positiveMarginBuffer.status,
-  reason: relic.positiveMarginBuffer.reason,
+  reason: relic.key === 'shipwreck'
+    ? 'The owner resolved preserve-versus-remove in favor of controlled removal, but no accepted structural, hydrology, staging, equipment-sweep, attribution, salvage, or adjacent-feature influence set establishes a defensible demolition margin.'
+    : relic.positiveMarginBuffer.reason,
+  marginPurpose: relic.key === 'shipwreck'
+    ? 'CONTROLLED_REMOVAL_INFLUENCE_AND_ADJACENT_FEATURE_CLEARANCE'
+    : 'PRESERVATION_BUFFER',
   clearanceOutsideFrozenCore: 'UNKNOWN_NOT_AUDITABLE',
 }));
+const removalDispositionLedger = [{
+  relicKey: 'shipwreck',
+  structureId: 'minecraft:shipwreck',
+  preserveInPlacePolicyRequired: false,
+  controlledRemovalPlanningAuthorized: true,
+  authorizationPath: INPUTS.shipwreckRemovalAuthorization,
+  authorizationFileSha256: sourceBindings.shipwreckRemovalAuthorization.sha256,
+  authorizationPayloadSha256:
+    shipwreckRemovalAuthorization.authorizationPayloadSha256,
+  censusAndAttributionSearchEnvelope:
+    shipwreckRemovalAuthorization.subject.censusAndAttributionSearchEnvelope,
+  exactAttributedRemovalTargetCellSet: null,
+  acknowledgedCoordinationOverlap: acknowledgedShipwreckOverlap,
+  acceptedTechnicalTreatmentContract: false,
+  exactRemovalOperationCellCount: null,
+  completeSaveAccepted: false,
+  removalPackageAccepted: false,
+  worldEditAuthorized: false,
+}];
 
 const exactGeneratedOverlapRecords = generatedStartAudits.flatMap((audit) => (
   audit.records.filter(({ intersection }) => intersection.cellCount > 0)
@@ -1628,10 +1735,18 @@ const exactCoreOverlapRecords = protectedCoreAudits.flatMap((audit) => (
   audit.records.filter(({ intersection }) => intersection.cellCount > 0)
     .map((record) => ({ domainId: audit.domainId, ...record }))
 ));
+const unresolvedExactGeneratedOverlapRecords = exactGeneratedOverlapRecords
+  .filter(({ separatelyAuthorizedContract }) => separatelyAuthorizedContract === null);
+const unresolvedExactCoreOverlapRecords = exactCoreOverlapRecords
+  .filter(({ separatelyAuthorizedContract }) => separatelyAuthorizedContract === null);
 const supportGeneratedOverlaps = supportGeneratedStartAudit.records
   .filter(({ intersection }) => intersection.cellCount > 0);
 const supportCoreOverlaps = supportProtectedCoreAudit.records
   .filter(({ intersection }) => intersection.cellCount > 0);
+const unresolvedSupportGeneratedOverlaps = supportGeneratedOverlaps
+  .filter(({ separatelyAuthorizedContract }) => separatelyAuthorizedContract === null);
+const unresolvedSupportCoreOverlaps = supportCoreOverlaps
+  .filter(({ separatelyAuthorizedContract }) => separatelyAuthorizedContract === null);
 const exactGeneratedOverlapCellCount = exactGeneratedOverlapRecords.reduce(
   (sum, record) => sum + record.intersection.cellCount,
   0,
@@ -1720,7 +1835,11 @@ const ownershipContext = {
   ownerRegistryManifestSha256: ownership.registryContract.ownerRegistryManifestSha256,
   interfaceRegistryManifestSha256: ownership.registryContract.interfaceRegistryManifestSha256,
   separatelyAuthorizedProtectedFeatureContractCount: 0,
-  interpretation: 'Proposed ownership cannot authorize a protected-feature overlap; accepted owner and interface counts remain zero.',
+  ownerRemovalPolicyRecordCount: 1,
+  ownerRemovalPolicyRecordIds: [
+    shipwreckRemovalAuthorization.id,
+  ],
+  interpretation: 'The sole owner resolved preserve-versus-remove for the shipwreck and authorized controlled-removal engineering. No exact attributed technical-treatment contract or physical removal is accepted; accepted owner and interface counts remain zero.',
 };
 
 const eliminatedUncertainty = [
@@ -1733,9 +1852,9 @@ const eliminatedUncertainty = [
 ];
 const remainingBlockers = [
   'No accepted expert structural, hydrology, groundwater, access, staging, equipment-sweep, settlement, erosion, or construction-method positive-margin kernels are frozen.',
-  'All three relic positive-margin buffers remain unfrozen; the audited cores are exact zero-margin minimum default-deny bounds only.',
+  'The two preserved igloos lack accepted positive-margin buffers, and the shipwreck lacks accepted demolition influence, staging, attribution, salvage, and adjacent-feature margins.',
   `The complete-save intake remains ${completeSave.status}; region-only evidence cannot establish entity, POI, level.dat, or all-start clearance.`,
-  `The exact 126-cell D05 support-gap overlap with the shipwreck generated start and frozen core remains disclosed and has no separately accepted treatment/clearance contract.`,
+  'The owner resolved the shipwreck preserve-versus-remove choice, but the exact 126-cell overlap remains pending an attributed technical-treatment contract. Exact source-matching demolition, desired post states, three-chest inventory/salvage, rollback, entity/POI, ownership/interface, and post-state evidence remain uncompiled and unaccepted.',
   'Accepted owner and protected-feature interface contract counts remain zero.',
   'Before R00, commissioning designs, methods, pass criteria, failure stimuli, and evidence-capture contracts must be accepted; actual commissioning results are post-build G17/G19 evidence and are not a pre-R00 or G02 prerequisite.',
   'Final G06 acceptance must bind reviewed margin policy or explicit zero-margin acceptance and the complete accepted release interaction union.',
@@ -1756,12 +1875,35 @@ const gate = {
   exactG03ProtectedCoreOverlapRecordCount: exactCoreOverlapRecords.length,
   exactG03GeneratedStartOverlapCellCount: exactGeneratedOverlapCellCount,
   exactG03ProtectedCoreOverlapCellCount: exactCoreOverlapCellCount,
+  unresolvedG03GeneratedStartOverlapRecordCount:
+    unresolvedExactGeneratedOverlapRecords.length,
+  unresolvedG03ProtectedCoreOverlapRecordCount: unresolvedExactCoreOverlapRecords.length,
+  unresolvedG03GeneratedStartOverlapCellCount: unresolvedExactGeneratedOverlapRecords
+    .reduce((sum, record) => sum + record.intersection.cellCount, 0),
+  unresolvedG03ProtectedCoreOverlapCellCount: unresolvedExactCoreOverlapRecords
+    .reduce((sum, record) => sum + record.intersection.cellCount, 0),
+  ownerRemovalPolicyAcknowledgedOverlapRecordCount: 2,
+  ownerRemovalPolicyAcknowledgedOverlapCellCountPerSubject:
+    acknowledgedShipwreckOverlap.cellCount,
+  acceptedTechnicalTreatmentOverlapRecordCount: 0,
   supportEvidenceGeneratedStartOverlapRecordCount: supportGeneratedOverlaps.length,
   supportEvidenceProtectedCoreOverlapRecordCount: supportCoreOverlaps.length,
   supportEvidenceGeneratedStartOverlapCellCount: supportGeneratedOverlapCellCount,
   supportEvidenceProtectedCoreOverlapCellCount: supportCoreOverlapCellCount,
+  unresolvedSupportEvidenceGeneratedStartOverlapRecordCount:
+    unresolvedSupportGeneratedOverlaps.length,
+  unresolvedSupportEvidenceProtectedCoreOverlapRecordCount:
+    unresolvedSupportCoreOverlaps.length,
   allNonNullG03DomainsExactZeroAgainstGeneratedStarts: exactGeneratedOverlapRecords.length === 0,
   allNonNullG03DomainsExactZeroAgainstFrozenCores: exactCoreOverlapRecords.length === 0,
+  allNonNullG03DomainOverlapsExactZeroOrSeparatelyAuthorized:
+    unresolvedExactGeneratedOverlapRecords.length === 0
+    && unresolvedExactCoreOverlapRecords.length === 0,
+  shipwreckPreserveOrRemovePolicyResolved: true,
+  exactShipwreckOverlapResolvedByAcceptedTechnicalContract: false,
+  ownerRemovalPolicyRecordCount: 1,
+  acceptedRemovalTechnicalTreatmentContractCount: 0,
+  shipwreckPhysicalRemovalPackageAccepted: false,
   positiveMarginClearanceEstablished: false,
   completeSaveClearanceEstablished: false,
   allInfluenceDomainsKnown: true,
@@ -1793,6 +1935,7 @@ const auditPayload = {
   },
   nullDomainLedger: nullDomains,
   positiveMarginLedger: marginHolds,
+  removalDispositionLedger,
   ownershipContext,
   gate,
 };
@@ -1800,8 +1943,8 @@ const report = {
   schemaVersion: 3,
   id: 'combined-zones-phase1-g06-proposed-clearance-audit',
   generatedAtUtc: GENERATED_AT,
-  status: 'PARTIAL_PASS_G03_V3_ALL_30_EXACT_PROPOSAL_DOMAINS_AUDITED_POSITIVE_MARGIN_COMPLETE_SAVE_SUPPORT_ACCEPTANCE_G06_HOLD',
-  purpose: 'Deterministic offline clearance of all 30 exact G03 v3 proposal domains against all Phase 0 generated starts and frozen protected cores, while retaining positive-margin, complete-save, support-treatment, ownership, and acceptance uncertainty.',
+  status: 'PARTIAL_PASS_G03_V3_ALL_30_EXACT_PROPOSAL_DOMAINS_AUDITED_SHIPWRECK_OWNER_POLICY_RECORDED_TECHNICAL_TREATMENT_G06_HOLD',
+  purpose: 'Deterministic offline clearance of all 30 exact G03 v3 proposal domains against all Phase 0 generated starts and frozen evidence cores, with the shipwreck preserve-versus-remove policy resolved in favor of controlled-removal engineering while exact treatment and every physical-release safeguard remain on HOLD.',
   sourceBindings,
   immutableSnapshot,
   auditContract: {
@@ -1813,7 +1956,7 @@ const report = {
     supportRule: 'D05 support-gap status is exact evidence but is not promoted to construction, interaction, influence, treatment, or future state.',
     g03ConvergenceRule: 'Consume G03 v3 only when all 30 required domains are exact and zero remain null; require the evaluated-domain registry to equal those 30 domains exactly.',
     commissioningEvidenceTimingRule: 'Before R00 require accepted commissioning design, methods, pass criteria, failure stimuli, and evidence-capture contracts. Actual commissioning results are post-build G17/G19 evidence and cannot be required to close pre-R00 G02.',
-    authorizationRule: 'Any nonzero overlap requires a separate exact accepted contract; no such contract exists in the consumed registry.',
+    authorizationRule: 'Any nonzero overlap requires a separate exact accepted technical-treatment contract. The owner policy resolves preserve-versus-remove and acknowledges the exact 126-cell P1-B10/shipwreck overlap, but it is not that technical contract and does not authorize physical operations or waive any remaining gate.',
   },
   generatedStartSubjects: generatedSubjects,
   protectedCoreSubjects: protectedSubjects,
@@ -1830,6 +1973,7 @@ const report = {
   supportEvidenceAudit: auditPayload.supportEvidenceAudit,
   nullDomainLedger: nullDomains,
   positiveMarginLedger: marginHolds,
+  removalDispositionLedger,
   convergenceDelta,
   ownershipContext,
   completeSaveContext: {
@@ -1847,6 +1991,8 @@ const report = {
     acceptedFutureCellCount: 0,
     operationCellCount: 0,
     acceptedProtectedFeatureContractCount: 0,
+    ownerProtectedFeaturePolicyRecordCount: 1,
+    acceptedProtectedFeaturePhysicalReleaseContractCount: 0,
     physicalReleaseAuthorized: false,
     operationGenerationAuthorized: false,
     worldEditAuthorized: false,
@@ -1881,7 +2027,7 @@ G06 result: **HOLD**
 Physical release: **not authorized**
 World edits: **not authorized**
 
-This is an offline proposed-set audit. It evaluates all 30 exact G03 v3 domains against all 114 Phase 0 generated starts and the three frozen zero-margin protected cores. It does not turn a proposal into accepted construction, convert a coordination reservation into an expert margin, freeze a positive margin, or substitute region-only evidence for a complete saved world.
+This is an offline proposed-set audit. It evaluates all 30 exact G03 v3 domains against all 114 Phase 0 generated starts and the three frozen evidence cores. The two igloos remain preservation subjects. The sole owner separately authorized the shipwreck as a controlled-removal scope; that planning disposition does not turn a proposal into accepted construction, convert a coordination reservation into an expert margin, freeze a positive margin, or substitute region-only evidence for a complete saved world.
 
 ## G03 v2 to v3 convergence
 
@@ -1908,6 +2054,9 @@ ${domainRows.join('\n')}
 
 Exact G03/generated-start overlap records: **${exactGeneratedOverlapRecords.length}**.
 Exact G03/frozen-core overlap records: **${exactCoreOverlapRecords.length}**.
+Unresolved overlap records after the exact owner disposition: **${unresolvedExactGeneratedOverlapRecords.length + unresolvedExactCoreOverlapRecords.length}**.
+
+The two raw 126-cell records are the same physical \`P1-B10/influence\`/shipwreck intersection viewed through the generated-start and frozen-core registries. Both acknowledge [the shipwreck controlled-removal owner policy](phase1-shipwreck-removal-authorization.md). That policy resolves only the preserve-versus-remove owner choice; an exact attributed technical-treatment contract, demolition targets, desired post states, three-chest inventory/salvage, rollback, entities/POI, technical acceptance, and physical release remain HOLD.
 
 ## D05 support-gap evidence
 
@@ -1927,7 +2076,7 @@ ${remainingBlockers.map((item) => `- ${item}`).join('\n')}
 
 ## Fail-closed conclusion
 
-G06 remains HOLD. All 30 proposal domains are exact and evaluated, but their findings apply only to the source-bound coordination geometry and the three frozen zero-margin cores. They do not establish positive-margin clearance, expert influence clearance, complete-save entity/POI clearance, accepted support treatment, accepted ownership/interfaces, construction safety, or final post-release preservation.
+G06 remains HOLD. All 30 proposal domains are exact and evaluated, and the shipwreck preserve-versus-remove policy is resolved in favor of controlled-removal engineering. The exact 126-cell treatment conflict is not technically accepted: the two preserved igloos still lack accepted positive margins, and the shipwreck lacks attributed removal/desired-state sets plus a complete-save-bound demolition/salvage/rollback package. The audit does not establish expert influence clearance, complete-save entity/POI clearance, accepted support treatment, accepted ownership/interfaces, construction safety, or final post-release acceptance.
 
 Audit payload SHA-256: \`${report.auditPayloadSha256}\`
 
@@ -1950,6 +2099,8 @@ console.log(JSON.stringify({
   nullUnknownDomainCount: report.gate.nullUnknownDomainCount,
   g03GeneratedStartOverlaps: exactGeneratedOverlapRecords.length,
   g03ProtectedCoreOverlaps: exactCoreOverlapRecords.length,
+  unresolvedG03GeneratedStartOverlaps: unresolvedExactGeneratedOverlapRecords.length,
+  unresolvedG03ProtectedCoreOverlaps: unresolvedExactCoreOverlapRecords.length,
   supportGeneratedStartOverlaps: supportGeneratedOverlaps.length,
   supportProtectedCoreOverlaps: supportCoreOverlaps.length,
   auditPayloadSha256: report.auditPayloadSha256,

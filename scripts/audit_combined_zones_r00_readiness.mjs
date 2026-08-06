@@ -75,6 +75,8 @@ const INPUTS = Object.freeze({
   proposedOwnershipInterfaces: 'docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json',
   g03CanonicalSetout: 'docs/masterplans/05-combined-zones/phase1-g03-canonical-setout.json',
   g06ProposedClearance: 'docs/masterplans/05-combined-zones/phase1-g06-proposed-clearance-audit.json',
+  shipwreckRemovalAuthorization:
+    'docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json',
   ownerReviewBundle: 'docs/masterplans/05-combined-zones/phase1-owner-review-bundle.json',
   ownerReviewAcceptance: 'docs/masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
   siteGateAudit: 'docs/masterplans/05-combined-zones/phase1-site-gate-audit.json',
@@ -147,9 +149,34 @@ const b12PassiveShell = readJson(INPUTS.b12PassiveShell);
 const proposedOwnershipInterfaces = readJson(INPUTS.proposedOwnershipInterfaces);
 const g03CanonicalSetout = readJson(INPUTS.g03CanonicalSetout);
 const g06ProposedClearance = readJson(INPUTS.g06ProposedClearance);
+const shipwreckRemovalAuthorization = readJson(INPUTS.shipwreckRemovalAuthorization);
 const ownerReviewBundle = readJson(INPUTS.ownerReviewBundle);
 const ownerReviewAcceptance = readJson(INPUTS.ownerReviewAcceptance);
 const site = readJson(INPUTS.siteGateAudit);
+
+const shipwreckRemovalPolicyPayloadSha256 = sha256(
+  `combined-zones-shipwreck-removal-authorization-v1\n${JSON.stringify(
+    shipwreckRemovalAuthorization.authorizationPayload,
+  )}\n`,
+);
+const shipwreckRemovalPolicyValid = shipwreckRemovalAuthorization.schemaVersion === 1
+  && shipwreckRemovalAuthorization.status === 'OWNER_POLICY_APPROVED_RELEASE_NOT_AUTHORIZED'
+  && shipwreckRemovalAuthorization.actualApprovalText === '3: Shipwreck can be deleted'
+  && shipwreckRemovalAuthorization.authorizationPayloadSha256
+    === shipwreckRemovalPolicyPayloadSha256
+  && shipwreckRemovalAuthorization.subject?.censusAndAttributionSearchEnvelope
+    ?.cellCount === 2268
+  && shipwreckRemovalAuthorization.subject?.exactAttributedRemovalTargetCellSet === null
+  && shipwreckRemovalAuthorization.subject?.exactRemovalOperationCellSet === null
+  && shipwreckRemovalAuthorization.subject?.exactDesiredPostStateCellSet === null
+  && shipwreckRemovalAuthorization.effectivePlanningDisposition
+    ?.preserveOrRemoveOwnerChoiceResolved === true
+  && shipwreckRemovalAuthorization.effectivePlanningDisposition
+    ?.exactOverlapMayBeClassifiedAsAcceptedTechnicalTreatment === false
+  && shipwreckRemovalAuthorization.effectivePlanningDisposition
+    ?.terrainIceSnowAndSupportRemovalAuthorized === false
+  && shipwreckRemovalAuthorization.safetyBoundary?.operationCellCount === 0
+  && shipwreckRemovalAuthorization.safetyBoundary?.worldEditAuthorized === false;
 
 const selectedGeometryIds = delegatedSelections.selections
   ?.map(({ scope }) => scope)
@@ -494,12 +521,13 @@ const gates = [
       sources.residualSurfaceConnectorDomains,
       sources.civilLifeSafetyDomainClosure,
       sources.g03CanonicalSetout,
-      sources.g06ProposedClearance],
+      sources.g06ProposedClearance,
+      sources.shipwreckRemovalAuthorization],
     blockers: relics.g06Disposition?.status === 'PASS' ? [] : [
       blocker(
         'R00-G06-RELIC-REVIEW',
         'EXTERNAL_EVIDENCE',
-        `Review and accept positive-margin structural, hydrology, access, staging, settlement, erosion, and construction-method influence kernels. The current audit evaluates all ${g06ProposedClearance.gate?.exactNonNullG03DomainCount ?? 0} exact G03 domains with ${g06ProposedClearance.gate?.nullUnknownDomainCount ?? 0} null domains remaining, and discloses the exact ${g06ProposedClearance.gate?.exactG03ProtectedCoreOverlapCellCount ?? 0}-cell P1-B10 influence overlap with the shipwreck core; the same cells remain visible in D05 support evidence.`,
+        `The owner resolved preserve-versus-remove for the shipwreck in favor of controlled-removal engineering, but this is not an accepted treatment contract. Review and accept positive-margin structural, hydrology, access, staging, settlement, erosion, attribution, salvage, and construction-method influence kernels. The current audit evaluates all ${g06ProposedClearance.gate?.exactNonNullG03DomainCount ?? 0} exact G03 domains with ${g06ProposedClearance.gate?.nullUnknownDomainCount ?? 0} null domains remaining and retains the exact ${g06ProposedClearance.gate?.exactG03ProtectedCoreOverlapCellCount ?? 0}-cell P1-B10 influence overlap pending technical treatment; the same cells remain visible as separate D05 support evidence.`,
         INPUTS.g06ProposedClearance,
       ),
       blocker(
@@ -715,9 +743,20 @@ const report = {
     g06NullUnknownDomainCount: g06ProposedClearance.gate?.nullUnknownDomainCount ?? 0,
     g06SupportShipwreckOverlapCellCount: g06ProposedClearance
       .supportEvidenceAudit?.protectedCores?.overlapCellCount ?? 0,
+    shipwreckRemovalPolicyValid,
+    shipwreckPreserveOrRemoveOwnerChoiceResolved:
+      shipwreckRemovalPolicyValid
+      && g06ProposedClearance.gate?.shipwreckPreserveOrRemovePolicyResolved === true,
+    shipwreckExactAttributedRemovalTargetCellCount:
+      shipwreckRemovalAuthorization.subject?.exactAttributedRemovalTargetCellSet
+        ?.cellCount ?? 0,
+    shipwreckAcceptedTechnicalTreatmentContractCount:
+      g06ProposedClearance.gate?.acceptedRemovalTechnicalTreatmentContractCount ?? 0,
+    shipwreckObservedChestCount: shipwreckRemovalAuthorization.subject
+      ?.observedPresentBaseline?.chestCount ?? 0,
     autonomousOfflineWorkMayContinue: true,
     autonomousOfflineWorkCanCompleteR00: false,
-    nextAutonomousArtifact: 'maintain the guarded capture tooling and documentation package; obtain explicit live helper-install/capture authority before complete-save intake, then resolve the exact shipwreck treatment and remaining technical/interface acceptance holds against one immutable identity',
+    nextAutonomousArtifact: 'maintain the guarded capture tooling and documentation package; obtain explicit live helper-install/capture authority before complete-save intake, then compile the exact attributed shipwreck removal/desired-state/chest-salvage contract and remaining technical/interface acceptance against one immutable identity',
     externalEvidenceStillRequired: true,
   },
 };
@@ -727,7 +766,7 @@ const markdown = `# Combined Zones Phase 1 R00 readiness audit\n\n`
   + `This audit evaluates only the nonphysical R00 design-freeze gates G01-G07. It does not use R01 pilot, execution, rollback, route-QA, or post-state evidence to close a design decision.\n\n`
   + `## Sequencing result\n\n`
   + `The evidence graph is cycle-free: **${descendantEvidenceCycleFree ? 'PASS' : 'FAIL'}**. The required order is D01-D07 design acceptance → R00 freeze → R01 physical validation → R02 eligibility.\n\n`
-  + `The owner-delegated ledger freezes **${report.summary.ownerDelegatedSelectionCount}** conservative planning choices. The sole owner accepted four exact review packets under owner-review payload \`${report.summary.ownerReviewBundlePayloadSha256}\`, bound by acceptance-record payload \`${report.summary.ownerReviewAcceptancePayloadSha256}\`. The acceptance freezes P1-B11 and the planning policies/checklists but passes zero technical HOLDs. No additional human decision-makers are required. The remaining holds are technical evidence, exact-cell compilation, independent checks, ownership/interface cellsets, and later release authorization.\n\n`
+  + `The owner-delegated ledger freezes **${report.summary.ownerDelegatedSelectionCount}** conservative planning choices. The sole owner accepted four exact review packets under owner-review payload \`${report.summary.ownerReviewBundlePayloadSha256}\`, bound by acceptance-record payload \`${report.summary.ownerReviewAcceptancePayloadSha256}\`. The owner later resolved the shipwreck preserve-versus-remove choice in favor of controlled-removal engineering under payload \`${shipwreckRemovalAuthorization.authorizationPayloadSha256}\`. Neither acceptance passes a technical HOLD or authorizes a world edit. No additional human decision-makers are required. The remaining holds are technical evidence, exact-cell compilation, independent checks, ownership/interface cellsets, and later manifest-bound release authorization.\n\n`
   + `## R00 gates\n\n`
   + `| Gate | Status | Current blockers |\n|---|---|---:|\n`
   + gates.map((gate) => `| ${gate.id} | **${gate.status}** | ${gate.blockers.length} |`).join('\n')

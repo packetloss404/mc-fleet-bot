@@ -345,6 +345,6 @@ export const gates: Gate[] = [
   { id: 'G03', title: 'Canonical setout', state: 'PASS', note: 'All 30 proposal domains exact.' },
   { id: 'G04', title: 'Ownership accounting', state: 'HOLD', note: '15,286,976 cells assigned once with zero unowned or multiply owned, but final ownership acceptance is absent.' },
   { id: 'G05', title: 'External interface / state', state: 'HOLD', note: 'External-interface and state evidence outstanding.' },
-  { id: 'G06', title: 'Protected features', state: 'HOLD', note: 'Discloses an exact 126-cell P1-B10 influence / shipwreck conflict.' },
+  { id: 'G06', title: 'Protected features', state: 'HOLD', note: 'Owner selected controlled shipwreck removal; the exact 126-cell treatment, attribution, salvage, and release evidence remain HOLD.' },
   { id: 'G07', title: 'Mechanisms', state: 'HOLD', note: 'Accepted-owner and mechanism evidence outstanding.' },
 ];

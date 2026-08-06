@@ -235,8 +235,13 @@
     },
     "g06ProposedClearance": {
       "path": "docs/masterplans/05-combined-zones/phase1-g06-proposed-clearance-audit.json",
-      "sha256": "672978fe02baf1d2dadb99dccd9b6af9deeebb4d55318caa37d4dc918addc0fd",
-      "bytes": 2997357
+      "sha256": "9b192fdb16911eac7af4b67583b89db256b5761c660620d9690693186d26c2b2",
+      "bytes": 3006191
+    },
+    "shipwreckRemovalAuthorization": {
+      "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json",
+      "sha256": "a1f926b76ff80032d87cf495666b7c8438abfc4527ff95a619a594d1f327f3f3",
+      "bytes": 12160
     },
     "ownerReviewBundle": {
       "path": "docs/masterplans/05-combined-zones/phase1-owner-review-bundle.json",
@@ -957,15 +962,20 @@
         },
         {
           "path": "docs/masterplans/05-combined-zones/phase1-g06-proposed-clearance-audit.json",
-          "sha256": "672978fe02baf1d2dadb99dccd9b6af9deeebb4d55318caa37d4dc918addc0fd",
-          "bytes": 2997357
+          "sha256": "9b192fdb16911eac7af4b67583b89db256b5761c660620d9690693186d26c2b2",
+          "bytes": 3006191
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json",
+          "sha256": "a1f926b76ff80032d87cf495666b7c8438abfc4527ff95a619a594d1f327f3f3",
+          "bytes": 12160
         }
       ],
       "blockers": [
         {
           "id": "R00-G06-RELIC-REVIEW",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "Review and accept positive-margin structural, hydrology, access, staging, settlement, erosion, and construction-method influence kernels. The current audit evaluates all 30 exact G03 domains with 0 null domains remaining, and discloses the exact 126-cell P1-B10 influence overlap with the shipwreck core; the same cells remain visible in D05 support evidence.",
+          "requirement": "The owner resolved preserve-versus-remove for the shipwreck in favor of controlled-removal engineering, but this is not an accepted treatment contract. Review and accept positive-margin structural, hydrology, access, staging, settlement, erosion, attribution, salvage, and construction-method influence kernels. The current audit evaluates all 30 exact G03 domains with 0 null domains remaining and retains the exact 126-cell P1-B10 influence overlap pending technical treatment; the same cells remain visible as separate D05 support evidence.",
           "evidencePath": "docs/masterplans/05-combined-zones/phase1-g06-proposed-clearance-audit.json"
         },
         {
@@ -1127,8 +1137,8 @@
         },
         {
           "path": "docs/masterplans/05-combined-zones/phase1-g06-proposed-clearance-audit.json",
-          "sha256": "672978fe02baf1d2dadb99dccd9b6af9deeebb4d55318caa37d4dc918addc0fd",
-          "bytes": 2997357
+          "sha256": "9b192fdb16911eac7af4b67583b89db256b5761c660620d9690693186d26c2b2",
+          "bytes": 3006191
         },
         {
           "path": "docs/masterplans/05-combined-zones/phase1-autonomous-design-selections.json",
@@ -1267,9 +1277,14 @@
     "g06NonNullDomainCount": 30,
     "g06NullUnknownDomainCount": 0,
     "g06SupportShipwreckOverlapCellCount": 126,
+    "shipwreckRemovalPolicyValid": true,
+    "shipwreckPreserveOrRemoveOwnerChoiceResolved": true,
+    "shipwreckExactAttributedRemovalTargetCellCount": 0,
+    "shipwreckAcceptedTechnicalTreatmentContractCount": 0,
+    "shipwreckObservedChestCount": 3,
     "autonomousOfflineWorkMayContinue": true,
     "autonomousOfflineWorkCanCompleteR00": false,
-    "nextAutonomousArtifact": "maintain the guarded capture tooling and documentation package; obtain explicit live helper-install/capture authority before complete-save intake, then resolve the exact shipwreck treatment and remaining technical/interface acceptance holds against one immutable identity",
+    "nextAutonomousArtifact": "maintain the guarded capture tooling and documentation package; obtain explicit live helper-install/capture authority before complete-save intake, then compile the exact attributed shipwreck removal/desired-state/chest-salvage contract and remaining technical/interface acceptance against one immutable identity",
     "externalEvidenceStillRequired": true
   }
 }

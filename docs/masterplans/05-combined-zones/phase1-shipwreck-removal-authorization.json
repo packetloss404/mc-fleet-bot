@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-shipwreck-removal-authorization",
+  "decision": "AUTHORIZE_SHIPWRECK_AS_CONTROLLED_REMOVAL_SCOPE",
+  "acceptedBy": "sole human project owner",
+  "acceptedOnUtcDate": "2026-08-06",
+  "acceptanceAuthority": {
+    "source": "explicit user instruction in the current project conversation",
+    "additionalHumanDecisionMakersRequired": false
+  },
+  "actualApprovalText": "3: Shipwreck can be deleted",
+  "relicEvidenceBinding": {
+    "path": "docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
+    "fileSha256": "1739502e8bf19283cabfe9930f26011dba97c11e6328da27ee0b7f651f7a0a22",
+    "bytes": 30505,
+    "immutableSnapshotSha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b"
+  },
+  "phase0EvidenceBinding": {
+    "path": "docs/masterplans/05-combined-zones/phase0-survey-evidence.json",
+    "fileSha256": "8de9be6c1ca081cb5fb885a160f7b5062004bd1a493e59bfd2eea5582177344c",
+    "bytes": 58555,
+    "generatedStartSubjectId": "GS-037"
+  },
+  "subject": {
+    "relicKey": "shipwreck",
+    "structureId": "minecraft:shipwreck",
+    "structureStartChunk": {
+      "x": 130,
+      "z": -42
+    },
+    "inclusivePlanningBounds": {
+      "minX": 2072,
+      "minY": 69,
+      "minZ": -661,
+      "maxX": 2099,
+      "maxY": 77,
+      "maxZ": -653
+    },
+    "censusAndAttributionSearchEnvelope": {
+      "representation": "inclusive-axis-aligned-structure-start-bounding-box",
+      "cellCount": 2268,
+      "coordinateSetSha256": "715792eef84d4c3029a5750b0683adef6e0c5447b918512539c0d96f82cd2ee6"
+    },
+    "observedPresentBaseline": {
+      "cellCount": 1118,
+      "coordinateSetSha256": "87c356ae6562eb2deca5d30c0ac414c39969e91f77a9761f265f023c52fafc1b",
+      "blockStateSetSha256": "9214943e9ef3bf1ee6cd73201b6d06916194ca03ea76a2cb10e26f075c6bb9ac",
+      "fullVolumeBlockStateSetSha256": "e35f3a26817ac3464d4722429a1d3d68001f8ab92f058c72a315dfe94b88f8bb",
+      "chestCount": 3,
+      "packedIceCount": 515,
+      "snowCount": 5
+    },
+    "exactAttributedRemovalTargetCellSet": null,
+    "exactRemovalOperationCellSet": null,
+    "exactDesiredPostStateCellSet": null
+  },
+  "acknowledgedKnownCoordinationOverlap": {
+    "domainId": "P1-B10/influence",
+    "generatedStartSubjectId": "GS-037",
+    "protectedCoreSubjectId": "CORE-shipwreck",
+    "cellCount": 126,
+    "inclusiveBounds": {
+      "minX": 2072,
+      "maxX": 2099,
+      "minY": 69,
+      "maxY": 71,
+      "minZ": -661,
+      "maxZ": -653
+    },
+    "coordinateSetSha256": "77350225547fce64783a9d3d3d8953631b847a733e9bc060211c13b952df0e98",
+    "reviewedEvidenceAtDecision": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g06-proposed-clearance-audit.json",
+      "gitCommit": "3f8931316e3a7c455ec61e43439594a4fd72a362",
+      "fileSha256": "672978fe02baf1d2dadb99dccd9b6af9deeebb4d55318caa37d4dc918addc0fd",
+      "auditPayloadSha256": "44f03ae8531544a233c3f4de0af069617f23929477b3e078be2bbc4bd0640c95",
+      "reportIdentitySha256": "5ae5d187fb8fd750e4b81cea05461ed9ec71990b27001291e881e03f0f11f2fb"
+    },
+    "disposition": "OWNER_REMOVAL_POLICY_COVERS_SUBJECT_TECHNICAL_TREATMENT_CONTRACT_PENDING"
+  },
+  "effectivePlanningDisposition": {
+    "preserveInPlacePolicyRequired": false,
+    "shipwreckFabricPreservationPolicySuperseded": true,
+    "controlledRemovalMayBeDesigned": true,
+    "preserveOrRemoveOwnerChoiceResolved": true,
+    "exactOverlapMayBeClassifiedAsAcceptedTechnicalTreatment": false,
+    "separatelyAuthorizedTechnicalTreatmentContractAccepted": false,
+    "boundingVolumeIsRemovalSet": false,
+    "currentPresentSetIsRemovalSet": false,
+    "unattributedCellsRemainDefaultDeny": true,
+    "packedIceSnowAndNativeTerrainRemainDefaultDeny": true,
+    "terrainIceSnowAndSupportRemovalAuthorized": false,
+    "generatedStructureStartMetadataMayBeEditedDirectly": false,
+    "structureStartRecordRemainsEvidenceAfterBlockRemoval": true,
+    "futureTerrainOrConstructionStateAccepted": false
+  },
+  "mandatoryRemovalPackageRequirements": [
+    "one complete same-moment saved-world source with region, entities, poi, level.dat, and capture manifest",
+    "fresh exact present-cell and block-state census inside the census and attribution search envelope",
+    "independent attribution of every proposed shipwreck-fabric target; the full 2,268-cell bound and current 1,118-cell present census are not deletion sets",
+    "default preservation of packed ice, snow, native terrain, fluids, air, and every unattributed cell unless an exact reviewed target contract separately enumerates it",
+    "block-entity and inventory census for all three currently observed chest positions",
+    "salvage chest contents to an exact controlled destination before destructive replacement unless a later explicit hash-bound disposition authorizes discard",
+    "exact desired post state for every attributed removal target, including terrain, support, gravity, lighting, fluid, drainage, and neighbor-update review",
+    "exact guarded forward operations limited to source-matching attributed cells inside the census and attribution search envelope",
+    "exact inverse rollback restoring every pre-removal block state and all required block-entity data",
+    "entity, POI, ownership, interface, hydrology, structural, staging, and adjacent-feature clearance against the same source identity",
+    "immutable post-state evidence proving removal scope, surrounding-state preservation, rollback eligibility, and final acceptance"
+  ],
+  "safetyBoundary": {
+    "planningDispositionOnly": true,
+    "operations": [],
+    "operationCellCount": 0,
+    "acceptedConstructionCellCount": 0,
+    "acceptedMaterialCellCount": 0,
+    "liveCallsPerformed": [],
+    "completeSaveAccepted": false,
+    "physicalReleaseAuthorized": false,
+    "worldEditAuthorized": false
+  },
+  "status": "OWNER_POLICY_APPROVED_RELEASE_NOT_AUTHORIZED",
+  "payloadHashPreamble": "combined-zones-shipwreck-removal-authorization-v1\\n",
+  "authorizationPayload": {
+    "id": "combined-zones-phase1-shipwreck-removal-authorization",
+    "decision": "AUTHORIZE_SHIPWRECK_AS_CONTROLLED_REMOVAL_SCOPE",
+    "acceptedBy": "sole human project owner",
+    "acceptedOnUtcDate": "2026-08-06",
+    "acceptanceAuthority": {
+      "source": "explicit user instruction in the current project conversation",
+      "additionalHumanDecisionMakersRequired": false
+    },
+    "actualApprovalText": "3: Shipwreck can be deleted",
+    "relicEvidenceBinding": {
+      "path": "docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
+      "fileSha256": "1739502e8bf19283cabfe9930f26011dba97c11e6328da27ee0b7f651f7a0a22",
+      "bytes": 30505,
+      "immutableSnapshotSha256": "05eebe12ba419abd75b80033c265daf452b652a575c912f6df497735e00d271b"
+    },
+    "phase0EvidenceBinding": {
+      "path": "docs/masterplans/05-combined-zones/phase0-survey-evidence.json",
+      "fileSha256": "8de9be6c1ca081cb5fb885a160f7b5062004bd1a493e59bfd2eea5582177344c",
+      "bytes": 58555,
+      "generatedStartSubjectId": "GS-037"
+    },
+    "subject": {
+      "relicKey": "shipwreck",
+      "structureId": "minecraft:shipwreck",
+      "structureStartChunk": {
+        "x": 130,
+        "z": -42
+      },
+      "inclusivePlanningBounds": {
+        "minX": 2072,
+        "minY": 69,
+        "minZ": -661,
+        "maxX": 2099,
+        "maxY": 77,
+        "maxZ": -653
+      },
+      "censusAndAttributionSearchEnvelope": {
+        "representation": "inclusive-axis-aligned-structure-start-bounding-box",
+        "cellCount": 2268,
+        "coordinateSetSha256": "715792eef84d4c3029a5750b0683adef6e0c5447b918512539c0d96f82cd2ee6"
+      },
+      "observedPresentBaseline": {
+        "cellCount": 1118,
+        "coordinateSetSha256": "87c356ae6562eb2deca5d30c0ac414c39969e91f77a9761f265f023c52fafc1b",
+        "blockStateSetSha256": "9214943e9ef3bf1ee6cd73201b6d06916194ca03ea76a2cb10e26f075c6bb9ac",
+        "fullVolumeBlockStateSetSha256": "e35f3a26817ac3464d4722429a1d3d68001f8ab92f058c72a315dfe94b88f8bb",
+        "chestCount": 3,
+        "packedIceCount": 515,
+        "snowCount": 5
+      },
+      "exactAttributedRemovalTargetCellSet": null,
+      "exactRemovalOperationCellSet": null,
+      "exactDesiredPostStateCellSet": null
+    },
+    "acknowledgedKnownCoordinationOverlap": {
+      "domainId": "P1-B10/influence",
+      "generatedStartSubjectId": "GS-037",
+      "protectedCoreSubjectId": "CORE-shipwreck",
+      "cellCount": 126,
+      "inclusiveBounds": {
+        "minX": 2072,
+        "maxX": 2099,
+        "minY": 69,
+        "maxY": 71,
+        "minZ": -661,
+        "maxZ": -653
+      },
+      "coordinateSetSha256": "77350225547fce64783a9d3d3d8953631b847a733e9bc060211c13b952df0e98",
+      "reviewedEvidenceAtDecision": {
+        "path": "docs/masterplans/05-combined-zones/phase1-g06-proposed-clearance-audit.json",
+        "gitCommit": "3f8931316e3a7c455ec61e43439594a4fd72a362",
+        "fileSha256": "672978fe02baf1d2dadb99dccd9b6af9deeebb4d55318caa37d4dc918addc0fd",
+        "auditPayloadSha256": "44f03ae8531544a233c3f4de0af069617f23929477b3e078be2bbc4bd0640c95",
+        "reportIdentitySha256": "5ae5d187fb8fd750e4b81cea05461ed9ec71990b27001291e881e03f0f11f2fb"
+      },
+      "disposition": "OWNER_REMOVAL_POLICY_COVERS_SUBJECT_TECHNICAL_TREATMENT_CONTRACT_PENDING"
+    },
+    "effectivePlanningDisposition": {
+      "preserveInPlacePolicyRequired": false,
+      "shipwreckFabricPreservationPolicySuperseded": true,
+      "controlledRemovalMayBeDesigned": true,
+      "preserveOrRemoveOwnerChoiceResolved": true,
+      "exactOverlapMayBeClassifiedAsAcceptedTechnicalTreatment": false,
+      "separatelyAuthorizedTechnicalTreatmentContractAccepted": false,
+      "boundingVolumeIsRemovalSet": false,
+      "currentPresentSetIsRemovalSet": false,
+      "unattributedCellsRemainDefaultDeny": true,
+      "packedIceSnowAndNativeTerrainRemainDefaultDeny": true,
+      "terrainIceSnowAndSupportRemovalAuthorized": false,
+      "generatedStructureStartMetadataMayBeEditedDirectly": false,
+      "structureStartRecordRemainsEvidenceAfterBlockRemoval": true,
+      "futureTerrainOrConstructionStateAccepted": false
+    },
+    "mandatoryRemovalPackageRequirements": [
+      "one complete same-moment saved-world source with region, entities, poi, level.dat, and capture manifest",
+      "fresh exact present-cell and block-state census inside the census and attribution search envelope",
+      "independent attribution of every proposed shipwreck-fabric target; the full 2,268-cell bound and current 1,118-cell present census are not deletion sets",
+      "default preservation of packed ice, snow, native terrain, fluids, air, and every unattributed cell unless an exact reviewed target contract separately enumerates it",
+      "block-entity and inventory census for all three currently observed chest positions",
+      "salvage chest contents to an exact controlled destination before destructive replacement unless a later explicit hash-bound disposition authorizes discard",
+      "exact desired post state for every attributed removal target, including terrain, support, gravity, lighting, fluid, drainage, and neighbor-update review",
+      "exact guarded forward operations limited to source-matching attributed cells inside the census and attribution search envelope",
+      "exact inverse rollback restoring every pre-removal block state and all required block-entity data",
+      "entity, POI, ownership, interface, hydrology, structural, staging, and adjacent-feature clearance against the same source identity",
+      "immutable post-state evidence proving removal scope, surrounding-state preservation, rollback eligibility, and final acceptance"
+    ],
+    "safetyBoundary": {
+      "planningDispositionOnly": true,
+      "operations": [],
+      "operationCellCount": 0,
+      "acceptedConstructionCellCount": 0,
+      "acceptedMaterialCellCount": 0,
+      "liveCallsPerformed": [],
+      "completeSaveAccepted": false,
+      "physicalReleaseAuthorized": false,
+      "worldEditAuthorized": false
+    }
+  },
+  "authorizationPayloadSha256": "09f85526e18df771b1c56c9ad95cbf759f10df90ea1eba6e200cda3339b9fe87"
+}

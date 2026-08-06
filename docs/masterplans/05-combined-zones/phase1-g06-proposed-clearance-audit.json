@@ -2,8 +2,8 @@
   "schemaVersion": 3,
   "id": "combined-zones-phase1-g06-proposed-clearance-audit",
   "generatedAtUtc": "2026-08-05T07:00:00Z",
-  "status": "PARTIAL_PASS_G03_V3_ALL_30_EXACT_PROPOSAL_DOMAINS_AUDITED_POSITIVE_MARGIN_COMPLETE_SAVE_SUPPORT_ACCEPTANCE_G06_HOLD",
-  "purpose": "Deterministic offline clearance of all 30 exact G03 v3 proposal domains against all Phase 0 generated starts and frozen protected cores, while retaining positive-margin, complete-save, support-treatment, ownership, and acceptance uncertainty.",
+  "status": "PARTIAL_PASS_G03_V3_ALL_30_EXACT_PROPOSAL_DOMAINS_AUDITED_SHIPWRECK_OWNER_POLICY_RECORDED_TECHNICAL_TREATMENT_G06_HOLD",
+  "purpose": "Deterministic offline clearance of all 30 exact G03 v3 proposal domains against all Phase 0 generated starts and frozen evidence cores, with the shipwreck preserve-versus-remove policy resolved in favor of controlled-removal engineering while exact treatment and every physical-release safeguard remain on HOLD.",
   "sourceBindings": {
     "g03": {
       "path": "docs/masterplans/05-combined-zones/phase1-g03-canonical-setout.json",
@@ -40,6 +40,12 @@
       "sha256": "4e4209b424a36b466789c0ea50cf75d0c72b23758cc85491b67ca1baff3f6f45",
       "bytes": 27091,
       "role": "complete-save default-deny dependency"
+    },
+    "shipwreckRemovalAuthorization": {
+      "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json",
+      "sha256": "a1f926b76ff80032d87cf495666b7c8438abfc4527ff95a619a594d1f327f3f3",
+      "bytes": 12160,
+      "role": "sole-owner exact shipwreck controlled-removal planning disposition"
     },
     "b03": {
       "path": "docs/masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json",
@@ -154,7 +160,7 @@
     "supportRule": "D05 support-gap status is exact evidence but is not promoted to construction, interaction, influence, treatment, or future state.",
     "g03ConvergenceRule": "Consume G03 v3 only when all 30 required domains are exact and zero remain null; require the evaluated-domain registry to equal those 30 domains exactly.",
     "commissioningEvidenceTimingRule": "Before R00 require accepted commissioning design, methods, pass criteria, failure stimuli, and evidence-capture contracts. Actual commissioning results are post-build G17/G19 evidence and cannot be required to close pre-R00 G02.",
-    "authorizationRule": "Any nonzero overlap requires a separate exact accepted contract; no such contract exists in the consumed registry."
+    "authorizationRule": "Any nonzero overlap requires a separate exact accepted technical-treatment contract. The owner policy resolves preserve-versus-remove and acknowledges the exact 126-cell P1-B10/shipwreck overlap, but it is not that technical contract and does not authorize physical operations or waive any remaining gate."
   },
   "generatedStartSubjects": [
     {
@@ -93674,7 +93680,17 @@
             },
             "coordinateSetSha256": "77350225547fce64783a9d3d3d8953631b847a733e9bc060211c13b952df0e98"
           },
-          "separatelyAuthorizedContract": null
+          "separatelyAuthorizedContract": null,
+          "ownerDispositionAuthorization": {
+            "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json",
+            "fileSha256": "a1f926b76ff80032d87cf495666b7c8438abfc4527ff95a619a594d1f327f3f3",
+            "authorizationPayloadSha256": "09f85526e18df771b1c56c9ad95cbf759f10df90ea1eba6e200cda3339b9fe87",
+            "decision": "AUTHORIZE_SHIPWRECK_AS_CONTROLLED_REMOVAL_SCOPE",
+            "disposition": "OWNER_REMOVAL_POLICY_COVERS_SUBJECT_TECHNICAL_TREATMENT_CONTRACT_PENDING",
+            "acceptedTechnicalTreatmentContract": false,
+            "worldEditAuthorized": false,
+            "evidenceClass": "PRESERVE_OR_REMOVE_POLICY_RESOLVED_TECHNICAL_TREATMENT_REMAINS_HOLD"
+          }
         },
         {
           "subjectId": "GS-038",
@@ -98589,7 +98605,17 @@
             },
             "coordinateSetSha256": "77350225547fce64783a9d3d3d8953631b847a733e9bc060211c13b952df0e98"
           },
-          "separatelyAuthorizedContract": null
+          "separatelyAuthorizedContract": null,
+          "ownerDispositionAuthorization": {
+            "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json",
+            "fileSha256": "a1f926b76ff80032d87cf495666b7c8438abfc4527ff95a619a594d1f327f3f3",
+            "authorizationPayloadSha256": "09f85526e18df771b1c56c9ad95cbf759f10df90ea1eba6e200cda3339b9fe87",
+            "decision": "AUTHORIZE_SHIPWRECK_AS_CONTROLLED_REMOVAL_SCOPE",
+            "disposition": "OWNER_REMOVAL_POLICY_COVERS_SUBJECT_TECHNICAL_TREATMENT_CONTRACT_PENDING",
+            "acceptedTechnicalTreatmentContract": false,
+            "worldEditAuthorized": false,
+            "evidenceClass": "PRESERVE_OR_REMOVE_POLICY_RESOLVED_TECHNICAL_TREATMENT_REMAINS_HOLD"
+          }
         }
       ]
     }
@@ -98629,7 +98655,17 @@
           },
           "coordinateSetSha256": "77350225547fce64783a9d3d3d8953631b847a733e9bc060211c13b952df0e98"
         },
-        "separatelyAuthorizedContract": null
+        "separatelyAuthorizedContract": null,
+        "ownerDispositionAuthorization": {
+          "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json",
+          "fileSha256": "a1f926b76ff80032d87cf495666b7c8438abfc4527ff95a619a594d1f327f3f3",
+          "authorizationPayloadSha256": "09f85526e18df771b1c56c9ad95cbf759f10df90ea1eba6e200cda3339b9fe87",
+          "decision": "AUTHORIZE_SHIPWRECK_AS_CONTROLLED_REMOVAL_SCOPE",
+          "disposition": "OWNER_REMOVAL_POLICY_COVERS_SUBJECT_TECHNICAL_TREATMENT_CONTRACT_PENDING",
+          "acceptedTechnicalTreatmentContract": false,
+          "worldEditAuthorized": false,
+          "evidenceClass": "PRESERVE_OR_REMOVE_POLICY_RESOLVED_TECHNICAL_TREATMENT_REMAINS_HOLD"
+        }
       }
     ],
     "g03ProtectedCoreOverlaps": [
@@ -98666,7 +98702,17 @@
           },
           "coordinateSetSha256": "77350225547fce64783a9d3d3d8953631b847a733e9bc060211c13b952df0e98"
         },
-        "separatelyAuthorizedContract": null
+        "separatelyAuthorizedContract": null,
+        "ownerDispositionAuthorization": {
+          "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json",
+          "fileSha256": "a1f926b76ff80032d87cf495666b7c8438abfc4527ff95a619a594d1f327f3f3",
+          "authorizationPayloadSha256": "09f85526e18df771b1c56c9ad95cbf759f10df90ea1eba6e200cda3339b9fe87",
+          "decision": "AUTHORIZE_SHIPWRECK_AS_CONTROLLED_REMOVAL_SCOPE",
+          "disposition": "OWNER_REMOVAL_POLICY_COVERS_SUBJECT_TECHNICAL_TREATMENT_CONTRACT_PENDING",
+          "acceptedTechnicalTreatmentContract": false,
+          "worldEditAuthorized": false,
+          "evidenceClass": "PRESERVE_OR_REMOVE_POLICY_RESOLVED_TECHNICAL_TREATMENT_REMAINS_HOLD"
+        }
       }
     ]
   },
@@ -99726,7 +99772,17 @@
             },
             "coordinateSetSha256": "77350225547fce64783a9d3d3d8953631b847a733e9bc060211c13b952df0e98"
           },
-          "separatelyAuthorizedContract": null
+          "separatelyAuthorizedContract": null,
+          "ownerDispositionAuthorization": {
+            "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json",
+            "fileSha256": "a1f926b76ff80032d87cf495666b7c8438abfc4527ff95a619a594d1f327f3f3",
+            "authorizationPayloadSha256": "09f85526e18df771b1c56c9ad95cbf759f10df90ea1eba6e200cda3339b9fe87",
+            "decision": "AUTHORIZE_SHIPWRECK_AS_CONTROLLED_REMOVAL_SCOPE",
+            "disposition": "OWNER_REMOVAL_POLICY_COVERS_SUBJECT_TECHNICAL_TREATMENT_CONTRACT_PENDING",
+            "acceptedTechnicalTreatmentContract": false,
+            "worldEditAuthorized": false,
+            "evidenceClass": "SUPPORT_TREATMENT_REMAINS_SEPARATE_HOLD"
+          }
         },
         {
           "subjectId": "GS-038",
@@ -101891,7 +101947,17 @@
             },
             "coordinateSetSha256": "77350225547fce64783a9d3d3d8953631b847a733e9bc060211c13b952df0e98"
           },
-          "separatelyAuthorizedContract": null
+          "separatelyAuthorizedContract": null,
+          "ownerDispositionAuthorization": {
+            "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json",
+            "fileSha256": "a1f926b76ff80032d87cf495666b7c8438abfc4527ff95a619a594d1f327f3f3",
+            "authorizationPayloadSha256": "09f85526e18df771b1c56c9ad95cbf759f10df90ea1eba6e200cda3339b9fe87",
+            "decision": "AUTHORIZE_SHIPWRECK_AS_CONTROLLED_REMOVAL_SCOPE",
+            "disposition": "OWNER_REMOVAL_POLICY_COVERS_SUBJECT_TECHNICAL_TREATMENT_CONTRACT_PENDING",
+            "acceptedTechnicalTreatmentContract": false,
+            "worldEditAuthorized": false,
+            "evidenceClass": "SUPPORT_TREATMENT_REMAINS_SEPARATE_HOLD"
+          }
         }
       ]
     }
@@ -101905,6 +101971,7 @@
       "positiveMarginBlocks": null,
       "status": "HOLD_NOT_FROZEN",
       "reason": "No structural, hydrological, access, entrance-safety, or exhibit-design evidence establishes a defensible positive margin outside the generated structure-start bounds.",
+      "marginPurpose": "PRESERVATION_BUFFER",
       "clearanceOutsideFrozenCore": "UNKNOWN_NOT_AUDITABLE"
     },
     {
@@ -101914,6 +101981,7 @@
       "positiveMarginBlocks": null,
       "status": "HOLD_NOT_FROZEN",
       "reason": "No structural, hydrological, access, entrance-safety, or exhibit-design evidence establishes a defensible positive margin outside the generated structure-start bounds.",
+      "marginPurpose": "PRESERVATION_BUFFER",
       "clearanceOutsideFrozenCore": "UNKNOWN_NOT_AUDITABLE"
     },
     {
@@ -101922,8 +101990,54 @@
       "frozenCoreCoordinateSetSha256": "715792eef84d4c3029a5750b0683adef6e0c5447b918512539c0d96f82cd2ee6",
       "positiveMarginBlocks": null,
       "status": "HOLD_NOT_FROZEN",
-      "reason": "No structural, hydrological, access, entrance-safety, or exhibit-design evidence establishes a defensible positive margin outside the generated structure-start bounds.",
+      "reason": "The owner resolved preserve-versus-remove in favor of controlled removal, but no accepted structural, hydrology, staging, equipment-sweep, attribution, salvage, or adjacent-feature influence set establishes a defensible demolition margin.",
+      "marginPurpose": "CONTROLLED_REMOVAL_INFLUENCE_AND_ADJACENT_FEATURE_CLEARANCE",
       "clearanceOutsideFrozenCore": "UNKNOWN_NOT_AUDITABLE"
+    }
+  ],
+  "removalDispositionLedger": [
+    {
+      "relicKey": "shipwreck",
+      "structureId": "minecraft:shipwreck",
+      "preserveInPlacePolicyRequired": false,
+      "controlledRemovalPlanningAuthorized": true,
+      "authorizationPath": "docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json",
+      "authorizationFileSha256": "a1f926b76ff80032d87cf495666b7c8438abfc4527ff95a619a594d1f327f3f3",
+      "authorizationPayloadSha256": "09f85526e18df771b1c56c9ad95cbf759f10df90ea1eba6e200cda3339b9fe87",
+      "censusAndAttributionSearchEnvelope": {
+        "representation": "inclusive-axis-aligned-structure-start-bounding-box",
+        "cellCount": 2268,
+        "coordinateSetSha256": "715792eef84d4c3029a5750b0683adef6e0c5447b918512539c0d96f82cd2ee6"
+      },
+      "exactAttributedRemovalTargetCellSet": null,
+      "acknowledgedCoordinationOverlap": {
+        "domainId": "P1-B10/influence",
+        "generatedStartSubjectId": "GS-037",
+        "protectedCoreSubjectId": "CORE-shipwreck",
+        "cellCount": 126,
+        "inclusiveBounds": {
+          "minX": 2072,
+          "maxX": 2099,
+          "minY": 69,
+          "maxY": 71,
+          "minZ": -661,
+          "maxZ": -653
+        },
+        "coordinateSetSha256": "77350225547fce64783a9d3d3d8953631b847a733e9bc060211c13b952df0e98",
+        "reviewedEvidenceAtDecision": {
+          "path": "docs/masterplans/05-combined-zones/phase1-g06-proposed-clearance-audit.json",
+          "gitCommit": "3f8931316e3a7c455ec61e43439594a4fd72a362",
+          "fileSha256": "672978fe02baf1d2dadb99dccd9b6af9deeebb4d55318caa37d4dc918addc0fd",
+          "auditPayloadSha256": "44f03ae8531544a233c3f4de0af069617f23929477b3e078be2bbc4bd0640c95",
+          "reportIdentitySha256": "5ae5d187fb8fd750e4b81cea05461ed9ec71990b27001291e881e03f0f11f2fb"
+        },
+        "disposition": "OWNER_REMOVAL_POLICY_COVERS_SUBJECT_TECHNICAL_TREATMENT_CONTRACT_PENDING"
+      },
+      "acceptedTechnicalTreatmentContract": false,
+      "exactRemovalOperationCellCount": null,
+      "completeSaveAccepted": false,
+      "removalPackageAccepted": false,
+      "worldEditAuthorized": false
     }
   ],
   "convergenceDelta": {
@@ -102001,7 +102115,11 @@
     "ownerRegistryManifestSha256": "2d77b74a0ce8048471e6355e794bdc26474328ebd1e57d607efa2dd434951244",
     "interfaceRegistryManifestSha256": "d9a520819df53c297f5a998ef6690116f04f3b8ab453d692c8d6ddae7677df2a",
     "separatelyAuthorizedProtectedFeatureContractCount": 0,
-    "interpretation": "Proposed ownership cannot authorize a protected-feature overlap; accepted owner and interface counts remain zero."
+    "ownerRemovalPolicyRecordCount": 1,
+    "ownerRemovalPolicyRecordIds": [
+      "combined-zones-phase1-shipwreck-removal-authorization"
+    ],
+    "interpretation": "The sole owner resolved preserve-versus-remove for the shipwreck and authorized controlled-removal engineering. No exact attributed technical-treatment contract or physical removal is accepted; accepted owner and interface counts remain zero."
   },
   "completeSaveContext": {
     "status": "HOLD_INCOMPLETE_OR_UNBOUND_SAVE",
@@ -102023,12 +102141,27 @@
     "exactG03ProtectedCoreOverlapRecordCount": 1,
     "exactG03GeneratedStartOverlapCellCount": 126,
     "exactG03ProtectedCoreOverlapCellCount": 126,
+    "unresolvedG03GeneratedStartOverlapRecordCount": 1,
+    "unresolvedG03ProtectedCoreOverlapRecordCount": 1,
+    "unresolvedG03GeneratedStartOverlapCellCount": 126,
+    "unresolvedG03ProtectedCoreOverlapCellCount": 126,
+    "ownerRemovalPolicyAcknowledgedOverlapRecordCount": 2,
+    "ownerRemovalPolicyAcknowledgedOverlapCellCountPerSubject": 126,
+    "acceptedTechnicalTreatmentOverlapRecordCount": 0,
     "supportEvidenceGeneratedStartOverlapRecordCount": 1,
     "supportEvidenceProtectedCoreOverlapRecordCount": 1,
     "supportEvidenceGeneratedStartOverlapCellCount": 126,
     "supportEvidenceProtectedCoreOverlapCellCount": 126,
+    "unresolvedSupportEvidenceGeneratedStartOverlapRecordCount": 1,
+    "unresolvedSupportEvidenceProtectedCoreOverlapRecordCount": 1,
     "allNonNullG03DomainsExactZeroAgainstGeneratedStarts": false,
     "allNonNullG03DomainsExactZeroAgainstFrozenCores": false,
+    "allNonNullG03DomainOverlapsExactZeroOrSeparatelyAuthorized": false,
+    "shipwreckPreserveOrRemovePolicyResolved": true,
+    "exactShipwreckOverlapResolvedByAcceptedTechnicalContract": false,
+    "ownerRemovalPolicyRecordCount": 1,
+    "acceptedRemovalTechnicalTreatmentContractCount": 0,
+    "shipwreckPhysicalRemovalPackageAccepted": false,
     "positiveMarginClearanceEstablished": false,
     "completeSaveClearanceEstablished": false,
     "allInfluenceDomainsKnown": true,
@@ -102114,9 +102247,9 @@
     ],
     "remainingBlockers": [
       "No accepted expert structural, hydrology, groundwater, access, staging, equipment-sweep, settlement, erosion, or construction-method positive-margin kernels are frozen.",
-      "All three relic positive-margin buffers remain unfrozen; the audited cores are exact zero-margin minimum default-deny bounds only.",
+      "The two preserved igloos lack accepted positive-margin buffers, and the shipwreck lacks accepted demolition influence, staging, attribution, salvage, and adjacent-feature margins.",
       "The complete-save intake remains HOLD_INCOMPLETE_OR_UNBOUND_SAVE; region-only evidence cannot establish entity, POI, level.dat, or all-start clearance.",
-      "The exact 126-cell D05 support-gap overlap with the shipwreck generated start and frozen core remains disclosed and has no separately accepted treatment/clearance contract.",
+      "The owner resolved the shipwreck preserve-versus-remove choice, but the exact 126-cell overlap remains pending an attributed technical-treatment contract. Exact source-matching demolition, desired post states, three-chest inventory/salvage, rollback, entity/POI, ownership/interface, and post-state evidence remain uncompiled and unaccepted.",
       "Accepted owner and protected-feature interface contract counts remain zero.",
       "Before R00, commissioning designs, methods, pass criteria, failure stimuli, and evidence-capture contracts must be accepted; actual commissioning results are post-build G17/G19 evidence and are not a pre-R00 or G02 prerequisite.",
       "Final G06 acceptance must bind reviewed margin policy or explicit zero-margin acceptance and the complete accepted release interaction union."
@@ -102128,11 +102261,13 @@
     "acceptedFutureCellCount": 0,
     "operationCellCount": 0,
     "acceptedProtectedFeatureContractCount": 0,
+    "ownerProtectedFeaturePolicyRecordCount": 1,
+    "acceptedProtectedFeaturePhysicalReleaseContractCount": 0,
     "physicalReleaseAuthorized": false,
     "operationGenerationAuthorized": false,
     "worldEditAuthorized": false,
     "executable": false
   },
-  "auditPayloadSha256": "44f03ae8531544a233c3f4de0af069617f23929477b3e078be2bbc4bd0640c95",
-  "reportIdentitySha256": "5ae5d187fb8fd750e4b81cea05461ed9ec71990b27001291e881e03f0f11f2fb"
+  "auditPayloadSha256": "501a2369c43611637f9c770c2bddab94d204cd95e8f3052f27d886856b580b3d",
+  "reportIdentitySha256": "641afaef6e7416499b99aa75e861ab2502352f6538609b5e51941eb562441afe"
 }

@@ -2,12 +2,12 @@
 
 Generated: 2026-08-05T07:00:00Z
 
-Status: **PARTIAL_PASS_G03_V3_ALL_30_EXACT_PROPOSAL_DOMAINS_AUDITED_POSITIVE_MARGIN_COMPLETE_SAVE_SUPPORT_ACCEPTANCE_G06_HOLD**
+Status: **PARTIAL_PASS_G03_V3_ALL_30_EXACT_PROPOSAL_DOMAINS_AUDITED_SHIPWRECK_OWNER_POLICY_RECORDED_TECHNICAL_TREATMENT_G06_HOLD**
 G06 result: **HOLD**
 Physical release: **not authorized**
 World edits: **not authorized**
 
-This is an offline proposed-set audit. It evaluates all 30 exact G03 v3 domains against all 114 Phase 0 generated starts and the three frozen zero-margin protected cores. It does not turn a proposal into accepted construction, convert a coordination reservation into an expert margin, freeze a positive margin, or substitute region-only evidence for a complete saved world.
+This is an offline proposed-set audit. It evaluates all 30 exact G03 v3 domains against all 114 Phase 0 generated starts and the three frozen evidence cores. The two igloos remain preservation subjects. The sole owner separately authorized the shipwreck as a controlled-removal scope; that planning disposition does not turn a proposal into accepted construction, convert a coordination reservation into an expert margin, freeze a positive margin, or substitute region-only evidence for a complete saved world.
 
 ## G03 v2 to v3 convergence
 
@@ -63,6 +63,9 @@ Newly evaluated exact proposal domains: `P1-B03/influence`, `P1-B08/influence`, 
 
 Exact G03/generated-start overlap records: **1**.
 Exact G03/frozen-core overlap records: **1**.
+Unresolved overlap records after the exact owner disposition: **2**.
+
+The two raw 126-cell records are the same physical `P1-B10/influence`/shipwreck intersection viewed through the generated-start and frozen-core registries. Both acknowledge [the shipwreck controlled-removal owner policy](phase1-shipwreck-removal-authorization.md). That policy resolves only the preserve-versus-remove owner choice; an exact attributed technical-treatment contract, demolition targets, desired post states, three-chest inventory/salvage, rollback, entities/POI, technical acceptance, and physical release remain HOLD.
 
 ## D05 support-gap evidence
 
@@ -85,19 +88,19 @@ The exact 754,224-cell support-gap status stream is audited separately. It has n
 ## Remaining blockers
 
 - No accepted expert structural, hydrology, groundwater, access, staging, equipment-sweep, settlement, erosion, or construction-method positive-margin kernels are frozen.
-- All three relic positive-margin buffers remain unfrozen; the audited cores are exact zero-margin minimum default-deny bounds only.
+- The two preserved igloos lack accepted positive-margin buffers, and the shipwreck lacks accepted demolition influence, staging, attribution, salvage, and adjacent-feature margins.
 - The complete-save intake remains HOLD_INCOMPLETE_OR_UNBOUND_SAVE; region-only evidence cannot establish entity, POI, level.dat, or all-start clearance.
-- The exact 126-cell D05 support-gap overlap with the shipwreck generated start and frozen core remains disclosed and has no separately accepted treatment/clearance contract.
+- The owner resolved the shipwreck preserve-versus-remove choice, but the exact 126-cell overlap remains pending an attributed technical-treatment contract. Exact source-matching demolition, desired post states, three-chest inventory/salvage, rollback, entity/POI, ownership/interface, and post-state evidence remain uncompiled and unaccepted.
 - Accepted owner and protected-feature interface contract counts remain zero.
 - Before R00, commissioning designs, methods, pass criteria, failure stimuli, and evidence-capture contracts must be accepted; actual commissioning results are post-build G17/G19 evidence and are not a pre-R00 or G02 prerequisite.
 - Final G06 acceptance must bind reviewed margin policy or explicit zero-margin acceptance and the complete accepted release interaction union.
 
 ## Fail-closed conclusion
 
-G06 remains HOLD. All 30 proposal domains are exact and evaluated, but their findings apply only to the source-bound coordination geometry and the three frozen zero-margin cores. They do not establish positive-margin clearance, expert influence clearance, complete-save entity/POI clearance, accepted support treatment, accepted ownership/interfaces, construction safety, or final post-release preservation.
+G06 remains HOLD. All 30 proposal domains are exact and evaluated, and the shipwreck preserve-versus-remove policy is resolved in favor of controlled-removal engineering. The exact 126-cell treatment conflict is not technically accepted: the two preserved igloos still lack accepted positive margins, and the shipwreck lacks attributed removal/desired-state sets plus a complete-save-bound demolition/salvage/rollback package. The audit does not establish expert influence clearance, complete-save entity/POI clearance, accepted support treatment, accepted ownership/interfaces, construction safety, or final post-release acceptance.
 
-Audit payload SHA-256: `44f03ae8531544a233c3f4de0af069617f23929477b3e078be2bbc4bd0640c95`
+Audit payload SHA-256: `501a2369c43611637f9c770c2bddab94d204cd95e8f3052f27d886856b580b3d`
 
 G03 v3 canonical payload SHA-256: `1e4609275a2fd6aed8aa8a3dac00e8bdadae97dc756ca222922ce57a2c9b0712`
 
-Report identity SHA-256: `5ae5d187fb8fd750e4b81cea05461ed9ec71990b27001291e881e03f0f11f2fb`
+Report identity SHA-256: `641afaef6e7416499b99aa75e861ab2502352f6538609b5e51941eb562441afe`

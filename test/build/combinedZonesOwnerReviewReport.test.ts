@@ -20,6 +20,7 @@ const passiveShell = JSON.parse(readFileSync(path.join(reportDirectory, 'phase1-
 const g03Setout = JSON.parse(readFileSync(path.join(reportDirectory, 'phase1-g03-canonical-setout.json'), 'utf8'));
 const g06Clearance = JSON.parse(readFileSync(path.join(reportDirectory, 'phase1-g06-proposed-clearance-audit.json'), 'utf8'));
 const ownershipInterfaces = JSON.parse(readFileSync(path.join(reportDirectory, 'phase1-proposed-ownership-interface-registry.json'), 'utf8'));
+const shipwreckRemoval = JSON.parse(readFileSync(path.join(reportDirectory, 'phase1-shipwreck-removal-authorization.json'), 'utf8'));
 
 afterAll(() => {
   if (existsSync(temporaryReportPath)) unlinkSync(temporaryReportPath);
@@ -68,6 +69,9 @@ describe('Combined Zones owner review HTML5 report', () => {
     expect(html).toContain(`all ${g03Setout.gate.exactRequiredDomainCount} required construction/interaction/influence domains`);
     expect(html).toContain(g06Clearance.supportEvidenceAudit.protectedCores.overlapCellCount.toString());
     expect(html).toContain(ownershipInterfaces.g04PhysicalOwnership.observedPhysicalUnionCellCount.toLocaleString('en-US'));
+    expect(html).toContain(shipwreckRemoval.authorizationPayloadSha256);
+    expect(html).toContain('current 1,118 non-air cells are not deletion sets');
+    expect(html).toContain('three-chest NBT/inventory salvage');
 
     for (const packet of bundle.packetSummary) {
       expect(html).toContain(packet.scope);

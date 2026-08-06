@@ -85,7 +85,7 @@ describe('combined-zones G06 proposed-set protected-feature clearance', () => {
 
     expect(report.schemaVersion).toBe(3);
     expect(report.status).toBe(
-      'PARTIAL_PASS_G03_V3_ALL_30_EXACT_PROPOSAL_DOMAINS_AUDITED_POSITIVE_MARGIN_COMPLETE_SAVE_SUPPORT_ACCEPTANCE_G06_HOLD',
+      'PARTIAL_PASS_G03_V3_ALL_30_EXACT_PROPOSAL_DOMAINS_AUDITED_SHIPWRECK_OWNER_POLICY_RECORDED_TECHNICAL_TREATMENT_G06_HOLD',
     );
     expect(report.domainSummary.map((domain: JsonRecord) => domain.domainId)).toEqual(
       EXPECTED_DOMAIN_IDS,
@@ -127,8 +127,17 @@ describe('combined-zones G06 proposed-set protected-feature clearance', () => {
       exactG03ProtectedCoreOverlapRecordCount: 1,
       exactG03GeneratedStartOverlapCellCount: 126,
       exactG03ProtectedCoreOverlapCellCount: 126,
+      unresolvedG03GeneratedStartOverlapRecordCount: 1,
+      unresolvedG03ProtectedCoreOverlapRecordCount: 1,
+      ownerRemovalPolicyAcknowledgedOverlapRecordCount: 2,
+      acceptedTechnicalTreatmentOverlapRecordCount: 0,
       allNonNullG03DomainsExactZeroAgainstGeneratedStarts: false,
       allNonNullG03DomainsExactZeroAgainstFrozenCores: false,
+      allNonNullG03DomainOverlapsExactZeroOrSeparatelyAuthorized: false,
+      shipwreckPreserveOrRemovePolicyResolved: true,
+      exactShipwreckOverlapResolvedByAcceptedTechnicalContract: false,
+      acceptedRemovalTechnicalTreatmentContractCount: 0,
+      shipwreckPhysicalRemovalPackageAccepted: false,
       positiveMarginClearanceEstablished: false,
       completeSaveClearanceEstablished: false,
       allInfluenceDomainsKnown: true,
@@ -207,12 +216,15 @@ describe('combined-zones G06 proposed-set protected-feature clearance', () => {
       acceptedOwnerRecordCount: 0,
       acceptedInterfaceContractCount: 0,
       separatelyAuthorizedProtectedFeatureContractCount: 0,
+      ownerRemovalPolicyRecordCount: 1,
     });
     expect(report.completeSaveContext).toMatchObject({
       status: 'HOLD_INCOMPLETE_OR_UNBOUND_SAVE',
       clearanceEstablished: false,
     });
     expect(report.safetyBoundary.operationCellCount).toBe(0);
+    expect(report.safetyBoundary.acceptedProtectedFeatureContractCount).toBe(0);
+    expect(report.safetyBoundary.ownerProtectedFeaturePolicyRecordCount).toBe(1);
     expect(report.safetyBoundary.worldEditAuthorized).toBe(false);
   }, TEST_TIMEOUT_MS);
 
@@ -235,6 +247,12 @@ describe('combined-zones G06 proposed-set protected-feature clearance', () => {
         coordinateSetSha256:
           '77350225547fce64783a9d3d3d8953631b847a733e9bc060211c13b952df0e98',
       },
+      ownerDispositionAuthorization: {
+        acceptedTechnicalTreatmentContract: false,
+        evidenceClass:
+          'PRESERVE_OR_REMOVE_POLICY_RESOLVED_TECHNICAL_TREATMENT_REMAINS_HOLD',
+      },
+      separatelyAuthorizedContract: null,
     });
     expect(report.exactOverlapSummary.g03ProtectedCoreOverlaps).toHaveLength(1);
     expect(report.exactOverlapSummary.g03ProtectedCoreOverlaps[0]).toMatchObject({
@@ -263,6 +281,10 @@ describe('combined-zones G06 proposed-set protected-feature clearance', () => {
           '77350225547fce64783a9d3d3d8953631b847a733e9bc060211c13b952df0e98',
       },
       separatelyAuthorizedContract: null,
+      ownerDispositionAuthorization: {
+        acceptedTechnicalTreatmentContract: false,
+        evidenceClass: 'SUPPORT_TREATMENT_REMAINS_SEPARATE_HOLD',
+      },
     });
     expect(coreOverlaps).toHaveLength(1);
     expect(coreOverlaps[0]).toMatchObject({
@@ -297,10 +319,10 @@ describe('combined-zones G06 proposed-set protected-feature clearance', () => {
     expect(second.jsonText).toBe(first.jsonText);
     expect(second.markdown).toBe(first.markdown);
     expect(first.json.auditPayloadSha256).toBe(
-      '44f03ae8531544a233c3f4de0af069617f23929477b3e078be2bbc4bd0640c95',
+      '501a2369c43611637f9c770c2bddab94d204cd95e8f3052f27d886856b580b3d',
     );
     expect(first.json.reportIdentitySha256).toBe(
-      '5ae5d187fb8fd750e4b81cea05461ed9ec71990b27001291e881e03f0f11f2fb',
+      '641afaef6e7416499b99aa75e861ab2502352f6538609b5e51941eb562441afe',
     );
   }, TEST_TIMEOUT_MS);
 });
