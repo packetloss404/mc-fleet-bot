@@ -142,6 +142,16 @@ interface Report {
     shipwreckUnmaterializedLootChestCount: number;
     shipwreckKnownInventoryContentCount: number;
     shipwreckTreatmentTechnicallyAccepted: boolean;
+    shipwreckBestChoiceAnalysisValid: boolean;
+    shipwreckActualConflictDomainId: string;
+    shipwreckUniqueInfluenceOverlapCellCount: number;
+    shipwreckConstructionOverlapCellCount: number;
+    shipwreckInteractionOverlapCellCount: number;
+    shipwreckBestChoiceRecommendedAlternativeId: string;
+    shipwreckBestChoiceWeightedScore: number;
+    shipwreckRemovalPathActive: boolean;
+    shipwreckExactReshapeGeometryCompiled: boolean;
+    shipwreckInfluenceOnlySubtractionRejected: boolean;
     autonomousOfflineWorkMayContinue: boolean;
     autonomousOfflineWorkCanCompleteR00: boolean;
     externalEvidenceStillRequired: boolean;
@@ -295,6 +305,17 @@ describe('Combined Zones R00 readiness audit', () => {
         shipwreckUnmaterializedLootChestCount: 3,
         shipwreckKnownInventoryContentCount: 0,
         shipwreckTreatmentTechnicallyAccepted: false,
+        shipwreckBestChoiceAnalysisValid: true,
+        shipwreckActualConflictDomainId: 'P1-B10/influence',
+        shipwreckUniqueInfluenceOverlapCellCount: 126,
+        shipwreckConstructionOverlapCellCount: 0,
+        shipwreckInteractionOverlapCellCount: 0,
+        shipwreckBestChoiceRecommendedAlternativeId:
+          'BC-01-PRESERVE-AND-LOCAL-P1-B10-RESHAPE',
+        shipwreckBestChoiceWeightedScore: 94,
+        shipwreckRemovalPathActive: false,
+        shipwreckExactReshapeGeometryCompiled: false,
+        shipwreckInfluenceOnlySubtractionRejected: true,
         shipwreckAcceptedTechnicalTreatmentContractCount: 0,
         shipwreckObservedChestCount: 3,
         autonomousOfflineWorkMayContinue: true,

@@ -2146,9 +2146,11 @@ npx vitest run \
 ```bash
 node scripts/record_combined_zones_shipwreck_removal_authorization.mjs
 node scripts/compile_combined_zones_shipwreck_treatment_contract.mjs
+node scripts/compile_combined_zones_shipwreck_best_choice_analysis.mjs
 npx vitest run \
   test/build/combinedZonesShipwreckRemovalAuthorization.test.ts \
-  test/build/combinedZonesShipwreckTreatmentContract.test.ts
+  test/build/combinedZonesShipwreckTreatmentContract.test.ts \
+  test/build/combinedZonesShipwreckBestChoiceAnalysis.test.ts
 ```
 
 - The shipwreck policy emits zero operations and never substitutes for the
@@ -2165,6 +2167,32 @@ npx vitest run \
   Do not materialize loot, move inventory, compile an operation, or promote the
   candidate until the declared structural/hydrology/neighbor, salvage,
   ownership/interface, margin, rollback, and later release gates pass.
+- Run the best-choice gate before investing in the removal fallback. The two
+  G06 shipwreck records are the same exact 126-cell physical intersection seen
+  through generated-start and protected-core registries. It intersects only
+  `P1-B10/influence`, not construction or interaction. Because that influence
+  includes an unresolved below-Y72 support reservation, never obtain clearance
+  by subtracting its 126 cells from the ledger alone; that would suppress the
+  evidence while leaving its source condition unchanged. The current preferred
+  direction is preservation plus a minimum local FM-01 toe/no-build reshape,
+  followed by source regeneration of construction, interaction, influence,
+  support, G03, G06, ownership, and interfaces. Controlled removal remains an
+  optional fallback, not a requirement created by its owner authorization.
+
+## Best-Choice Gate For Material Decisions
+
+- Before each consequential design or release step, identify the exact blocker
+  and compare at least: no action, the smallest bookkeeping change, a
+  root-cause nonphysical redesign, and any authorized physical alternative.
+- Score blocker resolution, root-cause integrity, physical safety,
+  reversibility, evidence efficiency, and future flexibility. Scores never
+  override a failed hard gate.
+- Reject any option that hides source evidence, relies on an unknown inventory
+  or state, spends irreversible authority while a credible nonphysical option
+  remains, or solves a larger/different problem than the actual blocker.
+- Prefer the smallest reversible root-cause intervention. Keep physical work,
+  operation compilation, and live-state actions default-deny until that option
+  is demonstrably superior and every controlling gate accepts it.
 
 - Reproduce the B09 funicular technical-reservation proposal with:
 

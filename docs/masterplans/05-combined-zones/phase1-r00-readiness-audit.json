@@ -273,6 +273,11 @@
       "sha256": "73e507f27ca4442ece5ce6e8005df7c90b3bbd6c53f555e7830694d69af9c9d3",
       "bytes": 473559
     },
+    "shipwreckBestChoiceAnalysis": {
+      "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-best-choice-analysis.json",
+      "sha256": "f2407c07ca5ec5847dd8b75bb0d303363c864de587dbede358d8af9ba1c361d3",
+      "bytes": 18685
+    },
     "ownerReviewBundle": {
       "path": "docs/masterplans/05-combined-zones/phase1-owner-review-bundle.json",
       "sha256": "cd1ab477c4d64b1d348538ee2014ad1324b38fff6e9809d1d74ba057edb21ab6",
@@ -529,6 +534,11 @@
           "bytes": 473559
         },
         {
+          "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-best-choice-analysis.json",
+          "sha256": "f2407c07ca5ec5847dd8b75bb0d303363c864de587dbede358d8af9ba1c361d3",
+          "bytes": 18685
+        },
+        {
           "path": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
           "sha256": "2e6e3f3c5c5514909dd20b9a87d1278036ad8afafd3592eb60e756825655a14a",
           "bytes": 71177
@@ -634,8 +644,8 @@
         {
           "id": "R00-G02-D05-EXTERNAL-ACCEPTANCE",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "The D05 proposal now partitions all 14,768,553 direct cells and all 754,224 support-gap cells; 17,997 support cells have treatment-class proposals while 736,227 remain treatment-null and all support canonical states remain null. Accepted complete-save evidence is bound; closure still requires hydrology/cryosphere/geotechnical and relic influence acceptance, B09 mechanisms/egress, maintenance/staging, owners/interfaces, and independent technical acceptance.",
-          "evidencePath": "docs/masterplans/05-combined-zones/phase1-d05-support-material-design.json"
+          "requirement": "The D05 proposal now partitions all 14,768,553 direct cells and all 754,224 support-gap cells; 17,997 support cells have treatment-class proposals while 736,227 remain treatment-null and all support canonical states remain null. The best-choice gate proves the shipwreck finding is 126 nonphysical P1-B10 influence/support cells with zero construction or interaction overlap and selects a local FM-01 reshape over removal or bookkeeping subtraction. Closure still requires the exact bounded reshape and positive margin, regenerated construction/interaction/influence/support evidence, hydrology/cryosphere/geotechnical and relic influence acceptance, B09 mechanisms/egress, maintenance/staging, owners/interfaces, and independent technical acceptance.",
+          "evidencePath": "docs/masterplans/05-combined-zones/phase1-shipwreck-best-choice-analysis.json"
         },
         {
           "id": "R00-G02-D06-EXTERNAL-ACCEPTANCE",
@@ -1054,14 +1064,19 @@
           "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-treatment-contract.json",
           "sha256": "73e507f27ca4442ece5ce6e8005df7c90b3bbd6c53f555e7830694d69af9c9d3",
           "bytes": 473559
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-best-choice-analysis.json",
+          "sha256": "f2407c07ca5ec5847dd8b75bb0d303363c864de587dbede358d8af9ba1c361d3",
+          "bytes": 18685
         }
       ],
       "blockers": [
         {
           "id": "R00-G06-RELIC-REVIEW",
           "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "The owner resolved preserve-versus-remove for the shipwreck in favor of controlled-removal engineering. The complete-save-bound treatment compiler now partitions the full 2,268-cell envelope exactly: 598 chest/dark-oak/spruce cells form one removal-target candidate, while 515 packed-ice cells, five snow cells, and 1,150 air cells remain preserved. Its exact all-air desired-state mapping is unaccepted, and all three chests still hold unmaterialized loot tables with zero known inventory contents. Independently accept attribution, structural/hydrology/neighbor effects, chest materialization and salvage custody, positive margins, access, staging, settlement, erosion, ownership/interfaces, and the construction method. The exact 126-cell P1-B10 influence overlap remains pending technical treatment.",
-          "evidencePath": "docs/masterplans/05-combined-zones/phase1-shipwreck-treatment-contract.json"
+          "requirement": "The best-choice gate proves the shipwreck finding is one exact 126-cell P1-B10 influence/support reservation recorded through two subject registries, with zero construction and zero interaction overlap. It selects preservation plus a minimum local FM-01 toe/no-build reshape (94/100), rejects influence-only subtraction as evidence suppression, and retains the exact 598-cell removal contract as fallback only. Compile bounded positive-margin candidates and the minimum local reshape, regenerate construction/interaction/influence/support from source, and require exact zero core-plus-margin overlap before technical acceptance.",
+          "evidencePath": "docs/masterplans/05-combined-zones/phase1-shipwreck-best-choice-analysis.json"
         },
         {
           "id": "R00-G06-EXACT-DESIGN-CLEARANCE",
@@ -1159,6 +1174,11 @@
           "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-treatment-contract.json",
           "sha256": "73e507f27ca4442ece5ce6e8005df7c90b3bbd6c53f555e7830694d69af9c9d3",
           "bytes": 473559
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-best-choice-analysis.json",
+          "sha256": "f2407c07ca5ec5847dd8b75bb0d303363c864de587dbede358d8af9ba1c361d3",
+          "bytes": 18685
         },
         {
           "path": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
@@ -1441,11 +1461,21 @@
     "shipwreckUnmaterializedLootChestCount": 3,
     "shipwreckKnownInventoryContentCount": 0,
     "shipwreckTreatmentTechnicallyAccepted": false,
+    "shipwreckBestChoiceAnalysisValid": true,
+    "shipwreckActualConflictDomainId": "P1-B10/influence",
+    "shipwreckUniqueInfluenceOverlapCellCount": 126,
+    "shipwreckConstructionOverlapCellCount": 0,
+    "shipwreckInteractionOverlapCellCount": 0,
+    "shipwreckBestChoiceRecommendedAlternativeId": "BC-01-PRESERVE-AND-LOCAL-P1-B10-RESHAPE",
+    "shipwreckBestChoiceWeightedScore": 94,
+    "shipwreckRemovalPathActive": false,
+    "shipwreckExactReshapeGeometryCompiled": false,
+    "shipwreckInfluenceOnlySubtractionRejected": true,
     "shipwreckAcceptedTechnicalTreatmentContractCount": 0,
     "shipwreckObservedChestCount": 3,
     "autonomousOfflineWorkMayContinue": true,
     "autonomousOfflineWorkCanCompleteR00": false,
-    "nextAutonomousArtifact": "continue the independent offline structural, support, hydrology, drainage, neighbor-update, influence-margin, ownership, and interface review of the exact 598-cell shipwreck target and all-air desired-state candidates; the bee runtime-mechanic proof is deferred and its treatment remains HOLD, while chest materialization/salvage and all operation compilation remain later gated work",
+    "nextAutonomousArtifact": "compile bounded shipwreck positive-margin alternatives and the minimum local FM-01 P1-B10 toe/no-build reshape, then regenerate construction, interaction, influence, and support evidence from source and require exact zero core-plus-margin overlap; do not subtract influence alone, activate the 598-cell removal fallback, materialize chests, or compile operations",
     "externalEvidenceStillRequired": true
   }
 }

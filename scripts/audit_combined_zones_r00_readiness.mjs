@@ -89,6 +89,8 @@ const INPUTS = Object.freeze({
     'docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json',
   shipwreckTreatmentContract:
     'docs/masterplans/05-combined-zones/phase1-shipwreck-treatment-contract.json',
+  shipwreckBestChoiceAnalysis:
+    'docs/masterplans/05-combined-zones/phase1-shipwreck-best-choice-analysis.json',
   ownerReviewBundle: 'docs/masterplans/05-combined-zones/phase1-owner-review-bundle.json',
   ownerReviewAcceptance: 'docs/masterplans/05-combined-zones/phase1-owner-review-acceptance.json',
   siteGateAudit: 'docs/masterplans/05-combined-zones/phase1-site-gate-audit.json',
@@ -170,6 +172,7 @@ const g06ProposedClearance = readJson(INPUTS.g06ProposedClearance);
 const g06CompleteSaveScopeClearance = readJson(INPUTS.g06CompleteSaveScopeClearance);
 const shipwreckRemovalAuthorization = readJson(INPUTS.shipwreckRemovalAuthorization);
 const shipwreckTreatmentContract = readJson(INPUTS.shipwreckTreatmentContract);
+const shipwreckBestChoiceAnalysis = readJson(INPUTS.shipwreckBestChoiceAnalysis);
 const ownerReviewBundle = readJson(INPUTS.ownerReviewBundle);
 const ownerReviewAcceptance = readJson(INPUTS.ownerReviewAcceptance);
 const site = readJson(INPUTS.siteGateAudit);
@@ -396,6 +399,62 @@ const shipwreckTreatmentContractValid = shipwreckRemovalPolicyValid
   && shipwreckTreatmentContract.safetyBoundary?.liveWorldContacted === false
   && shipwreckTreatmentContract.safetyBoundary?.worldEditAuthorized === false
   && shipwreckTreatmentContract.safetyBoundary?.executable === false;
+const shipwreckBestChoiceAnalysisValid = shipwreckTreatmentContractValid
+  && shipwreckBestChoiceAnalysis.status
+    === 'PASS_BEST_CHOICE_PRESERVE_AND_LOCAL_P1_B10_RESHAPE_SELECTED_REMOVAL_FALLBACK_ONLY'
+  && shipwreckBestChoiceAnalysis.sourceBindings?.g03CanonicalSetout?.sha256
+    === sources.g03CanonicalSetout.sha256
+  && shipwreckBestChoiceAnalysis.sourceBindings
+    ?.g06CompleteSaveScopeClearance?.sha256
+      === sources.g06CompleteSaveScopeClearance.sha256
+  && shipwreckBestChoiceAnalysis.sourceBindings?.removalAuthorization?.sha256
+    === sources.shipwreckRemovalAuthorization.sha256
+  && shipwreckBestChoiceAnalysis.sourceBindings?.treatmentContract?.sha256
+    === sources.shipwreckTreatmentContract.sha256
+  && shipwreckBestChoiceAnalysis.sourceBindings?.protectedRelicClearance?.sha256
+    === sources.protectedRelicClearance.sha256
+  && shipwreckBestChoiceAnalysis.sourceBindings?.releaseContract?.sha256
+    === sources.releaseContract.sha256
+  && shipwreckBestChoiceAnalysis.analysisPayload?.actualBlocker?.domainId
+    === 'P1-B10/influence'
+  && shipwreckBestChoiceAnalysis.analysisPayload?.actualBlocker
+    ?.uniqueOverlapCellCount === 126
+  && shipwreckBestChoiceAnalysis.analysisPayload?.actualBlocker
+    ?.constructionOverlapCellCount === 0
+  && shipwreckBestChoiceAnalysis.analysisPayload?.actualBlocker
+    ?.interactionOverlapCellCount === 0
+  && shipwreckBestChoiceAnalysis.analysisPayload?.actualBlocker
+    ?.influenceOverlapCellCount === 126
+  && shipwreckBestChoiceAnalysis.analysisPayload?.actualBlocker
+    ?.influenceIsAcceptedExpertKernel === false
+  && shipwreckBestChoiceAnalysis.analysisPayload?.actualBlocker
+    ?.sourceSupportGapTreatment === null
+  && shipwreckBestChoiceAnalysis.analysisPayload?.method?.criteria
+    ?.reduce((sum, { weight }) => sum + weight, 0) === 100
+  && shipwreckBestChoiceAnalysis.analysisPayload?.alternatives?.length === 4
+  && shipwreckBestChoiceAnalysis.analysisPayload?.alternatives
+    ?.filter(({ eligible }) => eligible).length === 1
+  && shipwreckBestChoiceAnalysis.analysisPayload?.recommendation?.alternativeId
+    === 'BC-01-PRESERVE-AND-LOCAL-P1-B10-RESHAPE'
+  && shipwreckBestChoiceAnalysis.analysisPayload?.recommendation?.weightedScore === 94
+  && shipwreckBestChoiceAnalysis.analysisPayload?.recommendation
+    ?.influenceOnlySubtractionRejectedAsEvidenceSuppression === true
+  && shipwreckBestChoiceAnalysis.analysisPayload?.recommendation
+    ?.removalIsCurrentPreferredPath === false
+  && shipwreckBestChoiceAnalysis.disposition?.exactReshapeGeometryCompiled === false
+  && shipwreckBestChoiceAnalysis.disposition?.technicalTreatmentAccepted === false
+  && shipwreckBestChoiceAnalysis.disposition?.removalPathActive === false
+  && shipwreckBestChoiceAnalysis.disposition?.operationCompilationAuthorized === false
+  && shipwreckBestChoiceAnalysis.safetyBoundary?.proposedGeometryCellCount === 0
+  && shipwreckBestChoiceAnalysis.safetyBoundary?.acceptedGeometryCellCount === 0
+  && shipwreckBestChoiceAnalysis.safetyBoundary?.acceptedRemovalTargetCellCount === 0
+  && shipwreckBestChoiceAnalysis.safetyBoundary?.operationCellCount === 0
+  && shipwreckBestChoiceAnalysis.safetyBoundary?.blockEditCount === 0
+  && shipwreckBestChoiceAnalysis.safetyBoundary?.inventoryMoveCount === 0
+  && shipwreckBestChoiceAnalysis.safetyBoundary?.serverStarted === false
+  && shipwreckBestChoiceAnalysis.safetyBoundary?.liveWorldContacted === false
+  && shipwreckBestChoiceAnalysis.safetyBoundary?.worldEditAuthorized === false
+  && shipwreckBestChoiceAnalysis.safetyBoundary?.executable === false;
 
 const selectedGeometryIds = delegatedSelections.selections
   ?.map(({ scope }) => scope)
@@ -606,6 +665,7 @@ const gates = [
       sources.d05FutureStateContract, sources.d05FutureMountain,
       sources.d05FutureState, sources.d05SupportMaterialDesign,
       sources.shipwreckTreatmentContract,
+      sources.shipwreckBestChoiceAnalysis,
       sources.emptyEightGeologyDesign, sources.d06EgressGeometryDesign,
       sources.d06LifeSafety, sources.d06Mechanisms, sources.d06DetailedSetout,
       sources.d06BeeNestTreatment, sources.d06BeeNestDestinationSurvey,
@@ -626,8 +686,8 @@ const gates = [
       blocker(
         'R00-G02-D05-EXTERNAL-ACCEPTANCE',
         'EXTERNAL_EVIDENCE',
-        'The D05 proposal now partitions all 14,768,553 direct cells and all 754,224 support-gap cells; 17,997 support cells have treatment-class proposals while 736,227 remain treatment-null and all support canonical states remain null. Accepted complete-save evidence is bound; closure still requires hydrology/cryosphere/geotechnical and relic influence acceptance, B09 mechanisms/egress, maintenance/staging, owners/interfaces, and independent technical acceptance.',
-        INPUTS.d05SupportMaterialDesign,
+        'The D05 proposal now partitions all 14,768,553 direct cells and all 754,224 support-gap cells; 17,997 support cells have treatment-class proposals while 736,227 remain treatment-null and all support canonical states remain null. The best-choice gate proves the shipwreck finding is 126 nonphysical P1-B10 influence/support cells with zero construction or interaction overlap and selects a local FM-01 reshape over removal or bookkeeping subtraction. Closure still requires the exact bounded reshape and positive margin, regenerated construction/interaction/influence/support evidence, hydrology/cryosphere/geotechnical and relic influence acceptance, B09 mechanisms/egress, maintenance/staging, owners/interfaces, and independent technical acceptance.',
+        INPUTS.shipwreckBestChoiceAnalysis,
       ),
       blocker(
         'R00-G02-D06-EXTERNAL-ACCEPTANCE',
@@ -750,13 +810,14 @@ const gates = [
       sources.d06BeeNestDestinationSurvey,
       sources.d06BeeNestRelocationFixture,
       sources.shipwreckRemovalAuthorization,
-      sources.shipwreckTreatmentContract],
+      sources.shipwreckTreatmentContract,
+      sources.shipwreckBestChoiceAnalysis],
     blockers: relics.g06Disposition?.status === 'PASS' ? [] : [
       blocker(
         'R00-G06-RELIC-REVIEW',
         'EXTERNAL_EVIDENCE',
-        `The owner resolved preserve-versus-remove for the shipwreck in favor of controlled-removal engineering. The complete-save-bound treatment compiler now partitions the full 2,268-cell envelope exactly: 598 chest/dark-oak/spruce cells form one removal-target candidate, while 515 packed-ice cells, five snow cells, and 1,150 air cells remain preserved. Its exact all-air desired-state mapping is unaccepted, and all three chests still hold unmaterialized loot tables with zero known inventory contents. Independently accept attribution, structural/hydrology/neighbor effects, chest materialization and salvage custody, positive margins, access, staging, settlement, erosion, ownership/interfaces, and the construction method. The exact ${g06CompleteSaveScopeClearance.gate?.exactG03ProtectedCoreOverlapCellCount ?? 0}-cell P1-B10 influence overlap remains pending technical treatment.`,
-        INPUTS.shipwreckTreatmentContract,
+        `The best-choice gate proves the shipwreck finding is one exact ${g06CompleteSaveScopeClearance.gate?.exactG03ProtectedCoreOverlapCellCount ?? 0}-cell P1-B10 influence/support reservation recorded through two subject registries, with zero construction and zero interaction overlap. It selects preservation plus a minimum local FM-01 toe/no-build reshape (94/100), rejects influence-only subtraction as evidence suppression, and retains the exact 598-cell removal contract as fallback only. Compile bounded positive-margin candidates and the minimum local reshape, regenerate construction/interaction/influence/support from source, and require exact zero core-plus-margin overlap before technical acceptance.`,
+        INPUTS.shipwreckBestChoiceAnalysis,
       ),
       blocker(
         'R00-G06-EXACT-DESIGN-CLEARANCE',
@@ -779,6 +840,7 @@ const gates = [
       sources.d05FutureStateContract, sources.d05FutureMountain,
       sources.d05FutureState, sources.d05SupportMaterialDesign,
       sources.shipwreckTreatmentContract,
+      sources.shipwreckBestChoiceAnalysis,
       sources.emptyEightGeologyDesign, sources.d06EgressGeometryDesign,
       sources.d06LifeSafety, sources.d06Mechanisms, sources.d06DetailedSetout,
       sources.d06BeeNestTreatment, sources.d06BeeNestDestinationSurvey,
@@ -1078,6 +1140,31 @@ const report = {
         ?.knownInventoryContentCount ?? 0,
     shipwreckTreatmentTechnicallyAccepted:
       shipwreckTreatmentContract.disposition?.technicalTreatmentAccepted === true,
+    shipwreckBestChoiceAnalysisValid,
+    shipwreckActualConflictDomainId:
+      shipwreckBestChoiceAnalysis.analysisPayload?.actualBlocker?.domainId ?? null,
+    shipwreckUniqueInfluenceOverlapCellCount:
+      shipwreckBestChoiceAnalysis.analysisPayload?.actualBlocker
+        ?.uniqueOverlapCellCount ?? 0,
+    shipwreckConstructionOverlapCellCount:
+      shipwreckBestChoiceAnalysis.analysisPayload?.actualBlocker
+        ?.constructionOverlapCellCount ?? 0,
+    shipwreckInteractionOverlapCellCount:
+      shipwreckBestChoiceAnalysis.analysisPayload?.actualBlocker
+        ?.interactionOverlapCellCount ?? 0,
+    shipwreckBestChoiceRecommendedAlternativeId:
+      shipwreckBestChoiceAnalysis.analysisPayload?.recommendation
+        ?.alternativeId ?? null,
+    shipwreckBestChoiceWeightedScore:
+      shipwreckBestChoiceAnalysis.analysisPayload?.recommendation
+        ?.weightedScore ?? null,
+    shipwreckRemovalPathActive:
+      shipwreckBestChoiceAnalysis.disposition?.removalPathActive === true,
+    shipwreckExactReshapeGeometryCompiled:
+      shipwreckBestChoiceAnalysis.disposition?.exactReshapeGeometryCompiled === true,
+    shipwreckInfluenceOnlySubtractionRejected:
+      shipwreckBestChoiceAnalysis.analysisPayload?.recommendation
+        ?.influenceOnlySubtractionRejectedAsEvidenceSuppression === true,
     shipwreckAcceptedTechnicalTreatmentContractCount:
       g06CompleteSaveScopeClearance.gate
         ?.acceptedRemovalTechnicalTreatmentContractCount ?? 0,
@@ -1085,7 +1172,7 @@ const report = {
       ?.observedPresentBaseline?.chestCount ?? 0,
     autonomousOfflineWorkMayContinue: true,
     autonomousOfflineWorkCanCompleteR00: false,
-    nextAutonomousArtifact: 'continue the independent offline structural, support, hydrology, drainage, neighbor-update, influence-margin, ownership, and interface review of the exact 598-cell shipwreck target and all-air desired-state candidates; the bee runtime-mechanic proof is deferred and its treatment remains HOLD, while chest materialization/salvage and all operation compilation remain later gated work',
+    nextAutonomousArtifact: 'compile bounded shipwreck positive-margin alternatives and the minimum local FM-01 P1-B10 toe/no-build reshape, then regenerate construction, interaction, influence, and support evidence from source and require exact zero core-plus-margin overlap; do not subtract influence alone, activate the 598-cell removal fallback, materialize chests, or compile operations',
     externalEvidenceStillRequired: true,
   },
 };
@@ -1096,8 +1183,8 @@ const markdown = `# Combined Zones Phase 1 R00 readiness audit\n\n`
   + `## Sequencing result\n\n`
   + `The evidence graph is cycle-free: **${descendantEvidenceCycleFree ? 'PASS' : 'FAIL'}**. The required order is D01-D07 design acceptance → R00 freeze → R01 physical validation → R02 eligibility.\n\n`
   + `Complete-save intake: **${acceptedCompleteSaveIntakeValid && completeSaveScopeClearanceValid ? 'PASS AND SCOPE-BOUND' : 'HOLD'}**. The accepted capture is source-equivalent across ${report.summary.completeSaveProjectScopeSourceEquivalent ? 'all required' : 'not all required'} proposal/generated-start/protected-core chunks. Its ${report.summary.completeSaveDeferredG13EntityObservationCount} rabbit/polar-bear observations are deferred to fresh G13. For the sole persistent D06 bee-nest finding, humane intact relocation is selected and a stronger conflict-free forest planning destination is surveyed at \`1811,67,378\`, outside every bounded planning zone. The synthetic state-conservation contract passes, but the captured two-embedded/one-external colony is transport-ineligible; fresh live consolidation, isolated version-matched runtime proof, habitat/access/ownership, and method/state/NBT/guard/rollback acceptance remain HOLD. This does not justify rebuilding unchanged geometry.\n\n`
-  + `Shipwreck treatment: **${shipwreckTreatmentContractValid ? 'EXACT CANDIDATE COMPILED' : 'HOLD'}**. The 2,268-cell GS-037 envelope is partitioned into ${report.summary.shipwreckAttributedRemovalTargetCandidateCellCount} candidate fabric cells, ${report.summary.shipwreckPreservedPackedIceCellCount} preserved packed-ice cells, ${report.summary.shipwreckPreservedSnowCellCount} preserved snow cells, and air. The all-air target mapping is candidate-only, all three loot chests are unmaterialized, accepted target/desired-state counts remain zero, and no operation is authorized.\n\n`
-  + `The owner-delegated ledger freezes **${report.summary.ownerDelegatedSelectionCount}** conservative planning choices. The sole owner accepted four exact review packets under owner-review payload \`${report.summary.ownerReviewBundlePayloadSha256}\`, bound by acceptance-record payload \`${report.summary.ownerReviewAcceptancePayloadSha256}\`. The owner later resolved the shipwreck preserve-versus-remove choice in favor of controlled-removal engineering under payload \`${shipwreckRemovalAuthorization.authorizationPayloadSha256}\`. Neither acceptance passes a technical HOLD or authorizes a world edit. No additional human decision-makers are required. The remaining holds are technical evidence, exact-cell compilation, independent checks, ownership/interface cellsets, and later manifest-bound release authorization.\n\n`
+  + `Shipwreck best choice: **${shipwreckBestChoiceAnalysisValid ? 'PRESERVE AND LOCALLY RESHAPE P1-B10' : 'HOLD'}**. The exact finding is ${report.summary.shipwreckUniqueInfluenceOverlapCellCount} cells of \`${report.summary.shipwreckActualConflictDomainId}\`, with ${report.summary.shipwreckConstructionOverlapCellCount} construction and ${report.summary.shipwreckInteractionOverlapCellCount} interaction overlaps. The 94/100 recommendation changes the source geometry/support demand, rejects influence-only bookkeeping subtraction, and retains the 598-cell removal contract as inactive fallback. Exact reshape geometry, a positive margin, regenerated domains, and technical acceptance remain HOLD; accepted target/desired-state counts and operations remain zero.\n\n`
+  + `The owner-delegated ledger freezes **${report.summary.ownerDelegatedSelectionCount}** conservative planning choices. The sole owner accepted four exact review packets under owner-review payload \`${report.summary.ownerReviewBundlePayloadSha256}\`, bound by acceptance-record payload \`${report.summary.ownerReviewAcceptancePayloadSha256}\`. The owner later made controlled shipwreck removal available under payload \`${shipwreckRemovalAuthorization.authorizationPayloadSha256}\`; the best-choice gate retains that authority as fallback rather than treating it as a requirement. Neither acceptance passes a technical HOLD or authorizes a world edit. No additional human decision-makers are required. The remaining holds are technical evidence, exact-cell compilation, independent checks, ownership/interface cellsets, and later manifest-bound release authorization.\n\n`
   + `## R00 gates\n\n`
   + `| Gate | Status | Current blockers |\n|---|---|---:|\n`
   + gates.map((gate) => `| ${gate.id} | **${gate.status}** | ${gate.blockers.length} |`).join('\n')

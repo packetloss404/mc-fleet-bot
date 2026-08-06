@@ -1,0 +1,490 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-shipwreck-best-choice-analysis",
+  "generatedAtUtc": "2026-08-06T04:20:00Z",
+  "status": "PASS_BEST_CHOICE_PRESERVE_AND_LOCAL_P1_B10_RESHAPE_SELECTED_REMOVAL_FALLBACK_ONLY",
+  "purpose": "Choose the best next response to the exact P1-B10/shipwreck hold before investing in additional technical or physical work.",
+  "sourceBindings": {
+    "g03CanonicalSetout": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g03-canonical-setout.json",
+      "sha256": "582edf50fc2701d8818e9a113a7da617b3ed3a16a28fd03fcaabaeb7d094026a",
+      "bytes": 195009,
+      "role": "exact P1-B10 construction, interaction, influence, exclusions, and support-gap evidence"
+    },
+    "g06CompleteSaveScopeClearance": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g06-complete-save-scope-clearance-20260806T014133Z.json",
+      "sha256": "cf17f96d4504ad070114146101e6626b6233eeb780372737a0abcf33c7bde72f",
+      "bytes": 3039191,
+      "role": "complete-save-bound exact protected-feature overlap classification"
+    },
+    "removalAuthorization": {
+      "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json",
+      "sha256": "a1f926b76ff80032d87cf495666b7c8438abfc4527ff95a619a594d1f327f3f3",
+      "bytes": 12160,
+      "role": "optional controlled-removal planning authority and persistent generated-start rule"
+    },
+    "treatmentContract": {
+      "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-treatment-contract.json",
+      "sha256": "73e507f27ca4442ece5ce6e8005df7c90b3bbd6c53f555e7830694d69af9c9d3",
+      "bytes": 473559,
+      "role": "exact 598-cell removal fallback burden and unresolved chest state"
+    },
+    "protectedRelicClearance": {
+      "path": "docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
+      "sha256": "1739502e8bf19283cabfe9930f26011dba97c11e6328da27ee0b7f651f7a0a22",
+      "bytes": 30505,
+      "role": "exact 2,268-cell shipwreck core and unfrozen positive-margin hold"
+    },
+    "releaseContract": {
+      "path": "docs/masterplans/05-combined-zones/phase1-release-contract.json",
+      "sha256": "3b62d3f65c40a01d5f4eb66733b02c94104c03b3a5bab053ee82bcb08b7fd786",
+      "bytes": 33127,
+      "role": "R00 default-deny and later physical-release boundaries"
+    }
+  },
+  "analysisPayload": {
+    "actualBlocker": {
+      "status": "EXACT_ONE_PHYSICAL_FINDING_RECORDED_TWICE_BY_SUBJECT_REGISTRY",
+      "scopeId": "P1-B10",
+      "domainId": "P1-B10/influence",
+      "domainSemantic": "EXACT_EXTERNAL_SHELL_UNION_SOURCE_BOUND_SUPPORT_GAP_NOT_EXPERT_KERNEL",
+      "uniqueOverlapCellCount": 126,
+      "overlapBounds": {
+        "minX": 2072,
+        "maxX": 2099,
+        "minY": 69,
+        "maxY": 71,
+        "minZ": -661,
+        "maxZ": -653
+      },
+      "overlapCoordinateSetSha256": "77350225547fce64783a9d3d3d8953631b847a733e9bc060211c13b952df0e98",
+      "generatedStartRecordCount": 1,
+      "protectedCoreRecordCount": 1,
+      "recordsDescribeSamePhysicalCellSet": true,
+      "constructionOverlapCellCount": 0,
+      "interactionOverlapCellCount": 0,
+      "influenceOverlapCellCount": 126,
+      "influenceIsAcceptedExpertKernel": false,
+      "influenceContainsUnresolvedSupportGapReservation": true,
+      "sourceSupportGapTreatment": null
+    },
+    "decisionContext": {
+      "selectedMountainAlternativeId": "FM-01-COMPACT-EAST-FACE",
+      "p1b10ConstructionCellCount": 14768553,
+      "p1b10ConstructionMinimumY": 72,
+      "protectedRelicWithheldConstructionCellCount": 1977,
+      "shipwreckCoreCellCount": 2268,
+      "positiveMarginBlocks": null,
+      "positiveMarginFrozen": false,
+      "controlledRemovalMayBeDesigned": true,
+      "controlledRemovalRequired": false,
+      "generatedStartMetadataEditable": false,
+      "generatedStartRemainsEvidenceAfterFabricRemoval": true,
+      "removalTargetCandidateCellCount": 598,
+      "unmaterializedLootChestCount": 3,
+      "knownInventoryContentCount": 0
+    },
+    "method": {
+      "id": "COMBINED_ZONES_BEST_CHOICE_GATE_V1",
+      "principle": "Prefer the smallest reversible intervention that resolves the real blocker without suppressing source evidence; irreversible work must be demonstrably superior, not merely authorized.",
+      "criteria": [
+        {
+          "id": "ACTUAL_BLOCKER_RESOLUTION",
+          "weight": 30,
+          "rule": "Resolve the exact 126-cell P1-B10 influence/support hold rather than a different or larger problem."
+        },
+        {
+          "id": "ROOT_CAUSE_INTEGRITY",
+          "weight": 20,
+          "rule": "Change the geometry/support demand that generated the influence record; never erase evidence to manufacture clearance."
+        },
+        {
+          "id": "PHYSICAL_SAFETY",
+          "weight": 20,
+          "rule": "Prefer zero live edits, inventory moves, entity interaction, and irreversible fabric change."
+        },
+        {
+          "id": "REVERSIBILITY",
+          "weight": 10,
+          "rule": "Prefer a planning change that can be regenerated or discarded before physical release."
+        },
+        {
+          "id": "EVIDENCE_EFFICIENCY",
+          "weight": 10,
+          "rule": "Prefer the smallest defensible evidence burden that does not hide an unresolved condition."
+        },
+        {
+          "id": "FUTURE_FLEXIBILITY",
+          "weight": 10,
+          "rule": "Preserve later design options and avoid spending optional removal authority without necessity."
+        }
+      ],
+      "hardGates": [
+        {
+          "id": "RESOLVES_ACTUAL_BLOCKER",
+          "rule": "The alternative must close or directly redesign the exact influence/support condition."
+        },
+        {
+          "id": "DOES_NOT_SUPPRESS_SUPPORT_EVIDENCE",
+          "rule": "The alternative may not subtract an influence record while leaving its source support demand unchanged."
+        },
+        {
+          "id": "PRESERVES_GENERATED_START_EVIDENCE",
+          "rule": "Generated-start evidence remains immutable even if physical fabric is later removed."
+        },
+        {
+          "id": "USES_MINIMUM_IRREVERSIBLE_SCOPE",
+          "rule": "A physical alternative is ineligible while a credible nonphysical geometry alternative remains."
+        },
+        {
+          "id": "DOES_NOT_DEPEND_ON_UNKNOWN_INVENTORY",
+          "rule": "A current recommendation may not require moving or destroying any of the three unmaterialized loot chests."
+        }
+      ],
+      "scoringScale": "0 worst / 5 best; weighted score is advisory, every hard gate is mandatory",
+      "requiredAlternativeClasses": [
+        "no action",
+        "bookkeeping-only minimal change",
+        "root-cause nonphysical redesign",
+        "authorized physical fallback"
+      ]
+    },
+    "alternatives": [
+      {
+        "id": "BC-01-PRESERVE-AND-LOCAL-P1-B10-RESHAPE",
+        "label": "Preserve and reshape locally",
+        "description": "Regenerate FM-01 near the shipwreck so candidate construction no longer creates below-Y72 support demand or any construction, interaction, or influence overlap with the exact core plus a technically selected positive margin.",
+        "scoreDetails": [
+          {
+            "criterionId": "ACTUAL_BLOCKER_RESOLUTION",
+            "score": 5,
+            "weightedPoints": 30
+          },
+          {
+            "criterionId": "ROOT_CAUSE_INTEGRITY",
+            "score": 5,
+            "weightedPoints": 20
+          },
+          {
+            "criterionId": "PHYSICAL_SAFETY",
+            "score": 5,
+            "weightedPoints": 20
+          },
+          {
+            "criterionId": "REVERSIBILITY",
+            "score": 4,
+            "weightedPoints": 8
+          },
+          {
+            "criterionId": "EVIDENCE_EFFICIENCY",
+            "score": 3,
+            "weightedPoints": 6
+          },
+          {
+            "criterionId": "FUTURE_FLEXIBILITY",
+            "score": 5,
+            "weightedPoints": 10
+          }
+        ],
+        "weightedScore": 94,
+        "hardGateResults": [
+          {
+            "gateId": "RESOLVES_ACTUAL_BLOCKER",
+            "passed": true
+          },
+          {
+            "gateId": "DOES_NOT_SUPPRESS_SUPPORT_EVIDENCE",
+            "passed": true
+          },
+          {
+            "gateId": "PRESERVES_GENERATED_START_EVIDENCE",
+            "passed": true
+          },
+          {
+            "gateId": "USES_MINIMUM_IRREVERSIBLE_SCOPE",
+            "passed": true
+          },
+          {
+            "gateId": "DOES_NOT_DEPEND_ON_UNKNOWN_INVENTORY",
+            "passed": true
+          }
+        ],
+        "eligible": true,
+        "fallbackOnly": false,
+        "exactImpact": {
+          "physicalTargetCellCount": 0,
+          "inventoryMoveCount": 0,
+          "currentOverlapCellCountToEliminateByGeometryRegeneration": 126,
+          "currentProtectedRelicWithheldConstructionCellCountRetained": 1977,
+          "outputGeometryCellSet": null,
+          "reasonOutputIsNull": "The positive margin and minimal local reshape must be compiled and compared next; this decision gate does not fabricate geometry."
+        },
+        "remainingWork": [
+          "compile bounded positive-margin candidates and a minimal local FM-01 toe/no-build reshape",
+          "recompute P1-B10 construction, interaction, influence, and support-gap evidence from source geometry",
+          "require zero shipwreck core-plus-margin overlap without deleting an influence record independently of its source",
+          "rerun G03, G06, ownership, and interface checks before technical acceptance"
+        ]
+      },
+      {
+        "id": "BC-02-SUBTRACT-INFLUENCE-ONLY",
+        "label": "Subtract the overlap from influence only",
+        "description": "Remove the 126 coordinates from the influence registry without changing FM-01 construction or its below-Y72 support demand.",
+        "scoreDetails": [
+          {
+            "criterionId": "ACTUAL_BLOCKER_RESOLUTION",
+            "score": 4,
+            "weightedPoints": 24
+          },
+          {
+            "criterionId": "ROOT_CAUSE_INTEGRITY",
+            "score": 0,
+            "weightedPoints": 0
+          },
+          {
+            "criterionId": "PHYSICAL_SAFETY",
+            "score": 5,
+            "weightedPoints": 20
+          },
+          {
+            "criterionId": "REVERSIBILITY",
+            "score": 5,
+            "weightedPoints": 10
+          },
+          {
+            "criterionId": "EVIDENCE_EFFICIENCY",
+            "score": 4,
+            "weightedPoints": 8
+          },
+          {
+            "criterionId": "FUTURE_FLEXIBILITY",
+            "score": 4,
+            "weightedPoints": 8
+          }
+        ],
+        "weightedScore": 70,
+        "hardGateResults": [
+          {
+            "gateId": "RESOLVES_ACTUAL_BLOCKER",
+            "passed": false
+          },
+          {
+            "gateId": "DOES_NOT_SUPPRESS_SUPPORT_EVIDENCE",
+            "passed": false
+          },
+          {
+            "gateId": "PRESERVES_GENERATED_START_EVIDENCE",
+            "passed": true
+          },
+          {
+            "gateId": "USES_MINIMUM_IRREVERSIBLE_SCOPE",
+            "passed": true
+          },
+          {
+            "gateId": "DOES_NOT_DEPEND_ON_UNKNOWN_INVENTORY",
+            "passed": true
+          }
+        ],
+        "eligible": false,
+        "fallbackOnly": false,
+        "exactImpact": {
+          "physicalTargetCellCount": 0,
+          "inventoryMoveCount": 0,
+          "ledgerCellsProposedForSubtraction": 126,
+          "sourceSupportGapTreatment": null
+        },
+        "remainingWork": [
+          "rejected: bookkeeping subtraction would hide rather than resolve the support condition"
+        ]
+      },
+      {
+        "id": "BC-03-NO-CHANGE",
+        "label": "Take no action",
+        "description": "Preserve all current planning records and leave the exact G06 hold unresolved.",
+        "scoreDetails": [
+          {
+            "criterionId": "ACTUAL_BLOCKER_RESOLUTION",
+            "score": 0,
+            "weightedPoints": 0
+          },
+          {
+            "criterionId": "ROOT_CAUSE_INTEGRITY",
+            "score": 2,
+            "weightedPoints": 8
+          },
+          {
+            "criterionId": "PHYSICAL_SAFETY",
+            "score": 5,
+            "weightedPoints": 20
+          },
+          {
+            "criterionId": "REVERSIBILITY",
+            "score": 5,
+            "weightedPoints": 10
+          },
+          {
+            "criterionId": "EVIDENCE_EFFICIENCY",
+            "score": 5,
+            "weightedPoints": 10
+          },
+          {
+            "criterionId": "FUTURE_FLEXIBILITY",
+            "score": 5,
+            "weightedPoints": 10
+          }
+        ],
+        "weightedScore": 58,
+        "hardGateResults": [
+          {
+            "gateId": "RESOLVES_ACTUAL_BLOCKER",
+            "passed": false
+          },
+          {
+            "gateId": "DOES_NOT_SUPPRESS_SUPPORT_EVIDENCE",
+            "passed": true
+          },
+          {
+            "gateId": "PRESERVES_GENERATED_START_EVIDENCE",
+            "passed": true
+          },
+          {
+            "gateId": "USES_MINIMUM_IRREVERSIBLE_SCOPE",
+            "passed": true
+          },
+          {
+            "gateId": "DOES_NOT_DEPEND_ON_UNKNOWN_INVENTORY",
+            "passed": true
+          }
+        ],
+        "eligible": false,
+        "fallbackOnly": false,
+        "exactImpact": {
+          "physicalTargetCellCount": 0,
+          "inventoryMoveCount": 0,
+          "unresolvedInfluenceOverlapCellCount": 126
+        },
+        "remainingWork": [
+          "rejected as the active path because it cannot advance G06"
+        ]
+      },
+      {
+        "id": "BC-04-FULL-598-CELL-CONTROLLED-REMOVAL",
+        "label": "Remove all attributed shipwreck fabric",
+        "description": "Develop the exact 598-cell candidate toward controlled removal and candidate air replacement.",
+        "scoreDetails": [
+          {
+            "criterionId": "ACTUAL_BLOCKER_RESOLUTION",
+            "score": 3,
+            "weightedPoints": 18
+          },
+          {
+            "criterionId": "ROOT_CAUSE_INTEGRITY",
+            "score": 2,
+            "weightedPoints": 8
+          },
+          {
+            "criterionId": "PHYSICAL_SAFETY",
+            "score": 1,
+            "weightedPoints": 4
+          },
+          {
+            "criterionId": "REVERSIBILITY",
+            "score": 1,
+            "weightedPoints": 2
+          },
+          {
+            "criterionId": "EVIDENCE_EFFICIENCY",
+            "score": 0,
+            "weightedPoints": 0
+          },
+          {
+            "criterionId": "FUTURE_FLEXIBILITY",
+            "score": 1,
+            "weightedPoints": 2
+          }
+        ],
+        "weightedScore": 34,
+        "hardGateResults": [
+          {
+            "gateId": "RESOLVES_ACTUAL_BLOCKER",
+            "passed": false
+          },
+          {
+            "gateId": "DOES_NOT_SUPPRESS_SUPPORT_EVIDENCE",
+            "passed": false
+          },
+          {
+            "gateId": "PRESERVES_GENERATED_START_EVIDENCE",
+            "passed": true
+          },
+          {
+            "gateId": "USES_MINIMUM_IRREVERSIBLE_SCOPE",
+            "passed": false
+          },
+          {
+            "gateId": "DOES_NOT_DEPEND_ON_UNKNOWN_INVENTORY",
+            "passed": false
+          }
+        ],
+        "eligible": false,
+        "fallbackOnly": true,
+        "exactImpact": {
+          "physicalTargetCandidateCellCount": 598,
+          "acceptedPhysicalTargetCellCount": 0,
+          "unmaterializedLootChestCount": 3,
+          "knownInventoryContentCount": 0,
+          "generatedStartRecordWouldRemainEvidence": true,
+          "currentInfluenceOverlapWouldStillRequireAcceptedTreatmentOrGeometryChange": true
+        },
+        "remainingWork": [
+          "independent acceptance of the 598-cell material-attribution candidate",
+          "accepted structural, support, gravity, lighting, hydrology, drainage, and neighbor-update review of the all-air candidate",
+          "materialization and exact inventory of all three loot-table chests plus one accepted controlled salvage destination",
+          "accepted demolition influence, staging, access, settlement, erosion, positive margins, ownership, and interfaces",
+          "fresh entity and POI clearance, guarded forward and exact inverse rollback compilation, independent preflight, and one later release authorization"
+        ]
+      }
+    ],
+    "recommendation": {
+      "alternativeId": "BC-01-PRESERVE-AND-LOCAL-P1-B10-RESHAPE",
+      "weightedScore": 94,
+      "planningDirectionSelectedForNextOfflineDevelopment": true,
+      "technicallyAcceptedGeometry": false,
+      "physicalImplementationAuthorized": false,
+      "removalAuthorizationRetainedAsFallback": true,
+      "removalIsCurrentPreferredPath": false,
+      "influenceOnlySubtractionRejectedAsEvidenceSuppression": true,
+      "reason": "The only exact conflict is a nonphysical influence/support reservation. Local FM-01 regeneration can address its source while preserving the shipwreck, avoiding three unknown loot inventories and 598 irreversible candidate edits. Fabric removal would not erase the immutable generated-start record and is therefore not the minimum or clearest solution.",
+      "nextArtifact": "compile bounded positive-margin alternatives and the minimum local P1-B10 toe/no-build reshape; regenerate construction, interaction, influence, and support evidence from the source geometry and require zero core-plus-margin overlap"
+    }
+  },
+  "disposition": {
+    "actualBlockerClassified": true,
+    "alternativesCompared": 4,
+    "noActionIncluded": true,
+    "lowerImpactAlternativesIncluded": true,
+    "rootCauseIntegrityGateEnforced": true,
+    "recommendedAlternativeId": "BC-01-PRESERVE-AND-LOCAL-P1-B10-RESHAPE",
+    "recommendationReadyForOfflineDevelopment": true,
+    "exactReshapeGeometryCompiled": false,
+    "technicalTreatmentAccepted": false,
+    "removalPathActive": false,
+    "removalPathRetainedAsFallback": true,
+    "operationCompilationAuthorized": false
+  },
+  "safetyBoundary": {
+    "proposedGeometryCellCount": 0,
+    "acceptedGeometryCellCount": 0,
+    "acceptedRemovalTargetCellCount": 0,
+    "operationCellCount": 0,
+    "blockEditCount": 0,
+    "inventoryMoveCount": 0,
+    "serverStarted": false,
+    "liveWorldContacted": false,
+    "physicalReleaseAuthorized": false,
+    "worldEditAuthorized": false,
+    "executable": false
+  },
+  "analysisPayloadSha256": "a61881f799a758e73e5ab65857ca0ee7f4bc0e989c9e3005e25af4bc6242c4b0",
+  "reportIdentitySha256": "7b2250a719db9efd20b00e8adfb1b2ace37d63a4ce2ff48a8c0d85dc12bc7b95"
+}
