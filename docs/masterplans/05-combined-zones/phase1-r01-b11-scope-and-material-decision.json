@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-r01-b11-scope-and-material-decision",
+  "generatedAtUtc": "2026-08-07T00:20:00Z",
+  "status": "OWNER_DECISION_RECORDED_R01_SCOPE_B11_AND_ROAD_MATERIALS",
+  "authority": {
+    "source": "sole-owner directive, project conversation, 2026-08-06: commit and proceed with the reviewed B11 pilot plan",
+    "priorDirective": "sole-owner build-ready directive, 2026-08-06",
+    "reviewedByIndependentPlanningAgent": true,
+    "worldEditAuthorized": false
+  },
+  "scopeAdjudication": {
+    "decision": "INSTANTIATE_CZ_R01_ON_FROZEN_P1_B11_CONSTRUCTION_DOMAIN",
+    "contractDeviationDisclosed": {
+      "canonicalR01Owner": "C1_EAST_CORRIDOR_NO_FROZEN_G03_CELL_SET",
+      "serialGraphDeviation": "SURFACE_ROAD_BEFORE_DEEP_SHELLS_R02_R05",
+      "groundedIn": [
+        "owner-raised road-over-tunnel ordering in the accepted owner-review bundle",
+        "OWNER-SCOPE-P1-B12-DEFER-NOW retains the subsurface no-foreclosure reservation",
+        "B11 (x1750-2048, z-331..-296) is disjoint from the Empty Eight terminal envelope (x1632-1872, z40-160)",
+        "zero protected-core and generated-start overlap proven for every non-null G03 domain in the composite scope clearance"
+      ],
+      "releaseContractModified": false
+    },
+    "r01PurposeSatisfied": "bounded, independently reversible proof of the frozen civil palette, setout, and route geometry",
+    "exclusionsHonored": [
+      "no C01 work",
+      "no owner tunnel",
+      "no relic-core cell",
+      "no B12 shell work"
+    ]
+  },
+  "boundIdentities": {
+    "g03CanonicalPayloadSha256": "1e4609275a2fd6aed8aa8a3dac00e8bdadae97dc756ca222922ce57a2c9b0712",
+    "b11ConstructionCoordinateSetSha256": "0d63ddf8f385dcd9eb4af8de530f2e2124b7019dc150674828741ddf274d7b9c",
+    "b11ConstructionCellCount": 2392,
+    "b11ConstructionBounds": {
+      "minX": 1750,
+      "maxX": 2048,
+      "minY": 68,
+      "maxY": 72,
+      "minZ": -331,
+      "maxZ": -296
+    },
+    "b11CenterlineSha256": "e63b7779674ad46fd7ad9c4ae0aea8f618afa8b656d3a24aa4367057cf103ff4",
+    "b11CenterlinePointCount": 299,
+    "ownershipRegistryPayloadSha256": "234e51bba55fb4bad08d351780b51e27647102f2fdf8b42ce9ed5357afa33cda",
+    "compositeCanonicalPayloadSha256": "94eb21c4d72303bf5122b53b9963d8bf8ae26d9e8e8238e8c8d64f9d6671230f",
+    "externalAcceptanceReportIdentitySha256": "a88d0fafe8fb024905aafcee1ebd7f0329b988457b650813ebb1f7adf17a0cfc",
+    "r00Status": "R00_READY"
+  },
+  "materialDecision": {
+    "domain": "P1-B11/construction",
+    "sectionConvention": "signed Z-offset -3..+4 from each centerline station at the station Y",
+    "roadSection": [
+      {
+        "zOffset": -3,
+        "role": "NORTH_CURB",
+        "state": "minecraft:stone_bricks"
+      },
+      {
+        "zOffset": -2,
+        "role": "CARRIAGEWAY",
+        "state": "minecraft:gray_concrete"
+      },
+      {
+        "zOffset": -1,
+        "role": "CARRIAGEWAY",
+        "state": "minecraft:gray_concrete"
+      },
+      {
+        "zOffset": 0,
+        "role": "CARRIAGEWAY_CENTRE_DASHED_STRIPE",
+        "state": "minecraft:gray_concrete",
+        "stripeState": "minecraft:yellow_concrete",
+        "stripeRule": "station % 6 < 3"
+      },
+      {
+        "zOffset": 1,
+        "role": "CARRIAGEWAY",
+        "state": "minecraft:gray_concrete"
+      },
+      {
+        "zOffset": 2,
+        "role": "CARRIAGEWAY",
+        "state": "minecraft:gray_concrete"
+      },
+      {
+        "zOffset": 3,
+        "role": "SOUTH_CURB",
+        "state": "minecraft:stone_bricks"
+      },
+      {
+        "zOffset": 4,
+        "role": "SOUTH_SIDEWALK",
+        "state": "minecraft:smooth_stone"
+      }
+    ],
+    "sectionPayloadSha256": "e7cec94c4ec02196b543b05745cd326949c077851120de8384a6a9b796b801b0",
+    "singleStatePerCell": true,
+    "blockStatePropertiesRequired": false,
+    "designPrecedent": "town grid-road palette (gray_concrete carriageway, yellow_concrete stripe, stone_bricks curb, smooth_stone sidewalk)"
+  },
+  "laterReleasesExplicitlyNotDecidedHere": [
+    "D06/Empty Eight materials beyond the frozen EE role palette (release R02)",
+    "B03/B07/B08 tunnel excavation and lining palettes (R03-R04)",
+    "P1-B10 mountain support-gap family states (R05)",
+    "B09 funicular commissioning (post-R05)",
+    "P1-B12 shell (deferred by owner decision)"
+  ],
+  "safetyBoundary": {
+    "operationCellCount": 0,
+    "worldEditAuthorized": false,
+    "liveCallsPerformed": false
+  },
+  "reportIdentitySha256": "3df3828a941b3cd935d77ed6ecb81aecbe2ee7541a03d0b69b74357226812172"
+}
