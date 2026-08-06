@@ -23,6 +23,14 @@ function value(flag, fallback) {
   return index >= 0 && argv[index + 1] ? argv[index + 1] : fallback;
 }
 
+function values(flag) {
+  const result = [];
+  for (let index = 0; index < argv.length; index += 1) {
+    if (argv[index] === flag && argv[index + 1]) result.push(argv[index + 1]);
+  }
+  return result;
+}
+
 const GENERATED_AT = value('--generated-at', '2026-08-04T21:56:58Z');
 const DATA_ROOT = path.resolve(value('--data-root', 'data'));
 const OUTPUT = path.resolve(value(
@@ -33,6 +41,22 @@ const MARKDOWN = path.resolve(value(
   '--markdown',
   'docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.md',
 ));
+const HISTORICAL_INVENTORY_REPLAY = argv.includes('--historical-inventory-replay');
+const EXCLUDED_POST_GENERATION_CANDIDATES = new Set(
+  values('--exclude-post-generation-candidate').map((filename) => path.resolve(filename)),
+);
+
+assert(
+  EXCLUDED_POST_GENERATION_CANDIDATES.size === 0 || HISTORICAL_INVENTORY_REPLAY,
+  '--exclude-post-generation-candidate requires --historical-inventory-replay',
+);
+for (const excluded of EXCLUDED_POST_GENERATION_CANDIDATES) {
+  assert(
+    excluded === DATA_ROOT || excluded.startsWith(`${DATA_ROOT}${path.sep}`),
+    `historical candidate exclusion is outside --data-root: ${excluded}`,
+  );
+  assert(fs.existsSync(excluded), `historical candidate exclusion does not exist: ${excluded}`);
+}
 
 const INPUTS = {
   authorityPacket: 'docs/masterplans/05-combined-zones/phase1-d02-civil-authority-packet.json',
@@ -269,26 +293,29 @@ function discoverSnapshotCandidates(dataRoot) {
     }
   }
   walk(dataRoot);
-  return [...roots].sort().map((root) => {
-    const region = directoryMcaSummary(path.join(root, 'region'));
-    const entities = directoryMcaSummary(path.join(root, 'entities'));
-    const poi = directoryMcaSummary(path.join(root, 'poi'));
-    const levelDatPath = path.join(root, 'level.dat');
-    const levelDat = fs.existsSync(levelDatPath) && fs.statSync(levelDatPath).isFile()
-      ? { present: true, bytes: fs.statSync(levelDatPath).size, sha256: sha256(fs.readFileSync(levelDatPath)) }
-      : { present: false, bytes: 0, sha256: null };
-    const complete = region.mcaFileCount > 0 && entities.mcaFileCount > 0
-      && poi.mcaFileCount > 0 && levelDat.present;
-    return {
-      root: relative(root),
-      region,
-      entities,
-      poi,
-      levelDat,
-      complete,
-      completenessStatus: complete ? 'COMPLETE_COPIED_SAVE_CANDIDATE' : 'INCOMPLETE_COPIED_SAVE',
-    };
-  });
+  return [...roots]
+    .filter((root) => !EXCLUDED_POST_GENERATION_CANDIDATES.has(path.resolve(root)))
+    .sort()
+    .map((root) => {
+      const region = directoryMcaSummary(path.join(root, 'region'));
+      const entities = directoryMcaSummary(path.join(root, 'entities'));
+      const poi = directoryMcaSummary(path.join(root, 'poi'));
+      const levelDatPath = path.join(root, 'level.dat');
+      const levelDat = fs.existsSync(levelDatPath) && fs.statSync(levelDatPath).isFile()
+        ? { present: true, bytes: fs.statSync(levelDatPath).size, sha256: sha256(fs.readFileSync(levelDatPath)) }
+        : { present: false, bytes: 0, sha256: null };
+      const complete = region.mcaFileCount > 0 && entities.mcaFileCount > 0
+        && poi.mcaFileCount > 0 && levelDat.present;
+      return {
+        root: relative(root),
+        region,
+        entities,
+        poi,
+        levelDat,
+        complete,
+        completenessStatus: complete ? 'COMPLETE_COPIED_SAVE_CANDIDATE' : 'INCOMPLETE_COPIED_SAVE',
+      };
+    });
 }
 
 function tangentAt(points, index) {
@@ -604,6 +631,7 @@ assert(undergroundInventory.truthBoundary?.c01East?.includes('ISSUE-002')
 const sourceBindings = Object.entries(INPUTS).map(([key, relativePath]) => fileBinding(relativePath, ROLES[key]));
 const snapshotCandidates = discoverSnapshotCandidates(DATA_ROOT);
 const completeCandidates = snapshotCandidates.filter((candidate) => candidate.complete);
+const completeSaveCandidateAvailable = completeCandidates.length > 0;
 const inventoryDigest = sha256(`${snapshotCandidates.map((candidate) => canonicalJson(candidate)).join('\n')}\n`);
 
 const selectedRegionDirectory = path.resolve(phase0.snapshots.postGeneration.path);
@@ -695,7 +723,9 @@ const report = {
   schemaVersion: 1,
   id: 'combined-zones-phase1-d02-s01-s02-region-evidence',
   generatedAtUtc: GENERATED_AT,
-  status: 'PARTIAL_PASS_REGION_FACTS_COMPLETE_SAVE_MISSING_D02_HOLD',
+  status: completeSaveCandidateAvailable
+    ? 'PARTIAL_PASS_REGION_FACTS_COMPLETE_SAVE_CANDIDATE_AVAILABLE_REVIEW_REQUIRED_D02_HOLD'
+    : 'PARTIAL_PASS_REGION_FACTS_COMPLETE_SAVE_MISSING_D02_HOLD',
   purpose: 'Deterministic copied-save completeness audit plus full-height C1 and C01/ISSUE-002 region-only evidence for D02-S01/S02.',
   safetyBoundary: {
     localFilesOnly: true,
@@ -745,7 +775,9 @@ const report = {
     ],
   },
   d02S01: {
-    status: 'PARTIAL_PASS_EXACT_REGION_CENSUS_COMPLETE_SAVE_COMPONENTS_MISSING',
+    status: completeSaveCandidateAvailable
+      ? 'PARTIAL_PASS_EXACT_REGION_CENSUS_COMPLETE_SAVE_CANDIDATE_REVIEW_REQUIRED'
+      : 'PARTIAL_PASS_EXACT_REGION_CENSUS_COMPLETE_SAVE_COMPONENTS_MISSING',
     c1FullHeight,
     relevantGeneratedStructureStarts: {
       count: relevantStructureStarts.length,
@@ -758,7 +790,9 @@ const report = {
       'Exact block-state, fluid, gravity-candidate, block-entity, and generated-start facts are sealed.',
     ],
     remainingBlockers: [
-      'No same-moment entities, POI, or level.dat evidence exists in any copied-save candidate.',
+      completeSaveCandidateAvailable
+        ? 'A complete copied-save candidate exists, but this historical region-only audit does not accept or consume it; use the dedicated complete-save intake audit.'
+        : 'No same-moment entities, POI, or level.dat evidence exists in any copied-save candidate.',
       'The region census does not select treatment typologies, foundations, future excavation/fill influence cells, or groundwater-like behavior.',
       'Hydrology components and accepted outfalls remain D02-S03 work.',
     ],
@@ -794,7 +828,9 @@ const report = {
       'The accepted documentary truth keeps ISSUE-002 open and says relocation/arrival were not delivered.',
     ],
     remainingBlockers: [
-      'No complete current copied save establishes entity, POI, level.dat, or same-moment identity.',
+      completeSaveCandidateAvailable
+        ? 'A complete copied-save candidate exists, but C01 semantic, ownership, route, and ISSUE-002 acceptance remain outside this region-only audit.'
+        : 'No complete current copied save establishes entity, POI, level.dat, or same-moment identity.',
       'Region blocks cannot establish semantic program migration, commissioning, usable road/entrance, full parking circulation, canonical ownership, or loading permission.',
       'No exact accepted road cell set exists to survey.',
       'ISSUE-002 requires explicit sole-authority disposition and must remain open in this artifact.',
@@ -813,13 +849,21 @@ const report = {
     'Run D02-S03 hydrology/component/outfall modelling from the region snapshot, labelled region-only.',
   ],
   exactExternalRequirement: {
-    missingArtifact: 'A current immutable copied save containing region/, entities/, poi/, and level.dat from one frozen capture, with a whole-package identity manifest.',
-    afterReceipt: 'Regenerate this audit against that package, require identical or explicitly superseded region identity, then evaluate entities, POI, world metadata, semantic routes, and sole-authority ownership/ISSUE-002 acceptance.',
+    missingArtifact: completeSaveCandidateAvailable
+      ? 'Dedicated intake and acceptance of the available complete copied-save candidate against its whole-package capture manifest.'
+      : 'A current immutable copied save containing region/, entities/, poi/, and level.dat from one frozen capture, with a whole-package identity manifest.',
+    afterReceipt: completeSaveCandidateAvailable
+      ? 'Use the dedicated complete-save intake and scope-clearance artifacts; do not rewrite this historical region-only evidence or infer C01 semantic acceptance from file completeness.'
+      : 'Regenerate this audit against that package, require identical or explicitly superseded region identity, then evaluate entities, POI, world metadata, semantic routes, and sole-authority ownership/ISSUE-002 acceptance.',
   },
   finalGate: {
-    status: 'HOLD_D02_S01_S02_INCOMPLETE_NO_WORLD_EDITS',
+    status: completeSaveCandidateAvailable
+      ? 'HOLD_D02_S01_S02_COMPLETE_SAVE_REVIEW_REQUIRED_NO_WORLD_EDITS'
+      : 'HOLD_D02_S01_S02_INCOMPLETE_NO_WORLD_EDITS',
     worldEditAuthorized: false,
-    reason: 'Exact region facts are complete for the selected scopes, but no complete copied save exists and region evidence cannot close C01 semantics, ownership, or ISSUE-002.',
+    reason: completeSaveCandidateAvailable
+      ? 'Exact region facts remain valid and a separate complete-save candidate now exists, but completeness alone cannot close C01 semantics, ownership, routes, technical acceptance, or ISSUE-002.'
+      : 'Exact region facts are complete for the selected scopes, but no complete copied save exists and region evidence cannot close C01 semantics, ownership, or ISSUE-002.',
   },
 };
 
@@ -831,7 +875,9 @@ const markdown = `# D02-S01/S02 copied-save and region evidence\n\n`
   + `**Status:** ${report.finalGate.status}  \n`
   + `**Generated:** ${GENERATED_AT}  \n`
   + `**Selected region identity:** \`${selectedSnapshot.sha256}\`\n\n`
-  + `No complete copied save exists under \`data/\`: ${snapshotCandidates.length} candidate roots were inspected, and none contains all of \`region/\`, \`entities/\`, \`poi/\`, and \`level.dat\`. The exact region-only work below is useful evidence, but it cannot close D02-S01, D02-S02, ISSUE-002, or R00.\n\n`
+  + (completeSaveCandidateAvailable
+    ? `A complete copied-save candidate now exists under \`data/\`, but this artifact remains a historical region-only audit. Use the dedicated complete-save intake evidence; file completeness alone cannot close D02-S01, D02-S02, ISSUE-002, or R00.\n\n`
+    : `No complete copied save exists under \`data/\`: ${snapshotCandidates.length} candidate roots were inspected, and none contains all of \`region/\`, \`entities/\`, \`poi/\`, and \`level.dat\`. The exact region-only work below is useful evidence, but it cannot close D02-S01, D02-S02, ISSUE-002, or R00.\n\n`)
   + `## Snapshot completeness\n\n`
   + `| Candidates | Complete | Selected region files | Selected bytes | Missing components |\n`
   + `|---:|---:|---:|---:|---|\n`

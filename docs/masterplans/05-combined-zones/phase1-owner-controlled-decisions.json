@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-owner-controlled-decisions",
+  "generatedAtUtc": "2026-08-06T10:00:00Z",
+  "status": "OWNER_CONTROLLED_PLANNING_CHOICES_RECORDED_TECHNICAL_HOLDS_REMAIN",
+  "authority": {
+    "source": "explicit owner instruction in current project conversation",
+    "ownerControlledChoiceCount": 3,
+    "technicalAcceptanceClaimed": false,
+    "worldEditAuthorized": false
+  },
+  "sourceBindings": {
+    "packet": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g02-g07-minimal-review-packet.json",
+      "sha256": "a9c78dcd0e873c1c6497a3a0645207d673c92bdf5570ccf6cea659dca955ecc7",
+      "bytes": 17899
+    },
+    "r00": {
+      "path": "docs/masterplans/05-combined-zones/phase1-r00-readiness-audit.json",
+      "sha256": "a438b7c77b6c4d214ae19111aed9d4dd4d0fc220f70e2bfec79f5613fcdd8d5a",
+      "bytes": 77252
+    },
+    "composite": {
+      "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-canonical-integration-overlay.json",
+      "sha256": "437aa0ff1c7f6dc687a98fb4b7f9c288efdd2ed20469183d66051f3e354b9fce",
+      "bytes": 11294
+    },
+    "d06Treatment": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-treatment.json",
+      "sha256": "86547e0529df4dee02b868605dd25c22055744e062a5d3717f68f77d233dfc8f",
+      "bytes": 7895
+    }
+  },
+  "decisions": [
+    {
+      "id": "OWNER-SCOPE-P1-B12-DEFER-NOW",
+      "decision": "DEFER_P1_B12_PHYSICAL_SHELL_RETAIN_NO_FORECLOSURE_RESERVATION",
+      "constructNow": false,
+      "fitOutNow": false,
+      "retainNoForeclosureReservation": true,
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "OWNER-D05-SHIPWRECK-PRESERVE-RESHAPE",
+      "decision": "PRESERVE_WITH_HASH_BOUND_COMPOSITE_SOUTH_OPEN_P1_B10_RESHAPE",
+      "compositeCanonicalPayloadSha256": "94eb21c4d72303bf5122b53b9963d8bf8ae26d9e8e8238e8c8d64f9d6671230f",
+      "expertPositiveMarginAccepted": false,
+      "technicalAcceptanceClaimed": false
+    },
+    {
+      "id": "OWNER-D06-BEE-HUMANE-RELOCATION-PLANNING",
+      "decision": "HUMANE_INTACT_RELOCATION",
+      "destinationCandidate": {
+        "x": 1811,
+        "y": 67,
+        "z": 378
+      },
+      "runtimeMechanicProven": false,
+      "technicalAcceptanceClaimed": false
+    }
+  ],
+  "unresolvedExternalInputs": {
+    "packetExternalSubmissionCount": 4,
+    "nullEndpointCount": 13,
+    "ownerAcceptancePrerequisite": "EXT-01, EXT-02, and EXT-03 must be accepted before the integrated owner record.",
+    "d06DisposableRuntimeAuthorization": "Not granted by this planning-decision record."
+  },
+  "disposition": {
+    "r00Passed": false,
+    "buildAuthorized": true,
+    "worldConstructionAuthorized": false,
+    "documentationPublicationAsReadyAuthorized": false,
+    "operationCount": 0
+  },
+  "reportIdentitySha256": "ba325996b28a801194e1bf803463794f0b28deeafcfca6f6fb1813be28c96829"
+}

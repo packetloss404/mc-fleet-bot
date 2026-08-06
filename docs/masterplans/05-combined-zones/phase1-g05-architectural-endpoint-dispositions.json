@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-g05-architectural-endpoint-dispositions",
+  "generatedAtUtc": "2026-08-06T00:00:00Z",
+  "status": "ARCHITECTURAL_FAIL_CLOSED_DISPOSITIONS_RECORDED_R00_TECHNICAL_HOLDS_RETAINED",
+  "authority": "Delegated architect direction from the sole project owner in the current instruction.",
+  "purpose": "Freeze the smallest conservative proposal scope without fabricating external counterpart facts or future-state acceptance.",
+  "sourceWorklist": {
+    "path": "docs/masterplans/05-combined-zones/phase1-g05-endpoint-candidate-worklist.json",
+    "sha256": "c02c2a94f7c98e48c15ee4a0c9cc2a8094e09c306347415f635d32618a545602",
+    "reportIdentitySha256": "fe42a456580b1e0cdbbc5e6f5d764985c607f6b7f83df51eeb0c6f91f529f1e9"
+  },
+  "rows": [
+    {
+      "contractId": "IF-D02-MAINTENANCE-ACCESS",
+      "disposition": "EXCLUDE_FROM_BUILD_SCOPE_DEFAULT_DENY_NO_EXACT_SOURCE_DATUM",
+      "constructionAuthorizedForThisEndpoint": false,
+      "openingAuthorized": false,
+      "counterpartOwnerId": null,
+      "receiverId": null,
+      "beforeStateSetSha256": null,
+      "futureStateSetSha256": null,
+      "interfaceAccepted": false,
+      "rationale": "No exact source-side datum exists in the reviewed plans; no geometry or opening is invented."
+    },
+    {
+      "contractId": "IF-D02-PUMP-POWER-CONTROL",
+      "disposition": "EXCLUDE_FROM_BUILD_SCOPE_DEFAULT_DENY_NO_EXACT_SOURCE_DATUM",
+      "constructionAuthorizedForThisEndpoint": false,
+      "openingAuthorized": false,
+      "counterpartOwnerId": null,
+      "receiverId": null,
+      "beforeStateSetSha256": null,
+      "futureStateSetSha256": null,
+      "interfaceAccepted": false,
+      "rationale": "No exact source-side datum exists in the reviewed plans; no geometry or opening is invented."
+    },
+    {
+      "contractId": "IF-D02-OVERFLOW-RECEIVER",
+      "disposition": "EXCLUDE_FROM_BUILD_SCOPE_DEFAULT_DENY_NO_EXACT_SOURCE_DATUM",
+      "constructionAuthorizedForThisEndpoint": false,
+      "openingAuthorized": false,
+      "counterpartOwnerId": null,
+      "receiverId": null,
+      "beforeStateSetSha256": null,
+      "futureStateSetSha256": null,
+      "interfaceAccepted": false,
+      "rationale": "No exact source-side datum exists in the reviewed plans; no geometry or opening is invented."
+    },
+    {
+      "contractId": "IF-D05-HYDROLOGY-TO-RECEIVER",
+      "disposition": "EXCLUDE_FROM_BUILD_SCOPE_DEFAULT_DENY_NO_EXACT_SOURCE_DATUM",
+      "constructionAuthorizedForThisEndpoint": false,
+      "openingAuthorized": false,
+      "counterpartOwnerId": null,
+      "receiverId": null,
+      "beforeStateSetSha256": null,
+      "futureStateSetSha256": null,
+      "interfaceAccepted": false,
+      "rationale": "No exact source-side datum exists in the reviewed plans; no geometry or opening is invented."
+    },
+    {
+      "contractId": "IF-D06-CIRCUIT-NORMAL-TO-POWER-SOURCE",
+      "disposition": "RETAIN_SOURCE_SIDE_RESERVATION_CLOSED_TO_UNASSIGNED_COUNTERPART",
+      "constructionAuthorizedForThisEndpoint": false,
+      "openingAuthorized": false,
+      "counterpartOwnerId": null,
+      "receiverId": null,
+      "beforeStateSetSha256": null,
+      "futureStateSetSha256": null,
+      "interfaceAccepted": false,
+      "rationale": "Existing source-side geometry is retained as a non-opening reservation; no counterpart or transfer is inferred."
+    },
+    {
+      "contractId": "IF-D06-CIRCUIT-EMERGENCY-A-TO-POWER-SOURCE",
+      "disposition": "RETAIN_SOURCE_SIDE_RESERVATION_CLOSED_TO_UNASSIGNED_COUNTERPART",
+      "constructionAuthorizedForThisEndpoint": false,
+      "openingAuthorized": false,
+      "counterpartOwnerId": null,
+      "receiverId": null,
+      "beforeStateSetSha256": null,
+      "futureStateSetSha256": null,
+      "interfaceAccepted": false,
+      "rationale": "Existing source-side geometry is retained as a non-opening reservation; no counterpart or transfer is inferred."
+    },
+    {
+      "contractId": "IF-D06-CIRCUIT-EMERGENCY-B-TO-POWER-SOURCE",
+      "disposition": "RETAIN_SOURCE_SIDE_RESERVATION_CLOSED_TO_UNASSIGNED_COUNTERPART",
+      "constructionAuthorizedForThisEndpoint": false,
+      "openingAuthorized": false,
+      "counterpartOwnerId": null,
+      "receiverId": null,
+      "beforeStateSetSha256": null,
+      "futureStateSetSha256": null,
+      "interfaceAccepted": false,
+      "rationale": "Existing source-side geometry is retained as a non-opening reservation; no counterpart or transfer is inferred."
+    },
+    {
+      "contractId": "IF-D06-B07-TO-SURFACE",
+      "disposition": "RETAIN_SOURCE_SIDE_RESERVATION_CLOSED_TO_UNASSIGNED_COUNTERPART",
+      "constructionAuthorizedForThisEndpoint": false,
+      "openingAuthorized": false,
+      "counterpartOwnerId": null,
+      "receiverId": null,
+      "beforeStateSetSha256": null,
+      "futureStateSetSha256": null,
+      "interfaceAccepted": false,
+      "rationale": "Existing source-side geometry is retained as a non-opening reservation; no counterpart or transfer is inferred."
+    },
+    {
+      "contractId": "IF-D06-B07-TO-LOWER-LOBBY",
+      "disposition": "EXCLUDE_FROM_BUILD_SCOPE_DEFAULT_DENY_NO_EXACT_SOURCE_DATUM",
+      "constructionAuthorizedForThisEndpoint": false,
+      "openingAuthorized": false,
+      "counterpartOwnerId": null,
+      "receiverId": null,
+      "beforeStateSetSha256": null,
+      "futureStateSetSha256": null,
+      "interfaceAccepted": false,
+      "rationale": "No exact source-side datum exists in the reviewed plans; no geometry or opening is invented."
+    },
+    {
+      "contractId": "IF-D06-B07-TO-WATER-RECEIVER",
+      "disposition": "EXCLUDE_FROM_BUILD_SCOPE_DEFAULT_DENY_NO_EXACT_SOURCE_DATUM",
+      "constructionAuthorizedForThisEndpoint": false,
+      "openingAuthorized": false,
+      "counterpartOwnerId": null,
+      "receiverId": null,
+      "beforeStateSetSha256": null,
+      "futureStateSetSha256": null,
+      "interfaceAccepted": false,
+      "rationale": "No exact source-side datum exists in the reviewed plans; no geometry or opening is invented."
+    },
+    {
+      "contractId": "IF-P1-B11-DRAINAGE-TO-RECEIVER",
+      "disposition": "RETAIN_SOURCE_SIDE_RESERVATION_CLOSED_TO_UNASSIGNED_COUNTERPART",
+      "constructionAuthorizedForThisEndpoint": false,
+      "openingAuthorized": false,
+      "counterpartOwnerId": null,
+      "receiverId": null,
+      "beforeStateSetSha256": null,
+      "futureStateSetSha256": null,
+      "interfaceAccepted": false,
+      "rationale": "Existing source-side geometry is retained as a non-opening reservation; no counterpart or transfer is inferred."
+    },
+    {
+      "contractId": "IF-P1-B11-DRY-UTILITY-TO-SERVICE",
+      "disposition": "RETAIN_SOURCE_SIDE_RESERVATION_CLOSED_TO_UNASSIGNED_COUNTERPART",
+      "constructionAuthorizedForThisEndpoint": false,
+      "openingAuthorized": false,
+      "counterpartOwnerId": null,
+      "receiverId": null,
+      "beforeStateSetSha256": null,
+      "futureStateSetSha256": null,
+      "interfaceAccepted": false,
+      "rationale": "Existing source-side geometry is retained as a non-opening reservation; no counterpart or transfer is inferred."
+    },
+    {
+      "contractId": "IF-P1-B11-WET-UTILITY-TO-SERVICE",
+      "disposition": "RETAIN_SOURCE_SIDE_RESERVATION_CLOSED_TO_UNASSIGNED_COUNTERPART",
+      "constructionAuthorizedForThisEndpoint": false,
+      "openingAuthorized": false,
+      "counterpartOwnerId": null,
+      "receiverId": null,
+      "beforeStateSetSha256": null,
+      "futureStateSetSha256": null,
+      "interfaceAccepted": false,
+      "rationale": "Existing source-side geometry is retained as a non-opening reservation; no counterpart or transfer is inferred."
+    }
+  ],
+  "summary": {
+    "endpointCount": 13,
+    "sourceReservationsRetainedClosed": 7,
+    "excludedFromBuildScope": 6,
+    "counterpartAssignments": 0,
+    "acceptedInterfaces": 0,
+    "operationCellCount": 0,
+    "worldEditsAuthorized": false,
+    "r00Pass": false
+  },
+  "truthfulBoundary": [
+    "This is an architectural proposal disposition, not technical acceptance.",
+    "It does not create endpoint geometry, transition manifests, before/future state hashes, or owner acceptance.",
+    "The 13 unresolved endpoints remain outside executable construction scope."
+  ],
+  "reportIdentitySha256": "9e4358d871928f2bd9e1264d5a3cf39fc39996984aae2209cbd7af0de25ae2a0"
+}

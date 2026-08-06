@@ -12,6 +12,9 @@ import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 
+import { compileShipwreckReshapeOptimization } from
+  './lib/combined_zones_shipwreck_reshape_optimizer.mjs';
+
 const ROOT = process.cwd();
 const argv = process.argv.slice(2);
 const value = (flag, fallback) => {
@@ -19,7 +22,7 @@ const value = (flag, fallback) => {
   return index >= 0 && argv[index + 1] ? argv[index + 1] : fallback;
 };
 
-const GENERATED_AT = value('--generated-at', '2026-08-06T04:20:00Z');
+const GENERATED_AT = value('--generated-at', '2026-08-06T04:50:00Z');
 const OUTPUT = path.resolve(value(
   '--out',
   'docs/masterplans/05-combined-zones/phase1-shipwreck-best-choice-analysis.json',
@@ -41,6 +44,18 @@ const INPUTS = Object.freeze({
     'docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
   releaseContract:
     'docs/masterplans/05-combined-zones/phase1-release-contract.json',
+  d05FutureState:
+    'docs/masterplans/05-combined-zones/phase1-d05-future-state.json',
+  d05ConservativeDefaults:
+    'docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json',
+  d05OwnerAcceptance:
+    'docs/masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json',
+  connectorGeometry:
+    'docs/masterplans/05-combined-zones/phase1-connector-geometry.json',
+  acceptedCompleteSaveIntake:
+    'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260806T014133Z.json',
+  completeSaveCapture:
+    'data/worldsnap-combined-zones-complete-save-20260806T014133Z/combined-zones-complete-save-capture.json',
 });
 
 function absolute(filename) {
@@ -104,6 +119,30 @@ const sourceBindings = {
   releaseContract: binding(
     INPUTS.releaseContract,
     'R00 default-deny and later physical-release boundaries',
+  ),
+  d05FutureState: binding(
+    INPUTS.d05FutureState,
+    'selected FM-01 formula and exact baseline construction/support interval identities',
+  ),
+  d05ConservativeDefaults: binding(
+    INPUTS.d05ConservativeDefaults,
+    'exact protected-relic minimum planning exclusions',
+  ),
+  d05OwnerAcceptance: binding(
+    INPUTS.d05OwnerAcceptance,
+    'selected B09 route and minimum planning accommodation',
+  ),
+  connectorGeometry: binding(
+    INPUTS.connectorGeometry,
+    'exact B08 reservation and B09 endpoints',
+  ),
+  acceptedCompleteSaveIntake: binding(
+    INPUTS.acceptedCompleteSaveIntake,
+    'accepted complete-save package identity and completeness gate',
+  ),
+  completeSaveCapture: binding(
+    INPUTS.completeSaveCapture,
+    'immutable complete-save capture protocol and required-member identity',
   ),
 };
 
@@ -201,6 +240,24 @@ invariant(
     ?.stage === 'design'
     && releaseContract.worldEditAuthorized === false,
   'release-contract boundary drift',
+);
+
+const reshapeOptimization = await compileShipwreckReshapeOptimization({
+  root: ROOT,
+  inputs: INPUTS,
+});
+invariant(
+  reshapeOptimization.disposition?.exactReshapeGeometryCompiled === true
+    && reshapeOptimization.disposition
+      ?.exactConstructionInteractionInfluenceSupportRegeneratedFromSource === true
+    && reshapeOptimization.disposition
+      ?.exactZeroCorePlusSelectedPlanningMarginOverlap === true
+    && reshapeOptimization.disposition?.selectedPlanningMarginBlocks === 1
+    && reshapeOptimization.disposition?.expertPositiveMarginAccepted === false
+    && reshapeOptimization.disposition?.canonicalD05G03G06IntegrationComplete === false
+    && reshapeOptimization.disposition?.technicalTreatmentAccepted === false
+    && reshapeOptimization.disposition?.operationCompilationAuthorized === false,
+  'reshape optimizer disposition drift',
 );
 
 const criteria = [
@@ -329,14 +386,22 @@ const alternatives = [
       inventoryMoveCount: 0,
       currentOverlapCellCountToEliminateByGeometryRegeneration: 126,
       currentProtectedRelicWithheldConstructionCellCountRetained: 1977,
-      outputGeometryCellSet: null,
-      reasonOutputIsNull: 'The positive margin and minimal local reshape must be compiled and compared next; this decision gate does not fabricate geometry.',
+      selectedPlanningReshapeId:
+        reshapeOptimization.selectedPlanningReshape.id,
+      selectedPlanningMarginBlocks:
+        reshapeOptimization.disposition.selectedPlanningMarginBlocks,
+      noBuildColumnCount:
+        reshapeOptimization.selectedPlanningReshape.sparseNoBuildPlan.columnCount,
+      lostCandidateAddedSolidCellCount:
+        reshapeOptimization.selectedPlanningReshape.regeneratedDomains
+          .construction.lostCellCountFromBase,
+      exactCorePlusPlanningMarginInfluenceOverlapCellCount:
+        reshapeOptimization.selectedPlanningReshape.exactCorePlusPlanningMarginOverlap
+          .influenceCellCount,
     },
     remainingWork: [
-      'compile bounded positive-margin candidates and a minimal local FM-01 toe/no-build reshape',
-      'recompute P1-B10 construction, interaction, influence, and support-gap evidence from source geometry',
-      'require zero shipwreck core-plus-margin overlap without deleting an influence record independently of its source',
-      'rerun G03, G06, ownership, and interface checks before technical acceptance',
+      'review and accept an expert positive margin or explicitly retain the one-cell planning margin as the accepted technical margin',
+      'consume the selected sparse reshape in the canonical D05/G03 pipeline and rerun G06, ownership, and interface checks as one integrated closure',
     ],
   }),
   option({
@@ -464,7 +529,9 @@ const analysisPayload = {
     protectedRelicWithheldConstructionCellCount:
       p1b10.construction.exclusions.protectedRelicWithheldFillCellCount,
     shipwreckCoreCellCount: shipwreckRelic.evidenceBackedDefaultDenyCore.cellCount,
-    positiveMarginBlocks: null,
+    selectedPlanningMarginBlocks:
+      reshapeOptimization.disposition.selectedPlanningMarginBlocks,
+    acceptedExpertMarginBlocks: null,
     positiveMarginFrozen: false,
     controlledRemovalMayBeDesigned: true,
     controlledRemovalRequired: false,
@@ -491,27 +558,29 @@ const analysisPayload = {
     ],
   },
   alternatives,
+  reshapeOptimization,
   recommendation: {
     alternativeId: recommended.id,
     weightedScore: recommended.weightedScore,
     planningDirectionSelectedForNextOfflineDevelopment: true,
+    exactPlanningGeometryCompiled: true,
     technicallyAcceptedGeometry: false,
     physicalImplementationAuthorized: false,
     removalAuthorizationRetainedAsFallback: true,
     removalIsCurrentPreferredPath: false,
     influenceOnlySubtractionRejectedAsEvidenceSuppression: true,
     reason: 'The only exact conflict is a nonphysical influence/support reservation. Local FM-01 regeneration can address its source while preserving the shipwreck, avoiding three unknown loot inventories and 598 irreversible candidate edits. Fabric removal would not erase the immutable generated-start record and is therefore not the minimum or clearest solution.',
-    nextArtifact: 'compile bounded positive-margin alternatives and the minimum local P1-B10 toe/no-build reshape; regenerate construction, interaction, influence, and support evidence from the source geometry and require zero core-plus-margin overlap',
+    nextArtifact: 'consume the selected sparse south-open reshape in one integrated canonical D05/G03/G06/ownership/interface closure run; retain the one-cell margin as planning-only until expert review accepts it',
   },
 };
 
 const report = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   id: 'combined-zones-phase1-shipwreck-best-choice-analysis',
   generatedAtUtc: GENERATED_AT,
   status:
-    'PASS_BEST_CHOICE_PRESERVE_AND_LOCAL_P1_B10_RESHAPE_SELECTED_REMOVAL_FALLBACK_ONLY',
-  purpose: 'Choose the best next response to the exact P1-B10/shipwreck hold before investing in additional technical or physical work.',
+    'PASS_BEST_CHOICE_AND_EXACT_MINIMUM_SOUTH_OPEN_RESHAPE_COMPILED_REMOVAL_FALLBACK_ONLY',
+  purpose: 'Choose and compile the smallest root-cause P1-B10/shipwreck reshape against the accepted complete save before canonical closure or physical work.',
   sourceBindings,
   analysisPayload,
   disposition: {
@@ -522,14 +591,21 @@ const report = {
     rootCauseIntegrityGateEnforced: true,
     recommendedAlternativeId: recommended.id,
     recommendationReadyForOfflineDevelopment: true,
-    exactReshapeGeometryCompiled: false,
+    exactReshapeGeometryCompiled: true,
+    exactConstructionInteractionInfluenceSupportRegeneratedFromSource: true,
+    exactZeroCorePlusSelectedPlanningMarginOverlap: true,
+    selectedPlanningMarginBlocks:
+      reshapeOptimization.disposition.selectedPlanningMarginBlocks,
+    expertPositiveMarginAccepted: false,
+    canonicalD05G03G06IntegrationComplete: false,
     technicalTreatmentAccepted: false,
     removalPathActive: false,
     removalPathRetainedAsFallback: true,
     operationCompilationAuthorized: false,
   },
   safetyBoundary: {
-    proposedGeometryCellCount: 0,
+    proposedGeometryCellCount:
+      reshapeOptimization.selectedPlanningReshape.regeneratedDomains.construction.cellCount,
     acceptedGeometryCellCount: 0,
     acceptedRemovalTargetCellCount: 0,
     operationCellCount: 0,
@@ -537,16 +613,17 @@ const report = {
     inventoryMoveCount: 0,
     serverStarted: false,
     liveWorldContacted: false,
+    immutableCompleteSaveReadOnlyContacted: true,
     physicalReleaseAuthorized: false,
     worldEditAuthorized: false,
     executable: false,
   },
 };
 report.analysisPayloadSha256 = sha256(
-  `combined-zones-shipwreck-best-choice-payload-v1\n${JSON.stringify(analysisPayload)}\n`,
+  `combined-zones-shipwreck-best-choice-payload-v2\n${JSON.stringify(analysisPayload)}\n`,
 );
 report.reportIdentitySha256 = sha256(
-  `combined-zones-shipwreck-best-choice-report-v1\n${JSON.stringify({
+  `combined-zones-shipwreck-best-choice-report-v2\n${JSON.stringify({
     schemaVersion: report.schemaVersion,
     id: report.id,
     generatedAtUtc: report.generatedAtUtc,
@@ -570,10 +647,13 @@ const markdown = `# Combined Zones shipwreck best-choice analysis\n\n`
     `| ${index + 1} | ${alternative.label} | ${alternative.weightedScore}/100 | ${alternative.eligible ? 'YES' : 'NO'} | ${alternative.exactImpact.physicalTargetCandidateCellCount ?? alternative.exactImpact.physicalTargetCellCount ?? 0} |`
   )).join('\n')
   + `\n\nThe influence-only subtraction is rejected because the source support-gap treatment is still null; removing its evidence would manufacture clearance. No-change is safe but cannot advance G06. Full removal is fallback-only: it introduces 598 candidate edits and three unknown loot inventories, while the generated-start record remains evidence even after fabric removal.\n\n`
-  + `## Next bounded artifact\n\n`
+  + `## Exact reshape optimization\n\n`
+  + `The optimizer read the accepted immutable complete save directly and reproduced the current P1-B10 construction, interaction, influence, and support hashes before testing **${reshapeOptimization.boundedSearch.candidateCount}** combinations: three topology strategies at positive planning margins of 1–4 blocks.\n\n`
+  + `The selected **south-open no-build corridor** uses a one-cell planning margin plus one cell for the external six-face interaction shell. Its ${reshapeOptimization.selectedPlanningReshape.sparseNoBuildPlan.columnCount.toLocaleString('en-US')} current-state preservation columns reach the south mountain exterior. It removes ${reshapeOptimization.selectedPlanningReshape.regeneratedDomains.construction.lostCellCountFromBase.toLocaleString('en-US')} candidate-added-solid cells and ${reshapeOptimization.selectedPlanningReshape.regeneratedDomains.supportGap.removedCellCountFromBase.toLocaleString('en-US')} support-gap cells from the source model. Regenerated construction, interaction, support, and influence all have **exact zero overlap** with the core plus selected planning margin. B08, B09, the summit column, and construction-column connectivity remain unchanged.\n\n`
+  + `An enclosed pocket was rejected because it would bury the relic in a future access/drainage trap. A broad south-toe setback passed geometry gates but discarded more mountain volume. The one-cell margin remains planning-only; expert positive-margin acceptance and canonical D05/G03/G06 integration are still HOLD.\n\n`
+  + `## Next integrated closure\n\n`
   + `${analysisPayload.recommendation.nextArtifact}.\n\n`
-  + `The reshape compiler must compare bounded positive-margin choices, minimize lost mountain volume, regenerate construction/interaction/influence/support from source, and fail unless the core-plus-margin overlap is exactly zero.\n\n`
-  + `No geometry was emitted, no server was started, no live world was contacted, and no command or operation was generated.\n\n`
+  + `Exact sparse planning geometry was emitted. No server process was queried or started, no live world was contacted, and no block command, inventory move, operation, or release authorization was generated.\n\n`
   + `Analysis payload SHA-256: \`${report.analysisPayloadSha256}\`\n\n`
   + `Report identity SHA-256: \`${report.reportIdentitySha256}\`\n`;
 
@@ -594,6 +674,14 @@ process.stdout.write(`${JSON.stringify({
     report.analysisPayload.actualBlocker.interactionOverlapCellCount,
   recommendedAlternativeId: report.disposition.recommendedAlternativeId,
   recommendedWeightedScore: recommended.weightedScore,
+  selectedReshapeId: reshapeOptimization.selectedPlanningReshape.id,
+  selectedPlanningMarginBlocks: report.disposition.selectedPlanningMarginBlocks,
+  noBuildColumnCount:
+    reshapeOptimization.selectedPlanningReshape.sparseNoBuildPlan.columnCount,
+  selectedConstructionCellCount: report.safetyBoundary.proposedGeometryCellCount,
+  exactCorePlusPlanningMarginInfluenceOverlapCellCount:
+    reshapeOptimization.selectedPlanningReshape.exactCorePlusPlanningMarginOverlap
+      .influenceCellCount,
   operationCellCount: report.safetyBoundary.operationCellCount,
   analysisPayloadSha256: report.analysisPayloadSha256,
   reportIdentitySha256: report.reportIdentitySha256,

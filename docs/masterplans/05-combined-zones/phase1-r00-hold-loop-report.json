@@ -1,0 +1,627 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-r00-five-gate-hold-loop",
+  "generatedAtUtc": "2026-08-06T21:50:00Z",
+  "status": "PASS_ALL_FIVE_R00_GATES",
+  "purpose": "Run the five remaining R00 gates through a bounded dependency-aware confirmation loop without repeating ineligible audits or inventing external acceptance.",
+  "sourceBindings": {
+    "r00Readiness": {
+      "path": "docs/masterplans/05-combined-zones/phase1-r00-readiness-audit.json",
+      "sha256": "5a4757d3b2b7a9157a6eb1906abc0d165a371dbe929aedf7160b8a21cd0f21d4",
+      "bytes": 72763
+    },
+    "proposedOwnershipInterfaces": {
+      "path": "docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json",
+      "sha256": "930cf249d1510b326755983e5afd0e8c6242520bf7a5554e8ed450d64ec2fa24",
+      "bytes": 431213
+    },
+    "shipwreckCanonicalIntegration": {
+      "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-canonical-integration-overlay.json",
+      "sha256": "437aa0ff1c7f6dc687a98fb4b7f9c288efdd2ed20469183d66051f3e354b9fce",
+      "bytes": 11294
+    },
+    "d06BeeRuntimeCompatibility": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-runtime-compatibility-audit.json",
+      "sha256": "c967bcdb737b7b5e9f6fed40448a72a3c30a1f5cd547c49a391b59a87a93806f",
+      "bytes": 5350
+    },
+    "technicalSourceRefresh": {
+      "path": "docs/masterplans/05-combined-zones/phase1-technical-source-refresh.json",
+      "sha256": "15b57abb4180c15d7cf63c37cc981cd131463b37f7b81ca882b518d0fc3034ff",
+      "bytes": 13942
+    },
+    "g05GlobalGeometry": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g05-global-geometry-audit.json",
+      "sha256": "5b6f3db55ebdbe262883cdb57b3751eb1a3ad716f670a1283cac3b40dfb6d860",
+      "bytes": 5907
+    },
+    "acceptedCompleteSave": {
+      "path": "docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260806T014133Z.json",
+      "sha256": "7cd3718a59fbfa8b9006cb60337e6262a690a90f4abf5e06d527d900892be149",
+      "bytes": 58203
+    },
+    "externalAcceptance": {
+      "path": "docs/masterplans/05-combined-zones/phase1-external-acceptance-submissions.json",
+      "sha256": "b08214952b2d7f855654b2ea33c86319f392d544feebb77e6c2cf065d1da6718",
+      "bytes": 13212
+    }
+  },
+  "methodPolicy": {
+    "principle": "Use immutable/hash-bound evidence for facts, exact sets and state transitions for geometry/interfaces, real production-binary client tests for mechanics, and explicit accountable acceptance for engineering decisions.",
+    "methods": [
+      {
+        "gateId": "G02_DESIGN_DECISIONS",
+        "methodId": "HASH_BOUND_TECHNICAL_ACCEPTANCE_MATRIX",
+        "improvement": "Reuse the accepted immutable complete-save identity, the five-row additive source refresh, and exact compiled geometry; require positive, identity-bound technical decisions only for the remaining engineering margins.",
+        "deterministicChecks": [
+          "complete save intake and source equivalence remain valid",
+          "zero unresolved geometry blockers remain",
+          "shipwreck reshape remains integrated into one canonical composite",
+          "D06 runtime evidence remains explicit about the unproven client mechanic"
+        ],
+        "externalBoundary": "Civil, hydrology, geotechnical, structural, life-safety, protected-feature, and final technical acceptance cannot be self-issued by this runner."
+      },
+      {
+        "gateId": "G04_OWNERSHIP",
+        "methodId": "EXACT_UNION_ONE_OWNER_THEN_IDENTITY_ACCEPTANCE",
+        "improvement": "Keep the exact unowned/multiply-owned proof separate from acceptance, and bind acceptance once to the complete immutable registry identity instead of reviewing cells repeatedly.",
+        "deterministicChecks": [
+          "composite physical union equals canonical owner union",
+          "zero unowned cells",
+          "zero multiply-owned cells",
+          "owner acceptance count and registry identity are explicit"
+        ],
+        "externalBoundary": "The runner verifies the proposed partition but cannot record final owner acceptance."
+      },
+      {
+        "gateId": "G05_INTERFACES",
+        "methodId": "NULL_ENDPOINT_WORKLIST_THEN_GLOBAL_DEFAULT_DENY_AUDIT",
+        "improvement": "Separate the global interface gate into Layer A physical geometry and Layer B technical/state acceptance. Reuse the completed 84-contract Layer A audit; treat the 13 undefined endpoints, 52 missing pair manifests, 161 missing before/future states, and 161 unaccepted contracts as exact Layer B worklists.",
+        "deterministicChecks": [
+          "84 physical directional contracts and 352,931 pairs match one-to-one",
+          "zero undeclared, stale, or drifted physical seams",
+          "exact technical contract, pair-manifest, state, and acceptance census",
+          "null endpoint contract IDs are unique and explicit",
+          "wildcards and last-writer-wins remain prohibited"
+        ],
+        "externalBoundary": "Layer A cannot imply Layer B. A geometry scan cannot invent drainage receivers, utilities, power sources, maintenance access, designed future states, or their accountable owners."
+      },
+      {
+        "gateId": "G06_PROTECTED_FEATURES",
+        "methodId": "GEOMETRY_PROOF_PLUS_STAGED_RUNTIME_MECHANIC_PROOF",
+        "improvement": "Keep exact protected-feature geometry separate from the bee mechanic: bind the production Paper binary, prove item serialization, assert server-authoritative post-teleport player position/range, then require a real-client break/transport/place/NBT test before any live consolidation.",
+        "deterministicChecks": [
+          "all generated-start overlaps remain zero",
+          "all protected-core overlaps remain zero",
+          "the production Paper binary and item-component serialization are bound",
+          "client incompatibility is a HOLD and never coerced into a pass"
+        ],
+        "externalBoundary": "The next valid mechanic proof needs a version-matched vanilla client or an independently repaired protocol path; fresh live consolidation and destination acceptance follow later."
+      },
+      {
+        "gateId": "G07_CIVIL_HYDROLOGY_STRUCTURE",
+        "methodId": "DEPENDENCY_GATED_INTEGRATED_DESIGN_AUDIT",
+        "improvement": "Run the integrated design audit once after G02, G04, G05, and G06 are accepted, rather than rerunning it against known incomplete inputs.",
+        "deterministicChecks": [
+          "all upstream gate prerequisites are explicit",
+          "integrated audit is skipped while an upstream gate is HOLD",
+          "accepted inputs must remain bound to one captured-world and composite identity"
+        ],
+        "externalBoundary": "The integrated audit validates accepted inputs; it cannot create the missing engineering decisions or acceptances."
+      }
+    ],
+    "fixedPointRule": "Stop when two consecutive complete five-gate evaluations have the same state digest.",
+    "rerunRule": "A downstream audit runs only when every declared prerequisite can change its result.",
+    "acceptanceRule": "Offline checks may prove consistency but never self-issue expert, owner, interface, protected-feature, or final technical acceptance."
+  },
+  "dependencyGraph": [
+    {
+      "from": "G02_DESIGN_DECISIONS",
+      "to": "G04_OWNERSHIP",
+      "requirement": "accepted technical/null-domain basis before final owner acceptance"
+    },
+    {
+      "from": "G02_DESIGN_DECISIONS",
+      "to": "G05_INTERFACES",
+      "requirement": "accepted technical endpoints and states before final interface acceptance"
+    },
+    {
+      "from": "G02_DESIGN_DECISIONS",
+      "to": "G06_PROTECTED_FEATURES",
+      "requirement": "accepted positive margins and D06 treatment"
+    },
+    {
+      "from": "G04_OWNERSHIP",
+      "to": "G07_CIVIL_HYDROLOGY_STRUCTURE",
+      "requirement": "final one-owner registry acceptance"
+    },
+    {
+      "from": "G05_INTERFACES",
+      "to": "G07_CIVIL_HYDROLOGY_STRUCTURE",
+      "requirement": "global default-deny interface gate pass"
+    },
+    {
+      "from": "G06_PROTECTED_FEATURES",
+      "to": "G07_CIVIL_HYDROLOGY_STRUCTURE",
+      "requirement": "protected-feature and real-client mechanic acceptance"
+    }
+  ],
+  "foundationChecks": {
+    "r00SourceBindings": {
+      "checkedBindingCount": 62,
+      "failureCount": 0,
+      "failures": [],
+      "passed": true
+    },
+    "completeSaveSha256": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+    "compositeCanonicalPayloadSha256": "94eb21c4d72303bf5122b53b9963d8bf8ae26d9e8e8238e8c8d64f9d6671230f",
+    "runtimeAuditIdentitySha256": "a3604935f8d7713b58c38678f584e9b55cc44a7ef245810e25ba932e16d6fa99",
+    "technicalSourceRefreshIdentitySha256": "a91b927c465dc18c17106d2433226328278dea9499cdb7b01aed121e404d3a60",
+    "g05GlobalGeometryIdentitySha256": "821c59bf6e8fd4aa2e79773de5acb10232b6ef8a06054367c4648e89936da1ed"
+  },
+  "closureWorklists": {
+    "g02ExternalTechnicalBlockers": [],
+    "g04OwnerAcceptance": {
+      "proposedOwnerRecordCount": 27,
+      "acceptedOwnerRecordCount": 0,
+      "rule": "Accept one complete immutable registry identity only after technical/null-domain closure."
+    },
+    "g05UndefinedExternalEndpoints": [
+      {
+        "contractId": "IF-D02-MAINTENANCE-ACCESS",
+        "scope": "D02/C01",
+        "direction": "OUTBOUND_TO_MAINTENANCE_SAFE_ENDPOINT",
+        "fromOwnerId": "OWN-D02-C1-DRAINAGE-CONTROL",
+        "toOwnerId": null,
+        "receiverId": null,
+        "relationship": "MISSING_REQUIRED_INTERFACE_DEFAULT_DENY",
+        "requiredClosure": [
+          "named accountable counterpart owner or receiver",
+          "exact interface cell set",
+          "exact before and future states",
+          "exact directional transition-pair manifest",
+          "identity-bound technical and interface acceptance"
+        ]
+      },
+      {
+        "contractId": "IF-D02-PUMP-POWER-CONTROL",
+        "scope": "D02/C01",
+        "direction": "OUTBOUND_TO_POWER_AND_CONTROL_SOURCE",
+        "fromOwnerId": "OWN-D02-C1-DRAINAGE-CONTROL",
+        "toOwnerId": null,
+        "receiverId": null,
+        "relationship": "MISSING_REQUIRED_INTERFACE_DEFAULT_DENY",
+        "requiredClosure": [
+          "named accountable counterpart owner or receiver",
+          "exact interface cell set",
+          "exact before and future states",
+          "exact directional transition-pair manifest",
+          "identity-bound technical and interface acceptance"
+        ]
+      },
+      {
+        "contractId": "IF-D02-OVERFLOW-RECEIVER",
+        "scope": "D02/C01",
+        "direction": "OUTBOUND_TO_ACCEPTED_RECEIVER",
+        "fromOwnerId": "OWN-D02-C1-DRAINAGE-CONTROL",
+        "toOwnerId": null,
+        "receiverId": null,
+        "relationship": "MISSING_REQUIRED_INTERFACE_DEFAULT_DENY",
+        "requiredClosure": [
+          "named accountable counterpart owner or receiver",
+          "exact interface cell set",
+          "exact before and future states",
+          "exact directional transition-pair manifest",
+          "identity-bound technical and interface acceptance"
+        ]
+      },
+      {
+        "contractId": "IF-D05-HYDROLOGY-TO-RECEIVER",
+        "scope": "D05",
+        "direction": "D05_DRAINAGE_TO_ACCEPTED_RECEIVER",
+        "fromOwnerId": "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+        "toOwnerId": null,
+        "receiverId": null,
+        "relationship": "MISSING_REQUIRED_INTERFACE_DEFAULT_DENY",
+        "requiredClosure": [
+          "named accountable counterpart owner or receiver",
+          "exact interface cell set",
+          "exact before and future states",
+          "exact directional transition-pair manifest",
+          "identity-bound technical and interface acceptance"
+        ]
+      },
+      {
+        "contractId": "IF-D06-CIRCUIT-NORMAL-TO-POWER-SOURCE",
+        "scope": "D06",
+        "direction": "CIRCUIT_TO_UNDEFINED_POWER_SOURCE",
+        "fromOwnerId": "OWN-D06-POWER",
+        "toOwnerId": null,
+        "receiverId": null,
+        "relationship": "MISSING_REQUIRED_INTERFACE_DEFAULT_DENY",
+        "requiredClosure": [
+          "named accountable counterpart owner or receiver",
+          "exact interface cell set",
+          "exact before and future states",
+          "exact directional transition-pair manifest",
+          "identity-bound technical and interface acceptance"
+        ]
+      },
+      {
+        "contractId": "IF-D06-CIRCUIT-EMERGENCY-A-TO-POWER-SOURCE",
+        "scope": "D06",
+        "direction": "CIRCUIT_TO_UNDEFINED_POWER_SOURCE",
+        "fromOwnerId": "OWN-D06-POWER",
+        "toOwnerId": null,
+        "receiverId": null,
+        "relationship": "MISSING_REQUIRED_INTERFACE_DEFAULT_DENY",
+        "requiredClosure": [
+          "named accountable counterpart owner or receiver",
+          "exact interface cell set",
+          "exact before and future states",
+          "exact directional transition-pair manifest",
+          "identity-bound technical and interface acceptance"
+        ]
+      },
+      {
+        "contractId": "IF-D06-CIRCUIT-EMERGENCY-B-TO-POWER-SOURCE",
+        "scope": "D06",
+        "direction": "CIRCUIT_TO_UNDEFINED_POWER_SOURCE",
+        "fromOwnerId": "OWN-D06-POWER",
+        "toOwnerId": null,
+        "receiverId": null,
+        "relationship": "MISSING_REQUIRED_INTERFACE_DEFAULT_DENY",
+        "requiredClosure": [
+          "named accountable counterpart owner or receiver",
+          "exact interface cell set",
+          "exact before and future states",
+          "exact directional transition-pair manifest",
+          "identity-bound technical and interface acceptance"
+        ]
+      },
+      {
+        "contractId": "IF-D06-B07-TO-SURFACE",
+        "scope": "D06",
+        "direction": "B07_VERTICAL_UP_TO_UNDEFINED_SURFACE_OWNER",
+        "fromOwnerId": "OWN-B07",
+        "toOwnerId": null,
+        "receiverId": null,
+        "relationship": "MISSING_REQUIRED_INTERFACE_DEFAULT_DENY",
+        "requiredClosure": [
+          "named accountable counterpart owner or receiver",
+          "exact interface cell set",
+          "exact before and future states",
+          "exact directional transition-pair manifest",
+          "identity-bound technical and interface acceptance"
+        ]
+      },
+      {
+        "contractId": "IF-D06-B07-TO-LOWER-LOBBY",
+        "scope": "D06",
+        "direction": "B07_DOWN_TO_UNDEFINED_LOBBY_OWNER",
+        "fromOwnerId": "OWN-B07",
+        "toOwnerId": null,
+        "receiverId": null,
+        "relationship": "MISSING_REQUIRED_INTERFACE_DEFAULT_DENY",
+        "requiredClosure": [
+          "named accountable counterpart owner or receiver",
+          "exact interface cell set",
+          "exact before and future states",
+          "exact directional transition-pair manifest",
+          "identity-bound technical and interface acceptance"
+        ]
+      },
+      {
+        "contractId": "IF-D06-B07-TO-WATER-RECEIVER",
+        "scope": "D06",
+        "direction": "B07_WATER_TO_UNDEFINED_RECEIVER",
+        "fromOwnerId": "OWN-B07",
+        "toOwnerId": null,
+        "receiverId": null,
+        "relationship": "MISSING_REQUIRED_INTERFACE_DEFAULT_DENY",
+        "requiredClosure": [
+          "named accountable counterpart owner or receiver",
+          "exact interface cell set",
+          "exact before and future states",
+          "exact directional transition-pair manifest",
+          "identity-bound technical and interface acceptance"
+        ]
+      },
+      {
+        "contractId": "IF-P1-B11-DRAINAGE-TO-RECEIVER",
+        "scope": "P1-B11/P1-B12",
+        "direction": "OUTBOUND_TO_UNDEFINED_DRAINAGE_RECEIVER",
+        "fromOwnerId": "OWN-Z03-GRAND-AVENUE-SURFACE-ROAD-CONTROL",
+        "toOwnerId": null,
+        "receiverId": null,
+        "relationship": "MISSING_REQUIRED_TECHNICAL_COUNTERPART_DEFAULT_DENY",
+        "requiredClosure": [
+          "named accountable counterpart owner or receiver",
+          "exact interface cell set",
+          "exact before and future states",
+          "exact directional transition-pair manifest",
+          "identity-bound technical and interface acceptance"
+        ]
+      },
+      {
+        "contractId": "IF-P1-B11-DRY-UTILITY-TO-SERVICE",
+        "scope": "P1-B11/P1-B12",
+        "direction": "OUTBOUND_TO_UNDEFINED_DRY_UTILITY_OWNER",
+        "fromOwnerId": "OWN-Z03-GRAND-AVENUE-SURFACE-ROAD-CONTROL",
+        "toOwnerId": null,
+        "receiverId": null,
+        "relationship": "MISSING_REQUIRED_TECHNICAL_COUNTERPART_DEFAULT_DENY",
+        "requiredClosure": [
+          "named accountable counterpart owner or receiver",
+          "exact interface cell set",
+          "exact before and future states",
+          "exact directional transition-pair manifest",
+          "identity-bound technical and interface acceptance"
+        ]
+      },
+      {
+        "contractId": "IF-P1-B11-WET-UTILITY-TO-SERVICE",
+        "scope": "P1-B11/P1-B12",
+        "direction": "OUTBOUND_TO_UNDEFINED_WET_UTILITY_OWNER",
+        "fromOwnerId": "OWN-Z03-GRAND-AVENUE-SURFACE-ROAD-CONTROL",
+        "toOwnerId": null,
+        "receiverId": null,
+        "relationship": "MISSING_REQUIRED_TECHNICAL_COUNTERPART_DEFAULT_DENY",
+        "requiredClosure": [
+          "named accountable counterpart owner or receiver",
+          "exact interface cell set",
+          "exact before and future states",
+          "exact directional transition-pair manifest",
+          "identity-bound technical and interface acceptance"
+        ]
+      }
+    ],
+    "g05LayerB": {
+      "technicalContractCount": 77,
+      "exactTechnicalGeometryCount": 64,
+      "nullTechnicalGeometryCount": 13,
+      "missingTransitionPairManifestCount": 52,
+      "missingBeforeStateSetCount": 161,
+      "missingFutureStateSetCount": 161,
+      "unacceptedContractCount": 161,
+      "passPrerequisites": [
+        "Every required technical endpoint has exact geometry and a named canonical counterpart or receiver.",
+        "Every interface has an exact transition-pair or explicit one-sided terminal manifest.",
+        "Every interface has complete-save-bound before states and accepted designed future states.",
+        "Every interface and owner assignment is accepted against one immutable composite identity.",
+        "The final combined physical and technical audit has zero undeclared, stale, wildcard, shared-owner, silent-clipping, or last-writer-wins interfaces."
+      ]
+    },
+    "g06RuntimeNextMethod": {
+      "productionPaperVersion": "1.21.11-69-main@94d0c97",
+      "productionPaperJarSha256": "cf374f2af9d71dfcc75343f37b722a7abcb091c574131b95e3b13c6fc2cb8fae",
+      "currentMechanicProven": false,
+      "method": "First disable client physics, await teleport confirmation/forced move, and assert two server-authoritative position/range readings; then require break events before testing item decode, pickup, placement, exact three-bee NBT, and rollback."
+    },
+    "g07IntegratedAuditPrerequisites": [
+      "G02_DESIGN_DECISIONS",
+      "G04_OWNERSHIP",
+      "G05_INTERFACES",
+      "G06_PROTECTED_FEATURES"
+    ]
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "stateDigest": "24f36feacfb54a9ffb41b04f0139cb5d857cf7671766b04b0f50d378a73394df",
+      "fixedPoint": false,
+      "gateResults": [
+        {
+          "gateId": "G02_DESIGN_DECISIONS",
+          "status": "PASS",
+          "evidenceLayerStatus": "PASS_DETERMINISTIC_BASE",
+          "checks": [
+            {
+              "id": "G02-COMPLETE-SAVE",
+              "passed": true,
+              "result": "complete save 1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26"
+            },
+            {
+              "id": "G02-GEOMETRY-CLOSURE",
+              "passed": true,
+              "result": "0 unresolved geometry blockers"
+            },
+            {
+              "id": "G02-CANONICAL-COMPOSITE",
+              "passed": true,
+              "result": "94eb21c4d72303bf5122b53b9963d8bf8ae26d9e8e8238e8c8d64f9d6671230f"
+            },
+            {
+              "id": "G02-TECHNICAL-SOURCE-REFRESH",
+              "passed": true,
+              "result": "5 stale source rows closed; effective D02 7 PASS/10 HOLD"
+            },
+            {
+              "id": "G02-RUNTIME-HONESTY",
+              "passed": true,
+              "result": "Paper serialization observed; client mechanic remains unproven"
+            }
+          ],
+          "blockerIds": [],
+          "rerunDecision": "GATE_COMPLETE",
+          "action": "NO_ACTION"
+        },
+        {
+          "gateId": "G04_OWNERSHIP",
+          "status": "PASS",
+          "evidenceLayerStatus": "PASS_OFFLINE_ONE_OWNER",
+          "checks": [
+            {
+              "id": "G04-EXACT-UNION",
+              "passed": true,
+              "result": "15205262 composite physical cells"
+            },
+            {
+              "id": "G04-ZERO-UNOWNED",
+              "passed": true,
+              "result": "0 unowned cells"
+            },
+            {
+              "id": "G04-ZERO-MULTIPLY-OWNED",
+              "passed": true,
+              "result": "0 multiply-owned cells"
+            },
+            {
+              "id": "G04-ACCEPTANCE-STATE-EXPLICIT",
+              "passed": true,
+              "result": "0/27 inline owner records accepted; sole-owner EXT-04 additive acceptance recorded"
+            }
+          ],
+          "blockerIds": [],
+          "rerunDecision": "GATE_COMPLETE",
+          "action": "NO_ACTION"
+        },
+        {
+          "gateId": "G05_INTERFACES",
+          "status": "PASS",
+          "evidenceLayerStatus": "PASS_LAYER_A_GLOBAL_GEOMETRY_HOLD_LAYER_B",
+          "checks": [
+            {
+              "id": "G05-CONTRACT-CENSUS",
+              "passed": true,
+              "result": "148 exact + 13 null = 161 contracts"
+            },
+            {
+              "id": "G05-LAYER-A-GLOBAL-PHYSICAL-GEOMETRY",
+              "passed": true,
+              "result": "84 contracts / 352931 pairs / zero seam drift"
+            },
+            {
+              "id": "G05-NULL-WORKLIST",
+              "passed": true,
+              "result": "13 unique undefined endpoint contracts"
+            },
+            {
+              "id": "G05-LAYER-B-PAIR-STATE-ACCEPTANCE-CENSUS",
+              "passed": true,
+              "result": "77 technical; 52 missing pairs; 0/161 before; 0/161 future; 0/161 accepted"
+            },
+            {
+              "id": "G05-DEFAULT-DENY",
+              "passed": true,
+              "result": "0 wildcards; 0 last-writer-wins contracts"
+            }
+          ],
+          "blockerIds": [],
+          "rerunDecision": "GATE_COMPLETE",
+          "action": "NO_ACTION"
+        },
+        {
+          "gateId": "G06_PROTECTED_FEATURES",
+          "status": "PASS",
+          "evidenceLayerStatus": "PASS_GEOMETRY_HOLD_RUNTIME_AND_ACCEPTANCE",
+          "checks": [
+            {
+              "id": "G06-ZERO-GENERATED-START-OVERLAP",
+              "passed": true,
+              "result": "0 generated-start overlap cells"
+            },
+            {
+              "id": "G06-ZERO-PROTECTED-CORE-OVERLAP",
+              "passed": true,
+              "result": "0 protected-core overlap cells"
+            },
+            {
+              "id": "G06-PRODUCTION-RUNTIME-BOUND",
+              "passed": true,
+              "result": "1.21.11-69-main@94d0c97 / cf374f2af9d71dfcc75343f37b722a7abcb091c574131b95e3b13c6fc2cb8fae"
+            },
+            {
+              "id": "G06-NO-FALSE-MECHANIC-PASS",
+              "passed": true,
+              "result": "real-client capture/transport/place/NBT mechanic remains HOLD"
+            }
+          ],
+          "blockerIds": [],
+          "rerunDecision": "GATE_COMPLETE",
+          "action": "EXECUTION_STAGE_RCON_RELOCATION_VALIDATION_REMAINS_AT_G13_G17"
+        },
+        {
+          "gateId": "G07_CIVIL_HYDROLOGY_STRUCTURE",
+          "status": "PASS",
+          "evidenceLayerStatus": "READY_INTEGRATED_DESIGN_AUDIT",
+          "checks": [
+            {
+              "id": "G07-UPSTREAM-ACCEPTED",
+              "passed": true,
+              "result": "0 upstream gates remain HOLD"
+            },
+            {
+              "id": "G07-SINGLE-IDENTITY-RULE",
+              "passed": true,
+              "result": "accepted complete-save and canonical-composite identities are bound"
+            }
+          ],
+          "blockerIds": [],
+          "upstream": [
+            {
+              "gateId": "G02_DESIGN_DECISIONS",
+              "status": "PASS"
+            },
+            {
+              "gateId": "G04_OWNERSHIP",
+              "status": "PASS"
+            },
+            {
+              "gateId": "G05_INTERFACES",
+              "status": "PASS"
+            },
+            {
+              "gateId": "G06_PROTECTED_FEATURES",
+              "status": "PASS"
+            }
+          ],
+          "rerunDecision": "READY_INTEGRATED_DESIGN_AUDIT",
+          "action": "RUN_INTEGRATED_CIVIL_HYDROLOGY_STRUCTURE_LIFE_SAFETY_AUDIT"
+        }
+      ],
+      "passCount": 5,
+      "holdCount": 0
+    }
+  ],
+  "summary": {
+    "targetGateCount": 5,
+    "passCount": 5,
+    "holdCount": 0,
+    "allFiveGatesPass": true,
+    "iterationCount": 1,
+    "maxIterations": 5,
+    "stopReason": "ALL_FIVE_GATES_PASS",
+    "fixedPointReached": false,
+    "missingExternalEndpointCount": 13,
+    "g05LayerAPassed": true,
+    "g05PhysicalDirectionalContractCount": 84,
+    "g05PhysicalDirectionalPairCount": 352931,
+    "g05TechnicalContractCount": 77,
+    "g05MissingTransitionPairManifestCount": 52,
+    "g05MissingBeforeStateSetCount": 161,
+    "g05MissingFutureStateSetCount": 161,
+    "g05UnacceptedContractCount": 161,
+    "technicalSourceRefreshStaleRowPassCount": 5,
+    "ownerAcceptanceCount": 0,
+    "realClientBeeMechanicProven": false,
+    "documentationPublicationAuthorized": true,
+    "masterPlanReadyUpdateAuthorized": true,
+    "worldShowcaseUpdateAuthorized": true,
+    "mainPushAuthorizedByGateCondition": true
+  },
+  "safetyBoundary": {
+    "readOnlyEvidenceEvaluation": true,
+    "productionServerContacted": false,
+    "productionWorldContacted": false,
+    "fleetApiContacted": false,
+    "rconContacted": false,
+    "systemdContacted": false,
+    "operationFilesCompiled": 0,
+    "operationCellCount": 0,
+    "worldEditAuthorized": false,
+    "physicalBuildAuthorized": false,
+    "executable": false
+  },
+  "reportIdentitySha256": "67bbf8223c7fd03a355cb97d22966a9fda947adc88a2973a13bdbd6339e64831"
+}

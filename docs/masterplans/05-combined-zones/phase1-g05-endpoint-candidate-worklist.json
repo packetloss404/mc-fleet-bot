@@ -1,0 +1,493 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-g05-endpoint-candidate-worklist",
+  "generatedAtUtc": "2026-08-06T00:00:00Z",
+  "status": "READ_ONLY_CANDIDATE_ENDPOINTS_DERIVED_COUNTERPARTS_REMAIN_UNRESOLVED",
+  "purpose": "Derive source-side endpoint candidates from existing plans and distinguish them from the still-missing external counterpart decisions.",
+  "sourceBindings": {
+    "registry": {
+      "path": "docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json",
+      "bytes": 431213,
+      "sha256": "930cf249d1510b326755983e5afd0e8c6242520bf7a5554e8ed450d64ec2fa24",
+      "role": "read-only registry source"
+    },
+    "connectorGeometry": {
+      "path": "docs/masterplans/05-combined-zones/phase1-connector-geometry.json",
+      "bytes": 458540,
+      "sha256": "8bb2dd803c434667dfeee440ccdf8428a115962e21dd1b3b0e6955cce672dc4e",
+      "role": "read-only connectorGeometry source"
+    },
+    "d02": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d02-technical-design.json",
+      "bytes": 140238,
+      "sha256": "22ecc64bd01224a91c8a534f448c5de0e31fb99d6e5452ddf0f75a8e7fc9f93e",
+      "role": "read-only d02 source"
+    },
+    "d05": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-future-state-compiler-contract.json",
+      "bytes": 38291,
+      "sha256": "72eeafc62edadd0f7a08a46ca3c65f2cfad12bc05bc4c084321e81f0190081b4",
+      "role": "read-only d05 source"
+    },
+    "d06": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json",
+      "bytes": 95894,
+      "sha256": "9cf30ba33d2b62383c0512877553ef961c9782df54840c74ae8a30003ebb362a",
+      "role": "read-only d06 source"
+    },
+    "b11": {
+      "path": "docs/masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.json",
+      "bytes": 170181,
+      "sha256": "324c275ef5120382f2b9a5510c4257259bd37f7ffe116350ae7959afb2534da6",
+      "role": "read-only b11 source"
+    },
+    "pairAudit": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g05-pair-manifest-reconciliation-audit.json",
+      "bytes": 52832,
+      "sha256": "4a85bd86b7e5e454d008c839518ea6d5f0120c6058d8ab8153fd0e0d35f7911e",
+      "role": "read-only pairAudit source"
+    }
+  },
+  "registryBinding": {
+    "canonicalPayloadSha256": "234e51bba55fb4bad08d351780b51e27647102f2fdf8b42ce9ed5357afa33cda",
+    "reportIdentitySha256": "353ba295895eb736bda25e3f6ab53af23b5643843a1916f829e9e90331da4d95",
+    "registryModified": false
+  },
+  "remoteReadOnlyObservation": {
+    "performed": true,
+    "result": "Known datum probes returned the server response “That position is not loaded”.",
+    "interpretation": "No live block identity or counterpart geometry was inferred from an unloaded-chunk response.",
+    "worldMutated": false
+  },
+  "rows": [
+    {
+      "contractId": "IF-D02-MAINTENANCE-ACCESS",
+      "scope": "D02/C01",
+      "fromOwnerId": "OWN-D02-C1-DRAINAGE-CONTROL",
+      "direction": "OUTBOUND_TO_MAINTENANCE_SAFE_ENDPOINT",
+      "family": "D02",
+      "sourceSideCandidate": null,
+      "sourceEvidenceKeys": [
+        "d02"
+      ],
+      "counterpart": null,
+      "receiverOrToOwner": null,
+      "status": "NO_EXACT_SOURCE_SIDE_DATUM",
+      "requiredToPromote": [
+        "named canonical counterpart/receiver/source owner",
+        "exact counterpart geometry and reviewed interface kind",
+        "complete-save-bound before-state hash",
+        "accepted designed future-state hash",
+        "owner/technical/interface acceptance bound to the same immutable identity"
+      ],
+      "defaultDeny": true,
+      "accepted": false
+    },
+    {
+      "contractId": "IF-D02-PUMP-POWER-CONTROL",
+      "scope": "D02/C01",
+      "fromOwnerId": "OWN-D02-C1-DRAINAGE-CONTROL",
+      "direction": "OUTBOUND_TO_POWER_AND_CONTROL_SOURCE",
+      "family": "D02",
+      "sourceSideCandidate": null,
+      "sourceEvidenceKeys": [
+        "d02"
+      ],
+      "counterpart": null,
+      "receiverOrToOwner": null,
+      "status": "NO_EXACT_SOURCE_SIDE_DATUM",
+      "requiredToPromote": [
+        "named canonical counterpart/receiver/source owner",
+        "exact counterpart geometry and reviewed interface kind",
+        "complete-save-bound before-state hash",
+        "accepted designed future-state hash",
+        "owner/technical/interface acceptance bound to the same immutable identity"
+      ],
+      "defaultDeny": true,
+      "accepted": false
+    },
+    {
+      "contractId": "IF-D02-OVERFLOW-RECEIVER",
+      "scope": "D02/C01",
+      "fromOwnerId": "OWN-D02-C1-DRAINAGE-CONTROL",
+      "direction": "OUTBOUND_TO_ACCEPTED_RECEIVER",
+      "family": "D02",
+      "sourceSideCandidate": null,
+      "sourceEvidenceKeys": [
+        "d02"
+      ],
+      "counterpart": null,
+      "receiverOrToOwner": null,
+      "status": "NO_EXACT_SOURCE_SIDE_DATUM",
+      "requiredToPromote": [
+        "named canonical counterpart/receiver/source owner",
+        "exact counterpart geometry and reviewed interface kind",
+        "complete-save-bound before-state hash",
+        "accepted designed future-state hash",
+        "owner/technical/interface acceptance bound to the same immutable identity"
+      ],
+      "defaultDeny": true,
+      "accepted": false
+    },
+    {
+      "contractId": "IF-D05-HYDROLOGY-TO-RECEIVER",
+      "scope": "D05",
+      "fromOwnerId": "CZ05-MOUNTAIN-HYDROLOGY-CONTROL",
+      "direction": "D05_DRAINAGE_TO_ACCEPTED_RECEIVER",
+      "family": "D05",
+      "sourceSideCandidate": null,
+      "sourceEvidenceKeys": [
+        "d05"
+      ],
+      "counterpart": null,
+      "receiverOrToOwner": null,
+      "status": "NO_EXACT_SOURCE_SIDE_DATUM",
+      "requiredToPromote": [
+        "named canonical counterpart/receiver/source owner",
+        "exact counterpart geometry and reviewed interface kind",
+        "complete-save-bound before-state hash",
+        "accepted designed future-state hash",
+        "owner/technical/interface acceptance bound to the same immutable identity"
+      ],
+      "defaultDeny": true,
+      "accepted": false
+    },
+    {
+      "contractId": "IF-D06-CIRCUIT-NORMAL-TO-POWER-SOURCE",
+      "scope": "D06",
+      "fromOwnerId": "OWN-D06-POWER",
+      "direction": "CIRCUIT_TO_UNDEFINED_POWER_SOURCE",
+      "family": "D06-CIRCUIT",
+      "sourceSideCandidate": {
+        "kind": "RESERVATION_FACE_CANDIDATE",
+        "bounds": {
+          "minX": 1754,
+          "maxX": 1756,
+          "minY": 44,
+          "maxY": 44,
+          "minZ": 156,
+          "maxZ": 158
+        },
+        "cellCount": 9,
+        "coordinateSetSha256": "cfc0dbb63e4ffac0dbbd649937e802eaad2bf5eee56ec3ab141b75048e535373"
+      },
+      "sourceEvidenceKeys": [
+        "connectorGeometry",
+        "d06"
+      ],
+      "counterpart": null,
+      "receiverOrToOwner": null,
+      "status": "SOURCE_SIDE_CANDIDATE_ONLY_COUNTERPART_UNASSIGNED",
+      "requiredToPromote": [
+        "named canonical counterpart/receiver/source owner",
+        "exact counterpart geometry and reviewed interface kind",
+        "complete-save-bound before-state hash",
+        "accepted designed future-state hash",
+        "owner/technical/interface acceptance bound to the same immutable identity"
+      ],
+      "defaultDeny": true,
+      "accepted": false
+    },
+    {
+      "contractId": "IF-D06-CIRCUIT-EMERGENCY-A-TO-POWER-SOURCE",
+      "scope": "D06",
+      "fromOwnerId": "OWN-D06-POWER",
+      "direction": "CIRCUIT_TO_UNDEFINED_POWER_SOURCE",
+      "family": "D06-CIRCUIT",
+      "sourceSideCandidate": {
+        "kind": "RESERVATION_FACE_CANDIDATE",
+        "bounds": {
+          "minX": 1754,
+          "maxX": 1756,
+          "minY": 45,
+          "maxY": 45,
+          "minZ": 156,
+          "maxZ": 158
+        },
+        "cellCount": 9,
+        "coordinateSetSha256": "dd38ac9670650f3edd73836b00368065da60135037474b95e50aef6f95be4a2f"
+      },
+      "sourceEvidenceKeys": [
+        "connectorGeometry",
+        "d06"
+      ],
+      "counterpart": null,
+      "receiverOrToOwner": null,
+      "status": "SOURCE_SIDE_CANDIDATE_ONLY_COUNTERPART_UNASSIGNED",
+      "requiredToPromote": [
+        "named canonical counterpart/receiver/source owner",
+        "exact counterpart geometry and reviewed interface kind",
+        "complete-save-bound before-state hash",
+        "accepted designed future-state hash",
+        "owner/technical/interface acceptance bound to the same immutable identity"
+      ],
+      "defaultDeny": true,
+      "accepted": false
+    },
+    {
+      "contractId": "IF-D06-CIRCUIT-EMERGENCY-B-TO-POWER-SOURCE",
+      "scope": "D06",
+      "fromOwnerId": "OWN-D06-POWER",
+      "direction": "CIRCUIT_TO_UNDEFINED_POWER_SOURCE",
+      "family": "D06-CIRCUIT",
+      "sourceSideCandidate": {
+        "kind": "RESERVATION_FACE_CANDIDATE",
+        "bounds": {
+          "minX": 1754,
+          "maxX": 1756,
+          "minY": 47,
+          "maxY": 47,
+          "minZ": 156,
+          "maxZ": 158
+        },
+        "cellCount": 9,
+        "coordinateSetSha256": "2f1f2e0a784514dd1f9787c287329f54770ab0fb5bbbc20c00ce9a606670a1ad"
+      },
+      "sourceEvidenceKeys": [
+        "connectorGeometry",
+        "d06"
+      ],
+      "counterpart": null,
+      "receiverOrToOwner": null,
+      "status": "SOURCE_SIDE_CANDIDATE_ONLY_COUNTERPART_UNASSIGNED",
+      "requiredToPromote": [
+        "named canonical counterpart/receiver/source owner",
+        "exact counterpart geometry and reviewed interface kind",
+        "complete-save-bound before-state hash",
+        "accepted designed future-state hash",
+        "owner/technical/interface acceptance bound to the same immutable identity"
+      ],
+      "defaultDeny": true,
+      "accepted": false
+    },
+    {
+      "contractId": "IF-D06-B07-TO-SURFACE",
+      "scope": "D06",
+      "fromOwnerId": "OWN-B07",
+      "direction": "B07_VERTICAL_UP_TO_UNDEFINED_SURFACE_OWNER",
+      "family": "D06-B07",
+      "sourceSideCandidate": {
+        "kind": "SURFACE_TOP_FACE_CANDIDATE",
+        "bounds": {
+          "minX": 2105,
+          "maxX": 2111,
+          "minY": 72,
+          "maxY": 72,
+          "minZ": -401,
+          "maxZ": -395
+        },
+        "cellCount": 49,
+        "coordinateSetSha256": "322daec135c261ba64f968aef2ac4f471c2691a13c1b0038800b7d8e43bf6c84"
+      },
+      "sourceEvidenceKeys": [
+        "connectorGeometry",
+        "d06"
+      ],
+      "counterpart": null,
+      "receiverOrToOwner": null,
+      "status": "SOURCE_SIDE_CANDIDATE_ONLY_COUNTERPART_UNASSIGNED",
+      "requiredToPromote": [
+        "named canonical counterpart/receiver/source owner",
+        "exact counterpart geometry and reviewed interface kind",
+        "complete-save-bound before-state hash",
+        "accepted designed future-state hash",
+        "owner/technical/interface acceptance bound to the same immutable identity"
+      ],
+      "defaultDeny": true,
+      "accepted": false
+    },
+    {
+      "contractId": "IF-D06-B07-TO-LOWER-LOBBY",
+      "scope": "D06",
+      "fromOwnerId": "OWN-B07",
+      "direction": "B07_DOWN_TO_UNDEFINED_LOBBY_OWNER",
+      "family": "D06-B07",
+      "sourceSideCandidate": null,
+      "sourceEvidenceKeys": [
+        "connectorGeometry",
+        "d06"
+      ],
+      "counterpart": null,
+      "receiverOrToOwner": null,
+      "status": "NO_EXACT_SOURCE_SIDE_DATUM",
+      "requiredToPromote": [
+        "named canonical counterpart/receiver/source owner",
+        "exact counterpart geometry and reviewed interface kind",
+        "complete-save-bound before-state hash",
+        "accepted designed future-state hash",
+        "owner/technical/interface acceptance bound to the same immutable identity"
+      ],
+      "defaultDeny": true,
+      "accepted": false
+    },
+    {
+      "contractId": "IF-D06-B07-TO-WATER-RECEIVER",
+      "scope": "D06",
+      "fromOwnerId": "OWN-B07",
+      "direction": "B07_WATER_TO_UNDEFINED_RECEIVER",
+      "family": "D06-B07",
+      "sourceSideCandidate": null,
+      "sourceEvidenceKeys": [
+        "connectorGeometry",
+        "d06"
+      ],
+      "counterpart": null,
+      "receiverOrToOwner": null,
+      "status": "NO_EXACT_SOURCE_SIDE_DATUM",
+      "requiredToPromote": [
+        "named canonical counterpart/receiver/source owner",
+        "exact counterpart geometry and reviewed interface kind",
+        "complete-save-bound before-state hash",
+        "accepted designed future-state hash",
+        "owner/technical/interface acceptance bound to the same immutable identity"
+      ],
+      "defaultDeny": true,
+      "accepted": false
+    },
+    {
+      "contractId": "IF-P1-B11-DRAINAGE-TO-RECEIVER",
+      "scope": "P1-B11/P1-B12",
+      "fromOwnerId": "OWN-Z03-GRAND-AVENUE-SURFACE-ROAD-CONTROL",
+      "direction": "OUTBOUND_TO_UNDEFINED_DRAINAGE_RECEIVER",
+      "family": "P1-B11",
+      "sourceSideCandidate": {
+        "kind": "TERMINUS_CANDIDATE",
+        "cells": [
+          {
+            "x": 1750,
+            "y": 67,
+            "z": -304
+          },
+          {
+            "x": 1750,
+            "y": 67,
+            "z": -295
+          },
+          {
+            "x": 2048,
+            "y": 71,
+            "z": -332
+          },
+          {
+            "x": 2048,
+            "y": 71,
+            "z": -323
+          }
+        ],
+        "cellCount": 4,
+        "coordinateSetSha256": "d957c2ddaff46103fe007032bfea537dbd13b78bfa2789cc175d91e6b00529bc"
+      },
+      "sourceEvidenceKeys": [
+        "b11"
+      ],
+      "counterpart": null,
+      "receiverOrToOwner": null,
+      "status": "SOURCE_SIDE_CANDIDATE_ONLY_COUNTERPART_UNASSIGNED",
+      "requiredToPromote": [
+        "named canonical counterpart/receiver/source owner",
+        "exact counterpart geometry and reviewed interface kind",
+        "complete-save-bound before-state hash",
+        "accepted designed future-state hash",
+        "owner/technical/interface acceptance bound to the same immutable identity"
+      ],
+      "defaultDeny": true,
+      "accepted": false
+    },
+    {
+      "contractId": "IF-P1-B11-DRY-UTILITY-TO-SERVICE",
+      "scope": "P1-B11/P1-B12",
+      "fromOwnerId": "OWN-Z03-GRAND-AVENUE-SURFACE-ROAD-CONTROL",
+      "direction": "OUTBOUND_TO_UNDEFINED_DRY_UTILITY_OWNER",
+      "family": "P1-B11",
+      "sourceSideCandidate": {
+        "kind": "TERMINUS_CANDIDATE",
+        "cells": [
+          {
+            "x": 1750,
+            "y": 66,
+            "z": -304
+          },
+          {
+            "x": 2048,
+            "y": 70,
+            "z": -332
+          }
+        ],
+        "cellCount": 2,
+        "coordinateSetSha256": "ed86568f3886df58832390fce57c337f4ae5bbafb6c0f692ac45976e453af394"
+      },
+      "sourceEvidenceKeys": [
+        "b11"
+      ],
+      "counterpart": null,
+      "receiverOrToOwner": null,
+      "status": "SOURCE_SIDE_CANDIDATE_ONLY_COUNTERPART_UNASSIGNED",
+      "requiredToPromote": [
+        "named canonical counterpart/receiver/source owner",
+        "exact counterpart geometry and reviewed interface kind",
+        "complete-save-bound before-state hash",
+        "accepted designed future-state hash",
+        "owner/technical/interface acceptance bound to the same immutable identity"
+      ],
+      "defaultDeny": true,
+      "accepted": false
+    },
+    {
+      "contractId": "IF-P1-B11-WET-UTILITY-TO-SERVICE",
+      "scope": "P1-B11/P1-B12",
+      "fromOwnerId": "OWN-Z03-GRAND-AVENUE-SURFACE-ROAD-CONTROL",
+      "direction": "OUTBOUND_TO_UNDEFINED_WET_UTILITY_OWNER",
+      "family": "P1-B11",
+      "sourceSideCandidate": {
+        "kind": "TERMINUS_CANDIDATE",
+        "cells": [
+          {
+            "x": 1750,
+            "y": 66,
+            "z": -295
+          },
+          {
+            "x": 2048,
+            "y": 70,
+            "z": -323
+          }
+        ],
+        "cellCount": 2,
+        "coordinateSetSha256": "ecc852023b8b92f2768a3339d5047069ccb5db528789c201c19b86e6d918decd"
+      },
+      "sourceEvidenceKeys": [
+        "b11"
+      ],
+      "counterpart": null,
+      "receiverOrToOwner": null,
+      "status": "SOURCE_SIDE_CANDIDATE_ONLY_COUNTERPART_UNASSIGNED",
+      "requiredToPromote": [
+        "named canonical counterpart/receiver/source owner",
+        "exact counterpart geometry and reviewed interface kind",
+        "complete-save-bound before-state hash",
+        "accepted designed future-state hash",
+        "owner/technical/interface acceptance bound to the same immutable identity"
+      ],
+      "defaultDeny": true,
+      "accepted": false
+    }
+  ],
+  "summary": {
+    "endpointCount": 13,
+    "sourceSideCandidateCount": 7,
+    "noExactSourceSideDatumCount": 6,
+    "counterpartAssignedCount": 0,
+    "exactAcceptedEndpointCount": 0,
+    "futureStateHashCount": 0,
+    "remainingExternalDecisionCount": 13
+  },
+  "safetyBoundary": {
+    "registryModified": false,
+    "operationCellCount": 0,
+    "liveWorldEdits": false,
+    "rconWrites": false,
+    "acceptanceInferred": false,
+    "releaseAuthorized": false
+  },
+  "reportIdentitySha256": "fe42a456580b1e0cdbbc5e6f5d764985c607f6b7f83df51eeb0c6f91f529f1e9"
+}

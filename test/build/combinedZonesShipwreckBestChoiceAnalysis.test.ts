@@ -35,11 +35,11 @@ function sha256(filename: string): string {
 beforeAll(() => {
   execFileSync(process.execPath, [
     SCRIPT,
-    '--generated-at', '2026-08-06T04:20:00Z',
+    '--generated-at', '2026-08-06T04:50:00Z',
     '--out', regeneratedJson,
     '--markdown', regeneratedMarkdown,
   ], { cwd: ROOT, stdio: 'pipe' });
-});
+}, 60_000);
 
 afterAll(() => {
   fs.rmSync(tempDirectory, { recursive: true, force: true });
@@ -66,9 +66,9 @@ describe('Combined Zones shipwreck best-choice analysis', () => {
   it('selects root-cause local reshape and rejects removal as the active path', () => {
     const report = JSON.parse(fs.readFileSync(COMMITTED_JSON, 'utf8')) as JsonRecord;
     expect(report).toMatchObject({
-      schemaVersion: 1,
+      schemaVersion: 2,
       status:
-        'PASS_BEST_CHOICE_PRESERVE_AND_LOCAL_P1_B10_RESHAPE_SELECTED_REMOVAL_FALLBACK_ONLY',
+        'PASS_BEST_CHOICE_AND_EXACT_MINIMUM_SOUTH_OPEN_RESHAPE_COMPILED_REMOVAL_FALLBACK_ONLY',
       analysisPayload: {
         actualBlocker: {
           domainId: 'P1-B10/influence',
@@ -84,7 +84,8 @@ describe('Combined Zones shipwreck best-choice analysis', () => {
         decisionContext: {
           protectedRelicWithheldConstructionCellCount: 1977,
           shipwreckCoreCellCount: 2268,
-          positiveMarginBlocks: null,
+          selectedPlanningMarginBlocks: 1,
+          acceptedExpertMarginBlocks: null,
           controlledRemovalMayBeDesigned: true,
           controlledRemovalRequired: false,
           generatedStartMetadataEditable: false,
@@ -97,11 +98,103 @@ describe('Combined Zones shipwreck best-choice analysis', () => {
           alternativeId: 'BC-01-PRESERVE-AND-LOCAL-P1-B10-RESHAPE',
           weightedScore: 94,
           planningDirectionSelectedForNextOfflineDevelopment: true,
+          exactPlanningGeometryCompiled: true,
           technicallyAcceptedGeometry: false,
           physicalImplementationAuthorized: false,
           removalAuthorizationRetainedAsFallback: true,
           removalIsCurrentPreferredPath: false,
           influenceOnlySubtractionRejectedAsEvidenceSuppression: true,
+        },
+        reshapeOptimization: {
+          status:
+            'PASS_EXACT_MINIMUM_SOUTH_OPEN_RESHAPE_SELECTED_ZERO_CORE_PLUS_PLANNING_MARGIN_OVERLAP_TECHNICAL_MARGIN_AND_CANONICAL_INTEGRATION_HOLD',
+          sourceVerification: {
+            acceptedCompleteSaveSha256:
+              '1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26',
+            immutableCopy: true,
+            projectScopeSourceEquivalent: true,
+            baselineConstruction: {
+              cellCount: 14768553,
+              intervalManifestSha256:
+                'ed95837647ab5f13699e93fcc17de691d4da5f08115c4be34734e238b19b4196',
+            },
+            baselineInteraction: {
+              cellCount: 433549,
+              intervalManifestSha256:
+                '9dcae3deeefc09f563a47955dd7d3fba75eac8e8ca74f44ab26b24d3a4535ba8',
+            },
+            baselineInfluence: {
+              cellCount: 1082149,
+              intervalManifestSha256:
+                '1a209dbae3552c0b49a7972f22c4838a30e09c8391bce8d20979a1b4f542447d',
+            },
+            baselineSupportGap: {
+              cellCount: 754224,
+              intervalManifestSha256:
+                '31664bc00e7a1d361567fb878e8653c2a4018045169d54900ca9ad15bddd7171',
+            },
+          },
+          boundedSearch: {
+            positivePlanningMarginsTested: [1, 2, 3, 4],
+            strategyCount: 3,
+            candidateCount: 12,
+            eligibleCandidateCount: 4,
+          },
+          selectedPlanningReshape: {
+            id: 'FM-01-SHIPWRECK-SOUTH-OPEN-TOE-RESHAPE-V1',
+            positiveMargin: {
+              selectedPlanningBlocks: 1,
+              acceptedExpertMarginBlocks: null,
+              expertMarginAccepted: false,
+            },
+            externalInteractionSetbackBlocks: 2,
+            sparseNoBuildPlan: {
+              bounds: {
+                minX: 2070,
+                maxX: 2101,
+                minZ: -663,
+                maxZ: -588,
+              },
+              columnCount: 2432,
+              columnSetSha256:
+                '26729597c4bd117debd943f9bf51a84825fcac4687825be575d4013c17268785',
+              opensToSouthMountainExterior: true,
+            },
+            regeneratedDomains: {
+              construction: {
+                cellCount: 14684824,
+                lostCellCountFromBase: 83729,
+              },
+              interaction: { cellCount: 435564 },
+              influence: { cellCount: 1072137 },
+              supportGap: {
+                cellCount: 740620,
+                removedCellCountFromBase: 13604,
+                treatment: null,
+              },
+            },
+            exactCorePlusPlanningMarginOverlap: {
+              constructionCellCount: 0,
+              interactionCellCount: 0,
+              supportGapCellCount: 0,
+              influenceCellCount: 0,
+            },
+            routeAndScopeChecks: {
+              b08ChangedColumnCount: 0,
+              b09ChangedColumnCount: 0,
+              summitColumnRetained: true,
+            },
+          },
+          disposition: {
+            exactReshapeGeometryCompiled: true,
+            exactConstructionInteractionInfluenceSupportRegeneratedFromSource: true,
+            exactZeroCorePlusSelectedPlanningMarginOverlap: true,
+            selectedPlanningMarginBlocks: 1,
+            expertPositiveMarginAccepted: false,
+            canonicalD05G03G06IntegrationComplete: false,
+            technicalTreatmentAccepted: false,
+            operationCompilationAuthorized: false,
+          },
         },
       },
       disposition: {
@@ -110,14 +203,19 @@ describe('Combined Zones shipwreck best-choice analysis', () => {
         lowerImpactAlternativesIncluded: true,
         rootCauseIntegrityGateEnforced: true,
         recommendedAlternativeId: 'BC-01-PRESERVE-AND-LOCAL-P1-B10-RESHAPE',
-        exactReshapeGeometryCompiled: false,
+        exactReshapeGeometryCompiled: true,
+        exactConstructionInteractionInfluenceSupportRegeneratedFromSource: true,
+        exactZeroCorePlusSelectedPlanningMarginOverlap: true,
+        selectedPlanningMarginBlocks: 1,
+        expertPositiveMarginAccepted: false,
+        canonicalD05G03G06IntegrationComplete: false,
         technicalTreatmentAccepted: false,
         removalPathActive: false,
         removalPathRetainedAsFallback: true,
         operationCompilationAuthorized: false,
       },
       safetyBoundary: {
-        proposedGeometryCellCount: 0,
+        proposedGeometryCellCount: 14684824,
         acceptedGeometryCellCount: 0,
         acceptedRemovalTargetCellCount: 0,
         operationCellCount: 0,
@@ -125,6 +223,7 @@ describe('Combined Zones shipwreck best-choice analysis', () => {
         inventoryMoveCount: 0,
         serverStarted: false,
         liveWorldContacted: false,
+        immutableCompleteSaveReadOnlyContacted: true,
         physicalReleaseAuthorized: false,
         worldEditAuthorized: false,
         executable: false,

@@ -1824,8 +1824,7 @@ node scripts/compile_combined_zones_empty_eight_geology_design.mjs
 
 ```bash
 node scripts/generate_combined_zones_d02_authority_packet.mjs
-node --expose-gc --max-old-space-size=4096 \
-  scripts/audit_combined_zones_d02_s01_s02_region_evidence.mjs
+npx vitest run test/build/combinedZonesD02S01S02RegionEvidence.test.ts
 node scripts/generate_combined_zones_d05_conservative_defaults.mjs
 node scripts/compile_combined_zones_d06_egress_geometry.mjs
 node scripts/compile_combined_zones_phase1_connector_geometry.mjs
@@ -1847,6 +1846,13 @@ node scripts/compile_combined_zones_owner_review_bundle.mjs
 node scripts/record_combined_zones_owner_review_acceptance.mjs
 node scripts/audit_combined_zones_r00_readiness.mjs
 ```
+
+- The D02-S01/S02 artifact is historical Aug 4 region-only evidence. Its test
+  replays the old candidate census with `--historical-inventory-replay` and an
+  explicit exclusion for the later accepted Aug 6 complete-save capture. A
+  default current-data audit now reports that complete candidate honestly; do
+  not overwrite the historical artifact. Consume the accepted save through the
+  dedicated intake/scope-clearance records and technical source refresh.
 
 - D02-S03 is a read-only 62,816,256-cell C1-plus-halo component audit. Zero
   acceptable receiver candidates means exact closed drainage, sumps/pumps, or
@@ -2173,11 +2179,219 @@ npx vitest run \
   `P1-B10/influence`, not construction or interaction. Because that influence
   includes an unresolved below-Y72 support reservation, never obtain clearance
   by subtracting its 126 cells from the ledger alone; that would suppress the
-  evidence while leaving its source condition unchanged. The current preferred
-  direction is preservation plus a minimum local FM-01 toe/no-build reshape,
-  followed by source regeneration of construction, interaction, influence,
-  support, G03, G06, ownership, and interfaces. Controlled removal remains an
-  optional fallback, not a requirement created by its owner authorization.
+  evidence while leaving its source condition unchanged. The same compiler now
+  reads the accepted immutable complete save, reproduces the baseline interval
+  identities, compares three reshape topologies at one- through four-cell
+  positive planning margins, and selects the minimum exact south-open FM-01
+  toe/no-build overlay. Its 2,432 current-state preservation columns regenerate
+  construction, interaction, influence, and support to zero overlap against
+  the shipwreck core plus the selected one-cell planning margin. That margin is
+  not expert acceptance. The sparse identity is now consumed by the immutable
+  G03-base-plus-overlay canonical integration artifact. It retains exact G04
+  one-owner coverage, changes no cross-scope G05 contract set, and establishes
+  zero overlap across all 114 generated starts and three protected cores.
+  Controlled removal remains an optional fallback, not a requirement created
+  by its owner authorization.
+
+## Shipwreck Canonical Integration And D06 Runtime Compatibility
+
+- Regenerate the hash-bound shipwreck composite overlay and focused regression:
+
+```bash
+node scripts/compile_combined_zones_shipwreck_canonical_integration.mjs
+npx vitest run \
+  test/build/combinedZonesShipwreckCanonicalIntegration.test.ts
+```
+
+- The overlay never rewrites the immutable G03 baseline. It replaces only the
+  P1-B10 construction, interaction, influence, and support-gap identities. Its
+  change envelope is disjoint from all nine other scopes, so existing
+  cross-scope interface cellsets remain unchanged. Expert positive margins and
+  final owner/interface/technical acceptance remain HOLD; it emits no ops.
+- Regenerate the bounded negative D06 runtime evidence with:
+
+```bash
+node scripts/compile_combined_zones_d06_bee_runtime_compatibility_audit.mjs
+npx vitest run \
+  test/build/combinedZonesD06BeeRuntimeCompatibility.test.ts
+```
+
+- `run_combined_zones_bee_runtime_fixture.mjs` is an isolated diagnostic only.
+  It requires a byte-identical read-only copy of the production Paper jar, a
+  disposable Java runtime, and optionally a temporary current Mineflayer module.
+  Never point it at production. The exact Paper runtime can serialize a
+  three-member `minecraft:bees` item, but Mineflayer 4.35.0 and 4.37.1 both fail
+  the 1.21.11 item/action path. This is a recorded HOLD, not a mechanic pass.
+  Before changing dependencies, disable client physics, await teleport
+  confirmation/forced movement, and verify server-authoritative position and
+  interaction range twice. Require interact, damage, and break events before
+  testing item decode, pickup, placement, exact three-bee NBT, and rollback.
+  Do not blindly upgrade fleet dependencies.
+
+## Combined Zones Technical Source Refresh And G05 Geometry Layer
+
+- Rebuild the additive accepted-save source refresh and focused regression:
+
+```bash
+node scripts/compile_combined_zones_technical_source_refresh.mjs
+npx vitest run test/build/combinedZonesTechnicalSourceRefresh.test.ts
+```
+
+- The supplement closes only five stale source-completeness rows without
+  rewriting historical artifacts: D02-TD-07, B09, B11-H07, B12-H01, and
+  D06-MC-11. The occupied D06 nest remains a persistent POI HOLD. Twenty-nine
+  pre-R00 commissioning specifications are frozen but unaccepted; executed
+  results remain G17 evidence and may never resolve G02.
+- Rebuild the G05 Layer-A global physical-interface audit and regression:
+
+```bash
+node --max-old-space-size=8192 \
+  scripts/audit_combined_zones_g05_global_geometry.mjs
+npx vitest run test/build/combinedZonesG05GlobalGeometryAudit.test.ts
+```
+
+- Layer A independently recompiles and compares all 84 G04 directional
+  contracts and 352,931 pairs, then applies the hash-bound P1-B10 no-seam-change
+  overlay proof. Layer B remains separate and HOLD: 77 technical contracts,
+  13 null geometries, 52 missing pair manifests, no before/future state hashes,
+  and no accepted contracts. A Layer-A PASS never implies G05 or R00 PASS.
+
+## Combined Zones R00 Read-Only Candidate Closure
+
+- Reconcile reusable immutable evidence into a proposed closure worklist:
+
+```bash
+node scripts/compile_combined_zones_r00_candidate_closure.mjs
+npx vitest run test/build/combinedZonesR00CandidateClosure.test.ts
+```
+
+- The report reuses the accepted complete-save identity, exact interface
+  geometry, existing transition manifests, the technical source refresh, and
+  the shipwreck composite. It distinguishes the 23 directly source-backed
+  exact geometries from 125 hash-only upstream outputs; it may identify
+  directly eligible before-state and transition-manifest candidates, but it
+  never writes accepted hashes. Thirteen null endpoint geometries, all
+  future-state authoring, owner/interface acceptance, and the real-client D06
+  mechanic proof remain external evidence.
+- A candidate-closure PASS is not an R00 PASS and never authorizes a build,
+  publication, merge, push, operation, or world edit. Update the master plan,
+  `/world-showcase`, and README only after the authoritative R00 loop reports
+  all five target gates PASS.
+
+## Combined Zones G05 Pair Reconciliation And G02/G07 Review Handoff
+
+- Reconcile null pair fields without fabricating technical manifests:
+
+```bash
+node scripts/audit_combined_zones_g05_pair_manifest_reconciliation.mjs
+npx vitest run test/build/combinedZonesG05PairManifestReconciliationAudit.test.ts
+```
+
+- The reconciliation classifies all 52 null pair fields into one exact D06
+  alias, terminal/source caps, shared boundaries, precedence/reservations, and
+  undefined endpoints. It creates zero pair manifests and leaves the canonical
+  registry unchanged. The D06 alias is evidence for de-duplication only; it is
+  not interface acceptance.
+- Prepare the smallest external review handoff from existing evidence:
+
+```bash
+node scripts/compile_combined_zones_g02_g07_minimal_review_packet.mjs
+npx vitest run test/build/combinedZonesG02G07MinimalReviewPacket.test.ts
+```
+
+- The packet groups three discipline reviews and one final owner record, with
+  B12 no-foreclosure deferral recommended. It is unsigned decision input and
+  cannot pass G02/G07, authorize construction, or authorize world edits.
+- Record only explicit owner-controlled planning choices when authorized:
+
+```bash
+node scripts/record_combined_zones_owner_controlled_decisions.mjs
+```
+
+- This records B12 deferral, the selected shipwreck reshape, and the humane
+  D06 relocation planning basis. It deliberately leaves technical acceptance,
+  endpoint facts, runtime proof, and world construction unauthorized.
+
+## Combined Zones G05 Endpoint Candidate Worklist
+
+- Derive the 13 undefined endpoint rows from existing plans and preserve the
+  distinction between source-side candidates and missing counterpart facts:
+
+```bash
+node scripts/compile_combined_zones_g05_endpoint_candidate_worklist.mjs
+```
+
+- The report records seven source-side candidate datums and six rows with no
+  exact source-side datum. Every counterpart, receiver/to-owner, before state,
+  future state, and acceptance remains null; the report is read-only evidence
+  and cannot promote G05/R00 or authorize operations/world edits.
+- Architect-directed fail-closed dispositions may be recorded with:
+
+```bash
+node scripts/record_combined_zones_architectural_endpoint_dispositions.mjs
+```
+
+- This may narrow proposal build scope, but it must retain zero executable
+  endpoint openings and cannot turn missing technical evidence into PASS.
+
+## Combined Zones Build Package Assembly
+
+- Assemble the hash-bound, non-executing package before any live build request:
+
+```bash
+node scripts/compile_combined_zones_build_package.mjs
+```
+
+- The package binds the exact G03 proposal domains and fail-closed endpoint
+  dispositions. It emits no forward or rollback operation until complete
+  per-cell desired block states and a fresh immutable construction snapshot
+  exist. It never contacts RCON or edits the world.
+
+## Combined Zones R01 GA-J1 Discovery Cue Pilot
+
+- Compile the smallest exact visible pilot from the frozen Empty Eight design:
+
+```bash
+node scripts/compile_combined_zones_r01_ga_j1_discovery_cue_pilot.mjs
+node scripts/preflight_guarded_ops.mjs \
+  data/buildops/combined-zones-r01-ga-j1-discovery-cue.forward.txt \
+  --regions data/worldsnap-combined-zones-complete-save-20260806T014133Z/region \
+  --report data/buildops/combined-zones-r01-ga-j1-discovery-cue.forward.preflight.json
+python3 scripts/rcon_runner.py \
+  data/buildops/combined-zones-r01-ga-j1-discovery-cue.forward.txt \
+  --dry-run --strict-noop \
+  --report data/buildops/combined-zones-r01-ga-j1-discovery-cue.forward.strict-dry-run.json
+```
+
+- This five-cell GA-J1 cue is information-only and does not open or commission
+  Empty Eight. Its forward and rollback pair are exact inverses. Live execution
+  still requires the internal source-reuse exception (if no new capture is
+  taken) and the explicit owner phrase `build the world`.
+
+## Combined Zones R00 Five-Gate Hold Loop
+
+- Run the five remaining R00 gates through the bounded dependency-aware loop:
+
+```bash
+node scripts/run_combined_zones_r00_hold_loop.mjs --max-iterations 5
+npx vitest run test/build/combinedZonesR00HoldLoop.test.ts
+```
+
+- The loop validates the complete R00 source-binding chain, exact composite
+  G04 one-owner coverage, the completed G05 Layer-A physical audit and exact
+  Layer-B worklists, exact G06 protected geometry, the additive technical
+  source refresh, and the production-binary D06 runtime evidence. It stops when
+  two consecutive five-gate state digests are identical instead of repeating
+  checks that cannot change a result.
+- Reuse the G05 Layer-A PASS. Do not run the final combined technical-interface
+  audit until every Layer-B endpoint, pair/terminal manifest, before/future
+  state, owner, and interface acceptance is complete. Do not run the G07
+  integrated audit until G02, G04, G05, and G06 all pass. Use `--require-pass`
+  only in a workflow that should exit nonzero at a truthful fixed-point HOLD.
+- The loop is evidence-only. It never contacts production, the fleet API,
+  RCON, or systemd; compiles no operation file; performs no world edit; and
+  cannot self-issue expert, owner, interface, protected-feature, or technical
+  acceptance.
 
 ## Best-Choice Gate For Material Decisions
 
@@ -2256,7 +2470,8 @@ npx vitest run \
 - `audit_combined_zones_r00_readiness.mjs` binds the current authority and Phase
   1 evidence, evaluates only G01-G07, classifies blockers as `OFFLINE_ACTION`,
   `EXTERNAL_EVIDENCE`, or `DEFERRED_G08_G19`, and emits zero operations. Its
-  current result is G01 PASS, G02-G07 HOLD; it is not release authorization.
+  current result is G01/G03 PASS and G02/G04-G07 HOLD; it is not release
+  authorization.
 
 - A valid contract may still report `CONTRACT_VALID_BUILD_BLOCKED`. Do not use
   `--require-ready`, generate operations, take a live entity gate, or execute a

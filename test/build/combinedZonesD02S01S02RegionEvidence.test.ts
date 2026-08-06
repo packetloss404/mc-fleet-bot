@@ -149,6 +149,9 @@ beforeAll(() => {
       '--out', regeneratedJson,
       '--markdown', regeneratedMarkdown,
       '--generated-at', GENERATED_AT,
+      '--historical-inventory-replay',
+      '--exclude-post-generation-candidate',
+      'data/worldsnap-combined-zones-complete-save-20260806T014133Z',
     ],
     { cwd: ROOT, stdio: 'pipe', maxBuffer: 1024 * 1024 },
   );
@@ -159,7 +162,7 @@ afterAll(() => {
 });
 
 describe('Combined Zones D02-S01/S02 region-only evidence', () => {
-  it('regenerates the committed JSON and Markdown byte-for-byte', () => {
+  it('replays the historical pre-capture inventory byte-for-byte', () => {
     expect(fs.readFileSync(regeneratedJson)).toEqual(fs.readFileSync(COMMITTED_JSON));
     expect(fs.readFileSync(regeneratedMarkdown)).toEqual(fs.readFileSync(COMMITTED_MARKDOWN));
   });

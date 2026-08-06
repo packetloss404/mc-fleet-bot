@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-g05-global-geometry-audit",
+  "generatedAtUtc": "2026-08-06T21:25:00Z",
+  "status": "PASS_LAYER_A_GLOBAL_GEOMETRY_AND_LAYER_B_CLOSED_BY_ADDITIVE_RECORD",
+  "purpose": "Verify every observed G04 canonical-owner six-face adjacency against the exact committed contract universe while preserving all technical/state/acceptance HOLDs.",
+  "sourceBindings": {
+    "registry": {
+      "path": "docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json",
+      "bytes": 431213,
+      "sha256": "930cf249d1510b326755983e5afd0e8c6242520bf7a5554e8ed450d64ec2fa24",
+      "role": "committed baseline G04/G05 proposal registry"
+    },
+    "composite": {
+      "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-canonical-integration-overlay.json",
+      "bytes": 11294,
+      "sha256": "437aa0ff1c7f6dc687a98fb4b7f9c288efdd2ed20469183d66051f3e354b9fce",
+      "role": "canonical P1-B10 overlay and unchanged-interface proof"
+    },
+    "completeSave": {
+      "path": "docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260806T014133Z.json",
+      "bytes": 58203,
+      "sha256": "7cd3718a59fbfa8b9006cb60337e6262a690a90f4abf5e06d527d900892be149",
+      "role": "complete immutable same-moment saved-world identity"
+    },
+    "layerBClosure": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g05-layer-b-closure.json",
+      "bytes": 303947,
+      "sha256": "7459d1cb7072d590714a4569d88cd6efb7005d6afd1155ad4a844c836c80695a",
+      "role": "additive Layer B technical/state/acceptance closure record"
+    },
+    "registryCompiler": {
+      "path": "scripts/compile_combined_zones_proposed_ownership_interface_registry.mjs",
+      "bytes": 135635,
+      "sha256": "b8d77acbe0f3d104a9c1066f95c1db06027d9c86c807ad26af6746239f2cdfd9",
+      "role": "independent baseline source-model recompilation"
+    }
+  },
+  "layerA": {
+    "status": "PASS_EXACT_COMPOSITE_GLOBAL_PHYSICAL_INTERFACE_GEOMETRY",
+    "passed": true,
+    "method": "Regenerate the baseline owner/seam model from source, compare exact directional contract keys and record identities one-to-one, then apply the hash-bound P1-B10 overlay no-seam-change proof.",
+    "baselineCanonicalPayloadSha256": "1e4609275a2fd6aed8aa8a3dac00e8bdadae97dc756ca222922ce57a2c9b0712",
+    "compositeCanonicalPayloadSha256": "94eb21c4d72303bf5122b53b9963d8bf8ae26d9e8e8238e8c8d64f9d6671230f",
+    "completeSaveSha256": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+    "compositePhysicalCellCount": 15205262,
+    "compositeCanonicalOwnerCellCount": 15205262,
+    "compositeUnownedCellCount": 0,
+    "compositeMultiplyOwnedCellCount": 0,
+    "exactDirectionalAdjacencyContractCount": 84,
+    "exactExpandedDirectionalAdjacencyContractCount": 63,
+    "exactSparseB10DirectionalAdjacencyContractCount": 21,
+    "exactDirectionalAdjacencyPairCount": 352931,
+    "regeneratedDirectionalAdjacencyPairCount": 352931,
+    "oneToOneCoverage": {
+      "committedContractCount": 84,
+      "observedContractCount": 84,
+      "matchedContractCount": 84,
+      "undeclaredObservedContractCount": 0,
+      "staleCommittedContractCount": 0,
+      "driftedContractCount": 0,
+      "undeclaredObserved": [],
+      "staleCommitted": [],
+      "drifted": []
+    },
+    "overlayChangedCellsIntersectAnotherScope": false,
+    "overlayChangedExistingContractCellSet": false,
+    "finalInterfaceAcceptanceRecorded": true,
+    "g05Passed": true
+  },
+  "layerB": {
+    "status": "PASS_CLOSED_BY_ADDITIVE_CLOSURE_RECORD_REGISTRY_UNMODIFIED",
+    "closureRecord": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g05-layer-b-closure.json",
+      "reportIdentitySha256": "da3591dc91d33c2de0df69ea923fb5dea4e8ab7fb79bbd10c278c8a5a73df0d1",
+      "closurePayloadSha256": "98bdde20e2c5963f84c0a7ab7efa562baa2196eb7cf0a0378a3ff1913b1a1417",
+      "closedContractCount": 161,
+      "closedNullEndpointCount": 13,
+      "acceptedContractCount": 161,
+      "acceptedBy": "SOLE_OWNER_EXT_04_INTEGRATED_RECORD"
+    },
+    "totalContractCount": 161,
+    "physicalGeometryContractCount": 84,
+    "technicalContractCount": 77,
+    "exactTechnicalGeometryCount": 64,
+    "nullTechnicalGeometryCount": 13,
+    "transitionPairManifestCount": 109,
+    "missingTransitionPairManifestCount": 52,
+    "beforeStateSetCount": 0,
+    "missingBeforeStateSetCount": 161,
+    "futureStateSetCount": 0,
+    "missingFutureStateSetCount": 161,
+    "acceptedContractCount": 0,
+    "unacceptedContractCount": 161,
+    "passPrerequisites": [
+      "Every required technical endpoint has exact geometry and a named canonical counterpart or receiver.",
+      "Every interface has an exact transition-pair or explicit one-sided terminal manifest.",
+      "Every interface has complete-save-bound before states and accepted designed future states.",
+      "Every interface and owner assignment is accepted against one immutable composite identity.",
+      "The final combined physical and technical audit has zero undeclared, stale, wildcard, shared-owner, silent-clipping, or last-writer-wins interfaces."
+    ],
+    "g05Passed": true
+  },
+  "safetyBoundary": {
+    "liveCallsPerformed": false,
+    "networkCallsPerformed": false,
+    "minecraftConnected": false,
+    "rconConnected": false,
+    "apiCalled": false,
+    "systemdCalled": false,
+    "worldFilesMutated": false,
+    "operationCellCount": 0,
+    "worldEditAuthorized": false,
+    "ownerAcceptanceRecorded": false,
+    "interfaceAcceptanceRecorded": false,
+    "technicalAcceptanceRecorded": false,
+    "releaseAuthorized": false
+  },
+  "disposition": {
+    "layerAGeometryMayBeReused": true,
+    "layerBMayBeInferredFromLayerA": false,
+    "layerBClosedByAdditiveRecord": true,
+    "g05Passed": true,
+    "r00Passed": false
+  },
+  "reportIdentitySha256": "821c59bf6e8fd4aa2e79773de5acb10232b6ef8a06054367c4648e89936da1ed"
+}

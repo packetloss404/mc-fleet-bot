@@ -1,0 +1,366 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-g02-g07-minimal-review-packet",
+  "generatedAtUtc": "2026-08-06T22:05:00Z",
+  "status": "MINIMAL_REVIEW_PACKET_SUBMISSIONS_RECORDED_BY_SOLE_OWNER_ACCEPTANCE",
+  "submissionResolution": {
+    "resolvedBy": "docs/masterplans/05-combined-zones/phase1-external-acceptance-submissions.json",
+    "externalAcceptanceReportIdentitySha256": "a88d0fafe8fb024905aafcee1ebd7f0329b988457b650813ebb1f7adf17a0cfc",
+    "independentThirdPartyReview": false,
+    "soleOwnerAcceptance": true,
+    "note": "The four requested submissions resolve as sole-owner acceptances of the conservative planning bases; the packet template below is retained unchanged as the original request record."
+  },
+  "purpose": "Provide the smallest legitimate, hash-bound decision-input path for G02/G07 without repeating accepted planning choices or using forbidden release evidence.",
+  "sourceBindings": {
+    "releaseContract": {
+      "path": "docs/masterplans/05-combined-zones/phase1-release-contract.json",
+      "sha256": "3b62d3f65c40a01d5f4eb66733b02c94104c03b3a5bab053ee82bcb08b7fd786",
+      "bytes": 33127,
+      "role": "authoritative pre-R00 design versus post-release evidence boundary"
+    },
+    "planningAcceptance": {
+      "path": "docs/masterplans/05-combined-zones/phase1-owner-review-acceptance.json",
+      "sha256": "a8afb64c009ffb4427d904d7d5eee9dfeb866e9aa0ccb5a62dcc0c59daab5889",
+      "bytes": 8763,
+      "role": "sole-owner planning acceptance; no technical hold passed"
+    },
+    "completeSave": {
+      "path": "docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260806T014133Z.json",
+      "sha256": "7cd3718a59fbfa8b9006cb60337e6262a690a90f4abf5e06d527d900892be149",
+      "bytes": 58203,
+      "role": "accepted immutable complete same-moment save"
+    },
+    "completeSaveScope": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g06-complete-save-scope-clearance-20260806T014133Z.json",
+      "sha256": "cf17f96d4504ad070114146101e6626b6233eeb780372737a0abcf33c7bde72f",
+      "bytes": 3039191,
+      "role": "source-equivalent proposal-domain all-start, entity, and POI census"
+    },
+    "technicalRefresh": {
+      "path": "docs/masterplans/05-combined-zones/phase1-technical-source-refresh.json",
+      "sha256": "15b57abb4180c15d7cf63c37cc981cd131463b37f7b81ca882b518d0fc3034ff",
+      "bytes": 13942,
+      "role": "additive closure of five stale source rows and commissioning-stage correction"
+    },
+    "composite": {
+      "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-canonical-integration-overlay.json",
+      "sha256": "437aa0ff1c7f6dc687a98fb4b7f9c288efdd2ed20469183d66051f3e354b9fce",
+      "bytes": 11294,
+      "role": "canonical shipwreck overlay and exact physical-clearance evidence"
+    },
+    "candidateClosure": {
+      "path": "docs/masterplans/05-combined-zones/phase1-r00-candidate-closure.json",
+      "sha256": "9504ad71a4e81f80707fbe3363eada3585ce38fc785b1b62c5e78d61542dd981",
+      "bytes": 18975,
+      "role": "read-only residual owner/interface and endpoint worklist"
+    },
+    "registry": {
+      "path": "docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json",
+      "sha256": "930cf249d1510b326755983e5afd0e8c6242520bf7a5554e8ed450d64ec2fa24",
+      "bytes": 431213,
+      "role": "proposal-only owner and directional interface registry"
+    },
+    "d02Owner": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d02-owner-acceptance-packet.json",
+      "sha256": "1ed4d838fb6ff8e01a245f5232a5d98a4daa5630ead97865154a2b790c486594",
+      "bytes": 58663,
+      "role": "D02 classified technical acceptance criteria"
+    },
+    "d02Region": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json",
+      "sha256": "c28a35e79f4af496325b53b4e53b54b35cbe6a663358518af84139febe3044ac",
+      "bytes": 99988,
+      "role": "D02/C01 block-state facts with ISSUE-002 semantic hold"
+    },
+    "d05Owner": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json",
+      "sha256": "72b1d027a3f4f519a882dcf3ba2366bae642eae33da4b4fccdae80f6f9b6ef50",
+      "bytes": 62442,
+      "role": "D05 technical pass/hold matrix"
+    },
+    "b09": {
+      "path": "docs/masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json",
+      "sha256": "f9b57fb317ff983acacbf98cb0a7776246c242025f583d9795594a6a799898c8",
+      "bytes": 26803,
+      "role": "B09 exact proposal and genuine residual systems"
+    },
+    "d06Owner": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-owner-acceptance-packet.json",
+      "sha256": "fb1facdc10bcdbbf0030a54f3dd35b28797b979006de0e21b2268f82af1df963",
+      "bytes": 70048,
+      "role": "D06 life-safety acceptance criteria"
+    },
+    "d06Detailed": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json",
+      "sha256": "9cf30ba33d2b62383c0512877553ef961c9782df54840c74ae8a30003ebb362a",
+      "bytes": 95894,
+      "role": "D06 detailed setout and remaining mechanism systems"
+    },
+    "d06BeeRuntime": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-runtime-compatibility-audit.json",
+      "sha256": "c967bcdb737b7b5e9f6fed40448a72a3c30a1f5cd547c49a391b59a87a93806f",
+      "bytes": 5350,
+      "role": "exact-runtime bee relocation compatibility evidence"
+    },
+    "b11": {
+      "path": "docs/masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.json",
+      "sha256": "324c275ef5120382f2b9a5510c4257259bd37f7ffe116350ae7959afb2534da6",
+      "bytes": 170181,
+      "role": "P1-B11 exact road setout and retained technical holds"
+    },
+    "b12": {
+      "path": "docs/masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json",
+      "sha256": "7fd10ad811bf9aa36be7895de01ef42eb19382d3896bf5fee5ac47bb75e21a4e",
+      "bytes": 254942,
+      "role": "P1-B12 no-build/no-foreclosure passive-shell candidate"
+    },
+    "externalAcceptance": {
+      "path": "docs/masterplans/05-combined-zones/phase1-external-acceptance-submissions.json",
+      "sha256": "b08214952b2d7f855654b2ea33c86319f392d544feebb77e6c2cf065d1da6718",
+      "bytes": 13212,
+      "role": "EXT-01..04 sole-owner acceptance submissions"
+    }
+  },
+  "immutableReviewBasis": {
+    "completeSaveSha256": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+    "completeSaveInventorySha256": "8e839378c657ed71ed1cce2c0236ffddf99cc2c637290ed8f7629659fd967e83",
+    "compositeCanonicalPayloadSha256": "94eb21c4d72303bf5122b53b9963d8bf8ae26d9e8e8238e8c8d64f9d6671230f",
+    "planningAcceptanceRecordPayloadSha256": "45fab3ea31163b24d7242cfe7a262d80ae906c411422effe8756c75fb436ab7d",
+    "technicalSourceRefreshReportIdentitySha256": "a91b927c465dc18c17106d2433226328278dea9499cdb7b01aed121e404d3a60",
+    "proposedRegistrySha256": "930cf249d1510b326755983e5afd0e8c6242520bf7a5554e8ed450d64ec2fa24",
+    "proposedInterfaceContractCount": 161,
+    "proposedOwnerRecordCount": 27
+  },
+  "alreadyResolvedDoNotRepeat": {
+    "planningGeometryChoiceCountRemaining": 0,
+    "exactCompleteSaveAccepted": true,
+    "staleSourceRowsClosed": 5,
+    "exactShipwreckCompositeIntegrated": true,
+    "repeatedSubjectivePlanningReviewRequired": false,
+    "preflightOrPostStateEvidenceMayResolveG02": false
+  },
+  "minimumScopeDecision": {
+    "id": "OWNER-SCOPE-P1-B12-DEFER-NOW",
+    "status": "OWNER_CONFIRMATION_REQUIRED_NOT_ACCEPTED_BY_THIS_PACKET",
+    "recommendedDecision": "DEFER_P1_B12_PHYSICAL_SHELL_RETAIN_NO_FORECLOSURE_RESERVATION",
+    "existingCandidateFacts": {
+      "constructNow": false,
+      "fitOutNow": false,
+      "retainNoForeclosureReservation": true,
+      "candidateAcceptedByOwner": false
+    },
+    "rationale": "This follows the existing default-deny candidate and avoids engineering or commissioning an unapproved speculative shell while preserving the future corridor.",
+    "downstreamRule": "After owner confirmation, regenerate the proposed ownership/interface registry for the reduced physical scope. Remove obsolete B12 construction-state contracts or encode exact sealed/no-change reservation transitions; never waive a contract silently.",
+    "ownerDecision": null,
+    "ownerIdentity": null,
+    "decidedAtUtc": null,
+    "decisionRecordSha256": null
+  },
+  "externalReviewSubmissions": [
+    {
+      "id": "EXT-01-CIVIL-CORRIDOR",
+      "title": "D02/C01 and P1-B11 civil, hydraulic, structural, and geotechnical review",
+      "status": "NOT_SUPPLIED_EXTERNAL_FACTS_AND_ACCEPTANCE_REQUIRED",
+      "missingFactEvidence": [
+        {
+          "id": "FACT-ISSUE-002-C01-SEMANTIC-FIELD-DISPOSITION",
+          "requirement": "A current, hash-bound field/semantic survey must identify the C01 relocation, road, parking recovery, sunken entrance, protection/loading constraints, owner, and usable interfaces. Existing block-state volumes are not semantic proof.",
+          "suppliedArtifactPath": null,
+          "suppliedArtifactSha256": null
+        }
+      ],
+      "criteriaToResolve": [
+        "D02-B01",
+        "D02-B02",
+        "D02-B03",
+        "D02-B04",
+        "D02-B06",
+        "P1-B11-H01-MATERIAL-AND-FUTURE-STATE",
+        "P1-B11-H02-EARTHWORK-AND-RETAINING",
+        "P1-B11-H03-DRAINAGE",
+        "P1-B11-H04-UTILITIES",
+        "P1-B11-H05-STRUCTURAL-AND-ROAD-LOAD",
+        "P1-B11-H06-GEOTECHNICAL",
+        "P1-B11-H08-OWNERSHIP-INTERFACES-AND-TECHNICAL-ACCEPTANCE"
+      ],
+      "requiredDesignFacts": [
+        "Exact D02 catchments, source/future fluid manifests, peak blocks-per-tick, evaluation ticks, working storage, freeboard, recovery reserve, alarms, failure/reset states, and accepted receiver/outfall or explicit sealed no-receiver disposition.",
+        "Exact formation, slopes, excavation, fill, structures, voids, materials, quantities, mass haul, retaining, foundations, spans, loading, clearances, C01/Data District exclusions, and construction influence.",
+        "P1-B11 exact material/future states, earthwork/retaining, drainage, dry/wet utility services, crossings/separations, structural road-load transfer, and geotechnical basis."
+      ],
+      "nullEndpointContractIds": [
+        "IF-D02-MAINTENANCE-ACCESS",
+        "IF-D02-PUMP-POWER-CONTROL",
+        "IF-D02-OVERFLOW-RECEIVER",
+        "IF-P1-B11-DRAINAGE-TO-RECEIVER",
+        "IF-P1-B11-DRY-UTILITY-TO-SERVICE",
+        "IF-P1-B11-WET-UTILITY-TO-SERVICE"
+      ],
+      "submission": {
+        "reviewerIdentity": null,
+        "competenceScope": null,
+        "reviewedArtifactHashes": [],
+        "acceptedCriterionIds": [],
+        "exceptions": [],
+        "decision": null,
+        "reviewedAtUtc": null,
+        "reviewRecordSha256": null
+      }
+    },
+    {
+      "id": "EXT-02-MOUNTAIN-B09-PROTECTED",
+      "title": "D05 mountain, P1-B09 funicular, and protected-relic review",
+      "status": "NOT_SUPPLIED_EXTERNAL_DESIGN_AND_ACCEPTANCE_REQUIRED",
+      "missingFactEvidence": [],
+      "criteriaToResolve": [
+        "D05-TECH-01-CANONICAL-FUTURE-STATES",
+        "D05-TECH-02-SUPPORT-GAPS",
+        "D05-TECH-03-HYDROLOGY-GEOTECHNICAL",
+        "D05-TECH-04-RELIC-INFLUENCE",
+        "D05-TECH-05-B09-SYSTEM",
+        "D05-TECH-06-OWNERSHIP-INTERFACES",
+        "B09-NULL-01-LINER-FOUNDATION-AND-GROUND-SUPPORT",
+        "B09-NULL-02-DRIVE-BRAKE-VEHICLE-AND-BARRIER-MECHANISMS",
+        "B09-NULL-03-INTERMEDIATE-REFUGE-PASSING-AND-RESCUE-ROUTE",
+        "B09-NULL-04-POWER-FEED-CIRCUITS-EQUIPMENT-AND-CONTROL-LOGIC",
+        "B09-NULL-05-SUMPS-FLOW-PATHS-OUTFALL-AND-RECEIVER",
+        "B09-NULL-06-D05-GUIDEWAY-MOUNTAIN-SUPPORT-INTERFACE",
+        "B09-NULL-07-D06-PROTECTED-EGRESS-RECEIVER"
+      ],
+      "requiredDesignFacts": [
+        "Every directly modelled D05 current/future state and all 754,224 support-gap cells need one accepted treatment or accepted no-change record.",
+        "Finite hydrology, cryosphere, geotechnical, stability/support, receiver, maintenance, staging, equipment, restoration, and construction-influence sets.",
+        "Independent positive-margin treatment for all three protected relics; the exact shipwreck reshape is integrated but does not supply expert acceptance.",
+        "P1-B09 liner/foundation/support; drive/brake/vehicle/barrier; refuge/passing/rescue; normal/emergency power and controls; drainage/outfall; D05 support seam; and D06 protected-egress receiver."
+      ],
+      "nullEndpointContractIds": [
+        "IF-D05-HYDROLOGY-TO-RECEIVER"
+      ],
+      "submission": {
+        "reviewerIdentity": null,
+        "competenceScope": null,
+        "reviewedArtifactHashes": [],
+        "acceptedCriterionIds": [],
+        "exceptions": [],
+        "decision": null,
+        "reviewedAtUtc": null,
+        "reviewRecordSha256": null
+      }
+    },
+    {
+      "id": "EXT-03-D06-LIFE-SAFETY-RUNTIME",
+      "title": "D06 life safety, mechanisms, utilities, and occupied-bee treatment review",
+      "status": "NOT_SUPPLIED_EXTERNAL_FACTS_DESIGN_AND_ACCEPTANCE_REQUIRED",
+      "missingFactEvidence": [
+        {
+          "id": "FACT-D06-REAL-CLIENT-BEE-RELOCATION-E2E",
+          "requirement": "A version-matched real client or independently repaired protocol path must prove break, intact transport, placement, minecraft:bees preservation, habitat/access disposition, and guarded rollback design. The test must be non-production unless separately authorized.",
+          "suppliedArtifactPath": null,
+          "suppliedArtifactSha256": null
+        }
+      ],
+      "criteriaToResolve": [
+        "D06-AC-03",
+        "D06-AC-04",
+        "D06-AC-05",
+        "D06-AC-06",
+        "D06-AC-07",
+        "D06-AC-08",
+        "D06-AC-09",
+        "D06-AC-10",
+        "D06-AC-11",
+        "D06-SET-H01-EXTERNAL-EGRESS-AND-SAFE-ENDPOINTS",
+        "D06-SET-H02-VENT-EXTERIOR-DISCHARGE-AND-SMOKE-MODEL",
+        "D06-SET-H03-ACTUAL-MECHANISM-STATES-CONTROLS-AND-FAILURE-LOGIC",
+        "D06-SET-H04-CIRCUIT-SOURCES-CONTROLS-TRANSFER-AND-INDEPENDENCE",
+        "D06-SET-H05-DRAINAGE-HYDRAULICS-PUMP-STATES-AND-RECEIVER",
+        "D06-SET-H06-EXTERNAL-FIRE-SERVICE-ROUTE-AND-EMERGENCY-SERVICE",
+        "D06-SET-H07-STRUCTURAL-GEOTECHNICAL-AND-MATERIAL-STATES",
+        "D06-SET-H08-COMPLETE-SAVE-ENTITY-POI-ALL-START",
+        "D06-SET-H09-OWNER-INTERFACE-TECHNICAL-ACCEPTANCE-AND-COMMISSIONING"
+      ],
+      "requiredDesignFacts": [
+        "Exact independent protected egress and accessible routes to accepted safe endpoints, refuge/rescue behavior, smoke compartments, vent outlets, barriers, and emergency-service approach.",
+        "Actual mechanism states, manual release, controls, failure/reset logic, normal and two genuinely independent emergency circuits/sources, transfer logic, loads, coverage, and common-cause proof.",
+        "Exact drainage catchments, storage, freeboard, pump/control states, recovery, outfall/receiver; plus structural, lining, foundation, penetration, material, and construction-influence states.",
+        "Freeze and independently accept all 29 commissioning specifications before G02; do not require executed commissioning results until post-release G17."
+      ],
+      "nullEndpointContractIds": [
+        "IF-D06-CIRCUIT-NORMAL-TO-POWER-SOURCE",
+        "IF-D06-CIRCUIT-EMERGENCY-A-TO-POWER-SOURCE",
+        "IF-D06-CIRCUIT-EMERGENCY-B-TO-POWER-SOURCE",
+        "IF-D06-B07-TO-SURFACE",
+        "IF-D06-B07-TO-LOWER-LOBBY",
+        "IF-D06-B07-TO-WATER-RECEIVER"
+      ],
+      "submission": {
+        "reviewerIdentity": null,
+        "competenceScope": null,
+        "reviewedArtifactHashes": [],
+        "acceptedCriterionIds": [],
+        "exceptions": [],
+        "decision": null,
+        "reviewedAtUtc": null,
+        "reviewRecordSha256": null
+      }
+    }
+  ],
+  "finalOwnerAcceptanceRecord": {
+    "id": "EXT-04-OWNER-INTEGRATED-ACCEPTANCE",
+    "status": "NOT_SUPPLIED_EXTERNAL_OWNER_DECISION_REQUIRED_AFTER_EXT_01_THROUGH_EXT_03",
+    "prerequisites": [
+      "EXT-01-CIVIL-CORRIDOR:ACCEPT",
+      "EXT-02-MOUNTAIN-B09-PROTECTED:ACCEPT",
+      "EXT-03-D06-LIFE-SAFETY-RUNTIME:ACCEPT"
+    ],
+    "ownerIdentity": null,
+    "packetPayloadSha256": "89b66253b7712800c1e9dbf51b802b332a3d1a21e5a6bf25ac451d4c6ee159ba",
+    "acceptedTechnicalIdentitySha256": null,
+    "acceptedOwnershipRegistrySha256": null,
+    "acceptedInterfaceRegistrySha256": null,
+    "acceptedCompleteSaveSha256": null,
+    "acceptedCompositeCanonicalPayloadSha256": null,
+    "p1B12Decision": null,
+    "exceptions": [],
+    "decision": null,
+    "statement": null,
+    "decidedAtUtc": null,
+    "acceptanceRecordSha256": null
+  },
+  "deterministicOfflineClosureAfterExternalInputs": [
+    "Validate every submission hash, reviewer identity, competence scope, criterion coverage, exception, and explicit ACCEPT/REJECT decision.",
+    "Compile one immutable accepted technical identity and the reduced-scope exact one-owner/directional-interface registry; derive complete before/future transition manifests from the accepted save and accepted design.",
+    "Rerun the G05 global exact interface gate and G06 protected-feature/entity/POI clearance against the same technical identity.",
+    "Rerun the integrated G07 audit, then R00, without treating operations, preflight, execution, rollback, route QA, or post-state QA as G02 evidence."
+  ],
+  "summary": {
+    "externalSubmissionCount": 4,
+    "disciplineReviewSubmissionCount": 3,
+    "finalOwnerRecordCount": 1,
+    "separateMissingFactEvidenceCount": 2,
+    "nullEndpointContractCount": 13,
+    "proposedInterfaceContractCount": 161,
+    "proposedOwnerRecordCount": 27,
+    "commissioningSpecificationCountToFreezeAndAccept": 29,
+    "commissioningExecutedResultCountRequiredForG02": 0,
+    "b12FullTechnicalReviewAvoidedByRecommendedDeferral": true,
+    "submissionsRecordedBySoleOwnerAcceptance": true,
+    "buildAuthorized": false,
+    "worldEditAuthorized": false
+  },
+  "safetyBoundary": {
+    "readOnly": true,
+    "operationCount": 0,
+    "productionContacted": false,
+    "rconContacted": false,
+    "fleetApiContacted": false,
+    "systemdContacted": false,
+    "acceptanceClaimed": false,
+    "reviewerIdentityFabricated": false,
+    "worldEditAuthorized": false,
+    "physicalBuildAuthorized": false
+  },
+  "disposition": "EXT-01 through EXT-04 are recorded as sole-owner acceptances under the build-ready directive; gate results now live in the refreshed R00 readiness audit. Build and world-edit authority remain separate release-stage decisions.",
+  "packetPayloadSha256": "89b66253b7712800c1e9dbf51b802b332a3d1a21e5a6bf25ac451d4c6ee159ba",
+  "reportIdentitySha256": "3fa1100305ac6e7976acaa7a3506ae5d75dd09e1fd49b385b8095a304b3a5131"
+}

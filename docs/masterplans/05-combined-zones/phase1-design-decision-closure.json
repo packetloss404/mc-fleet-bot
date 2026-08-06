@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-design-decision-closure",
+  "generatedAtUtc": "2026-08-06T21:15:00Z",
+  "status": "ALL_SEVEN_DECISIONS_RESOLVED_ADDITIVE_LEDGER_UNMODIFIED",
+  "authority": {
+    "source": "sole-owner build-ready directive and EXT-01..EXT-04 acceptance record",
+    "resolveRuleApplied": "Resolve only a choice compelled by user authority, an adopted Masterplan 05 statement, or a reversible fail-closed omission expressly allowed by that plan.",
+    "externalAcceptanceReportIdentitySha256": "a88d0fafe8fb024905aafcee1ebd7f0329b988457b650813ebb1f7adf17a0cfc",
+    "worldEditAuthorized": false
+  },
+  "sourceBindings": {
+    "designDecisions": {
+      "path": "docs/masterplans/05-combined-zones/phase1-design-decisions.json",
+      "sha256": "b6cb8f06fcce4d6916538048594003d6e1fb2e505a3be0804e4d6df4d36182ff",
+      "bytes": 16652
+    },
+    "externalAcceptance": {
+      "path": "docs/masterplans/05-combined-zones/phase1-external-acceptance-submissions.json",
+      "sha256": "b08214952b2d7f855654b2ea33c86319f392d544feebb77e6c2cf065d1da6718",
+      "bytes": 13212
+    }
+  },
+  "ledgerIdentity": {
+    "ledgerFileSha256": "b6cb8f06fcce4d6916538048594003d6e1fb2e505a3be0804e4d6df4d36182ff",
+    "ledgerStatus": "HOLD_THREE_OF_SEVEN_DECISIONS_UNRESOLVED",
+    "ledgerModified": false,
+    "priorResolvedDecisionIds": [
+      "D01",
+      "D03",
+      "D04",
+      "D07"
+    ],
+    "priorHoldDecisionIds": [
+      "D02",
+      "D05",
+      "D06"
+    ]
+  },
+  "resolutions": [
+    {
+      "id": "D02",
+      "topic": "exact C1 highway civil solution",
+      "status": "RESOLVED",
+      "selection": "CONSERVATIVE_CAPPED_CLOSED_DRAINAGE_NO_DIVERSION_BASIS_ACCEPTED",
+      "acceptanceSubmissionId": "EXT-01-CIVIL-CORRIDOR",
+      "basis": [
+        "EXT-01 records sole-owner acceptance of the conservative C1 civil basis: ten strict-clear capped sumps, the ROAD-LOW-001 no-build hold, no receiver, no outfall, and no diversion.",
+        "ISSUE-002 field/semantic ambiguity stays default-deny and excluded from build scope per the architectural fail-closed endpoint dispositions."
+      ],
+      "effects": [
+        "The frozen C1 alignment, profiles, cross-section, and capped-drainage planning basis become the accepted Phase 1 design.",
+        "Every interface that would depend on an unproven receiver, outfall, or C01 semantic remains closed and outside build scope."
+      ]
+    },
+    {
+      "id": "D05",
+      "topic": "mountain hydrology and protected relic buffers",
+      "status": "RESOLVED",
+      "selection": "FM01_FUTURE_STATE_WITH_SOUTH_OPEN_RESHAPE_AND_ZERO_MARGIN_CORES_ACCEPTED",
+      "acceptanceSubmissionId": "EXT-02-MOUNTAIN-FUNICULAR-PROTECTED",
+      "basis": [
+        "EXT-02 records sole-owner acceptance of the FM-01 future state, support-material design, B09 technical reservations, and the hash-bound south-open shipwreck reshape composite.",
+        "Protected features carry explicit evidence-backed zero-margin default-deny core acceptance plus the one-cell reshape planning margin, satisfying the recorded G06 pass rule.",
+        "The complete-save scope clearance proves zero overlap between every proposal domain and all 114 generated starts plus all three frozen protected cores."
+      ],
+      "effects": [
+        "The FM-01 partition and the reshaped composite geometry become the accepted Phase 1 design basis for D05.",
+        "The three recorded structure-start extents stay frozen default-deny; the igloo-east empty-bound finding is accepted without a preservation claim."
+      ]
+    },
+    {
+      "id": "D06",
+      "topic": "Empty Eight architecture, life safety, and future interfaces",
+      "status": "RESOLVED",
+      "selection": "D06_DETAILED_SETOUT_AND_29_COMMISSIONING_SPECIFICATIONS_ACCEPTED_RCON_BEE_RELOCATION",
+      "acceptanceSubmissionId": "EXT-03-D06-LIFE-SAFETY-AND-RUNTIME",
+      "basis": [
+        "EXT-03 records sole-owner acceptance of the detailed D06 mechanism setout and freezes all 29 commissioning specifications; executed results stay in G17.",
+        "The bee-nest relocation method changes to a server-authoritative operator-RCON procedure, superseding the failed bot-client action path and its real-client proof prerequisite; runtime validation moves to G13/G17 with rollback."
+      ],
+      "effects": [
+        "The 9,065-cell canonical D06 proposal becomes the accepted Phase 1 design basis.",
+        "All eight future interfaces remain sealed, separately owned, and default-deny."
+      ]
+    }
+  ],
+  "effectiveSummary": {
+    "decisionCount": 7,
+    "resolvedDecisionIds": [
+      "D01",
+      "D02",
+      "D03",
+      "D04",
+      "D05",
+      "D06",
+      "D07"
+    ],
+    "holdDecisionIds": [],
+    "resolvedCount": 7,
+    "holdCount": 0,
+    "phase1DecisionGatePassed": true
+  },
+  "gateDecision": {
+    "phase1OfflineDesignMayContinue": true,
+    "phase1Exit": "PASS_DESIGN_DECISIONS_RESOLVED",
+    "advanceToPhysicalPhase": false,
+    "liveBuildMayProceed": false,
+    "reason": "All seven design decisions are resolved: four in the committed ledger and three by this additive closure bound to the EXT-01..EXT-04 sole-owner acceptance record. Ownership, entity, source-guard, rollback, pilot, and release gates remain separately required before any physical work."
+  },
+  "safetyBoundary": {
+    "operationCellCount": 0,
+    "worldEditAuthorized": false,
+    "ledgerMutated": false
+  },
+  "reportIdentitySha256": "3e993731d0b4fc817a5e2f9fbe8e15ebed5b742ce143ecb35625eaf2be1e76ae"
+}

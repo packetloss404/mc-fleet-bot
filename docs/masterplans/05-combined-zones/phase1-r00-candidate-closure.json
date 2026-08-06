@@ -1,0 +1,381 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-r00-candidate-closure",
+  "generatedAtUtc": "2026-08-06T22:00:00Z",
+  "status": "READ_ONLY_CANDIDATE_CLOSURE_SUPERSEDED_BY_RECORDED_ACCEPTANCE_AND_ADDITIVE_CLOSURE",
+  "closureSupersession": {
+    "layerBClosureReportIdentitySha256": "da3591dc91d33c2de0df69ea923fb5dea4e8ab7fb79bbd10c278c8a5a73df0d1",
+    "externalAcceptanceReportIdentitySha256": "a88d0fafe8fb024905aafcee1ebd7f0329b988457b650813ebb1f7adf17a0cfc",
+    "unresolvedWorklistsSuperseded": true
+  },
+  "purpose": "Reuse and reconcile existing immutable evidence into the smallest proposed R00 closure worklist.",
+  "sourceBindings": {
+    "r00": {
+      "path": "docs/masterplans/05-combined-zones/phase1-r00-readiness-audit.json",
+      "sha256": "5a4757d3b2b7a9157a6eb1906abc0d165a371dbe929aedf7160b8a21cd0f21d4",
+      "bytes": 72763,
+      "role": "current seven-gate readiness truth source"
+    },
+    "g05": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g05-global-geometry-audit.json",
+      "sha256": "5b6f3db55ebdbe262883cdb57b3751eb1a3ad716f670a1283cac3b40dfb6d860",
+      "bytes": 5907,
+      "role": "completed Layer-A physical geometry audit and Layer-B worklist"
+    },
+    "registry": {
+      "path": "docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json",
+      "sha256": "930cf249d1510b326755983e5afd0e8c6242520bf7a5554e8ed450d64ec2fa24",
+      "bytes": 431213,
+      "role": "proposed owner and directional interface registry"
+    },
+    "completeSave": {
+      "path": "docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260806T014133Z.json",
+      "sha256": "7cd3718a59fbfa8b9006cb60337e6262a690a90f4abf5e06d527d900892be149",
+      "bytes": 58203,
+      "role": "accepted immutable complete-save identity"
+    },
+    "completeSaveScope": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g06-complete-save-scope-clearance-20260806T014133Z.json",
+      "sha256": "cf17f96d4504ad070114146101e6626b6233eeb780372737a0abcf33c7bde72f",
+      "bytes": 3039191,
+      "role": "complete-save source-equivalence and scoped census"
+    },
+    "technicalRefresh": {
+      "path": "docs/masterplans/05-combined-zones/phase1-technical-source-refresh.json",
+      "sha256": "15b57abb4180c15d7cf63c37cc981cd131463b37f7b81ca882b518d0fc3034ff",
+      "bytes": 13942,
+      "role": "additive stale-source closure supplement"
+    },
+    "composite": {
+      "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-canonical-integration-overlay.json",
+      "sha256": "437aa0ff1c7f6dc687a98fb4b7f9c288efdd2ed20469183d66051f3e354b9fce",
+      "bytes": 11294,
+      "role": "hash-bound shipwreck composite geometry integration"
+    },
+    "layerBClosure": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g05-layer-b-closure.json",
+      "sha256": "7459d1cb7072d590714a4569d88cd6efb7005d6afd1155ad4a844c836c80695a",
+      "bytes": 303947,
+      "role": "additive Layer B closure record for all 161 contracts"
+    },
+    "externalAcceptance": {
+      "path": "docs/masterplans/05-combined-zones/phase1-external-acceptance-submissions.json",
+      "sha256": "b08214952b2d7f855654b2ea33c86319f392d544feebb77e6c2cf065d1da6718",
+      "bytes": 13212,
+      "role": "EXT-01..04 sole-owner acceptance submissions"
+    }
+  },
+  "completeSaveIdentity": {
+    "completeSaveSha256": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+    "regionFileCount": 51,
+    "entityFileCount": 42,
+    "poiFileCount": 35,
+    "levelDatPresent": true,
+    "sourceEquivalent": true
+  },
+  "reusableEvidence": {
+    "g05LayerAPassed": true,
+    "physicalDirectionalContractCount": 84,
+    "physicalDirectionalPairCount": 352931,
+    "exactInterfaceGeometryCount": 148,
+    "sourceBackedExactGeometryCount": 23,
+    "hashOnlyExactGeometryCount": 125,
+    "existingTransitionPairManifestCount": 109,
+    "sourceBackedMissingTransitionPairManifestCount": 11,
+    "upstreamMissingTransitionPairManifestCount": 28,
+    "technicalSourceRefreshStaleRowPassCount": 5,
+    "shipwreckCompositeCanonicalIntegrationComplete": true
+  },
+  "candidateDerivations": {
+    "beforeState": {
+      "eligibleCount": 23,
+      "upstreamRegenerationRequiredCount": 125,
+      "sourceIdentity": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+      "status": "PROPOSED_NOT_EXECUTED_OR_ACCEPTED",
+      "contracts": [
+        {
+          "contractId": "IF-D02-RAIL-LOW-001-COLLECTION-INLET",
+          "coordinateSetSha256": "33f880820714d67f11b0769efe20728c5ccb84acdeb386750c733eaaf5579cf6",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D02-RAIL-LOW-002-COLLECTION-INLET",
+          "coordinateSetSha256": "b3dc5976f498e456d09cdd6ae7ef5f86cdfd89826851dae46614f49f29024e56",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D02-RAIL-LOW-003-COLLECTION-INLET",
+          "coordinateSetSha256": "b8309db5f2d97864fa720008c2f794f09d1254c0e28583b57fdf2f2b5bfa38d5",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D02-RAIL-LOW-004-COLLECTION-INLET",
+          "coordinateSetSha256": "0d305fc25e84704055a0523c2c9be013bdfe3d55d96f48721bf381b0eece10bb",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D02-RAIL-LOW-005-COLLECTION-INLET",
+          "coordinateSetSha256": "a9ea8364850933517a2ce10b143d6f15a3ba23eec2215bd88b31703979c74ed0",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D02-RAIL-LOW-006-COLLECTION-INLET",
+          "coordinateSetSha256": "53cafdba5a5d3f368869876e28a9dcf97f2c83f117a08b67a18fbbf79e8309a0",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D02-ROAD-LOW-002-COLLECTION-INLET",
+          "coordinateSetSha256": "0599b4e104bfe06e5231005e3ea06cb6260edd92869a939fc73cb3c9c0e7dfdd",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D02-ROAD-LOW-003-COLLECTION-INLET",
+          "coordinateSetSha256": "e98db768be8f5b7aa5bb859620150c03ad2d88321528a6276d5a56830c8ef503",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D02-ROAD-LOW-004-COLLECTION-INLET",
+          "coordinateSetSha256": "57cfccac5d777bd41aa393d64b71e5f160726c16fa6d9fa6c321a4c5508bb77c",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D02-ROAD-LOW-005-COLLECTION-INLET",
+          "coordinateSetSha256": "6e79d367f0abf8bda7e8b238d74e28b1b2afb9e5ed523474e20bb771f162f778",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-C01-OWNER-TUNNEL-TO-C1-LOADING-SEPARATION",
+          "coordinateSetSha256": "03fb55df6abb220dc45ba400a074da6dbad013d86fcd9241bb477355d479fc94",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-C1-LOADING-SEPARATION-TO-D02-CAPPED-SUMP-CAPS",
+          "coordinateSetSha256": "52a4150cf307e8412fbb89d861849be8ac545f7148ad45bf1d17a266b7863108",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-C1-LOADING-SEPARATION-TO-RAIL-COLLECTION",
+          "coordinateSetSha256": "22c2786aafa9a67d5a048e6e96128fda9e42d846eb7035067e87df4f95f6ddfc",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-C1-LOADING-SEPARATION-TO-ROAD-COLLECTION",
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-C1-LOADING-SEPARATION-TO-RAIL-FORMATION",
+          "coordinateSetSha256": "f1780010340f2e6f61d26b8aab1f9871b196ba251c80902591b6a329981e959c",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-C1-LOADING-SEPARATION-TO-ROAD-SURFACE",
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-C1-LOADING-SEPARATION-TO-RAIL-LAND-TAKE-DATUM",
+          "coordinateSetSha256": "a48276e2b58b4b3f941636a332dde9e19b7a058eb454afaa78815acf85dfa36a",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-C1-LOADING-SEPARATION-TO-ROAD-LAND-TAKE-DATUM",
+          "coordinateSetSha256": "aa098373ca9e97626d479bd2ab4609c6c8538dfd2e6bbaf82270fc9e65dd9cf4",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D05-B09-TO-Z11-SUMMIT",
+          "coordinateSetSha256": "d1d52260f2285abff8bbb97c56a1bd738eb78d6a54abcec6567e8d0b55260093",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D06-ADJ-01",
+          "coordinateSetSha256": "ebedc4a2005abd746835bd389bb444ff6519ede042ce337a0128a1762f4ca270",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D06-ADJ-02",
+          "coordinateSetSha256": "46ffbfea98ba6f6c64da479399f01ff6b2aaa64c742bcb6b8617b2c86cfb604f",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D06-ADJ-03",
+          "coordinateSetSha256": "8c1ac38a456840012561068a82d9b92cd3984c5305e7d0d912cf59b858b68502",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D06-ADJ-04",
+          "coordinateSetSha256": "cdd088494ef0d4a1670f0bb54a6e3425d99e6d4c1d0ee8d18e71138acf662752",
+          "source": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+          "status": "PROPOSED_BEFORE_STATE_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        }
+      ]
+    },
+    "transitionManifest": {
+      "eligibleCount": 11,
+      "upstreamRegenerationRequiredCount": 28,
+      "status": "PROPOSED_NOT_EXECUTED_OR_ACCEPTED",
+      "contracts": [
+        {
+          "contractId": "IF-D02-RAIL-LOW-001-COLLECTION-INLET",
+          "coordinateSetSha256": "33f880820714d67f11b0769efe20728c5ccb84acdeb386750c733eaaf5579cf6",
+          "status": "PROPOSED_TRANSITION_MANIFEST_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D02-RAIL-LOW-002-COLLECTION-INLET",
+          "coordinateSetSha256": "b3dc5976f498e456d09cdd6ae7ef5f86cdfd89826851dae46614f49f29024e56",
+          "status": "PROPOSED_TRANSITION_MANIFEST_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D02-RAIL-LOW-003-COLLECTION-INLET",
+          "coordinateSetSha256": "b8309db5f2d97864fa720008c2f794f09d1254c0e28583b57fdf2f2b5bfa38d5",
+          "status": "PROPOSED_TRANSITION_MANIFEST_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D02-RAIL-LOW-004-COLLECTION-INLET",
+          "coordinateSetSha256": "0d305fc25e84704055a0523c2c9be013bdfe3d55d96f48721bf381b0eece10bb",
+          "status": "PROPOSED_TRANSITION_MANIFEST_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D02-RAIL-LOW-005-COLLECTION-INLET",
+          "coordinateSetSha256": "a9ea8364850933517a2ce10b143d6f15a3ba23eec2215bd88b31703979c74ed0",
+          "status": "PROPOSED_TRANSITION_MANIFEST_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D02-RAIL-LOW-006-COLLECTION-INLET",
+          "coordinateSetSha256": "53cafdba5a5d3f368869876e28a9dcf97f2c83f117a08b67a18fbbf79e8309a0",
+          "status": "PROPOSED_TRANSITION_MANIFEST_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D02-ROAD-LOW-002-COLLECTION-INLET",
+          "coordinateSetSha256": "0599b4e104bfe06e5231005e3ea06cb6260edd92869a939fc73cb3c9c0e7dfdd",
+          "status": "PROPOSED_TRANSITION_MANIFEST_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D02-ROAD-LOW-003-COLLECTION-INLET",
+          "coordinateSetSha256": "e98db768be8f5b7aa5bb859620150c03ad2d88321528a6276d5a56830c8ef503",
+          "status": "PROPOSED_TRANSITION_MANIFEST_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D02-ROAD-LOW-004-COLLECTION-INLET",
+          "coordinateSetSha256": "57cfccac5d777bd41aa393d64b71e5f160726c16fa6d9fa6c321a4c5508bb77c",
+          "status": "PROPOSED_TRANSITION_MANIFEST_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D02-ROAD-LOW-005-COLLECTION-INLET",
+          "coordinateSetSha256": "6e79d367f0abf8bda7e8b238d74e28b1b2afb9e5ed523474e20bb771f162f778",
+          "status": "PROPOSED_TRANSITION_MANIFEST_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        },
+        {
+          "contractId": "IF-D05-B09-TO-Z11-SUMMIT",
+          "coordinateSetSha256": "d1d52260f2285abff8bbb97c56a1bd738eb78d6a54abcec6567e8d0b55260093",
+          "status": "PROPOSED_TRANSITION_MANIFEST_DERIVATION_ELIGIBLE_NOT_EXECUTED"
+        }
+      ]
+    },
+    "futureState": {
+      "eligibleCount": 0,
+      "requiredAuthoringCount": 161,
+      "status": "NO_EXISTING_HASHES_REUSED"
+    }
+  },
+  "unresolved": [
+    {
+      "id": "R00-CLOSURE-NULL-ENDPOINT-GEOMETRY",
+      "count": 13,
+      "status": "SUPERSEDED_BY_RECORDED_ACCEPTANCE_AND_ADDITIVE_CLOSURE",
+      "contractIds": [
+        "IF-D02-MAINTENANCE-ACCESS",
+        "IF-D02-PUMP-POWER-CONTROL",
+        "IF-D02-OVERFLOW-RECEIVER",
+        "IF-D05-HYDROLOGY-TO-RECEIVER",
+        "IF-D06-CIRCUIT-NORMAL-TO-POWER-SOURCE",
+        "IF-D06-CIRCUIT-EMERGENCY-A-TO-POWER-SOURCE",
+        "IF-D06-CIRCUIT-EMERGENCY-B-TO-POWER-SOURCE",
+        "IF-D06-B07-TO-SURFACE",
+        "IF-D06-B07-TO-LOWER-LOBBY",
+        "IF-D06-B07-TO-WATER-RECEIVER",
+        "IF-P1-B11-DRAINAGE-TO-RECEIVER",
+        "IF-P1-B11-DRY-UTILITY-TO-SERVICE",
+        "IF-P1-B11-WET-UTILITY-TO-SERVICE"
+      ],
+      "reason": "Existing catalog and registry contain no exact endpoint geometry; coordinates cannot be invented."
+    },
+    {
+      "id": "R00-CLOSURE-FUTURE-STATE-AUTHORING",
+      "count": 161,
+      "status": "SUPERSEDED_BY_RECORDED_ACCEPTANCE_AND_ADDITIVE_CLOSURE",
+      "reason": "No interface future-state hashes are present; proposal geometry is not an accepted designed future state."
+    },
+    {
+      "id": "R00-CLOSURE-HASH-ONLY-UPSTREAM-REGENERATION",
+      "count": 125,
+      "status": "SUPERSEDED_BY_RECORDED_ACCEPTANCE_AND_ADDITIVE_CLOSURE",
+      "reason": "These exact cellsets are hash-only registry outputs with no inline source pointer; regeneration would require rerunning upstream compilers."
+    },
+    {
+      "id": "R00-CLOSURE-OWNER-INTERFACE-ACCEPTANCE",
+      "count": 161,
+      "status": "SUPERSEDED_BY_RECORDED_ACCEPTANCE_AND_ADDITIVE_CLOSURE",
+      "reason": "The registry is proposal-only and has zero accepted contracts; this compiler cannot self-accept it."
+    },
+    {
+      "id": "R00-CLOSURE-G06-REAL-CLIENT-MECHANIC",
+      "count": 1,
+      "status": "SUPERSEDED_BY_RECORDED_ACCEPTANCE_AND_ADDITIVE_CLOSURE",
+      "reason": "Paper serialization is proven, but no real-client break/transport/place/NBT event sequence is proven."
+    }
+  ],
+  "summary": {
+    "totalInterfaceContractCount": 161,
+    "exactGeometryCount": 148,
+    "sourceBackedExactGeometryCount": 23,
+    "hashOnlyExactGeometryCount": 125,
+    "nullGeometryCount": 13,
+    "existingTransitionPairManifestCount": 109,
+    "missingTransitionPairManifestCount": 52,
+    "sourceBackedMissingTransitionPairManifestCount": 11,
+    "upstreamMissingTransitionPairManifestCount": 28,
+    "candidateBeforeStateDerivationCount": 23,
+    "missingFutureStateHashCount": 161,
+    "acceptedContractCount": 0,
+    "ownerRecordCount": 27,
+    "acceptedOwnerRecordCount": 0,
+    "externalUnresolvedWorkItemCount": 0,
+    "supersededWorkItemCount": 5,
+    "r00Ready": true,
+    "buildAuthorized": false,
+    "worldEditAuthorized": false
+  },
+  "safetyBoundary": {
+    "readOnly": true,
+    "operationCount": 0,
+    "worldEditAuthorized": false,
+    "productionContacted": false,
+    "acceptanceClaimed": false
+  },
+  "disposition": "Use this report to prepare one compact technical/owner review packet; do not treat candidates as gate evidence until independently generated and accepted.",
+  "reportIdentitySha256": "40d69593fb8f0e88efc2d748950c7cfb90270aa5952a4cb1fe6ad47e545d3fe3"
+}

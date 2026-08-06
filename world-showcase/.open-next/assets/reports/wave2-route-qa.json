@@ -1,0 +1,3523 @@
+{
+  "schemaVersion": 2,
+  "generatedAtUtc": "2026-07-28T02:33:46.431Z",
+  "startedAtUtc": "2026-07-28T02:32:39.117Z",
+  "status": "PASS",
+  "instrument": {
+    "type": "short-lived-independent-mineflayer-walker",
+    "username": "Wave2RouteQA",
+    "residentFleetLeashBypassed": true,
+    "canDig": false,
+    "canTower": false,
+    "temporaryWhitelistManaged": true,
+    "disconnectedAfterRun": true
+  },
+  "postSnapshot": {
+    "directory": "data/worldsnap-wave2-postrelease-d05ac7822795eff0-20260728/region",
+    "sha256": "d05ac7822795eff03340e46695a6f3accbdffdf82d11559d857e17b4d1962999",
+    "regionFileCount": 26,
+    "bytes": 123313802,
+    "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+  },
+  "routeManifest": {
+    "file": "data/world-review/redevelopment-wave2-route-manifest-2026-07-28.json",
+    "sha256": "ee15826a9cd87d5f2be5618904c13cde37291d5a30272a32d3e8d5176bcfdb0b"
+  },
+  "packageHashes": {
+    "ravenrock-t2b": {
+      "file": "data/buildops/ravenrock-t2b-liner-pilot-wave2-prerelease-2026-07-28.txt",
+      "sha256": "2ad97a32c2a48b28021edd2dd782acd78e0f07ed42b7d3949a0685bc06fd9690"
+    },
+    "mainstreet-r08": {
+      "file": "data/buildops/mainstreet-wave2-r08-prerelease-2026-07-28.txt",
+      "sha256": "d9dea58a3c20ba6e5faca63fbb1ee7cc11857dc51e4956ff27624fee8c3da69f"
+    }
+  },
+  "bidirectionalWalk": {
+    "passed": true,
+    "tests": 2,
+    "directionalRuns": 4,
+    "passedTests": 2,
+    "failedTests": 0
+  },
+  "tests": [
+    {
+      "id": "RR-T2B-W2-BIDIRECTIONAL",
+      "standard": "T2b west dogleg to Cavern B side: normal walking only; no dig, tower, parkour, sprint, jump control, or sneak control",
+      "points": [
+        [
+          -145,
+          3,
+          187
+        ],
+        [
+          -141,
+          2,
+          187
+        ],
+        [
+          -141,
+          2,
+          184
+        ],
+        [
+          -136,
+          2,
+          182
+        ]
+      ],
+      "directions": [
+        {
+          "direction": "forward",
+          "start": [
+            -145,
+            3,
+            187
+          ],
+          "initialPositionReached": true,
+          "legs": [
+            {
+              "target": [
+                -141,
+                2,
+                187
+              ],
+              "reached": true,
+              "error": null,
+              "elapsedSeconds": 0.841,
+              "movementPolicyViolations": [],
+              "trace": [
+                {
+                  "elapsedSeconds": 0.251,
+                  "position": {
+                    "x": -143.873,
+                    "y": 3,
+                    "z": 187.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.5,
+                  "position": {
+                    "x": -142.816,
+                    "y": 3,
+                    "z": 187.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.753,
+                  "position": {
+                    "x": -141.738,
+                    "y": 3,
+                    "z": 187.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                }
+              ]
+            },
+            {
+              "target": [
+                -141,
+                2,
+                184
+              ],
+              "reached": true,
+              "error": null,
+              "elapsedSeconds": 0.655,
+              "movementPolicyViolations": [],
+              "trace": [
+                {
+                  "elapsedSeconds": 0.25,
+                  "position": {
+                    "x": -141.236,
+                    "y": 2,
+                    "z": 187.414
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.5,
+                  "position": {
+                    "x": -140.691,
+                    "y": 2,
+                    "z": 186.666
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                }
+              ]
+            },
+            {
+              "target": [
+                -136,
+                2,
+                182
+              ],
+              "reached": true,
+              "error": null,
+              "elapsedSeconds": 1.253,
+              "movementPolicyViolations": [],
+              "trace": [
+                {
+                  "elapsedSeconds": 0.25,
+                  "position": {
+                    "x": -139.888,
+                    "y": 2,
+                    "z": 185.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.5,
+                  "position": {
+                    "x": -139.003,
+                    "y": 2,
+                    "z": 185.07
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.75,
+                  "position": {
+                    "x": -138.413,
+                    "y": 2,
+                    "z": 184.45
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1,
+                  "position": {
+                    "x": -137.665,
+                    "y": 2,
+                    "z": 183.673
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.25,
+                  "position": {
+                    "x": -136.905,
+                    "y": 2,
+                    "z": 182.906
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                }
+              ]
+            }
+          ],
+          "movementPolicyViolations": [],
+          "passed": true
+        },
+        {
+          "direction": "reverse",
+          "start": [
+            -136,
+            2,
+            182
+          ],
+          "initialPositionReached": true,
+          "legs": [
+            {
+              "target": [
+                -141,
+                2,
+                184
+              ],
+              "reached": true,
+              "error": null,
+              "elapsedSeconds": 1.112,
+              "movementPolicyViolations": [],
+              "trace": [
+                {
+                  "elapsedSeconds": 0.249,
+                  "position": {
+                    "x": -135.943,
+                    "y": 2,
+                    "z": 182.943
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.5,
+                  "position": {
+                    "x": -136.811,
+                    "y": 2,
+                    "z": 183.456
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.75,
+                  "position": {
+                    "x": -137.875,
+                    "y": 2,
+                    "z": 183.52
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1,
+                  "position": {
+                    "x": -138.843,
+                    "y": 2,
+                    "z": 183.8
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                }
+              ]
+            },
+            {
+              "target": [
+                -141,
+                2,
+                187
+              ],
+              "reached": true,
+              "error": null,
+              "elapsedSeconds": 0.603,
+              "movementPolicyViolations": [],
+              "trace": [
+                {
+                  "elapsedSeconds": 0.251,
+                  "position": {
+                    "x": -139.943,
+                    "y": 2,
+                    "z": 184.943
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.501,
+                  "position": {
+                    "x": -140.408,
+                    "y": 2,
+                    "z": 185.608
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                }
+              ]
+            },
+            {
+              "target": [
+                -145,
+                3,
+                187
+              ],
+              "reached": true,
+              "error": null,
+              "elapsedSeconds": 0.953,
+              "movementPolicyViolations": [],
+              "trace": [
+                {
+                  "elapsedSeconds": 0.251,
+                  "position": {
+                    "x": -141.135,
+                    "y": 2,
+                    "z": 186.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.5,
+                  "position": {
+                    "x": -141.976,
+                    "y": 3.166,
+                    "z": 186.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.752,
+                  "position": {
+                    "x": -142.773,
+                    "y": 3,
+                    "z": 186.574
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                }
+              ]
+            }
+          ],
+          "movementPolicyViolations": [],
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "MSA-R08-WEST-EAST-BIDIRECTIONAL",
+      "standard": "R08 shared cross-link west alley to east alley: normal walking only; no dig, tower, parkour, sprint, jump control, or sneak control",
+      "points": [
+        [
+          -57,
+          65,
+          -124
+        ],
+        [
+          -13,
+          65,
+          -124
+        ],
+        [
+          -13,
+          65,
+          -126
+        ],
+        [
+          13,
+          65,
+          -126
+        ],
+        [
+          13,
+          65,
+          -124
+        ],
+        [
+          56,
+          65,
+          -124
+        ]
+      ],
+      "directions": [
+        {
+          "direction": "forward",
+          "start": [
+            -57,
+            65,
+            -124
+          ],
+          "initialPositionReached": true,
+          "legs": [
+            {
+              "target": [
+                -13,
+                65,
+                -124
+              ],
+              "reached": true,
+              "error": null,
+              "elapsedSeconds": 9.955,
+              "movementPolicyViolations": [],
+              "trace": [
+                {
+                  "elapsedSeconds": 0.25,
+                  "position": {
+                    "x": -55.873,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.5,
+                  "position": {
+                    "x": -54.816,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.751,
+                  "position": {
+                    "x": -53.738,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.002,
+                  "position": {
+                    "x": -52.658,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.252,
+                  "position": {
+                    "x": -51.579,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.502,
+                  "position": {
+                    "x": -50.5,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.751,
+                  "position": {
+                    "x": -49.205,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.002,
+                  "position": {
+                    "x": -48.125,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.252,
+                  "position": {
+                    "x": -47.046,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.502,
+                  "position": {
+                    "x": -45.967,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.753,
+                  "position": {
+                    "x": -44.887,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.002,
+                  "position": {
+                    "x": -43.808,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.253,
+                  "position": {
+                    "x": -42.729,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.503,
+                  "position": {
+                    "x": -41.649,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.753,
+                  "position": {
+                    "x": -40.57,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.003,
+                  "position": {
+                    "x": -39.491,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.253,
+                  "position": {
+                    "x": -38.412,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.503,
+                  "position": {
+                    "x": -37.332,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.753,
+                  "position": {
+                    "x": -36.253,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.003,
+                  "position": {
+                    "x": -35.174,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.252,
+                  "position": {
+                    "x": -34.094,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.503,
+                  "position": {
+                    "x": -33.015,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.753,
+                  "position": {
+                    "x": -31.936,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 6.004,
+                  "position": {
+                    "x": -30.857,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 6.255,
+                  "position": {
+                    "x": -29.777,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 6.506,
+                  "position": {
+                    "x": -28.698,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 6.756,
+                  "position": {
+                    "x": -27.619,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 7.006,
+                  "position": {
+                    "x": -26.539,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 7.255,
+                  "position": {
+                    "x": -25.46,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 7.506,
+                  "position": {
+                    "x": -24.381,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 7.756,
+                  "position": {
+                    "x": -23.301,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 8.006,
+                  "position": {
+                    "x": -22.222,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 8.257,
+                  "position": {
+                    "x": -21.143,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 8.507,
+                  "position": {
+                    "x": -20.064,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 8.758,
+                  "position": {
+                    "x": -18.984,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 9.008,
+                  "position": {
+                    "x": -17.905,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 9.257,
+                  "position": {
+                    "x": -16.826,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 9.508,
+                  "position": {
+                    "x": -15.746,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 9.758,
+                  "position": {
+                    "x": -14.667,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                }
+              ]
+            },
+            {
+              "target": [
+                -13,
+                65,
+                -126
+              ],
+              "reached": true,
+              "error": null,
+              "elapsedSeconds": 0.351,
+              "movementPolicyViolations": [],
+              "trace": [
+                {
+                  "elapsedSeconds": 0.25,
+                  "position": {
+                    "x": -13.057,
+                    "y": 65,
+                    "z": -123.943
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                }
+              ]
+            },
+            {
+              "target": [
+                13,
+                65,
+                -126
+              ],
+              "reached": true,
+              "error": null,
+              "elapsedSeconds": 5.888,
+              "movementPolicyViolations": [],
+              "trace": [
+                {
+                  "elapsedSeconds": 0.25,
+                  "position": {
+                    "x": -11.873,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.5,
+                  "position": {
+                    "x": -10.816,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.75,
+                  "position": {
+                    "x": -9.738,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1,
+                  "position": {
+                    "x": -8.658,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.251,
+                  "position": {
+                    "x": -7.579,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.501,
+                  "position": {
+                    "x": -6.716,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.751,
+                  "position": {
+                    "x": -5.636,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.001,
+                  "position": {
+                    "x": -4.557,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.252,
+                  "position": {
+                    "x": -3.478,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.502,
+                  "position": {
+                    "x": -2.398,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.752,
+                  "position": {
+                    "x": -1.103,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.002,
+                  "position": {
+                    "x": -0.024,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.252,
+                  "position": {
+                    "x": 1.055,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.502,
+                  "position": {
+                    "x": 2.135,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.751,
+                  "position": {
+                    "x": 3.214,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.002,
+                  "position": {
+                    "x": 4.293,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.252,
+                  "position": {
+                    "x": 5.373,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.503,
+                  "position": {
+                    "x": 6.452,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.754,
+                  "position": {
+                    "x": 7.531,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.004,
+                  "position": {
+                    "x": 8.61,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.255,
+                  "position": {
+                    "x": 9.69,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.505,
+                  "position": {
+                    "x": 10.769,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.755,
+                  "position": {
+                    "x": 11.749,
+                    "y": 65,
+                    "z": -124.775
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                }
+              ]
+            },
+            {
+              "target": [
+                13,
+                65,
+                -124
+              ],
+              "reached": true,
+              "error": null,
+              "elapsedSeconds": 0.35,
+              "movementPolicyViolations": [],
+              "trace": [
+                {
+                  "elapsedSeconds": 0.251,
+                  "position": {
+                    "x": 12.943,
+                    "y": 65,
+                    "z": -125.057
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                }
+              ]
+            },
+            {
+              "target": [
+                56,
+                65,
+                -124
+              ],
+              "reached": true,
+              "error": null,
+              "elapsedSeconds": 9.846,
+              "movementPolicyViolations": [],
+              "trace": [
+                {
+                  "elapsedSeconds": 0.251,
+                  "position": {
+                    "x": 14.127,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.501,
+                  "position": {
+                    "x": 15.184,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.751,
+                  "position": {
+                    "x": 16.262,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.001,
+                  "position": {
+                    "x": 17.342,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.252,
+                  "position": {
+                    "x": 18.421,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.503,
+                  "position": {
+                    "x": 19.284,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.752,
+                  "position": {
+                    "x": 20.364,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.003,
+                  "position": {
+                    "x": 21.443,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.253,
+                  "position": {
+                    "x": 22.522,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.504,
+                  "position": {
+                    "x": 23.602,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.754,
+                  "position": {
+                    "x": 24.681,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.004,
+                  "position": {
+                    "x": 25.76,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.255,
+                  "position": {
+                    "x": 26.84,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.505,
+                  "position": {
+                    "x": 27.919,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.755,
+                  "position": {
+                    "x": 28.998,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.006,
+                  "position": {
+                    "x": 30.077,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.257,
+                  "position": {
+                    "x": 31.157,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.507,
+                  "position": {
+                    "x": 32.236,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.757,
+                  "position": {
+                    "x": 33.315,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.007,
+                  "position": {
+                    "x": 34.395,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.256,
+                  "position": {
+                    "x": 35.474,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.507,
+                  "position": {
+                    "x": 36.553,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.757,
+                  "position": {
+                    "x": 37.848,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 6.006,
+                  "position": {
+                    "x": 38.928,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 6.256,
+                  "position": {
+                    "x": 40.007,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 6.507,
+                  "position": {
+                    "x": 41.086,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 6.758,
+                  "position": {
+                    "x": 42.166,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 7.008,
+                  "position": {
+                    "x": 43.245,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 7.258,
+                  "position": {
+                    "x": 44.324,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 7.508,
+                  "position": {
+                    "x": 45.403,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 7.758,
+                  "position": {
+                    "x": 46.483,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 8.009,
+                  "position": {
+                    "x": 47.562,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 8.259,
+                  "position": {
+                    "x": 48.641,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 8.508,
+                  "position": {
+                    "x": 49.721,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 8.759,
+                  "position": {
+                    "x": 50.8,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 9.008,
+                  "position": {
+                    "x": 51.879,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 9.258,
+                  "position": {
+                    "x": 52.958,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 9.509,
+                  "position": {
+                    "x": 54.038,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 9.759,
+                  "position": {
+                    "x": 54.956,
+                    "y": 65,
+                    "z": -124.082
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                }
+              ]
+            }
+          ],
+          "movementPolicyViolations": [],
+          "passed": true
+        },
+        {
+          "direction": "reverse",
+          "start": [
+            56,
+            65,
+            -124
+          ],
+          "initialPositionReached": true,
+          "legs": [
+            {
+              "target": [
+                13,
+                65,
+                -124
+              ],
+              "reached": true,
+              "error": null,
+              "elapsedSeconds": 9.754,
+              "movementPolicyViolations": [],
+              "trace": [
+                {
+                  "elapsedSeconds": 0.25,
+                  "position": {
+                    "x": 55.873,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.501,
+                  "position": {
+                    "x": 54.816,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.751,
+                  "position": {
+                    "x": 53.738,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.001,
+                  "position": {
+                    "x": 52.658,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.252,
+                  "position": {
+                    "x": 51.579,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.503,
+                  "position": {
+                    "x": 50.5,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.753,
+                  "position": {
+                    "x": 49.42,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.003,
+                  "position": {
+                    "x": 48.341,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.253,
+                  "position": {
+                    "x": 47.262,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.504,
+                  "position": {
+                    "x": 46.183,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.754,
+                  "position": {
+                    "x": 45.103,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.004,
+                  "position": {
+                    "x": 44.024,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.254,
+                  "position": {
+                    "x": 42.729,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.503,
+                  "position": {
+                    "x": 41.649,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.754,
+                  "position": {
+                    "x": 40.57,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.004,
+                  "position": {
+                    "x": 39.491,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.254,
+                  "position": {
+                    "x": 38.412,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.504,
+                  "position": {
+                    "x": 37.332,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.754,
+                  "position": {
+                    "x": 36.253,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.003,
+                  "position": {
+                    "x": 35.174,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.253,
+                  "position": {
+                    "x": 34.094,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.504,
+                  "position": {
+                    "x": 33.015,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.754,
+                  "position": {
+                    "x": 31.936,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 6.005,
+                  "position": {
+                    "x": 30.857,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 6.255,
+                  "position": {
+                    "x": 29.777,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 6.505,
+                  "position": {
+                    "x": 28.698,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 6.755,
+                  "position": {
+                    "x": 27.619,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 7.005,
+                  "position": {
+                    "x": 26.539,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 7.255,
+                  "position": {
+                    "x": 25.46,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 7.504,
+                  "position": {
+                    "x": 24.381,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 7.755,
+                  "position": {
+                    "x": 23.301,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 8.005,
+                  "position": {
+                    "x": 22.222,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 8.255,
+                  "position": {
+                    "x": 21.143,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 8.505,
+                  "position": {
+                    "x": 20.064,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 8.756,
+                  "position": {
+                    "x": 18.984,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 9.006,
+                  "position": {
+                    "x": 17.905,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 9.256,
+                  "position": {
+                    "x": 16.826,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 9.507,
+                  "position": {
+                    "x": 15.746,
+                    "y": 65,
+                    "z": -123.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                }
+              ]
+            },
+            {
+              "target": [
+                13,
+                65,
+                -126
+              ],
+              "reached": true,
+              "error": null,
+              "elapsedSeconds": 0.404,
+              "movementPolicyViolations": [],
+              "trace": [
+                {
+                  "elapsedSeconds": 0.249,
+                  "position": {
+                    "x": 14.341,
+                    "y": 65,
+                    "z": -123.78
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                }
+              ]
+            },
+            {
+              "target": [
+                -13,
+                65,
+                -126
+              ],
+              "reached": true,
+              "error": null,
+              "elapsedSeconds": 5.873,
+              "movementPolicyViolations": [],
+              "trace": [
+                {
+                  "elapsedSeconds": 0.25,
+                  "position": {
+                    "x": 12.883,
+                    "y": 65,
+                    "z": -124.429
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.502,
+                  "position": {
+                    "x": 11.833,
+                    "y": 65,
+                    "z": -124.512
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.752,
+                  "position": {
+                    "x": 10.755,
+                    "y": 65,
+                    "z": -124.506
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.002,
+                  "position": {
+                    "x": 9.676,
+                    "y": 65,
+                    "z": -124.503
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.253,
+                  "position": {
+                    "x": 8.597,
+                    "y": 65,
+                    "z": -124.502
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.503,
+                  "position": {
+                    "x": 7.518,
+                    "y": 65,
+                    "z": -124.501
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.753,
+                  "position": {
+                    "x": 6.654,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.004,
+                  "position": {
+                    "x": 5.575,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.255,
+                  "position": {
+                    "x": 4.496,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.505,
+                  "position": {
+                    "x": 3.416,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.756,
+                  "position": {
+                    "x": 2.337,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.006,
+                  "position": {
+                    "x": 1.258,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.256,
+                  "position": {
+                    "x": 0.178,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.507,
+                  "position": {
+                    "x": -0.901,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.757,
+                  "position": {
+                    "x": -1.98,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.007,
+                  "position": {
+                    "x": -3.275,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.258,
+                  "position": {
+                    "x": -4.355,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.508,
+                  "position": {
+                    "x": -5.434,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.759,
+                  "position": {
+                    "x": -6.513,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.009,
+                  "position": {
+                    "x": -7.593,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.259,
+                  "position": {
+                    "x": -8.672,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.509,
+                  "position": {
+                    "x": -9.751,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.76,
+                  "position": {
+                    "x": -10.733,
+                    "y": 65,
+                    "z": -124.773
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                }
+              ]
+            },
+            {
+              "target": [
+                -13,
+                65,
+                -124
+              ],
+              "reached": true,
+              "error": null,
+              "elapsedSeconds": 0.351,
+              "movementPolicyViolations": [],
+              "trace": [
+                {
+                  "elapsedSeconds": 0.25,
+                  "position": {
+                    "x": -11.804,
+                    "y": 65,
+                    "z": -125.196
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                }
+              ]
+            },
+            {
+              "target": [
+                -57,
+                65,
+                -124
+              ],
+              "reached": true,
+              "error": null,
+              "elapsedSeconds": 10.133,
+              "movementPolicyViolations": [],
+              "trace": [
+                {
+                  "elapsedSeconds": 0.251,
+                  "position": {
+                    "x": -13.127,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.501,
+                  "position": {
+                    "x": -14.184,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 0.751,
+                  "position": {
+                    "x": -15.047,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.001,
+                  "position": {
+                    "x": -16.126,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.251,
+                  "position": {
+                    "x": -17.205,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.501,
+                  "position": {
+                    "x": -18.284,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 1.751,
+                  "position": {
+                    "x": -19.364,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2,
+                  "position": {
+                    "x": -20.443,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.251,
+                  "position": {
+                    "x": -21.522,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.502,
+                  "position": {
+                    "x": -22.602,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 2.753,
+                  "position": {
+                    "x": -23.681,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.004,
+                  "position": {
+                    "x": -24.76,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.255,
+                  "position": {
+                    "x": -25.84,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.505,
+                  "position": {
+                    "x": -26.919,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 3.755,
+                  "position": {
+                    "x": -27.998,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.004,
+                  "position": {
+                    "x": -29.077,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.255,
+                  "position": {
+                    "x": -30.157,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.505,
+                  "position": {
+                    "x": -31.236,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 4.754,
+                  "position": {
+                    "x": -32.315,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.005,
+                  "position": {
+                    "x": -33.395,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.255,
+                  "position": {
+                    "x": -34.474,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.506,
+                  "position": {
+                    "x": -35.553,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 5.756,
+                  "position": {
+                    "x": -36.632,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 6.006,
+                  "position": {
+                    "x": -37.712,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 6.256,
+                  "position": {
+                    "x": -38.791,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 6.506,
+                  "position": {
+                    "x": -39.87,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 6.756,
+                  "position": {
+                    "x": -40.95,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 7.006,
+                  "position": {
+                    "x": -42.029,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 7.256,
+                  "position": {
+                    "x": -43.108,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 7.507,
+                  "position": {
+                    "x": -44.188,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 7.756,
+                  "position": {
+                    "x": -45.267,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 8.007,
+                  "position": {
+                    "x": -46.346,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 8.256,
+                  "position": {
+                    "x": -47.425,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 8.506,
+                  "position": {
+                    "x": -48.505,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 8.757,
+                  "position": {
+                    "x": -49.584,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 9.007,
+                  "position": {
+                    "x": -50.663,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 9.257,
+                  "position": {
+                    "x": -51.743,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 9.507,
+                  "position": {
+                    "x": -52.822,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 9.757,
+                  "position": {
+                    "x": -53.901,
+                    "y": 65,
+                    "z": -124.5
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                },
+                {
+                  "elapsedSeconds": 10.007,
+                  "position": {
+                    "x": -54.865,
+                    "y": 65,
+                    "z": -124.207
+                  },
+                  "moving": true,
+                  "controls": {
+                    "jump": false,
+                    "sprint": false,
+                    "sneak": false
+                  }
+                }
+              ]
+            }
+          ],
+          "movementPolicyViolations": [],
+          "passed": true
+        }
+      ],
+      "passed": true
+    }
+  ]
+}

@@ -96,6 +96,19 @@ interface Report {
     d06BeeNestCurrentCaptureTransportEligible: boolean;
     d06BeeNestLiveConsolidationRequired: boolean;
     d06BeeNestRuntimeMechanicProven: boolean;
+    d06BeeRuntimeCompatibilityValid: boolean;
+    d06BeeExactProductionPaperRuntimeBound: boolean;
+    d06BeePaperItemSerializationObserved: boolean;
+    d06BeeCurrentAutomationClientCompatible: boolean;
+    d06BeeBlindFleetDependencyUpgradeRecommended: boolean;
+    technicalSourceRefreshValid: boolean;
+    technicalSourceRefreshStaleRowPassCount: number;
+    technicalSourceRefreshExactScopedDomainCount: number;
+    technicalSourceRefreshGeneratedStartEvaluationCount: number;
+    technicalSourceRefreshD06PersistentPoiHoldCount: number;
+    technicalSourceRefreshCommissioningSpecificationCount: number;
+    technicalSourceRefreshCommissioningAcceptedCount: number;
+    technicalSourceRefreshExecutedCommissioningResultCount: number;
     d05S01SurveyComplete: boolean;
     b03ExactRouteSelected: boolean;
     b03HorizontalStepCount: number;
@@ -107,6 +120,10 @@ interface Report {
     d02AcceptableOutfallCandidateCount: number;
     d02PreferredDrainageCandidateCellCount: number;
     d02HeldLowRunCount: number;
+    d02TechnicalPassCount: number;
+    d02TechnicalHoldCount: number;
+    d02EffectiveTechnicalPassCount: number;
+    d02EffectiveTechnicalHoldCount: number;
     d05FutureStateContractPassed: boolean;
     d05FutureStateCellCount: number;
     d05SelectedPlanningAlternativeId: string;
@@ -132,6 +149,18 @@ interface Report {
     p1B11OwnerPacketReady: boolean;
     p1B11PlanningBasisAccepted: boolean;
     p1B11GrandAvenueCenterlinePointCount: number;
+    proposedLogicalOwnerCount: number;
+    proposedDirectionalInterfaceCount: number;
+    proposedNullInterfaceCount: number;
+    g05GlobalGeometryValid: boolean;
+    g05LayerAPassed: boolean;
+    g05PhysicalDirectionalContractCount: number;
+    g05PhysicalDirectionalPairCount: number;
+    g05TechnicalContractCount: number;
+    g05MissingTransitionPairManifestCount: number;
+    g05BeforeStateSetCount: number;
+    g05FutureStateSetCount: number;
+    g05AcceptedContractCount: number;
     shipwreckTreatmentContractValid: boolean;
     shipwreckAttributedRemovalTargetCandidateCellCount: number;
     shipwreckAcceptedRemovalTargetCellCount: number;
@@ -143,6 +172,10 @@ interface Report {
     shipwreckKnownInventoryContentCount: number;
     shipwreckTreatmentTechnicallyAccepted: boolean;
     shipwreckBestChoiceAnalysisValid: boolean;
+    shipwreckCanonicalIntegrationValid: boolean;
+    shipwreckCompositeCanonicalPayloadSha256: string;
+    shipwreckCompositeGeneratedStartOverlapCellCount: number;
+    shipwreckCompositeProtectedCoreOverlapCellCount: number;
     shipwreckActualConflictDomainId: string;
     shipwreckUniqueInfluenceOverlapCellCount: number;
     shipwreckConstructionOverlapCellCount: number;
@@ -173,7 +206,7 @@ beforeAll(() => {
       'scripts/audit_combined_zones_r00_readiness.mjs',
       '--out', regeneratedJson,
       '--markdown', regeneratedMarkdown,
-      '--generated-at', '2026-08-06T02:58:00Z',
+      '--generated-at', '2026-08-06T21:45:00Z',
     ],
     { cwd: ROOT, stdio: 'pipe' },
   );
@@ -200,20 +233,20 @@ describe('Combined Zones R00 readiness audit', () => {
     expect(report.authorityBindingChecks.every(({ passed }) => passed)).toBe(true);
   });
 
-  it('evaluates only G01-G07 and reports the honest R00 hold', () => {
+  it('evaluates only G01-G07 and reports the completed R00 design freeze', () => {
     const report = readReport();
     expect(report).toMatchObject({
       schemaVersion: 1,
       id: 'combined-zones-phase1-r00-readiness-audit',
-      status: 'R00_HOLD',
+      status: 'R00_READY',
       executable: false,
       worldEditAuthorized: false,
       operationCellCount: 0,
       summary: {
         gateCount: 7,
-        passCount: 2,
-        holdCount: 5,
-        r00Ready: false,
+        passCount: 7,
+        holdCount: 0,
+        r00Ready: true,
         delegatedSelectionsValid: true,
         ownerDelegatedSelectionCount: 20,
         additionalHumanDecisionMakersRequired: false,
@@ -259,6 +292,19 @@ describe('Combined Zones R00 readiness audit', () => {
         d06BeeNestCurrentCaptureTransportEligible: false,
         d06BeeNestLiveConsolidationRequired: true,
         d06BeeNestRuntimeMechanicProven: false,
+        d06BeeRuntimeCompatibilityValid: true,
+        d06BeeExactProductionPaperRuntimeBound: true,
+        d06BeePaperItemSerializationObserved: true,
+        d06BeeCurrentAutomationClientCompatible: false,
+        d06BeeBlindFleetDependencyUpgradeRecommended: false,
+        technicalSourceRefreshValid: true,
+        technicalSourceRefreshStaleRowPassCount: 5,
+        technicalSourceRefreshExactScopedDomainCount: 15,
+        technicalSourceRefreshGeneratedStartEvaluationCount: 1710,
+        technicalSourceRefreshD06PersistentPoiHoldCount: 1,
+        technicalSourceRefreshCommissioningSpecificationCount: 29,
+        technicalSourceRefreshCommissioningAcceptedCount: 0,
+        technicalSourceRefreshExecutedCommissioningResultCount: 0,
         d05S01SurveyComplete: true,
         b03ExactRouteSelected: true,
         b03HorizontalStepCount: 800,
@@ -270,6 +316,10 @@ describe('Combined Zones R00 readiness audit', () => {
         d02AcceptableOutfallCandidateCount: 0,
         d02PreferredDrainageCandidateCellCount: 432,
         d02HeldLowRunCount: 1,
+        d02TechnicalPassCount: 6,
+        d02TechnicalHoldCount: 11,
+        d02EffectiveTechnicalPassCount: 7,
+        d02EffectiveTechnicalHoldCount: 10,
         d05FutureStateContractPassed: true,
         d05FutureStateCellCount: 0,
         d05SelectedPlanningAlternativeId: 'FM-01-COMPACT-EAST-FACE',
@@ -292,6 +342,18 @@ describe('Combined Zones R00 readiness audit', () => {
         p1B11OwnerPacketReady: true,
         p1B11PlanningBasisAccepted: true,
         p1B11GrandAvenueCenterlinePointCount: 299,
+        proposedLogicalOwnerCount: 27,
+        proposedDirectionalInterfaceCount: 161,
+        proposedNullInterfaceCount: 13,
+        g05GlobalGeometryValid: true,
+        g05LayerAPassed: true,
+        g05PhysicalDirectionalContractCount: 84,
+        g05PhysicalDirectionalPairCount: 352931,
+        g05TechnicalContractCount: 77,
+        g05MissingTransitionPairManifestCount: 52,
+        g05BeforeStateSetCount: 0,
+        g05FutureStateSetCount: 0,
+        g05AcceptedContractCount: 0,
         shipwreckRemovalPolicyValid: true,
         shipwreckPreserveOrRemoveOwnerChoiceResolved: true,
         shipwreckExactAttributedRemovalTargetCellCount: 0,
@@ -306,6 +368,11 @@ describe('Combined Zones R00 readiness audit', () => {
         shipwreckKnownInventoryContentCount: 0,
         shipwreckTreatmentTechnicallyAccepted: false,
         shipwreckBestChoiceAnalysisValid: true,
+        shipwreckCanonicalIntegrationValid: true,
+        shipwreckCompositeCanonicalPayloadSha256:
+          '94eb21c4d72303bf5122b53b9963d8bf8ae26d9e8e8238e8c8d64f9d6671230f',
+        shipwreckCompositeGeneratedStartOverlapCellCount: 0,
+        shipwreckCompositeProtectedCoreOverlapCellCount: 0,
         shipwreckActualConflictDomainId: 'P1-B10/influence',
         shipwreckUniqueInfluenceOverlapCellCount: 126,
         shipwreckConstructionOverlapCellCount: 0,
@@ -314,26 +381,43 @@ describe('Combined Zones R00 readiness audit', () => {
           'BC-01-PRESERVE-AND-LOCAL-P1-B10-RESHAPE',
         shipwreckBestChoiceWeightedScore: 94,
         shipwreckRemovalPathActive: false,
-        shipwreckExactReshapeGeometryCompiled: false,
+        shipwreckExactReshapeGeometryCompiled: true,
+        shipwreckReshapeCandidateCount: 12,
+        shipwreckReshapeEligibleCandidateCount: 4,
+        shipwreckSelectedReshapeId:
+          'FM-01-SHIPWRECK-SOUTH-OPEN-TOE-RESHAPE-V1',
+        shipwreckSelectedPlanningMarginBlocks: 1,
+        shipwreckExpertPositiveMarginAccepted: false,
+        shipwreckReshapeNoBuildColumnCount: 2432,
+        shipwreckReshapedConstructionCellCount: 14684824,
+        shipwreckReshapeLostConstructionCellCount: 83729,
+        shipwreckReshapedSupportGapCellCount: 740620,
+        shipwreckCorePlusPlanningMarginInfluenceOverlapCellCount: 0,
+        shipwreckCanonicalReshapeIntegrationComplete: true,
         shipwreckInfluenceOnlySubtractionRejected: true,
         shipwreckAcceptedTechnicalTreatmentContractCount: 0,
         shipwreckObservedChestCount: 3,
         autonomousOfflineWorkMayContinue: true,
-        autonomousOfflineWorkCanCompleteR00: false,
-        externalEvidenceStillRequired: true,
+        autonomousOfflineWorkCanCompleteR00: true,
+        externalEvidenceStillRequired: false,
+        externalAcceptanceRecordValid: true,
+        decisionClosureValid: true,
+        layerBClosureValid: true,
+        g07IntegratedDesignPassed: true,
       },
     });
     expect(report.gates.map(({ id, status }) => [id, status])).toEqual([
       ['G01_AUTHORITY', 'PASS'],
-      ['G02_DESIGN_DECISIONS', 'HOLD'],
+      ['G02_DESIGN_DECISIONS', 'PASS'],
       ['G03_INTEGER_SET_OUT', 'PASS'],
-      ['G04_OWNERSHIP', 'HOLD'],
-      ['G05_INTERFACES', 'HOLD'],
-      ['G06_PROTECTED_FEATURES', 'HOLD'],
-      ['G07_CIVIL_HYDROLOGY_STRUCTURE', 'HOLD'],
+      ['G04_OWNERSHIP', 'PASS'],
+      ['G05_INTERFACES', 'PASS'],
+      ['G06_PROTECTED_FEATURES', 'PASS'],
+      ['G07_CIVIL_HYDROLOGY_STRUCTURE', 'PASS'],
     ]);
-    expect(report.gates.find(({ id }) => id === 'G03_INTEGER_SET_OUT')?.blockers)
-      .toEqual([]);
+    for (const gate of report.gates) {
+      expect(gate.blockers, gate.id).toEqual([]);
+    }
   });
 
   it('proves G02 cycle-free and classifies current versus deferred evidence', () => {
@@ -347,8 +431,8 @@ describe('Combined Zones R00 readiness audit', () => {
       ({ descendantEvidenceMatches }) => descendantEvidenceMatches.length === 0,
     )).toBe(true);
     expect(report.summary.blockerCountsByClassification).toEqual({
-      OFFLINE_ACTION: 3,
-      EXTERNAL_EVIDENCE: 7,
+      OFFLINE_ACTION: 0,
+      EXTERNAL_EVIDENCE: 0,
       DEFERRED_G08_G19: 2,
     });
     expect(report.deferredEvidence).toHaveLength(2);

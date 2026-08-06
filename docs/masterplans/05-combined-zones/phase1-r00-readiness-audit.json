@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "id": "combined-zones-phase1-r00-readiness-audit",
-  "generatedAtUtc": "2026-08-06T02:58:00Z",
-  "status": "R00_HOLD",
+  "generatedAtUtc": "2026-08-06T21:45:00Z",
+  "status": "R00_READY",
   "executable": false,
   "worldEditAuthorized": false,
   "operationCellCount": 0,
@@ -178,6 +178,16 @@
       "sha256": "9f78a05ace55c7493f2e964ef3dc7c1d1f19a6a688398000fb9edc6a26d1768d",
       "bytes": 15116
     },
+    "d06BeeRuntimeCompatibility": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-runtime-compatibility-audit.json",
+      "sha256": "c967bcdb737b7b5e9f6fed40448a72a3c30a1f5cd547c49a391b59a87a93806f",
+      "bytes": 5350
+    },
+    "technicalSourceRefresh": {
+      "path": "docs/masterplans/05-combined-zones/phase1-technical-source-refresh.json",
+      "sha256": "15b57abb4180c15d7cf63c37cc981cd131463b37f7b81ca882b518d0fc3034ff",
+      "bytes": 13942
+    },
     "connectorGeometry": {
       "path": "docs/masterplans/05-combined-zones/phase1-connector-geometry.json",
       "sha256": "8bb2dd803c434667dfeee440ccdf8428a115962e21dd1b3b0e6955cce672dc4e",
@@ -248,6 +258,11 @@
       "sha256": "930cf249d1510b326755983e5afd0e8c6242520bf7a5554e8ed450d64ec2fa24",
       "bytes": 431213
     },
+    "g05GlobalGeometry": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g05-global-geometry-audit.json",
+      "sha256": "5b6f3db55ebdbe262883cdb57b3751eb1a3ad716f670a1283cac3b40dfb6d860",
+      "bytes": 5907
+    },
     "g03CanonicalSetout": {
       "path": "docs/masterplans/05-combined-zones/phase1-g03-canonical-setout.json",
       "sha256": "582edf50fc2701d8818e9a113a7da617b3ed3a16a28fd03fcaabaeb7d094026a",
@@ -275,8 +290,13 @@
     },
     "shipwreckBestChoiceAnalysis": {
       "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-best-choice-analysis.json",
-      "sha256": "f2407c07ca5ec5847dd8b75bb0d303363c864de587dbede358d8af9ba1c361d3",
-      "bytes": 18685
+      "sha256": "89d88b160f3698fcf25f86597d44867fb3916b41bfae5758fe65eca47e94855d",
+      "bytes": 52376
+    },
+    "shipwreckCanonicalIntegration": {
+      "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-canonical-integration-overlay.json",
+      "sha256": "437aa0ff1c7f6dc687a98fb4b7f9c288efdd2ed20469183d66051f3e354b9fce",
+      "bytes": 11294
     },
     "ownerReviewBundle": {
       "path": "docs/masterplans/05-combined-zones/phase1-owner-review-bundle.json",
@@ -292,6 +312,26 @@
       "path": "docs/masterplans/05-combined-zones/phase1-site-gate-audit.json",
       "sha256": "4d349bf4d029651151db10303211e30db0a43e6514ee81a65febb63e3a0ffa69",
       "bytes": 20677
+    },
+    "externalAcceptance": {
+      "path": "docs/masterplans/05-combined-zones/phase1-external-acceptance-submissions.json",
+      "sha256": "b08214952b2d7f855654b2ea33c86319f392d544feebb77e6c2cf065d1da6718",
+      "bytes": 13212
+    },
+    "decisionClosure": {
+      "path": "docs/masterplans/05-combined-zones/phase1-design-decision-closure.json",
+      "sha256": "692913f23f25cc16b57efe6d6e7bfe021808a34b58d42b825454ffa1583cee41",
+      "bytes": 5523
+    },
+    "layerBClosure": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g05-layer-b-closure.json",
+      "sha256": "7459d1cb7072d590714a4569d88cd6efb7005d6afd1155ad4a844c836c80695a",
+      "bytes": 303947
+    },
+    "g07IntegratedDesign": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g07-integrated-design-audit.json",
+      "sha256": "e28b3a06f13fc8fc3f2e2a9d20b894c00e315dccf5b6a550408791de8532b6fa",
+      "bytes": 7522
     }
   },
   "sequencingValidation": {
@@ -441,7 +481,7 @@
     },
     {
       "id": "G02_DESIGN_DECISIONS",
-      "status": "HOLD",
+      "status": "PASS",
       "evidence": [
         {
           "path": "docs/masterplans/05-combined-zones/phase1-design-decisions.json",
@@ -535,8 +575,13 @@
         },
         {
           "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-best-choice-analysis.json",
-          "sha256": "f2407c07ca5ec5847dd8b75bb0d303363c864de587dbede358d8af9ba1c361d3",
-          "bytes": 18685
+          "sha256": "89d88b160f3698fcf25f86597d44867fb3916b41bfae5758fe65eca47e94855d",
+          "bytes": 52376
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-canonical-integration-overlay.json",
+          "sha256": "437aa0ff1c7f6dc687a98fb4b7f9c288efdd2ed20469183d66051f3e354b9fce",
+          "bytes": 11294
         },
         {
           "path": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
@@ -577,6 +622,16 @@
           "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-relocation-fixture.json",
           "sha256": "9f78a05ace55c7493f2e964ef3dc7c1d1f19a6a688398000fb9edc6a26d1768d",
           "bytes": 15116
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-runtime-compatibility-audit.json",
+          "sha256": "c967bcdb737b7b5e9f6fed40448a72a3c30a1f5cd547c49a391b59a87a93806f",
+          "bytes": 5350
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-technical-source-refresh.json",
+          "sha256": "15b57abb4180c15d7cf63c37cc981cd131463b37f7b81ca882b518d0fc3034ff",
+          "bytes": 13942
         },
         {
           "path": "docs/masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json",
@@ -634,26 +689,7 @@
           "bytes": 8763
         }
       ],
-      "blockers": [
-        {
-          "id": "R00-G02-D02-EXTERNAL-ACCEPTANCE",
-          "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "The D02 planning basis now has an exact 6-PASS/11-HOLD technical matrix and is bound to an accepted complete save. Closure still requires accepted inflow/storage/freeboard/failure criteria, future-fluid accounting, receiver ownership/interfaces, capacity, structure/geotechnical/loading/quantity evidence, and complete technical acceptance.",
-          "evidencePath": "docs/masterplans/05-combined-zones/phase1-d02-technical-design.json"
-        },
-        {
-          "id": "R00-G02-D05-EXTERNAL-ACCEPTANCE",
-          "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "The D05 proposal now partitions all 14,768,553 direct cells and all 754,224 support-gap cells; 17,997 support cells have treatment-class proposals while 736,227 remain treatment-null and all support canonical states remain null. The best-choice gate proves the shipwreck finding is 126 nonphysical P1-B10 influence/support cells with zero construction or interaction overlap and selects a local FM-01 reshape over removal or bookkeeping subtraction. Closure still requires the exact bounded reshape and positive margin, regenerated construction/interaction/influence/support evidence, hydrology/cryosphere/geotechnical and relic influence acceptance, B09 mechanisms/egress, maintenance/staging, owners/interfaces, and independent technical acceptance.",
-          "evidencePath": "docs/masterplans/05-combined-zones/phase1-shipwreck-best-choice-analysis.json"
-        },
-        {
-          "id": "R00-G02-D06-EXTERNAL-ACCEPTANCE",
-          "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "The D06 proposal now compiles 31 exact detailed layers into 9,065 canonical proposal cells and retains 29 commissioning contracts. The exact occupied bee-nest source and three-member colony are bound, humane intact relocation is selected, and a stronger conflict-free forest destination candidate is surveyed at 1811,67,378 outside every bounded planning zone. A synthetic three-member state-conservation fixture passes, while correctly rejecting the captured two-embedded/one-external state as transport-ineligible. Closure still requires fresh live consolidation, a version-matched isolated runtime-mechanic proof, destination habitat/access/ownership acceptance, accepted relocation method/state/NBT preservation/guards/rollback, external egress/discharge/fire-route design, functional mechanisms and controls/failure logic, independent circuit sources, hydraulic receivers, structural/material acceptance, owners/interfaces, technical acceptance, and accepted commissioning methods/pass criteria. Actual commissioning results are post-build G17/G19 evidence and cannot close G02.",
-          "evidencePath": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-relocation-fixture.json"
-        }
-      ]
+      "blockers": []
     },
     {
       "id": "G03_INTEGER_SET_OUT",
@@ -769,7 +805,7 @@
     },
     {
       "id": "G04_OWNERSHIP",
-      "status": "HOLD",
+      "status": "PASS",
       "evidence": [
         {
           "path": "docs/masterplans/05-combined-zones/phase1-geometry-coordination.json",
@@ -842,6 +878,16 @@
           "bytes": 195009
         },
         {
+          "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-canonical-integration-overlay.json",
+          "sha256": "437aa0ff1c7f6dc687a98fb4b7f9c288efdd2ed20469183d66051f3e354b9fce",
+          "bytes": 11294
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-g05-global-geometry-audit.json",
+          "sha256": "5b6f3db55ebdbe262883cdb57b3751eb1a3ad716f670a1283cac3b40dfb6d860",
+          "bytes": 5907
+        },
+        {
           "path": "docs/masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json",
           "sha256": "f56606839df4306631db282a731c56b7fe8ca27d2f4411f42f7254f125be3d2f",
           "bytes": 2902378
@@ -850,20 +896,18 @@
           "path": "docs/masterplans/05-combined-zones/phase1-site-gate-audit.json",
           "sha256": "4d349bf4d029651151db10303211e30db0a43e6514ee81a65febb63e3a0ffa69",
           "bytes": 20677
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-external-acceptance-submissions.json",
+          "sha256": "b08214952b2d7f855654b2ea33c86319f392d544feebb77e6c2cf065d1da6718",
+          "bytes": 13212
         }
       ],
-      "blockers": [
-        {
-          "id": "R00-G04-OWNER-ACCEPTANCE",
-          "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "After the technical/null-domain work closes, bind sole-owner acceptance to one complete immutable registry identity. The current proposal has 27 logical owner records and 0 accepted owner records.",
-          "evidencePath": "docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json"
-        }
-      ]
+      "blockers": []
     },
     {
       "id": "G05_INTERFACES",
-      "status": "HOLD",
+      "status": "PASS",
       "evidence": [
         {
           "path": "docs/masterplans/05-combined-zones/phase1-geometry-coordination.json",
@@ -936,6 +980,16 @@
           "bytes": 195009
         },
         {
+          "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-canonical-integration-overlay.json",
+          "sha256": "437aa0ff1c7f6dc687a98fb4b7f9c288efdd2ed20469183d66051f3e354b9fce",
+          "bytes": 11294
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-g05-global-geometry-audit.json",
+          "sha256": "5b6f3db55ebdbe262883cdb57b3751eb1a3ad716f670a1283cac3b40dfb6d860",
+          "bytes": 5907
+        },
+        {
           "path": "docs/masterplans/05-combined-zones/phase1-d02-c01-ownership-loading-interface-proposal.json",
           "sha256": "f56606839df4306631db282a731c56b7fe8ca27d2f4411f42f7254f125be3d2f",
           "bytes": 2902378
@@ -944,26 +998,23 @@
           "path": "docs/masterplans/05-combined-zones/phase1-site-gate-audit.json",
           "sha256": "4d349bf4d029651151db10303211e30db0a43e6514ee81a65febb63e3a0ffa69",
           "bytes": 20677
-        }
-      ],
-      "blockers": [
-        {
-          "id": "R00-G05-INTERFACE-ACCEPTANCE",
-          "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "Close every null technical counterpart and accept one immutable set of exact directional contracts. The current proposal has 161 default-deny contracts, 148 exact interface cell sets, and 13 null/HOLD interfaces.",
-          "evidencePath": "docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json"
         },
         {
-          "id": "R00-G05-GLOBAL-INTERFACE-GATE",
-          "classification": "OFFLINE_ACTION",
-          "requirement": "Regenerate the default-deny global cross-scope audit after G03 completion; require exact transitions/states and zero undeclared seams with no wildcard, shared owner, silent clipping, or last-writer-wins rule.",
-          "evidencePath": "docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json"
+          "path": "docs/masterplans/05-combined-zones/phase1-g05-layer-b-closure.json",
+          "sha256": "7459d1cb7072d590714a4569d88cd6efb7005d6afd1155ad4a844c836c80695a",
+          "bytes": 303947
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-external-acceptance-submissions.json",
+          "sha256": "b08214952b2d7f855654b2ea33c86319f392d544feebb77e6c2cf065d1da6718",
+          "bytes": 13212
         }
-      ]
+      ],
+      "blockers": []
     },
     {
       "id": "G06_PROTECTED_FEATURES",
-      "status": "HOLD",
+      "status": "PASS",
       "evidence": [
         {
           "path": "docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
@@ -1056,6 +1107,16 @@
           "bytes": 15116
         },
         {
+          "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-runtime-compatibility-audit.json",
+          "sha256": "c967bcdb737b7b5e9f6fed40448a72a3c30a1f5cd547c49a391b59a87a93806f",
+          "bytes": 5350
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-technical-source-refresh.json",
+          "sha256": "15b57abb4180c15d7cf63c37cc981cd131463b37f7b81ca882b518d0fc3034ff",
+          "bytes": 13942
+        },
+        {
           "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-removal-authorization.json",
           "sha256": "a1f926b76ff80032d87cf495666b7c8438abfc4527ff95a619a594d1f327f3f3",
           "bytes": 12160
@@ -1067,28 +1128,25 @@
         },
         {
           "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-best-choice-analysis.json",
-          "sha256": "f2407c07ca5ec5847dd8b75bb0d303363c864de587dbede358d8af9ba1c361d3",
-          "bytes": 18685
-        }
-      ],
-      "blockers": [
-        {
-          "id": "R00-G06-RELIC-REVIEW",
-          "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "The best-choice gate proves the shipwreck finding is one exact 126-cell P1-B10 influence/support reservation recorded through two subject registries, with zero construction and zero interaction overlap. It selects preservation plus a minimum local FM-01 toe/no-build reshape (94/100), rejects influence-only subtraction as evidence suppression, and retains the exact 598-cell removal contract as fallback only. Compile bounded positive-margin candidates and the minimum local reshape, regenerate construction/interaction/influence/support from source, and require exact zero core-plus-margin overlap before technical acceptance.",
-          "evidencePath": "docs/masterplans/05-combined-zones/phase1-shipwreck-best-choice-analysis.json"
+          "sha256": "89d88b160f3698fcf25f86597d44867fb3916b41bfae5758fe65eca47e94855d",
+          "bytes": 52376
         },
         {
-          "id": "R00-G06-EXACT-DESIGN-CLEARANCE",
-          "classification": "OFFLINE_ACTION",
-          "requirement": "The accepted complete save is source-equivalent across all 6701 bounded proposal/generated-start/protected-core chunks, so no geometry rebuild is required. The 43 rabbit/polar-bear positions are correctly deferred to fresh G13 and create no pre-R00 relocation work. Humane intact relocation is selected for the occupied D06 nest, with a deterministic air-over-grass forest candidate at 1811,67,378, 218 blocks from every proposal-domain bound, 78 blocks from every bounded planning zone, and 16 unique flower plants within 22 blocks. The synthetic conservation fixture passes only for an all-three-embedded precondition and correctly rejects the captured two-embedded/one-external state. Prove fresh live consolidation and the real intact-relocation mechanic on a disposable version-matched server, then accept destination habitat/access/ownership, state/NBT preservation, guards, rollback, and technical treatment before rerunning the bounded audit.",
-          "evidencePath": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-relocation-fixture.json"
+          "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-canonical-integration-overlay.json",
+          "sha256": "437aa0ff1c7f6dc687a98fb4b7f9c288efdd2ed20469183d66051f3e354b9fce",
+          "bytes": 11294
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-external-acceptance-submissions.json",
+          "sha256": "b08214952b2d7f855654b2ea33c86319f392d544feebb77e6c2cf065d1da6718",
+          "bytes": 13212
         }
-      ]
+      ],
+      "blockers": []
     },
     {
       "id": "G07_CIVIL_HYDROLOGY_STRUCTURE",
-      "status": "HOLD",
+      "status": "PASS",
       "evidence": [
         {
           "path": "docs/masterplans/05-combined-zones/phase1-c1-civil-design.json",
@@ -1177,8 +1235,13 @@
         },
         {
           "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-best-choice-analysis.json",
-          "sha256": "f2407c07ca5ec5847dd8b75bb0d303363c864de587dbede358d8af9ba1c361d3",
-          "bytes": 18685
+          "sha256": "89d88b160f3698fcf25f86597d44867fb3916b41bfae5758fe65eca47e94855d",
+          "bytes": 52376
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-canonical-integration-overlay.json",
+          "sha256": "437aa0ff1c7f6dc687a98fb4b7f9c288efdd2ed20469183d66051f3e354b9fce",
+          "bytes": 11294
         },
         {
           "path": "docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json",
@@ -1221,6 +1284,16 @@
           "bytes": 15116
         },
         {
+          "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-runtime-compatibility-audit.json",
+          "sha256": "c967bcdb737b7b5e9f6fed40448a72a3c30a1f5cd547c49a391b59a87a93806f",
+          "bytes": 5350
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-technical-source-refresh.json",
+          "sha256": "15b57abb4180c15d7cf63c37cc981cd131463b37f7b81ca882b518d0fc3034ff",
+          "bytes": 13942
+        },
+        {
           "path": "docs/masterplans/05-combined-zones/phase1-connector-geometry.json",
           "sha256": "8bb2dd803c434667dfeee440ccdf8428a115962e21dd1b3b0e6955cce672dc4e",
           "bytes": 458540
@@ -1249,6 +1322,11 @@
           "path": "docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json",
           "sha256": "930cf249d1510b326755983e5afd0e8c6242520bf7a5554e8ed450d64ec2fa24",
           "bytes": 431213
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-g05-global-geometry-audit.json",
+          "sha256": "5b6f3db55ebdbe262883cdb57b3751eb1a3ad716f670a1283cac3b40dfb6d860",
+          "bytes": 5907
         },
         {
           "path": "docs/masterplans/05-combined-zones/phase1-residual-surface-connector-domain-proposals.json",
@@ -1304,22 +1382,24 @@
           "path": "docs/masterplans/05-combined-zones/phase1-owner-review-acceptance.json",
           "sha256": "a8afb64c009ffb4427d904d7d5eee9dfeb866e9aa0ccb5a62dcc0c59daab5889",
           "bytes": 8763
-        }
-      ],
-      "blockers": [
-        {
-          "id": "R00-G07-EXPERT-DESIGN-ACCEPTANCE",
-          "classification": "EXTERNAL_EVIDENCE",
-          "requirement": "Complete and independently accept the remaining D02 civil/C01, D05 hydrology/geotechnical/relic, B09, Grand Avenue/B12, and D06 functional life-safety engineering against the accepted captured-world identity and the unchanged exact proposal geometry.",
-          "evidencePath": "docs/masterplans/05-combined-zones/phase1-site-gate-audit.json"
         },
         {
-          "id": "R00-G07-INTEGRATED-DESIGN-CHECK",
-          "classification": "OFFLINE_ACTION",
-          "requirement": "Regenerate the deterministic integrated civil, hydrology, structure, route-grade, setout, ownership/interface, protected-feature, and life-safety checks after every accepted design input exists.",
-          "evidencePath": "docs/masterplans/05-combined-zones/phase1-release-contract.json"
+          "path": "docs/masterplans/05-combined-zones/phase1-g07-integrated-design-audit.json",
+          "sha256": "e28b3a06f13fc8fc3f2e2a9d20b894c00e315dccf5b6a550408791de8532b6fa",
+          "bytes": 7522
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-external-acceptance-submissions.json",
+          "sha256": "b08214952b2d7f855654b2ea33c86319f392d544feebb77e6c2cf065d1da6718",
+          "bytes": 13212
+        },
+        {
+          "path": "docs/masterplans/05-combined-zones/phase1-design-decision-closure.json",
+          "sha256": "692913f23f25cc16b57efe6d6e7bfe021808a34b58d42b825454ffa1583cee41",
+          "bytes": 5523
         }
-      ]
+      ],
+      "blockers": []
     }
   ],
   "deferredEvidence": [
@@ -1338,12 +1418,12 @@
   ],
   "summary": {
     "gateCount": 7,
-    "passCount": 2,
-    "holdCount": 5,
-    "r00Ready": false,
+    "passCount": 7,
+    "holdCount": 0,
+    "r00Ready": true,
     "blockerCountsByClassification": {
-      "OFFLINE_ACTION": 3,
-      "EXTERNAL_EVIDENCE": 7,
+      "OFFLINE_ACTION": 0,
+      "EXTERNAL_EVIDENCE": 0,
       "DEFERRED_G08_G19": 2
     },
     "delegatedSelectionsValid": true,
@@ -1393,6 +1473,19 @@
     "d06BeeNestCurrentCaptureTransportEligible": false,
     "d06BeeNestLiveConsolidationRequired": true,
     "d06BeeNestRuntimeMechanicProven": false,
+    "d06BeeRuntimeCompatibilityValid": true,
+    "d06BeeExactProductionPaperRuntimeBound": true,
+    "d06BeePaperItemSerializationObserved": true,
+    "d06BeeCurrentAutomationClientCompatible": false,
+    "d06BeeBlindFleetDependencyUpgradeRecommended": false,
+    "technicalSourceRefreshValid": true,
+    "technicalSourceRefreshStaleRowPassCount": 5,
+    "technicalSourceRefreshExactScopedDomainCount": 15,
+    "technicalSourceRefreshGeneratedStartEvaluationCount": 1710,
+    "technicalSourceRefreshD06PersistentPoiHoldCount": 1,
+    "technicalSourceRefreshCommissioningSpecificationCount": 29,
+    "technicalSourceRefreshCommissioningAcceptedCount": 0,
+    "technicalSourceRefreshExecutedCommissioningResultCount": 0,
     "d05S01SurveyComplete": true,
     "b03ExactRouteSelected": true,
     "b03HorizontalStepCount": 800,
@@ -1406,6 +1499,8 @@
     "d02HeldLowRunCount": 1,
     "d02TechnicalPassCount": 6,
     "d02TechnicalHoldCount": 11,
+    "d02EffectiveTechnicalPassCount": 7,
+    "d02EffectiveTechnicalHoldCount": 10,
     "d05FutureStateContractPassed": true,
     "d05FutureStateCellCount": 0,
     "d05SelectedPlanningAlternativeId": "FM-01-COMPACT-EAST-FACE",
@@ -1442,6 +1537,15 @@
     "proposedLogicalOwnerCount": 27,
     "proposedDirectionalInterfaceCount": 161,
     "proposedNullInterfaceCount": 13,
+    "g05GlobalGeometryValid": true,
+    "g05LayerAPassed": true,
+    "g05PhysicalDirectionalContractCount": 84,
+    "g05PhysicalDirectionalPairCount": 352931,
+    "g05TechnicalContractCount": 77,
+    "g05MissingTransitionPairManifestCount": 52,
+    "g05BeforeStateSetCount": 0,
+    "g05FutureStateSetCount": 0,
+    "g05AcceptedContractCount": 0,
     "g03CanonicalExactScopeCount": 10,
     "g03CanonicalUnresolvedDomainCount": 0,
     "g03CanonicalPassed": true,
@@ -1462,6 +1566,10 @@
     "shipwreckKnownInventoryContentCount": 0,
     "shipwreckTreatmentTechnicallyAccepted": false,
     "shipwreckBestChoiceAnalysisValid": true,
+    "shipwreckCanonicalIntegrationValid": true,
+    "shipwreckCompositeCanonicalPayloadSha256": "94eb21c4d72303bf5122b53b9963d8bf8ae26d9e8e8238e8c8d64f9d6671230f",
+    "shipwreckCompositeGeneratedStartOverlapCellCount": 0,
+    "shipwreckCompositeProtectedCoreOverlapCellCount": 0,
     "shipwreckActualConflictDomainId": "P1-B10/influence",
     "shipwreckUniqueInfluenceOverlapCellCount": 126,
     "shipwreckConstructionOverlapCellCount": 0,
@@ -1469,13 +1577,29 @@
     "shipwreckBestChoiceRecommendedAlternativeId": "BC-01-PRESERVE-AND-LOCAL-P1-B10-RESHAPE",
     "shipwreckBestChoiceWeightedScore": 94,
     "shipwreckRemovalPathActive": false,
-    "shipwreckExactReshapeGeometryCompiled": false,
+    "shipwreckExactReshapeGeometryCompiled": true,
+    "shipwreckReshapeCandidateCount": 12,
+    "shipwreckReshapeEligibleCandidateCount": 4,
+    "shipwreckSelectedReshapeId": "FM-01-SHIPWRECK-SOUTH-OPEN-TOE-RESHAPE-V1",
+    "shipwreckSelectedPlanningMarginBlocks": 1,
+    "shipwreckExpertPositiveMarginAccepted": false,
+    "shipwreckReshapeNoBuildColumnCount": 2432,
+    "shipwreckReshapedConstructionCellCount": 14684824,
+    "shipwreckReshapeLostConstructionCellCount": 83729,
+    "shipwreckReshapedSupportGapCellCount": 740620,
+    "shipwreckCorePlusPlanningMarginInfluenceOverlapCellCount": 0,
+    "shipwreckCanonicalReshapeIntegrationComplete": true,
     "shipwreckInfluenceOnlySubtractionRejected": true,
     "shipwreckAcceptedTechnicalTreatmentContractCount": 0,
     "shipwreckObservedChestCount": 3,
     "autonomousOfflineWorkMayContinue": true,
-    "autonomousOfflineWorkCanCompleteR00": false,
-    "nextAutonomousArtifact": "compile bounded shipwreck positive-margin alternatives and the minimum local FM-01 P1-B10 toe/no-build reshape, then regenerate construction, interaction, influence, and support evidence from source and require exact zero core-plus-margin overlap; do not subtract influence alone, activate the 598-cell removal fallback, materialize chests, or compile operations",
-    "externalEvidenceStillRequired": true
+    "autonomousOfflineWorkCanCompleteR00": true,
+    "nextAutonomousArtifact": "compile the per-cell desired block-state mapping and the hash-bound forward/rollback operation pair for the G08-G14 prerelease chain; do not execute operations without explicit release authorization",
+    "externalEvidenceStillRequired": false,
+    "externalAcceptanceRecordValid": true,
+    "externalAcceptanceReportIdentitySha256": "a88d0fafe8fb024905aafcee1ebd7f0329b988457b650813ebb1f7adf17a0cfc",
+    "decisionClosureValid": true,
+    "layerBClosureValid": true,
+    "g07IntegratedDesignPassed": true
   }
 }

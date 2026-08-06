@@ -1,8 +1,8 @@
 # Combined Zones shipwreck best-choice analysis
 
-Generated: 2026-08-06T04:20:00Z
+Generated: 2026-08-06T04:50:00Z
 
-Status: **PASS_BEST_CHOICE_PRESERVE_AND_LOCAL_P1_B10_RESHAPE_SELECTED_REMOVAL_FALLBACK_ONLY — READ-ONLY — ZERO OPERATIONS**
+Status: **PASS_BEST_CHOICE_AND_EXACT_MINIMUM_SOUTH_OPEN_RESHAPE_COMPILED_REMOVAL_FALLBACK_ONLY — READ-ONLY — ZERO OPERATIONS**
 
 ## Decision
 
@@ -21,14 +21,20 @@ The construction compiler already withholds **1,977** protected-relic fill cells
 
 The influence-only subtraction is rejected because the source support-gap treatment is still null; removing its evidence would manufacture clearance. No-change is safe but cannot advance G06. Full removal is fallback-only: it introduces 598 candidate edits and three unknown loot inventories, while the generated-start record remains evidence even after fabric removal.
 
-## Next bounded artifact
+## Exact reshape optimization
 
-compile bounded positive-margin alternatives and the minimum local P1-B10 toe/no-build reshape; regenerate construction, interaction, influence, and support evidence from the source geometry and require zero core-plus-margin overlap.
+The optimizer read the accepted immutable complete save directly and reproduced the current P1-B10 construction, interaction, influence, and support hashes before testing **12** combinations: three topology strategies at positive planning margins of 1–4 blocks.
 
-The reshape compiler must compare bounded positive-margin choices, minimize lost mountain volume, regenerate construction/interaction/influence/support from source, and fail unless the core-plus-margin overlap is exactly zero.
+The selected **south-open no-build corridor** uses a one-cell planning margin plus one cell for the external six-face interaction shell. Its 2,432 current-state preservation columns reach the south mountain exterior. It removes 83,729 candidate-added-solid cells and 13,604 support-gap cells from the source model. Regenerated construction, interaction, support, and influence all have **exact zero overlap** with the core plus selected planning margin. B08, B09, the summit column, and construction-column connectivity remain unchanged.
 
-No geometry was emitted, no server was started, no live world was contacted, and no command or operation was generated.
+An enclosed pocket was rejected because it would bury the relic in a future access/drainage trap. A broad south-toe setback passed geometry gates but discarded more mountain volume. The one-cell margin remains planning-only; expert positive-margin acceptance and canonical D05/G03/G06 integration are still HOLD.
 
-Analysis payload SHA-256: `a61881f799a758e73e5ab65857ca0ee7f4bc0e989c9e3005e25af4bc6242c4b0`
+## Next integrated closure
 
-Report identity SHA-256: `7b2250a719db9efd20b00e8adfb1b2ace37d63a4ce2ff48a8c0d85dc12bc7b95`
+consume the selected sparse south-open reshape in one integrated canonical D05/G03/G06/ownership/interface closure run; retain the one-cell margin as planning-only until expert review accepts it.
+
+Exact sparse planning geometry was emitted. No server process was queried or started, no live world was contacted, and no block command, inventory move, operation, or release authorization was generated.
+
+Analysis payload SHA-256: `ec0316707e250ccb4d1067776becd0cb6e1d99848e56045a7443a8bd3245a397`
+
+Report identity SHA-256: `d876412fcb335e672aa929ca9f2a7b42e60492dd35f5bd39d7ef570117371d0b`

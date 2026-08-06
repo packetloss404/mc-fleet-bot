@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-g07-integrated-design-audit",
+  "generatedAtUtc": "2026-08-06T21:40:00Z",
+  "status": "PASS_INTEGRATED_DESIGN_CHECKS_AGAINST_ACCEPTED_INPUTS",
+  "purpose": "Run the integrated civil, hydrology, structure, route-grade, setout, ownership/interface, protected-feature, and life-safety checks once against the accepted design inputs.",
+  "sourceBindings": {
+    "externalAcceptance": {
+      "path": "docs/masterplans/05-combined-zones/phase1-external-acceptance-submissions.json",
+      "sha256": "b08214952b2d7f855654b2ea33c86319f392d544feebb77e6c2cf065d1da6718",
+      "bytes": 13212
+    },
+    "decisionClosure": {
+      "path": "docs/masterplans/05-combined-zones/phase1-design-decision-closure.json",
+      "sha256": "692913f23f25cc16b57efe6d6e7bfe021808a34b58d42b825454ffa1583cee41",
+      "bytes": 5523
+    },
+    "layerBClosure": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g05-layer-b-closure.json",
+      "sha256": "7459d1cb7072d590714a4569d88cd6efb7005d6afd1155ad4a844c836c80695a",
+      "bytes": 303947
+    },
+    "g05GlobalGeometry": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g05-global-geometry-audit.json",
+      "sha256": "5b6f3db55ebdbe262883cdb57b3751eb1a3ad716f670a1283cac3b40dfb6d860",
+      "bytes": 5907
+    },
+    "g03CanonicalSetout": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g03-canonical-setout.json",
+      "sha256": "582edf50fc2701d8818e9a113a7da617b3ed3a16a28fd03fcaabaeb7d094026a",
+      "bytes": 195009
+    },
+    "registry": {
+      "path": "docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json",
+      "sha256": "930cf249d1510b326755983e5afd0e8c6242520bf7a5554e8ed450d64ec2fa24",
+      "bytes": 431213
+    },
+    "composite": {
+      "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-canonical-integration-overlay.json",
+      "sha256": "437aa0ff1c7f6dc687a98fb4b7f9c288efdd2ed20469183d66051f3e354b9fce",
+      "bytes": 11294
+    },
+    "completeSave": {
+      "path": "docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260806T014133Z.json",
+      "sha256": "7cd3718a59fbfa8b9006cb60337e6262a690a90f4abf5e06d527d900892be149",
+      "bytes": 58203
+    },
+    "scopeClearance": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g06-complete-save-scope-clearance-20260806T014133Z.json",
+      "sha256": "cf17f96d4504ad070114146101e6626b6233eeb780372737a0abcf33c7bde72f",
+      "bytes": 3039191
+    },
+    "protectedRelicClearance": {
+      "path": "docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
+      "sha256": "1739502e8bf19283cabfe9930f26011dba97c11e6328da27ee0b7f651f7a0a22",
+      "bytes": 30505
+    },
+    "c1CivilDesign": {
+      "path": "docs/masterplans/05-combined-zones/phase1-c1-civil-design.json",
+      "sha256": "7776e243dc24b03fa7903ecb93ec8f05e6e0cbd81aa3749e2fb52435b7dc2442",
+      "bytes": 812066
+    },
+    "d02TechnicalDesign": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d02-technical-design.json",
+      "sha256": "22ecc64bd01224a91c8a534f448c5de0e31fb99d6e5452ddf0f75a8e7fc9f93e",
+      "bytes": 140238
+    },
+    "d05FutureState": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-future-state.json",
+      "sha256": "14ec55e8d71a5fbccbb45fae9ff098c7e077ccb28a9b4d2bdd951ed7ce65c849",
+      "bytes": 39776
+    },
+    "d06DetailedSetout": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json",
+      "sha256": "9cf30ba33d2b62383c0512877553ef961c9782df54840c74ae8a30003ebb362a",
+      "bytes": 95894
+    },
+    "d06Mechanisms": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-mechanisms.json",
+      "sha256": "c713d30f0a085131875e71a5d02ad391330755fb68252f771ea9ed40222261da",
+      "bytes": 180609
+    },
+    "civilLifeSafetyDomainClosure": {
+      "path": "docs/masterplans/05-combined-zones/phase1-civil-life-safety-domain-closure.json",
+      "sha256": "c1771bf10ca5ad850cc39e09a1a7c62ecad2fdcccc3e3702f2875bebc0348866",
+      "bytes": 18797
+    }
+  },
+  "acceptedIdentityBasis": {
+    "completeSaveSha256": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+    "compositeCanonicalPayloadSha256": "94eb21c4d72303bf5122b53b9963d8bf8ae26d9e8e8238e8c8d64f9d6671230f",
+    "registryCanonicalPayloadSha256": "234e51bba55fb4bad08d351780b51e27647102f2fdf8b42ce9ed5357afa33cda",
+    "externalAcceptanceReportIdentitySha256": "a88d0fafe8fb024905aafcee1ebd7f0329b988457b650813ebb1f7adf17a0cfc",
+    "decisionClosureReportIdentitySha256": "3e993731d0b4fc817a5e2f9fbe8e15ebed5b742ce143ecb35625eaf2be1e76ae",
+    "layerBClosureReportIdentitySha256": "da3591dc91d33c2de0df69ea923fb5dea4e8ab7fb79bbd10c278c8a5a73df0d1"
+  },
+  "checks": [
+    {
+      "id": "G07-ACCEPTANCE-RECORD",
+      "domain": "authority",
+      "passed": true,
+      "evidence": "EXT-01..04 accepted and all seven design decisions resolved via the additive closure."
+    },
+    {
+      "id": "G07-SETOUT",
+      "domain": "setout",
+      "passed": true,
+      "evidence": "Canonical G03 setout passes with all 30 required domains exact and none unresolved."
+    },
+    {
+      "id": "G07-OWNERSHIP",
+      "domain": "ownership",
+      "passed": true,
+      "evidence": "Exact one-owner partition proven offline and all owner records accepted against the immutable registry identity."
+    },
+    {
+      "id": "G07-INTERFACES",
+      "domain": "interfaces",
+      "passed": true,
+      "evidence": "All 84 physical contracts and 352,931 pairs match one-to-one; all 161 contracts closed and accepted via the additive Layer B closure."
+    },
+    {
+      "id": "G07-PROTECTED-FEATURES",
+      "domain": "protected-features",
+      "passed": true,
+      "evidence": "The reshaped composite has zero overlap against all 114 generated starts and all three frozen protected cores; frozen default-deny cores and the reshape planning margin are owner-accepted."
+    },
+    {
+      "id": "G07-CIVIL-ROUTE-GRADE",
+      "domain": "civil",
+      "passed": true,
+      "evidence": "The frozen C1 alignment/profile evidence (rail 1:8, highway 1:12) is accepted as the final conservative Phase 1 civil basis."
+    },
+    {
+      "id": "G07-HYDROLOGY",
+      "domain": "hydrology",
+      "passed": true,
+      "evidence": "Closed capped-sump drainage with no-diversion defaults and the D05 hydrology basis are accepted; no receiver, outfall, or diversion exists or is required."
+    },
+    {
+      "id": "G07-STRUCTURE-FUTURE-STATE",
+      "domain": "structure",
+      "passed": true,
+      "evidence": "The FM-01 future-state partition is complete over all direct and support-gap cells."
+    },
+    {
+      "id": "G07-LIFE-SAFETY",
+      "domain": "life-safety",
+      "passed": true,
+      "evidence": "The detailed D06 life-safety setout and all 29 frozen commissioning specifications are accepted; executed results remain in G17."
+    },
+    {
+      "id": "G07-SOURCE-IDENTITY",
+      "domain": "source",
+      "passed": true,
+      "evidence": "Every acceptance is bound to the same immutable complete-save and composite identities."
+    }
+  ],
+  "summary": {
+    "checkCount": 10,
+    "passedCheckCount": 10,
+    "failedCheckCount": 0,
+    "g07Passed": true
+  },
+  "safetyBoundary": {
+    "liveCallsPerformed": false,
+    "operationCellCount": 0,
+    "worldEditAuthorized": false,
+    "releaseAuthorized": false
+  },
+  "reportIdentitySha256": "61539ca3d4bdbb355df9ddcc3e71d48068283930a5b26ffa0934fcc40e64b0ea"
+}

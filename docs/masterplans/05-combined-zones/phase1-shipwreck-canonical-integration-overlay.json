@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-shipwreck-canonical-integration-overlay",
+  "generatedAtUtc": "2026-08-06T06:00:00Z",
+  "status": "PASS_COMPOSITE_G03_G04_G05_G06_GEOMETRY_INTEGRATION_EXACT_ZERO_GENERATED_START_AND_CORE_OVERLAP_EXPERT_MARGIN_AND_ACCEPTANCE_HOLD",
+  "purpose": "Bind the selected shipwreck-preserving reshape into one composite canonical candidate without rewriting the immutable G03 baseline or authorizing construction.",
+  "sourceBindings": {
+    "bestChoice": {
+      "path": "docs/masterplans/05-combined-zones/phase1-shipwreck-best-choice-analysis.json",
+      "bytes": 52376,
+      "sha256": "89d88b160f3698fcf25f86597d44867fb3916b41bfae5758fe65eca47e94855d",
+      "role": "selected exact P1-B10 reshape"
+    },
+    "g03": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g03-canonical-setout.json",
+      "bytes": 195009,
+      "sha256": "582edf50fc2701d8818e9a113a7da617b3ed3a16a28fd03fcaabaeb7d094026a",
+      "role": "immutable all-30-domain canonical baseline"
+    },
+    "ownership": {
+      "path": "docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json",
+      "bytes": 431213,
+      "sha256": "930cf249d1510b326755983e5afd0e8c6242520bf7a5554e8ed450d64ec2fa24",
+      "role": "baseline G04/G05 ownership and interface registry"
+    },
+    "g06": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g06-complete-save-scope-clearance-20260806T014133Z.json",
+      "bytes": 3039191,
+      "sha256": "cf17f96d4504ad070114146101e6626b6233eeb780372737a0abcf33c7bde72f",
+      "role": "complete-save-bound 114-start and three-core audit"
+    },
+    "protectedRelics": {
+      "path": "docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json",
+      "bytes": 30505,
+      "sha256": "1739502e8bf19283cabfe9930f26011dba97c11e6328da27ee0b7f651f7a0a22",
+      "role": "protected-core identities"
+    },
+    "releaseContract": {
+      "path": "docs/masterplans/05-combined-zones/phase1-release-contract.json",
+      "bytes": 33127,
+      "sha256": "3b62d3f65c40a01d5f4eb66733b02c94104c03b3a5bab053ee82bcb08b7fd786",
+      "role": "default-deny release boundary"
+    }
+  },
+  "compositeCanonicalModel": {
+    "representation": "IMMUTABLE_G03_BASE_PLUS_HASH_BOUND_SINGLE_SCOPE_OVERLAY",
+    "baseG03CanonicalPayloadSha256": "1e4609275a2fd6aed8aa8a3dac00e8bdadae97dc756ca222922ce57a2c9b0712",
+    "overlayGeometryIdentitySha256": "bea26a08611ed3f24809d80b97b2b30c88d5a6de61e1d361b22a668e7db8bad1",
+    "replacedScopeId": "P1-B10",
+    "replacementDomains": {
+      "construction": {
+        "bounds": {
+          "maxX": 2366,
+          "maxY": 302,
+          "maxZ": -590,
+          "minX": 1949,
+          "minY": 72,
+          "minZ": -1066
+        },
+        "cellCount": 14684824,
+        "intervalManifestSha256": "78eda919077fc20a3f088693146e279bcdf12fa0fd60e4c311bfe26bfd3e6810",
+        "intervalPreamble": "combined-zones-d05-shipwreck-reshape-sparse-solid-intervals-v1\\n",
+        "lostCellCountFromBase": 83729,
+        "representation": "SOURCE_BOUND_SPARSE_EXACT_INTEGER_Y_INTERVAL_SET_NO_INLINE_COORDINATES"
+      },
+      "influence": {
+        "bounds": {
+          "maxX": 2368,
+          "maxY": 303,
+          "maxZ": -588,
+          "minX": 1948,
+          "minY": 38,
+          "minZ": -1068
+        },
+        "cellCount": 1072137,
+        "columnRecordCount": 189803,
+        "intervalCount": 380036,
+        "intervalManifestSha256": "c839ccb478a39609de98bb04f4f9e41dceae52156adbf8ba3dbc78552a4d899b",
+        "intervalPreamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B10/influence\\n"
+      },
+      "interaction": {
+        "bounds": {
+          "maxX": 2367,
+          "maxY": 303,
+          "maxZ": -589,
+          "minX": 1948,
+          "minY": 71,
+          "minZ": -1067
+        },
+        "cellCount": 435564,
+        "columnRecordCount": 189115,
+        "intervalCount": 379346,
+        "intervalManifestSha256": "bee0654db7e095adfd7e5b34cadfda22dbf85db9705f8ef08810c99b7f4474aa",
+        "intervalPreamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B10/interaction\\n"
+      },
+      "supportGap": {
+        "bounds": {
+          "maxX": 2368,
+          "maxY": 71,
+          "maxZ": -588,
+          "minX": 1948,
+          "minY": 38,
+          "minZ": -1068
+        },
+        "cellCount": 740620,
+        "columnCount": 105645,
+        "intervalManifestSha256": "cc39e59a622f2a570bad0bc58dada0693476713964af9b292ba002070ea71adb",
+        "intervalPreamble": "combined-zones-d05-shipwreck-reshape-support-gap-intervals-v1\\n",
+        "removedCellCountFromBase": 13604,
+        "treatment": null
+      }
+    },
+    "unchangedScopeIds": [
+      "P1-B03",
+      "P1-B07",
+      "P1-B08",
+      "P1-B09",
+      "D02",
+      "D06-RESERVATIONS",
+      "D06-MECHANISMS",
+      "P1-B11",
+      "P1-B12"
+    ],
+    "compositeCanonicalPayloadSha256": "94eb21c4d72303bf5122b53b9963d8bf8ae26d9e8e8238e8c8d64f9d6671230f",
+    "changeEnvelope": {
+      "minX": 2069,
+      "maxX": 2102,
+      "minY": 38,
+      "maxY": 303,
+      "minZ": -664,
+      "maxZ": -587
+    },
+    "immutableBaselineRewritten": false
+  },
+  "g03Integration": {
+    "scopeCount": 10,
+    "requiredDomainCount": 30,
+    "nonNullDomainCount": 30,
+    "replacedScopeCount": 1,
+    "replacedDomainCount": 3,
+    "unchangedScopeCount": 9,
+    "otherScopeChecks": [
+      {
+        "scopeId": "P1-B03",
+        "intersectingDomains": [],
+        "changeEnvelopeDisjoint": true
+      },
+      {
+        "scopeId": "P1-B07",
+        "intersectingDomains": [],
+        "changeEnvelopeDisjoint": true
+      },
+      {
+        "scopeId": "P1-B08",
+        "intersectingDomains": [],
+        "changeEnvelopeDisjoint": true
+      },
+      {
+        "scopeId": "P1-B09",
+        "intersectingDomains": [],
+        "changeEnvelopeDisjoint": true
+      },
+      {
+        "scopeId": "D02",
+        "intersectingDomains": [],
+        "changeEnvelopeDisjoint": true
+      },
+      {
+        "scopeId": "D06-RESERVATIONS",
+        "intersectingDomains": [],
+        "changeEnvelopeDisjoint": true
+      },
+      {
+        "scopeId": "D06-MECHANISMS",
+        "intersectingDomains": [],
+        "changeEnvelopeDisjoint": true
+      },
+      {
+        "scopeId": "P1-B11",
+        "intersectingDomains": [],
+        "changeEnvelopeDisjoint": true
+      },
+      {
+        "scopeId": "P1-B12",
+        "intersectingDomains": [],
+        "changeEnvelopeDisjoint": true
+      }
+    ],
+    "exactSupportGapRegenerated": true,
+    "routeB08ChangedColumnCount": 0,
+    "routeB09ChangedColumnCount": 0,
+    "summitColumnRetained": true
+  },
+  "g04OwnershipIntegration": {
+    "changeEnvelopeDisjointFromEveryOtherScope": true,
+    "oneCanonicalOwnerForEveryChangedPhysicalCell": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+    "baselineObservedPhysicalUnionCellCount": 15286976,
+    "compositeObservedPhysicalUnionCellCount": 15205262,
+    "compositeCanonicalOwnerUnionCellCount": 15205262,
+    "compositeUnownedCellCount": 0,
+    "compositeMultiplyOwnedCellCount": 0,
+    "baselineSparseB10ConstructionOwnerCellCount": 14754499,
+    "compositeSparseB10ConstructionOwnerCellCount": 14670770,
+    "baselineExpandedB10OwnerCellCount": 424815,
+    "compositeExpandedB10OwnerCellCount": 426830,
+    "influenceStewardOwnerId": "CZ05-SCOPE-CONSTRUCTION-CONTROL",
+    "compositeInfluenceStewardshipCellCount": 1072137,
+    "finalOwnerAcceptanceRecorded": false
+  },
+  "g05InterfaceIntegration": {
+    "changedCellsIntersectAnotherScope": false,
+    "existingCrossScopeContractCellSetsChanged": false,
+    "reason": "The complete construction/interaction/influence change envelope is disjoint from all nine other G03 scopes; every existing P1-B10 cross-scope interface lies outside the overlay and remains byte-identical.",
+    "exactDirectionalAdjacencyContractCount": 84,
+    "exactExpandedDirectionalAdjacencyContractCount": 63,
+    "exactSparseB10DirectionalAdjacencyContractCount": 21,
+    "g05Passed": false,
+    "remainingNullExternalEndpointOrStateCount": 13,
+    "finalInterfaceAcceptanceRecorded": false
+  },
+  "g06GeometryIntegration": {
+    "generatedStartCount": 114,
+    "protectedCoreCount": 3,
+    "changedGeneratedStarts": [
+      {
+        "subjectId": "GS-037",
+        "sourceIndex": 37,
+        "structureId": "minecraft:shipwreck",
+        "bounds": {
+          "minX": 2072,
+          "minY": 69,
+          "minZ": -661,
+          "maxX": 2099,
+          "maxY": 77,
+          "maxZ": -653
+        },
+        "verticallyDisjoint": false
+      },
+      {
+        "subjectId": "GS-041",
+        "sourceIndex": 41,
+        "structureId": "minecraft:mineshaft",
+        "bounds": {
+          "minX": 1998,
+          "minY": -31,
+          "minZ": -634,
+          "maxX": 2137,
+          "maxY": -9,
+          "maxZ": -511
+        },
+        "verticallyDisjoint": true
+      }
+    ],
+    "changedProtectedCores": [
+      {
+        "subjectId": "CORE-shipwreck",
+        "structureId": "minecraft:shipwreck",
+        "bounds": {
+          "minX": 2072,
+          "minY": 69,
+          "minZ": -661,
+          "maxX": 2099,
+          "maxY": 77,
+          "maxZ": -653
+        }
+      }
+    ],
+    "shipwreckCorePlusSelectedPlanningMarginOverlap": {
+      "constructionCellCount": 0,
+      "interactionCellCount": 0,
+      "supportGapCellCount": 0,
+      "influenceCellCount": 0
+    },
+    "mineshaftGs041VerticallyDisjointFromChangeEnvelope": true,
+    "compositeGeneratedStartOverlapRecordCount": 0,
+    "compositeGeneratedStartOverlapCellCount": 0,
+    "compositeProtectedCoreOverlapRecordCount": 0,
+    "compositeProtectedCoreOverlapCellCount": 0,
+    "allThirtyDomainsExactZeroAgainstGeneratedStarts": true,
+    "allThirtyDomainsExactZeroAgainstFrozenCores": true,
+    "expertPositiveMarginAccepted": false,
+    "positiveMarginHoldCount": 3,
+    "occupiedD06BeeNestTreatmentAccepted": false,
+    "g06Passed": false
+  },
+  "domainDeltas": {
+    "constructionCellCount": -83729,
+    "interactionCellCount": 2015,
+    "influenceCellCount": -10012,
+    "supportGapCellCount": -13604,
+    "physicalUnionCellCount": -81714
+  },
+  "disposition": {
+    "compositeCanonicalIntegrationCompiled": true,
+    "canonicalD05G03G04G05G06GeometryIntegrationComplete": true,
+    "immutableBaselinePreserved": true,
+    "exactZeroGeneratedStartAndProtectedCoreOverlapEstablished": true,
+    "g04OfflineExactOneOwnerCoverageRetained": true,
+    "g05ExistingCrossScopeInterfacesRetained": true,
+    "expertPositiveMarginAccepted": false,
+    "finalOwnerAcceptanceRecorded": false,
+    "finalInterfaceAcceptanceRecorded": false,
+    "occupiedBeeNestTreatmentAccepted": false,
+    "technicalTreatmentAccepted": false,
+    "r00Passed": false,
+    "operationCompilationAuthorized": false
+  },
+  "safetyBoundary": {
+    "immutableFilesRewritten": 0,
+    "operationCellCount": 0,
+    "productionServerContacted": false,
+    "productionWorldContacted": false,
+    "productionBlockEditCount": 0,
+    "physicalReleaseAuthorized": false,
+    "worldEditAuthorized": false,
+    "executable": false
+  },
+  "integrationPayloadSha256": "746daff1a4123251f071b701c9eb2d5c10469a853619e3b4af526e4daf626159",
+  "reportIdentitySha256": "af6e65dc1ed2093625a7bfe66ce87c15df8452d56d731b72aab6c7d6de58184a"
+}

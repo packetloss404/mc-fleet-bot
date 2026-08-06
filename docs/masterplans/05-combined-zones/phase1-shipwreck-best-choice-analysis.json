@@ -1,9 +1,9 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "combined-zones-phase1-shipwreck-best-choice-analysis",
-  "generatedAtUtc": "2026-08-06T04:20:00Z",
-  "status": "PASS_BEST_CHOICE_PRESERVE_AND_LOCAL_P1_B10_RESHAPE_SELECTED_REMOVAL_FALLBACK_ONLY",
-  "purpose": "Choose the best next response to the exact P1-B10/shipwreck hold before investing in additional technical or physical work.",
+  "generatedAtUtc": "2026-08-06T04:50:00Z",
+  "status": "PASS_BEST_CHOICE_AND_EXACT_MINIMUM_SOUTH_OPEN_RESHAPE_COMPILED_REMOVAL_FALLBACK_ONLY",
+  "purpose": "Choose and compile the smallest root-cause P1-B10/shipwreck reshape against the accepted complete save before canonical closure or physical work.",
   "sourceBindings": {
     "g03CanonicalSetout": {
       "path": "docs/masterplans/05-combined-zones/phase1-g03-canonical-setout.json",
@@ -40,6 +40,42 @@
       "sha256": "3b62d3f65c40a01d5f4eb66733b02c94104c03b3a5bab053ee82bcb08b7fd786",
       "bytes": 33127,
       "role": "R00 default-deny and later physical-release boundaries"
+    },
+    "d05FutureState": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-future-state.json",
+      "sha256": "14ec55e8d71a5fbccbb45fae9ff098c7e077ccb28a9b4d2bdd951ed7ce65c849",
+      "bytes": 39776,
+      "role": "selected FM-01 formula and exact baseline construction/support interval identities"
+    },
+    "d05ConservativeDefaults": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-conservative-defaults.json",
+      "sha256": "14366d541b21675011e5dad32b08b51c4c23cf826bb37b0340b4699241429774",
+      "bytes": 17445,
+      "role": "exact protected-relic minimum planning exclusions"
+    },
+    "d05OwnerAcceptance": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d05-owner-acceptance-packet.json",
+      "sha256": "72b1d027a3f4f519a882dcf3ba2366bae642eae33da4b4fccdae80f6f9b6ef50",
+      "bytes": 62442,
+      "role": "selected B09 route and minimum planning accommodation"
+    },
+    "connectorGeometry": {
+      "path": "docs/masterplans/05-combined-zones/phase1-connector-geometry.json",
+      "sha256": "8bb2dd803c434667dfeee440ccdf8428a115962e21dd1b3b0e6955cce672dc4e",
+      "bytes": 458540,
+      "role": "exact B08 reservation and B09 endpoints"
+    },
+    "acceptedCompleteSaveIntake": {
+      "path": "docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260806T014133Z.json",
+      "sha256": "7cd3718a59fbfa8b9006cb60337e6262a690a90f4abf5e06d527d900892be149",
+      "bytes": 58203,
+      "role": "accepted complete-save package identity and completeness gate"
+    },
+    "completeSaveCapture": {
+      "path": "data/worldsnap-combined-zones-complete-save-20260806T014133Z/combined-zones-complete-save-capture.json",
+      "sha256": "75a62e353b088119b8c424a8e75e039ebfb74a17dda159ac08c74c6380dff708",
+      "bytes": 21224,
+      "role": "immutable complete-save capture protocol and required-member identity"
     }
   },
   "analysisPayload": {
@@ -74,7 +110,8 @@
       "p1b10ConstructionMinimumY": 72,
       "protectedRelicWithheldConstructionCellCount": 1977,
       "shipwreckCoreCellCount": 2268,
-      "positiveMarginBlocks": null,
+      "selectedPlanningMarginBlocks": 1,
+      "acceptedExpertMarginBlocks": null,
       "positiveMarginFrozen": false,
       "controlledRemovalMayBeDesigned": true,
       "controlledRemovalRequired": false,
@@ -216,14 +253,15 @@
           "inventoryMoveCount": 0,
           "currentOverlapCellCountToEliminateByGeometryRegeneration": 126,
           "currentProtectedRelicWithheldConstructionCellCountRetained": 1977,
-          "outputGeometryCellSet": null,
-          "reasonOutputIsNull": "The positive margin and minimal local reshape must be compiled and compared next; this decision gate does not fabricate geometry."
+          "selectedPlanningReshapeId": "FM-01-SHIPWRECK-SOUTH-OPEN-TOE-RESHAPE-V1",
+          "selectedPlanningMarginBlocks": 1,
+          "noBuildColumnCount": 2432,
+          "lostCandidateAddedSolidCellCount": 83729,
+          "exactCorePlusPlanningMarginInfluenceOverlapCellCount": 0
         },
         "remainingWork": [
-          "compile bounded positive-margin candidates and a minimal local FM-01 toe/no-build reshape",
-          "recompute P1-B10 construction, interaction, influence, and support-gap evidence from source geometry",
-          "require zero shipwreck core-plus-margin overlap without deleting an influence record independently of its source",
-          "rerun G03, G06, ownership, and interface checks before technical acceptance"
+          "review and accept an expert positive margin or explicitly retain the one-cell planning margin as the accepted technical margin",
+          "consume the selected sparse reshape in the canonical D05/G03 pipeline and rerun G06, ownership, and interface checks as one integrated closure"
         ]
       },
       {
@@ -445,17 +483,832 @@
         ]
       }
     ],
+    "reshapeOptimization": {
+      "status": "PASS_EXACT_MINIMUM_SOUTH_OPEN_RESHAPE_SELECTED_ZERO_CORE_PLUS_PLANNING_MARGIN_OVERLAP_TECHNICAL_MARGIN_AND_CANONICAL_INTEGRATION_HOLD",
+      "sourceVerification": {
+        "acceptedCompleteSaveSha256": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+        "captureId": "combined-zones-1e9c635a14784cfdb809e2769df0a150",
+        "capturedAtUtc": "2026-08-06T01:41:38.563Z",
+        "immutableCopy": true,
+        "projectScopeSourceEquivalent": true,
+        "baselineConstruction": {
+          "cellCount": 14768553,
+          "intervalManifestSha256": "ed95837647ab5f13699e93fcc17de691d4da5f08115c4be34734e238b19b4196"
+        },
+        "baselineInteraction": {
+          "cellCount": 433549,
+          "bounds": {
+            "minX": 1948,
+            "maxX": 2367,
+            "minY": 71,
+            "maxY": 303,
+            "minZ": -1067,
+            "maxZ": -589
+          },
+          "columnRecordCount": 191323,
+          "intervalCount": 383907,
+          "intervalManifestSha256": "9dcae3deeefc09f563a47955dd7d3fba75eac8e8ca74f44ab26b24d3a4535ba8"
+        },
+        "baselineInfluence": {
+          "cellCount": 1082149,
+          "bounds": {
+            "minX": 1948,
+            "maxX": 2368,
+            "minY": 38,
+            "maxY": 303,
+            "minZ": -1068,
+            "maxZ": -588
+          },
+          "columnRecordCount": 192024,
+          "intervalCount": 384655,
+          "intervalManifestSha256": "1a209dbae3552c0b49a7972f22c4838a30e09c8391bce8d20979a1b4f542447d"
+        },
+        "baselineSupportGap": {
+          "cellCount": 754224,
+          "intervalManifestSha256": "31664bc00e7a1d361567fb878e8653c2a4018045169d54900ca9ad15bddd7171"
+        },
+        "baselineConstructionColumnComponents": {
+          "componentCount": 4,
+          "largestComponentColumnCount": 189287
+        }
+      },
+      "readOnlyWorldObservation": {
+        "method": "direct read of the accepted immutable complete-save Anvil copy on the server filesystem",
+        "liveProcessQueried": false,
+        "selectedCorridorCurrentSurface": {
+          "columnCount": 2432,
+          "minimumSurfaceY": 62,
+          "maximumSurfaceY": 89,
+          "meanSurfaceY": 66.161184,
+          "surfaceMaterialCounts": {
+            "minecraft:chest": 1,
+            "minecraft:dark_oak_fence": 3,
+            "minecraft:dark_oak_planks": 6,
+            "minecraft:dark_oak_stairs": 11,
+            "minecraft:ice": 958,
+            "minecraft:packed_ice": 359,
+            "minecraft:short_grass": 7,
+            "minecraft:snow": 556,
+            "minecraft:snow_block": 8,
+            "minecraft:spruce_log": 1,
+            "minecraft:spruce_planks": 14,
+            "minecraft:spruce_stairs": 99,
+            "minecraft:spruce_trapdoor": 3,
+            "minecraft:water": 406
+          },
+          "biomeCounts": {
+            "minecraft:frozen_ocean": 1140,
+            "minecraft:snowy_plains": 1292
+          }
+        },
+        "shipwreckFootprintCurrentSurface": {
+          "columnCount": 252,
+          "minimumSurfaceY": 62,
+          "maximumSurfaceY": 87,
+          "meanSurfaceY": 73.361111,
+          "surfaceMaterialCounts": {
+            "minecraft:chest": 1,
+            "minecraft:dark_oak_fence": 3,
+            "minecraft:dark_oak_planks": 6,
+            "minecraft:dark_oak_stairs": 11,
+            "minecraft:ice": 15,
+            "minecraft:packed_ice": 72,
+            "minecraft:snow": 5,
+            "minecraft:snow_block": 3,
+            "minecraft:spruce_log": 1,
+            "minecraft:spruce_planks": 14,
+            "minecraft:spruce_stairs": 99,
+            "minecraft:spruce_trapdoor": 3,
+            "minecraft:water": 19
+          },
+          "biomeCounts": {
+            "minecraft:frozen_ocean": 180,
+            "minecraft:snowy_plains": 72
+          }
+        },
+        "shipwreckCoreCensus": {
+          "status": "PASS_EXACT_BOUNDING_VOLUME_CENSUS",
+          "finding": "PRESENT_CELLS_OBSERVED_IN_DECLARED_BOUNDING_VOLUME",
+          "presenceDefinition": "block name is not minecraft:air, minecraft:cave_air, or minecraft:void_air",
+          "totalCellCount": 2268,
+          "presentCellCount": 1118,
+          "airCellCount": 1150,
+          "materialCounts": {
+            "minecraft:chest": 3,
+            "minecraft:dark_oak_fence": 30,
+            "minecraft:dark_oak_planks": 116,
+            "minecraft:dark_oak_slab": 19,
+            "minecraft:dark_oak_stairs": 28,
+            "minecraft:packed_ice": 515,
+            "minecraft:snow": 5,
+            "minecraft:spruce_fence": 4,
+            "minecraft:spruce_log": 10,
+            "minecraft:spruce_planks": 219,
+            "minecraft:spruce_slab": 2,
+            "minecraft:spruce_stairs": 153,
+            "minecraft:spruce_trapdoor": 14
+          },
+          "presentCoordinateSetSha256": "87c356ae6562eb2deca5d30c0ac414c39969e91f77a9761f265f023c52fafc1b",
+          "presentBlockStateSetSha256": "9214943e9ef3bf1ee6cd73201b6d06916194ca03ea76a2cb10e26f075c6bb9ac",
+          "fullVolumeBlockStateSetSha256": "e35f3a26817ac3464d4722429a1d3d68001f8ab92f058c72a315dfe94b88f8bb"
+        }
+      },
+      "boundedSearch": {
+        "positivePlanningMarginsTested": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "strategyCount": 3,
+        "candidateCount": 12,
+        "eligibleCandidateCount": 4,
+        "selectionRule": "Pass every hard gate, then minimize lost candidate-added-solid cells, no-build columns, positive planning margin, and strategy ID in that order.",
+        "whySearchStopsAtFourBlocks": "One block is the committed minimum planning shell. Two through four prove monotone sensitivity; larger invented margins cannot improve the decision before expert evidence establishes the accepted margin.",
+        "candidates": [
+          {
+            "strategyId": "LOCAL_ENCLOSED_POCKET",
+            "topology": "enclosed current-state pocket inside the future mountain",
+            "positiveMarginBlocks": 1,
+            "interactionSetbackBlocks": 2,
+            "protectedEnvelope": {
+              "minX": 2071,
+              "maxX": 2100,
+              "minY": 68,
+              "maxY": 78,
+              "minZ": -662,
+              "maxZ": -652
+            },
+            "noBuildColumnBounds": {
+              "minX": 2070,
+              "maxX": 2101,
+              "minZ": -663,
+              "maxZ": -651
+            },
+            "noBuildColumnCount": 416,
+            "lostCandidateAddedSolidCellCount": 24725,
+            "removedSupportGapCellCount": 1210,
+            "exactOverlap": {
+              "constructionCellCount": 0,
+              "interactionCellCount": 0,
+              "supportGapCellCount": 0,
+              "influenceCellCount": 0
+            },
+            "b08ChangedColumnCount": 0,
+            "b09ChangedColumnCount": 0,
+            "constructionColumnComponents": null,
+            "hardGates": {
+              "exactCorePlusMarginConstructionClear": true,
+              "exactCorePlusMarginInteractionClear": true,
+              "exactCorePlusMarginSupportClear": true,
+              "exactCorePlusMarginInfluenceClear": true,
+              "opensToExistingSouthExterior": false,
+              "b08ReservationUnchanged": true,
+              "b09ReservationUnchanged": true,
+              "summitColumnRetained": true,
+              "constructionColumnConnectivityRetained": false
+            },
+            "eligible": false
+          },
+          {
+            "strategyId": "LOCAL_ENCLOSED_POCKET",
+            "topology": "enclosed current-state pocket inside the future mountain",
+            "positiveMarginBlocks": 2,
+            "interactionSetbackBlocks": 3,
+            "protectedEnvelope": {
+              "minX": 2070,
+              "maxX": 2101,
+              "minY": 67,
+              "maxY": 79,
+              "minZ": -663,
+              "maxZ": -651
+            },
+            "noBuildColumnBounds": {
+              "minX": 2069,
+              "maxX": 2102,
+              "minZ": -664,
+              "maxZ": -650
+            },
+            "noBuildColumnCount": 510,
+            "lostCandidateAddedSolidCellCount": 30659,
+            "removedSupportGapCellCount": 1707,
+            "exactOverlap": {
+              "constructionCellCount": 0,
+              "interactionCellCount": 0,
+              "supportGapCellCount": 0,
+              "influenceCellCount": 0
+            },
+            "b08ChangedColumnCount": 0,
+            "b09ChangedColumnCount": 0,
+            "constructionColumnComponents": null,
+            "hardGates": {
+              "exactCorePlusMarginConstructionClear": true,
+              "exactCorePlusMarginInteractionClear": true,
+              "exactCorePlusMarginSupportClear": true,
+              "exactCorePlusMarginInfluenceClear": true,
+              "opensToExistingSouthExterior": false,
+              "b08ReservationUnchanged": true,
+              "b09ReservationUnchanged": true,
+              "summitColumnRetained": true,
+              "constructionColumnConnectivityRetained": false
+            },
+            "eligible": false
+          },
+          {
+            "strategyId": "LOCAL_ENCLOSED_POCKET",
+            "topology": "enclosed current-state pocket inside the future mountain",
+            "positiveMarginBlocks": 3,
+            "interactionSetbackBlocks": 4,
+            "protectedEnvelope": {
+              "minX": 2069,
+              "maxX": 2102,
+              "minY": 66,
+              "maxY": 80,
+              "minZ": -664,
+              "maxZ": -650
+            },
+            "noBuildColumnBounds": {
+              "minX": 2068,
+              "maxX": 2103,
+              "minZ": -665,
+              "maxZ": -649
+            },
+            "noBuildColumnCount": 612,
+            "lostCandidateAddedSolidCellCount": 37140,
+            "removedSupportGapCellCount": 2242,
+            "exactOverlap": {
+              "constructionCellCount": 0,
+              "interactionCellCount": 0,
+              "supportGapCellCount": 0,
+              "influenceCellCount": 0
+            },
+            "b08ChangedColumnCount": 0,
+            "b09ChangedColumnCount": 0,
+            "constructionColumnComponents": null,
+            "hardGates": {
+              "exactCorePlusMarginConstructionClear": true,
+              "exactCorePlusMarginInteractionClear": true,
+              "exactCorePlusMarginSupportClear": true,
+              "exactCorePlusMarginInfluenceClear": true,
+              "opensToExistingSouthExterior": false,
+              "b08ReservationUnchanged": true,
+              "b09ReservationUnchanged": true,
+              "summitColumnRetained": true,
+              "constructionColumnConnectivityRetained": false
+            },
+            "eligible": false
+          },
+          {
+            "strategyId": "LOCAL_ENCLOSED_POCKET",
+            "topology": "enclosed current-state pocket inside the future mountain",
+            "positiveMarginBlocks": 4,
+            "interactionSetbackBlocks": 5,
+            "protectedEnvelope": {
+              "minX": 2068,
+              "maxX": 2103,
+              "minY": 65,
+              "maxY": 81,
+              "minZ": -665,
+              "maxZ": -649
+            },
+            "noBuildColumnBounds": {
+              "minX": 2067,
+              "maxX": 2104,
+              "minZ": -666,
+              "maxZ": -648
+            },
+            "noBuildColumnCount": 722,
+            "lostCandidateAddedSolidCellCount": 44252,
+            "removedSupportGapCellCount": 2805,
+            "exactOverlap": {
+              "constructionCellCount": 0,
+              "interactionCellCount": 0,
+              "supportGapCellCount": 0,
+              "influenceCellCount": 0
+            },
+            "b08ChangedColumnCount": 0,
+            "b09ChangedColumnCount": 0,
+            "constructionColumnComponents": null,
+            "hardGates": {
+              "exactCorePlusMarginConstructionClear": true,
+              "exactCorePlusMarginInteractionClear": true,
+              "exactCorePlusMarginSupportClear": true,
+              "exactCorePlusMarginInfluenceClear": true,
+              "opensToExistingSouthExterior": false,
+              "b08ReservationUnchanged": true,
+              "b09ReservationUnchanged": true,
+              "summitColumnRetained": true,
+              "constructionColumnConnectivityRetained": false
+            },
+            "eligible": false
+          },
+          {
+            "strategyId": "SOUTH_OPEN_NO_BUILD_CORRIDOR",
+            "topology": "current-state corridor from the protected envelope to the south exterior",
+            "positiveMarginBlocks": 1,
+            "interactionSetbackBlocks": 2,
+            "protectedEnvelope": {
+              "minX": 2071,
+              "maxX": 2100,
+              "minY": 68,
+              "maxY": 78,
+              "minZ": -662,
+              "maxZ": -652
+            },
+            "noBuildColumnBounds": {
+              "minX": 2070,
+              "maxX": 2101,
+              "minZ": -663,
+              "maxZ": -588
+            },
+            "noBuildColumnCount": 2432,
+            "lostCandidateAddedSolidCellCount": 83729,
+            "removedSupportGapCellCount": 13604,
+            "exactOverlap": {
+              "constructionCellCount": 0,
+              "interactionCellCount": 0,
+              "supportGapCellCount": 0,
+              "influenceCellCount": 0
+            },
+            "b08ChangedColumnCount": 0,
+            "b09ChangedColumnCount": 0,
+            "constructionColumnComponents": {
+              "componentCount": 4,
+              "largestComponentColumnCount": 186934
+            },
+            "hardGates": {
+              "exactCorePlusMarginConstructionClear": true,
+              "exactCorePlusMarginInteractionClear": true,
+              "exactCorePlusMarginSupportClear": true,
+              "exactCorePlusMarginInfluenceClear": true,
+              "opensToExistingSouthExterior": true,
+              "b08ReservationUnchanged": true,
+              "b09ReservationUnchanged": true,
+              "summitColumnRetained": true,
+              "constructionColumnConnectivityRetained": true
+            },
+            "eligible": true
+          },
+          {
+            "strategyId": "SOUTH_OPEN_NO_BUILD_CORRIDOR",
+            "topology": "current-state corridor from the protected envelope to the south exterior",
+            "positiveMarginBlocks": 2,
+            "interactionSetbackBlocks": 3,
+            "protectedEnvelope": {
+              "minX": 2070,
+              "maxX": 2101,
+              "minY": 67,
+              "maxY": 79,
+              "minZ": -663,
+              "maxZ": -651
+            },
+            "noBuildColumnBounds": {
+              "minX": 2069,
+              "maxX": 2102,
+              "minZ": -664,
+              "maxZ": -588
+            },
+            "noBuildColumnCount": 2618,
+            "lostCandidateAddedSolidCellCount": 91401,
+            "removedSupportGapCellCount": 14495,
+            "exactOverlap": {
+              "constructionCellCount": 0,
+              "interactionCellCount": 0,
+              "supportGapCellCount": 0,
+              "influenceCellCount": 0
+            },
+            "b08ChangedColumnCount": 0,
+            "b09ChangedColumnCount": 0,
+            "constructionColumnComponents": {
+              "componentCount": 4,
+              "largestComponentColumnCount": 186753
+            },
+            "hardGates": {
+              "exactCorePlusMarginConstructionClear": true,
+              "exactCorePlusMarginInteractionClear": true,
+              "exactCorePlusMarginSupportClear": true,
+              "exactCorePlusMarginInfluenceClear": true,
+              "opensToExistingSouthExterior": true,
+              "b08ReservationUnchanged": true,
+              "b09ReservationUnchanged": true,
+              "summitColumnRetained": true,
+              "constructionColumnConnectivityRetained": true
+            },
+            "eligible": true
+          },
+          {
+            "strategyId": "SOUTH_OPEN_NO_BUILD_CORRIDOR",
+            "topology": "current-state corridor from the protected envelope to the south exterior",
+            "positiveMarginBlocks": 3,
+            "interactionSetbackBlocks": 4,
+            "protectedEnvelope": {
+              "minX": 2069,
+              "maxX": 2102,
+              "minY": 66,
+              "maxY": 80,
+              "minZ": -664,
+              "maxZ": -650
+            },
+            "noBuildColumnBounds": {
+              "minX": 2068,
+              "maxX": 2103,
+              "minZ": -665,
+              "maxZ": -588
+            },
+            "noBuildColumnCount": 2808,
+            "lostCandidateAddedSolidCellCount": 99418,
+            "removedSupportGapCellCount": 15384,
+            "exactOverlap": {
+              "constructionCellCount": 0,
+              "interactionCellCount": 0,
+              "supportGapCellCount": 0,
+              "influenceCellCount": 0
+            },
+            "b08ChangedColumnCount": 0,
+            "b09ChangedColumnCount": 0,
+            "constructionColumnComponents": {
+              "componentCount": 4,
+              "largestComponentColumnCount": 186568
+            },
+            "hardGates": {
+              "exactCorePlusMarginConstructionClear": true,
+              "exactCorePlusMarginInteractionClear": true,
+              "exactCorePlusMarginSupportClear": true,
+              "exactCorePlusMarginInfluenceClear": true,
+              "opensToExistingSouthExterior": true,
+              "b08ReservationUnchanged": true,
+              "b09ReservationUnchanged": true,
+              "summitColumnRetained": true,
+              "constructionColumnConnectivityRetained": true
+            },
+            "eligible": true
+          },
+          {
+            "strategyId": "SOUTH_OPEN_NO_BUILD_CORRIDOR",
+            "topology": "current-state corridor from the protected envelope to the south exterior",
+            "positiveMarginBlocks": 4,
+            "interactionSetbackBlocks": 5,
+            "protectedEnvelope": {
+              "minX": 2068,
+              "maxX": 2103,
+              "minY": 65,
+              "maxY": 81,
+              "minZ": -665,
+              "maxZ": -649
+            },
+            "noBuildColumnBounds": {
+              "minX": 2067,
+              "maxX": 2104,
+              "minZ": -666,
+              "maxZ": -588
+            },
+            "noBuildColumnCount": 3002,
+            "lostCandidateAddedSolidCellCount": 107838,
+            "removedSupportGapCellCount": 16264,
+            "exactOverlap": {
+              "constructionCellCount": 0,
+              "interactionCellCount": 0,
+              "supportGapCellCount": 0,
+              "influenceCellCount": 0
+            },
+            "b08ChangedColumnCount": 0,
+            "b09ChangedColumnCount": 0,
+            "constructionColumnComponents": {
+              "componentCount": 4,
+              "largestComponentColumnCount": 186379
+            },
+            "hardGates": {
+              "exactCorePlusMarginConstructionClear": true,
+              "exactCorePlusMarginInteractionClear": true,
+              "exactCorePlusMarginSupportClear": true,
+              "exactCorePlusMarginInfluenceClear": true,
+              "opensToExistingSouthExterior": true,
+              "b08ReservationUnchanged": true,
+              "b09ReservationUnchanged": true,
+              "summitColumnRetained": true,
+              "constructionColumnConnectivityRetained": true
+            },
+            "eligible": true
+          },
+          {
+            "strategyId": "BROAD_SOUTH_TOE_SETBACK",
+            "topology": "full-width removal of future fill across the south toe",
+            "positiveMarginBlocks": 1,
+            "interactionSetbackBlocks": 2,
+            "protectedEnvelope": {
+              "minX": 2071,
+              "maxX": 2100,
+              "minY": 68,
+              "maxY": 78,
+              "minZ": -662,
+              "maxZ": -652
+            },
+            "noBuildColumnBounds": {
+              "minX": 1948,
+              "maxX": 2368,
+              "minZ": -663,
+              "maxZ": -588
+            },
+            "noBuildColumnCount": 31996,
+            "lostCandidateAddedSolidCellCount": 955167,
+            "removedSupportGapCellCount": 130201,
+            "exactOverlap": {
+              "constructionCellCount": 0,
+              "interactionCellCount": 0,
+              "supportGapCellCount": 0,
+              "influenceCellCount": 0
+            },
+            "b08ChangedColumnCount": 767,
+            "b09ChangedColumnCount": 0,
+            "constructionColumnComponents": null,
+            "hardGates": {
+              "exactCorePlusMarginConstructionClear": true,
+              "exactCorePlusMarginInteractionClear": true,
+              "exactCorePlusMarginSupportClear": true,
+              "exactCorePlusMarginInfluenceClear": true,
+              "opensToExistingSouthExterior": true,
+              "b08ReservationUnchanged": false,
+              "b09ReservationUnchanged": true,
+              "summitColumnRetained": true,
+              "constructionColumnConnectivityRetained": false
+            },
+            "eligible": false
+          },
+          {
+            "strategyId": "BROAD_SOUTH_TOE_SETBACK",
+            "topology": "full-width removal of future fill across the south toe",
+            "positiveMarginBlocks": 2,
+            "interactionSetbackBlocks": 3,
+            "protectedEnvelope": {
+              "minX": 2070,
+              "maxX": 2101,
+              "minY": 67,
+              "maxY": 79,
+              "minZ": -663,
+              "maxZ": -651
+            },
+            "noBuildColumnBounds": {
+              "minX": 1948,
+              "maxX": 2368,
+              "minZ": -664,
+              "maxZ": -588
+            },
+            "noBuildColumnCount": 32417,
+            "lostCandidateAddedSolidCellCount": 979255,
+            "removedSupportGapCellCount": 131442,
+            "exactOverlap": {
+              "constructionCellCount": 0,
+              "interactionCellCount": 0,
+              "supportGapCellCount": 0,
+              "influenceCellCount": 0
+            },
+            "b08ChangedColumnCount": 775,
+            "b09ChangedColumnCount": 0,
+            "constructionColumnComponents": null,
+            "hardGates": {
+              "exactCorePlusMarginConstructionClear": true,
+              "exactCorePlusMarginInteractionClear": true,
+              "exactCorePlusMarginSupportClear": true,
+              "exactCorePlusMarginInfluenceClear": true,
+              "opensToExistingSouthExterior": true,
+              "b08ReservationUnchanged": false,
+              "b09ReservationUnchanged": true,
+              "summitColumnRetained": true,
+              "constructionColumnConnectivityRetained": false
+            },
+            "eligible": false
+          },
+          {
+            "strategyId": "BROAD_SOUTH_TOE_SETBACK",
+            "topology": "full-width removal of future fill across the south toe",
+            "positiveMarginBlocks": 3,
+            "interactionSetbackBlocks": 4,
+            "protectedEnvelope": {
+              "minX": 2069,
+              "maxX": 2102,
+              "minY": 66,
+              "maxY": 80,
+              "minZ": -664,
+              "maxZ": -650
+            },
+            "noBuildColumnBounds": {
+              "minX": 1948,
+              "maxX": 2368,
+              "minZ": -665,
+              "maxZ": -588
+            },
+            "noBuildColumnCount": 32838,
+            "lostCandidateAddedSolidCellCount": 1003610,
+            "removedSupportGapCellCount": 132678,
+            "exactOverlap": {
+              "constructionCellCount": 0,
+              "interactionCellCount": 0,
+              "supportGapCellCount": 0,
+              "influenceCellCount": 0
+            },
+            "b08ChangedColumnCount": 783,
+            "b09ChangedColumnCount": 0,
+            "constructionColumnComponents": null,
+            "hardGates": {
+              "exactCorePlusMarginConstructionClear": true,
+              "exactCorePlusMarginInteractionClear": true,
+              "exactCorePlusMarginSupportClear": true,
+              "exactCorePlusMarginInfluenceClear": true,
+              "opensToExistingSouthExterior": true,
+              "b08ReservationUnchanged": false,
+              "b09ReservationUnchanged": true,
+              "summitColumnRetained": true,
+              "constructionColumnConnectivityRetained": false
+            },
+            "eligible": false
+          },
+          {
+            "strategyId": "BROAD_SOUTH_TOE_SETBACK",
+            "topology": "full-width removal of future fill across the south toe",
+            "positiveMarginBlocks": 4,
+            "interactionSetbackBlocks": 5,
+            "protectedEnvelope": {
+              "minX": 2068,
+              "maxX": 2103,
+              "minY": 65,
+              "maxY": 81,
+              "minZ": -665,
+              "maxZ": -649
+            },
+            "noBuildColumnBounds": {
+              "minX": 1948,
+              "maxX": 2368,
+              "minZ": -666,
+              "maxZ": -588
+            },
+            "noBuildColumnCount": 33259,
+            "lostCandidateAddedSolidCellCount": 1028205,
+            "removedSupportGapCellCount": 133897,
+            "exactOverlap": {
+              "constructionCellCount": 0,
+              "interactionCellCount": 0,
+              "supportGapCellCount": 0,
+              "influenceCellCount": 0
+            },
+            "b08ChangedColumnCount": 791,
+            "b09ChangedColumnCount": 0,
+            "constructionColumnComponents": null,
+            "hardGates": {
+              "exactCorePlusMarginConstructionClear": true,
+              "exactCorePlusMarginInteractionClear": true,
+              "exactCorePlusMarginSupportClear": true,
+              "exactCorePlusMarginInfluenceClear": true,
+              "opensToExistingSouthExterior": true,
+              "b08ReservationUnchanged": false,
+              "b09ReservationUnchanged": true,
+              "summitColumnRetained": true,
+              "constructionColumnConnectivityRetained": false
+            },
+            "eligible": false
+          }
+        ]
+      },
+      "selectedPlanningReshape": {
+        "id": "FM-01-SHIPWRECK-SOUTH-OPEN-TOE-RESHAPE-V1",
+        "baseModelId": "FM-01-COMPACT-EAST-FACE",
+        "planningStatus": "EXACT_SELECTED_PLANNING_OVERLAY_TECHNICAL_MARGIN_AND_CANONICAL_INTEGRATION_HOLD",
+        "formulaOverride": {
+          "rule": "Inside the exact no-build X/Z column set, preserve immutable current state and set analytic designSurfaceY to currentSurfaceY; outside it, retain FM-01 unchanged.",
+          "excavationAuthorized": false,
+          "currentBlockReplacementAuthorized": false
+        },
+        "positiveMargin": {
+          "selectedPlanningBlocks": 1,
+          "testedBlocks": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "basis": "one cell is the existing committed minimum planning shell; two through four are bounded monotone sensitivity checks",
+          "acceptedExpertMarginBlocks": null,
+          "expertMarginAccepted": false
+        },
+        "externalInteractionSetbackBlocks": 2,
+        "sparseNoBuildPlan": {
+          "representation": "INCLUSIVE_XZ_RECTANGLE_CURRENT_STATE_PRESERVATION_COLUMNS",
+          "bounds": {
+            "minX": 2070,
+            "maxX": 2101,
+            "minZ": -663,
+            "maxZ": -588
+          },
+          "preamble": "combined-zones-shipwreck-reshape-no-build-columns-v1\\n",
+          "record": "x,z",
+          "columnCount": 2432,
+          "columnSetSha256": "26729597c4bd117debd943f9bf51a84825fcac4687825be575d4013c17268785",
+          "opensToSouthMountainExterior": true
+        },
+        "regeneratedDomains": {
+          "construction": {
+            "representation": "SOURCE_BOUND_SPARSE_EXACT_INTEGER_Y_INTERVAL_SET_NO_INLINE_COORDINATES",
+            "cellCount": 14684824,
+            "bounds": {
+              "minX": 1949,
+              "maxX": 2366,
+              "minY": 72,
+              "maxY": 302,
+              "minZ": -1066,
+              "maxZ": -590
+            },
+            "intervalManifestSha256": "78eda919077fc20a3f088693146e279bcdf12fa0fd60e4c311bfe26bfd3e6810",
+            "intervalPreamble": "combined-zones-d05-shipwreck-reshape-sparse-solid-intervals-v1\\n",
+            "lostCellCountFromBase": 83729
+          },
+          "interaction": {
+            "cellCount": 435564,
+            "bounds": {
+              "minX": 1948,
+              "maxX": 2367,
+              "minY": 71,
+              "maxY": 303,
+              "minZ": -1067,
+              "maxZ": -589
+            },
+            "columnRecordCount": 189115,
+            "intervalCount": 379346,
+            "intervalManifestSha256": "bee0654db7e095adfd7e5b34cadfda22dbf85db9705f8ef08810c99b7f4474aa",
+            "intervalPreamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B10/interaction\\n"
+          },
+          "influence": {
+            "cellCount": 1072137,
+            "bounds": {
+              "minX": 1948,
+              "maxX": 2368,
+              "minY": 38,
+              "maxY": 303,
+              "minZ": -1068,
+              "maxZ": -588
+            },
+            "columnRecordCount": 189803,
+            "intervalCount": 380036,
+            "intervalManifestSha256": "c839ccb478a39609de98bb04f4f9e41dceae52156adbf8ba3dbc78552a4d899b",
+            "intervalPreamble": "combined-zones-residual-domain-sparse-integer-intervals-v1\\nP1-B10/influence\\n"
+          },
+          "supportGap": {
+            "cellCount": 740620,
+            "bounds": {
+              "minX": 1948,
+              "maxX": 2368,
+              "minY": 38,
+              "maxY": 71,
+              "minZ": -1068,
+              "maxZ": -588
+            },
+            "columnCount": 105645,
+            "intervalManifestSha256": "cc39e59a622f2a570bad0bc58dada0693476713964af9b292ba002070ea71adb",
+            "intervalPreamble": "combined-zones-d05-shipwreck-reshape-support-gap-intervals-v1\\n",
+            "removedCellCountFromBase": 13604,
+            "treatment": null
+          }
+        },
+        "designSurfaceManifestSha256": "43dfce5fd9f2571fdd09283052e7d5f42938097e2b4a6ae4849042b9e964a21f",
+        "exactCorePlusPlanningMarginOverlap": {
+          "constructionCellCount": 0,
+          "interactionCellCount": 0,
+          "supportGapCellCount": 0,
+          "influenceCellCount": 0
+        },
+        "connectivity": {
+          "componentCount": 4,
+          "largestComponentColumnCount": 186934
+        },
+        "routeAndScopeChecks": {
+          "b08ChangedColumnCount": 0,
+          "b09ChangedColumnCount": 0,
+          "d06CannotGainConflictBecauseOnlyB10CandidateFillIsRemoved": true,
+          "summitColumnRetained": true
+        },
+        "geometryIdentitySha256": "bea26a08611ed3f24809d80b97b2b30c88d5a6de61e1d361b22a668e7db8bad1"
+      },
+      "disposition": {
+        "exactReshapeGeometryCompiled": true,
+        "exactConstructionInteractionInfluenceSupportRegeneratedFromSource": true,
+        "exactZeroCorePlusSelectedPlanningMarginOverlap": true,
+        "selectedPlanningMarginBlocks": 1,
+        "expertPositiveMarginAccepted": false,
+        "canonicalD05G03G06IntegrationComplete": false,
+        "technicalTreatmentAccepted": false,
+        "operationCompilationAuthorized": false
+      }
+    },
     "recommendation": {
       "alternativeId": "BC-01-PRESERVE-AND-LOCAL-P1-B10-RESHAPE",
       "weightedScore": 94,
       "planningDirectionSelectedForNextOfflineDevelopment": true,
+      "exactPlanningGeometryCompiled": true,
       "technicallyAcceptedGeometry": false,
       "physicalImplementationAuthorized": false,
       "removalAuthorizationRetainedAsFallback": true,
       "removalIsCurrentPreferredPath": false,
       "influenceOnlySubtractionRejectedAsEvidenceSuppression": true,
       "reason": "The only exact conflict is a nonphysical influence/support reservation. Local FM-01 regeneration can address its source while preserving the shipwreck, avoiding three unknown loot inventories and 598 irreversible candidate edits. Fabric removal would not erase the immutable generated-start record and is therefore not the minimum or clearest solution.",
-      "nextArtifact": "compile bounded positive-margin alternatives and the minimum local P1-B10 toe/no-build reshape; regenerate construction, interaction, influence, and support evidence from the source geometry and require zero core-plus-margin overlap"
+      "nextArtifact": "consume the selected sparse south-open reshape in one integrated canonical D05/G03/G06/ownership/interface closure run; retain the one-cell margin as planning-only until expert review accepts it"
     }
   },
   "disposition": {
@@ -466,14 +1319,19 @@
     "rootCauseIntegrityGateEnforced": true,
     "recommendedAlternativeId": "BC-01-PRESERVE-AND-LOCAL-P1-B10-RESHAPE",
     "recommendationReadyForOfflineDevelopment": true,
-    "exactReshapeGeometryCompiled": false,
+    "exactReshapeGeometryCompiled": true,
+    "exactConstructionInteractionInfluenceSupportRegeneratedFromSource": true,
+    "exactZeroCorePlusSelectedPlanningMarginOverlap": true,
+    "selectedPlanningMarginBlocks": 1,
+    "expertPositiveMarginAccepted": false,
+    "canonicalD05G03G06IntegrationComplete": false,
     "technicalTreatmentAccepted": false,
     "removalPathActive": false,
     "removalPathRetainedAsFallback": true,
     "operationCompilationAuthorized": false
   },
   "safetyBoundary": {
-    "proposedGeometryCellCount": 0,
+    "proposedGeometryCellCount": 14684824,
     "acceptedGeometryCellCount": 0,
     "acceptedRemovalTargetCellCount": 0,
     "operationCellCount": 0,
@@ -481,10 +1339,11 @@
     "inventoryMoveCount": 0,
     "serverStarted": false,
     "liveWorldContacted": false,
+    "immutableCompleteSaveReadOnlyContacted": true,
     "physicalReleaseAuthorized": false,
     "worldEditAuthorized": false,
     "executable": false
   },
-  "analysisPayloadSha256": "a61881f799a758e73e5ab65857ca0ee7f4bc0e989c9e3005e25af4bc6242c4b0",
-  "reportIdentitySha256": "7b2250a719db9efd20b00e8adfb1b2ace37d63a4ce2ff48a8c0d85dc12bc7b95"
+  "analysisPayloadSha256": "ec0316707e250ccb4d1067776becd0cb6e1d99848e56045a7443a8bd3245a397",
+  "reportIdentitySha256": "d876412fcb335e672aa929ca9f2a7b42e60492dd35f5bd39d7ef570117371d0b"
 }

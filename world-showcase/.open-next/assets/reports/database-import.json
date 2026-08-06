@@ -1,0 +1,488 @@
+{
+  "schemaVersion": 1,
+  "generatedAtUtc": "2026-07-28T00:37:48.293Z",
+  "dbPath": "data/world-map.db",
+  "qaReport": "data/world-review/redevelopment-post-deployment-qa-2026-07-27.json",
+  "designs": [
+    "data/buildops/westlight-infinity-screen-2026-07-27.report.json",
+    "data/buildops/ravenrock-s1-section-pilot-2026-07-27.report.json",
+    "data/buildops/mainstreet-redevelopment-r4-r5-runtime-safe-2026-07-27.report.json",
+    "data/buildops/mainstreet-bunker-surface-phase1-2026-07-27.report.json",
+    "data/buildops/mainstreet-bunker-recessed-portal-phase2-2026-07-27.report.json"
+  ],
+  "postSnapshot": {
+    "directory": "data/worldsnap-postrelease-f8edf99494c023dd-20260728/region",
+    "sha256": "f8edf99494c023dd4b7e412d146a9018bb4ac29636f19c27431083e6b0f6ec10",
+    "regionFileCount": 26
+  },
+  "features": [
+    {
+      "id": "wft_8a29b90efebe1a80",
+      "projectId": "mainstreet-america",
+      "externalId": "C01-PUBLIC-PORTAL-RECESSED-PHASE2",
+      "parentId": "wft_8b357c93b42b1bbd",
+      "kind": "building",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_2661792989425dcf",
+      "projectId": "mainstreet-america",
+      "externalId": "C01-PUBLIC-PORTAL-APPROACH-PHASE1",
+      "parentId": "wft_87264bd11b41965f",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_04be7e670077b2bb",
+      "projectId": "mainstreet-america",
+      "externalId": "GATE-C01-EAST-EDGE-ROAD",
+      "parentId": "wft_44afdc3a7e7985f3",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_3e5adb2437b66920",
+      "projectId": "mainstreet-america",
+      "externalId": "C01-EAST-EDGE-ROAD-PHASE1",
+      "parentId": "wft_9c954c1fd433e49d",
+      "kind": "road",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_650edd1f385007c5",
+      "projectId": "mainstreet-america",
+      "externalId": "C01-PHASE1-LANDFORM-SOUTHWEST",
+      "parentId": "wft_9c954c1fd433e49d",
+      "kind": "landscape",
+      "conditionScore": 90,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_30bbf3d018bc6521",
+      "projectId": "mainstreet-america",
+      "externalId": "C01-PHASE1-LANDFORM-EAST",
+      "parentId": "wft_9c954c1fd433e49d",
+      "kind": "landscape",
+      "conditionScore": 90,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_c7175beecff66019",
+      "projectId": "mainstreet-america",
+      "externalId": "C01-PHASE1-LANDFORM-WEST",
+      "parentId": "wft_9c954c1fd433e49d",
+      "kind": "landscape",
+      "conditionScore": 90,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_473d728e5e5b5966",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-WF-R03-R07",
+      "parentId": "wft_85f39d7d3d1f5f3c",
+      "kind": "landmark",
+      "conditionScore": 91,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_0401224968d001b0",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-WF-R02-R07",
+      "parentId": "wft_85f39d7d3d1f5f3c",
+      "kind": "landmark",
+      "conditionScore": 91,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_39ceaf05420b76b6",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-WF-R01-R07-B03",
+      "parentId": "wft_85f39d7d3d1f5f3c",
+      "kind": "landmark",
+      "conditionScore": 91,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_f365b7c0e96930f9",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-WF-R02-B02-GATE",
+      "parentId": "wft_85f39d7d3d1f5f3c",
+      "kind": "landmark",
+      "conditionScore": 91,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_e710a4b3aaf36894",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-WF-R01-R06-B02",
+      "parentId": "wft_85f39d7d3d1f5f3c",
+      "kind": "landmark",
+      "conditionScore": 91,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_a2ad0c778e7c7480",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-WF-R01-R05",
+      "parentId": "wft_85f39d7d3d1f5f3c",
+      "kind": "landmark",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_7158336092338b2a",
+      "projectId": "mainstreet-america",
+      "externalId": "R5-B03-SERVICE-PYLONS",
+      "parentId": "wft_e4052b90251b7e57",
+      "kind": "landmark",
+      "conditionScore": 91,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_81566cdbe0443ec0",
+      "projectId": "mainstreet-america",
+      "externalId": "R5-B03-SERVICE-SCREEN",
+      "parentId": "wft_e4052b90251b7e57",
+      "kind": "landscape",
+      "conditionScore": 91,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_43911af49847ab46",
+      "projectId": "mainstreet-america",
+      "externalId": "R5-B03-SERVICE-LANE",
+      "parentId": "wft_e4052b90251b7e57",
+      "kind": "road",
+      "conditionScore": 91,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_36308bf38d43af5d",
+      "projectId": "mainstreet-america",
+      "externalId": "R5-B02-CULINARY-PYLONS",
+      "parentId": "wft_d5f112a0125aab51",
+      "kind": "landmark",
+      "conditionScore": 91,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_7dd5ca1281a03687",
+      "projectId": "mainstreet-america",
+      "externalId": "R5-B02-CULINARY-FORECOURT",
+      "parentId": "wft_d5f112a0125aab51",
+      "kind": "landscape",
+      "conditionScore": 91,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_682288273b1f7d62",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-ALLEY-E",
+      "parentId": "wft_85f39d7d3d1f5f3c",
+      "kind": "road",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_39fd837ae2f47ad0",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-ALLEY-W",
+      "parentId": "wft_85f39d7d3d1f5f3c",
+      "kind": "road",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_e4ef9127a4e52c23",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-GAR-C07",
+      "parentId": "wft_870e290006617392",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_2b6f1c01975a1a11",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-GAR-C06",
+      "parentId": "wft_a996aed935c45d5c",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_b963be40863ea1c5",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-GAR-C05",
+      "parentId": "wft_820c73121ea89764",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_687f4186f76b77b8",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-GAR-C04",
+      "parentId": "wft_4d26c59665b579c9",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_970d2182ce7ae66c",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-GAR-C03",
+      "parentId": "wft_93b4b02f8eefe133",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_d61b904fa016d820",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-GAR-C02",
+      "parentId": "wft_7a8e47af35c1a0f7",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_65089c3b74004e34",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-GAR-H12",
+      "parentId": "wft_30794b58f4b95436",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_cb6367924c969388",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-GAR-H11",
+      "parentId": "wft_91b457f7af1e5e3a",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_468b331b577b7a6a",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-GAR-H10",
+      "parentId": "wft_7265b0c4104fb0ce",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_e3369b0750dc735a",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-GAR-H09",
+      "parentId": "wft_964390a4063688ba",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_d02fca9ef821ac87",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-GAR-H08",
+      "parentId": "wft_7c0b60e5b0bee250",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_7411f5e477c9be5d",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-GAR-H07",
+      "parentId": "wft_53fe21e9fc935a9d",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_a9da786a0c56f739",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-GAR-H06",
+      "parentId": "wft_6d381a7084e72668",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_618060938f39b941",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-GAR-H05",
+      "parentId": "wft_fe55254d7f73c2c9",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_62e9c532bf13f3f1",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-GAR-H04",
+      "parentId": "wft_a47b3a39d6df06b5",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_ae0641b066b718c8",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-GAR-H03",
+      "parentId": "wft_81bbc36aa0d3a665",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_cdb47e1eb08c4650",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-GAR-H02",
+      "parentId": "wft_cc90ce8181c775b7",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_5502e308e2d568f3",
+      "projectId": "mainstreet-america",
+      "externalId": "R4-GAR-H01",
+      "parentId": "wft_58ed611668863441",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_2dabcc08291b676d",
+      "projectId": "raven-rock",
+      "externalId": "RR-S1-STANDARD-PILOT",
+      "parentId": "wft_5789677296f4b494",
+      "kind": "custom",
+      "conditionScore": 91,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_c737a3cd778fc968",
+      "projectId": "westlight-venue",
+      "externalId": "WL-INFINITY-SCREEN",
+      "parentId": "wft_7f14885ad01afaf7",
+      "kind": "landmark",
+      "conditionScore": 95,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_8845fa738e0e1b7a",
+      "projectId": "mainstreet-america",
+      "externalId": "C01-PUBLIC-PORTAL-DIRECTORY-PHASE2",
+      "parentId": "wft_8a29b90efebe1a80",
+      "kind": "landmark",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_019e00465e3fc3f0",
+      "projectId": "mainstreet-america",
+      "externalId": "C01-PUBLIC-CONNECTOR-DOGLEG-PHASE2",
+      "parentId": "wft_8a29b90efebe1a80",
+      "kind": "custom",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_570fd71e65fe20ad",
+      "projectId": "mainstreet-america",
+      "externalId": "C01-EAST-ROAD-DIRECTORY-GATE",
+      "parentId": "wft_3e5adb2437b66920",
+      "kind": "landmark",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    },
+    {
+      "id": "wft_feb9d96cc31f25a5",
+      "projectId": "mainstreet-america",
+      "externalId": "C01-EAST-ROAD-DIRECTORY-NORTH",
+      "parentId": "wft_3e5adb2437b66920",
+      "kind": "landmark",
+      "conditionScore": 93,
+      "created": true,
+      "revision": 1
+    }
+  ],
+  "scans": [
+    {
+      "id": "wsc_17dd4936c5ffbabb",
+      "projectId": "westlight-venue",
+      "status": "complete",
+      "observations": 1
+    },
+    {
+      "id": "wsc_87043cbcc7db9d72",
+      "projectId": "raven-rock",
+      "status": "complete",
+      "observations": 1
+    },
+    {
+      "id": "wsc_9474b73873720c8a",
+      "projectId": "mainstreet-america",
+      "status": "complete",
+      "observations": 42
+    }
+  ],
+  "totals": {
+    "designs": 5,
+    "features": 44,
+    "created": 44,
+    "updated": 0,
+    "scans": 3,
+    "observations": 44
+  }
+}

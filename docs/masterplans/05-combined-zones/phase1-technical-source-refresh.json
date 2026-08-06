@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-technical-source-refresh",
+  "generatedAtUtc": "2026-08-06T07:30:00Z",
+  "status": "PARTIAL_PASS_FIVE_STALE_SOURCE_ROWS_CLOSED_D06_PERSISTENT_POI_AND_TECHNICAL_ACCEPTANCE_HOLD",
+  "purpose": "Bind the accepted complete save to stale technical source rows and remove the D06 pre-R00/post-build commissioning cycle without self-acceptance.",
+  "sourceBindings": {
+    "releaseContract": {
+      "path": "docs/masterplans/05-combined-zones/phase1-release-contract.json",
+      "sha256": "3b62d3f65c40a01d5f4eb66733b02c94104c03b3a5bab053ee82bcb08b7fd786",
+      "bytes": 33127,
+      "role": "authoritative pre-R00 versus post-release evidence boundary"
+    },
+    "completeSave": {
+      "path": "docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260806T014133Z.json",
+      "sha256": "7cd3718a59fbfa8b9006cb60337e6262a690a90f4abf5e06d527d900892be149",
+      "bytes": 58203,
+      "role": "accepted immutable same-moment saved-world identity"
+    },
+    "completeSaveScope": {
+      "path": "docs/masterplans/05-combined-zones/phase1-g06-complete-save-scope-clearance-20260806T014133Z.json",
+      "sha256": "cf17f96d4504ad070114146101e6626b6233eeb780372737a0abcf33c7bde72f",
+      "bytes": 3039191,
+      "role": "source-equivalent proposal-domain entity, POI, and all-start audit"
+    },
+    "d02": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d02-technical-design.json",
+      "sha256": "22ecc64bd01224a91c8a534f448c5de0e31fb99d6e5452ddf0f75a8e7fc9f93e",
+      "bytes": 140238,
+      "role": "legacy D02 technical matrix with stale source-completeness row"
+    },
+    "b09": {
+      "path": "docs/masterplans/05-combined-zones/phase1-b09-funicular-technical-system.json",
+      "sha256": "f9b57fb317ff983acacbf98cb0a7776246c242025f583d9795594a6a799898c8",
+      "bytes": 26803,
+      "role": "legacy B09 proposal with stale complete-save all-start row"
+    },
+    "b11": {
+      "path": "docs/masterplans/05-combined-zones/phase1-b11-surface-road-technical-proposal.json",
+      "sha256": "324c275ef5120382f2b9a5510c4257259bd37f7ffe116350ae7959afb2534da6",
+      "bytes": 170181,
+      "role": "legacy B11 proposal with stale complete-save and entity-clearance row"
+    },
+    "b12": {
+      "path": "docs/masterplans/05-combined-zones/phase1-grand-avenue-passive-shell-candidate.json",
+      "sha256": "7fd10ad811bf9aa36be7895de01ef42eb19382d3896bf5fee5ac47bb75e21a4e",
+      "bytes": 254942,
+      "role": "legacy B12 candidate with stale complete-save row"
+    },
+    "d06": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-mechanisms.json",
+      "sha256": "c713d30f0a085131875e71a5d02ad391330755fb68252f771ea9ed40222261da",
+      "bytes": 180609,
+      "role": "legacy D06 technical matrix and 29 frozen commissioning specifications"
+    },
+    "d06Detailed": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-detailed-mechanism-setout.json",
+      "sha256": "9cf30ba33d2b62383c0512877553ef961c9782df54840c74ae8a30003ebb362a",
+      "bytes": 95894,
+      "role": "legacy D06 detailed setout with combined source/POI and commissioning holds"
+    }
+  },
+  "refreshMode": "ADDITIVE_HASH_BOUND_SUPPLEMENT_NO_HISTORICAL_ARTIFACT_REWRITE",
+  "completeSaveIdentity": {
+    "completeSaveSha256": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+    "canonicalInventorySha256": "8e839378c657ed71ed1cce2c0236ffddf99cc2c637290ed8f7629659fd967e83",
+    "captureManifestSha256": "75a62e353b088119b8c424a8e75e039ebfb74a17dda159ac08c74c6380dff708",
+    "regionFileCount": 51,
+    "entityFileCount": 42,
+    "poiFileCount": 35,
+    "levelDatPresent": true,
+    "projectScopeSourceEquivalent": true,
+    "generatedStartCensusSourceEquivalent": true
+  },
+  "scopedRefreshes": [
+    {
+      "scopeId": "D02",
+      "sourceEquivalent": true,
+      "exactDomainCount": 3,
+      "generatedStartSubjectCountPerDomain": 114,
+      "generatedStartOverlapCellCount": 0,
+      "entityConflictCount": 0,
+      "poiConflictCount": 0,
+      "domainIdentities": [
+        {
+          "domainId": "D02/construction",
+          "cellCount": 432,
+          "coordinateSetSha256": "020c27307584d1dc756e9b336cb19c2dda686162a8e0823bd33a520a909a0fed",
+          "intervalManifestSha256": null
+        },
+        {
+          "domainId": "D02/influence",
+          "cellCount": 456,
+          "coordinateSetSha256": "f870407859b79aa6048b8c6d4411b5a58cdf2444e20858c04b7c5aa8ab98563f",
+          "intervalManifestSha256": null
+        },
+        {
+          "domainId": "D02/interaction",
+          "cellCount": 432,
+          "coordinateSetSha256": "020c27307584d1dc756e9b336cb19c2dda686162a8e0823bd33a520a909a0fed",
+          "intervalManifestSha256": null
+        }
+      ],
+      "effectiveRow": {
+        "id": "D02-TD-07-COMPLETE-SAVE",
+        "result": "PASS_COMPLETE_SAVE_AND_SCOPED_SOURCE_CLEARANCE",
+        "evidenceIdentity": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+        "technicalAcceptanceClaimed": false
+      },
+      "legacyResult": "HOLD",
+      "remainingD02TechnicalHoldCount": 10
+    },
+    {
+      "scopeId": "P1-B09",
+      "sourceEquivalent": true,
+      "exactDomainCount": 3,
+      "generatedStartSubjectCountPerDomain": 114,
+      "generatedStartOverlapCellCount": 0,
+      "entityConflictCount": 0,
+      "poiConflictCount": 0,
+      "domainIdentities": [
+        {
+          "domainId": "P1-B09/construction",
+          "cellCount": 7800,
+          "coordinateSetSha256": "e9e2e116f363e999151a41e4fee2ef32d2f96c1184f6432128ff31e8d9a118ca",
+          "intervalManifestSha256": null
+        },
+        {
+          "domainId": "P1-B09/influence",
+          "cellCount": 20430,
+          "coordinateSetSha256": "f10bbc071a09b24be7842065b3d5e1486af3b5af15d45733f9be2bce97d017ba",
+          "intervalManifestSha256": null
+        },
+        {
+          "domainId": "P1-B09/interaction",
+          "cellCount": 7800,
+          "coordinateSetSha256": "e9e2e116f363e999151a41e4fee2ef32d2f96c1184f6432128ff31e8d9a118ca",
+          "intervalManifestSha256": null
+        }
+      ],
+      "effectiveRow": {
+        "id": "B09-NULL-08-COMPLETE-SAVE-ALL-START-ENTITY-POI-GATE",
+        "result": "PASS_COMPLETE_SAVE_ALL_START_ENTITY_POI_CLEARANCE",
+        "evidenceIdentity": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+        "technicalAcceptanceClaimed": false
+      },
+      "legacyResult": "HOLD_COMPLETE_SAVE",
+      "remainingB09TechnicalSystemHoldCount": 7
+    },
+    {
+      "scopeId": "P1-B11",
+      "sourceEquivalent": true,
+      "exactDomainCount": 3,
+      "generatedStartSubjectCountPerDomain": 114,
+      "generatedStartOverlapCellCount": 0,
+      "entityConflictCount": 0,
+      "poiConflictCount": 0,
+      "domainIdentities": [
+        {
+          "domainId": "P1-B11/construction",
+          "cellCount": 2392,
+          "coordinateSetSha256": "0d63ddf8f385dcd9eb4af8de530f2e2124b7019dc150674828741ddf274d7b9c",
+          "intervalManifestSha256": null
+        },
+        {
+          "domainId": "P1-B11/influence",
+          "cellCount": 5980,
+          "coordinateSetSha256": "cf8fe0a9de8ffe25771f72095a512a273b21acd2817a552220ec2eecf17751bc",
+          "intervalManifestSha256": null
+        },
+        {
+          "domainId": "P1-B11/interaction",
+          "cellCount": 11960,
+          "coordinateSetSha256": "2b24ccfdfef5905344afa7ec262890af47526beea66ec58efd88850cc5304fc5",
+          "intervalManifestSha256": null
+        }
+      ],
+      "effectiveRow": {
+        "id": "P1-B11-H07-COMPLETE-SAVE-AND-ENTITY-CLEARANCE",
+        "result": "PASS_COMPLETE_SAVE_AND_SCOPED_ENTITY_POI_CLEARANCE",
+        "evidenceIdentity": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+        "technicalAcceptanceClaimed": false
+      },
+      "legacyResult": "HOLD",
+      "remainingB11TechnicalHoldCount": 7,
+      "physicalCompilerAndReleaseDeferred": true
+    },
+    {
+      "scopeId": "P1-B12",
+      "sourceEquivalent": true,
+      "exactDomainCount": 3,
+      "generatedStartSubjectCountPerDomain": 114,
+      "generatedStartOverlapCellCount": 0,
+      "entityConflictCount": 0,
+      "poiConflictCount": 0,
+      "domainIdentities": [
+        {
+          "domainId": "P1-B12/construction",
+          "cellCount": 7440,
+          "coordinateSetSha256": "804f4a75667e792f6138c8afc0ea31e4953086f36f8e11a72ec72641921f5eea",
+          "intervalManifestSha256": null
+        },
+        {
+          "domainId": "P1-B12/influence",
+          "cellCount": 30732,
+          "coordinateSetSha256": "edc9d6816f8db8d0f96debe9a6c2e2a656e7710cd97a5f0aa86130f978eb30d2",
+          "intervalManifestSha256": null
+        },
+        {
+          "domainId": "P1-B12/interaction",
+          "cellCount": 19136,
+          "coordinateSetSha256": "9c9aa035d23b63d1375b45fe096c4d68eedee75ff41c3cca2703cafa9960435b",
+          "intervalManifestSha256": null
+        }
+      ],
+      "effectiveRow": {
+        "id": "P1-B12-H01-COMPLETE-SAVE",
+        "result": "PASS_COMPLETE_SAVE_AND_SCOPED_ENTITY_POI_CLEARANCE",
+        "evidenceIdentity": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+        "technicalAcceptanceClaimed": false
+      },
+      "legacyResult": "HOLD",
+      "remainingB12TechnicalHoldCount": 6,
+      "physicalCompilerAndReleaseDeferred": true
+    },
+    {
+      "scopeId": "D06",
+      "completeSaveSourceRow": {
+        "id": "D06-MC-11-COMPLETE-SAVE",
+        "result": "PASS_COMPLETE_SAVE_SOURCE_COMPLETENESS",
+        "evidenceIdentity": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+        "technicalAcceptanceClaimed": false,
+        "legacyResult": "HOLD"
+      },
+      "detailedClearanceRow": {
+        "id": "D06-SET-H08-COMPLETE-SAVE-ENTITY-POI-ALL-START",
+        "result": "COMPLETE_SAVE_PASS_PERSISTENT_D06_POI_HOLD",
+        "evidenceIdentity": "1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26",
+        "technicalAcceptanceClaimed": false,
+        "legacyResult": "HOLD_COMPLETE_SAVE"
+      },
+      "exactReservationDomainCount": 3,
+      "exactMechanismDomainCount": 3,
+      "generatedStartOverlapCellCount": 0,
+      "entityConflictCount": 0,
+      "poiConflictCount": 1,
+      "persistentPoi": {
+        "evidenceId": "POI-953c1e110beef5d24c9fa3a8",
+        "poiType": "minecraft:bee_nest",
+        "blockPosition": {
+          "x": 1849,
+          "y": 66,
+          "z": 145
+        },
+        "colonyMemberCount": 3,
+        "sourceStateProjectionSha256": "1c6b21774842a2cea9825e637da2b47e2d2b10a38078056f073a4d5d39ad0814"
+      },
+      "technicalAcceptanceClaimed": false
+    }
+  ],
+  "commissioningLifecycle": {
+    "authoritativeBoundary": {
+      "g02GateId": "G02_DESIGN_DECISIONS",
+      "g02Stage": "design",
+      "g17GateId": "G17_FUNCTIONAL_POST_QA",
+      "g17Stage": "postrelease",
+      "postBuildResultsMayResolveG02": false
+    },
+    "preR00DesignEvidence": {
+      "commissioningSpecificationCount": 29,
+      "uniqueSpecificationCount": 29,
+      "structurallyCompleteSpecificationCount": 29,
+      "operationCount": 0,
+      "specificationSetFrozen": true,
+      "specificationSetTechnicallyAccepted": false,
+      "effectiveD06Mc23": {
+        "id": "D06-MC-23-COMMISSIONING-DESIGN",
+        "result": "HOLD_COMMISSIONING_DESIGN_TECHNICAL_ACCEPTANCE_REQUIRED",
+        "passRule": "All 29 frozen test specifications are independently reviewed and accepted against the same immutable D06 technical identity."
+      },
+      "effectiveD06SetH09": {
+        "id": "D06-SET-H09-OWNER-INTERFACE-TECHNICAL-ACCEPTANCE-AND-COMMISSIONING",
+        "result": "HOLD_OWNER_INTERFACE_TECHNICAL_AND_COMMISSIONING_DESIGN_ACCEPTANCE",
+        "passRule": "Accept one-owner assignments, exact directional interfaces, independent technical review, and the 29 frozen commissioning specifications against one immutable D06 identity."
+      }
+    },
+    "postBuildEvidence": {
+      "gateId": "G17_FUNCTIONAL_POST_QA",
+      "executedResultCount": 0,
+      "requiredBeforeR00": false,
+      "currentResult": "DEFERRED_TO_G17_AFTER_SEPARATELY_AUTHORIZED_PHYSICAL_RELEASE"
+    },
+    "legacyCycleRemoved": true,
+    "technicalAcceptanceClaimed": false,
+    "commissioningPassed": false
+  },
+  "retainedBoundaries": {
+    "d02TechnicalAcceptanceRequired": true,
+    "b09MechanismHydrologyGeotechnicalLifeSafetyAcceptanceRequired": true,
+    "b11MaterialEarthworkDrainageUtilitiesStructureGeotechnicalAcceptanceRequired": true,
+    "b12StructureHydrologyUtilitiesD06OwnerInterfaceGlobalAuditRequired": true,
+    "d06PersistentPoiTreatmentRequired": true,
+    "d06MechanismLifeSafetyOwnerInterfaceTechnicalAcceptanceRequired": true,
+    "g02Passed": false,
+    "g07Passed": false,
+    "r00Passed": false
+  },
+  "summary": {
+    "staleSourceRowPassCount": 5,
+    "exactScopedDomainCount": 15,
+    "exactScopedGeneratedStartEvaluationCount": 1710,
+    "clearedScopeCount": 4,
+    "d06CompleteSaveSourceRowPassed": true,
+    "d06PersistentPoiHoldCount": 1,
+    "commissioningSpecificationCount": 29,
+    "commissioningSpecificationAcceptedCount": 0,
+    "commissioningExecutedResultCount": 0,
+    "technicalAcceptanceClaimed": false,
+    "g02Passed": false,
+    "g07Passed": false,
+    "r00Passed": false
+  },
+  "safetyBoundary": {
+    "additiveEvidenceOnly": true,
+    "historicalArtifactRewriteCount": 0,
+    "productionServerContacted": false,
+    "productionWorldContacted": false,
+    "fleetApiContacted": false,
+    "rconContacted": false,
+    "systemdContacted": false,
+    "operationFileCount": 0,
+    "operationCellCount": 0,
+    "materialCellCount": 0,
+    "worldEditAuthorized": false,
+    "physicalReleaseAuthorized": false,
+    "executable": false
+  },
+  "refreshPayloadSha256": "74c074544d8bd3852a9ba0afb7aa1bd2603959f35ebb4d0b4422ee16ac634fb2",
+  "reportIdentitySha256": "a91b927c465dc18c17106d2433226328278dea9499cdb7b01aed121e404d3a60"
+}

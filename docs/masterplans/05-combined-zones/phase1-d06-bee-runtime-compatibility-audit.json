@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-d06-bee-runtime-compatibility-audit",
+  "generatedAtUtc": "2026-08-06T06:15:00Z",
+  "status": "HOLD_EXACT_PRODUCTION_PAPER_RUNTIME_REACHED_CURRENT_AUTOMATION_CLIENT_INCOMPATIBLE_NO_MECHANIC_PASS",
+  "purpose": "Record the bounded exact-runtime experiment without converting client incompatibility into a false intact-relocation pass.",
+  "sourceBindings": {
+    "syntheticFixture": {
+      "path": "docs/masterplans/05-combined-zones/phase1-d06-bee-nest-relocation-fixture.json",
+      "bytes": 15116,
+      "sha256": "9f78a05ace55c7493f2e964ef3dc7c1d1f19a6a688398000fb9edc6a26d1768d",
+      "role": "offline three-member conservation and transport-eligibility contract"
+    },
+    "runtimeHarness": {
+      "path": "scripts/run_combined_zones_bee_runtime_fixture.mjs",
+      "bytes": 32727,
+      "sha256": "0113c60854db38bcb6b0343b4a4e9eda508a752d9b7576b602d45870be9e78b5",
+      "role": "reproducible disposable Paper/Mineflayer diagnostic harness"
+    },
+    "packageLock": {
+      "path": "package-lock.json",
+      "bytes": 196267,
+      "sha256": "ad0c2a6f55009d979950bd3baf238ab20c696ee434c6465b07aea9747eeb1429",
+      "role": "repository Mineflayer dependency identity"
+    }
+  },
+  "evidence": {
+    "productionRuntime": {
+      "paperVersion": "1.21.11-69-main@94d0c97",
+      "paperJarBytes": 54816531,
+      "paperJarSha256": "cf374f2af9d71dfcc75343f37b722a7abcb091c574131b95e3b13c6fc2cb8fae",
+      "jarCopiedReadOnlyOverSftp": true,
+      "productionJavaTruststoreCopiedReadOnlyOverSftp": true
+    },
+    "disposableRuntime": {
+      "serverMode": "PLUGIN_FREE_DISPOSABLE_FLAT_WORLD",
+      "javaVersion": "21.0.11",
+      "syntheticSource": {
+        "x": 0,
+        "y": 65,
+        "z": 0
+      },
+      "syntheticEmbeddedBeeCount": 3,
+      "sourceBlockState": "minecraft:bee_nest[facing=south,honey_level=0]",
+      "sourceIndexedRecordsPresent": [
+        0,
+        1,
+        2
+      ],
+      "sourceFourthRecordAbsent": true
+    },
+    "attempts": [
+      {
+        "id": "CLIENT-01-REPOSITORY-STACK",
+        "nodeVersion": "20.20.2",
+        "mineflayerVersion": "4.35.0",
+        "minecraftProtocolVersion": "1.64.0",
+        "result": "HOLD_CLIENT_ITEM_COMPONENT_DECODE_FAILURE",
+        "exactFailureClass": "SlotComponent anonymous-NBT parse rejected minecraft:bees item payload with abnormally large int-array size"
+      },
+      {
+        "id": "CLIENT-02-CURRENT-TEMPORARY-STACK",
+        "nodeVersion": "22.23.2",
+        "mineflayerVersion": "4.37.1",
+        "minecraftProtocolVersion": "1.66.2",
+        "minecraftDataVersion": "3.112.0",
+        "result": "HOLD_CLIENT_ITEM_COMPONENT_AND_ENCHANTMENT_DECODE_FAILURE",
+        "exactFailureClass": "same SlotComponent anonymous-NBT parse failure; prismarine-block also received a non-iterable enchantment representation",
+        "repositoryDependencyChanged": false
+      },
+      {
+        "id": "CLIENT-03-SEQUENCED-LOW-LEVEL-ACTION",
+        "nodeVersion": "22.23.2",
+        "mineflayerVersion": "4.37.1",
+        "minecraftProtocolVersion": "1.66.2",
+        "action": "survival player start/stop block_dig with required 1.21.11 sequence fields, tick terminators, Silk Touch diamond axe, and five-second interval",
+        "serverAcknowledgements": [
+          {
+            "sequenceId": 2
+          }
+        ],
+        "blockChanged": false,
+        "itemCreated": false,
+        "result": "HOLD_ACTION_ACKNOWLEDGED_WITHOUT_SERVER_BLOCK_CHANGE"
+      }
+    ],
+    "exactRuntimeLootTable": {
+      "source": "data/minecraft/loot_table/blocks/bee_nest.json inside the exact patched Paper runtime",
+      "requiresSilkTouch": true,
+      "copiedComponent": "minecraft:bees",
+      "temporaryLootTableProbeCreatedThreeBeeItem": true,
+      "implication": "Paper serialization is viable; the current automation-client action/item path is the unclosed boundary."
+    }
+  },
+  "conclusion": {
+    "exactProductionRuntimeBinaryBound": true,
+    "syntheticThreeBeeSourceEstablished": true,
+    "paperBeeItemSerializationObserved": true,
+    "isolatedRuntimeMechanicProven": false,
+    "currentProductionCaptureTransportEligible": false,
+    "freshLiveConsolidationStillRequired": true,
+    "productionPluginInterferenceTested": false,
+    "recommendedNextMethod": "Use a version-matched vanilla client automation path or first repair and independently verify PrismarineJS 1.21.11 block-action and minecraft:bees component handling; do not upgrade the fleet dependency tree merely for this fixture.",
+    "blindFleetDependencyUpgradeRecommended": false,
+    "technicalTreatmentAccepted": false,
+    "operationCompilationAuthorized": false
+  },
+  "safetyBoundary": {
+    "disposableServerStarted": true,
+    "disposableBlockEditsPerformed": true,
+    "disposableEntityFixtureCount": 3,
+    "productionHostReadOnlyFilesCopied": 2,
+    "productionMinecraftProcessContacted": false,
+    "productionWorldContacted": false,
+    "productionBlockEditCount": 0,
+    "productionEntityMoveCount": 0,
+    "operationCellCount": 0,
+    "physicalReleaseAuthorized": false,
+    "worldEditAuthorized": false,
+    "executable": false
+  },
+  "auditPayloadSha256": "938fd0e1fda134259fbe63f4a8f70a38cd4cb8394c83d13febc0dcf5daf1701a",
+  "reportIdentitySha256": "a3604935f8d7713b58c38678f584e9b55cc44a7ef245810e25ba932e16d6fa99"
+}
