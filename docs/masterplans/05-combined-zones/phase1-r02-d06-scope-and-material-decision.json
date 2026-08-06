@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "id": "combined-zones-phase1-r02-d06-scope-and-material-decision",
+  "generatedAtUtc": "2026-08-06T23:40:00Z",
+  "status": "OWNER_DECISION_RECORDED_R02_D06_DEEP_SHELL_MATERIALS",
+  "authority": {
+    "source": "sole-owner directive, project conversation, 2026-08-06: \"please continue with release R02\"",
+    "reviewedPlanBasis": "independent planning-agent review: per-release material decisions; contracted order R02 = Empty Eight",
+    "worldEditAuthorized": false
+  },
+  "scope": {
+    "releaseId": "CZ-R02-PHASE2-EMPTY-EIGHT-DEEP-SHELL",
+    "domains": [
+      {
+        "scopeId": "D06-RESERVATIONS",
+        "cellCount": 19836,
+        "bounds": {
+          "minX": 1643,
+          "maxX": 2111,
+          "minY": -59,
+          "maxY": 102,
+          "minZ": -431,
+          "maxZ": 160
+        }
+      },
+      {
+        "scopeId": "D06-MECHANISMS",
+        "cellCount": 9065,
+        "coordinateSetSha256": "3d389f1d42a9a7261010e29e3f64ed130d46bdefdff5fb325dc9cebdb2bec436",
+        "bounds": {
+          "minX": 1643,
+          "maxX": 1872,
+          "minY": 38,
+          "maxY": 102,
+          "minZ": 40,
+          "maxZ": 160
+        }
+      }
+    ],
+    "contractOrderConformant": true
+  },
+  "boundIdentities": {
+    "g03CanonicalPayloadSha256": "1e4609275a2fd6aed8aa8a3dac00e8bdadae97dc756ca222922ce57a2c9b0712",
+    "d06DetailedSetoutSha256": "9cf30ba33d2b62383c0512877553ef961c9782df54840c74ae8a30003ebb362a",
+    "eePaletteEntryCount": 14,
+    "externalAcceptanceReportIdentitySha256": "a88d0fafe8fb024905aafcee1ebd7f0329b988457b650813ebb1f7adf17a0cfc",
+    "r01FinalizeReportIdentitySha256": "b854897f450788f87539069f5730d2121cc2bad00b0ea27c99074fb61e54a3ee"
+  },
+  "decisionPayload": {
+    "reservationsPolicy": {
+      "domain": "D06-RESERVATIONS/construction",
+      "state": "minecraft:air",
+      "rationale": "deep-shell excavation: reservation volumes become the terminal voids; lining, finishes, and systems belong to later fit-out releases"
+    },
+    "mechanismLayerStates": {
+      "egaLiftEnvelope": {
+        "state": "minecraft:air",
+        "rationale": "lift shaft void; fit-out at commissioning"
+      },
+      "egbLiftEnvelope": {
+        "state": "minecraft:air",
+        "rationale": "lift shaft void; fit-out at commissioning"
+      },
+      "egaStairEnvelope": {
+        "state": "minecraft:air",
+        "rationale": "protected stair void; stairs at commissioning"
+      },
+      "egbStairEnvelope": {
+        "state": "minecraft:air",
+        "rationale": "protected stair void; stairs at commissioning"
+      },
+      "egaTransferLandings": {
+        "state": "minecraft:smooth_stone",
+        "rationale": "EE-P03 landing slab"
+      },
+      "egbTransferLandings": {
+        "state": "minecraft:smooth_stone",
+        "rationale": "EE-P03 landing slab"
+      },
+      "egaLiftEquipmentCaps": {
+        "state": "minecraft:polished_deepslate",
+        "rationale": "EE-P13 default-closed equipment cap"
+      },
+      "egbLiftEquipmentCaps": {
+        "state": "minecraft:polished_deepslate",
+        "rationale": "EE-P13 default-closed equipment cap"
+      },
+      "egaStairEquipmentCaps": {
+        "state": "minecraft:polished_deepslate",
+        "rationale": "EE-P13 default-closed equipment cap"
+      },
+      "egbStairEquipmentCaps": {
+        "state": "minecraft:polished_deepslate",
+        "rationale": "EE-P13 default-closed equipment cap"
+      },
+      "normalCircuitCarrier": {
+        "state": "minecraft:polished_blackstone",
+        "rationale": "EE-P07 service datum conduit"
+      },
+      "emergencyCircuitACarrier": {
+        "state": "minecraft:polished_blackstone",
+        "rationale": "EE-P07 service datum conduit"
+      },
+      "emergencyCircuitBCarrier": {
+        "state": "minecraft:polished_blackstone",
+        "rationale": "EE-P07 service datum conduit"
+      },
+      "normalCircuitEquipment": {
+        "state": "minecraft:light_gray_concrete",
+        "rationale": "EE-P04 equipment panel shell"
+      },
+      "emergencyCircuitAEquipment": {
+        "state": "minecraft:light_gray_concrete",
+        "rationale": "EE-P04 equipment panel shell"
+      },
+      "emergencyCircuitBEquipment": {
+        "state": "minecraft:light_gray_concrete",
+        "rationale": "EE-P04 equipment panel shell"
+      },
+      "fireServiceControlPanels": {
+        "state": "minecraft:light_gray_concrete",
+        "rationale": "EE-P04 control panel shell"
+      },
+      "lightingFixtureReservations": {
+        "state": "minecraft:sea_lantern",
+        "rationale": "EE-P11 lighting point"
+      },
+      "localSumpPumpEquipmentBays": {
+        "state": "minecraft:deepslate_tiles",
+        "rationale": "EE-P12 wet-service datum"
+      },
+      "unconnectedDrainHeaderReservation": {
+        "state": "minecraft:deepslate_tiles",
+        "rationale": "EE-P12 sealed drain header shell"
+      },
+      "localDrainageInterfaceCaps": {
+        "state": "minecraft:polished_deepslate",
+        "rationale": "EE-P13 default-closed drainage cap"
+      },
+      "externalDrainBoundaryCap": {
+        "state": "minecraft:polished_deepslate",
+        "rationale": "EE-P13 default-closed boundary cap"
+      },
+      "fireServiceInterfaceCap": {
+        "state": "minecraft:polished_deepslate",
+        "rationale": "EE-P13 default-closed service cap"
+      },
+      "ventOutletCaps": {
+        "state": "minecraft:polished_deepslate",
+        "rationale": "EE-P13 default-closed vent outlet cap"
+      },
+      "fireSurfaceApproachCap": {
+        "state": "minecraft:polished_deepslate",
+        "rationale": "EE-P13 default-closed surface approach cap",
+        "surfaceDesignated": true
+      },
+      "ventDuctEnvelopes": {
+        "state": "minecraft:air",
+        "rationale": "vent duct void"
+      },
+      "ventFanEquipmentBays": {
+        "state": "minecraft:air",
+        "rationale": "fan equipment bay void; equipment at commissioning"
+      },
+      "smokeDoorMechanismBays": {
+        "state": "minecraft:air",
+        "rationale": "smoke door bay void; doors at commissioning"
+      },
+      "platformGateMechanismBays": {
+        "state": "minecraft:air",
+        "rationale": "platform gate bay void; gates at commissioning"
+      },
+      "fireServiceSpineReservation": {
+        "state": "minecraft:air",
+        "rationale": "fire/service access spine void"
+      },
+      "fireSurfaceCompoundReservation": {
+        "state": "minecraft:smooth_stone",
+        "rationale": "surface hardstanding pad; never excavated",
+        "surfaceDesignated": true
+      }
+    },
+    "failClosedCompileGuards": [
+      "ABORT if any target cell source state is a fluid (water, lava, waterlogged property true).",
+      "ABORT if any to-air cell is surface-exposed in the fresh save (only air from the cell to the build limit) and its layer is not surfaceDesignated.",
+      "ABORT if any target cell source state is a container/block-entity (same denylist as R01)."
+    ]
+  },
+  "decisionPayloadSha256": "d9d3d5c5a051e7c55d47d4a528413ec51f058290a734ff371a08996af2ecae3d",
+  "commissioningBoundary": "The 29 frozen commissioning specifications remain G17 scope: no functional system, door, gate, fan, pump, or circuit is made operative by the shell release.",
+  "safetyBoundary": {
+    "operationCellCount": 0,
+    "worldEditAuthorized": false,
+    "liveCallsPerformed": false
+  },
+  "reportIdentitySha256": "b6e97dbccdaf58b2b13ade4554f6b0bb5cbcd0d2fc24ad755f15a8ec18dcf7ff"
+}
