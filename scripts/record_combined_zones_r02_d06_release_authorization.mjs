@@ -35,7 +35,7 @@ const bodyHash = (p) => sha256(stripHeader(fs.readFileSync(path.join(ROOT, p), '
 const manifest = readJson('data/buildops/combined-zones-r02-d06-shell.release-manifest.json');
 const manifestQa = readJson('data/world-review/combined-zones-r02-d06-shell.manifest-qa.json');
 const t02 = readJson('data/world-review/combined-zones-r02-d06-shell.ownership-interface-audit.json');
-const intake = readJson('docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260806T232503Z.json');
+const intake = readJson('docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260806T235706Z.json');
 const decision = readJson('docs/masterplans/05-combined-zones/phase1-r02-d06-scope-and-material-decision.json');
 
 invariant(manifestQa.status === 'PASS', 'G09 manifest QA is not PASS');
@@ -77,7 +77,7 @@ const record = {
     packages,
     packageOrder: packages.map(({ key }) => key),
     completeSaveSha256: intake.packageIdentity.completeSaveSha256,
-    snapshotRoot: 'data/worldsnap-combined-zones-complete-save-20260806T232503Z',
+    snapshotRoot: 'data/worldsnap-combined-zones-complete-save-20260806T235706Z',
     manifestQaReportSha256: sha256(fs.readFileSync(path.join(ROOT, 'data/world-review/combined-zones-r02-d06-shell.manifest-qa.json'))),
     t02ReportIdentitySha256: t02.reportIdentitySha256 ?? null,
     decisionRecordIdentitySha256: decision.reportIdentitySha256,

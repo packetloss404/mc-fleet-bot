@@ -9,15 +9,29 @@
  * the frozen explicit precedence list) — proves each against its committed
  * G03 identity, reads exact per-cell source states from the fresh immutable
  * complete save, maps target states from the owner's R02 D06 material
- * decision, applies the decision record's fail-closed compile guards, and
- * emits two guarded forward/rollback operation pairs plus a schema-1 release
- * manifest.
+ * decision, applies the decision record's fail-closed compile guards as
+ * amended by the owner's R02 scope amendment, and emits two guarded
+ * forward/rollback operation pairs plus a schema-1 release manifest.
  *
  * The 6,485 cells present in both frozen domains are adjudicated to the
  * mechanisms package (the owner's per-layer material decision governs them),
  * so the two packages are exactly disjoint and their union is an exact
  * bijection with the union of the two frozen domains. Forward execution
  * order is reservations before mechanisms; rollback reverses.
+ *
+ * Owner scope amendment (phase1-r02-d06-scope-amendment.md): the surface and
+ * fluid guards are deterministic scope exclusions, not aborts —
+ * - SURFACE DEFERRAL: a to-air cell that is surface-exposed in the bound
+ *   save and whose layer is not surfaceDesignated is excluded from R02;
+ * - WET-ZONE DEFERRAL: any target cell whose source state is a fluid is
+ *   excluded, and any to-air cell face-adjacent (6-neighbour) to any fluid
+ *   source cell in the save is excluded as the 1-cell dry buffer.
+ * The container guard remains a hard abort. Both exclusion sets are counted,
+ * hashed, and bound in the manifest, as is the already-target class (in-scope
+ * cells whose source state already equals the decided target state; the
+ * strict no-op runner contract forbids emitting them as operations). The op
+ * files cover exactly (frozen domain union) minus (exclusion union) minus
+ * (already-target class).
  *
  * The manifest binds only upstream identities (decision record payloads, G03
  * hashes, snapshot identity). Validation and execution evidence live in later
@@ -54,15 +68,16 @@ const value = (flag, fallback) => {
 };
 
 const GENERATED_AT = value('--generated-at', '2026-08-06T23:45:00Z');
-const SNAPSHOT = value('--snapshot', 'data/worldsnap-combined-zones-complete-save-20260806T232503Z');
+const SNAPSHOT = value('--snapshot', 'data/worldsnap-combined-zones-complete-save-20260806T235706Z');
 const INTAKE_AUDIT = value('--intake-audit',
-  'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260806T232503Z.json');
+  'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260806T235706Z.json');
 const OUT_DIR = value('--out-dir', 'data/buildops');
 const BASENAME = 'combined-zones-r02-d06-shell';
-const EXPECTED_COMPLETE_SAVE_SHA256 = '7152457f2dc098d42b915fbfa0c5cb9f8ae234564b8586acbb645751fb399403';
+const EXPECTED_COMPLETE_SAVE_SHA256 = 'a3406b87558f1890e51824dbf1ee3140154ce8b820f3f4592b6aead0d559d4c5';
 
 const INPUTS = Object.freeze({
   decision: 'docs/masterplans/05-combined-zones/phase1-r02-d06-scope-and-material-decision.json',
+  amendment: 'docs/masterplans/05-combined-zones/phase1-r02-d06-scope-amendment.md',
   d06Mechanisms: 'docs/masterplans/05-combined-zones/phase1-d06-mechanisms.json',
   d06LifeSafety: 'docs/masterplans/05-combined-zones/phase1-d06-life-safety-alternatives.json',
   emptyEight: 'docs/masterplans/05-combined-zones/phase1-empty-eight-geology-design.json',
@@ -93,6 +108,9 @@ function invariant(condition, message) {
 }
 
 const decision = readJson(INPUTS.decision);
+const amendmentBytes = fs.readFileSync(path.join(ROOT, INPUTS.amendment));
+const amendmentSha256 = sha256(amendmentBytes);
+const amendmentText = amendmentBytes.toString('utf8');
 const d06Mechanisms = readJson(INPUTS.d06Mechanisms);
 const d06LifeSafety = readJson(INPUTS.d06LifeSafety);
 const emptyEight = readJson(INPUTS.emptyEight);
@@ -108,6 +126,10 @@ invariant(intake.status === 'PASS_COMPLETE_IMMUTABLE_SAME_MOMENT_SAVE'
 'fresh complete-save intake audit is not PASS');
 invariant(intake.packageIdentity.completeSaveSha256 === EXPECTED_COMPLETE_SAVE_SHA256,
   'complete-save identity drifted from the contracted R02 snapshot');
+invariant(amendmentText.includes('OWNER_AMENDMENT_RECORDED_UNDERGROUND_DRY_SHELL_SCOPE')
+  && amendmentText.includes(EXPECTED_COMPLETE_SAVE_SHA256)
+  && amendmentText.includes(decision.reportIdentitySha256),
+'R02 scope amendment record is not bound to this save and decision record');
 invariant(fs.existsSync(path.join(ROOT, SNAPSHOT, 'region')),
   'snapshot root has no region directory');
 invariant(g03.canonicalPayloadSha256 === decision.boundIdentities.g03CanonicalPayloadSha256,
@@ -214,50 +236,59 @@ const packagesSpec = [
 ];
 
 // Source states from the fresh immutable save, with the decision record's
-// three fail-closed compile guards.
+// fail-closed compile guards as amended: the fluid and surface findings are
+// deterministic scope exclusions; the container guard stays a hard abort.
 const reader = new AnvilReader(path.join(ROOT, SNAPSHOT, 'region'));
-const fluidViolations = [];
-const containerViolations = [];
-const surfaceViolations = [];
-const compiledPackages = [];
-const toAirColumns = new Map();
+const isFluid = (state) => FLUID_BLOCKS.has(state.Name)
+  || state.Properties?.waterlogged === 'true';
+const FACE_NEIGHBOURS = [
+  [1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1],
+];
 
+const annotatedPackages = [];
+const toAirColumns = new Map();
 for (const spec of packagesSpec) {
-  const operations = [];
-  const sourceCensus = new Map();
-  const targetCensus = new Map();
+  const annotated = [];
   for (const cell of spec.cells) {
     const rawState = await reader.blockState(cell.x, cell.y, cell.z);
-    const fromState = stateToCommandString(rawState);
-    const toState = spec.targetStateFor(cell);
-    if (FLUID_BLOCKS.has(rawState.Name) || rawState.Properties?.waterlogged === 'true') {
-      fluidViolations.push({ package: spec.key, cell, sourceState: fromState });
+    const record = {
+      cell,
+      package: spec.key,
+      layerId: spec.layerFor(cell) ?? 'reservations-policy',
+      fromState: stateToCommandString(rawState),
+      toState: spec.targetStateFor(cell),
+      fluidSource: isFluid(rawState),
+      surfaceExposed: false,
+      fluidAdjacent: false,
+    };
+    const toAir = record.toState === 'minecraft:air';
+    if (toAir) {
+      for (const [dx, dy, dz] of FACE_NEIGHBOURS) {
+        const neighbour = await reader.blockState(cell.x + dx, cell.y + dy, cell.z + dz);
+        if (isFluid(neighbour)) {
+          record.fluidAdjacent = true;
+          break;
+        }
+      }
     }
-    if (FORBIDDEN_SOURCE_BLOCKS.has(rawState.Name)) {
-      containerViolations.push({ package: spec.key, cell, sourceState: fromState });
-    }
-    if (toState === 'minecraft:air' && !spec.surfaceDesignatedFor(cell)) {
+    if (toAir && !spec.surfaceDesignatedFor(cell)) {
       const columnId = `${cell.x},${cell.z}`;
       if (!toAirColumns.has(columnId)) {
-        toAirColumns.set(columnId, { x: cell.x, z: cell.z, cells: [] });
+        toAirColumns.set(columnId, { x: cell.x, z: cell.z, records: [] });
       }
-      toAirColumns.get(columnId).cells.push({
-        cell, package: spec.key, layerId: spec.layerFor(cell),
-      });
+      toAirColumns.get(columnId).records.push(record);
     }
-    sourceCensus.set(fromState, (sourceCensus.get(fromState) ?? 0) + 1);
-    targetCensus.set(toState, (targetCensus.get(toState) ?? 0) + 1);
-    operations.push({ cell, fromState, toState });
+    annotated.push(record);
   }
-  compiledPackages.push({ spec, operations, sourceCensus, targetCensus });
+  annotatedPackages.push({ spec, annotated });
 }
 
-// Guard 2: a to-air cell is surface-exposed when every block strictly above
-// it up to the build limit is air in the snapshot. One downward pass per
-// (x,z) column finds the highest non-air block; any to-air cell at or above
-// it (or in an all-air column) is exposed.
+// A to-air cell is surface-exposed when every block strictly above it up to
+// the build limit is air in the snapshot. One downward pass per (x,z) column
+// finds the highest non-air block; any to-air cell at or above it (or in an
+// all-air column) is exposed.
 for (const column of toAirColumns.values()) {
-  const lowestCellY = Math.min(...column.cells.map(({ cell }) => cell.y));
+  const lowestCellY = Math.min(...column.records.map(({ cell }) => cell.y));
   let highestNonAirY = null;
   for (let y = WORLD_MAX_Y; y > lowestCellY; y -= 1) {
     const state = await reader.blockState(column.x, y, column.z);
@@ -266,37 +297,89 @@ for (const column of toAirColumns.values()) {
       break;
     }
   }
-  for (const { cell, package: packageKey, layerId } of column.cells) {
-    if (highestNonAirY === null || highestNonAirY <= cell.y) {
-      surfaceViolations.push({
-        package: packageKey, cell, layerId: layerId ?? 'reservations-policy',
-      });
+  for (const record of column.records) {
+    if (highestNonAirY === null || highestNonAirY <= record.cell.y) {
+      record.surfaceExposed = true;
     }
   }
 }
 
-if (fluidViolations.length || surfaceViolations.length || containerViolations.length) {
-  const listing = (violations) => ({
-    violationCellCount: violations.length,
-    listedCells: violations
-      .slice()
-      .sort((a, b) => compareCells(a.cell, b.cell))
-      .slice(0, GUARD_LISTING_CAP),
-  });
+// Amended exclusion classes. A cell may satisfy both class predicates; the
+// op scope subtracts the union.
+const isWetExcluded = (record) => record.fluidSource
+  || (record.toState === 'minecraft:air' && record.fluidAdjacent);
+const isSurfaceExcluded = (record) => record.surfaceExposed;
+const isExcluded = (record) => isWetExcluded(record) || isSurfaceExcluded(record);
+const allRecords = annotatedPackages.flatMap(({ annotated }) => annotated);
+const surfaceExclusions = allRecords.filter(isSurfaceExcluded);
+const wetExclusions = allRecords.filter(isWetExcluded);
+const excludedRecords = allRecords.filter(isExcluded);
+
+// Hard abort guard: a forbidden container/block-entity in the remaining
+// (operated) scope is never compiled around.
+const containerViolations = allRecords.filter((record) => !isExcluded(record)
+  && FORBIDDEN_SOURCE_BLOCKS.has(record.fromState.split('[')[0]));
+if (containerViolations.length) {
   console.error(JSON.stringify({
     status: 'ABORTED_FAIL_CLOSED_COMPILE_GUARDS',
     transactionId: BASENAME,
     guards: {
-      fluidSourceState: listing(fluidViolations),
-      surfaceExposedToAirCell: listing(surfaceViolations),
-      forbiddenContainerSourceState: listing(containerViolations),
+      forbiddenContainerSourceState: {
+        violationCellCount: containerViolations.length,
+        listedCells: containerViolations
+          .slice()
+          .sort((a, b) => compareCells(a.cell, b.cell))
+          .slice(0, GUARD_LISTING_CAP)
+          .map(({ cell, package: packageKey, layerId, fromState }) => ({
+            package: packageKey, cell, layerId, sourceState: fromState,
+          })),
+      },
     },
     outputsWritten: false,
   }, null, 2));
   process.exit(1);
 }
 
-// Emit the guarded operation pairs.
+const perPackageCounts = (records) => Object.fromEntries(packagesSpec
+  .map(({ key }) => [key, records.filter((record) => record.package === key).length]));
+const exclusionManifest = (records) => {
+  const cells = uniqueCells(records.map(({ cell }) => cell));
+  return {
+    cellCount: cells.length,
+    bounds: cells.length ? boundsOf(cells) : null,
+    coordinateSetSha256: hashCells(cells),
+    perPackageCellCounts: perPackageCounts(records),
+  };
+};
+const exclusions = {
+  surfaceDeferral: exclusionManifest(surfaceExclusions),
+  wetZoneDeferral: exclusionManifest(wetExclusions),
+  excludedUnion: exclusionManifest(excludedRecords),
+};
+
+// In-scope cells already at their target state (natural air cavities inside
+// the shell) are never emitted as ops — the guarded runner's strict no-op
+// rule rejects source==target REPL lines — but they stay accounted as their
+// own partition class. Unchanged cells need no rollback.
+const isAlreadyTarget = (record) => !isExcluded(record)
+  && record.fromState === record.toState;
+const alreadyTargetRecords = allRecords.filter(isAlreadyTarget);
+const alreadyTarget = exclusionManifest(alreadyTargetRecords);
+
+// Emit the guarded operation pairs over (frozen domain union) minus (the
+// exclusion union) minus (the already-target class).
+const compiledPackages = annotatedPackages.map(({ spec, annotated }) => {
+  const operations = annotated
+    .filter((record) => !isExcluded(record) && !isAlreadyTarget(record));
+  const sourceCensus = new Map();
+  const targetCensus = new Map();
+  for (const { fromState, toState } of operations) {
+    sourceCensus.set(fromState, (sourceCensus.get(fromState) ?? 0) + 1);
+    targetCensus.set(toState, (targetCensus.get(toState) ?? 0) + 1);
+  }
+  return { spec, operations, sourceCensus, targetCensus };
+});
+
 fs.mkdirSync(path.join(ROOT, OUT_DIR), { recursive: true });
 const packageArtifacts = [];
 for (const { spec, operations, sourceCensus, targetCensus } of compiledPackages) {
@@ -335,14 +418,21 @@ for (const { spec, operations, sourceCensus, targetCensus } of compiledPackages)
 }
 
 const [reservationsArtifact, mechanismsArtifact] = packageArtifacts;
-const unionTargets = uniqueCells([
-  ...reservationPackageCells, ...proposalUnion,
-]);
+const unionTargets = uniqueCells(compiledPackages
+  .flatMap(({ operations }) => operations.map(({ cell }) => cell)));
 invariant(unionTargets.length
   === reservationsArtifact.cellCount + mechanismsArtifact.cellCount,
 'package split is not disjoint');
-invariant(unionTargets.length === uniqueCells([...reservationCells, ...proposalUnion]).length,
-  'package union is not a bijection with the frozen domain union');
+const frozenDomainUnion = uniqueCells([...reservationCells, ...proposalUnion]);
+invariant(unionTargets.length + exclusions.excludedUnion.cellCount
+  + alreadyTarget.cellCount === frozenDomainUnion.length,
+'operated + excluded + already-target classes are not a partition of the frozen domain union');
+invariant(hashCells(uniqueCells([
+  ...unionTargets,
+  ...excludedRecords.map(({ cell }) => cell),
+  ...alreadyTargetRecords.map(({ cell }) => cell),
+])) === hashCells(frozenDomainUnion),
+'operated + excluded + already-target classes do not reproduce the frozen domain union');
 
 const canonicalLayerCellCounts = Object.fromEntries(priority.map((id) => [id, 0]));
 for (const id of layerOwner.values()) canonicalLayerCellCounts[id] += 1;
@@ -380,6 +470,7 @@ const manifestWithoutIdentity = {
         frozenDomainCoordinateSetSha256: g03Reservations.sourceCoordinateSetSha256,
         frozenDomainCoordinateHashPreamble: `${CIVIL_CELL_PREAMBLE}\\n`,
         packageCellCount: reservationsArtifact.cellCount,
+        excludedCellCount: exclusions.excludedUnion.perPackageCellCounts['d06-reservations'],
         packageBounds: reservationsArtifact.bounds,
         packageTargetCoordinateSetSha256: reservationsArtifact.packageTargetHash,
         overlapCellsAdjudicatedToMechanisms: overlapCellCount,
@@ -389,14 +480,27 @@ const manifestWithoutIdentity = {
         frozenDomainCellCount: g03Mechanisms.cellCount,
         frozenDomainCoordinateSetSha256: g03Mechanisms.coordinateSetSha256,
         packageCellCount: mechanismsArtifact.cellCount,
+        excludedCellCount: exclusions.excludedUnion.perPackageCellCounts['d06-mechanisms'],
         packageBounds: mechanismsArtifact.bounds,
         packageTargetCoordinateSetSha256: mechanismsArtifact.packageTargetHash,
         canonicalLayerCellCounts,
       },
     },
-    unionCellCount: unionTargets.length,
-    unionTargetCoordinateSetSha256: hashCells(unionTargets),
-    overlapAdjudication: 'Cells present in both frozen domains take the owner-decided mechanism layer state; the two shell packages are exactly disjoint and their union is an exact bijection with the frozen domain union.',
+    frozenDomainUnionCellCount: frozenDomainUnion.length,
+    operatedUnionCellCount: unionTargets.length,
+    operatedUnionTargetCoordinateSetSha256: hashCells(unionTargets),
+    overlapAdjudication: 'Cells present in both frozen domains take the owner-decided mechanism layer state; the two shell packages are exactly disjoint and their union plus the amendment exclusions plus the already-target class is an exact partition of the frozen domain union.',
+  },
+  amendment: {
+    path: INPUTS.amendment,
+    sha256: amendmentSha256,
+    status: 'OWNER_AMENDMENT_RECORDED_UNDERGROUND_DRY_SHELL_SCOPE',
+    rule: 'Surface-exposed non-surfaceDesignated to-air cells and fluid-source or fluid-face-adjacent-to-air cells are deterministic scope exclusions; the container guard remains a hard abort.',
+    exclusions,
+    alreadyTarget: {
+      ...alreadyTarget,
+      rule: 'In-scope cells whose source state already equals the decided target state are accounted here and never emitted as operations (strict no-op runner contract); unchanged cells need no rollback.',
+    },
   },
   source: {
     snapshotRoot: SNAPSHOT,
@@ -429,14 +533,17 @@ const manifestWithoutIdentity = {
       rollbackCommandCount: mechanismsArtifact.cellCount,
       exactInverse: true,
     },
-    targetBijectionWithFrozenDomainUnion: true,
-    alreadyTargetStateCellsRetained: true,
+    targetPartitionWithFrozenDomainUnion: true,
+    alreadyTargetStateCellsEmitted: false,
   },
   compileGuards: {
-    fluidSourceStateViolationCount: 0,
-    surfaceExposedToAirViolationCount: 0,
-    forbiddenContainerSourceStateViolationCount: 0,
     guardContract: decision.decisionPayload.failClosedCompileGuards,
+    amendedGuardBehaviour: {
+      fluidSourceState: 'DETERMINISTIC_SCOPE_EXCLUSION_WITH_ONE_CELL_DRY_BUFFER',
+      surfaceExposedToAirCell: 'DETERMINISTIC_SCOPE_EXCLUSION',
+      forbiddenContainerSourceState: 'HARD_ABORT_UNCHANGED',
+    },
+    forbiddenContainerSourceStateViolationCount: 0,
   },
   upstreamIdentities: {
     decisionRecordIdentitySha256: decision.reportIdentitySha256,
@@ -471,6 +578,9 @@ console.log(JSON.stringify({
     mechanismsFrozenCellCount: proposalUnion.length,
     mechanismsCoordinateSetSha256: mechanismStandardHash,
     overlapCellsAdjudicatedToMechanisms: overlapCellCount,
-    unionCellCount: unionTargets.length,
+    frozenDomainUnionCellCount: frozenDomainUnion.length,
+    operatedUnionCellCount: unionTargets.length,
   },
+  amendmentExclusions: exclusions,
+  alreadyTarget,
 }, null, 2));

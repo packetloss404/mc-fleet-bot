@@ -68,8 +68,10 @@ invariant(Number.isFinite(gateGeneratedAt) && gateGeneratedAt > 0,
   'entity gate report has no readable timestamp');
 invariant(Date.now() - gateGeneratedAt <= 300_000,
   'entity gate report is older than 300 seconds');
-invariant((entityGate.summary?.blockingEntityHits ?? 1) === 0
-  && (entityGate.summary?.failed ?? 1) === 0,
+const gateTotals = entityGate.totals ?? entityGate.summary ?? {};
+invariant((gateTotals.blockingEntityHits ?? 1) === 0
+  && (gateTotals.failed ?? 1) === 0
+  && entityGate.passed !== false,
 'entity gate reports blockers or failures');
 const gateText = JSON.stringify(entityGate);
 invariant(manifest.packages.every((pkg) => gateText.includes(pkg.forward)),

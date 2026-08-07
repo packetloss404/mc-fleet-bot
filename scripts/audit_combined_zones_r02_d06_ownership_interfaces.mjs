@@ -1,15 +1,23 @@
 #!/usr/bin/env node
 /**
  * T02 release-scoped ownership/interface audit for the CZ-R02 D06 Empty
- * Eight deep-shell packages.
+ * Eight deep-shell packages under the owner's R02 scope amendment.
  *
- * Independently re-parses both compiled forward operation files and proves:
+ * Independently re-parses both compiled forward operation files, re-derives
+ * both frozen G03 D06 construction domains, and recomputes both amendment
+ * exclusion classes with the same rules against the same bound save, then
+ * proves:
  * - the two packages' target sets are exactly disjoint;
- * - the union of targets is an exact bijection with the union of the two
- *   frozen G03 D06 construction domains, with each domain's parsed subset
- *   hashed against its committed G03 identity (D06-RESERVATIONS under the
- *   civil/life-safety-closure preamble, D06-MECHANISMS under the standard
- *   preamble);
+ * - the recomputed surface-deferral, wet-zone-deferral, and already-target
+ *   sets match the manifest's bound identities exactly;
+ * - each package's parsed targets equal its frozen package domain minus the
+ *   recomputed exclusion union minus the recomputed already-target class,
+ *   cell for cell;
+ * - parsed targets plus recomputed exclusions plus the recomputed
+ *   already-target class form an exact partition of the frozen domain union,
+ *   with the union verified against the committed G03 identities
+ *   (D06-RESERVATIONS under the civil/life-safety-closure preamble,
+ *   D06-MECHANISMS under the standard preamble);
  * - zero target cells intersect any of the three protected relic default-deny
  *   cores;
  * - exclusive ownership rests on the accepted one-owner registry partition
@@ -24,13 +32,16 @@ import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 import {
+  AnvilReader,
   CIVIL_CELL_PREAMBLE,
+  assignD06CanonicalLayers,
   boundsOf,
   cellKey,
   deriveD06DetailedMechanismLayers,
   deriveD06ReservationConstruction,
   deriveD06ReservationReferences,
   hashCells,
+  stateToCommandString,
   uniqueCells,
 } from './lib/combined_zones_release_lib.mjs';
 
@@ -46,6 +57,8 @@ const OUTPUT = path.resolve(value('--out',
 
 const INPUTS = Object.freeze({
   manifest: 'data/buildops/combined-zones-r02-d06-shell.release-manifest.json',
+  decision: 'docs/masterplans/05-combined-zones/phase1-r02-d06-scope-and-material-decision.json',
+  amendment: 'docs/masterplans/05-combined-zones/phase1-r02-d06-scope-amendment.md',
   g03CanonicalSetout: 'docs/masterplans/05-combined-zones/phase1-g03-canonical-setout.json',
   registry: 'docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json',
   protectedRelicClearance: 'docs/masterplans/05-combined-zones/phase1-protected-relic-clearance.json',
@@ -63,6 +76,7 @@ function invariant(condition, message) {
 }
 
 const manifest = readJson(INPUTS.manifest);
+const decision = readJson(INPUTS.decision);
 const g03 = readJson(INPUTS.g03CanonicalSetout);
 const registry = readJson(INPUTS.registry);
 const relics = readJson(INPUTS.protectedRelicClearance);
@@ -72,6 +86,10 @@ invariant(manifest.packages.length === 2
   && manifest.packages[0].key === 'd06-reservations'
   && manifest.packages[1].key === 'd06-mechanisms',
 'manifest does not declare the two expected D06 packages');
+invariant(manifest.amendment?.path === INPUTS.amendment
+  && sha256(fs.readFileSync(path.join(ROOT, INPUTS.amendment)))
+    === manifest.amendment.sha256,
+'manifest amendment binding does not match the amendment record bytes');
 
 const stripHeader = (raw) => `${raw.split('\n')
   .filter((line) => line && !line.startsWith('#')).join('\n')}\n`;
@@ -129,7 +147,7 @@ invariant(reservationDomain.length === g03Reservations.cellCount
   && hashCells(reservationDomain, CIVIL_CELL_PREAMBLE)
     === g03Reservations.sourceCoordinateSetSha256,
 'independently derived D06-RESERVATIONS domain does not match its G03 identity');
-const { proposalUnion: mechanismDomain } = deriveD06DetailedMechanismLayers(
+const { layers, proposalUnion: mechanismDomain } = deriveD06DetailedMechanismLayers(
   d06Mechanisms.mechanismDevelopmentPayload,
   emptyEight,
   d06Detailed,
@@ -137,28 +155,142 @@ const { proposalUnion: mechanismDomain } = deriveD06DetailedMechanismLayers(
 invariant(mechanismDomain.length === g03Mechanisms.cellCount
   && hashCells(mechanismDomain) === g03Mechanisms.coordinateSetSha256,
 'independently derived D06-MECHANISMS domain does not match its G03 identity');
+const layerOwner = assignD06CanonicalLayers(layers, d06Detailed);
 
-// Union-of-targets bijection with the union of the two frozen domains.
+// Recompute both amendment exclusion classes with the same rules against the
+// same bound save the manifest declares.
+const layerStates = decision.decisionPayload.mechanismLayerStates;
+const mechanismDomainKeys = new Set(mechanismDomain.map(cellKey));
+const domainRecords = [
+  ...reservationDomain
+    .filter((cell) => !mechanismDomainKeys.has(cellKey(cell)))
+    .map((cell) => ({
+      cell,
+      package: 'd06-reservations',
+      toState: decision.decisionPayload.reservationsPolicy.state,
+      toAir: true,
+      surfaceDesignated: false,
+    })),
+  ...mechanismDomain.map((cell) => {
+    const layerDecision = layerStates[layerOwner.get(cellKey(cell))];
+    return {
+      cell,
+      package: 'd06-mechanisms',
+      toState: layerDecision.state,
+      toAir: layerDecision.state === 'minecraft:air',
+      surfaceDesignated: layerDecision.surfaceDesignated === true,
+    };
+  }),
+];
+
+const reader = new AnvilReader(path.join(ROOT, manifest.source.snapshotRoot, 'region'));
+const AIR_BLOCKS = new Set(['minecraft:air', 'minecraft:cave_air', 'minecraft:void_air']);
+const FLUID_BLOCKS = new Set(['minecraft:water', 'minecraft:lava']);
+const isFluid = (state) => FLUID_BLOCKS.has(state.Name)
+  || state.Properties?.waterlogged === 'true';
+const FACE_NEIGHBOURS = [
+  [1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1],
+];
+const WORLD_MAX_Y = 320;
+
+const columns = new Map();
+for (const record of domainRecords) {
+  const { cell } = record;
+  const rawState = await reader.blockState(cell.x, cell.y, cell.z);
+  record.fromState = stateToCommandString(rawState);
+  record.fluidSource = isFluid(rawState);
+  record.fluidAdjacent = false;
+  record.surfaceExposed = false;
+  if (record.toAir) {
+    for (const [dx, dy, dz] of FACE_NEIGHBOURS) {
+      if (isFluid(await reader.blockState(cell.x + dx, cell.y + dy, cell.z + dz))) {
+        record.fluidAdjacent = true;
+        break;
+      }
+    }
+  }
+  if (record.toAir && !record.surfaceDesignated) {
+    const columnId = `${cell.x},${cell.z}`;
+    if (!columns.has(columnId)) columns.set(columnId, { x: cell.x, z: cell.z, records: [] });
+    columns.get(columnId).records.push(record);
+  }
+}
+for (const column of columns.values()) {
+  const lowestCellY = Math.min(...column.records.map(({ cell }) => cell.y));
+  let highestNonAirY = null;
+  for (let y = WORLD_MAX_Y; y > lowestCellY; y -= 1) {
+    if (!AIR_BLOCKS.has((await reader.blockState(column.x, y, column.z)).Name)) {
+      highestNonAirY = y;
+      break;
+    }
+  }
+  for (const record of column.records) {
+    if (highestNonAirY === null || highestNonAirY <= record.cell.y) {
+      record.surfaceExposed = true;
+    }
+  }
+}
+
+const isWetExcluded = (record) => record.fluidSource || (record.toAir && record.fluidAdjacent);
+const isSurfaceExcluded = (record) => record.surfaceExposed;
+const isExcluded = (record) => isWetExcluded(record) || isSurfaceExcluded(record);
+const isAlreadyTarget = (record) => !isExcluded(record) && record.fromState === record.toState;
+const recomputedSurface = uniqueCells(domainRecords
+  .filter(isSurfaceExcluded).map(({ cell }) => cell));
+const recomputedWet = uniqueCells(domainRecords
+  .filter(isWetExcluded).map(({ cell }) => cell));
+const recomputedExcludedUnion = uniqueCells(domainRecords
+  .filter(isExcluded).map(({ cell }) => cell));
+const recomputedAlreadyTarget = uniqueCells(domainRecords
+  .filter(isAlreadyTarget).map(({ cell }) => cell));
+
+const verifyBoundClass = (name, bound, recomputed) => {
+  invariant(recomputed.length === bound.cellCount
+    && hashCells(recomputed) === bound.coordinateSetSha256,
+  `recomputed ${name} set does not match the manifest binding`);
+};
+verifyBoundClass('surfaceDeferral', manifest.amendment.exclusions.surfaceDeferral,
+  recomputedSurface);
+verifyBoundClass('wetZoneDeferral', manifest.amendment.exclusions.wetZoneDeferral,
+  recomputedWet);
+verifyBoundClass('excludedUnion', manifest.amendment.exclusions.excludedUnion,
+  recomputedExcludedUnion);
+verifyBoundClass('alreadyTarget', manifest.amendment.alreadyTarget,
+  recomputedAlreadyTarget);
+
+// Each package's parsed targets must equal its frozen package domain minus
+// the recomputed exclusion union minus the recomputed already-target class,
+// cell for cell.
+const excludedKeys = new Set(recomputedExcludedUnion.map(cellKey));
+const alreadyTargetKeys = new Set(recomputedAlreadyTarget.map(cellKey));
+for (const [key, parsed] of [
+  ['d06-reservations', reservationTargets],
+  ['d06-mechanisms', mechanismTargets],
+]) {
+  const expected = uniqueCells(domainRecords
+    .filter((record) => record.package === key
+      && !excludedKeys.has(cellKey(record.cell))
+      && !alreadyTargetKeys.has(cellKey(record.cell)))
+    .map(({ cell }) => cell));
+  invariant(parsed.length === expected.length && hashCells(parsed) === hashCells(expected),
+    `${key} parsed targets do not equal the frozen package domain minus the recomputed exclusion and already-target classes`);
+}
+
+// Parsed targets plus recomputed exclusions plus the recomputed
+// already-target class must partition the frozen union.
 const unionTargets = uniqueCells([...reservationTargets, ...mechanismTargets]);
 invariant(unionTargets.length === reservationTargets.length + mechanismTargets.length,
   'target union count contradicts package disjointness');
+invariant(unionTargets.every((cell) => !excludedKeys.has(cellKey(cell))
+  && !alreadyTargetKeys.has(cellKey(cell))),
+'an operated target cell is inside a recomputed non-operated class');
 const domainUnion = uniqueCells([...reservationDomain, ...mechanismDomain]);
-invariant(unionTargets.length === domainUnion.length
-  && hashCells(unionTargets) === hashCells(domainUnion),
-'union of targets is not an exact bijection with the frozen domain union');
-
-// Each frozen domain's parsed subset must hash to its committed G03 identity.
-const reservationDomainKeys = new Set(reservationDomain.map(cellKey));
-const targetsInReservationDomain = unionTargets
-  .filter((cell) => reservationDomainKeys.has(cellKey(cell)));
-const reservationSubsetHash = hashCells(targetsInReservationDomain, CIVIL_CELL_PREAMBLE);
-invariant(targetsInReservationDomain.length === g03Reservations.cellCount
-  && reservationSubsetHash === g03Reservations.sourceCoordinateSetSha256,
-'parsed D06-RESERVATIONS target subset does not equal the frozen G03 identity');
-const mechanismSubsetHash = hashCells(mechanismTargets);
-invariant(mechanismTargets.length === g03Mechanisms.cellCount
-  && mechanismSubsetHash === g03Mechanisms.coordinateSetSha256,
-'parsed D06-MECHANISMS target set does not equal the frozen G03 identity');
+invariant(unionTargets.length + recomputedExcludedUnion.length
+  + recomputedAlreadyTarget.length === domainUnion.length
+  && hashCells(uniqueCells([
+    ...unionTargets, ...recomputedExcludedUnion, ...recomputedAlreadyTarget,
+  ])) === hashCells(domainUnion),
+'targets plus exclusions plus already-target are not an exact partition of the frozen domain union');
 
 const coreIntersections = relics.relics.map((relic) => {
   const bounds = relic.declaredInclusiveBounds;
@@ -186,7 +318,7 @@ const report = {
   schemaVersion: 1,
   id: 'combined-zones-r02-d06-ownership-interface-audit',
   generatedAtUtc: GENERATED_AT,
-  status: 'PASS_EXACT_DOMAIN_UNION_BIJECTION_DISJOINT_PACKAGES_ZERO_CORE_OVERLAP_ONE_OWNER_BOUND',
+  status: 'PASS_EXACT_AMENDED_PARTITION_DISJOINT_PACKAGES_ZERO_CORE_OVERLAP_ONE_OWNER_BOUND',
   manifestIdentity: manifest.manifestIdentity,
   packages: manifest.packages.map(({ key }) => ({
     key,
@@ -199,22 +331,42 @@ const report = {
     sharedTargetCellCount: 0,
     exactlyDisjoint: true,
   },
-  domainUnionBijection: {
-    targetUnionCellCount: unionTargets.length,
-    frozenDomainUnionCellCount: domainUnion.length,
-    targetUnionCoordinateSetSha256: hashCells(unionTargets),
-    targetUnionBounds: boundsOf(unionTargets),
-    exactBijection: true,
-    reservationSubset: {
-      cellCount: targetsInReservationDomain.length,
-      coordinateSetSha256: reservationSubsetHash,
-      frozenCoordinateSetSha256: g03Reservations.sourceCoordinateSetSha256,
-      coordinateHashPreamble: `${CIVIL_CELL_PREAMBLE}\\n`,
+  amendmentExclusionRecomputation: {
+    amendmentSha256: manifest.amendment.sha256,
+    snapshotRoot: manifest.source.snapshotRoot,
+    surfaceDeferral: {
+      recomputedCellCount: recomputedSurface.length,
+      coordinateSetSha256: hashCells(recomputedSurface),
+      matchesManifest: true,
     },
-    mechanismSubset: {
-      cellCount: mechanismTargets.length,
-      coordinateSetSha256: mechanismSubsetHash,
-      frozenCoordinateSetSha256: g03Mechanisms.coordinateSetSha256,
+    wetZoneDeferral: {
+      recomputedCellCount: recomputedWet.length,
+      coordinateSetSha256: hashCells(recomputedWet),
+      matchesManifest: true,
+    },
+    excludedUnion: {
+      recomputedCellCount: recomputedExcludedUnion.length,
+      coordinateSetSha256: hashCells(recomputedExcludedUnion),
+      matchesManifest: true,
+    },
+    alreadyTarget: {
+      recomputedCellCount: recomputedAlreadyTarget.length,
+      coordinateSetSha256: hashCells(recomputedAlreadyTarget),
+      matchesManifest: true,
+    },
+  },
+  amendedDomainPartition: {
+    frozenDomainUnionCellCount: domainUnion.length,
+    operatedTargetCellCount: unionTargets.length,
+    excludedCellCount: recomputedExcludedUnion.length,
+    alreadyTargetCellCount: recomputedAlreadyTarget.length,
+    operatedTargetCoordinateSetSha256: hashCells(unionTargets),
+    operatedTargetBounds: boundsOf(unionTargets),
+    exactPartitionOfFrozenUnion: true,
+    frozenIdentities: {
+      reservationsCoordinateSetSha256: g03Reservations.sourceCoordinateSetSha256,
+      reservationsCoordinateHashPreamble: `${CIVIL_CELL_PREAMBLE}\\n`,
+      mechanismsCoordinateSetSha256: g03Mechanisms.coordinateSetSha256,
     },
   },
   protectedCoreIntersections: coreIntersections,
@@ -237,7 +389,13 @@ fs.writeFileSync(OUTPUT, `${JSON.stringify(report, null, 2)}\n`);
 console.log(JSON.stringify({
   status: report.status,
   packageDisjointness: report.packageDisjointness,
-  targetUnionCellCount: report.domainUnionBijection.targetUnionCellCount,
+  amendmentExclusionRecomputation: {
+    surfaceDeferralCellCount: recomputedSurface.length,
+    wetZoneDeferralCellCount: recomputedWet.length,
+    excludedUnionCellCount: recomputedExcludedUnion.length,
+    alreadyTargetCellCount: recomputedAlreadyTarget.length,
+  },
+  operatedTargetCellCount: unionTargets.length,
   coreIntersections,
   reportIdentitySha256: report.reportIdentitySha256,
   output: path.relative(ROOT, OUTPUT),
