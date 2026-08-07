@@ -1,0 +1,36 @@
+# mcwb config — drop a copy of this in your project root as `.mcwb.toml`
+# and edit the paths to match your setup. mcwb looks for this file in
+# the current working directory.
+
+[paths]
+# Path to the masterplan directory. Should contain build-info.json
+# and 04-contractor/contractor-brief.json.
+plan_dir = "D:/projects/mc-fleet-bot/masterplans/04-combined-complex"
+
+# Path to the live Minecraft world directory. mcwb assumes the
+# Minecraft server is STOPPED before running `mcwb build`.
+world_dir = "D:/minecraft/servers/combined-complex/world"
+
+[build]
+# World writer. "json" works on any Python and writes a
+# .mcwb-blocks.jsonl + .mcwb-summary.json alongside the world.
+# "amulet" writes directly to the Minecraft world via amulet-core
+# (requires Python 3.11 or 3.12 + `pip install amulet-core amulet-nbt`).
+# Default: auto-detect (amulet if available, else json).
+writer = "json"
+
+# Java edition version. Must match the palette available in mcwb/palette/.
+java_version = "1.21"
+
+# Per-centerpiece .litematic output. Recommended true so you can paste
+# individual centerpieces into Litematica for visual feedback.
+emit_litematic = true
+
+# Optional shell hooks for server pause/resume. Run before the build
+# (server should be stopped) and after (server is safe to start).
+# pre_build_cmd = "systemctl stop minecraft"
+# post_build_cmd = "systemctl start minecraft"
+
+[verify]
+# Run all 10 acceptance checks from the contractor brief after each build.
+run_qa_after_build = true

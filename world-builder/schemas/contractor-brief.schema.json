@@ -1,0 +1,300 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mcwb.dev/schemas/contractor-brief.schema.json",
+  "title": "mcwb Contractor Brief",
+  "description": "Binding build spec consumed by mcwb. Produced by an upstream planner (e.g. mc-fleet-bot) and applied to a live Minecraft world. The schema is permissive at the leaf level (most fields accept additionalProperties) and strict at the top level (required keys, type constraints). The Python loader in mcwb.spec.loader adds cross-field checks on top.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "spec_version",
+    "build_name",
+    "build_id",
+    "version",
+    "edition",
+    "java_version",
+    "scale",
+    "world_footprint",
+    "world_origin",
+    "compass_orientation",
+    "phases",
+    "block_budget_total",
+    "phase_count"
+  ],
+  "properties": {
+    "spec_version": {
+      "description": "mcwb spec version this brief targets. Format: MAJOR.MINOR.",
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$"
+    },
+    "tool_version": {
+      "description": "mcwb tool version that last validated or edited this brief. Optional.",
+      "type": "string"
+    },
+    "build_name": {"type": "string", "minLength": 1},
+    "build_id": {
+      "description": "Stable slug for this build. Lowercase, hyphenated.",
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "version": {"type": "string", "minLength": 1},
+    "version_label": {"type": "string"},
+    "date": {"type": "string", "format": "date"},
+    "design_revision": {"type": "string"},
+    "design_summary": {"type": "string"},
+    "description": {"type": "string"},
+    "rework_note": {"type": "string"},
+    "edition": {
+      "description": "Minecraft edition the build targets. MVP supports 'java' only.",
+      "type": "string",
+      "enum": ["java"]
+    },
+    "java_version": {
+      "description": "Java edition version, e.g. '1.21'.",
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+(\\.[0-9]+)?$"
+    },
+    "scale": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["global_block_size"],
+      "properties": {
+        "global_block_size": {"type": "string"},
+        "notes": {"type": "string"}
+      }
+    },
+    "build_height_required": {"type": "integer", "minimum": 1},
+    "build_height_recommended": {"type": "integer", "minimum": 1},
+    "mod_dependencies": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "recommended_mod": {"type": "string"},
+    "render_distance_chunks": {"type": "integer", "minimum": 1},
+    "simulation_distance_chunks": {"type": "integer", "minimum": 1},
+    "world_footprint": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["width_blocks", "length_blocks", "height_blocks"],
+      "properties": {
+        "width_blocks": {"type": "integer", "minimum": 1},
+        "length_blocks": {"type": "integer", "minimum": 1},
+        "height_blocks": {"type": "integer", "minimum": 1},
+        "extends_below_y_zero": {"type": "boolean"},
+        "min_y": {"type": "integer"},
+        "max_y": {"type": "integer"},
+        "sky_buffer_y_min": {"type": "integer"},
+        "sky_buffer_y_max": {"type": "integer"},
+        "bedrock_buffer_y_max": {"type": "integer"},
+        "description": {"type": "string"}
+      }
+    },
+    "world_origin": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["x", "y", "z"],
+      "properties": {
+        "x": {"type": "number"},
+        "y": {"type": "number"},
+        "z": {"type": "number"},
+        "description": {"type": "string"}
+      }
+    },
+    "compass_orientation": {"type": "string"},
+    "mountain_layout": {"type": "object", "additionalProperties": true},
+    "horizontal_zones": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/zone"}
+    },
+    "subterranean_zones": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/zone"}
+    },
+    "key_locations": {
+      "description": "Named coords. Each value is either a point ({x, y, z, description}) or a region (with x_min/x_max, y_range, elevation, etc.).",
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/location"}
+    },
+    "inter_site_connections": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "individual_sites": {
+      "description": "Per-site summary objects keyed by site slug.",
+      "type": "object",
+      "additionalProperties": {"type": "object", "additionalProperties": true}
+    },
+    "block_palette": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    },
+    "phases": {
+      "description": "Build phases as a list of phase objects, each with phase number, name, and block_budget. Sorted by phase number on read.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["phase", "name", "block_budget"],
+        "properties": {
+          "phase": {"type": "integer", "minimum": 1},
+          "name": {"type": "string"},
+          "block_budget": {"type": "integer", "minimum": 0},
+          "block_budget_breakdown": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+          "estimated_time_hours": {"type": "number", "minimum": 0},
+          "critical_risk": {"type": "string"},
+          "depends_on": {"type": "array", "items": {"type": "integer"}},
+          "notes": {"type": "string"}
+        }
+      }
+    },
+    "block_budget_total": {"type": "integer", "minimum": 0},
+    "block_budget_total_per_development_plan": {"type": "integer", "minimum": 0},
+    "block_budget_breakdown_by_phase": {
+      "description": "Optional flat summary of phase slugs to block counts. Lives in build-info.json in some masterplans.",
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "phase_count": {"type": "integer", "minimum": 1},
+    "centerpieces": {
+      "description": "Signature architectural objects. Each has id, name, type, position, and block_spec.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["name", "position"],
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "type": {"type": "string"},
+          "position": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["x", "y", "z"],
+            "properties": {
+              "x": {"type": "number"},
+              "y": {"type": "number"},
+              "z": {"type": "number"},
+              "description": {"type": "string"}
+            }
+          },
+          "block_spec": {"type": "string"},
+          "notes": {"type": "string"}
+        }
+      }
+    },
+    "easter_eggs": {
+      "description": "Hidden references. Each has id, name, type, position, and block_spec.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["name", "position"],
+        "properties": {
+          "id": {"type": "integer"},
+          "name": {"type": "string"},
+          "type": {"type": "string"},
+          "position": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["x", "y", "z"],
+            "properties": {
+              "x": {"type": "number"},
+              "y": {"type": "number"},
+              "z": {"type": "number"},
+              "description": {"type": "string"}
+            }
+          },
+          "block_spec": {"type": "string"},
+          "interior_block_spec": {"type": "object", "additionalProperties": true},
+          "sign_text_lines": {"type": "array", "items": {"type": "string"}},
+          "plaque_text_lines": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "visitor_journey": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "inbound_stages": {"type": "array", "items": {"type": "object", "additionalProperties": true}},
+        "return_stages": {"type": "array", "items": {"type": "object", "additionalProperties": true}},
+        "inbound_total_minutes": {"type": "number"},
+        "return_total_minutes": {"type": "number"},
+        "grand_total_minutes": {"type": "number"},
+        "inbound_target_minutes": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {"type": "number"}
+        }
+      }
+    },
+    "binding_decisions_respected": {"type": "array"},
+    "open_items": {"type": "array"},
+    "deliverables": {
+      "type": "object",
+      "additionalProperties": {"type": "string"}
+    }
+  },
+  "$defs": {
+    "zone": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "y_range": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {"type": "number"}
+        },
+        "primary_block": {"type": "string"},
+        "primary_blocks": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "above_contact": {"type": "string"},
+        "below_contact": {"type": "string"},
+        "description": {"type": "string"},
+        "notes": {"type": "string"}
+      }
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Either a point ({x, y, z}) or a region (with x_range/y_range/z_range/x_min/elevation).",
+      "properties": {
+        "x": {"type": "number"},
+        "y": {"type": "number"},
+        "z": {"type": "number"},
+        "x_min": {"type": "number"},
+        "x_max": {"type": "number"},
+        "y_min": {"type": "number"},
+        "y_max": {"type": "number"},
+        "z_min": {"type": "number"},
+        "z_max": {"type": "number"},
+        "x_range": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {"type": "number"}
+        },
+        "y_range": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {"type": "number"}
+        },
+        "z_range": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {"type": "number"}
+        },
+        "elevation": {"type": "number"},
+        "description": {"type": "string"}
+      }
+    }
+  }
+}

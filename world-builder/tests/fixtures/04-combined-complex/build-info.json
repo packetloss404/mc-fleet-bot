@@ -1,0 +1,123 @@
+{
+  "build_name": "Combined Complex",
+  "build_id": "04-combined-complex",
+  "version": "2.0",
+  "version_label": "No-Ravine Rework",
+  "date": "2026-08-02",
+  "design_revision": "no-ravine",
+  "design_summary": "One continuous mountain with a horizontal granite-limestone contact at Y=200. No V-shaped ravine. Composite terrane plaque moved to the service tunnel contact crossing at (-40, 200, -360). Service tunnel is now an ASCENDING inclined minecart bore (3.33:1 grade) from Y=0 at SubTropolis to Y=200 at Cheyenne. Return route is funicular + summit road (no skybridge). New 7th centerpiece: Summit Observation Platform at Y=800. Geologically honest: real granite plutons push up through limestone in mountain ranges worldwide.",
+  "design_changes_vs_v1_0": [
+    "V-shaped ravine dropped; one continuous mountain with single dominant granite peak",
+    "Composite terrane plaque moved from ravine bottom to service tunnel contact crossing at (-40, 200, -360)",
+    "Service tunnel: horizontal-under-ravine -> ASCENDING 3.33:1 grade from Y=0 to Y=200 (climbs through the contact)",
+    "Return route: funicular + skybridge + road -> funicular + summit road (NO skybridge)",
+    "New 7th centerpiece: Summit Observation Platform at Y=800 (replaces skybridge as return-route payoff)",
+    "Surface expression of the contact: 1-2 block color-change ring on the south face for the full 800-block E-W extent"
+  ],
+  "scale": {
+    "global_block_size": "1 block = 1 meter",
+    "vertical_exception": "Granite peak at Y=800 represents a 2:1 vertical compression of the real 2,915 m Pikes Peak"
+  },
+  "world_footprint": {
+    "width_blocks": 1500,
+    "length_blocks": 1500,
+    "height_blocks": 800,
+    "build_y_range": "Y = -100 (SubTropolis floor) to Y = 800 (granite peak summit)"
+  },
+  "key_elevations": {
+    "city_surface": 0,
+    "houston_tunnel": -6,
+    "public_shaft_mid_landing": -50,
+    "subtropolis_chamber_floor": -100,
+    "service_tunnel_subtropolis_end": 0,
+    "horizontal_contact": 200,
+    "cheyenne_outer_portal": 200,
+    "cheyenne_chamber": "250 to 400",
+    "funicular_summit_station": 800,
+    "summit_observation_platform": 800
+  },
+  "individual_sites": [
+    "01-cheyenne-mountain-complex",
+    "02-subtropolis",
+    "03-houston-tunnel-system"
+  ],
+  "inter_site_connections": [
+    "public_shaft_vertical_7x7_100",
+    "service_tunnel_ascending_6x6_120_grade_3.33_to_1"
+  ],
+  "return_route": {
+    "mode": "funicular + summit road",
+    "skybridge": false,
+    "funicular_grade": "2:1 (600 blocks elevation over ~400 lateral)",
+    "summit_road_switchbacks": 6,
+    "total_return_time_min": 13
+  },
+  "block_budget_estimate": 3560000,
+  "block_budget_breakdown_by_phase": {
+    "1_site_prep": 50000,
+    "2_continuous_mountain_and_contact_ring": 1650000,
+    "3_city_and_houston_tunnel": 1250000,
+    "4_subtropolis_chamber_and_sub_basement": 800000,
+    "5_cheyenne_chamber_and_j_curve": 580000,
+    "6_public_shaft_vertical_centerpiece": 5000,
+    "7_service_tunnel_ascending_horizontal_centerpiece": 4000,
+    "8_25_ton_blast_door_and_composite_terrane_plaque": 1000,
+    "9_funicular_and_summit_road_return": 15000,
+    "10_summit_observation_platform_new_7th_centerpiece": 500,
+    "11_finishing_easter_eggs_lighting_signage": 5000
+  },
+  "deliverables": {
+    "combined_complex_pdf": "combined-complex-report.pdf",
+    "combined_complex_html": "combined-complex-report.html",
+    "contractor_brief_md": "04-contractor/contractor-brief.md",
+    "contractor_brief_json": "04-contractor/contractor-brief.json"
+  },
+  "binding_decisions_count": 7,
+  "rendering_count": 25,
+  "centerpiece_count": 7,
+  "centerpieces": [
+    "25-ton blast door at Cheyenne outer portal (0, 200, -420)",
+    "Mid-level observation landing at Y=-50 in public shaft",
+    "Composite terrane plaque at service tunnel contact crossing (-40, 200, -360) [v2.0: moved from ravine bottom]",
+    "Public shaft surface pavilion at (60, 0, -70)",
+    "SubTropolis horizontal portal at (0, 0, -300) on south face at city level",
+    "Cheyenne outer portal at (0, 200, -420) on south face at contact elevation [v2.0: contact elevation, not ravine wall]",
+    "Summit observation platform at (0, 800, -500) [v2.0: NEW 7th centerpiece]"
+  ],
+  "easter_egg_count": 9,
+  "easter_eggs": [
+    "Composite terrane plaque (Easter egg #1) [v2.0: at service tunnel contact crossing]",
+    "Three Sites, One Mountain sign (Easter egg #2) at granite summit",
+    "Gotthard-inspired sign with record holder named (Easter egg #3) at SubTropolis end of service tunnel",
+    "Helsinki-inspired sign (Easter egg #4) at bottom of public shaft",
+    "World's Largest Underground Business Complex (Easter egg #5) at SubTropolis horizontal portal",
+    "U.S. Space Force - Authorized Personnel Only (Easter egg #6) at Cheyenne outer portal",
+    "Houston T-marker (Easter egg #7) at public shaft entrance",
+    "Thrust-fault breccia strip (Easter egg #8) [v2.0: in service tunnel floor at contact crossing]",
+    "Rock identification chart (Easter egg #9) at granite summit"
+  ],
+  "geological_framing": {
+    "rock_type_above_contact": "Pikes Peak syenogranite, 1.08 Ga (Mesoproterozoic)",
+    "rock_type_below_contact": "Bethany Falls limestone, 270 Ma (Pennsylvanian)",
+    "contact_mechanism": "Granite pluton pushed up through limestone (laccolith geometry)",
+    "contact_elevation": 200,
+    "real_world_analogues": [
+      "Henry Mountains, Utah (laccoliths)",
+      "La Sal Mountains, Utah",
+      "Abajo Mountains, Utah",
+      "Navajo Mountain, Utah",
+      "Bergell granite, Swiss Alps",
+      "Aar granite, central Swiss Alps",
+      "Colorado Front Range"
+    ]
+  },
+  "pdf_metadata": {
+    "page_count": 56,
+    "page_size": "A4 (595.92 x 842.88 pt)",
+    "image_count": 27,
+    "toc_link_annotations": 19,
+    "toc_named_destinations": 16,
+    "size_mb": 63.07,
+    "html_source_size_kb": 185
+  }
+}
