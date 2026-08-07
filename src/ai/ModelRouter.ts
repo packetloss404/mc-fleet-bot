@@ -29,6 +29,17 @@ const RETRY_BACKOFF_MS = 500;
 const BREAKER_THRESHOLD = 5;
 const BREAKER_COOLDOWN_MS = 30_000;
 
+/**
+ * Full-chain failures in a row before the global AI kill switch is tripped.
+ *
+ * Deliberately BELOW BREAKER_THRESHOLD: the breaker only buys a 30s cooldown
+ * and then lets the same dead chain be retried forever, which is exactly the
+ * 2026-08-07 state where every provider was out of credit and five bots spun
+ * on it indefinitely. Three strikes hands off to the memory fallback (worker
+ * side) and stops the churn instead.
+ */
+const AUTO_DISABLE_THRESHOLD = 3;
+
 /** Max entries in the in-memory embedding cache (LRU). */
 const EMBED_CACHE_MAX = 256;
 
@@ -43,6 +54,13 @@ interface ModelRouterConfig {
    * fall through to the cheap fallbacks. Defaults to always-allow.
    */
   paidProviderAllowed?: (provider: string, taskType: string) => boolean;
+  /**
+   * Fired when AUTO_DISABLE_THRESHOLD consecutive full-chain failures happen —
+   * i.e. every provider in every fallback chain is refusing. The owner
+   * (LLMSettings) responds by flipping the global kill switch and starting a
+   * recovery probe. Fires ONCE per outage, not per failing call.
+   */
+  onTotalFailure?: (consecutiveFailures: number) => void;
 }
 
 /** A snapshot of one LLM call, emitted for live timeline visualization. */
@@ -148,6 +166,10 @@ export class ModelRouter implements LLMClient {
   private consecutiveFailures = 0;
   /** When > Date.now(), all LLM calls fast-fail with AIDisabledError. */
   private breakerOpenUntil = 0;
+  /** Set once onTotalFailure has fired, so one outage triggers one kill-switch
+   *  flip rather than one per subsequent failing call. Cleared on any success. */
+  private totalFailureSignalled = false;
+  private onTotalFailure?: (consecutiveFailures: number) => void;
   /** Monotonic counter to give each emitted call event a stable id. */
   private callSeq = 0;
   /** Optional listener (e.g. Socket.IO broadcaster) for live timeline. */
@@ -166,6 +188,7 @@ export class ModelRouter implements LLMClient {
     this.ledger = ledger;
     this.isEnabledFn = config.isEnabled ?? (() => true);
     this.paidProviderAllowedFn = config.paidProviderAllowed ?? (() => true);
+    this.onTotalFailure = config.onTotalFailure;
 
     this.routes = new Map();
     if (config.routes) {
@@ -541,6 +564,42 @@ export class ModelRouter implements LLMClient {
     throw lastError ?? new Error(`All providers failed for ${method} (${taskType})`);
   }
 
+  /**
+   * One minimal call against the configured chain, bypassing BOTH the kill
+   * switch and the circuit breaker.
+   *
+   * The recovery probe needs this: the switch it is testing would otherwise
+   * refuse the very call meant to prove that service is back. Ordered cheapest
+   * first — a local Ollama answering is enough to call the fleet healthy, and
+   * it costs nothing. Resets the breaker on success so normal traffic resumes
+   * with a clean slate.
+   *
+   * Throws if every provider is still refusing.
+   */
+  async probe(): Promise<void> {
+    const preferred = ['ollama', ...this.clients.keys()];
+    const seen = new Set<string>();
+    let lastError: any = null;
+
+    for (const name of preferred) {
+      if (seen.has(name)) continue;
+      seen.add(name);
+      const client = this.clients.get(name);
+      if (!client) continue;
+
+      try {
+        await client.generate('Reply with OK.', 'ping', 8);
+        logger.info({ provider: name }, 'ModelRouter: recovery probe succeeded');
+        this.recordSuccess();
+        return;
+      } catch (err: any) {
+        lastError = err;
+      }
+    }
+
+    throw lastError ?? new Error('No providers configured to probe');
+  }
+
   /** Throws AIDisabledError if the kill switch is off or the breaker is open. */
   private assertEnabled(): void {
     if (!this.isEnabledFn()) throw new AIDisabledError();
@@ -556,10 +615,30 @@ export class ModelRouter implements LLMClient {
     }
     this.consecutiveFailures = 0;
     this.breakerOpenUntil = 0;
+    this.totalFailureSignalled = false;
   }
 
   private recordFullChainFailure(): void {
     this.consecutiveFailures++;
+
+    // Hand off to the kill switch BEFORE the breaker check. The breaker's 30s
+    // cooldown is a rate limiter, not an off switch — on a genuine
+    // all-providers-drained outage it would let the chain be retried forever.
+    if (this.consecutiveFailures >= AUTO_DISABLE_THRESHOLD && !this.totalFailureSignalled) {
+      this.totalFailureSignalled = true;
+      logger.error(
+        { consecutiveFailures: this.consecutiveFailures, threshold: AUTO_DISABLE_THRESHOLD },
+        'ModelRouter: every provider chain failed — signalling total failure',
+      );
+      try {
+        this.onTotalFailure?.(this.consecutiveFailures);
+      } catch (err: any) {
+        // A throwing listener must never convert a provider outage into a
+        // crash on the call path.
+        logger.error({ err: err?.message }, 'onTotalFailure listener threw');
+      }
+    }
+
     if (this.consecutiveFailures >= BREAKER_THRESHOLD && this.breakerOpenUntil <= Date.now()) {
       this.breakerOpenUntil = Date.now() + BREAKER_COOLDOWN_MS;
       logger.warn(

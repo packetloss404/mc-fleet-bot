@@ -332,7 +332,19 @@ ${bestSkillCode ? `\nBest matching saved skill:\n${this.truncateText(bestSkillCo
 
 Write the function:`;
 
-      const response = await this.llmClient.generate(ACTION_SYSTEM_PROMPT, userMessage, this.maxTokens, { taskType: 'codegen' });
+      let response: Awaited<ReturnType<typeof this.llmClient.generate>>;
+      try {
+        response = await this.llmClient.generate(ACTION_SYSTEM_PROMPT, userMessage, this.maxTokens, { taskType: 'codegen' });
+      } catch (err: any) {
+        // Every provider is refusing (drained credit, kill switch, breaker).
+        // Before giving up, fall back to what we've already learned: the
+        // best-matching skill for this task. SkillLibrary scores keywords as
+        // well as embeddings, so retrieval still works with the embed provider
+        // dead — which it will be, in exactly this situation.
+        const recalled = this.recallSkillAsCode(bestSkillCode, task.description, err);
+        if (recalled) return recalled;
+        throw err;
+      }
       lastRaw = response.text;
 
       logger.info({
@@ -437,6 +449,44 @@ Write the function:`;
   private truncateText(value: string, maxChars: number): string {
     if (value.length <= maxChars) return value;
     return `${value.slice(0, maxChars)}...`;
+  }
+
+  /**
+   * Last rung of the degradation ladder: reuse a learned skill verbatim when
+   * no provider can generate fresh code.
+   *
+   * Returns null when there's nothing usable, in which case the caller
+   * rethrows the provider error and VoyagerLoop idles the bot. That "do
+   * nothing" outcome is deliberate — a bot repeating a plausible-looking but
+   * unrelated skill is worse than a bot standing still.
+   */
+  private recallSkillAsCode(bestSkillCode: string, task: string, cause: any): GeneratedCode | null {
+    if (!bestSkillCode || bestSkillCode.trim().length === 0) {
+      logger.warn(
+        { task, err: cause?.message, code: cause?.code },
+        'ActionAgent: LLM unavailable and no learned skill matched — idling',
+      );
+      return null;
+    }
+
+    try {
+      // Reuse the normal parser so a recalled skill clears exactly the same
+      // validation bar as generated code, including the invalid-arg guard.
+      const recalled = this.parseGeneratedFunction(bestSkillCode);
+      const argIssue = ActionAgent.findInvalidPrimitiveArg(recalled.functionCode);
+      if (argIssue) {
+        logger.warn({ task, argIssue }, 'ActionAgent: recalled skill failed the arg guard — idling');
+        return null;
+      }
+      logger.warn(
+        { task, functionName: recalled.functionName, err: cause?.message, code: cause?.code },
+        'ActionAgent: LLM unavailable — falling back to learned skill from memory',
+      );
+      return recalled;
+    } catch (parseErr: any) {
+      logger.warn({ task, err: parseErr?.message }, 'ActionAgent: recalled skill did not parse — idling');
+      return null;
+    }
   }
 
   private parseGeneratedFunction(raw: string): GeneratedCode {
