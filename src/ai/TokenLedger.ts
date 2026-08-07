@@ -78,7 +78,12 @@ const COST_PER_MILLION: Record<string, { input: number; output: number }> = {
   'MiniMax-M2.5': { input: 0.30, output: 1.20 },
 };
 
+/** Conservative rate applied to unpriced models on paid providers ($/M). */
+const UNKNOWN_MODEL_FALLBACK = { input: 10.0, output: 50.0 };
+
 export class TokenLedger {
+  /** Models already warned about for missing pricing (once per process). */
+  private readonly warnedUnknownModels = new Set<string>();
   /**
    * Paths are resolved per instance, not at module load. Module-level
    * `path.join(process.cwd(), ...)` constants bind to whatever the cwd was at
@@ -87,10 +92,18 @@ export class TokenLedger {
    */
   private readonly dataPath: string;
   private readonly dailyPath: string;
+  private readonly callsPath: string;
   private records: TokenUsageRecord[] = [];
   private saveTimer: ReturnType<typeof setTimeout> | null = null;
   /** date (YYYY-MM-DD) -> `${provider}|${taskType}` -> USD. Survives record rotation. */
   private dailySpend: Record<string, Record<string, number>> = {};
+  /**
+   * date (YYYY-MM-DD) -> provider -> paid-call count. The dollar cap is only
+   * as good as the pricing table; a raw call-count cap holds even when every
+   * price is wrong or a loop is ledgered at $0 (the 2026-08 SAFETY-block
+   * loop was invisible to the dollar cap). Persisted like dailySpend.
+   */
+  private dailyCalls: Record<string, Record<string, number>> = {};
 
   constructor(dataDir?: string) {
     // Refuse to bind the PRODUCTION data dir from inside a test run. The class
@@ -113,8 +126,10 @@ export class TokenLedger {
     const dir = dataDir ?? path.join(process.cwd(), 'data');
     this.dataPath = path.join(dir, 'token-ledger.json');
     this.dailyPath = path.join(dir, 'token-spend-daily.json');
+    this.callsPath = path.join(dir, 'token-calls-daily.json');
     this.load();
     this.loadDaily();
+    this.loadCalls();
   }
 
   /** Local calendar day key. Local, not UTC, so the cap resets at local midnight. */
@@ -137,13 +152,36 @@ export class TokenLedger {
     latencyMs: number;
     success: boolean;
   }): void {
-    const cost = this.estimateCost(
+    let cost = this.estimateCost(
       entry.model,
       entry.inputTokens,
       entry.outputTokens,
       entry.cacheCreationInputTokens,
       entry.cacheReadInputTokens,
     );
+    // Default-DENY pricing: a paid-provider call whose model has no
+    // COST_PER_MILLION entry gets billed at the top-tier rate instead of $0.
+    // Every historical cap failure here shared this shape — gpt-5.5 had no
+    // entry, gemini rows carried the provider name, embed models were
+    // zeroed — and one typo'd or newly-released model id re-opens it. An
+    // overcounted unknown model trips the cap early and gets noticed; a
+    // $0 unknown model burns invisibly for weeks. Ollama is local/free and
+    // exempt.
+    if (
+      cost === 0 &&
+      entry.provider !== 'ollama' &&
+      (entry.inputTokens > 0 || entry.outputTokens > 0) &&
+      !COST_PER_MILLION[entry.model]
+    ) {
+      cost = (entry.inputTokens * UNKNOWN_MODEL_FALLBACK.input + entry.outputTokens * UNKNOWN_MODEL_FALLBACK.output) / 1_000_000;
+      if (!this.warnedUnknownModels.has(entry.model)) {
+        this.warnedUnknownModels.add(entry.model);
+        logger.warn(
+          { model: entry.model, provider: entry.provider },
+          'TokenLedger: model has no pricing entry — billing at conservative fallback rate so the daily cap still sees it. Add it to COST_PER_MILLION.',
+        );
+      }
+    }
     const record: TokenUsageRecord = {
       timestamp: Date.now(),
       ...entry,
@@ -162,6 +200,16 @@ export class TokenLedger {
       bucket[key] = (bucket[key] ?? 0) + cost;
       this.pruneDaily();
       this.saveDaily();
+    }
+
+    // Count EVERY call (success, failure, $0) toward the daily call tally —
+    // the call-count cap is the pricing-independent backstop.
+    {
+      const day = TokenLedger.dayKey(record.timestamp);
+      const bucket = (this.dailyCalls[day] ??= {});
+      bucket[entry.provider] = (bucket[entry.provider] ?? 0) + 1;
+      this.pruneCalls();
+      this.saveCalls();
     }
 
     this.scheduleSave();
@@ -249,6 +297,50 @@ export class TokenLedger {
       sum += cost;
     }
     return sum;
+  }
+
+  /**
+   * Paid calls recorded since local midnight, optionally scoped to one
+   * provider. Ollama (local, free) is excluded from the unscoped total so a
+   * capped fleet degrading to local models can't wedge itself.
+   */
+  getCallsTodayCount(provider?: string): number {
+    const bucket = this.dailyCalls[TokenLedger.dayKey(Date.now())];
+    if (!bucket) return 0;
+    if (provider) return bucket[provider] ?? 0;
+    let sum = 0;
+    for (const [name, count] of Object.entries(bucket)) {
+      if (name === 'ollama') continue;
+      sum += count;
+    }
+    return sum;
+  }
+
+  private pruneCalls(): void {
+    const days = Object.keys(this.dailyCalls).sort();
+    while (days.length > DAILY_RETENTION_DAYS) {
+      const oldest = days.shift();
+      if (oldest) delete this.dailyCalls[oldest];
+    }
+  }
+
+  private loadCalls(): void {
+    try {
+      if (fs.existsSync(this.callsPath)) {
+        const data = JSON.parse(fs.readFileSync(this.callsPath, 'utf-8'));
+        if (data && typeof data === 'object' && !Array.isArray(data)) this.dailyCalls = data;
+      }
+    } catch (err: any) {
+      logger.warn({ err: err.message }, 'Failed to load daily call counts, starting fresh');
+    }
+  }
+
+  private saveCalls(): void {
+    try {
+      atomicWriteJsonSync(this.callsPath, this.dailyCalls);
+    } catch (err: any) {
+      logger.warn({ err: err.message }, 'Failed to persist daily call counts');
+    }
   }
 
   private pruneDaily(): void {

@@ -32,6 +32,15 @@ export interface BudgetConfig {
   override: boolean;
   /** When true, block governed codegen while zero humans are online (needs an online-count hook). */
   idleThrottle: boolean;
+  /**
+   * Daily cap on RAW paid-call count (all governed providers combined,
+   * successes and failures alike). <= 0 disables. This is the pricing-
+   * independent backstop: the dollar cap fails open whenever the pricing
+   * table is wrong or calls are ledgered at $0 (2026-08: unknown model ids,
+   * failed-call rows, the SAFETY-block loop). A call count cannot be fooled
+   * by a price.
+   */
+  dailyCallCap: number;
 }
 
 export interface LLMSettingsData {
@@ -53,6 +62,9 @@ const DEFAULT_BUDGET: BudgetConfig = {
   scope: 'all',
   override: false,
   idleThrottle: false,
+  // ~4x a busy-but-healthy day for this 5-bot fleet; the $240 incident ran
+  // ~10k calls/day. Generous enough to never bite legitimate operation.
+  dailyCallCap: 2000,
 };
 
 const DEFAULT_SETTINGS: LLMSettingsData = {
@@ -182,6 +194,7 @@ export class LLMSettings {
       scope: b.scope === 'anthropic' ? 'anthropic' : 'all',
       override: b.override === true,
       idleThrottle: b.idleThrottle === true,
+      dailyCallCap: typeof b.dailyCallCap === 'number' ? b.dailyCallCap : DEFAULT_BUDGET.dailyCallCap,
     };
   }
 
@@ -216,10 +229,16 @@ export class LLMSettings {
     if (b.idleThrottle && this.onlineHumanCountFn && taskType === 'codegen') {
       if (this.onlineHumanCountFn() <= 0) return false;
     }
-    // Daily cap.
+    // Daily dollar cap.
     if (b.dailyUsd > 0) {
       const scopeProvider = b.scope === 'all' ? undefined : 'anthropic';
       if (this.ledger.getSpendTodayUsd({ provider: scopeProvider }) >= b.dailyUsd) return false;
+    }
+    // Daily call-count cap — the pricing-independent backstop (see
+    // BudgetConfig.dailyCallCap). Scoped like the dollar cap.
+    if (b.dailyCallCap > 0) {
+      const scopeProvider = b.scope === 'all' ? undefined : 'anthropic';
+      if (this.ledger.getCallsTodayCount(scopeProvider) >= b.dailyCallCap) return false;
     }
     return true;
   }
