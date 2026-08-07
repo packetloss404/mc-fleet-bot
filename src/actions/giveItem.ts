@@ -23,7 +23,15 @@ export async function giveItem(bot: Bot, playerName: string, itemName: string, c
   const dist = bot.entity.position.distanceTo(player.entity.position);
   if (dist > 3) {
     const pos = player.entity.position;
-    await moveNearWithCleanup(bot, { x: pos.x, y: pos.y, z: pos.z, range: 2 }, 10000);
+    const reached = await moveNearWithCleanup(bot, { x: pos.x, y: pos.y, z: pos.z, range: 2 }, 10000);
+    // Tossing from afar scatters the items on the ground and reports success
+    // while the recipient gets nothing (2026-08 audit) — fail honestly.
+    if (!reached && bot.entity.position.distanceTo(player.entity.position) > 6) {
+      return {
+        success: false,
+        message: `Could not reach ${playerName} to hand over ${itemName} (still ${bot.entity.position.distanceTo(player.entity.position).toFixed(0)} blocks away)`,
+      };
+    }
   }
 
   try {

@@ -226,14 +226,22 @@ export async function mineBlock(bot: Bot, blockType: string, count = 1): Promise
     }
   }
 
+  const invCountBefore = bot.inventory.items().reduce((sum: number, i: any) => sum + i.count, 0);
   try {
     await (bot as any).collectBlock.collect(targets, {
       ignoreNoPath: true,
     });
+    // Report what was actually collected, not what was requested —
+    // ignoreNoPath skips unreachable targets silently, and `mined: count`
+    // was pure optimism (2026-08 audit).
+    const gained = Math.max(
+      0,
+      bot.inventory.items().reduce((sum: number, i: any) => sum + i.count, 0) - invCountBefore,
+    );
     return {
       success: true,
-      message: `Mined up to ${count} ${blockType}`,
-      data: { mined: count },
+      message: `Mined ${blockType}: targeted ${targets.length}, inventory gained ${gained} items`,
+      data: { mined: gained },
     };
   } catch (err: any) {
     return {
