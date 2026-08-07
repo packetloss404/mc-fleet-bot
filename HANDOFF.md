@@ -208,6 +208,66 @@ write into production `data/`.
 > world is sound, amend the plan.** Demolition now needs a reason beyond non-compliance.
 
 ### Required
+
+- **SEC-01 — decide on worker process isolation. Design done, nothing built.**
+  Full record: **`docs/research/worker-process-isolation.md`**. Read §3 first.
+  Researched 2026-08-07 by three parallel design agents plus direct measurement
+  on `10.80.13.18`.
+
+  **The finding that matters:** `node:vm` is not a security boundary, and an
+  escape from `CodeExecutor`'s sandbox has been demonstrated — it applies to
+  ordinary LLM-generated code on every cycle, not to any one feature. The
+  obvious remedy, `AmbientCapabilities=CAP_SETUID` so the parent can fork
+  workers under a lower uid, **was tested and grants root**: ambient
+  capabilities survive the uid change by design, so the "de-privileged" child
+  retained `CAP_SETUID` and `process.setuid(0)` succeeded. Do not revive that
+  route. The parent-side check passes cleanly; only the child-side check
+  reveals it.
+
+  Viable design is systemd template units `mc-fleet-worker@0..9` + unix socket
+  + dedicated user, mapping onto the existing `workerSlotIndex` /
+  `maxBots: 10`. It needs a polkit rule (the watchdog's `forceRestart` path
+  must be able to `systemctl kill` a wedged worker) — **that decision is the
+  blocker.** `isolated-vm` was rejected: 820 of 938 skill files use synchronous
+  bot calls that it would invalidate.
+
+  **Six items ship regardless of that decision** (§6 of the design record), and
+  the first two reduce more risk than the migration does:
+  1. **Set `DASHBOARD_AUTH_SECRET`.** Verified on the running host: it and
+     `PLUGIN_AUTH_TOKEN` are absent, and `GET /api/bots` and
+     `GET /api/admin/info` return **200 unauthenticated**. Any code on the box
+     drives the full admin API. Without this the rest is decorative.
+  2. IPC input validation + bind `botName` parent-side + an
+     `unhandledRejection` handler — there is **none anywhere in `src/`**, so one
+     malformed IPC message from any worker crashes the whole fleet.
+  3. Delete `import 'dotenv/config'` from `botWorker.ts:1` — the worker
+     re-injects `GOOGLE_API_KEY` into its own env, making any parent-side
+     scrub theatre.
+  4. Route `SkillLibrary.save()` through IPC, mount `skills/` read-only —
+     poisoned `skills/` is cross-fleet code execution plus persistence.
+  5. Phase A of the transport work (`IPCTransport` interface + try/catch on
+     sends) — pure correctness on threads today.
+  6. `IPAddressDeny=any` + a two-entry allowlist — a unit-file property that
+     works under every option including today's threads.
+
+  Gap: the third agent (regression surface) never delivered, so the
+  feature-by-feature breakage inventory is missing. Resource cost was settled
+  by direct measurement instead — memory is a non-issue on the resized host.
+
+- **SEC-02 — rotate `GOOGLE_API_KEY` and `ANTHROPIC_API_KEY`.** Both were
+  readable by any escaped skill on an unhardened box for the life of this
+  deployment. Gemini is at its monthly spend cap anyway, which makes rotation
+  cheap to justify.
+
+- **OPS-01 — nothing from 2026-08-07 is deployed.** `main` is at the merge of
+  `feat/llm-degradation-ladder`; the bot host still runs `0ebdba7` plus the
+  systemd hardening applied that night. Deploying needs
+  `git pull && npm run build && sudo systemctl restart mc-fleet-bot` there
+  (~3 min API outage for the join stagger). **Weigh first:** the new
+  auto-disable trips after 3 failed calls, and with Gemini capped, Anthropic
+  drained and OpenAI empty that is immediate — correct behaviour, but the fleet
+  will go quiet until credit returns or Ollama is wired in.
+
 - ~~**DS-01 disclosure signs at all four portals.**~~ **DONE 2026-07-25.** Six
   waxed `oak_sign`s placed and verified (text read back from block data): N4
   (3,19,−286) + (−3,19,−286); N3 (−147,19,286) + (−153,19,286); N5 (286,19,−27);
@@ -305,6 +365,26 @@ write into production `data/`.
 ---
 
 ## 4. Traps that cost time — do not re-learn these
+
+0. **The API takes ~3 minutes to bind after a restart, and nothing is wrong.**
+   `src/index.ts:121` awaits `botManager.loadSavedBots()`, which spawns bots
+   sequentially at `joinStaggerMs: 45000`, and `httpServer.listen()` is at
+   `:371` — *after* it. So 5 bots × 45s ≈ 3 min of `curl: connection refused`
+   on port 3001 while the process is healthy and the log shows bots connecting.
+   Measured: bound at 150s. Do not debug this as a startup crash; do not restart
+   into it repeatedly. Moving `listen()` above the bot load would fix it.
+
+0b. **`getTopKSkillCode`'s `score >= 6` is a prompt-decoration floor, not a
+   safety gate.** Its docstring says "for prompt context". It has no
+   `matchedWords` and no `isHighQuality` requirement, unlike `getBestMatch`
+   (`>= 16` **and** `matchedWords > 0`) and `getComposableMatches` (`>= 8`,
+   `matchedWords > 0`, `isHighQuality`). The score has a large
+   query-*independent* floor — `getQuality(entry) * 10` plus saturating
+   popularity — so **123 of 518 indexed skills clear 6 with zero lexical and
+   zero semantic match** (measured against the live index; top scorer
+   `swim_to_shore_drowning_and` at 15.1). A 2026-08-07 change used it as an
+   execution gate and had to be reverted. If you are selecting code to *run*,
+   use `getBestMatch`.
 
 1. **Two spend figures disagree.** `/api/llm/usage` is a **capped ring buffer**
    (pins at 10,000 calls and carries stale history). `/api/llm/budget` is

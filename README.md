@@ -50,6 +50,8 @@ A caveat worth knowing before you pick a server: mineflayer can only join a serv
 - **6 provider clients** — Anthropic, Gemini, OpenAI, MiniMax, Ollama, and VoyageAI behind a single `ModelRouter`
 - **Per-task-type routing** — Different models for codegen, chat, design, embeddings, etc.
 - **Production resilience** — Circuit breaker, retry/backoff, terminal-vs-retryable error classification, LRU embedding cache, and a `TokenLedger` that tracks cost per call
+- **Outage auto-disable** — After 3 consecutive full-chain failures (deliberately below the circuit breaker's threshold, since a 30s cooldown only rate-limits a dead chain rather than stopping it), the global AI kill switch trips automatically and the fleet idles instead of churning. A recovery probe retries every 15 min, bypassing both the kill switch and the breaker — and accepts **only a paid provider** as proof of recovery, because a free local Ollama is always up and says nothing about drained credit. An operator toggle outranks the automatic one in both directions; `GET /api/llm/enabled` reports `autoDisabled` so "AI is off" is never ambiguous.
+- **Untrusted-input fencing** — Task text is fenced in `<task>` tags and saved-skill context in `<saved_skills>`, both declared untrusted in the system prompt and sanitized. Player chat reaches codegen prompts by two routes — directly, and by way of stored skill descriptions — and both are covered.
 
 ### Fleet control plane
 - **Commands** — Immediate bot actions (pause, move, follow, guard, patrol) with dispatch and cancellation
@@ -73,6 +75,7 @@ A caveat worth knowing before you pick a server: mineflayer can only join a serv
 
 ### Operations
 - **Worker-thread-per-bot** — Each bot runs in its own `worker_threads` worker; shared singletons (affinity, culture, world model, comms, LLM) are reached through typed IPC proxy classes so cross-bot state stays authoritative on the main thread
+- **Sandbox containment** — Learned skills and generated code run in a `node:vm` context, which is **not** a security boundary (Node documents this upstream, and an escape from this codebase's sandbox shape has been demonstrated). The service unit is therefore hardened — `NoNewPrivileges`, `ProtectSystem=strict`, `ProtectHome`, `PrivateTmp`, scoped `ReadWritePaths` — which took its systemd exposure score from 9.2 UNSAFE to 7.3 MEDIUM and severed the escape→root path, since the service account holds passwordless sudo. **`NoNewPrivileges=yes` is load-bearing, not cosmetic — do not remove it.** Closing the escape itself needs process isolation; see [`docs/research/worker-process-isolation.md`](docs/research/worker-process-isolation.md), which also records why the obvious fix (`AmbientCapabilities=CAP_SETUID`) grants root and must not be used.
 - **Live 3D viewer** — Per-bot prismarine-viewer (three.js/WebGL) spins up lazily only when you open a View tab in the dashboard
 - **Impersonation defense** — Detects duplicate-login kicks plus ghost-name corroboration, quarantines the impersonated bot, and fires an outbound webhook alert
 - **Web dashboard** — Next.js dashboard for map, fleet, town, skill graph, and decision/LLM trace timelines
