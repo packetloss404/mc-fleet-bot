@@ -319,6 +319,89 @@ will not start. Someone will propose it.
   exactly the right dependency. The guard at `botWorker.ts:66-67` only covers
   `require` failing, not a runtime segfault.
 
+### 5b. What the *settled* design breaks that a plain fork swap would not
+
+These appear only when the systemd/uid model is crossed with the file-write
+inventory, so no single lane would have found them. Ranked by bite.
+
+1. **`joinStaggerMs` stops working — user-visible on day one.** The stagger is
+   enforced *by the parent*: computed at `BotManager.ts:223-226` (via
+   `nextStaggerAt`) and awaited at `:302-306` **before** `handle.start()`.
+   `systemctl start mc-fleet-worker@N` awaits nothing, so at boot systemd
+   brings up all N units in parallel and every bot hits the Minecraft server
+   at once — exactly what the stagger prevents. It must move *into* the worker
+   (a sleep before `instance.connect()`) or become systemd ordering. Silent if
+   missed; you find out from a kick storm.
+2. **Restart policy becomes double-owned, on the most-exercised path.**
+   `WorkerHandle.maybeRestart` (`:572-603`, 5 s × crashCount, give up after 3
+   in 60 s) versus systemd `Restart=`/`StartLimitBurst=`. Running both gives
+   either restart storms or a bot systemd keeps reviving that the API believes
+   is dead. **Pick one owner explicitly.** Not a corner case:
+   `BotInstance.ts:594` records **80 measured OOM kills**. Compounding trap —
+   `botWorker.ts:179` does `process.exit(0)` on `disconnect`, a *clean* exit
+   that `Restart=on-failure` ignores; the same trap CLAUDE.md already documents
+   for `POST /api/admin/restart`, now applying per-bot.
+3. **polkit sits on the self-healing path, not the admin path.**
+   `forceRestart()` (`WorkerHandle.ts:940`) is called by `watchdogTick`
+   (`BotManager.ts:801-815`) on a 30 s timer whenever a heartbeat goes stale
+   past 90 s. If the polkit rule is wrong, **wedged bots stay wedged** — it is
+   not merely an admin button returning 500.
+4. **Dedicated user × shared JSON = permission failures.** `data/social_memory.json`
+   has **two writers that would be at different uids**: `BotManager.ts:106`
+   (main) and `BotInstance.ts:242` (worker) both construct
+   `new SocialMemory(path.join(process.cwd(), 'data'))` over the same path —
+   verified. Whichever writes first owns the file; the other gets `EACCES`.
+   And `atomicWrite` renames into place, needing write on the **directory**,
+   so both uids need group-write on `data/` plus the setgid bit or every
+   persistence write fails — **quietly**, since several of these paths swallow
+   errors. Same applies to the other eleven worker-written files and to
+   `skills/`, which the main thread also reads and `unlinkSync`s
+   (`skillRoutes.ts:215`).
+5. **Viewer slot mapping inverts.** `allocateViewerSlot` (`BotManager.ts:330-347`)
+   assigns slots **in memory at spawn time** and passes the result via
+   `workerData`. With template units the instance name *is* the slot, so the
+   mapping must be durable and known *before* the unit starts — `data/bots.json`
+   has to carry it, and allocation becomes a reservation against persisted
+   state. Separately, any `PrivateNetwork=`/`IPAddressDeny=` on the worker unit
+   kills the viewer with no error the dashboard can distinguish from "not
+   spawned yet".
+6. **A genuinely new failure mode: the channel can die while the worker lives.**
+   With `worker_threads` the channel dies **iff** the worker dies, and
+   `WorkerHandle` bakes that in — `isAlive()` is `this.worker !== null`
+   (`:931`), `sendRequest` gates on `state === 'RUNNING'` (`:740`), and the
+   state machine has one axis. A unix socket can drop while the process is
+   healthy, and a stale fd can linger past process death. **"Worker alive" and
+   "channel usable" must become two independent states**, and every caller
+   reading one as a proxy for the other must be revisited. Highest-risk item in
+   the rewrite.
+
+**Two wins to claim explicitly rather than discover:**
+
+- **The ~3-minute API bind goes away.** It is not module loading — it is
+  `loadSavedBots` (`index.ts:121`) awaiting `spawnBot`, which awaits the
+  stagger before each `handle.start()`: 5 × 45 s of deliberate sleeping,
+  serialized, blocking `listen()`. If systemd owns worker lifecycle,
+  `loadSavedBots` has nothing to await — it reconciles desired vs actual and
+  returns, and the API binds in seconds. **This is the same change as fixing
+  breakage (1)**, and it is the benefit an operator feels daily.
+- **`MemoryMax=` is kernel-enforced**, where `--max-old-space-size` is a soft
+  V8 target that can overshoot. Against 80 recorded OOM kills that is a real
+  hardening win, and `systemctl show -p MemoryCurrent` per unit partly replaces
+  the aggregate RSS that `/api/admin/info` loses.
+
+**Sizing note:** do not set per-unit `MemoryMax=` from RSS. cgroup v2 charges a
+page to the cgroup that *first faults it in*, so shared binary and `.so` text
+lands entirely on whichever worker starts first — that unit reads ~40 MB higher
+than its peers for no reason. Size from ~150 MB steady + cap headroom,
+uniformly.
+
+**CPU, healthy-fleet baseline** (the idle 0.20 in §2 is drained-provider, not
+representative): `HANDOFF.md:551` records **2.54 / 2.23 / 2.08 on 8 cores ≈ 32%
+subscribed** post-resize with 5 bots. Scaling to 10 bots ≈ **64% subscribed**.
+Headroom, not vast — and unchanged by the migration, since 5 threads and 5
+processes are both 5 OS-schedulable entities (Node worker threads are real
+pthreads).
+
 ---
 
 ## 6. Ships regardless of the decision
@@ -482,12 +565,38 @@ Stated honestly, because no design closes these:
 **Do §6 now.** Items 1–4 are small, they are live exposures rather than
 hypotheticals, and 1–2 reduce more risk than the migration does.
 
-**Treat §5 as a separate, scoped project** with an explicit decision on the
-polkit rule first. The security gain is real but partial (§7 item 1 survives
-any design), and it now costs a transport rewrite, an async bootstrap
-restructure, handshake authentication, and a privilege grant. The
-`MemoryMax=` and native-crash-isolation wins are genuine and arguably justify
-it on reliability grounds alone — but that is a decision to take deliberately,
-not a side effect of a security fix.
+**Do the seccomp `execve` denial now, standalone.** There is no
+`child_process` anywhere in the worker's import graph (§2), so it costs
+approximately nothing and it removes `sh`, `curl` and `python` from escaped
+code. Highest value per unit of risk in the whole program, and it depends on
+nothing else. Validate with a viewer tab open first (§8).
+
+**Treat §5 as a separate, scoped project, and stage it behind a single-bot
+canary.** Run `mc-fleet-worker@0` as a unit alongside four threaded workers,
+keep both restart owners visible, and watch it through a real OOM cycle before
+converting the rest. This is the most-exercised recovery path in the system
+(80 OOM kills measured) and the least covered by tests (zero, §8). A big-bang
+cutover risks trading a real-but-partial security gain for a fleet that no
+longer reliably recovers — and since the escape has been live for the entire
+history of the project, **there is no urgency that justifies that trade.**
+
+Decide the polkit rule first; it is a precondition, and per §5b(3) it sits on
+the self-healing path rather than the admin path.
+
+The resource objection is **dead** — it was the strongest-sounding argument
+against this design and it does not survive measurement (§2). But the cost has
+moved somewhere worse than memory: transport rewrite, polkit, async bootstrap,
+handshake auth, stagger relocation, restart-policy reconciliation,
+uid/file-ownership work, and splitting a state machine that has conflated two
+concepts since it was written. Six of the eight highest-cost items are in that
+tail, not in the transport.
+
+**The honest case against**, stated so the record is not one-sided: it rests
+entirely on §7 item 1. If an escaped skill still reaches the LLM client over
+IPC and reads whatever the worker uid can read, this migration converts
+"escape gets the service account" into "escape gets a *narrower* service
+account plus a working exfiltration path." That is a genuine improvement and
+not theatre — but **the design closes the blast radius, not the channel**, and
+anyone approving it should be approving that, not a clean win.
 
 **Do not** revive the fork+uid route without re-reading §3.
