@@ -20,7 +20,7 @@ export interface IPCResponse {
   id: string;
   result?: any;
   error?: string;
-  errorInfo?: { message: string; name?: string; stack?: string };
+  errorInfo?: { message: string; name?: string; stack?: string; code?: string };
 }
 
 export interface IPCNotification {
@@ -168,11 +168,16 @@ export class IPCChannel {
       const message = err?.message ?? String(err);
       const name = typeof err?.name === 'string' ? err.name : 'Error';
       const stack = typeof err?.stack === 'string' ? err.stack : undefined;
+      // Forward `code` too — AIDisabledError/BudgetCappedError carry
+      // code='AI_DISABLED' so workers can idle instead of crash-looping when
+      // the kill switch or budget cap is on; dropping it here made the cap
+      // indistinguishable from an ordinary task failure (2026-08 audit).
+      const code = typeof err?.code === 'string' ? err.code : undefined;
       this.port.postMessage({
         kind: 'response',
         id: msg.id,
         error: message,
-        errorInfo: { message, name, stack },
+        errorInfo: { message, name, stack, code },
       } as IPCResponse);
     }
   }
@@ -201,6 +206,9 @@ export class IPCChannel {
     const err = new Error(info.message);
     if (info.name && info.name !== 'Error') {
       err.name = info.name;
+    }
+    if ((info as any).code) {
+      (err as any).code = (info as any).code;
     }
     if (info.stack) {
       const localStack = err.stack ? `\n    at IPC boundary (request '${requestType}')\n${err.stack}` : '';

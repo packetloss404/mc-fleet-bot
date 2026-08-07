@@ -163,6 +163,8 @@ export class VoyagerLoop {
    * clearing the whole map when it grows past 200 entries.
    */
   private taskReplacementCounts: Map<string, number> = new Map();
+  /** True when the last cycle failed with AI_DISABLED — idles the next one. */
+  private aiDisabledIdle = false;
   private activeLongTermGoal: LongTermGoal | null = null;
   private blackboardManager: BlackboardManager | null = null;
   private activeBlackboardTask: BlackboardTask | null = null;
@@ -872,14 +874,25 @@ export class VoyagerLoop {
     this.loopTimeout = setTimeout(async () => {
       if (!this.running || this.paused) return;
 
+      let aiDisabled = false;
       try {
         await this.runOneCycle();
       } catch (err: any) {
-        logger.error({ bot: this.botName, err: err.message }, 'Voyager cycle error');
+        // Kill switch / budget cap: idle on a slow heartbeat instead of
+        // re-running the full cycle at task cadence. The AI_DISABLED code
+        // exists for exactly this, but nothing in the loop checked it (and
+        // it didn't survive the IPC boundary until 2026-08), so a capped
+        // fleet ground attempt→fail→retry churn until the cap reset.
+        aiDisabled = err?.code === 'AI_DISABLED' || err?.name === 'AIDisabledError' || err?.name === 'BudgetCappedError';
+        logger.error({ bot: this.botName, err: err.message, aiDisabled }, 'Voyager cycle error');
       }
 
+      this.aiDisabledIdle = aiDisabled;
       this.scheduleNext();
-    }, Math.max(50, Math.round(this.config.voyager.taskCooldownMs * this.taskCooldownMultiplier)));
+    }, Math.max(
+      this.aiDisabledIdle ? 5 * 60 * 1000 : 50,
+      Math.round(this.config.voyager.taskCooldownMs * this.taskCooldownMultiplier),
+    ));
   }
 
   /**

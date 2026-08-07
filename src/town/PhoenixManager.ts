@@ -66,6 +66,8 @@ export class PhoenixManager {
    */
   private readonly handledDamageIds: Map<string, Set<string>> = new Map();
   private readonly handledRebuildIds: Map<string, Set<string>> = new Map();
+  /** Buildings whose no-residents deferral event has already been emitted. */
+  private readonly deferredRebuildEventIds: Map<string, Set<string>> = new Map();
   private readonly handledDeathIds: Map<string, Set<string>> = new Map();
   private readonly lastScanAt: Map<string, number> = new Map();
   /**
@@ -246,9 +248,17 @@ export class PhoenixManager {
           this.getOrCreate(this.handledDamageIds, townId).add(action.buildingId);
           repairsQueued++;
         } else {
-          await this.queueRebuild(townId, action);
-          this.getOrCreate(this.handledRebuildIds, townId).add(action.buildingId);
-          rebuildsQueued++;
+          // Only mark handled when the rebuild was actually queued somewhere.
+          // queueRebuild swallows its failure modes internally (deferral,
+          // startBuild errors) and used to return void, so the building was
+          // marked handled after a FAILED attempt and never retried — the
+          // "will retry next tick" in the catch below was unreachable for
+          // those paths (2026-08 audit).
+          const handled = await this.queueRebuild(townId, action);
+          if (handled) {
+            this.getOrCreate(this.handledRebuildIds, townId).add(action.buildingId);
+            rebuildsQueued++;
+          }
         }
       } catch (err: any) {
         logger.warn(
@@ -322,11 +332,12 @@ export class PhoenixManager {
   //  Destruction rebuild: re-queue the same kind via BuildCoordinator
   // ──────────────────────────────────────────────────────────────────────
 
-  private async queueRebuild(townId: string, action: RepairAction): Promise<void> {
+  /** @returns true when the rebuild was queued (blackboard or BuildCoordinator); false = retry next tick. */
+  private async queueRebuild(townId: string, action: RepairAction): Promise<boolean> {
     const town = this.townManager.getTown(townId);
     if (!town || !town.capital) {
       logger.warn({ townId, action }, 'Phoenix: rebuild skipped — town/capital missing');
-      return;
+      return false;
     }
     const residents = this.townManager.listResidents(townId);
     const aliveNames = residents
@@ -334,15 +345,21 @@ export class PhoenixManager {
       .map((r) => r.botName);
     if (aliveNames.length === 0) {
       // Without a bot to swing the hammer, defer — but log a sentry event
-      // so the dashboard shows the gap.
-      this.townManager.recordEvent({
-        townId,
-        kind: 'phoenix:rebuild_deferred',
-        severity: 'minor',
-        payload: { buildingId: action.buildingId, reason: 'no_alive_residents' },
-        highlightScore: 25,
-      });
-      return;
+      // so the dashboard shows the gap. Emitted once per building (the
+      // deferral now retries every tick, and per-tick events would spam the
+      // never-pruned feed).
+      const emitted = this.getOrCreate(this.deferredRebuildEventIds, townId);
+      if (!emitted.has(action.buildingId)) {
+        emitted.add(action.buildingId);
+        this.townManager.recordEvent({
+          townId,
+          kind: 'phoenix:rebuild_deferred',
+          severity: 'minor',
+          payload: { buildingId: action.buildingId, reason: 'no_alive_residents' },
+          highlightScore: 25,
+        });
+      }
+      return false;
     }
 
     // Best-effort: hand the original schematicRef back to BuildCoordinator.
@@ -381,7 +398,7 @@ export class PhoenixManager {
         },
         highlightScore: 25,
       });
-      return;
+      return true;
     }
 
     try {
@@ -404,6 +421,7 @@ export class PhoenixManager {
         },
         highlightScore: 30,
       });
+      return true;
     } catch (err: any) {
       logger.warn(
         { err: err?.message, townId, action },
@@ -420,6 +438,7 @@ export class PhoenixManager {
         },
         highlightScore: 20,
       });
+      return false;
     }
   }
 

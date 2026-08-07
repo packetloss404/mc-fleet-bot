@@ -296,6 +296,8 @@ export class TownManager {
    * layer owns transport.
    */
   private eventEmitter: ((event: TownEvent) => void) | null = null;
+  /** Inserts since the last retention sweep (see recordEvent/pruneOldEvents). */
+  private eventInsertsSincePrune = 0;
 
   constructor(opts: TownManagerOptions = {}) {
     this.dataDir = opts.dataDir ?? path.join(process.cwd(), 'data');
@@ -313,6 +315,30 @@ export class TownManager {
     // Drain any pending JSONL fallback into the DB at boot. Best-effort —
     // failures here are logged but never abort startup.
     this.drainFallback();
+    // Retention sweep at boot. Nothing ever deleted from `events` before this
+    // (22k rows observed, growing monotonically — every event storm was
+    // permanent); the periodic re-sweep rides on recordEvent, see below.
+    this.pruneOldEvents();
+  }
+
+  /**
+   * Delete minor/info events older than the retention window. Major events
+   * (milestones, disasters) are kept forever — they're the town's history;
+   * the minor/info tiers are operational chatter (supply:request piled up
+   * 21k rows in two weeks during the 2026-08 incident).
+   */
+  private pruneOldEvents(retentionDays = 14): void {
+    try {
+      const cutoff = Date.now() - retentionDays * 24 * 60 * 60 * 1000;
+      const result = this.handle.sqlite
+        .prepare("DELETE FROM events WHERE occurred_at < ? AND severity IN ('minor', 'info')")
+        .run(cutoff);
+      if (result.changes > 0) {
+        logger.info({ deleted: result.changes, retentionDays }, 'TownManager: pruned old minor/info events');
+      }
+    } catch (err: any) {
+      logger.warn({ err: err?.message }, 'TownManager: event retention sweep failed');
+    }
   }
 
   // ──────────────────────────────────────────────────────────────────────
@@ -1055,6 +1081,12 @@ export class TownManager {
   }
 
   recordEvent(input: TownEventInput): TownEvent {
+    // Periodic re-sweep: every 1000th insert. Cheap (indexed delete), keeps
+    // long-running processes from re-accumulating unbounded minor/info rows.
+    if (++this.eventInsertsSincePrune >= 1000) {
+      this.eventInsertsSincePrune = 0;
+      this.pruneOldEvents();
+    }
     const id = genId('evt');
     const occurredAt = input.occurredAt ?? Date.now();
     const event: TownEvent = {

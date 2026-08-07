@@ -474,6 +474,11 @@ export class BotInstance {
               },
               'pathfinder goal blocked: outside approved civic mobility areas',
             );
+            // Tell waiters the goal was denied. Silently clearing it left
+            // moveNearWithCleanup waiting on goal_reached/path_update events
+            // that never fire, burning its full timeout on every denied move
+            // (2026-08 audit). Emit first, then clear.
+            try { (this.bot as any).emit('mobility_denied', { x: gx, z: gz }); } catch { /* listeners optional */ }
             return originalSetGoal(null, dynamic);
           }
         }
@@ -2396,6 +2401,16 @@ export class BotInstance {
     if (this.destroyed) return;
     if (this.quarantined) {
       logger.warn({ bot: this.name }, 'forceReconnect suppressed: bot is quarantined');
+      return;
+    }
+    // A scheduled reconnect (including the 900s version-mismatch heartbeat)
+    // owns recovery — don't preempt it. The 30s watchdog reconnects any
+    // DISCONNECTED bot with no cause check, which defeated the slow backoff
+    // entirely: on a server version bump the fleet hammered logins at the
+    // exact pre-backoff rate the heartbeat was added to stop, and the still-
+    // armed timer later fired an extra connect on top (2026-08 audit).
+    if (this.pendingConnectTimeout) {
+      logger.debug({ bot: this.name }, 'forceReconnect skipped: reconnect already scheduled');
       return;
     }
     logger.warn({ bot: this.name, inboundAgeMs: this.lastInboundPacketAt > 0 ? Date.now() - this.lastInboundPacketAt : null }, 'Watchdog: forcing reconnect on stale/zombie socket');

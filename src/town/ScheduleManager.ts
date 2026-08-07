@@ -249,6 +249,10 @@ export class ScheduleManager {
   private readonly lastEmittedPhase: Map<string, SchedulePhase> = new Map();
   /** Next routine index per (town, role, phase), advanced after each emission. */
   private readonly nextRoutineIndex: Map<string, number> = new Map();
+  /** Last emit time per exact task description — drives the re-emit floor. */
+  private readonly lastEmitAtByDescription: Map<string, number> = new Map();
+  /** Minimum interval between re-emits of the same routine description. */
+  private static readonly REEMIT_FLOOR_MS = 5 * 60 * 1000;
   /** Per-town hydration set so we only load each town's slice once. */
   private readonly loadedTowns: Set<string> = new Set();
   /**
@@ -582,6 +586,20 @@ export class ScheduleManager {
           );
           continue;
         }
+        // Re-emit floor: failure backoff only covers tasks that FAIL. A task
+        // a bot completes trivially (or vacuously) was re-queued within 60s
+        // of completing, forever — one paid codegen round per minute for a
+        // degenerate role/phase pair (2026-08 audit). Continuous routines
+        // still re-emit, just no faster than the floor.
+        const lastEmit = this.lastEmitAtByDescription.get(description) ?? 0;
+        const nowMs = Date.now();
+        if (nowMs - lastEmit < ScheduleManager.REEMIT_FLOOR_MS) {
+          logger.debug(
+            { townId, role, phase, description },
+            'ScheduleManager: re-emit floor active for this routine',
+          );
+          continue;
+        }
         // Tag the task with role + town so idle pickup and other towns'
         // bots score them correctly. The leading `town:<id>` keyword is
         // also what the demand-loop uses — keep them consistent.
@@ -594,6 +612,8 @@ export class ScheduleManager {
           undefined,
           entry.metadata,
         );
+        if (this.lastEmitAtByDescription.size > 500) this.lastEmitAtByDescription.clear();
+        this.lastEmitAtByDescription.set(description, Date.now());
         this.nextRoutineIndex.set(cursorKey, (index + 1) % entries.length);
         return;
       } catch (err: any) {

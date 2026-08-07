@@ -65,7 +65,10 @@ import { logger } from '../util/logger';
  * rivalry-bound towns. Phase 7 just emits the signal; actual guard-behavior
  * change is out of scope.
  */
-const RIVAL_PATROL_TICK_INTERVAL = 5;
+// 60 ticks ≈ hourly at the 60s brain cadence. Was 5 (~every 5 minutes): with
+// nothing consuming the signal yet, that wrote 288 identical event rows per
+// rival per day into the never-pruned events table (2026-08 audit).
+const RIVAL_PATROL_TICK_INTERVAL = 60;
 
 /**
  * Phase 7-A — diplomacy loop knobs.
@@ -138,6 +141,9 @@ export class TownBrain {
    * requests over two weeks). Strikes reset the moment stock actually rises.
    */
   private demandNoProgress: Map<string, { lastHave: number; strikes: number; nextEligibleAt: number }> = new Map();
+  /** Dedup state for the hourly role:imbalance event (see roleLoop). */
+  private lastImbalanceShortfall = -1;
+  private lastImbalanceEventAt = 0;
   /**
    * Snapshot of the most recent resource shortages from the demand loop,
    * handed to the role loop on the same tick. Cleared each tick.
@@ -1406,28 +1412,39 @@ export class TownBrain {
       .listResidents(this.townId)
       .filter((r) => r.status === 'alive' || r.status == null);
 
-    // Population shortfall — keep emitting role:imbalance so observers know a
-    // founding settlement still wants more bots. RoleManager won't conjure
-    // residents, it only re-shuffles the ones that exist.
+    // Population shortfall — emit role:imbalance so observers know a founding
+    // settlement still wants more bots, but at most once an hour per distinct
+    // shortfall. This used to fire every 60s tick unconditionally: a town
+    // permanently under target wrote 1,440 identical rows/day into an
+    // unpruned events table, and each row made the chronicle's window look
+    // "active" (2026-08 audit).
     const target = town.populationTarget ?? this.defaultPopulationTarget(town);
     if (residents.length < target) {
       const shortfall = target - residents.length;
-      this.townManager.recordEvent({
-        townId: this.townId,
-        kind: 'role:imbalance',
-        severity: 'minor',
-        payload: {
-          currentPopulation: residents.length,
-          target,
-          shortfall,
-          wantsMoreBots: true,
-        },
-        highlightScore: 20,
-      });
-      logger.debug(
-        { townId: this.townId, residents: residents.length, target },
-        'TownBrain role: population under target',
-      );
+      const now = Date.now();
+      const duplicate =
+        this.lastImbalanceShortfall === shortfall &&
+        now - this.lastImbalanceEventAt < 60 * 60 * 1000;
+      if (!duplicate) {
+        this.lastImbalanceShortfall = shortfall;
+        this.lastImbalanceEventAt = now;
+        this.townManager.recordEvent({
+          townId: this.townId,
+          kind: 'role:imbalance',
+          severity: 'minor',
+          payload: {
+            currentPopulation: residents.length,
+            target,
+            shortfall,
+            wantsMoreBots: true,
+          },
+          highlightScore: 20,
+        });
+        logger.debug(
+          { townId: this.townId, residents: residents.length, target },
+          'TownBrain role: population under target',
+        );
+      }
     }
 
     // Re-balance roles using shortages flagged on this tick by the demand

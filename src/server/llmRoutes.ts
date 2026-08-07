@@ -78,8 +78,8 @@ export function registerLLMRoutes(
     try {
       const router = llmSettings.buildRouter();
       if (router) {
-        // Hot-swap the LLM client on the bot manager
-        (botManager as any).llmClient = router;
+        // Hot-swap the LLM client on the bot manager AND every live worker.
+        botManager.setLlmClient(router);
         logger.info('LLM ModelRouter hot-reloaded');
         res.json({ success: true, providers: [...llmSettings.getSettings().providers.map((p) => p.name)] });
       } else {
