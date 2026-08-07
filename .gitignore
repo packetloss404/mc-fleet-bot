@@ -56,3 +56,10 @@ schematics/town_*/
 __pycache__/
 *.pyc
 data/buildops/
+
+# Generated masterplan PDF exports. 409 MB across five files as of 2026-08-07,
+# and git never sheds a large blob without a history rewrite — every future
+# clone would pay for them forever. They are regenerable from the masterplan
+# sources in docs/masterplans/. If these ever need versioning, use Git LFS
+# rather than removing this rule.
+docs/_pdfs/
