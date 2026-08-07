@@ -28,13 +28,20 @@ on:
       - 'fleet-devtools/**'
       - '.github/workflows/fleet-devtools.yml'
 
+permissions:
+  contents: read
+
+concurrency:
+  group: fleet-devtools-${{ github.ref }}
+  cancel-in-progress: true
+
 defaults:
   run:
     working-directory: fleet-devtools
 
 jobs:
   check:
-    name: Build, test & lint
+    name: Lint, build, test, format
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -53,10 +60,26 @@ jobs:
       - name: Install
         run: npm ci
 
-      # `npm run check` = lint + build + test + format:check, which is what
-      # fleet-devtools' own README and AGENTS.md both claim CI enforces. The
-      # original workflow ran only build + test, so the docs were describing a
-      # stricter gate than existed. Running the full check makes the docs true
-      # rather than quietly correcting them downward.
-      - name: Check (lint, build, test, format)
-        run: npm run check
+      # These four are `npm run check` (lint && build && test && format:check),
+      # split into separate steps so a failure names its own stage instead of
+      # dumping a compound && failure.
+      #
+      # The original workflow ran build + test only. fleet-devtools' README,
+      # AGENTS.md and docs/ROADMAP.md all assert CI runs `npm run check` — four
+      # documented claims against one workflow. The drift is chronological, not
+      # deliberate: ci.yml has exactly one commit in its history (6c6756b) and
+      # Prettier arrived later (aaf22d6), so `format:check` did not exist when
+      # CI was written and CI was never revisited. The docs describe the
+      # intended contract, so the workflow is brought up to them rather than
+      # the docs quietly corrected down.
+      - name: Lint (tsc --noEmit)
+        run: npm run lint
+
+      - name: Build packages and apps
+        run: npm run build
+
+      - name: Test
+        run: npm test
+
+      - name: Format check
+        run: npm run format:check

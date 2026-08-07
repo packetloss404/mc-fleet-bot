@@ -31,6 +31,66 @@ Two documentation bugs fixed while integrating:
 - `world-builder/README.md` linked to mc-fleet-bot as `../mc-fleet-bot`, a
   sibling-directory assumption the move invalidated.
 
+### `mc-fleet-devtools` absorbed as the `fleet-devtools/` subtool
+
+`packetloss404/mc-fleet-devtools` — a read-only Anvil/SQLite report workbench —
+now lives at `fleet-devtools/`, merged via `git subtree` (80 tracked files, 18
+commits of history). Merged from the **local** clone rather than the remote,
+deliberately: the mcwb integration earlier the same day inherited a hole from
+its remote, and integrating from disk removes that whole class of risk. The
+original GitHub repo was **not** deleted.
+
+The rationale is format ownership. Devtools computes snapshot identity with the
+byte-identical algorithm as `scripts/hash_world_snapshot.mjs`
+(`filename + NUL + bytes + NUL`, sorted), exports the `world_features` table
+`src/world/WorldFeatureStore.ts` creates in `data/world-map.db`, and catalogs
+`data/town.db`. Three formats produced here and consumed there, with a repo
+boundary between them and no test on either side that would catch a drift.
+
+Stated plainly: **there is no code coupling in either direction.** Nothing in
+`src/` mentions `fleet-devtools`, nothing in `fleet-devtools/` imports this
+repo, and the file that would bind them — `config/registry.local.yml` — is
+gitignored and absent from the checkout. Co-locating them makes a change to a
+shared format reviewable in one diff. It does not create a pipeline, and this
+entry should not be read as claiming one.
+
+It stays a **separate Node toolchain**: its own `package.json` with internal npm
+workspaces, its own `vitest.config.ts`, its own dependency tree. Root
+`tsconfig.json` compiles `src/**/*` and root `vitest.config.ts` collects `src/`
+and `test/` only, so `npm run build` and `npm test` neither build nor test it —
+and the root `package.json` declares no `workspaces`, so the root
+`npm install` does not install it either. Verified after the merge: builds
+clean, 55 tests pass across 11 files, `npm run check` exits 0, and root `tsc`
+plus root vitest are unaffected.
+
+Problems found and fixed while integrating:
+
+- **The root `.gitignore`'s `data/` rule would have eaten it.** Unanchored, so
+  it matched at any depth, including `fleet-devtools/data/{jobs,artifacts}/.gitkeep`.
+  Anchored to `/data/`; see the separate entry above.
+- **Workspace symlinks were absolute** and still pointed at
+  `/mnt/d/projects/mc-fleet-devtools/`, the pre-move location, so
+  `@mc-fleet/world-core` resolved nowhere and the build failed. `npm install`
+  relinked them relatively, which is also portable in a way the originals were
+  not.
+- **`better-sqlite3` was the Windows binary** (`invalid ELF header`), failing 5
+  tests. `npm rebuild better-sqlite3`. Same cross-platform class as
+  `web/node_modules` being win32.
+- **Its CI was about to die silently.** GitHub reads workflows only from the
+  repository root, so `fleet-devtools/.github/workflows/ci.yml` would have
+  stayed in the tree looking live while never running again. Promoted to
+  `.github/workflows/fleet-devtools.yml`, scoped to `paths: ['fleet-devtools/**']`
+  so it gates the subtool without gating the root — the root suite has ~60 test
+  files that fail on a fresh clone because `test/build/` reads fixtures from
+  the gitignored `data/`. The old path keeps a stub pointing at the new one.
+- **CI now runs `npm run check`** (lint + build + test + format:check) instead
+  of build + test. Devtools' `README.md`, `AGENTS.md` and `docs/ROADMAP.md` all
+  asserted CI ran `check`; it never had. The drift is chronological rather than
+  deliberate — `ci.yml` has one commit in its history and Prettier arrived
+  afterwards, so `format:check` did not exist when CI was written. Four
+  documented claims against one stale workflow: the workflow was brought up to
+  the docs rather than the docs quietly corrected down.
+
 ### LLM outage handling and sandbox hardening
 
 Auto-disable after 3 consecutive full-chain provider failures, below the

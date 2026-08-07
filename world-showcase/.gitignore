@@ -3,7 +3,18 @@ node_modules/
 *.tgz
 *.tsbuildinfo
 
-# The root fleet repo ignores every directory named data/. This site has one
-# generated, public JSON input that must remain in Railway upload bundles.
+# This site has one generated, public JSON input that must remain in Railway
+# upload bundles.
+#
+# History worth keeping: the root repo used to ignore every directory named
+# `data/` (unanchored), and these negations were written to work around it.
+# They never actually worked — git does not descend into an excluded
+# directory, so a negation for a path *inside* one can never fire.
+# public/data/buildings.json survived purely because it was already tracked,
+# and ignore rules do not apply to tracked files; a `git rm --cached` or a
+# regeneration into a fresh clone would have silently lost it.
+# The root rule was anchored to `/data/` on 2026-08-07, which both removes the
+# need for this workaround and makes it functional for the first time.
+# Harmless to keep as belt-and-braces.
 !public/data/
 !public/data/**

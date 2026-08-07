@@ -49,8 +49,12 @@ npm test
 
 Tests use Vitest. Configuration is in `vitest.config.ts`.
 
-**`npm test` does not cover `world-builder/`** — that is a separate Python
-toolchain with its own pytest suite. See the World Builder section below.
+**`npm test` covers neither `world-builder/` nor `fleet-devtools/`.**
+`world-builder/` is a separate Python toolchain with its own pytest suite;
+`fleet-devtools/` is a separate npm workspace with its own `vitest.config.ts`.
+The root `vitest.config.ts` collects only `src/**/*.test.ts` and
+`test/**/*.test.ts`, and the root `tsconfig.json` compiles only `src/**/*`.
+See their sections below.
 
 Note for any full-suite run: the `test/build/` Combined Zones tests read
 `data/world-review/*.json`, and `data/` is gitignored — so on a fresh clone
@@ -80,6 +84,52 @@ pytest                        # 22 tests
 Without the editable install, pytest fails at *collection* with
 `ModuleNotFoundError: litemapy` / `mcwb.build`. That is a missing venv, not a
 broken checkout — do not debug it as one.
+
+## Fleet Devtools (`fleet-devtools/`)
+
+**mc-fleet-devtools** — a read-only Node 20 / TypeScript / ESM workbench that
+inspects *copied* Anvil snapshots and SQLite catalogs and emits HTML reports
+with hash-bound artifact manifests. REST API + dashboard on port **4310**, plus
+a CLI and a serialized job worker. Its own repo until 2026-08-07, merged via
+`git subtree` with history preserved. **The original GitHub repo still exists
+and was not deleted.**
+
+- **Separate toolchain.** Root `tsconfig.json` → `include: ["src/**/*"]`; root
+  `vitest.config.ts` → `src/**/*.test.ts` + `test/**/*.test.ts`. `npm run
+  build` and `npm test` do **not** cover it. The root `package.json` declares
+  no `workspaces`, so the root `npm install` does not install it — run
+  `npm install` inside `fleet-devtools/`. Run every devtools command from that
+  directory, never from the repo root.
+- **Coupling is on-disk formats only, and nothing is wired up.** Its snapshot
+  digest matches `scripts/hash_world_snapshot.mjs` byte for byte
+  (`filename + NUL + bytes + NUL`, sorted); its `world-features` step reads the
+  table `src/world/WorldFeatureStore.ts:473` creates in `data/world-map.db`;
+  its `database-catalog` step can read `data/town.db`. But no module imports
+  across the boundary in either direction, and the file that would connect them
+  (`config/registry.local.yml`) is gitignored and absent from the checkout.
+  **Do not describe this as a pipeline.**
+- **Read-only by design.** No RCON, WorldEdit, upload, or world mutation. Do
+  not add any to a report recipe; recipe steps are an allow-list, not scripts.
+- **CI lives at the repo root** — `.github/workflows/fleet-devtools.yml`,
+  scoped to `paths: ['fleet-devtools/**']`. The nested
+  `fleet-devtools/.github/workflows/ci.yml` is an inert signpost; GitHub reads
+  workflows only from the repository root. Edit the root one.
+
+```bash
+cd fleet-devtools
+npm install
+npm run check      # lint + build + test + format:check
+npm run dev        # API + dashboard on 4310 — binds 0.0.0.0, no auth
+```
+
+**Cross-platform trap.** If `node_modules/` was installed on a different OS
+than you are running on, native modules fail in ways that look like
+application bugs: `better-sqlite3` throws `invalid ELF header`, and esbuild
+dies at *config load* with `Host version "X" does not match binary version
+"Y"` — before vitest reads its own config. `npm rebuild better-sqlite3` fixes
+the first; `rm -rf node_modules && npm install` fixes the general case. Do not
+debug these as vitest or SQLite problems. (Same class as `web/node_modules`
+being win32 — see the deploy notes.)
 
 ## Setup
 

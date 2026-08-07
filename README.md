@@ -178,6 +178,7 @@ src/
 └── util/         # Logger and helpers
 web/              # Next.js dashboard
 world-builder/    # mcwb — standalone Python subtool: masterplan → live world (see below)
+fleet-devtools/   # Read-only Anvil/SQLite report workbench — its own npm workspace (see below)
 skills/           # Learned skills saved as JS modules (the library grows as bots run)
 scripts/          # World tooling — see below
 builds/           # manifest.yaml: every build unit and its completeness assertions
@@ -332,6 +333,83 @@ broken checkout.
 See [`world-builder/README.md`](world-builder/README.md) for the masterplan
 format and [`world-builder/NEWSERVER.md`](world-builder/NEWSERVER.md) for
 deployment notes.
+
+## Fleet Devtools (`fleet-devtools/`)
+
+**mc-fleet-devtools** — a local, read-only workbench that inspects *copied*
+Anvil snapshots and SQLite catalogs and turns them into durable, hash-bound
+reports. Node 20 / TypeScript / ESM, structured as its own npm workspace, with
+four surfaces over one service layer: a REST API on port **4310**, a
+dependency-free dashboard the API serves, a CLI, and a serialized job worker
+that deliberately runs one report at a time. Merged in from its own repo
+(`packetloss404/mc-fleet-devtools`) on 2026-08-07 via `git subtree`, history
+intact.
+
+Four recipes ship: `snapshot-overview`, `block-census`, `world-catalog`,
+`snapshot-diff`. Each run gets a fresh job directory under `data/artifacts/`
+with an `artifact-manifest.json` recording every output's path, media type,
+byte size, and SHA-256. Prior artifacts are never overwritten. There is no
+RCON, WorldEdit, upload, or live-world mutation capability — `0.x` is read-only
+with respect to Minecraft by design.
+
+**The overlap with this repo is a file-format overlap, not a code one.**
+Verified:
+
+- its snapshot digest is byte-identical to `scripts/hash_world_snapshot.mjs` —
+  both hash `filename + NUL + bytes + NUL` over region files sorted by name
+  (`packages/anvil/src/snapshot.ts:43`, `scripts/hash_world_snapshot.mjs:15`) —
+  so its snapshot identities are comparable with digests this repo has already
+  recorded. The root script takes any `*.mca`; devtools takes only
+  `r.<x>.<z>.mca`, so a stray file would diverge them.
+- its `world-features` step exports a `world_features` table — the exact table
+  `src/world/WorldFeatureStore.ts:473` creates in `data/world-map.db`.
+- its `database-catalog` step reads any registered SQLite, `data/town.db`
+  (`src/town/db.ts:269`) included.
+
+**Nothing is wired up, though.** No file in `src/`, `web/`, `scripts/`, or
+`test/` mentions `fleet-devtools` or `@mc-fleet/*`, and nothing under
+`fleet-devtools/` imports this repo. The only thing that would connect them is
+`fleet-devtools/config/registry.local.yml` — an operator-written, gitignored
+file that is not in the checkout. Until someone writes one pointing at `data/`,
+these are two directories that happen to speak the same formats. Co-location
+makes a format change reviewable in one diff; it is not a pipeline.
+
+**It is a separate toolchain, not part of the Node build.** The root
+`tsconfig.json` compiles only `src/**/*`, and the root `vitest.config.ts`
+collects only `src/**/*.test.ts` and `test/**/*.test.ts` — so `npm run build`
+and `npm test` neither build nor test it. The root `package.json` declares no
+`workspaces`, so a root `npm install` does not install it either, despite
+`fleet-devtools/package.json` declaring workspaces of its own.
+
+```bash
+cd fleet-devtools
+npm install                                                # its own tree; the root install does not reach here
+cp config/registry.example.yml config/registry.local.yml   # then edit — the connector root must be absolute
+npm run check                                              # lint + build + test + format:check
+npm run cli -- registry check
+npm run dev                                                # API + dashboard on http://<host>:4310
+```
+
+The API binds `0.0.0.0` and has **no authentication**. Use
+`MC_FLEET_DEVTOOLS_HOST=127.0.0.1` for loopback only, and never point it at a
+world that is being actively written — register a copy.
+
+CI: `.github/workflows/fleet-devtools.yml` at the **repo root** gates this
+directory (`paths: ['fleet-devtools/**']`). The copy at
+`fleet-devtools/.github/workflows/ci.yml` is an inert signpost — GitHub reads
+workflows only from the repository root, so a nested one never runs.
+
+**One trap.** If `node_modules/` was installed on a different platform than
+you're running on, native modules fail in confusing ways — `better-sqlite3`
+throws `invalid ELF header` and esbuild reports a host/binary version
+mismatch at config load, *before* vitest sees its own config. Fix with
+`npm rebuild better-sqlite3`, or `rm -rf node_modules && npm install` for the
+general case. Do not debug it as a vitest or SQLite problem.
+
+See [`fleet-devtools/README.md`](fleet-devtools/README.md),
+[`docs/ARCHITECTURE.md`](fleet-devtools/docs/ARCHITECTURE.md),
+[`docs/REPORT_RECIPES.md`](fleet-devtools/docs/REPORT_RECIPES.md), and
+[`SECURITY.md`](fleet-devtools/SECURITY.md).
 
 ## World Showcase (`world-showcase/`)
 

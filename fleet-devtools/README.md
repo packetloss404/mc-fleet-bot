@@ -33,12 +33,12 @@ receipts stay in private server repositories or ignored local configuration.
 
 The included recipes are:
 
-| Recipe | Purpose |
-| --- | --- |
-| `snapshot-overview` | Snapshot identity, region coverage, and HTML summary |
-| `block-census` | Block-state counts, optionally constrained to bounds |
-| `world-catalog` | Snapshot identity, SQLite inventory, and world features |
-| `snapshot-diff` | Per-region SHA-256 comparison between two registered worlds |
+| Recipe              | Purpose                                                     |
+| ------------------- | ----------------------------------------------------------- |
+| `snapshot-overview` | Snapshot identity, region coverage, and HTML summary        |
+| `block-census`      | Block-state counts, optionally constrained to bounds        |
+| `world-catalog`     | Snapshot identity, SQLite inventory, and world features     |
+| `snapshot-diff`     | Per-region SHA-256 comparison between two registered worlds |
 
 ## Safety boundary
 
@@ -66,8 +66,10 @@ copied snapshot instead.
 ## Quick start
 
 ```bash
-git clone git@github.com:packetloss404/mc-fleet-devtools.git
-cd mc-fleet-devtools
+# A subtool of the mc-fleet-bot repo with its own dependency tree. The
+# repository-root `npm install` does not reach here, and the root
+# `npm run build` / `npm test` do not cover it. Run everything from here.
+cd fleet-devtools
 npm install
 cp config/registry.example.yml config/registry.local.yml
 ```
@@ -156,14 +158,14 @@ npm run cli -- report run \
 
 Paths can be overridden without changing the local registry:
 
-| Environment variable | Default |
-| --- | --- |
-| `MC_FLEET_REGISTRY` | `config/registry.local.yml` |
-| `MC_FLEET_RECIPES` | `recipes/` |
-| `MC_FLEET_JOBS` | `data/jobs/` |
-| `MC_FLEET_ARTIFACTS` | `data/artifacts/` |
-| `MC_FLEET_DEVTOOLS_HOST` | `0.0.0.0` |
-| `MC_FLEET_DEVTOOLS_PORT` | `4310` |
+| Environment variable     | Default                     |
+| ------------------------ | --------------------------- |
+| `MC_FLEET_REGISTRY`      | `config/registry.local.yml` |
+| `MC_FLEET_RECIPES`       | `recipes/`                  |
+| `MC_FLEET_JOBS`          | `data/jobs/`                |
+| `MC_FLEET_ARTIFACTS`     | `data/artifacts/`           |
+| `MC_FLEET_DEVTOOLS_HOST` | `0.0.0.0`                   |
+| `MC_FLEET_DEVTOOLS_PORT` | `4310`                      |
 
 When the local registry does not exist, the example registry is loaded.
 
@@ -191,16 +193,16 @@ CPU-, memory-, and disk-heavy world scans.
 
 ## REST API
 
-| Method | Route | Description |
-| --- | --- | --- |
-| `GET` | `/api/health` | Read-only mode and queue status |
-| `GET` | `/api/overview` | Dashboard bootstrap payload |
-| `GET` | `/api/servers` | Registered servers and worlds |
-| `GET` | `/api/recipes` | Loaded report recipes |
-| `GET` | `/api/jobs` | Persisted jobs |
-| `GET` | `/api/jobs/:id` | One job and its artifact link |
-| `POST` | `/api/jobs` | Validate and enqueue a report |
-| `POST` | `/api/jobs/:id/cancel` | Cancel a queued or running job |
+| Method | Route                  | Description                     |
+| ------ | ---------------------- | ------------------------------- |
+| `GET`  | `/api/health`          | Read-only mode and queue status |
+| `GET`  | `/api/overview`        | Dashboard bootstrap payload     |
+| `GET`  | `/api/servers`         | Registered servers and worlds   |
+| `GET`  | `/api/recipes`         | Loaded report recipes           |
+| `GET`  | `/api/jobs`            | Persisted jobs                  |
+| `GET`  | `/api/jobs/:id`        | One job and its artifact link   |
+| `POST` | `/api/jobs`            | Validate and enqueue a report   |
+| `POST` | `/api/jobs/:id/cancel` | Cancel a queued or running job  |
 
 Example request:
 
@@ -254,8 +256,22 @@ npm run dev        # start the API on port 4310
 TypeScript is strict, uses ESM, and targets Node.js 20. The project is
 formatted with Prettier and linted with `tsc --noEmit`. Tests build synthetic
 region files and SQLite databases in temporary directories; they must never
-access a live server. CI on GitHub Actions runs `npm run check` against every
-push and pull request to `main`.
+access a live server.
+
+CI on GitHub Actions runs the same gates as `npm run check` (lint, build, test,
+format:check) against every push and pull request to `main` that touches this
+directory. Since the move into `mc-fleet-bot`, the workflow lives at the
+**repository root** — `.github/workflows/fleet-devtools.yml` — because GitHub
+reads workflows only from there; `.github/workflows/ci.yml` in this directory
+is an inert signpost. Edit the root file. (The old workflow ran build and test
+only, never `lint` or `format:check`, so this sentence used to overstate it;
+the workflow was brought up to the docs rather than the other way round.)
+
+If `npm test` fails at config load with `Host version "…" does not match binary
+version "…"`, or `better-sqlite3` throws `invalid ELF header`, then
+`node_modules/` was installed on a different platform than the one you are on.
+`npm rebuild better-sqlite3` fixes the second; `rm -rf node_modules &&
+npm install` fixes the general case. Neither is a vitest or SQLite bug.
 
 ## Project status
 
