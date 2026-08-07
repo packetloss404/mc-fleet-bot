@@ -177,6 +177,7 @@ src/
 ├── server/       # Express HTTP API (200+ routes) and socket events
 └── util/         # Logger and helpers
 web/              # Next.js dashboard
+world-builder/    # mcwb — standalone Python subtool: masterplan → live world (see below)
 skills/           # Learned skills saved as JS modules (the library grows as bots run)
 scripts/          # World tooling — see below
 builds/           # manifest.yaml: every build unit and its completeness assertions
@@ -291,6 +292,46 @@ captures, and thirteen maps including one whole-world atlas. Citizen route
 geometry passed, but the autonomous resident lifecycle observer remains an
 open, non-blocking troubleshooting item; do not report citizen lifecycle as
 accepted until the separate observer handoff is closed.
+
+## World Builder (`world-builder/`)
+
+**mcwb** — a standalone Python package that consumes a versioned masterplan and
+applies it to a live Minecraft world. Merged in from its own repo
+(`packetloss404/mc-world-builder`) on 2026-08-07 via `git subtree`, history
+intact.
+
+It closes the loop on the masterplans this repo already produces: mcwb reads
+`docs/masterplans/<plan>/04-contractor/contractor-brief.json` — five plans
+currently carry one — and applies it. Masterplans are **diff-friendly**:
+re-running on the same plan is a no-op, and re-running on a newer one applies
+only the phases that changed. It reads plans in place and never writes back to
+them.
+
+Shipped (v0.1.0, alpha): spec schema, validator, state store, phase-level diff,
+phase runner, two writers (JSON for testing, litematic per centerpiece), QA
+verifier, full CLI. Pending: amulet-core writer auto-activation, per-element
+geometry in phase generators (currently bounding-box style), and 5 of 10 visual
+QA checks.
+
+**It is a separate toolchain, not part of the Node build.** Nothing in `src/`
+imports it; the two are coupled only through the on-disk masterplan format, so
+`npm run build` and `npm test` neither build nor test it.
+
+```bash
+cd world-builder
+python3 -m venv .venv && source .venv/bin/activate   # Python 3.11+
+pip install -e ".[dev]"        # 'litemapy' and the package itself are required for the tests
+pytest                          # 22 tests
+mcwb validate --plan ../docs/masterplans/04-combined-complex
+```
+
+Without that editable install the suite fails at collection on
+`ModuleNotFoundError: litemapy` / `mcwb.build` — that is a missing venv, not a
+broken checkout.
+
+See [`world-builder/README.md`](world-builder/README.md) for the masterplan
+format and [`world-builder/NEWSERVER.md`](world-builder/NEWSERVER.md) for
+deployment notes.
 
 ## World Showcase (`world-showcase/`)
 

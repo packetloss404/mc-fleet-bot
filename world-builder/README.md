@@ -1,10 +1,22 @@
 # mcwb — Minecraft world builder from versioned masterplans
 
-mcwb consumes a masterplan directory (typically produced by an upstream
-planner like [`mc-fleet-bot`](../mc-fleet-bot)) and applies it to a live
-Minecraft world. Masterplans are versioned and diff-friendly: re-running
-mcwb on the same masterplan is a no-op; running it on a newer masterplan
-applies only the phases that changed.
+mcwb consumes a masterplan directory and applies it to a live Minecraft
+world. Masterplans are versioned and diff-friendly: re-running mcwb on the
+same masterplan is a no-op; running it on a newer masterplan applies only
+the phases that changed.
+
+> **This is a subtool of [mc-fleet-bot](../README.md).** It was its own
+> repo (`packetloss404/mc-world-builder`) until 2026-08-07, when it was
+> merged in via `git subtree` with its history intact. The planner that
+> produces the masterplans mcwb consumes lives in the same repo now, at
+> [`docs/masterplans/`](../docs/masterplans) — five plans currently carry a
+> `contractor-brief.json`. mcwb reads those in place and never writes back
+> to them.
+>
+> It remains a **standalone Python package** with its own `pyproject.toml`,
+> test suite and CLI — it is not imported by the TypeScript fleet at
+> runtime, and the two are coupled only through the on-disk masterplan
+> format.
 
 ## Status: alpha (v0.1.0)
 

@@ -49,6 +49,38 @@ npm test
 
 Tests use Vitest. Configuration is in `vitest.config.ts`.
 
+**`npm test` does not cover `world-builder/`** — that is a separate Python
+toolchain with its own pytest suite. See the World Builder section below.
+
+Note for any full-suite run: the `test/build/` Combined Zones tests read
+`data/world-review/*.json`, and `data/` is gitignored — so on a fresh clone
+~60 test files fail on `ENOENT` regardless of code state. That is structural,
+not a regression.
+
+## World Builder (`world-builder/`)
+
+**mcwb** — a standalone Python package (Python 3.11+) that applies a versioned
+masterplan to a live Minecraft world. It was its own repo
+(`packetloss404/mc-world-builder`) until 2026-08-07, when it was merged in via
+`git subtree` with history preserved. **The original GitHub repo still exists
+and was not deleted.**
+
+- **Input:** `docs/masterplans/<plan>/04-contractor/contractor-brief.json`
+  (five plans currently carry one). Read in place; mcwb never writes back.
+- **Coupling:** the on-disk masterplan format, and nothing else. No module in
+  `src/` imports it, and it is not part of the Node build.
+
+```bash
+cd world-builder
+python3 -m venv .venv && source .venv/bin/activate
+pip install -e ".[dev]"      # required: litemapy + the package itself
+pytest                        # 22 tests
+```
+
+Without the editable install, pytest fails at *collection* with
+`ModuleNotFoundError: litemapy` / `mcwb.build`. That is a missing venv, not a
+broken checkout — do not debug it as one.
+
 ## Setup
 
 1. Copy `.env.example` to `.env` and set the API key for the configured provider (`GOOGLE_API_KEY` for Gemini, `ANTHROPIC_API_KEY` for Anthropic)

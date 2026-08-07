@@ -1,7 +1,17 @@
 # NEWSERVER.md — pickup notes for the next agent / the user coming back
 
 A scannable state-of-the-project file. Read this first if you're picking up
-where `mcwb` work was left off. **Last updated: 2026-08-03 17:27 CDT.**
+where `mcwb` work was left off. **Last updated: 2026-08-07.**
+
+> **Relocated 2026-08-07.** `mcwb` was its own repo
+> (`packetloss404/mc-world-builder`); it is now the `world-builder/` subtool
+> inside **mc-fleet-bot**, merged via `git subtree` with history preserved.
+> Two consequences for these notes:
+> - The masterplans it consumes are now **in the same repo**, so prefer
+>   repo-relative paths (`docs/masterplans/...`) over the absolute
+>   `D:\projects\...` ones below.
+> - The absolute paths in this file were also **wrong before the move** —
+>   they omitted `docs\`. Corrected throughout on 2026-08-07.
 
 ## What this project is
 
@@ -9,7 +19,7 @@ where `mcwb` work was left off. **Last updated: 2026-08-03 17:27 CDT.**
 
 - **Input:** a masterplan directory (typically produced by `mc-fleet-bot`,
   the upstream planner). The canonical brief is
-  `D:\projects\mc-fleet-bot\masterplans\04-combined-complex\04-contractor\contractor-brief.json`.
+  `D:\projects\mc-fleet-bot\docs\masterplans\04-combined-complex\04-contractor\contractor-brief.json`.
 - **Output:** a Minecraft world (currently via JSON writer; litematic per
   centerpieces; amulet-core writer wired but dormant on Python 3.13).
 - **Deployment:** cloned onto the minecrafter, run against a live world
@@ -34,12 +44,12 @@ where `mcwb` work was left off. **Last updated: 2026-08-03 17:27 CDT.**
 Set-Location D:\projects\mc-world-builder
 python -m pytest                                 # expect: 38 passed
 mcwb --version                                   # expect: mcwb 0.0.1
-mcwb validate --plan 'D:\projects\mc-fleet-bot\masterplans\04-combined-complex'
+mcwb validate --plan 'D:\projects\mc-fleet-bot\docs\masterplans\04-combined-complex'
 # expect: OK, build_id=04-combined-complex, 11 phases, 7 centerpieces,
 #         9 easter eggs, 1 WARN about 22.5% phase budget drift
 
 # End-to-end smoke test (writes to a test world, doesn't touch the real one):
-$env:MCWB_PLAN_DIR = 'D:\projects\mc-fleet-bot\masterplans\04-combined-complex'
+$env:MCWB_PLAN_DIR = 'D:\projects\mc-fleet-bot\docs\masterplans\04-combined-complex'
 $world = 'D:\mcwb-smoke-test-world'
 mcwb build --plan $env:MCWB_PLAN_DIR --world $world
 # expect: 18/18 phases applied, ~2.5M blocks written
@@ -65,11 +75,11 @@ python -m pytest                   # confirm 38 still pass
 
 ### 2. Try it on the live masterplan
 
-The real masterplan is at `D:\projects\mc-fleet-bot\masterplans\04-combined-complex\`
+The real masterplan is at `D:\projects\mc-fleet-bot\docs\masterplans\04-combined-complex\`
 (read in place, `mcwb` never writes to `mc-fleet-bot`).
 
 ```bash
-mcwb validate --plan 'D:\projects\mc-fleet-bot\masterplans\04-combined-complex'
+mcwb validate --plan 'D:\projects\mc-fleet-bot\docs\masterplans\04-combined-complex'
 ```
 
 ### 3. If you have a real Minecraft world to point at
@@ -79,7 +89,7 @@ Drop a `.mcwb.toml` in your working directory (template at
 
 ```toml
 [paths]
-plan_dir = "D:/projects/mc-fleet-bot/masterplans/04-combined-complex"
+plan_dir = "D:/projects/mc-fleet-bot/docs/masterplans/04-combined-complex"
 world_dir = "D:/minecraft/servers/combined-complex/world"
 
 [build]

@@ -4,6 +4,57 @@ All notable changes to DyoBot are documented in this file.
 
 ---
 
+## 2026-08-07
+
+### mcwb absorbed as the `world-builder/` subtool
+
+`packetloss404/mc-world-builder` is now `world-builder/` in this repo, merged
+via `git subtree` so its four commits of history came with it. The original
+GitHub repo was **not** deleted.
+
+The rationale is that the two halves were already one pipeline: mcwb consumes
+`docs/masterplans/<plan>/04-contractor/contractor-brief.json`, which this repo
+produces — five plans currently carry one. Keeping them in separate repos meant
+the producer and consumer of that format could drift apart silently.
+
+It stays a **standalone Python package** with its own `pyproject.toml`, pytest
+suite and CLI. Nothing in `src/` imports it, and it is not part of the Node
+build — `npm run build` and `npm test` neither build nor test it. Requires a
+venv plus `pip install -e ".[dev]"`; without that, pytest fails at collection
+on `litemapy`, which is a missing venv rather than a broken checkout.
+
+Two documentation bugs fixed while integrating:
+
+- `NEWSERVER.md` pointed at `D:\projects\mc-fleet-bot\masterplans\…` in six
+  places. There is no top-level `masterplans/` — it is `docs/masterplans/`.
+  Those paths were wrong *before* the move, not broken by it.
+- `world-builder/README.md` linked to mc-fleet-bot as `../mc-fleet-bot`, a
+  sibling-directory assumption the move invalidated.
+
+### LLM outage handling and sandbox hardening
+
+Auto-disable after 3 consecutive full-chain provider failures, below the
+circuit breaker's threshold — a 30s cooldown only rate-limits a dead chain
+rather than stopping it. A 15-minute recovery probe bypasses both the kill
+switch and the breaker, and accepts **only a paid provider** as proof, since a
+local Ollama is always up and says nothing about drained credit.
+`GET /api/llm/enabled` now reports `autoDisabled`.
+
+Saved-skill context is fenced in `<saved_skills>` and declared untrusted:
+player chat reached codegen prompts by a second route, through stored skill
+descriptions, that the `<task>` sanitizer did not cover.
+
+A memory-recall rung was built, reviewed, and **reverted** — it swallowed
+`AI_DISABLED`, cancelling the 5-minute outage idle and running the loop at
+`taskCooldownMs` instead. Details in the branch history.
+
+Host-side: systemd hardening took the unit's exposure from 9.2 UNSAFE to 7.3
+MEDIUM and severed the escape→root path. See
+`docs/research/worker-process-isolation.md` — in particular why
+`AmbientCapabilities=CAP_SETUID` **grants root** and must not be used.
+
+---
+
 ## 2026-08-05
 
 ### World Showcase — masterplan program report (v1.1.0)
