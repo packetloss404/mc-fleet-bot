@@ -306,6 +306,29 @@ export function deriveB07WestTwo(b07System) {
 }
 
 /**
+ * Reproduce the exact P1-B08 service-tunnel excavation reservation from the
+ * inline centerline (faithful copy of G03 buildB08): each centerline point
+ * expands per orientation into a 6-wide (lateral -2..3) by 6-tall
+ * (vertical -1..4) section. The caller must verify the returned set against
+ * the committed G03 identity before use.
+ */
+export function deriveB08ServiceTunnelConstruction(connectorsDoc) {
+  const excavation = [];
+  for (const point of connectorsDoc.serviceTunnelCenterline.centerline.points) {
+    for (const orientation of point.orientations) {
+      for (let lateral = -2; lateral <= 3; lateral += 1) {
+        for (let vertical = -1; vertical <= 4; vertical += 1) {
+          excavation.push(orientation === 'x'
+            ? { x: point.x, y: point.y + vertical, z: point.z + lateral }
+            : { x: point.x + lateral, y: point.y + vertical, z: point.z });
+        }
+      }
+    }
+  }
+  return uniqueCells(excavation);
+}
+
+/**
  * Independently reproduce all 73 exact D06 reservation references from the
  * ledger in phase1-d06-mechanisms.json, each verified against its source
  * manifest and the ledger identity (count, bounds, coordinate hash).
