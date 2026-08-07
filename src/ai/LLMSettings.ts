@@ -14,6 +14,15 @@ import type { TokenLedger } from './TokenLedger';
 
 const SETTINGS_PATH = path.join(process.cwd(), 'data', 'llm-settings.json');
 
+/**
+ * How often to test whether a provider has come back after an auto-disable.
+ *
+ * 15 minutes: long enough that a genuinely dead chain costs ~4 tiny calls an
+ * hour, short enough that a rate-limit lapse or a credit top-up restores the
+ * fleet without anyone watching. Only ever runs while autoDisabled is true.
+ */
+const RECOVERY_PROBE_INTERVAL_MS = 15 * 60 * 1000;
+
 export interface ProviderConfig {
   name: string;
   apiKey: string;
@@ -87,6 +96,10 @@ export class LLMSettings {
   private callListener: ((event: LLMCallEvent) => void) | null = null;
   /** Optional hook returning the number of real (non-bot) players online; drives idle throttle. */
   private onlineHumanCountFn: (() => number) | null = null;
+  /** True when the kill switch was flipped by onTotalProviderFailure rather
+   *  than an operator. Only an automatic disable is eligible for auto-recovery. */
+  private autoDisabled = false;
+  private recoveryTimer: ReturnType<typeof setInterval> | null = null;
 
   constructor(ledger: TokenLedger) {
     this.ledger = ledger;
@@ -177,6 +190,81 @@ export class LLMSettings {
     this.settings.aiEnabled = enabled;
     this.save();
     logger.warn({ aiEnabled: enabled }, 'AI kill switch toggled');
+
+    // An explicit toggle is an operator decision and outranks the automatic
+    // one: turning AI off by hand must not be undone by the recovery probe,
+    // and turning it back on by hand ends the outage as far as we're
+    // concerned. Either way the automatic machinery stands down.
+    this.autoDisabled = false;
+    this.stopRecoveryProbe();
+  }
+
+  /**
+   * Every provider chain failed AUTO_DISABLE_THRESHOLD times running.
+   *
+   * Flip the global kill switch so the fleet stops burning cycles on a dead
+   * chain, then poll for recovery. Workers see AI_DISABLED, fall back to the
+   * skill library, and idle when that has nothing — no crash loop, no spam.
+   */
+  private onTotalProviderFailure(consecutiveFailures: number): void {
+    if (!this.isAiEnabled()) return; // already off; nothing to do
+
+    this.settings.aiEnabled = false;
+    this.save();
+    this.autoDisabled = true;
+    logger.error(
+      { consecutiveFailures, probeIntervalMs: RECOVERY_PROBE_INTERVAL_MS },
+      'AI auto-disabled: all providers failed. Falling back to learned skills; probing for recovery.',
+    );
+    this.startRecoveryProbe();
+  }
+
+  private startRecoveryProbe(): void {
+    if (this.recoveryTimer) return;
+    this.recoveryTimer = setInterval(() => {
+      void this.probeForRecovery();
+    }, RECOVERY_PROBE_INTERVAL_MS);
+    // Never hold the event loop open just to poll a dead provider.
+    this.recoveryTimer.unref?.();
+  }
+
+  private stopRecoveryProbe(): void {
+    if (!this.recoveryTimer) return;
+    clearInterval(this.recoveryTimer);
+    this.recoveryTimer = null;
+  }
+
+  /**
+   * One cheap call against the current chain. Success means somebody's credit
+   * came back (or the rate limit lapsed), so restore service.
+   *
+   * Deliberately bypasses isAiEnabled() by calling the client directly — the
+   * kill switch we're testing would otherwise refuse the probe itself.
+   */
+  private async probeForRecovery(): Promise<void> {
+    if (!this.autoDisabled) {
+      this.stopRecoveryProbe();
+      return;
+    }
+
+    const router = this.currentRouter ?? this.buildRouter();
+    if (!router) return; // no providers configured at all — nothing to probe
+
+    try {
+      await router.probe();
+      this.settings.aiEnabled = true;
+      this.save();
+      this.autoDisabled = false;
+      this.stopRecoveryProbe();
+      logger.warn({ aiEnabled: true }, 'AI auto-re-enabled: a provider answered again');
+    } catch (err: any) {
+      logger.info({ err: err?.message }, 'AI recovery probe still failing; staying disabled');
+    }
+  }
+
+  /** True when AI was switched off automatically rather than by an operator. */
+  isAutoDisabled(): boolean {
+    return this.autoDisabled;
   }
 
   /** Register a source for the online (human) player count, used by the idle throttle. */
@@ -315,6 +403,7 @@ export class LLMSettings {
       routes: Object.keys(this.settings.routes).length > 0 ? this.settings.routes : undefined,
       isEnabled: () => this.isAiEnabled(),
       paidProviderAllowed: (provider, taskType) => this.isPaidCallAllowed(provider, taskType),
+      onTotalFailure: (consecutiveFailures) => this.onTotalProviderFailure(consecutiveFailures),
     }, this.ledger);
 
     // Re-apply any previously registered call listener so the live timeline

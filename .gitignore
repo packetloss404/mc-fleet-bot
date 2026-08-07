@@ -32,8 +32,12 @@ config.yml.bak-*
 *.bak-*
 
 # Claude
+# CLAUDE.md is deliberately tracked (private repo, 2026-08-07): it is the
+# project brief agents and humans read first, and keeping it untracked meant
+# corrections lived on one clone and never reached the deploy host. Verified
+# free of credential values before tracking — it names env vars, never sets
+# them. .claude/ stays ignored (per-machine session state).
 .claude/
-CLAUDE.md
 diagnostics/
 
 # Generated town schematics (per-town runtime artifacts)

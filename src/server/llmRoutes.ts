@@ -98,7 +98,14 @@ export function registerLLMRoutes(
 
   // ── Global AI kill switch ──
   app.get('/api/llm/enabled', (_req: Request, res: Response) => {
-    res.json({ enabled: llmSettings.isAiEnabled() });
+    // autoDisabled distinguishes "an operator turned AI off" from "every
+    // provider failed and the fleet switched itself off". Without it a
+    // dashboard showing enabled:false is ambiguous during exactly the
+    // incident an operator most needs to understand.
+    res.json({
+      enabled: llmSettings.isAiEnabled(),
+      autoDisabled: llmSettings.isAutoDisabled(),
+    });
   });
 
   app.post('/api/llm/enabled', (req: Request, res: Response) => {
