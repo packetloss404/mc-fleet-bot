@@ -1,9 +1,9 @@
 """Tests for the masterplan loader.
 
 The primary fixture is the real ``04-combined-complex`` masterplan from
-``D:/projects/mc-fleet-bot/masterplans/`` — a full production spec
-authored independently. If these tests pass, the schema is sound and
-the loader handles real-world input.
+this repo's ``docs/masterplans/`` — a full production spec authored
+independently. If these tests pass, the schema is sound and the loader
+handles real-world input.
 
 The source path is configurable via the ``MCWB_FIXTURE_PLAN_DIR`` env var
 so the tests work on machines where the masterplan lives elsewhere.
@@ -19,6 +19,14 @@ import pytest
 
 from mcwb.spec import MasterplanError, load_masterplan
 
+# mcwb lives inside mc-fleet-bot as world-builder/, so the masterplans it
+# consumes are two directories up. The previous default was an absolute
+# Windows path that also omitted `docs/`, so these tests skipped on every
+# machine including the author's. Env var still wins for deployed runs.
+_REPO_PLAN_DIR = (
+    Path(__file__).resolve().parents[2] / "docs" / "masterplans" / "04-combined-complex"
+)
+
 
 # Resolve the canonical fixture path. The fixture is the user's real
 # masterplan — copied in once at test-collection time.
@@ -26,7 +34,7 @@ FIXTURES_DIR = Path(__file__).resolve().parent / "fixtures"
 SOURCE_PLAN_DIR = Path(
     os.environ.get(
         "MCWB_FIXTURE_PLAN_DIR",
-        r"D:\projects\mc-fleet-bot\masterplans\04-combined-complex",
+        str(_REPO_PLAN_DIR),
     )
 )
 FIXTURE_PLAN_DIR = FIXTURES_DIR / "04-combined-complex"
@@ -88,9 +96,9 @@ def test_real_masterplan_phase_budget_balances() -> None:
     drift = abs(phase_sum - total) / max(total, 1)
     if drift > 0.05:
         # Drift is real; we expect a warning to have been raised.
-        assert any("drift" in w or "phases sum" in w for w in plan.validation.warnings), (
-            f"phase budget drift {drift:.1%} but no warning surfaced"
-        )
+        assert any(
+            "drift" in w or "phases sum" in w for w in plan.validation.warnings
+        ), f"phase budget drift {drift:.1%} but no warning surfaced"
     else:
         # Tight budget — should be no drift warning.
         assert not any("drift" in w for w in plan.validation.warnings)

@@ -13,6 +13,15 @@ from pathlib import Path
 
 import pytest
 
+# mcwb lives inside mc-fleet-bot as world-builder/, so the masterplans it
+# consumes are two directories up. The previous default was an absolute
+# Windows path that also omitted `docs/`, so these tests skipped on every
+# machine including the author's. Env var still wins for deployed runs.
+_REPO_PLAN_DIR = (
+    Path(__file__).resolve().parents[2] / "docs" / "masterplans" / "04-combined-complex"
+)
+
+
 
 def _run_mcwb(*args: str, env: dict | None = None) -> subprocess.CompletedProcess:
     """Run the mcwb CLI as a subprocess so we exercise the real entry point."""
@@ -47,7 +56,7 @@ def test_cli_validate_real_brief_succeeds() -> None:
     source = Path(
         os.environ.get(
             "MCWB_FIXTURE_PLAN_DIR",
-            r"D:\projects\mc-fleet-bot\masterplans\04-combined-complex",
+            str(_REPO_PLAN_DIR),
         )
     )
     if not source.exists():

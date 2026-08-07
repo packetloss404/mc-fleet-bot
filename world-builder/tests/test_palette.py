@@ -16,6 +16,15 @@ import pytest
 
 from mcwb.palette import get as get_palette
 
+# mcwb lives inside mc-fleet-bot as world-builder/, so the masterplans it
+# consumes are two directories up. The previous default was an absolute
+# Windows path that also omitted `docs/`, so these tests skipped on every
+# machine including the author's. Env var still wins for deployed runs.
+_REPO_PLAN_DIR = (
+    Path(__file__).resolve().parents[2] / "docs" / "masterplans" / "04-combined-complex"
+)
+
+
 
 # Match minecraft:foo_bar_baz style ids. Filters out non-block keys like
 # "minecraft" (the namespace) and any property values that aren't block ids.
@@ -68,7 +77,7 @@ def test_real_brief_blocks_are_in_palette() -> None:
     source = Path(
         os.environ.get(
             "MCWB_FIXTURE_PLAN_DIR",
-            r"D:\projects\mc-fleet-bot\masterplans\04-combined-complex",
+            str(_REPO_PLAN_DIR),
         )
     )
     brief_path = source / "04-contractor" / "contractor-brief.json"

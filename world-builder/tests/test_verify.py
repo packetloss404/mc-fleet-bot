@@ -9,10 +9,19 @@ import pytest
 from mcwb.spec import load_masterplan
 from mcwb.verify import run_verification
 
+# mcwb lives inside mc-fleet-bot as world-builder/, so the masterplans it
+# consumes are two directories up. The previous default was an absolute
+# Windows path that also omitted `docs/`, so these tests skipped on every
+# machine including the author's. Env var still wins for deployed runs.
+_REPO_PLAN_DIR = (
+    Path(__file__).resolve().parents[2] / "docs" / "masterplans" / "04-combined-complex"
+)
+
+
 
 def test_verify_fresh_world_fails_summary_check(tmp_path: Path) -> None:
     brief_path = Path(
-        r"D:\projects\mc-fleet-bot\masterplans\04-combined-complex\04-contractor\contractor-brief.json"
+        _REPO_PLAN_DIR / "04-contractor" / "contractor-brief.json"
     )
     if not brief_path.exists():
         pytest.skip(f"brief not found: {brief_path}")

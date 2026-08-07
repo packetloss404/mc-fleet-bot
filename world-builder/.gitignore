@@ -4,8 +4,15 @@ __pycache__/
 *$py.class
 *.egg-info/
 .eggs/
-build/
-dist/
+# ANCHORED with a leading slash — deliberately. Unanchored `build/` matches at
+# ANY depth, and it silently shadowed `mcwb/build/`, a real source subpackage
+# (7 modules: writer, diff, phase_runner, phase_generator, litematic_writer,
+# amulet_writer). Those files were never tracked, so the standalone
+# mc-world-builder repo on GitHub was incomplete for its entire life and
+# `import mcwb.build` failed on any fresh clone. Recovered 2026-08-07 during
+# the subtree merge into mc-fleet-bot. Keep the slashes.
+/build/
+/dist/
 .venv/
 venv/
 .env
