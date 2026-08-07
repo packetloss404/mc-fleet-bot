@@ -49,7 +49,7 @@ All on the live host, 2026-08-07. Several repo docs are stale on these numbers.
 |---|---|---|
 | Host CPU / RAM | **8 vCPU, 15,991 MB** (14,524 MB available) | Resized 2026-07-26 per HANDOFF §7. The old "2 vCPU / 7 GB" figures are obsolete. |
 | Fleet footprint | 815 MB RSS, 5 bots, 22 threads, peak 933 MB | ~143 MB/bot; main-thread heap is only 32 MB, so the bulk is worker isolates + native deps. |
-| Projected as processes | ~193 MB/bot → **5 bots ≈ 1.1 GB, 10 ≈ 2.0 GB** | Against 14.5 GB available. **Memory is not a constraint.** |
+| Measured as processes (PSS) | **+7–8 MB/bot** → 5 bots ~1.0 → ~1.04 GB; 12 bots ~2.4 → ~2.5 GB | Against 14.5 GB available. **Memory is not a constraint.** |
 | Service identity | `User=ianwalmsley`, `Group=ianwalmsley` | Not root. |
 | Service capabilities | **`CapPrm=0 CapEff=0 CapAmb=0`** | Cannot `setuid`. `fork({uid,gid})` → `EPERM`, confirmed. |
 | `NoNewPrivs` | `1` | Independently blocks a setuid helper. Two locks, two keys. |
@@ -57,6 +57,45 @@ All on the live host, 2026-08-07. Several repo docs are stale on these numbers.
 | `apparmor_restrict_unprivileged_userns` | `1` | The bwrap/userns fallback needs an AppArmor profile. Fragile; not recommended. |
 | `child_process` in worker import graph | **none** | A seccomp filter denying `execve` is cheap and high-value — no `sh`, `curl`, or `python` for escaped code. |
 | Sudo for service user | `(ALL) NOPASSWD: ALL` | Was the escape→root path. Severed 2026-08-07 by `NoNewPrivileges=yes`; exposure 9.2 UNSAFE → 7.3 MEDIUM. |
+
+### Benchmarked, not estimated
+
+An early estimate of **+40–60 MB per bot** circulated during this research and
+is **wrong by roughly 6×**. It was corrected by direct benchmark (5 children
+each loading `mineflayer` + `minecraft-data` + `pathfinder`, sampled via
+`/proc/<pid>/smaps_rollup`):
+
+| | 5 worker_threads | 5 forked children |
+|---|---|---|
+| naive RSS | 273.5 MB | 461.4 MB + ~41 MB parent |
+| **PSS (true physical)** | **226.1 MB** | **~263 MB incl. parent** |
+
+**Delta ≈ +37 MB for 5 bots, ~7–8 MB per bot.** The naive RSS sum makes fork
+look 1.7× worse; that double-counts shared text pages. **PSS is the honest
+number and it is a wash.**
+
+Why the intuition fails: *`worker_threads` already pay the per-isolate cost.*
+Each `new Worker()` re-parses and re-compiles the whole mineflayer graph into
+its own isolate — that is the ~30 MB per-thread heap. The only thing threads
+share and processes don't is the node binary's text segment plus native addon
+`.so` text, and the kernel shares **those across processes too**, via the page
+cache. Steady-state per-bot memory (~200 MB, `WorkerHandle.ts:35-37`) is chunk
+data and world state — pure JS heap, identical under either model.
+
+Also measured:
+- **Startup: +5%** module load (11,856 ms → 12,520 ms, ~0.7 s/bot). Against a
+  deliberate 45 s/bot join stagger, noise. (N=1; concurrent runs on the dev box
+  were unreliable, but the serialized case is the production-representative one.)
+- **IPC round-trip: 148–158 µs (threads) → 197–233 µs (fork)**, i.e. +50–80 µs.
+  `serialization: 'advanced'` and `'json'` were indistinguishable in cost, so
+  advanced mode is free. The most exposed path is `SiteSelector`'s serial
+  probing (60 k probes, 180 s budget) → **+4.8 s worst case**; but measured
+  per-probe cost there is dominated by worker event-loop queueing (~4 s/block
+  verify, `BuildCoordinator.ts:2445-2450`), which is ~26,000× the raw RTT.
+  Transport is not the bottleneck on that path.
+
+> One stale claim to disregard from the same analysis: it states the binding
+> constraint is "2 vCPU". The host has **8** (§2). CPU headroom is real.
 
 ---
 
@@ -316,6 +355,29 @@ buy more risk reduction than the uid separation does.
    *other* bot retrieves and hands to `CodeExecutor` — lateral movement to the
    whole fleet plus persistence across restarts. Poisoned `data/` is bad;
    poisoned `skills/` is game over.
+
+   **This one also fixes a live correctness bug, and that may be the better
+   reason to do it.** Every worker holds its own `StatsTracker`,
+   `SocialMemory`, `PlanLibrary`, `SkillLibrary` and qa-cache over the **same
+   file paths**, with no coordination — a file-as-IPC channel that bypasses
+   `IPCChannel` entirely. `atomicWrite.ts`'s own header records the damage:
+   *"the source of the corrupt `qa_cache.json` and a contributor to the 47.9%
+   orphan rate in `skills/`"*, and states the residual plainly — *"read-modify-write
+   sequences [are not] safe — last writer still wins on whole-file rewrites.
+   **Fixing lost updates needs a single writer or a real store.**"*
+
+   `SkillLibrary.saveIndex()` (`:519-536`) is exactly such a read-modify-write:
+   re-read the on-disk index, keep its deprecated rows, concatenate with the
+   in-memory index, rewrite the whole file. Five workers doing that concurrently
+   lose entries — which is the mechanism behind the orphan rate (skill `.js`
+   written, index entry lost). An independent review counted **454 of 936
+   `.js` files unreachable** from the index.
+
+   Routing `save()` through IPC makes the main process the single writer, which
+   is the fix the comment asks for. **Worth doing on correctness grounds alone,
+   independent of any migration** — and the migration makes it marginally worse,
+   since it removes the accidental same-process fs ordering that currently makes
+   the race survivable.
 5. **Phase A of the transport work** — an `IPCTransport` interface
    (`{ send(msg): boolean; on('message', fn) }`) replacing the six
    `postMessage` call sites, plus try/catch on every send. Pure correctness on
@@ -360,11 +422,44 @@ Stated honestly, because no design closes these:
 
 ## 8. Open / not verified
 
-- **`design-regression` did not deliver.** The feature-by-feature breakage
-  inventory (build coordination, supply chains, town brain, campaigns,
-  missions, dashboard Socket.IO) and an independent cost verdict are therefore
-  missing. The resource question was answered by direct measurement (§2)
-  instead; the feature question was not.
+- **Required work if §5 proceeds (Tier 1), all observability rather than
+  mechanism:**
+  1. `resourceLimits.maxOldGenerationSizeMb` → `execArgv
+     --max-old-space-size`. **The OOM signature changes** from a clean
+     `ERR_WORKER_OUT_OF_MEMORY` to a V8 `FATAL ERROR` abort (SIGABRT, exit
+     134/null). `BotInstance.ts:594` records **80 measured OOM kills**, so the
+     log line operators grep for is operationally load-bearing — budget for
+     restoring it. `--max-old-space-size` is also a softer bound, so a runaway
+     bot overshoots further before dying.
+  2. **`/api/admin/info` goes blind.** `process.memoryUsage().rss` today
+     includes all five workers — it is literally the number used to size
+     `WORKER_HEAP_MB` (`WorkerHandle.ts:35-37`). After the split it collapses
+     to main-thread-only, and the auto-snapshot threshold at
+     `index.ts:283-289` becomes a useless OOM canary. Fold each child's
+     `memoryUsage()` into the existing status heartbeat.
+  3. **Logging fragments.** Six independent processes interleaving into one
+     captured stdout is a worse line-tearing risk than six transports in one
+     process, and `logPath`/`process.pid` in `admin.ts:279-289` become
+     ambiguous.
+  4. Pin `cwd` explicitly — `BotInstance.ts:242` and several relative
+     `'./data'` / `'./skills'` paths resolve off `process.cwd()`. `fork()`
+     inherits it, but any `cwd:` option or systemd `WorkingDirectory`
+     divergence silently relocates every bot's persistence with **no error**.
+
+- **Test coverage of the boundary is zero.** 9 of 201 test files touch it, and
+  **every one mocks `WorkerHandle` as a duck-typed object literal** — none
+  instantiates a real `Worker` or `IPCChannel`. The suite would stay green
+  through this entire migration without a single edit, which is convenient and
+  also damning. New tests needed: real forked-child round-trip asserting error
+  `name`/`stack`/**`code`** survive (load-bearing — `AIDisabledError` carries
+  `code='AI_DISABLED'` so workers idle instead of crash-looping); `Set`/`Map`/
+  `undefined` survival under the chosen serialization mode; SIGKILL mid-request
+  rejecting pending requests rather than hanging to the 60 s timeout; OOM exit
+  driving `maybeRestart`'s crash counting; cwd pinning.
+
+- **`atomicWrite` improves after a split** — temp files are named
+  `${path}.${pid}.${random}.tmp`, and today all five workers share one pid.
+
 - **Whether `prismarine-viewer`'s transitive deps ever `execve`.** It is lazily
   `require`d (`botWorker.ts:69`). The seccomp `execve` denial should be
   validated with a viewer tab open before it ships.
