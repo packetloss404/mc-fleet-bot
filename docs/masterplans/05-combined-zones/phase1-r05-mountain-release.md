@@ -56,3 +56,14 @@ The parked R03 tunnels (B03 J-curve, B08 service tunnel) can now be re-bound
 against the post-mountain save and bored; the B09 funicular east-face
 envelope now has its mountain; D05 hydrology/relic buffers are in their
 designed context.
+
+## Known drift (recorded post-release)
+
+The bulk rollback preflights **187,686/187,696** against the post save: 10
+cells around `1961, 77-100, -824` (west toe) held **flowing lava** at
+execution time — a live flow that arrived after the bound save was captured.
+The strict `replace minecraft:air` fills correctly skipped them, so those ~10
+cells remain unfilled lava inside the base. Disposition: fold into the
+wet-zone sealing-liner follow-up release together with the R02 aquifer
+deferral; the finish-package rollback is 100% clean and the sealed pre-build
+save remains the full restore source.
