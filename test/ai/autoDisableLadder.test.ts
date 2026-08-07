@@ -114,7 +114,26 @@ describe('recovery probe', () => {
     expect(calls).toContain('anthropic');
   });
 
-  it('prefers the free local provider so probing costs nothing', async () => {
+  it('does NOT accept a free local provider as proof the paid chain recovered', async () => {
+    // A local Ollama is always up. Treating its success as recovery would
+    // re-enable the fleet every 15 min against a still-drained paid chain —
+    // a spend sawtooth that arms as soon as OLLAMA_BASE_URL is set.
+    const calls: string[] = [];
+    const router = new ModelRouter(
+      new Map([
+        ['anthropic', deadClient('anthropic', calls)],
+        ['ollama', liveClient('ollama', calls)],
+      ]),
+      { defaultProvider: 'anthropic' } as any,
+      ledger(),
+    );
+
+    await expect(router.probe()).rejects.toThrow(/no credit/);
+    expect(calls).toEqual(['anthropic']);
+    expect(calls).not.toContain('ollama');
+  });
+
+  it('recovers when the paid provider answers again', async () => {
     const calls: string[] = [];
     const router = new ModelRouter(
       new Map([
@@ -125,7 +144,21 @@ describe('recovery probe', () => {
       ledger(),
     );
 
-    await router.probe();
+    await expect(router.probe()).resolves.toBeUndefined();
+    expect(calls).toEqual(['anthropic']);
+  });
+
+  it('falls back to free providers only when no paid provider is configured', async () => {
+    // Ollama-only deployment: there is no paid chain to recover, so its
+    // success is the only signal available and does count.
+    const calls: string[] = [];
+    const router = new ModelRouter(
+      new Map([['ollama', liveClient('ollama', calls)]]),
+      { defaultProvider: 'ollama' } as any,
+      ledger(),
+    );
+
+    await expect(router.probe()).resolves.toBeUndefined();
     expect(calls).toEqual(['ollama']);
   });
 

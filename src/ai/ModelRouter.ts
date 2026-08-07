@@ -40,6 +40,13 @@ const BREAKER_COOLDOWN_MS = 30_000;
  */
 const AUTO_DISABLE_THRESHOLD = 3;
 
+/**
+ * Providers that run locally and cost nothing. Their availability says nothing
+ * about whether a paid chain has credit again, so the recovery probe must not
+ * accept them as proof of recovery.
+ */
+const FREE_LOCAL_PROVIDERS = new Set(['ollama']);
+
 /** Max entries in the in-memory embedding cache (LRU). */
 const EMBED_CACHE_MAX = 256;
 
@@ -569,21 +576,25 @@ export class ModelRouter implements LLMClient {
    * switch and the circuit breaker.
    *
    * The recovery probe needs this: the switch it is testing would otherwise
-   * refuse the very call meant to prove that service is back. Ordered cheapest
-   * first — a local Ollama answering is enough to call the fleet healthy, and
-   * it costs nothing. Resets the breaker on success so normal traffic resumes
-   * with a clean slate.
+   * refuse the very call meant to prove that service is back.
    *
-   * Throws if every provider is still refusing.
+   * Only a PAID provider answering counts as recovery. A free local model
+   * (Ollama) is always up and proves nothing about drained credit or a lapsed
+   * rate limit — probing it first and re-enabling on its success would flip
+   * the fleet back on every 15 minutes and let it spend into the same dead
+   * paid chain, a sawtooth that arms the moment OLLAMA_BASE_URL is set.
+   * When only free providers are configured there is no paid chain to
+   * recover, so their success does count.
+   *
+   * Resets the breaker on success so normal traffic resumes with a clean
+   * slate. Throws if every candidate is still refusing.
    */
   async probe(): Promise<void> {
-    const preferred = ['ollama', ...this.clients.keys()];
-    const seen = new Set<string>();
+    const paid = [...this.clients.keys()].filter((name) => !FREE_LOCAL_PROVIDERS.has(name));
+    const candidates = paid.length > 0 ? paid : [...this.clients.keys()];
     let lastError: any = null;
 
-    for (const name of preferred) {
-      if (seen.has(name)) continue;
-      seen.add(name);
+    for (const name of candidates) {
       const client = this.clients.get(name);
       if (!client) continue;
 
