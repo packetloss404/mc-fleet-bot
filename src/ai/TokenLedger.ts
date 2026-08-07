@@ -30,7 +30,14 @@ const COST_PER_MILLION: Record<string, { input: number; output: number }> = {
   'gemini-2.5-flash-preview-05-20': { input: 0.15, output: 0.60 },
   'gemini-2.0-flash': { input: 0.10, output: 0.40 },
   'gemini-2.5-pro-preview-05-06': { input: 1.25, output: 10.0 },
-  'gemini-embedding-001': { input: 0.0, output: 0.0 },
+  // Embedding models. Approximate rates — embeds were previously priced $0
+  // (missing or zeroed entries), which made an uncapped embed path invisible
+  // to the daily budget (2026-08 audit). Approximate-but-nonzero beats
+  // exactly-wrong-at-zero; refresh when providers publish updated cards.
+  'gemini-embedding-001': { input: 0.15, output: 0.0 },
+  'text-embedding-3-small': { input: 0.02, output: 0.0 },
+  'text-embedding-3-large': { input: 0.13, output: 0.0 },
+  'voyage-4-large': { input: 0.18, output: 0.0 },
   // Anthropic — legacy Claude 4
   'claude-sonnet-4-20250514': { input: 3.0, output: 15.0 },
   'claude-opus-4-20250514': { input: 15.0, output: 75.0 },

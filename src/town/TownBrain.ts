@@ -1211,15 +1211,26 @@ export class TownBrain {
           };
         }
       } catch (err: any) {
+        // Charge the tokens the failed attempts actually burned. Recording
+        // spend only on the resolve path meant validation-failure loops made
+        // paid calls forever with $0 hitting the budget (2026-08 audit).
+        const failedUsd = typeof err?.designCost?.estUsd === 'number' ? err.designCost.estUsd : 0;
+        if (failedUsd > 0) {
+          this.dailySpendUsd.set(
+            budgetKey,
+            (this.dailySpendUsd.get(budgetKey) ?? spentToday) + failedUsd,
+          );
+          this.persistDesignSpend();
+        }
         logger.warn(
-          { err: err?.message, townId: this.townId, kind: item.kind },
+          { err: err?.message, townId: this.townId, kind: item.kind, failedUsd },
           'TownBrain build: LLM design failed; falling back to library',
         );
         this.townManager.recordEvent({
           townId: this.townId,
           kind: 'design:failed',
           severity: 'minor',
-          payload: { kind: item.kind, error: err?.message ?? 'unknown' },
+          payload: { kind: item.kind, error: err?.message ?? 'unknown', estUsd: failedUsd },
           highlightScore: 15,
         });
       }

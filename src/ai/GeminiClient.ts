@@ -208,4 +208,9 @@ export class GeminiClient implements LLMClient {
     return this.model;
   }
 
+  /** embed() is hardcoded to gemini-embedding-001; attribute it honestly. */
+  getEmbedModelId(): string {
+    return 'gemini-embedding-001';
+  }
+
 }

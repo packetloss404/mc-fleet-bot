@@ -339,10 +339,19 @@ export class LlmDesigner {
         );
       } catch (err: any) {
         // Disabled / breaker open / network — bail to caller's fallback.
+        // Carry the tokens burned by EARLIER attempts out with the error so
+        // the caller can charge them to the design budget (see final throw).
         logger.warn(
           { townId: town.id, kind: plan.kind, attempt, err: err?.message },
           'LlmDesigner: LLM call failed',
         );
+        if (err && typeof err === 'object') {
+          err.designCost = {
+            inputTokens: totalInputTokens,
+            outputTokens: totalOutputTokens,
+            estUsd: estimateUsd(totalInputTokens, totalOutputTokens),
+          };
+        }
         throw err;
       }
 
@@ -412,8 +421,19 @@ export class LlmDesigner {
       );
     }
 
-    throw new Error(
+    // Failed designs still burned MAX_VALIDATION_RETRIES paid calls. Throwing
+    // the tokens away here meant a kind that reliably fails validation made
+    // ~144 paid calls/day (3 per 30-min build-failure cooldown cycle) while
+    // the design budget recorded $0 and its cap never tripped (2026-08
+    // audit). Attach the real cost so the caller can charge the budget.
+    const failure: any = new Error(
       `LlmDesigner: validation failed after ${MAX_VALIDATION_RETRIES} attempts (last: ${lastFailure?.reasons?.join('; ') ?? 'unknown'})`,
     );
+    failure.designCost = {
+      inputTokens: totalInputTokens,
+      outputTokens: totalOutputTokens,
+      estUsd: estimateUsd(totalInputTokens, totalOutputTokens),
+    };
+    throw failure;
   }
 }

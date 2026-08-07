@@ -185,8 +185,16 @@ export class ChronicleGenerator {
     // beyond that we walk forward in 20-minute windows.
     const window = this.dayWindow(town, dayNumber);
     const allEvents = this.townManager.listEvents(townId, { limit: 1000 });
+    // Exclude the chronicle's own events from the activity gate. Publishing
+    // an entry records `chronicle:published`, which lands in the NEXT window
+    // — so from the second window onward every window looked "active" and an
+    // idle town made ~71 paid calls/day, with the quiet-day placeholder path
+    // never running (2026-08 audit).
     const dayEvents = allEvents.filter(
-      (e) => e.occurredAt >= window.start && e.occurredAt < window.end,
+      (e) =>
+        e.occurredAt >= window.start &&
+        e.occurredAt < window.end &&
+        !e.kind.startsWith('chronicle:'),
     );
     const residents = this.townManager.listResidents(townId).filter(
       (r) => r.status === 'alive' || r.status == null,
@@ -268,13 +276,20 @@ export class ChronicleGenerator {
     let body: string;
     let model: string | null = null;
 
-    if (this.llm == null) {
+    // Milestones share the daily budget. "Independent of the cap because
+    // milestones are rare" was an assumption, not an enforcement — disasters
+    // fire one paid call each and only bot-death disasters are deduped, so a
+    // death-storm (this fleet's known failure mode) was an unbounded,
+    // uncounted paid path. The milestone still publishes on a capped day —
+    // it just uses the placeholder body instead of a paid one.
+    if (this.llm == null || this.isOverBudget(townId, dayNumber, town)) {
       body = this.milestonePlaceholder(town, kind, payload);
     } else {
       try {
         const result = await this.callLlmMilestone({ town, dayNumber, kind, payload });
         body = result.body;
         model = result.model;
+        this.recordCost(townId, dayNumber, ESTIMATED_COST_PER_CALL_USD);
       } catch (err: any) {
         logger.warn(
           { err: err?.message, townId, kind },
@@ -540,8 +555,18 @@ export class ChronicleGenerator {
     this.persistTownLedger(townId);
   }
 
-  private budgetKey(townId: string, dayNumber: number): string {
-    return `${townId}|${dayNumber}`;
+  /**
+   * Budget bucket key: town + REAL UTC calendar day.
+   *
+   * This used to key on the chronicle dayNumber — but a chronicle "day" is 20
+   * real minutes, so the "daily" budget reset 72 times per real day and the
+   * cap could never trip: one ~$0.05 call per 20-minute window against a
+   * fresh $0.50 bucket every time. 828 paid entries accumulated for an idle
+   * town before this was caught (2026-08 audit). The spec's intent is a cap
+   * on real spend per real day, so the bucket must be a real day.
+   */
+  private budgetKey(townId: string, _dayNumber: number): string {
+    return `${townId}|${new Date().toISOString().slice(0, 10)}`;
   }
 
   /**
@@ -584,11 +609,20 @@ export class ChronicleGenerator {
     const dataDir = this.dataDirOrNull();
     if (!dataDir) return;
     try {
-      // Walk our in-memory map and pick out keys for this town.
+      // Walk our in-memory map and pick out keys for this town. Prune as we
+      // go: legacy `townId|<dayNumber>` keys from the broken 20-minute-day
+      // scheme (72 keys/day, ~26k/year) and real-day keys older than the
+      // retention window are dropped from both the file and memory.
       const prefix = `${townId}|`;
+      const cutoff = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
       const chronicleCostCentsByKey: Record<string, number> = {};
       for (const [key, cents] of this.dailyCostCents.entries()) {
         if (!key.startsWith(prefix)) continue;
+        const day = key.slice(prefix.length);
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(day) || day < cutoff) {
+          this.dailyCostCents.delete(key);
+          continue;
+        }
         chronicleCostCentsByKey[key] = cents;
       }
       budgetLedger.saveChronicle(dataDir, townId, { chronicleCostCentsByKey });
