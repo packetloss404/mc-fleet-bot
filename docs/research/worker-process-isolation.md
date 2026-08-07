@@ -96,6 +96,26 @@ into *"escape gets root"*, reversing the hardening applied the same day.
 > first check passes, and nothing in the code review surfaces it. If someone
 > suggests ambient capabilities again, point them here.
 
+**"Can't the child just clear its ambient set after dropping uid?" — No, not
+from Node.** Clearing it requires `prctl(PR_CAP_AMBIENT,
+PR_CAP_AMBIENT_CLEAR_ALL)` in the window *between* `fork` and `execve`, and
+Node deliberately exposes no pre-exec hook: `child_process` options stop at
+`uid`/`gid`, and libuv's spawn path performs the setuid without touching the
+ambient set. The only routes are a native addon or a setuid wrapper — and
+`NoNewPrivs=1` kills the wrapper. **The escape hatch is genuinely closed, not
+merely awkward.**
+
+The sharpest way to state the severity: the danger is not that the *parent*
+becomes root-equivalent. It is that the **sandboxed child — the one component
+in the system that runs untrusted code — ends up one syscall from root.** That
+inverts the entire purpose of the migration. Fork+uid is a documented
+anti-pattern for this codebase, not just an unavailable option.
+
+This also sharpens why polkit is the better trade (§5): scoping authority to
+ten named units is narrower than `CAP_SETUID`, and — unlike `CAP_SETUID` — it
+is authority the child **cannot inherit**. That second property is what the
+probe actually proved, and it is the more durable reason.
+
 ---
 
 ## 4. Options considered
