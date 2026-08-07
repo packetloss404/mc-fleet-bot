@@ -28,6 +28,13 @@ export interface LLMClient {
    * disabled the daily budget cap, since the cap sums those costs.
    */
   getModelId?(): string;
+  /**
+   * The model embed() actually calls, when it differs from the chat model.
+   * Without this the router attributed OpenAI embeds to the CHAT model id
+   * (gpt-5.5 at $5/M) for requests that used text-embedding-3-small — wrong
+   * cost, wrong model, and the ledger row was fiction either way.
+   */
+  getEmbedModelId?(): string;
 }
 
 /** Extended interface for clients that support deeper reasoning. */

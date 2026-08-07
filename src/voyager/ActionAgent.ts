@@ -61,7 +61,6 @@ Use these when no primitive covers the task (swimming, eating, fleeing):
 - await bot.consume() — eat the currently held food item (must equip food to hand first)
 - bot.equip(item, 'hand') — equip an item to hand (item = result of bot.inventory.items().find(...))
 - bot.toss(itemType, metadata, count) — drop items (itemType is the numeric ID: use item.type from inventory)
-- await bot.fish() — start fishing (requires fishing rod equipped)
 
 ### Swimming / underwater pattern:
 The bot has an instinct that handles drowning automatically — prefer letting it run. If you must surface manually:

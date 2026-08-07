@@ -1,5 +1,6 @@
 import { Bot } from 'mineflayer';
 import { ActionResult } from './types';
+import { logger } from '../util/logger';
 
 // Ordered list of "junk" item names (most-junky first). Adjust to your taste —
 // keep this conservative; we should never accidentally drop pickaxes or food.
@@ -53,12 +54,11 @@ export async function dropJunk(
         droppedTotal += count;
         droppedByName[junkName] = (droppedByName[junkName] || 0) + count;
       } catch (err: any) {
-        // Continue on toss errors — partial drops are still useful.
-        return {
-          success: false,
-          message: `dropJunk failed while tossing ${junkName}: ${err?.message || String(err)}`,
-          data: { dropped: droppedTotal, droppedByName },
-        };
+        // Continue on toss errors — partial drops are still useful. (The code
+        // used to return a failure on the first toss error, contradicting
+        // this very comment and abandoning the remaining junk.)
+        logger.debug({ junkName, err: err?.message }, 'dropJunk: toss failed, continuing');
+        continue;
       }
     }
   }

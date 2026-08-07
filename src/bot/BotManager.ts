@@ -681,6 +681,18 @@ export class BotManager {
     return this.llmClient;
   }
 
+  /**
+   * Hot-swap the LLM client everywhere it is referenced: this manager AND
+   * every live WorkerHandle. /api/llm/reload used to poke only the manager
+   * field, leaving running workers on the old router (2026-08 audit).
+   */
+  setLlmClient(client: LLMClient | null): void {
+    this.llmClient = client;
+    for (const handle of this.getAllWorkers()) {
+      handle.setLlmClient(client);
+    }
+  }
+
   getSharedWorldModel(): SharedWorldModel { return this.sharedWorldModel; }
   getSwarmCoordinator(): SwarmCoordinator { return this.swarmCoordinator; }
   getDungeonMaster(): DungeonMaster { return this.dungeonMaster; }

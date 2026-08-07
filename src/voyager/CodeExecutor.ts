@@ -1,4 +1,11 @@
-import { isBelowDigFloor, getMinDigY } from '../actions/geofence';
+import {
+  isBelowDigFloor,
+  getMinDigY,
+  isProtected,
+  isAboveCarveCeiling,
+  getCarveCeiling,
+  intersectsProtectedZone,
+} from '../actions/geofence';
 import vm from 'vm';
 import { Bot } from 'mineflayer';
 import { goals } from 'mineflayer-pathfinder';
@@ -197,6 +204,21 @@ export class CodeExecutor {
       return value;
     };
 
+    // Primitive refusals THROW instead of returning {success:false}. Zero of
+    // the 938 saved skills ever read .success — generated code continued
+    // blindly past refused primitives, execution "succeeded" (didn't throw),
+    // and no-op runs got marked complete whenever the critic was weak: the
+    // core mechanism of the 21k-request supply loop (2026-08 audit). Throwing
+    // is already the house style (requireName, moveTo guards, the dig
+    // wrapper, prompt hard rule "let errors propagate"), and it surfaces the
+    // primitive's own message to the critic verbatim.
+    const throwIfFailed = <T extends { success: boolean; message?: string }>(primitive: string, result: T): T => {
+      if (!result.success) {
+        throw new Error(`${primitive} failed: ${result.message || 'unknown reason'}`);
+      }
+      return result;
+    };
+
     const sandbox = {
       bot: botProxy,
       Vec3,
@@ -224,7 +246,7 @@ export class CodeExecutor {
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'mineBlock', name, count });
         const afterItems = bot.inventory.items().map((i) => `${i.name}x${i.count}`).join(', ') || 'empty';
         pushLog(`[primitive] mineBlock inventory before=${beforeItems} after=${afterItems}`);
-        return result;
+        return throwIfFailed('mineBlock', result);
       },
       craftItem: async (name: string, count = 1) => {
         throwIfInterrupted();
@@ -235,7 +257,7 @@ export class CodeExecutor {
         const message = result.message || 'craftItem completed';
         pushLog(`[primitive] craftItem result: ${message}`);
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'craftItem', name, count });
-        return result;
+        return throwIfFailed('craftItem', result);
       },
       smeltItem: async (itemName: string, fuelName: string, count = 1) => {
         throwIfInterrupted();
@@ -247,7 +269,7 @@ export class CodeExecutor {
         const message = result.message || 'smeltItem completed';
         pushLog(`[primitive] smeltItem result: ${message}`);
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'smeltItem', itemName, fuelName, count });
-        return result;
+        return throwIfFailed('smeltItem', result);
       },
       placeItem: async (name: string, x: number, y: number, z: number) => {
         throwIfInterrupted();
@@ -258,7 +280,7 @@ export class CodeExecutor {
         const message = result.message || 'placeItem completed';
         pushLog(`[primitive] placeItem result: ${message}`);
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'placeItem', name, x, y, z });
-        return result;
+        return throwIfFailed('placeItem', result);
       },
       withdrawItem: async (containerName: string, itemName: string, count = 1) => {
         throwIfInterrupted();
@@ -270,7 +292,7 @@ export class CodeExecutor {
         const message = result.message || 'withdrawItem completed';
         pushLog(`[primitive] withdrawItem result: ${message}`);
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'withdrawItem', containerName, itemName, count });
-        return result;
+        return throwIfFailed('withdrawItem', result);
       },
       depositItem: async (containerName: string, itemName: string, count = 1) => {
         throwIfInterrupted();
@@ -282,7 +304,7 @@ export class CodeExecutor {
         const message = result.message || 'depositItem completed';
         pushLog(`[primitive] depositItem result: ${message}`);
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'depositItem', containerName, itemName, count });
-        return result;
+        return throwIfFailed('depositItem', result);
       },
       inspectContainer: async (containerName: string) => {
         throwIfInterrupted();
@@ -293,6 +315,11 @@ export class CodeExecutor {
         const message = result.message || 'inspectContainer completed';
         pushLog(`[primitive] inspectContainer result: ${message}`);
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'inspectContainer', containerName });
+        // Deliberately NOT throwIfFailed: the codegen manual documents
+        // "[] on missing/failed/empty — safe to use .find/.filter", and both
+        // fresh generations and saved skills are written check-then-act
+        // against that contract. A probe returning empty is information, not
+        // a failure (2026-08 review).
         return containerItemsFromResult(result);
       },
       dropJunk: async (minFreeSlots = 6, threshold = 30) => {
@@ -305,18 +332,62 @@ export class CodeExecutor {
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'dropJunk', minFreeSlots, threshold, ...(result.data || {}) });
         return result;
       },
+      // setBlock/fillBlocks are SERVER COMMANDS on an opped bot — they bypass
+      // the bot.dig/placeBlock wrappers, isProtected, the dig floor, and the
+      // carve ceiling entirely, and a single /fill can rewrite 32k blocks.
+      // They were exposed to generated code with zero validation (2026-08
+      // audit). Guards here mirror the wrapper guards: mcData-valid block
+      // name, no protected-zone overlap, carve ceiling, and for /fill a
+      // volume cap and no 'destroy' mode. Refusals THROW so the failure is
+      // visible to the critic instead of silently "succeeding".
       setBlock: async (name: string, x: number, y: number, z: number, state?: string) => {
         requireName('setBlock', 'block name', name);
+        if (!/^[a-z0-9_]+$/.test(name) || !(bot as any).registry?.blocksByName?.[name]) {
+          throw new Error(`setBlock: unknown block name "${name}"`);
+        }
+        if (state && !/^[a-z0-9_=,\[\]]+$/i.test(state)) {
+          throw new Error(`setBlock: invalid block state "${state}"`);
+        }
+        const bx = Math.floor(x), by = Math.floor(y), bz = Math.floor(z);
+        if (isProtected(bx, by, bz)) {
+          throw new Error(`setBlock blocked: (${bx},${by},${bz}) is inside a protected build zone`);
+        }
+        if (isAboveCarveCeiling(bx, by, bz)) {
+          throw new Error(`setBlock blocked: (${bx},${by},${bz}) is above the excavation ceiling y${getCarveCeiling()?.maxY}`);
+        }
         const blockSpec = state ? `minecraft:${name}[${state}]` : `minecraft:${name}`;
-        bot.chat(`/setblock ${Math.floor(x)} ${Math.floor(y)} ${Math.floor(z)} ${blockSpec} replace`);
-        pushLog(`[primitive] setBlock("${blockSpec}", ${Math.floor(x)}, ${Math.floor(y)}, ${Math.floor(z)})`);
+        bot.chat(`/setblock ${bx} ${by} ${bz} ${blockSpec} replace`);
+        pushLog(`[primitive] setBlock("${blockSpec}", ${bx}, ${by}, ${bz})`);
         await new Promise((r) => setTimeout(r, 50));
       },
       fillBlocks: async (name: string, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, mode = 'replace') => {
         requireName('fillBlocks', 'block name', name);
+        if (!/^[a-z0-9_]+$/.test(name) || !(bot as any).registry?.blocksByName?.[name]) {
+          throw new Error(`fillBlocks: unknown block name "${name}"`);
+        }
+        if (mode !== 'replace' && mode !== 'keep' && mode !== 'hollow' && mode !== 'outline') {
+          throw new Error(`fillBlocks: mode "${mode}" is not allowed (destroy scatters drops and defeats the geofence)`);
+        }
+        const lo = { x: Math.floor(Math.min(x1, x2)), y: Math.floor(Math.min(y1, y2)), z: Math.floor(Math.min(z1, z2)) };
+        const hi = { x: Math.floor(Math.max(x1, x2)), y: Math.floor(Math.max(y1, y2)), z: Math.floor(Math.max(z1, z2)) };
+        const volume = (hi.x - lo.x + 1) * (hi.y - lo.y + 1) * (hi.z - lo.z + 1);
+        if (volume > 4096) {
+          throw new Error(`fillBlocks blocked: volume ${volume} exceeds the 4096-block cap`);
+        }
+        const zone = intersectsProtectedZone(lo, hi);
+        if (zone) {
+          throw new Error(`fillBlocks blocked: box overlaps protected zone "${zone.name ?? 'unnamed'}"`);
+        }
+        // Bulk fill above the ceiling is never sanctioned — the exempt columns
+        // exist for narrow shaft breaches, not box edits, so refuse outright
+        // whenever the box pokes above maxY while the campaign ceiling is on.
+        const cc = getCarveCeiling();
+        if (cc && hi.y > cc.maxY) {
+          throw new Error(`fillBlocks blocked: box reaches above the excavation ceiling y${cc.maxY}`);
+        }
         const blockSpec = `minecraft:${name}`;
-        bot.chat(`/fill ${Math.floor(x1)} ${Math.floor(y1)} ${Math.floor(z1)} ${Math.floor(x2)} ${Math.floor(y2)} ${Math.floor(z2)} ${blockSpec} ${mode}`);
-        pushLog(`[primitive] fillBlocks("${name}", ${x1},${y1},${z1} -> ${x2},${y2},${z2}, ${mode})`);
+        bot.chat(`/fill ${lo.x} ${lo.y} ${lo.z} ${hi.x} ${hi.y} ${hi.z} ${blockSpec} ${mode}`);
+        pushLog(`[primitive] fillBlocks("${name}", ${lo.x},${lo.y},${lo.z} -> ${hi.x},${hi.y},${hi.z}, ${mode})`);
         await new Promise((r) => setTimeout(r, 100));
       },
       killMob: async (name: string, maxDuration = 30000) => {
@@ -328,7 +399,7 @@ export class CodeExecutor {
         const message = result.message || 'killMob completed';
         pushLog(`[primitive] killMob result: ${message}`);
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'killMob', name, maxDuration });
-        return result;
+        return throwIfFailed('killMob', result);
       },
       moveTo: async (x: number, y: number, z: number, range = 2, timeoutSec = 15) => {
         throwIfInterrupted();
@@ -375,8 +446,23 @@ export class CodeExecutor {
         pushLog(`[primitive] moveTo startPos=(${start.x.toFixed(1)}, ${start.y.toFixed(1)}, ${start.z.toFixed(1)})`);
         bot.pathfinder.setGoal(new goals.GoalNear(x, y, z, range));
         return new Promise<boolean>((resolve, reject) => {
+          // The goal_reached listener must be removed on EVERY exit path.
+          // The timeout/interrupt paths used to leave it installed, so each
+          // timed-out moveTo left a stale closure that fired on some future
+          // goal_reached — pushing events into a dead execution's arrays and
+          // re-running spent cleanups (2026-08 audit).
+          const onGoalReached = () => {
+            clearTimeout(timeout);
+            const pos = bot.entity.position;
+            pushLog(`[primitive] moveTo: goal reached at (${pos.x.toFixed(1)}, ${pos.y.toFixed(1)}, ${pos.z.toFixed(1)})`);
+            pushEvent('primitive_success', 'moveTo reached goal', { primitive: 'moveTo', x, y, z, range, timeoutSec });
+            cleanupTrace();
+            cleanupInterrupt();
+            resolve(true);
+          };
           const timeout = setTimeout(() => {
             bot.pathfinder.stop();
+            bot.removeListener('goal_reached' as any, onGoalReached);
             const pos = bot.entity.position;
             pushLog(`[primitive] moveTo: timed out, stopping at (${pos.x.toFixed(1)}, ${pos.y.toFixed(1)}, ${pos.z.toFixed(1)})`);
             pushEvent('primitive_failure', 'moveTo timed out', { primitive: 'moveTo', x, y, z, range, timeoutSec });
@@ -387,21 +473,14 @@ export class CodeExecutor {
           const cleanupInterrupt = onInterrupt((reason) => {
             clearTimeout(timeout);
             bot.pathfinder.stop();
+            bot.removeListener('goal_reached' as any, onGoalReached);
             pushLog(`[primitive] moveTo: interrupted (${reason})`);
             pushEvent('interrupt', `moveTo interrupted: ${reason}`, { primitive: 'moveTo', reason });
             cleanupTrace();
             cleanupInterrupt();
             reject(new Error(`Execution interrupted: ${reason}`));
           });
-          bot.once('goal_reached' as any, () => {
-            clearTimeout(timeout);
-            const pos = bot.entity.position;
-            pushLog(`[primitive] moveTo: goal reached at (${pos.x.toFixed(1)}, ${pos.y.toFixed(1)}, ${pos.z.toFixed(1)})`);
-            pushEvent('primitive_success', 'moveTo reached goal', { primitive: 'moveTo', x, y, z, range, timeoutSec });
-            cleanupTrace();
-            cleanupInterrupt();
-            resolve(true);
-          });
+          bot.once('goal_reached' as any, onGoalReached);
         });
       },
       exploreUntil: async (direction: any, maxTime = 60, callback: () => any) => {
@@ -635,6 +714,8 @@ export class CodeExecutor {
   }
 
   private createBotProxy(bot: Bot, pushLog: (line: string) => void, interruptibleDelay: (ms: number) => Promise<void>) {
+    // Per-execution cap on real chat messages sent by generated code.
+    let chatsSent = 0;
     return {
       get entity() { return { position: bot.entity.position, velocity: bot.entity.velocity, height: (bot.entity as any).height || 1.8 }; },
       get health() { return bot.health; },
@@ -643,12 +724,34 @@ export class CodeExecutor {
       get isRaining() { return bot.isRaining; },
       get inventory() {
         return {
-          items: () => bot.inventory.items().map((i) => ({ name: i.name, count: i.count, slot: i.slot, type: i.type })),
+          // foodRecovery is included because the codegen manual's documented
+          // eating pattern is `items().find(i => i.foodRecovery > 0)` — the
+          // proxy used to strip it, so `undefined > 0` was false and a
+          // starving bot following the manual concluded it had no food while
+          // holding bread (2026-08 audit).
+          items: () => bot.inventory.items().map((i) => ({
+            name: i.name,
+            count: i.count,
+            slot: i.slot,
+            type: i.type,
+            foodRecovery: (bot as any).registry?.foodsByName?.[i.name]?.foodPoints ?? 0,
+          })),
         };
       },
       chat: (msg: string) => {
+        // Really send (capped): this used to be a pure log no-op, yet the
+        // chat success-check passes on the [chat] log marker — so chat tasks
+        // "succeeded" with nothing said in-game (2026-08 audit). Slash
+        // commands stay blocked (setBlock/fillBlocks are the sanctioned,
+        // geofenced command paths); the cap keeps a chatty script from
+        // flooding the server.
         const safe = String(msg).slice(0, 256);
-        if (!safe.startsWith('/')) pushLog(`[chat] ${safe}`);
+        if (safe.startsWith('/')) return;
+        pushLog(`[chat] ${safe}`);
+        if (chatsSent < 3) {
+          chatsSent++;
+          try { bot.chat(safe); } catch { /* chat is best-effort */ }
+        }
       },
       pathfinder: {
         setGoal: (goal: any, dynamic?: boolean) => bot.pathfinder.setGoal(goal, dynamic),
@@ -758,6 +861,22 @@ export class CodeExecutor {
         await (bot as any).consume();
       },
       activateItem: () => {
+        // Fluid guard: activating a water/lava bucket dumps fluid at the
+        // cursor block, touching no dig/place wrapper — the one block-edit
+        // path that had no guard at all (2026-08 audit). Empty buckets,
+        // food, rods etc. pass through untouched.
+        const held = (bot as any).heldItem;
+        if (held && (held.name === 'water_bucket' || held.name === 'lava_bucket')) {
+          const cursor = (bot as any).blockAtCursor?.(5);
+          const p = cursor?.position ?? bot.entity.position;
+          const x = Math.floor(p.x), y = Math.floor(p.y), z = Math.floor(p.z);
+          if (isProtected(x, y, z) || isProtected(x, y + 1, z)) {
+            throw new Error(`activateItem blocked: emptying a ${held.name} into a protected build zone at (${x},${y},${z})`);
+          }
+          if (isAboveCarveCeiling(x, y, z)) {
+            throw new Error(`activateItem blocked: emptying a ${held.name} above the excavation ceiling y${getCarveCeiling()?.maxY}`);
+          }
+        }
         bot.activateItem();
       },
       deactivateItem: () => {

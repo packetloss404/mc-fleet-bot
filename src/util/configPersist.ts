@@ -66,6 +66,9 @@ export const RESTART_REQUIRED_FIELDS: Record<PatchableSection, ReadonlySet<strin
     // ambientChat timings drive setInterval schedules at bot worker boot
     'ambientChatMinSec',
     'ambientChatMaxSec',
+    // Both captured by setInterval scopes at worker boot, like the above.
+    'headTrackingTickMs',
+    'wanderIntervalMs',
   ]),
   affinity: new Set(),
   instincts: new Set(),
@@ -105,6 +108,12 @@ const FIELD_TYPES: Record<PatchableSection, Record<string, FieldType>> = {
     conversationRadius: 'number',
     ambientChatMinSec: 'number',
     ambientChatMaxSec: 'number',
+    // Present in the config schema and therefore in the dashboard's
+    // GET→PATCH echo of the whole section. Now that validatePatch rejects
+    // unknown fields atomically, leaving these out made every Behavior-tab
+    // save 400 (the UI PATCHes back everything it fetched).
+    headTrackingTickMs: 'number',
+    wanderIntervalMs: 'number',
   },
   affinity: {
     default: 'number',
@@ -157,8 +166,8 @@ export interface ValidatedPatch {
 
 /**
  * Type-check + coerce incoming PATCH values. Unknown keys for a section are
- * dropped with a warning (rather than rejected outright — section schemas
- * grow over time and we don't want to break older clients).
+ * REJECTED (ok:false, nothing applied). They used to be dropped with only a
+ * warning while the call reported success — see the inline comment below.
  */
 export function validatePatch(
   section: PatchableSection,
@@ -171,8 +180,17 @@ export function validatePatch(
   for (const [key, raw] of Object.entries(incoming)) {
     const expected = schema?.[key];
     if (!expected) {
-      errors.push(`unknown field '${key}' for section '${section}' (dropped)`);
-      continue;
+      // Reject, don't drop. Silent dropping while returning ok:true meant a
+      // PATCH to e.g. mining.protectedZones or mining.mineSite (arrays and
+      // objects have no FIELD_TYPES entries) reported success and changed
+      // NOTHING — the operator believed a protection was live when it wasn't
+      // (2026-08 audit; config.yml has warned about exactly this). Atomic
+      // rejection also stops mixed patches from half-applying.
+      errors.push(
+        `field '${key}' is not patchable for section '${section}' — ` +
+        `edit config.yml and restart to change it`,
+      );
+      return { ok: false, values: {}, errors };
     }
     if (expected === 'number') {
       const n = typeof raw === 'number' ? raw : Number(raw);

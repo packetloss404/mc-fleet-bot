@@ -131,4 +131,9 @@ export class OpenAIClient implements LLMClient {
     return this.model;
   }
 
+  /** embed() is hardcoded to text-embedding-3-small; attribute it honestly. */
+  getEmbedModelId(): string {
+    return 'text-embedding-3-small';
+  }
+
 }

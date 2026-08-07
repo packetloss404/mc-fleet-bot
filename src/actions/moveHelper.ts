@@ -53,6 +53,7 @@ export function moveNearWithCleanup(
       bot.removeListener('goal_reached', onGoalReached);
       bot.removeListener('path_update', onPathUpdate);
       bot.removeListener('path_reset', onPathReset);
+      bot.removeListener('mobility_denied' as any, onMobilityDenied);
       resolve(result);
     };
 
@@ -133,9 +134,18 @@ export function moveNearWithCleanup(
       settle(false);
     }, timeoutMs);
 
+    // The civic-mobility wrapper on pathfinder.setGoal silently CLEARS a
+    // leash-violating goal, so neither goal_reached nor path_update ever
+    // fires and this helper burned its full timeout on every denied move
+    // (60s per routed-ore task for a leashed bot, forever — 2026-08 audit).
+    // The wrapper now emits 'mobility_denied'; fail fast on it.
+    const onMobilityDenied = () => {
+      settle(false);
+    };
     bot.on('goal_reached', onGoalReached);
     bot.on('path_update', onPathUpdate);
     bot.on('path_reset', onPathReset);
+    bot.on('mobility_denied' as any, onMobilityDenied);
     setGoal();
     // Some full-block lips leave Mineflayer repeatedly replanning without
     // emitting `path_reset: stuck`. Track actual avatar progress as a bounded

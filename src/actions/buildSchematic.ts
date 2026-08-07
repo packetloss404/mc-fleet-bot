@@ -5,6 +5,7 @@ import { Vec3 } from 'vec3';
 import { ActionResult } from './types';
 import { logger } from '../util/logger';
 import { moveNearWithCleanup } from './moveHelper';
+import { isProtected, isAboveCarveCeiling } from './geofence';
 
 /**
  * Loads a .schematic or .schem file and builds it block-by-block
@@ -84,6 +85,17 @@ export async function buildSchematic(
   let failed = 0;
 
   for (const block of blocks) {
+    // Geofence every target up front — the /setblock fallbacks below are
+    // server commands that bypass the bot.placeBlock wrapper entirely, so
+    // without this check a schematic overlapping a protected build (or the
+    // carve-ceiling buffer) would overwrite it block by block (2026-08 audit).
+    if (
+      isProtected(block.pos.x, block.pos.y, block.pos.z) ||
+      isAboveCarveCeiling(block.pos.x, block.pos.y, block.pos.z)
+    ) {
+      failed++;
+      continue;
+    }
     try {
       // Walk near if too far
       const dist = bot.entity.position.distanceTo(block.pos);

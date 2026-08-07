@@ -314,7 +314,8 @@ export function createAPIServer(
   // is safe because the generator short-circuits on existing daily rows.
   const chronicleGenerator = new ChronicleGenerator(
     botManager.getTownManager(),
-    botManager.getLLMClient(),
+    // Provider, not a snapshot — picks up /api/llm/reload and late API binds.
+    () => botManager.getLLMClient(),
   );
   const chronicleScheduler = new ChronicleScheduler(
     botManager.getTownManager(),

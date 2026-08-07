@@ -232,6 +232,8 @@ export class WorkerHandle {
     this.workerSlotIndex = data.workerSlotIndex;
     this.llmClient = llmClient;
     this.affinityManager = affinityManager;
+    // NOTE: llmClient is hot-swappable via setLlmClient — /api/llm/reload
+    // must reach live workers, not just the BotManager (2026-08 audit).
     this.conversationManager = conversationManager;
     this.blackboardManager = blackboardManager;
     this.sharedWorldModel = sharedWorldModel;
@@ -696,6 +698,17 @@ export class WorkerHandle {
    * channel logs a debug message and returns rather than throwing, so the
    * PATCH handler can broadcast indiscriminately across `getAllWorkers()`.
    */
+  /**
+   * Hot-swap the LLM client this handle routes worker `llm.*` IPC through.
+   * Without this, /api/llm/reload swapped the BotManager's reference while
+   * every live worker kept calling the OLD router (old providers, old keys)
+   * until process restart — removing a provider to stop its spend "succeeded"
+   * without stopping anything (2026-08 audit).
+   */
+  setLlmClient(client: LLMClient | null): void {
+    this.llmClient = client;
+  }
+
   postConfigPatch(section: string, values: Record<string, unknown>): void {
     if (!this.ipc || !this.worker) {
       logger.debug(

@@ -117,6 +117,8 @@ export interface PlayerIntentModelLike {
 
 export class VoyagerLoop {
   private static MAX_RETRY_EVENT_LOG_CHARS = 1200;
+  /** Max error-recovery task replacements per task description (see executeTask). */
+  private static MAX_TASK_REPLACEMENTS = 3;
   private static MAX_FAILURE_OUTPUT_CHARS = 1200;
   private bot: Bot;
   private personality: string;
@@ -155,6 +157,14 @@ export class VoyagerLoop {
     timestamp: number;
   } | null = null;
   private playerTaskQueue: Task[] = [];
+  /**
+   * How many times each task description has been replaced with a
+   * prerequisite chain by ErrorRecovery. Cleared on success; bounded by
+   * clearing the whole map when it grows past 200 entries.
+   */
+  private taskReplacementCounts: Map<string, number> = new Map();
+  /** True when the last cycle failed with AI_DISABLED — idles the next one. */
+  private aiDisabledIdle = false;
   private activeLongTermGoal: LongTermGoal | null = null;
   private blackboardManager: BlackboardManager | null = null;
   private activeBlackboardTask: BlackboardTask | null = null;
@@ -864,14 +874,25 @@ export class VoyagerLoop {
     this.loopTimeout = setTimeout(async () => {
       if (!this.running || this.paused) return;
 
+      let aiDisabled = false;
       try {
         await this.runOneCycle();
       } catch (err: any) {
-        logger.error({ bot: this.botName, err: err.message }, 'Voyager cycle error');
+        // Kill switch / budget cap: idle on a slow heartbeat instead of
+        // re-running the full cycle at task cadence. The AI_DISABLED code
+        // exists for exactly this, but nothing in the loop checked it (and
+        // it didn't survive the IPC boundary until 2026-08), so a capped
+        // fleet ground attempt→fail→retry churn until the cap reset.
+        aiDisabled = err?.code === 'AI_DISABLED' || err?.name === 'AIDisabledError' || err?.name === 'BudgetCappedError';
+        logger.error({ bot: this.botName, err: err.message, aiDisabled }, 'Voyager cycle error');
       }
 
+      this.aiDisabledIdle = aiDisabled;
       this.scheduleNext();
-    }, Math.max(50, Math.round(this.config.voyager.taskCooldownMs * this.taskCooldownMultiplier)));
+    }, Math.max(
+      this.aiDisabledIdle ? 5 * 60 * 1000 : 50,
+      Math.round(this.config.voyager.taskCooldownMs * this.taskCooldownMultiplier),
+    ));
   }
 
   /**
@@ -1196,13 +1217,24 @@ export class VoyagerLoop {
     } catch {
       /* swallow — role boost is additive */
     }
+    // Resolve the player task BEFORE claiming from the blackboard, and only
+    // claim when nothing higher-priority will preempt it. The claim used to be
+    // gated on !goalTask alone — so with a player task queued (or a survival /
+    // player-intent override pinned) the bot claimed a town task, executed the
+    // OTHER task, and then marked the untouched town task completed or blocked
+    // based on that other task's outcome (2026-08 audit). Claiming only when
+    // the blackboard task will actually run makes claim == executed by
+    // construction.
+    //
     // Caretaker builders never claim blackboard/swarm tasks — those are the
     // roaming DungeonMaster "explore N blocks for iron" quests that the leash
     // can't fulfill. They run only their own place-only caretaker curriculum
     // (below), plus any explicit player/goal task.
-    const blackboardTask = (!goalTask && !this.isCaretakerBuilder) ? (await this.blackboardManager?.claimBestTask(this.botName, this.currentTask || this.personality, this.personality, botPos, botRole ?? undefined)) || null : null;
-    this.activeBlackboardTask = blackboardTask;
     const playerTask = goalTask || this.playerTaskQueue.shift();
+    const blackboardTask = (!goalOverrideTask && !playerTask && !this.isCaretakerBuilder)
+      ? (await this.blackboardManager?.claimBestTask(this.botName, this.currentTask || this.personality, this.personality, botPos, botRole ?? undefined)) || null
+      : null;
+    this.activeBlackboardTask = blackboardTask;
 
     // Town-resident gate: when the bot has a (non-idle) town role and nothing
     // higher-priority is available, prefer to idle a tick over running the
@@ -1282,19 +1314,39 @@ export class VoyagerLoop {
       cultureContext || undefined,
     );
 
-    // Stuck-task cost guard: if this autonomously-chosen task has failed hard
-    // recently (count >= 2 within the cooldown window), don't burn a codegen call
-    // regenerating a doomed task every ~30s. Idle this cycle; the cooldown lets us
-    // retry later once the situation may have changed (e.g. the bot was rescued
-    // from a spot where the task was impossible). Player/goal/blackboard tasks
-    // bypass this — the user explicitly asked for those.
+    // Stuck-task cost guard: if this task has failed hard recently (count >= 2
+    // within the cooldown window), don't burn a codegen call regenerating a
+    // doomed task every ~30s. Idle this cycle; the cooldown lets us retry
+    // later once the situation may have changed (e.g. the bot was rescued
+    // from a spot where the task was impossible).
+    // Applies to EVERY task source. It used to exempt player/goal/blackboard
+    // tasks ("the user explicitly asked") — but the player queue also carries
+    // error-recovery re-queues and peer help_requests, and survival overrides
+    // re-pin every cycle, so every money-burning loop the 2026-08 audit found
+    // entered through an exempt source with the guard structurally bypassed.
+    // A genuinely-new player command is unaffected: the cooldown only arms
+    // after repeated hard failures of that same task.
     const STUCK_TASK_COOLDOWN_MS = 5 * 60 * 1000;
-    if (task && !haveHigherPriority
+    if (task
       && this.curriculumAgent.getBlockerMemory().isOnCooldown(task, STUCK_TASK_COOLDOWN_MS)) {
       // A bot stuck on the same task is often physically stranded (e.g. beached in
       // water with no reachable resources). Try to self-rescue it home before we
       // idle — otherwise it's cheap but permanently useless until a human notices.
       await this.tryRescueIfStranded(task);
+      // Don't swallow silently. The player task was already shifted off the
+      // queue — tell the requester why it isn't running instead of dropping
+      // it without a trace; and release the blackboard claim (as blocked, so
+      // its own backoff engages) rather than holding the town task hostage
+      // until releaseStale (2026-08 review).
+      if (playerTask && task.description === playerTask.description && this.bot.chat) {
+        try {
+          this.bot.chat(`Can't do "${task.description.slice(0, 60)}" right now — it failed repeatedly just recently. Ask again in a few minutes.`);
+        } catch { /* chat is best-effort */ }
+      }
+      if (this.activeBlackboardTask && task.description === this.activeBlackboardTask.description) {
+        this.blackboardManager?.blockTask(this.activeBlackboardTask.description, this.botName, 'on stuck-task cooldown');
+        this.activeBlackboardTask = null;
+      }
       logger.info(
         { bot: this.botName, task: task.description },
         'Stuck task on cooldown — skipping codegen this cycle (cost guard)',
@@ -1377,7 +1429,11 @@ export class VoyagerLoop {
           this.activeLongTermGoal.updatedAt = Date.now();
         }
         if (this.activeBlackboardTask) {
-          this.blackboardManager?.blockTask(this.activeBlackboardTask.description, this.botName, 'step failed');
+          // Only verdict the claim when the failed task IS the claimed task —
+          // regression net for the claim-vs-executed mismatch (2026-08 audit).
+          if (task.description === this.activeBlackboardTask.description) {
+            this.blackboardManager?.blockTask(this.activeBlackboardTask.description, this.botName, 'step failed');
+          }
           this.activeBlackboardTask = null;
         }
         this.currentTask = null;
@@ -1393,7 +1449,12 @@ export class VoyagerLoop {
       }
     }
     if (this.activeBlackboardTask) {
-      this.blackboardManager?.completeTask(this.activeBlackboardTask.description, this.botName);
+      // Only verdict the claim when the completed task IS the claimed task —
+      // completing a town task off an unrelated task's success was the false-
+      // complete → shortage-rechurn shape of the $240 loop (2026-08 audit).
+      if (task.description === this.activeBlackboardTask.description) {
+        this.blackboardManager?.completeTask(this.activeBlackboardTask.description, this.botName);
+      }
       this.activeBlackboardTask = null;
     }
     // Report completion of player-requested task back to the requester in chat.
@@ -1588,6 +1649,25 @@ export class VoyagerLoop {
     this.blackboardManager?.releaseReservationsForBot(this.botName, `${goalId}:`);
   }
 
+  /**
+   * Failure bookkeeping for paths that bail out of a task WITHOUT exhausting
+   * retries (abandon shortcuts, generateCode throws). Without this the
+   * stuck-task damper never arms for them and the task is re-selected at
+   * full codegen price every cycle (2026-08 review).
+   */
+  private recordAbandonFailure(task: Task, reason: string): void {
+    try {
+      this.curriculumAgent.updateProgress(task, false);
+      this.curriculumAgent.getBlockerMemory().recordTaskFailure(task, {
+        success: false,
+        output: '',
+        error: reason,
+        events: [],
+      }, reason || 'task abandoned');
+      this.lastFailedTask = task.description;
+    } catch { /* bookkeeping must never break the loop */ }
+  }
+
   private async executeTaskStep(step: PlannedStep): Promise<boolean> {
     const task: Task = {
       description: step.description,
@@ -1662,7 +1742,19 @@ export class VoyagerLoop {
       };
       codeSource = 'action-template';
     } else {
-      generated = await this.actionAgent!.generateCode(this.bot, task, this.skillLibrary, undefined, undefined, undefined, undefined, blockerSummary, worldMemorySummary);
+      try {
+        generated = await this.actionAgent!.generateCode(this.bot, task, this.skillLibrary, undefined, undefined, undefined, undefined, blockerSummary, worldMemorySummary);
+      } catch (err: any) {
+        // A generateCode throw (3 failed parse attempts, provider error) used
+        // to escape ALL failure bookkeeping to the cycle-level catch: player
+        // tasks silently vanished, no blocker recorded, and the task was
+        // re-selected next cycle for 3 more paid calls (2026-08 audit/review).
+        // Budget/kill-switch errors still propagate so the loop idles.
+        if (err?.code === 'AI_DISABLED') throw err;
+        this.recordAbandonFailure(task, `code generation failed: ${err?.message ?? 'unknown'}`);
+        logger.warn({ bot: this.botName, task: task.description, err: err?.message }, 'generateCode failed — task recorded as failed');
+        return false;
+      }
       codeSource = 'action-agent';
     }
 
@@ -1824,6 +1916,7 @@ export class VoyagerLoop {
         }
         this.curriculumAgent.updateProgress(task, true);
         this.curriculumAgent.getBlockerMemory().clearTask(task);
+        this.taskReplacementCounts.delete(task.description);
         this.lastCompletedTask = task.description;
         this.blackboardManager?.postMessage(this.botName, 'completion', `Finished ${task.description}.`);
 
@@ -1876,28 +1969,56 @@ export class VoyagerLoop {
         logger.info({ bot: this.botName, pattern: recovery.pattern, hint: recovery.hint }, 'ErrorRecovery: abandoning task');
         this.decisionTrace.record('retry_decision', task.description,
           `Abandoned: ${recovery.pattern}`, 'abandon', { pattern: recovery.pattern, hint: recovery.hint });
+        // Record the failure so the stuck-task damper can arm. Both abandon
+        // shortcuts used to skip ALL failure bookkeeping (only the retry-
+        // exhaustion path recorded), so an impossible task abandoned here was
+        // re-selected every cycle at full codegen price — and the fail-closed
+        // critic + throwing primitives make constant failure reasons (hence
+        // early abandons) the NORM, not the exception (2026-08 review).
+        this.recordAbandonFailure(task, lastError || recovery.hint || recovery.pattern);
         return false;
       }
 
       // If recovery says replace task, queue prerequisites and bail out of this task
       if (recovery?.replaceTask) {
-        const prereqs = this.resolvePrerequisites(recovery.replaceTask, task.description);
-        if (prereqs.length > 0) {
-          // Queue prerequisites at the front, then re-queue the original task after them
-          const originalKeywords = task.keywords.length > 0 ? task.keywords
-            : task.description.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter((w: string) => w.length > 2);
-          this.playerTaskQueue.unshift({ description: task.description, keywords: originalKeywords });
-          for (let i = prereqs.length - 1; i >= 0; i--) {
-            const p = prereqs[i];
-            const kw = p.description.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter((w: string) => w.length > 2);
-            this.playerTaskQueue.unshift({ description: p.description, keywords: kw });
+        // Cap replacements per task description. resolvePrerequisites always
+        // returns ≥1 entry, and the re-queue enters via playerTaskQueue —
+        // which used to bypass every cooldown guard — so a task whose
+        // prerequisite chain also fails cycled task → replace → prereqs fail
+        // → task → replace... forever, each lap a fresh paid codegen round
+        // (2026-08 audit). After the cap, fall through to the normal failure
+        // path so BlockerMemory backoff takes over.
+        if (this.taskReplacementCounts.size > 200) this.taskReplacementCounts.clear();
+        const replaceCount = (this.taskReplacementCounts.get(task.description) ?? 0) + 1;
+        if (replaceCount <= VoyagerLoop.MAX_TASK_REPLACEMENTS) {
+          this.taskReplacementCounts.set(task.description, replaceCount);
+          const prereqs = this.resolvePrerequisites(recovery.replaceTask, task.description);
+          if (prereqs.length > 0) {
+            // Queue prerequisites at the front, then re-queue the original
+            // task after them — skipping any already sitting in the queue so
+            // repeated recoveries can't pile duplicates.
+            const queued = new Set(this.playerTaskQueue.map((t) => t.description));
+            const originalKeywords = task.keywords.length > 0 ? task.keywords
+              : task.description.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter((w: string) => w.length > 2);
+            if (!queued.has(task.description)) {
+              this.playerTaskQueue.unshift({ description: task.description, keywords: originalKeywords });
+            }
+            for (let i = prereqs.length - 1; i >= 0; i--) {
+              const p = prereqs[i];
+              if (queued.has(p.description)) continue;
+              const kw = p.description.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter((w: string) => w.length > 2);
+              this.playerTaskQueue.unshift({ description: p.description, keywords: kw });
+            }
+            logger.info({ bot: this.botName, task: task.description, prereqs: prereqs.map((p) => p.description), replaceCount },
+              'ErrorRecovery: replacing task with prerequisite chain');
+            this.decisionTrace.record('retry_decision', task.description,
+              `Replaced with ${prereqs.length} prerequisites: ${prereqs.map((p) => p.description).join(' → ')}`,
+              'replace', { pattern: recovery.pattern, prereqs: prereqs.map((p) => p.description) });
+            return false;
           }
-          logger.info({ bot: this.botName, task: task.description, prereqs: prereqs.map((p) => p.description) },
-            'ErrorRecovery: replacing task with prerequisite chain');
-          this.decisionTrace.record('retry_decision', task.description,
-            `Replaced with ${prereqs.length} prerequisites: ${prereqs.map((p) => p.description).join(' → ')}`,
-            'replace', { pattern: recovery.pattern, prereqs: prereqs.map((p) => p.description) });
-          return false;
+        } else {
+          logger.warn({ bot: this.botName, task: task.description, replaceCount },
+            'ErrorRecovery: replacement cap reached — treating as normal failure');
         }
       }
 
@@ -1908,6 +2029,10 @@ export class VoyagerLoop {
         this.decisionTrace.record('retry_decision', task.description,
           `Abandoned: same error appeared twice in a row (${currentErrorKey})`,
           'abandon', { attempt: attempt + 1, error: currentErrorKey, reason: 'duplicate_error' });
+        // Same-error-twice is the signature of a PERMANENTLY impossible task
+        // (thrown refusals and the fail-closed critic emit stable messages).
+        // Record the failure so the damper arms — see the abandon note above.
+        this.recordAbandonFailure(task, lastError || currentErrorKey);
         return false;
       }
       previousErrorKey = currentErrorKey;
@@ -1947,10 +2072,19 @@ export class VoyagerLoop {
             functionName: generated.functionName,
           }, 'Retrying deterministic approved civic shift');
         } else {
-          generated = await this.actionAgent!.generateCode(
-            this.bot, task, this.skillLibrary,
-            lastError, generated.functionCode, enrichedCritique, eventLog, blockerSummary, worldMemorySummary
-          );
+          try {
+            generated = await this.actionAgent!.generateCode(
+              this.bot, task, this.skillLibrary,
+              lastError, generated.functionCode, enrichedCritique, eventLog, blockerSummary, worldMemorySummary
+            );
+          } catch (err: any) {
+            // Same contract as the initial generateCode: record the failure
+            // (arming the damper) instead of escaping bookkeeping entirely.
+            if (err?.code === 'AI_DISABLED') throw err;
+            this.recordAbandonFailure(task, `retry code generation failed: ${err?.message ?? 'unknown'}`);
+            logger.warn({ bot: this.botName, task: task.description, err: err?.message }, 'Retry generateCode failed — task recorded as failed');
+            return false;
+          }
           logger.info({
             bot: this.botName,
             source: 'action-agent',
@@ -2298,6 +2432,14 @@ export class VoyagerLoop {
         if (await this.isPeerDisliked(msg.from)) {
           logger.info({ bot: this.botName, from: msg.from }, 'Declining help request from disliked peer (bot affinity)');
           this.socialMemory?.addMemory(this.botName, 'observation', msg.from, `Ignored help request from disliked peer: ${content}`, -0.1);
+          break;
+        }
+        // Dedup: a wedged peer re-broadcasts the same help request every
+        // cycle; without this the queue piled identical tasks (each a paid
+        // codegen round, and a non-empty queue suppresses other guards) so
+        // one stuck bot made its helpers burn money serially (2026-08 audit).
+        if (this.playerTaskQueue.some((t) => t.description === content) || this.currentTask === content) {
+          logger.debug({ bot: this.botName, from: msg.from }, 'Duplicate help request already queued or running — skipping');
           break;
         }
         logger.info({ bot: this.botName, from: msg.from, content }, 'Help request received from bot');

@@ -163,15 +163,12 @@ export async function attack(bot: Bot, entityName: string, maxDuration = 30000):
       if (bot.health < FLEE_HEALTH_THRESHOLD) {
         cleanup();
         bot.pathfinder.stop();
-        // Move away from target
-        const pos = bot.entity.position;
-        const away = pos.offset(
-          pos.x - target.position.x,
-          0,
-          pos.z - target.position.z
-        ).normalize().scale(16);
-        const fleePos = pos.plus(away);
-        bot.pathfinder.setGoal(new goals.GoalNear(fleePos.x, fleePos.y, fleePos.z, 2));
+        // Move away from target. This used to be pos.offset(delta).normalize()
+        // — i.e. normalize(pos + delta), roughly the direction from the WORLD
+        // ORIGIN to the bot, plus a spurious +y — which steered the critical-
+        // health escape toward (+x,+z) regardless of where the attacker stood
+        // (2026-08 audit). retreatFrom() has the correct math; use it.
+        retreatFrom(bot, target, 16);
         resolve({
           success: false,
           message: `Fleeing from ${entityName} - health critically low (${bot.health.toFixed(1)})`,
@@ -182,7 +179,14 @@ export async function attack(bot: Bot, entityName: string, maxDuration = 30000):
 
       if (!target.isValid) {
         cleanup();
-        void finish(true, `Target ${entityName} is no longer valid after ${hits} hits`);
+        // Invalid after 0 hits means the mob despawned, wandered out of
+        // tracking range, or sat in an unloaded chunk — not a kill. Reporting
+        // success here credited combat that never happened (2026-08 audit).
+        if (hits > 0) {
+          void finish(true, `Target ${entityName} is no longer valid after ${hits} hits`);
+        } else {
+          void finish(false, `Target ${entityName} disappeared before any combat (despawned or out of range)`);
+        }
         return;
       }
 

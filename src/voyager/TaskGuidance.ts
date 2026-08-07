@@ -176,6 +176,20 @@ export function buildTaskGuidance(task: Task): TaskGuidance {
     };
   }
 
+  if (spec.kind === 'chat') {
+    // Without this branch, chat tasks fell to 'general' — which had no
+    // programmatic check, so the purpose-built free checkChat never ran and
+    // every announce/say verdict cost a paid critic call (2026-08 audit).
+    return {
+      category: 'chat',
+      prompt: task.description,
+      guidance: [
+        'Compose the message the task asks for.',
+        'Send it with bot.chat(...) — one clear message is enough.',
+      ],
+    };
+  }
+
   return {
     category: 'general',
     prompt: task.description,

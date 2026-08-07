@@ -117,6 +117,17 @@ export class TradeRouteManager {
    * which is intentional for Phase 7 (persistence is followup-grade).
    */
   private readonly openRoutes: Map<string, TradeRoute[]> = new Map();
+  /**
+   * Per-(source|target|resource) no-progress backoff, mirroring TownBrain's
+   * demandNoProgress. The only re-queue gate used to be hasOpenRoute, whose
+   * 10-minute expiry is also its GC — so a delivery that never moves any
+   * inventory re-queued a fresh high-priority swarm task every 10 minutes
+   * forever, the stone-supply loop's exact shape on the trade channel
+   * (2026-08 audit). Strikes reset when the target's stock actually rises.
+   */
+  private readonly routeNoProgress: Map<string, { lastPeerHave: number; strikes: number; nextEligibleAt: number }> = new Map();
+  private static readonly ROUTE_NO_PROGRESS_BASE_MS = 10 * 60 * 1000;
+  private static readonly ROUTE_NO_PROGRESS_MAX_STRIKES = 5; // 10m,20m,40m,80m,160m
 
   constructor(
     townManager: TownManager,
@@ -196,6 +207,25 @@ export class TradeRouteManager {
         const amount = Math.max(1, Math.min(surplusAmount, need));
 
         if (this.hasOpenRoute(sourceTownId, peer.peerTownId, resource)) continue;
+
+        // No-progress backoff: if previous routes for this pair+resource ran
+        // without the peer's stock rising, wait exponentially longer before
+        // queueing another.
+        const progressKey = `${sourceTownId}|${peer.peerTownId}|${resource}`;
+        const now = Date.now();
+        const progress = this.routeNoProgress.get(progressKey);
+        if (progress && peerHave <= progress.lastPeerHave && now < progress.nextEligibleAt) {
+          continue;
+        }
+        const strikes = progress && peerHave <= progress.lastPeerHave
+          ? Math.min(progress.strikes + 1, TradeRouteManager.ROUTE_NO_PROGRESS_MAX_STRIKES)
+          : 0;
+        this.routeNoProgress.set(progressKey, {
+          lastPeerHave: peerHave,
+          strikes,
+          nextEligibleAt:
+            now + (strikes > 0 ? TradeRouteManager.ROUTE_NO_PROGRESS_BASE_MS * 2 ** (strikes - 1) : 0),
+        });
 
         const route = this.queueRoute({
           source: sourceTown,

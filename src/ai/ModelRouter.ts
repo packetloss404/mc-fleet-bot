@@ -212,6 +212,7 @@ export class ModelRouter implements LLMClient {
       client.chat(systemPrompt, contents, mTokens,
         modelOverride ? { ...(options ?? {}), model: modelOverride } : options),
       maxTokens,
+      systemPrompt.length + JSON.stringify(contents ?? []).length,
     );
   }
 
@@ -231,13 +232,14 @@ export class ModelRouter implements LLMClient {
           return client.generateWithThinking(systemPrompt, userMessage, mTokens);
         }
         return client.generate(systemPrompt, userMessage, mTokens, options);
-      }, maxTokens);
+      }, maxTokens, systemPrompt.length + userMessage.length);
     }
 
     return this.dispatch('generate', options, (client, mTokens, modelOverride) =>
       client.generate(systemPrompt, userMessage, mTokens,
         modelOverride ? { ...(options ?? {}), model: modelOverride } : options),
       maxTokens,
+      systemPrompt.length + userMessage.length,
     );
   }
 
@@ -271,7 +273,11 @@ export class ModelRouter implements LLMClient {
     }
 
     // Build provider chain — honor the 'embed' route + its fallback list first,
-    // then fall back to any other provider that supports embed().
+    // then fall back to any other provider that supports embed(). The chain is
+    // budget-gated per provider exactly like dispatch(): embeds used to skip
+    // the gate entirely, so when the daily cap tripped, chat/codegen idled
+    // while skill-library embeds kept flowing to paid providers uncapped (and,
+    // priced at $0, invisibly) — 2026-08 audit.
     const route = this.routes.get('embed');
     const seen = new Set<string>();
     const chain: string[] = [];
@@ -279,9 +285,13 @@ export class ModelRouter implements LLMClient {
     push(route?.provider);
     for (const f of route?.fallback ?? []) push(f);
     for (const name of this.clients.keys()) push(name);
+    const gatedChain = chain.filter((p) => this.paidProviderAllowedFn(p, 'embed'));
+    if (gatedChain.length === 0 && chain.length > 0) {
+      throw new BudgetCappedError();
+    }
 
     let lastError: Error | null = null;
-    for (const name of chain) {
+    for (const name of gatedChain) {
       const client = this.clients.get(name);
       if (!client?.embed) continue;
       const start = Date.now();
@@ -299,7 +309,7 @@ export class ModelRouter implements LLMClient {
         const inputTokens = missTexts.join(' ').split(/\s+/).length; // rough estimate
         this.ledger.record({
           provider: name,
-          model: this.routedModelFor(route, name) ?? client.getModelId?.() ?? 'embedding',
+          model: this.routedModelFor(route, name) ?? client.getEmbedModelId?.() ?? client.getModelId?.() ?? 'embedding',
           taskType: 'embed',
           botName: '',
           inputTokens,
@@ -311,7 +321,7 @@ export class ModelRouter implements LLMClient {
           id: `llm-${++this.callSeq}`,
           taskType: 'embed',
           provider: name,
-          model: this.routedModelFor(route, name) ?? client.getModelId?.() ?? 'embedding',
+          model: this.routedModelFor(route, name) ?? client.getEmbedModelId?.() ?? client.getModelId?.() ?? 'embedding',
           botName: '',
           startMs: start,
           endMs: end,
@@ -325,11 +335,23 @@ export class ModelRouter implements LLMClient {
       } catch (err: any) {
         const end = Date.now();
         lastError = err;
+        // Ledger the failure too — failed embeds used to be invisible even as
+        // $0 rows, so a broken embed provider left no audit trail at all.
+        this.ledger.record({
+          provider: name,
+          model: this.routedModelFor(route, name) ?? client.getEmbedModelId?.() ?? client.getModelId?.() ?? 'embedding',
+          taskType: 'embed',
+          botName: '',
+          inputTokens: 0,
+          outputTokens: 0,
+          latencyMs: end - start,
+          success: false,
+        });
         this.emitCall({
           id: `llm-${++this.callSeq}`,
           taskType: 'embed',
           provider: name,
-          model: this.routedModelFor(route, name) ?? client.getModelId?.() ?? 'embedding',
+          model: this.routedModelFor(route, name) ?? client.getEmbedModelId?.() ?? client.getModelId?.() ?? 'embedding',
           botName: '',
           startMs: start,
           endMs: end,
@@ -352,7 +374,15 @@ export class ModelRouter implements LLMClient {
     options: LLMCallOptions | undefined,
     callFn: (client: LLMClient, maxTokens?: number, modelOverride?: string) => Promise<LLMResponse>,
     maxTokens?: number,
+    promptChars = 0,
   ): Promise<LLMResponse> {
+    // Rough prompt-size estimate (chars/4) for FAILED-call ledger rows.
+    // Failures used to be recorded at 0/0 tokens — but client-side timeouts
+    // and post-billing parse throws are billed by the provider in full, so
+    // the cap systematically undercounted exactly when a provider was
+    // misbehaving (2026-08 audit). Overcounting a fast unbilled 4xx slightly
+    // is the safe direction for a spend cap.
+    const estFailedInputTokens = Math.ceil(promptChars / 4);
     this.assertEnabled();
     const taskType = options?.taskType ?? 'chat';
     const botName = options?.botName ?? '';
@@ -453,7 +483,7 @@ export class ModelRouter implements LLMClient {
             model: this.routedModelFor(route, providerName) ?? client.getModelId?.() ?? providerName,
             taskType: taskType as TaskType | 'unknown',
             botName,
-            inputTokens: 0,
+            inputTokens: estFailedInputTokens,
             outputTokens: 0,
             latencyMs,
             success: false,
@@ -479,6 +509,12 @@ export class ModelRouter implements LLMClient {
           });
 
           if (!isRetryableError(err)) {
+            // Terminal errors still count toward the circuit breaker: a task
+            // that reliably trips e.g. the Gemini SAFETY filter used to spin
+            // one request every few seconds forever — no retry, no fallback,
+            // but also no breaker and (at 0 tokens) no ledger cost, i.e.
+            // invisible to every budget mechanism (2026-08 review).
+            this.recordFullChainFailure();
             throw err; // 400, 401, 403 — don't retry, don't fall back
           }
 

@@ -15,27 +15,49 @@ import { registerLLMRoutes } from './server/llmRoutes';
 import { setupSocketEvents } from './server/socketEvents';
 import { HighlightStream } from './town/HighlightStream';
 
-function buildModelRouter(config: ReturnType<typeof loadConfig>): { client: LLMClient | null; ledger: TokenLedger } {
-  const ledger = new TokenLedger();
+/**
+ * Legacy env-key boot path. MUST share the caller's ledger and settings-backed
+ * gates: this used to build a router with no budget cap, no kill switch, and a
+ * second TokenLedger the cap couldn't see — and it activates precisely when
+ * every provider in llm-settings.json is disabled, i.e. when an operator hits
+ * "turn it all off" in a spend panic. That combination silently re-armed the
+ * exact uncapped-burn failure mode the settings gates exist to prevent
+ * (2026-08 audit).
+ */
+function buildModelRouter(
+  config: ReturnType<typeof loadConfig>,
+  ledger: TokenLedger,
+  llmSettings: LLMSettings,
+): { client: LLMClient | null } {
   const clients = buildProviderClients(config);
 
   if (clients.size === 0) {
-    return { client: null, ledger };
+    return { client: null };
   }
+
+  const gates = {
+    isEnabled: () => llmSettings.isAiEnabled(),
+    paidProviderAllowed: (provider: string, taskType: string) =>
+      llmSettings.isPaidCallAllowed(provider, taskType),
+  };
 
   // If no routes configured, use single-provider mode (backward compatible)
   if (!config.llm.routes) {
-    const defaultClient = clients.get(config.llm.provider) ?? clients.values().next().value;
     // Wrap in router anyway for token tracking
-    const router = new ModelRouter(clients, { defaultProvider: config.llm.provider }, ledger);
-    return { client: router, ledger };
+    const router = new ModelRouter(
+      clients,
+      { defaultProvider: config.llm.provider, ...gates },
+      ledger,
+    );
+    return { client: router };
   }
 
   const router = new ModelRouter(clients, {
     defaultProvider: config.llm.provider,
     routes: config.llm.routes,
+    ...gates,
   }, ledger);
-  return { client: router, ledger };
+  return { client: router };
 }
 
 async function main() {
@@ -79,7 +101,7 @@ async function main() {
       'LLM ModelRouter initialized from LLMSettings',
     );
   } else {
-    const fallback = buildModelRouter(config);
+    const fallback = buildModelRouter(config, tokenLedger, llmSettings);
     llmClient = fallback.client;
     if (llmClient) {
       logger.info({ model: config.llm.model, routes: Object.keys(config.llm.routes ?? {}) }, 'LLM ModelRouter initialized from legacy ProviderRegistry');

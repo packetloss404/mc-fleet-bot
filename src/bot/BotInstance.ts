@@ -385,6 +385,46 @@ export class BotInstance {
         return originalDig(block, ...rest);
       };
       b.__digGuarded = true;
+
+      // Placement guard, same choke point. The geofence doc has always said
+      // the constraint covers "ANY block edit — dig and place alike" (a stray
+      // placement over the plaza or above the carve ceiling violates 'leave
+      // the buffer solid' as surely as a stray dig), but only digs were ever
+      // wrapped — bot.placeBlock, including the raw passthrough generated
+      // code gets, had no guard at all (2026-08 audit). The placed block
+      // lands at referenceBlock.position + faceVector.
+      if (typeof b.placeBlock === 'function' && !b.__placeGuarded) {
+        const originalPlace = b.placeBlock.bind(b);
+        b.placeBlock = async (refBlock: any, faceVec: any, ...rest: any[]) => {
+          const rp = refBlock?.position;
+          if (rp && faceVec) {
+            const x = Math.floor(rp.x + (faceVec.x ?? 0));
+            const y = Math.floor(rp.y + (faceVec.y ?? 0));
+            const z = Math.floor(rp.z + (faceVec.z ?? 0));
+            if (isProtected(x, y, z)) {
+              logger.warn(
+                { bot: this.name, x, y, z },
+                'place blocked: target is inside a protected build zone',
+              );
+              throw new Error(
+                `place blocked: (${x},${y},${z}) is inside a protected build zone — do not modify finished town structures`,
+              );
+            }
+            if (isAboveCarveCeiling(x, y, z)) {
+              const cc = getCarveCeiling();
+              logger.warn(
+                { bot: this.name, x, y, z, maxY: cc?.maxY },
+                'place blocked: above the excavation ceiling (protects the MSA buffer)',
+              );
+              throw new Error(
+                `place blocked: (${x},${y},${z}) is above the excavation ceiling y${cc?.maxY} — the greenstone buffer under MainStreet America`,
+              );
+            }
+          }
+          return originalPlace(refBlock, faceVec, ...rest);
+        };
+        b.__placeGuarded = true;
+      }
     });
 
     // Pathfinder depth + citizen-boundary guard, wrapped at the same
@@ -434,6 +474,11 @@ export class BotInstance {
               },
               'pathfinder goal blocked: outside approved civic mobility areas',
             );
+            // Tell waiters the goal was denied. Silently clearing it left
+            // moveNearWithCleanup waiting on goal_reached/path_update events
+            // that never fire, burning its full timeout on every denied move
+            // (2026-08 audit). Emit first, then clear.
+            try { (this.bot as any).emit('mobility_denied', { x: gx, z: gz }); } catch { /* listeners optional */ }
             return originalSetGoal(null, dynamic);
           }
         }
@@ -2356,6 +2401,16 @@ export class BotInstance {
     if (this.destroyed) return;
     if (this.quarantined) {
       logger.warn({ bot: this.name }, 'forceReconnect suppressed: bot is quarantined');
+      return;
+    }
+    // A scheduled reconnect (including the 900s version-mismatch heartbeat)
+    // owns recovery — don't preempt it. The 30s watchdog reconnects any
+    // DISCONNECTED bot with no cause check, which defeated the slow backoff
+    // entirely: on a server version bump the fleet hammered logins at the
+    // exact pre-backoff rate the heartbeat was added to stop, and the still-
+    // armed timer later fired an extra connect on top (2026-08 audit).
+    if (this.pendingConnectTimeout) {
+      logger.debug({ bot: this.name }, 'forceReconnect skipped: reconnect already scheduled');
       return;
     }
     logger.warn({ bot: this.name, inboundAgeMs: this.lastInboundPacketAt > 0 ? Date.now() - this.lastInboundPacketAt : null }, 'Watchdog: forcing reconnect on stale/zombie socket');

@@ -66,9 +66,21 @@ export async function craft(bot: Bot, itemName: string, count = 1): Promise<Acti
 
   const recipe = bot.recipesFor(item.id, null, 1, craftingTable || null)[0];
   if (!recipe) {
+    // Without a table in range, recipesFor only returns 2x2 recipes — so for
+    // any table-craft this failed with "No recipe found", inviting the LLM to
+    // abandon a perfectly craftable item instead of finding/placing a table
+    // (2026-08 audit). Say what's actually missing.
+    if (!craftingTable) {
+      return {
+        success: false,
+        message:
+          `Cannot craft ${itemName} here: no crafting table within range, and no 2x2 recipe matches your materials. ` +
+          `If ${itemName} needs a crafting table, place one nearby (or move to one) and retry. Inventory: ${inventorySummary(bot)}`,
+      };
+    }
     return {
       success: false,
-      message: `No recipe found for ${itemName}. Inventory: ${inventorySummary(bot)}`,
+      message: `No recipe found for ${itemName} with your current materials. Inventory: ${inventorySummary(bot)}`,
     };
   }
 

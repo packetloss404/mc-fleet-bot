@@ -21,6 +21,7 @@
 import path from 'path';
 import type { TownManager } from './TownManager';
 import type { BotManager } from '../bot/BotManager';
+import type { LLMClient } from '../ai/LLMClient';
 import type { BuildCoordinator } from '../build/BuildCoordinator';
 import type { BlackboardManager } from '../voyager/BlackboardManager';
 import type { SchematicMatcher } from '../build/SchematicMatcher';
@@ -65,7 +66,10 @@ import { logger } from '../util/logger';
  * rivalry-bound towns. Phase 7 just emits the signal; actual guard-behavior
  * change is out of scope.
  */
-const RIVAL_PATROL_TICK_INTERVAL = 5;
+// 60 ticks ≈ hourly at the 60s brain cadence. Was 5 (~every 5 minutes): with
+// nothing consuming the signal yet, that wrote 288 identical event rows per
+// rival per day into the never-pruned events table (2026-08 audit).
+const RIVAL_PATROL_TICK_INTERVAL = 60;
 
 /**
  * Phase 7-A — diplomacy loop knobs.
@@ -104,6 +108,8 @@ export interface TownBrainStatus {
 }
 
 export class TownBrain {
+  /** Default per-town daily LLM design budget when town.config omits one. */
+  private static readonly DEFAULT_DESIGN_BUDGET_USD = 1.0;
   /** Base delay for the demand loop's no-progress backoff (doubles per strike). */
   private static readonly DEMAND_NO_PROGRESS_BASE_MS = 60_000;
   /** Strike cap: 6 strikes = 32 min between re-queues of a stuck shortage. */
@@ -138,6 +144,9 @@ export class TownBrain {
    * requests over two weeks). Strikes reset the moment stock actually rises.
    */
   private demandNoProgress: Map<string, { lastHave: number; strikes: number; nextEligibleAt: number }> = new Map();
+  /** Dedup state for the hourly role:imbalance event (see roleLoop). */
+  private lastImbalanceShortfall = -1;
+  private lastImbalanceEventAt = 0;
   /**
    * Snapshot of the most recent resource shortages from the demand loop,
    * handed to the role loop on the same tick. Cleared each tick.
@@ -145,8 +154,24 @@ export class TownBrain {
   private currentTickShortages: string[] = [];
   /** Phase 4 — optional library matcher used when the LLM design fails. */
   private readonly schematicMatcher: SchematicMatcher | null;
-  /** Phase 4 — LLM-driven block-plan generator. Null when no LLM client is wired. */
-  private readonly llmDesigner: LlmDesigner | null;
+  /**
+   * Phase 4 — LLM-driven block-plan generator. Rebuilt whenever the
+   * BotManager's client identity changes: capturing it once meant a null
+   * client at boot (slow API bind) or an /api/llm/reload left the brain on a
+   * dead/stale designer until process restart (2026-08 review).
+   */
+  private llmDesigner: LlmDesigner | null;
+  private llmDesignerClient: LLMClient | null = null;
+
+  private currentLlmDesigner(): LlmDesigner | null {
+    const client = this.botManager.getLLMClient();
+    if (!client) return null;
+    if (!this.llmDesigner || this.llmDesignerClient !== client) {
+      this.llmDesigner = new LlmDesigner({ llmClient: client });
+      this.llmDesignerClient = client;
+    }
+    return this.llmDesigner;
+  }
   /** Phase 4 — per-town design cache rooted at `schematics/<townId>/`. */
   private readonly designCache: DesignCache;
   /** Phase 4 — observation writer for the realized-palette feedback loop. */
@@ -251,6 +276,7 @@ export class TownBrain {
     this.schematicMatcher = opts.schematicMatcher ?? null;
     const llmClient = botManager.getLLMClient();
     this.llmDesigner = llmClient ? new LlmDesigner({ llmClient }) : null;
+    this.llmDesignerClient = llmClient;
     // Design cache lives next to the canonical schematics dir so build coord
     // can also load cached files directly should it ever learn to.
     const schematicsRoot = path.join(process.cwd(), 'schematics');
@@ -1148,7 +1174,8 @@ export class TownBrain {
     }
 
     // 3) Fresh LLM design — only if no cache hit and within budget.
-    if (this.llmDesigner && !cacheHit && !overBudget) {
+    const llmDesigner = this.currentLlmDesigner();
+    if (llmDesigner && !cacheHit && !overBudget) {
       try {
         const neighbors: NeighborContext = {
           neighbors: existingBuildings.slice(-10).map((b) => ({
@@ -1160,7 +1187,7 @@ export class TownBrain {
             depth: b.depth,
           })),
         };
-        const design = await this.llmDesigner.designBuilding({
+        const design = await llmDesigner.designBuilding({
           town,
           plan: item,
           styleDoc,
@@ -1211,15 +1238,26 @@ export class TownBrain {
           };
         }
       } catch (err: any) {
+        // Charge the tokens the failed attempts actually burned. Recording
+        // spend only on the resolve path meant validation-failure loops made
+        // paid calls forever with $0 hitting the budget (2026-08 audit).
+        const failedUsd = typeof err?.designCost?.estUsd === 'number' ? err.designCost.estUsd : 0;
+        if (failedUsd > 0) {
+          this.dailySpendUsd.set(
+            budgetKey,
+            (this.dailySpendUsd.get(budgetKey) ?? spentToday) + failedUsd,
+          );
+          this.persistDesignSpend();
+        }
         logger.warn(
-          { err: err?.message, townId: this.townId, kind: item.kind },
+          { err: err?.message, townId: this.townId, kind: item.kind, failedUsd },
           'TownBrain build: LLM design failed; falling back to library',
         );
         this.townManager.recordEvent({
           townId: this.townId,
           kind: 'design:failed',
           severity: 'minor',
-          payload: { kind: item.kind, error: err?.message ?? 'unknown' },
+          payload: { kind: item.kind, error: err?.message ?? 'unknown', estUsd: failedUsd },
           highlightScore: 15,
         });
       }
@@ -1376,7 +1414,13 @@ export class TownBrain {
     const cfg = town.config ?? {};
     const llmBudget = (cfg as any).llmBudgetUsd;
     if (typeof llmBudget === 'number' && llmBudget > 0) return llmBudget;
-    return null;
+    // Real default, not null. Returning null disabled the design-budget gate
+    // entirely, and nothing anywhere sets llmBudgetUsd — so the carefully
+    // attributed design spend fed a ledger nobody gated on, and a
+    // validation-failure loop was bounded only by the global cap (2026-08
+    // review). Set llmBudgetUsd: 0 explicitly to disable? No — 0 and
+    // negatives fall through to this default; use a large number instead.
+    return TownBrain.DEFAULT_DESIGN_BUDGET_USD;
   }
 
   /** Extract the kind from a stored `<kind>:<suffix>` building name. */
@@ -1395,28 +1439,39 @@ export class TownBrain {
       .listResidents(this.townId)
       .filter((r) => r.status === 'alive' || r.status == null);
 
-    // Population shortfall — keep emitting role:imbalance so observers know a
-    // founding settlement still wants more bots. RoleManager won't conjure
-    // residents, it only re-shuffles the ones that exist.
+    // Population shortfall — emit role:imbalance so observers know a founding
+    // settlement still wants more bots, but at most once an hour per distinct
+    // shortfall. This used to fire every 60s tick unconditionally: a town
+    // permanently under target wrote 1,440 identical rows/day into an
+    // unpruned events table, and each row made the chronicle's window look
+    // "active" (2026-08 audit).
     const target = town.populationTarget ?? this.defaultPopulationTarget(town);
     if (residents.length < target) {
       const shortfall = target - residents.length;
-      this.townManager.recordEvent({
-        townId: this.townId,
-        kind: 'role:imbalance',
-        severity: 'minor',
-        payload: {
-          currentPopulation: residents.length,
-          target,
-          shortfall,
-          wantsMoreBots: true,
-        },
-        highlightScore: 20,
-      });
-      logger.debug(
-        { townId: this.townId, residents: residents.length, target },
-        'TownBrain role: population under target',
-      );
+      const now = Date.now();
+      const duplicate =
+        this.lastImbalanceShortfall === shortfall &&
+        now - this.lastImbalanceEventAt < 60 * 60 * 1000;
+      if (!duplicate) {
+        this.lastImbalanceShortfall = shortfall;
+        this.lastImbalanceEventAt = now;
+        this.townManager.recordEvent({
+          townId: this.townId,
+          kind: 'role:imbalance',
+          severity: 'minor',
+          payload: {
+            currentPopulation: residents.length,
+            target,
+            shortfall,
+            wantsMoreBots: true,
+          },
+          highlightScore: 20,
+        });
+        logger.debug(
+          { townId: this.townId, residents: residents.length, target },
+          'TownBrain role: population under target',
+        );
+      }
     }
 
     // Re-balance roles using shortages flagged on this tick by the demand

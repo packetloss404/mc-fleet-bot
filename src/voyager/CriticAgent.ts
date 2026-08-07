@@ -156,10 +156,27 @@ export class CriticAgent {
       return this.llmCheck(bot, task, executionResult, preState, postState);
     }
 
-    // Default: trust the execution result but with empty critique
+    // No LLM critic and no programmatic verdict. "Trust the execution
+    // result" meant trusting "the script didn't throw", true for every no-op
+    // — the fail-open that drove the 21k-request supply loop. But a blanket
+    // fail-closed would permanently fail every general/survival task in
+    // critic-off operation (caretaker builds, eat/shelter code that genuinely
+    // ran — 2026-08 review). Split the difference on observable evidence:
+    // some state changed → pass; a true no-op → fail.
+    const moved = preState.position.distanceTo(postState.position) > 2;
+    const inventoryChanged = preState.itemCount !== postState.itemCount;
+    const vitalsChanged =
+      postState.health !== preState.health || postState.hunger !== preState.hunger;
+    if (moved || inventoryChanged || vitalsChanged) {
+      return {
+        success: true,
+        reason: 'No critic available — accepting on observable state change (moved/inventory/vitals)',
+        critique: '',
+      };
+    }
     return {
-      success: executionResult.success,
-      reason: executionResult.success ? 'Code executed without errors' : 'Unknown error',
+      success: false,
+      reason: 'No critic available and no observable state change — failing closed so the task retries under backoff',
       critique: '',
     };
   }
