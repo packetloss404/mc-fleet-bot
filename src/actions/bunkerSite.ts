@@ -12,6 +12,7 @@
  */
 
 import { logger } from '../util/logger';
+import { intersectsProtectedZone } from './geofence';
 
 export interface BunkerHandle {
   chat(message: string): void;
@@ -116,6 +117,21 @@ export async function prepareBunkerSite(
   const area = (x2 - x1 + 1) * (z2 - z1 + 1);
   if (area <= 0) {
     return { excavated: 0, warnings };
+  }
+
+  // Refuse to excavate through a protected build zone. The sibling clearSite
+  // path in BuildCoordinator guards each /fill slab precisely because /fill
+  // bypasses the per-block bot.dig geofence — this path issued the same
+  // destructive command with no check at all (2026-08 audit), so a bunker
+  // sited over a protected build would vaporize it.
+  const zone = intersectsProtectedZone(
+    { x: x1, y: yBase, z: z1 },
+    { x: x2, y: yTop, z: z2 },
+  );
+  if (zone) {
+    throw new Error(
+      `prepareBunkerSite blocked: pit (${x1},${yBase},${z1})->(${x2},${yTop},${z2}) overlaps protected zone "${zone.name ?? 'unnamed'}"`,
+    );
   }
 
   logger.info(

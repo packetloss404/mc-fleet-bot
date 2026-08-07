@@ -1,4 +1,11 @@
-import { isBelowDigFloor, getMinDigY } from '../actions/geofence';
+import {
+  isBelowDigFloor,
+  getMinDigY,
+  isProtected,
+  isAboveCarveCeiling,
+  getCarveCeiling,
+  intersectsProtectedZone,
+} from '../actions/geofence';
 import vm from 'vm';
 import { Bot } from 'mineflayer';
 import { goals } from 'mineflayer-pathfinder';
@@ -305,18 +312,62 @@ export class CodeExecutor {
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'dropJunk', minFreeSlots, threshold, ...(result.data || {}) });
         return result;
       },
+      // setBlock/fillBlocks are SERVER COMMANDS on an opped bot — they bypass
+      // the bot.dig/placeBlock wrappers, isProtected, the dig floor, and the
+      // carve ceiling entirely, and a single /fill can rewrite 32k blocks.
+      // They were exposed to generated code with zero validation (2026-08
+      // audit). Guards here mirror the wrapper guards: mcData-valid block
+      // name, no protected-zone overlap, carve ceiling, and for /fill a
+      // volume cap and no 'destroy' mode. Refusals THROW so the failure is
+      // visible to the critic instead of silently "succeeding".
       setBlock: async (name: string, x: number, y: number, z: number, state?: string) => {
         requireName('setBlock', 'block name', name);
+        if (!/^[a-z0-9_]+$/.test(name) || !(bot as any).registry?.blocksByName?.[name]) {
+          throw new Error(`setBlock: unknown block name "${name}"`);
+        }
+        if (state && !/^[a-z0-9_=,\[\]]+$/i.test(state)) {
+          throw new Error(`setBlock: invalid block state "${state}"`);
+        }
+        const bx = Math.floor(x), by = Math.floor(y), bz = Math.floor(z);
+        if (isProtected(bx, by, bz)) {
+          throw new Error(`setBlock blocked: (${bx},${by},${bz}) is inside a protected build zone`);
+        }
+        if (isAboveCarveCeiling(bx, by, bz)) {
+          throw new Error(`setBlock blocked: (${bx},${by},${bz}) is above the excavation ceiling y${getCarveCeiling()?.maxY}`);
+        }
         const blockSpec = state ? `minecraft:${name}[${state}]` : `minecraft:${name}`;
-        bot.chat(`/setblock ${Math.floor(x)} ${Math.floor(y)} ${Math.floor(z)} ${blockSpec} replace`);
-        pushLog(`[primitive] setBlock("${blockSpec}", ${Math.floor(x)}, ${Math.floor(y)}, ${Math.floor(z)})`);
+        bot.chat(`/setblock ${bx} ${by} ${bz} ${blockSpec} replace`);
+        pushLog(`[primitive] setBlock("${blockSpec}", ${bx}, ${by}, ${bz})`);
         await new Promise((r) => setTimeout(r, 50));
       },
       fillBlocks: async (name: string, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, mode = 'replace') => {
         requireName('fillBlocks', 'block name', name);
+        if (!/^[a-z0-9_]+$/.test(name) || !(bot as any).registry?.blocksByName?.[name]) {
+          throw new Error(`fillBlocks: unknown block name "${name}"`);
+        }
+        if (mode !== 'replace' && mode !== 'keep' && mode !== 'hollow' && mode !== 'outline') {
+          throw new Error(`fillBlocks: mode "${mode}" is not allowed (destroy scatters drops and defeats the geofence)`);
+        }
+        const lo = { x: Math.floor(Math.min(x1, x2)), y: Math.floor(Math.min(y1, y2)), z: Math.floor(Math.min(z1, z2)) };
+        const hi = { x: Math.floor(Math.max(x1, x2)), y: Math.floor(Math.max(y1, y2)), z: Math.floor(Math.max(z1, z2)) };
+        const volume = (hi.x - lo.x + 1) * (hi.y - lo.y + 1) * (hi.z - lo.z + 1);
+        if (volume > 4096) {
+          throw new Error(`fillBlocks blocked: volume ${volume} exceeds the 4096-block cap`);
+        }
+        const zone = intersectsProtectedZone(lo, hi);
+        if (zone) {
+          throw new Error(`fillBlocks blocked: box overlaps protected zone "${zone.name ?? 'unnamed'}"`);
+        }
+        // Bulk fill above the ceiling is never sanctioned — the exempt columns
+        // exist for narrow shaft breaches, not box edits, so refuse outright
+        // whenever the box pokes above maxY while the campaign ceiling is on.
+        const cc = getCarveCeiling();
+        if (cc && hi.y > cc.maxY) {
+          throw new Error(`fillBlocks blocked: box reaches above the excavation ceiling y${cc.maxY}`);
+        }
         const blockSpec = `minecraft:${name}`;
-        bot.chat(`/fill ${Math.floor(x1)} ${Math.floor(y1)} ${Math.floor(z1)} ${Math.floor(x2)} ${Math.floor(y2)} ${Math.floor(z2)} ${blockSpec} ${mode}`);
-        pushLog(`[primitive] fillBlocks("${name}", ${x1},${y1},${z1} -> ${x2},${y2},${z2}, ${mode})`);
+        bot.chat(`/fill ${lo.x} ${lo.y} ${lo.z} ${hi.x} ${hi.y} ${hi.z} ${blockSpec} ${mode}`);
+        pushLog(`[primitive] fillBlocks("${name}", ${lo.x},${lo.y},${lo.z} -> ${hi.x},${hi.y},${hi.z}, ${mode})`);
         await new Promise((r) => setTimeout(r, 100));
       },
       killMob: async (name: string, maxDuration = 30000) => {
@@ -758,6 +809,22 @@ export class CodeExecutor {
         await (bot as any).consume();
       },
       activateItem: () => {
+        // Fluid guard: activating a water/lava bucket dumps fluid at the
+        // cursor block, touching no dig/place wrapper — the one block-edit
+        // path that had no guard at all (2026-08 audit). Empty buckets,
+        // food, rods etc. pass through untouched.
+        const held = (bot as any).heldItem;
+        if (held && (held.name === 'water_bucket' || held.name === 'lava_bucket')) {
+          const cursor = (bot as any).blockAtCursor?.(5);
+          const p = cursor?.position ?? bot.entity.position;
+          const x = Math.floor(p.x), y = Math.floor(p.y), z = Math.floor(p.z);
+          if (isProtected(x, y, z) || isProtected(x, y + 1, z)) {
+            throw new Error(`activateItem blocked: emptying a ${held.name} into a protected build zone at (${x},${y},${z})`);
+          }
+          if (isAboveCarveCeiling(x, y, z)) {
+            throw new Error(`activateItem blocked: emptying a ${held.name} above the excavation ceiling y${getCarveCeiling()?.maxY}`);
+          }
+        }
         bot.activateItem();
       },
       deactivateItem: () => {

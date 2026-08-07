@@ -385,6 +385,46 @@ export class BotInstance {
         return originalDig(block, ...rest);
       };
       b.__digGuarded = true;
+
+      // Placement guard, same choke point. The geofence doc has always said
+      // the constraint covers "ANY block edit — dig and place alike" (a stray
+      // placement over the plaza or above the carve ceiling violates 'leave
+      // the buffer solid' as surely as a stray dig), but only digs were ever
+      // wrapped — bot.placeBlock, including the raw passthrough generated
+      // code gets, had no guard at all (2026-08 audit). The placed block
+      // lands at referenceBlock.position + faceVector.
+      if (typeof b.placeBlock === 'function' && !b.__placeGuarded) {
+        const originalPlace = b.placeBlock.bind(b);
+        b.placeBlock = async (refBlock: any, faceVec: any, ...rest: any[]) => {
+          const rp = refBlock?.position;
+          if (rp && faceVec) {
+            const x = Math.floor(rp.x + (faceVec.x ?? 0));
+            const y = Math.floor(rp.y + (faceVec.y ?? 0));
+            const z = Math.floor(rp.z + (faceVec.z ?? 0));
+            if (isProtected(x, y, z)) {
+              logger.warn(
+                { bot: this.name, x, y, z },
+                'place blocked: target is inside a protected build zone',
+              );
+              throw new Error(
+                `place blocked: (${x},${y},${z}) is inside a protected build zone — do not modify finished town structures`,
+              );
+            }
+            if (isAboveCarveCeiling(x, y, z)) {
+              const cc = getCarveCeiling();
+              logger.warn(
+                { bot: this.name, x, y, z, maxY: cc?.maxY },
+                'place blocked: above the excavation ceiling (protects the MSA buffer)',
+              );
+              throw new Error(
+                `place blocked: (${x},${y},${z}) is above the excavation ceiling y${cc?.maxY} — the greenstone buffer under MainStreet America`,
+              );
+            }
+          }
+          return originalPlace(refBlock, faceVec, ...rest);
+        };
+        b.__placeGuarded = true;
+      }
     });
 
     // Pathfinder depth + citizen-boundary guard, wrapped at the same
