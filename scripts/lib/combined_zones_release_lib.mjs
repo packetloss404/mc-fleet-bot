@@ -305,6 +305,522 @@ export function deriveB07WestTwo(b07System) {
   return { construction, interaction };
 }
 
+/* ------------------------------------------------------------------------ *
+ * FM-01 mountain (R05) derivation support.
+ *
+ * Faithful copies of the proven implementations in
+ * scripts/lib/combined_zones_shipwreck_reshape_optimizer.mjs (SnapshotReader
+ * with heightmap-seeded surface reads, interval algebra, the baseline FM-01
+ * per-column added-solid interval derivation, the south-open no-build column
+ * identity, and the reshaped interval manifests). Every derived structure
+ * must be verified against its committed identity before use.
+ * ------------------------------------------------------------------------ */
+
+export const FM01_ADDED_SOLID_MIN_Y = 72;
+export const FM01_WORLD_MIN_Y = -64;
+export const FM01_WORLD_MAX_Y = 319;
+export const FM01_AIR_NAMES = new Set([
+  'minecraft:air', 'minecraft:cave_air', 'minecraft:void_air',
+]);
+export const FM01_BASE_SOLID_PREAMBLE = 'combined-zones-d05-sparse-solid-intervals-v1';
+export const FM01_BASE_SUPPORT_PREAMBLE = 'combined-zones-d05-support-gap-intervals-v1';
+export const FM01_RESHAPE_SOLID_PREAMBLE =
+  'combined-zones-d05-shipwreck-reshape-sparse-solid-intervals-v1';
+export const FM01_RESHAPE_DESIGN_PREAMBLE =
+  'combined-zones-d05-shipwreck-reshape-design-surface-v1';
+export const FM01_RESHAPE_SUPPORT_PREAMBLE =
+  'combined-zones-d05-shipwreck-reshape-support-gap-intervals-v1';
+export const FM01_NO_BUILD_COLUMN_PREAMBLE =
+  'combined-zones-shipwreck-reshape-no-build-columns-v1';
+export const DOMAIN_INTERVAL_PREAMBLE =
+  'combined-zones-residual-domain-sparse-integer-intervals-v1';
+
+export const columnKey = (x, z) => `${x},${z}`;
+
+export function normalizeRanges(ranges) {
+  const ordered = ranges
+    .filter(({ start, end }) => Number.isInteger(start) && Number.isInteger(end) && start <= end)
+    .sort((left, right) => left.start - right.start || left.end - right.end);
+  const result = [];
+  for (const range of ordered) {
+    const last = result.at(-1);
+    if (!last || range.start > last.end + 1) result.push({ ...range });
+    else last.end = Math.max(last.end, range.end);
+  }
+  return result;
+}
+
+export function subtractRanges(left, right) {
+  let result = normalizeRanges(left);
+  for (const exclusion of normalizeRanges(right)) {
+    const next = [];
+    for (const range of result) {
+      if (exclusion.end < range.start || exclusion.start > range.end) next.push(range);
+      else {
+        if (range.start < exclusion.start) {
+          next.push({ start: range.start, end: exclusion.start - 1 });
+        }
+        if (exclusion.end < range.end) {
+          next.push({ start: exclusion.end + 1, end: range.end });
+        }
+      }
+    }
+    result = next;
+  }
+  return result;
+}
+
+export function rangesFromStartEnd(start, end, excludedY = []) {
+  if (start > end) return [];
+  return subtractRanges(
+    [{ start, end }],
+    excludedY.map((y) => ({ start: y, end: y })),
+  );
+}
+
+export function rangesCount(ranges) {
+  return ranges.reduce((sum, { start, end }) => sum + end - start + 1, 0);
+}
+
+export function addRanges(map, x, z, ranges) {
+  if (ranges.length === 0) return;
+  const key = columnKey(x, z);
+  map.set(key, normalizeRanges([...(map.get(key) ?? []), ...ranges]));
+}
+
+export function unionIntervalMaps(...maps) {
+  const result = new Map();
+  for (const map of maps) {
+    for (const [key, ranges] of map) {
+      const [x, z] = key.split(',').map(Number);
+      addRanges(result, x, z, ranges);
+    }
+  }
+  return result;
+}
+
+export function faceShellIntervalMap(map) {
+  const candidates = new Map();
+  for (const [key, ranges] of map) {
+    const [x, z] = key.split(',').map(Number);
+    for (const range of ranges) {
+      addRanges(candidates, x, z, [
+        { start: range.start - 1, end: range.start - 1 },
+        { start: range.end + 1, end: range.end + 1 },
+      ]);
+      addRanges(candidates, x - 1, z, [range]);
+      addRanges(candidates, x + 1, z, [range]);
+      addRanges(candidates, x, z - 1, [range]);
+      addRanges(candidates, x, z + 1, [range]);
+    }
+  }
+  const result = new Map();
+  for (const [key, ranges] of candidates) {
+    const [x, z] = key.split(',').map(Number);
+    addRanges(result, x, z, subtractRanges(ranges, map.get(key) ?? []));
+  }
+  return result;
+}
+
+export function intervalMapStats(map, scopeId, domain) {
+  const records = [...map.entries()].map(([key, ranges]) => {
+    const [x, z] = key.split(',').map(Number);
+    return { x, z, ranges: normalizeRanges(ranges) };
+  }).sort((left, right) => left.x - right.x || left.z - right.z);
+  const digest = crypto.createHash('sha256')
+    .update(`${DOMAIN_INTERVAL_PREAMBLE}\n${scopeId}/${domain}\n`);
+  let cellCount = 0;
+  let intervalCount = 0;
+  let bounds = null;
+  let columnRecordCount = 0;
+  for (const record of records) {
+    if (record.ranges.length === 0) continue;
+    digest.update(`${record.x},${record.z}\t${record.ranges
+      .map(({ start, end }) => `${start}..${end}`).join(',')}\n`);
+    columnRecordCount += 1;
+    intervalCount += record.ranges.length;
+    for (const { start, end } of record.ranges) {
+      cellCount += end - start + 1;
+      if (!bounds) {
+        bounds = {
+          minX: record.x, maxX: record.x, minY: start, maxY: end, minZ: record.z, maxZ: record.z,
+        };
+      } else {
+        bounds.minX = Math.min(bounds.minX, record.x);
+        bounds.maxX = Math.max(bounds.maxX, record.x);
+        bounds.minY = Math.min(bounds.minY, start);
+        bounds.maxY = Math.max(bounds.maxY, end);
+        bounds.minZ = Math.min(bounds.minZ, record.z);
+        bounds.maxZ = Math.max(bounds.maxZ, record.z);
+      }
+    }
+  }
+  return {
+    cellCount,
+    bounds,
+    columnRecordCount,
+    intervalCount,
+    intervalManifestSha256: digest.digest('hex'),
+  };
+}
+
+export function dilateCells(cells, radius) {
+  const expanded = [];
+  for (const cell of uniqueCells(cells)) {
+    for (let dx = -radius; dx <= radius; dx += 1) {
+      for (let dy = -radius; dy <= radius; dy += 1) {
+        for (let dz = -radius; dz <= radius; dz += 1) {
+          expanded.push({ x: cell.x + dx, y: cell.y + dy, z: cell.z + dz });
+        }
+      }
+    }
+  }
+  return uniqueCells(expanded);
+}
+
+export function groupCellsByColumn(cells) {
+  const result = new Map();
+  for (const { x, y, z } of uniqueCells(cells)) {
+    const key = columnKey(x, z);
+    if (!result.has(key)) result.set(key, []);
+    result.get(key).push(y);
+  }
+  for (const ys of result.values()) ys.sort((left, right) => left - right);
+  return result;
+}
+
+/** The D05 directional-rational-pyramid analytic design surface. */
+export function mountainSurfaceY(x, z, model) {
+  const dx = x - model.center.x;
+  const dz = z - model.center.z;
+  const xDenominator = dx < 0 ? model.extents.west : model.extents.east;
+  const zDenominator = dz < 0 ? model.extents.north : model.extents.south;
+  if (Math.abs(dx) > xDenominator || Math.abs(dz) > zDenominator) return null;
+  let numerator;
+  let denominator;
+  if (Math.abs(dx) * zDenominator >= Math.abs(dz) * xDenominator) {
+    numerator = Math.abs(dx);
+    denominator = xDenominator;
+  } else {
+    numerator = Math.abs(dz);
+    denominator = zDenominator;
+  }
+  return model.baseSurfaceY + Math.floor(
+    (model.peakSurfaceY - model.baseSurfaceY)
+      * (denominator - numerator) / denominator,
+  );
+}
+
+/** Faithful copy of the reshape optimizer's B09 minimum reservation. */
+export function buildB09MinimumReservation(model, route) {
+  const portal = route.from;
+  const summit = route.to;
+  let climbZ = portal.z - 1;
+  while (climbZ > summit.z
+    && mountainSurfaceY(portal.x, climbZ - 1, model)
+      !== mountainSurfaceY(portal.x, climbZ, model)) climbZ -= 1;
+  d06Invariant(climbZ > summit.z, 'B09 lacks a level summit approach');
+  let throatX = null;
+  for (let distance = 1; distance <= model.extents.east; distance += 1) {
+    const x = portal.x + distance;
+    if (mountainSurfaceY(x, climbZ, model) === portal.y - 1
+      && mountainSurfaceY(x - 1, climbZ, model) === portal.y - 1) {
+      throatX = x;
+      break;
+    }
+  }
+  d06Invariant(throatX !== null, 'B09 lacks an east-face throat');
+  const faceRun = throatX - portal.x;
+  const points = [];
+  for (let distance = 0; distance <= faceRun; distance += 1) {
+    points.push({ x: portal.x + distance, y: portal.y, z: portal.z });
+  }
+  for (let offset = 1; offset <= portal.z - climbZ; offset += 1) {
+    points.push({ x: throatX, y: portal.y, z: portal.z - offset });
+  }
+  for (let distance = 1; distance <= faceRun; distance += 1) {
+    const x = throatX - distance;
+    points.push({ x, y: mountainSurfaceY(x, climbZ, model) + 1, z: climbZ });
+  }
+  for (let distance = 1; distance <= Math.abs(summit.z - climbZ); distance += 1) {
+    const z = climbZ - distance;
+    points.push({ x: summit.x, y: mountainSurfaceY(summit.x, z, model) + 1, z });
+  }
+  d06Invariant(points.at(-1).x === summit.x
+    && points.at(-1).y === summit.y
+    && points.at(-1).z === summit.z, 'B09 route misses summit');
+  const railAndHeadroom = uniqueCells(points.flatMap(({ x, y, z }) => [
+    { x, y, z },
+    { x, y: y + 1, z },
+  ]));
+  return dilateCells(railAndHeadroom, 1);
+}
+
+function fm01PaletteIndex(container, index, minimumBits) {
+  if (!container?.palette?.length || container.palette.length === 1) return 0;
+  const bits = Math.max(minimumBits, Math.ceil(Math.log2(container.palette.length)));
+  const values = container.data;
+  if (!values?.length) return 0;
+  const perLong = Math.floor(64 / bits);
+  const longIndex = Math.floor(index / perLong);
+  if (longIndex >= values.length) return 0;
+  const shift = BigInt((index % perLong) * bits);
+  return Number((longToBig(values[longIndex]) >> shift) & ((1n << BigInt(bits)) - 1n));
+}
+
+/**
+ * Faithful copy of the reshape optimizer's SnapshotReader: bounded chunk
+ * cache and heightmap-seeded downward surface scan. Adds column helpers for
+ * exact per-range state verification without materializing cell objects.
+ */
+export class SurfaceSnapshotReader {
+  constructor(directory) {
+    this.directory = directory;
+    this.regions = new Map();
+    this.chunks = new Map();
+  }
+
+  region(rx, rz) {
+    const key = `${rx},${rz}`;
+    if (!this.regions.has(key)) {
+      const filename = path.join(this.directory, `r.${rx}.${rz}.mca`);
+      this.regions.set(key, fs.existsSync(filename) ? fs.readFileSync(filename) : null);
+    }
+    return this.regions.get(key);
+  }
+
+  async chunk(cx, cz) {
+    const key = `${cx},${cz}`;
+    if (this.chunks.has(key)) return this.chunks.get(key);
+    const buffer = this.region(Math.floor(cx / 32), Math.floor(cz / 32));
+    d06Invariant(buffer, `missing region for chunk ${key}`);
+    const index = ((cx & 31) + (cz & 31) * 32) * 4;
+    const sectorOffset = buffer.readUIntBE(index, 3);
+    const sectorCount = buffer[index + 3];
+    d06Invariant(sectorOffset && sectorCount, `missing chunk ${key}`);
+    const offset = sectorOffset * 4096;
+    const size = buffer.readUInt32BE(offset);
+    const compression = buffer.readUInt8(offset + 4);
+    d06Invariant(!(compression & 0x80), `external chunk storage unsupported at ${key}`);
+    const compressed = buffer.subarray(offset + 5, offset + 4 + size);
+    const { parsed } = await nbt.parse(fm01Decompress(compression, compressed));
+    const data = nbt.simplify(parsed);
+    d06Invariant(data?.Status === 'minecraft:full', `chunk ${key} is not minecraft:full`);
+    const result = {
+      data,
+      sections: new Map((data.sections ?? []).map((section) => [Number(section.Y), section])),
+    };
+    this.chunks.set(key, result);
+    if (this.chunks.size > 120) this.chunks.delete(this.chunks.keys().next().value);
+    return result;
+  }
+
+  async surface(x, z) {
+    const { data, sections } = await this.chunk(Math.floor(x / 16), Math.floor(z / 16));
+    const columnIndex = (z & 15) * 16 + (x & 15);
+    const heightMap = data.Heightmaps?.WORLD_SURFACE ?? data.Heightmaps?.WORLD_SURFACE_WG;
+    let top = heightMap
+      ? FM01_WORLD_MIN_Y + fm01PackedValue(heightMap, 9, columnIndex) - 1
+      : FM01_WORLD_MAX_Y;
+    top = Math.min(FM01_WORLD_MAX_Y, top);
+    for (let y = top; y >= FM01_WORLD_MIN_Y; y -= 1) {
+      const states = sections.get(Math.floor(y / 16))?.block_states;
+      const index = ((y & 15) << 8) | ((z & 15) << 4) | (x & 15);
+      const state = states?.palette?.length
+        ? states.palette[fm01PaletteIndex(states, index, 4)] ?? { Name: 'minecraft:air' }
+        : { Name: 'minecraft:air' };
+      if (!FM01_AIR_NAMES.has(state.Name)) {
+        return { y, stateName: state.Name };
+      }
+    }
+    return { y: FM01_WORLD_MIN_Y - 1, stateName: 'minecraft:air' };
+  }
+
+  async stateAt(x, y, z) {
+    const { sections } = await this.chunk(Math.floor(x / 16), Math.floor(z / 16));
+    const states = sections.get(Math.floor(y / 16))?.block_states;
+    if (!states?.palette?.length) return { Name: 'minecraft:air' };
+    const index = ((y & 15) << 8) | ((z & 15) << 4) | (x & 15);
+    return states.palette[fm01PaletteIndex(states, index, 4)] ?? { Name: 'minecraft:air' };
+  }
+
+  /**
+   * Every cell in the given Y-ranges of one column whose state is not
+   * exactly minecraft:air (single-palette all-air sections are skipped in
+   * O(1)). Returns [{ y, state }] sorted ascending.
+   */
+  async columnNonAirCells(x, z, ranges) {
+    const { sections } = await this.chunk(Math.floor(x / 16), Math.floor(z / 16));
+    const anomalies = [];
+    for (const { start, end } of ranges) {
+      for (let sectionY = Math.floor(start / 16);
+        sectionY <= Math.floor(end / 16); sectionY += 1) {
+        const states = sections.get(sectionY)?.block_states;
+        const yFrom = Math.max(start, sectionY * 16);
+        const yTo = Math.min(end, sectionY * 16 + 15);
+        if (!states?.palette?.length) continue;
+        if (states.palette.length === 1) {
+          if (states.palette[0].Name !== 'minecraft:air') {
+            for (let y = yFrom; y <= yTo; y += 1) anomalies.push({ y, state: states.palette[0] });
+          }
+          continue;
+        }
+        for (let y = yFrom; y <= yTo; y += 1) {
+          const index = ((y & 15) << 8) | ((z & 15) << 4) | (x & 15);
+          const state = states.palette[fm01PaletteIndex(states, index, 4)]
+            ?? { Name: 'minecraft:air' };
+          if (state.Name !== 'minecraft:air') anomalies.push({ y, state });
+        }
+      }
+    }
+    return anomalies;
+  }
+}
+
+function fm01Decompress(type, data) {
+  if (type === 1) return zlib.gunzipSync(data);
+  if (type === 2) return zlib.inflateSync(data);
+  if (type === 3) return data;
+  if (type === 4) return zlib.brotliDecompressSync(data);
+  throw new Error(`unsupported Anvil compression type ${type}`);
+}
+
+function fm01PackedValue(values, bits, index) {
+  if (!values?.length) return 0;
+  const perLong = Math.floor(64 / bits);
+  const longIndex = Math.floor(index / perLong);
+  if (longIndex >= values.length) return 0;
+  const shift = BigInt((index % perLong) * bits);
+  return Number((longToBig(values[longIndex]) >> shift) & ((1n << BigInt(bits)) - 1n));
+}
+
+/** South-open no-build column identity (x-major, z-minor, dense rectangle). */
+export function noBuildColumnIdentity(bounds) {
+  const digest = crypto.createHash('sha256').update(`${FM01_NO_BUILD_COLUMN_PREAMBLE}\n`);
+  let columnCount = 0;
+  for (let x = bounds.minX; x <= bounds.maxX; x += 1) {
+    for (let z = bounds.minZ; z <= bounds.maxZ; z += 1) {
+      digest.update(`${x},${z}\n`);
+      columnCount += 1;
+    }
+  }
+  return { columnCount, columnSetSha256: digest.digest('hex') };
+}
+
+export function inColumnBounds(bounds, x, z) {
+  return x >= bounds.minX && x <= bounds.maxX && z >= bounds.minZ && z <= bounds.maxZ;
+}
+
+/** Drop every column of an interval map inside the no-build rectangle. */
+export function filterColumnsOutsideBounds(map, noBuild) {
+  return new Map([...map.entries()].filter(([key]) => {
+    const [x, z] = key.split(',').map(Number);
+    return !inColumnBounds(noBuild, x, z);
+  }));
+}
+
+/**
+ * Baseline FM-01 per-column added-solid interval derivation (faithful copy
+ * of the reshape optimizer's loop): for every column of the inclusive
+ * mountain rectangle, added solid spans max(currentSurfaceY + 1, 72) to the
+ * analytic design surface, minus the exact no-fill Y exclusions.
+ */
+export async function deriveFm01BaselineIntervals({ reader, model, noFillByColumn }) {
+  const mountainBounds = {
+    minX: model.center.x - model.extents.west,
+    maxX: model.center.x + model.extents.east,
+    minZ: model.center.z - model.extents.north,
+    maxZ: model.center.z + model.extents.south,
+  };
+  const currentSurface = new Map();
+  const construction = new Map();
+  const support = new Map();
+  const baseSolidDigest = crypto.createHash('sha256').update(`${FM01_BASE_SOLID_PREAMBLE}\n`);
+  const baseSupportDigest = crypto.createHash('sha256')
+    .update(`${FM01_BASE_SUPPORT_PREAMBLE}\n`);
+  let constructionCellCount = 0;
+  let supportCellCount = 0;
+  for (let x = mountainBounds.minX; x <= mountainBounds.maxX; x += 1) {
+    for (let z = mountainBounds.minZ; z <= mountainBounds.maxZ; z += 1) {
+      const surface = await reader.surface(x, z);
+      currentSurface.set(columnKey(x, z), surface);
+      const designY = mountainSurfaceY(x, z, model);
+      const rawStart = surface.y + 1;
+      const supportEnd = Math.min(designY, FM01_ADDED_SOLID_MIN_Y - 1);
+      if (rawStart <= supportEnd) {
+        addRanges(support, x, z, [{ start: rawStart, end: supportEnd }]);
+        supportCellCount += supportEnd - rawStart + 1;
+        baseSupportDigest.update(`${x},${z}\t${rawStart}..${supportEnd}\n`);
+      }
+      const candidate = rangesFromStartEnd(
+        Math.max(rawStart, FM01_ADDED_SOLID_MIN_Y),
+        designY,
+        noFillByColumn.get(columnKey(x, z)) ?? [],
+      );
+      addRanges(construction, x, z, candidate);
+      constructionCellCount += rangesCount(candidate);
+      baseSolidDigest.update(
+        `${x},${z}\tcurrent=${surface.y}\tdesign=${designY}\tadd=${candidate.length
+          ? candidate.map(({ start, end }) => `${start}..${end}`).join(',')
+          : '-'}\n`,
+      );
+    }
+  }
+  return {
+    mountainBounds,
+    currentSurface,
+    construction,
+    support,
+    constructionCellCount,
+    supportCellCount,
+    baseSolidSha256: baseSolidDigest.digest('hex'),
+    baseSupportSha256: baseSupportDigest.digest('hex'),
+  };
+}
+
+/**
+ * Reshaped (south-open no-build) design-surface and solid interval
+ * manifests, exactly as the optimizer publishes them: dense rectangle loop,
+ * with no-build columns keeping their current surface as the design surface
+ * and contributing no added-solid intervals.
+ */
+export function reshapedIntervalManifests({
+  model, mountainBounds, currentSurface, selectedConstruction, selectedSupport, noBuildBounds,
+}) {
+  const designDigest = crypto.createHash('sha256')
+    .update(`${FM01_RESHAPE_DESIGN_PREAMBLE}\n`);
+  const solidDigest = crypto.createHash('sha256')
+    .update(`${FM01_RESHAPE_SOLID_PREAMBLE}\n`);
+  const supportDigest = crypto.createHash('sha256')
+    .update(`${FM01_RESHAPE_SUPPORT_PREAMBLE}\n`);
+  for (let x = mountainBounds.minX; x <= mountainBounds.maxX; x += 1) {
+    for (let z = mountainBounds.minZ; z <= mountainBounds.maxZ; z += 1) {
+      const key = columnKey(x, z);
+      const surface = currentSurface.get(key);
+      const designY = inColumnBounds(noBuildBounds, x, z)
+        ? surface.y
+        : mountainSurfaceY(x, z, model);
+      const candidate = selectedConstruction.get(key) ?? [];
+      designDigest.update(`${x},${z}\t${designY}\n`);
+      solidDigest.update(
+        `${x},${z}\tcurrent=${surface.y}\tdesign=${designY}\tadd=${candidate.length
+          ? candidate.map(({ start, end }) => `${start}..${end}`).join(',')
+          : '-'}\n`,
+      );
+      const supportRanges = selectedSupport?.get(key) ?? [];
+      if (supportRanges.length > 0) {
+        supportDigest.update(`${x},${z}\t${supportRanges
+          .map(({ start, end }) => `${start}..${end}`).join(',')}\n`);
+      }
+    }
+  }
+  return {
+    designSurfaceManifestSha256: designDigest.digest('hex'),
+    solidIntervalManifestSha256: solidDigest.digest('hex'),
+    supportIntervalManifestSha256: supportDigest.digest('hex'),
+  };
+}
+
 /**
  * Reproduce the exact P1-B08 service-tunnel excavation reservation from the
  * inline centerline (faithful copy of G03 buildB08): each centerline point
