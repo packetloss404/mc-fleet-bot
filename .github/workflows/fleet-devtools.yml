@@ -1,0 +1,62 @@
+name: fleet-devtools
+
+# Promoted from fleet-devtools/.github/workflows/ci.yml on 2026-08-07, when
+# mc-fleet-devtools was merged in as a subtool.
+#
+# WHY THIS MOVED: GitHub only reads workflows from `.github/workflows/` at the
+# REPOSITORY ROOT. Left where it was, the file would still look live in the
+# tree while never running again — a silently dead gate, which is worse than
+# no gate. See fleet-devtools/.github/workflows/ci.yml, kept as a pointer.
+#
+# WHY IT IS SCOPED: this repo has no root CI, and the root suite currently has
+# ~60 test files that fail on a fresh clone because test/build/ reads
+# data/world-review/*.json and data/ is gitignored. A repo-wide workflow would
+# go red immediately and stay red, training everyone to ignore it. So this one
+# is deliberately narrow: it triggers only on fleet-devtools changes and runs
+# only fleet-devtools' own gate. Do NOT widen `paths` without first fixing the
+# root suite's fixture problem.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'fleet-devtools/**'
+      - '.github/workflows/fleet-devtools.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'fleet-devtools/**'
+      - '.github/workflows/fleet-devtools.yml'
+
+defaults:
+  run:
+    working-directory: fleet-devtools
+
+jobs:
+  check:
+    name: Build, test & lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          # The subtool has its own lockfile; without this the cache action
+          # looks for one at the repo root and caches the wrong project.
+          cache-dependency-path: fleet-devtools/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      # `npm run check` = lint + build + test + format:check, which is what
+      # fleet-devtools' own README and AGENTS.md both claim CI enforces. The
+      # original workflow ran only build + test, so the docs were describing a
+      # stricter gate than existed. Running the full check makes the docs true
+      # rather than quietly correcting them downward.
+      - name: Check (lint, build, test, format)
+        run: npm run check

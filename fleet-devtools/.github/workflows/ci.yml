@@ -1,31 +1,20 @@
-name: ci
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
-jobs:
-  build-and-test:
-    name: Build & test
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install
-        run: npm ci
-
-      - name: Build packages and apps
-        run: npm run build
-
-      - name: Run tests
-        run: npm test
+# MOVED — this file is INERT and kept only as a signpost.
+#
+# fleet-devtools was merged into mc-fleet-bot as a subtool on 2026-08-07.
+# GitHub reads workflows only from `.github/workflows/` at the REPOSITORY
+# ROOT, so nothing under `fleet-devtools/.github/` will ever run again.
+#
+# The live workflow is:
+#
+#     .github/workflows/fleet-devtools.yml   (at the repo root)
+#
+# It is scoped to `paths: ['fleet-devtools/**']` with
+# `working-directory: fleet-devtools`, so it gates this subtool without
+# gating the root project. It also runs the full `npm run check`
+# (lint + build + test + format:check) rather than the build + test this
+# file used to run, which is what this project's README and AGENTS.md
+# always claimed CI enforced.
+#
+# Edit the root file, not this one. This stub exists because a deleted
+# workflow leaves no trace of where the gate went, and an inert workflow
+# that still looks live is how a repo quietly stops being tested.
