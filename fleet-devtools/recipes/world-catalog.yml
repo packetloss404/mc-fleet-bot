@@ -1,0 +1,26 @@
+version: 1
+id: world-catalog
+name: World Database Catalog
+description: Snapshot identity, read-only SQLite census, features, and HTML.
+parameters:
+  limit:
+    type: integer
+    description: Maximum world_features rows to export (1 to 1,000,000).
+    required: false
+    min: 1
+    max: 1000000
+steps:
+  - id: snapshot
+    type: snapshot-summary
+  - id: database
+    type: database-catalog
+    options:
+      database: world
+  - id: features
+    type: world-features
+    options:
+      database: world
+  - id: report
+    type: html-report
+    options:
+      title: World Database Catalog

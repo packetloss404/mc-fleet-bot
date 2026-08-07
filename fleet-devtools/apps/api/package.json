@@ -1,0 +1,15 @@
+{
+  "name": "@mc-fleet/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@mc-fleet/reporting": "0.1.0",
+    "@mc-fleet/world-core": "0.1.0",
+    "express": "^4.21.0"
+  }
+}

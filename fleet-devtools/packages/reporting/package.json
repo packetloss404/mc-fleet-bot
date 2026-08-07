@@ -1,0 +1,22 @@
+{
+  "name": "@mc-fleet/reporting",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@mc-fleet/anvil": "0.1.0",
+    "@mc-fleet/catalog": "0.1.0",
+    "@mc-fleet/world-core": "0.1.0",
+    "js-yaml": "^4.1.0"
+  }
+}

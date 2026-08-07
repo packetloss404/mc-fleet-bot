@@ -1,0 +1,12 @@
+# Normalise all source files to LF on commit; keep package-lock and
+# JSON config files in the format the upstream toolchain prefers.
+* text=auto eol=lf
+
+# JSON and YAML may be touched by tools that emit CRLF on Windows;
+# always commit as LF to avoid diff churn.
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Prettier reformats Markdown; keep it as LF.
+*.md text eol=lf

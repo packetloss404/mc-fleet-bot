@@ -1,0 +1,18 @@
+{
+  "name": "@mc-fleet/cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "mc-fleet-devtools": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@mc-fleet/anvil": "0.1.0",
+    "@mc-fleet/reporting": "0.1.0",
+    "@mc-fleet/world-core": "0.1.0"
+  }
+}
