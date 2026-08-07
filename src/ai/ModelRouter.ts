@@ -212,6 +212,7 @@ export class ModelRouter implements LLMClient {
       client.chat(systemPrompt, contents, mTokens,
         modelOverride ? { ...(options ?? {}), model: modelOverride } : options),
       maxTokens,
+      systemPrompt.length + JSON.stringify(contents ?? []).length,
     );
   }
 
@@ -231,13 +232,14 @@ export class ModelRouter implements LLMClient {
           return client.generateWithThinking(systemPrompt, userMessage, mTokens);
         }
         return client.generate(systemPrompt, userMessage, mTokens, options);
-      }, maxTokens);
+      }, maxTokens, systemPrompt.length + userMessage.length);
     }
 
     return this.dispatch('generate', options, (client, mTokens, modelOverride) =>
       client.generate(systemPrompt, userMessage, mTokens,
         modelOverride ? { ...(options ?? {}), model: modelOverride } : options),
       maxTokens,
+      systemPrompt.length + userMessage.length,
     );
   }
 
@@ -372,7 +374,15 @@ export class ModelRouter implements LLMClient {
     options: LLMCallOptions | undefined,
     callFn: (client: LLMClient, maxTokens?: number, modelOverride?: string) => Promise<LLMResponse>,
     maxTokens?: number,
+    promptChars = 0,
   ): Promise<LLMResponse> {
+    // Rough prompt-size estimate (chars/4) for FAILED-call ledger rows.
+    // Failures used to be recorded at 0/0 tokens — but client-side timeouts
+    // and post-billing parse throws are billed by the provider in full, so
+    // the cap systematically undercounted exactly when a provider was
+    // misbehaving (2026-08 audit). Overcounting a fast unbilled 4xx slightly
+    // is the safe direction for a spend cap.
+    const estFailedInputTokens = Math.ceil(promptChars / 4);
     this.assertEnabled();
     const taskType = options?.taskType ?? 'chat';
     const botName = options?.botName ?? '';
@@ -473,7 +483,7 @@ export class ModelRouter implements LLMClient {
             model: this.routedModelFor(route, providerName) ?? client.getModelId?.() ?? providerName,
             taskType: taskType as TaskType | 'unknown',
             botName,
-            inputTokens: 0,
+            inputTokens: estFailedInputTokens,
             outputTokens: 0,
             latencyMs,
             success: false,
@@ -499,6 +509,12 @@ export class ModelRouter implements LLMClient {
           });
 
           if (!isRetryableError(err)) {
+            // Terminal errors still count toward the circuit breaker: a task
+            // that reliably trips e.g. the Gemini SAFETY filter used to spin
+            // one request every few seconds forever — no retry, no fallback,
+            // but also no breaker and (at 0 tokens) no ledger cost, i.e.
+            // invisible to every budget mechanism (2026-08 review).
+            this.recordFullChainFailure();
             throw err; // 400, 401, 403 — don't retry, don't fall back
           }
 

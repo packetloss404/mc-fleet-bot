@@ -315,7 +315,11 @@ export class CodeExecutor {
         const message = result.message || 'inspectContainer completed';
         pushLog(`[primitive] inspectContainer result: ${message}`);
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'inspectContainer', containerName });
-        throwIfFailed('inspectContainer', result);
+        // Deliberately NOT throwIfFailed: the codegen manual documents
+        // "[] on missing/failed/empty — safe to use .find/.filter", and both
+        // fresh generations and saved skills are written check-then-act
+        // against that contract. A probe returning empty is information, not
+        // a failure (2026-08 review).
         return containerItemsFromResult(result);
       },
       dropJunk: async (minFreeSlots = 6, threshold = 30) => {

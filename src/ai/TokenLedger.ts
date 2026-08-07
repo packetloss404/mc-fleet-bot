@@ -38,6 +38,8 @@ const COST_PER_MILLION: Record<string, { input: number; output: number }> = {
   'text-embedding-3-small': { input: 0.02, output: 0.0 },
   'text-embedding-3-large': { input: 0.13, output: 0.0 },
   'voyage-4-large': { input: 0.18, output: 0.0 },
+  'voyage-4': { input: 0.10, output: 0.0 },
+  'voyage-code-3': { input: 0.18, output: 0.0 },
   // Anthropic — legacy Claude 4
   'claude-sonnet-4-20250514': { input: 3.0, output: 15.0 },
   'claude-opus-4-20250514': { input: 15.0, output: 75.0 },

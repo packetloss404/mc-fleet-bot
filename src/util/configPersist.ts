@@ -66,6 +66,9 @@ export const RESTART_REQUIRED_FIELDS: Record<PatchableSection, ReadonlySet<strin
     // ambientChat timings drive setInterval schedules at bot worker boot
     'ambientChatMinSec',
     'ambientChatMaxSec',
+    // Both captured by setInterval scopes at worker boot, like the above.
+    'headTrackingTickMs',
+    'wanderIntervalMs',
   ]),
   affinity: new Set(),
   instincts: new Set(),
@@ -105,6 +108,12 @@ const FIELD_TYPES: Record<PatchableSection, Record<string, FieldType>> = {
     conversationRadius: 'number',
     ambientChatMinSec: 'number',
     ambientChatMaxSec: 'number',
+    // Present in the config schema and therefore in the dashboard's
+    // GET→PATCH echo of the whole section. Now that validatePatch rejects
+    // unknown fields atomically, leaving these out made every Behavior-tab
+    // save 400 (the UI PATCHes back everything it fetched).
+    headTrackingTickMs: 'number',
+    wanderIntervalMs: 'number',
   },
   affinity: {
     default: 'number',

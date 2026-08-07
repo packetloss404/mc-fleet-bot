@@ -43,8 +43,16 @@ export function analyzeFailure(ctx: FailureContext): RecoveryHint | null {
   const combined = `${lowerError} ${lowerCritique}`;
 
   // ── Crafting failures ─────────────────────────────────
-  if (combined.includes('was not crafted') || combined.includes('not crafted')) {
-    const itemMatch = error.match(/(\w+) was not crafted/i);
+  // Both critique phrasings ("X was not crafted") AND the thrown-primitive
+  // family ("craftItem failed: ..."): primitives now throw on refusal, so
+  // the critic's reason is the raw thrown message and the old
+  // critique-phrase patterns alone stopped matching the dominant failure
+  // mode (2026-08 review).
+  if (combined.includes('was not crafted') || combined.includes('not crafted')
+    || combined.includes('craftitem failed') || combined.includes('cannot craft')) {
+    const itemMatch = error.match(/(\w+) was not crafted/i)
+      || error.match(/cannot craft (\w+)/i)
+      || error.match(/no recipe found for (\w+)/i);
     const targetItem = itemMatch?.[1] || 'the item';
 
     // Check what materials the bot actually has
@@ -85,7 +93,10 @@ export function analyzeFailure(ctx: FailureContext): RecoveryHint | null {
   }
 
   // ── Mining failures ───────────────────────────────────
-  if (combined.includes('inventory did not gain') || combined.includes('did not collect')) {
+  // Includes the thrown-primitive family ("mineBlock failed: No X nearby") —
+  // see the crafting note above.
+  if (combined.includes('inventory did not gain') || combined.includes('did not collect')
+    || combined.includes('mineblock failed') || combined.includes('gained no ')) {
     // Check if bot has appropriate tool
     const toolCheck = checkMiningTool(lowerTask, bot);
     if (toolCheck) return toolCheck;

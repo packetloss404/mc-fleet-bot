@@ -1333,6 +1333,20 @@ export class VoyagerLoop {
       // water with no reachable resources). Try to self-rescue it home before we
       // idle — otherwise it's cheap but permanently useless until a human notices.
       await this.tryRescueIfStranded(task);
+      // Don't swallow silently. The player task was already shifted off the
+      // queue — tell the requester why it isn't running instead of dropping
+      // it without a trace; and release the blackboard claim (as blocked, so
+      // its own backoff engages) rather than holding the town task hostage
+      // until releaseStale (2026-08 review).
+      if (playerTask && task.description === playerTask.description && this.bot.chat) {
+        try {
+          this.bot.chat(`Can't do "${task.description.slice(0, 60)}" right now — it failed repeatedly just recently. Ask again in a few minutes.`);
+        } catch { /* chat is best-effort */ }
+      }
+      if (this.activeBlackboardTask && task.description === this.activeBlackboardTask.description) {
+        this.blackboardManager?.blockTask(this.activeBlackboardTask.description, this.botName, 'on stuck-task cooldown');
+        this.activeBlackboardTask = null;
+      }
       logger.info(
         { bot: this.botName, task: task.description },
         'Stuck task on cooldown — skipping codegen this cycle (cost guard)',
@@ -1635,6 +1649,25 @@ export class VoyagerLoop {
     this.blackboardManager?.releaseReservationsForBot(this.botName, `${goalId}:`);
   }
 
+  /**
+   * Failure bookkeeping for paths that bail out of a task WITHOUT exhausting
+   * retries (abandon shortcuts, generateCode throws). Without this the
+   * stuck-task damper never arms for them and the task is re-selected at
+   * full codegen price every cycle (2026-08 review).
+   */
+  private recordAbandonFailure(task: Task, reason: string): void {
+    try {
+      this.curriculumAgent.updateProgress(task, false);
+      this.curriculumAgent.getBlockerMemory().recordTaskFailure(task, {
+        success: false,
+        output: '',
+        error: reason,
+        events: [],
+      }, reason || 'task abandoned');
+      this.lastFailedTask = task.description;
+    } catch { /* bookkeeping must never break the loop */ }
+  }
+
   private async executeTaskStep(step: PlannedStep): Promise<boolean> {
     const task: Task = {
       description: step.description,
@@ -1709,7 +1742,19 @@ export class VoyagerLoop {
       };
       codeSource = 'action-template';
     } else {
-      generated = await this.actionAgent!.generateCode(this.bot, task, this.skillLibrary, undefined, undefined, undefined, undefined, blockerSummary, worldMemorySummary);
+      try {
+        generated = await this.actionAgent!.generateCode(this.bot, task, this.skillLibrary, undefined, undefined, undefined, undefined, blockerSummary, worldMemorySummary);
+      } catch (err: any) {
+        // A generateCode throw (3 failed parse attempts, provider error) used
+        // to escape ALL failure bookkeeping to the cycle-level catch: player
+        // tasks silently vanished, no blocker recorded, and the task was
+        // re-selected next cycle for 3 more paid calls (2026-08 audit/review).
+        // Budget/kill-switch errors still propagate so the loop idles.
+        if (err?.code === 'AI_DISABLED') throw err;
+        this.recordAbandonFailure(task, `code generation failed: ${err?.message ?? 'unknown'}`);
+        logger.warn({ bot: this.botName, task: task.description, err: err?.message }, 'generateCode failed — task recorded as failed');
+        return false;
+      }
       codeSource = 'action-agent';
     }
 
@@ -1924,6 +1969,13 @@ export class VoyagerLoop {
         logger.info({ bot: this.botName, pattern: recovery.pattern, hint: recovery.hint }, 'ErrorRecovery: abandoning task');
         this.decisionTrace.record('retry_decision', task.description,
           `Abandoned: ${recovery.pattern}`, 'abandon', { pattern: recovery.pattern, hint: recovery.hint });
+        // Record the failure so the stuck-task damper can arm. Both abandon
+        // shortcuts used to skip ALL failure bookkeeping (only the retry-
+        // exhaustion path recorded), so an impossible task abandoned here was
+        // re-selected every cycle at full codegen price — and the fail-closed
+        // critic + throwing primitives make constant failure reasons (hence
+        // early abandons) the NORM, not the exception (2026-08 review).
+        this.recordAbandonFailure(task, lastError || recovery.hint || recovery.pattern);
         return false;
       }
 
@@ -1977,6 +2029,10 @@ export class VoyagerLoop {
         this.decisionTrace.record('retry_decision', task.description,
           `Abandoned: same error appeared twice in a row (${currentErrorKey})`,
           'abandon', { attempt: attempt + 1, error: currentErrorKey, reason: 'duplicate_error' });
+        // Same-error-twice is the signature of a PERMANENTLY impossible task
+        // (thrown refusals and the fail-closed critic emit stable messages).
+        // Record the failure so the damper arms — see the abandon note above.
+        this.recordAbandonFailure(task, lastError || currentErrorKey);
         return false;
       }
       previousErrorKey = currentErrorKey;
@@ -2016,10 +2072,19 @@ export class VoyagerLoop {
             functionName: generated.functionName,
           }, 'Retrying deterministic approved civic shift');
         } else {
-          generated = await this.actionAgent!.generateCode(
-            this.bot, task, this.skillLibrary,
-            lastError, generated.functionCode, enrichedCritique, eventLog, blockerSummary, worldMemorySummary
-          );
+          try {
+            generated = await this.actionAgent!.generateCode(
+              this.bot, task, this.skillLibrary,
+              lastError, generated.functionCode, enrichedCritique, eventLog, blockerSummary, worldMemorySummary
+            );
+          } catch (err: any) {
+            // Same contract as the initial generateCode: record the failure
+            // (arming the damper) instead of escaping bookkeeping entirely.
+            if (err?.code === 'AI_DISABLED') throw err;
+            this.recordAbandonFailure(task, `retry code generation failed: ${err?.message ?? 'unknown'}`);
+            logger.warn({ bot: this.botName, task: task.description, err: err?.message }, 'Retry generateCode failed — task recorded as failed');
+            return false;
+          }
           logger.info({
             bot: this.botName,
             source: 'action-agent',
@@ -2373,8 +2438,8 @@ export class VoyagerLoop {
         // cycle; without this the queue piled identical tasks (each a paid
         // codegen round, and a non-empty queue suppresses other guards) so
         // one stuck bot made its helpers burn money serially (2026-08 audit).
-        if (this.playerTaskQueue.some((t) => t.description === content)) {
-          logger.debug({ bot: this.botName, from: msg.from }, 'Duplicate help request already queued — skipping');
+        if (this.playerTaskQueue.some((t) => t.description === content) || this.currentTask === content) {
+          logger.debug({ bot: this.botName, from: msg.from }, 'Duplicate help request already queued or running — skipping');
           break;
         }
         logger.info({ bot: this.botName, from: msg.from, content }, 'Help request received from bot');

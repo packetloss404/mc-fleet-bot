@@ -21,6 +21,7 @@
 import path from 'path';
 import type { TownManager } from './TownManager';
 import type { BotManager } from '../bot/BotManager';
+import type { LLMClient } from '../ai/LLMClient';
 import type { BuildCoordinator } from '../build/BuildCoordinator';
 import type { BlackboardManager } from '../voyager/BlackboardManager';
 import type { SchematicMatcher } from '../build/SchematicMatcher';
@@ -107,6 +108,8 @@ export interface TownBrainStatus {
 }
 
 export class TownBrain {
+  /** Default per-town daily LLM design budget when town.config omits one. */
+  private static readonly DEFAULT_DESIGN_BUDGET_USD = 1.0;
   /** Base delay for the demand loop's no-progress backoff (doubles per strike). */
   private static readonly DEMAND_NO_PROGRESS_BASE_MS = 60_000;
   /** Strike cap: 6 strikes = 32 min between re-queues of a stuck shortage. */
@@ -151,8 +154,24 @@ export class TownBrain {
   private currentTickShortages: string[] = [];
   /** Phase 4 — optional library matcher used when the LLM design fails. */
   private readonly schematicMatcher: SchematicMatcher | null;
-  /** Phase 4 — LLM-driven block-plan generator. Null when no LLM client is wired. */
-  private readonly llmDesigner: LlmDesigner | null;
+  /**
+   * Phase 4 — LLM-driven block-plan generator. Rebuilt whenever the
+   * BotManager's client identity changes: capturing it once meant a null
+   * client at boot (slow API bind) or an /api/llm/reload left the brain on a
+   * dead/stale designer until process restart (2026-08 review).
+   */
+  private llmDesigner: LlmDesigner | null;
+  private llmDesignerClient: LLMClient | null = null;
+
+  private currentLlmDesigner(): LlmDesigner | null {
+    const client = this.botManager.getLLMClient();
+    if (!client) return null;
+    if (!this.llmDesigner || this.llmDesignerClient !== client) {
+      this.llmDesigner = new LlmDesigner({ llmClient: client });
+      this.llmDesignerClient = client;
+    }
+    return this.llmDesigner;
+  }
   /** Phase 4 — per-town design cache rooted at `schematics/<townId>/`. */
   private readonly designCache: DesignCache;
   /** Phase 4 — observation writer for the realized-palette feedback loop. */
@@ -257,6 +276,7 @@ export class TownBrain {
     this.schematicMatcher = opts.schematicMatcher ?? null;
     const llmClient = botManager.getLLMClient();
     this.llmDesigner = llmClient ? new LlmDesigner({ llmClient }) : null;
+    this.llmDesignerClient = llmClient;
     // Design cache lives next to the canonical schematics dir so build coord
     // can also load cached files directly should it ever learn to.
     const schematicsRoot = path.join(process.cwd(), 'schematics');
@@ -1154,7 +1174,8 @@ export class TownBrain {
     }
 
     // 3) Fresh LLM design — only if no cache hit and within budget.
-    if (this.llmDesigner && !cacheHit && !overBudget) {
+    const llmDesigner = this.currentLlmDesigner();
+    if (llmDesigner && !cacheHit && !overBudget) {
       try {
         const neighbors: NeighborContext = {
           neighbors: existingBuildings.slice(-10).map((b) => ({
@@ -1166,7 +1187,7 @@ export class TownBrain {
             depth: b.depth,
           })),
         };
-        const design = await this.llmDesigner.designBuilding({
+        const design = await llmDesigner.designBuilding({
           town,
           plan: item,
           styleDoc,
@@ -1393,7 +1414,13 @@ export class TownBrain {
     const cfg = town.config ?? {};
     const llmBudget = (cfg as any).llmBudgetUsd;
     if (typeof llmBudget === 'number' && llmBudget > 0) return llmBudget;
-    return null;
+    // Real default, not null. Returning null disabled the design-budget gate
+    // entirely, and nothing anywhere sets llmBudgetUsd — so the carefully
+    // attributed design spend fed a ledger nobody gated on, and a
+    // validation-failure loop was bounded only by the global cap (2026-08
+    // review). Set llmBudgetUsd: 0 explicitly to disable? No — 0 and
+    // negatives fall through to this default; use a large number instead.
+    return TownBrain.DEFAULT_DESIGN_BUDGET_USD;
   }
 
   /** Extract the kind from a stored `<kind>:<suffix>` building name. */

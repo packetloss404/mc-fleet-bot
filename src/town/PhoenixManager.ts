@@ -68,6 +68,8 @@ export class PhoenixManager {
   private readonly handledRebuildIds: Map<string, Set<string>> = new Map();
   /** Buildings whose no-residents deferral event has already been emitted. */
   private readonly deferredRebuildEventIds: Map<string, Set<string>> = new Map();
+  /** Buildings whose rebuild-failed event has already been emitted. */
+  private readonly failedRebuildEventIds: Map<string, Set<string>> = new Map();
   private readonly handledDeathIds: Map<string, Set<string>> = new Map();
   private readonly lastScanAt: Map<string, number> = new Map();
   /**
@@ -427,17 +429,25 @@ export class PhoenixManager {
         { err: err?.message, townId, action },
         'Phoenix: startBuild rebuild failed',
       );
-      this.townManager.recordEvent({
-        townId,
-        kind: 'phoenix:rebuild_failed',
-        severity: 'minor',
-        payload: {
-          buildingId: action.buildingId,
-          kind: action.kind,
-          error: err?.message ?? 'unknown',
-        },
-        highlightScore: 20,
-      });
+      // Event deduped per building: the retry-every-tick behavior (correct)
+      // would otherwise write one minor row per scan forever for a
+      // persistently-failing rebuild — an event storm that also marks every
+      // chronicle window "active" (2026-08 review).
+      const emitted = this.getOrCreate(this.failedRebuildEventIds, townId);
+      if (!emitted.has(action.buildingId)) {
+        emitted.add(action.buildingId);
+        this.townManager.recordEvent({
+          townId,
+          kind: 'phoenix:rebuild_failed',
+          severity: 'minor',
+          payload: {
+            buildingId: action.buildingId,
+            kind: action.kind,
+            error: err?.message ?? 'unknown',
+          },
+          highlightScore: 20,
+        });
+      }
       return false;
     }
   }

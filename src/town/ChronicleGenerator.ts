@@ -83,7 +83,17 @@ export type ChronicleEventEmitter = (payload: ChronicleEmitPayload) => void;
 
 export class ChronicleGenerator {
   private readonly townManager: TownManager;
-  private readonly llm: LLMClient | null;
+  /**
+   * Resolved per call, not captured. A client captured at construction
+   * survives /api/llm/reload forever (old providers, old keys) — and when
+   * the client was null at boot (the known slow-API-bind-after-restart
+   * posture), the chronicle wrote placeholders until process restart no
+   * matter how many reloads succeeded (2026-08 review).
+   */
+  private readonly llmProvider: () => LLMClient | null;
+  private get llm(): LLMClient | null {
+    return this.llmProvider();
+  }
   private readonly defaultBudgetUsd: number;
   /**
    * Per (townId|dayNumber) accumulated cost. Cleared lazily — the scheduler's
@@ -107,11 +117,11 @@ export class ChronicleGenerator {
 
   constructor(
     townManager: TownManager,
-    llm: LLMClient | null,
+    llm: LLMClient | null | (() => LLMClient | null),
     opts: ChronicleGeneratorOptions = {},
   ) {
     this.townManager = townManager;
-    this.llm = llm;
+    this.llmProvider = typeof llm === 'function' ? llm : () => llm;
     this.defaultBudgetUsd = opts.defaultBudgetUsd ?? DEFAULT_BUDGET_USD;
   }
 
