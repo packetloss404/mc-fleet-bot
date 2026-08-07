@@ -52,13 +52,20 @@ const value = (flag, fallback) => {
   return index >= 0 && argv[index + 1] ? argv[index + 1] : fallback;
 };
 
-const GENERATED_AT = value('--generated-at', '2026-08-07T00:20:00Z');
-const SNAPSHOT = value('--snapshot', 'data/worldsnap-combined-zones-complete-save-20260807T001212Z');
+const GENERATED_AT = value('--generated-at', '2026-08-07T01:45:00Z');
+const SNAPSHOT = value('--snapshot', 'data/worldsnap-combined-zones-complete-save-20260807T013748Z');
 const INTAKE_AUDIT = value('--intake-audit',
-  'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260807T001212Z.json');
+  'docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260807T013748Z.json');
 const OUT_DIR = value('--out-dir', 'data/buildops');
-const BASENAME = 'combined-zones-r03-tunnels';
-const EXPECTED_COMPLETE_SAVE_SHA256 = 'd0aa5693bdd5e3de001787ba3f8c6e86dad8879e7e7ef6af186159a10cd11b98';
+const BASENAME = 'combined-zones-r03-tunnels-v2';
+// The v2 rebind: R05 built the FM-01 mountain, so the surface/wet/already
+// classes are recomputed against the post-mountain terrain. The owner
+// decision record still names (and stays bound to) the pre-mountain save it
+// was recorded against; the manifest's rebind section records the new bound
+// save and the reason. The parked v1 artifacts stay untouched as history.
+const EXPECTED_COMPLETE_SAVE_SHA256 = 'a981a305397769dea8dfa41bc8eb39941dbf2dbcbb2f09519f4f020d87d413df';
+const DECISION_RECORDED_SAVE_SHA256 = 'd0aa5693bdd5e3de001787ba3f8c6e86dad8879e7e7ef6af186159a10cd11b98';
+const REBIND_REASON = 'R05 mountain executed; surface-deferral recomputed against post-mountain terrain';
 const BORE_TARGET_STATE = 'minecraft:air';
 
 const INPUTS = Object.freeze({
@@ -102,8 +109,8 @@ const registry = readJson(INPUTS.registry);
 const intake = readJson(INTAKE_AUDIT);
 
 invariant(decisionText.includes('OWNER_DECISION_RECORDED_R03_R04_TUNNEL_BORES')
-  && decisionText.includes(EXPECTED_COMPLETE_SAVE_SHA256),
-'R03 decision record is not the recorded tunnel-bore decision bound to this save');
+  && decisionText.includes(DECISION_RECORDED_SAVE_SHA256),
+'R03 decision record is not the recorded tunnel-bore decision');
 invariant(intake.status === 'PASS_COMPLETE_IMMUTABLE_SAME_MOMENT_SAVE'
   && intake.summary?.autonomousEngineeringMayUseAsCompleteSaveEvidence === true,
 'fresh complete-save intake audit is not PASS');
@@ -378,6 +385,13 @@ const manifestWithoutIdentity = {
       status: 'OWNER_DECISION_RECORDED_R03_R04_TUNNEL_BORES',
     },
     boreTargetState: BORE_TARGET_STATE,
+    rebind: {
+      reboundSnapshotRoot: SNAPSHOT,
+      reboundCompleteSaveSha256: intake.packageIdentity.completeSaveSha256,
+      reboundIntakeAuditPath: INTAKE_AUDIT,
+      decisionRecordedCompleteSaveSha256: DECISION_RECORDED_SAVE_SHA256,
+      reason: REBIND_REASON,
+    },
     packageCellCounts: Object.fromEntries(packageArtifacts
       .map(({ key, cellCount }) => [key, cellCount])),
     operatedUnionCellCount: operatedUnion.length,

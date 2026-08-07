@@ -156,10 +156,14 @@ export class CriticAgent {
       return this.llmCheck(bot, task, executionResult, preState, postState);
     }
 
-    // Default: trust the execution result but with empty critique
+    // No LLM critic and no programmatic verdict: fail CLOSED. "Trust the
+    // execution result" meant trusting "the script didn't throw", which is
+    // true for every no-op — the same fail-open that drove the 21k-request
+    // supply loop, surviving here on the criticLLMCalls=false path. A false
+    // failure costs one retry under backoff; a false success loops forever.
     return {
-      success: executionResult.success,
-      reason: executionResult.success ? 'Code executed without errors' : 'Unknown error',
+      success: false,
+      reason: 'No critic available for this task category — failing closed so the task retries under backoff',
       critique: '',
     };
   }

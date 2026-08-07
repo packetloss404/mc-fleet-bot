@@ -204,6 +204,21 @@ export class CodeExecutor {
       return value;
     };
 
+    // Primitive refusals THROW instead of returning {success:false}. Zero of
+    // the 938 saved skills ever read .success — generated code continued
+    // blindly past refused primitives, execution "succeeded" (didn't throw),
+    // and no-op runs got marked complete whenever the critic was weak: the
+    // core mechanism of the 21k-request supply loop (2026-08 audit). Throwing
+    // is already the house style (requireName, moveTo guards, the dig
+    // wrapper, prompt hard rule "let errors propagate"), and it surfaces the
+    // primitive's own message to the critic verbatim.
+    const throwIfFailed = <T extends { success: boolean; message?: string }>(primitive: string, result: T): T => {
+      if (!result.success) {
+        throw new Error(`${primitive} failed: ${result.message || 'unknown reason'}`);
+      }
+      return result;
+    };
+
     const sandbox = {
       bot: botProxy,
       Vec3,
@@ -231,7 +246,7 @@ export class CodeExecutor {
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'mineBlock', name, count });
         const afterItems = bot.inventory.items().map((i) => `${i.name}x${i.count}`).join(', ') || 'empty';
         pushLog(`[primitive] mineBlock inventory before=${beforeItems} after=${afterItems}`);
-        return result;
+        return throwIfFailed('mineBlock', result);
       },
       craftItem: async (name: string, count = 1) => {
         throwIfInterrupted();
@@ -242,7 +257,7 @@ export class CodeExecutor {
         const message = result.message || 'craftItem completed';
         pushLog(`[primitive] craftItem result: ${message}`);
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'craftItem', name, count });
-        return result;
+        return throwIfFailed('craftItem', result);
       },
       smeltItem: async (itemName: string, fuelName: string, count = 1) => {
         throwIfInterrupted();
@@ -254,7 +269,7 @@ export class CodeExecutor {
         const message = result.message || 'smeltItem completed';
         pushLog(`[primitive] smeltItem result: ${message}`);
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'smeltItem', itemName, fuelName, count });
-        return result;
+        return throwIfFailed('smeltItem', result);
       },
       placeItem: async (name: string, x: number, y: number, z: number) => {
         throwIfInterrupted();
@@ -265,7 +280,7 @@ export class CodeExecutor {
         const message = result.message || 'placeItem completed';
         pushLog(`[primitive] placeItem result: ${message}`);
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'placeItem', name, x, y, z });
-        return result;
+        return throwIfFailed('placeItem', result);
       },
       withdrawItem: async (containerName: string, itemName: string, count = 1) => {
         throwIfInterrupted();
@@ -277,7 +292,7 @@ export class CodeExecutor {
         const message = result.message || 'withdrawItem completed';
         pushLog(`[primitive] withdrawItem result: ${message}`);
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'withdrawItem', containerName, itemName, count });
-        return result;
+        return throwIfFailed('withdrawItem', result);
       },
       depositItem: async (containerName: string, itemName: string, count = 1) => {
         throwIfInterrupted();
@@ -289,7 +304,7 @@ export class CodeExecutor {
         const message = result.message || 'depositItem completed';
         pushLog(`[primitive] depositItem result: ${message}`);
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'depositItem', containerName, itemName, count });
-        return result;
+        return throwIfFailed('depositItem', result);
       },
       inspectContainer: async (containerName: string) => {
         throwIfInterrupted();
@@ -300,6 +315,7 @@ export class CodeExecutor {
         const message = result.message || 'inspectContainer completed';
         pushLog(`[primitive] inspectContainer result: ${message}`);
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'inspectContainer', containerName });
+        throwIfFailed('inspectContainer', result);
         return containerItemsFromResult(result);
       },
       dropJunk: async (minFreeSlots = 6, threshold = 30) => {
@@ -379,7 +395,7 @@ export class CodeExecutor {
         const message = result.message || 'killMob completed';
         pushLog(`[primitive] killMob result: ${message}`);
         pushEvent(result.success ? 'primitive_success' : 'primitive_failure', message, { primitive: 'killMob', name, maxDuration });
-        return result;
+        return throwIfFailed('killMob', result);
       },
       moveTo: async (x: number, y: number, z: number, range = 2, timeoutSec = 15) => {
         throwIfInterrupted();
@@ -426,8 +442,23 @@ export class CodeExecutor {
         pushLog(`[primitive] moveTo startPos=(${start.x.toFixed(1)}, ${start.y.toFixed(1)}, ${start.z.toFixed(1)})`);
         bot.pathfinder.setGoal(new goals.GoalNear(x, y, z, range));
         return new Promise<boolean>((resolve, reject) => {
+          // The goal_reached listener must be removed on EVERY exit path.
+          // The timeout/interrupt paths used to leave it installed, so each
+          // timed-out moveTo left a stale closure that fired on some future
+          // goal_reached — pushing events into a dead execution's arrays and
+          // re-running spent cleanups (2026-08 audit).
+          const onGoalReached = () => {
+            clearTimeout(timeout);
+            const pos = bot.entity.position;
+            pushLog(`[primitive] moveTo: goal reached at (${pos.x.toFixed(1)}, ${pos.y.toFixed(1)}, ${pos.z.toFixed(1)})`);
+            pushEvent('primitive_success', 'moveTo reached goal', { primitive: 'moveTo', x, y, z, range, timeoutSec });
+            cleanupTrace();
+            cleanupInterrupt();
+            resolve(true);
+          };
           const timeout = setTimeout(() => {
             bot.pathfinder.stop();
+            bot.removeListener('goal_reached' as any, onGoalReached);
             const pos = bot.entity.position;
             pushLog(`[primitive] moveTo: timed out, stopping at (${pos.x.toFixed(1)}, ${pos.y.toFixed(1)}, ${pos.z.toFixed(1)})`);
             pushEvent('primitive_failure', 'moveTo timed out', { primitive: 'moveTo', x, y, z, range, timeoutSec });
@@ -438,21 +469,14 @@ export class CodeExecutor {
           const cleanupInterrupt = onInterrupt((reason) => {
             clearTimeout(timeout);
             bot.pathfinder.stop();
+            bot.removeListener('goal_reached' as any, onGoalReached);
             pushLog(`[primitive] moveTo: interrupted (${reason})`);
             pushEvent('interrupt', `moveTo interrupted: ${reason}`, { primitive: 'moveTo', reason });
             cleanupTrace();
             cleanupInterrupt();
             reject(new Error(`Execution interrupted: ${reason}`));
           });
-          bot.once('goal_reached' as any, () => {
-            clearTimeout(timeout);
-            const pos = bot.entity.position;
-            pushLog(`[primitive] moveTo: goal reached at (${pos.x.toFixed(1)}, ${pos.y.toFixed(1)}, ${pos.z.toFixed(1)})`);
-            pushEvent('primitive_success', 'moveTo reached goal', { primitive: 'moveTo', x, y, z, range, timeoutSec });
-            cleanupTrace();
-            cleanupInterrupt();
-            resolve(true);
-          });
+          bot.once('goal_reached' as any, onGoalReached);
         });
       },
       exploreUntil: async (direction: any, maxTime = 60, callback: () => any) => {
@@ -686,6 +710,8 @@ export class CodeExecutor {
   }
 
   private createBotProxy(bot: Bot, pushLog: (line: string) => void, interruptibleDelay: (ms: number) => Promise<void>) {
+    // Per-execution cap on real chat messages sent by generated code.
+    let chatsSent = 0;
     return {
       get entity() { return { position: bot.entity.position, velocity: bot.entity.velocity, height: (bot.entity as any).height || 1.8 }; },
       get health() { return bot.health; },
@@ -694,12 +720,34 @@ export class CodeExecutor {
       get isRaining() { return bot.isRaining; },
       get inventory() {
         return {
-          items: () => bot.inventory.items().map((i) => ({ name: i.name, count: i.count, slot: i.slot, type: i.type })),
+          // foodRecovery is included because the codegen manual's documented
+          // eating pattern is `items().find(i => i.foodRecovery > 0)` — the
+          // proxy used to strip it, so `undefined > 0` was false and a
+          // starving bot following the manual concluded it had no food while
+          // holding bread (2026-08 audit).
+          items: () => bot.inventory.items().map((i) => ({
+            name: i.name,
+            count: i.count,
+            slot: i.slot,
+            type: i.type,
+            foodRecovery: (bot as any).registry?.foodsByName?.[i.name]?.foodPoints ?? 0,
+          })),
         };
       },
       chat: (msg: string) => {
+        // Really send (capped): this used to be a pure log no-op, yet the
+        // chat success-check passes on the [chat] log marker — so chat tasks
+        // "succeeded" with nothing said in-game (2026-08 audit). Slash
+        // commands stay blocked (setBlock/fillBlocks are the sanctioned,
+        // geofenced command paths); the cap keeps a chatty script from
+        // flooding the server.
         const safe = String(msg).slice(0, 256);
-        if (!safe.startsWith('/')) pushLog(`[chat] ${safe}`);
+        if (safe.startsWith('/')) return;
+        pushLog(`[chat] ${safe}`);
+        if (chatsSent < 3) {
+          chatsSent++;
+          try { bot.chat(safe); } catch { /* chat is best-effort */ }
+        }
       },
       pathfinder: {
         setGoal: (goal: any, dynamic?: boolean) => bot.pathfinder.setGoal(goal, dynamic),

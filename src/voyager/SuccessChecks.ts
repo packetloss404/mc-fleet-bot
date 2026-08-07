@@ -22,12 +22,49 @@ interface SuccessCheckContext {
 
 type SuccessCheck = (context: SuccessCheckContext) => CriticResult | null;
 
-const checkHarvest: SuccessCheck = ({ goal, task, preState, postState }) => {
-  const targetDelta = goal.item ? (postState.inventory[goal.item] || 0) - (preState.inventory[goal.item] || 0) : 0;
-  if (goal.item && targetDelta >= goal.count) {
-    return { success: true, reason: `Collected ${targetDelta} ${goal.item}`, critique: '' };
+/**
+ * Sum of positive inventory deltas for items RELATED to the goal item.
+ * Exact match is not enough — mining stone yields cobblestone, iron_ore
+ * yields raw_iron — so items sharing a meaningful name token count too.
+ * ("stone" ⊂ "cobblestone", "iron" tokens match raw_iron/iron_ore.)
+ */
+function gainedRelatedTo(goalItem: string, pre: Record<string, number>, post: Record<string, number>): number {
+  const tokens = goalItem.split('_').filter((t) => t.length >= 3);
+  let gained = 0;
+  for (const [name, count] of Object.entries(post)) {
+    const delta = count - (pre[name] || 0);
+    if (delta <= 0) continue;
+    const nameTokens = name.split('_');
+    const related =
+      name === goalItem ||
+      name.includes(goalItem) ||
+      goalItem.includes(name) ||
+      tokens.some((t) => nameTokens.some((n) => n === t || n.includes(t) || t.includes(n)));
+    if (related) gained += delta;
   }
-  // Only count as success if items were GAINED (not just dropped)
+  return gained;
+}
+
+const checkHarvest: SuccessCheck = ({ goal, task, preState, postState }) => {
+  if (goal.item) {
+    const gained = gainedRelatedTo(goal.item, preState.inventory, postState.inventory);
+    if (gained >= goal.count) {
+      return { success: true, reason: `Collected ${gained} ${goal.item}-related items`, critique: '' };
+    }
+    if (gained > 0) {
+      return { success: true, reason: `Collected ${gained} ${goal.item}-related items (short of ${goal.count})`, critique: '' };
+    }
+    // A known target that saw ZERO related gain is a failure even if the bot
+    // picked up unrelated junk. The old any-item-gained fallback passed
+    // "collect 16 stone" on one stray mob drop, so the town's shortage loop
+    // kept churning with free false verdicts (2026-08 audit).
+    return {
+      success: false,
+      reason: `Inventory gained no ${goal.item}-related items`,
+      critique: `The bot did not collect ${goal.item}. Use mineBlock(...) and verify the exact target block/item name.`,
+    };
+  }
+  // Unknown target: item gain is the only signal available.
   const itemsGained = postState.itemCount > preState.itemCount;
   if (itemsGained) {
     return { success: true, reason: 'Inventory gained items after harvest action', critique: '' };
@@ -35,7 +72,7 @@ const checkHarvest: SuccessCheck = ({ goal, task, preState, postState }) => {
   return {
     success: false,
     reason: 'Inventory did not gain the expected items',
-    critique: `The bot did not collect the expected item${goal.item ? ` (${goal.item})` : ''}. Use mineBlock(...) and verify the exact target block/item name.`,
+    critique: 'The bot did not collect anything. Use mineBlock(...) and verify the exact target block/item name.',
   };
 };
 
@@ -77,7 +114,37 @@ const checkMovement: SuccessCheck = ({ task, preState, postState }) => {
       return { success: true, reason: `Reached area near farmland after moving ${distanceMoved.toFixed(1)} blocks`, critique: '' };
     }
   }
-  if (distanceMoved > 2) {
+  // Tasks that state a distance ("Explore 50 blocks north") must cover most
+  // of it — the flat >2 threshold passed them at 2.1 blocks in any direction
+  // (2026-08 audit). Tasks that state a destination must end near it.
+  const distMatch = task.description.toLowerCase().match(/(\d+)\s*blocks?/);
+  if (distMatch) {
+    const required = Number(distMatch[1]);
+    if (required > 2 && distanceMoved < required * 0.8) {
+      return {
+        success: false,
+        reason: `Bot moved ${distanceMoved.toFixed(1)} blocks of the required ~${required}`,
+        critique: `The task requires roughly ${required} blocks of travel; the bot covered ${distanceMoved.toFixed(1)}. Continue with moveTo(...)/exploreUntil(...).`,
+      };
+    }
+  }
+  const coordMatch = task.description.match(/\(?(-?\d+),\s*(-?\d+)(?:,\s*(-?\d+))?\)?/);
+  if (coordMatch && /\b(go to|walk to|travel to|reach|near)\b/i.test(task.description)) {
+    const tx = Number(coordMatch[1]);
+    // 2-tuple is (x, z); 3-tuple is (x, y, z).
+    const tz = Number(coordMatch[3] ?? coordMatch[2]);
+    const dx = postState.position.x - tx;
+    const dz = postState.position.z - tz;
+    const remaining = Math.sqrt(dx * dx + dz * dz);
+    if (remaining > 16) {
+      return {
+        success: false,
+        reason: `Bot ended ${remaining.toFixed(0)} blocks from the stated destination (${tx}, ${tz})`,
+        critique: `The bot is still ${remaining.toFixed(0)} blocks from (${tx}, ${tz}). Use moveTo(${tx}, <y>, ${tz}).`,
+      };
+    }
+  }
+  if (movedEnough) {
     return { success: true, reason: `Bot moved ${distanceMoved.toFixed(1)} blocks`, critique: '' };
   }
   return {
@@ -114,6 +181,7 @@ const checkChat: SuccessCheck = ({ executionResult }) => {
 
 const checksByCategory: Record<string, SuccessCheck[]> = {
   harvest: [checkHarvest],
+  chat: [checkChat],
   // Supply-run tasks ("town needs 16 more stone") are collect-into-inventory,
   // the same success shape as harvest. With no entry here every supply verdict
   // fell through to checkCombat (which can false-pass on any inventory change)
@@ -144,7 +212,13 @@ export function runSuccessChecks(task: Task, executionResult: ExecutionResult, p
     postState,
   };
 
-  const allChecks = [...(checksByCategory[guidance.category] || []), checkCombat];
+  // checkCombat used to be appended to EVERY category here. For categories
+  // with no entry of their own (general, survival) it was therefore the sole
+  // verdict — and it passes on any health drop or item-count change, so a
+  // starving bot "succeeded" at "find food immediately" by taking starvation
+  // damage, and the no-op code got saved as a skill (2026-08 audit). Combat
+  // evidence is now only a verdict for combat tasks.
+  const allChecks = checksByCategory[guidance.category] || [];
   for (const check of allChecks) {
     const result = check(context);
     if (result) return result;

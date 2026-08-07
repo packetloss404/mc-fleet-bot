@@ -155,8 +155,15 @@ export class GeminiClient implements LLMClient {
 
     const finishReason = candidates[0].finishReason;
     if (finishReason === 'SAFETY') {
+      // Throw (terminal) instead of returning ''. An empty string flowed
+      // downstream as a billed SUCCESS — codegen then burned a paid parse
+      // retry on the empty text, and chat paths emitted blank messages
+      // (2026-08 audit). status 400 marks it non-retryable in the router so
+      // the same blocked prompt isn't resent 4x per provider.
       logger.warn('Gemini response blocked by safety filter');
-      return '';
+      const err: any = new Error('Gemini response blocked by safety filter');
+      err.status = 400;
+      throw err;
     }
     if (finishReason === 'MAX_TOKENS') {
       logger.warn('Gemini response truncated (MAX_TOKENS)');

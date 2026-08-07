@@ -19,7 +19,7 @@ const GENERATED_AT = value('--generated-at', new Date().toISOString());
 const EXPIRES_AT = value('--expires-at',
   new Date(Date.now() + 6 * 60 * 60 * 1000).toISOString());
 const OUTPUT = path.resolve(value('--out',
-  'data/buildops/combined-zones-r03-tunnels.release-authorization.json'));
+  'data/buildops/combined-zones-r03-tunnels-v2.release-authorization.json'));
 
 const sha256 = (data) => crypto.createHash('sha256').update(data).digest('hex');
 const readJson = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
@@ -29,10 +29,10 @@ function invariant(condition, message) {
 const stripHeader = (raw) => `${raw.split('\n').filter((line) => line && !line.startsWith('#')).join('\n')}\n`;
 const bodyHash = (p) => sha256(stripHeader(fs.readFileSync(path.join(ROOT, p), 'utf8')));
 
-const manifest = readJson('data/buildops/combined-zones-r03-tunnels.release-manifest.json');
-const manifestQa = readJson('data/world-review/combined-zones-r03-tunnels.manifest-qa.json');
-const t02 = readJson('data/world-review/combined-zones-r03-tunnels.ownership-interface-audit.json');
-const intake = readJson('docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260807T001212Z.json');
+const manifest = readJson('data/buildops/combined-zones-r03-tunnels-v2.release-manifest.json');
+const manifestQa = readJson('data/world-review/combined-zones-r03-tunnels-v2.manifest-qa.json');
+const t02 = readJson('data/world-review/combined-zones-r03-tunnels-v2.ownership-interface-audit.json');
+const intake = readJson('docs/masterplans/05-combined-zones/phase1-complete-save-intake-audit-20260807T013748Z.json');
 const decisionDoc = fs.readFileSync(path.join(ROOT,
   'docs/masterplans/05-combined-zones/phase1-r03-tunnels-scope-and-material-decision.md'));
 
@@ -56,7 +56,7 @@ const packages = manifest.packages.map((pkg) => ({
 
 const record = {
   schemaVersion: 1,
-  id: 'combined-zones-r03-tunnels-release-authorization',
+  id: 'combined-zones-r03-tunnels-v2-release-authorization',
   generatedAtUtc: GENERATED_AT,
   expiresAtUtc: EXPIRES_AT,
   status: 'AUTHORIZED_SINGLE_EXECUTION_HASH_BOUND',
@@ -71,13 +71,13 @@ const record = {
   },
   world: 'packetcraft-paper-overworld',
   boundIdentities: {
-    manifestPath: 'data/buildops/combined-zones-r03-tunnels.release-manifest.json',
+    manifestPath: 'data/buildops/combined-zones-r03-tunnels-v2.release-manifest.json',
     manifestIdentity: manifest.manifestIdentity,
     packages,
     packageOrder: packages.map(({ key }) => key),
     completeSaveSha256: intake.packageIdentity.completeSaveSha256,
-    snapshotRoot: 'data/worldsnap-combined-zones-complete-save-20260807T001212Z',
-    manifestQaReportSha256: sha256(fs.readFileSync(path.join(ROOT, 'data/world-review/combined-zones-r03-tunnels.manifest-qa.json'))),
+    snapshotRoot: 'data/worldsnap-combined-zones-complete-save-20260807T013748Z',
+    manifestQaReportSha256: sha256(fs.readFileSync(path.join(ROOT, 'data/world-review/combined-zones-r03-tunnels-v2.manifest-qa.json'))),
     t02ReportIdentitySha256: t02.reportIdentitySha256 ?? null,
     decisionRecordSha256: sha256(decisionDoc),
   },

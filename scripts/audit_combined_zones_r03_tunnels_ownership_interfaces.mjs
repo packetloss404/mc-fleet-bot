@@ -46,12 +46,12 @@ const value = (flag, fallback) => {
   const index = argv.indexOf(flag);
   return index >= 0 && argv[index + 1] ? argv[index + 1] : fallback;
 };
-const GENERATED_AT = value('--generated-at', '2026-08-07T00:30:00Z');
+const GENERATED_AT = value('--generated-at', '2026-08-07T01:55:00Z');
 const OUTPUT = path.resolve(value('--out',
-  'data/world-review/combined-zones-r03-tunnels.ownership-interface-audit.json'));
+  'data/world-review/combined-zones-r03-tunnels-v2.ownership-interface-audit.json'));
 
 const INPUTS = Object.freeze({
-  manifest: 'data/buildops/combined-zones-r03-tunnels.release-manifest.json',
+  manifest: 'data/buildops/combined-zones-r03-tunnels-v2.release-manifest.json',
   decision: 'docs/masterplans/05-combined-zones/phase1-r03-tunnels-scope-and-material-decision.md',
   b03Geometry: 'docs/masterplans/05-combined-zones/phase1-cheyenne-jcurve-geometry.json',
   connectors: 'docs/masterplans/05-combined-zones/phase1-connector-geometry.json',
@@ -82,6 +82,11 @@ invariant(manifest.scope.decisionRecord?.path === INPUTS.decision
   && sha256(fs.readFileSync(path.join(ROOT, INPUTS.decision)))
     === manifest.scope.decisionRecord.sha256,
 'manifest decision-record binding does not match the decision record bytes');
+invariant(manifest.scope.rebind?.reboundCompleteSaveSha256
+  === manifest.source.completeSaveSha256
+  && manifest.scope.rebind?.reboundSnapshotRoot === manifest.source.snapshotRoot
+  && typeof manifest.scope.rebind?.reason === 'string',
+'manifest rebind section does not match its bound source save');
 
 const stripHeader = (raw) => `${raw.split('\n')
   .filter((line) => line && !line.startsWith('#')).join('\n')}\n`;
