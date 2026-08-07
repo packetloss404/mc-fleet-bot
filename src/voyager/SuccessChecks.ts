@@ -114,6 +114,12 @@ const checkChat: SuccessCheck = ({ executionResult }) => {
 
 const checksByCategory: Record<string, SuccessCheck[]> = {
   harvest: [checkHarvest],
+  // Supply-run tasks ("town needs 16 more stone") are collect-into-inventory,
+  // the same success shape as harvest. With no entry here every supply verdict
+  // fell through to checkCombat (which can false-pass on any inventory change)
+  // and then to a paid LLM critic call — thousands per day during a shortage.
+  // An inventory diff answers it for free and cannot fail open.
+  gather: [checkHarvest],
   craft: [checkCraft],
   smelt: [checkSmelt],
   movement: [checkMovement],

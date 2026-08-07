@@ -46,7 +46,11 @@ export interface LLMSettingsData {
 
 const DEFAULT_BUDGET: BudgetConfig = {
   dailyUsd: 5,
-  scope: 'anthropic',
+  // 'all', not 'anthropic'. An anthropic-only scope means the router falls
+  // through to an UNgoverned provider the moment Anthropic is capped or out
+  // of credit — which is exactly how the 2026-08 stone-supply loop burned
+  // ~$99 of Gemini in two days after exhausting the Anthropic balance.
+  scope: 'all',
   override: false,
   idleThrottle: false,
 };
@@ -173,7 +177,9 @@ export class LLMSettings {
     const b: Partial<BudgetConfig> = this.settings.budget ?? {};
     return {
       dailyUsd: typeof b.dailyUsd === 'number' ? b.dailyUsd : DEFAULT_BUDGET.dailyUsd,
-      scope: b.scope === 'all' ? 'all' : 'anthropic',
+      // Honor an explicit 'anthropic' choice; anything else (including older
+      // settings files with no scope) governs all paid providers.
+      scope: b.scope === 'anthropic' ? 'anthropic' : 'all',
       override: b.override === true,
       idleThrottle: b.idleThrottle === true,
     };
@@ -202,8 +208,10 @@ export class LLMSettings {
   isPaidCallAllowed(provider: string, taskType: string): boolean {
     const b = this.getBudget();
     if (b.override) return true; // hog-wild: no cap, no throttle
-    const governed = b.scope === 'all' ? true : provider === 'anthropic';
-    if (!governed) return true; // cheap providers are never gated
+    // Ollama is local and free — gating it under scope 'all' would leave the
+    // fleet with no fallback at all once the cap trips.
+    const governed = b.scope === 'all' ? provider !== 'ollama' : provider === 'anthropic';
+    if (!governed) return true; // free/ungoverned providers are never gated
     // Idle throttle: only when a human-count source is wired (else inert).
     if (b.idleThrottle && this.onlineHumanCountFn && taskType === 'codegen') {
       if (this.onlineHumanCountFn() <= 0) return false;

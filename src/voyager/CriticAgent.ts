@@ -263,10 +263,18 @@ export class CriticAgent {
         critique: parsed.critique || '',
       };
     } catch (err: any) {
-      logger.warn({ err: err.message }, 'Critic LLM failed, using default');
+      // Fail CLOSED. Trusting executionResult.success here passed every no-op
+      // attempt whenever the critic route was down — generated code rarely
+      // throws even when its primitives refuse (mineBlock returns
+      // success:false and the code ignores it). That marked supply tasks
+      // completed, so blackboard failure backoff never engaged and the
+      // TownBrain re-queued the same shortage every minute for two weeks
+      // (2026-07-24..08-06, ~21k requests). A false failure costs one retry
+      // cycle under backoff; a false success loops forever.
+      logger.warn({ err: err.message }, 'Critic LLM failed — failing closed');
       return {
-        success: executionResult.success,
-        reason: 'LLM critic unavailable, trusting execution result',
+        success: false,
+        reason: 'LLM critic unavailable — failing closed so the task retries under backoff',
         critique: '',
       };
     }

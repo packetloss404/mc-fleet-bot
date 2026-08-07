@@ -104,6 +104,10 @@ export interface TownBrainStatus {
 }
 
 export class TownBrain {
+  /** Base delay for the demand loop's no-progress backoff (doubles per strike). */
+  private static readonly DEMAND_NO_PROGRESS_BASE_MS = 60_000;
+  /** Strike cap: 6 strikes = 32 min between re-queues of a stuck shortage. */
+  private static readonly DEMAND_NO_PROGRESS_MAX_STRIKES = 6;
   private readonly townId: string;
   private readonly townManager: TownManager;
   private readonly botManager: BotManager;
@@ -125,6 +129,15 @@ export class TownBrain {
    * — restart is itself the most aggressive "try again" signal.
    */
   private buildFailureCooldown: Map<string, { until: number; consecutive: number }> = new Map();
+  /**
+   * Per-resource cooldown for supply tasks that run without raising stock.
+   * Blackboard failure backoff only covers tasks that FAIL — a supply task
+   * that reaches "completed" while the stockpile stays flat (bad verdict,
+   * items lost, resource unreachable) re-queues every demand tick forever,
+   * one paid codegen round per minute (the 2026-07/08 stone loop: ~21k
+   * requests over two weeks). Strikes reset the moment stock actually rises.
+   */
+  private demandNoProgress: Map<string, { lastHave: number; strikes: number; nextEligibleAt: number }> = new Map();
   /**
    * Snapshot of the most recent resource shortages from the demand loop,
    * handed to the role loop on the same tick. Cleared each tick.
@@ -513,6 +526,30 @@ export class TownBrain {
         // A bot is already working this shortage, or the latest failed
         // attempt is in exponential cooldown — don't queue a duplicate.
         continue;
+      }
+
+      // No-progress cooldown: exponential backoff when repeated supply tasks
+      // for this resource run without the stockpile moving. 1m, 2m, 4m ...
+      // capped at 32m; any actual increase in `have` resets the strikes.
+      const now = Date.now();
+      const progress = this.demandNoProgress.get(resource);
+      if (progress && have <= progress.lastHave && now < progress.nextEligibleAt) {
+        continue;
+      }
+      const strikes = progress && have <= progress.lastHave
+        ? Math.min(progress.strikes + 1, TownBrain.DEMAND_NO_PROGRESS_MAX_STRIKES)
+        : 0;
+      this.demandNoProgress.set(resource, {
+        lastHave: have,
+        strikes,
+        nextEligibleAt:
+          strikes > 0 ? now + TownBrain.DEMAND_NO_PROGRESS_BASE_MS * 2 ** (strikes - 1) : now,
+      });
+      if (strikes > 0) {
+        logger.info(
+          { townId: this.townId, resource, have, strikes },
+          'TownBrain demand: shortage not improving, backing off re-queue',
+        );
       }
 
       const description = `town:${this.townId} needs ${need} more ${resource} (requesting role: ${role}).${resourceLocaleHint(resource)}`;
