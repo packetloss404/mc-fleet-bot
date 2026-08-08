@@ -64,10 +64,10 @@ Priority tags: **[P0]** time-boxed / do next · **[P1]** should do soon · **[P2
   `docs/MAINSTREET-SECURE-COMPLEX-WAVE5-2026-07-27.md`.
 
 
-### 0. [P1/S] Finish dashboard hardening for DyoAuth settings — backend risk fixed
+### 0. [DONE 2026-08-08] Finish dashboard hardening for DyoAuth settings — backend risk fixed
 - **Fixed 2026-07-26:** `BotInstance` now runs DyoAuth only when `loginFlow === 'dyoauth'`, class selection only when explicitly true, and the source fallback is empty/`MC_BOT_PASSWORD`; `configPersist` validates `loginFlow` against `none|dyoauth`. A missing or misspelled setting now fails safe instead of sending a credential to chat.
-- **Residual:** the generic dashboard form still renders `loginFlow` as a free-text field even though the API accepts only the enum. The tracked runtime config also still carries a nonempty legacy login password even though this server uses `loginFlow: none`.
-- **Next action:** render `loginFlow` as a select and clear the dead tracked credential (use `MC_BOT_PASSWORD` only on a server that explicitly needs DyoAuth).
+- **Fixed 2026-08-08:** the dashboard now renders `loginFlow` as a closed `<select>` (`web/src/app/settings/page.tsx:69-79`) with the same two values the API accepts, so the form can no longer surface values that the API will reject. A new `options` override on `FieldOverride` (`web/src/components/settings/SettingsSection.tsx:42-48`) makes this available to any future closed-enum string field.
+- **Residual:** the tracked runtime config still carries a nonempty legacy login password even though this server uses `loginFlow: none`. Decision is a one-line config edit, not a code change; deferred.
 
 ### 1. [P1/S] Decide what `POST /api/admin/restart` should do
 - **Why:** it flushes stores then `process.exit(0)`, but the unit is `Restart=on-failure`, which ignores a clean exit — so the endpoint is a graceful *stop* that leaves the fleet down until someone runs `systemctl start`. The name and the 202 body (`"Server is restarting"`) both lie. Documented in place (`src/server/admin.ts:232`) but not fixed, because the fix is a judgement call.
@@ -103,9 +103,8 @@ Priority tags: **[P0]** time-boxed / do next · **[P1]** should do soon · **[P2
 ### 9. [DONE 2026-07-26] Per-task LLM fallback chains
 - **Resolution:** `data/llm-settings.json` now defines routes for codegen, critic, curriculum, chat, and embeddings; every route has a fallback and the default provider is Anthropic. The prior empty-route single-provider failure mode is closed.
 
-### 10. [P2/S] Config knobs the dashboard lets you edit that nothing reads
-- **Why:** `behavior.ambientChatMinSec`/`ambientChatMaxSec` (`config.yml:39-40`) are read by no behavior code — `BotInstance.ts:1292-1294` hardcodes 10–20 min. Worse, `src/util/configPersist.ts:65-69` lists them under `RESTART_REQUIRED_FIELDS` claiming they "drive setInterval schedules at bot worker boot", and the settings page renders them as editable numbers. An operator turns the dial and nothing happens. `security.quarantineReleaseSec` has zero readers (honestly labelled "reserved"). `behavior.wanderRadius`/`wanderIntervalMs` are live but unreachable for a codegen-mode fleet (`BotInstance.ts:391-393`).
-- **Next action:** wire ambientChat timings to the hardcoded schedule or delete the keys and their persistence entries; leave the reserved ones documented.
+### 10. [DONE 2026-08-08] Config knobs the dashboard lets you edit that nothing reads
+- **Resolution:** `BotInstance.scheduleAmbientChat` (`src/bot/BotInstance.ts:1618-1631`) now reads `config.behavior.ambientChatMinSec` / `ambientChatMaxSec` (seconds, clamped ≥ 5 s) instead of the 10–20-minute hardcode; the config keys are no longer cosmetic. `security.quarantineReleaseSec` is now implemented: when positive, a bot that gets quarantined for impersonation schedules its own auto-release via `setTimeout` (`src/bot/BotInstance.ts:810-822`); the 0/omitted default keeps the prior manual-only behavior. Both fields retain their `RESTART_REQUIRED_FIELDS` entries because the timers are constructed from the config at quarantine/chat-schedule time, not propagated over IPC. `wanderRadius` / `wanderIntervalMs` are still gated on `mode !== CODEGEN` (`BotInstance.ts:659-660`); closing that is a behavior change, deferred.
 
 ### 11. [DONE 2026-07-27] Reconcile active Ravensreach world documents
 - **Resolution:** current interiors, civic-quarter, completion, south-extension,
