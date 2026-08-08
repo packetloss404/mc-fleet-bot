@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "transactionId": "whole-build-r03-b03-current-safe-2026-08-08",
+  "generatedAtUtc": "2026-08-08T07:17:00Z",
+  "status": "COMMITTED_AND_POST_VERIFIED",
+  "scope": {
+    "releaseId": "CZ-R03-B03-CURRENT-SAFE-SUPPLEMENT",
+    "domain": "P1-B03/construction",
+    "owner": "P1-B03-CURRENT-SAFE-SUPPLEMENT"
+  },
+  "source": {
+    "snapshotRoot": "data/worldsnap/whole-build-complete-save-20260808/region"
+  },
+  "packages": [
+    {
+      "key": "r03-b03-current-safe",
+      "owner": "P1-B03-CURRENT-SAFE-SUPPLEMENT",
+      "forward": "data/buildops/whole-build-r03-b03-current-safe-2026-08-08.forward.txt",
+      "rollback": "data/buildops/whole-build-r03-b03-current-safe-2026-08-08.rollback.txt"
+    }
+  ]
+}

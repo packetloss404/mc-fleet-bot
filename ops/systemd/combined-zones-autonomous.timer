@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Combined Zones autonomous release worker every 15 minutes
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=15min
+Persistent=true
+Unit=combined-zones-autonomous.service
+
+[Install]
+WantedBy=timers.target
