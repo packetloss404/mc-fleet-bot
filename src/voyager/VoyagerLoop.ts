@@ -844,9 +844,9 @@ export class VoyagerLoop {
       // findGroundedBuildOrigin returns null when the bot is mid-respawn (no
       // entity yet). Don't write a stale origin; the caller's outer .catch on
       // queueLongTermGoal still recovers by falling back to the player task
-      // queue. Keeping the goal in `blueprint_pending` (not `blueprint_ready`)
-      // here is the right signal — without a build origin the long-term goal
-      // path is incomplete.
+      // queue. The goal stays a local in this method and is NOT promoted to
+      // `activeLongTermGoal` or to the blackboard — a partial goal with no
+      // usable build origin shouldn't be visible to any external observer.
       const origin = this.findGroundedBuildOrigin();
       if (!origin) {
         throw new Error('cannot derive build origin: bot is not in-world (respawn in progress)');
