@@ -1,8 +1,9 @@
-# SEC-01 briefs — six fixes that ship without the worker-isolation decision
+# Security briefs — SEC-01 (six fixes) + SEC-02 (key rotation)
 
-Source: `HANDOFF.md` §3 SEC-01. These six items "ship regardless of that
-decision", and the handoff explicitly says "the first two reduce more risk than
-the migration does." The full worker-isolation design is in
+Source: `HANDOFF.md` §3 SEC-01 and SEC-02. The first six items "ship regardless
+of" the worker-isolation decision, and the handoff explicitly says "the first
+two reduce more risk than the migration does." Brief 7 is the SEC-02 key
+rotation. The full worker-isolation design is in
 `docs/research/worker-process-isolation.md` and is out of scope here.
 
 ## Order and dependencies
@@ -15,9 +16,11 @@ the migration does." The full worker-isolation design is in
 | 4 | `04-skilllibrary-save-via-ipc.md` | M | 5 | Hardens the cross-fleet RCE path. |
 | 5 | `05-ipc-transport-phase-a.md` | M | none | Pure correctness on today's threads; prerequisite for #4. |
 | 6 | `06-ip-address-deny.md` | S | none | Unit-file change on the bot host, not a repo edit. |
+| 7 | `07-rotate-llm-api-keys.md` | S | 1, 3 | Runbook; not a code change. Should land as soon as the new keys are issued. |
 
-Recommended execution order: **1 → 2 → 3 → 5 → 4 → 6**, in separate PRs.
-Item 6 is host-side, not repo-side; the brief is a deploy runbook.
+Recommended execution order: **1 → 7 → 2 → 3 → 5 → 4 → 6**, in separate PRs.
+Brief 7 is host-side and unrelated to the repo code, so it can land in parallel
+with any of the others. Items 1, 3, 6 are host-side; 2, 4, 5 are repo edits.
 
 ## Reading order for Codex
 
