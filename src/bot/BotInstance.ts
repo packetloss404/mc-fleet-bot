@@ -804,6 +804,26 @@ export class BotInstance {
         } catch (err: any) {
           logger.warn({ bot: this.name, err: err?.message }, 'onImpersonation callback failed');
         }
+        // Optional auto-release. `security.quarantineReleaseSec` is documented
+        // as "reserved: auto-release quarantine after N seconds (0 = manual
+        // only)"; it had zero readers in the repo until this commit. Only set
+        // when positive — 0 (the config default) keeps the prior manual-only
+        // behavior so the fix is non-breaking.
+        const releaseSec = Number(this.config.security?.quarantineReleaseSec ?? 0);
+        if (Number.isFinite(releaseSec) && releaseSec > 0) {
+          const ms = releaseSec * 1000;
+          logger.info(
+            { bot: this.name, releaseSec },
+            'Quarantine auto-release scheduled',
+          );
+          setTimeout(() => {
+            if (this.destroyed) return;
+            if (this.quarantined) {
+              logger.info({ bot: this.name }, 'Quarantine auto-release timer fired');
+              this.releaseQuarantine();
+            }
+          }, ms).unref?.();
+        }
         return; // deliberately do NOT scheduleReconnect
       }
 
@@ -1618,9 +1638,15 @@ export class BotInstance {
   private scheduleAmbientChat(): void {
     if (!this.llmClient) return;
 
-    // Ambient chat is rare — 10 to 20 minutes between attempts
-    const minMs = 600_000;  // 10 minutes
-    const maxMs = 1_200_000; // 20 minutes
+    // Ambient chat is rare. Configured in `behavior.ambientChatMinSec` /
+    // `behavior.ambientChatMaxSec` (seconds). Defaults match the historical
+    // 10-20 minute hardcode if the keys are missing. Clamped to a minimum
+    // of 5 s so a typo can't lock the bot into a chat storm.
+    const cfg = this.config.behavior ?? {};
+    const minSec = Math.max(5, Number(cfg.ambientChatMinSec ?? 600));
+    const maxSec = Math.max(minSec, Number(cfg.ambientChatMaxSec ?? 1200));
+    const minMs = minSec * 1000;
+    const maxMs = maxSec * 1000;
     const delay = minMs + Math.random() * (maxMs - minMs);
 
     this.ambientChatTimeout = setTimeout(async () => {

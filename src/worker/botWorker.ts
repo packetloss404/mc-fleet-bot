@@ -501,6 +501,29 @@ instance.connect().catch((err) => {
   logger.error({ bot: data.botName, err: err?.message }, 'Worker failed to connect bot');
 });
 
+// Last-line-of-defense error handlers. Without these, a single malformed IPC
+// payload or a stray `Promise.reject` from any subsystem crashes the worker
+// thread and the bot drops offline. Logging here is the only signal an
+// operator gets when this fires — the parent thread only sees the worker
+// exit, not the cause. Tagged with the bot name and worker pid so the log
+// line is enough to triage which bot hit it.
+process.on('unhandledRejection', (reason: unknown) => {
+  const err = reason instanceof Error ? reason : new Error(String(reason));
+  logger.error(
+    { bot: data.botName, pid: process.pid, err: err.message, stack: err.stack },
+    'Worker unhandledRejection — bot will continue; this is the last-chance handler',
+  );
+});
+process.on('uncaughtException', (err: Error) => {
+  logger.error(
+    { bot: data.botName, pid: process.pid, err: err.message, stack: err.stack },
+    'Worker uncaughtException — exiting (Node semantics)',
+  );
+  // Per Node docs, after uncaughtException the process is in an undefined
+  // state. Exit non-zero so the parent can decide whether to respawn.
+  process.exit(1);
+});
+
 // Cleanup on exit
 process.on('beforeExit', () => {
   clearInterval(statusInterval);

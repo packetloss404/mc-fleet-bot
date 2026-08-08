@@ -841,7 +841,17 @@ export class VoyagerLoop {
       }
       goal.blueprint = blueprint;
       goal.materialRequirements = countBlueprintMaterials(blueprint);
-      goal.origin = this.findGroundedBuildOrigin();
+      // findGroundedBuildOrigin returns null when the bot is mid-respawn (no
+      // entity yet). Don't write a stale origin; the caller's outer .catch on
+      // queueLongTermGoal still recovers by falling back to the player task
+      // queue. Keeping the goal in `blueprint_pending` (not `blueprint_ready`)
+      // here is the right signal — without a build origin the long-term goal
+      // path is incomplete.
+      const origin = this.findGroundedBuildOrigin();
+      if (!origin) {
+        throw new Error('cannot derive build origin: bot is not in-world (respawn in progress)');
+      }
+      goal.origin = origin;
       goal.buildState = 'blueprint_ready';
       this.activeLongTermGoal = goal;
       this.blackboardManager?.setBotGoal(this.botName, goal);
@@ -1585,7 +1595,14 @@ export class VoyagerLoop {
     return null;
   }
 
-  private findGroundedBuildOrigin(): { x: number; y: number; z: number } {
+  private findGroundedBuildOrigin(): { x: number; y: number; z: number } | null {
+    // `bot.entity` is null in the death→respawn window. `decomposeAndSetLongTermGoal`
+    // (the only caller) does not have the top-of-cycle `if (!this.bot?.entity) return;`
+    // guard that `runOneCycle` does — so a build goal arriving during respawn would
+    // dereference null and crash the worker. Return null and let the caller skip the
+    // blueprint path; the chat handler's catch in `queueLongTermGoal` then falls
+    // back to the player task queue.
+    if (!this.bot?.entity) return null;
     const base = this.bot.entity.position.floored();
     const startX = Math.round(base.x + 2);
     const startZ = Math.round(base.z + 2);

@@ -406,6 +406,11 @@ async function main() {
     // Close the durable as-built/world-feature catalog.
     try { worldFeatureStore.close(); } catch { /* swallow */ }
 
+    // Flush BuildCoordinator's 2s debounce. The admin-restart hook flushes the
+    // same manager; SIGTERM is the path that used to silently drop the last
+    // <2s of build mutations.
+    try { buildCoordinator.flush(); } catch (err: any) { logger.warn({ err: err?.message }, 'buildCoordinator.flush failed during shutdown'); }
+
     // Flush persistence managers on BotManager (affinityManager, socialMemory, blackboardManager)
     // shutdownPersistence() is the canonical method when available; fall back to individual shutdown() calls
     if (typeof (botManager as any).shutdownPersistence === 'function') {
