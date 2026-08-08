@@ -2491,3 +2491,123 @@ npx vitest run \
   journaled atomic execution, and G01–G19 precede acceptance. A PASS advances
   to the next release node; HOLD triggers offline remediation and never a
   narrative or manual waiver.
+
+## C01 Guarded Build Orchestrator
+
+- Use `scripts/run_c01_guarded_build.mjs` to compose the repeated C01 package
+  workflow into one evidence ledger. Preparation is the default and runs route
+  manifest binding, exact forward preflight, strict forward/rollback parser
+  checks, and projected route QA:
+
+```bash
+node scripts/run_c01_guarded_build.mjs \
+  --forward <forward-ops.txt> \
+  --rollback <rollback-ops.txt> \
+  --pre-regions <immutable-pre-region-directory> \
+  --route-manifest <route-manifest.json> \
+  --out-dir <evidence-directory>
+```
+
+- Live execution is opt-in and requires both `--execute` and explicit
+  `--post-regions <.../region>` plus `--snapshot-near <x,z>`. It executes only
+  through `scripts/rcon_runner.py --strict-noop`, captures a fresh saved-world
+  snapshot, binds the post route manifest, reruns route QA, and runs rollback
+  post-state preflight. The orchestrator fails closed on any stage failure and
+  writes `evidence-ledger.json`.
+- `scripts/bind_route_manifest_snapshot.mjs` creates a package-specific route
+  manifest bound to an immutable snapshot and operation hash without changing
+  the canonical historical manifest.
+- For C01 held geometry, use `scripts/extract_c01_held_core_candidate.mjs` to
+  materialize the held operations as a redesign-only candidate, then
+  `scripts/compile_c01_route_aware_core.mjs` to convert accepted route-support
+  cells into the reviewed stair orientation while preserving feet/head cells.
+  The latter must still pass the guarded orchestrator before execution.
+- Validate an executed scoped release against the town-hall policy with:
+
+```bash
+node scripts/qa_c01_scoped_deployment_policy.mjs \
+  --policy data/buildops/c01-scoped-deployment-policy-2026-08-08.json \
+  --ledger <c01-release-evidence-ledger.json> \
+  --small-wave-exception dependency-tail \
+  --out <policy-qa.json>
+```
+
+## Current-State Safe Supplemental Deltas
+
+- When a large package is materially present but its historical source guards
+  are stale, use `scripts/compile_current_safe_delta.mjs` against a fresh live
+  snapshot. It emits only cells whose current state is exactly the historical
+  source state, reports target-already-present cells separately, and fails the
+  report closed on any unexpected state such as fluid or a container:
+
+```bash
+node scripts/compile_current_safe_delta.mjs \
+  --source-ops <historical-forward-ops.txt> \
+  --regions <fresh-live-region-directory> \
+  --forward <supplement-forward.txt> \
+  --rollback <supplement-rollback.txt> \
+  --report <supplement-report.json>
+```
+
+- Execute only the emitted safe supplement through
+  `scripts/rcon_runner.py --strict-noop --report`; preserve every unsafe
+  holdout for a separate reviewed treatment and always run a fresh post
+  snapshot plus rollback post-state preflight.
+
+## Combined Zones Release Layer And As-Built Verification
+
+- T01 binds explicit forward/rollback operation pairs to the Masterplan 05
+  contract. It never turns proposal geometry or a missing material map into
+  blocks. The full candidate inventory is generated with:
+
+```bash
+node scripts/compile_combined_zones_release_layer.mjs \
+  --snapshot <fresh-complete-save>/region \
+  --out <release-layer.json>
+```
+
+- T02 is the fail-closed ownership/protected-core pre-gate:
+
+```bash
+node scripts/audit_combined_zones_release_layer_ownership.mjs \
+  --layer <release-layer.json> --out <ownership-audit.json>
+```
+
+  Overlapping package bounds are rejected until an exact cell/interface
+  contract is supplied. T03 is `run_combined_zones_release_layer.mjs`; it
+  requires an external hash-bound authorization and a PASS T02 audit before
+  it can invoke the strict-noop runner. It is never a source of authorization.
+
+- T04 verifies what was actually built by running each exact rollback operation
+  against the immutable post snapshot. A PASS means the post-state cells match
+  the forward desired states and the rollback operation/snapshot identities
+  match:
+
+```bash
+node scripts/verify_combined_zones_as_built.mjs \
+  --layer <release-layer.json> \
+  --post-snapshot <immutable-post-save>/region \
+  --out <as-built-verification.json>
+```
+
+- To re-run every mechanical remediation step and produce a single handoff
+  for unresolved owner decisions, use:
+
+```bash
+node scripts/remediate_combined_zones_blockers.mjs \
+  --out data/world-review/combined-zones-blocker-remediation-YYYY-MM-DD.json
+```
+
+  This doctor is intentionally non-authorizing: it may regenerate evidence and
+  verify committed builds, but it cannot select engineering decisions, invent
+  material states, sign ownership, or self-issue release authorization.
+
+- To split the monolithic project gates into scope-local dependency ledgers
+  without weakening any gate, run:
+
+```bash
+node scripts/split_combined_zones_release_gates.mjs
+```
+
+  The output identifies which packages can be queued independently and which
+  unresolved decisions apply to each package. It does not authorize execution.
