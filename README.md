@@ -322,7 +322,7 @@ imports it; the two are coupled only through the on-disk masterplan format, so
 cd world-builder
 python3 -m venv .venv && source .venv/bin/activate   # Python 3.11+
 pip install -e ".[dev]"        # 'litemapy' and the package itself are required for the tests
-pytest                          # 22 tests
+pytest                          # 38 tests
 mcwb validate --plan ../docs/masterplans/04-combined-complex
 ```
 

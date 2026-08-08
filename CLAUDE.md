@@ -78,7 +78,7 @@ and was not deleted.**
 cd world-builder
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"      # required: litemapy + the package itself
-pytest                        # 22 tests
+pytest                        # 38 tests
 ```
 
 Without the editable install, pytest fails at *collection* with

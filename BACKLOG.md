@@ -80,9 +80,21 @@ Priority tags: **[P0]** time-boxed / do next · **[P1]** should do soon · **[P2
 - **Why:** The chat build-intent parser works and resolves coordinates, but only logs — "build me a house here" goes nowhere (`src/bot/BotInstance.ts:1006-1008`, TODO: dispatch to BuildCoordinator).
 - **Next action:** Wire the resolved intent from `BotInstance` chat handling into `BuildCoordinator` (`src/build/`), including schematic selection and a confirmation message back to the player.
 
-### 4. [P1/M] CI pipeline (build + vitest)
+### 4. [PARTIAL 2026-08-07] CI pipeline (build + vitest)
 - **Why:** No `.github/` directory — nothing runs `npm run build` / `npm test` on push, so regressions land silently. (REPO_REVIEW.md #10.) Evidence: as of 2026-07-24 the web suite has 24 pre-existing failures across 9 untouched test files (component drift vs stale mocks/assertions).
-- **Next action:** Add `.github/workflows/ci.yml` running install, build (root + `web/`), and `npm test` on push/PR.
+- **Resolution so far:** `fleet-devtools/` has its own gate
+  (`.github/workflows/fleet-devtools.yml` at the repo root, scoped to
+  `paths: ['fleet-devtools/**']`); runs `npm run check` (lint + build +
+  test + format:check) on push and PR to `main`. Promoted out of
+  `fleet-devtools/.github/workflows/ci.yml` on 2026-08-07 because GitHub
+  only reads workflows from the repo root — see CHANGELOG.md.
+- **Remaining:** root `npm test` is deliberately not gated (the
+  `test/build/` Combined Zones tests read gitignored `data/` fixtures
+  and fail on a fresh clone); a repo-wide workflow would go red and
+  stay red. The 2026-08-07 team-c review confirmed the count:
+  130 test files pass, 72 fail (mostly the data-fixture ones), with
+  one unhandled worker timeout. **Don't widen `paths` until the root
+  suite's fixture problem is fixed.**
 
 ### 5. [P2/L] Burn down web strict-type debt, drop `ignoreBuildErrors`
 - **Why:** `web/next.config.ts:4-6` — `typescript: { ignoreBuildErrors: true }` masks ~58 `any` casts under strict TypeScript; type errors in the dashboard ship unnoticed.
@@ -121,6 +133,34 @@ Priority tags: **[P0]** time-boxed / do next · **[P1]** should do soon · **[P2
 ### 13. [DONE 2026-07-27] Set a current-world `rescueHome`
 - **Resolution:** configured the lit Moot Hall plaza cell `(-85,68,-370)` and
   added targeted config/geofence coverage.
+
+### 14. [DONE 2026-08-07] Absorb the three sub-tools into the repo
+- **Resolution:** `world-builder/` (mcwb) and `fleet-devtools/`
+  (mc-fleet-devtools) were merged in via `git subtree` on 2026-08-07
+  with their histories preserved. `world-showcase/` was already
+  tracked. The 2026-08-07 team-c review added a `Sub-tools` section
+  to `AGENTS.md` plus per-sub-tool `AGENTS.md` files, fixed the
+  stale "22 tests" claim (now 38), fixed the stale
+  `world-builder/examples/.mcwb.toml` plan path, and added
+  `SITE_PASSCODE` / `SITE_SESSION_SECRET` to the root `.env.example`.
+  See `team-c-tools-recommendations.md` for the bigger follow-ups.
+
+### 15. [P2/S] Add a CI workflow for `world-builder/`
+- **Why:** pytest is local-only. The 38 tests run from any host with
+  Python 3.11+ and `litemapy`, but there is no `pytest` gate on push.
+- **Next action:** Add `.github/workflows/world-builder.yml` at the
+  repo root, scoped to `paths: ['world-builder/**',
+  '.github/workflows/world-builder.yml']`. Use `actions/setup-python@v5`
+  with Python 3.12 (avoids the amulet-core 3.13 trap), install with
+  `pip install -e ".[dev]"`, and run `pytest`.
+
+### 16. [P2/S] Configure ESLint for `world-showcase/`
+- **Why:** `npm run lint` is interactive (asks the user how to
+  configure ESLint) and unusable in non-interactive shells. There is
+  no `.eslintrc.json` in the project.
+- **Next action:** Add a minimal `next/core-web-vitals` ESLint config
+  so `next lint` can run non-interactively. Then re-enable any
+  pre-existing lint checks before they drift further.
 
 ## Optional initiatives (not completion debt)
 

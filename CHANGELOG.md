@@ -4,6 +4,85 @@ All notable changes to DyoBot are documented in this file.
 
 ---
 
+## 2026-08-08
+
+### Team C — new tools review
+
+A multi-team review pass over the four recently absorbed sub-tools
+(`tools/`, `fleet-devtools/`, `world-builder/`, `world-showcase/`)
+plus the dev documentation. No application code changed; no sub-tool
+public API changed.
+
+**Inventory.** Each sub-tool was built, tested, and linted from its
+own directory on a fresh `npm install` (or `pip install -e ".[dev]"`
+for `world-builder/`). Status as of this commit:
+
+| Sub-tool | Build | Lint | Tests | Notes |
+|---|---|---|---|---|
+| `tools/consolidate-explore-skills.js` | n/a | n/a | n/a (script) | Idempotent; runs to a no-op on a clean `main` checkout |
+| `fleet-devtools/` | OK | OK | 55/55 | CI is on `ubuntu-latest`; Windows requires `npm rebuild better-sqlite3` and a one-off `npm install @rollup/rollup-win32-x64-msvc --no-save` |
+| `world-builder/` | n/a | n/a | 38/38 | The committed `.venv/` is WSL/Linux; on Windows create a fresh venv |
+| `world-showcase/` | OK (7/7 routes) | `next lint` is interactive (no `.eslintrc.json`) | n/a (no test suite by design) | Windows `npm run build` fails with the cross-platform `next` shim bug; `node node_modules/next/dist/bin/next build` works |
+
+**Cross-platform trap.** The same class of `node_modules` cross-OS
+issue documented in HANDOFF §4 trap 7 (and in
+`fleet-devtools/AGENTS.md`) also affects `world-showcase/`. The
+`node_modules/.bin/next.cmd` shim is not created on Windows, so
+`npm run build` fails even when `node_modules/next/dist/bin/next` is
+present. Documented in `AGENTS.md` and the new
+`world-showcase/AGENTS.md`.
+
+**Documentation fixes.** No creative content rewritten; accuracy
+corrections only:
+
+- `world-builder/README.md`, `CLAUDE.md`, `README.md`: stale
+  "22 tests" → 38 (the test count grew when world-builder was
+  absorbed; the doc claim wasn't refreshed).
+- `world-builder/examples/.mcwb.toml`: stale
+  `plan_dir = "D:/projects/mc-fleet-bot/masterplans/04-combined-complex"`
+  → `…/docs/masterplans/04-combined-complex` (the missing `docs/`
+  prefix is the same bug the 2026-08-07 entry already corrected in
+  NEWSERVER.md).
+- `world-builder/NEWSERVER.md`: "State at a glance" section now
+  reflects the merge (local path, repo location, commit ancestry);
+  the pickup checklist uses the parent repo's `git pull` flow.
+- `.env.example`: added a section for the IANLAN NextGen env vars
+  (`SITE_PASSCODE`, `SITE_SESSION_SECRET`) that `world-showcase/`
+  requires, plus the OPENAI/MINIMAX/VOYAGE/OLLAMA keys that the
+  root README's Quick Start mentions.
+
+**New sub-tool AGENTS.md files.** `world-builder/AGENTS.md` and
+`world-showcase/AGENTS.md` were added, mirroring
+`fleet-devtools/AGENTS.md`. The root `AGENTS.md` gains a
+"Sub-tools" section that lists the four trees and their per-tree
+build/test/lint commands.
+
+**Root AGENTS.md updates.** Added the Sub-tools section, a
+"Cross-platform install traps" subsection, and a "Verified
+Commands" entry that re-states the test-fixture trap on `data/`
+(the 2026-08-07 root-vitest count of ~60 ENOENT failures is now
+measured at 72 fail / 130 pass with one worker timeout). The
+existing trap text in the build section is preserved.
+
+**BACKLOG.md updates.** Item 4 (CI pipeline) is now PARTIAL — the
+2026-08-07 work closed `fleet-devtools/`; the root suite is
+deliberately not gated until the `data/`-fixture problem is fixed.
+Items 15 and 16 are new: a CI workflow for `world-builder/`
+(P2/S) and a real ESLint config for `world-showcase/` (P2/S).
+Item 14 records the resolution of the 2026-08-07 sub-tool
+absorption and points at `team-c-tools-recommendations.md` for
+the bigger follow-ups.
+
+**Recommendations deferred.** Bigger items (CI for
+`world-builder/`, a real `next lint` setup, refreshing
+`world-builder/AGENTS.md` test count when the spec grows, etc.)
+are recorded in `team-c-tools-recommendations.md` rather than
+landed in this pass, in line with "do not bump the major version
+of any dep" and "do not change the public API surface of any
+sub-tool."
+
+---
+
 ## 2026-08-07
 
 ### mcwb absorbed as the `world-builder/` subtool
