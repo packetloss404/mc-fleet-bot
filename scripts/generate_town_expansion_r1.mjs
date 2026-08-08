@@ -3521,7 +3521,30 @@ async function modelDataDistrictHoldoutHome(model, snapshot) {
   const survey = await surveySurfaceParcel(snapshot, parcelBounds);
   const surfaceBlockEntities = survey.blockEntities.filter(({ y }) => y >= 35);
   const preservedDeepEntities = survey.blockEntities.filter(({ y }) => y < 35);
-  if (survey.voidColumns || survey.surfaceWaterColumns || survey.surfaceLavaColumns || surfaceBlockEntities.length) {
+  const declaredPoolBounds = [577, -130, 592, -112];
+  let declaredPoolWaterColumns = 0;
+  let unplannedSurfaceWaterColumns = 0;
+  for (let z = parcelBounds[1]; z <= parcelBounds[3]; z += 1) {
+    for (let x = parcelBounds[0]; x <= parcelBounds[2]; x += 1) {
+      const surface = await surveyedSurface(snapshot, x, z);
+      if (!surface || !['minecraft:water', 'minecraft:bubble_column'].includes(surface.state)) continue;
+      const inDeclaredPool = x >= declaredPoolBounds[0]
+        && x <= declaredPoolBounds[2]
+        && z >= declaredPoolBounds[1]
+        && z <= declaredPoolBounds[3];
+      if (inDeclaredPool && surface.state === 'minecraft:water') declaredPoolWaterColumns += 1;
+      else unplannedSurfaceWaterColumns += 1;
+    }
+  }
+  const declaredPoolArea = (declaredPoolBounds[2] - declaredPoolBounds[0] + 1)
+    * (declaredPoolBounds[3] - declaredPoolBounds[1] + 1);
+  if (
+    survey.voidColumns
+    || survey.surfaceLavaColumns
+    || surfaceBlockEntities.length
+    || ![0, declaredPoolArea].includes(declaredPoolWaterColumns)
+    || unplannedSurfaceWaterColumns
+  ) {
     throw new Error(`holdout parcel failed dry/protected survey: ${JSON.stringify(survey)}`);
   }
   const baseY = survey.medianY + 4;
@@ -3587,6 +3610,9 @@ async function modelDataDistrictHoldoutHome(model, snapshot) {
     survey,
     surfaceBlockEntities,
     preservedDeepEntities,
+    declaredPoolBounds,
+    declaredPoolWaterColumns,
+    unplannedSurfaceWaterColumns,
     preservedDeepEntityMinimumVerticalSeparation: Math.min(
       ...preservedDeepEntities.map(({ y }) => 38 - y),
     ),
@@ -8987,7 +9013,8 @@ async function main() {
         && dataCampus.iowaDistrict.discGolf.fairwayToFairwayOverlapCells === 0
       ),
       holdoutHomeDryProtectedParcel: (
-        dataCampus.holdoutHome.survey.surfaceWaterColumns === 0
+        [0, 304].includes(dataCampus.holdoutHome.declaredPoolWaterColumns)
+        && dataCampus.holdoutHome.unplannedSurfaceWaterColumns === 0
         && dataCampus.holdoutHome.survey.surfaceLavaColumns === 0
         && dataCampus.holdoutHome.surfaceBlockEntities.length === 0
         && dataCampus.holdoutHome.preservedDeepEntityMinimumVerticalSeparation >= 40

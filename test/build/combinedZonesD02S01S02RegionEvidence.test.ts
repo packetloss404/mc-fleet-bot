@@ -150,6 +150,8 @@ beforeAll(() => {
       '--markdown', regeneratedMarkdown,
       '--generated-at', GENERATED_AT,
       '--historical-inventory-replay',
+      '--historical-inventory-reference',
+      'docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.json',
       '--exclude-post-generation-candidate',
       'data/worldsnap-combined-zones-complete-save-20260806T014133Z',
     ],

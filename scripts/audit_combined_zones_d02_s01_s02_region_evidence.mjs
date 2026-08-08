@@ -42,6 +42,7 @@ const MARKDOWN = path.resolve(value(
   'docs/masterplans/05-combined-zones/phase1-d02-s01-s02-region-evidence.md',
 ));
 const HISTORICAL_INVENTORY_REPLAY = argv.includes('--historical-inventory-replay');
+const HISTORICAL_INVENTORY_REFERENCE = value('--historical-inventory-reference', null);
 const EXCLUDED_POST_GENERATION_CANDIDATES = new Set(
   values('--exclude-post-generation-candidate').map((filename) => path.resolve(filename)),
 );
@@ -50,6 +51,16 @@ assert(
   EXCLUDED_POST_GENERATION_CANDIDATES.size === 0 || HISTORICAL_INVENTORY_REPLAY,
   '--exclude-post-generation-candidate requires --historical-inventory-replay',
 );
+assert(
+  !HISTORICAL_INVENTORY_REFERENCE || HISTORICAL_INVENTORY_REPLAY,
+  '--historical-inventory-reference requires --historical-inventory-replay',
+);
+if (HISTORICAL_INVENTORY_REFERENCE) {
+  assert(
+    fs.existsSync(path.resolve(HISTORICAL_INVENTORY_REFERENCE)),
+    `historical inventory reference does not exist: ${HISTORICAL_INVENTORY_REFERENCE}`,
+  );
+}
 for (const excluded of EXCLUDED_POST_GENERATION_CANDIDATES) {
   assert(
     excluded === DATA_ROOT || excluded.startsWith(`${DATA_ROOT}${path.sep}`),
@@ -276,23 +287,7 @@ function directoryMcaSummary(directory) {
   };
 }
 
-function discoverSnapshotCandidates(dataRoot) {
-  const roots = new Set();
-  function walk(directory) {
-    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
-      const filename = path.join(directory, entry.name);
-      if (entry.isDirectory()) {
-        if (['region', 'entities', 'poi'].includes(entry.name)) {
-          roots.add(path.dirname(filename));
-          continue;
-        }
-        walk(filename);
-      } else if (entry.name === 'level.dat') {
-        roots.add(directory);
-      }
-    }
-  }
-  walk(dataRoot);
+function describeSnapshotCandidates(roots) {
   return [...roots]
     .filter((root) => !EXCLUDED_POST_GENERATION_CANDIDATES.has(path.resolve(root)))
     .sort()
@@ -316,6 +311,44 @@ function discoverSnapshotCandidates(dataRoot) {
         completenessStatus: complete ? 'COMPLETE_COPIED_SAVE_CANDIDATE' : 'INCOMPLETE_COPIED_SAVE',
       };
     });
+}
+
+function discoverSnapshotCandidates(dataRoot, historicalReference = null) {
+  if (historicalReference) {
+    const reference = readJson(path.relative(ROOT, path.resolve(historicalReference)));
+    const candidates = reference.copiedSaveCompletenessAudit?.candidates;
+    assert(Array.isArray(candidates), 'historical inventory reference has no candidate list');
+    const roots = new Set(candidates.map((candidate) => path.resolve(ROOT, candidate.root)));
+    for (const root of roots) {
+      assert(root === dataRoot || root.startsWith(`${dataRoot}${path.sep}`),
+        `historical inventory candidate is outside --data-root: ${root}`);
+      assert(fs.existsSync(root), `historical inventory candidate does not exist: ${root}`);
+    }
+    // A historical replay is bound to the committed inventory values. Re-reading
+    // mutable snapshot directories would silently turn the replay into a current
+    // filesystem census when a later snapshot refreshes a shared root.
+    return candidates.filter((candidate) => (
+      !EXCLUDED_POST_GENERATION_CANDIDATES.has(path.resolve(ROOT, candidate.root))
+    ));
+  }
+
+  const roots = new Set();
+  function walk(directory) {
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      const filename = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        if (['region', 'entities', 'poi'].includes(entry.name)) {
+          roots.add(path.dirname(filename));
+          continue;
+        }
+        walk(filename);
+      } else if (entry.name === 'level.dat') {
+        roots.add(directory);
+      }
+    }
+  }
+  walk(dataRoot);
+  return describeSnapshotCandidates(roots);
 }
 
 function tangentAt(points, index) {
@@ -629,7 +662,7 @@ assert(undergroundInventory.truthBoundary?.c01East?.includes('ISSUE-002')
   || undergroundInventory.truthBoundary?.c01East?.includes('contested'), 'underground inventory C01 truth boundary drift');
 
 const sourceBindings = Object.entries(INPUTS).map(([key, relativePath]) => fileBinding(relativePath, ROLES[key]));
-const snapshotCandidates = discoverSnapshotCandidates(DATA_ROOT);
+const snapshotCandidates = discoverSnapshotCandidates(DATA_ROOT, HISTORICAL_INVENTORY_REFERENCE);
 const completeCandidates = snapshotCandidates.filter((candidate) => candidate.complete);
 const completeSaveCandidateAvailable = completeCandidates.length > 0;
 const inventoryDigest = sha256(`${snapshotCandidates.map((candidate) => canonicalJson(candidate)).join('\n')}\n`);
