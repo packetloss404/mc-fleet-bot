@@ -13,10 +13,22 @@
  * is null, and the caller in `decomposeAndSetLongTermGoal` throws a
  * specific Error so the chat handler's catch can still recover cleanly.
  *
- * This test pins the contract at the unit under test (the function
- * itself), and the caller's error path is covered by mocking the
- * blueprint generation pipeline so the test doesn't have to stand up a
- * full curriculum agent.
+ * An earlier draft of this test mocked the Blueprint.ts pipeline
+ * (`generateSimpleHouseBlueprint`, `validateBlueprint`,
+ * `countBlueprintMaterials`) to isolate the null-guard contract. That
+ * was unsatisfying: it left the real error path untested. The first
+ * pass hit a test-setup artifact where `bot.version` was undefined, so
+ * `minecraft-data(undefined)` returned null and the test crashed in
+ * `validateBlueprint` with a misleading "blocksByName" error before
+ * reaching `findGroundedBuildOrigin`. The artifact is now fixed (the
+ * factory sets `bot.version`) and the mocks are removed — the test
+ * exercises the real pipeline end-to-end and verifies that the
+ * findGroundedBuildOrigin null-guard is the only thing that needs to
+ * catch a respawn-time build-ask, because everything earlier in the
+ * chain survives a null `bot.entity` (inventory is independent of
+ * entity state; worldMemory.findNearest has its own null-safe guard;
+ * minecraft-data(bot.version) is independent of entity state since
+ * `bot.version` is set on `createBot` and stays set across respawn).
  */
 import fs from 'fs';
 import os from 'os';
@@ -33,30 +45,6 @@ import {
 
 import type { Config } from '../../src/config';
 import { VoyagerLoop } from '../../src/voyager/VoyagerLoop';
-
-// Mock the blueprint generation pipeline so the test can exercise the
-// caller's null-guard without standing up a full curriculum agent. The
-// real Blueprint.ts functions dereference `bot.entity` themselves; that
-// crash is a separate concern (see team-b-bugs.md "deferred" list).
-vi.mock('../../src/voyager/Blueprint', () => ({
-  generateSimpleHouseBlueprint: vi.fn().mockReturnValue({
-    version: 1,
-    name: 'oak_planks_simple_house',
-    size: { x: 5, y: 4, z: 5 },
-    defaultBlock: undefined,
-    materialMode: 'any',
-    palette: { '.': 'air', M: 'any_block' },
-    layers: [['MMMMM']],
-  }),
-  validateBlueprint: vi.fn().mockReturnValue({ valid: true, errors: [] }),
-  countBlueprintMaterials: vi.fn().mockReturnValue(new Map()),
-}));
-
-import {
-  generateSimpleHouseBlueprint,
-  validateBlueprint,
-  countBlueprintMaterials,
-} from '../../src/voyager/Blueprint';
 
 const tempRoots: string[] = [];
 
@@ -121,6 +109,13 @@ function makeConfig(): Config {
   } as Config;
 }
 
+/**
+ * A complete-enough mineflayer bot mock for the Blueprint.ts pipeline.
+ * `bot.version` is required for `minecraft-data(bot.version)` in
+ * `validateBlueprint`; without it, the call returns null and the
+ * validation step crashes with a misleading "blocksByName" error
+ * before the findGroundedBuildOrigin guard is reached.
+ */
 function makeBot() {
   const position = new Vec3(-111, 69, -332);
   const entity = {
@@ -131,9 +126,13 @@ function makeBot() {
   };
   return {
     username: 'Surveyor',
+    version: '1.21.11', // minecraft-data() needs a real version string
     entity,
     entities: { self: entity },
-    inventory: { items: () => [] },
+    inventory: {
+      items: () => [],
+      slots: {},
+    },
     findBlock: vi.fn(() => null),
     // blockAt at any (x, y, z) returns grass_block below / air above, which is
     // what findGroundedBuildOrigin's loop is looking for to settle the y.
@@ -151,23 +150,6 @@ function makeBot() {
 }
 
 describe('VoyagerLoop findGroundedBuildOrigin null-guard (team-b #1)', () => {
-  beforeEach(() => {
-    // Re-seed the default mock return values; vi.mock's factory only runs
-    // once at module load, and individual tests below use mockReturnValueOnce
-    // for the null-path test, which would otherwise leak into the happy path.
-    vi.mocked(generateSimpleHouseBlueprint).mockReturnValue({
-      version: 1,
-      name: 'oak_planks_simple_house',
-      size: { x: 5, y: 4, z: 5 },
-      defaultBlock: undefined,
-      materialMode: 'any',
-      palette: { '.': 'air', M: 'any_block' },
-      layers: [['MMMMM']],
-    } as any);
-    vi.mocked(validateBlueprint).mockReturnValue({ valid: true, errors: [] });
-    vi.mocked(countBlueprintMaterials).mockReturnValue(new Map());
-  });
-
   afterEach(() => {
     vi.restoreAllMocks();
     for (const root of tempRoots.splice(0)) {
@@ -214,21 +196,33 @@ describe('VoyagerLoop findGroundedBuildOrigin null-guard (team-b #1)', () => {
     expect(origin.z).toBe(-330);
   });
 
-  it('decomposeAndSetLongTermGoal throws the documented respawn error when the origin is unavailable', async () => {
+  it('decomposeAndSetLongTermGoal throws the documented respawn error end-to-end (no mocks)', async () => {
+    // Exercises the real Blueprint.ts pipeline: generateSimpleHouseBlueprint,
+    // validateBlueprint, countBlueprintMaterials, then findGroundedBuildOrigin.
+    // The pipeline survives a null `bot.entity` (inventory is independent;
+    // worldMemory.findNearest has its own null-safe guard; bot.version is
+    // set on createBot and stays set across respawn), so the only crash
+    // is the findGroundedBuildOrigin null-guard, which surfaces as the
+    // documented Error the chat handler's catch can recover from.
     const loop = new VoyagerLoop(makeBot(), 'Surveyor', 'builder', makeConfig(), null);
-    // Force the null path even though the bot is fully set up.
-    vi.mocked(generateSimpleHouseBlueprint).mockReturnValueOnce({} as any);
-    vi.mocked(validateBlueprint).mockReturnValueOnce({ valid: true, errors: [] });
-    vi.mocked(countBlueprintMaterials).mockReturnValueOnce(new Map());
     (loop as any).bot.entity = null;
     (loop as any).blackboardManager = { setBotGoal: vi.fn() };
 
     await expect(
       (loop as any).decomposeAndSetLongTermGoal('build a small house', 'test-player'),
     ).rejects.toThrow(/cannot derive build origin: bot is not in-world \(respawn in progress\)/);
+
+    // The function throws BEFORE persisting `activeLongTermGoal` — the
+    // goal is a local in `decomposeAndSetLongTermGoal`, and only the
+    // happy path promotes it to the instance field. This is intentional:
+    // a partial goal with no usable build origin shouldn't be visible to
+    // the blackboard, the next-cycle check, or any external observer.
+    // The chat handler's outer catch in `queueLongTermGoal` then falls
+    // back to the player task queue, and that's where the recovery lives.
+    expect((loop as any).activeLongTermGoal).toBeNull();
   });
 
-  it('decomposeAndSetLongTermGoal still produces a goal when the entity is in-world', async () => {
+  it('decomposeAndSetLongTermGoal still produces a goal when the entity is in-world (real pipeline)', async () => {
     const loop = new VoyagerLoop(makeBot(), 'Surveyor', 'builder', makeConfig(), null);
     (loop as any).blackboardManager = { setBotGoal: vi.fn() };
 
