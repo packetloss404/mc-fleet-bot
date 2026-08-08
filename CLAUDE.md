@@ -49,11 +49,12 @@ npm test
 
 Tests use Vitest. Configuration is in `vitest.config.ts`.
 
-**`npm test` covers neither `world-builder/` nor `fleet-devtools/`.**
+**`npm test` covers neither `world-builder/` nor `tools/fleet-devtools/`.**
 `world-builder/` is a separate Python toolchain with its own pytest suite;
-`fleet-devtools/` is a separate npm workspace with its own `vitest.config.ts`.
-The root `vitest.config.ts` collects only `src/**/*.test.ts` and
-`test/**/*.test.ts`, and the root `tsconfig.json` compiles only `src/**/*`.
+`tools/fleet-devtools/` is a separate npm workspace with its own
+`vitest.config.ts`. The root `vitest.config.ts` collects only
+`src/**/*.test.ts` and `test/**/*.test.ts`, and the root `tsconfig.json`
+compiles only `src/**/*`.
 See their sections below.
 
 Note for any full-suite run: the `test/build/` Combined Zones tests read
@@ -110,13 +111,13 @@ and was not deleted.**
   **Do not describe this as a pipeline.**
 - **Read-only by design.** No RCON, WorldEdit, upload, or world mutation. Do
   not add any to a report recipe; recipe steps are an allow-list, not scripts.
-- **CI lives at the repo root** — `.github/workflows/fleet-devtools.yml`,
-  scoped to `paths: ['fleet-devtools/**']`. The nested
-  `fleet-devtools/.github/workflows/ci.yml` is an inert signpost; GitHub reads
-  workflows only from the repository root. Edit the root one.
+- **CI lives at the repo root** — `.github/workflows/tools.yml`, scoped to
+  `paths: ['tools/fleet-devtools/**', 'tools/scripts/**']`. The nested
+  `tools/fleet-devtools/.github/workflows/ci.yml` is an inert signpost; GitHub
+  reads workflows only from the repository root. Edit the root one.
 
 ```bash
-cd fleet-devtools
+cd tools/fleet-devtools
 npm install
 npm run check      # lint + build + test + format:check
 npm run dev        # API + dashboard on 4310 — binds 0.0.0.0, no auth

@@ -69,7 +69,7 @@ copied snapshot instead.
 # A subtool of the mc-fleet-bot repo with its own dependency tree. The
 # repository-root `npm install` does not reach here, and the root
 # `npm run build` / `npm test` do not cover it. Run everything from here.
-cd fleet-devtools
+cd tools/fleet-devtools
 npm install
 cp config/registry.example.yml config/registry.local.yml
 ```

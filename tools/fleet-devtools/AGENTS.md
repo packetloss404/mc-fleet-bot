@@ -1,8 +1,9 @@
 # AGENTS.md
 
-Guidance for coding agents working in `fleet-devtools/`, a subtool of the
-`mc-fleet-bot` repository. Run every command below from this directory, never
-from the repository root — this tree has its own dependency install and the
+Guidance for coding agents working in `tools/fleet-devtools/`, a subtool of
+the `mc-fleet-bot` repository. Run every command below from this directory,
+never from the repository root — this tree has its own dependency install
+and the
 root `npm install` does not reach it.
 
 ## Purpose
