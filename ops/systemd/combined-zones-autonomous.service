@@ -1,0 +1,20 @@
+[Unit]
+Description=Combined Zones fail-closed autonomous release worker
+After=network-online.target mc-fleet-bot.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=ianwalmsley
+Group=ianwalmsley
+WorkingDirectory=/opt/stacks/mc-fleet-bot
+EnvironmentFile=/opt/stacks/mc-fleet-bot/.env
+Environment=NODE_OPTIONS=--max-old-space-size=1024
+ExecStart=/usr/bin/node /opt/stacks/mc-fleet-bot/scripts/run_combined_zones_autonomous.mjs
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/opt/stacks/mc-fleet-bot/data
+RestrictSUIDSGID=yes
+UMask=0027
