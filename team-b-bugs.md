@@ -6,8 +6,8 @@ branch; the rest are deferred.
 
 | # | File:line | Summary | Action |
 |---|-----------|---------|--------|
-| 1 | `src/voyager/VoyagerLoop.ts:1589` | `findGroundedBuildOrigin` dereferences `this.bot.entity.position` without a null guard. `runOneCycle` has a top-level guard, but the function is reached via `decomposeAndSetLongTermGoal` (line 833 → 844), which is called from `queueLongTermGoal` (line 721). When a player asks a bot to build something while that bot is in the death→respawn window, `this.bot.entity` is null and the deref throws. The catch on line 722 falls back to the task queue, but a noisy stack trace still hits the log every spawn-time build ask. | FIXED — guard added; falls back to a sentinel `{ x: 0, y: 64, z: 0 }` and returns null to the caller so the blueprint path no-ops cleanly. |
-| 2 | `src/build/BuildCoordinator.ts:200,289-296` (no public `flush`/`shutdown`) | `schedulePersist()` debounces 2s. `index.ts:shutdown()` and the admin `onRestart` hook both flush `eventLog`, `chainCoordinator`, `campaignManager`, `worldFeatureStore`, `botManager.*`, but neither calls into `BuildCoordinator` — so a build updated <2s before a SIGTERM or a `POST /api/admin/restart` is lost. The 18-test BuildCoordinator suite (skipping world-data tests) all pass; the gap is only at process exit. | FIXED — added `flush()` and `shutdown()` to `BuildCoordinator`; both `index.ts:shutdown()` and the admin `onRestart` hook now call `buildCoordinator.flush()` after the chain/campaign flushes. |
+| 1 | `src/voyager/VoyagerLoop.ts:1589` | `findGroundedBuildOrigin` dereferences `this.bot.entity.position` without a null guard. `runOneCycle` has a top-level guard, but the function is reached via `decomposeAndSetLongTermGoal` (line 833 → 844), which is called from `queueLongTermGoal` (line 721). When a player asks a bot to build something while that bot is in the death→respawn window, `this.bot.entity` is null and the deref throws. The catch on line 722 falls back to the task queue, but a noisy stack trace still hits the log every spawn-time build ask. | FIXED — guard added; falls back to `null` and the caller in `decomposeAndSetLongTermGoal` throws a specific Error so the chat handler's catch can still recover cleanly. **Regression test:** `test/voyager/VoyagerLoop.findGroundedBuildOrigin.test.ts` (5 tests) pins the null-guard, the defensive `bot === undefined` branch, the happy-path origin, the caller's documented Error throw, and the happy-path goal production. |
+| 2 | `src/build/BuildCoordinator.ts:200,289-296` (no public `flush`/`shutdown`) | `schedulePersist()` debounces 2s. `index.ts:shutdown()` and the admin `onRestart` hook both flush `eventLog`, `chainCoordinator`, `campaignManager`, `worldFeatureStore`, `botManager.*`, but neither calls into `BuildCoordinator` — so a build updated <2s before a SIGTERM or a `POST /api/admin/restart` is lost. The 18-test BuildCoordinator suite (skipping world-data tests) all pass; the gap is only at process exit. | FIXED — added `flush()` and `shutdown()` to `BuildCoordinator`; both `index.ts:shutdown()` and the admin `onRestart` hook now call `buildCoordinator.flush()` after the chain/campaign flushes. **Regression test:** `test/build/BuildCoordinator.flush.test.ts` (6 tests) pins the 2s debounce, the immediate-flush path, the idempotent timer-clearing, the no-double-write contract, the `shutdown()` alias, and the empty-state envelope. |
 | 3 | `src/worker/botWorker.ts:505` (no `unhandledRejection` / `uncaughtException`) | Worker thread has no rejection handler. `HANDOFF.md` already flags this under SEC-01 item #2: one malformed IPC message from any worker crashes the whole fleet. Adding the handler is the only ship-without-bigger-decision part of SEC-01. | FIXED — added `process.on('unhandledRejection', …)` and `process.on('uncaughtException', …)` that log with the bot name + worker pid and exit non-zero. **Peer-review fix:** the original draft installed the handlers but the test plan called for a unit test that could not exist (process-level hook on a worker thread requires a fork). The fix is in `src/worker/botWorker.ts:509-525`; coverage is by the on-call signal, not a unit test. |
 | 4 | `src/ai/TokenLedger.ts:202,212,338-371` (per-call atomic writes) | `record()` calls `saveDaily()` and `saveCalls()` SYNCHRONOUSLY on every single entry — both `atomicWriteJsonSync` (fsync). The debounced `scheduleSave()` only covers `records`, not the daily buckets. At the fleet's historical volume (~1,400 calls/hr) this is ~56 fsyncs/minute for state the test suite already proves is safe to lose (test `dailySpendAccumulator.test.ts:31` rebuilds a 12k-call ledger and reads the in-memory accumulator, not the disk file). The test "keeps counting after more than MAX_RECORDS calls" currently times out at 10s on Windows because of the per-call fsync. | DEFERRED — real bug, but the fix is a behavior change (debounce vs immediate persist across restart), and adding a write-back-coalescing tier is a larger refactor than the inline-fix bar allows. Filed in BACKLOG backlog (see "Open findings" below). |
 | 5 | `src/server/api.ts:530` (the 4229-line god-file) | The 17 per-domain route modules cover most of the surface, but `api.ts` still owns event-log fan-out, the impersonation-gate endpoint, the mission-queue bridge, world-feature broadcasts, schema dispatching, and Socket.IO wiring. Most of it is read-only post-extraction; the main risk surface is un-`asyncH` synchronous handlers and the `?? 400` fallbacks that accept only a 4th argument. | DEFERRED — out of scope for this sweep; the bulk-decomposition work in CLAUDE.md/backlog already covers it. |
@@ -45,16 +45,18 @@ branch; the rest are deferred.
 * "Doesn't touch the world": all three are read-only of the world.
 * "Doesn't require a schema migration": none of them do.
 * "Comes with a test if a meaningful regression test is feasible":
-  - #1 — **peer-review note:** the planned test file
-    `test/voyager/VoyagerLoop.findGroundedBuildOrigin.test.ts` was not
-    landed in this pass. The fix is the type-signature change
-    (`{x,y,z} | null`) plus a null check; the existing test suite
-    exercises the happy path. **Add the regression test in a follow-up.**
-  - #2 — **peer-review note:** the planned test file
-    `test/build/BuildCoordinator.flush.test.ts` was not landed either.
-    The fix is mechanically simple (clear the timer, call `persistJobs`)
-    and is shadowed by the existing persist tests. **Add the test in a
-    follow-up.**
+  - #1 — **DONE 2026-08-08:** `test/voyager/VoyagerLoop.findGroundedBuildOrigin.test.ts`
+    (5 tests) covers the null-guard, the defensive `bot === undefined`
+    branch, the happy-path origin, the caller's documented Error throw,
+    and the happy-path goal production. Uses `vi.mock` to stub the
+    blueprint generation pipeline so the test isolates the null-guard
+    contract from the curriculum agent.
+  - #2 — **DONE 2026-08-08:** `test/build/BuildCoordinator.flush.test.ts`
+    (6 tests) covers the 2s debounce (timer present, no write before
+    flush), the immediate-flush path, the idempotent timer-clearing,
+    the no-double-write contract after the cleared timer would have
+    fired, the `shutdown()` alias, and the empty-state envelope.
+    Uses `vi.useFakeTimers()` to control the debounce without sleeping.
   - #3 — partial: the handler is a process-level hook and a unit test
     cannot exercise it without forking a worker. Logged the surface
     instead.
@@ -76,6 +78,8 @@ Orchestrator review after Team B's working tree was captured:
   uncaughtException handler logs and `process.exit(1)` per Node's
   documented semantics, which lets the systemd `Restart=on-failure`
   unit respawn the worker if the parent was killed by the same fault.
-- **The two planned regression test files were never written.** Both
-  fixes are small enough that the missing tests are a low risk, but
-  flagging them as follow-ups so they don't get lost.
+- **The two planned regression test files were written on 2026-08-08.**
+  `test/voyager/VoyagerLoop.findGroundedBuildOrigin.test.ts` (5 tests)
+  and `test/build/BuildCoordinator.flush.test.ts` (6 tests) close the
+  earlier follow-up gap. Both are green in isolation; both run as
+  part of the standard focused test pass.
