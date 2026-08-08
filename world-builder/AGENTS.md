@@ -17,7 +17,7 @@ repo was **not** deleted; it stays as a read-only mirror.
 - Reads `docs/masterplans/<plan>/04-contractor/contractor-brief.json` in
   place; never writes back.
 - Five masterplans currently ship a brief (see `docs/masterplans/`).
-- Nothing in `src/`, `web/`, `world-showcase/`, or `fleet-devtools/`
+- Nothing in `src/`, `web/`, `world-showcase/`, or `tools/fleet-devtools/`
   imports mcwb. The two are coupled only through the on-disk masterplan
   format.
 
@@ -79,8 +79,9 @@ OPT-15 in `BACKLOG.md`.
 - Do not introduce a Node/TypeScript binding. The coupling stays on-disk.
 - Do not write back into `docs/masterplans/`. mcwb reads those in place.
 - Do not import `src/`. There is no Node↔Python code path.
-- Do not couple with `fleet-devtools/`. They share formats (`world_features`
-  table), but no module imports across that boundary either.
+- Do not couple with `tools/fleet-devtools/`. They share formats
+  (`world_features` table), but no module imports across that boundary
+  either.
 
 ## File map
 

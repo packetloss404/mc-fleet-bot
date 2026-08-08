@@ -19,9 +19,10 @@ under the repo root and in `scripts/` here.
 - Reads synced report assets from `public/` (e.g. `public/underground/`,
   `public/coordinates/`, `public/masterplans/`). These are populated
   by the two `npm run sync:*` scripts and are committed.
-- Has no dependency on `src/`, `fleet-devtools/`, or `world-builder/`.
-  The site is a static-friendly Next.js app that renders committed
-  artifacts; nothing reaches the live world or the database.
+- Has no dependency on `src/`, `tools/fleet-devtools/`, or
+  `world-builder/`. The site is a static-friendly Next.js app that
+  renders committed artifacts; nothing reaches the live world or the
+  database.
 
 ## Commands
 
@@ -49,7 +50,7 @@ The repo currently exhibits a well-known class of cross-platform npm
 issue: `npm run build` and `npm run lint` fail on Windows with
 `'next' is not recognized as an internal or external command` because
 the `node_modules/.bin/next.cmd` shim is not created (npm optional
-dependencies bug, see also `fleet-devtools/AGENTS.md` and HANDOFF §4
+dependencies bug, see also `tools/fleet-devtools/AGENTS.md` and HANDOFF §4
 trap 7). Direct invocation works:
 
 ```powershell
@@ -88,7 +89,7 @@ a "while I'm here" pass — discuss with the owner first.
 
 ## Boundaries to keep
 
-- Do not import from `src/`, `world-builder/`, or `fleet-devtools/`.
+- Do not import from `src/`, `world-builder/`, or `tools/fleet-devtools/`.
   The site is standalone.
 - Do not commit `SITE_PASSCODE` or `SITE_SESSION_SECRET`.
 - Do not run `npm run lint` non-interactively until ESLint is configured.

@@ -1,43 +1,50 @@
-name: fleet-devtools
+name: tools
 
 # Promoted from fleet-devtools/.github/workflows/ci.yml on 2026-08-07, when
-# mc-fleet-devtools was merged in as a subtool.
+# mc-fleet-devtools was merged in as a subtool. On 2026-08-08 the subtool
+# itself was merged up one level: the `fleet-devtools/` directory at the repo
+# root moved to `tools/fleet-devtools/` so the legacy top-level `tools/`
+# directory (one-shot migration scripts like
+# `tools/scripts/consolidate-explore-skills.js`) sits next to it. The workflow
+# file moved with it; the gate it runs is identical.
 #
 # WHY THIS MOVED: GitHub only reads workflows from `.github/workflows/` at the
 # REPOSITORY ROOT. Left where it was, the file would still look live in the
 # tree while never running again — a silently dead gate, which is worse than
-# no gate. See fleet-devtools/.github/workflows/ci.yml, kept as a pointer.
+# no gate. See tools/fleet-devtools/.github/workflows/ci.yml, kept as a pointer.
 #
 # WHY IT IS SCOPED: this repo has no root CI, and the root suite currently has
 # ~60 test files that fail on a fresh clone because test/build/ reads
 # data/world-review/*.json and data/ is gitignored. A repo-wide workflow would
 # go red immediately and stay red, training everyone to ignore it. So this one
-# is deliberately narrow: it triggers only on fleet-devtools changes and runs
-# only fleet-devtools' own gate. Do NOT widen `paths` without first fixing the
-# root suite's fixture problem.
+# is deliberately narrow: it triggers only on tools/fleet-devtools changes and
+# runs only the subtool's own gate. Do NOT widen `paths` without first fixing
+# the root suite's fixture problem.
 
 on:
   push:
     branches: [main]
     paths:
-      - 'fleet-devtools/**'
-      - '.github/workflows/fleet-devtools.yml'
+      - 'tools/fleet-devtools/**'
+      - 'tools/scripts/**'
+      - '.github/workflows/tools.yml'
   pull_request:
     branches: [main]
     paths:
-      - 'fleet-devtools/**'
-      - '.github/workflows/fleet-devtools.yml'
+      - 'tools/fleet-devtools/**'
+      - 'tools/scripts/**'
+      - '.github/workflows/tools.yml'
 
 permissions:
   contents: read
 
 concurrency:
-  group: fleet-devtools-${{ github.ref }}
+  group: tools-${{ github.ref }}
   cancel-in-progress: true
 
 defaults:
   run:
-    working-directory: fleet-devtools
+    working-directory: tools/fleet-devtools
 
 jobs:
   check:
@@ -55,7 +62,7 @@ jobs:
           cache: 'npm'
           # The subtool has its own lockfile; without this the cache action
           # looks for one at the repo root and caches the wrong project.
-          cache-dependency-path: fleet-devtools/package-lock.json
+          cache-dependency-path: tools/fleet-devtools/package-lock.json
 
       - name: Install
         run: npm ci
@@ -64,7 +71,7 @@ jobs:
       # split into separate steps so a failure names its own stage instead of
       # dumping a compound && failure.
       #
-      # The original workflow ran build + test only. fleet-devtools' README,
+      # The original workflow ran build + test only. tools/fleet-devtools' README,
       # AGENTS.md and docs/ROADMAP.md all assert CI runs `npm run check` — four
       # documented claims against one workflow. The drift is chronological, not
       # deliberate: ci.yml has exactly one commit in its history (6c6756b) and

@@ -82,12 +82,15 @@ Priority tags: **[P0]** time-boxed / do next · **[P1]** should do soon · **[P2
 
 ### 4. [PARTIAL 2026-08-07] CI pipeline (build + vitest)
 - **Why:** No `.github/` directory — nothing runs `npm run build` / `npm test` on push, so regressions land silently. (REPO_REVIEW.md #10.) Evidence: as of 2026-07-24 the web suite has 24 pre-existing failures across 9 untouched test files (component drift vs stale mocks/assertions).
-- **Resolution so far:** `fleet-devtools/` has its own gate
-  (`.github/workflows/fleet-devtools.yml` at the repo root, scoped to
-  `paths: ['fleet-devtools/**']`); runs `npm run check` (lint + build +
-  test + format:check) on push and PR to `main`. Promoted out of
-  `fleet-devtools/.github/workflows/ci.yml` on 2026-08-07 because GitHub
-  only reads workflows from the repo root — see CHANGELOG.md.
+- **Resolution so far:** `tools/fleet-devtools/` has its own gate
+  (`.github/workflows/tools.yml` at the repo root, scoped to
+  `paths: ['tools/fleet-devtools/**', 'tools/scripts/**']`); runs
+  `npm run check` (lint + build + test + format:check) on push and PR to
+  `main`. Promoted out of `tools/fleet-devtools/.github/workflows/ci.yml`
+  on 2026-08-07 because GitHub only reads workflows from the repo root —
+  see CHANGELOG.md. The workflow file moved with the subtool when the
+  subtool moved up one level on 2026-08-08 (`fleet-devtools/` →
+  `tools/fleet-devtools/`).
 - **Remaining:** root `npm test` is deliberately not gated (the
   `test/build/` Combined Zones tests read gitignored `data/` fixtures
   and fail on a fresh clone); a repo-wide workflow would go red and
@@ -135,10 +138,11 @@ Priority tags: **[P0]** time-boxed / do next · **[P1]** should do soon · **[P2
   added targeted config/geofence coverage.
 
 ### 14. [DONE 2026-08-07] Absorb the three sub-tools into the repo
-- **Resolution:** `world-builder/` (mcwb) and `fleet-devtools/`
-  (mc-fleet-devtools) were merged in via `git subtree` on 2026-08-07
-  with their histories preserved. `world-showcase/` was already
-  tracked. The 2026-08-07 team-c review added a `Sub-tools` section
+- **Resolution:** `world-builder/` (mcwb) and `tools/fleet-devtools/`
+  (mc-fleet-devtools, originally merged as `fleet-devtools/` and moved
+  up one level on 2026-08-08) were merged in via `git subtree` on
+  2026-08-07 with their histories preserved. `world-showcase/` was
+  already tracked. The 2026-08-07 team-c review added a `Sub-tools` section
   to `AGENTS.md` plus per-sub-tool `AGENTS.md` files, fixed the
   stale "22 tests" claim (now 38), fixed the stale
   `world-builder/examples/.mcwb.toml` plan path, and added

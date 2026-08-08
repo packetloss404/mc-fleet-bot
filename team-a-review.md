@@ -50,8 +50,10 @@ need owner judgement or a larger refactor and are not in this branch.
 - **Build-intent wiring is still stranded at ~80%** (`BACKLOG.md` item 3,
   `src/bot/BotInstance.ts:1006-1008`). The parser resolves coordinates; the
   dispatch to `BuildCoordinator` is still a `TODO:`. Medium effort.
-- **CI pipeline missing** (`BACKLOG.md` item 4, no `.github/workflows/ci.yml`).
-  The repo has a fleet-devtools workflow but no root `build + vitest` gate, so
+- **CI pipeline missing** (`BACKLOG.md` item 4, no root
+  `.github/workflows/ci.yml` for the bot code itself).
+  The repo has a `tools/fleet-devtools` workflow at
+  `.github/workflows/tools.yml` but no root `build + vitest` gate, so
   regressions land silently. ~30 lines to add.
 - **Web strict-type debt** (`BACKLOG.md` item 5, `web/next.config.ts:4-6`).
   `npm run lint --prefix web` currently reports 134 errors / 34 warnings; the

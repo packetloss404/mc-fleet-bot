@@ -21,7 +21,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = path.resolve(__dirname, '..');
+// The script lives at tools/scripts/, so the repo root is two levels up.
+const ROOT = path.resolve(__dirname, '..', '..');
 const SKILLS_DIR = path.join(ROOT, 'skills');
 const INDEX_PATH = path.join(SKILLS_DIR, 'index.json');
 

@@ -83,6 +83,36 @@ sub-tool."
 
 ---
 
+## 2026-08-08
+
+### `fleet-devtools/` moved under `tools/`
+
+The 2026-08-07 mc-fleet-devtools absorption placed the subtool at the repo
+root as `fleet-devtools/`. The legacy `tools/` directory already existed
+with the one-shot Node migration `tools/consolidate-explore-skills.js`,
+so the two were a 1-file directory and a 186-file monorepo living next
+to each other. That made the "tools" name a misnomer: the directory
+hierarchy implied both trees were top-level peers, but `tools/` is a
+collection of small scripts and `fleet-devtools/` is a substantial
+read-only workbench.
+
+The subtool moved up one level on 2026-08-08: the `fleet-devtools/`
+directory became `tools/fleet-devtools/`, the legacy script moved to
+`tools/scripts/consolidate-explore-skills.js`, and the CI workflow
+moved from `.github/workflows/fleet-devtools.yml` (scoped to
+`paths: ['fleet-devtools/**']`) to `.github/workflows/tools.yml`
+(scoped to `paths: ['tools/fleet-devtools/**', 'tools/scripts/**']`).
+The workflow content (lint + build + test + format:check) is unchanged.
+The subtool's own `.github/workflows/ci.yml` stays in place as an inert
+signpost pointing at the new root workflow.
+
+The 2026-08-07 absorption entry above is left intact as the historical
+record. Cross-references from the root `AGENTS.md`, `README.md`,
+`CLAUDE.md`, `BACKLOG.md`, and the sub-tool `AGENTS.md` files all
+follow the new path; the public API and on-disk formats are unchanged.
+
+---
+
 ## 2026-08-07
 
 ### mcwb absorbed as the `world-builder/` subtool

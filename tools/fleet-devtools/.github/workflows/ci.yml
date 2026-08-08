@@ -1,16 +1,19 @@
 # MOVED — this file is INERT and kept only as a signpost.
 #
 # fleet-devtools was merged into mc-fleet-bot as a subtool on 2026-08-07.
+# The subtool itself moved up one level on 2026-08-08: the `fleet-devtools/`
+# directory at the repo root moved to `tools/fleet-devtools/` so the legacy
+# `tools/` directory (one-shot migration scripts) sits next to it.
 # GitHub reads workflows only from `.github/workflows/` at the REPOSITORY
-# ROOT, so nothing under `fleet-devtools/.github/` will ever run again.
+# ROOT, so nothing under `tools/fleet-devtools/.github/` will ever run again.
 #
 # The live workflow is:
 #
-#     .github/workflows/fleet-devtools.yml   (at the repo root)
+#     .github/workflows/tools.yml   (at the repo root)
 #
-# It is scoped to `paths: ['fleet-devtools/**']` with
-# `working-directory: fleet-devtools`, so it gates this subtool without
-# gating the root project. It also runs the full `npm run check`
+# It is scoped to `paths: ['tools/fleet-devtools/**', 'tools/scripts/**']`
+# with `working-directory: tools/fleet-devtools`, so it gates this subtool
+# without gating the root project. It also runs the full `npm run check`
 # (lint + build + test + format:check) rather than the build + test this
 # file used to run, which is what this project's README and AGENTS.md
 # always claimed CI enforced.

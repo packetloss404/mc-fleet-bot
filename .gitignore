@@ -25,8 +25,9 @@ npm-debug.log*
 # ANCHORED with a leading slash — deliberately. Unanchored `data/` matches at
 # ANY depth, so it silently swallowed every subtool's data directory too.
 # world-showcase already had to work around it with a `!public/data/` negation
-# (see world-showcase/.gitignore), and it would have hidden fleet-devtools'
-# data/{jobs,artifacts}/.gitkeep. Note a nested negation only rescues a path if
+# (see world-showcase/.gitignore), and it would have hidden
+# tools/fleet-devtools/' data/{jobs,artifacts}/.gitkeep. Note a nested
+# negation only rescues a path if
 # it un-excludes the DIRECTORY — git never descends into an excluded directory,
 # so `!data/jobs/.gitkeep` alone would not have worked.
 # This still ignores the fleet's own ./data (which holds real secrets — see the
