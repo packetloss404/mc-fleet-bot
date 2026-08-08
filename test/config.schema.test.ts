@@ -247,4 +247,40 @@ describe('validateConfig', () => {
       fs.unlinkSync(tmpFile);
     }
   });
+
+  it('rejects mining.minDigY as a non-number (closes the file-edit fail-open gap)', () => {
+    // Before this entry was added to SECTION_SPECS, a hand-edited value like
+    // `minDigY: "50"` (string) passed config validation, then failed the
+    // `typeof === 'number'` guard inside `src/actions/geofence.ts:72`,
+    // leaving `minDigY = null` and fail-opening `isBelowDigFloor` at line 94.
+    // The dig floor that prevents fleet entombment was gone with no error.
+    // The HTTP PATCH path was already type-safe; this closes the file-edit
+    // gap by surfacing the type error at config load time.
+    const raw = baseValid();
+    raw.mining = { minDigY: '50' as any };
+    const result = validateConfig(raw);
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
+      expect(result.errors).toContain('mining.minDigY: expected number, got string');
+    }
+
+    // Same path with a boolean also fails — any non-number, not just strings.
+    raw.mining = { minDigY: true as any };
+    const result2 = validateConfig(raw);
+    expect(result2.ok).toBe(false);
+    if (!result2.ok) {
+      expect(result2.errors).toContain('mining.minDigY: expected number, got boolean');
+    }
+
+    // A real number is accepted.
+    raw.mining = { minDigY: 50 };
+    const result3 = validateConfig(raw);
+    expect(result3.ok).toBe(true);
+
+    // Omitting minDigY is also fine — the field is optional, the runtime
+    // falls back to the documented "no dig floor" behavior.
+    raw.mining = {};
+    const result4 = validateConfig(raw);
+    expect(result4.ok).toBe(true);
+  });
 });

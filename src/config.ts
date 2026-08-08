@@ -508,6 +508,15 @@ const SECTION_SPECS: Record<string, { required: boolean; fields: FieldSpec[] }> 
       { key: 'protectedZones', type: 'array', optional: true },
       { key: 'mineSite', type: 'object', optional: true },
       { key: 'routeToMineBlocks', type: 'array', optional: true },
+      // minDigY is the depth floor that stops the fleet from digging itself
+      // into the bedrock (the 2026-05-25 incident). It is consumed at runtime
+      // by `src/actions/geofence.ts:67-72` via `loadConfig() as any`; without
+      // this SECTION_SPECS entry, a hand-edited value like `minDigY: "50"`
+      // (string) silently fails the `typeof === 'number'` guard, leaves
+      // `minDigY = null`, and `isBelowDigFloor` fail-opens — the dig floor
+      // that prevents fleet entombment is gone with no error. The HTTP path
+      // is already type-safe; this closes the file-edit gap.
+      { key: 'minDigY', type: 'number', optional: true },
     ],
   },
   build: {
