@@ -20,7 +20,10 @@ minecraft:
   # selectClass: false). Changing minecraft.* requires a dyobot restart to
   # reconnect — the values are only read at connect time.
   loginFlow: "none"        # "none" | "dyoauth"
-  loginPassword: "dyobot2026"
+  # NOTE: `loginPassword` is intentionally absent. The dyoauth flow is the
+  # only thing that consumes it, and this server uses `loginFlow: "none"`.
+  # Set `MC_BOT_PASSWORD` in `.env` if a server ever needs the dyoauth flow
+  # (see README and the `minecraft.loginPassword` field in `src/config.ts`).
   selectClass: false
 
 bots:
