@@ -19,7 +19,7 @@ if (isMainThread) {
     const survival = config.survival ?? {};
     if (survival.enabled === false) return;
 
-    const botName = String(survival.botName || 'FayaazMJacc');
+    const botName = String(process.env.MC_SURVIVAL_BOT_NAME || survival.botName || 'FayaazMJacc');
     if (!this.getWorker(botName)) {
       if (this.getAllWorkers().length === 0) {
         await this.spawnBot(botName, String(survival.personality || 'survival specialist'), undefined, 'primitive');
@@ -38,6 +38,10 @@ if (isMainThread) {
 
   const proto = BotInstance.prototype as any;
   const originalStopAmbient = proto.stopAmbientBehaviors;
+
+  // The existing bot has an automatic player head-tracking loop. Survival mode
+  // owns its own smooth look calls, so disable the old periodic head tracking.
+  proto.startHeadTracking = function (): void { return; };
 
   // Replace the generic hunger/torch survival loop with the deterministic
   // survival mission. The rest of BotInstance/Voyager remains untouched.
@@ -78,7 +82,6 @@ if (isMainThread) {
     return 'portal';
   };
 
-  const originalDiamonds = missionProto.diamonds;
   missionProto.diamonds = async function (): Promise<void> {
     this.detail(`Mining diamonds (${this.count('diamond')}/567)`);
     if (this.count('diamond') >= 567) {
@@ -95,7 +98,6 @@ if (isMainThread) {
     await this.mineAtY(-54, (b: any) => b.name === 'diamond_ore' || b.name === 'deepslate_diamond_ore');
   };
 
-  const originalObsidian = missionProto.obsidian;
   missionProto.obsidian = async function (): Promise<void> {
     this.detail(`Getting obsidian (${this.count('obsidian')}/14)`);
     if (this.count('obsidian') >= 14) {
@@ -121,11 +123,6 @@ if (isMainThread) {
     if (obs) await this.collect(obs);
   };
 
-  // Keep references alive for compatibility with older transpilers that warn
-  // about replaced private methods; these are deliberately not called.
-  void originalDiamonds;
-  void originalObsidian;
-
   if (parentPort) {
     parentPort.on('message', (msg: any) => {
       if (msg?.kind !== 'command' || typeof msg.type !== 'string') return;
@@ -133,7 +130,7 @@ if (isMainThread) {
       const command = msg.type.slice('survival:'.length);
       try {
         if (!mission) {
-          console.log('[survival] Mission is not initialized yet. Wait for FayaazMJacc to spawn.');
+          console.log('[survival] Mission is not initialized yet. Wait for the bot to spawn.');
           return;
         }
         switch (command) {
@@ -175,11 +172,9 @@ if (isMainThread) {
 
 function installTerminal(manager: any, botName: string): void {
   if (!process.stdin.isTTY) return;
-  // Dynamic import keeps readline out of worker-side startup and makes the
-  // command console harmless when the process is launched without a TTY.
   void import('node:readline').then(({ createInterface }) => {
     const rl = createInterface({ input: process.stdin, output: process.stdout, prompt: 'survival> ' });
-    console.log('[survival] FayaazMJacc survival mission ready. Type help for commands.');
+    console.log(`[survival] ${botName} survival mission ready. Type help for commands.`);
     rl.prompt();
     rl.on('line', (raw) => {
       const command = raw.trim().toLowerCase();
