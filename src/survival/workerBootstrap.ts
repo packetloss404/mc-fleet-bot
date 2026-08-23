@@ -3,6 +3,11 @@ import { BotInstance } from '../bot/BotInstance';
 import { BotManager } from '../bot/BotManager';
 import { SurvivalMission } from './SurvivalMission';
 
+// This branch is a dedicated survival build. The environment flag is set here
+// so Codespaces users do not need to remember a second variable before launch.
+process.env.MC_SURVIVAL_MODE = '1';
+if (!process.env.MC_SURVIVAL_BOT_NAME) process.env.MC_SURVIVAL_BOT_NAME = 'FayaazMJacc';
+
 const SURVIVAL_BOT_NAME = () => String(process.env.MC_SURVIVAL_BOT_NAME || 'FayaazMJacc');
 
 if (isMainThread) {
@@ -19,9 +24,6 @@ if (isMainThread) {
     const botName = String(process.env.MC_SURVIVAL_BOT_NAME || survival.botName || 'FayaazMJacc');
     const forceJoin = survival.forceJoin !== false;
 
-    // Survival mode owns this bot name. If an old saved fleet occupies the
-    // configured maxBots slot, remove those stale workers so FayaazMJacc can
-    // join immediately instead of silently being skipped.
     if (!this.getWorker(botName) && forceJoin) {
       const others = this.getAllWorkers().filter((w: any) => w.botName?.toLowerCase() !== botName.toLowerCase());
       for (const worker of others) {
@@ -41,11 +43,8 @@ if (isMainThread) {
         undefined,
         String(survival.mode || 'primitive'),
       );
-      if (spawned) {
-        console.log(`[survival] ${botName} force-join requested; worker started immediately`);
-      } else {
-        console.log(`[survival] FAILED to spawn ${botName}. Check bots.maxBots and Minecraft connection settings.`);
-      }
+      if (spawned) console.log(`[survival] ${botName} force-join requested; worker started immediately`);
+      else console.log(`[survival] FAILED to spawn ${botName}. Check bots.maxBots and Minecraft connection settings.`);
     }
 
     if (terminalStarted) return;
@@ -57,17 +56,12 @@ if (isMainThread) {
   let missionBot: BotInstance | null = null;
   const proto = BotInstance.prototype as any;
 
-  // Disable the old periodic player head tracker. Mission actions use smooth
-  // interpolated looks only when an action actually requires them.
   proto.startHeadTracking = function (): void { return; };
 
   const originalConnect = proto.connect;
   proto.connect = async function (...args: any[]): Promise<void> {
     const result = await originalConnect.apply(this, args);
     try {
-      // Initialising the mission here is the critical boot fix: the previous
-      // build patched startSurvivalLoop but nothing in BotInstance actually
-      // called that method, so the mission could never begin.
       this.startSurvivalLoop();
     } catch (err: any) {
       console.error(`[survival] failed to initialize mission for ${this.name}: ${err?.stack || err?.message || String(err)}`);
@@ -83,10 +77,6 @@ if (isMainThread) {
         (this as any).name,
         () => { try { (this as any).voyagerLoop?.pause('survival-mission'); } catch {} },
       );
-
-      // Persist a death counter and immediately let the mission resume after a
-      // Mineflayer respawn/reconnect. The mission itself never issues a server
-      // command; it only waits for the normal survival lifecycle.
       const bot: any = (this as any).bot;
       if (bot?.on) {
         bot.on('death', () => {
@@ -102,6 +92,7 @@ if (isMainThread) {
     mission.resume();
   };
 
+  const originalStopAmbient = proto.stopAmbientBehaviors;
   proto.stopAmbientBehaviors = function (): void {
     try { mission?.stop(); } catch {}
     return originalStopAmbient?.call(this);
@@ -126,15 +117,11 @@ if (isMainThread) {
   missionProto.bed = async function (): Promise<void> {
     this.detail('Getting three natural wool and crafting a bed');
     const existing = BEDS_INTERNAL.find((x) => this.has(x));
-    if (existing) {
-      this.saved.stage = 'coal';
-      return;
-    }
+    if (existing) { this.saved.stage = 'coal'; return; }
     const wool = this.botGetter().inventory.items().find((i: any) => i.name.endsWith('_wool'));
     if (!wool || wool.count < 3) {
       const sheep = this.nearestEntity((e: any) => e.name === 'sheep' && e.position.distanceTo(this.botGetter().entity.position) < 64);
-      if (sheep) await this.attack(sheep);
-      else await this.safeWander();
+      if (sheep) await this.attack(sheep); else await this.safeWander();
       return;
     }
     const color = wool.name.replace('_wool', '');
@@ -151,24 +138,15 @@ if (isMainThread) {
     }
     await this.ensureDeepMiningGear();
     const ore = this.findBlock((b: any) => b.name === 'diamond_ore' || b.name === 'deepslate_diamond_ore', 128);
-    if (ore && !this.hazard(ore.position)) {
-      await this.collect(ore);
-      return;
-    }
+    if (ore && !this.hazard(ore.position)) { await this.collect(ore); return; }
     await this.mineAtY(-54, (b: any) => b.name === 'diamond_ore' || b.name === 'deepslate_diamond_ore');
   };
 
   missionProto.obsidian = async function (): Promise<void> {
     this.detail(`Getting obsidian (${this.count('obsidian')}/14)`);
-    if (this.count('obsidian') >= 14) {
-      this.saved.stage = 'flint-steel';
-      return;
-    }
+    if (this.count('obsidian') >= 14) { this.saved.stage = 'flint-steel'; return; }
     const exposed = this.findBlock((b: any) => b.name === 'obsidian', 128);
-    if (exposed && !this.hazard(exposed.position)) {
-      await this.collect(exposed);
-      return;
-    }
+    if (exposed && !this.hazard(exposed.position)) { await this.collect(exposed); return; }
     await this.ensureBucket();
     const lava = this.findBlock((b: any) => b.name === 'lava', 64);
     if (!lava) return this.safeWander();
@@ -189,15 +167,10 @@ if (isMainThread) {
       if (!msg.type.startsWith('survival:')) return;
       const command = msg.type.slice('survival:'.length);
       try {
-        if (!mission) {
-          console.log('[survival] Mission is not initialized yet. Wait for the bot to spawn.');
-          return;
-        }
+        if (!mission) { console.log('[survival] Mission is not initialized yet. Wait for the bot to spawn.'); return; }
         switch (command) {
           case 'task':
-          case 'status':
-            console.log('[survival]', JSON.stringify(mission.status(), null, 2));
-            break;
+          case 'status': console.log('[survival]', JSON.stringify(mission.status(), null, 2)); break;
           case 'coords': {
             const s: any = mission.status();
             console.log('[survival] coords:', s.position ? `${s.position.x} ${s.position.y} ${s.position.z}` : 'not spawned');
@@ -209,36 +182,21 @@ if (isMainThread) {
             console.log('[survival] inventory:', items.length ? items.join(', ') : '(empty)');
             break;
           }
-          case 'stop':
-            mission.stop();
-            console.log('[survival] stopped and progress saved');
-            break;
-          case 'resume':
-            mission.resume();
-            console.log('[survival] resumed');
-            break;
-          case 'help':
-            console.log('[survival] commands: task, coords, inv, status, stop, resume, help');
-            break;
-          default:
-            console.log(`[survival] unknown command '${command}'. Use: task, coords, inv, status, stop, resume, help`);
+          case 'stop': mission.stop(); console.log('[survival] stopped and progress saved'); break;
+          case 'resume': mission.resume(); console.log('[survival] resumed'); break;
+          case 'help': console.log('[survival] commands: task, coords, inv, status, stop, resume, help'); break;
+          default: console.log(`[survival] unknown command '${command}'. Use: task, coords, inv, status, stop, resume, help`);
         }
-      } catch (err: any) {
-        console.log('[survival] command failed:', err?.message || String(err));
-      }
+      } catch (err: any) { console.log('[survival] command failed:', err?.message || String(err)); }
     });
   }
 }
 
 function installTerminal(manager: any, botName: string): void {
-  // Codespaces normally provides a TTY, but keeping this guard too strict made
-  // the controls disappear when npm was launched by a task runner. A readable
-  // stdin is enough for these local terminal commands.
   if (!process.stdin.readable || process.stdin.destroyed) {
     console.log('[survival] stdin is not readable; terminal controls unavailable in this process.');
     return;
   }
-
   void import('node:readline').then(({ createInterface }) => {
     const rl = createInterface({ input: process.stdin, output: process.stdout, terminal: Boolean(process.stdin.isTTY), prompt: 'survival> ' });
     console.log(`[survival] ${botName} survival mission ready. Type help for commands.`);
@@ -254,19 +212,14 @@ function installTerminal(manager: any, botName: string): void {
       }
       const dispatch = () => {
         const worker = manager.getWorker(botName);
-        if (!worker) {
-          console.log(`[survival] ${botName} is not currently running; retrying command...`);
-          return false;
-        }
+        if (!worker) { console.log(`[survival] ${botName} is not currently running; retrying command...`); return false; }
         worker.sendCommand(`survival:${command}`, {});
         return true;
       };
       if (!dispatch()) {
         let attempts = 0;
         const retry = setInterval(() => {
-          if (dispatch() || ++attempts >= 20) {
-            clearInterval(retry);
-          }
+          if (dispatch() || ++attempts >= 20) clearInterval(retry);
         }, 500);
         retry.unref?.();
       }
