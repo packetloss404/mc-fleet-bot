@@ -11,7 +11,7 @@ api:
   host: "127.0.0.1"
 
 minecraft:
-  host: "10.80.13.14"
+  host: "stridesmp.mcsh.io"
   port: 25565
   version: "1.21.11"
   auth: "offline"
@@ -27,7 +27,7 @@ minecraft:
   selectClass: false
 
 bots:
-  maxBots: 10
+  maxBots: 1
   defaultMode: "codegen"
   # Gentle on the server's connection rate-limiter: a wide join stagger + long
   # reconnect delay keeps 8 bots from hammering logins (which trips the server
