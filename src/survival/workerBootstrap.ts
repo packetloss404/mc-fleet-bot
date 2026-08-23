@@ -3,11 +3,6 @@ import { BotInstance } from '../bot/BotInstance';
 import { BotManager } from '../bot/BotManager';
 import { SurvivalMission } from './SurvivalMission';
 
-// This module is preloaded by the dev/start scripts. In the main thread it
-// installs the terminal control plane and ensures the configured survival bot
-// exists. In a worker it replaces only the old generic survival loop with the
-// deterministic mission controller.
-
 if (isMainThread) {
   const managerProto = BotManager.prototype as any;
   const originalLoadSavedBots = managerProto.loadSavedBots;
@@ -18,7 +13,6 @@ if (isMainThread) {
     const config: any = this.getConfig?.() ?? {};
     const survival = config.survival ?? {};
     if (survival.enabled === false) return;
-
     const botName = String(process.env.MC_SURVIVAL_BOT_NAME || survival.botName || 'FayaazMJacc');
     if (!this.getWorker(botName)) {
       if (this.getAllWorkers().length === 0) {
@@ -27,7 +21,6 @@ if (isMainThread) {
         console.log(`[survival] ${botName} was not auto-spawned because another saved bot is already running.`);
       }
     }
-
     if (terminalStarted) return;
     terminalStarted = true;
     installTerminal(this, botName);
@@ -35,16 +28,13 @@ if (isMainThread) {
 } else {
   let mission: SurvivalMission | null = null;
   let missionBot: BotInstance | null = null;
-
   const proto = BotInstance.prototype as any;
   const originalStopAmbient = proto.stopAmbientBehaviors;
 
-  // The existing bot has an automatic player head-tracking loop. Survival mode
-  // owns its own smooth look calls, so disable the old periodic head tracking.
+  // Disable the old periodic player head tracker. Mission actions use smooth
+  // interpolated looks only when an action actually requires them.
   proto.startHeadTracking = function (): void { return; };
 
-  // Replace the generic hunger/torch survival loop with the deterministic
-  // survival mission. The rest of BotInstance/Voyager remains untouched.
   proto.startSurvivalLoop = function (): void {
     missionBot = this as BotInstance;
     if (!mission) {
@@ -62,15 +52,11 @@ if (isMainThread) {
     return originalStopAmbient?.call(this);
   };
 
-  // The explicit target is intentionally larger than the five sets: 375
-  // diamonds are consumed by five complete sets, and the mission must finish
-  // with another 192 (three stacks) still obtained. Likewise a full portal
-  // frame needs 14 obsidian when corners are included.
   const missionProto = SurvivalMission.prototype as any;
   missionProto.nextStage = function (): string {
     if (!this.hasAny(LOGS_INTERNAL)) return 'wood';
     if (this.foodCount() < 16) return 'food';
-    if (!this.has('white_bed')) return 'bed';
+    if (!this.hasAny(BEDS_INTERNAL)) return 'bed';
     if (this.count('coal') < 16) return 'coal';
     if (this.count('iron_ingot') < 32) return 'iron';
     if (!IRON_ARMOR_INTERNAL.every((x) => this.has(x)) || !IRON_TOOLS_INTERNAL.every((x) => this.has(x))) return 'iron-gear';
@@ -80,6 +66,25 @@ if (isMainThread) {
     if (this.count('obsidian') < 14) return 'obsidian';
     if (!this.has('flint_and_steel')) return 'flint-steel';
     return 'portal';
+  };
+
+  missionProto.bed = async function (): Promise<void> {
+    this.detail('Getting three natural wool and crafting a bed');
+    const existing = BEDS_INTERNAL.find((x) => this.has(x));
+    if (existing) {
+      this.saved.stage = 'coal';
+      return;
+    }
+    const wool = this.botGetter().inventory.items().find((i: any) => i.name.endsWith('_wool'));
+    if (!wool || wool.count < 3) {
+      const sheep = this.nearestEntity((e: any) => e.name === 'sheep' && e.position.distanceTo(this.botGetter().entity.position) < 64);
+      if (sheep) await this.attack(sheep);
+      else await this.safeWander();
+      return;
+    }
+    const color = wool.name.replace('_wool', '');
+    await this.craft(`${color}_bed`);
+    this.saved.stage = 'coal';
   };
 
   missionProto.diamonds = async function (): Promise<void> {
@@ -185,19 +190,14 @@ function installTerminal(manager: any, botName: string): void {
         return;
       }
       const worker = manager.getWorker(botName);
-      if (!worker) {
-        console.log(`[survival] ${botName} is not currently running.`);
-      } else {
-        worker.sendCommand(`survival:${command}`, {});
-      }
+      if (!worker) console.log(`[survival] ${botName} is not currently running.`);
+      else worker.sendCommand(`survival:${command}`, {});
       rl.prompt();
     });
   }).catch((err) => console.log('[survival] terminal setup failed:', err?.message || String(err)));
 }
 
-const LOGS_INTERNAL = [
-  'oak_log', 'spruce_log', 'birch_log', 'jungle_log', 'acacia_log',
-  'dark_oak_log', 'mangrove_log', 'cherry_log', 'pale_oak_log',
-];
+const LOGS_INTERNAL = ['oak_log', 'spruce_log', 'birch_log', 'jungle_log', 'acacia_log', 'dark_oak_log', 'mangrove_log', 'cherry_log', 'pale_oak_log'];
+const BEDS_INTERNAL = ['white_bed', 'orange_bed', 'magenta_bed', 'light_blue_bed', 'yellow_bed', 'lime_bed', 'pink_bed', 'gray_bed', 'light_gray_bed', 'cyan_bed', 'purple_bed', 'blue_bed', 'brown_bed', 'green_bed', 'red_bed', 'black_bed'];
 const IRON_ARMOR_INTERNAL = ['iron_helmet', 'iron_chestplate', 'iron_leggings', 'iron_boots'];
 const IRON_TOOLS_INTERNAL = ['iron_pickaxe', 'iron_axe', 'iron_sword'];
