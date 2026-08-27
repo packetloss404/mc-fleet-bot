@@ -686,6 +686,17 @@ npx vitest run \
   test/voyager/VoyagerLoop.civicShiftNoLlm.test.ts
 ```
 
+### New as-built visual sync scripts (2026-08-27)
+
+- `scripts/publish_mp11_c01_main_switchback_transition_01_as_built_visuals.mjs` - publish C01 main switchback transition 01 as-built visuals (evidence-bound, read-only)
+- `scripts/publish_mp11_c01_upper_portion_redesign_01_as_built_visuals.mjs` - publish C01 upper-portion redesign 01 as-built visuals
+- `scripts/publish_mp11_c01_upper_landing_endpoint_opening_transition_01_as_built_visuals.mjs` - publish C01 upper-landing endpoint/opening/transition 01 as-built visuals
+- `scripts/publish_c01_next_01_arrival_landing_wayfinding_as_built_visuals.mjs` - publish C01-NEXT-01 arrival-corridor wayfinding cadence visuals (existing build, AS-BUILT in source)
+- `world-showcase/scripts/sync_c01_as_built_visuals_20260827.mjs` - sync all 3 C01 as-built visual sets into the dashboard
+- `world-showcase/scripts/sync_poi_coordinate_directory_20260827.mjs` - sync the 2026-08-27 POI coordinate directory into the dashboard
+- `world-showcase/scripts/sync_underground_report_20260827.mjs` - sync the 2026-08-27 underground navigation report into the dashboard
+- `world-showcase/scripts/sync_c01_next_01_visual_20260827.mjs` - sync the C01-NEXT-01 visual into the dashboard
+
 Available test files:
 - `test/control/CommandCenter.test.ts` - command dispatch, cancellation, timeout, fan-out
 - `test/control/MissionManager.test.ts` - mission lifecycle, VoyagerLoop bridge, dependencies, queues
