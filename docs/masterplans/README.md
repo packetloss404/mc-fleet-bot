@@ -32,6 +32,15 @@ also includes the mandatory [guarded release protocol](handoff/04-release-protoc
 It is an evidence index and execution handoff, not independent authority to
 mutate the world.
 
+**Fresh frontier research addendum (27 August 2026):** the
+[C01 / AG-4 / Cheyenne design packet](handoff/05-frontier-research-and-design-2026-08-27.md)
+binds the current research to the 130-member immutable frontier capture. It
+documents C01's corrected offline guarded package and required live kernel,
+proves AG-4's wet volume escapes three faces (so no containment package is
+eligible), and resolves the MP01 vertical anchor only as a source probe. It
+includes maps, regeneration commands, compiler requirements, and explicit stop
+rules for MiniMax M3.
+
 The passenger subway is a workstream inside that same Master Plan, not a
 competing plan: [programme](PASSENGER-RAILWAY-PROGRAM-2026-08-22.md) ·
 [network and stop register](2026-08-22-passenger-railway-network-design.md) ·

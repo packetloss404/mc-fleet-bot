@@ -24,10 +24,12 @@ catalogue record into live-world authority.
 2. Read the current per-area state files linked in the programme table below.
    They supersede historical `HOLD` language when they contain later accepted
    execution/post-state evidence.
-3. Begin every proposed mutation with a new immutable source snapshot.  The
-   latest C01-support post snapshot is useful for research only; it is **not**
-   a reusable source guard:
-   `data/worldsnap-mp11-c01-arrival-gravity-support-post-20260827T043000Z`.
+3. Begin every proposed mutation with a new immutable source snapshot. The
+   latest completed research capture is
+   `data/worldsnap-masterplan-frontier-refresh-20260827T053500Z`; it is useful
+   for the current frontier contracts but is **not** a reusable live-release
+   source guard. Read the [fresh frontier research and design packet](05-frontier-research-and-design-2026-08-27.md)
+   before selecting C01, AG-4, or the Cheyenne outer portal.
 4. Select one exact, independent scope.  Do not solve an unbounded water,
    lava, gravity, ownership, container, or public-return problem by quietly
    expanding an adjacent release.
@@ -97,6 +99,24 @@ This is dependency order, not permission to make broad edits.
    PassageWay, and Cobalt station/rail commissioning.
 6. **Publish after acceptance:** update maps, screenshots, navigation reports,
    public dashboard content, and the completion register with precise limits.
+
+## Fresh frontier addendum (27 August 2026)
+
+The completed research pass is recorded in
+[Frontier research and design](05-frontier-research-and-design-2026-08-27.md).
+It narrows the immediate queue without claiming any parent programme complete:
+
+- **C01 main-switchback:** a corrected 928-cell canonical target union (828
+  main + 100 guard) retains all 768 Return-02 cells. Its 387-command exact
+  inverse package and projected dual-route QA pass offline. It still requires
+  a fresh immediate source and the entire live guarded kernel before any world
+  mutation is considered.
+- **AG-4:** a 196,072-cell wet component escapes `-X`, `-Z`, and `+Z` before
+  its 250,000-cell cap. Only an exact three-face research expansion is allowed;
+  no plug, liner, support, rail, or promenade package is eligible.
+- **MP01 outer portal:** `(2048,130,-748)` is a resolved rational source probe,
+  not construction geometry. Build activation, a single accepted cross-section,
+  owners, endpoints, returns, and exact cells remain prerequisites.
 
 ## Claim vocabulary that must stay exact
 
