@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "id": "ianlan-poi-coordinate-directory-artifacts-2026-07-29",
+  "generatedAt": "2026-07-29T00:36:45.119Z",
+  "status": "SEALED",
+  "source": {
+    "database": {
+      "path": "data/world-map.db",
+      "bytes": 6733824,
+      "sha256": "71876a7ecf73e90475a9b5047938e14f39ea0a20381dea8c5286582059f95f8a"
+    },
+    "snapshot": {
+      "directory": "data/worldsnap-town-terminal-recovery-post-20260728T1839Z/region",
+      "sha256": "c39d0d67c9dec737aa5807cf5fa56a84f3c3d38d4b13d0f82599d3eb30fa6751",
+      "regionFileCount": 30,
+      "bytes": 134749182,
+      "algorithm": "sha256(filename + NUL + bytes + NUL, sorted by filename)"
+    }
+  },
+  "counts": {
+    "records": 1215,
+    "active": 1214,
+    "retired": 1,
+    "exactOrAuthoredReferences": 202,
+    "derivedReferences": 1013,
+    "relativeYCommands": 85,
+    "projects": 8,
+    "kinds": 14,
+    "categories": 6,
+    "byCategory": {
+      "surface-builds": 109,
+      "remote-sites": 26,
+      "passageway-access": 299,
+      "route-station-infrastructure": 713,
+      "anomalies-controls": 66,
+      "candidate-parcels": 2
+    },
+    "byProject": {
+      "approach-road": 2,
+      "mainstreet-america": 631,
+      "raven-rock": 81,
+      "ravensgate": 13,
+      "ravensreach": 63,
+      "town-expansion-r1": 340,
+      "westlight-district": 59,
+      "westlight-venue": 26
+    },
+    "byKind": {
+      "building": 75,
+      "custom": 392,
+      "district": 19,
+      "driveway": 6,
+      "fence": 14,
+      "landmark": 33,
+      "landscape": 13,
+      "lighting": 55,
+      "parking": 242,
+      "property": 1,
+      "road": 29,
+      "room": 322,
+      "sidewalk": 12,
+      "utility": 2
+    },
+    "pdfPages": 135
+  },
+  "artifacts": [
+    {
+      "path": "poi-coordinate-directory.html",
+      "bytes": 1487399,
+      "sha256": "3df42faaff468761331d0863896d83acfc7d8ce7f0373565c930dd955c0b5603"
+    },
+    {
+      "path": "poi-coordinate-directory.json",
+      "bytes": 1876749,
+      "sha256": "93d0266339740087b903adf1b0f900d43110f78a2cecd8fdbd1871fd819bff1e"
+    },
+    {
+      "path": "poi-coordinate-directory.csv",
+      "bytes": 336722,
+      "sha256": "49926cdaadfaac96230f967521c38eac4af798383d15b3d5a9251cbef1546586"
+    },
+    {
+      "path": "poi-coordinate-directory.pdf",
+      "bytes": 2700356,
+      "sha256": "f4bed1732d9672dea26a43b0afe69827daf115d248f9e278ece59d6438556950"
+    },
+    {
+      "path": "portal-summary.json",
+      "bytes": 1012512,
+      "sha256": "486b6ed06063e8e72252e65a3b5aa5e3ff0f340c074f4530d95c0385def80b6e"
+    },
+    {
+      "path": "report-qa.json",
+      "bytes": 2208,
+      "sha256": "6ff0c2de8d8e431435c77c607934ff3af671db0a99544efe641321c159181620"
+    }
+  ]
+}

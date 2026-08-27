@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
   "reportId": "ianlan-nextgen-underground-navigation",
-  "generatedAt": "2026-07-28T23:20:45.061Z",
+  "generatedAt": "2026-08-27T17:11:28.256Z",
   "status": "PASS",
   "root": "docs/redevelopment/2026-07-28-underground-navigation",
-  "artifactCount": 47,
+  "artifactCount": 52,
   "artifacts": [
     {
       "file": "README.md",
-      "bytes": 1442,
-      "sha256": "1c63b0286c2b50b034715d8d6faced9ddac7e5a553f208c2adbb0538c742debc"
+      "bytes": 1977,
+      "sha256": "1936926dac865d45c754e34c5dd8a1cb7e1d2b24eccf7165008ec3383360efc6"
     },
     {
       "file": "artifact-manifest.pre-pdf.json",
-      "bytes": 10013,
-      "sha256": "26f4778bd681f8c7c5ddd5e5dbffacadf452a39acbe4cf4aa6534dd74f28d1b5"
+      "bytes": 11186,
+      "sha256": "9fa9e06c7474e953557ddb16c84576890843a379efbe6c359ecf6f2c6ece1c68"
     },
     {
       "file": "maps/01-underground-world-overview.png",
@@ -107,24 +107,34 @@
       "sha256": "100fc97491dd5f9bb6627c874207c695411f4db6b9c83b467d4c7e63187e1876"
     },
     {
+      "file": "maps/19-empty-eight-public-retail-boh-sectional.png",
+      "bytes": 43009,
+      "sha256": "9201f83c6671c6c8ee208f0d1c96f06e9562aa86008da77fa369c3aba399d69c"
+    },
+    {
+      "file": "maps/20-empty-eight-restricted-annex-sectional.png",
+      "bytes": 25634,
+      "sha256": "bffa49063975e86f864db53a72e95775b58c0ea02c0fc74819f44dc51c3c437b"
+    },
+    {
       "file": "report-qa.json",
-      "bytes": 9811,
-      "sha256": "cf460328a4e61b1b1d4cb0c6881a14ed4e3f7ad327fce2064a566fcaa82453f4"
+      "bytes": 11079,
+      "sha256": "eb37f12b80f0177f3750bfed2fb97fbdf9bc14cc523970ac0ed8d29cf2c5de1d"
     },
     {
       "file": "screenshot-manifest.json",
-      "bytes": 9595,
-      "sha256": "f7bc646597cfdd55a094711d264474e5ae1e0839c522673fbed2f6e0df409ad3"
+      "bytes": 10591,
+      "sha256": "65b580b64b130c65c16a137016a407539200eff3e9ea14a27f7692f2ace3ef26"
     },
     {
       "file": "screenshots/01-underground-evidence-contact-sheet.png",
-      "bytes": 550978,
-      "sha256": "55da7782fd1f6879c40d8027712d5a75b95435abea3afdb70c9e9f00c96b79bf"
+      "bytes": 656783,
+      "sha256": "d647e8d3a18d53e1e1a996e67f17afa5987699fc368c6a390d542387903e76b3"
     },
     {
       "file": "screenshots/02-underground-evidence-contact-sheet.png",
-      "bytes": 605206,
-      "sha256": "872abd63aa2c4e6b99e0473a1b812bf2e8a21a6f7018443fb4e9ef9c81744aab"
+      "bytes": 577783,
+      "sha256": "928a011ed6b9c2aeded16d4c574d01d065caa3767100f97fc632e6ea3bcb699f"
     },
     {
       "file": "screenshots/c01-east-l1.png",
@@ -150,6 +160,21 @@
       "file": "screenshots/concord-bar.png",
       "bytes": 266910,
       "sha256": "25198c037c3988cd97929213b870859ceabdade8ebe05e0e16af0dcf5dfd2979"
+    },
+    {
+      "file": "screenshots/empty-eight-public-gallery.png",
+      "bytes": 28952,
+      "sha256": "6846b499e5413ffb6f9b247f5b4a346a95d545bc05e1a7b42d822c3a2a318589"
+    },
+    {
+      "file": "screenshots/empty-eight-restricted-grand-stair.png",
+      "bytes": 32686,
+      "sha256": "62ba45b480b008844147c76e5cf47497040dc39afe9c6a9d867d864a0bcfc164"
+    },
+    {
+      "file": "screenshots/empty-eight-restricted-theatre.png",
+      "bytes": 91142,
+      "sha256": "97c0263cc036756214f03c8604fb074dcbac95a0b059b26033559f1e58712e87"
     },
     {
       "file": "screenshots/gilded-raven.png",
@@ -192,11 +217,6 @@
       "sha256": "c3cf7cbdfbfbf50ef3887f1df994a6a8dd5679a5bb6b7e26eeaa88df6c27663f"
     },
     {
-      "file": "screenshots/raven-rock-command-center.png",
-      "bytes": 75516,
-      "sha256": "c6897a33231187942b9b2115a99be68937ac6745550790e75cb3429e017f6a48"
-    },
-    {
       "file": "screenshots/raven-rock-t2b.png",
       "bytes": 27863,
       "sha256": "f25757518f7a4448a8e2ecfb2d95ecbcb236c39727eaf865276f379e02058a83"
@@ -227,19 +247,24 @@
       "sha256": "395689f74613f0f84dd63bebf164d323076abe6ee19d49b4c28888a76df11bf0"
     },
     {
+      "file": "underground-access-audit.json",
+      "bytes": 24424,
+      "sha256": "e7f10828208d6f99ef556f0db17cb6fdc10839e5364a41f795eb62e7ca20fbf8"
+    },
+    {
       "file": "underground-inventory.json",
-      "bytes": 647470,
-      "sha256": "3bd8480cb42b9aef57ee3450605046214eb467f4af7f84a99d87829e016d368e"
+      "bytes": 687493,
+      "sha256": "5cc7fa0c946f3e1c4bdb3eba33a63529e6aa8746edc805366468435ef6c6a4b6"
     },
     {
       "file": "underground-navigation-report.html",
-      "bytes": 217390,
-      "sha256": "5d1370f2b52290487bf709664d326219ca8aca37634153c96d3a7d88be7e76dc"
+      "bytes": 240106,
+      "sha256": "ef7d7a553fe0c4064bbd1a5061c9debf4f980eb80702e4235f5214cfa534175f"
     },
     {
       "file": "underground-navigation-report.pdf",
-      "bytes": 7702729,
-      "sha256": "c166eb86cc2ee73264a77da9c3271847a645e9129bfb9891fc5c32f695d936c1"
+      "bytes": 8099934,
+      "sha256": "b05f5412fde96d3a639c9b2ec41301b7910ba6f65b0e0e44b456b2022efd2134"
     }
   ]
 }

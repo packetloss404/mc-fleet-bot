@@ -355,11 +355,54 @@ This is a bounded main-switchback construction release only. It does not retire,
 connect, gate, or close the protected route; open or commission a public route,
 endpoint, egress, or service; or complete C01/MP11.
 
+### C01 public-vertical upper-portion redesign design 01 — bilateral endpoint/opening/transition contract required
+
+The [dimension physical 01](./../../data/world-review/mp11-c01-dimension-physical-01-c01-08-post-20260828T040000Z/MP11-C01-DIMENSION-PHYSICAL-01.md)
+smallest isolable defect (stations 68..88 of the public vertical switchback) is now
+rebound to a fresh continuation snapshot. The new
+[upper-portion redesign design 01](./../../data/world-review/mp11-c01-public-vertical-upper-portion-redesign-design-01-fresh-continuation-20260827T061300Z/MP11-C01-PUBLIC-VERTICAL-UPPER-PORTION-REDESIGN-DESIGN-01.md)
+binds a 21-station, 5-wide × 5-clear-high upper portion (19 defect stations + 2
+intermediate stations for normal-walk) with 346 deduplicated target cells, 459
+halo cells, zero fluid/gravity/container/block-entity/saved-entity hits, and zero
+Return-02 intersection.
+
+The 51-cell overlap with the accepted main switchback transition 01 cross at the
+shared upper landing interface is the bilateral endpoint/opening/transition
+blocker. No physical release is authorized until a separately compiled contract
+binds owners, opening state, inverse ordering, and the exact handoff between
+this upper portion bottom and the accepted main switchback transition 01 upper
+landing. The current protected route fabric (the rest of stations 1..67 plus 89),
+Return-02, and the accepted main switchback transition 01 must remain untouched.
+
+This design emits zero operations, zero rollback operations, zero mutation
+authority, and zero RCON calls.
+
 Each reviewed contract is a bounded, exact preservation/interface record—not
 a broad construction zone. A zero-delta envelope cannot be converted into a
 route, door, stair, public-access, or decorative release. Every unreviewed
 cross-area seam remains default-deny. The C01 return does not relax the
 separate portal, public, owner, or service endpoint/interface requirements.
+
+### C01 public-vertical upper-portion redesign 01 — as built, post-verified, reversible
+
+`MP11-C01-PUBLIC-VERTICAL-UPPER-PORTION-REDESIGN-01` rebuilds the dimension
+physical 01 smallest isolable defect (stations 68..88 of the public vertical
+switchback) as a 21-station, 5-wide × 5-clear-high upper-portion redesign. The
+canonical target union is 482 cells (433 unique + 49 shared with the accepted
+main switchback transition 01); the bilateral endpoint/opening/transition
+contract documents the 49-cell overlap as compatible accepted states.
+The guarded transaction changed exactly 19 source-drifted cells and proves the
+19-cell exact inverse against the immutable post-snapshot. Return-02 remains
+continuous with all 768 retained canonical cells exact, zero intersection with
+the upper portion release, and both directions at five-wide × five-clear-high.
+Independent post-release QA passes 0 canonical failures, 0 shared-cell failures,
+0 unsafe hits, 0 route failures, and 0 return failures.
+
+This is a bounded upper-portion construction release only. It does not retire,
+connect, gate, or close the protected route; open or commission a public route,
+endpoint, egress, or service; or complete C01/MP11. The lower-arrival-interface
+and upper-landing-interface endpoint/opening/transition contracts required to
+connect this upper portion to the upper landing remain separately authorized.
 
 ## Requirements for future MP11 work
 

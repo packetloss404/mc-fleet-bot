@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "id": "ianlan-poi-coordinate-directory-railway-publication-2026-07-29",
+  "verifiedAt": "2026-07-29T00:39:44.000Z",
+  "status": "PASS",
+  "service": {
+    "projectName": "IANLAN NextGen",
+    "serviceName": "IANLAN NextGen",
+    "environment": "production",
+    "url": "https://ianlan-nextgen-production.up.railway.app",
+    "region": "US West"
+  },
+  "deployment": {
+    "id": "bd072387-4f99-4e49-922a-c8ef9e22a2d6",
+    "status": "SUCCESS",
+    "createdAt": "2026-07-29T00:37:20.741Z",
+    "imageDigest": "sha256:d3ff7878be51c4b0cb72cfd57fdadfe04e1d04a3788818b2dd4fa7324d91249a"
+  },
+  "checks": {
+    "railwayServiceOnline": true,
+    "healthEndpoint": true,
+    "authenticatedHomeContainsReport04": true,
+    "authenticatedReportRoute": true,
+    "passageWayProperNameVisible": true,
+    "searchableDirectoryVisible": true,
+    "pdfDownload": true,
+    "jsonDownload": true,
+    "csvDownload": true,
+    "qaDownload": true
+  },
+  "routes": {
+    "health": {
+      "path": "/api/health",
+      "status": 200,
+      "response": {
+        "service": "ianlan-nextgen",
+        "status": "ok"
+      }
+    },
+    "report": {
+      "path": "/reports/poi-coordinate-directory",
+      "status": 200,
+      "authenticated": true,
+      "markers": [
+        "Every place",
+        "1,215 records sealed",
+        "PassageWay",
+        "Search the directory",
+        "Download 135-page PDF"
+      ]
+    }
+  },
+  "artifacts": {
+    "pdf": {
+      "path": "/coordinates/poi-coordinate-directory.pdf",
+      "status": 200,
+      "contentType": "application/pdf",
+      "bytes": 2700356
+    },
+    "json": {
+      "path": "/coordinates/poi-coordinate-directory.json",
+      "status": 200,
+      "bytes": 1876749
+    },
+    "csv": {
+      "path": "/coordinates/poi-coordinate-directory.csv",
+      "status": 200,
+      "bytes": 336722
+    },
+    "qa": {
+      "path": "/coordinates/report-qa.json",
+      "status": 200,
+      "bytes": 2208
+    }
+  },
+  "truthBoundary": {
+    "worldEdits": "None. Publication and all source generation were read-only.",
+    "credentials": "Authentication was verified without recording the access code or session-signing secret in this receipt.",
+    "numbering": "The application currently publishes reports 01, 02, and the intentionally numbered 04. No Report 03 was fabricated."
+  }
+}
