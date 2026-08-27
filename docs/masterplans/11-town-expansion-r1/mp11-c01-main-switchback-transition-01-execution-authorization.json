@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "MP11-C01-MAIN-SWITCHBACK-TRANSITION-01-SCOPED-EXECUTION-AUTHORIZATION",
+  "status": "AUTHORIZED_SCOPED_EXECUTION_PENDING_FRESH_REBIND",
+  "authorizationType": "SCOPED_EXECUTION_AUTHORIZATION",
+  "releaseId": "MP11-C01-MAIN-SWITCHBACK-TRANSITION-01",
+  "executionAuthorized": true,
+  "rconAuthorized": true,
+  "worldMutationAuthorized": true,
+  "revoked": false,
+  "scopeConstraints": {
+    "mainStationCount": 30,
+    "mainClearance": { "width": 5, "height": 5 },
+    "guardHandrailTargetCount": 100,
+    "canonicalTargetUnionCount": 928,
+    "maximumChangedCells": 928,
+    "retainedReturn02CanonicalCount": 768,
+    "currentProtectedRouteRetirementTargetCellCount": 0,
+    "selectedRouteClosureState": "NONE"
+  },
+  "freshness": {
+    "freshSourceCaptureRequired": true,
+    "freshReboundContractRequired": true,
+    "freshReboundManifestRequired": true,
+    "sameMomentLiveEntityClearanceRequired": true,
+    "freshPostCaptureRequired": true,
+    "rollbackPoststatePreflightRequired": true,
+    "independentImmutablePostQaRequired": true
+  },
+  "authorizationBoundary": "Authority is limited to the exact fresh-rebound C01 main-switchback package: its 30-station main lane, 100 selected guard/handrail targets, and strict forward/inverse operations while Return-02 remains continuous. It grants no broader world edit, no route retirement, connection, gate, closure, public opening, egress commissioning, rail, power, or passenger-service authority.",
+  "nonClaims": [
+    "This authorization does not waive fresh source, target/halo, fluid/gravity, protected-core, container, block-entity, entity, parser, preflight, journal, post-capture, rollback, or independent QA gates.",
+    "This authorization rejects any stale prepared artifact, source or geometry drift, Return-02 mismatch, protected-route target, or excess changed-cell count.",
+    "This authorization does not authorize current protected-route retirement, connection, gate, closure, or any public commissioning claim."
+  ]
+}

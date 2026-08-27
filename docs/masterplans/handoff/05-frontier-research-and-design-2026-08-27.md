@@ -107,20 +107,17 @@ two-way route QA.
 npx vitest run test/build/mp11C01MainSwitchbackTransitionCompiler.test.ts
 ```
 
-### Required live kernel before a C01 release
+### Executed live kernel and exact as-built boundary
 
-MiniMax M3 must recompile from a new immediately-pre-execution source, never
-replay the research-source package. The new compiler invocation must rebind all
-target, endpoint, and 768 Return-02 states; reject fluid, gravity, container,
-block-entity, protected-core, saved-entity, and halo drift; and retain zero
-current protected-route target cells. A later retirement or connection remains
-a separate bilateral contract.
+The full live kernel now passes for this exact scope: a fresh capture/rebind,
+source preflight, strict forward and rollback parsers, projected rollback,
+block-entity and live-entity clearance, journaled `387/387` forward execution,
+fresh 130-member post capture, rollback-poststate preflight, and independent
+two-route immutable QA. The as-built evidence is [the release note](../11-town-expansion-r1/MP11-C01-MAIN-SWITCHBACK-TRANSITION-01-RELEASE.md).
 
-Then run fresh source preflight, strict forward and rollback parser checks,
-same-moment live-entity clearance, journaled `--strict-noop` execution,
-immutable post capture, rollback-poststate preflight, and independent QA of
-main lower↔upper/upper↔lower plus Return-02 lower↔upper/upper↔lower and both
-landing faces. The offline QA is projected evidence, not a post-release claim.
+This does not make the research-source package reusable. A later change needs
+a new source and complete kernel. Current protected-route retirement or
+connection remains a separate bilateral contract.
 
 ## 2. AG-4 west gap: finite survey, non-finite containment
 
@@ -192,7 +189,7 @@ rational probe cannot be rounded or expanded into construction geometry.
 
 | Priority | Scope | Next permitted work | Hard stop |
 |---|---|---|---|
-| 1 | C01 | take a fresh immediate source, recompile, and enter the guarded kernel only if all live gates pass | source/Return-02 drift, protected/halo/entity hazard, parser/preflight failure, or failed dual-route proof |
+| 1 | C01 | preserve the as-built main and Return-02; design any endpoint, opening, or protected-route transition as a separate bilateral package | source/Return-02 drift, protected/halo/entity hazard, or an attempt to treat this bounded build as a public opening |
 | 2 | AG-4 | exact three-face survey expansion | wet component remains unbounded/cap-touching, exclusion conflict, or no finite receiver/rollback design |
 | 3 | MP01 | accept one owner-bound portal cross-section and endpoints | inactive authority, conflicting interface, or inferred non-anchor target cell |
 

@@ -152,7 +152,7 @@ design decisions, and stop conditions from this pass.
 
 | Frontier | Exact disposition | Immediate next action | Not authorized |
 |---|---|---|---|
-| C01 main switchback | collision-corrected 928-cell union (828 main + 100 guards), 387 source changes and 387-command exact inverse; projected main + Return-02 two-way QA passes | take a new immediate source, recompile, then use a live kernel only if every preflight/entity/route gate passes | replaying research-source operations, route retirement/gating/closure, public commissioning, or touching Return-02 |
+| C01 main switchback | **built and post-verified:** 928-cell union (828 main + 100 guards), strict `387/387` journaled changes and exact inverse; fresh post QA passes both main and Return-02 directions | preserve it; design any endpoint/opening/protected-route transition as a new bilateral package | replaying operations, route retirement/gating/closure, public commissioning, or touching Return-02 |
 | AG-4 exterior gap | 196,072 wet cells escape `-X`, `-Z`, `+Z` below the 250,000-cell cap | exact source survey expansion only through those three faces | plug, liner, drain, support, receiver, rail, promenade, or route claim |
 | MP01 Cheyenne portal | exact rational anchor is only an air source probe at `(2048,130,-748)`; authority remains inactive | accept one cross-section, owners, endpoints/recovery, exact cells, target/halo, and inverse | deriving construction geometry from the probe or rounding vocabulary |
 
