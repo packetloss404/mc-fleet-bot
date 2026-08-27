@@ -142,3 +142,20 @@ scope; every parent programme remains active until it is both built and
 functionally verified.  Any future world mutation requires a fresh source,
 exact forward/rollback contract, strict guarded execution, fresh immutable
 post capture, rollback-post preflight, and independent functional QA.
+
+### Fresh frontier research and design — 2026-08-27
+
+The detailed continuation packet for MiniMax M3 is
+[docs/masterplans/handoff/05-frontier-research-and-design-2026-08-27.md](docs/masterplans/handoff/05-frontier-research-and-design-2026-08-27.md).
+It contains the exact source-bound research, maps, regeneration commands,
+design decisions, and stop conditions from this pass.
+
+| Frontier | Exact disposition | Immediate next action | Not authorized |
+|---|---|---|---|
+| C01 main switchback | collision-corrected 928-cell union (828 main + 100 guards), 387 source changes and 387-command exact inverse; projected main + Return-02 two-way QA passes | take a new immediate source, recompile, then use a live kernel only if every preflight/entity/route gate passes | replaying research-source operations, route retirement/gating/closure, public commissioning, or touching Return-02 |
+| AG-4 exterior gap | 196,072 wet cells escape `-X`, `-Z`, `+Z` below the 250,000-cell cap | exact source survey expansion only through those three faces | plug, liner, drain, support, receiver, rail, promenade, or route claim |
+| MP01 Cheyenne portal | exact rational anchor is only an air source probe at `(2048,130,-748)`; authority remains inactive | accept one cross-section, owners, endpoints/recovery, exact cells, target/halo, and inverse | deriving construction geometry from the probe or rounding vocabulary |
+
+Focused C01, AG-4, and MP01 research regressions pass or deliberately fail
+closed as documented. They are read-only design evidence, not physical-release
+evidence.
