@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 1,
+  "id": "MP05-B07-ICE-EDGE-NEXT-CONTINUATION-SCREEN-01",
+  "generatedAtUtc": "2026-08-27T01:10:00.000Z",
+  "status": "SOURCE_BOUND_NO_NEXT_B07_ICE_EDGE_CONTINUATION_OPERATION",
+  "purpose": "Prove the post-receiver endpoint boundary and exact preconditions for a later controlled return or receiver continuation. This is a read-only hard-stop screen, not a design or release authority.",
+  "source": {
+    "postSnapshot": {
+      "root": "data/worldsnap-mp05-b07-ice-edge-contained-receiver-post-20260827T004000Z",
+      "capture": {
+        "path": "data/worldsnap-mp05-b07-ice-edge-contained-receiver-post-20260827T004000Z/combined-zones-complete-save-capture.json",
+        "sha256": "cce0a261205bd7490bf11fadcdace1a9968a144ea108a2af661cfd08bb9f903b",
+        "captureId": "combined-zones-afb0e075011845e392fe4df0ac105a5e"
+      },
+      "identity": {
+        "path": "data/world-review/mp05-b07-ice-edge-contained-receiver-live-20260827T004000Z/post-snapshot-identity.json",
+        "sha256": "d9e11d3437830f2927f457ffd137ec2deec95006b3d83dd42ee2d2f1327c296f",
+        "bytes": 329
+      }
+    },
+    "executedLedger": {
+      "path": "data/world-review/mp05-b07-ice-edge-contained-receiver-live-20260827T004000Z/evidence-ledger.json",
+      "sha256": "e0d0c85302c9d5360db8165a03a161baa4acf15e918aa1cec0de1c6c8c9461ae"
+    },
+    "executedManifest": {
+      "path": "data/buildops/mp05-b07-ice-edge-contained-receiver-01.release-manifest.json",
+      "sha256": "ed9588f5c26691c396c07f21c79aec981c084a776de7ed0ca11ebfb19d187d50"
+    }
+  },
+  "coordinateMap": {
+    "plan": {
+      "y": 62,
+      "x": [
+        2103,
+        2112
+      ],
+      "z": [
+        -383,
+        -370
+      ]
+    },
+    "section": {
+      "x": 2108,
+      "y": [
+        61,
+        66
+      ],
+      "z": [
+        -383,
+        -370
+      ]
+    }
+  },
+  "existingFunctionalEndpoint": {
+    "classification": "RESTRICTED_DRY_B07_ICE_EDGE_INSPECTION_RECEIVER_ONLY",
+    "controlledSouthDoorHandoff": [
+      {
+        "cell": {
+          "x": 2107,
+          "y": 63,
+          "z": -381
+        },
+        "state": "minecraft:oak_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+      },
+      {
+        "cell": {
+          "x": 2107,
+          "y": 64,
+          "z": -381
+        },
+        "state": "minecraft:oak_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+      },
+      {
+        "cell": {
+          "x": 2108,
+          "y": 63,
+          "z": -381
+        },
+        "state": "minecraft:oak_door[facing=south,half=lower,hinge=left,open=false,powered=false]"
+      },
+      {
+        "cell": {
+          "x": 2108,
+          "y": 64,
+          "z": -381
+        },
+        "state": "minecraft:oak_door[facing=south,half=upper,hinge=left,open=false,powered=false]"
+      }
+    ],
+    "dryReceiverCore": {
+      "cellCount": 48,
+      "bounds": {
+        "minX": 2107,
+        "maxX": 2109,
+        "minY": 63,
+        "maxY": 64,
+        "minZ": -380,
+        "maxZ": -373
+      },
+      "coordinateSetSha256": "20b770c5a0456a63c1cf67c0547be5625bafc704caf5d702b9c93ad1fad3f918"
+    },
+    "receiverCoreFluidRecords": [],
+    "exactPostChecks": [
+      {
+        "label": "sealed five-wide exterior bulkhead",
+        "expected": "minecraft:polished_deepslate",
+        "cellCount": 20,
+        "bounds": {
+          "minX": 2106,
+          "maxX": 2110,
+          "minY": 62,
+          "maxY": 65,
+          "minZ": -372,
+          "maxZ": -372
+        },
+        "coordinateSetSha256": "5444216cd9169ddb3e60fc56ab6685d5f4fc2342d8cb0de621693a99ba9d8543",
+        "failures": [],
+        "pass": true
+      },
+      {
+        "label": "sealed receiver side containment",
+        "expected": "minecraft:polished_deepslate",
+        "cellCount": 48,
+        "bounds": {
+          "minX": 2106,
+          "maxX": 2110,
+          "minY": 63,
+          "maxY": 65,
+          "minZ": -380,
+          "maxZ": -373
+        },
+        "coordinateSetSha256": "be8472a94d10c0d057507aaa884479703d24bdf66967135953236b2f47a39e6f",
+        "failures": [],
+        "pass": true
+      },
+      {
+        "label": "dry receiver core",
+        "expected": "minecraft:air",
+        "cellCount": 48,
+        "bounds": {
+          "minX": 2107,
+          "maxX": 2109,
+          "minY": 63,
+          "maxY": 64,
+          "minZ": -380,
+          "maxZ": -373
+        },
+        "coordinateSetSha256": "20b770c5a0456a63c1cf67c0547be5625bafc704caf5d702b9c93ad1fad3f918",
+        "failures": [],
+        "pass": true
+      }
+    ],
+    "usableAsRestrictedInspectionEndpoint": true
+  },
+  "continuationBoundary": {
+    "sealedBulkhead": {
+      "cellCount": 20,
+      "bounds": {
+        "minX": 2106,
+        "maxX": 2110,
+        "minY": 62,
+        "maxY": 65,
+        "minZ": -372,
+        "maxZ": -372
+      },
+      "coordinateSetSha256": "5444216cd9169ddb3e60fc56ab6685d5f4fc2342d8cb0de621693a99ba9d8543"
+    },
+    "normalThreeWideTwoHighApertureRequiredToContinueNorth": {
+      "cellCount": 6,
+      "bounds": {
+        "minX": 2107,
+        "maxX": 2109,
+        "minY": 63,
+        "maxY": 64,
+        "minZ": -372,
+        "maxZ": -372
+      },
+      "coordinateSetSha256": "370d366143efa50f94567164b9445e1931bb8077a61d6e350b9e41c25cdefd8e",
+      "sourceRecords": [
+        {
+          "cell": {
+            "x": 2107,
+            "y": 63,
+            "z": -372
+          },
+          "state": "minecraft:polished_deepslate"
+        },
+        {
+          "cell": {
+            "x": 2107,
+            "y": 64,
+            "z": -372
+          },
+          "state": "minecraft:polished_deepslate"
+        },
+        {
+          "cell": {
+            "x": 2108,
+            "y": 63,
+            "z": -372
+          },
+          "state": "minecraft:polished_deepslate"
+        },
+        {
+          "cell": {
+            "x": 2108,
+            "y": 64,
+            "z": -372
+          },
+          "state": "minecraft:polished_deepslate"
+        },
+        {
+          "cell": {
+            "x": 2109,
+            "y": 63,
+            "z": -372
+          },
+          "state": "minecraft:polished_deepslate"
+        },
+        {
+          "cell": {
+            "x": 2109,
+            "y": 64,
+            "z": -372
+          },
+          "state": "minecraft:polished_deepslate"
+        }
+      ],
+      "allSealedBulkhead": true
+    },
+    "immediateNorthFloor": {
+      "cellCount": 3,
+      "bounds": {
+        "minX": 2107,
+        "maxX": 2109,
+        "minY": 62,
+        "maxY": 62,
+        "minZ": -371,
+        "maxZ": -371
+      },
+      "coordinateSetSha256": "113fbbc6ae8153a451e0b829cbbf16958fccf8a8b3d51fa9a9547fca96bfbfab",
+      "sourceRecords": [
+        {
+          "cell": {
+            "x": 2107,
+            "y": 62,
+            "z": -371
+          },
+          "state": "minecraft:water[level=0]"
+        },
+        {
+          "cell": {
+            "x": 2108,
+            "y": 62,
+            "z": -371
+          },
+          "state": "minecraft:water[level=0]"
+        },
+        {
+          "cell": {
+            "x": 2109,
+            "y": 62,
+            "z": -371
+          },
+          "state": "minecraft:ice"
+        }
+      ],
+      "containsFluid": true
+    },
+    "retainedWaterSources": [
+      {
+        "id": "W1",
+        "cell": {
+          "x": 2105,
+          "y": 62,
+          "z": -372
+        },
+        "state": "minecraft:water[level=0]"
+      },
+      {
+        "id": "W2",
+        "cell": {
+          "x": 2106,
+          "y": 62,
+          "z": -371
+        },
+        "state": "minecraft:water[level=0]"
+      },
+      {
+        "id": "W3",
+        "cell": {
+          "x": 2107,
+          "y": 62,
+          "z": -371
+        },
+        "state": "minecraft:water[level=0]"
+      },
+      {
+        "id": "W4",
+        "cell": {
+          "x": 2108,
+          "y": 62,
+          "z": -371
+        },
+        "state": "minecraft:water[level=0]"
+      }
+    ],
+    "retainedSourcesExact": true,
+    "disposition": "NO_OPERATION: a normal northward continuation would breach six bulkhead cells and then encounter retained water at its immediate floor boundary. The current package intentionally ends here."
+  },
+  "futureBoundaryConditions": [
+    "Keep the existing five-wide bulkhead and all four retained source-water cells unchanged unless a separately scoped containment package proves its own finite liquid boundary before any aperture is created.",
+    "A future continuation must define a distinct owned destination/return receiver, controlled failure state, and a normal three-wide, two-clear-high path; the existing restricted inspection endpoint is not that destination.",
+    "Any future floor at Z=-371 must first contain, support, and specify the retained water-source treatment. It may not replace or expose water by an access-first operation.",
+    "A future package must use a fresh complete source, canonical source/target/rollback states, protected-core and live-entity clearance, strict-noop forward/rollback checks, journaled execution, fresh post capture, and independent route/fluid QA."
+  ],
+  "safetyBoundary": {
+    "readOnly": true,
+    "liveCallsPerformed": false,
+    "worldMutationsPerformed": false,
+    "forwardOperationFilesEmitted": 0,
+    "rollbackOperationFilesEmitted": 0,
+    "executionAuthorityEmitted": false,
+    "publicAccessCommissioned": false,
+    "emergencyEgressCommissioned": false
+  },
+  "reportSha256": "69166f9b44dc40d539f26e23166c6a1121b8ed4f1f7dce03a14d0fd725f51f82"
+}

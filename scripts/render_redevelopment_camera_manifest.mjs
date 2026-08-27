@@ -325,6 +325,10 @@ function preserveRejectedCapture(camera, output, quality, phase) {
         lookAt: camera.lookAt ?? null,
         center: camera.center ?? null,
         span: camera.span ?? null,
+        scale: camera.scale ?? null,
+        ymax: camera.ymax ?? null,
+        width: camera.width ?? manifest.capturePolicy?.width ?? 1280,
+        height: camera.height ?? manifest.capturePolicy?.height ?? 720,
         fieldOfView: camera.fov
           ?? manifest.capturePolicy?.fieldOfView
           ?? null,
@@ -381,6 +385,18 @@ for (const camera of selectedCameras) {
     if ((camera.mode ?? 'persp') === 'map') {
       if (!camera.center || !camera.span) throw new Error(`${camera.id}: map camera needs center/span`);
       renderArgs.push('--center', camera.center.join(','), '--span', String(camera.span));
+      if (camera.scale != null) {
+        if (!Number.isSafeInteger(camera.scale) || camera.scale < 1) {
+          throw new Error(`${camera.id}: map scale must be a positive integer`);
+        }
+        renderArgs.push('--scale', String(camera.scale));
+      }
+      if (camera.ymax != null) {
+        if (!Number.isSafeInteger(camera.ymax)) {
+          throw new Error(`${camera.id}: map ymax must be an integer`);
+        }
+        renderArgs.push('--ymax', String(camera.ymax));
+      }
     } else {
       if (!camera.eye || !camera.lookAt) throw new Error(`${camera.id}: camera needs eye/lookAt`);
       renderArgs.push(
@@ -414,7 +430,7 @@ for (const camera of selectedCameras) {
     if (!rawQuality.nonBlank) {
       preserveRejectedCapture(camera, output, rawQuality, 'raw');
       const message = (
-        `${camera.id}: blank/low-information raw perspective `
+        `${camera.id}: blank/low-information raw ${camera.mode ?? 'persp'} `
         + `(variance=${rawQuality.luminanceVariance}, `
         + `range=${rawQuality.luminanceRange}, `
         + `colors=${rawQuality.quantizedColorCount})`
@@ -462,6 +478,10 @@ for (const camera of selectedCameras) {
       lookAt: camera.lookAt ?? null,
       center: camera.center ?? null,
       span: camera.span ?? null,
+      scale: camera.scale ?? null,
+      ymax: camera.ymax ?? null,
+      width: camera.width ?? manifest.capturePolicy?.width ?? 1280,
+      height: camera.height ?? manifest.capturePolicy?.height ?? 720,
       fieldOfView: (camera.mode ?? 'persp') === 'map'
         ? null
         : camera.fov ?? manifest.capturePolicy?.fieldOfView ?? null,

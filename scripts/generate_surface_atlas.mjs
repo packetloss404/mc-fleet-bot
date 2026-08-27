@@ -24,6 +24,17 @@ const value = (flag, fallback) => {
   return index >= 0 && args[index + 1] ? args[index + 1] : fallback;
 };
 const positionalOutput = args[0] && !args[0].startsWith('--') ? args[0] : null;
+const parseBounds = (valueToParse) => {
+  if (!valueToParse) return null;
+  const values = valueToParse.split(',').map(Number);
+  if (values.length !== 4 || values.some((value) => !Number.isInteger(value))) {
+    throw new Error('--bounds requires minX,maxX,minZ,maxZ integer values');
+  }
+  const [minX, maxX, minZ, maxZ] = values;
+  if (minX > maxX || minZ > maxZ) throw new Error('--bounds minimum exceeds maximum');
+  return { minX, maxX, minZ, maxZ };
+};
+const includes = (flag) => args.includes(flag);
 const REGION_DIR = path.resolve(
   ROOT,
   value('--regions', 'data/worldsnap/region'),
@@ -32,12 +43,19 @@ const OUTPUT_DIR = path.resolve(
   value('--out', positionalOutput)
     ?? path.join(ROOT, 'data/exports/box/atlas-2026-07-26/team-a'),
 );
-const MASTER = {
+const DEFAULT_MASTER = {
   minX: -512,
   maxX: 383,
   minZ: -704,
   maxZ: 383,
 };
+const MASTER = parseBounds(value('--bounds', null)) ?? DEFAULT_MASTER;
+const INCLUDE_COMBINED_ZONES = includes('--include-combined-zones');
+const OVERALL_ONLY = includes('--overall-only');
+const OVERALL_SCALE = Number(value('--overall-scale', '2'));
+if (!Number.isInteger(OVERALL_SCALE) || OVERALL_SCALE < 1 || OVERALL_SCALE > 4) {
+  throw new Error('--overall-scale must be an integer from 1 to 4');
+}
 const WORLD_MIN_Y = -64;
 const WORLD_MAX_Y = 319;
 
@@ -774,6 +792,22 @@ const overallAnnotations = [
   point('RR N5', 285, -30, palette.ravenRock),
   point('RR N6', -290, 5, palette.ravenRock),
   point('RR N9', 200, -15, palette.ravenRock),
+  ...(INCLUDE_COMBINED_ZONES ? [
+    box(
+      'combined-zones-mountain',
+      'Combined Zones mountain / B09 system',
+      { minX: 1648, maxX: 2448, minZ: -1128, maxZ: -528 },
+      '#ffb86b',
+    ),
+    box(
+      'empty-eight',
+      'Empty Eight — accepted underground retail',
+      { minX: 1632, maxX: 1872, minZ: 40, maxZ: 160 },
+      '#45e0e0',
+    ),
+    point('B09 shuttle / passive rail (below)', 2065, -748, '#ffb86b'),
+    point('Cheyenne route (below)', 2048, -868, '#ff8fab'),
+  ] : []),
 ];
 
 const coreAnnotations = [
@@ -846,10 +880,12 @@ const ravenRockAnnotations = [
 const mapDefinitions = [
   {
     filename: '00-overall-active-world-surface-atlas.png',
-    title: 'Active-world surface atlas',
-    subtitle: 'MainStreet · Ravensreach · Ravensgate · Approach Road · Westlight · Raven Rock surface anchors',
+    title: INCLUDE_COMBINED_ZONES ? 'Master Plan build index — current snapshot' : 'Active-world surface atlas',
+    subtitle: INCLUDE_COMBINED_ZONES
+      ? 'Town districts + Combined Zones / Empty Eight / B09 / Cheyenne markers · below-grade systems are explicitly labelled'
+      : 'MainStreet · Ravensreach · Ravensgate · Approach Road · Westlight · Raven Rock surface anchors',
     bounds: MASTER,
-    scale: 2,
+    scale: OVERALL_SCALE,
     grid: 128,
     annotations: overallAnnotations,
   },
@@ -1182,7 +1218,8 @@ function renderMap(definition) {
 await loadMasterSurface();
 
 const renderedMaps = [];
-for (const definition of mapDefinitions) {
+const definitionsToRender = OVERALL_ONLY ? mapDefinitions.slice(0, 1) : mapDefinitions;
+for (const definition of definitionsToRender) {
   process.stderr.write(`rendering ${definition.filename}\n`);
   renderedMaps.push(renderMap(definition));
 }

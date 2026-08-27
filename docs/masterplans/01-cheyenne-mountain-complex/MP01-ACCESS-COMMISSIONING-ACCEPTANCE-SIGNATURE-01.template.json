@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "MP01-ACCESS-COMMISSIONING-ACCEPTANCE-SIGNATURE-01",
+  "contractIdentitySha256": "COPY_FROM_GOVERNING_CONTRACT",
+  "governingContractSha256": "COPY_SHA256_OF_GOVERNING_CONTRACT_FILE",
+  "source": {
+    "snapshot": "COPY_FROM_GOVERNING_CONTRACT",
+    "captureId": "COPY_FROM_GOVERNING_CONTRACT",
+    "captureManifestSha256": "COPY_FROM_GOVERNING_CONTRACT",
+    "destinationProtectedEnvelopeStateSha256": "COPY_FROM_GOVERNING_CONTRACT",
+    "sourceFiles": "COPY_FROM_GOVERNING_CONTRACT"
+  },
+  "namedOwners": {
+    "origin": "ASSIGN_NAMED_ORIGIN_OWNER",
+    "transit": "ASSIGN_NAMED_TRANSIT_OWNER",
+    "destination": "ASSIGN_NAMED_MP01_TERMINAL_OWNER",
+    "recovery": "ASSIGN_NAMED_RECOVERY_OWNER"
+  },
+  "anchors": {
+    "origin": { "id": "ASSIGN_EXACT_ORIGIN", "owner": "ASSIGN_NAMED_ORIGIN_OWNER", "feet": { "x": 0, "y": 0, "z": 0 } },
+    "recovery": { "id": "ASSIGN_EXACT_DISTINCT_RECOVERY", "owner": "ASSIGN_NAMED_RECOVERY_OWNER", "feet": { "x": 0, "y": 0, "z": 0 } },
+    "destination": { "id": "MP01-RESTRICTED-STAGING-01", "owner": "ASSIGN_NAMED_MP01_TERMINAL_OWNER", "feet": { "x": 2001, "y": 165, "z": -899 } }
+  },
+  "routeSurvey": {
+    "acceptancePath": "ASSIGN_SOURCE_BOUND_NORMAL_WALK_SURVEY_ACCEPTANCE_JSON",
+    "acceptanceSha256": "COPY_SHA256_OF_ACCEPTANCE_JSON",
+    "outbound": { "stationCount": 0, "stationsSha256": "COPY_EXACT_OUTBOUND_STATION_HASH" },
+    "return": { "stationCount": 0, "stationsSha256": "COPY_EXACT_RETURN_STATION_HASH" }
+  },
+  "destinationAcceptance": {
+    "staging": { "supportCoordinateSetSha256": "COPY_FROM_GOVERNING_CONTRACT", "headroomCoordinateSetSha256": "COPY_FROM_GOVERNING_CONTRACT", "supportsPolishedAndesite": false, "twoClearAirCells": false },
+    "controls": { "coordinateSetSha256": "COPY_FROM_GOVERNING_CONTRACT", "sourceStateSha256": "COPY_FROM_GOVERNING_CONTRACT", "retainOffNoActuation": false },
+    "manualBoundary": { "closedDoorCoordinateSetSha256": "COPY_FROM_GOVERNING_CONTRACT", "dryVestibuleCoordinateSetSha256": "COPY_FROM_GOVERNING_CONTRACT", "reservoirWallCoordinateSetSha256": "COPY_FROM_GOVERNING_CONTRACT", "doorsClosedUnpoweredManual": false, "dryVestibuleClear": false, "reservoirWallRetained": false, "noBoundaryCrossing": false }
+  }
+}

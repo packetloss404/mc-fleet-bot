@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "sys03-cobalt-rr-second-controlled-egress-governor-standing-execution-authorization",
+  "projectId": "combined-zones-phase1",
+  "recordedAtUtc": "2026-08-26T20:30:00Z",
+  "status": "AUTHORIZED_STANDING_SCOPED_EXECUTION",
+  "revoked": false,
+  "ownerDirective": {
+    "speaker": "Governor",
+    "recordedDate": "2026-08-26",
+    "exactText": "i'm the governmor of the minecraft world and I've come to cut red tape",
+    "interpretation": "The Governor delegates this finite Ravensreach controlled-discharge work to the implementation team while retaining the complete hard-safety kernel."
+  },
+  "authorizedReleaseNodes": ["CZ-SYS03-COBALT-RR-SECOND-CONTROLLED-EGRESS"],
+  "allowNonMvpScopes": true,
+  "mvpBoundary": {
+    "included": "Only the exact sealed RR-SE-1 ladder and transfer to the existing RR-SE-2 shaft.",
+    "excludedScopeIds": [],
+    "exclusionRule": "It never authorizes public access, rail, vehicle, platform, power, signal, or passenger service."
+  },
+  "hardSafetyKernel": [
+    {"id":"exact-release-and-inverse","required":true,"rule":"Exact source/target states, package inversion, and independent QA are required."},
+    {"id":"fresh-source-snapshot-and-preflight","required":true,"rule":"Capture a fresh complete immutable source and exact preflight immediately before mutation."},
+    {"id":"strict-forward-and-rollback-parser-checks","required":true,"rule":"Forward and rollback parser checks are strict-noop."},
+    {"id":"block-and-live-entity-clearance","required":true,"rule":"Exact block and fresh live entity clearance is mandatory."},
+    {"id":"strict-execution-with-compensating-rollback","required":true,"rule":"Execution is journaled and any failure invokes reverse-order exact rollback."},
+    {"id":"post-snapshot-and-rollback-poststate-verification","required":true,"rule":"Fresh post capture, rollback poststate proof, and independent QA precede acceptance."}
+  ],
+  "operationalControls": {"defaultMode":"PREPARE_ONLY","liveExecutionOptIn":"--execute","globalGateDependency":"NONE","scopeLocalFailureRule":"Failure is contained to this exact release."},
+  "authorizationPayloadSha256": "6e86dcb3aedcc89370cec9450186d6d4792720606ff05efdbccc7edff8036caa"
+}

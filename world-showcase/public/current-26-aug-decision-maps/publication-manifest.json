@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "publication": {
+    "title": "Current 26 August decision / held interfaces map volume",
+    "publishedDirectory": "/current-26-aug-decision-maps",
+    "status": "READ_ONLY_CURRENT_SOURCE_EVIDENCE_NOT_A_CONSTRUCTION_COMPLETION_RECORD",
+    "sourceSnapshot": {
+      "label": "SYS03 High-16 descending bypass post-state where applicable",
+      "regionSha256": "3e0d739e5ceda6fb9a828e9b5947e15d00864f7f15f54d1c099e011477e3bcfd"
+    },
+    "mapCount": 12,
+    "historyPolicy": "Additive volume. Historical atlas packages are preserved and not overwritten."
+  },
+  "maps": [
+    {
+      "id": "mp01-control-state",
+      "source": "data/world-review/mp01-access-control-successor-sys03-post-20260826T154546Z/mp01-control-staging-immutable-source-map.svg",
+      "filename": "01-mp01-control-staging-source-state.svg",
+      "plan": "MP01",
+      "state": "HELD CONTROL INTERFACE",
+      "title": "Cheyenne control-staging source state",
+      "caption": "Observed OFF indicator topology. It is not a commissioned control and it authorizes no door, utility, or route connection.",
+      "href": "/current-26-aug-decision-maps/01-mp01-control-staging-source-state.svg",
+      "sha256": "25da52e9025b29a11a92cf0dd1ca2e4ca670f829314f127ce65cd83d53a64a9d"
+    },
+    {
+      "id": "mp01-access-authority",
+      "source": "data/world-review/mp01-access-control-successor-sys03-post-20260826T154546Z/mp01-access-authority-topology.svg",
+      "filename": "02-mp01-access-authority-topology.svg",
+      "plan": "MP01",
+      "state": "HELD CONTROL INTERFACE",
+      "title": "Cheyenne access-authority topology",
+      "caption": "Current boundary and authorization topology. Runtime interaction proof is still required before a control release.",
+      "href": "/current-26-aug-decision-maps/02-mp01-access-authority-topology.svg",
+      "sha256": "669aa5bb68d879cfc539681a276aec52de4197e147f3722770e85f2fdbacdc1e"
+    },
+    {
+      "id": "mp02-mp04-successor-gate",
+      "source": "data/world-review/mp02-mp04-functional-successor-current-sys03-post-20260826T153100Z/assessment/mp02-mp04-functional-successor-gate.svg",
+      "filename": "03-mp02-mp04-functional-successor-gate.svg",
+      "plan": "MP02 / MP04",
+      "state": "HELD OWNERSHIP INTERFACE",
+      "title": "SubTropolis / connector functional-successor gate",
+      "caption": "The raw continuation is not an owned room, egress route, or transfer. MP04 owns no current-world cells.",
+      "href": "/current-26-aug-decision-maps/03-mp02-mp04-functional-successor-gate.svg",
+      "sha256": "2c13e96d027410279bd49473113dde28d4b3ad5cc4839c3a504cac29405352b8"
+    },
+    {
+      "id": "mp02-b08-handoff",
+      "source": "data/world-review/mp02-mp04-functional-successor-current-sys03-post-20260826T153100Z/mp02-current-successor/mp02-b08-current-successor-map.svg",
+      "filename": "04-mp02-b08-handoff-and-void.svg",
+      "plan": "MP02",
+      "state": "HELD OWNERSHIP INTERFACE",
+      "title": "B08 handoff and remaining void",
+      "caption": "The 719-cell restricted service spine is retained; the remaining void is not a finished chamber, public entry, or egress route.",
+      "href": "/current-26-aug-decision-maps/04-mp02-b08-handoff-and-void.svg",
+      "sha256": "4846dc8035a4b5c83e6d3ac5be1548a076a2817ebde8bb6e19ca5cab52407715"
+    },
+    {
+      "id": "mp05-b07-gate",
+      "source": "data/world-review/mp05-b07-integrated-release-next-action-sys03-post-20260826T153100Z/b07-next-action-prerequisite-map.svg",
+      "filename": "05-mp05-b07-prerequisite-gate.svg",
+      "plan": "MP05",
+      "state": "HELD INTEGRATED RELEASE",
+      "title": "B07 first-release prerequisite gate",
+      "caption": "Ownership, containment, gravity, receiver, and route conditions must resolve as one exact package; no independent B07 subphase is released.",
+      "href": "/current-26-aug-decision-maps/05-mp05-b07-prerequisite-gate.svg",
+      "sha256": "f43808daa9f758689d01a5c4e85f696ab3393687d3e54d1405aedfb5104f516a"
+    },
+    {
+      "id": "mp05-b07-containment",
+      "source": "data/world-review/mp05-b07-integrated-release-next-action-sys03-post-20260826T153100Z/containment/b07-containment-gravity-projection.svg",
+      "filename": "06-mp05-b07-containment-and-gravity.svg",
+      "plan": "MP05",
+      "state": "HELD FLUID / GRAVITY INTERFACE",
+      "title": "B07 containment and gravity constraints",
+      "caption": "A source-state constraint map, not a construction drawing or an approved fluid receiver.",
+      "href": "/current-26-aug-decision-maps/06-mp05-b07-containment-and-gravity.svg",
+      "sha256": "777f33cb7ad1b9ff68a12cdbd4d38b9ecd23b89f86cfa1723cb172c2bca71f00"
+    },
+    {
+      "id": "mp05-b07-surface",
+      "source": "data/world-review/mp05-b07-integrated-release-next-action-sys03-post-20260826T153100Z/surface/b07-surface-receiver-decision-plane.svg",
+      "filename": "07-mp05-b07-surface-receiver-decision-plane.svg",
+      "plan": "MP05",
+      "state": "HELD SURFACE RECEIVER",
+      "title": "B07 surface receiver decision plane",
+      "caption": "Local geometry is observed, but no exterior face is a classified receiver, doorway, or egress endpoint.",
+      "href": "/current-26-aug-decision-maps/07-mp05-b07-surface-receiver-decision-plane.svg",
+      "sha256": "47104606d4457aaf86164529483ef7ce648c452e27adf4da6dd16ce3ddbf56b5"
+    },
+    {
+      "id": "mp08-c1",
+      "source": "data/world-review/mp08-c1-contained-route-screen-04-sys03-post-20260826T153100Z/mp08-c1-containment-and-interface-map.svg",
+      "filename": "08-mp08-c1-containment-and-interfaces.svg",
+      "plan": "MP08",
+      "state": "HELD CONTAINMENT / ENDPOINTS",
+      "title": "C1 containment and interface screen",
+      "caption": "The dry three-wide observation is not an accepted route: roof, floor, cavern thresholds, ownership, drainage, and returns remain unresolved.",
+      "href": "/current-26-aug-decision-maps/08-mp08-c1-containment-and-interfaces.svg",
+      "sha256": "2eb01f7d42ba201bee850a6db5859a64ce6ddec6fd77a52b449343674aa94f8d"
+    },
+    {
+      "id": "mp13-lower-topology",
+      "source": "data/world-review/mp13-westlight-venue-sys03-post-rescreen-20260826T153100Z/design/mp13-high-deck-lower-topology-map.svg",
+      "filename": "09-mp13-lower-public-staff-topology.svg",
+      "plan": "MP13",
+      "state": "HELD EGRESS / ACCESS INTERFACE",
+      "title": "Westlight lower public / staff topology",
+      "caption": "The observed public-to-staff connections fail safe partitioning. This is not an access-control completion.",
+      "href": "/current-26-aug-decision-maps/09-mp13-lower-public-staff-topology.svg",
+      "sha256": "614bef23e0df20cf3d3ae3ac711afa9779ebbf33de3b4cdca1a80b0321b7a902"
+    },
+    {
+      "id": "mp13-tower-section",
+      "source": "data/world-review/mp13-westlight-venue-sys03-post-rescreen-20260826T153100Z/design/mp13-high-deck-tower-section-map.svg",
+      "filename": "10-mp13-west-tower-high-deck-section.svg",
+      "plan": "MP13",
+      "state": "HELD EGRESS / ACCESS INTERFACE",
+      "title": "West service tower / high-deck section",
+      "caption": "The vertical shell is staff-only and does not satisfy public egress or accessibility requirements.",
+      "href": "/current-26-aug-decision-maps/10-mp13-west-tower-high-deck-section.svg",
+      "sha256": "92f1f34d2dbef02cda3bf463402f522e1ee7972af8ab82af27631fcbf57d3780"
+    },
+    {
+      "id": "sys03-plan",
+      "source": "docs/masterplans/02-visuals/sys03-r10-high16-descending-bypass-plan-2026-08-26.svg",
+      "filename": "11-sys03-high16-descending-bypass-plan.svg",
+      "plan": "SYS03",
+      "state": "AS-BUILT CIVIL-ONLY REFERENCE",
+      "title": "High-16 descending bypass plan",
+      "caption": "This is a sealed civil void and gravity-safe shell only—not track, a station, public access, or passenger service.",
+      "href": "/current-26-aug-decision-maps/11-sys03-high16-descending-bypass-plan.svg",
+      "sha256": "2aacf3fc7f129326fa265f40cb4bc398f098ef0bf6920875fc5c5c653c38a66a"
+    },
+    {
+      "id": "sys03-profile",
+      "source": "docs/masterplans/02-visuals/sys03-r10-high16-descending-bypass-profile-2026-08-26.svg",
+      "filename": "12-sys03-high16-descending-bypass-profile.svg",
+      "plan": "SYS03",
+      "state": "AS-BUILT CIVIL-ONLY REFERENCE",
+      "title": "High-16 staged-gravity / ownership profile",
+      "caption": "The retained upper-grid water system and transport interfaces remain held; the profile does not commission a route.",
+      "href": "/current-26-aug-decision-maps/12-sys03-high16-descending-bypass-profile.svg",
+      "sha256": "e4e915d8a88eb18b2bbbdc6ed06d68be7cea58d7a7623ca8e50f18f67f38213b"
+    }
+  ]
+}

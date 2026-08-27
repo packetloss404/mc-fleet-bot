@@ -41,7 +41,46 @@ const LIBRARY_GUILD_SCHEDULE = path.join(
 );
 const TERMINAL_SNAPSHOT = path.join(
   ROOT,
-  'data/worldsnap-town-terminal-recovery-post-20260728T1839Z/region',
+  'data/worldsnap-r08am-post-20260822T161818Z/region',
+);
+const CURRENT_ROUTE_QA = path.join(
+  ROOT,
+  'data/world-review/underground-navigation-r08am-20260822/current-route-qa.json',
+);
+const R08AL_QA = path.join(
+  ROOT,
+  'data/world-review/combined-zones-r08al-live-20260822T155850Z/'
+    + 'r08al-post-release-qa.json',
+);
+const R08AM_QA = path.join(
+  ROOT,
+  'data/world-review/combined-zones-r08am-live-20260822T161818Z/'
+    + 'r08am-post-release-qa.json',
+);
+const R08AJ_QA = path.join(
+  ROOT,
+  'data/world-review/combined-zones-r08aj-live-20260822T024118Z/'
+    + 'r08aj-post-release-qa.json',
+);
+const R08V_QA = path.join(
+  ROOT,
+  'data/world-review/combined-zones-r08v-live-20260821T232156Z/'
+    + 'r08v-post-release-qa.json',
+);
+const R09_LOWER_CIRCULATION = path.join(
+  ROOT,
+  'data/world-review/combined-zones-r09d-live-20260821T181124Z/'
+    + 'r09b-r09c-r09d-pedestrian-circulation-commissioning-seal.json',
+);
+const R09_UPPER_CIRCULATION = path.join(
+  ROOT,
+  'data/world-review/combined-zones-r09j-live-20260822T025021Z/'
+    + 'r09k-b07-bounded-upper-route-commissioning-seal.json',
+);
+const R12O_B03_CIRCULATION = path.join(
+  ROOT,
+  'data/world-review/combined-zones-r12o-b03-complete-enclosed-route-commissioning-20260822T041000Z/'
+    + 'r12o-commissioning.json',
 );
 
 const COLORS = {
@@ -71,10 +110,13 @@ const SYSTEM_LABELS = {
   westlight: 'Westlight below-grade venues',
   'road-bunkers': 'Approach-road and oasis bunkers',
   'data-district': 'Iowa data district / Concord',
+  'combined-zones': 'Combined Zones / Empty Eight',
 };
 
-fs.mkdirSync(MAPS, { recursive: true });
-fs.mkdirSync(SCREENSHOTS, { recursive: true });
+for (const directory of [MAPS, SCREENSHOTS]) {
+  fs.rmSync(directory, { recursive: true, force: true });
+  fs.mkdirSync(directory, { recursive: true });
+}
 
 function readJson(filename) {
   return JSON.parse(fs.readFileSync(filename, 'utf8'));
@@ -114,6 +156,9 @@ function geometryYRange(geometry) {
   if (Number.isFinite(geometry?.minY)) values.push(geometry.minY);
   if (Number.isFinite(geometry?.maxY)) values.push(geometry.maxY);
   if (Number.isFinite(geometry?.position?.y)) values.push(geometry.position.y);
+  if (geometry?.type === 'point' && Number.isFinite(geometry?.y)) {
+    values.push(geometry.y);
+  }
   for (const point of geometry?.points ?? []) {
     if (Number.isFinite(point?.y)) values.push(point.y);
   }
@@ -132,11 +177,12 @@ function geometryBounds(geometry) {
     };
   }
   if (geometry?.type === 'point') {
+    const position = geometry.position ?? geometry;
     return {
-      minX: geometry.position.x,
-      maxX: geometry.position.x,
-      minZ: geometry.position.z,
-      maxZ: geometry.position.z,
+      minX: position.x,
+      maxX: position.x,
+      minZ: position.z,
+      maxZ: position.z,
     };
   }
   if (geometry?.type === 'path' && geometry.points?.length) {
@@ -170,6 +216,7 @@ function featureSystem(feature) {
   if (/^TE-(OASIS-BUNKER|PAN-)/.test(id)) return 'road-bunkers';
   if (/^TE-IA-/.test(id)) return 'data-district';
   if (/^TE-MSA-/.test(id)) return 'mainstreet-secure';
+  if (feature.projectId === 'combined-zones-phase1') return 'combined-zones';
   return 'mainstreet-secure';
 }
 
@@ -281,6 +328,10 @@ function isUndergroundFeature(feature) {
     feature.projectId === 'town-expansion-r1'
     && /^(GRT-|OBS-OWNER|OWNER-|RRCH-GILDED|TE-(OWNER|OBS-OWNER|RRCH-GILDED|LIB-GUILD|GUILDHALL|LIBRARY|MSA-UW|MSA-B01|OASIS-BUNKER|IA-INFO|IA-HOLDOUT-HOME-SHELTER|IA-CONCORD|WL-VENUE-BASEMENTS|WL-FREIGHT|WL-LANTERN|RR-MODERN)|c01_)/i.test(id)
   ) return true;
+  if (
+    feature.projectId === 'combined-zones-phase1'
+    && /^CZ-R(?:07|08|09|10|12)-/.test(id)
+  ) return true;
   return (
     feature.minY !== null
     && feature.minY < 55
@@ -298,6 +349,202 @@ const undergroundFeatures = allFeatures
 const c01 = readJson(C01_MANIFEST);
 const ownerSchedule = readJson(OWNER_SCHEDULE);
 const libraryGuild = readJson(LIBRARY_GUILD_SCHEDULE);
+const currentRouteQa = readJson(CURRENT_ROUTE_QA);
+const r08alQa = readJson(R08AL_QA);
+const r08amQa = readJson(R08AM_QA);
+const r08ajQa = readJson(R08AJ_QA);
+const r08vQa = readJson(R08V_QA);
+const r09LowerCirculation = readJson(R09_LOWER_CIRCULATION);
+const r09UpperCirculation = readJson(R09_UPPER_CIRCULATION);
+const r12oB03Circulation = readJson(R12O_B03_CIRCULATION);
+
+if (
+  currentRouteQa.postSnapshot?.sha256
+    !== '30f5c3394c4080d74156a59deb613290366c130e72a859261625117b8276541f'
+  || currentRouteQa.summary?.routes !== 22
+  || currentRouteQa.summary?.passed !== 19
+  || currentRouteQa.summary?.failed !== 3
+) {
+  throw new Error('Current R08AM route QA is absent or has drifted');
+}
+if (
+  r08alQa.status
+    !== 'PASS_PUBLIC_VACANT_RETAIL_AND_RESTRICTED_BOH_COMMISSIONED'
+  || r08amQa.status
+    !== 'PASS_RESTRICTED_THEATRE_PRIVATE_CLUB_ANNEX_COMMISSIONED'
+  || r08ajQa.status
+    !== 'PASS_R08AJ_EMPTY_EIGHT_EG_B_PASSIVE_ILLUMINATION_POST_RELEASE_ACCEPTED'
+  || r08vQa.status
+    !== 'PASS_R08V_FIRE_SERVICE_SPINE_FLOOR_POST_RELEASE_ACCEPTED'
+) {
+  throw new Error('Accepted Empty Eight circulation evidence has drifted');
+}
+
+function evidenceBinding(filename) {
+  return {
+    path: relative(filename),
+    sha256: sha256File(filename),
+  };
+}
+
+const currentRepresentativeConnections = currentRouteQa.tests.map((route) => ({
+  id: route.id,
+  name: route.description,
+  system: route.domain,
+  verification: route.passed
+    ? 'VERIFIED_WALKABLE'
+    : 'UNPROVEN_CURRENT_SNAPSHOT',
+  audience: route.accessClass,
+  route: route.description,
+  evidence: [evidenceBinding(CURRENT_ROUTE_QA)],
+  failure: route.passed ? null : route.failures.join('; '),
+}));
+
+const combinedZonesConnections = [
+  {
+    id: 'CZ-R08AL-PUBLIC-GALLERY',
+    name: 'Empty Eight south public vacant-retail gallery',
+    system: 'combined-zones',
+    verification: 'VERIFIED_WALKABLE',
+    audience: 'public',
+    route: 'PF08 internal stairs to two lit gallery segments and eleven vacant south bays',
+    evidence: [evidenceBinding(R08AL_QA)],
+    boundary: 'Internal exploration only; no exterior egress or accessibility claim.',
+  },
+  ...r08alQa.publicRetail.stairComponents.map((stair, index) => ({
+    id: `CZ-R08AL-PF08-${index === 0 ? 'WEST' : 'EAST'}-STAIR`,
+    name: `PF08 ${index === 0 ? 'west' : 'east'} public internal stair`,
+    system: 'combined-zones',
+    verification: 'VERIFIED_WALKABLE',
+    audience: 'public',
+    route: `${stair.bottom.x},${stair.bottom.y},${stair.bottom.z} to ${stair.top.x},${stair.top.y},${stair.top.z}`,
+    evidence: [evidenceBinding(R08AL_QA)],
+    boundary: 'Exact half-step continuity; remains inside the bounded Empty Eight envelope.',
+  })),
+  {
+    id: 'CZ-R08AL-PUBLIC-TO-BOH',
+    name: 'Public gallery to back-of-house boundary',
+    system: 'combined-zones',
+    verification: 'VERIFIED_RESTRICTED_BOUNDARY',
+    audience: 'staff/service only',
+    route: 'Two marked staff doors at S04 and S09; twelve BOH room doors remain secured',
+    evidence: [evidenceBinding(R08AL_QA)],
+    boundary: 'BOH is maintained but non-public.',
+  },
+  {
+    id: 'CZ-R08AL-BOH-SPINE',
+    name: 'Empty Eight maintained BOH service spine',
+    system: 'combined-zones',
+    verification: 'VERIFIED_WALKABLE',
+    audience: 'restricted staff/service',
+    route: 'Continuous 372-cell service spine behind twelve secured rooms',
+    evidence: [evidenceBinding(R08AL_QA)],
+    boundary: 'No public access or tenant occupancy.',
+  },
+  {
+    id: 'CZ-R08AM-GRAND-STAIR',
+    name: 'BOH to lower-annex grand stair',
+    system: 'combined-zones',
+    verification: 'VERIFIED_WALKABLE',
+    audience: 'restricted adults-only',
+    route: 'Seven-wide, 26-step stair from y49 upper threshold to y24 lower landing',
+    evidence: [evidenceBinding(R08AM_QA)],
+    boundary: 'Two secured upper doors; entire lower annex is non-public.',
+  },
+  {
+    id: 'CZ-R08AM-LOWER-COMMONS',
+    name: 'Lower theatre and private-club common areas',
+    system: 'combined-zones',
+    verification: 'VERIFIED_WALKABLE',
+    audience: 'restricted adults-only',
+    route: 'Grand-stair landing to theatre, restricted corridor, lounge, and cinema',
+    evidence: [evidenceBinding(R08AM_QA)],
+    boundary: 'Non-public, non-explicit, unoccupied, and entity-free.',
+  },
+  {
+    id: 'CZ-R08AM-BACKSTAGE-DOOR',
+    name: 'Theatre to private-club rear-stage connection',
+    system: 'combined-zones',
+    verification: 'VERIFIED_RESTRICTED_BOUNDARY',
+    audience: 'restricted staff/adults-only',
+    route: 'One secured rear-stage door through the theatre/club boundary',
+    evidence: [evidenceBinding(R08AM_QA)],
+    boundary: 'Not a public connection.',
+  },
+  {
+    id: 'CZ-R08-EG-B',
+    name: 'Empty Eight EG-B passive refuge core',
+    system: 'combined-zones',
+    verification: 'SEALED_UNCOMMISSIONED',
+    audience: 'none',
+    route: 'Lined and illuminated internal core with roof and exterior interfaces closed',
+    evidence: [evidenceBinding(R08AJ_QA)],
+    boundary: 'No stair, lift, egress, accessible route, or emergency system is commissioned.',
+  },
+  {
+    id: 'CZ-R08-FIRE-SERVICE-SPINE',
+    name: 'Empty Eight fire/service spine',
+    system: 'combined-zones',
+    verification: 'SEALED_UNCOMMISSIONED',
+    audience: 'none',
+    route: 'Static floor and containment only',
+    evidence: [evidenceBinding(R08V_QA)],
+    boundary: 'Not a public or fire-service route; external discharge remains closed.',
+  },
+  {
+    id: 'CZ-R09-LOWER-B07',
+    name: 'B07 lower pedestrian stair to retained hold',
+    system: 'combined-zones',
+    verification: 'VERIFIED_WALKABLE_INTERNAL_ONLY',
+    audience: 'bounded inspection',
+    route: r09LowerCirculation.commissionedRoute.via,
+    evidence: [evidenceBinding(R09_LOWER_CIRCULATION)],
+    boundary: 'Terminates at a retained upper hold; wet zone, surface opening, lift, smoke, power, and drainage remain closed.',
+  },
+  {
+    id: 'CZ-R09-UPPER-B07',
+    name: 'B07 isolated upper circulation segment',
+    system: 'combined-zones',
+    verification: 'VERIFIED_WALKABLE_INTERNAL_ONLY',
+    audience: 'bounded inspection',
+    route: '91-surface component between the index-20 gravity cap and doorless headhouse hold',
+    evidence: [evidenceBinding(R09_UPPER_CIRCULATION)],
+    boundary: 'No through-route, exterior door, public route, fire-service route, or accessible route.',
+  },
+  {
+    id: 'CZ-R12O-B03',
+    name: 'B03 enclosed passive internal circulation',
+    system: 'combined-zones',
+    verification: 'VERIFIED_WALKABLE_INTERNAL_ONLY',
+    audience: 'bounded inspection',
+    route: 'Indices 188..800, 613 stations, ending at the retained Cheyenne cap',
+    evidence: [evidenceBinding(R12O_B03_CIRCULATION)],
+    boundary: 'Indices 0..187 and every portal-to-route connection remain uncommissioned.',
+  },
+  {
+    id: 'CZ-FUTURE-INTERFACES',
+    name: 'Deferred future-line and service interfaces',
+    system: 'combined-zones',
+    verification: 'SEALED_UNCOMMISSIONED',
+    audience: 'none',
+    route: 'Eight future rail stubs plus drainage, fire/service, ventilation, utility, mechanism, and exterior interfaces',
+    evidence: [evidenceBinding(R08AL_QA), evidenceBinding(R08AM_QA)],
+    boundary: 'No public connection or transport commissioning.',
+  },
+];
+
+const accessConnections = [
+  ...currentRepresentativeConnections,
+  ...combinedZonesConnections,
+];
+const accessStatusCounts = Object.fromEntries(
+  [...new Set(accessConnections.map((entry) => entry.verification))]
+    .sort()
+    .map((status) => [
+      status,
+      accessConnections.filter((entry) => entry.verification === status).length,
+    ]),
+);
 
 const c01NodeById = new Map(
   c01.routeGraph.nodes.map((node) => [node.id, node]),
@@ -341,7 +588,8 @@ function pointForFeature(projectId, externalId, yPreference = 'max') {
   if (!feature) return null;
   const geometry = feature.geometry;
   if (geometry.type === 'point') {
-    return [geometry.position.x, geometry.position.y, geometry.position.z];
+    const position = geometry.position ?? geometry;
+    return [position.x, position.y, position.z];
   }
   if (geometry.type === 'path' && geometry.points?.length) {
     const point = yPreference === 'min'
@@ -579,6 +827,51 @@ const entrances = [
     certainty: 'cataloged object centroid; exact hatch/door requires in-world reading',
     route: 'holdout home → private shelter',
   },
+  {
+    id: 'E-EE-PF08-WEST',
+    name: 'Empty Eight west PF08 internal stair',
+    system: 'combined-zones',
+    point: [1728, 42, 153],
+    access: 'public internal',
+    certainty: 'current R08AM snapshot; R08AL exact half-step route accepted',
+    route: 'PF08 → west public gallery segment → vacant south bays',
+  },
+  {
+    id: 'E-EE-PF08-EAST',
+    name: 'Empty Eight east PF08 internal stair',
+    system: 'combined-zones',
+    point: [1752, 42, 153],
+    access: 'public internal',
+    certainty: 'current R08AM snapshot; R08AL exact half-step route accepted',
+    route: 'PF08 → east public gallery segment → vacant south bays',
+  },
+  {
+    id: 'E-EE-BOH-S04',
+    name: 'Empty Eight S04 gallery-to-BOH staff door',
+    system: 'combined-zones',
+    point: [1709, 50, 154],
+    access: 'restricted staff/service',
+    certainty: 'current R08AM snapshot; secured public/staff boundary',
+    route: 'public gallery → maintained BOH spine',
+  },
+  {
+    id: 'E-EE-BOH-S09',
+    name: 'Empty Eight S09 gallery-to-BOH staff door',
+    system: 'combined-zones',
+    point: [1789, 50, 154],
+    access: 'restricted staff/service',
+    certainty: 'current R08AM snapshot; secured public/staff boundary',
+    route: 'public gallery → maintained BOH spine',
+  },
+  {
+    id: 'E-EE-ANNEX',
+    name: 'Empty Eight secured lower-annex grand stair',
+    system: 'combined-zones',
+    point: [1743, 50, 159],
+    access: 'restricted adults-only',
+    certainty: 'current R08AM snapshot; connected route accepted behind two secured doors',
+    route: 'BOH → seven-wide grand stair → lower theatre/private-club annex',
+  },
 ];
 
 function systemColor(system) {
@@ -591,6 +884,7 @@ function systemColor(system) {
     westlight: COLORS.westlight,
     'road-bunkers': COLORS.warning,
     'data-district': COLORS.data,
+    'combined-zones': '#f5a65b',
   }[system] ?? COLORS.surface;
 }
 
@@ -1407,6 +1701,26 @@ for (const [index, level] of c01.levels.entries()) {
     `${suffix}-${level.id.toLowerCase()}.png`,
   ));
 }
+for (const [name, sourceRelative] of [
+  [
+    '19-empty-eight-public-retail-boh-sectional.png',
+    'docs/masterplans/05-combined-zones/maps/'
+      + 'empty-eight-r08am-public-retail-boh-sectional-map.png',
+  ],
+  [
+    '20-empty-eight-restricted-annex-sectional.png',
+    'docs/masterplans/05-combined-zones/maps/'
+      + 'empty-eight-r08am-restricted-annex-sectional-map.png',
+  ],
+]) {
+  const source = path.join(ROOT, sourceRelative);
+  if (!fs.existsSync(source)) {
+    throw new Error(`Current Empty Eight sectional map missing: ${sourceRelative}`);
+  }
+  const destination = path.join(MAPS, name);
+  fs.copyFileSync(source, destination);
+  mapFiles.push(destination);
+}
 
 const screenshotSources = [
   [
@@ -1543,6 +1857,24 @@ const screenshotSources = [
       + 'object-c01-owner-residence.png',
     'Cataloged C01 owner residence',
   ],
+  [
+    'empty-eight-public-gallery.png',
+    'data/exports/underground-navigation-r08am-20260822/screenshots/'
+      + 'empty-eight-public-gallery.png',
+    'Current Empty Eight public gallery — internal public route',
+  ],
+  [
+    'empty-eight-restricted-grand-stair.png',
+    'data/exports/underground-navigation-r08am-20260822/screenshots/'
+      + 'empty-eight-restricted-grand-stair.png',
+    'Current Empty Eight secured grand stair — restricted, non-public',
+  ],
+  [
+    'empty-eight-restricted-theatre.png',
+    'data/exports/underground-navigation-r08am-20260822/screenshots/'
+      + 'empty-eight-restricted-theatre.png',
+    'Current Empty Eight lower theatre — restricted, non-public',
+  ],
 ];
 
 const screenshots = [];
@@ -1645,10 +1977,19 @@ const inventory = {
     },
     terminalSnapshot: {
       path: relative(TERMINAL_SNAPSHOT),
+      sha256: currentRouteQa.postSnapshot.sha256,
       status: fs.existsSync(TERMINAL_SNAPSHOT)
         ? 'immutable snapshot present'
         : 'snapshot path missing',
     },
+    currentRouteQa: evidenceBinding(CURRENT_ROUTE_QA),
+    r08alPostQa: evidenceBinding(R08AL_QA),
+    r08amPostQa: evidenceBinding(R08AM_QA),
+    r08ajPostQa: evidenceBinding(R08AJ_QA),
+    r08vPostQa: evidenceBinding(R08V_QA),
+    r09LowerCirculation: evidenceBinding(R09_LOWER_CIRCULATION),
+    r09UpperCirculation: evidenceBinding(R09_UPPER_CIRCULATION),
+    r12oB03Circulation: evidenceBinding(R12O_B03_CIRCULATION),
     c01Manifest: {
       path: relative(C01_MANIFEST),
       sha256: sha256File(C01_MANIFEST),
@@ -1676,6 +2017,16 @@ const inventory = {
       + 'navigable system because no authorized access point is confirmed.',
     portalGallery:
       'Portal-gallery rooms are destinations, not proof that portals are active.',
+    currentRouteAudit:
+      'The final R08AM snapshot passes 19 of 22 representative routes. The C01 '
+      + 'mountain portal-to-L1 route, MainStreet warehouse drive-to-hall route, '
+      + 'and Observatory hidden portal-gallery route are explicitly unproven.',
+    emptyEight:
+      'Only the R08AL south gallery and eleven vacant bays are public. BOH is '
+      + 'staff/service restricted; the R08AM lower annex is adults-only, '
+      + 'restricted, non-public, and non-explicit. Every exterior, egress, '
+      + 'future-rail, drainage, fire/service, ventilation, utility, and '
+      + 'mechanism interface remains sealed or uncommissioned.',
   },
   counts: {
     allWorldFeatures: allFeatures.length,
@@ -1690,6 +2041,10 @@ const inventory = {
     maps: mapFiles.length,
     screenshots: screenshots.length,
     contactSheets: contactSheets.length,
+    currentRepresentativeRoutes: currentRouteQa.summary.routes,
+    currentRepresentativeRoutesPassed: currentRouteQa.summary.passed,
+    currentRepresentativeRoutesUnproven: currentRouteQa.summary.failed,
+    accessConnections: accessConnections.length,
   },
   systems: Object.fromEntries(
     Object.keys(SYSTEM_LABELS).map((system) => [
@@ -1699,9 +2054,35 @@ const inventory = {
         records: undergroundFeatures.filter(
           (feature) => feature.system === system,
         ).length,
+        accessEvidenceRecords: accessConnections.filter(
+          (entry) => entry.system === system,
+        ).length,
       },
     ]),
   ),
+  accessAudit: {
+    status: 'PASS_WITH_EXPLICIT_HOLDS',
+    currentSnapshotSha256: currentRouteQa.postSnapshot.sha256,
+    representativeRouteSummary: currentRouteQa.summary,
+    statusCounts: accessStatusCounts,
+    unprovenRouteIds: currentRouteQa.tests
+      .filter((route) => !route.passed)
+      .map((route) => route.id),
+    publicEmptyEight: {
+      southVacantBayIds: r08alQa.publicRetail.exactSouthBayIds,
+      pf08StairCount: r08alQa.publicRetail.stairComponents.length,
+      retainedCappedSouthShellIds:
+        r08alQa.publicRetail.retainedCappedSouthShellIds,
+    },
+    restrictedEmptyEight: {
+      publicToStaffDoorCount: r08alQa.backOfHouse.publicToStaffDoorCount,
+      securedBackroomDoorCount: r08alQa.backOfHouse.securedRoomDoorCount,
+      grandStair: r08amQa.route.grandStair,
+      lowerAnnexPublic: r08amQa.route.public,
+      lowerAnnexAdultsOnlyRestricted: r08amQa.route.adultsOnlyRestricted,
+    },
+    connections: accessConnections,
+  },
   entrances,
   undergroundFeatures: undergroundFeatures.map(compactFeature),
   c01: {
@@ -1742,6 +2123,7 @@ const inventory = {
 };
 
 writeJson(path.join(OUT, 'underground-inventory.json'), inventory);
+writeJson(path.join(OUT, 'underground-access-audit.json'), inventory.accessAudit);
 writeJson(path.join(OUT, 'screenshot-manifest.json'), {
   schemaVersion: 1,
   id: 'underground-navigation-screenshot-manifest',
@@ -1786,6 +2168,19 @@ function entranceRows() {
       <td>${escapeHtml(entrance.access)}</td>
       <td>${escapeHtml(entrance.route)}</td>
       <td>${escapeHtml(entrance.certainty)}</td>
+    </tr>
+  `).join('');
+}
+
+function accessRows(connections) {
+  return connections.map((connection) => `
+    <tr>
+      <td>${escapeHtml(connection.id)}</td>
+      <td>${escapeHtml(connection.name)}</td>
+      <td>${escapeHtml(connection.verification)}</td>
+      <td>${escapeHtml(connection.audience)}</td>
+      <td>${escapeHtml(connection.route)}</td>
+      <td>${escapeHtml(connection.boundary ?? connection.failure ?? '—')}</td>
     </tr>
   `).join('');
 }
@@ -1928,18 +2323,22 @@ const html = `<!doctype html>
     <p class="lede">A comprehensive, map-first guide to the Minecraft world’s
     tunnels, bunkers, vaults, below-grade venues, adult-only hospitality rooms,
     service spaces, and ways in.</p>
-    <p>Prepared 2026-07-28 · Read-only report · No world edits</p>
+    <p>Refreshed 2026-08-22 from the immutable R08AM post · Read-only report · No world edits</p>
   </section>
 
   <section>
     <p class="eyebrow">READ THIS FIRST</p>
     <h2>Truth boundary</h2>
-    <p class="warning"><b>C01 east arrival is contested.</b> The accepted database
-    and terminal media catalog a five-level east stack and owner layers, but the
-    owner’s field observation says the bunker was not moved east, still obstructs
-    parking, and lacks the road and sunken entrance. This report maps that geometry
-    as <b>cataloged / verify in world</b>, keeps the legacy MainStreet portal on the
-    map, and does not close ISSUE-002.</p>
+    <p class="warning"><b>Three routes are unproven in the current snapshot.</b>
+    The R08AM-bound normal-walk audit passes 19 of 22 representative routes. It
+    does not find a bounded path from the C01 mountain portal to L1, from the
+    MainStreet warehouse drive to the hall, or from the Observatory hidden passage
+    to the inactive portal gallery. They remain mapped as evidence locations, not
+    advertised as current routes.</p>
+    <p class="warning"><b>C01 east surface arrival remains contested.</b> The
+    internal C01 public stair, owner stair, service backbone, and L1 entry-to-garage
+    route pass current geometry checks. Relocation, road, recovered parking, and
+    the sunken surface arrival remain unproven under ISSUE-002.</p>
     <p class="note"><b>Raven Rock note.</b> Every interior coordinate in this
     Minecraft reconstruction is an openly labeled creative approximation. This is
     a map of the game world, not a representation of the real classified facility.</p>
@@ -1951,6 +2350,8 @@ const html = `<!doctype html>
       <div class="metric"><span class="swatch" style="background:#fff"></span><strong>C01 rooms / graph nodes</strong><span>${inventory.counts.c01Spaces} / ${inventory.counts.c01GraphNodes}</span></div>
       <div class="metric"><span class="swatch" style="background:#fff"></span><strong>Entrance / access records</strong><span>${inventory.counts.entranceAndAccessRecords}</span></div>
       <div class="metric"><span class="swatch" style="background:#fff"></span><strong>Maps / screenshots</strong><span>${inventory.counts.maps} / ${inventory.counts.screenshots}</span></div>
+      <div class="metric"><span class="swatch" style="background:#68c49a"></span><strong>Current representative routes</strong><span>${inventory.counts.currentRepresentativeRoutesPassed} pass</span></div>
+      <div class="metric"><span class="swatch" style="background:#f09a57"></span><strong>Current unproven routes</strong><span>${inventory.counts.currentRepresentativeRoutesUnproven}</span></div>
     </div>
   </section>
 
@@ -1971,6 +2372,8 @@ const html = `<!doctype html>
       <li>Evidence screenshot book</li>
       <li>All entrances and access nodes</li>
       <li>Complete inventory appendices</li>
+      <li>Current walkability and access-class audit</li>
+      <li>Empty Eight public, staff, and restricted circulation</li>
     </ol>
     <p>On geographic maps, north is up and equals decreasing Z. East is right and
     equals increasing X. Yellow <b>E</b> symbols are access points. The
@@ -1986,12 +2389,36 @@ const html = `<!doctype html>
 
   <section>
     <p class="eyebrow">SYSTEMS</p>
-    <h2>Eight mapped underground families</h2>
+    <h2>Nine mapped underground families</h2>
     <div class="metrics">${systemCards}</div>
     <p>These families are not one continuous mega-network. Raven Rock has its own
     four portals and shaft; the civic library passage is deliberately isolated;
     the Gilded Raven owner route is private; Westlight and the roadside/data
     bunkers are separate destinations.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">CURRENT ACCESS AUDIT · R08AM POST</p>
+    <h2>Walkable, restricted, sealed, or unproven</h2>
+    <p>The report now separates physical route proof from catalog labels. A
+    <b>verified walkable</b> entry passed current immutable-snapshot geometry or
+    exact accepted post-QA. Restricted boundaries are physical connections whose
+    audience remains staff, owner, or adults-only. Sealed entries are not routes.
+    Unproven entries failed the current bounded normal-walk search and are not
+    promoted by older evidence.</p>
+    <div class="metrics">
+      ${Object.entries(accessStatusCounts).map(([status, count]) => `
+        <div class="metric"><span class="swatch" style="background:${
+          status.includes('UNPROVEN') ? COLORS.warning
+            : status.includes('SEALED') ? COLORS.surface
+              : COLORS.civic
+        }"></span><strong>${escapeHtml(status)}</strong><span>${count}</span></div>
+      `).join('')}
+    </div>
+    <table>
+      <thead><tr><th>ID</th><th>Connection</th><th>Verification</th><th>Audience</th><th>Route</th><th>Boundary / finding</th></tr></thead>
+      <tbody>${accessRows(accessConnections)}</tbody>
+    </table>
   </section>
 
   <section>
@@ -2036,7 +2463,8 @@ const html = `<!doctype html>
     <p>The private shelter route starts at the penthouse safe room, descends to
     the mountain shelter, then continues to the three-level grand vault. UW01 is a
     logistics object with a dry core and east wings. The legacy C01 recessed
-    portal remains the field-reliable public arrival pending ISSUE-002 resolution.</p>
+    portal remains mapped, but its current through-route to L1 is unproven and
+    must not be treated as a reliable arrival pending a new field repair/proof.</p>
   </section>
 
   <section>
@@ -2077,6 +2505,19 @@ const html = `<!doctype html>
     <p>The information annex, holdout-home shelter, Concord bar/theatre, and
     cataloged C01 stack are separate sites. They are shown together for geographic
     orientation, not as a claimed connected tunnel system.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">MAPS 19–20 · EMPTY EIGHT</p>
+    <h2>Public gallery, staff boundary, restricted lower annex</h2>
+    <figure><img src="maps/19-empty-eight-public-retail-boh-sectional.png" alt="Empty Eight public retail and BOH sectional map"><figcaption>R08AM current-post sectional view. The eleven south bays and gallery are public; the BOH behind the marked boundary is staff/service restricted.</figcaption></figure>
+    <figure><img src="maps/20-empty-eight-restricted-annex-sectional.png" alt="Empty Eight restricted lower annex sectional map"><figcaption>Documentation-only lower-annex plan. The grand stair, theatre, lounge, cinema, and four adults-only suites are restricted and non-public.</figcaption></figure>
+    <p>Two exact PF08 stairs reach the public gallery. Only the S04 and S09
+    marked staff doors cross into the 372-cell maintained BOH spine, where all
+    twelve room doors remain secured. Two further secured doors protect the
+    seven-wide grand stair to the lower annex. S06 and every north bay remain
+    capped. No exterior egress, accessibility, future rail, drainage,
+    fire/service, ventilation, utility, or mechanism interface is opened.</p>
   </section>
 
   <section>
@@ -2145,11 +2586,14 @@ const html = `<!doctype html>
     <ul>
       <li>World feature database opened read-only: <code>${escapeHtml(relative(WORLD_DB))}</code>.</li>
       <li>Accepted terminal snapshot referenced: <code>${escapeHtml(relative(TERMINAL_SNAPSHOT))}</code>.</li>
+      <li>Current 22-route normal-walk audit: <code>${escapeHtml(relative(CURRENT_ROUTE_QA))}</code> (${currentRouteQa.summary.passed} pass, ${currentRouteQa.summary.failed} unproven).</li>
+      <li>Empty Eight public/staff evidence: <code>${escapeHtml(relative(R08AL_QA))}</code>.</li>
+      <li>Empty Eight restricted-annex evidence: <code>${escapeHtml(relative(R08AM_QA))}</code>.</li>
       <li>C01 graph: <code>${escapeHtml(relative(C01_MANIFEST))}</code>.</li>
       <li>Owner route: <code>${escapeHtml(relative(OWNER_SCHEDULE))}</code>.</li>
       <li>Library/Guild isolation: <code>${escapeHtml(relative(LIBRARY_GUILD_SCHEDULE))}</code>.</li>
       <li>Images are accepted existing captures copied byte-for-byte; their original path and SHA-256 are in <code>screenshot-manifest.json</code>.</li>
-      <li>The complete machine-readable inventory, maps, entrances, provenance, and hashes are in <code>underground-inventory.json</code>.</li>
+      <li>The complete machine-readable inventory, maps, entrances, provenance, and hashes are in <code>underground-inventory.json</code>; classifications and source bindings are separately available in <code>underground-access-audit.json</code>.</li>
       <li>No world command, RCON request, bot movement, database write, or live server mutation was made.</li>
     </ul>
   </section>
@@ -2175,14 +2619,24 @@ underground areas. It contains:
 - ${inventory.counts.entranceAndAccessRecords} entrance/access records;
 - ${inventory.counts.screenshots} accepted screenshots reorganized into a
   navigation evidence book;
+- a current R08AM-bound access audit with
+  ${inventory.counts.currentRepresentativeRoutesPassed}/
+  ${inventory.counts.currentRepresentativeRoutes} representative routes passing
+  and ${inventory.counts.currentRepresentativeRoutesUnproven} explicitly unproven;
 - a complete HTML report and machine-readable inventory.
 
 ## Truth boundary
 
 The cataloged C01 east stack is included, but its surface arrival is marked
-**contested**. ISSUE-002 remains open because the owner reports that the bunker
-was not moved east, still obstructs parking, and lacks the road and sunken
-entrance. The legacy MainStreet C01 portal remains mapped.
+**contested**. ISSUE-002 remains open. The current route audit also leaves the
+C01 mountain-portal route, MainStreet warehouse drive-hall connection, and
+Observatory hidden portal-gallery connection explicitly unproven.
+
+Empty Eight public access is limited to the eleven R08AL south vacant bays and
+two PF08 internal stairs. BOH is staff/service restricted. The R08AM grand stair
+and lower theatre/private-club annex are adults-only, restricted, and non-public.
+All exterior, egress, future-rail, fire/service, drainage, ventilation, utility,
+and mechanism interfaces remain sealed or uncommissioned.
 
 Raven Rock is a Minecraft creative approximation, not a representation of any
 real classified interior. The sealed Ravensgate underground exclusion is not
@@ -2193,6 +2647,7 @@ presented as navigable.
 - \`underground-navigation-report.html\`
 - \`underground-navigation-report.pdf\` (generated after HTML validation)
 - \`underground-inventory.json\`
+- \`underground-access-audit.json\`
 - \`screenshot-manifest.json\`
 - \`maps/\`
 - \`screenshots/\`
@@ -2206,6 +2661,7 @@ const artifacts = [
   path.join(OUT, 'README.md'),
   htmlPath,
   path.join(OUT, 'underground-inventory.json'),
+  path.join(OUT, 'underground-access-audit.json'),
   path.join(OUT, 'screenshot-manifest.json'),
   ...mapFiles,
   ...screenshots.map((screenshot) => path.join(ROOT, screenshot.path)),

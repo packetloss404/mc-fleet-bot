@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="860" viewBox="0 0 1400 860" role="img" aria-label="SYS-03 R10 High-16 current-source horizontal bypass plan">
+  <style>
+    .bg{fill:#09131d}.grid{stroke:#25455b;stroke-width:1}.axis{fill:#a6c4d6;font:14px system-ui,sans-serif}.title{fill:#f8fafc;font:700 29px system-ui,sans-serif}.sub{fill:#c8dbe7;font:16px system-ui,sans-serif}.label{fill:#f8fafc;font:700 16px system-ui,sans-serif}.note{fill:#c8dbe7;font:14px system-ui,sans-serif}.high15{fill:#2563eb;opacity:.6;stroke:#93c5fd;stroke-width:2}.tested{fill:#7c2d12;opacity:.65;stroke:#fb923c;stroke-width:2}.route{fill:none;stroke:#22d3ee;stroke-width:7;stroke-linejoin:round;stroke-linecap:round}.entry{fill:#bef264;stroke:#1e3a8a;stroke-width:2}.box{fill:#102233;stroke:#3b627e;stroke-width:1.5}.warn{fill:#4a2316;stroke:#fb923c;stroke-width:1.5}
+  </style>
+  <rect class="bg" width="100%" height="100%"/>
+  <text x="70" y="40" class="title">SYS-03 · R10 High-16 current-source civil bypass</text>
+  <text x="70" y="65" class="sub">Horizontal evidence map; y varies along the cyan descent. No rail or passenger route is shown.</text>
+  <g>
+    <line x1="80" y1="90" x2="80" y2="760" class="grid"/><line x1="220" y1="90" x2="220" y2="760" class="grid"/><line x1="360" y1="90" x2="360" y2="760" class="grid"/><line x1="500" y1="90" x2="500" y2="760" class="grid"/><line x1="640" y1="90" x2="640" y2="760" class="grid"/><line x1="780" y1="90" x2="780" y2="760" class="grid"/><line x1="920" y1="90" x2="920" y2="760" class="grid"/>
+    <text x="68" y="790" class="axis">x -322</text><text x="208" y="790" class="axis">-305</text><text x="348" y="790" class="axis">-288</text><text x="488" y="790" class="axis">-271</text><text x="628" y="790" class="axis">-254</text><text x="768" y="790" class="axis">-237</text><text x="908" y="790" class="axis">-220</text>
+    <line x1="80" y1="150" x2="1120" y2="150" class="grid"/><line x1="80" y1="280" x2="1120" y2="280" class="grid"/><line x1="80" y1="410" x2="1120" y2="410" class="grid"/><line x1="80" y1="540" x2="1120" y2="540" class="grid"/><line x1="80" y1="670" x2="1120" y2="670" class="grid"/>
+    <text x="15" y="155" class="axis">z -475</text><text x="15" y="285" class="axis">-463</text><text x="15" y="415" class="axis">-451</text><text x="15" y="545" class="axis">-439</text><text x="15" y="675" class="axis">-427</text>
+  </g>
+  <rect x="240" y="185" width="340" height="390" class="tested"/>
+  <rect x="510" y="305" width="260" height="325" class="high15"/>
+  <polyline points="504,531 476,542 448,553 420,564 392,575 364,586 336,597 308,608 280,619 252,630 224,641 196,652 168,663 140,674 112,685" class="route"/>
+  <circle cx="504" cy="531" r="10" class="entry"/><circle cx="112" cy="685" r="10" class="entry"/>
+  <rect x="1150" y="105" width="215" height="168" rx="10" class="box"/><text x="1170" y="135" class="label">Existing High-15</text><text x="1170" y="159" class="note">blue: accepted civil-only</text><text x="1170" y="183" class="note">ingress at x=-274..-270</text><text x="1170" y="207" class="note">30 route-air cells retained</text><text x="1170" y="237" class="note">not rail / not passenger</text>
+  <rect x="1150" y="292" width="215" height="185" rx="10" class="warn"/><text x="1170" y="322" class="label">High-16 upper grid</text><text x="1170" y="346" class="note">orange: 108 tested 6×6</text><text x="1170" y="370" class="note">alternatives, all rejected</text><text x="1170" y="394" class="note">96: water; 12: water +</text><text x="1170" y="418" class="note">unapproved air boundary</text><text x="1170" y="448" class="note">not a fluid-boundary map</text>
+  <rect x="1150" y="498" width="215" height="180" rx="10" class="box"/><text x="1170" y="528" class="label">Compiled descent</text><text x="1170" y="552" class="note">cyan: 46 6×6 stations</text><text x="1170" y="576" class="note">core: 3,257 cells</text><text x="1170" y="600" class="note">0 fluid / unknown-air /</text><text x="1170" y="624" class="note">protected target / BE / entity</text><text x="1170" y="654" class="note">release kernel still required</text>
+  <text x="80" y="830" class="note">Coordinates are exact plan references. Cyan route is a source-bound civil candidate, not an operating guideway, walk route, service gallery, or passenger railway.</text>
+</svg>

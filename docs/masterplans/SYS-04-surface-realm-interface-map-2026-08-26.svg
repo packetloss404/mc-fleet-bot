@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">SYS-04 current surface-realm interface decision map</title>
+  <desc id="desc">Coordinate-referenced schematic showing the sealed MP06 crossing, Long Water integrated hold, Gatehead as-built alignment, and MP13 venue egress gaps. Dashed links are context only, not accepted routes.</desc>
+  <style>
+    .bg { fill: #101722; } .panel { fill: #172334; stroke: #71829a; stroke-width: 2; }
+    .title { fill: #f4f7fb; font: 700 25px system-ui, sans-serif; } .sub { fill: #bdc9d8; font: 15px system-ui, sans-serif; }
+    .label { fill: #f4f7fb; font: 700 17px system-ui, sans-serif; } .body { fill: #d2dbe7; font: 14px system-ui, sans-serif; }
+    .small { fill: #aebdd0; font: 12px system-ui, sans-serif; } .ok { fill: #2ea66b; } .hold { fill: #e2a640; } .stop { fill: #d85b61; }
+    .context { fill: none; stroke: #71829a; stroke-width: 3; stroke-dasharray: 8 7; } .arrow { fill: #71829a; }
+  </style>
+  <rect class="bg" width="1200" height="760"/>
+  <text class="title" x="48" y="48">SYS-04 surface-realm continuity — current interface decision map</text>
+  <text class="sub" x="48" y="75">Read-only reconciliation • Source: MP06 post snapshot 2026-08-26T14:39:02Z • Dashed geography is not a route or a proposed build</text>
+
+  <path class="context" d="M220 356 C330 292 398 311 505 350 S700 377 862 328"/>
+  <polygon class="arrow" points="861,321 881,329 861,337"/>
+  <text class="small" x="395" y="286">surface geography / unaccepted context link</text>
+
+  <rect class="panel" x="48" y="130" width="270" height="215" rx="12"/>
+  <circle class="ok" cx="76" cy="160" r="10"/>
+  <text class="label" x="96" y="166">MP06: sealed local crossing</text>
+  <rect class="ok" x="92" y="202" width="182" height="72" rx="6"/>
+  <text class="body" x="68" y="302">x=-264..-252 • z=-501..-493</text>
+  <text class="body" x="68" y="322">149 cells, exact inverse</text>
+  <text class="small" x="68" y="339">105/105 upper • 117/117 lower</text>
+
+  <rect class="panel" x="390" y="116" width="320" height="250" rx="12"/>
+  <circle class="hold" cx="418" cy="146" r="10"/>
+  <text class="label" x="438" y="152">MP09: Long Water hold</text>
+  <rect class="hold" x="445" y="191" width="34" height="108" rx="4"/>
+  <line x1="462" y1="191" x2="462" y2="299" stroke="#fff2c9" stroke-width="3"/>
+  <text class="body" x="497" y="207">deck x=-87..-86</text>
+  <text class="body" x="497" y="228">z=-552..-455</text>
+  <text class="body" x="420" y="329">21 headroom failures • 186 water cells</text>
+  <text class="small" x="420" y="349">593 halo fluids • 1,469-cell vertical escape</text>
+
+  <rect class="panel" x="772" y="124" width="375" height="244" rx="12"/>
+  <circle class="ok" cx="800" cy="154" r="10"/>
+  <text class="label" x="820" y="160">MP12: Gatehead south alignment</text>
+  <rect class="stop" x="852" y="195" width="166" height="18" rx="3"/>
+  <text class="small" x="1027" y="208">north façade</text>
+  <rect class="ok" x="824" y="232" width="225" height="32" rx="4"/>
+  <circle class="ok" cx="810" cy="248" r="11"/><circle class="ok" cx="1063" cy="248" r="11"/>
+  <text class="body" x="810" y="293">87/87 normal walk • 450/450 5×5 clear</text>
+  <text class="small" x="810" y="314">two existing portals • 0/0 delta</text>
+  <text class="small" x="810" y="337">protected: x=-334..-320, y=68..72, z=-476</text>
+
+  <rect class="panel" x="722" y="442" width="425" height="236" rx="12"/>
+  <circle class="stop" cx="750" cy="472" r="10"/>
+  <text class="label" x="770" y="478">MP13: venue gaps are not surface repairs</text>
+  <line x1="780" y1="520" x2="1052" y2="520" stroke="#d85b61" stroke-width="5" stroke-dasharray="10 8"/>
+  <text class="body" x="780" y="552">East Arrival → bowl main: gap 4</text>
+  <text class="small" x="780" y="571">(-349,69,-500) → (-353,68,-504)</text>
+  <text class="body" x="780" y="601">bowl → upper: gap 3 • theatre: gap 2</text>
+  <text class="small" x="780" y="620">public/staff 3-D contract + egress design first</text>
+  <text class="small" x="780" y="647">No district crossing, lighting, or transport fragment qualifies.</text>
+
+  <rect class="panel" x="48" y="440" width="610" height="238" rx="12"/>
+  <text class="label" x="74" y="476">SYS-04 release gate — next integrated setout</text>
+  <text class="body" x="74" y="512">1. Exact fresh source + one owner per road, drainage, crossing, lighting, water, entry, and protected cell.</text>
+  <text class="body" x="74" y="544">2. A named functional defect with classified usable endpoints; broad terrain and completed paths are excluded.</text>
+  <text class="body" x="74" y="576">3. Containment/support/grade or public-egress/access-class design before any decorative or partial treatment.</text>
+  <text class="body" x="74" y="608">4. Exact forward/inverse then full fresh release kernel and independent functional QA.</text>
+  <text class="small" x="74" y="646">Result of this screen: no operations, no inverse package, no candidate.</text>
+</svg>

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "id": "mp02-b08-restricted-chamber-dry-receiver-01-post-maps",
+  "status": "PASS_POST_SNAPSHOT_BOUND_EVIDENCE_MAPS",
+  "readOnly": true,
+  "mutationAuthority": false,
+  "snapshot": "data/worldsnap-mp02-b08-restricted-chamber-dry-receiver-post-20260827T023000Z",
+  "snapshotCaptureSha256": "58d8174bf9a9c00853844723b143b04a73f12dcddc7910b542a4a999027fdfd7",
+  "manifest": "data/world-review/mp02-b08-restricted-chamber-dry-receiver-live-20260827T023000Z/rebound/buildops/mp02-b08-restricted-chamber-dry-receiver-01.release-manifest.json",
+  "manifestSha256": "4f5a93bace3fe7f7b7da425a48b990a87c2ac6a647e47edae87705d605be1410",
+  "postQa": "data/world-review/mp02-b08-restricted-chamber-dry-receiver-live-20260827T023000Z/independent-post-release-qa-remediated.json",
+  "postQaSha256": "a95316ef27538cdad19e95a40e3d9892dc57c168086613c691f5df19ea4999f8",
+  "preservationRemediation": "data/world-review/mp02-b08-restricted-chamber-dry-receiver-live-20260827T023000Z/post-qa-preservation-remediation-acceptance-ledger.json",
+  "preservationRemediationSha256": "c45c0eb24e7dce837028d56aee81cbf04695e42587621f8ebedbc9fdefd9d556",
+  "maps": [
+    "mp02-b08-restricted-chamber-post-plan.svg",
+    "mp02-b08-restricted-chamber-post-section.svg",
+    "mp02-b08-restricted-chamber-post-route-failure.svg"
+  ],
+  "checks": {
+    "exactTargets": {
+      "count": 835,
+      "passed": 835,
+      "failed": 0,
+      "exactInverseByPackage": true
+    },
+    "routes": [
+      {
+        "id": "normal-north-handoff",
+        "expected": true,
+        "passed": true,
+        "correct": true,
+        "output": [
+          "flood: 552 standable cells reached, 552 expanded (chunks 6 read, 0 absent)",
+          "  REACHABLE   2008,129,-690"
+        ]
+      },
+      {
+        "id": "normal-shaft-surface",
+        "expected": true,
+        "passed": true,
+        "correct": true,
+        "output": [
+          "flood: 1396 standable cells reached, 1396 expanded (chunks 8 read, 0 absent)",
+          "  REACHABLE   2005,208,-748"
+        ]
+      },
+      {
+        "id": "north-failure-north-isolated",
+        "expected": false,
+        "passed": false,
+        "correct": true,
+        "output": [
+          "projection: 6 block cells from ../../../tmp/mp02-b08-chamber-post-qa-nsHqWS/north-failure.txt",
+          "  flood: 147 standable cells reached, 147 expanded (chunks 2 read, 0 absent)",
+          "  UNREACHABLE 2008,129,-690  (closest approach 52 blocks, at 2008,129,-742)"
+        ]
+      },
+      {
+        "id": "north-failure-shaft-survives",
+        "expected": true,
+        "passed": true,
+        "correct": true,
+        "output": [
+          "projection: 6 block cells from ../../../tmp/mp02-b08-chamber-post-qa-nsHqWS/north-failure.txt",
+          "  flood: 1321 standable cells reached, 1321 expanded (chunks 8 read, 0 absent)",
+          "  REACHABLE   2005,208,-748"
+        ]
+      },
+      {
+        "id": "shaft-failure-north-survives",
+        "expected": true,
+        "passed": true,
+        "correct": true,
+        "output": [
+          "projection: 2 block cells from ../../../tmp/mp02-b08-chamber-post-qa-nsHqWS/shaft-failure.txt",
+          "  flood: 535 standable cells reached, 535 expanded (chunks 6 read, 0 absent)",
+          "  REACHABLE   2008,129,-690"
+        ]
+      },
+      {
+        "id": "shaft-failure-shaft-isolated",
+        "expected": false,
+        "passed": false,
+        "correct": true,
+        "output": [
+          "projection: 2 block cells from ../../../tmp/mp02-b08-chamber-post-qa-nsHqWS/shaft-failure.txt",
+          "  flood: 205 standable cells reached, 205 expanded (chunks 3 read, 0 absent)",
+          "  UNREACHABLE 2005,208,-748  (closest approach 80 blocks, at 2006,129,-748)"
+        ]
+      }
+    ],
+    "preservation": {
+      "baseline": "source-bound remediation ledger data/world-review/mp02-b08-restricted-chamber-dry-receiver-live-20260827T023000Z/post-qa-preservation-remediation-acceptance-ledger.json (c45c0eb24e7dce837028d56aee81cbf04695e42587621f8ebedbc9fdefd9d556)",
+      "B03Aperture": {
+        "count": 20,
+        "failed": 0
+      },
+      "B09Cap": {
+        "count": 12,
+        "failed": 0
+      },
+      "B09GuidewayAndControls": {
+        "count": 19,
+        "failed": 0
+      }
+    }
+  },
+  "nonclaims": [
+    "No public/emergency egress commissioning.",
+    "No B03/B09 opening, B09 rail/control action, or automatic fluid outfall."
+  ]
+}

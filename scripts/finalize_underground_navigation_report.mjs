@@ -18,6 +18,7 @@ const OUT = path.join(
 const HTML = path.join(OUT, 'underground-navigation-report.html');
 const PDF = path.join(OUT, 'underground-navigation-report.pdf');
 const INVENTORY = path.join(OUT, 'underground-inventory.json');
+const ACCESS_AUDIT = path.join(OUT, 'underground-access-audit.json');
 const README = path.join(OUT, 'README.md');
 const QA = path.join(OUT, 'report-qa.json');
 const MANIFEST = path.join(OUT, 'artifact-manifest.json');
@@ -37,13 +38,14 @@ function walkFiles(directory) {
   });
 }
 
-for (const required of [HTML, PDF, INVENTORY, README]) {
+for (const required of [HTML, PDF, INVENTORY, ACCESS_AUDIT, README]) {
   if (!fs.existsSync(required)) {
     throw new Error(`Required report artifact is missing: ${path.relative(ROOT, required)}`);
   }
 }
 
 const inventory = JSON.parse(fs.readFileSync(INVENTORY, 'utf8'));
+const accessAudit = JSON.parse(fs.readFileSync(ACCESS_AUDIT, 'utf8'));
 const html = fs.readFileSync(HTML, 'utf8');
 const localReferences = [...html.matchAll(/(?:src|href)="([^"]+)"/g)]
   .map((match) => match[1])
@@ -97,10 +99,55 @@ const gates = {
   pdfHeaderValid,
   pdfHasMultiplePages: pdfPageCount > 1,
   inventoryIncludesEntrances: inventory.counts.entranceAndAccessRecords > 0,
+  currentSnapshotBound: (
+    inventory.sources.terminalSnapshot.sha256
+      === '30f5c3394c4080d74156a59deb613290366c130e72a859261625117b8276541f'
+    && accessAudit.currentSnapshotSha256
+      === inventory.sources.terminalSnapshot.sha256
+  ),
+  currentRouteAuditTruthful: (
+    accessAudit.status === 'PASS_WITH_EXPLICIT_HOLDS'
+    && accessAudit.representativeRouteSummary.routes === 22
+    && accessAudit.representativeRouteSummary.passed === 19
+    && accessAudit.representativeRouteSummary.failed === 3
+    && accessAudit.unprovenRouteIds.length === 3
+  ),
+  accessClassesSeparated: (
+    accessAudit.connections.some((entry) => entry.audience === 'public')
+    && accessAudit.connections.some((entry) => (
+      entry.audience.includes('staff') || entry.audience.includes('service')
+    ))
+    && accessAudit.connections.some((entry) => (
+      entry.audience.includes('adults-only')
+    ))
+    && accessAudit.connections.some((entry) => (
+      entry.verification === 'SEALED_UNCOMMISSIONED'
+    ))
+    && accessAudit.connections.some((entry) => (
+      entry.verification === 'UNPROVEN_CURRENT_SNAPSHOT'
+    ))
+  ),
+  emptyEightPublicBoundaryExact: (
+    accessAudit.publicEmptyEight.southVacantBayIds.length === 11
+    && accessAudit.publicEmptyEight.pf08StairCount === 2
+    && accessAudit.publicEmptyEight.retainedCappedSouthShellIds.join(',')
+      === 'EE-R-S06'
+    && accessAudit.restrictedEmptyEight.publicToStaffDoorCount === 2
+    && accessAudit.restrictedEmptyEight.securedBackroomDoorCount === 12
+    && accessAudit.restrictedEmptyEight.lowerAnnexPublic === false
+    && accessAudit.restrictedEmptyEight.lowerAnnexAdultsOnlyRestricted === true
+  ),
   c01IssueBoundaryPresent: (
     html.includes('ISSUE-002')
     && html.includes('CONTESTED')
-    && html.includes('legacy MainStreet portal')
+    && html.includes('legacy C01 recessed')
+    && html.includes('current through-route to L1 is unproven')
+  ),
+  currentUnprovenRoutesDisclosed: (
+    html.includes('TE-ROUTE-C01-MOUNTAIN-PORTAL-L1')
+    && html.includes('TE-ROUTE-MAINSTREET-WAREHOUSE-DRIVE-HALL')
+    && html.includes('TE-ROUTE-OBSERVATORY-PORTAL-HUB')
+    && html.includes('UNPROVEN_CURRENT_SNAPSHOT')
   ),
   noWorldMutationClaimPresent: html.includes(
     'No world command, RCON request, bot movement, database write, or live server mutation was made.',

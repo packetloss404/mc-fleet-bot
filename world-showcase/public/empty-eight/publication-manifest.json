@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "ianlan-nextgen-empty-eight-publication-manifest-20260822",
+  "generatedAtUtc": "2026-08-22T16:32:00Z",
+  "status": "READY_FOR_WEBSITE_BUILD",
+  "terminalCompleteSaveSha256": "0bcbba4fad530b8a5c22bbef295978cc4864270de652acba18372e445b584699",
+  "assets": [
+    {
+      "path": "world-showcase/public/empty-eight/public-south-galleria.png",
+      "sha256": "9201f83c6671c6c8ee208f0d1c96f06e9562aa86008da77fa369c3aba399d69c",
+      "bytes": 43009
+    },
+    {
+      "path": "world-showcase/public/empty-eight/catalog.json",
+      "sha256": "85b3fb0f4e678deac1b9fb478c10e84937f24554987ee0a28947523322336dd3",
+      "bytes": 13106
+    }
+  ],
+  "sourceCatalog": {
+    "path": "data/exports/world-catalog-empty-eight-r08am-20260822T163200Z/database-report.json",
+    "sha256": "78337ef66e613a6a3167215ff2d00bc287fefd1ac921e50cff22b976b9062d30",
+    "bytes": 1056420
+  },
+  "truthBoundary": {
+    "publicationScope": "R08AL public south gallery and eleven vacant bay shells only",
+    "terminalEvidenceIncludesRestrictedAnnex": true,
+    "restrictedAnnexPublished": false,
+    "tenantOrRetailOperationClaimed": false,
+    "worldMutationPerformedByPublication": false
+  }
+}

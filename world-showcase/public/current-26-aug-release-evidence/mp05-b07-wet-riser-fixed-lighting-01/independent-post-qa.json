@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "id": "mp05-b07-wet-riser-fixed-lighting-01-independent-post-qa",
+  "status": "PASS_EXECUTED_B07_WET_RISER_FIXED_LIGHTING_QA",
+  "readOnly": true,
+  "worldMutated": false,
+  "manifest": {
+    "path": "/opt/stacks/mc-fleet-bot/data/world-review/mp05-b07-wet-riser-fixed-lighting-01-live-20260828T013000Z/rebound-buildops/mp05-b07-wet-riser-fixed-lighting-01.manifest.json",
+    "sha256": "793d3074b118395aaafaa51664ad2ad33eafd91be6db894a610e4bd0eb312b5e"
+  },
+  "snapshot": "data/worldsnap-mp05-b07-wet-riser-fixed-lighting-01-post-20260828T013000Z",
+  "checks": {
+    "exactThreeGlowstoneFixtures": true,
+    "dryLadderCoreRetained": true,
+    "upperReceiverHatchesRetained": true,
+    "noPublicOrEgressCommissioning": true
+  },
+  "failures": [],
+  "fixtures": [
+    {
+      "cell": {
+        "x": 2107,
+        "y": 11,
+        "z": -401
+      },
+      "state": "minecraft:glowstone"
+    },
+    {
+      "cell": {
+        "x": 2107,
+        "y": 14,
+        "z": -401
+      },
+      "state": "minecraft:glowstone"
+    },
+    {
+      "cell": {
+        "x": 2107,
+        "y": 17,
+        "z": -401
+      },
+      "state": "minecraft:glowstone"
+    }
+  ],
+  "coreStateCount": 27,
+  "hatches": [
+    {
+      "cell": {
+        "x": 2108,
+        "y": 18,
+        "z": -401
+      },
+      "state": "minecraft:oak_trapdoor[facing=north,half=bottom,open=false,powered=false,waterlogged=false]"
+    },
+    {
+      "cell": {
+        "x": 2109,
+        "y": 18,
+        "z": -401
+      },
+      "state": "minecraft:oak_trapdoor[facing=north,half=bottom,open=false,powered=false,waterlogged=false]"
+    },
+    {
+      "cell": {
+        "x": 2110,
+        "y": 18,
+        "z": -401
+      },
+      "state": "minecraft:oak_trapdoor[facing=north,half=bottom,open=false,powered=false,waterlogged=false]"
+    }
+  ],
+  "qaPayloadSha256": "2f58b2c3875151e21739d826c27effb84c69c86949fbc34b8946c4150fd87409"
+}

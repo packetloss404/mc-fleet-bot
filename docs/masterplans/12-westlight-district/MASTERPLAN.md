@@ -108,3 +108,14 @@ Primary evidence used:
 - [Westlight waterfront survey map](../../redevelopment/2026-07-28-town-expansion/evidence/westlight-waterfront-current-map.png) for broader context only.
 
 Derived in this document: aggregate kind counts, the district record envelope, room counts per structure and the list of eight Town Expansion R1 envelope intersections. These are reproducible database queries, not new field observations. Snapshot identity, scan bounds, completion/condition, policies and census results are transcribed from the cited records.
+
+## 11. 2026-08 circulation readiness addendum
+
+The ten stair-served, no-primary-ladder structures are historically supported, but catalog entrance anchors and room completion do not prove current stair width, headroom, landings, water-edge safety, or the district-to-venue public path. `CIRC-WL-ARRIVAL-01` must first produce an exact public/service/restricted path graph from Gatehead through the district and into the venue. It must not widen interiors based solely on entrance points. District public walks require two clear blocks (three at civic frontage); staff/service routes must remain distinct from public egress. See [`cross-district-circulation-audit-20260822.md`](../../../data/world-review/cross-district-circulation-audit-20260822.md).
+
+The newest complete-save census confirms all fourteen district structures have
+material interiors, no primary ladders and no empty or under-detailed cataloged
+rooms. That rules out a generic “half-built Westlight” repair; it does not
+prove arrival, waterfront, district-to-venue or staff-route operation. The
+next work is the bounded `CIRC-WL-ARRIVAL-01` graph/section survey described
+in [the public-realm defect lane](../../redevelopment/2026-08-22-public-realm-defect-lane.md), not speculative interior demolition.

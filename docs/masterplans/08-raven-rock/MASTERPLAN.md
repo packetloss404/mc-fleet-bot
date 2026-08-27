@@ -5,6 +5,16 @@
 **World:** `world`
 **Authority:** planning and documentation only; this file authorizes no Minecraft, RCON, database, service, or configuration mutation.
 
+> **2026-08-22 current-state correction.** This retrospective plan preserves
+> the historical catalog and accepted Wave 2 provenance below, but it is not
+> current construction authority. The R08AM-bound
+> [`CURRENT-STATE.md`](CURRENT-STATE.md) and
+> [Bunker Construction Status](../../redevelopment/2026-08-22-bunker-construction-status/bunker-construction-status.md)
+> control present-state claims: no current accepted Raven Rock complex release
+> survives; S1 was rolled back and 150 of 151 historical T2B targets were
+> superseded. Treat catalog-complete records and historic screenshots as design
+> or provenance evidence until a fresh guarded release proves current cells.
+
 ## 1. Executive intent
 
 Preserve Raven Rock as a coherent underground destination, finish the public-route and life-safety evidence that remains incomplete, and keep its relationship with the surface build explicit. The area is already substantially built and cataloged. This plan therefore starts from the accepted world record rather than replaying the original construction brief.
@@ -148,3 +158,9 @@ Primary local evidence used for this retroactive plan:
 - [`docs/raven-rock`](../../raven-rock/README.md): historical evidence discipline and authored spatial intent.
 
 **Derived/inferred in this plan:** the “audited occupied structures” envelope is the saved-world scan bound, not the district envelope; the five roadmap phases synthesize unresolved items from the inventory and accepted-release rules; prioritization is planning judgment. No new coordinate, media-object relationship, completion state, or execution authority was invented.
+
+## 11. 2026-08 circulation readiness addendum
+
+`RR-Z5` is not evidenced as a one-block stair: its inventory records two stair blocks at every observed stair Y, fifteen five-rise flights, and five-rise landings. It is nevertheless **not public-route accepted** until one complete pilot flight and both landings prove two-clear-wide movement, three-clear headroom, edge/guard treatment, lighting, level coding, return signs, and normal walking both directions. Start with `RR-Z5-F01` (`x=196..204`, `y=-11..-6`, `z=-19..-11`) and repair only cells shown defective.
+
+`RR-C2` is a real route-gap/drift concern: only four of six sampled treads were found, with deviations up to six lateral and five vertical blocks. It cannot be advertised as a continuous operational corridor pending `CIRC-RR-C2-01`. Classify it closed or restore it as a dry 3×3 operational-secondary corridor after its Cavern C/water interface is surveyed. T3b and S1 also need station-by-station classification. See [`cross-district-circulation-audit-20260822.md`](../../../data/world-review/cross-district-circulation-audit-20260822.md).

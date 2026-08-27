@@ -135,3 +135,7 @@ Execute only separately authorized, snapshot-bound packages. Require exact rollb
 - [`ravensreach-physical-regression-post-2026-07-27.yaml`](../../ravensreach/audits/ravensreach-physical-regression-post-2026-07-27.yaml): exact Ravensgate Garth preservation assertions used by a neighboring repair package.
 
 **Derived/inferred in this plan:** the saved-world occupied envelope is summarized from the scan record; the phased ordering and risk priority are planning judgments; the requirement to treat visual continuity separately from district ownership is inferred from the schedule's explicit scope correction. No proposed coordinate schedule item is promoted to built status.
+
+## 11. 2026-08 circulation readiness addendum
+
+The built anchors and ladderless campanile record do not prove current stair width, headroom, landings, or a continuous surface route between Bell-Gate, Loggia, Stoa, and Tempietto. `CIRC-RG-SURFACE-01` must survey and then, if needed, build a lit, signed, surfaced garden loop with two-clear-wide walk segments and step-free alternatives at grade changes. It must verify Long Water edge protection and return paths. It must not use the restricted underground volume or its `Y 36..43` buffer as a circulation shortcut. See [`cross-district-circulation-audit-20260822.md`](../../../data/world-review/cross-district-circulation-audit-20260822.md).

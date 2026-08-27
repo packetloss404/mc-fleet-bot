@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "world-atlas-surface-screenshot-evidence-20260825",
+  "generatedFor": "docs/redevelopment/2026-08-25-world-atlas/surface",
+  "purpose": "Hash-recorded copies of pre-existing surface visual evidence; not a new live capture.",
+  "snapshotCaveat": "These screenshots come from dated source packages and do not establish the state of later 2026-08-24/25 scoped releases. The 22 August complete snapshot atlas and each release ledger remain the relevant provenance.",
+  "screenshots": [
+    {
+      "file": "screenshots/msa-final-campus-map.png",
+      "caption": "MainStreet final campus map",
+      "source": "docs/mainstreet-america/qa/msa-final-campus-map.png",
+      "sourceDateClass": "MainStreet QA package, 2026-08-04 filesystem publication",
+      "sha256": "0711bf39c8e57882541c7568adf85226cba2b5bad7378f4de91b813a954da462"
+    },
+    {
+      "file": "screenshots/msa-surface-complex-topdown-final.png",
+      "caption": "MainStreet surface complex top-down final",
+      "source": "docs/mainstreet-america/qa/msa-surface-complex-topdown-final.png",
+      "sourceDateClass": "MainStreet QA package, 2026-08-04 filesystem publication",
+      "sha256": "c4e02de05718f46202fee6ebb3321ddbda89ec24026a60317709b60cd9cf237c"
+    },
+    {
+      "file": "screenshots/msa-mountain-approach-after.png",
+      "caption": "MainStreet mountain approach",
+      "source": "docs/mainstreet-america/qa/msa-mountain-approach-after.png",
+      "sourceDateClass": "MainStreet QA package, 2026-08-04 filesystem publication",
+      "sha256": "f7d21c5b3fca40d9ae05d745e0094cc137a15e30eea30746a332e5511c5b84a5"
+    },
+    {
+      "file": "screenshots/msa-surface-complex-exterior-final.png",
+      "caption": "MainStreet surface complex exterior",
+      "source": "docs/mainstreet-america/qa/msa-surface-complex-exterior-final.png",
+      "sourceDateClass": "MainStreet QA package, 2026-08-04 filesystem publication",
+      "sha256": "704776a174ed119ffa7d3307ea9e76252740d51154a718e334b34d4322c65304"
+    },
+    {
+      "file": "screenshots/msa-observatory-exterior-after.png",
+      "caption": "MainStreet observatory exterior",
+      "source": "docs/mainstreet-america/qa/msa-observatory-exterior-after.png",
+      "sourceDateClass": "MainStreet QA package, 2026-08-04 filesystem publication",
+      "sha256": "f2e32fa82483edbf994476338a74a343f7c09fa27323f9e9e5356213900e20ad"
+    },
+    {
+      "file": "screenshots/msa-hangar-office-overlook-after.png",
+      "caption": "MainStreet hangar office overlook",
+      "source": "docs/mainstreet-america/qa/msa-hangar-office-overlook-after.png",
+      "sourceDateClass": "MainStreet QA package, 2026-08-04 filesystem publication",
+      "sha256": "5922d20cac8dad2976a2822c741069bc61b6ce0040ca11100bfbb400f3d9e668"
+    },
+    {
+      "file": "screenshots/msa-parking-bluemap-overview-after.png",
+      "caption": "MainStreet parking BlueMap overview",
+      "source": "docs/mainstreet-america/qa/msa-parking-bluemap-overview-after.png",
+      "sourceDateClass": "MainStreet QA package, 2026-08-04 filesystem publication",
+      "sha256": "cfaa7fce23bbe9cef2fdfc4cc050b403ddbbde81c9fd9b8d762ee793df3f1656"
+    },
+    {
+      "file": "screenshots/library-garth-west-oblique.png",
+      "caption": "Ravensreach library and garth, western oblique",
+      "source": "docs/redevelopment/2026-07-28-town-expansion/evidence/library-garth-west-oblique.png",
+      "sourceDateClass": "Town Expansion evidence package, 2026-07-28",
+      "sha256": "f1344dc4d2791dac0793ad39ccfbd6155783d71b1371248f1a878d9c3cc02352"
+    },
+    {
+      "file": "screenshots/moot-penthouse-south-oblique.png",
+      "caption": "Ravensreach Moot Hall penthouse, southern oblique",
+      "source": "docs/redevelopment/2026-07-28-town-expansion/evidence/moot-penthouse-south-oblique.png",
+      "sourceDateClass": "Town Expansion evidence package, 2026-07-28",
+      "sha256": "17e822c23dff9b276761b9390eb068a42dc26cee2a3553303028a4a71efdf880"
+    },
+    {
+      "file": "screenshots/panorama-oasis-site-north-oblique.png",
+      "caption": "Western approach panorama/oasis, northern oblique",
+      "source": "docs/redevelopment/2026-07-28-town-expansion/evidence/panorama-oasis-site-north-oblique.png",
+      "sourceDateClass": "Town Expansion evidence package, 2026-07-28",
+      "sha256": "e9dee4fbdb00f00bc6703e695e3f74bac6930922cabf9a57547627a7bb36b016"
+    },
+    {
+      "file": "screenshots/approach-corridor-current-map.png",
+      "caption": "Western approach corridor current map",
+      "source": "docs/redevelopment/2026-07-28-town-expansion/evidence/approach-corridor-current-map.png",
+      "sourceDateClass": "Town Expansion evidence package, 2026-07-28",
+      "sha256": "37c956b2311c4e494eaba1db290bf1a7a7f98629600382c7308a0770054357c3"
+    },
+    {
+      "file": "screenshots/westlight-waterfront-current-map.png",
+      "caption": "Westlight waterfront current map",
+      "source": "docs/redevelopment/2026-07-28-town-expansion/evidence/westlight-waterfront-current-map.png",
+      "sourceDateClass": "Town Expansion evidence package, 2026-07-28",
+      "sha256": "135fbc929943246c3f37f5fba96f85b0517cc632ebecba0796c1553a3f06209f"
+    }
+  ],
+  "verification": {
+    "screenshotCount": 12,
+    "copyHashMatchesSource": true,
+    "newLiveCaptures": 0,
+    "worldOrServiceMutations": 0
+  }
+}

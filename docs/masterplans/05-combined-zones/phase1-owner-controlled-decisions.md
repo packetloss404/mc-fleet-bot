@@ -10,6 +10,11 @@ This additive record resolves three owner-controlled planning choices from exist
 
 Remaining external submissions: **4**; null endpoint contracts: **13**.
 
-R00: **HOLD**. Code/artifact build: **authorized**. World construction: **not authorized by this record**.
+R00: **COMPLETE — 7/7 PASS** (see [CURRENT-STATE.md](CURRENT-STATE.md)). Code/artifact build: **authorized**. World construction: **not authorized by this record** — construction authority comes only from the standing 2026-08-21 owner directive and the six-part hard-safety kernel.
+
+> This record is historical planning provenance. The `R00: HOLD` wording in
+> earlier versions predated the accepted R00 readiness audit and the standing
+> build authority; the authoritative status is the release ledger in
+> [CURRENT-STATE.md](CURRENT-STATE.md).
 
 Report identity: `ba325996b28a801194e1bf803463794f0b28deeafcfca6f6fb1813be28c96829`

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "MP09-LONG-WATER-ACCEPTANCE-SIGNATURE-01",
+  "contractIdentitySha256": "COPY_FROM_GOVERNING_CONTRACT",
+  "governingContractSha256": "COPY_SHA256_OF_GOVERNING_CONTRACT_FILE",
+  "source": {
+    "snapshot": "COPY_FROM_GOVERNING_CONTRACT",
+    "captureId": "COPY_FROM_GOVERNING_CONTRACT",
+    "captureManifestSha256": "COPY_FROM_GOVERNING_CONTRACT",
+    "inputSha256": {}
+  },
+  "namedOwners": {
+    "containment": "ASSIGN_EXACT_OWNER",
+    "waterDisplacement": "ASSIGN_EXACT_OWNER",
+    "receiverOverflow": "ASSIGN_EXACT_OWNER",
+    "northGrade": "ASSIGN_EXACT_OWNER",
+    "tempiettoLanding": "ASSIGN_EXACT_OWNER"
+  },
+  "interfaceOwnership": [],
+  "containmentAndHydrology": {},
+  "waterDisplacement": {},
+  "gradeLandingAndReturns": {},
+  "forwardManifest": { "path": "ASSIGN_FORWARD_MANIFEST", "sha256": "COPY_MANIFEST_SHA256" },
+  "rollbackManifest": { "path": "ASSIGN_ROLLBACK_MANIFEST", "sha256": "COPY_MANIFEST_SHA256" }
+}

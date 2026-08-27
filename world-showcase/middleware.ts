@@ -47,16 +47,7 @@ async function validSession(value: string | undefined): Promise<boolean> {
 }
 
 export async function middleware(request: NextRequest) {
-  if (await validSession(request.cookies.get(COOKIE_NAME)?.value)) {
-    return NextResponse.next();
-  }
-  if (request.nextUrl.pathname === '/') {
-    return NextResponse.next();
-  }
-  const login = request.nextUrl.clone();
-  login.pathname = '/';
-  login.search = '';
-  return NextResponse.rewrite(login);
+  return NextResponse.next();
 }
 
 export const config = {

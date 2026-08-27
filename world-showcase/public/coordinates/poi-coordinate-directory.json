@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "ianlan-poi-coordinate-directory-2026-07-29",
   "title": "IANLAN Points of Interest Coordinate Directory",
-  "generatedAt": "2026-07-29T00:36:41.612Z",
+  "generatedAt": "2026-08-27T17:19:59.281Z",
   "truthBoundary": {
     "source": "Every durable world_features record in data/world-map.db.",
     "tp": "Copy-ready /tp commands use catalog entrances or exact points where available, path starts for routes, and clearly labeled derived centers for area geometry. They are references, not safety-validated arrivals.",
@@ -13,8 +13,8 @@
   "source": {
     "database": {
       "path": "data/world-map.db",
-      "bytes": 6733824,
-      "sha256": "71876a7ecf73e90475a9b5047938e14f39ea0a20381dea8c5286582059f95f8a"
+      "bytes": 6750208,
+      "sha256": "bf2b31c121c7d270942f6fa73181f8c71409cfc24c01952d99d8cd35583c8c02"
     },
     "snapshot": {
       "directory": "data/worldsnap-town-terminal-recovery-post-20260728T1839Z/region",
@@ -25,25 +25,26 @@
     }
   },
   "counts": {
-    "records": 1215,
-    "active": 1214,
+    "records": 1226,
+    "active": 1225,
     "retired": 1,
-    "exactOrAuthoredReferences": 202,
+    "exactOrAuthoredReferences": 213,
     "derivedReferences": 1013,
     "relativeYCommands": 85,
-    "projects": 8,
-    "kinds": 14,
+    "projects": 9,
+    "kinds": 15,
     "categories": 6,
     "byCategory": {
-      "surface-builds": 109,
+      "surface-builds": 116,
       "remote-sites": 26,
-      "passageway-access": 299,
-      "route-station-infrastructure": 713,
+      "passageway-access": 302,
+      "route-station-infrastructure": 714,
       "anomalies-controls": 66,
       "candidate-parcels": 2
     },
     "byProject": {
       "approach-road": 2,
+      "combined-zones-phase1": 11,
       "mainstreet-america": 631,
       "raven-rock": 81,
       "ravensgate": 13,
@@ -66,9 +67,9 @@
       "road": 29,
       "room": 322,
       "sidewalk": 12,
+      "terminal_media_feature": 11,
       "utility": 2
-    },
-    "pdfPages": 135
+    }
   },
   "categories": [
     {
@@ -76,7 +77,7 @@
       "label": "Surface builds",
       "short": "Surface",
       "description": "Buildings, rooms, districts, landscape, and authored places not assigned to a more specific operator group.",
-      "count": 109
+      "count": 116
     },
     {
       "id": "remote-sites",
@@ -90,14 +91,14 @@
       "label": "PassageWay access",
       "short": "PassageWay",
       "description": "The named underground tunnel system: tunnels, bunkers, vaults, portals, shafts, below-grade rooms, and internal access.",
-      "count": 299
+      "count": 302
     },
     {
       "id": "route-station-infrastructure",
       "label": "Route / station infrastructure",
       "short": "Routes",
       "description": "Roads, paths, parking, sidewalks, drives, stations, lighting, fences, utilities, and wayfinding infrastructure.",
-      "count": 713
+      "count": 714
     },
     {
       "id": "anomalies-controls",
@@ -115,6 +116,349 @@
     }
   ],
   "records": [
+    {
+      "id": "wft_9853dff1e3dca350259c1fcc",
+      "externalId": "CZ-R08-EE-R-N07-CAPPED-SHELL",
+      "parentId": null,
+      "parentName": null,
+      "name": "Document a source-difficult retail shell after exact wet extraction and closed-shell lining.",
+      "projectId": "combined-zones-phase1",
+      "project": "Combined Zones Phase1",
+      "kind": "terminal_media_feature",
+      "status": "complete",
+      "categoryId": "surface-builds",
+      "category": "Surface builds",
+      "reference": {
+        "x": 1761,
+        "y": 51,
+        "z": 47,
+        "type": "exact catalog point",
+        "derived": false,
+        "display": "1761, 51, 47",
+        "tp": "/tp @s 1761 51 47",
+        "note": "Catalog-authored reference; teleport safety is not independently verified."
+      },
+      "geometry": {
+        "type": "point",
+        "extent": {
+          "minX": null,
+          "maxX": null,
+          "minY": null,
+          "maxY": null,
+          "minZ": null,
+          "maxZ": null
+        },
+        "display": "x[—] y[—] z[—]",
+        "source": {
+          "type": "point",
+          "x": 1761,
+          "y": 50.5,
+          "z": 47
+        }
+      },
+      "tags": [
+        "combined-zones",
+        "g18",
+        "r08_empty_eight_retail",
+        "r13"
+      ],
+      "source": "combined-zones-r13-g18-terminal-post",
+      "sourceRef": "data/exports/combined-zones-r13-terminal-media-accepted-20260822T062000Z/04-cz-r08-ee-r-n07-capped-shell.png"
+    },
+    {
+      "id": "wft_920c1c9ca443db20af3ca597",
+      "externalId": "CZ-R12-B09-PASSIVE-SUMMIT-APPROACH",
+      "parentId": null,
+      "parentName": null,
+      "name": "Document the accepted passive summit approach without extending the bounded maintenance-shuttle claim.",
+      "projectId": "combined-zones-phase1",
+      "project": "Combined Zones Phase1",
+      "kind": "terminal_media_feature",
+      "status": "complete",
+      "categoryId": "surface-builds",
+      "category": "Surface builds",
+      "reference": {
+        "x": 2048,
+        "y": 298,
+        "z": -824,
+        "type": "exact catalog point",
+        "derived": false,
+        "display": "2048, 298, -824",
+        "tp": "/tp @s 2048 298 -824",
+        "note": "Catalog-authored reference; teleport safety is not independently verified."
+      },
+      "geometry": {
+        "type": "point",
+        "extent": {
+          "minX": null,
+          "maxX": null,
+          "minY": null,
+          "maxY": null,
+          "minZ": null,
+          "maxZ": null
+        },
+        "display": "x[—] y[—] z[—]",
+        "source": {
+          "type": "point",
+          "x": 2048,
+          "y": 298,
+          "z": -824
+        }
+      },
+      "tags": [
+        "combined-zones",
+        "g18",
+        "r12_bounded_transport",
+        "r13"
+      ],
+      "source": "combined-zones-r13-g18-terminal-post",
+      "sourceRef": "data/exports/combined-zones-r13-terminal-media-accepted-20260822T062000Z/11-cz-r12-b09-passive-summit-approach.png"
+    },
+    {
+      "id": "wft_258c2c63acd7f094ddc2e44d",
+      "externalId": "CZ-R12-B09-BOUNDED-SHUTTLE-TERMINAL-BAY",
+      "parentId": null,
+      "parentName": null,
+      "name": "Document the bounded maintenance-shuttle terminal bay in its accepted fail-closed parked block poststate.",
+      "projectId": "combined-zones-phase1",
+      "project": "Combined Zones Phase1",
+      "kind": "terminal_media_feature",
+      "status": "complete",
+      "categoryId": "surface-builds",
+      "category": "Surface builds",
+      "reference": {
+        "x": 2072,
+        "y": 131,
+        "z": -747,
+        "type": "exact catalog point",
+        "derived": false,
+        "display": "2072, 131, -747",
+        "tp": "/tp @s 2072 131 -747",
+        "note": "Catalog-authored reference; teleport safety is not independently verified."
+      },
+      "geometry": {
+        "type": "point",
+        "extent": {
+          "minX": null,
+          "maxX": null,
+          "minY": null,
+          "maxY": null,
+          "minZ": null,
+          "maxZ": null
+        },
+        "display": "x[—] y[—] z[—]",
+        "source": {
+          "type": "point",
+          "x": 2072,
+          "y": 131.2,
+          "z": -747.5
+        }
+      },
+      "tags": [
+        "combined-zones",
+        "g18",
+        "r12_bounded_transport",
+        "r13"
+      ],
+      "source": "combined-zones-r13-g18-terminal-post",
+      "sourceRef": "data/exports/combined-zones-r13-terminal-media-accepted-20260822T062000Z/10-cz-r12-b09-bounded-shuttle-terminal-bay.png"
+    },
+    {
+      "id": "wft_cc247fdfec2ac5a5022e627e",
+      "externalId": "CZ-R08-EMPTY-EIGHT-CAPPED-RETAIL-GALLERIAS",
+      "parentId": null,
+      "parentName": null,
+      "name": "Inventory the accepted north and south capped retail-shell bands in one overhead frame.",
+      "projectId": "combined-zones-phase1",
+      "project": "Combined Zones Phase1",
+      "kind": "terminal_media_feature",
+      "status": "complete",
+      "categoryId": "surface-builds",
+      "category": "Surface builds",
+      "reference": {
+        "x": 1750,
+        "y": 51,
+        "z": 100,
+        "type": "exact catalog point",
+        "derived": false,
+        "display": "1750, 51, 100",
+        "tp": "/tp @s 1750 51 100",
+        "note": "Catalog-authored reference; teleport safety is not independently verified."
+      },
+      "geometry": {
+        "type": "point",
+        "extent": {
+          "minX": null,
+          "maxX": null,
+          "minY": null,
+          "maxY": null,
+          "minZ": null,
+          "maxZ": null
+        },
+        "display": "x[—] y[—] z[—]",
+        "source": {
+          "type": "point",
+          "x": 1749.5,
+          "y": 50.5,
+          "z": 100
+        }
+      },
+      "tags": [
+        "combined-zones",
+        "g18",
+        "r08_empty_eight_retail",
+        "r13"
+      ],
+      "source": "combined-zones-r13-g18-terminal-post",
+      "sourceRef": "data/exports/combined-zones-r13-terminal-media-accepted-20260822T062000Z/03-cz-r08-empty-eight-capped-retail-gallerias.png"
+    },
+    {
+      "id": "wft_fec7eadcfb770d2ab8e12ea7",
+      "externalId": "CZ-R10-B03-INSTITUTIONAL-CONTACT-SEQUENCE",
+      "parentId": null,
+      "parentName": null,
+      "name": "Record the long passive B03 institutional inspection corridor and its material rhythm.",
+      "projectId": "combined-zones-phase1",
+      "project": "Combined Zones Phase1",
+      "kind": "terminal_media_feature",
+      "status": "complete",
+      "categoryId": "surface-builds",
+      "category": "Surface builds",
+      "reference": {
+        "x": 2090,
+        "y": 168,
+        "z": -868,
+        "type": "exact catalog point",
+        "derived": false,
+        "display": "2090, 168, -868",
+        "tp": "/tp @s 2090 168 -868",
+        "note": "Catalog-authored reference; teleport safety is not independently verified."
+      },
+      "geometry": {
+        "type": "point",
+        "extent": {
+          "minX": null,
+          "maxX": null,
+          "minY": null,
+          "maxY": null,
+          "minZ": null,
+          "maxZ": null
+        },
+        "display": "x[—] y[—] z[—]",
+        "source": {
+          "type": "point",
+          "x": 2090,
+          "y": 167.5,
+          "z": -868
+        }
+      },
+      "tags": [
+        "combined-zones",
+        "g18",
+        "r09_r10_circulation",
+        "r13"
+      ],
+      "source": "combined-zones-r13-g18-terminal-post",
+      "sourceRef": "data/exports/combined-zones-r13-terminal-media-accepted-20260822T062000Z/07-cz-r10-b03-institutional-contact-sequence.png"
+    },
+    {
+      "id": "wft_fa27721d00d1a58af1ecccf1",
+      "externalId": "CZ-R11-C1-BOUNDED-SURFACE-COMPONENT-02",
+      "parentId": null,
+      "parentName": null,
+      "name": "Show the accepted west hydraulic-isolation bridge/retained-cut surface closure.",
+      "projectId": "combined-zones-phase1",
+      "project": "Combined Zones Phase1",
+      "kind": "terminal_media_feature",
+      "status": "complete",
+      "categoryId": "surface-builds",
+      "category": "Surface builds",
+      "reference": {
+        "x": 1548,
+        "y": 67,
+        "z": -238,
+        "type": "exact catalog point",
+        "derived": false,
+        "display": "1548, 67, -238",
+        "tp": "/tp @s 1548 67 -238",
+        "note": "Catalog-authored reference; teleport safety is not independently verified."
+      },
+      "geometry": {
+        "type": "point",
+        "extent": {
+          "minX": null,
+          "maxX": null,
+          "minY": null,
+          "maxY": null,
+          "minZ": null,
+          "maxZ": null
+        },
+        "display": "x[—] y[—] z[—]",
+        "source": {
+          "type": "point",
+          "x": 1548,
+          "y": 66.5,
+          "z": -238
+        }
+      },
+      "tags": [
+        "combined-zones",
+        "g18",
+        "r11_bounded_c1_surfaces",
+        "r13"
+      ],
+      "source": "combined-zones-r13-g18-terminal-post",
+      "sourceRef": "data/exports/combined-zones-r13-terminal-media-accepted-20260822T062000Z/09-cz-r11-c1-bounded-surface-component-02.png"
+    },
+    {
+      "id": "wft_8cc7030673e0f144fa4c1a18",
+      "externalId": "CZ-R11-C1-BOUNDED-SURFACE-COMPONENT-01",
+      "parentId": null,
+      "parentName": null,
+      "name": "Show the largest accepted bounded C1 highway/pedestrian surface component.",
+      "projectId": "combined-zones-phase1",
+      "project": "Combined Zones Phase1",
+      "kind": "terminal_media_feature",
+      "status": "complete",
+      "categoryId": "surface-builds",
+      "category": "Surface builds",
+      "reference": {
+        "x": 925,
+        "y": 105,
+        "z": 55,
+        "type": "exact catalog point",
+        "derived": false,
+        "display": "925, 105, 55",
+        "tp": "/tp @s 925 105 55",
+        "note": "Catalog-authored reference; teleport safety is not independently verified."
+      },
+      "geometry": {
+        "type": "point",
+        "extent": {
+          "minX": null,
+          "maxX": null,
+          "minY": null,
+          "maxY": null,
+          "minZ": null,
+          "maxZ": null
+        },
+        "display": "x[—] y[—] z[—]",
+        "source": {
+          "type": "point",
+          "x": 925,
+          "y": 104.5,
+          "z": 55
+        }
+      },
+      "tags": [
+        "combined-zones",
+        "g18",
+        "r11_bounded_c1_surfaces",
+        "r13"
+      ],
+      "source": "combined-zones-r13-g18-terminal-post",
+      "sourceRef": "data/exports/combined-zones-r13-terminal-media-accepted-20260822T062000Z/08-cz-r11-c1-bounded-surface-component-01.png"
+    },
     {
       "id": "wft_5a42ed8ccbc1c191",
       "externalId": "P01-BIKE-CORRAL",
@@ -7172,6 +7516,153 @@
       ],
       "source": "manifest",
       "sourceRef": "data/world-review/active-interior-register-2026-07-27.json"
+    },
+    {
+      "id": "wft_333f501678fddd007d9fcc10",
+      "externalId": "CZ-R07-B03-NORTH-PORTAL-COLLAR",
+      "parentId": null,
+      "parentName": null,
+      "name": "Show the accepted north stone-brick portal collar and preserved route aperture.",
+      "projectId": "combined-zones-phase1",
+      "project": "Combined Zones Phase1",
+      "kind": "terminal_media_feature",
+      "status": "complete",
+      "categoryId": "passageway-access",
+      "category": "PassageWay access",
+      "reference": {
+        "x": 2237,
+        "y": 168,
+        "z": -748,
+        "type": "exact catalog point",
+        "derived": false,
+        "display": "2237, 168, -748",
+        "tp": "/tp @s 2237 168 -748",
+        "note": "Catalog-authored reference; teleport safety is not independently verified."
+      },
+      "geometry": {
+        "type": "point",
+        "extent": {
+          "minX": null,
+          "maxX": null,
+          "minY": null,
+          "maxY": null,
+          "minZ": null,
+          "maxZ": null
+        },
+        "display": "x[—] y[—] z[—]",
+        "source": {
+          "type": "point",
+          "x": 2236.5,
+          "y": 167.5,
+          "z": -748
+        }
+      },
+      "tags": [
+        "combined-zones",
+        "g18",
+        "r07_architecture",
+        "r13"
+      ],
+      "source": "combined-zones-r13-g18-terminal-post",
+      "sourceRef": "data/exports/combined-zones-r13-terminal-media-accepted-20260822T062000Z/01-cz-r07-b03-north-portal-collar.png"
+    },
+    {
+      "id": "wft_62e567e3c98c2c6144773f3a",
+      "externalId": "CZ-R07-B03-SOUTH-PORTAL-COLLAR",
+      "parentId": null,
+      "parentName": null,
+      "name": "Show the accepted south collar as the matching architectural endpoint.",
+      "projectId": "combined-zones-phase1",
+      "project": "Combined Zones Phase1",
+      "kind": "terminal_media_feature",
+      "status": "complete",
+      "categoryId": "passageway-access",
+      "category": "PassageWay access",
+      "reference": {
+        "x": 2237,
+        "y": 168,
+        "z": -868,
+        "type": "exact catalog point",
+        "derived": false,
+        "display": "2237, 168, -868",
+        "tp": "/tp @s 2237 168 -868",
+        "note": "Catalog-authored reference; teleport safety is not independently verified."
+      },
+      "geometry": {
+        "type": "point",
+        "extent": {
+          "minX": null,
+          "maxX": null,
+          "minY": null,
+          "maxY": null,
+          "minZ": null,
+          "maxZ": null
+        },
+        "display": "x[—] y[—] z[—]",
+        "source": {
+          "type": "point",
+          "x": 2236.5,
+          "y": 167.5,
+          "z": -868
+        }
+      },
+      "tags": [
+        "combined-zones",
+        "g18",
+        "r07_architecture",
+        "r13"
+      ],
+      "source": "combined-zones-r13-g18-terminal-post",
+      "sourceRef": "data/exports/combined-zones-r13-terminal-media-accepted-20260822T062000Z/02-cz-r07-b03-south-portal-collar.png"
+    },
+    {
+      "id": "wft_e78248669d5e35d0988cb4a7",
+      "externalId": "CZ-R09-B07-BOUNDED-UPPER-INSPECTION-CIRCULATION",
+      "parentId": null,
+      "parentName": null,
+      "name": "Show the bounded upper B07 route retained closed-headhouse context without implying visibility of the full underground stair.",
+      "projectId": "combined-zones-phase1",
+      "project": "Combined Zones Phase1",
+      "kind": "terminal_media_feature",
+      "status": "complete",
+      "categoryId": "passageway-access",
+      "category": "PassageWay access",
+      "reference": {
+        "x": 2108,
+        "y": 72,
+        "z": -398,
+        "type": "exact catalog point",
+        "derived": false,
+        "display": "2108, 72, -398",
+        "tp": "/tp @s 2108 72 -398",
+        "note": "Catalog-authored reference; teleport safety is not independently verified."
+      },
+      "geometry": {
+        "type": "point",
+        "extent": {
+          "minX": null,
+          "maxX": null,
+          "minY": null,
+          "maxY": null,
+          "minZ": null,
+          "maxZ": null
+        },
+        "display": "x[—] y[—] z[—]",
+        "source": {
+          "type": "point",
+          "x": 2108,
+          "y": 72,
+          "z": -398
+        }
+      },
+      "tags": [
+        "combined-zones",
+        "g18",
+        "r09_r10_circulation",
+        "r13"
+      ],
+      "source": "combined-zones-r13-g18-terminal-post",
+      "sourceRef": "data/exports/combined-zones-r13-terminal-media-accepted-20260822T062000Z/06-cz-r09-b07-bounded-upper-inspection-circulation.png"
     },
     {
       "id": "wft_48f2b17159226d47",
@@ -23590,6 +24081,55 @@
       ],
       "source": "manifest",
       "sourceRef": "data/world-review/active-interior-register-2026-07-27.json"
+    },
+    {
+      "id": "wft_fae85d3bcb7f8198259c801c",
+      "externalId": "CZ-R08-EMPTY-EIGHT-EG-B-PASSIVE-REFUGE-CORE",
+      "parentId": null,
+      "parentName": null,
+      "name": "Show the passive internal wayfinding node without implying egress or mechanism commissioning.",
+      "projectId": "combined-zones-phase1",
+      "project": "Combined Zones Phase1",
+      "kind": "terminal_media_feature",
+      "status": "complete",
+      "categoryId": "route-station-infrastructure",
+      "category": "Route / station infrastructure",
+      "reference": {
+        "x": 1852,
+        "y": 48,
+        "z": 151,
+        "type": "exact catalog point",
+        "derived": false,
+        "display": "1852, 48, 151",
+        "tp": "/tp @s 1852 48 151",
+        "note": "Catalog-authored reference; teleport safety is not independently verified."
+      },
+      "geometry": {
+        "type": "point",
+        "extent": {
+          "minX": null,
+          "maxX": null,
+          "minY": null,
+          "maxY": null,
+          "minZ": null,
+          "maxZ": null
+        },
+        "display": "x[—] y[—] z[—]",
+        "source": {
+          "type": "point",
+          "x": 1852,
+          "y": 48,
+          "z": 151
+        }
+      },
+      "tags": [
+        "combined-zones",
+        "g18",
+        "r08_empty_eight_retail",
+        "r13"
+      ],
+      "source": "combined-zones-r13-g18-terminal-post",
+      "sourceRef": "data/exports/combined-zones-r13-terminal-media-accepted-20260822T062000Z/05-cz-r08-empty-eight-eg-b-passive-refuge-core.png"
     },
     {
       "id": "wft_dd2f4e03af387a62",

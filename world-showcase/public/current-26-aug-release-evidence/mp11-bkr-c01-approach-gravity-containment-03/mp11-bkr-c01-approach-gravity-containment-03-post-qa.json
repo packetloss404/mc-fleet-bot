@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "id": "MP11-BKR-C01-APPROACH-GRAVITY-CONTAINMENT-03-POST-QA",
+  "status": "POST_RELEASE_QA_PASS",
+  "mutationAuthority": false,
+  "source": {
+    "manifest": "data/world-review/mp11-bkr-c01-approach-gravity-containment-03-live-20260828T000500Z/rebound-buildops/mp11-bkr-c01-approach-gravity-containment-03.manifest.json",
+    "manifestSha256": "af20e01844a584938b76471f9f92b1c3471fcba04d7e456e4ceaede4eae96768",
+    "postSnapshot": "data/worldsnap-mp11-bkr-c01-approach-gravity-containment-03-post-20260828T000500Z",
+    "postCaptureManifest": "data/worldsnap-mp11-bkr-c01-approach-gravity-containment-03-post-20260828T000500Z/combined-zones-complete-save-capture.json",
+    "postCaptureManifestSha256": "5d0d7b36a13925557196f526efd5c6e651bc4c77750ad0c6e116f5d08897a441",
+    "postCaptureId": "combined-zones-e3eb6160041b428492097df47e336ed7"
+  },
+  "checks": {
+    "canonicalTargets": {
+      "expected": 116,
+      "mismatches": []
+    },
+    "retainedHalo": {
+      "expected": 284,
+      "mismatches": []
+    },
+    "dryGravityProtectedFreeHalo": {
+      "expectedCells": 400,
+      "hazards": []
+    },
+    "blockEntityExclusion": {
+      "failures": []
+    },
+    "currentReturn": {
+      "stationCount": 104,
+      "failures": []
+    },
+    "independentReturn": {
+      "stationCount": 111,
+      "failures": []
+    }
+  },
+  "nonClaims": [
+    "QA does not open, widen, reclassify, or commission an endpoint or return.",
+    "QA is valid only after a separately guarded execution and fresh immutable post capture."
+  ],
+  "reportIdentitySha256": "980d6b7684ad9639a987c9f0d6a41fd99cf92a9c8b0b151db12a03c081d764c1"
+}

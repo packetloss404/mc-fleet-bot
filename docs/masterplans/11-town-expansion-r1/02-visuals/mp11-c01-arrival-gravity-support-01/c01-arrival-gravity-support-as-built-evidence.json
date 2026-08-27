@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 1,
+  "id": "MP11-C01-ARRIVAL-GRAVITY-SUPPORT-01-AS-BUILT-VISUALS",
+  "status": "PASS_EXECUTED_POSTSTATE_SOURCE_BOUND_NOT_COMMISSIONED",
+  "readOnly": true,
+  "mutationAuthority": false,
+  "worldMutated": false,
+  "bindings": {
+    "guardedLedger": {
+      "path": "data/world-review/mp11-c01-arrival-gravity-support-live-20260827T043000Z/guarded-release-ledger.json",
+      "sha256": "6d5bca08e3da1a210477bc41d2caaa27eaca497c790150530c8e3610d49a24ef",
+      "status": "EXECUTED_POSTSTATE_VERIFIED_REVERSIBLE"
+    },
+    "independentPostQa": {
+      "path": "data/world-review/mp11-c01-arrival-gravity-support-live-20260827T043000Z/independent-post-qa.json",
+      "sha256": "88b81b13d0312f2c864cb9312a1c640b9c04f45d40c254b57d6ab2339bbe55ef",
+      "status": "PASS_C01_ARRIVAL_GRAVITY_SUPPORT_POSTSTATE_VERIFIED"
+    },
+    "interfaceAssertion": {
+      "path": "data/world-review/mp11-c01-arrival-gravity-support-live-20260827T043000Z/interface-assertion.json",
+      "sha256": "f034a2cb8676967971ca8c2afcb179811f8447cb9a82826da60cb2b7c9a98927",
+      "status": "PASS_C01_ARRIVAL_GRAVITY_SUPPORT_EXACT_INTERFACE_ASSERTION"
+    },
+    "manifest": {
+      "path": "data/world-review/mp11-c01-arrival-gravity-support-live-20260827T043000Z/rebound/compile/mp11-c01-arrival-gravity-support-01.manifest.json",
+      "sha256": "004c5e583fead180adea0b321a516c2e85778b57f28c026fa0aea0539dfda965",
+      "identity": "f520b2c44e5d7696c86b102d022bacc9a6720917184ac451cec0e8f093ce8d3f"
+    },
+    "immutableSource": {
+      "root": "data/worldsnap-mp11-c01-arrival-gravity-support-source-20260827T043000Z",
+      "captureId": "combined-zones-0eab5e04dd1646afaa7269ea660f9ebd"
+    },
+    "immutablePost": {
+      "root": "data/worldsnap-mp11-c01-arrival-gravity-support-post-20260827T043000Z",
+      "captureId": "combined-zones-0848ed2a1d984d569c31b73e63df2aed"
+    }
+  },
+  "geometry": {
+    "targetCount": 33,
+    "targetState": "minecraft:polished_deepslate",
+    "targetCoordinateSetSha256": "67b47415d8356b387c0ed3ca269b5d259d788cf9ca5a9e3975721a75692bf831",
+    "interactionHaloCellCount": 219,
+    "interactionHaloCoordinateSetSha256": "d442685e5ecb757b2bb0cf374669238f4e7f0c771978f99c6b9f088cb6a7b0a6",
+    "cadenceRetainedOverlapCount": 4,
+    "cadenceRetainedOverlapStateSha256": "6a18060d9fc736ced71dce7d53af94ea47ef828a3ab62c17d93f81553c6a55f6",
+    "retainedStableGravelCount": 1,
+    "retainedStableGravelStateSha256": "0436a2e12feed9bceae785c4cf8e25527a55be32425ddd40b18cf26c6d74e5c7",
+    "planLayer": 41,
+    "section": {
+      "x": 752,
+      "zMin": -85,
+      "zMax": -77,
+      "yRows": [
+        44,
+        43,
+        42,
+        41,
+        40
+      ]
+    },
+    "targets": [
+      {
+        "x": 752,
+        "y": 41,
+        "z": -84,
+        "role": "base-liner"
+      },
+      {
+        "x": 751,
+        "y": 41,
+        "z": -83,
+        "role": "base-liner"
+      },
+      {
+        "x": 752,
+        "y": 41,
+        "z": -83,
+        "role": "base-liner"
+      },
+      {
+        "x": 753,
+        "y": 41,
+        "z": -83,
+        "role": "base-liner"
+      },
+      {
+        "x": 754,
+        "y": 41,
+        "z": -83,
+        "role": "base-liner"
+      },
+      {
+        "x": 755,
+        "y": 41,
+        "z": -83,
+        "role": "base-liner"
+      },
+      {
+        "x": 751,
+        "y": 41,
+        "z": -82,
+        "role": "base-liner"
+      },
+      {
+        "x": 752,
+        "y": 41,
+        "z": -82,
+        "role": "base-liner"
+      },
+      {
+        "x": 753,
+        "y": 41,
+        "z": -82,
+        "role": "base-liner"
+      },
+      {
+        "x": 754,
+        "y": 41,
+        "z": -82,
+        "role": "base-liner"
+      },
+      {
+        "x": 755,
+        "y": 41,
+        "z": -82,
+        "role": "base-liner"
+      },
+      {
+        "x": 756,
+        "y": 41,
+        "z": -82,
+        "role": "base-liner"
+      },
+      {
+        "x": 751,
+        "y": 41,
+        "z": -81,
+        "role": "base-liner"
+      },
+      {
+        "x": 752,
+        "y": 41,
+        "z": -81,
+        "role": "base-liner"
+      },
+      {
+        "x": 753,
+        "y": 41,
+        "z": -81,
+        "role": "base-liner"
+      },
+      {
+        "x": 754,
+        "y": 41,
+        "z": -81,
+        "role": "base-liner"
+      },
+      {
+        "x": 755,
+        "y": 41,
+        "z": -81,
+        "role": "base-liner"
+      },
+      {
+        "x": 756,
+        "y": 41,
+        "z": -81,
+        "role": "base-liner"
+      },
+      {
+        "x": 757,
+        "y": 41,
+        "z": -81,
+        "role": "base-liner"
+      },
+      {
+        "x": 752,
+        "y": 41,
+        "z": -80,
+        "role": "base-liner"
+      },
+      {
+        "x": 753,
+        "y": 41,
+        "z": -80,
+        "role": "base-liner"
+      },
+      {
+        "x": 754,
+        "y": 41,
+        "z": -80,
+        "role": "base-liner"
+      },
+      {
+        "x": 755,
+        "y": 41,
+        "z": -80,
+        "role": "base-liner"
+      },
+      {
+        "x": 756,
+        "y": 41,
+        "z": -80,
+        "role": "base-liner"
+      },
+      {
+        "x": 757,
+        "y": 41,
+        "z": -80,
+        "role": "base-liner"
+      },
+      {
+        "x": 758,
+        "y": 41,
+        "z": -80,
+        "role": "base-liner"
+      },
+      {
+        "x": 753,
+        "y": 41,
+        "z": -79,
+        "role": "base-liner"
+      },
+      {
+        "x": 754,
+        "y": 41,
+        "z": -79,
+        "role": "base-liner"
+      },
+      {
+        "x": 755,
+        "y": 41,
+        "z": -79,
+        "role": "base-liner"
+      },
+      {
+        "x": 758,
+        "y": 41,
+        "z": -79,
+        "role": "base-liner"
+      },
+      {
+        "x": 755,
+        "y": 41,
+        "z": -78,
+        "role": "base-liner"
+      },
+      {
+        "x": 758,
+        "y": 41,
+        "z": -78,
+        "role": "base-liner"
+      },
+      {
+        "x": 752,
+        "y": 42,
+        "z": -84,
+        "role": "upper-liner"
+      }
+    ],
+    "retainedCadenceCells": [
+      {
+        "cell": {
+          "x": 759,
+          "y": 41,
+          "z": -81
+        },
+        "sourceState": "minecraft:stone"
+      },
+      {
+        "cell": {
+          "x": 759,
+          "y": 41,
+          "z": -80
+        },
+        "sourceState": "minecraft:stone"
+      },
+      {
+        "cell": {
+          "x": 759,
+          "y": 42,
+          "z": -81
+        },
+        "sourceState": "minecraft:light_blue_concrete"
+      },
+      {
+        "cell": {
+          "x": 759,
+          "y": 42,
+          "z": -80
+        },
+        "sourceState": "minecraft:polished_blackstone"
+      }
+    ],
+    "retainedStableGravel": {
+      "cell": {
+        "x": 757,
+        "y": 41,
+        "z": -77
+      },
+      "sourceState": "minecraft:gravel",
+      "supportCell": {
+        "x": 757,
+        "y": 40,
+        "z": -77
+      },
+      "supportState": "minecraft:polished_deepslate"
+    }
+  },
+  "asBuiltChecks": {
+    "canonicalTargetCount": 33,
+    "canonicalTargetState": "minecraft:polished_deepslate",
+    "floorSupportCount": 7,
+    "twoClearHeadroomAtEverySupport": true,
+    "rollbackPoststatePreflight": "33/33 guarded inverse cells pass",
+    "forwardAndRollbackExactInverse": true
+  },
+  "nonClaims": [
+    "No world read or mutation occurs while generating this publication package.",
+    "This publication does not commission a public route, passenger service, egress, rail, platform, or power system."
+  ]
+}

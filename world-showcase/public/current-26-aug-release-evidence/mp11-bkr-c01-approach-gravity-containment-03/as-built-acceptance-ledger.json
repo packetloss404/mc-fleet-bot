@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "MP11-BKR-C01-APPROACH-GRAVITY-CONTAINMENT-03-ACCEPTANCE",
+  "releaseId": "MP11-BKR-C01-APPROACH-GRAVITY-CONTAINMENT-03",
+  "status": "EXECUTED_POSTSTATE_VERIFIED_REVERSIBLE_CONTAINMENT_ONLY",
+  "acceptedAtUtc": "2026-08-26T23:40:00.000Z",
+  "scope": {
+    "componentId": "EXP-G05",
+    "bounds": "x=734..739,y=60..65,z=-42..-34",
+    "changedCellCount": 116,
+    "targetState": "minecraft:smooth_stone",
+    "interactionHaloCellCount": 400,
+    "nonClaims": [
+      "No route widening, bypass, endpoint opening, egress, public access, or access-class change.",
+      "No fluid, container, block-entity, protected-core, or return-path interaction outside the exact verified halo."
+    ]
+  },
+  "evidence": {
+    "freshKernel": {
+      "path": "data/world-review/mp11-bkr-c01-approach-gravity-containment-03-live-20260828T000500Z/fresh-kernel-ledger.json",
+      "sha256": "6543db83f2efd4b31278cc74f20274f473620b69fa6b4069ee989bd59fcd932a",
+      "allStages": "PASS"
+    },
+    "strictForward": {
+      "path": "data/world-review/mp11-bkr-c01-approach-gravity-containment-03-live-20260828T000500Z/forward-execution.json",
+      "sha256": "3eadb639e58406985063bd2a3857c65d898615b94f0a00cae7ede8e45f8b9f63",
+      "exactOperationCount": 116
+    },
+    "rollbackPoststate": {
+      "path": "data/world-review/mp11-bkr-c01-approach-gravity-containment-03-live-20260828T000500Z/rollback-poststate-preflight.json",
+      "sha256": "f429fe492ae39e81c9eec6eb9980f4218f9e2793a28eb5713b44675fb7ad0872",
+      "exactApplicableCount": 116
+    },
+    "independentPostQa": {
+      "path": "data/world-review/mp11-bkr-c01-approach-gravity-containment-03-live-20260828T000500Z/independent-post-qa/mp11-bkr-c01-approach-gravity-containment-03-post-qa.json",
+      "sha256": "52e8022ec82928af15614140653f337c30b033366c033851a0d954450087d4b6",
+      "status": "POST_RELEASE_QA_PASS",
+      "verified": ["116 target states", "284 retained halo states", "400-cell dry/gravity/protected-free halo", "zero block entities", "104 current-return stations", "111 independent-return stations"]
+    },
+    "postSnapshot": "data/worldsnap-mp11-bkr-c01-approach-gravity-containment-03-post-20260828T000500Z"
+  }
+}

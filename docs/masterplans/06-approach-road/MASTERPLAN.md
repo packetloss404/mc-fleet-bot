@@ -151,3 +151,37 @@ Primary local evidence used:
 - [Town Expansion global cross-scope audit](../../redevelopment/2026-07-28-town-expansion/town-expansion-global-cross-scope-interface-audit.md), used only to identify the later regional ownership dependency.
 
 **Derived information:** the union bounds and interface commentary are calculations/interpretation from those sources. They are not new surveyed geometry. No internet source, live server, fleet API, systemd service, RCON session, or database write was used.
+
+## 10. 2026-08 circulation readiness addendum
+
+The road's seven-block width is historical alignment evidence, not a current pedestrian or egress certificate. Before road, bridge, or Gatehead work, `CIRC-00-CENSUS` must record grade, bridge-stair geometry, shoulders, lighting, stopping bay, clear pedestrian edge, crossings, and both-direction walking. Preserve the seven-wide carriageway; add a two-clear-wide pedestrian edge (three at civic/visitor frontage) only where a fresh exact-cell survey proves it conflict-free. No public path may contain an unannounced one-block step. See [`cross-district-circulation-audit-20260822.md`](../../../data/world-review/cross-district-circulation-audit-20260822.md), `CIRC-WL-ARRIVAL-01`.
+
+The fresh interior census correctly reports no road structures; it therefore
+neither clears nor condemns the road. `CIRC-WL-ARRIVAL-ROAD-01` was the
+concrete next package: a six-anchor road/bridge/shoulder/lighting/crossing
+profile and a separate pedestrian edge, with Town Expansion ownership checked
+before any cells change. See [the public-realm defect lane](../../redevelopment/2026-08-22-public-realm-defect-lane.md).
+
+`CIRC-WL-ARRIVAL-ROAD-01` was **executed and post-state verified** on
+2026-08-24: a 2-wide gray-concrete pedestrian edge (85 exact targets; 18
+support fills + 67 edge-pave cells) beside the preserved 7-wide carriageway at
+the conflict-free columns proven by the exact-cell survey. The 7-wide
+carriageway is preserved exactly; the remaining 269 survey candidates are
+scoped holds (terrain-rising, deep-elevated, fluid-base, or overhang reasons).
+See
+[`CIRC-WL-ARRIVAL-ROAD-01-RELEASE.md`](./CIRC-WL-ARRIVAL-ROAD-01-RELEASE.md)
+and the live evidence ledger
+`data/world-review/approach-road-edge-live-20260824T191620Z/evidence-ledger.json`.
+The release does not commission a route, lighting cadence, stopping bay, or
+bridge accessibility.
+
+### Endpoint Elevated Crossing 01 — accepted bounded release
+
+`MP06-ENDPOINT-ELEVATED-CROSSING-01` subsequently closed one exact elevated
+13×9 road crossing with 149 new cells while retaining all 351 lower-road floor
+and clearway cells. It has fresh complete source/post captures, strict
+`149/149` execution with no no-ops, exact rollback proof, and independent
+two-level QA (`105/105` upper stations, `98/98` directed upper pairs, and
+`117/117` lower stations). It does not establish external lower-road endpoint
+continuity, regional road completion, drainage acceptance, or accessibility.
+See [the release record](MP06-ENDPOINT-ELEVATED-CROSSING-01-RELEASE.md).

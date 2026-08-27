@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">MP08 C1 bilateral containment acceptance gate</title>
+  <desc id="desc">A source-bound decision map showing the exact C1, Cavern A, and Cavern B ownership sets and the two reciprocal interface acceptances required before a fresh release compiler may be considered.</desc>
+  <rect width="1280" height="720" fill="#0f172a"/>
+  <text x="44" y="48" fill="#f8fafc" font-family="sans-serif" font-size="26" font-weight="700">MP08 C1 bilateral acceptance gate 01</text>
+  <text x="44" y="75" fill="#cbd5e1" font-family="sans-serif" font-size="14">Source-bound design-input gate — never a physical release, route-opening, or RCON authority</text>
+  <rect x="74" y="151" width="1130" height="115" rx="8" fill="#164e63" stroke="#38bdf8" stroke-width="2"/>
+  <rect x="142" y="172" width="994" height="73" rx="4" fill="#14532d" stroke="#4ade80" stroke-width="2"/>
+  <rect x="82" y="177" width="60" height="63" fill="#7c2d12" stroke="#facc15" stroke-width="2"/>
+  <rect x="1136" y="177" width="60" height="63" fill="#7c2d12" stroke="#facc15" stroke-width="2"/>
+  <text x="76" y="134" fill="#e2e8f0" font-family="sans-serif" font-size="17">Longitudinal C1 setout (z=11…74)</text>
+  <text x="86" y="290" fill="#facc15" font-family="sans-serif" font-size="14">Cavern A: 12 exact shared cells</text>
+  <text x="465" y="290" fill="#86efac" font-family="sans-serif" font-size="14">C1: 920 exact containment / liner / vestibule cells</text>
+  <text x="1034" y="290" fill="#facc15" font-family="sans-serif" font-size="14">Cavern B: 12 exact shared cells</text>
+  <line x1="150" y1="355" x2="1130" y2="355" stroke="#64748b" stroke-width="2"/>
+  <rect x="74" y="391" width="334" height="168" rx="8" fill="#172554" stroke="#38bdf8" stroke-width="2"/>
+  <text x="98" y="425" fill="#bae6fd" font-family="sans-serif" font-size="18" font-weight="700">1. C1 commitment</text>
+  <text x="98" y="457" fill="#e2e8f0" font-family="sans-serif" font-size="14">Owner: distinct named C1 owner</text>
+  <text x="98" y="482" fill="#e2e8f0" font-family="sans-serif" font-size="14">Set: 920 cells / 99634fce…b6cc71de</text>
+  <text x="98" y="507" fill="#e2e8f0" font-family="sans-serif" font-size="14">Complete source, target, retained, rollback states</text>
+  <text x="98" y="532" fill="#fca5a5" font-family="sans-serif" font-size="14">Sealed liner: no fluid, discharge, or outfall</text>
+  <rect x="473" y="391" width="334" height="168" rx="8" fill="#3f2b0d" stroke="#facc15" stroke-width="2"/>
+  <text x="497" y="425" fill="#fde68a" font-family="sans-serif" font-size="18" font-weight="700">2. Cavern A interface</text>
+  <text x="497" y="457" fill="#e2e8f0" font-family="sans-serif" font-size="14">Door hash: d9ecefbf…60cbc507</text>
+  <text x="497" y="482" fill="#e2e8f0" font-family="sans-serif" font-size="14">Receiver hash: c5744681…f163553b</text>
+  <text x="497" y="507" fill="#e2e8f0" font-family="sans-serif" font-size="14">Closed manual / unpowered / no NBT / no actuator</text>
+  <text x="497" y="532" fill="#fca5a5" font-family="sans-serif" font-size="14">Exact outer return + two-way normal-walk proof</text>
+  <rect x="872" y="391" width="334" height="168" rx="8" fill="#3f2b0d" stroke="#facc15" stroke-width="2"/>
+  <text x="896" y="425" fill="#fde68a" font-family="sans-serif" font-size="18" font-weight="700">3. Cavern B interface</text>
+  <text x="896" y="457" fill="#e2e8f0" font-family="sans-serif" font-size="14">Door hash: 993c609e…14c81818</text>
+  <text x="896" y="482" fill="#e2e8f0" font-family="sans-serif" font-size="14">Receiver hash: 1920a32a…30661785d</text>
+  <text x="896" y="507" fill="#e2e8f0" font-family="sans-serif" font-size="14">Closed manual / unpowered / no NBT / no actuator</text>
+  <text x="896" y="532" fill="#fca5a5" font-family="sans-serif" font-size="14">Exact outer return + two-way normal-walk proof</text>
+  <rect x="128" y="611" width="1024" height="60" rx="8" fill="#3f1720" stroke="#fb7185" stroke-width="2"/>
+  <text x="160" y="647" fill="#fecdd3" font-family="sans-serif" font-size="16">All three commitments must bind source snapshot 3fc37430…e8c87f8d / state b86b54dd…d9dcb7f0. An accepted decision remains design input only; a fresh guarded release kernel is still mandatory.</text>
+</svg>

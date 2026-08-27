@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "sys03-cobalt-wl-second-controlled-egress-governor-standing-execution-authorization",
+  "projectId": "combined-zones-phase1",
+  "recordedAtUtc": "2026-08-26T20:15:00Z",
+  "status": "AUTHORIZED_STANDING_SCOPED_EXECUTION",
+  "revoked": false,
+  "ownerDirective": {
+    "speaker": "Governor",
+    "recordedDate": "2026-08-26",
+    "exactText": "i'm the governmor of the minecraft world and I've come to cut red tape",
+    "interpretation": "The Governor delegates the finite second controlled Westlight discharge to the implementation team. The delegated authority removes external-signature waiting only; every scoped hard-safety control remains mandatory."
+  },
+  "authorizedReleaseNodes": [
+    "CZ-SYS03-COBALT-WL-SECOND-CONTROLLED-EGRESS"
+  ],
+  "allowNonMvpScopes": true,
+  "mvpBoundary": {
+    "included": "Only the exact sealed Westlight second controlled egress transaction supplied to the scoped runner.",
+    "excludedScopeIds": [],
+    "exclusionRule": "No passenger/public opening, rail extension, vehicle, power, signal, public platform, or route commissioning is authorized."
+  },
+  "hardSafetyKernel": [
+    { "id": "exact-release-and-inverse", "required": true, "rule": "Independent structural QA binds all canonical source/target states, exact package inversion, water containment, and exact target ownership." },
+    { "id": "fresh-source-snapshot-and-preflight", "required": true, "rule": "Every invocation captures a complete immutable source immediately before exact preflight." },
+    { "id": "strict-forward-and-rollback-parser-checks", "required": true, "rule": "Every forward and inverse operation passes strict-noop parser validation before mutation." },
+    { "id": "block-and-live-entity-clearance", "required": true, "rule": "The exact operation set must be block-entity clear and fresh-live-entity clear." },
+    { "id": "strict-execution-with-compensating-rollback", "required": true, "rule": "Forward execution is strict and journaled; any failure invokes the exact inverse in reverse order." },
+    { "id": "post-snapshot-and-rollback-poststate-verification", "required": true, "rule": "A fresh immutable post, rollback-poststate preflight, and independent controlled-egress QA are required before acceptance." }
+  ],
+  "operationalControls": {
+    "defaultMode": "PREPARE_ONLY",
+    "liveExecutionOptIn": "--execute",
+    "globalGateDependency": "NONE",
+    "scopeLocalFailureRule": "A failed check blocks only this finite controlled-egress package."
+  },
+  "authorizationPayloadSha256": "bdfdc9da3b1bb06e4dbaf5c1baae09dd9837e0f009a7c10a7c3a5ca161748d5b"
+}

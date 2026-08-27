@@ -8,11 +8,11 @@ This audit validates one supplied saved-world root. A PASS requires nonempty `re
 
 | Field | Value |
 |---|---|
-| Supplied root | `data/worldsnap-combined-zones-phase0-rerun-post-20260804T021358Z` |
+| Supplied root | `data/worldsnap` |
 | Direct world shape | no |
 | Capture manifest | absent |
-| Required members | 51 |
-| Required bytes | 290946492 |
+| Required members | 32 |
+| Required bytes | 205145659 |
 | Complete-save SHA-256 | not sealed |
 | World edit authorized | no |
 
@@ -26,8 +26,8 @@ The supplied root must contain `combined-zones-complete-save-capture.json` with 
 |---|---|---|
 | CS01-SUPPLIED-ROOT | **PASS** | The supplied path is a regular non-symlink directory. |
 | CS02-DEPENDENCY-SAMPLE-EXCLUSION | **PASS** | The supplied and resolved paths are outside dependency/sample trees. |
-| CS03-UNAMBIGUOUS-WORLD-ROOT | **HOLD** | The supplied directory is not the direct unambiguous world root; nested candidates: 0. |
-| CS04-REGION-MCA-SET | **PASS** | 51 regular MCA member(s) found. |
+| CS03-UNAMBIGUOUS-WORLD-ROOT | **HOLD** | The supplied directory is not the direct unambiguous world root; nested candidates: 1. |
+| CS04-REGION-MCA-SET | **PASS** | 32 regular MCA member(s) found. |
 | CS04-ENTITIES-MCA-SET | **HOLD** | entities/ is absent, non-directory, or a symlink. |
 | CS04-POI-MCA-SET | **HOLD** | poi/ is absent, non-directory, or a symlink. |
 | CS05-LEVEL-DAT | **HOLD** | level.dat is absent, empty, non-regular, or a symlink. |
@@ -43,61 +43,42 @@ The supplied root must contain `combined-zones-complete-save-capture.json` with 
 
 | Path | Bytes | SHA-256 | Stable read |
 |---|---:|---|---|
-| `region/r.-1.-1.mca` | 9895936 | `eeb67cafc6171bf92dd0a9616db417cf45f860972fb36852cc493d6450719499` | PASS |
-| `region/r.-1.-2.mca` | 7733248 | `28f083bdc0afc8a30912fa8a96eaa049a5a632c85b44185c62615e8e72b686e4` | PASS |
-| `region/r.-1.-3.mca` | 5922816 | `4ea2c6e8331b1598ad0c9a83d3fa12ed94b88823ce25128c2be9dccd24bdb2c5` | PASS |
-| `region/r.-1.-4.mca` | 503808 | `0c06b9667d551bd78b5e2494d0c7b5a667c8a9060611982bea9633479d75de4d` | PASS |
-| `region/r.-1.0.mca` | 8744960 | `5c0ab5f5f0518e2257a9f758381ed083000a00e8308096281199c0ec358739da` | PASS |
+| `region/r.-1.-1.mca` | 9895936 | `b5b48fcf58d24c56f04d10c4f958e556e8a9438df60625206dc07f911ca3c9f8` | PASS |
+| `region/r.-1.-2.mca` | 7733248 | `45b68740227f39a4e60c853611502e7d57eac22e1f6d0e4c0ee9d64267bbfb72` | PASS |
+| `region/r.-1.-3.mca` | 5906432 | `ccffda4e0dc5298bcb8400104ac30026353e06c8469c1b4805e7810fb1ef738b` | PASS |
+| `region/r.-1.-4.mca` | 450560 | `96d6853f65fd3b3bd9ca4eee4ca229ee68ee6662acc0ba38538d78767ed7031f` | PASS |
+| `region/r.-1.0.mca` | 8744960 | `48490f5aca6ae74d6321c74be9e6e7d98017833f344c66ea49bf35baf4251d28` | PASS |
 | `region/r.-1.1.mca` | 1654784 | `c4d63e4c42d77783b66919501d3f2a8f2562779796683144744e5941078a87ba` | PASS |
-| `region/r.-2.-1.mca` | 7696384 | `f6c13e964499fa65c562df61ea3db86ac382845dfdf26dec252f74a63a9d4d74` | PASS |
-| `region/r.-2.-2.mca` | 6758400 | `0e310d422c650effe6b0216a58d46bf15063126debf99d3dd1aa3e9dcff5ebbc` | PASS |
-| `region/r.-2.-3.mca` | 364544 | `47db1ede216debf2bb3a5a9c7ffe95f1f7ba31b8d3f128eef36718f4b304464c` | PASS |
-| `region/r.-2.0.mca` | 2113536 | `61d1f9ead39a20b65c872dbbabe65fd8ef75774584b9cdfb639d78673c79f416` | PASS |
+| `region/r.-2.-1.mca` | 7733248 | `66cdb995274e86cfab74bc07dba6720be1318598789b4f0bfbc8d11696bfd6c0` | PASS |
+| `region/r.-2.-2.mca` | 6918479 | `63ec0bc2b8c2ce643348c62ea1252e790fa18b53502cbd726004f98c79f008a1` | PASS |
+| `region/r.-2.0.mca` | 1511424 | `165dce3826262e8f1f47c5ccb9031c7fba4d1fc0e88864904c85b10eb188bfef` | PASS |
 | `region/r.-2.1.mca` | 163840 | `11e0d6a509a7dee8510bfeec578a31195fb4bd7628b2ec7e949d25edee7e3609` | PASS |
-| `region/r.-3.-1.mca` | 385024 | `e84527ee82551ae1a193c5d3d392023795961873a99f6c0a954e2777e1f88a9b` | PASS |
-| `region/r.-3.-2.mca` | 733184 | `18fc3e8a72d61d7073b59d67526f89f11b91a7e4547dc72364f7f4195e0c5044` | PASS |
-| `region/r.0.-1.mca` | 9097216 | `9639f0ffe1869c61834573dbc05370dcd4b934d681efd1515f55165047494191` | PASS |
-| `region/r.0.-2.mca` | 8122368 | `1cfb48828995d9192164661501085fc133d76958031a2a7a50dda4124e3c95bb` | PASS |
-| `region/r.0.-3.mca` | 7487488 | `2ca3e8de5f846f77d5fbf64f76bf92079f7c825d5db928f85775ac42dd60f40a` | PASS |
-| `region/r.0.-4.mca` | 835584 | `7db77b2fd522d2e3f4689879ea408e9f59e8cf935d43918d340185458559334c` | PASS |
-| `region/r.0.0.mca` | 8663040 | `c42b3c5d23642e83eb88cc21adf880f361b6355efb0503d5697b870c6d1883b6` | PASS |
-| `region/r.0.1.mca` | 3551232 | `32217b3aae161a83d7e9a78587a140d8b4167670c5774fed6b2b1dd18e035bcf` | PASS |
-| `region/r.1.-1.mca` | 10555392 | `ba115879660574aa09e46f2650ad2b88f53bcccfb768c088dadbcd44122d792b` | PASS |
-| `region/r.1.-2.mca` | 6742016 | `fba7382986ccf3bb011f38c1fbebe30e94f47d19520c2302b57291cf70dab230` | PASS |
-| `region/r.1.-3.mca` | 576351 | `6cd9087dfb7a28e1e5c371b1937dda08efbe3cd50caebffd0cdcf2cc9f47b924` | PASS |
-| `region/r.1.0.mca` | 8881780 | `9b098425537cc5aca9173e4a8bc3cddac971cadc5582df8846904eb034329d51` | PASS |
-| `region/r.1.1.mca` | 4993383 | `f73c0b4888b9abf1af56e1e75d75c0f48d4f4f34d9a18ade2b93eb69e9a142f5` | PASS |
+| `region/r.0.-1.mca` | 9097216 | `b5fc3a88737fc4512485d2bb92a247d08d8bb5869e6126b885e6f409de4e05c3` | PASS |
+| `region/r.0.-2.mca` | 8679424 | `e3058f6b28dd14b4dfc17a7f64529324bfa89fcfec474b37b562c2b9452511ac` | PASS |
+| `region/r.0.-3.mca` | 6782976 | `a64db45ee72de721ee0b40595d2a19f782cd8bc01025802bf60025a2ee22a875` | PASS |
+| `region/r.0.-4.mca` | 503808 | `0d3fbc77c567ef0da94b169b5a8bee262ac2d71d7e1a923e20814fe0c726feaf` | PASS |
+| `region/r.0.0.mca` | 8663040 | `bd2bb312987f51b670f30c778ac87beb4fdfd232d651c88a6f046a8db22098a5` | PASS |
+| `region/r.0.1.mca` | 3551232 | `4cb0dd02baf8711ce12c9f7c6ca9026667aa03d0da27ec51abd51b25b7e0f457` | PASS |
+| `region/r.1.-1.mca` | 10522624 | `afdad354f7ea043fb98f96cd882d0b0dbaa16bca4506eccf26463668173a55c6` | PASS |
+| `region/r.1.-2.mca` | 5914624 | `a906b3042bc46e7fc04995f79732ab1344048f34539293ec31fa5efa586d6705` | PASS |
+| `region/r.1.0.mca` | 7839744 | `bc229d5792f0548ab0b9249ba2196ff151c016121ddde8d692d958ee12b574ea` | PASS |
+| `region/r.1.1.mca` | 4841472 | `ed6b6e54fe24d76a8e273c88e65fa4c6d0b89aa01c90a798a29d7cb60d001cee` | PASS |
 | `region/r.1.2.mca` | 212992 | `9cebe13b5116d52dada07bbe82c772a2a756fa7b46c6f88e93034fd7fec226d6` | PASS |
 | `region/r.2.-1.mca` | 11330205 | `cdfbae093d94734ae6ba1faa2c0dd02505a16a73bb5e266d10aac0b2fcaef14c` | PASS |
 | `region/r.2.-2.mca` | 8900809 | `a65aa7e0d1a99de4c93a6b96f6be4337c2f48330f01f899ddac37b9eb590ebab` | PASS |
-| `region/r.2.-3.mca` | 4583756 | `de285a114cd978cf9e12c63a52f46219c7af6fc3d421d8f1da4d6bc074c998c8` | PASS |
 | `region/r.2.0.mca` | 8745567 | `0f86269e43eadc4c86c0196ce38189cc2a63bf4d2923d48d93c5a7deaf4c7123` | PASS |
-| `region/r.2.1.mca` | 3955452 | `8661464a407d1d061794f6900a9ffcbdd3ffa5771e10f051c02a01e856f8ad32` | PASS |
+| `region/r.2.1.mca` | 212992 | `2592cd89f49d311df1f67d08665626a651f732709a01e593085dba0bdf5385c6` | PASS |
 | `region/r.2.2.mca` | 2781184 | `7012277828611862b0587423b352d701138562e1f934e45929378a4808a709f2` | PASS |
-| `region/r.3.-1.mca` | 9289730 | `43dbf5508c698004bf568d6fc4670de596cce69d25c9073675cf093fa5cada29` | PASS |
-| `region/r.3.-2.mca` | 9229138 | `c5494fa36082b45726162714aa2b56893430995a90de973c16d7986294f71d02` | PASS |
-| `region/r.3.-3.mca` | 4984918 | `8f6f23c9f13bd438b35a0c716529520899ab3818ead030542b7ebc73f87b738b` | PASS |
-| `region/r.3.0.mca` | 9182757 | `24979d6361b5c3f8fc812748697786d968bca71e017f37050a6af3131563a0c9` | PASS |
-| `region/r.3.1.mca` | 4108647 | `7e25d3c0a2fd62408b68ced382a836b2fb979878e4dd755177b687e718c962c0` | PASS |
-| `region/r.4.-1.mca` | 9303976 | `54efc459fdadcc1433880034a3e417af9ef319470afd0fe7fc725ce4eac2853e` | PASS |
-| `region/r.4.-2.mca` | 8719004 | `db6326342fb6e95f2c4c80d08bf47969e1370b755b0e771d757971b5d28de98a` | PASS |
-| `region/r.4.-3.mca` | 4882565 | `2f05db00baa53e436b2fd52d49e2dbe308a068ed8a16577ad2ba4a0d3d96de5d` | PASS |
+| `region/r.3.-1.mca` | 9330927 | `02264c7fe5fbb8c5f8971cc6765de6db1897ea8c6aec68cd5c85fab6d59ff241` | PASS |
+| `region/r.3.-2.mca` | 9261140 | `318d6f2e15f0c1cdefe9dcc769f9b5d5144582789b7221a5f025595e13146b81` | PASS |
+| `region/r.3.0.mca` | 9290134 | `f90ee1855508b8563a533dfaa89294ca46c90bd349461ff0071dbb00ef12b023` | PASS |
+| `region/r.4.-1.mca` | 9303976 | `4aa3caeb32f003e17ade8d45bc10a09f700d728640d316067dfd77a707d30c6f` | PASS |
+| `region/r.4.-2.mca` | 8769989 | `08940211bb493c6751fcdd439f342db72d56c93187f36f30fdbe20ea38c94892` | PASS |
 | `region/r.4.0.mca` | 9896673 | `a107a7ddcafe704d111617d96468b436120a709d5d7e254fa6475711f39db756` | PASS |
-| `region/r.4.1.mca` | 3913273 | `cf3a22b728a27286e70e3e81111d6784c6df39f5d80c99f3119811b94ce8c82a` | PASS |
-| `region/r.5.-1.mca` | 9437287 | `53d914a832fc37b14b1bb72db509ecc7fa82f29655ef297b3a31c1fa38828a4d` | PASS |
-| `region/r.5.-2.mca` | 9327589 | `a9a7c408f83c928099ab02a1147732a98016e9c1da4af79f5f72f20d013e5596` | PASS |
-| `region/r.5.-3.mca` | 4927775 | `c3fb6be0f5f5c4f93e5547fc1e8826e54c50c0ce65d39ff085df1f2baec5f91b` | PASS |
-| `region/r.5.0.mca` | 8622652 | `781bf64df53158efcbcd204439cf2cabb66b3995ca38a39a1c69065f78feca96` | PASS |
-| `region/r.5.1.mca` | 3551996 | `10ae21361e3093260775992e6cf19e3bc9eb98b8819b51730a119c71b08d88c4` | PASS |
-| `region/r.6.-1.mca` | 4391509 | `602336b76ffc9c25f6161ce060687d42472af752f84da07e244de9564717a2c0` | PASS |
-| `region/r.6.-2.mca` | 4722915 | `7ce1949dbd5c1969221fbd5c6270bc7cc1a551b719c8c876521a1787895a6254` | PASS |
-| `region/r.6.-3.mca` | 2856105 | `02e135cb00c2742bc9d8876a2dd33f0ff13ae04870d74ddc26641627991a2372` | PASS |
-| `region/r.6.0.mca` | 4739558 | `19717bdecf862a7d7883af656c2b91d04c40a1b94796ad6d7f5a6e541521445b` | PASS |
-| `region/r.6.1.mca` | 2172146 | `5db2dc942a649da0ca13a9c3e693046a05c3e9fcaae2b449e4cab1affeb97860` | PASS |
 
 ## Blocking evidence
 
-- **CS03-UNAMBIGUOUS-WORLD-ROOT:** The supplied directory is not the direct unambiguous world root; nested candidates: 0.
+- **CS03-UNAMBIGUOUS-WORLD-ROOT:** The supplied directory is not the direct unambiguous world root; nested candidates: 1.
 - **CS04-ENTITIES-MCA-SET:** entities/ is absent, non-directory, or a symlink.
 - **CS04-POI-MCA-SET:** poi/ is absent, non-directory, or a symlink.
 - **CS05-LEVEL-DAT:** level.dat is absent, empty, non-regular, or a symlink.

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "combined-zones-phase1-r00-readiness-audit",
   "generatedAtUtc": "2026-08-06T21:45:00Z",
-  "status": "R00_READY",
+  "status": "R00_HOLD",
   "executable": false,
   "worldEditAuthorized": false,
   "operationCellCount": 0,
@@ -40,8 +40,8 @@
     },
     "releaseContract": {
       "path": "docs/masterplans/05-combined-zones/phase1-release-contract.json",
-      "sha256": "3b62d3f65c40a01d5f4eb66733b02c94104c03b3a5bab053ee82bcb08b7fd786",
-      "bytes": 33127
+      "sha256": "ca7b98aa70560a31579400836a801bafdc38a938b16806670846e35229b31f62",
+      "bytes": 48803
     },
     "designDecisions": {
       "path": "docs/masterplans/05-combined-zones/phase1-design-decisions.json",
@@ -378,8 +378,86 @@
     },
     {
       "path": "docs/masterplans/05-combined-zones/MASTERPLAN.md",
-      "expectedSha256": "0fd3ed2d4d66a344f85b8bf4d58ad2be2f4533381b637b6a536dd9caec11c227",
-      "actualSha256": "0fd3ed2d4d66a344f85b8bf4d58ad2be2f4533381b637b6a536dd9caec11c227",
+      "expectedSha256": "c42181258f71687700a06d50534458289278bb1c883c8626d88de9701aec817e",
+      "actualSha256": "c42181258f71687700a06d50534458289278bb1c883c8626d88de9701aec817e",
+      "passed": true
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/OWNER-DIRECTIVE.md",
+      "expectedSha256": "2115c07d60e148eedd260a7b3743cd49aa73396becd412c4a8de57ca9ff4e883",
+      "actualSha256": "2115c07d60e148eedd260a7b3743cd49aa73396becd412c4a8de57ca9ff4e883",
+      "passed": true
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/CURRENT-STATE.md",
+      "expectedSha256": "4feceb82e42bd28294cfaf3c8d44863b46199ab5956dc530814654f8e7b388f5",
+      "actualSha256": "4feceb82e42bd28294cfaf3c8d44863b46199ab5956dc530814654f8e7b388f5",
+      "passed": true
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/phase1-r08al-r08am-empty-eight-public-retail-round.md",
+      "expectedSha256": "65ca0e3cf6e9bf9a0e903f869cc6d16962e05c1a3f7a3bafa4811514c18022a1",
+      "actualSha256": "65ca0e3cf6e9bf9a0e903f869cc6d16962e05c1a3f7a3bafa4811514c18022a1",
+      "passed": true
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/empty-eight-public-retail-round-report.html",
+      "expectedSha256": "a540c96483b9b2f3b323eab00ae444d6a0f52bd0e4f537121670f5693ba59b9e",
+      "actualSha256": "a540c96483b9b2f3b323eab00ae444d6a0f52bd0e4f537121670f5693ba59b9e",
+      "passed": true
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/MASTERPLAN-R08AL-R08AM-EMPTY-EIGHT-PUBLIC-RETAIL-ROUND.pdf",
+      "expectedSha256": "4c6263b6b0345ed25df5e4a95d71a502f3b7d2529aa45ab6f779b49c34ae0be4",
+      "actualSha256": "4c6263b6b0345ed25df5e4a95d71a502f3b7d2529aa45ab6f779b49c34ae0be4",
+      "passed": true
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/maps/empty-eight-r08am-public-retail-boh-sectional-map.png",
+      "expectedSha256": "9201f83c6671c6c8ee208f0d1c96f06e9562aa86008da77fa369c3aba399d69c",
+      "actualSha256": "9201f83c6671c6c8ee208f0d1c96f06e9562aa86008da77fa369c3aba399d69c",
+      "passed": true
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/maps/empty-eight-r08am-restricted-annex-sectional-map.png",
+      "expectedSha256": "bffa49063975e86f864db53a72e95775b58c0ea02c0fc74819f44dc51c3c437b",
+      "actualSha256": "bffa49063975e86f864db53a72e95775b58c0ea02c0fc74819f44dc51c3c437b",
+      "passed": true
+    },
+    {
+      "path": "data/world-review/combined-zones-r08al-live-20260822T155850Z/evidence-ledger.json",
+      "expectedSha256": "66ae7cd04b7a2f083d0b413cd265aca8e9bfb2e6b5f20f6a9b1916a6c7cf55ce",
+      "actualSha256": "66ae7cd04b7a2f083d0b413cd265aca8e9bfb2e6b5f20f6a9b1916a6c7cf55ce",
+      "passed": true
+    },
+    {
+      "path": "data/world-review/combined-zones-r08al-live-20260822T155850Z/r08al-post-release-qa.json",
+      "expectedSha256": "667d4399d18596f10965edf4d58f913c4dde03ab72ae6354da75ba89c2b2a211",
+      "actualSha256": "667d4399d18596f10965edf4d58f913c4dde03ab72ae6354da75ba89c2b2a211",
+      "passed": true
+    },
+    {
+      "path": "data/world-review/combined-zones-r08am-live-20260822T161818Z/evidence-ledger.json",
+      "expectedSha256": "74cffa90107e462a0d3b1742b9814b3f83d882fc0279290ee5296e5c13f45190",
+      "actualSha256": "74cffa90107e462a0d3b1742b9814b3f83d882fc0279290ee5296e5c13f45190",
+      "passed": true
+    },
+    {
+      "path": "data/world-review/combined-zones-r08am-live-20260822T161818Z/r08am-post-release-qa.json",
+      "expectedSha256": "86e4eacb170ad04ae6942d03bfa00e107c3603faf0788773dd0ce27f6fb65cce",
+      "actualSha256": "86e4eacb170ad04ae6942d03bfa00e107c3603faf0788773dd0ce27f6fb65cce",
+      "passed": true
+    },
+    {
+      "path": "docs/masterplans/05-combined-zones/phase1-standing-build-authorization.json",
+      "expectedSha256": "d3b5f17862074080ae9db81e2932c56f6e96c926979748f8a3bcc09c22b3ad1a",
+      "actualSha256": "d3b5f17862074080ae9db81e2932c56f6e96c926979748f8a3bcc09c22b3ad1a",
+      "passed": true
+    },
+    {
+      "path": "data/world-review/combined-zones-r07a-live-20260821T154500Z/evidence-ledger.json",
+      "expectedSha256": "496d511476361af1c981821e8b3e5329c66462e30b5604f5c3bc9da4e20bccb1",
+      "actualSha256": "496d511476361af1c981821e8b3e5329c66462e30b5604f5c3bc9da4e20bccb1",
       "passed": true
     },
     {
@@ -464,7 +542,7 @@
   "gates": [
     {
       "id": "G01_AUTHORITY",
-      "status": "PASS",
+      "status": "HOLD",
       "evidence": [
         {
           "path": "docs/masterplans/04-combined-complex/authority-reconciliation.json",
@@ -473,11 +551,18 @@
         },
         {
           "path": "docs/masterplans/05-combined-zones/phase1-release-contract.json",
-          "sha256": "3b62d3f65c40a01d5f4eb66733b02c94104c03b3a5bab053ee82bcb08b7fd786",
-          "bytes": 33127
+          "sha256": "ca7b98aa70560a31579400836a801bafdc38a938b16806670846e35229b31f62",
+          "bytes": 48803
         }
       ],
-      "blockers": []
+      "blockers": [
+        {
+          "id": "R00-G01-AUTHORITY-BINDING",
+          "classification": "OFFLINE_ACTION",
+          "requirement": "Reconcile every declared authority binding and the pre-R00 G02 boundary.",
+          "evidencePath": "docs/masterplans/05-combined-zones/phase1-release-contract.json"
+        }
+      ]
     },
     {
       "id": "G02_DESIGN_DECISIONS",
@@ -1418,11 +1503,11 @@
   ],
   "summary": {
     "gateCount": 7,
-    "passCount": 7,
-    "holdCount": 0,
-    "r00Ready": true,
+    "passCount": 6,
+    "holdCount": 1,
+    "r00Ready": false,
     "blockerCountsByClassification": {
-      "OFFLINE_ACTION": 0,
+      "OFFLINE_ACTION": 1,
       "EXTERNAL_EVIDENCE": 0,
       "DEFERRED_G08_G19": 2
     },
@@ -1468,17 +1553,17 @@
     "d06BeeNestDestinationMinimumPlanningZoneBoundsClearance": 78,
     "d06BeeNestDestinationNearbyFlowerCount": 16,
     "d06BeeNestDestinationCellAccepted": false,
-    "d06BeeNestRelocationFixtureValid": true,
+    "d06BeeNestRelocationFixtureValid": false,
     "d06BeeNestSyntheticStateContractPassed": true,
     "d06BeeNestCurrentCaptureTransportEligible": false,
     "d06BeeNestLiveConsolidationRequired": true,
     "d06BeeNestRuntimeMechanicProven": false,
-    "d06BeeRuntimeCompatibilityValid": true,
+    "d06BeeRuntimeCompatibilityValid": false,
     "d06BeeExactProductionPaperRuntimeBound": true,
     "d06BeePaperItemSerializationObserved": true,
     "d06BeeCurrentAutomationClientCompatible": false,
     "d06BeeBlindFleetDependencyUpgradeRecommended": false,
-    "technicalSourceRefreshValid": true,
+    "technicalSourceRefreshValid": false,
     "technicalSourceRefreshStaleRowPassCount": 5,
     "technicalSourceRefreshExactScopedDomainCount": 15,
     "technicalSourceRefreshGeneratedStartEvaluationCount": 1710,
@@ -1499,8 +1584,8 @@
     "d02HeldLowRunCount": 1,
     "d02TechnicalPassCount": 6,
     "d02TechnicalHoldCount": 11,
-    "d02EffectiveTechnicalPassCount": 7,
-    "d02EffectiveTechnicalHoldCount": 10,
+    "d02EffectiveTechnicalPassCount": 6,
+    "d02EffectiveTechnicalHoldCount": 11,
     "d05FutureStateContractPassed": true,
     "d05FutureStateCellCount": 0,
     "d05SelectedPlanningAlternativeId": "FM-01-COMPACT-EAST-FACE",
@@ -1537,7 +1622,7 @@
     "proposedLogicalOwnerCount": 27,
     "proposedDirectionalInterfaceCount": 161,
     "proposedNullInterfaceCount": 13,
-    "g05GlobalGeometryValid": true,
+    "g05GlobalGeometryValid": false,
     "g05LayerAPassed": true,
     "g05PhysicalDirectionalContractCount": 84,
     "g05PhysicalDirectionalPairCount": 352931,
@@ -1555,7 +1640,7 @@
     "shipwreckRemovalPolicyValid": true,
     "shipwreckPreserveOrRemoveOwnerChoiceResolved": true,
     "shipwreckExactAttributedRemovalTargetCellCount": 0,
-    "shipwreckTreatmentContractValid": true,
+    "shipwreckTreatmentContractValid": false,
     "shipwreckAttributedRemovalTargetCandidateCellCount": 598,
     "shipwreckAcceptedRemovalTargetCellCount": 0,
     "shipwreckCandidateDesiredStateCellCount": 598,
@@ -1565,8 +1650,8 @@
     "shipwreckUnmaterializedLootChestCount": 3,
     "shipwreckKnownInventoryContentCount": 0,
     "shipwreckTreatmentTechnicallyAccepted": false,
-    "shipwreckBestChoiceAnalysisValid": true,
-    "shipwreckCanonicalIntegrationValid": true,
+    "shipwreckBestChoiceAnalysisValid": false,
+    "shipwreckCanonicalIntegrationValid": false,
     "shipwreckCompositeCanonicalPayloadSha256": "94eb21c4d72303bf5122b53b9963d8bf8ae26d9e8e8238e8c8d64f9d6671230f",
     "shipwreckCompositeGeneratedStartOverlapCellCount": 0,
     "shipwreckCompositeProtectedCoreOverlapCellCount": 0,
@@ -1593,9 +1678,9 @@
     "shipwreckAcceptedTechnicalTreatmentContractCount": 0,
     "shipwreckObservedChestCount": 3,
     "autonomousOfflineWorkMayContinue": true,
-    "autonomousOfflineWorkCanCompleteR00": true,
-    "nextAutonomousArtifact": "compile the per-cell desired block-state mapping and the hash-bound forward/rollback operation pair for the G08-G14 prerelease chain; do not execute operations without explicit release authorization",
-    "externalEvidenceStillRequired": false,
+    "autonomousOfflineWorkCanCompleteR00": false,
+    "nextAutonomousArtifact": "freeze the remaining Layer-B endpoint/pair/state and expert technical acceptance inputs; for D06, first prove server-authoritative teleport/range synchronization, then real-client break/transport/place/NBT preservation; do not compile operations",
+    "externalEvidenceStillRequired": true,
     "externalAcceptanceRecordValid": true,
     "externalAcceptanceReportIdentitySha256": "a88d0fafe8fb024905aafcee1ebd7f0329b988457b650813ebb1f7adf17a0cfc",
     "decisionClosureValid": true,

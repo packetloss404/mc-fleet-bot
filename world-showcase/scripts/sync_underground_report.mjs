@@ -72,6 +72,7 @@ const portalSummary = {
     featureCountsBySystem,
   },
   truthBoundary: inventory.truthBoundary,
+  accessAudit: inventory.accessAudit,
   systems,
   entrances: inventory.entrances,
   c01Levels: inventory.c01.levels.map((level) => ({

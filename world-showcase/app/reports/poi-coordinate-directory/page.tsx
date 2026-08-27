@@ -1,16 +1,10 @@
 import type { Metadata } from 'next';
-import { cookies } from 'next/headers';
-
 import {
   CoordinateDirectory,
   type CoordinateCategory,
   type CoordinateRecord,
 } from '../../../components/CoordinateDirectory';
-import { PasscodeGate } from '../../../components/PasscodeGate';
-import {
-  SITE_SESSION_COOKIE,
-  verifySiteSession,
-} from '../../../lib/siteAuth';
+import { SiteHeader } from '../../../components/SiteHeader';
 import coordinateData from '../../../public/coordinates/portal-summary.json';
 
 export const dynamic = 'force-dynamic';
@@ -23,27 +17,10 @@ const records = coordinateData.records as CoordinateRecord[];
 const categories = coordinateData.categories as CoordinateCategory[];
 
 export default async function PoiCoordinateDirectory() {
-  const cookieStore = await cookies();
-  if (!verifySiteSession(cookieStore.get(SITE_SESSION_COOKIE)?.value)) {
-    return <PasscodeGate />;
-  }
-
   return (
     <main className="coordinate-report">
+      <SiteHeader current="poi-coordinate-directory" />
       <header className="coordinate-hero" id="top">
-        <nav className="topbar">
-          <a className="brand" href="/" aria-label="IANLAN NextGen reports home">
-            <span className="brand-mark">IN</span>
-            <span>IANLAN NextGen</span>
-          </a>
-          <div className="nav-links">
-            <a href="/">All reports</a>
-            <a href="#directory">Directory</a>
-            <a href="#downloads">Downloads</a>
-          </div>
-          <span className="live-pill"><i /> 1,215 records sealed</span>
-        </nav>
-
         <div className="coordinate-hero-grid">
           <div className="coordinate-hero-copy">
             <p className="eyebrow">Report 04 · World operator index · 29 July 2026</p>

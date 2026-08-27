@@ -1,6 +1,6 @@
 # Combined Zones Phase 1 R00 readiness audit
 
-Status: **R00_READY — READ-ONLY — ZERO OPERATIONS**
+Status: **R00_HOLD — READ-ONLY — ZERO OPERATIONS**
 
 This audit evaluates only the nonphysical R00 design-freeze gates G01-G07. It does not use R01 pilot, execution, rollback, route-QA, or post-state evidence to close a design decision.
 
@@ -8,9 +8,9 @@ This audit evaluates only the nonphysical R00 design-freeze gates G01-G07. It do
 
 The evidence graph is cycle-free: **PASS**. The required order is D01-D07 design acceptance → R00 freeze → R01 physical validation → R02 eligibility.
 
-Complete-save intake: **PASS AND SCOPE-BOUND**. The additive source refresh closes five stale complete-save rows and produces an effective 7-PASS/10-HOLD D02 matrix without rewriting historical evidence. It freezes 29 pre-R00 commissioning specifications while deferring zero executed results to G17. The accepted capture is source-equivalent across all required proposal/generated-start/protected-core chunks. Its 43 rabbit/polar-bear observations are deferred to fresh G13. For the sole persistent D06 bee-nest finding, humane intact relocation is selected and a conflict-free forest planning destination is surveyed at `1811,67,378`. Exact-Paper tests prove the three-bee `minecraft:bees` item serialization, but no real-client break event occurred. The next valid fixture must confirm server-authoritative teleport/range before break/transport/place/NBT testing. Fresh live consolidation, habitat/access/ownership, and method/state/NBT/guard/rollback acceptance remain HOLD; a blind fleet dependency upgrade is not recommended.
+Complete-save intake: **PASS AND SCOPE-BOUND**. The additive source refresh closes five stale complete-save rows and produces an effective 6-PASS/11-HOLD D02 matrix without rewriting historical evidence. It freezes 29 pre-R00 commissioning specifications while deferring zero executed results to G17. The accepted capture is source-equivalent across all required proposal/generated-start/protected-core chunks. Its 43 rabbit/polar-bear observations are deferred to fresh G13. For the sole persistent D06 bee-nest finding, humane intact relocation is selected and a conflict-free forest planning destination is surveyed at `1811,67,378`. Exact-Paper tests prove the three-bee `minecraft:bees` item serialization, but no real-client break event occurred. The next valid fixture must confirm server-authoritative teleport/range before break/transport/place/NBT testing. Fresh live consolidation, habitat/access/ownership, and method/state/NBT/guard/rollback acceptance remain HOLD; a blind fleet dependency upgrade is not recommended.
 
-Shipwreck best choice: **PRESERVE WITH HASH-BOUND COMPOSITE SOUTH-OPEN P1-B10 RESHAPE**. The original finding is 126 cells of `P1-B10/influence`, with 0 construction and 0 interaction overlaps. The optimizer evaluates 12 bounded candidates and selects 2,432 south-open no-build columns at a one-cell planning margin. Composite payload `94eb21c4d72303bf5122b53b9963d8bf8ae26d9e8e8238e8c8d64f9d6671230f` now integrates D05/G03/G04/G05/G06, retains B08, B09, summit, connectivity, exact one-owner coverage and unchanged cross-scope contracts, and produces zero overlap across all generated starts and frozen cores. Expert margin and final technical/owner/interface acceptance remain HOLD. The 598-cell removal contract stays inactive fallback, and operations remain zero.
+Shipwreck best choice: **HOLD**. The original finding is 126 cells of `P1-B10/influence`, with 0 construction and 0 interaction overlaps. The optimizer evaluates 12 bounded candidates and selects 2,432 south-open no-build columns at a one-cell planning margin. Composite payload `94eb21c4d72303bf5122b53b9963d8bf8ae26d9e8e8238e8c8d64f9d6671230f` now integrates D05/G03/G04/G05/G06, retains B08, B09, summit, connectivity, exact one-owner coverage and unchanged cross-scope contracts, and produces zero overlap across all generated starts and frozen cores. Expert margin and final technical/owner/interface acceptance remain HOLD. The 598-cell removal contract stays inactive fallback, and operations remain zero.
 
 G05 global geometry: **PASS BOTH LAYERS**. All 84 physical directional contracts and 352,931 pairs match one-to-one with zero undeclared, stale, or drifted seams. Layer B is closed by the additive closure record: all 161 contracts carry complete-save-bound before-state bindings, accepted design-basis future-state bindings, reviewed pair-manifest dispositions, and sole-owner acceptance, while the registry proposal stays byte-identical.
 
@@ -20,7 +20,7 @@ The owner-delegated ledger freezes **20** conservative planning choices. The sol
 
 | Gate | Status | Current blockers |
 |---|---|---:|
-| G01_AUTHORITY | **PASS** | 0 |
+| G01_AUTHORITY | **HOLD** | 1 |
 | G02_DESIGN_DECISIONS | **PASS** | 0 |
 | G03_INTEGER_SET_OUT | **PASS** | 0 |
 | G04_OWNERSHIP | **PASS** | 0 |
@@ -28,11 +28,11 @@ The owner-delegated ledger freezes **20** conservative planning choices. The sol
 | G06_PROTECTED_FEATURES | **PASS** | 0 |
 | G07_CIVIL_HYDROLOGY_STRUCTURE | **PASS** | 0 |
 
-G01 is ready from the current hash-bound authority chain and G03 is ready with all 30 required domains exact. All seven design-freeze gates pass against the EXT-01..04 sole-owner acceptance record and the additive decision/Layer-B/G07 closure evidence; R00 is complete. World construction still requires the G08-G14 prerelease chain and explicit release authorization.
+G01 is not ready and G03 is ready with all 30 required domains exact. G02 and G04-G07 remain fail-closed; the current evidence cannot autonomously complete R00.
 
 ## Blocking evidence
 
-
+- **OFFLINE_ACTION · R00-G01-AUTHORITY-BINDING:** Reconcile every declared authority binding and the pre-R00 G02 boundary.
 
 ## Deferred from R00
 

@@ -1,12 +1,6 @@
 import type { Metadata } from 'next';
-import { cookies } from 'next/headers';
-
 import { MasterplanProgram } from '../../../components/MasterplanProgram';
-import { PasscodeGate } from '../../../components/PasscodeGate';
-import {
-  SITE_SESSION_COOKIE,
-  verifySiteSession,
-} from '../../../lib/siteAuth';
+import { SiteHeader } from '../../../components/SiteHeader';
 import {
   AUTHORITY_CHAIN,
   gallery,
@@ -85,29 +79,10 @@ const holds = [
 ];
 
 export default async function MasterplanProgramReport() {
-  const cookieStore = await cookies();
-  if (!verifySiteSession(cookieStore.get(SITE_SESSION_COOKIE)?.value)) {
-    return <PasscodeGate />;
-  }
-
   return (
     <main>
+      <SiteHeader current="masterplan-program" />
       <header className="hero">
-        <nav className="topbar">
-          <a className="brand" href="/" aria-label="IANLAN NextGen reports home">
-            <span className="brand-mark">IN</span>
-            <span>IANLAN NextGen</span>
-          </a>
-          <div className="nav-links">
-            <a href="/">All reports</a>
-            <a href="#chain">Chain</a>
-            <a href="#plans">Plans</a>
-            <a href="#gates">Gates</a>
-            <a href="#views">Views</a>
-          </div>
-          <span className="live-pill hold"><i /> Build HOLD · not authorized</span>
-        </nav>
-
         <div className="hero-grid" id="top">
           <div className="hero-copy">
             <p className="eyebrow">Report 03 · Masterplan program · 5 August 2026 UTC</p>

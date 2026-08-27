@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "MP05-B07-CENTRAL-BYPASS-FIXED-LIGHTING-GOVERNOR-AUTH-01",
+  "projectId": "combined-zones-phase1",
+  "authorizedReleaseId": "MP05-B07-CENTRAL-BYPASS-FIXED-LIGHTING-01",
+  "status": "AUTHORIZED_STANDING_SCOPED_EXECUTION",
+  "revoked": false,
+  "authorizedReleaseNodes": ["CZ-MP05-B07-CENTRAL-BYPASS-FIXED-LIGHTING"],
+  "ownerDirective": {
+    "speaker": "Governor",
+    "recordedDate": "2026-08-26",
+    "interpretation": "Standing Master Plan authority covers only the exact sealed-wall fixed-light safety package after its complete fresh scoped hard-safety kernel passes. It does not waive source, containment, entity, protected-core, strict-noop, journal, post-state, rollback, or functional-QA requirements."
+  },
+  "delegatedRoles": {
+    "scopeOwner": "B07 restricted maintenance implementation lead",
+    "lightingSafetyOwner": "PassageWay restricted-route safety lead",
+    "releaseOperator": "Guarded-release implementation operator"
+  },
+  "hardSafetyKernel": [
+    { "id": "exact-release-and-inverse", "required": true },
+    { "id": "fresh-source-snapshot-and-preflight", "required": true },
+    { "id": "strict-forward-and-rollback-parser-checks", "required": true },
+    { "id": "block-and-live-entity-clearance", "required": true },
+    { "id": "strict-execution-with-compensating-rollback", "required": true },
+    { "id": "post-snapshot-and-rollback-poststate-verification", "required": true }
+  ],
+  "operationalControls": {
+    "defaultMode": "PREPARE_ONLY",
+    "liveExecutionOptIn": "--execute",
+    "scopeLocalFailureRule": "Failure blocks only this fixed-light transaction and never opens or commissions B07."
+  },
+  "mvpBoundary": { "excludedScopeIds": ["P1-B12", "C2", "C3"] },
+  "authorizationPayloadSha256": "3589bd277a2932f161f52993658a06e307aeea3d6e8a6239d1a2630086c9634f"
+}
