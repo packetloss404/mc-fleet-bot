@@ -412,7 +412,7 @@ ipc.onRequest(async (type, args) => {
         return { ok: false, error: 'Survival mission is not enabled for this bot' };
       }
       const action = args[0];
-      if (action === 'pause') return { ok: true, status: survivalMission.pause() };
+      if (action === 'pause') return { ok: true, status: await survivalMission.pause() };
       if (action === 'resume') return { ok: true, status: survivalMission.resume() };
       return { ok: false, error: 'action must be "pause" or "resume"' };
     }

@@ -1,13 +1,17 @@
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
+import { Vec3 } from 'vec3';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import {
   SurvivalMission,
+  SURVIVAL_SMELTING_INPUTS,
+  blockIntersectsEntity,
   createSurvivalMission,
   findCraftableBed,
   isSurvivalMissionTarget,
+  selectSurvivalTool,
   survivalMiningDisposition,
 } from '../../src/survival/SurvivalMission';
 
@@ -59,7 +63,7 @@ describe('survival mission opt-in', () => {
 });
 
 describe('survival mission progress', () => {
-  it('persists deaths and pause state, then hands control back to Voyager', () => {
+  it('persists deaths and pause state, then hands control back to Voyager', async () => {
     const dataDir = temporaryDataDir();
     const resumeVoyager = vi.fn();
     const options = {
@@ -75,7 +79,7 @@ describe('survival mission progress', () => {
     first.recordDeath();
     first.start();
     expect(first.status()).toMatchObject({ running: true, paused: false, deaths: 1 });
-    expect(first.pause()).toMatchObject({ running: false, paused: true, deaths: 1 });
+    expect(await first.pause()).toMatchObject({ running: false, paused: true, deaths: 1 });
     expect(resumeVoyager).toHaveBeenCalledTimes(1);
 
     const restored = new SurvivalMission(options);
@@ -116,5 +120,107 @@ describe('survival mission progress', () => {
       kind: 'mine-site',
       site: mineSite,
     });
+  });
+
+  it('rejects utility cells intersecting the bot and accepts clear adjacent cells', () => {
+    const bot = new Vec3(0.8, 64, 0.5);
+
+    expect(blockIntersectsEntity(new Vec3(0, 64, 0), bot)).toBe(true);
+    expect(blockIntersectsEntity(new Vec3(1, 64, 0), bot)).toBe(true);
+    expect(blockIntersectsEntity(new Vec3(2, 64, 0), bot)).toBe(false);
+  });
+
+  it('selects the strongest appropriate harvesting tool', () => {
+    const items = [
+      { name: 'wooden_pickaxe', count: 1, type: 1 },
+      { name: 'stone_pickaxe', count: 1, type: 2 },
+      { name: 'iron_axe', count: 1, type: 3 },
+      { name: 'stone_shovel', count: 1, type: 4 },
+    ];
+
+    expect(selectSurvivalTool(items, 'iron_ore')?.name).toBe('stone_pickaxe');
+    expect(selectSurvivalTool(items, 'oak_log')?.name).toBe('iron_axe');
+    expect(selectSurvivalTool(items, 'gravel')?.name).toBe('stone_shovel');
+  });
+
+  it('recognizes modern raw iron and raw gold furnace inputs', () => {
+    expect(SURVIVAL_SMELTING_INPUTS.iron).toContain('raw_iron');
+    expect(SURVIVAL_SMELTING_INPUTS.gold).toContain('raw_gold');
+  });
+
+  it('establishes a stone-or-better pickaxe before seeking iron ore', async () => {
+    const mission = new SurvivalMission({
+      name: 'FayaazMJacc',
+      dataDir: temporaryDataDir(),
+      botGetter: () => ({ inventory: { items: () => [] } }),
+      pauseVoyager: vi.fn(),
+      resumeVoyager: vi.fn(),
+    });
+    const ensureStonePickaxe = vi.fn(async () => {});
+    const mineAtY = vi.fn(async () => {});
+    (mission as any).ensureStonePickaxe = ensureStonePickaxe;
+    (mission as any).findBlock = vi.fn(() => null);
+    (mission as any).mineAtY = mineAtY;
+
+    await (mission as any).iron();
+
+    expect(ensureStonePickaxe).toHaveBeenCalledTimes(1);
+    expect(mineAtY).toHaveBeenCalledTimes(1);
+    expect(ensureStonePickaxe.mock.invocationCallOrder[0])
+      .toBeLessThan(mineAtY.mock.invocationCallOrder[0]);
+  });
+
+  it('does not report paused or resume Voyager until the active tick settles', async () => {
+    const resumeVoyager = vi.fn();
+    const mission = new SurvivalMission({
+      name: 'FayaazMJacc',
+      dataDir: temporaryDataDir(),
+      botGetter: () => null,
+      pauseVoyager: vi.fn(),
+      resumeVoyager,
+    });
+    mission.start();
+    let settle!: () => void;
+    (mission as any).activeTick = new Promise<void>((resolve) => { settle = resolve; });
+
+    const pause = mission.pause();
+    await Promise.resolve();
+    expect(resumeVoyager).not.toHaveBeenCalled();
+    settle();
+
+    expect(await pause).toMatchObject({ running: false, paused: true });
+    expect(resumeVoyager).toHaveBeenCalledTimes(1);
+  });
+
+  it('reopens a furnace and retrieves output even when the batch left inventory', async () => {
+    let output: any = { name: 'iron_ingot', count: 7 };
+    const takeOutput = vi.fn(async () => { output = null; });
+    const opened = {
+      outputItem: () => output,
+      inputItem: () => ({ name: 'raw_iron', count: 25 }),
+      fuelItem: () => null,
+      fuelSeconds: 0,
+      takeOutput,
+      close: vi.fn(),
+    };
+    const bot = {
+      entity: { position: new Vec3(0, 64, 0) },
+      inventory: { items: () => [] },
+      openFurnace: vi.fn(async () => opened),
+    };
+    const mission = new SurvivalMission({
+      name: 'FayaazMJacc',
+      dataDir: temporaryDataDir(),
+      botGetter: () => bot,
+      pauseVoyager: vi.fn(),
+      resumeVoyager: vi.fn(),
+    });
+    mission.start();
+    (mission as any).ensureFurnace = vi.fn(async () => ({ position: new Vec3(0, 64, 1) }));
+    (mission as any).moveNear = vi.fn(async () => {});
+
+    expect(await (mission as any).smelt(['raw_iron', 'iron_ore'])).toBe('needs-fuel');
+    expect(takeOutput).toHaveBeenCalledTimes(1);
+    await mission.pause();
   });
 });

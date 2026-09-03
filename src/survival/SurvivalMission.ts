@@ -70,6 +70,8 @@ interface InventoryLike {
   type?: number;
 }
 
+type SmeltResult = 'progressed' | 'needs-fuel' | 'idle';
+
 const LOGS = [
   'oak_log', 'spruce_log', 'birch_log', 'jungle_log', 'acacia_log',
   'dark_oak_log', 'mangrove_log', 'cherry_log', 'pale_oak_log',
@@ -102,6 +104,50 @@ const DIAMONDS_PER_SET = 32;
 const DIAMOND_SET_TARGET = 5;
 const GOLD_TARGET = 192;
 const OBSIDIAN_TARGET = 14;
+const TOOL_TIERS = ['netherite', 'diamond', 'iron', 'stone', 'golden', 'wooden'];
+export const SURVIVAL_SMELTING_INPUTS = {
+  iron: ['raw_iron', 'iron_ore', 'deepslate_iron_ore'],
+  gold: ['raw_gold', 'gold_ore', 'deepslate_gold_ore'],
+} as const;
+
+class SurvivalMissionCancelled extends Error {
+  constructor() {
+    super('Survival mission operation cancelled');
+    this.name = 'SurvivalMissionCancelled';
+  }
+}
+
+export function blockIntersectsEntity(
+  block: Vec3,
+  position: Vec3,
+  width = 0.6,
+  height = 1.8,
+): boolean {
+  const halfWidth = width / 2;
+  return block.x < position.x + halfWidth
+    && block.x + 1 > position.x - halfWidth
+    && block.y < position.y + height
+    && block.y + 1 > position.y
+    && block.z < position.z + halfWidth
+    && block.z + 1 > position.z - halfWidth;
+}
+
+export function selectSurvivalTool(
+  items: readonly InventoryLike[],
+  blockName: string,
+): InventoryLike | null {
+  let suffix = 'pickaxe';
+  if (blockName.endsWith('_log') || blockName.endsWith('_wood') || blockName.endsWith('_planks')) {
+    suffix = 'axe';
+  } else if (['dirt', 'grass_block', 'sand', 'gravel', 'clay'].includes(blockName)) {
+    suffix = 'shovel';
+  }
+  for (const tier of TOOL_TIERS) {
+    const item = items.find((candidate) => candidate.name === `${tier}_${suffix}`);
+    if (item) return item;
+  }
+  return null;
+}
 
 export function isSurvivalMissionTarget(config: Pick<Config, 'survival'>, botName: string): boolean {
   const survival = config.survival;
@@ -164,6 +210,8 @@ export class SurvivalMission {
   private timer: NodeJS.Timeout | null = null;
   private running = false;
   private busy = false;
+  private abortController: AbortController | null = null;
+  private activeTick: Promise<void> | null = null;
   private lastAttackAt = 0;
   private lastStatus = '';
 
@@ -181,17 +229,20 @@ export class SurvivalMission {
 
   start(): void {
     if (this.running || this.saved.paused || this.saved.stage === 'complete') return;
+    this.abortController = new AbortController();
     this.running = true;
     this.persist();
     this.schedule(100);
   }
 
-  pause(): SurvivalMissionStatus {
+  async pause(): Promise<SurvivalMissionStatus> {
     this.running = false;
     this.saved.paused = true;
     this.saved.updatedAt = Date.now();
+    this.abortController?.abort();
     this.clearTimer();
     this.stopMovement();
+    try { await this.activeTick; } catch {}
     this.persist();
     this.resumeVoyager();
     return this.status();
@@ -199,6 +250,8 @@ export class SurvivalMission {
 
   resume(): SurvivalMissionStatus {
     if (this.saved.stage === 'complete') return this.status();
+    this.abortController?.abort();
+    this.abortController = new AbortController();
     this.saved.paused = false;
     this.saved.updatedAt = Date.now();
     this.running = true;
@@ -209,6 +262,7 @@ export class SurvivalMission {
 
   shutdown(): void {
     this.running = false;
+    this.abortController?.abort();
     this.clearTimer();
     this.stopMovement();
   }
@@ -248,7 +302,11 @@ export class SurvivalMission {
     if (!this.running || this.timer) return;
     this.timer = setTimeout(() => {
       this.timer = null;
-      void this.tick();
+      const tick = this.tick();
+      this.activeTick = tick;
+      void tick.finally(() => {
+        if (this.activeTick === tick) this.activeTick = null;
+      });
     }, ms);
     this.timer.unref?.();
   }
@@ -281,6 +339,7 @@ export class SurvivalMission {
         await this.runStage();
       }
     } catch (err: any) {
+      if (err instanceof SurvivalMissionCancelled) return;
       this.detail(`Recovering: ${err?.message ?? String(err)}`);
       logger.warn(
         { bot: this.name, stage: this.saved.stage, err: err?.message },
@@ -394,10 +453,16 @@ export class SurvivalMission {
       this.advance('iron-gear');
       return;
     }
-    if (this.count('iron_ore') + this.count('deepslate_iron_ore') > 0) {
+    await this.ensureStonePickaxe();
+    const ironInputs = SURVIVAL_SMELTING_INPUTS.iron;
+    if (this.countAny(ironInputs) > 0 || this.findBlock((block) => block.name === 'furnace', 8)) {
       await this.ensureFurnace();
-      await this.smelt(['iron_ore', 'deepslate_iron_ore']);
-      return;
+      const result = await this.smelt(ironInputs);
+      if (result === 'progressed') return;
+      if (result === 'needs-fuel') {
+        await this.ensureSmeltingFuel(4);
+        return;
+      }
     }
     const ore = this.findBlock(
       (block) => block.name === 'iron_ore' || block.name === 'deepslate_iron_ore',
@@ -442,10 +507,15 @@ export class SurvivalMission {
       this.advance('diamond-sets');
       return;
     }
-    if (this.count('gold_ore') + this.count('deepslate_gold_ore') > 0) {
+    const goldInputs = SURVIVAL_SMELTING_INPUTS.gold;
+    if (this.countAny(goldInputs) > 0 || this.findBlock((block) => block.name === 'furnace', 8)) {
       await this.ensureFurnace();
-      await this.smelt(['gold_ore', 'deepslate_gold_ore']);
-      return;
+      const result = await this.smelt(goldInputs);
+      if (result === 'progressed') return;
+      if (result === 'needs-fuel') {
+        await this.ensureSmeltingFuel(24);
+        return;
+      }
     }
     const ore = this.findBlock(
       (block) => block.name === 'gold_ore' || block.name === 'deepslate_gold_ore',
@@ -499,7 +569,9 @@ export class SurvivalMission {
     await this.moveNear(lava.position, 3);
     await this.smoothLook(lava.position, 160);
     const bot = this.botGetter();
+    this.assertActive();
     await bot.equip(water, 'hand');
+    this.assertActive();
     await bot.activateItem();
     await this.sleep(700);
   }
@@ -541,15 +613,19 @@ export class SurvivalMission {
       const obsidian = this.get('obsidian');
       if (!obsidian) throw new Error('Out of obsidian while building portal');
       await this.moveNear(reference.block.position, 4);
+      this.assertActive();
       await bot.equip(obsidian, 'hand');
+      this.assertActive();
       await bot.placeBlock(reference.block, reference.face);
     }
     const inner = base.offset(0, 1, 0);
     const flint = this.get('flint_and_steel');
     if (!flint) throw new Error('Flint and steel missing');
     await this.moveNear(inner, 3);
+    this.assertActive();
     await bot.equip(flint, 'hand');
     await this.smoothLook(inner, 160);
+    this.assertActive();
     await bot.activateItem();
     await this.sleep(1_500);
     if (bot.blockAt(inner)?.name !== 'nether_portal') throw new Error('Portal did not ignite');
@@ -597,39 +673,104 @@ export class SurvivalMission {
     return this.placeUtility(furnace, 'furnace');
   }
 
+  private async ensureStonePickaxe(): Promise<void> {
+    if (TOOL_TIERS.slice(0, 4).some((tier) => this.has(`${tier}_pickaxe`))) return;
+    if (this.count('cobblestone') < 3) {
+      const stone = this.findBlock(
+        (block) => block.name === 'stone' || block.name === 'cobblestone',
+        32,
+      );
+      if (!stone) throw new Error('Need cobblestone for a stone pickaxe');
+      await this.collect(stone);
+      return;
+    }
+    await this.ensureTable();
+    if (this.count('stick') < 2) await this.craft('stick', false);
+    await this.craft('stone_pickaxe');
+  }
+
+  private async ensureSmeltingFuel(minimum: number): Promise<boolean> {
+    if (this.count('coal') + this.count('charcoal') >= minimum) return true;
+    const coal = this.findBlock(
+      (block) => block.name === 'coal_ore' || block.name === 'deepslate_coal_ore',
+      96,
+    );
+    if (coal) await this.collect(coal);
+    else await this.mineAtY(
+      16,
+      (block) => block.name === 'coal_ore' || block.name === 'deepslate_coal_ore',
+    );
+    return false;
+  }
+
   private async placeUtility(item: any, blockName: string): Promise<any> {
     const bot = this.botGetter();
     const target = await this.safeSurface(bot.entity.position.floored());
     const reference = this.referenceFor(target);
     if (!reference) throw new Error(`No safe site for ${blockName}`);
     await this.moveNear(reference.block.position, 3);
+    this.assertActive();
     await bot.equip(item, 'hand');
+    this.assertActive();
     await bot.placeBlock(reference.block, reference.face);
     const placed = this.findBlock((block) => block.name === blockName, 8);
     if (!placed) throw new Error(`${blockName} placement could not be verified`);
     return placed;
   }
 
-  private async smelt(oreNames: string[]): Promise<void> {
+  private async smelt(oreNames: readonly string[]): Promise<SmeltResult> {
     const furnace = await this.ensureFurnace();
-    if (!furnace) return;
-    const input = this.inventory().find((item) => oreNames.includes(item.name));
-    const fuel = this.get('coal') ?? this.get('charcoal');
-    if (!input || !fuel || input.type == null || fuel.type == null) return;
+    if (!furnace) return 'idle';
     await this.moveNear(furnace.position, 3);
+    this.assertActive();
     const opened = await this.botGetter().openFurnace(furnace);
     try {
-      await opened.putFuel(fuel.type, null, Math.min(fuel.count, 64));
-      await opened.putInput(input.type, null, Math.min(input.count, 64));
-      const deadline = Date.now() + 70_000;
-      while (Date.now() < deadline && opened.inputItem()) await this.sleep(1_000);
-      if (opened.outputItem()) await opened.takeOutput();
+      this.assertActive();
+      let progressed = false;
+      if (opened.outputItem()) {
+        await opened.takeOutput();
+        progressed = true;
+      }
+
+      const furnaceInput = opened.inputItem();
+      const handlesCurrentBatch = !furnaceInput || oreNames.includes(furnaceInput.name);
+      if (!handlesCurrentBatch) return progressed ? 'progressed' : 'idle';
+
+      const input = this.inventory().find((item) => oreNames.includes(item.name));
+      const fuel = this.get('coal') ?? this.get('charcoal');
+      let hasFuel = Boolean(opened.fuelItem() || opened.fuelSeconds > 0);
+      if (!hasFuel && fuel?.type != null) {
+        this.assertActive();
+        await opened.putFuel(fuel.type, null, Math.min(fuel.count, 64));
+        hasFuel = true;
+        progressed = true;
+      }
+      let hasInput = Boolean(furnaceInput);
+      if (!furnaceInput && input?.type != null) {
+        this.assertActive();
+        await opened.putInput(input.type, null, Math.min(input.count, 64));
+        hasInput = true;
+        progressed = true;
+      }
+
+      if (hasInput && !hasFuel) return 'needs-fuel';
+      if (hasInput && hasFuel) {
+        const deadline = Date.now() + 12_000;
+        while (Date.now() < deadline && !opened.outputItem()) await this.sleep(500);
+        if (opened.outputItem()) {
+          this.assertActive();
+          await opened.takeOutput();
+          progressed = true;
+        }
+      }
+      return progressed ? 'progressed' : 'idle';
     } finally {
       try { opened.close(); } catch {}
     }
   }
 
   private async craft(name: string, table = true, count = 1): Promise<void> {
+    this.assertActive();
     const bot = this.botGetter();
     const item = bot.registry?.itemsByName?.[name];
     if (!item) throw new Error(`Unknown survival item: ${name}`);
@@ -637,6 +778,7 @@ export class SurvivalMission {
     let recipe = bot.recipesFor(item.id, null, 1, station)?.[0];
     if (!recipe && !table) recipe = bot.recipesFor(item.id, null, 1, undefined)?.[0];
     if (!recipe) throw new Error(`No available survival recipe for ${name}`);
+    this.assertActive();
     await bot.craft(recipe, count, recipe.requiresTable ? station : undefined);
   }
 
@@ -660,7 +802,9 @@ export class SurvivalMission {
     await this.moveNear(water.position, 2);
     await this.smoothLook(water.position, 160);
     const bot = this.botGetter();
+    this.assertActive();
     await bot.equip(bucket, 'hand');
+    this.assertActive();
     await bot.activateItem();
   }
 
@@ -670,6 +814,7 @@ export class SurvivalMission {
     const opened = await this.botGetter().openChest(chest);
     try {
       for (const name of [...DIAMOND_TOOLS, ...DIAMOND_ARMOR]) {
+        this.assertActive();
         const item = this.get(name);
         if (item?.type != null) await opened.deposit(item.type, null, 1);
       }
@@ -766,6 +911,15 @@ export class SurvivalMission {
     if (!fresh || fresh.boundingBox === 'empty' || this.hazard(fresh.position)) {
       throw new Error('Resource changed or became unsafe before collection');
     }
+    const tool = selectSurvivalTool(this.inventory(), fresh.name);
+    if (tool) {
+      this.assertActive();
+      await bot.equip(tool, 'hand');
+    }
+    if (typeof fresh.canHarvest === 'function' && !fresh.canHarvest(tool?.type ?? null)) {
+      throw new Error(`No suitable harvesting tool for ${fresh.name}`);
+    }
+    this.assertActive();
     await bot.dig(fresh, true);
     await this.sleep(250);
   }
@@ -780,6 +934,7 @@ export class SurvivalMission {
       const timeout = setTimeout(() => finish(new Error('Safe path timeout')), 30_000);
       const reached = () => finish();
       const denied = () => finish(new Error('Movement denied by the configured fleet boundary'));
+      const cancelled = () => finish(new SurvivalMissionCancelled());
       const update = (result: any) => {
         if (result?.status === 'noPath') finish(new Error('No safe path to target'));
       };
@@ -788,13 +943,20 @@ export class SurvivalMission {
         bot.removeListener('goal_reached', reached);
         bot.removeListener('mobility_denied', denied);
         bot.removeListener('path_update', update);
+        this.abortController?.signal.removeEventListener('abort', cancelled);
         if (error) reject(error);
         else resolve();
       };
       bot.once('goal_reached', reached);
       bot.once('mobility_denied', denied);
       bot.on('path_update', update);
+      this.abortController?.signal.addEventListener('abort', cancelled, { once: true });
+      if (this.abortController?.signal.aborted) {
+        cancelled();
+        return;
+      }
       try {
+        this.assertActive();
         bot.pathfinder.setGoal(new goals.GoalNear(target.x, target.y, target.z, range));
       } catch (err) {
         finish(err instanceof Error ? err : new Error(String(err)));
@@ -836,6 +998,12 @@ export class SurvivalMission {
           if (floor?.boundingBox === 'block'
               && feet?.boundingBox === 'empty'
               && head?.boundingBox === 'empty'
+              && !blockIntersectsEntity(
+                target,
+                bot.entity.position,
+                bot.entity.width ?? 0.6,
+                bot.entity.height ?? 1.8,
+              )
               && !this.hazard(target)) return target;
         }
       }
@@ -867,13 +1035,20 @@ export class SurvivalMission {
     this.lastAttackAt = Date.now();
     const weapon = this.get('diamond_sword') ?? this.get('iron_sword')
       ?? this.get('stone_sword') ?? this.get('wooden_sword');
-    if (weapon) await bot.equip(weapon, 'hand').catch(() => {});
+    if (weapon) {
+      this.assertActive();
+      await bot.equip(weapon, 'hand').catch(() => {});
+    }
     await this.moveNear(entity.position, 3).catch(() => {});
     const deadline = Date.now() + 6_000;
     while (entity.isValid !== false && Date.now() < deadline && bot.entity) {
+      this.assertActive();
       if (this.hazard(entity.position)) break;
       await this.smoothLook(entity.position, 100);
-      if (entity.position.distanceTo(bot.entity.position) <= 4) bot.attack(entity);
+      if (entity.position.distanceTo(bot.entity.position) <= 4) {
+        this.assertActive();
+        bot.attack(entity);
+      }
       await this.sleep(550);
     }
   }
@@ -890,8 +1065,14 @@ export class SurvivalMission {
     if (!bot || bot.food >= 12) return;
     const food = this.inventory().find((item) => FOOD.includes(item.name));
     if (!food) return;
+    this.assertActive();
     await bot.equip(food, 'hand');
-    try { await bot.consume(); } catch {}
+    try {
+      this.assertActive();
+      await bot.consume();
+    } catch (err) {
+      if (err instanceof SurvivalMissionCancelled) throw err;
+    }
   }
 
   private async smoothLook(target: Vec3, totalMs: number): Promise<void> {
@@ -907,6 +1088,7 @@ export class SurvivalMission {
     const startPitch = bot.entity.pitch;
     const steps = Math.max(4, Math.ceil(totalMs / 45));
     for (let step = 1; step <= steps; step += 1) {
+      this.assertActive();
       const progress = step / steps;
       const eased = progress * progress * (3 - 2 * progress);
       await bot.look(
@@ -984,6 +1166,7 @@ export class SurvivalMission {
     const bot = this.botGetter();
     try {
       bot?.pathfinder?.stop();
+      bot?.stopDigging?.();
       bot?.clearControlStates?.();
     } catch {}
   }
@@ -1049,8 +1232,27 @@ export class SurvivalMission {
     }
   }
 
+  private assertActive(): void {
+    if (!this.running || this.saved.paused || this.abortController?.signal.aborted) {
+      throw new SurvivalMissionCancelled();
+    }
+  }
+
   private sleep(ms: number): Promise<void> {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+    const signal = this.abortController?.signal;
+    if (!signal || signal.aborted) return Promise.reject(new SurvivalMissionCancelled());
+    return new Promise((resolve, reject) => {
+      const timeout = setTimeout(() => {
+        signal.removeEventListener('abort', cancel);
+        resolve();
+      }, ms);
+      const cancel = () => {
+        clearTimeout(timeout);
+        reject(new SurvivalMissionCancelled());
+      };
+      signal.addEventListener('abort', cancel, { once: true });
+      if (signal.aborted) cancel();
+    });
   }
 }
 
