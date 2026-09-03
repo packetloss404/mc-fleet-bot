@@ -13,6 +13,7 @@ import type { TownRule } from '../town/RuleStore';
 import type { CultureManager } from '../social/CultureManager';
 import type { BotComms } from '../social/BotComms';
 import { logger } from '../util/logger';
+import type { SurvivalMissionStatus } from '../survival/SurvivalMission';
 
 /**
  * Per-worker V8 old-generation heap cap, in MB.
@@ -776,6 +777,20 @@ export class WorkerHandle {
 
   resumeVoyager(): void {
     this.sendCommand('resumeVoyager', {});
+  }
+
+  /** Read the opt-in survival controller state; null means this bot is not targeted. */
+  async getSurvivalMissionStatus(): Promise<SurvivalMissionStatus | null> {
+    return await this.sendRequest('getSurvivalMissionStatus', []);
+  }
+
+  /** Pause or resume the targeted controller and return its resulting state. */
+  async controlSurvivalMission(action: 'pause' | 'resume'): Promise<{
+    ok: boolean;
+    status?: SurvivalMissionStatus;
+    error?: string;
+  }> {
+    return await this.sendRequest('controlSurvivalMission', [action]);
   }
 
   stopMovement(): void {

@@ -233,6 +233,17 @@ export interface Config {
     cognitiveController: boolean;
   };
   /**
+   * Dedicated survival objective controller. This is deliberately opt-in and
+   * attaches only to an already-running bot whose name matches `botName`.
+   * It never changes the server, fleet size, or bot persistence roster.
+   */
+  survival?: {
+    /** Master switch. Absent or false means no mission object or timer exists. */
+    enabled: boolean;
+    /** Exact Minecraft bot username that may run the mission. */
+    botName: string;
+  };
+  /**
    * Build-system tuning knobs.
    *
    * All fields are optional; when the `build:` section is absent defaults are
@@ -350,6 +361,7 @@ const KNOWN_TOP_LEVEL_KEYS = new Set<string>([
   'governance',
   'social',
   'cognition',
+  'survival',
   'mining',
   'build',
   'leash',
@@ -500,6 +512,13 @@ const SECTION_SPECS: Record<string, { required: boolean; fields: FieldSpec[] }> 
     fields: [
       { key: 'perceptionTick', type: 'boolean', optional: true },
       { key: 'cognitiveController', type: 'boolean', optional: true },
+    ],
+  },
+  survival: {
+    required: false,
+    fields: [
+      { key: 'enabled', type: 'boolean' },
+      { key: 'botName', type: 'string' },
     ],
   },
   mining: {
@@ -831,6 +850,10 @@ export function validateConfig(raw: unknown): ValidateConfigResult {
   }
   if (Object.prototype.hasOwnProperty.call(raw, 'leash')) {
     checkLeash(raw.leash, errors);
+  }
+  if (isPlainObject(raw.survival) && typeof raw.survival.botName === 'string'
+      && !/^[A-Za-z0-9_]{3,16}$/.test(raw.survival.botName)) {
+    errors.push('survival.botName: must match /^[A-Za-z0-9_]{3,16}$/');
   }
 
   if (errors.length > 0) {

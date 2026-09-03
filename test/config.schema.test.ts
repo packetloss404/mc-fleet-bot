@@ -76,6 +76,31 @@ describe('validateConfig', () => {
     }
   });
 
+  it('validates the optional survival target and keeps omission valid', () => {
+    const omitted = validateConfig(baseValid());
+    expect(omitted.ok).toBe(true);
+
+    const enabled = baseValid();
+    enabled.survival = { enabled: true, botName: 'FayaazMJacc' };
+    expect(validateConfig(enabled).ok).toBe(true);
+
+    enabled.survival.enabled = 'yes';
+    const wrongFlag = validateConfig(enabled);
+    expect(wrongFlag.ok).toBe(false);
+    if (!wrongFlag.ok) {
+      expect(wrongFlag.errors).toContain('survival.enabled: expected boolean, got string');
+    }
+
+    enabled.survival = { enabled: false, botName: '../everyone' };
+    const unsafeName = validateConfig(enabled);
+    expect(unsafeName.ok).toBe(false);
+    if (!unsafeName.ok) {
+      expect(unsafeName.errors).toContain(
+        'survival.botName: must match /^[A-Za-z0-9_]{3,16}$/',
+      );
+    }
+  });
+
   it('reports missing required top-level sections', () => {
     const raw = baseValid();
     delete raw.api;

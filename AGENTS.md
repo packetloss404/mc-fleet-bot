@@ -22,6 +22,7 @@ Guidance for coding agents working in `/opt/mc-fleet-bot`.
 - `src/build/` schematic-based multi-bot build coordination.
 - `src/supplychain/` supply chain templates and coordination.
 - `src/security/` impersonation detection.
+- `src/survival/` explicitly enabled, exact-bot survival objective control and persisted progress.
 - `src/worker/` per-bot worker threads, IPC channel, and cross-thread proxies.
 - `src/ai/` LLM client abstraction (Anthropic, Gemini, OpenAI, MiniMax, Ollama, VoyageAI behind a `ModelRouter`) and prompt logic.
 - `src/server/` Express + Socket.IO API.
@@ -135,6 +136,7 @@ unusable in non-interactive shells. CI lives on Railway and runs
 ### Backend (repo root)
 
 - Build: `npm run build`
+- Focused survival checks: `npx vitest run test/survival/SurvivalMission.test.ts test/survival/SurvivalIntegrationSafety.test.ts test/config.schema.test.ts`
 - Dev run: `npm run dev`
 - Production run: `npm start`
 - **Do NOT hand-start a second instance.** The stack runs under systemd as
