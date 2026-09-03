@@ -17,6 +17,7 @@ import { logger } from '../util/logger';
 import { walkTo } from '../actions/walkTo';
 import { followPlayer } from '../actions/followPlayer';
 import { getNearestProtectedCenter } from '../actions/geofence';
+import { createSurvivalMission, SurvivalMission } from '../survival/SurvivalMission';
 
 interface WorkerData {
   botName: string;
@@ -127,6 +128,7 @@ const botCommsProxy =
   config.social?.botAffinity || config.social?.culture ? new BotCommsProxy(ipc) : null;
 
 const botMode = data.mode === 'codegen' ? BotMode.CODEGEN : BotMode.PRIMITIVE;
+let survivalMission: SurvivalMission | null = null;
 
 const instance = new BotInstance({
   name: data.botName,
@@ -159,6 +161,7 @@ const instance = new BotInstance({
     logger.info({ bot: data.botName }, 'Decision trace + reputation notifier wired');
   },
   onDeath: (event) => {
+    survivalMission?.recordDeath();
     ipc.notify('bot.died', event);
   },
   onPlayerJoined: (playerName) => {
@@ -171,6 +174,16 @@ const instance = new BotInstance({
     ipc.notify('security.impersonation', info);
   },
 });
+
+// The mission is absent unless both the feature flag and the exact bot name
+// match. It attaches to the existing worker only: no spawn, eviction, host,
+// fleet-size, or global behavior changes occur here.
+survivalMission = createSurvivalMission(config, data.botName, {
+  botGetter: () => instance.bot?.entity ? instance.bot : null,
+  pauseVoyager: () => instance.getVoyagerLoop()?.pause('survival-mission'),
+  resumeVoyager: () => instance.getVoyagerLoop()?.resume('survival-mission-paused'),
+});
+survivalMission?.start();
 
 // Handle commands from main thread
 ipc.onCommand((type, cmdData) => {
@@ -392,6 +405,17 @@ ipc.onRequest(async (type, args) => {
       return instance.getDetailedStatus();
     case 'getDiagnosticsSummary':
       return instance.getDiagnosticsSummary();
+    case 'getSurvivalMissionStatus':
+      return survivalMission?.status() ?? null;
+    case 'controlSurvivalMission': {
+      if (!survivalMission) {
+        return { ok: false, error: 'Survival mission is not enabled for this bot' };
+      }
+      const action = args[0];
+      if (action === 'pause') return { ok: true, status: survivalMission.pause() };
+      if (action === 'resume') return { ok: true, status: survivalMission.resume() };
+      return { ok: false, error: 'action must be "pause" or "resume"' };
+    }
     case 'voyagerTaskState': {
       // Supply-chain coordinator reads task progress over IPC (it can't reach
       // the in-thread VoyagerLoop directly). null when not in codegen mode.
@@ -527,4 +551,5 @@ process.on('uncaughtException', (err: Error) => {
 // Cleanup on exit
 process.on('beforeExit', () => {
   clearInterval(statusInterval);
+  survivalMission?.shutdown();
 });

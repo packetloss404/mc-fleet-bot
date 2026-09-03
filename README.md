@@ -513,6 +513,7 @@ Edit `config.yml` to customize:
 - **Behaviors** — Toggle ambient chat, wandering, head tracking, combat instincts
 - **Security** — `security.impersonationDetection` (impersonation defense, on by default) and `IMPERSONATION_ALERT_WEBHOOK` env var for outbound alerts
 - **Project Sid flags** — `governance`, `social`, and `cognition` sections gate the features above. All default off when unset; the checked-in `config.yml` turns `governance` and `social` on and leaves `cognition` off
+- **Dedicated survival objective** — `survival.enabled` is off by default and `survival.botName` must exactly match an existing bot. It never changes the host or fleet roster and all digging, placement, and movement still pass through the normal geofence wrappers. Inspect it with `GET /api/bots/:name/survival-mission`; pause or resume it with `POST /api/bots/:name/survival-mission/:action`.
 
 ### World-specific settings
 

@@ -158,6 +158,42 @@ export function registerBotRoutes(
     res.json({ bot: detailed });
   });
 
+  // Dedicated survival mission controls. A non-target bot gets 409 rather
+  // than silently acquiring a mission; targeting remains config-only and
+  // exact-name gated.
+  app.get('/api/bots/:name/survival-mission', asyncH(async (req: Request, res: Response) => {
+    const handle = botManager.getWorker(req.params.name as string);
+    if (!handle) {
+      res.status(404).json({ error: 'Bot not found' });
+      return;
+    }
+    const status = await handle.getSurvivalMissionStatus();
+    if (!status) {
+      res.status(409).json({ error: 'Survival mission is not enabled for this bot' });
+      return;
+    }
+    res.json({ survivalMission: status });
+  }));
+
+  app.post('/api/bots/:name/survival-mission/:action', asyncH(async (req: Request, res: Response) => {
+    const action = req.params.action as string;
+    if (action !== 'pause' && action !== 'resume') {
+      res.status(400).json({ error: 'action must be "pause" or "resume"' });
+      return;
+    }
+    const handle = botManager.getWorker(req.params.name as string);
+    if (!handle) {
+      res.status(404).json({ error: 'Bot not found' });
+      return;
+    }
+    const result = await handle.controlSurvivalMission(action);
+    if (!result.ok) {
+      res.status(409).json({ error: result.error ?? 'Survival mission control failed' });
+      return;
+    }
+    res.json({ success: true, survivalMission: result.status });
+  }));
+
   // Bot prismarine-viewer port — lazy-mounts the viewer on first call.
   // Returns { port: number | null }; null means the viewer couldn't start
   // (bot not connected yet, or prismarine-viewer threw on init).
