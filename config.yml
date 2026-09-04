@@ -171,6 +171,13 @@ cognition:
   perceptionTick: false
   cognitiveController: false
 
+# Dedicated survival objective. Default OFF: enabling this attaches the mission
+# only to the already-configured bot with this exact username. It does not spawn
+# or remove bots, change the fleet/server configuration, or bypass mining guards.
+survival:
+  enabled: false
+  botName: "FayaazMJacc"
+
 # Build-system tuning knobs.
 #   sitePrepTimeoutMs: hard deadline for the pre-job phase of startBuild
 #     (origin resolution, bunker excavation, site-clear, snap-to-ground).
