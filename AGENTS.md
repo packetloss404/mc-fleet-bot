@@ -183,6 +183,11 @@ Run all control platform tests:
 npx vitest run test/control/
 ```
 
+Run the FleetCraft outbound bridge tests:
+```bash
+npx vitest run test/integrations/FleetCraftClient.test.ts
+```
+
 Run the focused citizen-fleet regression suite:
 ```bash
 npx vitest run \

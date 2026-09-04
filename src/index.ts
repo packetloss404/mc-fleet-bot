@@ -14,6 +14,7 @@ import { LLMSettings } from './ai/LLMSettings';
 import { registerLLMRoutes } from './server/llmRoutes';
 import { setupSocketEvents } from './server/socketEvents';
 import { HighlightStream } from './town/HighlightStream';
+import { FleetCraftBridge, FleetCraftClient } from './integrations/FleetCraftClient';
 
 /**
  * Legacy env-key boot path. MUST share the caller's ledger and settings-backed
@@ -109,6 +110,13 @@ async function main() {
   }
 
   const botManager = new BotManager(config, llmClient);
+  const fleetCraftClient = FleetCraftClient.fromEnv();
+  const fleetCraftBridge = fleetCraftClient
+    ? new FleetCraftBridge(fleetCraftClient, botManager)
+    : null;
+  // Register spawn/remove hooks before loadSavedBots(), allowing FleetCraft
+  // registration to begin before each worker opens its Minecraft connection.
+  fleetCraftBridge?.start();
   // TownManager is instantiated inside BotManager (so spawn hooks can reach it
   // via getTownManager()). Log here for boot visibility.
   logger.info({ towns: botManager.getTownManager().listTowns().length }, 'TownManager booted');
@@ -430,6 +438,10 @@ async function main() {
 
     // Close socket connections
     io.close();
+
+    // Keep the explicit registry entry across service restarts, but publish
+    // the real disconnected lifecycle state while workers are still present.
+    await fleetCraftBridge?.stop();
 
     // Flush bots.json FIRST (so next boot loads the full roster), then
     // terminate workers without removing them from the map. Calling

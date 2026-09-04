@@ -109,6 +109,27 @@ npm start
 
 Other scripts: `npm run dev` (tsx, no build step) and `npm test` (Vitest).
 
+### Optional FleetCraft bridge
+
+The backend can project its real bot roster and current state into FleetCraft.
+Set both `FLEETCRAFT_URL` and `FLEETCRAFT_API_KEY` to enable it; with either
+value missing, the integration is disabled. The bridge registers each bot,
+sends its exact `BotState`, canonical town role, behavior-inferred observed
+role, and current Voyager task, and removes the entry only when the bot is
+intentionally removed from this fleet.
+
+Delivery is fail-open and timeout-bounded: FleetCraft outages never prevent a
+bot from spawning, working, reconnecting, or being removed. A successful
+registration is awaited before the bot's first Minecraft connection so the
+server has reloaded its whitelist; a timeout or partial reload releases startup
+without crashing the bot process and is retried later. Normal service
+shutdown publishes `DISCONNECTED` but does not delete the roster, so a restart
+does not make citizens disappear and reappear. See `.env.example` for the
+optional timeout and heartbeat settings. The API key is server-side only and
+is sent as `X-Api-Key`. Failed intentional removals persist only the pending
+usernames in `data/fleetcraft-pending-deletions.json` and retry after restart;
+no bot or game state is copied into that queue.
+
 The dashboard is a separate Next.js app in `web/`:
 
 ```bash
