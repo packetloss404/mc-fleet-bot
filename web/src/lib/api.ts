@@ -339,39 +339,46 @@ export interface MissionRecord {
   updatedAt: number;
 }
 
+export type MarkerKind = 'base' | 'storage' | 'build-site' | 'mine' | 'village' | 'custom';
+
 export interface Marker {
   id: string;
   name: string;
+  kind: MarkerKind;
   position: { x: number; y: number; z: number };
-  x: number;
-  y: number;
-  z: number;
-  type?: string;
-  color?: string;
-  metadata?: Record<string, any>;
+  tags: string[];
+  notes?: string;
+  createdAt: number;
+  updatedAt: number;
 }
+
+export type ZoneMode = 'guard' | 'avoid' | 'farm' | 'build' | 'gather' | 'custom';
 
 export interface Zone {
   id: string;
   name: string;
-  type: string;
-  bounds: Record<string, any>;
-  x1?: number;
-  z1?: number;
-  x2?: number;
-  z2?: number;
-  color?: string;
-  metadata?: Record<string, any>;
+  mode: ZoneMode;
+  shape: 'circle' | 'rectangle';
+  circle?: { x: number; z: number; radius: number };
+  rectangle?: { minX: number; minZ: number; maxX: number; maxZ: number };
+  markerIds?: string[];
+  rules?: Record<string, unknown>;
 }
 
 export interface Route {
   id: string;
   name: string;
-  waypoints: { x: number; y: number; z: number }[];
-  loop?: boolean;
-  color?: string;
-  metadata?: Record<string, any>;
+  waypointIds: string[];
+  loop: boolean;
 }
+
+export type CreateMarkerInput = Pick<Marker, 'name' | 'kind' | 'position'>
+  & Partial<Pick<Marker, 'tags' | 'notes'>>;
+export type UpdateMarkerInput = Partial<Omit<Marker, 'id' | 'createdAt'>>;
+export type CreateZoneInput = Omit<Zone, 'id'>;
+export type UpdateZoneInput = Partial<Omit<Zone, 'id'>>;
+export type CreateRouteInput = Omit<Route, 'id'>;
+export type UpdateRouteInput = Partial<Omit<Route, 'id'>>;
 
 export type MarkerRecord = Marker;
 export type ZoneRecord = Zone;
@@ -852,21 +859,26 @@ export const api = {
     fetchJSON<{ success: boolean }>(`/api/missions/${id}/cancel`, { method: 'POST' }),
 
   // ─── Markers ───
-  createMarker: (data: { name: string; x: number; y: number; z: number; type?: string }) =>
+  createMarker: (data: CreateMarkerInput) =>
     fetchJSON<{ marker: Marker }>('/api/markers', {
       method: 'POST',
+      body: JSON.stringify(data),
+    }),
+  updateMarker: (id: string, data: UpdateMarkerInput) =>
+    fetchJSON<{ marker: Marker }>(`/api/markers/${id}`, {
+      method: 'PATCH',
       body: JSON.stringify(data),
     }),
   deleteMarker: (id: string) =>
     fetchJSON<{ success: boolean }>(`/api/markers/${id}`, { method: 'DELETE' }),
 
   // ─── Zones ───
-  createZone: (data: Record<string, any>) =>
+  createZone: (data: CreateZoneInput) =>
     fetchJSON<{ zone: Zone }>('/api/zones', {
       method: 'POST',
       body: JSON.stringify(data),
     }),
-  updateZone: (id: string, data: Record<string, any>) =>
+  updateZone: (id: string, data: UpdateZoneInput) =>
     fetchJSON<{ zone: Zone }>(`/api/zones/${id}`, {
       method: 'PATCH',
       body: JSON.stringify(data),
@@ -877,9 +889,14 @@ export const api = {
   // ─── Routes ───
   getRoutes: () =>
     fetchJSON<{ routes: Route[] }>('/api/routes').catch(() => ({ routes: [] })),
-  createRoute: (data: { name: string; waypoints: { x: number; y: number; z: number }[]; loop?: boolean }) =>
+  createRoute: (data: CreateRouteInput) =>
     fetchJSON<{ route: Route }>('/api/routes', {
       method: 'POST',
+      body: JSON.stringify(data),
+    }),
+  updateRoute: (id: string, data: UpdateRouteInput) =>
+    fetchJSON<{ route: Route }>(`/api/routes/${id}`, {
+      method: 'PATCH',
       body: JSON.stringify(data),
     }),
   deleteRoute: (id: string) =>

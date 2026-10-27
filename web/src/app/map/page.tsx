@@ -21,6 +21,10 @@ import {
   drawRoutePreview,
   drawMissionOverlays,
   drawSquadOverlays,
+  getMarkerColor,
+  getZoneCenter,
+  getZoneColor,
+  resolveRouteWaypoints,
 } from '@/lib/mapDrawing';
 import {
   MapToolbar,
@@ -476,7 +480,7 @@ export default function MapPage() {
 
       // ── Draw saved routes ──
       if (layerState.routes) {
-        drawRoutes(ctx, routesRef.current, cx, cy, scale, offset);
+        drawRoutes(ctx, routesRef.current, cx, cy, scale, offset, markersRef.current);
       }
 
       // ── Draw saved markers ──
@@ -754,7 +758,7 @@ export default function MapPage() {
     const scale = scaleRef.current;
     const offset = offsetRef.current;
     for (const m of markersRef.current) {
-      const { sx, sy } = worldToScreen(m.x, m.z, cx, cy, scale, offset);
+      const { sx, sy } = worldToScreen(m.position.x, m.position.z, cx, cy, scale, offset);
       const dx = mx - sx;
       const dy = my - sy;
       if (dx * dx + dy * dy < MARKER_HIT_RADIUS * MARKER_HIT_RADIUS) return m.id;
@@ -983,9 +987,9 @@ export default function MapPage() {
       if (name?.trim()) {
         api.createMarker({
           name: name.trim(),
-          x: Math.round(wx),
-          y: 64,
-          z: Math.round(wz),
+          kind: 'custom',
+          position: { x: Math.round(wx), y: 64, z: Math.round(wz) },
+          tags: [],
         }).then((result) => {
           useMapOverlayStore.getState().addMarker(result.marker);
         }).catch(() => {});
@@ -1221,19 +1225,25 @@ export default function MapPage() {
                   Zones ({zones.length})
                 </p>
                 <div className="space-y-0.5">
-                  {zones.map((zone) => (
+                  {zones.map((zone) => {
+                    const center = getZoneCenter(zone);
+                    return (
                     <button
                       key={zone.id}
-                      onClick={() => { centerOn(((zone.x1 ?? 0) + (zone.x2 ?? 0)) / 2, ((zone.z1 ?? 0) + (zone.z2 ?? 0)) / 2); kick(); }}
+                      onClick={() => {
+                        if (center) centerOn(center.x, center.z);
+                        kick();
+                      }}
                       className="w-full flex items-center gap-2 px-2 py-1.5 rounded-md text-left hover:bg-zinc-800/50 transition-colors"
                     >
-                      <span className="w-2.5 h-2.5 shrink-0 rounded-sm" style={{ backgroundColor: zone.color || '#8B5CF6' }} />
+                      <span className="w-2.5 h-2.5 shrink-0 rounded-sm" style={{ backgroundColor: getZoneColor(zone) }} />
                       <div className="min-w-0 flex-1">
                         <p className="text-[11px] font-medium text-zinc-300 truncate">{zone.name}</p>
-                        <p className="text-[9px] text-zinc-600 uppercase">{zone.type}</p>
+                        <p className="text-[9px] text-zinc-600 uppercase">{zone.mode}</p>
                       </div>
                     </button>
-                  ))}
+                    );
+                  })}
                 </div>
               </>
             )}
@@ -1245,24 +1255,27 @@ export default function MapPage() {
                   Routes ({routes.length})
                 </p>
                 <div className="space-y-0.5">
-                  {routes.map((route) => (
+                  {routes.map((route) => {
+                    const waypoints = resolveRouteWaypoints(route, markers);
+                    return (
                     <button
                       key={route.id}
                       onClick={() => {
-                        if (route.waypoints.length > 0) {
-                          centerOn(route.waypoints[0].x, route.waypoints[0].z);
+                        if (waypoints.length > 0) {
+                          centerOn(waypoints[0].x, waypoints[0].z);
                           kick();
                         }
                       }}
                       className="w-full flex items-center gap-2 px-2 py-1.5 rounded-md text-left hover:bg-zinc-800/50 transition-colors"
                     >
-                      <span className="w-2.5 h-2.5 shrink-0 rounded-full" style={{ backgroundColor: route.color || '#F59E0B' }} />
+                      <span className="w-2.5 h-2.5 shrink-0 rounded-full bg-amber-500" />
                       <div className="min-w-0 flex-1">
                         <p className="text-[11px] font-medium text-zinc-300 truncate">{route.name}</p>
-                        <p className="text-[9px] text-zinc-600">{route.waypoints.length} pts{route.loop ? ' (loop)' : ''}</p>
+                        <p className="text-[9px] text-zinc-600">{waypoints.length} pts{route.loop ? ' (loop)' : ''}</p>
                       </div>
                     </button>
-                  ))}
+                    );
+                  })}
                 </div>
               </>
             )}
@@ -1277,13 +1290,13 @@ export default function MapPage() {
                   {markers.map((marker) => (
                     <button
                       key={marker.id}
-                      onClick={() => { centerOn(marker.x, marker.z); kick(); }}
+                      onClick={() => { centerOn(marker.position.x, marker.position.z); kick(); }}
                       className="w-full flex items-center gap-2 px-2 py-1.5 rounded-md text-left hover:bg-zinc-800/50 transition-colors"
                     >
-                      <span className="w-2.5 h-2.5 shrink-0 rotate-45" style={{ backgroundColor: marker.color || '#FFFFFF', width: 8, height: 8 }} />
+                      <span className="w-2.5 h-2.5 shrink-0 rotate-45" style={{ backgroundColor: getMarkerColor(marker), width: 8, height: 8 }} />
                       <div className="min-w-0 flex-1">
                         <p className="text-[11px] font-medium text-zinc-300 truncate">{marker.name}</p>
-                        <p className="text-[9px] text-zinc-600 font-mono">{Math.round(marker.x)}, {Math.round(marker.z)}</p>
+                        <p className="text-[9px] text-zinc-600 font-mono">{Math.round(marker.position.x)}, {Math.round(marker.position.z)}</p>
                       </div>
                     </button>
                   ))}

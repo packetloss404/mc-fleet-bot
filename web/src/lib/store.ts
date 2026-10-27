@@ -62,6 +62,11 @@ function toPlayerList(byId: Record<string, PlayerData>): PlayerData[] {
   return Object.values(byId);
 }
 
+function commandTimestamp(command: CommandRecord): number {
+  const timestamp = Date.parse(command.createdAt);
+  return Number.isFinite(timestamp) ? timestamp : 0;
+}
+
 function updateBot(
   state: BotStore,
   key: string,
@@ -224,12 +229,12 @@ export const useControlStore = create<ControlStore>((set) => ({
       if (idx >= 0) {
         const next = [...state.commandHistory];
         next[idx] = { ...next[idx], ...command };
-        next.sort((a, b) => b.createdAt - a.createdAt);
+        next.sort((a, b) => commandTimestamp(b) - commandTimestamp(a));
         return { commandHistory: next };
       }
       return {
         commandHistory: [command, ...state.commandHistory]
-          .sort((a, b) => b.createdAt - a.createdAt)
+          .sort((a, b) => commandTimestamp(b) - commandTimestamp(a))
           .slice(0, 100),
       };
     }),

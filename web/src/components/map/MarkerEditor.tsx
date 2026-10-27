@@ -4,8 +4,6 @@ import { useState, useEffect } from 'react';
 import { api, type Marker } from '@/lib/api';
 import { useToast } from '@/components/Toast';
 
-const MARKER_COLORS = ['#F59E0B', '#EF4444', '#10B981', '#3B82F6', '#8B5CF6', '#EC4899', '#F97316', '#14B8A6'];
-
 interface Props {
   open: boolean;
   onClose: () => void;
@@ -19,7 +17,6 @@ export function MarkerEditor({ open, onClose, onCreated, defaultPosition }: Prop
   const [x, setX] = useState(defaultPosition?.x ?? 0);
   const [y, setY] = useState(64);
   const [z, setZ] = useState(defaultPosition?.z ?? 0);
-  const [color, setColor] = useState('#F59E0B');
   const [notes, setNotes] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
@@ -46,8 +43,9 @@ export function MarkerEditor({ open, onClose, onCreated, defaultPosition }: Prop
     try {
       const res = await api.createMarker({
         name: name.trim(),
-        x, y, z,
-        color,
+        kind: 'custom',
+        position: { x, y, z },
+        tags: [],
         notes: notes.trim() || undefined,
       });
       toast(`Marker "${name}" created`, 'success');
@@ -110,21 +108,6 @@ export function MarkerEditor({ open, onClose, onCreated, defaultPosition }: Prop
                 onChange={(e) => setZ(Number(e.target.value))}
                 className="w-full bg-zinc-800/80 border border-zinc-700/50 rounded-lg px-3 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-zinc-600"
               />
-            </div>
-          </div>
-
-          {/* Color */}
-          <div>
-            <label className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium block mb-1">Color</label>
-            <div className="flex gap-1.5">
-              {MARKER_COLORS.map((c) => (
-                <button
-                  key={c}
-                  onClick={() => setColor(c)}
-                  className={`w-6 h-6 rounded-full transition-all ${color === c ? 'ring-2 ring-white ring-offset-2 ring-offset-zinc-900' : 'hover:scale-110'}`}
-                  style={{ backgroundColor: c }}
-                />
-              ))}
             </div>
           </div>
 

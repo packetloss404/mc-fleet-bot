@@ -35,6 +35,30 @@ interface BlackboardGoal {
   createdAt: number;
 }
 
+function parseBlackboardGoal(value: unknown): BlackboardGoal | null {
+  if (!value || typeof value !== 'object') return null;
+  const goal = value as Record<string, unknown>;
+  if (
+    typeof goal.id !== 'string'
+    || typeof goal.rawRequest !== 'string'
+    || typeof goal.requestedBy !== 'string'
+    || typeof goal.scope !== 'string'
+    || typeof goal.status !== 'string'
+    || typeof goal.createdAt !== 'number'
+  ) {
+    return null;
+  }
+  return {
+    id: goal.id,
+    rawRequest: goal.rawRequest,
+    requestedBy: goal.requestedBy,
+    scope: goal.scope,
+    botName: typeof goal.botName === 'string' ? goal.botName : undefined,
+    status: goal.status,
+    createdAt: goal.createdAt,
+  };
+}
+
 const KIND_CONFIG: Record<string, { label: string; color: string; icon: string }> = {
   blocker: { label: 'blocker', color: '#EF4444', icon: '!' },
   progress: { label: 'progress', color: '#3B82F6', icon: '>' },
@@ -85,7 +109,7 @@ export default function CoordinationPage() {
         setMessages(data.blackboard.messages.slice().reverse());
         setTasks(data.blackboard.tasks);
         setGoals(data.blackboard.goals);
-        setSwarmGoal(data.blackboard.swarmGoal);
+        setSwarmGoal(parseBlackboardGoal(data.blackboard.swarmGoal));
         setReservations(data.blackboard.reservations || []);
       }).catch(() => {}).finally(() => setLoading(false));
     };

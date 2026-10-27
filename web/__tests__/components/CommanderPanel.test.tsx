@@ -23,7 +23,7 @@ const plan: CommanderPlan = {
 vi.mock('@/lib/api', () => ({
   api: {
     commanderParse: vi.fn(),
-    commanderExecute: vi.fn().mockResolvedValue({ success: true }),
+    commanderExecute: vi.fn().mockResolvedValue({ result: { commands: [], missions: [] } }),
   },
 }));
 
@@ -37,7 +37,7 @@ describe('CommanderPanel', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     vi.mocked(api.commanderParse).mockResolvedValue({ plan });
-    vi.mocked(api.commanderExecute).mockResolvedValue({ success: true });
+    vi.mocked(api.commanderExecute).mockResolvedValue({ result: { commands: [], missions: [] } });
   });
 
   it('parses natural language and previews the resulting plan', async () => {

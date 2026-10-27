@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useCallback, useEffect, type KeyboardEvent } from 'react';
-import { api, type CommanderPlan, type CommanderResult, type CommanderDraft, type ClarificationQuestion } from '@/lib/api';
+import { api, type CommanderPlan, type CommanderDraft } from '@/lib/api';
 
 const EXAMPLE_PROMPTS = [
   'Send all guards to the village',
@@ -13,32 +13,125 @@ const EXAMPLE_PROMPTS = [
 interface HistoryEntry {
   input: string;
   plan: CommanderPlan;
-  result?: CommanderResult | null;
+  result?: UICommanderResult | null;
   timestamp: number;
 }
 
+interface UICommandResult {
+  command: { type: string; targets: string[] };
+  success: boolean;
+  error?: string;
+}
+
+interface UIMissionResult {
+  title: string;
+  assigneeIds: string[];
+}
+
+interface UICommanderResult {
+  commandResults: UICommandResult[];
+  missionsCreated: UIMissionResult[];
+}
+
+interface UIClarificationQuestion {
+  id: string;
+  question: string;
+  options: string[];
+  field: string;
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
+}
+
+function stringArray(value: unknown): string[] {
+  return Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string') : [];
+}
+
+function errorMessage(value: unknown): string | undefined {
+  if (typeof value === 'string') return value;
+  if (isRecord(value) && typeof value.message === 'string') return value.message;
+  return value == null ? undefined : JSON.stringify(value);
+}
+
 /**
- * Normalise the raw API execute response into a CommanderResult with the
- * convenience arrays the UI expects (commandResults, missionsCreated).
+ * Normalize the runtime CommanderService result (`commands` + `missions`)
+ * into the two presentation arrays used by this page.
  */
-function normalizeResult(raw: any): CommanderResult {
-  const commands: CommanderResult['commands'] = Array.isArray(raw?.commands) ? raw.commands : [];
-  const missions: CommanderResult['missions'] = Array.isArray(raw?.missions) ? raw.missions : [];
+function normalizeResult(raw: unknown): UICommanderResult {
+  const result = isRecord(raw) ? raw : {};
+  const commands = Array.isArray(result.commands) ? result.commands : [];
+  const missions = Array.isArray(result.missions) ? result.missions : [];
 
-  // Build commandResults (backwards-compat for UI)
-  const commandResults = commands.map((c: any) => ({
-    command: { type: c.type ?? 'unknown', targets: Array.isArray(c.targets) ? c.targets : [] },
-    success: c.status !== 'failed',
-    error: c.error,
-  }));
+  const commandResults = commands.map((value): UICommandResult => {
+    const command = isRecord(value) ? value : {};
+    const error = errorMessage(command.error);
+    return {
+      command: {
+        type: typeof command.type === 'string' ? command.type : 'unknown',
+        targets: stringArray(command.targets),
+      },
+      success: command.status !== 'failed' && !error,
+      error,
+    };
+  });
 
-  // Build missionsCreated (backwards-compat for UI)
-  const missionsCreated = missions.map((m: any) => ({
-    title: m.title ?? m.type ?? 'unknown',
-    assigneeIds: Array.isArray(m.assigneeIds) ? m.assigneeIds : [],
-  }));
+  const missionsCreated = missions.map((value): UIMissionResult => {
+    const mission = isRecord(value) ? value : {};
+    return {
+      title: typeof mission.title === 'string'
+        ? mission.title
+        : typeof mission.type === 'string' ? mission.type : 'unknown',
+      assigneeIds: stringArray(mission.assigneeIds),
+    };
+  });
 
-  return { commands, missions, commandResults, missionsCreated };
+  return { commandResults, missionsCreated };
+}
+
+function normalizeClarificationQuestion(
+  value: CommanderPlan['clarificationQuestions'][number],
+  index: number,
+): UIClarificationQuestion {
+  if (typeof value === 'string') {
+    return { id: `question-${index}`, question: value, options: [], field: `answer-${index}` };
+  }
+  const runtimeValue = value as typeof value & { id?: string; field?: string };
+  return {
+    id: runtimeValue.id ?? `question-${index}`,
+    question: runtimeValue.question,
+    options: runtimeValue.options ?? [],
+    field: runtimeValue.field ?? `answer-${index}`,
+  };
+}
+
+function isCommanderPlan(value: unknown): value is CommanderPlan {
+  if (!isRecord(value)) return false;
+  return typeof value.id === 'string'
+    && typeof value.input === 'string'
+    && typeof value.intent === 'string'
+    && typeof value.confidence === 'number'
+    && Array.isArray(value.warnings)
+    && Array.isArray(value.commands)
+    && Array.isArray(value.missions)
+    && Array.isArray(value.clarificationQuestions)
+    && Array.isArray(value.suggestedCommands);
+}
+
+function normalizeHistoryEntries(value: unknown): HistoryEntry[] {
+  if (!Array.isArray(value)) return [];
+  return value.flatMap((item) => {
+    if (!isRecord(item) || !isCommanderPlan(item.plan)) return [];
+    const executedAt = typeof item.executedAt === 'string' ? item.executedAt : undefined;
+    const createdAt = typeof item.createdAt === 'string' ? item.createdAt : item.plan.createdAt;
+    const parsedTimestamp = Date.parse(executedAt ?? createdAt);
+    return [{
+      input: typeof item.input === 'string' ? item.input : item.plan.input,
+      plan: item.plan,
+      result: item.result == null ? null : normalizeResult(item.result),
+      timestamp: Number.isFinite(parsedTimestamp) ? parsedTimestamp : 0,
+    }];
+  });
 }
 
 export default function CommanderPage() {
@@ -46,7 +139,7 @@ export default function CommanderPage() {
   const [parsing, setParsing] = useState(false);
   const [plan, setPlan] = useState<CommanderPlan | null>(null);
   const [executing, setExecuting] = useState(false);
-  const [result, setResult] = useState<CommanderResult | null>(null);
+  const [result, setResult] = useState<UICommanderResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [drafts, setDrafts] = useState<CommanderDraft[]>([]);
@@ -62,16 +155,8 @@ export default function CommanderPage() {
     Promise.all([
       api.getCommanderHistory({ limit: 20 }).then((data) => {
         if (cancelled) return;
-        // API returns { entries: [...] } or { history: [...] } -- handle both
-        const entries = Array.isArray(data?.entries) ? data.entries
-          : Array.isArray(data?.history) ? data.history
-          : [];
-        setHistory(entries.map((entry: any) => ({
-          input: entry.input ?? '',
-          plan: entry.plan ?? { id: '', input: '', intent: 'unknown', confidence: 0, warnings: [], requiresConfirmation: false, commands: [], missions: [], clarificationQuestions: [], needsClarification: false, suggestedCommands: [], createdAt: '' },
-          result: entry.result ? normalizeResult(entry.result) : null,
-          timestamp: entry.executedAt ? Date.parse(entry.executedAt) : Date.parse(entry.createdAt),
-        })));
+        // API returns { entries: [...] } or { history: [...] } -- handle both.
+        setHistory(normalizeHistoryEntries(data?.entries ?? data?.history));
       }).catch(() => {}),
       api.getCommanderDrafts().then((data) => {
         if (cancelled) return;
@@ -81,7 +166,7 @@ export default function CommanderPage() {
         if (cancelled) return;
         const raw = data?.suggestions;
         if (Array.isArray(raw) && raw.length > 0 && typeof raw[0] === 'string') {
-          setSuggestions(raw as string[]);
+          setSuggestions(stringArray(raw));
         }
       }).catch(() => {}),
     ]).finally(() => {
@@ -154,15 +239,7 @@ export default function CommanderPage() {
       setResult(normalized);
       // Refresh history from API
       api.getCommanderHistory({ limit: 20 }).then((historyData) => {
-        const entries = Array.isArray(historyData?.entries) ? historyData.entries
-          : Array.isArray(historyData?.history) ? historyData.history
-          : [];
-        setHistory(entries.map((entry: any) => ({
-          input: entry.input ?? '',
-          plan: entry.plan ?? { id: '', input: '', intent: 'unknown', confidence: 0, warnings: [], requiresConfirmation: false, commands: [], missions: [], clarificationQuestions: [], needsClarification: false, suggestedCommands: [], createdAt: '' },
-          result: entry.result ? normalizeResult(entry.result) : null,
-          timestamp: entry.executedAt ? Date.parse(entry.executedAt) : Date.parse(entry.createdAt),
-        })));
+        setHistory(normalizeHistoryEntries(historyData?.entries ?? historyData?.history));
       }).catch(() => {});
       setPlan(null);
       setInput('');
@@ -217,6 +294,8 @@ export default function CommanderPage() {
     setError(null);
     textareaRef.current?.focus();
   };
+
+  const clarificationQuestions = plan?.clarificationQuestions.map(normalizeClarificationQuestion) ?? [];
 
   return (
     <div className="p-6 lg:p-8 space-y-5 max-w-4xl">
@@ -350,10 +429,10 @@ export default function CommanderPage() {
             </div>
           )}
           {/* Clarification questions */}
-          {plan.needsClarification && plan.clarificationQuestions && plan.clarificationQuestions.length > 0 && (
+          {plan.needsClarification && clarificationQuestions.length > 0 && (
             <div className="space-y-3 border-t border-zinc-800/50 pt-3 mt-2">
               <p className="text-[11px] font-semibold text-amber-500 uppercase tracking-wider">Clarification Needed</p>
-              {plan.clarificationQuestions.map((q: ClarificationQuestion) => (
+              {clarificationQuestions.map((q) => (
                 <div key={q.id} className="space-y-1.5">
                   <p className="text-xs text-zinc-300">{q.question}</p>
                   <div className="flex flex-wrap gap-1.5">
@@ -404,7 +483,7 @@ export default function CommanderPage() {
           <div className="flex items-center gap-2 pt-2">
             <button
               onClick={handleExecute}
-              disabled={executing || !plan.id || (plan.needsClarification && (plan.clarificationQuestions?.length ?? 0) > 0)}
+              disabled={executing || !plan.id || (plan.needsClarification && clarificationQuestions.length > 0)}
               className="px-4 py-2 rounded-lg text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white transition-colors disabled:opacity-40"
             >
               {executing ? 'Executing...' : 'Execute'}
@@ -436,7 +515,7 @@ export default function CommanderPage() {
                 >
                   <span className="font-mono">{cr.command.type}</span>
                   <span className="text-zinc-500">{cr.command.targets.join(', ')}</span>
-                  {cr.error && <span className="ml-auto text-red-400">{typeof cr.error === 'string' ? cr.error : ((cr.error as { message?: string }).message ?? JSON.stringify(cr.error))}</span>}
+                  {cr.error && <span className="ml-auto text-red-400">{cr.error}</span>}
                 </div>
               ))}
             </div>
@@ -474,7 +553,7 @@ export default function CommanderPage() {
                   {draft.input.length > 80 ? draft.input.slice(0, 80) + '...' : draft.input}
                 </span>
                 <span className="text-[10px] text-zinc-600 font-mono shrink-0">
-                  {new Date(draft.updatedAt).toLocaleTimeString()}
+                  {new Date(draft.updatedAt ?? draft.createdAt ?? 0).toLocaleTimeString()}
                 </span>
                 <button
                   onClick={() => restoreDraft(draft)}
