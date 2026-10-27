@@ -38,6 +38,13 @@ export interface FieldOverride {
   hidden?: boolean;
   /** Render as multi-line textarea (strings only). */
   multiline?: boolean;
+  /**
+   * Render the field as a `<select>` with the given options instead of a
+   * free-text input. Strings only. Use this wherever the backend enforces
+   * a closed enum — e.g. `minecraft.loginFlow` accepts only `none | dyoauth`,
+   * and a free-text form lets operators type values the API will reject.
+   */
+  options?: ReadonlyArray<{ value: string; label: string }>;
 }
 
 export interface SettingsSectionProps {
@@ -407,6 +414,19 @@ function FieldRow({ path, value, overrides, onChange, depth = 0 }: FieldRowProps
               rows={4}
               className="bg-zinc-800 border border-zinc-700 rounded px-3 py-2 text-sm w-full font-mono"
             />
+          ) : override.options && override.options.length > 0 ? (
+            <select
+              id={inputId}
+              value={stringValue}
+              onChange={(e) => onChange(path, e.target.value)}
+              className="bg-zinc-800 border border-zinc-700 rounded px-3 py-2 text-sm w-full"
+            >
+              {override.options.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
           ) : (
             <input
               id={inputId}

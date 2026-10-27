@@ -54,7 +54,7 @@ npm test
 Tests use Vitest. Configuration is in `vitest.config.ts`.
 
 Fresh-clone CI is `.github/workflows/ci.yml`. It builds the backend and runs
-the non-snapshot backend suites, dashboard lint/unit/build and Chromium E2E,
+the non-snapshot backend suites, dashboard lint/type/unit/build and Chromium E2E,
 World Builder pytest, and the World Showcase production build. This is not a
 live-Minecraft/RCON/paid-provider acceptance test.
 
@@ -65,11 +65,12 @@ without mutating fleet state:
 PLAYWRIGHT_LIVE_URL=http://127.0.0.1:3000 npm run test:e2e:live --prefix web
 ```
 
-**`npm test` covers neither `world-builder/` nor `fleet-devtools/`.**
+**`npm test` covers neither `world-builder/` nor `tools/fleet-devtools/`.**
 `world-builder/` is a separate Python toolchain with its own pytest suite;
-`fleet-devtools/` is a separate npm workspace with its own `vitest.config.ts`.
-The root `vitest.config.ts` collects only `src/**/*.test.ts` and
-`test/**/*.test.ts`, and the root `tsconfig.json` compiles only `src/**/*`.
+`tools/fleet-devtools/` is a separate npm workspace with its own
+`vitest.config.ts`. The root `vitest.config.ts` collects only
+`src/**/*.test.ts` and `test/**/*.test.ts`, and the root `tsconfig.json`
+compiles only `src/**/*`.
 See their sections below.
 
 Note for any full-suite run: the `test/build/` Combined Zones tests and some
@@ -101,9 +102,9 @@ Without the editable install, pytest fails at *collection* with
 `ModuleNotFoundError: litemapy` / `mcwb.build`. That is a missing venv, not a
 broken checkout — do not debug it as one.
 
-## Fleet Devtools (`fleet-devtools/`)
+## Fleet Devtools (`tools/fleet-devtools/`)
 
-**mc-fleet-devtools** — a read-only Node 20 / TypeScript / ESM workbench that
+**mc-fleet-devtools** — a read-only Node 22 / TypeScript / ESM workbench that
 inspects *copied* Anvil snapshots and SQLite catalogs and emits HTML reports
 with hash-bound artifact manifests. REST API + dashboard on port **4310**, plus
 a CLI and a serialized job worker. Its own repo until 2026-08-07, merged via
@@ -114,7 +115,7 @@ and was not deleted.**
   `vitest.config.ts` → `src/**/*.test.ts` + `test/**/*.test.ts`. `npm run
   build` and `npm test` do **not** cover it. The root `package.json` declares
   no `workspaces`, so the root `npm install` does not install it — run
-  `npm install` inside `fleet-devtools/`. Run every devtools command from that
+  `npm install` inside `tools/fleet-devtools/`. Run every devtools command from that
   directory, never from the repo root.
 - **Coupling is on-disk formats only, and nothing is wired up.** Its snapshot
   digest matches `scripts/hash_world_snapshot.mjs` byte for byte
@@ -126,13 +127,13 @@ and was not deleted.**
   **Do not describe this as a pipeline.**
 - **Read-only by design.** No RCON, WorldEdit, upload, or world mutation. Do
   not add any to a report recipe; recipe steps are an allow-list, not scripts.
-- **CI lives at the repo root** — `.github/workflows/fleet-devtools.yml`,
-  scoped to `paths: ['fleet-devtools/**']`. The nested
-  `fleet-devtools/.github/workflows/ci.yml` is an inert signpost; GitHub reads
-  workflows only from the repository root. Edit the root one.
+- **CI lives at the repo root** — `.github/workflows/tools.yml`, scoped to
+  `paths: ['tools/fleet-devtools/**', 'tools/scripts/**']`. The nested
+  `tools/fleet-devtools/.github/workflows/ci.yml` is an inert signpost; GitHub
+  reads workflows only from the repository root. Edit the root one.
 
 ```bash
-cd fleet-devtools
+cd tools/fleet-devtools
 npm install
 npm run check      # build + lint + test + format:check
 npm run dev        # API + dashboard on 4310 — binds 0.0.0.0, no auth

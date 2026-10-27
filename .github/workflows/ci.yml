@@ -52,6 +52,7 @@ jobs:
           test/server
           test/social
           test/supplychain
+          test/survival
           test/town
           test/util
           test/voyager
@@ -81,6 +82,9 @@ jobs:
 
       - name: Lint
         run: npm run lint
+
+      - name: Type check
+        run: npm run typecheck
 
       - name: Unit tests
         run: npm test

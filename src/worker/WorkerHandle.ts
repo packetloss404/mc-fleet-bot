@@ -13,6 +13,7 @@ import type { TownRule } from '../town/RuleStore';
 import type { CultureManager } from '../social/CultureManager';
 import type { BotComms } from '../social/BotComms';
 import { logger } from '../util/logger';
+import type { SurvivalMissionStatus } from '../survival/SurvivalMission';
 
 /**
  * Per-worker V8 old-generation heap cap, in MB.
@@ -159,6 +160,7 @@ export class WorkerHandle {
   private onPlayerJoined?: (playerName: string) => void;
   private onPlayerLeft?: (playerName: string) => void;
   private onImpersonation?: (info: { botName: string; reason: string; signal: string }) => void;
+  private statusListeners = new Set<(status: any, detailedStatus: any) => void>();
 
   // Shared managers for IPC routing
   private llmClient: LLMClient | null;
@@ -410,6 +412,12 @@ export class WorkerHandle {
       this.lastStatus = data.status;
       this.lastDetailedStatus = data.detailedStatus;
       this.lastDiagnostics = data.diagnostics;
+      for (const listener of this.statusListeners) {
+        try { listener(this.lastStatus, this.lastDetailedStatus); }
+        catch (err: any) {
+          logger.warn({ bot: this.botName, err: err?.message }, 'Worker status listener failed');
+        }
+      }
       return;
     }
 
@@ -778,6 +786,20 @@ export class WorkerHandle {
     this.sendCommand('resumeVoyager', {});
   }
 
+  /** Read the opt-in survival controller state; null means this bot is not targeted. */
+  async getSurvivalMissionStatus(): Promise<SurvivalMissionStatus | null> {
+    return await this.sendRequest('getSurvivalMissionStatus', []);
+  }
+
+  /** Pause or resume the targeted controller and return its resulting state. */
+  async controlSurvivalMission(action: 'pause' | 'resume'): Promise<{
+    ok: boolean;
+    status?: SurvivalMissionStatus;
+    error?: string;
+  }> {
+    return await this.sendRequest('controlSurvivalMission', [action]);
+  }
+
   stopMovement(): void {
     this.sendCommand('stopMovement', {});
   }
@@ -888,6 +910,12 @@ export class WorkerHandle {
 
   getCachedDiagnostics(): any {
     return this.lastDiagnostics;
+  }
+
+  /** Subscribe to cached worker status changes. Returns an unsubscribe handle. */
+  onStatusUpdate(listener: (status: any, detailedStatus: any) => void): () => void {
+    this.statusListeners.add(listener);
+    return () => this.statusListeners.delete(listener);
   }
 
   /** Get recent decision traces, optionally filtered by type. Newest first. */

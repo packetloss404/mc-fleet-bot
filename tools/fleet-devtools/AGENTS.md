@@ -1,8 +1,9 @@
 # AGENTS.md
 
-Guidance for coding agents working in `fleet-devtools/`, a subtool of the
-`mc-fleet-bot` repository. Run every command below from this directory, never
-from the repository root — this tree has its own dependency install and the
+Guidance for coding agents working in `tools/fleet-devtools/`, a subtool of
+the `mc-fleet-bot` repository. Run every command below from this directory,
+never from the repository root — this tree has its own dependency install
+and the
 root `npm install` does not reach it.
 
 ## Purpose
@@ -96,7 +97,7 @@ of these doesn't trigger an expensive re-scan.
 
 ## Development conventions
 
-- TypeScript is strict, ESM, and targets Node 20.
+- TypeScript is strict, ESM, and targets Node 22.
 - Use explicit domain types and structured errors (`DevtoolsError`).
 - Keep route handlers thin and reusable behavior in packages.
 - Do not overwrite prior artifacts. Jobs always receive unique output folders.

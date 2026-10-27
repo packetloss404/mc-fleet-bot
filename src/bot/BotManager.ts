@@ -25,6 +25,7 @@ import { PlayerPositionCache } from '../control/PlayerPositionCache';
 import { TownManager } from '../town/TownManager';
 import type { Resident, Town } from '../town/Town';
 import { resolveResidentIdentity } from '../town/ResidentIdentity';
+import { TOWN_ROLES, type TownRole } from '../town/RoleManager';
 import { RuleStore, TownRule } from '../town/RuleStore';
 import { ImpersonationMonitor, ImpersonationIncident, ImpersonationInput } from '../security/ImpersonationMonitor';
 
@@ -80,7 +81,8 @@ export class BotManager {
   private watchdogInterval: NodeJS.Timeout | null = null;
   private nextStaggerAt = 0;
   private saveTimer: ReturnType<typeof setTimeout> | null = null;
-  private spawnListeners: Array<(handle: WorkerHandle) => void> = [];
+  private spawnListeners: Array<(handle: WorkerHandle) => void | Promise<void>> = [];
+  private removalListeners: Array<(botName: string, handle: WorkerHandle) => void> = [];
   /** Fleet-wide dedup for playerJoined/playerLeft events. Every bot sees the
    *  same join packet, so without this we'd log N times (once per online bot).
    *  Key is `${event}:${lowerName}`; value is the last-fire timestamp. */
@@ -293,7 +295,10 @@ export class BotManager {
 
     for (const listener of this.spawnListeners) {
       try {
-        listener(handle);
+        // Async listeners are allowed to finish bounded pre-connect work such
+        // as FleetCraft whitelist registration. Existing synchronous listeners
+        // retain their prior behavior.
+        await listener(handle);
       } catch (err) {
         logger.warn({ err: (err as any)?.message, bot: name }, 'Bot spawn listener failed');
       }
@@ -320,7 +325,18 @@ export class BotManager {
     this.workers.delete(key);
     // Free the prismarine-viewer slot so the port can be reused by another bot.
     this.viewerSlots.delete(handle.workerSlotIndex);
-    this.saveBots();
+    // Make the roster removal durable before listeners create any external
+    // deprovision tombstones. Otherwise a hard crash can leave bots.json stale
+    // and the resurrected handle will cancel the still-pending deletion.
+    this.saveBotsImmediate();
+
+    for (const listener of this.removalListeners) {
+      try {
+        listener(handle.botName, handle);
+      } catch (err) {
+        logger.warn({ err: (err as any)?.message, bot: handle.botName }, 'Bot removal listener failed');
+      }
+    }
 
     logger.info({ bot: name }, 'Bot removed');
     return true;
@@ -612,8 +628,13 @@ export class BotManager {
   }
 
   /** Register a listener fired when a new bot is spawned. Existing bots are NOT replayed. */
-  onBotSpawned(listener: (handle: WorkerHandle) => void): void {
+  onBotSpawned(listener: (handle: WorkerHandle) => void | Promise<void>): void {
     this.spawnListeners.push(listener);
+  }
+
+  /** Register a listener fired after a bot is intentionally removed. */
+  onBotRemoved(listener: (botName: string, handle: WorkerHandle) => void): void {
+    this.removalListeners.push(listener);
   }
 
   /** Get all worker handles */
@@ -702,6 +723,18 @@ export class BotManager {
   getPlayerPresenceTracker(): PlayerPresenceTracker { return this.playerPresenceTracker; }
   getPlayerPositionCache(): PlayerPositionCache { return this.playerPositionCache; }
   getTownManager(): TownManager { return this.townManager; }
+
+  /** Resolve the canonical town-scoped role for an external game projection. */
+  getTownRoleForBot(botName: string): TownRole | null {
+    try {
+      const role = this.resolveResidentForBot(botName)?.resident.currentRole;
+      return typeof role === 'string' && TOWN_ROLES.includes(role as TownRole)
+        ? role as TownRole
+        : null;
+    } catch {
+      return null;
+    }
+  }
 
   async handleSwarmDirective(description: string, requestedBy: string): Promise<void> {
     // Broadcast swarm directive to all workers — this clears local queues and interrupts current tasks

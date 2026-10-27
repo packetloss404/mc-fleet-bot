@@ -76,6 +76,31 @@ describe('validateConfig', () => {
     }
   });
 
+  it('validates the optional survival target and keeps omission valid', () => {
+    const omitted = validateConfig(baseValid());
+    expect(omitted.ok).toBe(true);
+
+    const enabled = baseValid();
+    enabled.survival = { enabled: true, botName: 'FayaazMJacc' };
+    expect(validateConfig(enabled).ok).toBe(true);
+
+    enabled.survival.enabled = 'yes';
+    const wrongFlag = validateConfig(enabled);
+    expect(wrongFlag.ok).toBe(false);
+    if (!wrongFlag.ok) {
+      expect(wrongFlag.errors).toContain('survival.enabled: expected boolean, got string');
+    }
+
+    enabled.survival = { enabled: false, botName: '../everyone' };
+    const unsafeName = validateConfig(enabled);
+    expect(unsafeName.ok).toBe(false);
+    if (!unsafeName.ok) {
+      expect(unsafeName.errors).toContain(
+        'survival.botName: must match /^[A-Za-z0-9_]{3,16}$/',
+      );
+    }
+  });
+
   it('reports missing required top-level sections', () => {
     const raw = baseValid();
     delete raw.api;
@@ -246,5 +271,41 @@ describe('validateConfig', () => {
     } finally {
       fs.unlinkSync(tmpFile);
     }
+  });
+
+  it('rejects mining.minDigY as a non-number (closes the file-edit fail-open gap)', () => {
+    // Before this entry was added to SECTION_SPECS, a hand-edited value like
+    // `minDigY: "50"` (string) passed config validation, then failed the
+    // `typeof === 'number'` guard inside `src/actions/geofence.ts:72`,
+    // leaving `minDigY = null` and fail-opening `isBelowDigFloor` at line 94.
+    // The dig floor that prevents fleet entombment was gone with no error.
+    // The HTTP PATCH path was already type-safe; this closes the file-edit
+    // gap by surfacing the type error at config load time.
+    const raw = baseValid();
+    raw.mining = { minDigY: '50' as any };
+    const result = validateConfig(raw);
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
+      expect(result.errors).toContain('mining.minDigY: expected number, got string');
+    }
+
+    // Same path with a boolean also fails — any non-number, not just strings.
+    raw.mining = { minDigY: true as any };
+    const result2 = validateConfig(raw);
+    expect(result2.ok).toBe(false);
+    if (!result2.ok) {
+      expect(result2.errors).toContain('mining.minDigY: expected number, got boolean');
+    }
+
+    // A real number is accepted.
+    raw.mining = { minDigY: 50 };
+    const result3 = validateConfig(raw);
+    expect(result3.ok).toBe(true);
+
+    // Omitting minDigY is also fine — the field is optional, the runtime
+    // falls back to the documented "no dig floor" behavior.
+    raw.mining = {};
+    const result4 = validateConfig(raw);
+    expect(result4.ok).toBe(true);
   });
 });

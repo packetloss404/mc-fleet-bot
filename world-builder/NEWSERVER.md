@@ -27,21 +27,22 @@ where `mcwb` work was left off. **Last updated: 2026-08-07.**
 
 ## State at a glance
 
-- **Repo:** `https://github.com/packetloss404/mc-world-builder` (private)
-- **Local path:** `D:\projects\mc-world-builder`
-- **Current branch:** `main`
-- **Last commit:** `d38934c` v0.1.0: full build pipeline
-- **Commits on main:** 3
-  - `d2c2249` mcwb v0.0.1: spec schema + validator
-  - `4631e56` cleanup pass before first push (license, palette, tests)
-  - `d38934c` v0.1.0: state + diff + writers + runner + verifier + CLI
+- **Repo:** `https://github.com/packetloss404/mc-world-builder` (private — read-only mirror; the canonical home is now `mc-fleet-bot`)
+- **Local path:** `D:\projects\mc-fleet-bot\world-builder`
+- **Current branch:** tracks `mc-fleet-bot` `main`
 - **Tests:** 38 passing (`python -m pytest`)
 - **License:** MIT
+
+The three pre-merge commits are still in the subtree history (`d2c2249`,
+`4631e56`, `d38934c`); the merge itself is `9ac6856` ("Add 'world-builder/'
+from commit '83d6ecdd48484e6ffd6f43340a238e20d53c2471'") on the parent repo.
+The standalone GitHub repo is intentionally left in place as a read-only
+mirror and has not been deleted.
 
 ## How to verify it works (pickup checklist)
 
 ```powershell
-Set-Location D:\projects\mc-world-builder
+Set-Location D:\projects\mc-fleet-bot\world-builder
 python -m pytest                                 # expect: 38 passed
 mcwb --version                                   # expect: mcwb 0.0.1
 mcwb validate --plan 'D:\projects\mc-fleet-bot\docs\masterplans\04-combined-complex'
@@ -67,10 +68,14 @@ mcwb verify --plan $env:MCWB_PLAN_DIR --world $world
 ### 1. First thing: pull the latest
 
 ```bash
-cd /path/to/mc-world-builder       # or D:\projects\mc-world-builder on Windows
-git pull origin main
-pip install -e ".[dev]"            # dev extras for tests
-python -m pytest                   # confirm 38 still pass
+cd D:\projects\mc-fleet-bot                 # the parent repo
+git pull                                    # pulls world-builder along with everything else
+cd world-builder
+python -m venv .venv                        # or .venv for WSL/Linux
+# .venv\Scripts\Activate.ps1                # on Windows
+# source .venv/bin/activate                 # on Linux/WSL
+pip install -e ".[dev]"                     # dev extras for tests
+python -m pytest                            # confirm 38 still pass
 ```
 
 ### 2. Try it on the live masterplan

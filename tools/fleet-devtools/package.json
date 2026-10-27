@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "workspaces": [
     "packages/*",
     "apps/*"
@@ -20,9 +23,6 @@
     "start": "node apps/api/dist/index.js",
     "cli": "npm run build:packages --silent && tsx apps/cli/src/index.ts"
   },
-  "engines": {
-    "node": ">=20"
-  },
   "dependencies": {
     "better-sqlite3": "^12.10.0",
     "express": "^4.21.0",
@@ -37,6 +37,6 @@
     "prettier": "^3.9.6",
     "tsx": "^4.19.0",
     "typescript": "^5.7.0",
-    "vitest": "^3.1.1"
+    "vitest": "^5.0.5"
   }
 }

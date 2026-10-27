@@ -58,7 +58,7 @@ copied snapshot instead.
 
 ## Requirements
 
-- Node.js 20 or newer
+- Node.js 22 or newer
 - npm
 - local access to copied Anvil region files
 - optional read-only SQLite catalogs
@@ -69,7 +69,7 @@ copied snapshot instead.
 # A subtool of the mc-fleet-bot repo with its own dependency tree. The
 # repository-root `npm install` does not reach here, and the root
 # `npm run build` / `npm test` do not cover it. Run everything from here.
-cd fleet-devtools
+cd tools/fleet-devtools
 npm install
 cp config/registry.example.yml config/registry.local.yml
 ```
@@ -253,7 +253,7 @@ npm run check      # build + lint + test + format:check
 npm run dev        # start the API on port 4310
 ```
 
-TypeScript is strict, uses ESM, and targets Node.js 20. The project is
+TypeScript is strict, uses ESM, and targets Node.js 22. The project is
 formatted with Prettier and linted with `tsc --noEmit`. Tests build synthetic
 region files and SQLite databases in temporary directories; they must never
 access a live server.

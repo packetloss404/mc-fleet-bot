@@ -406,6 +406,9 @@ export function createAPIServer(
       try { chainCoordinator.shutdown(); } catch (err: any) { logger.warn({ err: err?.message }, 'chainCoordinator.shutdown failed during admin restart'); }
       try { campaignManager.shutdown(); } catch (err: any) { logger.warn({ err: err?.message }, 'campaignManager.shutdown failed during admin restart'); }
       try { worldFeatureStore.close(); } catch (err: any) { logger.warn({ err: err?.message }, 'worldFeatureStore.close failed during admin restart'); }
+      // BuildCoordinator's `schedulePersist` debounces by 2s. Without this
+      // flush a build updated <2s before the restart endpoint is lost.
+      try { buildCoordinator.flush(); } catch (err: any) { logger.warn({ err: err?.message }, 'buildCoordinator.flush failed during admin restart'); }
       try {
         if (typeof (botManager as any).shutdownPersistence === 'function') {
           (botManager as any).shutdownPersistence();

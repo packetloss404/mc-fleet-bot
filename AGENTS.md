@@ -4,9 +4,13 @@ Guidance for coding agents working in `/opt/mc-fleet-bot`.
 
 ## Repository Shape
 
-- This repo has two TypeScript apps:
+- This repo has two TypeScript apps and three absorbed sub-tools:
 - Backend bot sidecar in the repository root (`src/`, compiled to `dist/`).
 - Frontend dashboard in `web/` (Next.js App Router).
+- `tools/fleet-devtools/` — a separate TypeScript monorepo for read-only Anvil/SQLite reporting (port 4310, its own `npm` workspace and `vitest` config). Lives under `tools/` next to the one-shot Node scripts in `tools/scripts/`.
+- `world-builder/` — the `mcwb` Python package (masterplan → world). Standalone `pyproject.toml` and pytest suite.
+- `world-showcase/` — the IANLAN NextGen Next.js app, deployed to Railway. Standalone `package.json` and `next build`.
+- `tools/` — small repo-root Node scripts (one-shot migrations). See `tools/README.md` if present, otherwise see inline headers.
 - Core backend domains:
 - `src/bot/` bot lifecycle and Mineflayer connection handling.
 - `src/voyager/` task planning, code execution, critic loop, skill storage.
@@ -18,6 +22,7 @@ Guidance for coding agents working in `/opt/mc-fleet-bot`.
 - `src/build/` schematic-based multi-bot build coordination.
 - `src/supplychain/` supply chain templates and coordination.
 - `src/security/` impersonation detection.
+- `src/survival/` explicitly enabled, exact-bot survival objective control and persisted progress.
 - `src/worker/` per-bot worker threads, IPC channel, and cross-thread proxies.
 - `src/ai/` LLM client abstraction (Anthropic, Gemini, OpenAI, MiniMax, Ollama, VoyageAI behind a `ModelRouter`) and prompt logic.
 - `src/server/` Express + Socket.IO API.
@@ -577,11 +582,101 @@ node scripts/qa_cobalt_s1_westlight_ravensreach_passive_rail_01_post_release.mjs
 - Main runtime config lives in `config.yml`.
 - Persistent data is stored under `data/` and learned skills under `skills/`.
 
+## Sub-tools
+
+The three sub-tools are each a standalone tree with its own dependency
+install and its own build/test/lint commands. **They are not covered
+by the root `npm run build` or `npm test`**, and the root `tsconfig.json`
+compiles only `src/**/*`. Run every command below from the sub-tool
+directory.
+
+### `tools/`
+
+Repo-root one-shot Node scripts and a sub-tool for read-only reporting.
+The one-shot scripts live at `tools/scripts/`. The TypeScript monorepo
+for read-only Anvil/SQLite reporting (formerly `fleet-devtools/`) now
+lives at `tools/fleet-devtools/`. See its own `AGENTS.md` and the
+sections below for the per-tree commands.
+
+### `tools/fleet-devtools/`
+
+A read-only Anvil/SQLite report workbench on port 4310. TypeScript
+monorepo (its own `package.json` with internal npm workspaces, its
+own `vitest.config.ts`). Has its own `AGENTS.md`.
+
+```bash
+cd tools/fleet-devtools
+npm install                                       # its own tree; root install does not reach here
+cp config/registry.example.yml config/registry.local.yml   # then edit — connector root must be absolute
+npm run check                                     # lint + build + test + format:check
+npm run cli -- registry check
+npm run dev                                       # API + dashboard on http://<host>:4310
+```
+
+CI: `.github/workflows/tools.yml` at the **repo root**,
+scoped to `paths: ['tools/fleet-devtools/**', 'tools/scripts/**']`. The nested
+`tools/fleet-devtools/.github/workflows/ci.yml` is an inert signpost — GitHub
+reads workflows only from the repository root. **Edit the root file.**
+
+### `tools/scripts/`
+
+One-shot Node scripts. The current entry is
+`tools/scripts/consolidate-explore-skills.js`, a self-healing migration
+that collapses the `explore_<dir>_for_<N>_blocks` combinatorial family
+into a single parameterized skill. It is **idempotent and safe to
+re-run**: it writes a new skill file only if missing, adds the index
+entry only if absent, and marks the legacy entries `deprecated: true`
+(without deleting the `.js` files, so the migration is reversible
+by flipping the flag). It is also "exhausted" — running it on a
+clean checkout of the current `main` reports
+"54 legacy entries newly deprecated" the first time and 0 thereafter.
+
+### `world-builder/`
+
+The `mcwb` Python package (masterplan → world). Python 3.11+,
+standalone `pyproject.toml`, pytest suite. Has its own `AGENTS.md`.
+
+```bash
+cd world-builder
+python3 -m venv .venv && source .venv/bin/activate    # Python 3.11+
+pip install -e ".[dev]"        # 'litemapy' and the package itself are required for the tests
+pytest                          # 38 tests
+mcwb validate --plan ../docs/masterplans/04-combined-complex
+```
+
+The committed `.venv/` was created in WSL; on Windows, create a fresh
+venv (`python -m venv .winvenv`) and reinstall. See
+`world-builder/AGENTS.md` for the Python 3.13 + amulet-core trap.
+
+### `world-showcase/`
+
+The IANLAN NextGen Next.js 15 report library, deployed to Railway.
+Has its own `AGENTS.md`.
+
+```bash
+cd world-showcase
+npm install
+npm run build                    # next build
+npm run start                    # next start
+npm run dev                      # local dev on :3000
+
+# Sync the two accepted report packages from the repo-root generators:
+npm run sync:underground
+npm run sync:coordinates
+```
+
+`next lint` is interactive in this project (no ESLint config) and
+unusable in non-interactive shells. CI lives on Railway and runs
+`npm run build` only. The required production env vars
+(`SITE_PASSCODE`, `SITE_SESSION_SECRET`) are listed in the root
+`.env.example`; both must be set in Railway's runtime variables.
+
 ## Build, Lint, Test, Run
 
 ### Backend (repo root)
 
 - Build: `npm run build`
+- Focused survival checks: `npx vitest run test/survival/SurvivalMission.test.ts test/survival/SurvivalIntegrationSafety.test.ts test/config.schema.test.ts`
 - Dev run: `npm run dev`
 - Production run: `npm start`
 - **Do NOT hand-start a second instance.** The stack runs under systemd as
@@ -664,6 +759,11 @@ and zero below-three-wide cross-sections from the immutable post snapshot.
 Run all control platform tests:
 ```bash
 npx vitest run test/control/
+```
+
+Run the FleetCraft outbound bridge tests:
+```bash
+npx vitest run test/integrations/FleetCraftClient.test.ts
 ```
 
 Run the focused citizen-fleet regression suite:
@@ -826,8 +926,53 @@ The frontend connects to the backend API at `http://localhost:3001` and uses Soc
 ## Verified Commands
 
 - `npm run build` in the repo root succeeds.
-- `npm run lint --prefix web` currently reports existing frontend warnings and errors.
-- Do not assume the frontend is lint-clean before making changes; check whether failures are pre-existing.
+- `npx vitest run` from the repo root has pre-existing failures: the
+  `test/build/` Combined Zones tests read `data/world-review/*.json`,
+  and `data/` is gitignored, so on a fresh clone ~60 test files fail
+  on `ENOENT` regardless of code state. **That is structural, not a
+  regression** — do not debug it as one. The team-c review
+  re-verified the count: 130 test files pass, 72 fail (mostly the
+  data-fixture ones), with one unhandled worker timeout.
+- `npm run lint --prefix web` currently reports 168 existing frontend
+  warnings and errors (134 errors, 34 warnings). Do not assume the
+  frontend is lint-clean before making changes; check whether failures
+  are pre-existing.
+- `npm run check` in `tools/fleet-devtools/` succeeds (lint + build + test +
+  format:check); 55/55 tests pass on a fresh `npm install` once
+  cross-platform native modules are rebuilt — see "Cross-platform
+  install traps" below.
+- `pytest` in `world-builder/` (against a fresh venv with
+  `pip install -e ".[dev]"`) runs 38 tests, all pass. Note: the
+  committed `.venv/` is a WSL/Linux venv; on Windows, create a new
+  venv (`python -m venv .winvenv`) — see `world-builder/AGENTS.md`.
+- `npm run build` in `world-showcase/` succeeds (7/7 routes).
+  `next lint` is interactive in this project; do not invoke
+  non-interactively.
+
+## Cross-platform install traps
+
+A single OS-switch of `node_modules/` produces these confusing errors,
+none of which are application bugs:
+
+- `better-sqlite3` throws `\\?\…\better_sqlite3.node is not a valid
+  Win32 application.` (or `invalid ELF header` on the inverse). Fix:
+  `npm rebuild better-sqlite3` from the affected workspace.
+- `npm test` fails at config load with `Host version "X" does not
+  match binary version "Y"` (esbuild). Fix:
+  `rm -rf node_modules && npm install` from the affected workspace.
+- `npm install` warns `Cannot find module @rollup/rollup-win32-x64-msvc`
+  (npm optional-dep bug). Fix: `npm install @rollup/rollup-win32-x64-msvc
+  --no-save` from the affected workspace, or `rm -rf node_modules &&
+  npm install`.
+- `npm run build` or `npm run lint` fails on Windows with
+  `'next' is not recognized as an internal or external command`.
+  Fix: `node node_modules/next/dist/bin/next build` (CI on Railway
+  is unaffected).
+- The committed `world-builder/.venv/` is a WSL/Linux venv. On
+  Windows, create a fresh one with `python -m venv .winvenv`.
+
+The general fix for any of these is `rm -rf node_modules && npm install`
+in the affected workspace; the specific fixes above are faster.
 
 ## TypeScript And Build Expectations
 

@@ -296,6 +296,27 @@ export class BuildCoordinator {
   }
 
   /**
+   * Flush any pending debounced build-state writes to disk immediately.
+   *
+   * Mirrors the shape of `CommandCenter.flush()` / `BlackboardManager.shutdown()`
+   * so SIGTERM and `POST /api/admin/restart` can both stop losing the last
+   * <2s of build mutations. The debounce timer is cleared so the late-firing
+   * write doesn't race the (now-cleared) in-memory state.
+   */
+  flush(): void {
+    if (this.persistTimer) {
+      clearTimeout(this.persistTimer);
+      this.persistTimer = null;
+    }
+    this.persistJobs();
+  }
+
+  /** Test/process-exit hook: drop the timer (after flushing). */
+  shutdown(): void {
+    this.flush();
+  }
+
+  /**
    * Resume any jobs that were running/paused when the process was last killed.
    * Must be called after the bot workers have had time to connect.
    */

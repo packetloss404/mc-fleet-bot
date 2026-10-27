@@ -113,6 +113,27 @@ npm start
 
 Other scripts: `npm run dev` (tsx, no build step) and `npm test` (Vitest).
 
+### Optional FleetCraft bridge
+
+The backend can project its real bot roster and current state into FleetCraft.
+Set both `FLEETCRAFT_URL` and `FLEETCRAFT_API_KEY` to enable it; with either
+value missing, the integration is disabled. The bridge registers each bot,
+sends its exact `BotState`, canonical town role, behavior-inferred observed
+role, and current Voyager task, and removes the entry only when the bot is
+intentionally removed from this fleet.
+
+Delivery is fail-open and timeout-bounded: FleetCraft outages never prevent a
+bot from spawning, working, reconnecting, or being removed. A successful
+registration is awaited before the bot's first Minecraft connection so the
+server has reloaded its whitelist; a timeout or partial reload releases startup
+without crashing the bot process and is retried later. Normal service
+shutdown publishes `DISCONNECTED` but does not delete the roster, so a restart
+does not make citizens disappear and reappear. See `.env.example` for the
+optional timeout and heartbeat settings. The API key is server-side only and
+is sent as `X-Api-Key`. Failed intentional removals persist only the pending
+usernames in `data/fleetcraft-pending-deletions.json` and retry after restart;
+no bot or game state is copied into that queue.
+
 The dashboard is a separate Next.js app in `web/`:
 
 ```bash
@@ -128,7 +149,9 @@ all of them:
 npm run build
 npx vitest run src test/actions test/ai test/bot test/control test/integrations \
   test/personality test/security test/server test/social \
-  test/supplychain test/town test/util test/voyager test/worker test/world
+  test/supplychain test/survival test/town test/util test/voyager test/worker test/world
+npm run lint --prefix web
+npm run typecheck --prefix web
 npm test --prefix web
 npm run test:e2e --prefix web
 PLAYWRIGHT_LIVE_URL=http://127.0.0.1:3000 npm run test:e2e:live --prefix web
@@ -144,8 +167,8 @@ focused command from `AGENTS.md` on a host with its evidence, but do not
 interpret fresh-clone `ENOENT` failures as application regressions.
 
 `.github/workflows/ci.yml` runs the buildable fresh-clone contract: backend
-build and non-snapshot tests, dashboard lint/unit/build checks, real Chromium
-browser tests, World Builder pytest, and the World Showcase production build.
+build and non-snapshot tests, dashboard lint/type/unit/build checks, real
+Chromium browser tests, World Builder pytest, and the World Showcase production build.
 The browser suite drives the actual Next.js UI with deterministic intercepted
 API responses. `test:e2e:live` is a separate, read-only smoke journey through
 the deployed dashboard and real backend; it requires both services to be
@@ -215,7 +238,7 @@ src/
 └── util/         # Logger and helpers
 web/              # Next.js dashboard
 world-builder/    # mcwb — standalone Python subtool: masterplan → live world (see below)
-fleet-devtools/   # Read-only Anvil/SQLite report workbench — its own npm workspace (see below)
+tools/            # Sub-tool home: scripts/ (one-shot Node) and fleet-devtools/ (read-only Anvil/SQLite report workbench)
 skills/           # Learned skills saved as JS modules (the library grows as bots run)
 scripts/          # World tooling — see below
 builds/           # manifest.yaml: every build unit and its completeness assertions
@@ -359,7 +382,7 @@ imports it; the two are coupled only through the on-disk masterplan format, so
 cd world-builder
 python3 -m venv .venv && source .venv/bin/activate   # Python 3.11+
 pip install -e ".[dev]"        # 'litemapy' and the package itself are required for the tests
-pytest                          # 22 tests
+pytest                          # 38 tests
 mcwb validate --plan ../docs/masterplans/04-combined-complex
 ```
 
@@ -371,16 +394,25 @@ See [`world-builder/README.md`](world-builder/README.md) for the masterplan
 format and [`world-builder/NEWSERVER.md`](world-builder/NEWSERVER.md) for
 deployment notes.
 
-## Fleet Devtools (`fleet-devtools/`)
+## Tools (`tools/`)
 
-**mc-fleet-devtools** — a local, read-only workbench that inspects *copied*
-Anvil snapshots and SQLite catalogs and turns them into durable, hash-bound
-reports. Node 20 / TypeScript / ESM, structured as its own npm workspace, with
-four surfaces over one service layer: a REST API on port **4310**, a
-dependency-free dashboard the API serves, a CLI, and a serialized job worker
-that deliberately runs one report at a time. Merged in from its own repo
-(`packetloss404/mc-fleet-devtools`) on 2026-08-07 via `git subtree`, history
-intact.
+The `tools/` directory at the repo root is the home for two things:
+
+1. **One-shot Node migration scripts** at `tools/scripts/`. Today there is
+   one: `tools/scripts/consolidate-explore-skills.js`, a self-healing
+   migration that collapses the `explore_<dir>_for_<N>_blocks` combinatorial
+   family into a single parameterized skill.
+2. **`tools/fleet-devtools/`** — **mc-fleet-devtools**, a local, read-only
+   workbench that inspects *copied* Anvil snapshots and SQLite catalogs and
+   turns them into durable, hash-bound reports. Node 22 / TypeScript / ESM,
+   structured as its own npm workspace, with four surfaces over one service
+   layer: a REST API on port **4310**, a dependency-free dashboard the API
+   serves, a CLI, and a serialized job worker that deliberately runs one
+   report at a time. Merged in from its own repo
+   (`packetloss404/mc-fleet-devtools`) on 2026-08-07 via `git subtree`,
+   history intact. The sub-tool moved up one level on 2026-08-08 from
+   `fleet-devtools/` to `tools/fleet-devtools/` so the one-shot Node scripts
+   sit next to it.
 
 Four recipes ship: `snapshot-overview`, `block-census`, `world-catalog`,
 `snapshot-diff`. Each run gets a fresh job directory under `data/artifacts/`
@@ -404,22 +436,23 @@ Verified:
   (`src/town/db.ts:269`) included.
 
 **Nothing is wired up, though.** No file in `src/`, `web/`, `scripts/`, or
-`test/` mentions `fleet-devtools` or `@mc-fleet/*`, and nothing under
-`fleet-devtools/` imports this repo. The only thing that would connect them is
-`fleet-devtools/config/registry.local.yml` — an operator-written, gitignored
-file that is not in the checkout. Until someone writes one pointing at `data/`,
-these are two directories that happen to speak the same formats. Co-location
-makes a format change reviewable in one diff; it is not a pipeline.
+`test/` mentions `tools/fleet-devtools` or `@mc-fleet/*`, and nothing under
+`tools/fleet-devtools/` imports this repo. The only thing that would connect
+them is `tools/fleet-devtools/config/registry.local.yml` — an
+operator-written, gitignored file that is not in the checkout. Until someone
+writes one pointing at `data/`, these are two directories that happen to
+speak the same formats. Co-location makes a format change reviewable in one
+diff; it is not a pipeline.
 
 **It is a separate toolchain, not part of the Node build.** The root
 `tsconfig.json` compiles only `src/**/*`, and the root `vitest.config.ts`
 collects only `src/**/*.test.ts` and `test/**/*.test.ts` — so `npm run build`
 and `npm test` neither build nor test it. The root `package.json` declares no
 `workspaces`, so a root `npm install` does not install it either, despite
-`fleet-devtools/package.json` declaring workspaces of its own.
+`tools/fleet-devtools/package.json` declaring workspaces of its own.
 
 ```bash
-cd fleet-devtools
+cd tools/fleet-devtools
 npm install                                                # its own tree; the root install does not reach here
 cp config/registry.example.yml config/registry.local.yml   # then edit — the connector root must be absolute
 npm run check                                              # build + lint + test + format:check
@@ -431,10 +464,11 @@ The API binds `0.0.0.0` and has **no authentication**. Use
 `MC_FLEET_DEVTOOLS_HOST=127.0.0.1` for loopback only, and never point it at a
 world that is being actively written — register a copy.
 
-CI: `.github/workflows/fleet-devtools.yml` at the **repo root** gates this
-directory (`paths: ['fleet-devtools/**']`). The copy at
-`fleet-devtools/.github/workflows/ci.yml` is an inert signpost — GitHub reads
-workflows only from the repository root, so a nested one never runs.
+CI: `.github/workflows/tools.yml` at the **repo root** gates this
+directory (`paths: ['tools/fleet-devtools/**', 'tools/scripts/**']`). The
+copy at `tools/fleet-devtools/.github/workflows/ci.yml` is an inert signpost
+— GitHub reads workflows only from the repository root, so a nested one
+never runs.
 
 **One trap.** If `node_modules/` was installed on a different platform than
 you're running on, native modules fail in confusing ways — `better-sqlite3`
@@ -443,10 +477,10 @@ mismatch at config load, *before* vitest sees its own config. Fix with
 `npm rebuild better-sqlite3`, or `rm -rf node_modules && npm install` for the
 general case. Do not debug it as a vitest or SQLite problem.
 
-See [`fleet-devtools/README.md`](fleet-devtools/README.md),
-[`docs/ARCHITECTURE.md`](fleet-devtools/docs/ARCHITECTURE.md),
-[`docs/REPORT_RECIPES.md`](fleet-devtools/docs/REPORT_RECIPES.md), and
-[`SECURITY.md`](fleet-devtools/SECURITY.md).
+See [`tools/fleet-devtools/README.md`](tools/fleet-devtools/README.md),
+[`docs/ARCHITECTURE.md`](tools/fleet-devtools/docs/ARCHITECTURE.md),
+[`docs/REPORT_RECIPES.md`](tools/fleet-devtools/docs/REPORT_RECIPES.md), and
+[`SECURITY.md`](tools/fleet-devtools/SECURITY.md).
 
 ## World Showcase (`world-showcase/`)
 
@@ -552,6 +586,7 @@ Edit `config.yml` to customize:
 - **Behaviors** — Toggle ambient chat, wandering, head tracking, combat instincts
 - **Security** — `security.impersonationDetection` (impersonation defense, on by default) and `IMPERSONATION_ALERT_WEBHOOK` env var for outbound alerts
 - **Project Sid flags** — `governance`, `social`, and `cognition` sections gate the features above. All default off when unset; the checked-in `config.yml` turns `governance` and `social` on and leaves `cognition` off
+- **Dedicated survival objective** — `survival.enabled` is off by default and `survival.botName` must exactly match an existing bot. It never changes the host or fleet roster and all digging, placement, and movement still pass through the normal geofence wrappers. Inspect it with `GET /api/bots/:name/survival-mission`; pause or resume it with `POST /api/bots/:name/survival-mission/:action`.
 
 ### World-specific settings
 

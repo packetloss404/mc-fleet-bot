@@ -61,13 +61,23 @@ function isTabId(s: string | null): s is TabId {
 
 // Per-field labels + hints for the Minecraft server section. The generic
 // SettingsSection renders strings as text inputs, port as a number, and
-// selectClass as a checkbox; these just make the form self-documenting.
+// selectClass as a checkbox; these just make the form self-documenting and
+// upgrade loginFlow from a free-text field to a closed `<select>` so the
+// dashboard matches the API's `enum:none|dyoauth` validation (any other
+// value is rejected at PATCH time and the form should not surface it).
 const MINECRAFT_FIELD_OVERRIDES = {
   host: { label: 'Server Host', hint: 'Hostname or IP of the Minecraft server (e.g. play.dyoburon.com or 10.80.13.14).' },
   port: { label: 'Port', hint: 'Default 25565.' },
   version: { label: 'MC Version', hint: 'Must match the target server, e.g. 1.21.11.' },
   auth: { label: 'Auth Mode', hint: 'offline (cracked usernames) or microsoft (premium accounts). Online-mode servers require microsoft.' },
-  loginFlow: { label: 'Login Flow', hint: 'none = just join (vanilla/Paper). dyoauth = DyoCraft /login + /register plugin.' },
+  loginFlow: {
+    label: 'Login Flow',
+    hint: 'none = just join (vanilla/Paper). dyoauth = DyoCraft /login + /register plugin. Any other value is rejected by the API.',
+    options: [
+      { value: 'none', label: 'none (vanilla / Paper)' },
+      { value: 'dyoauth', label: 'dyoauth (DyoCraft /login + /register)' },
+    ],
+  },
   loginPassword: { label: 'Login Password', hint: 'Only used by the dyoauth flow. Leave as ******** to keep the current password.' },
   selectClass: { label: 'DyoClasses Class Select', hint: 'Run the DyoClasses hotbar selection after login. Turn OFF for non-DyoCraft servers.' },
 } as const;
