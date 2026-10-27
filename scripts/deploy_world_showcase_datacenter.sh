@@ -33,6 +33,6 @@ rsync -az --delete \
   "$SHOWCASE_DIR/" "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DESTINATION/"
 
 ssh "${SSH_OPTIONS[@]}" "$DEPLOY_USER@$DEPLOY_HOST" \
-  "cd '$DEPLOY_DESTINATION' && npm ci && npm run build && sudo systemctl restart ianlan-nextgen && curl --fail --silent --show-error http://127.0.0.1/api/health"
+  "cd '$DEPLOY_DESTINATION' && npm ci && npm run build && sudo systemctl restart ianlan-nextgen && for attempt in \$(seq 1 30); do if curl --fail --silent --show-error http://127.0.0.1/api/health; then exit 0; fi; sleep 2; done; exit 1"
 
 echo "Datacenter deployment healthy: http://$DEPLOY_HOST"
