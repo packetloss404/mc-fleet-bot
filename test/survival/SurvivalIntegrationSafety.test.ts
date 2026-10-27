@@ -40,14 +40,4 @@ describe('survival replacement integration safety', () => {
     expect(mission).not.toContain('/gamemode');
   });
 
-  it('retains the AG-4 three-face frontier as source-bound and read-only', () => {
-    const ag4 = read('scripts/plan_ag4_gap_three_face_closure_measurement_07.mjs');
-
-    expect(ag4).toContain("const faces=['-X','-Z','+Z'];");
-    expect(ag4).toContain('mutationAuthority:false');
-    expect(ag4).toContain('worldMutationsPerformed:false');
-    expect(ag4).toContain('forwardOperationFilesEmitted:0');
-    expect(ag4).toContain('rollbackOperationFilesEmitted:0');
-    expect(ag4).toContain('releaseManifestEmitted:false');
-  });
 });

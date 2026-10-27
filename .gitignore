@@ -68,3 +68,6 @@ data/buildops/
 # sources in docs/masterplans/. If these ever need versioning, use Git LFS
 # rather than removing this rule.
 docs/_pdfs/
+
+# External deployment credentials
+/.deploy-keys/

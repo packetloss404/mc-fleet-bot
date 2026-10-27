@@ -1,0 +1,618 @@
+# mc-fleet-bot
+
+Build your own AI-powered Minecraft bot — and stand up an entire autonomous bot fleet, town, and AI civilization — on any Java Edition server you point it at.
+
+> **Lineage:** originally created as **mc-server-bot** by Dylan ([dyoburon](https://github.com/dyoburon));
+> substantially rebuilt and continued as **mc-fleet-bot** by Ian Walmsley
+> ([packetloss404](https://github.com/packetloss404)) since 2026 — Voyager subsystem fixes, the
+> autonomous town/rail buildout, mission & fleet management, cost guardrails, and the web dashboard.
+> Full commit history and authorship preserved.
+
+## What is this?
+
+This is an open Minecraft bot framework where you create your own bot with a unique personality, deploy it to a Minecraft server, and watch it interact with other players and bots in real time. Bots learn, trade, fight, farm, and hold conversations — all autonomously.
+
+Each bot uses a Voyager-style learning loop powered by LLMs: it proposes tasks for itself, **writes JavaScript to accomplish them, runs that code in a `vm` sandbox** (with timeout/interrupt/log capping), evaluates success with a critic agent, and saves working behaviors as reusable skills. Skills aren't just dumped to disk — they're retrieved by **hybrid semantic search** (per-skill TF-IDF sparse vectors + dense embeddings, cosine-scored), so a bot recalls the *relevant* past skill for a new task. Over time, your bot gets smarter.
+
+That's the single-bot story. The repo is also the full **fleet + civilization platform** that runs on top: each bot is its own OS worker thread, a centralized control plane drives missions/squads/roles, and an autonomous **TownBrain** runs whole simulated societies with governance, diplomacy, economy, and a closed-loop generative-architecture build pipeline. A ~30k-LOC Next.js dashboard and a 200+ route HTTP API sit in front of all of it.
+
+## Target server
+
+The server is configuration, not a constant. Set it in the `minecraft` section of `config.yml`:
+
+```yaml
+minecraft:
+  host: "your.server.host" # hostname or IP of the server to join
+  port: 25565
+  version: "1.21.11"       # must be a protocol version mineflayer speaks
+  auth: "offline"          # "offline" | "microsoft"
+  loginFlow: "none"        # "none" | "dyoauth"
+  selectClass: false
+```
+
+The reference deployment currently runs against a stock **Paper 1.21.11** server on the LAN. `minecraft.*` is only read at connect time, so changing it needs a service restart.
+
+A caveat worth knowing before you pick a server: mineflayer can only join a server whose protocol version it supports. A server running ahead of the newest mineflayer release (e.g. Paper 26.2, protocol 776) will reject every bot with "Outdated client!" until the server adds ViaBackwards or mineflayer catches up. The bot handles this gracefully — `bots.versionMismatchBackoffSec` drops reconnects to a slow heartbeat instead of a retry storm — but it cannot work around it.
+
+`loginFlow: "dyoauth"` is a legacy chat-password + class-select onboarding dance for one specific server. Leave it `"none"` for vanilla/Paper; `minecraft.loginPassword` is only consulted by that flow.
+
+## Features
+
+### Per-bot intelligence
+- **Voyager learning loop** — Bots propose tasks, generate code, run it in a sandboxed Node `vm`, critique the result, and persist what works
+- **Hybrid skill memory** — Learned skills are retrieved by combined TF-IDF + dense-embedding similarity, not just filename lookup; `backfill-embeddings.ts` (run it with `npx tsx backfill-embeddings.ts`) re-embeds the whole library
+- **Personality system** — Merchant, guard, explorer, farmer, blacksmith, elder, or builder archetypes
+- **Affinity & social memory** — Bots remember players, build relationships, message each other, and share world knowledge
+- **PIANO-style cognition** — Independent perception tick + cognitive controller keep chat coherent with the action a bot is actually taking (opt-in; both `cognition.*` flags ship off)
+- **LLM-powered chat** — Natural, context-aware conversation
+
+### Multi-provider LLM router
+- **6 provider clients** — Anthropic, Gemini, OpenAI, MiniMax, Ollama, and VoyageAI behind a single `ModelRouter`
+- **Per-task-type routing** — Different models for codegen, chat, design, embeddings, etc.
+- **Production resilience** — Circuit breaker, retry/backoff, terminal-vs-retryable error classification, LRU embedding cache, and a `TokenLedger` that tracks cost per call
+- **Outage auto-disable** — After 3 consecutive full-chain failures (deliberately below the circuit breaker's threshold, since a 30s cooldown only rate-limits a dead chain rather than stopping it), the global AI kill switch trips automatically and the fleet idles instead of churning. A recovery probe retries every 15 min, bypassing both the kill switch and the breaker — and accepts **only a paid provider** as proof of recovery, because a free local Ollama is always up and says nothing about drained credit. An operator toggle outranks the automatic one in both directions; `GET /api/llm/enabled` reports `autoDisabled` so "AI is off" is never ambiguous.
+- **Untrusted-input fencing** — Task text is fenced in `<task>` tags and saved-skill context in `<saved_skills>`, both declared untrusted in the system prompt and sanitized. Player chat reaches codegen prompts by two routes — directly, and by way of stored skill descriptions — and both are covered.
+
+### Fleet control plane
+- **Commands** — Immediate bot actions (pause, move, follow, guard, patrol) with dispatch and cancellation
+- **Missions** — Longer-running tasks with full lifecycle (start, pause, cancel, retry), dependency checking, and per-bot priority queues
+- **Squads & roles** — Group bots for coordinated ops; assign roles with autonomy levels and manual-override tracking
+- **World markers** — Named positions, zones (rectangular/circular), and waypoint routes
+- **Natural language commander** — Issue orders in plain English; an LLM parses them to structured plans (with regex fallback and clarification questions)
+
+### Town & civilization layer
+- **Autonomous TownBrain** — A 60s tick drives five sub-loops: demand → build → role → schedule → threat
+- **Governance that bites** — Mayor decrees become standing rules that bias task selection and are injected into resident prompts; bots propose rules through an approval/vote workflow
+- **Diplomacy & economy** — Inter-town diplomacy, trade routes, district planning, and expansion (seeding child towns)
+- **Phoenix rebirth & chronicles** — Failed towns can be rebuilt by a `PhoenixManager`; a `ChronicleGenerator` writes the town's narrative history
+- **Civilization metrics** — Infers each bot's role from its actual behavior and reports role-distribution entropy, action exclusivity, and unique-item accumulation
+
+### Generative architecture build pipeline
+- **LLM design → real schematic → multi-bot build** — An LLM designs a building, the design is validated into a `BlockPlan`, encoded into a genuine gzip **Sponge-v2 `.schem`** file, then constructed by a multi-bot build coordinator with auto-gather and site preparation
+- **Curated schematic library** — 100+ ready-to-place Sponge-v2 builds (houses, towers, statues, trees, vehicles, props) drop into `schematics/`; the coordinator selects a flat, footprint-clear site (`SiteSelector`) and places them via `snapToGround`/`clearSite`/`fillFoundation`
+- **Data-driven rail network** — A hub-and-spoke underground rail connector (`/api/tunnel`) reads live building footprints and carves a hub + powered-rail spokes with stair/ladder risers into each structure, with dry-run preview and post-build verify/repair
+- **Leashed caretaker-builder** — A `builder` bot with `caretaker: true` on its `leash` entry runs a place-only caretaker curriculum: withdraw materials from a home chest and expand the structure it's parked on, instead of chasing roaming swarm tasks. The checked-in deployment has five world-specific leash entries, all with caretaker mode disabled
+
+### Operations
+- **Worker-thread-per-bot** — Each bot runs in its own `worker_threads` worker; shared singletons (affinity, culture, world model, comms, LLM) are reached through typed IPC proxy classes so cross-bot state stays authoritative on the main thread
+- **Sandbox containment** — Learned skills and generated code run in a `node:vm` context, which is **not** a security boundary (Node documents this upstream, and an escape from this codebase's sandbox shape has been demonstrated). The service unit is therefore hardened — `NoNewPrivileges`, `ProtectSystem=strict`, `ProtectHome`, `PrivateTmp`, scoped `ReadWritePaths` — which took its systemd exposure score from 9.2 UNSAFE to 7.3 MEDIUM and severed the escape→root path, since the service account holds passwordless sudo. **`NoNewPrivileges=yes` is load-bearing, not cosmetic — do not remove it.** Closing the escape itself needs process isolation; see [`docs/research/worker-process-isolation.md`](docs/research/worker-process-isolation.md), which also records why the obvious fix (`AmbientCapabilities=CAP_SETUID`) grants root and must not be used.
+- **Live 3D viewer** — Per-bot prismarine-viewer (three.js/WebGL) spins up lazily only when you open a View tab in the dashboard
+- **Impersonation defense** — Detects duplicate-login kicks plus ghost-name corroboration, quarantines the impersonated bot, and fires an outbound webhook alert
+- **Web dashboard** — Next.js dashboard for map, fleet, town, skill graph, and decision/LLM trace timelines
+- **HTTP API** — 200+ REST routes plus socket.io events to spawn, drive, and observe everything programmatically
+
+## Quick Start
+
+The backend and dashboard require Node.js 22 or newer (Mineflayer 4.35+ no
+longer supports Node 20). The standalone Fleet Devtools and World Showcase
+toolchains retain their own runtime requirements.
+
+```bash
+# Clone the repo
+git clone https://github.com/packetloss404/mc-fleet-bot.git
+cd mc-fleet-bot
+
+# Install dependencies
+npm install
+
+# Configure your bot
+cp .env.example .env
+# Add your API key(s) to .env. At minimum one LLM provider:
+#   ANTHROPIC_API_KEY   (Anthropic)
+#   GOOGLE_API_KEY      (Gemini — also used for skill embeddings)
+#   OPENAI_API_KEY / MINIMAX_API_KEY / VOYAGE_API_KEY  (optional)
+#   Ollama runs locally, no key needed
+
+# Point config.yml at your Minecraft server (minecraft.host / port / version)
+# and customize bot limits, behavior, and LLM routing
+
+# Build and run
+npm run build
+npm start
+```
+
+Other scripts: `npm run dev` (tsx, no build step) and `npm test` (Vitest).
+
+### Optional FleetCraft bridge
+
+The backend can project its real bot roster and current state into FleetCraft.
+Set both `FLEETCRAFT_URL` and `FLEETCRAFT_API_KEY` to enable it; with either
+value missing, the integration is disabled. The bridge registers each bot,
+sends its exact `BotState`, canonical town role, behavior-inferred observed
+role, and current Voyager task, and removes the entry only when the bot is
+intentionally removed from this fleet.
+
+Delivery is fail-open and timeout-bounded: FleetCraft outages never prevent a
+bot from spawning, working, reconnecting, or being removed. A successful
+registration is awaited before the bot's first Minecraft connection so the
+server has reloaded its whitelist; a timeout or partial reload releases startup
+without crashing the bot process and is retried later. Normal service
+shutdown publishes `DISCONNECTED` but does not delete the roster, so a restart
+does not make citizens disappear and reappear. See `.env.example` for the
+optional timeout and heartbeat settings. The API key is server-side only and
+is sent as `X-Api-Key`. Failed intentional removals persist only the pending
+usernames in `data/fleetcraft-pending-deletions.json` and retry after restart;
+no bot or game state is copied into that queue.
+
+The dashboard is a separate Next.js app in `web/`:
+
+```bash
+cd web && npm install && npm run build && npm start   # serves on port 3000
+```
+
+### Testing and CI
+
+The repository has several independent test surfaces; no single command covers
+all of them:
+
+```bash
+npm run build
+npx vitest run src test/actions test/ai test/bot test/control test/integrations \
+  test/personality test/security test/server test/social \
+  test/supplychain test/survival test/town test/util test/voyager test/worker test/world
+npm run lint --prefix web
+npm run typecheck --prefix web
+npm test --prefix web
+npm run test:e2e --prefix web
+PLAYWRIGHT_LIVE_URL=http://127.0.0.1:3000 npm run test:e2e:live --prefix web
+(cd world-builder && pytest)
+npm run build --prefix world-showcase
+npm test --prefix world-showcase
+npm run test:e2e --prefix world-showcase
+```
+
+`npm test` at the repository root also discovers `test/build/` and operational
+cases under `test/scripts/`. Most of those are source-bound world-release
+regressions that require the operator's immutable `data/world-review/`
+snapshots; those snapshots are deliberately gitignored. Run the relevant
+focused command from `AGENTS.md` on a host with its evidence, but do not
+interpret fresh-clone `ENOENT` failures as application regressions.
+
+`.github/workflows/ci.yml` runs the buildable fresh-clone contract: backend
+build and non-snapshot tests, dashboard lint/type/unit/build checks, real
+Chromium browser tests, World Builder pytest, and World Showcase publication,
+source-freshness, production-build and real-browser checks.
+The browser suite drives the actual Next.js UI with deterministic intercepted
+API responses. `test:e2e:live` is a separate, read-only smoke journey through
+the deployed dashboard and real backend; it requires both services to be
+running and is intentionally not a hosted-CI gate. Neither suite claims to
+validate paid LLM calls, RCON mutations, or operator-only world snapshots.
+
+### Running as a service
+
+The reference deployment lives at `/opt/stacks/mc-fleet-bot` and runs under two systemd units:
+
+| Unit | What | Port | Log |
+|---|---|---|---|
+| `mc-fleet-bot.service` | Bot API (`node dist/index.js`) | 3001 | `/var/log/mc-fleet-bot.log` |
+| `mc-fleet-web.service` | Next.js dashboard (`npm start` in `web/`) | 3000 | `/var/log/mc-fleet-web.log` |
+
+```bash
+sudo systemctl restart mc-fleet-bot    # after npm run build
+sudo systemctl restart mc-fleet-web    # after cd web && npm run build
+tail -f /var/log/mc-fleet-bot.log
+```
+
+## Spawning a Bot
+
+Send a POST request to the API:
+
+```bash
+curl -X POST http://localhost:3001/api/bots \
+  -H "Content-Type: application/json" \
+  -d '{"name": "MyBot", "personality": "farmer", "mode": "codegen"}'
+```
+
+Check status:
+
+```bash
+curl -s http://localhost:3001/api/bots
+```
+
+### Available Personalities
+
+| Personality | Description |
+|---|---|
+| `merchant` | Trades items and announces wares |
+| `guard` | Patrols and protects areas |
+| `explorer` | Roams and discovers the world |
+| `farmer` | Farms crops and tends animals |
+| `blacksmith` | Mines, smelts, and crafts |
+| `elder` | Wise advisor, shares knowledge |
+| `builder` | Places structures; runs the caretaker curriculum when leashed to a home |
+
+## Project Structure
+
+```
+src/
+├── bot/          # Bot lifecycle and Mineflayer connection management
+├── ai/           # ModelRouter + 6 provider clients, token ledger, embedding cache
+├── voyager/      # Learning loop, curriculum/action/critic agents, code executor, skill library
+├── actions/      # Bot actions (mine, craft, follow, attack, etc.)
+├── personality/  # Personality types, affinity, and conversation
+├── social/       # Bot-to-bot messaging, memory, and culture
+├── control/      # Fleet control plane (commands, missions, squads, roles, markers, commander)
+├── town/         # TownBrain: governance, diplomacy, trade, districts, expansion, chronicles
+├── build/        # LLM design → BlockPlan → Sponge .schem → multi-bot build coordinator
+├── supplychain/  # Supply chain templates and coordination
+├── security/     # Impersonation detection
+├── worker/       # Per-bot worker threads and IPC proxies
+├── server/       # Express HTTP API (200+ routes) and socket events
+└── util/         # Logger and helpers
+web/              # Next.js dashboard
+world-builder/    # mcwb — standalone Python subtool: masterplan → live world (see below)
+tools/            # Sub-tool home: scripts/ (one-shot Node) and fleet-devtools/ (read-only Anvil/SQLite report workbench)
+skills/           # Learned skills saved as JS modules (the library grows as bots run)
+scripts/          # World tooling — see below
+builds/           # manifest.yaml: every build unit and its completeness assertions
+docs/audits/           # Declarative structural audits (ravensreach.yaml: 65 checks)
+data/             # Persistent bot state and memory (gitignored)
+```
+
+The town subsystem (`src/town/`) persists via **Drizzle ORM over better-sqlite3** (`data/town.db`), with a schema kept deliberately Postgres-portable (text PKs, epoch-ms ints, JSON-as-text); everything else persists to JSON files under `data/`.
+
+## World tooling
+
+Large structures are built by generating **ops files** (absolute-coordinate boxes) and
+running them against the server. Nothing here goes through the bots' Voyager loop.
+
+| script | does |
+|---|---|
+| `rcon_runner.py` | Runs ops as vanilla `/fill` over RCON — **0.002 s per command** vs ~1.5 s through a bot's WorldEdit selection. Force-loads the target region and restores the operator's pinned chunks afterwards. Checks every reply. |
+| `build_runner.py` | The slow path: drives an opped mineflayer bot through WorldEdit. Still needed for random patterns and for block ids the server's command parser rejects. |
+| `verify_ops.py` | Samples an ops file against the world, because a runner reporting *issued* is not the same as *exists*. Ordering-aware. |
+| `reachability.mjs` | Flood-fills the space a player can occupy. `--box` reports what fraction of a room's interior you can actually reach. |
+| `build_status.py` | Reads `builds/manifest.yaml` and runs both checks over every build unit. **One command that says which builds are finished.** |
+| `audit.py` | Declarative structural audits with baseline diffing. |
+| `block_census.mjs` | Reads region files offline and reports exactly what occupies a box. |
+| `mc_look.py` | Renders a first-person view from the region files (see the `mc-look` skill). |
+
+```bash
+python3 scripts/build_status.py          # is anything half-built or sealed?
+python3 scripts/audit.py docs/ravensreach/audits/ravensreach.yaml --refresh
+```
+
+**Why two kinds of check.** Placement and traversability are different properties. A
+descent shaft once verified BUILT 5/5 on block sampling and was completely unusable —
+every sampled block existed and three separate ceilings sealed it. `build_status.py`
+asserts both, and walk checks run `both_ways` because a player falls any distance but
+climbs one block, so a downward-only check passes on a hole in the floor.
+
+### Town Expansion PM closeout
+
+The July 28 Town Expansion documentation has separate draft and final/as-built
+profiles. Prepare the reviewable register, 98-requirement status matrix, and
+HTML dossier without making a live-world claim:
+
+```bash
+node scripts/generate_redevelopment_artifact_register.mjs \
+  --profile town-expansion --mode draft
+node scripts/generate_redevelopment_dossier.mjs \
+  --profile town-expansion --mode draft --html-only
+```
+
+Draft output is prominently labeled `DRAFT — NOT AS-BUILT`. It includes the
+frozen session scope, research and design sources, coordinate schedules,
+citizen reports, current deployment/entity/database status, a 13-map evidence
+book, representative exact-object screenshot slots, and a SHA-256 artifact
+ledger. It does not convert generated work or empty image slots into as-built
+evidence.
+
+After one committed transaction and accepted post-state, run the same profiles
+in `final` mode, supplying the exact transaction ledger, immutable post region
+directory, post QA, paired media QA, database-import report, and read-only
+database census:
+
+```bash
+node scripts/generate_redevelopment_artifact_register.mjs \
+  --profile town-expansion --mode final \
+  --transaction <ledger.json> --post <immutable-post-region-dir> \
+  --post-qa <post-qa.json> --media-qa <media-qa.json> \
+  --db-import <database-closeout.json> --db-report <database-report.json>
+
+node scripts/generate_redevelopment_dossier.mjs \
+  --profile town-expansion --mode final \
+  --transaction <ledger.json> --post <immutable-post-region-dir> \
+  --post-qa <post-qa.json> --media-qa <media-qa.json> \
+  --capture-report <complete-capture-report.json> \
+  --db-import <database-closeout.json> --db-report <database-report.json>
+```
+
+Final mode fails closed unless the package, transaction, distinct post snapshot,
+entity clearance, post QA, all paired media (including exactly 13 maps),
+database import, database report, and their byte hashes agree. Accepted outputs
+live under `docs/redevelopment/2026-07-28-town-expansion/`; the machine artifact
+register lives under `data/world-review/`.
+
+Release failures and recovery work are retained in a separate searchable
+knowledge base. Its counting policy distinguishes one atomic rollback incident
+from each rollback/recovery execution, so a failed generic rollback followed by
+a successful bounded recovery is visible instead of collapsed:
+
+```bash
+node scripts/build_redevelopment_kb.mjs
+```
+
+Canonical source:
+`data/knowledge-base/redevelopment-release-incidents.json`
+Searchable SQLite database:
+`data/knowledge-base/redevelopment-kb.sqlite`
+Integrity and artifact audit:
+`data/knowledge-base/redevelopment-kb.report.json`
+Human incident ledger:
+`docs/redevelopment/2026-07-28-town-expansion/knowledge-base/incident-ledger.md`
+
+The current ledger records six rollback incidents, eleven rollback/recovery
+executions (eight complete and three failed), thirteen separately classified
+post-QA defects, thirty-one error occurrences, and twenty-six prevention
+rules. Rebuilding fails on misplaced IDs, duplicate rows, mismatched
+counts/statuses, missing prevention rules, foreign-key errors, or SQLite
+integrity failures.
+
+The accepted physical Town Expansion release consists of 484,676 committed
+source groups (484,690 changed commands), five verified packages, 340 exact
+database/media objects, 589 paired camera shots, 1,178 terminal-snapshot
+captures, and thirteen maps including one whole-world atlas. Citizen route
+geometry passed, but the autonomous resident lifecycle observer remains an
+open, non-blocking troubleshooting item; do not report citizen lifecycle as
+accepted until the separate observer handoff is closed.
+
+## World Builder (`world-builder/`)
+
+**mcwb** — a standalone Python package that consumes a versioned masterplan and
+applies it to a live Minecraft world. Merged in from its own repo
+(`packetloss404/mc-world-builder`) on 2026-08-07 via `git subtree`, history
+intact.
+
+It closes the loop on the masterplans this repo already produces: mcwb reads
+`docs/masterplans/<plan>/04-contractor/contractor-brief.json` — five plans
+currently carry one — and applies it. Masterplans are **diff-friendly**:
+re-running on the same plan is a no-op, and re-running on a newer one applies
+only the phases that changed. It reads plans in place and never writes back to
+them.
+
+Shipped (v0.0.1, alpha): spec schema, validator, state store, phase-level diff,
+phase runner, two writers (JSON for testing, litematic per centerpiece), QA
+verifier, full CLI. Pending: amulet-core writer auto-activation, per-element
+geometry in phase generators (currently bounding-box style), and 5 of 10 visual
+QA checks.
+
+**It is a separate toolchain, not part of the Node build.** Nothing in `src/`
+imports it; the two are coupled only through the on-disk masterplan format, so
+`npm run build` and `npm test` neither build nor test it.
+
+```bash
+cd world-builder
+python3 -m venv .venv && source .venv/bin/activate   # Python 3.11+
+pip install -e ".[dev]"        # 'litemapy' and the package itself are required for the tests
+pytest                          # 38 tests
+mcwb validate --plan ../docs/masterplans/04-combined-complex
+```
+
+Without that editable install the suite fails at collection on
+`ModuleNotFoundError: litemapy` / `mcwb.build` — that is a missing venv, not a
+broken checkout.
+
+See [`world-builder/README.md`](world-builder/README.md) for the masterplan
+format and [`world-builder/NEWSERVER.md`](world-builder/NEWSERVER.md) for
+deployment notes.
+
+## Tools (`tools/`)
+
+The `tools/` directory at the repo root is the home for two things:
+
+1. **One-shot Node migration scripts** at `tools/scripts/`. Today there is
+   one: `tools/scripts/consolidate-explore-skills.js`, a self-healing
+   migration that collapses the `explore_<dir>_for_<N>_blocks` combinatorial
+   family into a single parameterized skill.
+2. **`tools/fleet-devtools/`** — **mc-fleet-devtools**, a local, read-only
+   workbench that inspects *copied* Anvil snapshots and SQLite catalogs and
+   turns them into durable, hash-bound reports. Node 22 / TypeScript / ESM,
+   structured as its own npm workspace, with four surfaces over one service
+   layer: a REST API on port **4310**, a dependency-free dashboard the API
+   serves, a CLI, and a serialized job worker that deliberately runs one
+   report at a time. Merged in from its own repo
+   (`packetloss404/mc-fleet-devtools`) on 2026-08-07 via `git subtree`,
+   history intact. The sub-tool moved up one level on 2026-08-08 from
+   `fleet-devtools/` to `tools/fleet-devtools/` so the one-shot Node scripts
+   sit next to it.
+
+Four recipes ship: `snapshot-overview`, `block-census`, `world-catalog`,
+`snapshot-diff`. Each run gets a fresh job directory under `data/artifacts/`
+with an `artifact-manifest.json` recording every output's path, media type,
+byte size, and SHA-256. Prior artifacts are never overwritten. There is no
+RCON, WorldEdit, upload, or live-world mutation capability — `0.x` is read-only
+with respect to Minecraft by design.
+
+**The overlap with this repo is a file-format overlap, not a code one.**
+Verified:
+
+- its snapshot digest is byte-identical to `scripts/hash_world_snapshot.mjs` —
+  both hash `filename + NUL + bytes + NUL` over region files sorted by name
+  (`packages/anvil/src/snapshot.ts:43`, `scripts/hash_world_snapshot.mjs:15`) —
+  so its snapshot identities are comparable with digests this repo has already
+  recorded. The root script takes any `*.mca`; devtools takes only
+  `r.<x>.<z>.mca`, so a stray file would diverge them.
+- its `world-features` step exports a `world_features` table — the exact table
+  `src/world/WorldFeatureStore.ts:473` creates in `data/world-map.db`.
+- its `database-catalog` step reads any registered SQLite, `data/town.db`
+  (`src/town/db.ts:269`) included.
+
+**Nothing is wired up, though.** No file in `src/`, `web/`, `scripts/`, or
+`test/` mentions `tools/fleet-devtools` or `@mc-fleet/*`, and nothing under
+`tools/fleet-devtools/` imports this repo. The only thing that would connect
+them is `tools/fleet-devtools/config/registry.local.yml` — an
+operator-written, gitignored file that is not in the checkout. Until someone
+writes one pointing at `data/`, these are two directories that happen to
+speak the same formats. Co-location makes a format change reviewable in one
+diff; it is not a pipeline.
+
+**It is a separate toolchain, not part of the Node build.** The root
+`tsconfig.json` compiles only `src/**/*`, and the root `vitest.config.ts`
+collects only `src/**/*.test.ts` and `test/**/*.test.ts` — so `npm run build`
+and `npm test` neither build nor test it. The root `package.json` declares no
+`workspaces`, so a root `npm install` does not install it either, despite
+`tools/fleet-devtools/package.json` declaring workspaces of its own.
+
+```bash
+cd tools/fleet-devtools
+npm install                                                # its own tree; the root install does not reach here
+cp config/registry.example.yml config/registry.local.yml   # then edit — the connector root must be absolute
+npm run check                                              # build + lint + test + format:check
+npm run cli -- registry check
+npm run dev                                                # API + dashboard on http://<host>:4310
+```
+
+The API binds `0.0.0.0` and has **no authentication**. Use
+`MC_FLEET_DEVTOOLS_HOST=127.0.0.1` for loopback only, and never point it at a
+world that is being actively written — register a copy.
+
+CI: `.github/workflows/tools.yml` at the **repo root** gates this
+directory (`paths: ['tools/fleet-devtools/**', 'tools/scripts/**']`). The
+copy at `tools/fleet-devtools/.github/workflows/ci.yml` is an inert signpost
+— GitHub reads workflows only from the repository root, so a nested one
+never runs.
+
+**One trap.** If `node_modules/` was installed on a different platform than
+you're running on, native modules fail in confusing ways — `better-sqlite3`
+throws `invalid ELF header` and esbuild reports a host/binary version
+mismatch at config load, *before* vitest sees its own config. Fix with
+`npm rebuild better-sqlite3`, or `rm -rf node_modules && npm install` for the
+general case. Do not debug it as a vitest or SQLite problem.
+
+See [`tools/fleet-devtools/README.md`](tools/fleet-devtools/README.md),
+[`docs/ARCHITECTURE.md`](tools/fleet-devtools/docs/ARCHITECTURE.md),
+[`docs/REPORT_RECIPES.md`](tools/fleet-devtools/docs/REPORT_RECIPES.md), and
+[`SECURITY.md`](tools/fleet-devtools/SECURITY.md).
+
+## World Showcase (`world-showcase/`)
+
+A public Next.js 15 report library — the human-facing surface for the world's
+maps, screenshots, catalogs, and masterplans. It is a standalone app with its
+own `package.json`; it does not share the root build.
+
+### Report library
+
+| # | Report | Route | Covers |
+|---|--------|-------|--------|
+| 01 | Master Plan | `/reports/master-plan` | Current documented MP01–MP13 state, scoped acceptance, dated maps and historical reconciliation |
+| 02 | Underground Navigation | `/reports/underground-navigation` | Dated underground atlas; later scoped access records are linked from the current plan |
+| 03 | Masterplan Program | `/reports/masterplan-program` | Historical 5 August authority chain, area baselines and gate decisions |
+| 04 | POI Coordinate Directory | `/reports/poi-coordinate-directory` | 27 August catalog edition: 1,226 reference coordinates and consistent 137-page PDF |
+| 05 | The Empty Eight | `/reports/empty-eight` | Accepted South Galleria public route and retained boundaries |
+| 06 | Bunker Construction Status | `/reports/bunker-construction-status` | Preserved 22 August terminal review; later scoped releases are in the current register |
+
+The Master Plan also links two supporting evidence views at
+`/reports/current-decision-maps` and `/reports/build-contract-maps`. They are
+not numbered report-library entries.
+
+Report 03 preserves the 5 August planning record in
+`world-showcase/lib/masterplans.ts`. Its historical holds do not override the
+current MP05 ledger: R00 is 7/7 PASS and the bounded MVP is accepted. The current
+register in `public/current-plan-state/` binds tracked controlling ledgers and
+accepted release records, and its generator checks source freshness in CI.
+Reconciliation of documentation is not a new live-world survey. Dated map
+packages and historical validations retain their original evidence cutoff.
+
+The masterplan HTML reports under `docs/masterplans/` are **not** served by the
+app. They reference the repository tree relatively (`../../data/exports/...`), so
+they stay repo-side and are read locally.
+
+### Run and deploy
+
+```bash
+cd world-showcase
+npm install
+npm run dev            # local, port 3000
+npm run build && npm start
+```
+
+The primary deployment is the IANLAN datacenter host at `10.80.13.16`. Deploy
+with `scripts/deploy_world_showcase_datacenter.sh`; it uses the pinned SSH key
+and host fingerprint in `.deploy-keys/`, synchronizes to
+`/srv/ianlan-nextgen`, installs and builds there, restarts
+`ianlan-nextgen.service`, and checks `/api/health` through Nginx. The Next.js
+process is loopback-only on port 3000; Nginx is the public port-80 listener.
+
+`railway.json` remains a rollback deployment definition. It is not the primary
+publication target, and it must not be destroyed unless a separate DNS/TLS
+cutover retires it. There is no Cloudflare Workers path — the
+OpenNext/wrangler build was removed in v1.1.0 as unused.
+
+### Auth
+
+The current showcase is public: middleware passes requests through and the
+session verifier accepts them. Legacy PIN helpers and an auth endpoint remain
+in the code, but do not currently gate reports or assets. Never commit any
+configured `SITE_PASSCODE` or `SITE_SESSION_SECRET`. Changing access policy is
+a separate decision from report publication.
+
+## Control Platform
+
+The control platform provides centralized fleet management:
+
+- **Commands** — Immediate bot actions (pause, move, follow, guard, patrol) with dispatch and cancellation
+- **Missions** — Longer-running tasks with lifecycle management (start, pause, cancel, retry), dependency checking, and per-bot priority queues
+- **Squads** — Group bots into squads for coordinated operations
+- **Roles** — Assign roles with autonomy levels and manual override tracking
+- **World markers** — Named positions, zones (rectangular/circular areas), and routes (waypoint sequences)
+- **Natural language commander** — Parse plain English orders into structured plans and execute them
+
+## Project Sid concepts
+
+Inspired by [*Project Sid: Many-agent simulations toward AI civilization*](https://arxiv.org/abs/2411.00114). The civilization-metrics layer is read-only and always on; the rest are **flag-gated** via the `governance`/`social`/`cognition` sections in `config.yml`. See [`docs/project-sid-roadmap.md`](docs/project-sid-roadmap.md).
+
+- **Civilization metrics + emergent roles** (read-only, always on) — infers each bot's role from what it actually does and reports role-distribution entropy, action exclusivity, and cumulative unique items (`GET /api/metrics/civilization`, `GET /api/bots/:name/observed-role`).
+- **Governance that bites** (`governance.enabled`) — mayor decrees become standing town rules that bias task selection and are injected into resident prompts; bots can propose rules through the approval/vote workflow.
+- **Culture & social spread** (`social.botAffinity`, `social.culture`) — bot↔bot affinity gates cooperation; emergent keyword "memes" adopted from trusted peers bias behavior (`GET /api/culture`).
+- **PIANO cognition** (`cognition.perceptionTick`, `cognition.cognitiveController`) — an independent perception tick lets a bot react to threats mid-task; a cognitive controller broadcasts its current decision so chat stays coherent with action.
+
+## API
+
+The bot server runs on port **3001** and exposes 200+ REST endpoints (plus socket.io event streams) covering:
+
+- Bot CRUD and status
+- Command dispatch and cancellation
+- Mission lifecycle management and per-bot mission queues
+- World markers, zones, and routes
+- Squad and role management
+- Natural language command parsing and execution
+- Town, governance, culture, and civilization-metrics reads
+- Skill library and decision/LLM trace inspection
+
+## Configuration
+
+Edit `config.yml` to customize:
+
+- **Target server** — `minecraft.host` / `port` / `version` / `auth` (see [Target server](#target-server))
+- **Bot limits** — Max concurrent bots, join stagger, and reconnect backoff
+- **Voyager settings** — Learning loop behavior
+- **LLM providers** — Per-task model selection across Anthropic, Gemini, OpenAI, MiniMax, Ollama, and VoyageAI, routed through `ModelRouter`
+- **Behaviors** — Toggle ambient chat, wandering, head tracking, combat instincts
+- **Security** — `security.impersonationDetection` (impersonation defense, on by default) and `IMPERSONATION_ALERT_WEBHOOK` env var for outbound alerts
+- **Project Sid flags** — `governance`, `social`, and `cognition` sections gate the features above. All default off when unset; the checked-in `config.yml` turns `governance` and `social` on and leaves `cognition` off
+- **Dedicated survival objective** — `survival.enabled` is off by default and `survival.botName` must exactly match an existing bot. It never changes the host or fleet roster and all digging, placement, and movement still pass through the normal geofence wrappers. Inspect it with `GET /api/bots/:name/survival-mission`; pause or resume it with `POST /api/bots/:name/survival-mission/:action`.
+
+### World-specific settings
+
+Four sections hold coordinates that only mean something in one world. The
+checked-in `config.yml` contains values for the reference deployment (eight
+protected zones, a mine site, five leashed bots, and a rescue home); replace or
+clear them before pointing the service at another world:
+
+| Setting | What it does when set |
+|---|---|
+| `mining.protectedZones` | Axis-aligned boxes bots refuse to dig into. Also doubles as the night-shelter target — with none set, bots build their own hut at night |
+| `mining.mineSite` | A communal mine bots walk to before mining routed block types |
+| `leash` | Pins a named bot to a home anchor + radius |
+| `rescueHome` | Fallback spot a stranded bot self-teleports to. Unset, unleashed bots log a WARN instead of auto-rescuing |
+
+`mining.routeToMineBlocks` (the ore list routed to the communal mine) is populated but **inert** until a `mineSite` exists — with no site configured, bots mine ore wherever they find it.
+
+## Tech
+
+TypeScript on Node 22+ (tsx/tsc) · Mineflayer + pathfinder + collectblock + prismarine-schematic/viewer · Express 4 + socket.io · Drizzle ORM + better-sqlite3 · pino · Next.js 16 + React 19. LLMs: Anthropic, Gemini, OpenAI, MiniMax, Ollama, VoyageAI.
+
+## Contributing
+
+Create a bot, give it a personality, and turn it loose on a world. The more bots, the more interesting the world becomes.
