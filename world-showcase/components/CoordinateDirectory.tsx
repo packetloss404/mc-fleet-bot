@@ -42,6 +42,10 @@ interface CoordinateDirectoryProps {
   categories: CoordinateCategory[];
 }
 
+function humanize(value: string) {
+  return value.replaceAll('_', ' ').replaceAll('-', ' ');
+}
+
 export function CoordinateDirectory({
   records,
   categories,
@@ -114,7 +118,7 @@ export function CoordinateDirectory({
           <span>Kind</span>
           <select value={kind} onChange={(event) => setKind(event.target.value)}>
             <option value="">All kinds</option>
-            {kinds.map((value) => <option value={value} key={value}>{value}</option>)}
+            {kinds.map((value) => <option value={value} key={value}>{humanize(value)}</option>)}
           </select>
         </label>
         <div className="coordinate-result-count">
@@ -163,7 +167,7 @@ export function CoordinateDirectory({
                   <article className="coordinate-row" key={record.id}>
                     <div className="coordinate-identity">
                       <span>
-                        {record.project} · {record.kind} · {record.status}
+                        {record.project} · {humanize(record.kind)} · {humanize(record.status)}
                       </span>
                       <h3>{record.name}</h3>
                       <code>{record.externalId}</code>

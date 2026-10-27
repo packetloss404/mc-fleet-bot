@@ -130,6 +130,7 @@
 .unproven > b { color: var(--rust); }
 .planCard footer { background: #222b27; color: #d8ddd9; font-size: .86rem; line-height: 1.55; margin-top: auto; padding: 1.25rem 1.8rem; }
 .planCard footer b { color: #d5a874; display: block; font-size: .68rem; letter-spacing: .12em; margin-bottom: .4rem; text-transform: uppercase; }
+.planCard footer a { color: #f1dfba; display: block; margin-top: .5rem; overflow-wrap: anywhere; }
 
 .sequence { background: #16241f; color: #f7f3e8; }
 .sequence .sectionHeading > p { color: #aebcb5; }

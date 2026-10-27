@@ -55,7 +55,8 @@ Tests use Vitest. Configuration is in `vitest.config.ts`.
 
 Fresh-clone CI is `.github/workflows/ci.yml`. It builds the backend and runs
 the non-snapshot backend suites, dashboard lint/type/unit/build and Chromium E2E,
-World Builder pytest, and the World Showcase production build. This is not a
+World Builder pytest, and World Showcase publication, source-freshness, build
+and real-browser checks. This is not a
 live-Minecraft/RCON/paid-provider acceptance test.
 
 After a local stack deployment, exercise the real dashboard-to-backend path

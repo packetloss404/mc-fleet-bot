@@ -5,6 +5,8 @@ import { SiteHeader } from '../../../components/SiteHeader';
 import { masterPlanEvidenceReports } from '../../../lib/reports';
 import report from '../../../public/master-plan-railway/report-input.json';
 import validation from '../../../public/master-plan-railway/validation.json';
+import currentState from '../../../public/current-plan-state/index.json';
+import c01Visuals from '../../../public/c01-verified-as-built-2026-10-27/publication-manifest.json';
 import styles from './page.module.css';
 
 export const dynamic = 'force-dynamic';
@@ -23,6 +25,9 @@ const statusTone = (status: string) => {
   if (status.includes('REQUIRES')) return styles.requires;
   return styles.blocked;
 };
+
+const reconciliationDate = new Date(`${currentState.reconciledOn}T00:00:00Z`)
+  .toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 
 const currentSurfaceAtlas = [
   {
@@ -68,16 +73,27 @@ const currentDecisionMaps = {
   mapCount: 12,
 };
 
+const verifiedC01Maps = c01Visuals.publications.flatMap((publication) => (
+  publication.assets.filter((asset) => asset.kind === 'plan' || asset.kind === 'section').map((asset) => ({
+    href: asset.href,
+    label: `${publication.name} · ${asset.kind === 'plan' ? 'plan' : 'section'}`,
+    caption: `${publication.scope.canonicalTargetCount} canonical targets · ${publication.scope.changedCount} changed cells · ${publication.scope.stationCount > 0 ? `${publication.scope.stationCount} route stations` : `${publication.scope.totalDesignCellCount}-cell interface volume; no route claim`} · no public commissioning`,
+    width: 1200,
+    height: 760,
+  }))
+));
+
 const latestGuardedReleaseMaps = [
+  ...verifiedC01Maps,
   {
-    href: '/c01-arrival-gravity-support-01-as-built-2026-08-27/mp11-c01-arrival-gravity-support-as-built-plan.svg',
+    href: '/c01-arrival-gravity-support-01-as-built-2026-08-27/c01-arrival-gravity-support-as-built-plan.svg',
     label: 'C01 arrival gravity-support as-built plan',
     caption: '33 polished-deepslate support cells · 219-cell verified halo · arrival-cadence seam and retained gravel preserved',
     width: 1200,
     height: 700,
   },
   {
-    href: '/c01-arrival-gravity-support-01-as-built-2026-08-27/mp11-c01-arrival-gravity-support-as-built-section.svg',
+    href: '/c01-arrival-gravity-support-01-as-built-2026-08-27/c01-arrival-gravity-support-as-built-section.svg',
     label: 'C01 arrival gravity-support section',
     caption: 'Seven protected floor supports · two clear headroom cells · exact reversible liner only, no route commissioning',
     width: 1200,
@@ -194,14 +210,14 @@ const currentDesignMaps = [
   {
     href: '/c01-main-switchback-design-2026-08-28/readiness-03.svg',
     label: 'C01 protected main switchback readiness',
-    caption: 'Candidate only: 30-station 5×5 geometry and retained Return-02 interfaces · no main-route change or authorization',
+    caption: 'Historical design: the later accepted 30-station main switchback release is recorded in the current plan state',
     width: 1050,
     height: 430,
   },
   {
     href: '/c01-main-switchback-design-2026-08-28/guard-transition-04.svg',
     label: 'C01 guard + protected-route transition',
-    caption: 'Design-only 100-cell guard perimeter · endcaps, route retirement, compiler, and release gates remain unresolved',
+    caption: 'Historical guard design: later main-switchback construction is accepted; protected-route retirement and public opening remain separate',
     width: 1000,
     height: 390,
   },
@@ -222,14 +238,14 @@ const currentDesignMaps = [
   {
     href: '/current-26-aug-release-evidence/mp11-c01-public-vertical-switchback-return-02/mp11-c01-public-vertical-switchback-return-02-elevation.svg',
     label: 'C01 5×5 switchback elevation',
-    caption: 'Independent 28-station return must be built and proved before protected main-route work',
+    caption: 'Historical sequencing design: the independent 28-station Return-02 is now accepted within its restricted scope',
     width: 900,
     height: 610,
   },
   {
     href: '/current-26-aug-release-evidence/mp11-c01-dimension-physical-01/mp11-c01-dimension-physical-01-plan.svg',
     label: 'C01 public-vertical defect plan',
-    caption: '19-station design input · hazard-clear boundary · protected switchback remains unaltered',
+    caption: 'Historical defect survey preceding the accepted finite upper-portion redesign; this drawing is not a post-state map',
     width: 620,
     height: 590,
   },
@@ -334,7 +350,7 @@ const worldGuide = [
     name: 'Ravensreach civic core',
     anchor: '/tp @s -93 ~ -387',
     state: 'Built / verify route locally',
-    copy: 'Market, Moot and historic civic fabric. The rebuilt Moot spine is a proven route; the Library still needs its own circulation repair.',
+    copy: 'Market, Moot and historic civic fabric. Later library evidence retains 245 exterior stair/parapet targets and a six-level bidirectional route; wider civic interfaces remain separately scoped.',
   },
   {
     name: 'Westlight + Ravensgate',
@@ -358,7 +374,7 @@ const worldGuide = [
     name: 'Combined Zones / B09 mountain',
     anchor: '/tp @s 2048 130 -748',
     state: 'Built maintenance guideway / not passenger rail',
-    copy: 'B09 is the one proved rail component. Its current cart is restricted maintenance only while its subway conversion is surveyed and released.',
+    copy: 'B09 includes accepted bounded passive rail and a restricted maintenance shuttle. Cobalt and AG-3 also have bounded passive rail evidence; none proves a continuous passenger service.',
   },
   {
     name: 'Raven Rock + deep systems',
@@ -402,12 +418,12 @@ export default async function MasterPlanRailwayReport() {
       <header className={styles.hero} id="top">
         <div className={styles.heroGrid}>
           <div>
-            <p className={styles.eyebrow}>Report 01 · evidence refreshed 28 August 2026</p>
+            <p className={styles.eyebrow}>Documented evidence · reconciled {reconciliationDate}</p>
             <h1>The world, not<br /><em>just the paperwork.</em></h1>
             <p className={styles.lede}>
-              Use this as the operating map: where to explore, what is actually
-              built, which doors remain closed, and the exact work sequence now
-              moving the city toward a usable passenger subway.
+              Find accepted construction, dated maps, and the interfaces still
+              awaiting commissioning. Current documented status comes from the
+              source register below; each map retains its own survey date.
             </p>
             <div className={styles.actions}>
               <a href="#world-guide">Where can I go?</a>
@@ -420,18 +436,68 @@ export default async function MasterPlanRailwayReport() {
             <strong>No continuous passenger railway is proven.</strong>
             <p>
               Bounded rail, road, walking, and maintenance-shuttle components
-              are real. The cross-town alignment is proposed, not set out or built.
+              are documented. Completed finite packages do not commission the
+              proposed citywide loop, stations, or passenger service.
             </p>
           </aside>
         </div>
 
         <div className={styles.metrics}>
-          <div><strong>{report.plans.length}</strong><span>plans reconciled</span></div>
-          <div><strong>{validation.summary.builtClaimCount}</strong><span>evidence-backed built claims</span></div>
-          <div><strong>{validation.summary.unbuiltOrUnprovenClaimCount}</strong><span>unbuilt / unproven claims</span></div>
-          <div><strong>{validation.summary.passedBindingCheckCount}/{validation.summary.bindingCheckCount}</strong><span>evidence bindings passed</span></div>
+          <div><strong>{currentState.plans.length}</strong><span>documented plans</span></div>
+          <div><strong>7/7</strong><span>R00 gates passed</span></div>
+          <div><strong>Accepted</strong><span>bounded MP05 MVP</span></div>
+          <div><strong>{currentState.sources.length}</strong><span>bound source documents</span></div>
         </div>
       </header>
+
+      <section className={styles.plans} id="current-plan-state">
+        <div className={styles.sectionHeading}>
+          <div>
+            <p className={styles.eyebrow}>Current documented plan state</p>
+            <h2>Accepted work.<br />Exact remaining limits.</h2>
+          </div>
+          <p>
+            R00 is now 7/7 PASS. The bounded MP05 MVP is accepted. C01 returns,
+            the main switchback and finite upper-portion work have later accepted
+            construction records; public openings and wider commissioning remain
+            separate. This reconciliation reads the documented evidence and does
+            not represent a new live-world survey.
+          </p>
+        </div>
+        <div className={styles.planGrid}>
+          {[...currentState.plans, ...currentState.systems].map((plan) => (
+            <article className={styles.planCard} key={plan.id}>
+              <header>
+                <span>{plan.id}</span>
+                <h3>{plan.title}</h3>
+                <p><b>{plan.status}</b></p>
+                <p>{plan.summary}</p>
+              </header>
+              <div className={styles.claimGroup}>
+                <b>Accepted documented scope</b>
+                {plan.built.length > 0
+                  ? <ul>{plan.built.map((claim) => <li key={claim}>{claim}</li>)}</ul>
+                  : <p>No separate whole-scope construction acceptance is asserted.</p>}
+              </div>
+              <div className={`${styles.claimGroup} ${styles.unproven}`}>
+                <b>Remaining scope / commissioning limits</b>
+                <ul>{plan.uncommissioned.map((claim) => <li key={claim}>{claim}</li>)}</ul>
+              </div>
+              <footer>
+                <b>Controlling source documents</b>
+                {plan.sourceIds.map((sourceId) => {
+                  const source = currentState.sources.find((item) => item.id === sourceId);
+                  return source ? <a key={source.id} href={source.href}>{source.label}</a> : null;
+                })}
+              </footer>
+            </article>
+          ))}
+        </div>
+        <div className={styles.programmeLinks}>
+          <a href="/current-plan-state/index.json">Current source register <span>JSON ↗</span></a>
+          <a href="/reports/masterplan-program">Historical Program · 5 August <span>Archive ↗</span></a>
+        </div>
+      </section>
 
       <section className={styles.commandDeck} id="world-guide">
         <div className={styles.sectionHeading}>
@@ -464,18 +530,18 @@ export default async function MasterPlanRailwayReport() {
           </div>
           <p>
             The Build Index covers the town and the east-side Combined Zones, then
-            explicitly marks systems that sit below ground. The current surface
-            atlas below is a separate, fresh seven-map set; every map is linked
+            explicitly marks systems that sit below ground. The 26 August surface
+            atlas below is a separate seven-map set; every map is linked
             directly instead of being hidden behind two preview tiles.
           </p>
         </div>
         <div className={styles.atlasDirectory} aria-label="Current complete surface atlas">
           <div>
-            <p>Current surface atlas · 26 August 2026</p>
+            <p>Surface atlas snapshot · 26 August 2026</p>
             <strong>All 7 surface maps</strong>
             <span>Read-only snapshot `ca93ba68…8865c7b` · north is up · no underground claims.</span>
           </div>
-          <a href={currentSurfaceAtlas[0].href}>Open full current surface ↗</a>
+          <a href={currentSurfaceAtlas[0].href}>Open 26 August surface ↗</a>
           <div className={styles.atlasDirectoryLinks}>
             {currentSurfaceAtlas.map((map) => (
               <a href={map.href} key={map.href}>{map.label} · {map.dimensions}</a>
@@ -504,7 +570,7 @@ export default async function MasterPlanRailwayReport() {
               src="/atlas/master-plan-build-index.png"
               width={3434}
             />
-            <span>Open Build Index · town + Combined Zones · 3434 × 2352</span>
+            <span>22 August Build Index · town + Combined Zones · 3434 × 2352</span>
           </a>
           <a className={styles.atlasLink} href="/atlas/whole-world.png" target="_blank" rel="noreferrer">
             <Image
@@ -532,11 +598,11 @@ export default async function MasterPlanRailwayReport() {
       <section className={styles.decisionMaps} id="current-decisions">
         <div className={styles.sectionHeading}>
           <div>
-            <p className={styles.eyebrow}>Current 26 August decisions</p>
+            <p className={styles.eyebrow}>Decision evidence · 26 August 2026</p>
             <h2>Held interfaces,<br />shown plainly.</h2>
           </div>
           <p>
-            A separate twelve-map volume brings together the current MP01,
+            A dated twelve-map volume brings together MP01,
             MP02–MP05, MP08, MP13 and SYS03 decision evidence. It is deliberately
             not a construction-completion atlas: ownership, containment, egress,
             and control holds stay visible on every card.
@@ -544,7 +610,7 @@ export default async function MasterPlanRailwayReport() {
         </div>
         <div className={styles.decisionMapsCard}>
           <div>
-            <p>Read-only current-source evidence</p>
+            <p>Read-only evidence at its 26 August source</p>
             <strong>{currentDecisionMaps.mapCount} maps · 10 held interfaces · 2 civil-only references</strong>
             <span>Historical atlas packages are retained separately; this additive volume does not rewrite their record.</span>
           </div>
@@ -558,13 +624,14 @@ export default async function MasterPlanRailwayReport() {
       <section className={styles.worldAtlas} id="current-designs">
         <div className={styles.sectionHeading}>
           <div>
-            <p className={styles.eyebrow}>Current design front</p>
+            <p className={styles.eyebrow}>Design archive · August 2026</p>
             <h2>Mapped before<br />it is built.</h2>
           </div>
           <p>
-            These maps expose the C01 public-vertical work and the one bounded
-            Cobalt station-pair candidate. They are design evidence only: neither
-            map authorizes a route opening, protected-fabric change, or public commissioning.
+            These design drawings explain the C01 public-vertical work and the
+            Cobalt station-pair candidate. Later accepted C01 construction is
+            listed in the current plan state above; these retained drawings
+            describe their original design stage.
           </p>
         </div>
         <div className={styles.atlasGrid} aria-label="Current guarded design maps">
@@ -593,9 +660,10 @@ export default async function MasterPlanRailwayReport() {
           <p>
             Roads and paths are now the rights-of-way for a staged above-ground
             rail-and-promenade system. These maps are exact design and survey
-            evidence. AG-1's three piers and two-deep girder are physically
-            built and post-verified; the loop, station, track, promenade, and
-            old-road conversion are not. Existing routes stay usable until a
+            evidence. AG-1 support, the bounded AG-2 promenade and service gallery,
+            and the isolated AG-3 passive rails have accepted post-state records.
+            The full loop, station, power, signals, passenger service, and
+            old-road conversion remain incomplete. Existing routes stay usable until a
             replacement segment has passed its guarded route and return tests.
           </p>
         </div>
@@ -616,20 +684,20 @@ export default async function MasterPlanRailwayReport() {
         </div>
         <div className={styles.programmeLinks}>
           <a href="/surface-rail-promenade-2026-08-28-r8/publication-manifest.json">Inspect map manifest <span>JSON ↗</span></a>
-          <a href="/master-plan-railway/ABOVE-GROUND-DOUBLE-TRACK-WALKWAY-STANDARD-2026-08-28.md">Open engineering standard <span>MD ↗</span></a>
+          <a href="/current-plan-state/sources/surface-rail-standard--ABOVE-GROUND-DOUBLE-TRACK-WALKWAY-STANDARD-2026-08-28.md">Open engineering standard <span>MD ↗</span></a>
         </div>
       </section>
 
       <section className={styles.worldAtlas} id="latest-releases">
         <div className={styles.sectionHeading}>
           <div>
-            <p className={styles.eyebrow}>Latest guarded physical releases</p>
+            <p className={styles.eyebrow}>Selected guarded physical releases · dated evidence</p>
             <h2>As-built maps,<br />not inferred status.</h2>
           </div>
           <p>
-            These maps bind the newest finite releases to their immutable post
+            These maps bind selected finite releases to their immutable post
             state and independent QA. They show exact containment or restricted
-            safety work only; neither card opens a route, endpoint, egress, or
+            safety work only; none of these maps opens a route, endpoint, egress, or
             public area.
           </p>
         </div>
@@ -646,6 +714,10 @@ export default async function MasterPlanRailwayReport() {
               <span>{map.label} · {map.caption}</span>
             </a>
           ))}
+        </div>
+        <div className={styles.programmeLinks}>
+          <a href="/c01-verified-as-built-2026-10-27/publication-manifest.json">Verified C01 map publication <span>JSON ↗</span></a>
+          <a href="/current-plan-state/index.json">Accepted scope and remaining interfaces <span>JSON ↗</span></a>
         </div>
       </section>
 
@@ -706,20 +778,20 @@ export default async function MasterPlanRailwayReport() {
       <section className={styles.railway} id="railway">
         <div className={styles.sectionHeading}>
           <div>
-            <p className={styles.eyebrow}>Cross-Town Railway</p>
+            <p className={styles.eyebrow}>Cross-Town Railway concept · 22 August 2026</p>
             <h2>A proposal with a<br />deliberate starting line.</h2>
           </div>
           <p>{report.railway.proposedDesign.serviceConcept}</p>
         </div>
         <div className={styles.railwayGrid}>
           <article>
-            <span className={styles.kicker}>Accepted ingredients</span>
+            <span className={styles.kicker}>Accepted ingredients at the 22 August cutoff</span>
             <ul>
               {report.railway.acceptedComponents.map((claim) => <li key={claim}>{claim}</li>)}
             </ul>
           </article>
           <article className={styles.missing}>
-            <span className={styles.kicker}>Still required for passenger rail</span>
+            <span className={styles.kicker}>Original passenger-service requirements</span>
             <ol>
               {report.railway.missingForPassengerRail.map((claim) => <li key={claim}>{claim}</li>)}
             </ol>
@@ -747,9 +819,10 @@ export default async function MasterPlanRailwayReport() {
             <h2>The complete plan register.</h2>
           </div>
           <p>
-            This is the detailed evidence register behind the quick guide above.
-            “Built” is a bounded proven claim, not a blanket declaration that an
-            entire district or every route inside it is finished.
+            Historical reconciliation · 22 August 2026. These claims and their
+            source hashes are preserved at that cutoff. Later current-state
+            records above supersede them where scope overlaps; the historical
+            register is not a fresh validation of the current checkout.
           </p>
         </div>
         <div className={styles.planGrid}>
@@ -782,12 +855,13 @@ export default async function MasterPlanRailwayReport() {
       <section className={styles.sequence} id="sequence">
         <div className={styles.sectionHeading}>
           <div>
-            <p className={styles.eyebrow}>X0—X9</p>
+            <p className={styles.eyebrow}>Historical X0—X9 framework · 22 August 2026</p>
             <h2>Evidence first.<br />Passenger service last.</h2>
           </div>
           <p>
-            This is a dependency chain, not a progress bar. Later stages stay
-            closed until the immediately controlling evidence exists.
+            This is the original dependency framework. Its stage labels are
+            retained as historical planning evidence; use the current source
+            register for later accepted work and exact remaining interfaces.
           </p>
         </div>
         <div className={styles.stageList}>
@@ -817,12 +891,13 @@ export default async function MasterPlanRailwayReport() {
 
       <section className={styles.evidence} id="evidence">
         <div>
-          <p className={styles.eyebrow}>Machine-checked acceptance layer</p>
-          <h2>{validation.summary.passedStructuralCheckCount} structural checks passed.</h2>
+          <p className={styles.eyebrow}>Historical validation · 22 August 2026</p>
+          <h2>{validation.summary.passedStructuralCheckCount} checks at the original cutoff.</h2>
           <p>
-            The report input, narrative, current catalog, accepted post, and
-            source evidence are hash-bound. The reconciliation made no live call,
-            world edit, database mutation, or passenger-service claim.
+            The original validation records {validation.summary.passedBindingCheckCount}/{validation.summary.bindingCheckCount}
+            {' '}bindings at its own source cutoff. Several source documents have
+            since changed; this archived result does not validate their current
+            contents. The new source register binds the current documented state.
           </p>
         </div>
         <div className={styles.downloads}>

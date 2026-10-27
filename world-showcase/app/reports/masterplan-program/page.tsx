@@ -10,7 +10,7 @@ import {
 
 export const dynamic = 'force-dynamic';
 export const metadata: Metadata = {
-  title: 'Masterplan Program',
+  title: 'Masterplan Program · 5 August archive',
   description:
     'The thirteen-plan masterplan library: the 01–05 authority chain that places the '
     + 'Combined Complex in the live world, and the 06–13 area baselines beside it.',
@@ -24,7 +24,7 @@ const stats = [
   [masterplans.length.toString(), 'masterplans'],
   [authorityPlans.length.toString(), 'in the authority chain'],
   [areaPlans.length.toString(), 'area baselines'],
-  [`${passed} / ${gates.length}`, 'R00 gates passed'],
+  [`${passed} / ${gates.length}`, 'R00 gates at 5 August cutoff'],
 ];
 
 const holds = [
@@ -82,6 +82,18 @@ export default async function MasterplanProgramReport() {
   return (
     <main>
       <SiteHeader current="masterplan-program" />
+      <section className="truth-band" aria-label="Historical archive notice">
+        <div>
+          <p className="eyebrow">Historical archive · 5 August 2026</p>
+          <h2>Earlier planning record.</h2>
+        </div>
+        <p>
+          The statuses, proposed placement and gate counts below are preserved
+          at their original cutoff. R00 is now 7/7 PASS; bounded MP05 MVP accepted.
+          Later accepted construction supersedes these historical holds.
+          {' '}<a href="/reports/master-plan#current-plan-state">Open current documented plan state ↗</a>
+        </p>
+      </section>
       <header className="hero">
         <div className="hero-grid" id="top">
           <div className="hero-copy">
@@ -95,17 +107,17 @@ export default async function MasterplanProgramReport() {
             </p>
             <div className="hero-actions">
               <a className="button primary" href="#plans">Browse the library</a>
-              <a className="button ghost" href="#gates">See what still blocks</a>
+              <a className="button ghost" href="#gates">Read historical gates</a>
             </div>
           </div>
           <div className="hero-map">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/masterplans/hero-phase0-overlay.webp"
-              alt="Current world surface with the proposed Combined Zones placement overlaid"
+              alt="Historical Phase 0 world surface and proposed Combined Zones placement"
             />
             <div className="map-caption">
-              <span>Authoritative proposed-placement overlay</span>
+              <span>Historical proposed-placement overlay · 5 August</span>
               <span>Phase 0 · 14,238 atlas chunks · North ↑</span>
             </div>
           </div>
@@ -119,7 +131,7 @@ export default async function MasterplanProgramReport() {
             </div>
           ))}
           <div className="snapshot-note">
-            <span>Plan of record</span>
+            <span>Archived planning baseline</span>
             <code>05-combined-zones</code>
           </div>
         </div>
@@ -178,13 +190,13 @@ export default async function MasterplanProgramReport() {
       <section className="gates-section" id="gates">
         <div className="section-heading light">
           <div>
-            <p className="eyebrow">R00 readiness audit</p>
-            <h2>What still<br />blocks.</h2>
+            <p className="eyebrow">Historical R00 readiness audit · 5 August</p>
+            <h2>What blocked<br />at that cutoff.</h2>
           </div>
           <p className="section-lede">
-            The readiness audit evaluates G01–G07 only. Two gates pass. The
-            remaining five hold on complete-save, technical, external-interface,
-            protected-feature, accepted-owner, and mechanism evidence.
+            At this archived cutoff, the readiness audit evaluated G01–G07:
+            two gates passed and five held. Later accepted evidence records
+            all seven as passed. The cards below preserve the historical audit.
           </p>
         </div>
 
@@ -241,7 +253,7 @@ export default async function MasterplanProgramReport() {
           <span>IANLAN NextGen</span>
         </a>
         <p>
-          Masterplan program · plan of record <code>05-combined-zones</code>.
+          Historical Masterplan Program · 5 August 2026 · <code>05-combined-zones</code>.
           Every figure is transcribed from the committed plan evidence. The
           program is documentation only and authorizes no world edits.
         </p>

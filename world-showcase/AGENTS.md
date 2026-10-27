@@ -1,16 +1,16 @@
 # AGENTS.md
 
 Guidance for coding agents working in `world-showcase/`, the IANLAN
-NextGen report library (deployed to Railway). Run every command below
+NextGen report library (primary deployment: datacenter `10.80.13.16`). Run every command below
 from this directory, never from the repository root — this is a
 standalone Next.js 15 app and the root Node build does not cover it.
 
 ## Purpose
 
-A private, authenticated report library for master plans, project
-records, investigations, and verified delivery evidence. Four reports
-ship today: Master Plan, Underground Navigation, Masterplan Program
-(Report 03), and POI Coordinate Directory (Report 04). It is the human
+A public report library for master plans, project
+records, investigations, and verified delivery evidence. Six reports
+ship today: Master Plan, Underground Navigation, historical Masterplan Program,
+POI Coordinate Directory, Empty Eight, and Bunker Construction Status. It is the human
 surface for the report library; the generators live in `scripts/`
 under the repo root and in `scripts/` here.
 
@@ -18,7 +18,9 @@ under the repo root and in `scripts/` here.
 
 - Reads synced report assets from `public/` (e.g. `public/underground/`,
   `public/coordinates/`, `public/masterplans/`). These are populated
-  by the two `npm run sync:*` scripts and are committed.
+  by publication scripts and are committed. Current documented status is
+  generated separately in `public/current-plan-state/` from tracked controlling
+  ledgers and accepted release records. This is not a new live-world survey.
 - Has no dependency on `src/`, `tools/fleet-devtools/`, or
   `world-builder/`. The site is a static-friendly Next.js app that
   renders committed artifacts; nothing reaches the live world or the
@@ -28,7 +30,9 @@ under the repo root and in `scripts/` here.
 
 ```bash
 npm install                                 # its own lockfile; the root install does not reach here
-npm run build                               # `next build` (7 routes)
+npm run build                               # `next build`
+npm test                                    # source freshness + publication/Node checks
+npm run test:e2e                            # real Chromium report and asset checks
 npm run start                               # `next start` — production server
 npm run dev                                 # local dev on http://localhost:3000
 
@@ -58,15 +62,17 @@ node node_modules/next/dist/bin/next build
 node node_modules/next/dist/bin/next lint    # still interactive
 ```
 
-CI is on Railway (Railpack) and unaffected; the issue is local Windows
+CI lives in the repo-root `.github/workflows/ci.yml`; the issue is local Windows
 developer ergonomics only. `rm -rf node_modules && npm install` fixes
 it for some platforms; the `node node_modules/.../next build` form is
 the reliable workaround.
 
 ## Auth
 
-`lib/siteAuth.ts` and `middleware.ts` together gate every non-public
-route. The site uses an application-level ten-digit PIN gate:
+The current reports are public: `middleware.ts` passes requests through and
+`verifySiteSession()` always returns true. Legacy PIN helpers and the auth
+endpoint remain, but do not gate report or asset access. Changing access
+policy is a separate decision. The retained helpers use:
 
 - `SITE_PASSCODE` (exactly ten digits) — required, used by
   `POST /api/auth` to mint a session cookie.
@@ -75,17 +81,33 @@ route. The site uses an application-level ten-digit PIN gate:
   `middleware.ts` (Web Crypto). Both produce the same base64url HMAC
   and are kept in sync; do not let them drift.
 
-Both are read from `process.env`; both must be set in Railway's
-production runtime variables. They are **never** committed. A copyable
+Both are read from `process.env`; any configured values are **never** committed. A copyable
 list lives at the bottom of the root `.env.example`.
 
 ## Tests
 
-There is no test suite in this directory. The site renders committed
-artifacts and has thin code; the meaningful correctness checks live
-in the upstream generators (`scripts/generate_*` and the `finalize_*`
-finalizers in the repo root). Do not add a test framework as part of
-a "while I'm here" pass — discuss with the owner first.
+The package verification scripts cover source freshness, publication integrity,
+Node regressions, real-browser report journeys, and the production build.
+Browser tests use Playwright, matching the dashboard tooling; no backend runtime import is needed.
+CI runs the same publication and browser gates. Upstream world-release QA still
+controls any physical construction or access acceptance.
+
+Preserve each historical report's source date and snapshot identity. Report 03
+and `lib/masterplans.ts` are the 5 August archive: their 2/7 R00 record cannot
+override the current MP05 ledger's 7/7 PASS and bounded MVP acceptance. Never
+refresh old validation hashes to imply historical claims were revalidated.
+
+Validate schemas, counts, referenced files and hashes before changing a
+published package. Stage complete replacements and retain recoverable prior
+content; do not empty targets before validation. The August 27 underground
+candidate contains a coordinate summary and is invalid for this atlas.
+Three older C01 visual bundles contain unresolved templates and are not
+geometric maps: keep them out of current galleries and reject them before sync.
+Their publication defects do not negate separately accepted construction.
+The repaired root publishers emit finite coordinate projections into new
+27 October bundles after checking accepted ledger/QA/manifest bindings.
+`npm run sync:c01-verified` publishes those validated bundles additively;
+the old August attempts remain historical and are not rewritten.
 
 ## Boundaries to keep
 
@@ -93,22 +115,25 @@ a "while I'm here" pass — discuss with the owner first.
   The site is standalone.
 - Do not commit `SITE_PASSCODE` or `SITE_SESSION_SECRET`.
 - Do not run `npm run lint` non-interactively until ESLint is configured.
-- Do not deploy from a workstation — Railway picks up the GitHub
-  push and rebuilds. The deployment is out of scope for routine
-  changes.
+- Deploy within the user's authorized scope after checks and CI pass,
+  through repo-root `scripts/deploy_world_showcase_datacenter.sh`. It uses the
+  dedicated SSH key and pinned fingerprint in `.deploy-keys/`, builds on the
+  datacenter host, restarts `ianlan-nextgen.service`, and checks Nginx health.
+  Never copy `.env` or fall back to passwords. Railway remains a rollback.
 
 ## File map
 
-- `app/layout.tsx`, `app/page.tsx` — root layout and authenticated
+- `app/layout.tsx`, `app/page.tsx` — root layout and public
   reports home.
-- `app/reports/{master-plan,underground-navigation,masterplan-program,poi-coordinate-directory}/page.tsx` — the four reports.
+- `app/reports/{master-plan,underground-navigation,masterplan-program,poi-coordinate-directory,empty-eight,bunker-construction-status}/page.tsx` — six reports.
 - `app/api/auth/route.ts`, `app/api/health/route.ts` — auth and health endpoints.
 - `components/PasscodeGate.tsx` — the PIN entry gate UI.
 - `components/{AtlasExplorer,CoordinateDirectory,MasterplanProgram}.tsx` — the three report-specific components.
 - `lib/siteAuth.ts` — Node-crypto session sign/verify.
 - `lib/reports.ts` — the report library manifest (one entry per report).
-- `lib/masterplans.ts` — transcribed plan figures for Report 03 (regenerate when plans change).
-- `middleware.ts` — Web-crypto session verification on every request.
+- `lib/masterplans.ts` — preserved 5 August planning figures for Report 03.
+- `public/current-plan-state/` — current documented status and exact source copies.
+- `middleware.ts` — current public pass-through; legacy signing helpers remain.
 - `scripts/sync_underground_report.mjs`, `scripts/sync_coordinate_directory.mjs` — the two sync scripts.
 - `public/{underground,coordinates,masterplans,atlas,catalog,reports,release,data,screenshots,wave2}/` — committed report assets.
 - `railway.json` — Railpack build + `npm start`, `/api/health` check, restart on failure (3 retries).

@@ -16,6 +16,10 @@
     "sync:current-surface-atlas": "node scripts/sync_current_surface_atlas_20260826.mjs",
     "sync:build-contract-maps": "node scripts/sync_build_contract_maps_20260826.mjs",
     "sync:c01-main-switchback": "node scripts/sync_c01_main_switchback_design_20260828.mjs",
+    "sync:c01-verified": "node scripts/sync_c01_verified_visuals_20261027.mjs",
+    "test": "npm run test:publication",
+    "test:publication": "node scripts/generate_current_plan_state.mjs --check && node --test tests/*.test.mjs",
+    "test:e2e": "playwright test --config=playwright.config.ts",
     "lint": "next lint"
   },
   "dependencies": {
@@ -24,6 +28,7 @@
     "react-dom": "19.1.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.1",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",

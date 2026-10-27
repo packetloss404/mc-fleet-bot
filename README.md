@@ -157,6 +157,8 @@ npm run test:e2e --prefix web
 PLAYWRIGHT_LIVE_URL=http://127.0.0.1:3000 npm run test:e2e:live --prefix web
 (cd world-builder && pytest)
 npm run build --prefix world-showcase
+npm test --prefix world-showcase
+npm run test:e2e --prefix world-showcase
 ```
 
 `npm test` at the repository root also discovers `test/build/` and operational
@@ -168,7 +170,8 @@ interpret fresh-clone `ENOENT` failures as application regressions.
 
 `.github/workflows/ci.yml` runs the buildable fresh-clone contract: backend
 build and non-snapshot tests, dashboard lint/type/unit/build checks, real
-Chromium browser tests, World Builder pytest, and the World Showcase production build.
+Chromium browser tests, World Builder pytest, and World Showcase publication,
+source-freshness, production-build and real-browser checks.
 The browser suite drives the actual Next.js UI with deterministic intercepted
 API responses. `test:e2e:live` is a separate, read-only smoke journey through
 the deployed dashboard and real backend; it requires both services to be
@@ -484,7 +487,7 @@ See [`tools/fleet-devtools/README.md`](tools/fleet-devtools/README.md),
 
 ## World Showcase (`world-showcase/`)
 
-A private Next.js 15 report library — the human-facing surface for the world's
+A public Next.js 15 report library — the human-facing surface for the world's
 maps, screenshots, catalogs, and masterplans. It is a standalone app with its
 own `package.json`; it does not share the root build.
 
@@ -492,22 +495,24 @@ own `package.json`; it does not share the root build.
 
 | # | Report | Route | Covers |
 |---|--------|-------|--------|
-| 01 | Master Plan | `/reports/master-plan` | Accepted Town Expansion R1 as-built record, atlas, object catalog, release QA |
-| 02 | Underground Navigation | `/reports/underground-navigation` | Tunnels, bunkers, vaults, below-grade venues, and known ways in |
-| 03 | Masterplan Program | `/reports/masterplan-program` | The thirteen plans in `docs/masterplans/` — the 01–05 authority chain, the 06–13 area baselines, and the R00 gates |
-| 04 | POI Coordinate Directory | `/reports/poi-coordinate-directory` | Every cataloged place with copy-ready teleport coordinates |
+| 01 | Master Plan | `/reports/master-plan` | Current documented MP01–MP13 state, scoped acceptance, dated maps and historical reconciliation |
+| 02 | Underground Navigation | `/reports/underground-navigation` | Dated underground atlas; later scoped access records are linked from the current plan |
+| 03 | Masterplan Program | `/reports/masterplan-program` | Historical 5 August authority chain, area baselines and gate decisions |
+| 04 | POI Coordinate Directory | `/reports/poi-coordinate-directory` | 27 August catalog edition: 1,226 reference coordinates and consistent 137-page PDF |
 | 05 | The Empty Eight | `/reports/empty-eight` | Accepted South Galleria public route and retained boundaries |
-| 06 | Bunker Construction Status | `/reports/bunker-construction-status` | Evidence-separated current construction status |
+| 06 | Bunker Construction Status | `/reports/bunker-construction-status` | Preserved 22 August terminal review; later scoped releases are in the current register |
 
 The Master Plan also links two supporting evidence views at
 `/reports/current-decision-maps` and `/reports/build-contract-maps`. They are
 not numbered report-library entries.
 
-Report 03 is transcribed from the committed plan evidence — the `build-info.json`
-files for plans 01–05 and the `MASTERPLAN.md` front matter for 06–13 — in
-`world-showcase/lib/masterplans.ts`. Re-transcribe that file when the underlying
-plans change; nothing regenerates it automatically. Its cover and gallery art is
-downscaled from the masterplan rendering sets into `public/masterplans/`.
+Report 03 preserves the 5 August planning record in
+`world-showcase/lib/masterplans.ts`. Its historical holds do not override the
+current MP05 ledger: R00 is 7/7 PASS and the bounded MVP is accepted. The current
+register in `public/current-plan-state/` binds tracked controlling ledgers and
+accepted release records, and its generator checks source freshness in CI.
+Reconciliation of documentation is not a new live-world survey. Dated map
+packages and historical validations retain their original evidence cutoff.
 
 The masterplan HTML reports under `docs/masterplans/` are **not** served by the
 app. They reference the repository tree relatively (`../../data/exports/...`), so
@@ -536,11 +541,11 @@ OpenNext/wrangler build was removed in v1.1.0 as unused.
 
 ### Auth
 
-The app uses an application-level ten-digit PIN gate. `SITE_PASSCODE` (exactly
-ten digits) and `SITE_SESSION_SECRET` (32+ characters) must be set as secret
-production runtime variables and must never be committed. The signed HttpOnly
-session protects every route except `/`, `/api/auth`, and `/api/health` —
-including direct atlas, screenshot, and report asset routes.
+The current showcase is public: middleware passes requests through and the
+session verifier accepts them. Legacy PIN helpers and an auth endpoint remain
+in the code, but do not currently gate reports or assets. Never commit any
+configured `SITE_PASSCODE` or `SITE_SESSION_SECRET`. Changing access policy is
+a separate decision from report publication.
 
 ## Control Platform
 

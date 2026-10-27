@@ -5,8 +5,8 @@ import styles from './report.module.css';
 
 export const dynamic = 'force-dynamic';
 export const metadata: Metadata = {
-  title: 'Bunker Construction Status',
-  description: 'Current physical evidence for Cheyenne, Raven Rock, and C01, separated from design and historical claims.',
+  title: 'Bunker Construction Status · 22 August review',
+  description: 'Preserved 22 August terminal evidence for Cheyenne, Raven Rock, and C01, with later releases in the current plan register.',
 };
 
 const shortHash = (value: string) => `${value.slice(0, 16)}…`;
@@ -18,13 +18,23 @@ export default async function BunkerConstructionStatusReport() {
   return (
     <main className={styles.report}>
       <SiteHeader current="bunker-construction-status" />
+      <section className={styles.truth} aria-label="Historical terminal review notice">
+        <p className={styles.eyebrow}>Historical terminal review · 22 August 2026</p>
+        <h2>Snapshot evidence, dated.</h2>
+        <p>
+          Findings below describe the immutable R08AM terminal post. Later
+          accepted C01 and other scoped releases are recorded in the
+          {' '}<a href="/reports/master-plan#current-plan-state">current documented plan state</a>.
+          {' '}This historical review has not been revalidated against a new world snapshot.
+        </p>
+      </section>
       <header className={styles.hero}>
         <div className={styles.heroGrid}>
           <div>
             <p className={styles.eyebrow}>Report 06 · Terminal evidence review</p>
             <h1>What is actually<br /><em>inside the mountain.</em></h1>
             <p className={styles.lede}>
-              A current-block audit of Cheyenne, Raven Rock, and both C01
+              The 22 August block-state audit of Cheyenne, Raven Rock, and both C01
               programs. Construction evidence is shown plainly; design intent
               and historical releases stay in their own lane.
             </p>
@@ -58,7 +68,7 @@ export default async function BunkerConstructionStatusReport() {
 
       <section className={styles.findings} id="findings">
         <div className={styles.sectionHead}>
-          <p className={styles.eyebrow}>Current finding</p>
+          <p className={styles.eyebrow}>Findings at the 22 August cutoff</p>
           <h2>Four systems.<br />Four honest classifications.</h2>
         </div>
         <div className={styles.cards}>

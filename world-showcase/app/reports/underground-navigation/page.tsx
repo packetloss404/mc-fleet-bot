@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 
 import { PasscodeGate } from '../../../components/PasscodeGate';
+import { SiteHeader } from '../../../components/SiteHeader';
 import {
   SITE_SESSION_COOKIE,
   verifySiteSession,
@@ -10,8 +11,8 @@ import reportData from '../../../public/underground/portal-summary.json';
 
 export const dynamic = 'force-dynamic';
 export const metadata: Metadata = {
-  title: 'Underground Navigation',
-  description: 'Comprehensive IANLAN tunnel, bunker, below-grade venue, room, and entrance atlas.',
+  title: 'Underground Navigation · 27 August atlas edition',
+  description: 'Dated underground atlas regenerated 27 August from its historical source package, with links to later accepted construction records.',
 };
 
 interface Entrance {
@@ -57,6 +58,10 @@ const systemCopy: Record<string, { title: string; copy: string }> = {
     title: 'Iowa data district & Concord',
     copy: 'The information/continuity annex, holdout-home shelter, Concord bar and theatre, and nearby underground campus programs.',
   },
+  'combined-zones': {
+    title: 'Combined Zones / Empty Eight',
+    copy: 'Accepted public South Galleria and eleven vacant bays, with separately restricted back-of-house and lower-annex spaces. Exterior and future rail interfaces retain their recorded limits.',
+  },
 };
 
 const areaMaps = [
@@ -68,6 +73,8 @@ const areaMaps = [
   ['08-oasis-road-bunker.png', 'Oasis roadside bunker'],
   ['09-iowa-data-district-underground.png', 'Iowa data district & Concord'],
   ['10-all-underground-entrances.png', 'All entrances & access nodes'],
+  ['19-empty-eight-public-retail-boh-sectional.png', 'Empty Eight public retail and restricted back-of-house'],
+  ['20-empty-eight-restricted-annex-sectional.png', 'Empty Eight restricted lower annex'],
 ] as const;
 
 const c01Maps = [
@@ -82,7 +89,7 @@ const c01Maps = [
 ] as const;
 
 const evidence = [
-  ['raven-rock-command-center.png', 'Raven Rock command center'],
+  ['raven-rock-z5-floorplan.png', 'Raven Rock restricted service-shaft floorplan'],
   ['raven-rock-t2b.png', 'Raven Rock standardized tunnel'],
   ['legacy-c01-upper-plan.png', 'Legacy MainStreet C01'],
   ['shelter-vault-levels.png', 'Private shelter & grand vault'],
@@ -90,6 +97,9 @@ const evidence = [
   ['owner-corridor.png', 'Gilded Raven owner corridor'],
   ['westlight-members-club.png', 'Westlight members club'],
   ['concord-bar.png', 'Concord bar'],
+  ['empty-eight-public-gallery.png', 'Empty Eight public gallery'],
+  ['empty-eight-restricted-grand-stair.png', 'Empty Eight restricted grand stair'],
+  ['empty-eight-restricted-theatre.png', 'Empty Eight restricted lower theatre'],
 ] as const;
 
 const entrances = reportData.entrances as Entrance[];
@@ -103,6 +113,22 @@ export default async function UndergroundNavigationReport() {
 
   return (
     <main className="underground-report">
+      <SiteHeader current="underground-navigation" />
+      <section className="truth-band" aria-label="Historical underground atlas notice">
+        <div>
+          <p className="eyebrow">Historical underground atlas · regenerated 27 August 2026</p>
+          <h2>Maps at their original cutoff.</h2>
+        </div>
+        <p>
+          This dated atlas contains {reportData.counts.maps} maps and {reportData.counts.undergroundNavigationRecords} navigation records.
+          The original July source package was regenerated and sealed in August;
+          its route audit binds the 22 August R08AM snapshot.
+          Later accepted evidence proves east C01 fabric and scoped return,
+          switchback and containment work. Use the
+          {' '}<a href="/reports/master-plan#current-plan-state">current documented plan state</a>
+          {' '}for those updates. The atlas does not establish current public access.
+        </p>
+      </section>
       <header className="underground-hero" id="top">
         <nav className="topbar">
           <a className="brand" href="/" aria-label="IANLAN NextGen reports home">
@@ -116,12 +142,12 @@ export default async function UndergroundNavigationReport() {
             <a href="#entrances">Entrances</a>
             <a href="#downloads">Downloads</a>
           </div>
-          <span className="live-pill"><i /> Read-only report passed</span>
+          <span className="live-pill"><i /> Historical read-only atlas</span>
         </nav>
 
         <div className="underground-hero-grid">
           <div className="underground-hero-copy">
-            <p className="eyebrow">Report 02 · Underground systems atlas · 28 July 2026</p>
+            <p className="eyebrow">Report 02 · Underground systems atlas · 27 August 2026 edition</p>
             <h1>Find your way<br /><em>below.</em></h1>
             <p>
               A comprehensive map-first guide to IANLAN&apos;s cataloged tunnels,
@@ -131,7 +157,7 @@ export default async function UndergroundNavigationReport() {
             <div className="hero-actions">
               <a className="button primary" href="#network">Open the network map</a>
               <a className="button ghost" href="/underground/underground-navigation-report.pdf">
-                Download 97-page PDF
+                Download {reportData.counts.pdfPages}-page PDF
               </a>
             </div>
           </div>
@@ -156,14 +182,14 @@ export default async function UndergroundNavigationReport() {
       <section className="truth-band">
         <div>
           <p className="eyebrow">Field truth comes first</p>
-          <h2>C01 east is cataloged,<br />not field-confirmed.</h2>
+          <h2>C01 arrival claims<br />at the July cutoff.</h2>
         </div>
         <p>
-          ISSUE-002 remains open. The east-stack geometry is shown for navigation
-          and review, but it does not prove the bunker was moved east or that the
-          road, recovered parking, and sunken entrance exist. Use the legacy
-          MainStreet C01 portal as the reliable public arrival until verified.
-          No world edits were made for this report.
+          ISSUE-002 recorded contested arrival claims in this July report.
+          Later terminal evidence and accepted scoped releases supersede its
+          blanket uncertainty about east C01 construction. Neither this map nor
+          a legacy portal label proves a commissioned public arrival. See the
+          current plan state for the exact retained access limits.
         </p>
       </section>
 
@@ -176,8 +202,9 @@ export default async function UndergroundNavigationReport() {
           <p>
             Inspired by downtown skywalk diagrams: each box is a separate
             underground system, nodes are useful destinations, and lines are
-            verified internal connections. No line between systems means no
-            verified connecting tunnel.
+            connections recorded by the original atlas. These lines retain
+            their recorded snapshot scope; later route and access records control
+            any claim of current usability.
           </p>
         </div>
         <a className="network-map" href="/underground/maps/02-underground-skywalk-schematic.png">
@@ -205,7 +232,7 @@ export default async function UndergroundNavigationReport() {
         <div className="underground-heading">
           <div>
             <p className="eyebrow">Area-by-area navigation</p>
-            <h2>Eight local maps.</h2>
+            <h2>{areaMaps.length} local maps.</h2>
           </div>
           <p>
             Geographic plans preserve world coordinates, access markers, and
@@ -213,11 +240,11 @@ export default async function UndergroundNavigationReport() {
           </p>
         </div>
         <div className="underground-map-grid">
-          {areaMaps.map(([image, title], index) => (
+          {areaMaps.map(([image, title]) => (
             <a href={`/underground/maps/${image}`} className="underground-map-card" key={image}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={`/underground/maps/${image}`} alt={title} loading="lazy" />
-              <span><b>{String(index + 3).padStart(2, '0')}</b>{title}</span>
+              <span><b>{image.slice(0, 2)}</b>{title}</span>
             </a>
           ))}
         </div>
@@ -323,9 +350,9 @@ export default async function UndergroundNavigationReport() {
           </p>
         </div>
         <div className="download-grid">
-          <a href="/underground/underground-navigation-report.pdf"><b>PDF dossier</b><span>97 pages · maps, rooms, entrances</span></a>
+          <a href="/underground/underground-navigation-report.pdf"><b>PDF dossier</b><span>{reportData.counts.pdfPages} pages · maps, rooms, entrances</span></a>
           <a href="/underground/underground-navigation-report.html"><b>Full HTML report</b><span>Responsive long-form edition</span></a>
-          <a href="/underground/underground-inventory.json"><b>Complete inventory</b><span>289 records · 168 C01 spaces</span></a>
+          <a href="/underground/underground-inventory.json"><b>Complete inventory</b><span>{reportData.counts.undergroundNavigationRecords} records · {reportData.counts.c01Spaces} C01 spaces</span></a>
           <a href="/underground/report-qa.json"><b>Report QA</b><span>All package gates passed</span></a>
           <a href="/underground/artifact-manifest.json"><b>Artifact manifest</b><span>Paths, bytes, and SHA-256</span></a>
           <a href="/underground/screenshot-manifest.json"><b>Screenshot manifest</b><span>Original evidence provenance</span></a>

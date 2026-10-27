@@ -1,3 +1,7 @@
+import currentState from '../public/current-plan-state/index.json';
+import coordinateData from '../public/coordinates/portal-summary.json';
+import undergroundData from '../public/underground/portal-summary.json';
+
 export interface ReportMetric {
   value: string;
   label: string;
@@ -26,14 +30,16 @@ export const reports: ReportDefinition[] = [
       'Thirteen evidence-bound plans: what is accepted, what remains unproven, '
       + 'and the exact dependency chain toward a future Cross-Town Railway.'
     ),
-    status: 'Reconciliation passed',
-    published: '22 August 2026',
+    status: 'Current documented plan state',
+    published: new Date(`${currentState.reconciledOn}T00:00:00Z`).toLocaleDateString('en-GB', {
+      day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC',
+    }),
     image: '/underground/maps/01-underground-world-overview.png',
     href: '/reports/master-plan',
     metrics: [
       { value: '13', label: 'plans reconciled' },
-      { value: '30', label: 'built claims' },
-      { value: '29 / 29', label: 'evidence bindings' },
+      { value: '7 / 7', label: 'R00 gates passed' },
+      { value: String(currentState.sources.length), label: 'bound source documents' },
     ],
   },
   {
@@ -42,36 +48,36 @@ export const reports: ReportDefinition[] = [
     title: 'Underground Navigation',
     project: 'MC Fleet · World Systems Atlas',
     summary: (
-      'A current-snapshot access guide to what is walkable, public, staff-only, '
-      + 'adults-only, sealed, or still unproven below grade.'
+      'The dated underground atlas regenerated 27 August, with later access and '
+      + 'construction records linked from the current plan state.'
     ),
-    status: 'Current access sealed',
-    published: '22 August 2026',
+    status: 'Historical atlas · 22 August route snapshot',
+    published: '27 August 2026',
     image: '/underground/maps/02-underground-skywalk-schematic.png',
     href: '/reports/underground-navigation',
     metrics: [
-      { value: '20', label: 'navigation maps' },
-      { value: '298', label: 'catalog records' },
-      { value: '19 / 22', label: 'current routes' },
+      { value: String(undergroundData.counts.maps), label: 'historical navigation maps' },
+      { value: String(undergroundData.counts.undergroundNavigationRecords), label: 'catalog records at cutoff' },
+      { value: String(undergroundData.counts.entranceAndAccessRecords), label: 'historical access nodes' },
     ],
   },
   {
     slug: 'masterplan-program',
     number: '03',
-    title: 'Masterplan Program',
+    title: 'Masterplan Program · Archive',
     project: 'MC Fleet · Combined Complex & area baselines',
     summary: (
       'The thirteen-plan library: the 01–05 authority chain that places the '
       + 'Combined Complex in the live world, the eight area baselines beside it, '
-      + 'and the gates still holding construction.'
+      + 'and the gate decisions recorded at its 5 August cutoff.'
     ),
-    status: 'Build HOLD',
+    status: 'Historical archive · superseded gate status',
     published: '5 August 2026',
     image: '/masterplans/hero-phase0-overlay.webp',
     href: '/reports/masterplan-program',
     metrics: [
       { value: '13', label: 'masterplans' },
-      { value: '2 / 7', label: 'R00 gates passed' },
+      { value: '2 / 7', label: 'R00 gates at historical cutoff' },
       { value: '30 / 30', label: 'G03 domains exact' },
     ],
   },
@@ -84,14 +90,14 @@ export const reports: ReportDefinition[] = [
       'Every cataloged point and place of interest, grouped for operators and '
       + 'searchable with copy-ready teleport coordinates.'
     ),
-    status: 'Directory sealed',
-    published: '29 July 2026',
+    status: '27 August catalog edition',
+    published: '27 August 2026',
     image: '/atlas/town-expansion/map-whole-world-overview.png',
     href: '/reports/poi-coordinate-directory',
     metrics: [
-      { value: '1,215', label: 'places indexed' },
+      { value: coordinateData.counts.records.toLocaleString(), label: 'places indexed' },
       { value: '6', label: 'operator groups' },
-      { value: '135', label: 'PDF pages' },
+      { value: String(coordinateData.counts.pdfPages), label: 'PDF pages' },
     ],
   },
   {
@@ -119,10 +125,10 @@ export const reports: ReportDefinition[] = [
     title: 'Bunker Construction Status',
     project: 'MC Fleet · Terminal Evidence Review',
     summary: (
-      'What is physically built now across Cheyenne, Raven Rock, and C01—'
-      + 'with design intent, historical releases, and commissioning limits kept separate.'
+      'The 22 August terminal review of Cheyenne, Raven Rock, and C01; '
+      + 'later scoped releases are recorded in the current plan state.'
     ),
-    status: 'Evidence sealed',
+    status: 'Historical terminal review · 22 August',
     published: '22 August 2026',
     image: '/bunker-construction-status/maps/01-bunker-evidence-overview.png',
     href: '/reports/bunker-construction-status',

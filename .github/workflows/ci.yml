@@ -129,7 +129,7 @@ jobs:
         run: python -m pytest world-builder/tests
 
   world-showcase:
-    name: World Showcase production build
+    name: World Showcase publication and browser tests
     runs-on: ubuntu-latest
     timeout-minutes: 15
     defaults:
@@ -142,12 +142,27 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
           cache: npm
           cache-dependency-path: world-showcase/package-lock.json
 
       - name: Install
         run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: Verify published report integrity
+        run: npm run test:publication
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Production build and real-browser showcase tests
+        run: npm run test:e2e
+
+      - name: Upload showcase browser-test report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: world-showcase-playwright-report
+          path: world-showcase/playwright-report/
+          if-no-files-found: ignore
+          retention-days: 7

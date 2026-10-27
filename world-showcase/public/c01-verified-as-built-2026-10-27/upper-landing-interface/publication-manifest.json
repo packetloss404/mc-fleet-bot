@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 2,
+  "releaseId": "MP11-C01-PUBLIC-VERTICAL-UPPER-LANDING-ENDPOINT-OPENING-TRANSITION-01",
+  "status": "AS_BUILT_POST_VERIFIED_REVERSIBLE",
+  "generatedAtUtc": "2026-10-27T04:31:29.381Z",
+  "classification": "READ_ONLY_AS_BUILT_VISUAL_EVIDENCE",
+  "authority": {
+    "readOnly": true,
+    "worldMutationAuthorized": false,
+    "commissioningClaim": false
+  },
+  "evidence": {
+    "ledger": {
+      "path": "data/world-review/mp11-c01-upper-landing-endpoint-opening-transition-01-live-20260827T144100Z/mp11-c01-public-vertical-upper-landing-endpoint-opening-transition-01-guarded-release-ledger.json",
+      "sha256": "b5ba939f66ed189fb50b10bbea1477bf9ca710e3fc1bbeb9fdf912e2c0432b66",
+      "terminalStatus": "EXECUTED_POSTSTATE_VERIFIED_REVERSIBLE"
+    },
+    "qa": {
+      "path": "data/world-review/mp11-c01-upper-landing-endpoint-opening-transition-01-live-20260827T144100Z/independent-post-release-qa",
+      "sha256": "a0aa961a95e454b2a509d42b1147231c4ec04d50015fa44a37abc497da13d348",
+      "status": "PASS_C01_UPPER_LANDING_ENDPOINT_TRANSITION_IMMUTABLE_POST_QA"
+    },
+    "releaseManifest": {
+      "path": "data/world-review/mp11-c01-upper-landing-endpoint-opening-transition-01-live-20260827T144100Z/rebound/compile/mp11-c01-public-vertical-upper-landing-endpoint-opening-transition-01.manifest.json",
+      "sha256": "0c016ea3873f3017eac8062d78432c6287c28905f6b63285055c1aa64ece20d4",
+      "status": "OFFLINE_COMPILED_GUARDED_RELEASE_REQUIRES_FRESH_LIVE_KERNEL"
+    },
+    "ledgerQaBindingMode": "passing-ledger-stage-binding"
+  },
+  "scope": {
+    "canonicalTargetCount": 56,
+    "changedCount": 56,
+    "stationCount": 0,
+    "totalDesignCellCount": 315,
+    "dualAcceptedCellCount": 24,
+    "retainedMainCanonicalCellCount": 928,
+    "retainedUpperCanonicalCellCount": 433,
+    "retainedReturnCanonicalCellCount": 768,
+    "transitionVolume": {
+      "minX": 836,
+      "maxX": 844,
+      "minY": 40,
+      "maxY": 44,
+      "minZ": -49,
+      "maxZ": -43
+    },
+    "bounds": {
+      "minX": 836,
+      "maxX": 844,
+      "minY": 40,
+      "maxY": 41,
+      "minZ": -49,
+      "maxZ": -43
+    },
+    "canonicalCoordinateSetSha256": "d86ccd6cf145c45d8df7c361309281a58043479d72ab3ca9e57111bffe70a3ff",
+    "roleCounts": {
+      "new-air": 56
+    }
+  },
+  "nonClaims": [
+    "No complete route or station sequence is asserted by this interface-only publication.",
+    "No public route, endpoint, egress or service is opened or commissioned.",
+    "The publication performs no world mutation and does not complete C01 or MP11."
+  ],
+  "assets": [
+    {
+      "id": "README",
+      "kind": "evidence",
+      "file": "README.md",
+      "sha256": "06b6b4ca53732cb185f337692d3d04104a0e253a7347ac3128fea924c984cc99",
+      "bytes": 1579
+    },
+    {
+      "id": "as-built-plan",
+      "kind": "plan",
+      "file": "as-built-plan.svg",
+      "sha256": "290ed4e5bc5bd4a81d5186871d1f1b1ffd3f96fcd0672b46a2664bcb08a359ed",
+      "bytes": 7885
+    },
+    {
+      "id": "as-built-section",
+      "kind": "section",
+      "file": "as-built-section.svg",
+      "sha256": "e17fda7b01dadb9bfbe7338cad9d2f4e5c614fd93a6827be2ad2fc584738d771",
+      "bytes": 4262
+    },
+    {
+      "id": "as-built-evidence",
+      "kind": "evidence",
+      "file": "as-built-evidence.json",
+      "sha256": "d5657f94ce5453806ca450830295fb5270a5fc38b2ca9bc7dd925eea5466e4de",
+      "bytes": 2569
+    }
+  ]
+}

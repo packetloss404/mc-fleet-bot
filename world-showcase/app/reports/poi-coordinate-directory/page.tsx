@@ -15,6 +15,13 @@ export const metadata: Metadata = {
 
 const records = coordinateData.records as CoordinateRecord[];
 const categories = coordinateData.categories as CoordinateCategory[];
+const publicationDate = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+}).format(new Date(coordinateData.generatedAt));
+const formattedRecordCount = coordinateData.counts.records.toLocaleString('en-GB');
 
 export default async function PoiCoordinateDirectory() {
   return (
@@ -23,7 +30,7 @@ export default async function PoiCoordinateDirectory() {
       <header className="coordinate-hero" id="top">
         <div className="coordinate-hero-grid">
           <div className="coordinate-hero-copy">
-            <p className="eyebrow">Report 04 · World operator index · 29 July 2026</p>
+            <p className="eyebrow">Report 04 · World operator index · {publicationDate}</p>
             <h1>Every place.<br /><em>One coordinate.</em></h1>
             <p>
               Search every cataloged point and place of interest—from surface
@@ -33,7 +40,7 @@ export default async function PoiCoordinateDirectory() {
             <div className="hero-actions">
               <a className="button primary" href="#directory">Search the directory</a>
               <a className="button ghost" href="/coordinates/poi-coordinate-directory.pdf">
-                Download 135-page PDF
+                Download {coordinateData.counts.pdfPages}-page PDF
               </a>
             </div>
           </div>
@@ -79,11 +86,11 @@ export default async function PoiCoordinateDirectory() {
           <h2>Human and machine editions.</h2>
           <p>
             The searchable web edition, portable HTML, complete JSON/CSV, PDF,
-            QA result, and artifact manifest all bind the same 1,215 records.
+            QA result, and artifact manifest all bind the same {formattedRecordCount} records.
           </p>
         </div>
         <div className="download-grid">
-          <a href="/coordinates/poi-coordinate-directory.pdf"><b>PDF directory</b><span>135 pages · every grouped place</span></a>
+          <a href="/coordinates/poi-coordinate-directory.pdf"><b>PDF directory</b><span>{coordinateData.counts.pdfPages} pages · every grouped place</span></a>
           <a href="/coordinates/poi-coordinate-directory.html"><b>Searchable HTML</b><span>Portable offline directory</span></a>
           <a href="/coordinates/poi-coordinate-directory.json"><b>Complete JSON</b><span>Geometry, reference, provenance</span></a>
           <a href="/coordinates/poi-coordinate-directory.csv"><b>Coordinate CSV</b><span>Spreadsheet-ready operator index</span></a>
@@ -98,7 +105,7 @@ export default async function PoiCoordinateDirectory() {
           <span>IANLAN NextGen</span>
         </a>
         <p>
-          POI Coordinate Directory · accepted catalog snapshot
+          POI Coordinate Directory · {publicationDate} catalog edition · reference-world snapshot
           {' '}{coordinateData.source.snapshot.sha256.slice(0, 16)}…
         </p>
       </footer>

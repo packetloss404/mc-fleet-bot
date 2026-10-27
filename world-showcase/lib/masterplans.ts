@@ -1,5 +1,6 @@
 /**
- * Masterplan program data, transcribed from docs/masterplans.
+ * Historical Masterplan Program data at its 5 August 2026 cutoff.
+ * Current documented state is generated separately in public/current-plan-state.
  *
  * Sources are the committed build-info.json files (plans 01–05) and the
  * MASTERPLAN.md front matter (plans 06–13). Every number here is copied from

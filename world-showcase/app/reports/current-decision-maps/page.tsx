@@ -5,8 +5,8 @@ import styles from './page.module.css';
 
 export const dynamic = 'force-dynamic';
 export const metadata: Metadata = {
-  title: 'Current 26 August decision maps · Held interfaces',
-  description: 'Current-source evidence maps for MP01, MP02–MP05, MP08, MP13, and SYS03, explicitly separated from construction completion claims.',
+  title: '26 August decision maps · Dated interface evidence',
+  description: '26 August evidence maps for MP01, MP02–MP05, MP08, MP13, and SYS03; later accepted work is in the current plan register.',
 };
 
 export default async function CurrentDecisionMapsPage() {
@@ -14,14 +14,18 @@ export default async function CurrentDecisionMapsPage() {
     <main className={styles.report}>
       <SiteHeader current="master-plan" />
       <header className={styles.hero} id="top">
-        <p className={styles.eyebrow}>Current-source volume · 26 August 2026</p>
+        <p className={styles.eyebrow}>Dated source volume · 26 August 2026</p>
         <h1>Decision maps,<br /><em>not completion maps.</em></h1>
         <p>
-          This is an additive, read-only map volume for the interfaces currently
-          holding work. It records what a map actually supports today: observed
+          This is an additive, read-only map volume for the interfaces recorded
+          at its 26 August cutoff. It records the observed
           conditions, held ownership and safety gates, plus one narrowly bounded
           civil-only SYS03 reference. It does not certify a district, route,
           venue, bunker, or railway as complete.
+        </p>
+        <p>
+          Later accepted releases can supersede a mapped hold within their exact
+          scope. <a href="/reports/master-plan#current-plan-state">Open current documented plan state ↗</a>
         </p>
         <div className={styles.stats}>
           <div><b>{volume.publication.mapCount}</b><span>exact evidence maps</span></div>

@@ -15,7 +15,7 @@ export function SiteHeader({ current }: SiteHeaderProps) {
         <a aria-current={current === 'master-plan' ? 'page' : undefined} href="/reports/master-plan">
           <span>01</span>Master Plan
         </a>
-        <a href="/world-atlas-2026-08-25/atlas-gallery.html"><span>ATLAS</span>33 maps + 40 views</a>
+        <a href="/reports/master-plan#world-atlas"><span>ATLAS</span>Dated world maps</a>
         <a href="/reports/master-plan#evidence-chapters"><span>FILE</span>Evidence</a>
       </nav>
       <details className={styles.mobile}>
@@ -24,7 +24,7 @@ export function SiteHeader({ current }: SiteHeaderProps) {
           <a href="/reports/master-plan" aria-current={current === 'master-plan' ? 'page' : undefined}>
             <span>01</span>Master Plan
           </a>
-          <a href="/world-atlas-2026-08-25/atlas-gallery.html"><span>ATLAS</span>33 maps + 40 views</a>
+          <a href="/reports/master-plan#world-atlas"><span>ATLAS</span>Dated world maps</a>
           <a href="/reports/master-plan#evidence-chapters"><span>FILE</span>Evidence chapters</a>
         </nav>
       </details>

@@ -30,6 +30,28 @@ const sha = (p) => crypto.createHash('sha256').update(fs.readFileSync(p)).digest
 const fail = (x, m) => { if (!x) throw Error(`C01 as-built visuals sync rejected: ${m}`); };
 const rel = (p) => path.relative(ROOT, p).split(path.sep).join('/');
 
+// Validate every bundle before copying any file. A release can be accepted
+// while its visual publication is still incomplete; a caption template is not
+// a geometric map of that release.
+for (const pub of PUBLICATIONS) {
+  const sourceDir = path.join(ROOT, pub.source);
+  fail(fs.existsSync(sourceDir), `missing source ${pub.source}`);
+  for (const filename of ['as-built-plan.svg', 'as-built-section.svg']) {
+    const svgPath = path.join(sourceDir, filename);
+    fail(fs.existsSync(svgPath), `missing ${pub.source}/${filename}`);
+    const svg = fs.readFileSync(svgPath, 'utf8');
+    fail(!/\$\{[^}]+\}/.test(svg), `unresolved template in ${pub.source}/${filename}; regenerate geometry from accepted evidence`);
+    fail(svg.length > 1000 && /<(?:path|line|polyline|polygon|circle)\b/.test(svg),
+      `no geometric map in ${pub.source}/${filename}`);
+  }
+  const evidence = JSON.parse(fs.readFileSync(path.join(sourceDir, 'as-built-evidence.json'), 'utf8'));
+  fail(evidence.status === 'AS_BUILT', `unaccepted visual evidence for ${pub.id}`);
+  if (evidence.scope) {
+    fail(evidence.scope.canonicalCells > 0 && evidence.scope.cellsChanged > 0,
+      `empty visual scope for ${pub.id}`);
+  }
+}
+
 const copied = [];
 for (const pub of PUBLICATIONS) {
   const sourceDir = path.join(ROOT, pub.source);

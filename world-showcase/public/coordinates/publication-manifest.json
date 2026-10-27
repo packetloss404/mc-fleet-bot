@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 2,
+  "id": "ianlan-nextgen-poi-coordinate-directory-publication-2026-08-27",
+  "sourceEdition": {
+    "label": "27 August 2026 catalog edition",
+    "generatedAt": "2026-08-27T17:19:59.281Z"
+  },
+  "preparedAtUtc": "2026-10-27T04:24:55.531Z",
+  "status": "PASS_PUBLISHED",
+  "source": {
+    "root": "docs/redevelopment/2026-08-27-poi-coordinate-directory",
+    "prePdfManifestSha256": "fb6d6be3d2db019387fe25f283a46ca4075ba14d1c2c45a5917392ea9baff18b"
+  },
+  "counts": {
+    "records": 1226,
+    "active": 1225,
+    "retired": 1,
+    "exactOrAuthoredReferences": 213,
+    "derivedReferences": 1013,
+    "relativeYCommands": 85,
+    "projects": 9,
+    "kinds": 15,
+    "categories": 6,
+    "byCategory": {
+      "surface-builds": 116,
+      "remote-sites": 26,
+      "passageway-access": 302,
+      "route-station-infrastructure": 714,
+      "anomalies-controls": 66,
+      "candidate-parcels": 2
+    },
+    "byProject": {
+      "approach-road": 2,
+      "combined-zones-phase1": 11,
+      "mainstreet-america": 631,
+      "raven-rock": 81,
+      "ravensgate": 13,
+      "ravensreach": 63,
+      "town-expansion-r1": 340,
+      "westlight-district": 59,
+      "westlight-venue": 26
+    },
+    "byKind": {
+      "building": 75,
+      "custom": 392,
+      "district": 19,
+      "driveway": 6,
+      "fence": 14,
+      "landmark": 33,
+      "landscape": 13,
+      "lighting": 55,
+      "parking": 242,
+      "property": 1,
+      "road": 29,
+      "room": 322,
+      "sidewalk": 12,
+      "terminal_media_feature": 11,
+      "utility": 2
+    },
+    "pdfPages": 137
+  },
+  "files": [
+    {
+      "path": "public/coordinates/poi-coordinate-directory.html",
+      "bytes": 1502362,
+      "sha256": "72928302e0757226672e7cebf676a986e3fe6c713903410ceb64526c8032b8de"
+    },
+    {
+      "path": "public/coordinates/poi-coordinate-directory.json",
+      "bytes": 1893576,
+      "sha256": "3abf76ec8d22e70c57f8c29f54c5e46c51c65fbe58127b7a9216dd9ca9015fd3"
+    },
+    {
+      "path": "public/coordinates/poi-coordinate-directory.csv",
+      "bytes": 340534,
+      "sha256": "a3b18cfa5520027ed309a05571e873e1d013286723af4c88096f8a3c26a6699a"
+    },
+    {
+      "path": "public/coordinates/poi-coordinate-directory.pdf",
+      "bytes": 2686396,
+      "sha256": "13079e6f2cc426e213686f6acdd651a7999c84a7131bbdcf4f5f92a2aa0e3555"
+    },
+    {
+      "path": "public/coordinates/portal-summary.json",
+      "bytes": 1022445,
+      "sha256": "0c180b3de912823379dd0f8535d689e96c94d47df359c8487872460b6fc1ec8c"
+    },
+    {
+      "path": "public/coordinates/report-qa.json",
+      "bytes": 2249,
+      "sha256": "a6f5723aa4ccdc693356200d61680b69dbb0792c3f4810807e08d16c6ddc8686"
+    },
+    {
+      "path": "public/coordinates/source-artifact-manifest.json",
+      "bytes": 1755,
+      "sha256": "5695423255e89ca5dc29b6310cb11d416bfa0951f57edf0a204a86741c547f4b"
+    },
+    {
+      "path": "public/coordinates/artifact-manifest.json",
+      "bytes": 3032,
+      "sha256": "260f8e0edb1610b1f513c31b3fbc0ca11456300159bf4f65e65d5e6652f4a04a"
+    }
+  ]
+}

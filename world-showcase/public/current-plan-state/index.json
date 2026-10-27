@@ -1,0 +1,690 @@
+{
+  "schemaVersion": 1,
+  "id": "ianlan-nextgen-current-plan-state",
+  "reconciledOn": "2026-10-27",
+  "classification": "READ_ONLY_TRACKED_SOURCE_RECONCILIATION",
+  "authority": {
+    "readOnly": true,
+    "liveWorldRecertified": false,
+    "worldMutationAuthorized": false,
+    "trackedSourcesOnly": true,
+    "excludedSources": [
+      "docs/masterplans/05-combined-zones/phase1-r00-readiness-audit.json"
+    ]
+  },
+  "sources": [
+    {
+      "id": "mp01-current",
+      "path": "docs/masterplans/01-cheyenne-mountain-complex/CURRENT-STATE.md",
+      "sourceDate": "2026-08-28",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "7a6f7acb13ee32742290262a059a5e1c719ccbf6b7d7bca1509246fe47b87ff7",
+      "bytes": 31271,
+      "href": "/current-plan-state/sources/mp01-current--CURRENT-STATE.md",
+      "label": "MP01 current build control"
+    },
+    {
+      "id": "mp02-current",
+      "path": "docs/masterplans/02-subtropolis/CURRENT-STATE.md",
+      "sourceDate": "2026-08-28",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "f91bcd7bf94e2a24694cab80767e409b46b5fe5c8f4c06f323a8b9236983cc83",
+      "bytes": 6700,
+      "href": "/current-plan-state/sources/mp02-current--CURRENT-STATE.md",
+      "label": "MP02 current state"
+    },
+    {
+      "id": "mp03-current",
+      "path": "docs/masterplans/03-houston-tunnel-system/CURRENT-STATE.md",
+      "sourceDate": "2026-08-28",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "fa5c45fe3f4a2f2e2c367ab9a3526291b79021fa9a691b7b92d92f5dd3ddf7f9",
+      "bytes": 7165,
+      "href": "/current-plan-state/sources/mp03-current--CURRENT-STATE.md",
+      "label": "MP03 current-state control ledger"
+    },
+    {
+      "id": "mp04-authority",
+      "path": "docs/masterplans/04-combined-complex/authority-reconciliation.json",
+      "sourceDate": "2026-08-26",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "7051b359e195b3c957cfa4ee77a56217643bebc60bccc108c20c0bea9a3bcdab",
+      "bytes": 13727,
+      "href": "/current-plan-state/sources/mp04-authority--authority-reconciliation.json",
+      "label": "MP04 to MP05 authority reconciliation"
+    },
+    {
+      "id": "mp04-readme",
+      "path": "docs/masterplans/04-combined-complex/README.md",
+      "sourceDate": "2026-08-26",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "ed753e01cdc3f9559b5e30fb5f46de4ceb06d0ea498e3dec7ff4b46e63449450",
+      "bytes": 2606,
+      "href": "/current-plan-state/sources/mp04-readme--README.md",
+      "label": "MP04 current authority summary"
+    },
+    {
+      "id": "mp05-current",
+      "path": "docs/masterplans/05-combined-zones/CURRENT-STATE.md",
+      "sourceDate": "2026-08-28",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "cfdcbfb5d292113fd6fe6ddb40d90af8f98da700ca16ebdb187ed94a96a76f79",
+      "bytes": 103273,
+      "href": "/current-plan-state/sources/mp05-current--CURRENT-STATE.md",
+      "label": "MP05 authoritative current-state ledger"
+    },
+    {
+      "id": "mp05-plan",
+      "path": "docs/masterplans/05-combined-zones/MASTERPLAN.md",
+      "sourceDate": "2026-08-28",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "c42181258f71687700a06d50534458289278bb1c883c8626d88de9701aec817e",
+      "bytes": 51454,
+      "href": "/current-plan-state/sources/mp05-plan--MASTERPLAN.md",
+      "label": "MP05 controlling masterplan"
+    },
+    {
+      "id": "mp06-current",
+      "path": "docs/masterplans/06-approach-road/CURRENT-STATE.md",
+      "sourceDate": "2026-08-26",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "62437511c8f8aeea66e1fdab0a5f92f3f9b5a22f5d489b15870a81caa38ee68e",
+      "bytes": 759,
+      "href": "/current-plan-state/sources/mp06-current--CURRENT-STATE.md",
+      "label": "MP06 current state"
+    },
+    {
+      "id": "mp06-plan",
+      "path": "docs/masterplans/06-approach-road/MASTERPLAN.md",
+      "sourceDate": "2026-08-26",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "150175b6a3bf83166074e684fd06106a3a993a32ab313a9d98a1af96fdbee917",
+      "bytes": 13232,
+      "href": "/current-plan-state/sources/mp06-plan--MASTERPLAN.md",
+      "label": "MP06 retrospective plan with accepted addenda"
+    },
+    {
+      "id": "mp07-current",
+      "path": "docs/masterplans/07-mainstreet-america/CURRENT-STATE.md",
+      "sourceDate": "2026-08-26",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "9b9eb600b3aec3f7f3877707f9002dd7d7cda9bbfc4941a462275e0f1c1a0c19",
+      "bytes": 2857,
+      "href": "/current-plan-state/sources/mp07-current--CURRENT-STATE.md",
+      "label": "MP07 authoritative current state"
+    },
+    {
+      "id": "mp08-current",
+      "path": "docs/masterplans/08-raven-rock/CURRENT-STATE.md",
+      "sourceDate": "2026-08-26",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "17db39fc884743cd1005a9cec6dc299f71155a469928bc8694dfd4db21b3743e",
+      "bytes": 6131,
+      "href": "/current-plan-state/sources/mp08-current--CURRENT-STATE.md",
+      "label": "MP08 current build control"
+    },
+    {
+      "id": "mp09-current",
+      "path": "docs/masterplans/09-ravensgate/CURRENT-STATE.md",
+      "sourceDate": "2026-08-26",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "c7eca2f721e73fc9581b9a874b863a923356cc31def5cd2d82a4c119ae44bc2d",
+      "bytes": 7209,
+      "href": "/current-plan-state/sources/mp09-current--CURRENT-STATE.md",
+      "label": "MP09 current-state control ledger"
+    },
+    {
+      "id": "mp10-plan",
+      "path": "docs/masterplans/10-ravensreach/MASTERPLAN.md",
+      "sourceDate": "2026-08-26",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "f7788f343d84afff47fc16b6e27eff7ae23f18075c1ff47c09396970856bb509",
+      "bytes": 16054,
+      "href": "/current-plan-state/sources/mp10-plan--MASTERPLAN.md",
+      "label": "MP10 retrospective plan and accepted addenda"
+    },
+    {
+      "id": "mp10-exterior-circulation",
+      "path": "docs/masterplans/10-ravensreach/MP10-RRCH-LIBRARY-EXTERIOR-CIRCULATION-RECONCILIATION-02.md",
+      "sourceDate": "2026-08-26",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "b35381a5c26afb3514a211b61913300ee78317cfd2a10dd4432d24079dcc1e6e",
+      "bytes": 1642,
+      "href": "/current-plan-state/sources/mp10-exterior-circulation--MP10-RRCH-LIBRARY-EXTERIOR-CIRCULATION-RECONCILIATION-02.md",
+      "label": "MP10 library exterior circulation reconciliation"
+    },
+    {
+      "id": "mp11-current",
+      "path": "docs/masterplans/11-town-expansion-r1/CURRENT-STATE.md",
+      "sourceDate": "2026-08-28",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "a2761deecad4232066b4484c9a8e99b32ae763db2043438a47ec3ab369b88a13",
+      "bytes": 32143,
+      "href": "/current-plan-state/sources/mp11-current--CURRENT-STATE.md",
+      "label": "MP11 current interface state"
+    },
+    {
+      "id": "mp11-plan",
+      "path": "docs/masterplans/11-town-expansion-r1/MASTERPLAN.md",
+      "sourceDate": "2026-08-26",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "5ede28d6ecd2d99a0382b8be83b43f69fa4b4ab0ac8e45e85f3ae1e309ff93b3",
+      "bytes": 13860,
+      "href": "/current-plan-state/sources/mp11-plan--MASTERPLAN.md",
+      "label": "MP11 retrospective source plan"
+    },
+    {
+      "id": "mp11-switchback-release",
+      "path": "docs/masterplans/11-town-expansion-r1/MP11-C01-MAIN-SWITCHBACK-TRANSITION-01-RELEASE.md",
+      "sourceDate": "2026-08-27",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "f5c82cc400e6f38fd0859c66ec3baa658b6f746791263dd197b18d5facda17ad",
+      "bytes": 3977,
+      "href": "/current-plan-state/sources/mp11-switchback-release--MP11-C01-MAIN-SWITCHBACK-TRANSITION-01-RELEASE.md",
+      "label": "C01 main switchback as-built release"
+    },
+    {
+      "id": "mp12-plan",
+      "path": "docs/masterplans/12-westlight-district/MASTERPLAN.md",
+      "sourceDate": "2026-08-26",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "94df3827945326851794f381943a9f355fc19b4b43fdd594501a21313c5646c9",
+      "bytes": 11231,
+      "href": "/current-plan-state/sources/mp12-plan--MASTERPLAN.md",
+      "label": "MP12 retrospective source plan and circulation addenda"
+    },
+    {
+      "id": "mp13-current",
+      "path": "docs/masterplans/13-westlight-venue/CURRENT-STATE.md",
+      "sourceDate": "2026-08-26",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "c09ab44997d7cd38d3b9156878c7dd0940b266b6406e24f0d50d22566b9a4636",
+      "bytes": 2827,
+      "href": "/current-plan-state/sources/mp13-current--CURRENT-STATE.md",
+      "label": "MP13 current state"
+    },
+    {
+      "id": "mp13-plan",
+      "path": "docs/masterplans/13-westlight-venue/MASTERPLAN.md",
+      "sourceDate": "2026-08-26",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "548190f6912d29c131f977da6b061e2f2c39078fffcacfcb71a54f12c68c0876",
+      "bytes": 14814,
+      "href": "/current-plan-state/sources/mp13-plan--MASTERPLAN.md",
+      "label": "MP13 retrospective source plan and current addendum"
+    },
+    {
+      "id": "completion-register",
+      "path": "docs/masterplans/MASTER-PLAN-COMPLETION-REGISTER-2026-08-26.md",
+      "sourceDate": "2026-08-28",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "b9ba64c948759bf8350637aff586d7ff1adeaf3bc42d256f968e277fc32b0f20",
+      "bytes": 142044,
+      "href": "/current-plan-state/sources/completion-register--MASTER-PLAN-COMPLETION-REGISTER-2026-08-26.md",
+      "label": "Master Plan completion register with 28 August supplement"
+    },
+    {
+      "id": "cobalt-s1-passive-rail",
+      "path": "docs/masterplans/COBALT-S1-WESTLIGHT-RAVENSREACH-PASSIVE-RAIL-01-RELEASE.md",
+      "sourceDate": "2026-08-26",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "f26121c0cad5ff48d65af6c5e3802eb195a59295f98b166fbdac898c319c4611",
+      "bytes": 1423,
+      "href": "/current-plan-state/sources/cobalt-s1-passive-rail--COBALT-S1-WESTLIGHT-RAVENSREACH-PASSIVE-RAIL-01-RELEASE.md",
+      "label": "Cobalt S1 passive rail release"
+    },
+    {
+      "id": "surface-rail-standard",
+      "path": "docs/masterplans/ABOVE-GROUND-DOUBLE-TRACK-WALKWAY-STANDARD-2026-08-28.md",
+      "sourceDate": "2026-08-28",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "cc8339c59f9258eb31ea064dac24436c66026a4ef6e9f3616f89debc2674eacd",
+      "bytes": 12626,
+      "href": "/current-plan-state/sources/surface-rail-standard--ABOVE-GROUND-DOUBLE-TRACK-WALKWAY-STANDARD-2026-08-28.md",
+      "label": "Above-ground double-track and protected-walkway standard"
+    },
+    {
+      "id": "surface-network-02",
+      "path": "docs/masterplans/CITYWIDE-SURFACE-RAIL-AND-PROMENADE-NETWORK-02-2026-08-28.md",
+      "sourceDate": "2026-08-28",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "29e1a42e3e7a929336dfed149906c39741e345717e7f27a1fe966d639b1ed3e1",
+      "bytes": 3300,
+      "href": "/current-plan-state/sources/surface-network-02--CITYWIDE-SURFACE-RAIL-AND-PROMENADE-NETWORK-02-2026-08-28.md",
+      "label": "Citywide surface rail and promenade survey"
+    },
+    {
+      "id": "high16-bypass",
+      "path": "docs/masterplans/RAIL-S3-R10-HIGH16-DESCENDING-BYPASS-02-CURRENT-SOURCE.md",
+      "sourceDate": "2026-08-26",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "b9f6ce5a2fe1a9cd677c97b957cd27a68b8adb4d7da7debc04fd1bb7c138fa52",
+      "bytes": 2809,
+      "href": "/current-plan-state/sources/high16-bypass--RAIL-S3-R10-HIGH16-DESCENDING-BYPASS-02-CURRENT-SOURCE.md",
+      "label": "SYS-03 High-16 descending civil bypass release"
+    },
+    {
+      "id": "railway-archive-validation",
+      "path": "world-showcase/public/master-plan-railway/validation.json",
+      "sourceDate": "2026-08-22",
+      "dateBasis": "Latest explicit evidence date represented by this document; not a filesystem modification time.",
+      "sha256": "f49a9c21db658efe375203a68971ca0e4f09a99576d9a44742ed94ab94f4f6e3",
+      "bytes": 18254,
+      "href": "/current-plan-state/sources/railway-archive-validation--validation.json",
+      "label": "Archived Master Plan Railway validation"
+    }
+  ],
+  "plans": [
+    {
+      "id": "MP01",
+      "title": "Cheyenne Mountain Complex",
+      "status": "PARTIAL — RESTRICTED PASSIVE COMPLEX CAPACITY AS-BUILT",
+      "summary": "The terminal, chamber shell and south extension, structural 15/15 bay array with first passive interiors, Battle Cab envelope/interior, support and reservoir scopes, dry service corridor, staging and manual-support rooms are bounded as-built components.",
+      "built": [
+        "Restricted terminal, dry chamber, all 15 structural bay shells, passive interiors, contained 585-cell reservoir/causeway, and bounded support/service rooms have post-state and rollback evidence.",
+        "B03 indices 188..800 remain a bounded passive internal-inspection component; the surface stair and accepted manual fit-outs are retained."
+      ],
+      "uncommissioned": [
+        "No public or emergency route, active controls, utility/life-safety system, secure exterior programme, or full Cheyenne operating programme is commissioned.",
+        "B04 remains a structural-fabric hold; the direct lever/lamp diagnostic remains a runtime-proof candidate, not a release."
+      ],
+      "sourceIds": [
+        "mp01-current",
+        "completion-register"
+      ]
+    },
+    {
+      "id": "MP02",
+      "title": "SubTropolis",
+      "status": "PARTIAL — BOUNDED RESTRICTED CHAMBER + SERVICE SPINE AS-BUILT",
+      "summary": "The distinct 719-cell B08 ramp handoff and 835-cell restricted chamber/dry receiver are accepted bounded work; the rejected 729-cell floor attempt remains rolled back history.",
+      "built": [
+        "A finite controlled chamber, sealed dry receiver, B03-side isolation, shaft fire/overflow partition, and restricted returns are post-verified."
+      ],
+      "uncommissioned": [
+        "Tenant/lobby grid, public entry, utilities, climate/drainage, public or emergency egress, and bilateral B03/B09 connection/control remain uncommissioned."
+      ],
+      "sourceIds": [
+        "mp02-current",
+        "completion-register"
+      ]
+    },
+    {
+      "id": "MP03",
+      "title": "Houston Tunnel System",
+      "status": "PARTIAL / SAFETY HELD",
+      "summary": "The lower-lobby and upper inspection components remain bounded existing fabric, but current-source screens find no safe new independent MP03 physical delta.",
+      "built": [
+        "Thirty-four lower-lobby stations are dry, supported and two-clear but already built; the 91-surface upper component remains passive restricted inspection only."
+      ],
+      "uncommissioned": [
+        "Twenty-nine lobby stations still fail headroom; retained fluid, unsupported gravel, closed caps, ownership and exterior-endpoint requirements block a public vertical connection.",
+        "No public/staff through-route, egress, exterior access, food-court/tenant programme, or complete Houston system is commissioned."
+      ],
+      "sourceIds": [
+        "mp03-current",
+        "completion-register"
+      ]
+    },
+    {
+      "id": "MP04",
+      "title": "Combined Complex",
+      "status": "NOT SET OUT / CURRENT INTEGRATED FUNCTIONAL HOLD",
+      "summary": "MP04 is normalized architectural composition; MP05 owns current-world placement. MP04 owns no current-world cells and has no independent physical release.",
+      "built": [],
+      "uncommissioned": [
+        "No coherent B07/B08/B09/B03 visitor connection is set out or commissioned.",
+        "Any future physical connection must be an MP05-owned exact corridor/portal/receiver/rescue/endpoint package."
+      ],
+      "sourceIds": [
+        "mp04-authority",
+        "mp04-readme",
+        "completion-register"
+      ]
+    },
+    {
+      "id": "MP05",
+      "title": "Combined Zones",
+      "status": "BOUNDED MVP ACCEPTED — BROADER COMBINED ZONES PROGRAMME PARTIAL",
+      "summary": "The R07–R12 bounded MVP and R13 consolidated acceptance are retained as accepted. That acceptance is not the same as completing every deferred Combined Zones scope.",
+      "built": [
+        "Bounded architecture, Empty Eight capped retail/public-gallery work, passive boundaries, restricted circulation, B09 passive rail and the bounded maintenance shuttle are accepted only within their exact release boundaries.",
+        "Later B07 work includes finite containment and restricted lighting improvements; those releases preserve closed doors, caps, dry cores and their non-public classification."
+      ],
+      "uncommissioned": [
+        "B07 through-route, exterior receiver, egress, complete hydrology/utility system and whole-corridor programme remain uncommissioned.",
+        "P1-B12, C2, C3, eight future Empty Eight line stubs, operational smoke/ventilation, FIRE-EG-B, broader accessibility and active B09 transport remain deferred or fail-closed.",
+        "The bounded MVP must not be advertised as completion of the full Combined Zones masterplan."
+      ],
+      "sourceIds": [
+        "mp05-current",
+        "mp05-plan",
+        "completion-register"
+      ]
+    },
+    {
+      "id": "MP06",
+      "title": "Western Approach Road",
+      "status": "PARTIAL — BOUNDED AS-BUILT ELEVATED CROSSING",
+      "summary": "A pedestrian edge/lighting cadence, bounded grade repair and 149-cell elevated crossing are accepted without converting the wider road programme to complete.",
+      "built": [
+        "The elevated deck, parapet and lantern crossing passes exact forward/inverse and two-level route checks while preserving the lower road."
+      ],
+      "uncommissioned": [
+        "End-to-end road and endpoint continuity, broader drainage/crossing/lighting acceptance, regional interfaces and accessible entry remain open."
+      ],
+      "sourceIds": [
+        "mp06-current",
+        "mp06-plan",
+        "completion-register"
+      ]
+    },
+    {
+      "id": "MP07",
+      "title": "MainStreet America",
+      "status": "PARTIAL — BOUNDED FULL-TRACE CIRCULATION CORRECTION AS-BUILT",
+      "summary": "The accepted three-cell correction restores the tested 48-route each-way normal-walk trace with no sub-three-wide cross-section.",
+      "built": [
+        "The exact shared West Lane and Steward House interface cells are post-verified and reversible."
+      ],
+      "uncommissioned": [
+        "Whole-district condition recovery, remaining seams/interiors and public/staff circulation beyond the exact trace remain open."
+      ],
+      "sourceIds": [
+        "mp07-current",
+        "completion-register"
+      ]
+    },
+    {
+      "id": "MP08",
+      "title": "Raven Rock",
+      "status": "PARTIAL / SAFETY HELD",
+      "summary": "Bounded shaft lighting/wayfinding, the dry-side C2 cap, restricted T1b signs and retained B2 fixtures exist; no accepted whole Raven Rock complex release exists.",
+      "built": [
+        "RR-Z5 remains a non-public two-wide service shaft; C2 remains capped; T1b wayfinding improves an already traversable restricted route."
+      ],
+      "uncommissioned": [
+        "Cavern C remains wet and closed; C1 remains uncontained/open to Caverns A/B without accepted bilateral ownership, doors, receivers or returns.",
+        "No complete bunker, public route, accessibility or egress programme is commissioned."
+      ],
+      "sourceIds": [
+        "mp08-current",
+        "completion-register"
+      ]
+    },
+    {
+      "id": "MP09",
+      "title": "Ravensgate",
+      "status": "PARTIAL — WEST-BANK BYPASS AS-BUILT",
+      "summary": "Existing local access/lighting work and the dry 274-cell Long Water west-bank bypass are accepted bounded releases.",
+      "built": [
+        "The bypass provides a two-wide, two-clear, maximum-one-rise Stoa-to-Tempietto connection while retaining the sealed 1,477-cell Long Water component unchanged."
+      ],
+      "uncommissioned": [
+        "The broader civic grounds, Library/Loggia/Garth/pavilion/Guild Hall interfaces and hydrologically complete public realm remain unfinished."
+      ],
+      "sourceIds": [
+        "mp09-current",
+        "completion-register"
+      ]
+    },
+    {
+      "id": "MP10",
+      "title": "Ravensreach",
+      "status": "PARTIAL — BOUNDED AS-BUILT CIVIC AND LIBRARY CIRCULATION REPAIRS",
+      "summary": "The cataloged civic baseline is supplemented by bounded circulation fixes. The exterior library switchback and retaining parapet, not the obsolete internal-tread proposal, are the current physical circulation resolution.",
+      "built": [
+        "Committee Room bridge, library headroom repair and bell/penthouse repair are accepted bounded work.",
+        "The exterior library annex changed 126 exact cells and its parapet added 119 supported guard cells; reconciliation retains all 245 targets and all 12 directed B1–B6 route checks."
+      ],
+      "uncommissioned": [
+        "These repairs do not complete the civic programme, certify public egress/accessibility, deploy citizen routing, or resolve the Library/Loggia, MainStreet and Town Expansion interfaces."
+      ],
+      "sourceIds": [
+        "mp10-plan",
+        "mp10-exterior-circulation",
+        "completion-register"
+      ]
+    },
+    {
+      "id": "MP11",
+      "title": "Town Expansion R1",
+      "status": "BASELINE BUILT — BOUNDED C01 RETURNS, CONTAINMENT AND SWITCHBACK WORK AS-BUILT; C01 NOT COMMISSIONED",
+      "summary": "The accepted R1 baseline remains protected. C01 has exact restricted/public-return structures, finite gravity containment, arrival cadence/support, the main switchback transition and upper-portion redesign, all bounded by explicit non-opening claims.",
+      "built": [
+        "The restricted 105-station return and separate 28-station five-wide/five-clear Return-02 are post-verified within their exact scopes.",
+        "Eight finite gravity-containment scopes, arrival support/cadence, the 30-station main switchback target union and 21-station upper-portion redesign are retained as bounded as-built construction."
+      ],
+      "uncommissioned": [
+        "No C01 public endpoint, egress, service, primary-route opening or whole C01/MP11 completion is commissioned.",
+        "Protected-route retirement/connection/gating and remaining endpoint/opening/transition contracts remain separate default-deny work."
+      ],
+      "sourceIds": [
+        "mp11-current",
+        "mp11-plan",
+        "mp11-switchback-release",
+        "completion-register"
+      ]
+    },
+    {
+      "id": "MP12",
+      "title": "Westlight District",
+      "status": "PARTIAL / LOCALLY SAFETY HELD OVER A CATALOGED INTERIOR BASELINE",
+      "summary": "The 14-structure, 34-room cataloged interior district remains a historical stewardship baseline; current programme closure is limited by access, waterfront and cross-scope interfaces.",
+      "built": [
+        "The source plan retains the cataloged structure/interior baseline and a current-source 87-station façade-safe southern alignment already present with zero route/support delta."
+      ],
+      "uncommissioned": [
+        "District-to-venue arrival, waterfront, transport, accessibility and Town Expansion interfaces are not commissioned by the catalog or zero-delta route finding."
+      ],
+      "sourceIds": [
+        "mp12-plan",
+        "completion-register"
+      ]
+    },
+    {
+      "id": "MP13",
+      "title": "Westlight Venue",
+      "status": "PARTIAL / SAFETY HELD",
+      "summary": "Bounded lighting cadence and a verified three-wide staff-only dogleg/ramp exist, but they are not venue egress or event operations.",
+      "built": [
+        "WLV-EGRESS-01, WLV-CONCOURSE-ARM-01 and WLV-CROWN-01 provide bounded lighting; WLV-STF-ACCESS-02 is staff-only circulation."
+      ],
+      "uncommissioned": [
+        "Public/staff separation, high-deck merge, 7×6 public egress/vomitories, lift analogue, two independent exits, accessibility and event-mode commissioning remain held."
+      ],
+      "sourceIds": [
+        "mp13-current",
+        "mp13-plan",
+        "completion-register"
+      ]
+    }
+  ],
+  "systems": [
+    {
+      "id": "SYS-01",
+      "title": "Citywide pedestrian continuity",
+      "status": "PARTIAL — CURRENT-SOURCE NETWORK GAP MAPPED",
+      "summary": "Finite MP07 and MP06 attachments exist, but no owned contiguous citywide corridor or reverse proof closes the measured gap.",
+      "built": [],
+      "uncommissioned": [
+        "No continuous classified citywide pedestrian network is commissioned."
+      ],
+      "sourceIds": [
+        "completion-register"
+      ]
+    },
+    {
+      "id": "SYS-02",
+      "title": "PassageWay / underground navigation",
+      "status": "PARTIAL — CURRENT NETWORK INTERFACES HELD",
+      "summary": "Local routes are preserved, while C1, B07 and B09 interfaces remain separately contained, unowned or functionally incomplete.",
+      "built": [],
+      "uncommissioned": [
+        "No complete classified underground public/staff/emergency network is commissioned."
+      ],
+      "sourceIds": [
+        "completion-register"
+      ]
+    },
+    {
+      "id": "SYS-03",
+      "title": "Cobalt passenger railway",
+      "status": "PARTIAL — CIVIL AND PASSIVE ASSETS ONLY; NO PASSENGER SERVICE",
+      "summary": "The system retains extensive sealed civil fabric, a bounded High-16 descending bypass and a 36-cell Westlight passive-rail slice; these are not an operating railway.",
+      "built": [
+        "The High-16 bypass is a guarded 46-station civil-only descent with exact rollback proof.",
+        "Cobalt S1 has two isolated 18-cell unpowered east-west rail slices with support, headroom, liner and diaphragm preservation evidence."
+      ],
+      "uncommissioned": [
+        "Normal-alignment and north-turn holds remain; platforms, public access, power, signals, rescue, vehicles, trials, station opening and passenger service remain uncommissioned."
+      ],
+      "sourceIds": [
+        "completion-register",
+        "cobalt-s1-passive-rail",
+        "high16-bypass"
+      ]
+    },
+    {
+      "id": "SYS-04",
+      "title": "Surface rail and protected promenade",
+      "status": "PARTIAL — FIRST EXTERIOR PROMENADE AND PASSIVE-RAIL MODULE AS-BUILT",
+      "summary": "AG-1, AG-2 and AG-3 form one bounded exterior module; the wider loop remains a source-bound concept survey.",
+      "built": [
+        "AG-1: 1,165 polished-deepslate pier/foundation/girder cells, post-verified as support only.",
+        "AG-2: 820-cell supported deck, five-wide protected walkway, parapets, separation wall, sealed service gallery and four lights, post-verified as civil promenade only.",
+        "AG-3: 128 cells comprising 32 unpowered rail cells, a 48-cell recovery path and 48-cell rail-side barrier, post-verified as passive only."
+      ],
+      "uncommissioned": [
+        "No turnout, detector, power, signal, station/platform, public opening, citywide route, vehicle trial or passenger service is commissioned.",
+        "AG-4 is a no-operation gap survey: x=336..351 retains 16 sand/water bearing failures and a saved item; x=352..367 is design input only and supplies no connection authority."
+      ],
+      "sourceIds": [
+        "mp05-current",
+        "completion-register",
+        "surface-rail-standard",
+        "surface-network-02"
+      ]
+    }
+  ],
+  "highlights": [
+    {
+      "id": "mp05-boundary",
+      "title": "MP05 is an accepted bounded MVP, not a completed masterplan",
+      "detail": "R07–R12/R13 evidence controls the accepted MVP. B07 through-route/receiver/egress, active systems and explicitly deferred interfaces remain outside that acceptance.",
+      "sourceIds": [
+        "mp05-current",
+        "completion-register"
+      ]
+    },
+    {
+      "id": "c01-boundary",
+      "title": "C01 contains real as-built route and containment work without a commissioned opening",
+      "detail": "Returns, finite liners, arrival work, the main switchback and upper-portion redesign are bounded construction. Public endpoint, egress, protected-route transition and whole-C01 commissioning remain separate.",
+      "sourceIds": [
+        "mp11-current",
+        "mp11-switchback-release"
+      ]
+    },
+    {
+      "id": "ag123-boundary",
+      "title": "AG-1/2/3 are one passive exterior module, not a railway service",
+      "detail": "Support, civil promenade and unpowered rail are post-verified only inside the first module. AG-4 and the wider loop have no continuity or operating authority.",
+      "sourceIds": [
+        "mp05-current",
+        "completion-register",
+        "surface-rail-standard",
+        "surface-network-02"
+      ]
+    },
+    {
+      "id": "mp10-exterior-current",
+      "title": "The MP10 exterior stair and parapet supersede the obsolete internal-tread premise",
+      "detail": "Current reconciliation retains 245 exact exterior targets and a bidirectional six-level route; it does not certify public egress, accessibility or civic-programme completion.",
+      "sourceIds": [
+        "mp10-exterior-circulation",
+        "completion-register"
+      ]
+    }
+  ],
+  "historicalReconciliation": {
+    "masterPlanRailwayReport": {
+      "classification": "DATED_ARCHIVE",
+      "asOf": "2026-08-22",
+      "statement": "The archived report and validation remain intact. Their historical hashes are not refreshed in place and their claims are not promoted as current.",
+      "archivedBindingCount": 29,
+      "trackedBindingCountEvaluated": 18,
+      "untrackedBindingCountNotEvaluated": 11,
+      "changedTrackedBindingCount": 9,
+      "changedUniqueDocumentCount": 5,
+      "changedTrackedBindings": [
+        {
+          "label": "MP01-evidence-1",
+          "path": "docs/masterplans/05-combined-zones/CURRENT-STATE.md",
+          "archivedSha256": "8804e6367795a6e5331c7a1e2bd7aefe3259f6d626151c45c439bd43ac88dd06",
+          "currentSha256": "cfdcbfb5d292113fd6fe6ddb40d90af8f98da700ca16ebdb187ed94a96a76f79"
+        },
+        {
+          "label": "MP02-evidence-1",
+          "path": "docs/masterplans/05-combined-zones/CURRENT-STATE.md",
+          "archivedSha256": "8804e6367795a6e5331c7a1e2bd7aefe3259f6d626151c45c439bd43ac88dd06",
+          "currentSha256": "cfdcbfb5d292113fd6fe6ddb40d90af8f98da700ca16ebdb187ed94a96a76f79"
+        },
+        {
+          "label": "MP03-evidence-1",
+          "path": "docs/masterplans/05-combined-zones/CURRENT-STATE.md",
+          "archivedSha256": "8804e6367795a6e5331c7a1e2bd7aefe3259f6d626151c45c439bd43ac88dd06",
+          "currentSha256": "cfdcbfb5d292113fd6fe6ddb40d90af8f98da700ca16ebdb187ed94a96a76f79"
+        },
+        {
+          "label": "MP04-evidence-1",
+          "path": "docs/masterplans/05-combined-zones/CURRENT-STATE.md",
+          "archivedSha256": "8804e6367795a6e5331c7a1e2bd7aefe3259f6d626151c45c439bd43ac88dd06",
+          "currentSha256": "cfdcbfb5d292113fd6fe6ddb40d90af8f98da700ca16ebdb187ed94a96a76f79"
+        },
+        {
+          "label": "MP05-source-plan",
+          "path": "docs/masterplans/05-combined-zones/CURRENT-STATE.md",
+          "archivedSha256": "8804e6367795a6e5331c7a1e2bd7aefe3259f6d626151c45c439bd43ac88dd06",
+          "currentSha256": "cfdcbfb5d292113fd6fe6ddb40d90af8f98da700ca16ebdb187ed94a96a76f79"
+        },
+        {
+          "label": "MP06-source-plan",
+          "path": "docs/masterplans/06-approach-road/MASTERPLAN.md",
+          "archivedSha256": "8c526ab10fc5f27f95db4cd1ef21b2b664e80155a3be9292cfedc27cf75b9635",
+          "currentSha256": "150175b6a3bf83166074e684fd06106a3a993a32ab313a9d98a1af96fdbee917"
+        },
+        {
+          "label": "MP10-source-plan",
+          "path": "docs/masterplans/10-ravensreach/MASTERPLAN.md",
+          "archivedSha256": "439aa4f6813e8891342eeb2b17408996a321ecf8139ec5d707f5b012c72db716",
+          "currentSha256": "f7788f343d84afff47fc16b6e27eff7ae23f18075c1ff47c09396970856bb509"
+        },
+        {
+          "label": "MP11-source-plan",
+          "path": "docs/masterplans/11-town-expansion-r1/MASTERPLAN.md",
+          "archivedSha256": "52f65f4f250a013f6d4577a1924cf366b1834db60199973a29e151f848d9d9a9",
+          "currentSha256": "5ede28d6ecd2d99a0382b8be83b43f69fa4b4ab0ac8e45e85f3ae1e309ff93b3"
+        },
+        {
+          "label": "MP13-source-plan",
+          "path": "docs/masterplans/13-westlight-venue/MASTERPLAN.md",
+          "archivedSha256": "94877d4c90c5cc11d9147949a5aa6fe9af7e1ce307a8afeb6f9df63042b92a02",
+          "currentSha256": "548190f6912d29c131f977da6b061e2f2c39078fffcacfcb71a54f12c68c0876"
+        }
+      ],
+      "sourceId": "railway-archive-validation"
+    },
+    "masterplanProgram": {
+      "classification": "DATED_ARCHIVE",
+      "asOf": "2026-08-05",
+      "statement": "The retrospective source-program presentation remains useful historical context, but later CURRENT-STATE ledgers, accepted release records and the completion-register supplement control this publication."
+    }
+  },
+  "safetyBoundary": [
+    "This publication hashes and copies committed documents; it performs no live-world survey or recertification.",
+    "As-built means only the exact scope supported by the cited source record. It does not inherit public access, egress, transport, utility or programme-completion claims.",
+    "Uncommissioned and default-deny boundaries remain controlling even when adjacent civil or passive construction is accepted.",
+    "The excluded phase1-r00 readiness audit is intentionally absent because it is not part of the tracked-source publication set."
+  ]
+}
