@@ -57,7 +57,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
           # The subtool has its own lockfile; without this the cache action
           # looks for one at the repo root and caches the wrong project.

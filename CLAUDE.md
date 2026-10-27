@@ -54,7 +54,7 @@ npm test
 Tests use Vitest. Configuration is in `vitest.config.ts`.
 
 Fresh-clone CI is `.github/workflows/ci.yml`. It builds the backend and runs
-the non-snapshot backend suites, dashboard lint/unit/build and Chromium E2E,
+the non-snapshot backend suites, dashboard lint/type/unit/build and Chromium E2E,
 World Builder pytest, and the World Showcase production build. This is not a
 live-Minecraft/RCON/paid-provider acceptance test.
 
@@ -104,7 +104,7 @@ broken checkout — do not debug it as one.
 
 ## Fleet Devtools (`tools/fleet-devtools/`)
 
-**mc-fleet-devtools** — a read-only Node 20 / TypeScript / ESM workbench that
+**mc-fleet-devtools** — a read-only Node 22 / TypeScript / ESM workbench that
 inspects *copied* Anvil snapshots and SQLite catalogs and emits HTML reports
 with hash-bound artifact manifests. REST API + dashboard on port **4310**, plus
 a CLI and a serialized job worker. Its own repo until 2026-08-07, merged via

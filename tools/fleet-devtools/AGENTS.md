@@ -97,7 +97,7 @@ of these doesn't trigger an expensive re-scan.
 
 ## Development conventions
 
-- TypeScript is strict, ESM, and targets Node 20.
+- TypeScript is strict, ESM, and targets Node 22.
 - Use explicit domain types and structured errors (`DevtoolsError`).
 - Keep route handlers thin and reusable behavior in packages.
 - Do not overwrite prior artifacts. Jobs always receive unique output folders.

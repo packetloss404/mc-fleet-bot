@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "workspaces": [
     "packages/*",
     "apps/*"
@@ -19,9 +22,6 @@
     "dev": "npm run build:packages && tsx apps/api/src/index.ts",
     "start": "node apps/api/dist/index.js",
     "cli": "npm run build:packages --silent && tsx apps/cli/src/index.ts"
-  },
-  "engines": {
-    "node": ">=20"
   },
   "dependencies": {
     "better-sqlite3": "^12.10.0",

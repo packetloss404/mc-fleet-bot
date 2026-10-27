@@ -149,7 +149,9 @@ all of them:
 npm run build
 npx vitest run src test/actions test/ai test/bot test/control test/integrations \
   test/personality test/security test/server test/social \
-  test/supplychain test/town test/util test/voyager test/worker test/world
+  test/supplychain test/survival test/town test/util test/voyager test/worker test/world
+npm run lint --prefix web
+npm run typecheck --prefix web
 npm test --prefix web
 npm run test:e2e --prefix web
 PLAYWRIGHT_LIVE_URL=http://127.0.0.1:3000 npm run test:e2e:live --prefix web
@@ -165,8 +167,8 @@ focused command from `AGENTS.md` on a host with its evidence, but do not
 interpret fresh-clone `ENOENT` failures as application regressions.
 
 `.github/workflows/ci.yml` runs the buildable fresh-clone contract: backend
-build and non-snapshot tests, dashboard lint/unit/build checks, real Chromium
-browser tests, World Builder pytest, and the World Showcase production build.
+build and non-snapshot tests, dashboard lint/type/unit/build checks, real
+Chromium browser tests, World Builder pytest, and the World Showcase production build.
 The browser suite drives the actual Next.js UI with deterministic intercepted
 API responses. `test:e2e:live` is a separate, read-only smoke journey through
 the deployed dashboard and real backend; it requires both services to be
@@ -402,7 +404,7 @@ The `tools/` directory at the repo root is the home for two things:
    family into a single parameterized skill.
 2. **`tools/fleet-devtools/`** — **mc-fleet-devtools**, a local, read-only
    workbench that inspects *copied* Anvil snapshots and SQLite catalogs and
-   turns them into durable, hash-bound reports. Node 20 / TypeScript / ESM,
+   turns them into durable, hash-bound reports. Node 22 / TypeScript / ESM,
    structured as its own npm workspace, with four surfaces over one service
    layer: a REST API on port **4310**, a dependency-free dashboard the API
    serves, a CLI, and a serialized job worker that deliberately runs one

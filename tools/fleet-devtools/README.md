@@ -58,7 +58,7 @@ copied snapshot instead.
 
 ## Requirements
 
-- Node.js 20 or newer
+- Node.js 22 or newer
 - npm
 - local access to copied Anvil region files
 - optional read-only SQLite catalogs
@@ -253,7 +253,7 @@ npm run check      # build + lint + test + format:check
 npm run dev        # start the API on port 4310
 ```
 
-TypeScript is strict, uses ESM, and targets Node.js 20. The project is
+TypeScript is strict, uses ESM, and targets Node.js 22. The project is
 formatted with Prettier and linted with `tsc --noEmit`. Tests build synthetic
 region files and SQLite databases in temporary directories; they must never
 access a live server.

@@ -15,9 +15,6 @@ const API_PROXY_TARGET =
   process.env.API_PROXY_TARGET || "http://127.0.0.1:3001";
 
 const nextConfig: NextConfig = {
-  // FIXME: ignoreBuildErrors masks ~58 `any` casts surfaced by strict type
-  // checks. Drop this once the offenders are typed properly.
-  typescript: { ignoreBuildErrors: true },
   allowedDevOrigins: ['10.80.13.15', '10.80.13.18'],
   turbopack: { root: process.cwd() },
 
