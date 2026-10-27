@@ -32,6 +32,8 @@ const MISSION_STATUS_COLORS: Record<string, string> = {
   cancelled: '#6B7280',
 };
 
+type RuntimeChainStage = ChainStage & { error?: string };
+
 function StatusBadge({ status, colors }: { status: string; colors: Record<string, string> }) {
   const color = colors[status] ?? '#6B7280';
   return (
@@ -123,10 +125,11 @@ function ChainCard({
       {/* Mini stage indicators */}
       <div className="flex items-center gap-1 mb-4">
         {chain.stages.map((stage, i) => {
-          const color = STAGE_STATUS_COLORS[stage.status] ?? '#6B7280';
+          const stageStatus = stage.status ?? 'pending';
+          const color = STAGE_STATUS_COLORS[stageStatus] ?? '#6B7280';
           return (
             <div
-              key={stage.id}
+              key={`${stage.botName}-${stage.task}-${i}`}
               className="flex-1 h-1.5 rounded-full transition-colors"
               style={{ backgroundColor: i === chain.currentStageIndex && chain.status === 'running' ? color : `${color}40` }}
             />
@@ -172,7 +175,7 @@ function ChainCard({
   );
 }
 
-function StageCard({ stage, index, isActive }: { stage: ChainStage; index: number; isActive: boolean }) {
+function StageCard({ stage, index, isActive }: { stage: RuntimeChainStage; index: number; isActive: boolean }) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -190,7 +193,7 @@ function StageCard({ stage, index, isActive }: { stage: ChainStage; index: numbe
       )}
       <div className="flex items-center justify-between mb-2">
         <span className="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider">Stage {index + 1}</span>
-        <StatusBadge status={stage.status} colors={STAGE_STATUS_COLORS} />
+        <StatusBadge status={stage.status ?? 'pending'} colors={STAGE_STATUS_COLORS} />
       </div>
       <p className="text-xs font-medium text-white mb-1">{stage.botName}</p>
       <p className="text-[11px] text-zinc-400 mb-3 line-clamp-2">{stage.task}</p>
@@ -636,7 +639,7 @@ function ChainDetail({
       <div className="bg-zinc-900/80 border border-zinc-800/60 rounded-xl p-6 overflow-x-auto">
         <div className="flex items-center gap-0 min-w-max">
           {chain.stages.map((stage, i) => (
-            <div key={stage.id} className="flex items-center">
+            <div key={`${stage.botName}-${stage.task}-${i}`} className="flex items-center">
               <StageCard
                 stage={stage}
                 index={i}

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import type { BotLiveData } from '@/lib/store';
-import { useRoleStore, useControlStore } from '@/lib/store';
+import { useRoleStore, useControlStore, useMissionStore } from '@/lib/store';
 import { getPersonalityColor, STATE_COLORS, STATE_LABELS, PERSONALITY_ICONS } from '@/lib/constants';
 
 function HealthBar({ value, max, color, label }: { value: number; max: number; color: string; label: string }) {
@@ -32,8 +32,14 @@ export function BotCard({ bot, index = 0 }: { bot: BotLiveData; index?: number }
   const isActive = !['IDLE', 'DISCONNECTED', 'SPAWNING'].includes(bot.state);
   const emoji = PERSONALITY_ICONS[bot.personality?.toLowerCase()] ?? '';
 
-  const override = useRoleStore((s) => s.getOverrideForBot(bot.name));
-  const blockedMission = useRoleStore((s) => s.getBlockedMissionForBot(bot.name));
+  const override = useRoleStore((s) => {
+    const normalizedName = bot.name.toLowerCase();
+    return s.overrides[normalizedName] ?? s.overrides[bot.name] ?? null;
+  });
+  const blockedMission = useMissionStore((s) => s.missions.find(
+    (mission) => mission.status === 'blocked'
+      && mission.assigneeIds.some((assignee) => assignee.toLowerCase() === bot.name.toLowerCase()),
+  ) ?? null);
   const selectedBotIds = useControlStore((s) => s.selectedBotIds);
   const toggleBotSelection = useControlStore((s) => s.toggleBotSelection);
   const isSelected = selectedBotIds.has(bot.name.toLowerCase());

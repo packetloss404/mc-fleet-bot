@@ -310,11 +310,27 @@ export function drawRouteStatusBar(
 //  MAP OVERLAY DRAWING (missions, squads)
 // ═══════════════════════════════════════
 
-import type { MapOverlayMission, MapOverlayZone, MapOverlaySquad } from '@/lib/api';
+import type { MissionRecord, SquadRecord } from '@/lib/api';
+
+type MapOverlayMission = MissionRecord & {
+  steps?: Array<{ payload: Record<string, unknown> }>;
+};
+
+interface MapOverlayZone {
+  id: string;
+  name: string;
+  mode: string;
+  shape: 'circle' | 'rectangle';
+  circle?: { x: number; z: number; radius: number };
+  rectangle?: { minX: number; minZ: number; maxX: number; maxZ: number };
+}
+
+type MapOverlaySquad = SquadRecord;
 
 const MISSION_STATUS_COLORS: Record<string, string> = {
-  pending: '#F59E0B',   // amber
-  active: '#10B981',    // green
+  draft: '#6B7280',     // gray
+  queued: '#F59E0B',    // amber
+  running: '#10B981',   // green
   paused: '#6B7280',    // gray
   completed: '#3B82F6', // blue
   failed: '#EF4444',    // red
@@ -330,8 +346,8 @@ function missionColor(status: string): string {
   return MISSION_STATUS_COLORS[status] ?? '#6B7280';
 }
 
-function squadColor(squad: MapOverlaySquad, index: number): string {
-  return (squad as any).color ?? SQUAD_COLORS[index % SQUAD_COLORS.length];
+function squadColor(index: number): string {
+  return SQUAD_COLORS[index % SQUAD_COLORS.length];
 }
 
 interface OverlayViewport {
@@ -359,9 +375,10 @@ function drawOverlayZone(
   ctx.save();
   ctx.globalAlpha = alpha;
 
-  if (zone.shape === 'rect' && zone.x1 != null && zone.z1 != null && zone.x2 != null && zone.z2 != null) {
-    const [sx1, sy1] = overlayWorldToScreen(vp, Math.min(zone.x1, zone.x2), Math.min(zone.z1, zone.z2));
-    const [sx2, sy2] = overlayWorldToScreen(vp, Math.max(zone.x1, zone.x2), Math.max(zone.z1, zone.z2));
+  if (zone.shape === 'rectangle' && zone.rectangle) {
+    const { minX, minZ, maxX, maxZ } = zone.rectangle;
+    const [sx1, sy1] = overlayWorldToScreen(vp, minX, minZ);
+    const [sx2, sy2] = overlayWorldToScreen(vp, maxX, maxZ);
     const w = sx2 - sx1;
     const h = sy2 - sy1;
 
@@ -374,9 +391,9 @@ function drawOverlayZone(
     ctx.setLineDash([6, 4]);
     ctx.strokeRect(sx1, sy1, w, h);
     ctx.setLineDash([]);
-  } else if (zone.shape === 'circle' && zone.cx != null && zone.cz != null && zone.radius != null) {
-    const [sx, sy] = overlayWorldToScreen(vp, zone.cx, zone.cz);
-    const sr = zone.radius * vp.scale;
+  } else if (zone.shape === 'circle' && zone.circle) {
+    const [sx, sy] = overlayWorldToScreen(vp, zone.circle.x, zone.circle.z);
+    const sr = zone.circle.radius * vp.scale;
 
     ctx.fillStyle = fillColor;
     ctx.beginPath();
@@ -397,11 +414,12 @@ function drawOverlayZone(
 }
 
 function overlayZoneLabelPos(vp: OverlayViewport, zone: MapOverlayZone): [number, number] | null {
-  if (zone.shape === 'rect' && zone.x1 != null && zone.z1 != null && zone.x2 != null && zone.z2 != null) {
-    return overlayWorldToScreen(vp, (zone.x1 + zone.x2) / 2, Math.min(zone.z1, zone.z2));
+  if (zone.shape === 'rectangle' && zone.rectangle) {
+    const { minX, minZ, maxX } = zone.rectangle;
+    return overlayWorldToScreen(vp, (minX + maxX) / 2, minZ);
   }
-  if (zone.shape === 'circle' && zone.cx != null && zone.cz != null && zone.radius != null) {
-    return overlayWorldToScreen(vp, zone.cx, zone.cz - zone.radius);
+  if (zone.shape === 'circle' && zone.circle) {
+    return overlayWorldToScreen(vp, zone.circle.x, zone.circle.z - zone.circle.radius);
   }
   return null;
 }
@@ -419,7 +437,8 @@ export function drawMissionOverlays(
   const zoneMap = new Map(zones.map((z) => [z.id, z]));
 
   for (const mission of missions) {
-    const zoneId = mission.params?.zoneId;
+    const zoneId = mission.steps?.map((step) => step.payload.zoneId)
+      .find((value): value is string => typeof value === 'string');
     const isPatrolType = mission.type === 'patrol_zone';
     if (!zoneId && !isPatrolType) continue;
 
@@ -439,7 +458,7 @@ export function drawMissionOverlays(
       ctx.shadowColor = '#000000';
       ctx.shadowBlur = 3;
 
-      const label = mission.label || mission.type.replace(/_/g, ' ');
+      const label = mission.title || mission.type.replace(/_/g, ' ');
       ctx.fillStyle = color;
       ctx.font = 'bold 10px system-ui, sans-serif';
       ctx.textAlign = 'center';
@@ -453,10 +472,10 @@ export function drawMissionOverlays(
       ctx.font = '8px system-ui, sans-serif';
       ctx.fillText(`[${mission.status.toUpperCase()}]`, lx, ly + 8);
 
-      if (mission.assignee) {
+      if (mission.assigneeIds.length > 0) {
         ctx.fillStyle = '#ffffffd0';
         ctx.font = '9px system-ui, sans-serif';
-        ctx.fillText(mission.assignee, lx, ly + 20);
+        ctx.fillText(mission.assigneeIds.join(', '), lx, ly + 20);
       }
 
       ctx.restore();
@@ -476,10 +495,10 @@ export function drawSquadOverlays(
 ) {
   for (let i = 0; i < squads.length; i++) {
     const squad = squads[i];
-    if (!squad.members || squad.members.length === 0) continue;
+    if (squad.botNames.length === 0) continue;
 
     const points: { wx: number; wz: number; sx: number; sy: number }[] = [];
-    for (const member of squad.members) {
+    for (const member of squad.botNames) {
       const pos = botPositions.get(member) ?? botPositions.get(member.toLowerCase());
       if (pos) {
         const [sx, sy] = overlayWorldToScreen(vp, pos.x, pos.z);
@@ -489,7 +508,7 @@ export function drawSquadOverlays(
 
     if (points.length === 0) continue;
 
-    const color = squadColor(squad, i);
+    const color = squadColor(i);
     const padding = 20;
 
     if (points.length === 1) {
@@ -558,7 +577,7 @@ export function drawSquadOverlays(
 
     ctx.fillStyle = color + '90';
     ctx.font = '8px system-ui, sans-serif';
-    ctx.fillText(`${points.length}/${squad.members.length} online`, labelX, labelY + 10);
+    ctx.fillText(`${points.length}/${squad.botNames.length} online`, labelX, labelY + 10);
 
     ctx.restore();
   }

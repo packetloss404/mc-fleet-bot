@@ -6,14 +6,65 @@ import type { Marker, Zone, Route, Mission, Squad } from './api';
 // Zone type -> color mapping
 const ZONE_COLORS: Record<string, string> = {
   guard: '#4A90D9',
+  avoid: '#EF4444',
   build: '#1ABC9C',
   farm: '#F39C12',
-  restricted: '#EF4444',
+  gather: '#84CC16',
   custom: '#8B5CF6',
 };
 
 const ROUTE_DEFAULT_COLOR = '#F59E0B';
 const MARKER_DEFAULT_COLOR = '#FFFFFF';
+const MARKER_KIND_COLORS: Record<string, string> = {
+  base: '#10B981',
+  storage: '#F59E0B',
+  'build-site': '#3B82F6',
+  mine: '#A1A1AA',
+  village: '#EC4899',
+  custom: '#8B5CF6',
+};
+const SQUAD_COLORS = ['#8B5CF6', '#EC4899', '#F97316', '#06B6D4', '#84CC16', '#F43F5E'];
+
+type DrawableZone =
+  | { shape: 'rectangle'; minX: number; minZ: number; maxX: number; maxZ: number }
+  | { shape: 'circle'; x: number; z: number; radius: number };
+
+function zoneGeometry(zone: Zone): DrawableZone | null {
+  if (zone.shape === 'rectangle' && zone.rectangle) {
+    return { shape: 'rectangle', ...zone.rectangle };
+  }
+  if (zone.shape === 'circle' && zone.circle) {
+    return { shape: 'circle', ...zone.circle };
+  }
+  return null;
+}
+
+export function getMarkerColor(marker: Marker): string {
+  return MARKER_KIND_COLORS[marker.kind] || MARKER_DEFAULT_COLOR;
+}
+
+export function getZoneColor(zone: Zone): string {
+  return ZONE_COLORS[zone.mode] || '#6B7280';
+}
+
+export function getZoneCenter(zone: Zone): { x: number; z: number } | null {
+  const geometry = zoneGeometry(zone);
+  if (!geometry) return null;
+  return geometry.shape === 'circle'
+    ? { x: geometry.x, z: geometry.z }
+    : { x: (geometry.minX + geometry.maxX) / 2, z: (geometry.minZ + geometry.maxZ) / 2 };
+}
+
+export function resolveRouteWaypoints(
+  route: Route,
+  markers: Marker[],
+): Marker['position'][] {
+  const markersById = new Map(markers.map((marker) => [marker.id, marker.position]));
+  return route.waypointIds.flatMap((id) => {
+    const position = markersById.get(id);
+    return position ? [position] : [];
+  });
+}
 
 // ── Coordinate transforms ──
 
@@ -56,9 +107,9 @@ export function drawMarkers(
   offset: { x: number; y: number },
 ) {
   for (const marker of markers) {
-    const { sx, sy } = worldToScreen(marker.x, marker.z, cx, cy, scale, offset);
+    const { sx, sy } = worldToScreen(marker.position.x, marker.position.z, cx, cy, scale, offset);
 
-    const color = marker.color || MARKER_DEFAULT_COLOR;
+    const color = getMarkerColor(marker);
 
     // Diamond shape
     ctx.save();
@@ -96,19 +147,37 @@ export function drawZones(
   offset: { x: number; y: number },
 ) {
   for (const zone of zones) {
-    const color = zone.color || ZONE_COLORS[zone.type] || '#6B7280';
-    const tl = worldToScreen(zone.x1, zone.z1, cx, cy, scale, offset);
-    const br = worldToScreen(zone.x2, zone.z2, cx, cy, scale, offset);
-    const w = br.sx - tl.sx;
-    const h = br.sy - tl.sy;
+    const geometry = zoneGeometry(zone);
+    if (!geometry) continue;
+    const color = getZoneColor(zone);
 
     ctx.save();
     ctx.fillStyle = color + '18';
-    ctx.fillRect(tl.sx, tl.sy, w, h);
     ctx.strokeStyle = color + '80';
     ctx.lineWidth = 1.5;
     ctx.setLineDash([6, 3]);
-    ctx.strokeRect(tl.sx, tl.sy, w, h);
+
+    let labelX: number;
+    let labelY: number;
+    if (geometry.shape === 'rectangle') {
+      const tl = worldToScreen(geometry.minX, geometry.minZ, cx, cy, scale, offset);
+      const br = worldToScreen(geometry.maxX, geometry.maxZ, cx, cy, scale, offset);
+      const w = br.sx - tl.sx;
+      const h = br.sy - tl.sy;
+      ctx.fillRect(tl.sx, tl.sy, w, h);
+      ctx.strokeRect(tl.sx, tl.sy, w, h);
+      labelX = tl.sx + 4;
+      labelY = tl.sy + 13;
+    } else {
+      const center = worldToScreen(geometry.x, geometry.z, cx, cy, scale, offset);
+      const radius = geometry.radius * scale;
+      ctx.beginPath();
+      ctx.arc(center.sx, center.sy, radius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      labelX = center.sx - radius + 4;
+      labelY = center.sy - radius + 13;
+    }
     ctx.setLineDash([]);
 
     // Zone label
@@ -117,10 +186,10 @@ export function drawZones(
     ctx.textAlign = 'left';
     ctx.shadowColor = '#000000';
     ctx.shadowBlur = 3;
-    ctx.fillText(zone.name, tl.sx + 4, tl.sy + 13);
+    ctx.fillText(zone.name, labelX, labelY);
     ctx.fillStyle = color + '80';
     ctx.font = '9px system-ui, sans-serif';
-    ctx.fillText(zone.type.toUpperCase(), tl.sx + 4, tl.sy + 24);
+    ctx.fillText(zone.mode.toUpperCase(), labelX, labelY + 11);
     ctx.restore();
   }
 }
@@ -134,20 +203,22 @@ export function drawRoutes(
   cy: number,
   scale: number,
   offset: { x: number; y: number },
+  markers: Marker[],
 ) {
   for (const route of routes) {
-    if (route.waypoints.length < 2) continue;
-    const color = route.color || ROUTE_DEFAULT_COLOR;
+    const waypoints = resolveRouteWaypoints(route, markers);
+    if (waypoints.length < 2) continue;
+    const color = ROUTE_DEFAULT_COLOR;
 
     ctx.save();
     ctx.strokeStyle = color + 'B0';
     ctx.lineWidth = 2;
     ctx.setLineDash([4, 4]);
     ctx.beginPath();
-    const first = worldToScreen(route.waypoints[0].x, route.waypoints[0].z, cx, cy, scale, offset);
+    const first = worldToScreen(waypoints[0].x, waypoints[0].z, cx, cy, scale, offset);
     ctx.moveTo(first.sx, first.sy);
-    for (let i = 1; i < route.waypoints.length; i++) {
-      const pt = worldToScreen(route.waypoints[i].x, route.waypoints[i].z, cx, cy, scale, offset);
+    for (let i = 1; i < waypoints.length; i++) {
+      const pt = worldToScreen(waypoints[i].x, waypoints[i].z, cx, cy, scale, offset);
       ctx.lineTo(pt.sx, pt.sy);
     }
     if (route.loop) {
@@ -157,8 +228,8 @@ export function drawRoutes(
     ctx.setLineDash([]);
 
     // Waypoint dots
-    for (let i = 0; i < route.waypoints.length; i++) {
-      const pt = worldToScreen(route.waypoints[i].x, route.waypoints[i].z, cx, cy, scale, offset);
+    for (let i = 0; i < waypoints.length; i++) {
+      const pt = worldToScreen(waypoints[i].x, waypoints[i].z, cx, cy, scale, offset);
       ctx.beginPath();
       ctx.arc(pt.sx, pt.sy, 3, 0, Math.PI * 2);
       ctx.fillStyle = i === 0 ? '#10B981' : color;
@@ -307,7 +378,7 @@ export function drawMissionOverlays(
       ctx.textAlign = 'center';
       ctx.shadowColor = '#000000';
       ctx.shadowBlur = 2;
-      ctx.fillText(mission.name || mission.type, sx, sy + 22);
+      ctx.fillText(mission.title || mission.type, sx, sy + 22);
       ctx.restore();
     }
   }
@@ -324,9 +395,10 @@ export function drawSquadOverlays(
   offset: { x: number; y: number },
   botPositions: Map<string, { x: number; z: number }>,
 ) {
-  for (const squad of squads) {
+  for (let squadIndex = 0; squadIndex < squads.length; squadIndex++) {
+    const squad = squads[squadIndex];
     const positions: { sx: number; sy: number }[] = [];
-    for (const member of squad.members) {
+    for (const member of squad.botNames) {
       const pos = botPositions.get(member.toLowerCase());
       if (pos) {
         positions.push(worldToScreen(pos.x, pos.z, cx, cy, scale, offset));
@@ -334,7 +406,7 @@ export function drawSquadOverlays(
     }
     if (positions.length < 2) continue;
 
-    const color = squad.color || '#60A5FA';
+    const color = SQUAD_COLORS[squadIndex % SQUAD_COLORS.length];
 
     // Draw connecting lines between squad members
     ctx.save();

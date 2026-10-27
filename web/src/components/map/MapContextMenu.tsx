@@ -4,7 +4,20 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useMapOverlayStore } from '@/lib/mapStore';
 import { useBotStore } from '@/lib/store';
-import { api } from '@/lib/api';
+import { api, type Zone } from '@/lib/api';
+
+function zoneContains(zone: Zone, x: number, z: number): boolean {
+  if (zone.shape === 'rectangle' && zone.rectangle) {
+    const { minX, minZ, maxX, maxZ } = zone.rectangle;
+    return x >= minX && x <= maxX && z >= minZ && z <= maxZ;
+  }
+  if (zone.shape === 'circle' && zone.circle) {
+    const dx = x - zone.circle.x;
+    const dz = z - zone.circle.z;
+    return dx * dx + dz * dz <= zone.circle.radius * zone.circle.radius;
+  }
+  return false;
+}
 
 interface Props {
   /** Lowercase bot names currently marquee-selected on the map. */
@@ -37,9 +50,7 @@ export function MapContextMenu({
   const onlineBots = bots.filter((b) => b.state !== 'DISCONNECTED');
 
   // Find zone at the right-click point
-  const zoneAtPoint = zones.find(
-    (z) => worldX >= z.x1 && worldX <= z.x2 && worldZ >= z.z1 && worldZ <= z.z2,
-  );
+  const zoneAtPoint = zones.find((zone) => zoneContains(zone, worldX, worldZ));
 
   // Find nearest route
   const nearestRoute = routes.length > 0 ? routes[0] : null;
@@ -134,9 +145,9 @@ export function MapContextMenu({
     try {
       const result = await api.createMarker({
         name: name.trim(),
-        x: Math.round(worldX),
-        y: 64,
-        z: Math.round(worldZ),
+        kind: 'custom',
+        position: { x: Math.round(worldX), y: 64, z: Math.round(worldZ) },
+        tags: [],
       });
       addMarker(result.marker);
       closeContextMenu();
@@ -169,18 +180,12 @@ export function MapContextMenu({
       closeContextMenu();
       return;
     }
-    // The API doesn't expose a marker-update endpoint as of this turn, so we
-    // delete-and-recreate to keep behaviour predictable.
     (async () => {
       try {
-        await api.deleteMarker(targetMarker.id);
-        removeMarker(targetMarker.id);
-        const result = await api.createMarker({
+        const result = await api.updateMarker(targetMarker.id, {
           name: name.trim(),
-          x: targetMarker.x,
-          y: targetMarker.y,
-          z: targetMarker.z,
         });
+        removeMarker(targetMarker.id);
         addMarker(result.marker);
         closeContextMenu();
       } catch {

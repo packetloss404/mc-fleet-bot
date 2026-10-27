@@ -2,11 +2,65 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { api, MetricsData, CivilizationMetricsData } from '@/lib/api';
+import { api, CivilizationMetricsData } from '@/lib/api';
 import { PageHeader } from '@/components/PageHeader';
 import { STATE_COLORS, STATE_LABELS, PERSONALITY_COLORS } from '@/lib/constants';
 
 const REFRESH_INTERVAL = 30_000;
+
+/** Exact payload emitted by src/server/routes/metricsRoutes.ts. */
+interface DashboardMetricsData {
+  timestamp: number;
+  bots: {
+    total: number;
+    alive: number;
+    idle: number;
+    working: number;
+    stateBreakdown: Record<string, number>;
+    personalityBreakdown: Record<string, number>;
+    healthStats: Array<{ name: string; health: number; food: number }>;
+  };
+  tasks: {
+    totalCompleted: number;
+    totalFailed: number;
+    totalQueued: number;
+    activeTasks: number;
+    successRate: number;
+    botTaskStats: Array<{
+      name: string;
+      personality: string;
+      completed: number;
+      failed: number;
+      queued: number;
+      currentTask: string | null;
+    }>;
+  };
+  commands: {
+    total: number;
+    succeeded: number;
+    failed: number;
+    pending: number;
+    cancelled: number;
+    successRate: number;
+  };
+  missions: {
+    total: number;
+    active: number;
+    completed: number;
+    failed: number;
+    paused: number;
+    completionRate: number;
+    byType: Record<string, number>;
+  };
+  commander: { parseCount: number; avgConfidence: number; failureRate: number };
+  fleet: {
+    botsByRole: Record<string, number>;
+    overrideCount: number;
+    activeSquads: number;
+    totalSquads: number;
+  };
+  skills: { count: number };
+}
 
 /* ── Reusable metric card ── */
 function MetricCard({
@@ -293,7 +347,7 @@ function CivilizationCard({ civ }: { civ: CivilizationMetricsData | null }) {
 }
 
 export default function MetricsPage() {
-  const [metrics, setMetrics] = useState<MetricsData | null>(null);
+  const [metrics, setMetrics] = useState<DashboardMetricsData | null>(null);
   const [civ, setCiv] = useState<CivilizationMetricsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [lastRefresh, setLastRefresh] = useState<number>(0);
@@ -304,7 +358,7 @@ export default function MetricsPage() {
         api.getMetrics(),
         api.getCivilizationMetrics(),
       ]);
-      setMetrics(data);
+      setMetrics(data as DashboardMetricsData);
       setCiv(civData);
       setLastRefresh(Date.now());
     } catch {

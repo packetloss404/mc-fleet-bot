@@ -21,6 +21,46 @@ interface Props {
   onCenterOn: (x: number, z: number) => void;
 }
 
+const MARKER_KIND_COLORS: Record<string, string> = {
+  base: '#10B981',
+  storage: '#F59E0B',
+  'build-site': '#3B82F6',
+  mine: '#A1A1AA',
+  village: '#EC4899',
+  custom: '#8B5CF6',
+};
+
+function markerColor(marker: Marker): string {
+  return MARKER_KIND_COLORS[marker.kind];
+}
+
+function zoneDetails(zone: Zone): {
+  center: { x: number; z: number };
+  mode: string;
+  shape: string;
+} {
+  if (zone.shape === 'circle' && zone.circle) {
+    return { center: zone.circle, mode: zone.mode, shape: 'circle' };
+  }
+  if (zone.shape === 'rectangle' && zone.rectangle) {
+    const { minX, minZ, maxX, maxZ } = zone.rectangle;
+    return {
+      center: { x: (minX + maxX) / 2, z: (minZ + maxZ) / 2 },
+      mode: zone.mode,
+      shape: 'rectangle',
+    };
+  }
+  return { center: { x: 0, z: 0 }, mode: zone.mode, shape: zone.shape };
+}
+
+function routeWaypoints(route: Route, markers: Marker[]): Array<{ x: number; z: number }> {
+  const markersById = new Map(markers.map((marker) => [marker.id, marker]));
+  return route.waypointIds.flatMap((id) => {
+    const marker = markersById.get(id);
+    return marker ? [marker.position] : [];
+  });
+}
+
 export function MapEntitySidebar({ entities, selectedEntity, onSelectEntity, onCenterOn }: Props) {
   const { toast } = useToast();
   const [tab, setTab] = useState<'entities' | 'markers' | 'zones' | 'routes'>('entities');
@@ -34,7 +74,12 @@ export function MapEntitySidebar({ entities, selectedEntity, onSelectEntity, onC
     } else if (tab === 'zones') {
       api.getZones().then((r) => setZones(r.zones)).catch(() => {});
     } else if (tab === 'routes') {
-      api.getRoutes().then((r) => setRoutes(r.routes)).catch(() => {});
+      Promise.all([api.getRoutes(), api.getMarkers()])
+        .then(([routeResult, markerResult]) => {
+          setRoutes(routeResult.routes);
+          setMarkers(markerResult.markers);
+        })
+        .catch(() => {});
     }
   }, [tab]);
 
@@ -121,13 +166,13 @@ export function MapEntitySidebar({ entities, selectedEntity, onSelectEntity, onC
                   className="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-800/50 group"
                 >
                   <button
-                    onClick={() => onCenterOn(m.x, m.z)}
+                    onClick={() => onCenterOn(m.position.x, m.position.z)}
                     className="flex items-center gap-2 flex-1 min-w-0 text-left"
                   >
-                    <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: m.color || '#F59E0B' }} />
+                    <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: markerColor(m) }} />
                     <div className="min-w-0 flex-1">
                       <p className="text-[11px] font-medium text-zinc-300 truncate">{m.name}</p>
-                      <p className="text-[9px] text-zinc-600 font-mono">{Math.round(m.x)}, {Math.round(m.z)}</p>
+                      <p className="text-[9px] text-zinc-600 font-mono">{Math.round(m.position.x)}, {Math.round(m.position.z)}</p>
                     </div>
                   </button>
                   <button
@@ -149,19 +194,21 @@ export function MapEntitySidebar({ entities, selectedEntity, onSelectEntity, onC
               Zones ({zones.length})
             </p>
             <div className="space-y-0.5">
-              {zones.map((z) => (
+              {zones.map((z) => {
+                const details = zoneDetails(z);
+                return (
                 <div
                   key={z.id}
                   className="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-800/50 group"
                 >
                   <button
-                    onClick={() => onCenterOn(z.center.x, z.center.z)}
+                    onClick={() => onCenterOn(details.center.x, details.center.z)}
                     className="flex items-center gap-2 flex-1 min-w-0 text-left"
                   >
-                    <span className="w-2.5 h-2.5 rounded-sm shrink-0" style={{ backgroundColor: z.color || '#3B82F6' }} />
+                    <span className="w-2.5 h-2.5 rounded-sm shrink-0 bg-blue-500" />
                     <div className="min-w-0 flex-1">
                       <p className="text-[11px] font-medium text-zinc-300 truncate">{z.name}</p>
-                      <p className="text-[9px] text-zinc-600">{z.type} ({z.shape})</p>
+                      <p className="text-[9px] text-zinc-600">{details.mode} ({details.shape})</p>
                     </div>
                   </button>
                   <button
@@ -171,7 +218,8 @@ export function MapEntitySidebar({ entities, selectedEntity, onSelectEntity, onC
                     x
                   </button>
                 </div>
-              ))}
+                );
+              })}
               {zones.length === 0 && <p className="text-[11px] text-zinc-600 text-center py-4">No zones</p>}
             </div>
           </>
@@ -183,13 +231,15 @@ export function MapEntitySidebar({ entities, selectedEntity, onSelectEntity, onC
               Routes ({routes.length})
             </p>
             <div className="space-y-0.5">
-              {routes.map((r) => (
+              {routes.map((r) => {
+                const waypoints = routeWaypoints(r, markers);
+                return (
                 <div
                   key={r.id}
                   className="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-800/50 group"
                 >
                   <button
-                    onClick={() => r.waypoints[0] && onCenterOn(r.waypoints[0].x, r.waypoints[0].z)}
+                    onClick={() => waypoints[0] && onCenterOn(waypoints[0].x, waypoints[0].z)}
                     className="flex items-center gap-2 flex-1 min-w-0 text-left"
                   >
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" strokeWidth="2" className="shrink-0">
@@ -197,7 +247,7 @@ export function MapEntitySidebar({ entities, selectedEntity, onSelectEntity, onC
                     </svg>
                     <div className="min-w-0 flex-1">
                       <p className="text-[11px] font-medium text-zinc-300 truncate">{r.name}</p>
-                      <p className="text-[9px] text-zinc-600">{r.waypoints.length} pts {r.loop ? '(loop)' : ''}</p>
+                      <p className="text-[9px] text-zinc-600">{waypoints.length} pts {r.loop ? '(loop)' : ''}</p>
                     </div>
                   </button>
                   <button
@@ -207,7 +257,8 @@ export function MapEntitySidebar({ entities, selectedEntity, onSelectEntity, onC
                     x
                   </button>
                 </div>
-              ))}
+                );
+              })}
               {routes.length === 0 && <p className="text-[11px] text-zinc-600 text-center py-4">No routes</p>}
             </div>
           </>

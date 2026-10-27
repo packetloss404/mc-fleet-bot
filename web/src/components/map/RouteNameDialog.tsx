@@ -2,13 +2,14 @@
 
 import { useState } from 'react';
 import { useMapOverlayStore } from '@/lib/mapStore';
-import { api } from '@/lib/api';
+import { api, type Marker } from '@/lib/api';
 
 export function RouteNameDialog() {
   const show = useMapOverlayStore((s) => s.showRouteDialog);
   const waypoints = useMapOverlayStore((s) => s.routeWaypoints);
   const closeRouteDialog = useMapOverlayStore((s) => s.closeRouteDialog);
   const clearRouteWaypoints = useMapOverlayStore((s) => s.clearRouteWaypoints);
+  const addMarker = useMapOverlayStore((s) => s.addMarker);
   const addRoute = useMapOverlayStore((s) => s.addRoute);
   const setActiveTool = useMapOverlayStore((s) => s.setActiveTool);
 
@@ -26,20 +27,38 @@ export function RouteNameDialog() {
     }
     setSaving(true);
     setError('');
+    const createdMarkerIds: string[] = [];
+    const createdMarkers: Marker[] = [];
     try {
+      const waypointIds: string[] = [];
+      for (let index = 0; index < waypoints.length; index++) {
+        const waypoint = waypoints[index];
+        const markerResult = await api.createMarker({
+          name: `${name.trim()} waypoint ${index + 1}`,
+          kind: 'custom',
+          position: waypoint,
+          tags: ['route-waypoint'],
+          notes: `Waypoint ${index + 1} for route ${name.trim()}`,
+        });
+        createdMarkerIds.push(markerResult.marker.id);
+        createdMarkers.push(markerResult.marker);
+        waypointIds.push(markerResult.marker.id);
+      }
       const result = await api.createRoute({
         name: name.trim(),
-        waypoints: [...waypoints],
+        waypointIds,
         loop,
       });
+      createdMarkers.forEach(addMarker);
       addRoute(result.route);
       setName('');
       setLoop(false);
       closeRouteDialog();
       clearRouteWaypoints();
       setActiveTool('select');
-    } catch (e: any) {
-      setError(e.message || 'Failed to create route');
+    } catch (error: unknown) {
+      await Promise.allSettled(createdMarkerIds.map((id) => api.deleteMarker(id)));
+      setError(error instanceof Error ? error.message : 'Failed to create route');
     }
     setSaving(false);
   };

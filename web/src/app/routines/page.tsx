@@ -39,10 +39,11 @@ function StepRow({
   onUpdate: (index: number, step: RoutineStep) => void;
   onRemove: (index: number) => void;
 }) {
+  const data = step.data ?? {};
   const summary =
     step.type === 'command'
-      ? `${step.data.command ?? 'unknown'}${step.data.args ? ` (${JSON.stringify(step.data.args)})` : ''}`
-      : step.data.description ?? 'No description';
+      ? `${data.command ?? 'unknown'}${data.args ? ` (${JSON.stringify(data.args)})` : ''}`
+      : data.description ?? 'No description';
 
   return (
     <div className="flex items-center gap-3 px-4 py-2.5 hover:bg-zinc-800/20 transition-colors group">

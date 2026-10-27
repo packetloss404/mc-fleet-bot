@@ -5,7 +5,7 @@ import { useMapOverlayStore } from '@/lib/mapStore';
 import { api } from '@/lib/api';
 import type { Zone } from '@/lib/api';
 
-const ZONE_TYPES: Zone['type'][] = ['guard', 'build', 'farm', 'restricted', 'custom'];
+const ZONE_MODES: Zone['mode'][] = ['guard', 'avoid', 'farm', 'build', 'gather', 'custom'];
 
 export function ZoneEditorDialog() {
   const show = useMapOverlayStore((s) => s.showZoneDialog);
@@ -15,7 +15,7 @@ export function ZoneEditorDialog() {
   const setActiveTool = useMapOverlayStore((s) => s.setActiveTool);
 
   const [name, setName] = useState('');
-  const [type, setType] = useState<Zone['type']>('guard');
+  const [mode, setMode] = useState<Zone['mode']>('guard');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
 
@@ -31,27 +31,29 @@ export function ZoneEditorDialog() {
     try {
       const result = await api.createZone({
         name: name.trim(),
-        type,
-        shape: 'rect',
-        x1: Math.min(coords.x1, coords.x2),
-        z1: Math.min(coords.z1, coords.z2),
-        x2: Math.max(coords.x1, coords.x2),
-        z2: Math.max(coords.z1, coords.z2),
+        mode,
+        shape: 'rectangle',
+        rectangle: {
+          minX: Math.min(coords.x1, coords.x2),
+          minZ: Math.min(coords.z1, coords.z2),
+          maxX: Math.max(coords.x1, coords.x2),
+          maxZ: Math.max(coords.z1, coords.z2),
+        },
       });
       addZone(result.zone);
       setName('');
-      setType('guard');
+      setMode('guard');
       closeZoneDialog();
       setActiveTool('select');
-    } catch (e: any) {
-      setError(e.message || 'Failed to create zone');
+    } catch (error: unknown) {
+      setError(error instanceof Error ? error.message : 'Failed to create zone');
     }
     setSaving(false);
   };
 
   const handleCancel = () => {
     setName('');
-    setType('guard');
+    setMode('guard');
     setError('');
     closeZoneDialog();
     setActiveTool('select');
@@ -78,17 +80,17 @@ export function ZoneEditorDialog() {
           <div>
             <label className="text-[10px] text-zinc-500 uppercase tracking-wider block mb-1">Type</label>
             <div className="flex flex-wrap gap-1.5">
-              {ZONE_TYPES.map((t) => (
+              {ZONE_MODES.map((zoneMode) => (
                 <button
-                  key={t}
-                  onClick={() => setType(t)}
+                  key={zoneMode}
+                  onClick={() => setMode(zoneMode)}
                   className={`px-2 py-1 rounded text-[10px] font-medium border transition-colors ${
-                    type === t
+                    mode === zoneMode
                       ? 'bg-violet-600/20 border-violet-500/40 text-violet-300'
                       : 'bg-zinc-800/60 border-zinc-700/30 text-zinc-500 hover:text-zinc-300'
                   }`}
                 >
-                  {t}
+                  {zoneMode}
                 </button>
               ))}
             </div>

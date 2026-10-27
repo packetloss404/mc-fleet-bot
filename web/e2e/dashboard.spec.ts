@@ -91,9 +91,14 @@ async function mockApi(page: Page) {
       voyager: { isRunning: true, isPaused: false, currentTask: 'Map ridge', completedTasks: ['Survey river'], failedTasks: [] },
     } });
     if (path === '/api/terrain') return json(route, { cx: 0, cz: 0, radius: 64, step: 1, size: 4, blocks: ['grass_block', 'stone', 'water', 'sand'] });
-    if (path === '/api/markers') return json(route, { markers: [{ id: 'home', name: 'Home', x: 0, y: 64, z: 0 }] });
+    if (path === '/api/markers') return json(route, { markers: [
+      { id: 'home', name: 'Home', kind: 'base', position: { x: 0, y: 64, z: 0 }, tags: [], createdAt: 1, updatedAt: 1 },
+      { id: 'ridge', name: 'Ridge', kind: 'custom', position: { x: 20, y: 70, z: -12 }, tags: ['route-waypoint'], createdAt: 1, updatedAt: 1 },
+    ] });
     if (path === '/api/zones') return json(route, { zones: [] });
-    if (path === '/api/routes') return json(route, { routes: [] });
+    if (path === '/api/routes') return json(route, { routes: [
+      { id: 'ridge-patrol', name: 'Ridge patrol', waypointIds: ['home', 'ridge'], loop: true },
+    ] });
     if (path === '/api/schematics') return json(route, { schematics: [
       { filename: 'fort.schem', size: { x: 10, y: 5, z: 20 }, blockCount: 1000, estimated: true },
     ] });
@@ -198,6 +203,8 @@ test('world map renders terrain controls and fleet markers', async ({ page }) =>
   await expect(page.getByRole('heading', { name: 'World Map' })).toBeVisible();
   await expect(page.getByTitle('Reload terrain')).toBeVisible();
   await expect(page.getByText('Scout', { exact: true }).first()).toBeVisible();
+  await expect(page.getByText('Ridge patrol', { exact: true })).toBeVisible();
+  await expect(page.getByText('2 pts (loop)', { exact: true })).toBeVisible();
   await expect.poll(() => terrainRequests).toBeGreaterThan(0);
   const requestsBeforeReload = terrainRequests;
   await page.getByTitle('Reload terrain').click();

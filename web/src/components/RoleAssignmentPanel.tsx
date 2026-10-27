@@ -50,6 +50,12 @@ const INTERRUPT_POLICIES = [
   { value: 'never-while-critical' as const, label: 'Never while critical', description: 'Do not replace critical/running work automatically.' },
 ];
 
+type InterruptPolicy = (typeof INTERRUPT_POLICIES)[number]['value'];
+
+function isInterruptPolicy(value: string | undefined): value is InterruptPolicy {
+  return INTERRUPT_POLICIES.some((policy) => policy.value === value);
+}
+
 interface RoleAssignmentPanelProps {
   botName: string;
   existingAssignment?: RoleAssignmentRecord;
@@ -62,7 +68,11 @@ export function RoleAssignmentPanel({ botName, existingAssignment, onSave, onCan
   const [autonomy, setAutonomy] = useState<'manual' | 'assisted' | 'autonomous'>(existingAssignment?.autonomyLevel || 'assisted');
   const [homeMarker, setHomeMarker] = useState(existingAssignment?.homeMarkerId || '');
   const [allowedZones, setAllowedZones] = useState<string[]>(existingAssignment?.allowedZoneIds || []);
-  const [interruptPolicy, setInterruptPolicy] = useState<'always' | 'confirm-if-busy' | 'never-while-critical'>(existingAssignment?.interruptPolicy || 'confirm-if-busy');
+  const [interruptPolicy, setInterruptPolicy] = useState<InterruptPolicy>(
+    isInterruptPolicy(existingAssignment?.interruptPolicy)
+      ? existingAssignment.interruptPolicy
+      : 'confirm-if-busy',
+  );
   const [preferredMissionTypes, setPreferredMissionTypes] = useState<string>(existingAssignment?.preferredMissionTypes?.join(', ') || '');
   const [markers, setMarkers] = useState<MarkerRecord[]>([]);
   const [zones, setZones] = useState<ZoneRecord[]>([]);
