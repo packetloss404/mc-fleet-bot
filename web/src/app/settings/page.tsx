@@ -323,6 +323,11 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
   );
   const [routesBaseline, setRoutesBaseline] = useState<string>(stableStringify({}));
 
+  const showFeedback = useCallback((type: 'success' | 'error', message: string) => {
+    setFeedback({ type, message });
+    setTimeout(() => setFeedback(null), 4000);
+  }, []);
+
   const fetchSettings = useCallback(async () => {
     try {
       const base = process.env.NEXT_PUBLIC_API_URL || '';
@@ -347,7 +352,7 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [showFeedback]);
 
   const toggleAi = async () => {
     setTogglingAi(true);
@@ -442,11 +447,6 @@ function AiProviderTab({ onDirtyChange }: AiProviderTabProps) {
       if (lastDirtyRef.current) onDirtyChange?.(false);
     };
   }, [onDirtyChange]);
-
-  const showFeedback = (type: 'success' | 'error', message: string) => {
-    setFeedback({ type, message });
-    setTimeout(() => setFeedback(null), 4000);
-  };
 
   const addProvider = async () => {
     // Ollama runs locally and doesn't need an API key — everything else does.

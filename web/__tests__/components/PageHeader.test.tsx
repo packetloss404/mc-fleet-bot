@@ -43,6 +43,6 @@ describe('PageHeader', () => {
 
   it('renders without children', () => {
     render(<PageHeader title="Activity" />);
-    expect(screen.getByText('Activity')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Activity' })).toBeInTheDocument();
   });
 });

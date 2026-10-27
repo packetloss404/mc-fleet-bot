@@ -71,7 +71,7 @@ A caveat worth knowing before you pick a server: mineflayer can only join a serv
 - **LLM design → real schematic → multi-bot build** — An LLM designs a building, the design is validated into a `BlockPlan`, encoded into a genuine gzip **Sponge-v2 `.schem`** file, then constructed by a multi-bot build coordinator with auto-gather and site preparation
 - **Curated schematic library** — 100+ ready-to-place Sponge-v2 builds (houses, towers, statues, trees, vehicles, props) drop into `schematics/`; the coordinator selects a flat, footprint-clear site (`SiteSelector`) and places them via `snapToGround`/`clearSite`/`fillFoundation`
 - **Data-driven rail network** — A hub-and-spoke underground rail connector (`/api/tunnel`) reads live building footprints and carves a hub + powered-rail spokes with stair/ladder risers into each structure, with dry-run preview and post-build verify/repair
-- **Leashed caretaker-builder** — A `builder` bot pinned to a home anchor (`leash` in `config.yml`) runs a place-only caretaker curriculum: withdraw materials from a home chest and expand the structure it's parked on, instead of chasing roaming swarm tasks. `leash` ships empty — anchors are world-specific coordinates you set once you have a site
+- **Leashed caretaker-builder** — A `builder` bot with `caretaker: true` on its `leash` entry runs a place-only caretaker curriculum: withdraw materials from a home chest and expand the structure it's parked on, instead of chasing roaming swarm tasks. The checked-in deployment has five world-specific leash entries, all with caretaker mode disabled
 
 ### Operations
 - **Worker-thread-per-bot** — Each bot runs in its own `worker_threads` worker; shared singletons (affinity, culture, world model, comms, LLM) are reached through typed IPC proxy classes so cross-bot state stays authoritative on the main thread
@@ -82,6 +82,10 @@ A caveat worth knowing before you pick a server: mineflayer can only join a serv
 - **HTTP API** — 200+ REST routes plus socket.io events to spawn, drive, and observe everything programmatically
 
 ## Quick Start
+
+The backend and dashboard require Node.js 22 or newer (Mineflayer 4.35+ no
+longer supports Node 20). The standalone Fleet Devtools and World Showcase
+toolchains retain their own runtime requirements.
 
 ```bash
 # Clone the repo
@@ -135,6 +139,39 @@ The dashboard is a separate Next.js app in `web/`:
 ```bash
 cd web && npm install && npm run build && npm start   # serves on port 3000
 ```
+
+### Testing and CI
+
+The repository has several independent test surfaces; no single command covers
+all of them:
+
+```bash
+npm run build
+npx vitest run src test/actions test/ai test/bot test/control test/integrations \
+  test/personality test/security test/server test/social \
+  test/supplychain test/town test/util test/voyager test/worker test/world
+npm test --prefix web
+npm run test:e2e --prefix web
+PLAYWRIGHT_LIVE_URL=http://127.0.0.1:3000 npm run test:e2e:live --prefix web
+(cd world-builder && pytest)
+npm run build --prefix world-showcase
+```
+
+`npm test` at the repository root also discovers `test/build/` and operational
+cases under `test/scripts/`. Most of those are source-bound world-release
+regressions that require the operator's immutable `data/world-review/`
+snapshots; those snapshots are deliberately gitignored. Run the relevant
+focused command from `AGENTS.md` on a host with its evidence, but do not
+interpret fresh-clone `ENOENT` failures as application regressions.
+
+`.github/workflows/ci.yml` runs the buildable fresh-clone contract: backend
+build and non-snapshot tests, dashboard lint/unit/build checks, real Chromium
+browser tests, World Builder pytest, and the World Showcase production build.
+The browser suite drives the actual Next.js UI with deterministic intercepted
+API responses. `test:e2e:live` is a separate, read-only smoke journey through
+the deployed dashboard and real backend; it requires both services to be
+running and is intentionally not a hosted-CI gate. Neither suite claims to
+validate paid LLM calls, RCON mutations, or operator-only world snapshots.
 
 ### Running as a service
 
@@ -329,7 +366,7 @@ re-running on the same plan is a no-op, and re-running on a newer one applies
 only the phases that changed. It reads plans in place and never writes back to
 them.
 
-Shipped (v0.1.0, alpha): spec schema, validator, state store, phase-level diff,
+Shipped (v0.0.1, alpha): spec schema, validator, state store, phase-level diff,
 phase runner, two writers (JSON for testing, litematic per centerpiece), QA
 verifier, full CLI. Pending: amulet-core writer auto-activation, per-element
 geometry in phase generators (currently bounding-box style), and 5 of 10 visual
@@ -416,7 +453,7 @@ and `npm test` neither build nor test it. The root `package.json` declares no
 cd tools/fleet-devtools
 npm install                                                # its own tree; the root install does not reach here
 cp config/registry.example.yml config/registry.local.yml   # then edit — the connector root must be absolute
-npm run check                                              # lint + build + test + format:check
+npm run check                                              # build + lint + test + format:check
 npm run cli -- registry check
 npm run dev                                                # API + dashboard on http://<host>:4310
 ```
@@ -457,6 +494,12 @@ own `package.json`; it does not share the root build.
 | 02 | Underground Navigation | `/reports/underground-navigation` | Tunnels, bunkers, vaults, below-grade venues, and known ways in |
 | 03 | Masterplan Program | `/reports/masterplan-program` | The thirteen plans in `docs/masterplans/` — the 01–05 authority chain, the 06–13 area baselines, and the R00 gates |
 | 04 | POI Coordinate Directory | `/reports/poi-coordinate-directory` | Every cataloged place with copy-ready teleport coordinates |
+| 05 | The Empty Eight | `/reports/empty-eight` | Accepted South Galleria public route and retained boundaries |
+| 06 | Bunker Construction Status | `/reports/bunker-construction-status` | Evidence-separated current construction status |
+
+The Master Plan also links two supporting evidence views at
+`/reports/current-decision-maps` and `/reports/build-contract-maps`. They are
+not numbered report-library entries.
 
 Report 03 is transcribed from the committed plan evidence — the `build-info.json`
 files for plans 01–05 and the `MASTERPLAN.md` front matter for 06–13 — in
@@ -477,10 +520,17 @@ npm run dev            # local, port 3000
 npm run build && npm start
 ```
 
-Deployment is **Railway** (`railway.json`): Railpack builder, `npm run build`,
-`npm run start`, health check on `/api/health`, restart on failure with three
-retries. There is no Cloudflare Workers path — the OpenNext/wrangler build was
-removed in v1.1.0 as unused.
+The primary deployment is the IANLAN datacenter host at `10.80.13.16`. Deploy
+with `scripts/deploy_world_showcase_datacenter.sh`; it uses the pinned SSH key
+and host fingerprint in `.deploy-keys/`, synchronizes to
+`/srv/ianlan-nextgen`, installs and builds there, restarts
+`ianlan-nextgen.service`, and checks `/api/health` through Nginx. The Next.js
+process is loopback-only on port 3000; Nginx is the public port-80 listener.
+
+`railway.json` remains a rollback deployment definition. It is not the primary
+publication target, and it must not be destroyed unless a separate DNS/TLS
+cutover retires it. There is no Cloudflare Workers path — the
+OpenNext/wrangler build was removed in v1.1.0 as unused.
 
 ### Auth
 
@@ -538,7 +588,10 @@ Edit `config.yml` to customize:
 
 ### World-specific settings
 
-Four sections hold coordinates that only mean something in one world, so they ship **empty** and must be repopulated as you build:
+Four sections hold coordinates that only mean something in one world. The
+checked-in `config.yml` contains values for the reference deployment (eight
+protected zones, a mine site, five leashed bots, and a rescue home); replace or
+clear them before pointing the service at another world:
 
 | Setting | What it does when set |
 |---|---|
@@ -551,7 +604,7 @@ Four sections hold coordinates that only mean something in one world, so they sh
 
 ## Tech
 
-TypeScript on Node 20+ (tsx/tsc) · Mineflayer + pathfinder + collectblock + prismarine-schematic/viewer · Express 4 + socket.io · Drizzle ORM + better-sqlite3 · pino · Next.js 16 + React 19. LLMs: Anthropic, Gemini, OpenAI, MiniMax, Ollama, VoyageAI.
+TypeScript on Node 22+ (tsx/tsc) · Mineflayer + pathfinder + collectblock + prismarine-schematic/viewer · Express 4 + socket.io · Drizzle ORM + better-sqlite3 · pino · Next.js 16 + React 19. LLMs: Anthropic, Gemini, OpenAI, MiniMax, Ollama, VoyageAI.
 
 ## Contributing
 

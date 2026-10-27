@@ -53,6 +53,28 @@ describe('daily call counting', () => {
     b.shutdown();
   });
 
+  it('migrates the legacy split daily files without losing either cap', () => {
+    const dir = tmp();
+    const now = new Date();
+    const day = `${now.getFullYear()}-${`${now.getMonth() + 1}`.padStart(2, '0')}-${`${now.getDate()}`.padStart(2, '0')}`;
+    fs.writeFileSync(path.join(dir, 'token-spend-daily.json'), JSON.stringify({
+      [day]: { 'anthropic|codegen': 4.25 },
+    }));
+    fs.writeFileSync(path.join(dir, 'token-calls-daily.json'), JSON.stringify({
+      [day]: { anthropic: 7 },
+    }));
+
+    const ledger = new TokenLedger(dir);
+    expect(ledger.getSpendTodayUsd({ provider: 'anthropic' })).toBe(4.25);
+    expect(ledger.getCallsTodayCount('anthropic')).toBe(7);
+
+    ledger.record(row('gemini'));
+    const combined = JSON.parse(fs.readFileSync(path.join(dir, 'token-usage-daily.json'), 'utf-8'));
+    expect(combined.spend[day]['anthropic|codegen']).toBe(4.25);
+    expect(combined.calls[day]).toEqual({ anthropic: 7, gemini: 1 });
+    ledger.shutdown();
+  });
+
   it('bills unknown models at the conservative fallback rate, not $0', () => {
     const ledger = new TokenLedger(tmp());
     ledger.record({

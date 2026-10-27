@@ -91,6 +91,15 @@ export class TokenLedger {
    * test run writes into the REAL spend file and inflates the budget cap.
    */
   private readonly dataPath: string;
+  /**
+   * Crash-safe aggregate for both daily budget dimensions.  These used to be
+   * rewritten as two separate JSON files for every call.  Besides making a
+   * spend record and its call-count non-atomic, that doubled synchronous disk
+   * traffic on the request path (and made the ring-rotation regression flaky
+   * under normal CI parallelism).
+   */
+  private readonly dailyUsagePath: string;
+  /** Legacy paths retained for one-way migration on first startup. */
   private readonly dailyPath: string;
   private readonly callsPath: string;
   private records: TokenUsageRecord[] = [];
@@ -125,11 +134,11 @@ export class TokenLedger {
     }
     const dir = dataDir ?? path.join(process.cwd(), 'data');
     this.dataPath = path.join(dir, 'token-ledger.json');
+    this.dailyUsagePath = path.join(dir, 'token-usage-daily.json');
     this.dailyPath = path.join(dir, 'token-spend-daily.json');
     this.callsPath = path.join(dir, 'token-calls-daily.json');
     this.load();
-    this.loadDaily();
-    this.loadCalls();
+    this.loadDailyUsage();
   }
 
   /** Local calendar day key. Local, not UTC, so the cap resets at local midnight. */
@@ -199,7 +208,6 @@ export class TokenLedger {
       const bucket = (this.dailySpend[day] ??= {});
       bucket[key] = (bucket[key] ?? 0) + cost;
       this.pruneDaily();
-      this.saveDaily();
     }
 
     // Count EVERY call (success, failure, $0) toward the daily call tally —
@@ -209,8 +217,12 @@ export class TokenLedger {
       const bucket = (this.dailyCalls[day] ??= {});
       bucket[entry.provider] = (bucket[entry.provider] ?? 0) + 1;
       this.pruneCalls();
-      this.saveCalls();
     }
+
+    // Spend and call-count are one logical budget update. Persist them in a
+    // single atomic rename so a crash cannot leave the two caps disagreeing,
+    // and so the synchronous durability guarantee costs one write, not two.
+    this.saveDailyUsage();
 
     this.scheduleSave();
   }
@@ -324,25 +336,6 @@ export class TokenLedger {
     }
   }
 
-  private loadCalls(): void {
-    try {
-      if (fs.existsSync(this.callsPath)) {
-        const data = JSON.parse(fs.readFileSync(this.callsPath, 'utf-8'));
-        if (data && typeof data === 'object' && !Array.isArray(data)) this.dailyCalls = data;
-      }
-    } catch (err: any) {
-      logger.warn({ err: err.message }, 'Failed to load daily call counts, starting fresh');
-    }
-  }
-
-  private saveCalls(): void {
-    try {
-      atomicWriteJsonSync(this.callsPath, this.dailyCalls);
-    } catch (err: any) {
-      logger.warn({ err: err.message }, 'Failed to persist daily call counts');
-    }
-  }
-
   private pruneDaily(): void {
     const days = Object.keys(this.dailySpend).sort();
     while (days.length > DAILY_RETENTION_DAYS) {
@@ -351,22 +344,44 @@ export class TokenLedger {
     }
   }
 
-  private loadDaily(): void {
+  private loadDailyUsage(): void {
     try {
+      if (fs.existsSync(this.dailyUsagePath)) {
+        const data = JSON.parse(fs.readFileSync(this.dailyUsagePath, 'utf-8'));
+        if (data?.spend && typeof data.spend === 'object' && !Array.isArray(data.spend)) {
+          this.dailySpend = data.spend;
+        }
+        if (data?.calls && typeof data.calls === 'object' && !Array.isArray(data.calls)) {
+          this.dailyCalls = data.calls;
+        }
+        return;
+      }
+
+      // Backwards compatibility: installations upgrading from the split-file
+      // format retain every historical bucket. The next record writes the new
+      // combined snapshot; the old files are deliberately left untouched as a
+      // rollback aid.
       if (fs.existsSync(this.dailyPath)) {
-        const data = JSON.parse(fs.readFileSync(this.dailyPath, 'utf-8'));
-        if (data && typeof data === 'object' && !Array.isArray(data)) this.dailySpend = data;
+        const spend = JSON.parse(fs.readFileSync(this.dailyPath, 'utf-8'));
+        if (spend && typeof spend === 'object' && !Array.isArray(spend)) this.dailySpend = spend;
+      }
+      if (fs.existsSync(this.callsPath)) {
+        const calls = JSON.parse(fs.readFileSync(this.callsPath, 'utf-8'));
+        if (calls && typeof calls === 'object' && !Array.isArray(calls)) this.dailyCalls = calls;
       }
     } catch (err: any) {
-      logger.warn({ err: err.message }, 'Failed to load daily spend totals, starting fresh');
+      logger.warn({ err: err.message }, 'Failed to load daily usage totals, starting fresh');
     }
   }
 
-  private saveDaily(): void {
+  private saveDailyUsage(): void {
     try {
-      atomicWriteJsonSync(this.dailyPath, this.dailySpend);
+      atomicWriteJsonSync(this.dailyUsagePath, {
+        spend: this.dailySpend,
+        calls: this.dailyCalls,
+      });
     } catch (err: any) {
-      logger.warn({ err: err.message }, 'Failed to persist daily spend totals');
+      logger.warn({ err: err.message }, 'Failed to persist daily usage totals');
     }
   }
 

@@ -18,7 +18,7 @@ the phases that changed.
 > runtime, and the two are coupled only through the on-disk masterplan
 > format.
 
-## Status: alpha (v0.1.0)
+## Status: alpha (v0.0.1)
 
 Shipped: spec schema, validator, state store, phase-level diff, phase
 runner, two writers (JSON for testing, litematic per-centerpiece), QA

@@ -94,14 +94,14 @@ describe('BotCommandCenter', () => {
     const user = userEvent.setup();
     render(<BotCommandCenter {...defaultProps} />);
     await user.click(screen.getByText('Go To'));
-    expect(screen.getByPlaceholderText('x, z  or  x, y, z')).toBeInTheDocument();
+    expect(screen.getByRole('textbox')).toHaveAttribute('placeholder', 'x, z  or  x, y, z');
   });
 
   it('submits walk coordinates', async () => {
     const user = userEvent.setup();
     render(<BotCommandCenter {...defaultProps} />);
     await user.click(screen.getByText('Go To'));
-    const input = screen.getByPlaceholderText('x, z  or  x, y, z');
+    const input = screen.getByRole('textbox');
     await user.type(input, '100, 64, -200');
     await user.click(screen.getByText('Go'));
     expect(api.walkTo).toHaveBeenCalledWith('TestBot', 100, 64, -200);

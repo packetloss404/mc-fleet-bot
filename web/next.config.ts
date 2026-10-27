@@ -19,6 +19,7 @@ const nextConfig: NextConfig = {
   // checks. Drop this once the offenders are typed properly.
   typescript: { ignoreBuildErrors: true },
   allowedDevOrigins: ['10.80.13.15', '10.80.13.18'],
+  turbopack: { root: process.cwd() },
 
   skipTrailingSlashRedirect: true,
 

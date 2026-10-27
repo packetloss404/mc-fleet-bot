@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Voyager-style Mineflayer AI bot fleet sidecar for Minecraft (DyoCraft)",
   "main": "dist/index.js",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/index.ts",
@@ -22,7 +25,7 @@
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "drizzle-orm": "^0.45.2",
-    "express": "^4.21.0",
+    "express": "^4.22.3",
     "js-yaml": "^4.1.0",
     "minecraft-data": "^3.69.0",
     "mineflayer": "^4.35.0",
@@ -46,6 +49,6 @@
     "@types/node": "^22.0.0",
     "tsx": "^4.19.0",
     "typescript": "^5.7.0",
-    "vitest": "^3.1.1"
+    "vitest": "^4.1.12"
   }
 }
