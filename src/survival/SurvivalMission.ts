@@ -930,20 +930,49 @@ export class SurvivalMission {
     if (this.hazard(target)) throw new Error('Movement target is hazardous');
     if (bot.entity.position.distanceTo(target) <= range) return;
     const { goals } = require('mineflayer-pathfinder');
+    const pathfinder = bot.pathfinder;
+    const previousSearchRadius = pathfinder.searchRadius;
+    const previousThinkTimeout = pathfinder.thinkTimeout;
+
+    // Survival movement often targets resources that are visible but not
+    // reachable. Bound each A* search locally so an unreachable block cannot
+    // consume a worker's full heap; restore the fleet-wide civic routing
+    // settings when the action settles.
+    pathfinder.searchRadius = typeof previousSearchRadius === 'number' && previousSearchRadius >= 0
+      ? Math.min(previousSearchRadius, 16)
+      : 16;
+    pathfinder.thinkTimeout = typeof previousThinkTimeout === 'number'
+      ? Math.min(previousThinkTimeout, 2_000)
+      : 2_000;
+
     await new Promise<void>((resolve, reject) => {
+      let settled = false;
       const timeout = setTimeout(() => finish(new Error('Safe path timeout')), 30_000);
       const reached = () => finish();
       const denied = () => finish(new Error('Movement denied by the configured fleet boundary'));
       const cancelled = () => finish(new SurvivalMissionCancelled());
       const update = (result: any) => {
-        if (result?.status === 'noPath') finish(new Error('No safe path to target'));
+        if (result?.status === 'noPath' || result?.status === 'timeout') {
+          finish(new Error(result.status === 'timeout'
+            ? 'Safe path search exceeded its think timeout'
+            : 'No safe path to target'));
+        }
       };
       const finish = (error?: Error) => {
+        if (settled) return;
+        settled = true;
         clearTimeout(timeout);
         bot.removeListener('goal_reached', reached);
         bot.removeListener('mobility_denied', denied);
         bot.removeListener('path_update', update);
         this.abortController?.signal.removeEventListener('abort', cancelled);
+        if (error) {
+          try { pathfinder.stop(); } catch {}
+        }
+        if (previousSearchRadius === undefined) delete pathfinder.searchRadius;
+        else pathfinder.searchRadius = previousSearchRadius;
+        if (previousThinkTimeout === undefined) delete pathfinder.thinkTimeout;
+        else pathfinder.thinkTimeout = previousThinkTimeout;
         if (error) reject(error);
         else resolve();
       };
@@ -957,7 +986,7 @@ export class SurvivalMission {
       }
       try {
         this.assertActive();
-        bot.pathfinder.setGoal(new goals.GoalNear(target.x, target.y, target.z, range));
+        pathfinder.setGoal(new goals.GoalNear(target.x, target.y, target.z, range));
       } catch (err) {
         finish(err instanceof Error ? err : new Error(String(err)));
       }

@@ -1,6 +1,7 @@
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
+import { EventEmitter } from 'events';
 import { Vec3 } from 'vec3';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
@@ -190,6 +191,40 @@ describe('survival mission progress', () => {
 
     expect(await pause).toMatchObject({ running: false, paused: true });
     expect(resumeVoyager).toHaveBeenCalledTimes(1);
+  });
+
+  it('bounds and restores pathfinder work for unreachable survival targets', async () => {
+    const bot = Object.assign(new EventEmitter(), {
+      entity: { position: new Vec3(0, 64, 0) },
+      blockAt: vi.fn(() => null),
+      pathfinder: {
+        searchRadius: 96,
+        thinkTimeout: 5_000,
+        setGoal: vi.fn(),
+        stop: vi.fn(),
+      },
+    });
+    const mission = new SurvivalMission({
+      name: 'FayaazMJacc',
+      dataDir: temporaryDataDir(),
+      botGetter: () => bot,
+      pauseVoyager: vi.fn(),
+      resumeVoyager: vi.fn(),
+    });
+    (mission as any).running = true;
+    (mission as any).abortController = new AbortController();
+
+    bot.pathfinder.setGoal.mockImplementation(() => {
+      expect(bot.pathfinder.searchRadius).toBe(16);
+      expect(bot.pathfinder.thinkTimeout).toBe(2_000);
+      queueMicrotask(() => bot.emit('path_update', { status: 'timeout' }));
+    });
+
+    await expect((mission as any).moveNear(new Vec3(40, 64, 0), 3))
+      .rejects.toThrow(/think timeout/);
+    expect(bot.pathfinder.stop).toHaveBeenCalledTimes(1);
+    expect(bot.pathfinder.searchRadius).toBe(96);
+    expect(bot.pathfinder.thinkTimeout).toBe(5_000);
   });
 
   it('reopens a furnace and retrieves output even when the batch left inventory', async () => {
