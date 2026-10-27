@@ -1,17 +1,37 @@
 # Combined Zones Integration Plan
 
-Status: **PHASE 1 COORDINATION PARTIAL PASS — BUILD HOLD — NOT AUTHORIZED FOR WORLD EDITS**
+Status: **BOUNDED MVP ACCEPTED — R13 CONSOLIDATED MVP ACCEPTED — R08AL/R08AM EMPTY EIGHT PUBLIC-RETAIL ROUND ACCEPTED**
+
+The 24–25 August citywide release reconciliation is indexed in the
+[Citywide As-Built Status](../AS-BUILT-CITYWIDE-STATUS-2026-08-25.md). It
+records later scoped work alongside the accepted MP05 baseline without
+reclassifying those independent snapshots as one new Combined Zones terminal
+snapshot. See the companion [World Atlas](../../redevelopment/2026-08-25-world-atlas/README.md)
+for snapshot-pinned maps and accepted captures.
+
+> **Current-state note (supersedes older headers in this file):** the authoritative
+> status ledger is [CURRENT-STATE.md](CURRENT-STATE.md) and the controlling
+> authority is [MASTERPLAN.md](MASTERPLAN.md) plus the machine-readable
+> [release contract](phase1-release-contract.json). R00 design freeze is complete
+> (7/7), R01–R13 and the R08AL/R08AM round are accepted as-built, and standing
+> scope-local build authority is recorded in [OWNER-DIRECTIVE.md](OWNER-DIRECTIVE.md)
+> and [phase1-standing-build-authorization.json](phase1-standing-build-authorization.json).
+> Historical planning text in the entries below that says `HOLD`, `BLOCKED`, or
+> `not authorized` is provenance and may predate the 2026-08-21 owner directive;
+> it does not override the current-state ledger. Safety findings remain local to
+> their exact cells and dependent interfaces.
 
 This package places Masterplan 04's normalized combination of Masterplans 01–03 into the accepted current world. It keeps Ravensreach as the canonical Old Town, uses Gateway Approach as the current-world adapter, adopts a north-aligned `0°` Combined Complex transform from origin `(2048,-328)`, and places the hidden eight-track subway terminal on a fully dry, non-arctic footprint south of Gateway Approach.
 
 Start here:
 
 - [MASTERPLAN.md](MASTERPLAN.md) — adopted placement, current-world connection, Empty Eight program, phases, and remaining decisions.
+- [CIRCULATION-REVIEW-R08AM-2026-08-22.md](CIRCULATION-REVIEW-R08AM-2026-08-22.md) — source-bound future-route standard, exact public-stair correction, BOH map-room direction, and held-route register.
 - [maps/current-plus-proposed-phase0-overlay.png](maps/current-plus-proposed-phase0-overlay.png) — authoritative one-block-per-pixel top-down of the current world and re-sited plan.
 - [phase0-survey-brief.md](phase0-survey-brief.md) — live procedure, fresh snapshot identities, rerun verdict, and hard limits.
 - [phase0-survey-evidence.json](phase0-survey-evidence.json) — coverage, footprint censuses, structure bounds, eleven siting gates, and artifact hashes.
 - [phase1-geometry-coordination.json](phase1-geometry-coordination.json) — deterministic, offline compilation of exact rational transforms, per-scope boundary semantics, coordination-only cell envelopes, and the eleven original geometry-blocker identifiers. Later planning artifacts select ten of those choices, but do not authorize operation generation.
-- [phase1-design-decisions.md](phase1-design-decisions.md) / [JSON](phase1-design-decisions.json) — current-world delivery, L2 scope deletion, reserve-first rail staging, and fact-checked composite geology wording/C2 omission are resolved; D02 civil acceptance, D05 hydrology/relic buffers, and D06 external life safety remain HOLD.
+- [phase1-design-decisions.md](phase1-design-decisions.md) / [JSON](phase1-design-decisions.json) — historical design-decision record: current-world delivery, L2 scope deletion, reserve-first rail staging, and fact-checked composite geology wording/C2 omission are resolved. The original D02/D05/D06 `HOLD` framing is superseded by the accepted R00 readiness audit (7/7) and the current-state release ledger.
 - [phase1-protected-relic-clearance.md](phase1-protected-relic-clearance.md) / [JSON](phase1-protected-relic-clearance.json) — exact immutable-snapshot census and zero-margin default-deny cores for both igloo starts and the shipwreck. R00 G06 remains HOLD because one recorded igloo volume is empty, positive buffers are unreviewed, no complete accepted construction/interaction union exists, and no final all-structure clearance has passed; post-state preservation stays in G16-G19.
 - [phase1-shipwreck-removal-authorization.md](phase1-shipwreck-removal-authorization.md) / [JSON](phase1-shipwreck-removal-authorization.json) — additive sole-owner policy resolving preserve-versus-remove in favor of controlled-removal engineering for the recorded shipwreck only. The 2,268-cell bound and 1,118-cell non-air census are evidence/search sets, not demolition targets; 515 packed-ice cells, five snow cells, three chest block entities, every unattributed cell, exact desired states, and all live-release gates remain default-deny/HOLD. The policy authorizes zero operations.
 - [phase1-shipwreck-treatment-contract.md](phase1-shipwreck-treatment-contract.md) / [JSON](phase1-shipwreck-treatment-contract.json) — complete-save-bound exact candidate treatment. It partitions all 2,268 GS-037 envelope cells, attributes one connected 598-cell chest/dark-oak/spruce fabric candidate, preserves 515 packed-ice cells, five snow cells and 1,150 air cells, and compiles a complete candidate air mapping without accepting it. All three chest NBT projections are preserved, but their loot tables are unmaterialized and known inventory-content count is zero. Accepted target, desired-state, inventory-move and operation counts remain zero.
@@ -61,9 +81,9 @@ Start here:
 - [phase1-owner-review-report.html](phase1-owner-review-report.html) — standalone, offline HTML5 owner-review report with the bundle hash and copyable statement, map and concept-image context, exact P1-B11 Grand Avenue profile, technical packet summaries, G01–G07 gate matrix, controlled next sequence, and source-file identities.
 - [phase1-complete-save-intake-audit.md](phase1-complete-save-intake-audit.md) / [JSON](phase1-complete-save-intake-audit.json) — retained historical negative intake for the region-only Phase 0 root.
 - [phase1-complete-save-intake-audit-20260806T014133Z.md](phase1-complete-save-intake-audit-20260806T014133Z.md) / [JSON](phase1-complete-save-intake-audit-20260806T014133Z.json) — accepted read-only audit of the single authorized same-moment capture: 129 required members, 51 region files, 42 entity files, 35 POI files, `level.dat`, and a valid capture manifest, bound by complete-save SHA-256 `1d17c303b975d35cc01e2b46dcc9f6d78a9e4503b578a62c41ccadbd6df43f26`.
-- [phase1-site-gate-audit.md](phase1-site-gate-audit.md) / [JSON](phase1-site-gate-audit.json) — read-only real-build readiness matrix. Phase 0 terrain siting passes, but the Phase 1 exit and construction remain on HOLD pending its exact ownership, interface, hydrology, protected-structure, entity, source-guard, rollback, civil-design, and pilot evidence.
+- [phase1-site-gate-audit.md](phase1-site-gate-audit.md) / [JSON](phase1-site-gate-audit.json) — historical read-only real-build readiness matrix from Phase 0/1 planning. Its Phase 1 exit "on HOLD" framing predates the accepted R00 freeze and standing build authority; current status is the release ledger in [CURRENT-STATE.md](CURRENT-STATE.md).
 - [PHASE1-RELEASE-ENGINEERING.md](PHASE1-RELEASE-ENGINEERING.md) / [machine contract](phase1-release-contract.json) — deterministic `R00…R13` dependency graph, nineteen default-deny advancement gates, release-tool boundaries, and the artifacts required before any block placement.
-- [phase1-r00-readiness-audit.md](phase1-r00-readiness-audit.md) / [JSON](phase1-r00-readiness-audit.json) — deterministic G01-G07-only audit refreshed against the accepted complete save and the best-choice gate. G01 authority and G03 exact setout pass; transient animals and the bee runtime proof remain deferred/HOLD. The shipwreck’s 598-cell removal contract is now inactive fallback: the next path is an exact bounded positive-margin comparison and minimum local P1-B10 reshape that removes the source support demand, then regenerates every derived domain. G02 and G04-G07 remain HOLD on exact reshape geometry, technical acceptance, accepted-cell ownership/interfaces, protected-feature margins/treatment, and mechanisms. G08-G19 remain deferred and cannot close design decisions.
+- [phase1-r00-readiness-audit.md](phase1-r00-readiness-audit.md) / [JSON](phase1-r00-readiness-audit.json) — deterministic R00 design-freeze audit: **G01–G07 PASS with zero blockers**, completing the nonphysical design freeze. The older "G08–G19 deferred / G02-G07 HOLD" phrasing in earlier versions described the pre-completion state and is superseded; later guarded releases (R01–R13, R08AL/R08AM) executed and verified the as-built work under the standing authority.
 - [corridor-terrain-probe.json](corridor-terrain-probe.json) — 79 natural centerline samples plus the 1:8-or-flatter engineered rail profile.
 - [resiting-candidate-analysis.json](resiting-candidate-analysis.json) — exact dry-footprint and normalized-core search against immutable Anvil terrain.
 - [site-coordinates.json](site-coordinates.json) — machine-readable revised transform, zone bounds, stops, subway descent, terminal, and interfaces.
@@ -88,4 +108,15 @@ Key result:
 
 Gateway Approach retains two future-use surface stops at `(1640,68,-250)` and `(1920,68,-250)`. The hidden split at `(1780,68,-250)` turns south and descends about 387 blocks to the Empty Eight: eight east–west tracks, eight platforms, an oversized mall/concourse, and eight sealed future-line stubs.
 
-The rerun required no new chunk generation because the complete revised footprint was already inside the full first-survey atlas. It placed and removed no blocks and preserved the live server's 104 force-loaded chunks exactly. Phase 0 passes siting for detailed design, and the Phase 1 compiler now freezes coordinate semantics without emitting construction cells. Phase 1 remains on HOLD: all physical work still requires the complete hash-bound release contract, including ownership/entity gates, civil and hydrology design, exact guarded forward/rollback packages, a fresh construction-source snapshot, explicit manifest-bound authorization, post-state QA, and final acceptance.
+The rerun required no new chunk generation because the complete revised footprint was already inside the full first-survey atlas. It placed and removed no blocks and preserved the live server's 104 force-loaded chunks exactly. Phase 0 passes siting for detailed design.
+
+**Execution state:** R00 design freeze is complete at 7/7 PASS. R01–R13 are
+accepted as-built under the standing owner authority (see
+[OWNER-DIRECTIVE.md](OWNER-DIRECTIVE.md)); the latest accepted physical post is
+`data/worldsnap-r08am-post-20260822T161818Z`. Every new physical package still
+requires the complete six-part hard-safety kernel: fresh immutable source,
+exact guarded source states, live entity/container/protected-feature exclusion,
+strict-noop journaled atomic execution, exact forward/inverse rollback, and a
+distinct immutable post snapshot with post-state and functional verification.
+Deferred MVP exclusions (P1-B12, C2, C3, and opening the eight future Empty
+Eight line stubs) remain sealed/reservation-only and do not block MVP completion.

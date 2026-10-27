@@ -1,0 +1,484 @@
+{
+  "schemaVersion": 1,
+  "id": "ianlan-nextgen-bunker-construction-status-20260822",
+  "reportNumber": "06",
+  "generatedAtUtc": "2026-08-22T18:00:00Z",
+  "status": "PASS_CURRENT_PHYSICAL_CONSTRUCTION_SEPARATED_FROM_DESIGN_AND_HISTORY",
+  "title": "Bunker Construction Status",
+  "summary": "Current immutable-world proof for Cheyenne, Raven Rock, legacy MainStreet C01, and relocated east C01, with design and commissioning nonclaims kept explicit.",
+  "readOnly": true,
+  "liveWorldMutated": false,
+  "databaseMutated": false,
+  "terminalSnapshot": {
+    "root": "data/worldsnap-r08am-post-20260822T161818Z",
+    "region": "data/worldsnap-r08am-post-20260822T161818Z/region",
+    "completeSaveSha256": "0bcbba4fad530b8a5c22bbef295978cc4864270de652acba18372e445b584699",
+    "regionSha256": "30f5c3394c4080d74156a59deb613290366c130e72a859261625117b8276541f",
+    "completedReleaseIdentitySha256": "0a727398d1dd0677e55702a22c4571d8fe980bd3fc392a948b67031ffd4d4205",
+    "ledger": {
+      "path": "data/world-review/combined-zones-r08am-live-20260822T161818Z/evidence-ledger.json",
+      "sha256": "74cffa90107e462a0d3b1742b9814b3f83d882fc0279290ee5296e5c13f45190",
+      "bytes": 96227
+    }
+  },
+  "proofPolicy": [
+    "Current exact block states in the terminal immutable snapshot are physical evidence. Accepted release and post-QA ledgers establish provenance and bounded acceptance.",
+    "Historical execution followed by rollback, or target states superseded by later work, is reported as history rather than current accepted construction.",
+    "Database status, authored coordinates, planning schedules, concept renderings, and masterplan prose are not independently sufficient proof that a structure exists now.",
+    "Offline route geometry is not a claim of public access, live walkability, powered-control readiness, secure commissioning, or operational occupancy."
+  ],
+  "systems": {
+    "cheyenne": {
+      "classification": "CURRENT_EXACT_BOUNDED_BUILD_PASSIVE_INTERNAL_ROUTE_ONLY",
+      "currentTargets": 5988,
+      "currentExactTargets": 5988,
+      "packages": [
+        "R10A secure gallery liner",
+        "R10G institutional/contact sequence liners",
+        "R10H passive route lighting"
+      ],
+      "commissionedScope": {
+        "release": "R12O",
+        "class": "PASSIVE_INTERNAL_INSPECTION_AND_CIRCULATION_ONLY",
+        "indices": {
+          "first": 188,
+          "last": 800,
+          "stations": 613
+        },
+        "routeAirCells": 12212,
+        "centralClearanceCells": 5505,
+        "floorCells": 3053,
+        "ceilingCells": 3053,
+        "fallBoundaryCells": 4856,
+        "fixtures": 102,
+        "chamberCapClosed": true
+      },
+      "coordinates": {
+        "institutionalRouteView": {
+          "eye": [
+            2376.5,
+            167.2,
+            -868
+          ],
+          "look": [
+            2328,
+            167.2,
+            -868
+          ]
+        },
+        "closedGalleryHoldView": {
+          "eye": [
+            2077.5,
+            167.2,
+            -868
+          ],
+          "look": [
+            2048,
+            167.2,
+            -868
+          ]
+        }
+      },
+      "nonclaims": [
+        "indices 0..187 remain obstructed/held",
+        "active transport or mechanisms commissioned",
+        "secure or public access commissioned",
+        "main chamber or terminal commissioned",
+        "Cheyenne masterplan modules beyond the bounded B03 route built"
+      ],
+      "designOnlyExamples": [
+        "main chamber",
+        "blast-door airlock",
+        "battle cab",
+        "Granite Inn",
+        "Stargate door",
+        "WOPR terminal"
+      ]
+    },
+    "ravenRock": {
+      "classification": "NO_CURRENT_ACCEPTED_RAVEN_ROCK_COMPLEX",
+      "currentAcceptedComplexReleases": 0,
+      "s1Pilot": {
+        "targetCells": 335,
+        "forwardStatus": "complete",
+        "emergencyRollbackStatus": "complete",
+        "currentClassification": "ROLLED_BACK_NOT_CURRENT_CONSTRUCTION"
+      },
+      "t2bPilot": {
+        "historicalAcceptance": "ACCEPTED",
+        "targetCells": 151,
+        "currentExactHistoricalTargets": 1,
+        "supersededTargets": 150,
+        "currentClassification": "HISTORICALLY_ACCEPTED_THEN_SUPERSEDED"
+      },
+      "observedCurrentVolume": {
+        "coordinates": {
+          "eye": [
+            -144.5,
+            3.62,
+            186.5
+          ],
+          "look": [
+            -136.5,
+            2.62,
+            182.5
+          ]
+        },
+        "classification": "PHYSICAL_BLOCKS_PRESENT_PROVENANCE_UNATTRIBUTED"
+      },
+      "designOnlyExamples": [
+        "full cavern",
+        "command center",
+        "support buildings",
+        "surface portals",
+        "vertical shaft",
+        "reservoir"
+      ],
+      "catalogWarning": "Catalog complete statuses for S1/T2B are stale when compared with rollback and terminal-state evidence."
+    },
+    "legacyC01": {
+      "classification": "CURRENT_PHYSICAL_FABRIC_WITH_PARTIAL_HISTORICAL_TARGET_BINDING",
+      "historicalTargets": 30361,
+      "currentExactHistoricalTargets": 25193,
+      "laterChangedTargets": 5168,
+      "acceptedHistoricalPackages": [
+        "MainStreet bunker surface Phase 1",
+        "MainStreet recessed portal Phase 2"
+      ],
+      "blockedSupplementStatus": "BLOCKED_UNSAFE_DRIFT",
+      "nonclaim": "The historical packages do not form a complete current as-built seal after later construction and lifecycle changes."
+    },
+    "eastC01": {
+      "classification": "CURRENT_MODEL_FABRIC_PROVEN_FULL_RELOCATION_AND_LIVE_COMMISSIONING_INCOMPLETE",
+      "modelTargetCells": 901073,
+      "currentExactModelTargets": 900946,
+      "deliberateRoutePreservationCells": 127,
+      "acceptedStairCoreCells": 82,
+      "heldRouteAirCells": 45,
+      "modelExactPercent": 99.986,
+      "modelCompilerStatus": "C01_SOURCE_MODEL_BLOCKED",
+      "sourceRetirementStatus": "DEFERRED_UNTIL_SEPARATE_COMMISSIONING_AND_SOURCE_HASH_GATE",
+      "acceptedOfflineRoutes": [
+        {
+          "id": "TE-ROUTE-C01-L1-ENTRY-GARAGE",
+          "accessClass": "public",
+          "forwardPathCells": 145,
+          "reversePathCells": 145,
+          "passed": true
+        },
+        {
+          "id": "TE-ROUTE-C01-MOUNTAIN-PORTAL-L1",
+          "accessClass": "controlled-vehicle-and-pedestrian",
+          "forwardPathCells": 0,
+          "reversePathCells": 0,
+          "passed": false
+        },
+        {
+          "id": "TE-ROUTE-C01-PUBLIC-VERTICAL",
+          "accessClass": "public",
+          "forwardPathCells": 89,
+          "reversePathCells": 89,
+          "passed": true
+        },
+        {
+          "id": "TE-ROUTE-C01-OWNER-VERTICAL",
+          "accessClass": "owner",
+          "forwardPathCells": 102,
+          "reversePathCells": 102,
+          "passed": true
+        },
+        {
+          "id": "TE-ROUTE-C01-SERVICE-BACKBONE",
+          "accessClass": "service",
+          "forwardPathCells": 97,
+          "reversePathCells": 97,
+          "passed": true
+        }
+      ],
+      "currentOfflineRouteSummary": {
+        "source": "data/world-review/underground-navigation-r08am-20260822/current-route-qa.json",
+        "sourceSha256": "855e4ff07dd31084193c01092d5ae6395197b13ca15f0e9b8055958be0e6ea23",
+        "total": 5,
+        "passed": 4,
+        "failed": 1,
+        "failedRouteIds": [
+          "TE-ROUTE-C01-MOUNTAIN-PORTAL-L1"
+        ],
+        "disposition": "CURRENT_OFFLINE_GEOMETRY_ONLY; FAILED_ROUTE_IS_NOT_AVAILABLE_OR_COMMISSIONED"
+      },
+      "coordinates": {
+        "l1RouteView": {
+          "eye": [
+            802.5,
+            44.62,
+            -126.5
+          ],
+          "look": [
+            802.5,
+            44.2,
+            -85
+          ]
+        }
+      },
+      "nonclaims": [
+        "live Mineflayer traversal accepted",
+        "powered doors, airlocks, or access controls commissioned",
+        "entity/crowding thresholds accepted",
+        "source bunker retirement completed",
+        "surface road/parking recovery completed",
+        "full public or citizen activation accepted"
+      ]
+    }
+  },
+  "repairProgram": {
+    "path": "docs/redevelopment/2026-08-22-bunker-construction-status/bunker-basement-repair-program.md",
+    "sha256": "052ce2a2c8cf33886f404b7025b174aa34736eedc2a419ac27f0357da0ca07b0",
+    "status": "DESIGN_AND_SURVEY_QUEUE",
+    "firstPackage": "BKR-SURVEY-00"
+  },
+  "media": [
+    {
+      "path": "maps/01-bunker-evidence-overview.png",
+      "title": "Bunker evidence overview",
+      "caption": "Current physical proof and honest acceptance class.",
+      "proofClass": "GENERATED_EVIDENCE_DIAGRAM",
+      "sha256": "ee9ffbc0e0e7d5aaa8f337086bb66fc9a537c06cb5cf2e56a9b5f9853f7816cf",
+      "bytes": 149874
+    },
+    {
+      "path": "maps/02-c01-evidence-stack.png",
+      "title": "East C01 evidence stack",
+      "caption": "Physical model presence and bounded route acceptance.",
+      "proofClass": "GENERATED_EVIDENCE_DIAGRAM",
+      "sha256": "2a03b2dfc423389d179c22a17fb629a06ce18fa447f8f1151d8fdc14d0bb7f87",
+      "bytes": 157507
+    },
+    {
+      "path": "maps/03-cheyenne-b03-terminal-map.png",
+      "title": "Cheyenne / B03 terminal map",
+      "caption": "R08AM top-down section at y≤171.",
+      "proofClass": "IMMUTABLE_POST_BLOCK_RENDER",
+      "sha256": "bbc2c2fd0543e466d81e63a2c7b7cfafdef5a88c3902275c6fd97d71d889fdda",
+      "bytes": 110462
+    },
+    {
+      "path": "maps/04-east-c01-terminal-map.png",
+      "title": "East C01 terminal map",
+      "caption": "R08AM top-down section at y≤51.",
+      "proofClass": "IMMUTABLE_POST_BLOCK_RENDER",
+      "sha256": "5152b8b70cb7e5b97742ebd48c3558798f5a6f6d1c75f8febda7c4df1f32fff7",
+      "bytes": 46247
+    },
+    {
+      "path": "maps/05-raven-rock-evidence-volume-map.png",
+      "title": "Raven Rock evidence-volume map",
+      "caption": "Current blocks around the historical T2B pilot volume; not full-complex proof.",
+      "proofClass": "IMMUTABLE_POST_BLOCK_RENDER",
+      "sha256": "7b3f414da8aa5b89cdc57eeaa9015fb910a532c55f08e5815310ff5d4885bb00",
+      "bytes": 16103
+    },
+    {
+      "path": "screenshots/01-cheyenne-institutional-route.png",
+      "title": "Cheyenne institutional route",
+      "caption": "Current exact illuminated internal circulation.",
+      "proofClass": "IMMUTABLE_POST_BLOCK_RENDER",
+      "sha256": "b502610a112a71cdf381b00f170d931bb113f7946334554cba787db3c310a112",
+      "bytes": 30356
+    },
+    {
+      "path": "screenshots/02-cheyenne-closed-gallery-hold.png",
+      "title": "Cheyenne closed gallery hold",
+      "caption": "The bounded route terminates at a retained cap.",
+      "proofClass": "IMMUTABLE_POST_BLOCK_RENDER",
+      "sha256": "21f661f05434a1c385e14e06cec8444b6f24d27802aa89f0588217a884968471",
+      "bytes": 38768
+    },
+    {
+      "path": "screenshots/03-east-c01-l1-route.png",
+      "title": "East C01 L1 route fabric",
+      "caption": "Current physical route fabric; offline geometry acceptance only.",
+      "proofClass": "IMMUTABLE_POST_BLOCK_RENDER",
+      "sha256": "9a343f327046ea9e91a58085882250772200258cf1e4790ca8c200922b73af8a",
+      "bytes": 51896
+    },
+    {
+      "path": "screenshots/04-raven-rock-former-t2b-volume.png",
+      "title": "Former Raven Rock T2B volume",
+      "caption": "Observed current blocks where the accepted 151-cell pilot was later superseded; provenance unattributed.",
+      "proofClass": "IMMUTABLE_POST_BLOCK_RENDER",
+      "sha256": "c1a87db6bd588b9299739edb0cba5d7530a3a0d892a109d18b2892c57f5af80e",
+      "bytes": 41356
+    },
+    {
+      "path": "maps/06-legacy-c01-terminal-map.png",
+      "title": "Legacy MainStreet C01 terminal map",
+      "caption": "Current surface/build fabric around the historical bunker packages.",
+      "proofClass": "IMMUTABLE_POST_BLOCK_RENDER",
+      "sha256": "4a7d1a12a3e6631c81a490b4ba615b5f7fe0c19a530ed86016609722f522ec44",
+      "bytes": 74927
+    }
+  ],
+  "evidence": {
+    "terminalLedger": {
+      "path": "data/world-review/combined-zones-r08am-live-20260822T161818Z/evidence-ledger.json",
+      "sha256": "74cffa90107e462a0d3b1742b9814b3f83d882fc0279290ee5296e5c13f45190",
+      "bytes": 96227
+    },
+    "terminalIdentity": {
+      "path": "data/world-review/combined-zones-r08am-live-20260822T161818Z/post-snapshot-identity.json",
+      "sha256": "e93e3f60c387ca40a8257fab374f22de6fdea795d2472b15fd4f373a210ec4cc",
+      "bytes": 298
+    },
+    "terminalIntake": {
+      "path": "data/world-review/combined-zones-r08am-live-20260822T161818Z/post-complete-save-intake.json",
+      "sha256": "ec5b5c3bc53cee1a6494db6628a9988ca86e28063ee5f3cef91c101270c5467b",
+      "bytes": 58499
+    },
+    "r10aLedger": {
+      "path": "data/world-review/combined-zones-r10a-live-20260821T163935Z/evidence-ledger.json",
+      "sha256": "84ddf28bc2127850eaf77546715feac3a3644d40571bc6b170f817b821091058",
+      "bytes": 25470
+    },
+    "r10aPostQa": {
+      "path": "data/world-review/combined-zones-r10a-live-20260821T163935Z/r10a-post-release-qa.json",
+      "sha256": "ab865fa7729e315f4e58804cbaf98f999e84e7bb3f13aa7b494025091543a0b2",
+      "bytes": 7462
+    },
+    "r10gLedger": {
+      "path": "data/world-review/combined-zones-r10g-live-20260822T031853Z/evidence-ledger.json",
+      "sha256": "5710be3be4e9d9706e35373ab56e892aaae00a546033e986fe56d4ed4ba38f57",
+      "bytes": 39311
+    },
+    "r10gPostQa": {
+      "path": "data/world-review/combined-zones-r10g-live-20260822T031853Z/r10g-post-release-qa.json",
+      "sha256": "934a0759dbc336ac124356bc04de8bfe3b83cf83632c732512c163452130d79d",
+      "bytes": 13098
+    },
+    "r10hLedger": {
+      "path": "data/world-review/combined-zones-r10h-live-20260822T035805Z/evidence-ledger.json",
+      "sha256": "4b941b36e71de03cb40d73edc7a526de24ee786550eb02d4b8a8b866b0eec8bc",
+      "bytes": 26302
+    },
+    "r10hPostQa": {
+      "path": "data/world-review/combined-zones-r10h-live-20260822T035805Z/r10h-post-release-qa.json",
+      "sha256": "0219243e1e1a649ee7dd5b3f0f57efc3beb1778a28d22a805e8d8020c1b9b11c",
+      "bytes": 9764
+    },
+    "r12oCommissioning": {
+      "path": "data/world-review/combined-zones-r12o-b03-complete-enclosed-route-commissioning-20260822T041000Z/r12o-commissioning.json",
+      "sha256": "e4ee22264c73fbac7e1f3c6640a78fe452f693d5a9daf05bb2f929c90210b1d4",
+      "bytes": 18344
+    },
+    "cheyenneDesign": {
+      "path": "docs/masterplans/01-cheyenne-mountain-complex/build-info.json",
+      "sha256": "ba9d57ba74931d26f857ce61dbf8b2361a548095e7ed1d58147b51ff7508c3d6",
+      "bytes": 670
+    },
+    "ravenWave2Qa": {
+      "path": "data/world-review/redevelopment-wave2-post-release-qa-2026-07-28.json",
+      "sha256": "551be053a21e37edc246f95cb2ded30df138f600f66c5574c2cf9b9b7f321d4c",
+      "bytes": 30546
+    },
+    "ravenT2bOperations": {
+      "path": "data/buildops/ravenrock-t2b-liner-pilot-wave2-prerelease-2026-07-28.txt",
+      "sha256": "2ad97a32c2a48b28021edd2dd782acd78e0f07ed42b7d3949a0685bc06fd9690",
+      "bytes": 10495
+    },
+    "ravenS1Forward": {
+      "path": "data/buildops/ravenrock-s1-section-pilot-2026-07-27.execution.json",
+      "sha256": "65b3a41e7a146db89650dc1e6567063858f577cd173babaa1c043742d7c2ec96",
+      "bytes": 263406
+    },
+    "ravenS1Rollback": {
+      "path": "data/buildops/ravenrock-s1-section-pilot-2026-07-27.emergency-rollback.execution.json",
+      "sha256": "64558dbfc98e8e0ba0a99caae658fec2b79606cbbfc567869ea7da82221a41cb",
+      "bytes": 547
+    },
+    "ravenHistoricQa": {
+      "path": "docs/raven-rock/qa/qa-report.md",
+      "sha256": "667eff6975ab1e87435ea1426648e22d6720d248be6e6c66b9485bec5f41452b",
+      "bytes": 35479
+    },
+    "ravenDesign": {
+      "path": "docs/masterplans/08-raven-rock/MASTERPLAN.md",
+      "sha256": "694f1c41651f21c2fccdea01a2c3de9e8353460e24e28682eab2e97ccc577b13",
+      "bytes": 12664
+    },
+    "c01Model": {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/c01-bunker-classification-manifest.json",
+      "sha256": "26b811e96b86f2c3766e0f4f7b5e24604215b0520d43f57be1272bf217d4b1e5",
+      "bytes": 5696400
+    },
+    "townExpansionPostQa": {
+      "path": "data/world-review/town-expansion-r1-post-release-qa-2026-07-28.json",
+      "sha256": "7200a6d23e838d80f1c21fb5585a72434103056c71793073d68918885f083672",
+      "bytes": 28658
+    },
+    "c01RouteQa": {
+      "path": "data/world-review/c01-route-preserved-core-post-route-qa-bound-2026-08-08.json",
+      "sha256": "93bf428005ebb3777c5442cc0e6e06b85f02765964d52d406e066c642b2f26f4",
+      "bytes": 875969
+    },
+    "c01CurrentRouteQa": {
+      "path": "data/world-review/underground-navigation-r08am-20260822/current-route-qa.json",
+      "sha256": "855e4ff07dd31084193c01092d5ae6395197b13ca15f0e9b8055958be0e6ea23",
+      "bytes": 833871
+    },
+    "bunkerBasementRepairProgram": {
+      "path": "docs/redevelopment/2026-08-22-bunker-construction-status/bunker-basement-repair-program.md",
+      "sha256": "052ce2a2c8cf33886f404b7025b174aa34736eedc2a419ac27f0357da0ca07b0",
+      "bytes": 6629
+    },
+    "c01StairLedger": {
+      "path": "data/world-review/c01-route-aware-stair-core-release-2026-08-08/evidence-ledger.json",
+      "sha256": "f493e7766a40e82104d4e726cfdb004d0b14fa5e32d5e5a837f071ff86e88b1c",
+      "bytes": 11541
+    },
+    "c01RouteHold": {
+      "path": "data/world-review/c01-route-preserved-core-2026-08-08.json",
+      "sha256": "d1be25985df322bcefb1158d2397497bc4042e7d48fabed1fb7e6011606f088d",
+      "bytes": 3592
+    },
+    "c01TownHallDecision": {
+      "path": "docs/redevelopment/2026-08-08-c01-town-hall-decision.md",
+      "sha256": "1631fa5d687a49b561ffbc45f02b3cd63354b0d10a12b23bacef4ac46ab41e49",
+      "bytes": 2705
+    },
+    "legacyC01SurfaceOperations": {
+      "path": "data/buildops/mainstreet-bunker-surface-phase1-2026-07-27.txt",
+      "sha256": "fa108cc0a18d9cad0980abd8fca0f483a45406688fd9e32e0bf6b2dcf0350233",
+      "bytes": 48510
+    },
+    "legacyC01SurfaceExecution": {
+      "path": "data/buildops/mainstreet-bunker-surface-phase1-2026-07-27.execution.json",
+      "sha256": "dacb16dfdb5b5df208b69360d1ff9988c59aefbf870427bef13043ef7eb73a9e",
+      "bytes": 555144
+    },
+    "legacyC01PortalOperations": {
+      "path": "data/buildops/mainstreet-bunker-recessed-portal-phase2-2026-07-27.txt",
+      "sha256": "f50ce795daee455c81acb8f1456265f954e24661d99853de50a80d82b9f67e4f",
+      "bytes": 6475
+    },
+    "legacyC01PortalExecution": {
+      "path": "data/buildops/mainstreet-bunker-recessed-portal-phase2-2026-07-27.execution.json",
+      "sha256": "f9b1563f6ed5488ed108a319e19534d3263403b229722efabad496079524c3c9",
+      "bytes": 61308
+    },
+    "legacyC01BlockedSupplement": {
+      "path": "data/world-review/mainstreet-bunker-surface-current-safe-supplement-2026-08-08.json",
+      "sha256": "e792128d2c8d40dec983140c9423023505c984c49d904dfe25d6e86e5eea9f45",
+      "bytes": 28640
+    },
+    "c01CurrentDeltaCompiler": {
+      "path": "scripts/compile_c01_current_delta.mjs",
+      "sha256": "21e90784580cd0c7257830ea2146d16850c5db8ca72238814046dc35e02152f2",
+      "bytes": 8843
+    },
+    "worldDatabaseReadOnly": {
+      "path": "data/world-map.db",
+      "sha256": "bf2b31c121c7d270942f6fa73181f8c71409cfc24c01952d99d8cd35583c8c02",
+      "bytes": 6750208
+    }
+  },
+  "reportPayloadSha256": "1e006fb982776f0cd6dee29f0745f530d93c265faf230963fbfc2be601e16acd"
+}

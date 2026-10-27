@@ -1160,3 +1160,61 @@ commissioning.
   full wall connection state without changing a world cell. [Release note](11-town-expansion-r1/MP11-C01-MAIN-SWITCHBACK-TRANSITION-01-RELEASE.md)
   · [guarded ledger](../../data/world-review/mp11-c01-main-switchback-transition-01-live-20260827T055000Z/mp11-c01-main-switchback-transition-01-guarded-release-ledger.json)
   · [corrected immutable QA](../../data/world-review/mp11-c01-main-switchback-transition-01-live-20260827T055000Z/independent-post-release-qa-corrected/mp11-c01-main-switchback-transition-01-post-qa.json).
+
+- **MP11 C01 public-vertical upper-portion redesign design 01 — 2026-08-27:**
+  **SOURCE-BOUND DESIGN ONLY — BILATERAL ENDPOINT/OPENING/TRANSITION CONTRACT
+  REQUIRED.** A fresh continuation snapshot (`combined-zones-dd6d5023…`) and
+  the dimension physical 01 smallest isolable defect (stations 68..88 of the
+  public vertical switchback) yielded a 21-station, 5-wide × 5-clear-high upper
+  portion redesign with 346 deduplicated target cells and a 459-cell interaction
+  halo. Zero fluid/gravity/container/block-entity/saved-entity hits; zero
+  Return-02 intersection. The 51-cell overlap with the accepted main switchback
+  transition 01 cross at the shared upper landing interface is the bilateral
+  endpoint/opening/transition blocker that requires a separately compiled
+  contract before any physical release. It emits zero operations, zero
+  rollback, zero mutation authority. [Design record](../../data/world-review/mp11-c01-public-vertical-upper-portion-redesign-design-01-fresh-continuation-20260827T061300Z/mp11-c01-public-vertical-upper-portion-redesign-design-01.json)
+  · [design markdown](../../data/world-review/mp11-c01-public-vertical-upper-portion-redesign-design-01-fresh-continuation-20260827T061300Z/MP11-C01-PUBLIC-VERTICAL-UPPER-PORTION-REDESIGN-DESIGN-01.md).
+
+- **MP11 C01 public-vertical upper-portion redesign 01 — 2026-08-27:**
+  **AS-BUILT / POST-VERIFIED / REVERSIBLE — BOUNDED PUBLIC VERTICAL
+  UPPER-PORTION RELEASE.** A fresh continuation source (`combined-zones-bf092868…`)
+  was bound to the redesign design 01 + bilateral endpoint/opening/transition
+  contract (`combined-zones-49 shared cells use the accepted main switchback
+  transition 01 target state; 433 unique canonical cells are emitted as the
+  upper-portion release`). The guarded transaction changed exactly `19` cells,
+  including 8 polished-blackstone stairs at the upper portion's east-descent
+  cross and 11 air cells at the upper portion's clear envelope. The post-snapshot
+  retained-canonical-state SHA-256 matches the unique-cell target SHA-256 with
+  `19/19` exact matches. The `49/49` shared cells are unchanged from the
+  accepted main switchback transition 01. Return-02 remains continuous with
+  `768/768` retained canonical states and zero intersection with the upper
+  portion release. The upper portion's 21-station 5-wide × 5-clear-high path
+  passes projected two-way normal-walk QA, the independent post-release QA passes
+  `0` canonical failures, `0` shared-cell failures, `0` unsafe hits, `0` route
+  failures, and `0` return failures. This narrows the dimension physical 01
+  smallest isolable defect to a 19-cell physical as-built scope. It does not
+  open, commission, retire, or connect any public route or protected fabric.
+  [Guarded ledger](../../data/world-review/mp11-c01-public-vertical-upper-portion-redesign-01-live-20260827T140000Z/mp11-c01-public-vertical-upper-portion-redesign-01-guarded-release-ledger.json)
+  · [independent post-release QA](../../data/world-review/mp11-c01-public-vertical-upper-portion-redesign-01-live-20260827T140000Z/independent-post-release-qa.json).
+
+- **MP11 C01 public-vertical upper-landing endpoint/opening/transition 01 —
+  2026-08-27:** **AS-BUILT / POST-VERIFIED / REVERSIBLE — BOUNDED
+  ENDPOINT/OPENING/TRANSITION RELEASE.** A fresh continuation source
+  (`combined-zones-aab0b7e1…`) was bound to the endpoint design 01 (which
+  classifies every cell in the 9×5×7 transition volume as dual-accepted,
+  main-only, upper-only, or new-air). 24 cells are dual-accepted (use main's
+  state), 92 main-only, 46 upper-only, 140 new-air. The compiled operations
+  contain only cells that differ from the accepted main switchback transition 01
+  or upper-portion redesign 01 states. The guarded transaction changed exactly
+  `56` cells (down from `88` due to no-op dedup with accepted states, plus
+  `23` concrete markers skipped, plus `236` no-op shared cells preserved).
+  Independent post-release QA passes `0` canonical failures, `0` unsafe hits,
+  `0` transition-preservation failures, `0` upper-preservation failures, and
+  `0` return-02 failures. The endpoint/opening/transition bridge is now in
+  place: the upper portion's top station (840,42,-46) connects to the accepted
+  main switchback transition 01's upper landing interface (839,43,-47) via
+  this volume. It does not open or commission any public route, endpoint,
+  egress, or service. [Guarded
+  ledger](../../data/world-review/mp11-c01-upper-landing-endpoint-opening-transition-01-live-20260827T144100Z/mp11-c01-public-vertical-upper-landing-endpoint-opening-transition-01-guarded-release-ledger.json)
+  · [independent post-release
+  QA](../../data/world-review/mp11-c01-upper-landing-endpoint-opening-transition-01-live-20260827T144100Z/independent-post-release-qa.json).

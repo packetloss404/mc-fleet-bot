@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "sys03-cobalt-wl-controlled-rail-inspection-transfer-governor-standing-execution-authorization",
+  "projectId": "combined-zones-phase1",
+  "recordedAtUtc": "2026-08-26T23:55:00Z",
+  "status": "AUTHORIZED_STANDING_SCOPED_EXECUTION",
+  "revoked": false,
+  "ownerDirective": {"speaker":"Governor","recordedDate":"2026-08-26","exactText":"i'm the governmor of the minecraft world and I've come to cut red tape","interpretation":"The finite Westlight staff rail-inspection transfer is delegated to the implementation team; hard safety is not waived."},
+  "authorizedReleaseNodes": ["CZ-SYS03-COBALT-WL-CONTROLLED-RAIL-INSPECTION-TRANSFER"],
+  "allowNonMvpScopes": true,
+  "mvpBoundary": {"included":"Only the exact staff ladder, crown attachment, upper landing, and retained south-rail side lane interface.","excludedScopeIds":[],"exclusionRule":"No public route, passenger boarding/service, vehicle, power, signal, or rail-cell walking is authorized."},
+  "hardSafetyKernel": [
+    {"id":"exact-release-and-inverse","required":true,"rule":"Exact state/inverse, side-lane/rail retention, and independent QA are mandatory."},
+    {"id":"fresh-source-snapshot-and-preflight","required":true,"rule":"Fresh immutable source and exact preflight immediately precede mutation."},
+    {"id":"strict-forward-and-rollback-parser-checks","required":true,"rule":"Forward and reverse parser validation is strict-noop."},
+    {"id":"block-and-live-entity-clearance","required":true,"rule":"Exact block-entity and fresh live-entity clearance are mandatory."},
+    {"id":"strict-execution-with-compensating-rollback","required":true,"rule":"Execution is journaled; failure invokes exact reverse rollback."},
+    {"id":"post-snapshot-and-rollback-poststate-verification","required":true,"rule":"Fresh post capture, rollback poststate proof, and independent QA precede acceptance."}
+  ],
+  "operationalControls": {"defaultMode":"PREPARE_ONLY","liveExecutionOptIn":"--execute","globalGateDependency":"NONE","scopeLocalFailureRule":"Failure blocks only this exact Westlight inspection transfer."},
+  "authorizationPayloadSha256": "fa023a3bfccc711751fc0906fab039b794eaf6974a0f78ce63155c9328d4c06a"
+}

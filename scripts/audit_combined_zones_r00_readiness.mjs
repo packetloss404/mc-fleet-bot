@@ -122,8 +122,47 @@ function sha256(data) {
   return crypto.createHash('sha256').update(data).digest('hex');
 }
 
+const AUDIT_OUTPUT_PATH = 'docs/masterplans/05-combined-zones/phase1-r00-readiness-audit.json';
+const AUDIT_SELF_HASH_PLACEHOLDER =
+  '0000000000000000000000000000000000000000000000000000000000000000';
+
 function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(absolute(relativePath), 'utf8'));
+}
+
+// The contract binds this audit by hash, and the audit embeds the contract by
+// hash, so hashing the contract file directly creates an unfixable circular
+// reference. The audit therefore binds the contract's *canonical* identity:
+// the contract with every self-referential audit entry (its authorityBinding
+// for the audit and every gate-evaluation/design-decision evidence reference
+// to the audit) normalized to a fixed placeholder. This is stable regardless
+// of the contract's audit-binding value and still proves the contract's
+// substantive content.
+function canonicalReleaseContractBinding(relativePath) {
+  const parsed = readJson(relativePath);
+  const normalized = JSON.parse(JSON.stringify(parsed));
+  for (const bindingEntry of normalized.authorityBindings ?? []) {
+    if (bindingEntry.path === AUDIT_OUTPUT_PATH) {
+      bindingEntry.sha256 = AUDIT_SELF_HASH_PLACEHOLDER;
+    }
+  }
+  for (const gate of normalized.currentGateEvaluations ?? []) {
+    for (const evidence of gate.evidence ?? []) {
+      if (evidence.path === AUDIT_OUTPUT_PATH) evidence.sha256 = AUDIT_SELF_HASH_PLACEHOLDER;
+    }
+  }
+  for (const decision of normalized.designDecisions ?? []) {
+    const evidence = decision.machineEvidence ?? decision.evidence;
+    if (evidence && String(evidence.path ?? '') === AUDIT_OUTPUT_PATH) {
+      evidence.sha256 = AUDIT_SELF_HASH_PLACEHOLDER;
+    }
+  }
+  const serialized = `${JSON.stringify(normalized, null, 2)}\n`;
+  return {
+    path: relativePath,
+    sha256: sha256(Buffer.from(serialized)),
+    bytes: Buffer.byteLength(serialized),
+  };
 }
 
 function binding(relativePath) {
@@ -140,7 +179,12 @@ function blocker(id, classification, requirement, evidencePath) {
 }
 
 const sources = Object.fromEntries(
-  Object.entries(INPUTS).map(([key, relativePath]) => [key, binding(relativePath)]),
+  Object.entries(INPUTS).map(([key, relativePath]) => [
+    key,
+    key === 'releaseContract'
+      ? canonicalReleaseContractBinding(relativePath)
+      : binding(relativePath),
+  ]),
 );
 const contract = readJson(INPUTS.releaseContract);
 const decisions = readJson(INPUTS.designDecisions);
@@ -722,7 +766,13 @@ const recommendedVent = d06LifeSafety.d06EmptyEightLifeSafety
       ?.ventilationOutletAlternatives?.recommendedAlternativeId,
   );
 
-const authorityBindingChecks = (contract.authorityBindings ?? []).map((expected) => {
+const authorityBindingChecks = (contract.authorityBindings ?? [])
+  // The audit's own output is excluded from its binding checks. The contract
+  // binds this audit by hash, and the audit embeds the contract's hash, so
+  // validating the contract->audit binding inside the audit creates an
+  // unfixable self-referential cycle. The audit binds its inputs instead.
+  .filter((expected) => expected.path !== AUDIT_OUTPUT_PATH)
+  .map((expected) => {
   const filename = absolute(expected.path);
   const exists = fs.existsSync(filename) && fs.statSync(filename).isFile();
   const actualSha256 = exists ? sha256(fs.readFileSync(filename)) : null;

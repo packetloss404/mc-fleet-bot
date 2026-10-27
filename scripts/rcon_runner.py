@@ -1338,12 +1338,17 @@ def main():
         'allTemporaryReleased': False,
         'finalChunks': [],
         'finalSetMatchesPreExistingSet': False,
+        'missingPreExistingChunks': [],
+        'concurrentNonOwnedAddedChunks': [],
+        'concurrentNonOwnedAddedRequiredChunks': [],
+        'finalStateSafeForDisjointConcurrency': False,
     }
     before = set()
     all_owned = set()
     released_owned = set()
     rc = None
     batches = []
+    required_chunks = set()
     t0 = time.time()
     executed_commands = 0
 
@@ -1396,6 +1401,11 @@ def main():
             before,
             capacity=SERVER_FORCELOAD_LIMIT,
         )
+        required_chunks = {
+            tuple(chunk)
+            for batch in batches
+            for chunk in batch['requiredChunks']
+        }
         force_load_audit['plannedBatchCount'] = len(batches)
         journal['preExistingChunks'] = [
             list(chunk) for chunk in sorted(before)
@@ -1582,6 +1592,34 @@ def main():
                     not bool(all_owned & final_chunks)
                     if not a.keep_loaded else False
                 )
+                missing_pre_existing = before - final_chunks
+                concurrent_non_owned_added = (
+                    final_chunks - before - all_owned
+                )
+                concurrent_non_owned_added_required = (
+                    concurrent_non_owned_added & required_chunks
+                )
+                force_load_audit['missingPreExistingChunks'] = [
+                    list(chunk) for chunk in sorted(missing_pre_existing)
+                ]
+                force_load_audit['concurrentNonOwnedAddedChunks'] = [
+                    list(chunk) for chunk in sorted(concurrent_non_owned_added)
+                ]
+                force_load_audit['concurrentNonOwnedAddedRequiredChunks'] = [
+                    list(chunk)
+                    for chunk in sorted(concurrent_non_owned_added_required)
+                ]
+                # A concurrent, disjoint scoped release may legitimately add
+                # force-loads while this runner is finishing. Preserve every
+                # pre-existing chunk and release every owned temporary chunk;
+                # fail only if the concurrent change touches our command
+                # chunks or prevents restoration. This keeps parallel exact
+                # releases safe without accepting a leaked local load.
+                force_load_audit['finalStateSafeForDisjointConcurrency'] = (
+                    not missing_pre_existing
+                    and force_load_audit['allTemporaryReleased']
+                    and not concurrent_non_owned_added_required
+                )
             except Exception as cleanup_error:
                 force_load_audit['cleanupErrors'].append(
                     f'{type(cleanup_error).__name__}: {cleanup_error}'
@@ -1599,7 +1637,7 @@ def main():
                 and not stopped_at_first_failed_group
                 and not force_load_audit['cleanupErrors']
                 and force_load_audit['allTemporaryReleased']
-                and force_load_audit['finalSetMatchesPreExistingSet']
+                and force_load_audit['finalStateSafeForDisjointConcurrency']
             )
             else 'failed-or-interrupted'
         )
@@ -1630,7 +1668,7 @@ def main():
         and not force_load_audit['cleanupErrors']
         and force_load_audit['allRequiredChunksLoadedBeforeCommands']
         and force_load_audit['allTemporaryReleased']
-        and force_load_audit['finalSetMatchesPreExistingSet']
+        and force_load_audit['finalStateSafeForDisjointConcurrency']
         and force_load_audit['maximumForceLoadedChunkCount']
         <= SERVER_FORCELOAD_LIMIT
     )

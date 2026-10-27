@@ -12,6 +12,9 @@ Masterplan 04 combines the three child architectural programs into one normalize
 
 Start with [AUTHORITY.md](AUTHORITY.md) and [authority-reconciliation.json](authority-reconciliation.json). They define the only valid way to interpret this directory for current-world planning.
 
+The current physical-connection disposition is the read-only
+[MP06-bound integrated setout](../../../data/world-review/mp04-integrated-setout-02-current-mp06-post-20260826T143902Z/MP04-INTEGRATED-SETOUT-02.md): one complete source covers B07/B08/B09/B03, but MP04 owns no world cells and no safe exact integrated candidate exists. Its plan, interface, and all-or-nothing gate maps distinguish real source-bound blockers from the obsolete coverage issue.
+
 The controlling Masterplan 04 local-geometry sources are:
 
 - [02-design/site-coordinates.json](02-design/site-coordinates.json)

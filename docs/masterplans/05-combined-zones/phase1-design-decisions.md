@@ -1,6 +1,15 @@
 # Combined Zones Phase 1 design decisions
 
-Status: **HOLD — three of seven decisions remain unresolved — offline only**
+Status: **HISTORICAL DESIGN DECISION RECORD — SUPERSEDED FOR CURRENT STATE**
+
+> **Supersession note:** this record reflects the pre-R00 design-decision state
+> (three of seven decisions unresolved). It is retained as provenance. The
+> current controlling status is the accepted R00 readiness audit (7/7 PASS,
+> [phase1-r00-readiness-audit.md](phase1-r00-readiness-audit.md)) and the release
+> ledger in [CURRENT-STATE.md](CURRENT-STATE.md), under the standing 2026-08-21
+> build authority. R01–R13 and the R08AL/R08AM round are accepted as-built.
+> The `HOLD` wording below for D02/D05/D06 predates that acceptance and does not
+> block disjoint accepted scopes; it describes the original design-freeze gaps.
 
 This record applies the clarified authority chain: Masterplans 01–03 own their internal architecture, Masterplan 04 combines them in normalized local geometry, and Masterplan 05 places that composition in the current map. It resolves only choices already compelled by that authority or by a reversible, fail-closed omission expressly allowed in Masterplan 05. It is not a build package or a world-edit authorization.
 
@@ -54,4 +63,9 @@ No active portal mechanism belongs in the current build. C2 stays logical only, 
 
 ## Gate outcome
 
-Offline Phase 1 remediation may continue. Phase 1 does not pass, no physical phase may start, and no live build may proceed while D02, D05, D06—or the independent ownership, entity, source-guard, rollback, pilot, and release gates—remain open. The required sequence is design acceptance (G02), accepted R00 design freeze, R01 physical validation, then Phase 1 exit and R02 eligibility.
+This record is historical design-decision provenance. The original conclusion
+was that Phase 1 could not pass while D02/D05/D06 remained open. That status was
+superseded: R00 design freeze passed 7/7, and the accepted as-built releases
+(R01–R13, R08AL/R08AM) were executed under the standing owner authority with the
+complete hard-safety kernel. See [CURRENT-STATE.md](CURRENT-STATE.md) for the
+controlling release ledger.

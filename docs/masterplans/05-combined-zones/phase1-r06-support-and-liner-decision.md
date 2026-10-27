@@ -13,6 +13,13 @@ wet-service doctrine):
 - the B07 wet pocket deferral class (110 cells, from the R03 v2 partition),
 - the R05 west-toe lava seep (~10 drifted cells around 1961,77-100,-824).
 
+> **Lava-count reconciliation:** the later live census and release records fix
+> the exact no-blind-placement set at **16 lava-seep cells** (see
+> [OWNER-DIRECTIVE.md](OWNER-DIRECTIVE.md) and the R06 liner release). Those 16
+> cells are the lava subset of the **27 flowing-fluid cells** recorded at release
+> time. The "~10 drifted cells" here was an early planning estimate before the
+> exact census; treat 16 as the controlling count.
+
 Fluid-state rule: only STABLE sources are lined by guarded ops (still water
 `level=0`, still lava `level=0`, `waterlogged=true` states, plus the
 already-classified dry-buffer air cells). FLOWING fluid cells (non-zero

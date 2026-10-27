@@ -98,6 +98,74 @@ Specific maintenance risks:
 - Older draft requirement matrices contain pre-release states such as `MODELED_BLOCKED`. They preserve planning history and do not override the later accepted post-release verifier.
 - Catalog envelopes can overlap even when exact changed cells do not. An envelope intersection is a review trigger, not evidence of collision.
 
+### MP11-INTERFACE-SURVEY-01 — retained-source cross-area screen (2026-08-26)
+
+The read-only interface screen rechecked the accepted global interface audit,
+its exact default-deny contract, and the retained current-drift survey. It
+found **no unclaimed cross-area route or access seam** from which to compile a
+bounded package: all 13 observed interfaces are reviewed and contract-bound,
+with zero unreviewed interfaces and no wildcard ownership. The historic
+40-cell red-carpet discrepancy is a same-owner maintenance finding, not a
+cross-area connection. No operation was emitted and no live capture was used.
+
+Evidence: `data/world-review/mp11-town-expansion-interface-survey-01-historical-20260826.json`;
+compiler: `scripts/survey_mp11_town_expansion_interfaces_01.mjs`.
+
+### MP11-INTERFACE-SURVEY-03 — current-complete-source rebind (2026-08-26)
+
+The latest complete MP06 post source rebinding is recorded in
+[`CURRENT-STATE.md`](CURRENT-STATE.md). It scans all **13/13** exact reviewed
+interface envelopes (1,084,116 cells) under the approved default-deny contract.
+The only 16 state deltas are exact, already accepted `CIRC-RG-BELL-01` cells;
+there are zero unaccounted deltas and no independent Town Expansion operation.
+The map is evidence of preservation and scope closure, not a construction
+authority.
+
+## Circulation correction baseline — 2026-08-22
+
+The accepted R1 route verifier proves 22 snapshot-bound normal-walk routes; it
+does **not** certify every corridor's full width, landing depth, live door
+behaviour, or public egress. The later R08AM-bound navigation review finds 19
+of 22 declared routes pass and three fail in both directions: C01
+mountain-portal to L1, MainStreet vehicle portal to warehouse hall, and the
+Observatory hidden portal-gallery connection. Those three connections must not
+be advertised as available routes.
+
+The detailed, source-hash-bound assessment and builder packages are in the
+[circulation audit](circulation-audit-2026-08-22.json) and
+[circulation correction packages](circulation-correction-packages-2026-08-22.md).
+The rule is simple: a pathfinding line is not a people-facing stair. New public
+and main routes require a continuous 5×5 clear spine, high-volume stairs 7×6
+with full landings and a nearby lift analogue, and staff routes at least 3×3.
+Single-width steps, one-block necks, ladders, trapdoors, and jump geometry are
+not primary circulation.
+
+Empty Eight has only bounded internal public exploration; it has no released
+exterior discharge or accessible route. Cheyenne B03 is only a capped passive
+inspection route, not public or emergency circulation. A future change begins
+with a fresh scoped survey and a new reversible package; this retrospective
+plan does not authorize mutation.
+
+## Fresh condition findings — 2026-08-22
+
+The current complete-save census
+(`30f5c3394c4080d74156a59deb613290366c130e72a859261625117b8276541f`)
+adds information that the accepted R1 transaction did not attempt to prove. It
+confirms material interiors across the reviewed public realm, but it also finds
+a real programme defect inside the separately cataloged, nested Ravensreach
+Moot Hall: Clerks Hall is accessible but unfurnished, Committee and Meeting
+rooms are under-detailed, and Attic Store contains no standable interior cells.
+These are not a claim that R1's historical exact-cell release failed; they are
+a new maintenance/design input. The repair must be a separate owner-cleared,
+reversible `RRCH-MOOT-01` package, preserving the Town Hall/Moot relationship
+and all R1 interfaces.
+
+The same census finds no empty or under-detailed cataloged rooms in Westlight
+District or Westlight Venue. That does not commission any event, approach-road,
+backstage, or emergency route. Those remain `CIRC-WL-ARRIVAL-01` and
+`CIRC-WL-ARRIVAL-ROAD-01` survey-first packages. Exact findings, room bounds
+and the builder handoff are in [the public-realm defect lane](../../redevelopment/2026-08-22-public-realm-defect-lane.md).
+
 ## Stewardship roadmap
 
 | Phase | Objective | Exit evidence | Authority |

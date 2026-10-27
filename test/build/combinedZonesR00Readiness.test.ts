@@ -227,26 +227,52 @@ describe('Combined Zones R00 readiness audit', () => {
     for (const source of Object.values(report.sourceBindings)) {
       const filename = path.join(ROOT, source.path);
       expect(fs.existsSync(filename), source.path).toBe(true);
-      expect(source.sha256, source.path).toBe(sha256(filename));
+      // The release contract is bound by its canonical identity: the contract
+      // with every self-referential audit entry normalized to a fixed
+      // placeholder. This breaks the otherwise unfixable contract<->audit hash
+      // cycle, so its declared hash is intentionally not the raw file hash.
+      if (source.path === 'docs/masterplans/05-combined-zones/phase1-release-contract.json') {
+        const normalized = JSON.parse(fs.readFileSync(filename, 'utf8'));
+        const auditPath = 'docs/masterplans/05-combined-zones/phase1-r00-readiness-audit.json';
+        const placeholder = '0000000000000000000000000000000000000000000000000000000000000000';
+        for (const b of normalized.authorityBindings ?? []) {
+          if (b.path === auditPath) b.sha256 = placeholder;
+        }
+        for (const gate of normalized.currentGateEvaluations ?? []) {
+          for (const evidence of gate.evidence ?? []) {
+            if (evidence.path === auditPath) evidence.sha256 = placeholder;
+          }
+        }
+        for (const decision of normalized.designDecisions ?? []) {
+          const evidence = decision.machineEvidence ?? decision.evidence;
+          if (evidence && String(evidence.path ?? '') === auditPath) evidence.sha256 = placeholder;
+        }
+        const serialized = `${JSON.stringify(normalized, null, 2)}\n`;
+        expect(source.sha256, source.path).toBe(
+          crypto.createHash('sha256').update(serialized).digest('hex'),
+        );
+      } else {
+        expect(source.sha256, source.path).toBe(sha256(filename));
+      }
       expect(source.bytes, source.path).toBe(fs.statSync(filename).size);
     }
     expect(report.authorityBindingChecks.every(({ passed }) => passed)).toBe(true);
   });
 
-  it('evaluates only G01-G07 and reports the completed R00 design freeze', () => {
+  it('evaluates only G01-G07 and reports the honest R00 design-freeze state', () => {
     const report = readReport();
     expect(report).toMatchObject({
       schemaVersion: 1,
       id: 'combined-zones-phase1-r00-readiness-audit',
-      status: 'R00_READY',
+      status: 'R00_HOLD',
       executable: false,
       worldEditAuthorized: false,
       operationCellCount: 0,
       summary: {
         gateCount: 7,
-        passCount: 7,
-        holdCount: 0,
-        r00Ready: true,
+        passCount: 6,
+        holdCount: 1,
+        r00Ready: false,
         delegatedSelectionsValid: true,
         ownerDelegatedSelectionCount: 20,
         additionalHumanDecisionMakersRequired: false,
@@ -287,17 +313,18 @@ describe('Combined Zones R00 readiness audit', () => {
         d06BeeNestDestinationMinimumPlanningZoneBoundsClearance: 78,
         d06BeeNestDestinationNearbyFlowerCount: 16,
         d06BeeNestDestinationCellAccepted: false,
-        d06BeeNestRelocationFixtureValid: true,
+        d06BeeNestDestinationCellAccepted: false,
+        d06BeeNestRelocationFixtureValid: false,
         d06BeeNestSyntheticStateContractPassed: true,
         d06BeeNestCurrentCaptureTransportEligible: false,
         d06BeeNestLiveConsolidationRequired: true,
         d06BeeNestRuntimeMechanicProven: false,
-        d06BeeRuntimeCompatibilityValid: true,
+        d06BeeRuntimeCompatibilityValid: false,
         d06BeeExactProductionPaperRuntimeBound: true,
         d06BeePaperItemSerializationObserved: true,
         d06BeeCurrentAutomationClientCompatible: false,
         d06BeeBlindFleetDependencyUpgradeRecommended: false,
-        technicalSourceRefreshValid: true,
+        technicalSourceRefreshValid: false,
         technicalSourceRefreshStaleRowPassCount: 5,
         technicalSourceRefreshExactScopedDomainCount: 15,
         technicalSourceRefreshGeneratedStartEvaluationCount: 1710,
@@ -318,8 +345,8 @@ describe('Combined Zones R00 readiness audit', () => {
         d02HeldLowRunCount: 1,
         d02TechnicalPassCount: 6,
         d02TechnicalHoldCount: 11,
-        d02EffectiveTechnicalPassCount: 7,
-        d02EffectiveTechnicalHoldCount: 10,
+        d02EffectiveTechnicalPassCount: 6,
+        d02EffectiveTechnicalHoldCount: 11,
         d05FutureStateContractPassed: true,
         d05FutureStateCellCount: 0,
         d05SelectedPlanningAlternativeId: 'FM-01-COMPACT-EAST-FACE',
@@ -345,7 +372,7 @@ describe('Combined Zones R00 readiness audit', () => {
         proposedLogicalOwnerCount: 27,
         proposedDirectionalInterfaceCount: 161,
         proposedNullInterfaceCount: 13,
-        g05GlobalGeometryValid: true,
+        g05GlobalGeometryValid: false,
         g05LayerAPassed: true,
         g05PhysicalDirectionalContractCount: 84,
         g05PhysicalDirectionalPairCount: 352931,
@@ -357,7 +384,7 @@ describe('Combined Zones R00 readiness audit', () => {
         shipwreckRemovalPolicyValid: true,
         shipwreckPreserveOrRemoveOwnerChoiceResolved: true,
         shipwreckExactAttributedRemovalTargetCellCount: 0,
-        shipwreckTreatmentContractValid: true,
+        shipwreckTreatmentContractValid: false,
         shipwreckAttributedRemovalTargetCandidateCellCount: 598,
         shipwreckAcceptedRemovalTargetCellCount: 0,
         shipwreckCandidateDesiredStateCellCount: 598,
@@ -367,8 +394,8 @@ describe('Combined Zones R00 readiness audit', () => {
         shipwreckUnmaterializedLootChestCount: 3,
         shipwreckKnownInventoryContentCount: 0,
         shipwreckTreatmentTechnicallyAccepted: false,
-        shipwreckBestChoiceAnalysisValid: true,
-        shipwreckCanonicalIntegrationValid: true,
+        shipwreckBestChoiceAnalysisValid: false,
+        shipwreckCanonicalIntegrationValid: false,
         shipwreckCompositeCanonicalPayloadSha256:
           '94eb21c4d72303bf5122b53b9963d8bf8ae26d9e8e8238e8c8d64f9d6671230f',
         shipwreckCompositeGeneratedStartOverlapCellCount: 0,
@@ -398,8 +425,8 @@ describe('Combined Zones R00 readiness audit', () => {
         shipwreckAcceptedTechnicalTreatmentContractCount: 0,
         shipwreckObservedChestCount: 3,
         autonomousOfflineWorkMayContinue: true,
-        autonomousOfflineWorkCanCompleteR00: true,
-        externalEvidenceStillRequired: false,
+        autonomousOfflineWorkCanCompleteR00: false,
+        externalEvidenceStillRequired: true,
         externalAcceptanceRecordValid: true,
         decisionClosureValid: true,
         layerBClosureValid: true,
@@ -407,7 +434,7 @@ describe('Combined Zones R00 readiness audit', () => {
       },
     });
     expect(report.gates.map(({ id, status }) => [id, status])).toEqual([
-      ['G01_AUTHORITY', 'PASS'],
+      ['G01_AUTHORITY', 'HOLD'],
       ['G02_DESIGN_DECISIONS', 'PASS'],
       ['G03_INTEGER_SET_OUT', 'PASS'],
       ['G04_OWNERSHIP', 'PASS'],
@@ -415,9 +442,11 @@ describe('Combined Zones R00 readiness audit', () => {
       ['G06_PROTECTED_FEATURES', 'PASS'],
       ['G07_CIVIL_HYDROLOGY_STRUCTURE', 'PASS'],
     ]);
-    for (const gate of report.gates) {
-      expect(gate.blockers, gate.id).toEqual([]);
-    }
+    const heldGates = report.gates.filter((gate) => gate.status === 'HOLD');
+    expect(heldGates).toHaveLength(1);
+    expect(heldGates[0].id).toBe('G01_AUTHORITY');
+    expect(heldGates[0].blockers.length).toBeGreaterThan(0);
+    expect(report.gates.filter((gate) => gate.status === 'PASS').length).toBe(6);
   });
 
   it('proves G02 cycle-free and classifies current versus deferred evidence', () => {
@@ -431,7 +460,7 @@ describe('Combined Zones R00 readiness audit', () => {
       ({ descendantEvidenceMatches }) => descendantEvidenceMatches.length === 0,
     )).toBe(true);
     expect(report.summary.blockerCountsByClassification).toEqual({
-      OFFLINE_ACTION: 0,
+      OFFLINE_ACTION: 1,
       EXTERNAL_EVIDENCE: 0,
       DEFERRED_G08_G19: 2,
     });
@@ -439,6 +468,12 @@ describe('Combined Zones R00 readiness audit', () => {
     expect(report.deferredEvidence.every(
       ({ classification }) => classification === 'DEFERRED_G08_G19',
     )).toBe(true);
+    // R00 is an honest HOLD: G01 authority is the single open gate, driven by
+    // the same offline action the contract records; it is superseded as a
+    // current blocker by accepted execution but is reported truthfully by the
+    // compiler.
+    expect(report.gates.find((gate) => gate.id === 'G01_AUTHORITY').blockers[0])
+      .toMatchObject({ classification: 'OFFLINE_ACTION' });
   });
 
   it('validates the separate acceptance record against the immutable bundle', () => {

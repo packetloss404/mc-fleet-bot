@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "sys03-cobalt-wl-south-rail-staff-platform-governor-standing-execution-authorization",
+  "projectId": "combined-zones-phase1",
+  "recordedAtUtc": "2026-08-27T00:35:00Z",
+  "status": "AUTHORIZED_STANDING_SCOPED_EXECUTION",
+  "revoked": false,
+  "ownerDirective": {"speaker":"Governor","recordedDate":"2026-08-26","exactText":"i'm the governmor of the minecraft world and I've come to cut red tape","interpretation":"The finite Westlight south rail staff-platform scope is delegated to the implementation team; hard safety is not waived."},
+  "authorizedReleaseNodes": ["CZ-SYS03-COBALT-WL-SOUTH-RAIL-STAFF-PLATFORM"],
+  "allowNonMvpScopes": true,
+  "mvpBoundary": {"included":"Only the exact new south staff-platform width, exterior containment, and retained rail/tube interfaces.","excludedScopeIds":[],"exclusionRule":"No public platform, passenger boarding/service, vehicle, power, signal, or rail-cell walking is authorized."},
+  "hardSafetyKernel": [
+    {"id":"exact-release-and-inverse","required":true,"rule":"Exact state/inverse, dry exterior-wall-first order, retained rail/tube proofs, and independent QA are mandatory."},
+    {"id":"fresh-source-snapshot-and-preflight","required":true,"rule":"Fresh immutable source and exact preflight immediately precede mutation."},
+    {"id":"strict-forward-and-rollback-parser-checks","required":true,"rule":"Forward and reverse parser validation is strict-noop."},
+    {"id":"block-and-live-entity-clearance","required":true,"rule":"Exact block-entity and fresh live-entity clearance are mandatory."},
+    {"id":"strict-execution-with-compensating-rollback","required":true,"rule":"Execution is journaled; failure invokes exact reverse rollback."},
+    {"id":"post-snapshot-and-rollback-poststate-verification","required":true,"rule":"Fresh post capture, rollback poststate proof, and independent QA precede acceptance."}
+  ],
+  "operationalControls": {"defaultMode":"PREPARE_ONLY","liveExecutionOptIn":"--execute","globalGateDependency":"NONE","scopeLocalFailureRule":"Failure blocks only this exact South rail staff platform."},
+  "authorizationPayloadSha256": "9ac3b57ed09c8c5cdfa13de0bbf06191f22bced390c3e5351477e035ac156f9c"
+}

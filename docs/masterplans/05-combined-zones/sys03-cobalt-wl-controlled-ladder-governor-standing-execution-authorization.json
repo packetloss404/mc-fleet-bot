@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "id": "sys03-cobalt-wl-controlled-ladder-governor-standing-execution-authorization",
+  "projectId": "combined-zones-phase1",
+  "recordedAtUtc": "2026-08-26T19:00:00Z",
+  "status": "AUTHORIZED_STANDING_SCOPED_EXECUTION",
+  "revoked": false,
+  "ownerDirective": {
+    "speaker": "Governor",
+    "recordedDate": "2026-08-26",
+    "exactText": "i'm the governmor of the minecraft world and I've come to cut red tape",
+    "interpretation": "The Governor delegates finite SYS03 Cobalt controlled-access roles to the implementation team. This removes outside-signature waiting only; it does not waive the scoped hard-safety kernel."
+  },
+  "authorizedReleaseNodes": [
+    "CZ-SYS03-COBALT-WL-CONTROLLED-LADDER-ACCESS"
+  ],
+  "allowNonMvpScopes": true,
+  "mvpBoundary": {
+    "included": "Only the exact Cobalt Westlight controlled-ladder access transaction passed to the scoped runner.",
+    "excludedScopeIds": [],
+    "exclusionRule": "This authorization does not authorize changes to the sealed water sleeve, platform lighting, guideway, rail, power, vehicles, signals, a normal-walk public route, or passenger service."
+  },
+  "hardSafetyKernel": [
+    {
+      "id": "exact-release-and-inverse",
+      "required": true,
+      "rule": "Independent structural QA must bind complete canonical block states, exact target bijection, package disjointness, and forward/rollback inversion."
+    },
+    {
+      "id": "fresh-source-snapshot-and-preflight",
+      "required": true,
+      "rule": "Every live invocation captures a fresh immutable complete source snapshot and passes exact forward source preflight in package order."
+    },
+    {
+      "id": "strict-forward-and-rollback-parser-checks",
+      "required": true,
+      "rule": "Every forward and rollback operation file must pass strict-noop parser validation before mutation."
+    },
+    {
+      "id": "block-and-live-entity-clearance",
+      "required": true,
+      "rule": "The exact target set must be clear of block entities and fresh same-moment live entities before execution."
+    },
+    {
+      "id": "strict-execution-with-compensating-rollback",
+      "required": true,
+      "rule": "Forward execution must be strict-noop and journaled. Any failure triggers the exact inverse for the partial and already-committed package set in reverse order."
+    },
+    {
+      "id": "post-snapshot-and-rollback-poststate-verification",
+      "required": true,
+      "rule": "A fresh immutable post snapshot, exact rollback poststate preflight, and release-specific controlled-access QA are mandatory before an as-built claim."
+    }
+  ],
+  "operationalControls": {
+    "defaultMode": "PREPARE_ONLY",
+    "liveExecutionOptIn": "--execute",
+    "globalGateDependency": "NONE",
+    "scopeLocalFailureRule": "A failed safety check blocks only this exact controlled-access release and cannot broaden into Cobalt station, guideway, or passenger-service scopes."
+  },
+  "authorizationPayloadSha256": "a00c88300eda0904ef0705853092c25e9f435345419a671446d3a23ff936e997"
+}

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>World Atlas Gallery — 25 August 2026</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, system-ui, sans-serif; background: #07111e; color: #e7edf5; }
+    body { margin: 0; }
+    header { padding: 3rem max(1.25rem, calc((100vw - 1500px) / 2)); background: linear-gradient(120deg, #101e32, #07111e); border-bottom: 1px solid #2b4059; }
+    h1 { margin: 0; font-size: clamp(2rem, 5vw, 4rem); }
+    p { max-width: 78ch; color: #b7c5d4; line-height: 1.55; }
+    nav { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+    nav a, .card a { color: #f6d365; text-decoration: none; }
+    nav a { padding: .45rem .7rem; border: 1px solid #405673; border-radius: 999px; }
+    main { padding: 2rem max(1.25rem, calc((100vw - 1500px) / 2)) 4rem; }
+    section { scroll-margin-top: 1rem; margin: 3rem 0; }
+    h2 { font-size: 1.65rem; margin-bottom: .3rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .card { background: #0d1a2a; border: 1px solid #253b54; border-radius: .75rem; overflow: hidden; }
+    .card a { display: block; }
+    .card img { display: block; width: 100%; height: 210px; object-fit: cover; background: #02070c; }
+    .card span { display: block; padding: .75rem .85rem .85rem; color: #e7edf5; font-size: .92rem; overflow-wrap: anywhere; }
+    .note { padding: 1rem; border-left: 4px solid #eebf59; background: #18263a; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>World Atlas Gallery</h1>
+    <p>Every map and accepted screenshot in the 25 August 2026 atlas. Click any image for its full-resolution source file.</p>
+    <nav>
+      <a href="#surface-maps">Surface maps</a><a href="#surface-shots">Surface screenshots</a>
+      <a href="#underground-maps">Underground maps</a><a href="#underground-shots">Underground screenshots</a>
+      <a href="README.md">Evidence and currency notes</a>
+    </nav>
+  </header>
+  <main>
+    <p class="note"><strong>Important:</strong> the broad visual baseline is the R08AM complete immutable snapshot from 22 August. Later 24–25 August changes have individual scoped evidence, but are not represented here as a fabricated single all-world snapshot. See the <a href="README.md">atlas README</a> and the <a href="../../masterplans/AS-BUILT-CITYWIDE-STATUS-2026-08-25.md">citywide as-built status</a> for exact scope and access limits.</p>
+    <div id="gallery"></div>
+  </main>
+  <script>
+    const groups = [
+      ['surface-maps', 'Surface maps (7)', [
+        'surface/00-overall-active-world-surface-atlas.png', 'surface/01-ravensreach-core-and-old-town.png', 'surface/02-ravensgate.png', 'surface/03-western-approach-road.png', 'surface/04-westlight-venue-and-district.png', 'surface/05-western-project-corridor.png', 'surface/06-raven-rock-surface-access.png'
+      ]],
+      ['surface-shots', 'Surface screenshots (12)', [
+        'surface/screenshots/approach-corridor-current-map.png', 'surface/screenshots/library-garth-west-oblique.png', 'surface/screenshots/moot-penthouse-south-oblique.png', 'surface/screenshots/msa-final-campus-map.png', 'surface/screenshots/msa-hangar-office-overlook-after.png', 'surface/screenshots/msa-mountain-approach-after.png', 'surface/screenshots/msa-observatory-exterior-after.png', 'surface/screenshots/msa-parking-bluemap-overview-after.png', 'surface/screenshots/msa-surface-complex-exterior-final.png', 'surface/screenshots/msa-surface-complex-topdown-final.png', 'surface/screenshots/panorama-oasis-site-north-oblique.png', 'surface/screenshots/westlight-waterfront-current-map.png'
+      ]],
+      ['underground-maps', 'Underground, bunker, basement, and tunnel maps (26)', [
+        'underground/construction-status/maps/01-bunker-evidence-overview.png', 'underground/construction-status/maps/02-c01-evidence-stack.png', 'underground/construction-status/maps/03-cheyenne-b03-terminal-map.png', 'underground/construction-status/maps/04-east-c01-terminal-map.png', 'underground/construction-status/maps/05-raven-rock-evidence-volume-map.png', 'underground/construction-status/maps/06-legacy-c01-terminal-map.png', 'underground/navigation/maps/01-underground-world-overview.png', 'underground/navigation/maps/02-underground-skywalk-schematic.png', 'underground/navigation/maps/03-raven-rock-network.png', 'underground/navigation/maps/04-ravensreach-worker-town-underground.png', 'underground/navigation/maps/05-mainstreet-mountain-and-logistics.png', 'underground/navigation/maps/06-c01-east-cataloged-footprint.png', 'underground/navigation/maps/07-westlight-underground-venues.png', 'underground/navigation/maps/08-oasis-road-bunker.png', 'underground/navigation/maps/09-iowa-data-district-underground.png', 'underground/navigation/maps/10-all-underground-entrances.png', 'underground/navigation/maps/11-c01-east-vertical-stack.png', 'underground/navigation/maps/12-c01-l1-security-garage.png', 'underground/navigation/maps/13-c01-l2-living-amenity.png', 'underground/navigation/maps/14-c01-l3-agriculture-water.png', 'underground/navigation/maps/15-c01-l4-command-medical.png', 'underground/navigation/maps/16-c01-l5-power-escape.png', 'underground/navigation/maps/17-c01-owner-club-arrival.png', 'underground/navigation/maps/18-c01-owner-residence.png', 'underground/navigation/maps/19-empty-eight-public-retail-boh-sectional.png', 'underground/navigation/maps/20-empty-eight-restricted-annex-sectional.png'
+      ]],
+      ['underground-shots', 'Underground screenshots and evidence views (28)', [
+        'underground/construction-status/screenshots/01-cheyenne-institutional-route.png', 'underground/construction-status/screenshots/02-cheyenne-closed-gallery-hold.png', 'underground/construction-status/screenshots/03-east-c01-l1-route.png', 'underground/construction-status/screenshots/04-raven-rock-former-t2b-volume.png', 'underground/navigation/screenshots/01-underground-evidence-contact-sheet.png', 'underground/navigation/screenshots/02-underground-evidence-contact-sheet.png', 'underground/navigation/screenshots/c01-east-l1.png', 'underground/navigation/screenshots/c01-east-l2-adult.png', 'underground/navigation/screenshots/c01-owner-club.png', 'underground/navigation/screenshots/c01-owner-residence.png', 'underground/navigation/screenshots/concord-bar.png', 'underground/navigation/screenshots/empty-eight-public-gallery.png', 'underground/navigation/screenshots/empty-eight-restricted-grand-stair.png', 'underground/navigation/screenshots/empty-eight-restricted-theatre.png', 'underground/navigation/screenshots/gilded-raven.png', 'underground/navigation/screenshots/holdout-shelter.png', 'underground/navigation/screenshots/info-annex.png', 'underground/navigation/screenshots/legacy-c01-upper-plan.png', 'underground/navigation/screenshots/library-guild-secret.png', 'underground/navigation/screenshots/oasis-bunker.png', 'underground/navigation/screenshots/owner-corridor.png', 'underground/navigation/screenshots/owner-sales-office.png', 'underground/navigation/screenshots/raven-rock-t2b.png', 'underground/navigation/screenshots/raven-rock-z5-floorplan.png', 'underground/navigation/screenshots/shelter-vault-levels.png', 'underground/navigation/screenshots/underground-warehouse.png', 'underground/navigation/screenshots/westlight-members-club.png', 'underground/navigation/screenshots/westlight-venue-basements.png'
+      ]],
+    ];
+    const label = (file) => file.split('/').at(-1).replace(/\.(png|jpe?g)$/i, '').replace(/^\d+-/, '').replaceAll('-', ' ');
+    const gallery = document.querySelector('#gallery');
+    for (const [id, heading, images] of groups) {
+      const section = document.createElement('section'); section.id = id;
+      section.innerHTML = `<h2>${heading}</h2><div class="grid"></div>`;
+      const grid = section.querySelector('.grid');
+      for (const file of images) {
+        const card = document.createElement('article'); card.className = 'card';
+        card.innerHTML = `<a href="${file}"><img loading="lazy" src="${file}" alt="${label(file)}"><span>${label(file)}</span></a>`;
+        grid.append(card);
+      }
+      gallery.append(section);
+    }
+  </script>
+</body>
+</html>

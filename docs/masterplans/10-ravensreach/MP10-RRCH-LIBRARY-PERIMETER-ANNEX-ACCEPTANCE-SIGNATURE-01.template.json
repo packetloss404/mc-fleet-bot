@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "MP10-RRCH-LIBRARY-PERIMETER-ANNEX-ACCEPTANCE-SIGNATURE-01",
+  "contractIdentitySha256": "COPY_FROM_GOVERNING_CONTRACT",
+  "governingContractSha256": "COPY_SHA256_OF_GOVERNING_CONTRACT_FILE",
+  "source": { "snapshot": "COPY_FROM_GOVERNING_CONTRACT", "captureId": "COPY_FROM_GOVERNING_CONTRACT", "captureManifestSha256": "COPY_FROM_GOVERNING_CONTRACT", "libraryRegionSha256": "COPY_FROM_GOVERNING_CONTRACT" },
+  "namedOwners": { "library": "ASSIGN_RRCH_LIBRARY_OWNER", "annexReceiver": "ASSIGN_ANNEX_RECEIVER_OWNER", "loggia": "ASSIGN_RG_LOGGIA_OWNER" },
+  "design": { "targetCoordinateSetSha256": "EXACT_TARGET_CELL_SET_SHA256", "interactionHaloCoordinateSetSha256": "EXACT_INTERACTION_HALO_CELL_SET_SHA256", "targetCellCount": 0, "interactionHaloCellCount": 0, "targetSourceStateSetSha256": "EXACT_CANONICAL_SOURCE_STATE_SET_SHA256", "targetStateSetSha256": "EXACT_CANONICAL_TARGET_STATE_SET_SHA256", "rollbackStateSetSha256": "EXACT_CANONICAL_ROLLBACK_STATE_SET_SHA256", "completeCanonicalBlockStates": false, "exactForwardRollbackInverseVerified": false, "noUnlistedContainersOrBlockEntities": false, "seamInteraction": "TOUCHES_IF-RRCH-LIBRARY-LOGGIA" },
+  "fixtureMigration": { "sourceFixtureInventorySha256": "COPY_FROM_GOVERNING_CONTRACT", "fixtureCount": 72, "completeInventoryListed": false, "noFixtureLossOrDuplication": false, "exactForwardRollbackInverseVerified": false, "targetStateSetSha256": "EXACT_FIXTURE_TARGET_STATE_SET_SHA256", "retainedStateSetSha256": "EXACT_FIXTURE_RETAINED_STATE_SET_SHA256", "rollbackStateSetSha256": "EXACT_FIXTURE_ROLLBACK_STATE_SET_SHA256", "entries": [] },
+  "bilateralLibraryLoggiaInterface": { "id": "IF-RRCH-LIBRARY-LOGGIA", "libraryOwner": "COPY_LIBRARY_OWNER", "loggiaOwner": "COPY_LOGGIA_OWNER", "seamCoordinateSetSha256": "COPY_FROM_GOVERNING_CONTRACT", "seamSourceStateSha256": "COPY_FROM_GOVERNING_CONTRACT", "exactThresholdBehaviorAccepted": false, "rollbackOwnershipAccepted": false },
+  "routeAndReturn": { "transitionLandings": [], "bidirectionalNormalWalkProofSha256": "EXACT_ROUTE_PROOF_SHA256", "noJumpBidirectionalVerified": false, "libraryReturnAnchor": { "label": "ASSIGN_LIBRARY_RETURN", "x": 0, "y": 0, "z": 0 }, "annexReceiverReturnAnchor": { "label": "ASSIGN_ANNEX_RETURN", "x": 0, "y": 0, "z": 0 } }
+}

@@ -190,6 +190,7 @@ function referenceCoordinate(geometry, attributes, extent) {
       derived: false,
     };
   }
+  if (geometry.type === 'point' && geometry.position) {} else if (geometry.type === 'point' && Number.isFinite(geometry.x) && Number.isFinite(geometry.z)) { return { x: Math.round(geometry.x), y: Number.isFinite(geometry.y) ? Math.round(geometry.y) : null, z: Math.round(geometry.z), type: 'exact catalog point', derived: false }; }
   if (geometry.type === 'point' && geometry.position) {
     return {
       x: Math.round(geometry.position.x),

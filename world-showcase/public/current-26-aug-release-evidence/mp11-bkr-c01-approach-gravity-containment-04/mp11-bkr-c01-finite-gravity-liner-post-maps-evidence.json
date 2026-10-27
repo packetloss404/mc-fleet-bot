@@ -1,0 +1,21 @@
+{
+  "id": "MP11-BKR-C01-APPROACH-GRAVITY-CONTAINMENT-04-POST-MAPS",
+  "status": "POSTSTATE_MAPS_BOUND_TO_ACCEPTED_QA",
+  "source": {
+    "manifest": "data/world-review/mp11-bkr-c01-approach-gravity-containment-04-live-20260828T003000Z/rebound-buildops/mp11-bkr-c01-approach-gravity-containment-04.manifest.json",
+    "manifestSha256": "6ffb396e65131707cbd4e791b2785d5140bb71194d377c301783904d21012c45",
+    "postQa": "data/world-review/mp11-bkr-c01-approach-gravity-containment-04-live-20260828T003000Z/independent-post-qa/mp11-bkr-c01-approach-gravity-containment-04-post-qa.json",
+    "postQaSha256": "7a49c617620dd442044ba1d690d77cf3f6d83651f06aeb3160abf255c772ee16",
+    "snapshot": "data/worldsnap-mp11-bkr-c01-approach-gravity-containment-04-post-20260828T003000Z"
+  },
+  "targetCells": 42,
+  "haloCells": 226,
+  "mapFiles": [
+    "mp11-bkr-c01-finite-gravity-liner-post-plan.svg",
+    "mp11-bkr-c01-finite-gravity-liner-post-section-z-40.svg"
+  ],
+  "nonClaims": [
+    "Maps document only the exact finite containment liner.",
+    "They do not depict or authorize a new access route, endpoint, bypass, or public opening."
+  ]
+}

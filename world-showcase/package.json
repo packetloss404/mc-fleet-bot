@@ -7,7 +7,15 @@
     "build": "next build",
     "start": "next start",
     "sync:underground": "node scripts/sync_underground_report.mjs",
+    "sync:master-plan": "node scripts/sync_master_plan_railway_report.mjs",
+    "sync:build-index": "node scripts/sync_master_plan_build_index.mjs",
     "sync:coordinates": "node scripts/sync_coordinate_directory.mjs",
+    "sync:empty-eight": "node scripts/sync_empty_eight_publication.mjs",
+    "sync:bunkers": "node scripts/sync_bunker_construction_status.mjs",
+    "sync:world-atlas": "node scripts/sync_world_atlas_20260825.mjs",
+    "sync:current-surface-atlas": "node scripts/sync_current_surface_atlas_20260826.mjs",
+    "sync:build-contract-maps": "node scripts/sync_build_contract_maps_20260826.mjs",
+    "sync:c01-main-switchback": "node scripts/sync_c01_main_switchback_design_20260828.mjs",
     "lint": "next lint"
   },
   "dependencies": {

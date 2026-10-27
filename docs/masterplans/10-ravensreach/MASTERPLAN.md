@@ -75,6 +75,7 @@ The terminal Ravensreach–MainStreet route survey records `PASS` against snapsh
 - Ladderless primary vertical circulation in the multi-floor structures covered by the saved-world scan.
 - Post-build room fitout and selected route assertions at `7/7` each.
 - A terminal, exact-path Ravensreach–MainStreet physical route survey with `PASS` status.
+- `MP10-RRCH-COMMITTEE-BRIDGE-01`: a 14-cell, level Committee Room deck that reconnects its west/east normal-walk components. It has a new complete source/post pair, strict forward and exact rollback-poststate proof, zero live-entity clearance, protected furniture retention, and independent 20-station route QA. This contained repair is not programme completion; its exact release evidence is in [`MP10-RRCH-COMMITTEE-BRIDGE-01-OFFLINE.md`](MP10-RRCH-COMMITTEE-BRIDGE-01-OFFLINE.md).
 - Later public-realm/civic-quarter work documented as built and audited; current physical truth must still be checked against the bound snapshot before alteration.
 
 ### Proposed / unclosed work
@@ -153,3 +154,43 @@ Close exact interfaces to Ravensgate, the civic library/pavilion ensemble, Town 
 - [`MASTERPLAN-RAVENSREACH-PUBLIC-REALM.md`](../../ravensreach/design/MASTERPLAN-RAVENSREACH-PUBLIC-REALM.md), [`RAVENSREACH-REDESIGN-2026-07-26.md`](../../ravensreach/design/RAVENSREACH-REDESIGN-2026-07-26.md), and the [`2026-07-25 incident`](../../ravensreach/qa/INCIDENT-2026-07-25-ravensreach-structure-loss.md): design/incident provenance, not current release authority.
 
 **Derived/inferred in this plan:** the authority hierarchy, supersession approach, and phased roadmap are planning judgments; the scan envelope is summarized from the scan record; the nested-ownership and condition-watch priorities are inferred from catalog structure relationships and scores. No unverified legacy proposal is promoted to built or accepted status.
+
+## 11. 2026-08 circulation readiness addendum
+
+The six-level library's ladder-retirement operation is a confirmed one-tread spiral (`x=-118..-116`, `z=-443..-441`). The 7/7 route QA proves that the six levels were reachable in the historical snapshot; it does not certify a two-wide public stair, 3×3 landings, or current headroom. `CIRC-RRCH-LIB-01` must survey the core and install a two-clear-wide switchback or widened perimeter primary route with three-clear headroom, 3×3 turn landings, edge cues, level signs, and bidirectional no-jump proof. The original spiral may remain only as a signed private/service feature after that compliant route exists.
+
+The accepted Ravensreach–MainStreet route is usable evidence, not proof of a finished five-wide promenade: it passes normal walking with two-block body clearance and at least four clear headroom, while reporting four samples below three-wide and 261 below the five-wide target. Preserve it; inspect the four narrow samples first and widen only disjoint, ownership-cleared segments. See [`cross-district-circulation-audit-20260822.md`](../../../data/world-review/cross-district-circulation-audit-20260822.md).
+
+## 12. 2026-08 fresh defect census
+
+The 2026-08-22 complete-save census confirms that the six-level library still
+connects its registered floors by normal walking, but its one-tread spiral is
+not promoted to public/common-area acceptance. More importantly, it identifies
+a real incomplete programme in the nested Moot Hall stack: Clerks Hall is
+walkable but unfurnished, Committee and Meeting rooms are under-detailed, and
+Attic Store has no standable interior cells. These are separate from the
+historic condition score and require the contained `RRCH-MOOT-01` package;
+Attic Store stays closed/service-only until it has a supported floor and
+normal-walk service approach. Exact room bounds, release sequencing and
+non-destructive gates are in [the public-realm defect lane](../../redevelopment/2026-08-22-public-realm-defect-lane.md).
+
+## 13. 2026-08 bounded Committee Room circulation release
+
+`MP10-RRCH-COMMITTEE-BRIDGE-01` is accepted as a narrow as-built correction,
+not a change to the programme's completion state. It adds 14 exact
+polished-deepslate deck cells at y=76 inside the owned Committee Room void,
+reconnecting y=77 stations `(-90,77,-357)` and `(-81,77,-357)` around the
+retained table and chairs. The x=-92 partition, lectern, chiseled bookshelf,
+table, chairs, upper spine, and all cross-area boundaries remained excluded.
+
+The release is bound to complete sealed source and post captures, exact forward
+and rollback operations, parser/source/inverse proof, zero live entities,
+journalled strict execution (14 changes, zero no-ops), post rollback proof,
+and an independent conservative reachability pass across all 20 named route
+stations. The evidence ledger is
+[`mp10-rrch-committee-bridge-01-live-20260826T063859Z/release-ledger.json`](../../../data/world-review/mp10-rrch-committee-bridge-01-live-20260826T063859Z/release-ledger.json).
+
+No public accessibility, venue/egress, citywide continuity, citizen-route
+configuration, library-stair, or MainStreet/Town Expansion-interface claim is
+created by this repair. Those remain separate programme work under the
+completion register.

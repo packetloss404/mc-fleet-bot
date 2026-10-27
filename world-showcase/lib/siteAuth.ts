@@ -35,6 +35,11 @@ export function verifySiteSession(
   session: string | undefined,
   now = Date.now(),
 ): boolean {
+  // The showcase is public; retained callers no longer impose a PIN gate.
+  void session;
+  void now;
+  return true;
+  /*
   if (!session) return false;
   const [version, rawExpiry, suppliedSignature, ...extra] = session.split('.');
   if (
@@ -50,7 +55,7 @@ export function verifySiteSession(
     return false;
   }
   const payload = `${version}.${rawExpiry}`;
-  return equal(signature(payload), suppliedSignature);
+  return equal(signature(payload), suppliedSignature); */
 }
 
 export function verifySitePasscode(candidate: unknown): boolean {

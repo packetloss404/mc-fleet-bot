@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "MP11-C01-PUBLIC-INDEPENDENT-RETURN-02-PREPARE-AUTHORIZATION",
+  "status": "AUTHORIZED_PREPARE_ONLY_SOURCE_BOUND_COMPILATION",
+  "releaseId": "MP11-C01-PUBLIC-INDEPENDENT-RETURN-02",
+  "scopeOwner": "C01 Public Lower Arrival Interface Owner",
+  "counterpart": "C01 Public Upper Landing Interface Owner",
+  "designOwner": "C01 Public Independent-Return Design Owner",
+  "prepareOnlyAuthorized": true,
+  "executionAuthorized": false,
+  "rconAuthorized": false,
+  "worldMutationAuthorized": false,
+  "revoked": false,
+  "authorizationBoundary": "May compile, bind source states, run offline preflights and projected QA only. A separately fresh, live entity-cleared execution authorization and full guarded kernel remain mandatory before any mutation."
+}

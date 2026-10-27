@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "mp02-b08-egress-lighting-governor-scoped-execution-authorization",
+  "status": "AUTHORIZED_STANDING_SCOPED_EXECUTION",
+  "revoked": false,
+  "authorizedReleaseId": "MP02-B08-EGRESS-LIGHTING-01",
+  "scope": "Only five supported hanging lanterns in the raw B08 continuation at x=2008,y=134,z=-700/-712/-724/-736/-744; never B03, B09, rail/control cells, the accepted handoff, or the egress shaft structure.",
+  "hardSafetyKernel": [
+    "fresh complete immutable source and compiler rebind",
+    "fluid/gravity, block-entity, and same-moment live-entity clearance",
+    "exact forward/rollback inverse plus strict no-op parser/preflight",
+    "journaled execution, fresh post capture, rollback-poststate preflight, and independent immutable-post route/light QA"
+  ],
+  "nonClaims": ["public opening", "chamber completion", "B03/B09 transfer", "Master Plan completion"]
+}

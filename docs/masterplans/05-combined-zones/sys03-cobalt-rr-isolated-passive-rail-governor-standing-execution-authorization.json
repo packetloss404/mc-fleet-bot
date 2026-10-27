@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "sys03-cobalt-rr-isolated-passive-rail-governor-standing-execution-authorization",
+  "projectId": "combined-zones-phase1",
+  "recordedAtUtc": "2026-08-26T21:00:00Z",
+  "status": "AUTHORIZED_STANDING_SCOPED_EXECUTION",
+  "revoked": false,
+  "ownerDirective": {"speaker":"Governor","recordedDate":"2026-08-26","exactText":"i'm the governmor of the minecraft world and I've come to cut red tape","interpretation":"The Governor delegates this finite Ravensreach passive-rail foundation, retaining every hard-safety control."},
+  "authorizedReleaseNodes": ["CZ-SYS03-COBALT-RR-ISOLATED-PASSIVE-RAIL"],
+  "allowNonMvpScopes": true,
+  "mvpBoundary": {"included":"Only the exact two isolated Ravensreach tube liners and passive rail slices.","excludedScopeIds":[],"exclusionRule":"No public route, guideway connection, vehicle, power, signal, platform opening, or passenger service is authorized."},
+  "hardSafetyKernel": [
+    {"id":"exact-release-and-inverse","required":true,"rule":"Canonical state binding, exact inversion, tube isolation, and independent QA are mandatory."},
+    {"id":"fresh-source-snapshot-and-preflight","required":true,"rule":"Fresh immutable source and exact preflight are mandatory immediately before mutation."},
+    {"id":"strict-forward-and-rollback-parser-checks","required":true,"rule":"Forward and reverse parser checks are strict-noop."},
+    {"id":"block-and-live-entity-clearance","required":true,"rule":"Exact block-entity and fresh live-entity clearance are mandatory."},
+    {"id":"strict-execution-with-compensating-rollback","required":true,"rule":"Execution is journaled and failure rolls back exactly in reverse order."},
+    {"id":"post-snapshot-and-rollback-poststate-verification","required":true,"rule":"Fresh post capture, rollback-poststate proof, and independent post QA precede acceptance."}
+  ],
+  "operationalControls": {"defaultMode":"PREPARE_ONLY","liveExecutionOptIn":"--execute","globalGateDependency":"NONE","scopeLocalFailureRule":"Failure blocks only this exact passive rail foundation."},
+  "authorizationPayloadSha256": "f919294424072bb71574d5cc8b531f16d9955cf91e694a9083801e4f781010aa"
+}

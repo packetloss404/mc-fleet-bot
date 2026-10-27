@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "id": "town-underground-bunker-circulation-audit-20260822",
+  "generatedAtUtc": "2026-08-22T00:00:00Z",
+  "status": "DESIGN_CORRECTIONS_REQUIRED_BEFORE_NEW_PUBLIC_OR_EGRESS_CLAIMS",
+  "readOnly": true,
+  "worldMutated": false,
+  "scope": {
+    "included": [
+      "Town Expansion R1 representative circulation",
+      "east C01 internal stairs, service spine, and portal approach",
+      "MainStreet underground warehouse approach",
+      "Observatory owner portal-gallery connection",
+      "Empty Eight public gallery, BOH, and restricted lower annex",
+      "Cheyenne B03 bounded inspection route"
+    ],
+    "excluded": [
+      "live-player traversal",
+      "powered-door behaviour",
+      "entity crowding",
+      "unreleased world changes",
+      "real-world code-compliance certification"
+    ]
+  },
+  "sourceBindings": [
+    {
+      "path": "data/world-review/underground-navigation-r08am-20260822/current-route-manifest.json",
+      "sha256": "7a58d687db4d6771920cdab3909abe5299f5caf5357570ee2b334866d0c6e9fa",
+      "role": "current route declarations"
+    },
+    {
+      "path": "data/world-review/underground-navigation-r08am-20260822/current-route-qa.json",
+      "sha256": "855e4ff07dd31084193c01092d5ae6395197b13ca15f0e9b8055958be0e6ea23",
+      "role": "R08AM-bound offline route result; 19 of 22 declared routes pass and 3 fail"
+    },
+    {
+      "path": "data/world-review/combined-zones-r08am-live-20260822T161818Z/r08am-post-release-qa.json",
+      "sha256": "86e4eacb170ad04ae6942d03bfa00e107c3603faf0788773dd0ce27f6fb65cce",
+      "role": "Empty Eight restricted-annex exact post-state QA"
+    },
+    {
+      "path": "data/world-review/combined-zones-r12o-b03-complete-enclosed-route-commissioning-20260822T041000Z/r12o-commissioning.json",
+      "sha256": "e4ee22264c73fbac7e1f3c6640a78fe452f693d5a9daf05bb2f929c90210b1d4",
+      "role": "Cheyenne B03 bounded passive route commissioning"
+    },
+    {
+      "path": "docs/redevelopment/2026-07-28-town-expansion/modern-underground-corridor-standard.md",
+      "sha256": "8f327e5854783402b059f046e24db11bb1a97633dea31a04fd715fa87db97b66",
+      "role": "existing binding Minecraft circulation standard"
+    },
+    {
+      "path": "docs/redevelopment/2026-08-22-bunker-construction-status/bunker-construction-status.json",
+      "sha256": "e385f666bfe82a6969388958cd6678f293cbebe46fc3cd205b0c23b1244b4a84",
+      "role": "current bunker construction and nonclaim classification"
+    }
+  ],
+  "method": {
+    "rule": "A normal-walk path only proves one traversable line under its declared movement policy. It does not by itself prove clear width, uniform stair geometry, landing depth, live door operation, separated egress, or an accessible alternative.",
+    "currentCheckerPolicy": {
+      "maximumRiseBlocks": 1,
+      "maximumDropBlocks": 1,
+      "minimumHeadroomBlocks": 2,
+      "jumpControl": false,
+      "dig": false,
+      "tower": false,
+      "parkour": false,
+      "sprint": false
+    }
+  },
+  "findings": [
+    {
+      "id": "CIRC-001",
+      "severity": "HIGH",
+      "status": "DOCUMENTATION_AND_QA_GAP",
+      "finding": "The current 22-route checker uses two-block headroom and does not measure a continuous clear-width envelope or landing depth. It cannot certify that a public corridor is not one block wide.",
+      "affected": "All 22 declared R08AM-bound Town Expansion routes; especially routes labelled public, public-vehicle-and-pedestrian-observation, worker-public, and citizen.",
+      "correctionPackage": "CIRC-QA-CORE-01"
+    },
+    {
+      "id": "CIRC-002",
+      "severity": "HIGH",
+      "status": "UNPROVEN_CONNECTION",
+      "finding": "The C01 mountain-portal to L1 route fails both offline directions: no bounded normal-walk path was found.",
+      "affected": "TE-ROUTE-C01-MOUNTAIN-PORTAL-L1",
+      "correctionPackage": "CIRC-C01-PORTAL-01"
+    },
+    {
+      "id": "CIRC-003",
+      "severity": "HIGH",
+      "status": "UNPROVEN_CONNECTION",
+      "finding": "The MainStreet surface vehicle portal to dry warehouse hall route fails both offline directions: no bounded normal-walk path was found.",
+      "affected": "TE-ROUTE-MAINSTREET-WAREHOUSE-DRIVE-HALL",
+      "correctionPackage": "CIRC-MSA-PORTAL-01"
+    },
+    {
+      "id": "CIRC-004",
+      "severity": "MEDIUM",
+      "status": "UNPROVEN_CONNECTION",
+      "finding": "The Observatory hidden entry to inactive portal-gallery ring route fails both offline directions. It remains owner-only and must not be shown as an available connection.",
+      "affected": "TE-ROUTE-OBSERVATORY-PORTAL-HUB",
+      "correctionPackage": "CIRC-OBS-GALLERY-01"
+    },
+    {
+      "id": "CIRC-005",
+      "severity": "HIGH",
+      "status": "EXISTING_NONCLAIM_MUST_BE_RETAINED",
+      "finding": "Empty Eight has bounded internal public exploration only. Its eleven south bays and two PF08 stairs do not have released exterior discharge, accessible route, or commissioned emergency egress. BOH and the lower annex are restricted, not public routes.",
+      "affected": "R08AL/R08AM",
+      "correctionPackage": "CIRC-EE-EGRESS-01"
+    },
+    {
+      "id": "CIRC-006",
+      "severity": "MEDIUM",
+      "status": "EXISTING_NONCLAIM_MUST_BE_RETAINED",
+      "finding": "Cheyenne B03 is a 613-station passive internal inspection route with the index-800 chamber cap closed and indices 0..187 held. It has no public, secure, exterior, or emergency-route acceptance.",
+      "affected": "R12O B03",
+      "correctionPackage": "CIRC-B03-ACCESS-01"
+    },
+    {
+      "id": "CIRC-007",
+      "severity": "MEDIUM",
+      "status": "HISTORICAL_RECHECK_REQUIRED",
+      "finding": "An earlier citizen-commute repair recorded four narrow cells, including one one-block-wide cell. That evidence is bound to a superseded July snapshot and cannot establish current geometry, but it is a mandatory first-survey target before citizen-route activation.",
+      "affected": "Ravensreach-to-MainStreet citizen commute",
+      "correctionPackage": "CIRC-CITIZEN-RECHECK-01"
+    }
+  ],
+  "acceptedPositiveEvidence": [
+    {
+      "scope": "C01 public vertical route",
+      "evidence": "Current route QA passes both directions over 89 path cells; manifest declares a seven-wide authored stair with maximum one-block rise/drop.",
+      "limit": "The current checker still does not independently measure the seven-wide clear envelope or landing depth."
+    },
+    {
+      "scope": "C01 owner vertical route",
+      "evidence": "Current route QA passes both directions over 102 path cells; manifest declares full landings and no ladder dependency.",
+      "limit": "Treat as owner-only until a current dimensional audit is added."
+    },
+    {
+      "scope": "Westlight Blue Drum venue core",
+      "evidence": "Current route QA passes both directions over 63 path cells; manifest declares a switchback stair with full landings and no ladder.",
+      "limit": "Current proof remains a two-block-headroom normal-walk test, not a cross-section certificate."
+    },
+    {
+      "scope": "Empty Eight lower annex",
+      "evidence": "Exact R08AM QA proves a secured seven-wide 25-block grand descent and enclosed lower landing.",
+      "limit": "Restricted adults-only circulation only; not public egress."
+    }
+  ],
+  "singleBlockStairConclusion": "No current accepted source claims a one-block-wide stair as a primary public, owner, staff, or B03 route. The audit cannot certify the absence of single-width pinch points across all existing paths until CIRC-QA-CORE-01 runs on a fresh snapshot. The historical citizen-commute one-block narrow point must be re-surveyed before activation.",
+  "builderPackages": [
+    "CIRC-QA-CORE-01",
+    "CIRC-C01-PORTAL-01",
+    "CIRC-MSA-PORTAL-01",
+    "CIRC-OBS-GALLERY-01",
+    "CIRC-EE-EGRESS-01",
+    "CIRC-B03-ACCESS-01",
+    "CIRC-CITIZEN-RECHECK-01"
+  ]
+}

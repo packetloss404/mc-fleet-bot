@@ -1,0 +1,609 @@
+{
+  "schemaVersion": 1,
+  "id": "MP11-C01-MAIN-SWITCHBACK-GUARD-TRANSITION-04",
+  "generatedAtUtc": "2026-08-28T11:25:00.000Z",
+  "status": "FAIL_CLOSED_GUARD_AND_TRANSITION_DESIGN_ONLY",
+  "mutationAuthority": false,
+  "source": {
+    "snapshot": "data/worldsnap-mp11-c01-public-independent-return-02-exec-post-20260827T023000Z",
+    "captureId": "combined-zones-99e0bdf1e2f547afbbfe75b0dea4ab10",
+    "readiness03": {
+      "path": "data/world-review/mp11-c01-main-switchback-readiness-03-return02-post-20260827T023000Z/mp11-c01-main-switchback-readiness-03.json",
+      "sha256": "e27a42ca5543ecf7254ebb252ff8fc48c0a4409c160d6b90f6ad5ea81008f9f4"
+    }
+  },
+  "guardContract": {
+    "state": "minecraft:polished_deepslate_wall",
+    "geometry": "two-high outside the 5-wide × 5-clear-high envelope at cross offsets -3 and +3 for every main station; fold uses the station axis",
+    "cellCount": 100,
+    "coordinateSetSha256": "8d8b87dce723eba3cc9c5127ad152209cfef38f4fb4d66ac97d7de49ad8f8e1c",
+    "clearEnvelopeIntersectionCount": 0,
+    "sourceInteractionHalo": {
+      "cellCount": 317,
+      "coordinateSetSha256": "2cafffb5c26599acae8cc35750bb34b2df29730152de1c9ad03c86fd0e8f6bcf",
+      "fluidOrGravityHits": []
+    },
+    "returnProtectedIntersectionCount": 0
+  },
+  "protectedCurrentRouteTransition": {
+    "requiredSequence": [
+      "Retain accepted Return-02 and its two directed normal-walk proofs before any main-route change.",
+      "Compile a separate main package that establishes every future main tread/support and guard state while Return-02 stays unchanged.",
+      "Prove fresh post-state Return-02 bidirectional functionality before altering a current protected-route cell.",
+      "Only then define a separately reviewed current-route retirement/connection treatment; no transition target is selected here."
+    ],
+    "exactInterfaces": {
+      "upper": {
+        "owner": "C01 Public Upper Landing Interface Owner",
+        "contract": {
+          "id": "C01-PUBLIC-MAIN-UPPER-5X5-02",
+          "role": "C01 Public Upper Landing Interface Owner",
+          "direction": "upper-public-landing → main switchback",
+          "point": [
+            839,
+            43,
+            -47
+          ],
+          "clearFace": {
+            "width": 5,
+            "height": 5,
+            "cellCount": 25,
+            "sourceStateSha256": "74fb134a31078980cc7297b2f0dae9bdc05fd3377c91e312baa826d86b1d1d05",
+            "cells": [
+              {
+                "point": [
+                  839,
+                  43,
+                  -49
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  44,
+                  -49
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  45,
+                  -49
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  46,
+                  -49
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  47,
+                  -49
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  43,
+                  -48
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  44,
+                  -48
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  45,
+                  -48
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  46,
+                  -48
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  47,
+                  -48
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  43,
+                  -47
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  44,
+                  -47
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  45,
+                  -47
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  46,
+                  -47
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  47,
+                  -47
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  43,
+                  -46
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  44,
+                  -46
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  45,
+                  -46
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  46,
+                  -46
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  47,
+                  -46
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  43,
+                  -45
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  44,
+                  -45
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  45,
+                  -45
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  46,
+                  -45
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  839,
+                  47,
+                  -45
+                ],
+                "state": "minecraft:air"
+              }
+            ]
+          },
+          "supportRow": {
+            "width": 5,
+            "cellCount": 5,
+            "sourceStateSha256": "d76c40e48ffd4d696d403e8f08601a7755f7b6f14bb962b727ede870391bf960",
+            "cells": [
+              {
+                "point": [
+                  839,
+                  42,
+                  -49
+                ],
+                "state": "minecraft:light_blue_concrete"
+              },
+              {
+                "point": [
+                  839,
+                  42,
+                  -48
+                ],
+                "state": "minecraft:light_blue_concrete"
+              },
+              {
+                "point": [
+                  839,
+                  42,
+                  -47
+                ],
+                "state": "minecraft:light_blue_concrete"
+              },
+              {
+                "point": [
+                  839,
+                  42,
+                  -46
+                ],
+                "state": "minecraft:light_blue_concrete"
+              },
+              {
+                "point": [
+                  839,
+                  42,
+                  -45
+                ],
+                "state": "minecraft:light_blue_concrete"
+              }
+            ]
+          },
+          "allSourceCellsSha256": "16602af24a0558174e54ec60bdaabc22dbe3ce24244e78bbbab1a598c4e816e0"
+        }
+      },
+      "lower": {
+        "owner": "C01 Public Lower Arrival Interface Owner",
+        "contract": {
+          "id": "C01-PUBLIC-MAIN-LOWER-5X5-02",
+          "role": "C01 Public Lower Arrival Interface Owner",
+          "direction": "main switchback → lower-public-landing",
+          "point": [
+            837,
+            25,
+            -54
+          ],
+          "clearFace": {
+            "width": 5,
+            "height": 5,
+            "cellCount": 25,
+            "sourceStateSha256": "50e67cb4d059fe738f5c320e6c330cb3d3e04cb46f7b4f5838c1078108af74e7",
+            "cells": [
+              {
+                "point": [
+                  837,
+                  25,
+                  -56
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  26,
+                  -56
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  27,
+                  -56
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  28,
+                  -56
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  29,
+                  -56
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  25,
+                  -55
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  26,
+                  -55
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  27,
+                  -55
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  28,
+                  -55
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  29,
+                  -55
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  25,
+                  -54
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  26,
+                  -54
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  27,
+                  -54
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  28,
+                  -54
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  29,
+                  -54
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  25,
+                  -53
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  26,
+                  -53
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  27,
+                  -53
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  28,
+                  -53
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  29,
+                  -53
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  25,
+                  -52
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  26,
+                  -52
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  27,
+                  -52
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  28,
+                  -52
+                ],
+                "state": "minecraft:air"
+              },
+              {
+                "point": [
+                  837,
+                  29,
+                  -52
+                ],
+                "state": "minecraft:air"
+              }
+            ]
+          },
+          "supportRow": {
+            "width": 5,
+            "cellCount": 5,
+            "sourceStateSha256": "f7e6b2fa8bfd2bbd04e7f108d46a321dc42a7ad5b341321cefe5a996c6a32bb0",
+            "cells": [
+              {
+                "point": [
+                  837,
+                  24,
+                  -56
+                ],
+                "state": "minecraft:polished_blackstone"
+              },
+              {
+                "point": [
+                  837,
+                  24,
+                  -55
+                ],
+                "state": "minecraft:polished_blackstone"
+              },
+              {
+                "point": [
+                  837,
+                  24,
+                  -54
+                ],
+                "state": "minecraft:polished_blackstone"
+              },
+              {
+                "point": [
+                  837,
+                  24,
+                  -53
+                ],
+                "state": "minecraft:moss_block"
+              },
+              {
+                "point": [
+                  837,
+                  24,
+                  -52
+                ],
+                "state": "minecraft:moss_block"
+              }
+            ]
+          },
+          "allSourceCellsSha256": "b1bc5ef57b8f4a3a5f4101d101a7930ddddfe67fe59073327a98a8684e36722e"
+        }
+      },
+      "return": {
+        "owner": "C01 Independent Return-02 Steward",
+        "postQa": "accepted bidirectional 28-station Return-02 is retained; no target/halo overlap permitted",
+        "protectedBounds": {
+          "minX": 837,
+          "maxX": 849,
+          "minY": 24,
+          "maxY": 48,
+          "minZ": -70,
+          "maxZ": -63
+        },
+        "intersectionCellCount": 0
+      }
+    },
+    "unresolvedHardInputs": [
+      "Exact guard-to-existing-landing endcap states and any required gate/handrail joins.",
+      "Canonical source→target/inverse records and strict parser/preflight package for tread, clearance, guards, and transitions.",
+      "Fresh protected-core/container/live-entity clearance; journal, post capture, rollback proof, and independent main + retained-return QA."
+    ]
+  },
+  "nonClaims": [
+    "no operations",
+    "no protected-route alteration",
+    "no public opening, egress, or service authorization"
+  ],
+  "safetyBoundary": {
+    "readOnly": true,
+    "liveCallsPerformed": false,
+    "rconCallsPerformed": false,
+    "worldMutationsPerformed": false,
+    "forwardOperationFilesEmitted": 0,
+    "rollbackOperationFilesEmitted": 0,
+    "releaseManifestEmitted": false
+  },
+  "identitySha256": "ec6d174c1bed1f592d53e7cf16a8eec063279a9dbd1e60922faf7a4d122cd882"
+}

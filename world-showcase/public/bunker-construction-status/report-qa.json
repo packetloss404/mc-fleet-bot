@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "bunker-construction-status-report-qa-20260822",
+  "generatedAtUtc": "2026-08-22T18:00:00Z",
+  "status": "PASS",
+  "checks": {
+    "terminalLedgerAccepted": true,
+    "terminalCompleteSaveBound": true,
+    "terminalRegionBound": true,
+    "cheyenneExactCurrentTargets": true,
+    "cheyenneNonclaimsPreserved": true,
+    "ravenS1RollbackRecognized": true,
+    "ravenT2bSupersededRecognized": true,
+    "ravenNoCurrentComplexClaim": true,
+    "legacyC01CurrentCensusBound": true,
+    "eastC01CurrentModelCensusBound": true,
+    "eastC01AllDifferencesExplained": true,
+    "eastC01CurrentRouteFailurePreserved": true,
+    "eastC01LiveNonclaimsPreserved": true,
+    "designSeparatedFromPhysicalProof": true,
+    "noMutationClaim": true,
+    "renderedMediaPresentOrExplicitlySkipped": true
+  },
+  "passed": 16,
+  "total": 16,
+  "report": {
+    "path": "bunker-construction-status.json",
+    "sha256": "1f55bc4d78da73a7fcd3791be9ed1906f5b92715d4f102a6385d8c939e37bd3a",
+    "payloadSha256": "1e006fb982776f0cd6dee29f0745f530d93c265faf230963fbfc2be601e16acd"
+  },
+  "manifest": {
+    "path": "artifact-manifest.json",
+    "sha256": "f1da9fce96d77e4d1ae1d3fbe155ea20ee5d60e529c0a9995c4d59ff70f9e206",
+    "bytes": 2895
+  },
+  "liveWorldMutated": false,
+  "databaseMutated": false,
+  "qaPayloadSha256": "789bc3dd2db1892a64074ea6c49b280f394ab63aca0983fb9f42e1504cbae5b3"
+}

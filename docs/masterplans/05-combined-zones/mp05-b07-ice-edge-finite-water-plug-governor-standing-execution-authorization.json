@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "mp05-b07-ice-edge-finite-water-plug-governor-standing-execution-authorization",
+  "projectId": "combined-zones-phase1",
+  "recordedAtUtc": "2026-08-27T23:20:00Z",
+  "status": "AUTHORIZED_STANDING_SCOPED_EXECUTION",
+  "revoked": false,
+  "authorizedReleaseId": "MP05-B07-ICE-EDGE-FINITE-WATER-PLUG-01",
+  "ownerDirective": {
+    "speaker": "Governor",
+    "recordedDate": "2026-08-26",
+    "exactText": "yep if you find like water or lava then you fucking just build it good that that its plugged up or not flowing.. incase it",
+    "interpretation": "The finite exterior water pocket at the already sealed B07 ice-edge receiver is delegated to the implementation team for a liner-first permanent plug. The scoped hard-safety kernel remains mandatory."
+  },
+  "hardSafetyKernel": [
+    { "id": "exact-release-and-inverse", "required": true },
+    { "id": "fresh-source-snapshot-and-preflight", "required": true },
+    { "id": "strict-forward-and-rollback-parser-checks", "required": true },
+    { "id": "block-and-live-entity-clearance", "required": true },
+    { "id": "strict-execution-with-compensating-rollback", "required": true },
+    { "id": "post-snapshot-and-rollback-poststate-verification", "required": true }
+  ],
+  "operationalControls": {
+    "defaultMode": "PREPARE_ONLY",
+    "liveExecutionOptIn": "--execute",
+    "scopeLocalFailureRule": "Failure blocks only this finite water-pocket plug."
+  },
+  "nonClaims": ["No aperture", "No route", "No egress", "No terrain discharge", "No public commissioning"]
+}

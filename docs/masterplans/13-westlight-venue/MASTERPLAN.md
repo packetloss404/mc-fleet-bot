@@ -176,3 +176,38 @@ Primary local sources:
 - [Infrastructure standards](../../redevelopment/2026-07-27/infrastructure-standards.md), used as the future event/sightline/wayfinding standard, not as proof of current block state.
 
 **Derived information:** current counts, the 25-to-26 explanation, and interface interpretations are read-only summaries. No coordinates, completion, acceptance, or image relationship was invented. No internet source, live server, fleet API, systemd service, RCON session, or database write was used.
+
+## 10. 2026-08 circulation readiness addendum
+
+The venue's three circulation records and zero primary ladders are not a public egress certificate. Before any seat, stair, theatre, club, or arrival work, `CIRC-WL-ARRIVAL-01` must map public, accessible, staff, restricted, and emergency routes for sports, concert, and theatre modes: Gatehead arrival, entry, concourse, aisle, vomitory, bowl, theatre, club, backstage, and return. Public primary tunnels/concourses use a 5×4 clear envelope; named secondary routes use 3×3; staff-only routes are at least 2×3 and visibly separated. Every public stair needs two clear blocks, three clear headroom, real 3×3 landings at turns, edge cues, and a bidirectional no-jump route.
+
+## 2026-08-26 current micro-scope screen
+
+No unbuilt, independently dry, entity-safe functional MP13 micro-scope is
+available in retained current evidence. `WLV-STF-ACCESS-02` is the only latest
+route repair with full functional proof: a three-wide staff-only ramp/dogleg
+between East Backstage and the retained service spine. It explicitly excludes
+public egress and public/backstage separation. The later elevated staff-crossover
+attempt was journalled and rolled back after route QA, so its post-rollback
+snapshot is not an as-built bridge candidate. The latest venue snapshots contain
+`region/` only, not matching immutable `entities/`; no new target can satisfy
+the saved-entity gate offline. Public bowl/theatre egress, vomitories,
+vertical access, and the high-deck merge remain whole-route design holds, not
+small local repairs. No MP13 package is queued without a complete fresh venue
+source and a defect-backed route/egress scope.
+
+Backstage/service circulation must never become accidental public egress. See [`cross-district-circulation-audit-20260822.md`](../../../data/world-review/cross-district-circulation-audit-20260822.md) for the cross-area review and acceptance rules.
+
+The later current-complete-source high-deck merge reconciliation is maintained
+in [`CURRENT-STATE.md`](CURRENT-STATE.md). It maps the lower public/backstage
+graph and the west tower in exact coordinates, rejects all ten complete-air
+partition planes as unsafe, and defines the required integrated ownership,
+staff-changeover, and separate public-egress design sequence. It is a design
+hold, not an operation authority.
+
+The 2026-08-22 complete-save census also finds no empty or under-detailed
+cataloged room in the theatre, bowl or club and no primary ladder. This is
+structural/program presence evidence only. `CIRC-WL-ARRIVAL-01` remains the
+next action: model the event-mode public, controlled, service and emergency
+graphs before changing any stair, aisle, vomitory, backstage door or common
+area. Its exact survey and release gate are in [the public-realm defect lane](../../redevelopment/2026-08-22-public-realm-defect-lane.md).

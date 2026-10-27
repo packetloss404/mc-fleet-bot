@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="650" viewBox="0 0 1160 650" role="img" aria-labelledby="title desc">
+  <title id="title">C01 L1 arrival-wayfinding frontier 01 as-built plan</title>
+  <desc id="desc">Exact source-bound plan of three sea-lantern floor inlays at 744,42,-81; 748,42,-81; and 760,42,-81, their three separate 3 by 3 plan halos across Y 41 through 43, and two excluded gravel-hold cells.</desc>
+  <metadata>{"releaseId":"SYS03-MP11-C01-ARRIVAL-WAYFINDING-FRONTIER-01","status":"EXECUTED_POSTSTATE_VERIFIED_REVERSIBLE","sourceCaptureId":"combined-zones-b616ad9927ce47fc91619df4ed4e16eb","postCaptureId":"combined-zones-f647c052c5af4e019e3ddda24ab75625","manifestIdentity":"26503f4ffa2fb91b70941cea049cc0696207dfe3cf71a6937f68aec159aaacd3","manifestSha256":"9904b166a2d1f5a388b63b660d9f8fef3d02b9ff0fc40eb14dbb392d119ba271","targetCoordinateSetSha256":"7c432cb9bb4b8eda240065de14610506a34525fb554dcbbab673af389a43d31c","haloCoordinateSetSha256":"ec00eee3a15106ed6ac91eede5202ffe7abddf97c8d16bdf9102b734cc35432a","independentPostQa":"PASS_C01_ARRIVAL_WAYFINDING_FRONTIER_POSTSTATE_VERIFIED","worldMutationAuthority":false,"routeCommissioned":false}</metadata>
+  <style>
+    .title{font:700 25px system-ui,sans-serif;fill:#eff7ff}.sub{font:14px system-ui,sans-serif;fill:#bfcede}.axis{font:12px ui-monospace,monospace;fill:#91a8bb}.label{font:600 13px system-ui,sans-serif;fill:#eff7ff}.note{font:12px system-ui,sans-serif;fill:#c9d8e5}.tiny{font:11px ui-monospace,monospace;fill:#c9d8e5}
+  </style>
+  <rect width="1160" height="650" fill="#0b1522"/>
+  <text x="34" y="39" class="title">C01 L1 arrival-wayfinding frontier 01 — immutable-post plan</text>
+  <text x="34" y="64" class="sub">Fresh post capture combined-zones-f647c052c5af4e019e3ddda24ab75625 · floor plane Y=42 · Z increases downward</text>
+  <rect x="74" y="118" width="798" height="180" rx="5" fill="#14273a" stroke="#5e7890"/>
+  <g stroke="#2e4659" stroke-width="1">
+    <path d="M74 118V298 M116 118V298 M158 118V298 M200 118V298 M242 118V298 M284 118V298 M326 118V298 M368 118V298 M410 118V298 M452 118V298 M494 118V298 M536 118V298 M578 118V298 M620 118V298 M662 118V298 M704 118V298 M746 118V298 M788 118V298 M830 118V298 M872 118V298"/>
+    <path d="M74 118H872 M74 178H872 M74 238H872 M74 298H872"/>
+  </g>
+  <g class="axis" text-anchor="middle">
+    <text x="95" y="320">743</text><text x="137" y="320">744</text><text x="179" y="320">745</text><text x="221" y="320">746</text><text x="263" y="320">747</text><text x="305" y="320">748</text><text x="347" y="320">749</text><text x="389" y="320">750</text><text x="431" y="320">751</text><text x="473" y="320">752</text><text x="515" y="320">753</text><text x="557" y="320">754</text><text x="599" y="320">755</text><text x="641" y="320">756</text><text x="683" y="320">757</text><text x="725" y="320">758</text><text x="767" y="320">759</text><text x="809" y="320">760</text><text x="851" y="320">761</text>
+  </g>
+  <text x="74" y="343" class="axis">X coordinate</text>
+  <g class="axis" text-anchor="end"><text x="62" y="153">Z=-82</text><text x="62" y="213">Z=-81</text><text x="62" y="273">Z=-80</text></g>
+  <!-- Exact plan projections of the three separate 3×3×3 interaction halos; union = 81 cells across Y=41..43. -->
+  <g fill="#205b76" fill-opacity=".78" stroke="#71b9db" stroke-width="1.5">
+    <rect x="74" y="118" width="126" height="180"/><rect x="242" y="118" width="126" height="180"/><rect x="746" y="118" width="126" height="180"/>
+  </g>
+  <g fill="#f6e36e" stroke="#fff8bf" stroke-width="2">
+    <rect x="116" y="178" width="42" height="60"/><rect x="284" y="178" width="42" height="60"/><rect x="788" y="178" width="42" height="60"/>
+  </g>
+  <g fill="#875e47" stroke="#f2c09a" stroke-width="2"><rect x="452" y="178" width="42" height="60"/><rect x="620" y="178" width="42" height="60"/></g>
+  <g class="label" text-anchor="middle"><text x="137" y="212">744</text><text x="305" y="212">748</text><text x="809" y="212">760</text></g>
+  <text x="95" y="102" class="note">operated source: light_blue_concrete → target: sea_lantern</text>
+  <text x="452" y="165" class="tiny">excluded</text><text x="452" y="252" class="tiny">gravel hold 752</text><text x="620" y="165" class="tiny">excluded</text><text x="620" y="252" class="tiny">gravel hold 756</text>
+  <rect x="74" y="382" width="1012" height="198" rx="6" fill="#112033" stroke="#36516b"/>
+  <g transform="translate(98 414)">
+    <rect width="17" height="17" fill="#f6e36e" stroke="#fff8bf"/><text x="28" y="14" class="label">3 as-built canonical sea-lantern targets, each at Y=42 / Z=-81</text>
+    <rect y="34" width="17" height="17" fill="#205b76" stroke="#71b9db"/><text x="28" y="48" class="note">three disjoint 3×3×3 target halos; exact union 81 cells, dry / gravity-free / block-entity-free / saved-entity-free</text>
+    <rect y="68" width="17" height="17" fill="#875e47" stroke="#f2c09a"/><text x="28" y="82" class="note">two explicit local gravel holds: retained and outside the operation / halo union</text>
+    <text x="0" y="117" class="note">Retained interface: 9 pre-existing C01-NEXT-01 inlays intact. Strict forward: 3/3 changed, 0 no-ops. Exact rollback post preflight: 3/3 pass.</text>
+    <text x="0" y="143" class="note">Independent immutable QA: targets, retained inlays, zero unexpected halo drift, flat walk plane, and two clear headroom blocks all pass.</text>
+  </g>
+  <text x="98" y="556" class="label">Verified physical scope only — not a C01 public-route, endpoint, egress, accessibility/emergency-lighting, PC-01, rail, platform, power, service, or passenger-service commissioning.</text>
+  <text x="98" y="605" class="tiny">Evidence binding: manifest 26503f4f… / 9904b166… · target set 7c432cb9… · halo set ec00eee3… · QA PASS_C01_ARRIVAL_WAYFINDING_FRONTIER_POSTSTATE_VERIFIED</text>
+</svg>

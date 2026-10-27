@@ -195,3 +195,14 @@ Primary local sources:
 - [Wave 2 catalog overview](../../../data/exports/world-catalog-wave2-post-2026-07-28/floorplans/01-mainstreet-america-overview.png) plus the three linked QA images above.
 
 **Derived information:** feature counts, catalog union, and the explanation of property-versus-union bounds are read-only calculations from the database. Dependency text is conservative interpretation of committed route and cross-scope evidence. No live server, internet source, fleet API, systemd service, RCON session, or database write was used.
+
+## 10. 2026-08 circulation readiness addendum
+
+The legacy H11 four-floor core is a confirmed one-tread, turning 15-cell stair in the historical operation (`x=34..36`, `z=-144..-142`). Its historical up/down reachability pass does **not** establish two-wide movement, 3×3 landings, or full current headroom. Treat upper H11 access as private/service only until `CIRC-MSA-H11-01` surveys the surrounding core and either installs a two-clear-wide return stair with three-clear headroom and 3×3 turns, or proves another compliant signed primary route. Do not use a one-block stair as a published public/common-area route. This is a correction-design input, not proof of a current defect; use a fresh immutable snapshot before cells are chosen. See [`cross-district-circulation-audit-20260822.md`](../../../data/world-review/cross-district-circulation-audit-20260822.md).
+
+The 2026-08-22 complete-save census now confirms the core still permits a
+normal-walk path from `30,65,-148` to the listed Y70/Y75/Y80 floors. That is
+useful continuity evidence, not a reversal of the defect: it proves a line can
+be walked, not a two-wide public stair, landings, current door behaviour or
+comfortable common-area access. The exact remediation boundary and release
+gate are recorded in [the public-realm defect lane](../../redevelopment/2026-08-22-public-realm-defect-lane.md).

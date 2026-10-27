@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "c01-return-02-as-built-map-publication-20260827",
+  "status": "PASS_C01_RETURN02_AS_BUILT_MAPS_SYNCED_NOT_COMMISSIONED",
+  "publicationDirectory": "/c01-return-02-as-built-2026-08-27",
+  "sourceEvidence": {
+    "path": "docs/masterplans/11-town-expansion-r1/02-visuals/mp11-c01-public-independent-return-02",
+    "sha256": "904c55665336b761f08c2e5723a716c0afa35720bc5db4edc58debceaf2f0090",
+    "status": "PASS_SOURCE_BOUND_PHYSICALLY_VERIFIED_NOT_COMMISSIONED"
+  },
+  "geometry": {
+    "allInterfaceAndRouteBounds": {
+      "min": [
+        837,
+        25,
+        -69
+      ],
+      "max": [
+        849,
+        43,
+        -47
+      ]
+    },
+    "independentReturnStationBounds": {
+      "min": [
+        837,
+        25,
+        -69
+      ],
+      "max": [
+        849,
+        43,
+        -64
+      ]
+    },
+    "stationCount": 28,
+    "orderedStationSha256": "edd1c7e191f1b5e0a96c69cd343623cf278a9998881eefa6372d06f0435674be",
+    "publicClearance": {
+      "width": 5,
+      "clearHeight": 5,
+      "profile": "five support/tread cells across; five clear cells above each station"
+    },
+    "endpointContracts": [
+      {
+        "id": "C01-PUBLIC-MAIN-UPPER-5X5-02",
+        "point": [
+          839,
+          43,
+          -47
+        ],
+        "direction": "upper-public-landing → main switchback",
+        "supportCellCount": 5,
+        "clearCellCount": 25,
+        "width": 5,
+        "height": 5
+      },
+      {
+        "id": "C01-PUBLIC-MAIN-LOWER-5X5-02",
+        "point": [
+          837,
+          25,
+          -54
+        ],
+        "direction": "main switchback → lower-public-landing",
+        "supportCellCount": 5,
+        "clearCellCount": 25,
+        "width": 5,
+        "height": 5
+      },
+      {
+        "id": "C01-PUBLIC-RETURN-UPPER-5X5-02",
+        "point": [
+          839,
+          43,
+          -64
+        ],
+        "direction": "upper-public-landing → independent return",
+        "supportCellCount": 5,
+        "clearCellCount": 25,
+        "width": 5,
+        "height": 5
+      },
+      {
+        "id": "C01-PUBLIC-RETURN-LOWER-5X5-02",
+        "point": [
+          837,
+          25,
+          -69
+        ],
+        "direction": "independent return → lower-public-landing",
+        "supportCellCount": 5,
+        "clearCellCount": 25,
+        "width": 5,
+        "height": 5
+      }
+    ],
+    "protectedSwitchbackInteriorHaloIntersectionCount": 0
+  },
+  "maps": [
+    {
+      "id": "plan",
+      "title": "C01 Return-02 as-built plan",
+      "filename": "c01-return-02-as-built-plan.svg",
+      "href": "/c01-return-02-as-built-2026-08-27/c01-return-02-as-built-plan.svg",
+      "sha256": "4099d48e0fef6fd5597792fa70a271121e006044e2247727bbaa8b3befc179ef"
+    },
+    {
+      "id": "elevation",
+      "title": "C01 Return-02 as-built vertical station elevation",
+      "filename": "c01-return-02-as-built-elevation.svg",
+      "href": "/c01-return-02-as-built-2026-08-27/c01-return-02-as-built-elevation.svg",
+      "sha256": "a3c5ed8053f7eda56cdc548e5f992b40011f71f3b7a18f29272f9641ebc3963e"
+    },
+    {
+      "id": "evidence",
+      "title": "Source-bound/as-built evidence",
+      "filename": "c01-return-02-as-built-map-evidence.json",
+      "href": "/c01-return-02-as-built-2026-08-27/c01-return-02-as-built-map-evidence.json",
+      "sha256": "904c55665336b761f08c2e5723a716c0afa35720bc5db4edc58debceaf2f0090"
+    },
+    {
+      "id": "readme",
+      "title": "Scope and non-commissioning notice",
+      "filename": "README.md",
+      "href": "/c01-return-02-as-built-2026-08-27/README.md",
+      "sha256": "3d10cb3878dd8c8b612139141cf0a2ef58e8b379b117c48486124ce14f6f8edd"
+    }
+  ],
+  "nonClaims": [
+    "Static map publication only. It does not open, commission, or authorize public or service use of the C01 return."
+  ]
+}

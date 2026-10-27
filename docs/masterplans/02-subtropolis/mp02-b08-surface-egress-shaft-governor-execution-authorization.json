@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "mp02-b08-surface-egress-shaft-governor-scoped-execution-authorization",
+  "recordedAtUtc": "2026-08-26T20:10:00.000Z",
+  "status": "AUTHORIZED_STANDING_SCOPED_EXECUTION",
+  "revoked": false,
+  "governorDirective": "2026-08-26 Governor acceleration directive: internal accountable roles may accept this finite design without a separate approval queue, while the hard-safety kernel remains mandatory.",
+  "authorizedReleaseId": "MP02-B08-SURFACE-EGRESS-SHAFT-01",
+  "scope": "Only the fresh-rebound B08 ladder egress shaft at x=2005..2009, y=129..212, z=-749..-747. It creates an independent surface discharge without opening B03/B09, touching rail, or changing the accepted B08 handoff.",
+  "internalAccountableRoles": { "scopeOwner": "SubTropolis chamber steward", "circulationOwner": "B08 circulation architect", "surfaceEgressOwner": "surface egress reviewer", "recoveryOwner": "MP02 rollback steward" },
+  "hardSafetyKernel": ["fresh complete immutable source capture and compiler rebind", "two-cell fluid/gravity halo plus protected B03/B09 exclusion", "exact source/projected-rollback preflight and strict parser checks", "block-entity and same-moment live-entity clearance", "journaled strict execution, fresh post capture, rollback-poststate preflight", "independent B08-return/surface and shaft-only bidirectional route QA"],
+  "operationalControls": { "defaultMode": "PREPARE_ONLY", "liveExecutionOptIn": "--execute", "completionRule": "This adds only the B08 second egress discharge. It does not accept B03/B09 transfer, passenger/public operation, a chamber, rail, or Master Plan completion." }
+}

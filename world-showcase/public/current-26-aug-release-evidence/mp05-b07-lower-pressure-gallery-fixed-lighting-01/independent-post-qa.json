@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "mp05-b07-lower-pressure-gallery-fixed-lighting-01-independent-post-qa",
+  "status": "PASS_EXECUTED_B07_LOWER_PRESSURE_GALLERY_FIXED_LIGHTING_QA",
+  "readOnly": true,
+  "worldMutated": false,
+  "manifest": {
+    "path": "/opt/stacks/mc-fleet-bot/data/world-review/mp05-b07-lower-pressure-gallery-fixed-lighting-01-live-20260828T004500Z/rebound-buildops/mp05-b07-lower-pressure-gallery-fixed-lighting-01.manifest.json",
+    "sha256": "6bb53dc30d0f7d10e12618a471e4e655e809d22b102e7ed2f9f0354653030a6d"
+  },
+  "snapshot": "data/worldsnap-mp05-b07-lower-pressure-gallery-fixed-lighting-01-post-20260828T004500Z",
+  "checks": {
+    "exactThreeGlowstoneFixtures": true,
+    "dryLowerSegmentRetained": true,
+    "intermediatePressureClosureRetained": true,
+    "noPublicOrEgressCommissioning": true
+  },
+  "failures": [],
+  "fixtures": [
+    {
+      "cell": {
+        "x": 2109,
+        "y": 10,
+        "z": -424
+      },
+      "state": "minecraft:glowstone"
+    },
+    {
+      "cell": {
+        "x": 2109,
+        "y": 10,
+        "z": -416
+      },
+      "state": "minecraft:glowstone"
+    },
+    {
+      "cell": {
+        "x": 2109,
+        "y": 10,
+        "z": -408
+      },
+      "state": "minecraft:glowstone"
+    }
+  ],
+  "coreStateCount": 144,
+  "closure": [
+    {
+      "cell": {
+        "x": 2108,
+        "y": 8,
+        "z": -403
+      },
+      "state": "minecraft:polished_deepslate"
+    },
+    {
+      "cell": {
+        "x": 2108,
+        "y": 9,
+        "z": -403
+      },
+      "state": "minecraft:polished_deepslate"
+    },
+    {
+      "cell": {
+        "x": 2109,
+        "y": 8,
+        "z": -403
+      },
+      "state": "minecraft:polished_deepslate"
+    },
+    {
+      "cell": {
+        "x": 2109,
+        "y": 9,
+        "z": -403
+      },
+      "state": "minecraft:polished_deepslate"
+    },
+    {
+      "cell": {
+        "x": 2110,
+        "y": 8,
+        "z": -403
+      },
+      "state": "minecraft:polished_deepslate"
+    },
+    {
+      "cell": {
+        "x": 2110,
+        "y": 9,
+        "z": -403
+      },
+      "state": "minecraft:polished_deepslate"
+    },
+    {
+      "cell": {
+        "x": 2108,
+        "y": 8,
+        "z": -402
+      },
+      "state": "minecraft:polished_deepslate"
+    },
+    {
+      "cell": {
+        "x": 2108,
+        "y": 9,
+        "z": -402
+      },
+      "state": "minecraft:polished_deepslate"
+    },
+    {
+      "cell": {
+        "x": 2109,
+        "y": 8,
+        "z": -402
+      },
+      "state": "minecraft:polished_deepslate"
+    },
+    {
+      "cell": {
+        "x": 2109,
+        "y": 9,
+        "z": -402
+      },
+      "state": "minecraft:polished_deepslate"
+    },
+    {
+      "cell": {
+        "x": 2110,
+        "y": 8,
+        "z": -402
+      },
+      "state": "minecraft:polished_deepslate"
+    },
+    {
+      "cell": {
+        "x": 2110,
+        "y": 9,
+        "z": -402
+      },
+      "state": "minecraft:polished_deepslate"
+    }
+  ],
+  "qaPayloadSha256": "8e6420b4929238c99fc1065460eae3e9699197b790e3a077f5bfe596cdcd1a03"
+}

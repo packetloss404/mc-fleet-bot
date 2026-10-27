@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "mp08-c1-restricted-inspection-lighting-governor-standing-execution-authorization",
+  "projectId": "combined-zones-phase1",
+  "recordedAtUtc": "2026-08-26T23:30:00Z",
+  "status": "AUTHORIZED_STANDING_SCOPED_EXECUTION",
+  "revoked": false,
+  "ownerDirective": {
+    "speaker": "Governor",
+    "recordedDate": "2026-08-26",
+    "exactText": "if you find like water or lava then you fucking just build it good that that its plugged up or not flowing..",
+    "interpretation": "The Governor delegates the C1 restricted-inspection lighting accountable roles to the implementation team. This exact static-light package has a dry finite halo, leaves both cavern thresholds closed, and does not authorize a fluid, outfall, or cavern opening."
+  },
+  "authorizedReleaseNodes": [
+    "MP08-C1-RESTRICTED-INSPECTION-LIGHTING"
+  ],
+  "allowNonMvpScopes": true,
+  "mvpBoundary": {
+    "included": "Only the exact eight static wall fixtures emitted by MP08-C1-RESTRICTED-INSPECTION-LIGHTING-01.",
+    "excludedScopeIds": [],
+    "exclusionRule": "No C2, Cavern C, RR-N6, T4, public opening, emergency egress, transport, active control, water displacement, fluid outfall, rail power, or signal scope is authorized."
+  },
+  "hardSafetyKernel": [
+    { "id": "exact-release-and-inverse", "required": true, "rule": "Independent structural QA must bind complete canonical block states, exact target bijection, package disjointness, and forward/rollback inversion." },
+    { "id": "fresh-source-snapshot-and-preflight", "required": true, "rule": "Every live invocation captures a fresh immutable complete source snapshot and passes exact forward source preflight in package order." },
+    { "id": "strict-forward-and-rollback-parser-checks", "required": true, "rule": "Every forward and rollback operation file must pass strict-noop parser validation before mutation." },
+    { "id": "block-and-live-entity-clearance", "required": true, "rule": "The exact target and finite interaction halo must be clear of block entities and fresh same-moment live entities before execution." },
+    { "id": "strict-execution-with-compensating-rollback", "required": true, "rule": "Forward execution must be strict-noop and journaled. Any failure triggers the exact inverse for the partial and already-committed package set in reverse order." },
+    { "id": "post-snapshot-and-rollback-poststate-verification", "required": true, "rule": "A fresh immutable post snapshot, exact rollback poststate preflight, and release-specific lighting and route QA are mandatory before an as-built claim." }
+  ],
+  "operationalControls": {
+    "defaultMode": "PREPARE_ONLY",
+    "liveExecutionOptIn": "--execute",
+    "globalGateDependency": "NONE",
+    "scopeLocalFailureRule": "A failed lighting check blocks only this transaction and cannot be used to open, mutate, or classify either cavern."
+  },
+  "authorizationPayloadSha256": "967937eea7fa865e803937b7cb0ae835d45381c597d072b3cc1dbea52be01a36"
+}

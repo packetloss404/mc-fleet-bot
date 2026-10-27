@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "id": "mp05-b07-central-bypass-fixed-lighting-01-independent-post-qa",
+  "status": "PASS_EXECUTED_B07_CENTRAL_BYPASS_FIXED_LIGHTING_QA",
+  "readOnly": true,
+  "worldMutated": false,
+  "manifest": {
+    "path": "/opt/stacks/mc-fleet-bot/data/world-review/mp05-b07-central-bypass-fixed-lighting-01-live-20260828T001500Z/rebound-buildops/mp05-b07-central-bypass-fixed-lighting-01.manifest.json",
+    "sha256": "13a8e90cfc9280a9559d87b84c922ff358c346dfcebc138a93e6304c02769d41"
+  },
+  "snapshot": "data/worldsnap-mp05-b07-central-bypass-fixed-lighting-01-post-20260828T001500Z",
+  "checks": {
+    "exactSixGlowstoneFixtures": true,
+    "centralDryCoreRetained": true,
+    "r09jCapRetained": true,
+    "gravityHoldRetained": true,
+    "noPublicOrEgressCommissioning": true
+  },
+  "failures": [],
+  "fixtureStates": [
+    {
+      "cell": {
+        "x": 2106,
+        "y": 22,
+        "z": -398
+      },
+      "state": "minecraft:glowstone"
+    },
+    {
+      "cell": {
+        "x": 2106,
+        "y": 29,
+        "z": -398
+      },
+      "state": "minecraft:glowstone"
+    },
+    {
+      "cell": {
+        "x": 2106,
+        "y": 36,
+        "z": -398
+      },
+      "state": "minecraft:glowstone"
+    },
+    {
+      "cell": {
+        "x": 2106,
+        "y": 43,
+        "z": -398
+      },
+      "state": "minecraft:glowstone"
+    },
+    {
+      "cell": {
+        "x": 2106,
+        "y": 50,
+        "z": -398
+      },
+      "state": "minecraft:glowstone"
+    },
+    {
+      "cell": {
+        "x": 2106,
+        "y": 57,
+        "z": -398
+      },
+      "state": "minecraft:glowstone"
+    }
+  ],
+  "coreStateCount": 234,
+  "cap": [
+    {
+      "cell": {
+        "x": 2105,
+        "y": 30,
+        "z": -397
+      },
+      "state": "minecraft:polished_diorite"
+    },
+    {
+      "cell": {
+        "x": 2105,
+        "y": 31,
+        "z": -397
+      },
+      "state": "minecraft:polished_diorite"
+    }
+  ],
+  "gravel": [
+    {
+      "cell": {
+        "x": 2104,
+        "y": 27,
+        "z": -396
+      },
+      "state": "minecraft:gravel"
+    },
+    {
+      "cell": {
+        "x": 2104,
+        "y": 28,
+        "z": -396
+      },
+      "state": "minecraft:gravel"
+    },
+    {
+      "cell": {
+        "x": 2104,
+        "y": 29,
+        "z": -396
+      },
+      "state": "minecraft:gravel"
+    },
+    {
+      "cell": {
+        "x": 2104,
+        "y": 30,
+        "z": -396
+      },
+      "state": "minecraft:gravel"
+    }
+  ],
+  "qaPayloadSha256": "bf890e77bc4ad1a0a58891dac0586552e423b22a057fae991bbbe39631915f9c"
+}

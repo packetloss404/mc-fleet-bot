@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "publication": {
+    "title": "Current 26 August build-contract map volume",
+    "status": "READ_ONLY_SOURCE_BOUND_ACCEPTANCE_EVIDENCE_NOT_CONSTRUCTION_COMPLETION",
+    "publishedDirectory": "/current-26-aug-build-contract-maps",
+    "mapCount": 6,
+    "historyPolicy": "Additive. Existing atlases and decision-map volumes are preserved unchanged."
+  },
+  "maps": [
+    {
+      "id": "mp03-b07-vertical",
+      "plan": "MP03 / MP05",
+      "state": "HELD INTEGRATED CONTAINMENT / EGRESS",
+      "title": "B07 vertical containment, gravity, and egress gate",
+      "caption": "The wet barrier, unsupported gravel, caps, lobby, and receivers are one integrated acceptance problem. No local fragment is released.",
+      "source": "data/world-review/mp03-b07-vertical-acceptance-contract-01-sys03-post-20260826T153100Z/mp03-b07-vertical-acceptance-map.svg",
+      "filename": "01-mp03-b07-vertical-containment-gravity-egress.svg",
+      "href": "/current-26-aug-build-contract-maps/01-mp03-b07-vertical-containment-gravity-egress.svg",
+      "sha256": "2bd8ab305a36edab105e1c84482c276908d2f2784a5e78185f95adf601ae4bcb"
+    },
+    {
+      "id": "mp06-road-threshold",
+      "plan": "MP06 / SYS-04",
+      "state": "ROUTE PRESENT / THRESHOLDS HELD",
+      "title": "Western Approach Road route thresholds",
+      "caption": "The 207-station route is already present; exact protected district thresholds need acceptance before any route-use survey, not paving.",
+      "source": "data/world-review/mp06-road-route-threshold-contract-01-mp01-anvil-post-20260826T163300Z/mp06-road-route-threshold-map.svg",
+      "filename": "02-mp06-road-route-thresholds.svg",
+      "href": "/current-26-aug-build-contract-maps/02-mp06-road-route-thresholds.svg",
+      "sha256": "0635962536fd039a469c103a105184edc2e9c3d83a395a536ff672134454d398"
+    },
+    {
+      "id": "mp09-long-water",
+      "plan": "MP09 / SYS-04",
+      "state": "HELD HYDROLOGY / GRADE",
+      "title": "Long Water hydrology, ownership, and grade gate",
+      "caption": "A vertically open fluid component prevents an isolated bridge, liner, or paving release until complete containment and receiver ownership exist.",
+      "source": "data/world-review/mp09-long-water-hydrology-ownership-grade-acceptance-contract-01-mp06-post-20260826T143902Z/mp09-long-water-hydrology-ownership-grade-acceptance-map.svg",
+      "filename": "03-mp09-long-water-hydrology-grade.svg",
+      "href": "/current-26-aug-build-contract-maps/03-mp09-long-water-hydrology-grade.svg",
+      "sha256": "7d81608e0f0583cf63c30af5645fafef0087736c1964e8e66efe5379f5a23773"
+    },
+    {
+      "id": "mp10-library-annex",
+      "plan": "MP10",
+      "state": "HELD LIBRARY / LOGGIA INTERFACE",
+      "title": "Ravensreach library perimeter and annex gate",
+      "caption": "No valid 3×3 landing is present at the five transition levels; protected fixtures and the Library/Loggia seam remain default-deny.",
+      "source": "data/world-review/mp10-rrch-library-perimeter-annex-contract-02-mp01-anvil-post-20260826T163300Z/mp10-rrch-library-perimeter-annex-acceptance-map.svg",
+      "filename": "04-mp10-library-perimeter-annex.svg",
+      "href": "/current-26-aug-build-contract-maps/04-mp10-library-perimeter-annex.svg",
+      "sha256": "5fe92af6559d22579d07dde1d17e94e92704d7564d928cbf60c34ef3edbd82d8"
+    },
+    {
+      "id": "mp12-gatehead",
+      "plan": "MP12 / MP13",
+      "state": "ROUTE PRESENT / FACADE PROTECTED",
+      "title": "Gatehead district-to-venue interface",
+      "caption": "The southern alignment is already built; the north façade is protected and the remaining work belongs to a future district/venue access design.",
+      "source": "data/world-review/mp12-gatehead-district-venue-interface-contract-01-sys03-post-20260826T153256Z/mp12-gatehead-district-venue-interface-acceptance-map-01.svg",
+      "filename": "05-mp12-gatehead-district-venue.svg",
+      "href": "/current-26-aug-build-contract-maps/05-mp12-gatehead-district-venue.svg",
+      "sha256": "3e144cd6cfa3fa6750f4cde368758d97886930f9e883e5747fa516a119bfff7b"
+    },
+    {
+      "id": "mp13-access-egress",
+      "plan": "MP13",
+      "state": "HELD ACCESS / EGRESS",
+      "title": "Westlight Venue access and egress acceptance gate",
+      "caption": "Every access-class cell and directional face remains unreviewed; the public-to-backstage path must be eliminated without breaking staff continuity.",
+      "source": "data/world-review/mp13-access-egress-acceptance-contract-01-sys03-post-20260826T153100Z/mp13-access-egress-acceptance-coordinate-map.svg",
+      "filename": "06-mp13-access-egress-acceptance.svg",
+      "href": "/current-26-aug-build-contract-maps/06-mp13-access-egress-acceptance.svg",
+      "sha256": "499c8e0b6c21ad93f6e54b498541384c5a14109644ff9aa0bf97af9cd0a6375f"
+    }
+  ]
+}

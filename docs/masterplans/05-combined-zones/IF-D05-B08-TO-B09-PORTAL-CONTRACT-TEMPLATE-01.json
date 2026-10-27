@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "id": "IF-D05-B08-TO-B09-PORTAL-CONTRACT-TEMPLATE-01",
+  "interfaceId": "IF-D05-B08-TO-B09-PORTAL",
+  "status": "SOURCE_BOUND_NON_AUTHORIZING_TEMPLATE__BILATERAL_ACCEPTANCE_AND_FUNCTIONAL_DESIGN_PENDING",
+  "purpose": "Preserve the current B08-to-B09 closure while providing the complete acceptance shape required before a later exact compiler may be considered.",
+  "disposition": {
+    "readOnly": true,
+    "defaultDeny": true,
+    "mutationAuthority": false,
+    "operationsCompiled": false,
+    "worldMutationsPerformed": false,
+    "acceptanceRecorded": false,
+    "releaseAuthorization": false,
+    "reason": "A source-bound template cannot assign ownership, select a receiver, open the cap, move the R12R minecart, or credit a rescue route."
+  },
+  "sourceBinding": {
+    "snapshotRoot": "data/worldsnap-mp01-service-staging-anvil-repair-live-post-20260826T163300Z",
+    "completeSaveSha256": "d55d03beff077e2fd105e9c711022a870102d24ab2ed4e4d283099df457b9a03",
+    "regionSha256": "4f6f753fd9e17529b7bf2397e49bc9b2f76eb7cdf76520e3eedb7d1e708a2ca5",
+    "regionFileCount": 52,
+    "captureId": "combined-zones-65ca88c4bf134bb0a7fed9970dc3657d",
+    "inputs": [
+      {
+        "path": "data/world-review/mp05-b09-b08-interface-egress-feasibility-current-anvil-post-20260826T163300Z/b08-b09-interface-egress-feasibility.json",
+        "sha256": "c5b68693f078af6d18d18ada4f5f7901ec24fe0347b2153eface480696ff9df4"
+      },
+      {
+        "path": "data/world-review/mp05-b09-lower-station-receiver-interface-design-current-anvil-post-20260826T163300Z/source-bound-design-hold.json",
+        "sha256": "768e73229b94d8de078b9529ed803acaefaef90572840da319f49939138553e9"
+      },
+      {
+        "path": "docs/masterplans/05-combined-zones/phase1-proposed-ownership-interface-registry.json",
+        "sha256": "930cf249d1510b326755983e5afd0e8c6242520bf7a5554e8ed450d64ec2fa24",
+        "role": "unaccepted historical directional-owner proposal only"
+      }
+    ]
+  },
+  "currentAnvilPostFacts": {
+    "defaultDenySeam": {
+      "cellCount": 36,
+      "bounds": { "minX": 2047, "maxX": 2049, "minY": 129, "maxY": 132, "minZ": -749, "maxZ": -747 },
+      "coordinateSetSha256": "b28a975b44296fc43739a8af0743066ca58a2c33a99e13da6c2edf89142b33e3",
+      "currentAuthority": "DEFAULT_DENY__NO_SCOPE_HAS_OPENING_AUTHORITY"
+    },
+    "b09WestIsolationCap": {
+      "cellCount": 12,
+      "bounds": { "minX": 2050, "maxX": 2050, "minY": 129, "maxY": 132, "minZ": -749, "maxZ": -747 },
+      "coordinateSetSha256": "a422d177fb7f1571b8a6243fcbf014fda17a910e60e7c03f7c21051f697a3e96",
+      "currentStateSetSha256": "69f87b7fc26dff0ca3140c8cfce1c1b649320778321fa80d237b0ef027d86ef7",
+      "currentStateCensus": { "minecraft:polished_diorite": 12 },
+      "allCellsClosed": true
+    },
+    "onlyMappedDoorAperture": {
+      "cellCount": 2,
+      "cells": [
+        { "x": 2050, "y": 130, "z": -748, "sourceState": "minecraft:polished_diorite" },
+        { "x": 2050, "y": 131, "z": -748, "sourceState": "minecraft:polished_diorite" }
+      ],
+      "coordinateSetSha256": "f044e5620427cc219b5f4cc8222733491ebcb114c3ff8e078145446a25a2327b",
+      "currentStateSetSha256": "1eab25ddac42cd0cc10c3646630960177e5b5e05ec8e4d06fd28e27025f24f11",
+      "currentAirCellCount": 0,
+      "insideB09MinimumAccommodation": true,
+      "r12rProtectedBlockOverlapCellCount": 0
+    },
+    "adjacentLowerInterior": {
+      "cellCount": 12,
+      "bounds": { "minX": 2051, "maxX": 2056, "minY": 130, "maxY": 131, "minZ": -748, "maxZ": -748 },
+      "coordinateSetSha256": "4062250031378a6fd8ee3a499df1c38cfb9af751e28876bb90c06bf00cd6eae7",
+      "allAir": true,
+      "qualification": "Not a receiver, platform, independent normal-walk approach, or rescue discharge."
+    },
+    "r12rMinecart": {
+      "canonicalOwner": "Z11-FUNICULAR-OPERATIONS",
+      "entityId": "minecraft:minecart",
+      "authenticatedTag": "cz_r12_7464210e11d51e28eb4e133e2d40fd0b",
+      "savedPosition": { "x": 2058.4900000095367, "y": 130.0625, "z": -747.5 },
+      "protectedBlockCellCount": 19,
+      "protectedBlockCoordinateSetSha256": "b557ebeadb288853bfc1c9e5bc3f4311ee496e1f637a41317578a4af57d93dab",
+      "savedEntityObservationIsNotLiveClearance": true
+    }
+  },
+  "counterpartOwners": {
+    "from": {
+      "ownerId": "OWN-D05-B08-SERVICE-TUNNEL-CONTROL",
+      "scope": "B08 service tunnel / D05 boundary",
+      "requiredAcceptance": [
+        "Name the exact B08-side access class, approach extent, normal route, reverse route, and B08 circulation test.",
+        "Accept the exact source-state, post-state, inverse, and failure-state transition for every owned or shared portal cell.",
+        "Accept no opening until the named B09 receiver and independently protected rescue continuation have passed their own owner checks."
+      ]
+    },
+    "to": {
+      "ownerId": "CZ05-Z11-FUNICULAR-CONTROL",
+      "scope": "B09 lower station / guideway system boundary",
+      "requiredAcceptance": [
+        "Name the receiver, platform/edge separation, controlled-door normal and powered-failure state, and protected B09 continuation.",
+        "Accept that R12R rails, levers, controls, and the authenticated minecart remain protected unless an exact preserve or migration transaction is approved.",
+        "Accept independent receiver/rescue tests; passive rail, the 12-cell interior, or a saved entity record cannot substitute."
+      ]
+    },
+    "joint": {
+      "relationship": "SAME_COORDINATE_PORTAL_PRECEDENCE_AND_CLOSED_TRANSFER",
+      "wildcardAllowed": false,
+      "lastWriterWinsAllowed": false,
+      "jointAcceptanceRequired": true,
+      "acceptanceRecord": null
+    }
+  },
+  "mandatoryAcceptancePayload": {
+    "door": {
+      "status": "PENDING_EXACT_BILATERAL_DESIGN",
+      "portalCellSet": null,
+      "normalAccessClass": null,
+      "normalState": null,
+      "poweredFailureState": null,
+      "sourceStateSetSha256": null,
+      "postStateSetSha256": null,
+      "forwardOperationSha256": null,
+      "rollbackOperationSha256": null,
+      "inverseProven": false,
+      "b08ForwardAndReverseCirculationQa": null
+    },
+    "receiver": {
+      "status": "PENDING_EXACT_B09_OWNER_DESIGN",
+      "receiverId": null,
+      "canonicalOwnerId": null,
+      "cellSet": null,
+      "platformEdgeBarrierOrGate": null,
+      "independentNormalWalkApproach": null,
+      "hydrologyDrainageOutfallReceiverContract": null,
+      "functionalQa": null
+    },
+    "rescueAndEgress": {
+      "status": "PENDING_EXACT_TWO_DISCHARGE_DESIGN",
+      "separatedSixBySixRoute": null,
+      "lockableThreeByThreeCrossPassages": null,
+      "maximumCrossPassageSpacingBlocks": 128,
+      "independentProtectedDischargesRequired": 2,
+      "acceptedIndependentProtectedDischarges": 0,
+      "refugeAndRescueAcceptanceQa": null,
+      "prohibitedSubstitutes": ["B09 passive rail", "B09 lower interior", "sealed cap", "saved-entity observation"]
+    },
+    "r12rMinecartPreservationOrMigration": {
+      "status": "PENDING_FRESH_LIVE_CLEARANCE_OR_EXACT_ENTITY_FIRST_TRANSACTION",
+      "preserveWithFreshLiveClearance": null,
+      "migrationSourceEntityIdentity": null,
+      "migrationDestination": null,
+      "migrationForwardOperationSha256": null,
+      "migrationRollbackOperationSha256": null,
+      "rollbackRestoresAuthenticatedTagAndExactPosition": null,
+      "sameMomentLiveEntityClearance": null,
+      "broadCleanupProhibited": true,
+      "r12rControlRepurposingProhibited": true
+    },
+    "releaseKernel": {
+      "status": "PENDING_AFTER_BILATERAL_ACCEPTANCE",
+      "freshImmutableSourceSnapshot": null,
+      "completeCanonicalBlockStates": null,
+      "protectedBlockEntityAndContainerClearance": null,
+      "strictNoopForwardAndRollbackParserChecks": null,
+      "exactSourcePreflight": null,
+      "journaledExecution": null,
+      "freshPostSnapshot": null,
+      "rollbackPostStatePreflight": null,
+      "independentFunctionalQa": null
+    }
+  },
+  "nonclaims": [
+    "No B08-to-B09 opening is authorized.",
+    "No receiver, route, rescue discharge, public access, passenger service, or station is accepted or built.",
+    "No minecart action, R12R control reuse, RCON call, operation file, or world mutation is authorized.",
+    "The historical planning-registry seam hash is not treated as current Anvil-post proof; the current source-bound seam hash above controls this template."
+  ]
+}

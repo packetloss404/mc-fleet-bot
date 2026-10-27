@@ -3,7 +3,7 @@
 Release: `REDEV-2026-07-28-TOWN-EXPANSION`  
 Mode: **DRAFT**  
 Status: **DRAFT_NOT_AS_BUILT_REGISTER**  
-Generated: 2026-08-06T21:53:39.105Z  
+Generated: 2026-08-25T17:08:03.957Z  
 Machine register: `data/world-review/town-expansion-artifact-manifest-2026-07-28.draft.json`
 
 > **DRAFT / FINALITY RULE:** Draft mode is preparation evidence only and
@@ -37,27 +37,27 @@ self-referential hash cycle.
 | Evidence class | Files | Bytes | Images | JSON |
 |---|---:|---:|---:|---:|
 | baseline-and-post-maps | 10 | 4,147,564 | 7 | 2 |
-| canonical-build-package-and-engineering | 194 | 12,588,699,773 | 0 | 149 |
+| canonical-build-package-and-engineering | 204 | 12,588,742,746 | 0 | 151 |
 | citizen-program-reports | 10 | 105,798 | 0 | 3 |
-| entity-transaction-post-and-database-qa | 182 | 3,310,001,619 | 5 | 156 |
+| entity-transaction-post-and-database-qa | 200 | 3,329,165,724 | 5 | 171 |
 | exact-object-media-and-crosswalk | 4,427 | 670,924,793 | 4,324 | 103 |
 | pm-dossier-frozen-scope-and-research | 208 | 20,672,071 | 16 | 93 |
-| project-closeout-readme | 1 | 24,284 | 0 | 0 |
-| release-and-documentation-automation | 28 | 1,241,438 | 0 | 0 |
-| release-and-documentation-tests | 16 | 157,119 | 0 | 0 |
-| **Total** | **5,076** | **16,595,974,459** | **4,352** | **506** |
+| project-closeout-readme | 1 | 32,521 | 0 | 0 |
+| release-and-documentation-automation | 31 | 1,278,878 | 0 | 0 |
+| release-and-documentation-tests | 17 | 159,133 | 0 | 0 |
+| **Total** | **5,108** | **16,615,229,228** | **4,352** | **523** |
 
 ## File-type census
 
 | Extension | Files |
 |---|---:|
 | `.png` | 4352 |
-| `.json` | 506 |
-| `.md` | 107 |
-| `.txt` | 41 |
-| `.mjs` | 28 |
-| `.jsonl` | 26 |
-| `.ts` | 16 |
+| `.json` | 523 |
+| `.md` | 108 |
+| `.txt` | 49 |
+| `.mjs` | 31 |
+| `.jsonl` | 28 |
+| `.ts` | 17 |
 
 ## Category-level artifact ledger
 
@@ -86,6 +86,8 @@ self-referential hash cycle.
 | `data/buildops/archive/town-expansion-r1-baseline-20260728T0930Z/town-expansion-r1-2026-07-28.report.json` | 1,676,793 | `9a136e0c19577225e5f4c5eaebf5ce865000ab54bfc69851c3f7e976d3144d85` | status=COMMISSION_STAGE_READY_C01_RETIREMENT_AND_P01_RECOVERY_DEFERRED; package=town-expansion-r1-2026-07-28; snapshot=f9a6a21ec115… |
 | `data/buildops/archive/town-expansion-r1-baseline-20260728T0930Z/town-expansion-r1-2026-07-28.rollback.txt` | 39,683,608 | `b7000e2a7d2e171e320ef93fb179f4fc06fa00665876a84248695cb2de3834b9` | — |
 | `data/buildops/archive/town-expansion-r1-baseline-20260728T0930Z/town-expansion-r1-2026-07-28.txt` | 40,313,136 | `8a9242fa2cd58a3b83df28b1ded4edab79715366818774e7d7b44ace621de40f` | — |
+| `data/buildops/manager-vale-current-safe-supplement-2026-08-08.forward.txt` | 347 | `00b95eb5dea290b97003bdd982f01d5d0133395a9a36af5525f9d91c2576a5bf` | — |
+| `data/buildops/manager-vale-current-safe-supplement-2026-08-08.rollback.txt` | 267 | `097ba6469520797900a7298f7741bea83861b8fc23e8637cf405e6fa7b8f0561` | — |
 | `data/buildops/manager-vale-five-cottages-2026-07-28.cameras.json` | 15,191 | `c9983a23e6dba22c55f1508fbe77063f167b7d2afd84db46e5ae3fdbc0114f90` | — |
 | `data/buildops/manager-vale-five-cottages-2026-07-28.database-features.json` | 40,449 | `0725b81b87af706989698cfef321466d7d40c6fb0f4ea15802ddd0cbb598d704` | — |
 | `data/buildops/manager-vale-five-cottages-2026-07-28.dry-run.json` | 29,378,106 | `29e3b81f7c538464149d2064ad2b1e30a6bc3b92132b6a931d78bb314e521ed4` | status=dry_run; ops=cddba81d860a… |
@@ -109,6 +111,8 @@ self-referential hash cycle.
 | `data/buildops/manager-vale-five-cottages-fresh-2026-07-28.report.json` | 59,856 | `42e3bdcd0c301a49613ac90906a6cfb25f1d0d40efaeec0aa4d7e106f64bda22` | status=PASS_OFFLINE_INTEGRATION_READY_LIVE_GATES_PENDING; package=MANAGER-VALE-FIVE-COTTAGE-COMMISSION-R1 |
 | `data/buildops/manager-vale-five-cottages-fresh-2026-07-28.rollback.txt` | 2,910,790 | `bfdde00455c750291f7b8dc93aa68b1451c44c60a825ee7d6629c2b3dd537f97` | — |
 | `data/buildops/manager-vale-five-cottages-fresh-2026-07-28.txt` | 2,910,786 | `cddba81d860a5f75bf9849a50e76eb74775915318e310c9d7f0ac0fa4a0b6c3f` | — |
+| `data/buildops/town-expansion-current-safe-supplement-2026-08-08.forward.txt` | 12,348 | `cb4dc9578419aa04b33803799502cd6abe3d093749a6ac775fc1501a69942d85` | — |
+| `data/buildops/town-expansion-current-safe-supplement-2026-08-08.rollback.txt` | 12,264 | `9c254e08b4dac52bc8920e509f5de2e67ef4e1c65876f49c287181468d2ff8f9` | — |
 | `data/buildops/town-expansion-r1-2026-07-28.atomic-release.json` | 301 | `53dc2fb938fa526a7972f4588f9af84ebc1a17a34d46b21e41c1f9412af33651` | — |
 | `data/buildops/town-expansion-r1-2026-07-28.compiler-complete-prerelease-preflight.json` | 455 | `a77edaa651d25b17c8e32e22e7f279d59f325e156ec0904c32a88c790a864035` | — |
 | `data/buildops/town-expansion-r1-2026-07-28.compiler-complete-streaming-strict-dry-run.json` | 514,941,952 | `19138f32a8dc5b0ce172ba6b1d86a350fd36b4c9cb379a963eb0f8060b36558d` | — |
@@ -257,6 +261,9 @@ self-referential hash cycle.
 | `data/buildops/town-expansion-r1-accessibility-repair-attempt2-2026-07-28.execution.journal.jsonl` | 5,131,317 | `84a70d1d3937f4ea2ee23cee7a7b5c91bc09a2e83bb08bb598ef2e9bfc15d70d` | — |
 | `data/buildops/town-expansion-r1-accessibility-repair-attempt2-2026-07-28.execution.json` | 1,608,958 | `19f7e5d9df7710f7577d150611a867b8d5f53993d5c5974b24485bef85dba6f8` | status=complete; ops=b042a63f6947… |
 | `data/buildops/town-expansion-r1-accessibility-repair-prefix566-recovery-2026-07-28.txt` | 53,349 | `eceff0c5a19754f80f6ba7bfc9987c6b8cd1ae0bae0644bc1ae699bf4d25428e` | — |
+| `data/buildops/town-expansion-r1-red-carpet-drift-repair.red-carpet-repair.forward.txt` | 2,799 | `672e93220da6763aa4bdcc8b39e44e10009319cfb1b0e3a7ec1cec4bbe0ad1b5` | — |
+| `data/buildops/town-expansion-r1-red-carpet-drift-repair.red-carpet-repair.rollback.txt` | 2,800 | `1be2f61f108f4083caba8fd0525420d4a467cccea36379e6349c373ca6253d44` | — |
+| `data/buildops/town-expansion-r1-red-carpet-drift-repair.release-manifest.json` | 3,599 | `8a82e010540a9352d5722fc680250a2234f9da49d24c2fd7d7256d064f5affb4` | status=COMPILED_FROM_ACCEPTED_R08AM_POST_OFFLINE_AWAITING_FRESH_EXECUTION_KERNEL |
 | `data/buildops/town-expansion-r1-red-carpet-source-recovery-2026-07-28.dry-run.json` | 46,875 | `e1dcad05ef9084d6a0f11612d1b2bb0920996a44b49a3decf3288889e65e3bf9` | status=dry_run; ops=bbbc0e74ebaa… |
 | `data/buildops/town-expansion-r1-red-carpet-source-recovery-2026-07-28.execution.json` | 56,328 | `214bb8c145ada4c1edd281dd15bbd983084c04a7e1dfa1ba0bf6a5f9bc0a65a0` | status=complete; ops=bbbc0e74ebaa… |
 | `data/buildops/town-expansion-r1-red-carpet-source-recovery-2026-07-28.execution.json.stream-journal.20260728T183714040953Z.jsonl` | 165,329 | `18af94053491e467d8e79732119226aeff0ed690bab487e5b25b429c9dbd8eec` | — |
@@ -267,6 +274,9 @@ self-referential hash cycle.
 | `data/buildops/town-expansion-r1-red-carpet-source-recovery-2026-07-28.rollback.dry-run.json` | 47,565 | `d9be8f996453834f6de9aae227e4ac7dffc32b4b5c56c8426fbb310333c046fc` | status=dry_run; ops=e2f49273472c… |
 | `data/buildops/town-expansion-r1-red-carpet-source-recovery-2026-07-28.rollback.txt` | 3,486 | `e2f49273472cd0a16c34aba4407bde6ed0b2494eec38cd1c3b569cc260192a64` | — |
 | `data/buildops/town-expansion-r1-red-carpet-source-recovery-2026-07-28.txt` | 3,940 | `bbbc0e74ebaa857d5a235535d68d069df73bd1b81516aef4495352fa54be4b16` | — |
+| `data/buildops/town-expansion-r1-rest-suite-lighting.release-manifest.json` | 4,160 | `23f618660c52a3de0f8f6f6648eab27265eb725531d1289bfad77751eb067e62` | status=COMPILED_FROM_ACCEPTED_R08AM_POST_OFFLINE_AWAITING_FRESH_EXECUTION_KERNEL |
+| `data/buildops/town-expansion-r1-rest-suite-lighting.rest-suite-ceiling-lighting.forward.txt` | 2,194 | `d93025c5021004e1e58773ac1415a8c871d0348ce1f17d6dfe7fbb7da1ced002` | — |
+| `data/buildops/town-expansion-r1-rest-suite-lighting.rest-suite-ceiling-lighting.rollback.txt` | 2,195 | `47cabc23d3b3cba96eccc30bd3b63769753ceb1b368370262040881b7356ea7a` | — |
 | `data/buildops/town-expansion-r1-wip.report.json` | 366,341 | `fc9384735ee6710da19992a352793a907996788cebcd687b56c7ae8b59230187` | status=BLOCKED_PROTECTED_BLOCK_ENTITIES; package=town-expansion-r1-2026-07-28; snapshot=e612b1feabcf… |
 | `data/buildops/town-expansion-r1-wip.rollback.txt` | 16,067,159 | `6922cb254a928160b0fb6fafa013adf78529a0e019ad34954289cd42c40d05e5` | — |
 | `data/buildops/town-expansion-r1-wip.txt` | 16,136,490 | `0c334dda0e343c599ef92e961d61340ef7681f7c0a8274df69465dd66e6efda9` | — |
@@ -356,6 +366,15 @@ self-referential hash cycle.
 | `data/world-review/town-expansion-artifact-manifest-2026-07-28.json` | 2,447,374 | `e95c7eeb02220edcb05a91e2baea799e7833369fd3ff5f3479a021699c78928d` | status=FINAL_AS_BUILT_REGISTER |
 | `data/world-review/town-expansion-c01-camera-preflight-20260728.json` | 828,487 | `403ae0f3c4d27c0312ca5854327a00c75707c8d4d8cbdc388b4c6344236e3bf4` | status=PASS; package=town-expansion-c01-authored-camera-poststate-preflight |
 | `data/world-review/town-expansion-capture-report-map-fov-contract-fail-20260728T2103Z.json` | 1,196,382 | `40473dd56670ccabd36b2a7c2e86b25f9d0a1d9f4a131a0352416a69c2e4f692` | status=PASS; passed=true; snapshot=c39d0d67c9de… |
+| `data/world-review/town-expansion-current-safe-supplement-2026-08-08.json` | 28,156 | `457f34380c893a5b83e332f6a755868e3895979985864f7d3a24bd83511bb793` | status=BLOCKED_UNSAFE_DRIFT; snapshot=27cde8adad9f…; ops=cb4dc9578419… |
+| `data/world-review/town-expansion-current-safe-supplement-execution-2026-08-08.json` | 148,356 | `e6627b39aa4b2739108e381a2f19a565e393da067c18ad1792a14b1c6f1c5070` | status=complete; ops=cb4dc9578419… |
+| `data/world-review/town-expansion-current-safe-supplement-execution-2026-08-08.jsonl` | 486,642 | `ed55de6db0c6d21136bb8d86fa881a0f8a324eb0031c6904783b2cf8d90af109` | — |
+| `data/world-review/town-expansion-current-safe-supplement-forward-dry-2026-08-08.json` | 137,139 | `a5af444e80aedf77383e9b632da0a203aabff6a7e56bb67f9e4ce270c7eebd55` | status=dry_run; ops=cb4dc9578419… |
+| `data/world-review/town-expansion-current-safe-supplement-preflight-2026-08-08.json` | 7,456 | `684198fa0a511ecb79b1e8a87549ba55133363302f0e25e5da5c7eb647ba28d2` | status=PASS |
+| `data/world-review/town-expansion-current-safe-supplement-rollback-dry-2026-08-08.json` | 144,573 | `04cc0c19472c9dc76e685159a5031b407d3ddb64e18c66c9e2010d60cc7c94e1` | status=dry_run; ops=9c254e08b4da… |
+| `data/world-review/town-expansion-current-safe-supplement-rollback-post-preflight-2026-08-08.json` | 7,468 | `a9dd42fd4957e6574bfeb34014c70dcf52d11114034001372ee7bd1b387e27ba` | status=PASS |
+| `data/world-review/town-expansion-drift-survey-20260824/town-expansion-drift-survey.json` | 17,823,361 | `36efeaf52b578cf557d631c92b643bb1d277210abf34ed617e458d394e5c371a` | — |
+| `data/world-review/town-expansion-drift-survey-20260824/town-expansion-drift-survey.md` | 97,423 | `3bddd7a01f711e984ff7d3c66983426de0fab2244a2722741073bd3c563c0d12` | — |
 | `data/world-review/town-expansion-fresh-c01-audit.json` | 129,555 | `bd45208ae7b900cdf55adda1654143cc19442febc4cc5f096c43ce0d6dc363d5` | status=C01_MODEL_AUDIT_PASS; snapshot=f9a6a21ec115… |
 | `data/world-review/town-expansion-fresh-global-audit.json` | 159,952 | `b6c9c6014de87ba53cff683496427bd752a64c76dfbe2e991a0d024c13ae9168` | status=GLOBAL_CROSS_SCOPE_INTERFACE_GATE_PASS; snapshot=f9a6a21ec115… |
 | `data/world-review/town-expansion-fresh-global-audit.md` | 14,485 | `3a1e272a31d42f5b341cf95d3aeabb6f74bf6735b3b017db34c39c9ba243e984` | — |
@@ -369,7 +388,7 @@ self-referential hash cycle.
 | `data/world-review/town-expansion-media-static-preflight-20260728.json` | 13,159 | `8c9541c3170c5dc47aa7246d0139b3913137ddfd2f47d0c35461d25801d93c56` | status=PASS; package=town-expansion-media-complete-static-preflight |
 | `data/world-review/town-expansion-media-static-preflight-final-expanded-20260728.json` | 13,159 | `740ba38dc6db4eec3cdadf5ccca600f964ccd44b9d54a3e15bf6bbbf7ee49c22` | status=PASS; package=town-expansion-media-complete-static-preflight |
 | `data/world-review/town-expansion-media-static-preflight-final-semantic-20260728.json` | 13,159 | `d4db177080b798ba4ab0c65ee886f962a60e82c416226d10787de6fc86d3f16c` | status=PASS; package=town-expansion-media-complete-static-preflight |
-| `data/world-review/town-expansion-r1-accessibility-repair-as-built-route-qa-20260728.json` | 871,128 | `1bb95c5542376c1a3c9828181520f93cf32b0d910a8873c1a03d1dcb70d75914` | status=PASS; passed=true; package=town-expansion-r1-post-release-route-qa; snapshot=c39d0d67c9de… |
+| `data/world-review/town-expansion-r1-accessibility-repair-as-built-route-qa-20260728.json` | 871,128 | `3be01f994076f7d7ecbe24e5bad3b5a184388acf447907edb9793ff1665b9e2d` | status=PASS; passed=true; package=town-expansion-r1-post-release-route-qa; snapshot=c39d0d67c9de… |
 | `data/world-review/town-expansion-r1-accessibility-repair-atomic-transaction-attempt1-20260728.json` | 1,830 | `2965ff5f2545891c4b4bd98bd1944beeebcff05efe6aa09bbc068574b8fc320f` | status=failed |
 | `data/world-review/town-expansion-r1-accessibility-repair-atomic-transaction-attempt2-20260728.json` | 1,966 | `06a4a66570d19f8a231a6adcb281b43ac957320cca1ccdcabc983bc989492cca` | status=committed |
 | `data/world-review/town-expansion-r1-accessibility-repair-attempt2-rollback-poststate-preflight-20260728.json` | 5,653 | `b1a8d23ec3668819c19f02671483a679709f7cab81c00f68a7c07a6d4f5edae4` | status=PASS |
@@ -470,6 +489,15 @@ self-referential hash cycle.
 | `data/world-review/town-expansion-r1-rollback-poststate-policy-preflight-20260728.json` | 11,181 | `c8f0c80ce08a4445800ea2c5733d1422d8a80cf3c10cb42992f787c0f993b851` | status=PASS |
 | `data/world-review/town-expansion-r1-rollback-poststate-preflight-fullsource-20260728.json` | 8,609 | `76324ddfc56732ceb275f8e808a8170f2be38df5c3268f00ad310262eb02582a` | — |
 | `data/world-review/town-expansion-r1-topdown-strict-atomic-manifest-qa-final.json` | 1,717 | `c4a737b20ee672213d77c9e9020d3fecda7c58970462f7be6ec2007b18348630` | status=PASS; passed=true |
+| `data/world-review/town-expansion-redcarpet-live-20260824T220500Z/block-entity-clearance.json` | 631 | `db638b1c3139a8463f8b5ad9f8a8efe50880ec7e5186bbd6de6811dfbaad584b` | status=PASS; package=guarded-ops-block-entity-clearance |
+| `data/world-review/town-expansion-redcarpet-live-20260824T220500Z/evidence-ledger.json` | 910 | `a21b337570625503a99d3f4bc36a07fbf479c9b630cbd41911be78c142c4974e` | status=EXECUTED_POSTSTATE_VERIFIED_REVERSIBLE |
+| `data/world-review/town-expansion-redcarpet-live-20260824T220500Z/forward-source-preflight.json` | 1,624 | `112621f33183fd6d62e84a5e66bff9c5345b9a973739bdabbcc38b7b97f4608c` | status=PASS |
+| `data/world-review/town-expansion-redcarpet-live-20260824T220500Z/forward-strict-dry-run.json` | 38,487 | `68b8a4c3193d0552db8a872a83619e72683b97119222582294003954ae0535f7` | status=dry_run; ops=672e93220da6… |
+| `data/world-review/town-expansion-redcarpet-live-20260824T220500Z/live-entity-clearance.json` | 14,860 | `67c86f15b11031af16dc62fed344f3a32f07cb60eff2577666f851fcd0fc3852` | status=PASS; passed=true |
+| `data/world-review/town-expansion-redcarpet-live-20260824T220500Z/red-carpet-repair.forward-execution.json` | 48,018 | `ed0c3ddc6f82296ebbf5502b1a19b9ba7359977100eda018bbbff2ae66e3dd6f` | status=complete; ops=672e93220da6… |
+| `data/world-review/town-expansion-redcarpet-live-20260824T220500Z/red-carpet-repair.forward-execution.json.stream-journal.jsonl` | 138,329 | `a0ca0118531b859161a1df218cf7d9e6df20cefa225dad9f3dfe3cb90b38e710` | — |
+| `data/world-review/town-expansion-redcarpet-live-20260824T220500Z/rollback-poststate-preflight.json` | 1,623 | `95c93729917239f0002f61639cea3274dc1bf1da13130236b17ac22e33b31f1f` | status=PASS |
+| `data/world-review/town-expansion-redcarpet-live-20260824T220500Z/rollback-strict-dry-run.json` | 39,049 | `bde0b2d7b54c1ed7c97a2ba7155f401583433c85205064dffc01c056ddaaecf1` | status=dry_run; ops=1be2f61f108f… |
 | `data/world-review/town-expansion-sales-office-camera-preflight-20260728.json` | 19,318 | `6182b8f8a5d299429b9d14977f7ee93b93536bd2030ff63924c301e57d552876` | status=PASS; package=town-expansion-sales-office-camera-poststate-preflight |
 | `data/world-review/town-expansion-terminal-as-built-route-qa-20260728T1839Z.json` | 873,832 | `a3c16f23167c668e4c3833cc4662f0829c0c096fccf2f223a42bd9b4d1ac99e7` | status=PASS; passed=true; package=town-expansion-r1-post-release-route-qa; snapshot=c39d0d67c9de… |
 | `data/world-review/town-expansion-terminal-provenance-and-ridge-recovery-atomic-transaction-20260728T1838Z.json` | 54,928 | `26d6bf1f20d81c333ab18cd1662581f6e94dab283827dfb4683f879bb0b36267` | status=committed-pending-post-qa |
@@ -5083,7 +5111,7 @@ self-referential hash cycle.
 | `docs/redevelopment/2026-07-28-town-expansion/post-release-qa.md` | 7,414 | `7cf90652b8f840e51124e82f41f7442cf258d8c438362e9850f5a66640bb0cf5` | — |
 | `docs/redevelopment/2026-07-28-town-expansion/POSTMORTEM_HANDOFF.md` | 3,172 | `f05925f3a34f6afeb08ec654f3d9776ead27b8299911e795230252e3a750e3c1` | — |
 | `docs/redevelopment/2026-07-28-town-expansion/railway-migration-closeout.json` | 6,059 | `9934e48fe400b687cd3cfdddba8280ad402ad51ae035d9cce8d1015551242855` | status=RAILWAY_CUTOVER_VERIFIED_UNDERGROUND_PUBLISHED_SITES_DELETE_UNAVAILABLE; passed=true; package=ianlan-nextgen-railway-migration-closeout-2026-07-28 |
-| `docs/redevelopment/2026-07-28-town-expansion/requirements-status-matrix.draft.json` | 81,104 | `a9f01630b25945ad2577b154cdb642c1f63434a3a3abe06f1470f7396ed2282a` | status=DRAFT_NOT_AS_BUILT; package=town-expansion-r1-2026-07-28 |
+| `docs/redevelopment/2026-07-28-town-expansion/requirements-status-matrix.draft.json` | 81,104 | `24250d06d2d23cb50275a99708904965e69deff24657131408ededbcccca4d77` | status=DRAFT_NOT_AS_BUILT; package=town-expansion-r1-2026-07-28 |
 | `docs/redevelopment/2026-07-28-town-expansion/requirements-status-matrix.draft.md` | 37,182 | `9a36009533f3f9d02b86ff2733eac7cd92cae1b52a84adf18049cf4a5123153e` | — |
 | `docs/redevelopment/2026-07-28-town-expansion/requirements-status-matrix.json` | 83,306 | `01af92bf933edcb10af06a751ce3b2c332c1e30d0fdda7b5712ca88f04aa6076` | status=FINAL_AS_BUILT_INPUTS_ACCEPTED; package=town-expansion-r1-2026-07-28 |
 | `docs/redevelopment/2026-07-28-town-expansion/requirements-status-matrix.md` | 37,537 | `00f31242ef25a5a761af176e63769c76b41cd0382ba57e60df4e6b203cec610f` | — |
@@ -5126,20 +5154,22 @@ self-referential hash cycle.
 
 | Path | Bytes | SHA-256 | Evidence binding |
 |---|---:|---|---|
-| `README.md` | 24,284 | `7a663dfc3fea7664b649fb000a5849ec9213a769279fca8534fcc4bbbddeffe7` | — |
+| `README.md` | 32,521 | `6be50bd53eee083d31ef58b63342a24f6031aa9d67eb25a61344dc0f9c31f90e` | — |
 
 ### release-and-documentation-automation
 
 | Path | Bytes | SHA-256 | Evidence binding |
 |---|---:|---|---|
 | `scripts/audit_town_expansion_program_fit.mjs` | 14,606 | `2c4eb9b52782ff9cd4bd06d4ff591b351f1a9aefac80bafe7aaaaddfb9402d81` | — |
+| `scripts/compile_town_expansion_red_carpet_drift_repair.mjs` | 8,240 | `25c6c166d3ba58d1abf419b006347ed41ce65dd3e5b9549ce746ef0b7ea49290` | — |
+| `scripts/compile_town_expansion_rest_suite_lighting.mjs` | 11,553 | `65a7d24a3707ea62f75ef014f8105aff9067d96aadf73f835409f4448eee7632` | — |
 | `scripts/finalize_town_expansion_terminal_recovery.mjs` | 17,109 | `8bff247c05d6be66a9a3a2daea0f49f94d8a16f01bd7b1b453b26735e5e8eb51` | — |
 | `scripts/generate_redevelopment_artifact_register.mjs` | 16,478 | `5ab8416965eb57d05fe6073dd3a081aab1f3891a3049e5b7d97d03410aaaffe6` | — |
 | `scripts/generate_redevelopment_dossier.mjs` | 30,153 | `5ef04be93248d7422ad8453a819dc5ebb22ed724b3ad9f26b24d47705e7625ab` | — |
 | `scripts/generate_town_expansion_accessibility_as_built_route_qa.mjs` | 14,318 | `60fb9f42f21e79ef428f390c99aac398dcca134d09421c835ce8baab15725e33` | — |
 | `scripts/generate_town_expansion_accessibility_repair.mjs` | 38,185 | `e6cb0ebe5d3e2958cdbe57b4b0f62fb00df7c081b5dab4e3c695c7eef1c241e3` | — |
 | `scripts/generate_town_expansion_media_manifest.mjs` | 75,980 | `9ab5c21acecde4ff2dbfa3c9eeace3275d0781534a008d68bad59ba9b47510b8` | — |
-| `scripts/generate_town_expansion_r1.mjs` | 436,476 | `02ef315960ca3fc2777f60f3cf05be69950232b9cdadad914105f1a012693e54` | — |
+| `scripts/generate_town_expansion_r1.mjs` | 437,617 | `bfc0a2bb5887609b038375eae28bc45e561db46f594dc0463911cad469ac841d` | — |
 | `scripts/generate_town_expansion_red_carpet_source_recovery.mjs` | 32,177 | `982568f2ea40cede963e126452e5948d460616f7010ca5d9756c57f2a1451de6` | — |
 | `scripts/import_town_expansion_release.mjs` | 71,329 | `1bccaf9638af8eb841a3587b28b6d6784aba36dc55846fd19561342f1d3a0e20` | — |
 | `scripts/manager_vale_cottage_compiler.mjs` | 65,677 | `510cdafa870d13aa370091b5aaa068c1cf1c0cf41a49d099afd1c21b782d3820` | — |
@@ -5154,8 +5184,9 @@ self-referential hash cycle.
 | `scripts/qa_town_expansion_post_release.mjs` | 83,418 | `7e37c8b53582163de643e186d0f4064a29008fabe75d87f72e1987fcf84f83d6` | — |
 | `scripts/qa_town_expansion_routes.mjs` | 28,787 | `4fa74f536c0b0fe3f77909ebbe6c45f011c611e62f1de5db7e597b04679046cf` | — |
 | `scripts/render_redevelopment_camera_manifest_batched.mjs` | 4,444 | `2627a8c9d709a233a5cd2b8fcb0cc5c69adc2332bcee82f50ee3f1c95c9cea1e` | — |
-| `scripts/render_redevelopment_camera_manifest.mjs` | 17,679 | `b80e30b16cf43441fcd8470e93ae9e3772232bb5598642cc287869b1ffb5b8cb` | — |
+| `scripts/render_redevelopment_camera_manifest.mjs` | 18,604 | `0055285f83b40802124ba3048c89cfefc1385cdb5476965268b0c9e28c7b40da` | — |
 | `scripts/report_town_expansion_database.mjs` | 13,297 | `9e49362b24cc90beb967dcbabeee0b44fd20e69704cd5b2b28119dbf85a9a49b` | — |
+| `scripts/survey_town_expansion_r1_drift.mjs` | 15,581 | `0054785efa1a60e62d63aa82610fa1bb1c6c1e777947159f90247b732fe420e4` | — |
 | `scripts/sync_town_expansion_box_handoff.mjs` | 14,235 | `5ff92da0a1e169afc24dc7303c047738607a73691dab8ff3cf30c127be4cd59e` | — |
 | `scripts/town_expansion_c01_compiler.mjs` | 40,255 | `c0529d63cbc7449fb39af67cdbae86c03d12a97f0bd2eb39de55329e49e9b361` | — |
 | `scripts/town_expansion_cbe_compiler.mjs` | 62,868 | `e1ebbb7eaffb0d0986ec0c93da4314788f64b2015db3bb8fa8b2b3623632a479` | — |
@@ -5181,6 +5212,7 @@ self-referential hash cycle.
 | `test/build/townExpansionC01Compiler.test.ts` | 3,213 | `bfba228a28926c5867d2a594667c0225f3659af2d881392339b34ffecc5d3e51` | — |
 | `test/build/townExpansionCrossScopeGate.test.ts` | 7,201 | `7050c5c7b29151a44b16e54d9593c58b7c312177a44a6a48db74e46a7e47f3d6` | — |
 | `test/build/townExpansionOperationOrder.test.ts` | 1,218 | `0e1a14f888e085334f296e6fb0846ca7735a9ecd4af62e40242e1e5d48f7235f` | — |
+| `test/build/townExpansionRedCarpetDriftRepair.test.ts` | 2,014 | `c2af94ce3d5f12d0e344bec443b9fd096299ba46f11ac693498ea903e36feb66` | — |
 
 ## Integrity procedure
 

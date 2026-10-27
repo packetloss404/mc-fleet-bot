@@ -1,0 +1,26 @@
+{
+  "releaseId": "MP11-C01-ARRIVAL-GRAVITY-SUPPORT-01",
+  "status": "ACTIVE_CONDITIONAL_ON_FULL_FRESH_GUARDED_KERNEL",
+  "executionAuthorized": true,
+  "rconAuthorized": true,
+  "worldMutationAuthorized": true,
+  "revoked": false,
+  "noBroaderAuthority": true,
+  "requiresFreshSourceAndPost": true,
+  "requiresExactSourceBoundRecompile": true,
+  "requiresNamedOwnershipInterfaceContract": "MP11-C01-ARRIVAL-GRAVITY-SUPPORT-OWNERSHIP-INTERFACE-01",
+  "scope": {
+    "targetCount": 33,
+    "interactionHaloCellCount": 219,
+    "canonicalSourceState": "minecraft:gravel",
+    "canonicalTargetState": "minecraft:polished_deepslate",
+    "retainedCadenceOverlapCellCount": 4,
+    "retainedStableGravityCellCount": 1,
+    "targetCoordinateSetSha256": "67b47415d8356b387c0ed3ca269b5d259d788cf9ca5a9e3975721a75692bf831",
+    "haloCoordinateSetSha256": "d442685e5ecb757b2bb0cf374669238f4e7f0c771978f99c6b9f088cb6a7b0a6",
+    "retainedCadenceOverlapStateSha256": "6a18060d9fc736ced71dce7d53af94ea47ef828a3ab62c17d93f81553c6a55f6",
+    "retainedStableGravityStateSha256": "0436a2e12feed9bceae785c4cf8e25527a55be32425ddd40b18cf26c6d74e5c7",
+    "forwardOperationSha256": "837afde1893a82e9b016ecff3825369a19693a8195b22399def0e7c0f1ededce",
+    "rollbackOperationSha256": "8f6561bfd5bad8c9aed43d94ef20bb709d39c2a9e629ffe36b46f51d3ff5ff81"
+  }
+}

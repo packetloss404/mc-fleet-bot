@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "reportId": "ianlan-nextgen-underground-navigation",
-  "generatedAt": "2026-07-28T23:20:45.061Z",
+  "generatedAt": "2026-08-27T17:11:28.256Z",
   "status": "PASS",
   "gates": {
     "inventoryStatusPass": true,
@@ -12,32 +12,41 @@
     "pdfHeaderValid": true,
     "pdfHasMultiplePages": true,
     "inventoryIncludesEntrances": true,
+    "currentSnapshotBound": true,
+    "currentRouteAuditTruthful": true,
+    "accessClassesSeparated": true,
+    "emptyEightPublicBoundaryExact": true,
     "c01IssueBoundaryPresent": true,
+    "currentUnprovenRoutesDisclosed": true,
     "noWorldMutationClaimPresent": true
   },
   "failedGates": [],
   "counts": {
-    "allWorldFeatures": 1215,
-    "undergroundNavigationRecords": 289,
+    "allWorldFeatures": 1226,
+    "undergroundNavigationRecords": 298,
     "c01Levels": 7,
     "c01Spaces": 168,
     "c01GraphNodes": 165,
     "c01GraphEdges": 181,
     "venueDatabaseRecords": 44,
     "c01VenueAndAdultSpaces": 55,
-    "entranceAndAccessRecords": 22,
-    "maps": 18,
-    "screenshots": 20,
+    "entranceAndAccessRecords": 27,
+    "maps": 20,
+    "screenshots": 22,
     "contactSheets": 2,
-    "htmlLocalReferences": 40,
-    "htmlUniqueLocalReferences": 40,
-    "pdfPages": 97,
-    "generatedPngFiles": 40
+    "currentRepresentativeRoutes": 22,
+    "currentRepresentativeRoutesPassed": 19,
+    "currentRepresentativeRoutesUnproven": 3,
+    "accessConnections": 36,
+    "htmlLocalReferences": 44,
+    "htmlUniqueLocalReferences": 44,
+    "pdfPages": 112,
+    "generatedPngFiles": 44
   },
   "pdf": {
     "file": "underground-navigation-report.pdf",
-    "bytes": 7702729,
-    "sha256": "c166eb86cc2ee73264a77da9c3271847a645e9129bfb9891fc5c32f695d936c1"
+    "bytes": 8099934,
+    "sha256": "b05f5412fde96d3a639c9b2ec41301b7910ba6f65b0e0e44b456b2022efd2134"
   },
   "missingReferences": [],
   "imageDimensions": [
@@ -168,18 +177,32 @@
       "sha256": "100fc97491dd5f9bb6627c874207c695411f4db6b9c83b467d4c7e63187e1876"
     },
     {
+      "file": "maps/19-empty-eight-public-retail-boh-sectional.png",
+      "width": 1344,
+      "height": 1344,
+      "bytes": 43009,
+      "sha256": "9201f83c6671c6c8ee208f0d1c96f06e9562aa86008da77fa369c3aba399d69c"
+    },
+    {
+      "file": "maps/20-empty-eight-restricted-annex-sectional.png",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 25634,
+      "sha256": "bffa49063975e86f864db53a72e95775b58c0ea02c0fc74819f44dc51c3c437b"
+    },
+    {
       "file": "screenshots/01-underground-evidence-contact-sheet.png",
       "width": 1800,
       "height": 1725,
-      "bytes": 550978,
-      "sha256": "55da7782fd1f6879c40d8027712d5a75b95435abea3afdb70c9e9f00c96b79bf"
+      "bytes": 656783,
+      "sha256": "d647e8d3a18d53e1e1a996e67f17afa5987699fc368c6a390d542387903e76b3"
     },
     {
       "file": "screenshots/02-underground-evidence-contact-sheet.png",
       "width": 1800,
-      "height": 1335,
-      "bytes": 605206,
-      "sha256": "872abd63aa2c4e6b99e0473a1b812bf2e8a21a6f7018443fb4e9ef9c81744aab"
+      "height": 1725,
+      "bytes": 577783,
+      "sha256": "928a011ed6b9c2aeded16d4c574d01d065caa3767100f97fc632e6ea3bcb699f"
     },
     {
       "file": "screenshots/c01-east-l1.png",
@@ -215,6 +238,27 @@
       "height": 720,
       "bytes": 266910,
       "sha256": "25198c037c3988cd97929213b870859ceabdade8ebe05e0e16af0dcf5dfd2979"
+    },
+    {
+      "file": "screenshots/empty-eight-public-gallery.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 28952,
+      "sha256": "6846b499e5413ffb6f9b247f5b4a346a95d545bc05e1a7b42d822c3a2a318589"
+    },
+    {
+      "file": "screenshots/empty-eight-restricted-grand-stair.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 32686,
+      "sha256": "62ba45b480b008844147c76e5cf47497040dc39afe9c6a9d867d864a0bcfc164"
+    },
+    {
+      "file": "screenshots/empty-eight-restricted-theatre.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 91142,
+      "sha256": "97c0263cc036756214f03c8604fb074dcbac95a0b059b26033559f1e58712e87"
     },
     {
       "file": "screenshots/gilded-raven.png",
@@ -271,13 +315,6 @@
       "height": 720,
       "bytes": 43131,
       "sha256": "c3cf7cbdfbfbf50ef3887f1df994a6a8dd5679a5bb6b7e26eeaa88df6c27663f"
-    },
-    {
-      "file": "screenshots/raven-rock-command-center.png",
-      "width": 1280,
-      "height": 720,
-      "bytes": 75516,
-      "sha256": "c6897a33231187942b9b2115a99be68937ac6745550790e75cb3429e017f6a48"
     },
     {
       "file": "screenshots/raven-rock-t2b.png",

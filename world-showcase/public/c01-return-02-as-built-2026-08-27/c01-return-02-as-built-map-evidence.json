@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "MP11-C01-PUBLIC-INDEPENDENT-RETURN-02-AS-BUILT-MAPS",
+  "status": "PASS_SOURCE_BOUND_PHYSICALLY_VERIFIED_NOT_COMMISSIONED",
+  "readOnly": true,
+  "mutationAuthority": false,
+  "worldMutated": false,
+  "bindings": {
+    "manifest": {
+      "path": "data/world-review/mp11-c01-public-independent-return-02-live-20260827T023000Z/rebound/compile/mp11-c01-public-independent-return-02.manifest.json",
+      "sha256": "99ce28a2ce15d22ae52f9a8f6097053c6f93b06304e83baa948fdbd90e418842"
+    },
+    "correctedQa": {
+      "path": "data/world-review/mp11-c01-public-independent-return-02-live-20260827T023000Z/independent-post-release-qa-corrected/mp11-c01-public-independent-return-02-post-qa.json",
+      "sha256": "8d2e0fc254630f0a72f7a8f6f0adbe1dd900f273f81ac32d1f945e41d80f6270",
+      "status": "PASS_C01_RETURN02_IMMUTABLE_POST_QA"
+    },
+    "correctionLedger": {
+      "path": "data/world-review/mp11-c01-public-independent-return-02-live-20260827T023000Z/post-qa-correction/mp11-c01-public-independent-return-02-post-qa-correction-ledger.json",
+      "sha256": "e5d22e163216f86c768c3800830dd730c693794be8c17a67e755360a676c429a",
+      "status": "EXECUTED_POSTSTATE_VERIFIED_REVERSIBLE_BY_CORRECTED_IMMUTABLE_QA"
+    },
+    "terminalGuardedLedger": {
+      "path": "data/world-review/mp11-c01-public-independent-return-02-live-20260827T023000Z/mp11-c01-public-independent-return-02-guarded-release-ledger.json",
+      "sha256": "296845868784d15d14f4a9711d559fcf2ec25a531f894c022b8eb75ee9fe98d6",
+      "status": "EXECUTED_PENDING_INDEPENDENT_POST_QA"
+    },
+    "immutablePost": {
+      "root": "data/worldsnap-mp11-c01-public-independent-return-02-exec-post-20260827T023000Z",
+      "captureId": "combined-zones-99e0bdf1e2f547afbbfe75b0dea4ab10",
+      "captureManifestSha256": "ad929129c0d94b5c8fea33c558a70ada6cb8f938ecd3cc5d3cf9fe03a2a21168"
+    }
+  },
+  "geometry": {
+    "allInterfaceAndRouteBounds": {
+      "min": [
+        837,
+        25,
+        -69
+      ],
+      "max": [
+        849,
+        43,
+        -47
+      ]
+    },
+    "independentReturnStationBounds": {
+      "min": [
+        837,
+        25,
+        -69
+      ],
+      "max": [
+        849,
+        43,
+        -64
+      ]
+    },
+    "stationCount": 28,
+    "orderedStationSha256": "edd1c7e191f1b5e0a96c69cd343623cf278a9998881eefa6372d06f0435674be",
+    "publicClearance": {
+      "width": 5,
+      "clearHeight": 5,
+      "profile": "five support/tread cells across; five clear cells above each station"
+    },
+    "endpointContracts": [
+      {
+        "id": "C01-PUBLIC-MAIN-UPPER-5X5-02",
+        "point": [
+          839,
+          43,
+          -47
+        ],
+        "direction": "upper-public-landing → main switchback",
+        "supportCellCount": 5,
+        "clearCellCount": 25,
+        "width": 5,
+        "height": 5
+      },
+      {
+        "id": "C01-PUBLIC-MAIN-LOWER-5X5-02",
+        "point": [
+          837,
+          25,
+          -54
+        ],
+        "direction": "main switchback → lower-public-landing",
+        "supportCellCount": 5,
+        "clearCellCount": 25,
+        "width": 5,
+        "height": 5
+      },
+      {
+        "id": "C01-PUBLIC-RETURN-UPPER-5X5-02",
+        "point": [
+          839,
+          43,
+          -64
+        ],
+        "direction": "upper-public-landing → independent return",
+        "supportCellCount": 5,
+        "clearCellCount": 25,
+        "width": 5,
+        "height": 5
+      },
+      {
+        "id": "C01-PUBLIC-RETURN-LOWER-5X5-02",
+        "point": [
+          837,
+          25,
+          -69
+        ],
+        "direction": "independent return → lower-public-landing",
+        "supportCellCount": 5,
+        "clearCellCount": 25,
+        "width": 5,
+        "height": 5
+      }
+    ],
+    "protectedSwitchbackInteriorHaloIntersectionCount": 0
+  },
+  "asBuiltChecks": {
+    "canonicalPostStateCellCount": 768,
+    "immutablePostCanonicalMismatches": [],
+    "correctedQaChecks": {
+      "canonical": true,
+      "dryGravitySafe": true,
+      "stations": true,
+      "lowerToUpperNormalWalk": true,
+      "upperToLowerNormalWalk": true,
+      "endpointsAndProtectedSwitchback": true
+    }
+  },
+  "nonClaims": [
+    "The physically verified return is not opened, publicly commissioned, service commissioned, or otherwise authorized for a new live operation.",
+    "Map generation reads immutable artifacts and does not mutate Minecraft."
+  ],
+  "evidenceSha256": "1289c00e849118255bb483b6cb22b346daaaabc976b4f79284db436994b6cacc"
+}

@@ -21,19 +21,19 @@ export const reports: ReportDefinition[] = [
     slug: 'master-plan',
     number: '01',
     title: 'Master Plan',
-    project: 'MC Fleet · Town Expansion R1',
+    project: 'MC Fleet · Cross-town reconciliation',
     summary: (
-      'The accepted as-built record: master planning, district maps, '
-      + 'database-linked objects, route proof, release QA, and rollback evidence.'
+      'Thirteen evidence-bound plans: what is accepted, what remains unproven, '
+      + 'and the exact dependency chain toward a future Cross-Town Railway.'
     ),
-    status: 'Accepted',
-    published: '28 July 2026',
-    image: '/atlas/town-expansion/map-whole-world-overview.png',
+    status: 'Reconciliation passed',
+    published: '22 August 2026',
+    image: '/underground/maps/01-underground-world-overview.png',
     href: '/reports/master-plan',
     metrics: [
-      { value: '340', label: 'objects' },
-      { value: '1,178', label: 'visual records' },
-      { value: '22', label: 'routes passed' },
+      { value: '13', label: 'plans reconciled' },
+      { value: '30', label: 'built claims' },
+      { value: '29 / 29', label: 'evidence bindings' },
     ],
   },
   {
@@ -42,17 +42,17 @@ export const reports: ReportDefinition[] = [
     title: 'Underground Navigation',
     project: 'MC Fleet · World Systems Atlas',
     summary: (
-      'A map-first guide to every cataloged tunnel, bunker, vault, below-grade '
-      + 'venue, underground room, and known way in.'
+      'A current-snapshot access guide to what is walkable, public, staff-only, '
+      + 'adults-only, sealed, or still unproven below grade.'
     ),
-    status: 'Report complete',
-    published: '28 July 2026',
+    status: 'Current access sealed',
+    published: '22 August 2026',
     image: '/underground/maps/02-underground-skywalk-schematic.png',
     href: '/reports/underground-navigation',
     metrics: [
-      { value: '18', label: 'navigation maps' },
-      { value: '289', label: 'catalog records' },
-      { value: '22', label: 'access nodes' },
+      { value: '20', label: 'navigation maps' },
+      { value: '298', label: 'catalog records' },
+      { value: '19 / 22', label: 'current routes' },
     ],
   },
   {
@@ -94,4 +94,59 @@ export const reports: ReportDefinition[] = [
       { value: '135', label: 'PDF pages' },
     ],
   },
+  {
+    slug: 'empty-eight',
+    number: '05',
+    title: 'The Empty Eight',
+    project: 'Combined Zones · South Galleria',
+    summary: (
+      'The accepted public-retail conversion: two PF08 stairs, eleven lit '
+      + 'vacant shells, exact terminal evidence, and clearly retained boundaries.'
+    ),
+    status: 'Public route accepted',
+    published: '22 August 2026',
+    image: '/empty-eight/public-south-galleria.png',
+    href: '/reports/empty-eight',
+    metrics: [
+      { value: '11', label: 'public vacant bays' },
+      { value: '2', label: 'gallery stairs' },
+      { value: '33', label: 'public lights' },
+    ],
+  },
+  {
+    slug: 'bunker-construction-status',
+    number: '06',
+    title: 'Bunker Construction Status',
+    project: 'MC Fleet · Terminal Evidence Review',
+    summary: (
+      'What is physically built now across Cheyenne, Raven Rock, and C01—'
+      + 'with design intent, historical releases, and commissioning limits kept separate.'
+    ),
+    status: 'Evidence sealed',
+    published: '22 August 2026',
+    image: '/bunker-construction-status/maps/01-bunker-evidence-overview.png',
+    href: '/reports/bunker-construction-status',
+    metrics: [
+      { value: '5,988 / 5,988', label: 'Cheyenne exact' },
+      { value: '900,946', label: 'east C01 exact' },
+      { value: '0', label: 'Raven Rock current' },
+    ],
+  },
 ];
+
+export const masterPlanReport = reports[0];
+
+// The workspace is intentionally hierarchical: the Master Plan is the entry
+// point and these are its evidence chapters, not unrelated projects.
+export const masterPlanEvidenceReports = reports.filter((report) => (
+  [
+    'underground-navigation',
+    'poi-coordinate-directory',
+    'empty-eight',
+    'bunker-construction-status',
+  ].includes(report.slug)
+));
+
+export const masterPlanArchiveReports = reports.filter((report) => (
+  report.slug === 'masterplan-program'
+));

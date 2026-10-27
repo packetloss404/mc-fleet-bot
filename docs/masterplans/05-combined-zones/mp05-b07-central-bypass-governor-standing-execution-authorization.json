@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "mp05-b07-central-bypass-governor-standing-execution-authorization",
+  "projectId": "combined-zones-phase1",
+  "recordedAtUtc": "2026-08-26T21:50:00Z",
+  "status": "AUTHORIZED_STANDING_SCOPED_EXECUTION",
+  "revoked": false,
+  "ownerDirective": {
+    "speaker": "Governor",
+    "recordedDate": "2026-08-26",
+    "exactText": "if you find like water or lava then you fucking just build it good that that its plugged up or not flowing.. incase it",
+    "interpretation": "The Governor delegates the B07 central-bypass, containment, R09F receiver, safety/recovery, and release-operator roles to the implementation team. This authority permits only the finite liner-first core bypass and its exact inverse; it retains the R09J cap and the unsupported-gravel column untouched."
+  },
+  "authorizedReleaseNodes": ["CZ-MP05-B07-CENTRAL-BYPASS"],
+  "allowNonMvpScopes": false,
+  "mvpBoundary": {"included":"Only MP05-B07-CENTRAL-BYPASS-01, its exact three packages, and its scoped guarded-release kernel.","excludedScopeIds":["P1-B12","C2","C3"],"exclusionRule":"This authority does not remove R09J, change the unsupported gravel, open R07J, create a surface receiver, commission public access/egress/transport, touch B08/B09, or create a fluid discharge."},
+  "hardSafetyKernel": [
+    {"id":"exact-release-and-inverse","required":true,"rule":"Independent structural QA binds complete canonical block states, exact target bijection, package disjointness, liner-first order, and forward/rollback inversion."},
+    {"id":"fresh-source-snapshot-and-preflight","required":true,"rule":"Every live invocation captures a fresh immutable complete source snapshot and passes exact forward source preflight in package order."},
+    {"id":"strict-forward-and-rollback-parser-checks","required":true,"rule":"Every forward and rollback operation file passes strict-noop parser validation before mutation."},
+    {"id":"block-and-live-entity-clearance","required":true,"rule":"The exact target and finite interaction halo are clear of block entities and fresh same-moment live entities before execution."},
+    {"id":"strict-execution-with-compensating-rollback","required":true,"rule":"Forward execution is strict-noop and journaled; any failure triggers the exact inverse for partial and committed packages in reverse order."},
+    {"id":"post-snapshot-and-rollback-poststate-verification","required":true,"rule":"A fresh immutable post snapshot, exact rollback poststate preflight, retained-fluid comparison, and release-specific bypass QA are mandatory before an as-built claim."}
+  ],
+  "operationalControls":{"defaultMode":"PREPARE_ONLY","liveExecutionOptIn":"--execute","globalGateDependency":"NONE","scopeLocalFailureRule":"A failed fluid, gravity, entity, source, or route check blocks only this exact transaction and cannot be used to remove an R09J cap or bypass the gravel safety boundary."},
+  "authorizationPayloadSha256":"bd8256b47cba91cc6604dcb1e38e0c4583564066392f31d664f0e17b990dad04"
+}
