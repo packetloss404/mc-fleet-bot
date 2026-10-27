@@ -144,7 +144,7 @@ cd web && npm install && npm run build && npm start   # serves on port 3000
 +
 +`npm test` runs the fleet application's unit and integration suites, including fleet-owned build tests. `npm run build` compiles the strict backend. The dashboard has its own npm install, lint, typecheck, unit and browser checks under web/.
 +
-+World construction and snapshot acceptance checks belong to [mc-world-ops](https://github.com/packetloss404/mc-world-ops). Optional cross-project contracts live in test/world-ops/: run `MC_WORLD_OPS_ROOT=/path/to/mc-world-ops npm run test:world-ops` with the required operator evidence present. They are separate from default application CI.
++World construction and snapshot acceptance checks belong to [mc-world-ops](https://github.com/packetloss404/mc-world-ops). Optional cross-project contracts live in test/world-ops/: run `MC_WORLD_OPS_ROOT=/path/to/mc-world-ops npm run test:world-ops` for the synthetic import contract. Historical commute checks additionally use `npm run test:world-ops:snapshots` with the exact operator evidence. Both are separate from default application CI.
 +
 +### Running as a service
 

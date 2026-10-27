@@ -11,7 +11,8 @@
     "dev": "tsx src/index.ts",
     "start": "node dist/index.js",
     "test": "vitest run",
-    "test:world-ops": "vitest run --config vitest.world-ops.config.ts"
+    "test:world-ops": "vitest run --config vitest.world-ops.config.ts",
+    "test:world-ops:snapshots": "vitest run --config vitest.world-ops.snapshots.config.ts"
   },
   "dependencies": {
     "@babel/generator": "^7.29.1",
