@@ -18,7 +18,7 @@ describe('BotActivityPanel', () => {
 
   it('renders idle description for IDLE state', () => {
     render(<BotActivityPanel {...baseProps} />);
-    expect(screen.getByText(/Idle/)).toBeInTheDocument();
+    expect(screen.getByText('Idle — waiting for tasks or exploring')).toBeInTheDocument();
   });
 
   it('renders disconnected description', () => {

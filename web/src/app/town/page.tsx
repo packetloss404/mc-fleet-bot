@@ -421,7 +421,7 @@ function QuickActionsPanel({ town }: { town: Town }) {
       <header className="px-4 py-3 border-b border-zinc-800/60">
         <h3 className="text-sm font-bold text-white">Quick Actions</h3>
         <p className="text-[10px] text-zinc-500 mt-0.5">
-          Pause toggles the town brain's autonomy.
+          Pause toggles the town brain&apos;s autonomy.
         </p>
       </header>
       <div className="p-4 space-y-2">

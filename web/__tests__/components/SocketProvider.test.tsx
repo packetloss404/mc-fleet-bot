@@ -5,10 +5,21 @@ import { getSocket } from '@/lib/socket';
 
 // Mock API
 vi.mock('@/lib/api', () => ({
+  safeFetch: (fetcher: () => Promise<unknown>, fallback: unknown) => fetcher().catch(() => fallback),
   api: {
     getBots: vi.fn().mockResolvedValue({ bots: [] }),
     getWorld: vi.fn().mockResolvedValue({ timeOfDay: 'day', isRaining: false }),
     getPlayers: vi.fn().mockResolvedValue({ players: [] }),
+    listCampaigns: vi.fn().mockResolvedValue({ campaigns: [] }),
+    getMarkers: vi.fn().mockResolvedValue({ markers: [] }),
+    getZones: vi.fn().mockResolvedValue({ zones: [] }),
+    getRoutes: vi.fn().mockResolvedValue({ routes: [] }),
+    getSquads: vi.fn().mockResolvedValue({ squads: [] }),
+    getMissions: vi.fn().mockResolvedValue({ missions: [] }),
+    getCommands: vi.fn().mockResolvedValue({ commands: [] }),
+    getBuilds: vi.fn().mockResolvedValue({ builds: [] }),
+    getChains: vi.fn().mockResolvedValue({ chains: [] }),
+    getRoleAssignments: vi.fn().mockResolvedValue({ assignments: [] }),
   },
 }));
 
@@ -29,15 +40,29 @@ const storeMocks = {
   incrementUnreadChats: vi.fn(),
 };
 
-vi.mock('@/lib/store', () => ({
-  useBotStore: vi.fn(() => storeMocks),
-}));
+vi.mock('@/lib/store', () => {
+  const auxiliaryStore = () => null;
+  auxiliaryStore.getState = () => new Proxy({}, { get: () => vi.fn() });
+  return {
+    useBotStore: vi.fn(() => storeMocks),
+    useControlStore: auxiliaryStore,
+    useFleetStore: auxiliaryStore,
+    useRoleStore: auxiliaryStore,
+    useWorldStore: auxiliaryStore,
+    useMissionStore: auxiliaryStore,
+    useBuildStore: auxiliaryStore,
+    useChainStore: auxiliaryStore,
+    useCampaignStore: auxiliaryStore,
+    useDecisionStore: auxiliaryStore,
+    useMovementTrailStore: auxiliaryStore,
+  };
+});
 
 import { api } from '@/lib/api';
 
 describe('SocketProvider', () => {
   let mockSocket: Record<string, any>;
-  const eventHandlers: Record<string, Function> = {};
+  const eventHandlers: Record<string, (...args: unknown[]) => void> = {};
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -45,7 +70,7 @@ describe('SocketProvider', () => {
 
     // Set up mock socket that captures event handlers
     mockSocket = {
-      on: vi.fn((event: string, handler: Function) => {
+      on: vi.fn((event: string, handler: (...args: unknown[]) => void) => {
         eventHandlers[event] = handler;
       }),
       off: vi.fn(),
@@ -53,6 +78,7 @@ describe('SocketProvider', () => {
       connect: vi.fn(),
       disconnect: vi.fn(),
       connected: false,
+      io: { on: vi.fn(), off: vi.fn() },
     };
     vi.mocked(getSocket).mockReturnValue(mockSocket as any);
   });
@@ -94,9 +120,8 @@ describe('SocketProvider', () => {
     expect(mockSocket.on).toHaveBeenCalledWith('bot:state', expect.any(Function));
     expect(mockSocket.on).toHaveBeenCalledWith('bot:inventory', expect.any(Function));
     expect(mockSocket.on).toHaveBeenCalledWith('activity', expect.any(Function));
-    expect(mockSocket.on).toHaveBeenCalledWith('bot:chat', expect.any(Function));
-    expect(mockSocket.on).toHaveBeenCalledWith('player:join', expect.any(Function));
-    expect(mockSocket.on).toHaveBeenCalledWith('player:leave', expect.any(Function));
+    expect(mockSocket.on).toHaveBeenCalledWith('player:position', expect.any(Function));
+    expect(mockSocket.on).toHaveBeenCalledWith('bot:decision', expect.any(Function));
   });
 
   it('calls setConnected(true) on socket connect', () => {
@@ -139,7 +164,7 @@ describe('SocketProvider', () => {
     expect(storeMocks.updateHealth).toHaveBeenCalledWith('TestBot', 15, 18);
   });
 
-  it('polls bots every 5 seconds', () => {
+  it('polls bots every 15 seconds', () => {
     render(
       <SocketProvider>
         <div />
@@ -147,11 +172,11 @@ describe('SocketProvider', () => {
     );
     // Initial call
     expect(api.getBots).toHaveBeenCalledTimes(1);
-    // Advance 5s
-    vi.advanceTimersByTime(5000);
+    // Advance 15s
+    vi.advanceTimersByTime(15000);
     expect(api.getBots).toHaveBeenCalledTimes(2);
-    // Advance another 5s
-    vi.advanceTimersByTime(5000);
+    // Advance another 15s
+    vi.advanceTimersByTime(15000);
     expect(api.getBots).toHaveBeenCalledTimes(3);
   });
 
@@ -162,14 +187,13 @@ describe('SocketProvider', () => {
       </SocketProvider>,
     );
     unmount();
-    expect(mockSocket.off).toHaveBeenCalledWith('connect');
-    expect(mockSocket.off).toHaveBeenCalledWith('disconnect');
+    expect(mockSocket.off).toHaveBeenCalledWith('connect', expect.any(Function));
+    expect(mockSocket.off).toHaveBeenCalledWith('disconnect', expect.any(Function));
     expect(mockSocket.off).toHaveBeenCalledWith('bot:position');
     expect(mockSocket.off).toHaveBeenCalledWith('bot:health');
     expect(mockSocket.off).toHaveBeenCalledWith('bot:state');
     expect(mockSocket.off).toHaveBeenCalledWith('bot:inventory');
     expect(mockSocket.off).toHaveBeenCalledWith('activity');
-    expect(mockSocket.off).toHaveBeenCalledWith('bot:chat');
 
     // Ensure polling stops (no more calls after unmount)
     const callCount = vi.mocked(api.getBots).mock.calls.length;
@@ -177,13 +201,13 @@ describe('SocketProvider', () => {
     expect(api.getBots).toHaveBeenCalledTimes(callCount);
   });
 
-  it('increments unread chats on bot:chat event', () => {
+  it('updates a player position from the supported socket event', () => {
     render(
       <SocketProvider>
         <div />
       </SocketProvider>,
     );
-    eventHandlers['bot:chat']();
-    expect(storeMocks.incrementUnreadChats).toHaveBeenCalledTimes(1);
+    eventHandlers['player:position']({ player: 'Alex', x: 1, y: 64, z: 2 });
+    expect(storeMocks.updatePlayerPosition).toHaveBeenCalledWith('Alex', 1, 64, 2);
   });
 });

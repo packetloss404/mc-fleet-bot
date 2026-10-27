@@ -70,11 +70,15 @@ export function LLMTraceTimeline({ botName, windowMs = 5 * 60_000, maxEntries = 
   // Initial fetch + reset whenever the bot changes.
   useEffect(() => {
     let cancelled = false;
-    api.getBotLLMTrace(botName, 100).then((data) => {
-      if (cancelled) return;
-      setEntries(data.trace.slice(-maxEntries));
-      setSelected(null);
-    });
+    api.getBotLLMTrace(botName, 100)
+      .then((data) => {
+        if (cancelled) return;
+        setEntries(Array.isArray(data.trace) ? data.trace.slice(-maxEntries) : []);
+        setSelected(null);
+      })
+      .catch(() => {
+        if (!cancelled) setEntries([]);
+      });
     return () => { cancelled = true; };
   }, [botName, maxEntries]);
 

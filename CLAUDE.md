@@ -4,9 +4,13 @@
 
 mc-fleet-bot (formerly DyoBot / mc-server-bot) is a Voyager-style AI-powered Minecraft bot sidecar. It connects mineflayer bots to a Minecraft server and uses an LLM to autonomously plan and execute tasks through code generation, with personality and social relationship systems.
 
-The target server is whatever `minecraft.host` in `config.yml` points at — as of 2026-07-24 that is a stock Paper 1.21.11 server at `10.80.13.14`, not the historical DyoCraft box (`play.dyoburon.com`, since upgraded to Paper 26.2 / protocol 776, which no mineflayer release can speak). World-specific coordinates (`mining.protectedZones`, `mining.mineSite`, `leash`, `rescueHome`) were emptied in that move, but **they have since been repopulated for this world** — as of 2026-08-07 `config.yml` carries 23 named protected zones (`ravensreach-town-hall` and others), `mineSite` at `-85, 64, -440`, a `rescueHome`, and a `leash` entry. Do not assume the geofence is a no-op: the block-placement and dig guards in `src/bot/BotInstance.ts` are enforcing against real zones. One caveat that IS still true — `leash` covers a single bot (`Architect`), so the rest of the fleet roams unleashed.
+The target server is whatever `minecraft.host` in `config.yml` points at — as of 2026-07-24 that is a stock Paper 1.21.11 server at `10.80.13.14`, not the historical DyoCraft box (`play.dyoburon.com`, since upgraded to Paper 26.2 / protocol 776, which no mineflayer release can speak). World-specific coordinates (`mining.protectedZones`, `mining.mineSite`, `leash`, `rescueHome`) were emptied in that move, but **they have since been repopulated for this world**. The current checked-in config has eight protected zones, `mineSite` at `-85, 64, -440`, a rescue home, and leash entries for Architect, Mason, Scott, Steward, and Surveyor. All five currently set `caretaker: false`, but their home, destination, and corridor constraints still apply. Do not assume the geofence is a no-op: the block-placement and dig guards in `src/bot/BotInstance.ts` enforce real zones.
 
 ## Build & Run
+
+The backend and dashboard require Node.js 22 or newer. Mineflayer 4.35+ declares
+`node >=22`; do not treat a successful install under Node 20 as a supported
+runtime.
 
 ```bash
 npm run build
@@ -49,6 +53,18 @@ npm test
 
 Tests use Vitest. Configuration is in `vitest.config.ts`.
 
+Fresh-clone CI is `.github/workflows/ci.yml`. It builds the backend and runs
+the non-snapshot backend suites, dashboard lint/unit/build and Chromium E2E,
+World Builder pytest, and the World Showcase production build. This is not a
+live-Minecraft/RCON/paid-provider acceptance test.
+
+After a local stack deployment, exercise the real dashboard-to-backend path
+without mutating fleet state:
+
+```bash
+PLAYWRIGHT_LIVE_URL=http://127.0.0.1:3000 npm run test:e2e:live --prefix web
+```
+
 **`npm test` covers neither `world-builder/` nor `fleet-devtools/`.**
 `world-builder/` is a separate Python toolchain with its own pytest suite;
 `fleet-devtools/` is a separate npm workspace with its own `vitest.config.ts`.
@@ -56,10 +72,10 @@ The root `vitest.config.ts` collects only `src/**/*.test.ts` and
 `test/**/*.test.ts`, and the root `tsconfig.json` compiles only `src/**/*`.
 See their sections below.
 
-Note for any full-suite run: the `test/build/` Combined Zones tests read
-`data/world-review/*.json`, and `data/` is gitignored — so on a fresh clone
-~60 test files fail on `ENOENT` regardless of code state. That is structural,
-not a regression.
+Note for any full-suite run: the `test/build/` Combined Zones tests and some
+operational `test/scripts/` cases read `data/world-review/*.json`, and `data/`
+is gitignored — so a fresh clone can fail on `ENOENT` regardless of code
+state. That is structural, not an application regression.
 
 ## World Builder (`world-builder/`)
 
@@ -78,7 +94,7 @@ and was not deleted.**
 cd world-builder
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"      # required: litemapy + the package itself
-pytest                        # 22 tests
+pytest                        # 38 tests
 ```
 
 Without the editable install, pytest fails at *collection* with
@@ -118,7 +134,7 @@ and was not deleted.**
 ```bash
 cd fleet-devtools
 npm install
-npm run check      # lint + build + test + format:check
+npm run check      # build + lint + test + format:check
 npm run dev        # API + dashboard on 4310 — binds 0.0.0.0, no auth
 ```
 

@@ -388,6 +388,8 @@ export interface SchematicInfo {
   filename: string;
   size: { x: number; y: number; z: number };
   blockCount: number;
+  /** True when blockCount is the bounded list-view estimate, not an exact scan. */
+  estimated?: boolean;
   /**
    * Per-block-type counts (block name → block count). Populated by the
    * server when the schematic is small enough to fully parse; absent for

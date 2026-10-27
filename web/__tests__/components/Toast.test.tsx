@@ -102,8 +102,8 @@ describe('ToastProvider', () => {
       screen.getByText('First').click();
       screen.getByText('Second').click();
     });
-    expect(screen.getByText(/^First$/)).toBeInTheDocument();
-    expect(screen.getByText(/^Second$/)).toBeInTheDocument();
+    expect(screen.getAllByText(/^First$/)).toHaveLength(2);
+    expect(screen.getAllByText(/^Second$/)).toHaveLength(2);
   });
 
   it('defaults to info type when no type provided', () => {

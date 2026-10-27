@@ -68,7 +68,7 @@ describe('EquipmentDisplay', () => {
         offhand={{ name: 'shield', count: 1 }}
       />,
     );
-    expect(screen.getByText('Shield')).toBeInTheDocument();
+    expect(screen.getAllByText('Shield')).toHaveLength(2);
   });
 
   it('shows count for stacked items', () => {

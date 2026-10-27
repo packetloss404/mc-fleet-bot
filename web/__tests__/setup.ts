@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom/vitest';
+import React from 'react';
 import { cleanup } from '@testing-library/react';
 import { afterEach, vi } from 'vitest';
 
@@ -8,13 +9,12 @@ afterEach(() => {
 
 // Mock framer-motion to avoid animation issues in tests
 vi.mock('framer-motion', () => {
-  const React = require('react');
   const actual = {
     motion: new Proxy(
       {},
       {
         get: (_target: any, prop: string) => {
-          return React.forwardRef((props: any, ref: any) => {
+          return React.forwardRef(function MotionComponent(props: any, ref: any) {
             const { initial, animate, exit, transition, variants, whileHover, whileTap, layoutId, ...rest } = props;
             return React.createElement(prop, { ...rest, ref });
           });
@@ -28,9 +28,8 @@ vi.mock('framer-motion', () => {
 
 // Mock next/link
 vi.mock('next/link', () => {
-  const React = require('react');
   return {
-    default: React.forwardRef(({ children, href, ...props }: any, ref: any) => {
+    default: React.forwardRef(function LinkMock({ children, href, ...props }: any, ref: any) {
       return React.createElement('a', { href, ref, ...props }, children);
     }),
   };

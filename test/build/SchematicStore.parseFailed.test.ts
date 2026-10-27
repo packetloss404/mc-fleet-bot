@@ -2,6 +2,8 @@ import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
+import zlib from 'zlib';
+import nbt from 'prismarine-nbt';
 
 import { SchematicStore } from '../../src/build/SchematicStore';
 
@@ -28,6 +30,27 @@ beforeAll(() => {
   dir = fs.mkdtempSync(path.join(os.tmpdir(), 'schem-store-'));
   // Not a valid gzipped NBT schematic — parsing must fail.
   fs.writeFileSync(path.join(dir, 'corrupt.schem'), 'this is not a schematic');
+  // Deliberately tiny compressed payload with a huge declared volume. The old
+  // metadata path expanded/iterated Width*Height*Length cells before deciding
+  // it was too large, which blocked the API and could exhaust the heap.
+  const huge = {
+    type: 'compound',
+    name: 'Schematic',
+    value: {
+      Version: { type: 'int', value: 2 },
+      DataVersion: { type: 'int', value: 4189 },
+      Width: { type: 'short', value: 354 },
+      Height: { type: 'short', value: 138 },
+      Length: { type: 'short', value: 252 },
+      PaletteMax: { type: 'int', value: 1 },
+      Palette: { type: 'compound', value: { 'minecraft:air': { type: 'int', value: 0 } } },
+      BlockData: { type: 'byteArray', value: [] },
+    },
+  } as any;
+  fs.writeFileSync(
+    path.join(dir, 'huge-compressed.schem'),
+    zlib.gzipSync(nbt.writeUncompressed(huge)),
+  );
   store = new SchematicStore(dir);
 });
 
@@ -59,5 +82,26 @@ describe('SchematicStore.getSchematicInfo on an unparseable schematic', () => {
 
   it('returns null for a file that does not exist (distinct from a failed parse)', async () => {
     expect(await store.getSchematicInfo('nope.schem')).toBeNull();
+  });
+
+  it('reads large-schematic dimensions without expanding its voxel volume', async () => {
+    const info = await store.getSchematicInfo('huge-compressed.schem');
+    expect(info).toMatchObject({
+      size: { x: 354, y: 138, z: 252 },
+      blockCount: Math.round(354 * 138 * 252 * 0.15),
+    });
+    expect(info!.parseFailed).not.toBe(true);
+  });
+
+  it('fails a dangerous full load before prismarine expands the block array', async () => {
+    await expect(store.load('huge-compressed.schem')).rejects.toThrow(/safe load limit/);
+  });
+
+  it('lists the library from bounded summaries instead of full voxel parses', async () => {
+    const listed = await store.listSchematics();
+    expect(listed.find((item) => item.filename === 'huge-compressed.schem')).toMatchObject({
+      size: { x: 354, y: 138, z: 252 },
+      estimated: true,
+    });
   });
 });

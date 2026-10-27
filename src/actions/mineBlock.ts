@@ -6,6 +6,15 @@ import { isProtected, getMineSite, shouldRouteToMine, isBelowDigFloor, getMinDig
 const PICKAXE_TIERS = ['netherite', 'diamond', 'iron', 'stone', 'golden', 'wooden'];
 const AXE_TIERS = ['netherite', 'diamond', 'iron', 'stone', 'golden', 'wooden'];
 const SHOVEL_TIERS = ['netherite', 'diamond', 'iron', 'stone', 'golden', 'wooden'];
+const MAX_MINE_COUNT = 32;
+const MAX_SCAN_RESULTS = 128;
+const MINE_PATH_SEARCH_RADIUS = 16;
+const MINE_PATH_THINK_TIMEOUT_MS = 2_000;
+const ADJACENT_FACES = [
+  [1, 0, 0], [-1, 0, 0],
+  [0, 1, 0], [0, -1, 0],
+  [0, 0, 1], [0, 0, -1],
+] as const;
 
 /**
  * Block families worth trekking to the communal mine for when none are minable
@@ -51,8 +60,11 @@ export async function mineBlock(bot: Bot, blockType: string, count = 1): Promise
   if (typeof blockType !== 'string') {
     return { success: false, message: 'mineBlock requires blockType to be a string' };
   }
-  if (typeof count !== 'number') {
-    return { success: false, message: 'mineBlock requires count to be a number' };
+  if (!Number.isInteger(count) || !Number.isFinite(count) || count < 1 || count > MAX_MINE_COUNT) {
+    return {
+      success: false,
+      message: `mineBlock count must be an integer between 1 and ${MAX_MINE_COUNT}`,
+    };
   }
 
   const mcData = require('minecraft-data')(bot.version);
@@ -97,7 +109,11 @@ export async function mineBlock(bot: Bot, blockType: string, count = 1): Promise
     const positions = bot.findBlocks({
       matching: [blockInfo.id],
       maxDistance: 32,
-      count: Math.max(count * 4, 16), // overscan so we still have candidates after the safety filter
+      // Bound generated-code input before it reaches Mineflayer. findBlocks
+      // finishes the current section layer before honoring `count`, but an
+      // unbounded requested count still makes a bad task needlessly retain a
+      // large position array.
+      count: Math.min(Math.max(count * 4, 16), MAX_SCAN_RESULTS),
     });
 
     if (positions.length === 0) {
@@ -177,9 +193,36 @@ export async function mineBlock(bot: Bot, blockType: string, count = 1): Promise
       };
     }
 
-    // aboveFloor, not fencedPositions — otherwise the depth floor is computed
-    // and then ignored when picking what to actually dig.
-    const targets = aboveFloor
+    // Only hand exposed faces to collectblock. Passing an arbitrary stone from
+    // inside a solid wall gives GoalLookAtBlock no reachable stance; its A*
+    // search was the common precursor to Mason's repeated 768 MB worker OOMs.
+    // `null` means an unloaded neighbour, not open air, and is denied.
+    const exposedPositions = aboveFloor.filter((pos: any) => ADJACENT_FACES.some(([dx, dy, dz]) => {
+      const neighbour = bot.blockAt(pos.offset
+        ? pos.offset(dx, dy, dz)
+        : { x: pos.x + dx, y: pos.y + dy, z: pos.z + dz });
+      return neighbour != null && (
+        neighbour.boundingBox === 'empty'
+        || neighbour.name === 'air'
+        || neighbour.name === 'cave_air'
+        || neighbour.name === 'void_air'
+      );
+    }));
+
+    if (aboveFloor.length > 0 && exposedPositions.length === 0) {
+      return {
+        refusal: {
+          success: false,
+          message: `Nearby ${blockType} has no exposed face — refusing an unbounded path search into solid terrain`,
+          data: { mined: 0 },
+        },
+        mineMayHelp: MINE_SOURCED.test(blockType),
+      };
+    }
+
+    // exposedPositions, not fencedPositions — otherwise the depth and exposed
+    // face safety filters are computed and then ignored when picking targets.
+    const targets = exposedPositions
       .slice(0, count)
       .map((pos: any) => bot.blockAt(pos))
       .filter((block: any) => block);
@@ -227,10 +270,25 @@ export async function mineBlock(bot: Bot, blockType: string, count = 1): Promise
   }
 
   const invCountBefore = bot.inventory.items().reduce((sum: number, i: any) => sum + i.count, 0);
+  // collectblock delegates each target to mineflayer-pathfinder. The global
+  // detour allowance (96) is appropriate for long civic routes but far too
+  // large for a target that is at most 32 blocks away: one unreachable face
+  // can retain hundreds of MB of A* nodes before the 5s think timeout. Clamp
+  // both budgets for this action and restore them even when collection fails.
+  const pathfinder = (bot as any).pathfinder;
+  const previousSearchRadius = pathfinder?.searchRadius;
+  const previousThinkTimeout = pathfinder?.thinkTimeout;
+  if (pathfinder) {
+    pathfinder.searchRadius = previousSearchRadius < 0
+      ? MINE_PATH_SEARCH_RADIUS
+      : Math.min(previousSearchRadius ?? MINE_PATH_SEARCH_RADIUS, MINE_PATH_SEARCH_RADIUS);
+    pathfinder.thinkTimeout = Math.min(
+      previousThinkTimeout ?? MINE_PATH_THINK_TIMEOUT_MS,
+      MINE_PATH_THINK_TIMEOUT_MS,
+    );
+  }
   try {
-    await (bot as any).collectBlock.collect(targets, {
-      ignoreNoPath: true,
-    });
+    await (bot as any).collectBlock.collect(targets);
     // Report what was actually collected, not what was requested —
     // ignoreNoPath skips unreachable targets silently, and `mined: count`
     // was pure optimism (2026-08 audit).
@@ -249,5 +307,10 @@ export async function mineBlock(bot: Bot, blockType: string, count = 1): Promise
       message: `Mining error for ${blockType}: ${err.message}`,
       data: { mined: 0 },
     };
+  } finally {
+    if (pathfinder) {
+      pathfinder.searchRadius = previousSearchRadius;
+      pathfinder.thinkTimeout = previousThinkTimeout;
+    }
   }
 }

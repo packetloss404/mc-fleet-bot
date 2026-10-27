@@ -24,15 +24,21 @@ import { mineBlock } from '../../src/actions/mineBlock';
 import { _resetGeofenceCache } from '../../src/actions/geofence';
 
 /** Minimal bot: town terrain around the origin, minable stone at the mine. */
-function makeBot(opts: { townPositions?: any[]; minePositions?: any[] } = {}): any {
+function makeBot(opts: { townPositions?: any[]; minePositions?: any[]; enclosed?: boolean } = {}): any {
   const townPositions = opts.townPositions ?? [{ x: 2, y: 60, z: 2 }, { x: 3, y: 60, z: 3 }];
   const minePositions = opts.minePositions ?? [{ x: 98, y: 58, z: 98 }];
+  const targets = [...townPositions, ...minePositions];
   const bot: any = {
     version: '1.20.4',
     entity: { position: { x: 0, y: 68, z: 0 } },
     inventory: { items: () => [] },
     equip: vi.fn(async () => {}),
-    blockAt: (pos: any) => ({ name: 'stone', position: pos }),
+    blockAt: (pos: any) => {
+      const isTarget = targets.some((p) => p.x === pos.x && p.y === pos.y && p.z === pos.z);
+      if (isTarget || opts.enclosed) return { name: 'stone', boundingBox: 'block', position: pos };
+      return { name: 'air', boundingBox: 'empty', position: pos };
+    },
+    pathfinder: { searchRadius: 96, thinkTimeout: 5_000 },
     collectBlock: { collect: vi.fn(async () => {}) },
     findBlocks: vi.fn(() => (bot.entity.position.x < 50 ? townPositions : minePositions)),
   };
@@ -99,4 +105,41 @@ describe('mineBlock communal-mine fallback', () => {
     expect(moveNearWithCleanup).toHaveBeenCalledTimes(1);
     expect(result.success).toBe(true);
   });
+
+  it('bounds pathfinder search during collection and restores global routing budgets', async () => {
+    mockCfg = TOWN_AND_MINE;
+    const bot = makeBot({ townPositions: [] });
+    bot.collectBlock.collect.mockImplementation(async () => {
+      expect(bot.pathfinder.searchRadius).toBe(16);
+      expect(bot.pathfinder.thinkTimeout).toBe(2_000);
+    });
+
+    const result = await mineBlock(bot, 'stone', 4);
+
+    expect(result.success).toBe(true);
+    expect(bot.pathfinder).toEqual({ searchRadius: 96, thinkTimeout: 5_000 });
+  });
+
+  it('refuses enclosed targets instead of pathfinding into solid terrain', async () => {
+    mockCfg = { mining: { ...TOWN_AND_MINE.mining, mineSite: undefined, protectedZones: [] } };
+    const bot = makeBot({ enclosed: true });
+
+    const result = await mineBlock(bot, 'stone', 4);
+
+    expect(result.success).toBe(false);
+    expect(result.message).toContain('no exposed face');
+    expect(bot.collectBlock.collect).not.toHaveBeenCalled();
+  });
+
+  it.each([0, -1, 1.5, 33, Number.POSITIVE_INFINITY])(
+    'rejects unsafe generated count %s before scanning',
+    async (count) => {
+      mockCfg = TOWN_AND_MINE;
+      const bot = makeBot();
+      const result = await mineBlock(bot, 'stone', count);
+      expect(result.success).toBe(false);
+      expect(result.message).toContain('integer between 1 and 32');
+      expect(bot.findBlocks).not.toHaveBeenCalled();
+    },
+  );
 });

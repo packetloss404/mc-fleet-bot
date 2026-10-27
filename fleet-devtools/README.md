@@ -249,7 +249,7 @@ while artifact guards constrain new outputs to the configured artifact root.
 
 ```bash
 npm install
-npm run check      # lint + build + test + format:check
+npm run check      # build + lint + test + format:check
 npm run dev        # start the API on port 4310
 ```
 
@@ -258,7 +258,7 @@ formatted with Prettier and linted with `tsc --noEmit`. Tests build synthetic
 region files and SQLite databases in temporary directories; they must never
 access a live server.
 
-CI on GitHub Actions runs the same gates as `npm run check` (lint, build, test,
+CI on GitHub Actions runs the same gates as `npm run check` (build, lint, test,
 format:check) against every push and pull request to `main` that touches this
 directory. Since the move into `mc-fleet-bot`, the workflow lives at the
 **repository root** — `.github/workflows/fleet-devtools.yml` — because GitHub

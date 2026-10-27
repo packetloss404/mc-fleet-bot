@@ -8,13 +8,11 @@ name: fleet-devtools
 # tree while never running again — a silently dead gate, which is worse than
 # no gate. See fleet-devtools/.github/workflows/ci.yml, kept as a pointer.
 #
-# WHY IT IS SCOPED: this repo has no root CI, and the root suite currently has
-# ~60 test files that fail on a fresh clone because test/build/ reads
-# data/world-review/*.json and data/ is gitignored. A repo-wide workflow would
-# go red immediately and stay red, training everyone to ignore it. So this one
-# is deliberately narrow: it triggers only on fleet-devtools changes and runs
-# only fleet-devtools' own gate. Do NOT widen `paths` without first fixing the
-# root suite's fixture problem.
+# WHY IT IS SCOPED: `.github/workflows/ci.yml` now gates the buildable
+# fresh-clone application contract. The full root suite still includes
+# source-bound test/build cases that read gitignored data/world-review
+# evidence, so those remain operator-host checks. This workflow stays narrow:
+# it triggers only on fleet-devtools changes and runs the subtool's own gate.
 
 on:
   push:
@@ -41,7 +39,7 @@ defaults:
 
 jobs:
   check:
-    name: Lint, build, test, format
+    name: Build, lint, test, format
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -60,7 +58,7 @@ jobs:
       - name: Install
         run: npm ci
 
-      # These four are `npm run check` (lint && build && test && format:check),
+      # These four are `npm run check` (build && lint && test && format:check),
       # split into separate steps so a failure names its own stage instead of
       # dumping a compound && failure.
       #
@@ -72,11 +70,13 @@ jobs:
       # CI was written and CI was never revisited. The docs describe the
       # intended contract, so the workflow is brought up to them rather than
       # the docs quietly corrected down.
-      - name: Lint (tsc --noEmit)
-        run: npm run lint
-
       - name: Build packages and apps
         run: npm run build
+
+      # Workspace package exports point at dist/*.d.ts, so the package build
+      # must precede the aggregate root type-check on a clean checkout.
+      - name: Lint (tsc --noEmit)
+        run: npm run lint
 
       - name: Test
         run: npm test

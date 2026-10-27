@@ -371,7 +371,7 @@ export default function BuildPage() {
         const missionResult = await api.createMission({
           type: 'build_schematic',
           title: `Build: ${schematicName}`,
-          description: `Building ${schematicName} ${originLabel} with ${botNames.length} bot(s). ${selectedSchematic.blockCount.toLocaleString()} blocks total.`,
+          description: `Building ${schematicName} ${originLabel} with ${botNames.length} bot(s). ${selectedSchematic.estimated ? 'Approximately ' : ''}${selectedSchematic.blockCount.toLocaleString()} blocks total.`,
           assigneeType: 'bot',
           assigneeIds: botNames,
           priority: 'normal',
@@ -744,7 +744,7 @@ export default function BuildPage() {
                       <div className="flex items-center gap-3 text-[11px] text-zinc-500">
                         <span>{schem.size.x} x {schem.size.y} x {schem.size.z}</span>
                         <span className="text-zinc-700">|</span>
-                        <span>{schem.blockCount.toLocaleString()} blocks</span>
+                        <span>{schem.estimated ? '~' : ''}{schem.blockCount.toLocaleString()} blocks</span>
                       </div>
                     </motion.button>
                   );

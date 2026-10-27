@@ -21,6 +21,10 @@ Thumbs.db
 *.log
 npm-debug.log*
 
+# Browser-test artifacts
+web/playwright-report/
+web/test-results/
+
 # Data
 # ANCHORED with a leading slash — deliberately. Unanchored `data/` matches at
 # ANY depth, so it silently swallowed every subtool's data directory too.

@@ -1,12 +1,115 @@
 import fs from 'fs';
 import path from 'path';
+import zlib from 'zlib';
 import { Vec3 } from 'vec3';
 import { logger } from '../util/logger';
+
+const PALETTE_SCAN_VOLUME_LIMIT = 200_000;
+const LOAD_VOLUME_LIMIT = 2_000_000;
+const MAX_NBT_BYTES = 64 * 1024 * 1024;
+
+type Dimensions = { x: number; y: number; z: number };
+
+/**
+ * Read only Width/Height/Length from a Sponge schematic's NBT envelope.
+ *
+ * prismarine-nbt expands a TAG_Byte_Array into a JavaScript number array. A
+ * highly-compressible 38 KB schematic in the production library therefore
+ * became a 12.3-million-element array just to answer the list endpoint. This
+ * tiny cursor skips BlockData in-place and never materialises its elements.
+ */
+function readSpongeDimensions(filePath: string): Dimensions {
+  const compressed = fs.readFileSync(filePath);
+  const data = compressed[0] === 0x1f && compressed[1] === 0x8b
+    ? zlib.gunzipSync(compressed, { maxOutputLength: MAX_NBT_BYTES })
+    : compressed[0] === 0x78
+      ? zlib.inflateSync(compressed, { maxOutputLength: MAX_NBT_BYTES })
+      : compressed;
+  let offset = 0;
+  const dimensions: Partial<Dimensions> = {};
+
+  const ensure = (bytes: number) => {
+    if (offset + bytes > data.length) throw new Error('truncated NBT payload');
+  };
+  const u8 = () => { ensure(1); return data.readUInt8(offset++); };
+  const u16 = () => { ensure(2); const value = data.readUInt16BE(offset); offset += 2; return value; };
+  const i32 = () => { ensure(4); const value = data.readInt32BE(offset); offset += 4; return value; };
+  const string = () => {
+    const length = u16();
+    ensure(length);
+    const value = data.toString('utf8', offset, offset + length);
+    offset += length;
+    return value;
+  };
+
+  const skip = (bytes: number) => {
+    if (!Number.isSafeInteger(bytes) || bytes < 0) throw new Error('invalid NBT length');
+    ensure(bytes);
+    offset += bytes;
+  };
+
+  let skipPayload: (type: number) => void;
+  const scanCompound = (captureDimensions: boolean) => {
+    for (;;) {
+      const type = u8();
+      if (type === 0) return;
+      const name = string();
+      if (captureDimensions && (name === 'Width' || name === 'Height' || name === 'Length')) {
+        const value = type === 2
+          ? (() => { ensure(2); const n = data.readInt16BE(offset); offset += 2; return n; })()
+          : type === 3 ? i32() : NaN;
+        if (!Number.isInteger(value) || value <= 0) throw new Error(`invalid ${name} in schematic NBT`);
+        if (name === 'Width') dimensions.x = value;
+        else if (name === 'Height') dimensions.y = value;
+        else dimensions.z = value;
+      } else if (name === 'Schematic' && type === 10) {
+        // Sponge v3 nests the useful fields under a Schematic compound.
+        scanCompound(true);
+      } else {
+        skipPayload(type);
+      }
+    }
+  };
+
+  skipPayload = (type: number): void => {
+    switch (type) {
+      case 1: skip(1); return;
+      case 2: skip(2); return;
+      case 3: skip(4); return;
+      case 4: skip(8); return;
+      case 5: skip(4); return;
+      case 6: skip(8); return;
+      case 7: skip(i32()); return;
+      case 8: skip(u16()); return;
+      case 9: {
+        const elementType = u8();
+        const length = i32();
+        if (length < 0) throw new Error('invalid NBT list length');
+        for (let i = 0; i < length; i++) skipPayload(elementType);
+        return;
+      }
+      case 10: scanCompound(false); return;
+      case 11: skip(i32() * 4); return;
+      case 12: skip(i32() * 8); return;
+      default: throw new Error(`unsupported NBT tag ${type}`);
+    }
+  };
+
+  if (u8() !== 10) throw new Error('schematic NBT root is not a compound');
+  string(); // root name
+  scanCompound(true);
+  if (!dimensions.x || !dimensions.y || !dimensions.z) {
+    throw new Error('schematic NBT has no dimensions');
+  }
+  return dimensions as Dimensions;
+}
 
 export interface SchematicInfo {
   filename: string;
   size: { x: number; y: number; z: number };
   blockCount: number;
+  /** True when blockCount is a bounded metadata estimate, not a voxel scan. */
+  estimated?: boolean;
   /**
    * True when the schematic could NOT be parsed and `size`/`blockCount` are
    * placeholder zeros rather than measurements.
@@ -45,6 +148,8 @@ export interface CachedSchematic {
  */
 export class SchematicStore {
   private cache = new Map<string, { mtimeMs: number; data: CachedSchematic }>();
+  private infoCache = new Map<string, { mtimeMs: number; data: SchematicInfo }>();
+  private summaryCache = new Map<string, { mtimeMs: number; data: SchematicInfo }>();
 
   constructor(
     private readonly schematicsDir: string,
@@ -61,6 +166,17 @@ export class SchematicStore {
     const mtimeMs = fs.statSync(fullPath).mtimeMs;
     const cached = this.cache.get(filename);
     if (cached && cached.mtimeMs === mtimeMs) return cached.data;
+
+    if (filename.toLowerCase().endsWith('.schem')) {
+      const size = readSpongeDimensions(fullPath);
+      const volume = size.x * size.y * size.z;
+      if (volume > LOAD_VOLUME_LIMIT) {
+        throw new Error(
+          `Schematic volume ${volume.toLocaleString()} exceeds the safe load limit ` +
+          `of ${LOAD_VOLUME_LIMIT.toLocaleString()} blocks`,
+        );
+      }
+    }
 
     const { Schematic } = require('prismarine-schematic');
     const buffer = fs.readFileSync(fullPath);
@@ -109,7 +225,7 @@ export class SchematicStore {
           logger.info({ filename, sizeBytes: stat.size }, 'Skipping large schematic metadata load');
           continue;
         }
-        const info = await this.getSchematicInfo(filename);
+        const info = await this.getSchematicSummary(filename, stat);
         if (info) results.push(info);
       } catch (err: any) {
         logger.warn({ filename, err: err.message }, 'Failed to read schematic metadata');
@@ -119,19 +235,76 @@ export class SchematicStore {
     return results;
   }
 
+  /**
+   * Listing metadata intentionally avoids the full prismarine parse. The
+   * single-file endpoint still returns an exact palette/count for manageable
+   * schematics, while a library listing remains safe and responsive even when
+   * one file has a multi-million-cell declared volume.
+   */
+  private async getSchematicSummary(filename: string, stat: fs.Stats): Promise<SchematicInfo | null> {
+    const cached = this.summaryCache.get(filename);
+    if (cached && cached.mtimeMs === stat.mtimeMs) return cached.data;
+
+    if (filename.toLowerCase().endsWith('.schem')) {
+      try {
+        const size = readSpongeDimensions(path.join(this.schematicsDir, filename));
+        const volume = size.x * size.y * size.z;
+        const info: SchematicInfo = {
+          filename,
+          size,
+          blockCount: Math.round(volume * 0.15),
+          estimated: true,
+        };
+        this.summaryCache.set(filename, { mtimeMs: stat.mtimeMs, data: info });
+        return info;
+      } catch (err: any) {
+        logger.warn({ filename, err: err.message }, 'Failed to inspect schematic summary');
+        const info: SchematicInfo = {
+          filename,
+          size: { x: 0, y: 0, z: 0 },
+          blockCount: 0,
+          parseFailed: true,
+        };
+        this.summaryCache.set(filename, { mtimeMs: stat.mtimeMs, data: info });
+        return info;
+      }
+    }
+
+    // Legacy MCEdit .schematic files do not use Sponge's dimensions envelope.
+    return this.getSchematicInfo(filename);
+  }
+
   /** Safe metadata loader — gets dimensions without holding the full schematic in memory. */
   async getSchematicInfo(filename: string): Promise<SchematicInfo | null> {
     const fullPath = path.join(this.schematicsDir, filename);
     if (!fs.existsSync(fullPath)) return null;
 
-    // Heuristic: compressed .schem files typically have ~100:1 to ~200:1 ratio.
-    // Files over 50KB compressed likely decompress to millions of voxels — skip parsing entirely.
-    const fileSize = fs.statSync(fullPath).size;
-    if (fileSize > 50_000) {
-      logger.info({ filename, fileSize }, 'Large schematic — estimating dimensions from file size');
-      const estVoxels = fileSize * 150;
-      const estDim = Math.round(Math.cbrt(estVoxels));
-      return { filename, size: { x: estDim, y: Math.round(estDim * 0.6), z: estDim }, blockCount: Math.round(estVoxels * 0.15) };
+    const stat = fs.statSync(fullPath);
+    const cachedInfo = this.infoCache.get(filename);
+    if (cachedInfo && cachedInfo.mtimeMs === stat.mtimeMs) return cachedInfo.data;
+
+    // Read dimensions without expanding BlockData. Compressed byte size is not
+    // a safe proxy: the production 354x138x252 schematic is only 38 KB.
+    if (filename.toLowerCase().endsWith('.schem')) {
+      try {
+        const size = readSpongeDimensions(fullPath);
+        const volume = size.x * size.y * size.z;
+        if (volume > PALETTE_SCAN_VOLUME_LIMIT) {
+          const info = { filename, size, blockCount: Math.round(volume * 0.15), estimated: true };
+          this.infoCache.set(filename, { mtimeMs: stat.mtimeMs, data: info });
+          return info;
+        }
+      } catch (err: any) {
+        logger.warn({ filename, err: err.message }, 'Failed to inspect schematic NBT safely');
+        const info = {
+          filename,
+          size: { x: 0, y: 0, z: 0 },
+          blockCount: 0,
+          parseFailed: true,
+        };
+        this.infoCache.set(filename, { mtimeMs: stat.mtimeMs, data: info });
+        return info;
+      }
     }
 
     try {
@@ -139,18 +312,24 @@ export class SchematicStore {
       const size = cached.size;
       const volume = size.x * size.y * size.z;
       if (volume > 200_000) {
-        return { filename, size, blockCount: Math.round(volume * 0.15) };
+        const info = { filename, size, blockCount: Math.round(volume * 0.15), estimated: true };
+        this.infoCache.set(filename, { mtimeMs: stat.mtimeMs, data: info });
+        return info;
       }
       const palette: Record<string, number> = {};
       for (const b of cached.blocks) {
         palette[b.name] = (palette[b.name] ?? 0) + 1;
       }
-      return { filename, size, blockCount: cached.blocks.length, palette };
+      const info = { filename, size, blockCount: cached.blocks.length, palette };
+      this.infoCache.set(filename, { mtimeMs: stat.mtimeMs, data: info });
+      return info;
     } catch (err: any) {
       logger.warn({ filename, err: err.message }, 'Failed to parse schematic');
       // Zeros are a placeholder, not a measurement — flag it so callers that site
       // or record builds can refuse rather than trusting a fabricated size.
-      return { filename, size: { x: 0, y: 0, z: 0 }, blockCount: 0, parseFailed: true };
+      const info = { filename, size: { x: 0, y: 0, z: 0 }, blockCount: 0, parseFailed: true };
+      this.infoCache.set(filename, { mtimeMs: stat.mtimeMs, data: info });
+      return info;
     }
   }
 }

@@ -27,7 +27,7 @@ in server repositories or ignored local configuration.
 
 ```bash
 npm install
-npm run check      # lint + build + test + format:check
+npm run check      # build + lint + test + format:check
 npm run dev        # start the API on port 4310
 npm run cli -- registry check
 npm run cli -- report run --recipe <id> --server <id> --world <id>

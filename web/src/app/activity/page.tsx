@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useBotStore } from '@/lib/store';
+import { api } from '@/lib/api';
 import { EVENT_CONFIG } from '@/lib/constants';
 import { PageHeader } from '@/components/PageHeader';
 import { groupEvents, formatBotsList, type ActivityGroup } from '@/lib/activityFingerprint';
@@ -16,6 +17,7 @@ const EVENT_TYPES = [
 export default function ActivityPage() {
   const events = useBotStore((s) => s.activityFeed);
   const botList = useBotStore((s) => s.botList);
+  const pushEvent = useBotStore((s) => s.pushEvent);
   const [filter, setFilter] = useState('');
   const [typeFilter, setTypeFilter] = useState('all');
   const [livePaused, setLivePaused] = useState(false);
@@ -32,6 +34,24 @@ export default function ActivityPage() {
     window.localStorage.setItem('activity:grouped', grouped ? '1' : '0');
   }, [grouped]);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
+
+  // A direct visit to /activity used to render an empty feed until a new
+  // socket event arrived. Hydrate the in-memory feed from the history API so
+  // reloads and bookmarked visits show the same data as navigation from the
+  // dashboard.
+  useEffect(() => {
+    if (useBotStore.getState().activityFeed.length > 0) return;
+    let cancelled = false;
+    api.getActivity(100)
+      .then(({ events: historicalEvents }) => {
+        if (cancelled) return;
+        for (const event of [...historicalEvents].reverse()) pushEvent(event);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [pushEvent]);
 
   const visibleEvents = useMemo(() => (livePaused ? pausedEvents : events), [events, livePaused, pausedEvents]);
 
