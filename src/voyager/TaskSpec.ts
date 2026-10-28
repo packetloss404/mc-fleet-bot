@@ -37,10 +37,12 @@ export function inferTaskSpec(task: Task): TaskSpec {
 }
 
 function inferTarget(lower: string): string | undefined {
+  const findTarget = lower.match(/\bfind\s+(?:new\s+)?([a-z0-9_]+)\b/);
+  if (findTarget?.[1]) return findTarget[1];
   const explicit = lower.match(/oak log|spruce log|birch log|spruce planks|birch planks|oak planks|crafting table|iron ore|coal ore|wheat seeds|wooden hoe|wooden pickaxe|cobblestone|farmland|water/);
   if (explicit?.[0]) return explicit[0].replace(/\s+/g, '_');
   const words = lower.replace(/[^a-z0-9_\s]/g, ' ').split(/\s+/).filter(Boolean);
-  const stop = new Set(['mine','collect','gather','chop','craft','smelt','walk','go','to','the','nearest','find','explore','and','a','an','by','with','use','attack','fight','kill','report','player','slowly','around','observe']);
+  const stop = new Set(['mine','collect','gather','chop','craft','smelt','walk','go','to','the','nearest','find','explore','new','and','a','an','by','with','use','attack','fight','kill','report','player','slowly','around','observe']);
   const candidates = words.filter((word) => !stop.has(word) && !/^\d+$/.test(word));
   return candidates.length ? candidates.slice(-2).join('_') : undefined;
 }

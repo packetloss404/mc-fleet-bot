@@ -12,6 +12,7 @@ import { getProgressionState } from './Progression';
 import { buildTaskPlan, PlannedStep, replanTaskStep } from './TaskPlanner';
 import { StatsTracker } from './StatsTracker';
 import { buildApprovedCivicShiftCode } from './CivicShiftCode';
+import { buildDeterministicExplorationCode } from './DeterministicExplorationCode';
 import { retryBackoffMs } from './RetryPolicy';
 import { completeLongTermSubtask, goalSummary, LongTermGoal, longTermGoalToTask, makeLongTermGoal, popLongTermSubtask } from './LongTermGoal';
 import { countBlueprintMaterials, generateSimpleHouseBlueprint, getMissingBlueprintPlacements, validateBlueprint } from './Blueprint';
@@ -1700,9 +1701,11 @@ export class VoyagerLoop {
     // guard so an LLM outage cannot strand citizens who already have an
     // approved route contract.
     const civicShiftCode = buildApprovedCivicShiftCode(task);
+    const explorationCode = buildDeterministicExplorationCode(task);
+    const deterministicCode = civicShiftCode ?? explorationCode;
 
     // 2. Try the best existing skill first, then fall back to fresh generation
-    if (!this.actionAgent && !civicShiftCode) {
+    if (!this.actionAgent && !deterministicCode) {
       logger.info({ bot: this.botName }, 'No LLM available, skipping task');
       return false;
     }
@@ -1711,10 +1714,10 @@ export class VoyagerLoop {
     // Exact civic routes must not consult the semantic skill library. Besides
     // avoiding needless work, this prevents an old coordinate-bearing skill
     // from becoming part of the route decision.
-    const bestSkill = civicShiftCode
+    const bestSkill = deterministicCode
       ? null
       : await this.skillLibrary.getBestMatch(query);
-    const composableSkills = civicShiftCode
+    const composableSkills = deterministicCode
       ? []
       : await this.skillLibrary.getComposableMatches(query, 3);
     const blockerSummary = this.curriculumAgent.getBlockerMemory().summarize(task);
@@ -1727,11 +1730,11 @@ export class VoyagerLoop {
     // Trust a strong direct match (getBestMatch already requires score ≥ 16;
     // ≥ 24 is a confident hit) regardless of how many weak composables co-matched.
     const STRONG_DIRECT_SKILL_SCORE = 24;
-    const useDirectSkill = !civicShiftCode && !!bestSkill
+    const useDirectSkill = !deterministicCode && !!bestSkill
       && (composableSkills.length <= 1 || bestSkill.score >= STRONG_DIRECT_SKILL_SCORE);
 
     // Try action templates as a middle tier between skill library and full code gen
-    const templateMatch = !civicShiftCode && !useDirectSkill && this.actionTemplates
+    const templateMatch = !deterministicCode && !useDirectSkill && this.actionTemplates
       ? this.actionTemplates.findTemplate(task.description, task.keywords)
       : null;
     const useTemplate = templateMatch && templateMatch.confidence >= 0.5;
@@ -1739,9 +1742,9 @@ export class VoyagerLoop {
     let generated: GeneratedCode;
     let codeSource: string;
 
-    if (civicShiftCode) {
-      generated = civicShiftCode;
-      codeSource = 'civic-shift';
+    if (deterministicCode) {
+      generated = deterministicCode;
+      codeSource = civicShiftCode ? 'civic-shift' : 'deterministic-exploration';
     } else if (useDirectSkill) {
       generated = this.skillToGeneratedCode(bestSkill);
       codeSource = 'skill-library';
@@ -1786,8 +1789,8 @@ export class VoyagerLoop {
       functionName: generated.functionName,
       codeLength: generated.functionCode.length,
       execCode: generated.execCode,
-    }, codeSource === 'civic-shift'
-      ? 'Using deterministic approved civic shift'
+    }, codeSource === 'civic-shift' || codeSource === 'deterministic-exploration'
+      ? 'Using deterministic task executor'
       : codeSource === 'skill-library'
         ? 'Reusing saved skill'
         : codeSource === 'action-template'
@@ -1796,12 +1799,14 @@ export class VoyagerLoop {
 
     this.decisionTrace.record('skill_vs_codegen', task.description,
       codeSource === 'civic-shift' ? 'Following exact reviewed civic-shift waypoints'
+        : codeSource === 'deterministic-exploration' ? 'Using parameterized directional movement without an LLM'
         : codeSource === 'skill-library' ? `Reusing skill "${bestSkill!.name}"`
         : codeSource === 'action-template' ? `Using template "${templateMatch!.template.name}" (${(templateMatch!.confidence * 100).toFixed(0)}%)`
         : `Generating fresh code`,
       codeSource, { functionName: generated.functionName, codeLength: generated.functionCode.length, composableCount: composableSkills.length },
       [
         { label: 'civic-shift', chosen: codeSource === 'civic-shift', reason: civicShiftCode ? 'Exact reviewed route embedded in task contract' : 'Not a reviewed civic shift' },
+        { label: 'deterministic-exploration', chosen: codeSource === 'deterministic-exploration', reason: explorationCode ? 'Direction and distance parsed from the task' : 'Not a standard directional exploration task' },
         { label: 'skill-library', chosen: codeSource === 'skill-library', score: bestSkill?.score, reason: bestSkill ? `Match: "${bestSkill.name}"` : 'No match' },
         { label: 'action-template', chosen: codeSource === 'action-template', score: templateMatch?.confidence, reason: templateMatch ? `Template: "${templateMatch.template.name}"` : 'No match' },
         { label: 'action-agent', chosen: codeSource === 'action-agent', reason: 'Full code gen' },
@@ -1917,7 +1922,7 @@ export class VoyagerLoop {
           // once the cap filled, a save/evict treadmill: 179 semantic families
           // occupying 500 slots with 272 zero-success entries.
           this.skillLibrary.recordOutcome(bestSkill.name, true);
-        } else if (codeSource !== 'civic-shift' && quality >= 0.65) {
+        } else if (!['civic-shift', 'deterministic-exploration'].includes(codeSource) && quality >= 0.65) {
           // Freshly generated code — store it, and credit the name the library
           // ACTUALLY stored it under. Collisions are versioned to `_vN`;
           // recording against the base name credited a different (older) skill
@@ -1956,7 +1961,7 @@ export class VoyagerLoop {
           {
             attempts: attempt + 1,
             source: codeSource,
-            skillSaved: codeSource !== 'civic-shift' && quality >= 0.65,
+            skillSaved: !['civic-shift', 'deterministic-exploration'].includes(codeSource) && quality >= 0.65,
             skillQuality: quality,
           });
 
@@ -2079,15 +2084,15 @@ export class VoyagerLoop {
         this.decisionTrace.record('retry_decision', task.description,
           `Retrying (attempt ${attempt + 2}/${this.config.voyager.maxRetriesPerTask})${recovery ? ` [${recovery.pattern}]` : ''}`,
           'retry', { attempt: attempt + 1, error: lastError?.slice(0, 200), recoveryPattern: recovery?.pattern, recoveryHint: recovery?.hint?.slice(0, 200), critique: enrichedCritique?.slice(0, 200) });
-        if (civicShiftCode) {
+        if (deterministicCode) {
           // A retry may re-run the exact reviewed transaction, but it must
           // never ask an LLM to rewrite route coordinates or safety behavior.
-          generated = civicShiftCode;
+          generated = deterministicCode;
           logger.info({
             bot: this.botName,
-            source: 'civic-shift',
+            source: codeSource,
             functionName: generated.functionName,
-          }, 'Retrying deterministic approved civic shift');
+          }, 'Retrying deterministic task executor');
         } else {
           try {
             generated = await this.actionAgent!.generateCode(

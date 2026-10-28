@@ -307,9 +307,11 @@ export function extractTaskGoal(description: string): TaskGoal {
   const count = countMatch ? Number(countMatch[1]) : 1;
   const normalized = lower.replace(/[^a-z0-9_\s]/g, ' ');
   const words = normalized.split(/\s+/).filter(Boolean);
-  const stop = new Set(['mine', 'collect', 'chop', 'gather', 'craft', 'smelt', 'walk', 'go', 'to', 'the', 'nearest', 'find', 'explore', 'and', 'a', 'an', 'by', 'with', 'use', 'attack', 'fight', 'kill', 'report', 'player']);
+  const stop = new Set(['mine', 'collect', 'chop', 'gather', 'craft', 'smelt', 'walk', 'go', 'to', 'the', 'nearest', 'find', 'explore', 'new', 'and', 'a', 'an', 'by', 'with', 'use', 'attack', 'fight', 'kill', 'report', 'player']);
   const candidates = words.filter((word) => !stop.has(word) && !/^\d+$/.test(word));
-  const item = candidates.length > 0 ? candidates.slice(-2).join('_') : undefined;
+  const findTarget = normalized.match(/\bfind\s+(?:new\s+)?([a-z0-9_]+)\b/);
+  const item = findTarget?.[1]
+    ?? (candidates.length > 0 ? candidates.slice(-2).join('_') : undefined);
   const targetEntity = (lower.match(/kill\s+(?:a|an|the)?\s*([a-z_]+)/) || lower.match(/attack\s+(?:a|an|the)?\s*([a-z_]+)/) || lower.match(/fight\s+(?:a|an|the)?\s*([a-z_]+)/))?.[1];
   const targetBlock = (lower.match(/farmland|water|crafting table|furnace|oak log|iron ore|coal ore|wheat seeds|cobblestone/) || [])[0]?.replace(/\s+/g, '_');
   return { count, item, targetEntity, targetBlock };

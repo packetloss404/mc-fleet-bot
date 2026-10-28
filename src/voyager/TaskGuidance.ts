@@ -155,7 +155,7 @@ export function buildTaskGuidance(task: Task): TaskGuidance {
       category: 'movement',
       prompt: task.description,
       guidance: [
-        'Identify the destination or search target first.',
+        `Identify the destination or search target first${target ? ` (${target})` : ''}.`,
         'Use moveTo(...) for direct destinations.',
         'Use exploreUntil(...) if the destination target is not immediately visible.',
         'Do not stop after locating the target if the task implies reaching it.',
@@ -203,8 +203,10 @@ export function buildTaskGuidance(task: Task): TaskGuidance {
 
 function inferTarget(description: string): string | null {
   const cleaned = description.toLowerCase().replace(/[^a-z0-9_\s]/g, ' ');
+  const findTarget = cleaned.match(/\bfind\s+(?:new\s+)?([a-z0-9_]+)\b/);
+  if (findTarget?.[1]) return findTarget[1];
   const words = cleaned.split(/\s+/).filter(Boolean);
-  const stop = new Set(['mine', 'collect', 'gather', 'chop', 'craft', 'smelt', 'walk', 'go', 'to', 'the', 'nearest', 'find', 'explore', 'attack', 'fight', 'kill', 'report', 'and', 'a', 'an', 'of']);
+  const stop = new Set(['mine', 'collect', 'gather', 'chop', 'craft', 'smelt', 'walk', 'go', 'to', 'the', 'nearest', 'find', 'explore', 'new', 'attack', 'fight', 'kill', 'report', 'and', 'a', 'an', 'of']);
   const candidates = words.filter((word) => !stop.has(word) && !/^\d+$/.test(word));
   if (candidates.length === 0) return null;
   return candidates.slice(-2).join('_');
