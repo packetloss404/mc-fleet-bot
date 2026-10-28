@@ -148,7 +148,7 @@ export class DungeonMaster {
       title: `${scarce} Shortage`,
       description: pick(templates),
       tasks: [
-        { description: `Explore ${dir} for ${dist} blocks to find new ${scarce}`, keywords: ['explore', scarce, dir], priority: 'high' },
+        { description: `Explore ${dir} for ${dist} blocks to find ${scarce}`, keywords: ['explore', scarce, dir], priority: 'high' },
         { description: `Mine the new ${scarce} deposit`, keywords: ['mine', scarce], priority: 'high' },
       ],
       triggerCondition: `${scarce} supply < 5`,

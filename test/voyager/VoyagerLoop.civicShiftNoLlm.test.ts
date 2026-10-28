@@ -224,4 +224,29 @@ describe('VoyagerLoop deterministic civic shifts without an LLM', () => {
     expect(execute.mock.calls[1][1].functionCode)
       .toBe(execute.mock.calls[0][1].functionCode);
   });
+
+  it('executes common directional exploration before polluted skill lookup', async () => {
+    const { internals, execute, save, bestMatch, composable } = prepareLoop();
+    vi.spyOn(internals.criticAgent, 'evaluate').mockResolvedValue({
+      success: true,
+      reason: 'directional movement completed',
+      critique: '',
+    });
+
+    const resultPromise = internals.executeTaskStep({
+      description: 'Explore south for 67 blocks to find new iron_ingot',
+      keywords: ['explore', 'iron_ingot', 'south'],
+    });
+    await vi.advanceTimersByTimeAsync(2_100);
+
+    await expect(resultPromise).resolves.toBe(true);
+    expect(execute).toHaveBeenCalledTimes(1);
+    expect(execute.mock.calls[0][1].functionCode)
+      .toContain('exploreDirectionForDistance');
+    expect(execute.mock.calls[0][1].execCode)
+      .toBe("await exploreDirectionForDistance(bot, 'south', 67);");
+    expect(bestMatch).not.toHaveBeenCalled();
+    expect(composable).not.toHaveBeenCalled();
+    expect(save).not.toHaveBeenCalled();
+  });
 });
