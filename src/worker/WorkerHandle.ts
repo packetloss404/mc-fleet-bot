@@ -14,6 +14,7 @@ import type { CultureManager } from '../social/CultureManager';
 import type { BotComms } from '../social/BotComms';
 import { logger } from '../util/logger';
 import type { SurvivalMissionStatus } from '../survival/SurvivalMission';
+import type { BuildIntentEvent } from '../bot/BotInstance';
 
 /**
  * Per-worker V8 old-generation heap cap, in MB.
@@ -160,6 +161,7 @@ export class WorkerHandle {
   private onPlayerJoined?: (playerName: string) => void;
   private onPlayerLeft?: (playerName: string) => void;
   private onImpersonation?: (info: { botName: string; reason: string; signal: string }) => void;
+  private onBuildIntent?: (event: BuildIntentEvent) => void;
   private statusListeners = new Set<(status: any, detailedStatus: any) => void>();
 
   // Shared managers for IPC routing
@@ -424,6 +426,15 @@ export class WorkerHandle {
     // Swarm directive forwarding
     if (type === 'swarm.directive') {
       this.onSwarmDirective(data.description, data.requestedBy);
+      return;
+    }
+
+    // Build-intent forwarding — the main thread owns BuildCoordinator.
+    if (type === 'build.intent') {
+      if (this.onBuildIntent) {
+        try { this.onBuildIntent(data as BuildIntentEvent); }
+        catch (err: any) { logger.error({ bot: this.botName, err: err.message }, 'BuildIntent handler error'); }
+      }
       return;
     }
 
@@ -945,6 +956,11 @@ export class WorkerHandle {
   /** Register a callback for impersonation (duplicate-login) events from the worker. */
   setImpersonationListener(fn: (info: { botName: string; reason: string; signal: string }) => void): void {
     this.onImpersonation = fn;
+  }
+
+  /** Register a callback for build intents a bot hears in owner chat. */
+  setBuildIntentListener(fn: (event: BuildIntentEvent) => void): void {
+    this.onBuildIntent = fn;
   }
 
   /** Register callbacks for player join/leave events seen by this worker's bot. */

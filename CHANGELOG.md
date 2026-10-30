@@ -4,6 +4,27 @@ All notable changes to DyoBot are documented in this file.
 
 ---
 
+## 2026-10-29
+
+### Bot-heard build intents now start builds
+
+Owner chat that reaches a bot's worker (not just the Java-plugin HTTP relay)
+now flows through the same `BuildIntentDispatcher` as `/api/events/chat`:
+`BotInstance` → `build.intent` IPC → `WorkerHandle` → `BotManager` →
+`BuildCoordinator`, with schematic matching, marker/player/absolute origin
+resolution, and confirmation/progress/completion chat. A 15s claim window
+suppresses the duplicate event when both transports see the same message.
+Added `test/build/BuildIntentDispatcher.test.ts`. (Closes backlog item #3.)
+
+### Admin restart endpoint actually restarts
+
+`POST /api/admin/restart` now flushes stores and exits with code **1**
+instead of 0. The `mc-fleet-bot.service` unit uses `Restart=on-failure`,
+which ignores clean exits, so the old behavior was a graceful stop that left
+the fleet down. A deliberate `systemctl stop` never reaches the route and
+still stops cleanly. Added `test/server/admin.restart.test.ts` and updated
+`BACKLOG.md` / `AGENTS.md`. (Closes backlog item #1.)
+
 ## 2026-08-08
 
 ### Team C — new tools review

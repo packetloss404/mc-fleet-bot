@@ -1,5 +1,24 @@
 # Combined Zones Masterplan — Handoff
 
+## 2026-10-30 fleet/dashboard session
+
+Two bounded platform changes landed and were verified before this handoff:
+
+- `POST /api/admin/restart` now flushes stores and exits **1**, so the
+  `mc-fleet-bot.service` `Restart=on-failure` policy actually respawns it. A
+  deliberate `systemctl stop` still stops cleanly. Covered by
+  `test/server/admin.restart.test.ts`.
+- Bot-heard build intents now flow end-to-end: `BotInstance` -> `build.intent`
+  IPC -> `WorkerHandle` -> `BotManager.setBuildIntentHandler` ->
+  `BuildIntentDispatcher` -> `BuildCoordinator`, with schematic matching,
+  marker/player/absolute origins, confirmation/progress/completion chat, and a
+  15s duplicate-transport claim window. `/api/events/chat` uses the same
+  dispatcher. Covered by `test/build/BuildIntentDispatcher.test.ts`.
+
+Both passed `npm run build` and the focused server/build/bot suites. The live
+services were restarted from the rebuilt backend/dashboard. The world-build
+session handoff is `../mc-world-ops/docs/masterplans/HANDOFF-2026-10-30.md`.
+
 Date: 2026-08-08 UTC
 
 ## The honest state

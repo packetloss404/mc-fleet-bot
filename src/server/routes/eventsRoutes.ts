@@ -2,7 +2,7 @@
  * Java-plugin event-relay endpoints (chat, player join/leave/death, block
  * placed/broken, item crafted, entity killed, player move), extracted from
  * createAPIServer (review: api.ts decomposition). The chat route carries the
- * build-intent dispatch (tryStartBuildFromIntent + findMarkerByName), so this
+ * build-intent dispatch (shared BuildIntentDispatcher), so this
  * module needs the build deps too. Registered via registerEventsRoutes(app,
  * { botManager, io, schematicMatcher, buildCoordinator, markerStore }).
  */
@@ -13,6 +13,7 @@ import type { SchematicMatcher } from '../../build/SchematicMatcher';
 import type { BuildCoordinator } from '../../build/BuildCoordinator';
 import type { MarkerStore } from '../../control/MarkerStore';
 import { parseBuildIntent } from '../../control/BuildIntentResolver';
+import { dispatchBuildIntent } from '../../build/BuildIntentDispatcher';
 import { logger } from '../../util/logger';
 
 export function registerEventsRoutes(
@@ -70,7 +71,12 @@ export function registerEventsRoutes(
       const intent = parseBuildIntent(message);
       if (intent) {
         try {
-          await tryStartBuildFromIntent(intent, playerName, nearestBot);
+          await dispatchBuildIntent(intent, playerName, {
+            botManager,
+            schematicMatcher,
+            buildCoordinator,
+            markerStore,
+          }, { preferredBot: nearestBot });
         } catch (err: any) {
           logger.warn({ err: err.message, playerName, message }, 'Build-intent dispatch failed');
         }
@@ -85,95 +91,6 @@ export function registerEventsRoutes(
     logger.info({ player: playerName, bot: nearestBot, message }, 'Chat event received');
     res.json({ handled: true });
   });
-
-  /** Find a marker by case-insensitive name match (exact, then substring). */
-  function findMarkerByName(name: string): { x: number; y: number; z: number } | null {
-    const wanted = name.toLowerCase().trim();
-    if (!wanted) return null;
-    const markers = markerStore.getMarkers();
-    const exact = markers.find((m) => m.name?.toLowerCase() === wanted);
-    const fuzzy = exact ?? markers.find((m) => m.name?.toLowerCase().includes(wanted));
-    if (!fuzzy?.position) return null;
-    return { x: Math.floor(fuzzy.position.x), y: Math.floor(fuzzy.position.y), z: Math.floor(fuzzy.position.z) };
-  }
-
-  /** Convert a parsed BuildIntent into a concrete buildCoordinator.startBuild call. */
-  async function tryStartBuildFromIntent(
-    intent: ReturnType<typeof parseBuildIntent>,
-    playerName: string,
-    nearestBot: string | undefined,
-  ): Promise<void> {
-    if (!intent) return;
-
-    const allWorkers = botManager.getAllWorkers();
-    const connected = allWorkers.filter((w) => w.isAlive());
-    if (connected.length === 0) {
-      logger.info('BuildIntent: no connected bots to build with');
-      return;
-    }
-    const chosenBot = (nearestBot && connected.find((w) => w.botName === nearestBot)) || connected[0];
-    const sayBack = (msg: string) => {
-      try { chosenBot.chat(`${playerName}: ${msg}`); } catch { /* best effort */ }
-    };
-
-    const match = schematicMatcher.match(intent.query);
-    if (!match) {
-      logger.info({ query: intent.query, playerName }, 'BuildIntent: no schematic matched query');
-      sayBack(`I don't have a schematic that matches "${intent.query}". Try a different name?`);
-      return;
-    }
-
-    let originMode: 'coords' | `player:${string}` = 'coords';
-    let origin = { x: 0, y: 64, z: 0 };
-    if (intent.anchor === 'absolute' && intent.absolute) {
-      origin = intent.absolute;
-    } else if (intent.anchor === 'marker' && intent.markerName) {
-      const markerPos = findMarkerByName(intent.markerName);
-      if (markerPos) {
-        origin = { x: markerPos.x + intent.offset.x, y: markerPos.y, z: markerPos.z + intent.offset.z };
-      } else {
-        logger.info({ markerName: intent.markerName }, 'BuildIntent: marker not found, falling back to player position');
-        sayBack(`I don't know where "${intent.markerName}" is — building near you instead.`);
-        originMode = `player:${playerName}`;
-      }
-    } else if (intent.anchor === 'player_position') {
-      const cached = botManager.getPlayerPositionCache().getPosition(playerName);
-      if (cached && !botManager.getPlayerPositionCache().isStale(playerName)) {
-        origin = {
-          x: Math.floor(cached.position.x + intent.offset.x),
-          y: Math.floor(cached.position.y),
-          z: Math.floor(cached.position.z + intent.offset.z),
-        };
-      } else {
-        originMode = `player:${playerName}`;
-      }
-    }
-
-    logger.info({
-      playerName, query: intent.query, schematic: match.filename, origin, originMode, mode: intent.mode, bot: chosenBot.botName,
-    }, 'BuildIntent: starting build');
-
-    const modeLabel = intent.mode === 'underground' ? ' (underground)' : '';
-    sayBack(`Building ${match.filename}${modeLabel} — give me a few minutes.`);
-
-    await buildCoordinator.startBuild(
-      match.filename,
-      origin,
-      [chosenBot.botName],
-      {
-        originMode,
-        mode: intent.mode,
-        onProgress: ({ pct }) => sayBack(`${pct}% done with ${match.filename}.`),
-        onCompleted: (job) => {
-          if (job.status === 'completed') {
-            sayBack(`Done! ${match.filename} built at ${job.origin.x}, ${job.origin.y}, ${job.origin.z}.`);
-          } else {
-            sayBack(`${match.filename} build ${job.status}. ${job.placedBlocks}/${job.totalBlocks} blocks placed.`);
-          }
-        },
-      },
-    );
-  }
 
   app.post('/api/events/player-join', (req: Request, res: Response) => {
     const { playerName } = req.body;

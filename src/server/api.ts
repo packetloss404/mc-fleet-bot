@@ -30,6 +30,7 @@ import { RoleManager } from '../control/RoleManager';
 import { TemplateManager } from '../control/TemplateManager';
 import { RoutineManager } from '../control/RoutineManager';
 import { BuildCoordinator } from '../build/BuildCoordinator';
+import { dispatchBuildIntent } from '../build/BuildIntentDispatcher';
 import { CampaignManager } from '../build/BuildCampaign';
 import { SchematicMatcher } from '../build/SchematicMatcher';
 import { ChainCoordinator } from '../supplychain/ChainCoordinator';
@@ -362,6 +363,22 @@ export function createAPIServer(
 
   // ── Control platform: wire managers in dependency order ──
   const markerStore = new MarkerStore(io);
+
+  // Bot-heard build intents (owner chat reaching the worker directly) use the
+  // same dispatcher as the Java-plugin HTTP relay, now that the BuildCoordinator
+  // and marker store exist.
+  botManager.setBuildIntentHandler((event) => {
+    void dispatchBuildIntent(event.intent, event.playerName, {
+      botManager,
+      schematicMatcher,
+      buildCoordinator,
+      markerStore,
+    }, { preferredBot: event.botName, playerPosition: event.playerPosition })
+      .catch((err: any) => logger.warn(
+        { err: err?.message, player: event.playerName },
+        'Bot-heard build intent dispatch failed',
+      ));
+  });
   const worldFeatureStore = new WorldFeatureStore();
   // Phase 5-A — wire the marker store into Phoenix so Memorial Park can
   // place monuments. The chronicle leg was injected up above; this

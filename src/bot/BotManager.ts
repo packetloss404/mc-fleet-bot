@@ -28,6 +28,7 @@ import { resolveResidentIdentity } from '../town/ResidentIdentity';
 import { TOWN_ROLES, type TownRole } from '../town/RoleManager';
 import { RuleStore, TownRule } from '../town/RuleStore';
 import { ImpersonationMonitor, ImpersonationIncident, ImpersonationInput } from '../security/ImpersonationMonitor';
+import type { BuildIntentEvent } from './BotInstance';
 
 /** How often to age out expired shared-world records (see BotManager constructor). */
 const SHARED_WORLD_PRUNE_INTERVAL_MS = 10 * 60 * 1000;
@@ -78,6 +79,10 @@ export class BotManager {
    *  the dashboard activity feed + a Socket.IO alert. Optional so BotManager
    *  works headless in tests. */
   onImpersonationAlert?: (incident: ImpersonationIncident) => void;
+  /** Set by the server layer once the BuildCoordinator exists. Worker chat
+   *  intents are forwarded here; unset means bot-heard build intents are only
+   *  logged by the worker. */
+  private buildIntentHandler?: (event: BuildIntentEvent) => void;
   private watchdogInterval: NodeJS.Timeout | null = null;
   private nextStaggerAt = 0;
   private saveTimer: ReturnType<typeof setTimeout> | null = null;
@@ -290,6 +295,14 @@ export class BotManager {
     // Impersonation: the worker reports when its bot was kicked by a
     // duplicate-login (someone logged in under this bot's name).
     handle.setImpersonationListener((info) => this.handleImpersonation(info));
+
+    // Build intents heard in owner chat are forwarded to the main-thread
+    // BuildCoordinator via the handler the server layer installs. The closure
+    // reads the current handler, so installing it after bots spawn still works.
+    handle.setBuildIntentListener((event) => {
+      try { this.buildIntentHandler?.(event); }
+      catch (err: any) { logger.warn({ bot: event.botName, err: err?.message }, 'BuildIntent handler failed'); }
+    });
 
     this.workers.set(key, handle);
 
@@ -722,6 +735,11 @@ export class BotManager {
   getBotReputation(): BotReputation { return this.botReputation; }
   getPlayerPresenceTracker(): PlayerPresenceTracker { return this.playerPresenceTracker; }
   getPlayerPositionCache(): PlayerPositionCache { return this.playerPositionCache; }
+
+  /** Install the main-thread build-intent dispatcher (see BuildIntentDispatcher). */
+  setBuildIntentHandler(fn: (event: BuildIntentEvent) => void): void {
+    this.buildIntentHandler = fn;
+  }
   getTownManager(): TownManager { return this.townManager; }
 
   /** Resolve the canonical town-scoped role for an external game projection. */

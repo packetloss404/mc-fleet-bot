@@ -37,7 +37,7 @@ import { BlackboardManager } from '../voyager/BlackboardManager';
 import { SharedWorldModel } from '../voyager/SharedWorldModel';
 import { SocialMemory } from '../social/SocialMemory';
 import { BotComms, BotMessage } from '../social/BotComms';
-import { parseBuildIntent } from '../control/BuildIntentResolver';
+import { parseBuildIntent, type ResolvedBuildIntent } from '../control/BuildIntentResolver';
 import {
   canMoveWithinCivicMobility,
   getCivicStepExclusionCost,
@@ -87,6 +87,22 @@ export interface BotOptions {
   onPlayerJoined?: (playerName: string) => void;
   onPlayerLeft?: (playerName: string) => void;
   onImpersonation?: (info: { botName: string; reason: string; signal: 'duplicate-login' }) => void;
+  /**
+   * A real player asked this bot (in chat) to build something and the message
+   * parsed as a build intent. Forwarded to the main thread, which owns the
+   * BuildCoordinator and schematic library; the dispatcher chats the player
+   * back with confirmation/progress. When set, the chat handler skips the LLM
+   * reply so the player gets one coherent answer instead of two.
+   */
+  onBuildIntent?: (event: BuildIntentEvent) => void;
+}
+
+export interface BuildIntentEvent {
+  botName: string;
+  playerName: string;
+  message: string;
+  intent: ResolvedBuildIntent;
+  playerPosition: { x: number; y: number; z: number } | null;
 }
 
 export class BotInstance {
@@ -148,6 +164,7 @@ export class BotInstance {
   private difficultyBalancer: any | null;
   private playerIntentModel: any | null;
   private onSwarmDirective?: (description: string, requestedBy: string) => Promise<void> | void;
+  private onBuildIntent?: (event: BuildIntentEvent) => void;
   private onReputationEvent?: (event: any) => void;
   private onVoyagerLoopCreated?: (loop: VoyagerLoop) => void;
   private onDeath?: (event: { botName: string; position: { x: number; y: number; z: number } | null }) => void;
@@ -233,6 +250,7 @@ export class BotInstance {
     this.playerIntentModel = options.playerIntentModel ?? null;
     this.cultureManager = options.cultureManager ?? null;
     this.onSwarmDirective = options.onSwarmDirective;
+    this.onBuildIntent = options.onBuildIntent;
     this.onReputationEvent = options.onReputationEvent;
     this.onVoyagerLoopCreated = options.onVoyagerLoopCreated;
     this.onDeath = options.onDeath;
@@ -1387,39 +1405,46 @@ export class BotInstance {
 
       // Cheap regex-based build-intent detector. Runs before LLM dispatch so a
       // "build me a house here" message becomes a structured intent without
-      // round-tripping through the chat model. Only logs for now — wiring to
-      // BuildCoordinator is the next step.
-      // TODO: dispatch the resolved intent to BuildCoordinator once the wiring
-      // story lands.
+      // round-tripping through the chat model. The main thread owns the
+      // BuildCoordinator and schematics, so forward the intent over IPC; it
+      // chats the player back with confirmation/progress and we skip the LLM
+      // reply to avoid two competing answers.
       const buildIntent = parseBuildIntent(message);
       if (buildIntent) {
         const player = this.bot.players[username];
-        const playerPos = player?.entity?.position ?? null;
-        const resolvedAbsolute = buildIntent.anchor === 'player_position' && playerPos
-          ? {
-              x: Math.round(playerPos.x + buildIntent.offset.x),
-              y: Math.round(playerPos.y),
-              z: Math.round(playerPos.z + buildIntent.offset.z),
-            }
-          : buildIntent.absolute ?? null;
+        const rawPos = player?.entity?.position ?? null;
+        const playerPos = rawPos
+          ? { x: Math.round(rawPos.x), y: Math.round(rawPos.y), z: Math.round(rawPos.z) }
+          : null;
         logger.info(
           {
             bot: this.name,
             player: username,
             intent: buildIntent,
-            playerPos: playerPos
+            playerPos: rawPos
               ? {
-                  x: Number(playerPos.x.toFixed(1)),
-                  y: Number(playerPos.y.toFixed(1)),
-                  z: Number(playerPos.z.toFixed(1)),
+                  x: Number(rawPos.x.toFixed(1)),
+                  y: Number(rawPos.y.toFixed(1)),
+                  z: Number(rawPos.z.toFixed(1)),
                 }
               : null,
-            resolvedAbsolute,
           },
           'BuildIntent: detected'
         );
-        // Fall through to handleChat so the bot still acknowledges the player
-        // verbally. The actual build dispatch will be added in a follow-up.
+        if (this.onBuildIntent) {
+          try {
+            this.onBuildIntent({
+              botName: this.name,
+              playerName: username,
+              message,
+              intent: buildIntent,
+              playerPosition: playerPos,
+            });
+            return;
+          } catch (err: any) {
+            logger.warn({ bot: this.name, err: err?.message }, 'onBuildIntent callback failed');
+          }
+        }
       }
 
       // Generate AI chat response

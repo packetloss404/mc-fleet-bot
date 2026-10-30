@@ -28,7 +28,7 @@ export interface RegisterAdminOptions {
  * Register operational/admin API routes:
  *   GET  /api/admin/logs/stream   (SSE log tail)
  *   GET  /api/admin/backup        (tar.gz of data + skills + config)
- *   POST /api/admin/restart       (flush + process.exit(0) — see caveat below)
+ *   POST /api/admin/restart       (flush + process.exit(1) so the supervisor respawns)
  *   POST /api/admin/heap-snapshot (v8.writeHeapSnapshot)
  *   GET  /api/admin/info          (uptime, memory, bot count)
  *
@@ -232,12 +232,11 @@ export function registerAdminRoutes(
     });
   });
 
-  // ── POST /api/admin/restart — flush stores, then process.exit(0) ─────────
-  // CAVEAT: this only restarts under a supervisor that respawns on a CLEAN
-  // exit. The mc-fleet-bot systemd unit uses Restart=on-failure, which ignores
-  // exit 0 — so on this host the endpoint is a graceful STOP and the fleet
-  // stays down until someone runs `systemctl start`. Either switch the unit to
-  // Restart=always or exit non-zero here before calling this a restart.
+  // ── POST /api/admin/restart — flush stores, then exit non-zero ───────────
+  // The mc-fleet-bot systemd unit uses Restart=on-failure. A clean exit(0)
+  // would leave the fleet down until someone ran `systemctl start`, so exit
+  // with code 1 to make the supervisor respawn us. A deliberate
+  // `systemctl stop` still stops cleanly because it never reaches this route.
   app.post('/api/admin/restart', async (_req: Request, res: Response) => {
     logger.warn('Admin restart requested via /api/admin/restart');
     res.status(202).json({ accepted: true, message: 'Server is restarting' });
@@ -250,7 +249,7 @@ export function registerAdminRoutes(
     }
     setTimeout(() => {
       logger.warn('Process exiting now for restart — supervisor should respawn');
-      process.exit(0);
+      process.exit(1);
     }, 200);
   });
 

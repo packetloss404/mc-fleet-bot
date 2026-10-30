@@ -148,6 +148,9 @@ const instance = new BotInstance({
   onSwarmDirective: (description, requestedBy) => {
     ipc.notify('swarm.directive', { description, requestedBy });
   },
+  onBuildIntent: (event) => {
+    ipc.notify('build.intent', event);
+  },
   onReputationEvent: (event) => {
     ipc.notify('reputation.recordEvent', event);
   },

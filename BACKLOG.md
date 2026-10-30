@@ -69,16 +69,16 @@ Priority tags: **[P0]** time-boxed / do next · **[P1]** should do soon · **[P2
 - **Fixed 2026-08-08:** the dashboard now renders `loginFlow` as a closed `<select>` (`web/src/app/settings/page.tsx:69-79`) with the same two values the API accepts, so the form can no longer surface values that the API will reject. A new `options` override on `FieldOverride` (`web/src/components/settings/SettingsSection.tsx:42-48`) makes this available to any future closed-enum string field.
 - **Residual fixed 2026-08-08:** `config.yml` no longer carries the dead `minecraft.loginPassword: "dyobot2026"` value. The config now has a comment pointing operators at `MC_BOT_PASSWORD` in `.env` if a server ever needs the dyoauth flow. `loadConfig()` returns `undefined` for `loginPassword`, which `BotInstance` already handles correctly (source fallback is empty / `MC_BOT_PASSWORD`).
 
-### 1. [P1/S] Decide what `POST /api/admin/restart` should do
-- **Why:** it flushes stores then `process.exit(0)`, but the unit is `Restart=on-failure`, which ignores a clean exit — so the endpoint is a graceful *stop* that leaves the fleet down until someone runs `systemctl start`. The name and the 202 body (`"Server is restarting"`) both lie. Documented in place (`src/server/admin.ts:232`) but not fixed, because the fix is a judgement call.
-- **Next action:** pick one — switch the unit to `Restart=always` (then the endpoint works as named, but a deliberate `systemctl stop` still stops cleanly), or `process.exit(1)` so on-failure respawns it, or rename it to `/api/admin/shutdown` and drop the pretence.
+### 1. [DONE 2026-10-29] Decide what `POST /api/admin/restart` should do
+- **Why:** it flushed stores then `process.exit(0)`, but the unit is `Restart=on-failure`, which ignores a clean exit — so the endpoint was a graceful *stop* that left the fleet down until someone ran `systemctl start`. The name and the 202 body (`"Server is restarting"`) both lied.
+- **Resolution:** the endpoint now exits with code **1** after flushing (`src/server/admin.ts:239`), so `Restart=on-failure` respawns it as named. A deliberate `systemctl stop` never reaches the route, so it still stops cleanly. Covered by `test/server/admin.restart.test.ts`.
 
 ### 2. [DONE 2026-07-26] Versioned town DB migrations
 - **Resolution:** `src/town/db.ts` now owns an ordered `MIGRATIONS` list, persists the applied version with SQLite `PRAGMA user_version`, and runs pending migrations before creating indexes. Fresh-table definitions and deployed-data migrations are documented together.
 
-### 3. [P1/M] Finish build-intent wiring (stranded at ~80%)
-- **Why:** The chat build-intent parser works and resolves coordinates, but only logs — "build me a house here" goes nowhere (`src/bot/BotInstance.ts:1006-1008`, TODO: dispatch to BuildCoordinator).
-- **Next action:** Wire the resolved intent from `BotInstance` chat handling into `BuildCoordinator` (`src/build/`), including schematic selection and a confirmation message back to the player.
+### 3. [DONE 2026-10-29] Finish build-intent wiring
+- **Why:** The chat build-intent parser worked and resolved coordinates, but the bot-heard path only logged — "build me a house here" went nowhere.
+- **Resolution:** extracted the existing HTTP-relay dispatch into `src/build/BuildIntentDispatcher.ts` and wired bot-heard intents end-to-end: `BotInstance` → `botWorker` IPC (`build.intent`) → `WorkerHandle` → `BotManager.setBuildIntentHandler` → `dispatchBuildIntent` in `src/server/api.ts`. The dispatcher resolves the schematic and marker/player/absolute origin, chats confirmation/progress/completion, and suppresses the duplicate HTTP-relay event with a 15s claim window. Covered by `test/build/BuildIntentDispatcher.test.ts`.
 
 ### 4. [PARTIAL 2026-08-07] CI pipeline (build + vitest)
 - **Why:** No `.github/` directory — nothing runs `npm run build` / `npm test` on push, so regressions land silently. (REPO_REVIEW.md #10.) Evidence: as of 2026-07-24 the web suite has 24 pre-existing failures across 9 untouched test files (component drift vs stale mocks/assertions).
