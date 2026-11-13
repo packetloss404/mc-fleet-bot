@@ -16,3 +16,7 @@ The [remaining Master Plan work](https://github.com/packetloss404/mc-world-ops/b
 separates placed construction from walkthrough findings, operating commissioning
 and unengineered future functions. The accepted 13 November East rail batch is
 physical construction; public train service remains closed pending commissioning.
+
+Houston's current center is X −668/Z −80, walking street Y77/tunnel Y69.
+The former mountain city is retired while the B07 facilities remain; use the
+[active world setout](https://github.com/packetloss404/mc-world-ops/blob/main/docs/masterplans/03-houston-tunnel-system/ACTIVE-WORLD-SETTOUT-2026-11-13.json).

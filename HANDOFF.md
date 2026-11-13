@@ -1,5 +1,16 @@
 # Combined Zones Masterplan — Handoff
 
+## 2026-11-13 Houston location correction
+
+Houston is built at the owner's chosen valley center **X −668, Z −80**,
+street walking Y77/tunnel walking Y69. All 465,366 final targets and internal
+route/stair checks pass. The rejected mountain city is removed with all
+274,181 restoration points verified; D3/B07 facilities and 32 compound signs
+remain. The six former Houston route findings are superseded. Use the active
+[world-ops setout](https://github.com/packetloss404/mc-world-ops/blob/main/docs/masterplans/03-houston-tunnel-system/ACTIVE-WORLD-SETTOUT-2026-11-13.json).
+The Atlas successor uses immutable `nextgen-current-2026-11-13-r2` assets from
+the final saved post; earlier packages and archive-photo dates are preserved.
+
 ## 2026-11-13 accepted construction and remaining work
 
 World construction is owned by `../mc-world-ops`. Its [current handoff](https://github.com/packetloss404/mc-world-ops/blob/main/HANDOFF.md)
@@ -17,7 +28,7 @@ Master Plan function.
 
 Remaining work is recorded explicitly:
 
-- Walkthrough and repairs: six Houston route findings, 28 Rail route/guideway
+- Walkthrough and repairs: 28 Rail route/guideway
   validation findings and 144 static support diagnostics. These are findings,
   not counts of missing Rail blocks.
 - Commission public trains, the fifteen new lifts, Venue event use and B09's
