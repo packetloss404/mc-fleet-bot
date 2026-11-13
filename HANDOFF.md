@@ -1,5 +1,37 @@
 # Combined Zones Masterplan — Handoff
 
+## 2026-11-13 accepted construction and remaining work
+
+World construction is owned by `../mc-world-ops`. Its [current handoff](https://github.com/packetloss404/mc-world-ops/blob/main/HANDOFF.md)
+and [remaining-work record](https://github.com/packetloss404/mc-world-ops/blob/main/docs/masterplans/REMAINING-WORK-2026-11-13.md)
+are the current starting points. The dated entries below remain historical;
+their old scan, external-approval and small-package queues do not reopen later
+accepted construction.
+
+The construction continuation has **51 accepted releases / 2,692,338 net block
+changes**. The final East passenger rail civil batch is placed and verified:
+699,457 net changes, five station pairs, fifteen lift plants and 253 signs.
+Its 699,467 authored targets are literal and all 324,727 structural inverse
+guards pass. This does not commission passenger operation or complete every
+Master Plan function.
+
+Remaining work is recorded explicitly:
+
+- Walkthrough and repairs: six Houston route findings, 28 Rail route/guideway
+  validation findings and 144 static support diagnostics. These are findings,
+  not counts of missing Rail blocks.
+- Commission public trains, the fifteen new lifts, Venue event use and B09's
+  operating system. The existing staffed C01 operation is already accepted.
+- Engineer and build Empty Eight's east lift; its sealed reservation is not a
+  mechanism.
+- Advance the unselected RR-N6/Cavern C/T2b wet functions only through their
+  own engineering. C2's selected permanent wet hold is complete.
+
+The fleet backend/dashboard remains on its existing systemd services. This
+world/documentation release does not authorize a second bot instance, a fleet
+configuration reset, or overwriting `skills/` and `data/`. Atlas publication and
+deployment are owned by world-ops and the standalone website repository.
+
 ## 2026-10-30 fleet/dashboard session
 
 Two bounded platform changes landed and were verified before this handoff:
